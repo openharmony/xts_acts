@@ -1,39 +1,40 @@
-# community
+# OpenHarmony community
+欢迎来到OpenHarmony社区！
 
-#### 介绍
-{**以下是码云平台说明，您可以替换此简介**
-码云是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用码云实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+## 介绍
+Community仓库用于管理OpenHarmony社区治理、开发者贡献指南、开发者贡献协议、社区交流等内容。
 
-#### 软件架构
-软件架构说明
+- 社区治理组织架构
+    - [项目管理委员会](/zh/pmc.md)
+- [开发者社区贡献指南](https://gitee.com/openharmony/docs/blob/master/contribute/%E8%B4%A1%E7%8C%AE%E6%8C%87%E5%8D%97.md)
+- [开发者社区贡献协议](/cla)
+- 社区交流
+- [安全问题响应](https://gitee.com/openharmony/security)
+- [项目LOGO](/logo)
 
+## 社区治理组织架构
 
-#### 安装教程
+OpenHarmony社区通过[项目管理委员会](/zh/pmc.md)（ Project Management Committee）管理OpenHarmony社区。
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## 开发者社区贡献指南
 
-#### 使用说明
+请阅读[如何贡献](https://gitee.com/openharmony/docs/blob/master/contribute/%E8%B4%A1%E7%8C%AE%E6%8C%87%E5%8D%97.md)获得帮助。
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## 开发者社区贡献协议
 
-#### 参与贡献
+请使用[CLA](/cla)模板签署CLA贡献协议，并发送协议到contact@openharmony.io邮箱。
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+## 社区交流
 
+| 地址                                 | 简介        | 用途说明                                                         |
+| ---------------------------------------|---------- | ------------------------------------------------------------ |
+| contact@openharmony.io <img width=150/>  | 公用邮箱 <img width=100/> | OpenHarmony社区公共邮箱。开发者CLA协议签署可以发邮件到此邮箱。<img width=200/>|
+| dev@openharmony.io  <img width=150/>| 开发邮件列表 <img width=100/> | OpenHarmony社区开发讨论邮件列表，任何社区开发相关话题都可以在邮件列表讨论。任何开发者可[订阅](https://lists.openatom.io/postorius/lists/dev.openharmony.io)。<img width=200/>|
+| cicd@openharmony.io <img width=150/> | CI邮件列表  <img width=100/>| OpenHarmomny CICD构建邮件列表，任何开发者可[订阅](https://lists.openatom.io/postorius/lists/cicd.openharmony.io)。<img width=200/>|
+| pmc@openharmony.io  <img width=150/>| PMC邮件列表  <img width=100/>| PMC讨论邮件列表，PMC成员可[订阅](https://lists.openatom.io/postorius/lists/pmc.openharmony.io/)。<img width=200/>|
+| scy@openharmony.io <img width=150/> | 安全问题邮箱 <img width=100/> | 开发者可反馈OpenHarmony安全问题到此邮箱。<img width=200/>|
+| scy-priv@openharmony.io  <img width=150/>| 安全组邮件列表  <img width=100/>| 安全组成员安全问题处理讨论邮件列表，安全组成员可[订阅](https://lists.openatom.io/postorius/lists/scy-priv.openharmony.io/)。<img width=200/>|
 
-#### 码云特技
+## 项目LOGO
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+请从[OpenHarmony LOGO](/logo)下载并使用LOGO。
