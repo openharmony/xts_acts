@@ -22,7 +22,7 @@ hcpptest_suite("ActsBootstrapTest") {
 
     include_dirs = [
         "src",
-        "//utils/native/liteos/include",
+        "//utils/native/lite/include",
         "//kernel/liteos_a/kernel/common",
         "//third_party/bounds_checking_function/include/",
         "//foundation/distributedschedule/interfaces/kits/samgr_lite/samgr",
