@@ -32,7 +32,6 @@ const int  INVALID_PARAMETER = -9;   // Invalid parameter.
 
 class KvStoreTest : public testing::Test {
 protected:
-    // SetUpTestCase：测试套预置动作，在第一个TestCase之前执行
     static void SetUpTestCase(void) 
     {
         printf("----------test case with KvStoreTest start-------------\n");
@@ -43,7 +42,6 @@ protected:
         ret = UtilsSetEnv("/storage/com.huawei.kv");
         EXPECT_EQ(ret, 0);
     }
-    // TearDownTestCase：测试套清理动作，在最后一个TestCase之后执行
     static void TearDownTestCase(void) 
     {
         int ret = rmdir("/storage/com.huawei.kv/kvstore");
@@ -52,9 +50,8 @@ protected:
         printf("/storage/com.huawei.kv ret = %d\n", ret);
         printf("----------test case with KvStoreTest end-------------\n");
     }
-    // 用例的预置动作
+
     virtual void SetUp() {}
-    // 用例的清理动作
     virtual void TearDown() {}
     bool TouchKVFiles (int num, const char* key, const char* value);
     bool DeleteKVFiles (int num, const char* key);
