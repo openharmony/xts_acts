@@ -21,6 +21,6 @@ void IsEmpty(const char* sysPara)
     if (sysPara != NULL) {
         TEST_ASSERT_EQUAL_INT(1, 1);
     } else {
-        TEST_ASSERT_EQUAL_INT(0, 1);
+        TEST_FAIL();
     } 
 }
