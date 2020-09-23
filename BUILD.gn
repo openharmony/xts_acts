@@ -18,7 +18,11 @@ lite_component("acts_compoment") {
     all_features = []
     features = []
     if (ohos_xts_test_args != "") {
-         all_features += [ ohos_xts_test_args ]
+        args = [
+            "--method_name", "get_target_modules",
+            "--arguments",   "all_features=${ohos_xts_test_args}"
+        ]
+        all_features += exec_script(rebase_path("//test/xts/tools/build/utils.py"), args, "list lines")
     } else {
         if(ohos_kernel_type == "liteos_riscv") {
             all_features += [
