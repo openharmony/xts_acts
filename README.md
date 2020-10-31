@@ -26,6 +26,7 @@ OpenHarmony社区通过[项目管理委员会](/zh/pmc.md)（ Project Management
 
 ## 社区交流
 
+### OpenHarmony maillist 交流方式
 | 地址                                 | 简介        | 用途说明                                                         |
 | ---------------------------------------|---------- | ------------------------------------------------------------ |
 | contact@openharmony.io <img width=150/>  | 公用邮箱 <img width=100/> | OpenHarmony社区公共邮箱。开发者CLA协议签署可以发邮件到此邮箱。<img width=200/>|
@@ -34,6 +35,13 @@ OpenHarmony社区通过[项目管理委员会](/zh/pmc.md)（ Project Management
 | pmc@openharmony.io  <img width=150/>| PMC邮件列表  <img width=100/>| PMC讨论邮件列表，PMC成员可[订阅](https://lists.openatom.io/postorius/lists/pmc.openharmony.io/)。<img width=200/>|
 | scy@openharmony.io <img width=150/> | 安全问题邮箱 <img width=100/> | 开发者可反馈OpenHarmony安全问题到此邮箱。<img width=200/>|
 | scy-priv@openharmony.io  <img width=150/>| 安全组邮件列表  <img width=100/>| 安全组成员安全问题处理讨论邮件列表，安全组成员可[订阅](https://lists.openatom.io/postorius/lists/scy-priv.openharmony.io/)。<img width=200/>|
+
+
+### OpenHarmony Slack 交流频道
+| Channel                                 | 简介        | 用途说明                                                         |
+| ---------------------------------------|---------- | ------------------------------------------------------------ |
+| [#kernel](openharmonyworkspace.slack.com) <img width=150/>  | 内核技术 <img width=100/> | OpenHarmony的slack #kernel 主要用于内核技术相关问题讨论。<img width=200/>|
+
 
 ## 项目LOGO
 

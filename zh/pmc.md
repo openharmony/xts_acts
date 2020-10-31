@@ -24,14 +24,14 @@
 | lijiarun | PMC成员 | 分布式任务调度 |
 | tanliwen1 | PMC成员 |	多媒体 |
 | wangxing-hw | PMC成员 | 编译构建 |
-| yuanzhanghui | PMC成员 | 运行时 |
 | blue.xiaofeng | PMC成员 |	公共基础库 |
 | sirius-liwei | PMC成员 | 升级子系统 |
-| wangjing/zmx1104 | PMC成员 | 社区版本发布 |
+| zmx1104 | PMC成员 | 社区版本发布 |
+| yuan.w.hong | PMC成员 | 芯片组件 |
 
 
 ## PMC会议链接
-- 会议时间: 每双周周一 11:00-12:00
+- 会议时间: 每双周周一 16:30-17:30
 - 会议主题: 通过邮件通知
 - 请[订阅](https://lists.openatom.io/postorius/lists/cicd.openharmony.io)邮件列表 dev@openharmony.io 获取会议链接
 
