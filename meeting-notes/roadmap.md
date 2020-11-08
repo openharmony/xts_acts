@@ -26,4 +26,4 @@ We briefly list the roadmap and milestone for the next few months, this is the f
 | Prepare Linux version, code compliance rectification | | yuanwenhong | Open |
 | Communicaton mechaanism between Ability deployed on different devices | Dec 2020    | lijiarun | Open |
 | Need to Provide roadmap | Need to Confirm | wangxing | Open |
-| Need to Provide roadmap | Need to Confirm | wangzhen 00453352 | Open |
+| Need to Provide roadmap | Need to Confirm | wangzhen | Open |
