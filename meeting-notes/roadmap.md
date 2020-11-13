@@ -10,7 +10,7 @@ We briefly list the roadmap and milestone for the next few months, this is the f
 | Plan | Period | Proposer | Status |
 |--------------|:--------------:|:--------------:|:--------------:|
 | Provide Dockerfile and Docker image for Developers to compiler and flash image in the same enviroment  | Oct | dongjinguang | Close |
-| Accepting PR of porting 3rd dev board Application for the Code of L0/L1 Non-HiSilicon Chips | Oct | dongjinguang | Open |
+| Accepting PR of porting 3rd dev board Application for the Code of L0/L1 Non-HiSilicon Chips | Noc | dongjinguang | Open |
 | separate ringbuffer managerment from hilog & hievent virtual driver   |           Oct | stesen | Open |
 | Read muti-log at one time implement for hilog                         |           Nov | stesen | Open |
 | Reader session implement for hilog                                    |           Nov | stesen | Open |
