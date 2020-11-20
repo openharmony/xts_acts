@@ -14,11 +14,9 @@ We briefly list the roadmap and milestone for the next few months, this is the f
 | separate ringbuffer managerment from hilog & hievent virtual driver   |           Oct | stesen | Open |
 | Read muti-log at one time implement for hilog                         |           Nov | stesen | Open |
 | Reader session implement for hilog                                    |           Nov | stesen | Open |
-| Components and animation enhancement   | Nov    | lubo     | Open |
-| Page route animation support           | Dec    | lubo     | Open |
-| Add some internationalization new APIs | Jan    | lubo     | Open |
-| Percentage relative layout support     | Dec    | lubo     | Open |
-| Event bubbling support                 | Dec    | lubo     | Open |
+| Components and animation enhancement   | Jan 2021   | Borne     | Open |
+| Percentage relative layout support     | Jan 2021   | Borne     | Open |
+| Event bubbling support                 | Jan 2021   | Borne     | Open |
 | Develop a platform driver models such as GPIO SPI, and I2C ... to facilitate the support of the 3rd-party soc development board. | Nov    | Scott | Open |
 | Optimization redundant code of the public basic library | Nov    | blue.xiaofeng | Open |
 | Upgraded the communication (include IPC) to slove the problem of intercommunicate between Low wight device witch rich Harmony device | Dec    | yinyouzhan | Open |
