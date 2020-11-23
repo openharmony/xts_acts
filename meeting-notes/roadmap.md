@@ -25,5 +25,6 @@ We briefly list the roadmap and milestone for the next few months, this is the f
 | Refactor multimedia foundation and add DRM framework support  | Apr 2021    | tanliwen | Open |
 | Prepare Linux version, code compliance rectification | | yuanwenhong | Open |
 | Communicaton mechaanism between Ability deployed on different devices | Dec 2020    | lijiarun | Open |
-| Need to Provide roadmap | Need to Confirm | wangxing | Open |
-| Need to Provide roadmap | Need to Confirm | wangzhen | Open |
+| Adjust external compilation dependencies | Dec 2020 | wangxing | Open |
+| Supports the installation of multiple HAP packages | Apr 2021 | wangzhen |
+| Support transition animation between abilities     | Apr 2021 | wangzhen |
