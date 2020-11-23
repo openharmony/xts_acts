@@ -265,7 +265,7 @@ static BOOL WifiServiceFuncTestSuiteSetUp(void)
     g_wifiEventHandler.OnHotspotStaLeave = OnHotspotStaLeaveHandler;
     g_wifiEventHandler.OnHotspotStateChanged = OnHotspotStateChangedHandler;
     error = RegisterWifiEvent(&g_wifiEventHandler);
-    TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, ret);
+    TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, error);
     if (error != WIFI_SUCCESS) {
         printf("[Setup]register wifi event fail!\n");
         return FALSE;
