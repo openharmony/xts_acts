@@ -292,8 +292,11 @@ static BOOL WifiServiceFuncTestSuiteTearDown(void)
  * @tc.number    : SUB_COMMUNICATION_WIFISERVICE_SDK_0100
  * @tc.name      : Test enable and disable wifi interface
  * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.size      : MEDIUM
+ * @tc.type      : FUNC
+ * @tc.level     : Level 2
  */
-LITE_TEST_CASE(WifiServiceFuncTestSuite, testEnableDisableWifi, Function | MediumTest | Level2)
+LITE_TEST_CASE(WifiServiceFuncTestSuite, testEnableDisableWifi, LEVEL2)
 {
     int stat = IsWifiActive();
     TEST_ASSERT_EQUAL_INT(stat, WIFI_STATE_NOT_AVALIABLE);
@@ -323,8 +326,11 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testEnableDisableWifi, Function | Mediu
  * @tc.number    : SUB_COMMUNICATION_WIFISERVICE_SDK_0200
  * @tc.name      : Test scan and get scan info interface
  * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.size      : MEDIUM
+ * @tc.type      : FUNC
+ * @tc.level     : Level 2
  */
-LITE_TEST_CASE(WifiServiceFuncTestSuite, testScan, Function | MediumTest | Level2)
+LITE_TEST_CASE(WifiServiceFuncTestSuite, testScan, LEVEL2)
 {
     unsigned int size = WIFI_SCAN_HOTSPOT_LIMIT;
     WifiErrorCode error = EnableWifi();
@@ -360,8 +366,11 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testScan, Function | MediumTest | Level
  * @tc.number    : SUB_COMMUNICATION_WIFISERVICE_SDK_0300
  * @tc.name      : Test connect and disconnect interface
  * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.size      : MEDIUM
+ * @tc.type      : FUNC
+ * @tc.level     : Level 2
  */
-LITE_TEST_CASE(WifiServiceFuncTestSuite, testConnectDisConnect, Function | MediumTest | Level2)
+LITE_TEST_CASE(WifiServiceFuncTestSuite, testConnectDisConnect, LEVEL2)
 {
     int netId = 0;
     WifiDeviceConfig config = {0};
@@ -388,8 +397,11 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testConnectDisConnect, Function | Mediu
  * @tc.number    : SUB_COMMUNICATION_WIFISERVICE_SDK_0400
  * @tc.name      : Test handle device config interface
  * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.size      : MEDIUM
+ * @tc.type      : FUNC
+ * @tc.level     : Level 2
  */
-LITE_TEST_CASE(WifiServiceFuncTestSuite, testHandleDeviceConfig, Function | MediumTest | Level2)
+LITE_TEST_CASE(WifiServiceFuncTestSuite, testHandleDeviceConfig, LEVEL2)
 {
     int netId = 0;
     const char* ssid1 = "XtsTestWifi1";
@@ -452,8 +464,11 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testHandleDeviceConfig, Function | Medi
  * @tc.number    : SUB_COMMUNICATION_WIFISERVICE_SDK_0500
  * @tc.name      : Test handle AP config interface
  * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.size      : MEDIUM
+ * @tc.type      : FUNC
+ * @tc.level     : Level 2
  */
-LITE_TEST_CASE(WifiServiceFuncTestSuite, testHandleHotspotConfig, Function | MediumTest | Level2)
+LITE_TEST_CASE(WifiServiceFuncTestSuite, testHandleHotspotConfig, LEVEL2)
 {
     const char* ssid = "XtsTestAp";
     const char* info = "12345678";
@@ -495,8 +510,11 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testHandleHotspotConfig, Function | Med
  * @tc.number    : SUB_COMMUNICATION_WIFISERVICE_SDK_0600
  * @tc.name      : Test enable and disable AP interface
  * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.size      : MEDIUM
+ * @tc.type      : FUNC
+ * @tc.level     : Level 2
  */
-LITE_TEST_CASE(WifiServiceFuncTestSuite, testEnableDisableHotSpot, Function | MediumTest | Level2)
+LITE_TEST_CASE(WifiServiceFuncTestSuite, testEnableDisableHotSpot, LEVEL2)
 {
     const char* ssid = "XtsTestAp";
     const char* info = "12345678";
@@ -545,8 +563,11 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testEnableDisableHotSpot, Function | Me
  * @tc.number    : SUB_COMMUNICATION_WIFISERVICE_SDK_0700
  * @tc.name      : Test get signal Level interface
  * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.size      : MEDIUM
+ * @tc.type      : FUNC
+ * @tc.level     : Level 2
  */
-LITE_TEST_CASE(WifiServiceFuncTestSuite, testGetSignalLevel, Function | MediumTest | Level2)
+LITE_TEST_CASE(WifiServiceFuncTestSuite, testGetSignalLevel, LEVEL2)
 {
     int level;
     int rssiNoLevel = -90;
@@ -585,8 +606,11 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testGetSignalLevel, Function | MediumTe
  * @tc.number    : SUB_COMMUNICATION_WIFISERVICE_SDK_0800
  * @tc.name      : test adavance scan interface
  * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.size      : MEDIUM
+ * @tc.type      : FUNC
+ * @tc.level     : Level 2
  */
-LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanType, Function | MediumTest | Level2)
+LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanType, LEVEL2)
 {
     WifiErrorCode error = EnableWifi();
     TEST_ASSERT_EQUAL_INT(error, WIFI_SUCCESS);
@@ -639,8 +663,11 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanType, Function | MediumT
  * @tc.number    : SUB_COMMUNICATION_WIFISERVICE_SDK_0900
  * @tc.name      : test adavance scan interface with invalid parameter
  * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.size      : MEDIUM
+ * @tc.type      : FUNC
+ * @tc.level     : Level 2
  */
-LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanInvalidParam01, Function | MediumTest | Level2)
+LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanInvalidParam01, LEVEL2)
 {
     WifiErrorCode error = EnableWifi();
     TEST_ASSERT_EQUAL_INT(error, WIFI_SUCCESS);
@@ -667,8 +694,11 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanInvalidParam01, Function
  * @tc.number    : SUB_COMMUNICATION_WIFISERVICE_SDK_1000
  * @tc.name      : test adavance scan interface with different invalid scantype
  * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.size      : MEDIUM
+ * @tc.type      : FUNC
+ * @tc.level     : Level 2
  */
-LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanInvalidParam02, Function | MediumTest | Level2)
+LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanInvalidParam02, LEVEL2)
 {
     WifiErrorCode error = EnableWifi();
     TEST_ASSERT_EQUAL_INT(error, WIFI_SUCCESS);
