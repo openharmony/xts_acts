@@ -139,7 +139,7 @@ static void SampleTcpServerTask(void)
 
     waitServer();
     memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
-    int recvSum = 0;
+    unsigned int recvSum = 0;
     int recvTimes = 50;
     while (recvTimes > 0) {
         ret = recv(sfd, buf, sizeof(buf), 0);
@@ -235,7 +235,7 @@ static void SampleTcpClientTask(void)
 
     waitClient();
     memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
-    int recvSum = 0;
+    unsigned int recvSum = 0;
     int recvTimes = 50;
     while (recvTimes > 0) {
         ret = recv(sfd, buf, sizeof(buf), 0);
