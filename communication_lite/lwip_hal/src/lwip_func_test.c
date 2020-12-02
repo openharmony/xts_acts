@@ -142,7 +142,7 @@ static void SampleTcpServerTask(void)
     int recvSum = 0;
     int recvTimes = 50;
     while (recvTimes > 0) {
-        ret = recv(clientFd, buf, sizeof(buf), 0);
+        ret = recv(sfd, buf, sizeof(buf), 0);
         recvSum += ret;
         if (recvSum == (len * strlen(SRV_MSG)) || ret <= 0) {
             break;
@@ -238,7 +238,7 @@ static void SampleTcpClientTask(void)
     int recvSum = 0;
     int recvTimes = 50;
     while (recvTimes > 0) {
-        ret = recv(clientFd, buf, sizeof(buf), 0);
+        ret = recv(sfd, buf, sizeof(buf), 0);
         recvSum += ret;
         if (recvSum == (len * strlen(SRV_MSG)) || ret <= 0) {
             break;
