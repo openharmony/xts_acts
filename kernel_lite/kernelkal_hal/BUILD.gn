@@ -15,7 +15,9 @@ import("//test/xts/tools/build/suite_lite.gni")
 
 hctest_suite("ActsKalTest") {
   suite_name = "acts"
-  sources = [ "src/kal_func_test.c" ]
+  sources = [
+    #"src/kal_func_test.c", # kal is not supported now
+  ]
 
   include_dirs = [
     "//test/xts/tools/hctest/include",
