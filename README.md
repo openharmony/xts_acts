@@ -40,7 +40,7 @@ OpenHarmony社区通过[项目管理委员会](/zh/pmc.md)（ Project Management
 ### OpenHarmony Slack 交流频道
 | Channel                                 | 简介        | 用途说明                                                         |
 | ---------------------------------------|---------- | ------------------------------------------------------------ |
-| [#kernel](https://join.slack.com/t/openharmonyworkspace/shared_invite/zt-im0ffjlu-OFm0QOxo42~0pecn9vK~~A) <img width=150/>  | 内核技术 <img width=100/> | OpenHarmony的slack #kernel 主要用于内核技术相关问题讨论。<img width=200/>|
+| [#kernel](https://join.slack.com/t/openharmonyworkspace/shared_invite/zt-jqfn1zw5-cecqUe_AxYnCqYaqGN60Hw) <img width=150/>  | 内核技术 <img width=100/> | OpenHarmony的slack #kernel 主要用于内核技术相关问题讨论。<img width=200/>|
 
 
 ## 项目LOGO
