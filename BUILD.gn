@@ -24,7 +24,7 @@ lite_component("acts_compoment") {
         ]
         all_features += exec_script(rebase_path("//test/xts/tools/build/utils.py"), args, "list lines")
     } else {
-        if(ohos_kernel_type == "liteos_riscv") {
+        if(ohos_kernel_type == "liteos_m") {
             all_features += [
                 "//test/xts/acts/communication_lite/lwip_hal:ActsLwipTest",
                 "//test/xts/acts/communication_lite/softbus_hal:ActsSoftBusTest",
