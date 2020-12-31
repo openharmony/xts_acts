@@ -88,6 +88,10 @@ LITE_TEST_CASE(UtilsFileReliTestSuite, testCreatFileAfterMaxFilesOpened, LEVEL1)
     TEST_ASSERT_GREATER_THAN_INT(0, fd33);
     UtilsFileClose(fd33);
     // Delete all files
+    for (int i = 1; i < MAX_NUM_OF_OPENED_FILES; i++)
+    { 
+        UtilsFileClose(fd32[i]);
+    } 
     for (int i = 0; i < MAX_NUM_OF_OPENED_FILES; i++)
     { 
         int j = i + 1;
@@ -126,14 +130,15 @@ LITE_TEST_CASE(UtilsFileReliTestSuite, testDeleteFileAfterMaxFilesOpened, LEVEL1
     } 
     // Delete file
     char* fileName1 = "testReli101-1";
+    UtilsFileClose(fd32[0]);
     int ret = UtilsFileDelete(fileName1);
-    TEST_ASSERT_EQUAL_INT(-1, ret);
-    // Close file
-    UtilsFileClose(fd32[FILE_INDEX_31]);
-    ret = UtilsFileDelete(fileName1);
     TEST_ASSERT_EQUAL_INT(0, ret);
     // Delete all files
-    for (int i = 0; i < MAX_NUM_OF_OPENED_FILES; i++)
+    for (int i = 1; i < MAX_NUM_OF_OPENED_FILES; i++)
+    { 
+        UtilsFileClose(fd32[i]);
+    }
+    for (int i = 1; i < MAX_NUM_OF_OPENED_FILES; i++)
     { 
         int j = i + 1;
         char fileName32[LENGTH_OF_FILE_NAME_BUF] = {0};
@@ -181,6 +186,11 @@ LITE_TEST_CASE(UtilsFileReliTestSuite, testCopyFileAfterMaxFilesOpened, LEVEL1)
     UtilsFileClose(fd32[1]);
     ret = UtilsFileCopy(fileName1, fileNameCopy);
     TEST_ASSERT_EQUAL_INT(0, ret);
+    
+    for (int i = 2; i < MAX_NUM_OF_OPENED_FILES; i++)
+    { 
+        UtilsFileClose(fd32[i]);
+    }
     // Delete all files
     for (int i = 0; i < MAX_NUM_OF_OPENED_FILES; i++)
     { 
@@ -231,6 +241,10 @@ LITE_TEST_CASE(UtilsFileReliTestSuite, testMoveFileAfterMaxFilesOpened, LEVEL1)
     UtilsFileClose(fd32[1]);
     ret = UtilsFileMove(fileName1, fileNameMove);
     TEST_ASSERT_EQUAL_INT(0, ret);
+    for (int i = 2; i < MAX_NUM_OF_OPENED_FILES; i++)
+    { 
+        UtilsFileClose(fd32[i]);
+    }
     // Delete all files
     for (int i = 0; i < MAX_NUM_OF_OPENED_FILES; i++)
     { 
