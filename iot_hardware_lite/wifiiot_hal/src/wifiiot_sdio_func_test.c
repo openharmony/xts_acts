@@ -18,8 +18,6 @@
 #include <los_base.h>
 #include <securec.h>
 #include "hctest.h"
-#include "hi_task.h"
-#include "hi_time.h"
 
 #include "samgr_lite.h"
 #include "wifiiot_errno.h"
@@ -269,7 +267,7 @@ LITE_TEST_CASE(WifiIotSdioFuncTestSuite, testWifiIotSdio004, LEVEL1)
     extendInfo.xferCount = TEST_BYTE_NUM;
     extendInfo.creditInfo = 1;
     extendInfo.creditIsvalid = 1;
-    extendInfo.commReg[WIFI_IOT_SDIO_EXTENDREG_COUNT-1] = (uintptr_t)"CommonRegister";
+    extendInfo.commReg[WIFI_IOT_SDIO_EXTENDREG_COUNT-1] = 1;
     extendInfo.commregIsvalid = 1;
     extendInfo.validCommregCnt = TEST_REG_NUM;
 
@@ -328,7 +326,7 @@ LITE_TEST_CASE(WifiIotSdioFuncTestSuite, testWifiIotSdio005, LEVEL1)
     extendInfo.xferCount = TEST_BYTE_NUM;
     extendInfo.creditInfo = 1;
     extendInfo.creditIsvalid = 1;
-    extendInfo.commReg[WIFI_IOT_SDIO_EXTENDREG_COUNT-1] = (uintptr_t)"CommonRegister";
+    extendInfo.commReg[WIFI_IOT_SDIO_EXTENDREG_COUNT-1] = 1;
     extendInfo.commregIsvalid = 1;
     extendInfo.validCommregCnt = TEST_REG_NUM;
 

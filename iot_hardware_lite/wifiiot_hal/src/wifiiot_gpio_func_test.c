@@ -18,8 +18,6 @@
 #include <los_base.h>
 #include <securec.h>
 #include "hctest.h"
-#include "hi_task.h"
-#include "hi_time.h"
 
 #include "samgr_lite.h"
 #include "wifiiot_errno.h"
@@ -612,7 +610,7 @@ LITE_TEST_CASE(WifiIotGpioFuncTestSuite, testWifiIotGPIO020, LEVEL1)
 
 void IOT_IsrFunc(char *arg)
 {
-    int gpioInNum = (intptr_t)arg;
+    int gpioInNum = (int)arg;
     unsigned int ret = GpioUnregisterIsrFunc(gpioInNum);
     TEST_ASSERT_EQUAL_INT(0, ret);
     printf("GpioIsrFunc callback successfully\n");
@@ -638,7 +636,7 @@ LITE_TEST_CASE(WifiIotGpioFuncTestSuite, testWifiIotGPIO021, LEVEL1)
     TEST_ASSERT_EQUAL_INT(0, ret);
 
     ret = GpioRegisterIsrFunc(gpioInNum, WIFI_IOT_INT_TYPE_LEVEL,
-                         WIFI_IOT_GPIO_EDGE_FALL_LEVEL_LOW, IOT_IsrFunc, (char *)(intptr_t)gpioInNum);
+                         WIFI_IOT_GPIO_EDGE_FALL_LEVEL_LOW, IOT_IsrFunc, (char *)gpioInNum);
     if (!(ret == 0 || ((ret >= WIFI_IOT_ERR_GPIO_INVALID_PARAMETER) && (ret <= WIFI_IOT_ERR_GPIO_NOT_SUPPORT))))
     {
         TEST_FAIL();
@@ -668,7 +666,7 @@ LITE_TEST_CASE(WifiIotGpioFuncTestSuite, testWifiIotGPIO022, LEVEL1)
     TEST_ASSERT_EQUAL_INT(0, ret);
 
     ret = GpioRegisterIsrFunc(gpioInNum, WIFI_IOT_INT_TYPE_LEVEL,
-                         WIFI_IOT_GPIO_EDGE_FALL_LEVEL_LOW, IOT_IsrFunc, (char *)(intptr_t)gpioInNum);
+                         WIFI_IOT_GPIO_EDGE_FALL_LEVEL_LOW, IOT_IsrFunc, (char *)gpioInNum);
     if (!(ret == 0 || ((ret >= WIFI_IOT_ERR_GPIO_INVALID_PARAMETER) && (ret <= WIFI_IOT_ERR_GPIO_NOT_SUPPORT))))
     {
         TEST_FAIL();
@@ -698,7 +696,7 @@ LITE_TEST_CASE(WifiIotGpioFuncTestSuite, testWifiIotGPIO023, LEVEL1)
     TEST_ASSERT_EQUAL_INT(0, ret);
 
     ret = GpioRegisterIsrFunc(gpioInNum, WIFI_IOT_INT_TYPE_LEVEL,
-                         WIFI_IOT_GPIO_EDGE_FALL_LEVEL_LOW, IOT_IsrFunc, (char *)(intptr_t)gpioInNum);
+                         WIFI_IOT_GPIO_EDGE_FALL_LEVEL_LOW, IOT_IsrFunc, (char *)gpioInNum);
     if (!(ret == 0 || ((ret >= WIFI_IOT_ERR_GPIO_INVALID_PARAMETER) && (ret <= WIFI_IOT_ERR_GPIO_NOT_SUPPORT))))
     {
         TEST_FAIL();
@@ -728,7 +726,7 @@ LITE_TEST_CASE(WifiIotGpioFuncTestSuite, testWifiIotGPIO024, LEVEL1)
     TEST_ASSERT_EQUAL_INT(0, ret);
 
     ret = GpioRegisterIsrFunc(gpioInNum, WIFI_IOT_INT_TYPE_LEVEL,
-                         WIFI_IOT_GPIO_EDGE_FALL_LEVEL_LOW, IOT_IsrFunc, (char *)(intptr_t)gpioInNum);
+                         WIFI_IOT_GPIO_EDGE_FALL_LEVEL_LOW, IOT_IsrFunc, (char *)gpioInNum);
     if (!(ret == 0 || ((ret >= WIFI_IOT_ERR_GPIO_INVALID_PARAMETER) && (ret <= WIFI_IOT_ERR_GPIO_NOT_SUPPORT))))
     {
         TEST_FAIL();
@@ -761,7 +759,7 @@ LITE_TEST_CASE(WifiIotGpioFuncTestSuite, testWifiIotGPIO025, LEVEL1)
     TEST_ASSERT_EQUAL_INT(0, ret);
 
     ret = GpioRegisterIsrFunc(gpioInNum, WIFI_IOT_INT_TYPE_LEVEL,
-                         WIFI_IOT_GPIO_EDGE_RISE_LEVEL_HIGH, IOT_IsrFunc, (char *)(intptr_t)gpioInNum);
+                         WIFI_IOT_GPIO_EDGE_RISE_LEVEL_HIGH, IOT_IsrFunc, (char *)gpioInNum);
     if (!(ret == 0 || ((ret >= WIFI_IOT_ERR_GPIO_INVALID_PARAMETER) && (ret <= WIFI_IOT_ERR_GPIO_NOT_SUPPORT))))
     {
         TEST_FAIL();
@@ -791,7 +789,7 @@ LITE_TEST_CASE(WifiIotGpioFuncTestSuite, testWifiIotGPIO026, LEVEL1)
     TEST_ASSERT_EQUAL_INT(0, ret);
 
     ret = GpioRegisterIsrFunc(gpioInNum, WIFI_IOT_INT_TYPE_LEVEL,
-                         WIFI_IOT_GPIO_EDGE_RISE_LEVEL_HIGH, IOT_IsrFunc, (char *)(intptr_t)gpioInNum);
+                         WIFI_IOT_GPIO_EDGE_RISE_LEVEL_HIGH, IOT_IsrFunc, (char *)gpioInNum);
     if (!(ret == 0 || ((ret >= WIFI_IOT_ERR_GPIO_INVALID_PARAMETER) && (ret <= WIFI_IOT_ERR_GPIO_NOT_SUPPORT))))
     {
         TEST_FAIL();
@@ -821,7 +819,7 @@ LITE_TEST_CASE(WifiIotGpioFuncTestSuite, testWifiIotGPIO027, LEVEL1)
     TEST_ASSERT_EQUAL_INT(0, ret);
 
     ret = GpioRegisterIsrFunc(gpioInNum, WIFI_IOT_INT_TYPE_LEVEL,
-                         WIFI_IOT_GPIO_EDGE_RISE_LEVEL_HIGH, IOT_IsrFunc, (char *)(intptr_t)gpioInNum);
+                         WIFI_IOT_GPIO_EDGE_RISE_LEVEL_HIGH, IOT_IsrFunc, (char *)gpioInNum);
     if (!(ret == 0 || ((ret >= WIFI_IOT_ERR_GPIO_INVALID_PARAMETER) && (ret <= WIFI_IOT_ERR_GPIO_NOT_SUPPORT))))
     {
         TEST_FAIL();
@@ -851,7 +849,7 @@ LITE_TEST_CASE(WifiIotGpioFuncTestSuite, testWifiIotGPIO028, LEVEL1)
     TEST_ASSERT_EQUAL_INT(0, ret);
 
     ret = GpioRegisterIsrFunc(gpioInNum, WIFI_IOT_INT_TYPE_LEVEL,
-                         WIFI_IOT_GPIO_EDGE_RISE_LEVEL_HIGH, IOT_IsrFunc, (char *)(intptr_t)gpioInNum);
+                         WIFI_IOT_GPIO_EDGE_RISE_LEVEL_HIGH, IOT_IsrFunc, (char *)gpioInNum);
     if (!(ret == 0 || ((ret >= WIFI_IOT_ERR_GPIO_INVALID_PARAMETER) && (ret <= WIFI_IOT_ERR_GPIO_NOT_SUPPORT))))
     {
         TEST_FAIL();
@@ -884,7 +882,7 @@ LITE_TEST_CASE(WifiIotGpioFuncTestSuite, testWifiIotGPIO029, LEVEL1)
     TEST_ASSERT_EQUAL_INT(0, ret);
 
     ret = GpioRegisterIsrFunc(gpioInNum, WIFI_IOT_INT_TYPE_EDGE,
-                         WIFI_IOT_GPIO_EDGE_FALL_LEVEL_LOW, IOT_IsrFunc, (char *)(intptr_t)gpioInNum);
+                         WIFI_IOT_GPIO_EDGE_FALL_LEVEL_LOW, IOT_IsrFunc, (char *)gpioInNum);
     if (!(ret == 0 || ((ret >= WIFI_IOT_ERR_GPIO_INVALID_PARAMETER) && (ret <= WIFI_IOT_ERR_GPIO_NOT_SUPPORT))))
     {
         TEST_FAIL();
@@ -914,7 +912,7 @@ LITE_TEST_CASE(WifiIotGpioFuncTestSuite, testWifiIotGPIO030, LEVEL1)
     TEST_ASSERT_EQUAL_INT(0, ret);
 
     ret = GpioRegisterIsrFunc(gpioInNum, WIFI_IOT_INT_TYPE_EDGE,
-                         WIFI_IOT_GPIO_EDGE_FALL_LEVEL_LOW, IOT_IsrFunc, (char *)(intptr_t)gpioInNum);
+                         WIFI_IOT_GPIO_EDGE_FALL_LEVEL_LOW, IOT_IsrFunc, (char *)gpioInNum);
     if (!(ret == 0 || ((ret >= WIFI_IOT_ERR_GPIO_INVALID_PARAMETER) && (ret <= WIFI_IOT_ERR_GPIO_NOT_SUPPORT))))
     {
         TEST_FAIL();
@@ -944,7 +942,7 @@ LITE_TEST_CASE(WifiIotGpioFuncTestSuite, testWifiIotGPIO031, LEVEL1)
     TEST_ASSERT_EQUAL_INT(0, ret);
 
     ret = GpioRegisterIsrFunc(gpioInNum, WIFI_IOT_INT_TYPE_EDGE,
-                         WIFI_IOT_GPIO_EDGE_FALL_LEVEL_LOW, IOT_IsrFunc, (char *)(intptr_t)gpioInNum);
+                         WIFI_IOT_GPIO_EDGE_FALL_LEVEL_LOW, IOT_IsrFunc, (char *)gpioInNum);
     if (!(ret == 0 || ((ret >= WIFI_IOT_ERR_GPIO_INVALID_PARAMETER) && (ret <= WIFI_IOT_ERR_GPIO_NOT_SUPPORT))))
     {
         TEST_FAIL();
@@ -974,7 +972,7 @@ LITE_TEST_CASE(WifiIotGpioFuncTestSuite, testWifiIotGPIO032, LEVEL1)
     TEST_ASSERT_EQUAL_INT(0, ret);
 
     ret = GpioRegisterIsrFunc(gpioInNum, WIFI_IOT_INT_TYPE_EDGE,
-                         WIFI_IOT_GPIO_EDGE_FALL_LEVEL_LOW, IOT_IsrFunc, (char *)(intptr_t)gpioInNum);
+                         WIFI_IOT_GPIO_EDGE_FALL_LEVEL_LOW, IOT_IsrFunc, (char *)gpioInNum);
     if (!(ret == 0 || ((ret >= WIFI_IOT_ERR_GPIO_INVALID_PARAMETER) && (ret <= WIFI_IOT_ERR_GPIO_NOT_SUPPORT))))
     {
         TEST_FAIL();
@@ -1007,7 +1005,7 @@ LITE_TEST_CASE(WifiIotGpioFuncTestSuite, testWifiIotGPIO033, LEVEL1)
     TEST_ASSERT_EQUAL_INT(0, ret);
 
     ret = GpioRegisterIsrFunc(gpioInNum, WIFI_IOT_INT_TYPE_EDGE,
-                         WIFI_IOT_GPIO_EDGE_RISE_LEVEL_HIGH, IOT_IsrFunc, (char *)(intptr_t)gpioInNum);
+                         WIFI_IOT_GPIO_EDGE_RISE_LEVEL_HIGH, IOT_IsrFunc, (char *)gpioInNum);
     if (!(ret == 0 || ((ret >= WIFI_IOT_ERR_GPIO_INVALID_PARAMETER) && (ret <= WIFI_IOT_ERR_GPIO_NOT_SUPPORT))))
     {
         TEST_FAIL();
@@ -1037,7 +1035,7 @@ LITE_TEST_CASE(WifiIotGpioFuncTestSuite, testWifiIotGPIO034, LEVEL1)
     TEST_ASSERT_EQUAL_INT(0, ret);
 
     ret = GpioRegisterIsrFunc(gpioInNum, WIFI_IOT_INT_TYPE_EDGE,
-                         WIFI_IOT_GPIO_EDGE_RISE_LEVEL_HIGH, IOT_IsrFunc, (char *)(intptr_t)gpioInNum);
+                         WIFI_IOT_GPIO_EDGE_RISE_LEVEL_HIGH, IOT_IsrFunc, (char *)gpioInNum);
     if (!(ret == 0 || ((ret >= WIFI_IOT_ERR_GPIO_INVALID_PARAMETER) && (ret <= WIFI_IOT_ERR_GPIO_NOT_SUPPORT))))
     {
         TEST_FAIL();
@@ -1067,7 +1065,7 @@ LITE_TEST_CASE(WifiIotGpioFuncTestSuite, testWifiIotGPIO035, LEVEL1)
     TEST_ASSERT_EQUAL_INT(0, ret);
 
     ret = GpioRegisterIsrFunc(gpioInNum, WIFI_IOT_INT_TYPE_EDGE,
-                         WIFI_IOT_GPIO_EDGE_RISE_LEVEL_HIGH, IOT_IsrFunc, (char *)(intptr_t)gpioInNum);
+                         WIFI_IOT_GPIO_EDGE_RISE_LEVEL_HIGH, IOT_IsrFunc, (char *)gpioInNum);
     if (!(ret == 0 || ((ret >= WIFI_IOT_ERR_GPIO_INVALID_PARAMETER) && (ret <= WIFI_IOT_ERR_GPIO_NOT_SUPPORT))))
     {
         TEST_FAIL();
@@ -1097,7 +1095,7 @@ LITE_TEST_CASE(WifiIotGpioFuncTestSuite, testWifiIotGPIO036, LEVEL1)
     TEST_ASSERT_EQUAL_INT(0, ret);
 
     ret = GpioRegisterIsrFunc(gpioInNum, WIFI_IOT_INT_TYPE_EDGE,
-                         WIFI_IOT_GPIO_EDGE_RISE_LEVEL_HIGH, IOT_IsrFunc, (char *)(intptr_t)gpioInNum);
+                         WIFI_IOT_GPIO_EDGE_RISE_LEVEL_HIGH, IOT_IsrFunc, (char *)gpioInNum);
     if (!(ret == 0 || ((ret >= WIFI_IOT_ERR_GPIO_INVALID_PARAMETER) && (ret <= WIFI_IOT_ERR_GPIO_NOT_SUPPORT))))
     {
         TEST_FAIL();
