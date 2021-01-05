@@ -18,8 +18,6 @@
 #include <los_base.h>
 #include <securec.h>
 #include "hctest.h"
-#include "hi_task.h"
-#include "hi_time.h"
 
 #include "samgr_lite.h"
 #include "wifiiot_errno.h"
