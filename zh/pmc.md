@@ -16,7 +16,6 @@
 | futianfu | PMC成员 |	安全架构 |
 | wanchengzhen | PMC成员 | 系统架构 |
 | stesen | PMC成员 | DFX设计子系统 |
-| yangxuan | PMC成员 | 安全子系统 |
 | chenfeng469 | PMC成员 | HDF统一驱动框架 |
 | borne | PMC成员 |	轻量级ACE |
 | wangzhen | PMC成员 | 用户程序框架/元能力 |
@@ -25,7 +24,6 @@
 | tanliwen1 | PMC成员 |	多媒体 |
 | wangxing-hw | PMC成员 | 编译构建 |
 | blue.xiaofeng | PMC成员 |	公共基础库 |
-| sirius-liwei | PMC成员 | 升级子系统 |
 | zmx1104 | PMC成员 | 社区版本发布 |
 | yuan.w.hong | PMC成员 | 芯片组件 |
 
