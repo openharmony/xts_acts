@@ -18,7 +18,6 @@ hctest_suite("ActsLwipTest") {
   sources = [ "src/lwip_func_test.c" ]
 
   include_dirs = [
-    "//vendor/hisi/hi3861/hi3861/third_party/lwip_sack/include",
     "//kernel/liteos_m/kal",
   ]
 
