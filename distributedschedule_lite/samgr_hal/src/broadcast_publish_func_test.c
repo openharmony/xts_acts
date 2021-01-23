@@ -43,7 +43,8 @@ static BOOL Equal(const Consumer *current, const Consumer *other)
 {
     if (current->Notify == other->Notify) {
         return TRUE;
-    } else {
+    } 
+    else {
         return FALSE;
     }
 }
