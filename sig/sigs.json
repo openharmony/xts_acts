@@ -1,0 +1,14 @@
+{
+   "sigs-List":[
+      {
+         "sig-name":"sig-docs",
+         "project-name":"https://gitee.com/openharmony-sig/docs",
+         "project-path":"docs/"
+      },
+      {
+         "sig-name ":"sig-updates",
+         "project-name":"https://gitee.com/openharmony-sig/updates",
+         "project-path":"base/updates/"
+      },
+   ]
+}
