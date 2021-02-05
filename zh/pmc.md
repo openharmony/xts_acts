@@ -10,22 +10,23 @@
 
 
 ## OpenHarmony PMC成员列表
-| 账号   | 角色 | 领域 |
-| :----: | :----: | :----: |
-| nicholas-li | PMC主任 | 总架构 |
-| futianfu | PMC成员 |	安全架构 |
-| wanchengzhen | PMC成员 | 系统架构 |
-| stesen | PMC成员 | DFX设计子系统 |
-| chenfeng469 | PMC成员 | HDF统一驱动框架 |
-| borne | PMC成员 |	轻量级ACE |
-| wangzhen | PMC成员 | 用户程序框架/元能力 |
-| yinyouzhan | PMC成员 | 公共通信 |
-| lijiarun | PMC成员 | 分布式任务调度 |
-| tanliwen1 | PMC成员 |	多媒体 |
-| wangxing-hw | PMC成员 | 编译构建 |
-| blue.xiaofeng | PMC成员 |	公共基础库 |
-| zmx1104 | PMC成员 | 社区版本发布 |
-| yuan.w.hong | PMC成员 | 芯片组件 |
+| 姓名 | 账号   | 角色 | 领域 |
+| :----: | :----: | :----: | :----: |
+| 李毅 | nicholas-li | PMC主任 | 总架构 |
+| 董金光 | dongjinguang | PMC成员 | 系统架构 |
+| 付天福 | futianfu | PMC成员 |	安全架构 |
+| 万承臻 | wanchengzhen | PMC成员 | 系统架构 |
+| 马耀辉 | stesen | PMC成员 | DFX设计子系统 |
+| 陈  风 | chenfeng469 | PMC成员 | HDF统一驱动框架 |
+| 鲁  波 | borne | PMC成员 |	轻量级ACE |
+| 王  振 | wangzhen | PMC成员 | 用户程序框架/元能力 |
+| 尹友展 | yinyouzhan | PMC成员 | 公共通信 |
+| 李加润 | lijiarun | PMC成员 | 分布式任务调度 |
+| 谭利文 | tanliwen1 | PMC成员 |	多媒体 |
+| 王  兴 | wangxing-hw | PMC成员 | 编译构建 |
+| 肖  峰 | blue.xiaofeng | PMC成员 |	公共基础库 |
+| 张明修 | zmx1104 | PMC成员 | 社区版本发布 |
+| 袁文鸿 | yuan.w.hong | PMC成员 | 芯片组件 |
 
 
 ## PMC会议链接
