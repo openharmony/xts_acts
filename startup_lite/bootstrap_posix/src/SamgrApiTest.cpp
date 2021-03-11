@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Huawei Device Co., Ltd.
+ * Copyright (c) 2020-2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -23,7 +23,7 @@
 #include <cstdio>
 #include <csignal>
 #include <feature.h>
-#include <hos_init.h>
+#include <ohos_init.h>
 #include <samgr_lite.h>
 #include <securec.h>
 
@@ -252,6 +252,9 @@ static void AppFeatureInit4(void)
     g_appFeatureInit[API_PRI4] = g_initIndex++;
 }
 
+// 接口注册后的启动顺序依赖hos_init.h中的定义的数字大小
+
+// 第0个执行，内部按照0~4优先级执行，default优先级为2
 CORE_INIT(CoreInitDef);
 CORE_INIT_PRI(CoreInit0, 0);
 CORE_INIT_PRI(CoreInit1, 1);
@@ -259,6 +262,7 @@ CORE_INIT_PRI(CoreInit4, 4);
 CORE_INIT_PRI(CoreInit2, 2);
 CORE_INIT_PRI(CoreInit3, 3);
 
+// 最后一个执行，内部按照0~4优先级执行，default优先级为2
 SYS_RUN(SysRunDef);
 SYS_RUN_PRI(SysRun0, 0);
 SYS_RUN_PRI(SysRun1, 1);
@@ -266,6 +270,7 @@ SYS_RUN_PRI(SysRun4, 4);
 SYS_RUN_PRI(SysRun2, 2);
 SYS_RUN_PRI(SysRun3, 3);
 
+// 第1个执行，内部按照0~4优先级执行，default优先级为2
 SYS_SERVICE_INIT(SysServiceInitDef);
 SYS_SERVICE_INIT_PRI(SysServiceInit0, 0);
 SYS_SERVICE_INIT_PRI(SysServiceInit1, 1);
@@ -273,6 +278,7 @@ SYS_SERVICE_INIT_PRI(SysServiceInit4, 4);
 SYS_SERVICE_INIT_PRI(SysServiceInit2, 2);
 SYS_SERVICE_INIT_PRI(SysServiceInit3, 3);
 
+// 第2个执行，内部按照0~4优先级执行，default优先级为2
 SYS_FEATURE_INIT(SysFeatureInitDef);
 SYS_FEATURE_INIT_PRI(SysFeatureInit0, 0);
 SYS_FEATURE_INIT_PRI(SysFeatureInit2, 2);
@@ -280,6 +286,7 @@ SYS_FEATURE_INIT_PRI(SysFeatureInit1, 1);
 SYS_FEATURE_INIT_PRI(SysFeatureInit3, 3);
 SYS_FEATURE_INIT_PRI(SysFeatureInit4, 4);
 
+// 第3个执行，注意和APP_SERVICE_INIT_XXX并列，谁先注册先执行谁，内部按照0~4优先级执行，default优先级为2
 SYSEX_SERVICE_INIT(SysExSerInitDef);
 SYSEX_SERVICE_INIT_PRI(SysExSerInit0, 0);
 SYSEX_SERVICE_INIT_PRI(SysExSerInit1, 1);
@@ -287,6 +294,7 @@ SYSEX_SERVICE_INIT_PRI(SysExSerInit2, 2);
 SYSEX_SERVICE_INIT_PRI(SysExSerInit3, 3);
 SYSEX_SERVICE_INIT_PRI(SysExSerInit4, 4);
 
+// 第4个执行，注意和APP_FEATURE_INIT_XXX并列，谁先注册先执行谁，内部按照0~4优先级执行，default优先级为2
 SYSEX_FEATURE_INIT(SysExFeaInitDef);
 SYSEX_FEATURE_INIT_PRI(SysExFeaInit0, 0);
 SYSEX_FEATURE_INIT_PRI(SysExFeaInit1, 1);
@@ -294,6 +302,7 @@ SYSEX_FEATURE_INIT_PRI(SysExFeaInit2, 2);
 SYSEX_FEATURE_INIT_PRI(SysExFeaInit3, 3);
 SYSEX_FEATURE_INIT_PRI(SysExFeaInit4, 4);
 
+// 第3个执行，注意和SYSEX_SERVICE_INIT_XXX并列，谁先注册先执行谁，内部按照0~4优先级执行，default优先级为2
 APP_SERVICE_INIT(AppServiceInitDef);
 APP_SERVICE_INIT_PRI(AppServiceInit0, 0);
 APP_SERVICE_INIT_PRI(AppServiceInit4, 4);
@@ -301,6 +310,7 @@ APP_SERVICE_INIT_PRI(AppServiceInit3, 3);
 APP_SERVICE_INIT_PRI(AppServiceInit2, 2);
 APP_SERVICE_INIT_PRI(AppServiceInit1, 1);
 
+// 第4个执行，注意和SYSEX_FEATURE_INIT_XXX并列，谁先注册先执行谁，内部按照0~4优先级执行，default优先级为2
 APP_FEATURE_INIT(AppFeatureInitDef);
 APP_FEATURE_INIT_PRI(AppFeatureInit0, 0);
 APP_FEATURE_INIT_PRI(AppFeatureInit1, 1);
@@ -317,28 +327,22 @@ protected:
 };
 
 /**
- * @tc.number    : SUB_START_Bootstrap_Samgr_0100 
+ * @tc.number    : SUB_START_Bootstrap_Samgr_0100
  * @tc.name      : check total init index
  * @tc.desc      : check total init index, return success
- * @tc.size      : MEDIUM
- * @tc.type      : FUNC
- * @tc.level     : Level 0
  */
-HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0100, TestSize.Level0)
+HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0100, Function | MediumTest | Level0)
 {
     HILOG_INFO(HILOG_MODULE_HIVIEW, "[SUB_START_Bootstrap_Samgr_0100:%d]", g_initIndex);
     EXPECT_EQ(g_initIndex, SAMGR_API_GROUP_NUM*SAMGR_API_CALL_NUM);
 }
 
 /**
- * @tc.number    : SUB_START_Bootstrap_Samgr_0200 
+ * @tc.number    : SUB_START_Bootstrap_Samgr_0200
  * @tc.name      : check core init index
  * @tc.desc      : check core init, return success
- * @tc.size      : MEDIUM
- * @tc.type      : FUNC
- * @tc.level     : Level 0
  */
-HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0200, TestSize.Level0)
+HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0200, Function | MediumTest | Level0)
 {
     HILOG_INFO(HILOG_MODULE_HIVIEW, "g_coreInit");
     PrintInitIndex(g_coreInit);
@@ -351,14 +355,11 @@ HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0200, TestSize.Level0)
 }
 
 /**
- * @tc.number    : SUB_START_Bootstrap_Samgr_0300 
+ * @tc.number    : SUB_START_Bootstrap_Samgr_0300
  * @tc.name      : check system service init index
  * @tc.desc      : check system service init, return success
- * @tc.size      : MEDIUM
- * @tc.type      : FUNC
- * @tc.level     : Level 0
  */
-HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0300, TestSize.Level0)
+HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0300, Function | MediumTest | Level0)
 {
     HILOG_INFO(HILOG_MODULE_HIVIEW, "g_sysServiceInit");
     PrintInitIndex(g_sysServiceInit);
@@ -371,14 +372,11 @@ HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0300, TestSize.Level0)
 }
 
 /**
- * @tc.number    : SUB_START_Bootstrap_Samgr_0400 
+ * @tc.number    : SUB_START_Bootstrap_Samgr_0400
  * @tc.name      : check system feature init index
  * @tc.desc      : check system feature init, return success
- * @tc.size      : MEDIUM
- * @tc.type      : FUNC
- * @tc.level     : Level 0
  */
-HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0400, TestSize.Level0)
+HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0400, Function | MediumTest | Level0)
 {
     HILOG_INFO(HILOG_MODULE_HIVIEW, "g_sysFeatureInit");
     PrintInitIndex(g_sysFeatureInit);
@@ -391,14 +389,11 @@ HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0400, TestSize.Level0)
 }
 
 /**
- * @tc.number    : SUB_START_Bootstrap_Samgr_0500 
+ * @tc.number    : SUB_START_Bootstrap_Samgr_0500
  * @tc.name      : check system extend service and app service init index
  * @tc.desc      : check system extend service and app service init, return success
- * @tc.size      : MEDIUM
- * @tc.type      : FUNC
- * @tc.level     : Level 0
  */
-HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0500, TestSize.Level0)
+HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0500, Function | MediumTest | Level0)
 {
     HILOG_INFO(HILOG_MODULE_HIVIEW, "g_sysExServiceInit");
     PrintInitIndex(g_sysExServiceInit);
@@ -419,14 +414,11 @@ HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0500, TestSize.Level0)
 }
 
 /**
- * @tc.number    : SUB_START_Bootstrap_Samgr_0600 
+ * @tc.number    : SUB_START_Bootstrap_Samgr_0600
  * @tc.name      : check system extend feature and app feature init index
  * @tc.desc      : check system extend feature and app feature init, return success
- * @tc.size      : MEDIUM
- * @tc.type      : FUNC
- * @tc.level     : Level 0
  */
-HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0600, TestSize.Level0)
+HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0600, Function | MediumTest | Level0)
 {
     HILOG_INFO(HILOG_MODULE_HIVIEW, "g_sysExFeatureInit");
     PrintInitIndex(g_sysExFeatureInit);
@@ -447,14 +439,11 @@ HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0600, TestSize.Level0)
 }
 
 /**
- * @tc.number    : SUB_START_Bootstrap_Samgr_0700 
+ * @tc.number    : SUB_START_Bootstrap_Samgr_0700
  * @tc.name      : check system run index
  * @tc.desc      : check system run, return success
- * @tc.size      : MEDIUM
- * @tc.type      : FUNC
- * @tc.level     : Level 0
  */
-HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0700, TestSize.Level0)
+HWTEST_F(SamgrApiTest, SUB_START_Bootstrap_Samgr_0700, Function | MediumTest | Level0)
 {
     HILOG_INFO(HILOG_MODULE_HIVIEW, "g_sysRun");
     PrintInitIndex(g_sysRun);

@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Huawei Device Co., Ltd.
+# Copyright (c) 2020-2021 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,24 +11,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//test/xts/tools/build/suite_lite.gni")
+import("//test/xts/tools/lite/build/suite_lite.gni")
 hctest_suite("ActsSoftBusTest") {
   suite_name = "acts"
   sources = [ "src/softbus_func_test.c" ]
 
-  defines = [ "HOS_DISCOVERY_3861_BOARD" ]
   include_dirs = [
     "//third_party/bounds_checking_function/include",
     "//kernel/liteos_m/kal",
-    "//foundation/communication/interfaces/kits/wifi_lite/wifiservice",
-    "//foundation/communication/frameworks/wifi_lite/wifiservice/source",
-    "//foundation/communication/services/softbus_lite/discovery/discovery_service/include",
-    "//foundation/communication/services/softbus_lite/discovery/include",
-    "//foundation/communication/interfaces/kits/softbus_lite/discovery",
-    "//foundation/communication/interfaces/kits/softbus_lite/transport",
+    "//foundation/communication/wifi_lite/interfaces/wifiservice",
+    "//foundation/communication/softbus_lite/discovery/discovery_service/include",
+    "//foundation/communication/softbus_lite/discovery/include",
+    "//foundation/communication/softbus_lite/interfaces/kits/discovery",
+    "//foundation/communication/softbus_lite/interfaces/kits/transport",
   ]
 
-  deps = [ "//foundation/communication/services/softbus_lite:softbus" ]
+  deps = [ "//foundation/communication/softbus_lite:softbus" ]
 
   cflags = [ "-Wno-error" ]
 }
