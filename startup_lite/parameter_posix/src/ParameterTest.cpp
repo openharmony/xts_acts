@@ -23,8 +23,7 @@ namespace StartUpLite {
     static const int GET_DEF_PARA_FUN_MAX = 24;
     static const int MAX_LEN = 128;
     static const int WRONG_LEN = 2;
-    const int RELIABILITY_LOOP = 10000;
-    const int RELIABILITY_LEN = 32;
+
 class ParameterTest : public testing::Test {
 protected:
     static void SetUpTestCase(void) 
@@ -364,40 +363,6 @@ HWTEST_F(ParameterTest, SUB_START_Para_Getting_ReadOnly_0010, Function | MediumT
         if (value != nullptr) {
             free(value);
         }
-    }
-}
-
-/* *
- * @tc.number    : SUB_START_Para_Reliability_0010
- * @tc.name      : API GetParameter Reliability test: obtaining valid system parameters
- * @tc.desc      : [C- SOFTWARE -0200]
- */
-HWTEST_F(ParameterTest, SUB_START_Para_Reliability_0010, Function | MediumTest | Level0)
-{
-    int ret;
-
-    char key[] = "rw.sys.version*%version";
-    char value[StartUpLite::MAX_LEN] = {0};
-    for (int loop = 0; loop <= StartUpLite::RELIABILITY_LOOP; loop++) {
-        ret = GetParameter(key, defSysParam.c_str(), value, StartUpLite::RELIABILITY_LEN);
-        EXPECT_EQ(ret, -9) << "ErrInfo: ret returnVal:='" << ret << "'";
-    }
-}
-
-/* *
- * @tc.number    : SUB_START_Para_Reliability_0020
- * @tc.name      : API SetParameter Reliability test: obtaining valid system parameters
- * @tc.desc      : [C- SOFTWARE -0200]
- */
-HWTEST_F(ParameterTest, SUB_START_Para_Reliability_0020, Function | MediumTest | Level0)
-{
-    int ret;
-
-    char key[] = "rw.sys.version";
-    char value[] = "OEM-10.1.0";
-    for (int loop = 0; loop <= StartUpLite::RELIABILITY_LOOP; loop++) {
-        ret = SetParameter(key, value);
-        EXPECT_EQ(ret, 0) << "ErrInfo: ret returnVal:='" << ret << "'";
     }
 }
 }
