@@ -776,36 +776,6 @@ HWTEST_F(UiInterfaceTest, SUB_GRAPHIC_INTERFACE_FIRST_5600, Function | MediumTes
 }
 
 /**
- * @tc.number   SUB_GRAPHIC_INTERFACE_FIRST_5800
- * @tc.name     test DestoryWindow api
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(UiInterfaceTest, SUB_GRAPHIC_INTERFACE_FIRST_5800, Function | MediumTest | Level0)
-{
-    OHOS::GraphicStartUp::Init();
-    WindowConfig windowConfig = {};
-    Window* window = Window::CreateWindow(windowConfig);
-    Window::DestoryWindow(window);
-    EXPECT_EQ(0, 0);
-}
-
-/**
- * @tc.number   SUB_GRAPHIC_INTERFACE_FIRST_5900
- * @tc.name     test BindRootView api
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(UiInterfaceTest, SUB_GRAPHIC_INTERFACE_FIRST_5900, Function | MediumTest | Level0)
-{
-    WindowConfig windowConfig = {};
-    Window* window = Window::CreateWindow(windowConfig);
-    RootView* rootView = RootView::GetInstance();
-    if (window!=nullptr) {
-        window->BindRootView(rootView);
-    }
-    EXPECT_EQ(0, 0);
-}
-
-/**
  * @tc.number   SUB_GRAPHIC_INTERFACE_FIRST_6000
  * @tc.name     test GetCount api
  * @tc.desc     [C- SOFTWARE -0200]
