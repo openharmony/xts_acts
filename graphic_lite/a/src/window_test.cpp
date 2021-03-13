@@ -28,16 +28,6 @@ public:
 };
 
 /**
- * @tc.number   SUB_GRAPHIC_WINDOW_CREATEWINDOW_0100
- * @tc.name     test window create-window api
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(WindowTest, Graphic_Window_Test_CreateWindow_0100, Function | MediumTest | Level0)
-{
-    EXPECT_EQ(0, 0);
-}
-
-/**
  * @tc.number   SUB_GRAPHIC_WINDOW_DESTORYWINDOW_0200
  * @tc.name     test window destory-window api
  * @tc.desc     [C- SOFTWARE -0200]
@@ -141,5 +131,35 @@ HWTEST_F(WindowTest, Graphic_Window_Test_BindRootView_0700, Function | MediumTes
         EXPECT_EQ(testObj->GetRootView(), RootView::GetInstance());
         testObj->UnbindRootView();
     }
+}
+
+/**
+ * @tc.number   SUB_GRAPHIC_INTERFACE_FIRST_5800
+ * @tc.name     test DestoryWindow api
+ * @tc.desc     [C- SOFTWARE -0200]
+ */
+HWTEST_F(WindowTest, SUB_GRAPHIC_INTERFACE_FIRST_5800, Function | MediumTest | Level0)
+{
+    OHOS::GraphicStartUp::Init();
+    WindowConfig windowConfig = {};
+    Window* window = Window::CreateWindow(windowConfig);
+    Window::DestoryWindow(window);
+    EXPECT_EQ(0, 0);
+}
+
+/**
+ * @tc.number   SUB_GRAPHIC_INTERFACE_FIRST_5900
+ * @tc.name     test BindRootView api
+ * @tc.desc     [C- SOFTWARE -0200]
+ */
+HWTEST_F(WindowTest, SUB_GRAPHIC_INTERFACE_FIRST_5900, Function | MediumTest | Level0)
+{
+    WindowConfig windowConfig = {};
+    Window* window = Window::CreateWindow(windowConfig);
+    RootView* rootView = RootView::GetInstance();
+    if (window!=nullptr) {
+        window->BindRootView(rootView);
+    }
+    EXPECT_EQ(0, 0);
 }
 } // namespace OHOS

@@ -1456,7 +1456,7 @@ HWTEST_F(IpcSignalTest, testSigsetFill, Function | MediumTest | Level2)
 
 /**
  * @tc.number SUB_KERNEL_IPC_SIG_SETOP_0600
- * @tc.name   test sig set operator APIs: sigdelset
+ * @tc.name   test sigdelset operator APIs: sigdelset
  * @tc.desc   [C- SOFTWARE -0200]
  */
 HWTEST_F(IpcSignalTest, testSigsetDelete0600, Function | MediumTest | Level2)
