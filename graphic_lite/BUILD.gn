@@ -72,6 +72,5 @@ group("uikit_test") {
     #"//test/xts/acts/graphic_lite/uidfx_posix:ActsUIDfxTest",
     #"//test/xts/acts/graphic_lite/uifont_posix:ActsUIFontTest",
     "//test/xts/acts/graphic_lite/version_posix:ActsGraphVersionTest",
-    "//test/xts/acts/graphic_lite/window_posix:ActsWindowTest",
   ]
 }

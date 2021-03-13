@@ -92,7 +92,7 @@ HWTEST_F(ActsUtilConvertApiTest, testTolower0300, Function | MediumTest | Level1
 
 /* *
  * @tc.number     SUB_KERNEL_UTIL_CONVERT_TOLOWER_0310
- * @tc.name       abnormal test:test _tolower api with multiple characters
+ * @tc.name       test _tolower api abnormal scenario with two uppercase characters
  * @tc.desc       [C- SOFTWARE -0200]
  */
 HWTEST_F(ActsUtilConvertApiTest, testTolower0310, Function | MediumTest | Level1)
@@ -108,7 +108,7 @@ HWTEST_F(ActsUtilConvertApiTest, testTolower0310, Function | MediumTest | Level1
 
 /* *
  * @tc.number     SUB_KERNEL_UTIL_CONVERT_TOLOWER_0320
- * @tc.name       abnormal test:test _tolower api with multiple characters
+ * @tc.name       test _tolower api abnormal scenario with multiple digital characters
  * @tc.desc       [C- SOFTWARE -0200]
  */
 HWTEST_F(ActsUtilConvertApiTest, testTolower0320, Function | MediumTest | Level1)
@@ -124,7 +124,7 @@ HWTEST_F(ActsUtilConvertApiTest, testTolower0320, Function | MediumTest | Level1
 
 /* *
  * @tc.number     SUB_KERNEL_UTIL_CONVERT_TOLOWER_0330
- * @tc.name       abnormal test:test _tolower api with special characters"@"
+ * @tc.name       test _tolower api abnormal scenario with special symbols characters
  * @tc.desc       [C- SOFTWARE -0200]
  */
 HWTEST_F(ActsUtilConvertApiTest, testTolower0330, Function | MediumTest | Level1)
@@ -171,7 +171,7 @@ HWTEST_F(ActsUtilConvertApiTest, testToupper0500, Function | MediumTest | Level1
 
 /* *
  * @tc.number     SUB_KERNEL_UTIL_CONVERT_TOUPPER_0510
- * @tc.name       test _toupper api with special characters"@"
+ * @tc.name       test _toupper api abnormal scenario with special symbols characters
  * @tc.desc       [C- SOFTWARE -0200]
  */
 HWTEST_F(ActsUtilConvertApiTest, testToupper0510, Function | MediumTest | Level1)
@@ -187,7 +187,7 @@ HWTEST_F(ActsUtilConvertApiTest, testToupper0510, Function | MediumTest | Level1
 
 /* *
  * @tc.number     SUB_KERNEL_UTIL_CONVERT_TOUPPER_0520
- * @tc.name       test _toupper api with special characters
+ * @tc.name       test _toupper api with ASCII
  * @tc.desc       [C- SOFTWARE -0200]
  */
 HWTEST_F(ActsUtilConvertApiTest, testToupper0520, Function | MediumTest | Level1)
@@ -203,7 +203,7 @@ HWTEST_F(ActsUtilConvertApiTest, testToupper0520, Function | MediumTest | Level1
 
 /* *
  * @tc.number     SUB_KERNEL_UTIL_CONVERT_TOUPPER_0530
- * @tc.name       test _toupper api with special characters
+ * @tc.name       test _toupper api abnormal scenario with multiple lowercase characters
  * @tc.desc       [C- SOFTWARE -0200]
  */
 HWTEST_F(ActsUtilConvertApiTest, testToupper0530, Function | MediumTest | Level1)
@@ -219,7 +219,7 @@ HWTEST_F(ActsUtilConvertApiTest, testToupper0530, Function | MediumTest | Level1
 
 /* *
  * @tc.number     SUB_KERNEL_UTIL_CONVERT_TOUPPER_0540
- * @tc.name       test _toupper api with special characters
+ * @tc.name       test _toupper api abnormal scenario with multiple lowercase characters combination
  * @tc.desc       [C- SOFTWARE -0200]
  */
 HWTEST_F(ActsUtilConvertApiTest, testToupper0540, Function | MediumTest | Level1)
@@ -265,7 +265,7 @@ HWTEST_F(ActsUtilConvertApiTest, testAtof0700, Function | MediumTest | Level1) {
 
 /**
 * @tc.number     SUB_KERNEL_UTIL_CONVERT_ATOF_0800
-* @tc.name       test atof api with digit
+* @tc.name       test atof api with digit2
 * @tc.desc       [C- SOFTWARE -0200]
 */
 HWTEST_F(ActsUtilConvertApiTest, testAtof0800, Function | MediumTest | Level1) {
@@ -280,7 +280,7 @@ HWTEST_F(ActsUtilConvertApiTest, testAtof0800, Function | MediumTest | Level1) {
 
 /* *
  * @tc.number     SUB_KERNEL_UTIL_CONVERT_ATOF_0810
- * @tc.name       test atof api with digit
+ * @tc.name       test atof api with digit1
  * @tc.desc       [C- SOFTWARE -0200]
  */
 HWTEST_F(ActsUtilConvertApiTest, testAtof0810, Function | MediumTest | Level1)
@@ -296,7 +296,7 @@ HWTEST_F(ActsUtilConvertApiTest, testAtof0810, Function | MediumTest | Level1)
 
 /* *
  * @tc.number     SUB_KERNEL_UTIL_CONVERT_ATOF_0820
- * @tc.name       test atof api with digit
+ * @tc.name       test atof api with digit3
  * @tc.desc       [C- SOFTWARE -0200]
  */
 HWTEST_F(ActsUtilConvertApiTest, testAtof0820, Function | MediumTest | Level1)
@@ -312,7 +312,7 @@ HWTEST_F(ActsUtilConvertApiTest, testAtof0820, Function | MediumTest | Level1)
 
 /* *
  * @tc.number     SUB_KERNEL_UTIL_CONVERT_ATOF_0830
- * @tc.name       test atof api with digit
+ * @tc.name       test atof api with digit4
  * @tc.desc       [C- SOFTWARE -0200]
  */
 HWTEST_F(ActsUtilConvertApiTest, testAtof0830, Function | MediumTest | Level1)
@@ -328,7 +328,7 @@ HWTEST_F(ActsUtilConvertApiTest, testAtof0830, Function | MediumTest | Level1)
 
 /* *
  * @tc.number     SUB_KERNEL_UTIL_CONVERT_ATOF_0840
- * @tc.name       test atof api with digit
+ * @tc.name       test atof api with digit5
  * @tc.desc       [C- SOFTWARE -0200]
  */
 HWTEST_F(ActsUtilConvertApiTest, testAtof0840, Function | MediumTest | Level1)
@@ -344,7 +344,7 @@ HWTEST_F(ActsUtilConvertApiTest, testAtof0840, Function | MediumTest | Level1)
 
 /* *
  * @tc.number     SUB_KERNEL_UTIL_CONVERT_ATOF_0850
- * @tc.name       test atof api with digit
+ * @tc.name       test atof api with digit6
  * @tc.desc       [C- SOFTWARE -0200]
  */
 HWTEST_F(ActsUtilConvertApiTest, testAtof0850, Function | MediumTest | Level1)
@@ -360,7 +360,7 @@ HWTEST_F(ActsUtilConvertApiTest, testAtof0850, Function | MediumTest | Level1)
 
 /* *
  * @tc.number     SUB_KERNEL_UTIL_CONVERT_ATOF_0860
- * @tc.name       test atof api with digit
+ * @tc.name       test atof api with digit7
  * @tc.desc       [C- SOFTWARE -0200]
  */
 HWTEST_F(ActsUtilConvertApiTest, testAtof0860, Function | MediumTest | Level1)
@@ -406,7 +406,7 @@ HWTEST_F(ActsUtilConvertApiTest, testAtol1000, Function | MediumTest | Level1) {
 
 /**
 * @tc.number     SUB_KERNEL_UTIL_CONVERT_ATOL_1100
-* @tc.name       test atol api with digit
+* @tc.name       test atol api with digit9
 * @tc.desc       [C- SOFTWARE -0200]
 */
 HWTEST_F(ActsUtilConvertApiTest, testAtol1100, Function | MediumTest | Level1) {
@@ -421,7 +421,7 @@ HWTEST_F(ActsUtilConvertApiTest, testAtol1100, Function | MediumTest | Level1) {
 
 /* *
  * @tc.number     SUB_KERNEL_UTIL_CONVERT_ATOL_0100
- * @tc.name       test atol api with digit
+ * @tc.name       test atol api with digit8
  * @tc.desc       [C- SOFTWARE -0200]
  */
 HWTEST_F(ActsUtilConvertApiTest, testAtol0100, Function | MediumTest | Level1)
@@ -437,7 +437,7 @@ HWTEST_F(ActsUtilConvertApiTest, testAtol0100, Function | MediumTest | Level1)
 
 /* *
  * @tc.number     SUB_KERNEL_UTIL_CONVERT_ATOL_0200
- * @tc.name       test atol api with digit
+ * @tc.name       test atol api with digit10
  * @tc.desc       [C- SOFTWARE -0200]
  */
 HWTEST_F(ActsUtilConvertApiTest, testAtol0200, Function | MediumTest | Level1)
@@ -519,7 +519,7 @@ HWTEST_F(ActsUtilConvertApiTest, testEcvt1500, Function | MediumTest | Level1) {
 
 /**
 * @tc.number     SUB_KERNEL_UTIL_CONVERT_ECVT_1600
-* @tc.name       test ecvt api with exponent double
+* @tc.name       test ecvt api with exponent double2
 * @tc.desc       [C- SOFTWARE -0200]
 */
 HWTEST_F(ActsUtilConvertApiTest, testEcvt1600, Function | MediumTest | Level1) {
@@ -540,7 +540,7 @@ HWTEST_F(ActsUtilConvertApiTest, testEcvt1600, Function | MediumTest | Level1) {
 
 /* *
  * @tc.number     SUB_KERNEL_UTIL_CONVERT_ECVT_1610
- * @tc.name       test ecvt api with exponent double
+ * @tc.name       test ecvt api with exponent double1
  * @tc.desc       [C- SOFTWARE -0200]
  */
 HWTEST_F(ActsUtilConvertApiTest, testEcvt1610, Function | MediumTest | Level1)
@@ -560,7 +560,7 @@ HWTEST_F(ActsUtilConvertApiTest, testEcvt1610, Function | MediumTest | Level1)
 
 /* *
  * @tc.number     SUB_KERNEL_UTIL_CONVERT_ECVT_1630
- * @tc.name       test ecvt api with exponent double
+ * @tc.name       test ecvt api with exponent double3
  * @tc.desc       [C- SOFTWARE -0200]
  */
 HWTEST_F(ActsUtilConvertApiTest, testEcvt1630, Function | MediumTest | Level1)
