@@ -1526,9 +1526,6 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest2200, Security | MediumTest | Level1
     // Step 9: Check the capability of process 'wms_server' or 'ai_server', pid = 9
     ret = CapgetWithCaps(WMS_SERVER_OR_AI_SERVER_PID, WMS_SERVER_OR_AI_SERVER_CAP);
     EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 9, process wms_server or ai_server has wrong capability";
-    // Step 10: Check the capability of process 'hiview', pid = 10
-    ret = CapgetWithCaps(HIVIEW_PID, HIVIEW_CAP);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 10, process hiview has wrong capability";
 }
 #endif
 
@@ -1705,14 +1702,14 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest2600, Performance | MediumTest | Lev
     // Preset action: Obtains the system time -> starttime
     clock_gettime(CLOCK_REALTIME, &starttime);
     // Step 1: Chown for 10000 times
-    for (int number = 0; number < NUM10000; number++) {
+    for (int number = 0; number < NUM1000; number++) {
         chown(TOP_DIR "/" CAPDIR0 "/" CAPDIR0_CAPFILE0, number, number);
     }
     // Step 2: Obtains the system time again -> endtime
     clock_gettime(CLOCK_REALTIME, &endtime);
     // Step 3: Compare the starttime and the endtime -> tp
     tp = CompareTime(starttime, endtime);
-    EXPECT_LE(tp.tv_sec, NUM80) << "ErrInfo: Chown for 10000 times used " << tp.tv_sec << "." << tp.tv_nsec << "s";
+    EXPECT_LE(tp.tv_sec, NUM80) << "ErrInfo: Chown for 1000 times used " << tp.tv_sec << "." << tp.tv_nsec << "s";
     // Cleanup action: Restore the initial status of the file
     chown(TOP_DIR "/" CAPDIR0 "/" CAPDIR0_CAPFILE0, UID0, GID0);
 }
