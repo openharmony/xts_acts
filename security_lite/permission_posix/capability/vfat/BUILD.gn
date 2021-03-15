@@ -41,7 +41,7 @@ hcpptest_suite("ActsVFATCapabilityTest") {
 
   defines = [
     "LITE_FS_VFAT",
-    "TOP_DIR=\"/userdata\"",
-    "TOP_DIR_MOUNT_INFO=\"/userdata vfat\"",
+    "TOP_DIR=\"/sdcard\"",
+    "TOP_DIR_MOUNT_INFO=\"/sdcard vfat\"",
   ]
 }
