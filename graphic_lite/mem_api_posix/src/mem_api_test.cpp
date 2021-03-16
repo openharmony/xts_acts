@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-#include "mem_api.h"
+#include "gfx_utils/mem_api.h"
 
 #include <climits>
 #include <gtest/gtest.h>

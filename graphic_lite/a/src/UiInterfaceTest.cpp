@@ -34,7 +34,7 @@
 #include "events/aod_callback.h"
 #include "events/press_event.h"
 #include "events/virtual_device_event.h"
-#include "graphic_math.h"
+#include "gfx_utils/graphic_math.h"
 #include "themes/theme_manager.h"
 #include "window/window.h"
 #include "components/root_view.h"

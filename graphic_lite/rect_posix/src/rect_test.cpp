@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-#include "rect.h"
+#include "gfx_utils/rect.h"
 
 #include <climits>
 #include <gtest/gtest.h>

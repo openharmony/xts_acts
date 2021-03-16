@@ -15,7 +15,7 @@
 
 #include <climits>
 #include <gtest/gtest.h>
-#include "geometry2d.h"
+#include "gfx_utils/geometry2d.h"
 
 using namespace std;
 using namespace testing::ext;

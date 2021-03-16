@@ -15,7 +15,7 @@
 
 #include <climits>
 #include <gtest/gtest.h>
-#include "transform.h"
+#include "gfx_utils/transform.h"
 
 using namespace std;
 using namespace testing::ext;

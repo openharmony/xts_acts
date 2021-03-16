@@ -15,7 +15,7 @@
 
 #include <climits>
 #include <gtest/gtest.h>
-#include "list.h"
+#include "gfx_utils/list.h"
 
 using namespace std;
 using namespace testing::ext;
