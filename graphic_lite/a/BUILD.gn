@@ -11,11 +11,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import("//build/lite/config/component/lite_component.gni")
+import("//build/lite/config/subsystem/graphic/config.gni")
+import("//build/lite/ndk/ndk.gni")
 import("//test/xts/tools/lite/build/suite_lite.gni")
 
 hcpptest_suite("ActsUiInterfaceTest") {
   suite_name = "acts"
-  sources = [ "src/UiInterfaceTest.cpp" ]
+  if (enable_graphic_font) {
+    sources = [
+      "src/UiInterfaceTest.cpp",
+      "src/window_test.cpp",
+    ]
+  } else {
+    sources = [ "src/UiInterfaceTest.cpp" ]
+  }
 
   include_dirs = [
     "//kernel/liteos_a/kernel/include/",

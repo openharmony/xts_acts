@@ -1,4 +1,4 @@
-# XTS认证子系统开发指南<a name="ZH-CN_TOPIC_0000001132537809"></a>
+# XTS认证子系统<a name="ZH-CN_TOPIC_0000001132537809"></a>
 
 -   [简介](#section465982318513)
 -   [设备类型](#section125090457443)
@@ -521,8 +521,9 @@ OpenHarmony支持如下几种设备类型：
 测试套件执行 ActsDemoTest.bin 触发用例执行，基于串口打印日志进行分析。
 
 ## 相关仓<a name="section1371113476307"></a>
+[XTS认证子系统](https://gitee.com/openharmony/docs/blob/master/zh-cn/readme/XTS%E8%AE%A4%E8%AF%81%E5%AD%90%E7%B3%BB%E7%BB%9F.md)
 
-xts\_acts
+**xts\_acts**
 
-xts\_tools
+[xts\_tools](https://gitee.com/openharmony/xts_tools/blob/master/README_zh.md)
 

@@ -281,7 +281,7 @@ HWTEST_F(AbilityMgrTest2, testWantToUri, Function | MediumTest | Level0)
     ElementName element = { nullptr };
     SetElementDeviceID(&element, "0001000");
     SetElementBundleName(&element, "com.huawei.testnative");
-    SetElementAbilityName(&element, "ServiceAbility");
+    SetElementAbilityName(&element, "SecondAbility");
     if (element.abilityName !=nullptr) {
         bool setResult = SetWantElement(&want, element);
         if (setResult) {
