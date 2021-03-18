@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
+#include "gfx_utils/transform.h"
 #include <climits>
 #include <gtest/gtest.h>
-#include "gfx_utils/transform.h"
 
 using namespace std;
 using namespace testing::ext;
