@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-#include "color.h"
+#include "gfx_utils/color.h"
 
 #include <climits>
 #include <gtest/gtest.h>

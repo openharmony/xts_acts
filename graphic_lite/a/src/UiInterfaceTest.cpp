@@ -16,6 +16,7 @@
 #include "UiInterfaceTest.h"
 
 #include "common/graphic_startup.h"
+#include "components/root_view.h"
 #include "components/text_adapter.h"
 #include "components/ui_abstract_clock.h"
 #include "components/ui_analog_clock.h"
@@ -34,10 +35,9 @@
 #include "events/aod_callback.h"
 #include "events/press_event.h"
 #include "events/virtual_device_event.h"
-#include "graphic_math.h"
+#include "gfx_utils/graphic_math.h"
 #include "themes/theme_manager.h"
 #include "window/window.h"
-#include "components/root_view.h"
 
 #include <climits>
 #include <gtest/gtest.h>

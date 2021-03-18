@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-#include "heap_base.h"
+#include "gfx_utils/heap_base.h"
 
 #include <climits>
 #include <gtest/gtest.h>
