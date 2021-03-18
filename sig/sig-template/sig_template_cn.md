@@ -24,11 +24,12 @@
 
 ## SIG 相关信息
 
-### Maintainers
+### Leader
+ - name1<email1 address> [[@gitee_id1](https://gitee.com/gitee_id1)]
+### Committers
  - name1<email1 address> [[@gitee_id1](https://gitee.com/gitee_id1)]
  - name2<email2 address> [[@gitee_id3](https://gitee.com/gitee_id2)]
  - name3<email3 address> [[@gitee_id3](https://gitee.com/gitee_id3)]
-
 
  ### 邮件列表
  - dev@openharmony.io
