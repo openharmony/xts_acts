@@ -1,44 +1,34 @@
-# New SIG application
+# SIG Template
 English | [简体中文](./sig_template_cn.md)
 
 Note: The content of this SIG follows the convention described in OpenHarmony's PMC Management Charter [README](/zh/pmc.md).
 
 ## SIG group work objectives and scope
 
-Describe the scope and objectives of the newly applied SIG program, including but not limited to:
- -Why do we need to create such a new SIG in OpenHarmony
- -The business scope of the SIG
- -The SIG needs to be supported by which SIGs in OpenHarmony
 ### work goals
 
-### The scope of work
+### work scope
 
-
-
-
-### The repository and description of the SIG management
+### The repository 
 - project name:
-  -repository1 name:https://gitee.com/openharmony-sig/docs
+  -repository1 name:https://gitee.com/openharmony/xxx
   -repository2 name:https://gitee.com/openharmony-sig/xxx
 
 
-## SIG Related Information
+## SIG Members
 
 ### Leader
- -name1<email1 address> [[@gitee_id1](https://gitee.com/gitee_id1)]
+- @gitee account(https://gitee.com/xxx)
+
 ### Committers
- -name1<email1 address> [[@gitee_id1](https://gitee.com/gitee_id1)]
- -name2<email2 address> [[@gitee_id3](https://gitee.com/gitee_id2)]
- -name3<email3 address> [[@gitee_id3](https://gitee.com/gitee_id3)]
+- @gitee account(https://gitee.com/xxx)
 
- ### Mailing Lists
- -dev@openharmony.io
+ ### Meetings
+ - Meeting time：xxx
+ - Meeting link：xxx
 
- ### Slack group
- -http://openharmonyworkspace.slack.com
-   -The link to join the Slack group will be regularly updated in [OpenHarmony Community Code Warehouse](https://gitee.com/openharmony/community)
+### Contact (optional)
 
- ### Meeting
- - meeting time:
- -Conference link:
-More about this source textSource text required for additional translation information
+- Mailing list：xxx
+- Slack group：xxx
+- Wechat group：xxx
