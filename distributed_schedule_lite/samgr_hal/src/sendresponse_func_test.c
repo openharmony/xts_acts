@@ -216,12 +216,10 @@ static BOOL FEATURE_OnMessage03(Feature *feature, Request *request)
                 .data = "Yes, you did!",
                 .len = 0,
                 };
-            for (int i = 0; i < PRESSURE_BASE; i++) {
-                int tempCode = SAMGR_SendResponse(request, &response);
-                if (tempCode != 0) {
-                    printf("[hctest]E failed to SendResponse occurs: %d rt: %d \n", i, tempCode);
-                    returnCode++;
-                }
+            int tempCode = SAMGR_SendResponse(request, &response);
+            if (tempCode != 0) {
+                printf("[hctest]E failed to SendResponse rt: %d \n", tempCode);
+                returnCode++;
             }
         };
         break;
@@ -442,38 +440,6 @@ LITE_TEST_CASE(SendResponseTestSuite, testSendResponse0030, Function | MediumTes
 
     LOS_Msleep(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(feature->featureStatus == TRUE, TRUE);
-    ReleaseIUnknown(demoApi);
-}
-
-/**
- * @tc.number    : DMSLite_SAMGR_SendResponse_0040
- * @tc.name      : Receiver send response to the origin feature repeatedly
- * @tc.desc      : [C- SOFTWARE -0200]
- */
-LITE_TEST_CASE(SendResponseTestSuite, testSendResponse0040, Function | MediumTest | Level2)
-{
-    DemoApi *demoApi = GetIUnknown("serviceName601", "featureName602");
-    if (demoApi == NULL) {
-        TEST_FAIL();
-    }
-    Request request = {.msgId = MSG_RT_MULTI, .msgValue = 0};    // MSG_RT_MULTI: multi response
-    char *body = "I wanna async call good result!";
-    request.len = (int16)(strlen(body) + 1);
-    request.data = malloc(request.len);
-    if (request.data == NULL) {
-        TEST_FAIL();
-    }
-    strcpy_s(request.data, request.len, body);
-
-    IUnknown *iUnknown = SAMGR_GetInstance()->GetFeatureApi("serviceName601", "featureName603");
-    if (iUnknown == NULL) {
-        TEST_FAIL();
-    }
-    DemoFeature *feature = GET_OBJECT(iUnknown, DemoFeature, iUnknown);
-    demoApi->SAMGR_SendRequestProxy(&feature->identity, &request, DemoHandlerAndCheck);
-
-    LOS_Msleep(OPER_INTERVAL);
-    TEST_ASSERT_EQUAL_INT(feature->featureStatus, TRUE);
     ReleaseIUnknown(demoApi);
 }
 

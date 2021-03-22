@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-#include "graphic_math.h"
+#include "gfx_utils/graphic_math.h"
 
 #include <climits>
 #include <gtest/gtest.h>

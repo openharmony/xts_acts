@@ -38,7 +38,7 @@
 #include "components/ui_view_group.h"
 #include "draw/draw_image.h"
 #include "draw/draw_utils.h"
-#include "file.h"
+#include "gfx_utils/file.h"
 
 using namespace std;
 using namespace testing::ext;

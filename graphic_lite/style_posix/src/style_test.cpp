@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-#include "style.h"
+#include "gfx_utils/style.h"
 
 #include <climits>
 #include <gtest/gtest.h>
