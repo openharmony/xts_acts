@@ -106,7 +106,7 @@ HWTEST_F(MsgParserFuncTest, testMsgParserFunc0020, Function | MediumTest | Level
     };
 
     auto onTlvParseDone = [] (int8_t errCode, const void *dmsMsg) {
-        printf("[hcpptest]result code:%d \n", errCode);
+        printf("[hcpptest]result code : %d \n", errCode);
     };
 
     int8_t resultCode = RunTest(nullptr, sizeof(buffer), onTlvParseDone, nullptr);
