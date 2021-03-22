@@ -222,12 +222,10 @@ static BOOL FEATURE_OnMessage03(Feature *feature, Request *request)
                 .data = (char*)"Yes, you did!",
                 .len = 0,
                 };
-            for (int i = 0; i < PRESSURE_L0; i++) {
-                int tempCode = SAMGR_SendResponse(request, &response);
-                if (tempCode != 0) {
-                    printf("[hctest]E failed to SendResponse occurs: %d rt: %d \n", i, tempCode);
-                    returnCode++;
-                }
+            int tempCode = SAMGR_SendResponse(request, &response);
+            if (tempCode != 0) {
+                printf("[hctest]E failed to SendResponse rt: %d \n", tempCode);
+                returnCode++;
             }
         }
     }
@@ -436,40 +434,6 @@ HWTEST_F(SendResponseTest, testSendResponse0030, Function | MediumTest | Level2)
         ADD_FAILURE();
     }
     Request request = {.msgId = MSG_RT,
-                       .len = 0,
-                       .data = nullptr,
-                       .msgValue = 0};
-    char *body = (char*)"I wanna async call good result!";
-    request.len = strlen(body) + 1;
-    request.data = malloc(request.len);
-    if (request.data == nullptr) {
-        ADD_FAILURE();
-    }
-    errno_t error = strcpy_s((char *)request.data, request.len, body);
-    if (error != EOK) {
-        ADD_FAILURE();
-    }
-
-    IUnknown *iUnknown = SAMGR_GetInstance()->GetFeatureApi("serviceName601", "featureName603");
-    DemoFeature *feature = GET_OBJECT(iUnknown, DemoFeature, iUnknown);
-    demoApi->SAMGR_SendRequestProxy(&feature->identity, &request, DemoHandler);
-
-    usleep(OPER_INTERVAL * MS2US);
-    ASSERT_EQ(feature->featureStatus == TRUE, TRUE);
-    ReleaseIUnknown(demoApi);
-}
-
-/**
- * @tc.number    : DMSLite_SAMGR_SendResponse_0040
- * @tc.name      : Receiver send response to the origin feature repeatedly
- * @tc.desc      : [C- SOFTWARE -0200]
-*/
-HWTEST_F(SendResponseTest, testSendResponse0040, Function | MediumTest | Level2) {
-    DemoApi *demoApi = GetIUnknown("serviceName601", "featureName602");
-    if (demoApi == nullptr) {
-        ADD_FAILURE();
-    }
-    Request request = {.msgId = MSG_RT_MULTI,
                        .len = 0,
                        .data = nullptr,
                        .msgValue = 0};
