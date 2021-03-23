@@ -105,7 +105,7 @@ lite_component("acts_component") {
 
 test_suite("acts") {
   deps = [ ":acts_component" ]
-  version = "OpenHarmony-ACTS-1.11.0"
+  version = "OpenHarmony-ACTS-2.1.1.001"
   if (ohos_kernel_type == "liteos_a") {
     deps += [ "//test/xts/tools/lite/others/query:query" ]
     copy("query_copy") {
