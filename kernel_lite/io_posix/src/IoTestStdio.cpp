@@ -606,7 +606,7 @@ HWTEST_F(IoTest, testPerror, Function | MediumTest | Level1)
         WaitProcExitedOK(pid);
 
         FILE *fp1 = fopen(IOTEST_TEMPFILE, "r");
-        EXPECT_NE(fp1, nullptr) << "fopen fail, errno = " << errno;
+        ASSERT_NE(fp1, nullptr) << "fopen fail, errno = " << errno;
         char str[100] = {0};
         char *gStr = fgets(str, sizeof(str), fp1);
         EXPECT_STREQ(gStr, str);
@@ -737,15 +737,19 @@ void *Thread(void *arg)
 {
     FILE *fp = fopen(IOTEST_TEMPFILE, "w");
     EXPECT_NE(fp, nullptr) << "fopen fail, errno = " << errno;
-    EXPECT_NE(fputs("hello world", fp), -1) << "fputs fail, errno = " << errno;
-    EXPECT_NE(fclose(fp), -1) << "fclose fail, errno = " << errno;
+    if (fp) {
+        EXPECT_NE(fputs("hello world", fp), -1) << "fputs fail, errno = " << errno;
+        EXPECT_NE(fclose(fp), -1) << "fclose fail, errno = " << errno;
+    }
 
     FILE *fp1 = freopen(IOTEST_TEMPFILE, "r", stdin);
     EXPECT_TRUE(fp1 != nullptr) << "freopen fail, errno = " <<  errno;
-    if (getchar_unlocked() != EOF) {
-        EXPECT_NE(getchar_unlocked(), -1) <<  "getchar_unlocked fail,  errno = " << errno;
+    if (fp1) {
+        if (getchar_unlocked() != EOF) {
+            EXPECT_NE(getchar_unlocked(), -1) <<  "getchar_unlocked fail,  errno = " << errno;
+        }
+        EXPECT_NE(fclose(fp1), -1) << "fclose fail, errno = " << errno;
     }
-    EXPECT_NE(fclose(fp1), -1) << "fclose fail, errno = " << errno;
     return nullptr;
 }
 

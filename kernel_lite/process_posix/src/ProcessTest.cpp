@@ -85,7 +85,7 @@ HWTEST_F(ProcessTest, testLineBigExitFlush, Function | MediumTest | Level3)
 
     // read
     FILE *fp = fopen(testFile, "r+");
-    EXPECT_NE(fp, nullptr) << "> fopen errno = " << errno;
+    ASSERT_NE(fp, nullptr) << "> fopen errno = " << errno;
     EXPECT_EQ(fread(readBuf, sizeof(writeBuf), 1, fp), 0);
     EXPECT_STRNE(writeBuf, readBuf) << "> writeBuf = " << writeBuf\
                                     << "\n> readBuf = " << readBuf;
@@ -195,7 +195,7 @@ HWTEST_F(ProcessTest, testLineExitFlush, Function | MediumTest | Level3)
 
     // read
     FILE *fp = fopen(testFile, "r+");
-    EXPECT_NE(fp, nullptr) << "> fopen errno = " << errno;
+    ASSERT_NE(fp, nullptr) << "> fopen errno = " << errno;
     EXPECT_EQ(fread(readBuf, sizeof(writeBuf), 1, fp), 0);
     EXPECT_STRNE(writeBuf, readBuf) << "> writeBuf = " << writeBuf\
                                     << "\n> readBuf = " << readBuf;
@@ -305,7 +305,7 @@ HWTEST_F(ProcessTest, testExitFlush, Function | MediumTest | Level3)
 
     // read
     FILE *fp = fopen(testFile, "r+");
-    EXPECT_NE(fp, nullptr) << "> fopen errno = " << errno;
+    ASSERT_NE(fp, nullptr) << "> fopen errno = " << errno;
     EXPECT_NE(fread(readBuf, sizeof(writeBuf), 1, fp), 0);
     EXPECT_STREQ(writeBuf, readBuf) << "> writeBuf = " << writeBuf\
                                     << "\n> readBuf = " << readBuf;

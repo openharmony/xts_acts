@@ -175,19 +175,23 @@ HWTEST_F(TimeUtilsTest, testGmtime, Function | MediumTest | Level3)
 {
     time_t time1 = 18880;
     struct tm *stm = gmtime(&time1);
+    ASSERT_NE(nullptr, stm);
     EXPECT_EQ(stm->tm_hour, 05) << "gmtime return error!";
     EXPECT_STREQ(asctime(stm), "Thu Jan  1 05:14:40 1970\n") << "gmtime return error!";
 
     time1 = LONG_MAX;
     stm = gmtime(&time1);
+    ASSERT_NE(nullptr, stm);
     EXPECT_STREQ(asctime(stm), "Tue Jan 19 03:14:07 2038\n") << "gmtime return error!";
 
     time1 = 253402300799;
     stm = gmtime(&time1);
+    ASSERT_NE(nullptr, stm);
     EXPECT_STREQ(asctime(stm), "Fri Dec 31 23:59:59 9999\n") << "gmtime return error!";
 
     time1 = LONG_MIN;
     stm = gmtime(&time1);
+    ASSERT_NE(nullptr, stm);
     EXPECT_STREQ(asctime(stm), "Fri Dec 13 20:45:52 1901\n") << "gmtime return error!";
 }
 
@@ -200,6 +204,7 @@ HWTEST_F(TimeUtilsTest, testGmtimeR, Function | MediumTest | Level3)
 {
     struct tm res = {0};
     struct tm *stm = gmtime_r(&g_time, &res);
+    ASSERT_NE(nullptr, stm);
     EXPECT_EQ(stm->tm_hour, 05) << "gmtime_r return error!";
     EXPECT_STREQ(asctime(stm), "Thu Jan  1 05:14:40 1970\n") << "gmtime_r return error!";
     EXPECT_TRUE(stm == &res) << "gmtime_r returns not equal";
@@ -207,6 +212,7 @@ HWTEST_F(TimeUtilsTest, testGmtimeR, Function | MediumTest | Level3)
     time_t timeNow;
     time(&timeNow);
     stm = gmtime_r(&timeNow, &res);
+    ASSERT_NE(nullptr, stm);
     EXPECT_EQ(stm->tm_year, 70) << "gmtime_r return error!";
     EXPECT_STRNE(asctime(stm), "") << "gmtime_r return error!";
     EXPECT_TRUE(stm == &res) << "gmtime_r returns not equal";

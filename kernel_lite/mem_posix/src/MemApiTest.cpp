@@ -132,7 +132,7 @@ HWTEST_F(MemApiTest, testReallocMem, Function | MediumTest | Level3)
         memset(mem, testChar, mlen);
         rlen = GetRandom(0x200000);
         mem = realloc(mem, rlen);
-        EXPECT_TRUE(mem != nullptr) << "mem == NULL, i = " << i;
+        ASSERT_TRUE(mem != nullptr) << "mem == NULL, i = " << i;
 
         len = mlen <= rlen ? mlen : rlen;
 
@@ -558,7 +558,7 @@ HWTEST_F(MemApiTest, testOpenMemstreamBase, Function | MediumTest | Level2)
 
     FILE *stream = open_memstream(&buf, &len);
     ASSERT_TRUE(stream != nullptr) << "stream == nullptr";
-    EXPECT_TRUE(buf != nullptr && len == 0) << "buf == nullptr or len != 0";
+    ASSERT_TRUE(buf != nullptr && len == 0) << "buf == nullptr or len != 0";
 
     fprintf(stream, wBuf);
     fflush(stream);

@@ -550,7 +550,8 @@ void VerrxLog(const char *format, ...)
 void CheckStdPrint(const char *res)
 {
     FILE *fp1 = fopen(SYS_TEST_FILE_01, "r");
-    EXPECT_FALSE(fp1 == nullptr) << "fopen fail, errno = " << errno;
+
+    ASSERT_FALSE(fp1 == nullptr) << "fopen fail, errno = " << errno;
     char str[100] = {0};
     char *gStr = fgets(str, sizeof(str), fp1);
     printf("gStr = %s\n", gStr);

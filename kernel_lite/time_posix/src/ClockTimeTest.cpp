@@ -373,7 +373,7 @@ HWTEST_F(ClockTimeTest, testGetdateBasic, Function | MediumTest | Level1) {
     FILE *fp = nullptr;
     char mask[20] = "%Y-%m-%d %H:%M:%S";
     fp = fopen(DATEMSK_FILE, "w+");
-    EXPECT_NE(nullptr, fp);
+    ASSERT_NE(nullptr, fp);
     int ret = fwrite(mask, sizeof(mask), 1, fp);
     EXPECT_TRUE(ret > 0);
     ret = setenv("DATEMSK", DATEMSK_FILE, 1);
@@ -386,7 +386,7 @@ HWTEST_F(ClockTimeTest, testGetdateBasic, Function | MediumTest | Level1) {
     struct tm *retTm = nullptr;
     const char *cInput = "2020-10-26 00:01:01";
     retTm = getdate(cInput);
-    EXPECT_NE(nullptr, retTm) << "   getdate fail errno:" << getdate_err;
+    ASSERT_NE(nullptr, retTm) << "   getdate fail errno:" << getdate_err;
     strftime(cTime, sizeof(cTime), mask, retTm);
     EXPECT_STREQ(cInput, cTime);
     strftime(cTime, sizeof(cTime), "%D %A %H:%M:%S", retTm);
@@ -423,7 +423,7 @@ HWTEST_F(ClockTimeTest, testGetdateError, Function | MediumTest | Level2) {
     FILE *fp = nullptr;
     char mask[10] = "%H:%M:%S";
     fp = fopen(DATEMSK_FILE, "w+");
-    EXPECT_NE(nullptr, fp);
+    ASSERT_NE(nullptr, fp);
     ret = fwrite(mask, sizeof(mask), 1, fp);
     EXPECT_TRUE(ret > 0);
     ret = fclose(fp);

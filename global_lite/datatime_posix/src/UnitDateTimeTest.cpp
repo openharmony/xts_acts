@@ -78,7 +78,7 @@ HWTEST_P(DateTimeTest, GLOBAL_DateTimeFormat_Format_0100, Function | MediumTest 
     int length = sizeof(patternFormats) / sizeof(patternFormats[0]);
     for (int i = 0; i < length; i++) {
         DateTimeFormat *datetime = new DateTimeFormat(patternFormats[i], localeInfo);
-        EXPECT_TRUE(datetime != nullptr);
+        ASSERT_TRUE(datetime != nullptr);
         time_t cal = 3600 * 3 + 3600 * 24 * 6;
         I18nStatus status = I18nStatus::ISUCCESS;
         string appendTo = "";
@@ -108,7 +108,7 @@ HWTEST_P(DateTimeTest, GLOBAL_DateTimeFormat_Format_0200, Function | MediumTest 
     int length = sizeof(patternFormats) / sizeof(patternFormats[0]);
     for (int i = 0; i < length; i++) {
         DateTimeFormat *datetime = new DateTimeFormat(patternFormats[i], localeInfo);
-        EXPECT_TRUE(datetime != nullptr);
+        ASSERT_TRUE(datetime != nullptr);
         time_t cal = 3600 * 3 + 3600 * 24 * 6;
         I18nStatus status = I18nStatus::ISUCCESS;
         string appendTo = "";
@@ -138,7 +138,7 @@ HWTEST_P(DateTimeTest, GLOBAL_DateTimeFormat_Format_0300, Function | MediumTest 
     int length = sizeof(patternFormats) / sizeof(patternFormats[0]);
     for (int i = 0; i < length; i++) {
         DateTimeFormat *datetime = new DateTimeFormat(patternFormats[i], localeInfo);
-        EXPECT_TRUE(datetime != nullptr);
+        ASSERT_TRUE(datetime != nullptr);
         time_t cal = 3600 * 3 + 3600 * 24 * 6;
         I18nStatus status = I18nStatus::ISUCCESS;
         string appendTo = "";
