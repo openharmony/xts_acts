@@ -246,25 +246,25 @@ HWTEST_F(TimeUtilsTest, testMktime, Function | MediumTest | Level2)
 */
 HWTEST_F(TimeUtilsTest, testStrftime, Function | MediumTest | Level3)
 {
-    char buffer[32];
+    char buffer[80] = {0};
     time_t mtime = 18880;
-    size_t ftime = strftime(buffer, 80, "%Ex %EX %A", localtime(&mtime));
+    size_t ftime = strftime(buffer, sizeof(buffer) - 1, "%Ex %EX %A", localtime(&mtime));
     EXPECT_GT(ftime, g_zero) << "strftime return error!";
     EXPECT_STREQ(buffer, "01/01/70 05:14:40 Thursday") << "buffer return error!";
 
     mtime = LONG_MAX;
-    ftime = strftime(buffer, 80, "%y-%m-%d %H:%M:%S", localtime(&mtime));
+    ftime = strftime(buffer, sizeof(buffer) - 1, "%y-%m-%d %H:%M:%S", localtime(&mtime));
     EXPECT_STREQ(buffer, "38-01-19 03:14:07") << "buffer return error!";
 
     mtime = 253402300799;
-    ftime = strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", localtime(&mtime));
+    ftime = strftime(buffer, sizeof(buffer) - 1, "%Y-%m-%d %H:%M:%S", localtime(&mtime));
     EXPECT_STREQ(buffer, "9999-12-31 23:59:59") << "buffer return error!";
 
     mtime = LONG_MIN;
-    ftime = strftime(buffer, 80, "%x %X", localtime(&mtime));
+    ftime = strftime(buffer, sizeof(buffer) - 1, "%x %X", localtime(&mtime));
     EXPECT_STREQ(buffer, "12/13/01 20:45:52") << "buffer return error!";
 
-    ftime = strftime(buffer, 11, "%Y-%m-%d %H:%M:%S", localtime(&mtime));
+    ftime = strftime(buffer, sizeof(buffer) - 1, "%Y-%m-%d %H:%M:%S", localtime(&mtime));
     EXPECT_EQ(ftime, g_zero) << "strftime return error!";
     EXPECT_STREQ(buffer, "1901-12-13") << "buffer return error!";
 }
@@ -277,10 +277,10 @@ HWTEST_F(TimeUtilsTest, testStrftime, Function | MediumTest | Level3)
 HWTEST_F(TimeUtilsTest, testStrftimeL, Function | MediumTest | Level2)
 {
     struct tm *tm1;
-    char buffer[32];
+    char buffer[80] = {0};
 
     tm1 = localtime(&g_time);
-    size_t ftime = strftime_l(buffer, 80, "%F %T %Z", tm1, (locale_t)0);
+    size_t ftime = strftime_l(buffer, sizeof(buffer) - 1, "%F %T %Z", tm1, (locale_t)0);
     EXPECT_GT(ftime, g_zero) << "strftime return error!";
     EXPECT_STREQ(buffer, "1970-01-01 05:14:40 UTC") << "buffer return error!";
 }
@@ -292,13 +292,13 @@ HWTEST_F(TimeUtilsTest, testStrftimeL, Function | MediumTest | Level2)
 */
 HWTEST_F(TimeUtilsTest, testWcsftime, Function | MediumTest | Level2)
 {
-    wchar_t buff[48];
-    size_t len = wcsftime(buff, sizeof(buff), L"%A %c", localtime(&g_time));
+    wchar_t buff[48] = {0};
+    size_t len = wcsftime(buff, sizeof(buff) - 1, L"%A %c", localtime(&g_time));
     LOG("buff = %ls, len = %ld\n", buff, (long)len);
     EXPECT_EQ(len, (size_t)33) << "wcsftime return error!";
     EXPECT_STREQ(buff, L"Thursday Thu Jan  1 05:14:40 1970") << "buff return error!";
 
-    len = wcsftime(buff, 9, L"%A %c", localtime(&g_time));
+    len = wcsftime(buff, sizeof(buff) - 1, L"%A %c", localtime(&g_time));
     LOG("buff = %ls, len = %ld\n", buff, (long)len);
     EXPECT_EQ(len, g_zero) << "wcsftime return error!";
     EXPECT_STREQ(buff, L"Thursday") << "buff return error!";
