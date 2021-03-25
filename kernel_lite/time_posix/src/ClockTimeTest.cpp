@@ -323,9 +323,11 @@ HWTEST_F(ClockTimeTest, testLocaltime, Function | MediumTest | Level1) {
     EXPECT_EQ(0, ret);
 
     struct tm *tmStart = localtime(&tStart);
+    ASSERT_NE(nullptr, tmStart);
     strftime(cTime, sizeof(cTime), "%H:%M:%S", tmStart);
     EXPECT_STREQ("23:59:59", cTime);
     struct tm *tmEnd = localtime(&tEnd);
+    ASSERT_NE(nullptr, tmEnd);
     strftime(cTime, sizeof(cTime), "%H:%M:%S", tmEnd);
     EXPECT_STREQ("00:00:01", cTime);
 }
@@ -348,7 +350,9 @@ HWTEST_F(ClockTimeTest, testLocaltimer, Function | MediumTest | Level1) {
     sleep(1);
     time(&tEnd);
     struct tm *tmrStartPtr = localtime_r(&tStart, &tmrStart);
+    ASSERT_NE(nullptr, tmrStartPtr);
     struct tm *tmrEndPtr = localtime_r(&tEnd, &tmrEnd);
+    ASSERT_NE(nullptr, tmrEndPtr);
 
     EXPECT_EQ(0, ret);
     strftime(cTime, sizeof(cTime), "%H:%M:%S", &tmrStart);
