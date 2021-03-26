@@ -4,8 +4,8 @@ SIG（Special Intertest Group）是指特别兴趣小组，SIG在PMC项目管理
 本目录用于存放OpenHamony社区所有 “特别兴趣小组”（Special Interest Group，以下简称 SIG）的运作信息。
 
 ## 申请新建SIG
-1. 开发者在社区中寻找2-3个有共同兴趣及目标的人，确定SIG Leader。参考[新建SIG申请](sig-template/oep_cn.md)模板，创建SIG提案。此模板参考自[KEP模板](https://github.com/kubernetes/enhancements/blob/master/keps/NNNN-kep-template/README.md)。
-2. SIG Leader以[New-SIG-Proposal-XXX]为邮件标题，通过向dev@openharmony.io发送邮件，提交新建SIG申请。
+1. 开发者在社区中寻找2-3个有共同兴趣及目标的人，确定SIG Leader。参考[新建SIG Charter](sig-template/sig-charter-template_cn.md)模板，创建SIG Charter提案。
+2. SIG Leader以[SIG-Charter-Proposal-XXX]为邮件标题，通过向dev@openharmony.io发送邮件，提交新建SIG申请。
 3. PMC项目管理委员会批准通过后，可创建新的SIG。
 
 ## 加入已有SIG
