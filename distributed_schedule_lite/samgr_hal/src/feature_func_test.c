@@ -14,7 +14,7 @@
  */
 
 #include <string.h>
-#include <los_base.h>
+#include "cmsis_os.h"
 #include "hctest.h"
 #include "samgr_lite.h"
 
