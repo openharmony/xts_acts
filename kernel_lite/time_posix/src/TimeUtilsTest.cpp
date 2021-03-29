@@ -292,7 +292,7 @@ HWTEST_F(TimeUtilsTest, testStrftimeL, Function | MediumTest | Level2)
 
     tm1 = localtime(&g_time);
     ASSERT_NE(nullptr, tm1);
-    size_t ftime = strftime_l(buffer, sizeof(buffer) - 1, "%F %T %Z", tm1, (locale_t)0);
+    size_t ftime = strftime_l(buffer, sizeof(buffer) - 1, "%F %T %Z", tm1, nullptr);
     EXPECT_GT(ftime, g_zero) << "strftime return error!";
     EXPECT_STREQ(buffer, "1970-01-01 05:14:40 UTC") << "buffer return error!";
 }
