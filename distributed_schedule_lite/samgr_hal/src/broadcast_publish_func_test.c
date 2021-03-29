@@ -16,7 +16,7 @@
  * Create      : 2020/04/19
  */
 
-#include <los_base.h>
+#include "cmsis_os.h"
 #include "hctest.h"
 #include "samgr_lite.h"
 #include "broadcast_interface.h"
@@ -112,7 +112,7 @@ LITE_TEST_SUIT(test, broadcast, Broadcast02TestSuite);
 
 static BOOL Broadcast02TestSuiteSetUp(void)
 {   
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     return TRUE;
 }
 
