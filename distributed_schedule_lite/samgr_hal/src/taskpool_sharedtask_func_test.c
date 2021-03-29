@@ -17,7 +17,7 @@
  */
 
 #include <stdlib.h>
-#include <los_base.h>
+#include "cmsis_os.h"
 #include "securec.h"
 #include "cmsis_os2.h"
 #include "hctest.h"
@@ -281,7 +281,7 @@ LITE_TEST_SUIT(distributedschedule, taskpool, ShareTaskFuncTestSuite);
 
 static BOOL ShareTaskFuncTestSuiteSetUp(void)
 {
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     return TRUE;
 }
 
@@ -315,7 +315,7 @@ LITE_TEST_CASE(ShareTaskFuncTestSuite, testSharedTask0010, Function | MediumTest
     strcpy_s(request.data, request.len, body);
     int32 result2 = demoApi->SendRequestProxyF(&(g_createFeature[0].identity), &request, NULL);
     TEST_ASSERT_EQUAL_INT(result2 == 0, TRUE);
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_createFeature[0].featureCalledCount == 1, TRUE);
 
     // *************************** //
@@ -337,7 +337,7 @@ LITE_TEST_CASE(ShareTaskFuncTestSuite, testSharedTask0010, Function | MediumTest
     strcpy_s(request2.data, request2.len, body2);
     result2 = defaultApi->SendRequestProxyDF(&(g_service[0].identity), &request2, NULL);
     TEST_ASSERT_EQUAL_INT(result2 == 0, TRUE);
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_service[0].serviceCalledCount == 1, TRUE);
 };
 
@@ -366,7 +366,7 @@ LITE_TEST_CASE(ShareTaskFuncTestSuite, testSharedTask0020, Function | MediumTest
     strcpy_s(request.data, request.len, body);
     int32 result2 = demoApi->SendRequestProxyF(&(g_createFeature[1].identity), &request, NULL);
     TEST_ASSERT_EQUAL_INT(result2 == 0, TRUE);
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_createFeature[1].featureCalledCount == 1, TRUE);
 
     // *************************** //
@@ -388,7 +388,7 @@ LITE_TEST_CASE(ShareTaskFuncTestSuite, testSharedTask0020, Function | MediumTest
     strcpy_s(request2.data, request2.len, body2);
     result2 = defaultApi->SendRequestProxyDF(&(g_service[1].identity), &request2, NULL);
     TEST_ASSERT_EQUAL_INT(result2 == 0, TRUE);
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_service[1].serviceCalledCount == 1, TRUE);
 };
 
@@ -426,7 +426,7 @@ LITE_TEST_CASE(ShareTaskFuncTestSuite, testSharedTask0030, Function | MediumTest
     strcpy_s(request2.data, request2.len, body);
     defaultApi2->SendRequestProxyDF(&(g_service[1].identity), &request2, NULL);
 
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_threadID11 == g_threadID21, TRUE);
 };
 
@@ -464,7 +464,7 @@ LITE_TEST_CASE(ShareTaskFuncTestSuite, testSharedTask0040, Function | MediumTest
     strcpy_s(request2.data, request2.len, body);
     demoApi2->SendRequestProxyF(&(g_createFeature[1].identity), &request2, NULL);
 
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_threadID12 == g_threadID22, TRUE);
 };
 RUN_TEST_SUITE(ShareTaskFuncTestSuite);

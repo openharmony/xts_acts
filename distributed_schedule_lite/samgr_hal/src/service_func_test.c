@@ -14,7 +14,7 @@
  */
 
 #include <string.h>
-#include <los_base.h>
+#include "cmsis_os.h"
 #include "hctest.h"
 #include "samgr_lite.h"
 
@@ -119,7 +119,7 @@ LITE_TEST_SUIT(test, samgr, ServiceTestSuite);
 
 static BOOL ServiceTestSuiteSetUp(void)
 {
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     return TRUE;
 }
 
@@ -263,7 +263,7 @@ LITE_TEST_CASE(ServiceTestSuite, testUnregisterService0060, Function | MediumTes
 LITE_TEST_CASE(ServiceTestSuite, testBootstrap0010, Function | MediumTest | Level2)
 {
     SAMGR_Bootstrap();
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
 
     SamgrLite *samgrLite = SAMGR_GetInstance();
     TEST_ASSERT_EQUAL_INT(TRUE, samgrLite != NULL);

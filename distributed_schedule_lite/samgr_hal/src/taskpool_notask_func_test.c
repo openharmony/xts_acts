@@ -16,7 +16,7 @@
  * Create      : 2020/04/19
  */
 
-#include <los_base.h>
+#include "cmsis_os.h"
 #include "hctest.h"
 #include "samgr_lite.h"
 
@@ -203,7 +203,7 @@ LITE_TEST_SUIT(distributedschedule, samgr, TaskPoolNoTaskFuncTestSuite);
 
 static BOOL TaskPoolNoTaskFuncTestSuiteSetUp(void)
 {
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     return TRUE;
 }
 

@@ -43,6 +43,7 @@ lite_component("acts_component") {
 
         "//test/xts/acts/distributed_schedule_lite/samgr_hal:ActsSamgrTest",
         "//test/xts/acts/update_lite/updater_hal:ActsUpdaterFuncTest",
+        "//test/xts/acts/startup_lite/bootstrap_hal:ActsBootstrapTest",
       ]
     } else if (ohos_kernel_type == "liteos_a") {
       all_features += [
