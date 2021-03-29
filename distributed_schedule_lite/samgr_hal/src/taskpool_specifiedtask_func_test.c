@@ -17,7 +17,7 @@
  */
 
 #include <stdlib.h>
-#include <los_base.h>
+#include "cmsis_os.h"
 #include "securec.h"
 #include "cmsis_os2.h"
 #include "hctest.h"
@@ -251,7 +251,7 @@ LITE_TEST_SUIT(distributedschedule, taskpool, SpecifiedTaskFuncTestSuite);
 
 static BOOL SpecifiedTaskFuncTestSuiteSetUp(void)
 {
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     return TRUE;
 }
 
@@ -285,7 +285,7 @@ LITE_TEST_CASE(SpecifiedTaskFuncTestSuite, testSpecifiedTask0010, Function | Med
     strcpy_s(request.data, request.len, body);
     int32 result2 = demoApi->SendRequestProxyF(&(g_createFeature.identity), &request, NULL);
     TEST_ASSERT_EQUAL_INT(result2 == 0, TRUE);
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_createFeature.featureCalledCount == 1, TRUE);
 
     // *************************** //
@@ -307,7 +307,7 @@ LITE_TEST_CASE(SpecifiedTaskFuncTestSuite, testSpecifiedTask0010, Function | Med
     strcpy_s(request2.data, request2.len, body2);
     result2 = defaultApi->SendRequestProxyDF(&(g_service[0].identity), &request2, NULL);
     TEST_ASSERT_EQUAL_INT(result2 == 0, TRUE);
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_service[0].serviceCalledCount == 1, TRUE);
 };
 
@@ -336,7 +336,7 @@ LITE_TEST_CASE(SpecifiedTaskFuncTestSuite, testSpecifiedTask0020, Function | Med
     strcpy_s(request.data, request.len, body);
     int32 result2 = demoApi->SendRequestProxyF(&(g_createFeature.identity), &request, NULL);
     TEST_ASSERT_EQUAL_INT(result2 == 0, TRUE);
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_createFeature.featureCalledCount == 1, TRUE);
 
     // *************************** //
@@ -358,7 +358,7 @@ LITE_TEST_CASE(SpecifiedTaskFuncTestSuite, testSpecifiedTask0020, Function | Med
     strcpy_s(request2.data, request2.len, body2);
     result2 = defaultApi->SendRequestProxyDF(&(g_service[0].identity), &request2, NULL);
     TEST_ASSERT_EQUAL_INT(result2 == 0, TRUE);
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_service[0].serviceCalledCount == 1, TRUE);
 };
 
@@ -397,7 +397,7 @@ LITE_TEST_CASE(SpecifiedTaskFuncTestSuite, testSpecifiedTask0030, Function | Med
     strcpy_s(request2.data, request2.len, body2);
     defaultApi2->SendRequestProxyDF(&(g_service[1].identity), &request2, NULL);
 
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_servicePoint1 == g_servicePoint2, TRUE);
 };
 RUN_TEST_SUITE(SpecifiedTaskFuncTestSuite);

@@ -15,7 +15,7 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include <los_base.h>
+#include "cmsis_os.h"
 #include "securec.h"
 #include "hctest.h"
 #include "samgr_lite.h"
@@ -357,7 +357,7 @@ LITE_TEST_SUIT(test, samgr, SendSharedRequestTestSuite);
 
 static BOOL SendSharedRequestTestSuiteSetUp(void)
 {
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     return TRUE;
 }
 
@@ -396,7 +396,7 @@ LITE_TEST_CASE(SendSharedRequestTestSuite, testSendSharedRequest0010, Function |
     uint32 *token = NULL;
     token = demoApi->SAMGR_SendSharedRequestProxy(&feature->identity, &request, token, DemoHandlerAndCheck);
     
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(feature->featureCalledCount, 1);
     TEST_ASSERT_EQUAL_INT(strcmp(feature->latestRequest, body), 0);
 
@@ -439,7 +439,7 @@ LITE_TEST_CASE(SendSharedRequestTestSuite, testSendSharedDirectRequest0010, Func
                                                 &token, DemoHandlerAndCheck);
     TEST_ASSERT_EQUAL_INT(result, 0);
 
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(feature->featureCalledCount, 0);
     
     ReleaseIUnknown(demoApi);

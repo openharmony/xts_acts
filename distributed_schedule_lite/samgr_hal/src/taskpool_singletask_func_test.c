@@ -15,7 +15,7 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include <los_base.h>
+#include "cmsis_os.h"
 #include "securec.h"
 #include "hctest.h"
 #include "samgr_lite.h"
@@ -323,7 +323,7 @@ LITE_TEST_SUIT(distributedschedule, samgr, SingleTaskFuncTestSuite);
 
 static BOOL SingleTaskFuncTestSuiteSetUp(void)
 {
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     return TRUE;
 }
 
@@ -361,7 +361,7 @@ LITE_TEST_CASE(SingleTaskFuncTestSuite, testSingleTask0010, Function | MediumTes
     strcpy_s(request.data, request.len, body);
     int32 result2 = demoApi->SendRequestProxyF(&(g_createFeature.identity), &request, NULL);
     TEST_ASSERT_EQUAL_INT(result2 == 0, TRUE);
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_createFeature.featureCalledCount == 1, TRUE);
 
     // test defaultFeatureApi function
@@ -385,7 +385,7 @@ LITE_TEST_CASE(SingleTaskFuncTestSuite, testSingleTask0010, Function | MediumTes
     strcpy_s(request2.data, request2.len, body2);
     result2 = defaultApi->SendRequestProxyDF(&(g_service[0].identity), &request2, NULL);
     TEST_ASSERT_EQUAL_INT(result2 == 0, TRUE);
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_service[0].serviceCalledCount == 1, TRUE);
 };
 
@@ -417,7 +417,7 @@ LITE_TEST_CASE(SingleTaskFuncTestSuite, testSingleTask0020, Function | MediumTes
     strcpy_s(request.data, request.len, body);
     int32 result2 = demoApi->SendRequestProxyF(&(g_createFeature.identity), &request, NULL);
     TEST_ASSERT_EQUAL_INT(result2 == 0, TRUE);
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_createFeature.featureCalledCount == 1, TRUE);
 
     DefaultFeatureApi *defaultApi = GetDefaultIUnknown("SingleTS02");
@@ -440,7 +440,7 @@ LITE_TEST_CASE(SingleTaskFuncTestSuite, testSingleTask0020, Function | MediumTes
     strcpy_s(request2.data, request2.len, body2);
     result2 = defaultApi->SendRequestProxyDF(&(g_service[1].identity), &request2, NULL);
     TEST_ASSERT_EQUAL_INT(result2 == 0, TRUE);
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_service[1].serviceCalledCount == 1, TRUE);
 };
 
@@ -472,7 +472,7 @@ LITE_TEST_CASE(SingleTaskFuncTestSuite, testSingleTask0030, Function | MediumTes
     strcpy_s(request.data, request.len, body);
     int32 result2 = demoApi->SendRequestProxyF(&(g_createFeature.identity), &request, NULL);
     TEST_ASSERT_EQUAL_INT(result2 == 0, TRUE);
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_createFeature.featureCalledCount == 1, TRUE);
 
     DefaultFeatureApi *defaultApi = GetDefaultIUnknown("SingleTS03");
@@ -495,7 +495,7 @@ LITE_TEST_CASE(SingleTaskFuncTestSuite, testSingleTask0030, Function | MediumTes
     strcpy_s(request2.data, request2.len, body2);
     result2 = defaultApi->SendRequestProxyDF(&(g_service[INDEX2].identity), &request2, NULL);
     TEST_ASSERT_EQUAL_INT(result2 == 0, TRUE);
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_service[INDEX2].serviceCalledCount == 1, TRUE);
 };
 
@@ -527,7 +527,7 @@ LITE_TEST_CASE(SingleTaskFuncTestSuite, testSingleTask0040, Function | MediumTes
     strcpy_s(request.data, request.len, body);
     int32 result2 = demoApi->SendRequestProxyF(&(g_createFeature.identity), &request, NULL);
     TEST_ASSERT_EQUAL_INT(result2 == 0, TRUE);
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_createFeature.featureCalledCount == 1, TRUE);
 
     DefaultFeatureApi *defaultApi = GetDefaultIUnknown("SingleTS04");
@@ -550,7 +550,7 @@ LITE_TEST_CASE(SingleTaskFuncTestSuite, testSingleTask0040, Function | MediumTes
     strcpy_s(request2.data, request2.len, body2);
     result2 = defaultApi->SendRequestProxyDF(&(g_service[INDEX3].identity), &request2, NULL);
     TEST_ASSERT_EQUAL_INT(result2 == 0, TRUE);
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(g_service[INDEX3].serviceCalledCount == 1, TRUE);
 };
 
