@@ -16,7 +16,7 @@
  * Create      : 2020/04/19
  */
 
-#include <los_base.h>
+#include "cmsis_os.h"
 #include "hctest.h"
 #include "common.h"
 
@@ -48,7 +48,7 @@ LITE_TEST_SUIT(test, samgr, CommonTestSuite);
 
 static BOOL CommonTestSuiteSetUp(void)
 {
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     return TRUE;
 }
 
