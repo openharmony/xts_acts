@@ -15,7 +15,7 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include <los_base.h>
+#include "cmsis_os.h"
 #include "securec.h"
 #include "hctest.h"
 #include "samgr_lite.h"
@@ -338,7 +338,7 @@ LITE_TEST_SUIT(test, samgr, SendResponseTestSuite);
 
 static BOOL SendResponseTestSuiteSetUp(void)
 {
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     return TRUE;
 }
 
@@ -374,7 +374,7 @@ LITE_TEST_CASE(SendResponseTestSuite, testSendResponse0010, Function | MediumTes
     DemoFeature *feature = GET_OBJECT(iUnknown, DemoFeature, iUnknown);
     demoApi->SAMGR_SendRequestProxy(&feature->identity, &request, DemoHandlerAndCheck);
 
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(feature->featureStatus == TRUE, TRUE);
     ReleaseIUnknown(demoApi);
 }
@@ -406,7 +406,7 @@ LITE_TEST_CASE(SendResponseTestSuite, testSendResponse0020, Function | MediumTes
     DemoFeature *feature = GET_OBJECT(iUnknown, DemoFeature, iUnknown);
     demoApi->SAMGR_SendRequestProxy(&feature->identity, &request, NULL);
 
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(feature->featureStatus == FALSE, TRUE);
     ReleaseIUnknown(demoApi);
 }
@@ -438,7 +438,7 @@ LITE_TEST_CASE(SendResponseTestSuite, testSendResponse0030, Function | MediumTes
     DemoFeature *feature = GET_OBJECT(iUnknown, DemoFeature, iUnknown);
     demoApi->SAMGR_SendRequestProxy(&feature->identity, &request, DemoHandler);
 
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(feature->featureStatus == TRUE, TRUE);
     ReleaseIUnknown(demoApi);
 }
@@ -471,7 +471,7 @@ LITE_TEST_CASE(SendResponseTestSuite, testSendResponseByIdentity0010, Function |
     feature->featureStatus = FALSE;
     demoApi->SAMGR_SendRequestProxy(&feature->identity, &request, DemoHandlerAndCheck);
 
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(feature->featureStatus == TRUE, TRUE);  
 
     ReleaseIUnknown(demoApi);
@@ -504,7 +504,7 @@ LITE_TEST_CASE(SendResponseTestSuite, testSendResponseByIdentity0020, Function |
     DemoFeature *feature = GET_OBJECT(iUnknown, DemoFeature, iUnknown);
     demoApi->SAMGR_SendRequestProxy(&feature->identity, &request, NULL);
 
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(feature->featureStatus == FALSE, TRUE);
 
     ReleaseIUnknown(demoApi);

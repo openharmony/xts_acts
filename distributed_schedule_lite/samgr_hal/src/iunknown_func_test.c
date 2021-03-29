@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-#include <los_base.h>
+#include "cmsis_os.h"
 #include <ohos_errno.h>
 #include "hctest.h"
 #include "samgr_lite.h"

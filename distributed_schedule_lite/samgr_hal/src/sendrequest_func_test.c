@@ -15,7 +15,7 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include <los_base.h>
+#include "cmsis_os.h"
 #include "securec.h"
 #include "hctest.h"
 #include "samgr_lite.h"
@@ -396,7 +396,7 @@ LITE_TEST_SUIT(test, samgr, SendRequestTestSuite);
 
 static BOOL SendRequestTestSuiteSetUp(void)
 {
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     return TRUE;
 }
 
@@ -463,7 +463,7 @@ LITE_TEST_CASE(SendRequestTestSuite, testSendRequest0010, Function | MediumTest 
     int32 result = demoApi->SAMGR_SendRequestProxy(&feature->identity, &request, NULL);
     TEST_ASSERT_EQUAL_INT(result == 0, TRUE);
 
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(feature->featureCalledCount == 1, TRUE);
     TEST_ASSERT_EQUAL_INT(strcmp(feature->latestRequest, body), 0);
 
@@ -500,7 +500,7 @@ LITE_TEST_CASE(SendRequestTestSuite, testSendRequest0020, Function | MediumTest 
     int32 result = demoApi->SAMGR_SendRequestProxy(&feature->identity, &request, NULL);
     TEST_ASSERT_EQUAL_INT(result == 0, TRUE);
 
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(feature->featureCalledCount == 1, TRUE);
     TEST_ASSERT_EQUAL_INT(strcmp(feature->latestRequest, body), 0);
 
@@ -558,7 +558,7 @@ LITE_TEST_CASE(SendRequestTestSuite, testSendRequest0040, Function | MediumTest 
     int32 result = demoApi->SAMGR_SendRequestProxy(&feature->identity, &request, NULL);
     TEST_ASSERT_EQUAL_INT(result == 0, TRUE);
 
-    LOS_Msleep(OPER_INTERVAL);
+    osDelay(OPER_INTERVAL);
     TEST_ASSERT_EQUAL_INT(feature->featureCalledCount == 1, TRUE);
 
     ReleaseIUnknown(demoApi);
