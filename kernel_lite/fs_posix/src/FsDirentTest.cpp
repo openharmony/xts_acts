@@ -48,7 +48,7 @@ HWTEST_F(FileSystemTest, testReaddir, Function | MediumTest | Level3)
     CreateTestFolder();
 
     dirp = opendir(TOP_DIR "/" DIR0);
-    EXPECT_NE(dirp, nullptr) << "> opendir errno = " << errno;
+    ASSERT_NE(dirp, nullptr) << "> opendir errno = " << errno;
     for (int i = 0; i < 10; i++) {          // Prevents infinite loops.
         dResult = readdir(dirp);
         if (dResult == nullptr) {
@@ -83,7 +83,7 @@ HWTEST_F(FileSystemTest, testReaddirEbadf, Function | MediumTest | Level3)
     CreateTestFolder();
 
     dirp = opendir(TOP_DIR "/" DIR0);
-    EXPECT_NE(dirp, nullptr) << "> opendir errno = " << errno;
+    ASSERT_NE(dirp, nullptr) << "> opendir errno = " << errno;
     EXPECT_EQ(closedir(dirp), 0) << "> closedir errno = " << errno;
 
     dResult = readdir(dirp);
@@ -106,7 +106,7 @@ HWTEST_F(FileSystemTest, testReaddirR, Function | MediumTest | Level3)
     CreateTestFolder();
 
     dirp = opendir(TOP_DIR "/" DIR0);
-    EXPECT_NE(dirp, nullptr) << "> opendir errno = " << errno;
+    ASSERT_NE(dirp, nullptr) << "> opendir errno = " << errno;
     for (int i = 0; i < 10; i++) {   // Prevents infinite loops.
         if ((readdir_r(dirp, &dEntry, &dResult)) != 0) {
             break;
@@ -174,24 +174,24 @@ HWTEST_F(FileSystemTest, testSeekdir, Function | MediumTest | Level3)
     CreateTestFolder();
 
     dirp = opendir(TOP_DIR "/" DIR0);
-    EXPECT_NE(dirp, nullptr) << "> opendir errno = " << errno;
+    ASSERT_NE(dirp, nullptr) << "> opendir errno = " << errno;
 
     dResult = readdir(dirp);
-    EXPECT_FALSE(dResult == nullptr) << "> readdir errno = " << errno;
+    ASSERT_FALSE(dResult == nullptr) << "> readdir errno = " << errno;
     EXPECT_EQ(telldir(dirp), dResult->d_off);
     LOG("> dResult->d_name = %s", dResult->d_name);
     LOG("> dResult->d_off = %lu", dResult->d_off);
     long tellDir0 = dResult->d_off;
 
     dResult = readdir(dirp);
-    EXPECT_FALSE(dResult == nullptr) << "> readdir errno = " << errno;
+    ASSERT_FALSE(dResult == nullptr) << "> readdir errno = " << errno;
     EXPECT_EQ(telldir(dirp), dResult->d_off);
     LOG("> dResult->d_name = %s", dResult->d_name);
     LOG("> dResult->d_off = %lu", dResult->d_off);
     long tellDir1 = dResult->d_off;
 
     dResult = readdir(dirp);
-    EXPECT_FALSE(dResult == nullptr) << "> readdir errno = " << errno;
+    ASSERT_FALSE(dResult == nullptr) << "> readdir errno = " << errno;
     LOG("> 111");
     EXPECT_EQ(telldir(dirp), dResult->d_off);
     LOG("> 222");
@@ -201,7 +201,7 @@ HWTEST_F(FileSystemTest, testSeekdir, Function | MediumTest | Level3)
 
     rewinddir(dirp);
     dResult = readdir(dirp);
-    EXPECT_FALSE(dResult == nullptr) << "> readdir errno = " << errno;
+    ASSERT_FALSE(dResult == nullptr) << "> readdir errno = " << errno;
     EXPECT_EQ(telldir(dirp), dResult->d_off);
     EXPECT_EQ(telldir(dirp), tellDir0);
     LOG("> dResult->d_name = %s", dResult->d_name);
@@ -209,7 +209,7 @@ HWTEST_F(FileSystemTest, testSeekdir, Function | MediumTest | Level3)
 
     seekdir(dirp, tellDir1);
     dResult = readdir(dirp);
-    EXPECT_FALSE(dResult == nullptr) << "> readdir errno = " << errno;
+    ASSERT_FALSE(dResult == nullptr) << "> readdir errno = " << errno;
     EXPECT_EQ(telldir(dirp), dResult->d_off);
     EXPECT_EQ(telldir(dirp), tellDir2);
     LOG("> dResult->d_name = %s", dResult->d_name);
@@ -231,7 +231,7 @@ HWTEST_F(FileSystemTest, testOpendir, Function | MediumTest | Level2)
 
     errno = 0;
     dirp = opendir(TOP_DIR "/" DIR0);
-    EXPECT_NE(dirp, nullptr);
+    ASSERT_NE(dirp, nullptr);
     EXPECT_EQ(errno, 0);
     EXPECT_EQ(closedir(dirp), 0) << "> closedir errno = " << errno;
 }
@@ -326,6 +326,6 @@ HWTEST_F(FileSystemTest, testClosedir, Function | MediumTest | Level3)
     CreateTestFolder();
 
     dirp = opendir(TOP_DIR "/" DIR0);
-    EXPECT_NE(dirp, nullptr) << "> opendir errno = " << errno;
+    ASSERT_NE(dirp, nullptr) << "> opendir errno = " << errno;
     EXPECT_EQ(closedir(dirp), 0) << "> closedir errno = " << errno;
 }

@@ -931,13 +931,10 @@ HWTEST_F(ActsLwipTest, testInetNtopIpv4Normal, Function | MediumTest | Level2)
         inputAddr.s_addr = inputBig[i];
 #endif
         ret = inet_ntop(AF_INET, &inputAddr, rstBuff, sizeof(rstBuff));
-        if (ret == nullptr) {
-            EXPECT_TRUE(ret != nullptr) << "ErrInfo:inet_ntop NULL [" << expectAddrs[i] << "]";
-        } else {
-            printf("inet_ntop expect [%s]: ret[%s], buf[%s]\n", expectAddrs[i], ret, rstBuff);
-            EXPECT_STREQ(expectAddrs[i], ret);
-            EXPECT_STREQ(expectAddrs[i], rstBuff);
-        }
+        ASSERT_NE(ret, nullptr) << "ErrInfo:inet_ntop NULL [" << expectAddrs[i] << "]";
+        printf("inet_ntop expect [%s]: ret[%s], buf[%s]\n", expectAddrs[i], ret, rstBuff);
+        EXPECT_STREQ(expectAddrs[i], ret);
+        EXPECT_STREQ(expectAddrs[i], rstBuff);
     }
 }
 

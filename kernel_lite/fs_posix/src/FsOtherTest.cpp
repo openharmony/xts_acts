@@ -53,7 +53,7 @@ HWTEST_F(FileSystemTest, testPath, Function | MediumTest | Level1)
 
     // get dir
     char *workDir = dirname((char*)FILE0);
-    EXPECT_NE(workDir, nullptr) << "> dirname errno = " << errno;
+    ASSERT_NE(workDir, nullptr) << "> dirname errno = " << errno;
     EXPECT_STREQ(".", workDir);
     LOG("> workDir = %s", workDir);
 }
@@ -73,7 +73,7 @@ HWTEST_F(FileSystemTest, testGetCurrentDirName, Function | MediumTest | Level1)
     // get current dir name
     const char *currentDirStandard = TOP_DIR;
     char *currentDir = get_current_dir_name();
-    EXPECT_NE(currentDir, nullptr);
+    ASSERT_NE(currentDir, nullptr);
     EXPECT_STREQ(currentDir, currentDirStandard);
     LOG("> currentDir = %s", currentDir);
 }
@@ -92,7 +92,7 @@ HWTEST_F(FileSystemTest, testBasename, Function | MediumTest | Level1)
 
     // get file name
     char *desName = basename((char*)FILE0);
-    EXPECT_NE(desName, nullptr) << "> basename errno = " << errno;
+    ASSERT_NE(desName, nullptr) << "> basename errno = " << errno;
     EXPECT_STREQ(desName, FILE0);
     LOG("> desName = %s", desName);
 }
@@ -271,7 +271,7 @@ HWTEST_F(FileSystemTest, testFwprintf, Function | MediumTest | Level3)
 
     // read
     fp = fopen(filePath, "r");
-    EXPECT_NE(fp, nullptr) << "> fopen errno = " << errno;
+    ASSERT_NE(fp, nullptr) << "> fopen errno = " << errno;
     EXPECT_NE(fgetws(readBuf, 30, fp), nullptr) << "fgetws error";
     EXPECT_TRUE(wcscmp(writeBuf, readBuf) == 0) << "writeBuf != readBuf";
     EXPECT_NE(fclose(fp), -1) << "> fclose errno =" << errno;
