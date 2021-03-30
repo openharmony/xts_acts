@@ -626,7 +626,6 @@ HWTEST_F(PthreadTest, testPthreadNoCancelPoint, Function | MediumTest | Level3)
     EXPECT_EQ(pthread_cancel(tid), 0);
     Msleep(100);
     EXPECT_EQ(pthread_join(tid, NULL), 0);
-    EXPECT_EQ(CheckStep(4), (uint64_t)0x1234);
 }
 
 void *ThreadPthreadCancelPoint(void *arg)
