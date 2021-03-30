@@ -18,7 +18,7 @@ OpenHarmony社区通过[项目管理委员会](/zh/pmc.md)（ Project Management
 
 ## 开发者社区贡献指南
 
-请阅读[如何贡献](https://gitee.com/openharmony/docs/blob/master/contribute/%E8%B4%A1%E7%8C%AE%E6%8C%87%E5%8D%97.md)获得帮助。
+请阅读[如何贡献](https://gitee.com/openharmony/docs/blob/master/zh-cn/contribute/%E5%8F%82%E4%B8%8E%E8%B4%A1%E7%8C%AE.md)获得帮助。
 
 ## 开发者社区贡献协议
 
