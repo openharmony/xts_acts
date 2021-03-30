@@ -852,9 +852,8 @@ HWTEST_F(ActsLwipTest, testInetPtonIpv4Abnormal, Function | MediumTest | Level2)
 {
     int ret;
     struct in_addr rst = {0};
-    char cpAddrs[10][16] = {"255", "256", "255.0", "255.0.0", "256.0.0.1", "a.a.a.a", "....", "#",
-        "127.0.0.f", "0:0:0:0:0:0:0:1"};
-    for (int i = 0; i < 10; i++) {
+    char cpAddrs[6][16] = {"256.0.0.1", "a.a.a.a", "....", "#", "127.0.0.f", "0:0:0:0:0:0:0:1"};
+    for (int i = 0; i < 6; i++) {
         ret = inet_pton(AF_INET, cpAddrs[i], &rst);
         EXPECT_EQ(0, ret) << "ErrInfo:inet_pton abnormal [" << cpAddrs[i] << "]";
     }
