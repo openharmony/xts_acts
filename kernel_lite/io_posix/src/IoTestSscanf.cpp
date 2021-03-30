@@ -154,7 +154,11 @@ HWTEST_F(IoTest, testSscanfChar, Function | MediumTest | Level1)
     char c2[10] = {0};
     ret = sscanf("helloworld", "%5c", c2);
     EXPECT_EQ(ret, 1) << "> sscanf fail, errno = " << errno;
-    EXPECT_EQ(c2, "hello");
+    EXPECT_EQ(c2[0], 'h');
+    EXPECT_EQ(c2[1], 'e');
+    EXPECT_EQ(c2[2], 'l');
+    EXPECT_EQ(c2[3], 'l');
+    EXPECT_EQ(c2[4], 'o');
 
     ret = sscanf("(a) and |b|", "(%c) and |%c%*c|", &c, &c1);
     EXPECT_EQ(ret, 2) << "> sscanf fail, errno = " << errno;
