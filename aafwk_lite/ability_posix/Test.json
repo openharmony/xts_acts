@@ -12,17 +12,17 @@
             "server": "NfsServer",
             "mount": [
                 {
-                    "source": "testcases/appexecfwk",
-                    "target": "/test_root/appexecfwk"
+                    "source": "testcases/aafwk",
+                    "target": "/test_root/aafwk"
                 },{
-                    "source": "resource/appexecfwk",
-                    "target": "/test_root/appexecfwk"
+                    "source": "resource/aafwk",
+                    "target": "/test_root/aafwk"
                 }
             ]
         }
     ],
     "driver": {
         "type": "CppTestLite",
-        "execute": "/test_root/appexecfwk/ActsAbilityMgrTest.bin"
+        "execute": "/test_root/aafwk/ActsAbilityMgrTest.bin"
     }
 }
