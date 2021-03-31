@@ -1,14 +1,9 @@
 {
    "sigs-List":[
       {
-         "sig-name":"sig-docs",
-         "projects":"https://gitee.com/openharmony-sig/docs",
-         "project-path":"docs/"
-      },
-      {
-         "sig-name ":"sig-updates",
-         "projects":["https://gitee.com/openharmony/startup_appspawn_lite", "https://gitee.com/openharmony/startup_bootstrap_lite"]
-         "project-path":["base/startup/appspawn_lite", "base/startup/bootstrap_lite"]
+         "sig-name":"sig-kernel",
+         "projects":"https://gitee.com/openharmony/third_party_littlefs",
+         "project-path":"third_party/littlefs"
       },
    ]
 }
