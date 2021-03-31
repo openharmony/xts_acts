@@ -13,13 +13,13 @@
             "mount": [
                 {
                     "source": "testcases/multimedia",
-                    "target": "/testroot/multimedia"
+                    "target": "/test_root/multimedia"
                 }
             ]
         }
     ],
     "driver": {
         "type": "CppTestLite",
-        "execute": "/testroot/multimedia/ActsMediaRecorderTest.bin"
+        "execute": "/test_root/multimedia/ActsMediaRecorderTest.bin"
     }
 }
