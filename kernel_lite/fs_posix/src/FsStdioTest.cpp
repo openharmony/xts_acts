@@ -51,13 +51,13 @@ HWTEST_F(FileSystemTest, testFILE, Function | MediumTest | Level2)
     EXPECT_NE(fd, -1) << "> creat faild errno = " << errno;
     EXPECT_NE(close(fd), -1) << "> close errno = " << errno;
     fp = fopen(FILE0, "w+");
-    EXPECT_NE(fp, nullptr) << "> fopen errno = " << errno;
+    ASSERT_NE(fp, nullptr) << "> fopen errno = " << errno;
     EXPECT_EQ(fwrite(writeBuf, sizeof(writeBuf), 1, fp), 1) << "> fwrite errno = " << errno;
     EXPECT_NE(fclose(fp), -1) << "> fclose errno =" << errno;
 
     // read
     fp = fopen(FILE0, "r+");
-    EXPECT_NE(fp, nullptr) << "> fopen errno = " << errno;
+    ASSERT_NE(fp, nullptr) << "> fopen errno = " << errno;
     EXPECT_NE(fread(readBuf, sizeof(writeBuf), 1, fp), 0) << "> fread errno = " << errno;
     EXPECT_STREQ(writeBuf, readBuf) << "> writeBuf = " << writeBuf << "\n> readBuf = " << readBuf;
     EXPECT_NE(fclose(fp), -1) << "> fclose errno =" << errno;
@@ -82,7 +82,7 @@ HWTEST_F(FileSystemTest, testFeof, Function | MediumTest | Level3)
 
     // read
     fp = fopen(FILE0, "r+");
-    EXPECT_NE(fp, nullptr) << "> fopen errno = " << errno;
+    ASSERT_NE(fp, nullptr) << "> fopen errno = " << errno;
 
     EXPECT_EQ(fseeko(fp, 0, SEEK_SET), 0) << "> fseeko errno = " << errno;
     fgetc(fp);
@@ -115,7 +115,7 @@ HWTEST_F(FileSystemTest, testFseek, Function | MediumTest | Level3)
 
     // read
     fp = fopen(FILE0, "r+");
-    EXPECT_NE(fp, nullptr) << "> fopen errno = " << errno;
+    ASSERT_NE(fp, nullptr) << "> fopen errno = " << errno;
 
     fpos_t offset;
     EXPECT_EQ(fgetpos(fp, &offset), 0) << "> fgetpos errno = " << errno;
@@ -148,7 +148,7 @@ HWTEST_F(FileSystemTest, testFseekSeekCur, Function | MediumTest | Level3)
 
     // read
     fp = fopen(FILE0, "r+");
-    EXPECT_NE(fp, nullptr) << "> fopen errno = " << errno;
+    ASSERT_NE(fp, nullptr) << "> fopen errno = " << errno;
 
     fpos_t offset;
     EXPECT_EQ(fgetpos(fp, &offset), 0) << "> fgetpos errno = " << errno;
@@ -181,7 +181,7 @@ HWTEST_F(FileSystemTest, testFseekSeekEnd, Function | MediumTest | Level3)
 
     // read
     fp = fopen(FILE0, "r+");
-    EXPECT_NE(fp, nullptr) << "> fopen errno = " << errno;
+    ASSERT_NE(fp, nullptr) << "> fopen errno = " << errno;
 
     fpos_t offset;
     EXPECT_EQ(fgetpos(fp, &offset), 0) << "> fgetpos errno = " << errno;
@@ -214,7 +214,7 @@ HWTEST_F(FileSystemTest, testFseeko, Function | MediumTest | Level3)
 
     // read
     fp = fopen(FILE0, "r+");
-    EXPECT_NE(fp, nullptr) << "> fopen errno = " << errno;
+    ASSERT_NE(fp, nullptr) << "> fopen errno = " << errno;
 
     EXPECT_EQ(fseeko(fp, 2, SEEK_SET), 0) << "> fseeko errno = " << errno;
     EXPECT_EQ(ftello(fp), 2) << " errno = " << errno;
@@ -245,7 +245,7 @@ HWTEST_F(FileSystemTest, testFseekoSeekCur, Function | MediumTest | Level3)
 
     // read
     fp = fopen(FILE0, "r+");
-    EXPECT_NE(fp, nullptr) << "> fopen errno = " << errno;
+    ASSERT_NE(fp, nullptr) << "> fopen errno = " << errno;
 
     EXPECT_EQ(fseeko(fp, 2, SEEK_CUR), 0) << "> fseeko errno = " << errno;
     EXPECT_EQ(ftello(fp), 2) << " errno = " << errno;
@@ -276,7 +276,7 @@ HWTEST_F(FileSystemTest, testFseekoSeekEnd, Function | MediumTest | Level3)
 
     // read
     fp = fopen(FILE0, "r+");
-    EXPECT_NE(fp, nullptr) << "> fopen errno = " << errno;
+    ASSERT_NE(fp, nullptr) << "> fopen errno = " << errno;
 
     EXPECT_EQ(fseeko(fp, 0, SEEK_END), 0) << "> fseeko errno = " << errno;
     EXPECT_EQ(ftello(fp), sizeof(writeBuf)) << " errno = " << errno;
@@ -315,7 +315,7 @@ HWTEST_F(FileSystemTest, testFunlockfile, Function | MediumTest | Level3)
 
     CreateTestFolder();
     FILE *fp = fopen(filePath, "r+");
-    EXPECT_NE(fp, nullptr) << "> fopen errno = " << errno;
+    ASSERT_NE(fp, nullptr) << "> fopen errno = " << errno;
 
     pthread_t tid;
     int reInt = pthread_create(&tid, nullptr, ChildWrite, (void*)fp);
@@ -351,7 +351,7 @@ HWTEST_F(FileSystemTest, testFileno, Function | MediumTest | Level2)
     ASSERT_NE(close(fd), -1) << "> close errno = " << errno;
 
     fp = fopen(filePath, "w+");
-    EXPECT_NE(fp, nullptr) << "> fopen errno = " << errno;
+    ASSERT_NE(fp, nullptr) << "> fopen errno = " << errno;
     fd = fileno(fp);
     EXPECT_NE(fd, -1) << "> fileno errno = " << errno;
     WriteCloseTest(fd);
@@ -380,7 +380,7 @@ HWTEST_F(FileSystemTest, testFileno1, Function | MediumTest | Level2)
 
     // read
     fp = fopen(filePath, "r+");
-    EXPECT_NE(fp, nullptr) << "> fopen errno = " << errno;
+    ASSERT_NE(fp, nullptr) << "> fopen errno = " << errno;
     fd = fileno(fp);
     EXPECT_NE(fd, -1) << "> fileno errno = " << errno;
 
@@ -458,14 +458,14 @@ HWTEST_F(FileSystemTest, testFflush, Function | MediumTest | Level3)
     }
     Msleep(50);
     FILE *fp = fopen(filePath, "r");
-    EXPECT_NE(fp, nullptr);
+    ASSERT_NE(fp, nullptr);
     EXPECT_EQ(fseek(fp, 0, SEEK_END), 0) << "> fseek errno = " << errno;
     EXPECT_EQ(ftell(fp), 0);
     EXPECT_NE(fclose(fp), -1) << "> fclose errno =" << errno;
 
     Msleep(100);
     fp = fopen(filePath, "r");
-    EXPECT_NE(fp, nullptr);
+    ASSERT_NE(fp, nullptr);
     EXPECT_NE(fread(readBuf, sizeof(writeBuf), 1, fp), 0) << "> fread errno = " << errno;
     EXPECT_STREQ(readBuf, writeBuf);
     LOG("> readBuf  = %s", readBuf);

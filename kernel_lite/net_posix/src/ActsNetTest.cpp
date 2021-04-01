@@ -1367,7 +1367,7 @@ HWTEST_F(ActsNetTest, testEtherConvertNormal, Function | MediumTest | Level2)
     for (int i = 0; i < 3; i++) {
         atonRst = nullptr;
         atonRst = ether_aton(addrHex[i]);
-        EXPECT_TRUE(atonRst != nullptr);
+        ASSERT_TRUE(atonRst != nullptr);
         int ret = sprintf_s(atonByteRst, sizeof(atonByteRst), "%u.%u.%u.%u.%u.%u",
             atonRst->ether_addr_octet[0], atonRst->ether_addr_octet[1],
             atonRst->ether_addr_octet[2], atonRst->ether_addr_octet[3],
@@ -1406,13 +1406,13 @@ HWTEST_F(ActsNetTest, testEtherConvertNormalWithThreadSafe, Function | MediumTes
     char* ntoaPointRst = nullptr;
     struct ether_addr *atonPointRst = nullptr;
     struct ether_addr *atonDataRst = (ether_addr *)malloc(sizeof(ether_addr));
-    EXPECT_TRUE(atonDataRst != nullptr);
+    ASSERT_TRUE(atonDataRst != nullptr);
     char addrHex[3][18] = {"FF:FF:FF:FF:FF:FF", "00:00:00:00:00:00", "5F:4E:2C:3D:1B:0A"};
     char addrByte[3][24] = {"255.255.255.255.255.255", "0.0.0.0.0.0", "95.78.44.61.27.10"};
     for (int i = 0; i < 3; i++) {
         atonPointRst = nullptr;
         atonPointRst = ether_aton_r(addrHex[i], atonDataRst);
-        EXPECT_TRUE(atonPointRst != nullptr);
+        ASSERT_TRUE(atonPointRst != nullptr);
         char byteRst[24];
         ret = sprintf_s(byteRst, sizeof(byteRst), "%u.%u.%u.%u.%u.%u",
             atonDataRst->ether_addr_octet[0], atonDataRst->ether_addr_octet[1],

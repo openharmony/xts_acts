@@ -323,9 +323,11 @@ HWTEST_F(ClockTimeTest, testLocaltime, Function | MediumTest | Level1) {
     EXPECT_EQ(0, ret);
 
     struct tm *tmStart = localtime(&tStart);
+    ASSERT_NE(nullptr, tmStart);
     strftime(cTime, sizeof(cTime), "%H:%M:%S", tmStart);
     EXPECT_STREQ("23:59:59", cTime);
     struct tm *tmEnd = localtime(&tEnd);
+    ASSERT_NE(nullptr, tmEnd);
     strftime(cTime, sizeof(cTime), "%H:%M:%S", tmEnd);
     EXPECT_STREQ("00:00:01", cTime);
 }
@@ -348,7 +350,9 @@ HWTEST_F(ClockTimeTest, testLocaltimer, Function | MediumTest | Level1) {
     sleep(1);
     time(&tEnd);
     struct tm *tmrStartPtr = localtime_r(&tStart, &tmrStart);
+    ASSERT_NE(nullptr, tmrStartPtr);
     struct tm *tmrEndPtr = localtime_r(&tEnd, &tmrEnd);
+    ASSERT_NE(nullptr, tmrEndPtr);
 
     EXPECT_EQ(0, ret);
     strftime(cTime, sizeof(cTime), "%H:%M:%S", &tmrStart);
@@ -373,7 +377,7 @@ HWTEST_F(ClockTimeTest, testGetdateBasic, Function | MediumTest | Level1) {
     FILE *fp = nullptr;
     char mask[20] = "%Y-%m-%d %H:%M:%S";
     fp = fopen(DATEMSK_FILE, "w+");
-    EXPECT_NE(nullptr, fp);
+    ASSERT_NE(nullptr, fp);
     int ret = fwrite(mask, sizeof(mask), 1, fp);
     EXPECT_TRUE(ret > 0);
     ret = setenv("DATEMSK", DATEMSK_FILE, 1);
@@ -386,7 +390,7 @@ HWTEST_F(ClockTimeTest, testGetdateBasic, Function | MediumTest | Level1) {
     struct tm *retTm = nullptr;
     const char *cInput = "2020-10-26 00:01:01";
     retTm = getdate(cInput);
-    EXPECT_NE(nullptr, retTm) << "   getdate fail errno:" << getdate_err;
+    ASSERT_NE(nullptr, retTm) << "   getdate fail errno:" << getdate_err;
     strftime(cTime, sizeof(cTime), mask, retTm);
     EXPECT_STREQ(cInput, cTime);
     strftime(cTime, sizeof(cTime), "%D %A %H:%M:%S", retTm);
@@ -423,7 +427,7 @@ HWTEST_F(ClockTimeTest, testGetdateError, Function | MediumTest | Level2) {
     FILE *fp = nullptr;
     char mask[10] = "%H:%M:%S";
     fp = fopen(DATEMSK_FILE, "w+");
-    EXPECT_NE(nullptr, fp);
+    ASSERT_NE(nullptr, fp);
     ret = fwrite(mask, sizeof(mask), 1, fp);
     EXPECT_TRUE(ret > 0);
     ret = fclose(fp);

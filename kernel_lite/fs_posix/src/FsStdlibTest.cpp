@@ -120,7 +120,7 @@ HWTEST_F(FileSystemTest, testRealpath, Function | MediumTest | Level3)
     // get Absolute Path
     const char *realPathStandard = TOP_DIR "/" FILE0;
     char *realPath = (char*)malloc(256);
-    EXPECT_NE(realpath(FILE0, realPath), nullptr) << "> realpath errno = " << errno;
+    ASSERT_NE(realpath(FILE0, realPath), nullptr) << "> realpath errno = " << errno;
     EXPECT_STREQ(realPath, realPathStandard);
     LOG("> realPath = %s", realPath);
     free(realPath);

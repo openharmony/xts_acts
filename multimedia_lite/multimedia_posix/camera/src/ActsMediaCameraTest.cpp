@@ -455,7 +455,7 @@ void GetCameraId(CameraKit *cameraKit, list<string> &camList, string &camId)
     for (auto &cam : camList) {
         cout << "camera name:" << cam << endl;
         const CameraAbility *ability = cameraKit->GetCameraAbility(cam);
-        EXPECT_NE(ability, nullptr);
+        ASSERT_NE(ability, nullptr);
         CameraFlag::g_onGetCameraAbilityFlag = FLAG1;
         /* find camera which fits user's ability */
         list<CameraPicSize> sizeList = ability->GetSupportedSizes(0);
@@ -572,7 +572,7 @@ HWTEST_F(ActsMediaCameraTest, Test_RegisterCameraDeviceCallback, Function | Medi
     SampleCameraStateMng camStateMng(eventHdlr);
     SampleCameraDeviceCallback *deviceCallback = nullptr;
     deviceCallback = new SampleCameraDeviceCallback();
-    EXPECT_NE(nullptr, deviceCallback);
+    ASSERT_NE(nullptr, deviceCallback);
     cameraKit->RegisterCameraDeviceCallback(*deviceCallback, eventHdlr);
     sleep(1);
     EXPECT_EQ(CameraFlag::g_onCameraAvailableFlag, FLAG1);
@@ -596,7 +596,7 @@ HWTEST_F(ActsMediaCameraTest, Test_UnregisterCameraDeviceCallback, Function | Me
     SampleCameraStateMng camStateMng(eventHdlr);
     SampleCameraDeviceCallback *deviceCallback = nullptr;
     deviceCallback = new SampleCameraDeviceCallback();
-    EXPECT_NE(nullptr, deviceCallback);
+    ASSERT_NE(nullptr, deviceCallback);
     cameraKit->RegisterCameraDeviceCallback(*deviceCallback, eventHdlr);
     sleep(1);
     EXPECT_EQ(CameraFlag::g_onCameraAvailableFlag, FLAG1);
