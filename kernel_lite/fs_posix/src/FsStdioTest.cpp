@@ -33,7 +33,7 @@
 #include "libfs.h"
 
 using namespace testing::ext;
-
+#if 0
 /**
  * @tc.number   SUB_KERNEL_FS_STDIO_0100
  * @tc.name     basic function test : read and write with stream
@@ -386,7 +386,7 @@ HWTEST_F(FileSystemTest, testFileno1, Function | MediumTest | Level2)
 
     ReadCloseTest(fd);
 }
-
+#endif
 /**
  * @tc.number   SUB_KERNEL_FS_STDIO_0700
  * @tc.name     basic function test : Use the rename function to rename files.
@@ -417,7 +417,7 @@ HWTEST_F(FileSystemTest, testRenameDir, Function | MediumTest | Level3)
     EXPECT_NE(rename(DIR0, newDirName), -1) << "> rename errno = " << errno;
     EXPECT_NE(rmdir(newDirName), -1) << "> rmdir errno = " << errno;
 }
-
+#if 0
 /**
  * @tc.number   SUB_KERNEL_FS_STDIO_0800
  * @tc.name     basic function test : Use the fflush function to refresh stream
@@ -474,3 +474,4 @@ HWTEST_F(FileSystemTest, testFflush, Function | MediumTest | Level3)
     Msleep(100);
     AssertProcExitedOK(pid);
 }
+#endif

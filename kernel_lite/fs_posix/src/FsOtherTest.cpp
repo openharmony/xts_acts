@@ -250,7 +250,7 @@ HWTEST_F(FileSystemTest, testGlob, Function | MediumTest | Level3)
     }
     globfree(&buf);
 }
-
+#if 0
 /**
  * @tc.number   SUB_KERNEL_FS_OTHER_0500
  * @tc.name     basic function test : Use fwprintf function to write wide characters
@@ -276,3 +276,4 @@ HWTEST_F(FileSystemTest, testFwprintf, Function | MediumTest | Level3)
     EXPECT_TRUE(wcscmp(writeBuf, readBuf) == 0) << "writeBuf != readBuf";
     EXPECT_NE(fclose(fp), -1) << "> fclose errno =" << errno;
 }
+#endif
