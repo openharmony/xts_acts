@@ -75,15 +75,15 @@ lite_component("acts_component") {
       ]
     } else if (ohos_kernel_type == "linux") {
       all_features += [
-        "//test/xts/acts/utils_lite/kvstore_posix:ActsKvStoreTest",
-        "//test/xts/acts/startup_lite/parameter_posix:ActsParameterTest",
+        "//test/xts/acts/utils_lite/kv_store_posix:ActsKvStoreTest",
+        "//test/xts/acts/startup_lite/syspara_posix:ActsParameterTest",
         "//test/xts/acts/security_lite/datahuks_posix:ActsSecurityDataTest",
         "//test/xts/acts/multimedia_lite/multimedia_posix/camera:ActsMediaCameraTest",
         "//test/xts/acts/multimedia_lite/multimedia_posix/recorder:ActsMediaRecorderTest",
         "//test/xts/acts/multimedia_lite/multimedia_posix/player:ActsMediaPlayerTest",
         "//test/xts/acts/distributed_schedule_lite/samgr_posix:ActsSamgrTest",
-        "//test/xts/acts/appexecfwk_lite/bundlems_posix:ActsBundleMgrTest",
-        "//test/xts/acts/appexecfwk_lite/abilityms_posix:ActsAbilityMgrTest",
+        "//test/xts/acts/appexecfwk_lite/bundle_mgr_posix:ActsBundleMgrTest",
+        "//test/xts/acts/aafwk_lite/ability_posix:ActsAbilityMgrTest",
       ]
     }
   }
