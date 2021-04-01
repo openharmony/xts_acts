@@ -50,7 +50,7 @@ HWTEST_F(FileSystemTest, testUmask, Function | MediumTest | Level2)
     EXPECT_EQ(umask(maskPre), maskNew) << "> umask error";
 }
 #endif
-
+#if 0
 /**
  * @tc.number   SUB_KERNEL_FS_STAT_0200
  * @tc.name     basic function test : Run the stat function to obtain the file status.
@@ -77,7 +77,7 @@ HWTEST_F(FileSystemTest, testStat, Function | MediumTest | Level3)
     LOG("> buf.st_mtim = %lds,%ldns", buf.st_mtim.tv_sec, buf.st_mtim.tv_nsec);     // time for last file modification
     LOG("> buf.st_ctim = %lds,%ldns", buf.st_ctim.tv_sec, buf.st_ctim.tv_nsec);     // time for last file status change
 }
-
+#endif
 #if defined(LITE_FS_JFFS2)
 #ifndef COMMERCIAL
 /**
@@ -113,7 +113,7 @@ HWTEST_F(FileSystemTest, testStatLimt, Function | MediumTest | Level3)
 }
 #endif
 #endif
-
+#if 0
 /**
  * @tc.number   SUB_KERNEL_FS_STAT_0300
  * @tc.name     basic function test : Run the lstat function to obtain the file status.
@@ -141,7 +141,7 @@ HWTEST_F(FileSystemTest, testLstat, Function | MediumTest | Level3)
     LOG("> buf.st_mtim = %lds,%ldns", buf.st_mtim.tv_sec, buf.st_mtim.tv_nsec);     // time for last file modification
     LOG("> buf.st_ctim = %lds,%ldns", buf.st_ctim.tv_sec, buf.st_ctim.tv_nsec);     // time for last file status change
 }
-
+#endif
 #if defined(LITE_FS_JFFS2)
 #ifndef COMMERCIAL
 /**
@@ -178,7 +178,7 @@ HWTEST_F(FileSystemTest, testLstatLimt, Function | MediumTest | Level3)
 }
 #endif
 #endif
-
+#if 0
 /**
  * @tc.number   SUB_KERNEL_FS_STAT_0400
  * @tc.name     basic function test : Run the fstat function to obtain the file status.
@@ -205,7 +205,7 @@ HWTEST_F(FileSystemTest, testFstat, Function | MediumTest | Level3)
     LOG("> buf.st_ctim = %lds,%ldns", buf.st_ctim.tv_sec, buf.st_ctim.tv_nsec);     // time for last file status change
     EXPECT_NE(close(fd), -1) << "> close errno = " << errno;
 }
-
+#endif
 #if defined(LITE_FS_JFFS2)
 #ifndef COMMERCIAL
 /**
