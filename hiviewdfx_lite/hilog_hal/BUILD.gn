@@ -11,7 +11,7 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
 
-import("//test/xts/tools/build/suite_lite.gni")
+import("//test/xts/tools/lite/build/suite_lite.gni")
 hctest_suite("ActsDfxFuncTest") {
     suite_name = "acts"
     sources = [
@@ -20,12 +20,10 @@ hctest_suite("ActsDfxFuncTest") {
 
     include_dirs = [
         "src",
-        "//base/hiviewdfx/interfaces/kits/hilog_lite",
-        "//base/hiviewdfx/interfaces/innerkits/hievent_lite",
-        "//base/hiviewdfx/utils/lite",
-        "//base/hiviewdfx/frameworks/hievent_lite",
-        "//base/hiviewdfx/frameworks/hilog_lite/mini",
-        "//base/hiviewdfx/services/hilogcat_lite/commond",
+        "//base/hiviewdfx/hiview_lite",
+        "//base/hiviewdfx/hilog_lite/interfaces/native/kits/hilog_lite",
+        "//base/hiviewdfx/hievent_lite/interfaces/native/innerkits",
+        "//base/hiviewdfx/hilog_lite/frameworks/mini",
         "//vendor/hisi/hi3861/hi3861/include",
         "//vendor/hisi/hi3861/hi3861/components/lwip_sack/include"
     ]

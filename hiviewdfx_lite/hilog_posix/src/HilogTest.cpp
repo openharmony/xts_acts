@@ -24,11 +24,11 @@
 #define LOG_DOMAIN 0xD002D00
 
 using namespace OHOS::HiviewDFX;
-static constexpr HilogLabel LABEL = {LOG_CORE, 0xD002D00, "Test_TAG"};
+static constexpr HiLogLabel LABEL = {LOG_CORE, 0xD002D00, "Test_TAG"};
 using namespace std;
 using namespace testing::ext;
 	
-class HilogTest : public testing::Test {
+class HiLogTest : public testing::Test {
 protected:
     static void SetUpTestCase(void) {}
     static void TearDownTestCase(void) {}
@@ -37,112 +37,112 @@ protected:
 };
 
 /**
- * @tc.number    : Sub_Dfx_Dft_Hilog_Cortexaapi_0100
- * @tc.name      : Hilog_DEBUG parameter legal test (Cortex-A, C)
+ * @tc.number    : Sub_Dfx_Dft_HiLog_Cortexaapi_0100
+ * @tc.name      : HiLog_DEBUG parameter legal test (Cortex-A, C)
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(HilogTest, subDfxDftHilogCortexaapi0100, Function | MediumTest | Level0)
+HWTEST_F(HiLogTest, subDfxDftHiLogCortexaapi0100, Function | MediumTest | Level0)
 {
-    HILOG_DEBUG(LOG_CORE, "Debug log of Hilog API test");
+    HILOG_DEBUG(LOG_CORE, "Debug log of HiLog API test");
 }
 
 
 /**
- * @tc.number    : Sub_Dfx_Dft_Hilog_Cortexaapi_0200
+ * @tc.number    : Sub_Dfx_Dft_HiLog_Cortexaapi_0200
  * @tc.name      : HILOG_INFO parameter legal test (Cortex-A, C)
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(HilogTest, subDfxDftHilogCortexaapi0200, Function | MediumTest | Level1)
+HWTEST_F(HiLogTest, subDfxDftHiLogCortexaapi0200, Function | MediumTest | Level1)
 {
-    HILOG_INFO(LOG_CORE, "Info log of Hilog API test");
+    HILOG_INFO(LOG_CORE, "Info log of HiLog API test");
 }
 
 /**
- * @tc.number    : Sub_Dfx_Dft_Hilog_Cortexaapi_0300
+ * @tc.number    : Sub_Dfx_Dft_HiLog_Cortexaapi_0300
  * @tc.name      : HILOG_WARN parameter legal test (Cortex-A, C)
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(HilogTest, subDfxDftHilogCortexaapi0300, Function | MediumTest | Level1)
+HWTEST_F(HiLogTest, subDfxDftHiLogCortexaapi0300, Function | MediumTest | Level1)
 {
-    HILOG_WARN(LOG_CORE, "Warn log of Hilog API test");
+    HILOG_WARN(LOG_CORE, "Warn log of HiLog API test");
 }
 
 /**
- * @tc.number    : Sub_Dfx_Dft_Hilog_Cortexaapi_0400
+ * @tc.number    : Sub_Dfx_Dft_HiLog_Cortexaapi_0400
  * @tc.name      : HILOG_ERROR parameter legal test (Cortex-A, C)
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(HilogTest, subDfxDftHilogCortexaapi0400, Function | MediumTest | Level1)
+HWTEST_F(HiLogTest, subDfxDftHiLogCortexaapi0400, Function | MediumTest | Level1)
 {
-    HILOG_ERROR(LOG_CORE, "Error log of Hilog API test");
+    HILOG_ERROR(LOG_CORE, "Error log of HiLog API test");
 }
 
 /**
- * @tc.number    : Sub_Dfx_Dft_Hilog_Cortexaapi_0500
+ * @tc.number    : Sub_Dfx_Dft_HiLog_Cortexaapi_0500
  * @tc.name      : HILOG_FATAL parameter legal test (Cortex-A, C)
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(HilogTest, subDfxDftHilogCortexaapi0500, Function | MediumTest | Level1)
+HWTEST_F(HiLogTest, subDfxDftHiLogCortexaapi0500, Function | MediumTest | Level1)
 {
-    HILOG_FATAL(LOG_CORE, "Fatal log of Hilog API test");
+    HILOG_FATAL(LOG_CORE, "Fatal log of HiLog API test");
 }
 
 /**
- * @tc.number    : Sub_Dfx_Dft_Hilog_Cortexaapi_0600
- * @tc.name      : Hilog::Debug parameter legal test (Cortex-A, C)
+ * @tc.number    : Sub_Dfx_Dft_HiLog_Cortexaapi_0600
+ * @tc.name      : HiLog::Debug parameter legal test (Cortex-A, C)
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(HilogTest, subDfxDftHilogCortexaapi0600, Function | MediumTest | Level1)
+HWTEST_F(HiLogTest, subDfxDftHiLogCortexaapi0600, Function | MediumTest | Level1)
 {
-    bool ret = True;
-    ret = Hilog::Debug(LABEL, "Debug log of Hilog API test");
+    bool ret = true;
+    ret = HiLog::Debug(LABEL, "Debug log of HiLog API test");
     EXPECT_TRUE(ret);
 }
 
 /**
- * @tc.number    : Sub_Dfx_Dft_Hilog_Cortexaapi_0700
- * @tc.name      : Hilog::Error parameter legal test (Cortex-A, C)
+ * @tc.number    : Sub_Dfx_Dft_HiLog_Cortexaapi_0700
+ * @tc.name      : HiLog::Error parameter legal test (Cortex-A, C)
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(HilogTest, subDfxDftHilogCortexaapi0700, Function | MediumTest | Level1)
+HWTEST_F(HiLogTest, subDfxDftHiLogCortexaapi0700, Function | MediumTest | Level1)
 {
-    bool ret = True;
-    ret = Hilog::Error(LABEL, "Error log of Hilog API test");
+    bool ret = true;
+    ret = HiLog::Error(LABEL, "Error log of HiLog API test");
     EXPECT_TRUE(ret);
 }
 
 /**
- * @tc.number    : Sub_Dfx_Dft_Hilog_Cortexaapi_0800
- * @tc.name      : Hilog::Fatal parameter legal test (Cortex-A, C)
+ * @tc.number    : Sub_Dfx_Dft_HiLog_Cortexaapi_0800
+ * @tc.name      : HiLog::Fatal parameter legal test (Cortex-A, C)
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(HilogTest, subDfxDftHilogCortexaapi0800, Function | MediumTest | Level1)
+HWTEST_F(HiLogTest, subDfxDftHiLogCortexaapi0800, Function | MediumTest | Level1)
 {
-    bool ret = True;
-    ret = Hilog::Fatal(LABEL, "Fatal log of Hilog API test");
+    bool ret = true;
+    ret = HiLog::Fatal(LABEL, "Fatal log of HiLog API test");
     EXPECT_TRUE(ret);
 }
 
 /**
- * @tc.number    : Sub_Dfx_Dft_Hilog_Cortexaapi_0900
- * @tc.name      : Hilog::Info parameter legal test (Cortex-A, C)
+ * @tc.number    : Sub_Dfx_Dft_HiLog_Cortexaapi_0900
+ * @tc.name      : HiLog::Info parameter legal test (Cortex-A, C)
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(HilogTest, subDfxDftHilogCortexaapi0900, Function | MediumTest | Level1)
+HWTEST_F(HiLogTest, subDfxDftHiLogCortexaapi0900, Function | MediumTest | Level1)
 {
-    bool ret = True;
-    ret = Hilog::Info(LABEL, "Info log of Hilog API test");
+    bool ret = true;
+    ret = HiLog::Info(LABEL, "Info log of HiLog API test");
     EXPECT_TRUE(ret);
 }
 
 /**
- * @tc.number    : Sub_Dfx_Dft_Hilog_Cortexaapi_1000
- * @tc.name      : Hilog::Warn parameter legal test (Cortex-A, C)
+ * @tc.number    : Sub_Dfx_Dft_HiLog_Cortexaapi_1000
+ * @tc.name      : HiLog::Warn parameter legal test (Cortex-A, C)
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(HilogTest, subDfxDftHilogCortexaapi1000, Function | MediumTest | Level1)
+HWTEST_F(HiLogTest, subDfxDftHiLogCortexaapi1000, Function | MediumTest | Level1)
 {
-    bool ret = True;
-    ret = Hilog::Warn(LABEL, "Warn log of Hilog API test");
+    bool ret = true;
+    ret = HiLog::Warn(LABEL, "Warn log of HiLog API test");
     EXPECT_TRUE(ret);
 }

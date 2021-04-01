@@ -40,6 +40,7 @@ lite_component("acts_component") {
         "//test/xts/acts/kernel_lite/kernelcmsis_hal:ActsCMSISTest",
         "//test/xts/acts/utils_lite/kvstore_hal:ActsKvStoreTest",
         "//test/xts/acts/security_lite/datahuks_hal:ActsSecurityDataTest",
+        "//test/xts/acts/hiviewdfx_lite/hilog_hal:ActsDfxFuncTest",
 
         "//test/xts/acts/distributed_schedule_lite/samgr_hal:ActsSamgrTest",
         "//test/xts/acts/update_lite/updater_hal:ActsUpdaterFuncTest",
@@ -59,6 +60,7 @@ lite_component("acts_component") {
 
         #"//test/xts/acts/distributedschedule_lite/dtbschedmgr_posix:ActsDMSTest",
         "//test/xts/acts/security_lite/permission_posix/pms:ActsPMSTest",
+        "//test/xts/acts/hiviewdfx_lite/hilog_posix:ActsHilogTest",
         "//test/xts/acts/multimedia_lite/multimedia_posix/recorder:ActsMediaRecorderTest",
 
         "//test/xts/acts/graphic_lite:uikit_test",
