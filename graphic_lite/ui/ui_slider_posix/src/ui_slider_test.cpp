@@ -75,21 +75,8 @@ HWTEST_F(UISliderTest, Graphic_UISliderTest_Test_SetImage_0400, Function | Mediu
     UISlider* slider = new UISlider();
     ImageInfo* backgroundImage = nullptr;
     ImageInfo* foregroundImage = nullptr;
-    ImageInfo* knobImage = nullptr;
-    slider->SetImage(backgroundImage, foregroundImage, knobImage);
+    slider->SetImage(backgroundImage, foregroundImage);
     EXPECT_EQ(0, 0);
-    delete backgroundImage;
-    delete foregroundImage;
-
-    char* chBackgroundImage = nullptr;
-    char* chForegroundImage = nullptr;
-    char* chKnobImage = nullptr;
-    slider->SetImage(chBackgroundImage, chForegroundImage, chKnobImage);
-    EXPECT_EQ(0, 0);
-    delete slider;
-    delete chBackgroundImage;
-    delete chForegroundImage;
-    delete chKnobImage;
 }
 
 /**

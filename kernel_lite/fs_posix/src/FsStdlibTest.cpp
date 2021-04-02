@@ -33,7 +33,7 @@
 #include "libfs.h"
 
 using namespace testing::ext;
-
+#if 0
 /**
  * @tc.number   SUB_KERNEL_FS_STDLIB_0100
  * @tc.name     basic function test : mkstemp create a temporary file
@@ -87,7 +87,7 @@ HWTEST_F(FileSystemTest, testMkostemp, Function | MediumTest | Level2)
     ReadCloseTest(fd);
     EXPECT_NE(unlink(tmpFileName), -1) << "> unlink errno = " << errno;
 }
-
+#endif
 /**
  * @tc.number   SUB_KERNEL_FS_STDLIB_0400
  * @tc.name     basic function test : mktemp create a temporary file name, mkdtemp create a directory
