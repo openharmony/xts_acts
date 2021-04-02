@@ -21,7 +21,7 @@
 #include "samgr_lite.h"
 
 #define OPER_INTERVAL 200    // 200 ms
-#define PRESSURE_BASE (1024 * 10)
+#define PRESSURE_BASE (10)
 
 enum MessageId {
     MSG_NO, // receiver does not send response
@@ -385,9 +385,8 @@ static void ReleaseIUnknown(DemoApi *demoApi)
 
 static void DemoHandlerAndCheck(const Request *request, const Response *response)
 {
-    printf("[hctest]DemoHandlerAndCheck request: %s\n", (char *)request->data);
-
-    printf("[hctest]DemoHandlerAndCheck response: %s\n", (char *)response->data);
+    (void)request;
+    (void)response;
 }
 
 LITE_TEST_SUIT(test, samgr, SendRequestTestSuite);
