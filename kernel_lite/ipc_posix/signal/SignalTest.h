@@ -21,6 +21,7 @@
 
 const int MAX_SIGNAL = 31;
 const int MAX_DESCRP_LEN = 32;
+const int KEEP_RUN_TIME = 150;
 enum SignalAction {TERMINATE, COREDUMP, IGNORE, STOP, CONTINUE};
 struct SignalNameAction {
     char signame[12];
