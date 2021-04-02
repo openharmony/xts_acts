@@ -115,7 +115,7 @@ void IpcSignalTest::DefaultActionTest(const int signum, const bool expectStop, c
         }
     } else { // child
         LOGD("child start");
-        KeepRun(100);
+        KeepRun(150);
         if (expectStop) {
             LOG("Child should has been Terminated, but still alive.");
             exit(1);
