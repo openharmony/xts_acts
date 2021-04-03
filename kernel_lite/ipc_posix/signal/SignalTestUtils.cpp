@@ -29,6 +29,7 @@ int IpcSignalTest::mReceivedSignal = 0;
 int IpcSignalTest::mShmid = 0;
 siginfo_t IpcSignalTest::mSiginfo;
 
+
 // special signal hander for function 'abort'
 void IpcSignalTest::SigAbortHandler(int signum)
 {
@@ -115,7 +116,7 @@ void IpcSignalTest::DefaultActionTest(const int signum, const bool expectStop, c
         }
     } else { // child
         LOGD("child start");
-        KeepRun(100);
+        KeepRun(KEEP_RUN_TIME);
         if (expectStop) {
             LOG("Child should has been Terminated, but still alive.");
             exit(1);

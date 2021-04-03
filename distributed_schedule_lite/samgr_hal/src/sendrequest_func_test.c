@@ -21,7 +21,7 @@
 #include "samgr_lite.h"
 
 #define OPER_INTERVAL 200    // 200 ms
-#define PRESSURE_BASE (10)
+#define PRESSURE_BASE 10
 
 enum MessageId {
     MSG_NO, // receiver does not send response
