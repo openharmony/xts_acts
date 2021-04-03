@@ -29,6 +29,7 @@ int IpcSignalTest::mReceivedSignal = 0;
 int IpcSignalTest::mShmid = 0;
 siginfo_t IpcSignalTest::mSiginfo;
 
+
 // special signal hander for function 'abort'
 void IpcSignalTest::SigAbortHandler(int signum)
 {
