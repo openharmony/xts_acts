@@ -1177,23 +1177,6 @@ HWTEST_F(ActsNetTest, testIoctlIfhwAddr, Function | MediumTest | Level2)
                 *(macPtr+2), *(macPtr+3), *(macPtr+4), *(macPtr+5));
             EXPECT_EQ(strlen(rst1), (unsigned int)ret) << "sprintf_s error";
             printf("[###]get %s rst[%s]\n", ifrTmp.ifr_name, rst1);
-
-            // set ifhwaddr
-            ret = ioctl(udpFd, SIOCSIFHWADDR, &ifrTmp);
-            if (strcmp("0.0.0.0", inet_ntoa(addr->sin_addr)) == 0) {
-                // can't set 0.0.0.0
-                EXPECT_NE(0, ret) << "ioctl[0.0.0.0] fail[SIOCSIFHWADDR], errinfo[" << strerror(errno) << "]";
-            } else {
-                EXPECT_EQ(0, ret) << "ioctl fail[SIOCSIFHWADDR], errinfo[" << strerror(errno) << "]";
-            }
-
-            // get again
-            ret = ioctl(udpFd, SIOCGIFHWADDR, &ifrTmp);
-            EXPECT_EQ(0, ret) << "ioctl fail[SIOCGIFADDR], errinfo[" << strerror(errno) << "]";
-            ret = sprintf_s(rst2, sizeof(rst2), "%.2x:%.2x:%.2x:%.2x:%.2x:%.2x", *macPtr, *(macPtr+1),
-                *(macPtr+2), *(macPtr+3), *(macPtr+4), *(macPtr+5));
-            EXPECT_EQ(strlen(rst2), (unsigned int)ret) << "sprintf_s error";
-            EXPECT_STREQ(rst1, rst2);
         }
     }
     ret = close(udpFd);
