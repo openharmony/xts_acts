@@ -93,7 +93,7 @@ HWTEST_F(AlarmTest, testAlarmFork, Function | MediumTest | Level2)
     pid_t pid = fork();
     ASSERT_TRUE(pid >= 0) << "======== Fork Error! =========";
     if (pid == 0) { // child
-        Msleep(1100);
+        Msleep(MSLEEP_TIME);
         if (mReceivedSignal != 0) {
             if (mReceivedSignal == SIGALRM) {
                 LOG("child received SIGALRM!");
@@ -105,7 +105,7 @@ HWTEST_F(AlarmTest, testAlarmFork, Function | MediumTest | Level2)
             exit(0);
         }
     } else { // parent
-        Msleep(1100);
+        Msleep(MSLEEP_TIME);
         EXPECT_EQ(mReceivedSignal, SIGALRM);
         WaitProcExitedOK(pid);
     }
@@ -229,7 +229,7 @@ HWTEST_F(AlarmTest, testTimerCreateEventSignal, Function | MediumTest | Level3)
     EXPECT_EQ(timer_settime(tid, 0, &its, NULL), 0) << "ERROR: timer_settime() != 0";
 
     uint32_t setMillisec = its.it_value.tv_sec * 1000 + its.it_value.tv_nsec / 1000000;
-    Msleep(setMillisec + 10);
+    Msleep(setMillisec + ACCURACY_ERROR);
     EXPECT_EQ(mReceivedSignal, ev.sigev_signo) << "mReceivedSignal != ev.sigev_signo";
     EXPECT_EQ(timer_delete(tid), 0) << "ERROR: timer_delete() != 0";
 
@@ -259,7 +259,7 @@ HWTEST_F(AlarmTest, testTimerCreateEventDefault, Function | MediumTest | Level3)
 
     setMillisec = its.it_value.tv_sec * 1000 + its.it_value.tv_nsec / 1000000;
     LOG("setMillisec = %u", setMillisec);
-    Msleep(setMillisec + 11);
+    Msleep(setMillisec + ACCURACY_ERROR);
     EXPECT_EQ(mReceivedSignal, SIGALRM) << "mReceivedSignal != SIGALRM";
 
     mReceivedSignal = 0;
@@ -272,7 +272,7 @@ HWTEST_F(AlarmTest, testTimerCreateEventDefault, Function | MediumTest | Level3)
 
     setMillisec = its.it_value.tv_sec * 1000 + its.it_value.tv_nsec / 1000000;
     LOG("setMillisec = %u", setMillisec);
-    Msleep(setMillisec + 11);
+    Msleep(setMillisec + ACCURACY_ERROR);
 
     EXPECT_EQ(mReceivedSignal, SIGALRM) << "mReceivedSignal != SIGALRM";
     EXPECT_EQ(timer_delete(tid), 0) << "ERROR: timer_delete() != 0";
@@ -357,7 +357,7 @@ HWTEST_F(AlarmTest, testTimerCreateFork, Function | MediumTest | Level2)
             exit(1);
         }
     } else { // parent
-        Msleep(setMillisec + 10);
+        Msleep(setMillisec + ACCURACY_ERROR);
         EXPECT_EQ(mReceivedSignal, SIGALRM);
         WaitProcExitedOK(pid);
     }
@@ -492,7 +492,7 @@ HWTEST_F(AlarmTest, testSetItTimerOneshot, Function | MediumTest | Level3)
     EXPECT_EQ(setitimer(ITIMER_REAL, &setItv, NULL), 0) << "ERROR: setitimer() != 0";
 
     setMillisec = setItv.it_value.tv_sec * 1000 + setItv.it_value.tv_usec / 1000;
-    Msleep(setMillisec + 11);
+    Msleep(setMillisec + ACCURACY_ERROR);
     LOG("mReceivedSignal = %d, SIGALRM = %d", mReceivedSignal, SIGALRM);
     EXPECT_EQ(mReceivedSignal, SIGALRM) << "ERROR: mReceivedSignal != SIGALRM";
 
@@ -504,7 +504,7 @@ HWTEST_F(AlarmTest, testSetItTimerOneshot, Function | MediumTest | Level3)
     setItv.it_interval.tv_usec = 0;
     EXPECT_EQ(setitimer(ITIMER_REAL, &setItv, NULL), 0) << "ERROR: setitimer() != 0";
     setMillisec = setItv.it_value.tv_sec * 1000 + setItv.it_value.tv_usec / 1000;
-    Msleep(setMillisec + 1);
+    Msleep(setMillisec + ACCURACY_ERROR);
     LOG("mReceivedSignal = %d, SIGALRM = %d", mReceivedSignal, SIGALRM);
     EXPECT_EQ(mReceivedSignal, SIGALRM) << "ERROR: mReceivedSignal != SIGALRM";
 }
@@ -529,7 +529,7 @@ HWTEST_F(AlarmTest, testSetItTimerRepeate, Function | MediumTest | Level3)
     uint32_t setMillisec = setItv.it_value.tv_sec * 1000 + setItv.it_value.tv_usec / 1000;
     while (true) {
         count++;
-        Msleep(setMillisec + 1);
+        Msleep(setMillisec + ACCURACY_ERROR);
         if (mReceivedSignal == SIGALRM) {
             count++;
             if (count > 3) {
@@ -586,7 +586,7 @@ HWTEST_F(AlarmTest, testSetItTimerOldvalue, Function | MediumTest | Level3)
     setItv.it_interval.tv_usec = 100000;
     EXPECT_EQ(setitimer(ITIMER_REAL, &setItv, NULL), 0) << "ERROR: setitimer() != 0";
     setMillisec = setItv.it_value.tv_sec * 1000 + setItv.it_value.tv_usec / 1000;
-    usleep((setMillisec + 11) * 1000);
+    usleep((setMillisec + ACCURACY_ERROR) * 1000);
     LOG("mReceivedSignal = %d, SIGALRM = %d", mReceivedSignal, SIGALRM);
     EXPECT_EQ(mReceivedSignal, SIGALRM) << "ERROR: mReceivedSignal != SIGALRM";
 
