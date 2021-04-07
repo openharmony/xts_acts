@@ -19,6 +19,8 @@
 #include <signal.h>
 #include <gtest/gtest.h>
 
+const int ACCURACY_ERROR = 8;
+const int MSLEEP_TIME = 1200;
 class AlarmTest : public testing::Test {
 public:
     void SetUp()
