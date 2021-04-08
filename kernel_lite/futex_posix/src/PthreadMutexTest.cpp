@@ -333,7 +333,7 @@ HWTEST_F(FutexTest, testPthreadMattrTypeRecursive1, Function | MediumTest | Leve
         exit(exitCode);
     }
     Msleep(80);
-    AssertProcExitedOK(pid);
+    WaitProcExitedOK(pid);
 }
 
 /********************************************* Test case dividing line ***********************************************/
@@ -410,7 +410,7 @@ HWTEST_F(FutexTest, testPthreadMattrTypeRecursive3, Function | MediumTest | Leve
         exit(exitCode);
     }
     Msleep(80);
-    AssertProcExitedOK(pid);
+    WaitProcExitedOK(pid);
 }
 
 /********************************************* Test case dividing line ***********************************************/
