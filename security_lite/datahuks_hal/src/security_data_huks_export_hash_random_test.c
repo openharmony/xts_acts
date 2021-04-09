@@ -53,7 +53,7 @@ static BOOL SecurityDataHuksExportHashRandomHmacTestSuiteTearDown(void)
     printf("-++++++++++++++++++++++++++++++++++++++++++++-\n");
     return TRUE;
 }
-
+#ifndef _CUT_AUTHENTICATE_
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Export Public key
 // begin++++++++++++++++++++++++++++++++++++++++++++++1000-1090
 
@@ -326,7 +326,9 @@ securityDataExportPublicKey1090, Function | MediumTest | Level2)
     TEST_ASSERT_EQUAL_INT(NUM1010, status);
     HksBlobDestroyT1(&publicKey1);
 }
+#endif
 
+#ifndef _CUT_AUTHENTICATE_
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Export Public key
 // end++++++++++++++++++++++++++++++++++++++++++++++++1000-1090
 
@@ -545,7 +547,7 @@ LITE_TEST_CASE(SecurityDataHuksExportHashRandomHmacTestSuite, securityDataHash11
     HksBlobDestroyT1(&hash);
     TEST_ASSERT_EQUAL_INT(NUM1007, status);
 }
-
+#endif
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Hash
 // end+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++1100-1190
 
