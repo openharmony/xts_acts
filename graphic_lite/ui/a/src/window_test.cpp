@@ -154,6 +154,7 @@ HWTEST_F(WindowTest, SUB_GRAPHIC_INTERFACE_FIRST_5800, Function | MediumTest | L
  */
 HWTEST_F(WindowTest, SUB_GRAPHIC_INTERFACE_FIRST_5900, Function | MediumTest | Level0)
 {
+    OHOS::GraphicStartUp::Init();
     WindowConfig windowConfig = {};
     Window* window = Window::CreateWindow(windowConfig);
     RootView* rootView = RootView::GetInstance();
