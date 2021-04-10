@@ -54,6 +54,7 @@ void HksBlobDestroyT1(struct hks_blob *blob)
 }
 int TestSecShuksGenerateKeyNormal(void)
 {
+#ifndef _CUT_AUTHENTICATE_
     char testFileName[] = "keyalias1";
     char testFileName1[] = "key_auth_id1";
     struct hks_blob keyAlias;
@@ -72,10 +73,12 @@ int TestSecShuksGenerateKeyNormal(void)
     keyParam.key_pad = 0;
     int32_t status = hks_generate_key(&keyAlias, &keyParam);
     TEST_ASSERT_EQUAL_INT(0, status);
+#endif
     return 0;
 }
 int TestSecShuksDeleteKeyNormal(void)
 {
+#ifndef _CUT_AUTHENTICATE_
     char testFileName[] = "keyalias1";
     struct hks_blob keyAlias = { 0 };
 
@@ -85,12 +88,15 @@ int TestSecShuksDeleteKeyNormal(void)
 
     int32_t status = hks_delete_key(&keyAlias);
     TEST_ASSERT_EQUAL_INT(0, status);
+#endif
     return 0;
 }
 int TestSecShuksExportPublicNormal(struct hks_blob *keyAlias, struct hks_blob *publicKey1)
 {
+#ifndef _CUT_AUTHENTICATE_
     int32_t status = hks_export_public_key(keyAlias, publicKey1);
     TEST_ASSERT_EQUAL_INT(0, status);
+#endif
     return 0;
 }
 void BuildBlobData(struct hks_blob *param, const char *str, uint8_t type, uint32_t size, uint8_t isDataNull)
@@ -171,6 +177,7 @@ void TestInitKeyParam1(struct hks_key_param *keyParam, uint32_t keyType, uint32_
 
 int TestSecShuksImportPublicNormal(void)
 {
+#ifndef _CUT_AUTHENTICATE_
     char testFileName[] = "keyalias1";
     struct hks_key_param keyParam1 = { 0 };
 
@@ -196,6 +203,7 @@ int TestSecShuksImportPublicNormal(void)
     TEST_ASSERT_EQUAL_INT(0, status);
 
     HksBlobDestroyT1(&publicKey1);
+#endif
     return 0;
 }
 
@@ -240,6 +248,7 @@ static BOOL SecurityDataHuksGenDelTestSuiteTearDown(void)
  * @tc.name      : Generate key, normal input parameters keyAlias and keyParam
  * @tc.desc      : [C- SECURITY -1400]
  */
+#ifndef _CUT_AUTHENTICATE_
 LITE_TEST_CASE(SecurityDataHuksGenDelTestSuite, securityDataGenerateKey0000, Function | MediumTest | Level1)
 {
     char testFileName[] = "keyalias1";
@@ -831,5 +840,5 @@ LITE_TEST_CASE(SecurityDataHuksGenDelTestSuite, securityDataDeleteKey0190, Funct
 }
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Delete key
 // end+++++++++++++++++++++++++++++++++++++++++++++++++++++++0130-0190
-
+#endif
 RUN_TEST_SUITE(SecurityDataHuksGenDelTestSuite);

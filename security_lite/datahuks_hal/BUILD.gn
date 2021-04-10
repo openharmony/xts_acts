@@ -12,6 +12,7 @@
 # limitations under the License.
 
 import("//test/xts/tools/lite/build/suite_lite.gni")
+import("//base/security/huks/build/config.gni")
 
 hctest_suite("ActsSecurityDataTest") {
   suite_name = "acts"
@@ -22,7 +23,9 @@ hctest_suite("ActsSecurityDataTest") {
     "src/security_data_huks_gen_del_test.c",
     "src/security_data_huks_sign_verify_test.c",
   ]
-
+  if (disable_authenticate == true) {
+      defines = [ "_CUT_AUTHENTICATE_" ]
+  }
   include_dirs = [
     "src",
     "//base/security/huks/interfaces/innerkits/huks_lite/",
