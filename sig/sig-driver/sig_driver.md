@@ -20,10 +20,10 @@ Note: The content of this SIG follows the convention described in OpenHarmony's 
 ## SIG Members
 
 ### Leader
-- @gitee account(https://gitee.com/zianed)
+- @gitee account(https://gitee.com/chenfeng469)
 
 ### Committers
-- @gitee account(https://gitee.com/chenfeng469)
+- @gitee account(https://gitee.com/zianed)
 - @gitee account(https://gitee.com/dxbedu)
 - @gitee account(https://gitee.com/Kevin-Lau)
 - @gitee account(https://gitee.com/gong-hui-89)
