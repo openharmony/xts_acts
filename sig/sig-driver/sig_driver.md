@@ -5,9 +5,9 @@ Note: The content of this SIG follows the convention described in OpenHarmony's 
 
 ## SIG group work objectives and scope
 
-### work goals
+### Driven development and planning
 
-### work scope
+### Driving related
 
 ### The repository 
 - project name:
