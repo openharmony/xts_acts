@@ -349,7 +349,7 @@ HWTEST_F(FileSystemTest, testTruncateEinval, Function | MediumTest | Level3)
 HWTEST_F(FileSystemTest, testTruncateEacces, Function | MediumTest | Level3)
 {
     EXPECT_EQ(truncate("/", 10), -1);
-    printf("errno = %d\n" ,errno);
+    printf("errno = %d\n", errno);
     EXPECT_EQ(errno, EISDIR);
 }
 #endif
