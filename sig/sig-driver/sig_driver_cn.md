@@ -21,12 +21,13 @@
 ## SIG组成员
 
 ### Leader
-- @码云账号(https://gitee.com/zianed)
+- @码云账号(https://gitee.com/chenfeng469)
 
 ### Committers列表
-- @码云账号(https://gitee.com/chenfeng469)
+- @码云账号(https://gitee.com/zianed)
 - @码云账号(https://gitee.com/dxbedu)
 - @码云账号(https://gitee.com/Kevin-Lau)
+- @码云账号(https://gitee.com/gong-hui-89)
 
 ### 会议
  - 会议时间：xxx
