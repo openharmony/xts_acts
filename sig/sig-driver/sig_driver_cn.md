@@ -13,21 +13,21 @@
 
 ## 代码仓
 - 代码仓地址：
-  - repository1名称：https://gitee.com/openharmony/drivers_framework
-  - repository2名称：https://gitee.com/openharmony/drivers_peripheral
-  - repository3名称：https://gitee.com/openharmony/drivers_adapter
-  - repository4名称：https://gitee.com/openharmony/drivers_adapter_khdf_linux
+  - drivers_framework：https://gitee.com/openharmony/drivers_framework
+  - drivers_peripheral：https://gitee.com/openharmony/drivers_peripheral
+  - drivers_adapter：https://gitee.com/openharmony/drivers_adapter
+  - drivers_adapter_khdf_linux：https://gitee.com/openharmony/drivers_adapter_khdf_linux
 
 ## SIG组成员
 
 ### Leader
-- @码云账号(https://gitee.com/chenfeng469)
+- @chenfeng469(https://gitee.com/chenfeng469)
 
 ### Committers列表
-- @码云账号(https://gitee.com/zianed)
-- @码云账号(https://gitee.com/dxbedu)
-- @码云账号(https://gitee.com/Kevin-Lau)
-- @码云账号(https://gitee.com/gong-hui-89)
+- @zianed(https://gitee.com/zianed)
+- @dxbedu(https://gitee.com/dxbedu)
+- @Kevin-Lau(https://gitee.com/Kevin-Lau)
+- @gong-hui-89(https://gitee.com/gong-hui-89)
 
 ### 会议
  - 会议时间：xxx
