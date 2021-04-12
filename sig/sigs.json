@@ -5,5 +5,10 @@
          "projects":"https://gitee.com/openharmony/third_party_littlefs",
          "project-path":"third_party/littlefs"
       },
+      {
+         "sig-name":"sig-driver",
+         "projects":["https://gitee.com/openharmony/drivers_framework", "https://gitee.com/openharmony/drivers_peripheral", "https://gitee.com/openharmony/drivers_adapter", "https://gitee.com/openharmony/drivers_adapter_khdf_linux"],
+         "project-path":["drivers/framework", "drivers/peripheral", "drivers/adapter", "drivers/adapter/khdf/linux"]
+      }
    ]
 }
