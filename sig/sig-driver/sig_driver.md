@@ -11,10 +11,10 @@ Note: The content of this SIG follows the convention described in OpenHarmony's 
 
 ### The repository 
 - project name:
-  -drivers_framework: https://gitee.com/openharmony/drivers_framework
-  -drivers_peripheral: https://gitee.com/openharmony/drivers_peripheral
-  -drivers_adapter: https://gitee.com/openharmony/drivers_adapter
-  -drivers_adapter_khdf_linux: https://gitee.com/openharmony/drivers_adapter_khdf_linux
+  - drivers_framework: https://gitee.com/openharmony/drivers_framework
+  - drivers_peripheral: https://gitee.com/openharmony/drivers_peripheral
+  - drivers_adapter: https://gitee.com/openharmony/drivers_adapter
+  - drivers_adapter_khdf_linux: https://gitee.com/openharmony/drivers_adapter_khdf_linux
 
 
 ## SIG Members
