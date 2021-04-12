@@ -31,7 +31,7 @@ void DacTestSuite::SetUp()
     // Delete the the directory if exists
     RemoveDir(TOP_DIR "/" DACDIR0);
     RemoveDir(TOP_DIR "/" DACDIR1);
-    RemoveDir("/dev/" DACDIR0);
+    RemoveDir("/storage/" DACDIR0);
     // Obtain the current working directory of the test code
     mCurPath = GetCurrentPath();
     // Modify the current working directory of the test code
@@ -47,7 +47,7 @@ void DacTestSuite::TearDown()
     // Delete the the directory if exists
     RemoveDir(TOP_DIR "/" DACDIR0);
     RemoveDir(TOP_DIR "/" DACDIR1);
-    RemoveDir("/dev/" DACDIR0);
+    RemoveDir("/storage/" DACDIR0);
     // Initialize the process and set the uid and gid of the process to zero
     SetUidGid(UID0, GID0);
     // Restore the working directory of the test code
