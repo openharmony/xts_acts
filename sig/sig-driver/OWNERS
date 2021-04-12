@@ -1,14 +1,14 @@
 {
    "Leader":[
       {
-         "gitee_id":"zianed",
-         "gitee_email":"houxuanzhe@huawei.com"
+         "gitee_id":"chenfeng469",
+         "gitee_email":"chenfeng469@huawei.com"
       }
    ]
    "Committers":[
       {
-         "gitee_id":"chenfeng469",
-         "gitee_email":"chenfeng469@huawei.com"
+         "gitee_id":"zianed",
+         "gitee_email":"houxuanzhe@huawei.com"
       },
       {
          "gitee_id":"dxbedu",
@@ -17,6 +17,10 @@
       {
          "gitee_id":"Kevin-Lau",
          "gitee_email":"liufeihu@huawei.com"
+      },
+      {
+         "gitee_id":"gong-hui-89",
+         "gitee_email":"Allenhui.gonghui@huawei.com"
       }
    ]
 }
