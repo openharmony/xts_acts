@@ -20,13 +20,13 @@ Note: The content of this SIG follows the convention described in OpenHarmony's 
 ## SIG Members
 
 ### Leader
-- @gitee account(https://gitee.com/chenfeng469)
+- @chenfeng469(https://gitee.com/chenfeng469)
 
 ### Committers
-- @gitee account(https://gitee.com/zianed)
-- @gitee account(https://gitee.com/dxbedu)
-- @gitee account(https://gitee.com/Kevin-Lau)
-- @gitee account(https://gitee.com/gong-hui-89)
+- @zianed(https://gitee.com/zianed)
+- @dxbedu(https://gitee.com/dxbedu)
+- @Kevin-Lau(https://gitee.com/Kevin-Lau)
+- @gong-hui-89(https://gitee.com/gong-hui-89)
 
  ### Meetings
  - Meeting time：xxx
