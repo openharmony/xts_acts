@@ -11,17 +11,21 @@ Note: The content of this SIG follows the convention described in OpenHarmony's 
 
 ### The repository 
 - project name:
-  -repository1 name:https://gitee.com/openharmony/xxx
-  -repository2 name:https://gitee.com/openharmony-sig/xxx
+  -repository1 name: https://gitee.com/openharmony/drivers_framework
+  -repository2 name: https://gitee.com/openharmony/drivers_peripheral
+  -repository3 name: https://gitee.com/openharmony/drivers_adapter
+  -repository4 name: https://gitee.com/openharmony/drivers_adapter_khdf_linux
 
 
 ## SIG Members
 
 ### Leader
-- @gitee account(https://gitee.com/xxx)
+- @gitee account(https://gitee.com/zianed)
 
 ### Committers
-- @gitee account(https://gitee.com/xxx)
+- @gitee account(https://gitee.com/chenfeng469)
+- @gitee account(https://gitee.com/dxbedu)
+- @gitee account(https://gitee.com/Kevin-Lau)
 
  ### Meetings
  - Meeting time：xxx
