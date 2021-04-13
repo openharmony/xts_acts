@@ -55,7 +55,7 @@ static BOOL KvStoreFuncTestSuiteTearDown(void)
 }
 
 /* Create files in batches. */
-bool SetKVFiles (int num, const char* key, const char* value)
+BOOL SetKVFiles (int num, const char* key, const char* value)
 {
     int size;
     int ret;
@@ -63,16 +63,16 @@ bool SetKVFiles (int num, const char* key, const char* value)
     char valuetemp[MAX_VALUE_LEN_TEST] = {0};
     char temp[MAX_VALUE_LEN_TEST] = {0};
     if (num <= 0) {
-        return false;
+        return FALSE;
     }
     for (int i = 1; i <= num; i++) {
         size = sprintf_s(keytemp, MAX_KEY_LEN_TEST, "%s_%d", key, i);
         if (size < 0) {
-            return false;
+            return FALSE;
         }
         size = sprintf_s(valuetemp, MAX_VALUE_LEN_TEST, "%s_%d", value, i);
         if (size < 0) {
-            return false;
+            return FALSE;
         }
         ret = UtilsSetValue(keytemp, valuetemp);
         if (i <= MAX_KEY_NUM_TEST) {
@@ -97,11 +97,11 @@ bool SetKVFiles (int num, const char* key, const char* value)
         IoTWatchDogKick();
     }
     IoTWatchDogKick();
-    return true;
+    return TRUE;
 }
 
 /* Read files in batches. */
-bool ReadKVFiles (int num, const char* key, const char* value)
+BOOL ReadKVFiles (int num, const char* key, const char* value)
 {
     int size;
     int ret;
@@ -110,16 +110,16 @@ bool ReadKVFiles (int num, const char* key, const char* value)
     char valuetemp[MAX_VALUE_LEN_TEST] = {0};
     char temp[MAX_VALUE_LEN_TEST] = {0};
     if (num <= 0) {
-        return false;
+        return FALSE;
     }
     for (int loop = num; loop > 0; loop--) {
         size = sprintf_s(keytemp, MAX_KEY_LEN_TEST, "%s_%d", key, loop);
         if (size < 0) {
-            return false;
+            return FALSE;
         }
         size = sprintf_s(valuetemp, MAX_VALUE_LEN_TEST, "%s_%d", value, loop);
         if (size < 0) {
-            return false;
+            return FALSE;
         }
         ret = UtilsGetValue(keytemp, temp, MAX_VALUE_LEN_TEST);
         if (loop <= MAX_KEY_NUM_TEST) {
@@ -143,23 +143,23 @@ bool ReadKVFiles (int num, const char* key, const char* value)
         IoTWatchDogKick();
     }
     IoTWatchDogKick();
-    return true;
+    return TRUE;
 }
 
 /* Delete files in batches. */
-bool DeleteKVFiles (int num, const char* key)
+BOOL DeleteKVFiles (int num, const char* key)
 {
     int size;
     int ret;
     char keytemp[MAX_KEY_LEN_TEST] = {0};
 
     if (num <= 0) {
-        return false;
+        return FALSE;
     }
     for (int i = 1; i <= num; i++) {
         size = sprintf_s(keytemp, MAX_KEY_LEN_TEST, "%s_%d", key, i);
         if (size < 0) {
-            return false;
+            return FALSE;
         }
         ret = UtilsDeleteValue(keytemp);
         if (i <= MAX_KEY_NUM_TEST) {
@@ -171,7 +171,7 @@ bool DeleteKVFiles (int num, const char* key)
         IoTWatchDogKick();
     }
     IoTWatchDogKick();
-    return true;
+    return TRUE;
 }
 
 /**
@@ -621,20 +621,20 @@ LITE_TEST_CASE(KvStoreFuncTestSuite, testKvStoreCacheSize001, Function | MediumT
 {
     char key[] = "rw.sys.version";
     char value[] = "It is never too old to learn";
-    bool ret = false;
+    BOOL ret = FALSE;
 
     ret = SetKVFiles(MAX_CACHE_NUM_TEST-1, key, value);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
     ret = ReadKVFiles(MAX_CACHE_NUM_TEST-1, key, value);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
     ret = DeleteKVFiles(MAX_CACHE_NUM_TEST-1, key);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
@@ -649,20 +649,20 @@ LITE_TEST_CASE(KvStoreFuncTestSuite, testKvStoreCacheSize002, Function | MediumT
 {
     char key[] = "rw.sys.version";
     char value[] = "It is never too old to learn";
-    bool ret = false;
+    BOOL ret = FALSE;
 
     ret = SetKVFiles(MAX_CACHE_NUM_TEST, key, value);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
     ret = ReadKVFiles(MAX_CACHE_NUM_TEST, key, value);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
     ret = DeleteKVFiles(MAX_CACHE_NUM_TEST, key);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
@@ -677,20 +677,20 @@ LITE_TEST_CASE(KvStoreFuncTestSuite, testKvStoreCacheSize003, Function | MediumT
 {
     char key[] = "rw.sys.version";
     char value[] = "It is never too old to learn";
-    bool ret = false;
+    BOOL ret = FALSE;
 
     ret = SetKVFiles(MAX_CACHE_NUM_TEST+1, key, value);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
     ret = ReadKVFiles(MAX_CACHE_NUM_TEST+1, key, value);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
     ret = DeleteKVFiles(MAX_CACHE_NUM_TEST+1, key);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
@@ -705,20 +705,20 @@ LITE_TEST_CASE(KvStoreFuncTestSuite, testKvStoreMaxSize001, Function | MediumTes
 {
     char key[] = "rw.sys.version";
     char value[] = "It is never too old to learn";
-    bool ret = false;
+    BOOL ret = FALSE;
 
     ret = SetKVFiles(MAX_KEY_NUM_TEST-1, key, value);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
     ret = ReadKVFiles(MAX_KEY_NUM_TEST-1, key, value);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
     ret = DeleteKVFiles(MAX_KEY_NUM_TEST-1, key);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
@@ -733,20 +733,20 @@ LITE_TEST_CASE(KvStoreFuncTestSuite, testKvStoreMaxSize002, Function | MediumTes
 {
     char key[] = "rw.sys.version";
     char value[] = "It is never too old to learn";
-    bool ret = false;
+    BOOL ret = FALSE;
 
     ret = SetKVFiles(MAX_KEY_NUM_TEST, key, value);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
     ret = ReadKVFiles(MAX_KEY_NUM_TEST, key, value);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
     ret = DeleteKVFiles(MAX_KEY_NUM_TEST, key);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
@@ -761,20 +761,20 @@ LITE_TEST_CASE(KvStoreFuncTestSuite, testKvStoreMaxSize003, Function | MediumTes
 {
     char key[] = "rw.sys.version";
     char value[] = "It is never too old to learn";
-    bool ret = false;
+    BOOL ret = FALSE;
 
     ret = SetKVFiles(MAX_KEY_NUM_TEST+1, key, value);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
     ret = ReadKVFiles(MAX_KEY_NUM_TEST+1, key, value);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
     ret = DeleteKVFiles(MAX_KEY_NUM_TEST+1, key);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
@@ -791,26 +791,26 @@ LITE_TEST_CASE(KvStoreFuncTestSuite, testKvStoreMaxSize004, Function | MediumTes
     char value[] = "It is never too old to learn";
     char value1[] = "Two tigers Two tigers two tiger running so fast \
 running so fast one has no ears one has no tail How strange How strange";
-    bool ret = false;
+    BOOL ret = FALSE;
 
     ret = SetKVFiles(INVALID_KEY_NUM, key, value);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
     // Update operation
     ret = SetKVFiles(INVALID_KEY_NUM, key, value1);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
     ret = ReadKVFiles(INVALID_KEY_NUM, key, value1);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
     ret = DeleteKVFiles(INVALID_KEY_NUM, key);
-    if (ret != true)
+    if (ret != TRUE)
     {
         TEST_FAIL();
     }
