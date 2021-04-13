@@ -128,15 +128,4 @@ HWTEST_F(AnimatorTest, Graphic_Animator_Test_IsRepeat_0800, Function | MediumTes
 {
     EXPECT_EQ(animator->IsRepeat(), false);
 }
-
-/**
- * @tc.number   SUB_GRAPHIC_ANIMATOR_GETINSTANCE_0900
- * @tc.name     test animator get-instance api
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(AnimatorTest, Graphic_Animator_Test_GetInstance_0900, Function | MediumTest | Level0)
-{
-    AnimatorManager::GetInstance();
-    EXPECT_EQ(0, 0);
-}
 } // namespace OHOS
