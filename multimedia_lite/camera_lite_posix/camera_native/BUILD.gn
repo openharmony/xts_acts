@@ -13,26 +13,27 @@
 
 import("//test/xts/tools/lite/build/suite_lite.gni")
 
-hcpptest_suite("ActsMediaRecorderTest") {
+hcpptest_suite("ActsMediaCameraTest") {
   suite_name = "acts"
-  sources = [ "src/testcase/ActsMediaRecorderNDKTest.cpp" ]
-
-  include_dirs = [
-    "src/include",
-    "//test/xts/acts/multimedia_lite/multimedia_posix/common/include",
+  sources = [
+    "//test/xts/acts/multimedia_lite/utils_posix/common/src/ActsTestMediaUtils.cpp",
+    "src/ActsMediaCameraTest.cpp",
   ]
 
+  include_dirs = [
+    "src",
+    "//test/xts/acts/multimedia_lite/utils_posix/common/include",
+  ]
+  ldflags = [ "-lstdc++" ]
+  ldflags += [ "-lm" ]
+  if (ohos_kernel_type == "linux") {
+    ldflags += [ "-lpthread" ]
+  }
+  ldflags += [ "-Wl,-rpath-link=$ohos_root_path/$root_out_dir" ]
+
   deps = [
-    "//build/lite/config/component/cJSON:cjson_shared",
     "//foundation/multimedia/camera_lite/frameworks:camera_lite",
     "//foundation/multimedia/media_lite/frameworks/recorder_lite:recorder_lite",
   ]
   cflags = [ "-Wno-error" ]
-
-  ldflags = [ "-lstdc++" ]
-  ldflags += [ "-lm" ]
-
-  if (ohos_kernel_type == "linux") {
-    ldflags += [ "-lpthread" ]
-  }
 }
