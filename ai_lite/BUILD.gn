@@ -12,5 +12,5 @@
 # limitations under the License.
 
 group("ActsAiTest") {
-  deps = [ "//test/xts/acts/ai_lite/engine_posix/base:ActsAiEngineTest" ]
+  deps = [ "//test/xts/acts/ai_lite/ai_engine_posix/base:ActsAiEngineTest" ]
 }
