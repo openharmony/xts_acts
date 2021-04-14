@@ -642,18 +642,6 @@ HWTEST_F(UiInterfaceTest, SUB_GRAPHIC_INTERFACE_FIRST_5200, Function | MediumTes
 }
 
 /**
- * @tc.number   SUB_GRAPHIC_INTERFACE_FIRST_5300
- * @tc.name     test GetInstance api
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(UiInterfaceTest, SUB_GRAPHIC_INTERFACE_FIRST_5300, Function | MediumTest | Level0)
-{
-    AnimatorManager* animatorManager = AnimatorManager::GetInstance();
-    animatorManager->GetInstance();
-    EXPECT_EQ(0, 0);
-}
-
-/**
  * @tc.number   SUB_GRAPHIC_INTERFACE_FIRST_5400
  * @tc.name     test SetMarkNum api
  * @tc.desc     [C- SOFTWARE -0200]
