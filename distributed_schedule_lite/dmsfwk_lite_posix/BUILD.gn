@@ -18,7 +18,6 @@ hcpptest_suite("ActsDMSTest") {
   sources = [
     "src/MsgParserFuncTest.cpp",
     "src/MsgParserLenFuncTest.cpp",
-    "src/StartAbilityFromRemoteFuncTest.cpp",
     "src/utils/DMSTestBase.cpp",
     "src/utils/dms_packet.cpp",
   ]
@@ -31,7 +30,7 @@ hcpptest_suite("ActsDMSTest") {
     "//foundation/communication/ipc_lite/interfaces/kits",
     "//foundation/distributedschedule/samgr_lite/interfaces/kits/registry",
     "//foundation/distributedschedule/samgr_lite/interfaces/kits/samgr",
-    "//foundation/distributedschedule/services/dtbschedmgr_lite/include",
+    "//foundation/distributedschedule/dmsfwk_lite/include",
     "//foundation/distributedschedule/samgr_lite/interfaces/innerkits",
 
     "${aafwk_lite_path}/interfaces/innerkits/abilitymgr_lite",
@@ -46,7 +45,7 @@ hcpptest_suite("ActsDMSTest") {
     "${appexecfwk_lite_path}/frameworks/bundle_lite:bundle",
     "//base/hiviewdfx/hilog_lite/frameworks/featured:hilog_shared",
     "//foundation/distributedschedule/samgr_lite/samgr:samgr",
-    "//foundation/distributedschedule/services/dtbschedmgr_lite:dtbschedmgr",
+    "//foundation/distributedschedule/dmsfwk_lite:dtbschedmgr",
     "//third_party/bounds_checking_function:libsec_shared",
   ]
   cflags = [ "-Wno-error" ]

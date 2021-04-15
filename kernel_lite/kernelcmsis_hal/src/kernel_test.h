@@ -33,6 +33,8 @@
 #define THREAD_COUNT_MIN    3
 #define THREAD_COUNT_MAX    30
 #define THREAD_STACK_SPACE_MAX    4096
+#define MAX_UINT32 0xFFFFFFFF
+#define ALIVE_INFO_DIS 10000
 
 #ifdef __cplusplus
 #if __cplusplus
