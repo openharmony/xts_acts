@@ -42,7 +42,7 @@ lite_component("acts_component") {
         "//test/xts/acts/security_lite/datahuks_hal:ActsSecurityDataTest",
         "//test/xts/acts/hiviewdfx_lite/hilog_hal:ActsDfxFuncTest",
 
-        "//test/xts/acts/distributed_schedule_lite/samgr_lite_hal:ActsSamgrTest",
+        "//test/xts/acts/distributed_schedule_lite/system_ability_manager_hal:ActsSamgrTest",
         "//test/xts/acts/update_lite/updater_hal:ActsUpdaterFuncTest",
         "//test/xts/acts/startup_lite/bootstrap_hal:ActsBootstrapTest",
       ]
@@ -56,9 +56,9 @@ lite_component("acts_component") {
         "//test/xts/acts/multimedia_lite/camera_lite_posix/camera_native:ActsMediaCameraTest",
         "//test/xts/acts/open_posix_testsuite/conformance/interfaces:ActsOpenPosixTest",
         "//test/xts/acts/multimedia_lite/media_lite_posix/player_native:ActsMediaPlayerTest",
-        "//test/xts/acts/distributed_schedule_lite/samgr_lite_posix:ActsSamgrTest",
+        "//test/xts/acts/distributed_schedule_lite/system_ability_manager_posix:ActsSamgrTest",
 
-        #"//test/xts/acts/distributedschedule_lite/dmsfwk_lite_posix:ActsDMSTest",
+        #"//test/xts/acts/distributedschedule_lite/distributed_schedule_posix:ActsDMSTest",
         "//test/xts/acts/security_lite/permission_posix/pms:ActsPMSTest",
         "//test/xts/acts/hiviewdfx_lite/hilog_posix:ActsHilogTest",
         "//test/xts/acts/multimedia_lite/media_lite_posix/recorder_native:ActsMediaRecorderTest",
@@ -83,7 +83,7 @@ lite_component("acts_component") {
         "//test/xts/acts/multimedia_lite/camera_lite_posix/camera_native:ActsMediaCameraTest",
         "//test/xts/acts/multimedia_lite/media_lite_posix/player_native:ActsMediaPlayerTest",
         "//test/xts/acts/multimedia_lite/media_lite_posix/recorder_native:ActsMediaRecorderTest",
-        "//test/xts/acts/distributed_schedule_lite/samgr_lite_posix:ActsSamgrTest",
+        "//test/xts/acts/distributed_schedule_lite/system_ability_manager_posix:ActsSamgrTest",
         "//test/xts/acts/appexecfwk_lite/bundle_mgr_posix:ActsBundleMgrTest",
         "//test/xts/acts/aafwk_lite/ability_posix:ActsAbilityMgrTest",
       ]
