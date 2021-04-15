@@ -327,7 +327,7 @@ HWTEST_F(ProcessTest, testAssertTrue, Function | MediumTest | Level3)
         exit(0);
     }
     Msleep(50);
-    AssertProcExitedOK(pid);
+    WaitProcExitedOK(pid);
 }
 
 int FunctionAssertFalse(void)
