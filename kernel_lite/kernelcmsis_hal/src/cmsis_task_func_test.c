@@ -127,13 +127,37 @@ static void CmsisThreadCreat004Func001(void const *argument)
     osThreadExit();
 }
 
+static void KeepRunByTick(UINT32 tick)
+{
+    UINT32 tickA = osKernelGetTickCount();
+    UINT32 runned = 0;
+    UINT32 loop = 0;
+    UINT32 tickB = 0;
+    while (runned < tick) {
+        loop++;
+        tickB = osKernelGetTickCount();
+        if (tickB >= tickA) {
+            runned = tickB - tickA;
+        } else {
+            runned = tickB + (MAX_UINT32 - tickA);
+        }
+        if (loop % ALIVE_INFO_DIS == 0) {
+            printf("runned:%u, tickB:%u, tickA:%u, loop:%u\t\n",
+                runned, tickB, tickA, loop);
+        }
+    }
+    printf("return runned:%u, tickB:%u, tickA:%u\t\n",
+        runned, tickB, tickA);
+    return;
+}
+
 static void CmsisThreadCreat005Func001(void const *argument)
 {
     (void)argument;
     UINT32 uwIndex;
     TEST_ASSERT_EQUAL_INT(TESTCOUNT_NUM_1, g_cmsisTestTaskCount);
-    for (uwIndex = 0; uwIndex < TEST_TIME; uwIndex++) {
-        printf("test the thread running delay:%d \t\n", uwIndex);
+    while (g_cmsisTestTaskCount < TESTCOUNT_NUM_2) {
+        KeepRunByTick(DELAY_TICKS_10);
     }
     g_cmsisTestTaskCount++;
     TEST_ASSERT_EQUAL_INT(TESTCOUNT_NUM_3, g_cmsisTestTaskCount);
@@ -504,6 +528,9 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadNew005, Function | MediumTest
     g_cmsisTestTaskCount++;
     TEST_ASSERT_EQUAL_INT(TESTCOUNT_NUM_2, g_cmsisTestTaskCount);
     osDelay(DELAY_TICKS_5);
+    while (g_cmsisTestTaskCount != TESTCOUNT_NUM_3) {
+        KeepRunByTick(DELAY_TICKS_10);
+    }
 };
 
 /**
