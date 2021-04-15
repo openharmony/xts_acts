@@ -4,6 +4,7 @@
 
 | **转测试版本号：OpenHarmony_release_1.0.1_sp1**              |
 | ------------------------------------------------------------ |
+| **版本用途：**Openharmoy社区首个LTS稳定版本，支撑OEM三方生态商用 |
 | **转测试时间：2021-03-30**                                   |
 | hispark_taurus版本：<br> https://hm-verify.obs.cn-north-4.myhuaweicloud.com/version/Release_Version/OpenHarmony_release_1.0.1_sp1/2021-03-30_10-36-58/hispark_taurus.tar.gz |
 | hispark_pegasus版本：<br> https://hm-verify.obs.cn-north-4.myhuaweicloud.com/version/Release_Version/OpenHarmony_release_1.0.1_sp1/2021-03-30_10-34-56/hispark_pegasus.tar.gz |
@@ -13,6 +14,7 @@
 
 | **转测试版本号：OpenHarmony_release_1.0.1.001**              |
 | ------------------------------------------------------------ |
+| **版本用途：**OpenHarmony二次增量开源后，质量加固测试，提升版本稳定性 |
 | **转测试时间：2021-03-24**                                   |
 | hispark_taurus版本：<br/> https://hm-verify.obs.cn-north-4.myhuaweicloud.com/version/Release_Version/OpenHarmony_release_1.0.1.001/2021-03-23-19-37/hispark_taurus.tar.gz |
 | hispark_pegasus版本：<br/> https://hm-verify.obs.cn-north-4.myhuaweicloud.com/version/Release_Version/OpenHarmony_release_1.0.1.001/2021-03-23-19-35/hispark_pegasus.tar.gz |
@@ -22,6 +24,7 @@
 
 | **转测试版本号：OpenHarmony_2.1.1.001**                      |
 | ------------------------------------------------------------ |
+| **版本用途：**OpenHarmony码云master迭代一第一轮α测试，回归ISSUE问题单 |
 | **转测试时间：2021-04-14**                                   |
 | hispark_taurus版本：<br> https://hm-verify.obs.cn-north-4.myhuaweicloud.com/version/Master_Version/OpenHarmony_2.1.1.001/2021-04-14_08-41-09/hispark_taurus.tar.gz |
 | hispark_pegasus版本：<br> https://hm-verify.obs.cn-north-4.myhuaweicloud.com/version/Master_Version/OpenHarmony_2.1.1.001/2021-04-14_08-38-01/hispark_pegasus.tar.gz |
