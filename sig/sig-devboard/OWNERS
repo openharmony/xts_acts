@@ -1,0 +1,22 @@
+{
+   "Leader":[
+      {
+         "gitee_id":"kkup180",
+         "gitee_email":"likailong@huawei.com"
+      }
+   ]
+   "Committers":[
+      {
+         "gitee_id":"borne",
+         "gitee_email":"bo.lu@huawei.com"
+      },
+      {
+         "gitee_id":"zianed",
+         "gitee_email":"houxuanzhe@huawei.com"
+      },
+      {
+         "gitee_id":"DennyShen",
+         "gitee_email":"denny.shenwei@huawei.com"
+      }
+   ]
+}
