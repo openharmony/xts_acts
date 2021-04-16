@@ -25,7 +25,7 @@
 using namespace std;
 using namespace testing::ext;
 
-#if defined(LITE_FS_JFFS2) || defined(LITE_FS_VFAT)
+#if defined(LITE_FS_JFFS2)
 static void CreateDevDir()
 {
     int ret;
@@ -616,7 +616,7 @@ HWTEST_F(DacTestSuite, DACTest0420, Function | MediumTest | Level2)
         SetUidGid(UID0, GID555);
         // Step 3: Invoke the interface to operate the file system
         ret = chdir("/storage/" DACDIR0 "/" DACDIR0_DACDIR0);
-        if (ret != FALSE) {
+        if (ret != 0) {
             LOG("ErrInfo: VFS error with DAC or Capability");
             exitCode = 1;
         }
@@ -1381,7 +1381,7 @@ HWTEST_F(DacTestSuite, DACTest0600, Function | MediumTest | Level2)
         SetUidGid(UID555, GID555);
         // Step 3: Invoke the interface to operate the file system
         ret = mkdir("/storage/" DACDIR0 "/" DACDIR0_DACDIR0 "/" DACDIR0_DACDIR0_DACDIR0, NORWX);
-        if (ret != FALSE) {
+        if (ret != 0) {
             LOG("ErrInfo: VFS error with DAC or Capability");
             exitCode = 1;
         }

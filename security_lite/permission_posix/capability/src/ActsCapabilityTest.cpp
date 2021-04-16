@@ -44,6 +44,7 @@ static int TestDacOverrideSuccess()
         LOG("ErrInfo: Failed to chdir 'TOP_DIR/CAPDIR0/CAPDIR0_CAPDIR1' with CAP_DAC_OVERRIDE");
         return FALSE;
     }
+    chdir(TOP_DIR "/" CAPDIR0);
     // Delete the directory 'mkdir' in the directory 'TOP_DIR/CAPDIR0'
     ret = rmdir(TOP_DIR "/" CAPDIR0 "/" CAPDIR0_CAPDIR1);
     if (ret != 0) {
