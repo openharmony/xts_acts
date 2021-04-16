@@ -53,7 +53,7 @@ static BOOL SecurityDataHuksSignVerifyTestSuiteTearDown(void)
     printf("-++++++++++++++++++++++++++++++++++++++++++++-\n");
     return TRUE;
 }
-
+#ifndef _CUT_AUTHENTICATE_
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Sign key
 // begin+++++++++++++++++++++++++++++++++++++++++++++++++++++++0200-0340
 
@@ -1267,7 +1267,7 @@ LITE_TEST_CASE(SecurityDataHuksSignVerifyTestSuite, securityDataAsymmetricVerify
     status = hks_asymmetric_verify(&keyAlias, &keyParam, &hash, &signature);
     TEST_ASSERT_EQUAL_INT(NUM135, status);
 }
-
+#endif
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Verify key
 // end+++++++++++++++++++++++++++++++++++++++++++++++++++++++0350-0510
 
