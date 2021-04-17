@@ -14,6 +14,11 @@
          "sig-name":"sig-devboard",
          "projects":["https://gitee.com/openharmony-sig/device_st", "https://gitee.com/openharmony-sig/vendor_huawei_minidisplay_demo"],
          "project-path":["device/st", "vendor/huawei/minidisplay_demo"]
+      },
+      {
+         "sig-name":"sig-bluetooth",
+         "projects":"https://gitee.com/openharmony/communication_bluetooth",
+         "project-path":"foundation/communication/bluetooth"
       }
    ]
 }
