@@ -1,0 +1,9 @@
+{
+   "sigs-List":[
+      {
+         "sig-name":"sig-distributerdatamgr",
+         "projects":"https://gitee.com/openharmony-sig/distributeddatamgr_appdatamgr",
+         "project-path":"foundation/distributeddatamgr/appdatamgr"
+      }
+   ]
+}
