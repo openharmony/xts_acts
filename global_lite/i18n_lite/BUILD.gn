@@ -13,9 +13,9 @@
 
 group("ActsGlobalTest") {
   deps = [
-    "//test/xts/acts/global_lite//number_posix:ActsNumberTest",
-    "//test/xts/acts/global_lite//numberrecall_posix:ActsNumberRecallTest",
-    "//test/xts/acts/global_lite/datatime_posix:ActsGlobalDateTimeTest",
-    "//test/xts/acts/global_lite/datatimerecall_posix:ActsGlobalDateTimeRecallTest",
+    "//test/xts/acts/global_lite/i18n_lite/number_posix:ActsNumberTest",
+    "//test/xts/acts/global_lite/i18n_lite/numberrecall_posix:ActsNumberRecallTest",
+    "//test/xts/acts/global_lite/i18n_lite/datetime_posix:ActsGlobalDateTimeTest",
+    "//test/xts/acts/global_lite/i18n_lite/datetimerecall_posix:ActsGlobalDateTimeRecallTest",
   ]
 }
