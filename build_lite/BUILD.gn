@@ -86,6 +86,7 @@ lite_component("acts_component") {
         "//test/xts/acts/distributed_schedule_lite/system_ability_manager_posix:ActsSamgrTest",
         "//test/xts/acts/appexecfwk_lite/bundle_mgr_posix:ActsBundleMgrTest",
         "//test/xts/acts/aafwk_lite/ability_posix:ActsAbilityMgrTest",
+        "//test/xts/acts/ai_lite:ActsAiTest",
       ]
     }
   }
