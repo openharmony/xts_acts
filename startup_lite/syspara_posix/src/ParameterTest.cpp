@@ -36,13 +36,13 @@ protected:
     virtual void SetUp() {}
     virtual void TearDown() {}
     string defSysParam = "data of sys param ***...";
-    using GetRdonlyPara = char* (*)();
+    using GetRdonlyPara = const char* (*)();
     using GetDefParaNode = struct TagGetDefParaNode {
         char const *funName;
         GetRdonlyPara fun;
     };
     GetDefParaNode getDefPara[StartUpLite::GET_DEF_PARA_FUN_MAX] = {
-        {"GetProductType", GetProductType},
+        {"GetDeviceType", GetDeviceType},
         {"GetManufacture", GetManufacture},
         {"GetBrand", GetBrand},
         {"GetMarketName", GetMarketName},
@@ -51,13 +51,11 @@ protected:
         {"GetSoftwareModel", GetSoftwareModel},
         {"GetHardwareModel", GetHardwareModel},
         {"GetHardwareProfile", GetHardwareProfile},
-        {"GetOsName", GetOsName},
+        {"GetOSFullName", GetOSFullName},
         {"GetDisplayVersion", GetDisplayVersion},
         {"GetBootloaderVersion", GetBootloaderVersion},
         {"GetSecurityPatchTag", GetSecurityPatchTag},
         {"GetAbiList", GetAbiList},
-        {"GetFirstApiLevel", GetFirstApiLevel},
-        {"GetSdkApiLevel", GetSdkApiLevel},
         {"GetIncrementalVersion", GetIncrementalVersion},
         {"GetVersionId", GetVersionId},
         {"GetBuildType", GetBuildType},
@@ -355,14 +353,13 @@ HWTEST_F(ParameterTest, SUB_START_Para_Getting_ilLegal_0060, Function | MediumTe
  */
 HWTEST_F(ParameterTest, SUB_START_Para_Getting_ReadOnly_0010, Function | MediumTest | Level0)
 {
-    char *value = nullptr;
+    const char *value = nullptr;
 
     for (int loop = 0; loop < StartUpLite::GET_DEF_PARA_FUN_MAX; loop++) {
         value = getDefPara[loop].fun();
         EXPECT_STRNE(value, (char *)nullptr);
-        if (value != nullptr) {
-            free(value);
-        }
     }
+    EXPECT_GT(GetFirstApiVersion(), 0);
+    EXPECT_GT(GetSdkApiVersion(), 0);
 }
 }

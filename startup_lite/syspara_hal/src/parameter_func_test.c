@@ -60,10 +60,9 @@ static BOOL ParameterFuncTestSuiteTearDown(void)
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara001, Function | MediumTest | Level1)
 {
-    char* value = GetProductType();
+    const char* value = GetDeviceType();
     printf("Product Type=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -73,10 +72,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara001, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara002, Function | MediumTest | Level1)
 {
-    char* value = GetManufacture();
+    const char* value = GetManufacture();
     printf("Manufacture=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -86,10 +84,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara002, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara003, Function | MediumTest | Level1)
 {
-    char* value = GetBrand();
+    const char* value = GetBrand();
     printf("Brand=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -99,10 +96,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara003, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara004, Function | MediumTest | Level1)
 {
-    char* value = GetMarketName();
+    const char* value = GetMarketName();
     printf("Market Name=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -112,10 +108,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara004, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara005, Function | MediumTest | Level1)
 {
-    char* value = GetProductSeries();
+    const char* value = GetProductSeries();
     printf("Product Series=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -125,10 +120,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara005, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara006, Function | MediumTest | Level1)
 {
-    char* value = GetProductModel();
+    const char* value = GetProductModel();
     printf("Product Model=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -138,10 +132,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara006, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara007, Function | MediumTest | Level1)
 {
-    char* value = GetHardwareModel();
+    const char* value = GetHardwareModel();
     printf("Hardware Model=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -151,10 +144,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara007, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara008, Function | MediumTest | Level1)
 {
-    char* value = GetHardwareProfile();
+    const char* value = GetHardwareProfile();
     printf("Hardware Profile=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -164,7 +156,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara008, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara009, Function | MediumTest | Level1)
 {
-    char* value = GetSerial();
+    const char* value = GetSerial();
     printf("Serial=%s\n", value);
     if (value == NULL) {
         printf("The serial number needs to be written\n");
@@ -172,7 +164,6 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara009, Function | MediumTe
     } else {
         TEST_ASSERT_EQUAL_INT(1, 1);
     }
-    free(value);
 };
 
 /**
@@ -182,10 +173,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara009, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara010, Function | MediumTest | Level1)
 {
-    char* value = GetOsName();
+    const char* value = GetOSFullName();
     printf("Os Name=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -195,10 +185,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara010, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara011, Function | MediumTest | Level1)
 {
-    char* value = GetDisplayVersion();
+    const char* value = GetDisplayVersion();
     printf("Display Version=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -208,10 +197,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara011, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara012, Function | MediumTest | Level1)
 {
-    char* value = GetBootloaderVersion();
+    const char* value = GetBootloaderVersion();
     printf("Bootloader Version=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -221,10 +209,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara012, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara013, Function | MediumTest | Level1)
 {
-    char* value = GetSecurityPatchTag();
+    const char* value = GetSecurityPatchTag();
     printf("Secure Patch Level=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -234,10 +221,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara013, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara014, Function | MediumTest | Level1)
 {
-    char* value = GetAbiList();
+    const char* value = GetAbiList();
     printf("Abi List=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -247,10 +233,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara014, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara015, Function | MediumTest | Level1)
 {
-    char* value = GetFirstApiLevel();
-    printf("First Api Level=%s\n", value);
+    int value = GetFirstApiVersion();
+    printf("First Api Level=%d\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -260,10 +245,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara015, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara016, Function | MediumTest | Level1)
 {
-    char* value = GetIncrementalVersion();
+    const char* value = GetIncrementalVersion();
     printf("Incremental Version=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -273,10 +257,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara016, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara017, Function | MediumTest | Level1)
 {
-    char* value = GetVersionId();
+    const char* value = GetVersionId();
     printf("Version Id=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -286,10 +269,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara017, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara018, Function | MediumTest | Level1)
 {
-    char* value = GetBuildType();
+    const char* value = GetBuildType();
     printf("Build Type=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -299,10 +281,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara018, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara019, Function | MediumTest | Level1)
 {
-    char* value = GetBuildUser();
+    const char* value = GetBuildUser();
     printf("Build User=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -312,10 +293,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara019, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara020, Function | MediumTest | Level1)
 {
-    char* value = GetBuildHost();
+    const char* value = GetBuildHost();
     printf("Build Host=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -325,10 +305,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara020, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara021, Function | MediumTest | Level1)
 {
-    char* value = GetBuildTime();
+    const char* value = GetBuildTime();
     printf("Build Time=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -338,10 +317,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara021, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara022, Function | MediumTest | Level1)
 {
-    char* value = GetBuildRootHash();
+    const char* value = GetBuildRootHash();
     printf("Build Root Hash=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -351,10 +329,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara022, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara023, Function | MediumTest | Level1)
 {
-    char* value = GetSoftwareModel();
+    const char* value = GetSoftwareModel();
     printf("Software Model=%s\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
@@ -364,10 +341,9 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara023, Function | MediumTe
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara024, Function | MediumTest | Level1)
 {
-    char* value = GetSdkApiLevel();
-    printf("Sdk Api Level=%s\n", value);
+    int value = GetSdkApiVersion();
+    printf("Sdk Api Level=%d\n", value);
     IsEmpty(value);
-    free(value);
 };
 
 /**
