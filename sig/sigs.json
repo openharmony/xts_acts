@@ -19,6 +19,11 @@
          "sig-name":"sig-bluetooth",
          "projects":"https://gitee.com/openharmony/communication_bluetooth",
          "project-path":"foundation/communication/bluetooth"
+      },
+      {
+         "sig-name":"sig-distributerdatamgr",
+         "projects":"https://gitee.com/openharmony-sig/distributeddatamgr_appdatamgr",
+         "project-path":"foundation/distributeddatamgr/appdatamgr"
       }
    ]
 }
