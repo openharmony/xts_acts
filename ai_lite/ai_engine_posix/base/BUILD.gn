@@ -57,9 +57,9 @@ hcpptest_suite("ActsAiEngineTest") {
     "//foundation/ai/engine/services/client:client",
     "//foundation/ai/engine/services/common/platform/dl_operation:dlOperation",
     "//foundation/ai/engine/services/server/plugin_manager:plugin_manager",
-    "//foundation/ai/engine/test/sample:sample_plugin_1",
-    "//foundation/ai/engine/test/sample:sample_plugin_2",
     "//foundation/distributedschedule/samgr_lite/samgr:samgr",
+    "//test/xts/acts/ai_lite/ai_engine_posix/base/src/sample:sample_plugin_1_sync",
+    "//test/xts/acts/ai_lite/ai_engine_posix/base/src/sample:sample_plugin_2_async",
   ]
   cflags = [ "-Wno-error" ]
   ldflags = [ "-lstdc++" ]
