@@ -61,6 +61,8 @@ static void GetClientInfo(ClientInfo &clientInfo)
         .clientVersion = CLIENT_VERSION_VALID,
         .clientId = INVALID_CLIENT_ID,
         .sessionId = INVALID_SESSION_ID,
+        .serverUid = INVALID_UID,
+        .clientUid = INVALID_UID,
         .extendLen = len,
         .extendMsg = (unsigned char*)extendMsg,
     };
