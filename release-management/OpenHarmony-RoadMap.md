@@ -53,7 +53,7 @@
 | 13   | [I3NT6H](https://gitee.com/openharmony/kernel_liteos_a/issues/I3NT6H) | 【轻内核子系统】文件系统维测增强                             | developing | SIG_Kernel           | [@kkup180](https://gitee.com/kkup180)               |
 | 14   | [I3NT6U](https://gitee.com/openharmony/kernel_liteos_a/issues/I3NT6U) | 【轻内核子系统】liteos-a內核模块可配置                       | developing | SIG_Kernel           | [@kkup180](https://gitee.com/kkup180)               |
 | 15   | [I3NT78](https://gitee.com/openharmony/kernel_liteos_a/issues/I3NT78) | 【轻内核子系统】liteos-a小系统三方芯片适配                   | developing | SIG_Kernel           | [@kkup180](https://gitee.com/kkup180)               |
-| 16   | [I3NT48](https://gitee.com/openharmony/kernel_liteos_a/issues/I3NT48) | 【轻内核子系统】proc文件系统增强                             | developing | SIG_Kernel           | [@kkup180](https://gitee.com/kkup180                |
+| 16   | [I3NT48](https://gitee.com/openharmony/kernel_liteos_a/issues/I3NT48) | 【轻内核子系统】proc文件系统增强                             | developing | SIG_Kernel           | [@kkup180](https://gitee.com/kkup180)               |
 | 17   | [I3ND6Y](https://gitee.com/openharmony/kernel_liteos_a/issues/I3ND6Y) | 【性能】OS内核&驱动启动优化                                  | developing | SIG_Kernel           | [@kkup180](https://gitee.com/kkup180)               |
 | 18   | [I3ND6P](https://gitee.com/openharmony/kernel_liteos_a/issues/I3ND6P) | 【性能】安全启动优化                                         | developing | SIG_Security         | [@jiang-xiaofeng](https://gitee.com/jiang-xiaofeng) |
 | 19   | [I3NCB9](https://gitee.com/openharmony/third_party_Linux_Kernel/issues/I3NCB9) | 【L1 Linux开源】编译器替换后的内核代码适配                   | developing | SIG_Kernel           | [@zzzuo](https://gitee.com/zzzuo)                   |
@@ -124,22 +124,22 @@
 
 状态说明：discussion(方案讨论，需求未接受)，Reject(未纳入版本)，developing(开发中)，Testing(测试中)，Accepted(已验收)
 
-| no   | issue                                                        | feture description                                           | status     | sig                  | owner                                             |
-| :--- | ------------------------------------------------------------ | :----------------------------------------------------------- | :--------- | :------------------- | :------------------------------------------------ |
-| 1    | [I3NJDR](https://gitee.com/openharmony/graphic_utils/issues/I3NJDR) | 【图形子系统】avatar窗口合成器适配surfaceview等控件          | developing | SIG_GraphicsAndMedia | [@lz-230](https://gitee.com/lz-230)               |
-| 2    | [I3NJQ2](https://gitee.com/openharmony/graphic_utils/issues/I3NJQ2) | 【图形子系统】avatar窗口适配                                 | developing | SIG_GraphicsAndMedia | [@lz-230](https://gitee.com/lz-230)               |
-| 3    | [I3NJUK](https://gitee.com/openharmony/graphic_utils/issues/I3NJUK) | 【图形子系统】图形子系统提供系统级的BufferQueue管理，memory接口适配 | developing | SIG_GraphicsAndMedia | [@lz-230](https://gitee.com/lz-230)               |
-| 4    | [I3NJV2](https://gitee.com/openharmony/graphic_utils/issues/I3NJV2) | 【图形子系统】图形子系统提供系统级的BufferQueue IPC适配      | developing | SIG_GraphicsAndMedia | [@lz-230](https://gitee.com/lz-230)               |
-| 5    | [I3NMO8](https://gitee.com/openharmony/multimedia_utils_lite/issues/I3NMO8) | 【媒体子系统】支持音频数据输出                               | developing | SIG_GraphicsAndMedia | [@zhu-mingliang](https://gitee.com/zhu-mingliang) |
-| 6    | [I3NMP5](https://gitee.com/openharmony/multimedia_utils_lite/issues/I3NMP5) | 【媒体子系统】支持相机数据采集                               | developing | SIG_GraphicsAndMedia | [@zhu-mingliang](https://gitee.com/zhu-mingliang) |
-| 7    | [I3NMQ8](https://gitee.com/openharmony/multimedia_utils_lite/issues/I3NMQ8) | 【媒体子系统】支持音视频编解码，适配硬解插件                 | developing | SIG_GraphicsAndMedia | [@zhu-mingliang](https://gitee.com/zhu-mingliang) |
-| 8    | [I3NN1Z](https://gitee.com/openharmony/aafwk_aafwk_lite/issues/I3NN1Z) | 【应用程序框架】轻量级实现弹窗授权动态授权机制               | developing | SIG_AppFramework     | [@autumn](https://gitee.com/autumn330)            |
-| 9    | [I3NN5Y](https://gitee.com/openharmony/hiviewdfx_hiview_lite/issues/I3NN5Y) | 【DFX子系统】【HiEvent】L1系统HiSysEvent功能                 | developing | SIG_BscSoftSrv       | [@shenchenkai](https://gitee.com/shenchenkai)     |
-| 10   | [I3NN88](https://gitee.com/openharmony/hiviewdfx_hiview_lite/issues/I3NN88) | 【DFX子系统】【HiDumper】LiteOS_M系统信息dump工具            | developing | SIG_BscSoftSrv       | [@kkup180](https://gitee.com/kkup180)             |
-| 11   | [I3NN9B](https://gitee.com/openharmony/hiviewdfx_hiview_lite/issues/I3NN9B) | 【DFX子系统】【BBoxDetector】LiteOS_M死机重启维测框架        | developing | SIG_BscSoftSrv       | [@kkup180](https://gitee.com/kkup180)             |
-| 12   | [I3NT3F](https://gitee.com/openharmony/kernel_liteos_a/issues/I3NT3F) | 【轻内核子系统】内核支持trace功能                            | developing | SIG_Kernel           | [@kkup180](https://gitee.com/kkup180)             |
-| 13   | [I3NT63](https://gitee.com/openharmony/kernel_liteos_a/issues/I3NT63) | 【轻内核子系统】pagecache功能完善                            | developing | SIG_Kernel           | [@kkup180](https://gitee.com/kkup180)             |
-| 14   | [I3NTAZ](https://gitee.com/openharmony/security_huks/issues/I3NTAZ) | 【安全】轻量级实现弹窗授权动态授权机制                       | developing | SIG_Security         | [@scuteehuangjun](                                |
+| no   | issue                                                        | feture description                                           | status     | sig                  | owner                                               |
+| :--- | ------------------------------------------------------------ | :----------------------------------------------------------- | :--------- | :------------------- | :-------------------------------------------------- |
+| 1    | [I3NJDR](https://gitee.com/openharmony/graphic_utils/issues/I3NJDR) | 【图形子系统】avatar窗口合成器适配surfaceview等控件          | developing | SIG_GraphicsAndMedia | [@lz-230](https://gitee.com/lz-230)                 |
+| 2    | [I3NJQ2](https://gitee.com/openharmony/graphic_utils/issues/I3NJQ2) | 【图形子系统】avatar窗口适配                                 | developing | SIG_GraphicsAndMedia | [@lz-230](https://gitee.com/lz-230)                 |
+| 3    | [I3NJUK](https://gitee.com/openharmony/graphic_utils/issues/I3NJUK) | 【图形子系统】图形子系统提供系统级的BufferQueue管理，memory接口适配 | developing | SIG_GraphicsAndMedia | [@lz-230](https://gitee.com/lz-230)                 |
+| 4    | [I3NJV2](https://gitee.com/openharmony/graphic_utils/issues/I3NJV2) | 【图形子系统】图形子系统提供系统级的BufferQueue IPC适配      | developing | SIG_GraphicsAndMedia | [@lz-230](https://gitee.com/lz-230)                 |
+| 5    | [I3NMO8](https://gitee.com/openharmony/multimedia_utils_lite/issues/I3NMO8) | 【媒体子系统】支持音频数据输出                               | developing | SIG_GraphicsAndMedia | [@zhu-mingliang](https://gitee.com/zhu-mingliang)   |
+| 6    | [I3NMP5](https://gitee.com/openharmony/multimedia_utils_lite/issues/I3NMP5) | 【媒体子系统】支持相机数据采集                               | developing | SIG_GraphicsAndMedia | [@zhu-mingliang](https://gitee.com/zhu-mingliang)   |
+| 7    | [I3NMQ8](https://gitee.com/openharmony/multimedia_utils_lite/issues/I3NMQ8) | 【媒体子系统】支持音视频编解码，适配硬解插件                 | developing | SIG_GraphicsAndMedia | [@zhu-mingliang](https://gitee.com/zhu-mingliang)   |
+| 8    | [I3NN1Z](https://gitee.com/openharmony/aafwk_aafwk_lite/issues/I3NN1Z) | 【应用程序框架】轻量级实现弹窗授权动态授权机制               | developing | SIG_AppFramework     | [@autumn](https://gitee.com/autumn330)              |
+| 9    | [I3NN5Y](https://gitee.com/openharmony/hiviewdfx_hiview_lite/issues/I3NN5Y) | 【DFX子系统】【HiEvent】L1系统HiSysEvent功能                 | developing | SIG_BscSoftSrv       | [@shenchenkai](https://gitee.com/shenchenkai)       |
+| 10   | [I3NN88](https://gitee.com/openharmony/hiviewdfx_hiview_lite/issues/I3NN88) | 【DFX子系统】【HiDumper】LiteOS_M系统信息dump工具            | developing | SIG_BscSoftSrv       | [@kkup180](https://gitee.com/kkup180)               |
+| 11   | [I3NN9B](https://gitee.com/openharmony/hiviewdfx_hiview_lite/issues/I3NN9B) | 【DFX子系统】【BBoxDetector】LiteOS_M死机重启维测框架        | developing | SIG_BscSoftSrv       | [@kkup180](https://gitee.com/kkup180)               |
+| 12   | [I3NT3F](https://gitee.com/openharmony/kernel_liteos_a/issues/I3NT3F) | 【轻内核子系统】内核支持trace功能                            | developing | SIG_Kernel           | [@kkup180](https://gitee.com/kkup180)               |
+| 13   | [I3NT63](https://gitee.com/openharmony/kernel_liteos_a/issues/I3NT63) | 【轻内核子系统】pagecache功能完善                            | developing | SIG_Kernel           | [@kkup180](https://gitee.com/kkup180)               |
+| 14   | [I3NTAZ](https://gitee.com/openharmony/security_huks/issues/I3NTAZ) | 【安全】轻量级实现弹窗授权动态授权机制                       | developing | SIG_Security         | [@scuteehuangjun](https://gitee.com/scuteehuangjun) |
 
 ## OpenHarmony_release 3.0(beta1)版本特性清单：
 
