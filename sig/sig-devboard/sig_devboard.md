@@ -33,6 +33,9 @@ Actively cooperates with board manufacturers.
 ### The repository 
 - project name:
   - device_st: https://gitee.com/openharmony-sig/device_st
+  - device_allwinner: https://gitee.com/openharmony-sig/device_allwinner
+  - vendor_huawei_ipcamera_v3s: https://gitee.com/openharmony-sig/vendor_huawei_ipcamera_v3s
+  - vendor_oh_fun: https://gitee.com/openharmony-sig/vendor_oh_fun
   - vendor_huawei_minidisplay_demo: https://gitee.com/openharmony-sig/vendor_huawei_minidisplay_demo
 
 
@@ -46,6 +49,7 @@ Actively cooperates with board manufacturers.
 - [DennyShen](https://gitee.com/DennyShen)
 - [borne](https://gitee.com/borne)
 - [jady3356](https://gitee.com/taiyipei)
+- [zeeman_wang](https://gitee.com/zeeman_wang)
 
 ### Meetings
  - Meeting time：BiWeek Monday 19:00

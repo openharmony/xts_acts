@@ -12,8 +12,15 @@
       },
       {
          "sig-name":"sig-devboard",
-         "projects":["https://gitee.com/openharmony-sig/device_st", "https://gitee.com/openharmony-sig/vendor_huawei_minidisplay_demo"],
-         "project-path":["device/st", "vendor/huawei/minidisplay_demo"]
+         "projects":["https://gitee.com/openharmony-sig/device_st",
+                     "https://gitee.com/openharmony-sig/vendor_huawei_minidisplay_demo",
+                     "https://gitee.com/openharmony-sig/device_allwinner",
+                     "https://gitee.com/openharmony-sig/vendor_huawei_ipcamera_v3s",
+                     "https://gitee.com/openharmony-sig/vendor_oh_fun"
+                    ],
+         "project-path":["device/st", "vendor/huawei/minidisplay_demo",
+                         "device/allwinner", "vendor/huawei/ipcamera_v3s",
+                         "vendor/oh_fun"]
       },
       {
          "sig-name":"sig-bluetooth",
