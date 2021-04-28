@@ -50,7 +50,7 @@ HWTEST_F(ProcessTest, testLineBigExit, Function | MediumTest | Level2)
         }
         Msleep(50);
         exitCode = 0;
-        ASSERT_EQ(CheckProcStatus(pid, &exitCode), 1);
+        ASSERT_EQ(CheckProcStatus(pid, &exitCode, 0), 1);
         ASSERT_EQ(exitCode, reInt[i]);
     }
 }
@@ -160,7 +160,7 @@ HWTEST_F(ProcessTest, testLineExit, Function | MediumTest | Level2)
         }
         Msleep(50);
         exitCode = 0;
-        ASSERT_EQ(CheckProcStatus(pid, &exitCode), 1);
+        ASSERT_EQ(CheckProcStatus(pid, &exitCode, 0), 1);
         ASSERT_EQ(exitCode, reInt[i]);
     }
 }
@@ -270,7 +270,7 @@ HWTEST_F(ProcessTest, testExit, Function | MediumTest | Level2)
         }
         Msleep(50);
         exitCode = 0;
-        ASSERT_EQ(CheckProcStatus(pid, &exitCode), 1);
+        ASSERT_EQ(CheckProcStatus(pid, &exitCode, 0), 1);
         ASSERT_EQ(exitCode, reInt[i]);
     }
 }
@@ -343,7 +343,7 @@ int FunctionAssertFalse(void)
     }
     Msleep(50);
     int exitCode = 0;
-    int reInt = CheckProcStatus(pid, &exitCode);
+    int reInt = CheckProcStatus(pid, &exitCode, 0);
     if ((reInt == 2) && (exitCode == SIGABRT)) {
         LOG("> Success");
         return 1;
@@ -368,7 +368,7 @@ HWTEST_F(ProcessTest, testAssertFalse, Function | MediumTest | Level3)
     }
     Msleep(50);
     int exitCode = 0;
-    ASSERT_EQ(CheckProcStatus(pid, &exitCode), 2);
+    ASSERT_EQ(CheckProcStatus(pid, &exitCode, 0), 2);
     ASSERT_EQ(exitCode, SIGABRT);
 }
 
@@ -534,5 +534,6 @@ HWTEST_F(ProcessTest, testWaitPidTest, Function | MediumTest | Level3)
     EXPECT_EQ(expectPid, 1);
     EXPECT_EQ(pidChild, 0);
     Msleep(50);
+    WaitProcExitedOK(pid);
     DeleteGlobalVariable();
 }
