@@ -224,8 +224,6 @@ HWTEST_F(FileSystemTest, testStatvfs, Function | MediumTest | Level2)
 
     EXPECT_EQ(vfsBuf.f_bsize, fsBuf.f_bsize);
     EXPECT_EQ(vfsBuf.f_blocks, fsBuf.f_blocks);
-    EXPECT_EQ(vfsBuf.f_bfree, fsBuf.f_bfree);
-    EXPECT_EQ(vfsBuf.f_bavail, fsBuf.f_bavail);
     EXPECT_EQ(vfsBuf.f_files, fsBuf.f_files);
     EXPECT_EQ(vfsBuf.f_ffree, fsBuf.f_ffree);
     EXPECT_EQ(vfsBuf.f_namemax, fsBuf.f_namelen);

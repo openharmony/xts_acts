@@ -272,13 +272,13 @@ HWTEST_F(FileSystemTest, testFtruncateEinval, Function | MediumTest | Level3)
 #if defined(LITE_FS_VFAT)
 /**
  * @tc.number   SUB_KERNEL_FS_UNISTD_0502
- * @tc.name     basic function test : test ftruncate with EACCES
+ * @tc.name     basic function test : test ftruncate with ENOSYS
  * @tc.desc     [C- SOFTWARE -0200]
  */
 HWTEST_F(FileSystemTest, testFtruncateEacces, Function | MediumTest | Level3)
 {
     EXPECT_EQ(ftruncate(STDERR_FILENO, 10), -1);
-    EXPECT_EQ(errno, EACCES);
+    EXPECT_EQ(errno, ENOSYS);
 }
 #endif
 
