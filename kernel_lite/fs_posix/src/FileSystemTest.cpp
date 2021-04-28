@@ -22,6 +22,9 @@ using namespace testing::ext;
 // delete test file and dir
 void DeleteTestFiles()
 {
+    if (access(TOP_DIR "/DIR_NEW", F_OK) == 0) {
+        RemoveDir(TOP_DIR "/DIR_NEW");
+    }
     if (access(TOP_DIR "/" DIR0, F_OK) == 0) {
         RemoveDir(TOP_DIR "/" DIR0);
     }
