@@ -27,6 +27,7 @@ hcpptest_suite("ActsAiEngineTest") {
     "src/aie_client/AieClientReleaseFunctionTest.cpp",
     "src/aie_client/AieClientSetOptionFunctionTest.cpp",
     "src/aie_client/AieClientSyncProcessFunctionTest.cpp",
+    "src/aie_client/AieClientSyncProcessShareMemoryFunctionTest.cpp",
 
     # pluginManager Function Test Cases
     "src/plugin_manager/PluginManagerFunctionTest.cpp",
