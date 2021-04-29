@@ -24,15 +24,13 @@
 
 | no   | issue                                                        | feture description                                  | status     | sig                | owner                                         |
 | :--- | ------------------------------------------------------------ | :-------------------------------------------------- | :--------- | :----------------- | :-------------------------------------------- |
-| 1    | [I3I1V8](https://gitee.com/openharmony/global_resmgr_lite/issues/I3I1V8) | 【全球化子系统】构建应用资源解析和加载机制          | developing | SIG_AppFramework   | [@zhengbin5](https://gitee.com/zhengbin5)     |
-| 2    | [I3I1VJ](https://gitee.com/openharmony/global_resmgr_lite/issues/I3I1VJ) | 【全球化子系统】构建资源回溯机制                    | developing | SIG_AppFramework   | [@zhengbin5](https://gitee.com/zhengbin5)     |
-| 3    | [I3ICFO](https://gitee.com/openharmony/utils_native_lite/issues/I3ICFO) | 【分布式数据管理】提供数据库内容的删除能力          | developing | SIG_DataManagement | [@widecode](https://gitee.com/widecode)       |
-| 4    | [I3ICH0](https://gitee.com/openharmony/utils_native_lite/issues/I3ICH0) | 【分布式数据管理】提供统一的HAL文件系统操作函数实现 | developing | SIG_DataManagement | [@widecode](https://gitee.com/widecode)       |
-| 5    | [I3ICG4](https://gitee.com/openharmony/utils_native_lite/issues/I3ICG4) | 【分布式数据管理】提供相关数据存储的原子操作能力    | developing | SIG_DataManagement | [@widecode](https://gitee.com/widecode)       |
-| 6    | [I3ICGH](https://gitee.com/openharmony/utils_native_lite/issues/I3ICGH) | 【分布式数据管理】提供二进制Value的写入读取能力     | developing | SIG_DataManagement | [@widecode](https://gitee.com/widecode)       |
-| 7    | [I3HX0V](https://gitee.com/openharmony/hiviewdfx_hilog_lite/issues/I3HX0V) | 【HiLog】L1系统HiLog功能增强                        | developing | SIG_BscSoftSrv     | [@shenchenkai](https://gitee.com/shenchenkai) |
-| 8    | [I3NPEL](https://gitee.com/openharmony/ai_engine/issues/I3NPEL) | 【AI子系统】AI子系统添加linux内核适配，编译选项     | developing | SIG_AI             | [@armylee0](https://gitee.com/armylee0)       |
-| 9    | [I3INEZ](https://gitee.com/openharmony/ai_engine/issues/I3INEZ) | 【AI子系统】AI引擎支持基于共享内存的数据传输        | developing | SIG_AI             | [@armylee0](https://gitee.com/armylee0)       |
+| 1    | [I3ICFO](https://gitee.com/openharmony/utils_native_lite/issues/I3ICFO) | 【分布式数据管理】提供数据库内容的删除能力          | developing | SIG_DataManagement | [@widecode](https://gitee.com/widecode)       |
+| 2    | [I3ICH0](https://gitee.com/openharmony/utils_native_lite/issues/I3ICH0) | 【分布式数据管理】提供统一的HAL文件系统操作函数实现 | developing | SIG_DataManagement | [@widecode](https://gitee.com/widecode)       |
+| 3    | [I3ICG4](https://gitee.com/openharmony/utils_native_lite/issues/I3ICG4) | 【分布式数据管理】提供相关数据存储的原子操作能力    | developing | SIG_DataManagement | [@widecode](https://gitee.com/widecode)       |
+| 4    | [I3ICGH](https://gitee.com/openharmony/utils_native_lite/issues/I3ICGH) | 【分布式数据管理】提供二进制Value的写入读取能力     | developing | SIG_DataManagement | [@widecode](https://gitee.com/widecode)       |
+| 5    | [I3HX0V](https://gitee.com/openharmony/hiviewdfx_hilog_lite/issues/I3HX0V) | 【HiLog】L1系统HiLog功能增强                        | developing | SIG_BscSoftSrv     | [@shenchenkai](https://gitee.com/shenchenkai) |
+| 6    | [I3NPEL](https://gitee.com/openharmony/ai_engine/issues/I3NPEL) | 【AI子系统】AI子系统添加linux内核适配，编译选项     | developing | SIG_AI             | [@armylee0](https://gitee.com/armylee0)       |
+| 7    | [I3INEZ](https://gitee.com/openharmony/ai_engine/issues/I3INEZ) | 【AI子系统】AI引擎支持基于共享内存的数据传输        | developing | SIG_AI             | [@armylee0](https://gitee.com/armylee0)       |
 
 ## OpenHarmony_release 2.2(beta2)版本特性清单：
 
