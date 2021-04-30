@@ -31,6 +31,9 @@ using namespace OHOS::AI;
 
 namespace {
     const int WAIT_CALLBACK_TIME_MS = 2000;
+    const int INT_1 = 1;
+    const int INT_2 = 2;
+    const int INT_1024 = 1024;
 }
 
 class AieClientSyncProcessShareMemoryFunctionTest : public testing::Test {};
@@ -126,9 +129,9 @@ static DataInfo GetBigDataInfo(bool isDataInfoNull = true)
     if (!isDataInfoNull) {
 
 #ifdef __LINUX__
-        int length = 2 * 1024 * 1024; // 2 MB long data, the unit is Byte here.
+        int length = INT_2 * INT_1024 * INT_1024; // 2 MB long data, the unit is Byte here.
 #else // liteos device has no enough remaining memory to contain 2MB long data.
-        int length = 1 * 1024 * 1024; // 1 MB long data, the unit is Byte here.
+        int length = INT_1 * INT_1024 * INT_1024; // 1 MB long data, the unit is Byte here.
 #endif
 
         char *data = reinterpret_cast<char *>(malloc(length));
@@ -236,7 +239,7 @@ static void TestAieClientSyncProcess(bool isAsync, bool isSyncProcessInputInfoNu
  * @tc.desc   : [C- SOFTWARE -0200]
  */
 HWTEST_F(AieClientSyncProcessShareMemoryFunctionTest, testAieClientSyncProcessShareMemoryFunction0101,
-    Function | MediumTest | Level2)
+    Function | MediumTest | Level3)
 {
     HILOGI("[Test]testAieClientSyncProcessShareMemoryFunction0101.");
     TestAieClientSyncProcess(false, false, true, true);
