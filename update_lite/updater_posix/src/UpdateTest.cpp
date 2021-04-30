@@ -1,5 +1,7 @@
 /*
  * Copyright (c) 2021 Huawei Device Co., Ltd.
+ */
+/*
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -18,15 +20,13 @@
 #include "hota_updater.h"
 #include "ohos_types.h"
 
-#define ERRORCALLBACK    0
-#define STATUSCALLBACK   0
-#define USE_HOS_PKG      1
-#define NOT_HOS_PKG      0
-#define ERR_PAK_FALG     2
-#define DATA_LENGTH      190
-#define READ_LENGTH      0
-#define ERR_LENGTH       9
-#define DATA_OFFSET      0
+const int USE_HOS_PKG = 1;
+const int NOT_HOS_PKG = 0;
+const int ERR_PAK_FALG = 2;
+const int DATA_LENGTH = 190;
+const int READ_LENGTH = 0;
+const int ERR_LENGTH = 9;
+const int DATA_OFFSET = 0;
 
 using namespace std;
 using namespace testing::ext;
@@ -47,7 +47,7 @@ protected:
 HWTEST_F(UpdateTest, subUpgradeAPI0100, Function | MediumTest | Level1)
 {
     unsigned int ret;
-    ret = HotaInit(ERRORCALLBACK, STATUSCALLBACK);
+    ret = HotaInit(NULL, NULL);
     printf("HotaInit return = %d\r\n", ret);
     EXPECT_EQ(OHOS_SUCCESS, ret);
 };
