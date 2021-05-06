@@ -246,11 +246,11 @@ HWTEST_F(IoTest, testWmemset, Function | MediumTest | Level1)
 HWTEST_F(IoTest, testWmemchr, Function | MediumTest | Level1)
 {
     wchar_t src[] = L"hello world";
-    wchar_t *ret = wmemchr(src, L' ', sizeof(src));
+    wchar_t *ret = wmemchr(src, L' ', sizeof(src) / sizeof(src[0]) - 1);
     EXPECT_STREQ(ret, L" world");
 
     wchar_t srcT[] = L"this is string";
-    ret = wmemchr(srcT, L'?', sizeof(srcT));
+    ret = wmemchr(srcT, L'?', sizeof(srcT) / sizeof(srcT[0]) - 1);
     EXPECT_STREQ(ret, nullptr);
 }
 
