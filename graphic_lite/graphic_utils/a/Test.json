@@ -20,6 +20,6 @@
     ],
     "driver": {
         "type": "CppTestLite",
-        "execute": "/test_root/graphic/ActsUiInterfaceTest.bin"
+        "execute": "/test_root/graphic/ActsUiInterface1Test.bin"
     }
 }
