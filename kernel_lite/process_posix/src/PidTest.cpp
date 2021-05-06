@@ -67,8 +67,9 @@ HWTEST_F(PidTest, testOrphanProcess, Function | MediumTest | Level1)
     ASSERT_NE(shmID, -1) << "get share mem fail, errno = " << errno;
     int *shared = (int*)(shmat(shmID, nullptr, 0));
     ASSERT_NE(shared, reinterpret_cast<int*>(-1)) << "shmat fail, errno = " << errno;
-    *shared = retPass;
-
+    shared[0] = retPass;
+    shared[1] = 0;
+ 
     LOG("parent process id:%d", getpid());
     pid_t pid = fork();
     EXPECT_TRUE(pid >= 0) << "======== Fork Error! =========";
@@ -77,22 +78,26 @@ HWTEST_F(PidTest, testOrphanProcess, Function | MediumTest | Level1)
         pid_t pid2 = fork();
         if (pid2 < 0) {
             LOG("======== Fork Error! =========");
-            *shared = 1;
             exit(1);
         }
 
         if (pid2 == 0) { // child
             LOG("orphane process id:%d", getpid());
-            Msleep(100);
+            int *shmAddr = (int*)(shmat(shmID, nullptr, 0));
+            LOG("before while child child %d", shmAddr[1]);
+            while (shmAddr[1] != 1) {
+                Msleep(50);
+            }
+            LOG("after while child child %d", shmAddr[1]);
             pid_t pPid = getppid();
             if (pPid != 1) {
                 LOG("getppid orphaned process fail, expect:1, but get:%d", pPid);
                 // transfer result to main process
-                int *shmAddr = (int*)(shmat(shmID, nullptr, 0));
-                *shmAddr = retFail;
-                shmdt(shmAddr);
-                exit(0);
+                shmAddr[0] == retFail;
             }
+            shmAddr[1] =2;
+            LOG("child child exit %d", shmAddr[1]);
+            shmdt(shmAddr);
             exit(0);
         } else { // sub parent
             exit(0);
@@ -100,8 +105,13 @@ HWTEST_F(PidTest, testOrphanProcess, Function | MediumTest | Level1)
     }
     // parent
     WaitProcExitedOK(pid);
+    shared[1] = 1;
     Msleep(200);
-    EXPECT_EQ(*shared, retPass);
+    EXPECT_EQ(shared[0], retPass);
+    LOG("before while paret %d", shared[1]);
+    while (shared[1] != 2) {
+        Msleep(50);
+    }
     shmdt(shared);
     shmctl(shmID, IPC_RMID, nullptr);
 }
