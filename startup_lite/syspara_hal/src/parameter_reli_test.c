@@ -55,17 +55,14 @@ static BOOL ParameterReliTestSuiteTearDown(void)
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli001, Function | MediumTest | Level1)
 {
-    char* value1 = GetProductType();
+    const char* value1 = GetDeviceType();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetProductType();
-    free(value);
+    const char* value = GetDeviceType();
     }
-    char* value2 = GetProductType();
+    const char* value2 = GetDeviceType();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -75,17 +72,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli001, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli002, Function | MediumTest | Level1)
 {
-    char* value1 = GetManufacture();
+    const char* value1 = GetManufacture();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetManufacture();
-    free(value);
+    const char* value = GetManufacture();
     }
-    char* value2 = GetManufacture();
+    const char* value2 = GetManufacture();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -95,17 +89,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli002, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli003, Function | MediumTest | Level1)
 {
-    char* value1 = GetBrand();
+    const char* value1 = GetBrand();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetBrand();
-    free(value);
+    const char* value = GetBrand();
     }
-    char* value2 = GetBrand();
+    const char* value2 = GetBrand();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -115,17 +106,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli003, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli004, Function | MediumTest | Level1)
 {
-    char* value1 = GetMarketName();
+    const char* value1 = GetMarketName();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetMarketName();
-    free(value);
+    const char* value = GetMarketName();
     }
-    char* value2 = GetMarketName();
+    const char* value2 = GetMarketName();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -135,17 +123,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli004, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli005, Function | MediumTest | Level1)
 {
-    char* value1 = GetProductSeries();
+    const char* value1 = GetProductSeries();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetProductSeries();
-    free(value);
+    const char* value = GetProductSeries();
     }
-    char* value2 = GetProductSeries();
+    const char* value2 = GetProductSeries();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -155,17 +140,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli005, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli006, Function | MediumTest | Level1)
 {
-    char* value1 = GetProductModel();
+    const char* value1 = GetProductModel();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetProductModel();
-    free(value);
+    const char* value = GetProductModel();
     }
-    char* value2 = GetProductModel();
+    const char* value2 = GetProductModel();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -175,17 +157,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli006, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli007, Function | MediumTest | Level1)
 {
-    char* value1 = GetHardwareModel();
+    const char* value1 = GetHardwareModel();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetHardwareModel();
-    free(value);
+    const char* value = GetHardwareModel();
     }
-    char* value2 = GetHardwareModel();
+    const char* value2 = GetHardwareModel();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -195,17 +174,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli007, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli008, Function | MediumTest | Level1)
 {
-    char* value1 = GetHardwareProfile();
+    const char* value1 = GetHardwareProfile();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetHardwareProfile();
-    free(value);
+    const char* value = GetHardwareProfile();
     }
-    char* value2 = GetHardwareProfile();
+    const char* value2 = GetHardwareProfile();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -215,20 +191,17 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli008, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli009, Function | MediumTest | Level1)
 {
-    char* value1 = GetSerial();
+    const char* value1 = GetSerial();
     if (value1 == NULL) {
         printf("The serial number needs to be written\n");
         TEST_IGNORE();
     }
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetSerial();
-    free(value);
+    const char* value = GetSerial();
     }
-    char* value2 = GetSerial();
+    const char* value2 = GetSerial();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -238,17 +211,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli009, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli010, Function | MediumTest | Level1)
 {
-    char* value1 = GetOsName();
+    const char* value1 = GetOSFullName();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetOsName();
-    free(value);
+    const char* value = GetOSFullName();
     }
-    char* value2 = GetOsName();
+    const char* value2 = GetOSFullName();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -258,17 +228,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli010, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli011, Function | MediumTest | Level1)
 {
-    char* value1 = GetDisplayVersion();
+    const char* value1 = GetDisplayVersion();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetDisplayVersion();
-    free(value);
+    const char* value = GetDisplayVersion();
     }
-    char* value2 = GetDisplayVersion();
+    const char* value2 = GetDisplayVersion();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -278,17 +245,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli011, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli012, Function | MediumTest | Level1)
 {
-    char* value1 = GetBootloaderVersion();
+    const char* value1 = GetBootloaderVersion();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetBootloaderVersion();
-    free(value);
+    const char* value = GetBootloaderVersion();
     }
-    char* value2 = GetBootloaderVersion();
+    const char* value2 = GetBootloaderVersion();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -298,17 +262,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli012, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli013, Function | MediumTest | Level1)
 {
-    char* value1 = GetSecurityPatchTag();
+    const char* value1 = GetSecurityPatchTag();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetSecurityPatchTag();
-    free(value);
+    const char* value = GetSecurityPatchTag();
     }
-    char* value2 = GetSecurityPatchTag();
+    const char* value2 = GetSecurityPatchTag();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -318,17 +279,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli013, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli014, Function | MediumTest | Level1)
 {
-    char* value1 = GetAbiList();
+    const char* value1 = GetAbiList();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetAbiList();
-    free(value);
+    const char* value = GetAbiList();
     }
-    char* value2 = GetAbiList();
+    const char* value2 = GetAbiList();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -338,17 +296,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli014, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli015, Function | MediumTest | Level1)
 {
-    char* value1 = GetFirstApiLevel();
+    int value1 = GetFirstApiVersion();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetFirstApiLevel();
-    free(value);
+    int value = GetFirstApiVersion();
     }
-    char* value2 = GetFirstApiLevel();
-    TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
+    int value2 = GetFirstApiVersion();
+    TEST_ASSERT_EQUAL_INT(value1, value2);
 };
 
 /**
@@ -358,17 +313,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli015, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli016, Function | MediumTest | Level1)
 {
-    char* value1 = GetIncrementalVersion();
+    const char* value1 = GetIncrementalVersion();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetIncrementalVersion();
-    free(value);
+    const char* value = GetIncrementalVersion();
     }
-    char* value2 = GetIncrementalVersion();
+    const char* value2 = GetIncrementalVersion();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -378,17 +330,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli016, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli017, Function | MediumTest | Level1)
 {
-    char* value1 = GetVersionId();
+    const char* value1 = GetVersionId();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetVersionId();
-    free(value);
+    const char* value = GetVersionId();
     }
-    char* value2 = GetVersionId();
+    const char* value2 = GetVersionId();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -398,17 +347,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli017, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli018, Function | MediumTest | Level1)
 {
-    char* value1 = GetBuildType();
+    const char* value1 = GetBuildType();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetBuildType();
-    free(value);
+    const char* value = GetBuildType();
     }
-    char* value2 = GetBuildType();
+    const char* value2 = GetBuildType();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -418,17 +364,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli018, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli019, Function | MediumTest | Level1)
 {
-    char* value1 = GetBuildUser();
+    const char* value1 = GetBuildUser();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetBuildUser();
-    free(value);
+    const char* value = GetBuildUser();
     }
-    char* value2 = GetBuildUser();
+    const char* value2 = GetBuildUser();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -438,17 +381,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli019, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli020, Function | MediumTest | Level1)
 {
-    char* value1 = GetBuildHost();
+    const char* value1 = GetBuildHost();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetBuildHost();
-    free(value);
+    const char* value = GetBuildHost();
     }
-    char* value2 = GetBuildHost();
+    const char* value2 = GetBuildHost();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -458,17 +398,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli020, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli021, Function | MediumTest | Level1)
 {
-    char* value1 = GetBuildTime();
+    const char* value1 = GetBuildTime();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetBuildTime();
-    free(value);
+    const char* value = GetBuildTime();
     }
-    char* value2 = GetBuildTime();
+    const char* value2 = GetBuildTime();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -478,17 +415,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli021, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli022, Function | MediumTest | Level1)
 {
-    char* value1 = GetBuildRootHash();
+    const char* value1 = GetBuildRootHash();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetBuildRootHash();
-    free(value);
+    const char* value = GetBuildRootHash();
     }
-    char* value2 = GetBuildRootHash();
+    const char* value2 = GetBuildRootHash();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -498,17 +432,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli022, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli023, Function | MediumTest | Level1)
 {
-    char* value1 = GetSoftwareModel();
+    const char* value1 = GetSoftwareModel();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetSoftwareModel();
-    free(value);
+    const char* value = GetSoftwareModel();
     }
-    char* value2 = GetSoftwareModel();
+    const char* value2 = GetSoftwareModel();
     TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
 };
 
 /**
@@ -518,17 +449,14 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli023, Function | Medi
  */
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli024, Function | MediumTest | Level1)
 {
-    char* value1 = GetSdkApiLevel();
+    int value1 = GetSdkApiVersion();
     IsEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
-    char* value = GetSdkApiLevel();
-    free(value);
+    int value = GetSdkApiVersion();
     }
-    char* value2 = GetSdkApiLevel();
-    TEST_ASSERT_EQUAL_STRING(value1, value2);
-    free(value1);
-    free(value2);
+    int value2 = GetSdkApiVersion();
+    TEST_ASSERT_EQUAL_INT(value1, value2);
 };
 
 RUN_TEST_SUITE(ParameterReliTestSuite);
