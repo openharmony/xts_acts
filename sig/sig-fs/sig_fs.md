@@ -6,13 +6,13 @@
 ## SIG group work objectives and scope
 
 ### work goals
-Maintenance of tripartite introduction warehouse littlefs to support the commercial use of M-core file system
+Maintenance of file system releated open source software to support the commercial use
 ### work scope
-Harmony's application of file system on M core of light equipment
+File system related open source software used by OpenHarmony lite equipment, including file system development and system image packing tools.
 ### The repository 
 - project name:
   -repository1 name:https://gitee.com/openharmony/third_party_littlefs
-
+  -repository2 name:https://gitee.com/openharmony/third_party_e2fsprogs
 
 ## SIG Members
 
@@ -21,3 +21,4 @@ Harmony's application of file system on M core of light equipment
 
 ### Committers
 - [@li_zan](https://gitee.com/li_zan)
+- [@taiyipei](https://gitee.com/taiyipei)
