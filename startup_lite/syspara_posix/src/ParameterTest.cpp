@@ -20,7 +20,7 @@ using namespace std;
 using namespace testing::ext;
 
 namespace StartUpLite {
-    static const int GET_DEF_PARA_FUN_MAX = 24;
+    static const int GET_DEF_PARA_FUN_MAX = 22;
     static const int MAX_LEN = 128;
     static const int WRONG_LEN = 2;
 
