@@ -2,8 +2,10 @@
    "sigs-List":[
       {
          "sig-name":"sig-kernel",
-         "projects":"https://gitee.com/openharmony/third_party_littlefs",
-         "project-path":"third_party/littlefs"
+         "projects":["https://gitee.com/openharmony/third_party_littlefs",
+                     "https://gitee.com/openharmony/third_party_e2fsprogs"],
+         "project-path":["third_party/littlefs",
+                         "third_party/e2fsprogs"]
       },
       {
          "sig-name":"sig-driver",
