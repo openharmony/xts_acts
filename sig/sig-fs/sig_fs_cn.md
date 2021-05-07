@@ -6,12 +6,13 @@
 ## SIG组工作目标和范围
 
 ### 工作目标
-维护三方引入仓littlefs，支撑M核文件系统商用
+维护文件系统相关的三方开源软件
 ### 工作范围
-鸿蒙在轻设备M核上的文件系统的应用
+鸿蒙在轻设备上文件系统相关的三方开源软件, 包含文件系统开发和镜像包制作工具
 ## 代码仓
 - 代码仓地址：
   - repository1名称：https://gitee.com/openharmony/third_party_littlefs
+  - repository2名称：https://gitee.com/openharmony/third_party_e2fsprogs
 
 ## SIG组成员
 
@@ -20,3 +21,4 @@
 
 ### Committers列表
 - [@li_zan](https://gitee.com/li_zan)
+- [@taiyipei](https://gitee.com/taiyipei)
