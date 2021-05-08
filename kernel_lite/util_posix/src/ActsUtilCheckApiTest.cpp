@@ -1,4 +1,7 @@
 /*
+ * Copyright (c) Huawei Technologies Co., Ltd. 2020-2020. All rights reserved.
+ */
+/*
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +27,8 @@
 using namespace testing::ext;
 
 class ActsUtilCheckApiTest : public testing::Test {
+public:
+    locale_t g_aucaLocale;
 protected:
     // SetUpTestCase: Testsuit setup, run before 1st testcase
     static void SetUpTestCase(void)
@@ -36,10 +41,12 @@ protected:
     // Testcase setup
     virtual void SetUp()
     {
+        g_aucaLocale = newlocale(LC_ALL_MASK, "", (locale_t)0);
     }
     // Testcase teardown
     virtual void TearDown()
     {
+        freelocale(g_aucaLocale);
     }
 };
 
@@ -128,7 +135,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsalnumL0600, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = '2';
-    returnVal = isalnum_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isalnum_l(paraVal, g_aucaLocale);
     LOGD("    isalnum_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: isalnum_l returnVal:='" << returnVal << "'";
 }
@@ -143,7 +150,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsalnumL0700, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = 'z';
-    returnVal = isalnum_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isalnum_l(paraVal, g_aucaLocale);
     LOGD("    isalnum_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: isalnum_l returnVal:='" << returnVal << "'";
 }
@@ -158,7 +165,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsalnumL0800, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = 'Z';
-    returnVal = isalnum_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isalnum_l(paraVal, g_aucaLocale);
     LOGD("    isalnum_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: isalnum_l returnVal:='" << returnVal << "'";
 }
@@ -173,7 +180,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsalnumL0900, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = ' ';
-    returnVal = isalnum_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isalnum_l(paraVal, g_aucaLocale);
     LOGD("    isalnum_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: isalnum_l returnVal:='" << returnVal << "'";
 }
@@ -188,7 +195,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsalnumL1000, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = '\n';
-    returnVal = isalnum_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isalnum_l(paraVal, g_aucaLocale);
     LOGD("    isalnum_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: isalnum_l returnVal:='" << returnVal << "'";
 }
@@ -263,7 +270,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsalphaL1500, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = 'z';
-    returnVal = isalpha_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isalpha_l(paraVal, g_aucaLocale);
     LOGD("    isalpha_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: isalpha_l returnVal:='" << returnVal << "'";
 }
@@ -278,7 +285,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsalphaL1600, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = 'Z';
-    returnVal = isalpha_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isalpha_l(paraVal, g_aucaLocale);
     LOGD("    isalpha_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: isalpha_l returnVal:='" << returnVal << "'";
 }
@@ -293,7 +300,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsalphaL1700, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = ' ';
-    returnVal = isalpha_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isalpha_l(paraVal, g_aucaLocale);
     LOGD("    isalpha_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: isalpha_l returnVal:='" << returnVal << "'";
 }
@@ -308,7 +315,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsalphaL1800, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = '\n';
-    returnVal = isalpha_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isalpha_l(paraVal, g_aucaLocale);
     LOGD("    isalpha_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: isalpha_l returnVal:='" << returnVal << "'";
 }
@@ -443,7 +450,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsblankL2700, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = ' ';
-    returnVal = isblank_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isblank_l(paraVal, g_aucaLocale);
     LOGD("    isblank_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: isblank_l returnVal:='" << returnVal << "'";
 }
@@ -458,7 +465,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsblankL2800, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = 'A';
-    returnVal = isblank_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isblank_l(paraVal, g_aucaLocale);
     LOGD("    isblank_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: isblank_l returnVal:='" << returnVal << "'";
 }
@@ -503,7 +510,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIscntrlL3100, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = '\n';
-    returnVal = iscntrl_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = iscntrl_l(paraVal, g_aucaLocale);
     LOGD("    iscntrl_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: iscntrl_l returnVal:='" << returnVal << "'";
 }
@@ -518,7 +525,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIscntrlL3200, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = 'A';
-    returnVal = iscntrl_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = iscntrl_l(paraVal, g_aucaLocale);
     LOGD("    iscntrl_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: iscntrl_l returnVal:='" << returnVal << "'";
 }
@@ -593,7 +600,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsdigitL3700, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = '3';
-    returnVal = isdigit_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isdigit_l(paraVal, g_aucaLocale);
     LOGD("    isdigit_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: isdigit_l returnVal:='" << returnVal << "'";
 }
@@ -608,7 +615,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsdigitlL3800, Function | MediumTest | Level1
     int returnVal;
 
     paraVal = 'a';
-    returnVal = isdigit_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isdigit_l(paraVal, g_aucaLocale);
     LOGD("    isdigit_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: isdigit_l returnVal:='" << returnVal << "'";
 }
@@ -623,7 +630,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsdigitlL3900, Function | MediumTest | Level1
     int returnVal;
 
     paraVal = '\n';
-    returnVal = isdigit_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isdigit_l(paraVal, g_aucaLocale);
     LOGD("    isdigit_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: isdigit_l returnVal:='" << returnVal << "'";
 }
@@ -638,7 +645,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsdigitL4000, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = ' ';
-    returnVal = isdigit_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isdigit_l(paraVal, g_aucaLocale);
     LOGD("    isdigit_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: isdigit_l returnVal:='" << returnVal << "'";
 }
@@ -758,7 +765,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsgraphL4800, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = 'A';
-    returnVal = isgraph_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isgraph_l(paraVal, g_aucaLocale);
     LOGD("    isgraph returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: isgraph returnVal:='" << returnVal << "'";
 }
@@ -773,7 +780,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsgraphL4900, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = 'z';
-    returnVal = isgraph_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isgraph_l(paraVal, g_aucaLocale);
     LOGD("    isgraph returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: isgraph returnVal:='" << returnVal << "'";
 }
@@ -788,7 +795,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsgraphL5000, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = '\n';
-    returnVal = isgraph_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isgraph_l(paraVal, g_aucaLocale);
     LOGD("    isgraph returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: isgraph returnVal:='" << returnVal << "'";
 }
@@ -803,7 +810,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsgraphL5100, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = ' ';
-    returnVal = isgraph_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isgraph_l(paraVal, g_aucaLocale);
     LOGD("    isgraph returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: isgraph returnVal:='" << returnVal << "'";
 }
@@ -1097,7 +1104,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIslowerL6900, Function | MediumTest | Level1)
     int returnVal;
 
     paraChar = 'A';
-    returnVal = islower_l(paraChar, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = islower_l(paraChar, g_aucaLocale);
     LOGD("    islower_l c:='%c',   returnVal:='%c'\n", paraChar, returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: islower_l c:='" << paraChar << "',   returnVal:='" << returnVal << "'";
 }
@@ -1112,7 +1119,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIslowerL7000, Function | MediumTest | Level1)
     int returnVal;
 
     paraChar = 'a';
-    returnVal = islower_l(paraChar, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = islower_l(paraChar, g_aucaLocale);
     LOGD("    islower_l c:='%c',   returnVal:='%c'\n", paraChar, returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: islower_l c:='" << paraChar << "',   returnVal:='" << returnVal << "'";
 }
@@ -1127,7 +1134,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIslowerL7100, Function | MediumTest | Level1)
     int returnVal;
 
     paraChar = '5';
-    returnVal = islower_l(paraChar, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = islower_l(paraChar, g_aucaLocale);
     LOGD("    islower_l c:='%c',   returnVal:='%c'\n", paraChar, returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: islower_l c:='" << paraChar << "',   returnVal:='" << returnVal << "'";
 }
@@ -1142,7 +1149,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIslowerL7200, Function | MediumTest | Level1)
     int returnVal;
 
     paraChar = ' ';
-    returnVal = islower_l(paraChar, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = islower_l(paraChar, g_aucaLocale);
     LOGD("    islower_l c:='%c',   returnVal:='%c'\n", paraChar, returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: islower_l c:='" << paraChar << "',   returnVal:='" << returnVal << "'";
 }
@@ -1262,7 +1269,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsprintL8000, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = 'a';
-    returnVal = isprint_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isprint_l(paraVal, g_aucaLocale);
     LOGD("    isprint_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: isprint_l  returnVal:='" << returnVal << "'";
 }
@@ -1277,7 +1284,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsprintL8100, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = ' ';
-    returnVal = isprint_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isprint_l(paraVal, g_aucaLocale);
     LOGD("    isprint_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: isprint_l  returnVal:='" << returnVal << "'";
 }
@@ -1292,7 +1299,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsprintL8200, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = '\n';
-    returnVal = isprint_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isprint_l(paraVal, g_aucaLocale);
     LOGD("    isprint_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: isprint_l  returnVal:='" << returnVal << "'";
 }
@@ -1352,7 +1359,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIspunctL8600, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = ' ';
-    returnVal = ispunct_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = ispunct_l(paraVal, g_aucaLocale);
     LOGD("    ispunct_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: ispunct_l  returnVal:='" << returnVal << "'";
 }
@@ -1367,7 +1374,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIspunctL8700, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = 'A';
-    returnVal = ispunct_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = ispunct_l(paraVal, g_aucaLocale);
     LOGD("    ispunct_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: ispunct_l  returnVal:='" << returnVal << "'";
 }
@@ -1382,7 +1389,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIspunctL8800, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = '\n';
-    returnVal = ispunct_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = ispunct_l(paraVal, g_aucaLocale);
     LOGD("    ispunct_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: ispunct_l  returnVal:='" << returnVal << "'";
 }
@@ -1487,7 +1494,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsspaceL9500, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = 'a';
-    returnVal = isspace_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isspace_l(paraVal, g_aucaLocale);
     LOGD("    isspace_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: isspace_l  returnVal:='" << returnVal << "'";
 }
@@ -1502,7 +1509,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsspaceL9600, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = ' ';
-    returnVal = isspace_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isspace_l(paraVal, g_aucaLocale);
     LOGD("    isspace_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: isspace_l  returnVal:='" << returnVal << "'";
 }
@@ -1517,7 +1524,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsspaceL9620, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = '\n';
-    returnVal = isspace_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isspace_l(paraVal, g_aucaLocale);
     LOGD("    isspace_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: isspace_l  returnVal:='" << returnVal << "'";
 }
@@ -1532,7 +1539,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsspaceL9640, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = '\r';
-    returnVal = isspace_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isspace_l(paraVal, g_aucaLocale);
     LOGD("    isspace_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: isspace_l  returnVal:='" << returnVal << "'";
 }
@@ -1547,7 +1554,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsspaceL9660, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = '\f';
-    returnVal = isspace_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isspace_l(paraVal, g_aucaLocale);
     LOGD("    isspace_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: isspace_l  returnVal:='" << returnVal << "'";
 }
@@ -1562,7 +1569,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsspaceL9680, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = '\t';
-    returnVal = isspace_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isspace_l(paraVal, g_aucaLocale);
     LOGD("    isspace_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: isspace_l  returnVal:='" << returnVal << "'";
 }
@@ -1654,7 +1661,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsupperL9800, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = 'A';
-    returnVal = isupper_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isupper_l(paraVal, g_aucaLocale);
     LOGD("    isupper_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: isupper_l  returnVal:='" << returnVal << "'";
 }
@@ -1669,7 +1676,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsupperL9820, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = 'a';
-    returnVal = isupper_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isupper_l(paraVal, g_aucaLocale);
     LOGD("    isupper_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: isupper_l  returnVal:='" << returnVal << "'";
 }
@@ -1684,7 +1691,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsupperL9840, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = '5';
-    returnVal = isupper_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isupper_l(paraVal, g_aucaLocale);
     LOGD("    isupper_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: isupper_l  returnVal:='" << returnVal << "'";
 }
@@ -1699,7 +1706,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsupperL9860, Function | MediumTest | Level1)
     int returnVal;
 
     paraVal = '\n';
-    returnVal = isupper_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isupper_l(paraVal, g_aucaLocale);
     LOGD("    isupper_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: isupper_l  returnVal:='" << returnVal << "'";
 }
@@ -1744,7 +1751,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsxdigitL9920, Function | MediumTest | Level1
     int returnVal;
 
     paraVal = 'F';
-    returnVal = isxdigit_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isxdigit_l(paraVal, g_aucaLocale);
     LOGD("    isxdigit_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: isxdigit_l  returnVal:='" << returnVal << "'";
 }
@@ -1759,7 +1766,7 @@ HWTEST_F(ActsUtilCheckApiTest, testIsxdigitL19940, Function | MediumTest | Level
     int returnVal;
 
     paraVal = 'G';
-    returnVal = isxdigit_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = isxdigit_l(paraVal, g_aucaLocale);
     LOGD("    isxdigit_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: isxdigit_l  returnVal:='" << returnVal << "'";
 }

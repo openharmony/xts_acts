@@ -1,4 +1,7 @@
 /*
+ * Copyright (c) Huawei Technologies Co., Ltd. 2020-2020. All rights reserved.
+ */
+/*
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +29,8 @@
 using namespace testing::ext;
 
 class ActsUtilConvertApiTest : public testing::Test {
+public:
+    locale_t g_aucaNewloc;
 protected:
     // SetUpTestCase: Testsuit setup, run before 1st testcase
     static void SetUpTestCase(void)
@@ -38,10 +43,12 @@ protected:
     // Testcase setup
     virtual void SetUp()
     {
+        g_aucaNewloc = newlocale(LC_ALL_MASK, "", (locale_t)0);
     }
     // Testcase teardown
     virtual void TearDown()
     {
+        freelocale(g_aucaNewloc);
     }
 };
 
@@ -633,7 +640,7 @@ HWTEST_F(ActsUtilConvertApiTest, testTolowerL2000, Function | MediumTest | Level
     int returnVal;
 
     paraVal = 'A';
-    returnVal = tolower_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = tolower_l(paraVal, g_aucaNewloc);
     LOGD("    tolower_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE('a' == returnVal) << "ErrInfo: tolower_l  returnVal:='" << returnVal << "'";
 }
@@ -648,7 +655,7 @@ HWTEST_F(ActsUtilConvertApiTest, testTolowerL2100, Function | MediumTest | Level
     int returnVal;
 
     paraVal = 'a';
-    returnVal = tolower_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = tolower_l(paraVal, g_aucaNewloc);
     LOGD("    tolower_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE('a' == returnVal) << "ErrInfo: tolower_l  returnVal:='" << returnVal << "'";
 }
@@ -693,7 +700,7 @@ HWTEST_F(ActsUtilConvertApiTest, testToupperL2400, Function | MediumTest | Level
     int returnVal;
 
     paraVal = 'A';
-    returnVal = toupper_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = toupper_l(paraVal, g_aucaNewloc);
     LOGD("    toupper_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE('A' == returnVal) << "ErrInfo: toupper_l  returnVal:='" << returnVal << "'";
 }
@@ -708,7 +715,7 @@ HWTEST_F(ActsUtilConvertApiTest, testToupperL2500, Function | MediumTest | Level
     int returnVal;
 
     paraVal = 'a';
-    returnVal = toupper_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = toupper_l(paraVal, g_aucaNewloc);
     LOGD("    toupper_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE('A' == returnVal) << "ErrInfo: toupper_l  returnVal:='" << returnVal << "'";
 }
@@ -783,7 +790,7 @@ HWTEST_F(ActsUtilConvertApiTest, testTowlowerL3000, Function | MediumTest | Leve
     wint_t returnVal;
 
     wideChar = 'A';
-    returnVal = towlower_l(wideChar, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = towlower_l(wideChar, g_aucaNewloc);
     LOGD("    towlower_l returnVal:='%c'\n", returnVal);
     ASSERT_TRUE('a' == returnVal) << "ErrInfo: towlower_l  returnVal:='" << returnVal << "'";
 }
@@ -798,7 +805,7 @@ HWTEST_F(ActsUtilConvertApiTest, testTowlowerL3100, Function | MediumTest | Leve
     wint_t returnVal;
 
     wideChar = 'a';
-    returnVal = towlower_l(wideChar, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = towlower_l(wideChar, g_aucaNewloc);
     LOGD("    towlower_l returnVal:='%c'\n", returnVal);
     ASSERT_TRUE('a' == returnVal) << "ErrInfo: towlower_l  returnVal:='" << returnVal << "'";
 }
@@ -843,7 +850,7 @@ HWTEST_F(ActsUtilConvertApiTest, testTowupperL3400, Function | MediumTest | Leve
     wint_t returnVal;
 
     wideChar = 'A';
-    returnVal = towupper_l(wideChar, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = towupper_l(wideChar, g_aucaNewloc);
     LOGD("    towupper_l returnVal:='%c'\n", returnVal);
     ASSERT_TRUE('A' == returnVal) << "ErrInfo: towupper_l  returnVal:='" << returnVal << "'";
 }
@@ -858,7 +865,7 @@ HWTEST_F(ActsUtilConvertApiTest, testTowupperL3500, Function | MediumTest | Leve
     wint_t returnVal;
 
     wideChar = 'a';
-    returnVal = towupper_l(wideChar, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = towupper_l(wideChar, g_aucaNewloc);
     LOGD("    towupper_l returnVal:='%c'\n", returnVal);
     ASSERT_TRUE('A' == returnVal) << "ErrInfo: towupper_l  returnVal:='" << returnVal << "'";
 }
@@ -943,8 +950,8 @@ HWTEST_F(ActsUtilConvertApiTest, testTowctransL4000, Function | MediumTest | Lev
     wint_t returnVal;
 
     wideChar = WEOF;
-    paraDesc = wctrans_l("tolower", newlocale(LC_ALL_MASK, "", (locale_t)0));
-    returnVal = towctrans_l(wideChar, paraDesc, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    paraDesc = wctrans_l("tolower", g_aucaNewloc);
+    returnVal = towctrans_l(wideChar, paraDesc, g_aucaNewloc);
     LOGD("    towctrans_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(WEOF == returnVal) << "ErrInfo: towctrans_l  returnVal:='" << returnVal << "'";
 }
@@ -960,8 +967,8 @@ HWTEST_F(ActsUtilConvertApiTest, testTowctransL4100, Function | MediumTest | Lev
     wint_t returnVal;
 
     wideChar = L'A';
-    paraDesc = wctrans_l("tolower", newlocale(LC_ALL_MASK, "", (locale_t)0));
-    returnVal = towctrans_l(wideChar, paraDesc, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    paraDesc = wctrans_l("tolower", g_aucaNewloc);
+    returnVal = towctrans_l(wideChar, paraDesc, g_aucaNewloc);
     LOGD("    towctrans_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE('a' == returnVal) << "ErrInfo: towctrans_l  returnVal:='" << returnVal << "'";
 }
@@ -977,8 +984,8 @@ HWTEST_F(ActsUtilConvertApiTest, testTowctransL4200, Function | MediumTest | Lev
     wint_t returnVal;
 
     wideChar = L'a';
-    paraDesc = wctrans_l("toupper", newlocale(LC_ALL_MASK, "", (locale_t)0));
-    returnVal = towctrans_l(wideChar, paraDesc, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    paraDesc = wctrans_l("toupper", g_aucaNewloc);
+    returnVal = towctrans_l(wideChar, paraDesc, g_aucaNewloc);
     LOGD("    towctrans_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE('A' == returnVal) << "ErrInfo: towctrans_l  returnVal:='" << returnVal << "'";
 }
