@@ -230,11 +230,14 @@ HWTEST_F(FileSystemTest, testFallocate, Function | MediumTest | Level2)
     statvfs(".", &vfsBufNew);        // new system info.
     LOG("> vfsBufNew.f_bfree = %lu", vfsBufNew.f_bfree);
 
+    int ret = strcmp(TOP_DIR, "sdcard");
+    if(ret = 0) {
     int bNumExpect = file_size / vfsBufNew.f_bsize;
     int bNum = vfsBufOld.f_bfree - vfsBufNew.f_bfree;
     LOG("> bNumExpect = %d", bNumExpect);
     LOG("> bNum = %d", bNum);
     EXPECT_GE(bNum, bNumExpect);
+    }
 }
 #endif
 
@@ -273,11 +276,14 @@ HWTEST_F(FileSystemTest, testFallocateSmallSize, Function | MediumTest | Level2)
     statvfs(".", &vfsBufNew);        // new system info.
     LOG("> vfsBufNew.f_bfree = %lu", vfsBufNew.f_bfree);
 
+    int ret = strcmp(TOP_DIR, "sdcard");
+    if (ret = 0) {
     int bNumExpect = file_size / vfsBufNew.f_bsize;
     int bNum = vfsBufOld.f_bfree - vfsBufNew.f_bfree;
     LOG("> bNumExpect = %d", bNumExpect);
     LOG("> bNum = %d", bNum);
     EXPECT_GE(bNum, bNumExpect);
+    }
 }
 #endif
 

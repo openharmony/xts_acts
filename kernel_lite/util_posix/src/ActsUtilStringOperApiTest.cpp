@@ -1,4 +1,7 @@
 /*
+ * Copyright (c) Huawei Technologies Co., Ltd. 2020-2020. All rights reserved.
+ */
+/*
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +27,8 @@
 using namespace testing::ext;
 
 class ActsUtilStringOperApiTest : public testing::Test {
+public:
+    locale_t g_ausoaLocale;
 protected:
     // SetUpTestCase: Testsuit setup, run before 1st testcase
     static void SetUpTestCase(void)
@@ -36,10 +41,12 @@ protected:
     // Testcase setup
     virtual void SetUp()
     {
+        g_ausoaLocale = newlocale(LC_ALL_MASK, "", (locale_t)0);
     }
     // Testcase teardown
     virtual void TearDown()
     {
+        freelocale(g_ausoaLocale);
     }
 };
 
@@ -245,7 +252,7 @@ HWTEST_F(ActsUtilStringOperApiTest, testWctypeL1400, Function | MediumTest | Lev
     const char *paraVal = "alnum";
     wctype_t returnVal;
 
-    returnVal = wctype_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = wctype_l(paraVal, g_ausoaLocale);
     LOGD("    wctype_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal != 0) << "ErrInfo: wctype_l returnVal:='" << returnVal << "'";
 }
@@ -259,7 +266,7 @@ HWTEST_F(ActsUtilStringOperApiTest, testWctypeL1500, Function | MediumTest | Lev
     const char *paraVal = "alnumalpha";
     wctype_t returnVal;
 
-    returnVal = wctype_l(paraVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = wctype_l(paraVal, g_ausoaLocale);
     LOGD("    wctype_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: wctype_l returnVal:='" << returnVal << "'";
 }
@@ -373,7 +380,7 @@ HWTEST_F(ActsUtilStringOperApiTest, testWcscasecmpL2200, Function | MediumTest |
     const wchar_t *strVal2 = L"ABCDE";
     int returnVal;
 
-    returnVal = wcscasecmp_l(strVal1, strVal2, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = wcscasecmp_l(strVal1, strVal2, g_ausoaLocale);
     LOGD("    wcscasecmp_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: wcscasecmp_l returnVal:='" << returnVal << "'";
 }
@@ -388,7 +395,7 @@ HWTEST_F(ActsUtilStringOperApiTest, testWcscasecmpL2300, Function | MediumTest |
     const wchar_t *strVal2 = L"abcde";
     int returnVal;
 
-    returnVal = wcscasecmp_l(strVal1, strVal2, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = wcscasecmp_l(strVal1, strVal2, g_ausoaLocale);
     LOGD("    wcscasecmp_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: wcscasecmp_l returnVal:='" << returnVal << "'";
 }
@@ -439,7 +446,7 @@ HWTEST_F(ActsUtilStringOperApiTest, testWcsncasecmpL2600, Function | MediumTest 
     int returnVal;
 
     lenVal = 3;
-    returnVal = wcsncasecmp_l(strVal1, strVal2, lenVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = wcsncasecmp_l(strVal1, strVal2, lenVal, g_ausoaLocale);
     LOGD("    wcsncasecmp_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: wcsncasecmp_l returnVal:='" << returnVal << "'";
 }
@@ -456,7 +463,7 @@ HWTEST_F(ActsUtilStringOperApiTest, testWcsncasecmpL2700, Function | MediumTest 
     int returnVal;
 
     lenVal = 5;
-    returnVal = wcsncasecmp_l(strVal1, strVal2, lenVal, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = wcsncasecmp_l(strVal1, strVal2, lenVal, g_ausoaLocale);
     LOGD("    wcsncasecmp_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: wcsncasecmp_l returnVal:='" << returnVal << "'";
 }
@@ -674,7 +681,7 @@ HWTEST_F(ActsUtilStringOperApiTest, testWcscollL4000, Function | MediumTest | Le
 
     paraWcs1 = L"abcdef";
     paraWcs2 = L"abcdef";
-    returnVal = wcscoll_l(paraWcs1, paraWcs2, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = wcscoll_l(paraWcs1, paraWcs2, g_ausoaLocale);
     LOGD("    wcscoll_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(0 == returnVal) << "ErrInfo: wcscoll_l returnVal:='" << returnVal << "'";
 }
@@ -691,7 +698,7 @@ HWTEST_F(ActsUtilStringOperApiTest, testWcscollL4100, Function | MediumTest | Le
 
     paraWcs1 = L"abcdefg";
     paraWcs2 = L"abcdef";
-    returnVal = wcscoll_l(paraWcs1, paraWcs2, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = wcscoll_l(paraWcs1, paraWcs2, g_ausoaLocale);
     LOGD("    wcscoll_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal > 0) << "ErrInfo: wcscoll_l returnVal:='" << returnVal << "'";
 }
@@ -708,7 +715,7 @@ HWTEST_F(ActsUtilStringOperApiTest, testWcscollL4200, Function | MediumTest | Le
 
     paraWcs1 = L"abcde";
     paraWcs2 = L"abcdef";
-    returnVal = wcscoll_l(paraWcs1, paraWcs2, newlocale(LC_ALL_MASK, "", (locale_t)0));
+    returnVal = wcscoll_l(paraWcs1, paraWcs2, g_ausoaLocale);
     LOGD("    wcscoll_l returnVal:='%d'\n", returnVal);
     ASSERT_TRUE(returnVal < 0) << "ErrInfo: wcscoll_l returnVal:='" << returnVal << "'";
 }
