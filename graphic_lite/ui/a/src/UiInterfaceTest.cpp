@@ -35,6 +35,7 @@
 #include "events/aod_callback.h"
 #include "events/press_event.h"
 #include "events/virtual_device_event.h"
+#include "gfx_utils/graphic_buffer.h"
 #include "gfx_utils/graphic_math.h"
 #include "themes/theme_manager.h"
 #include "window/window.h"
@@ -746,7 +747,8 @@ HWTEST_F(UiInterfaceTest, SUB_GRAPHIC_INTERFACE_FIRST_6300, Function | MediumTes
     font->IsLineSegmentCross();
     font->IsRectCross();
     font->SetOnChangeListener();
-    uiView->OnPostDraw(*rect);
+    BufferInfo bufferInfo;
+    uiView->OnPostDraw(bufferInfo, *rect);
     EXPECT_EQ(0, 0);
     delete font;
     delete rect;
