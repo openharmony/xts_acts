@@ -53,19 +53,6 @@ HWTEST_F(UISliderTest, Graphic_UISliderTest_Test_SetKnobWidth_0200, Function | M
 }
 
 /**
- * @tc.number   SUB_GRAPHIC_SLIDER_SETKNOBSTYLE_0300
- * @tc.name     test slider set-knob-style api
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(UISliderTest, Graphic_UISliderTest_Test_SetKnobStyle_0300, Function | MediumTest | Level0)
-{
-    UISlider* slider = new UISlider();
-    slider->SetKnobStyle(STYLE_BACKGROUND_COLOR, Color::Gray().full);
-    EXPECT_EQ(slider->GetKnobStyle().bgColor_.full, Color::Gray().full);
-    delete slider;
-}
-
-/**
  * @tc.number   SUB_GRAPHIC_SLIDER_SETIMAGE_0400
  * @tc.name     test slider set-image api
  * @tc.desc     [C- SOFTWARE -0200]
@@ -77,40 +64,5 @@ HWTEST_F(UISliderTest, Graphic_UISliderTest_Test_SetImage_0400, Function | Mediu
     ImageInfo* foregroundImage = nullptr;
     slider->SetImage(backgroundImage, foregroundImage);
     EXPECT_EQ(0, 0);
-}
-
-/**
- * @tc.number   SUB_GRAPHIC_SLIDER_SETSLIDERCOLOR_0500
- * @tc.name     test slider set-slider-color api
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(UISliderTest, Graphic_UISliderTest_Test_SetSliderColor_0500, Function | MediumTest | Level0)
-{
-    UISlider* slider = new UISlider();
-    ColorType backgroundColor;
-    backgroundColor.full = 10;
-    ColorType foregroundColor;
-    foregroundColor.full = 0;
-    ColorType knobColor;
-    knobColor.full = 0;
-    slider->SetSliderColor(backgroundColor, foregroundColor, knobColor);
-    EXPECT_EQ(0, 0);
-    delete slider;
-}
-
-/**
- * @tc.number   SUB_GRAPHIC_SLIDER_SETSLIDERRADIUS_0600
- * @tc.name     test slider set-knob-style api
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(UISliderTest, Graphic_UISliderTest_Test_SetSliderRadius_0600, Function | MediumTest | Level0)
-{
-    UISlider* slider = new UISlider();
-    int16_t kgroundRadius = 0;
-    int16_t foregroundRadius = 0;
-    int16_t knobRadius = 0;
-    slider->SetSliderRadius(kgroundRadius, foregroundRadius, knobRadius);
-    EXPECT_EQ(0, 0);
-    delete slider;
 }
 } // namespace OHOS
