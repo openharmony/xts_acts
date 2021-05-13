@@ -308,7 +308,9 @@ HWTEST_F(PthreadTest, testPthreadSpecificAll, Function | MediumTest | Level3)
     ASSERT_EQ(pthread_create(&tid2, nullptr, ThreadPthreadSpecificAll, nullptr), 0) << "> return errno";
     Msleep(100);
     pthread_cancel(tid1);
+    pthread_join(tid1, nullptr);
     pthread_cancel(tid2);
+    pthread_join(tid2, nullptr);
     EXPECT_EQ(g_intPthreadSpecificAll, 5);
 }
 
@@ -340,7 +342,7 @@ HWTEST_F(PthreadTest, testPthreadSpecificAllDelete, Function | MediumTest | Leve
     pthread_t tid;
     ASSERT_EQ(pthread_create(&tid, nullptr, ThreadPthreadSpecificAllDelete, (void*)&data), 0) << "> return errno";
     Msleep(100);
-    pthread_cancel(tid);
+    pthread_join(tid, nullptr);
     EXPECT_EQ(data, 1);
 }
 
@@ -374,7 +376,7 @@ HWTEST_F(PthreadTest, testPthreadCleanupPushPopBasic, Function | MediumTest | Le
     CheckStep(1);
     ASSERT_EQ(pthread_create(&tid, nullptr, ThreadTestPush, nullptr), 0) << "> return errno";
     Msleep(100);
-    pthread_cancel(tid);
+    pthread_join(tid, nullptr);
     EXPECT_EQ(CheckStep(4), (uint64_t)0x1234);
 }
 
@@ -404,7 +406,7 @@ HWTEST_F(PthreadTest, testPthreadCleanupPushPopParam, Function | MediumTest | Le
     CheckStep(1);
     ASSERT_EQ(pthread_create(&tid, nullptr, ThreadTestPushParam, nullptr), 0) << "> return errno";
     Msleep(100);
-    pthread_cancel(tid);
+    pthread_join(tid, nullptr);
     EXPECT_EQ(CheckStep(3), (uint64_t)0x123);
 }
 
@@ -439,7 +441,7 @@ HWTEST_F(PthreadTest, testPop, Function | MediumTest | Level3)
     CheckStep(1);
     ASSERT_EQ(pthread_create(&tid, nullptr, ThreadTestop, nullptr), 0) << "> return errno";
     Msleep(100);
-    pthread_cancel(tid);
+    pthread_join(tid, nullptr);
     EXPECT_EQ(CheckStep(3), (uint64_t)0x123);
 }
 
@@ -525,8 +527,8 @@ HWTEST_F(PthreadTest, testBarrierWait, Function | MediumTest | Level3)
         ADD_FAILURE();
     }
     Msleep(50);
-    pthread_cancel(tid);
-    pthread_cancel(tid1);
+    pthread_join(tid, nullptr);
+    pthread_join(tid1, nullptr);
     EXPECT_EQ(pthread_barrier_destroy(&g_barrier), 0) << "> return errno";
     EXPECT_EQ(CheckStep(3), (uint64_t)0x123);
     EXPECT_EQ(intParam, 2);
@@ -567,8 +569,8 @@ HWTEST_F(PthreadTest, testBarrierAlwaysWait, Function | MediumTest | Level3)
     if ((reInt != PTHREAD_BARRIER_SERIAL_THREAD) && (reInt != 0)) {
         ADD_FAILURE();
     }
-    pthread_cancel(tid);
-    pthread_cancel(tid1);
+    pthread_join(tid, nullptr);
+    pthread_join(tid1, nullptr);
     EXPECT_EQ(pthread_barrier_destroy(&barrier), 0) << "> return errno";
 }
 
