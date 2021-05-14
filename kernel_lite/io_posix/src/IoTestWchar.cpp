@@ -1,4 +1,7 @@
 /*
+ * Copyright (c) Huawei Technologies Co., Ltd. 2020-2020. All rights reserved.
+ */
+/*
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -130,7 +133,7 @@ HWTEST_F(IoTest, testFgetws, Function | MediumTest | Level1)
     ASSERT_NE(fclose(fp), -1) << "> fclose fail, errno = "<< errno;
 
     FOPEN_READ(fp);
-    wchar_t *retW = fgetws(wStr, sizeof(wStr), fp);
+    wchar_t *retW = fgetws(wStr, sizeof(wStr)/sizeof(wStr[0]), fp);
     EXPECT_STREQ(retW, wStrT);
     ASSERT_NE(fclose(fp), -1) << "> fclose fail, errno = "<< errno;
 }
@@ -169,7 +172,7 @@ HWTEST_F(IoTest, testUngetwc, Function | MediumTest | Level1)
     ret = ungetc(ret, fp);
     EXPECT_EQ(ret, 104U);
     wchar_t str[50] = {0};
-    wchar_t *retS = fgetws(str, sizeof(str), fp);
+    wchar_t *retS = fgetws(str, sizeof(str)/sizeof(str[0]), fp);
     EXPECT_STREQ(retS, str);
     EXPECT_STREQ(str, L"hello world");
     EXPECT_NE(fclose(fp), -1) << "> fclose fail, errno = " << errno;
@@ -246,11 +249,11 @@ HWTEST_F(IoTest, testWmemset, Function | MediumTest | Level1)
 HWTEST_F(IoTest, testWmemchr, Function | MediumTest | Level1)
 {
     wchar_t src[] = L"hello world";
-    wchar_t *ret = wmemchr(src, L' ', sizeof(src) / sizeof(src[0]) - 1);
+    wchar_t *ret = wmemchr(src, L' ', sizeof(src)/sizeof(src[0]) - 1);
     EXPECT_STREQ(ret, L" world");
 
     wchar_t srcT[] = L"this is string";
-    ret = wmemchr(srcT, L'?', sizeof(srcT) / sizeof(srcT[0]) - 1);
+    ret = wmemchr(srcT, L'?', sizeof(srcT)/sizeof(srcT[0]) - 1);
     EXPECT_STREQ(ret, nullptr);
 }
 
@@ -353,7 +356,7 @@ int FormatVswprintf(const wchar_t *format, ...)
     va_list args;
     va_start(args, format);
     wchar_t str[50] = {0};
-    int ret = vswprintf(str, sizeof(str), format, args);
+    int ret = vswprintf(str, sizeof(str)/sizeof(str[0]), format, args);
     fputws(str, stdout);
     va_end(args);
     return ret;
@@ -386,7 +389,7 @@ HWTEST_F(IoTest, testVswprintf, Function | MediumTest | Level1)
 HWTEST_F(IoTest, testSwprintf, Function | MediumTest | Level1)
 {
     wchar_t wBuf[50] = {0};
-    int ret = swprintf(wBuf, sizeof(wBuf), L"%ls has %d words", L"helloworld", 10);
+    int ret = swprintf(wBuf, sizeof(wBuf)/sizeof(wBuf[0]), L"%ls has %d words", L"helloworld", 10);
     EXPECT_EQ(ret, 23);
     EXPECT_STREQ(wBuf, L"helloworld has 10 words");
 
@@ -429,7 +432,7 @@ HWTEST_F(IoTest, testWprintf, Function | MediumTest | Level1)
         FILE *fp1 = fopen(IOTEST_TEMPFILE, "r");
         ASSERT_NE(fp1, nullptr) << "fopen fail, errno = " << errno;
         wchar_t str[50] = {0};
-        wchar_t *gStr = fgetws(str, sizeof(str), fp1);
+        wchar_t *gStr = fgetws(str, sizeof(str)/sizeof(str[0]), fp1);
         EXPECT_STREQ(gStr, str) << "fgetws fail, errno = " << errno;
         EXPECT_STREQ(str, L"helloworld 10") << "fgetws fail, errno = " << errno;
         EXPECT_NE(fclose(fp1), -1) << "> fclose fail, errno = " << errno;
@@ -512,7 +515,7 @@ HWTEST_F(IoTest, testVwprintf, Function | MediumTest | Level1)
         FILE *fp1 = fopen(IOTEST_TEMPFILE, "r");
         ASSERT_NE(fp1, nullptr) << "fopen fail, errno = " << errno;
         wchar_t str[50] = {0};
-        wchar_t *gStr = fgetws(str, sizeof(str), fp1);
+        wchar_t *gStr = fgetws(str, sizeof(str)/sizeof(str[0]), fp1);
         EXPECT_STREQ(gStr, str) << "fgetws fail, errno = " << errno;
         EXPECT_STREQ(str, L"helloworld 10") << "fgetws fail, errno = " << errno;
         EXPECT_NE(fclose(fp1), -1) << "> fclose fail, errno = " << errno;
