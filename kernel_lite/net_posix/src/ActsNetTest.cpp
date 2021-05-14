@@ -692,6 +692,8 @@ HWTEST_F(ActsNetTest, testTcpConcurrentConnect, Function | MediumTest | Level2)
     ret = pthread_create(&cliThree, nullptr, TcpClientOnlyConnectTask, &tIdThree);
     EXPECT_EQ(0, ret);
 
+    ret = pthread_join(srv, nullptr);
+    EXPECT_EQ(0, ret);
     ret = pthread_join(cliOne, nullptr);
     EXPECT_EQ(0, ret);
     printf("[******]testTcpConnect thread[1] finish!\n");
