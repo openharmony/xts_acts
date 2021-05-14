@@ -5,7 +5,7 @@ SIG（Special Interest Group）是指特别兴趣小组，SIG在PMC项目管理�
 
 ## 申请新建SIG
 1. 开发者在社区中寻找2-3个有共同兴趣及目标的人，确定SIG Leader。参考[新建SIG Charter](sig-template/sig-charter-template_cn.md)模板，创建SIG Charter提案。
-2. SIG Leader以[SIG-Charter-Proposal-XXX]为邮件标题，通过向dev@openharmony.io发送邮件，提交新建SIG申请。
+2. SIG Leader以[SIG-Charter-Proposal-XXX]为邮件标题，需先订阅[dev@openharmony.io](https://lists.openatom.io/postorius/lists/dev.openharmony.io/)，然后向dev@openharmony.io发送邮件，提交新建SIG申请。
 3. PMC项目管理委员会批准通过后，可创建新的SIG。
 
 ## 加入已有SIG
