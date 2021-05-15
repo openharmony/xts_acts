@@ -16,12 +16,16 @@ import("//test/xts/tools/lite/build/suite_lite.gni")
 
 hcpptest_suite("ActsMediaPlayerTest") {
   suite_name = "acts"
-  sources = [ "src/ActsAudioPlayerTest.cpp" ]
+  sources = [ "src/ActsAudioPlayerTest.cpp",
+              "//test/xts/acts/multimedia_lite/utils_posix/common/src/ActsTestMediaUtils.cpp" ]
   if (ohos_kernel_type == "liteos_a" &&
       enable_ohos_appexecfwk_feature_ability == true) {
     sources += [ "src/ActsVideoPlayerTest.cpp" ]
   }
-  include_dirs = [ "src" ]
+  include_dirs = [ 
+    "src",
+    "//test/xts/acts/multimedia_lite/utils_posix/common/include" 
+    ]
   ldflags = [ "-lstdc++" ]
   ldflags += [ "-lm" ]
   if (ohos_kernel_type == "linux") {

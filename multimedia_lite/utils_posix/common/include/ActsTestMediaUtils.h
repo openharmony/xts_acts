@@ -35,20 +35,20 @@ const int32_t FrameErrCode = -1;         // frame error code
 const int32_t RecoderSourceMaxCount = 4; // max recorder source setting
 const int32_t FdNull = -1;               // fd is null
 
-/* *
+/**
  * get current dir
  * @return  string - current file path of the test suits
  */
 std::string GetCurDir();
 
-/* *
+/**
  * check if file exist
  * @param filename filename
  * @return  check result RET_OK or RET_ERR
  */
 int32_t FileCheck(const char *filename);
 
-/* *
+/**
  * Save Capture picture
  * @param p char ptr
  * @param size char size
@@ -56,10 +56,26 @@ int32_t FileCheck(const char *filename);
  */
 int32_t SampleSaveCapture(std::string g_testPath, const char *p, uint32_t size);
 
-/* *
+/**
  * get recorder fd
  * @return fd
  */
 int32_t SampleGetRecordFd(std::string &recordFilePath);
+
+/**
+ * get file size
+ * @return size_t file size
+ */
+std::size_t fileSize(const char* filePath);
+
+/**
+ * write file
+ */
+void writeFile(unsigned char* buffer, std::size_t size, const char* filePath);
+
+/**
+ * read file
+ */
+void readFile(unsigned char* buffer, std::size_t size, const char* filePath);
 
 #endif // XTS_ACTS_MEDIA_TEST_UTILS_H
