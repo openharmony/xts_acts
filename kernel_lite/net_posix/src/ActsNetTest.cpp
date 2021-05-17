@@ -39,9 +39,9 @@ using namespace testing::ext;
 
 #define PROTOCOL_COUNT 36
 #define TEST_FD_COUNT 10
-#define STACK_PORT 2277
-#define PEER_PORT 2277
-#define BUF_SIZE (1024 * 8)
+#define STACK_PORT 2288
+#define PEER_PORT 2288
+#define BUF_SIZE (100)
 static const char* g_udpMsg = "Hi, this is UDP";
 static const char* g_srvMsg = "Hi, this is TCP server";
 static const char* g_cliMsg = "Hello, this is TCP client";
@@ -235,17 +235,23 @@ static void* SampleTcpServerTask(void *p)
     EXPECT_EQ(len * srvMsgLen, (unsigned int)ret);
 
     WAIT();
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    static char bufrec[BUF_SIZE + 1] = {0};
+    memset_s(bufrec, BUF_SIZE, 0, BUF_SIZE);
     memset_s(&msg, sizeof(msg), 0, sizeof(msg));
     msg.msg_name = &clnAddr;
     msg.msg_namelen = sizeof(clnAddr);
     msg.msg_iov = iov;
     msg.msg_iovlen = 1;
-    iov[0].iov_base = buf;
-    iov[0].iov_len = sizeof(buf);
+    iov[0].iov_base = bufrec;
+    iov[0].iov_len = sizeof(bufrec);
     ret = recvmsg(clnFd, &msg, 0);
-    printf("[tcp server]recvmsg on socket %d:%d, msg[%s]\n", clnFd, ret, buf);
-    EXPECT_EQ(len * strlen(g_cliMsg), (unsigned int)ret);
+    if (len * strlen(g_cliMsg) == (unsigned int)ret) {
+        bufrec[ret] = 0;
+        printf("[tcp server]recvmsg on socket %d:%d, msg[%s]\n", clnFd, ret, buf);
+    } else {
+        EXPECT_TRUE(false);
+        printf("[tcp server] recvmsg on socket %d： %d\n", clnFd, ret);
+    }
 
     ret = shutdown(clnFd, SHUT_RDWR);
     printf("[tcp server]shutdown\n");
@@ -324,17 +330,23 @@ static void* SampleTcpClientTask(void *p)
     EXPECT_EQ(len * cliMsgLen, (unsigned int)ret);
 
     WAIT();
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    static char bufrec[BUF_SIZE + 1] = {0};
+    memset_s(bufrec, BUF_SIZE, 0, BUF_SIZE);
     memset_s(&msg, sizeof(msg), 0, sizeof(msg));
     msg.msg_name = &clnAddr;
     msg.msg_namelen = sizeof(clnAddr);
     msg.msg_iov = iov;
     msg.msg_iovlen = 1;
-    iov[0].iov_base = buf;
-    iov[0].iov_len = sizeof(buf);
+    iov[0].iov_base = bufrec;
+    iov[0].iov_len = sizeof(bufrec);
     ret = recvmsg(clnFd, &msg, 0);
-    printf("[tcp client]recvmsg, ret=%d, msg[%s]\n", ret, buf);
-    EXPECT_EQ(len * strlen(g_srvMsg), (unsigned int)ret);
+    if (len * strlen(g_srvMsg) == (unsigned int)ret) {
+        bufrec[ret] = 0;
+        printf("[tcp client]recvmsg, ret=%d, msg[%s]\n", ret, bufrec);
+    } else {
+        EXPECT_TRUE(false);
+        printf("[tcp clien]recvmsg, ret=%d\n", ret);
+    }
 
     ret = shutdown(clnFd, SHUT_RDWR);
     printf("[tcp client]shutdown\n");
@@ -369,6 +381,8 @@ static void* TcpServerLoopTask(void *p)
         EXPECT_NE(-1, ret) << "[***---][tcp server loop] close fd index[" << i << "]";
         i--;
     }
+    ret = close(srvFd);
+    EXPECT_NE(-1, ret);
     return nullptr;
 }
 
@@ -637,6 +651,7 @@ static int PollServerForFork(int timeoutSec)
             close(fds[i].fd);
         }
     }
+    close(srvFd);
     return ret;
 }
 
@@ -692,6 +707,8 @@ HWTEST_F(ActsNetTest, testTcpConcurrentConnect, Function | MediumTest | Level2)
     ret = pthread_create(&cliThree, nullptr, TcpClientOnlyConnectTask, &tIdThree);
     EXPECT_EQ(0, ret);
 
+    ret = pthread_join(srv, nullptr);
+    EXPECT_EQ(0, ret);
     ret = pthread_join(cliOne, nullptr);
     EXPECT_EQ(0, ret);
     printf("[******]testTcpConnect thread[1] finish!\n");
