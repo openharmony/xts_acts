@@ -223,6 +223,7 @@ HWTEST_F(ActsProcessApiTest, testPthreadSetnameNp1100, Function | MediumTest | L
         << "ErrInfo: pthread_setname_np thread:='" << newThread
         << "(0x" << newThread << ")' *name:='fThreadName',"
         << "   --> returnVal:='" << returnVal << "'";
+    EXPECT_EQ(pthread_join(newThread, nullptr), 0) << "pthread join errno = " << errno;
 }
 
 /**
@@ -263,4 +264,5 @@ HWTEST_F(ActsProcessApiTest, testPthreadAttrGetguardsize0100, Function | MediumT
     EXPECT_EQ(guardsize, 4096)
         << "ErrInfo: pthread_attr_getguardsize attr:='&threadAttr' guardsize:='&guardsize',"
         << "    --> returnVal:='" << returnVal << "', guardsize:='" << guardsize << "'";
+    EXPECT_EQ(pthread_join(newThread, nullptr), 0) << "pthread join errno = " << errno;
 }

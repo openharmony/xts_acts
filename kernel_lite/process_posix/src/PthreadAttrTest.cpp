@@ -93,7 +93,7 @@ HWTEST_F(PthreadTest, testPthreadAttrSetscope, Function | MediumTest | Level3)
     ASSERT_EQ(pthread_create(&tid, &attr, ThreadPthreadAttrSetscope, nullptr), 0) << "> return errno";
 
     Msleep(20);
-    pthread_cancel(tid);
+    pthread_join(tid, nullptr);
     EXPECT_EQ(pthread_attr_destroy(&attr), 0);
 }
 
@@ -133,7 +133,7 @@ HWTEST_F(PthreadTest, testPthreadAttrSetguardsize, Function | MediumTest | Level
     ASSERT_EQ(pthread_create(&tid, &attr, ThreadPthreadAttrSetguardsize, nullptr), 0) << "> return errno";
 
     Msleep(20);
-    pthread_cancel(tid);
+    pthread_join(tid, nullptr);
     EXPECT_EQ(pthread_attr_destroy(&attr), 0);
 }
 
@@ -176,7 +176,7 @@ HWTEST_F(PthreadTest, testPthreadAttrSetstacksize, Function | MediumTest | Level
     ASSERT_EQ(pthread_create(&tid, &attr, ThreadPthreadAttrSetstacksize, nullptr), 0) << "> return errno";
 
     Msleep(20);
-    pthread_cancel(tid);
+    pthread_join(tid, nullptr);
     EXPECT_EQ(pthread_attr_destroy(&attr), 0);
 }
 
@@ -241,7 +241,7 @@ HWTEST_F(PthreadTest, testPthreadAttrSetstack, Function | MediumTest | Level3)
 
     EXPECT_EQ(pthread_create(&tid, &attr, ThreadPthreadAttrSetstack, stackAddr), 0) << "> return errno";
     Msleep(100);
-    pthread_cancel(tid);
+    pthread_join(tid, nullptr);
     EXPECT_EQ(pthread_attr_destroy(&attr), 0);
 }
 
@@ -296,5 +296,5 @@ HWTEST_F(PthreadTest, testPthreadGetattrNp, Function | MediumTest | Level3)
     pthread_t tid;
     EXPECT_EQ(pthread_create(&tid, nullptr, ThreadPthreadGetattrNp, nullptr), 0) << "> return errno";
     Msleep(100);
-    pthread_cancel(tid);
+    pthread_join(tid, nullptr);
 }
