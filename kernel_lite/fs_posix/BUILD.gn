@@ -13,6 +13,7 @@
 
 group("ActsFSTest") {
   deps = [
+    "./vfat_storage:ActsVFATstorageTest",
     "./jffs:ActsJFFS2Test",
     "./nfs:ActsNFSTest",
     "./vfat:ActsVFATTest",
