@@ -13,15 +13,18 @@
  */
 
 #include "PlayerTest.h"
+#include "ActsTestMediaUtils.h"
 
-const char *g_videoFileName = "1080P_25fps.mp4";
+// const char *g_videoFileName = "1080P_25fps.mp4";
+
+const char *g_videoFileName;
 
 static void InitSurface()
 {
     g_surface->SetUserData("region_position_x", "0");
     g_surface->SetUserData("region_position_y", "0");
-    g_surface->SetUserData("region_width", "720");
-    g_surface->SetUserData("region_height", "540");
+    g_surface->SetUserData("region_width", "640");
+    g_surface->SetUserData("region_height", "360");
 }
 
 class ActsVideoPlayerTest : public testing::Test {
@@ -29,10 +32,17 @@ protected:
 // SetUpTestCase:The preset action of the test suite is executed before the first TestCase
     static void SetUpTestCase(void) 
     {
+        cout << "=====SetUpTestSuit: init test source" << endl;
+        std::size_t size3 = fileSize("1080P_25fps.mp4");
+        unsigned char buffer[size3];
+        readFile(buffer, size3, "1080P_25fps.mp4");
+        writeFile(buffer, size3, "/storage/1080P_25fps.mp4");
+        g_videoFileName="/storage/1080P_25fps.mp4";
     }
 // TearDownTestCase:The test suite cleanup action is executed after the last TestCase
     static void TearDownTestCase(void) 
     {
+        int32_t ret = std::remove("/storage/1080P_25fps.mp4");
     }
 // SetUp:Execute before each test case
     virtual void SetUp()
@@ -57,7 +67,7 @@ protected:
     }
 };
 
-static int32_t FileCheck(const char* argv)
+static int32_t FileCheckVideo(const char* argv)
 {
     if (realpath(argv, g_tagTestSample.filePath) == nullptr) {
         printf("realpath input file failed, errno: %d!\n", errno);
@@ -86,7 +96,7 @@ static int32_t CreateAndSetVideoSource()
  */
 HWTEST_F(ActsVideoPlayerTest, Test_SetSource03, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     std::string uri(g_tagTestSample.filePath);
     Source source(uri);
@@ -114,7 +124,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_SetSource03, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_SetSource04, Function | MediumTest | Level0)
 {
-    int32_t ret=FileCheck(g_videoFileName);
+    int32_t ret=FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     Format formats;
     formats.PutIntValue("frame-rate", 30);
@@ -156,7 +166,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_SetSource04, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_SetSource05, Function | MediumTest | Level0)
 {
-    int32_t ret=FileCheck(g_videoFileName);
+    int32_t ret=FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     Format formats;
     std::map<std::string, FormatData *>  ret3 = formats.GetFormatMap();
@@ -207,7 +217,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_SetSource05, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Prepare04, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -229,7 +239,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_Prepare04, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Prepare05, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -249,7 +259,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_Prepare05, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Play05, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -276,7 +286,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_Play05, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Play06, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -304,7 +314,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_Play06, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Stop06, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -333,7 +343,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_Stop06, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Stop07, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -360,7 +370,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_Stop07, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Stop08, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -382,7 +392,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_Stop08, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Stop09, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -409,7 +419,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_Stop09, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Stop10, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -439,7 +449,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_Stop10, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Pause04, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -466,7 +476,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_Pause04, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Pause05, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -493,7 +503,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_Pause05, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_SetVolume06, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -518,7 +528,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_SetVolume06, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_SetVolume07, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -543,7 +553,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_SetVolume07, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_SetVolume08, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -568,7 +578,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_SetVolume08, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_IsSingleLooping04, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -593,7 +603,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_IsSingleLooping04, Function | MediumTest | Le
  */
 HWTEST_F(ActsVideoPlayerTest, Test_IsSingleLooping05, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -621,7 +631,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_IsSingleLooping05, Function | MediumTest | Le
  */
 HWTEST_F(ActsVideoPlayerTest, Test_IsSingleLooping06, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -649,7 +659,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_IsSingleLooping06, Function | MediumTest | Le
  */
 HWTEST_F(ActsVideoPlayerTest, Test_GetCurrentTime05, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -675,7 +685,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_GetCurrentTime05, Function | MediumTest | Lev
  */
 HWTEST_F(ActsVideoPlayerTest, Test_GetCurrentTime06, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -701,7 +711,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_GetCurrentTime06, Function | MediumTest | Lev
  */
 HWTEST_F(ActsVideoPlayerTest, Test_GetDuration03, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -729,7 +739,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_GetDuration03, Function | MediumTest | Level0
  */
 HWTEST_F(ActsVideoPlayerTest, Test_GetDuration04, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -755,7 +765,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_GetDuration04, Function | MediumTest | Level0
  */
 HWTEST_F(ActsVideoPlayerTest, Test_GetDuration05, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -776,7 +786,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_GetDuration05, Function | MediumTest | Level0
  */
 HWTEST_F(ActsVideoPlayerTest, Test_GetVideoSurfaceSize01, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -805,7 +815,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_GetVideoSurfaceSize01, Function | MediumTest 
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Reset03, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -830,7 +840,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_Reset03, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Reset04, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -850,7 +860,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_Reset04, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Release03, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -870,7 +880,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_Release03, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Release04, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -895,7 +905,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_Release04, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Play07, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -922,7 +932,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_Play07, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Play08, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -952,7 +962,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_Play08, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Pause06, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -972,7 +982,7 @@ HWTEST_F(ActsVideoPlayerTest, Test_Pause06, Function | MediumTest | Level0)
  */
 HWTEST_F(ActsVideoPlayerTest, Test_Prepare06, Function | MediumTest | Level0)
 {
-    int32_t ret = FileCheck(g_videoFileName);
+    int32_t ret = FileCheckVideo(g_videoFileName);
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = CreateAndSetVideoSource();
     EXPECT_EQ(HI_SUCCESS, ret);

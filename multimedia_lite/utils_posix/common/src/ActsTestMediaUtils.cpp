@@ -101,3 +101,46 @@ int32_t SampleGetRecordFd(string &recordFilePath)
     }
     return fd;
 }
+
+/**
+ * get file size
+ * @return size_t file size
+ */
+std::size_t fileSize(const char* filePath) {
+    FILE* fin = fopen(filePath, "r");
+    if (fin == nullptr) {
+        std::cout<<"open "<<filePath<<" fail"<<std::endl;
+        exit(0);
+    }
+
+    fseek(fin, 0L, SEEK_END);
+    std::size_t fileSize = ftell(fin);
+    fclose(fin);
+    return fileSize;
+}
+
+/**
+ * write file
+ */
+void writeFile(unsigned char* buffer, std::size_t size, const char* filePath) {
+    FILE* fout = fopen(filePath,"wb"); 
+    if (fout == nullptr) {
+        std::cout<<"open "<<filePath<<" fail"<<std::endl;
+        return;
+    }
+
+    fwrite(buffer, sizeof(unsigned char), size, fout);
+}
+
+/**
+ * read file
+ */
+void readFile(unsigned char* buffer, std::size_t size, const char* filePath) {
+    FILE* fin = fopen(filePath, "rb"); 
+    if (fin == nullptr) {
+        std::cout<<"open "<<filePath<<" fail"<<std::endl;
+        return;
+    }
+
+    fread(buffer, sizeof(unsigned char), size, fin); 
+}

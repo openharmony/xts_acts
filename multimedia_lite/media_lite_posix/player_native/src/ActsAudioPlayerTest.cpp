@@ -21,6 +21,7 @@
 #include "player.h"
 #include "format.h"
 #include "PlayerTest.h"
+#include "ActsTestMediaUtils.h"
 #include "fstream"
 #include "iostream"
 #include "thread"
@@ -178,38 +179,67 @@ void SetSchParam(void)
 }
 } // namespace OHOS
 
-const char *g_audioFileName = "Audiochannel_001.aac";
-const char *g_audioFileName1 = "Audiochannel_002.m4a";
+// const char *g_audioFileName = "Audiochannel_001.aac";
+// const char *g_audioFileName1 = "Audiochannel_002.m4a";
+
+const char *g_audioFileName;
+const char *g_audioFileName1;
 
 class ActsAudioPlayerTest : public testing::Test {
 protected:
 // SetUpTestCase:The preset action of the test suite is executed before the first TestCase
     static void SetUpTestCase(void) 
     {
+        cout << "=====SetUpTestSuit: init test source" << endl;
+        std::size_t size1 = fileSize("Audiochannel_001.aac");
+        unsigned char buffer[size1];
+        readFile(buffer, size1, "Audiochannel_001.aac");
+        writeFile(buffer, size1, "/storage/Audiochannel_001.aac");
+
+        std::size_t size2 = fileSize("Audiochannel_002.m4a");
+        unsigned char buffer2[size2];
+        readFile(buffer2, size2, "Audiochannel_002.m4a");
+        writeFile(buffer2, size2, "/storage/Audiochannel_002.m4a");
+
+        g_audioFileName="/storage/Audiochannel_001.aac";
+        g_audioFileName1="/storage/Audiochannel_002.m4a";
     }
 // TearDownTestCase:The test suite cleanup action is executed after the last TestCase
     static void TearDownTestCase(void) 
     {
+        cout << "=====TearDownTestSuit" << endl;
+        int32_t ret = std::remove("/storage/Audiochannel_001.aac");
+        int32_t ret1 = std::remove("/storage/Audiochannel_002.m4a");
+	    cout << "=====TearDownTestSuit end!" << endl;
     }
 // SetUp:Execute before each test case
     virtual void SetUp()
     {
+	cout << "=====SetUpTestCase" << endl;
         SetSchParam();
+	cout << "=====Init Player" << endl;
         g_tagTestSample.adaptr = std::make_shared<Player>();
     }
 // TearDown:Execute after each test case
     virtual void TearDown()
     {
+	    cout << "=====TearDownTestCase" << endl;
+        g_tagTestSample.adaptr->Stop();
         g_tagTestSample.adaptr->Reset();
         g_tagTestSample.adaptr->Release();
+		sleep(1);
+	    cout << "=====After Release" << endl;
         const int audioType = 2;
         if (g_tagTestSample.sourceType == audioType) {
             pthread_mutex_lock(&g_tagTestSample.mutex);
             g_tagTestSample.isThreadRunning = 0;
+            cout << "=====release stream" << endl;
             pthread_mutex_unlock(&g_tagTestSample.mutex);
             pthread_join(g_tagTestSample.process, nullptr);
             pthread_mutex_destroy(&g_tagTestSample.mutex);
         }
+        sleep(2);
+	cout << "=====TearDownTestCase end!" << endl;
     }
 };
 
@@ -228,6 +258,7 @@ static int32_t CreateAndSetAudioSource1()
     std::map<std::string, std::string> header;
     Source source(uri, header);
     int32_t ret = g_tagTestSample.adaptr->SetSource(source);
+    g_tagTestSample.sourceType = 0;
     return ret;
 }
 
@@ -260,6 +291,7 @@ static int32_t CreateAndSetAudioSource2()
     EXPECT_EQ(true, flag);
     std::shared_ptr<StreamSource>  ret2 = source.GetSourceStream();
     std::map<std::string, FormatData *>  ret3 = formats.GetFormatMap();
+    g_tagTestSample.sourceType = (int32_t)source.GetSourceType();
     pthread_mutex_init(&g_tagTestSample.mutex, nullptr);
     g_tagTestSample.isThreadRunning = 1;
     pthread_attr_t attr;
@@ -737,8 +769,8 @@ HWTEST_F(ActsAudioPlayerTest, Test_GetCurrentTime02, Function | MediumTest | Lev
     ret = g_tagTestSample.adaptr->Play();
     EXPECT_EQ(HI_SUCCESS, ret);
     sleep(2);
-    ret = g_tagTestSample.adaptr->Rewind(4, PLAYER_SEEK_NEXT_SYNC);
-    EXPECT_EQ(HI_SUCCESS, ret);
+    ret = g_tagTestSample.adaptr->Rewind(10, PLAYER_SEEK_NEXT_SYNC);
+    EXPECT_EQ(HI_FAILURE, ret);
     int64_t currentPosition;
     ret = g_tagTestSample.adaptr->GetCurrentTime(currentPosition);
     EXPECT_EQ(HI_SUCCESS, ret);
@@ -766,7 +798,7 @@ HWTEST_F(ActsAudioPlayerTest, Test_GetCurrentTime03, Function | MediumTest | Lev
     ret = g_tagTestSample.adaptr->Pause();
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = g_tagTestSample.adaptr->Rewind(4, PLAYER_SEEK_NEXT_SYNC);
-    EXPECT_EQ(HI_SUCCESS, ret);
+    EXPECT_EQ(HI_FAILURE, ret);
     int64_t currentPosition;
     ret = g_tagTestSample.adaptr->GetCurrentTime(currentPosition);
     EXPECT_EQ(HI_SUCCESS, ret);
