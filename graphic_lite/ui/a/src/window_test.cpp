@@ -40,23 +40,6 @@ HWTEST_F(WindowTest, Graphic_Window_Test_DestoryWindow_0200, Function | MediumTe
 }
 
 /**
- * @tc.number   SUB_GRAPHIC_WINDOW_SHOW_0300
- * @tc.name     test window show api
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(WindowTest, Graphic_Window_Test_Show_0300, Function | MediumTest | Level0)
-{
-    OHOS::GraphicStartUp::Init();
-    WindowConfig config = {};
-    config.rect.SetRect(0, 0, 100, 100);
-    Window* testObj = Window::CreateWindow(config);
-    if (testObj != nullptr) {
-        testObj->Show();
-    }
-    EXPECT_EQ(0, 0);
-}
-
-/**
  * @tc.number   SUB_GRAPHIC_WINDOW_HIDE_0400
  * @tc.name     test window hide api
  * @tc.desc     [C- SOFTWARE -0200]
