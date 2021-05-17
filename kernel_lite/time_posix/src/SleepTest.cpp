@@ -48,7 +48,7 @@ HWTEST_P(UsleepParamTest, testUsleepAccuracy, Performance | SmallTest | Level1)
         int rt = usleep(interval);
         clock_gettime(CLOCK_MONOTONIC, &time2);
         EXPECT_EQ(rt, 0);
-        duration = (time2.tv_sec - time1.tv_sec)*1000000 + (time2.tv_nsec - time1.tv_nsec)/1000;
+        duration = (time2.tv_sec*1000000 + time2.tv_nsec/1000) - (time1.tv_sec*1000000 + time1.tv_nsec/1000);
         LOG("testloop %d, actual usleep duration: %ld us", i, duration);
         d += duration;
     }
@@ -58,7 +58,7 @@ HWTEST_P(UsleepParamTest, testUsleepAccuracy, Performance | SmallTest | Level1)
     ASSERT_NEAR(d, interval, SLEEP_ACCURACY) << "usleep accuracy check fail\n";
 }
 INSTANTIATE_TEST_CASE_P(SleepTest, UsleepParamTest,
-    testing::Values(100, 1000, 10*1000, 20*1000, 30*1000, 300*1000, 3000*1000));
+    testing::Values(1000, 10*1000, 20*1000, 30*1000, 300*1000, 3000*1000));
 
 /**
  * @tc.number SUB_KERNEL_TIME_API_SLEEP_0100
@@ -107,7 +107,7 @@ HWTEST_F(SleepTest, testNanosleepAccuracy, Performance | SmallTest | Level2)
         int rt = nanosleep(&req, &rem);
         clock_gettime(CLOCK_MONOTONIC, &time2);
         EXPECT_EQ(rt, 0);
-        duration = (time2.tv_sec - time1.tv_sec)*1000000 + (time2.tv_nsec - time1.tv_nsec)/1000;
+        duration = (time2.tv_sec*1000000 + time2.tv_nsec/1000) - (time1.tv_sec*1000000 + time1.tv_nsec/1000);
         LOG("testloop %d, actual sleep duration: %.1f s", i, duration);
         d += duration;
     }
@@ -134,7 +134,7 @@ HWTEST_F(SleepTest, testClockNanosleepAccuracy, Performance | SmallTest | Level2
         int rt = clock_nanosleep(CLOCK_REALTIME, 0, &req, &rem);
         clock_gettime(CLOCK_MONOTONIC, &time2);
         EXPECT_EQ(rt, 0);
-        duration = (time2.tv_sec - time1.tv_sec)*1000000 + (time2.tv_nsec - time1.tv_nsec)/1000;
+        duration = (time2.tv_sec*1000000 + time2.tv_nsec/1000) - (time1.tv_sec*1000000 + time1.tv_nsec/1000);
         LOG("testloop %d, actual sleep duration: %.1f s", i, duration);
         d += duration;
     }
