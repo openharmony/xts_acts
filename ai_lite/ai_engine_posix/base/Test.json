@@ -13,13 +13,13 @@
             "mount": [
                 {
                     "source": "testcases/ai",
-                    "target": "/test_root/ai/engine"
+                    "target": "/test_root/ai/ai_engine"
                 }
             ]
         }
     ],
     "driver": {
         "type": "CppTestLite",
-        "execute": "/test_root/ai/engine/ActsAiEngineTest.bin"
+        "execute": "/test_root/ai/ai_engine/ActsAiEngineTest.bin"
     }
 }
