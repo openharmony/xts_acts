@@ -93,7 +93,7 @@ static BOOL PutKVs(int num, const char* key, const char* content)
     struct {
         int num;
         char content[200];
-    }value,value1;
+    } value, value1;
 
     if (num <= 0) {
         return FALSE;
@@ -106,7 +106,9 @@ static BOOL PutKVs(int num, const char* key, const char* content)
 
         memset_s(&value, sizeof(value), 0, sizeof(value));
         value.num = i;
-        strcpy_s(value.content, sizeof(value.content), content);
+
+		int ret = strcpy_s(value.content, sizeof(value.content), content);
+        EXPECT_EQ(0, ret);
 
         status = DBM_Put(g_KVStoreHandle, keytemp, (void*)&value, sizeof(value));
         if (i <= MAX_KEY_NUM_TEST) {
@@ -144,7 +146,7 @@ static BOOL GetKVs(int num, const char* key, const char* content)
     struct {
         int num;
         char content[200];
-    }value,value1;
+    } value, value1;
 
     if (num <= 0) {
         return FALSE;
@@ -157,7 +159,8 @@ static BOOL GetKVs(int num, const char* key, const char* content)
 
         memset_s(&value, sizeof(value), 0, sizeof(value));
         value.num = loop;
-        strcpy_s(value.content, sizeof(value.content), content);
+		int ret = strcpy_s(value.content, sizeof(value.content), content);
+        EXPECT_EQ(0, ret);
 
         memset_s(&value1, sizeof(value1), 0, sizeof(value1));
         unsigned int realValLen = 0;
@@ -204,7 +207,7 @@ static BOOL DeleteKVs(int num, const char* key)
     IoTWatchDogKick();
     return TRUE;
 }
-//#if 0
+
 /**
  * @tc.number    : SUB_UTILS_KV_STORE_0100
  * @tc.name      : DBM_Put parameter legal test
@@ -217,7 +220,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue001, Function | Mediu
     struct {
         int num;
         char content[200];
-    }value;
+    } value;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "Hello world !");
@@ -250,7 +253,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue002, Function | Mediu
     struct {
         int num;
         char content[200];
-    }value;
+    } value;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "Hello world !");
@@ -274,7 +277,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue003, Function | Mediu
     struct {
         int num;
         char content[200];
-    }value;
+    } value;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "Hello world !");
@@ -298,7 +301,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue004, Function | Mediu
     struct {
         int num;
         char content[200];
-    }value;
+    } value;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "Hello world !");
@@ -322,7 +325,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue005, Function | Mediu
     struct {
         int num;
         char content[200];
-    }value;
+    } value;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "Hello world !");
@@ -343,7 +346,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue006, Function | Mediu
     struct {
         int num;
         char content[200];
-    }value;
+    } value;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "Hello world !");
@@ -364,7 +367,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue007, Function | Mediu
     struct {
         int num;
         char content[200];
-    }value;
+    } value;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "Hello world !");
@@ -385,7 +388,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue008, Function | Mediu
     struct {
         int num;
         char content[200];
-    }value;
+    } value;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "Hello world !");
@@ -406,7 +409,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue009, Function | Mediu
     struct {
         int num;
         char content[200];
-    }value;
+    } value;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "Hello world !");
@@ -427,7 +430,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue010, Function | Mediu
     struct {
         int num;
         char content[200];
-    }value;
+    } value;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "Hello world !");
@@ -448,7 +451,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue011, Function | Mediu
     struct {
         int num;
         char content[507];
-    }value;
+    } value;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "Hello world !");
@@ -472,7 +475,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue012, Function | Mediu
     struct {
         int num;
         char content[509];
-    }value;
+    } value;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "Hello world !");
@@ -493,7 +496,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue013, Function | Mediu
     struct {
         int num;
         char content[512];
-    }value;
+    } value;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "Hello world !");
@@ -514,7 +517,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue014, Function | Mediu
     struct {
         int num;
         char content[512];
-    }value;
+    } value;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "Hello world !");
@@ -535,7 +538,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue015, Function | Mediu
     struct {
         int num;
         char content[508];
-    }value;
+    } value;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "！@#￥%……&*（）——+~《》？，。、“‘；：、12345767890");
@@ -559,7 +562,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue016, Function | Mediu
     struct {
         int num;
         char content[200];
-    }value;
+    } value;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "Hello world !");
@@ -580,7 +583,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue017, Function | Mediu
     struct {
         int num;
         char content[200];
-    }value;
+    } value;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "                                                   ");
@@ -604,7 +607,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreGetValue001, Function | Mediu
     struct {
         int num;
         char content[200];
-    }value,value1;
+    } value, value1;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "It is never too old to learn");
@@ -637,7 +640,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreGetValue002, Function | Mediu
     struct {
         int num;
         char content[200];
-    }value,value1;
+    } value, value1;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "！@#￥%……&*（）——+~《》？，。、“‘；：、12345767890");
@@ -670,7 +673,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreGetValue003, Function | Mediu
     struct {
         int num;
         char content[200];
-    }value,value1,value2;
+    } value, value1, value2;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "It is never too old to learn");
@@ -714,7 +717,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreGetValue004, Function | Mediu
     struct {
         int num;
         char content[200];
-    }value;
+    } value;
     memset_s(&value, sizeof(value), 0, sizeof(value));
 
     unsigned int realValLen = 0;
@@ -734,7 +737,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreGetValue005, Function | Mediu
     struct {
         int num;
         char content[200];
-    }value,value1;
+    } value, value1;
     memset_s(&value, sizeof(value), 0, sizeof(value));
     value.num = 1;
     strcpy_s(value.content, sizeof(value.content), "                                                 ");
@@ -854,7 +857,7 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreMaxSize003, Function | Medium
         TEST_FAIL();
     }
 };
-//#endif
+
 /**
  * @tc.number    : SUB_UTILS_KV_STORE_3200
  * @tc.name      : Specification test using InvalidKeyNum
