@@ -63,5 +63,8 @@ hcpptest_suite("ActsAiEngineTest") {
     "//test/xts/acts/ai_lite/ai_engine_posix/base/src/sample:sample_plugin_2_async",
   ]
   cflags = [ "-Wno-error" ]
-  ldflags = [ "-lstdc++" ]
+  ldflags = [
+    "-lstdc++",
+    "-ldl",
+    "-lpthread",]
 }
