@@ -6,28 +6,21 @@
 2. 发布和处理社区需求，为开源社区提供技术架构指导和技术决策；
 3. 组织社区安全工作，及时进行安全漏洞扫描、响应、处理等工作；
 4. 处理社区Bug、issue、邮件列表，闭环周期满足开源社区的SLA要求；
-5. 负责PMC、Committer成员的选举和退出；制定PMC、Committer协作机制；
+5. 负责PMC、Committer成员的[选举和退出](./guidelines_role_grouth.md)，制定PMC、Committer协作机制；
 
 
 ## OpenHarmony PMC成员列表
 | 姓名 | 账号   | 角色 | 领域 |
 | :----: | :----: | :----: | :----: |
-| 李毅 | nicholas-li | PMC主任 | 总架构 |
-| 董金光 | dongjinguang | PMC成员 | 系统架构 |
-| 付天福 | futianfu | PMC成员 |	安全架构 |
-| 万承臻 | wanchengzhen | PMC成员 | 系统架构 |
-| 马耀辉 | stesen | PMC成员 | DFX设计子系统 |
-| 陈  风 | chenfeng469 | PMC成员 | HDF统一驱动框架 |
-| 鲁  波 | borne | PMC成员 |	轻量级ACE |
-| 王  振 | wangzhen | PMC成员 | 用户程序框架/元能力 |
-| 尹友展 | yinyouzhan | PMC成员 | 公共通信 |
-| 李加润 | lijiarun | PMC成员 | 分布式任务调度 |
-| 谭利文 | tanliwen1 | PMC成员 |	多媒体 |
-| 王  兴 | wangxing-hw | PMC成员 | 编译构建 |
-| 肖  峰 | blue.xiaofeng | PMC成员 |	公共基础库 |
-| 张明修 | zmx1104 | PMC成员 | 社区版本发布 |
-| 袁文鸿 | yuan.w.hong | PMC成员 | 芯片组件 |
-
+| 李毅 | [@nicholas-li](https://gitee.com/nicholas-li) | PMC主席 | 总架构 |
+| 董金光 |[@dongjinguang](https://gitee.com/dongjinguang) | PMC成员 | 系统架构 |
+| 任革林 | [@im-off-this-week](https://gitee.com/im-off-this-week) | PMC成员 | 架构SIG |
+| 万承臻 | [@wanchengzhen](https://gitee.com/wanchengzhen) | PMC成员 | 架构SIG |
+| 付天福 | [@futianfu](https://gitee.com/futianfu) | PMC成员 |	安全架构 |
+| 马占福 | [@fma66169](https://gitee.com/fma66169) | PMC成员 | 版本发布SIG |
+| 邢文华 | [@xhuazi](https://gitee.com/xhuazi) | PMC成员 | QA-SIG |
+| 肖  峰 | [@blue.xiaofeng](https://gitee.com/blue.xiaofeng) | PMC成员 | 系统架构 |
+| 聂  欣 | [@nie-x](https://gitee.com/nie-x) | PMC成员 | 测试SIG |
 
 ## PMC会议链接
 - 会议时间: 每双周周一 16:30-17:30
