@@ -107,8 +107,8 @@ static BOOL PutKVs(int num, const char* key, const char* content)
         memset_s(&value, sizeof(value), 0, sizeof(value));
         value.num = i;
 
-		int ret = strcpy_s(value.content, sizeof(value.content), content);
-        EXPECT_EQ(0, ret);
+        int ret = strcpy_s(value.content, sizeof(value.content), content);
+        TEST_ASSERT_EQUAL_INT(0, ret);
 
         status = DBM_Put(g_KVStoreHandle, keytemp, (void*)&value, sizeof(value));
         if (i <= MAX_KEY_NUM_TEST) {
@@ -159,8 +159,9 @@ static BOOL GetKVs(int num, const char* key, const char* content)
 
         memset_s(&value, sizeof(value), 0, sizeof(value));
         value.num = loop;
-		int ret = strcpy_s(value.content, sizeof(value.content), content);
-        EXPECT_EQ(0, ret);
+
+        int ret = strcpy_s(value.content, sizeof(value.content), content);
+        TEST_ASSERT_EQUAL_INT(0, ret);
 
         memset_s(&value1, sizeof(value1), 0, sizeof(value1));
         unsigned int realValLen = 0;
