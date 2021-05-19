@@ -20,10 +20,10 @@
 #include "dbm_kv_store.h"
 #include "dbm_config.h"
 
-#define MAX_KEY_LEN_TEST    32
+#define MAX_KEY_LEN_TEST      32
 #define MAX_VALUE_LEN_TEST    512
-#define MAX_KEY_NUM_TEST    45
-#define INVALID_KEY_NUM    55
+#define MAX_KEY_NUM_TEST      45
+#define INVALID_KEY_NUM       55
 
 #define STORE_FULL_PATH ""
 static KVStoreHandle g_KVStoreHandle = NULL;
@@ -248,7 +248,6 @@ LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue001, Function | Mediu
  */
 LITE_TEST_CASE(DBMKvStoreFuncTestSuite, testKvStoreSetValue002, Function | MediumTest | Level1)
 {
-    printf("----------2 case \n");
     int status;
     char key[] = "rw.sys.version_100";
     struct {
