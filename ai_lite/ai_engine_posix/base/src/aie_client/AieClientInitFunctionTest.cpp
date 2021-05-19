@@ -20,6 +20,7 @@
 #include <string>
 
 #include "client_executor/include/i_aie_client.inl"
+#include "utils/aie_client_common.h"
 #include "utils/aie_client_const.h"
 #include "utils/service_dead_cb.h"
 #include "utils/utils.h"
@@ -36,56 +37,6 @@ namespace {
 class AieClientInitFunctionTest : public testing::Test {};
 
 /**
- * Constructs ConfigInfo parameters.
- */
-static void GetConfigInfo(ConfigInfo &configInfo, const char *description)
-{
-    configInfo = {.description = description};
-}
-
-/**
- * Constructs ClientInfo parameters.
- */
-static void GetClientInfo(ClientInfo &clientInfo)
-{
-    const char *str = CLIENT_EXTEND_MSG;
-    char *extendMsg = const_cast<char*>(str);
-    int len = strlen(str) + 1;
-
-    clientInfo = {
-        .clientVersion = CLIENT_VERSION_VALID,
-        .clientId = INVALID_CLIENT_ID,
-        .sessionId = INVALID_SESSION_ID,
-        .serverUid = INVALID_UID,
-        .clientUid = INVALID_UID,
-        .extendLen = len,
-        .extendMsg = (unsigned char*)extendMsg,
-    };
-}
-
-/**
- * Constructs AlgorithmInfo parameters.
- */
-static void GetSyncAlgorithmInfo(AlgorithmInfo &algorithmInfo, bool isAsync, int algorithmType)
-{
-    const char *str = ALGORITHM_EXTEND_MSG;
-    char *extendMsg = const_cast<char*>(str);
-    int extendLen = strlen(str) + 1;
-
-    algorithmInfo = {
-        .clientVersion = CLIENT_VERSION_VALID,
-        .isAsync = isAsync,
-        .algorithmType = algorithmType,
-        .algorithmVersion = ALGORITHM_VERSION_VALID,
-        .isCloud = GetRandomBool(),
-        .operateId = GetRandomInt(65535),
-        .requestId = GetRandomInt(65535),
-        .extendLen = extendLen,
-        .extendMsg = (unsigned char*)extendMsg,
-    };
-}
-
-/**
  * Tests AieClientInit.
  *
  * configDesc  The value or the input parameter ConfigInfo.description of AieClientInit.
@@ -96,7 +47,7 @@ static void TestAieClientInit(const char *configDesc, bool isAsync, bool isDeadC
 {
     // Step 0: Defines variables.
     ConfigInfo configInfo;
-    GetConfigInfo(configInfo, configDesc);
+    GetConfigInfo2(configInfo, configDesc);
 
     ClientInfo clientInfo;
     GetClientInfo(clientInfo);

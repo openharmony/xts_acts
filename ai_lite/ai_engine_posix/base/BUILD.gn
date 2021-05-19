@@ -17,6 +17,7 @@ hcpptest_suite("ActsAiEngineTest") {
   suite_name = "acts"
   sources = [
     # Utils files
+    "src/utils/aie_client_common.cpp",
     "src/utils/utils.cpp",
 
     # AieClient Function Test Cases
