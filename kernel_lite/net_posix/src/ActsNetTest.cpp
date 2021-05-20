@@ -1345,10 +1345,10 @@ HWTEST_F(ActsNetTest, testDnCompExpandAbnormal, Function | MediumTest | Level3)
     printf("dn_expand ret=%d, expandDn is '%s'\n", ret, destExpand);
 
     // compress info is 0
-    unsigned char destCompError[20];
+    unsigned char destCompError[20] = {0};
     eomorig = destCompError + 20;
     ret = dn_expand(destCompError, eomorig, destCompError, destExpand, MAXDNAME);
-    EXPECT_EQ(-1, ret);
+    EXPECT_EQ(1, ret);
     printf("dn_expand ret=%d, expandDn is '%s'\n", ret, destExpand);
 }
 
