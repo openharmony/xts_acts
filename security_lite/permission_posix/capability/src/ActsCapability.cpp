@@ -418,6 +418,6 @@ int CheckFsMount(const char *topDir, const char *topDirMountInfo)
         }
         fclose(fp);
     }
-    LOG("'%s' is not a '%s' system, Test Stop, please change another file type!", topDir, topDirMountInfo);
+    LOG("'%s' is not a '%s' not mount properly, Test Stop! please change another file type!", topDir, topDirMountInfo);
     return -1;
 }
