@@ -20,6 +20,7 @@
 #include "client_executor/include/i_aie_client.inl"
 #include "protocol/retcode_inner/aie_retcode_inner.h"
 #include "utils/aie_client_callback.h"
+#include "utils/aie_client_common.h"
 #include "utils/aie_client_const.h"
 #include "utils/aie_macros.h"
 #include "utils/log/aie_log.h"
@@ -38,82 +39,6 @@ namespace {
 }
 
 class AieClientSetOptionFunctionTest : public testing::Test {};
-
-/**
- * Constructs ConfigInfo parameters.
- */
-static void GetConfigInfo(ConfigInfo &configInfo)
-{
-    configInfo = {.description = CONFIG_DESCRIPTION};
-}
-
-/**
- * Constructs ClientInfo parameters.
- */
-static void GetClientInfo(ClientInfo &clientInfo)
-{
-    const char *str = CLIENT_EXTEND_MSG;
-    char *extendMsg = const_cast<char*>(str);
-    int len = strlen(str) + 1;
-
-    clientInfo = {
-        .clientVersion = CLIENT_VERSION_VALID,
-        .clientId = INVALID_CLIENT_ID,
-        .sessionId = INVALID_SESSION_ID,
-        .serverUid = INVALID_UID,
-        .clientUid = INVALID_UID,
-        .extendLen = len,
-        .extendMsg = (unsigned char*)extendMsg,
-    };
-}
-
-/**
- * Constructs AlgorithmInfo parameters.
- */
-static void GetSyncAlgorithmInfo(AlgorithmInfo &algorithmInfo, bool isAsync, int algorithmType)
-{
-    const char *str = ALGORITHM_EXTEND_MSG;
-    char *extendMsg = const_cast<char*>(str);
-    int extendLen = strlen(str) + 1;
-
-    algorithmInfo = {
-        .clientVersion = CLIENT_VERSION_VALID,
-        .isAsync = isAsync,
-        .algorithmType = algorithmType,
-        .algorithmVersion = ALGORITHM_VERSION_VALID,
-        .isCloud = GetRandomBool(),
-        .operateId = GetRandomInt(INT_LENGTH),
-        .requestId = GetRandomInt(INT_LENGTH),
-        .extendLen = extendLen,
-        .extendMsg = (unsigned char*)extendMsg,
-    };
-}
-
-/**
- * Constructs DataInfo.
- */
-static DataInfo GetDataInfo(bool isDataInfoNull = true, const char* dataString = DATA_INFO_DEFAULT)
-{
-    // Sets default dataInfo to null.
-    DataInfo dataInfo = {
-        .data = nullptr,
-        .length = 0,
-    };
-
-    // Sets dataInfo to specified value.
-    if (!isDataInfoNull) {
-        const char *str = dataString;
-        char *data = const_cast<char*>(str);
-        int length = strlen(str) + 1;
-
-        dataInfo = {
-            .data = reinterpret_cast<unsigned char *>(data),
-            .length = length,
-        };
-    }
-
-    return dataInfo;
-}
 
 /**
  * Tests TestAieClientSetOption.
