@@ -20,6 +20,7 @@
 #include "client_executor/include/i_aie_client.inl"
 #include "platform/time/include/time.h"
 #include "utils/aie_client_callback.h"
+#include "utils/aie_client_common.h"
 #include "utils/aie_client_const.h"
 #include "utils/log/aie_log.h"
 #include "utils/service_dead_cb.h"
@@ -31,131 +32,9 @@ using namespace OHOS::AI;
 
 namespace {
     const int WAIT_CALLBACK_TIME_MS = 2000;
-    const int INT_1 = 1;
-    const int INT_2 = 2;
-    const int INT_1024 = 1024;
 }
 
 class AieClientSyncProcessShareMemoryFunctionTest : public testing::Test {};
-
-/**
- * Constructs ConfigInfo parameters.
- */
-static void GetConfigInfo(ConfigInfo &configInfo)
-{
-    configInfo = {.description = CONFIG_DESCRIPTION};
-}
-
-/**
- * Constructs ClientInfo parameters.
- */
-static void GetClientInfo(ClientInfo &clientInfo)
-{
-    const char *str = CLIENT_EXTEND_MSG;
-    char *extendMsg = const_cast<char*>(str);
-    int len = strlen(str) + 1;
-
-    clientInfo = {
-        .clientVersion = CLIENT_VERSION_VALID,
-        .clientId = INVALID_CLIENT_ID,
-        .sessionId = INVALID_SESSION_ID,
-        .serverUid = INVALID_UID,
-        .clientUid = INVALID_UID,
-        .extendLen = len,
-        .extendMsg = (unsigned char*)extendMsg,
-    };
-}
-
-/**
- * Constructs AlgorithmInfo parameters.
- */
-static void GetSyncAlgorithmInfo(AlgorithmInfo &algorithmInfo, bool isAsync, int algorithmType)
-{
-    const char *str = ALGORITHM_EXTEND_MSG;
-    char *extendMsg = const_cast<char*>(str);
-    int extendLen = strlen(str) + 1;
-
-    algorithmInfo = {
-        .clientVersion = CLIENT_VERSION_VALID,
-        .isAsync = isAsync,
-        .algorithmType = algorithmType,
-        .algorithmVersion = ALGORITHM_VERSION_VALID,
-        .isCloud = GetRandomBool(),
-        .operateId = GetRandomInt(65535),
-        .requestId = GetRandomInt(65535),
-        .extendLen = extendLen,
-        .extendMsg = (unsigned char*)extendMsg,
-    };
-}
-
-/**
- * Constructs DataInfo.
- */
-static DataInfo GetDataInfo(bool isDataInfoNull = true, const char* dataString = DATA_INFO_DEFAULT)
-{
-    // Sets default dataInfo to null.
-    DataInfo dataInfo = {
-        .data = nullptr,
-        .length = 0,
-    };
-
-    // Sets dataInfo to specified value.
-    if (!isDataInfoNull) {
-        const char *str = dataString;
-        char *data = const_cast<char*>(str);
-        int length = strlen(str) + 1;
-
-        dataInfo = {
-            .data = reinterpret_cast<unsigned char *>(data),
-            .length = length,
-        };
-    }
-
-    return dataInfo;
-}
-
-/**
- * Constructs DataInfo with a big length data.
- */
-static DataInfo GetBigDataInfo(bool isDataInfoNull = true)
-{
-    // Sets default dataInfo to null.
-    DataInfo dataInfo = {
-        .data = nullptr,
-        .length = 0,
-    };
-
-    // Sets dataInfo to specified value.
-    if (!isDataInfoNull) {
-
-#ifdef __LINUX__
-        int length = INT_2 * INT_1024 * INT_1024; // 2 MB long data, the unit is Byte here.
-#else // liteos device has no enough remaining memory to contain 2MB long data.
-        int length = INT_1 * INT_1024 * INT_1024; // 1 MB long data, the unit is Byte here.
-#endif
-
-        char *data = reinterpret_cast<char *>(malloc(length));
-
-        dataInfo = {
-            .data = reinterpret_cast<unsigned char *>(data),
-            .length = length,
-        };
-    }
-
-    return dataInfo;
-}
-
-/**
- * Release DataInfo.
- */
-static void FreeDataInfo(DataInfo &dataInfo)
-{
-    if (dataInfo.data != nullptr) {
-        free(dataInfo.data);
-        dataInfo.data = nullptr;
-        dataInfo.length = 0;
-    }
-}
 
 /**
  * Tests AieClientSyncProcess().
