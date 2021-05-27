@@ -38,6 +38,12 @@
          "sig-name":"sig-toolchains",
          "projects":"https://gitee.com/openharmony-sig/sig-tools-toolchains",
          "project-path":"NONE"
+      },
+      {
+         "sig-name":"sig-openblock",
+         "projects":["https://gitee.com/openharmony-sig/openblock",
+                     "https://gitee.com/openharmony-sig/openblock_blocks"],
+         "project-path":"NONE"
       }
    ]
 }
