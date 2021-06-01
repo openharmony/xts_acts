@@ -55,3 +55,15 @@ SIG信息记录统一归档在OpenHamony/community仓库的sig目录内：
    ]
 }
 ```
+### 已创建SIG项目
+
+|No|SIG name|Responsibilities|SIG Leader|
+| :----- | :----- | :----- |:----|
+|1|[sig-devboard](https://gitee.com/openharmony/community/blob/master/sig/sig-devboard/sig_devboard.md)|To increase the number of third-party boards of the OpenHarmony OS, the device SIG provides easy porting guide that board manufacturers could follow to contribute their codes to the community easily. The more important thing is actively cooperating with board manufacturers to enhance the OpenHarmony ecosystem|[@likailong](https://gitee.com/kkup180)|
+|2|[sig-distributeddatamgr](https://gitee.com/openharmony/community/blob/master/sig/sig-distributeddatamgr/sig-distributeddatamgr.md)|Build a distributed data management framework for all scenarios of 1+8+N equipment, and provide developers with convenient, efficient, stable and secure data management related services.|[@gongashi](https://gitee.com/gong-a-shi)|
+|3|[sig-dllite-micro](https://gitee.com/openharmony/community/blob/master/sig/sig-dllite-micro/sig_dllite_micro.md)|To enable AI models to implement inference on IoT devices, IoT devices have AI capabilities.|[@chenxiaoliang](https://gitee.com/SilenChen)|
+|4|[sig-driver](https://gitee.com/openharmony/community/blob/master/sig/sig-driver/sig_driver.md)|Drivers development and planning|[@chenfeng](https://gitee.com/chenfeng469)|
+|5|[sig-openblock](https://gitee.com/openharmony/community/blob/master/sig/sig-openblock/sig_openblock.md)|In order to extend OpenHarmony OS's use in youth programming and STEM education, OpenBlock SIG will port the runtime of the Blockly based graphical programming language to OpenHarmony OS. And support soft bus, distributed and other OpenHarmony OS capabilities.|[@dutianwei](https://gitee.com/duzc2)|
+|6|[sig-riscv](https://gitee.com/openharmony/community/blob/master/sig/sig-riscv/sig-riscv.md)|RISC-V SIG aims to build a RISC-V ecosystem for OpenHarmony, provide instructions to build software, maintain supports for RISC-V devices, and enable security capabilities like TEE on RISC-V. RISC-V SIG will promote more developers to involve in developing OpenHarmony on RISC-V.|[@yujiageng](https://gitee.com/yu_jia_geng)|
+|7|[sig-toolchains](https://gitee.com/openharmony/community/blob/master/sig/sig-toolchains/sig_toolchains.md)|Tools & Toolchains development and planning|[@berolinux](https://gitee.com/berolinux)|
+|8|[sig-fs](https://gitee.com/openharmony/community/blob/master/sig/sig-fs/sig_fs.md)|Maintenance of file system releated open source software to support the commercial use|[@wangmihu](https://gitee.com/wangmihu2008)|
