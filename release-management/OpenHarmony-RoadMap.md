@@ -8,16 +8,18 @@
 
 | **迭代计划** | **版本**号            | **版本构建** | **版本转测试** | **版本测试完成** |
 | ------------ | --------------------- | ------------ | -------------- | ---------------- |
-| IT1          | OpenHarmony 2.2 beta1 | 2021/5/19    | 2021/5/19      | **2021/6/7**     |
-| IT2          | OpenHarmony 2.2 beta2 | 2021/6/30    | 2021/6/30      | **2021/7/6**     |
-| IT3          | OpenHarmony 2.2 LTS   | 2021/9/22    | 2021/9/22      | **2021/9/28**    |
-| IT4          | OpenHarmony 3.0 beta1 | 2021/11/10   | 2021/11/10     | **2021/11/16**   |
+| IT1          | OpenHarmony 2.3 beta  | 2021/7/21    | 2021/7/21      | **2021/7/27**    |
+| IT2          | OpenHarmony 3.0 LTS   | 2021/9/22    | 2021/9/22      | **2021/9/28**    |
+| IT3          | OpenHarmony 3.1 beta1 | 2021/11/17   | 2021/11/17     | **2021/11/23**   |
+| IT4          | OpenHarmony 3.1 beta2 | 2022/1/10    | 2022/1/10      | **2022/1/17**    |
 
 # 各版本特性交付清单：
 
-## OpenHarmony 2.2 beta1版本特性清单：
+## OpenHarmony 2.3 beta版本特性清单：
 
 状态说明：discussion(方案讨论，需求未接受)，Reject(未纳入版本)，developing(开发中)，Testing(测试中)，Accepted(已验收)
+
+第一批需求列表：
 
 | no   | issue                                                        | feture description                                  | status     | sig                  | owner                                         |
 | :--- | ------------------------------------------------------------ | :-------------------------------------------------- | :--------- | :------------------- | :-------------------------------------------- |
@@ -30,9 +32,7 @@
 | 8    | [I3NSPB](https://gitee.com/openharmony/graphic_ui/issues/I3NSPB) | 【轻量级图形】UIKit组件支持margin/padding           | developing | SIG_GraphicsandMedia | [@niulihua](https://gitee.com/niulihua)       |
 | 9    | [I3NSZH](https://gitee.com/openharmony/graphic_ui/issues/I3NSZH) | 【轻量级图形】圆形/胶囊按钮支持缩放和白色蒙层动效   | developing | SIG_GraphicsandMedia | [@niulihua](https://gitee.com/niulihua)       |
 
-## OpenHarmony 2.2 beta2版本特性清单：
-
-状态说明：discussion(方案讨论，需求未接受)，Reject(未纳入版本)，developing(开发中)，Testing(测试中)，Accepted(已验收)
+第二批需求列表：
 
 | no   | issue                                                        | feture description                                           | status     | sig                  | owner                                               |
 | :--- | ------------------------------------------------------------ | :----------------------------------------------------------- | :--------- | :------------------- | :-------------------------------------------------- |
@@ -123,7 +123,7 @@
 | 83   | [I3SMI1](https://gitee.com/openharmony/distributeddatamgr_appdatamgr/issues/I3SMI1) | 【分布式数据管理】支持轻量级设备上分布式数据对象跨设备同步到手机/PAD | developing | SIG_DataManagement   | [@widecode](https://gitee.com/widecode)             |
 | 84   | [I3SNGO](https://gitee.com/openharmony/build_lite/issues/I3SNGO) | 【编译子系统】build_lite支持开源软件的通用patch框架          | developing | SIG_CompileRuntime   | [@taiyipei](https://gitee.com/taiyipei)             |
 
-## OpenHarmony 2.2 LTS版本特性清单：
+## OpenHarmony 3.0 LTS版本特性清单：
 
 状态说明：discussion(方案讨论，需求未接受)，Reject(未纳入版本)，developing(开发中)，Testing(测试中)，Accepted(已验收)
 
@@ -147,7 +147,7 @@
 | 16   | [I3NIN8](https://gitee.com/openharmony/communication_softbus_lite/issues/I3NIN8) | 【软总线】【RPC】支持RPC对象跨进程串行化                     | developing | SIG_SoftBus          | [@yinyouzhan](https://gitee.com/yinyouzhan)         |
 | 17   | [I3O2G8](https://gitee.com/openharmony/aafwk_aafwk_lite/issues/I3O2G8?from=project-issue) | 【应用程序框架】轻量级应用实现entity标签                     | developing | SIG_AppFramework     | [@autumn](https://gitee.com/autumn330)              |
 
-## OpenHarmony 3.0 beta1版本特性清单：
+## OpenHarmony 3.1 beta1版本特性清单：
 
 状态说明：discussion(方案讨论，需求未接受)，Reject(未纳入版本)，developing(开发中)，Testing(测试中)，Accepted(已验收)
 
