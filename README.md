@@ -20,16 +20,18 @@ OpenHarmony社区通过[项目管理委员会](/zh/pmc.md)（ Project Management
 
 请阅读[如何贡献](https://gitee.com/openharmony/docs/blob/master/zh-cn/contribute/%E5%8F%82%E4%B8%8E%E8%B4%A1%E7%8C%AE.md)获得帮助。
 
-## 开发者社区贡献协议
+## 签署开发者原创声明
 
-请使用[CLA](/cla)模板签署CLA贡献协议，并发送协议到contact@openharmony.io邮箱。
+您必须首先签署“开发者原创声明”，然后才能参与社区贡献。
+
+点击[这里](https://dco.openharmony.io/sign/Z2l0ZWUlMkZPcGVuQXRvbQ==)签署、查看签署状态。
 
 ## 社区交流
 
 ### OpenHarmony maillist 交流方式
 | 地址                                 | 简介        | 用途说明                                                         |
 | ---------------------------------------|---------- | ------------------------------------------------------------ |
-| contact@openharmony.io <img width=150/>  | 公用邮箱 <img width=100/> | OpenHarmony社区公共邮箱。开发者CLA协议签署可以发邮件到此邮箱。<img width=200/>|
+| contact@openharmony.io <img width=150/>  | 公用邮箱 <img width=100/> | OpenHarmony社区公共邮箱。<img width=200/>|
 | dev@openharmony.io  <img width=150/>| 开发邮件列表 <img width=100/> | OpenHarmony社区开发讨论邮件列表，任何社区开发相关话题都可以在邮件列表讨论。任何开发者可[订阅](https://lists.openatom.io/postorius/lists/dev.openharmony.io)。<img width=200/>|
 | cicd@openharmony.io <img width=150/> | CI邮件列表  <img width=100/>| OpenHarmomny CICD构建邮件列表，任何开发者可[订阅](https://lists.openatom.io/postorius/lists/cicd.openharmony.io)。<img width=200/>|
 | pmc@openharmony.io  <img width=150/>| PMC邮件列表  <img width=100/>| PMC讨论邮件列表，PMC成员可[订阅](https://lists.openatom.io/postorius/lists/pmc.openharmony.io/)。<img width=200/>|
