@@ -49,6 +49,13 @@
          "sig-name":"sig-riscv",
          "projects":"https://gitee.com/openharmony-sig/riscv",
          "project-path":"None"
+      },
+      {
+         "sig-name":"sig-systemapplications",
+         "projects":"https://gitee.com/openharmony-sig/system_applications",
+         "project-path":["applications/standard/systemui",
+                         "applications/standard/settings",
+                         "applications/standard/launcher"]
       }
    ]
 }
