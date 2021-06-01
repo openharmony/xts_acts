@@ -1,17 +1,18 @@
-# X Test Suite<a name="EN-US_TOPIC_0000001132537809"></a>
+# XTS<a name="EN-US_TOPIC_0000001126156429"></a>
 
 -   [Introduction](#section465982318513)
--   [Devices](#section125090457443)
+-   [System Types](#section125090457443)
 -   [Directory Structure](#section161941989596)
 -   [Constraints](#section119744591305)
 -   [Usage Guidelines](#section137768191623)
 -   [Test Case Development Guidelines](#section3695134065513)
-    -   [C-based Test Case Development and Compilation \(for Mini-System Devices\)](#section1551164914237)
-    -   [C-based Test Case Execution \(for Mini-System Devices\)](#section10100701294)
-    -   [C++-based Test Case Development and Compilation \(for Small-, Standard-, and Large-System Devices\)](#section5714177113113)
-    -   [C++-based Test Case Execution \(for Small-, Standard-, and Large-System Devices\)](#section42281924184)
+    -   [C-based Test Case Development and Compilation \(for the Mini System\)](#section198193336544)
+    -   [C-based Test Case Execution \(for the Mini System\)](#section13820233175418)
+    -   [C++-based Test Case Development and Compilation \(for Standard and Small Systems\)](#section3822123311540)
+    -   [C++-based Test Case Execution \(for Standard and Small Systems\)](#section128222336544)
+    -   [JavaScript-based Test Case Development \(for the Standard System\)](#section159801435165220)
+    -   [JavaScript-based Test Case Packaging \(for the Standard System\)](#section445519106559)
 
--   [Repositories Involved](#section1371113476307)
 
 ## Introduction<a name="section465982318513"></a>
 
@@ -22,26 +23,21 @@ This subsystem contains the ACTS and  **tools**  software package.
 -   The  **acts**  directory stores the source code and configuration files of ACTS test cases. The ACTS helps device vendors detect the software incompatibility as early as possible and ensures that the software is compatible to OpenHarmony during the entire development process.
 -   The  **tools**  software package stores the test case development framework related to  **acts**.
 
-## Devices<a name="section125090457443"></a>
+## System Types<a name="section125090457443"></a>
 
-OpenHarmony supports the following device types:
+OpenHarmony supports the following system types:
 
--   **Mini-System Devices \(reference memory ≥ 128 KB\)**
+-   Mini system
 
-    Such devices are equipped with MCU processors such as ARM Cortex-M and 32-bit RISC-V. They provide rich short-distance connection and peripheral bus access capabilities. Typical products include LinkIoT module devices and sensors in the smart home field. The LinkIoT module is usually used for smart Internet of Things \(IoT\) devices as the hardware module that implements connectivity functions. In the smart home field, the LinkIoT module is integrated into devices by vendors. For example, a LinkIoT module provides WLAN/Bluetooth access and data connection, and it usually communicates with the chip of smart home devices via a universal asynchronous receiver-transmitter \(UART\) or general-purpose input/output \(GPIO\) interface.
+    A mini system runs on the devices whose memory is greater than or equal to 128 KiB and that are equipped with MCU processors such as ARM Cortex-M and 32-bit RISC-V. This system provides multiple lightweight network protocols and graphics frameworks, and a wide range of read/write components for the IoT bus. Typical products include connection modules, sensors, and wearables for smart home.
 
--   **Small-System Devices \(reference memory ≥ 1 MB\)**
+-   Small system
 
-    Such devices are equipped with application processors such as ARM Cortex-A. They provide higher security capabilities, standard graphics framework, and multimedia capabilities for video encoding and decoding. Typical products include IP cameras, electronic cat eyes, and routers in the smart home field, as well as event data recorders \(EDRs\) in the smart travel field.
+    A small system runs on the devices whose memory is greater than or equal to 1 MiB and that are equipped with application processors such as ARM Cortex-A. This system provides higher security capabilities, standard graphics frameworks, and video encoding and decoding capabilities. Typical products include smart home IP cameras, electronic cat eyes, and routers, and event data recorders \(EDRs\) for smart travel.
 
+-   Standard system
 
--   **Standard-System Devices \(reference memory ≥ 128 MB\)**
-
-    Such devices are equipped with application processors such as ARM Cortex-A. They provide a complete application framework supporting enhanced interaction, 3D GPU, hardware composer, diverse components, and rich animations. Typical products include high-end refrigerator displays.
-
--   **Large-System Devices \(reference memory ≥ 1 GB\)**
-
-    Such devices are equipped with application processors such as ARM Cortex-A and provide a complete compatible application framework. Typical products include smart TVs and smart watches.
+    A standard system runs on the devices whose memory is greater than or equal to 128 MiB and that are equipped with application processors such as ARM Cortex-A. This system provides a complete application framework supporting the enhanced interaction, 3D GPU, hardware composer, diverse components, and rich animations. This system applies to high-end refrigerator displays.
 
 
 ## Directory Structure<a name="section161941989596"></a>
@@ -49,17 +45,17 @@ OpenHarmony supports the following device types:
 ```
 /test/xts
 ├── acts                 # Test code
-│   └── subsystem       # Source code of subsystem test cases for large-system devices
-│   └── subsystem_lite  # Source code of subsystems test cases for mini- and small-system devices
-│   └── BUILD.gn        # Build configuration of test cases for large-system devices
-│   └── build_lite      # Build configuration of test cases for mini-and small-system devices
-│       └── build_lite    # Build configuration
+│   └── subsystem       # Source code of subsystem test cases for the standard system
+│   └── subsystem_lite  # Source code of subsystems test cases for mini and small systems
+│   └── BUILD.gn        # Build configuration of test cases for the standard system
+│   └── build_lite      
+│       └── BUILD.gn    # Build configuration of test cases for mini and small systems
 └── tools                # Test tool code
 ```
 
 ## Constraints<a name="section119744591305"></a>
 
-Test cases for mini system devices must be developed based on C, and those for small system devices must be developed based on C++.
+Test cases for the mini system must be developed based on C, and those for the small system must be developed based on C++.
 
 ## Usage Guidelines<a name="section137768191623"></a>
 
@@ -216,12 +212,12 @@ Test cases for mini system devices must be developed based on C, and those for s
 
 ## Test Case Development Guidelines<a name="section3695134065513"></a>
 
-You should select the appropriate programming language and your target test framework to develop test cases for the devices to test.
+You should select the appropriate programming language and your target test framework to develop test cases.
 
-**Table  4**  Test frameworks and test case languages for different devices
+**Table  4**  Test frameworks and test case languages for different systems
 
 <a name="table4418343171415"></a>
-<table><thead align="left"><tr id="row34183435145"><th class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.2.4.1.1"><p id="p941874311148"><a name="p941874311148"></a><a name="p941874311148"></a>Device Type</p>
+<table><thead align="left"><tr id="row34183435145"><th class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.2.4.1.1"><p id="p941874311148"><a name="p941874311148"></a><a name="p941874311148"></a>System</p>
 </th>
 <th class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.2.4.1.2"><p id="p1841804341413"><a name="p1841804341413"></a><a name="p1841804341413"></a>Test Framework</p>
 </th>
@@ -229,40 +225,33 @@ You should select the appropriate programming language and your target test fram
 </th>
 </tr>
 </thead>
-<tbody><tr id="row8419164319148"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.2.4.1.1 "><p id="p7419194312143"><a name="p7419194312143"></a><a name="p7419194312143"></a>Mini-system devices</p>
+<tbody><tr id="row8419164319148"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.2.4.1.1 "><p id="p7419194312143"><a name="p7419194312143"></a><a name="p7419194312143"></a>Mini</p>
 </td>
 <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.2.4.1.2 "><p id="p10419124312145"><a name="p10419124312145"></a><a name="p10419124312145"></a>HCTest</p>
 </td>
 <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.2.4.1.3 "><p id="p11419643191410"><a name="p11419643191410"></a><a name="p11419643191410"></a>C</p>
 </td>
 </tr>
-<tr id="row141915438147"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.2.4.1.1 "><p id="p441911436141"><a name="p441911436141"></a><a name="p441911436141"></a>Small-system devices</p>
+<tr id="row141915438147"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.2.4.1.1 "><p id="p441911436141"><a name="p441911436141"></a><a name="p441911436141"></a>Small</p>
 </td>
 <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.2.4.1.2 "><p id="p541916432142"><a name="p541916432142"></a><a name="p541916432142"></a>HCPPTest</p>
 </td>
 <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.2.4.1.3 "><p id="p54191643131416"><a name="p54191643131416"></a><a name="p54191643131416"></a>C++</p>
 </td>
 </tr>
-<tr id="row4419134341417"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.2.4.1.1 "><p id="p341964313143"><a name="p341964313143"></a><a name="p341964313143"></a>Standard-system devices</p>
+<tr id="row4419134341417"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.2.4.1.1 "><p id="p341964313143"><a name="p341964313143"></a><a name="p341964313143"></a>Standard</p>
 </td>
-<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.2.4.1.2 "><p id="p10419443171416"><a name="p10419443171416"></a><a name="p10419443171416"></a>HJUnit and HCPPTest</p>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.2.4.1.2 "><p id="p10419443171416"><a name="p10419443171416"></a><a name="p10419443171416"></a>HJSUnit and HCPPTest</p>
 </td>
-<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.2.4.1.3 "><p id="p9419143181414"><a name="p9419143181414"></a><a name="p9419143181414"></a>Java and C++</p>
-</td>
-</tr>
-<tr id="row42451815115215"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.2.4.1.1 "><p id="p324511515528"><a name="p324511515528"></a><a name="p324511515528"></a>Large-system devices</p>
-</td>
-<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.2.4.1.2 "><p id="p724516151520"><a name="p724516151520"></a><a name="p724516151520"></a>HJUnit and HCPPTest</p>
-</td>
-<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.2.4.1.3 "><p id="p748417474533"><a name="p748417474533"></a><a name="p748417474533"></a>Java and C++</p>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.2.4.1.3 "><p id="p9419143181414"><a name="p9419143181414"></a><a name="p9419143181414"></a>JavaScript and C++</p>
 </td>
 </tr>
 </tbody>
 </table>
 
-### C-based Test Case Development and Compilation \(for Mini-System Devices\)<a name="section1551164914237"></a>
+### C-based Test Case Development and Compilation \(for the Mini System\)<a name="section198193336544"></a>
 
-**Developing test cases for mini-system devices**
+**Developing test cases for the mini system**
 
 The HCTest framework is used to support test cases developed with the C language. HCTest is enhanced and adapted based on the open-source test framework Unity.
 
@@ -323,7 +312,7 @@ The HCTest framework is used to support test cases developed with the C language
 
 3.  Create the configuration file \(**BUILD.gn**\) of the test module.
 
-    Create a  **BUILD.gn**  \(example\) compilation file in each test module directory. Specify the name of the compiled static library and its dependent header file and library in the compilation file. The format is as follows:
+    Create a  **BUILD.gn**  \(example\) build file in each test module directory. Specify the name of the built static library and its dependent header file and library in the build file. The format is as follows:
 
     ```
     import("//test/xts/tools/lite/build/suite_lite.gni")
@@ -337,7 +326,7 @@ The HCTest framework is used to support test cases developed with the C language
     }
     ```
 
-4.  Add compilation options to the  **BUILD.gn**  file in the  **acts**  directory.
+4.  Add build options to the  **BUILD.gn**  file in the  **acts**  directory.
 
     You need to add the test module to the  **test/xts/acts/build\_lite/BUILD.gn**  script in the  **acts**  directory.
 
@@ -353,17 +342,17 @@ The HCTest framework is used to support test cases developed with the C language
     }
     ```
 
-5.  Run compilation commands.
+5.  Run build commands.
 
-    Test suites are compiled along with version compilation. The ACTS is compiled together with the debug version.
+    Test suites are built along with version build. The ACTS is built together with the debug version.
 
     >![](public_sys-resources/icon-note.gif) **NOTE:** 
-    >The ACTS compiles middleware as a static library, which will be linked to the image.
+    >The ACTS build middleware is a static library, which will be linked to the image.
 
 
-### C-based Test Case Execution \(for Mini-System Devices\)<a name="section10100701294"></a>
+### C-based Test Case Execution \(for the Mini System\)<a name="section13820233175418"></a>
 
-**Executing test cases for mini-system devices**
+**Executing test cases for the mini system**
 
 Burn the image into the development board.
 
@@ -378,9 +367,9 @@ View the serial port logs, whose format is as follows:
 
 The log for each test suite starts with  **Start to run test suite:**  and ends with  **xx Tests xx Failures xx Ignored**.
 
-### C++-based Test Case Development and Compilation \(for Small-, Standard-, and Large-System Devices\)<a name="section5714177113113"></a>
+### C++-based Test Case Development and Compilation \(for Standard and Small Systems\)<a name="section3822123311540"></a>
 
-**Developing test cases for small-system devices**
+**Developing test cases for small-system devices**  \(For examples of the standard system, go to the  **global/i18n\_standard directory**.\)
 
 The HCPPTest framework is enhanced and adapted based on the open-source framework Googletest.
 
@@ -446,7 +435,7 @@ The HCPPTest framework is enhanced and adapted based on the open-source framewor
 
 3.  Create a configuration file \(**BUILD.gn**\) of the test module.
 
-    Create a  **BUILD.gn**  compilation file in each test module directory. Specify the name of the compiled static library and its dependent header file and library in the compilation file. Each test module is independently compiled into a  **.bin**  executable file, which can be directly mounted to the development board for testing.
+    Create a  **BUILD.gn**  build file in each test module directory. Specify the name of the built static library and its dependent header file and library in the build file. Each test module is independently built into a  **.bin**  executable file, which can be directly pushed to the development board for testing.
 
     Example:
 
@@ -467,10 +456,9 @@ The HCPPTest framework is enhanced and adapted based on the open-source framewor
         ]
         cflags = [ "-Wno-error" ]
     }
-    
     ```
 
-4.  Add compilation options to the  **BUILD.gn**  file in the  **acts**  directory.
+4.  Add build options to the  **BUILD.gn**  file in the  **acts**  directory.
 
     Add the test module to the  **test/xts/acts/build\_lite/BUILD.gn**  script in the  **acts**  directory.
 
@@ -486,17 +474,17 @@ The HCPPTest framework is enhanced and adapted based on the open-source framewor
     }
     ```
 
-5.  Run compilation commands.
+5.  Run build commands.
 
-    Test suites are compiled along with the version compilation. The ACTS is compiled together with the debug version.
+    Test suites are built along with the version build. The ACTS is built together with the debug version.
 
     >![](public_sys-resources/icon-note.gif) **NOTE:** 
-    >The ACTS for a small system device is independently compiled to an executable file \(.bin\) and archived in the  **suites\\acts**  directory of the compilation result.
+    >The ACTS for the small system is independently built to an executable file \(.bin\) and archived in the  **suites\\acts**  directory of the build result.
 
 
-### C++-based Test Case Execution \(for Small-, Standard-, and Large-System Devices\)<a name="section42281924184"></a>
+### C++-based Test Case Execution \(for Standard and Small Systems\)<a name="section128222336544"></a>
 
-**Executing test cases for small-system devices**
+**Executing test cases for the small system**
 
 Currently, test cases are shared by the NFS and mounted to the development board for execution.
 
@@ -520,11 +508,141 @@ Currently, test cases are shared by the NFS and mounted to the development board
 
 Execute  **ActsDemoTest.bin**  to trigger test case execution, and analyze serial port logs generated after the execution is complete.
 
-## Repositories Involved<a name="section1371113476307"></a>
+### JavaScript-based Test Case Development \(for the Standard System\)<a name="section159801435165220"></a>
 
-[X Test Suite](https://gitee.com/openharmony/docs/blob/master/en/readme/x-test-suite.md)
+The HJSUnit framework is used to support automated test of OpenHarmony apps that are developed using the JavaScript language based on the JS application framework.
 
-**xts\_acts**
+**Basic syntax of test cases**
 
-[xts\_tools](https://gitee.com/openharmony/xts_tools/blob/master/README.md)
+The test cases are developed with the JavaScript language and must meet the programming specifications of the language.
+
+**Table  5** 
+
+<a name="table13980103565212"></a>
+<table><thead align="left"><tr id="row1098093545218"><th class="cellrowborder" valign="top" width="17.92179217921792%" id="mcps1.2.4.1.1"><p id="p49811235135214"><a name="p49811235135214"></a><a name="p49811235135214"></a>Syntax</p>
+</th>
+<th class="cellrowborder" valign="top" width="68.88688868886888%" id="mcps1.2.4.1.2"><p id="p898183565220"><a name="p898183565220"></a><a name="p898183565220"></a>Description</p>
+</th>
+<th class="cellrowborder" valign="top" width="13.19131913191319%" id="mcps1.2.4.1.3"><p id="p17981143512526"><a name="p17981143512526"></a><a name="p17981143512526"></a>Mandatory</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="row1598183515528"><td class="cellrowborder" valign="top" width="17.92179217921792%" headers="mcps1.2.4.1.1 "><p id="p139810358527"><a name="p139810358527"></a><a name="p139810358527"></a>beforeAll</p>
+</td>
+<td class="cellrowborder" valign="top" width="68.88688868886888%" headers="mcps1.2.4.1.2 "><p id="p198111352526"><a name="p198111352526"></a><a name="p198111352526"></a>Presets a test-suite-level action executed only once before all test cases are executed. You can pass the action function as the only parameter.</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.19131913191319%" headers="mcps1.2.4.1.3 "><p id="p298114355529"><a name="p298114355529"></a><a name="p298114355529"></a>No</p>
+</td>
+</tr>
+<tr id="row11981103512529"><td class="cellrowborder" valign="top" width="17.92179217921792%" headers="mcps1.2.4.1.1 "><p id="p20981135135215"><a name="p20981135135215"></a><a name="p20981135135215"></a>afterAll</p>
+</td>
+<td class="cellrowborder" valign="top" width="68.88688868886888%" headers="mcps1.2.4.1.2 "><p id="p39811935115217"><a name="p39811935115217"></a><a name="p39811935115217"></a>Presets a test-suite-level clear action executed only once after all test cases are executed. You can pass the clear function as the only parameter.</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.19131913191319%" headers="mcps1.2.4.1.3 "><p id="p998110354527"><a name="p998110354527"></a><a name="p998110354527"></a>No</p>
+</td>
+</tr>
+<tr id="row1298116359526"><td class="cellrowborder" valign="top" width="17.92179217921792%" headers="mcps1.2.4.1.1 "><p id="p898112359526"><a name="p898112359526"></a><a name="p898112359526"></a>beforeEach</p>
+</td>
+<td class="cellrowborder" valign="top" width="68.88688868886888%" headers="mcps1.2.4.1.2 "><p id="p149811335175215"><a name="p149811335175215"></a><a name="p149811335175215"></a>Presets a test-case-level action executed before each test case is executed. The number of execution times is the same as the number of test cases defined by <strong id="b32523248388"><a name="b32523248388"></a><a name="b32523248388"></a>it</strong>. You can pass the action function as the only parameter.</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.19131913191319%" headers="mcps1.2.4.1.3 "><p id="p13981133585212"><a name="p13981133585212"></a><a name="p13981133585212"></a>No</p>
+</td>
+</tr>
+<tr id="row6982435115219"><td class="cellrowborder" valign="top" width="17.92179217921792%" headers="mcps1.2.4.1.1 "><p id="p19982133517525"><a name="p19982133517525"></a><a name="p19982133517525"></a>afterEach</p>
+</td>
+<td class="cellrowborder" valign="top" width="68.88688868886888%" headers="mcps1.2.4.1.2 "><p id="p1398213575219"><a name="p1398213575219"></a><a name="p1398213575219"></a>Presets a test-case-level clear action executed after each test case is executed. The number of execution times is the same as the number of test cases defined by <strong id="b10590142313399"><a name="b10590142313399"></a><a name="b10590142313399"></a>it</strong>. You can pass the clear function as the only parameter.</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.19131913191319%" headers="mcps1.2.4.1.3 "><p id="p159821535195219"><a name="p159821535195219"></a><a name="p159821535195219"></a>No</p>
+</td>
+</tr>
+<tr id="row16982143513521"><td class="cellrowborder" valign="top" width="17.92179217921792%" headers="mcps1.2.4.1.1 "><p id="p598203510527"><a name="p598203510527"></a><a name="p598203510527"></a>describe</p>
+</td>
+<td class="cellrowborder" valign="top" width="68.88688868886888%" headers="mcps1.2.4.1.2 "><p id="p5982123595215"><a name="p5982123595215"></a><a name="p5982123595215"></a>Defines a test suite. You can pass two parameters: test suite name and test suite function. The <strong id="b7320205019400"><a name="b7320205019400"></a><a name="b7320205019400"></a>describe</strong> statement supports nesting. You can use <strong id="b138214222410"><a name="b138214222410"></a><a name="b138214222410"></a>beforeall</strong>, <strong id="b18677102314115"><a name="b18677102314115"></a><a name="b18677102314115"></a>beforeEach</strong>, <strong id="b1353142514113"><a name="b1353142514113"></a><a name="b1353142514113"></a>afterEach</strong>, and <strong id="b131041629204111"><a name="b131041629204111"></a><a name="b131041629204111"></a>afterAll</strong> in each <strong id="b590433484116"><a name="b590433484116"></a><a name="b590433484116"></a>describe</strong> statement.</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.19131913191319%" headers="mcps1.2.4.1.3 "><p id="p898217352527"><a name="p898217352527"></a><a name="p898217352527"></a>Yes</p>
+</td>
+</tr>
+<tr id="row6982113518526"><td class="cellrowborder" valign="top" width="17.92179217921792%" headers="mcps1.2.4.1.1 "><p id="p17982123510526"><a name="p17982123510526"></a><a name="p17982123510526"></a>it</p>
+</td>
+<td class="cellrowborder" valign="top" width="68.88688868886888%" headers="mcps1.2.4.1.2 "><p id="p598211352522"><a name="p598211352522"></a><a name="p598211352522"></a>Defines a test case. You can pass three parameters: test case name, filter parameter, and test case function.</p>
+<p id="p5205769588"><a name="p5205769588"></a><a name="p5205769588"></a>Usage of the filter parameter:</p>
+<p id="p1545919528618"><a name="p1545919528618"></a><a name="p1545919528618"></a>The value of the filter parameter is a 32-bit integer. Setting different bits to <strong id="b045919521765"><a name="b045919521765"></a><a name="b045919521765"></a>1</strong> means different configurations:</p>
+<a name="ul6932113319395"></a><a name="ul6932113319395"></a><ul id="ul6932113319395"><li>bit 0: whether the filter parameter takes effect. <strong id="b1193293318395"><a name="b1193293318395"></a><a name="b1193293318395"></a>1</strong> means that the test case is used for the function test and other settings of the parameter do not take effect.</li><li>Bits 0-10: test case categories</li><li>Bits 16-18: test case scales</li><li>Bits 24-28: test levels</li></ul>
+<p id="p7965165151011"><a name="p7965165151011"></a><a name="p7965165151011"></a><strong id="b15148755145114"><a name="b15148755145114"></a><a name="b15148755145114"></a>Test case categories</strong>: Bits 0-10 indicate FUNCTION (function test), PERFORMANCE (performance test), POWER (power consumption test), RELIABILITY (reliability test), SECURITY (security compliance test), GLOBAL (integrity test), COMPATIBILITY (compatibility test), USER (user test), STANDARD (standard test), SAFETY (security feature test), and RESILIENCE (resilience test), respectively.</p>
+<p id="p199651555102"><a name="p199651555102"></a><a name="p199651555102"></a><strong id="b135908568519"><a name="b135908568519"></a><a name="b135908568519"></a>Test case scales</strong>: Bits 16-18 indicate SMALL (small-scale test), MEDIUM (medium-scale test), and LARGE (large-scale test), respectively.</p>
+<p id="p296545151020"><a name="p296545151020"></a><a name="p296545151020"></a><strong id="b12181058125111"><a name="b12181058125111"></a><a name="b12181058125111"></a>Test levels</strong>: Bits 24-28 indicate LEVEL0 (level-0 test), LEVEL1 (level-1 test), LEVEL2 (level-2 test), LEVEL3 (level-3 test), and LEVEL4 (level-4 test), respectively.</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.19131913191319%" headers="mcps1.2.4.1.3 "><p id="p17601752115716"><a name="p17601752115716"></a><a name="p17601752115716"></a>Yes</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+Use the standard syntax of Jasmine to write test cases. The ES6 specification is supported.
+
+1.  Store the test cases in the  **entry/src/main/js/test**  directory, whose structure is as follows:
+
+    ```
+    ├── BUILD.gn   
+    │ └──entry
+    │ │ └──src
+    │ │ │ └──main
+    │ │ │ │ └──js
+    │ │ │ │ │ └──default               
+    │ │ │ │ │ │ └──pages
+    │ │ │ │ │ │ │ └──index             
+    │ │ │ │ │ │ │ │ └──index.js        # Entry file
+     │ │ │ │ │ └──test                  # Test code
+    │ │ │ └── resources                # HAP resources
+    │ │ │ └── config.json              # HAP configuration file
+    ```
+
+2.  Start the JS test framework and load test cases. The following is an example for  **index.js**.
+
+    ```
+    // Start the JS test framework and load test cases.
+    import {Core, ExpectExtend} from 'deccjsunit/index'
+    
+    export default {
+        data: {
+            title: ""
+        },
+        onInit() {
+            this.title = this.$t('strings.world');
+        },
+        onShow() {
+            console.info('onShow finish')
+            const core = Core.getInstance()
+            const expectExtend = new ExpectExtend({
+                'id': 'extend'
+            })
+            core.addService('expect', expectExtend)
+            core.init()
+            const configService = core.getDefaultService('config')
+            configService.setConfig(this)
+            require('../../../test/List.test')
+            core.execute()
+        },
+        onReady() {
+        },
+    }
+    ```
+
+3.  Write a unit test case by referring to the following example:
+
+    ```
+    // Use HJSUnit to perform the unit test.
+    describe('appInfoTest', function () {    
+        it('app_info_test_001', 0, function () {
+            var info = app.getInfo()
+            expect(info.versionName).assertEqual('1.0')
+            expect(info.versionCode).assertEqual('3')
+        })
+    }) 
+    ```
+
+
+### JavaScript-based Test Case Packaging \(for the Standard System\)<a name="section445519106559"></a>
+
+For details about how to build a HAP, see the JS application development guide of the standard system  [Building and Creating HAPs](https://developer.harmonyos.com/en/docs/documentation/doc-guides/build_overview-0000001055075201).
 
