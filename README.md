@@ -24,7 +24,7 @@ OpenHarmony社区通过[项目管理委员会](/zh/pmc.md)（ Project Management
 
 您必须首先签署“开发者原创声明”，然后才能参与社区贡献。
 
-点击[这里](https://dco.openharmony.io/sign/Z2l0ZWUlMkZPcGVuQXRvbQ==)签署、查看签署状态。
+点击[这里](https://dco.openharmony.io/sign/Z2l0ZWUlMkZvcGVuX2hhcm1vbnk=)签署、查看签署状态。
 
 ## 社区交流
 
