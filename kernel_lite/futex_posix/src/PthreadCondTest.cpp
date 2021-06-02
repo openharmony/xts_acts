@@ -144,8 +144,8 @@ HWTEST_F(FutexTest, testPthreadCondSignalBefore, Function | MediumTest | Level3)
     ASSERT_EQ(pthread_create(&tid[1], nullptr, ThreadPthreadCondSignalBefore2, nullptr), 0) << "> return errno";
 
     Msleep(100);
-    pthread_cancel(tid[0]);
-    pthread_cancel(tid[1]);
+    pthread_join(tid[0], nullptr);
+    pthread_join(tid[1], nullptr);
     EXPECT_EQ(pthread_cond_destroy(&g_cond1), 0);
     EXPECT_EQ(pthread_mutex_destroy(&g_mtx1), 0);
     EXPECT_EQ(CheckStep(5), (uint64_t)0x12345);
@@ -189,8 +189,8 @@ HWTEST_F(FutexTest, testPthreadCondSignalAfter, Function | MediumTest | Level3)
     ASSERT_EQ(pthread_create(&tid[1], nullptr, ThreadTestCondSignalWaitAfter2, nullptr), 0) << "> return errno";
 
     Msleep(100);
-    pthread_cancel(tid[0]);
-    pthread_cancel(tid[1]);
+    pthread_join(tid[0], nullptr);
+    pthread_join(tid[1], nullptr);
     EXPECT_EQ(pthread_cond_destroy(&g_cond2), 0);
     EXPECT_EQ(pthread_mutex_destroy(&g_mtx2), 0);
     EXPECT_EQ(CheckStep(4), (uint64_t)0x1234);
@@ -237,9 +237,9 @@ HWTEST_F(FutexTest, testPthreadCondBroadcast, Function | MediumTest | Level3)
     ASSERT_EQ(pthread_create(&tid[2], nullptr, ThreadPthreadCondBroadcast2, (void*)&testInt), 0) << "> return errno";
 
     Msleep(100);
-    pthread_cancel(tid[0]);
-    pthread_cancel(tid[1]);
-    pthread_cancel(tid[2]);
+    pthread_join(tid[0], nullptr);
+    pthread_join(tid[1], nullptr);
+    pthread_join(tid[2], nullptr);
     EXPECT_EQ(pthread_cond_destroy(&g_cond3), 0);
     EXPECT_EQ(pthread_mutex_destroy(&g_mtx3), 0);
     EXPECT_EQ(testInt, 12);
@@ -292,8 +292,8 @@ HWTEST_F(FutexTest, testPthreadCondTimedwait, Function | MediumTest | Level3)
     ASSERT_EQ(pthread_create(&tid2, nullptr, ThreadPthreadCondTimedwait2, nullptr), 0) << "> return errno";
 
     Msleep(100);
-    pthread_cancel(tid1);
-    pthread_cancel(tid2);
+    pthread_join(tid1, nullptr);
+    pthread_join(tid2, nullptr);
     EXPECT_EQ(pthread_cond_destroy(&g_cond4), 0);
     EXPECT_EQ(pthread_mutex_destroy(&g_mtx4), 0);
     EXPECT_EQ(CheckStep(4), (uint64_t)0x1234);
@@ -335,7 +335,7 @@ HWTEST_F(FutexTest, testPthreadCondTimedwaitOut, Function | MediumTest | Level3)
     ASSERT_EQ(pthread_create(&tid, nullptr, ThreadPthreadCondTimedwaitOut, nullptr), 0) << "> return errno";
 
     Msleep(200);
-    pthread_cancel(tid);
+    pthread_join(tid, nullptr);
     EXPECT_EQ(pthread_cond_destroy(&g_cond5), 0);
     EXPECT_EQ(pthread_mutex_destroy(&g_mtx5), 0);
     EXPECT_EQ(CheckStep(3), (uint64_t)0x123);
@@ -373,7 +373,7 @@ HWTEST_F(FutexTest, testPthreadCondTimedwaitEinval, Function | MediumTest | Leve
     ASSERT_EQ(pthread_create(&tid, nullptr, ThreadPthreadCondTimedwaitEinval, nullptr), 0) << "> return errno";
 
     Msleep(200);
-    pthread_cancel(tid);
+    pthread_join(tid, nullptr);
     EXPECT_EQ(pthread_cond_destroy(&g_cond6), 0);
     EXPECT_EQ(pthread_mutex_destroy(&g_mtx6), 0);
     EXPECT_EQ(CheckStep(3), (uint64_t)0x123);
