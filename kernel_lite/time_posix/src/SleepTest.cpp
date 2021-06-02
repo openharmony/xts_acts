@@ -27,17 +27,14 @@ using namespace testing::ext;
 const int SLEEP_ACCURACY = 21 * 1000; // 20 ms, with 1ms deviation
 const int ACCURACY_TEST_LOOPS = 5;    // loops for accuracy test, than count average value
 
-class UsleepParamTest : public testing::TestWithParam<int>
-{
+class UsleepParamTest : public testing::TestWithParam<int> {
 };
-class SleepParamTest : public testing::TestWithParam<int>
-{
+class SleepParamTest : public testing::TestWithParam<int> {
 };
-class SleepTest : public testing::Test
-{
+class SleepTest : public testing::Test {
 };
 
-static void usleepAccuracyTest(int interVal)
+static void UsleepAccuracyTest(int interVal)
 {
     int interval = interVal;
     LOG("\ntest interval:%d", interval);
@@ -50,7 +47,6 @@ static void usleepAccuracyTest(int interVal)
         int rt = usleep(interval);
         clock_gettime(CLOCK_MONOTONIC, &time2);
         EXPECT_EQ(rt, 0);
-        //duration = (time2.tv_sec - time1.tv_sec)*1000000 + (time2.tv_nsec - time1.tv_nsec)/1000;
         duration = (time2.tv_sec * 1000000 + time2.tv_nsec / 1000) - (time1.tv_sec * 1000000 + time1.tv_nsec / 1000);
         d += duration;
     }
@@ -60,11 +56,11 @@ static void usleepAccuracyTest(int interVal)
     ASSERT_NEAR(d, interval, SLEEP_ACCURACY) << "usleep accuracy check fail\n";
 }
 
-static void *ttestUsleepAccuracyThread(void *param)
+static void *TestUsleepAccuracyThread(void *param)
 {
     int interval = (int)param;
-    usleepAccuracyTest(interval);
-    return 0;
+    UsleepAccuracyTest(interval);
+    return nullptr;
 }
 
 /**
@@ -76,7 +72,7 @@ HWTEST_P(UsleepParamTest, testUsleepAccuracy, Performance | SmallTest | Level1)
 {
     int interVal = GetParam();
     pthread_t tid;
-    pthread_create(&tid, 0, ttestUsleepAccuracyThread, (void *)interVal);
+    pthread_create(&tid, 0, TestUsleepAccuracyThread, (void *)interVal);
     pthread_setschedprio(tid, 1);
     pthread_join(tid, 0);
 }
