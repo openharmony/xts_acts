@@ -44,7 +44,6 @@ static void usleepAccuracyTest(int interVal)
     struct timespec time1 = {0}, time2 = {0};
     long duration; // unit: us
     double d = 0.0;
-    printf(" size %d, %d\n", sizeof(time2.tv_sec), sizeof(time2.tv_nsec));
     for (int i = 1; i <= ACCURACY_TEST_LOOPS; i++)
     {
         clock_gettime(CLOCK_MONOTONIC, &time1);
@@ -53,7 +52,6 @@ static void usleepAccuracyTest(int interVal)
         EXPECT_EQ(rt, 0);
         //duration = (time2.tv_sec - time1.tv_sec)*1000000 + (time2.tv_nsec - time1.tv_nsec)/1000;
         duration = (time2.tv_sec * 1000000 + time2.tv_nsec / 1000) - (time1.tv_sec * 1000000 + time1.tv_nsec / 1000);
-        printf("testloop %d, actual usleep duration: %ld us, %d, %d\n", i, duration, time2.tv_nsec, time1.tv_nsec);
         d += duration;
     }
     d = d / ACCURACY_TEST_LOOPS; // average
@@ -184,7 +182,6 @@ HWTEST_P(AllClockIDTest, testClockNanosleepInvalidID, Reliability | SmallTest | 
     struct timespec req = {0, 100};
     struct timespec rem = {0};
     int rt = clock_nanosleep(cid, 0, &req, &rem);
-     printf("++++++++++++++++++:\n",cid);
     if (cid == CLOCK_SGI_CYCLE) {
         ASSERT_EQ(rt, EINVAL) << cname << " should not support.\n";
     } 
