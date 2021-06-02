@@ -26,6 +26,8 @@ using namespace testing::ext;
 
 const int SLEEP_ACCURACY = 21 * 1000; // 20 ms, with 1ms deviation
 const int ACCURACY_TEST_LOOPS = 5;    // loops for accuracy test, than count average value
+const int ONE_MILLION = 1000000;
+const int ONE_THOUSAND = 1000;
 
 class UsleepParamTest : public testing::TestWithParam<int> {
 };
@@ -47,7 +49,7 @@ static void UsleepAccuracyTest(int interVal)
         int rt = usleep(interval);
         clock_gettime(CLOCK_MONOTONIC, &time2);
         EXPECT_EQ(rt, 0);
-        duration = (time2.tv_sec * 1000000 + time2.tv_nsec / 1000) - (time1.tv_sec * 1000000 + time1.tv_nsec / 1000);
+        duration = (time2.tv_sec * ONE_MILLION + time2.tv_nsec / ONE_THOUSAND) - (time1.tv_sec * ONE_MILLION + time1.tv_nsec / ONE_THOUSAND);
         d += duration;
     }
     d = d / ACCURACY_TEST_LOOPS; // average
@@ -58,7 +60,7 @@ static void UsleepAccuracyTest(int interVal)
 
 static void *TestUsleepAccuracyThread(void *param)
 {
-    int interval = (int)param;
+    intptr_t interval = (intptr_t)param;
     UsleepAccuracyTest(interval);
     return nullptr;
 }
