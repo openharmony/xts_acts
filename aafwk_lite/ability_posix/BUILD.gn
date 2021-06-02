@@ -71,5 +71,6 @@ hcpptest_suite("ActsAbilityMgrTest") {
     "-lstdc++",
     "-lm",
     "-lpthread",
+    "-ldl",
   ]
 }
