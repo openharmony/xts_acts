@@ -56,6 +56,11 @@
          "project-path":["applications/standard/systemui",
                          "applications/standard/settings",
                          "applications/standard/launcher"]
+      },
+      {
+         "sig-name":"sig-oh-board-website",
+         "projects":"https://gitee.com/openharmony-sig/oh-board-website",
+         "project-path":"NONE"
       }
    ]
 }
