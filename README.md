@@ -44,13 +44,13 @@ OpenHarmony supports the following system types:
 
 ```
 /test/xts
-├── acts                 # Test code
+├── acts                # Test code
 │   └── subsystem       # Source code of subsystem test cases for the standard system
 │   └── subsystem_lite  # Source code of subsystems test cases for mini and small systems
 │   └── BUILD.gn        # Build configuration of test cases for the standard system
 │   └── build_lite      
 │       └── BUILD.gn    # Build configuration of test cases for mini and small systems
-└── tools                # Test tool code
+└── tools               # Test tool code
 ```
 
 ## Constraints<a name="section119744591305"></a>
