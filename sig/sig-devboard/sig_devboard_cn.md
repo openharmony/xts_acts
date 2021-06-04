@@ -35,6 +35,20 @@
   - vendor_huawei_ipcamera_v3s: https://gitee.com/openharmony-sig/vendor_huawei_ipcamera_v3s
   - vendor_oh_fun: https://gitee.com/openharmony-sig/vendor_oh_fun
   - vendor_huawei_minidisplay_demo: https://gitee.com/openharmony-sig/vendor_huawei_minidisplay_demo
+  - device_mediatek: https://gitee.com/openharmony-sig/device_mediatek
+  - device_nordic: https://gitee.com/openharmony-sig/device_nordic
+  - device_nxp: https://gitee.com/openharmony-sig/device_nxp
+  - device_fudanmicro: https://gitee.com/openharmony-sig/device_fudanmicro
+  - device_bestechnic: https://gitee.com/openharmony-sig/device_bestechnic
+  - device_ingenic: https://gitee.com/openharmony-sig/device_ingenic
+  - device_espressif: https://gitee.com/openharmony-sig/device_espressif
+  - device_winnermicro: https://gitee.com/openharmony-sig/device_winnermicro
+  - device_rockchip: https://gitee.com/openharmony-sig/device_rockchip
+  - device_unisoc: https://gitee.com/openharmony-sig/device_unisoc
+  - device_broadcom: https://gitee.com/openharmony-sig/device_broadcom
+  - device_realtek: https://gitee.com/openharmony-sig/device_realtek
+  - device_bouffalolab: https://gitee.com/openharmony-sig/device_bouffalolab
+  - vendor_ohos: https://gitee.com/openharmony-sig/vendor_ohos
 
 ## SIG组成员
 
@@ -47,6 +61,7 @@
 - [borne](https://gitee.com/borne)
 - [jady3356](https://gitee.com/taiyipei)
 - [zeeman_wang](https://gitee.com/zeeman_wang)
+- [dxbedu](https://gitee.com/dxbedu)
 
 ### 会议
  - 会议时间：双周例会，晚上周一19:00
