@@ -75,12 +75,13 @@ HWTEST_F(LibhilogCPPtest, HILOG_INFO_CPP, Function|MediumTest|Level2)
     int i = 1;
     HiLog::Info(a, "123456789_1234567890_publicandprivatelogHWTEST_Fis:%{public}d,"
     "%{private}lf,%{public}.2f,%s,%{private}c", i, 1.00001, 2.333333, "sse", 'a');
-    std::string expected{"I 123456789_1234567890_publicandprivatelogHWTEST_Fis:1,<private>,2.33,<private>,<private>"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $5, $7}'", cmdRunResult);
+    std::string expected{"I 03200/HWTEST_Ftag0HWTEST_Ftag0HWTEST: \
+123456789_1234567890_publicandprivatelogHWTEST_Fis:1,<private>,2.33,<private>,<private>"};
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
     std::cout<<"cmdRunResult = " + cmdRunResult<<std::endl;
     std::cout<<"expected = " + expected<<std::endl;
-    EXPECT_EQ(cmdRunResult, expected);
-}
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
+ }
 
 /**
  * @tc.name Provides user-mode interfaces（CPP）debug
@@ -100,11 +101,12 @@ HWTEST_F(LibhilogCPPtest, HILOG_DEBUG_CPP, Function|MediumTest|Level0)
     a.tag = tag;
     HiLog::Debug(a, "123456789_1234567890_publicandprivatelogHWTEST_Fis:%{public}d,"
     "%{private}lf,%{public}.2f,%s,%{private}c", i, 1.00001, 2.333333, "sse", 'a');
-    std::string expected{"D 123456789_1234567890_publicandprivatelogHWTEST_Fis:1,<private>,2.33,<private>,<private>"};
-    CmdRun("hilog -L D -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $5, $7}'", cmdRunResult);
+    std::string expected{"D 03200/HWTEST_Ftag0HWTEST_Ftag0HWTEST: \
+123456789_1234567890_publicandprivatelogHWTEST_Fis:1,<private>,2.33,<private>,<private>"};
+    CmdRun("hilog -L D -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
     std::cout<<"cmdRunResult = " + cmdRunResult<<std::endl;
     std::cout<<"expected = " + expected<<std::endl;
-    EXPECT_EQ(cmdRunResult, expected);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -125,11 +127,12 @@ HWTEST_F(LibhilogCPPtest, HILOG_WARNING_CPP, Function|MediumTest|Level2)
     a.tag = tag;
     HiLog::Warn(a, "123456789_1234567890_publicandprivatelogHWTEST_Fis:%{public}d,%{private}lf,"
     "%{public}.2f,%s,%{private}c", i, 1.00001, 2.333333, "sse", 'a');
-    std::string expected{"W 123456789_1234567890_publicandprivatelogHWTEST_Fis:1,<private>,2.33,<private>,<private>"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $5, $7}'", cmdRunResult);
+    std::string expected{"W 03200/HWTEST_Ftag0HWTEST_Ftag0HWTEST: \
+123456789_1234567890_publicandprivatelogHWTEST_Fis:1,<private>,2.33,<private>,<private>"};
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
     std::cout<<"cmdRunResult = " + cmdRunResult<<std::endl;
     std::cout<<"expected = " + expected<<std::endl;
-    EXPECT_EQ(cmdRunResult, expected);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -150,11 +153,12 @@ HWTEST_F(LibhilogCPPtest, HILOG_ERROR_CPP, Function|MediumTest|Level2)
     a.tag = tag;
     HiLog::Error(a, "123456789_1234567890_publicandprivatelogHWTEST_Fis:%{public}d,"
     "%{private}lf,%{public}.2f,%s,%{private}c", i, 1.00001, 2.333333, "sse", 'a');
-    std::string expected{"E 123456789_1234567890_publicandprivatelogHWTEST_Fis:1,<private>,2.33,<private>,<private>"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $5, $7}'", cmdRunResult);
+    std::string expected{"E 03200/HWTEST_Ftag0HWTEST_Ftag0HWTEST: \
+123456789_1234567890_publicandprivatelogHWTEST_Fis:1,<private>,2.33,<private>,<private>"};
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
     std::cout<<"cmdRunResult = " + cmdRunResult<<std::endl;
     std::cout<<"expected = " + expected<<std::endl;
-    EXPECT_EQ(cmdRunResult, expected);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -175,11 +179,12 @@ HWTEST_F(LibhilogCPPtest, HILOG_FATAL_CPP, Function|MediumTest|Level2)
     a.tag = tag;
     HiLog::Fatal(a, "123456789_1234567890_publicandprivatelogHWTEST_Fis:%{public}d,"
     "%{private}lf,%{public}.2f,%s,%{private}c", i, 1.00001, 2.333333, "sse", 'a');
-    std::string expected{"F 123456789_1234567890_publicandprivatelogHWTEST_Fis:1,<private>,2.33,<private>,<private>"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $5, $7}'", cmdRunResult);
+    std::string expected{"F 03200/HWTEST_Ftag0HWTEST_Ftag0HWTEST: \
+123456789_1234567890_publicandprivatelogHWTEST_Fis:1,<private>,2.33,<private>,<private>"};
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
     std::cout<<"cmdRunResult = " + cmdRunResult<<std::endl;
     std::cout<<"expected = " + expected<<std::endl;
-    EXPECT_EQ(cmdRunResult, expected);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -199,8 +204,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_INTEGER_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "INTEGER:%{private}d,%{public}d,%d;", 1, 1, 1);
     std::string expected{"INTEGER:<private>,1,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -220,8 +225,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_INTEGER_LONG_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "INTEGER_long:%{private}ld,%{public}ld,%ld;", 2147483647L, 2147483647L, 2147483647L);
     std::string expected{"INTEGER_long:<private>,2147483647,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -241,8 +246,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_INTEGER_4_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "INTEGER_4:%{private}4d,%{public}4d,%4d;", 2000, 2000, 2000);
     std::string expected{"INTEGER_4:<private>,2000,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -262,8 +267,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_INTEGER_SHORT_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "INTEGER_short:%{private}hd,%{public}hd,%hd;", (short)1024, (short)1024, (short)1024);
     std::string expected{"INTEGER_short:<private>,1024,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -283,8 +288,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_INTEGER_UN_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "INTEGER_un:%{private}u,%{public}u,%u;", 2147483647u, 2147483647u, 2147483647u);
     std::string expected{"INTEGER_un:<private>,2147483647,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -304,8 +309,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_INTEGER_LONG_UN_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "INTEGER_long_un:%{private}lu,%{public}lu,%lu;", 7483647ul, 2147483647ul, 2147483647ul);
     std::string expected{"INTEGER_long_un:<private>,2147483647,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -325,8 +330,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_INTEGER_4_UN_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "INTEGER_4_un:%{private}4u,%{public}4u,%4u;", 4000, 4000, 4000);
     std::string expected{"INTEGER_4_un:<private>,4000,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -347,8 +352,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_INTEGER_SHORT_UN_CPP, Function|MediumTest|Level3
     HiLog::Fatal(a, "INTEGER_short_un:%{private}hu,%{public}hu,%hu;", (unsigned short)65535,
     (unsigned short)65535, (unsigned short)65535);
     std::string expected{"INTEGER_short_un:<private>,65535,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -368,8 +373,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_FLOAT_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "FLOAT:%{private}f,%{public}f,%f;", 1.01, 1.01, 1.01);
     std::string expected{"FLOAT:<private>,1.010000,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -389,8 +394,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_FLOAT_LONG_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "FLOAT_long:%{private}lf,%{public}lf,%lf;", 2.147483647, 2.147483647, 2.147483647);
     std::string expected{"FLOAT_long:<private>,2.147484,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -412,8 +417,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_FLOAT_POINT2_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "FLOAT_.2:%{private}.2f,%{public}.2f,%.2f;", 2.147483647, 2.147483647, 2.147483647);
     std::string expected{"FLOAT_.2:<private>,2.15,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -435,8 +440,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_FLOAT_3POINT2_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "FLOAT_3.2:%{private}3.2f,%{public}4.1f,%2.6f;", 32.147483647, 321.147483647, 23.147483647);
     std::string expected{"FLOAT_3.2:<private>,321.1,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -456,8 +461,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_CHAR_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "CHAR:%{private}c,%{public}c,%c;", 'a', 'b', 'c');
     std::string expected{"CHAR:<private>,b,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -477,8 +482,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_OCTAL_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "OCTAL:%{private}o,%{public}o,%o;", 15, 16, 17);
     std::string expected{"OCTAL:<private>,20,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -498,8 +503,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_OCTAL_LONG_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "OCTAL_long:%{private}lo,%{public}lo,%lo;", 18ul, 19ul, 20ul);
     std::string expected{"OCTAL_long:<private>,23,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -519,8 +524,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_HEX_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "HEX:%{private}x,%{public}x,%x;", 15, 16, 17);
     std::string expected{"HEX:<private>,10,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -540,8 +545,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_HEX_UPPER_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "HEX_#:%{private}#x,%{public}#x,%#x;", 18, 19, 20);
     std::string expected{"HEX_#:<private>,0x13,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -563,8 +568,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_HEX_LONG_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "HEX_long:%{private}lx,%{public}lx,%lx;", 21l, 22l, 23l);
     std::string expected{"HEX_long:<private>,16,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -586,8 +591,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_HEX_X_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "HEX_X:%{private}X,%{public}X,%X;", 24u, 25u, 26u);
     std::string expected{"HEX_X:<private>,19,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -609,8 +614,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_HEX_UPPER_X_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "HEX_#X:%{private}#X,%{public}#X,%#X;", 27, 28, 28);
     std::string expected{"HEX_#X:<private>,0X1C,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -632,8 +637,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_HEX_LONG_UPPER_X_CPP, Function|MediumTest|Level3
     a.tag = tag;
     HiLog::Fatal(a, "HEX_long_X:%{private}lX,%{public}lX,%lX;", 30ul, 31ul, 32ul);
     std::string expected{"HEX_long_X:<private>,1F,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -653,8 +658,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_STR_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "STRING:%{private}s,%{public}s,%s;", "STRING1", "STRING2", "STRING3");
     std::string expected{"STRING:<private>,STRING2,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -674,8 +679,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_STR_EMPTY_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "STRING_empty:%{private}s,%{public}s,%s;", "", "", "");
     std::string expected{"STRING_empty:<private>,,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -695,8 +700,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_STR_CHINESE_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "STRING_Chinese:%{private}s,%{public}s,%s;", "中文", "中文", "中文");
     std::string expected{"STRING_Chinese:<private>,中文,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -716,8 +721,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_E_DOUBLE_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "DOUBLE_e:%{private}e,%{public}e,%e;", 1e-30, 2.231e10, 3.999e-13);
     std::string expected{"DOUBLE_e:<private>,2.231000e+10,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -739,8 +744,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_E_UPPER_DOUBLE_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "DOUBLE_E:%{private}E,%{public}E,%E;", 4.88E2, 5.676767e-2, 6.17E13);
     std::string expected{"DOUBLE_E:<private>,5.676767E-02,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -762,8 +767,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_E_AUTO_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "AUTO:%{private}g,%{public}g,%g;", 1e-30, 2.231e10, 3.999e-13);
     std::string expected{"AUTO:<private>,2.231e+10,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -785,8 +790,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_E_UPPER_AUTO_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "AUTO_E:%{private}G,%{public}G,%G;", 4.88E2, 5.676767e-2, 6.17E13);
     std::string expected{"AUTO_E:<private>,0.0567677,<private>;"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -807,8 +812,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_PRIVATE_CPP, Function|MediumTest|Level3)
     HiLog::Fatal(a, "private:%{private}d,%{private}lf,%{private}.2f,%{private}s,%{private}c",
     1, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"private:<private>,<private>,<private>,<private>,<private>"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -829,8 +834,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_PUBLIC_CPP, Function|MediumTest|Level3)
     HiLog::Fatal(a, "public:%{public}d,%{public}lf,%{public}.2f,%{public}s,%{public}c",
     1, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"public:1,1.000010,2.33,sse,a"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -850,8 +855,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_NO_SIGN_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "no_sign:%d,%lf,%.2f,%s,%c", 1, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"no_sign:<private>,<private>,<private>,<private>,<private>"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -873,8 +878,8 @@ HWTEST_F(LibhilogCPPtest, HILOG_MIX_CPP, Function|MediumTest|Level3)
     a.tag = tag;
     HiLog::Fatal(a, "MIX:%{public}d,%{private}lf,%{public}.2f,%s,%{private}c", 1, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"MIX:1,<private>,2.33,<private>,<private>"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $7}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -894,8 +899,8 @@ HWTEST_F(LibhilogCPPtest, TAG_CHECK_CPP, Function|MediumTest|Level2)
     a.tag = tagNormal;
     HiLog::Fatal(a, "MIX:%{public}d,%{private}lf,%{public}.2f,%s,%{private}c", 1, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"03200/HWTEST_Ftag0HWTEST_Ftag0HWTEST:"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $6}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -916,8 +921,8 @@ HWTEST_F(LibhilogCPPtest, TAG_OVER_CHECK_CPP, Function|MediumTest|Level2)
     a.tag = tagToolong;
     HiLog::Fatal(a, "MIX:%{public}d,%{private}lf,%{public}.2f,%s,%{private}c", 1, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"03200/HWTEST_Ftag0HWTEST_Ftag0HWTEST_:"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST_/ | awk '{print $6}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST_/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -937,8 +942,8 @@ HWTEST_F(LibhilogCPPtest, DOMAIN_CHECK_CPP, Function|MediumTest|Level1)
     a.tag = tagNormal;
     HiLog::Fatal(a, "MIX:%{public}d,%{private}lf,%{public}.2f,%s,%{private}c", 1, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"01111/HWTEST_Ftag0HWTEST_Ftag0HWTEST:"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $6}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
 /**
@@ -958,6 +963,6 @@ HWTEST_F(LibhilogCPPtest, TYPE_APP_CHECK_CPP, Function|MediumTest|Level2)
     a.tag = tagNormal;
     HiLog::Fatal(a, "MIX:%{public}d,%{private}lf,%{public}.2f,%s,%{private}c", 1, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"03200/HWTEST_Ftag0HWTEST_Ftag0HWTEST:"};
-    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/ | awk '{print $6}'", cmdRunResult);
-    EXPECT_EQ(cmdRunResult, expected);
+    CmdRun("hilog -x -M ///HWTEST_Ftag0HWTEST_Ftag0HWTEST/", cmdRunResult);
+    ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
