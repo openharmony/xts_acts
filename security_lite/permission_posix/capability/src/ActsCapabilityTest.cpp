@@ -1490,7 +1490,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest2100, Reliability | MediumTest | Lev
 }
 #endif
 
-#if defined(LITE_FS_JFFS2) || defined(LITE_FS_VFAT)
+#if defined(LITE_FS_JFFS2)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_2200
  * @tc.name       : Check whether the default configuration of the system process capabilities
@@ -1527,6 +1527,46 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest2200, Security | MediumTest | Level1
     // Step 9: Check the capability of process 'wms_server' or 'ai_server', pid = 9
     ret = CapgetWithCaps(WMS_SERVER_OR_AI_SERVER_PID, WMS_SERVER_OR_AI_SERVER_CAP);
     EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 9, process wms_server or ai_server has wrong capability";
+}
+#endif
+
+#if defined(LITE_FS_VFAT)
+/*
+ * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_2200
+ * @tc.name       : Check whether the default configuration of the system process capabilities
+                    is the same as that described in the design document
+ * @tc.desc       : [C-SECURITY-0100]
+ */
+HWTEST_F(CapabilityTestSuite, CapabilityTest2200, Security | MediumTest | Level1)
+{
+    int ret;
+    // Step 1: Check the capability of process 'init', pid = 1
+    ret = CapgetWithCaps(INIT_PID_2, INIT_CAP);
+    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 1, process init has wrong capability";
+    // Step 2: Check the capability of process 'KProcess', pid = 2
+    ret = CapgetWithCaps(KPROCESS_PID_2, KPROCESS_CAP);
+    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 2, process KProcess has wrong capability";
+    // Step 3: Check the capability of process 'shell', pid = 8
+    ret = CapgetWithCaps(SHELL_PID_2, SHELL_CAP);
+    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 8, process shell has wrong capability";
+    // Step 4: Check the capability of process 'apphilogcat', pid = 10
+    ret = CapgetWithCaps(HILOGCAT_PID_2, HILOGCAT_CAP);
+    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 10, process apphilogcat has wrong capability";
+    // Step 5: Check the capability of process 'foundation', pid = 3
+    ret = CapgetWithCaps(FOUNDATION_PID_2, FOUNDATION_CAP);
+    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 3, process foundation has wrong capability";
+    // Step 6: Check the capability of process 'bundle_daemon', pid = 4
+    ret = CapgetWithCaps(BUNDLE_DAEMON_PID_2, BUNDLE_DAEMON_CAP);
+    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 4, process bundle_daemon has wrong capability";
+    // Step 7: Check the capability of process 'appspawn', pid = 5
+    ret = CapgetWithCaps(APPSPAWN_PID_2, APPSPAWN_CAP);
+    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 5, process appspawn has wrong capability";
+    // Step 8: Check the capability of process 'media_server', pid = 6
+    ret = CapgetWithCaps(MEDIA_SERVER_PID_2, MEDIA_SERVER_CAP);
+    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 6, process media_server has wrong capability";
+    // Step 9: Check the capability of process 'wms_server' or 'ai_server', pid = 7
+    ret = CapgetWithCaps(WMS_SERVER_OR_AI_SERVER_PID_2, WMS_SERVER_OR_AI_SERVER_CAP);
+    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 7, process wms_server or ai_server has wrong capability";
 }
 #endif
 
