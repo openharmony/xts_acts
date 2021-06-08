@@ -360,7 +360,7 @@ HWTEST_F(AlarmTest, testTimerCreateFork, Function | MediumTest | Level2)
         Msleep(setMillisec + ACCURACY_ERROR);
         EXPECT_EQ(mReceivedSignal, SIGALRM);
         WaitProcExitedOK(pid);
-	EXPECT_EQ(timer_delete(tid), 0) << "ERROR: timer_delete() != 0";
+        EXPECT_EQ(timer_delete(tid), 0) << "ERROR: timer_delete() != 0";
     }
 }
 
