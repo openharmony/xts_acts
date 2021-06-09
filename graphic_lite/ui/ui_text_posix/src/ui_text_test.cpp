@@ -116,7 +116,7 @@ HWTEST_F(UITextTest, Graphic_UITextTest_Test_GetEllipsisIndex_0700, Function | M
 
     Style style;
     style.letterSpace_ = 3;
-    style.lineSpace_ = 4;
+    style.lineHeight_ = 4;
 
     EXPECT_NE(textVar->GetEllipsisIndex(rect, style), 0);
 }

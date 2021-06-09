@@ -253,8 +253,8 @@ HWTEST_F(StyleTest, Graphic_Style_Test_SetStyle_1800, Function | MediumTest | Le
  */
 HWTEST_F(StyleTest, Graphic_Style_Test_SetStyle_1900, Function | MediumTest | Level0)
 {
-    styleVar->SetStyle(STYLE_LINE_SPACE, 4);
-    EXPECT_EQ(styleVar->GetStyle(STYLE_LINE_SPACE), 4);
+    styleVar->SetStyle(STYLE_LINE_HEIGHT, 4);
+    EXPECT_EQ(styleVar->GetStyle(STYLE_LINE_HEIGHT), 4);
 }
 
 /**
