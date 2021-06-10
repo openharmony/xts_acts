@@ -85,7 +85,7 @@ lite_component("acts_component") {
         "//test/xts/acts/security_lite/huks_posix:ActsSecurityDataTest",
         #"//test/xts/acts/multimedia_lite/camera_lite_posix/camera_native:ActsMediaCameraTest",
         #"//test/xts/acts/multimedia_lite/media_lite_posix/player_native:ActsMediaPlayerTest",
-        "//test/xts/acts/multimedia_lite/media_lite_posix/recorder_native:ActsMediaRecorderTest",
+        #"//test/xts/acts/multimedia_lite/media_lite_posix/recorder_native:ActsMediaRecorderTest",
         "//test/xts/acts/distributed_schedule_lite/system_ability_manager_posix:ActsSamgrTest",
         "//test/xts/acts/appexecfwk_lite/appexecfwk_posix:ActsBundleMgrTest",
         "//test/xts/acts/aafwk_lite/ability_posix:ActsAbilityMgrTest",
