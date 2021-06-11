@@ -102,25 +102,11 @@ HWTEST_F(ScrollViewTest, Graphic_UIScrollViewTest_Test_ScrollBy_0500, Function |
 }
 
 /**
- * @tc.number   SUB_GRAPHIC_SCROLL_VIEW_SETSCROLLBARWIDTH_0600
+ * @tc.number   SUB_GRAPHIC_SCROLL_VIEW_SETXSCROLLBARVISIBLE_0600
  * @tc.name     test scroll-view set-vertical-scroll-state api
  * @tc.desc     [C- SOFTWARE -0200]
  */
-HWTEST_F(ScrollViewTest, Graphic_UIScrollViewTest_Test_SetScrollbarWidth_0600, Function | MediumTest | Level0)
-{
-    UIScrollView *scrollView = new UIScrollView();
-    uint8_t width = 0;
-    scrollView->SetScrollbarWidth(width);
-    EXPECT_EQ(0, 0);
-    delete scrollView;
-}
-
-/**
- * @tc.number   SUB_GRAPHIC_SCROLL_VIEW_SETXSCROLLBARVISIBLE_0700
- * @tc.name     test scroll-view set-vertical-scroll-state api
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(ScrollViewTest, Graphic_UIScrollViewTest_Test_SetXScrollBarVisible_0700, Function | MediumTest | Level0)
+HWTEST_F(ScrollViewTest, Graphic_UIScrollViewTest_Test_SetXScrollBarVisible_0600, Function | MediumTest | Level0)
 {
     UIScrollView *scrollView = new UIScrollView();
     bool state = false;
@@ -130,28 +116,15 @@ HWTEST_F(ScrollViewTest, Graphic_UIScrollViewTest_Test_SetXScrollBarVisible_0700
 }
 
 /**
- * @tc.number   SUB_GRAPHIC_SCROLL_VIEW_SETYSCROLLBARVISIBLE_0800
+ * @tc.number   SUB_GRAPHIC_SCROLL_VIEW_SETYSCROLLBARVISIBLE_0700
  * @tc.name     test scroll-view set-vertical-scroll-state api
  * @tc.desc     [C- SOFTWARE -0200]
  */
-HWTEST_F(ScrollViewTest, Graphic_UIScrollViewTest_Test_SetYScrollBarVisible_0800, Function | MediumTest | Level0)
+HWTEST_F(ScrollViewTest, Graphic_UIScrollViewTest_Test_SetYScrollBarVisible_0700, Function | MediumTest | Level0)
 {
     UIScrollView *scrollView = new UIScrollView();
     bool state = false;
     scrollView->SetYScrollBarVisible(state);
-    EXPECT_EQ(0, 0);
-    delete scrollView;
-}
-
-/**
- * @tc.number   SUB_GRAPHIC_SCROLL_VIEW_REFRESHSCROLLBAR_0900
- * @tc.name     test scroll-view set-vertical-scroll-state api
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(ScrollViewTest, Graphic_UIScrollViewTest_Test_RefreshScrollBar_0900, Function | MediumTest | Level0)
-{
-    UIScrollView *scrollView = new UIScrollView();
-    scrollView->RefreshScrollBar();
     EXPECT_EQ(0, 0);
     delete scrollView;
 }
