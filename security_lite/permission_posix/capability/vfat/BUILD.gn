@@ -12,6 +12,7 @@
 # limitations under the License.
 
 import("//test/xts/tools/lite/build/suite_lite.gni")
+import("//build/lite/config/subsystem/aafwk/config.gni")
 
 hcpptest_suite("ActsVFATCapabilityTest") {
   suite_name = "acts"
@@ -39,9 +40,18 @@ hcpptest_suite("ActsVFATCapabilityTest") {
     "-lpthread",
   ]
 
-  defines = [
-    "LITE_FS_VFAT",
-    "TOP_DIR=\"/sdcard\"",
-    "TOP_DIR_MOUNT_INFO=\"/sdcard vfat\"",
-  ]
+  if(enable_ohos_appexecfwk_feature_ability == true) {
+      defines = ["BOARD_HI3516_",
+          "LITE_FS_JFFS2",
+          "TOP_DIR=\"/sdcard\"",
+          "TOP_DIR_MOUNT_INFO=\"/sdcard vfat\"",
+      ]
+  } else {
+      defines = [
+        "LITE_FS_VFAT",
+        "TOP_DIR=\"/sdcard\"",
+        "TOP_DIR_MOUNT_INFO=\"/sdcard vfat\"",
+      ]
+  }
 }
+

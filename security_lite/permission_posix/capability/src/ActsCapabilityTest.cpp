@@ -1490,7 +1490,8 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest2100, Reliability | MediumTest | Lev
 }
 #endif
 
-#if defined(LITE_FS_JFFS2)
+#ifndef _BOARD_HI3516_
+#if defined(LITE_FS_JFFS2) || defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_2200
  * @tc.name       : Check whether the default configuration of the system process capabilities
@@ -1529,8 +1530,9 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest2200, Security | MediumTest | Level1
     EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 9, process wms_server or ai_server has wrong capability";
 }
 #endif
+#endif
 
-#if defined(LITE_FS_VFAT)
+#if defined(LITE_FS_VFAT) && defined(_BOARD_HI3516_)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_2200
  * @tc.name       : Check whether the default configuration of the system process capabilities

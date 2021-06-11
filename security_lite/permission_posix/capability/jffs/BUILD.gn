@@ -12,6 +12,7 @@
 # limitations under the License.
 
 import("//test/xts/tools/lite/build/suite_lite.gni")
+import("//build/lite/config/subsystem/aafwk/config.gni")
 
 hcpptest_suite("ActsJFFS2CapabilityTest") {
   suite_name = "acts"
@@ -39,9 +40,17 @@ hcpptest_suite("ActsJFFS2CapabilityTest") {
     "-lpthread",
   ]
 
-  defines = [
-    "LITE_FS_JFFS2",
-    "TOP_DIR=\"/storage\"",
-    "TOP_DIR_MOUNT_INFO=\"/storage jffs\"",
-  ]
+  if(enable_ohos_appexecfwk_feature_ability == true) {
+      defines = ["BOARD_HI3516_",
+          "LITE_FS_JFFS2",
+          "TOP_DIR=\"/storage\"",
+          "TOP_DIR_MOUNT_INFO=\"/storage jffs\"",
+      ]
+  } else {
+      defines = [
+          "LITE_FS_JFFS2",
+          "TOP_DIR=\"/storage\"",
+          "TOP_DIR_MOUNT_INFO=\"/storage jffs\"",
+      ]
+  }
 }
