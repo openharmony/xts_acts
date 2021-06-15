@@ -25,7 +25,7 @@
 ## PMC会议链接
 - 会议时间: 每双周周一 16:30-17:30
 - 会议主题: 通过邮件通知
-- 请[订阅](https://lists.openatom.io/postorius/lists/cicd.openharmony.io)邮件列表 dev@openharmony.io 获取会议链接
+- 请[订阅](https://lists.openatom.io/postorius/lists/dev.openharmony.io)邮件列表 dev@openharmony.io 获取会议链接
 
 ## 联系方式
 
