@@ -41,7 +41,7 @@ hcpptest_suite("ActsJFFS2CapabilityTest") {
   ]
 
   if(enable_ohos_appexecfwk_feature_ability == true) {
-      defines = ["BOARD_HI3516_",
+      defines = ["_BOARD_HI3516_",
           "LITE_FS_JFFS2",
           "TOP_DIR=\"/storage\"",
           "TOP_DIR_MOUNT_INFO=\"/storage jffs\"",
