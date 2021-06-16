@@ -81,6 +81,7 @@ void ActsMediaRecorderNDKTest::SetUp()
  */
 void ActsMediaRecorderNDKTest::TearDown()
 {
+    sleep(1);
     cout << "TearDown" << endl;
 }
 
