@@ -117,22 +117,6 @@ HWTEST_F(LiteIPCClientTest, testIPCClient0020, Function | MediumTest | Level2)
 };
 
 /**
- * @tc.number    : DMSLite_SAMGR_IPCClient_0030
- * @tc.name      : Client can not get api if the api version does not match
- * @tc.desc      : [C- SOFTWARE -0200]
-*/
-HWTEST_F(LiteIPCClientTest, testIPCClient0030, Function | MediumTest | Level2)
-{
-    IClientProxy *demoApi = NULL;
-    IUnknown *iUnknown = SAMGR_GetInstance()->GetFeatureApi("abilityms", "AmsFeature");
-    ASSERT_EQ(iUnknown != NULL, TRUE);
-
-    int result = iUnknown->QueryInterface(iUnknown, 0x00, (void **)&demoApi);
-    ASSERT_EQ(result != 0, TRUE);
-    ASSERT_EQ(demoApi == nullptr, TRUE);
-};
-
-/**
  * @tc.number    : DMSLite_SAMGR_IPCClient_0040
  * @tc.name      : Client can send request to other process
  * @tc.desc      : [C- SOFTWARE -0200]
