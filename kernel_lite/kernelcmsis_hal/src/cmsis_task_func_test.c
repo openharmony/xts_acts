@@ -23,6 +23,10 @@
 
 UINT32 g_threadCount;
 UINT16 g_cmsisTestTaskCount;
+UINT16 g_getStackSizeExit;
+UINT16 g_threadCreateExit;
+UINT16 g_getNameExit;
+UINT16 g_getStackSpaceExit;
 osThreadId_t g_puwTaskID01;
 osThreadId_t g_puwTaskID02;
 osPriority_t g_threadPriority;
@@ -57,6 +61,8 @@ static BOOL CmsisTaskFuncTestSuiteTearDown(void)
 static void CmsisThreadCreatFunc(void const *argument)
 {
     (void)argument;
+    printf(">> in CmsisThreadCreatFunc\n");
+    g_threadCreateExit = TESTCOUNT_NUM_1;
     osThreadExit();
 }
 
@@ -151,10 +157,23 @@ static void KeepRunByTick(UINT32 tick)
     return;
 }
 
+static void WaitThreadExit(osThreadId_t id, UINT16 const *exitFlag)
+{
+    UINT32 uwRet = osThreadSetPriority(id, osPriorityAboveNormal6);
+    printf("WaitThreadExit id = %d, uwRet = %d\n", id, uwRet);
+    UINT32 loop = 0;
+    while (*exitFlag != TESTCOUNT_NUM_1) {
+        osDelay(DELAY_TICKS_10);
+        if (loop % ALIVE_INFO_DIS == 0) {
+            printf("WaitThreadExit id = %d, loop = %d\n", id, loop++);
+        }
+    }
+    printf("WaitThreadExit exit\n");
+}
+
 static void CmsisThreadCreat005Func001(void const *argument)
 {
     (void)argument;
-    UINT32 uwIndex;
     TEST_ASSERT_EQUAL_INT(TESTCOUNT_NUM_1, g_cmsisTestTaskCount);
     while (g_cmsisTestTaskCount < TESTCOUNT_NUM_2) {
         KeepRunByTick(DELAY_TICKS_10);
@@ -176,9 +195,11 @@ static void CmsisThreadGetNameFunc001(void const *argument)
 {
     (void)argument;
     osThreadAttr_t attr;
+    printf(">> in CmsisThreadGetNameFunc001\n");
     g_puwTaskID01 = osThreadGetId();
     attr.name = osThreadGetName(g_puwTaskID01);
     TEST_ASSERT_EQUAL_STRING("testThreadGetName", attr.name);
+    g_getNameExit = TESTCOUNT_NUM_1;
     osThreadExit();
 }
 
@@ -222,9 +243,11 @@ static void CmsisThreadGetStackSizeFunc001(void const *argument)
 {
     (void)argument;
     osThreadAttr_t attr;
+    printf(">> in CmsisThreadGetStackSizeFunc001\n");
     g_puwTaskID01 = osThreadGetId();
     attr.stack_size = osThreadGetStackSize(g_puwTaskID01);
     TEST_ASSERT_EQUAL_INT(TEST_TASK_STACK_SIZE, attr.stack_size);
+    g_getStackSizeExit = TESTCOUNT_NUM_1;
     osThreadExit();
 }
 
@@ -232,9 +255,11 @@ static void CmsisThreadGetStackSpaceFunc001(void const *argument)
 {
     (void)argument;
     UINT32 uwCount;
+    printf(">> in CmsisThreadGetStackSpaceFunc001\n");
     g_puwTaskID01 =  osThreadGetId();
     uwCount = osThreadGetStackSpace(g_puwTaskID01);
     TEST_ASSERT_GREATER_THAN_INT32(0, uwCount);
+    g_getStackSpaceExit = TESTCOUNT_NUM_1;
     osThreadExit();
 }
 
@@ -290,12 +315,14 @@ static void CmsisThreadYieldFunc003(void const *argument)
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityNormal7;
     g_puwTaskID01 =  osThreadGetId();
+    g_threadCreateExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadCreatFunc, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
     state = osThreadGetState(g_puwTaskID01);
     TEST_ASSERT_EQUAL_INT(osThreadRunning, state);
     uwRet = osThreadYield();
     TEST_ASSERT_EQUAL_INT(osError, uwRet);
+    WaitThreadExit(id, &g_threadCreateExit);
     osThreadExit();
 }
 
@@ -550,7 +577,6 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadNew006, Function | MediumTest
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityNone;
-
     id = osThreadNew((osThreadFunc_t)CmsisThreadCreatFunc, NULL, &attr);
     TEST_ASSERT_NULL(id);
 };
@@ -572,7 +598,6 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadNew007, Function | MediumTest
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityIdle;
-
     id = osThreadNew((osThreadFunc_t)CmsisThreadCreatFunc, NULL, &attr);
     TEST_ASSERT_NULL(id);
 };
@@ -594,7 +619,6 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadNew008, Function | MediumTest
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityLow;
-
     id = osThreadNew((osThreadFunc_t)CmsisThreadCreatFunc, NULL, &attr);
     TEST_ASSERT_NULL(id);
 };
@@ -616,9 +640,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadNew009, Function | MediumTest
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityLow1;
-
+    g_threadCreateExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadCreatFunc, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_threadCreateExit);
 };
 
 /**
@@ -638,9 +663,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadNew010, Function | MediumTest
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityLow7;
-
+    g_threadCreateExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadCreatFunc, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_threadCreateExit);
 };
 
 /**
@@ -660,9 +686,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadNew011, Function | MediumTest
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityBelowNormal;
-
+    g_threadCreateExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadCreatFunc, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_threadCreateExit);
 };
 
 /**
@@ -682,9 +709,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadNew012, Function | MediumTest
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityBelowNormal7;
-
+    g_threadCreateExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadCreatFunc, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_threadCreateExit);
 };
 
 /**
@@ -704,9 +732,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadNew013, Function | MediumTest
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityNormal;
-
+    g_threadCreateExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadCreatFunc, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_threadCreateExit);
 };
 
 /**
@@ -726,9 +755,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadNew014, Function | MediumTest
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityNormal7;
-
+    g_threadCreateExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadCreatFunc, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_threadCreateExit);
 };
 
 /**
@@ -748,9 +778,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadNew015, Function | MediumTest
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityAboveNormal;
-
+    g_threadCreateExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadCreatFunc, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_threadCreateExit);
 };
 
 /**
@@ -770,9 +801,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadNew016, Function | MediumTest
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityAboveNormal6;
-
+    g_threadCreateExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadCreatFunc, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_threadCreateExit);
 };
 
 /**
@@ -792,7 +824,6 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadNew017, Function | MediumTest
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityAboveNormal7;
-
     id = osThreadNew((osThreadFunc_t)CmsisThreadCreatFunc, NULL, &attr);
     TEST_ASSERT_NULL(id);
 };
@@ -814,7 +845,6 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadNew018, Function | MediumTest
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityHigh;
-
     id = osThreadNew((osThreadFunc_t)CmsisThreadCreatFunc, NULL, &attr);
     TEST_ASSERT_NULL(id);
 };
@@ -836,7 +866,6 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadNew019, Function | MediumTest
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityHigh7;
-
     id = osThreadNew((osThreadFunc_t)CmsisThreadCreatFunc, NULL, &attr);
     TEST_ASSERT_NULL(id);
 };
@@ -1004,9 +1033,11 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetName001, Function | Medium
     attr.priority = osPriorityNormal;
 
     g_cmsisTestTaskCount = 0;
+    g_getNameExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetNameFunc001, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
     osDelay(DELAY_TICKS_5);
+    WaitThreadExit(id, &g_getNameExit);
 };
 
 /**
@@ -1291,8 +1322,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetStackSize001, Function | M
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityAboveNormal6;
+    g_getStackSizeExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetStackSizeFunc001, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getStackSizeExit);
 };
 
 /**
@@ -1815,10 +1848,11 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetName003, Function | Medium
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityLow1;
-
+    g_getNameExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetNameFunc001, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
     osDelay(DELAY_TICKS_5);
+    WaitThreadExit(id, &g_getNameExit);
 };
 
 /**
@@ -1838,10 +1872,11 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetName004, Function | Medium
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityLow7;
-
+    g_getNameExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetNameFunc001, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
     osDelay(DELAY_TICKS_5);
+    WaitThreadExit(id, &g_getNameExit);
 };
 
 /**
@@ -1861,10 +1896,11 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetName005, Function | Medium
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityBelowNormal;
-
+    g_getNameExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetNameFunc001, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
     osDelay(DELAY_TICKS_5);
+    WaitThreadExit(id, &g_getNameExit);
 };
 
 /**
@@ -1884,10 +1920,11 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetName006, Function | Medium
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityBelowNormal7;
-
+    g_getNameExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetNameFunc001, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
     osDelay(DELAY_TICKS_5);
+    WaitThreadExit(id, &g_getNameExit);
 };
 
 /**
@@ -1907,9 +1944,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetName007, Function | Medium
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityNormal7;
-
+    g_getNameExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetNameFunc001, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getNameExit);
 };
 
 /**
@@ -1929,9 +1967,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetName008, Function | Medium
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityAboveNormal;
-
+    g_getNameExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetNameFunc001, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getNameExit);
 };
 
 /**
@@ -1951,9 +1990,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetName009, Function | Medium
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityAboveNormal6;
-
+    g_getNameExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetNameFunc001, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getNameExit);
 };
 
 /**
@@ -2398,9 +2438,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetStackSize003, Function | M
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityLow1;
-
+    g_getStackSizeExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetStackSizeFunc001, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getStackSizeExit);
 };
 
 /**
@@ -2420,9 +2461,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetStackSize004, Function | M
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityLow7;
-
+    g_getStackSizeExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetStackSizeFunc001, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getStackSizeExit);
 };
 
 /**
@@ -2442,9 +2484,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetStackSize005, Function | M
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityBelowNormal;
-
+    g_getStackSizeExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetStackSizeFunc001, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getStackSizeExit);
 };
 
 /**
@@ -2464,9 +2507,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetStackSize006, Function | M
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityBelowNormal7;
-
+    g_getStackSizeExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetStackSizeFunc001, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getStackSizeExit);
 };
 
 /**
@@ -2486,9 +2530,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetStackSize007, Function | M
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityNormal;
-
+    g_getStackSizeExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetStackSizeFunc001, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getStackSizeExit);
 };
 
 /**
@@ -2508,9 +2553,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetStackSize008, Function | M
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityNormal7;
-
+    g_getStackSizeExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetStackSizeFunc001, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getStackSizeExit);
 };
 
 /**
@@ -2530,9 +2576,10 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetStackSize009, Function | M
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityAboveNormal;
-
+    g_getStackSizeExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetStackSizeFunc001, NULL, &attr);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getStackSizeExit);
 };
 
 /**
@@ -2578,10 +2625,11 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetStackSpace003, Function | 
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityLow1;
-
+    g_getStackSpaceExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetStackSpaceFunc001, NULL, &attr);
     osDelay(DELAY_TICKS_5);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getStackSpaceExit);
 };
 
 /**
@@ -2601,10 +2649,11 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetStackSpace004, Function | 
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityLow7;
-
+    g_getStackSpaceExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetStackSpaceFunc001, NULL, &attr);
     osDelay(DELAY_TICKS_5);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getStackSpaceExit);
 };
 
 /**
@@ -2624,10 +2673,11 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetStackSpace005, Function | 
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityBelowNormal;
-
+    g_getStackSpaceExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetStackSpaceFunc001, NULL, &attr);
     osDelay(DELAY_TICKS_5);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getStackSpaceExit);
 };
 
 /**
@@ -2647,10 +2697,11 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetStackSpace006, Function | 
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityBelowNormal7;
-
+    g_getStackSpaceExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetStackSpaceFunc001, NULL, &attr);
     osDelay(DELAY_TICKS_5);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getStackSpaceExit);
 };
 
 /**
@@ -2670,10 +2721,11 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetStackSpace007, Function | 
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityNormal;
-
+    g_getStackSpaceExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetStackSpaceFunc001, NULL, &attr);
     osDelay(DELAY_TICKS_5);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getStackSpaceExit);
 };
 
 /**
@@ -2693,10 +2745,11 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetStackSpace008, Function | 
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityNormal7;
-
+    g_getStackSpaceExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetStackSpaceFunc001, NULL, &attr);
     osDelay(DELAY_TICKS_5);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getStackSpaceExit);
 };
 
 /**
@@ -2716,10 +2769,11 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetStackSpace009, Function | 
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityAboveNormal;
-
+    g_getStackSpaceExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetStackSpaceFunc001, NULL, &attr);
     osDelay(DELAY_TICKS_5);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getStackSpaceExit);
 };
 
 /**
@@ -2739,10 +2793,11 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetStackSpace010, Function | 
     attr.stack_mem = NULL;
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = osPriorityAboveNormal6;
-
+    g_getStackSpaceExit = 0;
     id = osThreadNew((osThreadFunc_t)CmsisThreadGetStackSpaceFunc001, NULL, &attr);
     osDelay(DELAY_TICKS_5);
     TEST_ASSERT_NOT_NULL(id);
+    WaitThreadExit(id, &g_getStackSpaceExit);
 };
 
 /**
