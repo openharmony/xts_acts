@@ -36,12 +36,12 @@ enum TagSamgrApiGroup {
 
 enum TagSamgrApiPri {
     API_PRI0 = 0,
-    API_PRI1 = 0,
-    API_PRI_DEFAULT = 0,
-    API_PRI2 = 0,
-    API_PRI3 = 0,
-    API_PRI4 = 0,
-    API_PRI_MAX = 0,
+    API_PRI1,
+    API_PRI_DEFAULT,
+    API_PRI2,
+    API_PRI3,
+    API_PRI4,
+    API_PRI_MAX,
 };
 
 #endif  // XTS_HITS_SAMGR_API_EXPECT_H
