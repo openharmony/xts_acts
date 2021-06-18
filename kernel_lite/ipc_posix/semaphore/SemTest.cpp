@@ -314,7 +314,7 @@ HWTEST_F(SemTest, testThreadSemTimedWait, Function | MediumTest | Level3)
     EXPECT_EQ(reInt, 0) << "pthread_join failed, errno=" << reInt;
     EXPECT_EQ(sem_destroy(&sem), 0) << "> sem_destroy errno = " << errno;
 }
-
+ 
 void *ThreadNThreadWait1(void *arg)
 {
     sem_t *sem = (sem_t*)arg;
