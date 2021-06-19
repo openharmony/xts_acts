@@ -97,6 +97,11 @@
          "sig-name":"sig-oh-board-website",
          "projects":"https://gitee.com/openharmony-sig/oh-board-website",
          "project-path":"NONE"
+      },
+      {
+         "sig-name":"sig-dllite-micro",
+         "projects": "https://gitee.com/openharmony-sig/dllite_micro",
+         "project-path":["foundation/ai/dllite-micro"]
       }
    ]
 }
