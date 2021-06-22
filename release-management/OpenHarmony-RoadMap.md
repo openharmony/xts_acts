@@ -122,6 +122,8 @@
 | 82   | [I3SNKK](https://gitee.com/openharmony/kernel_liteos_m/issues/I3SNKK) | 【轻内核子系统】L0支持三方组件curl编译                       | developing | SIG_Kernel           | [@kkup180](https://gitee.com/kkup180)               |
 | 83   | [I3SMI1](https://gitee.com/openharmony/distributeddatamgr_appdatamgr/issues/I3SMI1) | 【分布式数据管理】支持轻量级设备上分布式数据对象跨设备同步到手机/PAD | developing | SIG_DataManagement   | [@widecode](https://gitee.com/widecode)             |
 | 84   | [I3SNGO](https://gitee.com/openharmony/build_lite/issues/I3SNGO) | 【编译子系统】build_lite支持开源软件的通用patch框架          | developing | SIG_CompileRuntime   | [@taiyipei](https://gitee.com/taiyipei)             |
+| 85   | [I3WLDI](https://gitee.com/openharmony/kernel_liteos_m/issues/I3WLDI) | 【轻内核子系统】L0支持轻量级shell框架和常用调测命令              | developing | SIG_Kernel           | [@kkup180](https://gitee.com/kkup180)               |
+| 86   | [I3WLCN](https://gitee.com/openharmony/kernel_liteos_m/issues/I3WLCN) | 【轻内核子系统】L0 LiteOS-M支持ARM9架构                     | developing | SIG_Kernel           | [@kkup180](https://gitee.com/kkup180)               |
 
 ## OpenHarmony 3.0 LTS版本特性清单：
 
