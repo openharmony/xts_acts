@@ -17,7 +17,6 @@ Defines and builds OpenHarmony system applications, applies for and implements i
 
 ### The repository 
 - project name:
-  - system_applications：https://gitee.com/openharmony-sig/system_applications
   - applications_systemui：https://gitee.com/openharmony/applications_systemui
   - applications_settings: https://gitee.com/openharmony/applications_settings
   - applications_launcher: https://gitee.com/openharmony/applications_launcher
@@ -36,7 +35,7 @@ Defines and builds OpenHarmony system applications, applies for and implements i
 - @zhuozengsi(https://gitee.com/zhuozengsi)
 - @lv-zhongwei(https://gitee.com/lv-zhongwei)
 - @hosphoto(https://gitee.com/hosphoto)
-- @sunjunxiong(https://gitee.com/hosphoto)
+- @sunjunxiong(https://gitee.com/sunjunxiong)
 
  ### Meetings
 - Meeting time：bi-weekly meeting, 19:00 pm on Wednesday

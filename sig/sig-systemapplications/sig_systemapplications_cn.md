@@ -17,7 +17,6 @@
 
 ## 代码仓
 - 代码仓地址：
-  - system_applications：https://gitee.com/openharmony-sig/system_applications
   - applications_systemui：https://gitee.com/openharmony/applications_systemui
   - applications_settings: https://gitee.com/openharmony/applications_settings
   - applications_launcher: https://gitee.com/openharmony/applications_launcher
@@ -35,7 +34,7 @@
 - @zhuozengsi(https://gitee.com/zhuozengsi)
 - @lv-zhongwei(https://gitee.com/lv-zhongwei)
 - @hosphoto(https://gitee.com/hosphoto)
-- @sunjunxiong(https://gitee.com/hosphoto)
+- @sunjunxiong(https://gitee.com/sunjunxiong)
 
 ### 会议
  - 会议时间：双周例会，晚上周三19:00
