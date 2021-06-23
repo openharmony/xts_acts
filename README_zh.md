@@ -647,6 +647,41 @@ OpenHarmony支持如下几种系统类型：
 
 hap包编译请参考[标准系统js应用开发指导](https://developer.harmonyos.com/cn/docs/documentation/doc-guides/build_overview-0000001055075201)。
 
+### 全量编译指导（适用于标准系统）<a name="section159801435165220"></a>
+
+1.  全量编译
+test/xts/acts目录下执行编译命令：
+    ```./build.sh suite=acts system_size=standard ```
+
+    测试用例输出目录：out/release/suites/acts/testcases
+
+    测试框架&用例整体输出目录：out/release/suites/acts（编译用例时会同步编译测试套执行框架）
+
+### 全量用例执行指导（适用于小型系统、标准系统）<a name="section159801435165220"></a>
+
+搭建测试环境
+Windows工作台下安装python3.7及以上版本，确保工作台和测试设备正常连接。
+
+测试执行目录（对应编译生成的out/release/suites/acts目录）
+
+    ├── testcase                       # 测试套文件存放目录 
+    │ └──xxx.hap                       # 测试套可执行hap文件
+    │ └──xxx.json                      # 测试套对应执行配置文件
+    ├── tools                          # 测试框架工具目录
+    ├── run.bat                        # window平台测试套启动执行文件
+    ├── report                         # 测试报告生成目录
+
+用例执行
+1.  在Windows工作台上，找到从Linux服务器上拷贝下来的测试套件用例目录，在Windows命令窗口进入对应目录，直接执行acts\run.bat。
+2.  界面启动后，输入用例执行指令。
+
+    全量执行：```run acts ```
+
+    模块执行(具体模块可以查看\acts\testcases\)：```run –l ActsSamgrTest ```
+
+3.  查看测试报告。
+进入acts\reports\，获取当前的执行记录，打开“summary_report.html”可以获取到测试报告。
+
 ## 相关仓<a name="section1371113476307"></a>
 
 xts\_acts
