@@ -11,7 +11,7 @@ Note: The content of this SIG follows the convention described in OpenHarmony's 
 
 ### The repository 
 - project name:
-  - distributeddatamgr: https://gitee.com/openharmony-sig/distributeddatamgr_appdatamgr
+  - distributeddatamgr: https://gitee.com/openharmony/distributeddatamgr_appdatamgr
 
 ## SIG Members
 
