@@ -1,0 +1,26 @@
+{
+   "Leader":[
+      {
+         "gitee_id":"karl-z",
+         "gitee_email":"zhangyongzhi@huawei.com"
+      }
+   ]
+   "Committers":[
+      {
+         "gitee_id":"im-off-this-week",
+         "gitee_email":"rengelin@huawei.com"
+      },
+      {
+         "gitee_id":"wanchengzhen",
+         "gitee_email":"wanchengzhen@huawei.com"
+      }
+	  {
+         "gitee_id":"huawei_qiangbo",
+         "gitee_email":"qiangbo2@huawei.com"
+      },
+      {
+         "gitee_id":"xiadengping",
+         "gitee_email":"xiadengping@huawei.com"
+      }
+   ]
+}

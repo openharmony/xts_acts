@@ -95,6 +95,11 @@
          "sig-name":"sig-dllite-micro",
          "projects": "https://gitee.com/openharmony-sig/dllite_micro",
          "project-path":["foundation/ai/dllite-micro"]
+      },
+      {
+         "sig-name":"sig-api",
+         "projects":"https://gitee.com/openharmony/nterface_sdk-js",
+         "project-path":"interface/sdk-js"
       }
    ]
 }
