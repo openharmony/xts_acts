@@ -20,7 +20,8 @@
   - applications_systemui：https://gitee.com/openharmony/applications_systemui
   - applications_settings: https://gitee.com/openharmony/applications_settings
   - applications_launcher: https://gitee.com/openharmony/applications_launcher
-  
+  - system_applications: https://gitee.com/openharmony-sig/system_applications
+
 ## SIG组成员
 
 ### Leader
