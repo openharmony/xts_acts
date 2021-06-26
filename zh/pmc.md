@@ -21,6 +21,7 @@
 | 邢文华 | [@xhuazi](https://gitee.com/xhuazi) | PMC成员 | QA-SIG |
 | 肖  峰 | [@blue.xiaofeng](https://gitee.com/blue.xiaofeng) | PMC成员 | 系统架构 |
 | 聂  欣 | [@nie-x](https://gitee.com/nie-x) | PMC成员 | 测试SIG |
+| 王意明 | [@youthdragon](https://gitee.com/youthdragon) | PMC成员 | 基础设施SIG |
 
 ## PMC会议链接
 - 会议时间: 每双周周一 14:30-16:00
