@@ -24,7 +24,7 @@
 
 ## PMC会议链接
 - 会议时间: 每双周周一 14:30-16:00
-- 会议申报: [OpenHarmony PMC Meeting Proposal](https://shimo.im/sheets/N2A1MZgDZxfbBVAD/MODOC)
+- 议题申报: [OpenHarmony PMC Meeting Proposal](https://shimo.im/sheets/N2A1MZgDZxfbBVAD/MODOC)
 - 会议主题: 通过邮件通知
 - 会议通知: 请[订阅](https://lists.openatom.io/postorius/lists/dev.openharmony.io)邮件列表 dev@openharmony.io 获取会议链接
 
