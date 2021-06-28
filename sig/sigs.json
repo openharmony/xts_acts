@@ -156,7 +156,7 @@
       },
       {
          "sig-name":"sig-api",
-         "projects":"https://gitee.com/openharmony/nterface_sdk-js",
+         "projects":"https://gitee.com/openharmony/interface_sdk-js",
          "project-path":"interface/sdk-js"
       }
    ]
