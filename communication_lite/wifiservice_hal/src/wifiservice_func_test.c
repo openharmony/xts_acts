@@ -17,9 +17,6 @@
 #include "ohos_types.h"
 #include "wifi_device.h"
 #include "wifi_hotspot.h"
-#include "lwip/netif.h"
-#include "lwip/netifapi.h"
-#include "lwip/ip4_addr.h"
 #include "cmsis_os2.h"
 #include <unistd.h>
 
