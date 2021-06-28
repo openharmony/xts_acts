@@ -187,7 +187,7 @@
 |185|third_party_jsframework|third_party/jsframework|https://gitee.com/davidwulanxi|wuyonghui9@huawei.com|https://gitee.com/shiyu_huang|huangshiyu1@huawei.com|SIG_ApplicationFramework|
 |186|third_party_json|third_party/json|https://gitee.com/hhh2|pengfei.hou@huawei.com| | |SIG_GraphicsandMedia|
 |187|third_party_jsoncpp|third_party/jsoncpp|https://gitee.com/jameshw|jameslee@huawei.com| | |SIG_ApplicationFramework|
-|188|third_party_libcoap|third_party/libcoap|https://gitee.com/brickhz|zhujianjian@huawei.com| | |SIG_SoftBus|
+|188|third_party_libcoap|third_party/libcoap|https://gitee.com/brickhz|zhujianjian1@huawei.com| | |SIG_SoftBus|
 |189|third_party_libdrm|third_party/libdrm|https://gitee.com/lz-230|lizheng2@huawei.com| | |SIG_GraphicsandMedia|
 |190|third_party_libevdev|third_party/libevdev|https://gitee.com/hhh2|pengfei.hou@huawei.com| | |SIG_GraphicsandMedia|
 |191|third_party_libffi|third_party/libffi|https://gitee.com/liuyuehua1|liuyuehua1@huawei.com| | |SIG_GraphicsandMedia|
