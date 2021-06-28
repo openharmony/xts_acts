@@ -158,38 +158,6 @@ HWTEST_F(SemTest, testSemTryWait, Function | MediumTest | Level2)
 }
 
 /**
- * @tc.number   SUB_KERNEL_IPC_SEM_TIMEDWAIT_0100
- * @tc.name     sem_timedwait get semaphore
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(SemTest, testSemTimedwait, Function | MediumTest | Level3)
-{
-    struct timespec ts = {0};
-    struct timespec tsNow = {0};
-    sem_t sem;
-    int semValue = 0;
-
-    ASSERT_EQ(sem_init(&sem, 0, 0), 0) << "> sem_init errno = " << errno;
-
-    GetDelayedTime(&ts, 100);
-    if (sem_timedwait(&sem, &ts) == -1) {
-        EXPECT_EQ(errno, ETIMEDOUT) << "> sem_timedwait errno = " << errno;
-    } else {
-        LOG("> sem_timedwait return unexpected");
-        ADD_FAILURE();
-    }
-
-    clock_gettime(CLOCK_REALTIME, &tsNow);
-    int timeDiff = GetTimeDiff(tsNow, ts); // calculate time different
-    EXPECT_GE(timeDiff, 0);
-    EXPECT_LE(timeDiff, 20);
-
-    EXPECT_EQ(sem_getvalue(&sem, &semValue), 0) << "> sem_getvalue errno = " << errno;
-    EXPECT_EQ(semValue, 0);
-    EXPECT_EQ(sem_destroy(&sem), 0) << "> sem_destroy errno = " << errno;
-}
-
-/**
  * @tc.number   SUB_KERNEL_IPC_SEM_DESTROY_0100
  * @tc.name     check sem_destroy function
  * @tc.desc     [C- SOFTWARE -0200]
@@ -346,7 +314,7 @@ HWTEST_F(SemTest, testThreadSemTimedWait, Function | MediumTest | Level3)
     EXPECT_EQ(reInt, 0) << "pthread_join failed, errno=" << reInt;
     EXPECT_EQ(sem_destroy(&sem), 0) << "> sem_destroy errno = " << errno;
 }
-
+ 
 void *ThreadNThreadWait1(void *arg)
 {
     sem_t *sem = (sem_t*)arg;
