@@ -42,6 +42,7 @@ lite_component("acts_component") {
         "//test/xts/acts/utils_lite/kv_store_hal:ActsKvStoreTest",
         "//test/xts/acts/security_lite/huks_hal:ActsSecurityDataTest",
         "//test/xts/acts/hiviewdfx_lite/hilog_hal:ActsDfxFuncTest",
+        "//test/xts/acts/hiviewdfx_lite/hievent_hal:ActsHieventLiteTest",
 
         "//test/xts/acts/distributed_schedule_lite/system_ability_manager_hal:ActsSamgrTest",
         "//test/xts/acts/update_lite/dupdate_hal:ActsUpdaterFuncTest",
