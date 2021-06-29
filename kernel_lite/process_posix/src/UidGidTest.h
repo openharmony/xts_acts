@@ -61,6 +61,7 @@ protected:
         setgid(SHELL_GID);
         AssertAllUid(SHELL_UID);
         AssertAllGid(SHELL_GID);
+        int  rt = setgroups(0, NULL);
     }
 };
 
