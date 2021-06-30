@@ -1,4 +1,4 @@
-# OpenHarmony community
+# OpenHarmony Community
 欢迎来到OpenHarmony社区！
 
 ## 介绍
