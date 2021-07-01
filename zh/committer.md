@@ -106,7 +106,7 @@
 |104|third_party_unity|third_party/unity|https://gitee.com/buranfanchen|wangjuntao.wang@huawei.com|https://gitee.com/gaohanyi1982|gaohanyi@huawei.com|SIG_Test|
 |105|third_party_wpa_supplicant|third_party/wpa_supplicant|https://gitee.com/rain_myf|maoyufeng3@huawei.com| | |SIG_SoftBus|
 |106|third_party_zlib|third_party/zlib|https://gitee.com/autumn330|hw.liuwei@huawei.com| | |SIG_ApplicationFramework|
-|107|utils_native_lite|utils/native/lite|https://gitee.com/blue.xiaofeng|blue.xiaofeng@huawei.com| | |SIG_CompileRuntime|
+|107|utils_native_lite|utils/native/lite|https://gitee.com/huanghuijin|huanghuijin@huawei.com| | |SIG_CompileRuntime|
 |108|vendor_hisilicon|vendor/hisilicon|https://gitee.com/yuanwhong|yuanwenhong@hisilicon.com|https://gitee.com/helsingchen|helsing.chen@hisilicon.com|SIG_DriverFramework|
 |109|vendor_huawei_hdf|vendor/huawei/hdf|https://gitee.com/zianed|houxuanzhe@huawei.com|https://gitee.com/Kevin-Lau|liufeihu@huawei.com|SIG_DriverFramework|
 |110|drivers_peripheral|drivers/peripheral|https://gitee.com/zianed|houxuanzhe@huawei.com|https://gitee.com/Kevin-Lau|liufeihu@huawei.com|SIG_DriverFramework|
