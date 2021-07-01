@@ -96,7 +96,7 @@
 |94|third_party_mbedtls|third_party/mbedtls|https://gitee.com/Chaos-Liang|liangguanchao1@huawei.com| | |SIG_Security|
 |95|third_party_mksh|third_party/mksh|https://gitee.com/kkup180|likailong@huawei.com|https://gitee.com/wangmihu2008 <br> https://gitee.com/DennyShen|wangmihu@huawei.com <br> denny.shenwei@huawei.com|SIG_Kernel|
 |96|third_party_mtd_utils|third_party/mtd-utils|https://gitee.com/kkup180|likailong@huawei.com|https://gitee.com/wangmihu2008 <br> https://gitee.com/DennyShen|wangmihu@huawei.com <br> denny.shenwei@huawei.com|SIG_Kernel|
-|97|third_party_musl|third_party/musl|https://gitee.com/kkup180|likailong@huawei.com|https://gitee.com/wangmihu2008 <br> https://gitee.com/DennyShen|wangmihu@huawei.com <br> denny.shenwei@huawei.com|SIG_Kernel|
+|97|third_party_musl|third_party/musl|https://gitee.com/huanghuijin|huanghuijin@huawei.com|https://gitee.com/kkup180 <br> https://gitee.com/wangmihu2008 <br> https://gitee.com/DennyShen |likailong@huawei.com <br> wangmihu@huawei.com <br> denny.shenwei@huawei.com |SIG_CompileRuntime|
 |98|third_party_openssl|third_party/openssl|https://gitee.com/jiang-xiaofeng|jiangxiaofeng8@huawei.com|https://gitee.com/libing23|libing23@huawei.com|SIG_Security|
 |99|third_party_optimized_routines|third_party/optimized-routines|https://gitee.com/kkup180|likailong@huawei.com|https://gitee.com/wangmihu2008 <br> https://gitee.com/DennyShen|wangmihu@huawei.com <br> denny.shenwei@huawei.com|SIG_Kernel|
 |100|third_party_popt|third_party/popt|https://gitee.com/jiang-xiaofeng|jiangxiaofeng8@huawei.com|https://gitee.com/libing23|libing23@huawei.com|SIG_Security|
