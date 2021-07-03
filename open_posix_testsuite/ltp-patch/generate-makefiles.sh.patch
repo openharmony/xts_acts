@@ -1,5 +1,5 @@
---- third_party/ltp/testcases/open_posix_testsuite/scripts/generate-makefiles.sh	2020-09-03 20:31:21.369825435 +0800
-+++ test/xts/acts/open_posix_testsuite/ltp-patch/generate-makefiles.sh	2020-09-03 20:33:42.534681514 +0800
+--- third_party/ltp/testcases/open_posix_testsuite/scripts/generate-makefiles.sh	2021-07-03 15:38:26.370000000 +0800
++++ test/xts/acts/open_posix_testsuite/ltp-patch/generate-makefiles.sh	2021-07-03 15:28:41.940000000 +0800
 @@ -107,6 +107,7 @@
  #
  
@@ -12,16 +12,17 @@
  
  # Build variables
  CFLAGS+=		-I\$(top_srcdir)/include
-+CFLAGS+=        --target=arm-liteos --sysroot=${BUILD_ROOT_PATH}prebuilts/lite/sysroot
++CFLAGS+=        --target=arm-liteos --sysroot=${SYSROOT_PATH}
  
  # XXX: for testfrmw.c -- needs to be moved into a library.
  CFLAGS+=		-I\$(srcdir)
-@@ -303,6 +305,8 @@
+@@ -303,6 +305,9 @@
  GLOBAL_BOILERPLATE="${TOP_SRCDIR}/.global_boilerplate"
  
  CONFIG_MK="../../include/mk/config-openposix.mk"
 +COMPILE_PATH=$1
 +BUILD_ROOT_PATH=$2
++SYSROOT_PATH=$3
  
  rm -f "$GLOBAL_BOILERPLATE"
  
