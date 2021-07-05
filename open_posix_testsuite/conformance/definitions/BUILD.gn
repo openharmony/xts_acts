@@ -17,7 +17,8 @@ open_source_suite("ActsOpenPosixBuildOnlyTest") {
   suite_name = "acts"
   exec_command_path = "//third_party/ltp/testcases/open_posix_testsuite/"
   compiler = rebase_path("${ohos_build_compiler_dir}/bin/${ohos_build_compiler}")
-  prebuild_command = "make clean && make distclean && ./scripts/generate-makefiles.sh $compiler ${ohos_root_path} && make -j -C conformance/definitions"
+  sysroot_path = rebase_path(ohos_current_sysroot)
+  prebuild_command = "make clean && make distclean && ./scripts/generate-makefiles.sh $compiler ${ohos_root_path} ${sysroot_path} && make -j -C conformance/definitions"
   exec_sub_dir = "conformance/definitions"
   build_args = [
     "signal_h/logfile",
