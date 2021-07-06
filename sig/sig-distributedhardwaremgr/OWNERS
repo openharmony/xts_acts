@@ -1,0 +1,26 @@
+{
+   "Leader":[
+      {
+         "gitee_id":"hhh2",
+         "gitee_email":"pengfei.hou@huawei.com"
+      }
+   ]
+   "Committers":[
+      {
+         "gitee_id":"hujun211",
+         "gitee_email":"hujun211@huawei.com"
+      },
+      {
+         "gitee_id":"aqxyjay",
+         "gitee_email":"zhangchunxin@huawei.com"
+      },
+      {
+         "gitee_id":"pengguanqi",
+         "gitee_email":"pengguanqi@huawei.com"
+      },
+      {
+         "gitee_id":"locheng7",
+         "gitee_email":"luocheng2@huawei.com"
+      }
+   ]
+}

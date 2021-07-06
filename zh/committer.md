@@ -220,3 +220,8 @@
 |218|utils_selinux_policy_standard|utils/system/selinux_policy_standard|https://gitee.com/xuwenfang|xuwenfang@huawei.com| | |SIG_Security|
 |219|app_samples|NA|https://gitee.com/illybyy|baoyayong@huawei.com| | |SIG_SystemApplication|
 |220|tools_oat|NA|https://gitee.com/jalenchen|chenyaxun@huawei.com| | |SIG_CommunityBuilding|
+|221|devicemanager|foundation/distributedhardware/devicemanager|https://gitee.com/locheng7|luocheng2@huawei.com|https://gitee.com/pengguanqi|pengguanqi@huawei.com|SIG_DistributedHardwareManagement|
+|222|sensors_miscdevice|base/sensors/miscdevice|https://gitee.com/hhh2|pengfei.hou@huawei.com| | |SIG_DistributedHardwareManagement|
+|223|sensors_sensor|base/sensors/sensor|https://gitee.com/hhh2|pengfei.hou@huawei.com| | |SIG_DistributedHardwareManagement|
+|224|usb_manager|base/usb/usb_manager|https://gitee.com/hhh2|pengfei.hou@huawei.com| | |SIG_DistributedHardwareManagement|
+|225|powermgr_battery_lite|base/powermgr/battery_lite|https://gitee.com/hhh2|pengfei.hou@huawei.com| | |SIG_DistributedHardwareManagement|
