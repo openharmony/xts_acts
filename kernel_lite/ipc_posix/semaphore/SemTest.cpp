@@ -224,6 +224,7 @@ void *ThreadSemTryWait(void *arg)
     for (int i = 0; i < loop; i++) {
         if (sem_trywait(sem) == 0) {
             break;
+            
         }
         Msleep(10);
     }
@@ -254,11 +255,9 @@ HWTEST_F(SemTest, testThreadSemTryWait, Function | MediumTest | Level3)
     EXPECT_EQ(sem_post(&sem), 0) << "sem_post errno = " << errno;
     EXPECT_EQ(sem_post(&sem), 0) << "sem_post errno = " << errno;
 
-    Msleep(20);
+    reInt = pthread_join(tid, nullptr);
     EXPECT_EQ(sem_getvalue(&sem, &semValue), 0) << "> sem_getvalue errno = " << errno;
     EXPECT_EQ(semValue, 1);
-
-    reInt = pthread_join(tid, nullptr);
     EXPECT_EQ(reInt, 0) << "pthread_join failed, errno=" << reInt;
     EXPECT_EQ(sem_destroy(&sem), 0) << "> sem_destroy errno = " << errno;
 }
@@ -275,10 +274,11 @@ void *ThreadSemTimedWait(void *arg)
     clock_gettime(CLOCK_REALTIME, &ts);
     ts.tv_sec = ts.tv_sec + (ts.tv_nsec + KERNEL_100MS_BY_NS) / KERNEL_NS_PER_SECOND;
     ts.tv_nsec = (ts.tv_nsec + KERNEL_100MS_BY_NS) % KERNEL_NS_PER_SECOND;
-
+    Msleep(50);
     EXPECT_EQ(sem_timedwait(sem, &ts), 0) << "sem_timedwait errno = " << errno;
-
     EXPECT_EQ(sem_getvalue(sem, &semValue), 0) << "sem_getvalue errno = " << errno;
+
+    Msleep(100);
     EXPECT_EQ(semValue, 1);
     return nullptr;
 }
@@ -306,11 +306,9 @@ HWTEST_F(SemTest, testThreadSemTimedWait, Function | MediumTest | Level3)
     EXPECT_EQ(sem_post(&sem), 0) << "> sem_post errno = " << errno;
     EXPECT_EQ(sem_post(&sem), 0) << "> sem_post errno = " << errno;
 
-    Msleep(100);
+    reInt = pthread_join(tid, nullptr);
     EXPECT_EQ(sem_getvalue(&sem, &semValue), 0) << "> sem_getvalue errno = " << errno;
     EXPECT_EQ(semValue, 1);
-
-    reInt = pthread_join(tid, nullptr);
     EXPECT_EQ(reInt, 0) << "pthread_join failed, errno=" << reInt;
     EXPECT_EQ(sem_destroy(&sem), 0) << "> sem_destroy errno = " << errno;
 }
