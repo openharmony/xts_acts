@@ -23,12 +23,14 @@ Note: The content of this SIG follows the convention described in OpenHarmony's 
 ### Committers
 - @gitee account(https://gitee.com/xxx)
 
- ### Meetings
+### Meetings
  - Meeting time：xxx
- - Meeting link：xxx
+ - Meeting application: Refer to the method of [PMC meeting](https://gitee.com/dongjinguang/community/blob/master/zh/pmc.md#pmc%E4%BC%9A%E8%AE%AE%E9%93%BE%E6%8E%A5) to provide the shimo sharing document weblink, convenient for SIG-related people to apply for the topic.
+ - Meeting link: Welink Meeting or Others
+ - Meeting notification: [Subscribe to] (https://lists.openatom.io/postorius/lists/dev.openharmony.io) mailing list dev@openharmony.io for the meeting link
 
 ### Contact (optional)
 
-- Mailing list：xxx
+- Mailing list：dev@openharmony.io
 - Slack group：xxx
 - Wechat group：xxx

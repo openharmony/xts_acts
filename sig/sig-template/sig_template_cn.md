@@ -27,10 +27,13 @@
 
 ### 会议
  - 会议时间：xxx
- - 会议链接：xxx
+ - 会议申报：可参考[PMC例会](https://gitee.com/dongjinguang/community/blob/master/zh/pmc.md#pmc%E4%BC%9A%E8%AE%AE%E9%93%BE%E6%8E%A5)申请方式，提供石墨共享文档链接，便于SIG相关申报人自行申请议题
+ - 会议链接: Welink或其他会议
+ - 会议通知: 请[订阅](https://lists.openatom.io/postorius/lists/dev.openharmony.io)邮件列表 dev@openharmony.io 获取会议链接
+
 
 ### 联系方式(可选)
 
-- 邮件列表：xxx
+- 邮件列表：dev@openharmony.io
 - Slack群组：xxx
 - 微信群：xxx
