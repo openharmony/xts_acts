@@ -15,7 +15,7 @@
 ## 运营维护SIG
 1. SIG Leader Fork OpenHamony/community分支，在SIG文件夹下，以新SIG名称新建文件夹，并参考[SIG模板](sig-template/)，创建对应的SIG配置文件，提交PR合入申请。
 2. SIG孵化子项目，统一存放在[OpenHarmony SIG组织](https://gitee.com/openharmony-sig)，待孵化成熟后，可合入OpenHarmony组织代码主库。
-3. SIG Leader及Committer负责对应SIG的运营及维护，会议纪要和资料统一参考sig-template目录下的meeting和docs模版进行归档。
+3. SIG Leader及Committer负责对应SIG的运营及维护，会议纪要和资料统一参考sig-template目录下的[meetings](https://gitee.com/dongjinguang/community/tree/master/sig/sig-template/meetings)和[docs](https://gitee.com/dongjinguang/community/tree/master/sig/sig-template/docs)模版进行归档。
 4. SIG Leader定期在PMC项目管理委员会汇报SIG孵化项目及SIG运营进展，PMC基于SIG运作情况给出指导建议。
 
 ## SIG孵化项目毕业
