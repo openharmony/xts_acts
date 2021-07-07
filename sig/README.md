@@ -1,8 +1,15 @@
 # SIG管理章程
 ## 背景
 1. SIG（Special Interest Group）是指特别兴趣小组，SIG在PMC项目管理委员会指导下，负责OpenHarmony社区特定子领域及创新项目的架构设计、开源开发及项目维护等工作。
-2. 为了便于OpenHarmony开源社区工作开展和交流，默认将其划分为23个初始的SIG小组：[Maps_Sigs_Subsystem](./sigs_subsystem_list.md)
+2. 为了便于OpenHarmony开源社区工作开展和交流，默认将其划分为23个初始的SIG小组：[Maps_Sigs_Subsystem](./sigs_subsystem_list.md)。
 3. 本目录用于存放OpenHamony社区所有 “特别兴趣小组”（Special Interest Group，以下简称 SIG）的运作信息。
+
+## SIG职责&运作方式
+1. 领域的技术演进方向由SIG组承担，负责领域技术竞争力分析和关键技术识别及决策。
+2. 负责领域内功能分解分配，模块间接口定义与维护管理。
+3. PMC委员会负责冲突的协调和最终技术分歧的决策。
+4. 社区的工作实体是SIG组，从基础设施到OS部件，从测试系统到版本发布都是由不同SIG的来承担。
+5. 一个良好的社区组织形式是持续运作的关键，仪式感很重要，SIG组需要通过周期例会来保持其有效的运作，并定期向PMC委员会汇报进展。
 
 ## 申请新建SIG
 1. 开发者在社区中寻找2-3个以上有共同兴趣及目标的人，确定SIG Leader。参考[新建SIG Charter](sig-template/sig_template_cn.md)模板，创建SIG Charter提案。
