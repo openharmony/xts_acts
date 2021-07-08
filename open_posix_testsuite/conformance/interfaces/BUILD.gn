@@ -18,7 +18,8 @@ open_source_suite("ActsOpenPosixTest") {
   suite_name = "acts"
   exec_command_path = "//third_party/ltp/testcases/open_posix_testsuite/"
   sysroot_path = rebase_path(ohos_current_sysroot)
-  prebuild_command = "make clean && make distclean && ./scripts/generate-makefiles.sh $compiler ${ohos_root_path} ${sysroot_path} && make -j -C conformance/interfaces"
+  arch_cflags = string_join(" ", target_arch_cflags)
+  prebuild_command = "make clean && make distclean && ./scripts/generate-makefiles.sh $compiler ${ohos_root_path} ${sysroot_path} \"${arch_cflags}\" && make -j -C conformance/interfaces"
   exec_sub_dir = "conformance/interfaces"
   deps = [
     "//test/xts/acts/open_posix_testsuite/conformance/definitions:ActsOpenPosixBuildOnlyTest",
