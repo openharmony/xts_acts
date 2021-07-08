@@ -188,5 +188,10 @@
 			"foundation/distributedhardware/devicemanager"
 		]
       },
+      {
+         "sig-name":"sig-release,
+         "projects":"https://gitee.com/openharmony/release-management",
+         "project-path":"NONE"
+      },
    ]
 }

@@ -225,3 +225,4 @@
 |223|sensors_sensor|base/sensors/sensor|https://gitee.com/hhh2|pengfei.hou@huawei.com| | |SIG_DistributedHardwareManagement|
 |224|usb_manager|base/usb/usb_manager|https://gitee.com/hhh2|pengfei.hou@huawei.com| | |SIG_DistributedHardwareManagement|
 |225|powermgr_battery_lite|base/powermgr/battery_lite|https://gitee.com/hhh2|pengfei.hou@huawei.com| | |SIG_DistributedHardwareManagement|
+|226|release-management|NA|https://gitee.com/fma66169|mazhanfu@huawei.com| | |SIG_VersionRelease|
