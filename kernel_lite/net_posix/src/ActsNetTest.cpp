@@ -898,20 +898,30 @@ HWTEST_F(ActsNetTest, testSelectMultiClients, Function | MediumTest | Level2)
         sleep(2);
         int ret;
         pthread_t pCli[4];
+        int pEroId[4] = {0};  
         int interval[4] = {2, 1, 3, 1};
         for (int i = 0; i < 4; i++) {
             ret = pthread_create(&pCli[i], nullptr, CommTcpClientTask, &interval[i]);
+            if (ret == -1) {
+                pEroId[i] = -1;
+            } else {
             EXPECT_EQ(0, ret) << "Errinfo:pthread_create index is [" << i << "]";
+            }
         }
 
         void* rst = nullptr;
-        for (int i = 0; i < 4; i++) {
-            ret = pthread_join(pCli[i], &rst);
-            EXPECT_EQ(0, ret) << "Errinfo:pthread_join index is [" << i << "]";
-            if (rst != nullptr) {
-                printf("[###][test select]client thread[%d] return[%d]\n", i, *((int *)rst));
-                EXPECT_EQ(0, *((int *)rst));
-                free(rst);
+        for (int i = 0; i < 4; i++)
+        {
+            if (pEroId[i] == 0)
+            {
+                ret = pthread_join(pCli[i], &rst);
+                EXPECT_EQ(0, ret) << "Errinfo:pthread_join index is [" << i << "]";
+                if (rst != nullptr)
+                {
+                    printf("[###][test select]client thread[%d] return[%d]\n", i, *((int *)rst));
+                    EXPECT_EQ(0, *((int *)rst));
+                    free(rst);
+                }
             }
         }
         WaitProcExitedOK(pid);
@@ -1002,20 +1012,34 @@ HWTEST_F(ActsNetTest, testPollMultiClients, Function | MediumTest | Level2)
         sleep(2);
         int ret;
         pthread_t pCli[6];
+        int  pEroId[6] = {0};             
         int interval[6] = {2, 1, 3, 1, 2, 1};
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 6; i++)
+        {
             ret = pthread_create(&pCli[i], nullptr, CommTcpClientTask, &interval[i]);
-            EXPECT_EQ(0, ret) << "Errinfo:pthread_create index is [" << i << "]";
+            if (ret == -1)
+            {
+                pEroId[i] = -1;
+            }
+            else
+            {
+                EXPECT_EQ(0, ret) << "Errinfo:pthread_create index is [" << i << "]";
+            }
         }
 
         void* rst = nullptr;
-        for (int i = 0; i < 6; i++) {
-            ret = pthread_join(pCli[i], &rst);
-            EXPECT_EQ(0, ret) << "Errinfo:pthread_join index is [" << i << "]";
-            if (rst != nullptr) {
-                printf("[###][test poll]client thread[%d] return[%d]\n", i, *((int *)rst));
-                EXPECT_EQ(0, *((int *)rst));
-                free(rst);
+        for (int i = 0; i < 6; i++)
+        {
+            if (pEroId[i] == 0)
+            {
+                ret = pthread_join(pCli[i], &rst);
+                EXPECT_EQ(0, ret) << "Errinfo:pthread_join index is [" << i << "]";
+                if (rst != nullptr)
+                {
+                    printf("[###][test poll]client thread[%d] return[%d]\n", i, *((int *)rst));
+                    EXPECT_EQ(0, *((int *)rst));
+                    free(rst);
+                }
             }
         }
         WaitProcExitedOK(pid);
