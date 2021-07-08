@@ -1,7 +1,7 @@
 |NO|SIG Name|SIG Tag Name|SIG Leader|Level 1 Subsystem Name|
 | :----: | :----: | :----: | :----: | :----: |
 |1|SIG_AI|SIG_AI|[chenxiaoliang](https://gitee.com/silenchen)|L1S_AI|
-|2|SIG_API|SIG_API|[zhangyongzhi](https://gitee.com/karl-z)|L1S_BackwardCompatibleSDK <br> L1S_SDK|
+|2|SIG_API|SIG_API|[zhangyongzhi](https://gitee.com/karl-z)|NA|
 |3|SIG_Security|SIG_Security|[yangyongjie](yongjie.yan@huawei.com)|L1S_Security <br> L1S_BIOMETRICS|
 |4|SIG_CompileRuntime|SIG_CompileRuntime|[huanghuijin](https://gitee.com/huanghuijin) <br> [wangxing](https://gitee.com/wangxing-hw)|L1S_CCRuntime <br> L1S_Build <br> L1S_UTILS|
 |5|SIG_Test|SIG_Test|[niexin](https://gitee.com/nie-x) <br> [wangjuntao](https://gitee.com/buranfanchen)|L1S_Test|
