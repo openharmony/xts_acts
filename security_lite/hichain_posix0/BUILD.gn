@@ -1,0 +1,35 @@
+# Copyright (c) Huawei Technologies Co., Ltd. 2020. All rights reserved.
+#import("//build/lite/config/component/zlite_component.gni")
+#import("//build/lite/ndk/ndk.gni")
+import("//test/xts/tools/lite/build/suite_lite.gni")
+
+hctest_suite("ActsSecurityHichainTest0") {
+  suite_name = "acts"
+
+  defines = [ "HILINE_E2E_SECURITY_CONFIG" ]
+  sources = [
+    "src/hichain_function_test.c",
+    #    "src/hichain_huks_adapt.c",
+  ]
+
+  include_dirs = [
+    "//base/security/huks/interfaces/innerkits/huks_lite/",
+    "//third_party/cJSON",
+    "//base/security/deviceauth/interfaces/innerkits/deviceauth_lite",
+    "//base/security/deviceauth/frameworks/deviceauth_lite/source/huks_adapter",
+    "//base/security/deviceauth/frameworks/deviceauth_lite/source/base",
+    "//base/security/deviceauth/frameworks/deviceauth_lite/source/json",
+    "//base/security/deviceauth/frameworks/deviceauth_lite/source/key_agreement",
+    "//base/security/deviceauth/frameworks/deviceauth_lite/source/log",
+    "//base/security/deviceauth/frameworks/deviceauth_lite/source/schedule",
+    "//base/security/deviceauth/frameworks/deviceauth_lite/source/struct",
+    "//base/security/deviceauth/frameworks/deviceauth_lite/source/auth_info",
+    "//third_party/bounds_checking_function/include",
+    "//kernel/liteos_a/test/kernel/sample/lwip2.0_linux_CI/dependency/include",
+    "dbg_code",
+    "gtest",
+    "//base/security/huks/interfaces/innerkits/huks_lite/",
+  ]
+
+  cflags = [ "-Wno-error" ]
+}
