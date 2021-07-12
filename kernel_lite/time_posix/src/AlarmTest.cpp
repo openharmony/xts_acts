@@ -421,10 +421,13 @@ HWTEST_F(AlarmTest, testTimerGetTime, Function | MediumTest | Level3)
         }
         getMsValue[index++] = getMillisec;
     }
-    Msleep(1);
+    Msleep(150);
 
     for (int i = 0; i < index; i++) {
         /* delay should add 10 millisecond to ajust */
+        if (setMillisec < (delay + 10)) {
+            break;
+        }
         setMillisec -= delay + 10;
         EXPECT_GE(getMsValue[i], setMillisec);
         LOG("%u, %u, %u", setMillisec, getMsValue[i], getMsValue[i] - setMillisec);
@@ -633,10 +636,13 @@ HWTEST_F(AlarmTest, testGetItTimer, Function | MediumTest | Level3)
         }
         getMsValue[index++] = getMillisec;
     }
-    Msleep(1);
+    Msleep(150);
 
     for (int i = 0; i < index; i++) {
         /* delay should add 10 millisecond to ajust */
+        if (setMillisec < (delay + 10)) {
+            break;
+        }
         setMillisec -= delay + 10;
         EXPECT_GE(getMsValue[i], setMillisec);
         LOG("%u, %u, %u", setMillisec, getMsValue[i], getMsValue[i] - setMillisec);
