@@ -51,7 +51,6 @@ public:
     %{public}d, %{private}lf, %{public}.2f, %s, %{private}c\n";
     string g_commonContent = "03200/HILOGTOOLTEST: 123456789_1234567890_public and private log test is:";
 private:
-
 };
 void LibhilogTooltest::SetUp()
 {
