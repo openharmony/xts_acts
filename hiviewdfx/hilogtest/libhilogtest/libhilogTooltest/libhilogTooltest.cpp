@@ -39,8 +39,6 @@ using namespace OHOS;
 using namespace HiviewDFX;
 using namespace testing::ext;
 using namespace std;
-const int g_logPerThread = 1000;
-
 
 class LibhilogTooltest : public testing::Test {
 public:
@@ -49,10 +47,6 @@ public:
     static void TearDownTestCase();
     void SetUp();
     void TearDown();
-    string gHilogtoolExecutable = "hilog ";
-    string g_logContent = "123456789_1234567890_public and private log test is:\
-    %{public}d, %{private}lf, %{public}.2f, %s, %{private}c";
-    string g_commonContent = "03200/HILOGTOOLTEST: 123456789_1234567890_public and private log test is:";
 private:
 
 };
@@ -824,7 +818,7 @@ HWTEST_F(LibhilogTooltest, log_clear_illegal2, Function|MediumTest|Level4)
 */
 HWTEST_F(LibhilogTooltest, log_leval_global_set, Function|MediumTest|Level2)
 {
-    bool ret;
+    bool ret = true;
     int i = 1;
     ExeCmd("hilog -b fatal");
     ExeCmd("hilog -r -t all");
@@ -853,7 +847,7 @@ HWTEST_F(LibhilogTooltest, log_leval_global_set, Function|MediumTest|Level2)
 */
 HWTEST_F(LibhilogTooltest, log_level_global_set2, Function|MediumTest|Level3)
 {
-    bool ret;
+    bool ret = true;
     int i = 1;
 #ifndef LOCALTEST
     ExeCmd("hilog -b fatal");
@@ -883,7 +877,7 @@ HWTEST_F(LibhilogTooltest, log_level_global_set2, Function|MediumTest|Level3)
 */
 HWTEST_F(LibhilogTooltest, log_leveal_global_set3, Function|MediumTest|Level2)
 {
-    bool ret;
+    bool ret = true;
     int i = 1;
     ExeCmd("hilog -b debug");
     ExeCmd("hilog -r -t all");
@@ -911,7 +905,7 @@ HWTEST_F(LibhilogTooltest, log_leveal_global_set3, Function|MediumTest|Level2)
 */
 HWTEST_F(LibhilogTooltest, log_leval_tag_set, Function|MediumTest|Level3)
 {
-    bool ret;
+    bool ret = true;
     int i = 1;
     ExeCmd("hilog -b fatal -T HILOGTOOLTEST");
     ExeCmd("hilog -r -t all");
@@ -940,7 +934,7 @@ HWTEST_F(LibhilogTooltest, log_leval_tag_set, Function|MediumTest|Level3)
 */
 HWTEST_F(LibhilogTooltest, log_leval_tag_set2, Function|MediumTest|Level3)
 {
-    bool ret;
+    bool ret = true;
     int i = 1;
 #ifndef LOCALTEST
     ExeCmd("hilog -b fatal -T HILOGTOOLTEST");
@@ -971,7 +965,7 @@ HWTEST_F(LibhilogTooltest, log_leval_tag_set2, Function|MediumTest|Level3)
 */
 HWTEST_F(LibhilogTooltest, log_level_tag_set3, Function|MediumTest|Level3)
 {
-    bool ret;
+    bool ret = true;
     int i = 1;
     ExeCmd("hilog -b debug -T HILOGTOOLTEST");
     ExeCmd("hilog -r -t all");
@@ -999,7 +993,7 @@ HWTEST_F(LibhilogTooltest, log_level_tag_set3, Function|MediumTest|Level3)
 */
 HWTEST_F(LibhilogTooltest, log_level_domain_set, Function|MediumTest|Level3)
 {
-    bool ret;
+    bool ret = true;
     int i = 1;
     ExeCmd("hilog -b fatal -D 218116608");
     ExeCmd("hilog -r -t all");
@@ -1028,7 +1022,7 @@ HWTEST_F(LibhilogTooltest, log_level_domain_set, Function|MediumTest|Level3)
 */
 HWTEST_F(LibhilogTooltest, log_level_domain_set2, Function|MediumTest|Level4)
 {
-    bool ret;
+    bool ret = true;
     int i = 1;
 #ifndef LOCALTEST
     ExeCmd("hilog -b fatal -D 218116608");
@@ -1059,7 +1053,7 @@ HWTEST_F(LibhilogTooltest, log_level_domain_set2, Function|MediumTest|Level4)
 */
 HWTEST_F(LibhilogTooltest, log_level_domain_set3, Function|MediumTest|Level3)
 {
-    bool ret;
+    bool ret = true;
     int i = 1;
     ExeCmd("hilog -b debug -D 218116608");
     ExeCmd("hilog -r -t all");
@@ -1088,7 +1082,7 @@ HWTEST_F(LibhilogTooltest, log_level_domain_set3, Function|MediumTest|Level3)
 */
 HWTEST_F(LibhilogTooltest, log_level_all_set, Function|MediumTest|Level3)
 {
-    bool ret;
+    bool ret = true;
     int i = 1;
     ExeCmd("hilog -b info");
     ExeCmd("hilog -b warn -D 218116608");
@@ -1119,7 +1113,7 @@ HWTEST_F(LibhilogTooltest, log_level_all_set, Function|MediumTest|Level3)
 */
 HWTEST_F(LibhilogTooltest, log_level_all_set2, Function|MediumTest|Level3)
 {
-    bool ret;
+    bool ret = true;
     int i = 1;
 #ifndef LOCALTEST
     ExeCmd("hilog -b info");
@@ -1162,7 +1156,7 @@ HWTEST_F(LibhilogTooltest, log_level_set_illegal, Function|MediumTest|Level4)
 
 HWTEST_F(LibhilogTooltest, private_open, Function|MediumTest|Level4)
 { 
-    bool ret;
+    bool ret = true;
     int i = 1;
 #ifndef LOCALTEST
     ExeCmd("hilog -p on");
@@ -1186,7 +1180,7 @@ HWTEST_F(LibhilogTooltest, private_open, Function|MediumTest|Level4)
 
 HWTEST_F(LibhilogTooltest, private_close, Function|MediumTest|Level4)
 {   
-    bool ret;
+    bool ret = true;
     int i = 1;
     ExeCmd("hilog -p off");
     ExeCmd("hilog -r -t all");     
@@ -1212,5 +1206,3 @@ HWTEST_F(LibhilogTooltest, private_switch_illegal, Function|MediumTest|Level4)
     expect = "set private switch operation error!\n";
     EXPECT_EQ(result, expect);
 }
-
-

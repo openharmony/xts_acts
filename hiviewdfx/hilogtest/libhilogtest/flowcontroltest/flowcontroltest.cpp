@@ -29,24 +29,23 @@ namespace {
 }
 static const long long NSEC_PER_SEC = 1000000000ULL;
 
-class TestTool : public testing::Test {
+class Flowcontroltest : public testing::Test {
 public:
     static void SetUpTestCase();
     static void TearDownTestCase();
     void SetUp();
     void TearDown();
-
     char buff[RESULT_MAX_LEN];
     std::string input, result, expect;
 };
 
-void TestTool::SetUp()
+void Flowcontroltest::SetUp()
 {
 }
-void TestTool::TearDown()
+void Flowcontroltest::TearDown()
 {
 }
-void TestTool::SetUpTestCase()
+void Flowcontroltest::SetUpTestCase()
 {
     ExeCmd("hilog -p on");
     ExeCmd("hilog -Q domainoff");
@@ -59,7 +58,7 @@ void TestTool::SetUpTestCase()
     ExeCmd("hilog -S -t all");
     ExeCmd("hilog -S -D 218116608");
 }
-void TestTool::TearDownTestCase()
+void Flowcontroltest::TearDownTestCase()
 {
     ExeCmd("hilog -p on");
     ExeCmd("hilog -Q domainoff");
@@ -76,7 +75,6 @@ void TestTool::TearDownTestCase()
 static long long HiLogTimespecSub(struct timespec a, struct timespec b)
 {
     long long ret = NSEC_PER_SEC * b.tv_sec + b.tv_nsec;
-
     ret -= NSEC_PER_SEC * a.tv_sec + a.tv_nsec;
     return ret;
 }
@@ -87,7 +85,7 @@ static long long HiLogTimespecSub(struct timespec a, struct timespec b)
  *          Flow control values can be independently set for trustlisted processes.
  * @tc.number DFX_DFT_HilogCPP_70
  */
-HWTEST_F(TestTool, process_flowctrl_trustlist, TestSize.Level3)
+HWTEST_F(Flowcontroltest, process_flowctrl_trustlist, TestSize.Level3)
 {
 #ifndef LOCALTEST
     int i = 0;
@@ -136,7 +134,7 @@ HWTEST_F(TestTool, process_flowctrl_trustlist, TestSize.Level3)
  *          Flow control values can be independently set for trustlisted processes.
  * @tc.number DFX_DFT_HilogCPP_71
  */
-HWTEST_F(TestTool, process_flowctrl_trustlist2, TestSize.Level3)
+HWTEST_F(Flowcontroltest, process_flowctrl_trustlist2, TestSize.Level3)
 {
 #ifndef LOCALTEST
     int i = 0;
@@ -173,11 +171,8 @@ HWTEST_F(TestTool, process_flowctrl_trustlist2, TestSize.Level3)
     ExeCmd("hilog -r -t all");
     ExeCmd("hilog -G 1m -t all");
 }
-
-
 #else
-
-HWTEST_F(TestTool, process_flowctrl_open, Function|MediumTest|Level4)
+HWTEST_F(Flowcontroltest, process_flowctrl_open, Function|MediumTest|Level4)
 {
 #ifndef LOCALTEST
     int i = 0;
@@ -221,8 +216,7 @@ HWTEST_F(TestTool, process_flowctrl_open, Function|MediumTest|Level4)
     ExeCmd("hilog -G 1m -t all");
 }
 
-
-HWTEST_F(TestTool, process_flowctrl_close, Function|MediumTest|Level4)
+HWTEST_F(Flowcontroltest, process_flowctrl_close, Function|MediumTest|Level4)
 {
 #ifndef LOCALTEST
     int i = 0;
@@ -246,9 +240,7 @@ HWTEST_F(TestTool, process_flowctrl_close, Function|MediumTest|Level4)
     ExeCmd("hilog -G 1m -t all");
 }
 
-
-
-HWTEST_F(TestTool, domain_flowctrl_open, Function|MediumTest|Level4)
+HWTEST_F(Flowcontroltest, domain_flowctrl_open, Function|MediumTest|Level4)
 {
 #ifndef LOCALTEST
     int i = 0;
@@ -292,9 +284,7 @@ HWTEST_F(TestTool, domain_flowctrl_open, Function|MediumTest|Level4)
     ExeCmd("hilog -G 1m -t all");
 }
 
-
-
-HWTEST_F(TestTool, domain_flowctrl_close, Function|MediumTest|Level4)
+HWTEST_F(Flowcontroltest, domain_flowctrl_close, Function|MediumTest|Level4)
 {
 #ifndef LOCALTEST
     int i = 0; 
@@ -318,9 +308,7 @@ HWTEST_F(TestTool, domain_flowctrl_close, Function|MediumTest|Level4)
     ExeCmd("hilog -G 1m -t all");
 }
 
-
-
-HWTEST_F(TestTool, flowctrl_switch_illegal, Function|MediumTest|Level4)
+HWTEST_F(Flowcontroltest, flowctrl_switch_illegal, Function|MediumTest|Level4)
 {
 #ifndef LOCALTEST
     result = ExecuteCmd("hilog -Q abc");
@@ -334,10 +322,7 @@ HWTEST_F(TestTool, flowctrl_switch_illegal, Function|MediumTest|Level4)
 #endif
 }
 
-
-
-
-HWTEST_F(TestTool, process_flowctrl, Function|MediumTest|Level4)
+HWTEST_F(Flowcontroltest, process_flowctrl, Function|MediumTest|Level4)
 {
 #ifndef LOCALTEST   
     int i = 0;
@@ -367,18 +352,15 @@ HWTEST_F(TestTool, process_flowctrl, Function|MediumTest|Level4)
     result = ExecuteCmd("hilog -x -t core | wc -l");
     expect = to_string(i);
     EXPECT_GE(stoi(result), stoi(expect)); // result include drop log ,may more than expect
-
 #endif    
     // test end close switch
     ExeCmd("hilog -Q domainoff");
     ExeCmd("hilog -Q pidoff");
     ExeCmd("hilog -r -t all");
     ExeCmd("hilog -G 1m -t all");
-
 }
 
-
-HWTEST_F(TestTool, process_flowctrl2, Function|MediumTest|Level4)
+HWTEST_F(Flowcontroltest, process_flowctrl2, Function|MediumTest|Level4)
 {
 #ifndef LOCALTEST   
     int i = 0;
@@ -423,8 +405,7 @@ HWTEST_F(TestTool, process_flowctrl2, Function|MediumTest|Level4)
     ExeCmd("hilog -G 1m -t all");
 }
 
-
-HWTEST_F(TestTool, domain_flowctrl, Function|MediumTest|Level4)
+HWTEST_F(Flowcontroltest, domain_flowctrl, Function|MediumTest|Level4)
 {
 #ifndef LOCALTEST    
     int i = 0;
@@ -462,9 +443,7 @@ HWTEST_F(TestTool, domain_flowctrl, Function|MediumTest|Level4)
     ExeCmd("hilog -G 1m -t all");
 }
 
-
-
-HWTEST_F(TestTool, domain_flowctrl2, Function|MediumTest|Level4)
+HWTEST_F(Flowcontroltest, domain_flowctrl2, Function|MediumTest|Level4)
 {
 #ifndef LOCALTEST    
     int i = 0;
@@ -509,12 +488,10 @@ HWTEST_F(TestTool, domain_flowctrl2, Function|MediumTest|Level4)
     ExeCmd("hilog -G 1m -t all");
 }
 
-
-
-HWTEST_F(TestTool, domain_flowctrl_quit_info, Function|MediumTest|Level4)
+HWTEST_F(Flowcontroltest, domain_flowctrl_quit_info, Function|MediumTest|Level4)
 {
 #ifndef LOCALTEST    
-    bool ret;
+    bool ret = true;
     int i = 0;
     struct timespec startTime = {0, 0};
     struct timespec realTime = {0, 0};
@@ -560,8 +537,7 @@ HWTEST_F(TestTool, domain_flowctrl_quit_info, Function|MediumTest|Level4)
 
 }
 
-
-HWTEST_F(TestTool, flowctrl_logtype, Function|MediumTest|Level4)
+HWTEST_F(Flowcontroltest, flowctrl_logtype, Function|MediumTest|Level4)
 {
 #ifndef LOCALTEST   
     int i = 0;
@@ -605,9 +581,7 @@ HWTEST_F(TestTool, flowctrl_logtype, Function|MediumTest|Level4)
     ExeCmd("hilog -G 1m -t all");
 }
 
-
-
-HWTEST_F(TestTool, flowctrl_logtype2, Function|MediumTest|Level4)
+HWTEST_F(Flowcontroltest, flowctrl_logtype2, Function|MediumTest|Level4)
 {
 #ifndef LOCALTEST    
     int i = 0;
