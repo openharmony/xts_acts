@@ -263,6 +263,11 @@
             "base/notification/ans_standard",
             "base/account/os_account"
          ]
+      },
+      {
+         "sig-name":"sig-meetings",
+         "projects":"https://gitee.com/openharmony-sig/meetings",
+         "project-path":"NONE"
       }
    ]
 }
