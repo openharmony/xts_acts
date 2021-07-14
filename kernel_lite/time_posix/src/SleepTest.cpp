@@ -44,9 +44,18 @@ HWTEST_P(AllClockIDTest, testClockNanosleepInvalidID, Reliability | SmallTest | 
     struct timespec req = {0, 100};
     struct timespec rem = {0};
     int rt = clock_nanosleep(cid, 0, &req, &rem);
-    if (cid == CLOCK_SGI_CYCLE) {
+    if (cid == CLOCK_REALTIME)
+    {
+        ASSERT_EQ(rt, 0);
+    }
+    else if (cid == CLOCK_THREAD_CPUTIME_ID)
+    {
         ASSERT_EQ(rt, EINVAL) << cname << " should not support.\n";
-    } 
+    }
+    else
+    {
+        ASSERT_EQ(rt, ENOTSUP) << cname << " should not support.\n";
+    }
 }
 INSTANTIATE_TEST_CASE_P(SleepTest, AllClockIDTest, ALL_CLOCK_IDS);
 
