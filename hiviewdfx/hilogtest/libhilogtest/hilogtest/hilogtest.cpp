@@ -39,9 +39,11 @@ using namespace HiviewDFX;
 using namespace testing::ext;
 using namespace std;
 
-class LibhilogTooltest : public testing::Test {
+class hilogtest : public testing::Test {
 public:
-    string input, result, expect;
+    string input = "";
+    string result = "";
+    string expect = "";
     static void SetUpTestCase();
     static void TearDownTestCase();
     void SetUp();
@@ -52,13 +54,13 @@ public:
     string g_commonContent = "03200/HILOGTOOLTEST: 123456789_1234567890_public and private log test is:";
 private:
 };
-void LibhilogTooltest::SetUp()
+void hilogtest::SetUp()
 {
 }
-void LibhilogTooltest::TearDown()
+void hilogtest::TearDown()
 {
 }
-void LibhilogTooltest::SetUpTestCase()
+void hilogtest::SetUpTestCase()
 {
     ExeCmd("hilog -p on");
     ExeCmd("hilog -Q domainoff");
@@ -71,7 +73,7 @@ void LibhilogTooltest::SetUpTestCase()
     ExeCmd("hilog -S -t all");
     ExeCmd("hilog -S -D 218116608");
 }
-void LibhilogTooltest::TearDownTestCase()
+void hilogtest::TearDownTestCase()
 {
     ExeCmd("hilog -p on");
     ExeCmd("hilog -Q domainoff");
@@ -92,7 +94,7 @@ void LibhilogTooltest::TearDownTestCase()
  * @tc.number DFX_DFT_HilogCPP_0840
  * @tc.desc one-time read
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_exit, Function|MediumTest|Level3)
+HWTEST_F(hilogtest, Hilogtool_exit, Function|MediumTest|Level3)
 {
     CleanCmd();
     std::string saveFile= "test_data_31.txt";
@@ -123,7 +125,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_exit, Function|MediumTest|Level3)
  * @tc.number DFX_DFT_HilogCPP_0860
  * @tc.desc The log tool can read app log types at a time.
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_type_app, Function|MediumTest|Level3)
+HWTEST_F(hilogtest, Hilogtool_type_app, Function|MediumTest|Level3)
 {
     CleanCmd();
     std::string saveFile= "test_data_33_1.txt";
@@ -152,7 +154,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_type_app, Function|MediumTest|Level3)
  * @tc.number DFX_DFT_HilogCPP_0870
  * @tc.desc The log tool can read core log types at a time
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_type_core, Function|MediumTest|Level3)
+HWTEST_F(hilogtest, Hilogtool_type_core, Function|MediumTest|Level3)
 {
     CleanCmd();
     std::string saveFile= "test_data_33_2.txt";
@@ -180,7 +182,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_type_core, Function|MediumTest|Level3)
  * @tc.number DFX_DFT_HilogCPP_0880
  * @tc.desc The log tool can read init log types at a time.
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_type_init, Function|MediumTest|Level3)
+HWTEST_F(hilogtest, Hilogtool_type_init, Function|MediumTest|Level3)
 {
     CleanCmd();
     std::string saveFile= "test_data_33_3.txt";
@@ -208,7 +210,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_type_init, Function|MediumTest|Level3)
  * @tc.number DFX_DFT_HilogCPP_0890
  * @tc.desc The log tool can read Hilogtool_type_multiple log types at a time.
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_type_multiple, Function|MediumTest|Level2)
+HWTEST_F(hilogtest, Hilogtool_type_multiple, Function|MediumTest|Level2)
 {
     CleanCmd();
     std::string saveFile= "test_data_33_4.txt";
@@ -240,7 +242,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_type_multiple, Function|MediumTest|Level2)
  * @tc.number DFX_DFT_HilogCPP_0950
  * @tc.desc show local time
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_time, Function|MediumTest|Level3)
+HWTEST_F(hilogtest, Hilogtool_time, Function|MediumTest|Level3)
 {
     std::string cmd = gHilogtoolExecutable + " -a 1 -v time ";
     std::string saveFile= "test_data_35_1.txt";
@@ -267,7 +269,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_time, Function|MediumTest|Level3)
  * @tc.number DFX_DFT_HilogCPP_0960
  * @tc.desc show the time from 1970
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_epoch, Function|MediumTest|Level4)
+HWTEST_F(hilogtest, Hilogtool_epoch, Function|MediumTest|Level4)
 {
     std::string cmd = gHilogtoolExecutable + " -a 1 -v epoch ";
     std::string saveFile= "test_data_35_2.txt";
@@ -293,7 +295,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_epoch, Function|MediumTest|Level4)
  * @tc.number DFX_DFT_HilogCPP_0970
  * @tc.desc show the time from last restart
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_monotonic, Function|MediumTest|Level3)
+HWTEST_F(hilogtest, Hilogtool_monotonic, Function|MediumTest|Level3)
 {
     std::string cmd = gHilogtoolExecutable + " -a 1 -v monotonic";
     std::string saveFile= "test_data_35_3.txt";
@@ -319,7 +321,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_monotonic, Function|MediumTest|Level3)
  * @tc.number DFX_DFT_HilogCPP_0980
  * @tc.desc Displays time in microsecond accuracy
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_usec, Function|MediumTest|Level4)
+HWTEST_F(hilogtest, Hilogtool_usec, Function|MediumTest|Level4)
 {
     std::string cmd = gHilogtoolExecutable + " -a 1 -v usec";
     std::string saveFile= "test_data_35_4.txt";
@@ -346,7 +348,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_usec, Function|MediumTest|Level4)
  * @tc.number DFX_DFT_HilogCPP_0990
  * @tc.desc Displays time in nanosecond precision.
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_nsec, Function|MediumTest|Level4)
+HWTEST_F(hilogtest, Hilogtool_nsec, Function|MediumTest|Level4)
 {
     std::string cmd = gHilogtoolExecutable + " -a 1 -v nsec";
     std::string saveFile= "test_data_35_5.txt";
@@ -374,7 +376,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_nsec, Function|MediumTest|Level4)
  * @tc.number DFX_DFT_HilogCPP_1000
  * @tc.desc added year to the displayed time.
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_year, Function|MediumTest|Level4)
+HWTEST_F(hilogtest, Hilogtool_year, Function|MediumTest|Level4)
 {
     std::string cmd = gHilogtoolExecutable + " -a 1 -v year";
     char saveFile356[] = "test_data_35_6.txt";
@@ -401,7 +403,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_year, Function|MediumTest|Level4)
  * @tc.number DFX_DFT_HilogCPP_1010
  * @tc.desc show the local time zone
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_zone, Function|MediumTest|Level4)
+HWTEST_F(hilogtest, Hilogtool_zone, Function|MediumTest|Level4)
 {
     std::string cmd = gHilogtoolExecutable + " -a 1 -v zone";
     std::string saveFile= "test_data_35_6.txt";
@@ -428,7 +430,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_zone, Function|MediumTest|Level4)
  * @tc.number DFX_DFT_HilogCPP_1870
  * @tc.desc Filtering by regular expression, The expression is empty.
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_regex_null, Function|MediumTest|Level3)
+HWTEST_F(hilogtest, Hilogtool_regex_null, Function|MediumTest|Level3)
 {
     CleanCmd();
     std::string cmd = gHilogtoolExecutable + " -x -e \"\"";
@@ -451,7 +453,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_regex_null, Function|MediumTest|Level3)
  * @tc.number DFX_DFT_HilogCPP_1880
  * @tc.desc Filtering by regular expression
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_regex, Function|MediumTest|Level3)
+HWTEST_F(hilogtest, Hilogtool_regex, Function|MediumTest|Level3)
 {
     CleanCmd();
     std::string cmd1 = gHilogtoolExecutable + " -x -e \"^(123)\"";
@@ -486,7 +488,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_regex, Function|MediumTest|Level3)
  * @tc.desc show the first 1 row
 */
 
-HWTEST_F(LibhilogTooltest, Hilogtool_head_1, Function|MediumTest|Level3)
+HWTEST_F(hilogtest, Hilogtool_head_1, Function|MediumTest|Level3)
 {
     CleanCmd();
     LogType type = LOG_INIT;
@@ -515,7 +517,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_head_1, Function|MediumTest|Level3)
  * @tc.number DFX_DFT_HilogCPP_1900
  * @tc.desc show first 20 rows
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_head_20, Function|MediumTest|Level4)
+HWTEST_F(hilogtest, Hilogtool_head_20, Function|MediumTest|Level4)
 {
     CleanCmd();
     LogType type = LOG_INIT;
@@ -537,7 +539,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_head_20, Function|MediumTest|Level4)
  * @tc.number DFX_DFT_HilogCPP_1910
  * @tc.desc show the last 1 row
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_tail_1, Function|MediumTest|Level4)
+HWTEST_F(hilogtest, Hilogtool_tail_1, Function|MediumTest|Level4)
 {
     CleanCmd();
     LogType type = LOG_INIT;
@@ -567,7 +569,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_tail_1, Function|MediumTest|Level4)
  * @tc.number DFX_DFT_HilogCPP_1920
  * @tc.desc show last 20 rows
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_tail_20, Function|MediumTest|Level4)
+HWTEST_F(hilogtest, Hilogtool_tail_20, Function|MediumTest|Level4)
 {
     CleanCmd();
     LogType type = LOG_INIT;
@@ -589,7 +591,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_tail_20, Function|MediumTest|Level4)
  * @tc.number DFX_DFT_HilogCPP_1930
  * @tc.desc The filtering parameter is empty.
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_filter_null, Function|MediumTest|Level4)
+HWTEST_F(hilogtest, Hilogtool_filter_null, Function|MediumTest|Level4)
 {
     CleanCmd();
     LogType type = LOG_INIT;
@@ -620,7 +622,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_filter_null, Function|MediumTest|Level4)
  * @tc.desc Filter level only.
 */
 
-HWTEST_F(LibhilogTooltest, Hilogtool_filter_level, Function|MediumTest|Level4)
+HWTEST_F(hilogtest, Hilogtool_filter_level, Function|MediumTest|Level4)
 {
     CleanCmd();
     LogType type = LOG_INIT;
@@ -650,7 +652,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_filter_level, Function|MediumTest|Level4)
  * @tc.desc Filter domain only.
 */
 
-HWTEST_F(LibhilogTooltest, Hilogtool_filter_domain, Function|MediumTest|Level3)
+HWTEST_F(hilogtest, Hilogtool_filter_domain, Function|MediumTest|Level3)
 {
     CleanCmd();
     LogType type = LOG_INIT;
@@ -680,7 +682,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_filter_domain, Function|MediumTest|Level3)
  * @tc.number DFX_DFT_HilogCPP_1980
  * @tc.desc Filter tag only.
 */
-HWTEST_F(LibhilogTooltest, Hilogtool_filter_tag, Function|MediumTest|Level4)
+HWTEST_F(hilogtest, Hilogtool_filter_tag, Function|MediumTest|Level4)
 {
     CleanCmd();
     LogType type = LOG_INIT;
@@ -710,7 +712,7 @@ HWTEST_F(LibhilogTooltest, Hilogtool_filter_tag, Function|MediumTest|Level4)
  * @tc.desc Filter Multi-parameter
 */
 
-HWTEST_F(LibhilogTooltest, Hilogtool_filter_multiple, Function|MediumTest|Level2)
+HWTEST_F(hilogtest, Hilogtool_filter_multiple, Function|MediumTest|Level2)
 {
     CleanCmd();
     LogType type = LOG_INIT;
