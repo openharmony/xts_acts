@@ -41,7 +41,7 @@
 ## SIG组成员
 
 ### Leader
-- @li-jet (https://gitee.com/li-jet)
+- @MaErlii(https://gitee.com/maerlii)
 
 ### Committers列表
 - @xuyongpan(https://gitee.com/xuyongpan)
@@ -57,7 +57,8 @@
 - @clevercong(https://gitee.com/clevercong)
 - @ohos-lsw(https://gitee.com/ohos-lsw)
 - @xautosoft(https://gitee.com/xautosoft)
-
+- @li-jet(https://gitee.com/li-jet)
+- @MaErlii(https://gitee.com/maerlii)
 
 ### 会议
  - 会议时间：双周例会，周一晚上19:00，UTC+8
@@ -65,6 +66,6 @@
 
 ### 联系方式(可选)
 
-- 邮件列表：dale.lijie@huawei.com；xuyongpan@huawei.com；yinyouzhan@huawei.com；maoyufeng3@huawei.com；chenzhennan@huawei.com；jiayanhong@huawei.com；liujiandong1@huawei.com；zhangxiuping@huawei.com；litao25@huawei.com；wudefeng@huawei.com；zhujianjian@huawei.com；lichunlin2@huawei.com；lishiwei6@huawei.com；zhuwenchao@huawei.com
+- 邮件列表：maerli@huawei.com;dale.lijie@huawei.com;xuyongpan@huawei.com;yinyouzhan@huawei.com;maoyufeng3@huawei.com;chenzhennan@huawei.com;jiayanhong@huawei.com;liujiandong1@huawei.com;zhangxiuping@huawei.com;litao25@huawei.com;wudefeng@huawei.com;zhujianjian@huawei.com;lichunlin2@huawei.com;lishiwei6@huawei.com;zhuwenchao@huawei.com
 - Slack群组：
 - 微信群：
