@@ -1,6 +1,1 @@
-| 版本计划                   | 版本号                | 版本构建日期 | 版本转测试 | 版本测试完成 |
-| -------------------------- | --------------------- | ------------ | ---------- | ------------ |
-| Openharmony_release_v1.1.0 | Openharmony 1.1.0 LTS | 2021/3/24    | 2021/3/24  | 2021/3/31    |
-| Openharmony-v1.1.1-LTS     | Openharmony 1.1.1 LTS | 2021/6/4     | 2021/6/4   | 2021/6/18    |
-| Openharmony-v1.1.2-LTS     | Openharmony 1.1.2 LTS | 2021/7/15    | 2021/7/15  | 2021/7/31    |
-| Openharmony-v1.1.3-LTS     | Openharmony 1.1.3 LTS | 2021/9/15    | 2021/9/15  | 2021/9/30    |
+# OpenHarmony LTS版本路标管理已迁移至[SIG_Release](https://gitee.com/openharmony/release-management/blob/master/openharmony-1.0.1%20LTS%20RoadMap.md)进行维护
