@@ -1,4 +1,4 @@
-# 基础软件服务SIG组
+# SIG_BasicSoftwareService 
 简体中文 | [English](./sig-basicsoftwareservice.md)
 
 说明：本SIG的内容遵循OpenHarmony的PMC管理章程 [README](/zh/pmc.md)中描述的约定。

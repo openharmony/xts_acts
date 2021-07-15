@@ -1,4 +1,4 @@
-# SIG Template
+# SIG-OpenBlock
 
 English | [简体中文](./sig_openblock_cn.md)
 

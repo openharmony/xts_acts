@@ -1,4 +1,4 @@
-# SIG Template
+# SIG_DevBoard
 English | [简体中文](./sig_devboard_cn.md)
 
 Note: The content of this SIG follows the convention described in OpenHarmony's PMC Management Charter [README](/zh/pmc.md).

@@ -1,4 +1,4 @@
-# Basic Software Service SIG
+# SIG_BasicSoftwareService 
 English | [简体中文](./sig-basicsoftwareservice_cn.md)
 
 Note: The content of this SIG follows the convention described in OpenHarmony's PMC Management Charter [README](/zh/pmc.md).

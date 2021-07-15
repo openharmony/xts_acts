@@ -1,4 +1,4 @@
-# SIG Template
+# SIG-RISCV
 English | [简体中文](./sig-riscv_cn.md)
 
 Note: The content of this SIG follows the convention described in OpenHarmony's PMC Management Charter [README](/zh/pmc.md).

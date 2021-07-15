@@ -1,4 +1,4 @@
-# SIG组
+# SIG-OpenBlock
 
 简体中文 | [English](./sig_openblock.md)
 

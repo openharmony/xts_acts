@@ -1,4 +1,4 @@
-# SIG Template
+# SIG_AI
 English | [简体中文](./sig_dllite_micro_cn.md)
 
 Note: The content of this SIG follows the convention described in OpenHarmony's PMC Management Charter [README](/zh/pmc.md).

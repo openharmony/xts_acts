@@ -1,4 +1,4 @@
-# OH-BOARD-SIG组
+# OH-BOARD-SIG
 简体中文 | [English](./sig_oh_board_website_cn.md)
 
 说明：本SIG的内容遵循OpenHarmony的PMC管理章程 [README](/zh/pmc.md)中描述的约定。
