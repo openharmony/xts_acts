@@ -43,7 +43,7 @@ Continuously contributes to the softbus of the OpenHarmony community, implements
 ## SIG Members
 
 ### Leader
-- @li-jet (https://gitee.com/li-jet)
+- @MaErlii(https://gitee.com/maerlii)
 
 ### Committers
 - @xuyongpan(https://gitee.com/xuyongpan)
@@ -59,6 +59,8 @@ Continuously contributes to the softbus of the OpenHarmony community, implements
 - @clevercong(https://gitee.com/clevercong)
 - @ohos-lsw(https://gitee.com/ohos-lsw)
 - @xautosoft(https://gitee.com/xautosoft)
+- @li-jet(https://gitee.com/li-jet)
+- @MaErlii(https://gitee.com/maerlii)
 
  ### Meetings
  - Meeting time: Bi-weekly meeting, Monday 19:00 pm, UTC+8 
@@ -66,6 +68,6 @@ Continuously contributes to the softbus of the OpenHarmony community, implements
 
 ### Contact (optional)
 
-- Mailing list: dale.lijie@huawei.com; xuyongpan@huawei.com; yinyouzhan@huawei.com; maoyufeng3@huawei.com; chenzhennan@huawei.com; jiayanhong@huawei.com; liujiandong1@huawei.com; zhangxiuping@huawei.com; litao25@huawei.com; wudefeng@huawei.com; zhujianjian@huawei.com; lichunlin2@huawei.com; lishiwei6@huawei.com; zhuwenchao@huawei.com
+- Mailing list: maerli@huawei.com;dale.lijie@huawei.com;xuyongpan@huawei.com;yinyouzhan@huawei.com;maoyufeng3@huawei.com;chenzhennan@huawei.com;jiayanhong@huawei.com;liujiandong1@huawei.com;zhangxiuping@huawei.com;litao25@huawei.com;wudefeng@huawei.com;zhujianjian@huawei.com;lichunlin2@huawei.com;lishiwei6@huawei.com;zhuwenchao@huawei.com
 - Slack group:
 - Wechat group:
