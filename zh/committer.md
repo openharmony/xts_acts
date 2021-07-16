@@ -226,3 +226,5 @@
 |224|usb_manager|base/usb/usb_manager|https://gitee.com/hhh2|pengfei.hou@huawei.com| | |SIG_DistributedHardwareManagement|
 |225|powermgr_battery_lite|base/powermgr/battery_lite|https://gitee.com/hhh2|pengfei.hou@huawei.com| | |SIG_DistributedHardwareManagement|
 |226|release-management|NA|https://gitee.com/fma66169|mazhanfu@huawei.com| | |SIG_VersionRelease|
+|227|multimedia_medialibrary_standard|foundation/multimedia/medialibrary_standard|https://gitee.com/zhu-mingliang|zhumingliang@huawei.com| | |SIG_GraphicsandMedia|
+|228|multimedia_image_standard|foundation/multimedia/image_standard|https://gitee.com/zhu-mingliang|zhumingliang@huawei.com| | |SIG_GraphicsandMedia|
