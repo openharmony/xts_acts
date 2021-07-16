@@ -172,6 +172,8 @@
 			"https://gitee.com/openharmony/powermgr_display_manager",
 			"https://gitee.com/openharmony/powermgr_power_manager",
 			"https://gitee.com/openharmony/powermgr_battery_lite",
+			"https://gitee.com/openharmony/powermgr_battery_statistics",
+			"https://gitee.com/openharmony/powermgr_thermal_manager",
 			"https://gitee.com/openharmony/device_manager"
 		],
          "project-path":[
@@ -185,6 +187,8 @@
 			"base/powermgr/display_manager",
 			"base/powermgr/power_manager",
 			"base/powermgr/battery_lite",
+			"base/powermgr/battery_statistics",
+			"base/powermgr/thermal_manager",
 			"foundation/distributedhardware/devicemanager"
 		]
       },
