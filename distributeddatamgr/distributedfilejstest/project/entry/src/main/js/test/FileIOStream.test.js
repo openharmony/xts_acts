@@ -29,7 +29,7 @@ describe('fileIOTestStream', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            var ss = fileio.Stream.createStreamSync(fpath, "r+")
+            var ss = fileio.createStreamSync(fpath, "r+")
             expect(ss !== null).assertTrue()
             expect(ss.closeSync()).assertNull()
             expect(fileio.unlinkSync(fpath)).assertNull()
@@ -48,7 +48,7 @@ describe('fileIOTestStream', function () {
         let fpath = nextFileName('fileio_test_stream_create_stream_sync_001')
 
         try {
-            fileio.Stream.createStreamSync(fpath, "r+")
+            fileio.createStreamSync(fpath, "r+")
             expect(null).assertFail()
         } catch (e) {
         }
@@ -64,7 +64,7 @@ describe('fileIOTestStream', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            fileio.Stream.createStreamSync(fpath, "ohos")
+            fileio.createStreamSync(fpath, "ohos")
             expect(null).assertFail()
         } catch (e) {
             expect(fileio.unlinkSync(fpath)).assertNull()
@@ -82,7 +82,7 @@ describe('fileIOTestStream', function () {
 
         try {
             var fd = fileio.openSync(fpath, 0o2)
-            let ss = fileio.Stream.fdopenStreamSync(fd, "r+")
+            let ss = fileio.fdopenStreamSync(fd, "r+")
             expect(ss !== null).assertTrue()
             expect(ss.closeSync()).assertNull()
             expect(fileio.unlinkSync(fpath)).assertNull()
@@ -99,7 +99,7 @@ describe('fileIOTestStream', function () {
      */
     it('fileio_test_stream_fdopen_stream_sync_001', 0, function () {
         try {
-            let ss = fileio.Stream.fdopenStreamSync(-1, "r+")
+            let ss = fileio.fdopenStreamSync(-1, "r+")
             expect(null).assertFail()
         } catch (e) {
         }
@@ -115,7 +115,7 @@ describe('fileIOTestStream', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let ss = fileio.Stream.createStreamSync(fpath, "r+")
+            let ss = fileio.createStreamSync(fpath, "r+")
             expect(ss !== null).assertTrue()
             let len = ss.readSync(new ArrayBuffer(4096))
             expect(len).assertEqual(FILE_CONTENT.length)
@@ -137,7 +137,7 @@ describe('fileIOTestStream', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let ss = fileio.Stream.createStreamSync(fpath, "r+")
+            let ss = fileio.createStreamSync(fpath, "r+")
             expect(ss !== null).assertTrue()
             expect(ss.writeSync(FILE_CONTENT)).assertEqual(FILE_CONTENT.length)
             expect(ss.closeSync()).assertNull()
@@ -158,7 +158,7 @@ describe('fileIOTestStream', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let ss = fileio.Stream.createStreamSync(fpath, "r+")
+            let ss = fileio.createStreamSync(fpath, "r+")
             expect(ss !== null).assertTrue()
             expect(ss.writeSync(FILE_CONTENT)).assertEqual(FILE_CONTENT.length)
             expect(ss.flushSync()).assertNull()
