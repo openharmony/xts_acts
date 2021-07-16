@@ -26,7 +26,6 @@ const int MAX_UGID = 100000;
 static int groupNum = -1;
 static gid_t groupsArry[10] = {0};
 
-
 // Assert all uid == expectUid
 #define AssertAllUid(expectUid)  do {  \
         uid_t uid, euid, suid;         \
@@ -67,9 +66,6 @@ protected:
     void TearDown()
     {
         LOG("TearDown: reset uid and gid");
-        // gid_t gidList[2];
-        // gidList[0] = SHELL_UID;
-        // gidList[1] = 0;
         setuid(SHELL_UID);
         setgid(SHELL_GID);
         AssertAllUid(SHELL_UID);
