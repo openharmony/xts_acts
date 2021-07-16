@@ -24,7 +24,8 @@
 // max test number of uid/gid, not actual max number
 const int MAX_UGID = 100000;
 static int groupNum = -1;
-static gid_t groupsArry[10] = {0};
+const int ARRAY_SIZE = 10;
+static gid_t groupsArray[ARRAY_SIZE] = {0};
 
 // Assert all uid == expectUid
 #define AssertAllUid(expectUid)  do {  \
@@ -56,21 +57,29 @@ public:
         return  id;
     }
 protected:
-    static void SetUpTestCase() {
-        for (int i = 0; i < 10; i++) {
-            groupsArry[i] = -1;
+    static void SetUpTestCase()
+    {
+        for (int i = 0; i < ARRAY_SIZE; i++) {
+            groupsArray[i] = -1;
         }
-        groupNum = getgroups(0, groupsArry);
+        groupNum = getgroups(0, groupsArray);
         EXPECT_NE(groupNum, -1);
+        int rt = getgroups(groupNum, groupsArray);
+        EXPECT_EQ(rt, groupNum);
     }
     void TearDown()
     {
         LOG("TearDown: reset uid and gid");
+        gid_t groupIds[groupNum];
+        LOG("TearDown: reset uid and gid %d", sizeof(groupIds) / sizeof(gid_t));
+        for (int i = 0; i < groupNum; i++) {
+            groupIds[i] = groupsArray[i];
+        }
         setuid(SHELL_UID);
         setgid(SHELL_GID);
         AssertAllUid(SHELL_UID);
         AssertAllGid(SHELL_GID);
-        int rt = setgroups(groupNum, groupsArry);
+        int rt = setgroups(groupNum, groupIds);
         EXPECT_EQ(rt, 0);
     }
 };
