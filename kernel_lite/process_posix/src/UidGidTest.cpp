@@ -641,11 +641,14 @@ HWTEST_F(UidGidTest, testGetgroups, Function | MediumTest | Level1)
     gid_t gidList[testSize] = {0};
     int n = getgroups(0, gidList);
     ASSERT_EQ(n, 2);
-    getgroups(n, gidList);
+    int rt = getgroups(n, gidList);
     ASSERT_EQ(gidList[0], SHELL_GID);
+    ASSERT_EQ(gidList[1], 0);
+    ASSERT_EQ(rt, n);
     n = getgroups(testSize, gidList);
     ASSERT_EQ(n, 2);
     ASSERT_EQ(gidList[0], SHELL_GID);
+    ASSERT_EQ(gidList[1], 0);
 }
 
 /**
@@ -708,8 +711,10 @@ HWTEST_F(UidGidTest, testSetgroups2, Function | MediumTest | Level1)
     LOG("Init: make sure groups not changed by other test.");
     int n = getgroups(0, gidListOut);
     EXPECT_EQ(n, 2);
-    getgroups(n, gidListOut);
+    int rt = getgroups(n, gidListOut);
     EXPECT_EQ(gidListOut[0], SHELL_GID);
+    EXPECT_EQ(gidListOut[1], 0);
+    EXPECT_EQ(rt, n);
 
     LOG("add 2 groups");
     int rt = setgroups(2, gidListIn);
@@ -725,7 +730,8 @@ HWTEST_F(UidGidTest, testSetgroups2, Function | MediumTest | Level1)
     EXPECT_EQ(rt, 0);
     n = getgroups(0, gidListOut);
     EXPECT_EQ(n, 1);
-    getgroups(n, gidListOut);
+    rt = getgroups(n, gidListOut);
+    EXPECT_EQ(rt, n);
     EXPECT_EQ(gidListOut[0], SHELL_GID);
 }
 
