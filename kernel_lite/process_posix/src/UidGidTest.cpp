@@ -717,7 +717,7 @@ HWTEST_F(UidGidTest, testSetgroups2, Function | MediumTest | Level1)
     EXPECT_EQ(rt, n);
 
     LOG("add 2 groups");
-    int rt = setgroups(2, gidListIn);
+    rt = setgroups(2, gidListIn);
     EXPECT_EQ(rt, 0);
     n = getgroups(4, gidListOut);
     EXPECT_EQ(n, 3);
