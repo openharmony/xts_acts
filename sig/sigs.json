@@ -324,8 +324,8 @@
          ]
       },
       {
-         "sig-name":"sig-meetings",
-         "projects":"https://gitee.com/openharmony-sig/meetings",
+         "sig-name":"docs",
+         "projects":"https://gitee.com/openharmony-sig/docs",
          "project-path":"NONE"
       }
    ]
