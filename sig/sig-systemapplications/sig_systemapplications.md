@@ -21,6 +21,10 @@ Defines and builds OpenHarmony system applications, applies for and implements i
   - applications_settings: https://gitee.com/openharmony/applications_settings
   - applications_launcher: https://gitee.com/openharmony/applications_launcher
   - system_applications: https://gitee.com/openharmony-sig/system_applications
+  - applications_photos: https://gitee.com/openharmony/applications_photos
+  - applications_camera: https://gitee.com/openharmony/applications_camera
+  - applications_contacts: https://gitee.com/openharmony/applications_contacts
+  - applications_mms: https://gitee.com/openharmony/applications_mms
 
 ## SIG Members
 
