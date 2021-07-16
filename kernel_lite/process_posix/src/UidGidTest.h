@@ -57,11 +57,14 @@ protected:
     void TearDown()
     {
         LOG("TearDown: reset uid and gid");
+        gid_t gidList[2];
+        gidList[0] = SHELL_UID;
+        gidList[1] = 0;
         setuid(SHELL_UID);
         setgid(SHELL_GID);
         AssertAllUid(SHELL_UID);
         AssertAllGid(SHELL_GID);
-        int  rt = setgroups(0, NULL);
+        int rt = setgroups(2, gidList);
     }
 };
 
