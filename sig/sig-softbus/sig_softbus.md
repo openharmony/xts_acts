@@ -62,12 +62,14 @@ Continuously contributes to the softbus of the OpenHarmony community, implements
 - @li-jet(https://gitee.com/li-jet)
 - @MaErlii(https://gitee.com/maerlii)
 
- ### Meetings
- - Meeting time: Bi-weekly meeting, Monday 19:00 pm, UTC+8 
- - Meeting link: weekly
+### Meetings
+ - Meeting time: Bi-weekly meeting, Monday 19:15 pm, UTC+8 
+ - Meeting Proposal: [OpenHarmony SIG-SoftBus Meeting Proposal](https://shimo.im/sheets/iDp1dGmnk3sVjJoE/MODOC)
+ - Meeting link: Welink
+ - Meeting notification: [Subscribe to](https://lists.openatom.io/postorius/lists/dev.openharmony.io) mailing list dev@openharmony.io for the meeting link
 
-### Contact (optional)
+### Contact
+| Address                                 | Introduction | Usage Description                                                  |
+| ---------------------------------------|---------- | ------------------------------------------------------------ |
+| dev@openharmony.io  <img width=120/>| Mailing list <img width=100/> | OpenHarmony community development discussion mailing list, any community development related topics can be discussed in the mailing list. Any developer can [subscribe](https://lists.openatom.io/postorius/lists/dev.openharmony.io)。<img width=200/>|
 
-- Mailing list: maerli@huawei.com;dale.lijie@huawei.com;xuyongpan@huawei.com;yinyouzhan@huawei.com;maoyufeng3@huawei.com;chenzhennan@huawei.com;jiayanhong@huawei.com;liujiandong1@huawei.com;zhangxiuping@huawei.com;litao25@huawei.com;wudefeng@huawei.com;zhujianjian@huawei.com;lichunlin2@huawei.com;lishiwei6@huawei.com;zhuwenchao@huawei.com
-- Slack group:
-- Wechat group:

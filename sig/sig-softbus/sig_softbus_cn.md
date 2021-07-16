@@ -61,11 +61,14 @@
 - @MaErlii(https://gitee.com/maerlii)
 
 ### 会议
- - 会议时间：双周例会，周一晚上19:00，UTC+8
- - 会议链接：welink
+ - 会议时间：双周例会，周一晚上19:15，UTC+8
+ - 会议链接：Welink
+ - 议题申报: [OpenHarmony SIG-SoftBus Meeting Proposal](https://shimo.im/sheets/iDp1dGmnk3sVjJoE/MODOC)
+ - 会议主题: 通过邮件通知
+ - 会议通知: 请订阅邮件列表 dev@openharmony.io 获取会议链接
 
 ### 联系方式(可选)
+| 地址                                 | 简介        | 用途说明                                                         |
+| ---------------------------------------|---------- | ------------------------------------------------------------ |
+| dev@openharmony.io  <img width=120/>| 开发邮件列表 <img width=100/> | OpenHarmony社区开发讨论邮件列表，任何社区开发相关话题都可以在邮件列表讨论。任何开发者可[订阅](https://lists.openatom.io/postorius/lists/dev.openharmony.io)。<img width=200/>|
 
-- 邮件列表：maerli@huawei.com;dale.lijie@huawei.com;xuyongpan@huawei.com;yinyouzhan@huawei.com;maoyufeng3@huawei.com;chenzhennan@huawei.com;jiayanhong@huawei.com;liujiandong1@huawei.com;zhangxiuping@huawei.com;litao25@huawei.com;wudefeng@huawei.com;zhujianjian@huawei.com;lichunlin2@huawei.com;lishiwei6@huawei.com;zhuwenchao@huawei.com
-- Slack群组：
-- 微信群：
