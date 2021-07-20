@@ -26,6 +26,8 @@ OpenHarmony 图形和媒体管理。
   - third_party_gstreamer:https://gitee.com/openharmony/third_party_gstreamer
   - third_party_glib:https://gitee.com/openharmony/third_party_glib
   - third_party_libffi:https://gitee.com/openharmony/third_party_libffi
+  - third_party_libsnd:https://gitee.com/openharmony/third_party_libsnd
+  - third_party_pulseaudio:https://gitee.com/openharmony/third_party_pulseaudio
   - graphic_standard:https://gitee.com/openharmony/graphic_standard
   - graphic_surface:https://gitee.com/openharmony/graphic_surface
   - graphic_ui:https://gitee.com/openharmony/graphic_ui
