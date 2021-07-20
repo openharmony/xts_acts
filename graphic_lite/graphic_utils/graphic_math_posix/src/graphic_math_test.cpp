@@ -36,3 +36,4 @@ void MathTest::TearDownTestCase()
 {
     return;
 }
+}
