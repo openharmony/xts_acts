@@ -31,8 +31,6 @@ hcpptest_suite("ActsBundleMgrTest") {
     "//third_party/googletest/googletest/include",
     "//utils/native/lite/include",
     "${aafwk_lite_path}/interfaces/innerkits/intent_lite",
-    "//kernel/liteos_a/kernel/include",
-    "//kernel/liteos_a/kernel/common",
     "//third_party/cJSON",
   ]
   deps = [

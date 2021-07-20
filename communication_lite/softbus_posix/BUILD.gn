@@ -31,7 +31,6 @@ hcpptest_suite("ActsSoftBusTest") {
     "//third_party/cJSON",
     "//third_party/mbedtls/include",
     "//third_party/bounds_checking_function/include",
-    "//kernel/liteos_a/lib/libsec/include",
     "//base/startup/syspara_lite/interfaces/kits/include",
     "//base/security/deviceauth/interfaces/innerkits/deviceauth_lite",
     "//base/security/deviceauth/frameworks/deviceauth_lite/source/huks_adapter/",

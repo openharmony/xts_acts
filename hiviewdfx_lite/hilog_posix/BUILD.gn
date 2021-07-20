@@ -21,7 +21,6 @@ hcpptest_suite("ActsHilogTest") {
     "src",
     "//test/xts/tools/hctest/include",
     "//base/hiviewdfx/hilog_lite/interfaces/native/innerkits/",
-    "//kernel/liteos_a/include/config/base/core",
   ]
   deps = [ "//base/hiviewdfx/hilog_lite/frameworks/featured:hilog_shared" ]
 
