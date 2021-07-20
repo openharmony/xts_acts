@@ -67,7 +67,7 @@
 |65|prebuilts_lite_sysroot|prebuilts/lite/sysroot|https://gitee.com/wangmihu2008|wangmihu@huawei.com|https://gitee.com/kkup180 <br> https://gitee.com/DennyShen|likailong@huawei.com <br> denny.shenwei@huawei.com|SIG_Kernel|
 |66|signcenter_tool|prebuilts/signcenter|https://gitee.com/scuteehuangjun|huangjun42@huawei.com| | |SIG_Security|
 |67|test_developertest|test/developertest|https://gitee.com/buranfanchen|wangjuntao.wang@huawei.com|https://gitee.com/gaohanyi1982|gaohanyi@huawei.com|SIG_Test|
-|68|test_xdevice|test/xdevice|https://gitee.com/hwb0703|hanweibin1@huawei.com|https://gitee.com/gaohanyi1982|gaohanyi@huawei.com|SIG_Test|
+|68|test_xdevice|test/xdevice|https://gitee.com/ye-xiangbin|yexiangbin@huawei.com|https://gitee.com/gaohanyi1982|gaohanyi@huawei.com|SIG_Test|
 |69|xts_acts|test/xts/acts|https://gitee.com/ye-xiangbin|yexiangbin@huawei.com|https://gitee.com/jiyong|jiyong@huawei.com|SIG_Test|
 |70|xts_tools|test/xts/tools/lite|https://gitee.com/ye-xiangbin|yexiangbin@huawei.com|https://gitee.com/jiyong|jiyong@huawei.com|SIG_Test|
 |71|third_party_FatFs|third_party/FatFs|https://gitee.com/kkup180|likailong@huawei.com|https://gitee.com/wangmihu2008 <br> https://gitee.com/DennyShen|wangmihu@huawei.com <br> denny.shenwei@huawei.com|SIG_Kernel|
