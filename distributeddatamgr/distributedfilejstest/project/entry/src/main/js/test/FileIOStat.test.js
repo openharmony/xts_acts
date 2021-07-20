@@ -65,7 +65,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat !== null).assertTrue()
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -83,7 +83,7 @@ describe('fileIOTestStat', function () {
         let fpath = nextFileName('fileio_test_stat_stat_sync_001')
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(null).assertFail()
         } catch (e) {
         }
@@ -99,7 +99,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.dev).assertInstanceOf('Number')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -118,7 +118,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.ino).assertInstanceOf('Number')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -137,7 +137,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.mode).assertInstanceOf('Number')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -156,7 +156,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.nlink).assertInstanceOf('Number')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -175,7 +175,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.uid).assertInstanceOf('Number')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -194,7 +194,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.gid).assertInstanceOf('Number')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -213,7 +213,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.rdev).assertInstanceOf('Number')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -232,7 +232,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.size).assertInstanceOf('Number')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -251,7 +251,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.blocks).assertInstanceOf('Number')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -270,7 +270,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.atime).assertInstanceOf('Number')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -289,7 +289,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.mtime).assertInstanceOf('Number')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -308,7 +308,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.ctime).assertInstanceOf('Number')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -327,7 +327,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isBlockDevice()).assertInstanceOf('Boolean')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -346,7 +346,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isBlockDevice()).assertFalse()
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -365,7 +365,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isBlockDevice(-1)).assertFalse()
             expect(null).assertFail()
         } catch (e) {
@@ -383,7 +383,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isCharacterDevice()).assertInstanceOf('Boolean')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -402,7 +402,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isCharacterDevice()).assertFalse()
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -421,7 +421,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isCharacterDevice(-1)).assertFalse()
             expect(null).assertFail()
         } catch (e) {
@@ -439,7 +439,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isDirectory()).assertInstanceOf('Boolean')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -458,7 +458,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isDirectory()).assertFalse()
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -477,7 +477,7 @@ describe('fileIOTestStat', function () {
 
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
-            let stat = fileio.Stat.statSync(dpath)
+            let stat = fileio.statSync(dpath)
             expect(stat.isDirectory()).assertTrue()
             expect(fileio.rmdirSync(dpath)).assertNull()
         } catch (e) {
@@ -496,7 +496,7 @@ describe('fileIOTestStat', function () {
 
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
-            let stat = fileio.Stat.statSync(dpath)
+            let stat = fileio.statSync(dpath)
             expect(stat.isDirectory(-1)).assertTrue()
             expect(null).assertFail()
         } catch (e) {
@@ -514,7 +514,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isFIFO()).assertInstanceOf('Boolean')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -533,7 +533,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isFIFO()).assertFalse()
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -552,7 +552,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isFIFO(-1)).assertFalse()
             expect(null).assertFail()
         } catch (e) {
@@ -570,7 +570,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertInstanceOf('Boolean')
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isFile()).assertInstanceOf('Boolean')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -589,7 +589,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertInstanceOf('Boolean')
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isFile()).assertTrue()
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -608,7 +608,7 @@ describe('fileIOTestStat', function () {
 
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
-            let stat = fileio.Stat.statSync(dpath)
+            let stat = fileio.statSync(dpath)
             expect(stat.isFile()).assertFalse()
             expect(fileio.rmdirSync(dpath)).assertNull()
         } catch (e) {
@@ -627,7 +627,7 @@ describe('fileIOTestStat', function () {
 
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
-            let stat = fileio.Stat.statSync(dpath)
+            let stat = fileio.statSync(dpath)
             expect(stat.isFile(-1)).assertFalse()
             expect(null).assertFail()
         } catch (e) {
@@ -645,7 +645,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isSocket()).assertInstanceOf('Boolean')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -664,7 +664,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isSocket()).assertFalse()
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -683,7 +683,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isSocket(-1)).assertFalse()
             expect(null).assertFail()
         } catch (e) {
@@ -701,7 +701,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isSymbolicLink()).assertInstanceOf('Boolean')
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -720,7 +720,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isSymbolicLink()).assertFalse()
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
@@ -739,7 +739,7 @@ describe('fileIOTestStat', function () {
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
 
         try {
-            let stat = fileio.Stat.statSync(fpath)
+            let stat = fileio.statSync(fpath)
             expect(stat.isSymbolicLink(-1)).assertFalse()
             expect(null).assertFail()
         } catch (e) {
