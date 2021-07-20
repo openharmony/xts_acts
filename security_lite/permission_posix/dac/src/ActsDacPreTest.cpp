@@ -29,8 +29,10 @@ using namespace testing::ext;
 static int TestSetUid()
 {
     // Test the 'setuid' interface
-    int ret;
-    uid_t ruid, euid, suid;
+    int ret = 0;
+    uid_t ruid = 0;
+    uid_t euid = 0;
+    uid_t suid = 0;
     // Step 1: Verify that UID is set to 0
     ret = setuid(UID0);
     if (ret != 0) {
@@ -85,8 +87,10 @@ static int TestSetUid()
 static int TestSetREUid()
 {
     // Test the 'setreuid' interface
-    int ret;
-    uid_t ruid, euid, suid;
+    int ret = 0;
+    uid_t ruid = 0;
+    uid_t euid = 0;
+    uid_t suid = 0;
     // Step 1: Verify that UID is set to 0
     ret = setreuid(UID0, UID0);
     if (ret != 0) {
@@ -141,8 +145,10 @@ static int TestSetREUid()
 static int TestSetRESUid()
 {
     // Test the 'setresuid' interface
-    int ret;
-    uid_t ruid, euid, suid;
+    int ret = 0;
+    uid_t ruid = 0;
+    uid_t euid = 0;
+    uid_t suid = 0;
     // Step 1: Verify that UID is set to 0
     ret = setresuid(UID0, UID0, UID0);
     if (ret != 0) {
@@ -197,8 +203,13 @@ static int TestSetRESUid()
 static int TestSetUidAbnormal()
 {
     // Enter the exception parameter when invoke the 'setuid','setreuid','setresuid' interface
-    int ret;
-    uid_t newruid, neweuid, newsuid, ruid, euid, suid;
+    int ret = 0;
+    uid_t newruid = 0;
+    uid_t neweuid = 0;
+    uid_t newsuid = 0;
+    uid_t ruid = 0;
+    uid_t euid = 0;
+    uid_t suid = 0;
     // Obtain the ruid, euid, suid of the current process
     getresuid(&ruid, &euid, &suid);
     // Step 1: Verify that UID is set to -100 with the 'setuid' interface
@@ -243,8 +254,10 @@ static int TestSetUidAbnormal()
 static int TestSetGid()
 {
     // Test the 'setgid' interface
-    int ret;
-    gid_t rgid, egid, sgid;
+    int ret = 0;
+    gid_t rgid = 0;
+    gid_t egid = 0;
+    gid_t sgid = 0;
     // Step 1: Verify that GID is set to 0
     ret = setgid(GID0);
     if (ret != 0) {
@@ -299,8 +312,10 @@ static int TestSetGid()
 static int TestSetREGid()
 {
     // Test the 'setregid' interface
-    int ret;
-    gid_t rgid, egid, sgid;
+    int ret = 0;
+    gid_t rgid = 0;
+    gid_t egid = 0;
+    gid_t sgid = 0;
     // Step 1: Verify that GID is set to 0
     ret = setregid(GID0, GID0);
     if (ret != 0) {
@@ -355,8 +370,10 @@ static int TestSetREGid()
 static int TestSetRESGid()
 {
     // Test the 'setresgid' interface
-    int ret;
-    gid_t rgid, egid, sgid;
+    int ret = 0;
+    gid_t rgid = 0;
+    gid_t egid = 0;
+    gid_t sgid = 0;
     // Step 1: Verify that GID is set to 0
     ret = setresgid(GID0, GID0, GID0);
     if (ret != 0) {
@@ -411,8 +428,13 @@ static int TestSetRESGid()
 static int TestSetGidAbnormal()
 {
     // Enter the exception parameter when invoke the 'setgid','setregid','setresgid' interface
-    int ret;
-    gid_t newrgid, newegid, newsgid, rgid, egid, sgid;
+    int ret = 0;
+    gid_t newrgid = 0;
+    gid_t newegid = 0;
+    gid_t newsgid = 0;
+    gid_t rgid = 0;
+    gid_t egid = 0;
+    gid_t sgid = 0;
     // Obtain the rgid, egid, sgid of the current process
     getresgid(&rgid, &egid, &sgid);
     // Step 1: Verify that GID is set to -100 with the 'setgid' interface
@@ -546,8 +568,13 @@ static int ChangeSensitiveInformation()
  */
 HWTEST_F(DacTestSuite, DACTest0010, Function | MediumTest | Level1)
 {
-    int ret;
-    uid_t ruid, euid, suid, newruid, neweuid, newsuid;
+    int ret = 0;
+    uid_t ruid = 0;
+    uid_t euid = 0;
+    uid_t suid = 0;
+    uid_t newruid = 0;
+    uid_t neweuid = 0;
+    uid_t newsuid = 0;
     // Preset action: Obtain the ruid, euid, suid of the current process
     getresuid(&ruid, &euid, &suid);
     // Step 1: Test the 'setuid' interface
@@ -578,8 +605,13 @@ HWTEST_F(DacTestSuite, DACTest0010, Function | MediumTest | Level1)
  */
 HWTEST_F(DacTestSuite, DACTest0020, Function | MediumTest | Level1)
 {
-    int ret;
-    gid_t rgid, egid, sgid, newrgid, newegid, newsgid;
+    int ret = 0;
+    gid_t rgid = 0;
+    gid_t egid = 0;
+    gid_t sgid = 0;
+    gid_t newrgid = 0;
+    gid_t newegid = 0;
+    gid_t newsgid = 0;
     // Preset action: Obtain the rgid, egid, sgid of the current process
     getresgid(&rgid, &egid, &sgid);
     // Step 1: Test the 'setgid' interface
@@ -613,7 +645,7 @@ HWTEST_F(DacTestSuite, DACTest0030, Function | MediumTest | Level1)
     int ret;
     gid_t grouplist[SIZE255];
     // Preset action: Obtain the groups of the current process
-    int groupsize = getgroups(0, grouplist);
+    size_t groupsize = getgroups(0, grouplist);
     if (groupsize >= 0) {
         getgroups(groupsize, grouplist);
     } else {
@@ -648,7 +680,7 @@ HWTEST_F(DacTestSuite, DACTest0040, Function | MediumTest | Level2)
     int ret;
     gid_t grouplist[SIZE255];
     // Preset action: Obtain the groups of the current process
-    int groupsize = getgroups(0, grouplist);
+    size_t groupsize = getgroups(0, grouplist);
     if (groupsize >= 0) {
         getgroups(groupsize, grouplist);
     } else {
@@ -683,7 +715,7 @@ HWTEST_F(DacTestSuite, DACTest0050, Function | MediumTest | Level3)
     int ret;
     gid_t grouplist[SIZE255];
     // Preset action: Obtain the groups of the current process
-    int groupsize = getgroups(0, grouplist);
+    size_t groupsize = getgroups(0, grouplist);
     if (groupsize >= 0) {
         getgroups(groupsize, grouplist);
     } else {
@@ -718,7 +750,7 @@ HWTEST_F(DacTestSuite, DACTest0060, Function | MediumTest | Level3)
     int ret;
     gid_t grouplist[SIZE255];
     // Preset action: Obtain the groups of the current process
-    int groupsize = getgroups(0, grouplist);
+    size_t groupsize = getgroups(0, grouplist);
     if (groupsize >= 0) {
         getgroups(groupsize, grouplist);
     } else {
@@ -818,8 +850,11 @@ HWTEST_F(DacTestSuite, DACTest0070, Security | MediumTest | Level2)
 HWTEST_F(DacTestSuite, DACTest0080, Function | MediumTest | Level2)
 {
     int ret;
-    uid_t ruid, euid, suid, newruid, neweuid, newsuid;
-    gid_t rgid, egid, sgid, newrgid, newegid, newsgid, grouplist[SIZE255];
+    uid_t ruid = 0; uid_t euid = 0; uid_t suid = 0;
+    uid_t newruid = 0; uid_t neweuid = 0; uid_t newsuid = 0;
+    gid_t rgid = 0; gid_t egid = 0; gid_t sgid = 0;
+    gid_t newrgid = 0; gid_t newegid = 0; gid_t newsgid = 0;
+    gid_t grouplist[SIZE255];
     // Preset action: Obtain the ruid, euid, suid of the current process
     getresuid(&ruid, &euid, &suid);
     // Preset action: Obtain the rgid, egid, sgid of the current process
