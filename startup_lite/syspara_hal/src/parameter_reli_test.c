@@ -297,7 +297,8 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli014, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli015, Function | MediumTest | Level1)
 {
     int value1 = GetFirstApiVersion();
-    IsEmpty(value1);
+    TEST_ASSERT_NOT_NULL(value1);
+    TEST_ASSERT_TRUE((int)value1 == value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     int value = GetFirstApiVersion();
@@ -450,7 +451,8 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli023, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli024, Function | MediumTest | Level1)
 {
     int value1 = GetSdkApiVersion();
-    IsEmpty(value1);
+    TEST_ASSERT_NOT_NULL(value1);
+    TEST_ASSERT_TRUE((int)value1 == value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     int value = GetSdkApiVersion();

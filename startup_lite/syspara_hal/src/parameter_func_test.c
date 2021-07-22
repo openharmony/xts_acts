@@ -55,13 +55,13 @@ static BOOL ParameterFuncTestSuiteTearDown(void)
 
 /**
  * @tc.number    : SUB_UTILS_PARAMETER_0100
- * @tc.name      : Obtaining system parameter ProductType
+ * @tc.name      : Obtaining system parameter DeviceType
  * @tc.desc      : [C- SOFTWARE -0200]
  */
 LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara001, Function | MediumTest | Level1)
 {
     const char* value = GetDeviceType();
-    printf("Product Type=%s\n", value);
+    printf("Device Type=%s\n", value);
     IsEmpty(value);
 };
 
@@ -158,12 +158,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara009, Function | MediumTe
 {
     const char* value = GetSerial();
     printf("Serial=%s\n", value);
-    if (value == NULL) {
-        printf("The serial number needs to be written\n");
-        TEST_IGNORE();
-    } else {
-        TEST_ASSERT_EQUAL_INT(1, 1);
-    }
+    IsEmpty(value);
 };
 
 /**
@@ -235,7 +230,8 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara015, Function | MediumTe
 {
     int value = GetFirstApiVersion();
     printf("First Api Level=%d\n", value);
-    IsEmpty(value);
+    TEST_ASSERT_NOT_NULL(value);
+    TEST_ASSERT_TRUE((int)value == value);
 };
 
 /**
@@ -343,7 +339,8 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara024, Function | MediumTe
 {
     int value = GetSdkApiVersion();
     printf("Sdk Api Level=%d\n", value);
-    IsEmpty(value);
+    TEST_ASSERT_NOT_NULL(value);
+    TEST_ASSERT_TRUE((int)value == value);
 };
 
 /**
