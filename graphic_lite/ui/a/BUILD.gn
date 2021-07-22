@@ -28,8 +28,6 @@ hcpptest_suite("ActsUiInterfaceTest") {
   }
 
   include_dirs = [
-    "//kernel/liteos_a/kernel/include/",
-    "//kernel/liteos_a/kernel/common",
     "//third_party/bounds_checking_function/include",
     "//third_party/cJSON",
     "//third_party/libpng",

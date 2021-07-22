@@ -29,7 +29,7 @@ describe('fileIOTestDir', function () {
 
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
-            let dd = fileio.Dir.opendirSync(dpath)
+            let dd = fileio.opendirSync(dpath)
             expect(dd !== null).assertTrue()
             expect(dd.closeSync()).assertNull()
             expect(fileio.rmdirSync(dpath)).assertNull()
@@ -46,7 +46,7 @@ describe('fileIOTestDir', function () {
      */
     it('fileio_test_dir_open_close_sync_001', 0, function () {
         try {
-            fileio.Dir.opendirSync()
+            fileio.opendirSync()
             expect(null).assertFail()
         } catch (e) {
         }
@@ -61,7 +61,7 @@ describe('fileIOTestDir', function () {
         let dpath = nextFileName('fileio_test_dir_read_sync_000') + 'd'
 
         try {
-            fileio.Dir.opendirSync(dpath)
+            fileio.opendirSync(dpath)
             expect(null).assertFail()
         } catch (e) {
         }
@@ -79,7 +79,7 @@ describe('fileIOTestDir', function () {
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
-            let dd = fileio.Dir.opendirSync(dpath)
+            let dd = fileio.opendirSync(dpath)
             expect(dd !== null).assertTrue()
             expect(dd.readSync() != null).assertTrue()
             expect(dd.closeSync()).assertNull()
@@ -105,7 +105,7 @@ describe('fileIOTestDir', function () {
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
-            dd = fileio.Dir.opendirSync(dpath)
+            dd = fileio.opendirSync(dpath)
             expect(dd !== null).assertTrue()
             expect(dd.readSync(-1) != null).assertTrue()
             expect(null).assertFail()

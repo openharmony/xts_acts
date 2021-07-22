@@ -18,8 +18,6 @@ hcpptest_suite("ActsUIRepeatButtonTest") {
   sources = [ "src/ui_repeat_button_test.cpp" ]
 
   include_dirs = [
-    "//kernel/liteos_a/kernel/include/",
-    "//kernel/liteos_a/kernel/common",
     "//third_party/bounds_checking_function/include",
     "//third_party/cJSON",
     "//third_party/libpng",

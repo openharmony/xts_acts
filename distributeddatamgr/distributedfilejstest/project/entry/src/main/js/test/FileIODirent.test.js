@@ -31,7 +31,7 @@ describe('fileIOTestDirent', function () {
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
-            let dd = fileio.Dir.opendirSync(dpath)
+            let dd = fileio.opendirSync(dpath)
             expect(dd !== null).assertTrue()
             let dirent = dd.readSync()
             expect(dirent !== null).assertTrue()
@@ -57,7 +57,7 @@ describe('fileIOTestDirent', function () {
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
-            let dd = fileio.Dir.opendirSync(dpath)
+            let dd = fileio.opendirSync(dpath)
             expect(dd !== null).assertTrue()
             let dirent = dd.readSync()
             expect(dirent !== null).assertTrue()
@@ -84,7 +84,7 @@ describe('fileIOTestDirent', function () {
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
-            dd = fileio.Dir.opendirSync(dpath)
+            dd = fileio.opendirSync(dpath)
             expect(dd !== null).assertTrue()
             let dirent = dd.readSync()
             expect(dirent !== null).assertTrue()
@@ -109,7 +109,7 @@ describe('fileIOTestDirent', function () {
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
-            let dd = fileio.Dir.opendirSync(dpath)
+            let dd = fileio.opendirSync(dpath)
             expect(dd !== null).assertTrue()
             let dirent = dd.readSync()
             expect(dirent !== null).assertTrue()
@@ -136,7 +136,7 @@ describe('fileIOTestDirent', function () {
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
-            dd = fileio.Dir.opendirSync(dpath)
+            dd = fileio.opendirSync(dpath)
             expect(dd !== null).assertTrue()
             let dirent = dd.readSync()
             expect(dirent !== null).assertTrue()
@@ -161,7 +161,7 @@ describe('fileIOTestDirent', function () {
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
-            let dd = fileio.Dir.opendirSync(dpath)
+            let dd = fileio.opendirSync(dpath)
             expect(dd !== null).assertTrue()
             let dirent = dd.readSync()
             expect(dirent !== null).assertTrue()
@@ -188,7 +188,7 @@ describe('fileIOTestDirent', function () {
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
-            dd = fileio.Dir.opendirSync(dpath)
+            dd = fileio.opendirSync(dpath)
             expect(dd !== null).assertTrue()
             let dirent = dd.readSync()
             expect(dirent !== null).assertTrue()
@@ -213,7 +213,7 @@ describe('fileIOTestDirent', function () {
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
-            let dd = fileio.Dir.opendirSync(dpath)
+            let dd = fileio.opendirSync(dpath)
             expect(dd !== null).assertTrue()
             let dirent = dd.readSync()
             expect(dirent !== null).assertTrue()
@@ -240,7 +240,7 @@ describe('fileIOTestDirent', function () {
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
-            dd = fileio.Dir.opendirSync(dpath)
+            dd = fileio.opendirSync(dpath)
             expect(dd !== null).assertTrue()
             let dirent = dd.readSync()
             expect(dirent !== null).assertTrue()
@@ -265,7 +265,7 @@ describe('fileIOTestDirent', function () {
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
-            let dd = fileio.Dir.opendirSync(dpath)
+            let dd = fileio.opendirSync(dpath)
             expect(dd !== null).assertTrue()
             let dirent = dd.readSync()
             expect(dirent !== null).assertTrue()
@@ -292,7 +292,7 @@ describe('fileIOTestDirent', function () {
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
-            dd = fileio.Dir.opendirSync(dpath)
+            dd = fileio.opendirSync(dpath)
             expect(dd !== null).assertTrue()
             let dirent = dd.readSync()
             expect(dirent !== null).assertTrue()
@@ -317,7 +317,7 @@ describe('fileIOTestDirent', function () {
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
-            let dd = fileio.Dir.opendirSync(dpath)
+            let dd = fileio.opendirSync(dpath)
             expect(dd !== null).assertTrue()
             let dirent = dd.readSync()
             expect(dirent !== null).assertTrue()
@@ -344,7 +344,7 @@ describe('fileIOTestDirent', function () {
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
-            dd = fileio.Dir.opendirSync(dpath)
+            dd = fileio.opendirSync(dpath)
             expect(dd !== null).assertTrue()
             let dirent = dd.readSync()
             expect(dirent !== null).assertTrue()
@@ -369,7 +369,7 @@ describe('fileIOTestDirent', function () {
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
-            let dd = fileio.Dir.opendirSync(dpath)
+            let dd = fileio.opendirSync(dpath)
             expect(dd !== null).assertTrue()
             let dirent = dd.readSync()
             expect(dirent !== null).assertTrue()
@@ -396,7 +396,7 @@ describe('fileIOTestDirent', function () {
         try {
             expect(fileio.mkdirSync(dpath)).assertNull()
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue()
-            dd = fileio.Dir.opendirSync(dpath)
+            dd = fileio.opendirSync(dpath)
             expect(dd !== null).assertTrue()
             let dirent = dd.readSync()
             expect(dirent !== null).assertTrue()

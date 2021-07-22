@@ -561,7 +561,7 @@ describe('fileIOTest', function () {
 
         try {
             expect(fileio.chmodSync(fpath, 0o660)).assertNull()
-            expect(fileio.Stat.statSync(fpath).mode & 0o777).assertEqual(0o660)
+            expect(fileio.statSync(fpath).mode & 0o777).assertEqual(0o660)
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
             console.log("fileio_test_chmod_sync_000 has failed for " + e)
@@ -661,7 +661,7 @@ describe('fileIOTest', function () {
 
         try {
             expect(fileio.truncateSync(fpath)).assertNull()
-            expect(fileio.Stat.statSync(fpath).size).assertEqual(0)
+            expect(fileio.statSync(fpath).size).assertEqual(0)
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
             console.log("fileio_test_truncate_sync_000 has failed for " + e)
@@ -761,7 +761,7 @@ describe('fileIOTest', function () {
         try {
             let fd = fileio.openSync(fpath, 0o2)
             expect(fileio.fchmodSync(fd, 0o660)).assertNull()
-            expect(fileio.Stat.statSync(fpath).mode & 0o777).assertEqual(0o660)
+            expect(fileio.statSync(fpath).mode & 0o777).assertEqual(0o660)
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
             console.log("fileio_test_fchmod_sync_000 has failed for " + e)
@@ -794,7 +794,7 @@ describe('fileIOTest', function () {
         try {
             let fd = fileio.openSync(fpath, 0o2)
             expect(fileio.ftruncateSync(fd)).assertNull()
-            expect(fileio.Stat.statSync(fpath).size).assertEqual(0)
+            expect(fileio.statSync(fpath).size).assertEqual(0)
             expect(fileio.unlinkSync(fpath)).assertNull()
         } catch (e) {
             console.log("fileio_test_ftruncate_sync_000 has failed for " + e)

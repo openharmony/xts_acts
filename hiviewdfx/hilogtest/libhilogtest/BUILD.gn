@@ -16,5 +16,6 @@ group("libhilogtestacts") {
   deps = [
     "libhilogCPPtest:LibhilogCPPtest",
     "libhilogCtest:libhilogCtest",
+    "hilogtest:hilogtest",
   ]
 }
