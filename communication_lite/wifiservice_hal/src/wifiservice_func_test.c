@@ -21,7 +21,7 @@
 #include <unistd.h>
 
 #define DEF_TIMEOUT 15
-#define ONE_SECOND 1
+#define ONE_SECOND 100
 #define LEVEL_ERROR (-1)
 #define LEVEL_ONE 1
 #define LEVEL_TWO 2
@@ -184,7 +184,7 @@ static void WaitScanResult(void)
 {
     int scanTimeout = DEF_TIMEOUT;
     while (scanTimeout > 0) {
-        sleep(ONE_SECOND);
+        osDelay(ONE_SECOND);
         scanTimeout--;
         if (g_staScanSuccess == 1) {
             printf("WaitScanResult:wait success[%d]s\n", (DEF_TIMEOUT - scanTimeout));
@@ -520,7 +520,7 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testEnableDisableHotSpot, Function | Me
     int timeout = 3;
     g_apEnableSuccess = 0;
     while (timeout > 0) {
-        sleep(ONE_SECOND);
+        osDelay(ONE_SECOND);
         timeout--;
         if (g_apEnableSuccess >= 1) {
             printf("Wait %d seconds.\n", (DEF_TIMEOUT - timeout));
