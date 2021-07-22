@@ -36,4 +36,17 @@ void MathTest::TearDownTestCase()
 {
     return;
 }
+
+/**
+ * @tc.number   SUB_GRAPHIC_MATH_FASTATAN2_0200
+ * @tc.name     test math fast-atan2 api
+ * @tc.desc     [C- SOFTWARE -0200]
+ */
+HWTEST_F(MathTest, Graphic_Math_Test_FastAtan2_0100, Function | MediumTest | Level0)
+{
+    EXPECT_EQ(FastAtan2(0, 1), 0);
+    EXPECT_EQ(FastAtan2(1, 0), 90);
+    EXPECT_EQ(FastAtan2(0, -1), 180);
+    EXPECT_EQ(FastAtan2(-1, 0), 270);
+}
 }
