@@ -645,29 +645,29 @@ HWTEST_F(DacTestSuite, DACTest0030, Function | MediumTest | Level1)
     int ret;
     gid_t grouplist[SIZE255];
     // Preset action: Obtain the groups of the current process
-    size_t groupsize = getgroups(0, grouplist);
+    unsigned int groupsize = getgroups(0, grouplist);
     if (groupsize >= 0) {
         getgroups(groupsize, grouplist);
+        // Preset action: Obtain the group lists required for the testcase
+        gid_t list1[SIZE1] = {1};
+        gid_t list2[SIZE1] = {MAX_INT};
+        gid_t list3[SIZE1] = {};
+        // Step 1: Set the group list to {1}
+        ret = setgroups(SIZE1, list1);
+        EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {1}";
+        // Step 2: Set the group list to {2147483647}
+        ret = setgroups(SIZE1, list2);
+        EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {2147483647}";
+        // Step 3: Set the group list to {}
+        ret = setgroups(SIZE1, list3);
+        EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {}";
+        // Cleanup action: Restore the initial groups of the process
+        setgroups(0, nullptr);
+        ret = setgroups(groupsize, grouplist);
+        EXPECT_EQ(ret, 0) << "ErrInfo: Failed to restore the initial groups of the process";
     } else {
         EXPECT_GE(groupsize, 0) << "ErrInfo: Failed to get groups";
     }
-    // Preset action: Obtain the group lists required for the testcase
-    gid_t list1[SIZE1] = {1};
-    gid_t list2[SIZE1] = {MAX_INT};
-    gid_t list3[SIZE1] = {};
-    // Step 1: Set the group list to {1}
-    ret = setgroups(SIZE1, list1);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {1}";
-    // Step 2: Set the group list to {2147483647}
-    ret = setgroups(SIZE1, list2);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {2147483647}";
-    // Step 3: Set the group list to {}
-    ret = setgroups(SIZE1, list3);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {}";
-    // Cleanup action: Restore the initial groups of the process
-    setgroups(0, nullptr);
-    ret = setgroups(groupsize, grouplist);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Failed to restore the initial groups of the process";
 }
 
 /*
@@ -680,29 +680,29 @@ HWTEST_F(DacTestSuite, DACTest0040, Function | MediumTest | Level2)
     int ret;
     gid_t grouplist[SIZE255];
     // Preset action: Obtain the groups of the current process
-    size_t groupsize = getgroups(0, grouplist);
+    unsigned int groupsize = getgroups(0, grouplist);
     if (groupsize >= 0) {
         getgroups(groupsize, grouplist);
+        // Preset action: Obtain the group lists required for the testcase
+        gid_t list1[SIZE2]={GID0, GID0};
+        gid_t list2[SIZE2]={GID1, GID1};
+        gid_t list3[SIZE2]={MAX_INT, MAX_INT};
+        // Step 1: Set the group list to {0, 0}
+        ret = setgroups(SIZE2, list1);
+        EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {0, 0}";
+        // Step 2: Set the group list to {1, 1}
+        ret = setgroups(SIZE2, list2);
+        EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {1, 1}";
+        // Step 3: Set the group list to {2147483647, 2147483647}
+        ret = setgroups(SIZE2, list3);
+        EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {2147483647, 2147483647}";
+        // Cleanup action: Restore the initial groups of the process
+        setgroups(0, nullptr);
+        ret = setgroups(groupsize, grouplist);
+        EXPECT_EQ(ret, 0) << "ErrInfo: Failed to restore the initial groups of the process";
     } else {
         EXPECT_GE(groupsize, 0) << "ErrInfo: Failed to get groups";
     }
-    // Preset action: Obtain the group lists required for the testcase
-    gid_t list1[SIZE2]={GID0, GID0};
-    gid_t list2[SIZE2]={GID1, GID1};
-    gid_t list3[SIZE2]={MAX_INT, MAX_INT};
-    // Step 1: Set the group list to {0, 0}
-    ret = setgroups(SIZE2, list1);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {0, 0}";
-    // Step 2: Set the group list to {1, 1}
-    ret = setgroups(SIZE2, list2);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {1, 1}";
-    // Step 3: Set the group list to {2147483647, 2147483647}
-    ret = setgroups(SIZE2, list3);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {2147483647, 2147483647}";
-    // Cleanup action: Restore the initial groups of the process
-    setgroups(0, nullptr);
-    ret = setgroups(groupsize, grouplist);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Failed to restore the initial groups of the process";
 }
 
 /*
@@ -715,29 +715,29 @@ HWTEST_F(DacTestSuite, DACTest0050, Function | MediumTest | Level3)
     int ret;
     gid_t grouplist[SIZE255];
     // Preset action: Obtain the groups of the current process
-    size_t groupsize = getgroups(0, grouplist);
+    unsigned int groupsize = getgroups(0, grouplist);
     if (groupsize >= 0) {
         getgroups(groupsize, grouplist);
+        // Preset action: Obtain the group lists required for the testcase
+        gid_t list1[SIZE3]={GID0, GID0, MAX_INT};
+        gid_t list2[SIZE3]={GID10000, GID10000, MAX_INT};
+        gid_t list3[SIZE3]={GID0, MAX_INT, MAX_INT};
+        // Step 1: Set the group list to {0, 0, 2147483647}
+        ret = setgroups(SIZE3, list1);
+        EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {0, 0, 2147483647}";
+        // Step 2: Set the group list to {10000, 10000, 2147483647}
+        ret = setgroups(SIZE3, list2);
+        EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {10000, 10000, 2147483647}";
+        // Step 3: Set the group list to {0, 2147483647, 2147483647}
+        ret = setgroups(SIZE3, list3);
+        EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {0, 2147483647, 2147483647}";
+        // Cleanup action: Restore the initial groups of the process
+        setgroups(0, nullptr);
+        ret = setgroups(groupsize, grouplist);
+        EXPECT_EQ(ret, 0) << "ErrInfo: Failed to restore the initial groups of the process";
     } else {
         EXPECT_GE(groupsize, 0) << "ErrInfo: Failed to get groups";
     }
-    // Preset action: Obtain the group lists required for the testcase
-    gid_t list1[SIZE3]={GID0, GID0, MAX_INT};
-    gid_t list2[SIZE3]={GID10000, GID10000, MAX_INT};
-    gid_t list3[SIZE3]={GID0, MAX_INT, MAX_INT};
-    // Step 1: Set the group list to {0, 0, 2147483647}
-    ret = setgroups(SIZE3, list1);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {0, 0, 2147483647}";
-    // Step 2: Set the group list to {10000, 10000, 2147483647}
-    ret = setgroups(SIZE3, list2);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {10000, 10000, 2147483647}";
-    // Step 3: Set the group list to {0, 2147483647, 2147483647}
-    ret = setgroups(SIZE3, list3);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {0, 2147483647, 2147483647}";
-    // Cleanup action: Restore the initial groups of the process
-    setgroups(0, nullptr);
-    ret = setgroups(groupsize, grouplist);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Failed to restore the initial groups of the process";
 }
 
 /*
@@ -753,30 +753,30 @@ HWTEST_F(DacTestSuite, DACTest0060, Function | MediumTest | Level3)
     size_t groupsize = getgroups(0, grouplist);
     if (groupsize >= 0) {
         getgroups(groupsize, grouplist);
+        // Preset action: Obtain the group lists required for the testcase
+        gid_t list0[SIZE255];
+        for (size_t num0 = 0; num0 < SIZE254; num0++) {
+            list0[num0] = num0;
+        }
+        list0[SIZE254] = MAX_INT;
+        gid_t list1[INVAILD_SIZE];
+        for (size_t num1 = 0; num1 < MAX_SIZE; num1++) {
+            list1[num1] = num1;
+        }
+        list1[MAX_SIZE] = MAX_INT;
+        // Step 1: Set 255 different group lists
+        ret = setgroups(SIZE255, list0);
+        EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {0, 1, 2, ..., 255}";
+        // Step 2: Set the number of groups that exceed the upper limit
+        ret = setgroups(INVAILD_SIZE, list1);
+        EXPECT_EQ(ret, FALSE) << "ErrInfo: Set groups size over max, size=65537";
+        // Cleanup action: Restore the initial groups of the process
+        setgroups(0, nullptr);
+        ret = setgroups(groupsize, grouplist);
+        EXPECT_EQ(ret, 0) << "ErrInfo: Failed to restore the initial groups of the process";
     } else {
         EXPECT_GE(groupsize, 0) << "ErrInfo: Failed to get groups";
     }
-    // Preset action: Obtain the group lists required for the testcase
-    gid_t list0[SIZE255];
-    for (size_t num0 = 0; num0 < SIZE254; num0++) {
-        list0[num0] = num0;
-    }
-    list0[SIZE254] = MAX_INT;
-    gid_t list1[INVAILD_SIZE];
-    for (size_t num1 = 0; num1 < MAX_SIZE; num1++) {
-        list1[num1] = num1;
-    }
-    list1[MAX_SIZE] = MAX_INT;
-    // Step 1: Set 255 different group lists
-    ret = setgroups(SIZE255, list0);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Failed to set the group list to {0, 1, 2, ..., 255}";
-    // Step 2: Set the number of groups that exceed the upper limit
-    ret = setgroups(INVAILD_SIZE, list1);
-    EXPECT_EQ(ret, FALSE) << "ErrInfo: Set groups size over max, size=65537";
-    // Cleanup action: Restore the initial groups of the process
-    setgroups(0, nullptr);
-    ret = setgroups(groupsize, grouplist);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Failed to restore the initial groups of the process";
 }
 
 /*
@@ -863,43 +863,43 @@ HWTEST_F(DacTestSuite, DACTest0080, Function | MediumTest | Level2)
     int groupsize = getgroups(0, grouplist);
     if (groupsize >= 0) {
         getgroups(groupsize, grouplist);
+        // Preset action: Obtain the group lists required for the testcase
+        gid_t list1[SIZE1] = {GID10000};
+        gid_t list2[SIZE1] = {};
+        gid_t list3[SIZE255];
+        for (size_t num = 0; num < SIZE254; num++) {
+            list3[num] = num;
+        }
+        list3[SIZE254] = MAX_INT;
+        // Step 1: Factor combination test of UID, GID, and groups
+        TsetFork(UID0, GID10000, SIZE1, list1);
+        TsetFork(UID10000, GID10000, SIZE1, list1);
+        TsetFork(MAX_INT, GID10000, SIZE1, list1);
+        TsetFork(UID10000, GID0, SIZE1, list1);
+        TsetFork(UID10000, MAX_INT, SIZE1, list1);
+        TsetFork(UID10000, GID10000, SIZE1, list2);
+        TsetFork(UID10000, GID10000, SIZE255, list3);
+        // Cleanup action: Restore the initial UID of the process
+        ret = setresuid(ruid, euid, suid);
+        EXPECT_EQ(ret, 0) << "ErrInfo: Failed to restore the initial UID of the process";
+        getresuid(&newruid, &neweuid, &newsuid);
+        EXPECT_EQ(newruid, ruid) << "The value of ruid changes after testcase: ruid=" << ruid;
+        EXPECT_EQ(neweuid, euid) << "The value of euid changes after testcase: euid=" << euid;
+        EXPECT_EQ(newsuid, suid) << "The value of suid changes after testcase: suid=" << suid;
+        // Cleanup action: Restore the initial GID of the process
+        ret = setresgid(rgid, egid, sgid);
+        EXPECT_EQ(ret, 0) << "ErrInfo: Failed to restore the initial GID of the process";
+        getresgid(&newrgid, &newegid, &newsgid);
+        EXPECT_EQ(newrgid, rgid) << "The value of rgid changes after testcase: rgid=" << rgid;
+        EXPECT_EQ(newegid, egid) << "The value of egid changes after testcase: egid=" << egid;
+        EXPECT_EQ(newsgid, sgid) << "The value of sgid changes after testcase: sgid=" << sgid;
+        // Cleanup action: Restore the initial groups of the process
+        setgroups(0, nullptr);
+        ret = setgroups(groupsize, grouplist);
+        EXPECT_EQ(ret, 0) << "ErrInfo: Failed to restore the initial groups of the process";
     } else {
         EXPECT_GE(groupsize, 0) << "ErrInfo: Failed to get groups";
     }
-    // Preset action: Obtain the group lists required for the testcase
-    gid_t list1[SIZE1] = {GID10000};
-    gid_t list2[SIZE1] = {};
-    gid_t list3[SIZE255];
-    for (size_t num = 0; num < SIZE254; num++) {
-        list3[num] = num;
-    }
-    list3[SIZE254] = MAX_INT;
-    // Step 1: Factor combination test of UID, GID, and groups
-    TsetFork(UID0, GID10000, SIZE1, list1);
-    TsetFork(UID10000, GID10000, SIZE1, list1);
-    TsetFork(MAX_INT, GID10000, SIZE1, list1);
-    TsetFork(UID10000, GID0, SIZE1, list1);
-    TsetFork(UID10000, MAX_INT, SIZE1, list1);
-    TsetFork(UID10000, GID10000, SIZE1, list2);
-    TsetFork(UID10000, GID10000, SIZE255, list3);
-    // Cleanup action: Restore the initial UID of the process
-    ret = setresuid(ruid, euid, suid);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Failed to restore the initial UID of the process";
-    getresuid(&newruid, &neweuid, &newsuid);
-    EXPECT_EQ(newruid, ruid) << "The value of ruid changes after testcase: ruid=" << ruid;
-    EXPECT_EQ(neweuid, euid) << "The value of euid changes after testcase: euid=" << euid;
-    EXPECT_EQ(newsuid, suid) << "The value of suid changes after testcase: suid=" << suid;
-    // Cleanup action: Restore the initial GID of the process
-    ret = setresgid(rgid, egid, sgid);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Failed to restore the initial GID of the process";
-    getresgid(&newrgid, &newegid, &newsgid);
-    EXPECT_EQ(newrgid, rgid) << "The value of rgid changes after testcase: rgid=" << rgid;
-    EXPECT_EQ(newegid, egid) << "The value of egid changes after testcase: egid=" << egid;
-    EXPECT_EQ(newsgid, sgid) << "The value of sgid changes after testcase: sgid=" << sgid;
-    // Cleanup action: Restore the initial groups of the process
-    setgroups(0, nullptr);
-    ret = setgroups(groupsize, grouplist);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Failed to restore the initial groups of the process";
 }
 
 /*
