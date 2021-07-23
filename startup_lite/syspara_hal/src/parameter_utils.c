@@ -16,11 +16,10 @@
 #include "hctest.h"
 #include "parameter_utils.h"
 
-void IsEmpty(const char* sysPara)
+void AssertNotEmpty(const char* sysPara)
 {
+    TEST_ASSERT_NOT_NULL(sysPara);
     if (sysPara != NULL) {
-        if (strlen(sysPara) != 0) {
-            TEST_ASSERT_NOT_NULL(sysPara);
-        }
+        TEST_ASSERT_TRUE(strlen(sysPara) > 0);
     }
 }
