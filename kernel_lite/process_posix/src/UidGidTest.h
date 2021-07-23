@@ -67,6 +67,11 @@ protected:
         int rt = getgroups(groupNum, groupsArray);
         EXPECT_EQ(rt, groupNum);
     }
+    void SetUp()
+    {
+        LOG("SetUp: set gid");
+        setgid(SHELL_GID);
+    }
     void TearDown()
     {
         LOG("TearDown: reset uid and gid");
