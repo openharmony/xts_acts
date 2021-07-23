@@ -62,7 +62,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara001, Function | MediumTe
 {
     const char* value = GetDeviceType();
     printf("Device Type=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -74,7 +74,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara002, Function | MediumTe
 {
     const char* value = GetManufacture();
     printf("Manufacture=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -86,7 +86,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara003, Function | MediumTe
 {
     const char* value = GetBrand();
     printf("Brand=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -98,7 +98,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara004, Function | MediumTe
 {
     const char* value = GetMarketName();
     printf("Market Name=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -110,7 +110,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara005, Function | MediumTe
 {
     const char* value = GetProductSeries();
     printf("Product Series=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -122,7 +122,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara006, Function | MediumTe
 {
     const char* value = GetProductModel();
     printf("Product Model=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -134,7 +134,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara007, Function | MediumTe
 {
     const char* value = GetHardwareModel();
     printf("Hardware Model=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -146,7 +146,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara008, Function | MediumTe
 {
     const char* value = GetHardwareProfile();
     printf("Hardware Profile=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -158,7 +158,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara009, Function | MediumTe
 {
     const char* value = GetSerial();
     printf("Serial=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -170,7 +170,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara010, Function | MediumTe
 {
     const char* value = GetOSFullName();
     printf("Os Name=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -182,7 +182,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara011, Function | MediumTe
 {
     const char* value = GetDisplayVersion();
     printf("Display Version=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -194,7 +194,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara012, Function | MediumTe
 {
     const char* value = GetBootloaderVersion();
     printf("Bootloader Version=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -206,7 +206,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara013, Function | MediumTe
 {
     const char* value = GetSecurityPatchTag();
     printf("Secure Patch Level=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -218,7 +218,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara014, Function | MediumTe
 {
     const char* value = GetAbiList();
     printf("Abi List=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -230,8 +230,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara015, Function | MediumTe
 {
     int value = GetFirstApiVersion();
     printf("First Api Level=%d\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    TEST_ASSERT_TRUE((int)value == value);
+    TEST_ASSERT_TRUE(value > 0);
 };
 
 /**
@@ -243,7 +242,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara016, Function | MediumTe
 {
     const char* value = GetIncrementalVersion();
     printf("Incremental Version=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -255,7 +254,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara017, Function | MediumTe
 {
     const char* value = GetVersionId();
     printf("Version Id=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -267,7 +266,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara018, Function | MediumTe
 {
     const char* value = GetBuildType();
     printf("Build Type=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -279,7 +278,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara019, Function | MediumTe
 {
     const char* value = GetBuildUser();
     printf("Build User=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -291,7 +290,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara020, Function | MediumTe
 {
     const char* value = GetBuildHost();
     printf("Build Host=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -303,7 +302,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara021, Function | MediumTe
 {
     const char* value = GetBuildTime();
     printf("Build Time=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -315,7 +314,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara022, Function | MediumTe
 {
     const char* value = GetBuildRootHash();
     printf("Build Root Hash=%s\n", value);
-    IsEmpty(value);
+    TEST_ASSERT_NOT_NULL(value);
 };
 
 /**
@@ -327,7 +326,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara023, Function | MediumTe
 {
     const char* value = GetSoftwareModel();
     printf("Software Model=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
 };
 
 /**
@@ -339,8 +338,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara024, Function | MediumTe
 {
     int value = GetSdkApiVersion();
     printf("Sdk Api Level=%d\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    TEST_ASSERT_TRUE((int)value == value);
+    TEST_ASSERT_TRUE(value > 0);
 };
 
 /**
