@@ -19,8 +19,8 @@
 void IsEmpty(const char* sysPara)
 {
     if (sysPara != NULL) {
-        TEST_ASSERT_EQUAL_INT(1, 1);
-    } else {
-        TEST_FAIL();
-    } 
+        if (strlen(sysPara) != 0) {
+            TEST_ASSERT_NOT_NULL(sysPara);
+        }
+    }
 }
