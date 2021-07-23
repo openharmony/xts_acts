@@ -1478,6 +1478,3 @@ HWTEST_F(hilogtest, log_clear_illegal2, Function|MediumTest|Level4)
     expect = "clear log operation error!\n";
     EXPECT_STREQ(result.c_str(), expect.c_str());
 }
-
-
-
