@@ -253,7 +253,10 @@ HWTEST_F(TimeUtilsTest, testStrftime, Function | MediumTest | Level3)
     char buffer[80] = {0};
     time_t mtime = 18880;
     struct tm *localTime = localtime(&mtime);
-    ASSERT_NE(nullptr, localTime);
+    if (localTime == nullptr) {
+        LOG("localtime errno ");
+        ADD_FAILURE();
+    }
     size_t ftime = strftime(buffer, sizeof(buffer) - 1, "%Ex %EX %A", localTime);
     EXPECT_GT(ftime, g_zero) << "strftime return error!";
     EXPECT_STREQ(buffer, "01/01/70 05:14:40 Thursday") << "buffer return error!";
