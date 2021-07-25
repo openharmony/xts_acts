@@ -231,7 +231,10 @@ HWTEST_F(FileSystemTest, testOpendir, Function | MediumTest | Level2)
 
     errno = 0;
     dirp = opendir(TOP_DIR "/" DIR0);
-    ASSERT_NE(dirp, nullptr);
+    if (dirp == nullptr) {
+        LOG("OPENDIR ERRNO +++");
+        ADD_FAILURE();
+    }
     EXPECT_EQ(errno, 0);
     EXPECT_EQ(closedir(dirp), 0) << "> closedir errno = " << errno;
 }
@@ -326,6 +329,9 @@ HWTEST_F(FileSystemTest, testClosedir, Function | MediumTest | Level3)
     CreateTestFolder();
 
     dirp = opendir(TOP_DIR "/" DIR0);
-    ASSERT_NE(dirp, nullptr) << "> opendir errno = " << errno;
+    if (dirp == nullptr) {
+        LOG("opendir errno ++");
+        ADD_FAILURE();
+    }
     EXPECT_EQ(closedir(dirp), 0) << "> closedir errno = " << errno;
 }

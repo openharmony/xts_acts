@@ -165,7 +165,7 @@ HWTEST_F(FifoTest, testFifoNonblack, Function | MediumTest | Level1)
 HWTEST_F(FifoTest, testFifoBlock, Function | MediumTest | Level1)
 {
     const int arrSize = MAX_PIPE_BUFFER + 1000;
-    int fd;
+    int fd = -1;
     int tmpInt;
     char testBuffer[arrSize];
     memset_s(testBuffer, sizeof(testBuffer), '1', sizeof(testBuffer));

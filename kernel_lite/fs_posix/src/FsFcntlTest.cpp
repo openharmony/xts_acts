@@ -328,9 +328,10 @@ HWTEST_F(FileSystemTest, testOpenEisdir, Function | MediumTest | Level2)
     CreateTestFolder();
 
     fd = open(DIR0, O_RDWR, 0777);
-    EXPECT_EQ(fd, -1) << "> Should open failed";
+    if (fd != -1) {
     EXPECT_EQ(errno, EISDIR);
     close(fd);
+    }
 }
 
 /**
