@@ -26,7 +26,8 @@
 
 using namespace testing::ext;
 
-class ShmTest : public::testing::Test {
+class ShmTest : public ::testing::Test
+{
 public:
     static const char SHM_TEST_STR[];
     static const int SHM_TEST_STR_LEN;
@@ -47,10 +48,15 @@ HWTEST_F(ShmTest, testShmBasic, Function | MediumTest | Level0)
     char *shared = nullptr;
 
     shmid = shmget(static_cast<key_t> IPC_PRIVATE, memSize, 0666 | IPC_CREAT);
-    ASSERT_NE(shmid, -1) << "> parent: shmid errno = " << errno;
-
+    if (shmid == -1) {
+        LOG("shmget errno ,errno = %d", errno);
+        ADD_FAILURE();
+    }
     pid_t pid = fork();
-    ASSERT_TRUE(pid >= 0) << "> parent: fork errno = " << errno;
+    if (pid < 0) {
+        LOG("fork errno ,errno = %d", errno);
+        ADD_FAILURE();
+    }
     if (pid == 0) {
         int exitCode = 0;
         Msleep(40);
@@ -75,10 +81,15 @@ HWTEST_F(ShmTest, testShmBasic, Function | MediumTest | Level0)
     }
     // parent
     shared = static_cast<char*>(shmat(shmid, nullptr, 0));
-    ASSERT_NE(shared, (void*)-1) << "> parent : error: shmat";
+    if (shared == (void*)-1) {
+        LOG("shmat errno ,errno = %d", errno);
+        ADD_FAILURE();
+    }
     strncpy(shared, SHM_TEST_STR, SHM_TEST_STR_LEN);
-    ASSERT_NE(shmdt(shared), -1) << "> parent: error : shmdt";
-
+    if (shmdt(shared) == -1) {
+        LOG("shmdt errno ,errno = %d", errno);
+        ADD_FAILURE();
+    }
     Msleep(50);
     WaitProcExitedOK(pid);
 }
@@ -94,7 +105,10 @@ HWTEST_F(ShmTest, testShmSingleProcess, Function | MediumTest | Level1)
     char *shared = nullptr;
 
     int shmid = shmget(static_cast<key_t> IPC_PRIVATE, memSize, 0666 | IPC_CREAT);
-    ASSERT_NE(shmid, -1) << "> shmget errno = " << errno;
+    if (shmid == -1) {
+        LOG("shmget errno ,errno = %d", errno);
+        ADD_FAILURE();
+    }
 
     shared = static_cast<char*>(shmat(shmid, nullptr, 0));
     ASSERT_NE(shared, (void*)-1) << "> shmat errno = " << errno;
@@ -167,10 +181,16 @@ HWTEST_F(ShmTest, testShmatSHM_REMAP, Function | MediumTest | Level1)
     char *shared = nullptr;
 
     shmid = shmget(static_cast<key_t> IPC_PRIVATE, memSize, 0666 | IPC_CREAT);
-    ASSERT_NE(shmid, -1) << "> parent: error : shmget";
+    if (shmid == -1) {
+        LOG("shmget errno ,errno = %d", errno);
+        ADD_FAILURE();
+    }
 
     pid_t pid = fork();
-    ASSERT_TRUE(pid >= 0) << "> parent: error : fork";
+    if (shmid < 0) {
+        LOG("fork errno ,errno = %d", errno);
+        ADD_FAILURE();
+    }
     if (pid == 0) {
         Msleep(10);
         int exitCode = 0;
@@ -225,9 +245,15 @@ HWTEST_F(ShmTest, testShmatSHM_RDONLY, Function | MediumTest | Level0)
     char *shared = nullptr;
 
     shmid = shmget(IPC_PRIVATE, memSize, 0666 | IPC_CREAT);
-    EXPECT_NE(shmid, -1) << "> parent: shmget errno = " << errno;
+    if (shmid == -1) {
+        LOG("shmget errno ,errno = %d", errno);
+        ADD_FAILURE();
+    }
     pid_t pid = fork();
-    ASSERT_TRUE(pid >= 0) << "> parent: fork errno = " << errno;
+    if (pid < 0) {
+        LOG("fork errno ,errno = %d", errno);
+        ADD_FAILURE();
+    }
     if (pid == 0) {
         int exitCode = 0;
         Msleep(10);
@@ -274,6 +300,10 @@ HWTEST_F(ShmTest, testShmatSHM_RND, Function | MediumTest | Level0)
 
     Msleep(10);
     shmid = shmget(IPC_PRIVATE, memSize, 0666 | IPC_CREAT);
+    if (shmid == -1) {
+        LOG("shmget failed+++");
+        ADD_FAILURE();  
+    }
     EXPECT_NE(shmid, -1) << "shmget : errno = " << errno;
 
     shared = shmat(shmid, nullptr, 0);
@@ -310,7 +340,10 @@ HWTEST_F(ShmTest, testShmctl, Function | MediumTest | Level1)
 
     Msleep(10);
     shmid = shmget(IPC_PRIVATE, memSize, 0666 | IPC_CREAT);
-    ASSERT_NE(shmid, -1) << "> shmget : errno = " << errno;
+    if (shmid == -1) {
+        LOG("shmget errno = %d \n",errno);
+        ADD_FAILURE();
+    }
 
     tmp = shmctl(shmid, IPC_STAT, &shmPerm);
     EXPECT_NE(tmp, -1) << "> shmctl : IPC_STAT1 ：erron = " << errno;

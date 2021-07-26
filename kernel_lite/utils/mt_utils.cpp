@@ -35,16 +35,20 @@ uint64_t CheckStep(int value)
         shmctl(g_shmidCheckStep, IPC_RMID, nullptr);
         g_shmidCheckStep = shmget(IPC_PRIVATE, 1024, 0666 | IPC_CREAT);
     }
-    uint64_t *shared = (uint64_t *)shmat(g_shmidCheckStep, nullptr, 0);
+    if (g_shmidCheckStep != -1) {
 
-    if (value == 1) {
-        *shared = 1;
-    } else {
-        *shared = (*shared << 4) + value;
+        uint64_t *shared = (uint64_t *)shmat(g_shmidCheckStep, nullptr, 0);
+
+        if (value == 1) {
+            *shared = 1;
+        } else {
+            *shared = (*shared << 4) + value;
+        }
+        uint64_t state = *shared;
+        shmdt(shared);
+
+        return state;
     }
-    uint64_t state = *shared;
-    shmdt(shared);
-    return state;
 }
 
 int CountPrimes(uint32_t maxNumber)
