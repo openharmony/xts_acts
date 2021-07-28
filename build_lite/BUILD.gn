@@ -40,7 +40,7 @@ lite_component("acts_component") {
         "//test/xts/acts/iot_hardware_lite/iot_controller_hal:ActsWifiIotTest",
         "//test/xts/acts/kernel_lite/kernelcmsis_hal:ActsCMSISTest",
         "//test/xts/acts/utils_lite/kv_store_hal:ActsKvStoreTest",
-        "//test/xts/acts/security_lite/huks_hal:ActsSecurityDataTest",
+        #"//test/xts/acts/security_lite/huks_hal:ActsSecurityDataTest",
         "//test/xts/acts/hiviewdfx_lite/hilog_hal:ActsDfxFuncTest",
 
         "//test/xts/acts/distributed_schedule_lite/system_ability_manager_hal:ActsSamgrTest",
@@ -82,7 +82,7 @@ lite_component("acts_component") {
       all_features += [
         "//test/xts/acts/utils_lite/kv_store_posix:ActsKvStoreTest",
         "//test/xts/acts/startup_lite/syspara_posix:ActsParameterTest",
-        "//test/xts/acts/security_lite/huks_posix:ActsSecurityDataTest",
+        #"//test/xts/acts/security_lite/huks_posix:ActsSecurityDataTest",
         #"//test/xts/acts/multimedia_lite/camera_lite_posix/camera_native:ActsMediaCameraTest",
         #"//test/xts/acts/multimedia_lite/media_lite_posix/player_native:ActsMediaPlayerTest",
         #"//test/xts/acts/multimedia_lite/media_lite_posix/recorder_native:ActsMediaRecorderTest",
