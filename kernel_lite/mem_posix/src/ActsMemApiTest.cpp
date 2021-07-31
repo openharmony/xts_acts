@@ -297,8 +297,10 @@ HWTEST_F(ActsMemApiTest, testMemmem_0100, Function | MediumTest | Level1) {
 
     LogPrint("    memmem *haystack:='%s' size_haystack:='%d' ", srcStr, strlen(srcStr));
     LogPrint("*needle:='%s' size_needle:='%d',\n", srcSubStr, strlen(srcSubStr));
+    if (strlen(srcStr) >= strlen(srcSubStr)) {
     pos = (char *)memmem(srcStr, strlen(srcStr), srcSubStr, strlen(srcSubStr));
     LogPrint("    --> return pos:='%x'\n", pos);
+    }
 	
     ASSERT_TRUE(pos)
         << "ErrInfo: memmem *haystack:='" << srcStr << " size_haystack:='"
@@ -315,7 +317,10 @@ HWTEST_F(ActsMemApiTest, testMemmem_1000, Function | MediumTest | Level1) {
     char srcStr[] = "this is str a;";
     char srcSubStr[] = "strb";
     char *pos = nullptr;
-
+    
+    if (strlen(srcStr) < strlen(srcSubStr)) {
+        FAIL();
+    }
     pos = (char *)memmem(srcStr, strlen(srcStr), srcSubStr, strlen(srcSubStr));
     LogPrint("    memmem *haystack:='%s' size_haystack:='%d' ", srcStr, strlen(srcStr));
     LogPrint("*needle:='%s' size_needle:='%d',\n", srcSubStr, strlen(srcSubStr));
