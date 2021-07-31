@@ -47,12 +47,14 @@ var updateState = {
 describe('updateclient', function() {
     beforeAll(function() {
         if (updater == undefined) {
-            updater = client.getUpdater('OTA');
+            updater = client.getUpdater('/data/updater/updater.zip', 'OTA');
+            console.info("beforeAll updater" + updater);
         }
     });
     beforeEach(function() {
         if (updater == undefined) {
-            updater = client.getUpdater('OTA');
+            updater = client.getUpdater('/data/updater/updater.zip', 'OTA');
+            console.info("beforeEach updater" + updater);
         }
     });
     afterEach(function() {});
@@ -71,11 +73,6 @@ describe('updateclient', function() {
             }
             let tmpUpdater = client.getUpdater('/data/updater/updater.zip', 'OTA');
             expect(tmpUpdater != undefined);
-            if (tmpUpdater == undefined) {
-                console.error("Fail to get updater");
-                return;
-            }
-            
         } catch(e) {
             console.error('[testGetUpdate] fail.' + e);
         }
@@ -97,6 +94,7 @@ describe('updateclient', function() {
                 return;
             }
             let tmpUpdater = client.getUpdater('/data/updater/updater.zip', '44444');
+            console.info("testGetUpdate3 updater" + tmpUpdater);
             expect(tmpUpdater == undefined);
         } catch(e) {
             console.error('[testGetUpdate] fail.' + e);
@@ -119,12 +117,13 @@ describe('updateclient', function() {
                 return;
             }
             let tmpUpdater = client.getUpdater('/data/updater/updater.zip', 'patch');
+            console.info("testGetUpdate3 updater" + tmpUpdater);
             expect(tmpUpdater != undefined);
             if (tmpUpdater == undefined) {
                 console.error("Fail to get updater");
                 return;
             }
-            
+
         } catch(e) {
             console.error('[testGetUpdate] fail.' + e);
         }
@@ -1708,5 +1707,109 @@ describe('updateclient', function() {
         }
         console.info('[testOffUpgrade5] success.');
         console.info('testOffUpgrade5 END');
+    });
+
+    /**
+     * @tc.number    SUB_UPDATE_JS_API_0076
+     * @tc.name      testCancelDownload
+     * @tc.desc      Test Cancel download.
+     */
+    it('testCancelDownload', 0, function() {
+        console.info('testCancelDownload START');
+        try{
+            let ret = updater.cancel();
+            console.info('updater.cancelUpgrade' + ret);
+            expect(ret == 0);
+        } catch (e) {
+            console.info('[cancel] catch ' + e);
+        }
+        console.info('[cancel] success.');
+        console.info('testCancelDownload END');
+    });
+
+    /**
+     * @tc.number    SUB_UPDATE_JS_API_0077
+     * @tc.name      testCancelDownload2
+     * @tc.desc      Test Cancel download.
+     */
+    it('testCancelDownload2', 0, function() {
+        console.info('testCancelDownload2 START');
+        try{
+            // Open download monitor.
+            updater.on('downloadProgress', progress => {
+                console.log("downloadProgress on" + progress);
+                console.log(`downloadProgress status: ` + progress.status);
+                console.log(`downloadProgress percent: ` + progress.percent);
+                console.log(`downloadProgress endReason: ` + progress.endReason);
+                if (progress.status == updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
+                progress.status == updateState.UPDATE_STATE_VERIFY_SUCCESS) {
+                    expect(progress.percent).assertEqual(expect_value);
+                    updater.off("downloadProgress");
+                }
+            })
+            let ret = updater.download();
+            expect(ret == 0);
+
+            ret = updater.cancel();
+            console.info('updater.cancel' + ret);
+            expect(ret == 0);
+        } catch (e) {
+            console.info('[cancel] catch ' + e);
+        }
+        console.info('[cancel] success.');
+        console.info('testCancelDownload2 END');
+    });
+
+    /**
+     * @tc.number    SUB_UPDATE_JS_API_0078
+     * @tc.name      testCancelDownload3
+     * @tc.desc      Test Cancel download.
+     */
+    it('testCancelDownload3', 0, function() {
+        console.info('testCancelDownload3 START');
+        try{
+            let ret = updater.cancel();
+            console.info('updater.cancel' + ret);
+            expect(ret == 0);
+        } catch (e) {
+            console.info('[cancel] catch ' + e);
+        }
+        console.info('[cancel] success.');
+        console.info('testCancelDownload3 END');
+    });
+
+    /**
+     * @tc.number    SUB_UPDATE_JS_API_0079
+     * @tc.name      testCancelDownload4
+     * @tc.desc      Test Cancel download.
+     */
+    it('testCancelDownload4', 0, function() {
+        console.info('testCancelDownload4 START');
+        try{
+            let ret = updater.cancel("");
+            console.info('updater.cancel' + ret);
+            expect(ret == undefined);
+        } catch (e) {
+            console.info('[cancel] catch ' + e);
+        }
+        console.info('[cancel] success.');
+        console.info('testCancelDownload4 END');
+    });
+    /**
+     * @tc.number    SUB_UPDATE_JS_API_0080
+     * @tc.name      testCancelDownload5
+     * @tc.desc      Test Cancel download.
+     */
+    it('testCancelDownload5', 0, function() {
+        console.info('testCancelDownload5 START');
+        try{
+            let ret = updater.cancel(function(){});
+            console.info('updater.cancel' + ret);
+            expect(ret == undefined);
+        } catch (e) {
+            console.info('[cancel] catch ' + e);
+        }
+        console.info('[cancelUpgrade] success.');
+        console.info('testCancelDownload5 END');
     });
 });
