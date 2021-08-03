@@ -16,10 +16,10 @@
 #include "gtest/gtest.h"
 #include "discovery_service.h"
 #include "session.h"
-#include "securec.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <climits>
+#include "securec.h"
 
 using namespace std;
 using namespace testing::ext;
