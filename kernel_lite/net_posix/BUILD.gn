@@ -20,10 +20,11 @@ hcpptest_suite("ActsNetTest") {
   include_dirs = [
     "//test/xts/tools/hctest/include",
     "../utils/",
+    "//third_party/bounds_checking_function/include/",
   ]
 
   deps = [
-    "//base/security/huks/frameworks/huks_lite/source:huks",
     "//test/xts/acts/kernel_lite/utils:libutils",
+    "//third_party/bounds_checking_function:libsec_shared", 
   ]
 }
