@@ -17,11 +17,11 @@
 #include "sys/socket.h"
 #include "arpa/inet.h"
 #include "netinet/tcp.h"
-#include "securec.h"
 #include <sys/wait.h>
 #include <string.h>
 #include <errno.h>
 #include <stdlib.h>
+#include "securec.h"
 
 using namespace std;
 using namespace testing::ext;
