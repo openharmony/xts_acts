@@ -39,6 +39,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/updater:update",
   "${ACTS_ROOT}/graphic:graphic",
   "${ACTS_ROOT}/ace:ace",
+  "${ACTS_ROOT}/storage:storage",
 ]
 
 _all_test_packages_ivi = [
