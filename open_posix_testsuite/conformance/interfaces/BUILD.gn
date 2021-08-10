@@ -14,16 +14,15 @@
 import("//test/xts/tools/lite/build/suite_lite.gni")
 
 open_source_suite("ActsOpenPosixTest") {
-  compiler = rebase_path("${ohos_build_compiler_dir}/bin/${ohos_build_compiler}")
+  compiler =
+      rebase_path("${ohos_build_compiler_dir}/bin/${ohos_build_compiler}")
   suite_name = "acts"
   exec_command_path = "//third_party/ltp/testcases/open_posix_testsuite/"
   sysroot_path = rebase_path(ohos_current_sysroot)
   arch_cflags = string_join(" ", target_arch_cflags)
   prebuild_command = "make clean && make distclean && ./scripts/generate-makefiles.sh $compiler ${ohos_root_path} ${sysroot_path} \"${arch_cflags}\" && make -j -C conformance/interfaces"
   exec_sub_dir = "conformance/interfaces"
-  deps = [
-    "//test/xts/acts/open_posix_testsuite/conformance/definitions:ActsOpenPosixBuildOnlyTest",
-  ]
+  deps = [ "//test/xts/acts/open_posix_testsuite/conformance/definitions:ActsOpenPosixBuildOnlyTest" ]
   build_args = [
     "sched_getparam/sched_getparam_1-1.run-test",
     "sched_getparam/sched_getparam_2-1.run-test",
@@ -74,6 +73,7 @@ open_source_suite("ActsOpenPosixTest") {
     "clock_gettime/clock_gettime_1-1.run-test",
     "clock_gettime/clock_gettime_1-2.run-test",
     "clock_gettime/clock_gettime_2-1.run-test",
+
     #"clock_gettime/clock_gettime_3-1.run-test",
     "clock_gettime/clock_gettime_7-1.run-test",
     "clock_gettime/clock_gettime_8-1.run-test",
@@ -289,6 +289,7 @@ open_source_suite("ActsOpenPosixTest") {
     "pthread_setspecific/pthread_setspecific_1-1.run-test",
     "pthread_setspecific/pthread_setspecific_1-2.run-test",
     "pthread_spin_destroy/pthread_spin_destroy_1-1.run-test",
+
     #"aio_cancel/aio_cancel_9-1.run-test",
     #"aio_cancel/aio_cancel_10-1.run-test",
     #"aio_fsync/aio_fsync_12-1.run-test",
@@ -613,7 +614,8 @@ open_source_suite("ActsOpenPosixTest") {
     "sigprocmask/sigprocmask_8-2.run-test",
     "sigprocmask/sigprocmask_8-3.run-test",
     "sigprocmask/sigprocmask_9-1.run-test",
-    "sigqueue/sigqueue_9-1.run-test",
+
+    #"sigqueue/sigqueue_9-1.run-test",
     "sigrelse/sigrelse_1-1.run-test",
     "sigrelse/sigrelse_2-1.run-test",
     "sigrelse/sigrelse_3-1.run-test",
@@ -626,4 +628,3 @@ open_source_suite("ActsOpenPosixTest") {
     "sigwaitinfo/sigwaitinfo_3-1.run-test",
   ]
 }
-
