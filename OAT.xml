@@ -57,6 +57,7 @@ Note:If the text contains special characters, please escape them according to th
             <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binaryFile" >
                 <filteritem type="filename" name="entry-debug-rich-signed.hap" desc="./multimedia/audio/audio_js_standard dir src code compile"/>
                 <filteritem type="filename" name="entry-debug-signed.hap" desc="./global/resmgr_L2/resmgrjs/hap dir src code compile"/>
+                <filteritem type="filename" name="entry-release-signed.hap" desc="./global/i18n_standard/intljs/hap dir src code compile"/>
                 <filteritem type="filename" name="entry-debug-rich-unsigned.hap" desc="./distributeddatamgr/distributedfilejstest dir src code compile"/>
                 <filteritem type="filename" name="entry-test-signed.hap" desc="./distributeddatamgr/appdatamgrjstest dir src code compile"/>
             </filefilter>
