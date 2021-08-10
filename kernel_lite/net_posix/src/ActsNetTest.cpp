@@ -245,7 +245,7 @@ static void* SampleTcpServerTask(void *p)
     iov[0].iov_base = bufrec;
     iov[0].iov_len = sizeof(bufrec);
     ret = recvmsg(clnFd, &msg, 0);
-    if (len * strlen(g_cliMsg) == (unsigned int)ret) {
+    if (len * strlen(g_cliMsg) == (unsigned int)ret && ret >= 0) {
         bufrec[ret] = 0;
         printf("[tcp server]recvmsg on socket %d:%d, msg[%s]\n", clnFd, ret, buf);
     } else {
