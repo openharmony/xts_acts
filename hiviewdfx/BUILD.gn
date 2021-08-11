@@ -18,6 +18,7 @@ group("hiviewdfxtestacts") {
       "hiappeventtest/hiappeventjstest:hiappeventjstest",
       "hilogtest/libhilogtest:libhilogtestacts",
       "hisyseventtest/hisyseventcpptest:HiSysEventCPPTest",
+      "faultloggertest/faultloggercpptest:faultloggertest",
     ]
   }
 }
