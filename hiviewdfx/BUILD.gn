@@ -15,10 +15,10 @@ group("hiviewdfxtestacts") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "faultloggertest/faultloggercpptest:faultloggertest",
       "hiappeventtest/hiappeventjstest:hiappeventjstest",
       "hilogtest/libhilogtest:libhilogtestacts",
       "hisyseventtest/hisyseventcpptest:HiSysEventCPPTest",
-      "faultloggertest/faultloggercpptest:faultloggertest",
     ]
   }
 }
