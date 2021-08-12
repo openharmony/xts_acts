@@ -209,12 +209,12 @@ std::vector<std::string> getfileinpath(std::string path)
     DIR *dir;
     struct dirent *pdirent;
     dir = opendir(path.c_str());
-    if (dir != NULL) {
-        while((pdirent = readdir(dir)) != NULL) {
-            if(strncmp(pdirent->d_name, ".", strlen(pdirent->d_name)) == 0 ||
-            strncmp(pdirent->d_name, "..", strlen(pdirent->d_name)) == 0) {
+    if (dir != nullptr) {
+        while ((pdirent = readdir(dir)) != nullptr) {
+            if (strncmp(pdirent->d_name, ".", strlen(pdirent->d_name)) == 0 ||
+                strncmp(pdirent->d_name, "..", strlen(pdirent->d_name)) == 0) {
                 continue;
-            } else if(pdirent->d_type == 4) {
+            } else if (pdirent->d_type == 4) {
                 continue;
             } else {
                 filelist.push_back(pdirent->d_name);

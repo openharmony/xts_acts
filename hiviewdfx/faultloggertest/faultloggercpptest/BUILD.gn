@@ -21,15 +21,15 @@ config("faultloggertest_config") {
     "../../utils/native",
     "//utils/native/base/include/",
     "//base/hiviewdfx/hilog/interfaces/native/innerkits/include",
-    "genfault.h"
+    "genfault.h",
   ]
 }
 ohos_moduletest_suite("faultloggertest") {
   module_out_path = module_output_path
-  sources = [ 
-             "faultloggertest.cpp",
-             "genfault.cpp"
-            ]
+  sources = [
+    "faultloggertest.cpp",
+    "genfault.cpp",
+  ]
   deps = [
     "../../utils/native:utilskit",
     "//base/hiviewdfx/hilog/interfaces/native/innerkits:libhilog",

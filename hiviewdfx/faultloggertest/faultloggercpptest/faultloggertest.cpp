@@ -67,7 +67,7 @@ pid_t faultloggertest::DoTestProcess(int faulttype)
             std::cout<<"for pid failed"<<std::endl;
             break;
         case 0:
-            genFault(faulttype);
+            GenFault(faulttype);
             break;
         default:
             break;
@@ -93,7 +93,7 @@ HWTEST_F(faultloggertest, Faultlogger_Faultdetect, Function|MediumTest|Level1)
     faultfilelist = getfileinpath("/data/log/faultlog/temp/");
     printf("sizeof faultfilelist is %d\r\n", faultfilelist.size());
     bool result = false;
-    for(std::string filename : faultfilelist) {
+    for (std::string filename : faultfilelist) {
         printf("file list is %s\r\n", filename.c_str());
         if (filename.find("cppcrash-" + to_string(pid))) {
             result = true;
@@ -117,7 +117,7 @@ HWTEST_F(faultloggertest, Faultlogger_Faultdetect1, Function|MediumTest|Level1)
     printf("sizeof faultfilelist is %d\r\n", faultfilelist.size());
     bool result = false;
     std::string faultloggerfile = "";
-    for(std::string filename : faultfilelist) {
+    for (std::string filename : faultfilelist) {
         if (filename.find("cppcrash-" + to_string(pid)) != std::string::npos) {
             printf("file list is %s\r\n", filename.c_str());
             faultloggerfile = filename;

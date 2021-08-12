@@ -20,19 +20,12 @@
 #include <unistd.h>
 
 typedef enum {
-    FAULT_DIVZERO = 0,
-    FAULT_HEAP_OVERFLOW = 1,
-    FAULT_STACK_OVERFLOW = 2,
-    FAULT_NULL_POINTER = 3,
+    FAULT_HEAP = 1,
+    FAULT_STACK = 2,
+    FAULT_NULLPTR = 3,
 }FaultType;
 
-void faultdividezero(int value)
-{
-    printf("faultdividezero, param is %d\r\n", value);
-    printf("faultdividezero result = %d\r\n", 123 / value);
-}
-
-void faultheapoverflow(int value)
+void FaultHeap(int value)
 {
     
     int* arraytest = new int[123];
@@ -40,30 +33,29 @@ void faultheapoverflow(int value)
     printf("%d", arraytest[value]);
 }
 
-void faultstackoverflow(int value)
+void FaultStack(int value)
 {
     int arraytest[123];
     printf("value of i is %d", arraytest[value]);
 }
-void faultnullpointer()
+
+void FaultNullPointer()
 {
     const int num = 80;
-    int *i = NULL;
+    int *i = nullptr;
     *i = num;
 }
 
-void genFault(int faulttype)
+void GenFault(int faulttype)
 {
     printf("genFault, param is %d\r\n", faulttype);
     switch (faulttype) {
-        case FAULT_DIVZERO:
-            faultdividezero(0);
-        case FAULT_HEAP_OVERFLOW:
-            faultheapoverflow(125);
-        case FAULT_STACK_OVERFLOW:
-            faultstackoverflow(125);
-        case FAULT_NULL_POINTER:
-            faultnullpointer();
+        case FAULT_HEAP:
+            FaultHeap(125);
+        case FAULT_STACK:
+            FaultStack(125);
+        case FAULT_NULLPTR:
+            FaultNullPointer();
             break;
     }
 }

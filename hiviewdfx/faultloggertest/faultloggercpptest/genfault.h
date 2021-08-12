@@ -13,4 +13,4 @@
  * limitations under the License.
  */
 #include "file_utils.h"
-void genFault(int faulttype);
+void GenFault(int faulttype);
