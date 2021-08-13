@@ -334,6 +334,7 @@ HWTEST_F(IoTest, testVasprintf, Function | MediumTest | Level1)
     ret = FormatVasprintf(&buf, "%f and %c as well as %ld\n", 2.2, 'c', 6);
     EXPECT_EQ(ret, 28);
     EXPECT_STREQ(buf, "2.200000 and c as well as 6\n");
+    free(buf);
 }
 
 /**

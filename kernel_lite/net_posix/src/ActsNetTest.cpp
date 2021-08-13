@@ -236,7 +236,7 @@ static void* SampleTcpServerTask(void *p)
 
     WAIT();
     static char bufrec[BUF_SIZE + 1] = {0};
-    memset_s(bufrec, BUF_SIZE, 0, BUF_SIZE);
+    memset_s(bufrec, sizeof(bufrec), 0, BUF_SIZE);
     memset_s(&msg, sizeof(msg), 0, sizeof(msg));
     msg.msg_name = &clnAddr;
     msg.msg_namelen = sizeof(clnAddr);
@@ -331,7 +331,7 @@ static void* SampleTcpClientTask(void *p)
 
     WAIT();
     static char bufrec[BUF_SIZE + 1] = {0};
-    memset_s(bufrec, BUF_SIZE, 0, BUF_SIZE);
+    memset_s(bufrec, sizeof(bufrec), 0, BUF_SIZE);
     memset_s(&msg, sizeof(msg), 0, sizeof(msg));
     msg.msg_name = &clnAddr;
     msg.msg_namelen = sizeof(clnAddr);
@@ -340,7 +340,7 @@ static void* SampleTcpClientTask(void *p)
     iov[0].iov_base = bufrec;
     iov[0].iov_len = sizeof(bufrec);
     ret = recvmsg(clnFd, &msg, 0);
-    if (len * strlen(g_srvMsg) == (unsigned int)ret) {
+    if (len * strlen(g_srvMsg) == (unsigned int)ret && ret >= 0) {
         bufrec[ret] = 0;
         printf("[tcp client]recvmsg, ret=%d, msg[%s]\n", ret, bufrec);
     } else {
