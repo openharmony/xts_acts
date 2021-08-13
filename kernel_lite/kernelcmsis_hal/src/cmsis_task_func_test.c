@@ -1300,7 +1300,6 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetId010, Function | MediumTe
 {
     g_puwTaskID01 = osThreadGetId();
     TEST_ASSERT_NOT_NULL(g_puwTaskID01);
-    osThreadExit();
 };
 
 /**
@@ -2007,7 +2006,6 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetName010, Function | Medium
     g_puwTaskID01 = osThreadGetId();
     attr.name = osThreadGetName(g_puwTaskID01);
     TEST_ASSERT_NOT_NULL(attr.name);
-    osThreadExit();
 };
 
 /**
@@ -2201,7 +2199,6 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetState010, Function | Mediu
     g_puwTaskID01 = osThreadGetId();
     state = osThreadGetState(g_puwTaskID01);
     TEST_ASSERT_EQUAL_INT(osThreadRunning, state);
-    osThreadExit();
 };
 
 /**
@@ -2593,7 +2590,6 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadGetStackSize010, Function | M
     g_puwTaskID01 = osThreadGetId();
     attr.stack_size = osThreadGetStackSize(g_puwTaskID01);
     TEST_ASSERT_GREATER_THAN_INT32(0, attr.stack_size);
-    osThreadExit();
 };
 
 /**
