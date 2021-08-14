@@ -1,0 +1,1 @@
+require('./CancelAllJsunit.test.js')
