@@ -62,7 +62,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara001, Function | MediumTe
 {
     char* value = GetProductType();
     printf("Product Type=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -75,7 +75,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara002, Function | MediumTe
 {
     char* value = GetManufacture();
     printf("Manufacture=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -88,7 +88,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara003, Function | MediumTe
 {
     char* value = GetBrand();
     printf("Brand=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -101,7 +101,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara004, Function | MediumTe
 {
     char* value = GetMarketName();
     printf("Market Name=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -114,7 +114,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara005, Function | MediumTe
 {
     char* value = GetProductSeries();
     printf("Product Series=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -127,7 +127,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara006, Function | MediumTe
 {
     char* value = GetProductModel();
     printf("Product Model=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -140,7 +140,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara007, Function | MediumTe
 {
     char* value = GetHardwareModel();
     printf("Hardware Model=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -153,7 +153,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara008, Function | MediumTe
 {
     char* value = GetHardwareProfile();
     printf("Hardware Profile=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -166,12 +166,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara009, Function | MediumTe
 {
     char* value = GetSerial();
     printf("Serial=%s\n", value);
-    if (value == NULL) {
-        printf("The serial number needs to be written\n");
-        TEST_IGNORE();
-    } else {
-        TEST_ASSERT_EQUAL_INT(1, 1);
-    }
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -184,7 +179,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara010, Function | MediumTe
 {
     char* value = GetOsName();
     printf("Os Name=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -197,7 +192,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara011, Function | MediumTe
 {
     char* value = GetDisplayVersion();
     printf("Display Version=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -210,7 +205,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara012, Function | MediumTe
 {
     char* value = GetBootloaderVersion();
     printf("Bootloader Version=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -223,7 +218,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara013, Function | MediumTe
 {
     char* value = GetSecurityPatchTag();
     printf("Secure Patch Level=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -236,7 +231,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara014, Function | MediumTe
 {
     char* value = GetAbiList();
     printf("Abi List=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -249,7 +244,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara015, Function | MediumTe
 {
     char* value = GetFirstApiLevel();
     printf("First Api Level=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -262,7 +257,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara016, Function | MediumTe
 {
     char* value = GetIncrementalVersion();
     printf("Incremental Version=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -275,7 +270,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara017, Function | MediumTe
 {
     char* value = GetVersionId();
     printf("Version Id=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -288,7 +283,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara018, Function | MediumTe
 {
     char* value = GetBuildType();
     printf("Build Type=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -301,7 +296,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara019, Function | MediumTe
 {
     char* value = GetBuildUser();
     printf("Build User=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -314,7 +309,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara020, Function | MediumTe
 {
     char* value = GetBuildHost();
     printf("Build Host=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -327,7 +322,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara021, Function | MediumTe
 {
     char* value = GetBuildTime();
     printf("Build Time=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -340,7 +335,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara022, Function | MediumTe
 {
     char* value = GetBuildRootHash();
     printf("Build Root Hash=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -353,7 +348,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara023, Function | MediumTe
 {
     char* value = GetSoftwareModel();
     printf("Software Model=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
@@ -366,7 +361,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara024, Function | MediumTe
 {
     char* value = GetSdkApiLevel();
     printf("Sdk Api Level=%s\n", value);
-    IsEmpty(value);
+    AssertNotEmpty(value);
     free(value);
 };
 
