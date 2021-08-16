@@ -16,7 +16,7 @@
 #include "hctest.h"
 #include "parameter_utils.h"
 
-void AssertNotEmpty(const char* sysPara)
+void AssertNotEmpty(const char *sysPara)
 {
     TEST_ASSERT_NOT_NULL(sysPara);
     if (sysPara != NULL) {

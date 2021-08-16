@@ -479,7 +479,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli021, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli022, Function | MediumTest | Level1)
 {
     char* value1 = GetBuildRootHash();
-    AssertNotEmpty(value1);
+    TEST_ASSERT_NOT_NULL(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetBuildRootHash();

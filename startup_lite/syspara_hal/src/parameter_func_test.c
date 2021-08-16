@@ -340,7 +340,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara022, Function | MediumTe
 {
     char* value = GetBuildRootHash();
     printf("Build Root Hash=%s\n", value);
-    AssertNotEmpty(value);
+    TEST_ASSERT_NOT_NULL(value);
     free(value);
 };
 
@@ -993,4 +993,4 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testGetParameter020, Function | MediumTes
     TEST_ASSERT_EQUAL_STRING(rightVal2, value2);
 };
 
-RUN_TEST_SUITE(ParameterFuncTestSuite);
+RUN_TEST_SUITE(void);
