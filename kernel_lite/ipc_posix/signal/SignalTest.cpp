@@ -262,7 +262,10 @@ HWTEST_F(IpcSignalTest, testAbortHandler, Function | MediumTest | Level1)
 {
     const int memSize = 32;
     mShmid = shmget(IPC_PRIVATE, memSize, 0666 | IPC_CREAT);
-    ASSERT_NE(mShmid, -1) << "> parent: get share mem if fail, errno = " << errno;
+    if (mShmid == -1){
+        LOG("shmget errno = %d\n", errno);
+        ADD_FAILURE();
+    }
 
     pid_t pid = fork();
     ASSERT_TRUE(pid >= 0) << "======== Fork Error! =========";

@@ -356,18 +356,24 @@ static void* SampleTcpClientTask(void *p)
     return nullptr;
 }
 
-static void* TcpServerLoopTask(void *p)
+static void *TcpServerLoopTask(void *p)
 {
     int srvFd = CommInitTcpServer(STACK_PORT);
     EXPECT_NE(-1, srvFd);
+    if (srvFd == -1)
+    {
+        LOG("CommInitTcpServer errno = %d\n", errno);
+        ADD_FAILURE();
+    }
     int i = 0;
     int clientFds[36];
     struct sockaddr_in clnAddr = {0};
     socklen_t clnAddrLen = sizeof(clnAddr);
-    while (i < 30) {
-        clientFds[i] = accept(srvFd, (struct sockaddr*)&clnAddr, &clnAddrLen);
+    while (i < 30)
+    {
+        clientFds[i] = accept(srvFd, (struct sockaddr *)&clnAddr, &clnAddrLen);
         printf("[***---][tcp server loop]accept <%s:%d>, fd[%d]i[%d]\n", inet_ntoa(clnAddr.sin_addr),
-            ntohs(clnAddr.sin_port), clientFds[i], i);
+               ntohs(clnAddr.sin_port), clientFds[i], i);
         EXPECT_NE(-1, clientFds[i]);
         i++;
     }
