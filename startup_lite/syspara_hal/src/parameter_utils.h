@@ -25,7 +25,7 @@
  * @tc.name :determines whether the string is empty.
  * @param   :system parameter
  */
-void IsEmpty(const char* sysPara);
+void AssertNotEmpty(const char *sysPara);
 
 #ifdef __cplusplus
 #if __cplusplus
