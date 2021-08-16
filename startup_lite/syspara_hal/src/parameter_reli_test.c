@@ -56,7 +56,7 @@ static BOOL ParameterReliTestSuiteTearDown(void)
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli001, Function | MediumTest | Level1)
 {
     char* value1 = GetProductType();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetProductType();
@@ -76,7 +76,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli001, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli002, Function | MediumTest | Level1)
 {
     char* value1 = GetManufacture();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetManufacture();
@@ -96,7 +96,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli002, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli003, Function | MediumTest | Level1)
 {
     char* value1 = GetBrand();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetBrand();
@@ -116,7 +116,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli003, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli004, Function | MediumTest | Level1)
 {
     char* value1 = GetMarketName();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetMarketName();
@@ -136,7 +136,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli004, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli005, Function | MediumTest | Level1)
 {
     char* value1 = GetProductSeries();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetProductSeries();
@@ -156,7 +156,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli005, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli006, Function | MediumTest | Level1)
 {
     char* value1 = GetProductModel();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetProductModel();
@@ -176,7 +176,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli006, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli007, Function | MediumTest | Level1)
 {
     char* value1 = GetHardwareModel();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetHardwareModel();
@@ -196,7 +196,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli007, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli008, Function | MediumTest | Level1)
 {
     char* value1 = GetHardwareProfile();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetHardwareProfile();
@@ -239,7 +239,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli009, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli010, Function | MediumTest | Level1)
 {
     char* value1 = GetOsName();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetOsName();
@@ -259,7 +259,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli010, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli011, Function | MediumTest | Level1)
 {
     char* value1 = GetDisplayVersion();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetDisplayVersion();
@@ -279,7 +279,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli011, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli012, Function | MediumTest | Level1)
 {
     char* value1 = GetBootloaderVersion();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetBootloaderVersion();
@@ -299,7 +299,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli012, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli013, Function | MediumTest | Level1)
 {
     char* value1 = GetSecurityPatchTag();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetSecurityPatchTag();
@@ -319,7 +319,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli013, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli014, Function | MediumTest | Level1)
 {
     char* value1 = GetAbiList();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetAbiList();
@@ -339,7 +339,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli014, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli015, Function | MediumTest | Level1)
 {
     char* value1 = GetFirstApiLevel();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetFirstApiLevel();
@@ -359,7 +359,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli015, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli016, Function | MediumTest | Level1)
 {
     char* value1 = GetIncrementalVersion();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetIncrementalVersion();
@@ -379,7 +379,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli016, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli017, Function | MediumTest | Level1)
 {
     char* value1 = GetVersionId();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetVersionId();
@@ -399,7 +399,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli017, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli018, Function | MediumTest | Level1)
 {
     char* value1 = GetBuildType();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetBuildType();
@@ -419,7 +419,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli018, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli019, Function | MediumTest | Level1)
 {
     char* value1 = GetBuildUser();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetBuildUser();
@@ -439,7 +439,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli019, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli020, Function | MediumTest | Level1)
 {
     char* value1 = GetBuildHost();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetBuildHost();
@@ -459,7 +459,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli020, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli021, Function | MediumTest | Level1)
 {
     char* value1 = GetBuildTime();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetBuildTime();
@@ -479,7 +479,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli021, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli022, Function | MediumTest | Level1)
 {
     char* value1 = GetBuildRootHash();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetBuildRootHash();
@@ -499,7 +499,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli022, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli023, Function | MediumTest | Level1)
 {
     char* value1 = GetSoftwareModel();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetSoftwareModel();
@@ -519,7 +519,7 @@ LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli023, Function | Medi
 LITE_TEST_CASE(ParameterReliTestSuite, testObtainSysParaReli024, Function | MediumTest | Level1)
 {
     char* value1 = GetSdkApiLevel();
-    IsEmpty(value1);
+    AssertNotEmpty(value1);
     for (int i = 0; i < QUERY_TIMES; i++)
     {
     char* value = GetSdkApiLevel();
