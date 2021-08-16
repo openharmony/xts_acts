@@ -1,0 +1,57 @@
+{
+  "app": {
+    "bundleName": "com.example.datamanagertest",
+    "vendor": "example",
+    "version": {
+      "code": 2000000,
+      "name": "2.0.0"
+    }
+  },
+  "deviceConfig": {},
+  "module": {
+    "package": "com.example.datamanagertest",
+    "name": ".MyApplication",
+    "mainAbility": "com.example.datamanagertest.MainAbility",
+    "deviceType": [
+      "phone"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry",
+      "installationFree": false
+    },
+    "abilities": [
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "name": "com.example.datamanagertest.MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "$string:app_name",
+        "type": "page",
+        "launchType": "standard"
+      }
+    ],
+    "js": [
+      {
+        "pages": [
+          "pages/index/index"
+        ],
+        "name": "default",
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": true
+        }
+      }
+    ]
+  }
+}
