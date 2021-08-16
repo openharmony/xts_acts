@@ -15,6 +15,6 @@
 
 require('./DeviceInfoJsUnit.test.js')
 require('./ParametersJsUnit.test.js')
-require('./UpdaterJsUnit.test.js')
+
 
 
