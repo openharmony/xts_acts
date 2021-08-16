@@ -993,4 +993,4 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testGetParameter020, Function | MediumTes
     TEST_ASSERT_EQUAL_STRING(rightVal2, value2);
 };
 
-RUN_TEST_SUITE(void);
+RUN_TEST_SUITE(ParameterFuncTestSuite);
