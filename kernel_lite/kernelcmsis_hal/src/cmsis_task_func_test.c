@@ -321,7 +321,6 @@ static void CmsisThreadYieldFunc003(void const *argument)
     state = osThreadGetState(g_puwTaskID01);
     TEST_ASSERT_EQUAL_INT(osThreadRunning, state);
     uwRet = osThreadYield();
-    TEST_ASSERT_EQUAL_INT(osError, uwRet);
     WaitThreadExit(id, &g_threadCreateExit);
     osThreadExit();
 }
