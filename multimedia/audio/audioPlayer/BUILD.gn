@@ -10,38 +10,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 import("//test/xts/tools/build/suite.gni")
 
-group("multimedia") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [ "audio/audioPlayer:audio_player_js_hap" ]
-  } else {
-    deps = [
-      #"audio/audio_hap_test:MediaAudio_test_hap",
-      #"audio/audiotubecore_hap_test:Audiotubecore_test_hap",
-      #"camera/camera_hap_test:camera_test_hap",
-      #"image/AVScannerKit_hap:avscanner_test_hap",
-      #"media/media_hap_test:media_test_hap",
-    ]
-  }
-}
-
-#car
-group("multimedia_ivi") {
-  testonly = true
-  deps = []
-}
-
-#tv
-group("multimedia_intellitv") {
-  testonly = true
-  deps = []
-}
-
-#watch
-group("multimedia_wearable") {
-  testonly = true
-  deps = []
+ohos_js_hap_suite("audio_player_js_hap") {
+  test_hap_name = "AudioPlayerJsTest"
+  hap_source_path = "hap/entry-debug-rich-signed.hap"
 }
