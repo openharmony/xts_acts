@@ -202,7 +202,7 @@ void *ThreadPthreadAttrSetstack(void *arg)
 {
     pthread_attr_t attr;
     void *stackAddr1 = nullptr;
-    size_t stackSize;
+    size_t stackSize = 0;
 
     EXPECT_EQ(pthread_getattr_np(pthread_self(), &attr), 0) << "> return errno";
     EXPECT_EQ(pthread_attr_getstack(&attr, &stackAddr1, &stackSize), 0) << "> return errno";
