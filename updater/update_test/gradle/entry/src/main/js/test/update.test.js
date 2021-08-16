@@ -46,13 +46,13 @@ var updateState = {
 
 describe('updateclient', function() {
     beforeAll(function() {
-        if (updater == undefined) {
+        if (updater === undefined) {
             updater = client.getUpdater('/data/updater/updater.zip', 'OTA');
             console.info("beforeAll updater" + updater);
         }
     });
     beforeEach(function() {
-        if (updater == undefined) {
+        if (updater === undefined) {
             updater = client.getUpdater('/data/updater/updater.zip', 'OTA');
             console.info("beforeEach updater" + updater);
         }
@@ -67,12 +67,12 @@ describe('updateclient', function() {
     it('testGetUpdate', 0, function() {
         console.info('testGetUpdate START');
         try {
-            if (client == undefined) {
+            if (client === undefined) {
                 console.error("client not defined");
                 return;
             }
             let tmpUpdater = client.getUpdater('/data/updater/updater.zip', 'OTA');
-            expect(tmpUpdater != undefined);
+            expect(tmpUpdater != undefined).assertTrue();
         } catch(e) {
             console.error('[testGetUpdate] fail.' + e);
         }
@@ -89,13 +89,13 @@ describe('updateclient', function() {
     it('testGetUpdate2', 0, function() {
         console.info('testGetUpdate2 START');
         try {
-            if (client == undefined) {
+            if (client === undefined) {
                 console.error("client not defined");
                 return;
             }
             let tmpUpdater = client.getUpdater('/data/updater/updater.zip', '44444');
             console.info("testGetUpdate3 updater" + tmpUpdater);
-            expect(tmpUpdater == undefined);
+            expect(tmpUpdater === undefined).assertTrue();
         } catch(e) {
             console.error('[testGetUpdate] fail.' + e);
         }
@@ -112,14 +112,14 @@ describe('updateclient', function() {
     it('testGetUpdate3', 0, function() {
         console.info('testGetUpdate3 START');
         try {
-            if (client == undefined) {
+            if (client === undefined) {
                 console.error("client not defined");
                 return;
             }
             let tmpUpdater = client.getUpdater('/data/updater/updater.zip', 'patch');
             console.info("testGetUpdate3 updater" + tmpUpdater);
-            expect(tmpUpdater != undefined);
-            if (tmpUpdater == undefined) {
+            expect(tmpUpdater != undefined).assertTrue();
+            if (tmpUpdater === undefined) {
                 console.error("Fail to get updater");
                 return;
             }
@@ -140,13 +140,13 @@ describe('updateclient', function() {
     it('testGetUpdate4', 0, function() {
         console.info('testGetUpdate4 START');
         try {
-            if (client == undefined) {
+            if (client === undefined) {
                 console.error("client not defined");
                 return;
             }
             let tmpUpdater = client.getUpdater(function(){
             });
-            expect(tmpUpdater == undefined);
+            expect(tmpUpdater === undefined).assertTrue();
         } catch(e) {
             console.error('[testGetUpdate4] fail.' + e);
         }
@@ -163,12 +163,12 @@ describe('updateclient', function() {
     it('testGetUpdate5', 0, function() {
         console.info('testGetUpdate5 START');
         try {
-            if (client == undefined) {
+            if (client === undefined) {
                 console.error("client not defined");
                 return;
             }
             let tmpUpdater = client.getUpdater(param_value1, param_value2);
-            expect(tmpUpdater == undefined);
+            expect(tmpUpdater === undefined).assertTrue();
         } catch(e) {
             console.error('[testGetUpdate] fail.' + e);
         }
@@ -189,7 +189,7 @@ describe('updateclient', function() {
                 console.log("getNewVersionInfo success" + data);
                 expect(data.status).assertEqual(0); // Has new version.
             });
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
         } catch(e) {
             console.error('[testGetUpdate] fail.' + e);
         }
@@ -206,7 +206,7 @@ describe('updateclient', function() {
         console.info('testGetNewVersionInfo2 START');
         try {
             let ret = updater.getNewVersionInfo();
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
             console.info('[getNewVersionInfo] success.');
             console.info('testGetNewVersionInfo2 END');
         } catch(e) {
@@ -223,7 +223,7 @@ describe('updateclient', function() {
         console.info('testGetNewVersionInfo3 START');
         try {
             let ret = updater.getNewVersionInfo("dddddd");
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
             console.info('[getNewVersionInfo] success.');
             console.info('testGetNewVersionInfo2 END');
         } catch(e) {
@@ -240,7 +240,7 @@ describe('updateclient', function() {
         console.info('testGetNewVersionInfo4 START');
         try {
             let ret = updater.getNewVersionInfo(param_value1);
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
             console.info('[getNewVersionInfo] success.');
             console.info('testGetNewVersionInfo5 END');
         } catch(e) {
@@ -257,7 +257,7 @@ describe('updateclient', function() {
         console.info('testGetNewVersionInfo5 START');
         try {
             let ret = updater.getNewVersionInfo(param_value1, param_value2);
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
             console.info('[getNewVersionInfo] success.');
             console.info('testGetNewVersionInfo5 END');
         } catch(e) {
@@ -276,7 +276,7 @@ describe('updateclient', function() {
             let ret = updater.getNewVersionInfo().then(data => {
                 console.log("getNewVersionInfo success  " + data);
                 expect(data.status).assertEqual(0); // Has new version.
-                expect(data.checkResults.size > 0);
+                expect(data.checkResults.size > 0).assertTrue();
                 console.log(`info versionName = ` + data.checkResults[0].versionName);
                 console.log(`info versionCode = ` + data.checkResults[0].versionCode);
                 console.log(`info verifyInfo = ` + data.checkResults[0].verifyInfo);
@@ -286,7 +286,7 @@ describe('updateclient', function() {
             }).catch(error =>
                 console.error("getNewVersionInfo catch " + error)
             );
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.error("getNewVersionInfo catch " + e);
         }
@@ -307,7 +307,7 @@ describe('updateclient', function() {
             }).catch(error =>
                 console.error("getNewVersionInfo catch " + error)
             );
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.error("getNewVersionInfo catch " + e);
         }
@@ -327,7 +327,7 @@ describe('updateclient', function() {
             }).catch(error =>
                 console.error("getNewVersionInfo catch " + error)
             );
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.error("getNewVersionInfo catch " + e);
         }
@@ -347,7 +347,7 @@ describe('updateclient', function() {
             }).catch(error =>
                 console.error("getNewVersionInfo catch " + error)
             );
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.error("getNewVersionInfo catch " + e);
         }
@@ -367,7 +367,7 @@ describe('updateclient', function() {
             }).catch(error =>
                 console.error("getNewVersionInfo error " + error)
             );
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.error("getNewVersionInfo catch " + e);
         }
@@ -386,7 +386,7 @@ describe('updateclient', function() {
             let ret = updater.checkNewVersion(function(err, data){
                 console.log("checkNewVersion success" + data);
                 expect(data.status).assertEqual(0); // Has new version.
-                expect(data.checkResults.size > 0);
+                expect(data.checkResults.size > 0).assertTrue();
                 console.log(`info versionName = ` + data.checkResults[0].versionName);
                 console.log(`info versionCode = ` + data.checkResults[0].versionCode);
                 console.log(`info verifyInfo = ` + data.checkResults[0].verifyInfo);
@@ -397,7 +397,7 @@ describe('updateclient', function() {
             error => {
                 console.log("checkNewVersion error" + error)
             });
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
         } catch(e) {
             console.error("checkNewVersion catch " + e);
         }
@@ -414,7 +414,7 @@ describe('updateclient', function() {
         console.info('testCheckNewVersion2 START');
         try {
             let ret = updater.checkNewVersion();
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
             console.info('[checkNewVersion] success.' + ret);
             console.info('testCheckNewVersion2 END');
         } catch(e) {
@@ -431,7 +431,7 @@ describe('updateclient', function() {
         console.info('testCheckNewVersion3 START');
         try {
             let ret = updater.checkNewVersion("33333");
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
             console.info('[checkNewVersion] success.' + ret);
             console.info('testCheckNewVersion3 END');
         } catch(e) {
@@ -448,7 +448,7 @@ describe('updateclient', function() {
         console.info('testCheckNewVersion4 START');
         try {
             let ret = updater.checkNewVersion(param_value1);
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
             console.info('[checkNewVersion] success.' + ret);
             console.info('testCheckNewVersion4 END');
         } catch(e) {
@@ -465,7 +465,7 @@ describe('updateclient', function() {
         console.info('testCheckNewVersion4 START');
         try {
             let ret = updater.checkNewVersion(param_value1, param_value2);
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
             console.info('[checkNewVersion] success.' + ret);
             console.info('testCheckNewVersion5 END');
         } catch(e) {
@@ -484,7 +484,7 @@ describe('updateclient', function() {
             let ret = updater.checkNewVersion().then(data => {
                 console.log("checkNewVersion success" + data);
                 expect(data.status).assertEqual(0);
-                expect(data.checkResults.size > 0);
+                expect(data.checkResults.size > 0).assertTrue();
                 console.log(`info versionName = ` + data.checkResults[0].versionName);
                 console.log(`info versionCode = ` + data.checkResults[0].versionCode);
                 console.log(`info verifyInfo = ` + data.checkResults[0].verifyInfo);
@@ -494,7 +494,7 @@ describe('updateclient', function() {
             }).catch(error =>
                 console.error("checkNewVersion error " + error)
             );
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.error("checkNewVersion catch " + e)
         }
@@ -514,7 +514,7 @@ describe('updateclient', function() {
             }).catch(error =>
                 console.error("checkNewVersion error " + error)
             );
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.error("checkNewVersion catch " + e);
         }
@@ -534,7 +534,7 @@ describe('updateclient', function() {
             }).catch(error =>
             console.error("checkNewVersion error " + error)
             );
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.error("checkNewVersion catch " + e);
         }
@@ -554,7 +554,7 @@ describe('updateclient', function() {
             }).catch(error =>
             console.error("checkNewVersion error " + error)
             );
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.error("checkNewVersion catch " + e);
         }
@@ -574,7 +574,7 @@ describe('updateclient', function() {
             }).catch(error =>
             console.error("checkNewVersion error " + error)
             );
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.error("checkNewVersion catch " + e);
         }
@@ -602,7 +602,7 @@ describe('updateclient', function() {
                 console.log("setUpdatePolicy success" + data);
                 expect(data).assertEqual(0);
             });
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
         } catch(e) {
             console.error('[testSetUpdatePolicy001] fail.' + e);
         }
@@ -627,7 +627,7 @@ describe('updateclient', function() {
                 expect(data.autoUpgradeInterval[1]).assertEqual(3);
 
             });
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
         } catch(e) {
             console.error('[testGetUpdatePolicy001] fail.' + e);
         }
@@ -654,7 +654,7 @@ describe('updateclient', function() {
                 console.log("setUpdatePolicy success" + data);
                 expect(data).assertEqual(0);
             });
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
         } catch(e) {
             console.error('[testSetUpdatePolicy002] fail.' + e);
         }
@@ -679,7 +679,7 @@ describe('updateclient', function() {
                 expect(data.autoUpgradeInterval[0]).assertEqual(2);
                 expect(data.autoUpgradeInterval[1]).assertEqual(3);
             });
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
         } catch(e) {
             console.error('[testGetUpdatePolicy002] fail.' + e);
         }
@@ -708,7 +708,7 @@ describe('updateclient', function() {
                 console.log("setUpdatePolicy success" + data);
                 expect(data).assertEqual(0);
             })
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
         } catch(e) {
             console.error('[testSetUpdatePolicy003] fail.' + e);
         }
@@ -732,7 +732,7 @@ describe('updateclient', function() {
                 expect(data.autoUpgradeInterval[0]).assertEqual(2);
                 expect(data.autoUpgradeInterval[1]).assertEqual(3);
             })
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
         } catch(e) {
             console.error('[testGetUpdatePolicy003] fail.' + e);
         }
@@ -760,7 +760,7 @@ describe('updateclient', function() {
             console.log("setUpdatePolicy success" + data);
             expect(data).assertEqual(0);
             })
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
         } catch(e) {
             console.error('[testGetUpdatePolicy003] fail.' + e);
         }
@@ -784,7 +784,7 @@ describe('updateclient', function() {
                 expect(data.autoUpgradeInterval[0]).assertEqual(expect_value);
                 expect(data.autoUpgradeInterval[1]).assertEqual(expect_value);
             })
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
         } catch(e) {
             console.error('[testGetUpdatePolicy004] fail.' + e);
         }
@@ -804,7 +804,7 @@ describe('updateclient', function() {
                 console.log("setUpdatePolicy success" + data);
                 expect(data).assertEqual(0);
             });
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.error('[testSetUpdatePolicy005] fail.' + e);
         }
@@ -822,7 +822,7 @@ describe('updateclient', function() {
         try {
             let ret = updater.getUpdatePolicy("", function(err, data){
             })
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.error('[testSetUpdatePolicy005] fail.' + e);
         }
@@ -852,7 +852,7 @@ describe('updateclient', function() {
             }).catch(error =>
                 console.error("setUpdatePolicy error " + error)
             );
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.error('[testSetUpdatePolicyPromise] fail.' + e);
         }
@@ -879,7 +879,7 @@ describe('updateclient', function() {
             }).catch(error =>
                 console.error("getUpdatePolicy catch " + error)
             );
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.error('[testGetUpdatePolicyPromise] fail.' + e);
         }
@@ -908,7 +908,7 @@ describe('updateclient', function() {
             }).catch(error =>
                 console.error("setUpdatePolicy error " + error)
             );
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.error('[setUpdatePolicy] fail.' + e);
         }
@@ -932,7 +932,7 @@ describe('updateclient', function() {
                 expect(data.autoUpgradeInterval[0]).assertEqual(2);
                 expect(data.autoUpgradeInterval[1]).assertEqual(3);
             });
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.error('[testGetUpdatePolicyPromise002] fail.' + e);
         }
@@ -962,7 +962,7 @@ describe('updateclient', function() {
             }).catch(error => {
                 console.info('[setUpdatePolicy] error ' + error)
             })
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.error('[testSetUpdatePolicyPromise003] fail.' + e);
         }
@@ -988,7 +988,7 @@ describe('updateclient', function() {
             }).catch(error => {
                 console.info('[getUpdatePolicy] error ' + error)
             })
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.info('[getUpdatePolicy] catch ' + e)
         }
@@ -1018,7 +1018,7 @@ describe('updateclient', function() {
             }).catch(error => {
                 console.info('[setUpdatePolicy] error ' + error)
             })
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.info('[testSetUpdatePolicyPromise004] catch ' + e)
         }
@@ -1044,7 +1044,7 @@ describe('updateclient', function() {
             }).catch(error => {
                 console.info('[getUpdatePolicy] error ' + error)
             })
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch(e) {
             console.info('[testSetUpdatePolicyPromise004] catch ' + e)
         }
@@ -1064,7 +1064,7 @@ describe('updateclient', function() {
                 console.log("setUpdatePolicy success" + data);
                 expect(data).assertEqual(0);
             });
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[setUpdatePolicy] catch ' + e);
         }
@@ -1082,7 +1082,7 @@ describe('updateclient', function() {
         try{
             let ret = updater.getUpdatePolicy(param_value1).then(data => {
             })
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[setUpdatePolicy] catch ' + e);
         }
@@ -1104,14 +1104,14 @@ describe('updateclient', function() {
                 console.log(`downloadProgress status: ` + progress.status);
                 console.log(`downloadProgress percent: ` + progress.percent);
                 console.log(`downloadProgress endReason: ` + progress.endReason);
-                if (progress.status == updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
-                    progress.status == updateState.UPDATE_STATE_VERIFY_SUCCESS) {
+                if (progress.status === updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
+                    progress.status === updateState.UPDATE_STATE_VERIFY_SUCCESS) {
                     expect(progress.percent).assertEqual(expect_value);
                     updater.off("downloadProgress");
                 }
             })
             let ret = updater.download();
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
         } catch (e) {
             console.info('[testDownloadVersion] catch ' + e);
         }
@@ -1134,15 +1134,15 @@ describe('updateclient', function() {
                 console.log(`downloadProgress status: ` + progress.status);
                 console.log(`downloadProgress percent: ` + progress.percent);
                 console.log(`downloadProgress endReason: ` + progress.endReason);
-                if (progress.status == updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
-                    progress.status == updateState.UPDATE_STATE_VERIFY_SUCCESS) {
+                if (progress.status === updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
+                    progress.status === updateState.UPDATE_STATE_VERIFY_SUCCESS) {
                     expect(progress.percent).assertEqual(expect_value);
                 }
             })
             let ret = updater.download();
             // Cancel subscription immediately, no callback will be received.
             updater.off("downloadProgress");
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
         } catch (e) {
             console.info('[testDownloadVersion02] catch ' + e);
         }
@@ -1163,12 +1163,12 @@ describe('updateclient', function() {
                 console.log(`downloadProgress status: ` + progress.status);
                 console.log(`downloadProgress percent: ` + progress.percent);
                 console.log(`downloadProgress endReason: ` + progress.endReason);
-                if (progress.status == updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
-                    progress.status == updateState.UPDATE_STATE_VERIFY_SUCCESS) {
+                if (progress.status === updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
+                    progress.status === updateState.UPDATE_STATE_VERIFY_SUCCESS) {
                     expect(progress.percent).assertEqual(expect_value);
                 }
             })
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
         } catch (e) {
             console.info('[testDownloadVersion03] catch ' + e);
         }
@@ -1186,12 +1186,12 @@ describe('updateclient', function() {
         try{
             // Open download monitor.
             let ret = updater.on('downloadProgress');
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
             let ret_download = updater.download();
-            expect(ret_download != 0);
+            expect(ret_download).assertInstanceOf('Number');
             // Cancel subscription immediately, no callback will be received.
             let ret_off = updater.off("downloadProgress");
-            expect(ret_off != 0);
+            expect(ret_off).assertInstanceOf('Number');
         } catch (e) {
             console.info('[testDownloadVersion04] catch ' + e);
         }
@@ -1215,13 +1215,13 @@ describe('updateclient', function() {
         try{
             // Open download monitor.
             let ret = updater.on('downloadProgress', testFunction);
-            expect(ret == 0);
+            expect(ret).assertInstanceOf('Number');
 
             let ret_download = updater.download();
-            expect(ret_download != 0);
+            expect(ret_download).assertInstanceOf('Number');
             // Cancel subscription immediately, no callback will be received.
             let ret_off = updater.off("downloadProgress", testFunction);
-            expect(ret_off != 0);
+            expect(ret_off).assertInstanceOf('Number');
         } catch (e) {
             console.info('[testDownloadVersion05] catch ' + e);
         }
@@ -1244,14 +1244,14 @@ describe('updateclient', function() {
                 console.log(`upgradeProgress status: ` + progress.status);
                 console.log(`upgradeProgress percent: ` + progress.percent);
                 console.log(`upgradeProgress endReason: ` + progress.endReason);
-                if (progress.status == updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
-                    progress.status == updateState.UPDATE_STATE_VERIFY_SUCCESS) {
+                if (progress.status === updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
+                    progress.status === updateState.UPDATE_STATE_VERIFY_SUCCESS) {
                     expect(progress.percent).assertEqual(expect_value);
                     updater.off("upgradeProgress");
                 }
             })
             let ret = updater.upgrade();
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
         } catch (e) {
             console.info('[testUpgradeVersion01] catch ' + e);
         }
@@ -1273,17 +1273,17 @@ describe('updateclient', function() {
                 console.log(`upgradeProgress status: ` + progress.status);
                 console.log(`upgradeProgress percent: ` + progress.percent);
                 console.log(`upgradeProgress endReason: ` + progress.endReason);
-                if (progress.status == updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
-                    progress.status == updateState.UPDATE_STATE_VERIFY_SUCCESS) {
+                if (progress.status === updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
+                    progress.status === updateState.UPDATE_STATE_VERIFY_SUCCESS) {
                     expect(progress.percent).assertEqual(expect_value);
                 }
             })
-            expect(ret_on != 0);
+            expect(ret_on).assertInstanceOf('Number');
             let ret = updater.upgrade();
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
             // Cancel subscription immediately, no callback will be received.
             let ret_off = updater.off("upgradeProgress");
-            expect(ret_off != 0);
+            expect(ret_off).assertInstanceOf('Number');
         } catch (e) {
             console.info('[testUpgradeVersion02] catch ' + e);
         }
@@ -1304,12 +1304,12 @@ describe('updateclient', function() {
                 console.log(`upgradeProgress status: ` + progress.status);
                 console.log(`upgradeProgress percent: ` + progress.percent);
                 console.log(`upgradeProgress endReason: ` + progress.endReason);
-                if (progress.status == updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
-                    progress.status == updateState.UPDATE_STATE_VERIFY_SUCCESS) {
+                if (progress.status === updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
+                    progress.status === updateState.UPDATE_STATE_VERIFY_SUCCESS) {
                     expect(progress.percent).assertEqual(expect_value);
                 }
             })
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
         } catch (e) {
             console.info('[testUpgradeVersion03] catch ' + e);
         }
@@ -1327,12 +1327,12 @@ describe('updateclient', function() {
         try{
             // Open download monitor.
             let ret = updater.on('upgradeProgress');
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
             let ret_upgrade = updater.upgrade();
-            expect(ret_upgrade != 0);
+            expect(ret_upgrade).assertInstanceOf('Number');
             // Cancel subscription immediately, no callback will be received.
             let ret_off = updater.off("upgradeProgress");
-            expect(ret_off != 0);
+            expect(ret_off).assertInstanceOf('Number');
         } catch (e) {
             console.info('[testUpgradeVersion04] catch ' + e);
         }
@@ -1355,13 +1355,13 @@ describe('updateclient', function() {
         console.info('testUpgradeVersion05 START');
         try{
             let ret = updater.on('upgradeProgress', testFunction);
-            expect(ret == 0);
+            expect(ret).assertInstanceOf('Number');
 
             let ret_upgrade = updater.upgrade();
-            expect(ret_upgrade != 0);
+            expect(ret_upgrade).assertInstanceOf('Number');
 
             let ret_off = updater.off("upgradeProgress", testFunction);
-            expect(ret_off != 0);
+            expect(ret_off).assertInstanceOf('Number');
         } catch (e) {
             console.info('[testUpgradeVersion05] catch ' + e);
         }
@@ -1378,7 +1378,7 @@ describe('updateclient', function() {
         console.info('testOnDownload START');
         try{
             let ret = updater.on(function(){});
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[testOnDownload] catch ' + e);
         }
@@ -1395,7 +1395,7 @@ describe('updateclient', function() {
         console.info('testOnDownload2 START');
         try{
             let ret = updater.on();
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[testOnDownload2] catch ' + e);
         }
@@ -1412,7 +1412,7 @@ describe('updateclient', function() {
         console.info('testOnDownload3 START');
         try{
             let ret = updater.on("333333333");
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[testOnDownload3] catch ' + e);
         }
@@ -1429,7 +1429,7 @@ describe('updateclient', function() {
         console.info('testOnDownload3 START');
         try{
             let ret = updater.on(param_value2);
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[testOnDownload4] catch ' + e);
         }
@@ -1446,7 +1446,7 @@ describe('updateclient', function() {
         console.info('testOnDownload5 START');
         try{
             let ret = updater.on(param_value2, "4444444444444");
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[testOnDownload5] catch ' + e);
         }
@@ -1463,7 +1463,7 @@ describe('updateclient', function() {
         console.info('testOffDownload START');
         try{
             let ret = updater.off();
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[testOffDownload] catch ' + e);
         }
@@ -1480,7 +1480,7 @@ describe('updateclient', function() {
         console.info('testOffDownload2 START');
         try{
             let ret = updater.off("333333333");
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
         } catch (e) {
             console.info('[testOffDownload2] catch ' + e);
         }
@@ -1497,7 +1497,7 @@ describe('updateclient', function() {
         console.info('testOffDownload3 START');
         try{
             let ret = updater.on(param_value2);
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[testOffDownload3] catch ' + e);
         }
@@ -1514,7 +1514,7 @@ describe('updateclient', function() {
         console.info('testOffDownload4 START');
         try{
             let ret = updater.off(param_value2, "4444444444444");
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[testOffDownload4] catch ' + e);
         }
@@ -1531,7 +1531,7 @@ describe('updateclient', function() {
         console.info('testOffDownload5 START');
         try{
             let ret = updater.off(function(){});
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[testOffDownload5] catch ' + e);
         }
@@ -1548,7 +1548,7 @@ describe('updateclient', function() {
         console.info('testOnUpgrade START');
         try{
             let ret = updater.on("upgradeProgress", function(){});
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
         } catch (e) {
             console.info('[testOnUpgrade] catch ' + e);
         }
@@ -1565,7 +1565,7 @@ describe('updateclient', function() {
         console.info('testOnUpgrade2 START');
         try{
             let ret = updater.on("upgradeProgress");
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[testOnUpgrade2] catch ' + e);
         }
@@ -1582,7 +1582,7 @@ describe('updateclient', function() {
         console.info('testOnUpgrade3 START');
         try{
             let ret = updater.on("upgradeProgress", "333333333");
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[testOnUpgrade3] catch ' + e);
         }
@@ -1599,7 +1599,7 @@ describe('updateclient', function() {
         console.info('testOnUpgrade4 START');
         try{
             let ret = updater.on("upgradeProgress", param_value2);
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[testOnUpgrade3] catch ' + e);
         }
@@ -1616,7 +1616,7 @@ describe('updateclient', function() {
         console.info('testOnUpgrade5 START');
         try{
             let ret = updater.on(param_value2, "4444444444444");
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[testOnUpgrade5] catch ' + e);
         }
@@ -1633,7 +1633,7 @@ describe('updateclient', function() {
         console.info('testOffUpgrade START');
         try{
             let ret = updater.off("upgradeProgress");
-            expect(ret != 0);
+            expect(ret).assertInstanceOf('Number');
         } catch (e) {
             console.info('[testOffUpgrade] catch ' + e);
         }
@@ -1650,7 +1650,7 @@ describe('updateclient', function() {
         console.info('testOffUpgrade2 START');
         try{
             let ret = updater.off("upgradeProgress", "333333333");
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[testOffUpgrade] catch ' + e);
         }
@@ -1667,7 +1667,7 @@ describe('updateclient', function() {
         console.info('testOffDownload3 START');
         try{
             let ret = updater.on("upgradeProgress", param_value2);
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[testOffUpgrade3] catch ' + e);
         }
@@ -1684,7 +1684,7 @@ describe('updateclient', function() {
         console.info('testOffUpgrade4 START');
         try{
             let ret = updater.off("upgradeProgress", param_value2, "4444444444444");
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[testOffUpgrade4] catch ' + e);
         }
@@ -1701,7 +1701,7 @@ describe('updateclient', function() {
         console.info('testOffUpgrade5 START');
         try{
             let ret = updater.off("upgradeProgress", "6");
-            expect(ret != 0);
+            expect(ret != 0).assertTrue();
         } catch (e) {
             console.info('[testOffUpgrade5] catch ' + e);
         }
@@ -1719,7 +1719,7 @@ describe('updateclient', function() {
         try{
             let ret = updater.cancel();
             console.info('updater.cancelUpgrade' + ret);
-            expect(ret == 0);
+            expect(ret === 0).assertTrue();
         } catch (e) {
             console.info('[cancel] catch ' + e);
         }
@@ -1741,18 +1741,18 @@ describe('updateclient', function() {
                 console.log(`downloadProgress status: ` + progress.status);
                 console.log(`downloadProgress percent: ` + progress.percent);
                 console.log(`downloadProgress endReason: ` + progress.endReason);
-                if (progress.status == updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
-                progress.status == updateState.UPDATE_STATE_VERIFY_SUCCESS) {
+                if (progress.status === updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
+                progress.status === updateState.UPDATE_STATE_VERIFY_SUCCESS) {
                     expect(progress.percent).assertEqual(expect_value);
                     updater.off("downloadProgress");
                 }
             })
             let ret = updater.download();
-            expect(ret == 0);
+            expect(ret === 0).assertTrue();
 
             ret = updater.cancel();
             console.info('updater.cancel' + ret);
-            expect(ret == 0);
+            expect(ret === 0).assertTrue();
         } catch (e) {
             console.info('[cancel] catch ' + e);
         }
@@ -1770,7 +1770,7 @@ describe('updateclient', function() {
         try{
             let ret = updater.cancel();
             console.info('updater.cancel' + ret);
-            expect(ret == 0);
+            expect(ret === 0).assertTrue();
         } catch (e) {
             console.info('[cancel] catch ' + e);
         }
@@ -1788,7 +1788,7 @@ describe('updateclient', function() {
         try{
             let ret = updater.cancel("");
             console.info('updater.cancel' + ret);
-            expect(ret == undefined);
+            expect(ret === undefined).assertTrue();
         } catch (e) {
             console.info('[cancel] catch ' + e);
         }
@@ -1805,7 +1805,7 @@ describe('updateclient', function() {
         try{
             let ret = updater.cancel(function(){});
             console.info('updater.cancel' + ret);
-            expect(ret == undefined);
+            expect(ret === undefined).assertTrue();
         } catch (e) {
             console.info('[cancel] catch ' + e);
         }
