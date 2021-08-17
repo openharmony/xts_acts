@@ -1,0 +1,17 @@
+{
+    "description": "Configuration for hjunit demo Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "package": "ohos.acts.aafwk.featureability"
+    },
+    "kits": [
+        {
+            "test-file-name": [
+                "entry-debug-rich-signed.hap",
+                "$module.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+}
