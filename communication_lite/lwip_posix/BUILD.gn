@@ -22,7 +22,7 @@ hcpptest_suite("ActsLwipTest") {
     "restrict=",
   ]
 
-  deps = [ "//base/security/huks/frameworks/huks_lite/source:huks" ]
+  deps = ["//third_party/bounds_checking_function:libsec_shared" ]
 
   cflags = [ "-Wno-error" ]
 }
