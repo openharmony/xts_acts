@@ -17,8 +17,10 @@ group("multimedia") {
   testonly = true
   if (is_standard_system) {
     deps = [ 
-	"audio/audio_js_standard/audioPlayer:audio_player_js_hap" ,
-	"audio/audio_js_standard/audioPlayer_API:audio_player_api_js_hap"]
+      "audio/audio_js_standard/audioPlayer:audio_player_js_hap" ,
+      "audio/audio_js_standard/audioPlayer_API:audio_player_api_js_hap",
+      "media/media_cpp_test_standard:ActsMediaCppStandardTest",
+    ]
   } else {
     deps = [
       #"audio/audio_hap_test:MediaAudio_test_hap",
