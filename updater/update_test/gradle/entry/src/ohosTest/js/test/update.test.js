@@ -17,9 +17,10 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import client from '@ohos.update';
 
 let updater;
-var param_value1 = 444;
-var param_value2 = 555;
-var expect_value = 100;
+var param_value1 = 0;
+var param_value2 = 0;
+var expect_value = 0;
+
 var updateState = {
     UPDATE_STATE_INIT : 0,
     UPDATE_STATE_CHECK_VERSION_ON : 10,
@@ -46,10 +47,9 @@ var updateState = {
 
 describe('updateclient', function() {
     beforeAll(function() {
-        if (updater === undefined) {
-            updater = client.getUpdater('/data/updater/updater.zip', 'OTA');
-            console.info("beforeAll updater" + updater);
-        }
+        param_value1 = 444;
+        param_value2 = 555;
+        expect_value = 100;
     });
     beforeEach(function() {
         if (updater === undefined) {
@@ -57,12 +57,19 @@ describe('updateclient', function() {
             console.info("beforeEach updater" + updater);
         }
     });
-    afterEach(function() {});
+    afterEach(function() {
+        updater = None;
+    });
+    afterAll(function() {
+        param_value1 = 0;
+        param_value2 = 0;
+        expect_value = 0;
+    });
 
     /**
      * @tc.number    SUB_UPDATE_JS_API_0001
      * @tc.name      testGetUpdate
-     * @tc.desc      .
+     * @tc.desc      Test get update obj.
      */
     it('testGetUpdate', 0, function() {
         console.info('testGetUpdate START');
@@ -613,7 +620,7 @@ describe('updateclient', function() {
     /**
      * @tc.number    SUB_UPDATE_JS_API_0027
      * @tc.name      testGetUpdatePolicy001
-     * @tc.desc      .
+     * @tc.desc      Test get update, policy func 001.
      */
     it('testGetUpdatePolicy001', 0, function() {
         console.info('testGetUpdatePolicy001 START');
