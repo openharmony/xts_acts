@@ -3,7 +3,7 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "21600000",
-        "package": "com.example.datamanagertest",
+        "package": "ohos.acts.distributeddatamgr",
         "abilityName": "decc.testkit.runner.JsEntryAbility",
         "shell-timeout": "21600000"
     },
