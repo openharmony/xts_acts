@@ -15,5 +15,5 @@ import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("intljs_test") {
   test_hap_name = "IntlJsTest"
-  hap_source_path = "hap/entry-debug-rich-signed.hap"
+  hap_source_path = "hap/entry-release-signed.hap"
 }
