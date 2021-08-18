@@ -1,17 +1,17 @@
 {
   "app": {
-    "bundleName": "com.example.datamanagertest",
+    "bundleName": "ohos.acts.distributeddatamgr",
     "vendor": "example",
     "version": {
-      "code": 2000000,
-      "name": "2.0.0"
+      "code": 1000000,
+      "name": "1.0.0"
     }
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.datamanagertest",
+    "package": "ohos.acts.distributeddatamgr",
     "name": ".MyApplication",
-    "mainAbility": "com.example.datamanagertest.MainAbility",
+    "mainAbility": "ohos.acts.distributeddatamgr.MainAbility",
     "deviceType": [
       "phone"
     ],
@@ -33,7 +33,7 @@
             ]
           }
         ],
-        "name": "com.example.datamanagertest.MainAbility",
+        "name": "ohos.acts.distributeddatamgr.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",

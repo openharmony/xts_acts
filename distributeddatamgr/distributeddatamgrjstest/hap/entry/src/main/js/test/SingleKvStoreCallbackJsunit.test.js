@@ -25,12 +25,15 @@ const VALUE_TEST_FLOAT_ELEMENT = 4321.12;
 const VALUE_TEST_BOOLEAN_ELEMENT = true;
 const VALUE_TEST_STRING_ELEMENT = 'value-string-002';
 
+const SINGLE_VERSION = 1;
+const SECURITY_LEVEL = 3;
+
 var kvManager = null;
 var kvStore = null;
 
 describe('KvStoreTest', function () {
     const config = {
-        bundleName : 'com.example.datamanagertest',
+        bundleName : 'ohos.acts.distributeddatamgr',
         userInfo : {
             userId : '0',
             userType : 0
@@ -42,9 +45,9 @@ describe('KvStoreTest', function () {
         encrypt : false,
         backup : false,
         autoSync : true,
-        kvStoreType : 1,
+        kvStoreType : SINGLE_VERSION,
         schema : '',
-        securityLevel : 3,
+        securityLevel : SECURITY_LEVEL,
     }
 
     it('testCreateKVManager102', 0, async function (done) {
@@ -272,7 +275,7 @@ describe('KvStoreTest', function () {
         done();
     })
 
-    it('testOnChange101', 0, async function (done) {
+    it('testOnChange100', 0, async function (done) {
         try {
             kvStore.on('dataChange', 0, function (data) {
                 expect(true).assertEqual(data !=null);
