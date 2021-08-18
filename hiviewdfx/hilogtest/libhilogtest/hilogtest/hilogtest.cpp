@@ -750,7 +750,7 @@ HWTEST_F(hilogtest, Hilogtool_count, Function|MediumTest|Level2)
     CmdRun(cmd1, cmdResult);
     LogType type = LOG_APP;
     int i = 0;
-    int cnt = 100;
+    int cnt = 1000;
     while (i++ < cnt) {
         usleep(1);
         HILOG_DEBUG(type, g_logContent.c_str(), i, 1.00001, 2.333333, "sse", 'a');
