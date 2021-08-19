@@ -54,9 +54,9 @@ describe('storageTest', function () {
     })
 
     /**
-     * @tc.name has sync inteface test
+     * @tc.name put string sync interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0020
-     * @tc.desc has sync inteface test
+     * @tc.desc put string sync interface test
      */
     it('testHasKey003', 0, function () {
         mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
@@ -64,19 +64,59 @@ describe('storageTest', function () {
     })
 
     /**
-     * @tc.name get boolean sync inteface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0030
-     * @tc.desc get boolean sync inteface test
+     * @tc.name put int sync interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0170
+     * @tc.desc put int sync interface test
      */
-    it('testGetBoolean005', 0, function () {
-        mPref.putSync(KEY_TEST_BOOLEAN_ELEMENT, true);
+    it('testHasKey004', 0, function () {
+        mPref.putSync(KEY_TEST_INT_ELEMENT, 1);
+        expect(true).assertEqual(mPref.hasSync(KEY_TEST_INT_ELEMENT));
+    })
+
+    /**
+     * @tc.name put boolean sync interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0180
+     * @tc.desc put boolean sync interface test
+     */
+    it('testHasKey005', 0, function () {
+        mPref.putSync(KEY_TEST_BOOLEAN_ELEMENT, false);
         expect(true).assertEqual(mPref.hasSync(KEY_TEST_BOOLEAN_ELEMENT));
     })
 
     /**
-     * @tc.name get defaltValue sync inteface test
+     * @tc.name put long sync interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0190
+     * @tc.desc put long sync interface test
+     */
+    it('testHasKey006', 0, function () {
+        mPref.putSync(KEY_TEST_LONG_ELEMENT, 0);
+        expect(true).assertEqual(mPref.hasSync(KEY_TEST_LONG_ELEMENT));
+    })
+
+    /**
+     * @tc.name put float sync interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0200
+     * @tc.desc put float sync interface test
+     */
+    it('testHasKey007', 0, function () {
+        mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 1.1);
+        expect(true).assertEqual(mPref.hasSync(KEY_TEST_FLOAT_ELEMENT));
+    })
+
+    /**
+     * @tc.name put boolean sync interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0030
+     * @tc.desc put boolean sync interface test
+     */
+    it('testGetBoolean005', 0, function () {
+        mPref.putSync(KEY_TEST_LONG_ELEMENT, true);
+        expect(true).assertEqual(mPref.hasSync(KEY_TEST_LONG_ELEMENT));
+    })
+
+    /**
+     * @tc.name get defaultValue sync interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0040
-     * @tc.desc get defaltValue sync inteface test
+     * @tc.desc get defaultValue sync interface test
      */
     it('testGetDefValue006', 0, function () {
         mPref.clearSync();
@@ -88,32 +128,32 @@ describe('storageTest', function () {
     })
 
     /**
-     * @tc.name get float sync inteface test
+     * @tc.name put float sync interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0050
-     * @tc.desc get float sync inteface test
+     * @tc.desc put float sync interface test
      */
     it('testGetFloat007', 0, function () {
         mPref.clearSync();
         mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 3.0);
-        expect(3.0).assertEqual(mPref.getSync(KEY_TEST_FLOAT_ELEMENT, 0.0), 0);
-        expect(0.0).assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, 0.0), 0);
+        expect(3.0).assertEqual(mPref.getSync(KEY_TEST_FLOAT_ELEMENT, 0.0));
+        expect(0.0).assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, 0.0));
     })
 
     /**
-     * @tc.name get int sync inteface test
+     * @tc.name put int sync interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0060
-     * @tc.desc get int sync inteface test
+     * @tc.desc put int sync interface test
      */
     it('testGetInt008', 0, function () {
         mPref.clearSync();
         mPref.putSync(KEY_TEST_INT_ELEMENT, 3);
-        expect(3).assertEqual(mPref.getSync(KEY_TEST_INT_ELEMENT, 0.0), 0);
+        expect(3).assertEqual(mPref.getSync(KEY_TEST_INT_ELEMENT, 0.0));
     })
 
     /**
-     * @tc.name get long sync inteface test
+     * @tc.name put long sync interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0070
-     * @tc.desc get long sync inteface test
+     * @tc.desc put long sync interface test
      */
     it('testGetLong009', 0, function () {
         mPref.clearSync();
@@ -123,9 +163,9 @@ describe('storageTest', function () {
     })
 
     /**
-     * @tc.name get String sync inteface test
+     * @tc.name put String & int sync interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0080
-     * @tc.desc get String sync inteface test
+     * @tc.desc put String & int sync interface test
      */
     it('testGetString10', 0, function () {
         mPref.clearSync();
@@ -137,9 +177,9 @@ describe('storageTest', function () {
     })
 
     /**
-     * @tc.name put float sync inteface test
+     * @tc.name put boolean sync interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0090
-     * @tc.desc put float sync inteface test
+     * @tc.desc put boolean sync interface test
      */
     it('testPutBoolean012', 0, function () {
         mPref.clearSync();
@@ -150,9 +190,9 @@ describe('storageTest', function () {
     })
 
     /**
-     * @tc.name put float sync inteface test
+     * @tc.name put float sync interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0100
-     * @tc.desc put float sync inteface test
+     * @tc.desc put float sync interface test
      */
     it('testPutFloat013', 0, function () {
         mPref.clearSync();
@@ -163,9 +203,9 @@ describe('storageTest', function () {
     })
 
     /**
-     * @tc.name put int sync inteface test
+     * @tc.name put int sync interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0110
-     * @tc.desc put int sync inteface test
+     * @tc.desc put int sync interface test
      */
     it('testPutInt014', 0, function () {
         mPref.clearSync();
@@ -176,9 +216,9 @@ describe('storageTest', function () {
     })
 
     /**
-     * @tc.name put long sync inteface test
+     * @tc.name put long sync interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0120
-     * @tc.desc put long sync inteface test
+     * @tc.desc put long sync interface test
      */
     it('testPutLong015', 0, function () {
         mPref.clearSync();
@@ -189,9 +229,9 @@ describe('storageTest', function () {
     })
 
     /**
-     * @tc.name put String sync inteface test
+     * @tc.name put String sync interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0130
-     * @tc.desc put String sync inteface test
+     * @tc.desc put String sync interface test
      */
     it('testPutString016', 0, function () {
         mPref.clearSync();
@@ -203,9 +243,9 @@ describe('storageTest', function () {
     })
 
     /**
-     * @tc.name on interface test
+     * @tc.name put interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0140
-     * @tc.desc on interface test
+     * @tc.desc put interface test
      */
     it('testRegisterObserver001', 0, function () {
         mPref.clearSync();
