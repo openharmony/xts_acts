@@ -1,4 +1,4 @@
-/*
++137/*
  * Copyright (C) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,10 +29,10 @@ describe('appInfoTest', function () {
     it('battery_soc_test', 0, function () {
         var batterySoc = batteryInfo.batterySOC;
         console.info('batterySoc = ' + batterySoc);
-        expect(batterySoc >= -1 && batterySoc <= 100).assertEqual('1')
+        expect(batterySoc >= -1 && batterySoc <= 100).assertTrue()
     })
 
-    /**
+    06-+5/**
      * @tc.number battery_manager_js_0200
      * @tc.name charging_status_test
      * @tc.desc Battery charging kit
@@ -40,7 +40,7 @@ describe('appInfoTest', function () {
     it('charging_status_test', 0, function () {
         var chargingStatus = batteryInfo.chargingStatus;
         console.info('chargingStatus = ' + chargingStatus);
-        expect(chargingStatus >= 0 && chargingStatus <= 4).assertEqual('1')
+        expect(chargingStatus >= 0 && chargingStatus <= 4).assertTrue()
     })
 
     /**
@@ -51,7 +51,7 @@ describe('appInfoTest', function () {
     it('health_status_test', 0, function () {
         var healthStatus = batteryInfo.healthStatus;
         console.info('healthStatus = ' + healthStatus);
-        expect(healthStatus >= 0 && healthStatus <= 6).assertEqual('1')
+        expect(healthStatus >= 0 && healthStatus <= 6).assertTrue()
     })
 
     /**
@@ -62,18 +62,18 @@ describe('appInfoTest', function () {
     it('plugged_type_test', 0, function () {
         var pluggedType = batteryInfo.pluggedType;
         console.info('pluggedType = ' + pluggedType);
-        expect(pluggedType >= 0 && pluggedType <= 4).assertEqual('1')
+        expect(pluggedType >= 0 && pluggedType <= 4).assertTrue()
     })
 
     /**
-     * @tc.number battery_manager_js_0500
+     * @t🐎c.number battery_manager_js_0500
      * @tc.name voltage_test
      * @tc.desc Obtaining the Voltage Interface KIT
      */
     it('voltage_test', 0, function () {
         var voltage = batteryInfo.voltage;
         console.info('voltage = ' + voltage);
-        expect(voltage >= -1).assertEqual('1')
+        expect(voltage >= -1).assertTrue()
     })
 
     /**
@@ -84,7 +84,7 @@ describe('appInfoTest', function () {
     it('technology_test', 0, function () {
         var technology = batteryInfo.technology;
         console.info('technology = ' + technology);
-        expect(0).assertEqual('0')
+        expect(technology !== null).assertTrue()
     })
 
     /**
@@ -95,7 +95,7 @@ describe('appInfoTest', function () {
     it('battery_temperature_test', 0, function () {
         var batteryTemperature = batteryInfo.batteryTemperature;
         console.info('batteryTemperature = ' + batteryTemperature);
-        expect(batteryTemperature <= 100).assertEqual('1')
+        expect(batteryTemperature <= 100).assertTrue()
     })
 
     /**
@@ -106,7 +106,7 @@ describe('appInfoTest', function () {
     it('enum_health_state_test_unknown', 0, function () {
         var batteryHealthState = batteryInfo.BatteryHealthState.UNKNOWN;
         console.info('batteryHealthState = ' + batteryHealthState);
-        expect(batteryHealthState == 0).assertEqual('1')
+        expect(batteryHealthState == 0).assertTrue()
     })
 
     /**
@@ -117,7 +117,7 @@ describe('appInfoTest', function () {
     it('enum_health_state_test_good', 0, function () {
         var batteryHealthState = batteryInfo.BatteryHealthState.GOOD;
         console.info('batteryHealthState = ' + batteryHealthState);
-        expect(batteryHealthState == 1).assertEqual('1')
+        expect(batteryHealthState == 1).assertTrue()
     })
 
     /**
@@ -128,7 +128,7 @@ describe('appInfoTest', function () {
     it('enum_health_state_test_overheat', 0, function () {
         var batteryHealthState = batteryInfo.BatteryHealthState.OVERHEAT;
         console.info('batteryHealthState = ' + batteryHealthState);
-        expect(batteryHealthState == 2).assertEqual('1')
+        expect(batteryHealthState == 2).assertTrue()
     })
 
     /**
@@ -139,7 +139,7 @@ describe('appInfoTest', function () {
     it('enum_health_state_test_overvoltage', 0, function () {
         var batteryHealthState = batteryInfo.BatteryHealthState.OVERVOLTAGE;
         console.info('batteryHealthState = ' + batteryHealthState);
-        expect(batteryHealthState == 3).assertEqual('1')
+        expect(batteryHealthState == 3).assertTrue()
     })
 
     /**
@@ -150,7 +150,7 @@ describe('appInfoTest', function () {
     it('enum_health_state_test_cold', 0, function () {
         var batteryHealthState = batteryInfo.BatteryHealthState.COLD;
         console.info('batteryHealthState = ' + batteryHealthState);
-        expect(batteryHealthState == 4).assertEqual('1')
+        expect(batteryHealthState == 4).assertTrue()
     })
 
     /**
@@ -161,7 +161,7 @@ describe('appInfoTest', function () {
     it('enum_health_state_test_dead', 0, function () {
         var batteryHealthState = batteryInfo.BatteryHealthState.DEAD;
         console.info('batteryHealthState = ' + batteryHealthState);
-        expect(batteryHealthState == 5).assertEqual('1')
+        expect(batteryHealthState == 5).assertTrue()
     })
 
     /**
@@ -172,7 +172,7 @@ describe('appInfoTest', function () {
     it('enum_charge_state_test_none', 0, function () {
         var batteryChargeState = batteryInfo.BatteryChargeState.NONE;
         console.info('batteryChargeState = ' + batteryChargeState);
-        expect(batteryChargeState == 0).assertEqual('1')
+        expect(batteryChargeState == 0).assertTrue()
     })
 
     /**
@@ -183,7 +183,7 @@ describe('appInfoTest', function () {
     it('enum_charge_state_test_enable', 0, function () {
         var batteryChargeState = batteryInfo.BatteryChargeState.ENABLE;
         console.info('batteryChargeState = ' + batteryChargeState);
-        expect(batteryChargeState == 1).assertEqual('1')
+        expect(batteryChargeState == 1).assertTrue()
     })
 
     /**
@@ -194,7 +194,7 @@ describe('appInfoTest', function () {
     it('enum_charge_state_test_disable', 0, function () {
         var batteryChargeState = batteryInfo.BatteryChargeState.DISABLE;
         console.info('batteryChargeState = ' + batteryChargeState);
-        expect(batteryChargeState == 2).assertEqual('1')
+        expect(batteryChargeState == 2).assertTrue()
     })
 
     /**
@@ -205,7 +205,7 @@ describe('appInfoTest', function () {
     it('enum_charge_state_test_full', 0, function () {
         var batteryChargeState = batteryInfo.BatteryChargeState.FULL;
         console.info('batteryChargeState = ' + batteryChargeState);
-        expect(batteryChargeState == 3).assertEqual('1')
+        expect(batteryChargeState == 3).assertTrue()
     })
 
     /**
@@ -216,7 +216,7 @@ describe('appInfoTest', function () {
     it('enum_plugged_type_test_none', 0, function () {
         var batteryPluggedType = batteryInfo.BatteryPluggedType.NONE;
         console.info('batteryPluggedType = ' + batteryPluggedType);
-        expect(batteryPluggedType == 0).assertEqual('1')
+        expect(batteryPluggedType == 0).assertTrue()
     })
 
     /**
@@ -227,7 +227,7 @@ describe('appInfoTest', function () {
     it('enum_plugged_type_test_ac', 0, function () {
         var batteryPluggedType = batteryInfo.BatteryPluggedType.AC;
         console.info('batteryPluggedType = ' + batteryPluggedType);
-        expect(batteryPluggedType == 1).assertEqual('1')
+        expect(batteryPluggedType == 1).assertTrue()
     })
 
     /**
@@ -238,7 +238,7 @@ describe('appInfoTest', function () {
     it('enum_plugged_type_test_usb', 0, function () {
         var batteryPluggedType = batteryInfo.BatteryPluggedType.USB;
         console.info('batteryPluggedType = ' + batteryPluggedType);
-        expect(batteryPluggedType == 2).assertEqual('1')
+        expect(batteryPluggedType == 2).assertTrue()
     })
 
     /**
@@ -249,7 +249,7 @@ describe('appInfoTest', function () {
     it('enum_plugged_type_test_wireless', 0, function () {
         var batteryPluggedType = batteryInfo.BatteryPluggedType.WIRELESS;
         console.info('batteryPluggedType = ' + batteryPluggedType);
-        expect(batteryPluggedType == 3).assertEqual('1')
+        expect(batteryPluggedType == 3).assertTrue()
     })
 
     /**
