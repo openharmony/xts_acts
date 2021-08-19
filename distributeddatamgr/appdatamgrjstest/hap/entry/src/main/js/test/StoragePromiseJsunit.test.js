@@ -53,9 +53,9 @@ describe('storageTest', function () {
     })
 
     /**
-     * @tc.name has promise interface test
+     * @tc.name has string interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0020
-     * @tc.desc has promise interface test
+     * @tc.desc has string interface test
      */
     it('testHasKey0031', 0, async function (done) {
         mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
@@ -70,9 +70,77 @@ describe('storageTest', function () {
     })
 
     /**
-     * @tc.name get defalut promise interface test
+     * @tc.name has int interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0140
+     * @tc.desc has int interface test
+     */
+    it('testHasKey0032', 0, async function (done) {
+        mPref.putSync(KEY_TEST_INT_ELEMENT, 1);
+        const promise = mPref.has(KEY_TEST_INT_ELEMENT);
+        promise.then((ret) => {
+            expect(true).assertEqual(ret);
+        }).catch((err) => {
+            expect(null).assertFail();
+        });
+        await promise;
+        done();
+    })
+
+    /**
+     * @tc.name has float interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0150
+     * @tc.desc has float interface test
+     */
+    it('testHasKey0033', 0, async function (done) {
+        mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 2.0);
+        const promise = mPref.has(KEY_TEST_FLOAT_ELEMENT);
+        promise.then((ret) => {
+            expect(true).assertEqual(ret);
+        }).catch((err) => {
+            expect(null).assertFail();
+        });
+        await promise;
+        done();
+    })
+
+    /**
+     * @tc.name has boolean interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0160
+     * @tc.desc has boolean interface test
+     */
+    it('testHasKey0034', 0, async function (done) {
+        mPref.putSync(KEY_TEST_BOOLEAN_ELEMENT, false);
+        const promise = mPref.has(KEY_TEST_BOOLEAN_ELEMENT);
+        promise.then((ret) => {
+            expect(true).assertEqual(ret);
+        }).catch((err) => {
+            expect(null).assertFail();
+        });
+        await promise;
+        done();
+    })
+
+    /**
+     * @tc.name has long interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0170
+     * @tc.desc has long interface test
+     */
+    it('testHasKey0035', 0, async function (done) {
+        mPref.putSync(KEY_TEST_LONG_ELEMENT, 0);
+        const promise = mPref.has(KEY_TEST_LONG_ELEMENT);
+        promise.then((ret) => {
+            expect(true).assertEqual(ret);
+        }).catch((err) => {
+            expect(null).assertFail();
+        });
+        await promise;
+        done();
+    })
+
+    /**
+     * @tc.name get string promise interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0030
-     * @tc.desc deleteStorage interface test
+     * @tc.desc get string promise interface test
      */
     it('testGetDefValue0061', 0, async function (done) {
         mPref.clearSync();
@@ -160,9 +228,9 @@ describe('storageTest', function () {
     })
 
     /**
-     * @tc.name get String promise interface test
+     * @tc.name put boolean promise interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0090
-     * @tc.desc get String promise interface test
+     * @tc.desc put boolean promise interface test
      */
     it('testPutBoolean0121', 0, async function (done) {
         mPref.clearSync();

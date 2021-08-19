@@ -49,13 +49,65 @@ describe('storageTest', function () {
     })
 
     /**
-     * @tc.name has callback interface test
+     * @tc.name has string callback interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0020
-     * @tc.desc has callback interface test
+     * @tc.desc has string callback interface test
      */
     it('testHasKey0032', 0, async function (done) {
         mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
         await mPref.has(KEY_TEST_STRING_ELEMENT, function (err, ret) {
+            expect(true).assertEqual(ret);
+        })
+        done();
+    })
+
+    /**
+     * @tc.name has int callback interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0130
+     * @tc.desc has int callback interface test
+     */
+    it('testHasKey0033', 0, async function (done) {
+        mPref.putSync(KEY_TEST_INT_ELEMENT, 1);
+        await mPref.has(KEY_TEST_INT_ELEMENT, function (err, ret) {
+            expect(true).assertEqual(ret);
+        })
+        done();
+    })
+
+    /**
+     * @tc.name has float callback interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0140
+     * @tc.desc has float callback interface test
+     */
+    it('testHasKey0034', 0, async function (done) {
+        mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 1.1);
+        await mPref.has(KEY_TEST_FLOAT_ELEMENT, function (err, ret) {
+            expect(true).assertEqual(ret);
+        })
+        done();
+    })
+
+    /**
+     * @tc.name has long callback interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0150
+     * @tc.desc has long callback interface test
+     */
+    it('testHasKey0035', 0, async function (done) {
+        mPref.putSync(KEY_TEST_LONG_ELEMENT, 0);
+        await mPref.has(KEY_TEST_LONG_ELEMENT, function (err, ret) {
+            expect(true).assertEqual(ret);
+        })
+        done();
+    })
+
+    /**
+     * @tc.name has boolean callback interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0160
+     * @tc.desc has boolean callback interface test
+     */
+    it('testHasKey0036', 0, async function (done) {
+        mPref.putSync(KEY_TEST_BOOLEAN_ELEMENT, false);
+        await mPref.has(KEY_TEST_BOOLEAN_ELEMENT, function (err, ret) {
             expect(true).assertEqual(ret);
         })
         done();

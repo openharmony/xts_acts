@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*
 * Copyright (c) 2021 Huawei Device Co., Ltd.
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -68,12 +69,14 @@ describe('storageTest', function () {
      */
     it('testRemoveStorageFromCache001', 0, function () {
         let perf = storage.getStorageSync('/data/test_storage1');
-        perf = null;
+        perf.putSync('test', 2);
         try {
             storage.removeStorageFromCacheSync('/data/test_storage1');
         } catch (e) {
             expect(null).assertFail();
         }
+        var value = mPref.getSync('test', 0);
+        expect(value).assertEqual(0);
     })
 
     /**
@@ -100,11 +103,15 @@ describe('storageTest', function () {
      */
     it('testDeleteStorageHelper001', 0, function () {
         let perf = storage.getStorageSync('/data/test_storage3');
-        perf = null;
         try {
             storage.deleteStorageSync('/data/test_storage3');
         } catch (e) {
             expect(null).assertFail();
+        }
+        try {
+            perf.putSync("int", 3);
+            expect(null).assertFail();
+        } catch (e) {
         }
     })
 
