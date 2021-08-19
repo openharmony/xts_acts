@@ -18,6 +18,25 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import deviceinfo from '@ohos.deviceInfo'
 
 describe('DeviceInfoTest', function () {
+
+    beforeAll(function () {
+        console.info('beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.');
+
+    })
+
+    beforeEach(function () {
+        console.info('beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.');
+
+    })
+    afterEach(function () {
+        console.info('afterEach: Test case-level clearance conditions, which are executed after each test case is executed.');
+
+    })
+    afterAll(function () {
+        console.info('afterAll: Test suite-level cleanup condition, which is executed after the test suite is executed');
+
+    })
+
     console.info('start################################start');
     /**
      * @tc.number    SUB_STARTUP_JS_DEVCEINFO_0100
@@ -407,7 +426,7 @@ describe('DeviceInfoTest', function () {
         console.info('the value of the deviceinfo majorVersion is :' + majorVersionInfo);
 
         expect(majorVersionInfo).assertInstanceOf('Number');
-        if(majorVersionInfo !="" && majorVersionInfo != null && majorVersionInfo != undefined){
+        if(majorVersionInfo >= 0){
             ret = true;
         }
 		expect(ret).assertTrue();
@@ -429,7 +448,7 @@ describe('DeviceInfoTest', function () {
         console.info('the value of the deviceinfo seniorVersion is :' + seniorVersionInfo);
 
         expect(seniorVersionInfo).assertInstanceOf('Number');
-        if(seniorVersionInfo !="" && seniorVersionInfo != null && seniorVersionInfo != undefined){
+        if(seniorVersionInfo >= 0){
             ret = true;
         }
 		expect(ret).assertTrue();
@@ -451,7 +470,7 @@ describe('DeviceInfoTest', function () {
         console.info('the value of the deviceinfo featureVersion is :' + featureVersionInfo);
 
         expect(featureVersionInfo).assertInstanceOf('Number');
-        if(featureVersionInfo !="" && featureVersionInfo != null && featureVersionInfo != undefined){
+        if(featureVersionInfo >= 0){
             ret = true;
         }
 		expect(ret).assertTrue();
@@ -473,7 +492,7 @@ describe('DeviceInfoTest', function () {
         console.info('the value of the deviceinfo buildVersion is :' + buildVersionInfo);
 
         expect(buildVersionInfo).assertInstanceOf('Number');
-        if(buildVersionInfo !="" && buildVersionInfo != null && buildVersionInfo != undefined){
+        if(buildVersionInfo >= 0){
             ret = true;
         }
 		expect(ret).assertTrue();
@@ -495,7 +514,7 @@ describe('DeviceInfoTest', function () {
         console.info('the value of the deviceinfo sdkApiVersion is :' + sdkApiVersionInfo);
 
         expect(sdkApiVersionInfo).assertInstanceOf('Number');
-        if(sdkApiVersionInfo !="" && sdkApiVersionInfo != null && sdkApiVersionInfo != undefined){
+        if(sdkApiVersionInfo >= 0){
             ret = true;
         }
 		expect(ret).assertTrue();
@@ -517,7 +536,7 @@ describe('DeviceInfoTest', function () {
         console.info('the value of the deviceinfo firstApiVersion is :' + firstApiVersionInfo);
 
         expect(firstApiVersionInfo).assertInstanceOf('Number');
-        if(firstApiVersionInfo !="" && firstApiVersionInfo != null && firstApiVersionInfo != undefined){
+        if(firstApiVersionInfo >= 0){
             ret = true;
         }
 		expect(ret).assertTrue();
