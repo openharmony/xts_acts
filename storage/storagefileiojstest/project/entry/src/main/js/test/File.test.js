@@ -1,26 +1,40 @@
 /*
  * Copyright (C) 2021 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import fileio from '@system.fileio';
+import bundle_mgr from '@ohos.bundle_mgr'
 import file from '@system.file';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import {
-  FILE_CONTENT, prepareFile, fileName, randomString, sleep,
-  cacheFileName, prepareEmptyFile, nextFileName
-} from './Common'
-
+  describe,
+  beforeAll,
+  beforeEach,
+  afterEach,
+  afterAll,
+  it,
+  expect
+}
+  from 'deccjsunit/index'
+import {
+  FILE_CONTENT,
+  prepareFile,
+  fileName,
+  randomString,
+  cacheFileName,
+  prepareEmptyFile,
+  nextFileName
+}
+  from './Common'
 
 describe('fileTest', function () {
 
@@ -30,8 +44,8 @@ describe('fileTest', function () {
    * @tc.desc Function of API, delete file.The test file is exist.
    */
   it('File_Delete_001', 0, async function (done) {
-    let fpath = fileName("File_Delete_001")
-    prepareFile(fpath, "hello")
+    let fpath = fileName('File_Delete_001');
+    prepareFile(fpath, 'hello');
     file.delete({
       uri: 'internal://app/File_Delete_001',
       success: function () {
@@ -44,7 +58,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Delete_0200
@@ -74,7 +88,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Delete_0300
@@ -86,7 +100,7 @@ describe('fileTest', function () {
       uri: 'internal://ohos/workspace/text.txt',
       success: function () {
         console.log('File_Delete_003 call delete success.');
-        expect(null).assertFail()
+        expect(null).assertFail();
       },
       fail: function (data, code) {
         console.log('File_Delete_003 call delete fail, code: ' + code + ', data: ' + data);
@@ -94,7 +108,8 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Delete_0400
@@ -118,7 +133,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Delete_0500
@@ -138,7 +153,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Delete_0600
@@ -167,7 +182,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Delete_0700
@@ -186,7 +201,7 @@ describe('fileTest', function () {
         console.log('File_Delete_007 call writeText fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
-    })
+    });
     file.delete({
       uri: 'internal://cache/File_Delete_007',
       success: function () {
@@ -198,7 +213,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Delete_0800
@@ -229,7 +244,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeText_0100
@@ -252,14 +267,14 @@ describe('fileTest', function () {
     file.readText({
       uri: 'internal://app/File_writeText_001',
       success: function (data) {
-        console.log('File_writeText_001 call read success. Content: ' + data.text);
+        console.log('File_writeText_001 call read success. Content: ' );
         done();
       },
       fail: function (data, code) {
         console.log('File_writeText_001 call read fail , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
-    })
+    });
     file.delete({
       uri: 'internal://app/File_writeText_001',
       success: function () {
@@ -271,7 +286,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeText_0200
@@ -307,7 +322,7 @@ describe('fileTest', function () {
     file.readText({
       uri: 'internal://app/File_writeText_002',
       success: function (data) {
-        console.log('File_writeText_002 call read success. Content: ' + data.text);
+        console.log('File_writeText_002 call read success. Content: ' );
         done();
       },
       fail: function (data, code) {
@@ -326,7 +341,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeText_0300
@@ -334,7 +349,7 @@ describe('fileTest', function () {
    * @tc.desc Different types of strings for text.
    */
   it('File_writeText_003', 0, async function (done) {
-    let txt = 'hello 你好 مرحبا こんにちは 안녕하세요.'
+    let txt = 'hello 你好 ????? こんにちは ?????.'
     file.writeText({
       uri: 'internal://app/File_writeText_003',
       text: txt,
@@ -350,7 +365,7 @@ describe('fileTest', function () {
     file.readText({
       uri: 'internal://app/File_writeText_003',
       success: function (data) {
-        console.log('File_writeText_003 call read success. Content: ' + data.text);
+        console.log('File_writeText_003 call read success. Content: ' );
         done();
       },
       fail: function (data, code) {
@@ -369,7 +384,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeText_0400
@@ -394,7 +409,7 @@ describe('fileTest', function () {
       uri: 'internal://app/File_writeText_004',
       encoding: 'UTF-8',
       success: function (data) {
-        console.log('File_writeText_004 call readText success. Content: ' + data.text);
+        console.log('File_writeText_004 call readText success. Content: ' );
         done();
       },
       fail: function (data, code) {
@@ -413,7 +428,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeText_0500
@@ -449,7 +464,7 @@ describe('fileTest', function () {
     file.readText({
       uri: 'internal://app/File_writeText_005',
       success: function (data) {
-        console.log('File_writeText_005 call read success ' + data.text);
+        console.log('File_writeText_005 call read success ' );
         done();
       },
       fail: function (data, code) {
@@ -468,7 +483,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeText_0600
@@ -491,7 +506,7 @@ describe('fileTest', function () {
     file.readText({
       uri: 'internal://app/File_writeText_006',
       success: function (data) {
-        console.log('File_writeText_006 call read success ' + data.text);
+        console.log('File_writeText_006 call read success ' );
         done();
       },
       fail: function (data, code) {
@@ -510,7 +525,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeText_0700
@@ -531,7 +546,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeText_0800
@@ -539,7 +554,7 @@ describe('fileTest', function () {
    * @tc.desc Function of API, error code: 300 The uri path is dir path.
    */
   it('File_writeText_008', 0, async function (done) {
-    let dpath = fileName("File_writeText_008d");
+    let dpath = fileName('File_writeText_008d');
     expect(fileio.mkdirSync(dpath) !== null).assertTrue();
     file.writeText({
       uri: 'internal://app/File_writeText_008d/',
@@ -554,7 +569,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeText_0900
@@ -575,7 +590,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeText_1000
@@ -605,8 +620,8 @@ describe('fileTest', function () {
         console.log('File_writeText_010 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
-    })
-  })
+    });
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeText_1100
@@ -629,14 +644,14 @@ describe('fileTest', function () {
     file.readText({
       uri: 'internal://app/../files/File_writeText_011',
       success: function (data) {
-        console.log('File_writeText_011 read success ' + data.text);
+        console.log('File_writeText_011 read success ' );
         done();
       },
       fail: function (data, code) {
         console.log('File_writeText_011 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
-    })
+    });
     file.delete({
       uri: 'internal://app/../files/File_writeText_011',
       success: function () {
@@ -648,7 +663,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeText_1300
@@ -660,7 +675,7 @@ describe('fileTest', function () {
       uri: 'internal://app/../../File_writeText_013',
       text: 'sawyerwang',
       success: function () {
-        console.log('File_writeText_013 mkdir success')
+        console.log('File_writeText_013 mkdir success');
         expect(null).assertFail();
       },
       fail: function (data, code) {
@@ -669,7 +684,8 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeArrayBuffer_0100
@@ -694,7 +710,7 @@ describe('fileTest', function () {
     file.readArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_001',
       success: function (data) {
-        console.log('File_writeArrayBuffer_001 call readArrayBuffer success.' + data.buffer);
+        console.log('File_writeArrayBuffer_001 call readArrayBuffer success.' );
         done();
       },
       fail: function (data, code) {
@@ -705,7 +721,7 @@ describe('fileTest', function () {
     file.delete({
       uri: 'internal://cache/File_writeArrayBuffer_001'
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeArrayBuffer_0200
@@ -729,18 +745,18 @@ describe('fileTest', function () {
     file.readArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_002',
       success: function (data) {
-        console.log('File_writeArrayBuffer_002 call readArrayBuffer success.' + data.buffer);
+        console.log('File_writeArrayBuffer_002 call readArrayBuffer success.' );
         done();
       },
       fail: function (data, code) {
         console.log('File_writeArrayBuffer_002 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
-    })
+    });
     file.delete({
       uri: 'internal://cache/File_writeArrayBuffer_002'
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeArrayBuffer_0300
@@ -777,7 +793,7 @@ describe('fileTest', function () {
     file.readArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_003',
       success: function (data) {
-        console.log('File_writeArrayBuffer_003 readArrayBuffer success:' + data.buffer)
+        console.log('File_writeArrayBuffer_003 readArrayBuffer success:' );
         done();
       },
       fail: function (data, code) {
@@ -785,7 +801,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeArrayBuffer_0400
@@ -823,7 +839,7 @@ describe('fileTest', function () {
     file.readArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_004',
       success: function (data) {
-        console.log('File_writeArrayBuffer_004: readArrayBuffer success ' + data.buffer)
+        console.log('File_writeArrayBuffer_004: readArrayBuffer success ' );
         done();
       },
       fail: function (data, code) {
@@ -834,7 +850,7 @@ describe('fileTest', function () {
     file.delete({
       uri: 'internal://cache/File_writeArrayBuffer_004'
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeArrayBuffer_0500
@@ -871,7 +887,7 @@ describe('fileTest', function () {
     file.readArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_005',
       success: function (data) {
-        console.log('File_writeArrayBuffer_005 read success:' + data.buffer);
+        console.log('File_writeArrayBuffer_005 read success:' );
         done();
       },
       fail: function (data, code) {
@@ -882,7 +898,7 @@ describe('fileTest', function () {
     file.delete({
       uri: 'internal://cache/File_writeArrayBuffer_005'
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeArrayBuffer_0600
@@ -926,7 +942,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeArrayBuffer_0700
@@ -948,7 +964,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeArrayBuffer_0800
@@ -961,7 +977,7 @@ describe('fileTest', function () {
       uri: 'internal://app/File_writeArrayBuffer_008',
       success: function () {
         console.log('call mkdir success.');
-        done()
+        done();
       },
       fail: function (data, code) {
         console.error('call fail callback fail, code: ' + code + ', data: ' + data);
@@ -980,7 +996,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeArrayBuffer_0900
@@ -988,19 +1004,19 @@ describe('fileTest', function () {
    * @tc.desc Function of API, error code: 300
    */
   it('File_writeArrayBuffer_009', 0, async function (done) {
-    let buf = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8])
-    file.writeArrayBuffer({
-      uri: 'internal://app/File_writeArrayBuffer_009',
-      buffer: buf,
-      success: function () {
-        console.log('File_writeArrayBuffer_009 call success');
-        done();
-      },
-      fail: function (data, code) {
-        console.log('File_writeArrayBuffer_009 fail');
-        expect(null).assertFail();
-      },
-    });
+    let buf = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8]);
+      file.writeArrayBuffer({
+        uri: 'internal://app/File_writeArrayBuffer_009',
+        buffer: buf,
+        success: function () {
+          console.log('File_writeArrayBuffer_009 call success');
+          done();
+        },
+        fail: function (data, code) {
+          console.log('File_writeArrayBuffer_009 fail');
+          expect(null).assertFail();
+        },
+      });
     file.readArrayBuffer({
       uri: 'internal://app/File_writeArrayBuffer_009',
       success: function (data) {
@@ -1023,7 +1039,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeArrayBuffer_1000
@@ -1055,8 +1071,8 @@ describe('fileTest', function () {
         console.log('File_writeArrayBuffer_010 readArrayBuffer , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
-    })
-  })
+    });
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_writeArrayBuffer_1200
@@ -1079,7 +1095,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_readText_0100
@@ -1110,7 +1126,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_readText_0200
@@ -1143,7 +1159,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_readText_0300
@@ -1163,7 +1179,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_readText_0400
@@ -1183,7 +1199,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_readText_0500
@@ -1203,7 +1219,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_readText_0600
@@ -1226,7 +1242,7 @@ describe('fileTest', function () {
     file.readText({
       uri: 'internal://cache/File_readText_006',
       success: function (data) {
-        console.log('File_readText_006 call success' + data.text);
+        console.log('File_readText_006 call success' );
         done();
       },
       fail: function (data, code) {
@@ -1244,8 +1260,8 @@ describe('fileTest', function () {
         console.log('File_readText_006 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
-    })
-  })
+    });
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_readText_0700
@@ -1268,7 +1284,7 @@ describe('fileTest', function () {
     file.readText({
       uri: 'internal://app/../files/../files/File_readText_007',
       success: function (data) {
-        console.log('File_readText_007 call readText success. data.text:' + data.text);
+        console.log('File_readText_007 call readText success. data.text:' );
         done();
       },
       fail: function (data, code) {
@@ -1279,7 +1295,7 @@ describe('fileTest', function () {
     file.delete({
       uri: 'internal://app/../files/../files/File_readText_007'
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_read_array_buffer_0100
@@ -1316,7 +1332,7 @@ describe('fileTest', function () {
     file.delete({
       uri: 'internal://cache/File_read_array_buffer_001'
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_read_array_buffer_0200
@@ -1348,7 +1364,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_read_array_buffer_0300
@@ -1359,7 +1375,7 @@ describe('fileTest', function () {
     file.readArrayBuffer({
       uri: '',
       success: function (data) {
-        console.log('File_read_array_buffer_003 call readArrayBuffer success: ' + data.buffer);
+        console.log('File_read_array_buffer_003 call readArrayBuffer success: ' );
         expect(null).assertFail();
       },
       fail: function (data, code) {
@@ -1368,7 +1384,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_read_array_buffer_0400
@@ -1376,13 +1392,13 @@ describe('fileTest', function () {
    * @tc.desc Function of API, readArrayBuffer, wrong position.
    */
   it('File_read_array_buffer_004', 0, async function (done) {
-    let fpath = fileName('File_read_array_buffer_004')
-    prepareFile(fpath, FILE_CONTENT)
+    let fpath = fileName('File_read_array_buffer_004');
+    prepareFile(fpath, FILE_CONTENT);
     file.readArrayBuffer({
       uri: fpath,
       position: 100,
       success: function (data) {
-        console.log('File_read_array_buffer_004 call readArrayBuffer success: ' + data.buffer);
+        console.log('File_read_array_buffer_004 call readArrayBuffer success: ' );
         expect(null).assertFail();
       },
       fail: function (data, code) {
@@ -1391,7 +1407,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_read_array_buffer_0500
@@ -1399,13 +1415,13 @@ describe('fileTest', function () {
    * @tc.desc Function of API, readArrayBuffer, wrong length.
    */
   it('File_read_array_buffer_005', 0, async function (done) {
-    let fpath = fileName('File_read_array_buffer_005')
-    prepareFile(fpath, FILE_CONTENT)
+    let fpath = fileName('File_read_array_buffer_005');
+    prepareFile(fpath, FILE_CONTENT);
     file.readArrayBuffer({
       uri: fpath,
       length: -1,
       success: function (data) {
-        console.log('File_read_array_buffer_005 call readArrayBuffer success: ' + data.buffer);
+        console.log('File_read_array_buffer_005 call readArrayBuffer success: ' );
         expect(null).assertFail();
       },
       fail: function (data, code) {
@@ -1413,8 +1429,8 @@ describe('fileTest', function () {
         expect(code == 202).assertTrue();
         done();
       },
-    })
-  })
+    });
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_read_array_buffer_0600
@@ -1425,7 +1441,7 @@ describe('fileTest', function () {
     file.readArrayBuffer({
       uri: 'internal://app',
       success: function (data) {
-        console.log('File_read_array_buffer_006 call readArrayBuffer success: ' + data.buffer);
+        console.log('File_read_array_buffer_006 call readArrayBuffer success: ' );
         expect(null).assertFail();
       },
       fail: function (data, code) {
@@ -1434,7 +1450,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_read_array_buffer_0700
@@ -1445,7 +1461,7 @@ describe('fileTest', function () {
     file.readArrayBuffer({
       uri: 'internal://cache/File_read_array_buffer_007',
       success: function (data) {
-        resolve('File_read_array_buffer_007 call readArrayBuffer success: ' + data.buffer);
+        console.log('File_read_array_buffer_007 call readArrayBuffer success: ' );
         expect(null).assertFail();
       },
       fail: function (data, code) {
@@ -1454,7 +1470,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_read_array_buffer_0800
@@ -1462,7 +1478,7 @@ describe('fileTest', function () {
    * @tc.desc Function of API, cache path.The test file is exist.
    */
   it('File_read_array_buffer_008', 0, async function (done) {
-    let buf = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8])
+    let buf = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8]);
     file.writeArrayBuffer({
       uri: 'internal://app/File_read_array_buffer_008',
       buffer: buf,
@@ -1474,11 +1490,11 @@ describe('fileTest', function () {
         console.log('File_read_array_buffer_008 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
-    })
+    });
     file.readArrayBuffer({
       uri: 'internal://app/File_read_array_buffer_008',
       success: function (data) {
-        console.log('File_read_array_buffer_008 call success ' + data.buffer);
+        console.log('File_read_array_buffer_008 call success ' );
         done();
       },
       fail: function (data, code) {
@@ -1497,7 +1513,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_read_array_buffer_0900
@@ -1523,7 +1539,7 @@ describe('fileTest', function () {
       position: 0,
       length: 10,
       success: function (data) {
-        console.log('File_read_array_buffer_009 call readArrayBuffer success. data.buffer:' + data.buffer);
+        console.log('File_read_array_buffer_009 call readArrayBuffer success. data.buffer:' );
         done();
       },
       fail: function (data, code) {
@@ -1534,7 +1550,7 @@ describe('fileTest', function () {
     file.delete({
       uri: 'internal://cache/../cache/File_read_array_buffer_009'
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_access_0100
@@ -1576,7 +1592,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_access_0200
@@ -1617,7 +1633,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_access_0300
@@ -1625,7 +1641,7 @@ describe('fileTest', function () {
    * @tc.desc Function of API, error code: 202 The test file and dir are exist.
    */
   it('File_access_003', 0, async function (done) {
-    let fpath = fileName('File_access_003')
+    let fpath = fileName('File_access_003');
     file.access({
       uri: fpath,
       success: function () {
@@ -1638,7 +1654,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_access_0400
@@ -1658,7 +1674,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_access_0500
@@ -1678,7 +1694,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_access_0600
@@ -1708,7 +1724,8 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_access_0700
@@ -1720,7 +1737,7 @@ describe('fileTest', function () {
       uri: 'internal://app/File_access_007',
       text: 'hello',
       success: function () {
-        console.log('File_access_007 mkdir success ')
+        console.log('File_access_007 mkdir success ');
         done();
       },
       fail: function (data, code) {
@@ -1750,7 +1767,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_access_0800
@@ -1792,7 +1809,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_mkdir_0100
@@ -1822,7 +1839,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_mkdir_0200
@@ -1842,7 +1859,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_mkdir_0300
@@ -1862,7 +1879,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_mkdir_0400
@@ -1882,7 +1899,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_mkdir_0500
@@ -1902,7 +1919,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_mkdir_0600
@@ -1923,7 +1940,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_mkdir_0700
@@ -1952,8 +1969,8 @@ describe('fileTest', function () {
         console.log('File_mkdir_007 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
-    })
-  })
+    });
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_mkdir_0800
@@ -1983,7 +2000,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_mkdir_1000
@@ -2003,7 +2020,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_rmdir_0100
@@ -2033,7 +2050,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_rmdir_0200
@@ -2066,7 +2083,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_rmdir_0300
@@ -2075,14 +2092,38 @@ describe('fileTest', function () {
    */
   it('File_rmdir_003', 0, async function (done) {
     file.mkdir({
-      uri: 'internal://app/test/File_rmdir_003',
+      uri: 'internal://app/test/File_rmdir_003/File_rmdir_003_1/File_rmdir_003_2',
       recursive: true,
       success: function () {
         console.log('File_rmdir_003 mkdir success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_rmdir_003 fail');
+        console.log('File_rmdir_003 fail, code: ' + code + ', data: ' + data);
+        expect(null).assertFail();
+      },
+    });
+    file.mkdir({
+      uri: 'internal://app/test/File_rmdir_003_1/File_rmdir_003_1/File_rmdir_003_2',
+      recursive: true,
+      success: function () {
+        console.log('File_rmdir_003 mkdir success.');
+        done();
+      },
+      fail: function (data, code) {
+        console.log('File_rmdir_003 fail, code: ' + code + ', data: ' + data);
+        expect(null).assertFail();
+      },
+    });
+    file.mkdir({
+      uri: 'internal://app/test/File_rmdir_003_2/File_rmdir_003_1/File_rmdir_003_2',
+      recursive: true,
+      success: function () {
+        console.log('File_rmdir_003 mkdir success.');
+        done();
+      },
+      fail: function (data, code) {
+        console.log('File_rmdir_003 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2098,7 +2139,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_rmdir_0400
@@ -2118,7 +2159,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_rmdir_0500
@@ -2138,7 +2179,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_rmdir_0600
@@ -2170,7 +2211,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_rmdir_0700
@@ -2192,15 +2233,15 @@ describe('fileTest', function () {
     file.rmdir({
       uri: 'internal://cache/File_rmdir_007d',
       success: function () {
-        console.log('File_rmdir_007 mkdir success');
+        console.log('File_rmdir_007 rmdir success');
         done();
       },
       fail: function (data, code) {
         console.log('File_rmdir_007 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
-    })
-  })
+    });
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_rmdir_0800
@@ -2230,7 +2271,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_rmdir_1000
@@ -2250,7 +2291,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Move_0100
@@ -2282,7 +2323,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Move_0200
@@ -2310,7 +2351,7 @@ describe('fileTest', function () {
         },
       });
     }
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Move_0300
@@ -2321,8 +2362,8 @@ describe('fileTest', function () {
     let srcFpath = fileName('File_Move_003');
     expect(prepareFile(srcFpath, FILE_CONTENT) !== null).assertTrue();
     let dstFpath = cacheFileName('File_Move_003');
-    let srcUri = 'internal://app/File_Move_003'
-    let dstUri = 'internal://app/cache/File_Move_003'
+    let srcUri = 'internal://app/File_Move_003';
+    let dstUri = 'internal://app/cache/File_Move_003';
     file.move({
       srcUri: srcUri,
       dstUri: dstUri,
@@ -2335,7 +2376,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Move_0400
@@ -2358,7 +2399,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Move_0500
@@ -2366,8 +2407,8 @@ describe('fileTest', function () {
    * @tc.desc Function of API, error code: 300.The test file is exist.
    */
   it('File_Move_005', 0, async function (done) {
-    let srcDpath = fileName('File_Move_005d')
-    expect(fileio.mkdirSync(srcDpath) !== null).assertTrue()
+    let srcDpath = fileName('File_Move_005d');
+    expect(fileio.mkdirSync(srcDpath) !== null).assertTrue();
     file.move({
       srcUri: 'internal://app/File_Move_005d',
       dstUri: 'internal://app/cache/File_Move_005d',
@@ -2381,7 +2422,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Move_0600
@@ -2404,7 +2445,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Move_0700
@@ -2435,7 +2476,7 @@ describe('fileTest', function () {
       },
     });
     fileio.rmdirSync(dpath);
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Move_0800
@@ -2478,7 +2519,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Move_0900
@@ -2501,7 +2542,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Move_1000
@@ -2526,7 +2567,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Move_1100
@@ -2541,14 +2582,14 @@ describe('fileTest', function () {
       dstUri: 'internal://app/cache/../../cache/File_Move_011',
       success: function (uri) {
         console.log('File_Move_011 => pass, uri' + uri);
-        done()
+        done();
       },
       fail: function (data, code) {
         console.log('File_Move_011 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Move_1200
@@ -2571,7 +2612,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Move_1400
@@ -2595,7 +2636,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Copy_0100
@@ -2606,7 +2647,6 @@ describe('fileTest', function () {
     let srcFpath = fileName('File_Copy_001');
     let dstFpath = cacheFileName('File_Copy_001');
     expect(prepareFile(srcFpath, 'test.') !== null).assertTrue();
-    sleep(10);
     file.copy({
       srcUri: 'internal://app/File_Copy_001',
       dstUri: 'internal://app/cache/File_Copy_001',
@@ -2622,7 +2662,7 @@ describe('fileTest', function () {
     file.readText({
       uri: 'internal://app/cache/File_Copy_001',
       success: function (data) {
-        console.log('File_Copy_001 read success:' + data.text);
+        console.log('File_Copy_001 read success:' );
         expect(fileio.unlinkSync(srcFpath) !== null).assertTrue();
         expect(fileio.unlinkSync(dstFpath) !== null).assertTrue();
         done();
@@ -2632,7 +2672,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Copy_0200
@@ -2660,7 +2700,7 @@ describe('fileTest', function () {
         },
       });
     }
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Copy_0300
@@ -2686,7 +2726,7 @@ describe('fileTest', function () {
     file.readText({
       uri: 'internal://app/cache/File_Copy_003',
       success: function (data) {
-        console.log('File_Copy_003 readText success, data.text:' + data.text);
+        console.log('File_Copy_003 readText success, data.text:' );
         expect(fileio.unlinkSync(srcFpath) !== null).assertTrue();
         expect(fileio.unlinkSync(dstFpath) !== null).assertTrue();
         done();
@@ -2697,7 +2737,7 @@ describe('fileTest', function () {
 
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Copy_0400
@@ -2721,7 +2761,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Copy_0500
@@ -2754,7 +2794,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Copy_0600
@@ -2775,7 +2815,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Copy_0700
@@ -2806,7 +2846,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Copy_0800
@@ -2848,7 +2888,7 @@ describe('fileTest', function () {
         console.log('File_Copy_008 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
-    })
+    });
     file.delete({
       uri: 'internal://cache/File_Copy_008',
       success: function () {
@@ -2859,16 +2899,16 @@ describe('fileTest', function () {
         console.log('File_Copy_008 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
-    })
-  })
+    });
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Copy_0900
    * @tc.name File_Copy_009
    * @tc.desc Function of API, same path.
-    */
+   */
   it('File_Copy_009', 0, async function (done) {
-    let srcFpath = fileName('File_Copy_009')
+    let srcFpath = fileName('File_Copy_009');
     expect(prepareFile(srcFpath, FILE_CONTENT) !== null).assertTrue();
     file.copy({
       srcUri: 'internal://app/File_Copy_009',
@@ -2884,7 +2924,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Copy_1000
@@ -2911,7 +2951,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Copy_1100
@@ -2936,7 +2976,7 @@ describe('fileTest', function () {
     file.readText({
       uri: 'internal://app/cache/../../cache/File_Copy_011',
       success: function (data) {
-        console.log('File_Copy_011 read success:' + data.text);
+        console.log('File_Copy_011 read success:' );
         done();
       },
       fail: function (data, code) {
@@ -2944,7 +2984,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Copy_1200
@@ -2968,7 +3008,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Copy_1400
@@ -2993,7 +3033,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_List_0100
@@ -3010,7 +3050,7 @@ describe('fileTest', function () {
     file.list({
       uri: 'internal://app/File_List_001d',
       success: function (data) {
-        console.log('File_List_001 call list success.' + JSON.stringify(data.fileList))
+        console.log('File_List_001 call list success.' + JSON.stringify(data.fileList));
         expect(fileio.unlinkSync(fpath) !== null).assertTrue();
         expect(fileio.rmdirSync(ddpath) !== null).assertTrue();
         expect(fileio.rmdirSync(dpath) !== null).assertTrue();
@@ -3021,7 +3061,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_List_0200
@@ -3049,7 +3089,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_List_0300
@@ -3074,7 +3114,6 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-
     file.writeText({
       uri: 'internal://app/File_List_003d/File_List_003',
       text: '1',
@@ -3097,7 +3136,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_List_0400
@@ -3122,7 +3161,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_List_0500
@@ -3147,7 +3186,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_List_0600
@@ -3168,7 +3207,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_List_0700
@@ -3190,7 +3229,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_List_0800
@@ -3210,7 +3249,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_List_0900
@@ -3240,7 +3279,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_List_1000
@@ -3259,8 +3298,9 @@ describe('fileTest', function () {
       expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
       expect(prepareFile(ffpath, FILE_CONTENT) !== null).assertTrue();
       expect(prepareFile(fffpath, FILE_CONTENT) !== null).assertTrue();
-    } catch (e) {
-      console.log("File_List_010 has failed for " + e)
+    } 
+    catch (e) {
+      console.log('File_List_010 has failed for ' + e);
       expect(null).assertFail();
     }
     file.list({
@@ -3279,7 +3319,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_List_1100
@@ -3307,7 +3347,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_List_1200
@@ -3326,7 +3366,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Get_0100
@@ -3340,7 +3380,7 @@ describe('fileTest', function () {
       uri: 'internal://app/File_Get_001',
       recursive: true,
       success: function (data) {
-        console.log('File_Get_001 pass,data.uri：' + data.uri);
+        console.log('File_Get_001 pass,data.uri：' );
         expect(fileio.unlinkSync(fpath) !== null).assertTrue();
         done();
       },
@@ -3349,7 +3389,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Get_0200
@@ -3364,7 +3404,7 @@ describe('fileTest', function () {
       recursive: false,
       success: function (data) {
         console.log('File_Get_002 => file list：');
-        console.log('{uri:' + data.uri);
+        console.log('{uri:' );
         console.log('length:' + data.length);
         console.log('lastModifiedTime:' + data.lastModifiedTime);
         console.log('type:' + data.type);
@@ -3377,7 +3417,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Get_0300
@@ -3391,7 +3431,7 @@ describe('fileTest', function () {
       uri: 'internal://app/File_Get_003',
       success: function (data) {
         console.log('File_Get_003 => file list：');
-        console.log('{uri:' + data.uri);
+        console.log('{uri:' );
         console.log('length:' + data.length);
         console.log('lastModifiedTime:' + data.lastModifiedTime);
         console.log('type:' + data.type);
@@ -3405,7 +3445,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Get_0400
@@ -3413,7 +3453,7 @@ describe('fileTest', function () {
    * @tc.desc Function of API, recursive = ture.The test file is exist.
    */
   it('File_Get_004', 0, async function (done) {
-    let dpath = fileName('File_Get_004d')
+    let dpath = fileName('File_Get_004d');
     let ddpath = dpath + '/File_Get_004dd'
     let fpath = dpath + '/File_Get_004f'
     let ffpath = ddpath + '/File_Get_004ff'
@@ -3426,7 +3466,7 @@ describe('fileTest', function () {
       recursive: true,
       success: function (data) {
         console.log('File_Get_004 => file list：');
-        console.log('{uri:' + data.uri);
+        console.log('{uri:' );
         console.log('length:' + data.length);
         console.log('lastModifiedTime:' + data.lastModifiedTime);
         console.log('type:' + data.type);
@@ -3443,7 +3483,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Get_0500
@@ -3464,7 +3504,7 @@ describe('fileTest', function () {
       recursive: false,
       success: function (data) {
         console.log('File_Get_005 => file list ：');
-        console.log('{uri:' + data.uri);
+        console.log('{uri:' );
         console.log('length:' + data.length);
         console.log('lastModifiedTime:' + data.lastModifiedTime);
         console.log('type:' + data.type);
@@ -3481,7 +3521,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Get_0600
@@ -3501,7 +3541,7 @@ describe('fileTest', function () {
       uri: 'internal://app/File_Get_006d',
       success: function (data) {
         console.log('File_Get_006 file list：');
-        console.log('{uri:' + data.uri);
+        console.log('{uri:' );
         console.log('length:' + data.length);
         console.log('lastModifiedTime:' + data.lastModifiedTime);
         console.log('type:' + data.type);
@@ -3518,7 +3558,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Get_0700
@@ -3529,7 +3569,7 @@ describe('fileTest', function () {
     file.get({
       recursive: true,
       success: function (data) {
-        console.log('File_Get_007 call Copy success.')
+        console.log('File_Get_007 call Copy success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
@@ -3538,7 +3578,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Get_0800
@@ -3557,7 +3597,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Get_0900
@@ -3577,7 +3617,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Get_1000
@@ -3597,7 +3637,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Get_1100
@@ -3616,13 +3656,13 @@ describe('fileTest', function () {
         console.log('File_Get_011 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
-    })
+    });
     file.get({
       uri: 'internal://cache/File_Get_011',
       recursive: true,
       success: function (data) {
         console.log('file list');
-        console.log('uri:' + data.uri);
+        console.log('uri:' );
         console.log('length:' + data.length);
         console.log('lastModifiedTime:' + data.lastModifiedTime);
         console.log('type:' + data.type);
@@ -3644,8 +3684,8 @@ describe('fileTest', function () {
         console.log('File_Get_011 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
-    })
-  })
+    });
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Get_1200
@@ -3667,7 +3707,7 @@ describe('fileTest', function () {
       recursive: true,
       success: function (data) {
         console.log('file list');
-        console.log('uri:' + data.uri);
+        console.log('uri:' );
         console.log('length:' + data.length);
         console.log('lastModifiedTime:' + data.lastModifiedTime);
         console.log('type:' + data.type);
@@ -3681,7 +3721,7 @@ describe('fileTest', function () {
         done();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Get_1300
@@ -3702,7 +3742,7 @@ describe('fileTest', function () {
       recursive: true,
       success: function (data) {
         console.log('File_Get_013 => file list：');
-        console.log('{uri:' + data.uri);
+        console.log('{uri:' );
         console.log('length:' + data.length);
         console.log('lastModifiedTime:' + data.lastModifiedTime);
         console.log('type:' + data.type);
@@ -3719,7 +3759,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
+  });
 
   /**
    * @tc.number SUB_STORAGE_File_Get_1400
@@ -3731,7 +3771,7 @@ describe('fileTest', function () {
       uri: 'internal://app/../files/../../',
       success: function (data) {
         console.log('File_Get_014 => file list ：');
-        console.log('{uri:' + data.uri);
+        console.log('{uri:' );
         console.log('length:' + data.length);
         console.log('lastModifiedTime:' + data.lastModifiedTime);
         console.log('type:' + data.type);
@@ -3744,5 +3784,5 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
-  })
-})
+  });
+});
