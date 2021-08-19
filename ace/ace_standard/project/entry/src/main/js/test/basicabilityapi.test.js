@@ -16,33 +16,47 @@
 import configuration from '@system.configuration';
 import prompt from '@system.prompt';
 import router from '@system.router';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 
-describe('basicabilityapi', function() {
+describe('basicabilityapi', function () {
     let testResult;
     let testResultFail;
     let test;
-    beforeAll(function() {
+    beforeAll(function () {
         testResult = true;
         testResultFail = false;
-        test="success"
+        test = "success"
     });
-    beforeEach(function() {});
-    afterEach(function() {});
+    beforeEach(function () {
+    });
+    afterEach(function () {
+    });
+    afterAll(function () {
+    });
 
     /**
      * @tc.number    SUB_ACE_BASICABILITY_JS_API_0100
      * @tc.name      testClearInterval
      * @tc.desc      Cancel the repetitive timing tasks previously set by setInterval.
      */
-    it('testClearInterval', 0, function() {
+    it('testClearInterval', 0, async function(done) {
         console.info('testClearInterval START');
-        let intervalID = setInterval(function() {
-            console.info('TEST do very 1s.');
+        let res = 0;
+        let intervalID = await setInterval(function () {
+            res++;
+            console.info('testClearInterval res = ' + res);
+        }, 100);
+        await setTimeout(function () {
+            console.info('[clearInterval] start');
+            clearInterval(intervalID);
+            console.info('[clearInterval] end');
+        }, 600);
+        await setTimeout(function () {
+            console.info('testClearInterval finally');
+            expect(5).assertEqual(res);
+            console.info('testClearInterval END');
+            done();
         }, 1000);
-        clearInterval(intervalID);
-        expect(test).assertEqual('success');
-        console.info('[clearInterval] success');
-        console.info('testClearInterval END');
     });
 
     /**
@@ -50,7 +64,7 @@ describe('basicabilityapi', function() {
      * @tc.name      testConsole
      * @tc.desc      Print a text message.
      */
-    it('testConsole', 0, function() {
+    it('testConsole', 0, function () {
         console.info('testConsole START');
         const versionCode = 1.1;
         console.info('[console.info] versionCode: ' + versionCode);
@@ -67,18 +81,47 @@ describe('basicabilityapi', function() {
      * @tc.name      testRouterPush
      * @tc.desc      Go to the specified page of the application.
      */
-    it('testRouterPush', 0, function() {
-        router.push({
-            uri:'pages/routePush/index',
-            params: {
-                myData:'this is params data'
-            }
-        });
-        setTimeout(() => {
-            let pages = router.getState();
-            console.info("[router.clear] getState"+JSON.stringify(pages));
+    it('testRouterPush', 0, async function (done) {
+        console.info('testRouterPush START');
+        await setTimeout(() => {
+            router.push({
+                uri: 'pages/routerPush/index'
+            });
         }, 500);
-        expect(test).assertEqual('success');
+        await setTimeout(() => {
+            let pages = router.getState();
+            console.info("[router.push] getState" + JSON.stringify(pages));
+            expect("pages/routerPush/").assertEqual(pages.path);
+            console.info("[router.push] getLength:" + router.getLength());
+            expect("2").assertEqual(router.getLength());
+            console.info('testRouterPush SUCCESS');
+            router.back();
+            console.info('testRouterPush END');
+            done();
+        }, 1000);
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASICABILITY_JS_API_0310
+     * @tc.name      testRouterPushNotExist
+     * @tc.desc      Test push not exist page.
+     */
+    it('testRouterPushNotExist', 0, async function (done) {
+        console.info('testRouterPushNotExist START');
+        await setTimeout(() => {
+            router.push({
+                uri: 'pages/routerNotExist/index'
+            });
+        }, 500);
+        await setTimeout(() => {
+            let pages = router.getState();
+            console.info("testRouterPushNotExist getState" + JSON.stringify(pages));
+            expect("pages/index/").assertEqual(pages.path);
+            console.info("testRouterPushNotExist getLength:" + router.getLength());
+            expect("1").assertEqual(router.getLength());
+            console.info('testRouterPushNotExist END');
+            done();
+        }, 1000);
     });
 
     /**
@@ -86,17 +129,52 @@ describe('basicabilityapi', function() {
      * @tc.name      testRouterReplace
      * @tc.desc      Replace the current page with a page in the application, and destroy the replaced page.
      */
-    it('testRouterReplace', 0, function() {
+    it('testRouterReplace', 0, async function (done) {
         console.info('testRouterReplace START');
-        router.replace({
-            uri: 'pages/routerReplace/index',
-            params: {
-                data1: 'message',
-            }
-        });
-        expect(test).assertEqual('success');
-        console.info("[router.replace] success");
-        console.info('testRouterReplace END');
+        await setTimeout(() => {
+            router.push({
+                uri: 'pages/routerPush/index'
+            });
+        }, 500);
+        await setTimeout(() => {
+            router.replace({
+                uri: 'pages/routerReplace/index'
+            });
+        }, 1000);
+        await setTimeout(() => {
+            let pages = router.getState();
+            console.info("[router.replace] getState" + JSON.stringify(pages));
+            expect("pages/routerReplace/").assertEqual(pages.path);
+            console.info("[router.replace] getLength:" + router.getLength());
+            expect("2").assertEqual(router.getLength());
+            console.info('testRouterReplace SUCCESS');
+            router.back();
+            console.info('testRouterReplace END');
+            done();
+        }, 1500);
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASICABILITY_JS_API_0410
+     * @tc.name      testRouterReplaceNotExist
+     * @tc.desc      Test replace not exist page.
+     */
+    it('testRouterReplaceNotExist', 0, async function (done) {
+        console.info('testRouterReplaceNotExist START');
+        await setTimeout(() => {
+            router.replace({
+                uri: 'pages/routerNotExist/index'
+            });
+        }, 500);
+        await setTimeout(() => {
+            let pages = router.getState();
+            console.info("testRouterReplaceNotExist getState" + JSON.stringify(pages));
+            expect("pages/index/").assertEqual(pages.path);
+            console.info("testRouterReplaceNotExist getLength:" + router.getLength());
+            expect("1").assertEqual(router.getLength());
+            console.info('testRouterReplaceNotExist END');
+            done();
+        }, 1000);
     });
 
     /**
@@ -104,17 +182,27 @@ describe('basicabilityapi', function() {
      * @tc.name      testRouterBack
      * @tc.desc      Return to the previous page or the specified page.
      */
-    it('testRouterBack', 0, function() {
+    it('testRouterBack', 0, async function (done) {
         console.info('testRouterBack START');
-        router.push({
-            uri: 'pages/detail/detail'
-        });
-        router.back({
-            path: 'pages/mediaquery/mediaquery'
-        });
-        expect(test).assertEqual('success');
-        console.info('[router.back] success');
-        console.info('testRouterBack END');
+        await setTimeout(() => {
+            router.push({
+                uri: 'pages/routerPush/index'
+            });
+        }, 500);
+        await setTimeout(() => {
+            router.back({
+                uri: 'pages/index/index'
+            });
+        }, 1000);
+        await setTimeout(() => {
+            let pages = router.getState();
+            console.info("[router.back] getState" + JSON.stringify(pages));
+            expect("pages/index/").assertEqual(pages.path);
+            console.info("[router.back] getLength:" + router.getLength());
+            expect("1").assertEqual(router.getLength());
+            console.info('testRouterBack END');
+            done();
+        }, 1500);
     });
 
     /**
@@ -122,25 +210,11 @@ describe('basicabilityapi', function() {
      * @tc.name      testRouterClear
      * @tc.desc      Clear all historical pages in the page stack, and only keep the current page as the top page.
      */
-    it('testRouterClear', 0, function() {
+    it('testRouterClear', 0, function () {
         console.info('testRouterClear START');
-        new Promise(function(resolve, reject) {
-            router.push({
-                uri:'pages/routePush/index',
-                params:{
-                    myData:'message'
-                }
-            });
-            setTimeout(()=>{
-                console.info("[router.clear] getLength: " + router.getLength());
-            }, 2000);
-            resolve();
-        }).then(function() {
-            expect(testResult).toBeTrue();
-        }, function() {
-            console.log('[router.clear] fail');
-            expect(testResultFail).toBeTrue();
-        });
+        router.clear();
+        console.info("[router.clear] router.getLength:" + router.getLength());
+        expect("1").assertEqual(router.getLength());
         console.info('testRouterClear END');
     });
 
@@ -149,24 +223,55 @@ describe('basicabilityapi', function() {
      * @tc.name      testRouterLength
      * @tc.desc      Get the number of pages currently in the page stack.
      */
-    it('testRouterLength', 0, function() {
-        router.push({
-            uri: 'pages/dialog/dialog',
-            params: {
-                data1: 'message',
-                data2: {
-                    data3: [123, 456, 789],
-                    data4: {
-                        data5: 'message'
-                    }
-                }
-            }
-        });
+    it('testRouterLength', 0, async function (done) {
         console.info('testRouterLength START');
         let size = router.getLength();
         console.info('[router.getLength] pages stack size = ' + size);
         expect(size).assertEqual('1');
-        console.info('testRouterLength END');
+        await setTimeout(() => {
+            router.push({
+                uri: 'pages/routerPush/index'
+            });
+        }, 500);
+        await setTimeout(() => {
+            console.info("testRouterLength getLength:" + router.getLength());
+            expect("2").assertEqual(router.getLength());
+            console.info('testRouterPush SUCCESS');
+            router.back();
+            console.info('testRouterPush END');
+            done();
+        }, 1000);
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASICABILITY_JS_API_0710
+     * @tc.name      testRouterMaxLength
+     * @tc.desc      Test the max number of the page stack is 32.
+     */
+    it('testRouterMaxLength', 0, async function (done) {
+        console.info('testRouterLength START');
+        let intervalID = await setInterval(async function () {
+            await router.push({
+                uri: 'pages/routerPush/index'
+            });
+            await router.push({
+                uri: 'pages/routerReplace/index'
+            });
+            console.info('testRouterMaxLength router.getLength:' + router.getLength());
+        }, 500);
+        await setTimeout(() => {
+            clearInterval(intervalID);
+        }, 1000 * 17);
+        await setTimeout(() => {
+            console.info("testRouterMaxLength getLength:" + router.getLength());
+            expect("32").assertEqual(router.getLength());
+            console.info('testRouterMaxLength SUCCESS');
+            router.back({
+                uri: 'pages/index/index'
+            });
+            console.info('testRouterMaxLength END');
+            done();
+        }, (1000 * 18));
     });
 
     /**
@@ -174,7 +279,7 @@ describe('basicabilityapi', function() {
      * @tc.name      testRouterGetState
      * @tc.desc      Get the status information of the current page.
      */
-    it('testRouterGetState', 0, function() {
+    it('testRouterGetState', 0, function () {
         console.info('testRouterGetState START');
         let page = router.getState();
         console.info('[router.getState] index: ' + page.index);
@@ -191,12 +296,12 @@ describe('basicabilityapi', function() {
      * @tc.name      testPromptShowToast
      * @tc.desc      Show text pop-up window.
      */
-    it('testPromptShowToast', 0, function() {
+    it('testPromptShowToast', 0, function () {
         console.info('testPromptShowToast START');
         const delay = 5000;
         prompt.showToast({
-            message:'message',
-            duration:delay,
+            message: 'message',
+            duration: delay,
         });
         expect(test).assertEqual('success');
         console.info('[prompt.showToast] success');
@@ -208,7 +313,7 @@ describe('basicabilityapi', function() {
      * @tc.name      testPromptDialog
      * @tc.desc      Display the dialog box in the page.
      */
-    it('testPromptDialog', 0, function() {
+    it('testPromptDialog', 0, function () {
         console.info('testPromptDialog START')
         prompt.showDialog({
             title: 'dialog showDialog test',
@@ -220,15 +325,15 @@ describe('basicabilityapi', function() {
                     index: 0
                 }
             ],
-            success: function(ret) {
+            success: function (ret) {
                 console.info("[prompt.showDialog] ret.index " + ret.index);
                 expect(testResult).toBeTrue();
             },
-            cancel: function() {
+            cancel: function () {
                 console.log('[prompt.showDialog] dialog cancel callback');
                 expect(testResultFail).toBeTrue();
             },
-            complete: function() {
+            complete: function () {
                 console.log('[prompt.showDialog] complete');
             }
         });
@@ -240,7 +345,7 @@ describe('basicabilityapi', function() {
      * @tc.name      testConfigurationGetLocale
      * @tc.desc      Get the current language and region of the app. Synchronize with the language and region.
      */
-    it('testConfigurationGetLocale', 0, function() {
+    it('testConfigurationGetLocale', 0, function () {
         console.info('testConfigurationGetLocale START');
         const localeInfo = configuration.getLocale();
         console.info("[configuration.getLocale] language: " + localeInfo.language);
@@ -257,19 +362,23 @@ describe('basicabilityapi', function() {
      * @tc.name      testSetTimeout
      * @tc.desc      Set up a timer that executes a function or a specified piece of code after the timer expires.
      */
-    it('testSetTimeout', 0, function() {
+    it('testSetTimeout', 0, async function (done) {
         console.info('testSetTimeout START');
         let start_time = new Date().getTime();
         const delay = 200;
-        console.info("[settimeout] start_time: " + start_time);
-        setTimeout(function(v1,v2) {
+        await setTimeout(function (v1, v2) {
             let end_time = new Date().getTime();
-            console.info('[settimeout] delay: ' + (end_time - start_time) / 1000);
+            console.info("[settimeout] start_time: " + start_time);
+            console.info("[settimeout] end_time: " + end_time);
+            console.info('[settimeout] delay: ' + (end_time - start_time));
             console.info('[settimeout] v1: ' + v1);
             console.info('[settimeout] v2: ' + v2);
-            expect(testResult).toBeTrue();
+            expect('test').assertEqual(v1);
+            expect('message').assertEqual(v2);
+            expect(delay).assertLess(end_time - start_time);
+            console.info('testSetTimeout END');
+            done();
         }, delay, 'test', 'message');
-        console.info('testSetTimeout END');
     });
 
     /**
@@ -277,15 +386,22 @@ describe('basicabilityapi', function() {
      * @tc.name      testClearTimeout
      * @tc.desc      The timer previously established by calling setTimeout() is cancelled.
      */
-    it('testClearTimeout', 0, function() {
+    it('testClearTimeout', 0, async function (done) {
         console.info('testClearTimeout START');
-        let timeoutID = setTimeout(function() {
-            console.info('delay 1s');
+        let res = 0;
+        let timeoutID = setTimeout(function () {
+            res++;
+        }, 700);
+        await setTimeout(function () {
+            console.info('testClearTimeout delay 0.5s')
+            clearTimeout(timeoutID);
+            console.info("[clearTimeout] success");
+        }, 500);
+        await setTimeout(function () {
+            expect(0).assertEqual(res);
+            console.info('testClearTimeout END');
+            done();
         }, 1000);
-        clearTimeout(timeoutID);
-        expect(test).assertEqual('success');
-        console.info("[clearTimeout] success");
-        console.info('testClearTimeout END');
     });
 
     /**
@@ -293,13 +409,18 @@ describe('basicabilityapi', function() {
      * @tc.name      testSetInterval
      * @tc.desc      Call a function or execute a code segment repeatedly, with a fixed time delay between each call.
      */
-    it('testSetInterval', 0, function() {
+    it('testSetInterval', 0, async function (done) {
         console.info('testSetInterval START');
-        let intervalID = setInterval(function() {
-            console.log('do very 1s.');
-            expect(testResult).toBeTrue();
+        let res = 0;
+        let intervalID = setInterval(function () {
+            res++;
         }, 1000);
-        console.info("[setInterval] intervalID: " + intervalID);
-        console.info('testSetInterval END');
+        await setTimeout(function () {
+            expect(9).assertEqual(res);
+            console.info('testSetInterval SUCCESS');
+            clearInterval(intervalID);
+            console.info('testSetInterval END');
+            done();
+        }, 1000);
     });
 });
