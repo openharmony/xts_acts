@@ -27,7 +27,7 @@ describe('SystemParameterTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('system_parameter_test_001', 0, function () {
+    it('system_parameter_test_001', 0, async function (done) {
         console.info('system_parameter_test_001 start');
         var ret = false;
             try {
@@ -39,6 +39,7 @@ describe('SystemParameterTest', function () {
                         console.info("set callback hw_sc.build.os.version value err:" + err.code);
                     }
                 });
+                done();
             }catch(e){
                 console.info("set callback hw_sc.build.os.version unexpect err:" + e);
             }
@@ -54,7 +55,7 @@ describe('SystemParameterTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('system_parameter_test_002', 0, function () {
+    it('system_parameter_test_002', 0, async function (done) {
         console.info('system_parameter_test_002 start');
         var ret = false;
         try {
@@ -67,6 +68,7 @@ describe('SystemParameterTest', function () {
                 }
 
             });
+            done();
         }catch(e){
             console.info("set callback ro.secure unexpect err:" + e)
         }
@@ -82,7 +84,7 @@ describe('SystemParameterTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('system_parameter_test_003', 0, function () {
+    it('system_parameter_test_003', 0, async function (done) {
         console.info('system_parameter_test_003 start');
         var parameterInfo = systemparameter.set("hw_sc.build.os.version", "1.5.3.6");
         var ret = false;
@@ -92,6 +94,7 @@ describe('SystemParameterTest', function () {
             }).catch(function (err) {
                 console.info("promise  set hw_sc.build.os.version error: " + err.code);
             });
+            done();
         }catch(e){
             console.info("set callback hw_sc.build.os.version unexpect err:" + e)
         }
@@ -110,7 +113,7 @@ describe('SystemParameterTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('system_parameter_test_004', 0, function () {
+    it('system_parameter_test_004', 0, async function (done) {
         console.info('system_parameter_test_004 start');
         var parameterInfo = systemparameter.set("ro.secure", "10");
         var ret = false;
@@ -120,6 +123,7 @@ describe('SystemParameterTest', function () {
             }).catch(function (err) {
                 console.info("12333 promise  set ro.secure error: " + err.code);
             });
+            done();
         }catch(e){
             console.info("set callback ro.secure unexpect err:" + e)
         }
@@ -175,32 +179,6 @@ describe('SystemParameterTest', function () {
     })
 
     /**
-     * @tc.number    SUB_STARTUP_JS_SYSTEM_PARAMETER_0700
-     * @tc.name      testGet01
-     * @tc.desc       Set the value for the given key.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('system_parameter_test_007', 0, function () {
-        console.info('system_parameter_test_007 start');
-        var ret = false;
-        try {
-            var parameterInfo = systemparameter.get("ro.secure", "1");
-            parameterInfo.then(function (value) {
-                ret = true;
-                console.info("promise get ro.secure success: " + value);
-            }).catch(function (err) {
-                console.info("promise get ro.secure error: " + err.code);
-            });
-        }catch(e){
-            console.info("promise  setSync ro.secure error: " + e);
-        }
-        setTimeout("expect(ret).assertTrue()", "10");
-        console.info('system_parameter_test_007 : PASS');
-    })
-
-    /**
      * @tc.number    SUB_STARTUP_JS_SYSTEM_PARAMETER_0800
      * @tc.name      testGet02
      * @tc.desc       Set the value for the given key.
@@ -208,163 +186,24 @@ describe('SystemParameterTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('system_parameter_test_008', 0, function () {
+    it('system_parameter_test_008', 0, async function (done) {
         console.info('system_parameter_test_008 start');
         var ret = false;
         try {
             var parameterInfo = systemparameter.get("hw_sc.build.os.version");
+
             parameterInfo.then(function (value) {
                 ret = true;
                 console.info("promise get hw_sc.build.os.version success: " + value);
             }).catch(function (err) {
                 console.info("promise get hw_sc.build.os.version error: " + err.code);
             });
+            done();
         }catch(e){
             console.info("promise  setSync ro.secure error: " + e);
         }
         setTimeout("expect(ret).assertTrue()", "10");
         console.info('system_parameter_test_008 : PASS');
-    })
-
-    /**
-     * @tc.number    SUB_STARTUP_JS_SYSTEM_PARAMETER_0900
-     * @tc.name      testGet03
-     * @tc.desc       Set the value for the given key.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('system_parameter_test_009', 0, function () {
-        console.info('system_parameter_test_009 start');
-        var ret = false;
-        try {
-            var parameterInfo = systemparameter.get("hw_sc.build.os.version", 897);
-            parameterInfo.then(function (value) {
-                console.info("897 promise get hw_sc.build.os.version success: " + value);
-            }).catch(function (err) {
-                console.info("897 promise get hw_sc.build.os.version error: " + err.code);
-            });
-        } catch (e) {
-            ret = true;
-            console.info("promise get input error: " + e);
-        }
-        expect(ret).assertTrue();
-        console.info('system_parameter_test_009 : PASS');
-    })
-
-    /**
-     * @tc.number    SUB_STARTUP_JS_SYSTEM_PARAMETER_0110
-     * @tc.name      testGet04
-     * @tc.desc       Set the value for the given key.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('system_parameter_test_010', 0, function () {
-        console.info('system_parameter_test_010 start');
-        var ret = false;
-        try {
-            systemparameter.get("hw_sc.build.os.version", 567, function (err, data) {
-                if (err == undefined) {
-                    console.info(" 567 callback get hw_sc.build.os.version value success:" + data)
-                } else {
-                    console.info(" 567 callback get hw_sc.build.os.version value err:" + err.code)
-                }
-
-            });
-        } catch (e) {
-            ret = true;
-            console.info(" 567 callback get inputttt error:" + e)
-        }
-        expect(ret).assertTrue();
-        console.info('system_parameter_test_010 : PASS');
-    })
-
-    /**
-     * @tc.number    SUB_STARTUP_JS_SYSTEM_PARAMETER_0120
-     * @tc.name      testGet05
-     * @tc.desc       Set the value for the given key.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('system_parameter_test_011', 0, function () {
-        console.info('system_parameter_test_011 start');
-        var ret = false;
-        try {
-            systemparameter.get("hw_sc.build.os.version", "10.20.30.4", function (err, data) {
-                if (err == undefined) {
-                    ret = true;
-                    console.info(" callback get hw_sc.build.os.version value success:" + data)
-                } else {
-                    console.info(" callback get hw_sc.build.os.version value err:" + err.code)
-                }
-
-            });
-        } catch (e) {
-            ret = true;
-            console.info(" 567 callback get inputttt error:" + e)
-        }
-        setTimeout("expect(ret).assertTrue()", "10");
-        console.info('system_parameter_test_011 : PASS');
-    })
-
-    /**
-     * @tc.number    SUB_STARTUP_JS_SYSTEM_PARAMETER_0130
-     * @tc.name      testGet06
-     * @tc.desc       Set the value for the given key.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('system_parameter_test_012', 0, function () {
-        console.info('system_parameter_test_012 start');
-        var ret = false;
-        try {
-            systemparameter.get("ro.secure", "zbc", function (err, data) {
-                if (err == undefined) {
-                    ret = true;
-                    console.info("callback get ro.secure value success:" + data)
-                } else {
-                    console.info("callback get ro.secure value err:" + err.code)
-                }
-
-            });
-        } catch (e) {
-            ret = true;
-            console.info(" 567 callback get inputttt error:" + e)
-        }
-        setTimeout("expect(ret).assertTrue()", "10");
-        console.info('system_parameter_test_012 : PASS');
-    })
-
-    /**
-     * @tc.number    SUB_STARTUP_JS_SYSTEM_PARAMETER_0140
-     * @tc.name      testGet07
-     * @tc.desc      Gets the value of the attribute with the specified key.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('system_parameter_test_013', 0, function () {
-        console.info('system_parameter_test_013 start');
-        var ret = false;
-        try {
-            systemparameter.get("ro.secure", function (err, data) {
-                if (err == undefined) {
-                    ret = true;
-                    console.info("callback get ro.secure value success:" + data)
-                } else {
-                    console.info("callback get ro.secure value err:" + err.code)
-                }
-
-            });
-        } catch (e) {
-            ret = true;
-            console.info("callback get inputttt error:" + e)
-        }
-        setTimeout("expect(ret).assertTrue()", "10");
-        console.info('system_parameter_test_013 : PASS');
     })
 
     /**
@@ -375,7 +214,7 @@ describe('SystemParameterTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('system_parameter_test_014', 0, function () {
+    it('system_parameter_test_014', 0, async function (done) {
         console.info('system_parameter_test_014 start');
         var ret = false;
         try {
@@ -385,6 +224,7 @@ describe('SystemParameterTest', function () {
             }).catch(function (err) {
                 console.info("496 promise get hw_sc.build.os.version error: " + err.code);
             });
+            done();
         } catch (e) {
             ret = true;
             console.info("promise get input error: " + e);
@@ -392,5 +232,4 @@ describe('SystemParameterTest', function () {
         expect(ret).assertTrue();
         console.info('system_parameter_test_014 : PASS');
     })
-
 })
