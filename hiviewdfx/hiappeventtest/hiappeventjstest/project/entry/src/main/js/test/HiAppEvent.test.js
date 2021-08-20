@@ -471,7 +471,7 @@ describe('HiAppEventApiTest', function () {
     
     /**
      * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2000
-     * @tc.name testHiAppEventApi19
+     * @tc.name testHiAppEventApi20
      * @tc.desc HiAppEvent write empty eventname .
      */
     it('testHiAppEventApi20', 3, function () {
