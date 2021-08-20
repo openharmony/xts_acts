@@ -736,7 +736,47 @@ HWTEST_F(hilogtest, Hilogtool_filter_multiple, Function|MediumTest|Level2)
     }
     ASSERT_TRUE(true == result);
 }
-
+/*
+ * @tc.name Logs are not duplicated and are not lost.
+ * @tc.number DFX_DFT_HilogCPP_2080
+ * @tc.desc Logs are not duplicated and are not lost.
+*/
+HWTEST_F(hilogtest, Hilogtool_count, Function|MediumTest|Level2)
+{
+    CleanCmd();
+    std::string saveFile= "test_data_30.txt";
+    std::string cmd1 = gHilogtoolExecutable + " -r";
+    std::string cmdResult;
+    CmdRun(cmd1, cmdResult);
+    LogType type = LOG_APP;
+    int i = 0;
+    int cnt = 1000;
+    while (i++ < cnt) {
+        usleep(1);
+        HILOG_DEBUG(type, g_logContent.c_str(), i, 1.00001, 2.333333, "sse", 'a');
+    }
+    std::string cmd2 = gHilogtoolExecutable + "-t app -T HILOGTOOLTEST -x";
+    SaveCmdOutput(cmd2, saveFile);
+    ASSERT_TRUE(cnt == GetTxtLine(saveFile));
+    ifstream in(saveFile);
+    std::string filename;
+    std::string line;
+    std::vector<string> mVec;
+    if (in) {
+        while (getline(in, line)) {
+            mVec.push_back(line);
+        }
+    } else {
+        std::cout << "no such file" << std::endl;
+    }
+    sort(mVec.begin(), mVec.end());
+    vector<string>::iterator endUnique = unique(mVec.begin(), mVec.end());
+    vector<string> vec;
+    while (endUnique != mVec.end()) {
+        vec.push_back(*endUnique++);
+    }
+    ASSERT_TRUE(0 == vec.size());
+}
 /*
  * @tc.name buffer size test
  * @tc.number DFX_DFT_HilogCPP_1020
