@@ -13,4 +13,4 @@
  * limitations under the License.
  */
 
-require('./AudioManager.test.js')
+require('./AudioFramework.test.js')
