@@ -19,7 +19,8 @@ group("multimedia") {
     deps = [ 
       "audio/audio_js_standard/audioPlayer:audio_player_js_hap" ,
       "audio/audio_js_standard/audioPlayer_API:audio_player_api_js_hap",
-      "media/media_cpp_test_standard:ActsMediaCppStandardTest",
+	  "audio/audio_js_standard/audioManager:audio_manager_js_hap",
+      "media/media_cpp_test_standard:ActsMediaCppStandardTest"
     ]
   } else {
     deps = [

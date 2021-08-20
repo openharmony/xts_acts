@@ -12,7 +12,7 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("audio_manager_js_test") {
+ohos_js_hap_suite("audio_manager_js_hap") {
   test_hap_name = "AudioManagerJsTest"
-  hap_source_path = "hap/entry-debug-rich-signed.hap"
+  hap_source_path = "hap/AudioManager.hap"
 }
