@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.example.napi_test_suite",
+    "bundleName": "com.example.myapplication",
     "vendor": "example",
     "version": {
       "code": 1,
@@ -14,9 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-
-
-    "package": "com.example.napi_test_suite",
+    "package": "com.example.myapplication",
     "name": ".MyApplication",
     "deviceType": [
       "phone"
@@ -31,18 +29,45 @@
         "skills": [
           {
             "entities": [
-              "entity.system.home"
+              "entity.system.home",
+              "flag.home.intent.from.system"
             ],
             "actions": [
               "action.system.home"
             ]
           }
         ],
-        "name": "com.example.napi_test_suite.MainAbility",
+        "name": "com.example.myapplication.MainAbility",
         "icon": "$media:icon",
+        "theme":"$media:icon",
         "description": "$string:mainability_description",
-        "label": "$string:app_name",
+        "label": "MyApplication",
         "type": "page",
+        "formEntity": [
+             "homeScreen",
+             "searchbox"
+          ],
+        "defaultFormHeight": 100,
+        "minFormHeight": 200,
+        "defaultFormWidth": 300,
+        "minFormWidth": 400,
+        "metaData": {
+          "parameters" : [{
+            "name" : "string",
+            "type" : "Float",
+            "description" : "string_parameters_description"
+          }],
+          "results" : [{
+            "name" : "string",
+            "type" : "Float",
+            "description" : "string_results_description"
+          }],
+          "customizeData" : [{
+            "name" : "string",
+            "value" : "string",
+            "extra" : ""
+          }]
+        },
         "launchType": "standard"
       }
     ],
@@ -69,11 +94,13 @@
         "description": "WeChat permission in detail"
       }
     ],
+    "colorMode": "light",
     "js": [
       {
         "pages": [
           "pages/index/index"
         ],
+        "colorMode": "light",
         "name": "default",
         "window": {
           "designWidth": 720,

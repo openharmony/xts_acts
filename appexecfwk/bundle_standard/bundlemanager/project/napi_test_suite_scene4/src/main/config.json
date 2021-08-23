@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.example.myapplication_2",
+    "bundleName": "com.example.napi_test_suite",
     "vendor": "example",
     "version": {
       "code": 1,
@@ -14,7 +14,9 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.myapplication",
+
+
+    "package": "com.example.napi_test_suite",
     "name": ".MyApplication",
     "deviceType": [
       "phone"
@@ -37,37 +39,11 @@
             ]
           }
         ],
-        "name": "com.example.myapplication.MainAbility",
+        "name": "com.example.napi_test_suite.MainAbility",
         "icon": "$media:icon",
-        "theme":"$media:icon",
         "description": "$string:mainability_description",
-        "label": "MyApplication",
+        "label": "$string:app_name",
         "type": "page",
-        "formEntity": [
-             "homeScreen",
-             "searchbox"
-          ],
-        "defaultFormHeight": 100,
-        "minFormHeight": 200,
-        "defaultFormWidth": 300,
-        "minFormWidth": 400,
-        "metaData": {
-          "parameters" : [{
-            "name" : "string",
-            "type" : "Float",
-            "description" : "string_parameters_description"
-          }],
-          "results" : [{
-            "name" : "string",
-            "type" : "Float",
-            "description" : "string_results_description"
-          }],
-          "customizeData" : [{
-            "name" : "string",
-            "value" : "string",
-            "extra" : ""
-          }]
-        },
         "launchType": "standard"
       }
     ],
@@ -94,13 +70,11 @@
         "description": "WeChat permission in detail"
       }
     ],
-    "colorMode": "light",
     "js": [
       {
         "pages": [
           "pages/index/index"
         ],
-        "colorMode": "light",
         "name": "default",
         "window": {
           "designWidth": 720,
