@@ -1,0 +1,7 @@
+<div class="container">
+    <text class="title"  style="transform : translate({{x}}px,{{y}}px);">
+{{title}}
+    </text>
+
+
+</div>
