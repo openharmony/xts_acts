@@ -19,182 +19,388 @@ describe('intlTest', function () {
     console.log("*************00000000000000000000000*************");
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_0000
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0100
     * @tc.name format the language in locale
     * @tc.desc check the language
     */
-    it('locale_test_000', 0, function () {
+    it('locale_test_0100', 0, function () {
         var locale = new Intl.Locale("en-Latn-GB");
-        console.log("jessie " + locale.language);
+        console.log("locale_test_0100 " + locale.language);
         expect(locale.language).assertEqual("en");
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_0100
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0200
     * @tc.name format the language in locale
     * @tc.desc check the language
     */
-    it('locale_test_001', 0, function () {
+    it('locale_test_0200', 0, function () {
         var locale = new Intl.Locale("ja-Jpan-JP-u-ca-japanese-hc-h12-co-emoji");
-        console.log("jessie " + locale.language);
+        console.log("locale_test_0200 " + locale.language);
         expect(locale.language).assertEqual("ja");
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_0200
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0300
     * @tc.name format the script in locale
     * @tc.desc check the script
     */
-    it('locale_test_002', 0, function () {
+    it('locale_test_0300', 0, function () {
         var locale = new Intl.Locale("en-Latn-GB");
-        console.log("jessie " + locale.script);
+        console.log("locale_test_0300 " + locale.script);
         expect(locale.script).assertEqual("Latn");
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_0300
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0400
     * @tc.name format the region in locale
     * @tc.desc check the region
     */
-    it('locale_test_003', 0, function () {
+    it('locale_test_0400', 0, function () {
         var locale = new Intl.Locale("en-Latn-GB");
-        console.log("jessie " + locale.region);
+        console.log("locale_test_0400 " + locale.region);
         expect(locale.region).assertEqual("GB");
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_0400
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0500
     * @tc.name format the basename in locale
     * @tc.desc check the basename
     */
-    it('locale_test_004', 0, function () {
+    it('locale_test_0500', 0, function () {
         var locale = new Intl.Locale("en-Latn-GB");
-        console.log("jessie " + locale.baseName);
+        console.log("locale_test_0500 " + locale.baseName);
         expect(locale.baseName).assertEqual("en-Latn-GB");
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_0500
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0600
     * @tc.name format the basename in ja-Jpan-JP-u-ca-japanese-hc-h12
     * @tc.desc check the ja-Jpan-JP-u-ca-japanese-hc-h12 basename
     */
-    it('locale_test_005', 0, function () {
+    it('locale_test_0600', 0, function () {
         var locale = new Intl.Locale("ja-Jpan-JP-u-ca-japanese-hc-h12");
-        console.log("jessie " + locale.baseName);
+        console.log("locale_test_0600 " + locale.baseName);
         expect(locale.baseName).assertEqual("ja-Jpan-JP");
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_0600
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0700
     * @tc.name format the hourCycle
     * @tc.desc check the hourCycle
     */
-    it('locale_test_006', 0, function () {
+    it('locale_test_0700', 0, function () {
         var locale = new Intl.Locale('zh-CN', {hourCycle: 'h24', calendar: 'gregory'});
+        console.log("locale_test_0700 " + locale.hourCycle);
         expect(locale.hourCycle).assertEqual("h24");
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_0700
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0800
     * @tc.name format the calendar
     * @tc.desc check the calendar
     */
-    it('locale_test_007', 0, function () {
+    it('locale_test_0800', 0, function () {
         var locale = new Intl.Locale('zh-CN', {hourCycle: '24', calendar: 'gregory'});
+        console.log("locale_test_0800 " + locale.calendar);
         expect(locale.calendar).assertEqual("gregory");
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_0800
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0900
     * @tc.name format the japanese calendar
     * @tc.desc check the japanese calendar
     */
-    it('locale_test_008', 0, function () {
+    it('locale_test_0900', 0, function () {
         var locale = new Intl.Locale('ja-Jpan-JP-u-ca-japanese-hc-h12');
+        console.log("locale_test_0900 " + locale.calendar);
         expect(locale.calendar).assertEqual("japanese");
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_0900
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1000
     * @tc.name format the h12 hourCycle
     * @tc.desc check the h12 hourCycle
     */
-    it('locale_test_009', 0, function () {
+    it('locale_test_1000', 0, function () {
         var locale = new Intl.Locale('ja-Jpan-JP-u-ca-japanese-hc-h12');
+        console.log("locale_test_1000 " + locale.hourCycle);
         expect(locale.hourCycle).assertEqual("h12");
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_1000
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1100
     * @tc.name format the caseFirst
     * @tc.desc check the caseFirst
     */
-    it('locale_test_010', 0, function () {
+    it('locale_test_1100', 0, function () {
         var locale = new Intl.Locale('ja-Jpan-JP', {caseFirst: true});
+        console.log("locale_test_1100 " + locale.caseFirst);
         expect(locale.caseFirst == true).assertTrue();
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_1100
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1200
     * @tc.name format the collation
     * @tc.desc check the collation
     */
-    it('locale_test_011', 0, function () {
+    it('locale_test_1200', 0, function () {
         var locale = new Intl.Locale('ja-Jpan-JP', {collation: 'big5han'});
+        console.log("locale_test_1200 " + locale.collation);
         expect(locale.collation).assertEqual("big5han");
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_1101
-    * @tc.name test the toString interface
-    * @tc.desc check the toString method
-    */
-    it('locale_test_012', 0, function () {
-        var locale = new Intl.Locale('zh-CN', {calendar: 'gregory', collation: 'compact'});
-        expect(locale.toString()).assertEqual("zh-CN-u-ca-gregory-co-compact");
-    })
-
-    /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_1102
-    * @tc.name test the maximize interface
-    * @tc.desc check the maximize method
-    */
-    it('locale_test_013', 0, function () {
-        var locale = new Intl.Locale('zh', {calendar: 'gregory', collation: 'compact'});
-        console.log("jessie 013 " + locale.maximize().toString());
-        expect(locale.maximize().toString()).assertEqual("zh-hans-CN-u-ca-gregory-co-compact");
-    })
-
-    /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_1103
-    * @tc.name test the mininize interface
-    * @tc.desc check the mininize method
-    */
-    it('locale_test_014', 0, function () {
-        var locale = new Intl.Locale('zh-hans-CN', {calendar: 'gregory', collation: 'compact'});
-        console.log("jessie 014 " + locale.mininize().toString());
-        expect(locale.mininize().toString()).assertEqual("zh-u-ca-gregory-co-compact");
-    })
-
-    /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_1104
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1300
     * @tc.name format the numeric
     * @tc.desc check the numeric
     */
-    it('locale_test_015', 0, function () {
+    it('locale_test_1300', 0, function () {
         var locale = new Intl.Locale('ja-Jpan-JP', {numeric: true});
-        console.log("jessie 015 " + locale.numeric);
+        console.log("locale_test_1300 " + locale.numeric);
         expect(locale.numeric == true).assertTrue();
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_1105
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1400
     * @tc.name format the numeric
     * @tc.desc check the numeric
     */
-    it('locale_test_016', 0, function () {
+    it('locale_test_1400', 0, function () {
         var locale = new Intl.Locale('ja-Jpan-JP', {numberingSystem: 'arab'});
+        console.log("locale_test_1400 " + locale.numberingSystem);
         expect(locale.numberingSystem).assertEqual("arab");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1500
+    * @tc.name test the toString interface
+    * @tc.desc check the toString method
+    */
+    it('locale_test_1500', 0, function () {
+        var locale = new Intl.Locale('zh');
+        console.log("locale_test_1500 " + locale.toString());
+        expect(locale.toString()).assertEqual("zh");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1600
+    * @tc.name test the toString interface
+    * @tc.desc check the toString method
+    */
+    it('locale_test_1600', 0, function () {
+        var locale = new Intl.Locale('zh-CN');
+        console.log("locale_test_1600 " + locale.toString());
+        expect(locale.toString()).assertEqual("zh-CN");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1700
+    * @tc.name test the toString interface
+    * @tc.desc check the toString method
+    */
+    it('locale_test_1700', 0, function () {
+        var locale = new Intl.Locale('zh-Hans-CN');
+        console.log("locale_test_1700 " + locale.toString());
+        expect(locale.toString()).assertEqual("zh-Hans-CN");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1800
+    * @tc.name test the toString interface
+    * @tc.desc check the toString method
+    */
+    it('locale_test_1800', 0, function () {
+        var locale = new Intl.Locale('zh-Hans-CN-u-ca-japanese-hc-h12');
+        console.log("locale_test_1800 " + locale.toString());
+        expect(locale.toString()).assertEqual("zh-Hans-CN-u-hc-h12-ca-japanese");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1900
+    * @tc.name test the maximize interface
+    * @tc.desc check the maximize method
+    */
+    it('locale_test_1900', 0, function () {
+        var locale = new Intl.Locale('zh', {calendar: 'gregory', collation: 'compact'});
+        console.log("locale_test_1900 " + locale.toString());
+        expect(locale.toString()).assertEqual("zh-u-ca-gregory-co-compact");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2000
+    * @tc.name test the toString interface
+    * @tc.desc check the toString method
+    */
+    it('locale_test_2000', 0, function () {
+        var locale = new Intl.Locale('zh-CN', {calendar: 'gregory', collation: 'compact'});
+        console.log("locale_test_2000 " + locale.toString());
+        expect(locale.toString()).assertEqual("zh-CN-u-ca-gregory-co-compact");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2100
+    * @tc.name test the mininize interface
+    * @tc.desc check the mininize method
+    */
+    it('locale_test_2100', 0, function () {
+        var locale = new Intl.Locale('zh-hans-CN', {calendar: 'gregory', collation: 'compact'});
+        console.log("locale_test_2100 " + locale.toString());
+        expect(locale.toString()).assertEqual("zh-hans-CN-u-ca-gregory-co-compact");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2200
+    * @tc.name test the mininize interface
+    * @tc.desc check the mininize method
+    */
+    it('locale_test_2200', 0, function () {
+        var locale = new Intl.Locale('zh');
+        console.log("locale_test_2200 " + locale.mininize().toString());
+        expect(locale.minimize().toString()).assertEqual("zh");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2201
+    * @tc.name test the mininize interface
+    * @tc.desc check the mininize method
+    */
+    it('locale_test_2201', 0, function () {
+        var locale = new Intl.Locale('zh-CN');
+        console.log("locale_test_2201 " + locale.mininize().toString());
+        expect(locale.minimize().toString()).assertEqual("zh");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2202
+    * @tc.name test the mininize interface
+    * @tc.desc check the mininize method
+    */
+    it('locale_test_2202', 0, function () {
+        var locale = new Intl.Locale('zh-Hans-CN');
+        console.log("locale_test_2202 " + locale.mininize().toString());
+        expect(locale.minimize().toString()).assertEqual("zh");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2203
+    * @tc.name test the mininize interface
+    * @tc.desc check the mininize method
+    */
+    it('locale_test_2203', 0, function () {
+        var locale = new Intl.Locale('zh-Hans-CN-u-ca-gregory-co-compact');
+        console.log("locale_test_2203 " + locale.mininize().toString());
+        expect(locale.minimize().toString()).assertEqual("zh");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2204
+    * @tc.name test the mininize interface
+    * @tc.desc check the mininize method
+    */
+    it('locale_test_2204', 0, function () {
+        var locale = new Intl.Locale('zh', {calendar: 'gregory', collation: 'compact'});
+        console.log("locale_test_2204 " + locale.mininize().toString());
+        expect(locale.minimize().toString()).assertEqual("zh-u-ca-gregory-co-compact");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2205
+    * @tc.name test the mininize interface
+    * @tc.desc check the mininize method
+    */
+    it('locale_test_2205', 0, function () {
+        var locale = new Intl.Locale('zh-CN', {calendar: 'gregory', collation: 'compact'});
+        console.log("locale_test_2205 " + locale.mininize().toString());
+        expect(locale.minimize().toString()).assertEqual("zh-u-ca-gregory-co-compact");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2206
+    * @tc.name test the mininize interface
+    * @tc.desc check the mininize method
+    */
+    it('locale_test_2206', 0, function () {
+        var locale = new Intl.Locale('zh-hans-CN', {calendar: 'gregory', collation: 'compact'});
+        console.log("locale_test_2206 " + locale.mininize().toString());
+        expect(locale.minimize().toString()).assertEqual("zh-u-ca-gregory-co-compact");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2300
+    * @tc.name test the maximize interface
+    * @tc.desc check the maximize method
+    */
+    it('locale_test_2300', 0, function () {
+        var locale = new Intl.Locale('zh');
+        console.log("locale_test_2300 " + locale.maximize().maximize().toString());
+        expect(locale.maximize().toString()).assertEqual("zh-Hans-CN");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2301
+    * @tc.name test the maximize interface
+    * @tc.desc check the maximize method
+    */
+    it('locale_test_2301', 0, function () {
+        var locale = new Intl.Locale('zh-CN');
+        console.log("locale_test_2301 " + locale.maximize().maximize().toString());
+        expect(locale.maximize().toString()).assertEqual("zh-Hans-CN");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2302
+    * @tc.name test the maximize interface
+    * @tc.desc check the maximize method
+    */
+    it('locale_test_2302', 0, function () {
+        var locale = new Intl.Locale('zh-Hans-CN');
+        console.log("locale_test_2302 " + locale.maximize().maximize().toString());
+        expect(locale.maximize().toString()).assertEqual("zh-Hans-CN");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2303
+    * @tc.name test the mininize interface
+    * @tc.desc check the mininize method
+    */
+    it('locale_test_2303', 0, function () {
+        var locale = new Intl.Locale('zh-Hans-CN-u-ca-gregory-co-compact');
+        console.log("locale_test_2303 " + locale.maximize().toString());
+        expect(locale.maximize().toString()).assertEqual("zh-Hans-CN-u-ca-gregory-co-compact");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2304
+    * @tc.name test the maximize interface
+    * @tc.desc check the maximize method
+    */
+    it('locale_test_2304', 0, function () {
+        var locale = new Intl.Locale('zh', {calendar: 'gregory', collation: 'compact'});
+        console.log("locale_test_2304 " + locale.maximize().maximize().toString());
+        expect(locale.maximize().toString()).assertEqual("zh-Hans-CN-u-ca-gregory-co-compact");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2305
+    * @tc.name test the maximize interface
+    * @tc.desc check the maximize method
+    */
+    it('locale_test_2305', 0, function () {
+        var locale = new Intl.Locale('zh-CN', {calendar: 'gregory', collation: 'compact'});
+        console.log("locale_test_2305 " + locale.maximize().maximize().toString());
+        expect(locale.maximize().toString()).assertEqual("zh-Hans-CN-u-ca-gregory-co-compact");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2306
+    * @tc.name test the maximize interface
+    * @tc.desc check the maximize method
+    */
+    it('locale_test_2306', 0, function () {
+        var locale = new Intl.Locale('zh-Hans-CN', {calendar: 'gregory', collation: 'compact'});
+        console.log("locale_test_2306 " + locale.maximize().maximize().toString());
+        expect(locale.maximize().toString()).assertEqual("zh-Hans-CN-u-ca-gregory-co-compact");
     })
 
     /* *
