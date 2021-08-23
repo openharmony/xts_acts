@@ -23,6 +23,9 @@ hcpptest_suite("ActsMediaCameraTest") {
   include_dirs = [
     "src",
     "//test/xts/acts/multimedia_lite/utils_posix/common/include",
+    "//foundation/multimedia/camera_lite/interfaces/kits",
+    "//foundation/multimedia/media_lite/interfaces/kits/recorder_lite",
+    "//foundation/multimedia/camera_lite/test/unittest",
   ]
   ldflags = [ "-lstdc++" ]
   ldflags += [ "-lm" ]
@@ -32,6 +35,8 @@ hcpptest_suite("ActsMediaCameraTest") {
   ldflags += [ "-Wl,-rpath-link=$ohos_root_path/$root_out_dir" ]
 
   deps = [
+    "//foundation/graphic/surface:lite_surface",
+    "//foundation/graphic/ui:lite_ui",
     "//foundation/multimedia/camera_lite/frameworks:camera_lite",
     "//foundation/multimedia/media_lite/frameworks/recorder_lite:recorder_lite",
   ]
