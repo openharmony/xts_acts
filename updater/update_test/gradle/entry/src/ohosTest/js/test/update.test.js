@@ -1819,4 +1819,133 @@ describe('updateclient', function() {
         console.info('[cancelUpgrade] success.');
         console.info('testCancelDownload5 END');
     });
+	    /**
+     * @tc.number    SUB_UPDATE_JS_API_0081
+     * @tc.name      testVerifyVersion
+     * @tc.desc      Unsubscribe from monitoring.
+     */
+    it('testVerifyVersion', 0, function() {
+        console.info('testVerifyVersion START');
+        try{
+            updater.on('verifyProgress', progress => {
+                console.log("verifyProgress on" + progress);
+                console.log(`verifyProgress status: ` + progress.status);
+                console.log(`verifyProgress percent: ` + progress.percent);
+                console.log(`verifyProgress endReason: ` + progress.endReason);
+                if (progress.status === updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
+                progress.status === updateState.UPDATE_STATE_VERIFY_SUCCESS) {
+                    expect(progress.percent).assertEqual(expect_value);
+                    updater.off("verifyProgress");
+                }
+            })
+            let ret = updater.verifyUpdatePackage('/data/updater/updater.zip','/data/updater/HwOUC/update_auth.sa');
+            expect(ret).assertInstanceOf('Number');
+        } catch (e) {
+            console.info('[testVerifyVersion] catch ' + e);
+        }
+        console.info('[verifyVersion] success.');
+        console.info('testVerifyVersion END');
+    });
+
+    /**
+     * @tc.number    SUB_UPDATE_JS_API_0082
+     * @tc.name      testVerifyVersion02
+     * @tc.desc      Unsubscribe out of monitoring.
+     */
+    it('testVerifyVersion02', 0, function() {
+        console.info('testVerifyVersion02 START');
+        try{
+            updater.on('verifyProgress', progress => {
+                console.log("verifyProgress on" + progress);
+                console.log(`verifyProgress status: ` + progress.status);
+                console.log(`verifyProgress percent: ` + progress.percent);
+                console.log(`verifyProgress endReason: ` + progress.endReason);
+                if (progress.status === updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
+                progress.status === updateState.UPDATE_STATE_VERIFY_SUCCESS) {
+                    expect(progress.percent).assertEqual(expect_value);
+                }
+            })
+            let ret = updater.verifyUpdatePackage('/data/updater/updater.zip','/data/updater/HwOUC/update_auth.sa');
+            updater.off("verifyProgress");
+            expect(ret).assertInstanceOf('Number');
+        } catch (e) {
+            console.info('[testVerifyVersion02] catch ' + e);
+        }
+        console.info('[verifyVersion] success.');
+        console.info('testVerifyVersion END');
+    });
+
+    /**
+     * @tc.number    SUB_UPDATE_JS_API_0083
+     * @tc.name      testVerifyVersion03
+     * @tc.desc      Test verify parameter, callback is not supported.
+     */
+    it('testVerifyVersion03', 0, function() {
+        console.info('testVerifyVersion03 START');
+        try{
+            let ret = updater.verifyUpdatePackage('/data/updater/updater.zip','/data/updater/HwOUC/update_auth.sa',progress => {
+                console.log("verifyProgress on" + progress);
+                console.log(`verifyProgress status: ` + progress.status);
+                console.log(`verifyProgress percent: ` + progress.percent);
+                console.log(`verifyProgress endReason: ` + progress.endReason);
+                if (progress.status === updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
+                progress.status === updateState.UPDATE_STATE_VERIFY_SUCCESS) {
+                    expect(progress.percent).assertEqual(expect_value);
+                }
+            })
+            expect(ret).assertInstanceOf('Number');
+        } catch (e) {
+            console.info('[testVerifyVersion03] catch ' + e);
+        }
+        console.info('[verifyVersion] success.');
+        console.info('testVerifyVersion END');
+    });
+
+    /**
+     * @tc.number    SUB_UPDATE_JS_API_0084
+     * @tc.name      testVerifyVersion04
+     * @tc.desc      Test subscription without parameters, return error.
+     */
+    it('testVerifyVersion04', 0, function() {
+        console.info('testVerifyVersion04 START');
+        try{
+            let ret = updater.on('verifyProgress');
+            expect(ret).assertInstanceOf('Number');
+            let ret_verify = updater.verifyUpdatePackage();
+            expect(ret_verify).assertInstanceOf('Number');
+            let ret_off = updater.off("verifyProgress");
+            expect(ret_off).assertInstanceOf('Number');
+        } catch (e) {
+            console.info('[testVerifyVersion04] catch ' + e);
+        }
+        console.info('[verifyVersion] success.');
+        console.info('testVerifyVersion04 END');
+    });
+
+    /**
+     * @tc.number    SUB_UPDATE_JS_API_0085
+     * @tc.name      testVerifyVersion05
+     * @tc.desc      Take function to subscribe.
+     */
+    it('testVerifyVersion05', 0, function() {
+        function testFunction(progress) {
+            console.log("verifyProgress on" + progress);
+            console.log(`verifyProgress status: ` + progress.status);
+            console.log(`verifyProgress percent: ` + progress.percent);
+            console.log(`verifyProgress endReason: ` + progress.endReason);
+        }
+        console.info('testVerifyVersion05 START');
+        try{
+            let ret = updater.on('verifyProgress', testFunction);
+            expect(ret).assertInstanceOf('Number');
+            let ret_verify = updater.verifyUpdatePackage('/data/updater/updater.zip','/data/updater/HwOUC/update_auth.sa');
+            expect(ret_verify).assertInstanceOf('Number');
+            let ret_off = updater.off("verifyProgress", testFunction);
+            expect(ret_off).assertInstanceOf('Number');
+        } catch (e) {
+            console.info('[testVerifyVersion05] catch ' + e);
+        }
+        console.info('[verifyVersion] success.');
+        console.info('testVerifyVersion05 END');
+    });
 });
