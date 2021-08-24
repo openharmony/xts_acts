@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2020-2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,19 +13,15 @@
  * limitations under the License.
  */
 
-#ifndef CAMERA_DEMO_TEST_H
-#define CAMERA_DEMO_TEST_H
+#ifndef CAMERA_LITE_TEST_H
+#define CAMERA_LITE_TEST_H
 
 #include "gtest/gtest.h"
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <algorithm>
-#include <string>
-#include <sys/time.h>
-#include "camera_kit.h"
 #include "recorder.h"
 
+namespace OHOS {
+const int32_t RET_OK = 0;
+const int32_t RET_ERR = -1;
 const int32_t FRAME_RATE_DEFAULT = 30;
 const int32_t OK = 0;
 const int32_t FAIL = -1;
@@ -34,11 +30,29 @@ const int32_t BUFFER_SIZE = 1024;
 static std::string g_filePath = "/test_root/multimedia/";
 std::string g_testPath;
 
-// CallBack Flag
-enum TestCallBackFlag {
-    FLAG0 = 0,
-    FLAG1 = 1,
-};
+bool g_onGetCameraAbilityFlag;
+bool g_onConfigureFlag;
+bool g_onGetSupportedSizesFlag;
+// CameraDeviceCallBack Flag
+bool g_onCameraAvailableFlag;
+bool g_onCameraUnavailableFlag;
+// CameraStateCallback
+bool g_onCreatedFlag;
+bool g_onCreateFailedFlag;
+bool g_onReleasedFlag;
+bool g_onConfiguredFlag;
+bool g_onConfigureFailedFlag;
+// FrameStateCallback
+bool g_onCaptureTriggerAbortedFlag;
+bool g_onCaptureTriggerCompletedFlag;
+bool g_onCaptureTriggerStartedFlag;
+bool g_onGetFrameConfigureType;
+bool g_onFrameFinishedFlag;
+bool g_onFrameErrorFlag;
+bool g_onFrameProgressedFlag;
+bool g_onFrameStartedFlag;
+bool g_onRecorderFlag;
+bool g_onPreviewFlag;
 
 // VideoSize
 enum TestVideoSize {
@@ -46,7 +60,7 @@ enum TestVideoSize {
     HEIGHT = 1080,
 };
 
-class ActsMediaCameraTest : public testing::Test {
+class CameraLiteTest : public testing::Test {
 public:
     // SetUpTestCase: before all testcasee
     static void SetUpTestCase(void);
@@ -57,53 +71,5 @@ public:
     // TearDown
     void TearDown(void);
 };
-
-class CameraFlag {
-public:
-    // CameraSetupFlag
-    static int32_t g_onGetCameraAbilityFlag;
-    static int32_t g_onConfigureFlag;
-    static int32_t g_onGetSupportedSizesFlag;
-    // CameraDeviceCallBack Flag
-    static int32_t g_onCameraAvailableFlag;
-    static int32_t g_onCameraUnavailableFlag;
-    // CameraStateCallback
-    static int32_t g_onCreatedFlag;
-    static int32_t g_onCreateFailedFlag;
-    static int32_t g_onReleasedFlag;
-    static int32_t g_onConfiguredFlag;
-    static int32_t g_onConfigureFailedFlag;
-    // FrameStateCallback
-    static int32_t g_onCaptureTriggerAbortedFlag;
-    static int32_t g_onCaptureTriggerCompletedFlag;
-    static int32_t g_onCaptureTriggerStartedFlag;
-    static int32_t g_onGetFrameConfigureType;
-    static int32_t g_onFrameFinishedFlag;
-    static int32_t g_onFrameErrorFlag;
-    static int32_t g_onFrameProgressedFlag;
-    static int32_t g_onFrameStartedFlag;
-};
-// CameraSetup
-int32_t CameraFlag::g_onGetCameraAbilityFlag = FLAG0;
-int32_t CameraFlag::g_onConfigureFlag = FLAG0;
-int32_t CameraFlag::g_onGetSupportedSizesFlag = FLAG0;
-// CameraDeviceCallBack
-int32_t CameraFlag::g_onCameraAvailableFlag = FLAG0;
-int32_t CameraFlag::g_onCameraUnavailableFlag = FLAG0;
-// CameraStateCallback
-int32_t CameraFlag::g_onCreatedFlag = FLAG0;
-int32_t CameraFlag::g_onCreateFailedFlag = FLAG0;
-int32_t CameraFlag::g_onConfiguredFlag = FLAG0;
-int32_t CameraFlag::g_onConfigureFailedFlag = FLAG0;
-int32_t CameraFlag::g_onReleasedFlag = FLAG0;
-// FrameStateCallback
-int32_t CameraFlag::g_onCaptureTriggerAbortedFlag = FLAG0;
-int32_t CameraFlag::g_onCaptureTriggerCompletedFlag = FLAG0;
-int32_t CameraFlag::g_onCaptureTriggerStartedFlag = FLAG0;
-int32_t CameraFlag::g_onGetFrameConfigureType = FLAG0;
-int32_t CameraFlag::g_onFrameFinishedFlag = FLAG0;
-int32_t CameraFlag::g_onFrameErrorFlag = FLAG0;
-int32_t CameraFlag::g_onFrameProgressedFlag = FLAG0;
-int32_t CameraFlag::g_onFrameStartedFlag = FLAG0;
-
-#endif
+} // namespace OHOS
+#endif // CAMERA_LITE_TEST_H
