@@ -333,7 +333,7 @@ describe('intlTest', function () {
     */
     it('locale_test_2300', 0, function () {
         var locale = new Intl.Locale('zh');
-        console.log("locale_test_2300 " + locale.maximize().maximize().toString());
+        console.log("locale_test_2300 " + locale.maximize().toString());
         expect(locale.maximize().toString()).assertEqual("zh-Hans-CN");
     })
 
@@ -344,7 +344,7 @@ describe('intlTest', function () {
     */
     it('locale_test_2301', 0, function () {
         var locale = new Intl.Locale('zh-CN');
-        console.log("locale_test_2301 " + locale.maximize().maximize().toString());
+        console.log("locale_test_2301 " + locale.maximize().toString());
         expect(locale.maximize().toString()).assertEqual("zh-Hans-CN");
     })
 
@@ -355,7 +355,7 @@ describe('intlTest', function () {
     */
     it('locale_test_2302', 0, function () {
         var locale = new Intl.Locale('zh-Hans-CN');
-        console.log("locale_test_2302 " + locale.maximize().maximize().toString());
+        console.log("locale_test_2302 " + locale.maximize().toString());
         expect(locale.maximize().toString()).assertEqual("zh-Hans-CN");
     })
 
@@ -377,7 +377,7 @@ describe('intlTest', function () {
     */
     it('locale_test_2304', 0, function () {
         var locale = new Intl.Locale('zh', {calendar: 'gregory', collation: 'compact'});
-        console.log("locale_test_2304 " + locale.maximize().maximize().toString());
+        console.log("locale_test_2304 " + locale.maximize().toString());
         expect(locale.maximize().toString()).assertEqual("zh-Hans-CN-u-ca-gregory-co-compact");
     })
 
@@ -388,7 +388,7 @@ describe('intlTest', function () {
     */
     it('locale_test_2305', 0, function () {
         var locale = new Intl.Locale('zh-CN', {calendar: 'gregory', collation: 'compact'});
-        console.log("locale_test_2305 " + locale.maximize().maximize().toString());
+        console.log("locale_test_2305 " + locale.maximize().toString());
         expect(locale.maximize().toString()).assertEqual("zh-Hans-CN-u-ca-gregory-co-compact");
     })
 
@@ -399,84 +399,219 @@ describe('intlTest', function () {
     */
     it('locale_test_2306', 0, function () {
         var locale = new Intl.Locale('zh-Hans-CN', {calendar: 'gregory', collation: 'compact'});
-        console.log("locale_test_2306 " + locale.maximize().maximize().toString());
+        console.log("locale_test_2306 " + locale.maximize().toString());
         expect(locale.maximize().toString()).assertEqual("zh-Hans-CN-u-ca-gregory-co-compact");
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_1200
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0100
     * @tc.name format the datetime with en-GB locale
     * @tc.desc check the datetime is not null
     */
-    it('dateTimeFormat_test_001', 0, function () {
+    it('dateTimeFormat_test_0100', 0, function () {
         var datefmt = new Intl.DateTimeFormat("en-GB");
         expect(datefmt != null).assertTrue();
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_1300
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0200
     * @tc.name format the date with en-GB locale
     * @tc.desc check the date
     */
-    it('formatDateTimeFormat_test_001', 0, function () {
+    it('dateTimeFormat_test_0200', 0, function () {
+        var date = new Date(2021, 11, 17, 3, 24, 0);
+        var datefmt = new Intl.DateTimeFormat("zh");
+        console.log("dateTimeFormat_test_0200 " + datefmt.format(date));
+        expect(datefmt.format(date)).assertEqual('2021/12/17');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0300
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('dateTimeFormat_test_0300', 0, function () {
+        var date = new Date(2021, 11, 17, 3, 24, 0);
+        var datefmt = new Intl.DateTimeFormat("en");
+        console.log("dateTimeFormat_test_0300 " + datefmt.format(date));
+        expect(datefmt.format(date)).assertEqual('12/17/21');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0310
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('dateTimeFormat_test_0310', 0, function () {
+        var date = new Date(2021, 11, 17, 3, 24, 0);
+        var datefmt = new Intl.DateTimeFormat("en-US");
+        console.log("dateTimeFormat_test_0310 " + datefmt.format(date));
+        expect(datefmt.format(date)).assertEqual('12/17/21');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0320
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('dateTimeFormat_test_0320', 0, function () {
         var date = new Date(2021, 11, 17, 3, 24, 0);
         var datefmt = new Intl.DateTimeFormat("en-GB");
+        console.log("dateTimeFormat_test_0320 " + datefmt.format(date));
         expect(datefmt.format(date)).assertEqual('17/12/2021');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_1400
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0400
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+//    it('dateTimeFormat_test_0400', 0, function () {
+//        var date = new Date(2021, 11, 17, 3, 24, 0);
+//        var datefmt = new Intl.DateTimeFormat("aa");
+//        console.log("dateTimeFormat_test_0400 " + datefmt.format(date));
+//        expect(datefmt.format(date)).assertEqual('2021/12/17');
+//    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0500
+    * @tc.name format the hour
+    * @tc.desc check the hour
+    */
+    it('dateTimeFormat_test_0500', 0, function () {
+        var date = new Date(2020, 11, 20, 14, 23, 16);
+        var option = { dateStyle: 'full' };
+        var datefmt = new Intl.DateTimeFormat(['ban', 'zh'], option);
+        console.log("dateTimeFormat_test_0500 " + datefmt.format(date));
+        expect(datefmt.format(date)).assertEqual('2020年12月20日星期日');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0600
+    * @tc.name format the hour
+    * @tc.desc check the hour
+    */
+    it('dateTimeFormat_test_0600', 0, function () {
+        var date = new Date(2020, 11, 20, 14, 23, 16);
+        var option = { dateStyle: 'full' };
+        var datefmt = new Intl.DateTimeFormat(['en', 'zh'], option);
+        console.log("dateTimeFormat_test_0600 " + datefmt.format(date));
+        expect(datefmt.format(date)).assertEqual('Sunday, December 20, 2020');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0700
+    * @tc.name format the hour
+    * @tc.desc check the hour
+    */
+    it('dateTimeFormat_test_0700', 0, function () {
+        var date = new Date(2020, 11, 20, 14, 23, 16);
+        var option = { dateStyle: 'full' };
+        var datefmt = new Intl.DateTimeFormat(['en', 'ban'], option);
+        console.log("dateTimeFormat_test_0700 " + datefmt.format(date));
+        expect(datefmt.format(date)).assertEqual('Sunday, December 20, 2020');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0800
+    * @tc.name format the hour
+    * @tc.desc check the hour
+    */
+    it('dateTimeFormat_test_0800', 0, function () {
+        var date = new Date(2020, 11, 20, 14, 23, 16);
+        var option = { dateStyle: 'full' };
+        var datefmt = new Intl.DateTimeFormat(['abc', 'ban'], option);
+        console.log("dateTimeFormat_test_0800 " + datefmt.format(date));
+        expect(datefmt.format(date)).assertEqual('12/20/20, 2:23 PM');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0900
     * @tc.name format the date with full datestyle and mediu timestyle
     * @tc.desc check the date with full datestyle and mediu timestyle
     */
-    it('formatDateTimeFormat_test_002', 0, function () {
+    it('dateTimeFormat_test_0900', 0, function () {
         var date = new Date(2020, 11, 20, 14, 23, 16);
-        var option = { dateStyle: 'full', timeStyle: 'medium' };
-        var datefmt = new Intl.DateTimeFormat('zh-CN', option);
-        expect(datefmt.format(date)).assertEqual('2020年12月20日星期日 下午2:23:16');
+        var option = { dateStyle: 'full', timeStyle: 'full' };
+        var datefmt = new Intl.DateTimeFormat('zh-Hans-CN', option);
+        console.log("dateTimeFormat_test_0900 " + datefmt.format(date));
+        expect(datefmt.format(date)).assertEqual('2020年12月20日星期日 协调世界时 下午2:23:16');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_1500
-    * @tc.name format the date with daterange
-    * @tc.desc check the daterange
-    */
-    it('formatDateTimeFormat_test_003', 0, function () {
-        var date = new Date(2020, 11, 20, 14, 23, 16);
-        var date2 = new Date(2020, 11, 21, 14, 23, 16);
-        var datefmt = new Intl.DateTimeFormat('en-GB');
-        console.log("jessie 003 " + datefmt.formatRange(date, date2));
-        expect(datefmt.formatRange(date, date2)).assertEqual('20/12/2020 – 21/12/2020');
-    })
-
-    /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_1600
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1000
     * @tc.name format the date dateStyle
     * @tc.desc check the dateStyle
     */
-    it('formatDateTimeFormat_test_004', 0, function () {
-        var option = { dateStyle: 'full', timeStyle: 'medium' };
+    it('dateTimeFormat_test_1000', 0, function () {
+        var date = new Date(2020, 11, 20, 14, 23, 16);
+        var option = { dateStyle: 'long', timeStyle: 'long' };
         var datefmt = new Intl.DateTimeFormat('zh-CN', option);
-        expect(datefmt.resolvedOptions().dateStyle).assertEqual('full');
+        console.log("dateTimeFormat_test_1000 " + datefmt.resolvedOptions().dateStyle);
+        expect(datefmt.resolvedOptions().dateStyle).assertEqual('long');
+        expect(datefmt.format(date)).assertEqual('2020年12月20日 UTC 下午2:23:16');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_1700
-    * @tc.name format the date timeStyle
-    * @tc.desc check the timeStyle
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1100
+    * @tc.name format the date dateStyle
+    * @tc.desc check the dateStyle
     */
-    it('formatDateTimeFormat_test_005', 0, function () {
-        var option = { dateStyle: 'full', timeStyle: 'long' };
-        var datefmt = new Intl.DateTimeFormat('en-GB', option);
-        expect(datefmt.resolvedOptions().timeStyle).assertEqual('long');
+    it('dateTimeFormat_test_1100', 0, function () {
+        var date = new Date(2020, 11, 20, 14, 23, 16);
+        var option = { dateStyle: 'medium', timeStyle: 'medium' };
+        var datefmt = new Intl.DateTimeFormat('zh-CN', option);
+        console.log("dateTimeFormat_test_1100 " + datefmt.resolvedOptions().dateStyle);
+        expect(datefmt.resolvedOptions().dateStyle).assertEqual('medium');
+        expect(datefmt.format(date)).assertEqual('2020年12月20日 下午2:23:16');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_1800
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1200
+    * @tc.name format the date dateStyle
+    * @tc.desc check the dateStyle
+    */
+    it('dateTimeFormat_test_1200', 0, function () {
+        var date = new Date(2020, 11, 20, 14, 23, 16);
+        var option = { dateStyle: 'short', timeStyle: 'short' };
+        var datefmt = new Intl.DateTimeFormat('zh-CN', option);
+        console.log("dateTimeFormat_test_1200 " + datefmt.resolvedOptions().dateStyle);
+        expect(datefmt.resolvedOptions().dateStyle).assertEqual('short');
+        expect(datefmt.format(date)).assertEqual('2020/12/20 下午2:23');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1300
+    * @tc.name format the date with daterange
+    * @tc.desc check the daterange
+    */
+    it('dateTimeFormat_test_1300', 0, function () {
+        var startdate = new Date(2020, 11, 20, 14, 23, 16);
+        var enddate = new Date(2020, 11, 21, 14, 23, 16);
+        var datefmt = new Intl.DateTimeFormat('en-GB');
+        console.log("dateTimeFormat_test_1300 " + datefmt.formatRange(startdate, enddate));
+        expect(datefmt.formatRange(startdate, enddate)).assertEqual('20/12/2020 – 21/12/2020');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1400
+    * @tc.name format the date with daterange
+    * @tc.desc check the daterange
+    */
+    it('dateTimeFormat_test_1400', 0, function () {
+        var startdate = new Date(2020, 11, 20, 14, 23, 16);
+        var enddate = new Date(2020, 11, 20, 14, 23, 16);
+        var datefmt = new Intl.DateTimeFormat('en-GB');
+        console.log("dateTimeFormat_test_1400 " + datefmt.formatRange(startdate, enddate));
+        expect(datefmt.formatRange(startdate, enddate)).assertEqual('20/12/2020');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1500
     * @tc.name format the year、month、day、weekday
     * @tc.desc check the year、month、day、weekday
     */
-    it('formatDateTimeFormat_test_006', 0, function () {
+    it('dateTimeFormat_test_1500', 0, function () {
         var date = new Date(2020, 11, 20, 14, 23, 16);
         var option = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
         var datefmt = new Intl.DateTimeFormat('ja', option);
@@ -485,25 +620,25 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_1900
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1600
     * @tc.name format the timerange with year、month、day、weekday
     * @tc.desc check the timerange with year、month、day、weekday
     */
-    it('formatDateTimeFormat_test_007', 0, function () {
-        var date = new Date(2020, 11, 20, 14, 23, 16);
-        var date2 = new Date(2021, 4, 5, 10, 5, 3);
+    it('dateTimeFormat_test_1600', 0, function () {
+        var startdate = new Date(2020, 11, 20, 14, 23, 16);
+        var enddate = new Date(2021, 4, 5, 10, 5, 3);
         var option = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
         var datefmt = new Intl.DateTimeFormat('en', option);
-        console.log("jessie 007 " + datefmt.formatRange(date, date2));
-        expect(datefmt.formatRange(date, date2)).assertEqual('Sunday, December 20, 2020 – Wednesday, May 5, 2021');
+        console.log("jessie 007 " + datefmt.formatRange(startdate, enddate));
+        expect(datefmt.formatRange(startdate, enddate)).assertEqual('Sunday, December 20, 2020 – Wednesday, May 5, 2021');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_2000
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1700
     * @tc.name format the hour&minute&second
     * @tc.desc check the hour&minute&second
     */
-    it('formatDateTimeFormat_test_008', 0, function () {
+    it('dateTimeFormat_test_1700', 0, function () {
         var date = new Date(2020, 11, 20, 14, 23, 16);
         var option = { year: 'numeric', month: 'long', day: 'numeric',
             hour: 'numeric', minute: '2-digit', second: 'numeric', weekday: 'long', era: 'short' };
@@ -513,11 +648,11 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_2100
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1800
     * @tc.name format the timeZone
     * @tc.desc check the timeZone
     */
-    it('formatDateTimeFormat_test_009', 0, function () {
+    it('dateTimeFormat_test_1800', 0, function () {
         var date = new Date(2020, 3, 14, 15, 5, 3);
         var option = { timeZone: 'America/Los_Angeles', timeZoneName: 'long' };
         var datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
@@ -526,33 +661,33 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_2200
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1900
     * @tc.name format the America/Los_Angeles timeZone
     * @tc.desc check the America/Los_Angeles timeZone
     */
-    it('formatDateTimeFormat_test_010', 0, function () {
+    it('dateTimeFormat_test_1900', 0, function () {
         var option = { timeZone: 'America/Los_Angeles', timeZoneName: 'long' };
         var datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
         expect(datefmt.resolvedOptions().timeZone).assertEqual('America/Los_Angeles');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_2300
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_2000
     * @tc.name format the America/Los_Angeles timeZoneName
     * @tc.desc check the America/Los_Angeles timeZoneName
     */
-    it('formatDateTimeFormat_test_011', 0, function () {
+    it('dateTimeFormat_test_2000', 0, function () {
         var option = { timeZone: 'America/Los_Angeles', timeZoneName: 'long' };
         var datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
         expect(datefmt.resolvedOptions().timeZoneName).assertEqual('long');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_2400
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_2100
     * @tc.name format the year
     * @tc.desc check the year
     */
-    it('formatDateTimeFormat_test_012', 0, function () {
+    it('dateTimeFormat_test_2100', 0, function () {
         var option = { year: 'numeric', month: 'long', day: 'numeric',
             hour: 'numeric', minute: '2-digit', second: 'numeric', weekday: 'long', era: 'short' };
         var datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
@@ -560,11 +695,11 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_2500
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_2200
     * @tc.name format the weekday
     * @tc.desc check the weekday
     */
-    it('formatDateTimeFormat_test_013', 0, function () {
+    it('dateTimeFormat_test_2200', 0, function () {
         var option = { year: 'numeric', month: 'long', day: 'numeric',
             hour: 'numeric', minute: '2-digit', second: 'numeric', weekday: 'long', era: 'short' };
         var datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
@@ -572,11 +707,11 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_2600
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_2300
     * @tc.name format the hour
     * @tc.desc check the hour
     */
-    it('formatDateTimeFormat_test_014', 0, function () {
+    it('dateTimeFormat_test_2300', 0, function () {
         var option = { year: 'numeric', month: 'long', day: 'numeric',
             hour: 'numeric', minute: '2-digit', second: 'numeric', weekday: 'long', era: 'short' };
         var datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
@@ -584,11 +719,11 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_2700
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_2400
     * @tc.name format the hour
     * @tc.desc check the hour
     */
-    it('formatDateTimeFormat_test_015', 0, function () {
+    it('dateTimeFormat_test_2400', 0, function () {
         var date = new Date(2020, 11, 20, 14, 23, 16);
         var option = { dateStyle: 'full' };
         var datefmt = new Intl.DateTimeFormat('fr-Latn-FR-u-nu-mong', option);
@@ -596,23 +731,11 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_2701
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_2500
     * @tc.name format the hour
     * @tc.desc check the hour
     */
-    it('formatDateTimeFormat_test_016', 0, function () {
-        var date = new Date(2020, 11, 20, 14, 23, 16);
-        var option = { dateStyle: 'full' };
-        var datefmt = new Intl.DateTimeFormat(['ban', 'zh'], option);
-        expect(datefmt.format(date)).assertEqual('2020年12月20日星期日');
-    })
-
-    /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_2702
-    * @tc.name format the hour
-    * @tc.desc check the hour
-    */
-    it('formatDateTimeFormat_test_017', 0, function () {
+    it('dateTimeFormat_test_2500', 0, function () {
         var option = { year: 'numeric', month: 'long', day: 'numeric',
             hour: 'numeric', minute: '2-digit', second: 'numeric', weekday: 'long', era: 'short',
             hourCycle: 'h24',numberingSystem: 'arab', hour12: true, dayPeriod: 'short',
@@ -633,7 +756,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_2800
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_2800
     * @tc.name format the number in en-GB
     * @tc.desc check the number in en-GB
     */
@@ -644,7 +767,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_2900
+    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_2900
     * @tc.name format the number with scientific
     * @tc.desc check the number with scientific
     */
@@ -657,7 +780,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_3000
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_3000
     * @tc.name format the number with currency
     * @tc.desc check the number with currency
     */
@@ -675,7 +798,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_3001
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_3001
     * @tc.name format the number with currency
     * @tc.desc check the number with currency
     */
@@ -696,7 +819,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_3100
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_3100
     * @tc.name format the number with unit
     * @tc.desc check the number with unit
     */
@@ -711,7 +834,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_3200
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_3200
     * @tc.name format the number with unit
     * @tc.desc check the number with unit
     */
@@ -723,7 +846,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_3300
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_3300
     * @tc.name format the number with numberingSystem
     * @tc.desc check the number with numberingSystem
     */
@@ -735,7 +858,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_3400
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_3400
     * @tc.name format the number with style
     * @tc.desc check the number with style
     */
@@ -753,7 +876,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_3500
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_3500
     * @tc.name format the number with style
     * @tc.desc check the number with style
     */
