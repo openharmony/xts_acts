@@ -18,7 +18,6 @@ group("distributeddatamgr") {
     deps = [
       "appdatamgrjstest/hap:appdatamgr_js_test",
       "distributeddatamgrjstest/hap:distributeddatamgr_js_test",
-      "distributedfilejstest:distributedfile_js_test",
     ]
   } else {
     deps = [
