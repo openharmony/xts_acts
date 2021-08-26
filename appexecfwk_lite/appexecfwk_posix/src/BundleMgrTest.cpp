@@ -880,7 +880,7 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0002, Function | MediumTest |
 
 /**
  * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0003
- * @tc.name      : GetBundleSize parameter legal and bundleName  length equal to 127 test
+ * @tc.name      : GetBundleSize parameter legal and bundleName length equal to 127 test
  * @tc.desc      : [C- SOFTWARE -0200]
  */
 HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0003, Function | MediumTest | Level1)
@@ -919,7 +919,6 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0001, Function | MediumTest
     EXPECT_EQ(strlen(bundleName), 128);
     uint32_t resultCode = GetBundleSize(bundleName);
     EXPECT_EQ(resultCode, 0);
-    
     printf("------end testGetBundleSizeWithIllegal_0001------\n");
 }
 
@@ -936,7 +935,6 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0002, Function | MediumTest
     //bundleName nullptr
     uint32_t resultCode = GetBundleSize(bundleName);
     EXPECT_EQ(resultCode, 0);
-    
     printf("------end testGetBundleSizeWithIllegal_0002------\n");
 }
 
@@ -954,7 +952,6 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0003, Function | MediumTest
     uint32_t resultCode = GetBundleSize(bundleName);
     printf("GetBundleSize result is %d \n", resultCode);
     EXPECT_EQ(resultCode, 0);
-    
     printf("------end testGetBundleSizeWithIllegal_0003------\n");
 }
 
