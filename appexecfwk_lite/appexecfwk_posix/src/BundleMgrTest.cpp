@@ -950,7 +950,6 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0003, Function | MediumTest
 
     //error bundleName
     uint32_t resultCode = GetBundleSize(bundleName);
-    printf("GetBundleSize result is %d \n", resultCode);
     EXPECT_EQ(resultCode, 0);
     printf("------end testGetBundleSizeWithIllegal_0003------\n");
 }
@@ -967,7 +966,6 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0004, Function | MediumTest
 
     //bundleName " "
     uint32_t resultCode = GetBundleSize(bundleName);
-    printf("GetBundleSize result is %d \n", resultCode);
     EXPECT_EQ(resultCode, 0);
     printf("------end testGetBundleSizeWithIllegal_0004------\n");
 }
