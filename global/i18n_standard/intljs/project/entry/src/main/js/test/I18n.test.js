@@ -16,7 +16,7 @@ import Intl from "@ohos.intl"
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('intlTest', function () {
-    console.log("*************00000000000000000000000*************");
+    console.log("*************start I18NTest*************");
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0100
@@ -466,12 +466,12 @@ describe('intlTest', function () {
     * @tc.name format the date with en-GB locale
     * @tc.desc check the date
     */
-//    it('dateTimeFormat_test_0400', 0, function () {
-//        var date = new Date(2021, 11, 17, 3, 24, 0);
-//        var datefmt = new Intl.DateTimeFormat("aa");
-//        console.log("dateTimeFormat_test_0400 " + datefmt.format(date));
-//        expect(datefmt.format(date)).assertEqual('2021/12/17');
-//    })
+    // it('dateTimeFormat_test_0400', 0, function () {
+    //     var date = new Date(2021, 11, 17, 3, 24, 0);
+    //     var datefmt = new Intl.DateTimeFormat("aa");
+    //     console.log("dateTimeFormat_test_0400 " + datefmt.format(date));
+    //     expect(datefmt.format(date)).assertEqual('2021/12/17');
+    // })
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0500
@@ -517,13 +517,13 @@ describe('intlTest', function () {
     * @tc.name format the hour
     * @tc.desc check the hour
     */
-    it('dateTimeFormat_test_0800', 0, function () {
-        var date = new Date(2020, 11, 20, 14, 23, 16);
-        var option = { dateStyle: 'full' };
-        var datefmt = new Intl.DateTimeFormat(['abc', 'ban'], option);
-        console.log("dateTimeFormat_test_0800 " + datefmt.format(date));
-        expect(datefmt.format(date)).assertEqual('12/20/20, 2:23 PM');
-    })
+//    it('dateTimeFormat_test_0800', 0, function () {
+//        var date = new Date(2020, 11, 20, 14, 23, 16);
+//        var option = { dateStyle: 'full' };
+//        var datefmt = new Intl.DateTimeFormat(['abc', 'ban'], option);
+//        console.log("dateTimeFormat_test_0800 " + datefmt.format(date));
+//        expect(datefmt.format(date)).assertEqual('12/20/20, 2:23 PM');
+//    })
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0900
@@ -756,38 +756,192 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_2800
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_0100
     * @tc.name format the number in en-GB
     * @tc.desc check the number in en-GB
     */
-    it('formatNumber_test_001', 0, function () {
-        var numfmt = new Intl.NumberFormat('en-GB');
-        console.log("jessie " + numfmt.format(123456.789));
+    it('formatNumber_test_0100', 0, function () {
+        var numfmt = new Intl.NumberFormat('zh');
+        console.log("formatNumber_test_0100 " + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('123,456.789');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_2900
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_0200
+    * @tc.name format the number in en-GB
+    * @tc.desc check the number in en-GB
+    */
+    it('formatNumber_test_0200', 0, function () {
+        var numfmt = new Intl.NumberFormat('zh-u-nu-latn');
+        console.log("formatNumber_test_0200 " + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('123,456.789');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_0300
+    * @tc.name format the number in en-GB
+    * @tc.desc check the number in en-GB
+    */
+    it('formatNumber_test_0300', 0, function () {
+        var numfmt = new Intl.NumberFormat('zh-u-nu-arab');
+        console.log("formatNumber_test_0300 " + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('١٢٣٬٤٥٦٫٧٨٩');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_0400
+    * @tc.name format the number in en-GB
+    * @tc.desc check the number in en-GB
+    */
+    it('formatNumber_test_0400', 0, function () {
+        var numfmt = new Intl.NumberFormat('en');
+        console.log("formatNumber_test_0400 " + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('123,456.789');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_0500
+    * @tc.name format the number in en-GB
+    * @tc.desc check the number in en-GB
+    */
+    it('formatNumber_test_0500', 0, function () {
+        var numfmt = new Intl.NumberFormat('en-u-nu-thai');
+        console.log("formatNumber_test_0500 " + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('๑๒๓,๔๕๖.๗๘๙');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_0600
+    * @tc.name format the number in en-GB
+    * @tc.desc check the number in en-GB
+    */
+    it('formatNumber_test_0600', 0, function () {
+        var numfmt = new Intl.NumberFormat('en-GB');
+        console.log("formatNumber_test_0600 " + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('123,456.789');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_0700
+    * @tc.name format the number in en-GB
+    * @tc.desc check the number in en-GB
+    */
+    it('formatNumber_test_0700', 0, function () {
+        var numfmt = new Intl.NumberFormat('en-US');
+        console.log("formatNumber_test_0700 " + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('123,456.789');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_0800
+    * @tc.name format the number in en-GB
+    * @tc.desc check the number in en-GB
+    */
+    it('formatNumber_test_0800', 0, function () {
+        var numfmt = new Intl.NumberFormat('aa');
+        console.log("formatNumber_test_0800 " + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('123456.789');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_0900
+    * @tc.name format the number in en-GB
+    * @tc.desc check the number in en-GB
+    */
+    it('formatNumber_test_0900', 0, function () {
+        var numfmt = new Intl.NumberFormat(['zh','en']);
+        console.log("formatNumber_test_0900 " + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('123,456.789');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1000
+    * @tc.name format the number in en-GB
+    * @tc.desc check the number in en-GB
+    */
+    it('formatNumber_test_1000', 0, function () {
+        var numfmt = new Intl.NumberFormat(['en','zh']);
+        console.log("formatNumber_test_1000 " + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('123,456.789');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1100
+    * @tc.name format the number in en-GB
+    * @tc.desc check the number in en-GB
+    */
+    it('formatNumber_test_1100', 0, function () {
+        var numfmt = new Intl.NumberFormat(['en','aa']);
+        console.log("formatNumber_test_1100 " + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('123,456.789');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1200
+    * @tc.name format the number in en-GB
+    * @tc.desc check the number in en-GB
+    */
+    it('formatNumber_test_1200', 0, function () {
+        var numfmt = new Intl.NumberFormat(['aa','zh']);
+        console.log("formatNumber_test_1200 " + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('123,456.789');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1300
+    * @tc.name format the number in en-GB
+    * @tc.desc check the number in en-GB
+    */
+    it('formatNumber_test_1300', 0, function () {
+        var numfmt = new Intl.NumberFormat(['aa','bb']);
+        console.log("formatNumber_test_1300 " + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('123456.789');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1400
+    * @tc.name format the number in en-GB
+    * @tc.desc check the number in en-GB
+    */
+    it('formatNumber_test_1400', 0, function () {
+        var numfmt = new Intl.NumberFormat(['aa','bb','es']);
+        console.log("formatNumber_test_1400 " + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('123.456,789');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1500
+    * @tc.name format the number in en-GB
+    * @tc.desc check the number in en-GB
+    */
+    it('formatNumber_test_1500', 0, function () {
+        var numfmt = new Intl.NumberFormat(['aa','it','bb']);
+        console.log("formatNumber_test_1500 " + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('123.456,789');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1600
     * @tc.name format the number with scientific
     * @tc.desc check the number with scientific
     */
-    it('formatNumber_test_002', 0, function () {
+    it('formatNumber_test_1600', 0, function () {
         var numfmt = new Intl.NumberFormat('en-GB', { style: 'decimal', notation: 'scientific' });
-        console.log("jessie " + numfmt.format(123456.789));
+        console.log("formatNumber_test_1600 " + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('1.234568E5');
         expect(numfmt.resolvedOptions().style).assertEqual('decimal');
         expect(numfmt.resolvedOptions().notation).assertEqual('scientific');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_3000
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1700
     * @tc.name format the number with currency
     * @tc.desc check the number with currency
     */
-    it('formatNumber_test_003', 0, function () {
+    it('formatNumber_test_1700', 0, function () {
         var numfmt = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'EUR',
             currencyDisplay: 'name', currencySign: 'accounting', signDisplay: 'always' });
-        console.log("jessie " + numfmt.format(123456.789));
+        console.log("formatNumber_test_1700 " + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('+123,456.79 euros');
         expect(numfmt.resolvedOptions().locale).assertEqual('en-GB');
         expect(numfmt.resolvedOptions().style).assertEqual('currency');
@@ -798,15 +952,51 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_3001
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1800
     * @tc.name format the number with currency
     * @tc.desc check the number with currency
     */
-    it('formatNumber_test_00301', 0, function () {
+    it('formatNumber_test_1800', 0, function () {
+        var numfmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD',
+            currencyDisplay: 'code', currencySign: 'accounting', signDisplay: 'always' });
+        console.log("formatNumber_test_1800 " + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('+USD 123,456.79');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1900
+    * @tc.name format the number with currency
+    * @tc.desc check the number with currency
+    */
+    it('formatNumber_test_1900', 0, function () {
+        var numfmt = new Intl.NumberFormat('zh-CN', { style: 'currency', currency: 'CNY',
+            currencyDisplay: 'symbol', currencySign: 'accounting', signDisplay: 'always' });
+        console.log("formatNumber_test_1900 " + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('+¥123,456.79');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_2000
+    * @tc.name format the number with currency
+    * @tc.desc check the number with currency
+    */
+    it('formatNumber_test_2000', 0, function () {
+        var numfmt = new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY',
+            currencyDisplay: 'narrowSymbol', currencySign: 'accounting', signDisplay: 'always' });
+        console.log("formatNumber_test_2000 " + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('+￥123,457');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_2100
+    * @tc.name format the number with currency
+    * @tc.desc check the number with currency
+    */
+    it('formatNumber_test_2100', 0, function () {
         var numfmt = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'EUR',
             currencyDisplay: 'name', currencySign: 'accounting', signDisplay: 'always',
             notation: 'compact', compactDisplay: 'long', localeMatcher: 'lookup' });
-        console.log("jessie " + numfmt.format(123456.789));
+        console.log("formatNumber_test_2100 " + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('+123 thousand euros');
         expect(numfmt.resolvedOptions().locale).assertEqual('en-GB');
         expect(numfmt.resolvedOptions().style).assertEqual('currency');
@@ -819,14 +1009,14 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_3100
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_2200
     * @tc.name format the number with unit
     * @tc.desc check the number with unit
     */
-    it('formatNumber_test_004', 0, function () {
+    it('formatNumber_test_2200', 0, function () {
         var numfmt = new Intl.NumberFormat('zh-CN', { style: 'unit', unit: 'meter',
             unitDisplay: 'long', maximumFractionDigits: 2, minimumIntegerDigits: 7 });
-        console.log("jessie " + numfmt.format(123456.789));
+        console.log("formatNumber_test_2200 " + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('0,123,456.79米');
         expect(numfmt.resolvedOptions().style).assertEqual('unit');
         expect(numfmt.resolvedOptions().unit).assertEqual('meter');
@@ -834,38 +1024,38 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_3200
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_2300
     * @tc.name format the number with unit
     * @tc.desc check the number with unit
     */
-    it('formatNumber_test_005', 0, function () {
+    it('formatNumber_test_2300', 0, function () {
         var numfmt = new Intl.NumberFormat('en-CN', { style: 'percent', maximumFractionDigits: 2,
             minimumIntegerDigits: 7 });
-        console.log("jessie " + numfmt.format(123456.789));
+        console.log("formatNumber_test_2300 " + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('0,123,456.79%');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_3300
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_2400
     * @tc.name format the number with numberingSystem
     * @tc.desc check the number with numberingSystem
     */
-    it('formatNumber_test_006', 0, function () {
+    it('formatNumber_test_2400', 0, function () {
         var numfmt = new Intl.NumberFormat('ar-EG', { numberingSystem: 'arab' });
-        console.log("jessie " + numfmt.format(123456.789));
+        console.log("formatNumber_test_2400 " + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('١٢٣٬٤٥٦٫٧٨٩');
         expect(numfmt.resolvedOptions().numberingSystem).assertEqual('arab');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_3400
+    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_2500
     * @tc.name format the number with style
     * @tc.desc check the number with style
     */
-    it('formatNumber_test_007', 0, function () {
+    it('formatNumber_test_2500', 0, function () {
         var numfmt = new Intl.NumberFormat('ar', { style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 2,
             minimumIntegerDigits: 7, minimumSignificantDigits: 5, maximumSignificantDigits: 10, useGrouping: true  });
-        console.log("jessie " + numfmt.resolvedOptions().style);
+        console.log("formatNumber_test_2500 " + numfmt.resolvedOptions().style);
         expect(numfmt.resolvedOptions().style).assertEqual('percent');
         expect(numfmt.resolvedOptions().minimumFractionDigits).assertEqual(1);
         expect(numfmt.resolvedOptions().maximumFractionDigits).assertEqual(2);
@@ -874,17 +1064,5 @@ describe('intlTest', function () {
         expect(numfmt.resolvedOptions().maximumSignificantDigits).assertEqual(10);
         expect(numfmt.resolvedOptions().useGrouping == true).assertTrue();
     })
-
-    /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_3500
-    * @tc.name format the number with style
-    * @tc.desc check the number with style
-    */
-    it('formatNumber_test_008', 0, function () {
-        var numfmt = new Intl.NumberFormat(['test', 'zh-CN'], { style: 'unit', unit: 'meter',
-            unitDisplay: 'long', maximumFractionDigits: 2, minimumIntegerDigits: 7 });
-        console.log("jessie " + numfmt.format(123456.789));
-        expect(numfmt.format(123456.789)).assertEqual('0,123,456.79米');
-    })
-    console.log("*************00000000000000000000000*************");
+    console.log("*************end I18NTest*************");
 }) 
