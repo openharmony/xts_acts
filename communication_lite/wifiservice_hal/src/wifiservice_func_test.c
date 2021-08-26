@@ -679,52 +679,74 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanInvalidParam02, Function
     TEST_ASSERT_NOT_NULL(scanParams);
     memset_s(scanParams, sizeof(WifiScanParams), 0, sizeof(WifiScanParams));
 
-    g_staScanSuccess = 0;
     error = AdvanceScan(scanParams);
     TEST_ASSERT_EQUAL_INT(ERROR_WIFI_UNKNOWN, error);
-    TEST_ASSERT_EQUAL_INT(0, g_staScanSuccess);
 
     scanParams->scanType = WIFI_BSSID_SCAN;
     error = AdvanceScan(scanParams);
     TEST_ASSERT_EQUAL_INT(ERROR_WIFI_UNKNOWN, error);
-    TEST_ASSERT_EQUAL_INT(0, g_staScanSuccess);
 
     scanParams->scanType = WIFI_SSID_SCAN;
     error = AdvanceScan(scanParams);
     TEST_ASSERT_EQUAL_INT(ERROR_WIFI_UNKNOWN, error);
-    TEST_ASSERT_EQUAL_INT(0, g_staScanSuccess);
+
+    memset_s(scanParams, sizeof(WifiScanParams), 0, sizeof(WifiScanParams));
+    strcpy_s(scanParams->ssid, sizeof(scanParams->ssid), "wifi_service_xts");
+    scanParams->scanType = WIFI_SSID_SCAN;
+    error = AdvanceScan(scanParams);
+    TEST_ASSERT_EQUAL_INT(ERROR_WIFI_UNKNOWN, error);
 
     scanParams->scanType = WIFI_FREQ_SCAN;
     error = AdvanceScan(scanParams);
     TEST_ASSERT_EQUAL_INT(ERROR_WIFI_UNKNOWN, error);
-    TEST_ASSERT_EQUAL_INT(0, g_staScanSuccess);
+
+    error = DisableWifi();
+    TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, error);
+    stat = IsWifiActive();
+    TEST_ASSERT_EQUAL_INT(WIFI_STATE_NOT_AVALIABLE, stat);
+
+    free(scanParams);
+}
+
+/**
+ * @tc.number    : SUB_COMMUNICATION_WIFISERVICE_SDK_1100
+ * @tc.name      : test adavance scan interface with different invalid scantype
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanInvalidParam03, Function | MediumTest | Level2)
+{
+    WifiErrorCode error = EnableWifi();
+    TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, error);
+    int stat = IsWifiActive();
+    TEST_ASSERT_EQUAL_INT(WIFI_STATE_AVALIABLE, stat);
+
+    WifiScanParams* scanParams = malloc(sizeof(WifiScanParams));
+    TEST_ASSERT_NOT_NULL(scanParams);
+    memset_s(scanParams, sizeof(WifiScanParams), 0, sizeof(WifiScanParams));
 
     scanParams->scanType = WIFI_BAND_SCAN;
-    error = AdvanceScan(scanParams);
-    TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, error);
-    TEST_ASSERT_EQUAL_INT(0, g_staScanSuccess);
-
-    int errorType = -1;
-    scanParams->scanType = errorType;
-    error = AdvanceScan(scanParams);
-    TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, error);
-    TEST_ASSERT_EQUAL_INT(0, g_staScanSuccess);
-
-    char bssid[WIFI_MAC_LEN] = {0xac, 0x75, 0x1d, 0xd8, 0x55, 0xc1};
-    memcpy_s(scanParams->bssid, sizeof(scanParams->bssid), bssid, sizeof(bssid));
-    scanParams->scanType = WIFI_BSSID_SCAN;
+    g_staScanSuccess = 0;
     error = AdvanceScan(scanParams);
     TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, error);
     WaitScanResult();
     TEST_ASSERT_EQUAL_INT(1, g_staScanSuccess);
 
-    memset_s(scanParams, sizeof(WifiScanParams), 0, sizeof(WifiScanParams));
-    strcpy_s(scanParams->ssid, sizeof(scanParams->ssid), "wifi_service_xts");
-    scanParams->scanType = WIFI_SSID_SCAN;
+    int errorType = -1;
+    scanParams->scanType = errorType;
     g_staScanSuccess = 0;
     error = AdvanceScan(scanParams);
-    TEST_ASSERT_EQUAL_INT(ERROR_WIFI_UNKNOWN, error);
-    TEST_ASSERT_EQUAL_INT(0, g_staScanSuccess);
+    TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, error);
+    WaitScanResult();
+    TEST_ASSERT_EQUAL_INT(1, g_staScanSuccess);
+
+    char bssid[WIFI_MAC_LEN] = {0xac, 0x75, 0x1d, 0xd8, 0x55, 0xc1};
+    memcpy_s(scanParams->bssid, sizeof(scanParams->bssid), bssid, sizeof(bssid));
+    scanParams->scanType = WIFI_BSSID_SCAN;
+    g_staScanSuccess = 0;
+    error = AdvanceScan(scanParams);
+    TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, error);
+    WaitScanResult();
+    TEST_ASSERT_EQUAL_INT(1, g_staScanSuccess);
 
     error = DisableWifi();
     TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, error);
