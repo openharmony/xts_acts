@@ -793,7 +793,6 @@ HWTEST_F(BundleMgrTest, testGetBundleInfosByMetaDataRight, Function | MediumTest
     if (g_errorCode == 0){
         printf("bundleInfos.bundleName is %s \n", bundleInfos[0].bundleName);
     }
-
     printf("------end testGetBundleInfosByMetaDataRight------\n");
 }
 
@@ -857,7 +856,6 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0001, Function | MediumTest |
 {
     printf("------start testGetBundleSizeWithLegal_0001------\n");
     char *bundleName = (char*)"com.huawei.testjsdemo";
-    
     uint32_t resultCode = GetBundleSize(bundleName);
     EXPECT_GT(resultCode, 0);
     printf("------end testGetBundleSizeWithLegal_0001------\n");
@@ -872,7 +870,6 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0002, Function | MediumTest |
 {
     printf("------start testGetBundleSizeWithLegal_0002------\n");
     char *bundleName = (char*)"com.huawei.launcher";
-    
     uint32_t resultCode = GetBundleSize(bundleName);
     EXPECT_GT(resultCode, 0);
     printf("------end testGetBundleSizeWithLegal_0002------\n");
@@ -889,16 +886,14 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0003, Function | MediumTest |
     char *bundleName = (char*)"com.huawei.testjsdemoBundleNameLengt" \
 "hEqualTo127testjsdemoBundleNameLengthEqualTo127testjsdemoBundleNameLengthEqualTo127testjsde";
     sem_init(&g_sem, 0, 0);
-    InstallParam installParam = {.installLocation = 1,.keepData = false};
+    InstallParam installParam = { .installLocation = 1, .keepData = false };
     string hapPath = g_testPath + "testGetBundleNameWithLegal127.hap";
     Install(hapPath.c_str(), &installParam, TestBundleStateCallback);
     sem_wait(&g_sem);
-    
     uint32_t resultCode = GetBundleSize(bundleName);
     EXPECT_EQ(strlen(bundleName), 127);
     EXPECT_GT(resultCode, 0);
-    
-    //uninstall
+    // uninstall
     sem_init(&g_sem, 0, 0);
     Uninstall(bundleName, &installParam, TestBundleStateCallback);
     sem_wait(&g_sem);
@@ -915,7 +910,6 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0001, Function | MediumTest
     printf("------start testGetBundleSizeWithIllegal_0001------\n");
     char *bundleName = (char*)"com.huawei.testjsdemoBundleNameLength128test" \
 "jsdemoBundleNameLength128testjsdemoBundleNameLength128testjsdemoBundleNameLength128T";
-
     EXPECT_EQ(strlen(bundleName), 128);
     uint32_t resultCode = GetBundleSize(bundleName);
     EXPECT_EQ(resultCode, 0);
@@ -931,8 +925,7 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0002, Function | MediumTest
 {
     printf("------start testGetBundleSizeWithIllegal_0002------\n");
     char *bundleName = nullptr;
-
-    //bundleName nullptr
+    // bundleName nullptr
     uint32_t resultCode = GetBundleSize(bundleName);
     EXPECT_EQ(resultCode, 0);
     printf("------end testGetBundleSizeWithIllegal_0002------\n");
@@ -947,8 +940,7 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0003, Function | MediumTest
 {
     printf("------start testGetBundleSizeWithIllegal_0003------\n");
     char *bundleName = (char*)"com.huawei.nothishap";
-
-    //error bundleName
+    // error bundleName
     uint32_t resultCode = GetBundleSize(bundleName);
     EXPECT_EQ(resultCode, 0);
     printf("------end testGetBundleSizeWithIllegal_0003------\n");
@@ -963,8 +955,7 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0004, Function | MediumTest
 {
     printf("------start testGetBundleSizeWithIllegal_0004------\n");
     char *bundleName = (char*)" ";
-
-    //bundleName " "
+    // bundleName " "
     uint32_t resultCode = GetBundleSize(bundleName);
     EXPECT_EQ(resultCode, 0);
     printf("------end testGetBundleSizeWithIllegal_0004------\n");
@@ -979,8 +970,7 @@ HWTEST_F(BundleMgrTest, testStressConfig_0001, Function | MediumTest | Level2)
 {
     printf("------start testStressConfig_0001------\n");
     char *bundleName = (char*)"com.huawei.testjsdemo";
-    
-    for(int i = 1; i <= 100; i++){
+    for(int i = 1; i <= 100; i++) {
         uint32_t resultCode = GetBundleSize(bundleName);
         EXPECT_GT(resultCode, 0);
     }
@@ -998,19 +988,17 @@ HWTEST_F(BundleMgrTest, testStressConfig_0002, Function | MediumTest | Level2)
     char *bundleName = (char*)"com.huawei.testjsdemo";
     char *bundleName2 = (char*)"com.huawei.testjsdemoBtestjsdemoB";
     sem_init(&g_sem, 0, 0);
-    InstallParam installParam = {.installLocation = 1,.keepData = false};
+    InstallParam installParam = { .installLocation = 1, .keepData = false };
     string hapPath = g_testPath + "frequentlyStress2.hap";
     Install(hapPath.c_str(), &installParam, TestBundleStateCallback);
     sem_wait(&g_sem);
-    
-    for(int i = 1; i <= 100; i++){
+    for(int i = 1; i <= 100; i++) {
         uint32_t resultCode = GetBundleSize(bundleName);
         EXPECT_GT(resultCode, 0);
         resultCode = GetBundleSize(bundleName2);
         EXPECT_GT(resultCode, 0);
     }
-
-    //uninstall
+    // uninstall
     sem_init(&g_sem, 0, 0);
     Uninstall(bundleName2, &installParam, TestBundleStateCallback);
     sem_wait(&g_sem);
