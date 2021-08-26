@@ -71,6 +71,9 @@ describe('AccountTest', function () {
             id: '12345',
             name: 'ZhangSan',
             event: 'Ohos.account.event.LOGIN'
+            scalableData={
+                testInfo:"Test"
+            }
         };
         accountAbility.updateOsAccountDistributedInfo(obj).then(function (result) {
             expect(result).assertTrue()
@@ -87,6 +90,9 @@ describe('AccountTest', function () {
                 });
             });
         });
+        accountAbility.queryOsAccountDistributedInfo(function (data)) {
+            execpt(data).assertNull()
+        }
     })
 
     /**
@@ -100,6 +106,9 @@ describe('AccountTest', function () {
             id: '12345',
             name: 'ZhangSan',
             event: 'Ohos.account.event.LOGIN'
+            scalableData={
+                        testInfo:"Test"
+                    }
         };
         accountAbility.updateOsAccountDistributedInfo(obj, function (result) {
             expect(result).assertTrue()
@@ -111,9 +120,67 @@ describe('AccountTest', function () {
                     id: '12345',
                     name: 'ZhangSan',
                     event: 'Ohos.account.event.LOGOUT'
+                    
                 };
                 accountAbility.updateOsAccountDistributedInfo(obj).then(function (result) {
                     expect(result).assertTrue()
+                });
+            });
+        });
+    })
+    
+    /**
+    * @tc.number     SUB_Account_distributedAccount_JS_API_0300
+    * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo by callback.
+    * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
+    */
+    it('account_updateOsAccountDistributedInfo_test003', 0, function () {
+        const accountAbility = account.getDistributedAccountAbility()
+        let obj = {
+            id: '12345',
+            name: 'ZhangSan',
+            event: 'Ohos.account.event.TOKEN_INVALID'
+            scalableData={
+                        testInfo:"Test"
+                    }
+        };
+        accountAbility.updateOsAccountDistributedInfo(obj, function (result) {
+            expect(result).assertTrue()
+            accountAbility.queryOsAccountDistributedInfo(obj).then(function (data)) {
+                except(data.name).assertNull()
+            }
+        });
+    })
+    
+    /**
+    * @tc.number     SUB_Account_distributedAccount_JS_API_0500
+    * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo by callback.
+    * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
+    */
+    it('account_updateOsAccountDistributedInfo_test004', 0, function () {
+        const accountAbility = account.getDistributedAccountAbility()
+        let obj = {
+            id: '12345',
+            name: 'ZhangSan',
+            event: 'Ohos.account.event.LOGIN'
+            scalableData={
+                        testInfo:"Test"
+                    }
+        };
+        accountAbility.updateOsAccountDistributedInfo(obj, function (result) {
+            expect(result).assertTrue()
+            accountAbility.queryOsAccountDistributedInfo(function (data) {
+                expect(data.name).assertEqual('ZhangSan')
+                expect(data.id).assertEqual('12345')
+                const accountAbility = account.getDistributedAccountAbility()
+                let obj = {
+                    id: '12345',
+                    name: 'ZhangSan',
+                    event: 'Ohos.account.event.LOGOFF'
+                    
+                };
+                accountAbility.updateOsAccountDistributedInfo(obj).then(function (result) {
+                    expect(result).assertNull()
                 });
             });
         });
