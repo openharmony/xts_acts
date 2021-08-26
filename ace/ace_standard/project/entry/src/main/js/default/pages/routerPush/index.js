@@ -16,10 +16,10 @@ export default {
     data: {
         title: "router push test"
     },
-    onInit() {
-    },
     onShow() {
+        console.info('[test page log] routerPush onShow');
     },
-    onReady() {
+    onHide() {
+        console.info('[test page log] routerPush ohHide');
     },
 }

@@ -34,6 +34,26 @@ describe('basicabilityapi', function () {
     afterAll(function () {
     });
 
+    async function backToIndex(){
+        let backToIndexPromise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                router.back({
+                    uri: 'pages/index/index'
+                });
+                resolve();
+            }, 500);
+        });
+        let clearPromise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                router.clear();
+                resolve();
+            }, 500);
+        });
+        await backToIndexPromise.then(() => {
+            return clearPromise;
+        });
+    }
+
     /**
      * @tc.number    SUB_ACE_BASICABILITY_JS_API_0100
      * @tc.name      testClearInterval
@@ -42,21 +62,28 @@ describe('basicabilityapi', function () {
     it('testClearInterval', 0, async function(done) {
         console.info('testClearInterval START');
         let res = 0;
-        let intervalID = await setInterval(function () {
-            res++;
-            console.info('testClearInterval res = ' + res);
-        }, 100);
-        await setTimeout(function () {
-            console.info('[clearInterval] start');
-            clearInterval(intervalID);
-            console.info('[clearInterval] end');
-        }, 600);
-        await setTimeout(function () {
+        let intervalID = -1;
+        let promise1 = new Promise((resolve, reject) => {
+            intervalID = setInterval(function () {
+                res++;
+                console.info('testClearInterval res = ' + res);
+                resolve();
+            }, 100);
+        });
+        let promise2 = new Promise((resolve, reject) => {
+            setTimeout(function () {
+                console.info('[clearInterval] start');
+                clearInterval(intervalID);
+                console.info('[clearInterval] end');
+                resolve();
+            }, 600);
+        });
+        Promise.all([promise1, promise2]).then(() => {
             console.info('testClearInterval finally');
             expect(5).assertEqual(res);
             console.info('testClearInterval END');
             done();
-        }, 1000);
+        });
     });
 
     /**
@@ -83,22 +110,29 @@ describe('basicabilityapi', function () {
      */
     it('testRouterPush', 0, async function (done) {
         console.info('testRouterPush START');
-        await setTimeout(() => {
+        let promise1 = new Promise((resolve, reject) => {
             router.push({
                 uri: 'pages/routerPush/index'
             });
-        }, 500);
-        await setTimeout(() => {
-            let pages = router.getState();
-            console.info("[router.push] getState" + JSON.stringify(pages));
-            expect("pages/routerPush/").assertEqual(pages.path);
-            console.info("[router.push] getLength:" + router.getLength());
-            expect("2").assertEqual(router.getLength());
-            console.info('testRouterPush SUCCESS');
-            router.back();
-            console.info('testRouterPush END');
-            done();
-        }, 1000);
+            resolve();
+        });
+        let promise2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                let pages = router.getState();
+                console.info("[router.push] getState" + JSON.stringify(pages));
+                expect("pages/routerPush/").assertEqual(pages.path);
+                console.info("[router.push] getLength:" + router.getLength());
+                expect("2").assertEqual(router.getLength());
+                console.info('testRouterPush SUCCESS');
+                resolve();
+            }, 500);
+        });
+        await promise1.then(() => {
+            return promise2;
+        });
+        await backToIndex();
+        console.info('testRouterPush END');
+        done();
     });
 
     /**
@@ -108,20 +142,28 @@ describe('basicabilityapi', function () {
      */
     it('testRouterPushNotExist', 0, async function (done) {
         console.info('testRouterPushNotExist START');
-        await setTimeout(() => {
+        let promise1 = new Promise((resolve, reject) => {
             router.push({
                 uri: 'pages/routerNotExist/index'
             });
-        }, 500);
-        await setTimeout(() => {
-            let pages = router.getState();
-            console.info("testRouterPushNotExist getState" + JSON.stringify(pages));
-            expect("pages/index/").assertEqual(pages.path);
-            console.info("testRouterPushNotExist getLength:" + router.getLength());
-            expect("1").assertEqual(router.getLength());
-            console.info('testRouterPushNotExist END');
-            done();
-        }, 1000);
+            resolve();
+        });
+        let promise2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                let pages = router.getState();
+                console.info("testRouterPushNotExist getState" + JSON.stringify(pages));
+                expect("pages/index/").assertEqual(pages.path);
+                console.info("testRouterPushNotExist getLength:" + router.getLength());
+                expect("1").assertEqual(router.getLength());
+                console.info('testRouterPushNotExist success');
+                resolve();
+            }, 500);
+        });
+        await promise1.then(() => {
+            return promise2;
+        });
+        console.info('testRouterPushNotExist END');
+        done();
     });
 
     /**
@@ -131,27 +173,39 @@ describe('basicabilityapi', function () {
      */
     it('testRouterReplace', 0, async function (done) {
         console.info('testRouterReplace START');
-        await setTimeout(() => {
+        let promise1 = new Promise((resolve, reject) => {
             router.push({
                 uri: 'pages/routerPush/index'
             });
-        }, 500);
-        await setTimeout(() => {
-            router.replace({
-                uri: 'pages/routerReplace/index'
-            });
-        }, 1000);
-        await setTimeout(() => {
-            let pages = router.getState();
-            console.info("[router.replace] getState" + JSON.stringify(pages));
-            expect("pages/routerReplace/").assertEqual(pages.path);
-            console.info("[router.replace] getLength:" + router.getLength());
-            expect("2").assertEqual(router.getLength());
-            console.info('testRouterReplace SUCCESS');
-            router.back();
-            console.info('testRouterReplace END');
-            done();
-        }, 1500);
+            resolve();
+        });
+        let promise2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                router.replace({
+                    uri: 'pages/routerReplace/index'
+                });
+                resolve();
+            }, 500);
+        });
+        let promise3 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                let pages = router.getState();
+                console.info("[router.replace] getState" + JSON.stringify(pages));
+                expect("pages/routerReplace/").assertEqual(pages.path);
+                console.info("[router.replace] getLength:" + router.getLength());
+                expect("2").assertEqual(router.getLength());
+                console.info('testRouterReplace SUCCESS');
+                resolve();
+            }, 1000);
+        });
+        await promise1.then(() => {
+            return promise2;
+        }).then(() => {
+            return promise3;
+        });
+        await backToIndex();
+        console.info('testRouterReplace END');
+        done();
     });
 
     /**
@@ -184,25 +238,38 @@ describe('basicabilityapi', function () {
      */
     it('testRouterBack', 0, async function (done) {
         console.info('testRouterBack START');
-        await setTimeout(() => {
+        let promise1 = new Promise((resolve, reject) => {
             router.push({
                 uri: 'pages/routerPush/index'
             });
-        }, 500);
-        await setTimeout(() => {
-            router.back({
-                uri: 'pages/index/index'
-            });
-        }, 1000);
-        await setTimeout(() => {
-            let pages = router.getState();
-            console.info("[router.back] getState" + JSON.stringify(pages));
-            expect("pages/index/").assertEqual(pages.path);
-            console.info("[router.back] getLength:" + router.getLength());
-            expect("1").assertEqual(router.getLength());
-            console.info('testRouterBack END');
-            done();
-        }, 1500);
+            resolve();
+        });
+        let promise2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                router.back({
+                    uri: 'pages/index/index'
+                });
+                resolve();
+            }, 500);
+        });
+        let promise3 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                let pages = router.getState();
+                console.info("[router.back] getState" + JSON.stringify(pages));
+                expect("pages/index/").assertEqual(pages.path);
+                console.info("[router.back] getLength:" + router.getLength());
+                expect("1").assertEqual(router.getLength());
+                console.info('testRouterBack SUCCESS');
+                resolve();
+            }, 1000);
+        });
+        await promise1.then(() => {
+            return promise2;
+        }).then(() => {
+            return promise3;
+        });
+        console.info('testRouterBack END');
+        done();
     });
 
     /**
@@ -228,19 +295,46 @@ describe('basicabilityapi', function () {
         let size = router.getLength();
         console.info('[router.getLength] pages stack size = ' + size);
         expect(size).assertEqual('1');
-        await setTimeout(() => {
+        let promise1 = new Promise((resolve, reject) => {
             router.push({
                 uri: 'pages/routerPush/index'
             });
-        }, 500);
+            resolve();
+        });
+        let promise2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                console.info("testRouterLength getLength:" + router.getLength());
+                expect("2").assertEqual(router.getLength());
+                console.info('testRouterLength SUCCESS');
+                resolve();
+            }, 500);
+        });
+        await promise1.then(() => {
+            return promise2;
+        });
+        await backToIndex();
+        console.info('testRouterLength END');
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASICABILITY_JS_API_0800
+     * @tc.name      testRouterGetState
+     * @tc.desc      Get the status information of the current page.
+     */
+    it('testRouterGetState', 0, async function (done) {
+        console.info('testRouterGetState START');
         await setTimeout(() => {
-            console.info("testRouterLength getLength:" + router.getLength());
-            expect("2").assertEqual(router.getLength());
-            console.info('testRouterPush SUCCESS');
-            router.back();
-            console.info('testRouterPush END');
+            let page = router.getState();
+            console.info('[router.getState] index: ' + page.index);
+            console.info('[router.getState] name: ' + page.name);
+            console.info('[router.getState] path: ' + page.path);
+            expect(page.index).assertEqual('1');
+            expect(page.name).assertEqual('index');
+            expect(page.path).assertEqual('pages/index/');
+            console.info('testRouterGetState END');
             done();
-        }, 1000);
+        }, 500);
     });
 
     /**
@@ -249,46 +343,35 @@ describe('basicabilityapi', function () {
      * @tc.desc      Test the max number of the page stack is 32.
      */
     it('testRouterMaxLength', 0, async function (done) {
-        console.info('testRouterLength START');
-        let intervalID = await setInterval(async function () {
-            await router.push({
-                uri: 'pages/routerPush/index'
-            });
-            await router.push({
-                uri: 'pages/routerReplace/index'
-            });
-            console.info('testRouterMaxLength router.getLength:' + router.getLength());
-        }, 500);
-        await setTimeout(() => {
-            clearInterval(intervalID);
-        }, 1000 * 17);
-        await setTimeout(() => {
-            console.info("testRouterMaxLength getLength:" + router.getLength());
-            expect("32").assertEqual(router.getLength());
-            console.info('testRouterMaxLength SUCCESS');
-            router.back({
-                uri: 'pages/index/index'
-            });
-            console.info('testRouterMaxLength END');
-            done();
-        }, (1000 * 18));
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASICABILITY_JS_API_0800
-     * @tc.name      testRouterGetState
-     * @tc.desc      Get the status information of the current page.
-     */
-    it('testRouterGetState', 0, function () {
-        console.info('testRouterGetState START');
-        let page = router.getState();
-        console.info('[router.getState] index: ' + page.index);
-        console.info('[router.getState] name: ' + page.name);
-        console.info('[router.getState] path: ' + page.path);
-        expect(page.index).assertEqual('1');
-        expect(page.name).assertEqual('index');
-        expect(page.path).assertEqual('pages/index/');
-        console.info('testRouterGetState END');
+        console.info('testRouterMaxLength START');
+        let intervalID = -1;
+        let promise1 = new Promise((resolve, reject) => {
+            intervalID = setInterval(function () {
+                router.push({
+                    uri: 'pages/routerPush/index'
+                });
+                console.info('testRouterMaxLength router.getLength:' + router.getLength());
+                resolve();
+            }, 100);
+        });
+        let promise2 = new Promise((resolve, reject) => {
+            setTimeout(function () {
+                console.info('testRouterMaxLength[clearInterval] start');
+                clearInterval(intervalID);
+                console.info('testRouterMaxLength[clearInterval] end');
+                resolve();
+            }, 500 * 34);
+        });
+        Promise.all([promise1, promise2]).then(() => {
+            setTimeout(async () => {
+                console.info("testRouterMaxLength getLength:" + router.getLength());
+                expect("32").assertEqual(router.getLength());
+                console.info('testRouterMaxLength success');
+                await backToIndex();
+                console.info('testRouterMaxLength END');
+                done();
+            }, 500);
+        });
     });
 
     /**
@@ -414,7 +497,7 @@ describe('basicabilityapi', function () {
         let res = 0;
         let intervalID = setInterval(function () {
             res++;
-        }, 1000);
+        }, 100);
         await setTimeout(function () {
             expect(9).assertEqual(res);
             console.info('testSetInterval SUCCESS');
