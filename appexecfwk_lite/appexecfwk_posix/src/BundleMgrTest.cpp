@@ -840,6 +840,7 @@ HWTEST_F(BundleMgrTest, testGetBundleNameForUidWithIllegal, Function | MediumTes
     printf("------start testGetBundleNameForUidWithIllegal------\n");
     char *bundleName = nullptr;
     int32_t resultCode = GetBundleNameForUid(0, &bundleName);
+    printf("GetBundleNameForUid content of bundleName is %s \n", bundleName);
     EXPECT_EQ(resultCode, 114);
     printf("GetBundleNameForUid result is %d \n", resultCode);
     if (bundleName != nullptr) {
