@@ -856,9 +856,10 @@ HWTEST_F(hilogtest, buff_size_all, Function|MediumTest|Level3)
 */
 HWTEST_F(hilogtest, buff_size_illegal, Function|MediumTest|Level4)
 {
+    bool ret = true;
     result = ExecuteCmd("hilog -g -t abc");
-    expect = "Invalid parameter\n";
-    EXPECT_STREQ(result.c_str(), expect.c_str());
+    ret = result.find("Invalid log type") != std::string::npos;
+    EXPECT_EQ(ret, true);
 }
 
 /*
@@ -868,9 +869,10 @@ HWTEST_F(hilogtest, buff_size_illegal, Function|MediumTest|Level4)
 */
 HWTEST_F(hilogtest, buff_size_illegal2, Function|MediumTest|Level4)
 {
+    bool ret = true;
     result = ExecuteCmd("hilog -g -t 'core abc'");
-    expect = "buffsize operation error!\n";
-    EXPECT_STREQ(result.c_str(), expect.c_str());
+    ret = result.find("Invalid log type") != std::string::npos;
+    EXPECT_EQ(ret, true);
 }
 
 /*
@@ -997,9 +999,10 @@ HWTEST_F(hilogtest, buff_resize_gbyte2, Function|MediumTest|Level3)
 */
 HWTEST_F(hilogtest, buff_resize_illegal, Function|MediumTest|Level4)
 {
+    bool ret = true;
     result = ExecuteCmd("hilog -G 0");
-    expect = "core buffer resize fail\napp buffer resize fail\n\n";
-    EXPECT_STREQ(result.c_str(), expect.c_str());
+    ret = result.find("Invalid buffer size") != std::string::npos;
+    EXPECT_EQ(ret, true);
 }
 
 /*
@@ -1009,9 +1012,10 @@ HWTEST_F(hilogtest, buff_resize_illegal, Function|MediumTest|Level4)
 */
 HWTEST_F(hilogtest, buff_resize_illegal2, Function|MediumTest|Level3)
 {
+    bool ret = true;
     result = ExecuteCmd("hilog -G 2g");
-    expect = "core buffer resize fail\napp buffer resize fail\n\n";
-    EXPECT_STREQ(result.c_str(), expect.c_str());
+    ret = result.find("Invalid buffer size") != std::string::npos;
+    EXPECT_EQ(ret, true);
 }
 
 /*
@@ -1086,9 +1090,10 @@ HWTEST_F(hilogtest, buff_resize_all, Function|MediumTest|Level4)
 */
 HWTEST_F(hilogtest, buff_resize_illegal_type, Function|MediumTest|Level4)
 {
+    bool ret = true;
     result = ExecuteCmd("hilog -G 2m -t abc");
-    expect = "Invalid parameter\n";
-    EXPECT_STREQ(result.c_str(), expect.c_str());
+    ret = result.find("Invalid log type") != std::string::npos;
+    EXPECT_EQ(ret, true);
     ExeCmd("hilog -G 1m -t all");
 }
 
@@ -1099,9 +1104,10 @@ HWTEST_F(hilogtest, buff_resize_illegal_type, Function|MediumTest|Level4)
 */
 HWTEST_F(hilogtest, buff_resize_illegal_type2, Function|MediumTest|Level4)
 {
+    bool ret = true;
     result = ExecuteCmd("hilog -G 2m -t 'core abc'");
-    expect = "buffsize operation error!\n";
-    EXPECT_STREQ(result.c_str(), expect.c_str());
+    ret = result.find("Invalid log type") != std::string::npos;
+    EXPECT_EQ(ret, true);
     ExeCmd("hilog -G 1m -t all");
 }
 
@@ -1313,9 +1319,10 @@ HWTEST_F(hilogtest, statistic_info_clear_init, Function|MediumTest|Level4)
 */
 HWTEST_F(hilogtest, statistic_info_query_illegal, Function|MediumTest|Level3)
 {
+    bool ret = true;
     result = ExecuteCmd("hilog -s -t abc");
-    expect = "Invalid parameter\n";
-    EXPECT_STREQ(result.c_str(), expect.c_str());
+    ret = result.find("Invalid log type") != std::string::npos;
+    EXPECT_EQ(ret, true);
 }
 
 /*
@@ -1325,9 +1332,10 @@ HWTEST_F(hilogtest, statistic_info_query_illegal, Function|MediumTest|Level3)
 */
 HWTEST_F(hilogtest, statistic_info_clear_illegal, Function|MediumTest|Level4)
 {
+    bool ret = true;
     result = ExecuteCmd("hilog -S -t abc");
-    expect = "Invalid parameter\n";
-    EXPECT_STREQ(result.c_str(), expect.c_str());
+    ret = result.find("Invalid log type") != std::string::npos;
+    EXPECT_EQ(ret, true);
 }
 
 /*
@@ -1502,9 +1510,10 @@ HWTEST_F(hilogtest, log_clear_all, Function|MediumTest|Level4)
 */
 HWTEST_F(hilogtest, log_clear_illegal, Function|MediumTest|Level4)
 {
+    bool ret = true;
     result = ExecuteCmd("hilog -r -t abc");
-    expect = "Invalid parameter\n";
-    EXPECT_STREQ(result.c_str(), expect.c_str());
+    ret = result.find("Invalid log type") != std::string::npos;
+    EXPECT_EQ(ret, true);
 }
 
 /*
@@ -1514,7 +1523,8 @@ HWTEST_F(hilogtest, log_clear_illegal, Function|MediumTest|Level4)
 */
 HWTEST_F(hilogtest, log_clear_illegal2, Function|MediumTest|Level4)
 {
+    bool ret = true;
     result = ExecuteCmd("hilog -r -t 'abc core'");
-    expect = "clear log operation error!\n";
-    EXPECT_STREQ(result.c_str(), expect.c_str());
+    ret = result.find("Invalid log type") != std::string::npos;
+    EXPECT_EQ(ret, true);
 }
