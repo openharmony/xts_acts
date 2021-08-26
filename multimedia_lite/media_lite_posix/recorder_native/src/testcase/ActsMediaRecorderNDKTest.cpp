@@ -1006,8 +1006,8 @@ HWTEST_F(ActsMediaRecorderNDKTest, Test_SetMaxFileSize2, Function | MediumTest |
 HWTEST_F(ActsMediaRecorderNDKTest, Test_SetOutputFile1, Function | MediumTest | Level0)
 {
     Recorder *recorder = new Recorder();
-    int32_t ret = recorder->SetOutputFile(1);
-    EXPECT_EQ(ERR_INVALID_PARAM, ret);
+    int32_t ret = recorder->SetOutputFile(-1);
+    EXPECT_EQ(-5, ret);
     delete recorder;
     recorder = NULL;
 }
@@ -1020,8 +1020,8 @@ HWTEST_F(ActsMediaRecorderNDKTest, Test_SetOutputFile1, Function | MediumTest | 
 HWTEST_F(ActsMediaRecorderNDKTest, Test_SetNextOutputFile1, Function | MediumTest | Level0)
 {
     Recorder *recorder = new Recorder();
-    int32_t ret = recorder->SetNextOutputFile(1);
-    EXPECT_EQ(ERR_INVALID_PARAM, ret);
+    int32_t ret = recorder->SetNextOutputFile(-1);
+    EXPECT_EQ(-5, ret);
     delete recorder;
     recorder = NULL;
 }
