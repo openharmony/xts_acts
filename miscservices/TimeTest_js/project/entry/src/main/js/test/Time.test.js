@@ -29,13 +29,14 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTime_test1', 0, async function (done) {
         console.log("SUB_systemTime_setTime_JS_API_0100 start")
-        expect(1).assertLarger(0)
         systemTime.setTime(1526003846000)
             .then(data =>{
             console.log("setTime ===data " + data)
+            execpt(data).assertEqual(true)
         }).catch(error => {
             console.log("setTime ===error " + error)
             console.log("setTime ===data " + data)
+            execpt(0).assertLarger(1)
 
         });
         console.log('SUB_systemTime_setTime_JS_API_0100 end');
@@ -52,13 +53,13 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTime_test2', 0, async function (done) {
         console.log("SUB_systemTime_setTime_JS_API_0200 start")
-        expect(1).assertLarger(0)
         systemTime.setTime(-1)
             .then(data => {
             console.log("setTime ===data " + data)
 
         }).catch(error => {
             console.log("setTime ===error " + error)
+            execpt(0).assertLarger(1)
 
         });
         console.log('SUB_systemTime_setTime_JS_API_0200 end');
@@ -75,7 +76,6 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTime_test3', 0, async function (done) {
         console.log("SUB_systemTime_setTime_JS_API_0300 start")
-        expect(1).assertLarger(0)
         systemTime.setTime(1597156246000, (error, data) => {
             console.log("setTime ===data: " + data);
             console.log("setTime ===error: " + error);
@@ -98,7 +98,9 @@ describe('TimeTest', function() {
         systemTime.setTime(-1, (error, data) => {
             console.log("setTime ===data: " + data);
             console.log("setTime ===error: " + error);
-        });
+        })catch(error=> {
+            execpt(0).assertLarger(1)
+        })
         console.log('SUB_systemTime_setTime_JS_API_0400 end');
         done()
     })
