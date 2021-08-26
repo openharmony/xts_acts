@@ -886,7 +886,7 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0003, Function | MediumTest |
     char *bundleName = (char*)"com.huawei.testjsdemoBundleNameLengt" \
 "hEqualTo127testjsdemoBundleNameLengthEqualTo127testjsdemoBundleNameLengthEqualTo127testjsde";
     sem_init(&g_sem, 0, 0);
-    InstallParam installParam = { .installLocation = 1, .keepData = false };
+    InstallParam installParam = {.installLocation = 1,.keepData = false };
     string hapPath = g_testPath + "testGetBundleNameWithLegal127.hap";
     Install(hapPath.c_str(), &installParam, TestBundleStateCallback);
     sem_wait(&g_sem);
@@ -988,7 +988,7 @@ HWTEST_F(BundleMgrTest, testStressConfig_0002, Function | MediumTest | Level2)
     char *bundleName = (char*)"com.huawei.testjsdemo";
     char *bundleName2 = (char*)"com.huawei.testjsdemoBtestjsdemoB";
     sem_init(&g_sem, 0, 0);
-    InstallParam installParam = { .installLocation = 1, .keepData = false };
+    InstallParam installParam = {.installLocation = 1,.keepData = false };
     string hapPath = g_testPath + "frequentlyStress2.hap";
     Install(hapPath.c_str(), &installParam, TestBundleStateCallback);
     sem_wait(&g_sem);
