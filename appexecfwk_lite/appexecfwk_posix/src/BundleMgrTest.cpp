@@ -847,3 +847,172 @@ HWTEST_F(BundleMgrTest, testGetBundleNameForUidWithIllegal, Function | MediumTes
     }
     printf("------end testGetBundleNameForUidWithIllegal------\n");
 }
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0001
+ * @tc.name      : Test the GetBundleSize of the thirld hap can be obtained normally
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0001, Function | MediumTest | Level1)
+{
+    printf("------start testGetBundleSizeWithLegal_0001------\n");
+    char *bundleName = (char*)"com.huawei.testjsdemo";
+    
+    uint32_t resultCode = GetBundleSize(bundleName);
+    EXPECT_GT(resultCode, 0);
+    printf("------end testGetBundleSizeWithLegal_0001------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0002
+ * @tc.name      : Test the GetBundleSize of the system hap can be obtained normally
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0002, Function | MediumTest | Level1)
+{
+    printf("------start testGetBundleSizeWithLegal_0002------\n");
+    char *bundleName = (char*)"com.huawei.launcher";
+    
+    uint32_t resultCode = GetBundleSize(bundleName);
+    EXPECT_GT(resultCode, 0);
+    printf("------end testGetBundleSizeWithLegal_0002------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0003
+ * @tc.name      : GetBundleSize parameter legal and bundleName length equal to 127 test
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0003, Function | MediumTest | Level1)
+{
+    printf("------start testGetBundleSizeWithLegal_0003------\n");
+    char *bundleName = (char*)"com.huawei.testjsdemoBundleNameLengt" \
+"hEqualTo127testjsdemoBundleNameLengthEqualTo127testjsdemoBundleNameLengthEqualTo127testjsde";
+    sem_init(&g_sem, 0, 0);
+    InstallParam installParam = {.installLocation = 1,.keepData = false};
+    string hapPath = g_testPath + "testGetBundleNameWithLegal127.hap";
+    Install(hapPath.c_str(), &installParam, TestBundleStateCallback);
+    sem_wait(&g_sem);
+    
+    uint32_t resultCode = GetBundleSize(bundleName);
+    EXPECT_EQ(strlen(bundleName), 127);
+    EXPECT_GT(resultCode, 0);
+    
+    //uninstall
+    sem_init(&g_sem, 0, 0);
+    Uninstall(bundleName, &installParam, TestBundleStateCallback);
+    sem_wait(&g_sem);
+    printf("------end testGetBundleSizeWithLegal_0003------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0004
+ * @tc.name      : GetBundleSize parameter illegal and bundleName length equal to 128 test
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0001, Function | MediumTest | Level2)
+{
+    printf("------start testGetBundleSizeWithIllegal_0001------\n");
+    char *bundleName = (char*)"com.huawei.testjsdemoBundleNameLength128test" \
+"jsdemoBundleNameLength128testjsdemoBundleNameLength128testjsdemoBundleNameLength128T";
+
+    EXPECT_EQ(strlen(bundleName), 128);
+    uint32_t resultCode = GetBundleSize(bundleName);
+    EXPECT_EQ(resultCode, 0);
+    printf("------end testGetBundleSizeWithIllegal_0001------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0005
+ * @tc.name      : GetBundleSize parameter illegal and bundleName nullptr test
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0002, Function | MediumTest | Level2)
+{
+    printf("------start testGetBundleSizeWithIllegal_0002------\n");
+    char *bundleName = nullptr;
+
+    //bundleName nullptr
+    uint32_t resultCode = GetBundleSize(bundleName);
+    EXPECT_EQ(resultCode, 0);
+    printf("------end testGetBundleSizeWithIllegal_0002------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0006
+ * @tc.name      : GetBundleSize parameter illegal and bundleName error test
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0003, Function | MediumTest | Level2)
+{
+    printf("------start testGetBundleSizeWithIllegal_0003------\n");
+    char *bundleName = (char*)"com.huawei.nothishap";
+
+    //error bundleName
+    uint32_t resultCode = GetBundleSize(bundleName);
+    EXPECT_EQ(resultCode, 0);
+    printf("------end testGetBundleSizeWithIllegal_0003------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0007
+ * @tc.name      : GetBundleSize parameter illegal and bundleName " " test
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0004, Function | MediumTest | Level2)
+{
+    printf("------start testGetBundleSizeWithIllegal_0004------\n");
+    char *bundleName = (char*)" ";
+
+    //bundleName " "
+    uint32_t resultCode = GetBundleSize(bundleName);
+    EXPECT_EQ(resultCode, 0);
+    printf("------end testGetBundleSizeWithIllegal_0004------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0008
+ * @tc.name      : stress test of the same application
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+HWTEST_F(BundleMgrTest, testStressConfig_0001, Function | MediumTest | Level2)
+{
+    printf("------start testStressConfig_0001------\n");
+    char *bundleName = (char*)"com.huawei.testjsdemo";
+    
+    for(int i = 1; i <= 100; i++){
+        uint32_t resultCode = GetBundleSize(bundleName);
+        EXPECT_GT(resultCode, 0);
+    }
+    printf("------end testStressConfig_0001------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0009
+ * @tc.name      : stress test of the difference application
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+HWTEST_F(BundleMgrTest, testStressConfig_0002, Function | MediumTest | Level2)
+{
+    printf("------start testStressConfig_0002------\n");
+    char *bundleName = (char*)"com.huawei.testjsdemo";
+    char *bundleName2 = (char*)"com.huawei.testjsdemoBtestjsdemoB";
+    sem_init(&g_sem, 0, 0);
+    InstallParam installParam = {.installLocation = 1,.keepData = false};
+    string hapPath = g_testPath + "frequentlyStress2.hap";
+    Install(hapPath.c_str(), &installParam, TestBundleStateCallback);
+    sem_wait(&g_sem);
+    
+    for(int i = 1; i <= 100; i++){
+        uint32_t resultCode = GetBundleSize(bundleName);
+        EXPECT_GT(resultCode, 0);
+        resultCode = GetBundleSize(bundleName2);
+        EXPECT_GT(resultCode, 0);
+    }
+
+    //uninstall
+    sem_init(&g_sem, 0, 0);
+    Uninstall(bundleName2, &installParam, TestBundleStateCallback);
+    sem_wait(&g_sem);
+    printf("------end testStressConfig_0002------\n");
+}
