@@ -9,31 +9,56 @@
   },
   "deviceConfig": {},
   "module": {
+    "package": "com.example.aceceshi",
+    "name": ".MyApplication",
+    "mainAbility": "com.example.aceceshi.MainAbility",
     "deviceType": [
-      "liteWearable",
-      "smartVision"
+      "phone"
     ],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",
-      "moduleType": "entry"
+      "moduleType": "entry",
+      "installationFree": false
     },
     "abilities": [
       {
-        "name": "default",
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "name": "com.example.aceceshi.MainAbility",
         "icon": "$media:icon",
+        "description": "$string:mainability_description",
         "label": "$string:entry_MainAbility",
-        "type": "page"
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
+        "name": "decc.testkit.runner.JsEntryAbility",
+        "label": "$string:entry_MainAbility",
+        "type": "page",
+        "launchType": "standard"
       }
     ],
     "js": [
       {
-        "name": "default",
         "pages": [
           "pages/index/index",
           "pages/routerPush/index",
           "pages/routerReplace/index"
-        ]
+        ],
+        "name": "default",
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": true
+        }
       }
     ]
   }

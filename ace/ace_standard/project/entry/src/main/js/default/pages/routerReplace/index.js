@@ -16,10 +16,10 @@ export default {
     data: {
         title: "router replace test"
     },
-    onInit() {
-    },
     onShow() {
+        console.info('[test page log] routerReplace onShow');
     },
-    onReady() {
+    onHide() {
+        console.info('[test page log] routerReplace ohHide');
     },
 }
