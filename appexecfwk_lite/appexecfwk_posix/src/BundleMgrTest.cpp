@@ -859,7 +859,6 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0001, Function | MediumTest |
     char *bundleName = (char*)"com.huawei.testjsdemo";
     
     uint32_t resultCode = GetBundleSize(bundleName);
-    printf("GetBundleSize result is %d \n", resultCode);
     EXPECT_GT(resultCode, 0);
     printf("------end testGetBundleSizeWithLegal_0001------\n");
 }
@@ -875,7 +874,6 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0002, Function | MediumTest |
     char *bundleName = (char*)"com.huawei.launcher";
     
     uint32_t resultCode = GetBundleSize(bundleName);
-    printf("GetBundleSize result is %d \n", resultCode);
     EXPECT_GT(resultCode, 0);
     printf("------end testGetBundleSizeWithLegal_0002------\n");
 }
@@ -897,7 +895,6 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0003, Function | MediumTest |
     sem_wait(&g_sem);
     
     uint32_t resultCode = GetBundleSize(bundleName);
-    printf("GetBundleSize result is %d \n", resultCode);
     EXPECT_EQ(strlen(bundleName), 127);
     EXPECT_GT(resultCode, 0);
     
@@ -921,7 +918,6 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0001, Function | MediumTest
 
     EXPECT_EQ(strlen(bundleName), 128);
     uint32_t resultCode = GetBundleSize(bundleName);
-    printf("GetBundleSize result is %d \n", resultCode);
     EXPECT_EQ(resultCode, 0);
     
     printf("------end testGetBundleSizeWithIllegal_0001------\n");
@@ -939,7 +935,6 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0002, Function | MediumTest
 
     //bundleName nullptr
     uint32_t resultCode = GetBundleSize(bundleName);
-    printf("GetBundleSize result is %d \n", resultCode);
     EXPECT_EQ(resultCode, 0);
     
     printf("------end testGetBundleSizeWithIllegal_0002------\n");
