@@ -970,7 +970,7 @@ HWTEST_F(BundleMgrTest, testStressConfig_0001, Function | MediumTest | Level2)
 {
     printf("------start testStressConfig_0001------\n");
     char *bundleName = (char*)"com.huawei.testjsdemo";
-    for(int i = 1; i <= 100; i++) {
+    for (int i = 1; i <= 100; i++) {
         uint32_t resultCode = GetBundleSize(bundleName);
         EXPECT_GT(resultCode, 0);
     }
@@ -992,7 +992,7 @@ HWTEST_F(BundleMgrTest, testStressConfig_0002, Function | MediumTest | Level2)
     string hapPath = g_testPath + "frequentlyStress2.hap";
     Install(hapPath.c_str(), &installParam, TestBundleStateCallback);
     sem_wait(&g_sem);
-    for(int i = 1; i <= 100; i++) {
+    for (int i = 1; i <= 100; i++) {
         uint32_t resultCode = GetBundleSize(bundleName);
         EXPECT_GT(resultCode, 0);
         resultCode = GetBundleSize(bundleName2);
