@@ -13,4 +13,17 @@
  * limitations under the License.
  */
 
-require('./update.test.js');
+import {Core} from 'deccjsunit/lite'
+const core = Core.getInstance()
+core.init()
+require('../../test/List.test.js')
+core.execute()
+
+export default {
+    data: {
+        title: ""
+    },
+    onInit() {
+        this.title = this.$t('strings.world');
+    }
+}

@@ -12,8 +12,25 @@
 # limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
-
 ohos_js_hap_suite("update_js_test") {
- test_hap_name = "updatejstest" 
- hap_source_path = "hap/entry-debug-signed.hap"
+  hap_profile = "./src/main/config.json"
+  deps = [
+    ":update_js_assets",
+    ":update_js_resources",
+  ]
+#  shared_libraries = [
+#    "//third_party/giflib:libgif",
+#    "//third_party/libpng:libpng",
+#  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "updatejstest"
+#  part_name = "prebuilt_hap"
+#  subsystem_name = "xts"
+}
+ohos_js_assets("update_js_assets") {
+  source_dir = "./src/main/js/default"
+}
+ohos_resources("update_js_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }
