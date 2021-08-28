@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import app from '@system.app'
-import Context from '@ohos.napi_context'
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
@@ -40,15 +39,5 @@ describe('appInfoTest', function () {
         expect(info.versionName).assertEqual('1.0')
         expect(info.versionCode).assertEqual('5')
     })
-    it('get_process_info_test_001', 0, async function (done) {
-        console.log("111")
-        expect(1).assertLarger(0)
-        Context.getProcessInfo().then(info => {
-            console.log("222");
-            console.log("process_info: " + JSON.stringify(info));
-            expect(info.processName.length).assertLarger(0);
-            expect(info.pid).assertLarger(0);
-        });
-        done()
-    })
+
 })
