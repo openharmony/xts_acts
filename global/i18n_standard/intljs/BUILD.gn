@@ -12,8 +12,25 @@
 # limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
-
 ohos_js_hap_suite("intljs_test") {
-  test_hap_name = "IntlJsTest"
-  hap_source_path = "hap/entry-release-signed.hap"
+  hap_profile = "./src/main/config.json"
+  deps = [
+    ":intljs_assets",
+    ":intljs_resources",
+  ]
+#  shared_libraries = [
+    #    "//third_party/giflib:libgif",
+#    "//third_party/libpng:libpng",
+#  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "IntlJsTest"
+#  part_name = "prebuilt_hap"
+#  subsystem_name = "xts"
+}
+ohos_js_assets("intljs_assets") {
+  source_dir = "./src/main/js/default"
+}
+ohos_resources("intljs_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }
