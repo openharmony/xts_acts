@@ -13,6 +13,24 @@
 import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("storagefileioerror_js_test") {
-  test_hap_name = "storagefileioerrorjstest"
-  hap_source_path = "hap/entry-debug-rich-signed.hap"
+  hap_profile = "./src/main/config.json"
+  deps = [
+    ":storagefileioerror_js_assets",
+    ":storagefileioerror_js_resources",
+  ]
+#  shared_libraries = [
+#    "//third_party/giflib:libgif",
+#    "//third_party/libpng:libpng",
+#  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "storagefileioerrorjstest"
+#  part_name = "prebuilt_hap"
+#  subsystem_name = "xts"
+}
+ohos_js_assets("storagefileioerror_js_assets") {
+  source_dir = "./src/main/js/default"
+}
+ohos_resources("storagefileioerror_js_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }
