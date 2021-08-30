@@ -989,7 +989,7 @@ HWTEST_F(BundleMgrTest, testStressConfig_0002, Function | MediumTest | Level2)
     char *bundleName2 = (char*)"com.huawei.testjsdemoBtestjsdemoB";
     sem_init(&g_sem, 0, 0);
     InstallParam installParam = {.installLocation = 1,.keepData = false };
-    string hapPath = g_testPath + "frequentlyStress2.hap";
+    string hapPath = g_testPath + "frequentlyStress.hap";
     Install(hapPath.c_str(), &installParam, TestBundleStateCallback);
     sem_wait(&g_sem);
     for (int i = 1; i <= 100; i++) {
