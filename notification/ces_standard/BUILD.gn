@@ -10,11 +10,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 import("//build/ohos_var.gni")
 
-group("subscribeandpublish") {
+group("ces_standard") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "subscribeandpublish:ActsSubscriberTest" ]
+    deps = [ "subscribeandpublish:SubscribeAndPublish" ]
   }
 }
