@@ -29,7 +29,7 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_001', 0, async function (done) {
         console.info('system_parameter_test_001 start');
-        var ret = false;
+        let ret = false;
             try {
                 systemparameter.set("hw_sc.build.os.version", "10.20.30.4", function (err, data) {
                     if (err == undefined) {
@@ -44,7 +44,7 @@ describe('SystemParameterTest', function () {
                 console.info("set callback hw_sc.build.os.version unexpect err:" + e);
             }
         setTimeout("expect(ret).assertTrue()", "10");
-        console.info('system_parameter_test_001 : PASS');
+        console.info('system_parameter_test_001 : end');
     })
 
     /**
@@ -57,7 +57,7 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_002', 0, async function (done) {
         console.info('system_parameter_test_002 start');
-        var ret = false;
+        let ret = false;
         try {
             systemparameter.set("ro.secure", "10.20.30.4", function (err, data) {
                 if (err == undefined) {
@@ -73,7 +73,7 @@ describe('SystemParameterTest', function () {
             console.info("set callback ro.secure unexpect err:" + e)
         }
         setTimeout("expect(ret).assertTrue()", "10");
-        console.info('system_parameter_test_002 : PASS');
+        console.info('system_parameter_test_002 : end');
     })
 
     /**
@@ -86,8 +86,8 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_003', 0, async function (done) {
         console.info('system_parameter_test_003 start');
-        var parameterInfo = systemparameter.set("hw_sc.build.os.version", "1.5.3.6");
-        var ret = false;
+        let parameterInfo = systemparameter.set("hw_sc.build.os.version", "1.5.3.6");
+        let ret = false;
         try {
             parameterInfo.then(function (value) {
                 console.info("promise  set hw_sc.build.os.version success: " + value);
@@ -102,7 +102,7 @@ describe('SystemParameterTest', function () {
             ret = true;
         }
         expect(ret).assertTrue();
-        console.info('system_parameter_test_003 : PASS');
+        console.info('system_parameter_test_003 : end');
     })
 
     /**
@@ -115,8 +115,8 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_004', 0, async function (done) {
         console.info('system_parameter_test_004 start');
-        var parameterInfo = systemparameter.set("ro.secure", "10");
-        var ret = false;
+        let parameterInfo = systemparameter.set("ro.secure", "10");
+        let ret = false;
         try {
             parameterInfo.then(function (value) {
                 console.info("12333 promise  set ro.secure success: " + value);
@@ -131,7 +131,7 @@ describe('SystemParameterTest', function () {
             ret = true;
         }
         expect(ret).assertTrue();
-        console.info('system_parameter_test_004 ：PASS');
+        console.info('system_parameter_test_004 ：end');
     })
 
     /**
@@ -144,16 +144,16 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_005', 0, function () {
         console.info('system_parameter_test_005 start');
-        var ret = false;
+        let ret = false;
         try {
-            var parameterInfo = systemparameter.setSync("hw_sc.build.os.version", "2.5.3.7");
+            let parameterInfo = systemparameter.setSync("hw_sc.build.os.version", "2.5.3.7");
             console.info("promise  setSync ro.secure success: " + parameterInfo);
             ret = true;
         }catch(e){
             console.info("promise  setSync ro.secure error: " + e);
         }
         expect(ret).assertTrue();
-        console.info('system_parameter_test_005 : PASS');
+        console.info('system_parameter_test_005 : end');
     })
 
     /**
@@ -166,16 +166,16 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_006', 0, function () {
         console.info('system_parameter_test_006 start');
-        var ret = false;
+        let ret = false;
         try {
-            var parameterInfo = systemparameter.setSync("hw_sc.build.os.version", 56789);
+            let parameterInfo = systemparameter.setSync("hw_sc.build.os.version", 56789);
             console.info("promise  setSync ro.secure success: " + parameterInfo);
         }catch(e){
             ret = true;
             console.info("promise  setSync ro.secure error: " + e);
         }
         expect(ret).assertTrue();
-        console.info('system_parameter_test_006 : PASS');
+        console.info('system_parameter_test_006 : end');
     })
 
     /**
@@ -188,9 +188,9 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_008', 0, async function (done) {
         console.info('system_parameter_test_008 start');
-        var ret = false;
+        let ret = false;
         try {
-            var parameterInfo = systemparameter.get("hw_sc.build.os.version");
+            let parameterInfo = systemparameter.get("hw_sc.build.os.version");
 
             parameterInfo.then(function (value) {
                 ret = true;
@@ -203,7 +203,7 @@ describe('SystemParameterTest', function () {
             console.info("promise  setSync ro.secure error: " + e);
         }
         setTimeout("expect(ret).assertTrue()", "10");
-        console.info('system_parameter_test_008 : PASS');
+        console.info('system_parameter_test_008 : end');
     })
 
     /**
@@ -216,20 +216,20 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_014', 0, async function (done) {
         console.info('system_parameter_test_014 start');
-        var ret = false;
+        let ret = false;
         try {
-            var parameterInfo = systemparameter.getSync("hw_sc.build.os.version", 496);
+            let parameterInfo = systemparameter.getSync("hw_sc.build.os.version", 496);
             parameterInfo.then(function (value) {
                 console.info("496 promise get hw_sc.build.os.version success: " + value);
             }).catch(function (err) {
                 console.info("496 promise get hw_sc.build.os.version error: " + err.code);
             });
-            done();
         } catch (e) {
             ret = true;
             console.info("promise get input error: " + e);
+            done();
         }
         expect(ret).assertTrue();
-        console.info('system_parameter_test_014 : PASS');
+        console.info('system_parameter_test_014 : end');
     })
 })

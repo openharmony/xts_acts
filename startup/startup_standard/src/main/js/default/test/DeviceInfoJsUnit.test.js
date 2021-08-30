@@ -19,6 +19,10 @@ import deviceinfo from '@ohos.deviceInfo'
 
 describe('DeviceInfoTest', function () {
 
+    const MAX_CHARACTERS_NUM_ONE = 33;
+    const MAX_CHARACTERS_NUM_TWO = 65;
+    const MAX_CHARACTERS_NUM = 0;
+
     beforeAll(function () {
         console.info('beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.');
 
@@ -48,8 +52,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_001', 0, function () {
         console.info('device_info_test_001 start');
-		var ret = false;
-        var deviceTypeInfo = deviceinfo.deviceType;
+		let ret = false;
+        let deviceTypeInfo = deviceinfo.deviceType;
         console.info('the value of the deviceType is :' + deviceTypeInfo);
 
         expect(deviceTypeInfo).assertInstanceOf('String');
@@ -70,8 +74,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_002', 0, function () {
         console.info('device_info_test_002 start');
-		var ret = false;
-        var manufactureInfo = deviceinfo.manufacture;        
+		let ret = false;
+        let manufactureInfo = deviceinfo.manufacture;        
         console.info('the value of the manufactureInfo is :' + manufactureInfo);
 
         expect(manufactureInfo).assertInstanceOf('String');
@@ -91,8 +95,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_003', 0, function () {
         console.info('testGetProductBrand01 start');
-		var ret = false;
-        var brandInfo = deviceinfo.brand;
+		let ret = false;
+        let brandInfo = deviceinfo.brand;
         console.info('the value of the deviceinfo brand is :' + brandInfo);
 
         expect(brandInfo).assertInstanceOf('String');
@@ -113,8 +117,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_004', 0, function () {
         console.info('testGetMarketName01 start')
-		var ret = false;
-        var marketNameInfo = deviceinfo.marketName;
+		let ret = false;
+        let marketNameInfo = deviceinfo.marketName;
         console.info('the value of the deviceinfo marketName is :' + marketNameInfo);
 
         expect(marketNameInfo).assertInstanceOf('String');
@@ -135,8 +139,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_005', 0, function () {
         console.info('testGetProductSeries01 start');
-        var ret = false;		
-        var productSeriesInfo = deviceinfo.productSeries;
+        let ret = false;		
+        let productSeriesInfo = deviceinfo.productSeries;
         console.info('the value of the deviceinfo productSeries is :' + productSeriesInfo);
 
         expect(productSeriesInfo).assertInstanceOf('String');
@@ -157,8 +161,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_006', 0, function () {
         console.info('testGetProductModel01 start');
-        var ret = false;		
-        var productModelInfo = deviceinfo.productModel;
+        let ret = false;		
+        let productModelInfo = deviceinfo.productModel;
         console.info('the value of the deviceinfo productModel is :' + productModelInfo);
 
         expect(productModelInfo).assertInstanceOf('String');
@@ -179,8 +183,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_007', 0, function () {
         console.info('testGetSoftwareModel01 start');
-        var ret = false;		
-        var softwareModelInfo = deviceinfo.softwareModel;
+        let ret = false;		
+        let softwareModelInfo = deviceinfo.softwareModel;
         console.info('the value of the deviceinfo softwareModel is :' + softwareModelInfo);
 
         expect(softwareModelInfo).assertInstanceOf('String');
@@ -201,8 +205,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_008', 0, function () {
         console.info('testGetHardWareModel01 start');
-        var ret = false;		
-        var hardwareModelInfo = deviceinfo.hardwareModel;
+        let ret = false;		
+        let hardwareModelInfo = deviceinfo.hardwareModel;
         console.info('the value of the deviceinfo hardwareModel is :' + hardwareModelInfo);
 
         expect(hardwareModelInfo).assertInstanceOf('String');
@@ -223,8 +227,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_009', 0, function () {
         console.info('testGetHardWareProfile01 start');
-        var ret = false;		
-        var hardwareProfileInfo = deviceinfo.hardwareProfile;
+        let ret = false;		
+        let hardwareProfileInfo = deviceinfo.hardwareProfile;
         console.info('the value of the deviceinfo hardwareProfile is :' + hardwareProfileInfo);
 
         expect(hardwareProfileInfo).assertInstanceOf('String');
@@ -245,8 +249,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_010', 0, function () {
         console.info('testGetSerial01 start');
-        var ret = false;        
-        var serialInfo = deviceinfo.serial;
+        let ret = false;        
+        let serialInfo = deviceinfo.serial;
         console.info('the value of the deviceinfo serial is :' + serialInfo);
 
         expect(serialInfo).assertInstanceOf('String');
@@ -267,8 +271,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_011', 0, function () {
         console.info('testGetBootLoaderVersion01 start');
-        var ret = false;		
-        var bootloaderVersionInfo = deviceinfo.bootloaderVersion;
+        let ret = false;		
+        let bootloaderVersionInfo = deviceinfo.bootloaderVersion;
         console.info('the value of the deviceinfo bootloaderVersion is :' + bootloaderVersionInfo);
 
         expect(bootloaderVersionInfo).assertInstanceOf('String');
@@ -289,8 +293,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_012', 0, function () {
         console.info('testGetabiList01 start');
-        var ret = false;		
-        var abiListInfo = deviceinfo.abiList;
+        let ret = false;		
+        let abiListInfo = deviceinfo.abiList;
         console.info('the value of the deviceinfo abiList is :' + abiListInfo);
 
         expect(abiListInfo).assertInstanceOf('String');
@@ -311,8 +315,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_013', 0, function () {
         console.info('testGetSecurityPatchTag01 start');
-        var ret = false;		
-        var securityPatchTagInfo = deviceinfo.securityPatchTag;
+        let ret = false;		
+        let securityPatchTagInfo = deviceinfo.securityPatchTag;
         console.info('the value of the deviceinfo securityPatchTag is :' + securityPatchTagInfo);
 
         expect(securityPatchTagInfo).assertInstanceOf('String');
@@ -333,8 +337,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_014', 0, function () {
         console.info('testGetDisplayVersion01 start');
-        var ret = false;		
-        var displayVersionInfo = deviceinfo.displayVersion;
+        let ret = false;		
+        let displayVersionInfo = deviceinfo.displayVersion;
         console.info('the value of the deviceinfo displayVersion is :' + displayVersionInfo);
 
         expect(displayVersionInfo).assertInstanceOf('String');
@@ -355,8 +359,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_015', 0, function () {
         console.info('testGetIncrementalVersion01 start');
-		var ret = false;
-        var incrementalVersionInfo = deviceinfo.incrementalVersion;
+		let ret = false;
+        let incrementalVersionInfo = deviceinfo.incrementalVersion;
         console.info('the value of the deviceinfo incrementalVersion is :' + incrementalVersionInfo);
 
         expect(incrementalVersionInfo).assertInstanceOf('String');
@@ -377,8 +381,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_016', 0, function () {
         console.info('testGetOSReleaserType01 start');
-        var ret = false;		
-        var osReleaseTypeInfo = deviceinfo.osReleaseType;
+        let ret = false;		
+        let osReleaseTypeInfo = deviceinfo.osReleaseType;
         console.info('the value of the deviceinfo osReleaseType is :' + osReleaseTypeInfo);
 
         expect(osReleaseTypeInfo).assertInstanceOf('String');
@@ -399,8 +403,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_017', 0, function () {
         console.info('testGetOSFullName01 start');
-        var ret = false;
-        var osFullNameInfo = deviceinfo.osFullName;
+        let ret = false;
+        let osFullNameInfo = deviceinfo.osFullName;
         console.info('the value of the deviceinfo osFullName is :' + osFullNameInfo);
 
         expect(osFullNameInfo).assertInstanceOf('String');
@@ -421,8 +425,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_018', 0, function () {
         console.info('testGetMajorVersion01 start');
-		var ret = false;
-        var majorVersionInfo = deviceinfo.majorVersion;
+		let ret = false;
+        let majorVersionInfo = deviceinfo.majorVersion;
         console.info('the value of the deviceinfo majorVersion is :' + majorVersionInfo);
 
         expect(majorVersionInfo).assertInstanceOf('Number');
@@ -443,8 +447,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_019', 0, function () {
         console.info('testGetSeniorVersion01 start');
-		var ret = false;
-        var seniorVersionInfo = deviceinfo.seniorVersion;
+		let ret = false;
+        let seniorVersionInfo = deviceinfo.seniorVersion;
         console.info('the value of the deviceinfo seniorVersion is :' + seniorVersionInfo);
 
         expect(seniorVersionInfo).assertInstanceOf('Number');
@@ -465,8 +469,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_020', 0, function () {
         console.info('testGetFeatureVersion01 start');
-		var ret = false;
-        var featureVersionInfo = deviceinfo.featureVersion;
+		let ret = false;
+        let featureVersionInfo = deviceinfo.featureVersion;
         console.info('the value of the deviceinfo featureVersion is :' + featureVersionInfo);
 
         expect(featureVersionInfo).assertInstanceOf('Number');
@@ -487,8 +491,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_021', 0, function () {
         console.info('testGetBuildVersion01 start');
-		var ret = false;
-        var buildVersionInfo = deviceinfo.buildVersion;
+		let ret = false;
+        let buildVersionInfo = deviceinfo.buildVersion;
         console.info('the value of the deviceinfo buildVersion is :' + buildVersionInfo);
 
         expect(buildVersionInfo).assertInstanceOf('Number');
@@ -509,8 +513,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_022', 0, function () {
         console.info('testGetSdkApiVersion01 start');
-		var ret = false;
-        var sdkApiVersionInfo = deviceinfo.sdkApiVersion;
+		let ret = false;
+        let sdkApiVersionInfo = deviceinfo.sdkApiVersion;
         console.info('the value of the deviceinfo sdkApiVersion is :' + sdkApiVersionInfo);
 
         expect(sdkApiVersionInfo).assertInstanceOf('Number');
@@ -531,8 +535,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_023', 0, function () {
         console.info('testGetFirstApiVersion01 start');
-		var ret = true;
-        var firstApiVersionInfo = deviceinfo.firstApiVersion;
+		let ret = true;
+        let firstApiVersionInfo = deviceinfo.firstApiVersion;
         console.info('the value of the deviceinfo firstApiVersion is :' + firstApiVersionInfo);
 
         expect(firstApiVersionInfo).assertInstanceOf('Number');
@@ -553,8 +557,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_024', 0, function () {
         console.info('testGetVersionId01 start');
-		var ret = false;
-        var versionIdInfo = deviceinfo.versionId;
+		let ret = false;
+        let versionIdInfo = deviceinfo.versionId;
         console.info('the value of the deviceinfo versionId is :' + versionIdInfo);
 
         expect(versionIdInfo).assertInstanceOf('String');
@@ -575,8 +579,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_025', 0, function () {
         console.info('testGetBuildType01 start');
-		var ret = false;
-        var buildTypeInfo = deviceinfo.buildType;
+		let ret = false;
+        let buildTypeInfo = deviceinfo.buildType;
         console.info('the value of the deviceinfo buildType is :' + buildTypeInfo);
 
         expect(buildTypeInfo).assertInstanceOf('String');
@@ -597,8 +601,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_026', 0, function () {
         console.info('testGetBuildUser01 start');
-		var ret = true;
-        var buildUserInfo = deviceinfo.buildUser;
+		let ret = true;
+        let buildUserInfo = deviceinfo.buildUser;
         console.info('the value of the deviceinfo buildUser is :' + buildUserInfo);
 
         expect(buildUserInfo).assertInstanceOf('String');
@@ -619,8 +623,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_027', 0, function () {
         console.info('testGetBuildHost01 start');
-		var ret = false;
-        var buildHostInfo = deviceinfo.buildHost;
+		let ret = false;
+        let buildHostInfo = deviceinfo.buildHost;
         console.info('the value of the deviceinfo buildHost is :' + buildHostInfo);
 
         expect(buildHostInfo).assertInstanceOf('String');
@@ -641,8 +645,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_028', 0, function () {
         console.info('testGetBuildTime01 start');
-		var ret = false;
-        var buildTimeInfo = deviceinfo.buildTime;
+		let ret = false;
+        let buildTimeInfo = deviceinfo.buildTime;
         console.info('the value of the deviceinfo buildTime is :' + buildTimeInfo);
 
         expect(buildTimeInfo).assertInstanceOf('String');
@@ -663,8 +667,8 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_029', 0, function () {
         console.info('testGetBuildRootHash01 start');
-		var ret = false;
-        var buildRootHashInfo = deviceinfo.buildRootHash;
+		let ret = false;
+        let buildRootHashInfo = deviceinfo.buildRootHash;
         console.info('the value of the deviceinfo buildRootHash is :' + buildRootHashInfo);
 
         expect(buildRootHashInfo).assertInstanceOf('String');
@@ -685,13 +689,13 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_030', 0, function () {
         console.info('device_info_test_030 start');
-        var deviceTypeInfo = deviceinfo.deviceType;
+        let deviceTypeInfo = deviceinfo.deviceType;
         console.info('the value of the deviceinfo deviceType is:' + deviceTypeInfo);
 
         let len = deviceTypeInfo.length
          
         console.info('the value of the device type characters:' + len);
-        expect(len).assertLess(33)
+        expect(len).assertLess(MAX_CHARACTERS_NUM_ONE)
         console.info('device_info_test_030 ：end')
     })
 
@@ -705,12 +709,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_031', 0, function () {
         console.info('device_info_test_031 start');
-        var manufactureInfo = deviceinfo.manufacture;
+        let manufactureInfo = deviceinfo.manufacture;
         console.info('the value of the deviceinfo manufacture is :' + manufactureInfo);
 
         let len = manufactureInfo.length
         console.info('the value of the manufacture characters is :' + len);
-        expect(len).assertLess(33)
+        expect(len).assertLess(MAX_CHARACTERS_NUM_ONE)
         console.info('device_info_test_031 ：end')
     })
 
@@ -724,12 +728,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_032', 0, function () {
         console.info('device_info_test_032 start');
-        var brandInfo = deviceinfo.brand;
+        let brandInfo = deviceinfo.brand;
         console.info('the value of the deviceinfo brand is :' + brandInfo);
 
         let len = brandInfo.length
         console.info('the value of the external product family name characters is :' + len);
-        expect(len).assertLess(33)
+        expect(len).assertLess(MAX_CHARACTERS_NUM_ONE)
         console.info('device_info_test_032 ：end')
     })
 
@@ -743,12 +747,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_033', 0, function () {
         console.info('device_info_test_033 start');
-        var marketNameInfo = deviceinfo.marketName;
+        let marketNameInfo = deviceinfo.marketName;
         console.info('the value of the deviceinfo marketName is :' + marketNameInfo);
 
         let len = marketNameInfo.length
         console.info('the value of the product series characters is :' + len);
-        expect(len).assertLess(32)
+        expect(len).assertLess(MAX_CHARACTERS_NUM_ONE)
         console.info('device_info_test_033 ：end')
     })
 
@@ -762,12 +766,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_034', 0, function () {
         console.info('device_info_test_034 start');
-        var productSeriesInfo = deviceinfo.productSeries;
+        let productSeriesInfo = deviceinfo.productSeries;
         console.info('the value of the deviceinfo  productSeries is :' + productSeriesInfo);
 
         let len = productSeriesInfo.length
         console.info('the value of the product series characters is :' + len);
-        expect(len).assertLess(33)
+        expect(len).assertLess(MAX_CHARACTERS_NUM_ONE)
         console.info('device_info_test_034 ：end')
     })
 
@@ -781,12 +785,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_035', 0, function () {
         console.info('device_info_test_035 start');
-        var productModelInfo = deviceinfo.productModel;
+        let productModelInfo = deviceinfo.productModel;
         console.info('the value of the deviceinfo productModel is :' + productModelInfo);
 
         let len = productModelInfo.length
         console.info('the value of the certified model characters is :' + len);
-        expect(len).assertLess(33)
+        expect(len).assertLess(MAX_CHARACTERS_NUM_ONE)
         console.info('device_info_test_035 ：end')
     })
 
@@ -800,12 +804,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_036', 0, function () {
         console.info('device_info_test_036 start');
-        var softwareModelInfo = deviceinfo.softwareModel;
+        let softwareModelInfo = deviceinfo.softwareModel;
         console.info('the value of the deviceinfo softwareModel is :' + softwareModelInfo);
 
         let len = softwareModelInfo.length
         console.info('the value of the internal software sub-model characters is :' + len);
-        expect(len).assertLess(33)
+        expect(len).assertLess(MAX_CHARACTERS_NUM_ONE)
         console.info('device_info_test_036 ：end')
     })
 
@@ -819,12 +823,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_037', 0, function () {
         console.info('device_info_test_037 start');
-        var hardwareModelInfo = deviceinfo.hardwareModel;
+        let hardwareModelInfo = deviceinfo.hardwareModel;
         console.info('the value of the deviceinfo hardwareModel is :' + hardwareModelInfo);
 
         let len = hardwareModelInfo.length;
         console.info('the value of the hardware version characters is :' + len);
-        expect(len).assertLess(33)
+        expect(len).assertLess(MAX_CHARACTERS_NUM_ONE)
         console.info('device_info_test_037 ：end');
     })
 
@@ -838,7 +842,7 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_038', 0, function () {
         console.info('device_info_test_038 start');
-        var hardwareProfileInfo = deviceinfo.hardwareProfile;
+        let hardwareProfileInfo = deviceinfo.hardwareProfile;
         console.info('the value of the deviceinfo hardwareProfile is :' + hardwareProfileInfo);
 
         let len = hardwareProfileInfo.length;
@@ -857,12 +861,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_039', 0, function () {
         console.info('device_info_test_039 start');
-        var serialInfo = deviceinfo.serial;
+        let serialInfo = deviceinfo.serial;
         console.info('the value of the deviceinfo serial is :' + serialInfo);
 
         let len = serialInfo.length;
         console.info('the value of the device serial number characters is :' + len);
-        expect(len).assertLess(65);
+        expect(len).assertLess(MAX_CHARACTERS_NUM_TWO);
         console.info('device_info_test_039 ：end');
     })
 
@@ -876,12 +880,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_040', 0, function () {
         console.info('device_info_test_040 start');
-        var displayVersionInfo = deviceinfo.displayVersion;
+        let displayVersionInfo = deviceinfo.displayVersion;
         console.info('the value of the deviceinfo displayVersion is :' + displayVersionInfo);
 
         let len = displayVersionInfo.length;
         console.info('the value of the device serial number characters is :' + len);
-        expect(len).assertLess(65);
+        expect(len).assertLess(MAX_CHARACTERS_NUM_TWO);
         console.info('device_info_test_040 ：end');
     })
 
@@ -895,12 +899,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_041', 0, function () {
         console.info('device_info_test_041 start');
-        var osFullNameInfo = deviceinfo.osFullName;
+        let osFullNameInfo = deviceinfo.osFullName;
         console.info('the value of the deviceinfo osFullName is :' + osFullNameInfo);
 
         let len = osFullNameInfo.length;
         console.info('the value of the operating system full name characters is :' + len);
-        expect(len).assertLess(32);
+        expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
         console.info('device_info_test_041 ：end');
     })
 
@@ -914,7 +918,7 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_042', 0, function () {
         console.info('device_info_test_042 start');
-        var versionIdInfo = deviceinfo.versionId;
+        let versionIdInfo = deviceinfo.versionId;
         console.info('the value of the deviceinfo versionId is :' + versionIdInfo);
 
         let len = versionIdInfo.length;
@@ -933,11 +937,11 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_043', 0, function () {
         console.info('device_info_test_043 start');
-        var buildUserInfo = deviceinfo.buildUser;
+        let buildUserInfo = deviceinfo.buildUser;
         console.info('the value of the deviceinfo buildUser is :' + buildUserInfo);
 
         console.info('the value of the different build user of the same baseline code characters is :' + buildUserInfo.length);
-        expect(buildUserInfo.length).assertLess(33)
+        expect(buildUserInfo.length).assertLess(MAX_CHARACTERS_NUM_ONE)
         console.info('device_info_test_043 ：end')
     })
 
@@ -951,12 +955,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_044', 0, function () {
         console.info('device_info_test_044 start');
-        var buildHostInfo = deviceinfo.buildHost;
+        let buildHostInfo = deviceinfo.buildHost;
         console.info('the value of the deviceinfo buildHost is :' + buildHostInfo);
 
         let len = buildHostInfo.length
         console.info('the value of the different build host of the same baseline code characters is :' + len)
-        expect(len).assertLess(33)
+        expect(len).assertLess(MAX_CHARACTERS_NUM_ONE)
         console.info('device_info_test_044 ：end')
     })
 
@@ -970,12 +974,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_045', 0, function () {
         console.info('device_info_test_045 start');
-        var deviceTypeInfo = deviceinfo.deviceType;
+        let deviceTypeInfo = deviceinfo.deviceType;
         console.info('the value of the deviceinfo deviceType is :' + deviceTypeInfo);
 
         let len = deviceTypeInfo.length;
         console.info('the value of the device type characters:' + len);
-        expect(len).assertLarger(0);
+        expect(len).assertLarger(MAX_CHARACTERS_NUM);
         console.info('device_info_test_045 ：end');
     })
 
@@ -989,12 +993,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_046', 0, function () {
         console.info('device_info_test_046 start');
-        var manufactureInfo = deviceinfo.manufacture;
+        let manufactureInfo = deviceinfo.manufacture;
         console.info('the value of the deviceinfo manufacture is :' + manufactureInfo);
 
         let len = manufactureInfo.length
         console.info('the value of the manufacture characters is :' + len)
-        expect(len).assertLarger(0)
+        expect(len).assertLarger(MAX_CHARACTERS_NUM)
         console.info('device_info_test_046 ：end')
     })
 
@@ -1008,12 +1012,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_047', 0, function () {
         console.info('device_info_test_047 start');
-        var brandInfo = deviceinfo.brand;
+        let brandInfo = deviceinfo.brand;
         console.info('the value of the deviceinfo brand is :' + brandInfo);
 
         let len = brandInfo.length;
         console.info('the value of the external product family name characters is :' + len);
-        expect(len).assertLarger(0);
+        expect(len).assertLarger(MAX_CHARACTERS_NUM);
         console.info('device_info_test_047 ：end');
     })
 
@@ -1027,12 +1031,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_048', 0, function () {
         console.info('device_info_test_048 start');
-        var marketNameInfo = deviceinfo.marketName;
+        let marketNameInfo = deviceinfo.marketName;
         console.info('the value of the deviceinfo marketName is :' + marketNameInfo);
 
         let len = marketNameInfo.length;
         console.info('the value of the product series characters is :' + len)
-        expect(len).assertLarger(0);
+        expect(len).assertLarger(MAX_CHARACTERS_NUM);
         console.info('device_info_test_048 ：end');
     })
 
@@ -1046,12 +1050,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_049', 0, function () {
         console.info('device_info_test_049 start');
-        var productSeriesInfo = deviceinfo.productSeries;
+        let productSeriesInfo = deviceinfo.productSeries;
         console.info('the value of the deviceinfo productSeries is :' + productSeriesInfo);
 
         let len = productSeriesInfo.length;
         console.info('the value of the product series characters is :' + len);
-        expect(len).assertLarger(0);
+        expect(len).assertLarger(MAX_CHARACTERS_NUM);
         console.info('device_info_test_049 ：end');
     })
 
@@ -1065,12 +1069,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_050', 0, function () {
         console.info('device_info_test_050 start');
-        var productModelInfo = deviceinfo.productModel;
+        let productModelInfo = deviceinfo.productModel;
         console.info('the value of the deviceinfo productModel is :' + productModelInfo);
 
         let len = productModelInfo.length
         console.info('the value of the certified model characters is :' + len)
-        expect(len).assertLarger(0)
+        expect(len).assertLarger(MAX_CHARACTERS_NUM)
         console.info('device_info_test_050 ：end')
     })
 
@@ -1084,12 +1088,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_051', 0, function () {
         console.info('device_info_test_036 start');
-        var softwareModelInfo = deviceinfo.softwareModel;
+        let softwareModelInfo = deviceinfo.softwareModel;
         console.info('the value of the deviceinfo softwareModel is :' + softwareModelInfo);
 
         let len = softwareModelInfo.length
         console.info('the value of the internal software sub-model characters is :' + len)
-        expect(len).assertLarger(0)
+        expect(len).assertLarger(MAX_CHARACTERS_NUM)
         console.info('device_info_test_036 ：end')
     })
 
@@ -1103,12 +1107,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_052', 0, function () {
         console.info('device_info_test_052 start');
-        var hardwareModelInfo = deviceinfo.hardwareModel;
+        let hardwareModelInfo = deviceinfo.hardwareModel;
         console.info('the value of the deviceinfo hardwareModel is :' + hardwareModelInfo);
 
         let len = hardwareModelInfo.length;
         console.info('the value of the hardware version characters is :' + len);
-        expect(len).assertLarger(0);
+        expect(len).assertLarger(MAX_CHARACTERS_NUM);
         console.info('device_info_test_052 ：end');
     })
 
@@ -1122,12 +1126,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_053', 0, function () {
         console.info('device_info_test_053 start');
-        var hardwareProfileInfo = deviceinfo.hardwareProfile;
+        let hardwareProfileInfo = deviceinfo.hardwareProfile;
         console.info('the value of the deviceinfo hardwareProfile is :' + hardwareProfileInfo);
 
         let len = hardwareProfileInfo.length;
         console.info('the value of the hardware version characters is :' + len);
-        expect(len).assertLarger(0);
+        expect(len).assertLarger(MAX_CHARACTERS_NUM);
         console.info('device_info_test_053 ：end');
     })
 
@@ -1141,12 +1145,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_054', 0, function () {
         console.info('device_info_test_054 start');
-        var serialInfo = deviceinfo.serial;
+        let serialInfo = deviceinfo.serial;
         console.info('the value of the deviceinfo serial is :' + serialInfo);
 
         let len = serialInfo.length;
         console.info('the value of the device serial number characters is :' + len);
-        expect(len).assertLarger(0);
+        expect(len).assertLarger(MAX_CHARACTERS_NUM);
         console.info('device_info_test_054 ：end');
     })
 
@@ -1160,12 +1164,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_055', 0, function () {
         console.info('device_info_test_055 start');
-        var displayVersionInfo = deviceinfo.displayVersion;
+        let displayVersionInfo = deviceinfo.displayVersion;
         console.info('the value of the deviceinfo displayVersion is :' + displayVersionInfo);
 
         let len = displayVersionInfo.length;
         console.info('the value of the device serial number characters is :' + len);
-        expect(len).assertLarger(0);
+        expect(len).assertLarger(MAX_CHARACTERS_NUM);
         console.info('device_info_test_055 ：end');
     })
 
@@ -1179,12 +1183,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_056', 0, function () {
         console.info('device_info_test_056 start');
-        var incrementalVersionInfo = deviceinfo.incrementalVersion;
+        let incrementalVersionInfo = deviceinfo.incrementalVersion;
         console.info('the value of the deviceinfo incrementalVersion is :' + incrementalVersionInfo);
 
         let len = incrementalVersionInfo.length
         console.info('the value of the device serial number characters is :' + len)
-        expect(len).assertLess(32)
+        expect(len).assertLess(MAX_CHARACTERS_NUM_ONE)
         console.info('device_info_test_056 ：end')
     })
 
@@ -1198,12 +1202,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_057', 0, function () {
         console.info('device_info_test_057 start');
-        var incrementalVersionInfo = deviceinfo.incrementalVersion;
+        let incrementalVersionInfo = deviceinfo.incrementalVersion;
         console.info('the value of the deviceinfo incrementalVersion is :' + incrementalVersionInfo);
 
         let len = incrementalVersionInfo.length
         console.info('the value of the device serial number characters is :' + len)
-        expect(len).assertLarger(0)
+        expect(len).assertLarger(MAX_CHARACTERS_NUM)
         console.info('device_info_test_057 ：end')
     })
 
@@ -1217,12 +1221,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_058', 0, function () {
         console.info('device_info_test_058 start');
-        var versionIdInfo = deviceinfo.versionId;
+        let versionIdInfo = deviceinfo.versionId;
         console.info('the value of the deviceinfo versionId is :' + versionIdInfo);
 
         let len = versionIdInfo.length
         console.info('the value of the operating system full name characters is :' + len)
-        expect(len).assertLarger(0)
+        expect(len).assertLarger(MAX_CHARACTERS_NUM)
         console.info('device_info_test_058 ：end')
     })
 
@@ -1236,11 +1240,11 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_059', 0, function () {
         console.info('device_info_test_043 start');
-        var buildUserInfo = deviceinfo.buildUser;
+        let buildUserInfo = deviceinfo.buildUser;
         console.info('the value of thebuildUser is :' + buildUserInfo);
 
         console.info('the value of the different build user of the same baseline code characters is :' + buildUserInfo.length);
-        expect(buildUserInfo.length).assertLarger(0)
+        expect(buildUserInfo.length).assertLarger(MAX_CHARACTERS_NUM)
         console.info('device_info_test_059 ：end')
     })
 
@@ -1254,12 +1258,12 @@ describe('DeviceInfoTest', function () {
      */
     it('device_info_test_060', 0, function () {
         console.info('device_info_test_060 start');
-        var buildHostInfo = deviceinfo.buildHost;
+        let buildHostInfo = deviceinfo.buildHost;
         console.info('the value of the deviceinfo buildHost is :' + buildHostInfo);
 
         let len = buildHostInfo.length
         console.info('the value of the different build host of the same baseline code characters is :' + len);
-        expect(len).assertLarger(0);
+        expect(len).assertLarger(MAX_CHARACTERS_NUM);
         console.info('device_info_test_060 ：end');
     })
 })
