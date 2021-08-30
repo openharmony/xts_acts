@@ -1,6 +1,0 @@
-<div class="container">
-    <text class="title">
-        测试Context
-        {{ $t('strings.hello') }} {{ title }}
-    </text>
-</div>

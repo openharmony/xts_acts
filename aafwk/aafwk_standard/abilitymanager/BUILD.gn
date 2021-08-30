@@ -10,19 +10,23 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import("//build/config/ohos/rules.gni")
-import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsAbilityManagerTest") {
-  test_hap_name = "ActsAbilityManagerTest"
-  hap_source_path = "hap/sceneTestOne.hap"
-  hap_source_path = "hap/sceneTestTwo.hap"
-  hap_source_path = "hap/sceneTestThree.hap"
-  hap_source_path = "hap/sceneTestFour.hap"
-  hap_source_path = "hap/sceneTestFive.hap"
-  hap_source_path = "hap/sceneCallbackTestOne.hap"
-  hap_source_path = "hap/sceneCallbackTestTwo.hap"
-  hap_source_path = "hap/sceneCallbackTestThree.hap"
-  hap_source_path = "hap/sceneCallbackTestFour.hap"
-  hap_source_path = "hap/sceneCallbackTestFive.hap"
+import("//build/ohos_var.gni")
+
+group("actsAbilityManagerTest") {
+  testonly = true
+  if (is_standard_system) {
+    deps = [
+      "actsamscallbackfifthscene:ActsAmsCallBackFifthScene",
+      "actsamscallbackfirstscene:ActsAmsCallBackFirstScene",
+      "actsamscallbackfourthscene:ActsAmsCallBackFourthScene",
+      "actsamscallbacksecondscene:ActsAmsCallBackSecondScene",
+      "actsamscallbackthirdscene:ActsAmsCallBackThirdScene",
+      "actsamstestfifthscene:ActsAmsTestFifthScene",
+      "actsamstestfirstscene:ActsAmsTestFirstScene",
+      "actsamstestfourthscene:ActsAmsTestFourthScene",
+      "actsamstestsecondscene:ActsAmsTestSecondScene",
+      "actsamstestthirdscene:ActsAmsTestThirdScene",
+    ]
+  }
 }

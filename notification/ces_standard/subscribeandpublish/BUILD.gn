@@ -10,10 +10,15 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import("//build/config/ohos/rules.gni")
-import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsSubscriberTest") {
-  test_hap_name = "ActsSubscriberTest"
-  hap_source_path = "hap/contextJSUnit.hap"
+import("//build/ohos_var.gni")
+
+group("SubscribeAndPublish") {
+  testonly = true
+  if (is_standard_system) {
+    deps = [
+      "actssubscriberorderedtest:ActsSubscriberOrderedTest",
+      "actssubscriberunordertest:ActsSubscriberUnorderTest",
+    ]
+  }
 }

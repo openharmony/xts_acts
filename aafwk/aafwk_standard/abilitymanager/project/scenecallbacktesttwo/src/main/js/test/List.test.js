@@ -1,1 +1,0 @@
-require('./MangerAbilityJsunit.test.js')
