@@ -16,6 +16,7 @@
 
 #include "Testplayer.h"
 #include "parameter.h"
+#include "media_errors.h"
 
 using namespace OHOS;
 using namespace OHOS::Media;
@@ -39,6 +40,7 @@ TestPlayer::~TestPlayer()
 }
 bool TestPlayer::CreatePlayer()
 {
+    MEDIA_INFO_LOG("%s", __FUNCTION__);
     player = PlayerFactory::CreatePlayer();
     if (player == nullptr) {
         return false;
@@ -47,11 +49,13 @@ bool TestPlayer::CreatePlayer()
 }
 int32_t TestPlayer::SetSource(const std::string &uri)
 {
+    MEDIA_INFO_LOG("%s", __FUNCTION__);
     return player->SetSource(uri);
 }
 
 int32_t TestPlayer::Play()
 {
+    MEDIA_INFO_LOG("%s", __FUNCTION__);
     int32_t ret = player->Play();
     if (test_->mutexFlag_ == true && test_->state_ != PLAYER_STARTED) {
         std::unique_lock<std::mutex> lockPlay(test_->mutexPlay_);
@@ -65,6 +69,7 @@ int32_t TestPlayer::Play()
 
 int32_t TestPlayer::Prepare()
 {
+    MEDIA_INFO_LOG("%s", __FUNCTION__);
     int32_t ret = player->Prepare();
     if (test_->mutexFlag_ == true && test_->state_ != PLAYER_PREPARED) {
         std::unique_lock<std::mutex> lockPrepare(test_->mutexPrepare_);
@@ -78,6 +83,7 @@ int32_t TestPlayer::Prepare()
 
 int32_t TestPlayer::PrepareAsync()
 {
+    MEDIA_INFO_LOG("%s", __FUNCTION__);
     int32_t ret = player->PrepareAsync();
     if (test_->mutexFlag_ == true && test_->state_ != PLAYER_PREPARED) {
         std::unique_lock<std::mutex> lockPrepare(test_->mutexPrepare_);
@@ -91,6 +97,7 @@ int32_t TestPlayer::PrepareAsync()
 
 int32_t TestPlayer::Pause()
 {
+    MEDIA_INFO_LOG("%s", __FUNCTION__);
     int32_t ret = player->Pause();
     if (test_->mutexFlag_ == true && test_->state_ != PLAYER_PAUSED) {
         std::unique_lock<std::mutex> lockPause(test_->mutexPause_);
@@ -104,6 +111,7 @@ int32_t TestPlayer::Pause()
 
 int32_t TestPlayer::Stop()
 {
+    MEDIA_INFO_LOG("%s", __FUNCTION__);
     int32_t ret = player->Stop();
     if (test_->mutexFlag_ == true && test_->state_ != PLAYER_STOPPED) {
         std::unique_lock<std::mutex> lockStop(test_->mutexStop_);
@@ -117,6 +125,7 @@ int32_t TestPlayer::Stop()
 
 int32_t TestPlayer::Reset()
 {
+    MEDIA_INFO_LOG("%s", __FUNCTION__);
     int32_t ret = player->Reset();
     if (test_->mutexFlag_ == true && test_->state_ != PLAYER_IDLE) {
         std::unique_lock<std::mutex> lockReset(test_->mutexReset_);
@@ -130,16 +139,19 @@ int32_t TestPlayer::Reset()
 
 int32_t TestPlayer::Release()
 {
+    MEDIA_INFO_LOG("%s", __FUNCTION__);
     return player->Release();
 }
 
 int32_t TestPlayer::SetVolume(float leftVolume, float rightVolume)
 {
+    MEDIA_INFO_LOG("%s", __FUNCTION__);
     return player->SetVolume(leftVolume, rightVolume);
 }
 
 int32_t TestPlayer::Seek(int32_t mseconds, PlayerSeekMode mode)
 {
+    MEDIA_INFO_LOG("%s", __FUNCTION__);
     test_->seekDoneFlag_ = false;
     test_->seekPositon_ = mseconds;
     int32_t ret = player->Seek(mseconds, mode);
@@ -155,35 +167,39 @@ int32_t TestPlayer::Seek(int32_t mseconds, PlayerSeekMode mode)
 
 int32_t TestPlayer::GetCurrentTime(int32_t &currentTime)
 {
+    MEDIA_INFO_LOG("%s", __FUNCTION__);
     return player->GetCurrentTime(currentTime);
 }
 
 int32_t TestPlayer::GetDuration(int32_t &duration)
 {
+    MEDIA_INFO_LOG("%s", __FUNCTION__);
     return player->GetDuration(duration);
 }
 
 int32_t TestPlayer::SetPlaybackSpeed(PlaybackRateMode mode)
 {
+    MEDIA_INFO_LOG("%s", __FUNCTION__);
     return player->SetPlaybackSpeed(mode);
 }
 
 int32_t TestPlayer::GetPlaybackSpeed(PlaybackRateMode &mode)
 {
+    MEDIA_INFO_LOG("%s", __FUNCTION__);
     return player->GetPlaybackSpeed(mode);
 }
 sptr<Surface> TestPlayer::GetVideoSurface(WindowConfig sub_config)
 {
     char surface[256] = "null";
     GetParameter("sys.media.test.surface", "null", &surface[0], 256);
+    sptr<Surface> videoSurface = nullptr;
+    if (strcmp(surface, "null") == 0) {
+        return videoSurface;
+    }
     mwindow = WindowManager::GetInstance()->CreateWindow(&g_config);
     if (mwindow  == nullptr) {
         MEDIA_ERROR_LOG("Create mwindow failed!!!");
         return nullptr;
-    }
-    sptr<Surface>  videoSurface = nullptr;
-    if (strcmp(surface, "null") == 0) {
-        return videoSurface;
     }
     if (strcmp(surface, "subwindow") == 0) {
         InitSubWindow(sub_config);
@@ -192,12 +208,13 @@ sptr<Surface> TestPlayer::GetVideoSurface(WindowConfig sub_config)
         videoSurface = mwindow->GetSurface();
         videoSurface->SetUserData(SURFACE_FORMAT, std::to_string(PIXEL_FMT_RGBA_8888));
         std::string format = videoSurface->GetUserData(SURFACE_FORMAT);
-        MEDIA_INFO_LOG("SetUserData SURFACE_FORMAT = %s", format.c_str());
+        MEDIA_DEBUG_LOG("SetUserData SURFACE_FORMAT = %s", format.c_str());
     }
     return videoSurface;
 }
 int32_t TestPlayer::SetVideoSurface(const sptr<Surface> surface)
 {
+    MEDIA_INFO_LOG("%s", __FUNCTION__);
     char parameter[256] = "null";
     GetParameter("sys.media.test.surface", "null", &parameter[0], 256);
     if (strcmp(parameter, "null") == 0) {
@@ -219,11 +236,13 @@ bool TestPlayer::IsLooping()
 
 int32_t TestPlayer::SetLooping(bool loop)
 {
+    MEDIA_INFO_LOG("%s", __FUNCTION__);
     return player->SetLooping(loop);
 }
 
 int32_t TestPlayer::SetPlayerCallback(const std::shared_ptr<PlayerCallback> &callback)
 {
+    MEDIA_INFO_LOG("%s", __FUNCTION__);
     return player->SetPlayerCallback(callback);
 }
 
@@ -270,9 +289,12 @@ void TestPlayerCallback::OnError(PlayerErrorType errorType, int32_t errorCode)
     errorNum++;
     errorType_ = errorType;
     errorCode_ = errorCode;
-    MEDIA_INFO_LOG("TestPlayerCallback: OnError errorType is %d, errorCode is %d", errorType_, errorCode_);
+    std::string errorTypeMsg = PlayerErrorTypeToString(errorType);
+    std::string errorCodeMsg = MSErrorToString(static_cast<MediaServiceErrCode>(errorCode));
+    MEDIA_ERROR_LOG("TestPlayerCallback: OnError errorType is %s, errorCode is %s",
+        errorTypeMsg.c_str(), errorCodeMsg.c_str());
 }
-void TestPlayerCallback::OnInfo(PlayerOnInfoType type, int32_t extra, const Format &InfoBody)
+void TestPlayerCallback::OnInfo(PlayerOnInfoType type, int32_t extra, const Format &infoBody)
 {
     switch (type) {
         case INFO_TYPE_SEEKDONE:
@@ -290,7 +312,6 @@ void TestPlayerCallback::OnInfo(PlayerOnInfoType type, int32_t extra, const Form
             break;
         case INFO_TYPE_STATE_CHANGE:
             state_ = static_cast<PlayerStates>(extra);
-            test_->SetState(state_);
             PrintState(state_);
             break;
         case INFO_TYPE_POSITION_UPDATE:
@@ -303,7 +324,6 @@ void TestPlayerCallback::OnInfo(PlayerOnInfoType type, int32_t extra, const Form
             break;
     }
 }
-
 int TestPlayerCallback::WaitForSeekDone(int32_t currentPositon)
 {
     int64_t waitTime = 0;
@@ -328,7 +348,7 @@ int TestPlayerCallback::WaitForState(PlayerStates state)
         waitTime += 1;
     }
     if (waitTime >= WAITSECOND * 1000) {
-        MEDIA_INFO_LOG("Failed to wait for state[%d] down", state);
+        MEDIA_ERROR_LOG("Failed to wait for state[%d] down", state);
         return -1;
     }
     return 0;
@@ -341,6 +361,7 @@ void TestPlayerCallback::PrintState(PlayerStates state)
             break;
         case PLAYER_IDLE:
             MEDIA_INFO_LOG("State: IDLE");
+            test_->SetState(state);
             test_->condVarReset_.notify_all();
             break;
         case PLAYER_INITIALIZED:
@@ -351,18 +372,22 @@ void TestPlayerCallback::PrintState(PlayerStates state)
             break;
         case PLAYER_PREPARED:
             MEDIA_INFO_LOG("State: Prepared");
+            test_->SetState(state);
             test_->condVarPrepare_.notify_all();
             break;
         case PLAYER_STARTED:
             MEDIA_INFO_LOG("State: Started");
+            test_->SetState(state);
             test_->condVarPlay_.notify_all();
             break;
         case PLAYER_PAUSED:
             MEDIA_INFO_LOG("State: Paused");
+            test_->SetState(state);
             test_->condVarPause_.notify_all();
             break;
         case PLAYER_STOPPED:
             MEDIA_INFO_LOG("State: Stopped");
+            test_->SetState(state);
             test_->condVarStop_.notify_all();
             break;
         case PLAYER_PLAYBACK_COMPLETE:
