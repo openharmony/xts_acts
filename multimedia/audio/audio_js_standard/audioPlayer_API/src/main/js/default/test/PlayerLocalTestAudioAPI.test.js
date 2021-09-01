@@ -17,556 +17,754 @@ import media from '@ohos.multimedia.media'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('PlayerLocalTestAudioAPI', function () {
-    var audioPlayer = media.createAudioPlayer();
-    var audioSource = "data/media/audio/Homey.mp3";
-    var PLAY_TIME = 3000;
-    var ENDSTATE = 0;
-    var SRCSTATE = 1;
-    var PLAYSTATE = 2;
-    var PAUSESTATE = 3;
-    var STOPSTATE = 4;
-    var RESETSTATE = 5;
-    var SEEKSTATE = 6;
-    var VOLUMESTATE = 7;
-    var RELEASESTATE = 8;
-    var ERRORSTATE = 9;
-    var FINISHSTATE = 10;
-    var LOOPSTATE = 11;
-    var DURATION_TIME = 89239;
-    var SEEK_TIME = 5000;
-    var DELTA_TIME  = 1000;
-    var PAUSEERROR = 'pauseError';
-    var PLAYERROR = 'playError';
-    var loopValue = false;
-    beforeAll(function () {
-        console.log("beforeAll case");
+    let audioPlayer = media.createAudioPlayer();
+    let loopValue = false;
+    let isTimeOut = false;
+    const Audio_SOURCE = "data/media/audio/Homey.mp3";
+    const PLAY_TIME = 3000;
+    const END_STATE = 0;
+    const SRC_STATE = 1;
+    const PLAY_STATE = 2;
+    const PAUSE_STATE = 3;
+    const STOP_STATE = 4;
+    const RESET_STATE = 5;
+    const SEEK_STATE = 6;
+    const VOLUME_STATE = 7;
+    const RELEASE_STATE = 8;
+    const ERROR_STATE = 9;
+    const FINISH_STATE = 10;
+    const LOOP_STATE = 11;
+    const DURATION_TIME = 89239;
+    const SEEK_TIME = 5000;
+    const DELTA_TIME  = 1000;
+    const SECOND_INDEX = 1;
+    const TIME_OUT = 20000;
+    const VOLUME_VALUE = 0.5;
+
+    beforeAll(function() {
+        console.info("beforeAll case");
     })
 
-    beforeEach(function () {
-        console.log("beforeEach case");
+    beforeEach(function() {
+        isTimeOut = false;
+        console.info("beforeEach case");
     })
 
-    afterEach(function () {
-        console.log("afterEach case");
-        audioPlayer.release();
+    afterEach(function() {
+        console.info("afterEach case");
     })
 
-    afterAll(function () {
-        console.log("afterAll case");
+    afterAll(function() {
+        console.info("afterAll case");
     })
 
-    var sleep = function(time) {
-        for(var t = Date.now();Date.now() - t <= time;);
+    function sleep(time) {
+        for(let t = Date.now();Date.now() - t <= time;);
     };
 
-    var initAudioPlayer = function() {
+    function initAudioPlayer() {
         audioPlayer = media.createAudioPlayer();
     }
 
-    var nextStep = function(mySteps, done) {
-        if (mySteps[0] == ENDSTATE) {
-            if (mySteps[1] == false || mySteps[1] == true) {
-                expect(audioPlayer.loop).assertEqual(mySteps[1]);
-            }
-            done();
+    function nextStep(mySteps) {
+        if (mySteps[0] == END_STATE) {
+            isTimeOut = true;
             return;
         }
         switch (mySteps[0]) {
-            case SRCSTATE:
-                console.log(`case to prepare`);
-                audioPlayer.src = audioSource;
+            case SRC_STATE:
+                console.info(`case to prepare`);
+                audioPlayer.src = Audio_SOURCE;
                 break;
-            case PLAYSTATE:
-                console.log(`case to play`);
+            case PLAY_STATE:
+                console.info(`case to play`);
                 audioPlayer.play();
                 break;
-            case PAUSESTATE:
-                console.log(`case to pause`);
+            case PAUSE_STATE:
+                console.info(`case to pause`);
                 audioPlayer.pause();
                 break;
-            case STOPSTATE:
-                console.log(`case to stop`);
+            case STOP_STATE:
+                console.info(`case to stop`);
                 audioPlayer.stop();
                 break;
-            case RESETSTATE:
-                console.log(`case to reset`);
+            case RESET_STATE:
+                console.info(`case to reset`);
                 audioPlayer.reset();
                 break;
-            case SEEKSTATE:
-                console.log(`case seek to time is ${mySteps[1]}`);
-                audioPlayer.seek(mySteps[1]);
+            case SEEK_STATE:
+                console.info(`case seek to time is ${mySteps[SECOND_INDEX]}`);
+                audioPlayer.seek(mySteps[SECOND_INDEX]);
                 break;
-            case VOLUMESTATE:
-                console.log(`case to setVolume`);
-                audioPlayer.setVolume(mySteps[1]);
+            case VOLUME_STATE:
+                console.info(`case to setVolume`);
+                audioPlayer.setVolume(mySteps[SECOND_INDEX]);
                 break;
-            case RELEASESTATE:
-                console.log(`case to release`);
+            case RELEASE_STATE:
+                console.info(`case to release`);
                 mySteps.shift();
                 audioPlayer.release();
-                nextStep(mySteps, done);
+                nextStep(mySteps);
                 break;
-            case LOOPSTATE:
-                loopValue = mySteps[1];
+            case LOOP_STATE:
+                loopValue = mySteps[SECOND_INDEX];
                 mySteps.shift();
                 mySteps.shift();
                 audioPlayer.loop = loopValue;
-                nextStep(mySteps, done);
+                nextStep(mySteps);
                 break;
             default:
                 break;
         }
     }
-    var setCallback = function(mySteps, done) {
-        console.log(`case setCallback`);
+
+    function setCallback(mySteps) {
+        console.info(`case setCallback`);
         audioPlayer.on('dataLoad', () => {
             mySteps.shift();
-            console.log(`case dataLoad called`);
+            console.info(`case dataLoad called`);
             expect(audioPlayer.currentTime).assertEqual(0);
             expect(audioPlayer.duration).assertEqual(DURATION_TIME);
             expect(audioPlayer.state).assertEqual('paused');
-            nextStep(mySteps, done);
+            nextStep(mySteps);
         });
 
         audioPlayer.on('play', () => {
             mySteps.shift();
-            console.log(`case play called`);
-            console.log(`case play currentTime is ${audioPlayer.currentTime}`);
+            console.info(`case play called`);
+            console.info(`case play currentTime is ${audioPlayer.currentTime}`);
             expect(audioPlayer.duration).assertEqual(DURATION_TIME);
-            if (mySteps[0] == FINISHSTATE) {
-                console.log(`case wait for finish`);
+            if (mySteps[0] == FINISH_STATE) {
+                console.info(`case wait for finish`);
                 return;
             }
             expect(audioPlayer.state).assertEqual('playing');
-            nextStep(mySteps, done);
+            nextStep(mySteps);
         });
 
         audioPlayer.on('pause', () => {
             mySteps.shift();
-            console.log(`case pause called`);
-            console.log(`case pause currentTime is ${audioPlayer.currentTime}`);
+            console.info(`case pause called`);
+            console.info(`case pause currentTime is ${audioPlayer.currentTime}`);
             expect(audioPlayer.duration).assertEqual(DURATION_TIME);
             expect(audioPlayer.state).assertEqual('paused');
-            nextStep(mySteps, done);
+            nextStep(mySteps);
         });
 
         audioPlayer.on('reset', () => {
             mySteps.shift();
-            console.log(`case reset called`);
+            console.info(`case reset called`);
             expect(audioPlayer.state).assertEqual('idle');
-            nextStep(mySteps, done);
+            nextStep(mySteps);
         });
 
         audioPlayer.on('stop', () => {
+            if (mySteps[0] == RESET_STATE) {
+                console.info(`case reset stop called`);
+                return;
+            }
             mySteps.shift();
-            console.log(`case stop called`);
+            console.info(`case stop called`);
             expect(audioPlayer.currentTime).assertEqual(0);
             expect(audioPlayer.duration).assertEqual(DURATION_TIME);
             expect(audioPlayer.state).assertEqual('stopped');
-            nextStep(mySteps, done);
+            nextStep(mySteps);
         });
 
         audioPlayer.on('timeUpdate', (seekDoneTime) => {
             if (typeof (seekDoneTime) == "undefined") {
-                console.log(`case seek filed,errcode is ${seekDoneTime}`);
+                console.info(`case seek filed,errcode is ${seekDoneTime}`);
+                return;
+            }
+            if (mySteps[0] != SEEK_STATE) {
                 return;
             }
             mySteps.shift();
             mySteps.shift();
-            console.log(`case seekDoneTime is ${seekDoneTime}`);
-            console.log(`case seek called`);
+            console.info(`case seekDoneTime is ${seekDoneTime}`);
+            console.info(`case seek called`);
             expect(audioPlayer.currentTime + DELTA_TIME).assertClose(seekDoneTime + DELTA_TIME, DELTA_TIME);
-            console.log(`case loop is ${audioPlayer.loop}`);
+            console.info(`case loop is ${audioPlayer.loop}`);
             if ((audioPlayer.loop == true) && (seekDoneTime == DURATION_TIME)) {
-                console.log('case loop is true');
-                sleep(PLAYSTATE);
+                console.info('case loop is true');
+                sleep(PLAY_STATE);
             }
-            if (seekDoneTime < audioPlayer.duration || audioPlayer.state == "paused") {
-                nextStep(mySteps, done);
+            if ((seekDoneTime < audioPlayer.duration) || (audioPlayer.state == "paused")) {
+                nextStep(mySteps);
             }
         });
 
         audioPlayer.on('volumeChange', () => {
-            console.log(`case setvolume called`);
+            console.info(`case setvolume called`);
             mySteps.shift();
             mySteps.shift();
             if (audioPlayer.state == "playing") {
                 sleep(PLAY_TIME);
             }
-            nextStep(mySteps, done);
+            nextStep(mySteps);
         });
 
         audioPlayer.on('finish', () => {
             mySteps.shift();
             expect(audioPlayer.state).assertEqual('stopped');
             expect(audioPlayer.currentTime).assertClose(audioPlayer.duration, DELTA_TIME);
-            console.log(`case finish called`);
-            nextStep(mySteps, done);
+            console.info(`case finish called`);
+            nextStep(mySteps);
         });
 
         audioPlayer.on('error', (err) => {
-            console.log(`case error called,errName is ${err.name}`);
-            console.log(`case error called,errCode is ${err.code}`);
-            console.log(`case error called,errMessage is ${err.message}`);
-            if ((mySteps[0] == SEEKSTATE) || (mySteps[0] == VOLUMESTATE)) {
-                expect(mySteps[2]).assertEqual(ERRORSTATE);
+            console.info(`case error called,errName is ${err.name}`);
+            console.info(`case error called,errCode is ${err.code}`);
+            console.info(`case error called,errMessage is ${err.message}`);
+            if ((mySteps[0] == SEEK_STATE) || (mySteps[0] == VOLUME_STATE)) {
                 mySteps.shift();
                 mySteps.shift();
                 mySteps.shift();
+                nextStep(mySteps);
+            } else if (mySteps[0] == ERROR_STATE) {
                 mySteps.shift();
-                nextStep(mySteps, done);
-            } else if (mySteps[0] == ERRORSTATE) {
-                mySteps.shift();
-                mySteps.shift();
-            } else if (mySteps[0] == ENDSTATE) {
-                console.log('case release player error');
+            } else if (mySteps[0] == END_STATE) {
+                console.info('case release player error');
             } else {
-                expect(mySteps[1]).assertEqual(ERRORSTATE);
                 mySteps.shift();
                 mySteps.shift();
-                mySteps.shift();
-                nextStep(mySteps, done);
+                nextStep(mySteps);
             }
         });
     };
 
     /* *
+        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Play_API_0100
+        * @tc.name      : 01.pause->play
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
+    */
+    it('SUB_MEDIA_PLAYER_AudioPlayer_Play_API_0100', 0, async function (done) {
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, END_STATE);
+        initAudioPlayer();
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
+    })
+
+    /* *
         * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Play_API_0200
-        * @tc.name      : 02.play操作在pause之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.name      : 02.stop->play
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
     it('SUB_MEDIA_PLAYER_AudioPlayer_Play_API_0200', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, PLAYSTATE, PAUSESTATE, PLAYSTATE, ENDSTATE);
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, PLAY_STATE, ERROR_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
     })
 
     /* *
         * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Play_API_0300
-        * @tc.name      : 03.play操作在stop之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.name      : 03.seek->play
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
     it('SUB_MEDIA_PLAYER_AudioPlayer_Play_API_0300', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, PLAYSTATE, STOPSTATE, PLAYSTATE, ERRORSTATE, PLAYERROR, ENDSTATE);
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, SEEK_TIME, PLAY_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
     })
 
     /* *
         * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Play_API_0400
-        * @tc.name      : 04.play操作在seek之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.name      : 04.reset->play
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
     it('SUB_MEDIA_PLAYER_AudioPlayer_Play_API_0400', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, PLAYSTATE, PAUSESTATE, SEEKSTATE, SEEK_TIME, PLAYSTATE, ENDSTATE);
+        let mySteps = new Array(SRC_STATE, RESET_STATE, PLAY_STATE, ERROR_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Play_API_0800
-        * @tc.name      : 08.play操作在reset之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
-    */
-    it('SUB_MEDIA_PLAYER_AudioPlayer_Play_API_0800', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, RESETSTATE, PLAYSTATE, ERRORSTATE, PLAYERROR, ENDSTATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Play_API_0900
-        * @tc.name      : 09.play操作在release之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
-    */
-    it('SUB_MEDIA_PLAYER_AudioPlayer_Play_API_0900', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, RELEASESTATE, PLAYSTATE, ERRORSTATE, PLAYERROR, ENDSTATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
     })
 
     /* *
         * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Pause_API_0100
-        * @tc.name      : 01.pause操作在createAudioPlayer之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.name      : 01.createAudioPlayer->play
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
     it('SUB_MEDIA_PLAYER_AudioPlayer_Pause_API_0100', 0, async function (done) {
-        var mySteps = new Array(PAUSESTATE, ERRORSTATE, PAUSEERROR, ENDSTATE);
+        let mySteps = new Array(PAUSE_STATE, ERROR_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps, done);
+        setCallback(mySteps);
         audioPlayer.pause();
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
     })
 
     /* *
         * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Pause_API_0200
-        * @tc.name      : 02.pause操作在play之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.name      : 02.play->pause
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
     it('SUB_MEDIA_PLAYER_AudioPlayer_Pause_API_0200', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, PLAYSTATE, PAUSESTATE, ENDSTATE);
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
     })
 
     /* *
         * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Pause_API_0300
-        * @tc.name      : 02.pause操作在stop之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.name      : 03.stop->pause
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
     it('SUB_MEDIA_PLAYER_AudioPlayer_Pause_API_0300', 0, async function (done) {
-        var mySteps = new Array(PLAYSTATE, STOPSTATE, PAUSESTATE, ERRORSTATE, PAUSEERROR, ENDSTATE);
+        let mySteps = new Array(PLAY_STATE, STOP_STATE, PAUSE_STATE, ERROR_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
     })
 
     /* *
         * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Pause_API_0400
-        * @tc.name      : 04.pause操作在seek之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.name      : 04.seek->pause
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
     it('SUB_MEDIA_PLAYER_AudioPlayer_Pause_API_0400', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, PLAYSTATE, SEEKSTATE, SEEK_TIME, PAUSESTATE, ENDSTATE);
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, SEEK_TIME, PAUSE_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
     })
 
+    /* *
+        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Stop_API_0100
+        * @tc.name      : 01.play->stop
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
+    */
+    it('SUB_MEDIA_PLAYER_AudioPlayer_Stop_API_0100', 0, async function (done) {
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, END_STATE);
+        initAudioPlayer();
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
+    })
 
     /* *
         * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Stop_API_0200
-        * @tc.name      : 02.stop操作在play之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.name      : 02.pause->stop
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
     it('SUB_MEDIA_PLAYER_AudioPlayer_Stop_API_0200', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, PLAYSTATE, STOPSTATE, ENDSTATE);
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, STOP_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
     })
 
     /* *
         * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Stop_API_0300
-        * @tc.name      : 03.stop操作在pause之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.name      : 03.seek->stop
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
     it('SUB_MEDIA_PLAYER_AudioPlayer_Stop_API_0300', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, PLAYSTATE, PAUSESTATE, STOPSTATE, ENDSTATE);
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, SEEK_TIME, STOP_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Stop_API_0400
-        * @tc.name      : 04.stop操作在seek之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Seek_API_0100
+        * @tc.name      : 01.play->seek
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AudioPlayer_Stop_API_0400', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, PLAYSTATE, SEEKSTATE, SEEK_TIME, STOPSTATE, ENDSTATE);
+    it('SUB_MEDIA_PLAYER_AudioPlayer_Seek_API_0100', 0, async function (done) {
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, SEEK_TIME, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
     })
 
     /* *
         * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Seek_API_0200
-        * @tc.name      : 02.seek操作在play之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.name      : 02.pause->seek
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
     it('SUB_MEDIA_PLAYER_AudioPlayer_Seek_API_0200', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, PLAYSTATE, SEEKSTATE, SEEK_TIME, ENDSTATE);
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, SEEK_TIME, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
+    })
+    /* *
+        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Seek_API_0300
+        * @tc.name      : 03.seek(0)
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
+    */
+    it('SUB_MEDIA_PLAYER_AudioPlayer_Seek_API_0300', 0, async function (done) {
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, 0, END_STATE);
+        initAudioPlayer();
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Seek_API_0300
-        * @tc.name      : 03.seek操作在pause之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Reset_API_0100
+        * @tc.name      : 01.play->reset
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AudioPlayer_Seek_API_0300', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, PLAYSTATE, PAUSESTATE, SEEKSTATE, SEEK_TIME, ENDSTATE);
+    it('SUB_MEDIA_PLAYER_AudioPlayer_Reset_API_0100', 0, async function (done) {
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
-    })
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Seek_API_0900
-        * @tc.name      : 9.seek到起始位置(0)
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
-    */
-    it('SUB_MEDIA_PLAYER_AudioPlayer_Seek_API_0900', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, PLAYSTATE, SEEKSTATE, 0, ENDSTATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
     })
 
     /* *
         * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Reset_API_0200
-        * @tc.name      : 02.reset操作在play之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.name      : 02.pause->reset
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
     it('SUB_MEDIA_PLAYER_AudioPlayer_Reset_API_0200', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, PLAYSTATE, RESETSTATE, ENDSTATE);
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Reset_API_0300
-        * @tc.name      : 03.reset操作在pause之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_SetVolume_API_0100
+        * @tc.name      : 01.createAudioPlayer->setVolume
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AudioPlayer_Reset_API_0300', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, PLAYSTATE, PAUSESTATE, RESETSTATE, ENDSTATE);
+    it('SUB_MEDIA_PLAYER_AudioPlayer_SetVolume_API_0100', 0, async function (done) {
+        var mySteps = new Array(VOLUME_STATE, VOLUME_VALUE, ERROR_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
+        setCallback(mySteps);
+        audioPlayer.setVolume(VOLUME_VALUE);
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
+    })
+    /* *
+        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_SetVolume_API_0200
+        * @tc.name      : 02.play->setVolume
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
+    */
+    it('SUB_MEDIA_PLAYER_AudioPlayer_SetVolume_API_0200', 0, async function (done) {
+        var mySteps = new Array(SRC_STATE, PLAY_STATE, VOLUME_STATE, VOLUME_VALUE, END_STATE);
+        initAudioPlayer();
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
+    })
+    /* *
+        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_SetVolume_API_0300
+        * @tc.name      : 03.pause->setVolume
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
+    */
+    it('SUB_MEDIA_PLAYER_AudioPlayer_SetVolume_API_0300', 0, async function (done) {
+        var mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, VOLUME_STATE, VOLUME_VALUE, END_STATE);
+        initAudioPlayer();
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Release_API_0100
+        * @tc.name      : 01.play->release
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
+    */
+    it('SUB_MEDIA_PLAYER_AudioPlayer_Release_API_0100', 0, async function (done) {
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, RELEASE_STATE, END_STATE);
+        initAudioPlayer();
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
     })
 
     /* *
         * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Release_API_0200
-        * @tc.name      : 02.release操作在play之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.name      : 02.pause->release
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
     it('SUB_MEDIA_PLAYER_AudioPlayer_Release_API_0200', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, PLAYSTATE, RELEASESTATE, ENDSTATE);
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, RELEASE_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
     })
 
     /* *
         * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Release_API_0300
-        * @tc.name      : 03.release操作在pause之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.name      : 03.stop->release
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
     it('SUB_MEDIA_PLAYER_AudioPlayer_Release_API_0300', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, PLAYSTATE, PAUSESTATE, RELEASESTATE, ENDSTATE);
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
     })
 
     /* *
         * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Release_API_0400
-        * @tc.name      : 04.release操作在stop之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.name      : 04.seek->release
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
     it('SUB_MEDIA_PLAYER_AudioPlayer_Release_API_0400', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, PLAYSTATE, STOPSTATE, RELEASESTATE, ENDSTATE);
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, SEEK_TIME, RELEASE_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Release_API_0500
-        * @tc.name      : 05.release操作在seek之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Release_API_0400
+        * @tc.name      : 05.reset->release
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AudioPlayer_Release_API_0500', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, PLAYSTATE, SEEKSTATE, SEEK_TIME, RELEASESTATE, ENDSTATE);
+    it('SUB_MEDIA_PLAYER_AudioPlayer_Release_API_0400', 0, async function (done) {
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, RESET_STATE, RELEASE_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Release_API_0700
-        * @tc.name      : 07.release操作在reset之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
-    */
-    it('SUB_MEDIA_PLAYER_AudioPlayer_Release_API_0700', 0, async function (done) {
-        var mySteps = new Array(SRCSTATE, PLAYSTATE, RESETSTATE, RELEASESTATE, ENDSTATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = audioSource;
+        setCallback(mySteps);
+        audioPlayer.src = Audio_SOURCE;
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect(isTimeOut).assertTrue();
+            }
+            done();
+        }, TIME_OUT);
     })
 
     /* *
         * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Time_API_0100
-        * @tc.name      : 01.获取参数操作在createAudioPlayer之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.name      : 01.get parameters after createAudioPlayer
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
     it('SUB_MEDIA_PLAYER_AudioPlayer_Time_API_0100', 0, async function (done) {
         initAudioPlayer();
@@ -580,17 +778,17 @@ describe('PlayerLocalTestAudioAPI', function () {
 
     /* *
         * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Time_API_0200
-        * @tc.name      : 02.获取参数操作在setsrc之后
-        * @tc.desc      :
-        * @tc.size      : MEDIUM
-        * @tc.type      : API Test
-        * @tc.level     : Level 2
+        * @tc.name      : 02.get parameters after src
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
     */
     it('SUB_MEDIA_PLAYER_AudioPlayer_Time_API_0200', 0, async function (done) {
         initAudioPlayer();
-        audioPlayer.src = audioSource;
+        audioPlayer.src = Audio_SOURCE;
         sleep(PLAY_TIME);
-        expect(audioPlayer.src).assertEqual(audioSource);
+        expect(audioPlayer.src).assertEqual(Audio_SOURCE);
         expect(audioPlayer.currentTime).assertEqual(0);
         expect(audioPlayer.duration).assertEqual(DURATION_TIME);
         expect(audioPlayer.state).assertEqual('paused');
