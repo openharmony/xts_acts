@@ -98,7 +98,7 @@ describe('TimeTest', function() {
         systemTime.setTime(-1, (error, data) => {
             console.log("setTime ===data: " + data);
             console.log("setTime ===error: " + error);
-        })catch(error=> {
+        }).catch(error=> {
             execpt(0).assertLarger(1)
         })
         console.log('SUB_systemTime_setTime_JS_API_0400 end');
