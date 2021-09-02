@@ -23,7 +23,6 @@ group("distributeddatamgr") {
     deps = [
       "appdatamgrtest/hap:appdatamgrfunctest_hap",
       "distributeddatamgrtest/hap:distributeddatamgrfunctest_hap",
-      "distributedfiletest/hap:distributedfilefunctest_hap",
       "searchtest/hap:searchfunctest_hap",
     ]
   }

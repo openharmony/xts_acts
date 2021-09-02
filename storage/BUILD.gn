@@ -19,10 +19,11 @@ group("storage") {
       "storagefileconcurrentjstest:storagefileconcurrent_js_test",
       "storagefileioerrorjstest:storagefileioerror_js_test",
       "storagefileiojstest:storagefileio_js_test",
-      "storagefileioperformancejstest:storagefileioperformance_js_test",
-      "storagefileioreliabilityjstest:storagefileioreliability_js_test",
-      "storagefileiostabilityjstest:storagefileiostability_js_test",
-      "storagefilestabilityjstest:storagefilestability_js_test",
+
+      # "storagefileioperformancejstest:storagefileioperformance_js_test",
+      # "storagefileioreliabilityjstest:storagefileioreliability_js_test",
+      # "storagefileiostabilityjstest:storagefileiostability_js_test",
+      # "storagefilestabilityjstest:storagefilestability_js_test",
     ]
   }
 }
