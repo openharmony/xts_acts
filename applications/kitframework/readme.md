@@ -70,7 +70,9 @@ Hi3861芯片平台可能需要修改为：`"//vendor/hisilicon/hi3861/hals/utils
 如果是asr平台，需修改device/asr/asr582x/BUILD.gn：搜索`asr582x_xts_enable`，在`ldflags`里面增加一行： `"-lmodule_ActsKitFwkApiTest"`
 
 ### 第四步
-请确保这个提交已合入当前工程：[https://gitee.com/openharmony/xts_tools/commit/b41caca330471816a18ac24a49f955ad761b2e23](https://gitee.com/openharmony/xts_tools/commit/b41caca330471816a18ac24a49f955ad761b2e23)
+请确保下面的修改已合入当前工程：   
+[https://gitee.com/openharmony/xts_tools/commit/b41caca330471816a18ac24a49f955ad761b2e23](https://gitee.com/openharmony/xts_tools/commit/b41caca330471816a18ac24a49f955ad761b2e23)
+[https://gitee.com/openharmony/xts_tools/commit/9b3ecb0c6f2605151bd1fe22a4a8e57b67c6e17b](https://gitee.com/openharmony/xts_tools/commit/9b3ecb0c6f2605151bd1fe22a4a8e57b67c6e17b)
 
 ### 第五步
 编译，刷机，运行看日志
