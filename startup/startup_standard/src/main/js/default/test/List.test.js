@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-require('./DeviceInfoJsApi.test.js')
-require('./ParametersJsApi.test.js')
+require('./DeviceInfoJsUnit.test.js')
+require('./ParametersJsUnit.test.js')
 
 
 
