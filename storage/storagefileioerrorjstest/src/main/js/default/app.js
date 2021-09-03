@@ -13,25 +13,11 @@
  * limitations under the License.
  */
 
-import app from '@system.app'
-
-import {Core} from 'deccjsunit/index'
 export default {
-   data: {
-       title: ''
+  onCreate() {
+    console.info('ohos.acts.distributeddatamgr.distributedfile onCreate');
   },
-  onInit() {
-    this.title = this.$t('strings.world');
-  },
-  onShow() {
-    console.info('onShow finish')
-    const core = Core.getInstance()
-    core.init()
-    const configService = core.getDefaultService('config')
-    configService.setConfig(this)
-    require('../../test/List.test')
-    core.execute()
-  },
-  onReady() {
-  },
-}
+  onDestroy() {
+    console.info('ohos.acts.distributeddatamgr.distributedfile onCreate');
+  }
+};

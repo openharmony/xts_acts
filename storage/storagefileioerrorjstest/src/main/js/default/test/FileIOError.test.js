@@ -104,7 +104,8 @@ describe('FileIOError', function () {
   /**
    * @tc.number SUB_STORAGE_FileIo_test_error_0400
    * @tc.name FileIo_test_error_004
-   * @tc.desc Function of API, When the disk space is full, verify synchronization and write the buffer data back to the disk for data synchronization
+   * @tc.desc Function of API, When the disk space is full,
+   *  verify synchronization and write the buffer data back to the disk for data synchronization
    */
   it('FileIo_test_error_004', 0, function () {
     let fpath = nextFileName('fileio_test_error_004');
