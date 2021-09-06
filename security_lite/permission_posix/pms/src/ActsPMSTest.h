@@ -44,6 +44,8 @@
 #define TEST_APP_SHORT "a"
 #define TEST_APP_LONG "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 #define TEST_APP_PATH "/storage/app/etc/permissions/com.permission.test"
+#define TEST_APP_INVALID "com.permission.!@#$%^&*()_+"
+#define TEST_APP_NOT_EXIST "com.permission.onetwothree"
 #define PERMISSION_UNDEFINED "ohos.permission.TEST"
 #define PERMISSION_TOOLONG "ohos.permission.balabalabalabalabalabalabalabalabalabala"
 #define PERMISSION_EMPTY ""
@@ -65,6 +67,8 @@ const int MAX_PID = 0x7fffffff;
 const int MIN_PID = 0;
 const int ABNORMAL_PKG_NUM = 5;
 const int DIR_MODE = 777;
+const int FLAG_NOT_EXIST=123;
+const int PERFORMANCE_RUN_TIMES=10000;
 
 int IsUserGrant(const char* pname);
 
