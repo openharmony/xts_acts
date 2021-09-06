@@ -645,7 +645,7 @@ OpenHarmony支持如下几种系统类型：
 
 ### JS语言用例编译打包指导（适用于标准系统）<a name="section445519106559"></a>
 
-hap包编译请参考[标准系统js应用开发指导](https://developer.harmonyos.com/cn/docs/documentation/doc-guides/build_overview-0000001055075201)。
+hap包编译请参考 [标准系统 JS用例源码编译Hap包指导](https://gitee.com/openharmony/xts_acts/wikis/%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9F%20JS%E7%94%A8%E4%BE%8B%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91Hap%E5%8C%85%E6%8C%87%E5%AF%BC%20?sort_id=4427112)。
 
 ### 全量编译指导（适用于标准系统）<a name="section159801435165220"></a>
 
