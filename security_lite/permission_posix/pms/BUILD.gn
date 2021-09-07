@@ -25,7 +25,7 @@ hcpptest_suite("ActsPMSTest") {
     "src/ActsPMSSaveTest.cpp",
     "src/ActsPMSTest.h",
     "src/ActsPMSUnloadTest.cpp",
-    "src/ActsPMSUpdatePermissionTest.cpp"
+    "src/ActsPMSUpdatePermissionTest.cpp",
   ]
 
   include_dirs = [
