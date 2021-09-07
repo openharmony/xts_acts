@@ -16,7 +16,7 @@ import("//build/lite/config/subsystem/graphic/config.gni")
 import("//build/lite/ndk/ndk.gni")
 import("//test/xts/tools/lite/build/suite_lite.gni")
 
-hcpptest_suite("ActsUiInterfaceTest1") {
+hcpptest_suite("ActsGraphicInterfaceTest") {
   suite_name = "acts"
   if (enable_graphic_font) {
     sources = [
