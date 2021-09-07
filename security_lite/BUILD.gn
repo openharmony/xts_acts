@@ -14,6 +14,7 @@
 group("securitytest") {
   deps = [
     #"//test/xts/acts/security_lite/huks_posix:ActsSecurityDataTest",
+    "//test/xts/acts/security_lite/huks/liteos_a_adapter:Hukslitetest",
     "//test/xts/acts/security_lite/permission_posix/capability:ActsCapabilityTest",
     "//test/xts/acts/security_lite/permission_posix/dac:ActsDacTest",
   ]
