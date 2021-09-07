@@ -69,6 +69,7 @@ const int ABNORMAL_PKG_NUM = 5;
 const int DIR_MODE = 777;
 const int FLAG_NOT_EXIST=123;
 const int PERFORMANCE_RUN_TIMES=10000;
+const int MILLISECOND=1000;
 
 int IsUserGrant(const char* pname);
 

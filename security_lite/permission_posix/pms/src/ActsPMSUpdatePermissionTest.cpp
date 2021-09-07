@@ -93,7 +93,7 @@ long GetCurrentTimeMillis()
 {
     struct timeval current;
     gettimeofday(&current,NULL);
-    return current.tv_sec*1000+current.tv_usec/1000;
+    return current.tv_sec*MILLISECOND+current.tv_usec/MILLISECOND;
 }
 
 /**
@@ -101,8 +101,7 @@ long GetCurrentTimeMillis()
  * @tc.name       Update permission flags
  * @tc.desc       [C- SECURITY -1000]
  */
-HWTEST_F(ActsPMSUpdatePermissionTest,testSecPMUpdatePMFlags_001,
-    Function | MediumTest | Level2)
+HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_001, Function | MediumTest | Level2)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
@@ -133,8 +132,7 @@ HWTEST_F(ActsPMSUpdatePermissionTest,testSecPMUpdatePMFlags_001,
  * @tc.name       Update permission flags (No reminds after rejection)
  * @tc.desc       [C- SECURITY -1000]
  */
-HWTEST_F(ActsPMSUpdatePermissionTest,testSecPMUpdatePMFlags_002,
-    Function | MediumTest | Level2)
+HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_002, Function | MediumTest | Level2)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
@@ -165,8 +163,7 @@ HWTEST_F(ActsPMSUpdatePermissionTest,testSecPMUpdatePMFlags_002,
  * @tc.name       Update permission flags (Name does not exist)
  * @tc.desc       [C- SECURITY -1000]
  */
-HWTEST_F(ActsPMSUpdatePermissionTest,testSecPMUpdatePMFlags_003,
-    Function | MediumTest | Level2)
+HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_003, Function | MediumTest | Level2)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
@@ -202,8 +199,7 @@ HWTEST_F(ActsPMSUpdatePermissionTest,testSecPMUpdatePMFlags_003,
  * @tc.name       Update permission flags (Name empty)
  * @tc.desc       [C- SECURITY -1000]
  */
-HWTEST_F(ActsPMSUpdatePermissionTest,testSecPMUpdatePMFlags_004,
-    Function | MediumTest | Level2)
+HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_004, Function | MediumTest | Level2)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
@@ -239,8 +235,7 @@ HWTEST_F(ActsPMSUpdatePermissionTest,testSecPMUpdatePMFlags_004,
  * @tc.name       Update permission flags (Name invalid)
  * @tc.desc       [C- SECURITY -1000]
  */
-HWTEST_F(ActsPMSUpdatePermissionTest,testSecPMUpdatePMFlags_005,
-    Function | MediumTest | Level2)
+HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_005, Function | MediumTest | Level2)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
@@ -272,8 +267,7 @@ HWTEST_F(ActsPMSUpdatePermissionTest,testSecPMUpdatePMFlags_005,
  * @tc.name       Updatepermissionflags interface stability test
  * @tc.desc       [C- SECURITY -1000]
  */
-HWTEST_F(ActsPMSUpdatePermissionTest,testSecPMUpdatePMFlags_006,
-    Function | MediumTest | Level2)
+HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_006, Function | MediumTest | Level2)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
@@ -305,8 +299,7 @@ HWTEST_F(ActsPMSUpdatePermissionTest,testSecPMUpdatePMFlags_006,
  * @tc.name       Updatepermissionflags interface performace test
  * @tc.desc       [C- SECURITY -1000]
  */
-HWTEST_F(ActsPMSUpdatePermissionTest,testSecPMUpdatePMFlags_007,
-    Function | MediumTest | Level2)
+HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_007, Function | MediumTest | Level2)
 {
 SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
