@@ -13,7 +13,7 @@
 
 group("uikit_test1") {
   deps = [
-    "//test/xts/acts/graphic_lite/graphic_utils/a:ActsUiInterfaceTest1",
+    "//test/xts/acts/graphic_lite/graphic_utils/a:ActsGraphicInterfaceTest",
     "//test/xts/acts/graphic_lite/graphic_utils/color_posix:ActsColorTest",
     "//test/xts/acts/graphic_lite/graphic_utils/geometry2d_posix:ActsGeometyr2dTest",
     "//test/xts/acts/graphic_lite/graphic_utils/graphic_math_posix:ActsGraphicMathTest",
