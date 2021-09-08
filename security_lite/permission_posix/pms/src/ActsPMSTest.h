@@ -38,20 +38,20 @@
 #include "service.h"
 #include "samgr_lite.h"
 
-const char TEST_APP_ID[] = "com.permission.test";
-const char TEST_APP_ID2[] = "com.permission.test2";
-const char SUBTEST_APP_ID[] = "com.permission.subtest";
-const char TEST_APP_SHORT[] = "a";
-const char TEST_APP_LONG[] = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-const char TEST_APP_PATH[] = "/storage/app/etc/permissions/com.permission.test";
-const char TEST_APP_INVALID[] = "com.permission.!@#$%^&*()_+";
-const char TEST_APP_NOT_EXIST[] = "com.permission.onetwothree";
-const char PERMISSION_UNDEFINED[] = "ohos.permission.TEST";
-const char PERMISSION_TOOLONG[] = "ohos.permission.balabalabalabalabalabalabalabalabalabala";
-const char PERMISSION_EMPTY[] = "";
-const char PERMISSION_UNSUPPORTED[] = "!@#$%^&*()_+";
-const char ETC_PREFIX[] = "/storage/app/etc";
-const char PERMISSION_PREFIX[] = "/storage/app/etc/permissions";
+#define TEST_APP_ID "com.permission.test"
+#define TEST_APP_ID2 "com.permission.test2"
+#define SUBTEST_APP_ID "com.permission.subtest"
+#define TEST_APP_SHORT "a"
+#define TEST_APP_LONG "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+#define TEST_APP_PATH "/storage/app/etc/permissions/com.permission.test"
+#define TEST_APP_INVALID "com.permission.!@#$%^&*()_+"
+#define TEST_APP_NOT_EXIST "com.permission.onetwothree"
+#define PERMISSION_UNDEFINED "ohos.permission.TEST"
+#define PERMISSION_TOOLONG "ohos.permission.balabalabalabalabalabalabalabalabalabala"
+#define PERMISSION_EMPTY ""
+#define PERMISSION_UNSUPPORTED "!@#$%^&*()_+"
+#define ETC_PREFIX "/storage/app/etc"
+#define PERMISSION_PREFIX "/storage/app/etc/permissions"
 
 const int SLEEP_TIME = 5;
 const int TEST_TASKID = 1000;
