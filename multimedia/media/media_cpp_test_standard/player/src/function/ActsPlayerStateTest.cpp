@@ -1107,7 +1107,6 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_2900, Function |
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time_before));
     sleep(PLAYING_TIME);
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time_after));
-    // EXPECT_GE(time_after - time_before, PLAYING_TIME * 1000);
     EXPECT_EQ(RET_OK, player->Play());
     EXPECT_EQ(RET_OK, testCallback->WaitForState(PLAYER_PLAYBACK_COMPLETE));
     EXPECT_EQ(RET_OK, player->Reset());
