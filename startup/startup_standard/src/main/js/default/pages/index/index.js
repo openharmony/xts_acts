@@ -14,6 +14,10 @@
  */
 
 import {Core} from 'deccjsunit/lite'
+
+const injectRef = Object.getPrototypeOf(global) || global
+injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
+
 const core = Core.getInstance()
 core.init()
 require('../../test/List.test.js')
