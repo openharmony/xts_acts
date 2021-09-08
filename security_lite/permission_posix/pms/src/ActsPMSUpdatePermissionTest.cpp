@@ -14,7 +14,7 @@
  */
 
 #include "ActsPMSTest.h"
-#include<sys/time.h>
+#include <sys/time.h>
 
 using namespace std;
 using namespace testing::ext;
@@ -68,13 +68,14 @@ static PermissionTrans g_systemPers[] = {
     },
 };
 
-class ActsPMSUpdatePermissionTest:public testing::Test{
+class ActsPMSUpdatePermissionTest : public testing::Test
+{
 protected:
     static void SetUpTestCase(void)
     {
         CreateAppDir();
         IUnknown *iUnknown = SAMGR_GetInstance()->GetFeatureApi(PERMISSION_SERVICE, PERM_INNER);
-        iUnknown->QueryInterface(iUnknown, DEFAULT_VERSION, (void **) &g_interface);
+        iUnknown->QueryInterface(iUnknown, DEFAULT_VERSION, (void **)&g_interface);
         setuid(0);
     }
     static void TearDownTestCase(void) {}
@@ -92,8 +93,8 @@ protected:
 long GetCurrentTimeMillis()
 {
     struct timeval current;
-    gettimeofday(&current,NULL);
-    return current.tv_sec*MILLISECOND+current.tv_usec/MILLISECOND;
+    gettimeofday(&current, NULL);
+    return current.tv_sec * MILLISECOND + current.tv_usec / MILLISECOND;
 }
 
 /**
@@ -105,22 +106,23 @@ HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_001, Function | Med
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
-    PermissionSaved *permissions=NULL;
-    int permNum=0;
-    int ret=g_interface->QueryPermission(TEST_APP_ID,&permissions,&permNum);
-    EXPECT_EQ(ret,PERM_ERRORCODE_SUCCESS)<<"query ret="<<ret<<endl;
-    EXPECT_EQ(permNum,SYS_PERM_NUM)<<"permNum ="<<permNum<<endl;
-    if(permissions!=NULL){
-        EXPECT_EQ(permissions[0].flags,PMS_FLAG_DEFAULT)<<"flags ="<<permissions[0].flags<<endl;
+    PermissionSaved *permissions = NULL;
+    int permNum = 0;
+    int ret = g_interface->QueryPermission(TEST_APP_ID, &permissions, &permNum);
+    EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "query ret=" << ret << endl;
+    EXPECT_EQ(permNum, SYS_PERM_NUM) << "permNum =" << permNum << endl;
+    if (permissions != NULL)
+    {
+        EXPECT_EQ(permissions[0].flags, PMS_FLAG_DEFAULT) << "flags =" << permissions[0].flags << endl;
     }
     ClrPers(permissions);
 
-    ret=g_interface->UpdatePermissionFlags(TEST_APP_ID,g_systemPers[0].name,PMS_FLAG_DEFAULT);
-    EXPECT_EQ(ret,PERM_ERRORCODE_SUCCESS)<<"update perms flag ret ="<<ret<<endl;
+    ret = g_interface->UpdatePermissionFlags(TEST_APP_ID, g_systemPers[0].name, PMS_FLAG_DEFAULT);
+    EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "update perms flag ret =" << ret << endl;
 
-    ret=g_interface->QueryPermission(TEST_APP_ID,&permissions,&permNum);
-    EXPECT_EQ(ret,PERM_ERRORCODE_SUCCESS)<<"query ret="<<ret<<endl;
-    EXPECT_EQ(permNum,SYS_PERM_NUM)<<"permNum ="<<permNum<<endl;
+    ret = g_interface->QueryPermission(TEST_APP_ID, &permissions, &permNum);
+    EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "query ret=" << ret << endl;
+    EXPECT_EQ(permNum, SYS_PERM_NUM) << "permNum =" << permNum << endl;
     ClrPers(permissions);
 
     UnLoadPermissions(TEST_TASKID);
@@ -136,22 +138,23 @@ HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_002, Function | Med
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
-    PermissionSaved *permissions=NULL;
-    int permNum=0;
-    int ret=g_interface->QueryPermission(TEST_APP_ID,&permissions,&permNum);
-    EXPECT_EQ(ret,PERM_ERRORCODE_SUCCESS)<<"query ret="<<ret<<endl;
-    EXPECT_EQ(permNum,SYS_PERM_NUM)<<"permNum ="<<permNum<<endl;
-    if(permissions!=NULL){
-        EXPECT_EQ(permissions[0].flags,PMS_FLAG_DEFAULT)<<"flags ="<<permissions[0].flags<<endl;
+    PermissionSaved *permissions = NULL;
+    int permNum = 0;
+    int ret = g_interface->QueryPermission(TEST_APP_ID, &permissions, &permNum);
+    EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "query ret=" << ret << endl;
+    EXPECT_EQ(permNum, SYS_PERM_NUM) << "permNum =" << permNum << endl;
+    if (permissions != NULL)
+    {
+        EXPECT_EQ(permissions[0].flags, PMS_FLAG_DEFAULT) << "flags =" << permissions[0].flags << endl;
     }
     ClrPers(permissions);
 
-    ret=g_interface->UpdatePermissionFlags(TEST_APP_ID,g_systemPers[0].name,PMS_FLAG_USER_FIXED);
-    EXPECT_EQ(ret,PERM_ERRORCODE_SUCCESS)<<"update perms flag ret ="<<ret<<endl;
+    ret = g_interface->UpdatePermissionFlags(TEST_APP_ID, g_systemPers[0].name, PMS_FLAG_USER_FIXED);
+    EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "update perms flag ret =" << ret << endl;
 
-    ret=g_interface->QueryPermission(TEST_APP_ID,&permissions,&permNum);
-    EXPECT_EQ(ret,PERM_ERRORCODE_SUCCESS)<<"query ret="<<ret<<endl;
-    EXPECT_EQ(permNum,SYS_PERM_NUM)<<"permNum ="<<permNum<<endl;
+    ret = g_interface->QueryPermission(TEST_APP_ID, &permissions, &permNum);
+    EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "query ret=" << ret << endl;
+    EXPECT_EQ(permNum, SYS_PERM_NUM) << "permNum =" << permNum << endl;
     ClrPers(permissions);
 
     UnLoadPermissions(TEST_TASKID);
@@ -167,27 +170,28 @@ HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_003, Function | Med
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
-    PermissionSaved *permissions=NULL;
-    int permNum=0;
-    int ret=g_interface->QueryPermission(TEST_APP_ID,&permissions,&permNum);
-    EXPECT_EQ(ret,PERM_ERRORCODE_SUCCESS)<<"query ret="<<ret<<endl;
-    EXPECT_EQ(permNum,SYS_PERM_NUM)<<"permNum ="<<permNum<<endl;
-    if(permissions!=NULL){
-        EXPECT_EQ(permissions[0].flags,PMS_FLAG_DEFAULT)<<"flags ="<<permissions[0].flags<<endl;
+    PermissionSaved *permissions = NULL;
+    int permNum = 0;
+    int ret = g_interface->QueryPermission(TEST_APP_ID, &permissions, &permNum);
+    EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "query ret=" << ret << endl;
+    EXPECT_EQ(permNum, SYS_PERM_NUM) << "permNum =" << permNum << endl;
+    if (permissions != NULL)
+    {
+        EXPECT_EQ(permissions[0].flags, PMS_FLAG_DEFAULT) << "flags =" << permissions[0].flags << endl;
     }
     ClrPers(permissions);
 
-    //pkg name not exist
-    ret=g_interface->UpdatePermissionFlags(TEST_APP_NOT_EXIST,g_systemPers[0].name,PMS_FLAG_USER_FIXED);
-    EXPECT_EQ(ret,PERM_ERRORCODE_FILE_NOT_EXIST)<<"update perms flag ret ="<<ret<<endl;
+    // pkg name not exist
+    ret = g_interface->UpdatePermissionFlags(TEST_APP_NOT_EXIST, g_systemPers[0].name, PMS_FLAG_USER_FIXED);
+    EXPECT_EQ(ret, PERM_ERRORCODE_FILE_NOT_EXIST) << "update perms flag ret =" << ret << endl;
 
-    //pkg perm not exist
-    ret=g_interface->UpdatePermissionFlags(TEST_APP_ID,PERMISSION_UNDEFINED,PMS_FLAG_USER_FIXED);
-    EXPECT_EQ(ret,PERM_ERRORCODE_SUCCESS)<<"update perms flag ret ="<<ret<<endl;
+    // pkg perm not exist
+    ret = g_interface->UpdatePermissionFlags(TEST_APP_ID, PERMISSION_UNDEFINED, PMS_FLAG_USER_FIXED);
+    EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "update perms flag ret =" << ret << endl;
 
-    //pkg flag not exist
-    ret=g_interface->UpdatePermissionFlags(TEST_APP_ID,g_systemPers[0].name,FLAG_NOT_EXIST);
-    EXPECT_EQ(ret,PERM_ERRORCODE_INVALID_PARAMS)<<"update perms flag ret ="<<ret<<endl;
+    // pkg flag not exist
+    ret = g_interface->UpdatePermissionFlags(TEST_APP_ID, g_systemPers[0].name, FLAG_NOT_EXIST);
+    EXPECT_EQ(ret, PERM_ERRORCODE_INVALID_PARAMS) << "update perms flag ret =" << ret << endl;
     ClrPers(permissions);
 
     UnLoadPermissions(TEST_TASKID);
@@ -203,27 +207,28 @@ HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_004, Function | Med
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
-    PermissionSaved *permissions=NULL;
-    int permNum=0;
-    int ret=g_interface->QueryPermission(TEST_APP_ID,&permissions,&permNum);
-    EXPECT_EQ(ret,PERM_ERRORCODE_SUCCESS)<<"query ret="<<ret<<endl;
-    EXPECT_EQ(permNum,SYS_PERM_NUM)<<"permNum ="<<permNum<<endl;
-    if(permissions!=NULL){
-        EXPECT_EQ(permissions[0].flags,PMS_FLAG_DEFAULT)<<"flags ="<<permissions[0].flags<<endl;
+    PermissionSaved *permissions = NULL;
+    int permNum = 0;
+    int ret = g_interface->QueryPermission(TEST_APP_ID, &permissions, &permNum);
+    EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "query ret=" << ret << endl;
+    EXPECT_EQ(permNum, SYS_PERM_NUM) << "permNum =" << permNum << endl;
+    if (permissions != NULL)
+    {
+        EXPECT_EQ(permissions[0].flags, PMS_FLAG_DEFAULT) << "flags =" << permissions[0].flags << endl;
     }
     ClrPers(permissions);
 
-    //pkg name empty
-    ret=g_interface->UpdatePermissionFlags(NULL,g_systemPers[0].name,PMS_FLAG_USER_FIXED);
-    EXPECT_EQ(ret,PERM_ERRORCODE_INVALID_PARAMS)<<"update perms flag ret ="<<ret<<endl;
+    // pkg name empty
+    ret = g_interface->UpdatePermissionFlags(NULL, g_systemPers[0].name, PMS_FLAG_USER_FIXED);
+    EXPECT_EQ(ret, PERM_ERRORCODE_INVALID_PARAMS) << "update perms flag ret =" << ret << endl;
 
-    //pkg perm empty
-    ret=g_interface->UpdatePermissionFlags(TEST_APP_ID,NULL,PMS_FLAG_USER_FIXED);
-    EXPECT_EQ(ret,PERM_ERRORCODE_INVALID_PARAMS)<<"update perms flag ret ="<<ret<<endl;
+    // pkg perm empty
+    ret = g_interface->UpdatePermissionFlags(TEST_APP_ID, NULL, PMS_FLAG_USER_FIXED);
+    EXPECT_EQ(ret, PERM_ERRORCODE_INVALID_PARAMS) << "update perms flag ret =" << ret << endl;
 
-    //pkg flag empty
-    ret=g_interface->UpdatePermissionFlags(TEST_APP_ID,g_systemPers[0].name,NULL);
-    EXPECT_EQ(ret,PERM_ERRORCODE_SUCCESS)<<"update perms flag ret ="<<ret<<endl;
+    // pkg flag empty
+    ret = g_interface->UpdatePermissionFlags(TEST_APP_ID, g_systemPers[0].name, NULL);
+    EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "update perms flag ret =" << ret << endl;
     ClrPers(permissions);
 
     UnLoadPermissions(TEST_TASKID);
@@ -239,23 +244,24 @@ HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_005, Function | Med
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
-    PermissionSaved *permissions=NULL;
-    int permNum=0;
-    int ret=g_interface->QueryPermission(TEST_APP_ID,&permissions,&permNum);
-    EXPECT_EQ(ret,PERM_ERRORCODE_SUCCESS)<<"query ret="<<ret<<endl;
-    EXPECT_EQ(permNum,SYS_PERM_NUM)<<"permNum ="<<permNum<<endl;
-    if(permissions!=NULL){
-        EXPECT_EQ(permissions[0].flags,PMS_FLAG_DEFAULT)<<"flags ="<<permissions[0].flags<<endl;
+    PermissionSaved *permissions = NULL;
+    int permNum = 0;
+    int ret = g_interface->QueryPermission(TEST_APP_ID, &permissions, &permNum);
+    EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "query ret=" << ret << endl;
+    EXPECT_EQ(permNum, SYS_PERM_NUM) << "permNum =" << permNum << endl;
+    if (permissions != NULL)
+    {
+        EXPECT_EQ(permissions[0].flags, PMS_FLAG_DEFAULT) << "flags =" << permissions[0].flags << endl;
     }
     ClrPers(permissions);
 
-    //pkg name invalid
-    ret=g_interface->UpdatePermissionFlags(TEST_APP_INVALID,g_systemPers[0].name,PMS_FLAG_USER_FIXED);
-    EXPECT_EQ(ret,PERM_ERRORCODE_FILE_NOT_EXIST)<<"update perms flag ret ="<<ret<<endl;
+    // pkg name invalid
+    ret = g_interface->UpdatePermissionFlags(TEST_APP_INVALID, g_systemPers[0].name, PMS_FLAG_USER_FIXED);
+    EXPECT_EQ(ret, PERM_ERRORCODE_FILE_NOT_EXIST) << "update perms flag ret =" << ret << endl;
 
-    //pkg perm invalid
-    ret=g_interface->UpdatePermissionFlags(TEST_APP_ID,PERMISSION_UNSUPPORTED,PMS_FLAG_USER_FIXED);
-    EXPECT_EQ(ret,PERM_ERRORCODE_SUCCESS)<<"update perms flag ret ="<<ret<<endl;
+    // pkg perm invalid
+    ret = g_interface->UpdatePermissionFlags(TEST_APP_ID, PERMISSION_UNSUPPORTED, PMS_FLAG_USER_FIXED);
+    EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "update perms flag ret =" << ret << endl;
     ClrPers(permissions);
 
     UnLoadPermissions(TEST_TASKID);
@@ -271,22 +277,23 @@ HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_006, Function | Med
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
-    PermissionSaved *permissions=NULL;
-    int permNum=0;
-    int ret=g_interface->QueryPermission(TEST_APP_ID,&permissions,&permNum);
-    EXPECT_EQ(ret,PERM_ERRORCODE_SUCCESS)<<"query ret="<<ret<<endl;
-    EXPECT_EQ(permNum,SYS_PERM_NUM)<<"permNum ="<<permNum<<endl;
-    if(permissions!=NULL){
-        EXPECT_EQ(permissions[0].flags,PMS_FLAG_DEFAULT)<<"flags ="<<permissions[0].flags<<endl;
+    PermissionSaved *permissions = NULL;
+    int permNum = 0;
+    int ret = g_interface->QueryPermission(TEST_APP_ID, &permissions, &permNum);
+    EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "query ret=" << ret << endl;
+    EXPECT_EQ(permNum, SYS_PERM_NUM) << "permNum =" << permNum << endl;
+    if (permissions != NULL)
+    {
+        EXPECT_EQ(permissions[0].flags, PMS_FLAG_DEFAULT) << "flags =" << permissions[0].flags << endl;
     }
     ClrPers(permissions);
 
-    for(int i=0; i<PERFORMANCE_RUN_TIMES/2; i++)
+    for (int i = 0; i < PERFORMANCE_RUN_TIMES / 2; i++)
     {
-        ret=g_interface->UpdatePermissionFlags(TEST_APP_ID,g_systemPers[0].name,PMS_FLAG_DEFAULT);
-        EXPECT_EQ(ret,PERM_ERRORCODE_SUCCESS)<<"update perms flag ret ="<<ret<<endl;
-        ret=g_interface->UpdatePermissionFlags(TEST_APP_ID,g_systemPers[0].name,PMS_FLAG_USER_FIXED);
-        EXPECT_EQ(ret,PERM_ERRORCODE_SUCCESS)<<"update perms flag ret ="<<ret<<endl;
+        ret = g_interface->UpdatePermissionFlags(TEST_APP_ID, g_systemPers[0].name, PMS_FLAG_DEFAULT);
+        EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "update perms flag ret =" << ret << endl;
+        ret = g_interface->UpdatePermissionFlags(TEST_APP_ID, g_systemPers[0].name, PMS_FLAG_USER_FIXED);
+        EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "update perms flag ret =" << ret << endl;
     }
     ClrPers(permissions);
 
@@ -301,27 +308,28 @@ HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_006, Function | Med
  */
 HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_007, Function | MediumTest | Level2)
 {
-SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
+    SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
-    PermissionSaved *permissions=NULL;
-    int permNum=0;
-    int ret=g_interface->QueryPermission(TEST_APP_ID,&permissions,&permNum);
-    EXPECT_EQ(ret,PERM_ERRORCODE_SUCCESS)<<"query ret="<<ret<<endl;
-    EXPECT_EQ(permNum,SYS_PERM_NUM)<<"permNum ="<<permNum<<endl;
-    if(permissions!=NULL){
-        EXPECT_EQ(permissions[0].flags,PMS_FLAG_DEFAULT)<<"flags ="<<permissions[0].flags<<endl;
+    PermissionSaved *permissions = NULL;
+    int permNum = 0;
+    int ret = g_interface->QueryPermission(TEST_APP_ID, &permissions, &permNum);
+    EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "query ret=" << ret << endl;
+    EXPECT_EQ(permNum, SYS_PERM_NUM) << "permNum =" << permNum << endl;
+    if (permissions != NULL)
+    {
+        EXPECT_EQ(permissions[0].flags, PMS_FLAG_DEFAULT) << "flags =" << permissions[0].flags << endl;
     }
     ClrPers(permissions);
 
-    long startTime=GetCurrentTimeMillis();
-    for(int i=0; i<PERFORMANCE_RUN_TIMES/2; i++)
+    long startTime = GetCurrentTimeMillis();
+    for (int i = 0; i < PERFORMANCE_RUN_TIMES / 2; i++)
     {
-        ret=g_interface->UpdatePermissionFlags(TEST_APP_ID,g_systemPers[0].name,PMS_FLAG_DEFAULT);
-        ret=g_interface->UpdatePermissionFlags(TEST_APP_ID,g_systemPers[0].name,PMS_FLAG_USER_FIXED);
+        ret = g_interface->UpdatePermissionFlags(TEST_APP_ID, g_systemPers[0].name, PMS_FLAG_DEFAULT);
+        ret = g_interface->UpdatePermissionFlags(TEST_APP_ID, g_systemPers[0].name, PMS_FLAG_USER_FIXED);
     }
-    long timeCost=GetCurrentTimeMillis()-startTime;
-    long timeAvg=timeCost/10000;
-    EXPECT_LT(timeAvg,11)<<"avg times ="<<timeAvg<<endl;
+    long timeCost = GetCurrentTimeMillis() - startTime;
+    long timeAvg = timeCost / 10000;
+    EXPECT_LT(timeAvg, 11) << "avg times =" << timeAvg << endl;
     ClrPers(permissions);
 
     UnLoadPermissions(TEST_TASKID);

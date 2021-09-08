@@ -38,20 +38,20 @@
 #include "service.h"
 #include "samgr_lite.h"
 
-#define TEST_APP_ID "com.permission.test"
-#define TEST_APP_ID2 "com.permission.test2"
-#define SUBTEST_APP_ID "com.permission.subtest"
-#define TEST_APP_SHORT "a"
-#define TEST_APP_LONG "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-#define TEST_APP_PATH "/storage/app/etc/permissions/com.permission.test"
-#define TEST_APP_INVALID "com.permission.!@#$%^&*()_+"
-#define TEST_APP_NOT_EXIST "com.permission.onetwothree"
-#define PERMISSION_UNDEFINED "ohos.permission.TEST"
-#define PERMISSION_TOOLONG "ohos.permission.balabalabalabalabalabalabalabalabalabala"
-#define PERMISSION_EMPTY ""
-#define PERMISSION_UNSUPPORTED "!@#$%^&*()_+"
-#define ETC_PREFIX "/storage/app/etc"
-#define PERMISSION_PREFIX "/storage/app/etc/permissions"
+const char[] TEST_APP_ID = "com.permission.test";
+const char[] TEST_APP_ID2 = "com.permission.test2";
+const char[] SUBTEST_APP_ID = "com.permission.subtest";
+const char[] TEST_APP_SHORT = "a";
+const char[] TEST_APP_LONG = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+const char[] TEST_APP_PATH = "/storage/app/etc/permissions/com.permission.test";
+const char[] TEST_APP_INVALID = "com.permission.!@#$%^&*()_+";
+const char[] TEST_APP_NOT_EXIST = "com.permission.onetwothree";
+const char[] PERMISSION_UNDEFINED = "ohos.permission.TEST";
+const char[] PERMISSION_TOOLONG = "ohos.permission.balabalabalabalabalabalabalabalabalabala";
+const char[] PERMISSION_EMPTY = "";
+const char[] PERMISSION_UNSUPPORTED = "!@#$%^&*()_+";
+const char[] ETC_PREFIX = "/storage/app/etc";
+const char[] PERMISSION_PREFIX = "/storage/app/etc/permissions";
 
 const int SLEEP_TIME = 5;
 const int TEST_TASKID = 1000;
@@ -67,22 +67,22 @@ const int MAX_PID = 0x7fffffff;
 const int MIN_PID = 0;
 const int ABNORMAL_PKG_NUM = 5;
 const int DIR_MODE = 777;
-const int FLAG_NOT_EXIST=123;
-const int PERFORMANCE_RUN_TIMES=10000;
-const int MILLISECOND=1000;
+const int FLAG_NOT_EXIST = 123;
+const int PERFORMANCE_RUN_TIMES = 10000;
+const int MILLISECOND = 1000;
 
-int IsUserGrant(const char* pname);
+int IsUserGrant(const char *pname);
 
-int CheckPermData(const PermissionTrans* pt, const PermissionSaved* ps,
-    const PermissionSaved* pre, int len, int plen);
+int CheckPermData(const PermissionTrans *pt, const PermissionSaved *ps,
+                  const PermissionSaved *pre, int len, int plen);
 
-void ClrPers(PermissionSaved* &permissions);
+void ClrPers(PermissionSaved *&permissions);
 
-void CheckAppPermission(const char *identifier, int expRet, int expNum, const PermissionTrans* installPers,
-    const PermissionSaved* lastPers = nullptr, int lastLen = 0);
+void CheckAppPermission(const char *identifier, int expRet, int expNum, const PermissionTrans *installPers,
+                        const PermissionSaved *lastPers = nullptr, int lastLen = 0);
 
 void SubTestWithoutCheck(const char *identifier, int taskID);
 
 void CreateAppDir(void);
 
-#endif  // XTS_HITS_TOKEN_API_EXPECT_H
+#endif // XTS_HITS_TOKEN_API_EXPECT_H
