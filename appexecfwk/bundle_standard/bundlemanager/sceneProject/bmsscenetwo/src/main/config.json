@@ -14,8 +14,8 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.myapplication2",
-    "name": ".MyApplication2",
+    "package": "com.example.myapplication1",
+    "name": ".MyApplication1",
     "deviceType": [
       "phone"
     ],

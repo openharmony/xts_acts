@@ -16,11 +16,6 @@ import("//test/xts/tools/build/suite.gni")
 group("bundlemanager") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "actsbmsgetinfosfirstscene:ActsBmsGetInfosFirstScene",
-      "actsbmsgetinfossecondscene:ActsBmsGetInfosSecondScene",
-      "actsbmsgetinfosthirdscene:ActsBmsGetInfosThirdScene",
-      "actsbmsinstalltest:ActsBmsInstallTest",
-    ]
+    deps = [ "actsbundlemanagertest:ActsBundleManagerTest" ]
   }
 }

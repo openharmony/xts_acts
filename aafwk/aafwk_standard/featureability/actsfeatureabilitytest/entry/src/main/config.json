@@ -33,7 +33,8 @@
         "skills": [
           {
             "entities": [
-              "entity.system.home"
+              "entity.system.home",
+              "flag.home.intent.from.system"
             ],
             "actions": [
               "action.system.home"

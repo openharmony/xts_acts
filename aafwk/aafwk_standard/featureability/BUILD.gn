@@ -16,27 +16,6 @@ import("//test/xts/tools/build/suite.gni")
 group("featureability") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "actsfeatureabilityobjecttest:ActsFeatureAbilityObjectTest",
-      "actsfeatureabilitytest:ActsFeatureAbilityTest",
-      "finishwithresultemptytest:FinishWithResultEmptyTest",
-      "finishwithresultpromiseparameterstest:FinishWithResultPromiseParametersTest",
-      "finishwithresulttest:FinishWithResultTest",
-      "finishwithresulttest:FinishWithResultTest",
-      "getcallingbundletest:GetCallingBundlePromiseTest",
-      "startabilityasynccallbackemptytest:StartAbilityAsyncCallbackemptyTest",
-      "startabilityasynccallbackparameterstest:StartAbilityAsyncCallbackparametersTest",
-      "startabilityasynccallbacktest:StartAbilityAsyncCallbackTest",
-      "startabilityforresultasynccallbackemptytest:StartAbilityForResultAsyncCallbackemptyTest",
-      "startabilityforresultasynccallbackparameterstest:StartAbilityForResultAsyncCallbackparametersTest",
-      "startabilityforresultasynccallbacktest:StartAbilityForResultAsyncCallbackTest",
-      "startabilityforresultpromiseemptytest:StartAbilityForResultPromiseemptyTest",
-      "startabilityforresultpromiseparameterstest:StartAbilityForResultPromiseparametersTest",
-      "startabilityforresultpromisetest:StartAbilityForResultPromiseTest",
-      "startabilitypromise:StartAbilityPromise",
-      "startabilitypromiseemptytest:StartAbilityPromiseemptyTest",
-      "startabilitypromiseparameterstest:StartAbilityPromiseparametersTest",
-      "terminateabilitytest:TerminateAbilityTest",
-    ]
+    deps = [ "actsfeatureabilitytest:ActsFeatureAbilityTest" ]
   }
 }
