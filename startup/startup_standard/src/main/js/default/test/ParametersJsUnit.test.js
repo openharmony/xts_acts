@@ -62,7 +62,7 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_0110', 0, async function (done) {
         console.info('system_parameter_test_0110 start');
-        var ret = false;
+        let ret = false;
         try {
             systemparameter.set('hw_sc.build.os.version', 111, function (e, data) {
                 if (err == undefined) {
@@ -92,7 +92,7 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_0120', 0, async function (done) {
         console.info('system_parameter_test_0120 start');
-        var ret = false;
+        let ret = false;
         try {
             systemparameter.set('hw_sc.build.os.version', PROPERTY_MAX_VALUE, function (e, data) {
                 if (e == undefined) {
@@ -176,9 +176,9 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_0220', 0, async function (done) {
         console.info('system_parameter_test_0220 start');
-        var ret = false;
+        let ret = false;
         try {
-            var parameterInfo = systemparameter.set('hw_sc.build.os.version', PROPERTY_MAX_VALUE);
+            let parameterInfo = systemparameter.set('hw_sc.build.os.version', PROPERTY_MAX_VALUE);
             parameterInfo.then(function (value) {
                 console.info('system_parameter_test_0220 promise  set hw_sc.build.os.version success: ' + value);
             }).catch(function (err) {
@@ -202,9 +202,9 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_0230', 0, async function (done) {
         console.info('system_parameter_test_0230 start');
-        var ret = false;
+        let ret = false;
         try {
-            var parameterInfo = systemparameter.set('hw_sc.build.os.version', 111);
+            let parameterInfo = systemparameter.set('hw_sc.build.os.version', 111);
             parameterInfo.then(function (value) {
                 console.info('system_parameter_test_0230 promise  set hw_sc.build.os.version success: ' + value);
             }).catch(function (err) {
