@@ -21,6 +21,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe('appInfoTest', function () {
   console.log("*************Battery Unit Test Begin*************");
+  
   /**
    * @tc.number battery_manager_js_0100
    * @tc.name battery_soc_test
