@@ -13,6 +13,6 @@
 import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("ActsSubscriberOrderedTest") {
-  test_hap_name = "ActsSubscriberOrderedTest"
-  hap_source_path = "hap/ActsSubscriberOrderedTest.hap"
+  test_hap_name = "ActsSubscriberTestOrder"
+  hap_source_path = "hap/ActsSubscriberTestOrder.hap"
 }

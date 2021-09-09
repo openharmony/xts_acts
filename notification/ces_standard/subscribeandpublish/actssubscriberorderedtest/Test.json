@@ -3,13 +3,13 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "21600000",
-        "package": "com.example.actssubscriberorderedtest",
+        "package": "com.example.actssubscribertestorder",
         "shell-timeout": "21600000"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsSubscriberOrderedTest.hap"
+                "ActsSubscriberTestOrder.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
