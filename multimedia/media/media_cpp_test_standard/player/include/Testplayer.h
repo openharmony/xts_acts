@@ -15,25 +15,10 @@
 
 #include "securec.h"
 #include "common.h"
-#include "player.h"
 #include "mediatest_log.h"
 #include "window_manager.h"
 #include "surface_type.h"
 #include "display_type.h"
-
-namespace PlayerNameSpace {
-    static const int MAX_THREADS = 16;
-    static const int32_t PLAYING_TIME = 3;
-    static const int32_t PAUSED_TIME = 1;
-    static const int32_t SEEK_TIME_5_SEC = 5000;
-    static const int32_t SEEK_TIME_2_SEC = 2000;
-    static const int DELTA_TIME = 1000;
-    static const int WAITSECOND = 2;
-    static const int MAXTIME = 20;
-    static const int RET_OK = 0;
-    static const int32_t FILE_BEGIN = 0;
-    std::string GetUri();
-}
 
 namespace OHOS {
 namespace Media {
@@ -119,7 +104,7 @@ public:
     ~TestPlayerCallback();
     void OnError(PlayerErrorType errorType, int32_t errorCode);
     int WaitForSeekDone(int32_t currentPositon);
-    void OnInfo(PlayerOnInfoType type, int32_t extra, const Format &InfoBody = {});
+    void OnInfo(PlayerOnInfoType type, int32_t extra, const Format &infoBody = {});
     int WaitForState(PlayerStates state);
 private:
     PlayerErrorType errorType_ = PLAYER_ERROR_UNKNOWN;

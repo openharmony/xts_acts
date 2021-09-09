@@ -211,7 +211,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_0800, Function |
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
 
     ASSERT_EQ(RET_OK, player->Prepare());
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->Play());
     sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
@@ -248,7 +248,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_0900, Function |
     sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_NEAR(SEEK_TIME_5_SEC, time, DELTA_TIME);
 
@@ -282,7 +282,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_1000, Function |
     sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_NEAR(SEEK_TIME_5_SEC, time, DELTA_TIME);
 
@@ -315,7 +315,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_1100, Function |
     sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_NEAR(SEEK_TIME_5_SEC, time, DELTA_TIME);
     EXPECT_EQ(RET_OK, player->Pause());
@@ -349,7 +349,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_1200, Function |
     sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_NEAR(SEEK_TIME_5_SEC, time, DELTA_TIME);
 
@@ -386,7 +386,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_1300, Function |
     sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_NEAR(SEEK_TIME_5_SEC, time, DELTA_TIME);
 
@@ -424,7 +424,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_1400, Function |
     sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_NEAR(SEEK_TIME_5_SEC, time, DELTA_TIME);
 
@@ -590,7 +590,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_1900, Function |
 
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_NEAR(PLAYING_TIME * 1000, time, DELTA_TIME);
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_NEAR(SEEK_TIME_2_SEC, time, DELTA_TIME);
 
@@ -631,7 +631,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_2000, Function |
 
     EXPECT_EQ(RET_OK, player->SetLooping(false));
     EXPECT_EQ(RET_OK, player->GetDuration(durationTime));
-    EXPECT_EQ(RET_OK, player->Seek(durationTime + 1, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(durationTime + 1, SEEK_MODE));
 
     EXPECT_EQ(RET_OK, testCallback->WaitForState(PLAYER_PLAYBACK_COMPLETE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
@@ -668,7 +668,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_2100, Function |
     ASSERT_EQ(RET_OK, player->Prepare());
     EXPECT_EQ(RET_OK, player->SetLooping(false));
     EXPECT_EQ(RET_OK, player->GetDuration(durationTime));
-    EXPECT_EQ(RET_OK, player->Seek(durationTime + 1, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(durationTime + 1, SEEK_MODE));
 
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_EQ(durationTime, time);
@@ -710,7 +710,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_2200, Function |
 
     EXPECT_EQ(RET_OK, player->SetLooping(true));
     EXPECT_EQ(RET_OK, player->GetDuration(durationTime));
-    EXPECT_EQ(RET_OK, player->Seek(durationTime + 1, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(durationTime + 1, SEEK_MODE));
     sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsLooping());
     EXPECT_TRUE(player->IsPlaying());
@@ -753,7 +753,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_2300, Function |
 
     EXPECT_EQ(RET_OK, player->SetLooping(false));
     EXPECT_EQ(RET_OK, player->GetDuration(durationTime));
-    EXPECT_EQ(RET_OK, player->Seek(durationTime + 1, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(durationTime + 1, SEEK_MODE));
 
     EXPECT_EQ(RET_OK, testCallback->WaitForState(PLAYER_PLAYBACK_COMPLETE));
     EXPECT_FALSE(player->IsPlaying());
@@ -793,7 +793,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_2400, Function |
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->GetDuration(durationTime));
-    EXPECT_EQ(RET_OK, player->Seek(durationTime - 1, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(durationTime - 1, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_NEAR(durationTime, time, DELTA_TIME);
     EXPECT_EQ(RET_OK, testCallback->errorNum);
@@ -825,7 +825,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_2500, Function |
     sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
     testObj.mutexFlag_ = false;
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_MODE));
     testObj.mutexFlag_ = true;
     EXPECT_EQ(RET_OK, player->Play());
     sleep(PLAYING_TIME);
@@ -860,10 +860,10 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_2600, Function |
     sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
     testObj.mutexFlag_ = false;
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_PREVIOUS_SYNC));
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_MODE));
+    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_MODE));
     testObj.mutexFlag_ = true;
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_NEAR(SEEK_TIME_5_SEC, time, DELTA_TIME);
     EXPECT_EQ(RET_OK, testCallback->errorNum);
@@ -892,7 +892,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_2625, Function |
     sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
     testObj.mutexFlag_ = false;
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_MODE));
     testObj.mutexFlag_ = true;
     EXPECT_EQ(RET_OK, player->Pause());
     EXPECT_EQ(RET_OK, testCallback->errorNum);
@@ -922,7 +922,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_2650, Function |
     sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
     testObj.mutexFlag_ = false;
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_MODE));
     testObj.mutexFlag_ = true;
     EXPECT_EQ(RET_OK, player->GetDuration(durationTime));
     EXPECT_EQ(RET_OK, testCallback->errorNum);
@@ -952,7 +952,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_2651, Function |
     sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_NEAR(PLAYING_TIME * 1000, time, DELTA_TIME);
     EXPECT_EQ(RET_OK, testCallback->errorNum);
@@ -982,7 +982,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_2675, Function |
     sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
     testObj.mutexFlag_ = false;
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_MODE));
     testObj.mutexFlag_ = true;
     EXPECT_EQ(RET_OK, player->Play());
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
@@ -1012,12 +1012,12 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_2700, Function |
 
     ASSERT_EQ(RET_OK, player->Prepare());
 
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetDuration(durationTime));
-    EXPECT_EQ(RET_OK, player->Seek(durationTime, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(durationTime, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_EQ(durationTime, time);
-    EXPECT_EQ(RET_OK, player->Seek(durationTime, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(durationTime, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_EQ(durationTime, time);
     EXPECT_EQ(RET_OK, player->Play());
@@ -1055,7 +1055,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_2800, Function |
     EXPECT_EQ(RET_OK, player->Pause());
 
     EXPECT_EQ(RET_OK, player->GetDuration(durationTime));
-    EXPECT_EQ(RET_OK, player->Seek(durationTime, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(durationTime, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_EQ(durationTime, time);
     EXPECT_EQ(RET_OK, player->Stop());
@@ -1094,14 +1094,14 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_2900, Function |
     ASSERT_EQ(RET_OK, player->Prepare());
     EXPECT_EQ(RET_OK, player->SetLooping(true));
     EXPECT_EQ(RET_OK, player->GetDuration(durationTime));
-    EXPECT_EQ(RET_OK, player->Seek(durationTime, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(durationTime, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_EQ(durationTime, time);
     EXPECT_EQ(RET_OK, player->Play());
     EXPECT_EQ(RET_OK, testCallback->WaitForState(PLAYER_PLAYBACK_COMPLETE));
     EXPECT_EQ(RET_OK, player->Stop());
     ASSERT_EQ(RET_OK, player->Prepare());
-    EXPECT_EQ(RET_OK, player->Seek(durationTime, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(durationTime, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     sleep(PLAYING_TIME);
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time_before));
@@ -1141,7 +1141,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_3000, Function |
     EXPECT_EQ(RET_OK, player->Play());
     EXPECT_EQ(RET_OK, player->Pause());
     EXPECT_EQ(RET_OK, player->GetDuration(durationTime));
-    EXPECT_EQ(RET_OK, player->Seek(durationTime, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(durationTime, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_EQ(durationTime, time);
     EXPECT_EQ(RET_OK, player->Play());
@@ -1155,7 +1155,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_3000, Function |
     ASSERT_EQ(RET_OK, player->Prepare());
     EXPECT_EQ(RET_OK, player->Play());
     EXPECT_EQ(RET_OK, player->Pause());
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_PREVIOUS_SYNC));
+    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_EQ(SEEK_TIME_2_SEC, time);
     EXPECT_EQ(RET_OK, player->Stop());
