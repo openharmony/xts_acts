@@ -20,6 +20,6 @@
     ],
     "driver": {
         "type": "CppTestLite",
-        "execute": "/test_root/security/ActsSecurityHukslitetest.bin"
+        "execute": "/test_root/security/ActsHuksLiteFunctionTest.bin"
     }
 }

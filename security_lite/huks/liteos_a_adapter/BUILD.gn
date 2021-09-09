@@ -18,7 +18,7 @@ import("//build/lite/config/component/lite_component.gni")
 import("//build/lite/config/test.gni")
 import("//test/xts/tools/lite/build/suite_lite.gni")
 
-hcpptest_suite("huks_lite_function_test") {
+hcpptest_suite("ActsHuksLiteFunctionTest") {
   suite_name = "acts"
   sources = [
     "hks_aes_test.cpp",
@@ -60,5 +60,5 @@ hcpptest_suite("huks_lite_function_test") {
 }
 
 group("Hukslitetest") {
-  deps = [ ":huks_lite_function_test" ]
+  deps = [ ":ActsHuksLiteFunctionTest" ]
 }
