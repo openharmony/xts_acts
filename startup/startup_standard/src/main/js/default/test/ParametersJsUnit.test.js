@@ -115,33 +115,6 @@ describe('SystemParameterTest', function () {
         console.info('system_parameter_test_0120 : end');
     })
 
-     /**
-      * @tc.number    SUB_STARTUP_JS_SYSTEM_PARAMETER_0140
-      * @tc.name      testSet0140
-      * @tc.desc      Set the value for the given key.
-      */
-     it('system_parameter_test_0140', 0, async function (done) {
-         console.info('system_parameter_test_0140 start');
-         let ret = false;
-         try {
-             systemparameter.set('ro.secure', '10.20.30.4', function (err, data) {
-                 if (err == undefined) {
-                     ret = true;
-                     console.info('system_parameter_test_0140 set callback ro.secure value success:' + data);
-                     done();
-                 } else {
-                     console.info('system_parameter_test_0140 set callback ro.secure value err:' + err.code);
-                 }
-             });
-         } catch (e) {
-             console.info('system_parameter_test_0140 set callback ro.secure unexpect err:' + e)
-         }
-         setTimeout(function(){
-             expect(ret).assertTrue();
-         }, '1000');
-         console.info('system_parameter_test_0140 : end');
-     })
-
     /**
      * @tc.number    SUB_STARTUP_JS_SYSTEM_PARAMETER_0200
      * @tc.name      testSet0200
