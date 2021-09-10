@@ -35,11 +35,10 @@ describe('SystemParameterTest', function () {
         console.info('system_parameter_test_0100 start');
         let ret = false;
         try {
-            systemparameter.set('hw_sc.build.os.version', '10.20.30.4', function (date, err) {
+            systemparameter.set('hw_sc.build.os.version', '10.20.30.4', function (err) {
                 if (err == undefined) {
                     ret = true;
-                    console.info('system_parameter_test_0100 set callback hw_sc.build.os.version value success :'
-                    + data);
+                    console.info('system_parameter_test_0100 set callback hw_sc.build.os.version value success ');
                 } else {
                     console.info('system_parameter_test_0100 set callback hw_sc.build.os.version value err:'
                     + err.code);
@@ -64,10 +63,9 @@ describe('SystemParameterTest', function () {
         console.info('system_parameter_test_0110 start');
         let ret = false;
         try {
-            systemparameter.set('hw_sc.build.os.version', 111, function (e, data) {
+            systemparameter.set('hw_sc.build.os.version', 111, function (e) {
                 if (err == undefined) {
-                    console.info('system_parameter_test_0110 set callback hw_sc.build.os.version value success:'
-                    + data)
+                    console.info('system_parameter_test_0110 set callback hw_sc.build.os.version value success');
                 } else {
                     console.info('system_parameter_test_0110 set callback hw_sc.build.os.version value err:'
                     + e.code)
@@ -94,10 +92,9 @@ describe('SystemParameterTest', function () {
         console.info('system_parameter_test_0120 start');
         let ret = false;
         try {
-            systemparameter.set('hw_sc.build.os.version', PROPERTY_MAX_VALUE, function (e, data) {
+            systemparameter.set('hw_sc.build.os.version', PROPERTY_MAX_VALUE, function (e) {
                 if (e == undefined) {
-                    console.info('system_parameter_test_0120 set callback hw_sc.build.os.version value success:'
-                    + data);
+                    console.info('system_parameter_test_0120 set callback hw_sc.build.os.version value success');
                 } else {
                     ret = true;
                     console.info('system_parameter_test_0120 set callback hw_sc.build.os.version value err:' +
