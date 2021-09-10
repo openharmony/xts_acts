@@ -26,8 +26,8 @@ config("media_cpp_config") {
 ohos_moduletest_suite("ActsMediaCppStandardTest") {
   module_out_path = module_output_path
   sources = [
-    "recorder/src/fuction/ActsVideoRecorderTest.cpp",
-    "recorder/src/fuction/ActsAudioRecoederTest.cpp",
+    #"recorder/src/fuction/ActsVideoRecorderTest.cpp",
+    #"recorder/src/fuction/ActsAudioRecoederTest.cpp",
     "player/Testplayer.cpp",
     "player/src/function/ActsPlayerFuncTest.cpp",
     "player/src/function/ActsPlayerFuncAsyncTest.cpp",
