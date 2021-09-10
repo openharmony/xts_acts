@@ -53,11 +53,10 @@ describe('KvStoreTest', function () {
     it('testCreateKVManager102', 0, async function (done) {
         try {
             await factory.createKVManager(null, function (err, manager) {
-                kvManager = manager;
-                expect(false).assertEqual(manager == null);
+                expect(null).assertFail();
             });
         }catch (e) {
-            expect(null).assertFail();
+            console.log("testCreateKVManager102 fail " + e);
         }
         done();
     })
@@ -65,11 +64,10 @@ describe('KvStoreTest', function () {
     it('testCreateKVManager103', 0, async function (done) {
         try {
             await factory.createKVManager('', function (err, manager) {
-                kvManager = manager;
-                expect(false).assertEqual(manager == null);
+                expect(null).assertFail();
             });
         }catch(e) {
-            expect(null).assertFail();
+            console.log("testCreateKVManager103 fail " + e);
         }
         done();
     })
@@ -79,35 +77,36 @@ describe('KvStoreTest', function () {
             await factory.createKVManager(config, function (err, manager) {
                 kvManager = manager;
                 expect(false).assertEqual(manager == null);
+                done();
             });
         }catch(e) {
+            console.log("testCreateKVManager101 fail " + e);
             expect(null).assertFail();
         }
-        done();
     })
 
     it('testGetKVStore101', 0, async function (done) {
         try {
             await kvManager.getKVStore(options, function (err, store) {
-                kvStore = store;
-                expect(false).assertEqual(store == null);
+                expect(null).assertFail();
             });
-            expect(null).assertFail();
         }catch(e) {
+            console.log("testGetKVStore101 fail " + e);
         }
         done();
     })
 
-    it('testGetKVStore101', 0, async function (done) {
+    it('testGetKVStore102', 0, async function (done) {
         try {
             await kvManager.getKVStore('storeId', options, function (err, store) {
                 kvStore = store;
                 expect(false).assertEqual(store == null);
+                done();
             });
         }catch(e) {
+            console.log("testGetKVStore102 fail " + e);
             expect(null).assertFail();
         }
-        done();
     })
 
     it('testPutString101', 0, async function (done) {
