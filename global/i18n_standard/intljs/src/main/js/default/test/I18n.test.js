@@ -134,9 +134,31 @@ describe('intlTest', function () {
     * @tc.desc check the caseFirst
     */
     it('locale_test_1100', 0, function () {
-        var locale = new Intl.Locale('ja-Jpan-JP', {caseFirst: true});
+        var locale = new Intl.Locale('ja-Jpan-JP', {caseFirst: 'upper'});
         console.log("locale_test_1100 " + locale.caseFirst);
-        expect(locale.caseFirst == true).assertTrue();
+        expect(locale.caseFirst).assertEqual("upper");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1120
+    * @tc.name format the caseFirst
+    * @tc.desc check the caseFirst
+    */
+    it('locale_test_1120', 0, function () {
+        var locale = new Intl.Locale('ja-Jpan-JP', {caseFirst: 'lower'});
+        console.log("locale_test_1120 " + locale.caseFirst);
+        expect(locale.caseFirst).assertEqual("lower");
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1140
+    * @tc.name format the caseFirst
+    * @tc.desc check the caseFirst
+    */
+    it('locale_test_1140', 0, function () {
+        var locale = new Intl.Locale('ja-Jpan-JP', {caseFirst: 'false'});
+        console.log("locale_test_1140 " + locale.caseFirst);
+        expect(locale.caseFirst).assertEqual("false");
     })
 
     /* *
