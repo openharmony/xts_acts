@@ -90,6 +90,8 @@ lite_component("acts_component") {
         "//test/xts/acts/startup_lite/syspara_posix:ActsParameterTest",
 
         #"//test/xts/acts/security_lite/huks_posix:ActsSecurityDataTest",
+        "//test/xts/acts/security_lite/permission_posix/pms:ActsPMSTest",
+
         #"//test/xts/acts/multimedia_lite/camera_lite_posix/camera_native:ActsMediaCameraTest",
         #"//test/xts/acts/multimedia_lite/media_lite_posix/player_native:ActsMediaPlayerTest",
         #"//test/xts/acts/multimedia_lite/media_lite_posix/recorder_native:ActsMediaRecorderTest",
