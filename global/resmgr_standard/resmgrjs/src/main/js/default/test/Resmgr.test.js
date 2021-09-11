@@ -25,7 +25,7 @@ describe('resMgrTest', function () {
     */
     it('getResourceManager_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            expect(mgr != null).assertTrue();
+            expect(mgr !== null).assertTrue();
         })
         done();
     })
@@ -37,7 +37,7 @@ describe('resMgrTest', function () {
     */
     it('getResourceManager_test_002', 0, async function (done) {
         resmgr.getResourceManager("com.ohos.settings", (error, mgr) => {
-            expect(mgr != null).assertTrue();
+            expect(mgr !== null).assertTrue();
         })
         done();
     })
@@ -49,7 +49,7 @@ describe('resMgrTest', function () {
     */
     it('getResourceManager_test_003', 0, async function (done) {
         resmgr.getResourceManager().then(mgr => {
-            expect(mgr != null).assertTrue();
+            expect(mgr !== null).assertTrue();
         })
         done();
     })
@@ -61,7 +61,7 @@ describe('resMgrTest', function () {
     */
     it('getResourceManager_test_004', 0, async function (done) {
         resmgr.getResourceManager("com.ohos.settings").then(mgr => {
-            expect(mgr != null).assertTrue();
+            expect(mgr !== null).assertTrue();
         })
         done();
     })
@@ -74,7 +74,7 @@ describe('resMgrTest', function () {
     it('getString_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getString(0x1000000, (err, value) => {
-                expect(value != null).assertTrue();
+                expect(value !== null).assertTrue();
             })
         })
         done();
@@ -88,7 +88,7 @@ describe('resMgrTest', function () {
     it('getString_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getString(0x1000000).then(value => {
-                expect(value != null).assertTrue();
+                expect(value !== null).assertTrue();
             })
         })
         done();
@@ -102,7 +102,7 @@ describe('resMgrTest', function () {
     it('getStringArray_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getStringArray(0x1000002, (err, value) => {
-                expect(value != null).assertTrue();
+                expect(value !== null).assertTrue();
             })
         })
         done();
@@ -116,7 +116,7 @@ describe('resMgrTest', function () {
     it('getStringArray_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getStringArray(0x1000002).then(value => {
-                expect(value != null).assertTrue();
+                expect(value !== null).assertTrue();
             })
         })
         done();
@@ -186,7 +186,7 @@ describe('resMgrTest', function () {
     it('getConfiguration_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getConfiguration((error, cfg) => {
-                expect(cfg != null).assertTrue();
+                expect(cfg !== null).assertTrue();
             })
         })
         done();
@@ -200,7 +200,7 @@ describe('resMgrTest', function () {
     it('getConfiguration_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getConfiguration().then(cfg => {
-                expect(cfg != null).assertTrue();
+                expect(cfg !== null).assertTrue();
             })
         })
         done();
@@ -214,7 +214,7 @@ describe('resMgrTest', function () {
     it('getDeviceCapability_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getDeviceCapability((error, dc) => {
-                expect(dc != null).assertTrue();
+                expect(dc !== null).assertTrue();
             })
         })
         done();
@@ -228,7 +228,7 @@ describe('resMgrTest', function () {
     it('getDeviceCapability_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getDeviceCapability().then(dc => {
-                expect(dc != null).assertTrue();
+                expect(dc !== null).assertTrue();
             })
         })
         done();
@@ -242,7 +242,7 @@ describe('resMgrTest', function () {
     it('getPluralString_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getPluralString(0x1000003, 1, (error, value) => {
-                expect(value != null).assertTrue();
+                expect(value !== null).assertTrue();
             })
         })
         done();
@@ -256,7 +256,7 @@ describe('resMgrTest', function () {
     it('getPluralString_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getPluralString(0x1000003, 1).then(value => {
-                expect(value != null).assertTrue();
+                expect(value !== null).assertTrue();
             })
         })
         done();
