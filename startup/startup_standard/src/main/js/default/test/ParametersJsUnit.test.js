@@ -93,7 +93,7 @@ describe('SystemParameterTest', function () {
         let ret = false;
         try {
             systemparameter.set('hw_sc.build.os.version', PROPERTY_MAX_VALUE, function (err) {
-                if (e == undefined) {
+                if (err == undefined) {
                     console.info('system_parameter_test_0120 set callback hw_sc.build.os.version value success');
                 } else {
                     ret = true;
