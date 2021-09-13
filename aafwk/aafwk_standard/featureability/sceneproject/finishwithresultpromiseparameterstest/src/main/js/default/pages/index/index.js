@@ -15,6 +15,10 @@
 
 import commonevent from '@ohos.commonevent'
 import featureAbility from '@ohos.ability.featureAbility'
+
+const injectRef = Object.getPrototypeOf(global) || global
+injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
+
 function PublishCallBack() {
     console.debug("====>Publish CallBack ACTS_FinishWithResult_0100_CommonEvent====>");
 }

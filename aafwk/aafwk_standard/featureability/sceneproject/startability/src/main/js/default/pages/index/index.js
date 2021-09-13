@@ -13,6 +13,10 @@
  * limitations under the License.
  */
 import commonEvent from '@ohos.commonevent'
+
+const injectRef = Object.getPrototypeOf(global) || global
+injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
+
 function PublishCallBackOne() {
     console.debug("====>Publish CallBack ACTS_StartAbility_0100_CommonEvent====>");
 }
