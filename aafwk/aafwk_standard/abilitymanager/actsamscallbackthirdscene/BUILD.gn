@@ -14,6 +14,18 @@
 import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("ActsAmsCallBackThirdScene") {
-  test_hap_name = "ActsAmsCallBackThirdScene"
-  hap_source_path = "hap/ActsAmsCallBackThirdScene.hap"
+  hap_profile = "./entry/src/main/config.json"
+  deps = [
+    ":hjs_demo_js_assets",
+    ":hjs_demo_resources",
+  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAmsCallBackThirdScene"
+}
+ohos_js_assets("hjs_demo_js_assets") {
+  source_dir = "./entry/src/main/js/default"
+}
+ohos_resources("hjs_demo_resources") {
+  sources = [ "./entry/src/main/js/resources" ]
+  hap_profile = "./entry/src/main/config.json"
 }
