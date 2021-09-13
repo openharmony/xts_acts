@@ -33,8 +33,6 @@ lite_component("acts_component") {
     if (ohos_kernel_type == "liteos_m") {
       all_features += [
         "//test/xts/acts/communication_lite/lwip_hal:ActsLwipTest",
-
-        #"//test/xts/acts/communication_lite/softbus_hal:ActsSoftBusTest",
         "//test/xts/acts/communication_lite/wifiservice_hal:ActsWifiServiceTest",
         "//test/xts/acts/utils_lite/file_hal:ActsUtilsFileTest",
         "//test/xts/acts/startup_lite/syspara_hal:ActsParameterTest",
@@ -77,7 +75,6 @@ lite_component("acts_component") {
         #"//test/xts/acts/graphic_lite/ui:uikit_test3",
         "//test/xts/acts/appexecfwk_lite/appexecfwk_posix:ActsBundleMgrTest",
         "//test/xts/acts/aafwk_lite/ability_posix:ActsAbilityMgrTest",
-        "//test/xts/acts/communication_lite/softbus_posix:ActsSoftBusTest",
         "//test/xts/acts/communication_lite/lwip_posix:ActsLwipTest",
 
         "//test/xts/acts/ai_lite/ai_engine_posix/base:ActsAiEngineTest",
