@@ -3,13 +3,13 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "21600000",
-        "package": "com.example.actsamscallbackfifthscene",
+        "package": "com.example.actsbundlemanagertest",
         "shell-timeout": "21600000"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsFeatureAbilityTest.hap"
+                "ActsBundleManagerTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

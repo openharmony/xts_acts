@@ -3,7 +3,7 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "21600000",
-        "package": "com.example.actsamscallbackfifthscene",
+        "package": "com.example.actsfeatureabilitytest",
         "shell-timeout": "21600000"
     },
     "kits": [
