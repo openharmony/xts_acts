@@ -27,6 +27,11 @@ group("actsabilitymanagertest") {
       "actsamstestfourthscene:ActsAmsTestFourthScene",
       "actsamstestsecondscene:ActsAmsTestSecondScene",
       "actsamstestthirdscene:ActsAmsTestThirdScene",
+      "sceneProject/simulateFAbilityFir:simulateFAbilityFir",
+      "sceneProject/simulateEAbility:simulateEAbility",
+      "sceneProject/simulateFAbilitySed:simulateFAbilitySed",
+      "sceneProject/verifyAAbility:verifyAAbility",
+      "sceneProject/verifyIAbility:verifyIAbility"
     ]
   }
 }
