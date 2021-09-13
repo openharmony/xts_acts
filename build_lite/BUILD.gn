@@ -33,6 +33,7 @@ lite_component("acts_component") {
     if (ohos_kernel_type == "liteos_m") {
       all_features += [
         "//test/xts/acts/communication_lite/lwip_hal:ActsLwipTest",
+
         #"//test/xts/acts/communication_lite/softbus_hal:ActsSoftBusTest",
         "//test/xts/acts/communication_lite/wifiservice_hal:ActsWifiServiceTest",
         "//test/xts/acts/utils_lite/file_hal:ActsUtilsFileTest",
