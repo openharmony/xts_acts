@@ -13,6 +13,13 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        }
+        },
+        {
+            "type": "PushKit",
+            "push": [
+                "ActsGetWantAllTestHap.hap->/data/ActsGetWantAllTestHap.hap"
+            ]
+            
+        }        
     ]
 }

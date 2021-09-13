@@ -19,6 +19,7 @@ group("want") {
     deps = [
       "actsgetwantalltest:ActsGetWantAllTest",
       "actssetwanttest:ActsSetWantTest",
+      "sceneProject/actsgetwantalltesthap:ActsGetWantAllTestHap",
     ]
   }
 }

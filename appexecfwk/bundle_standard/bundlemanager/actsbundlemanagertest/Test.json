@@ -13,6 +13,22 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        }
+        },
+        {
+            "type": "PushKit",
+            "push": [
+                "bmsJstest1.hap->/data/bmsJstest1.hap",
+                "bmsJstest2.hap->/data/bmsJstest2.hap",
+                "bmsJstest3.hap->/data/bmsJstest3.hap",
+                "bmsJstest4.hap->/data/bmsJstest4.hap",
+                "bmsJstest5.hap->/data/bmsJstest5.hap",
+                "bmsJstest6.hap->/data/bmsJstest6.hap",
+                "bmsJstest7.hap->/data/bmsJstest7.hap",
+                "bmsJstest8.hap->/data/bmsJstest8.hap",
+                "bmsJstest9.hap->/data/bmsJstest9.hap",
+                "error.hap->/data/bmsJstest1.hap"
+            ]
+            
+        }        
     ]
 }

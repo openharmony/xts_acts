@@ -14,6 +14,18 @@
 import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("ActsBundleManagerTest") {
-  test_hap_name = "ActsBundleManagerTest"
-  hap_source_path = "hap/ActsBundleManagerTest.hap"
+  hap_profile = "./entry/src/main/config.json"
+  deps = [
+    ":hjs_demo_js_assets",
+    ":hjs_demo_resources",
+  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsBundleManagerTest"
+}
+ohos_js_assets("hjs_demo_js_assets") {
+  source_dir = "./entry/src/main/js/default"
+}
+ohos_resources("hjs_demo_resources") {
+  sources = [ "./entry/src/main/js/resources" ]
+  hap_profile = "./entry/src/main/config.json"
 }

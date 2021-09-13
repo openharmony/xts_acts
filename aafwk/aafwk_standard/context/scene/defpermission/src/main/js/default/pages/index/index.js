@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+const injectRef = Object.getPrototypeOf(global) || global
+injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
+
 export default {
     data: {
         title: ""
