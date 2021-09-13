@@ -16,6 +16,15 @@ import("//test/xts/tools/build/suite.gni")
 group("featureability") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "actsfeatureabilitytest:ActsFeatureAbilityTest" ]
+    deps = [
+      "actsfeatureabilitytest:ActsFeatureAbilityTest",
+      "sceneproject/finishwithresultemptytest:FinishWithResultEmptyTest",
+      "sceneproject/finishwithresultpromiseparameterstest:FinishWithResultPromiseParametersTest",
+      "sceneproject/finishwithresulttest:FinishWithResultTest",
+      "sceneproject/getcallingbundletest:GetCallingBundlePromiseTest",
+      "sceneproject/startability:StartAbility",
+      "sceneproject/startabilityforresult:StartAbilityForResult",
+      "sceneproject/terminateabilitytest:TerminateAbilityTest",
+    ]
   }
 }

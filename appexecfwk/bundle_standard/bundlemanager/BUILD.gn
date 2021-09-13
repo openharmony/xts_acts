@@ -16,6 +16,17 @@ import("//test/xts/tools/build/suite.gni")
 group("bundlemanager") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "actsbundlemanagertest:ActsBundleManagerTest" ]
+    deps = [
+      "actsbundlemanagertest:ActsBundleManagerTest",
+      "sceneProject/bmssceneeight:bmsJstest8",
+      "sceneProject/bmsscenefive:bmsJstest5",
+      "sceneProject/bmsscenefour:bmsJstest4",
+      "sceneProject/bmsscenenine:bmsJstest9",
+      "sceneProject/bmssceneone:bmsJstest1",
+      "sceneProject/bmssceneseven:bmsJstest7",
+      "sceneProject/bmsscenesix:bmsJstest6",
+      "sceneProject/bmsscenethree:bmsJstest3",
+      "sceneProject/bmsscenetwo:bmsJstest2",
+    ]
   }
 }

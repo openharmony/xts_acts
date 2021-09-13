@@ -3,7 +3,7 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "21600000",
-        "package": "com.example.actsgetwantalltest",
+        "package": "com.example.actsamscallbackfifthscene",
         "shell-timeout": "21600000"
     },
     "kits": [
@@ -13,6 +13,13 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        }
+        },
+        {
+            "type": "PushKit",
+            "push": [
+                "ActsGetWantAllTestHap.hap->/data/ActsGetWantAllTestHap.hap"
+            ]
+            
+        }        
     ]
 }
