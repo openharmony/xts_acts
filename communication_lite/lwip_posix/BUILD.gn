@@ -25,4 +25,10 @@ hcpptest_suite("ActsLwipTest") {
   deps = ["//third_party/bounds_checking_function:libsec_shared" ]
 
   cflags = [ "-Wno-error" ]
+      
+  ldflags = [
+    "-lstdc++",
+    "-lm",
+    "-lpthread",
+  ]
 }
