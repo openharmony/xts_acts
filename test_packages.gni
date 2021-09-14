@@ -15,14 +15,16 @@ import("//test/xts/tools/build/suite.gni")
 
 _all_test_packages = [
   "${ACTS_ROOT}/global:global",
- ## "${ACTS_ROOT}/security:security",
+  "${ACTS_ROOT}/security:security",
   "${ACTS_ROOT}/multimedia:multimedia",
   "${ACTS_ROOT}/hiviewdfx:hiviewdfxtestacts",
   "${ACTS_ROOT}/barrierfree:barrierfree",
- # "${ACTS_ROOT}/telephony:telephony",
+
+  # "${ACTS_ROOT}/telephony:telephony",
   "${ACTS_ROOT}/appexecfwk:appexecfwk",
   "${ACTS_ROOT}/account:account",
- # "${ACTS_ROOT}/communication:communication",
+
+  # "${ACTS_ROOT}/communication:communication",
   "${ACTS_ROOT}/notification:notification",
   "${ACTS_ROOT}/aafwk:aafwk",
   "${ACTS_ROOT}/location:location",
@@ -31,11 +33,8 @@ _all_test_packages = [
   "${ACTS_ROOT}/startup:startup",
   "${ACTS_ROOT}/sensors:sensors",
   "${ACTS_ROOT}/distributeddatamgr:distributeddatamgr",
- # "${ACTS_ROOT}/resourceschedule:resourceschedule",
- # "${ACTS_ROOT}/multimodalinput:multimodalinput",
- # "${ACTS_ROOT}/distributedschedule:distributedschedule",
-#  "${ACTS_ROOT}/demo:demo",
-#  "${ACTS_ROOT}/developtools:developtoolstestacts",
+
+  # "${ACTS_ROOT}/distributedschedule:distributedschedule",
   "${ACTS_ROOT}/updater:update",
   "${ACTS_ROOT}/graphic:graphic",
   "${ACTS_ROOT}/ace:ace",
