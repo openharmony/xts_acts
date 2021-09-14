@@ -83,6 +83,7 @@ lite_component("acts_component") {
       all_features += [
         "//test/xts/acts/utils_lite/kv_store_posix:ActsKvStoreTest",
         "//test/xts/acts/startup_lite/syspara_posix:ActsParameterTest",
+        "//test/xts/acts/startup_lite/bootstrap_posix:ActsBootstrapTest",
 
         #"//test/xts/acts/security_lite/huks_posix:ActsSecurityDataTest",
         "//test/xts/acts/security_lite/permission_posix/pms:ActsPMSTest",
