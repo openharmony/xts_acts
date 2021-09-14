@@ -20,11 +20,11 @@ ohos_js_hap_suite("AnsNotificationTestCancel") {
 
 import("//build/ohos_var.gni")
 
-group("cancel_test") {
+group("publish_test") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "MyApplicationCancelAll:ans_signed"
+      "notification-ContentType-All:contentType-signed"
     ]
   }
 }

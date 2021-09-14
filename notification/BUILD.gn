@@ -16,6 +16,9 @@ import("//build/ohos_var.gni")
 group("notification") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "ces_standard:ces_standard" ]
+    deps = [ 
+      "ces_standard:ces_standard",
+      "ans_standard:ans_standard"
+      ]
   }
 }

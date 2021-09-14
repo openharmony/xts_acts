@@ -10,21 +10,15 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import("//build/config/ohos/rules.gni")
-import("//test/xts/tools/build/suite.gni")
-
-ohos_js_hap_suite("AnsNotificationTestCancel") {
-  test_hap_name = "AnsNotificationTestCancel"
-  hap_source_path = "hap/ans_signed.hap"
-}
 
 import("//build/ohos_var.gni")
 
-group("cancel_test") {
+group("ans_standard") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "MyApplicationCancelAll:ans_signed"
-    ]
+    deps = [ 
+      "cancel_test:cancel_test",
+      "publish_test:publish_test"
+      ]
   }
 }
