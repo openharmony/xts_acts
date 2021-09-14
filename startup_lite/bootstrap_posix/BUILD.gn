@@ -26,7 +26,6 @@ hcpptest_suite("ActsBootstrapTest") {
     "//third_party/bounds_checking_function/include/",
     "//foundation/distributedschedule/samgr_lite/interfaces/kits/samgr",
   ]
-  cflags = [ "-Wno-error" ]
 
   deps = [
     "//foundation/distributedschedule/samgr_lite/samgr:samgr",
