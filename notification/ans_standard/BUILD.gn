@@ -16,9 +16,9 @@ import("//build/ohos_var.gni")
 group("ans_standard") {
   testonly = true
   if (is_standard_system) {
-    deps = [ 
+    deps = [
       "cancel_test:cancel_test",
-      "publish_test:publish_test"
-      ]
+      "publish_test:publish_test",
+    ]
   }
 }
