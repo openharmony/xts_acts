@@ -70,9 +70,6 @@ lite_component("acts_component") {
 
         "//test/xts/acts/multimedia_lite/media_lite_posix/recorder_native:ActsMediaRecorderTest",
 
-        #"//test/xts/acts/graphic_lite/graphic_utils:uikit_test1",
-        #"//test/xts/acts/graphic_lite/surface:uikit_test2",
-        #"//test/xts/acts/graphic_lite/ui:uikit_test3",
         "//test/xts/acts/appexecfwk_lite/appexecfwk_posix:ActsBundleMgrTest",
         "//test/xts/acts/aafwk_lite/ability_posix:ActsAbilityMgrTest",
         "//test/xts/acts/communication_lite/lwip_posix:ActsLwipTest",
