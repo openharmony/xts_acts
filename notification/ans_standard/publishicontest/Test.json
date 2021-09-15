@@ -1,0 +1,19 @@
+{
+    "description": "Configuration for hjunit demo Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "21600000",
+        "package": "com.example.actsansicontest",
+        "shell-timeout": "21600000"
+    },
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsAnsIconTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+}
+
