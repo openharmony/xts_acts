@@ -14,9 +14,6 @@
                 {
                     "source": "testcases/multimedia",
                     "target": "/test_root/multimedia"
-                },{
-                    "source": "resource/multimedia",
-                    "target": "/test_root/multimedia"
                 }
             ]
         }
