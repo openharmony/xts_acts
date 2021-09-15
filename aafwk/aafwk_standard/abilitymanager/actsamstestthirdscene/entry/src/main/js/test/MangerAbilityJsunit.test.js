@@ -46,7 +46,7 @@ var bundleNameList = [
 describe('ActsAmsTestThirdScene', function () {
     console.info('----ActsAmsTestThirdScene----');
 
-    beforeAll(function () {
+    beforeAll(async function (done) {
         featureAbility.startAbility(
             {
                 want:
@@ -65,17 +65,16 @@ describe('ActsAmsTestThirdScene', function () {
                 },
             },
         );
-        var maxnum = 20, flag = 1;
-        abilitymanager.queryRecentAbilityMissionInfos(maxnum, flag, data => {
-            console.info(' queryRecentAbilityMissionInfos data  ' + JSON.stringify(data));
-            for (var i = 0; i < data.length; i++) {
-                if (data[i].baseAbility.bundleName != 'com.example.actsamstestthirdscene' &&
-                    data[i].topAbility.bundleName != 'com.example.actsamstestthirdscene') {
-                    var info = abilitymanager.removeMission(data[i].id);
-                    console.info(' removeMission data  [' + info + ']');
-                }
+        var maxnum = 10, flag = 1;
+        var data = await abilitymanager.queryRecentAbilityMissionInfos(maxnum, flag);
+        console.log('queryRecentAbilityMissionInfos data  ' + JSON.stringify(data));
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].baseAbility.bundleName != 'com.example.actsamstestthirdscene' &&
+                data[i].topAbility.bundleName != 'com.example.actsamstestthirdscene') {
+                var info = abilitymanager.removeMission(data[i].id);
+                console.log(' removeMission data  [' + info + ']');
             }
-        });
+        };
         featureAbility.startAbility(
             {
                 want:
@@ -130,28 +129,7 @@ describe('ActsAmsTestThirdScene', function () {
                 },
             },
         );
-    });
-
-    afterAll(function () {
-        featureAbility.startAbility(
-            {
-                want:
-                {
-                    deviceId: "",
-                    bundleName: "com.ohos.launcher",
-                    abilityName: "com.ohos.launcher.MainAbility",
-                    action: "action1",
-                    entities: ["entity1"],
-                    type: "MIMETYPE",
-                    uri: "key={true,true,false}",
-                    options:
-                        {},
-                    parameters:
-                        {},
-                },
-            },
-        );
-        abilitymanager.clearMissions();
+        done();
     });
 
     /*

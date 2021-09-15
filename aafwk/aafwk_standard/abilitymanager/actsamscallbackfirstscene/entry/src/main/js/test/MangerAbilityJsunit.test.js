@@ -44,7 +44,7 @@ var bundleNameList = [
 
 describe('ActsAmsCallBackFirstScene', function () {
     console.info('----ActsAmsCallBackFirstScene----');
-    beforeAll(function () {
+    beforeAll(async function (done) {
         featureAbility.startAbility(
             {
                 want:
@@ -59,18 +59,15 @@ describe('ActsAmsCallBackFirstScene', function () {
             },
         );
         var maxnum = 10, flag = 1;
-        abilitymanager.queryRecentAbilityMissionInfos(maxnum, flag, data => {
-            console.info(' queryRecentAbilityMissionInfos data  ' + JSON.stringify(data));
-            for (var i = 0; i < data.length; i++) {
-                if (data[i].baseAbility.bundleName != 'com.example.actsamscallbackfirstscene' &&
-                    data[i].topAbility.bundleName != 'com.example.actsamscallbackfirstscene') {
-                    abilitymanager.removeMission(data[i].id,
-                        (info) => {
-                            console.info(' removeMission data  [' + info + ']');
-                        });
-                }
+        var data = await abilitymanager.queryRecentAbilityMissionInfos(maxnum, flag);
+        console.log('queryRecentAbilityMissionInfos data  ' + JSON.stringify(data));
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].baseAbility.bundleName != 'com.example.actsamscallbackfirstscene' &&
+                data[i].topAbility.bundleName != 'com.example.actsamscallbackfirstscene') {
+                var info = abilitymanager.removeMission(data[i].id);
+                console.log(' removeMission data  [' + info + ']');
             }
-        });
+        };
         featureAbility.startAbility(
             {
                 want:
@@ -84,27 +81,7 @@ describe('ActsAmsCallBackFirstScene', function () {
                 },
             },
         );
-    });
-    afterAll(function () {
-        featureAbility.startAbility(
-            {
-                want:
-                {
-                    deviceId: "",
-                    bundleName: "com.ohos.launcher",
-                    abilityName: "com.ohos.launcher.MainAbility",
-                    action: "action1",
-                    entities: ["entity1"],
-                    type: "MIMETYPE",
-                    uri: "key={true,true,false}",
-                    options:
-                        {},
-                    parameters:
-                        {},
-                },
-            },
-        );
-        abilitymanager.clearMissions();
+        done();
     });
 
     /*
@@ -159,7 +136,7 @@ describe('ActsAmsCallBackFirstScene', function () {
         abilitymanager.queryRunningAbilityMissionInfos(maxnum,
             (error, info) => {
                 console.info('queryRecentAbilityMissionInfos error.code : \
-                ' + error.code + ',data length [' + data.length + ']');
+                ' + error.code + ',data length [' + info.length + ']');
                 console.info('Acts_Ams_test_0400 queryRunningAbilityMissionInfos info ' + JSON.stringify(info));
                 expect(Array.isArray(info)).assertEqual(true);
                 expect(info.length).assertEqual(2);
@@ -205,7 +182,7 @@ describe('ActsAmsCallBackFirstScene', function () {
         abilitymanager.queryRecentAbilityMissionInfos(maxnum, flag,
             (error, info) => {
                 console.info('queryRunningAbilityMissionInfos error.code : \
-                ' + error.code + ',data length [' + data.length + ']');
+                ' + error.code + ',data length [' + info.length + ']');
                 console.info('Acts_Ams_test_0600 queryRecentAbilityMissionInfos info ' + JSON.stringify(info));
                 expect(Array.isArray(info)).assertEqual(true);
                 expect(info.length).assertEqual(2);
