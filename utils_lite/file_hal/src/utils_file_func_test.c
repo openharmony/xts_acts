@@ -335,20 +335,6 @@ LITE_TEST_CASE(UtilsFileFuncTestSuite, testCreatLongNameFile, Function | MediumT
 };
 
 /**
- * @tc.number    : SUB_UTILS_FILE_OPERATION_1700
- * @tc.name      : Creat file with special characters
- * @tc.desc      : [C- SOFTWARE -0200]
- */
-LITE_TEST_CASE(UtilsFileFuncTestSuite, testCreatFileWithSpecChar, Function | MediumTest | Level1)
-{
-    char* fileName = "case117-~!@#$%^&*()+_/:?<;>|\\";
-    int fd = UtilsFileOpen(fileName, O_RDONLY_FS | O_CREAT_FS, 0);
-    TEST_ASSERT_GREATER_THAN_INT(0, fd);
-    UtilsFileClose(fd);
-    UtilsFileDelete(fileName);
-};
-
-/**
  * @tc.number    : SUB_UTILS_FILE_OPERATION_1800
  * @tc.name      : Open none exist file
  * @tc.desc      : [C- SOFTWARE -0200]
@@ -693,23 +679,6 @@ LITE_TEST_CASE(UtilsFileFuncTestSuite, testObtainLongNameFileSize, Function | Me
 };
 
 /**
- * @tc.number    : SUB_UTILS_FILE_OPERATION_3900
- * @tc.name      : Obtaining size for file with special characters
- * @tc.desc      : [C- SOFTWARE -0200]
- */
-LITE_TEST_CASE(UtilsFileFuncTestSuite, testObtainSizeForFileWithSpecChar, Function | MediumTest | Level1)
-{
-    char* fileName = "case307-~!@#$%^&*()+_/:?<;>|\\";
-    int fd0 = UtilsFileOpen(fileName, O_RDWR_FS | O_CREAT_FS, 0);
-    UtilsFileWrite(fd0, g_def, strlen(g_def));
-    UtilsFileClose(fd0);
-    unsigned int fileLen = 0;
-    int ret = UtilsFileStat(fileName, &fileLen);
-    TEST_ASSERT_EQUAL_INT(0, ret);
-    UtilsFileDelete(fileName);
-};
-
-/**
  * @tc.number    : SUB_UTILS_FILE_OPERATION_4000
  * @tc.name      : File operation for file copy
  * @tc.desc      : [C- SOFTWARE -0200]
@@ -752,24 +721,6 @@ LITE_TEST_CASE(UtilsFileFuncTestSuite, testCopyLongNameFile, Function | MediumTe
     UtilsFileWrite(fd0, g_def, strlen(g_def));
     UtilsFileClose(fd0);
     char* fileNameCopy = "copyLongFileName403-Ab123456789";
-    int ret = UtilsFileCopy(fileName, fileNameCopy);
-    TEST_ASSERT_EQUAL_INT(0, ret);
-    UtilsFileDelete(fileName);
-    UtilsFileDelete(fileNameCopy);
-};
-
-/**
- * @tc.number    : SUB_UTILS_FILE_OPERATION_4300
- * @tc.name      : Copy file with special characters
- * @tc.desc      : [C- SOFTWARE -0200]
- */
-LITE_TEST_CASE(UtilsFileFuncTestSuite, testCopyFileWithSpecChar, Function | MediumTest | Level1)
-{
-    char* fileName = "case404-~!@#$%^&*()+_/:?<;>|\\";
-    int fd0 = UtilsFileOpen(fileName, O_RDWR_FS | O_CREAT_FS, 0);
-    UtilsFileWrite(fd0, g_def, strlen(g_def));
-    UtilsFileClose(fd0);
-    char* fileNameCopy = "copy404-~!@#$%^&*()+_/:?<;>|\\";
     int ret = UtilsFileCopy(fileName, fileNameCopy);
     TEST_ASSERT_EQUAL_INT(0, ret);
     UtilsFileDelete(fileName);
@@ -824,23 +775,6 @@ LITE_TEST_CASE(UtilsFileFuncTestSuite, testMoveLongNameFile, Function | MediumTe
 };
 
 /**
- * @tc.number    : SUB_UTILS_FILE_OPERATION_4700
- * @tc.name      : Move file with special characters
- * @tc.desc      : [C- SOFTWARE -0200]
- */
-LITE_TEST_CASE(UtilsFileFuncTestSuite, testMoveFileWithSpecChar, Function | MediumTest | Level1)
-{
-    char* fileName = "case504-~!@#$%^&*()+_/:?<;>|\\";
-    int fd0 = UtilsFileOpen(fileName, O_RDWR_FS | O_CREAT_FS, 0);
-    UtilsFileWrite(fd0, g_def, strlen(g_def));
-    UtilsFileClose(fd0);
-    char* fileNameMove = "move504-~!@#$%^&*()+_/:?<;>|\\";
-    int ret = UtilsFileMove(fileName, fileNameMove);
-    TEST_ASSERT_EQUAL_INT(0, ret);
-    UtilsFileDelete(fileNameMove);
-};
-
-/**
  * @tc.number    : SUB_UTILS_FILE_OPERATION_4800
  * @tc.name      : File operation for file delete
  * @tc.desc      : [C- SOFTWARE -0200]
@@ -875,21 +809,6 @@ LITE_TEST_CASE(UtilsFileFuncTestSuite, testDeleteNotExistFile, Function | Medium
 LITE_TEST_CASE(UtilsFileFuncTestSuite, testDeleteLongNameFile, Function | MediumTest | Level1)
 {
     char* fileName = "deleteLongFileName603-Ab1234567";
-    int fd0 = UtilsFileOpen(fileName, O_RDWR_FS | O_CREAT_FS, 0);
-    UtilsFileWrite(fd0, g_def, strlen(g_def));
-    UtilsFileClose(fd0);
-    int ret = UtilsFileDelete(fileName);
-    TEST_ASSERT_EQUAL_INT(0, ret);
-};
-
-/**
- * @tc.number    : SUB_UTILS_FILE_OPERATION_5100
- * @tc.name      : Delete file with special characters
- * @tc.desc      : [C- SOFTWARE -0200]
- */
-LITE_TEST_CASE(UtilsFileFuncTestSuite, testDeleteFileWithSpecChar, Function | MediumTest | Level1)
-{
-    char* fileName = "delete604-~!@#$%^&*()+_/:?<;>|\\";
     int fd0 = UtilsFileOpen(fileName, O_RDWR_FS | O_CREAT_FS, 0);
     UtilsFileWrite(fd0, g_def, strlen(g_def));
     UtilsFileClose(fd0);
