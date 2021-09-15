@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import file from '@system.file'
-import {Core, ExpectExtend, ReportExtend} from 'deccjsunit/index'
+import {Core, ExpectExtend} from 'deccjsunit/index'
 
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
@@ -32,9 +32,7 @@ export default {
         const expectExtend = new ExpectExtend({
             'id': 'extend'
         })
-        const reportExtend = new ReportExtend(file)
         core.addService('expect', expectExtend)
-        core.addService('report', reportExtend)
         core.init()
 
         const configService = core.getDefaultService('config')
