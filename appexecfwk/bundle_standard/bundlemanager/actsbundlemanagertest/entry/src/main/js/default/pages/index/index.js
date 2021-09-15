@@ -28,6 +28,9 @@ export default {
     onShow() {
         console.info('onShow finish')
         const core = Core.getInstance()
+        const expectExtend = new ExpectExtend({
+            'id': 'extend'
+        })
         core.addService('expect', expectExtend)
         core.init()
         const configService = core.getDefaultService('config')
