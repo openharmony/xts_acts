@@ -22,14 +22,14 @@ config("hilog_lite_dir") {
       [ "//base/hiviewdfx/hilog_lite/interfaces/native/kits/hilog_lite/" ]
 }
 
-config("huks_test_common") {
+config("huks_test_common_dir") {
   include_dirs = [
     "//base/security/huks/interfaces/innerkits/huks_standard/main/include",
     "include",
   ]
 }
 
-static_library("huks_new_test_common") {
+static_library("huks_test_common") {
   sources = [
     "hks_test_aes.c",
     "hks_test_api_performance.c",
@@ -52,7 +52,7 @@ static_library("huks_new_test_common") {
     "include",
   ]
 
-  configs += [ ":huks_test_common" ]
+  configs += [ ":huks_test_common_dir" ]
 
   if (defined(ohos_lite)) {
     if (ohos_kernel_type == "liteos_m") {
