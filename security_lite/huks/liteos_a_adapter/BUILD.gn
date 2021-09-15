@@ -48,7 +48,7 @@ hcpptest_suite("ActsHuksLiteFunctionTest") {
 
   deps = [
     "//base/security/huks/interfaces/innerkits/huks_lite:huks_3.0_sdk",
-    "//test/xts/acts/security_lite/huks/common:huks_new_test_common",
+    "//test/xts/acts/security_lite/huks/common:huks_test_common",
   ]
   cflags = [ "-Wno-error" ]
 

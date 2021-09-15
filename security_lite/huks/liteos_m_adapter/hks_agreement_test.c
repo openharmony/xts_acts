@@ -24,6 +24,10 @@
 #include "hks_test_log.h"
 #include "hks_type.h"
 
+#include "cmsis_os2.h"
+#include "ohos_types.h"
+
+
 #ifndef _CUT_AUTHENTICATE_
 
 /*
@@ -96,14 +100,16 @@ static int32_t AgreeKey(const struct HksTestAgreeParamSet *agreeParamSetParams, 
     return ret;
 }
 
-/**
- * @tc.name: HksDeleteTest.HksDeleteTest001
- * @tc.desc: The static function will return true;
- * @tc.type: FUNC
- */
-LITE_TEST_CASE(HksAgreementTest, HksAgreementTest001, Level1)
+#define TEST_TASK_STACK_SIZE      0x2000
+#define WAIT_TO_TEST_DONE         4
+
+static osPriority_t g_setPriority;
+
+static void ExecHksAgreementTest001(void const *argument)
 {
-     /* 1. generate key */
+    LiteTestPrint("HksAgreementTest001 Begin!\n");
+    
+      /* 1. generate key */
     struct HksBlob *privateKey = NULL;
     struct HksBlob *peerPubKeyAlias = NULL;
     struct HksBlob *peerPublicKey = NULL;
@@ -143,6 +149,80 @@ LITE_TEST_CASE(HksAgreementTest, HksAgreementTest001, Level1)
     TestFreeBlob(&peerPublicKey);
     TestFreeBlob(&agreeKey);
     TEST_ASSERT_TRUE(ret == 0);
+    
+    LiteTestPrint("HksAgreementTest001 End!\n");
+    osThreadExit();
+}
+
+static void ExecHksAgreementTest002(void const *argument)
+{
+    LiteTestPrint("HksAgreementTest002 Begin!\n");
+    
+      /* 1. generate key */
+    struct HksBlob *privateKey = NULL;
+    struct HksBlob *peerPubKeyAlias = NULL;
+    struct HksBlob *peerPublicKey = NULL;
+    int32_t ret;
+
+    if (g_testAgreeParams[0].genKeyParamSetParams.setKeyStorageFlag &&
+        (g_testAgreeParams[0].genKeyParamSetParams.keyStorageFlag == HKS_STORAGE_TEMP)) {
+        ret = GenerateLocalX25519Key(&privateKey, NULL, &g_testAgreeParams[0].localPrivateKeyParams, NULL);
+        HKS_TEST_ASSERT(ret == 0);
+        ret = GenerateLocalX25519Key(NULL, &peerPublicKey, NULL, &g_testAgreeParams[0].localPublicKeyParams);
+        HKS_TEST_ASSERT(ret == 0);
+    }
+    /* 2. agreeKey */
+    struct HksBlob *agreeKey = NULL;
+    ret = TestConstuctBlob(&agreeKey,
+        g_testAgreeParams[0].agreedKeyParams.blobExist,
+        g_testAgreeParams[0].agreedKeyParams.blobSize,
+        g_testAgreeParams[0].agreedKeyParams.blobDataExist,
+        g_testAgreeParams[0].agreedKeyParams.blobDataSize);
+    HKS_TEST_ASSERT(ret == 0);
+
+    ret = AgreeKey(&g_testAgreeParams[0].agreeParamSetParams, privateKey, peerPublicKey, agreeKey);
+    HKS_TEST_ASSERT(ret == g_testAgreeParams[0].expectResult);
+
+    /* 3. delete key */
+    if (!(g_testAgreeParams[0].genKeyParamSetParams.setKeyStorageFlag &&
+        (g_testAgreeParams[0].genKeyParamSetParams.keyStorageFlag == HKS_STORAGE_TEMP)) &&
+        ((g_testAgreeParams[0].keyAlias1Params.blobExist) &&
+        (g_testAgreeParams[0].keyAlias2Params.blobExist))) {
+        ret = HksDeleteKey(privateKey, NULL);
+        HKS_TEST_ASSERT(ret == 0);
+        ret = HksDeleteKey(peerPubKeyAlias, NULL);
+        HKS_TEST_ASSERT(ret == 0);
+    }
+    TestFreeBlob(&privateKey);
+    TestFreeBlob(&peerPubKeyAlias);
+    TestFreeBlob(&peerPublicKey);
+    TestFreeBlob(&agreeKey);
+    TEST_ASSERT_TRUE(ret == 0);
+    
+    LiteTestPrint("HksAgreementTest002 End!\n");
+    osThreadExit();
+}
+
+/**
+ * @tc.name: HksDeleteTest.HksDeleteTest001
+ * @tc.desc: The static function will return true;
+ * @tc.type: FUNC
+ */
+LITE_TEST_CASE(HksAgreementTest, HksAgreementTest001, Level1)
+{    
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksAgreementTest001, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksAgreementTest001 End2!\n");
 }
 
 
@@ -153,62 +233,19 @@ LITE_TEST_CASE(HksAgreementTest, HksAgreementTest001, Level1)
  */
 LITE_TEST_CASE(HksAgreementTest, HksAgreementTest002, Level1)
 {
-     /* 1. generate key */
-    struct HksBlob *privateKey = NULL;
-    struct HksBlob *peerPubKeyAlias = NULL;
-    struct HksBlob *peerPublicKey = NULL;
-    struct HksBlob *privateKey1 = NULL;
-    struct HksBlob *peerPubKeyAlias1 = NULL;
-    struct HksBlob *peerPublicKey1 = NULL;
-    int32_t ret;
-
-    if (g_testAgreeParams[0].genKeyParamSetParams.setKeyStorageFlag &&
-        (g_testAgreeParams[0].genKeyParamSetParams.keyStorageFlag == HKS_STORAGE_TEMP)) {
-        ret = GenerateLocalX25519Key(&privateKey, &peerPublicKey, &g_testAgreeParams[0].localPrivateKeyParams, \
-            &g_testAgreeParams[0].localPublicKeyParams);
-        TEST_ASSERT_TRUE(ret == 0);
-        ret = GenerateLocalX25519Key(&privateKey1, &peerPublicKey1, &g_testAgreeParams[0].localPrivateKeyParams, \
-            &g_testAgreeParams[0].localPublicKeyParams);
-        TEST_ASSERT_TRUE(ret == 0);
-    }
-    /* 2. agreeKey */
-    struct HksBlob *agreeKey = NULL;
-    ret = TestConstuctBlob(&agreeKey, g_testAgreeParams[0].agreedKeyParams.blobExist, \
-        g_testAgreeParams[0].agreedKeyParams.blobSize, g_testAgreeParams[0].agreedKeyParams.blobDataExist, \
-        g_testAgreeParams[0].agreedKeyParams.blobDataSize);
-    TEST_ASSERT_TRUE(ret == 0);
-
-    ret = AgreeKey(&g_testAgreeParams[0].agreeParamSetParams, privateKey, peerPublicKey1, agreeKey);
-    TEST_ASSERT_TRUE(ret == g_testAgreeParams[0].expectResult);
-
-    struct HksBlob *agreeKey1 = NULL;
-    ret = TestConstuctBlob(&agreeKey1, g_testAgreeParams[0].agreedKeyParams.blobExist, \
-        g_testAgreeParams[0].agreedKeyParams.blobSize, g_testAgreeParams[0].agreedKeyParams.blobDataExist, \
-        g_testAgreeParams[0].agreedKeyParams.blobDataSize);
-    TEST_ASSERT_TRUE(ret == 0);
-
-    ret = AgreeKey(&g_testAgreeParams[0].agreeParamSetParams, privateKey1, peerPublicKey, agreeKey1);
-    TEST_ASSERT_TRUE(ret == g_testAgreeParams[0].expectResult);
-    TEST_ASSERT_EQUAL(agreeKey->size, agreeKey1->size);
-    TEST_ASSERT_TRUE(memcmp(agreeKey->data, agreeKey1->data, agreeKey->size) == 0);
-
-    /* 3. delete key */
-    if (!(g_testAgreeParams[0].genKeyParamSetParams.setKeyStorageFlag &&
-        (g_testAgreeParams[0].genKeyParamSetParams.keyStorageFlag == HKS_STORAGE_TEMP)) &&
-        ((g_testAgreeParams[0].keyAlias1Params.blobExist) && (g_testAgreeParams[0].keyAlias2Params.blobExist))) {
-        TEST_ASSERT_TRUE(HksDeleteKey(privateKey, NULL) == 0);
-        TEST_ASSERT_TRUE(HksDeleteKey(peerPubKeyAlias, NULL) == 0);
-        TEST_ASSERT_TRUE(HksDeleteKey(privateKey1, NULL) == 0);
-        TEST_ASSERT_TRUE(HksDeleteKey(peerPubKeyAlias1, NULL) == 0);
-    }
-    TestFreeBlob(&privateKey);
-    TestFreeBlob(&peerPubKeyAlias);
-    TestFreeBlob(&peerPublicKey);
-    TestFreeBlob(&agreeKey);
-    TestFreeBlob(&privateKey1);
-    TestFreeBlob(&peerPubKeyAlias1);
-    TestFreeBlob(&peerPublicKey1);
-    TestFreeBlob(&agreeKey1);
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksAgreementTest002, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksAgreementTest002 End2!\n");
 }
 
 RUN_TEST_SUITE(HksAgreementTest);

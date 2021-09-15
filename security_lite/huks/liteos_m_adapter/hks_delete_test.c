@@ -57,7 +57,6 @@ static BOOL HksDeleteTestTearDown()
     return TRUE;
 }
 
-
 static const struct HksTestKeyExistParams g_testKeyExistParams[] = {
     /* normal case */
     { 0, HKS_SUCCESS, true, { true, DEFAULT_KEY_ALIAS_SIZE, true, DEFAULT_KEY_ALIAS_SIZE } },

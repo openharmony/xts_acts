@@ -21,6 +21,8 @@
 #include "hks_param.h"
 #include "hks_test_cipher.h"
 #include "securec.h"
+#include "cmsis_os2.h"
+#include "ohos_types.h"
 
 #define TEST_INDEX_0    0
 #define TEST_INDEX_1    1
@@ -59,6 +61,107 @@ static BOOL HksCipherTestTearDown()
     return TRUE;
 }
 
+#define TEST_TASK_STACK_SIZE      0x2000
+#define WAIT_TO_TEST_DONE         4
+
+static osPriority_t g_setPriority;
+
+static void ExecHksCipherTest001(void const *argument)
+{
+    LiteTestPrint("HksCipherTest001 Begin!\n");
+    TEST_ASSERT_TRUE(BaseTestCipher(1, TEST_INDEX_0, 1) == 0);
+    LiteTestPrint("HksCipherTest001 End!\n");
+    osThreadExit();
+}
+
+static void ExecHksCipherTest002(void const *argument)
+{
+    LiteTestPrint("HksCipherTest002 Begin!\n");
+    TEST_ASSERT_TRUE(BaseTestCipher(1, TEST_INDEX_0, 1) == 0);
+    LiteTestPrint("HksCipherTest002 End!\n");
+    osThreadExit();
+}
+
+static void ExecHksCipherTest003(void const *argument)
+{
+    LiteTestPrint("HksCipherTest003 Begin!\n");
+    TEST_ASSERT_TRUE(BaseTestEncrypt(1, TEST_INDEX_0, 1) == 0);
+    LiteTestPrint("HksCipherTest003 End!\n");
+    osThreadExit();
+}
+
+static void ExecHksCipherTest004(void const *argument)
+{
+    LiteTestPrint("HksCipherTest004 Begin!\n");
+    TEST_ASSERT_TRUE(BaseTestEncrypt(1, TEST_INDEX_1, 1) == 0);
+    LiteTestPrint("HksCipherTest004 End!\n");
+    osThreadExit();
+}
+
+static void ExecHksCipherTest005(void const *argument)
+{
+    LiteTestPrint("HksCipherTest005 Begin!\n");
+    TEST_ASSERT_TRUE(BaseTestEncrypt(1, TEST_INDEX_2, 1) == 0);
+    LiteTestPrint("HksCipherTest005 End!\n");
+    osThreadExit();
+}
+
+static void ExecHksCipherTest006(void const *argument)
+{
+    LiteTestPrint("HksCipherTest006 Begin!\n");
+    TEST_ASSERT_TRUE(BaseTestEncrypt(1, TEST_INDEX_3, 1) == 0);
+    LiteTestPrint("HksCipherTest006 End!\n");
+    osThreadExit();
+}
+
+static void ExecHksCipherTest007(void const *argument)
+{
+    LiteTestPrint("HksCipherTest007 Begin!\n");
+    TEST_ASSERT_TRUE(BaseTestEncrypt(1, TEST_INDEX_4, 1) == 0);
+    LiteTestPrint("HksCipherTest007 End!\n");
+    osThreadExit();
+}
+
+static void ExecHksCipherTest008(void const *argument)
+{
+    LiteTestPrint("HksCipherTest008 Begin!\n");
+    TEST_ASSERT_TRUE(BaseTestDecrypt(1, TEST_INDEX_0, 1) == 0);
+    LiteTestPrint("HksCipherTest008 End!\n");
+    osThreadExit();
+}
+
+static void ExecHksCipherTest009(void const *argument)
+{
+    LiteTestPrint("HksCipherTest009 Begin!\n");
+    TEST_ASSERT_TRUE(BaseTestDecrypt(1, TEST_INDEX_1, 1) == 0);
+    LiteTestPrint("HksCipherTest009 End!\n");
+    osThreadExit();
+}
+
+static void ExecHksCipherTest010(void const *argument)
+{
+    LiteTestPrint("HksCipherTest010 Begin!\n");
+    TEST_ASSERT_TRUE(BaseTestDecrypt(1, TEST_INDEX_2, 1) == 0);
+    LiteTestPrint("HksCipherTest010 End!\n");
+    osThreadExit();
+}
+
+static void ExecHksCipherTest011(void const *argument)
+{
+    LiteTestPrint("HksCipherTest011 Begin!\n");
+    TEST_ASSERT_TRUE(BaseTestDecrypt(1, TEST_INDEX_3, 1) == 0);
+    LiteTestPrint("HksCipherTest011 End!\n");
+    osThreadExit();
+}
+
+static void ExecHksCipherTest012(void const *argument)
+{
+    LiteTestPrint("HksCipherTest012 Begin!\n");
+    TEST_ASSERT_TRUE(BaseTestDecrypt(1, TEST_INDEX_4, 1) == 0);
+    LiteTestPrint("HksCipherTest012 End!\n");
+    osThreadExit();
+}
+
 
 /**
  * @tc.name: HksCipherTest.HksCipherTest001
@@ -67,64 +170,209 @@ static BOOL HksCipherTestTearDown()
  */
 LITE_TEST_CASE(HksCipherTest, HksCipherTest001, Level1)
 {
-    TEST_ASSERT_TRUE(BaseTestCipher(1, TEST_INDEX_0, 1) == 0);
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksCipherTest001, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksCipherTest001 End2!\n");
 }
 
 #ifndef _CUT_AUTHENTICATE_
 
 LITE_TEST_CASE(HksCipherTest, HksCipherTest002, Level1)
 {
-    TEST_ASSERT_TRUE(BaseTestCipher(1, TEST_INDEX_1, 1) == 0);
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksCipherTest002, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksCipherTest002 End2!\n");
+    
 }
 
 LITE_TEST_CASE(HksCipherTest, HksCipherTest003, Level1)
 {
-    TEST_ASSERT_TRUE(BaseTestEncrypt(1, TEST_INDEX_0, 1) == 0);
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksCipherTest003, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksCipherTest003 End2!\n");
 }
 
 LITE_TEST_CASE(HksCipherTest, HksCipherTest004, Level1)
 {
-    TEST_ASSERT_TRUE(BaseTestEncrypt(1, TEST_INDEX_1, 1) == 0);
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksCipherTest004, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksCipherTest004 End2!\n");
 }
 
 LITE_TEST_CASE(HksCipherTest, HksCipherTest005, Level1)
 {
-    TEST_ASSERT_TRUE(BaseTestEncrypt(1, TEST_INDEX_2, 1) == 0);
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksCipherTest005, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksCipherTest005 End2!\n");    
 }
 
 LITE_TEST_CASE(HksCipherTest, HksCipherTest006, Level1)
 {
-    TEST_ASSERT_TRUE(BaseTestEncrypt(1, TEST_INDEX_3, 1) == 0);
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksCipherTest006, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksCipherTest006 End2!\n");    
 }
 
 LITE_TEST_CASE(HksCipherTest, HksCipherTest007, Level1)
 {
-    TEST_ASSERT_TRUE(BaseTestEncrypt(1, TEST_INDEX_4, 1) == 0);
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksCipherTest007, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksCipherTest007 End2!\n");    
 }
 
 LITE_TEST_CASE(HksCipherTest, HksCipherTest008, Level1)
-{
-    TEST_ASSERT_TRUE(BaseTestDecrypt(1, TEST_INDEX_0, 1) == 0);
+{ 
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksCipherTest008, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksCipherTest008 End2!\n");
 }
 
 LITE_TEST_CASE(HksCipherTest, HksCipherTest009, Level1)
-{
-    TEST_ASSERT_TRUE(BaseTestDecrypt(1, TEST_INDEX_1, 1) == 0);
+{ 
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksCipherTest009, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksCipherTest009 End2!\n");
 }
 
 LITE_TEST_CASE(HksCipherTest, HksCipherTest010, Level1)
-{
-    TEST_ASSERT_TRUE(BaseTestDecrypt(1, TEST_INDEX_2, 1) == 0);
+{    
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksCipherTest010, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksCipherTest010 End2!\n");    
 }
 
 LITE_TEST_CASE(HksCipherTest, HksCipherTest011, Level1)
-{
-    TEST_ASSERT_TRUE(BaseTestDecrypt(1, TEST_INDEX_3, 1) == 0);
+{    
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksCipherTest011, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksCipherTest011 End2!\n");
 }
 
 LITE_TEST_CASE(HksCipherTest, HksCipherTest012, Level1)
-{
-    TEST_ASSERT_TRUE(BaseTestDecrypt(1, TEST_INDEX_4, 1) == 0);
+{    
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksCipherTest012, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksCipherTest012 End2!\n");
 }
 #endif /* _CUT_AUTHENTICATE_ */
 

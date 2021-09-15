@@ -74,7 +74,7 @@ ohos_moduletest_suite("huks_std_function_test") {
   deps = [
     "//base/security/huks/frameworks/huks_standard/main:huks_standard_frameworks",
     "//base/security/huks/interfaces/innerkits/huks_standard/main:libhukssdk",
-    "//test/xts/acts/security_lite/huks/common:huks_new_test_common",
+    "//test/xts/acts/security_lite/huks/common:huks_test_common",
     "//third_party/bounds_checking_function:libsec_static",
     "//utils/native/base:utils",
   ]

@@ -24,8 +24,15 @@
 #include "hks_test_api_performance.h"
 #include "hks_test_common.h"
 #include "hks_test_log.h"
+#include "cmsis_os2.h"
+#include "ohos_types.h"
 
 #define DEFAULT_X25519_PARAM_SET_OUT 104
+
+#define TEST_TASK_STACK_SIZE      0x2000
+#define WAIT_TO_TEST_DONE         4
+
+static osPriority_t g_setPriority;
 
 /*
  * @tc.register: register a test suit named "CalcMultiTest"
@@ -74,13 +81,10 @@ static const struct HksTestGenKeyParams g_testGenKeyParams[] = {
     },
 };
 
-/**
- * @tc.name: HksGenerateKeyTest.HksGenerateKeyTest001
- * @tc.desc: The static function will return true;
- * @tc.type: FUNC
- */
-LITE_TEST_CASE(HksGenerateKeyTest, HksGenerateKeyTest001, Level1)
+static void ExecHksGenerateKeyTest001(void const *argument)
 {
+    LiteTestPrint("HksGenerateKeyTest001 Begin!\n");  
+
     uint32_t times = 1;
     uint32_t index = 0;
     uint32_t performTimes = 1;
@@ -128,6 +132,31 @@ LITE_TEST_CASE(HksGenerateKeyTest, HksGenerateKeyTest001, Level1)
     HksFreeParamSet(&paramSetOut);
     HKS_TEST_LOG_I("[%u]TestGenerateKey, Testcase_GenerateKey_[%03u] pass!", times, g_testGenKeyParams[index].testId);
     TEST_ASSERT_TRUE(ret == 0);
+    
+    LiteTestPrint("HksGenerateKeyTest001 End!\n");
+    osThreadExit();
+}
+
+/**
+ * @tc.name: HksGenerateKeyTest.HksGenerateKeyTest001
+ * @tc.desc: The static function will return true;
+ * @tc.type: FUNC
+ */
+LITE_TEST_CASE(HksGenerateKeyTest, HksGenerateKeyTest001, Level1)
+{
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksGenerateKeyTest001, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksGenerateKeyTest001 End2!\n");
 }
 
 RUN_TEST_SUITE(HksGenerateKeyTest);

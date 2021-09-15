@@ -18,6 +18,8 @@
 #include "hks_api.h"
 #include "hks_param.h"
 #include "securec.h"
+#include "cmsis_os2.h"
+#include "ohos_types.h"
 
 /*
  * @tc.register: register a test suit named "CalcMultiTest"
@@ -50,6 +52,43 @@ static BOOL HksAesTestTearDown()
     return TRUE;
 }
 
+#define TEST_TASK_STACK_SIZE      0x2000
+#define WAIT_TO_TEST_DONE         4
+
+static osPriority_t g_setPriority;
+
+static void ExecHksAesTest001(void const *argument)
+{
+    LiteTestPrint("HksAesTest001 Begin!\n");
+    TEST_ASSERT_TRUE(TestAes256ByAgree() == 0);
+    LiteTestPrint("HksAesTest001 End!\n");
+    osThreadExit();
+}
+
+static void ExecHksAesTest002(void const *argument)
+{
+    LiteTestPrint("HksAesTest002 Begin!\n");
+    TEST_ASSERT_TRUE(TestAes256ByAgree1() == 0);
+    LiteTestPrint("HksAesTest002 End!\n");
+    osThreadExit();
+}
+
+static void ExecHksAesTest003(void const *argument)
+{
+    LiteTestPrint("HksAesTest003 Begin!\n");
+    TEST_ASSERT_TRUE(TestAes256ByAgree2() == 0);
+    LiteTestPrint("HksAesTest003 End!\n");
+    osThreadExit();
+}
+
+static void ExecHksAesTest004(void const *argument)
+{
+    LiteTestPrint("HksAesTest004 Begin!\n");
+    TEST_ASSERT_EQUAL(TestAes256ByLocal(), 0);
+    LiteTestPrint("HksAesTest004 End!\n");
+    osThreadExit();
+}
+
 #ifndef _CUT_AUTHENTICATE_
 #ifndef _CUT_ED25519_
 /**
@@ -59,7 +98,19 @@ static BOOL HksAesTestTearDown()
  */
 LITE_TEST_CASE(HksAesTest, HksAesTest001, Level1)
 {
-    TEST_ASSERT_TRUE(TestAes256ByAgree() == 0);
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksAesTest001, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksAesTest001 End2!\n");
 }
 
 /**
@@ -69,7 +120,19 @@ LITE_TEST_CASE(HksAesTest, HksAesTest001, Level1)
  */
 LITE_TEST_CASE(HksAesTest, HksAesTest002, Level1)
 {
-    TEST_ASSERT_TRUE(TestAes256ByAgree1() == 0);
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksAesTest002, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksAesTest002 End2!\n");
 }
 
 /**
@@ -79,7 +142,20 @@ LITE_TEST_CASE(HksAesTest, HksAesTest002, Level1)
  */
 LITE_TEST_CASE(HksAesTest, HksAesTest003, Level1)
 {
-    TEST_ASSERT_TRUE(TestAes256ByAgree2() == 0);
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksAesTest003, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksAesTest003 End2!\n");
+    
 }
 #endif
 #endif /* _CUT_AUTHENTICATE_ */
@@ -90,8 +166,20 @@ LITE_TEST_CASE(HksAesTest, HksAesTest003, Level1)
  * @tc.type: FUNC
  */
 LITE_TEST_CASE(HksAesTest, HksAesTest004, Level1)
-{
-    TEST_ASSERT_EQUAL(TestAes256ByLocal(), 0);
+{    
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksAesTest004, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksAesTest004 End2!\n");
 }
 
 RUN_TEST_SUITE(HksAesTest);
