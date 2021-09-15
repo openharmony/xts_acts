@@ -761,7 +761,7 @@ describe('intlTest', function () {
         let option = { year: 'numeric', month: 'long', day: 'numeric',
             hour: 'numeric', minute: '2-digit', second: 'numeric', weekday: 'long', era: 'short',
             hourCycle: 'h24',numberingSystem: 'arab', hour12: true, dayPeriod: 'short',
-            foramtMatcher: 'basic', localeMatcher: 'lookup' };
+            formatMatcher: 'basic', localeMatcher: 'lookup' };
         let datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
         expect(datefmt.resolvedOptions().locale).assertEqual('zh-CN');
         expect(datefmt.resolvedOptions().hourCycle).assertEqual('h24');
@@ -773,8 +773,8 @@ describe('intlTest', function () {
         expect(datefmt.resolvedOptions().minute).assertEqual('2-digit');
         expect(datefmt.resolvedOptions().second).assertEqual('numeric');
         expect(datefmt.resolvedOptions().dayPeriod).assertEqual('short');
-        // expect(datefmt.resolvedOptions().foramtMatcher).assertEqual('basic');
-        // expect(datefmt.resolvedOptions().localeMatcher).assertEqual('lookup');
+        expect(datefmt.resolvedOptions().formatMatcher).assertEqual('basic');
+        expect(datefmt.resolvedOptions().localeMatcher).assertEqual('lookup');
     })
 
     /* *
@@ -970,7 +970,7 @@ describe('intlTest', function () {
         expect(numfmt.resolvedOptions().currency).assertEqual('EUR');
         expect(numfmt.resolvedOptions().currencyDisplay).assertEqual('name');
         expect(numfmt.resolvedOptions().currencySign).assertEqual('accounting');
-        // expect(numfmt.resolvedOptions().signDisplay).assertEqual('always');
+        expect(numfmt.resolvedOptions().signDisplay).assertEqual('always');
     })
 
     /* *
@@ -1027,7 +1027,7 @@ describe('intlTest', function () {
         expect(numfmt.resolvedOptions().currencySign).assertEqual('accounting');
         expect(numfmt.resolvedOptions().compactDisplay).assertEqual('long');
         expect(numfmt.resolvedOptions().localeMatcher).assertEqual('lookup');
-        // expect(numfmt.resolvedOptions().signDisplay).assertEqual('always');
+        expect(numfmt.resolvedOptions().signDisplay).assertEqual('always');
     })
 
     /* *
