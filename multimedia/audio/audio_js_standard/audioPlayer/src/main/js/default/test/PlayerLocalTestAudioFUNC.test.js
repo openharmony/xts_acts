@@ -19,9 +19,9 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 describe('PlayerLocalTestAudioFUNC', function () {
     let audioPlayer = media.createAudioPlayer();
     let isTimeOut = false;
-    const AUDIO_SOURCE = "file://data/media/audio/Homey.mp3";
+    const AUDIO_SOURCE = 'file://data/media/audio/01.mp3';
     const PLAY_TIME = 3000;
-    const DURATION_TIME = 89239;
+    const DURATION_TIME = 99432;
     const SEEK_TIME = 5000;
     const DELTA_TIME  = 1000;
     const END_STATE = 0;
@@ -42,20 +42,20 @@ describe('PlayerLocalTestAudioFUNC', function () {
     const MAX_VOLUME = 1;
 
     beforeAll(function() {
-        console.info("beforeAll case");
+        console.info('beforeAll case');
     })
 
     beforeEach(function() {
         isTimeOut = false;
-        console.info("beforeEach case");
+        console.info('beforeEach case');
     })
 
     afterEach(function() {
-        console.info("afterEach case");
+        console.info('afterEach case');
     })
 
     afterAll(function() {
-        console.info("afterAll case");
+        console.info('afterAll case');
     })
 
     function sleep(time) {
@@ -63,7 +63,15 @@ describe('PlayerLocalTestAudioFUNC', function () {
     }
 
     function initAudioPlayer() {
+        if (typeof (audioPlayer) != 'undefined') {
+            audioPlayer.release();
+            audioPlayer = undefined;
+        }
         audioPlayer = media.createAudioPlayer();
+        if (typeof (audioPlayer) == 'undefined') {
+            console.info('case create player is faild');
+            expect().assertFail();
+        }
     }
 
     function nextStep(mySteps) {
@@ -104,6 +112,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
                 console.info(`case to release`);
                 mySteps.shift();
                 audioPlayer.release();
+                audioPlayer = undefined;
                 break;
             case LOOP_STATE:
                 audioPlayer.loop = mySteps[SECOND_INDEX];
@@ -115,8 +124,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
                 break;
         }
     }
-	
-    function setCallback(mySteps) {
+
+    function setCallback(mySteps, done) {
         console.info(`case setCallback`);
         audioPlayer.on('dataLoad', () => {
             mySteps.shift();
@@ -171,7 +180,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         });
 
         audioPlayer.on('timeUpdate', (seekDoneTime) => {
-            if (typeof (seekDoneTime) == "undefined") {
+            if (typeof (seekDoneTime) == 'undefined') {
                 console.info(`case seek filed,errcode is ${seekDoneTime}`);
                 return;
             }
@@ -188,7 +197,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
                 console.info('case loop is true');
                 sleep(PLAY_STATE);
             }
-            if ((seekDoneTime < audioPlayer.duration) || (audioPlayer.state == "paused")) {
+            if ((seekDoneTime < audioPlayer.duration) || (audioPlayer.state == 'paused')) {
                 nextStep(mySteps);
             }
         });
@@ -197,7 +206,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
             console.info(`case setvolume called`);
             mySteps.shift();
             mySteps.shift();
-            if (audioPlayer.state == "playing") {
+            if (audioPlayer.state == 'playing') {
                 sleep(PLAY_TIME);
             }
             nextStep(mySteps);
@@ -225,6 +234,14 @@ describe('PlayerLocalTestAudioFUNC', function () {
             }
             nextStep(mySteps);
         });
+
+        setTimeout(function() {
+            if (!isTimeOut) {
+                console.info(`case is time out!`);
+                expect().assertFail();
+            }
+            done();
+        }, TIME_OUT);
     };
 
     /* *
@@ -238,15 +255,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0100', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -260,15 +270,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0200', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -282,15 +285,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0300', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -304,15 +300,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0500', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -326,15 +315,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0600', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, PAUSE_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -348,15 +330,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0700', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, STOP_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -370,15 +345,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0800', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, STOP_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -393,15 +361,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, RESET_STATE, SRC_STATE, PLAY_STATE,
             PAUSE_STATE, PLAY_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -416,15 +377,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, STOP_STATE, RESET_STATE, SRC_STATE, PLAY_STATE,
             PAUSE_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -439,15 +393,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, RESET_STATE,
             SRC_STATE, PLAY_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -461,15 +408,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1200', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -483,15 +423,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1300', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, PAUSE_STATE, ERROR_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -505,15 +438,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1400', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, 0, PAUSE_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -528,15 +454,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, DURATION_TIME,
             PLAY_STATE, FINISH_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -550,15 +469,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1600', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, SEEK_STATE, 0, PAUSE_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -572,15 +484,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1700', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, 0, RESET_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -594,15 +499,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1800', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, 0, STOP_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -616,15 +514,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1900', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, SEEK_STATE, 0, ERROR_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -638,15 +529,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2000', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, 0, RESET_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -661,15 +545,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, DURATION_TIME / RAND_NUM,
             STOP_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -683,15 +560,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2200', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, SEEK_STATE, 0, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -705,15 +575,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2300', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, SEEK_STATE, 0, STOP_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -728,15 +591,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, SEEK_STATE, 0, ERROR_STATE,
             RESET_STATE, SRC_STATE, PLAY_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -750,15 +606,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2500', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, 0, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -773,15 +622,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, SEEK_STATE, SEEK_TIME, ERROR_STATE,
             PAUSE_STATE, ERROR_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -796,15 +638,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, SEEK_STATE, SEEK_TIME, ERROR_STATE,
             RESET_STATE, SRC_STATE, PLAY_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -818,15 +653,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2800', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, DURATION_TIME, FINISH_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -841,15 +669,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, DURATION_TIME + DELTA_TIME,
             FINISH_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -863,15 +684,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_3000', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, DURATION_TIME / RAND_NUM, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -885,15 +699,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_3200', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, 0, PLAY_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -908,15 +715,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, DURATION_TIME, PLAY_STATE,
             FINISH_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -931,15 +731,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, DURATION_TIME + DELTA_TIME, PLAY_STATE,
             FINISH_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -954,15 +747,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, DURATION_TIME + DELTA_TIME,
             FINISH_STATE, PLAY_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
@@ -999,7 +785,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
             testAudioPlayer.seek(DURATION_TIME);
         });
         testAudioPlayer.on('timeUpdate', (seekDoneTime) => {
-            if (typeof (seekDoneTime) == "undefined") {
+            if (typeof (seekDoneTime) == 'undefined') {
                 console.info(`case seek filed,errcode is ${seekDoneTime}`);
                 return;
             }
@@ -1043,14 +829,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, VOLUME_STATE, 0,
             VOLUME_STATE, MAX_VOLUME, RESET_STATE, END_STATE);
         initAudioPlayer();
-        setCallback(mySteps);
+        setCallback(mySteps, done);
         audioPlayer.src = AUDIO_SOURCE;
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info(`case is time out!`);
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 })
