@@ -4,10 +4,7 @@
             "push": [
                 "hilogtest->/data/local/tmp/hilogtest"
             ],
-            "type": "PushKit",
-            "post-push": [
-                "chmod -R 777 /data/local/tmp/*"
-            ]
+            "type": "PushKit"
         }
     ],
     "driver": {
