@@ -16,10 +16,10 @@ import Intl from '@ohos.intl'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('intlTest', function () {
-    console.log('*************start I18NTest*************');
+    console.log('*************start IntlTest*************');
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0100
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_0100
     * @tc.name test the language in en-Latn-GB locale
     * @tc.desc check the language
     */
@@ -30,7 +30,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0200
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_0200
     * @tc.name test the language in ja-Jpan-JP-u-ca-japanese-hc-h12-co-emoji locale
     * @tc.desc check the language
     */
@@ -41,7 +41,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0300
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_0300
     * @tc.name test the script in locale
     * @tc.desc check the script
     */
@@ -52,7 +52,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0400
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_0400
     * @tc.name test the region in locale
     * @tc.desc check the region
     */
@@ -63,7 +63,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0500
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_0500
     * @tc.name test the basename in locale
     * @tc.desc check the basename
     */
@@ -74,7 +74,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0600
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_0600
     * @tc.name test the basename in ja-Jpan-JP-u-ca-japanese-hc-h12
     * @tc.desc check the ja-Jpan-JP-u-ca-japanese-hc-h12 basename
     */
@@ -85,7 +85,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0700
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_0700
     * @tc.name test the hourCycle
     * @tc.desc check the hourCycle
     */
@@ -96,7 +96,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0800
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_0800
     * @tc.name test the calendar
     * @tc.desc check the calendar
     */
@@ -107,7 +107,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_0900
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_0900
     * @tc.name test the japanese calendar
     * @tc.desc check the japanese calendar
     */
@@ -118,7 +118,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1000
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_1000
     * @tc.name test the h12 hourCycle
     * @tc.desc check the h12 hourCycle
     */
@@ -129,7 +129,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1100
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_1100
     * @tc.name test the caseFirst with upper
     * @tc.desc check the caseFirst
     */
@@ -140,7 +140,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1120
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_1120
     * @tc.name test the caseFirst with lower
     * @tc.desc check the caseFirst
     */
@@ -151,7 +151,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1140
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_1140
     * @tc.name test the caseFirst with false
     * @tc.desc check the caseFirst
     */
@@ -162,7 +162,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1200
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_1200
     * @tc.name test the collation
     * @tc.desc check the collation
     */
@@ -173,18 +173,29 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1300
-    * @tc.name test the numeric
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_1300
+    * @tc.name test the numeric with true value
     * @tc.desc check the numeric
     */
     it('locale_test_1300', 0, function () {
         let locale = new Intl.Locale('ja-Jpan-JP', {numeric: true});
         console.log('locale_test_1300 ' + locale.numeric);
-        expect(locale.numeric === true).assertTrue();
+        expect(locale.numeric).assertTrue();
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1400
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_1350
+    * @tc.name test the numeric with false value
+    * @tc.desc check the numeric
+    */
+    it('locale_test_1350', 0, function () {
+        let locale = new Intl.Locale('ja-Jpan-JP', {numeric: false});
+        console.log('locale_test_1350 ' + locale.numeric);
+        expect(locale.numeric).assertFalse();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_1400
     * @tc.name test the numberingSystem
     * @tc.desc check the numberingSystem
     */
@@ -195,7 +206,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1500
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_1500
     * @tc.name test the toString interface with zh
     * @tc.desc check the toString method with zh
     */
@@ -206,7 +217,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1600
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_1600
     * @tc.name test the toString interface with zh-CN
     * @tc.desc check the toString method with zh-CN
     */
@@ -217,7 +228,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1700
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_1700
     * @tc.name test the toString interface with zh-Hans-CN
     * @tc.desc check the toString method with zh-Hans-CN
     */
@@ -228,7 +239,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1800
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_1800
     * @tc.name test the toString interface with zh-Hans-CN-u-hc-h12-ca-japanese
     * @tc.desc check the toString method with zh-Hans-CN-u-hc-h12-ca-japanese
     */
@@ -239,7 +250,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_1900
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_1900
     * @tc.name test the maximize interface with zh-u-ca-gregory-co-compact param
     * @tc.desc check the maximize method with zh-u-ca-gregory-co-compact param
     */
@@ -250,7 +261,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2000
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2000
     * @tc.name test the toString interface with zh-CN-u-ca-gregory-co-compact param
     * @tc.desc check the toString method with zh-CN-u-ca-gregory-co-compact param
     */
@@ -261,7 +272,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2100
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2100
     * @tc.name test the toString interface with zh-hans-CN-u-ca-gregory-co-compact param
     * @tc.desc check the toString method with zh-hans-CN-u-ca-gregory-co-compact param
     */
@@ -272,7 +283,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2200
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2200
     * @tc.name test the mininize interface with one param zh
     * @tc.desc check the mininize method with one param zh
     */
@@ -283,7 +294,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2201
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2201
     * @tc.name test the mininize interface with one param zh-CN
     * @tc.desc check the mininize method with one param zh-CN
     */
@@ -294,7 +305,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2202
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2202
     * @tc.name test the mininize interface with one param zh-Hans-CN
     * @tc.desc check the mininize method with one param zh-Hans-CN
     */
@@ -305,7 +316,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2203
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2203
     * @tc.name test the mininize interface with one param zh-Hans-CN-u-ca-gregory-co-compact
     * @tc.desc check the mininize method with one param zh-Hans-CN-u-ca-gregory-co-compact
     */
@@ -316,7 +327,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2204
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2204
     * @tc.name test the mininize interface with zh lcoale
     * @tc.desc check the mininize method with zh lcoale
     */
@@ -327,7 +338,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2205
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2205
     * @tc.name test the mininize interface with zh-CN lcoale
     * @tc.desc check the mininize method with zh-CN lcoale
     */
@@ -338,7 +349,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2206
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2206
     * @tc.name test the mininize interface with zh-Hans-CN lcoale
     * @tc.desc check the mininize method with zh-Hans-CN lcoale
     */
@@ -349,7 +360,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2300
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2300
     * @tc.name test the maximize interface with one param zh
     * @tc.desc check the maximize method with one param zh
     */
@@ -360,7 +371,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2301
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2301
     * @tc.name test the maximize interface with one param zh-CN
     * @tc.desc check the maximize method with one param zh-CN
     */
@@ -371,7 +382,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2302
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2302
     * @tc.name test the maximize interface with one param zh-Hans-CN-u-ca-gregory-co-compact
     * @tc.desc check the maximize method with one param zh-Hans-CN-u-ca-gregory-co-compact
     */
@@ -382,7 +393,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2303
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2303
     * @tc.name test the mininize interface with zh-Hans-CN-u-ca-gregory-co-compact locale
     * @tc.desc check the mininize method with zh-Hans-CN-u-ca-gregory-co-compact locale
     */
@@ -393,7 +404,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2304
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2304
     * @tc.name test the maximize interface with zh locale
     * @tc.desc check the maximize method with zh locale
     */
@@ -404,7 +415,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2305
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2305
     * @tc.name test the maximize interface with zh-CN locale
     * @tc.desc check the maximize method with zh-CN locale
     */
@@ -415,7 +426,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALE_2306
+    * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2306
     * @tc.name test the maximize interface with zh-Hans-CN locale
     * @tc.desc check the maximize method with zh-Hans-CN locale
     */
@@ -426,7 +437,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0100
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_0100
     * @tc.name format the datetime with en-GB locale
     * @tc.desc check the datetime is not null
     */
@@ -436,7 +447,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0200
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_0200
     * @tc.name format the date with zh locale
     * @tc.desc check the date
     */
@@ -448,7 +459,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0300
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_0300
     * @tc.name format the date with en locale
     * @tc.desc check the date
     */
@@ -460,7 +471,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0310
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_0310
     * @tc.name format the date with en-US locale
     * @tc.desc check the date
     */
@@ -472,7 +483,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0320
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_0320
     * @tc.name format the date with en-GB locale
     * @tc.desc check the date
     */
@@ -484,7 +495,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0400
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_0400
     * @tc.name format the date with aa locale
     * @tc.desc check the date
     */
@@ -496,7 +507,7 @@ describe('intlTest', function () {
     // })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0500
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_0500
     * @tc.name format the hour with ban and zh locale
     * @tc.desc check the hour with ban and zh locale
     */
@@ -509,7 +520,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0600
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_0600
     * @tc.name format the hour with en and zh locale
     * @tc.desc check the hour with en and zh locale
     */
@@ -522,7 +533,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0700
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_0700
     * @tc.name format the hour with en and ban locale
     * @tc.desc check the hour with en and ban locale
     */
@@ -535,7 +546,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0800
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_0800
     * @tc.name format the hour without correct locale
     * @tc.desc check the hour without correct locale
     */
@@ -548,7 +559,7 @@ describe('intlTest', function () {
 //    })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_0900
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_0900
     * @tc.name format the date with full datestyle and mediu timestyle
     * @tc.desc check the date with full datestyle and mediu timestyle
     */
@@ -561,7 +572,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1000
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_1000
     * @tc.name format the date dateStyle with long style
     * @tc.desc check the dateStyle with long style
     */
@@ -575,7 +586,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1100
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_1100
     * @tc.name format the date dateStyle with medium style
     * @tc.desc check the dateStyle with medium style
     */
@@ -589,7 +600,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1200
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_1200
     * @tc.name format the date dateStyle with short style
     * @tc.desc check the dateStyle with short style
     */
@@ -603,7 +614,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1300
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_1300
     * @tc.name format the date with daterange
     * @tc.desc check the daterange
     */
@@ -616,7 +627,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1400
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_1400
     * @tc.name format the date with daterange when the start and end date is equal
     * @tc.desc check the daterange when the start and end date is equal
     */
@@ -629,7 +640,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1500
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_1500
     * @tc.name format the year、month、day、weekday
     * @tc.desc check the year、month、day、weekday
     */
@@ -637,12 +648,12 @@ describe('intlTest', function () {
         let date = new Date(2020, 11, 20, 14, 23, 16);
         let option = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
         let datefmt = new Intl.DateTimeFormat('ja', option);
-        console.log('jessie ' + datefmt.format(date));
+        console.log('dateTimeFormat_test_1500 ' + datefmt.format(date));
         expect(datefmt.format(date)).assertEqual('2020年12月20日日曜日');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1600
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_1600
     * @tc.name format the timerange with year、month、day、weekday
     * @tc.desc check the timerange with year、month、day、weekday
     */
@@ -651,12 +662,12 @@ describe('intlTest', function () {
         let enddate = new Date(2021, 4, 5, 10, 5, 3);
         let option = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
         let datefmt = new Intl.DateTimeFormat('en', option);
-        console.log('jessie 007 ' + datefmt.formatRange(startdate, enddate));
+        console.log('dateTimeFormat_test_1600 ' + datefmt.formatRange(startdate, enddate));
         expect(datefmt.formatRange(startdate, enddate)).assertEqual('Sunday, December 20, 2020 – Wednesday, May 5, 2021');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1700
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_1700
     * @tc.name format the hour&minute&second
     * @tc.desc check the hour&minute&second
     */
@@ -665,12 +676,12 @@ describe('intlTest', function () {
         let option = { year: 'numeric', month: 'long', day: 'numeric',
             hour: 'numeric', minute: '2-digit', second: 'numeric', weekday: 'long', era: 'short' };
         let datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
-        console.log('jessie ' + datefmt.format(date));
+        console.log('dateTimeFormat_test_1700 ' + datefmt.format(date));
         expect(datefmt.format(date)).assertEqual('公元2020年12月20日星期日 下午2:23:16');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1800
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_1800
     * @tc.name format the timeZone
     * @tc.desc check the timeZone
     */
@@ -678,34 +689,36 @@ describe('intlTest', function () {
         let date = new Date(2020, 3, 14, 15, 5, 3);
         let option = { timeZone: 'America/Los_Angeles', timeZoneName: 'long' };
         let datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
-        console.log('jessie ' + datefmt.format(date));
-        expect(datefmt.format(date).indexOf('北美太平洋夏令时间') !== -1).assertEqual(true);
+        console.log('dateTimeFormat_test_1800 ' + datefmt.format(date));
+        expect(datefmt.format(date).indexOf('北美太平洋夏令时间') !== -1).assertTrue();
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_1900
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_1900
     * @tc.name format the America/Los_Angeles timeZone
     * @tc.desc check the America/Los_Angeles timeZone
     */
     it('dateTimeFormat_test_1900', 0, function () {
         let option = { timeZone: 'America/Los_Angeles', timeZoneName: 'long' };
         let datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
+        console.log('dateTimeFormat_test_1900 ' + datefmt.resolvedOptions().timeZone);
         expect(datefmt.resolvedOptions().timeZone).assertEqual('America/Los_Angeles');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_2000
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_2000
     * @tc.name format the America/Los_Angeles timeZoneName
     * @tc.desc check the America/Los_Angeles timeZoneName
     */
     it('dateTimeFormat_test_2000', 0, function () {
         let option = { timeZone: 'America/Los_Angeles', timeZoneName: 'long' };
         let datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
+        console.log('dateTimeFormat_test_2000 ' + datefmt.resolvedOptions().timeZoneName);
         expect(datefmt.resolvedOptions().timeZoneName).assertEqual('long');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_2100
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_2100
     * @tc.name format the year
     * @tc.desc check the year
     */
@@ -713,11 +726,12 @@ describe('intlTest', function () {
         let option = { year: 'numeric', month: 'long', day: 'numeric',
             hour: 'numeric', minute: '2-digit', second: 'numeric', weekday: 'long', era: 'short' };
         let datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
+        console.log('dateTimeFormat_test_2100 ' + datefmt.resolvedOptions().year);
         expect(datefmt.resolvedOptions().year).assertEqual('numeric');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_2200
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_2200
     * @tc.name format the weekday
     * @tc.desc check the weekday
     */
@@ -725,11 +739,12 @@ describe('intlTest', function () {
         let option = { year: 'numeric', month: 'long', day: 'numeric',
             hour: 'numeric', minute: '2-digit', second: 'numeric', weekday: 'long', era: 'short' };
         let datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
+        console.log('dateTimeFormat_test_2200 ' + datefmt.resolvedOptions().weekday);
         expect(datefmt.resolvedOptions().weekday).assertEqual('long');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_2300
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_2300
     * @tc.name format the hour in zh-CN-u-hc-h12
     * @tc.desc check the hour in zh-CN-u-hc-h12
     */
@@ -737,11 +752,12 @@ describe('intlTest', function () {
         let option = { year: 'numeric', month: 'long', day: 'numeric',
             hour: 'numeric', minute: '2-digit', second: 'numeric', weekday: 'long', era: 'short' };
         let datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
+        console.log('dateTimeFormat_test_2300 ' + datefmt.resolvedOptions().hour);
         expect(datefmt.resolvedOptions().hour).assertEqual('numeric');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_2400
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_2400
     * @tc.name format the hour in fr-Latn-FR-u-nu-mong
     * @tc.desc check the hour in fr-Latn-FR-u-nu-mong
     */
@@ -749,11 +765,12 @@ describe('intlTest', function () {
         let date = new Date(2020, 11, 20, 14, 23, 16);
         let option = { dateStyle: 'full' };
         let datefmt = new Intl.DateTimeFormat('fr-Latn-FR-u-nu-mong', option);
+        console.log('dateTimeFormat_test_2400 ' + datefmt.format(date));
         expect(datefmt.format(date)).assertEqual('dimanche ᠒᠐ décembre ᠒᠐᠒᠐');
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATETIME_2500
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_2500
     * @tc.name format the hour in zh-CN-u-hc-h12 with matcher
     * @tc.desc check the hour in zh-CN-u-hc-h12 with matcher
     */
@@ -766,7 +783,7 @@ describe('intlTest', function () {
         expect(datefmt.resolvedOptions().locale).assertEqual('zh-CN');
         expect(datefmt.resolvedOptions().hourCycle).assertEqual('h24');
         expect(datefmt.resolvedOptions().numberingSystem).assertEqual('arab');
-        expect(datefmt.resolvedOptions().hour12 === true).assertTrue();
+        expect(datefmt.resolvedOptions().hour12).assertTrue();
         expect(datefmt.resolvedOptions().era).assertEqual('short');
         expect(datefmt.resolvedOptions().month).assertEqual('long');
         expect(datefmt.resolvedOptions().day).assertEqual('numeric');
@@ -778,7 +795,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_0100
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_0100
     * @tc.name format the number in zh
     * @tc.desc check the number in zh
     */
@@ -789,7 +806,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_0200
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_0200
     * @tc.name format the number in zh-u-nu-latn
     * @tc.desc check the number in zh-u-nu-latn
     */
@@ -800,7 +817,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_0300
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_0300
     * @tc.name format the number in zh-u-nu-arab
     * @tc.desc check the number in zh-u-nu-arab
     */
@@ -811,7 +828,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_0400
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_0400
     * @tc.name format the number in en
     * @tc.desc check the number in en
     */
@@ -822,7 +839,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_0500
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_0500
     * @tc.name format the number in en-u-nu-thai
     * @tc.desc check the number in en-u-nu-thai
     */
@@ -833,7 +850,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_0600
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_0600
     * @tc.name format the number in en-GB
     * @tc.desc check the number in en-GB
     */
@@ -844,7 +861,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_0700
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_0700
     * @tc.name format the number in en-US
     * @tc.desc check the number in en-US
     */
@@ -855,7 +872,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_0800
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_0800
     * @tc.name format the number in aa
     * @tc.desc check the number in aa
     */
@@ -866,7 +883,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_0900
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_0900
     * @tc.name format the number in zh and en list
     * @tc.desc check the number in zh and en list
     */
@@ -877,7 +894,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1000
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_1000
     * @tc.name format the number in en and zh list
     * @tc.desc check the number in en and zh list
     */
@@ -888,7 +905,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1100
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_1100
     * @tc.name format the number in en and aa list
     * @tc.desc check the number in en and aa list
     */
@@ -899,7 +916,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1200
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_1200
     * @tc.name format the number in aa and zh list
     * @tc.desc check the number in aa and zh list
     */
@@ -910,7 +927,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1300
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_1300
     * @tc.name format the number in aa and bb list
     * @tc.desc check the number in aa and bb list
     */
@@ -921,7 +938,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1400
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_1400
     * @tc.name format the number in aa bb and es list
     * @tc.desc check the number in aa  bb and es list
     */
@@ -932,7 +949,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1500
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_1500
     * @tc.name format the number in aa it and bb list
     * @tc.desc check the number in aa it and bb list
     */
@@ -943,7 +960,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1600
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_1600
     * @tc.name format the number with scientific
     * @tc.desc check the number with scientific
     */
@@ -956,7 +973,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1700
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_1700
     * @tc.name format the number with currency EUR
     * @tc.desc check the number with currency EUR
     */
@@ -974,7 +991,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1800
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_1800
     * @tc.name format the number with currency USD
     * @tc.desc check the number with currency USD
     */
@@ -986,7 +1003,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_1900
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_1900
     * @tc.name format the number with currency CNY
     * @tc.desc check the number with currency CNY
     */
@@ -998,7 +1015,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_2000
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_2000
     * @tc.name format the number with currency JPY
     * @tc.desc check the number with currency JPY
     */
@@ -1010,7 +1027,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_2100
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_2100
     * @tc.name format the number with signDisplay
     * @tc.desc check the number with signDisplay
     */
@@ -1031,7 +1048,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_2200
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_2200
     * @tc.name format the number with unit
     * @tc.desc check the number with unit
     */
@@ -1046,7 +1063,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_2300
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_2300
     * @tc.name format the number with unit
     * @tc.desc check the number with unit
     */
@@ -1058,7 +1075,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_2400
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_2400
     * @tc.name format the number with numberingSystem
     * @tc.desc check the number with numberingSystem
     */
@@ -1070,7 +1087,7 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_NUMBER_2500
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_2500
     * @tc.name format the number with style
     * @tc.desc check the number with style
     */
@@ -1084,7 +1101,7 @@ describe('intlTest', function () {
         expect(numfmt.resolvedOptions().minimumIntegerDigits).assertEqual(7);
         expect(numfmt.resolvedOptions().minimumSignificantDigits).assertEqual(5);
         expect(numfmt.resolvedOptions().maximumSignificantDigits).assertEqual(10);
-        expect(numfmt.resolvedOptions().useGrouping === true).assertTrue();
+        expect(numfmt.resolvedOptions().useGrouping).assertTrue();
     })
-    console.log('*************end I18NTest*************');
+    console.log('*************end IntlTest*************');
 })
