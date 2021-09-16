@@ -12,11 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import resmgr from "@ohos.resourceManager"
+import resmgr from '@ohos.resourceManager'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('resMgrTest', function () {
-    console.log("*************00000000000000000000000*************");
+    console.log('*************start ResmgrTest*************');
 
     /* *
     * @tc.number SUB_GLOBAL_RESMGR_JS_0100
@@ -36,7 +36,7 @@ describe('resMgrTest', function () {
     * @tc.desc get the resource manager in callback mode with bundlename
     */
     it('getResourceManager_test_002', 0, async function (done) {
-        resmgr.getResourceManager("com.ohos.settings", (error, mgr) => {
+        resmgr.getResourceManager('com.ohos.settings', (error, mgr) => {
             expect(mgr !== null).assertTrue();
         })
         done();
@@ -60,7 +60,7 @@ describe('resMgrTest', function () {
     * @tc.desc get the resource manager in promise mode with bundlename
     */
     it('getResourceManager_test_004', 0, async function (done) {
-        resmgr.getResourceManager("com.ohos.settings").then(mgr => {
+        resmgr.getResourceManager('com.ohos.settings').then(mgr => {
             expect(mgr !== null).assertTrue();
         })
         done();
@@ -261,4 +261,5 @@ describe('resMgrTest', function () {
         })
         done();
     })
+    console.log('*************end ResmgrTest*************');
 }) 
