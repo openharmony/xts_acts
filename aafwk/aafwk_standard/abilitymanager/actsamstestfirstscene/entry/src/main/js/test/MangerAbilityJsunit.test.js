@@ -44,7 +44,7 @@ var bundleNameList = [
 
 describe('ActsAmsTestFirstScene', function () {
     console.info('----ActsAmsTestFirstScene----');
-    beforeAll(async function () {
+    beforeAll(async function (done) {
         featureAbility.startAbility(
             {
                 want:
@@ -64,16 +64,15 @@ describe('ActsAmsTestFirstScene', function () {
             },
         );
         var maxnum = 10, flag = 1;
-        abilitymanager.queryRecentAbilityMissionInfos(maxnum, flag, data => {
-            console.info('queryRecentAbilityMissionInfos data ' + JSON.stringify(data));
-            for (var i = 0; i < data.length; i++) {
-                if (data[i].baseAbility.bundleName != 'com.example.actsamstestfirstscene' &&
-                    data[i].topAbility.bundleName != 'com.example.actsamstestfirstscene.MainAbility') {
-                    var info = abilitymanager.removeMission(data[i].id);
-                    console.info(' removeMission data  [' + info + ']');
-                }
+        var data = await abilitymanager.queryRecentAbilityMissionInfos(maxnum, flag);
+        console.log('queryRecentAbilityMissionInfos data  ' + JSON.stringify(data));
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].baseAbility.bundleName != 'com.example.actsamstestfirstscene' &&
+                data[i].topAbility.bundleName != 'com.example.actsamstestfirstscene') {
+                var info = abilitymanager.removeMission(data[i].id);
+                console.log(' removeMission data  [' + info + ']');
             }
-        });
+        };
         featureAbility.startAbility(
             {
                 want:
@@ -92,10 +91,7 @@ describe('ActsAmsTestFirstScene', function () {
                 },
             },
         );
-    });
-
-    afterAll(function () {
-        abilitymanager.clearMissions();
+        done();
     });
 
     /*
