@@ -29,6 +29,7 @@
 #define LEVEL_FOUR 4
 #define DEF_TASK_STACK 2000
 #define DEF_TASK_PRIORITY 20
+#define TEST_SSID_COUNT 9
 
 static int g_apEnableSuccess = 0;
 static int g_staScanSuccess = 0;
@@ -389,9 +390,9 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testConnectDisConnect, Function | Mediu
 LITE_TEST_CASE(WifiServiceFuncTestSuite, testHandleDeviceConfig, Function | MediumTest | Level2)
 {
     int netId = 0;
-    const char* ssid1 = "XtsTestWifi1";
-    const char* ssid2 = "XtsTestWifi2";
-    const char* ssid3 = "XtsTestWifi3";
+    const char* ssid1 = "XtsTestWifi01";
+    const char* ssid[TEST_SSID_COUNT] = {"XtsTestWifi02", "XtsTestWifi03", "XtsTestWifi04", "XtsTestWifi05", "XtsTestWifi06", "XtsTestWifi07", "XtsTestWifi08", "XtsTestWifi09", 		"XtsTestWifi10"};
+    const char* ssid11 = "XtsTestWifi11";
     const char* info = "12345678";
     unsigned char bssid[WIFI_MAC_LEN] = {0xac, 0x75, 0x1d, 0xd8, 0x55, 0xc1};
     WifiDeviceConfig config = {0};
@@ -410,7 +411,7 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testHandleDeviceConfig, Function | Medi
     for (int i = 0; i < WIFI_MAX_CONFIG_SIZE - 1; i++) {
         config.securityType = WIFI_SEC_TYPE_PSK;
         config.wapiPskType = WIFI_PSK_TYPE_HEX;
-        ret = strncpy_s(config.ssid, WIFI_MAX_SSID_LEN, ssid2, sizeof(ssid2));
+        ret = strncpy_s(config.ssid, WIFI_MAX_SSID_LEN, ssid[i], sizeof(ssid[i]));
         TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, ret);
         ret = strncpy_s(config.preSharedKey, WIFI_MAX_KEY_LEN, info, strlen(info));
         TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, ret);
@@ -422,7 +423,7 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testHandleDeviceConfig, Function | Medi
         }
     }
 
-    ret = strncpy_s(config.ssid, WIFI_MAX_SSID_LEN, ssid3, strlen(ssid3));
+    ret = strncpy_s(config.ssid, WIFI_MAX_SSID_LEN, ssid11, strlen(ssid11));
     TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, ret);
     ret = strncpy_s(config.preSharedKey, WIFI_MAX_KEY_LEN, info, strlen(info));
     TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, ret);
