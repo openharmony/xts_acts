@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "contentType-signed.hap"
+                "ActsContentTypeAllTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
