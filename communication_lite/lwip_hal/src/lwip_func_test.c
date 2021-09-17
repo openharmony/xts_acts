@@ -664,6 +664,7 @@ LITE_TEST_CASE(LwipFuncTestSuite, testSelectMultiClients, Function | MediumTest 
     g_selectTimeout = 5;
     osThreadId_t serverTaskId = osThreadNew((osThreadFunc_t)SelectServerTask, NULL, &tSelect);
     TEST_ASSERT_NOT_NULL(serverTaskId);
+    osDelay(ONE_SECOND);
     if (serverTaskId == NULL) {
         printf("create select server task fail!\n");
     } else {
