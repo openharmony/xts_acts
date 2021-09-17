@@ -16,7 +16,8 @@ ohos_hap("bmsJstest2") {
   hap_profile = "./src/main/config.json"
   hap_name = "bmsJstest2"
   subsystem_name = XTS_SUITENAME
-  final_hap_path = "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  final_hap_path = 
+     "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
   testonly = true
   deps = [
     ":hjs_demo_js_assets",
