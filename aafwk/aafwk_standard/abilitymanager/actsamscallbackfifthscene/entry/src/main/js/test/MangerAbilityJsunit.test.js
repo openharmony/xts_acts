@@ -110,8 +110,14 @@ describe('ActsAmsCallBackFifthScene', function () {
                 },
             },
         );
-        done();
+        setTimeout(done(), 5000);
     });
+    
+    function timeout() {
+        expect().assertFail();
+        console.debug('Acts_Ams_test=========timeout========');
+        done();
+    }
 
     /*
      * @tc.number    : Acts_Ams_test_6600
@@ -119,40 +125,39 @@ describe('ActsAmsCallBackFifthScene', function () {
      * @tc.desc      : Get All Running Processes Info(by CallBack)
      */
     it('Acts_Ams_test_6600', 0, async function (done) {
-        setTimeout(function () {
-            abilitymanager.getAllRunningProcesses(
-                (error, info) => {
-                    console.info('getAllRunningProcesses error.code \
-                    ' + error.code + ', data length [' + info.length + ']');
-                    console.info('Acts_Ams_test_6600 getAllRunningProcesses JSON String: ' + JSON.stringify(info));
-                    expect(Array.isArray(info)).assertEqual(true);
-                    expect(info.length).assertEqual(5);
-                    for (var i = 0; i < info.length; i++) {
-                        expect(typeof (info[i].pid)).assertEqual("number");
-                        expect(info[i].pid).assertLarger(0);
+        abilitymanager.getAllRunningProcesses(
+            (error, info) => {
+                console.info('getAllRunningProcesses error.code \
+                ' + error.code + ', data length [' + info.length + ']');
+                console.info('Acts_Ams_test_6600 getAllRunningProcesses JSON String: ' + JSON.stringify(info));
+                expect(Array.isArray(info)).assertEqual(true);
+                expect(info.length).assertEqual(5);
+                for (var i = 0; i < info.length; i++) {
+                    expect(typeof (info[i].pid)).assertEqual("number");
+                    expect(info[i].pid).assertLarger(0);
 
-                        expect(typeof (info[i].processName)).assertEqual("string");
-                        expect(info[i].processName.length).assertLarger(0);
-                        expect(bundleNameList.indexOf(info[i].processName)).assertLarger(-1);
+                    expect(typeof (info[i].processName)).assertEqual("string");
+                    expect(info[i].processName.length).assertLarger(0);
+                    expect(bundleNameList.indexOf(info[i].processName)).assertLarger(-1);
 
-                        expect(Array.isArray(info[i].pkgList)).assertEqual(true);
-                        expect(info[i].pkgList.length).assertEqual(0);
+                    expect(Array.isArray(info[i].pkgList)).assertEqual(true);
+                    expect(info[i].pkgList.length).assertEqual(0);
 
-                        expect(typeof (info[i].uid)).assertEqual("number");
-                        expect(info[i].uid).assertLarger(0);
+                    expect(typeof (info[i].uid)).assertEqual("number");
+                    expect(info[i].uid).assertLarger(0);
 
-                        expect(typeof (info[i].lastMemoryLevel)).assertEqual("number");
-                        expect(info[i].lastMemoryLevel).assertEqual(-1);
+                    expect(typeof (info[i].lastMemoryLevel)).assertEqual("number");
+                    expect(info[i].lastMemoryLevel).assertEqual(-1);
 
-                        expect(typeof (info[i].weight)).assertEqual("number");
-                        expect(info[i].weight).assertEqual(-1);
+                    expect(typeof (info[i].weight)).assertEqual("number");
+                    expect(info[i].weight).assertEqual(-1);
 
-                        expect(typeof (info[i].weightReasonCode)).assertEqual("number");
-                        expect(info[i].weightReasonCode).assertEqual(WeightReasonCode.REASON_UNKNOWN);
-                    }
-                });
-            done();
-        }, 5000);
+                    expect(typeof (info[i].weightReasonCode)).assertEqual("number");
+                    expect(info[i].weightReasonCode).assertEqual(WeightReasonCode.REASON_UNKNOWN);
+                }
+                done();
+            });
+        setTimeout(timeout, 5000);
     })
 
     /*
@@ -197,8 +202,9 @@ describe('ActsAmsCallBackFifthScene', function () {
                     expect(typeof (data[i].missionDescription.label)).assertEqual("string");
                     expect(typeof (data[i].missionDescription.iconPath)).assertEqual("string");
                 }
+                done();
             });
-        done();
+        setTimeout(timeout, 5000);
     })
 
     /*
@@ -243,8 +249,9 @@ describe('ActsAmsCallBackFifthScene', function () {
                     expect(typeof (data[i].missionDescription.label)).assertEqual("string");
                     expect(typeof (data[i].missionDescription.iconPath)).assertEqual("string");
                 }
+                done();
             });
-        done();
+        setTimeout(timeout, 5000);
     })
 
     /*
@@ -261,8 +268,9 @@ describe('ActsAmsCallBackFifthScene', function () {
                 ' + error.code + ',data  [' + info + ']');
                 expect(typeof (info)).assertEqual("number");
                 expect(info).assertEqual(0);
+                done();
             });
-        done();
+        setTimeout(timeout, 5000);
     })
 
     /*
@@ -279,8 +287,9 @@ describe('ActsAmsCallBackFifthScene', function () {
                 ' + error.code + ',data  [' + info + ']');
                 expect(typeof (info)).assertEqual("number");
                 expect(info).assertEqual(0);
+                done();
             });
-        done();
+        setTimeout(timeout, 5000);
     })
 
     /*
@@ -297,8 +306,9 @@ describe('ActsAmsCallBackFifthScene', function () {
                 ' + error.code + ',data  [' + info + ']');
                 expect(typeof (info)).assertEqual("number");
                 expect(info).assertLarger(0);
+                done();
             });
-        done();
+        setTimeout(timeout, 5000);
     })
 
     /*
@@ -313,8 +323,9 @@ describe('ActsAmsCallBackFifthScene', function () {
                 ' + error.code + ',data  [' + info + ']');
                 expect(typeof (info)).assertEqual("number");
                 expect(info).assertLarger(0);
+                done();
             });
-        done();
+        setTimeout(timeout, 5000);
     })
 
     /*
@@ -329,7 +340,8 @@ describe('ActsAmsCallBackFifthScene', function () {
                 ' + error.code + ',data  [' + info + ']');
                 expect(typeof (info)).assertEqual("number");
                 expect(info).assertEqual(0);
+                done();
             });
-        done();
+        setTimeout(timeout, 5000);
     })
 })
