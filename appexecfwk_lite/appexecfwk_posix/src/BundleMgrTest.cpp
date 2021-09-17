@@ -863,28 +863,14 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0001, Function | MediumTest |
 
 /**
  * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0002
- * @tc.name      : Test the GetBundleSize of the system hap can be obtained normally
+ * @tc.name      : GetBundleSize parameter legal and bundleName length equal to 127 test
  * @tc.desc      : [C- SOFTWARE -0200]
  */
 HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0002, Function | MediumTest | Level1)
 {
     printf("------start testGetBundleSizeWithLegal_0002------\n");
-    char *bundleName = (char*)"com.huawei.launcher";
-    uint32_t resultCode = GetBundleSize(bundleName);
-    EXPECT_GT(resultCode, 0);
-    printf("------end testGetBundleSizeWithLegal_0002------\n");
-}
-
-/**
- * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0003
- * @tc.name      : GetBundleSize parameter legal and bundleName length equal to 127 test
- * @tc.desc      : [C- SOFTWARE -0200]
- */
-HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0003, Function | MediumTest | Level1)
-{
-    printf("------start testGetBundleSizeWithLegal_0003------\n");
-    char *bundleName = (char*)"com.huawei.testjsdemoBundleNameLengt" \
-"hEqualTo127testjsdemoBundleNameLengthEqualTo127testjsdemoBundleNameLengthEqualTo127testjsde";
+    char *bundleName = (char*)"com.huawei.testjsdemoBundleNamelengthequalto127" \
+"testjsdemoBundleNamelengthequalto127testjsdemoBundleNamelengthequalto127testjsde";
     sem_init(&g_sem, 0, 0);
     InstallParam installParam = {.installLocation = 1,.keepData = false };
     string hapPath = g_testPath + "testGetBundleNameWithLegal127.hap";
@@ -897,11 +883,11 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0003, Function | MediumTest |
     sem_init(&g_sem, 0, 0);
     Uninstall(bundleName, &installParam, TestBundleStateCallback);
     sem_wait(&g_sem);
-    printf("------end testGetBundleSizeWithLegal_0003------\n");
+    printf("------end testGetBundleSizeWithLegal_0002------\n");
 }
 
 /**
- * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0004
+ * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0003
  * @tc.name      : GetBundleSize parameter illegal and bundleName length equal to 128 test
  * @tc.desc      : [C- SOFTWARE -0200]
  */
@@ -917,7 +903,7 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0001, Function | MediumTest
 }
 
 /**
- * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0005
+ * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0004
  * @tc.name      : GetBundleSize parameter illegal and bundleName nullptr test
  * @tc.desc      : [C- SOFTWARE -0200]
  */
@@ -932,7 +918,7 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0002, Function | MediumTest
 }
 
 /**
- * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0006
+ * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0005
  * @tc.name      : GetBundleSize parameter illegal and bundleName error test
  * @tc.desc      : [C- SOFTWARE -0200]
  */
@@ -947,7 +933,7 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0003, Function | MediumTest
 }
 
 /**
- * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0007
+ * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0006
  * @tc.name      : GetBundleSize parameter illegal and bundleName " " test
  * @tc.desc      : [C- SOFTWARE -0200]
  */
@@ -962,7 +948,7 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0004, Function | MediumTest
 }
 
 /**
- * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0008
+ * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0007
  * @tc.name      : stress test of the same application
  * @tc.desc      : [C- SOFTWARE -0200]
  */
@@ -978,7 +964,7 @@ HWTEST_F(BundleMgrTest, testStressConfig_0001, Function | MediumTest | Level2)
 }
 
 /**
- * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0009
+ * @tc.number    : SUB_APPEXECFWK_BMS_SIZE_0008
  * @tc.name      : stress test of the difference application
  * @tc.desc      : [C- SOFTWARE -0200]
  */
