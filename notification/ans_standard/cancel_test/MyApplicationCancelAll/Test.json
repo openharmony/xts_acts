@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ans_signed.hap"
+                "ActsMyApplicationCancelAllTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 export default {
-    async onCreate() {
+    onCreate() {
         console.info("============== AceApplication onCreate ==============");
     },
     onDestroy() {

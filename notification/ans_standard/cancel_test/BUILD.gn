@@ -15,6 +15,6 @@ import("//build/ohos_var.gni")
 group("cancel_test") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "MyApplicationCancelAll:ans_signed" ]
+    deps = [ "MyApplicationCancelAll:ActsMyApplicationCancelAllTest" ]
   }
 }

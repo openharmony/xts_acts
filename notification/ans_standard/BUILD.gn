@@ -15,6 +15,10 @@ import("//build/ohos_var.gni")
 group("ans_standard") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "publishicontest:ActsAnsIconTest" ]
+    deps = [
+      "cancel_test:MyApplicationCancelAll",
+      "publish_test:notification-ContentType-All",
+      "publishicontest:ActsAnsIconTest",
+    ]
   }
 }
