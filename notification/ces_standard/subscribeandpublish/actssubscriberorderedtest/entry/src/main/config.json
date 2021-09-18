@@ -85,12 +85,12 @@
             ]
           }
         ],
+        "visible": true,
         "name": "com.example.actssubscribertestorder.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "page",
-        "isVisible": "true",
         "launchType": "standard"
       }
     ],
