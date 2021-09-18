@@ -31,7 +31,7 @@ group("actsabilitymanagertest") {
       "sceneProject/simulateEAbility:simulateEAbility",
       "sceneProject/simulateFAbilitySed:simulateFAbilitySed",
       "sceneProject/verifyAAbility:verifyAAbility",
-      "sceneProject/verifyIAbility:verifyIAbility"
+      "sceneProject/verifyIAbility:verifyIAbility",
     ]
   }
 }
