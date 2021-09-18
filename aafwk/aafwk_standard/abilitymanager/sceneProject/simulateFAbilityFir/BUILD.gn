@@ -16,7 +16,7 @@ ohos_hap("simulateFAbilityFir") {
   hap_profile = "./src/main/config.json"
   hap_name = "simulateFAbilityFir"
   subsystem_name = XTS_SUITENAME
-  final_hap_path =
+  final_hap_path = 
       "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
   testonly = true
   deps = [

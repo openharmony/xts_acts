@@ -112,7 +112,7 @@ describe('ActsAmsCallBackFifthScene', function () {
         );
         setTimeout(done(), 5000);
     });
-    
+
     function timeout() {
         expect().assertFail();
         console.debug('Acts_Ams_test=========timeout========');

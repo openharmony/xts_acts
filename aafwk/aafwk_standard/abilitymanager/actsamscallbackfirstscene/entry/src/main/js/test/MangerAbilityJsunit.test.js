@@ -81,9 +81,9 @@ describe('ActsAmsCallBackFirstScene', function () {
                 },
             },
         );
-        done();
+        setTimeout(done(), 5000);
     });
-    
+
     function timeout() {
         expect().assertFail();
         console.debug('Acts_Ams_test=========timeout========');
