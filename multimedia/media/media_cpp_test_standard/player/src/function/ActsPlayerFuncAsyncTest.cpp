@@ -20,7 +20,7 @@ using namespace std;
 using namespace OHOS;
 using namespace OHOS::Media;
 using namespace testing::ext;
-using namespace PlayerNameSpace;
+using namespace TestPlayerBasic;
 
 /**
     * @tc.number    : SUB_MEDIA_PLAYER_Local_Async_Function_03_0100
@@ -29,24 +29,24 @@ using namespace PlayerNameSpace;
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0100, Function | MediumTest | Level0)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Stop());
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_EQ(RET_OK, player->Release());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -56,21 +56,21 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0100, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0200, Function | MediumTest | Level0)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
 
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Pause());
@@ -78,7 +78,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0200, Func
 
     EXPECT_EQ(RET_OK, player->Stop());
     EXPECT_EQ(RET_OK, player->Reset());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -88,33 +88,33 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0200, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0300, Function | MediumTest | Level0)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
 
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Pause());
     EXPECT_FALSE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Stop());
     EXPECT_EQ(RET_OK, player->Reset());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -124,25 +124,25 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0300, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0400, Function | MediumTest | Level0)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Stop());
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Reset());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -152,25 +152,25 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0400, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0500, Function | MediumTest | Level0)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -180,27 +180,27 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0500, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0600, Function | MediumTest | Level1)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Pause());
     EXPECT_FALSE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Pause());
@@ -208,7 +208,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0600, Func
 
     EXPECT_EQ(RET_OK, player->Stop());
     EXPECT_EQ(RET_OK, player->Reset());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -218,25 +218,25 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0600, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0700, Function | MediumTest | Level1)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Pause());
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Reset());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -246,29 +246,29 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0700, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0800, Function | MediumTest | Level1)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
 
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Pause());
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Reset());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -278,35 +278,35 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0800, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0900, Function | MediumTest | Level2)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Stop());
     EXPECT_FALSE(player->IsPlaying());
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Pause());
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Reset());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -316,31 +316,31 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_0900, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1000, Function | MediumTest | Level2)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Stop());
     EXPECT_FALSE(player->IsPlaying());
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Pause());
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Reset());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -350,23 +350,23 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1000, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1100, Function | MediumTest | Level2)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Reset());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 
@@ -377,26 +377,26 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1100, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1300, Function | MediumTest | Level1)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Stop());
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_NE(RET_OK, player->Pause());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -406,31 +406,31 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1300, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1400, Function | MediumTest | Level1)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-    EXPECT_NEAR(SEEK_TIME_5_SEC, time, DELTA_TIME);
+    EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(SEEK_TIME_5_SEC, time, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->Pause());
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Stop());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -440,35 +440,35 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1400, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1500, Function | MediumTest | Level2)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Pause());
     EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_MODE));
 
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-    EXPECT_NEAR(SEEK_TIME_5_SEC, time, DELTA_TIME);
+    EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(SEEK_TIME_5_SEC, time, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Stop());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -478,39 +478,39 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1500, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1600, Function | MediumTest | Level2)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Pause());
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
     for (int32_t i = 1; i < 4; i++) {
-        EXPECT_EQ(RET_OK, player->Seek(i * 1000, SEEK_MODE));
+        EXPECT_EQ(RET_OK, player->Seek(i * TIME_SEC2MS, SEEK_MODE));
         EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-        EXPECT_NEAR(i * 1000, time, DELTA_TIME);
+        EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(i * TIME_SEC2MS, time, SEEK_MODE));
     }
     EXPECT_EQ(RET_OK, player->Pause());
     EXPECT_FALSE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Stop());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -520,30 +520,30 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1600, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1700, Function | MediumTest | Level0)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-    EXPECT_NEAR(SEEK_TIME_5_SEC, time, DELTA_TIME);
+    EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(SEEK_TIME_5_SEC, time, SEEK_MODE));
 
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -553,32 +553,32 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1700, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1800, Function | MediumTest | Level1)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-    EXPECT_NEAR(SEEK_TIME_5_SEC, time, DELTA_TIME);
+    EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(SEEK_TIME_5_SEC, time, SEEK_MODE));
 
     EXPECT_EQ(RET_OK, player->Stop());
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -588,21 +588,21 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1800, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1900, Function | MediumTest | Level2)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Stop());
@@ -611,11 +611,11 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1900, Func
     EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_MODE));
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-    EXPECT_NEAR(SEEK_TIME_5_SEC, time, DELTA_TIME);
+    EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(SEEK_TIME_5_SEC, time, SEEK_MODE));
 
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -625,22 +625,22 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_1900, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2000, Function | MediumTest | Level1)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
     int32_t durationTime;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Pause());
@@ -652,14 +652,14 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2000, Func
         EXPECT_EQ(RET_OK, player->Play());
         EXPECT_TRUE(player->IsPlaying());
         EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-        EXPECT_NEAR(i, time, DELTA_TIME);
+        EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(i, time, SEEK_MODE));
         EXPECT_EQ(RET_OK, player->Pause());
     }
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -669,22 +669,22 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2000, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2100, Function | MediumTest | Level2)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
     int32_t durationTime;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Pause());
@@ -694,13 +694,13 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2100, Func
         EXPECT_EQ(RET_OK, player->Seek(i, SEEK_MODE));
         EXPECT_FALSE(player->IsPlaying());
         EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-        EXPECT_NEAR(i, time, DELTA_TIME);
+        EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(i, time, SEEK_MODE));
     }
     EXPECT_EQ(RET_OK, player->Stop());
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -710,21 +710,21 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2100, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2200, Function | MediumTest | Level2)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Pause());
@@ -733,12 +733,12 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2200, Func
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Play());
     EXPECT_TRUE(player->IsPlaying());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-    EXPECT_NEAR(PLAYING_TIME * 1000  + SEEK_TIME_5_SEC, time, DELTA_TIME);
+    EXPECT_NEAR(PLAYING_TIME * TIME_SEC2MS  + SEEK_TIME_5_SEC, time, DELTA_TIME);
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -748,38 +748,38 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2200, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2300, Function | MediumTest | Level2)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Pause());
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_MODE));
     EXPECT_TRUE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-    EXPECT_NEAR(SEEK_TIME_5_SEC, time, DELTA_TIME);
+    EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(SEEK_TIME_5_SEC, time, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->Stop());
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -789,21 +789,21 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2300, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2400, Function | MediumTest | Level2)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Stop());
@@ -811,15 +811,15 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2400, Func
     EXPECT_NE(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_MODE));
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-    EXPECT_NEAR(FILE_BEGIN, time, DELTA_TIME);
+    EXPECT_EQ(FILE_BEGIN, time);
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -829,30 +829,30 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2400, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2500, Function | MediumTest | Level1)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->Seek(FILE_BEGIN, SEEK_MODE));
     EXPECT_TRUE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-    EXPECT_NEAR(FILE_BEGIN, time, DELTA_TIME);
+    EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(FILE_BEGIN, time, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -862,21 +862,21 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2500, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2600, Function | MediumTest | Level3)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Stop());
@@ -884,13 +884,13 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2600, Func
     EXPECT_NE(RET_OK, player->Seek(SEEK_TIME_5_SEC, SEEK_MODE));
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-    EXPECT_NEAR(FILE_BEGIN, time, DELTA_TIME);
+    EXPECT_EQ(FILE_BEGIN, time);
     EXPECT_NE(RET_OK, player->Pause());
 
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -900,21 +900,21 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2600, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2700, Function | MediumTest | Level3)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Stop());
@@ -923,15 +923,15 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2700, Func
 
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-    EXPECT_NEAR(FILE_BEGIN, time, DELTA_TIME);
+    EXPECT_EQ(FILE_BEGIN, time);
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -941,22 +941,22 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2700, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2800, Function | MediumTest | Level1)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
     int32_t durationTime;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->GetDuration(durationTime));
@@ -964,9 +964,9 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2800, Func
     EXPECT_EQ(RET_OK, testCallback->WaitForState(PLAYER_PLAYBACK_COMPLETE));
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-    EXPECT_EQ(durationTime, time);
+    EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(durationTime, time, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->Reset());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -976,34 +976,34 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2800, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2900, Function | MediumTest | Level3)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
     int32_t durationTime;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->GetDuration(durationTime));
     EXPECT_EQ(RET_OK, player->Seek(durationTime + 1, SEEK_MODE));
     EXPECT_EQ(RET_OK, testCallback->WaitForState(PLAYER_PLAYBACK_COMPLETE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-    EXPECT_EQ(durationTime, time);
+    EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(durationTime, time, SEEK_MODE));
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Stop());
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -1013,32 +1013,32 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_2900, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_3000, Function | MediumTest | Level1)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
     int32_t durationTime;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->GetDuration(durationTime));
     EXPECT_EQ(RET_OK, player->Seek(durationTime / 3, SEEK_MODE));
     EXPECT_TRUE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-    EXPECT_NEAR(durationTime / 3, time, DELTA_TIME);
+    EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(durationTime / 3, time, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -1048,22 +1048,22 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_3000, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_3100, Function | MediumTest | Level2)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
     int32_t durationTime;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->GetDuration(durationTime));
@@ -1071,7 +1071,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_3100, Func
         EXPECT_EQ(RET_OK, player->Seek(i, SEEK_MODE));
         EXPECT_TRUE(player->IsPlaying());
         EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-        EXPECT_NEAR(i, time, DELTA_TIME);
+        EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(i, time, SEEK_MODE));
     }
     EXPECT_EQ(RET_OK, player->Pause());
     EXPECT_FALSE(player->IsPlaying());
@@ -1079,7 +1079,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_3100, Func
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -1089,21 +1089,21 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_3100, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_3200, Function | MediumTest | Level1)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Pause());
@@ -1111,13 +1111,13 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_3200, Func
     EXPECT_EQ(RET_OK, player->Seek(FILE_BEGIN, SEEK_MODE));
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-    EXPECT_NEAR(FILE_BEGIN, time, DELTA_TIME);
+    EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(FILE_BEGIN, time, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -1127,22 +1127,22 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_3200, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_3300, Function | MediumTest | Level2)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
     int32_t durationTime;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Pause());
@@ -1151,15 +1151,15 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_3300, Func
     EXPECT_EQ(RET_OK, player->Seek(durationTime, SEEK_MODE));
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-    EXPECT_EQ(durationTime, time);
+    EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(durationTime, time, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->Play());
     EXPECT_EQ(RET_OK, testCallback->WaitForState(PLAYER_PLAYBACK_COMPLETE));
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
 
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
 
 /**
@@ -1169,22 +1169,22 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_3300, Func
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_3400, Function | MediumTest | Level3)
 {
-    PlayerSignal testObj;
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(&testObj);
+    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
+    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
     ASSERT_NE(nullptr, player);
     ASSERT_EQ(true, player->CreatePlayer());
     int32_t time;
     int32_t durationTime;
-    std::string uri = GetUri();
+    std::string uri = TestParamsConfig::GetInstance().GetUri();
     ASSERT_EQ(RET_OK, player->SetSource(uri));
 
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(&testObj);
+    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
     EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Play());
-    sleep(PLAYING_TIME);
+    (void)sleep(PLAYING_TIME);
     EXPECT_TRUE(player->IsPlaying());
 
     EXPECT_EQ(RET_OK, player->Pause());
@@ -1194,10 +1194,10 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_03_3400, Func
 
     EXPECT_FALSE(player->IsPlaying());
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-    EXPECT_EQ(durationTime, time);
+    EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(durationTime, time, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->Play());
     EXPECT_EQ(RET_OK, testCallback->WaitForState(PLAYER_PLAYBACK_COMPLETE));
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, testCallback->errorNum);
+    EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
