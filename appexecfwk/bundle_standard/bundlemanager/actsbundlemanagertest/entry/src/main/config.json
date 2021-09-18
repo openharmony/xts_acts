@@ -37,6 +37,7 @@
             ]
           }
         ],
+        "visible": true,
         "name": "com.example.actsbundlemanagertest.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
