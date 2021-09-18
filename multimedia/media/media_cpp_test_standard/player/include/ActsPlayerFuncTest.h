@@ -21,25 +21,28 @@ namespace OHOS {
 namespace Media {
 class ActsPlayerFuncTest : public testing::Test {
 public:
-    // SetUpTestCase: before all testcasee
+    // SetUpTestCase: before all testcases
     static void SetUpTestCase(void)
     {
-        MEDIA_INFO_LOG("ActsPlayerFuncTest::SetUpTestCase");
+        MEDIA_DEBUG_LOG("ActsPlayerFuncTest::SetUpTestCase");
+        TestPlayerBasic::TestParamsConfig::GetInstance().InitPlayProtocol();
     };
-    // TearDownTestCase: after all testcase
+    // TearDownTestCase: after all testcases
     static void TearDownTestCase(void)
     {
-        MEDIA_INFO_LOG("ActsPlayerFuncTest::TearDownTestCase");
+        MEDIA_DEBUG_LOG("ActsPlayerFuncTest::TearDownTestCase");
     };
     // SetUp
     void SetUp(void)
     {
-        MEDIA_INFO_LOG("ActsPlayerFuncTest::SetUp");
+        const ::testing::TestInfo * const testInfo = ::testing::UnitTest::GetInstance()->current_test_info();
+        MEDIA_DEBUG_LOG("ActsPlayerFuncTest::SetUp:%s", testInfo->name());
     };
     // TearDown
     void TearDown(void)
     {
-        MEDIA_INFO_LOG("ActsPlayerFuncTest::TearDown");
+        const ::testing::TestInfo * const testInfo = ::testing::UnitTest::GetInstance()->current_test_info();
+        MEDIA_DEBUG_LOG("ActsPlayerFuncTest::TearDown:%s", testInfo->name());
     };
     static void LocalPlayFunc(const std::string uri, bool isAsync, WindowConfig config = g_sub_config);
     static void *LocalMulitPlayFunc(void *threadarg);
