@@ -13,9 +13,11 @@
  * limitations under the License.
  */
 
+#ifndef PLAYER_TEST_H
+#define PLAYER_TEST_H
+
 #include "securec.h"
-#include "common.h"
-#include "mediatest_log.h"
+#include "TestParamsConfig.h"
 #include "window_manager.h"
 #include "surface_type.h"
 #include "display_type.h"
@@ -65,13 +67,13 @@ public:
 };
 class TestPlayer {
 public:
-    std::shared_ptr<Player> player;
-    std::unique_ptr<Window> mwindow;
-    std::unique_ptr<SubWindow> window;
-    explicit TestPlayer(PlayerSignal *test);
-    ~TestPlayer();
+    std::shared_ptr<Player> player_;
+    sptr<Window> window_;
+    explicit TestPlayer(std::shared_ptr<PlayerSignal> test);
+    virtual ~TestPlayer();
     bool CreatePlayer();
     int32_t SetSource(const std::string &uri);
+    int32_t SetDataSrc(const std::string &uri, bool seekable);
     int32_t Play();
     int32_t Prepare();
     int32_t PrepareAsync();
@@ -92,16 +94,14 @@ public:
     int32_t SetLooping(bool loop);
     int32_t SetPlayerCallback(const std::shared_ptr<PlayerCallback> &callback);
 private:
-    void InitSubWindow(WindowConfig sub_config);
-
-    PlayerSignal *test_;
+    std::shared_ptr<PlayerSignal> test_;
 };
 class TestPlayerCallback : public PlayerCallback {
 public:
-    int errorNum = 0;
+    int errorNum_ = 0;
     PlayerStates state_ = PLAYER_STATE_ERROR;
-    explicit TestPlayerCallback(PlayerSignal *test);
-    ~TestPlayerCallback();
+    explicit TestPlayerCallback(std::shared_ptr<PlayerSignal> test);
+    virtual ~TestPlayerCallback();
     void OnError(PlayerErrorType errorType, int32_t errorCode);
     int WaitForSeekDone(int32_t currentPositon);
     void OnInfo(PlayerOnInfoType type, int32_t extra, const Format &infoBody = {});
@@ -109,11 +109,11 @@ public:
 private:
     PlayerErrorType errorType_ = PLAYER_ERROR_UNKNOWN;
     int32_t errorCode_ = -1;
-    bool seekDoneFlag = false;
+    bool seekDoneFlag_ = false;
     int32_t postion_ = 0;
     void PrintState(PlayerStates state);
-
-    PlayerSignal *test_;
+    std::shared_ptr<PlayerSignal> test_;
 };
 }
 }
+#endif
