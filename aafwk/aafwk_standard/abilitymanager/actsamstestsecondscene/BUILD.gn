@@ -12,14 +12,14 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsAmsTestSecondScene") {
+ohos_js_hap_suite("ActsAmsTestSecondSceneTest") {
   hap_profile = "./entry/src/main/config.json"
   deps = [
     ":hjs_demo_js_assets",
     ":hjs_demo_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAmsTestSecondScene"
+  hap_name = "ActsAmsTestSecondSceneTest"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "./entry/src/main/js/default"

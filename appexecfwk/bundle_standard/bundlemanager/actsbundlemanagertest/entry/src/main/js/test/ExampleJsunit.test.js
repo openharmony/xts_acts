@@ -89,6 +89,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.enabled).assertEqual(true)
             done()
         }
+        done()
     })
 
     /**

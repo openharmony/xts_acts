@@ -17,21 +17,21 @@ group("actsabilitymanagertest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsamscallbackfifthscene:ActsAmsCallBackFifthScene",
-      "actsamscallbackfirstscene:ActsAmsCallBackFirstScene",
-      "actsamscallbackfourthscene:ActsAmsCallBackFourthScene",
-      "actsamscallbacksecondscene:ActsAmsCallBackSecondScene",
-      "actsamscallbackthirdscene:ActsAmsCallBackThirdScene",
-      "actsamstestfifthscene:ActsAmsTestFifthScene",
-      "actsamstestfirstscene:ActsAmsTestFirstScene",
-      "actsamstestfourthscene:ActsAmsTestFourthScene",
-      "actsamstestsecondscene:ActsAmsTestSecondScene",
-      "actsamstestthirdscene:ActsAmsTestThirdScene",
-      "sceneProject/simulateFAbilityFir:simulateFAbilityFir",
+      "actsamscallbackfifthscene:ActsAmsCallBackFifthSceneTest",
+      "actsamscallbackfirstscene:ActsAmsCallBackFirstSceneTest",
+      "actsamscallbackfourthscene:ActsAmsCallBackFourthSceneTest",
+      "actsamscallbacksecondscene:ActsAmsCallBackSecondSceneTest",
+      "actsamscallbackthirdscene:ActsAmsCallBackThirdSceneTest",
+      "actsamstestfifthscene:ActsAmsTestFifthSceneTest",
+      "actsamstestfirstscene:ActsAmsTestFirstSceneTest",
+      "actsamstestfourthscene:ActsAmsTestFourthSceneTest",
+      "actsamstestsecondscene:ActsAmsTestSecondSceneTest",
+      "actsamstestthirdscene:ActsAmsTestThirdSceneTest",
       "sceneProject/simulateEAbility:simulateEAbility",
+      "sceneProject/simulateFAbilityFir:simulateFAbilityFir",
       "sceneProject/simulateFAbilitySed:simulateFAbilitySed",
       "sceneProject/verifyAAbility:verifyAAbility",
-      "sceneProject/verifyIAbility:verifyIAbility"
+      "sceneProject/verifyIAbility:verifyIAbility",
     ]
   }
 }

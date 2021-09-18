@@ -12,14 +12,18 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("bmsJstest3") {
+ohos_hap("bmsJstest3") {
   hap_profile = "./src/main/config.json"
+  hap_name = "bmsJstest3"
+  subsystem_name = XTS_SUITENAME
+  final_hap_path =
+      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  testonly = true
   deps = [
     ":hjs_demo_js_assets",
     ":hjs_demo_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "bmsJstest3"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "./src/main/js/default"
