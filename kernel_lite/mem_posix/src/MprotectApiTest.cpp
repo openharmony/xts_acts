@@ -252,7 +252,8 @@ HWTEST_F(MprotectApiTest, testMprotectFileAddReadPerm, Function | MediumTest | L
         WaitProcExitedOK(pid);
         EXPECT_TRUE(munmap(mem, len) == 0) << "ERROR: munmap() != 0";
         EXPECT_TRUE(close(fd) != -1) << "ERROR: close() == -1";
-        EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0";
+        Msleep(1000);
+        EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0" << errno;
     }
 }
 
@@ -308,7 +309,8 @@ HWTEST_F(MprotectApiTest, testMprotectFileAddWritePerm, Function | MediumTest | 
         EXPECT_TRUE(buf[0] == testChar) << "ERROR: buf[0] != testChar";
         EXPECT_TRUE(buf[1] == (testChar + 3)) << "ERROR: buf[1] != (testChar + 3)";
         EXPECT_TRUE(close(fd) != -1) << "ERROR: close() == -1";
-        EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0";
+        Msleep(1000);
+        EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0" << errno;
     }
 }
 
@@ -350,7 +352,8 @@ HWTEST_F(MprotectApiTest, testMprotectFileAddExecutePerm, Function | MediumTest 
         WaitProcExitedOK(pid);
         EXPECT_TRUE(munmap(mem, len) == 0) << "ERROR: munmap() != 0";
         EXPECT_TRUE(close(fd) != -1) << "ERROR: close() == -1";
-        EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0";
+        Msleep(1000);
+        EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0" << errno;
     }
 }
 
@@ -394,7 +397,8 @@ HWTEST_F(MprotectApiTest, testMprotectFileDelWritePerm, Function | MediumTest | 
 
         EXPECT_TRUE(munmap(mem, len) == 0) << "ERROR: munmap() != 0";
         EXPECT_TRUE(close(fd) != -1) << "ERROR: close() == -1";
-        EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0";
+        Msleep(1000);
+        EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0" << errno;
     }
 }
 
@@ -437,7 +441,8 @@ HWTEST_F(MprotectApiTest, testMprotectFileDelExecutePerm, Function | MediumTest 
 
         EXPECT_TRUE(munmap(mem, len) == 0) << "ERROR: munmap() != 0";
         EXPECT_TRUE(close(fd) != -1) << "ERROR: close() == -1";
-        EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0";
+        Msleep(1000);
+        EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0" << errno;
     }
 }
 
@@ -465,8 +470,8 @@ HWTEST_F(MprotectApiTest, testMprotectEACCES, Function | MediumTest | Level4)
 
     EXPECT_TRUE(munmap(mem, len) == 0) << "ERROR: munmap() != 0";
     EXPECT_TRUE(close(fd) != -1) << "ERROR: close() == -1";
-
-    EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0";
+    Msleep(1000);
+    EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0" << errno;
 }
 
 /**
