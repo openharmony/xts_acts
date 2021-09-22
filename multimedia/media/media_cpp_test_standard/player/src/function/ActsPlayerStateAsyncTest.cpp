@@ -24,7 +24,7 @@ using namespace TestPlayerBasic;
 
 /**
     * @tc.number    : SUB_MEDIA_PLAYER_Local_Async_Function_04_0100
-    * @tc.name      : 001.prepare-reset
+    * @tc.name      : 001.prepare-reset-release
     * @tc.desc      : 播控
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_04_0100, Function | MediumTest | Level0)
@@ -73,7 +73,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_04_0200, Func
 
 /**
     * @tc.number    : SUB_MEDIA_PLAYER_Local_Async_Function_04_0300
-    * @tc.name      : 003.prepare-stop-reset
+    * @tc.name      : 003.prepare-stop-reset-release
     * @tc.desc      : 播控
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_04_0300, Function | MediumTest | Level0)
@@ -156,7 +156,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_04_0600, Func
 
 /**
     * @tc.number    : SUB_MEDIA_PLAYER_Local_Async_Function_04_0700
-    * @tc.name      : 007.prepare-seek-play-reset
+    * @tc.name      : 007.prepare-seek-play-reset-release
     * @tc.desc      :
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_04_0700, Function | MediumTest | Level0)
@@ -220,7 +220,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_04_0800, Func
 
 /**
     * @tc.number    : SUB_MEDIA_PLAYER_Local_Async_Function_04_0900
-    * @tc.name      : 009.prepare-play-seek-reset
+    * @tc.name      : 009.prepare-play-seek-reset-release
     * @tc.desc      :
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_04_0900, Function | MediumTest | Level0)
@@ -322,7 +322,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_04_1100, Func
 
 /**
     * @tc.number    : SUB_MEDIA_PLAYER_Local_Async_Function_04_1200
-    * @tc.name      : 012.prepare-play-seek-pause-reset
+    * @tc.name      : 012.prepare-play-seek-pause-reset-release
     * @tc.desc      :
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_04_1200, Function | MediumTest | Level0)
@@ -396,7 +396,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_04_1300, Func
 
 /**
     * @tc.number    : SUB_MEDIA_PLAYER_Local_Async_Function_04_1400
-    * @tc.name      : 014.prepare-play-seek-pause-stop-reset
+    * @tc.name      : 014.prepare-play-seek-pause-stop-reset-release
     * @tc.desc      :
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_04_1400, Function | MediumTest | Level0)
@@ -464,7 +464,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_04_1500, Func
 
 /**
     * @tc.number    : SUB_MEDIA_PLAYER_Local_Async_Function_04_1600
-    * @tc.name      : 016.prepare-play-stop-reset
+    * @tc.name      : 016.prepare-play-stop-reset-release
     * @tc.desc      :
 */
 HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_04_1600, Function | MediumTest | Level0)
