@@ -284,78 +284,78 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2200
-    * @tc.name test the mininize interface with one param zh
-    * @tc.desc check the mininize method with one param zh
+    * @tc.name test the minimize interface with one param zh
+    * @tc.desc check the minimize method with one param zh
     */
     it('locale_test_2200', 0, function () {
         let locale = new Intl.Locale('zh');
-        console.log('locale_test_2200 ' + locale.mininize().toString());
+        console.log('locale_test_2200 ' + locale.minimize().toString());
         expect(locale.minimize().toString()).assertEqual('zh');
     })
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2201
-    * @tc.name test the mininize interface with one param zh-CN
-    * @tc.desc check the mininize method with one param zh-CN
+    * @tc.name test the minimize interface with one param zh-CN
+    * @tc.desc check the minimize method with one param zh-CN
     */
     it('locale_test_2201', 0, function () {
         let locale = new Intl.Locale('zh-CN');
-        console.log('locale_test_2201 ' + locale.mininize().toString());
+        console.log('locale_test_2201 ' + locale.minimize().toString());
         expect(locale.minimize().toString()).assertEqual('zh');
     })
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2202
-    * @tc.name test the mininize interface with one param zh-Hans-CN
-    * @tc.desc check the mininize method with one param zh-Hans-CN
+    * @tc.name test the minimize interface with one param zh-Hans-CN
+    * @tc.desc check the minimize method with one param zh-Hans-CN
     */
     it('locale_test_2202', 0, function () {
         let locale = new Intl.Locale('zh-Hans-CN');
-        console.log('locale_test_2202 ' + locale.mininize().toString());
+        console.log('locale_test_2202 ' + locale.minimize().toString());
         expect(locale.minimize().toString()).assertEqual('zh');
     })
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2203
-    * @tc.name test the mininize interface with one param zh-Hans-CN-u-ca-gregory-co-compact
-    * @tc.desc check the mininize method with one param zh-Hans-CN-u-ca-gregory-co-compact
+    * @tc.name test the minimize interface with one param zh-Hans-CN-u-ca-gregory-co-compact
+    * @tc.desc check the minimize method with one param zh-Hans-CN-u-ca-gregory-co-compact
     */
     it('locale_test_2203', 0, function () {
         let locale = new Intl.Locale('zh-Hans-CN-u-ca-gregory-co-compact');
-        console.log('locale_test_2203 ' + locale.mininize().toString());
+        console.log('locale_test_2203 ' + locale.minimize().toString());
         expect(locale.minimize().toString()).assertEqual('zh');
     })
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2204
-    * @tc.name test the mininize interface with zh lcoale
-    * @tc.desc check the mininize method with zh lcoale
+    * @tc.name test the minimize interface with zh lcoale
+    * @tc.desc check the minimize method with zh lcoale
     */
     it('locale_test_2204', 0, function () {
         let locale = new Intl.Locale('zh', {calendar: 'gregory', collation: 'compact'});
-        console.log('locale_test_2204 ' + locale.mininize().toString());
+        console.log('locale_test_2204 ' + locale.minimize().toString());
         expect(locale.minimize().toString()).assertEqual('zh-u-ca-gregory-co-compact');
     })
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2205
-    * @tc.name test the mininize interface with zh-CN lcoale
-    * @tc.desc check the mininize method with zh-CN lcoale
+    * @tc.name test the minimize interface with zh-CN lcoale
+    * @tc.desc check the minimize method with zh-CN lcoale
     */
     it('locale_test_2205', 0, function () {
         let locale = new Intl.Locale('zh-CN', {calendar: 'gregory', collation: 'compact'});
-        console.log('locale_test_2205 ' + locale.mininize().toString());
+        console.log('locale_test_2205 ' + locale.minimize().toString());
         expect(locale.minimize().toString()).assertEqual('zh-u-ca-gregory-co-compact');
     })
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2206
-    * @tc.name test the mininize interface with zh-Hans-CN lcoale
-    * @tc.desc check the mininize method with zh-Hans-CN lcoale
+    * @tc.name test the minimize interface with zh-Hans-CN lcoale
+    * @tc.desc check the minimize method with zh-Hans-CN lcoale
     */
     it('locale_test_2206', 0, function () {
         let locale = new Intl.Locale('zh-hans-CN', {calendar: 'gregory', collation: 'compact'});
-        console.log('locale_test_2206 ' + locale.mininize().toString());
+        console.log('locale_test_2206 ' + locale.minimize().toString());
         expect(locale.minimize().toString()).assertEqual('zh-u-ca-gregory-co-compact');
     })
 
@@ -394,8 +394,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_2303
-    * @tc.name test the mininize interface with zh-Hans-CN-u-ca-gregory-co-compact locale
-    * @tc.desc check the mininize method with zh-Hans-CN-u-ca-gregory-co-compact locale
+    * @tc.name test the maximize interface with zh-Hans-CN-u-ca-gregory-co-compact locale
+    * @tc.desc check the maximize method with zh-Hans-CN-u-ca-gregory-co-compact locale
     */
     it('locale_test_2303', 0, function () {
         let locale = new Intl.Locale('zh-Hans-CN-u-ca-gregory-co-compact');
