@@ -1158,3 +1158,4 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Function_04_3000, Function |
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
+
