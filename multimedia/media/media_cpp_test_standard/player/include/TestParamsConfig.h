@@ -37,7 +37,7 @@ namespace {
 namespace TestPlayerBasic {
 class TestParamsConfig {
 public:
-    static TestParamsConfig& GetInstance()
+    static TestParamsConfig &GetInstance()
     {
         static TestParamsConfig config;
         return config;
