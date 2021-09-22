@@ -15,7 +15,7 @@
 #ifndef PLAYER_FUNC_TEST_H
 #define PLAYER_FUNC_TEST_H
 
-#include "Testplayer.h"
+#include "TestPlayer.h"
 
 namespace OHOS {
 namespace Media {

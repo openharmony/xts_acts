@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-#include "Testplayer.h"
+#include "TestPlayer.h"
 #include "parameter.h"
 #include "media_errors.h"
 
 using namespace OHOS;
 using namespace OHOS::Media;
 
-TestPlayer::TestPlayer(PlayerSignal *test)
+TestPlayer::TestPlayer(std::shared_ptr<PlayerSignal> test)
     : test_(test)
 {
 }
@@ -150,7 +150,7 @@ int32_t TestPlayer::Seek(int32_t mseconds, PlayerSeekMode mode)
     int32_t ret = player_->Seek(mseconds, mode);
     if (ret == RET_OK && test_->mutexFlag_ == true && test_->seekDoneFlag_ == false) {
         std::unique_lock<std::mutex> lockSeek(test_->mutexSeek_);
-        test_->condVarSeek_.wait_for(lockSeek, std::chrono::seconds(WAITSECOND));
+        test_->condVarSeek_.wait_for(lockSeek, std::chrono::seconds(WAITSECOND * 2));
         if (test_->seekDoneFlag_ != true) {
             return -1;
         }
@@ -248,7 +248,7 @@ int32_t TestPlayer::SetPlayerCallback(const std::shared_ptr<PlayerCallback> &cal
     return player_->SetPlayerCallback(callback);
 }
 
-TestPlayerCallback::TestPlayerCallback(PlayerSignal *test)
+TestPlayerCallback::TestPlayerCallback(std::shared_ptr<PlayerSignal> test)
     : test_(test)
 {
 }
