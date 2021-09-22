@@ -108,7 +108,7 @@ public:
     int WaitForState(PlayerStates state);
 private:
     void PrintState(PlayerStates state);
-    
+
     PlayerErrorType errorType_ = PLAYER_ERROR_UNKNOWN;
     int32_t errorCode_ = -1;
     bool seekDoneFlag_ = false;

@@ -41,8 +41,7 @@ void TestParamsConfig::InitPlayProtocol()
     char protocol[PARA_MAX_LEN] = "local";
     GetParameter("sys.media.test.play.protocol", "", &protocol[0], PARA_MAX_LEN);
     if (strcmp(protocol, "local") == 0) {
-        TestPlayerBasic::TestParamsConfig::GetInstance().SetMountPath("file://data/media/189");
-
+        TestPlayerBasic::TestParamsConfig::GetInstance().SetMountPath("file://data/media");
         MEDIA_INFO_LOG("MOUNT_PATH %s", TestPlayerBasic::TestParamsConfig::GetInstance().GetMountPath().c_str());
     }
 }
