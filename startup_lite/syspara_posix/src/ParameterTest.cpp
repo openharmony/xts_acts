@@ -28,9 +28,10 @@ class ParameterTest : public testing::Test {
 protected:
     static void SetUpTestCase(void) 
     {
-        mkdir("/data", S_IRUSR | S_IWUSR);
-        mkdir("/data/system", S_IRUSR | S_IWUSR);
-        mkdir("/data/system/param", S_IRUSR | S_IWUSR);
+        mkdir("/storage", S_IRUSR | S_IWUSR);
+        mkdir("/storage/data", S_IRUSR | S_IWUSR);
+        mkdir("/storage/data/system", S_IRUSR | S_IWUSR);
+        mkdir("/storage/data/system/param", S_IRUSR | S_IWUSR);
     }
     static void TearDownTestCase(void) {}
     virtual void SetUp() {}
