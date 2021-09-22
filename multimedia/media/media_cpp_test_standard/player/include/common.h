@@ -15,3 +15,4 @@
 
 #ifndef DISABLE_COMMON_TEST_H
 #define DISABLE_COMMON_TEST_H
+#endif
