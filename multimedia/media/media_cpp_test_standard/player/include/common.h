@@ -12,3 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+#ifndef DISABLE_COMMON_TEST_H
+#define DISABLE_COMMON_TEST_H

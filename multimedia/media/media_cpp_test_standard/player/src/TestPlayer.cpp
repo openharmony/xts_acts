@@ -150,7 +150,7 @@ int32_t TestPlayer::Seek(int32_t mseconds, PlayerSeekMode mode)
     int32_t ret = player_->Seek(mseconds, mode);
     if (ret == RET_OK && test_->mutexFlag_ == true && test_->seekDoneFlag_ == false) {
         std::unique_lock<std::mutex> lockSeek(test_->mutexSeek_);
-        test_->condVarSeek_.wait_for(lockSeek, std::chrono::seconds(WAITSECOND * 2));
+        test_->condVarSeek_.wait_for(lockSeek, std::chrono::seconds(WAITSECOND));
         if (test_->seekDoneFlag_ != true) {
             return -1;
         }
