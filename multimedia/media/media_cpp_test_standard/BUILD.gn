@@ -27,7 +27,7 @@ ohos_moduletest_suite("ActsMediaCppStandardTest") {
   module_out_path = module_output_path
   sources = [
     "player/src/TestParamsConfig.cpp",
-    "player/src/Testplayer.cpp",
+    "player/src/TestPlayer.cpp",
     "player/src/function/ActsPlayerFuncAsyncTest.cpp",
     "player/src/function/ActsPlayerFuncTest.cpp",
     "player/src/function/ActsPlayerStateAsyncTest.cpp",
