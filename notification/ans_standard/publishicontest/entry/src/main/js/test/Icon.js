@@ -56,7 +56,7 @@ describe('ActsAnsIconTest', function () {
     /*
      * @tc.number: ActsAnsIconTest_0100
      * @tc.name: createPixelMap()
-     * @tc.desc: verify the function of subscribe
+     * @tc.desc: publish icon test
      */
     it('ActsAnsIconTest_0100', 0, async function (done) {
         console.debug("===============ActsAnsIconTest_0100 start====================>");
@@ -67,6 +67,56 @@ describe('ActsAnsIconTest', function () {
 
         largeBuffer = new ArrayBuffer(64);
         smallBuffer = new ArrayBuffer(32);
+        opts = {alphaType: 0, editable: true, pixelFormat: 4, scaleMode: 1, size: {height: 2, width: 3}}
+        const promise_Large = image.createPixelMap(largeBuffer, opts);
+        promise_Large.then((data) => {
+            console.debug("==========================createPixelMap_promise_Large=======================>");
+            largeIcon = data;
+            console.debug("==========================createPixelMap_promise_Large largeIcon=======================>"+largeIcon);
+
+            const promise_Small = image.createPixelMap(smallBuffer, opts);
+            promise_Small.then((data) => {
+                console.debug("==========================createPixelMap_promise_Small=======================>");
+                smallIcon = data;
+                console.debug("==========================createPixelMap_promise_Small smallIcon=======================>"+smallIcon);
+
+                notify.publish({
+                    id: 1,
+                    content: {
+                        contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+                        normal: {
+                            title: "test1_title",
+                            text: "test1_text",
+                            additionalText: "test1_additionalText"
+                        },
+                    },
+                    slotType:notify.SlotType.SOCIAL_COMMUNICATION,
+                    classification:"classification1",
+                    sortingKey:"sortingKey1",
+                    smallIcon:smallIcon,
+                    largeIcon:largeIcon,
+                },publishCallback);
+                done();
+            });
+
+        });
+
+    })
+
+    /*
+     * @tc.number: ActsAnsIconTest_0200
+     * @tc.name: createPixelMap()
+     * @tc.desc: publish icon test
+     */
+    it('ActsAnsIconTest_0200', 0, async function (done) {
+        console.debug("===============ActsAnsIconTest_0200 start====================>");
+        subInfo ={
+            onConsume:consumeCallback,
+        }
+        await notify.subscribe(subInfo,subscribeCallback);
+
+        largeBuffer = new ArrayBuffer(0);
+        smallBuffer = new ArrayBuffer(0);
         opts = {alphaType: 0, editable: true, pixelFormat: 4, scaleMode: 1, size: {height: 2, width: 3}}
         const promise_Large = image.createPixelMap(largeBuffer, opts);
         promise_Large.then((data) => {
