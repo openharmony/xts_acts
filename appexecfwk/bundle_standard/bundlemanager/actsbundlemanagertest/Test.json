@@ -28,6 +28,12 @@
                 "bmsJstest9.hap->/data/bmsJstest9.hap"
             ]
             
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "chmod 644 /data/*.hap"
+            ]
         }        
     ]
 }
