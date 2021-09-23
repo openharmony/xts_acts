@@ -494,4 +494,83 @@ describe('HiAppEventApiTest', function () {
             });
         console.info('testHiAppEventApi21 end')
     })
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2200
+     * @tc.name testHiAppEventApi22
+     * @tc.desc HiAppEvent configure interface with disable option set true.
+     */
+     it('testHiAppEventApi22', 3, function () {
+        console.info('testHiAppEventApi22 start')
+        let configret =false;
+        configret = HiAppEvent.configure({disable:true});
+        expect(configret == true).assertTrue();
+        HiAppEvent.configure({disable: false});
+        console.info('testHiAppEventApi22 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2300
+     * @tc.name testHiAppEventApi23
+     * @tc.desc HiAppEvent configure interface with disable option set false.
+     */
+    it('testHiAppEventApi23', 3, function () {
+        console.info('testHiAppEventApi23 start')
+        let configret =false;
+        configret = HiAppEvent.configure({disable: false});
+        expect(configret == true).assertTrue();
+        console.info('testHiAppEventApi23 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2400
+     * @tc.name testHiAppEventApi24
+     * @tc.desc HiAppEvent configure interface with maxStorage option set 100M.
+     */
+    it('testHiAppEventApi24', 3, function () {
+        console.info('testHiAppEventApi24 start')
+        let configret =false;
+        configret = HiAppEvent.configure({maxStorage:'100M'});
+        console.info('configret = %d', configret);
+        expect(configret == true).assertTrue();
+        console.info('testHiAppEventApi24 end')
+    })
+
+  /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2500
+     * @tc.name testHiAppEventApi25
+     * @tc.desc HiAppEvent with predefined event and param.
+     */
+   it('testHiAppEventApi25', 3, async function (done) {
+    console.info('testHiAppEventApi25 start')
+    HiAppEvent.write(HiAppEvent.Event.USER_LOGIN, HiAppEvent.EventType.BEHAVIOR, {[HiAppEvent.Param.USER_ID]: "userlogin",
+    [HiAppEvent.Param.DISTRIBUTED_SERVICE_NAME]: "HiAppEvent", [HiAppEvent.Param.DISTRIBUTED_SERVICE_INSTANCE_ID]: 100},
+        (err, value) => {
+            console.log(`HiAppEvent into json-callback`);
+            if (err) {
+                console.error(`HiAppEvent json-callback-error code=${err.code}`);
+                expect().assertFail();
+                done();
+            } else {
+                console.log(`HiAppEvent json-callback-success value=${value}`);
+                expect(value == 0).assertTrue();
+                done();
+            }
+        });
+
+    HiAppEvent.write(HiAppEvent.Event.USER_LOGOUT, HiAppEvent.EventType.BEHAVIOR, {[HiAppEvent.Param.USER_ID]: "userlogout",
+    [HiAppEvent.Param.DISTRIBUTED_SERVICE_NAME]: "HiAppEvent", [HiAppEvent.Param.DISTRIBUTED_SERVICE_INSTANCE_ID]: 100},
+        (err, value) => {
+            console.log(`HiAppEvent into json-callback`);
+            if (err) {
+                console.error(`HiAppEvent json-callback-error code=${err.code}`);
+                expect().assertFail();
+                done();
+            } else {
+                console.log(`HiAppEvent json-callback-success value=${value}`);
+                expect(value == 0).assertTrue();
+                done();
+            }
+        });
+    console.info('testHiAppEventApi25 end')
+    })
 })
