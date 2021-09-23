@@ -12,14 +12,14 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("time_js_test") {
+ohos_js_hap_suite("timer_js_test") {
   hap_profile = "./src/main/config.json"
   deps = [
     ":hjs_demo_js_assets",
     ":hjs_demo_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "TimeJSApiTest"
+  hap_name = "TimerJSApiTest"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "./src/main/js/default"

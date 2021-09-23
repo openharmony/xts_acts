@@ -3,13 +3,13 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "21600000",
-        "package": "ohos.acts.miscservices.time",
+        "package": "ohos.acts.miscservices.timer",
         "shell-timeout": "21600000"
     },
     "kits": [
         {
             "test-file-name": [
-                "TimeJSApiTest.hap"
+                "TimerJSApiTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

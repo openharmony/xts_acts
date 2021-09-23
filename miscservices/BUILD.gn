@@ -14,16 +14,7 @@
 import("//build/ohos_var.gni")
 group("miscservices") {
   testonly = true
-  if (is_standard_system) {
-    deps = [ "TimeTest_js:time_js_test" ]
-  } else {
-    deps = [
-      "DownloadTest:download_hap",
-      "InputMethodTest:InputMethodTest_hap",
-      "pasteboard:testpasteboard_hap",
-      "screenlock:ScreenLockTest_hap",
-      "timer:testtimer_hap",
-      "wallpaper:wallpaperTest_hap",
-    ]
-  }
+  deps = [ "TimeTest_js:time_js_test",
+           "TimerTest_js:timer_js_test",  ]
+  
 }
