@@ -15,7 +15,7 @@
 
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-
+var time = 1000
 describe('ActsAnsLocalCanDisplayTest', function () {
     console.info("===========ActsLocalCanDisplayTest start====================>");
     /*
@@ -29,6 +29,9 @@ describe('ActsAnsLocalCanDisplayTest', function () {
             expect(typeof(data)).assertEqual('boolean')
         })
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsLocalCanDisplay_test_0100====>");
+        }, time);
     })
     /*
      * @tc.number: ActsLocalCanDisplay_test_0200
@@ -40,6 +43,9 @@ describe('ActsAnsLocalCanDisplayTest', function () {
         console.log("==========================>ActsLocalCanDisplay_test_0200 success=======================>"+promise)
         expect(typeof(promise)).assertEqual('boolean')
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsLocalCanDisplay_test_0200====>");
+        }, time);
     })
 
 })

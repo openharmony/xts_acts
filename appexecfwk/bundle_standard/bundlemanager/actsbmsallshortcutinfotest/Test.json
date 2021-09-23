@@ -2,7 +2,7 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "300000",
+        "test-timeout": "120000",
         "package": "com.example.actsbmsallshortcutinfotest",
         "shell-timeout": "60000"
     },

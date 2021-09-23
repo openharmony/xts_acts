@@ -24,11 +24,11 @@ describe('ActsAnsRemoveSlotTest', function () {
      */
     it('ActsAnsRemoveSlotTest_0100', 0, async function (done) {
         console.debug("====>ActsAnsRemoveSlotTest_0100 start====>");
-        await notification.addSlot(notification.SlotType.SOCIAL_COMMUNICATION).then(() => {
+        notification.addSlot(notification.SlotType.SOCIAL_COMMUNICATION).then(() => {
             console.debug("====>addSlotActsAnsGetSlotTestPromise_0100 enter====>");
         })
         console.debug("====>getSlot SlotType.SOCIAL_COMMUNICATION: ====>");
-        await notification.getSlot(notification.SlotType.SOCIAL_COMMUNICATION).then((data) => {
+        notification.getSlot(notification.SlotType.SOCIAL_COMMUNICATION).then((data) => {
             console.debug("====>getSlotActsAnsGetSlotTestPromise_0100 enter====>");
             console.debug("====>getSlotActsAnsGetSlotTestPromise_0100 data====>" + JSON.stringify(data));
             expect(data.type).assertEqual(notification.SlotType.SOCIAL_COMMUNICATION);
@@ -43,7 +43,7 @@ describe('ActsAnsRemoveSlotTest', function () {
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlotActsAnsGetSlotTestPromise_0100 finish====>");
         })
-        await notification.removeSlot(notification.SlotType.SOCIAL_COMMUNICATION, (err)=>{
+        notification.removeSlot(notification.SlotType.SOCIAL_COMMUNICATION, (err)=>{
             console.debug("====>removeSlot first time err====>" + JSON.stringify(err));
             expect(err.code).assertEqual(0);
             notification.getSlot(notification.SlotType.SOCIAL_COMMUNICATION, (err, data)=>{
@@ -59,5 +59,8 @@ describe('ActsAnsRemoveSlotTest', function () {
                 })
             })
         })
+        setTimeout(function(){
+            console.debug("====>time out ActsAnsRemoveSlotTest_0100====>");
+        }, 10000);
     })
-}) 
+})

@@ -15,7 +15,7 @@
 
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-
+var time = 1000
 describe('ActsAnsEnableNotificationSetTreeTest', function () {
     console.info("===========ActsEnableNotificationSetTest3 start====================>");
     /*
@@ -30,6 +30,9 @@ describe('ActsAnsEnableNotificationSetTreeTest', function () {
             console.log("==========================>ActsEnableNotificationSet_test_0500 success=======================>"+err)
         })
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsEnableNotificationSet_test_0500====>");
+        }, time);
     })
     /*
      * @tc.number: ActsEnableNotificationSet_test_0600
@@ -42,6 +45,9 @@ describe('ActsAnsEnableNotificationSetTreeTest', function () {
                 bundle:"com.neu.actsanslocalnotificationtest",
             },true).then(console.log("==========================>ActsEnableNotificationSet_test_0600 success=======================>"))
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsEnableNotificationSet_test_0600====>");
+        }, time);
     })
     /*
      * @tc.number: ActsSystemNotificationSet_test_0500
@@ -56,6 +62,9 @@ describe('ActsAnsEnableNotificationSetTreeTest', function () {
             expect(typeof(data)).assertEqual('boolean')
         })
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsSystemNotificationSet_test_0500====>");
+        }, time);
     })
     /*
      * @tc.number: ActsSystemNotificationSet_test_0600
@@ -70,6 +79,9 @@ describe('ActsAnsEnableNotificationSetTreeTest', function () {
         expect(typeof(promise)).assertEqual('boolean')
         console.log("==========================>ActsSystemNotificationSet_test_0600 success=======================>"+promise)
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsSystemNotificationSet_test_0600====>");
+        }, time);
     })
 
 })

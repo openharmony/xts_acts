@@ -15,7 +15,7 @@
 
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-
+var time = 1000
 describe('ActsAnsEnableNotificationSetFiveTest', function () {
     console.info("===========ActsEnableNotificationSetTest5 start====================>");
     /*
@@ -30,6 +30,9 @@ describe('ActsAnsEnableNotificationSetFiveTest', function () {
             console.log("==========================>ActsEnableNotificationSet_test_0900 success=======================>"+err)
         })
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsEnableNotificationSet_test_0900====>");
+        }, time);
     })
     /*
      * @tc.number: ActsEnableNotificationSet_test_1000
@@ -42,6 +45,9 @@ describe('ActsAnsEnableNotificationSetFiveTest', function () {
                 bundle:"com.neu.actsanslocalnotificationtest",
             },"").then(console.log("==========================>ActsEnableNotificationSet_test_1000 success=======================>"))
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsEnableNotificationSet_test_1000====>");
+        }, time);
     })
     /*
      * @tc.number: ActsSystemNotificationSet_test_0900
@@ -56,6 +62,9 @@ describe('ActsAnsEnableNotificationSetFiveTest', function () {
             expect(typeof(data)).assertEqual('boolean')
         })
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsSystemNotificationSet_test_0900====>");
+        }, time);
     })
     /*
      * @tc.number: ActsSystemNotificationSet_test_1000
@@ -70,6 +79,9 @@ describe('ActsAnsEnableNotificationSetFiveTest', function () {
         expect(typeof(promise)).assertEqual('boolean')
         console.log("==========================>ActsSystemNotificationSet_test_1000 success=======================>"+promise)
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsSystemNotificationSet_test_1000====>");
+        }, time);
     })
 
 })

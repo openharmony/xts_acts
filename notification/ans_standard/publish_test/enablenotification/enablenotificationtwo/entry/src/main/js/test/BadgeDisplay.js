@@ -15,7 +15,7 @@
 
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-
+var time = 1000
 describe('ActsAnsEnableNotificationTwoTest', function () {
     console.info("===========ActsEnableNotificationTest2 start====================>");
     /*
@@ -30,6 +30,9 @@ describe('ActsAnsEnableNotificationTwoTest', function () {
             console.log("==========================>ActsEnableNotification_test_0300 success=======================>"+err)
         })
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsEnableNotification_test_0300====>");
+        }, time);
     })
     /*
      * @tc.number: ActsEnableNotification_test_0400
@@ -42,6 +45,9 @@ describe('ActsAnsEnableNotificationTwoTest', function () {
                 bundle:"com.neu.actsanslocalnotificationtest",
             },false).then(console.log("==========================>ActsEnableNotification_test_0400 success=======================>"))
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsEnableNotification_test_0400====>");
+        }, time);
     })
     /*
      * @tc.number: ActsSystemNotification_test_0300
@@ -56,6 +62,9 @@ describe('ActsAnsEnableNotificationTwoTest', function () {
             expect(typeof(data)).assertEqual('boolean')
         })
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsSystemNotification_test_0300====>");
+        }, time);
     })
     /*
      * @tc.number: ActsSystemNotification_test_0400
@@ -70,6 +79,9 @@ describe('ActsAnsEnableNotificationTwoTest', function () {
         expect(typeof(promise)).assertEqual('boolean')
         console.log("==========================>ActsSystemNotification_test_0400 success=======================>"+promise)
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsSystemNotification_test_0400====>");
+        }, time);
     })
 
 })

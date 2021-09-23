@@ -16,7 +16,11 @@
 import bundle from '@ohos.bundle'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
+const TIMEOUT = 1000;
+const NAMECOUNT = 10000;
+
 describe('ActsBmsAllShortcutInfoTest', function () {
+
     /*
      * @tc.number: bms_getAllShortcutInfo_0100
      * @tc.name: test getAllShortcutInfo with promise
@@ -33,7 +37,11 @@ describe('ActsBmsAllShortcutInfoTest', function () {
             checkShortcutIsExist(data, 'id.third1', 'third1');
             done();
         });
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_0100==================end');
+        }, TIMEOUT)
     });
+
     /*
      * @tc.number: bms_getAllShortcutInfo_0200
      * @tc.name: test getAllShortcutInfo with callback
@@ -48,7 +56,11 @@ describe('ActsBmsAllShortcutInfoTest', function () {
             checkShortcutIsExist(data, 'id.third1', 'third1');
             done();
         });
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_0200==================end');
+        }, TIMEOUT)
     })
+
     /*
      * @tc.number: bms_getAllShortcutInfo_0300
      * @tc.name: test getAllShortcutInfo with promise
@@ -66,6 +78,9 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         checkShortcutIsExist(data, 'id.third1', 'third1');
         checkShortcutIsExist(data, 'id.third3', 'third3');
         done();
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_0300==================end');
+        }, TIMEOUT)
     })
 
     /*
@@ -84,7 +99,11 @@ describe('ActsBmsAllShortcutInfoTest', function () {
             await uninstall(bundleName);
             done();
         });
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_0400==================end');
+        }, TIMEOUT)
     })
+
     /*
      * @tc.number: bms_getAllShortcutInfo_0500
      * @tc.name: test getAllShortcutInfo with promise
@@ -96,7 +115,11 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         expect(typeof data).assertEqual('object');
         expect(data.length).assertEqual(0);
         done();
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_0500==================end');
+        }, TIMEOUT)
     })
+
     /*
      * @tc.number: bms_getAllShortcutInfo_0600
      * @tc.name: test getAllShortcutInfo with callback
@@ -110,7 +133,11 @@ describe('ActsBmsAllShortcutInfoTest', function () {
             expect(data.length).assertEqual(0);
             done();
         });
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_0600==================end');
+        }, TIMEOUT)
     })
+
     /*
      * @tc.number: bms_getAllShortcutInfo_0700
      * @tc.name: test getAllShortcutInfo with promise
@@ -146,7 +173,11 @@ describe('ActsBmsAllShortcutInfoTest', function () {
             }
         }
         done();
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_0700==================end');
+        }, TIMEOUT)
     })
+
     /*
      * @tc.number: bms_getAllShortcutInfo_0800
      * @tc.name: test getAllShortcutInfo with callback
@@ -178,7 +209,11 @@ describe('ActsBmsAllShortcutInfoTest', function () {
             await uninstall(bundleName);
             done();
         });
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_0800==================end');
+        }, TIMEOUT)
     })
+
     /*
      * @tc.number: bms_getAllShortcutInfo_0900
      * @tc.name: test getAllShortcutInfo with promise
@@ -193,7 +228,11 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         expect(typeof data).assertEqual('object');
         expect(data.length).assertEqual(0);
         done();
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_0900==================end');
+        }, TIMEOUT)
     })
+
     /*
      * @tc.number: bms_getAllShortcutInfo_1000
      * @tc.name: test getAllShortcutInfo with callback
@@ -208,7 +247,11 @@ describe('ActsBmsAllShortcutInfoTest', function () {
             await uninstall(bundleName);
             done();
         });
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_1000==================end');
+        }, TIMEOUT)
     })
+
     /*
      * @tc.number: bms_getAllShortcutInfo_1100
      * @tc.name: test getAllShortcutInfo with promise
@@ -222,7 +265,11 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         expect(data.length).assertEqual(1);
         checkShortcutIsExist(data, 'id.system1', 'system1');
         done();
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_1100==================end');
+        }, TIMEOUT)
     })
+
     /*
      * @tc.number: bms_getAllShortcutInfo_1200
      * @tc.name: test getAllShortcutInfo with callback
@@ -237,7 +284,11 @@ describe('ActsBmsAllShortcutInfoTest', function () {
             checkShortcutIsExist(data, 'id.system1', 'system1');
             done();
         });
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_1200==================end');
+        }, TIMEOUT)
     })
+
     /*
      * @tc.number: bms_getAllShortcutInfo_1300
      * @tc.name: test getAllShortcutInfo with promise
@@ -251,7 +302,11 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         expect(data.length).assertEqual(1);
         checkShortcutIsExist(data, 'id.vendor1', 'vendor1');
         done();
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_1300==================end');
+        }, TIMEOUT)
     })
+
     /*
      * @tc.number: bms_getAllShortcutInfo_1400
      * @tc.name: test getAllShortcutInfo with callback
@@ -266,7 +321,11 @@ describe('ActsBmsAllShortcutInfoTest', function () {
             checkShortcutIsExist(data, 'id.vendor1', 'vendor1');
             done();
         });
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_1400==================end');
+        }, TIMEOUT)
     })
+
     /*
      * @tc.number: bms_getAllShortcutInfo_1500
      * @tc.name: test getAllShortcutInfo with promise
@@ -287,7 +346,11 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         var info = await bundle.getAllShortcutInfo(bundleName);
         expect(info.length).assertEqual(0);
         done();
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_1500==================end');
+        }, TIMEOUT)
     })
+
     /*
      * @tc.number: bms_getAllShortcutInfo_1600
      * @tc.name: test getAllShortcutInfo with callback
@@ -301,6 +364,9 @@ describe('ActsBmsAllShortcutInfoTest', function () {
             expect(data.length).assertEqual(0);
             done();
         });
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_1600==================end');
+        }, TIMEOUT)
     })
 
     /*
@@ -319,7 +385,11 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         checkShortcutIsExist(data, 'id.third4A', 'third4A');
         checkShortcutIsExist(data, 'id.third4B', 'third4B');
         done();
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_1700==================end');
+        }, TIMEOUT)
     })
+
     /*
      * @tc.number: bms_getAllShortcutInfo_1800
      * @tc.name: test getAllShortcutInfo with callback
@@ -336,7 +406,11 @@ describe('ActsBmsAllShortcutInfoTest', function () {
             await uninstall(bundleName);
             done();
         });
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_1800==================end');
+        }, TIMEOUT)
     })
+
     /*
      * @tc.number: bms_getAllShortcutInfo_1900
      * @tc.name: test getAllShortcutInfo with promise
@@ -349,7 +423,11 @@ describe('ActsBmsAllShortcutInfoTest', function () {
             expect(data.length).assertEqual(0);
             done();
         });
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_1900==================end');
+        }, TIMEOUT)
     })
+
     /*
      * @tc.number: bms_getAllShortcutInfo_2000
      * @tc.name: test getAllShortcutInfo with promise
@@ -363,6 +441,9 @@ describe('ActsBmsAllShortcutInfoTest', function () {
             expect(data.length).assertEqual(0);
             done();
         });
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_2000==================end');
+        }, TIMEOUT)
     })
 
     /*
@@ -373,13 +454,16 @@ describe('ActsBmsAllShortcutInfoTest', function () {
     it('bms_getAllShortcutInfo_2100', 0, async function (done) {
         console.info('=====================bms_getAllShortcutInfo_2100==================');
         var bundleName = 'test';
-        for(var i = 0; i < 10000; i++){
+        for (var i = 0; i < NAMECOUNT; i++) {
             bundleName += 'test';
         }
         var data = await bundle.getAllShortcutInfo(bundleName);
         expect(typeof data).assertEqual('object');
         expect(data.length).assertEqual(0);
         done();
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_2100==================end');
+        }, TIMEOUT)
     })
 
     /*
@@ -390,7 +474,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
     it('bms_getAllShortcutInfo_2200', 0, async function (done) {
         console.info('=====================bms_getAllShortcutInfo_2200==================');
         var bundleName = 'test';
-        for(var i = 0; i < 10000; i++){
+        for (var i = 0; i < NAMECOUNT; i++) {
             bundleName += 'test';
         }
         bundle.getAllShortcutInfo(bundleName, async (result, data) => {
@@ -398,6 +482,9 @@ describe('ActsBmsAllShortcutInfoTest', function () {
             expect(data.length).assertEqual(0);
             done();
         });
+        setTimeout(function () {
+            console.info('=====================bms_getAllShortcutInfo_2200==================end');
+        }, TIMEOUT)
     })
 
     function checkShortcutInfo(dataInfo, name) {
@@ -416,9 +503,9 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         if (typeof dataInfo.wants != 'undefined' && Object.keys(dataInfo.wants).length != 0) {
             expect(dataInfo.wants.length).assertLarger(0);
             for (var j = 0; j < dataInfo.wants.length; j++) {
-                console.info('=============targetClass==============' + JSON.stringify(dataInfo.wants[j].targetClass));
+                console.info('========targetClass=========' + JSON.stringify(dataInfo.wants[j].targetClass));
                 expect(dataInfo.wants[j].targetClass).assertEqual('com.example.' + name + '.MainAbility');
-                console.info('=============targetBundle==============' + JSON.stringify(dataInfo.wants[j].targetBundle));
+                console.info('========targetBundle=========' + JSON.stringify(dataInfo.wants[j].targetBundle));
                 expect(dataInfo.wants[j].targetBundle).assertEqual('com.example.' + name);
             }
         }
@@ -426,7 +513,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
 
     async function install(bundlePath) {
         let result = await bundle.getBundleInstaller();
-        await result.install(bundlePath, {
+        result.install(bundlePath, {
             param: {
                 userId: 0,
                 installFlag: 1,
@@ -441,7 +528,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
     }
     async function uninstall(bundleName) {
         let result = await bundle.getBundleInstaller();
-        await result.uninstall(bundleName, {
+        result.uninstall(bundleName, {
             param: {
                 userId: 0,
                 installFlag: 1,

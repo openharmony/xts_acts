@@ -76,7 +76,7 @@
         "reason": "Need open camera",
         "usedScene": {
           "ability": [
-            "com.example.permissionchange.MainAbility"
+            "com.example.actsbmscheckpermissiontest.MainAbility"
           ],
           "when": "always"
         }
@@ -86,7 +86,7 @@
         "reason": "Need PERMISSION_A",
         "usedScene": {
           "ability": [
-            "com.example.permissionchange.MainAbility"
+            "com.example.actsbmscheckpermissiontest.MainAbility"
           ],
           "when": "always"
         }
