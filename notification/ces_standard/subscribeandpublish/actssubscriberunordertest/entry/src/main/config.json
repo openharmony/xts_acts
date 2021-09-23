@@ -33,11 +33,6 @@
       {
         "availableScope": [],
         "grantMode": "system_grant",
-        "name": "publish_event0900_subscriberPermissions"
-      },
-      {
-        "availableScope": [],
-        "grantMode": "system_grant",
         "name": "publish_event0900_publisherPermission"
       },
       {
@@ -48,16 +43,12 @@
       {
         "availableScope": [],
         "grantMode": "system_grant",
-        "name": "permission.COMMONEVENT_STICKY"
+        "name": "ohos.permission.COMMONEVENT_STICKY"
       }
     ],
     "reqPermissions": [
       {
         "name": "publish_event0800_permission",
-        "reason": "ceshi"
-      },
-      {
-        "name": "publish_event0900_subscriberPermissions",
         "reason": "ceshi"
       },
       {
@@ -69,7 +60,7 @@
         "reason": "ceshi"
       },
       {
-        "name": "permission.COMMONEVENT_STICKY",
+        "name": "ohos.permission.COMMONEVENT_STICKY",
         "reason": "ceshi"
       }
     ],
