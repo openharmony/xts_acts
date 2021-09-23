@@ -217,6 +217,8 @@ void SubTestWithoutCheck(const char *identifier, int taskID)
 
 void CreateAppDir(void)
 {
+    mkdir("/storage", DIR_MODE);
+    mkdir("/storage/app", DIR_MODE);
     int ret = mkdir(ETC_PREFIX, DIR_MODE);
     if (ret) {
         printf("create dir %s error\n", ETC_PREFIX);
