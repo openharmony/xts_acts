@@ -2,9 +2,9 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "21600000",
+        "test-timeout": "300000",
         "package": "com.example.actsansnotificationremove",
-        "shell-timeout": "21600000"
+        "shell-timeout": "60000"
     },
     "kits": [
         {
