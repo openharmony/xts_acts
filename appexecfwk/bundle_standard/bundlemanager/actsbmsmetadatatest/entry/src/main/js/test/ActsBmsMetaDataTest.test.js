@@ -16,7 +16,10 @@
 import bundle from '@ohos.bundle'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
+const TIMEOUT = 1000;
+
 describe('ActsBmsMetaDataTest', function () {
+
     /*
     * @tc.number: bms_getMetaData_0100
     * @tc.name: test to get meta data for an application.
@@ -51,7 +54,11 @@ describe('ActsBmsMetaDataTest', function () {
         }, 0, 0)
         checkMetaData(datainfo.metaData);
         done();
+        setTimeout(function () {
+            console.debug('============bms_getMetaData_0100===========')
+        }, TIMEOUT);
     })
+
     /*
     * @tc.number: bms_getMetaData_0200
     * @tc.name: test to get meta data for an update application.
@@ -73,7 +80,11 @@ describe('ActsBmsMetaDataTest', function () {
         }, 0, 0)
         checkMetaData(datainfo.metaData);
         done();
+        setTimeout(function () {
+            console.debug('============bms_getMetaData_0200===========')
+        }, TIMEOUT);
     })
+
     /*
     * @tc.number: bms_getMetaData_0300
     * @tc.name: test to get meta data for an uninstalled application.
@@ -97,7 +108,11 @@ describe('ActsBmsMetaDataTest', function () {
         console.info('==========abilityInfo is ==========' + JSON.stringify(datainfo));
         checkMetaDataNoExit(datainfo.metaData);
         done();
+        setTimeout(function () {
+            console.debug('============bms_getMetaData_0300===========')
+        }, TIMEOUT);
     })
+
     /*
     * @tc.number: bms_getMetaData_0400
     * @tc.name: test to get meta data for an application.
@@ -132,9 +147,13 @@ describe('ActsBmsMetaDataTest', function () {
         }, 0, 0)
         console.info('==========abilityInfo is ==========' + JSON.stringify(datainfo2));
         checkMetaData(datainfo2.metaData);
-        uninstall('com.example.third5');
+        await uninstall('com.example.third5');
         done();
+        setTimeout(function () {
+            console.debug('============bms_getMetaData_0400===========')
+        }, TIMEOUT);
     })
+
     /*
     * @tc.number: bms_getMetaData_0500
     * @tc.name: test to get meta data for an application that does not exist.
@@ -157,7 +176,11 @@ describe('ActsBmsMetaDataTest', function () {
         console.info('==========abilityInfo is ==========' + JSON.stringify(datainfo));
         checkMetaDataNoExit(datainfo.metaData);
         done();
+        setTimeout(function () {
+            console.debug('============bms_getMetaData_0500===========')
+        }, TIMEOUT);
     })
+
     /*
     * @tc.number: bms_getMetaData_0600
     * @tc.name: test to get meta data for a system application.
@@ -178,7 +201,11 @@ describe('ActsBmsMetaDataTest', function () {
         }, 0, 0)
         checkMetaData(datainfo.metaData);
         done();
+        setTimeout(function () {
+            console.debug('============bms_getMetaData_0600===========')
+        }, TIMEOUT);
     })
+
     /*
     * @tc.number: bms_getMetaData_0700
     * @tc.name: test to get meta data for a vendor application.
@@ -199,6 +226,9 @@ describe('ActsBmsMetaDataTest', function () {
         }, 0, 0)
         checkMetaData(datainfo.metaData);
         done();
+        setTimeout(function () {
+            console.debug('============bms_getMetaData_0700===========')
+        }, TIMEOUT);
     })
 
     function checkMetaData(data) {
@@ -254,7 +284,7 @@ describe('ActsBmsMetaDataTest', function () {
     }
     async function install(bundlePath) {
         var installer = await bundle.getBundleInstaller();
-        await installer.install(bundlePath, {
+        installer.install(bundlePath, {
             param: {
                 userId: 0,
                 installFlag: 1,
@@ -273,7 +303,7 @@ describe('ActsBmsMetaDataTest', function () {
 
     async function uninstall(bundleName) {
         var installer = await bundle.getBundleInstaller();
-        await installer.uninstall(bundleName, {
+        installer.uninstall(bundleName, {
             param: {
                 userId: 0,
                 installFlag: 1,

@@ -444,6 +444,6 @@ describe('ActsAnsPublishControlTest', function () {
             id: 20
         }, publish_the_twentieth_notification);
         console.debug("====>time out start====>");
-        setTimeout(timeOut, 3000);
+        setTimeout(timeOut, 15000);
     })
-}) 
+})

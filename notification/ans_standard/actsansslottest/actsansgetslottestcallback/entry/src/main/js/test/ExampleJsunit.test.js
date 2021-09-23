@@ -17,31 +17,31 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe('ActsAnsGetSlotTestCallback', function () {
 
-    function addSlotActsAnsGetSlotTestCallback_0100(err){
+    function addSlotActsAnsGetSlotTestCallbackFirst(err){
         console.debug("====>addSlotActsAnsGetSlotTestCallback_0100 enter====>");
         console.debug("====>addSlotActsAnsGetSlotTestCallback_0100 err: ====>" + JSON.stringify(err));
         expect(err.code).assertEqual(0);
         console.debug("====>addSlotActsAnsGetSlotTestCallback_0100 finish====>");
     }
-    function addSlotActsAnsGetSlotTestCallback_0200(err, data){
+    function addSlotActsAnsGetSlotTestCallbackSecond(err, data){
         console.debug("====>addSlotActsAnsGetSlotTestCallback_0200 enter====>");
         console.debug("====>addSlotActsAnsGetSlotTestCallback_0200 err: ====>" + JSON.stringify(err));
         expect(err.code).assertEqual(0);
         console.debug("====>addSlotActsAnsGetSlotTestCallback_0200 finish====>");
     }
-    function addSlotActsAnsGetSlotTestCallback_0300(err){
+    function addSlotActsAnsGetSlotTestCallbackThird(err){
         console.debug("====>addSlotActsAnsGetSlotTestCallback_0300 enter====>");
         console.debug("====>addSlotActsAnsGetSlotTestCallback_0300 err: ====>" + JSON.stringify(err));
         expect(err.code).assertEqual(0);
         console.debug("====>addSlotActsAnsGetSlotTestCallback_0300 finish====>");
     }
-    function addSlotActsAnsGetSlotTestCallback_0400(err){
+    function addSlotActsAnsGetSlotTestCallbackFourth(err){
         console.debug("====>addSlotActsAnsGetSlotTestCallback_0400 enter====>");
         console.debug("====>addSlotActsAnsGetSlotTestCallback_0400 err: ====>" + JSON.stringify(err));
         expect(err.code).assertEqual(0);
         console.debug("====>addSlotActsAnsGetSlotTestCallback_0400 finish====>");
     }
-    function addSlotActsAnsGetSlotTestCallback_0500(err){
+    function addSlotActsAnsGetSlotTestCallbackFifth(err){
         console.debug("====>addSlotActsAnsGetSlotTestCallback_0500 enter====>");
         console.debug("====>addSlotActsAnsGetSlotTestCallback_0500 err: ====>" + JSON.stringify(err));
         console.debug("====>addSlotActsAnsGetSlotTestCallback_0500 finish====>");
@@ -55,9 +55,9 @@ describe('ActsAnsGetSlotTestCallback', function () {
     it('ActsAnsGetSlotTestCallback_0100', 0, async function (done) {
         console.debug("====>ActsAnsGetSlotTestCallback_0100 start====>");
         console.debug("====>addSlot SlotType.SOCIAL_COMMUNICATION: ====>");
-        await notification.addSlot(notification.SlotType.SOCIAL_COMMUNICATION, addSlotActsAnsGetSlotTestCallback_0100);
+        await notification.addSlot(notification.SlotType.SOCIAL_COMMUNICATION, addSlotActsAnsGetSlotTestCallbackFirst);
         console.debug("====>getSlot SlotType.SOCIAL_COMMUNICATION: ====>");
-        await notification.getSlot(notification.SlotType.SOCIAL_COMMUNICATION, (err, data)=> {
+        await notification.getSlot(notification.SlotType.SOCIAL_COMMUNICATION, function (err, data){
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0100 enter====>");
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0100 err====>" + JSON.stringify(err));
             expect(err.code).assertEqual(0);
@@ -75,6 +75,9 @@ describe('ActsAnsGetSlotTestCallback', function () {
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0100 finish====>");
             done();
         });
+        setTimeout(function(){
+            console.debug("====>time out ActsAnsGetSlotTestCallback_0100====>");
+        }, 1000);
     })
 
     /*
@@ -84,7 +87,7 @@ describe('ActsAnsGetSlotTestCallback', function () {
      */
     it('ActsAnsGetSlotTestCallback_0200', 0, async function (done) {
         console.debug("====>ActsAnsGetSlotTestCallback_0200 start====>");
-        function getSlotActsAnsGetSlotTestCallback_0200(err, data) {
+        function getSlotActsAnsGetSlotTestCallbackSecond(err, data) {
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0200 enter====>");
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0200 err====>" + JSON.stringify(err));
             expect(err.code).assertEqual(0);
@@ -103,9 +106,12 @@ describe('ActsAnsGetSlotTestCallback', function () {
             done();
         }
         console.debug("====>addSlot SlotType.SERVICE_INFORMATION: ====>");
-        await notification.addSlot(notification.SlotType.SERVICE_INFORMATION, addSlotActsAnsGetSlotTestCallback_0200);
+        await notification.addSlot(notification.SlotType.SERVICE_INFORMATION, addSlotActsAnsGetSlotTestCallbackSecond);
         console.debug("====>getSlot SlotType.SERVICE_INFORMATION: ====>");
-        await notification.getSlot(notification.SlotType.SERVICE_INFORMATION, getSlotActsAnsGetSlotTestCallback_0200);
+        await notification.getSlot(notification.SlotType.SERVICE_INFORMATION, getSlotActsAnsGetSlotTestCallbackSecond);
+        setTimeout(function(){
+            console.debug("====>time out ActsAnsGetSlotTestCallback_0200====>");
+        }, 1000);
     })
 
     /*
@@ -115,7 +121,7 @@ describe('ActsAnsGetSlotTestCallback', function () {
      */
     it('ActsAnsGetSlotTestCallback_0300', 0, async function (done) {
         console.debug("====>ActsAnsGetSlotTestCallback_0300 start====>");
-        function getSlotActsAnsGetSlotTestCallback_0300(err, data) {
+        function getSlotActsAnsGetSlotTestCallbackThird(err, data) {
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0300 enter====>");
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0300 err====>" + JSON.stringify(err));
             expect(err.code).assertEqual(0);
@@ -134,9 +140,12 @@ describe('ActsAnsGetSlotTestCallback', function () {
             done();
         }
         console.debug("====>addSlot SlotType.CONTENT_INFORMATION: ====>");
-        await notification.addSlot(notification.SlotType.CONTENT_INFORMATION, addSlotActsAnsGetSlotTestCallback_0300);
+        await notification.addSlot(notification.SlotType.CONTENT_INFORMATION, addSlotActsAnsGetSlotTestCallbackThird);
         console.debug("====>getSlot SlotType.CONTENT_INFORMATION: ====>");
-        await notification.getSlot(notification.SlotType.CONTENT_INFORMATION, getSlotActsAnsGetSlotTestCallback_0300);
+        await notification.getSlot(notification.SlotType.CONTENT_INFORMATION, getSlotActsAnsGetSlotTestCallbackThird);
+        setTimeout(function(){
+            console.debug("====>time out ActsAnsGetSlotTestCallback_0300====>");
+        }, 1000);
     })
 
     /*
@@ -146,7 +155,7 @@ describe('ActsAnsGetSlotTestCallback', function () {
      */
     it('ActsAnsGetSlotTestCallback_0400', 0, async function (done) {
         console.debug("====>ActsAnsGetSlotTestCallback_0400 start====>");
-        function getSlotActsAnsGetSlotTestCallback_0400(err, data) {
+        function getSlotActsAnsGetSlotTestCallbackFourth(err, data) {
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0400 enter====>");
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0400 err====>" + JSON.stringify(err));
             expect(err.code).assertEqual(0);
@@ -165,9 +174,12 @@ describe('ActsAnsGetSlotTestCallback', function () {
             done();
         }
         console.debug("====>addSlot SlotType.OTHER_TYPES: ====>");
-        await notification.addSlot(notification.SlotType.OTHER_TYPES, addSlotActsAnsGetSlotTestCallback_0400);
+        await notification.addSlot(notification.SlotType.OTHER_TYPES, addSlotActsAnsGetSlotTestCallbackFourth);
         console.debug("====>getSlot SlotType.OTHER_TYPES: ====>");
-        await notification.getSlot(notification.SlotType.OTHER_TYPES, getSlotActsAnsGetSlotTestCallback_0400);
+        await notification.getSlot(notification.SlotType.OTHER_TYPES, getSlotActsAnsGetSlotTestCallbackFourth);
+        setTimeout(function(){
+            console.debug("====>time out ActsAnsGetSlotTestCallback_0400====>");
+        }, 1000);
     })
 
     /*
@@ -177,7 +189,7 @@ describe('ActsAnsGetSlotTestCallback', function () {
      */
     it('ActsAnsGetSlotTestCallback_0500', 0, async function (done) {
         console.debug("====>ActsAnsGetSlotTestCallback_0500 start====>");
-        function getSlotActsAnsGetSlotTestCallback_0500(err, data) {
+        function getSlotActsAnsGetSlotTestCallbackFifth(err, data) {
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0500 enter====>");
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0500 err====>" + JSON.stringify(err));
             expect(err.code).assertEqual(0);
@@ -196,8 +208,11 @@ describe('ActsAnsGetSlotTestCallback', function () {
             done();
         }
         console.debug("====>addSlot SlotType.UNKNOWN_TYPE: ====>");
-        await notification.addSlot(notification.SlotType.UNKNOWN_TYPE, addSlotActsAnsGetSlotTestCallback_0500);
+        await notification.addSlot(notification.SlotType.UNKNOWN_TYPE, addSlotActsAnsGetSlotTestCallbackFifth);
         console.debug("====>getSlot SlotType.UNKNOWN_TYPE: ====>");
-        await notification.getSlot(notification.SlotType.UNKNOWN_TYPE, getSlotActsAnsGetSlotTestCallback_0500);
+        await notification.getSlot(notification.SlotType.UNKNOWN_TYPE, getSlotActsAnsGetSlotTestCallbackFifth);
+        setTimeout(function(){
+            console.debug("====>time out ActsAnsGetSlotTestCallback_0500====>");
+        }, 1000);
     })
 }) 

@@ -14,9 +14,12 @@
  */
 
 import bundle from '@ohos.bundle'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+
+const TIMEOUT = 1000;
 
 describe('ActsBmsHapModuleTest', function () {
+
     /*
      * @tc.number: bms_getHapModuleInfo_0100
      * @tc.name: get hapModuleInfo from one app by getBundleInfo
@@ -26,8 +29,8 @@ describe('ActsBmsHapModuleTest', function () {
         console.debug('===========begin bms_getHapModuleInfo_0100===========')
         await install(['/data/test/bmsMainAbilityFirstScene.hap']);
         let bundleName = 'com.example.bmsmainabilityfirstscene';
+        let ret = false
         bundle.getBundleInfo(bundleName, 1, callback);
-
         function callback(err, data) {
             console.debug('=======get bundle========' + JSON.stringify(data));
             let hapModuleInfo = data.hapModuleInfo[0];
@@ -36,10 +39,13 @@ describe('ActsBmsHapModuleTest', function () {
             expect(hapModuleInfo.moduleName).assertEqual('entry');
             expect(hapModuleInfo.mainAbilityName).assertEqual('com.example.bmsmainabilityfirstscene.MainAbility');
             checkHapModuleInfo(hapModuleInfo);
+            ret = true;
             done();
         }
+        setTimeout(function () {
+            expect(ret).assertTrue();
+        }, TIMEOUT);
     });
-
 
     /*
      * @tc.number: bms_getHapModuleInfo_0200
@@ -49,6 +55,7 @@ describe('ActsBmsHapModuleTest', function () {
     it('bms_getHapModuleInfo_0200', 0, async function (done) {
         console.debug('===========begin bms_getHapModuleInfo_0200===========')
         await install(['/data/test/bmsMainAbilitySecondScene.hap']);
+        let ret = false
         let bundleName = 'com.example.bmsmainabilityfirstscene';
         let firstMainAbility = 'com.example.bmsmainabilityfirstscene.MainAbility';
         let secondMainAbility = 'com.example.bmsmainabilitysecondscene.MainAbility';
@@ -56,7 +63,7 @@ describe('ActsBmsHapModuleTest', function () {
         bundle.getBundleInfo(bundleName, 1, async (err, data) => {
             console.debug('=======hapModule length========' + data.hapModuleInfo.length);
             expect(data.hapModuleInfo.length).assertEqual(2);
-            for (let i = 0, len = data.hapModuleInfo.length;i < len; i++) {
+            for (let i = 0, len = data.hapModuleInfo.length; i < len; i++) {
                 console.debug('=======get hapModule========' + JSON.stringify(data.hapModuleInfo[i]))
                 console.debug('=======get hapModule mainAbilityName========' + data.hapModuleInfo[i].mainAbilityName);
                 checkHapModuleInfo(data.hapModuleInfo[i]);
@@ -67,8 +74,12 @@ describe('ActsBmsHapModuleTest', function () {
             expect(result.get(firstMainAbility).moduleName).assertEqual('entry');
             expect(result.get(secondMainAbility).moduleName).assertEqual('bmsmainabilitysecondscene');
             await uninstall(bundleName);
+            ret = true;
             done();
         })
+        setTimeout(function () {
+            expect(ret).assertTrue();
+        }, TIMEOUT);
     })
 
     /*
@@ -80,6 +91,7 @@ describe('ActsBmsHapModuleTest', function () {
         console.debug('===========begin bms_getHapModuleInfo_0300===========')
         await install(['/data/test/bmsThirdBundleTest2.hap']);
         let bundleName = 'com.example.third2';
+        let ret = false;
         bundle.getBundleInfo(bundleName, 1).then(async (data) => {
             console.debug('=======get hapModule========' + JSON.stringify(data))
             expect(data.hapModuleInfo.length).assertEqual(1);
@@ -88,8 +100,12 @@ describe('ActsBmsHapModuleTest', function () {
             expect(data.hapModuleInfo[0].moduleName).assertEqual('entry');
             checkHapModuleInfo(data.hapModuleInfo[0]);
             await uninstall(bundleName);
+            ret = true;
             done();
         })
+        setTimeout(function () {
+            expect(ret).assertTrue();
+        }, TIMEOUT);
     })
 
     function checkHapModuleInfo(dataInfo) {
@@ -111,17 +127,16 @@ describe('ActsBmsHapModuleTest', function () {
         expect(typeof dataInfo.installationFree).assertEqual('boolean');
     }
 
-    async function install(bundlePath)
-    {
+    async function install(bundlePath) {
         var installer = await bundle.getBundleInstaller();
-        await installer.install(bundlePath, {
+        console.log('========install========' + typeof installer);
+        installer.install(bundlePath, {
             param: {
                 userId: 0,
                 installFlag: 1,
                 isKeepData: false
             }
         }, onReceiveInstallEvent);
-
         function onReceiveInstallEvent(err, data) {
             console.info('========install Finish========');
             expect(typeof err).assertEqual('object');
@@ -132,10 +147,9 @@ describe('ActsBmsHapModuleTest', function () {
         }
     }
 
-    async function uninstall(bundleName)
-    {
+    async function uninstall(bundleName) {
         var installer = await bundle.getBundleInstaller();
-        await installer.uninstall(bundleName, {
+        installer.uninstall(bundleName, {
             param: {
                 userId: 0,
                 installFlag: 1,
@@ -152,5 +166,4 @@ describe('ActsBmsHapModuleTest', function () {
             expect(data.statusMessage).assertEqual('SUCCESS');
         }
     }
-
 })

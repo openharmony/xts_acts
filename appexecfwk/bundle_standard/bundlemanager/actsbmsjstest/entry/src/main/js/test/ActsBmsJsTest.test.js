@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 import bundle from '@ohos.bundle'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+
+const TIMEOUT = 3000;
 
 describe('ActsBmsJsTest', function () {
+
     /*
     * @tc.number: bms_getJsAbility_0100
     * @tc.name: test the multi js ability
@@ -27,13 +30,16 @@ describe('ActsBmsJsTest', function () {
         let bundleName = 'com.example.third2';
         let abilityName = 'com.example.third2.MainAbility';
         await install(['/data/test/bmsThirdBundleTest2.hap']);
-        bundle.getBundleInfo(bundleName,1).then((data)=>{
-            expect(data.abilityInfo.length).assertEqual(1);
-            checkIsExist(abilityName, data);
-            uninstall(bundleName);
-            done();
-        });
+        let data = await bundle.getBundleInfo(bundleName, 1);
+        expect(data.abilityInfo.length).assertEqual(1);
+        checkIsExist(abilityName, data);
+        await uninstall(bundleName);
+        done();
+        setTimeout(function () {
+            console.info('=====================bms_getJsAbility_0100==================end');
+        }, TIMEOUT)
     })
+
     /*
     * @tc.number: bms_getJsAbility_0200
     * @tc.name: test the multi js ability
@@ -46,15 +52,18 @@ describe('ActsBmsJsTest', function () {
         let abilityName1 = 'com.example.third5.AMainAbility';
         let abilityName2 = 'com.example.third5.BMainAbility';
         await install(['/data/test/bmsThirdBundleTest5.hap']);
-        bundle.getBundleInfo(bundleName,1).then((data)=>{
-            console.debug('==========bundleInfo==========' + JSON.stringify(data))
-            expect(data.abilityInfo.length).assertLarger(1);
-            checkIsExist(abilityName1, data);
-            checkIsExist(abilityName2, data);
-            uninstall(bundleName);
-            done();
-        });
+        let data = await bundle.getBundleInfo(bundleName, 1)
+        console.debug('==========bundleInfo==========' + JSON.stringify(data))
+        expect(data.abilityInfo.length).assertLarger(1);
+        checkIsExist(abilityName1, data);
+        checkIsExist(abilityName2, data);
+        await uninstall(bundleName);
+        done();
+        setTimeout(function () {
+            console.info('=====================bms_getJsAbility_0200==================end');
+        }, TIMEOUT)
     })
+
     /*
     * @tc.number: bms_getJsAbility_0300
     * @tc.name: test the multi js ability
@@ -66,17 +75,18 @@ describe('ActsBmsJsTest', function () {
         let bundleName = 'com.example.js';
         let abilityName = 'com.example.js.MainAbility';
         await install(['/data/test/bmsThirdBundleJs.hap']);
-        bundle.getBundleInfo(bundleName,1).then((data)=>{
-            expect(data.abilityInfo.length).assertEqual(1);
-            checkIsExist(abilityName, data);
-            uninstall(bundleName);
-            done();
-        });
+        let data = await bundle.getBundleInfo(bundleName, 1);
+        expect(data.abilityInfo.length).assertEqual(1);
+        checkIsExist(abilityName, data);
+        await uninstall(bundleName);
+        done();
+        setTimeout(function () {
+            console.info('=====================bms_getJsAbility_0300==================end');
+        }, TIMEOUT)
     })
-    async function install(bundlePath)
-    {
+    async function install(bundlePath) {
         var installer = await bundle.getBundleInstaller();
-        await installer.install(bundlePath, {
+        installer.install(bundlePath, {
             param: {
                 userId: 0,
                 installFlag: 1,
@@ -96,7 +106,7 @@ describe('ActsBmsJsTest', function () {
     async function uninstall(bundleName)
     {
         var installer = await bundle.getBundleInstaller();
-        await installer.uninstall(bundleName, {
+        installer.uninstall(bundleName, {
             param: {
                 userId: 0,
                 installFlag: 1,
@@ -118,8 +128,7 @@ describe('ActsBmsJsTest', function () {
         console.debug('==========bundleInfo==========' + JSON.stringify(data))
         console.debug('==========AbilityInfo===========' + JSON.stringify(data.abilityInfo))
         let abilityNames = new Map();
-        for (var i = 0; i < data.abilityInfo.length; i++)
-        {
+        for (var i = 0; i < data.abilityInfo.length; i++) {
             console.debug('==========abilityName==========' + data.abilityInfo[i].name);
             abilityNames.set(data.abilityInfo[i].name, data.abilityInfo[i]);
         }

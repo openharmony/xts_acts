@@ -16,7 +16,7 @@
 import wantAgent from '@ohos.wantAgent';
 import { OperationType, Flags } from '@ohos.wantagent';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
-
+var time = 1000
 var WantAgent;
 describe('ActsAnsWantAgentFourProTest', function () {
     /*
@@ -74,6 +74,9 @@ describe('ActsAnsWantAgentFourProTest', function () {
                         }
                     );
                     done();
+                    setTimeout(function(){
+                        console.debug("====>time out ACTS_SetWant_0800====>");
+                    }, time);
             }
         );
         console.info('----getWantAgent after----');

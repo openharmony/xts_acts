@@ -19,10 +19,7 @@ group("ActsAnsSlotTest") {
     deps = [
       "actsansgetslottestcallback:ActsAnsGetSlotTestCallback",
       "actsansgetslottestpromise:ActsAnsGetSlotTestPromise",
-      "actsanslotbybundle:ActsAnsSlotByBundle",
       "actsansremoveslottest:ActsAnsRemoveSlotTest",
-      "actsansslotsystemcallback:ActsAnsSlotSystemCallback",
-      "actsansslotsystempromise:ActsAnsSlotSystemPromise",
     ]
   }
 }

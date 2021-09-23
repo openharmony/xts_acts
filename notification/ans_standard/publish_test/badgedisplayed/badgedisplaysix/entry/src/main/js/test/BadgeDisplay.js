@@ -15,7 +15,7 @@
 
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-
+var time = 1000
 describe('ActsAnsBadgeDisplaySixTest', function () {
     console.info("===========ActsDoNotDisturbModeTest1 start====================>");
     /*
@@ -30,6 +30,9 @@ describe('ActsAnsBadgeDisplaySixTest', function () {
             console.log("==========================>ActsBadgeDisplay_test_1100 success=======================>"+err)
         })
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsBadgeDisplay_test_1100====>");
+        }, time);
     })
     /*
      * @tc.number: ActsBadgeDisplay_test_1200
@@ -42,6 +45,9 @@ describe('ActsAnsBadgeDisplaySixTest', function () {
                 bundle:"com.neu.actsanslocalcandisplaytest"
             },true).then(console.log("==========================>ActsBadgeDisplay_test_1200 success=======================>"))
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsBadgeDisplay_test_1200====>");
+        }, time);
     })
     /*
      * @tc.number: ActsSystemCanDisplay_test_1100
@@ -54,6 +60,9 @@ describe('ActsAnsBadgeDisplaySixTest', function () {
             expect(typeof(data)).assertEqual('boolean')
         })
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsSystemCanDisplay_test_1100====>");
+        }, time);
     })
     /*
      * @tc.number: ActsSystemCanDisplay_test_1200
@@ -65,6 +74,9 @@ describe('ActsAnsBadgeDisplaySixTest', function () {
         console.log("==========================>ActsSystemCanDisplay_test_1200 success=======================>"+promise)
         expect(typeof(promise)).assertEqual('boolean')
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsSystemCanDisplay_test_1200====>");
+        }, time);
     })
 })
 

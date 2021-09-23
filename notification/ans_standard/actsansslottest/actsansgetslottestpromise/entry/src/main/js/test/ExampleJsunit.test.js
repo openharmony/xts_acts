@@ -24,11 +24,11 @@ describe('ActsAnsGetSlotTestPromise', function () {
      */
     it('ActsAnsGetSlotTestPromise_0100', 0, async function (done) {
         console.debug("====>ActsAnsGetSlotTestPromise_0100 start====>");
-        await notification.addSlot(notification.SlotType.SOCIAL_COMMUNICATION).then(() => {
+        notification.addSlot(notification.SlotType.SOCIAL_COMMUNICATION).then(() => {
             console.debug("====>addSlotActsAnsGetSlotTestPromise_0100 enter====>");
         })
         console.debug("====>getSlot SlotType.SOCIAL_COMMUNICATION: ====>");
-        await notification.getSlot(notification.SlotType.SOCIAL_COMMUNICATION).then((data) => {
+        notification.getSlot(notification.SlotType.SOCIAL_COMMUNICATION).then((data) => {
             console.debug("====>getSlotActsAnsGetSlotTestPromise_0100 enter====>");
             console.debug("====>getSlotActsAnsGetSlotTestPromise_0100 data====>" + JSON.stringify(data));
             expect(data.type).assertEqual(notification.SlotType.SOCIAL_COMMUNICATION);
@@ -42,9 +42,12 @@ describe('ActsAnsGetSlotTestPromise', function () {
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlotActsAnsGetSlotTestPromise_0100 finish====>");
+            done();
         })
         console.debug("====>ActsAnsGetSlotTestPromise_0100 end====>");
-        done();
+        setTimeout(function(){
+            console.debug("====>time out ActsAnsGetSlotTestPromise_0100====>");
+        }, 1000);
     })
 
     /*
@@ -54,13 +57,13 @@ describe('ActsAnsGetSlotTestPromise', function () {
      */
     it('ActsAnsGetSlotTestPromise_0200', 0, async function (done) {
         console.debug("====>ActsAnsGetSlotTestPromise_0200 start====>");
-        await notification.addSlot(notification.SlotType.SERVICE_INFORMATION).then(() => {
-            console.debug("====>addSlotByTypePromise SERVICE_INFORMATION ActsAnsGetSlotTestPromise_0200 enter====>");
+        notification.addSlot(notification.SlotType.SERVICE_INFORMATION).then(() => {
+            console.debug("====>addSlotByTypePromise SERVICE_INFORMATION ActsAnsGetSlotTestPromise_0200 enter");
         })
         console.debug("====>getSlot SlotType.SERVICE_INFORMATION: ====>");
-        await notification.getSlot(notification.SlotType.SERVICE_INFORMATION).then((data) => {
+        notification.getSlot(notification.SlotType.SERVICE_INFORMATION).then((data) => {
             console.debug("====>getSlotPromise SERVICE_INFORMATION ActsAnsGetSlotTestPromise_0200 enter====>");
-            console.debug("====>getSlotPromise SERVICE_INFORMATION ActsAnsGetSlotTestPromise_0200 data====>" + JSON.stringify(data));
+            console.debug("====>getSlotPromise ActsAnsGetSlotTestPromise_0200 data====>" + JSON.stringify(data));
             expect(data.type).assertEqual(notification.SlotType.SERVICE_INFORMATION);
             expect(data.level).assertEqual(3);
             expect(data.desc).assertEqual("");
@@ -72,9 +75,12 @@ describe('ActsAnsGetSlotTestPromise', function () {
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlotPromise SERVICE_INFORMATION ActsAnsGetSlotTestPromise_0200 finish====>");
+            done();
         })
         console.debug("====>ActsAnsGetSlotTestPromise_0200 end====>");
-        done();
+        setTimeout(function(){
+            console.debug("====>time out ActsAnsGetSlotTestPromise_0200====>");
+        }, 1000);
     })
 
     /*
@@ -85,13 +91,13 @@ describe('ActsAnsGetSlotTestPromise', function () {
     it('ActsAnsGetSlotTestPromise_0300', 0, async function (done) {
         console.debug("====>ActsAnsGetSlotTestPromise_0300 Promise start====>");
         console.debug("====>addSlot SlotType.CONTENT_INFORMATION: ====>");
-        await notification.addSlot(notification.SlotType.CONTENT_INFORMATION).then(() => {
-            console.debug("====>addSlotByTypePromise CONTENT_INFORMATION ActsAnsGetSlotTestPromise_0300 enter====>");
+        notification.addSlot(notification.SlotType.CONTENT_INFORMATION).then(() => {
+            console.debug("====>addSlotByTypePromise CONTENT_INFORMATION ActsAnsGetSlotTestPromise_0300 enter");
         })
         console.debug("====>getSlot SlotType.CONTENT_INFORMATION: ====>");
-        await notification.getSlot(notification.SlotType.CONTENT_INFORMATION).then((data) => {
+        notification.getSlot(notification.SlotType.CONTENT_INFORMATION).then((data) => {
             console.debug("====>getSlotPromise CONTENT_INFORMATION ActsAnsGetSlotTestPromise_0300 enter====>");
-            console.debug("====>getSlotPromise CONTENT_INFORMATION ActsAnsGetSlotTestPromise_0300 data====>" + JSON.stringify(data));
+            console.debug("====>getSlotPromise ActsAnsGetSlotTestPromise_0300 data====>" + JSON.stringify(data));
             expect(data.type).assertEqual(notification.SlotType.CONTENT_INFORMATION);
             expect(data.level).assertEqual(3);
             expect(data.desc).assertEqual("");
@@ -103,9 +109,12 @@ describe('ActsAnsGetSlotTestPromise', function () {
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlotPromise CONTENT_INFORMATION ActsAnsGetSlotTestPromise_0300 finish====>");
+            done();
         })
         console.info("====>ActsAnsGetSlotTestPromise_0300 end====>");
-        done();
+        setTimeout(function(){
+            console.debug("====>time out ActsAnsGetSlotTestPromise_0300====>");
+        }, 1000);
     })
 
     /*
@@ -116,13 +125,13 @@ describe('ActsAnsGetSlotTestPromise', function () {
     it('ActsAnsGetSlotTestPromise_0400', 0, async function (done) {
         console.debug("====>ActsAnsGetSlotTestPromise_0400 start====>");
         console.debug("====>addSlot SlotType.OTHER_TYPES: ====>");
-        await notification.addSlot(notification.SlotType.OTHER_TYPES).then(() => {
-            console.debug("====>addSlotByTypePromise OTHER_TYPES AnsGetSlotByTypeAfterAddPromiseTest_0400 enter====>");
+        notification.addSlot(notification.SlotType.OTHER_TYPES).then(() => {
+            console.debug("====>addSlotByTypePromise AnsGetSlotByTypeAfterAddPromiseTest_0400 enter====>");
         })
         console.debug("====>getSlot SlotType.OTHER_TYPES: ====>");
-        await notification.getSlot(notification.SlotType.OTHER_TYPES).then((data) => {
+        notification.getSlot(notification.SlotType.OTHER_TYPES).then((data) => {
             console.debug("====>getSlotPromise OTHER_TYPES ActsAnsGetSlotTestPromise_0400 enter====>");
-            console.debug("====>getSlotPromise OTHER_TYPES ActsAnsGetSlotTestPromise_0400 data====>" + JSON.stringify(data));
+            console.debug("====>getSlotPromise ActsAnsGetSlotTestPromise_0400 data====>" + JSON.stringify(data));
             expect(data.type).assertEqual(notification.SlotType.OTHER_TYPES);
             expect(data.level).assertEqual(3);
             expect(data.desc).assertEqual("");
@@ -134,9 +143,12 @@ describe('ActsAnsGetSlotTestPromise', function () {
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlotPromise OTHER_TYPES ActsAnsGetSlotTestPromise_0400 finish====>");
+            done();
         })
         console.debug("====>ActsAnsGetSlotTestPromise_0400 end====>");
-        done();
+        setTimeout(function(){
+            console.debug("====>time out ActsAnsGetSlotTestPromise_0400====>");
+        }, 1000);
     })
 
     /*
@@ -147,13 +159,13 @@ describe('ActsAnsGetSlotTestPromise', function () {
     it('ActsAnsGetSlotTestPromise_0500', 0, async function (done) {
         console.debug("====>ActsAnsGetSlotTestPromise_0500 start====>");
         console.debug("====>addSlot SlotType.UNKNOWN_TYPE: ====>");
-        await notification.addSlot(notification.SlotType.UNKNOWN_TYPE).then(() => {
+        notification.addSlot(notification.SlotType.UNKNOWN_TYPE).then(() => {
             console.debug("====>addSlotByTypePromise UNKNOWN_TYPE ActsAnsGetSlotTestPromise_0500 enter====>");
         })
         console.debug("====>getSlot SlotType.UNKNOWN_TYPE: ====>");
-        await notification.getSlot(notification.SlotType.UNKNOWN_TYPE).then((data) => {
+        notification.getSlot(notification.SlotType.UNKNOWN_TYPE).then((data) => {
             console.debug("====>getSlotPromise UNKNOWN_TYPE ActsAnsGetSlotTestPromise_0500 enter====>");
-            console.debug("====>getSlotPromise UNKNOWN_TYPE ActsAnsGetSlotTestPromise_0500 data====>" + JSON.stringify(data));
+            console.debug("====>getSlotPromise  ActsAnsGetSlotTestPromise_0500 data====>" + JSON.stringify(data));
             expect(data.type).assertEqual(notification.SlotType.OTHER_TYPES);
             expect(data.level).assertEqual(3);
             expect(data.desc).assertEqual("");
@@ -165,8 +177,11 @@ describe('ActsAnsGetSlotTestPromise', function () {
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlotPromise UNKNOWN_TYPE ActsAnsGetSlotTestPromise_0500 finish====>");
+            done();
         })
         console.debug("====>ActsAnsGetSlotTestPromise_0500 end====>");
-        done();
+        setTimeout(function(){
+            console.debug("====>time out ActsAnsGetSlotTestPromise_0500====>");
+        }, 1000);
     })
 }) 

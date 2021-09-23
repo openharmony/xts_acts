@@ -15,7 +15,7 @@
 
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-
+var time = 1000
 describe('ActsAnsEnableNotificationSetFourTest', function () {
     console.info("===========ActsEnableNotificationSetTest4 start====================>");
     /*
@@ -30,6 +30,9 @@ describe('ActsAnsEnableNotificationSetFourTest', function () {
             console.log("==========================>ActsEnableNotificationSet_test_0700 success=======================>"+err)
         })
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsEnableNotificationSet_test_0700====>");
+        }, time);
     })
     /*
      * @tc.number: ActsEnableNotificationSet_test_0800
@@ -42,6 +45,9 @@ describe('ActsAnsEnableNotificationSetFourTest', function () {
                 bundle:"com.neu.actsanslocalnotificationtest",
             },100).then(console.log("==========================>ActsEnableNotificationSet_test_0800 success=======================>"))
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsEnableNotificationSet_test_0800====>");
+        }, time);
     })
     /*
      * @tc.number: ActsSystemNotification_test_0700
@@ -56,6 +62,9 @@ describe('ActsAnsEnableNotificationSetFourTest', function () {
             expect(typeof(data)).assertEqual('boolean')
         })
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsSystemNotificationSet_test_0700====>");
+        }, time);
     })
     /*
      * @tc.number: ActsSystemNotificationSet_test_0800
@@ -70,6 +79,9 @@ describe('ActsAnsEnableNotificationSetFourTest', function () {
         expect(typeof(promise)).assertEqual('boolean')
         console.log("==========================>ActsSystemNotificationSet_test_0800 success=======================>"+promise)
         done();
+        setTimeout(function(){
+            console.debug("====>time out ActsSystemNotificationSet_test_0800====>");
+        }, time);
     })
 
 })

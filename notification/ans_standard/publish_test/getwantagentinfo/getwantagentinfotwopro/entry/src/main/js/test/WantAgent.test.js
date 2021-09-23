@@ -19,6 +19,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 var WantAgent1;
 var WantAgent2;
+var time = 1000
 describe('ActsAnsGetWantAgentInfoTwoProTest', function () {
     console.info('----ActsGetWantAgentInfoTest----');
     /*
@@ -69,6 +70,9 @@ describe('ActsAnsGetWantAgentInfoTwoProTest', function () {
                     expect(typeof(data)).assertEqual("object");
                 }
                 done();
+                setTimeout(function(){
+                    console.debug("====>time out ACTS_SetWantInfo_0700====>");
+                }, time)
             }),
             console.info('----getWantAgent1 after----');
     })
@@ -136,6 +140,9 @@ describe('ActsAnsGetWantAgentInfoTwoProTest', function () {
                     expect(typeof(data)).assertEqual("object");
                 }
                 done();
+                setTimeout(function(){
+                    console.debug("====>time out ACTS_SetWantInfo_0800====>");
+                }, time)
             });
             console.info('----getWantAgent2 after----');
       })
