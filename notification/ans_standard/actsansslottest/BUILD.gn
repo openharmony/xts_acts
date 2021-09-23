@@ -20,6 +20,8 @@ group("ActsAnsSlotTest") {
       "actsansgetslottestcallback:ActsAnsGetSlotTestCallback",
       "actsansgetslottestpromise:ActsAnsGetSlotTestPromise",
       "actsansremoveslottest:ActsAnsRemoveSlotTest",
+      "actsansslotsystemcallback:ActsAnsSlotSystemCallback",
+      "actsansslotsystempromise:ActsAnsSlotSystemPromise",
     ]
   }
 }
