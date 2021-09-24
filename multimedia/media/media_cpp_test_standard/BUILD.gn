@@ -28,6 +28,7 @@ ohos_moduletest_suite("ActsMediaCppStandardTest") {
   sources = [
     "player/src/TestParamsConfig.cpp",
     "player/src/TestPlayer.cpp",
+    "player/src/api/ActsPlayerAPITest.cpp",
     "player/src/function/ActsPlayerFuncAsyncTest.cpp",
     "player/src/function/ActsPlayerFuncTest.cpp",
     "player/src/function/ActsPlayerStateAsyncTest.cpp",
