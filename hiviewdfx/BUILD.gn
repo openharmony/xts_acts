@@ -17,8 +17,11 @@ group("hiviewdfxtestacts") {
     deps = [
       "faultloggertest/faultloggercpptest:faultloggertest",
       "hiappeventtest/hiappeventjstest:hiappeventjstest",
+      "hicollietest/hicolliecpptest:HiCollieCppTest",
       "hilogtest/libhilogtest:libhilogtestacts",
       "hisyseventtest/hisyseventcpptest:HiSysEventCPPTest",
+      "hitracetest/hitracecpptest:HitraceCPPtest",
+      "hitracetest/hitracectest:HitraceCtest",
     ]
   }
 }
