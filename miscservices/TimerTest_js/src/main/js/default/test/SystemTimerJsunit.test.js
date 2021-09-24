@@ -19,6 +19,7 @@ import systemTimer from '@ohos.systemtimer'
 
 describe('TimerTest', function() {
     console.log('start################################start');
+
 	/**
      * @tc.number    SUB_systemTimer_Timer_JS_API_0100
      * @tc.name      Test systemTimer.Timer type = TIMER_TYPE_REALTIME
