@@ -12,5 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+// require('./AudioPerf.test.js')
 require('./AudioFramework.test.js')
+//require('./AudioFramework.test-Gitee.js')
+//require('./AudioCapturer.test.js')
+//require('./AudioRenderer.test.js')
