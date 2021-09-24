@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "ohos.acts.miscservices.time",
+    "bundleName": "ohos.acts.miscservices.timer",
     "vendor": "acts",
     "version": {
       "code": 1000000,
@@ -13,7 +13,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "ohos.acts.miscservices.time",
+    "package": "ohos.acts.miscservices.timer",
     "name": ".MyApplication",
     "deviceType": [
       "phone"
@@ -25,6 +25,7 @@
     },
     "abilities": [
       {
+        "visible": true,
         "skills": [
           {
             "entities": [
@@ -35,7 +36,7 @@
             ]
           }
         ],
-        "name": "ohos.acts.miscservices.time.MainAbility",
+        "name": "ohos.acts.miscservices.timer.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",

@@ -317,8 +317,8 @@ describe('TimeTest', function() {
         console.log('SUB_systemTime_setTime_JS_API_1300 end');
         done()
     })
-
-    /**
+	
+	/**
      * @tc.number    SUB_systemTime_setDate_JS_API_0100
      * @tc.name      Test systemTime.setDate date = new Date()
      * @tc.desc      Test systemTime_setDate API functionality.
@@ -326,262 +326,251 @@ describe('TimeTest', function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test1', 0, async function (done) {
+    it('systemTime_setDate_test1', 0, async function (done) {
         console.log("SUB_systemTime_setDate_JS_API_0100 start")
-        expect(true).to.a('boolean')
         systemTime.setDate(new Date())
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
         console.log('SUB_systemTime_setDate_JS_API_0100 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_0100
+     * @tc.number    SUB_systemTime_setDate_JS_API_0200
      * @tc.name      Test systemTime.setDate date = new Date(2022,1,1)
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test1', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_0100 start")
-        expect(true).to.a('boolean')
+    it('systemTime_setDate_test2', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_0200 start")
         systemTime.setDate(new Date(2022,1,1))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_0100 end');
+        console.log('SUB_systemTime_setDate_JS_API_0200 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_0200
+     * @tc.number    SUB_systemTime_setDate_JS_API_0300
      * @tc.name      Test systemTime.setDate date = new Date(2022,1,15)
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test2', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_0200 start")
-        expect(true).to.a('boolean')
+    it('systemTime_setDate_test3', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_0300 start")
         systemTime.setDate(new Date(2022,1,15))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_0200 end');
+        console.log('SUB_systemTime_setDate_JS_API_0300 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_0300
+     * @tc.number    SUB_systemTime_setDate_JS_API_0400
      * @tc.name      Test systemTime.setDate date = new Date(2022,1,31)
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test3', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_0300 start")
-        expect(true).to.a('boolean')
+    it('systemTime_setDate_test4', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_0400 start")
         systemTime.setDate(new Date(2022,1,31))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_0300 end');
+        console.log('SUB_systemTime_setDate_JS_API_0400 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_0400
+     * @tc.number    SUB_systemTime_setDate_JS_API_0500
      * @tc.name      Test systemTime.setDate date = new Date(2022,1,32)
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test4', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_0400 start")
-        expect(false).to.a('boolean')
+    it('systemTime_setDate_test5', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_0500 start")
         systemTime.setDate(new Date(2022,1,32))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_0400 end');
+        console.log('SUB_systemTime_setDate_JS_API_0500 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_0500
+     * @tc.number    SUB_systemTime_setDate_JS_API_0600
      * @tc.name      Test systemTime.setDate date = new Date(2022,2,29)
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test5', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_0500 start")
-        expect(false).to.a('boolean')
+    it('systemTime_setDate_test6', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_0600 start")
         systemTime.setDate(new Date(2022,2,29))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_0500 end');
+        console.log('SUB_systemTime_setDate_JS_API_0600 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_0600
+     * @tc.number    SUB_systemTime_setDate_JS_API_0700
      * @tc.name      Test systemTime.setDate date = new Date(2040,2,29)
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test6', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_0600 start")
-        expect(true).to.a('boolean')
+    it('systemTime_setDate_test7', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_0700 start")
         systemTime.setDate(new Date(2040,2,29))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_0600 end');
+        console.log('SUB_systemTime_setDate_JS_API_0700 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_0700
+     * @tc.number    SUB_systemTime_setDate_JS_API_0800
      * @tc.name      Test systemTime.setDate date = new Date(2040,2,30)
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test7', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_0700 start")
-        expect(false).to.a('boolean')
+    it('systemTime_setDate_test8', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_0800 start")
         systemTime.setDate(new Date(2040,2,30))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_0700 end');
+        console.log('SUB_systemTime_setDate_JS_API_0800 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_0800
+     * @tc.number    SUB_systemTime_setDate_JS_API_0900
      * @tc.name      Test systemTime.setDate date = new Date(2022,6,30)
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test8', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_0800 start")
-        expect(true).to.a('boolean')
+    it('systemTime_setDate_test9', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_0900 start")
         systemTime.setDate(new Date(2022,6,30))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_0800 end');
+        console.log('SUB_systemTime_setDate_JS_API_0900 end');
         done()
-    })*/
-
-    /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_0900
+    })
+	
+	/**
+     * @tc.number    SUB_systemTime_setDate_JS_API_1000
      * @tc.name      Test systemTime.setDate date = new Date(2022,6,31)
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test9', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_0900 start")
-        expect(false).to.a('boolean')
+    it('systemTime_setDate_test10', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_1000 start")
         systemTime.setDate(new Date(2022,6,31))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_0900 end');
+        console.log('SUB_systemTime_setDate_JS_API_1000 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_1000
+     * @tc.number    SUB_systemTime_setDate_JS_API_1100
      * @tc.name      Test systemTime.setDate date = new Date(2022,12,31)
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test10', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_1000 start")
-        expect(true).to.a('boolean')
+    it('systemTime_setDate_test11', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_1100 start")
         systemTime.setDate(new Date(2022,12,31))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
-        });
-        console.log('SUB_systemTime_setDate_JS_API_1000 end');
-        done()
-    })*/
-
-    /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_1100
-     * @tc.name      Test systemTime.setDate date = new Date(2022,12,0)
-     * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    /*it('systemTime_setDate_test11', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_1100 start")
-        expect(false).to.a('boolean')
-        systemTime.setDate(new Date(2022,12,0))
-            .then(data =>{
-            console.log("setDate ===data " + data)
-        }).catch(error => {
-            console.log("setDate ===error " + error)
-            console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
         console.log('SUB_systemTime_setDate_JS_API_1100 end');
         done()
-    })*/
-
+    })
+	
     /**
      * @tc.number    SUB_systemTime_setDate_JS_API_1200
      * @tc.name      Test systemTime.setDate date = new Date(2022,13,1)
@@ -590,261 +579,250 @@ describe('TimeTest', function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test12', 0, async function (done) {
+    it('systemTime_setDate_test12', 0, async function (done) {
         console.log("SUB_systemTime_setDate_JS_API_1200 start")
-        expect(false).to.a('boolean')
         systemTime.setDate(new Date(2022,13,1))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
         console.log('SUB_systemTime_setDate_JS_API_1200 end');
         done()
-    })*/
+    }) 
 
     /**
      * @tc.number    SUB_systemTime_setDate_JS_API_1300
-     * @tc.name      Test systemTime.setDate date = new Date(2022,0,1)
-     * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    /*it('systemTime_setDate_test13', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_1300 start")
-        expect(false).to.a('boolean')
-        systemTime.setDate(new Date(2022,0,1))
-            .then(data =>{
-            console.log("setDate ===data " + data)
-        }).catch(error => {
-            console.log("setDate ===error " + error)
-            console.log("setDate ===data " + data)
-        });
-        console.log('SUB_systemTime_setDate_JS_API_1300 end');
-        done()
-    })*/
-
-    /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_1400
      * @tc.name      Test systemTime.setDate date = new Date(2022000,1,1)
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test14', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_1400 start")
-        expect(false).to.a('boolean')
+    it('systemTime_setDate_test13', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_1300 start")
         systemTime.setDate(new Date(2022000,1,1))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_1400 end');
+        console.log('SUB_systemTime_setDate_JS_API_1300 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_1500
+     * @tc.number    SUB_systemTime_setDate_JS_API_1400
      * @tc.name      Test systemTime.setDate date = new Date(0)
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test15', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_1500 start")
-        expect(true).to.a('boolean')
+    it('systemTime_setDate_test14', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_1400 start")
         systemTime.setDate(new Date(0))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_1500 end');
+        console.log('SUB_systemTime_setDate_JS_API_1400 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_1600
+     * @tc.number    SUB_systemTime_setDate_JS_API_1500
      * @tc.name      Test systemTime.setDate date = new Date(-1)
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test16', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_1600 start")
-        expect(true).to.a('boolean')
+    it('systemTime_setDate_test15', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_1500 start")
         systemTime.setDate(new Date(-1))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_1600 end');
+        console.log('SUB_systemTime_setDate_JS_API_1500 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_1700
+     * @tc.number    SUB_systemTime_setDate_JS_API_1600
      * @tc.name      Test systemTime.setDate date = new Date(Number.MAX_VALUE/2)
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test17', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_1700 start")
-        expect(true).to.a('boolean')
+    it('systemTime_setDate_test16', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_1600 start")
         systemTime.setDate(new Date(Number.MAX_VALUE/2))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_1700 end');
+        console.log('SUB_systemTime_setDate_JS_API_1600 end');
         done()
-    })*/
-
-    /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_1800
+    })
+	
+	/**
+     * @tc.number    SUB_systemTime_setDate_JS_API_1700
      * @tc.name      Test systemTime.setDate date = new Date(-Number.MAX_VALUE/2)
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test18', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_1800 start")
-        expect(true).to.a('boolean')
+    it('systemTime_setDate_test17', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_1700 start")
         systemTime.setDate(new Date(-Number.MAX_VALUE/2))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_1800 end');
+        console.log('SUB_systemTime_setDate_JS_API_1700 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_1900
+     * @tc.number    SUB_systemTime_setDate_JS_API_1800
      * @tc.name      Test systemTime.setDate date = new Date(Number.MAX_VALUE)
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test19', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_1900 start")
-        expect(true).to.a('boolean')
+    it('systemTime_setDate_test18', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_1800 start")
         systemTime.setDate(new Date(Number.MAX_VALUE))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_1900 end');
+        console.log('SUB_systemTime_setDate_JS_API_1800 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_2000
+     * @tc.number    SUB_systemTime_setDate_JS_API_1900
      * @tc.name      Test systemTime.setDate date = new Date(-Number.MAX_VALUE)
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test20', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_2000 start")
-        expect(true).to.a('boolean')
+    it('systemTime_setDate_test19', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_1900 start")
         systemTime.setDate(new Date(-Number.MAX_VALUE))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_2000 end');
+        console.log('SUB_systemTime_setDate_JS_API_1900 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_2100
+     * @tc.number    SUB_systemTime_setDate_JS_API_2000
      * @tc.name      Test systemTime.setDate date = new Date("June 1, 2022 11:13:00")
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test21', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_2100 start")
-        expect(true).to.a('boolean')
+    it('systemTime_setDate_test20', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_2000 start")
         systemTime.setDate(new Date("June 1, 2022 11:13:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_2100 end');
+        console.log('SUB_systemTime_setDate_JS_API_2000 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_2200
+     * @tc.number    SUB_systemTime_setDate_JS_API_2100
      * @tc.name      Test systemTime.setDate date = new Date("June 30, 2022 11:13:00")
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test22', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_2200 start")
-        expect(true).to.a('boolean')
+    it('systemTime_setDate_test21', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_2100 start")
         systemTime.setDate(new Date("June 30, 2022 11:13:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_2200 end');
+        console.log('SUB_systemTime_setDate_JS_API_2100 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_2300
+     * @tc.number    SUB_systemTime_setDate_JS_API_2200
      * @tc.name      Test systemTime.setDate date = new Date("June 31, 2022 11:13:00")
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test23', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_2300 start")
-        expect(false).to.a('boolean')
+    it('systemTime_setDate_test22', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_2200 start")
         systemTime.setDate(new Date("June 31, 2022 11:13:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_2300 end');
+        console.log('SUB_systemTime_setDate_JS_API_2200 end');
         done()
-    })*/
+    })
 
     /**
      * @tc.number    SUB_systemTime_setDate_JS_API_2300
@@ -854,19 +832,20 @@ describe('TimeTest', function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test23', 0, async function (done) {
+    it('systemTime_setDate_test23', 0, async function (done) {
         console.log("SUB_systemTime_setDate_JS_API_2300 start")
-        expect(false).to.a('boolean')
         systemTime.setDate(new Date("July 32, 2022 11:13:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
         console.log('SUB_systemTime_setDate_JS_API_2300 end');
         done()
-    })*/
+    })
 
     /**
      * @tc.number    SUB_systemTime_setDate_JS_API_2400
@@ -876,19 +855,20 @@ describe('TimeTest', function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test24', 0, async function (done) {
+    it('systemTime_setDate_test24', 0, async function (done) {
         console.log("SUB_systemTime_setDate_JS_API_2400 start")
-        expect(true).to.a('boolean')
         systemTime.setDate(new Date("July 31, 2022"))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
         console.log('SUB_systemTime_setDate_JS_API_2400 end');
         done()
-    })*/
+    })
 
     /**
      * @tc.number    SUB_systemTime_setDate_JS_API_2500
@@ -898,19 +878,20 @@ describe('TimeTest', function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test25', 0, async function (done) {
+    it('systemTime_setDate_test25', 0, async function (done) {
         console.log("SUB_systemTime_setDate_JS_API_2500 start")
-        expect(true).to.a('boolean')
         systemTime.setDate(new Date("February 28, 2022 11:13:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
         console.log('SUB_systemTime_setDate_JS_API_2500 end');
         done()
-    })*/
+    })
 
     /**
      * @tc.number    SUB_systemTime_setDate_JS_API_2600
@@ -920,19 +901,20 @@ describe('TimeTest', function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test26', 0, async function (done) {
+    it('systemTime_setDate_test26', 0, async function (done) {
         console.log("SUB_systemTime_setDate_JS_API_2600 start")
-        expect(false).to.a('boolean')
         systemTime.setDate(new Date("February 29, 2022 11:13:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
         console.log('SUB_systemTime_setDate_JS_API_2600 end');
         done()
-    })*/
+    })
 
     /**
      * @tc.number    SUB_systemTime_setDate_JS_API_2700
@@ -942,19 +924,20 @@ describe('TimeTest', function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test27', 0, async function (done) {
+    it('systemTime_setDate_test27', 0, async function (done) {
         console.log("SUB_systemTime_setDate_JS_API_2700 start")
-        expect(true).to.a('boolean')
         systemTime.setDate(new Date("February 29, 2040 11:13:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
         console.log('SUB_systemTime_setDate_JS_API_2700 end');
         done()
-    })*/
+    })
 
     /**
      * @tc.number    SUB_systemTime_setDate_JS_API_2800
@@ -964,19 +947,20 @@ describe('TimeTest', function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test28', 0, async function (done) {
+    it('systemTime_setDate_test28', 0, async function (done) {
         console.log("SUB_systemTime_setDate_JS_API_2800 start")
-        expect(true).to.a('boolean')
         systemTime.setDate(new Date("February 1, 2022 00:00:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
         console.log('SUB_systemTime_setDate_JS_API_2800 end');
         done()
-    })*/
+    })
 
     /**
      * @tc.number    SUB_systemTime_setDate_JS_API_2900
@@ -986,19 +970,20 @@ describe('TimeTest', function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test29', 0, async function (done) {
+    it('systemTime_setDate_test29', 0, async function (done) {
         console.log("SUB_systemTime_setDate_JS_API_2900 start")
-        expect(true).to.a('boolean')
         systemTime.setDate(new Date("February 1, 2022 12:00:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
         console.log('SUB_systemTime_setDate_JS_API_2900 end');
         done()
-    })*/
+    })
 
     /**
      * @tc.number    SUB_systemTime_setDate_JS_API_3000
@@ -1008,19 +993,20 @@ describe('TimeTest', function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test30', 0, async function (done) {
+    it('systemTime_setDate_test30', 0, async function (done) {
         console.log("SUB_systemTime_setDate_JS_API_3000 start")
-        expect(true).to.a('boolean')
         systemTime.setDate(new Date("February 1, 2022 23:00:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
         console.log('SUB_systemTime_setDate_JS_API_3000 end');
         done()
-    })*/
+    })
 
     /**
      * @tc.number    SUB_systemTime_setDate_JS_API_3100
@@ -1030,19 +1016,20 @@ describe('TimeTest', function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test31', 0, async function (done) {
+    it('systemTime_setDate_test31', 0, async function (done) {
         console.log("SUB_systemTime_setDate_JS_API_3100 start")
-        expect(true).to.a('boolean')
         systemTime.setDate(new Date("February 1, 2022 23:59:59"))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
         console.log('SUB_systemTime_setDate_JS_API_3100 end');
         done()
-    })*/
+    })
 
     /**
      * @tc.number    SUB_systemTime_setDate_JS_API_3200
@@ -1052,19 +1039,20 @@ describe('TimeTest', function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test32', 0, async function (done) {
+    it('systemTime_setDate_test32', 0, async function (done) {
         console.log("SUB_systemTime_setDate_JS_API_3200 start")
-        expect(false).to.a('boolean')
         systemTime.setDate(new Date("February 1, 2022 24:00:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
         console.log('SUB_systemTime_setDate_JS_API_3200 end');
         done()
-    })*/
+    })
 
     /**
      * @tc.number    SUB_systemTime_setDate_JS_API_3300
@@ -1074,19 +1062,20 @@ describe('TimeTest', function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test33', 0, async function (done) {
+    it('systemTime_setDate_test33', 0, async function (done) {
         console.log("SUB_systemTime_setDate_JS_API_3300 start")
-        expect(true).to.a('boolean')
         systemTime.setDate(new Date("February 1, 2022 12:59:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
         console.log('SUB_systemTime_setDate_JS_API_3300 end');
         done()
-    })*/
+    })
 
     /**
      * @tc.number    SUB_systemTime_setDate_JS_API_3400
@@ -1096,19 +1085,20 @@ describe('TimeTest', function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test34', 0, async function (done) {
+    it('systemTime_setDate_test34', 0, async function (done) {
         console.log("SUB_systemTime_setDate_JS_API_3400 start")
-        expect(true).to.a('boolean')
         systemTime.setDate(new Date("February 1, 2022 12:00:59"))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
         console.log('SUB_systemTime_setDate_JS_API_3400 end');
         done()
-    })*/
+    })
 
     /**
      * @tc.number    SUB_systemTime_setDate_JS_API_3500
@@ -1118,329 +1108,68 @@ describe('TimeTest', function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test35', 0, async function (done) {
+    it('systemTime_setDate_test35', 0, async function (done) {
         console.log("SUB_systemTime_setDate_JS_API_3500 start")
-        expect(false).to.a('boolean')
         systemTime.setDate(new Date("February 1, 2022 12:00:60"))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
         console.log('SUB_systemTime_setDate_JS_API_3500 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_3500
+     * @tc.number    SUB_systemTime_setDate_JS_API_3600
      * @tc.name      Test systemTime.setDate date = new Date("February 1, 2022 12:60:00")
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test35', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_3500 start")
-        expect(false).to.a('boolean')
+    it('systemTime_setDate_test36', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_3600 start")
         systemTime.setDate(new Date("February 1, 2022 12:60:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
-        console.log('SUB_systemTime_setDate_JS_API_3500 end');
+        console.log('SUB_systemTime_setDate_JS_API_3600 end');
         done()
-    })*/
+    })
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_3600
+     * @tc.number    SUB_systemTime_setDate_JS_API_3700
      * @tc.name      Test systemTime.setDate date = new Date("!!@#$%^&*")
      * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    /*it('systemTime_setDate_test36', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_3600 start")
-        expect(false).to.a('boolean')
+    it('systemTime_setDate_test37', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_3700 start")
         systemTime.setDate(new Date("!!@#$%^&*"))
             .then(data =>{
             console.log("setDate ===data " + data)
+			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
-        });
-        console.log('SUB_systemTime_setDate_JS_API_3600 end');
-        done()
-    })*/
-
-    /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_3700
-     * @tc.name      Test systemTime.setDate date = new Date(2022,6,1,12,30,30,100)
-     * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    /*it('systemTime_setDate_test37', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_3700 start")
-        expect(true).to.a('boolean')
-        systemTime.setDate(new Date(2022,6,1,12,30,30,100))
-            .then(data =>{
-            console.log("setDate ===data " + data)
-        }).catch(error => {
-            console.log("setDate ===error " + error)
-            console.log("setDate ===data " + data)
+			execpt(0).assertLarger(1)
         });
         console.log('SUB_systemTime_setDate_JS_API_3700 end');
         done()
-    })*/
-
-    /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_3800
-     * @tc.name      Test systemTime.setDate date = new Date(2022,6,30,12,30,30,100)
-     * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    /*it('systemTime_setDate_test38', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_3800 start")
-        expect(true).to.a('boolean')
-        systemTime.setDate(new Date(2022,6,30,12,30,30,100))
-            .then(data =>{
-            console.log("setDate ===data " + data)
-        }).catch(error => {
-            console.log("setDate ===error " + error)
-            console.log("setDate ===data " + data)
-        });
-        console.log('SUB_systemTime_setDate_JS_API_3800 end');
-        done()
-    })*/
-
-    /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_3900
-     * @tc.name      Test systemTime.setDate date = new Date(2022,7,31,12,30,30,100)
-     * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    /*it('systemTime_setDate_test39', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_3900 start")
-        expect(true).to.a('boolean')
-        systemTime.setDate(new Date(2022,7,31,12,30,30,100))
-            .then(data =>{
-            console.log("setDate ===data " + data)
-        }).catch(error => {
-            console.log("setDate ===error " + error)
-            console.log("setDate ===data " + data)
-        });
-        console.log('SUB_systemTime_setDate_JS_API_3900 end');
-        done()
-    })*/
-
-    /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_4000
-     * @tc.name      Test systemTime.setDate date = new Date(2022,2,28,12,30,30,100)
-     * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    /*it('systemTime_setDate_test40', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_4000 start")
-        expect(true).to.a('boolean')
-        systemTime.setDate(new Date(2022,2,28,12,30,30,100))
-            .then(data =>{
-            console.log("setDate ===data " + data)
-        }).catch(error => {
-            console.log("setDate ===error " + error)
-            console.log("setDate ===data " + data)
-        });
-        console.log('SUB_systemTime_setDate_JS_API_4000 end');
-        done()
-    })*/
-
-    /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_4100
-     * @tc.name      Test systemTime.setDate date = new Date(2022,2,29,12,30,30,100)
-     * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    /*it('systemTime_setDate_test41', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_4100 start")
-        expect(false).to.a('boolean')
-        systemTime.setDate(new Date(2022,2,29,12,30,30,100))
-            .then(data =>{
-            console.log("setDate ===data " + data)
-        }).catch(error => {
-            console.log("setDate ===error " + error)
-            console.log("setDate ===data " + data)
-        });
-        console.log('SUB_systemTime_setDate_JS_API_4100 end');
-        done()
-    })*/
-
-    /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_4200
-     * @tc.name      Test systemTime.setDate date = new Date(2040,2,29,12,30,30,100)
-     * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    /*it('systemTime_setDate_test42', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_4200 start")
-        expect(true).to.a('boolean')
-        systemTime.setDate(new Date(2040,2,29,12,30,30,100))
-            .then(data =>{
-            console.log("setDate ===data " + data)
-        }).catch(error => {
-            console.log("setDate ===error " + error)
-            console.log("setDate ===data " + data)
-        });
-        console.log('SUB_systemTime_setDate_JS_API_4200 end');
-        done()
-    })*/
-
-    /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_4300
-     * @tc.name      Test systemTime.setDate date = new Date(2022,6,31,12,30,30,100)
-     * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    /*it('systemTime_setDate_test43', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_4300 start")
-        expect(false).to.a('boolean')
-        systemTime.setDate(new Date(2022,6,31,12,30,30,100))
-            .then(data =>{
-            console.log("setDate ===data " + data)
-        }).catch(error => {
-            console.log("setDate ===error " + error)
-            console.log("setDate ===data " + data)
-        });
-        console.log('SUB_systemTime_setDate_JS_API_4300 end');
-        done()
-    })*/
-
-    /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_4400
-     * @tc.name      Test systemTime.setDate date = new Date(2022,1,1,0,0,0,0)
-     * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    /*it('systemTime_setDate_test44', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_4400 start")
-        expect(true).to.a('boolean')
-        systemTime.setDate(new Date(2022,1,1,0,0,0,0))
-            .then(data =>{
-            console.log("setDate ===data " + data)
-        }).catch(error => {
-            console.log("setDate ===error " + error)
-            console.log("setDate ===data " + data)
-        });
-        console.log('SUB_systemTime_setDate_JS_API_4400 end');
-        done()
-    })*/
-
-    /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_4500
-     * @tc.name      Test systemTime.setDate date = new Date(2022,1,1,12,0,0,0)
-     * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    /*it('systemTime_setDate_test45', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_4500 start")
-        expect(true).to.a('boolean')
-        systemTime.setDate(new Date(2022,1,1,12,0,0,0))
-            .then(data =>{
-            console.log("setDate ===data " + data)
-        }).catch(error => {
-            console.log("setDate ===error " + error)
-            console.log("setDate ===data " + data)
-        });
-        console.log('SUB_systemTime_setDate_JS_API_4500 end');
-        done()
-    })*/
-
-    /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_4600
-     * @tc.name      Test systemTime.setDate date = new Date(2022,1,1,23,59,59,59)
-     * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    /*it('systemTime_setDate_test46', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_4600 start")
-        expect(true).to.a('boolean')
-        systemTime.setDate(new Date(2022,1,1,23,59,59,999))
-            .then(data =>{
-            console.log("setDate ===data " + data)
-        }).catch(error => {
-            console.log("setDate ===error " + error)
-            console.log("setDate ===data " + data)
-        });
-        console.log('SUB_systemTime_setDate_JS_API_4600 end');
-        done()
-    })*/
-
-    /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_4700
-     * @tc.name      Test systemTime.setDate date = new Date(2022,1,1,24,0,0,0)
-     * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    /*it('systemTime_setDate_test47', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_4700 start")
-        expect(false).to.a('boolean')
-        systemTime.setDate(new Date(2022,1,1,24,0,0,0))
-            .then(data =>{
-            console.log("setDate ===data " + data)
-        }).catch(error => {
-            console.log("setDate ===error " + error)
-            console.log("setDate ===data " + data)
-        });
-        console.log('SUB_systemTime_setDate_JS_API_4700 end');
-        done()
-    })*/
-
-    /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_4800
-     * @tc.name      Test systemTime.setDate date = new Date(2022,1,1,23,60,60,1000)
-     * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    /*it('systemTime_setDate_test48', 0, async function (done) {
-        console.log("SUB_systemTime_setDate_JS_API_4800 start")
-        expect(false).to.a('boolean')
-        systemTime.setDate(new Date(2022,1,1,23,60,60,1000))
-            .then(data =>{
-            console.log("setDate ===data " + data)
-        }).catch(error => {
-            console.log("setDate ===error " + error)
-            console.log("setDate ===data " + data)
-        });
-        console.log('SUB_systemTime_setDate_JS_API_4800 end');
-        done()
-    })*/
-
-    /**
+    })
+	
+	/**
      * @tc.number    SUB_systemTime_setTimezone_JS_API_0100
      * @tc.name      Test systemTime.setTimezone timezone = "Anadyr, Russia"
      * @tc.desc      Test systemTime_setTimezone API functionality.
