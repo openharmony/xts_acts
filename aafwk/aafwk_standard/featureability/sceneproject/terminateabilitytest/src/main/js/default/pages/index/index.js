@@ -41,11 +41,11 @@ export default {
     onShow() {
         commonEvent.publish("ACTS_TerminateAbility_0100_CommonEvent", PublishCallBackOne);
         commonEvent.publish("ACTS_TerminateAbility_0200_CommonEvent", PublishCallBackTwo);
-        featureAbility.terminateAbility(
-            (err, data)=>{
+        featureAbility.terminateSelf(
+            async (err, data)=>{
                 console.debug('==========Terminate Ability Success==========');
-                commonEvent.publish("ACTS_TerminateAbility_0100_Return", PublishCallBackThree);
-                commonEvent.publish("ACTS_TerminateAbility_0200_Return", PublishCallBackFour);
+                await commonEvent.publish("ACTS_TerminateAbility_0100_Return", PublishCallBackThree);
+                await commonEvent.publish("ACTS_TerminateAbility_0200_Return", PublishCallBackFour);
             }
         );
     },

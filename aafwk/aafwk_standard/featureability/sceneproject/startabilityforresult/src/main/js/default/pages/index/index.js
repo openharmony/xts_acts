@@ -61,7 +61,7 @@ export default {
                 },
             }
         );
-        await featureAbility.terminateAbility();
+        await featureAbility.terminateSelf();
     },
     onReady() {
     },
