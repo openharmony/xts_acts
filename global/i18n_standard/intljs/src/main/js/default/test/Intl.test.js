@@ -323,7 +323,7 @@ describe('intlTest', function () {
     it('locale_test_2203', 0, function () {
         let locale = new Intl.Locale('zh-Hans-CN-u-ca-gregory-co-compact');
         console.log('locale_test_2203 ' + locale.minimize().toString());
-        expect(locale.minimize().toString()).assertEqual('zh');
+        expect(locale.minimize().toString()).assertEqual('zh-u-ca-gregory-co-compact');
     })
 
     /* *
@@ -499,12 +499,13 @@ describe('intlTest', function () {
     * @tc.name format the date with aa locale
     * @tc.desc check the date
     */
-    // it('dateTimeFormat_test_0400', 0, function () {
-    //     let date = new Date(2021, 11, 17, 3, 24, 0);
-    //     let datefmt = new Intl.DateTimeFormat('aa');
-    //     console.log('dateTimeFormat_test_0400 ' + datefmt.format(date));
-    //     expect(datefmt.format(date)).assertEqual('2021/12/17');
-    // })
+    it('dateTimeFormat_test_0400', 0, function () {
+        let date = new Date(2021, 11, 17, 3, 24, 0);
+        let datefmt = new Intl.DateTimeFormat('aa');
+        let value = datefmt.format(date);
+        console.log('dateTimeFormat_test_0400 ' + value);
+        expect(value).assertInstanceOf('String');
+    })
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_0500
@@ -550,13 +551,13 @@ describe('intlTest', function () {
     * @tc.name format the hour without correct locale
     * @tc.desc check the hour without correct locale
     */
-//    it('dateTimeFormat_test_0800', 0, function () {
-//        let date = new Date(2020, 11, 20, 14, 23, 16);
-//        let option = { dateStyle: 'full' };
-//        let datefmt = new Intl.DateTimeFormat(['abc', 'ban'], option);
-//        console.log('dateTimeFormat_test_0800 ' + datefmt.format(date));
-//        expect(datefmt.format(date)).assertEqual('12/20/20, 2:23 PM');
-//    })
+    it('dateTimeFormat_test_0800', 0, function () {
+        let date = new Date(2020, 11, 20, 14, 23, 16);
+        let option = { dateStyle: 'full' };
+        let datefmt = new Intl.DateTimeFormat(['abc', 'ban'], option);
+        console.log('dateTimeFormat_test_0800 ' + datefmt.format(date));
+        expect(datefmt.format(date)).assertEqual('12/20/20, 2:23 PM');
+    })
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_0900
