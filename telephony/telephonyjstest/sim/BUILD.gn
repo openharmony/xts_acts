@@ -11,11 +11,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("telephony") {
+import("//build/ohos_var.gni")
+
+group("sim") {
   testonly = true
-  deps = [
-    #"telephonycpptest:telephonycpptest",
-    #"telephonyothertest:telephonyothertest",
-    "telephonyjstest:telephonyjstest",
-  ]
+  if (is_standard_system) {
+    deps = [
+      "sim_file_manager_function_test:SimFileManagerFunctionTest",
+      "sim_manager_function_test:SimManagerFunctionTest",
+      "sim_no_sim_function_test:SimNoSimFunctionTest",
+      "sim_performance_test:SimPerformanceTest",
+      "sim_reliability_test:SimReliabilityTest",
+      "sim_state_manager_function_test:SimStateManagerFunctionTest",
+    ]
+  }
 }

@@ -11,11 +11,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("telephony") {
-  testonly = true
+import("//test/xts/tools/build/suite.gni")
+
+ohos_js_hap_suite("SmsMmsFunction") {
+  hap_profile = "./entry/src/main/config.json"
   deps = [
-    #"telephonycpptest:telephonycpptest",
-    #"telephonyothertest:telephonyothertest",
-    "telephonyjstest:telephonyjstest",
+    ":hjs_demo_js_assets",
+    ":hjs_demo_resources",
   ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "SmsMmsFunction"
+}
+ohos_js_assets("hjs_demo_js_assets") {
+  source_dir = "./entry/src/main/js/default"
+}
+ohos_resources("hjs_demo_resources") {
+  sources = [ "./entry/src/main/js/resources" ]
+  hap_profile = "./entry/src/main/config.json"
 }
