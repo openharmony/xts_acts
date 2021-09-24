@@ -10,12 +10,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import("//test/xts/tools/build/suite.gni")
 
-group("telephony") {
-  testonly = true
+ohos_js_hap_suite("NetworkSearchReliability") {
+  hap_profile = "./entry/src/main/config.json"
   deps = [
-    #"telephonycpptest:telephonycpptest",
-    #"telephonyothertest:telephonyothertest",
-    "telephonyjstest:telephonyjstest",
+    ":hjs_demo_js_assets",
+    ":hjs_demo_resources",
   ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "NetworkSearchReliability"
+}
+ohos_js_assets("hjs_demo_js_assets") {
+  source_dir = "./entry/src/main/js/default"
+}
+ohos_resources("hjs_demo_resources") {
+  sources = [ "./entry/src/main/js/resources" ]
+  hap_profile = "./entry/src/main/config.json"
 }

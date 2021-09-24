@@ -10,12 +10,23 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import("//test/xts/tools/build/suite.gni")
 
-group("telephony") {
+group("sms_mms") {
   testonly = true
-  deps = [
-    #"telephonycpptest:telephonycpptest",
-    #"telephonyothertest:telephonyothertest",
-    "telephonyjstest:telephonyjstest",
-  ]
+  if (is_standard_system) {
+    deps = [
+      "sms_mms_add:SmsMmsAdd",
+      "sms_mms_config:SmsMmsConfig",
+      "sms_mms_create_message:SmsMmsCreateMessage",
+      "sms_mms_del_sim:SmsMmsDelSim",
+      "sms_mms_function:SmsMmsFunction",
+      "sms_mms_get_all:SmsMmsGetAll",
+      "sms_mms_performance:SmsMmsPerformance",
+      "sms_mms_reliability:SmsMmsReliability",
+      "sms_mms_smsc:SmsMmsSmsc",
+      "sms_mms_updata_asy:SmsMmsUpdataAsy",
+      "sms_mms_updata_pro:SmsMmsUpdataPro",
+    ]
+  }
 }
