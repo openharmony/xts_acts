@@ -165,8 +165,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_1200
-    * @tc.name format the language in locale
-    * @tc.desc check the language
+    * @tc.name setSystemRegion with US param
+    * @tc.desc check the region
     */
     it('i18n_test_1200', 0, function () {
         let value = I18n.setSystemRegion('US');
@@ -179,8 +179,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_1300
-    * @tc.name format the language in locale
-    * @tc.desc check the language
+    * @tc.name setSystemRegion with null param
+    * @tc.desc check the region
     */
     it('i18n_test_1300', 0, function () {
         let value = I18n.setSystemRegion('');
@@ -193,8 +193,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_1400
-    * @tc.name format the language in locale
-    * @tc.desc check the language
+    * @tc.name setSystemRegion with AA param
+    * @tc.desc check the region
     */
     it('i18n_test_1400', 0, function () {
         let value = I18n.setSystemRegion('AA');
@@ -204,8 +204,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_1500
-    * @tc.name format the language in locale
-    * @tc.desc check the language
+    * @tc.name setSystemRegion with zh-CN param
+    * @tc.desc check the reigon
     */
     it('i18n_test_1500', 0, function () {
         let value = I18n.setSystemRegion('zh-CN');
@@ -215,8 +215,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_1600
-    * @tc.name format the language in locale
-    * @tc.desc check the language
+    * @tc.name setSystemLocale with en-Latn-US param
+    * @tc.desc check the locale
     */
     it('i18n_test_1600', 0, function () {
         let value = I18n.setSystemLocale('en-Latn-US');
@@ -229,8 +229,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_1700
-    * @tc.name format the language in locale
-    * @tc.desc check the language
+    * @tc.name setSystemLocale with null param
+    * @tc.desc check the locale
     */
     it('i18n_test_1700', 0, function () {
         let value = I18n.setSystemLocale('');
@@ -240,8 +240,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_1800
-    * @tc.name format the language in locale
-    * @tc.desc check the language
+    * @tc.name setSystemLocale with aa param
+    * @tc.desc check the locale
     */
     it('i18n_test_1800', 0, function () {
         let value = I18n.setSystemLocale('aa');
@@ -251,8 +251,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_1900
-    * @tc.name format the language in locale
-    * @tc.desc check the language
+    * @tc.name setSystemLocale with zh-AAAA param
+    * @tc.desc check the locale
     */
     it('i18n_test_1900', 0, function () {
         let value = I18n.setSystemLocale('zh-AAAA');
@@ -262,8 +262,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_2000
-    * @tc.name format the language in locale
-    * @tc.desc check the language
+    * @tc.name setSystemLocale with zh-Hans-AA param
+    * @tc.desc check the locale
     */
     it('i18n_test_2000', 0, function () {
         let value = I18n.setSystemLocale('zh-Hans-AA');
@@ -273,7 +273,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_2100
-    * @tc.name format the language in locale
+    * @tc.name getSystemLanguages
     * @tc.desc check the language
     */
     it('i18n_test_2100', 0, function () {
@@ -285,8 +285,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_2200
-    * @tc.name format the language in locale
-    * @tc.desc check the language
+    * @tc.name getSystemCountries with en param
+    * @tc.desc check the country
     */
     it('i18n_test_2200', 0, function () {
         let count = I18n.getSystemCountries('en');
@@ -297,8 +297,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_2220
-    * @tc.name format the language in locale
-    * @tc.desc check the language
+    * @tc.name getSystemCountries with zh-CN param
+    * @tc.desc check the country
     */
     it('i18n_test_2220', 0, function () {
         let count = I18n.getSystemCountries('zh-CN');
@@ -309,8 +309,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_2240
-    * @tc.name format the language in locale
-    * @tc.desc check the language
+    * @tc.name getSystemCountries with zh-Hans-CN param
+    * @tc.desc check the country
     */
     it('i18n_test_2240', 0, function () {
         let count = I18n.getSystemCountries('zh-Hans-CN');
@@ -321,8 +321,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_2260
-    * @tc.name format the language in locale
-    * @tc.desc check the language
+    * @tc.name getSystemCountries with null param
+    * @tc.desc check the country
     */
     it('i18n_test_2260', 0, function () {
         let count = I18n.getSystemCountries('');
@@ -333,8 +333,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_2280
-    * @tc.name format the language in locale
-    * @tc.desc check the language
+    * @tc.name getSystemCountries with aaa param
+    * @tc.desc check the country
     */
     it('i18n_test_2280', 0, function () {
         let count = I18n.getSystemCountries('aaa');
@@ -345,7 +345,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_2300
-    * @tc.name format the language in locale
+    * @tc.name isSuggested with en param
     * @tc.desc check the language
     */
     it('i18n_test_2300', 0, function () {
@@ -359,7 +359,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_2400
-    * @tc.name format the language in locale
+    * @tc.name isSuggested with zh-Hans param
     * @tc.desc check the language
     */
     it('i18n_test_2400', 0, function () {
@@ -373,7 +373,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_2500
-    * @tc.name format the language in locale
+    * @tc.name isSuggested with zh-Hans-CN param
     * @tc.desc check the language
     */
     it('i18n_test_2500', 0, function () {
@@ -387,7 +387,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_2600
-    * @tc.name format the language in locale
+    * @tc.name isSuggested with fr param
     * @tc.desc check the language
     */
     it('i18n_test_2600', 0, function () {
@@ -398,7 +398,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_2700
-    * @tc.name format the language in locale
+    * @tc.name isSuggested with fr-FR param
     * @tc.desc check the language
     */
     it('i18n_test_2700', 0, function () {
@@ -409,7 +409,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_2800
-    * @tc.name format the language in locale
+    * @tc.name isSuggested with az-Latn-AZ param
     * @tc.desc check the language
     */
     it('i18n_test_2800', 0, function () {
@@ -420,7 +420,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_2900
-    * @tc.name format the language in locale
+    * @tc.name isSuggested with en-ZH param
     * @tc.desc check the language
     */
     it('i18n_test_2900', 0, function () {
@@ -431,7 +431,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_3000
-    * @tc.name format the language in locale
+    * @tc.name isSuggested with aa param
     * @tc.desc check the language
     */
     it('i18n_test_3000', 0, function () {
@@ -442,7 +442,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_3100
-    * @tc.name format the language in locale
+    * @tc.name isSuggested with en and GB param
     * @tc.desc check the language
     */
     it('i18n_test_3100', 0, function () {
@@ -456,7 +456,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_3150
-    * @tc.name format the language in locale
+    * @tc.name isSuggested with en-SG and GB param
     * @tc.desc check the language
     */
     it('i18n_test_3150', 0, function () {
@@ -470,7 +470,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_3200
-    * @tc.name format the language in locale
+    * @tc.name isSuggested with en and ZH param
     * @tc.desc check the language
     */
     it('i18n_test_3200', 0, function () {
@@ -481,7 +481,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_3300
-    * @tc.name format the language in locale
+    * @tc.name isSuggested with en-GB and ZH param
     * @tc.desc check the language
     */
     it('i18n_test_3300', 0, function () {
@@ -492,7 +492,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_3400
-    * @tc.name format the language in locale
+    * @tc.name isSuggested with en-ZH and GB param
     * @tc.desc check the language
     */
     it('i18n_test_3400', 0, function () {
@@ -503,18 +503,18 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_3500
-    * @tc.name format the language in locale
+    * @tc.name isSuggested with en-JP and GB param
     * @tc.desc check the language
     */
     it('i18n_test_3500', 0, function () {
-        let value = I18n.isSuggested('en-ZH', 'GB');
+        let value = I18n.isSuggested('en-JP', 'GB');
         console.log('i18n_test_3500 ' + value);
         expect(value).assertTrue();
     })
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_3600
-    * @tc.name format the language in locale
+    * @tc.name isSuggested with zh-Hans-TW and CN param
     * @tc.desc check the language
     */
     it('i18n_test_3600', 0, function () {
@@ -525,7 +525,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_3700
-    * @tc.name format the language in locale
+    * @tc.name isSuggested with zh-Hans-CN and HK param
     * @tc.desc check the language
     */
     it('i18n_test_3700', 0, function () {
@@ -536,8 +536,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_3800
-    * @tc.name format the language in locale
-    * @tc.desc check the language
+    * @tc.name getDisplayCountry with zh-Hans-CN and en-US and true param
+    * @tc.desc check the display country
     */
     it('i18n_test_3800', 0, function () {
         let value = I18n.getDisplayCountry('zh-Hans-CN', 'en-US', true);
@@ -547,8 +547,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_3900
-    * @tc.name format the language in locale
-    * @tc.desc check the language
+    * @tc.name getDisplayCountry with zh and en-US and true param
+    * @tc.desc check the display country
     */
     it('i18n_test_3900', 0, function () {
         let value = I18n.getDisplayCountry('zh', 'en-US', true);
@@ -559,8 +559,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_4000
-    * @tc.name format the language in locale
-    * @tc.desc check the language
+    * @tc.name getDisplayCountry with zh-CN and en-US and true param
+    * @tc.desc check the display country
     */
     it('i18n_test_4000', 0, function () {
         let value = I18n.getDisplayCountry('zh-CN', 'en-US', true);
@@ -570,8 +570,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_4100
-    * @tc.name format the language in locale
-    * @tc.desc check the language
+    * @tc.name getDisplayCountry with zh-Hans and en-US and true param
+    * @tc.desc check the display country
     */
     it('i18n_test_4100', 0, function () {
         let value = I18n.getDisplayCountry('zh-Hans', 'en-US', true);
@@ -582,7 +582,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_4200
-    * @tc.name format the language in locale
+    * @tc.name getDisplayCountry with zh-Hans-CN and en-US and false param
     * @tc.desc check the language
     */
     it('i18n_test_4200', 0, function () {
@@ -593,7 +593,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_4300
-    * @tc.name format the language in locale
+    * @tc.name getDisplayCountry with zh-Hans-CN and en-US param
     * @tc.desc check the language
     */
     it('i18n_test_4300', 0, function () {
@@ -604,7 +604,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_4400
-    * @tc.name format the language in locale
+    * @tc.name getDisplayLanguage with zh-Hans-CN and en-US and true param
     * @tc.desc check the language
     */
     it('i18n_test_4400', 0, function () {
@@ -615,18 +615,18 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_4500
-    * @tc.name format the language in locale
+    * @tc.name getDisplayLanguage with zh-Hans-CN and en-GB and true param
     * @tc.desc check the language
     */
     it('i18n_test_4500', 0, function () {
-        let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-US', true);
+        let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-GB', true);
         console.log('i18n_test_4500 ' + value);
         expect(value).assertEqual('Chinese');
     })
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_4600
-    * @tc.name format the language in locale
+    * @tc.name getDisplayLanguage with zh and en-US and true param
     * @tc.desc check the language
     */
     it('i18n_test_4600', 0, function () {
@@ -637,7 +637,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_4700
-    * @tc.name format the language in locale
+    * @tc.name getDisplayLanguage with zh-CN and en-US and true param
     * @tc.desc check the language
     */
     it('i18n_test_4700', 0, function () {
@@ -648,7 +648,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_4800
-    * @tc.name format the language in locale
+    * @tc.name getDisplayLanguage with zh-Hans and en-US and true param
     * @tc.desc check the language
     */
     it('i18n_test_4800', 0, function () {
@@ -659,7 +659,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_4900
-    * @tc.name format the language in locale
+    * @tc.name getDisplayLanguage with zh-Hans-CN and en-US and false param
     * @tc.desc check the language
     */
     it('i18n_test_4900', 0, function () {
@@ -670,7 +670,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_5000
-    * @tc.name format the language in locale
+    * @tc.name getDisplayLanguage with zh-Hans-CN and en-US param
     * @tc.desc check the language
     */
     it('i18n_test_5000', 0, function () {
