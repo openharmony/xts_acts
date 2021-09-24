@@ -279,39 +279,6 @@ HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_Seek_0300, Reliability | Me
 }
 
 /**
-    * @tc.number    : SUB_MEDIA_PLAYER_APITest_SetVolume_0100
-    * @tc.name      : 01.SetVolume 0.5 0.5
-    * @tc.desc      : test SetVolume
-*/
-HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_SetVolume_0100, Reliability | MediumTest | Level2)
-{
-    std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
-    std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
-    ASSERT_NE(nullptr, player);
-    ASSERT_EQ(true, player->CreatePlayer());
-    std::string uri = TestParamsConfig::GetInstance().GetUri();
-    int32_t time;
-    ASSERT_EQ(RET_OK, player->SetSource(uri));
-    sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
-    EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
-    std::shared_ptr<TestPlayerCallback> testCallback = std::make_shared<TestPlayerCallback>(testObj);
-    EXPECT_EQ(RET_OK, player->SetPlayerCallback(testCallback));
-    ASSERT_EQ(RET_OK, player->Prepare());
-    EXPECT_EQ(RET_OK, player->Play());
-    EXPECT_TRUE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, player->Seek(SEEK_TIME_2_SEC, SEEK_MODE));
-    EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
-    EXPECT_NEAR(SEEK_TIME_2_SEC, time, DELTA_TIME);
-    sleep(PLAYING_TIME);
-    EXPECT_EQ(RET_OK, player->SetVolume(0.5, 0.5));
-    sleep(PLAYING_TIME);
-    EXPECT_EQ(RET_OK, player->Stop());
-    EXPECT_FALSE(player->IsPlaying());
-    EXPECT_EQ(RET_OK, player->Reset());
-    EXPECT_EQ(RET_OK, testCallback->errorNum_);
-}
-
-/**
     * @tc.number    : SUB_MEDIA_PLAYER_APITest_SetPlaybackSpeed_0100
     * @tc.name      : 02.SetPlaybackSpeed操作在play之后
     * @tc.desc      :
