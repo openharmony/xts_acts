@@ -14,9 +14,9 @@
  */
 
 #include "gtest/gtest.h"
-#include "sys/socket.h"
-#include "arpa/inet.h"
-#include "netinet/tcp.h"
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <netinet/tcp.h>
 #include <sys/wait.h>
 #include <string.h>
 #include <errno.h>
