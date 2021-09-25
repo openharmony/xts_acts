@@ -136,8 +136,7 @@ describe('ChildProcessTest', function () {
         var child = process.runCmd('ls; sleep 5;')
         child.wait()
         var pid_ = child.pid
-        const boolean = new Boolean(true)
-        expect(pid_ > 0).assertEqual(boolean)
+        expect(pid_ > 0).assertEqual(true)
     })
 
     // childprocess ppid test
@@ -145,8 +144,7 @@ describe('ChildProcessTest', function () {
         var child = process.runCmd('ls; sleep 5;')
         var status = child.wait()
         var ppid_ = child.ppid
-        const boolean = new Boolean(true)
-        expect(ppid_ > 0).assertEqual(boolean)
+        expect(ppid_ > 0).assertEqual(true)
     })
 
     // childprocess kill test
@@ -232,7 +230,7 @@ describe('ChildProcessTest', function () {
         var that = new process.Process()
         var result = that.getUid
         if(result > 0) {
-            var flag = new Boolean(true)
+            var flag = true
         }
         expect(flag).assertEqual(true)
     })
@@ -243,7 +241,7 @@ describe('ChildProcessTest', function () {
             var result = that.getUid
             if(result != null) {
                 if(result > 0) {
-                    var flag = new Boolean(true)
+                    var flag = true
                 }
                 expect(flag).assertEqual(true)
             }
@@ -255,7 +253,7 @@ describe('ChildProcessTest', function () {
         var that = new process.Process()
         var result = that.getGid
         if(result > 0) {
-            var flag = new Boolean(true)
+            var flag = true
         }
         expect(flag).assertEqual(true)
     })
@@ -266,7 +264,7 @@ describe('ChildProcessTest', function () {
             var result = that.getGid
             if(result != null) {
                 if(result > 0) {
-                    var flag = new Boolean(true)
+                    var flag = true
                 }
                 expect(flag).assertEqual(true)
             }
@@ -278,7 +276,7 @@ describe('ChildProcessTest', function () {
         var that = new process.Process()
         var result = that.getEuid
         if(result > 0) {
-            var flag = new Boolean(true)
+            var flag = true
         }
         expect(flag).assertEqual(true)
     })
@@ -289,7 +287,7 @@ describe('ChildProcessTest', function () {
             var result = that.getEuid
             if(result != null) {
                 if(result > 0) {
-                    var flag = new Boolean(true)
+                    var flag = true
                 }
                 expect(flag).assertEqual(true)
             }
@@ -301,7 +299,7 @@ describe('ChildProcessTest', function () {
         var that = new process.Process()
         var result = that.getEgid
         if(result > 0) {
-            var flag = new Boolean(true)
+            var flag = true
         }
         expect(flag).assertEqual(true)
     })
@@ -312,7 +310,7 @@ describe('ChildProcessTest', function () {
             var result = that.getEgid
             if(result != null) {
                 if(result > 0) {
-                    var flag = new Boolean(true)
+                    var flag = true
                 }
                 expect(flag).assertEqual(true)
             }
@@ -325,7 +323,7 @@ describe('ChildProcessTest', function () {
         var result = that.getGroups
         var len = result.length
         if(len > 0) {
-            var flag = new Boolean(true)
+            var flag = true
         }
         expect(flag).assertEqual(true)
     })
@@ -337,7 +335,7 @@ describe('ChildProcessTest', function () {
             if(result != null) {
                 var len = result.length
                 if(len > 0) {
-                    var flag = new Boolean(true)
+                    var flag = true
                 }
                 expect(flag).assertEqual(true)
             }
@@ -433,7 +431,7 @@ describe('ChildProcessTest', function () {
         var that = new process.Process()
         var result = that.getPid
         if(result > 0) {
-            var flag = new Boolean(true)
+            var flag = true
         }
         expect(flag).assertEqual(true)
     })
@@ -444,7 +442,7 @@ describe('ChildProcessTest', function () {
         {
             var result = that.getPid
             if(result > 0) {
-                var flag = new Boolean(true)
+                var flag = true
             }
             expect(flag).assertEqual(true)
         }
@@ -455,7 +453,7 @@ describe('ChildProcessTest', function () {
         var that = new process.Process()
         var result = that.getPpid
         if(result > 0) {
-            var flag = new Boolean(true)
+            var flag = true
         }
         expect(flag).assertEqual(true)
     })
@@ -466,7 +464,7 @@ describe('ChildProcessTest', function () {
         {
             var result = that.getPpid
             if(result > 0) {
-                var flag = new Boolean(true)
+                var flag = true
             }
             expect(flag).assertEqual(true)
         }
