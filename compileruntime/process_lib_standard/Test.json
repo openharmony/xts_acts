@@ -2,9 +2,9 @@
     "description": "Configuration for startup process js api Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "21600000",
+        "test-timeout": "60000",
         "package": "com.example.childprocess",
-        "shell-timeout": "21600000"
+        "shell-timeout": "60000"
     },
     "kits": [
         {
