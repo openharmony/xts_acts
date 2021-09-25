@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import fileio from '@system.fileio'
 import {
   describe,
@@ -55,8 +56,8 @@ describe('fileIOStability', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_fileIOStability_dir
-   * @tc.name fileIOStability_dir
+   * @tc.number SUB_STORAGE_fileIOStability_dirent
+   * @tc.name fileIOStability_dirent
    * @tc.desc Function of API, 7*24
    */
   it('fileIOStability_dirent', 0, function () {

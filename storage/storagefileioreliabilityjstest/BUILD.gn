@@ -18,14 +18,16 @@ ohos_js_hap_suite("storagefileioreliability_js_test") {
     ":storagefileioreliability_js_assets",
     ":storagefileioreliability_js_resources",
   ]
-#  shared_libraries = [
-#    "//third_party/giflib:libgif",
-#    "//third_party/libpng:libpng",
-#  ]
+
+  #  shared_libraries = [
+  #    "//third_party/giflib:libgif",
+  #    "//third_party/libpng:libpng",
+  #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "storagefileioreliabilityjstest"
-#  part_name = "prebuilt_hap"
-#  subsystem_name = "xts"
+
+  #  part_name = "prebuilt_hap"
+  #  subsystem_name = "xts"
 }
 ohos_js_assets("storagefileioreliability_js_assets") {
   source_dir = "./src/main/js/default"

@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import fileio from '@system.fileio'
 import file from '@system.file';
 import {
@@ -145,11 +146,11 @@ describe('FileError', function () {
       uri: 'internal://app/file_test_error_005',
       success: function (data) {
         console.log('file_test_error_005 pass, Content:' + data.text);
-        done();
+        expect(null).assertFail();
       },
       fail: function (data, code) {
         console.log('file_test_error_005 call readText fail, code: ' + code + ', data: ' + data);
-        expect(null).assertFail();
+        done();
       },
     });
   });
@@ -165,11 +166,11 @@ describe('FileError', function () {
       uri: 'internal://app/file_test_error_006',
       success: function (data) {
         console.log('file_test_error_006 pass, Content:' + data.buffer);
-        done();
+        expect(null).assertFail();
       },
       fail: function (data, code) {
         console.log('file_test_error_006 call readArrayBuffer fail, code: ' + code + ', data: ' + data);
-        expect(null).assertFail();
+        done();
       },
     });
   });
@@ -187,11 +188,11 @@ describe('FileError', function () {
       recursive: true,
       success: function () {
         console.log('file_test_error_007 call rmdir success.');
-        done();
+        expect(null).assertFail();
       },
       fail: function (data, code) {
         console.log('file_test_error_007 call rmdir fail, code: ' + code + ', data: ' + data);
-        expect(null).assertFail();
+        done();
       },
     });
   });
@@ -242,11 +243,11 @@ describe('FileError', function () {
       recursive: true,
       success: function () {
         console.log('file_test_error_009 call rmdir success.');
-        done();
+        expect(null).assertFail();
       },
       fail: function (data, code) {
         console.log('file_test_error_009 call rmdir fail, code: ' + code + ', data: ' + data);
-        expect(null).assertFail();
+        done();
       },
     });
   });
