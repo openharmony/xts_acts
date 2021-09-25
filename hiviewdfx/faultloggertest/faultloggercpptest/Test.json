@@ -4,10 +4,7 @@
             "push": [
                 "faultloggertest->/data/local/tmp/faultloggertest"
             ],
-            "type": "PushKit",
-            "post-push": [
-                "chmod -R 777 /data/local/tmp/*"
-            ]
+            "type": "PushKit"
         }
     ],
     "driver": {

@@ -4,10 +4,7 @@
             "push": [
                 "ActsMediaCppStandardTest->/data/local/tmp/ActsMediaCppStandardTest"
             ],
-            "type": "PushKit",
-            "post-push": [
-                "chmod -R 777 /data/local/tmp/*"
-            ]
+            "type": "PushKit"
         }
     ],
     "driver": {

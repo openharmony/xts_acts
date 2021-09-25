@@ -13,3 +13,4 @@
  * limitations under the License.
  */
 require('./I18n.test.js')
+require('./Intl.test.js')

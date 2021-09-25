@@ -2,9 +2,9 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "21600000",
-        "package": "com.example.actssubscriberunordertest",
-        "shell-timeout": "21600000"
+        "test-timeout": "500000",
+        "package": "com.example.actssubscribertestunorder",
+        "shell-timeout": "60000"
     },
     "kits": [
         {

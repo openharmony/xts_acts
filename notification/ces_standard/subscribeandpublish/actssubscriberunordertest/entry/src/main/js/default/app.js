@@ -1,63 +1,20 @@
-import notify from '@ohos.notification'
-
+/*
+ * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 export default {
-    async onCreate() {
-        //var subscriber;
+    onCreate() {
         console.info("============== AceApplication onCreate ==============");
-        //consume回调
-//        async function consumeCallback(err, data) {
-//            console.info("============== consumeCallback start ============== err : " + err.code);
-//        }
-//        //订阅回调
-//        async function subscribeCallback(err, data) {
-//            console.info("============== subscribeCallback start ============== err : " + err.code);
-//        }
-//        //发布回调
-//        async function publishCallback(err) {
-//            console.info("============== publishCallback start ============== err : " + err.code);
-//        }
-//
-//        //1.创建订阅者
-//        subscriber = notify.createSubscriber();
-//
-//        //2.绑定相关回调
-//        //consume：通知更新回调
-//        await subscriber.on("consume", consumeCallback);
-//        //subscribe：注册订阅状态回调
-//        //await subscriber.on("subscribe", subscribeCallback);
-//        //consume：接收通知回调
-//        //await subscriber.on("consume", consumeCallback);
-//        //cancel：取消通知回调
-//        //await subscriber.on("cancel", cancelCallback);
-//        //unsubscribe：取消订阅状态回调
-//        //await subscriber.on("unsubscribe", unsubscribeCallback);
-//        //die：通知服务死亡回调
-//        //await subscriber.on("die", dieCallback);
-//
-//        //3.注册订阅（全部订阅）
-//        await notify.subscribe(subscriber, subscribeCallback);
-//        //指定订阅范围
-//        //var notificationSubscriberInfo = {
-//        //    bundleNames:["com.example.test"],
-//        //}
-//        //await notify.subscribe(subscriber, notificationSubscriberInfo, subscribeCallback);
-//
-//        //4.构建notificationRequest
-//        var notificationRequest = {
-//            content:{
-//                contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
-//                normal: {
-//                    title: "AceApplication_Title",
-//                    text: "AceApplication_Text",
-//                    additionalText: "AceApplication_AdditionalText"
-//                },
-//            },
-//            id: 1,
-//            slotType : notify.SlotType.OTHER_TYPES
-//        }
-//
-//        //5.发布
-//        await notify.publish(notificationRequest, publishCallback);
     },
     onDestroy() {
         console.info('=============AceApplication onDestroy=============');

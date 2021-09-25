@@ -434,11 +434,7 @@ HWTEST_F(ActsPMSLoadTest, testSecPMPMS_0850, Function | MediumTest | Level4)
     ret = LoadPermissions(SUBTEST_APP_ID, TEST_TASKID);
     EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "load ret = " << ret << endl;
     ret = LoadPermissions(PERMISSION_EMPTY, TEST_TASKID);
-#ifndef __LINUX__
     EXPECT_EQ(ret, PERM_ERRORCODE_STAT_FAIL) << "load ret = " << ret << endl;
-#else
-    EXPECT_EQ(ret, PERM_ERRORCODE_READFD_FAIL) << "load ret = " << ret << endl;
-#endif
     ret = LoadPermissions(PERMISSION_TOOLONG, TEST_TASKID);
     EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "load ret = " << ret << endl;
     ret = LoadPermissions(PERMISSION_UNSUPPORTED, TEST_TASKID);

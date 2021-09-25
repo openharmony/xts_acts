@@ -41,7 +41,7 @@ lite_component("acts_component") {
         #"//test/xts/acts/kernel_lite/kernelcmsis_hal:ActsCMSISTest",
         "//test/xts/acts/utils_lite/kv_store_hal:ActsKvStoreTest",
 
-        #"//test/xts/acts/security_lite/huks_hal:ActsSecurityDataTest",
+        "//test/xts/acts/security_lite/huks/liteos_m_adapter:ActsHuksHalFunctionTest",
         "//test/xts/acts/hiviewdfx_lite/hilog_hal:ActsDfxFuncTest",
         "//test/xts/acts/hiviewdfx_lite/hievent_hal:ActsHieventLiteTest",
 
@@ -60,6 +60,7 @@ lite_component("acts_component") {
         "//test/xts/acts/startup_lite/bootstrap_posix:ActsBootstrapTest",
         "//test/xts/acts/multimedia_lite/camera_lite_posix/camera_native:ActsMediaCameraTest",
         "//test/xts/acts/open_posix_testsuite/conformance/interfaces:ActsOpenPosixTest",
+
         "//test/xts/acts/multimedia_lite/media_lite_posix/player_native:ActsMediaPlayerTest",
         "//test/xts/acts/multimedia_lite/media_lite_posix/audio_native:ActsMediaAudioTest",
         "//test/xts/acts/distributed_schedule_lite/system_ability_manager_posix:ActsSamgrTest",
@@ -70,9 +71,6 @@ lite_component("acts_component") {
 
         "//test/xts/acts/multimedia_lite/media_lite_posix/recorder_native:ActsMediaRecorderTest",
 
-        #"//test/xts/acts/graphic_lite/graphic_utils:uikit_test1",
-        #"//test/xts/acts/graphic_lite/surface:uikit_test2",
-        #"//test/xts/acts/graphic_lite/ui:uikit_test3",
         "//test/xts/acts/appexecfwk_lite/appexecfwk_posix:ActsBundleMgrTest",
         "//test/xts/acts/aafwk_lite/ability_posix:ActsAbilityMgrTest",
         "//test/xts/acts/communication_lite/lwip_posix:ActsLwipTest",
@@ -86,8 +84,11 @@ lite_component("acts_component") {
       all_features += [
         "//test/xts/acts/utils_lite/kv_store_posix:ActsKvStoreTest",
         "//test/xts/acts/startup_lite/syspara_posix:ActsParameterTest",
+        "//test/xts/acts/startup_lite/bootstrap_posix:ActsBootstrapTest",
+        "//test/xts/acts/communication_lite/lwip_posix:ActsLwipTest",
 
-        #"//test/xts/acts/security_lite/huks_posix:ActsSecurityDataTest",
+        "//test/xts/acts/security_lite/permission_posix/pms:ActsPMSTest",
+
         #"//test/xts/acts/multimedia_lite/camera_lite_posix/camera_native:ActsMediaCameraTest",
         #"//test/xts/acts/multimedia_lite/media_lite_posix/player_native:ActsMediaPlayerTest",
         #"//test/xts/acts/multimedia_lite/media_lite_posix/recorder_native:ActsMediaRecorderTest",

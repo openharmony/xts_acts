@@ -44,6 +44,8 @@
 #define TEST_APP_SHORT "a"
 #define TEST_APP_LONG "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 #define TEST_APP_PATH "/storage/app/etc/permissions/com.permission.test"
+#define TEST_APP_INVALID "com.permission.!@#$%^&*()_+"
+#define TEST_APP_NOT_EXIST "com.permission.onetwothree"
 #define PERMISSION_UNDEFINED "ohos.permission.TEST"
 #define PERMISSION_TOOLONG "ohos.permission.balabalabalabalabalabalabalabalabalabala"
 #define PERMISSION_EMPTY ""
@@ -65,19 +67,22 @@ const int MAX_PID = 0x7fffffff;
 const int MIN_PID = 0;
 const int ABNORMAL_PKG_NUM = 5;
 const int DIR_MODE = 777;
+const int FLAG_NOT_EXIST = 123;
+const int PERFORMANCE_RUN_TIMES = 10000;
+const int MILLISECOND = 1000;
 
-int IsUserGrant(const char* pname);
+int IsUserGrant(const char *pname);
 
-int CheckPermData(const PermissionTrans* pt, const PermissionSaved* ps,
-    const PermissionSaved* pre, int len, int plen);
+int CheckPermData(const PermissionTrans *pt, const PermissionSaved *ps,
+                  const PermissionSaved *pre, int len, int plen);
 
-void ClrPers(PermissionSaved* &permissions);
+void ClrPers(PermissionSaved *&permissions);
 
-void CheckAppPermission(const char *identifier, int expRet, int expNum, const PermissionTrans* installPers,
-    const PermissionSaved* lastPers = nullptr, int lastLen = 0);
+void CheckAppPermission(const char *identifier, int expRet, int expNum, const PermissionTrans *installPers,
+                        const PermissionSaved *lastPers = nullptr, int lastLen = 0);
 
 void SubTestWithoutCheck(const char *identifier, int taskID);
 
 void CreateAppDir(void);
 
-#endif  // XTS_HITS_TOKEN_API_EXPECT_H
+#endif // XTS_HITS_TOKEN_API_EXPECT_H

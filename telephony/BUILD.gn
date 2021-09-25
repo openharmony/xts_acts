@@ -11,14 +11,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos_var.gni")
-group("telephonyjstest") {
+group("telephony") {
   testonly = true
-  if (is_standard_system) {
-    deps = [
-     # "network_search_test:network_search_test",
-     # "sms_mms:sms_mms_test",
-     # "call_manager:call_manager",
-    ]
-  }
+  deps = [
+    #"telephonycpptest:telephonycpptest",
+    #"telephonyothertest:telephonyothertest",
+    "telephonyjstest:telephonyjstest",
+  ]
 }

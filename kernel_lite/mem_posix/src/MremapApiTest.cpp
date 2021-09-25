@@ -97,7 +97,7 @@ HWTEST_F(MremapApiTest, testMremapAnonExpand, Function | MediumTest | Level2)
         exit(0);
     } else {
         WaitProcExitedOK(pid);
-        EXPECT_TRUE(munmap(mem, expandSize) == 0) << "ERROR: munmap() != 0";
+        EXPECT_TRUE(munmap(mem, expandSize) == 0) << "ERROR: munmap() != 0" << errno;
     }
 }
 
@@ -135,7 +135,7 @@ HWTEST_F(MremapApiTest, testMremapAnonShrink, Function | MediumTest | Level3)
         exit(0);
     } else {
         ExpectProcCrashed(pid);
-        EXPECT_TRUE(munmap(mem, shrinkSize) == 0) << "ERROR: munmap() != 0";
+        EXPECT_TRUE(munmap(mem, shrinkSize) == 0) << "ERROR: munmap() != 0" << errno;
     }
 }
 
@@ -179,7 +179,7 @@ HWTEST_F(MremapApiTest, testMremapAnonExpandFixAddr, Function | MediumTest | Lev
         exit(0);
     } else {
         WaitProcExitedOK(pid);
-        EXPECT_TRUE(munmap(mem, expandSize) == 0) << "ERROR: munmap() != 0";
+        EXPECT_TRUE(munmap(mem, expandSize) == 0) << "ERROR: munmap() != 0" << errno;
     }
 }
 
@@ -219,7 +219,7 @@ HWTEST_F(MremapApiTest, testMremapAnonShrinkFixAddr, Function | MediumTest | Lev
         exit(0);
     } else {
         ExpectProcCrashed(pid);
-        EXPECT_TRUE(munmap(mem, shrinkSize) == 0) << "ERROR: munmap() != 0";
+        EXPECT_TRUE(munmap(mem, shrinkSize) == 0) << "ERROR: munmap() != 0" <<errno;
     }
 }
 
@@ -270,7 +270,8 @@ HWTEST_F(MremapApiTest, testMremapFileExpand, Function | MediumTest | Level2)
         WaitProcExitedOK(pid);
         EXPECT_TRUE(munmap(mem, expandSize) == 0) << "ERROR: munmap() != 0";
         EXPECT_TRUE(close(fd) != -1) << "ERROR: close() == -1";
-        EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0";
+        Msleep(1000);
+        EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0" << errno;
     }
 }
 
@@ -319,7 +320,8 @@ HWTEST_F(MremapApiTest, testMremapFileShrink, Function | MediumTest | Level3)
         ExpectProcCrashed(pid);
         EXPECT_TRUE(munmap(mem, shrinkSize) == 0) << "ERROR: munmap() != 0";
         EXPECT_TRUE(close(fd) != -1) << "ERROR: close() == -1";
-        EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0";
+        Msleep(1000);
+        EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0" << errno;
     }
 }
 
@@ -373,7 +375,8 @@ HWTEST_F(MremapApiTest, testMremapFileExpandFixAddr, Function | MediumTest | Lev
         WaitProcExitedOK(pid);
         EXPECT_TRUE(munmap(mem, expandSize) == 0) << "ERROR: munmap() != 0";
         EXPECT_TRUE(close(fd) != -1) << "ERROR: close() == -1";
-        EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0";
+        Msleep(1000);
+        EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0" << errno;
     }
 }
 
@@ -426,7 +429,8 @@ HWTEST_F(MremapApiTest, testMremapFileShrinkFixAddr, Function | MediumTest | Lev
 
         EXPECT_TRUE(munmap(mem, shrinkSize) == 0) << "ERROR: munmap() != 0";
         EXPECT_TRUE(close(fd) != -1) << "ERROR: close() == -1";
-        EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0";
+        Msleep(1000);
+        EXPECT_TRUE(remove(file) == 0) << "ERROR: remove() != 0" << errno;
     }
 }
 
@@ -465,6 +469,6 @@ HWTEST_F(MremapApiTest, testMremapEINVAL, Function | MediumTest | Level4)
     EXPECT_TRUE(munmap(mem, len) == 0) << "ERROR: munmap() != 0";
 
     if (newMem != MAP_FAILED && newMem != mem) {
-        EXPECT_TRUE(munmap(newMem, len) == 0) << "ERROR: munmap() != 0";
+        EXPECT_TRUE(munmap(newMem, len) == 0) << "ERROR: munmap() != 0" << errno;
     }
 }

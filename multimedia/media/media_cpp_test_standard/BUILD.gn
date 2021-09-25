@@ -26,41 +26,28 @@ config("media_cpp_config") {
 ohos_moduletest_suite("ActsMediaCppStandardTest") {
   module_out_path = module_output_path
   sources = [
-    "recorder/src/fuction/ActsVideoRecorderTest.cpp",
-    "recorder/src/fuction/ActsAudioRecoederTest.cpp",
-    "player/Testplayer.cpp",
-    "player/src/function/ActsPlayerFuncTest.cpp",
+    "player/src/TestParamsConfig.cpp",
+    "player/src/TestPlayer.cpp",
+    "player/src/api/ActsPlayerAPITest.cpp",
     "player/src/function/ActsPlayerFuncAsyncTest.cpp",
-    "player/src/function/ActsPlayerStateTest.cpp",
+    "player/src/function/ActsPlayerFuncTest.cpp",
     "player/src/function/ActsPlayerStateAsyncTest.cpp",
-    "player/src/api/01.SetSource.cpp",
-    "player/src/api/02.Prepare.cpp",
-    "player/src/api/03.Play.cpp",
-    "player/src/api/04.Pause.cpp",
-    "player/src/api/05.Stop.cpp",
-    "player/src/api/06.Reset.cpp",
-    "player/src/api/07.Seek.cpp",
-    "player/src/api/08.SetVolume.cpp",
-    "player/src/api/09.SetLooping.cpp",
-    "player/src/api/10.SetPlaybackSpeed.cpp",
-    "player/src/api/11.PrepareAsync.cpp",
-    "player/src/api/12.GetCurrentTime.cpp",
+    "player/src/function/ActsPlayerStateTest.cpp",
   ]
   include_dirs = [
-      "include",
-      "player/include",
-      "recorder/include",
-      "//base/startup/syspara_lite/interfaces/innerkits/native/syspara/include",
+    "include",
+    "player/include",
+    "recorder/include",
+    "//base/startup/syspara_lite/interfaces/innerkits/native/syspara/include",
+    "//foundation/graphic/standard/interfaces/innerkits/wmclient",
   ]
-  cflags = [
-    "-Wall"
-    ]
+  cflags = [ "-Wall" ]
   cflags_cc = cflags
   deps = [
     "//base/hiviewdfx/hilog/interfaces/native/innerkits:libhilog",
-    "//foundation/graphic/standard:libwms_client",
-    "//third_party/googletest:gtest_main",
     "//base/startup/syspara_lite/interfaces/innerkits/native/syspara:syspara",
+    "//foundation/graphic/standard:libwmclient",
+    "//third_party/googletest:gtest_main",
   ]
   external_deps = [
     "ipc:ipc_core",

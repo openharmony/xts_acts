@@ -31,6 +31,9 @@ export default {
         //        const instrumentLog = new InstrumentLog({
         //            'id': 'report'
         //        })
+        const expectExtend = new ExpectExtend({
+            'id': 'extend'
+        })
         core.addService('expect', expectExtend)
         //        core.addService('report', instrumentLog)
         core.init()

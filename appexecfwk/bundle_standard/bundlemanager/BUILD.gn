@@ -17,10 +17,33 @@ group("bundlemanager") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsbmsgetinfosfirstscene:ActsBmsGetInfosFirstScene",
-      "actsbmsgetinfossecondscene:ActsBmsGetInfosSecondScene",
-      "actsbmsgetinfosthirdscene:ActsBmsGetInfosThirdScene",
-      "actsbmsinstalltest:ActsBmsInstallTest",
+      "actsbmsallshortcutinfotest:ActsBmsAllShortcutInfoTest",
+      "actsbmscheckpermissiontest:ActsBmsCheckPermissionTest",
+      "actsbmshapmoduletest:ActsBmsHapModuleTest",
+      "actsbmsjstest:ActsBmsJsTest",
+      "actsbmsmetadatatest:ActsBmsMetaDataTest",
+      "actsbmsmoduleusagerecordtest:ActsBmsModuleUsageRecordTest",
+      "actsbundlemanagertest:ActsBundleManagerTest",
+      "sceneProject/bmsgetinfosfifthscene:bmsThirdBundleTest5",
+      "sceneProject/bmsgetinfosfirstscene:bmsThirdBundleTest1",
+      "sceneProject/bmsgetinfosfirstsceneupdate:bmsThirdBundleTestA1",
+      "sceneProject/bmsgetinfosfourthscene:bmsThirdBundleTest4",
+      "sceneProject/bmsgetinfosjsscene:bmsThirdBundleJs",
+      "sceneProject/bmsgetinfosscenesystem:bmsSystemBundleTest1",
+      "sceneProject/bmsgetinfosscenevendor:bmsVendorBundleTest1",
+      "sceneProject/bmsgetinfossecondscene:bmsThirdBundleTest2",
+      "sceneProject/bmsgetinfosthirdscene:bmsThirdBundleTest3",
+      "sceneProject/bmsmainabilityfirstscene:bmsMainAbilityFirstScene",
+      "sceneProject/bmsmainabilitysecondscene:bmsMainAbilitySecondScene",
+      "sceneProject/bmssceneeight:bmsJstest8",
+      "sceneProject/bmsscenefive:bmsJstest5",
+      "sceneProject/bmsscenefour:bmsJstest4",
+      "sceneProject/bmsscenenine:bmsJstest9",
+      "sceneProject/bmssceneone:bmsJstest1",
+      "sceneProject/bmssceneseven:bmsJstest7",
+      "sceneProject/bmsscenesix:bmsJstest6",
+      "sceneProject/bmsscenethree:bmsJstest3",
+      "sceneProject/bmsscenetwo:bmsJstest2",
     ]
   }
 }

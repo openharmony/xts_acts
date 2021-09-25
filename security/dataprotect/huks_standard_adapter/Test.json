@@ -1,25 +1,18 @@
 {
-    "description": "Config for hcpptest demo test cases",
-    "environment": [
-        {
-            "type": "device",
-            "label": "ipcamera"
-        }
-    ],
     "kits": [
         {
-            "type": "MountKit",
-            "server": "NfsServer",
-            "mount": [
-                {
-                    "source": "testcases/security",
-                    "target": "/test_root/security"
-                }
-            ]
+            "push": [
+                "huks_std_function_test->/data/local/tmp/huks_std_function_test"
+            ],
+            "type": "PushKit"
         }
     ],
     "driver": {
-        "type": "CppTestLite",
-        "execute": "/test_root/security/ActsSecurityHuksstdtest.bin"
-    }
+        "native-test-timeout": "120000",
+        "type": "CppTest",
+        "module-name": "huks_std_function_test",
+        "runtime-hint": "1s",
+        "native-test-device-path": "/data/local/tmp"
+    },
+    "description": "Configuration for huks_std_function_test Tests"
 }
