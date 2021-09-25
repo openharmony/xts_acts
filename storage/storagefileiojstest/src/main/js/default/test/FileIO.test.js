@@ -14,6 +14,7 @@
  */
 
 import fileio from '@ohos.fileio';
+import file from '@system.file';
 import bundle_mgr from '@ohos.bundle_mgr'
 import {
   describe,
@@ -1356,7 +1357,7 @@ describe('fileIOTest', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('fileio_test_unlink_sync_003 has failed for ' + e);
+      console.log('fileio_test_unlink_sync_002 has failed for ' + e);
     }
   });
 
@@ -1609,6 +1610,7 @@ describe('fileIOTest', function () {
         success: function (data) {
           console.log('call readText success: ' + data.text);
           expect(text == data.text).assertTrue();
+          expect(fileio.unlinkSync(fpath) !== null).assertTrue();
           done();
         },
         fail: function (data, code) {
@@ -1616,8 +1618,7 @@ describe('fileIOTest', function () {
           expect(null).assertFail();
         },
       });
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
-    } 
+    }
     catch (e) {
       console.log('fileio_test_read_sync_000 has failed for ' + e);
       expect(null).assertFail();
