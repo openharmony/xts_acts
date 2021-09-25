@@ -13,27 +13,14 @@
  * limitations under the License.
  */
 
+#ifndef PLAYER_TEST_H
+#define PLAYER_TEST_H
+
 #include "securec.h"
-#include "common.h"
-#include "player.h"
-#include "mediatest_log.h"
+#include "TestParamsConfig.h"
 #include "window_manager.h"
 #include "surface_type.h"
 #include "display_type.h"
-
-namespace PlayerNameSpace {
-    static const int MAX_THREADS = 16;
-    static const int32_t PLAYING_TIME = 3;
-    static const int32_t PAUSED_TIME = 1;
-    static const int32_t SEEK_TIME_5_SEC = 5000;
-    static const int32_t SEEK_TIME_2_SEC = 2000;
-    static const int DELTA_TIME = 1000;
-    static const int WAITSECOND = 2;
-    static const int MAXTIME = 20;
-    static const int RET_OK = 0;
-    static const int32_t FILE_BEGIN = 0;
-    std::string GetUri();
-}
 
 namespace OHOS {
 namespace Media {
@@ -80,13 +67,13 @@ public:
 };
 class TestPlayer {
 public:
-    std::shared_ptr<Player> player;
-    std::unique_ptr<Window> mwindow;
-    std::unique_ptr<SubWindow> window;
-    explicit TestPlayer(PlayerSignal *test);
-    ~TestPlayer();
+    std::shared_ptr<Player> player_ = nullptr;
+    sptr<Window> window_ = nullptr;
+    explicit TestPlayer(std::shared_ptr<PlayerSignal> test);
+    virtual ~TestPlayer();
     bool CreatePlayer();
     int32_t SetSource(const std::string &uri);
+    int32_t SetDataSrc(const std::string &uri, bool seekable);
     int32_t Play();
     int32_t Prepare();
     int32_t PrepareAsync();
@@ -107,28 +94,27 @@ public:
     int32_t SetLooping(bool loop);
     int32_t SetPlayerCallback(const std::shared_ptr<PlayerCallback> &callback);
 private:
-    void InitSubWindow(WindowConfig sub_config);
-
-    PlayerSignal *test_;
+    std::shared_ptr<PlayerSignal> test_;
 };
 class TestPlayerCallback : public PlayerCallback {
 public:
-    int errorNum = 0;
+    int errorNum_ = 0;
     PlayerStates state_ = PLAYER_STATE_ERROR;
-    explicit TestPlayerCallback(PlayerSignal *test);
-    ~TestPlayerCallback();
+    explicit TestPlayerCallback(std::shared_ptr<PlayerSignal> test);
+    virtual ~TestPlayerCallback();
     void OnError(PlayerErrorType errorType, int32_t errorCode);
     int WaitForSeekDone(int32_t currentPositon);
-    void OnInfo(PlayerOnInfoType type, int32_t extra, const Format &InfoBody = {});
+    void OnInfo(PlayerOnInfoType type, int32_t extra, const Format &infoBody = {});
     int WaitForState(PlayerStates state);
 private:
-    PlayerErrorType errorType_ = PLAYER_ERROR_UNKNOWN;
-    int32_t errorCode_ = -1;
-    bool seekDoneFlag = false;
-    int32_t postion_ = 0;
     void PrintState(PlayerStates state);
 
-    PlayerSignal *test_;
+    PlayerErrorType errorType_ = PLAYER_ERROR_UNKNOWN;
+    int32_t errorCode_ = -1;
+    bool seekDoneFlag_ = false;
+    int32_t postion_ = 0;
+    std::shared_ptr<PlayerSignal> test_;
 };
 }
 }
+#endif

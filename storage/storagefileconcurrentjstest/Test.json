@@ -2,9 +2,9 @@
     "description": "Configuration for storage file and fileio Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "21600000",
+        "test-timeout": "120000",
         "package": "ohos.acts.stroage.fileio",
-        "shell-timeout": "21600000"
+        "shell-timeout": "60000"
     },
     "kits": [
         {

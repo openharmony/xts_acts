@@ -13,28 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 #include "media_log.h"
+#include "securec.h"
+
+#define LOGMAXSIZE 200
+#define MEDIA_INFO_LOG(fmt, ...) \
+do { \
+    char ch[LOGMAXSIZE]; \
+    (void)sprintf_s(ch, LOGMAXSIZE, fmt, ##__VA_ARGS__); \
+    (void)printf("%s", ch); \
+    (void)printf("\n"); \
+    __MEDIA_LOG(::OHOS::HiviewDFX::HiLog::Info, "%{public}s", ch); \
+} while (0)
 
 #define MEDIA_DEBUG_LOG(fmt, ...) \
 do { \
-    printf(fmt, ##__VA_ARGS__); \
-    printf("\n"); \
-    __MEDIA_LOG(::OHOS::HiviewDFX::HiLog::Debug, fmt, ##__VA_ARGS__); \
-} while (0) \
-
-#define MEDIA_INFO_LOG(fmt, ...) \
-do { \
-    printf(fmt, ##__VA_ARGS__); \
-    printf("\n"); \
-    __MEDIA_LOG(::OHOS::HiviewDFX::HiLog::Info, fmt, ##__VA_ARGS__); \
-} while (0) \
+    char ch[LOGMAXSIZE]; \
+    (void)sprintf_s(ch, LOGMAXSIZE, fmt, ##__VA_ARGS__); \
+    __MEDIA_LOG(::OHOS::HiviewDFX::HiLog::Debug, "%{public}s", ch); \
+} while (0)
 
 #define MEDIA_ERROR_LOG(fmt, ...) \
 do { \
-    printf(fmt, ##__VA_ARGS__); \
-    printf("\n"); \
-    __MEDIA_LOG(::OHOS::HiviewDFX::HiLog::Error, fmt, ##__VA_ARGS__); \
-} while (0) \
+    char ch[LOGMAXSIZE]; \
+    (void)sprintf_s(ch, LOGMAXSIZE, fmt, ##__VA_ARGS__); \
+    (void)printf("%s", ch); \
+    (void)printf("\n"); \
+    __MEDIA_LOG(::OHOS::HiviewDFX::HiLog::Error, "%{public}s", ch); \
+} while (0)
 
 namespace {
     constexpr OHOS::HiviewDFX::HiLogLabel LABEL = {LOG_CORE, LOG_DOMAIN, "MediaTest"};

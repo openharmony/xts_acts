@@ -27,6 +27,7 @@
     },
     "abilities": [
       {
+        "visible": true,
         "skills": [
           {
             "entities": [

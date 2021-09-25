@@ -14,3 +14,4 @@
  */
 
 require('./PlayerLocalTestAudioFUNC.test.js')
+require('./PlayerLocalTestAudioFormat.test.js')

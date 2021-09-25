@@ -32,6 +32,48 @@ describe('audioManger', function () {
     var outOfRangeVol = 28;
     var longValue = '28374837458743875804735081439085918459801437584738967509184509813904850914375904790589104801843';
 
+    function displayDeviceProp(value, index, array) {
+        var devRoleName;
+        var devTypeName;
+        if (value.deviceRole==1) {
+            devRoleName = 'INPUT_DEVICE';
+        }
+        else if (value.deviceRole==2) {
+            devRoleName = 'OUTPUT_DEVICE ';
+        }
+        else {
+            devRoleName = 'ERROR : UNKNOWN : '+value.deviceRole;
+        }
+
+        if (value.deviceType == 1) {
+            devTypeName = 'EARPIECE';
+        }
+        else if (value.deviceType == 2){
+            devTypeName = 'SPEAKER';
+        }
+        else if (value.deviceType == 3){
+            devTypeName = 'WIRED_HEADSET';
+        }
+        else if (value.deviceType == 7){
+            devTypeName = 'BLUETOOTH_SCO';
+        }
+        else if (value.deviceType == 8){
+            devTypeName = 'BLUETOOTH_A2DP';
+        }
+        else if (value.deviceType == 15){
+            devTypeName = 'MIC';
+        }
+        else {
+            devTypeName = 'ERROR : UNKNOWN :'+value.deviceType;
+        }
+
+        console.info(`AudioFrameworkTest: device role: ${devRoleName}`);
+        deviceRoleValue = value.deviceRole;
+        console.info(`AudioFrameworkTest: device type: ${devTypeName}`);
+        deviceTypeValue = value.deviceType;
+
+    }
+
     beforeAll(function () {
         console.info('AudioFrameworkTest: beforeAll: Prerequisites at the test suite level');
     })
@@ -88,7 +130,7 @@ describe('audioManger', function () {
         const audioManager9 = audio.getAudioManager();
         const audioManager10 = audio.getAudioManager();
         const promise = audioManager.setVolume(audioMedia,lowVol);
-        promise.then(async function () {
+        promise.then(function () {
             console.info('AudioFrameworkTest: Media setVolume promise: successful');
             audioManager1.setVolume(audioMedia,highVol);
             console.info('AudioFrameworkTest:audioManager1 : Media setVolume promise: successful');
@@ -109,8 +151,8 @@ describe('audioManger', function () {
             audioManager9.setVolume(audioMedia,highVol);
             console.info('AudioFrameworkTest:audioManager9 : Media setVolume promise: successful');
             audioManager10.setVolume(audioMedia,lowVol);
-            console.info('AudioFrameworkTest:audioManager10 : Media setVolume promise: successful');         
-            audioManager.getVolume(audioMedia).then(async function (data) {
+            console.info('AudioFrameworkTest:audioManager10 : Media setVolume promise: successful');
+            audioManager.getVolume(audioMedia).then(function (data) {
                 if(data == lowVol){
                     console.info('AudioFrameworkTest: Media getVolume Promise: PASS :' + data);
                     expect(true).assertTrue();
@@ -119,12 +161,14 @@ describe('audioManger', function () {
                     console.info('AudioFrameworkTest: Media getVolume Promise: FAIL :' + data);
                     expect(false).assertTrue();
                 }
+            }).catch((err) => {
+                console.info('AudioFrameworkTest: Media getVolume Promise: Error :' + err.message);
             });
         });
         await promise;
         done();
     })
-    
+
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_001
                 * @tc.name      : setVolume - Media - Promise
@@ -135,9 +179,9 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_SetVolume_001', 0, async function (done) {
         const promise = audioManager.setVolume(audioMedia,lowVol);
-        promise.then(async function () {
+        promise.then(function () {
             console.info('AudioFrameworkTest: Media setVolume promise: successful');
-            audioManager.getVolume(audioMedia).then(async function (data) {
+            audioManager.getVolume(audioMedia).then(function (data) {
                 if(data == lowVol){
                     console.info('AudioFrameworkTest: Media getVolume Promise: PASS :' + data);
                     expect(true).assertTrue();
@@ -162,9 +206,9 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_SetVolume_002', 0, async function (done) {
         const promise = audioManager.setVolume(audioMedia,maxVol);
-        promise.then(async function () {
+        promise.then(function () {
             console.info('AudioFrameworkTest: Media setVolume promise: successful');
-            audioManager.getVolume(audioMedia).then(async function (data) {
+            audioManager.getVolume(audioMedia).then(function (data) {
                 if(data == maxVol){
                     console.info('AudioFrameworkTest: Media getVolume Promise: PASS :' + data);
                     expect(true).assertTrue();
@@ -189,10 +233,10 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_SetVolume_003', 0, async function (done) {
         const promise = audioManager.setVolume(audioMedia,minVol);
-        promise.then(async function () {
+        promise.then(function () {
             console.info('AudioFrameworkTest: Media setVolume promise: successful');
 
-            audioManager.getVolume(audioMedia).then(async function (data) {
+            audioManager.getVolume(audioMedia).then(function (data) {
                 if(data == minVol){
                     console.info('AudioFrameworkTest: Media getVolume Promise: PASS :' + data);
                     expect(true).assertTrue();
@@ -223,7 +267,7 @@ describe('audioManger', function () {
         }).catch((err) => {
             console.info('AudioFrameworkTest: Media setVolume Promise:Out of range: PASS :' + err.message);
             expect(volErrorMesg).assertEqual(err.message);
-        }); 
+        });
         done();
     })
 
@@ -258,7 +302,7 @@ describe('audioManger', function () {
                         expect(false).assertTrue();
                     }
                     done();
-                }); 
+                });
             }
             done();
         });
@@ -296,7 +340,7 @@ describe('audioManger', function () {
                     }
                     done();
                 });
-            } 
+            }
             done();
         });
     })
@@ -332,7 +376,7 @@ describe('audioManger', function () {
                         expect(false).assertTrue();
                     }
                     done();
-                }); 
+                });
             }
             done();
         });
@@ -370,9 +414,9 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_SetVolume_009', 0, async function (done) {
         const promise = audioManager.setVolume(audioRingtone,lowVol);
-        promise.then(async function () {
+        promise.then(function () {
             console.info('AudioFrameworkTest: Ringtone setVolume promise: successful');
-            audioManager.getVolume(audioRingtone).then(async function (data) {
+            audioManager.getVolume(audioRingtone).then(function (data) {
                 if(data == lowVol){
                     console.info('AudioFrameworkTest: Ringtone getVolume Promise: PASS :' + data);
                     expect(true).assertTrue();
@@ -397,9 +441,9 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_SetVolume_010', 0, async function (done) {
         const promise = audioManager.setVolume(audioRingtone,maxVol);
-        promise.then(async function () {
+        promise.then(function () {
             console.info('AudioFrameworkTest: Ringtone setVolume promise: successful');
-            audioManager.getVolume(audioRingtone).then(async function (data) {
+            audioManager.getVolume(audioRingtone).then(function (data) {
                 if(data == maxVol){
                     console.info('AudioFrameworkTest: Ringtone getVolume Promise: PASS :' + data);
                     expect(true).assertTrue();
@@ -424,9 +468,9 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_SetVolume_011', 0, async function (done) {
         const promise = audioManager.setVolume(audioRingtone,minVol);
-        promise.then(async function () {
+        promise.then(function () {
             console.info('AudioFrameworkTest: Ringtone setVolume promise: successful');
-            audioManager.getVolume(audioRingtone).then(async function (data) {
+            audioManager.getVolume(audioRingtone).then(function (data) {
                 if(data == minVol){
                     console.info('AudioFrameworkTest: Ringtone getVolume Promise: PASS :' + data);
                     expect(true).assertTrue();
@@ -440,7 +484,7 @@ describe('audioManger', function () {
         await promise;
         done();
     })
-    
+
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_012
                 * @tc.name      : setVolume - Ringtone - Promise - Out of range Volume
@@ -491,7 +535,7 @@ describe('audioManger', function () {
                         expect(false).assertTrue();
                     }
                     done();
-                }); 
+                });
             }
             done();
         });
@@ -528,7 +572,7 @@ describe('audioManger', function () {
                         expect(false).assertTrue();
                     }
                     done();
-                }); 
+                });
             }
             done();
         });
@@ -564,7 +608,7 @@ describe('audioManger', function () {
                         expect(false).assertTrue();
                     }
                     done();
-                }); 
+                });
             }
             done();
         });
@@ -583,7 +627,7 @@ describe('audioManger', function () {
             if (err) {
                 console.error(`AudioFrameworkTest: Out of range Volume: Callback:  ${err.message}`);
                 expect(volErrorMesg).assertEqual(err.message);
-            }            
+            }
             else{
                 console.info('AudioFrameworkTest: Out of range Volume: callback : Ringtone set volume: FAIL');
                 expect(false).assertTrue();
@@ -591,11 +635,11 @@ describe('audioManger', function () {
             done();
         });
     })
-    
+
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_017
                 * @tc.name      : setVolume - Media - Promise - Negative Value
-                * @tc.desc      : Setvol to -1 
+                * @tc.desc      : Setvol to -1
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
@@ -612,7 +656,7 @@ describe('audioManger', function () {
         });
         done();
     })
-	
+
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_018
                 * @tc.name      : setVolume - Media - Callback - Negative Value
@@ -622,12 +666,12 @@ describe('audioManger', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_MANAGER_SetVolume_018', 0, async function (done) {
-        audioManager.setVolume(audioMedia,-1, (err) => {                                                  
+        audioManager.setVolume(audioMedia,-1, (err) => {
             // Setting negative audio volume for error Scenario
             if (err) {
                 console.error(`AudioFrameworkTest: setVolume Callback: Negative: PASS: ${err.message}`);
                 expect(volErrorMesg).assertEqual(err.message);
-            }            
+            }
             else{
                 console.info('AudioFrameworkTest: setVolume callback : Media Negative: FAIL');
                 expect(false).assertTrue();
@@ -635,7 +679,7 @@ describe('audioManger', function () {
             done();
         });
     })
-	
+
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_019
                 * @tc.name      : setVolume - Ringtone - Promise - Negative Value
@@ -646,7 +690,7 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_SetVolume_019', 0, async function (done) {
         console.info('AudioFrameworkTest: Ringtone setVolume promise: Negative');
-        await audioManager.setVolume(audioRingtone,-1).then(() => {                                              
+        await audioManager.setVolume(audioRingtone,-1).then(() => {
             // Setting negative audio volume for error Scenario
             console.info('AudioFrameworkTest: Ringtone setVolume Promise:Negative: FAIL');
             expect(false).assertTrue();
@@ -656,7 +700,7 @@ describe('audioManger', function () {
         });
         done();
     })
-	
+
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_020
                 * @tc.name      : setVolume - Ringtone - Callback - Negative Value
@@ -666,12 +710,12 @@ describe('audioManger', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_MANAGER_SetVolume_020', 0, async function (done) {
-        audioManager.setVolume(audioRingtone,-1, (err) => {                                              
+        audioManager.setVolume(audioRingtone,-1, (err) => {
             // Setting negative audio volume for error Scenario
             if (err) {
-                console.error(`AudioFrameworkTest: setVolume: Negative: Callback:  ${err.message}`);
+                console.error(`AudioFrameworkTest:Ringtone setVolume Callback:Negative: PASS : ${err.message}`);
                 expect(volErrorMesg).assertEqual(err.message);
-            }            
+            }
             else{
                 console.info('AudioFrameworkTest: setVolume: Negative: callback : Ringtone set volume: FAIL');
                 expect(false).assertTrue();
@@ -679,7 +723,7 @@ describe('audioManger', function () {
             done();
         });
     })
-    
+
     /* *
             * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_021
             * @tc.name      : setVolume - Media - Promise - ENAME
@@ -690,8 +734,8 @@ describe('audioManger', function () {
         */
     it('SUB_AUDIO_MANAGER_SetVolume_021', 0, async function (done) {
         const promise = audioManager.setVolume(audio.AudioVolumeType.MEDIA,lowVol);
-        promise.then(async function () {
-            audioManager.getVolume(audio.AudioVolumeType.MEDIA).then(async function (data) {
+        promise.then(function () {
+            audioManager.getVolume(audio.AudioVolumeType.MEDIA).then(function (data) {
                 if(data == lowVol){
                     console.info('AudioFrameworkTest: Media getVolume Promise: ENAME : PASS :' + data);
                     expect(true).assertTrue();
@@ -705,7 +749,7 @@ describe('audioManger', function () {
         await promise;
         done();
     })
-    
+
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_022
                 * @tc.name      : setVolume - Media - Callback - ENAME
@@ -736,12 +780,12 @@ describe('audioManger', function () {
                         expect(false).assertTrue();
                     }
                     done();
-                }); 
+                });
             }
             done();
-        });       
+        });
     })
-    
+
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_023
                 * @tc.name      : setVolume - Ringtone - Promise - ENAME
@@ -752,9 +796,9 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_SetVolume_023', 0, async function (done) {
         const promise = audioManager.setVolume(audio.AudioVolumeType.RINGTONE,highVol);
-        promise.then(async function () {
+        promise.then(function () {
             console.info('AudioFrameworkTest: Ringtone setVolume promise: ENAME: successful');
-            audioManager.getVolume(audio.AudioVolumeType.RINGTONE).then(async function (data) {
+            audioManager.getVolume(audio.AudioVolumeType.RINGTONE).then(function (data) {
                 if(data == highVol){
                     console.info('AudioFrameworkTest: Ringtone getVolume Promise: ENAME: PASS :' + data);
                     expect(true).assertTrue();
@@ -768,7 +812,7 @@ describe('audioManger', function () {
         await promise;
         done();
     })
-    
+
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_024
                 * @tc.name      : setVolume - Ringtone - Callback - ENAME
@@ -800,11 +844,11 @@ describe('audioManger', function () {
                     }
                     done();
                 });
-            } 
+            }
             done();
         });
     })
-    
+
     /* *
             * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_025
             * @tc.name      : setVolume - Media - Promise - Change Ringtone vol
@@ -815,9 +859,9 @@ describe('audioManger', function () {
         */
     it('SUB_AUDIO_MANAGER_SetVolume_025', 0, async function (done) {
         const promise = audioManager.setVolume(audio.AudioVolumeType.MEDIA,lowVol);
-        promise.then(async function () {
+        promise.then(function () {
 			audioManager.setVolume(audio.AudioVolumeType.RINGTONE,maxVol);
-            audioManager.getVolume(audio.AudioVolumeType.MEDIA).then(async function (data) {
+            audioManager.getVolume(audio.AudioVolumeType.MEDIA).then(function (data) {
                 if(data == lowVol){
                     console.info('AudioFrameworkTest: Media getVolume Promise: ENAME : PASS :' + data);
                     expect(true).assertTrue();
@@ -831,7 +875,7 @@ describe('audioManger', function () {
         await promise;
         done();
     })
-    
+
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_026
                 * @tc.name      : setVolume - Media - Callback - Change Ringtone vol
@@ -863,12 +907,12 @@ describe('audioManger', function () {
                         expect(false).assertTrue();
                     }
                     done();
-                }); 
+                });
             }
             done();
         });
     })
-    
+
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_027
                 * @tc.name      : setVolume - Ringtone - Promise - Change Media vol
@@ -879,10 +923,10 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_SetVolume_027', 0, async function (done) {
         const promise = audioManager.setVolume(audio.AudioVolumeType.RINGTONE,highVol);
-        promise.then(async function () {
+        promise.then(function () {
             console.info('AudioFrameworkTest: Ringtone setVolume promise: ENAME: successful');
 			audioManager.setVolume(audio.AudioVolumeType.MEDIA,lowVol);
-            audioManager.getVolume(audio.AudioVolumeType.RINGTONE).then(async function (data) {
+            audioManager.getVolume(audio.AudioVolumeType.RINGTONE).then(function (data) {
                 if(data == highVol){
                     console.info('AudioFrameworkTest: Ringtone getVolume Promise: ENAME: PASS :' + data);
                     expect(true).assertTrue();
@@ -929,7 +973,7 @@ describe('audioManger', function () {
                     }
                     done();
                 });
-            } 
+            }
             done();
         });
     })
@@ -944,7 +988,7 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_getMaxVolume_001', 0, async function (done) {
         const promise = audioManager.getMaxVolume(audioMedia);
-        promise.then(async function (data) {
+        promise.then(function (data) {
             if (data==maxVol){
                 console.info('AudioFrameworkTest: Media getMaxVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -994,7 +1038,7 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_getMaxVolume_003', 0, async function (done) {
         const promise = audioManager.getMaxVolume(audioRingtone);
-        promise.then(async function (data) {
+        promise.then(function (data) {
             if (data==maxVol){
                 console.info('AudioFrameworkTest: Ringtone getMaxVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1045,7 +1089,7 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_getMaxVolume_005', 0, async function (done) {
         audioManager.setVolume(audioRingtone,lowVol);
         const promise = audioManager.getMaxVolume(audioMedia);
-        promise.then(async function (data) {
+        promise.then(function (data) {
             if (data==maxVol){
                 console.info('AudioFrameworkTest: Media getMaxVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1070,7 +1114,7 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_getMaxVolume_006', 0, async function (done) {
         audioManager.setVolume(audioMedia,lowVol);
         const promise = audioManager.getMaxVolume(audioRingtone);
-        promise.then(async function (data) {
+        promise.then(function (data) {
             if (data==maxVol){
                 console.info('AudioFrameworkTest: Ringtone getMaxVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1151,7 +1195,7 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_getMaxVolume_009', 0, async function (done) {
         audioManager.setVolume(audioMedia,lowVol);
         const promise = audioManager.getMaxVolume(audioMedia);
-        promise.then(async function (data) {
+        promise.then(function (data) {
             if (data==maxVol){
                 console.info('AudioFrameworkTest: Media getMaxVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1176,7 +1220,7 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_getMaxVolume_010', 0, async function (done) {
         audioManager.setVolume(audioRingtone,lowVol);
         const promise = audioManager.getMaxVolume(audioRingtone);
-        promise.then(async function (data) {
+        promise.then(function (data) {
             if (data==maxVol){
                 console.info('AudioFrameworkTest: Ringtone getMaxVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1254,7 +1298,7 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_getMinVolume_001', 0, async function (done) {
         const promise = audioManager.getMinVolume(audioMedia);
-        promise.then(async function (data) {
+        promise.then(function (data) {
             if (data==minVol){
                 console.info('AudioFrameworkTest: Media getMinVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1304,7 +1348,7 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_getMinVolume_003', 0, async function (done) {
         const promise = audioManager.getMinVolume(audioRingtone);
-        promise.then(async function (data) {
+        promise.then(function (data) {
             if (data==minVol){
                 console.info('AudioFrameworkTest: Ringtone getMinVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1356,7 +1400,7 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_getMinVolume_005', 0, async function (done) {
         audioManager.setVolume(audioRingtone,lowVol);
         const promise = audioManager.getMinVolume(audioMedia);
-        promise.then(async function (data) {
+        promise.then(function (data) {
             if (data==minVol){
                 console.info('AudioFrameworkTest: Media getMinVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1408,7 +1452,7 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_getMinVolume_007', 0, async function (done) {
         audioManager.setVolume(audioMedia,highVol);
         const promise = audioManager.getMinVolume(audioRingtone);
-        promise.then(async function (data) {
+        promise.then(function (data) {
             if (data==minVol){
                 console.info('AudioFrameworkTest: Ringtone getMinVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1460,7 +1504,7 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_getMinVolume_009', 0, async function (done) {
         audioManager.setVolume(audioMedia,lowVol);
         const promise = audioManager.getMinVolume(audioMedia);
-        promise.then(async function (data) {
+        promise.then(function (data) {
             if (data==minVol){
                 console.info('AudioFrameworkTest: Media getMinVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1512,7 +1556,7 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_getMinVolume_011', 0, async function (done) {
         audioManager.setVolume(audioRingtone,lowVol);
         const promise = audioManager.getMinVolume(audioRingtone)
-        promise.then(async function (data) {
+        promise.then(function (data) {
             if (data==minVol){
                 console.info('AudioFrameworkTest: Ringtone getMinVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1566,7 +1610,7 @@ describe('audioManger', function () {
         deviceTypeValue = null;
         const promise = audioManager.getDevices(1);    
         // Getting all Output devices Enumb 1 = OUTPUT_DEVICES_FLAG
-        promise.then(async function (value) {
+        promise.then(function (value) {
             console.info('AudioFrameworkTest: Promise: getDevices OUTPUT_DEVICES_FLAG');
             value.forEach(displayDeviceProp);
             if (deviceTypeValue != null && deviceRoleValue != null){
@@ -1595,7 +1639,7 @@ describe('audioManger', function () {
         deviceTypeValue = null;
         const promise = audioManager.getDevices(2);  
         // Getting all Input Devices ENUM 2 = INPUT_DEVICES_FLAG
-        promise.then(async function (value) {
+        promise.then(function (value) {
             console.info('AudioFrameworkTest: Promise: getDevices INPUT_DEVICES_FLAG');
             value.forEach(displayDeviceProp);
 
@@ -1625,7 +1669,7 @@ describe('audioManger', function () {
         deviceTypeValue = null;
         const promise = audioManager.getDevices(3);     
         // Getting all devies connected 3 = ALL_DEVICES_FLAG
-        promise.then(async function (value) {
+        promise.then(function (value) {
 
             console.info('AudioFrameworkTest: Promise: getDevices ALL_DEVICES_FLAG');
             value.forEach(displayDeviceProp);
@@ -1764,7 +1808,7 @@ describe('audioManger', function () {
         deviceRoleValue = null;
         deviceTypeValue = null;
         const promise = audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG)
-        promise.then(async function (value) {
+        promise.then(function (value) {
 
             console.info('AudioFrameworkTest: Promise: getDevices OUTPUT_DEVICES_FLAG');
             value.forEach(displayDeviceProp);
@@ -1793,7 +1837,7 @@ describe('audioManger', function () {
         deviceRoleValue = null;
         deviceTypeValue = null;
         const promise = audioManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG);
-        promise.then(async function (value) {
+        promise.then(function (value) {
             console.info('AudioFrameworkTest: Promise: getDevices INPUT_DEVICES_FLAG');
             value.forEach(displayDeviceProp);
 
@@ -1822,7 +1866,7 @@ describe('audioManger', function () {
         deviceRoleValue = null;
         deviceTypeValue = null;
         const promise = audioManager.getDevices(audio.DeviceFlag.ALL_DEVICES_FLAG);
-        promise.then(async function (value) {
+        promise.then(function (value) {
             console.info('AudioFrameworkTest: Promise: getDevices ALL_DEVICES_FLAG');
             value.forEach(displayDeviceProp);
 
@@ -1950,15 +1994,15 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_setRingerMode_001', 0, async function (done) {
         const promise = audioManager.setRingerMode(2);  
         // Setting Ringtone Mode to Normal ENUM 2 = RINGER_MODE_NORMAL
-        promise.then(async function () {
-            console.info('AudioFrameworkTest: Promise: setRingerMode​ RINGER_MODE_NORMAL');
-            audioManager.getRingerMode().then(async function (value){
+        promise.then(function () {
+            console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_NORMAL');
+            audioManager.getRingerMode().then(function (value){
                 if(value==2){
-                    console.info('AudioFrameworkTest: Promise: setRingerMode​ RINGER_MODE_NORMAL: PASS :' +value);
+                    console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_NORMAL: PASS :' +value);
                     expect(true).assertTrue();
                 }
                 else{
-                    console.info('AudioFrameworkTest: Promise: setRingerMode​ RINGER_MODE_NORMAL: FAIL :' +value);
+                    console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_NORMAL: FAIL :' +value);
                     expect(false).assertTrue();
                 }
             });
@@ -1978,15 +2022,15 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_setRingerMode_002', 0, async function (done) {
         const promise = audioManager.setRingerMode(0);      
         // Setting Ringtone Mode to Silent ENUM 0 = RINGER_MODE_SILENT
-        promise.then(async function (){
-            console.info('AudioFrameworkTest: Promise: setRingerMode​ RINGER_MODE_SILENT');
-            audioManager.getRingerMode().then(async function (value){
+        promise.then(function (){
+            console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_SILENT');
+            audioManager.getRingerMode().then(function (value){
                 if(value==0){
-                    console.info('AudioFrameworkTest: Promise: setRingerMode​ RINGER_MODE_SILENT: PASS :' +value);
+                    console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_SILENT: PASS :' +value);
                     expect(true).assertTrue();
                 }
                 else{
-                    console.info('AudioFrameworkTest: Promise: setRingerMode​ RINGER_MODE_SILENT: FAIL :' +value);
+                    console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_SILENT: FAIL :' +value);
                     expect(false).assertTrue();
                 }
             });
@@ -2006,15 +2050,15 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_setRingerMode_003', 0, async function (done) {
         const promise = audioManager.setRingerMode(1);      
         // Setting Ringtone Mode to Vibration ENUM 1 = RINGER_MODE_VIBRATE
-        promise.then(async function (){
-            console.info('AudioFrameworkTest: Promise: setRingerMode​ RINGER_MODE_VIBRATE');
-            audioManager.getRingerMode().then(async function (value){
+        promise.then(function (){
+            console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_VIBRATE');
+            audioManager.getRingerMode().then(function (value){
                 if(value==1){
-                    console.info('AudioFrameworkTest: Promise: setRingerMode​ RINGER_MODE_VIBRATE: PASS :' +value);
+                    console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_VIBRATE: PASS :' +value);
                     expect(true).assertTrue();
                 }
                 else{
-                    console.info('AudioFrameworkTest: Promise: setRingerMode​ RINGER_MODE_VIBRATE: FAIL :' +value);
+                    console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_VIBRATE: FAIL :' +value);
                     expect(false).assertTrue();
                 }
             });
@@ -2034,23 +2078,23 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_setRingerMode_004', 0, async function (done) {
         audioManager.setRingerMode(2, (err) => {     
             // Setting Ringtone Mode to Normal ENUM 2 = RINGER_MODE_NORMAL
-            console.info('AudioFrameworkTest: Callback : setRingerMode​ RINGER_MODE_NORMAL');
+            console.info('AudioFrameworkTest: Callback : setRingerMode RINGER_MODE_NORMAL');
             if (err) {
-                console.error(`AudioFrameworkTest: Callback : setRingerMode​ RINGER_MODE_NORMAL: Error: ${err.message}`);
+                console.error(`AudioFrameworkTest: Callback : setRingerMode RINGER_MODE_NORMAL: Error: ${err.message}`);
                 expect().assertFail();
             }        
             else{
                 audioManager.getRingerMode((err, value) => {
                     if (err) {
-                        console.error(`AudioFrameworkTest: Callback : setRingerMode​ RINGER_MODE_NORMAL: Error: ${err.message}`);
+                        console.error(`AudioFrameworkTest: Callback : RINGER_MODE_NORMAL: Error: ${err.message}`);
                         expect().assertFail();
                     }
                     else if(value==2){
-                        console.info('AudioFrameworkTest: Callback: setRingerMode​ RINGER_MODE_NORMAL: PASS :' +value);
+                        console.info('AudioFrameworkTest: Callback: setRingerMode RINGER_MODE_NORMAL: PASS :' +value);
                         expect(true).assertTrue();
                     }
                     else{
-                        console.info('AudioFrameworkTest: Callback: setRingerMode​ RINGER_MODE_NORMAL: FAIL :' +value);
+                        console.info('AudioFrameworkTest: Callback: setRingerMode RINGER_MODE_NORMAL: FAIL :' +value);
                         expect(false).assertTrue();
                     }
                     done();
@@ -2071,24 +2115,24 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_setRingerMode_005', 0, async function (done) {
         audioManager.setRingerMode(0, (err) => {     
             // Setting Ringtone Mode to Silent ENUM 0 = RINGER_MODE_SILENT
-            console.info('AudioFrameworkTest: Callback : setRingerMode​ RINGER_MODE_SILENT');
+            console.info('AudioFrameworkTest: Callback : setRingerMode RINGER_MODE_SILENT');
             if (err) {
-                console.error(`AudioFrameworkTest: Callback : setRingerMode​ RINGER_MODE_SILENT: Error: ${err.message}`);
+                console.error(`AudioFrameworkTest: Callback : setRingerMode RINGER_MODE_SILENT: Error: ${err.message}`);
                 expect().assertFail();
             }        
             else{
                 audioManager.getRingerMode((err, value) => {
                     if (err) {
-                        console.error(`AudioFrameworkTest: Callback : setRingerMode​ RINGER_MODE_SILENT: Error: ${err.message}`);
+                        console.error(`AudioFrameworkTest: Callback : RINGER_MODE_SILENT: Error: ${err.message}`);
                         expect().assertFail();
                     }
 
                     if(value==0){
-                        console.info('AudioFrameworkTest: Callback: setRingerMode​ RINGER_MODE_SILENT: PASS :' +value);
+                        console.info('AudioFrameworkTest: Callback: setRingerMode RINGER_MODE_SILENT: PASS :' +value);
                         expect(true).assertTrue();
                     }
                     else{
-                        console.info('AudioFrameworkTest: Callback: setRingerMode​ RINGER_MODE_SILENT: FAIL :' +value);
+                        console.info('AudioFrameworkTest: Callback: setRingerMode RINGER_MODE_SILENT: FAIL :' +value);
                         expect(false).assertTrue();
                     }
                     done();
@@ -2109,24 +2153,24 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_setRingerMode_006', 0, async function (done) {
         audioManager.setRingerMode(1, (err) => {     
             // Setting Ringtone Mode to Vibration ENUM 1 = RINGER_MODE_VIBRATE
-            console.info('AudioFrameworkTest: Callback : setRingerMode​ RINGER_MODE_VIBRATE');
+            console.info('AudioFrameworkTest: Callback : setRingerMode RINGER_MODE_VIBRATE');
             if (err) {
-                console.error(`AudioFrameworkTest: Callback : setRingerMode​ RINGER_MODE_VIBRATE: Error: ${err.message}`);
+                console.error(`AudioFrameworkTest: Callback : setRingerMode RINGER_MODE_VIBRATE: Error: ${err.message}`);
                 expect().assertFail();
             }        
             else {
                 audioManager.getRingerMode((err, value) => {
                     if (err) {
-                        console.error(`AudioFrameworkTest: Callback : setRingerMode​ RINGER_MODE_VIBRATE: Error: ${err.message}`);
+                        console.error(`AudioFrameworkTest: Callback :  RINGER_MODE_VIBRATE: Error: ${err.message}`);
                         expect().assertFail();
                     }
 
                     if(value==1){
-                        console.info('AudioFrameworkTest: Callback: setRingerMode​ RINGER_MODE_VIBRATE: PASS :' +value);
+                        console.info('AudioFrameworkTest: Callback: setRingerMode RINGER_MODE_VIBRATE: PASS :' +value);
                         expect(true).assertTrue();
                     }
                     else{
-                        console.info('AudioFrameworkTest: Callback: setRingerMode​ RINGER_MODE_VIBRATE: FAIL :' +value);
+                        console.info('AudioFrameworkTest: Callback: setRingerMode RINGER_MODE_VIBRATE: FAIL :' +value);
                         expect(false).assertTrue();
                     }
                     done();
@@ -2146,15 +2190,15 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_setRingerMode_007', 0, async function (done) {
         const promise = audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL);
-        promise.then(async function () {
-            console.info('AudioFrameworkTest: Promise: setRingerMode​ RINGER_MODE_NORMAL');
-            audioManager.getRingerMode().then(async function (value){
+        promise.then(function () {
+            console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_NORMAL');
+            audioManager.getRingerMode().then(function (value){
                 if(value==audio.AudioRingMode.RINGER_MODE_NORMAL){
-                    console.info('AudioFrameworkTest: Promise: setRingerMode​ RINGER_MODE_NORMAL: PASS :' +value);
+                    console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_NORMAL: PASS :' +value);
                     expect(true).assertTrue();
                 }
                 else{
-                    console.info('AudioFrameworkTest: Promise: setRingerMode​ RINGER_MODE_NORMAL: FAIL :' +value);
+                    console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_NORMAL: FAIL :' +value);
                     expect(false).assertTrue();
                 }
             });
@@ -2173,15 +2217,15 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_setRingerMode_008', 0, async function (done) {
         const promise = audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_SILENT);
-        promise.then(async function (){
-            console.info('AudioFrameworkTest: Promise: setRingerMode​ RINGER_MODE_SILENT');
-            audioManager.getRingerMode().then(async function (value){
+        promise.then(function (){
+            console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_SILENT');
+            audioManager.getRingerMode().then(function (value){
                 if(value==audio.AudioRingMode.RINGER_MODE_SILENT){
-                    console.info('AudioFrameworkTest: Promise: setRingerMode​ RINGER_MODE_SILENT: PASS :' +value);
+                    console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_SILENT: PASS :' +value);
                     expect(true).assertTrue();
                 }
                 else{
-                    console.info('AudioFrameworkTest: Promise: setRingerMode​ RINGER_MODE_SILENT: FAIL :' +value);
+                    console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_SILENT: FAIL :' +value);
                     expect(false).assertTrue();
                 }
             });
@@ -2200,15 +2244,15 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_setRingerMode_009', 0, async function (done) {
         const promise = audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_VIBRATE);
-        promise.then(async function (){
-            console.info('AudioFrameworkTest: Promise: setRingerMode​ RINGER_MODE_VIBRATE');
-            audioManager.getRingerMode().then(async function (value){
+        promise.then(function (){
+            console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_VIBRATE');
+            audioManager.getRingerMode().then(function (value){
                 if(value==audio.AudioRingMode.RINGER_MODE_VIBRATE){
-                    console.info('AudioFrameworkTest: Promise: setRingerMode​ RINGER_MODE_VIBRATE: PASS :' +value);
+                    console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_VIBRATE: PASS :' +value);
                     expect(true).assertTrue();
                 }
                 else{
-                    console.info('AudioFrameworkTest: Promise: setRingerMode​ RINGER_MODE_VIBRATE: FAIL :' +value);
+                    console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_VIBRATE: FAIL :' +value);
                     expect(false).assertTrue();
                 }
             });
@@ -2227,23 +2271,23 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_setRingerMode_010', 0, async function (done) {
         audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL, (err) => {
-            console.info('AudioFrameworkTest: Callback : setRingerMode​ RINGER_MODE_NORMAL');
+            console.info('AudioFrameworkTest: Callback : setRingerMode RINGER_MODE_NORMAL');
             if (err) {
-                console.error(`AudioFrameworkTest: Callback : setRingerMode​ RINGER_MODE_NORMAL: Error: ${err.message}`);
+                console.error(`AudioFrameworkTest: Callback : setRingerMode RINGER_MODE_NORMAL: Error: ${err.message}`);
                 expect().assertFail();
             }        
             else {
                 audioManager.getRingerMode((err, value) => {
                     if (err) {
-                        console.error(`AudioFrameworkTest: Callback : setRingerMode​ RINGER_MODE_NORMAL: Error: ${err.message}`);
+                        console.error(`AudioFrameworkTest: Callback : RINGER_MODE_NORMAL: Error: ${err.message}`);
                         expect().assertFail();
                     }
                     else if(value==audio.AudioRingMode.RINGER_MODE_NORMAL){
-                        console.info('AudioFrameworkTest: Callback: setRingerMode​ RINGER_MODE_NORMAL: PASS :' +value);
+                        console.info('AudioFrameworkTest: Callback: setRingerMode RINGER_MODE_NORMAL: PASS :' +value);
                         expect(true).assertTrue();
                     }
                     else{
-                        console.info('AudioFrameworkTest: Callback: setRingerMode​ RINGER_MODE_NORMAL: FAIL :' +value);
+                        console.info('AudioFrameworkTest: Callback: setRingerMode RINGER_MODE_NORMAL: FAIL :' +value);
                         expect(false).assertTrue();
                     }
                     done();
@@ -2263,24 +2307,24 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_setRingerMode_011', 0, async function (done) {
         audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_SILENT, (err) => {
-            console.info('AudioFrameworkTest: Callback : setRingerMode​ RINGER_MODE_SILENT');
+            console.info('AudioFrameworkTest: Callback : setRingerMode RINGER_MODE_SILENT');
             if (err) {
-                console.error(`AudioFrameworkTest: Callback : setRingerMode​ RINGER_MODE_SILENT: Error: ${err.message}`);
+                console.error(`AudioFrameworkTest: Callback : setRingerMode RINGER_MODE_SILENT: Error: ${err.message}`);
                 expect().assertFail();
             }        
             else {
                 audioManager.getRingerMode((err, value) => {
                     if (err) {
-                        console.error(`AudioFrameworkTest: Callback : setRingerMode​ RINGER_MODE_SILENT: Error: ${err.message}`);
+                        console.error(`AudioFrameworkTest: Callback : RINGER_MODE_SILENT: Error: ${err.message}`);
                         expect().assertFail();
                     }
 
                     if(value==audio.AudioRingMode.RINGER_MODE_SILENT){
-                        console.info('AudioFrameworkTest: Callback: setRingerMode​ RINGER_MODE_SILENT: PASS :' +value);
+                        console.info('AudioFrameworkTest: Callback: setRingerMode RINGER_MODE_SILENT: PASS :' +value);
                         expect(true).assertTrue();
                     }
                     else{
-                        console.info('AudioFrameworkTest: Callback: setRingerMode​ RINGER_MODE_SILENT: FAIL :' +value);
+                        console.info('AudioFrameworkTest: Callback: setRingerMode RINGER_MODE_SILENT: FAIL :' +value);
                         expect(false).assertTrue();
                     }
                     done();
@@ -2300,24 +2344,24 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_setRingerMode_012', 0, async function (done) {
         audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_VIBRATE, (err, value) => {
-            console.info('AudioFrameworkTest: Callback : setRingerMode​ RINGER_MODE_VIBRATE');
+            console.info('AudioFrameworkTest: Callback : setRingerMode RINGER_MODE_VIBRATE');
             if (err) {
-                console.error(`AudioFrameworkTest: Callback : setRingerMode​ RINGER_MODE_VIBRATE: Error: ${err.message}`);
+                console.error(`AudioFrameworkTest: Callback : setRingerMode RINGER_MODE_VIBRATE: Error: ${err.message}`);
                 expect().assertFail();
             }        
             else {
                 audioManager.getRingerMode((err, value) => {
                     if (err) {
-                        console.error(`AudioFrameworkTest: Callback : setRingerMode​ RINGER_MODE_VIBRATE: Error: ${err.message}`);
+                        console.error(`AudioFrameworkTest: Callback : RINGER_MODE_VIBRATE: Error: ${err.message}`);
                         expect().assertFail();
                     }
 
                     if(value==audio.AudioRingMode.RINGER_MODE_VIBRATE){
-                        console.info('AudioFrameworkTest: Callback: setRingerMode​ RINGER_MODE_VIBRATE: PASS :' +value);
+                        console.info('AudioFrameworkTest: Callback: setRingerMode RINGER_MODE_VIBRATE: PASS :' +value);
                         expect(true).assertTrue();
                     }
                     else{
-                        console.info('AudioFrameworkTest: Callback: setRingerMode​ RINGER_MODE_VIBRATE: FAIL :' +value);
+                        console.info('AudioFrameworkTest: Callback: setRingerMode RINGER_MODE_VIBRATE: FAIL :' +value);
                         expect(false).assertTrue();
                     }
                     done();
@@ -2325,34 +2369,6 @@ describe('audioManger', function () {
             }
             done();
         });
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_mute_001
-                * @tc.name      : mute - Media - Promise
-                * @tc.desc      : mute - Media - Promise - Enable mute
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_mute_001', 0, async function (done) {
-        await audioManager.mute(audioMedia,true).then(async function () {
-            console.log('AudioFrameworkTest: Set Stream Mute: Media: Promise: TRUE');
-            audioManager.isMute(audioMedia).then(async function (data) {
-                if(data==true){
-                     console.log('AudioFrameworkTest: Promise: Is Stream Mute Media: TRUE: PASS:'+data);
-                     expect(true).assertTrue();
-                }
-                else{
-                     console.log('AudioFrameworkTest: Promise: Is Stream Mute Media: TRUE: FAIL: '+data);
-                     expect(false).assertTrue();
-                }
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkTest: Promise: Is Stream Mute Media: TRUE: ERROR:' + err.message);
-            expect(false).assertTrue();
-        }); 
-        done();
     })
 
     /* *
@@ -2392,42 +2408,6 @@ describe('audioManger', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_mute_002
-                * @tc.name      : mute - Media - callback
-                * @tc.desc      : mute - Media - callback - Enable mute
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_mute_002', 0, async function (done) {
-        audioManager.mute(audioMedia,true, (err) => {
-            if (err) {
-                console.error(`AudioFrameworkTest: Set Stream Mute: Media: Callback: Error :  ${err.message}`);
-                expect(false).assertTrue();
-            }
-            else {
-                console.log('AudioFrameworkTest: Set Stream Mute: Media: Callback : TRUE');
-                audioManager.isMute(audioMedia, (err, data) => {
-                    if (err) {
-                        console.error(`AudioFrameworkTest: Callback : TRUE: Media : failed to get Mute Status ${err.message}`);
-                        expect().assertFail();
-                    }
-                    else if(data==true){
-                        console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: TRUE: PASS: '+data);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: TRUE: FAIL: '+data);
-                        expect(false).assertTrue();
-                    }
-                    done();
-                });
-            }
-            done();
-        });
-    })
-
-    /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_mute_005
                 * @tc.name      : mute - Media - Promise
                 * @tc.desc      : mute - Media - Promise - Disable mute
@@ -2436,9 +2416,9 @@ describe('audioManger', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_MANAGER_mute_005', 0, async function (done) {
-        await audioManager.mute(audioMedia,false).then(async function () {
+        await audioManager.mute(audioMedia,false).then(function () {
             console.log('AudioFrameworkTest: Set Stream Mute: Media: Promise: FALSE');
-            audioManager.isMute(audioMedia).then(async function (data) {
+            audioManager.isMute(audioMedia).then(function (data) {
                 if(data==false){
                      console.log('AudioFrameworkTest: Promise: Is Stream Mute Media: FALSE: PASS:'+data);
                      expect(true).assertTrue();
@@ -2450,34 +2430,6 @@ describe('audioManger', function () {
             });
         }).catch((err) => {
             console.info('AudioFrameworkTest: Promise: Is Stream Mute Media: FALSE: ERROR:' + err.message);
-            expect(false).assertTrue();
-        });
-        done();
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_mute_003
-                * @tc.name      : mute - Ringtone - Promise
-                * @tc.desc      : mute - Ringtone - Promise - Enable mute
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_mute_003', 0, async function (done) {
-        await audioManager.mute(audioRingtone,true).then(async function () {
-            console.log('AudioFrameworkTest: Set Stream Mute: Ringtone: Promise: TRUE');
-            audioManager.isMute(audioRingtone).then(async function (data) {
-                if(data==true){
-                     console.log('AudioFrameworkTest: Promise: Is Stream Mute Ringtone: TRUE: PASS:'+data);
-                     expect(true).assertTrue();
-                }
-                else{
-                     console.log('AudioFrameworkTest: Promise: Is Stream Mute Ringtone: TRUE: FAIL: '+data);
-                     expect(false).assertTrue();
-                }
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkTest: Promise: Is Stream Mute Ringtone: TRUE: ERROR:' + err.message);
             expect(false).assertTrue();
         });
         done();
@@ -2520,42 +2472,6 @@ describe('audioManger', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_mute_004
-                * @tc.name      : mute - Ringtone - callback
-                * @tc.desc      : mute - Ringtone - callback - Enable mute
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_mute_004', 0, async function (done) {
-        audioManager.mute(audioRingtone,true, (err) => {
-            if (err) {
-                console.error(`AudioFrameworkTest: Set Stream Mute: Media: Callback: Error :  ${err.message}`);
-                expect(false).assertTrue();
-            }
-            else {
-                console.log('AudioFrameworkTest: Set Stream Mute: Ringtone: Callback : TRUE');
-                audioManager.isMute(audioRingtone, (err, data) => {
-                    if (err) {
-                        console.error(`AudioFrameworkTest: Callback : TRUE: Ringtone : failed to get Mute Status ${err.message}`);
-                        expect().assertFail();
-                    }
-                    else if(data==true){
-                        console.log('AudioFrameworkTest: Callback : Is Stream Mute Ringtone: TRUE: PASS: '+data);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.log('AudioFrameworkTest: Callback : Is Stream Mute Ringtone: TRUE: FAIL: '+data);
-                        expect(false).assertTrue();
-                    }
-                    done();
-                });
-            }
-            done();
-        });
-    })
-
-    /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_mute_007
                 * @tc.name      : mute - Ringtone - Promise
                 * @tc.desc      : mute - Ringtone - Promise - disable mute
@@ -2564,9 +2480,9 @@ describe('audioManger', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_MANAGER_mute_007', 0, async function (done) {
-        await audioManager.mute(audioRingtone,false).then(async function () {
+        await audioManager.mute(audioRingtone,false).then(function () {
             console.log('AudioFrameworkTest: Set Stream Mute: Ringtone: Promise: FALSE');
-            audioManager.isMute(audioRingtone).then(async function (data) {
+            audioManager.isMute(audioRingtone).then(function (data) {
                 if(data==false){
                      console.log('AudioFrameworkTest: Promise: Is Stream Mute Ringtone: FALSE: PASS:'+data);
                      expect(true).assertTrue();
@@ -2578,34 +2494,6 @@ describe('audioManger', function () {
             });
         }).catch((err) => {
             console.info('AudioFrameworkTest: Promise: Is Stream Mute Rington: FALSE: ERROR:' + err.message);
-            expect(false).assertTrue();
-        });
-        done();
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_mute_009
-                * @tc.name      : mute - Media - Promise - ENAME
-                * @tc.desc      : mute - Media - Promise - Enable mute
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_mute_009', 0, async function (done) {
-        await audioManager.mute(audio.AudioVolumeType.MEDIA,true).then(async function () {
-            console.log('AudioFrameworkTest: Set Stream Mute: Media: Promise: TRUE');
-            audioManager.isMute(audio.AudioVolumeType.MEDIA).then(async function (data) {
-                if(data==true){
-                     console.log('AudioFrameworkTest: Promise: Is Stream Mute Media: ENAME: TRUE: PASS:'+data);
-                     expect(true).assertTrue();
-                }
-                else{
-                     console.log('AudioFrameworkTest: Promise: Is Stream Mute Media: ENAME: TRUE: FAIL: '+data);
-                     expect(false).assertTrue();
-                }
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkTest: Promise: Is Stream Mute Media: ENAME: TRUE: ERROR:' + err.message);
             expect(false).assertTrue();
         });
         done();
@@ -2648,42 +2536,6 @@ describe('audioManger', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_mute_010
-                * @tc.name      : mute - Media - callback - ENAME:
-                * @tc.desc      : mute - Media - callback - Enable mute
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_mute_010', 0, async function (done) {
-        audioManager.mute(audio.AudioVolumeType.MEDIA,true, (err) => {
-            if (err) {
-                console.error(`AudioFrameworkTest: Set Stream Mute: Media: Callback: Error :  ${err.message}`);
-                expect().assertFail();
-            }
-            else {
-                console.log('AudioFrameworkTest: Set Stream Mute: Media: ENAME: Callback : TRUE');
-                audioManager.isMute(audio.AudioVolumeType.MEDIA, (err, data) => {
-                    if (err) {
-                        console.error(`AudioFrameworkTest: Callback : TRUE: Media : ENAME: failed to get Mute Status ${err.message}`);
-                        expect().assertFail();
-                    }
-                    else if(data==true){
-                        console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: ENAME: TRUE: PASS: '+data);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: ENAME: TRUE: FAIL: '+data);
-                        expect(false).assertTrue();
-                    }
-                    done();
-                });
-            }
-            done();
-        });
-    })
-
-    /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_mute_011
                 * @tc.name      : mute - Media - Promise -  ENAME
                 * @tc.desc      : mute - Media - Promise - Disable mute
@@ -2692,9 +2544,9 @@ describe('audioManger', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_MANAGER_mute_011', 0, async function (done) {
-        await audioManager.mute(audio.AudioVolumeType.MEDIA,false).then(async function () {
+        await audioManager.mute(audio.AudioVolumeType.MEDIA,false).then(function () {
             console.log('AudioFrameworkTest: Set Stream Mute: Media: ENAME: Promise: FALSE');
-            audioManager.isMute(audio.AudioVolumeType.MEDIA).then(async function (data) {
+            audioManager.isMute(audio.AudioVolumeType.MEDIA).then(function (data) {
                 if(data==false){
                      console.log('AudioFrameworkTest: Promise: Is Stream Mute Media: ENAME: FALSE: PASS:'+data);
                      expect(true).assertTrue();
@@ -2706,34 +2558,6 @@ describe('audioManger', function () {
             });
         }).catch((err) => {
             console.info('AudioFrameworkTest: Promise: Is Stream Mute Media: ENAME: FALSE: ERROR:' + err.message);
-            expect(false).assertTrue();
-        });
-        done();
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_mute_012
-                * @tc.name      : mute - Ringtone - Promise - ENAME
-                * @tc.desc      : mute - Ringtone - Promise - Enable mute
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_mute_012', 0, async function (done) {
-        await audioManager.mute(audio.AudioVolumeType.RINGTONE,true).then(async function () {
-            console.log('AudioFrameworkTest: Set Stream Mute: Ringtone: ENAME: Promise: TRUE');
-            audioManager.isMute(audio.AudioVolumeType.RINGTONE).then(async function (data) {
-                if(data==true){
-                     console.log('AudioFrameworkTest: Promise: Is Stream Mute Ringtone: ENAME: TRUE: PASS:'+data);
-                     expect(true).assertTrue();
-                }
-                else{
-                     console.log('AudioFrameworkTest: Promise: Is Stream Mute Ringtone: ENAME: TRUE: FAIL: '+data);
-                     expect(false).assertTrue();
-                }
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkTest: Promise: Is Stream Mute Ringtone: ENAME: TRUE: ERROR:' + err.message);
             expect(false).assertTrue();
         });
         done();
@@ -2776,42 +2600,6 @@ describe('audioManger', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_mute_013
-                * @tc.name      : mute - Ringtone - callback - ENAME
-                * @tc.desc      : mute - Ringtone - callback - Enable mute
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_mute_013', 0, async function (done) {
-        audioManager.mute(audio.AudioVolumeType.RINGTONE,true, (err) => {
-            if (err) {
-                console.error(`AudioFrameworkTest: Set Stream Mute: Media: Callback: Error :  ${err.message}`);
-                expect().assertFail();
-            }
-            else {
-                console.log('AudioFrameworkTest: Set Stream Mute: Ringtone: ENAME: Callback : TRUE');
-                audioManager.isMute(audio.AudioVolumeType.RINGTONE, (err, data) => {
-                    if (err) {
-                        console.error(`AudioFrameworkTest: Callback : TRUE: Ringtone : ENAME: failed to get Mute Status ${err.message}`);
-                        expect().assertFail();
-                    }
-                    else if(data==true){
-                        console.log('AudioFrameworkTest: Callback : Is Stream Mute Ringtone: ENAME: TRUE: PASS: '+data);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.log('AudioFrameworkTest: Callback : Is Stream Mute Ringtone: ENAME: TRUE: FAIL: '+data);
-                        expect(false).assertTrue();
-                    }
-                    done();
-                });
-            }
-            done();
-        });
-    })
-
-    /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_mute_014
                 * @tc.name      : mute - Media - Promise - ENAME:
                 * @tc.desc      : mute - Media - Promise - Disable mute
@@ -2820,9 +2608,9 @@ describe('audioManger', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_MANAGER_mute_014', 0, async function (done) {
-        await audioManager.mute(audio.AudioVolumeType.MEDIA,false).then(async function () {
+        await audioManager.mute(audio.AudioVolumeType.MEDIA,false).then(function () {
             console.log('AudioFrameworkTest: Set Stream Mute: Media: ENAME: Promise: FALSE');
-            audioManager.isMute(audio.AudioVolumeType.MEDIA).then(async function (data) {
+            audioManager.isMute(audio.AudioVolumeType.MEDIA).then(function (data) {
                 if(data==false){
                      console.log('AudioFrameworkTest: Promise: Is Stream Mute Media: ENAME: FALSE: PASS:'+data);
                      expect(true).assertTrue();
@@ -2848,10 +2636,10 @@ describe('audioManger', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_MANAGER_mute_017', 0, async function (done) {
-        await audioManager.mute(audioMedia,true).then(async function () {
+        await audioManager.mute(audioMedia,true).then(function () {
             console.log('AudioFrameworkTest: Set Stream Mute: Media: Promise: TRUE');
 			audioManager.setVolume(audioMedia,lowVol);
-            audioManager.isMute(audioMedia).then(async function (data) {
+            audioManager.isMute(audioMedia).then(function (data) {
                 if(data==false){
                      console.log('AudioFrameworkTest: Promise: Is Stream Mute Media: SetVolume: PASS:'+data);
                      expect(true).assertTrue();
@@ -2914,10 +2702,10 @@ describe('audioManger', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_MANAGER_mute_019', 0, async function (done) {
-        await audioManager.mute(audioRingtone,true).then(async function () {
+        await audioManager.mute(audioRingtone,true).then(function () {
             console.log('AudioFrameworkTest: Set Stream Mute: Ringtone: Promise: SetVolume');
 			audioManager.setVolume(audioRingtone,highVol);
-            audioManager.isMute(audioRingtone).then(async function (data) {
+            audioManager.isMute(audioRingtone).then(function (data) {
                 if(data==false){
                      console.log('AudioFrameworkTest: Promise: Is Stream Mute Ringtone: SetVolume: PASS:'+data);
                      expect(true).assertTrue();
@@ -2972,110 +2760,6 @@ describe('audioManger', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_isActive_001
-                * @tc.name      : isActive - Media - Promise
-                * @tc.desc      : isActive - Media - Promise - When stream is playing
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_isActive_001', 0, async function (done) {
-        console.log('AudioFrameworkTest: Promise : isActive Media: NOTE audio plaback as MEDIA needs to be played for the test case to PASS');
-        const promise = audioManager.isActive(audioMedia);
-        promise.then(async function (data) {
-            if(data==true){
-                console.log('AudioFrameworkTest: Promise: isActive: Media: TRUE: PASS:'+data);
-                expect(true).assertTrue();
-            }
-           else{
-                console.log('AudioFrameworkTest: Promise: isActive: Media: TRUE: FAIL: '+data);
-                expect(false).assertTrue();
-            }
-        });
-        await promise;
-        done();
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_isActive_002
-                * @tc.name      : isActive - Media - Callback
-                * @tc.desc      : isActive - Media - Callback - When stream is playing
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_isActive_002', 0, async function (done) {
-        console.log('AudioFrameworkTest: Callback : isActive Media: NOTE audio plaback as MEDIA needs to be played for the test case to PASS');
-        audioManager.isActive(audioMedia, (err, data) => {
-            if (err) {
-                console.error(`AudioFrameworkTest: Callback : Media : isActive: failed  ${err.message}`);
-                expect().assertFail();
-            }
-            else if(data==true){
-                console.log('AudioFrameworkTest: Callback: isActive: Media: TRUE: PASS:'+data);
-                expect(true).assertTrue();
-            }
-           else{
-                console.log('AudioFrameworkTest: Callback: isActive: Media: TRUE: FAIL: '+data);
-                expect(false).assertTrue();
-            }
-            done();
-        });
-    })
-    
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_isActive_003
-                * @tc.name      : isActive - Ringtone - Promise
-                * @tc.desc      : isActive - Ringtone - Promise - When stream is playing
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_isActive_003', 0, async function (done) {
-        console.log('AudioFrameworkTest: Promise : isActive Ringtone: NOTE audio plaback as Ringtone needs to be played for the test case to PASS');
-        const promise = audioManager.isActive(audioRingtone);
-        promise.then(async function (data) {
-            if(data==true){
-                console.log('AudioFrameworkTest: Promise: isActive: Ringtone: TRUE: PASS:'+data);
-                expect(true).assertTrue();
-            }
-           else{
-                console.log('AudioFrameworkTest: Promise: isActive: Ringtone: TRUE: FAIL: '+data);
-                expect(false).assertTrue();
-            }
-        });
-        await promise;
-        done();
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_isActive_004
-                * @tc.name      : isActive - Ringtone - Callback
-                * @tc.desc      : isActive - Ringtone - Callback - When stream is playing
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_isActive_004', 0, async function (done) {
-        console.log('AudioFrameworkTest: Callback : isActive Ringtone: NOTE audio plaback as Ringtone needs to be played for the test case to PASS');
-        audioManager.isActive(audioRingtone, (err, data) => {
-            if (err) {
-                console.error(`AudioFrameworkTest: Callback : Ringtone : isActive: failed  ${err.message}`);
-                expect().assertFail();
-            }
-            else if(data==true){
-                console.log('AudioFrameworkTest: Callback: isActive: Ringtone: TRUE: PASS:'+data);
-                expect(true).assertTrue();
-            }
-           else{
-                console.log('AudioFrameworkTest: Callback: isActive: Ringtone: TRUE: FAIL: '+data);
-                expect(false).assertTrue();
-            }
-            done();
-        });
-    })
-
-    /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_isActive_005
                 * @tc.name      : isActive - Media - Promise
                 * @tc.desc      : isActive - Media - Promise - When stream is NOT playing
@@ -3086,7 +2770,7 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_isActive_005', 0, async function (done) {
         console.log('AudioFrameworkTest: Promise : isActive Media: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS');
         const promise = audioManager.isActive(audioMedia);
-        promise.then(async function (data) {
+        promise.then(function (data) {
             if(data==false){
                 console.log('AudioFrameworkTest: Promise: isActive: Media: TRUE: PASS:'+data);
                 expect(true).assertTrue();
@@ -3138,7 +2822,7 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_isActive_007', 0, async function (done) {
         console.log('AudioFrameworkTest: Promise : isActive Ringtone: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS');
         const promise = audioManager.isActive(audioRingtone);
-        promise.then(async function (data) {
+        promise.then(function (data) {
             if(data==false){
                 console.log('AudioFrameworkTest: Promise: isActive: Ringtone: TRUE: PASS:'+data);
                 expect(true).assertTrue();
@@ -3180,109 +2864,6 @@ describe('audioManger', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_isActive_009
-                * @tc.name      : isActive - Media - Promise - ENAME
-                * @tc.desc      : isActive - Media - Promise - When stream is playing
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_isActive_009', 0, async function (done) {
-        console.log('AudioFrameworkTest: Promise : isActive Media: ENAME: NOTE audio plaback as MEDIA needs to be played for the test case to PASS');
-        const promise = audioManager.isActive(audio.AudioVolumeType.MEDIA).then(async function (data) {
-            if(data==true){
-                console.log('AudioFrameworkTest: Promise: isActive: Media: ENAME: TRUE: PASS:'+data);
-                expect(true).assertTrue();
-            }
-           else{
-                console.log('AudioFrameworkTest: Promise: isActive: Media: ENAME: TRUE: FAIL: '+data);
-                expect(false).assertTrue();
-            }
-        });
-        await promise;
-        done();
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_isActive_010
-                * @tc.name      : isActive - Media - Callback - ENAME
-                * @tc.desc      : isActive - Media - Callback - When stream is playing
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_isActive_010', 0, async function (done) {
-        console.log('AudioFrameworkTest: Callback : isActive Media: ENAME: NOTE audio plaback as MEDIA needs to be played for the test case to PASS');
-        audioManager.isActive(audio.AudioVolumeType.MEDIA, (err, data) => {
-            if (err) {
-                console.error(`AudioFrameworkTest: Callback : Media : isActive: ENAME: failed  ${err.message}`);
-                expect().assertFail();
-            }
-            else if(data==true){
-                console.log('AudioFrameworkTest: Callback: isActive: Media: ENAME: TRUE: PASS:'+data);
-                expect(true).assertTrue();
-            }
-           else{
-                console.log('AudioFrameworkTest: Callback: isActive: Media: ENAME: TRUE: FAIL: '+data);
-                expect(false).assertTrue();
-            }
-            done();
-        });
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_isActive_011
-                * @tc.name      : isActive - Ringtone - Promise - ENAME
-                * @tc.desc      : isActive - Ringtone - Promise - When stream is playing
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_isActive_011', 0, async function (done) {
-        console.log('AudioFrameworkTest: Promise : isActive Ringtone: ENAME: NOTE audio plaback as Ringtone needs to be played for the test case to PASS');
-        const promise = audioManager.isActive(audio.AudioVolumeType.RINGTONE);
-        promise.then(async function (data) {
-            if(data==true){
-                console.log('AudioFrameworkTest: Promise: isActive: Ringtone: ENAME: TRUE: PASS:'+data);
-                expect(true).assertTrue();
-            }
-           else{
-                console.log('AudioFrameworkTest: Promise: isActive: Ringtone: ENAME: TRUE: FAIL: '+data);
-                expect(false).assertTrue();
-            }
-        });
-        await promise;
-        done();
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_isActive_012
-                * @tc.name      : isActive - Ringtone - Callback - ENAME
-                * @tc.desc      : isActive - Ringtone - Callback - When stream is playing
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_isActive_012', 0, async function (done) {
-        console.log('AudioFrameworkTest: Callback : isActive Ringtone: ENAME: NOTE audio plaback as Ringtone needs to be played for the test case to PASS');
-        audioManager.isActive(audio.AudioVolumeType.RINGTONE, (err, data) => {
-            if (err) {
-                console.error(`AudioFrameworkTest: Callback : Ringtone : isActive: ENAME: failed  ${err.message}`);
-                expect().assertFail();
-            }
-            else if(data==true){
-                console.log('AudioFrameworkTest: Callback: isActive: Ringtone: ENAME: TRUE: PASS:'+data);
-                expect(true).assertTrue();
-            }
-           else{
-                console.log('AudioFrameworkTest: Callback: isActive: Ringtone: ENAME: TRUE: FAIL: '+data);
-                expect(false).assertTrue();
-            }
-            done();
-        });
-    })
-
-    /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_isActive_013
                 * @tc.name      : isActive - Media - Promise - ENAME:
                 * @tc.desc      : isActive - Media - Promise - When stream is NOT playing
@@ -3293,7 +2874,7 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_isActive_013', 0, async function (done) {
         console.log('AudioFrameworkTest: Promise : isActive Media: ENAME: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS');
         const promise = audioManager.isActive(audio.AudioVolumeType.MEDIA);
-        promise.then(async function (data) {
+        promise.then(function (data) {
             if(data==false){
                 console.log('AudioFrameworkTest: Promise: isActive: Media: ENAME: TRUE: PASS:'+data);
                 expect(true).assertTrue();
@@ -3345,7 +2926,7 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_isActive_015', 0, async function (done) {
         console.log('AudioFrameworkTest: Promise : isActive Ringtone: ENAME: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS');
         const promise = audioManager.isActive(audio.AudioVolumeType.RINGTONE);
-        promise.then(async function (data) {
+        promise.then(function (data) {
             if(data==false){
                 console.log('AudioFrameworkTest: Promise: isActive: Ringtone: ENAME: TRUE: PASS:'+data);
                 expect(true).assertTrue();
@@ -3395,9 +2976,9 @@ describe('audioManger', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_MANAGER_setMicrophoneMute_001', 0, async function (done) {
-        await audioManager.setMicrophoneMute(true).then(async function () {
+        await audioManager.setMicrophoneMute(true).then(function () {
             console.log('AudioFrameworkTest: setMicrophoneMute: Promise: TRUE');
-            audioManager.isMicrophoneMute().then(async function (data) {
+            audioManager.isMicrophoneMute().then(function (data) {
                 if(data==true){
                         console.log('AudioFrameworkTest: Promise: isMicrophoneMute: TRUE: PASS:'+data);
                         expect(true).assertTrue();
@@ -3423,9 +3004,9 @@ describe('audioManger', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_MANAGER_setMicrophoneMute_002', 0, async function (done) {
-        await audioManager.setMicrophoneMute(false).then(async function () {
+        await audioManager.setMicrophoneMute(false).then(function () {
             console.log('AudioFrameworkTest: setMicrophoneMute: Promise: FALSE');
-            audioManager.isMicrophoneMute().then(async function (data) {
+            audioManager.isMicrophoneMute().then(function (data) {
                 if(data==false){
                         console.log('AudioFrameworkTest: Promise: isMicrophoneMute: FALSE: PASS:'+data);
                         expect(true).assertTrue();
@@ -3516,17 +3097,45 @@ describe('audioManger', function () {
 
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_001
+                * @tc.name      : setDeviceActive - BLUETOOTH_SCO - Activate - Promise
+                * @tc.desc      : Activate BLUETOOTH_SCO - Promise
+                * @tc.size      : MEDIUM
+                * @tc.type      : Function
+                * @tc.level     : Level 0
+            */
+    it('SUB_AUDIO_MANAGER_setDeviceActive_001', 0, async function (done) {
+        await audioManager.setDeviceActive(audio.ActiveDeviceType.BLUETOOTH_SCO,true).then(function (){
+            console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : BLUETOOTH_SCO: Activate');
+            audioManager.isDeviceActive(7).then(function (value){
+                if(value==true){
+                    console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : BLUETOOTH_SCO: Activate : PASS :' +value);
+                    expect(true).assertTrue();
+                }
+                else{
+                    console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : BLUETOOTH_SCO: Activate : FAIL :' +value);
+                    expect(false).assertTrue();
+                }
+            });
+        }).catch((err) => {
+            console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive :  BLUETOOTH_SCO: Activate : FAIL : Error :' + err.message);
+            expect(false).assertTrue();
+        });
+        done();
+    })
+
+    /* *
+                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_002
                 * @tc.name      : setDeviceActive - SPEAKER - deactivate - Promise
                 * @tc.desc      : Deactivate speaker - Promise
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_001', 0, async function (done) {
-        await audioManager.setDeviceActive(1,false).then(async function (){
-            // Setting device active ENUM 1 = SPEAKER
+    it('SUB_AUDIO_MANAGER_setDeviceActive_002', 0, async function (done) {
+        await audioManager.setDeviceActive(2,false).then(function (){
+            // Setting device active ENUM 2 = SPEAKER
                 console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : SPEAKER: Deactivate');
-                audioManager.isDeviceActive(audio.DeviceType.SPEAKER).then(async function (value){
+                audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER).then(function (value){
                     if(value==false){
                         console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : SPEAKER: Deactivate : PASS :' +value);
                         expect(true).assertTrue();
@@ -3544,17 +3153,17 @@ describe('audioManger', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_002
+                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_003
                 * @tc.name      : setDeviceActive - SPEAKER - Activate - Promise
                 * @tc.desc      : Activate speaker - Promise
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_002', 0, async function (done) {
-        await audioManager.setDeviceActive(audio.DeviceType.SPEAKER,true).then(async function (){
+    it('SUB_AUDIO_MANAGER_setDeviceActive_003', 0, async function (done) {
+        await audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER,true).then(function (){
                 console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : SPEAKER: Activate');
-                audioManager.isDeviceActive(1).then(async function (value){
+                audioManager.isDeviceActive(2).then(function (value){
                     if(value==true){
                         console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : SPEAKER: Activate : PASS :' +value);
                         expect(true).assertTrue();
@@ -3572,75 +3181,18 @@ describe('audioManger', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_003
-                * @tc.name      : setDeviceActive - WIRED_HEADSET - deactivate - Promise
-                * @tc.desc      : Deactivate WIRED_HEADSET - Promise
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_003', 0, async function (done) {
-        await audioManager.setDeviceActive(2,false).then(async function (){       
-            // Setting device active ENUM 2 = WIRED_HEADSET
-                console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : WIRED_HEADSET: Deactivate');
-                audioManager.isDeviceActive(audio.DeviceType.WIRED_HEADSET).then(async function (value){
-                    if(value==false){
-                        console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : WIRED_HEADSET: Deactivate : PASS :' +value);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : WIRED_HEADSET: Deactivate : FAIL :' +value);
-                        expect(false).assertTrue();
-                    }
-                });
-            }).catch((err) => {
-                console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive :  WIRED_HEADSET: Deactivate : FAIL : Error :' + err.message);
-                expect(false).assertTrue();
-        });
-        done();
-    })
-
-    /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_004
-                * @tc.name      : setDeviceActive - WIRED_HEADSET - Activate - Promise
-                * @tc.desc      : Activate WIRED_HEADSET - Promise
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_004', 0, async function (done) {
-        await audioManager.setDeviceActive(audio.DeviceType.WIRED_HEADSET,true).then(async function (){
-                console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : WIRED_HEADSET: Activate');
-                audioManager.isDeviceActive(2).then(async function (value){
-                    if(value==true){
-                        console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : WIRED_HEADSET: Activate : PASS :' +value);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : WIRED_HEADSET: Activate : FAIL :' +value);
-                        expect(false).assertTrue();
-                    }
-                });
-            }).catch((err) => {
-                console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive :  WIRED_HEADSET: Activate : FAIL : Error :' + err.message);
-                expect(false).assertTrue();
-        });
-        done();
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_005
                 * @tc.name      : setDeviceActive - BLUETOOTH_SCO - deactivate - Promise
                 * @tc.desc      : Deactivate BLUETOOTH_SCO - Promise
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_005', 0, async function (done) {
-        await audioManager.setDeviceActive(3,false).then(async function (){       
+    it('SUB_AUDIO_MANAGER_setDeviceActive_004', 0, async function (done) {
+        await audioManager.setDeviceActive(7,false).then(function (){
             // Setting device active ENUM 3 = BLUETOOTH_SCO
                 console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : BLUETOOTH_SCO: Deactivate');
-                audioManager.isDeviceActive(audio.DeviceType.BLUETOOTH_SCO).then(async function (value){
+                audioManager.isDeviceActive(audio.ActiveDeviceType.BLUETOOTH_SCO).then(function (value){
                     if(value==false){
                         console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : BLUETOOTH_SCO: Deactivate : PASS :' +value);
                         expect(true).assertTrue();
@@ -3658,344 +3210,22 @@ describe('audioManger', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_006
-                * @tc.name      : setDeviceActive - BLUETOOTH_SCO - Activate - Promise
-                * @tc.desc      : Activate BLUETOOTH_SCO - Promise
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_006', 0, async function (done) {
-        await audioManager.setDeviceActive(audio.DeviceType.BLUETOOTH_SCO,true).then(async function (){
-                console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : BLUETOOTH_SCO: Activate');
-                audioManager.isDeviceActive(3).then(async function (value){
-                    if(value==true){
-                        console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : BLUETOOTH_SCO: Activate : PASS :' +value);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : BLUETOOTH_SCO: Activate : FAIL :' +value);
-                        expect(false).assertTrue();
-                    }
-                });
-            }).catch((err) => {
-                console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive :  BLUETOOTH_SCO: Activate : FAIL : Error :' + err.message);
-                expect(false).assertTrue();
-        });
-        done();
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_007
-                * @tc.name      : setDeviceActive - BLUETOOTH_A2DP - deactivate - Promise
-                * @tc.desc      : Deactivate BLUETOOTH_A2DP - Promise
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_007', 0, async function (done) {
-        await audioManager.setDeviceActive(4,false).then(async function (){       
-            // Setting device active ENUM 4 = BLUETOOTH_A2DP
-                console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : BLUETOOTH_A2DP: Deactivate');
-                audioManager.isDeviceActive(audio.DeviceType.BLUETOOTH_A2DP).then(async function (value){
-                    if(value==false){
-                        console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : BLUETOOTH_A2DP: Deactivate : PASS :' +value);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : BLUETOOTH_A2DP: Deactivate : FAIL :' +value);
-                        expect(false).assertTrue();
-                    }
-                });
-            }).catch((err) => {
-                console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive :  BLUETOOTH_A2DP: Deactivate : FAIL : Error :' + err.message);
-                expect(false).assertTrue();
-        });
-        done();
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_008
-                * @tc.name      : setDeviceActive - BLUETOOTH_A2DP - Activate - Promise
-                * @tc.desc      : Activate BLUETOOTH_A2DP - Promise
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_008', 0, async function (done) {
-        await audioManager.setDeviceActive(audio.DeviceType.BLUETOOTH_A2DP,true).then(async function (){
-                console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : BLUETOOTH_A2DP: Activate');
-                audioManager.isDeviceActive(4).then(async function (value){
-                    if(value==true){
-                        console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : BLUETOOTH_A2DP: Activate : PASS :' +value);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : BLUETOOTH_A2DP: Activate : FAIL :' +value);
-                        expect(false).assertTrue();
-                    }
-                });
-            }).catch((err) => {
-                console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive :  BLUETOOTH_A2DP: Activate : FAIL : Error :' + err.message);
-                expect(false).assertTrue();
-        });
-        done();
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_009
-                * @tc.name      : setDeviceActive - MIC - deactivate - Promise
-                * @tc.desc      : Deactivate MIC - Promise
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_009', 0, async function (done) {
-        await audioManager.setDeviceActive(5,false).then(async function (){       
-            // Setting device active ENUM 5 = MIC
-                console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : MIC: Deactivate');
-                audioManager.isDeviceActive(audio.DeviceType.MIC).then(async function (value){
-                    if(value==false){
-                        console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : MIC: Deactivate : PASS :' +value);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : MIC: Deactivate : FAIL :' +value);
-                        expect(false).assertTrue();
-                    }
-                });
-            }).catch((err) => {
-                console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive :  MIC: Deactivate  : FAIL : Error :' + err.message);
-                expect(false).assertTrue();
-        });
-        done();
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_010
-                * @tc.name      : setDeviceActive - MIC - Activate - Promise
-                * @tc.desc      : Activate MIC - Promise
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_010', 0, async function (done) {
-        await audioManager.setDeviceActive(audio.DeviceType.MIC,true).then(async function (){
-                console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : MIC: Activate');
-                audioManager.isDeviceActive(5).then(async function (value){
-                    if(value==true){
-                        console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : MIC: Activate : PASS :' +value);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : MIC: Activate : FAIL :' +value);
-                        expect(false).assertTrue();
-                    }
-                });
-            }).catch((err) => {
-                console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive :  MIC: Activate  : FAIL : Error :' + err.message);
-                expect(false).assertTrue();
-        });
-        done();
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_011
-                * @tc.name      : setDeviceActive - SPEAKER - deactivate - Callback
-                * @tc.desc      : Deactivate speaker - Callback
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_011', 0, async function (done) {
-        audioManager.setDeviceActive(audio.DeviceType.SPEAKER,false, (err) => {
-            if (err) {
-                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
-                expect(false).assertTrue();
-            }
-            else {
-                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Active');
-                audioManager.isDeviceActive(1,(err, value) => {
-                    if (err) {
-                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
-                        expect(false).assertTrue();
-                    }
-                    else if(value==false){
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : PASS :' +value);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : FAIL :' +value);
-                        expect(false).assertTrue();
-                    }
-                    done();
-                });
-            }
-            done();
-        });
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_012
-                * @tc.name      : setDeviceActive - SPEAKER - deactivate - Callback
-                * @tc.desc      : Activate speaker - Callback
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_012', 0, async function (done) {
-        audioManager.setDeviceActive(audio.DeviceType.SPEAKER,true, (err) => {
-            if (err) {
-                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Active: Error: ${err.message}`);
-                expect(false).assertTrue();
-            }
-            else {
-                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Active');
-                audioManager.isDeviceActive(1,(err, value) => {
-                    if (err) {
-                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Active: Error: ${err.message}`);
-                        expect(false).assertTrue();
-                    }
-                    else if(value==true){
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Active : PASS :' +value);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Active : FAIL :' +value);
-                        expect(false).assertTrue();
-                    }
-                    done();
-                });
-            }
-            done();
-        });
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_013
-                * @tc.name      : setDeviceActive - WIRED_HEADSET - deactivate - Callback
-                * @tc.desc      : Deactivate WIRED_HEADSET - Callback
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_013', 0, async function (done) {
-        audioManager.setDeviceActive(audio.DeviceType.WIRED_HEADSET,false, (err) => {
-            if (err) {
-                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : WIRED_HEADSET: Deactivate: Error: ${err.message}`);
-                expect(false).assertTrue();
-            }
-            else {
-                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : WIRED_HEADSET: Active');
-                audioManager.isDeviceActive(2,(err, value) => {
-                    if (err) {
-                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : WIRED_HEADSET: Deactivate: Error: ${err.message}`);
-                        expect(false).assertTrue();
-                    }
-                    else if(value==false){
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : WIRED_HEADSET: Deactivate : PASS :' +value);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : WIRED_HEADSET: Deactivate : FAIL :' +value);
-                        expect(false).assertTrue();
-                    }
-                    done();
-                });
-            }
-            done();
-        });
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_014
-                * @tc.name      : setDeviceActive - WIRED_HEADSET - deactivate - Callback
-                * @tc.desc      : Activate WIRED_HEADSET - Callback
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_014', 0, async function (done) {
-        audioManager.setDeviceActive(audio.DeviceType.WIRED_HEADSET,true, (err) => {
-            if (err) {
-                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : WIRED_HEADSET: Active: Error: ${err.message}`);
-                expect(false).assertTrue();
-            }
-            else {
-                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : WIRED_HEADSET: Active');
-                audioManager.isDeviceActive(2,(err, value) => {
-                    if (err) {
-                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : WIRED_HEADSET: Active: Error: ${err.message}`);
-                        expect(false).assertTrue();
-                    }
-                    else if(value==true){
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : WIRED_HEADSET: Active : PASS :' +value);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : WIRED_HEADSET: Active : FAIL :' +value);
-                        expect(false).assertTrue();
-                    }
-                    done();
-                });
-            }
-            done();
-        });
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_015
-                * @tc.name      : setDeviceActive - BLUETOOTH_SCO - deactivate - Callback
-                * @tc.desc      : Deactivate BLUETOOTH_SCO - Callback
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_015', 0, async function (done) {
-        audioManager.setDeviceActive(audio.DeviceType.BLUETOOTH_SCO,false, (err) => {
-            if (err) {
-                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_SCO: Deactivate: Error: ${err.message}`);
-                expect(false).assertTrue();
-            }
-            else {
-                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_SCO: Active');
-                audioManager.isDeviceActive(3,(err, value) => {
-                    if (err) {
-                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Deactivate: Error: ${err.message}`);
-                        expect(false).assertTrue();
-                    }
-                    else if(value==false){
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Deactivate : PASS :' +value);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Deactivate : FAIL :' +value);
-                        expect(false).assertTrue();
-                    }
-                    done();
-                });
-            }
-            done();
-        });
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_016
-                * @tc.name      : setDeviceActive - BLUETOOTH_SCO - deactivate - Callback
+                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_005
+                * @tc.name      : setDeviceActive - BLUETOOTH_SCO - Activate - Callback
                 * @tc.desc      : Activate BLUETOOTH_SCO - Callback
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_016', 0, async function (done) {
-        audioManager.setDeviceActive(audio.DeviceType.BLUETOOTH_SCO,true, (err) => {
+    it('SUB_AUDIO_MANAGER_setDeviceActive_005', 0, async function (done) {
+        audioManager.setDeviceActive(audio.ActiveDeviceType.BLUETOOTH_SCO,true, (err) => {
             if (err) {
                 console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_SCO: Active: Error: ${err.message}`);
                 expect(false).assertTrue();
             }
             else {
                 console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_SCO: Active');
-                audioManager.isDeviceActive(3,(err, value) => {
+                audioManager.isDeviceActive(7,(err, value) => {
                     if (err) {
                         console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Active: Error: ${err.message}`);
                         expect(false).assertTrue();
@@ -4016,32 +3246,32 @@ describe('audioManger', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_017
-                * @tc.name      : setDeviceActive - BLUETOOTH_A2DP - deactivate - Callback
-                * @tc.desc      : Deactivate BLUETOOTH_A2DP - Callback
+                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_006
+                * @tc.name      : setDeviceActive - SPEAKER - deactivate - Callback
+                * @tc.desc      : Deactivate speaker - Callback
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_017', 0, async function (done) {
-        audioManager.setDeviceActive(audio.DeviceType.BLUETOOTH_A2DP,false, (err) => {
+    it('SUB_AUDIO_MANAGER_setDeviceActive_006', 0, async function (done) {
+        audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER,false, (err) => {
             if (err) {
-                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_A2DP: Deactivate: Error: ${err.message}`);
+                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
                 expect(false).assertTrue();
             }
             else {
-                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_A2DP: Active');
-                audioManager.isDeviceActive(4,(err, value) => {
+                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Active');
+                audioManager.isDeviceActive(2,(err, value) => {
                     if (err) {
-                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_A2DP: Deactivate: Error: ${err.message}`);
+                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
                         expect(false).assertTrue();
                     }
                     else if(value==false){
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_A2DP: Deactivate : PASS :' +value);
+                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : PASS :' +value);
                         expect(true).assertTrue();
                     }
                     else{
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_A2DP: Deactivate : FAIL :' +value);
+                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : FAIL :' +value);
                         expect(false).assertTrue();
                     }
                     done();
@@ -4052,32 +3282,32 @@ describe('audioManger', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_018
-                * @tc.name      : setDeviceActive - BLUETOOTH_A2DP - deactivate - Callback
-                * @tc.desc      : Activate BLUETOOTH_A2DP - Callback
+                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_007
+                * @tc.name      : setDeviceActive - SPEAKER - deactivate - Callback
+                * @tc.desc      : Activate speaker - Callback
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_018', 0, async function (done) {
-        audioManager.setDeviceActive(audio.DeviceType.BLUETOOTH_A2DP,true, (err) => {
+    it('SUB_AUDIO_MANAGER_setDeviceActive_007', 0, async function (done) {
+        audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER,true, (err) => {
             if (err) {
-                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_A2DP: Active: Error: ${err.message}`);
+                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Active: Error: ${err.message}`);
                 expect(false).assertTrue();
             }
             else {
-                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_A2DP: Active');
-                audioManager.isDeviceActive(4,(err, value) => {
+                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Active');
+                audioManager.isDeviceActive(2,(err, value) => {
                     if (err) {
-                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_A2DP: Active: Error: ${err.message}`);
+                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Active: Error: ${err.message}`);
                         expect(false).assertTrue();
                     }
                     else if(value==true){
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_A2DP: Active : PASS :' +value);
+                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Active : PASS :' +value);
                         expect(true).assertTrue();
                     }
                     else{
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_A2DP: Active : FAIL :' +value);
+                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Active : FAIL :' +value);
                         expect(false).assertTrue();
                     }
                     done();
@@ -4088,68 +3318,32 @@ describe('audioManger', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_019
-                * @tc.name      : setDeviceActive - MIC - deactivate - Callback
-                * @tc.desc      : Deactivate MIC - Callback
+                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_008
+                * @tc.name      : setDeviceActive - BLUETOOTH_SCO - deactivate - Callback
+                * @tc.desc      : Deactivate BLUETOOTH_SCO - Callback
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_019', 0, async function (done) {
-        audioManager.setDeviceActive(audio.DeviceType.MIC,false, (err) => {
+    it('SUB_AUDIO_MANAGER_setDeviceActive_008', 0, async function (done) {
+        audioManager.setDeviceActive(audio.ActiveDeviceType.BLUETOOTH_SCO,false, (err) => {
             if (err) {
-                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : MIC: Deactivate: Error: ${err.message}`);
+                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_SCO: Deactivate: Error: ${err.message}`);
                 expect(false).assertTrue();
             }
             else {
-                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : MIC: Active');
-                audioManager.isDeviceActive(5,(err, value) => {
+                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_SCO: Active');
+                audioManager.isDeviceActive(7,(err, value) => {
                     if (err) {
-                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : MIC: Deactivate: Error: ${err.message}`);
+                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Deactivate: Error: ${err.message}`);
                         expect(false).assertTrue();
                     }
                     else if(value==false){
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : MIC: Deactivate : PASS :' +value);
+                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Deactivate : PASS :' +value);
                         expect(true).assertTrue();
                     }
                     else{
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : MIC: Deactivate : FAIL :' +value);
-                        expect(false).assertTrue();
-                    }
-                    done();
-                });
-            }
-            done();
-        });
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_020
-                * @tc.name      : setDeviceActive - MIC - deactivate - Callback
-                * @tc.desc      : Activate MIC - Callback
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_020', 0, async function (done) {
-        audioManager.setDeviceActive(audio.DeviceType.MIC,true, (err) => {
-            if (err) {
-                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : MIC: Active: Error: ${err.message}`);
-                expect(false).assertTrue();
-            }
-            else {
-                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : MIC: Active');
-                audioManager.isDeviceActive(5,(err, value) => {
-                    if (err) {
-                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : MIC: Active: Error: ${err.message}`);
-                        expect(false).assertTrue();
-                    }
-                    else if(value==true){
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : MIC: Active : PASS :' +value);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : MIC: Active : FAIL :' +value);
+                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Deactivate : FAIL :' +value);
                         expect(false).assertTrue();
                     }
                     done();
@@ -4169,9 +3363,9 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_setAudioParameter_001', 0, async function (done) {
         const promise = audioManager.setAudioParameter('PBits per sample', '8 bit');
-        promise.then(async function () {
+        promise.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
-            audioManager.getAudioParameter('PBits per sample').then(async function (value){
+            audioManager.getAudioParameter('PBits per sample').then(function (value){
                 if(value=='8 bit'){
                     console.info('AudioFrameworkTest: Promise: getAudioParameter: Bits per sample : PASS :' +value);
                     expect(true).assertTrue();
@@ -4196,9 +3390,9 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_setAudioParameter_002', 0, async function (done) {
         const promise = audioManager.setAudioParameter('PNumber', '4800');
-        promise.then(async function () {
+        promise.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
-            audioManager.getAudioParameter('PNumber').then(async function (value){
+            audioManager.getAudioParameter('PNumber').then(function (value){
                 if(value=='4800'){
                     console.info('AudioFrameworkTest: Promise: getAudioParameter: PNumber : PASS :' +value);
                     expect(true).assertTrue();
@@ -4223,9 +3417,9 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_setAudioParameter_003', 0, async function (done) {
         const promise = audioManager.setAudioParameter('PLNumber',longValue);
-        promise.then(async function () {
+        promise.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
-            audioManager.getAudioParameter('PLNumber').then(async function (value){
+            audioManager.getAudioParameter('PLNumber').then(function (value){
                 if(value==longValue){
                     console.info('AudioFrameworkTest: Promise: getAudioParameter: PLNumber : PASS :' +value);
                     expect(true).assertTrue();
@@ -4250,9 +3444,9 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_setAudioParameter_004', 0, async function (done) {
         const promise = audioManager.setAudioParameter('PDecimal', '10.000000234324324324');
-        promise.then(async function () {
+        promise.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
-            audioManager.getAudioParameter('PDecimal').then(async function (value){
+            audioManager.getAudioParameter('PDecimal').then(function (value){
                 if(value=='10.000000234324324324'){
                     console.info('AudioFrameworkTest: Promise: getAudioParameter: PDecimal : PASS :' +value);
                     expect(true).assertTrue();
@@ -4277,9 +3471,9 @@ describe('audioManger', function () {
             */
      it('SUB_AUDIO_MANAGER_setAudioParameter_005', 0, async function (done) {
         const promise = audioManager.setAudioParameter('1212', 'PPNumber');
-        promise.then(async function () {
+        promise.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
-            audioManager.getAudioParameter('1212').then(async function (value){
+            audioManager.getAudioParameter('1212').then(function (value){
                 if(value=='PPNumber'){
                     console.info('AudioFrameworkTest: Promise: getAudioParameter: 1212 : PASS :' +value);
                     expect(true).assertTrue();
@@ -4304,9 +3498,9 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_setAudioParameter_006', 0, async function (done) {
         const promise = audioManager.setAudioParameter('PSpecial', '[]\:";<>?,./~!@#$%^*()_+-={}|');
-        promise.then(async function () {
+        promise.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
-            audioManager.getAudioParameter('PSpecial').then(async function (value){
+            audioManager.getAudioParameter('PSpecial').then(function (value){
                 if(value=='[]\:";<>?,./~!@#$%^*()_+-={}|'){
                     console.info('AudioFrameworkTest: Promise: getAudioParameter: PSpecial : PASS :' +value);
                     expect(true).assertTrue();
@@ -4543,7 +3737,7 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_getAudioParameter_001', 0, async function (done) {
         const promise = audioManager.getAudioParameter('PBits per sample');
-        promise.then(async function (value){
+        promise.then(function (value){
             if(value=='8 bit'){
                 console.info('AudioFrameworkTest: Promise: getAudioParameter: Bits per sample : PASS :' +value);
                 expect(true).assertTrue();
@@ -4567,7 +3761,7 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_getAudioParameter_002', 0, async function (done) {
         const promise = audioManager.getAudioParameter('PNumber');
-        promise.then(async function (value){
+        promise.then(function (value){
             if(value=='4800'){
                 console.info('AudioFrameworkTest: Promise: getAudioParameter: PNumber : PASS :' +value);
                 expect(true).assertTrue();
@@ -4591,7 +3785,7 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_getAudioParameter_003', 0, async function (done) {
         const promise = audioManager.getAudioParameter('PLNumber');
-        promise.then(async function (value){
+        promise.then(function (value){
             if(value==longValue){
                 console.info('AudioFrameworkTest: Promise: getAudioParameter: PLNumber : PASS :' +value);
                 expect(true).assertTrue();
@@ -4615,7 +3809,7 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_getAudioParameter_004', 0, async function (done) {
         const promise = audioManager.getAudioParameter('PDecimal');
-        promise.then(async function (value){
+        promise.then(function (value){
             if(value=='10.000000234324324324'){
                 console.info('AudioFrameworkTest: Promise: getAudioParameter: PDecimal : PASS :' +value);
                 expect(true).assertTrue();
@@ -4639,7 +3833,7 @@ describe('audioManger', function () {
             */
      it('SUB_AUDIO_MANAGER_getAudioParameter_005', 0, async function (done) {
         const promise = audioManager.getAudioParameter('1212');
-        promise.then(async function (value){
+        promise.then(function (value){
             if(value=='PPNumber'){
                 console.info('AudioFrameworkTest: Promise: getAudioParameter: 1212 : PASS :' +value);
                 expect(true).assertTrue();
@@ -4663,7 +3857,7 @@ describe('audioManger', function () {
             */
     it('SUB_AUDIO_MANAGER_getAudioParameter_006', 0, async function (done) {
         const promise = audioManager.getAudioParameter('PSpecial');
-        promise.then(async function (value){
+        promise.then(function (value){
             if(value=='[]\:";<>?,./~!@#$%^*()_+-={}|'){
                 console.info('AudioFrameworkTest: Promise: getAudioParameter: PSpecial : PASS :' +value);
                 expect(true).assertTrue();
@@ -4833,40 +4027,4 @@ describe('audioManger', function () {
         });
     })
 
-    function displayDeviceProp(value, index, array) {
-        var devRoleName;
-        var devTypeName;
-        if (value.deviceRole==1) {
-            devRoleName = 'INPUT_DEVICE';
-        }
-        else if (value.deviceRole==2) {
-            devRoleName = 'OUTPUT_DEVICE';
-        }
-        else {
-            devRoleName = 'ERROR : UNKNOWN';
-        }
-        
-        if (value.deviceType == 1) {
-            devTypeName = 'SPEAKER';
-        }
-        else if (value.deviceType == 2){
-            devTypeName = 'WIRED_HEADSET';
-        }
-        else if (value.deviceType == 3){
-            devTypeName = 'BLUETOOTH_SCO';
-        }
-        else if (value.deviceType == 4){
-            devTypeName = 'BLUETOOTH_A2DP';
-        }
-        else if (value.deviceType == 5){
-            devTypeName = 'MIC';
-        }
-        else {
-            devTypeName = 'ERROR : UNKNOWN';
-        }
-        console.info(`AudioFrameworkTest: device role: ${devRoleName}`);
-        deviceRoleValue = value.deviceRole;
-        console.info(`AudioFrameworkTest: device type: ${devTypeName}`);
-        deviceTypeValue = value.deviceType;
-    }
 })

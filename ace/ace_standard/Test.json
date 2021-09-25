@@ -2,10 +2,10 @@
     "description": "Configuration for aceceshi Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "21600000",
+        "test-timeout": "60000",
         "package": "com.example.aceceshi",
         "abilityName": "decc.testkit.runner.JsEntryAbility",
-        "shell-timeout": "21600000"
+        "shell-timeout": "60000"
     },
     "kits": [
         {

@@ -2,9 +2,9 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "21600000",
+        "test-timeout": "600000",
         "package": "com.example.actsfeatureabilitytest",
-        "shell-timeout": "21600000"
+        "shell-timeout": "60000"
     },
     "kits": [
         {
@@ -13,6 +13,19 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        }
+        },
+        {
+            "type": "PushKit",
+            "push": [
+                "FinishWithResultEmptyTest.hap->/data/FinishWithResultEmptyTest.hap",
+                "FinishWithResultPromiseParametersTest.hap->/data/FinishWithResultPromiseParametersTest.hap",
+                "FinishWithResultTest.hap->/data/FinishWithResultTest.hap",
+                "GetCallingBundlePromiseTest.hap->/data/GetCallingBundlePromiseTest.hap",
+                "StartAbility.hap->/data/StartAbility.hap",
+                "StartAbilityForResult.hap->/data/StartAbilityForResult.hap",
+                "TerminateAbilityTest.hap->/data/TerminateAbilityTest.hap"
+            ]
+            
+        }        
     ]
 }

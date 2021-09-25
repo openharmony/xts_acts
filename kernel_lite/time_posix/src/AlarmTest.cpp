@@ -106,7 +106,10 @@ HWTEST_F(AlarmTest, testAlarmFork, Function | MediumTest | Level2)
         }
     } else { // parent
         Msleep(MSLEEP_TIME);
-        EXPECT_EQ(mReceivedSignal, SIGALRM);
+        if (mReceivedSignal != SIGALRM) {
+            Msleep(500);
+        }
+        EXPECT_EQ(mReceivedSignal, SIGALRM) << " expect no equal" << errno;
         WaitProcExitedOK(pid);
     }
 }

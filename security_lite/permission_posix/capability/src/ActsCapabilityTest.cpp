@@ -753,7 +753,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest0600, Function | MediumTest | Level2
                 exitCode = 1;
             }
             // Step 2: Failed to kill the sub process
-            ret = kill(pid2, SIGXFSZ);
+            ret = kill(pid1, SIGXFSZ);
             if (ret != FALSE) {
                 LOG("ErrInfo: Kill process without CAP_KILL");
                 exitCode = 1;

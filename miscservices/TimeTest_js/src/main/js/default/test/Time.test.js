@@ -94,12 +94,11 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTime_test4', 0, async function (done) {
         console.log("SUB_systemTime_setTime_JS_API_0400 start")
-        expect(1).assertLarger(0)
         systemTime.setTime(-1, (error, data) => {
             console.log("setTime ===data: " + data);
             console.log("setTime ===error: " + error);
-        })catch(error=> {
-            execpt(0).assertLarger(1)
+        }).catch(error=> {
+            expect(1).assertLarger(0)
         })
         console.log('SUB_systemTime_setTime_JS_API_0400 end');
         done()

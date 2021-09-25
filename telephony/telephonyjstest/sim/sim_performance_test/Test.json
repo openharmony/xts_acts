@@ -1,0 +1,19 @@
+{
+    "description": "Configuration for sim performance Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "720000",
+        "package": "com.ohos.simperformance",
+        "shell-timeout": "720000",
+        "native-test-timeout":"720000"
+    },
+    "kits": [
+        {
+            "test-file-name": [
+                "$module.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+}

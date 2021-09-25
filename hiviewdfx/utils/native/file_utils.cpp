@@ -41,7 +41,7 @@ int ExecCmdWithRet(std::string cmd, std::vector<std::string> &resvec)
 
     std::cout<< "cmd is " + cmd <<std::endl;
     if ((cmd.find("hilog") == std::string::npos) && (cmd.find("hidumper") == std::string::npos)
-        && (cmd.find("ps") == std::string::npos)) {
+        && (cmd.find("ps") == std::string::npos) && (cmd.find("rm") == std::string::npos)) {
         std::cout<<"unsupport cmd!" + cmd <<std::endl;
         return 0;
     }
