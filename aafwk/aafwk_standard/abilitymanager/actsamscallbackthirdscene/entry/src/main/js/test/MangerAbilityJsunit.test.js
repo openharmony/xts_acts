@@ -116,12 +116,22 @@ describe('ActsAmsCallBackThirdScene', function () {
         done();
     }
 
+    function sleep(delay) {
+        var start = (new Date()).getTime();
+        while((new Date()).getTime() - start < delay) {
+            continue;
+        }
+    }
+
     /*
      * @tc.number    : Acts_Ams_test_3400
      * @tc.name      : getAllRunningProcesses : Get All Running Processes Info
      * @tc.desc      : Get All Running Processes Info(by CallBack)
      */
     it('Acts_Ams_test_3400', 0, async function (done) {
+        console.info("sleep begin");
+        sleep(5000);
+        console.info("sleep end");
         abilitymanager.getAllRunningProcesses(
             (error, info) => {
                 console.info('getAllRunningProcesses error.code \

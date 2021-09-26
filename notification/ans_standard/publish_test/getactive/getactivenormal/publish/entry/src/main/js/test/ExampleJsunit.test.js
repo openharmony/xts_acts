@@ -97,7 +97,7 @@ describe('ActsAnsActivePublishTest', function () {
         console.log("==ACTS_PublishTest1_0100 finished==")
         expect(typeof(promise)).assertEqual('number')
         done();
-        setTimeout(function(){
+       	setTimeout(function(){
             console.debug("====>time out ACTS_GetActiveNumTest_0100====>");
         }, time);
     })

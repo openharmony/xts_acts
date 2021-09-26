@@ -18,8 +18,8 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe('ActsAmsCallBackSixth Scene', function () {
     console.info('----ActsAmsCallBackSixth----');
-    beforeAll(async function () {
-        await featureAbility.startAbility(
+    beforeAll(function() {
+        featureAbility.startAbility(
             {
                 want:
                 {
@@ -37,7 +37,6 @@ describe('ActsAmsCallBackSixth Scene', function () {
                 },
             },
         );
-        setTimeout(done(), 5000);
     });
     /*
     * @tc.number    : Acts_Ams_test_12100
@@ -45,11 +44,12 @@ describe('ActsAmsCallBackSixth Scene', function () {
     * @tc.desc      : Clear Missions(by Promise)
      */
     it('Acts_Ams_test_12100', 0, async function (done) {
-        var info = await abilitymanager.clearMissions();
-        console.info('Acts_Ams_test_12100 clearMissions data  [' + info + ']');
-        expect(typeof(info)).assertEqual("number");
-        expect(info).assertEqual(0);
-        done();
-
+        setTimeout(async function(){
+            var info = await abilitymanager.clearMissions();
+            console.info('Acts_Ams_test_12100 clearMissions data  [' + info + ']');
+            expect(typeof(info)).assertEqual("number");
+            expect(info).assertEqual(0);
+            done();
+        },5000);
     })
 })

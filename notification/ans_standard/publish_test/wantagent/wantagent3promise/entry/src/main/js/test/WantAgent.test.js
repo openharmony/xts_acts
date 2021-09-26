@@ -75,11 +75,12 @@ describe('ActsAnsWantAgentTreeProTest', function () {
                         }
                     );
                     done();
-                    setTimeout(function(){
-                        console.debug("====>time out ACTS_SetWant_0600====>");
-                    }, time);
+                    
             }
         );
+setTimeout(function(){
+                        console.debug("====>time out ACTS_SetWant_0600====>");
+                    }, time);
         console.info('----getWantAgent after----');
     })
 })

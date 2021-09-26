@@ -81,11 +81,12 @@ describe('ActsAnsWantAgentFourTest', function () {
                     expect(typeof(data)).assertEqual("object");
                 }
                 done();
-                setTimeout(function(){
-                    console.debug("====>time out ACTS_SetWant_0700====>");
-                }, time);
+               
             }
         );
+ 	setTimeout(function(){
+                    console.debug("====>time out ACTS_SetWant_0700====>");
+                }, time);
         console.info('----getWantAgent after----');
     })
 })

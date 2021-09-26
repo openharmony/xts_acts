@@ -81,11 +81,12 @@ describe('ActsAnsWantAgentTreeTest', function () {
                     expect(typeof(data)).assertEqual("object");
                 }
                 done();
-                setTimeout(function(){
-                    console.debug("====>time out ACTS_SetWant_0500====>");
-                }, time)
+               
             }
         );
+ setTimeout(function(){
+                    console.debug("====>time out ACTS_SetWant_0500====>");
+                }, time)
         console.info('----getWantAgent after----');
     })
 })

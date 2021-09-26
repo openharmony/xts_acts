@@ -135,12 +135,22 @@ describe('ActsAmsCallBackFourthScene', function () {
         done();
     }
 
+    function sleep(delay) {
+        var start = (new Date()).getTime();
+        while((new Date()).getTime() - start < delay) {
+            continue;
+        }
+    }
+
     /*
      * @tc.number    : Acts_Ams_test_5000
      * @tc.name      : getAllRunningProcesses : Get All Running Processes Info
      * @tc.desc      : Get All Running Processes Info(by CallBack)
      */
     it('Acts_Ams_test_5000', 0, async function (done) {
+        console.info("sleep begin");
+        sleep(5000);
+        console.info("sleep end");
         abilitymanager.getAllRunningProcesses(
             (error, info) => {
                 console.info('getAllRunningProcesses error.code \
@@ -347,16 +357,16 @@ describe('ActsAmsCallBackFourthScene', function () {
     })
 
     /*
-     * @tc.number    : Acts_Ams_test_6200
+     * @tc.number    : Acts_Ams_test_11900
      * @tc.name      : deleteMissions : delete Missions
      * @tc.desc      : delete Missions(by CallBack)
      */
-    it('Acts_Ams_test_6200', 0, async function (done) {
+    it('Acts_Ams_test_11900', 0, async function (done) {
         var maxnum = 30;
         var result = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
         abilitymanager.deleteMissions([result[1].id, result[0].id],
             (error, info) => {
-                console.info('Acts_Ams_test_6200 deleteMissions error.code: \
+                console.info('Acts_Ams_test_11900 deleteMissions error.code: \
                 ' + error.code + ',data  [' + info + ']');
                 expect(typeof (info)).assertEqual("number");
                 expect(info).assertEqual(0);

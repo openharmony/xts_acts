@@ -2,7 +2,7 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "600000",
+        "test-timeout": "180000",
         "package": "com.example.amsZipfileUnzipfileST",
         "shell-timeout": "60000"
     },
@@ -13,6 +13,27 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "remount",
+                "mkdir /data/test"
+            ]
+        },
+        {
+            "type": "PushKit",
+            "push": [
+                "amsZipfileUnzipfileST.hap->/data/test/amsZipfileUnzipfileST.hap"
+               
+            ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "chmod 644 /data/test/*.hap"
+            ]
         }
     ]
 }
+

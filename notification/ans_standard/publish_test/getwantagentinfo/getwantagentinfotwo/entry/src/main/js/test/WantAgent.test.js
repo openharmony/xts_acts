@@ -77,10 +77,10 @@ describe('ActsAnsGetWantAgentInfoTwoTest', function () {
                     expect(typeof(data)).assertEqual("object");
                 }
                 done();
-                setTimeout(function(){
+            }),
+ 		setTimeout(function(){
                     console.debug("====>time out ACTS_SetWantInfo_0500====>");
                 }, time)
-            }),
             console.info('----getWantAgent1 after----');
     })
 
@@ -154,11 +154,11 @@ describe('ActsAnsGetWantAgentInfoTwoTest', function () {
                     console.info(data);
                     expect(typeof(data)).assertEqual("object");
                 }
-                done();
-                setTimeout(function(){
+                done(); 
+            });
+	       setTimeout(function(){
                     console.debug("====>time out ACTS_SetWantInfo_0600====>");
                 }, time)
-            });
             console.info('----getWantAgent2 after----');
       })
 
