@@ -895,7 +895,7 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0001, Function | MediumTest
 {
     printf("------start testGetBundleSizeWithIllegal_0001------\n");
     char *bundleName = (char*)"com.openharmony.testjsdemoBundleNameLength128test" \
-"jsdemoBundleNameLength128testjsdemoBundleNameLength128testjsdemoBundleNameLength128T";
+"jsdemoBundleNameLength128testjsdemoBundleNameLength128testjsdemoBundleNameLengt";
     EXPECT_EQ(strlen(bundleName), 128);
     uint32_t resultCode = GetBundleSize(bundleName);
     EXPECT_EQ(resultCode, 0);
