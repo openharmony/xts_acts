@@ -18,6 +18,7 @@ group("getactivenormal") {
   if (is_standard_system) {
     deps = [
       "active:ActsAnsGetActiveTest",
+
       #"sub:ActsAnsActiveSubscriberTest",
       "publish:ActsAnsActivePublishTest",
     ]
