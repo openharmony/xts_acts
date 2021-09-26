@@ -14,8 +14,11 @@
  */
 
 import app from '@system.app'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import demo from '@ohos.bundle'
+import featureAbility from '@ohos.ability.featureability'
+import abilityManager from '@ohos.app.abilityManager'
+import commonEvent from '@ohos.commonevent'
 
 const PATH = "/data/"
 const ERROR = "error.hap"
@@ -49,6 +52,12 @@ const CAMERA = 'com.permission.CAMERA'
 const MUSIC = 'com.permission.music'
 const WECHAT = 'com.permission.WeChat'
 const TIMEOUT = 1000
+const TIMEOUTPROCESS = 9000;
+const START_ABILITY_TIMEOUT = 5000;
+var subscriberInfoEvent_0100 = {
+    events: ['Third1_Publish_CommonEvent'],
+};
+
 describe('ActsBundleManagerTest', function () {
 
     /**
@@ -63,10 +72,11 @@ describe('ActsBundleManagerTest', function () {
                     userId: 0,
                     isKeepData: false
                 }
+            }, async (err, data) => {
+                getInfo();
             });
         });
-        setTimeout(getInfo, 1)
-        async function getInfo(){
+        async function getInfo() {
             var datainfo = await demo.getBundleInfo(NAME1, 1)
             expect(datainfo.name).assertEqual(NAME1)
             expect(datainfo.vendor).assertEqual("example")
@@ -89,9 +99,9 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.enabled).assertEqual(true)
             done()
         }
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfo_0100 =====>')
-        },TIMEOUT)
+        }, TIMEOUT)
     })
 
     /**
@@ -123,9 +133,9 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.enabled).assertEqual(true)
             done()
         }
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfo_0600 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -151,9 +161,9 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.appInfo.supportedModes).assertEqual(0)
         expect(datainfo.appInfo.enabled).assertEqual(true)
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfo_1100 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -186,9 +196,9 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.enabled).assertEqual(true)
             done()
         }
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfo_1200 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -200,9 +210,9 @@ describe('ActsBundleManagerTest', function () {
         var datainfo = await demo.getApplicationInfos(8, 0)
         checkgetApplicationInfos(datainfo)
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfos_0100 =====>')
-        },1000)
+        }, TIMEOUT)
     })
     function checkgetApplicationInfos(datainfo) {
         console.log("=============datainfo.length===============" + datainfo.length)
@@ -216,7 +226,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo[i].moduleInfos.length).assertLarger(0)
             expect(datainfo[i].supportedModes).assertEqual(0)
             expect(datainfo[i].flags).assertEqual(0)
-            for(var j = 0; j < datainfo[i].moduleInfos; j++) {
+            for (var j = 0; j < datainfo[i].moduleInfos; j++) {
                 expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0)
                 expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0)
             }
@@ -230,7 +240,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfos interfaces with one hap.
      */
     it('getApplicationInfos_0600', 0, async function (done) {
-        await  demo.getApplicationInfos(8, 0, (error, datainfo) => {
+        await demo.getApplicationInfos(8, 0, (error, datainfo) => {
             expect(datainfo.length).assertLarger(0)
             for (var i = 0; i < datainfo.length; i++) {
                 expect(datainfo[i].name.length).assertLarger(0)
@@ -241,7 +251,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo[i].moduleInfos.length).assertLarger(0)
                 expect(datainfo[i].supportedModes).assertEqual(0)
                 expect(datainfo[i].flags).assertEqual(0)
-                for(var j = 0; j < datainfo[i].moduleInfos; j++) {
+                for (var j = 0; j < datainfo[i].moduleInfos; j++) {
                     expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0)
                     expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0)
                 }
@@ -249,9 +259,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         });
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfos_0600 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -273,9 +283,9 @@ describe('ActsBundleManagerTest', function () {
             expect(data[i].appInfo.moduleInfos.length).assertLarger(0)
         }
         done();
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfos_0100 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -306,15 +316,15 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.enabled).assertEqual(true)
         expect(datainfo.flags).assertEqual(0)
         expect(datainfo.moduleSourceDirs).assertEqual(DIR1)
-        for(var j = 0; j < datainfo.moduleInfos; j++) {
+        for (var j = 0; j < datainfo.moduleInfos; j++) {
             expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry")
             expect(datainfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1)
 
         }
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfo_0100 =====>')
-       },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -337,9 +347,9 @@ describe('ActsBundleManagerTest', function () {
             done();
         })
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfos_0600 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -364,7 +374,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.systemApp).assertEqual(false)
             expect(datainfo.supportedModes).assertEqual(0)
             expect(datainfo.enabled).assertEqual(true)
-            for(var j = 0; j < datainfo.moduleInfos; j++) {
+            for (var j = 0; j < datainfo.moduleInfos; j++) {
                 expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry")
                 expect(datainfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1)
 
@@ -372,9 +382,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         })
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfo_0600 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -399,9 +409,9 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.systemApp).assertEqual(false)
         expect(datainfo.supportedModes).assertEqual(0)
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfo_1100 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -425,12 +435,12 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.labelId).assertEqual(16777216)
             expect(datainfo.systemApp).assertEqual(false)
             expect(datainfo.supportedModes).assertEqual(0)
-            done()
+            done();
         })
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfo_1200 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -467,9 +477,9 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.abilityInfos[j].moduleName).assertEqual("entry")
         }
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleArchiveInfo_0100 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -489,17 +499,12 @@ describe('ActsBundleManagerTest', function () {
                         abilityName: "",
                     },
                 }
-            }, {
-                params: {
-                    flags: 8,
-                    userId: "0",
-                }
-            })
-        expect(datainfo.name.length).assertEqual(0)
+            }, 0, 0)
+        expect(datainfo.length).assertEqual(0)
         done();
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> queryAbilityByWant_0400 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -519,17 +524,12 @@ describe('ActsBundleManagerTest', function () {
                         abilityName: "",
                     },
                 }
-            }, {
-                params: {
-                    flags: 8,
-                    userId: "0",
-                }
-            })
-        expect(datainfo.name.length).assertEqual(0)
+            }, 0, 0)
+        expect(datainfo.length).assertEqual(0)
         done();
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> queryAbilityByWant_0500 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -548,39 +548,43 @@ describe('ActsBundleManagerTest', function () {
                     abilityName: "com.example.myapplication1.MainAbility",
                 },
             }
-        },0,0,OnReceiveEvent)
+        }, 0, 0, OnReceiveEvent)
         console.info('====>queryAbilityByWant  finish=====>')
 
-        function OnReceiveEvent(err, datainfo) {
-            console.info('====>queryAbilityByWantOnReceiveEvent=====>' + JSON.stringify(datainfo))
+        function OnReceiveEvent(err, data) {
+            console.info('====>queryAbilityByWantOnReceiveEvent=====>' + JSON.stringify(data))
             console.info('====>queryAbilityByWant_0600  OnReceiveEvent=====>')
-            expect(datainfo.name).assertEqual("com.example.myapplication1.MainAbility")
-            expect(datainfo.label).assertEqual("$string:app_name")
-            expect(datainfo.description).assertEqual("$string:mainability_description")
-            expect(datainfo.icon).assertEqual("$media:icon")
-            expect(datainfo.moduleName).assertEqual("entry")
-            expect(datainfo.bundleName).assertEqual(NAME1)
-            expect(datainfo.applicationInfo.name).assertEqual(NAME1)
-            expect(datainfo.applicationInfo.description).assertEqual("$string:mainability_description")
-            expect(datainfo.applicationInfo.descriptionId).assertEqual(16777217)
-            expect(datainfo.applicationInfo.icon).assertEqual("$media:icon")
-            expect(datainfo.applicationInfo.iconId).assertEqual(16777218)
-            expect(datainfo.applicationInfo.label).assertEqual("$string:app_name")
-            expect(datainfo.applicationInfo.labelId).assertEqual(16777216)
-            expect(datainfo.applicationInfo.systemApp).assertEqual(false)
-            expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
-            expect(datainfo.applicationInfo.enabled).assertEqual(true)
-            for (var j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
-                expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
-                expect(datainfo.applicationInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1)
+            expect(data.length).assertLarger(0);
+            for (let i = 0, len = data.length; i < len; i++) {
+                var datainfo = data[i];
+                expect(datainfo.name).assertEqual("com.example.myapplication1.MainAbility")
+                expect(datainfo.label).assertEqual("$string:app_name")
+                expect(datainfo.description).assertEqual("$string:mainability_description")
+                expect(datainfo.icon).assertEqual("$media:icon")
+                expect(datainfo.moduleName).assertEqual("entry")
+                expect(datainfo.bundleName).assertEqual(NAME1)
+                expect(datainfo.applicationInfo.name).assertEqual(NAME1)
+                expect(datainfo.applicationInfo.description).assertEqual("$string:mainability_description")
+                expect(datainfo.applicationInfo.descriptionId).assertEqual(16777217)
+                expect(datainfo.applicationInfo.icon).assertEqual("$media:icon")
+                expect(datainfo.applicationInfo.iconId).assertEqual(16777218)
+                expect(datainfo.applicationInfo.label).assertEqual("$string:app_name")
+                expect(datainfo.applicationInfo.labelId).assertEqual(16777216)
+                expect(datainfo.applicationInfo.systemApp).assertEqual(false)
+                expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
+                expect(datainfo.applicationInfo.enabled).assertEqual(true)
+                for (var j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
+                    expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
+                    expect(datainfo.applicationInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1)
+                }
             }
             console.info('====> queryAbili =====>')
             done()
 
         }
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> queryAbilityByWant_0600 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -599,15 +603,15 @@ describe('ActsBundleManagerTest', function () {
                     abilityName: "",
                 },
             }
-        },0,0,OnReceiveEvent)
+        }, 0, 0, OnReceiveEvent)
 
         function OnReceiveEvent(err, datainfo) {
-            expect(datainfo.name.length).assertEqual(0)
+            expect(datainfo.length).assertEqual(0)
             done();
         }
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> queryAbilityByWant_0900 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -646,9 +650,9 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.appInfo.labelId).assertEqual(16777216)
         expect(datainfo.appInfo.systemApp).assertEqual(false)
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfo_0200 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -673,12 +677,11 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.label).assertEqual("$string:app_name")
             expect(datainfo.appInfo.labelId).assertEqual(16777216)
             expect(datainfo.appInfo.systemApp).assertEqual(false)
+            done();
         }
-
-        done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfo_0700 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -688,12 +691,12 @@ describe('ActsBundleManagerTest', function () {
      */
     it('getApplicationInfos_0200', 0, async function (done) {
         var datainfo = await demo.getApplicationInfos(8, 0)
-        console.info("==========ActsBmsGetInfosSecondScene is =========="+ JSON.stringify(datainfo));
+        console.info("==========ActsBmsGetInfosSecondScene is ==========" + JSON.stringify(datainfo));
         checkgetApplicationInfos(datainfo)
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfos_0200 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -706,9 +709,9 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.length).assertLarger(0)
         checkgetApplicationInfos(datainfo)
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfos_0400 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -717,7 +720,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfos interfaces with two haps.
      */
     it('getApplicationInfos_0700', 0, async function (done) {
-        await  demo.getApplicationInfos(8, 0, (error, datainfo) => {
+        await demo.getApplicationInfos(8, 0, (error, datainfo) => {
             for (var i = 0; i < datainfo.length; i++) {
                 expect(datainfo[i].name.length).assertLarger(0)
                 expect(datainfo[i].description.length).assertLarger(0)
@@ -727,7 +730,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo[i].moduleInfos.length).assertLarger(0)
                 expect(datainfo[i].supportedModes).assertEqual(0)
                 expect(datainfo[i].flags).assertEqual(0)
-                for(var j = 0; j < datainfo[i].moduleInfos; j++) {
+                for (var j = 0; j < datainfo[i].moduleInfos; j++) {
                     expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0)
                     expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0)
                 }
@@ -735,9 +738,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         });
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfos_0700 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -747,7 +750,7 @@ describe('ActsBundleManagerTest', function () {
      */
     it('getApplicationInfos_0900', 0, async function (done) {
 
-        await  demo.getApplicationInfos(0, 0, (error, datainfo) => {
+        await demo.getApplicationInfos(0, 0, (error, datainfo) => {
             for (var i = 0; i < datainfo.length; i++) {
                 expect(datainfo[i].name.length).assertLarger(0)
                 expect(datainfo[i].description.length).assertLarger(0)
@@ -757,7 +760,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo[i].moduleInfos.length).assertLarger(0)
                 expect(datainfo[i].supportedModes).assertEqual(0)
                 expect(datainfo[i].flags).assertEqual(0)
-                for(var j = 0; j < datainfo[i].moduleInfos; j++) {
+                for (var j = 0; j < datainfo[i].moduleInfos; j++) {
                     expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0)
                     expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0)
                 }
@@ -765,9 +768,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         });
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfos_0900 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -798,9 +801,9 @@ describe('ActsBundleManagerTest', function () {
 
         }
         done();
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfos_0200 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -822,9 +825,9 @@ describe('ActsBundleManagerTest', function () {
             expect(data[i].appInfo.moduleInfos.length).assertLarger(0)
         }
         done();
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfos_0400 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -848,9 +851,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         })
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfos_0700 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -874,9 +877,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         })
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfos_0900 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -901,9 +904,9 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.systemApp).assertEqual(false)
         expect(datainfo.supportedModes).assertEqual(0)
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfo_0200 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -930,9 +933,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         })
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfo_0700 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -955,9 +958,9 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.appInfo.labelId).assertEqual(16777216)
         expect(datainfo.appInfo.systemApp).assertEqual(false)
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleArchiveInfo_0200 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -981,12 +984,11 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.label).assertEqual("$string:app_name")
             expect(datainfo.appInfo.labelId).assertEqual(16777216)
             expect(datainfo.appInfo.systemApp).assertEqual(false)
+            done();
         }
-
-        done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleArchiveInfo_0700 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -995,7 +997,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test queryAbilityByWant interfaces with two haps.
      */
     it('queryAbilityByWant_0200', 0, async function (done) {
-        var datainfo =
+        var data =
             await demo.queryAbilityByWant({
                 want: {
                     action: "action.system.home",
@@ -1006,53 +1008,11 @@ describe('ActsBundleManagerTest', function () {
                         abilityName: "com.example.myapplication1.MainAbility",
                     },
                 }
-            },0,0)
-        expect(datainfo.name).assertEqual("com.example.myapplication1.MainAbility")
-        expect(datainfo.label).assertEqual("$string:app_name")
-        expect(datainfo.description).assertEqual("$string:mainability_description")
-        expect(datainfo.icon).assertEqual("$media:icon")
-        expect(datainfo.moduleName).assertEqual("entry")
-        expect(datainfo.bundleName).assertEqual(NAME2)
-        expect(datainfo.applicationInfo.name).assertEqual(NAME2)
-        expect(datainfo.applicationInfo.description).assertEqual("$string:mainability_description")
-        expect(datainfo.applicationInfo.descriptionId).assertEqual(16777217)
-        expect(datainfo.applicationInfo.icon).assertEqual("$media:icon")
-        expect(datainfo.applicationInfo.iconId).assertEqual(16777218)
-        expect(datainfo.applicationInfo.label).assertEqual("$string:app_name")
-        expect(datainfo.applicationInfo.labelId).assertEqual(16777216)
-        expect(datainfo.applicationInfo.systemApp).assertEqual(false)
-        expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
-        expect(datainfo.applicationInfo.enabled).assertEqual(true)
-        for (var j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
-            expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
-            expect(datainfo.applicationInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR2)
-        }
-        done();
-        setTimeout(function() {
-            console.info('====> queryAbilityByWant_0200 =====>')
-        },1000)
-    })
-
-    /**
-     * @tc.number queryAbilityByWant_0700
-     * @tc.name BUNDLE::queryAbilityByWant
-     * @tc.desc Test queryAbilityByWant interfaces with two haps.
-     */
-    it('queryAbilityByWant_0700', 0, async function (done) {
-        await demo.queryAbilityByWant({
-            want: {
-                action: "action.system.home",
-                entities: ["entity.system.home"],
-                elementName: {
-                    deviceId: "0",
-                    bundleName: "com.example.myapplication2",
-                    abilityName: "com.example.myapplication1.MainAbility",
-                },
-            }
-        },0,0,OnReceiveEvent)
-
-        function OnReceiveEvent(err, datainfo) {
-            expect(datainfo.name).assertEqual("com.example.myapplication1.MainAbility")
+            }, 0, 0)
+        expect(data.length).assertLarger(0);
+        for (let i = 0, len = data.length; i < len; i++) {
+            var datainfo = data[i];
+            expect(datainfo.name).assertEqual("com.example.myapplication" + (i + 1) + ".MainAbility")
             expect(datainfo.label).assertEqual("$string:app_name")
             expect(datainfo.description).assertEqual("$string:mainability_description")
             expect(datainfo.icon).assertEqual("$media:icon")
@@ -1072,11 +1032,61 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
                 expect(datainfo.applicationInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR2)
             }
+        }
+        done();
+        setTimeout(function () {
+            console.info('====> queryAbilityByWant_0200 =====>')
+        }, TIMEOUT)
+    })
+
+    /**
+     * @tc.number queryAbilityByWant_0700
+     * @tc.name BUNDLE::queryAbilityByWant
+     * @tc.desc Test queryAbilityByWant interfaces with two haps.
+     */
+    it('queryAbilityByWant_0700', 0, async function (done) {
+        await demo.queryAbilityByWant({
+            want: {
+                action: "action.system.home",
+                entities: ["entity.system.home"],
+                elementName: {
+                    deviceId: "0",
+                    bundleName: "com.example.myapplication2",
+                    abilityName: "com.example.myapplication1.MainAbility",
+                },
+            }
+        }, 0, 0, OnReceiveEvent)
+
+        function OnReceiveEvent(err, data) {
+            expect(data.length).assertLarger(0);
+            for (let i = 0, len = data.length; i < len; i++) {
+                var datainfo = data[i];
+                expect(datainfo.name).assertEqual("com.example.myapplication" + (i + 1) + ".MainAbility")
+                expect(datainfo.label).assertEqual("$string:app_name")
+                expect(datainfo.description).assertEqual("$string:mainability_description")
+                expect(datainfo.icon).assertEqual("$media:icon")
+                expect(datainfo.moduleName).assertEqual("entry")
+                expect(datainfo.bundleName).assertEqual(NAME2)
+                expect(datainfo.applicationInfo.name).assertEqual(NAME2)
+                expect(datainfo.applicationInfo.description).assertEqual("$string:mainability_description")
+                expect(datainfo.applicationInfo.descriptionId).assertEqual(16777217)
+                expect(datainfo.applicationInfo.icon).assertEqual("$media:icon")
+                expect(datainfo.applicationInfo.iconId).assertEqual(16777218)
+                expect(datainfo.applicationInfo.label).assertEqual("$string:app_name")
+                expect(datainfo.applicationInfo.labelId).assertEqual(16777216)
+                expect(datainfo.applicationInfo.systemApp).assertEqual(false)
+                expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
+                expect(datainfo.applicationInfo.enabled).assertEqual(true)
+                for (var j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
+                    expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
+                    expect(datainfo.applicationInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR2)
+                }
+            }
             done()
         }
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> queryAbilityByWant_0700 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1120,9 +1130,9 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.appInfo.labelId).assertEqual(16777216)
         expect(datainfo.appInfo.systemApp).assertEqual(false)
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfo_0300 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1149,9 +1159,9 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.systemApp).assertEqual(false)
         }
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfo_0800 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1165,9 +1175,9 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.length).assertLarger(0)
         checkgetApplicationInfos(datainfo)
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfos_0300 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1176,7 +1186,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfos interfaces with three haps and different param.
      */
     it('getApplicationInfos_0500', 0, async function (done) {
-        await  demo.getAllApplicationInfo(0, 0, (error, datainfo) => {
+        await demo.getAllApplicationInfo(0, 0, (error, datainfo) => {
 
             for (var i = 0; i < datainfo.length; i++) {
                 expect(datainfo[i].name.length).assertLarger(0)
@@ -1188,7 +1198,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo[i].supportedModes).assertEqual(0)
                 expect(datainfo[i].flags).assertEqual(0)
 
-                for(var j = 0; j < datainfo[i].moduleInfos; j++) {
+                for (var j = 0; j < datainfo[i].moduleInfos; j++) {
                     expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0)
                     expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0)
                 }
@@ -1196,9 +1206,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         });
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfos_0500 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1218,7 +1228,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo[i].moduleInfos.length).assertLarger(0)
                 expect(datainfo[i].supportedModes).assertEqual(0)
                 expect(datainfo[i].flags).assertEqual(0)
-                for(var j = 0; j < datainfo[i].moduleInfos; j++) {
+                for (var j = 0; j < datainfo[i].moduleInfos; j++) {
                     expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0)
                     expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0)
                 }
@@ -1226,9 +1236,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         })
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfos_0800 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1248,7 +1258,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo[i].moduleInfos.length).assertLarger(0)
                 expect(datainfo[i].supportedModes).assertEqual(0)
                 expect(datainfo[i].flags).assertEqual(0)
-                for(var j = 0; j < datainfo[i].moduleInfos; j++) {
+                for (var j = 0; j < datainfo[i].moduleInfos; j++) {
                     expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0)
                     expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0)
                 }
@@ -1256,9 +1266,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         })
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfos_1000 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1279,9 +1289,9 @@ describe('ActsBundleManagerTest', function () {
             expect(data[i].appInfo.moduleInfos.length).assertLarger(0)
         }
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfos_0300 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1303,9 +1313,9 @@ describe('ActsBundleManagerTest', function () {
 
         }
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfos_0500 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1328,9 +1338,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         })
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfos_0800 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1353,9 +1363,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         })
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfos_1000 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1379,9 +1389,9 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.systemApp).assertEqual(false)
         expect(datainfo.supportedModes).assertEqual(0)
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfo_0300 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1407,9 +1417,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         })
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfo_0800 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1432,9 +1442,9 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.appInfo.labelId).assertEqual(16777216)
         expect(datainfo.appInfo.systemApp).assertEqual(false)
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleArchiveInfo_0300 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1461,9 +1471,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         }
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleArchiveInfo_0800 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1472,7 +1482,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test queryAbilityByWant interfaces with three haps.
      */
     it('queryAbilityByWant_0300', 0, async function (done) {
-        var datainfo =
+        var data =
             await demo.queryAbilityByWant({
                 want: {
                     action: "action.system.home",
@@ -1483,51 +1493,10 @@ describe('ActsBundleManagerTest', function () {
                         abilityName: "com.example.myapplication.MainAbility",
                     },
                 }
-            },0,0)
-        expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility")
-        expect(datainfo.label).assertEqual("$string:app_name")
-        expect(datainfo.description).assertEqual("$string:mainability_description")
-        expect(datainfo.icon).assertEqual("$media:icon")
-        expect(datainfo.moduleName).assertEqual("entry")
-        expect(datainfo.bundleName).assertEqual(NAME3)
-        expect(datainfo.applicationInfo.name).assertEqual(NAME3)
-        expect(datainfo.applicationInfo.description).assertEqual("$string:mainability_description")
-        expect(datainfo.applicationInfo.descriptionId).assertEqual(16777217)
-        expect(datainfo.applicationInfo.icon).assertEqual("$media:icon")
-        expect(datainfo.applicationInfo.iconId).assertEqual(16777218)
-        expect(datainfo.applicationInfo.label).assertEqual("$string:app_name")
-        expect(datainfo.applicationInfo.labelId).assertEqual(16777216)
-        expect(datainfo.applicationInfo.systemApp).assertEqual(false)
-        expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
-        expect(datainfo.applicationInfo.enabled).assertEqual(true)
-        for (var j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
-            expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
-        }
-        done();
-        setTimeout(function() {
-            console.info('====> queryAbilityByWant_0300 =====>')
-        },1000)
-    })
-
-    /**
-     * @tc.number queryAbilityByWant_0800
-     * @tc.name BUNDLE::queryAbilityByWant
-     * @tc.desc Test queryAbilityByWant interfaces with three haps.
-     */
-    it('queryAbilityByWant_0800', 0, async function (done) {
-        await demo.queryAbilityByWant({
-            want: {
-                action: "action.system.home",
-                entities: ["entity.system.home"],
-                elementName: {
-                    deviceId: "0",
-                    bundleName: "com.example.myapplication4",
-                    abilityName: "com.example.myapplication.MainAbility",
-                },
-            }
-        },0,0,OnReceiveEvent)
-
-        function OnReceiveEvent(err, datainfo) {
+            }, 0, 0)
+        expect(data.length).assertLarger(0);
+        for (let i = 0, len = data.length; i < len; i++) {
+            var datainfo = data[i];
             expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility")
             expect(datainfo.label).assertEqual("$string:app_name")
             expect(datainfo.description).assertEqual("$string:mainability_description")
@@ -1547,11 +1516,60 @@ describe('ActsBundleManagerTest', function () {
             for (var j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
                 expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
             }
+        }
+        done();
+        setTimeout(function () {
+            console.info('====> queryAbilityByWant_0300 =====>')
+        }, TIMEOUT)
+    })
+
+    /**
+     * @tc.number queryAbilityByWant_0800
+     * @tc.name BUNDLE::queryAbilityByWant
+     * @tc.desc Test queryAbilityByWant interfaces with three haps.
+     */
+    it('queryAbilityByWant_0800', 0, async function (done) {
+        await demo.queryAbilityByWant({
+            want: {
+                action: "action.system.home",
+                entities: ["entity.system.home"],
+                elementName: {
+                    deviceId: "0",
+                    bundleName: "com.example.myapplication4",
+                    abilityName: "com.example.myapplication.MainAbility",
+                },
+            }
+        }, 0, 0, OnReceiveEvent)
+
+        function OnReceiveEvent(err, data) {
+            expect(data.length).assertLarger(0);
+            for (let i = 0, len = data.length; i < len; i++) {
+                var datainfo = data[i];
+                expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility")
+                expect(datainfo.label).assertEqual("$string:app_name")
+                expect(datainfo.description).assertEqual("$string:mainability_description")
+                expect(datainfo.icon).assertEqual("$media:icon")
+                expect(datainfo.moduleName).assertEqual("entry")
+                expect(datainfo.bundleName).assertEqual(NAME3)
+                expect(datainfo.applicationInfo.name).assertEqual(NAME3)
+                expect(datainfo.applicationInfo.description).assertEqual("$string:mainability_description")
+                expect(datainfo.applicationInfo.descriptionId).assertEqual(16777217)
+                expect(datainfo.applicationInfo.icon).assertEqual("$media:icon")
+                expect(datainfo.applicationInfo.iconId).assertEqual(16777218)
+                expect(datainfo.applicationInfo.label).assertEqual("$string:app_name")
+                expect(datainfo.applicationInfo.labelId).assertEqual(16777216)
+                expect(datainfo.applicationInfo.systemApp).assertEqual(false)
+                expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
+                expect(datainfo.applicationInfo.enabled).assertEqual(true)
+                for (var j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
+                    expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
+                }
+            }
             done()
         }
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> queryAbilityByWant_0800 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1563,9 +1581,9 @@ describe('ActsBundleManagerTest', function () {
         var datainfo = await demo.getBundleInfo('error', 1);
         expect(datainfo.name.length).assertEqual(0)
         done();
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfo_0400 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1578,12 +1596,11 @@ describe('ActsBundleManagerTest', function () {
 
         function OnReceiveEvent(err, datainfo) {
             expect(datainfo.name.length).assertEqual(0)
+            done();
         }
-
-        done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfo_0900 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1595,9 +1612,9 @@ describe('ActsBundleManagerTest', function () {
         var datainfo = await demo.getApplicationInfo(ERROR, 8, 1)
         checkgetApplicationInfoe(datainfo)
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfo_0400 =====>')
-        },1000)
+        }, TIMEOUT)
     })
     function checkgetApplicationInfoe(datainfo) {
         expect(datainfo.name.length).assertEqual(0)
@@ -1614,9 +1631,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         })
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfo_0900 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1628,9 +1645,9 @@ describe('ActsBundleManagerTest', function () {
         var datainfo = await demo.getBundleArchiveInfo(PATH + ERROR, 1)
         expect(datainfo.name.length).assertEqual(0)
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleArchiveInfo_0400 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1646,9 +1663,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         }
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleArchiveInfo_0900 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1665,9 +1682,9 @@ describe('ActsBundleManagerTest', function () {
         }
 
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfo_1000 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1681,9 +1698,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         })
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfo_0500 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1695,9 +1712,9 @@ describe('ActsBundleManagerTest', function () {
         var datainfo = await demo.getBundleInfo(' ', 1);
         expect(datainfo.name.length).assertEqual(0)
         done();
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfo_0500 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1711,9 +1728,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         })
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getApplicationInfo_1000 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1725,9 +1742,9 @@ describe('ActsBundleManagerTest', function () {
         var datainfo = await demo.getBundleArchiveInfo(' ', 1)
         expect(datainfo.name.length).assertEqual(0)
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleArchiveInfo_0500 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1768,9 +1785,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         }
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleArchiveInfo_0600 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1786,10 +1803,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         }
 
-
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleArchiveInfo_1000 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1830,9 +1846,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         }
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleArchiveInfo_1100 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1873,9 +1889,9 @@ describe('ActsBundleManagerTest', function () {
             done()
         }
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleArchiveInfo_1200 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1884,7 +1900,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test queryAbilityByWant interfaces with none hap.
      */
     it('queryAbilityByWant_0100', 0, async function (done) {
-        var datainfo =
+        var data =
             await demo.queryAbilityByWant({
                 want: {
                     action: "action.system.home",
@@ -1895,31 +1911,35 @@ describe('ActsBundleManagerTest', function () {
                         abilityName: "com.example.myapplication1.MainAbility",
                     },
                 }
-            },0,0)
-        expect(datainfo.name).assertEqual("com.example.myapplication1.MainAbility")
-        expect(datainfo.label).assertEqual("$string:app_name")
-        expect(datainfo.description).assertEqual("$string:mainability_description")
-        expect(datainfo.icon).assertEqual("$media:icon")
-        expect(datainfo.moduleName).assertEqual("entry")
-        expect(datainfo.bundleName).assertEqual(NAME1)
-        expect(datainfo.applicationInfo.name).assertEqual(NAME1)
-        expect(datainfo.applicationInfo.description).assertEqual("$string:mainability_description")
-        expect(datainfo.applicationInfo.descriptionId).assertEqual(16777217)
-        expect(datainfo.applicationInfo.icon).assertEqual("$media:icon")
-        expect(datainfo.applicationInfo.iconId).assertEqual(16777218)
-        expect(datainfo.applicationInfo.label).assertEqual("$string:app_name")
-        expect(datainfo.applicationInfo.labelId).assertEqual(16777216)
-        expect(datainfo.applicationInfo.systemApp).assertEqual(false)
-        expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
-        expect(datainfo.applicationInfo.enabled).assertEqual(true)
-        for (var j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
-            expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
-            expect(datainfo.applicationInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1)
+            }, 0, 0)
+        expect(data.length).assertLarger(0);
+        for (let i = 0, len = data.length; i < len; i++) {
+            var datainfo = data[i];
+            expect(datainfo.name).assertEqual("com.example.myapplication1.MainAbility")
+            expect(datainfo.label).assertEqual("$string:app_name")
+            expect(datainfo.description).assertEqual("$string:mainability_description")
+            expect(datainfo.icon).assertEqual("$media:icon")
+            expect(datainfo.moduleName).assertEqual("entry")
+            expect(datainfo.bundleName).assertEqual(NAME1)
+            expect(datainfo.applicationInfo.name).assertEqual(NAME1)
+            expect(datainfo.applicationInfo.description).assertEqual("$string:mainability_description")
+            expect(datainfo.applicationInfo.descriptionId).assertEqual(16777217)
+            expect(datainfo.applicationInfo.icon).assertEqual("$media:icon")
+            expect(datainfo.applicationInfo.iconId).assertEqual(16777218)
+            expect(datainfo.applicationInfo.label).assertEqual("$string:app_name")
+            expect(datainfo.applicationInfo.labelId).assertEqual(16777216)
+            expect(datainfo.applicationInfo.systemApp).assertEqual(false)
+            expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
+            expect(datainfo.applicationInfo.enabled).assertEqual(true)
+            for (var j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
+                expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
+                expect(datainfo.applicationInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1)
+            }
         }
         done();
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> queryAbilityByWant_0100 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1941,9 +1961,9 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.appInfo.moduleInfos.length).assertLarger(0)
         expect(datainfo.appInfo.enabled).assertEqual(true)
         done()
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getBundleInfo_1300 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1962,15 +1982,15 @@ describe('ActsBundleManagerTest', function () {
                     abilityName: "",
                 },
             }
-        }, 0,0,OnReceiveEvent)
+        }, 0, 0, OnReceiveEvent)
 
         function OnReceiveEvent(err, datainfo) {
-            expect(datainfo.name.length).assertEqual(0)
+            expect(datainfo.length).assertEqual(0)
             done()
         }
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> queryAbilityByWant_1000 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1978,7 +1998,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name BUNDLE::getPermissionDef
      * @tc.desc Test getPermissionDef interfaces.
      */
-    it('getPermissionDef_0100', 0, async function(done){
+    it('getPermissionDef_0100', 0, async function (done) {
         demo.getPermissionDef(CAMERA).then((infos) => {
             expect(infos.name).assertEqual("com.permission.CAMERA");
             expect(infos.grantMode).assertEqual(1);
@@ -1988,9 +2008,9 @@ describe('ActsBundleManagerTest', function () {
             done();
         });
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getPermissionDef_0100 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -1998,7 +2018,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name BUNDLE::getPermissionDef
      * @tc.desc Test getPermissionDef interfaces.
      */
-    it('getPermissionDef_0200', 0, async function(done){
+    it('getPermissionDef_0200', 0, async function (done) {
         demo.getPermissionDef(CAMERA).then((infos) => {
             expect(infos.name).assertEqual("com.permission.CAMERA");
             expect(infos.grantMode).assertEqual(1);
@@ -2015,9 +2035,9 @@ describe('ActsBundleManagerTest', function () {
             done();
         });
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getPermissionDef_0200 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -2025,7 +2045,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name BUNDLE::getPermissionDef
      * @tc.desc Test getPermissionDef interfaces.
      */
-    it('getPermissionDef_0300', 0, async function(done){
+    it('getPermissionDef_0300', 0, async function (done) {
         demo.getPermissionDef(CAMERA).then((infos) => {
             expect(infos.name).assertEqual("com.permission.CAMERA");
             expect(infos.grantMode).assertEqual(1);
@@ -2050,11 +2070,9 @@ describe('ActsBundleManagerTest', function () {
             expect(infos.description).assertEqual("WeChat permission in detail");
             done();
         });
-
-
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getPermissionDef_0300 =====>')
-        },1000)
+        }, TIMEOUT)
 
     })
 
@@ -2063,7 +2081,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name BUNDLE::getPermissionDef
      * @tc.desc Test getPermissionDef interfaces.
      */
-    it('getPermissionDef_0400', 0, async function(done){
+    it('getPermissionDef_0400', 0, async function (done) {
         demo.getPermissionDef('').then((infos) => {
             expect(infos.name).assertEqual("");
             expect(infos.grantMode).assertEqual("");
@@ -2072,9 +2090,9 @@ describe('ActsBundleManagerTest', function () {
             expect(infos.description).assertEqual("");
             done();
         });
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getPermissionDef_0400 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -2082,9 +2100,9 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name BUNDLE::getPermissionDef
      * @tc.desc Test getPermissionDef interfaces.
      */
-    it('getPermissionDef_0500', 0, async function(done){
+    it('getPermissionDef_0500', 0, async function (done) {
 
-        await demo.getPermissionDef('error').then((infos) => {
+        demo.getPermissionDef('error').then((infos) => {
             expect(infos.name).assertEqual("");
             expect(infos.grantMode).assertEqual("");
             expect(infos.availableScope).assertEqual(0);
@@ -2093,9 +2111,9 @@ describe('ActsBundleManagerTest', function () {
             done();
         });
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getPermissionDef_0500 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -2103,7 +2121,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name BUNDLE::getPermissionDef
      * @tc.desc Test getPermissionDef interfaces.
      */
-    it('getPermissionDef_0600', 0, async function(done){
+    it('getPermissionDef_0600', 0, async function (done) {
         await demo.getPermissionDef(CAMERA, OnReceiveEvent);
 
         function OnReceiveEvent(err, data) {
@@ -2115,9 +2133,9 @@ describe('ActsBundleManagerTest', function () {
             done();
         }
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getPermissionDef_0600 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -2125,7 +2143,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name BUNDLE::getPermissionDef
      * @tc.desc Test getPermissionDef interfaces.
      */
-    it('getPermissionDef_0700', 0, async function(done){
+    it('getPermissionDef_0700', 0, async function (done) {
         await demo.getPermissionDef(CAMERA, OnReceiveEvent1);
 
         await demo.getPermissionDef(MUSIC, OnReceiveEvent2);
@@ -2147,9 +2165,9 @@ describe('ActsBundleManagerTest', function () {
             done();
         }
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getPermissionDef_0700 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -2157,7 +2175,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name BUNDLE::getPermissionDef
      * @tc.desc Test getPermissionDef interfaces.
      */
-    it('getPermissionDef_0800', 0, async function(done){
+    it('getPermissionDef_0800', 0, async function (done) {
         await demo.getPermissionDef(CAMERA, OnReceiveEvent1);
         await demo.getPermissionDef(MUSIC, OnReceiveEvent2);
         await demo.getPermissionDef(WECHAT, OnReceiveEvent3);
@@ -2201,9 +2219,9 @@ describe('ActsBundleManagerTest', function () {
             });
             done();
         })
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getPermissionDef_0800 =====>')
-        },1000)
+        }, TIMEOUT)
     })
     function OnReceiveEvent1(err, data) {
         expect(data.name).assertEqual("com.permission.CAMERA");
@@ -2232,8 +2250,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name BUNDLE::getPermissionDef
      * @tc.desc Test getPermissionDef interfaces.
      */
-    it('getPermissionDef_0900', 0, async function(done)
-    {
+    it('getPermissionDef_0900', 0, async function (done) {
         await demo.getPermissionDef('', OnReceiveEvent);
 
         function OnReceiveEvent(err, data) {
@@ -2244,9 +2261,9 @@ describe('ActsBundleManagerTest', function () {
             expect(data.description).assertEqual("");
             done();
         }
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getPermissionDef_0900 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -2254,7 +2271,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name BUNDLE::getPermissionDef
      * @tc.desc Test getPermissionDef interfaces.
      */
-    it('getPermissionDef_1000', 0, async function(done){
+    it('getPermissionDef_1000', 0, async function (done) {
         await demo.getPermissionDef('error', OnReceiveEvent);
         function OnReceiveEvent(err, data) {
             expect(data.name).assertEqual("");
@@ -2264,9 +2281,9 @@ describe('ActsBundleManagerTest', function () {
             expect(data.description).assertEqual("");
             done();
         }
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> getPermissionDef_1000 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -2275,65 +2292,16 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test install interfaces.
      */
     it('install_0100', 0, async function (done) {
-        demo.getBundleInstaller().then((data) => {
-            data.uninstall(NAME1, {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            });
-            data.uninstall(NAME2, {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            });
-            data.uninstall(NAME3, {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            });
-            data.uninstall(NAME4, {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            });
-            data.uninstall(NAME5, {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            });
-            data.install([PATH + BMSJSTEST1], {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEventO);
-        });
-        demo.getBundleInstaller().then((data) => {
-            data.uninstall(NAME1, {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            });
-            done();
-        });
-        setTimeout(function() {
-            console.info('====> install_0100 =====>')
-        },1000)
-    })
-    async function OnReceiveinstallEventO(err, data) {
-        expect(typeof data).assertEqual(OBJECT);
-        expect(data.statusMessage).assertEqual(SUCCESS);
+        await install([PATH + BMSJSTEST1]);
         var datainfo = await demo.getBundleInfo(NAME1, 1);
-        console.info('====> install_0100 =====>'+ datainfo.name);
         expect(datainfo.name).assertEqual(NAME1);
         expect(datainfo.uid).assertLarger(UIDMINVALUE);
-    }
+        await uninstall(NAME1)
+        done();
+        setTimeout(function () {
+            console.info('====> install_0100 =====>')
+        }, TIMEOUT)
+    })
 
     /**
      * @tc.number install_0200
@@ -2341,34 +2309,15 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test install interfaces.
      */
     it('install_0200', 0, async function (done) {
-        demo.getBundleInstaller().then((data) => {
-            data.install([PATH + BMSJSTEST2], {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-            data.install([PATH + BMSJSTEST3], {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-
-            async function OnReceiveinstallEvent(err, data) {
-                expect(typeof data).assertEqual(OBJECT);
-                expect(data.statusMessage).assertEqual(SUCCESS);
-                var datainfo = await demo.getBundleInfo(NAME2, 1);
-                expect(datainfo.name).assertEqual(NAME2);
-                expect(datainfo.uid).assertLarger(UIDMINVALUE);
-                done();
-            }
-            setTimeout(function() {
-                console.info('====> install_0200 =====>')
-            },1000)
-
-        });
-
+        await install([PATH + BMSJSTEST2])
+        var datainfo = await demo.getBundleInfo(NAME2, 1);
+        expect(datainfo.name).assertEqual(NAME2);
+        expect(datainfo.uid).assertLarger(UIDMINVALUE);
+        done();
+        setTimeout(function () {
+            console.info('====> install_0200 =====>')
+        }, TIMEOUT)
+        await uninstall(NAME2);
     })
 
     /**
@@ -2377,46 +2326,23 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test install interfaces.
      */
     it('install_0300', 0, async function (done) {
-        demo.getBundleInstaller().then((data) => {
-            data.install([PATH + BMSJSTEST4], {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-            data.install([PATH + BMSJSTEST5], {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-            data.install([PATH + BMSJSTEST6], {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-
-            async function OnReceiveinstallEvent(err, data) {
-                expect(typeof data).assertEqual(OBJECT);
-                expect(data.statusMessage).assertEqual(SUCCESS);
-                var datainfo1 = await demo.getBundleInfo(NAME3, 1);
-                expect(datainfo1.name).assertEqual(NAME3);
-                expect(datainfo1.uid).assertLarger(UIDMINVALUE);
-                var datainfo2 = await demo.getBundleInfo(NAME4, 1);
-                expect(datainfo2.name).assertEqual(NAME4);
-                expect(datainfo2.uid).assertLarger(UIDMINVALUE);
-                var datainfo3 = await demo.getBundleInfo(NAME5, 1);
-                expect(datainfo3.name).assertEqual(NAME5);
-                expect(datainfo3.uid).assertLarger(UIDMINVALUE);
-                done();
-            }
-            setTimeout(function() {
-                console.info('====> install_0300 =====>')
-            },1000)
-        });
-
-
+        await install([PATH + BMSJSTEST4, PATH + BMSJSTEST5, PATH + BMSJSTEST6]);
+        var datainfo1 = await demo.getBundleInfo(NAME3, 1);
+        expect(datainfo1.name).assertEqual(NAME3);
+        expect(datainfo1.uid).assertLarger(UIDMINVALUE);
+        var datainfo2 = await demo.getBundleInfo(NAME4, 1);
+        expect(datainfo2.name).assertEqual(NAME4);
+        expect(datainfo2.uid).assertLarger(UIDMINVALUE);
+        var datainfo3 = await demo.getBundleInfo(NAME5, 1);
+        expect(datainfo3.name).assertEqual(NAME5);
+        expect(datainfo3.uid).assertLarger(UIDMINVALUE);
+        await uninstall(NAME3);
+        await uninstall(NAME4);
+        await uninstall(NAME5);
+        done();
+        setTimeout(function () {
+            console.info('====> install_0300 =====>')
+        }, TIMEOUT)
     })
 
     /**
@@ -2425,8 +2351,8 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test install interfaces.
      */
     it('install_0400', 0, async function (done) {
-        demo.getBundleInstaller().then((data) => {
-            data.install([PATH + ERROR], {
+        demo.getBundleInstaller().then(async (data) => {
+            await data.install([PATH + ERROR], {
                 param: {
                     userId: 0,
                     isKeepData: false
@@ -2436,13 +2362,13 @@ describe('ActsBundleManagerTest', function () {
             function OnReceiveinstallEvent(err, data) {
                 expect(typeof data).assertEqual(OBJECT);
                 expect(data.statusMessage).assertEqual("STATUS_INSTALL_FAILURE_INVALID");
+                done();
             }
-            done();
         });
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> install_0400 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -2462,12 +2388,12 @@ describe('ActsBundleManagerTest', function () {
             function OnReceiveinstallEvent(err, data) {
                 expect(typeof data).assertEqual(OBJECT);
                 expect(data.statusMessage).assertEqual("STATUS_INSTALL_FAILURE_INVALID");
+                done();
             }
-            done();
         });
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> install_0500 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -2476,34 +2402,36 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test install interfaces.
      */
     it('install_0600', 0, async function (done) {
-        demo.getBundleInstaller().then((data) => {
-            data.install([PATH + BMSJSTEST1], {
-                param: {
-                    userId: 0,
-                    isKeepData: true
-                }
-            }, OnReceiveinstallEvent);
-
-            function OnReceiveinstallEvent(err, data) {
-                expect(typeof data).assertEqual(OBJECT);
-                expect(data.statusMessage).assertEqual(SUCCESS);
+        let data = await demo.getBundleInstaller()
+        await data.install([PATH + BMSJSTEST1], {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: true
             }
-        });
-        var datainfo1 = await demo.getBundleInfo(NAME1, 1);
-        expect(datainfo1.name).assertEqual(NAME1);
-        expect(datainfo1.uid).assertLarger(UIDMINVALUE);
-        demo.getBundleInstaller().then((info) => {
-            info.uninstall(NAME1, {
-                param: {
-                    userId: 0,
-                    isKeepData: true
-                }
-            });
+        }, OnReceiveinstallEvent);
+
+        async function OnReceiveinstallEvent(err, data) {
+            expect(typeof data).assertEqual(OBJECT);
+            expect(data.statusMessage).assertEqual(SUCCESS);
+            var datainfo1 = await demo.getBundleInfo(NAME1, 1);
+            expect(datainfo1.name).assertEqual(NAME1);
+            expect(datainfo1.uid).assertLarger(UIDMINVALUE);
+        }
+        await data.uninstall(NAME1, {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: true
+            }
+        }, async (err, data) => {
+            expect(typeof data).assertEqual(OBJECT);
+            expect(data.statusMessage).assertEqual("SUCCESS");
             done();
         });
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> install_0600 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -2526,9 +2454,9 @@ describe('ActsBundleManagerTest', function () {
             }
             done();
         });
-        setTimeout(function() {
+        setTimeout(function () {
             console.info('====> install_0700 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -2537,55 +2465,23 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test install interfaces.
      */
     it('install_0800', 0, async function (done) {
-        demo.getBundleInstaller().then((data) => {
-            data.install([PATH + BMSJSTEST8], {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-
-            async function OnReceiveinstallEvent(err, data) {
-                expect(typeof data).assertEqual(OBJECT);
-                expect(data.statusMessage).assertEqual(SUCCESS);
-                var datainfo = await demo.getBundleInfo(THIRD1, 1);
-                expect(datainfo.name).assertEqual(THIRD1);
-                expect(datainfo.uid).assertLarger(UIDMINVALUE);
-                expect(datainfo.versionCode).assertEqual(VERSIONCODE1);
-                expect(datainfo.versionName).assertEqual(VERSIONNAME1);
-            }
-        });
-        demo.getBundleInstaller().then((info) => {
-            info.install([PATH + BMSJSTEST9], {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-
-            async function OnReceiveinstallEvent(err, data) {
-                expect(typeof data).assertEqual(OBJECT);
-                expect(data.statusMessage).assertEqual(SUCCESS);
-                var datainfo = await demo.getBundleInfo(THIRD1, 1);
-                expect(datainfo.name).assertEqual(THIRD1);
-                expect(datainfo.uid).assertLarger(UIDMINVALUE);
-                expect(datainfo.versionCode).assertEqual(VERSIONCODE2);
-                expect(datainfo.versionName).assertEqual(VERSIONNAME2);
-            }
-        });
-        demo.getBundleInstaller().then((data) => {
-            data.uninstall(THIRD1, {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            });
-            done();
-        });
-
-        setTimeout(function() {
+        await install([PATH + BMSJSTEST8]);
+        var datainfo = await demo.getBundleInfo(THIRD1, 1);
+        expect(datainfo.name).assertEqual(THIRD1);
+        expect(datainfo.uid).assertLarger(UIDMINVALUE);
+        expect(datainfo.versionCode).assertEqual(VERSIONCODE1);
+        expect(datainfo.versionName).assertEqual(VERSIONNAME1);
+        await install([PATH + BMSJSTEST9]);
+        var datainfo = await demo.getBundleInfo(THIRD1, 1);
+        expect(datainfo.name).assertEqual(THIRD1);
+        expect(datainfo.uid).assertLarger(UIDMINVALUE);
+        expect(datainfo.versionCode).assertEqual(VERSIONCODE2);
+        expect(datainfo.versionName).assertEqual(VERSIONNAME2);
+        await uninstall(THIRD1)
+        done();
+        setTimeout(function () {
             console.info('====> install_0800 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
     /**
@@ -2594,335 +2490,132 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test install interfaces.
      */
     it('install_0900', 0, async function (done) {
-        demo.getBundleInstaller().then((data) => {
-            data.install([PATH + BMSJSTEST9], {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-
-            async function OnReceiveinstallEvent(err, data) {
-                expect(typeof data).assertEqual(OBJECT);
-                expect(data.statusMessage).assertEqual(SUCCESS);
-                var datainfo = await demo.getBundleInfo(THIRD1, 1);
-                expect(datainfo.name).assertEqual(THIRD1);
-                expect(datainfo.uid).assertLarger(UIDMINVALUE);
-                expect(datainfo.versionCode).assertEqual(VERSIONCODE2);
-                expect(datainfo.versionName).assertEqual(VERSIONNAME2);
+        let data = await demo.getBundleInstaller();
+        await data.install([PATH + BMSJSTEST9], {
+            param: {
+                userId: 0,
+                isKeepData: false
             }
+        }, async (err, data) => {
+            expect(typeof data).assertEqual(OBJECT);
+            expect(data.statusMessage).assertEqual(SUCCESS);
+            var datainfo = await demo.getBundleInfo(THIRD1, 1);
+            expect(datainfo.versionCode).assertEqual(VERSIONCODE2);
+            expect(datainfo.versionName).assertEqual(VERSIONNAME2);
         });
-
-        demo.getBundleInstaller().then((info) => {
-            info.install([PATH + BMSJSTEST8], {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-
-            async function OnReceiveinstallEvent(err, data) {
-                expect(typeof data).assertEqual(OBJECT);
-                expect(data.statusMessage).assertEqual("STATUS_INSTALL_FAILURE_INCOMPATIBLE");
-                var datainfo = await demo.getBundleInfo(THIRD1, 1);
-                expect(datainfo.name).assertEqual(THIRD1);
-                expect(datainfo.uid).assertLarger(UIDMINVALUE);
-                expect(datainfo.versionCode).assertEqual(VERSIONCODE2);
-                expect(datainfo.versionName).assertEqual(VERSIONNAME2);
+        await data.install([PATH + BMSJSTEST8], {
+            param: {
+                userId: 0,
+                isKeepData: false
             }
-        });
+        }, OnReceiveinstallEvent);
 
-        demo.getBundleInstaller().then((data) => {
-            data.uninstall(THIRD1, {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            });
+        async function OnReceiveinstallEvent(err, data) {
+            expect(typeof data).assertEqual(OBJECT);
+            expect(data.statusMessage).assertEqual("STATUS_INSTALL_FAILURE_INCOMPATIBLE");
+            var datainfo = await demo.getBundleInfo(THIRD1, 1);
+            expect(datainfo.versionCode).assertEqual(VERSIONCODE2);
+            expect(datainfo.versionName).assertEqual(VERSIONNAME2);
+            await uninstall(THIRD1);
             done();
-        });
-        setTimeout(function() {
+        }
+        setTimeout(function () {
             console.info('====> install_0900 =====>')
-        },1000)
+        }, TIMEOUT)
     })
 
-    /**
-     * @tc.number uninstall_0100
-     * @tc.name BUNDLE::uninstall
-     * @tc.desc Test uninstall interfaces.
-     */
-    it('uninstall_0100', 0, async function (done) {
-        demo.getBundleInstaller().then((data) => {
-            data.install([PATH + BMSJSTEST1], {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            });
-        });
-        var datainfo1 = await demo.getBundleInfo(NAME1, 1);
-        expect(datainfo1.name).assertEqual(NAME1);
-        demo.getBundleInstaller().then((data) => {
-            data.uninstall(NAME1, {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-
-            function OnReceiveinstallEvent(err, data) {
-                expect(typeof data).assertEqual(OBJECT);
-                expect(data.statusMessage).assertEqual(SUCCESS);
+    async function install(bundlePath) {
+        let result = await demo.getBundleInstaller();
+        result.install(bundlePath, {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
             }
-        });
-        var datainfo2 = await demo.getBundleInfo(NAME1, 1);
-        expect(datainfo2.name).assertEqual('');
-        done();
-        setTimeout(function() {
-            console.info('====> uninstall_0100 =====>')
-        },1000)
-    })
+        }, OnReceiveInstallEvent);
+
+        function OnReceiveInstallEvent(err, data) {
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual("SUCCESS");
+        };
+    }
+    async function uninstall(bundleName) {
+        let result = await demo.getBundleInstaller();
+        result.uninstall(bundleName, {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
+            }
+        }, OnReceiveUninstallEvent);
+
+        function OnReceiveUninstallEvent(err, data) {
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual("SUCCESS");
+        };
+    }
 
     /**
-     * @tc.number uninstall_0200
-     * @tc.name BUNDLE::uninstall
-     * @tc.desc Test uninstall interfaces.
+     * @tc.number install_1000
+     * @tc.name BUNDLE::install
+     * @tc.desc Test install interfaces.
      */
-    it('uninstall_0200', 0, async function (done) {
-        demo.getBundleInstaller().then((data) => {
-            data.install([PATH + BMSJSTEST1], {
-                param: {
-                    userId: 0,
-                    isKeepData: false
+    it('install_1000', 0, async function (done) {
+        await install([PATH + BMSJSTEST8]);
+        var Subscriber;
+        let id;
+        commonEvent.createSubscriber(subscriberInfoEvent_0100).then((data) => {
+            console.debug('====>Create Subscriber====>');
+            Subscriber = data;
+            commonEvent.subscribe(Subscriber, SubscribeCallBack);
+        })
+        function UnSubscribeCallback() {
+            console.debug('====>UnSubscribe CallBack====>');
+        }
+        function timeout() {
+            expect().assertFail();
+            console.debug('install_1000=====timeout======');
+            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
+        }
+        id = setTimeout(timeout, START_ABILITY_TIMEOUT);
+        console.debug('=======start ability========')
+        let result = await featureAbility.startAbility(
+            {
+                want:
+                {
+                    bundleName: 'com.example.third1',
+                    abilityName: 'com.example.third1.MainAbility'
                 }
-            }, async (err, data)=>{
-                var datainfo1 = await demo.getBundleInfo(NAME1, 1);
-                expect(datainfo1.name).assertEqual(NAME1);
-            });
-            data.install([PATH + BMSJSTEST2], {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, async (err, data)=>{
-                var datainfo2 = await demo.getBundleInfo(NAME2, 1);
-                expect(datainfo2.name).assertEqual(NAME2);
-            });
-        });
-
-        demo.getBundleInstaller().then((data) => {
-            data.uninstall(NAME1, {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-            data.uninstall(NAME2, {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-
-            async function OnReceiveinstallEvent(err, data) {
-                expect(typeof data).assertEqual(OBJECT);
-                expect(data.statusMessage).assertEqual(SUCCESS);
-                var datainfo3 = await demo.getBundleInfo(NAME1, 1);
-                expect(datainfo3.name).assertEqual('');
-                var datainfo4 = await demo.getBundleInfo(NAME2, 1);
-                expect(datainfo4.name).assertEqual('');
-                done();
             }
-        });
-        setTimeout(function() {
-            console.info('====> uninstall_0200 =====>')
-        },1000)
-    })
-
-    /**
-     * @tc.number uninstall_0300
-     * @tc.name BUNDLE::uninstall
-     * @tc.desc Test uninstall interfaces.
-     */
-    it('uninstall_0300', 0, async function (done) {
-        demo.getBundleInstaller().then((data) => {
-            data.install([PATH + BMSJSTEST4], {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, async (err, data)=>{
-                var datainfo1 = await demo.getBundleInfo(NAME3, 1);
-                expect(datainfo1.name).assertEqual(NAME3);
-            });
-            data.install([PATH + BMSJSTEST5], {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, async (err, data)=>{
-                var datainfo2 = await demo.getBundleInfo(NAME4, 1);
-                expect(datainfo2.name).assertEqual(NAME4);
-            });
-            data.install([PATH + BMSJSTEST6], {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, async (err, data)=>{
-                var datainfo3 = await demo.getBundleInfo(NAME5, 1);
-                expect(datainfo3.name).assertEqual(NAME5);
-            });
-        });
-        await demo.getBundleInstaller().then((data) => {
-            data.uninstall(NAME3, {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-            data.uninstall(NAME4, {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-            data.uninstall(NAME5, {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-
-                async function OnReceiveinstallEvent(err, data) {
-                expect(typeof data).assertEqual(OBJECT);
-                expect(data.statusMessage).assertEqual(SUCCESS);
-                var datainfo4 = await demo.getBundleInfo(NAME3, 1);
-                expect(datainfo4.name).assertEqual('');
-                var datainfo5 = await demo.getBundleInfo(NAME4, 1);
-                expect(datainfo5.name).assertEqual('');
-                var datainfo6 = await demo.getBundleInfo(NAME5, 1);
-                expect(datainfo6.name).assertEqual('');
-                done();
+        )
+        async function SubscribeCallBack(err, data) {
+            clearTimeout(id);
+            expect(data.event).assertEqual('Third1_Publish_CommonEvent');
+            console.debug('====>Subscribe CallBack data:====>' + JSON.stringify(data));
+            let processInfos1 = await abilityManager.getActiveProcessInfos();
+            expect(typeof processInfos1).assertEqual('object');
+            let processMap1 = new Map();
+            let processMap2 = new Map();
+            for (var i = 0, len = processInfos1.length; i < len; i++) {
+                console.debug('=======Active Process uid=====' + processInfos1[i].uid);
+                processMap1.set(processInfos1[i].uid, 0);
             }
-        });
-
-        setTimeout(function() {
-            console.info('====> uninstall_0300 =====>')
-        },1000)
-    })
-
-    /**
-     * @tc.number uninstall_0400
-     * @tc.name BUNDLE::uninstall
-     * @tc.desc Test uninstall interfaces.
-     */
-    it('uninstall_0400', 0, async function (done) {
-        demo.getBundleInstaller().then((data) => {
-            data.uninstall(ERROR, {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-
-            function OnReceiveinstallEvent(err, data) {
-                expect(typeof data).assertEqual(OBJECT);
-                expect(data.statusMessage).assertEqual("STATUS_UNINSTALL_FAILURE");
+            let bundleInfo = await demo.getBundleInfo('com.example.third1', 1);
+            let uid = bundleInfo.uid;
+            expect(processMap1.has(uid)).assertTrue();
+            await install([PATH + BMSJSTEST9]);
+            let processInfos2 = await abilityManager.getActiveProcessInfos();
+            for (var i = 0, len = processInfos2.length; i < len; i++) {
+                console.debug('=======Active Process uid=====' + processInfos1[i].uid);
+                processMap2.set(processInfos2[i].uid, 0);
             }
+            expect(processMap2.has(uid)).assertFalse();
+            await uninstall(THIRD1);
             done();
-        });
-
-        setTimeout(function() {
-            console.info('====> uninstall_0400 =====>')
-        },1000)
+        }
+        setTimeout(function () {
+            console.info('====> install_0900 =====>')
+        }, TIMEOUTPROCESS)
     })
-
-    /**
-     * @tc.number uninstall_0500
-     * @tc.name BUNDLE::uninstall
-     * @tc.desc Test uninstall interfaces.
-     */
-    it('uninstall_0500', 0, async function (done) {
-        demo.getBundleInstaller().then((data) => {
-            data.uninstall('', {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-
-            function OnReceiveinstallEvent(err, data) {
-                expect(typeof data).assertEqual(OBJECT);
-                expect(data.statusMessage).assertEqual("STATUS_UNINSTALL_FAILURE_ABORTED");
-            }
-            done();
-        });
-        setTimeout(function() {
-            console.info('====> uninstall_0500 =====>')
-        },1000)
-    })
-
-    /**
-     * @tc.number uninstall_0600
-     * @tc.name BUNDLE::uninstall
-     * @tc.desc Test uninstall interfaces.
-     */
-    it('uninstall_0600', 0, async function (done) {
-        demo.getBundleInstaller().then((data) => {
-            data.uninstall(LAUNCHER, {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-
-            function OnReceiveinstallEvent(err, data) {
-                expect(typeof data).assertEqual(OBJECT);
-                expect(data.statusMessage).assertEqual("STATUS_UNINSTALL_FAILURE_CONFLICT");
-            }
-            done();
-        });
-        setTimeout(function() {
-            console.info('====> uninstall_0600 =====>')
-        },1000)
-    })
-
-    /**
-     * @tc.number uninstall_0700
-     * @tc.name BUNDLE::uninstall
-     * @tc.desc Test uninstall interfaces.
-     */
-    it('uninstall_0700', 0, async function (done) {
-        demo.getBundleInstaller().then((data) => {
-            data.install([PATH + BMSJSTEST1], {
-                param: {
-                    userId: 0,
-                    isKeepData: true
-                }
-            });
-        });
-        var datainfo1 = await demo.getBundleInfo(NAME1, 1);
-        expect(datainfo1.name).assertEqual(NAME1);
-        await demo.getBundleInstaller().then((data) => {
-            data.uninstall(NAME1, {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, OnReceiveinstallEvent);
-
-            function OnReceiveinstallEvent(err, data) {
-                expect(typeof data).assertEqual(OBJECT);
-                expect(data.statusMessage).assertEqual(SUCCESS);
-            }
-        });
-        var datainfo2 = await demo.getBundleInfo(NAME1, 1);
-        expect(datainfo2.name).assertEqual('');
-        done();
-    })
-    setTimeout(function() {
-        console.info('====> uninstall_0700 =====>')
-    },1000)
 })
 

@@ -19,6 +19,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 var time = 1000
 var WantAgent;
 describe('ActsAnsWantAgentFourTest', function () {
+
     /*
      * @tc.number: ACTS_SetWant_0700
      * @tc.name: getWantAgent(OperationType.UNKNOWN_TYPE)
@@ -65,10 +66,10 @@ describe('ActsAnsWantAgentFourTest', function () {
                         (err, data) => {
                             if (err.code == 0) {
                                 console.info('----trigger success!----');
-                                console.info('==================== trigger data  ' + JSON.stringify(data) );
+                                console.info('== trigger data  ' + JSON.stringify(data) );
                             } else {
                                 console.info('----trigger failed!----');
-                                console.info('==================== trigger data  ' + JSON.stringify(data) );
+                                console.info('== trigger data  ' + JSON.stringify(data) );
                             }
                             done();
                         }

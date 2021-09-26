@@ -45,7 +45,7 @@ var bundleNameList = [
 describe('ActsAmsTestFirstScene', function () {
     console.info('----ActsAmsTestFirstScene----');
     beforeAll(async function (done) {
-        featureAbility.startAbility(
+        await featureAbility.startAbility(
             {
                 want:
                 {
@@ -73,7 +73,7 @@ describe('ActsAmsTestFirstScene', function () {
                 console.log(' removeMission data  [' + info + ']');
             }
         };
-        featureAbility.startAbility(
+        await featureAbility.startAbility(
             {
                 want:
                 {
@@ -91,8 +91,14 @@ describe('ActsAmsTestFirstScene', function () {
                 },
             },
         );
-        done();
+        setTimeout(done(), 5000);
     });
+
+    function timeout(done) {
+        expect().assertFail();
+        console.debug('Acts_Ams_test=========timeout========');
+        done();
+    }
 
     /*
     * @tc.number    : Acts_Ams_test_0100
@@ -100,36 +106,35 @@ describe('ActsAmsTestFirstScene', function () {
     * @tc.desc      : Get All Running Processes Info(by Promise)
     */
     it('Acts_Ams_test_0100', 0, async function (done) {
-        setTimeout(async function () {
-            var info = await abilitymanager.getAllRunningProcesses();
-            console.info('Acts_Ams_test_0100 getAllRunningProcesses JSON String: ' + JSON.stringify(info));
-            expect(Array.isArray(info)).assertEqual(true);
-            expect(info.length).assertEqual(4);
-            for (var i = 0; i < info.length; i++) {
-                expect(typeof (info[i].pid)).assertEqual("number");
-                expect(info[i].pid).assertLarger(0);
+        var info = await abilitymanager.getAllRunningProcesses();
+        console.info('Acts_Ams_test_0100 getAllRunningProcesses JSON String: ' + JSON.stringify(info));
+        expect(Array.isArray(info)).assertEqual(true);
+        expect(info.length).assertEqual(4);
+        for (var i = 0; i < info.length; i++) {
+            expect(typeof (info[i].pid)).assertEqual("number");
+            expect(info[i].pid).assertLarger(0);
 
-                expect(typeof (info[i].processName)).assertEqual("string");
-                expect(info[i].processName.length).assertLarger(0);
-                expect(bundleNameList.indexOf(info[i].processName)).assertLarger(-1);
+            expect(typeof (info[i].processName)).assertEqual("string");
+            expect(info[i].processName.length).assertLarger(0);
+            expect(bundleNameList.indexOf(info[i].processName)).assertLarger(-1);
 
-                expect(Array.isArray(info[i].pkgList)).assertEqual(true);
-                expect(info[i].pkgList.length).assertEqual(0);
+            expect(Array.isArray(info[i].pkgList)).assertEqual(true);
+            expect(info[i].pkgList.length).assertEqual(0);
 
-                expect(typeof (info[i].uid)).assertEqual("number");
-                expect(info[i].uid).assertLarger(0);
+            expect(typeof (info[i].uid)).assertEqual("number");
+            expect(info[i].uid).assertLarger(0);
 
-                expect(typeof (info[i].lastMemoryLevel)).assertEqual("number");
-                expect(info[i].lastMemoryLevel).assertEqual(-1);
+            expect(typeof (info[i].lastMemoryLevel)).assertEqual("number");
+            expect(info[i].lastMemoryLevel).assertEqual(-1);
 
-                expect(typeof (info[i].weight)).assertEqual("number");
-                expect(info[i].weight).assertEqual(-1);
+            expect(typeof (info[i].weight)).assertEqual("number");
+            expect(info[i].weight).assertEqual(-1);
 
-                expect(typeof (info[i].weightReasonCode)).assertEqual("number");
-                expect(info[i].weightReasonCode).assertEqual(WeightReasonCode.REASON_UNKNOWN);
-            }
-            done();
-        }, 5000);
+            expect(typeof (info[i].weightReasonCode)).assertEqual("number");
+            expect(info[i].weightReasonCode).assertEqual(WeightReasonCode.REASON_UNKNOWN);
+        }
+        done();
+        setTimeout(timeout, 5000);
     })
 
     /*
@@ -172,6 +177,7 @@ describe('ActsAmsTestFirstScene', function () {
             expect(typeof (data[i].missionDescription.iconPath)).assertEqual("string");
         }
         done();
+        setTimeout(timeout, 5000);
     })
 
     /*
@@ -213,6 +219,7 @@ describe('ActsAmsTestFirstScene', function () {
             expect(typeof (data[i].missionDescription.iconPath)).assertEqual("string");
         }
         done();
+        setTimeout(timeout, 5000);
     })
 
     /*
@@ -225,48 +232,26 @@ describe('ActsAmsTestFirstScene', function () {
         var result = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
         var info = await abilitymanager.removeMission(result[0].id);
         console.info('Acts_Ams_test_0700 removeMission data  [' + info + ']');
-        expect(info).assertLarger(0);
-        done();
-    })
-
-    /*
-    * @tc.number    : Acts_Ams_test_1100
-    * @tc.name      : moveMissionToTop : Move Mission To Top
-    * @tc.desc      : Move Mission To Top(by Promise)
-    */
-    it('Acts_Ams_test_1100', 0, async function (done) {
-        var maxnum = 10;
-        var result = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
-        var info = await abilitymanager.moveMissionToTop(result[0].id);
-        console.info('Acts_Ams_test_1100 moveMissionToTop data  [' + info + ']');
         expect(info).assertEqual(0);
         done();
+        setTimeout(timeout, 5000);
     })
 
     /*
     * @tc.number    : Acts_Ams_test_1300
-    * @tc.name      : removeMissions: Remove Missions
-    * @tc.desc      : Remove Missions(by Promise)
+    * @tc.name      : deleteMissions: delete Missions
+    * @tc.desc      : delete Missions(by Promise)
     */
     it('Acts_Ams_test_1300', 0, async function (done) {
         var maxnum = 10;
         var result = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
-        var info = await abilitymanager.removeMissions([result[0].id]);
-        console.info('Acts_Ams_test_1300 removeMissions data  [' + info + ']');
+        expect(result.length).assertEqual(1);
+        var missionID = result[0].id + 1;
+        var info = await abilitymanager.deleteMissions([missionID]);
+        console.info('Acts_Ams_test_1300 deleteMissions data  [' + info + ']');
         expect(info).assertLarger(0);
         done();
-    })
-
-    /*
-    * @tc.number    : Acts_Ams_test_0900
-    * @tc.name      : clearMissions: Clear Missions
-    * @tc.desc      : Clear Missions(by Promise)
-    */
-    it('Acts_Ams_test_0900', 0, async function (done) {
-        var info = await abilitymanager.clearMissions();
-        console.info('Acts_Ams_test_0900 clearMissions data  [' + info + ']');
-        expect(info).assertLarger(0);
-        done();
+        setTimeout(timeout, 5000);
     })
 
     /*
@@ -279,5 +264,133 @@ describe('ActsAmsTestFirstScene', function () {
         console.info('Acts_Ams_test_1500 killProcessesByBundleName data  [' + info + ']');
         expect(info).assertEqual(0);
         done();
+        setTimeout(timeout, 5000);
     })
+
+    /*
+     * @tc.number    : Acts_Ams_test_8100
+     * @tc.name      : getActiveProcessInfos : Get All Active Processes Info
+     * @tc.desc      : Get All Active Processes Info(by Promise)
+     */
+    it('Acts_Ams_test_8100', 0, async function (done) {
+        var info = await abilitymanager.getActiveProcessInfos();
+        console.info('Acts_Ams_test_8100 getActiveProcessInfos JSON String: ' + JSON.stringify(info));
+        expect(Array.isArray(info)).assertEqual(true);
+        expect(info.length).assertEqual(3);
+        for (var i = 0; i < info.length; i++) {
+            expect(typeof (info[i].pid)).assertEqual("number");
+            expect(info[i].pid).assertLarger(0);
+
+            expect(typeof (info[i].processName)).assertEqual("string");
+            expect(info[i].processName.length).assertLarger(0);
+            expect(bundleNameList.indexOf(info[i].processName)).assertLarger(-1);
+
+            expect(Array.isArray(info[i].bundleNames)).assertEqual(true);
+            expect(info[i].bundleNames.length).assertEqual(0);
+
+            expect(typeof (info[i].uid)).assertEqual("number");
+            expect(info[i].uid).assertLarger(0);
+        }
+        done();
+        setTimeout(timeout, 5000);
+    })
+
+    /*
+     * @tc.number    : Acts_Ams_test_9100
+     * @tc.name      : getActiveAbilityMissionInfos : Get Active Ability Mission Infos
+     * @tc.desc      : Get Active Ability Mission Infos(by Promise)
+     */
+    it('Acts_Ams_test_9100', 0, async function (done) {
+        var upperLimit = 20;
+        var data = await abilitymanager.getActiveAbilityMissionInfos(upperLimit);
+        console.info('Acts_Ams_test_9100 getActiveAbilityMissionInfos data ' + JSON.stringify(data));
+        expect(Array.isArray(data)).assertEqual(true);
+        expect(data.length).assertEqual(1);
+        for (var i = 0; i < data.length; i++) {
+            expect(typeof (data[i].missionId)).assertEqual("number");
+            expect(data[i].missionId).assertLarger(0);
+
+            expect(typeof (data[i].bottomAbility)).assertEqual("object");
+            expect(typeof (data[i].bottomAbility.deviceId)).assertEqual("string");
+            expect(data[i].bottomAbility.deviceId.length).assertEqual(0);
+            expect(typeof (data[i].bottomAbility.bundleName)).assertEqual("string");
+            expect(data[i].bottomAbility.bundleName.length).assertLarger(0);
+            expect(bundleNameList.indexOf(data[i].bottomAbility.bundleName)).assertLarger(-1);
+            expect(typeof (data[i].bottomAbility.abilityName)).assertEqual("string");
+            expect(data[i].bottomAbility.abilityName.length).assertLarger(0);
+            expect(abilityNameList.indexOf(data[i].bottomAbility.abilityName)).assertLarger(-1);
+            expect(typeof (data[i].bottomAbility.uri)).assertEqual("string");
+            expect(data[i].bottomAbility.uri.length).assertEqual(0);
+            expect(typeof (data[i].bottomAbility.shortName)).assertEqual("string");
+            expect(data[i].bottomAbility.shortName.length).assertEqual(0);
+
+            expect(typeof (data[i].topAbility)).assertEqual("object");
+            expect(typeof (data[i].topAbility.deviceId)).assertEqual("string");
+            expect(typeof (data[i].topAbility.bundleName)).assertEqual("string");
+            expect(data[i].topAbility.bundleName.length).assertLarger(0);
+            expect(bundleNameList.indexOf(data[i].topAbility.bundleName)).assertLarger(-1);
+            expect(typeof (data[i].topAbility.abilityName)).assertEqual("string");
+            expect(data[i].topAbility.abilityName.length).assertLarger(0);
+            expect(abilityNameList.indexOf(data[i].topAbility.abilityName)).assertLarger(-1);
+            expect(typeof (data[i].topAbility.uri)).assertEqual("string");
+            expect(data[i].topAbility.uri.length).assertEqual(0);
+            expect(typeof (data[i].topAbility.shortName)).assertEqual("string");
+            expect(data[i].topAbility.shortName.length).assertEqual(0);
+
+            expect(typeof (data[i].windowMode)).assertEqual("number");
+            expect(data[i].windowMode).assertEqual(0);
+        }
+        done();
+        setTimeout(timeout, 5000);
+    })
+
+    /*
+     * @tc.number    : Acts_Ams_test_10100
+     * @tc.name      : getPreviousAbilityMissionInfos : Get Previous Ability Mission Infos
+     * @tc.desc      : Get Previous Ability Mission Infos(by Promise)
+     */
+    it('Acts_Ams_test_10100', 0, async function (done) {
+        var upperLimit = 20;
+        var data = await abilitymanager.getPreviousAbilityMissionInfos(upperLimit);
+        console.info('Acts_Ams_test_10100 getPreviousAbilityMissionInfos data ' + JSON.stringify(data));
+        expect(Array.isArray(data)).assertEqual(true);
+        expect(data.length).assertEqual(1);
+        for (var i = 0; i < data.length; i++) {
+            expect(typeof (data[i].missionId)).assertEqual("number");
+            expect(data[i].missionId).assertLarger(0);
+
+            expect(typeof (data[i].bottomAbility)).assertEqual("object");
+            expect(typeof (data[i].bottomAbility.deviceId)).assertEqual("string");
+            expect(data[i].bottomAbility.deviceId.length).assertEqual(0);
+            expect(typeof (data[i].bottomAbility.bundleName)).assertEqual("string");
+            expect(data[i].bottomAbility.bundleName.length).assertLarger(0);
+            expect(bundleNameList.indexOf(data[i].bottomAbility.bundleName)).assertLarger(-1);
+            expect(typeof (data[i].bottomAbility.abilityName)).assertEqual("string");
+            expect(data[i].bottomAbility.abilityName.length).assertLarger(0);
+            expect(abilityNameList.indexOf(data[i].bottomAbility.abilityName)).assertLarger(-1);
+            expect(typeof (data[i].bottomAbility.uri)).assertEqual("string");
+            expect(data[i].bottomAbility.uri.length).assertEqual(0);
+            expect(typeof (data[i].bottomAbility.shortName)).assertEqual("string");
+            expect(data[i].bottomAbility.shortName.length).assertEqual(0);
+
+            expect(typeof (data[i].topAbility)).assertEqual("object");
+            expect(typeof (data[i].topAbility.deviceId)).assertEqual("string");
+            expect(typeof (data[i].topAbility.bundleName)).assertEqual("string");
+            expect(data[i].topAbility.bundleName.length).assertLarger(0);
+            expect(bundleNameList.indexOf(data[i].topAbility.bundleName)).assertLarger(-1);
+            expect(typeof (data[i].topAbility.abilityName)).assertEqual("string");
+            expect(data[i].topAbility.abilityName.length).assertLarger(0);
+            expect(abilityNameList.indexOf(data[i].topAbility.abilityName)).assertLarger(-1);
+            expect(typeof (data[i].topAbility.uri)).assertEqual("string");
+            expect(data[i].topAbility.uri.length).assertEqual(0);
+            expect(typeof (data[i].topAbility.shortName)).assertEqual("string");
+            expect(data[i].topAbility.shortName.length).assertEqual(0);
+
+            expect(typeof (data[i].windowMode)).assertEqual("number");
+            expect(data[i].windowMode).assertEqual(0);
+        }
+        done();
+        setTimeout(timeout, 5000);
+    })
+
 })

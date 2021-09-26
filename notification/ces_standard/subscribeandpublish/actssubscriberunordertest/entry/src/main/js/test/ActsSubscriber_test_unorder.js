@@ -30,6 +30,7 @@ describe('ActsSubscriberTestUnorder', async function (done) {
     var commonEventSubscriber010;
     var commonEventSubscriber011_1;
     var commonEventSubscriber011_2;
+    var commonEventSubscriber012;
 
     function publishCallback(err) {
         console.info("==========================>publishCallback");
@@ -596,6 +597,46 @@ describe('ActsSubscriberTestUnorder', async function (done) {
         setTimeout(function (){
             console.debug("===================ActsSubscriberTestUnorder_1100 end==================");
             done();
+        }, 30000);
+    })
+
+    /*
+     * @tc.number    : ActsSubscriberTestUnorder_1200
+     * @tc.name      : verify subscribe and publish : Check different subscribes and publish different common event
+     * @tc.desc      : Check the subscriber can receive event "publish_event1200" type of the callback interface
+     */
+    it('ActsSubscriberTestUnorder_1200', 0, async function (done) {
+        console.info("===============ActsSubscriberTestUnorder_1200==========================>");
+        function subscriberCallBack012(err, data) {
+            console.info("==========================>subscriberCallBack012");
+            expect(data.event).assertEqual("publish_event1200");
+            expect(data.bundleName).assertEqual("");
+            expect(data.code).assertEqual(0);
+            expect(data.data).assertEqual("");
+        }
+
+        var commonEventSubscribeInfo = {
+            events: ["publish_event1200"],
+        };
+
+        function getSubscribeInfo1200CallBack(err, data) {
+            console.info("==========================>getSubscribeInfo1200CallBack=======================>");
+            expect(data.events[0]).assertEqual("publish_event1200");
+            Subscriber.subscribe(commonEventSubscriber012, subscriberCallBack012);
+            Subscriber.publish("publish_event0100", publishCallback);
+        }
+
+        function createSubscriber1200CallBack(err, data) {
+            console.info("==========================>createSubscriber1200CallBack=======================>");
+            commonEventSubscriber012 = data;
+            data.getSubscribeInfo(getSubscribeInfo1200CallBack);
+        }
+
+        Subscriber.createSubscriber(commonEventSubscribeInfo, createSubscriber1200CallBack);
+
+        setTimeout(function (){
+            console.debug("===================ActsSubscriberTestUnorder_1200 end==================");
+			done();
         }, 30000);
     })
 })

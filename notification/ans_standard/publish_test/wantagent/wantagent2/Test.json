@@ -10,8 +10,8 @@
         {
             "test-file-name": [
                 "ActsAnsWantAgentTwoTest.hap",
-                "test1.hap",
-                "test2.hap"
+		"test1.hap",
+		"test2.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

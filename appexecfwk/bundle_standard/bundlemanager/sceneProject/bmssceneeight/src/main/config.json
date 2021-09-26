@@ -66,6 +66,7 @@
           }
         ],
         "launchType": "standard",
+        "visible": true,
         "metaData": {
           "parameters": [{
             "name": "Data1",

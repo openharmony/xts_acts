@@ -1126,8 +1126,7 @@ describe('ActsFeatureAbilityTest', function () {
                     bundleName: "com.example.startabilityforresult",
                     abilityName: "com.example.startabilityforresult.MainAbility",
                     uri: ""
-                },
-                requestCode: 2,
+                }
             },
             (error, result) => {
                 console.log('featureAbilityTest ACTS_StartAbilityForResult_0400 first asyncCallback ' +
@@ -1645,33 +1644,6 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Check the return value of the interface (by promise)
      */
     it('ACTS_FinishWithResult_0200', 0, async function (done) {
-        var Subscriber;
-        let id;
-        function SubscribeCallBack(err, data) {
-            clearTimeout(id);
-            expect(data.event).assertEqual("ACTS_FinishWithResult_0200_CommonEvent");
-            console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-        }
-
-        commonEvent.createSubscriber(subscriberInfo_ACTS_FinishWithResult_0200).then(async (data) => {
-            console.debug("====>Create Subscriber====>");
-            Subscriber = data;
-            await commonEvent.subscribe(Subscriber, SubscribeCallBack);
-        })
-
-        function UnSubscribeCallback() {
-            console.debug("====>UnSubscribe CallBack====>");
-        }
-
-        function timeout() {
-            expect().assertFail();
-            console.debug('ACTS_FinishWithResult_0200=====timeout======');
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-            done();
-        }
-
-        id = setTimeout(timeout, START_ABILITY_TIMEOUT);
         var promise = await featureAbility.startAbilityForResult(
             {
                 want:
@@ -1719,7 +1691,7 @@ describe('ActsFeatureAbilityTest', function () {
         done();
         setTimeout(function () {
             console.info('====> ACTS_FinishWithResult_0200 =====>')
-        }, TIMEOUTFORRESULT)
+        }, 10000)
     })
 
     /**
@@ -1729,34 +1701,6 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Check the return value of the interface (by promise)
      */
     it('ACTS_FinishWithResult_0300', 0, async function (done) {
-        var Subscriber;
-        let id;
-
-        function SubscribeCallBack(err, data) {
-            clearTimeout(id);
-            expect(data.event).assertEqual("ACTS_FinishWithResult_0300_CommonEvent");
-            console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-        }
-
-        commonEvent.createSubscriber(subscriberInfo_ACTS_FinishWithResult_0300).then(async (data) => {
-            console.debug("====>Create Subscriber====>");
-            Subscriber = data;
-            await commonEvent.subscribe(Subscriber, SubscribeCallBack);
-        })
-
-        function UnSubscribeCallback() {
-            console.debug("====>UnSubscribe CallBack====>");
-        }
-
-        function timeout() {
-            expect().assertFail();
-            console.debug('ACTS_FinishWithResult_0300=====timeout======');
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-            done();
-        }
-
-        id = setTimeout(timeout, START_ABILITY_TIMEOUT);
         var promise = await featureAbility.startAbilityForResult(
             {
                 want:
@@ -1875,7 +1819,6 @@ describe('ActsFeatureAbilityTest', function () {
             console.log("info.moduleInfos[" + j + "].moduleName : " + info.moduleInfos[j].moduleName);
             console.log("info.moduleInfos[" + j + "].moduleSourceDir : " + info.moduleInfos[j].moduleSourceDir);
         }
-        console.log("flags : " + info.flags);
         console.log("entryDir : " + info.entryDir);
 
         expect(typeof (info)).assertEqual("object");
@@ -1893,7 +1836,6 @@ describe('ActsFeatureAbilityTest', function () {
         expect(Array.isArray(info.moduleSourceDirs)).assertEqual(true);
         expect(Array.isArray(info.permissions)).assertEqual(true);
         expect(Array.isArray(info.moduleInfos)).assertEqual(true);
-        expect(typeof (info.flags)).assertEqual("number");
         expect(typeof (info.entryDir)).assertEqual("string");
 
         expect(info.name).assertEqual("com.example.actsfeatureabilitytest");
@@ -1913,7 +1855,6 @@ describe('ActsFeatureAbilityTest', function () {
         expect(info.moduleInfos[0].moduleName).assertEqual("entry");
         expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/accounts/account_0/applications/" +
             "com.example.actsfeatureabilitytest/com.example.actsfeatureabilitytest");
-        expect(info.flags).assertEqual(0);
         expect(info.entryDir).assertEqual("/data/accounts/account_0/applications/" +
             "com.example.actsfeatureabilitytest/com.example.actsfeatureabilitytest");
     }
@@ -1924,9 +1865,10 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Check the return type of the interface (by Promise)
      */
     it('ACTS_GetApplicationInfo_0100', 0, async function (done) {
-        var promise = featureAbility.getApplicationInfo();
+        var context = featureAbility.getContext();
+        var promise = context.getApplicationInfo();
         expect(typeof (promise)).assertEqual("object");
-        var info = await featureAbility.getApplicationInfo();
+        var info = await context.getApplicationInfo();
         checkApplicationInfo(info);
         done();
         setTimeout(function () {
@@ -1940,7 +1882,8 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      */
     it('ACTS_GetApplicationInfo_0200', 0, async function (done) {
-        var result = featureAbility.getApplicationInfo(
+        var context = featureAbility.getContext()
+        var result = context.getApplicationInfo(
             (err, data) => {
                 checkApplicationInfo(data);
                 done()
@@ -1969,9 +1912,10 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Check the return type of the interface (by promise)
      */
     it('ACTS_GetProcessInfo_0100', 0, async function (done) {
-        var promise = featureAbility.getProcessInfo();
+        var context = featureAbility.getContext()
+        var promise = context.getProcessInfo();
         expect(typeof (promise)).assertEqual("object");
-        var info = await featureAbility.getProcessInfo();
+        var info = await context.getProcessInfo();
         checkProcessInfo(info);
         done();
         setTimeout(function () {
@@ -1985,7 +1929,8 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Check the return type of the interface (by AsyncCallback)
      */
     it('ACTS_GetProcessInfo_0200', 0, async function (done) {
-        var result = featureAbility.getProcessInfo(
+        var context = featureAbility.getContext()
+        var result = context.getProcessInfo(
             (err, data) => {
                 checkProcessInfo(data);
                 done()
@@ -2025,9 +1970,10 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Check the return value of the interface (by promise)
      */
     it('ACTS_GetElementName_0100', 0, async function (done) {
-        var promise = featureAbility.getElementName();
+        var context = featureAbility.getContext()
+        var promise = context.getElementName();
         expect(typeof (promise)).assertEqual("object");
-        var info = await featureAbility.getElementName();
+        var info = await context.getElementName();
         checkElementName(info);
         done();
         setTimeout(function () {
@@ -2041,7 +1987,8 @@ describe('ActsFeatureAbilityTest', function () {
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
     it('ACTS_GetElementName_0200', 0, async function (done) {
-        var result = featureAbility.getElementName(
+        var context = featureAbility.getContext()
+        var result = context.getElementName(
             (err, data) => {
                 checkElementName(data);
                 done()
@@ -2347,9 +2294,10 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Check the return value of the interface (by promise)
      */
     it('ACTS_GetProcessName_0100', 0, async function (done) {
-        var promise = featureAbility.getProcessName();
+        var context = featureAbility.getContext();
+        var promise = context.getProcessName();
         expect(typeof (promise)).assertEqual("object");
-        var info = await featureAbility.getProcessName();
+        var info = await context.getProcessName();
         checkProcessName(info);
         done();
         setTimeout(function () {
@@ -2363,7 +2311,8 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      */
     it('ACTS_GetProcessName_0200', 0, async function (done) {
-        var result = featureAbility.getProcessName(
+        var context = featureAbility.getContext();
+        var result = context.getProcessName(
             (err, data) => {
                 checkProcessName(data);
                 done()
@@ -2386,8 +2335,18 @@ describe('ActsFeatureAbilityTest', function () {
 
         function SubscribeCallBack(err, data) {
             clearTimeout(id);
-            events.set(data.event, 0)
+            if (typeof data.event != 'undefined') {
+                events.set(data.event, 0)
+            }
             console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
+            if (events.size == 1) {
+                expect(events.has("ACTS_GetCallingBundle_0100_CommonEvent")).assertTrue();
+            } else if (events.size == 2) {
+                expect(events.has("com.example.actsfeatureabilitytest.promise") ||
+                    events.has("com.example.actsfeatureabilitytest.callback")).assertTrue();
+            } else if (events.size == 3) {
+                checkResult();
+            }
         }
 
         commonEvent.createSubscriber(subscriberInfo_ACTS_GetCallingBundle_0100).then(async (data) => {
@@ -2416,7 +2375,6 @@ describe('ActsFeatureAbilityTest', function () {
             done();
         }
 
-        setTimeout(checkResult, TERMINATE_ABILITY_TIMEOUT);
         id = setTimeout(timeout, START_ABILITY_TIMEOUT);
         // startAbility
         var result = await featureAbility.startAbility(
@@ -2429,8 +2387,43 @@ describe('ActsFeatureAbilityTest', function () {
             }
         );
         expect(result).assertEqual(0);
+        setTimeout(timeout, TIMEOUTFORRESULT)
+    })
+
+    // checkGetOrCreateLocalDir
+    function checkGetOrCreateLocalDir(info) {
+        console.log("checkGetOrCreateLocalDir root dir : " + info);
+        expect(typeof (info)).assertEqual("string");
+    }
+
+    // @tc.number: ACTS_GetOrCreateLocalDir_0100
+    // @tc.name: GetProcessName : Obtains the name of the current process.
+    // @tc.desc: Check the return value of the interface (by promise)
+    it('ACTS_GetOrCreateLocalDir_0100', 0, async function (done) {
+        var context = featureAbility.getContext();
+        var promise = context.getOrCreateLocalDir();
+        expect(typeof (promise)).assertEqual("object");
+        var info = await context.getOrCreateLocalDir();
+        checkGetOrCreateLocalDir(info);
+        done();
         setTimeout(function () {
-            console.info('====> ACTS_GetCallingBundle_0100 =====>')
-        }, TIMEOUTFORRESULT)
+            console.info('====> ACTS_GetOrCreateLocalDir_0100 =====>')
+        }, TIMEOUT)
+    })
+
+    // @tc.number: ACTS_GetOrCreateLocalDir_0200
+    // @tc.name: GetProcessName : Obtains the name of the current process.
+    // @tc.desc: Check the return value of the interface (by AsyncCallback)
+    it('ACTS_GetOrCreateLocalDir_0200', 0, async function (done) {
+        var context = featureAbility.getContext();
+        var result = context.getOrCreateLocalDir(
+            (err, data) => {
+                checkGetOrCreateLocalDir(data);
+                done()
+            }
+        );
+        setTimeout(function () {
+            console.info('====> ACTS_GetOrCreateLocalDir_0200 =====>')
+        }, TIMEOUT)
     })
 })

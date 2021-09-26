@@ -17,7 +17,8 @@ import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 var time = 1000
 describe('ActsAnsEnableNotificationSetFiveTest', function () {
-    console.info("===========ActsEnableNotificationSetTest5 start====================>");
+    console.info("===ActsEnableNotificationSetTest5 start===>");
+
     /*
      * @tc.number: ActsEnableNotificationSet_test_0900
      * @tc.name: enableNotification()
@@ -27,13 +28,14 @@ describe('ActsAnsEnableNotificationSetFiveTest', function () {
         await notify.enableNotification({
             bundle:"com.neu.actsanslocalnotificationtest",
         },"",(err) => {
-            console.log("==========================>ActsEnableNotificationSet_test_0900 success=======================>"+err)
+            console.log("====>ActsEnableNotificationSet_test_0900 success====>"+err)
         })
         done();
         setTimeout(function(){
             console.debug("====>time out ActsEnableNotificationSet_test_0900====>");
         }, time);
     })
+
     /*
      * @tc.number: ActsEnableNotificationSet_test_1000
      * @tc.name: enableNotification()
@@ -43,12 +45,13 @@ describe('ActsAnsEnableNotificationSetFiveTest', function () {
         await notify.enableNotification(
             {
                 bundle:"com.neu.actsanslocalnotificationtest",
-            },"").then(console.log("==========================>ActsEnableNotificationSet_test_1000 success=======================>"))
+            },"").then(console.log("====>ActsEnableNotificationSet_test_1000 success====>"))
         done();
         setTimeout(function(){
             console.debug("====>time out ActsEnableNotificationSet_test_1000====>");
         }, time);
     })
+
     /*
      * @tc.number: ActsSystemNotificationSet_test_0900
      * @tc.name: isNotificationEnabled(bundle)
@@ -58,7 +61,7 @@ describe('ActsAnsEnableNotificationSetFiveTest', function () {
         await notify.isNotificationEnabled({
             bundle:"com.neu.actsanslocalnotificationtest",
         },(err,data) => {
-            console.log("==========================>ActsSystemNotificationSet_test_0900 success=======================>"+err+data)
+            console.log("====>ActsSystemNotificationSet_test_0900 success====>"+err+data)
             expect(typeof(data)).assertEqual('boolean')
         })
         done();
@@ -66,6 +69,7 @@ describe('ActsAnsEnableNotificationSetFiveTest', function () {
             console.debug("====>time out ActsSystemNotificationSet_test_0900====>");
         }, time);
     })
+
     /*
      * @tc.number: ActsSystemNotificationSet_test_1000
      * @tc.name: isNotificationEnabled(bundle)
@@ -77,7 +81,7 @@ describe('ActsAnsEnableNotificationSetFiveTest', function () {
                 bundle:"com.neu.actsanslocalnotificationtest",
             })
         expect(typeof(promise)).assertEqual('boolean')
-        console.log("==========================>ActsSystemNotificationSet_test_1000 success=======================>"+promise)
+        console.log("====>ActsSystemNotificationSet_test_1000 success====>"+promise)
         done();
         setTimeout(function(){
             console.debug("====>time out ActsSystemNotificationSet_test_1000====>");

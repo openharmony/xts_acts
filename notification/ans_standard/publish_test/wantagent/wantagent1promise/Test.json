@@ -9,8 +9,8 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAnsWantAgentOneProTest.hap",
-                "test1.hap"
+                "ActsAnsWantAgentOneProTest.hap"
+		"test1"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
