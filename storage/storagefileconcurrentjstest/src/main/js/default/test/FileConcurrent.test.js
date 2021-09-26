@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import fileio from '@system.fileio'
 import file from '@system.file';
 import {
@@ -24,17 +25,6 @@ import {
   expect
 }
   from 'deccjsunit/index'
-import {
-  FILE_CONTENT,
-  prepareFile,
-  fileName,
-  cacheFileName,
-  getFileTextLen,
-  isFileExist,
-  prepareEmptyFile,
-  randomString
-}
-  from './Common'
 
 describe('fileconcurrent', function () {
 
@@ -105,7 +95,7 @@ describe('fileconcurrent', function () {
     for (let i = 0; i < 10; i++) {
       file.readText({
         uri: 'internal://app/file_test_001',
-        success: function (data) {
+        success: function () {
           console.log('file_test_001 => pass, call readText success. data.text: ' );
           done();
         },
@@ -116,7 +106,7 @@ describe('fileconcurrent', function () {
       });
       file.readText({
         uri: 'internal://app/file_test_001',
-        success: function (data) {
+        success: function () {
           console.log('file_test_001 => pass, call readText success. data.text: ' );
           done();
         },
@@ -127,7 +117,7 @@ describe('fileconcurrent', function () {
       });
       file.readText({
         uri: 'internal://app/file_test_001',
-        success: function (data) {
+        success: function () {
           console.log('file_test_001 => pass, call readText success. data.text: ' );
           done();
         },
@@ -162,7 +152,7 @@ describe('fileconcurrent', function () {
       file.copy({
         srcUri: 'internal://app/file_test_002',
         dstUri: 'internal://app/file_test_002',
-        success: function (uri) {
+        success: function () {
           console.log('file_test_002 => pass,call copy success. uri:' );
           done();
         },
@@ -174,7 +164,7 @@ describe('fileconcurrent', function () {
       file.copy({
         srcUri: 'internal://app/file_test_002',
         dstUri: 'internal://app/file_test_002' + '100',
-        success: function (uri) {
+        success: function () {
           console.log('file_test_002 => pass,call copy success. uri:' );
           done();
         },
@@ -186,7 +176,7 @@ describe('fileconcurrent', function () {
       file.copy({
         srcUri: 'internal://app/file_test_002',
         dstUri: 'internal://app/file_test_002' + '200',
-        success: function (uri) {
+        success: function () {
           console.log('file_test_002 => pass,call copy success. uri:' );
           done();
         },
@@ -221,7 +211,7 @@ describe('fileconcurrent', function () {
       file.move({
         srcUri: 'internal://app/file_test_003',
         dstUri: 'internal://file_test_003',
-        success: function (uri) {
+        success: function () {
           console.log('file_test_003 => pass,call move success. uri:' );
           done();
         },
@@ -255,7 +245,7 @@ describe('fileconcurrent', function () {
     for (let i = 0; i < 10; i++) {
       file.readArrayBuffer({
         uri: 'internal://app/file_test_004',
-        success: function (data) {
+        success: function () {
           console.log('file_test_004 => pass,call readArrayBuffer success. ');
           done();
         },
@@ -266,7 +256,7 @@ describe('fileconcurrent', function () {
       });
       file.readArrayBuffer({
         uri: 'internal://app/file_test_004',
-        success: function (data) {
+        success: function () {
           console.log('file_test_004 => pass,call readArrayBuffer success. ');
           done();
         },
@@ -277,7 +267,7 @@ describe('fileconcurrent', function () {
       });
       file.readArrayBuffer({
         uri: 'internal://app/file_test_004',
-        success: function (data) {
+        success: function () {
           console.log('file_test_004 => pass,call readArrayBuffer success. ');
           done();
         },
@@ -357,7 +347,7 @@ describe('fileconcurrent', function () {
       });
       file.readText({
         uri: 'internal://app/file_test_006',
-        success: function (data) {
+        success: function () {
           console.log('file_test_006 => pass,call readText success: ');
           done();
         },
@@ -391,7 +381,7 @@ describe('fileconcurrent', function () {
       });
       file.readArrayBuffer({
         uri: 'internal://app/file_test_007',
-        success: function (data) {
+        success: function () {
           console.log('file_test_007 => pass,call readArrayBuffer success: ');
           done();
         },
@@ -425,7 +415,7 @@ describe('fileconcurrent', function () {
       file.copy({
         srcUri: 'internal://app/file_test_008',
         dstUri: 'internal://app/file_test_008',
-        success: function (uri) {
+        success: function () {
           console.log('file_test_008 => pass,call copy success. uri:');
           done();
         },

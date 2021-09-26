@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import fileio from '@system.fileio';
 import bundle_mgr from '@ohos.bundle_mgr'
 import file from '@system.file';
@@ -606,7 +607,7 @@ describe('fileTest', function () {
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_010 fail');
+        console.log('File_writeText_010 fail code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -633,7 +634,7 @@ describe('fileTest', function () {
       uri: 'internal://app/../files/File_writeText_011',
       text: 'sawyerwang',
       success: function () {
-        console.log('File_writeText_011 mkdif success');
+        console.log('File_writeText_011 mkdir success ');
         done();
       },
       fail: function (data, code) {
@@ -933,7 +934,7 @@ describe('fileTest', function () {
     });
     file.readArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_006',
-      success: function (data) {
+      success: function () {
         console.log('File_writeArrayBuffer_006 pass');
         done();
       },
