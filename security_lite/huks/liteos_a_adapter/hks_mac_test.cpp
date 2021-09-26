@@ -23,6 +23,8 @@
 #include "hks_test_common.h"
 #include "hks_test_log.h"
 
+#include "securec.h"
+
 using namespace testing::ext;
 namespace {
 class HksMacTest : public testing::Test {

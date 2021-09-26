@@ -21,6 +21,8 @@
 #include "hks_param.h"
 #include "hks_test_cipher.h"
 
+#include "securec.h"
+
 using namespace testing::ext;
 namespace {
 class HksCipherTest : public testing::Test {

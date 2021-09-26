@@ -20,6 +20,8 @@
 #include "hks_param.h"
 #include "hks_test_log.h"
 
+#include "securec.h"
+
 #define USEC_MINT 1000
 #define USEC_UINT 1000000
 

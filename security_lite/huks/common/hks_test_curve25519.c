@@ -18,6 +18,7 @@
 #include "hks_param.h"
 #include "hks_test_log.h"
 #include "hks_type.h"
+#include "securec.h"
 
 #define TEST_ALIAS_ED25519 "test_ed25519"
 #define TEST_PLAIN_TEST_ED25519 "This is a plain text! Hello world and thanks for watching ED25519~"

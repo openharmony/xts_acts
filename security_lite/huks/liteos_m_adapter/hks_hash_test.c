@@ -15,8 +15,6 @@
 
 #ifndef _CUT_AUTHENTICATE_
 
-#include "hks_hash_test.h"
-
 #include <hctest.h>
 #include "hi_watchdog.h"
 #include "hks_api.h"
@@ -25,14 +23,17 @@
 #include "hks_test_common.h"
 #include "hks_test_log.h"
 #include "hks_type.h"
+#include "hks_hash_test.h"
 
 #include "cmsis_os2.h"
 #include "ohos_types.h"
 
-
 #define DEFAULT_SRC_DATA_SIZE 200
-
 #define DIGEST_SHA256_HASH_SIZE 32
+#define TEST_TASK_STACK_SIZE      0x2000
+#define WAIT_TO_TEST_DONE         4
+
+static osPriority_t g_setPriority;
 
 /*
  * @tc.register: register a test suit named "CalcMultiTest"
@@ -42,6 +43,14 @@
  */
 LITE_TEST_SUIT(security, securityData, HksHashTest);
 
+static void ExecHksInitialize(void const *argument)
+{
+    LiteTestPrint("HksInitialize Begin!\n");
+    TEST_ASSERT_TRUE(HksInitialize() == 0);
+    LiteTestPrint("HksInitialize End!\n");
+    osThreadExit();
+}
+
 /**
  * @tc.setup: define a setup for test suit, format:"CalcMultiTest + SetUp"
  * @return: true——setup success
@@ -50,7 +59,19 @@ static BOOL HksHashTestSetUp()
 {
     LiteTestPrint("setup\n");
     hi_watchdog_disable();
-    TEST_ASSERT_TRUE(HksInitialize() == 0);
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksInitialize, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksMacTestSetUp End2!\n");
     return TRUE;
 }
 
@@ -64,11 +85,6 @@ static BOOL HksHashTestTearDown()
     hi_watchdog_enable();
     return TRUE;
 }
-
-#define TEST_TASK_STACK_SIZE      0x2000
-#define WAIT_TO_TEST_DONE         4
-
-static osPriority_t g_setPriority;
 
 static const struct HksTestHashParams g_testHashParams[] = {
     /* normal case */

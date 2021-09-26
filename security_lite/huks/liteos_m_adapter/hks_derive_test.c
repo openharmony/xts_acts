@@ -22,10 +22,16 @@
 #include "hks_test_api_performance.h"
 #include "hks_test_common.h"
 #include "hks_test_log.h"
+#include "cmsis_os2.h"
+#include "ohos_types.h"
 
 #define DEFAULT_DERIVE_SIZE 32
 #define DEFAULT_INFO_SIZE 55
 #define DEFAULT_SALT_SIZE 16
+#define TEST_TASK_STACK_SIZE      0x2000
+#define WAIT_TO_TEST_DONE         4
+
+static osPriority_t g_setPriority;
 
 /*
  * @tc.register: register a test suit named "CalcMultiTest"
@@ -35,6 +41,13 @@
  */
 LITE_TEST_SUIT(security, securityData, HksDeriveTest);
 
+static void ExecHksInitialize(void const *argument)
+{
+    LiteTestPrint("HksInitialize Begin!\n");
+    TEST_ASSERT_TRUE(HksInitialize() == 0);
+    LiteTestPrint("HksInitialize End!\n");
+    osThreadExit();
+}
 /**
  * @tc.setup: define a setup for test suit, format:"CalcMultiTest + SetUp"
  * @return: true——setup success
@@ -43,7 +56,19 @@ static BOOL HksDeriveTestSetUp()
 {
     LiteTestPrint("setup\n");
     hi_watchdog_disable();
-    TEST_ASSERT_TRUE(HksInitialize() == 0);
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksInitialize, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksDeriveTestSetUp End2!\n");
     return TRUE;
 }
 
@@ -199,6 +224,24 @@ static int32_t BaseTestDerive(uint32_t index)
     return ret;
 }
 
+static void ExecHksDeriveTest001(void const *argument)
+{
+    LiteTestPrint("HksDeriveTest001 Begin!\n");
+    int32_t ret = BaseTestDerive(0);
+    TEST_ASSERT_TRUE(ret == 0);
+    LiteTestPrint("HksDeriveTest001 End!\n");
+    osThreadExit();
+}
+
+static void ExecHksDeriveTest002(void const *argument)
+{
+    LiteTestPrint("HksDeriveTest002 Begin!\n");
+    int32_t ret = BaseTestDerive(1);
+    TEST_ASSERT_TRUE(ret == 0);
+    LiteTestPrint("HksDeriveTest002 End!\n");
+    osThreadExit();
+}
+
 #ifndef _CUT_AUTHENTICATE_
 /**
  * @tc.name: HksDeriveTest.HksDeriveTest001
@@ -207,8 +250,19 @@ static int32_t BaseTestDerive(uint32_t index)
  */
 LITE_TEST_CASE(HksDeriveTest, HksDeriveTest001, Level1)
 {
-    int32_t ret = BaseTestDerive(0);
-    TEST_ASSERT_TRUE(ret == 0);
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksDeriveTest001, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksDeriveTest001 End2!\n");
 }
 #endif /* _CUT_AUTHENTICATE_ */
 
@@ -219,7 +273,18 @@ LITE_TEST_CASE(HksDeriveTest, HksDeriveTest001, Level1)
  */
 LITE_TEST_CASE(HksDeriveTest, HksDeriveTest002, Level1)
 {
-    int32_t ret = BaseTestDerive(1);
-    TEST_ASSERT_TRUE(ret == 0);
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksDeriveTest002, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksDeriveTest002 End2!\n");
 }
 RUN_TEST_SUITE(HksDeriveTest);
