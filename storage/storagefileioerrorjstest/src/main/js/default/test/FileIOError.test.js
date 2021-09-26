@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import fileio from '@system.fileio'
 import {
   describe,
@@ -59,10 +60,10 @@ describe('FileIOError', function () {
     let dpath = nextFileName('fileio_test_error_001d');
     try {
       expect(fileio.mkdirSync(dpath) !== null).assertTrue();
+      expect(null).assertFail();
     } 
     catch (e) {
       console.log('fileio_test_error_001 has failed for ' + e);
-      expect(null).assertFail();
     }
   });
 
@@ -105,7 +106,7 @@ describe('FileIOError', function () {
    * @tc.number SUB_STORAGE_FileIo_test_error_0400
    * @tc.name FileIo_test_error_004
    * @tc.desc Function of API, When the disk space is full,
-   *  verify synchronization and write the buffer data back to the disk for data synchronization
+   * verify synchronization and write the buffer data back to the disk for data synchronization
    */
   it('FileIo_test_error_004', 0, function () {
     let fpath = nextFileName('fileio_test_error_004');
@@ -134,10 +135,10 @@ describe('FileIOError', function () {
       let fd = fileio.openSync(fpath);
       expect(fd !== null).assertTrue();
       expect(fileio.closeSync(fd) !== null).assertTrue();
+      expect(null).assertFail();
     } 
     catch (e) {
       console.log('fileio_test_error_005 has failed for ' + e);
-      expect(null).assertFail();
     }
   });
 
@@ -156,17 +157,18 @@ describe('FileIOError', function () {
       let rlen = fileio.readSync(fd, new ArrayBuffer(209715200));
       expect(rlen == 209715200).assertTrue();
       expect(fileio.closeSync(fd) !== null).assertTrue();
+      expect(null).assertFail();
     } 
     catch (e) {
       console.log('fileio_test_error_006 has failed for ' + e);
-      expect(null).assertFail();
     }
   });
 
   /**
    * @tc.number SUB_STORAGE_FileIo_test_error_0700
    * @tc.name FileIo_test_error_007
-   * @tc.desc Function of API, Verify the function of obtaining 200m file stream synchronously when 100m ram is left
+   * @tc.desc Function of API, Verify the function of obtaining
+   * 200m file stream synchronously when 100m ram is left
    *  Create a 200m file (fileio_test_error_005) and grant 777 permissions,
    *  path:/data/accounts/account_0/appdata/ohos.acts.stroage.fileio/cache/fileio_test_error_005
    */
@@ -176,10 +178,10 @@ describe('FileIOError', function () {
       let ss = fileio.createStreamSync(fpath, 'r+');
       expect(ss !== null).assertTrue();
       expect(ss.closeSync() !== null).assertTrue();
+      expect(null).assertFail();
     } 
     catch (e) {
       console.log('fileio_test_error_007 has failed for ' + e);
-      expect(null).assertFail();
     }
   });
 
@@ -198,10 +200,10 @@ describe('FileIOError', function () {
       let rlen = ss.readSync(new ArrayBuffer(209715200));
       expect(rlen == 209715200).assertTrue();
       expect(ss.closeSync() !== null).assertTrue();
+      expect(null).assertFail();
     } 
     catch (e) {
       console.log('fileio_test_error_008 has failed for ' + e);
-      expect(null).assertFail();
     }
   });
 
@@ -247,7 +249,8 @@ describe('FileIOError', function () {
   /**
    * @tc.number SUB_STORAGE_FileIo_test_error_1100
    * @tc.name FileIo_test_error_011
-   * @tc.desc Function of API, Pass in a path that exceeds 4096 bytes to copy the file
+   * @tc.desc Function of API, Pass in a
+   * path that exceeds 4096 bytes to copy the file
    */
   it('FileIo_test_error_011', 0, function () {
     let fpath = nextFileName('fileio_test_error_011');
