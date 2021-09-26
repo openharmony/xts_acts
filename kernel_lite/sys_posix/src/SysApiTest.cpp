@@ -320,7 +320,7 @@ HWTEST_F(SysApiTest, testRegcompIcase, Function | MediumTest | Level2)
 HWTEST_F(SysApiTest, testRegcompNewline, Function | MediumTest | Level2)
 {
     TestRegcomp(REG_EXTENDED|REG_NEWLINE, "^addr=([^&]*)",
-            "huawei123&sex=girl&age=18\r\naddr=bantian&hobby=movie", "addr=bantian");
+            "testohos&sex=girl&age=18\r\naddr=bantian&hobby=movie", "addr=bantian");
 }
 
 /**
