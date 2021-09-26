@@ -1324,7 +1324,7 @@ HWTEST_F(ActsNetTest, testGetSocketNameInvalidInput, Function | MediumTest | Lev
  */
 HWTEST_F(ActsNetTest, testDnCompExpandNormal, Function | MediumTest | Level2)
 {
-    const char* domain1 = "www.huawei.com";
+    const char* domain1 = "www.testohos.com";
     unsigned char buf[MAXDNAME] = {0};
     unsigned char* bufPtr = buf;
     int ret = dn_comp(domain1, bufPtr, MAXDNAME, nullptr, nullptr);
