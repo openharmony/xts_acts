@@ -61,7 +61,7 @@
               "customizeData": [
                 {
                   "name": "originWidgetName4A",
-                  "value": "com.huawei.weather.testWidget4A"
+                  "value": "com.openharmony.weather.testWidget4A"
                 }
               ]
             },
@@ -83,7 +83,7 @@
               "customizeData": [
                 {
                   "name": "originWidgetName4B",
-                  "value": "com.huawei.weather.testWidget4B"
+                  "value": "com.openharmony.weather.testWidget4B"
                 }
               ]
             },
