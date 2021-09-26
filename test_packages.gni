@@ -38,6 +38,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/graphic:graphic",
   "${ACTS_ROOT}/ace:ace",
   "${ACTS_ROOT}/storage:storage",
+  "${ACTS_ROOT}/distributedhardware:distributedhardware",
 ]
 
 _all_test_packages_ivi = [
