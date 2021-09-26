@@ -2,7 +2,7 @@
     "description": "Configuration for intljs Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "60000",
+        "test-timeout": "120000",
         "package": "ohos.intl.test",
         "shell-timeout": "60000"
     },
