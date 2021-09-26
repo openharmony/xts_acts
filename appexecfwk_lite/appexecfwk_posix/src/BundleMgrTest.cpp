@@ -869,8 +869,8 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0001, Function | MediumTest |
 HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0002, Function | MediumTest | Level1)
 {
     printf("------start testGetBundleSizeWithLegal_0002------\n");
-    char *bundleName = (char*)"com.openharmony.testjsdemoBundleNamelengthequalto127" \
-"testjsdemoBundleNamelengthequalto127testjsdemoBundleNamelengthequalto127testjsde";
+    char *bundleName = (char*)"com.openharmony.testjsdemoBundleNameleng" \
+"thequalto127testjsdemoBundleNamelengthequalto127testjsdemoBundleNamelengthequalto127tes";
     sem_init(&g_sem, 0, 0);
     InstallParam installParam = {.installLocation = 1,.keepData = false };
     string hapPath = g_testPath + "testGetBundleNameWithLegal127.hap";
@@ -895,7 +895,7 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithIllegal_0001, Function | MediumTest
 {
     printf("------start testGetBundleSizeWithIllegal_0001------\n");
     char *bundleName = (char*)"com.openharmony.testjsdemoBundleNameLength128test" \
-"jsdemoBundleNameLength128testjsdemoBundleNameLength128testjsdemoBundleNameLength128T";
+"jsdemoBundleNameLength128testjsdemoBundleNameLength128testjsdemoBundleNameLengt";
     EXPECT_EQ(strlen(bundleName), 128);
     uint32_t resultCode = GetBundleSize(bundleName);
     EXPECT_EQ(resultCode, 0);
