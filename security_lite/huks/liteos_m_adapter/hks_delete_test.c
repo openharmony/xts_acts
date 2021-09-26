@@ -18,14 +18,23 @@
 #include "hctest.h"
 #include "hi_watchdog.h"
 #include "hks_delete_test.h"
-
 #include "hks_api.h"
 #include "hks_param.h"
 #include "hks_test_api_performance.h"
 #include "hks_test_common.h"
 #include "hks_test_log.h"
 #include "hks_type.h"
+#include "cmsis_os2.h"
+#include "ohos_types.h"
 
+#define TEST_TASK_STACK_SIZE      0x2000
+#define WAIT_TO_TEST_DONE         4
+
+static osPriority_t g_setPriority;
+static const struct HksTestKeyExistParams g_testKeyExistParams[] = {
+    /* normal case */
+    { 0, HKS_SUCCESS, true, { true, DEFAULT_KEY_ALIAS_SIZE, true, DEFAULT_KEY_ALIAS_SIZE } },
+};
 /*
  * @tc.register: register a test suit named "CalcMultiTest"
  * @param: test subsystem name
@@ -34,41 +43,17 @@
  */
 LITE_TEST_SUIT(security, securityData, HksDeleteTest);
 
-/**
- * @tc.setup: define a setup for test suit, format:"CalcMultiTest + SetUp"
- * @return: true——setup success
- */
-static BOOL HksDeleteTestSetUp()
+static void ExecHksInitialize(void const *argument)
 {
-    LiteTestPrint("setup\n");
-    hi_watchdog_disable();
+    LiteTestPrint("HksInitialize Begin!\n");
     TEST_ASSERT_TRUE(HksInitialize() == 0);
-    return TRUE;
+    LiteTestPrint("HksInitialize End!\n");
+    osThreadExit();
 }
 
-/**
- * @tc.teardown: define a setup for test suit, format:"CalcMultiTest + TearDown"
- * @return: true——teardown success
- */
-static BOOL HksDeleteTestTearDown()
+static void ExecHksDeleteTest001(void const *argument)
 {
-    LiteTestPrint("tearDown\n");
-    hi_watchdog_enable();
-    return TRUE;
-}
-
-static const struct HksTestKeyExistParams g_testKeyExistParams[] = {
-    /* normal case */
-    { 0, HKS_SUCCESS, true, { true, DEFAULT_KEY_ALIAS_SIZE, true, DEFAULT_KEY_ALIAS_SIZE } },
-};
-
-/**
- * @tc.name: HksDeleteTest.HksDeleteTest001
- * @tc.desc: The static function will return true;
- * @tc.type: FUNC
- */
-LITE_TEST_CASE(HksDeleteTest, HksDeleteTest001, Level1)
-{
+    LiteTestPrint("HksDeleteTest001 Begin!\n");
     int32_t ret;
     struct HksBlob *keyAlias = NULL;
     if (g_testKeyExistParams[0].isGenKey) {
@@ -87,6 +72,64 @@ LITE_TEST_CASE(HksDeleteTest, HksDeleteTest001, Level1)
 
     TestFreeBlob(&keyAlias);
     TEST_ASSERT_TRUE(ret == 0);
+    LiteTestPrint("HksDeleteTest001 End!\n");
+    osThreadExit();
+}
+/**
+ * @tc.setup: define a setup for test suit, format:"CalcMultiTest + SetUp"
+ * @return: true——setup success
+ */
+static BOOL HksDeleteTestSetUp()
+{
+    LiteTestPrint("setup\n");
+    hi_watchdog_disable();
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksInitialize, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksDeriveTestSetUp End2!\n");
+    return TRUE;
+}
+
+/**
+ * @tc.teardown: define a setup for test suit, format:"CalcMultiTest + TearDown"
+ * @return: true——teardown success
+ */
+static BOOL HksDeleteTestTearDown()
+{
+    LiteTestPrint("tearDown\n");
+    hi_watchdog_enable();
+    return TRUE;
+}
+
+/**
+ * @tc.name: HksDeleteTest.HksDeleteTest001
+ * @tc.desc: The static function will return true;
+ * @tc.type: FUNC
+ */
+LITE_TEST_CASE(HksDeleteTest, HksDeleteTest001, Level1)
+{
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksDeleteTest001, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksDeleteTest001 End2!\n");    
 }
 
 RUN_TEST_SUITE(HksDeleteTest);
