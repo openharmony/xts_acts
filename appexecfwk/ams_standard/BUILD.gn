@@ -17,8 +17,11 @@ group("ams_standard") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "amsdatauriutils:amsDataUriUtils",
       "amszipfileunzipfilest:amsZipfileUnzipfileST",
       "fwkdataaccessor:FWKDataAccessor",
+      "serviceability/stserviceabilityclient:amsStServiceAbilityClient",
+      "serviceability/stserviceabilityserver:amsStServiceAilityServer",
     ]
   }
 }

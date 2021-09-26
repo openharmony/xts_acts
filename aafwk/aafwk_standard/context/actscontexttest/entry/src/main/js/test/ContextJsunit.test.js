@@ -21,136 +21,177 @@ describe('ActsContextTest', function () {
     //  @tc.name: verifySelfPermission : Check specific permissions
     //  @tc.desc: Check the return type of the interface (by Promise)
     it('ACTS_VerifySelfPermission_0100', 0, async function (done) {
-        var context = featureAbility.getContext().then(
-            data=> {
-                var promise = data.verifySelfPermission("com.example.permission");
-                expect(typeof(promise)).assertEqual("object");
-            }
-        ).catch(error =>
-        console.log("getContext promise::catch : " + error)
-        );
+        console.debug("ACTS_VerifySelfPermission_0100 start")
+        var ret = false
+        var context = await featureAbility.getContext()
+        console.debug("VerifySelfPermission start")
+        var promise = await context.verifySelfPermission("com.example.permission");
+        console.info("VerifySelfPermission finish"+JSON.stringify(promise))
+        console.info("VerifySelfPermission finish"+JSON.stringify(context))
+        expect(typeof(promise)).assertEqual("number");
+        console.debug("VerifySelfPermission finish")
         expect(typeof(context)).assertEqual("object");
+        ret = true
+        console.debug("ACTS_VerifySelfPermission_0100 finish")
         done();
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_VerifySelfPermission_0200
     //  @tc.name: verifySelfPermission : Check the status of the specified permission
     //  @tc.desc: Check the status of the specified permission and return the authorized status (by Promise)
     it('ACTS_VerifySelfPermission_0200', 0, async function (done) {
+        var ret = false
         var context = await featureAbility.getContext();
         var result = await context.verifySelfPermission("com.example.permission");
         expect(result).assertEqual(0);
+        ret = true
         done();
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_VerifySelfPermission_0300
     //  @tc.name: verifySelfPermission : Check the status of the specified permission
     //  @tc.desc: Check the status of the specified permission and return the unauthorized status (by Promise)
     it('ACTS_VerifySelfPermission_0300', 0, async function (done) {
+        var ret = false
         var context = await featureAbility.getContext();
         var result = await context.verifySelfPermission("com.myability.permission.MYPERMISSION_NOT");
         expect(result).assertEqual(-1);
+        ret = true
         done();
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_VerifySelfPermission_0400
     //  @tc.name: verifySelfPermission : Check the status of the specified permission
     //  @tc.desc: Check the status of the specified permission and return the authorized status (by callback)
     it('ACTS_VerifySelfPermission_0400', 0, async function (done) {
-
-        var context = featureAbility.getContext(
-            (errContext, dataContext) => {
-                var info = dataContext.verifySelfPermission("com.example.permission",
+        var ret = false
+        var context = await featureAbility.getContext();
+                var info = context.verifySelfPermission("com.example.permission",
                     (err, data) => {
                         expect(data).assertEqual(0);
+                        ret = true
                         done();
                     }
                 );
-            }
-        );
-
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_VerifySelfPermission_0500
     //  @tc.name: verifySelfPermission : Check the status of the specified permission
     //  @tc.desc: Check the status of the specified permission and return the unauthorized status (by callback)
     it('ACTS_VerifySelfPermission_0500', 0, async function (done) {
-        var context = featureAbility.getContext(
-            (errContext, dataContext) => {
-                var info = dataContext.verifySelfPermission("com.myability.permission.MYPERMISSION",
+        var ret = false
+        var context = featureAbility.getContext();
+                var info = context.verifySelfPermission("com.myability.permission.MYPERMISSION",
                     (err, data) => {
                         console.log("ACTS_VerifySelfPermission_0500>>>data=" + data);
                         expect(data).assertEqual(-1);
+                        ret = true
                         done();
                     }
                 );
-            }
-        );
+
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_GetBundleName_0100
     //  @tc.name: getBundleName : Query return value type
     //  @tc.desc: The class of the test return value is made Promise
     it('ACTS_GetBundleName_0100', 0, async function (done) {
+        var ret = false
         var context = await featureAbility.getContext();
         var result = await context.getBundleName();
         expect(typeof(context)).assertEqual("object");
+        ret = true
         done();
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_GetBundleName_0200
     //  @tc.name: getBundleName : Get the bundlename of the hap package
     //  @tc.desc: Get the bundlename of the hap package(by promise)
     it('ACTS_GetBundleName_0200', 0, async function (done) {
+        var ret = false
         var context = await featureAbility.getContext();
         var result = await context.getBundleName();
         expect(result).assertEqual('com.example.actscontext');
+        ret = true
         done();
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_GetBundleName_0300
     //  @tc.name: getBundleName : Get the bundlename of the hap package
     //  @tc.desc: Get the value of return is void (by callback)
     it('ACTS_GetBundleName_0300', 0, async function (done) {
-        var context = featureAbility.getContext(
-            (errContext, dataContext) => {
-                var info = dataContext.getBundleName(
+        var ret = false
+        var context = featureAbility.getContext();
+                var info = context.getBundleName(
                     (err, data) => {
                         expect(err.code).assertEqual(0);
                         expect(data).assertEqual('com.example.actscontext');
+                        ret = true
                         done();
-                    }
-                )
-            }
-        );
+                    })
+
+
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_GetBundleName_0400
     //  @tc.name: getBundleName : Get the bundlename of the hap package
     //  @tc.desc: Get the bundlename of the hap package(by callback)
     it('ACTS_GetBundleName_0400', 0, async function (done) {
+        var ret = false
         var context = await featureAbility.getContext();
         var info = context.getBundleName(
             (err, data) => {
                 expect(data).assertEqual('com.example.actscontext');
+                ret = true
                 done();
             }
         );
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_GetBundleName_0500
     //  @tc.name: getBundleName : Get the bundlename of the hap package
     //  @tc.desc: Wrong parameters are provided, and the test return type is void (by callback)
     it('ACTS_GetBundleName_0500', 0, async function (done) {
+        var ret = false
         var context = await featureAbility.getContext();
         var info = context.getBundleName("error_param",
             (err, data) => {
                 expect(data).assertEqual('com.example.actscontext');
-                done();
             }
         );
         expect(info).assertEqual(null);
+        ret = true
         done();
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_VerifyPermission_0100
@@ -159,13 +200,23 @@ describe('ActsContextTest', function () {
     //  @tc.desc: Query whether the application of the specified PID and UID has been granted
     //  a certain permission (by callback)
     it('ACTS_VerifyPermission_0100', 0, async function (done) {
+        var ret = false
         var context = await featureAbility.getContext();
         var datainfo = await bundle.getBundleInfo('com.example.actscontext',1);
-        var result = context.verifyPermission("com.example.permission",0,datainfo.uid,
+        var options = {
+            pid :0,
+            uid :datainfo.uid
+        }
+        context.verifyPermission("com.example.permission",options,
             (err, data) => {
+                console.info("ACTS_VerifyPermission_0100 in verifyPermission")
                 expect(data).assertEqual(0);
+                ret = true
                 done();
             });
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_VerifyPermission_0200
@@ -174,11 +225,20 @@ describe('ActsContextTest', function () {
     //  @tc.desc: Query whether the application of the specified PID and UID has been granted
     //  a certain permission (by Promise)
     it('ACTS_VerifyPermission_0200', 0, async function (done) {
+        var ret = false
         var context = await featureAbility.getContext();
         var datainfo = await bundle.getBundleInfo('com.example.actscontext',1);
-        var promise = await context.verifyPermission("com.example.permission",0,datainfo.uid );
+        var options = {
+            pid :0,
+            uid :datainfo.uid
+        }
+        var promise = await context.verifyPermission("com.example.permission",options );
         expect(promise).assertEqual(0);
+        ret = true
         done();
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_VerifyPermission_0300
@@ -187,13 +247,22 @@ describe('ActsContextTest', function () {
     //  @tc.desc: Query whether the application of the specified PID and UID has been granted
     //  a certain permission (by Promise)
     it('ACTS_VerifyPermission_0300', 0, async function (done) {
+        var ret = false
         var context = await featureAbility.getContext();
         var datainfo = await bundle.getBundleInfo('com.example.actscontext',1);
-        var result = context.verifyPermission("com.example.permission.NOT",0,datainfo.uid,
+        var options = {
+            pid :0,
+            uid :datainfo.uid
+        }
+        var result = context.verifyPermission("com.example.permission.NOT",options,
             (err, data) => {
                 expect(data).assertEqual(-1);
+                ret = true
                 done();
             });
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_VerifyPermission_0400
@@ -202,11 +271,20 @@ describe('ActsContextTest', function () {
     //  @tc.desc: Query whether the application of the specified PID and UID has been granted
     //  a certain permission (by Promise)
     it('ACTS_VerifyPermission_0400', 0, async function (done) {
+        var ret = false
         var context = await featureAbility.getContext();
         var datainfo = await bundle.getBundleInfo('com.example.actscontext',1);
-        var promise = await context.verifyPermission("ohos.permission.CAMERA.NOT",0,datainfo.uid );
+        var options = {
+            pid :0,
+            uid :datainfo.uid
+        }
+        var promise = await context.verifyPermission("ohos.permission.CAMERA.NOT",options );
         expect(promise).assertEqual(-1);
+        ret = true
         done();
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_VerifyPermission_0500
@@ -215,11 +293,20 @@ describe('ActsContextTest', function () {
     //  @tc.desc: Query whether the application of the specified PID and UID has been granted
     //  a certain permission (by Promise)
     it('ACTS_VerifyPermission_0500', 0, async function (done) {
+        var ret = false
         var context = await featureAbility.getContext();
         var datainfo = await bundle.getBundleInfo('com.example.actscontext',1);
-        var promise = await context.verifyPermission(2000,0,datainfo.uid );
+        var options = {
+            pid :0,
+            uid :datainfo.uid
+        }
+        var promise = await context.verifyPermission(2000,options );
         expect(promise).assertEqual(null);
+        ret = true
         done();
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_CanRequestPermission_0100
@@ -228,12 +315,17 @@ describe('ActsContextTest', function () {
     //  @tc.desc: Whether to request the camera function permission to the authorization management
     //  module to have the permission (by CallBack)
     it('ACTS_CanRequestPermission_0100', 0, async function (done) {
+        var ret = false
         var context = await featureAbility.getContext();
         var result = context.canRequestPermission("com.example.permission.user",
             (err, data) => {
                 expect(data).assertEqual(true);
+                ret = true
                 done();
             });
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_CanRequestPermission_0200
@@ -242,10 +334,15 @@ describe('ActsContextTest', function () {
     //  @tc.desc: Whether to request the camera function permission to the authorization management
     //  module to have the permission (by Promise)
     it('ACTS_CanRequestPermission_0200', 0, async function (done){
+        var ret = false
         var context = await featureAbility.getContext();
         var promise = await context.canRequestPermission("com.example.permission.user");
         expect(promise).assertEqual(true);
+        ret = true
         done();
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_CanRequestPermission_0300
@@ -254,12 +351,17 @@ describe('ActsContextTest', function () {
     //  @tc.desc: Whether to request the camera function permission to the authorization management
     //  module to have the permission (by CallBack)
     it('ACTS_CanRequestPermission_0300', 0, async function (done) {
+        var ret = false
         var context = await featureAbility.getContext();
         var result = context.canRequestPermission("com.example.permission",
             (err, data) => {
                 expect(data).assertEqual(false);
+                ret = true
                 done();
             });
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_CanRequestPermission_0400
@@ -268,10 +370,15 @@ describe('ActsContextTest', function () {
     //  @tc.desc: Whether to request the camera function permission to the authorization management
     //  module to have the permission (by Promise)
     it('ACTS_CanRequestPermission_0400', 0, async function (done){
+        var ret = false
         var context = await featureAbility.getContext();
         var promise = await context.canRequestPermission("com.example.permission");
         expect(promise).assertEqual(false);
+        ret = true
         done();
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
     //  @tc.number: ACTS_CanRequestPermission_0500
@@ -280,28 +387,17 @@ describe('ActsContextTest', function () {
     //  @tc.desc: Whether to request the camera function permission to the authorization management
     //  module to have the permission (by Promise)
     it('ACTS_CanRequestPermission_0500', 0, async function (done){
+        var ret = false
         var context = await featureAbility.getContext();
         var promise = await context.canRequestPermission(1000);
         expect(promise).assertEqual(null);
+        ret = true
         done();
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
-    //  @tc.number: ACTS_VerifyCallingPermission_0100
-    //  @tc.name: verifyCallingPermission : Checks whether the calling process for inter-process communication has the given
-    //  permission.The calling process is not the current process.
-    //  @tc.desc: Checks whether the calling process for inter-process communication has the given permission.The calling
-    //  process is not the current process. (by callback)
-    it('ACTS_Calling_0100', 0, async function (done) {
-        var promise = await featureAbility.startAbility(
-            {
-                want:{
-                    deviceId: "",
-                    bundleName: "com.example.actscontextcallingtest",
-                    abilityName: "com.example.actscontextcallingtest.MainAbility"
-                }
-            });
-        done();
-    })
 
     //  @tc.number: ACTS_RequestPermissionForUser_0100
     //  @tc.name: requestPermissionsFromUser : Requests certain permissions from the system.
@@ -309,23 +405,22 @@ describe('ActsContextTest', function () {
     //  @tc.desc: Requests certain permissions from the system.
     //  process is the current process. (by callback)
     it('ACTS_RequestPermissionForUser_0100', 0, async function (done) {
+        var ret = false
         var context = await featureAbility.getContext();
         console.log("RequestPermissionForUser ----------1");
 
-        context.requestPermissionsFromUser(["com.example.permission1", "com.example.permission2", "com.example.permission3",
-            "com.example.permission4", "com.example.permission5"], 1,
+        context.requestPermissionsFromUser([], 1,
             (err, data)=>{
-                console.log("RequestPermissionForUser ----------2 requestCode=" + data.requestCode);
-                for(var j = 0; j < data.permissions.length; j++) {
-                    console.log("====RequestPermissionForUser permissions : " + data.permissions[j]);
-                }
-
-                for(var j = 0; j < data.grantResults.length; j++) {
-                    console.log("====RequestPermissionForUser grantResults : " + data.grantResults[j]);
-                }
+                console.log("====>requestdata====>" + JSON.stringify(data));
+                console.log("====>requesterrcode====>" + JSON.stringify(err.code));
+                expect(err.code).assertEqual(-104)
             });
-        console.log("RequestPermissionForUser ----------3");
+        console.log("RequestPermissionForUser ----------2");
+        ret = true
         done();
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
     })
 
 })

@@ -17,7 +17,8 @@ import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 var time = 1000
 describe('ActsAnsLocalCanDisplayTest', function () {
-    console.info("===========ActsLocalCanDisplayTest start====================>");
+    console.info("===ActsLocalCanDisplayTest start===>");
+
     /*
      * @tc.number: ActsLocalCanDisplay_test_0100
      * @tc.name: isBadgeDisplayed()
@@ -25,7 +26,7 @@ describe('ActsAnsLocalCanDisplayTest', function () {
      */
     it('ActsLocalCanDisplay_test_0100', 0, async function (done) {
         await notify.isBadgeDisplayed((err,data) => {
-            console.log("==========================>ActsLocalCanDisplay_test_0100 success=======================>"+err+data)
+            console.log("====>ActsLocalCanDisplay_test_0100 success====>"+err+data)
             expect(typeof(data)).assertEqual('boolean')
         })
         done();
@@ -33,6 +34,7 @@ describe('ActsAnsLocalCanDisplayTest', function () {
             console.debug("====>time out ActsLocalCanDisplay_test_0100====>");
         }, time);
     })
+
     /*
      * @tc.number: ActsLocalCanDisplay_test_0200
      * @tc.name: isBadgeDisplayed()
@@ -40,7 +42,7 @@ describe('ActsAnsLocalCanDisplayTest', function () {
      */
     it('ActsLocalCanDisplay_test_0200', 0, async function (done) {
         var promise = await notify.isBadgeDisplayed()
-        console.log("==========================>ActsLocalCanDisplay_test_0200 success=======================>"+promise)
+        console.log("===>ActsLocalCanDisplay_test_0200 success===>"+promise)
         expect(typeof(promise)).assertEqual('boolean')
         done();
         setTimeout(function(){

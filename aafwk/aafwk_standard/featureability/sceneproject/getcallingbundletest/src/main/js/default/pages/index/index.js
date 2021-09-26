@@ -36,9 +36,10 @@ export default {
     },
     async onShow() {
         commonEvent.publish("ACTS_GetCallingBundle_0100_CommonEvent", PublishCallBackOne);
-        var info = await featureAbility.getCallingBundle();
+        var context = featureAbility.getContext();
+        var info = await context.getCallingBundle();
         commonEvent.publish(info + ".promise", PublishCallBackTwo);
-        featureAbility.getCallingBundle(
+        context.getCallingBundle(
             (err, data) => {
                 console.debug("getCallingBundle : " + data)
                 commonEvent.publish(data + ".callback", PublishCallBackThree);

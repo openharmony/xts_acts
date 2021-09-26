@@ -22,6 +22,7 @@ var WantAgent2;
 var time = 1000
 describe('ActsAnsGetWantAgentInfoTwoProTest', function () {
     console.info('----ActsGetWantAgentInfoTest----');
+
     /*
     * @tc.number: ACTS_SetWantInfo_0700
     * @tc.name: getWantAgent()
@@ -115,8 +116,8 @@ describe('ActsAnsGetWantAgentInfoTwoProTest', function () {
                 if (err.code == 0) {
                     WantAgent2 = data;
                     console.info('----getWantAgent2 Promise success!----');
-                    console.log("=======WantAgent1======="+JSON.stringify(WantAgent1))
-                    console.log("=======WantAgent2======="+JSON.stringify(WantAgent2))
+                    console.log("==WantAgent1=="+JSON.stringify(WantAgent1))
+                    console.log("==WantAgent2=="+JSON.stringify(WantAgent2))
                     console.info(data);
                     expect(typeof(data)).assertEqual("object");
                     wantAgent.equal(WantAgent1,WantAgent2).then(

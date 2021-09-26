@@ -29,30 +29,50 @@ describe('ActsBmsMetaDataTest', function () {
         console.info('=====================bms_getMetaData_0100==================');
         await install(['/data/test/bmsThirdBundleTest1.hap'])
         await install(['/data/test/bmsThirdBundleTest3.hap'])
-        var datainfo = await bundle.queryAbilityByWant({
+        let abilityName1 = 'com.example.third1.MainAbility';
+        let abilityName2 = 'com.example.third3.MainAbility';
+        let dataMap1 = new Map();
+        let dataMap2 = new Map();
+        var dataInfos = await bundle.queryAbilityByWant({
             want: {
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
                 elementName: {
                     deviceId: '0',
                     bundleName: 'com.example.third1',
-                    abilityName: 'com.example.third1.MainAbility',
+                    abilityName: abilityName1,
                 },
             }
         }, 0, 0)
-        checkMetaData(datainfo.metaData);
-        datainfo = await bundle.queryAbilityByWant({
+        for (let i = 0, len = dataInfos.length; i < len; i++) {
+            dataMap1.set(dataInfos[i].name, dataInfos[i].metaData)
+        }
+        expect(dataMap1.has(abilityName1)).assertTrue();
+        expect(dataMap1.has(abilityName2)).assertTrue();
+        if (dataMap1.has(abilityName1) && dataMap1.has(abilityName2)) {
+            checkMetaData(dataMap1.get(abilityName1), 'Data1');
+            checkMetaData(dataMap1.get(abilityName2), 'Data3');
+        }
+        dataInfos = await bundle.queryAbilityByWant({
             want: {
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
                 elementName: {
                     deviceId: '0',
                     bundleName: 'com.example.third1',
-                    abilityName: 'com.example.third3.MainAbility',
+                    abilityName: abilityName2,
                 },
             }
         }, 0, 0)
-        checkMetaData(datainfo.metaData);
+        for (let i = 0, len = dataInfos.length; i < len; i++) {
+            dataMap2.set(dataInfos[i].name, dataInfos[i].metaData)
+        }
+        expect(dataMap2.has(abilityName1)).assertTrue();
+        expect(dataMap2.has(abilityName2)).assertTrue();
+        if (dataMap2.has(abilityName1) && dataMap2.has(abilityName2)) {
+            checkMetaData(dataMap2.get(abilityName1), 'Data1');
+            checkMetaData(dataMap2.get(abilityName2), 'Data3');
+        }
         done();
         setTimeout(function () {
             console.debug('============bms_getMetaData_0100===========')
@@ -67,7 +87,10 @@ describe('ActsBmsMetaDataTest', function () {
     it('bms_getMetaData_0200', 0, async function (done) {
         console.info('=====================bms_getMetaData_0200==================');
         await install(['/data/test/bmsThirdBundleTestA1.hap'])
-        var datainfo = await bundle.queryAbilityByWant({
+        let dataMap = new Map();
+        let abilityName1 = 'com.example.third1.AMainAbility';
+        let abilityName2 = 'com.example.third3.MainAbility';
+        var dataInfos = await bundle.queryAbilityByWant({
             want: {
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
@@ -78,7 +101,15 @@ describe('ActsBmsMetaDataTest', function () {
                 },
             }
         }, 0, 0)
-        checkMetaData(datainfo.metaData);
+        for (let i = 0, len = dataInfos.length; i < len; i++) {
+            dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
+        }
+        expect(dataMap.has(abilityName1)).assertTrue();
+        expect(dataMap.has(abilityName2)).assertTrue();
+        if (dataMap.has(abilityName1) && dataMap.has(abilityName2)) {
+            checkMetaData(dataMap.get(abilityName1), 'DataA1');
+            checkMetaData(dataMap.get(abilityName2), 'Data3');
+        }
         done();
         setTimeout(function () {
             console.debug('============bms_getMetaData_0200===========')
@@ -93,7 +124,7 @@ describe('ActsBmsMetaDataTest', function () {
     it('bms_getMetaData_0300', 0, async function (done) {
         console.info('=====================bms_getMetaData_0300==================');
         await uninstall('com.example.third1');
-        var datainfo = await bundle.queryAbilityByWant({
+        var dataInfos = await bundle.queryAbilityByWant({
             want: {
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
@@ -104,9 +135,9 @@ describe('ActsBmsMetaDataTest', function () {
                 },
             }
         }, 0, 0)
-        console.info('==========abilityInfo is ==========' + datainfo);
-        console.info('==========abilityInfo is ==========' + JSON.stringify(datainfo));
-        checkMetaDataNoExit(datainfo.metaData);
+        console.info('==========abilityInfo is ==========' + dataInfos);
+        console.info('==========abilityInfo is ==========' + JSON.stringify(dataInfos));
+        expect(dataInfos.length).assertEqual(0);
         done();
         setTimeout(function () {
             console.debug('============bms_getMetaData_0300===========')
@@ -121,7 +152,10 @@ describe('ActsBmsMetaDataTest', function () {
     it('bms_getMetaData_0400', 0, async function (done) {
         console.info('=====================bms_getMetaData_0400==================');
         await install(['/data/test/bmsThirdBundleTest5.hap']);
-        var datainfo1 = await bundle.queryAbilityByWant({
+        let dataMap = new Map();
+        let abilityName1 = 'com.example.third5.AMainAbility';
+        let abilityName2 = 'com.example.third5.BMainAbility';
+        var dataInfos = await bundle.queryAbilityByWant({
             want: {
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
@@ -132,21 +166,15 @@ describe('ActsBmsMetaDataTest', function () {
                 },
             }
         }, 0, 0)
-        console.info('==========abilityInfo is ==========' + JSON.stringify(datainfo1));
-        checkMetaData(datainfo1.metaData);
-        var datainfo2 = await bundle.queryAbilityByWant({
-            want: {
-                action: 'action.system.home',
-                entities: ['entity.system.home'],
-                elementName: {
-                    deviceId: '0',
-                    bundleName: 'com.example.third5',
-                    abilityName: 'com.example.third5.BMainAbility',
-                },
-            }
-        }, 0, 0)
-        console.info('==========abilityInfo is ==========' + JSON.stringify(datainfo2));
-        checkMetaData(datainfo2.metaData);
+        for (let i = 0, len = dataInfos.length; i < len; i++) {
+            dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
+        }
+        expect(dataMap.has(abilityName1)).assertTrue();
+        expect(dataMap.has(abilityName2)).assertTrue();
+        if (dataMap.has(abilityName1) && dataMap.has(abilityName2)) {
+            checkMetaData(dataMap.get(abilityName1), 'Data5A');
+            checkMetaData(dataMap.get(abilityName2), 'Data5B');
+        }
         await uninstall('com.example.third5');
         done();
         setTimeout(function () {
@@ -161,7 +189,7 @@ describe('ActsBmsMetaDataTest', function () {
     */
     it('bms_getMetaData_0500', 0, async function (done) {
         console.info('=====================bms_getMetaData_0500==================');
-        var datainfo = await bundle.queryAbilityByWant({
+        var dataInfos = await bundle.queryAbilityByWant({
             want: {
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
@@ -172,9 +200,9 @@ describe('ActsBmsMetaDataTest', function () {
                 },
             }
         }, 0, 0)
-        console.info('==========abilityInfo is ==========' + datainfo);
-        console.info('==========abilityInfo is ==========' + JSON.stringify(datainfo));
-        checkMetaDataNoExit(datainfo.metaData);
+        console.info('==========abilityInfo is ==========' + dataInfos);
+        console.info('==========abilityInfo is ==========' + JSON.stringify(dataInfos));
+        expect(dataInfos.length).assertEqual(0);
         done();
         setTimeout(function () {
             console.debug('============bms_getMetaData_0500===========')
@@ -188,7 +216,9 @@ describe('ActsBmsMetaDataTest', function () {
     */
     it('bms_getMetaData_0600', 0, async function (done) {
         console.info('=====================bms_getMetaData_0600==================');
-        var datainfo = await bundle.queryAbilityByWant({
+        let dataMap = new Map();
+        let abilityName1 = 'com.example.system1.MainAbility';
+        var dataInfos = await bundle.queryAbilityByWant({
             want: {
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
@@ -199,7 +229,13 @@ describe('ActsBmsMetaDataTest', function () {
                 },
             }
         }, 0, 0)
-        checkMetaData(datainfo.metaData);
+        for (let i = 0, len = dataInfos.length; i < len; i++) {
+            dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
+        }
+        expect(dataMap.has(abilityName1)).assertTrue();
+        if (dataMap.has(abilityName1)) {
+            checkMetaData(dataMap.get(abilityName1), 'Data1S');
+        }
         done();
         setTimeout(function () {
             console.debug('============bms_getMetaData_0600===========')
@@ -213,7 +249,9 @@ describe('ActsBmsMetaDataTest', function () {
     */
     it('bms_getMetaData_0700', 0, async function (done) {
         console.info('=====================bms_getMetaData_0700==================');
-        var datainfo = await bundle.queryAbilityByWant({
+        let dataMap = new Map();
+        let abilityName1 = 'com.example.vendor1.MainAbility';
+        var dataInfos = await bundle.queryAbilityByWant({
             want: {
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
@@ -224,14 +262,20 @@ describe('ActsBmsMetaDataTest', function () {
                 },
             }
         }, 0, 0)
-        checkMetaData(datainfo.metaData);
+        for (let i = 0, len = dataInfos.length; i < len; i++) {
+            dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
+        }
+        expect(dataMap.has(abilityName1)).assertTrue();
+        if (dataMap.has(abilityName1)) {
+            checkMetaData(dataMap.get(abilityName1), 'Data1V');
+        }
         done();
         setTimeout(function () {
             console.debug('============bms_getMetaData_0700===========')
         }, TIMEOUT);
     })
 
-    function checkMetaData(data) {
+    function checkMetaData(data, name) {
         console.info('==========MetaData is==========' + JSON.stringify(data));
         var parameters = data.parameters;
         var results = data.results;
@@ -250,6 +294,7 @@ describe('ActsBmsMetaDataTest', function () {
             expect(typeof parameters[i].description).assertEqual('string');
             console.info('==========Parameter name is==========' + parameters[i].name);
             expect(typeof parameters[i].name).assertEqual('string');
+            expect(parameters[i].name).assertEqual(name);
             console.info('==========Parameter type is==========' + parameters[i].type);
             expect(typeof parameters[i].type).assertEqual('string');
         }
@@ -258,6 +303,7 @@ describe('ActsBmsMetaDataTest', function () {
             expect(typeof results[i].description).assertEqual('string');
             console.info('==========Results name is==========' + results[i].name);
             expect(typeof results[i].name).assertEqual('string');
+            expect(results[i].name).assertEqual(name);
             console.info('==========Results type is==========' + results[i].type);
             expect(typeof results[i].type).assertEqual('string');
         }
@@ -266,21 +312,10 @@ describe('ActsBmsMetaDataTest', function () {
             expect(typeof customizeDatas[i].name).assertEqual('string');
             console.info('==========CustomizeData value is==========' + customizeDatas[i].value);
             expect(typeof customizeDatas[i].value).assertEqual('string');
+            expect(customizeDatas[i].name).assertEqual(name);
             console.info('==========CustomizeData extra is==========' + customizeDatas[i].extra);
             expect(typeof customizeDatas[i].extra).assertEqual('string');
         }
-    }
-    function checkMetaDataNoExit(data) {
-        console.info('==========MetaData is==========' + JSON.stringify(data));
-        var parameters = data.parameters;
-        var results = data.results;
-        var customizeDatas = data.customizeDatas;
-        expect(typeof parameters).assertEqual('object');
-        expect(typeof results).assertEqual('object');
-        expect(typeof customizeDatas).assertEqual('object');
-        expect(parameters.length).assertEqual(0);
-        expect(results.length).assertEqual(0);
-        expect(customizeDatas.length).assertEqual(0);
     }
     async function install(bundlePath) {
         var installer = await bundle.getBundleInstaller();

@@ -2,7 +2,7 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "1700000",
+        "test-timeout": "600000",
         "package": "com.example.actsbundlemanagertest",
         "shell-timeout": "60000"
     },

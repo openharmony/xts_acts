@@ -19,6 +19,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 var time = 1000
 var WantAgent;
 describe('ActsAnsWantAgentTreeProTest', function () {
+
     /*
      * @tc.number: ACTS_SetWant_0600
      * @tc.name: getWantAgent(OperationType.SEND_COMMON_EVENT)

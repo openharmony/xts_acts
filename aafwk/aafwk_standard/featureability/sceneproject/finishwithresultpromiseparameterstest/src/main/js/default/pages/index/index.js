@@ -31,7 +31,7 @@ export default {
     },
     async onShow() {
         commonevent.publish("ACTS_FinishWithResult_0100_CommonEvent", PublishCallBack);
-        var promise = await featureAbility.finishWithResult(
+        var promise = await featureAbility.terminateSelfWithResult(
             {
                 resultCode: 1,
                 want:

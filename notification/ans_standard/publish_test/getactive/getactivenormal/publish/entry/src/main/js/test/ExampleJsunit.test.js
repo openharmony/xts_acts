@@ -58,43 +58,43 @@ describe('ActsAnsActivePublishTest', function () {
 
         await notification.getActiveNotifications(
         (error,data) => {
-            console.log("============PublishgetActiveNotificationsTest1============"+data)
+            console.log("==PublishgetActiveNotificationsTest1=="+data)
             expect(typeof(data)).assertEqual('object')
             for (let i = 0; i < data.length; i++) {
-                console.log("==========================>PublishgetActiveNotificationsTest1=======================>" + data[i].hashCode)
-                console.log("==========================>PublishgetActiveNotificationsTest1=======================>" + data[i].id)
-                console.log("==========================>PublishgetActiveNotificationsTest1=======================>" + data[i].classification)
-                console.log("==========================>PublishgetActiveNotificationsTest1=======================>" + data[i].sortingKey)
-                console.log("==========================>PublishgetActiveNotificationsTest1=======================>" + data[i].slotType)
-                console.log("==========================>PublishgetActiveNotificationsTest1=======================>" + data[i].content.contentType)
-                console.log("==========================>PublishgetActiveNotificationsTest1=======================>" + data[i].content.normal.title)
-                console.log("==========================>PublishgetActiveNotificationsTest1=======================>" + data[i].content.normal.text)
-                console.log("==========================>PublishgetActiveNotificationsTest1=======================>" + data[i].content.normal.additionalText)
+                console.log("===>PublishgetActiveNotificationsTest1===>" + data[i].hashCode)
+                console.log("===>PublishgetActiveNotificationsTest1===>" + data[i].id)
+                console.log("===>PublishgetActiveNotificationsTest1===>" + data[i].classification)
+                console.log("===>PublishgetActiveNotificationsTest1===>" + data[i].sortingKey)
+                console.log("===>PublishgetActiveNotificationsTest1===>" + data[i].slotType)
+                console.log("===>PublishgetActiveNotificationsTest1===>" + data[i].content.contentType)
+                console.log("===>PublishgetActiveNotificationsTest1===>" + data[i].content.normal.title)
+                console.log("===>PublishgetActiveNotificationsTest1===>" + data[i].content.normal.text)
+                console.log("===>PublishgetActiveNotificationsTest1===>" + data[i].content.normal.additionalText)
             }
         })
 
         var promise = await notification.getActiveNotifications();
         expect(typeof(promise)).assertEqual('object')
         for (let i = 0; i < promise.length; i++) {
-            console.log("==========================>publishgetAllActiveNotificationsPromisehashCode=======================>" + promise[i].hashCode)
-            console.log("==========================>publishgetAllActiveNotificationsPromisehashCode=======================>" + promise[i].id)
-            console.log("==========================>publishgetAllActiveNotificationsPromisehashCode=======================>" + promise[i].slotType)
-            console.log("==========================>publishgetAllActiveNotificationsPromisehashCode=======================>" + promise[i].classification)
-            console.log("==========================>publishgetAllActiveNotificationsPromisehashCode=======================>" + promise[i].sortingKey)
-            console.log("==========================>publishgetAllActiveNotificationsPromisehashCode=======================>" + promise[i].content.contentType)
-            console.log("==========================>publishgetAllActiveNotificationsPromisehashCode=======================>" + promise[i].content.normal.title)
-            console.log("==========================>publishgetAllActiveNotificationsPromisehashCode=======================>" + promise[i].content.normal.text)
-            console.log("==========================>publishgetAllActiveNotificationsPromisehashCode=======================>" + promise[i].content.normal.additionalText)
+            console.log("==>publishgetAllActiveNotificationsPromisehashCode==>" + promise[i].hashCode)
+            console.log("==>publishgetAllActiveNotificationsPromisehashCode==>" + promise[i].id)
+            console.log("==>publishgetAllActiveNotificationsPromisehashCode==>" + promise[i].slotType)
+            console.log("==>publishgetAllActiveNotificationsPromisehashCode==>" + promise[i].classification)
+            console.log("==>publishgetAllActiveNotificationsPromisehashCode==>" + promise[i].sortingKey)
+            console.log("==>publishgetAllActiveNotificationsPromisehashCode==>" + promise[i].content.contentType)
+            console.log("==>publishgetAllActiveNotificationsPromisehashCode==>" + promise[i].content.normal.title)
+            console.log("==>publishgetAllActiveNotificationsPromisehashCode==>" + promise[i].content.normal.text)
+            console.log("==>publishgetAllActiveNotificationsPromisehashCode==>" + promise[i].content.normal.additionalText)
         }
 
         await notification.getActiveNotificationCount((error,data) => {
-            console.log("============getActiveNotificationNumsTest1============"+JSON.stringify(data))
+            console.log("==getActiveNotificationNumsTest1=="+JSON.stringify(data))
             expect(typeof(data)).assertEqual('number')
         })
 
         var promise = await notification.getActiveNotificationCount();
-        console.log("============getActiveNotificationNumsTest1Promise============"+JSON.stringify(promise))
-        console.log("============ACTS_PublishTest1_0100 finished============")
+        console.log("==getActiveNotificationNumsTest1Promise=="+JSON.stringify(promise))
+        console.log("==ACTS_PublishTest1_0100 finished==")
         expect(typeof(promise)).assertEqual('number')
         done();
         setTimeout(function(){

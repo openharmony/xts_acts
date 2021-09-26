@@ -20,6 +20,7 @@ var time = 1000
 var WantAgent;
 describe('ActsAnsWantAgentOneTest', function () {
     console.info('----ActsWantAgentTest----');
+
     /*
      * @tc.number: ACTS_SetWant_0100
      * @tc.name: getWantAgent(OperationType.START_ABILITY)
@@ -68,10 +69,10 @@ describe('ActsAnsWantAgentOneTest', function () {
                         (err, data) => {
                             if (err.code == 0) {
                                 console.info('----trigger success!----');
-                                console.info('==================== trigger data  ' + JSON.stringify(data) );
+                                console.info('== trigger data  ' + JSON.stringify(data) );
                             } else {
                                 console.info('----trigger failed!----');
-                                console.info('==================== trigger data  ' + JSON.stringify(data) );
+                                console.info('== trigger data  ' + JSON.stringify(data) );
                             }
                             done();
                         }
