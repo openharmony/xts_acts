@@ -1820,8 +1820,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test29', 0, async function (done) {
         console.log("SUB_systemTime_setTimezone_JS_API_2900 start")
-        systemTime.setTimezone("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-		AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+        systemTime.setTimezone("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
             .then(data =>{
             console.log("setTimezone ===data " + data)
         }).catch(error => {
