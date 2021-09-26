@@ -22,6 +22,7 @@ group("security") {
       # "permission/permissionkitcpp:PermissionKitPerformanceCPPTest",
       # "permission/permissionkitcpp:PermissionKitReliabilityCPPTest",
       "dataprotect/huks_standard_adapter:huks_std_function_test",
+      "deviceauth/deviceauth_function:DeviceAuthFunctionTest",
     ]
   } else {
     deps =
