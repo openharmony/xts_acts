@@ -34,6 +34,11 @@ static const char *g_storePath = "/storage/";
 static const char *g_testOne = "TestOne";
 static const char *g_testTwo = "TestTwo";
 
+#define TEST_TASK_STACK_SIZE      0x2000
+#define WAIT_TO_TEST_DONE         4
+
+static osPriority_t g_setPriority;
+
 /*
  * @tc.register: register a test suit named "CalcMultiTest"
  * @param: test subsystem name
@@ -46,11 +51,31 @@ LITE_TEST_SUIT(security, securityData, HksSafeCompareKeyTest);
  * @tc.setup: define a setup for test suit, format:"CalcMultiTest + SetUp"
  * @return: true——setup success
  */
+static void ExecHksInitialize(void const *argument)
+{
+    LiteTestPrint("HksInitialize Begin!\n");
+    TEST_ASSERT_TRUE(HksInitialize() == 0);
+    LiteTestPrint("HksInitialize End!\n");
+    osThreadExit();
+}
+ 
 static BOOL HksSafeCompareKeyTestSetUp()
 {
     LiteTestPrint("setup\n");
-    hi_watchdog_disable();
-    TEST_ASSERT_TRUE(HksInitialize() == 0);
+    hi_watchdog_disable();    
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksInitialize, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksSafeCompareKeyTestSetUp End2!\n"); 
     return TRUE;
 }
 
@@ -65,10 +90,7 @@ static BOOL HksSafeCompareKeyTestTearDown()
     return TRUE;
 }
 
-#define TEST_TASK_STACK_SIZE      0x2000
-#define WAIT_TO_TEST_DONE         4
 
-static osPriority_t g_setPriority;
 
 static const struct HksTestGenKeyParams g_testGenKeyParams[] = {
     /* x25519: tee sign/verify */
