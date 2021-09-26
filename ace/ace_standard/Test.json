@@ -4,7 +4,6 @@
         "type": "JSUnitTest",
         "test-timeout": "60000",
         "package": "com.example.aceceshi",
-        "abilityName": "decc.testkit.runner.JsEntryAbility",
         "shell-timeout": "60000"
     },
     "kits": [

@@ -27,7 +27,6 @@
     },
     "abilities": [
       {
-        "visible": true,
         "skills": [
           {
             "entities": [
@@ -43,13 +42,8 @@
         "description": "$string:mainability_description",
         "label": "$string:entry_MainAbility",
         "type": "page",
-        "launchType": "standard"
-      },
-      {
-        "name": "decc.testkit.runner.JsEntryAbility",
-        "label": "$string:entry_MainAbility",
-        "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "visible": true
       }
     ],
     "js": [
