@@ -1000,7 +1000,8 @@ describe('intlTest', function () {
         let numfmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD',
             currencyDisplay: 'code', currencySign: 'accounting', signDisplay: 'always' });
         console.log('formatNumber_test_1800 ' + numfmt.format(123456.789));
-        expect(numfmt.format(123456.789)).assertEqual('+USD 123,456.79');
+        expect(numfmt.format(123456.789)).assertContain('+USD');
+        expect(numfmt.format(123456.789)).assertContain('123,456.79');
     })
 
     /* *
