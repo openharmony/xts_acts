@@ -41,10 +41,7 @@ hctest_suite("ActsHuksHalFunctionTest") {
     "../common/include",
   ]
 
-  deps = [
-    #"//base/security/huks/huawei_property/source:huks_new",
-    "//test/xts/acts/security_lite/huks/common:huks_test_common",
-  ]
+  deps = [ "//test/xts/acts/security_lite/huks/common:huks_test_common" ]
 
   cflags = [
     "-D_CUT_ED25519_",

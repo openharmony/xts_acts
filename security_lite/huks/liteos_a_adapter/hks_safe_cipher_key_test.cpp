@@ -23,6 +23,8 @@
 #include "hks_test_file_operator.h"
 #include "hks_test_mem.h"
 
+#include "securec.h"
+
 using namespace testing::ext;
 namespace {
 #ifndef _CUT_AUTHENTICATE_

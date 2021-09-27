@@ -21,6 +21,8 @@
 #include "hks_param.h"
 #include "hks_type.h"
 
+#include "securec.h"
+
 using namespace testing::ext;
 namespace {
 #ifndef _CUT_AUTHENTICATE_
