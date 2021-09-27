@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "startup_worker_js_test.hap"
+                "WorkerJSTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

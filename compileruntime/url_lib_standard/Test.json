@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "startup_url_js_test.hap"
+                "UrlJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
