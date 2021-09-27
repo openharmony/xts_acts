@@ -10,13 +10,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import("//test/xts/tools/build/suite.gni")
 
-group("jsapi") {
+group("compileruntime") {
   testonly = true
-  deps = [
-    "StartupProcessJSApiTest:startup_process_js_test",
-    "StartupUrlJSApiTest:startup_url_js_test",
-    "StartupUtilJSApiTest:startup_util_js_test",
-    "StartupWorkerJSApiTest:startup_worker_js_test",
-  ]
+  if (is_standard_system) {
+    deps = [
+      "process_lib_standard:process_js_test",
+      "url_lib_standard:url_js_test",
+      "util_lib_standard:util_js_test",
+      "worker_lib_standard:worker_js_hap",
+    ]
+  }
 }
