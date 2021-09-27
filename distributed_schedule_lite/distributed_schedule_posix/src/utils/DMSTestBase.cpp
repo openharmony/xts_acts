@@ -87,6 +87,6 @@ BOOL InstallHap()
 BOOL UninstallHap()
 {
     sem_init(&g_sem, 0, 0);
-    Uninstall("com.huawei.helloworld", nullptr, TestBundleStateCallback);
+    Uninstall("com.ohos.helloworld", nullptr, TestBundleStateCallback);
     sem_wait(&g_sem);
 }
