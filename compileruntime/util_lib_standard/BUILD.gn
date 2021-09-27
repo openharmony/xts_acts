@@ -10,9 +10,29 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("startup_util_js_test") {
-  test_hap_name = "StartupUtilJSApiTest"
-  hap_source_path = "hap/entry-debug-rich-unsigned.hap"
+import("//test/xts/tools/build/suite.gni")
+ohos_js_hap_suite("util_js_test") {
+  hap_profile = "./src/main/config.json"
+  deps = [
+    ":util_js_assets",
+    ":util_resources",
+  ]
+
+  #  shared_libraries = [
+  #    "//third_party/giflib:libgif",
+  #    "//third_party/libpng:libpng",
+  #  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "UtilJsTest"
+
+  #  part_name = "prebuilt_hap"
+  #  subsystem_name = "xts"
+}
+ohos_js_assets("util_js_assets") {
+  source_dir = "./src/main/js/default"
+}
+ohos_resources("util_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }
