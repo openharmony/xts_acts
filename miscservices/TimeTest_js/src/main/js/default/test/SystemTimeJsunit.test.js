@@ -1745,7 +1745,11 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test29', 0, async function (done) {
         console.log("SUB_systemTime_setTimezone_JS_API_2900 start")
+<<<<<<< HEAD
         systemTime.setTimezone("AAAAAAAAAAAAAAAAAAAAAAAAAA")
+=======
+        systemTime.setTimezone("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+>>>>>>> 67cddaeb9d46468d0842acd9543d07c76b15457e
             .then(data =>{
             console.log("setTimezone ===data " + data)
         }).catch(error => {
