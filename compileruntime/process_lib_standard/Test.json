@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "StartupProcessJSApiTest.hap"
+                "ProcessJSApiTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
