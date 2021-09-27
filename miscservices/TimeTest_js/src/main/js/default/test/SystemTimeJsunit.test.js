@@ -32,7 +32,6 @@ describe('TimeTest', function() {
         systemTime.setTime(0)
             .then(data =>{
             console.log("setTime ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTime ===error " + error)
             console.log("setTime ===data " + data)
@@ -55,7 +54,6 @@ describe('TimeTest', function() {
         systemTime.setTime(1)
             .then(data => {
             console.log("setTime ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTime ===error " + error)
             console.log("setTime ===data " + data)
@@ -78,7 +76,6 @@ describe('TimeTest', function() {
         systemTime.setTime(Number.MAX_VALUE/2)
             .then(data => {
             console.log("setTime ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTime ===error " + error)
             console.log("setTime ===data " + data)
@@ -101,7 +98,6 @@ describe('TimeTest', function() {
         systemTime.setTime(Number.MAX_VALUE - 1)
             .then(data => {
             console.log("setTime ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTime ===error " + error)
             console.log("setTime ===data " + data)
@@ -124,7 +120,6 @@ describe('TimeTest', function() {
         systemTime.setTime(Number.MAX_VALUE)
             .then(data => {
             console.log("setTime ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTime ===error " + error)
             console.log("setTime ===data " + data)
@@ -147,7 +142,6 @@ describe('TimeTest', function() {
         systemTime.setTime(Number.MIN_VALUE)
             .then(data => {
             console.log("setTime ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTime ===error " + error)
             console.log("setTime ===data " + data)
@@ -170,7 +164,6 @@ describe('TimeTest', function() {
         systemTime.setTime(-1)
             .then(data => {
             console.log("setTime ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTime ===error " + error)
             console.log("setTime ===data " + data)
@@ -193,7 +186,6 @@ describe('TimeTest', function() {
         systemTime.setTime(-Number.MIN_VALUE)
             .then(data => {
             console.log("setTime ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTime ===error " + error)
             console.log("setTime ===data " + data)
@@ -216,7 +208,6 @@ describe('TimeTest', function() {
         systemTime.setTime(-Number.MAX_VALUE/2)
             .then(data => {
             console.log("setTime ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTime ===error " + error)
             console.log("setTime ===data " + data)
@@ -239,7 +230,6 @@ describe('TimeTest', function() {
         systemTime.setTime(-Number.MAX_VALUE + 1)
             .then(data => {
             console.log("setTime ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTime ===error " + error)
             console.log("setTime ===data " + data)
@@ -262,7 +252,6 @@ describe('TimeTest', function() {
         systemTime.setTime(-Number.MAX_VALUE)
             .then(data => {
             console.log("setTime ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTime ===error " + error)
             console.log("setTime ===data " + data)
@@ -285,7 +274,6 @@ describe('TimeTest', function() {
         systemTime.setTime(Number.NEGATIVE_INFINITY)
             .then(data => {
             console.log("setTime ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTime ===error " + error)
             console.log("setTime ===data " + data)
@@ -308,7 +296,6 @@ describe('TimeTest', function() {
         systemTime.setTime(Number.POSITIVE_INFINITY)
             .then(data => {
             console.log("setTime ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTime ===error " + error)
             console.log("setTime ===data " + data)
@@ -331,7 +318,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date())
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -354,7 +340,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date(2022,1,1))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -377,7 +362,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date(2022,1,15))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -400,7 +384,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date(2022,1,31))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -423,7 +406,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date(2022,1,32))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -446,7 +428,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date(2022,2,29))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -469,7 +450,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date(2040,2,29))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -492,7 +472,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date(2040,2,30))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -515,7 +494,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date(2022,6,30))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -538,7 +516,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date(2022,6,31))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -561,7 +538,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date(2022,12,31))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -584,7 +560,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date(2022,13,1))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -607,7 +582,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date(2022000,1,1))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -630,7 +604,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date(0))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -653,7 +626,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date(-1))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -676,7 +648,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date(Number.MAX_VALUE/2))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -699,7 +670,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date(-Number.MAX_VALUE/2))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -722,7 +692,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date(Number.MAX_VALUE))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -745,7 +714,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date(-Number.MAX_VALUE))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -768,7 +736,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date("June 1, 2022 11:13:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -791,7 +758,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date("June 30, 2022 11:13:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -814,7 +780,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date("June 31, 2022 11:13:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -837,7 +802,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date("July 32, 2022 11:13:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -860,7 +824,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date("July 31, 2022"))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -883,7 +846,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date("February 28, 2022 11:13:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -906,7 +868,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date("February 29, 2022 11:13:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -929,7 +890,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date("February 29, 2040 11:13:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -952,7 +912,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date("February 1, 2022 00:00:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -975,7 +934,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date("February 1, 2022 12:00:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -998,7 +956,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date("February 1, 2022 23:00:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -1021,7 +978,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date("February 1, 2022 23:59:59"))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -1044,7 +1000,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date("February 1, 2022 24:00:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -1067,7 +1022,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date("February 1, 2022 12:59:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -1090,7 +1044,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date("February 1, 2022 12:00:59"))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -1113,7 +1066,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date("February 1, 2022 12:00:60"))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -1136,7 +1088,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date("February 1, 2022 12:60:00"))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -1159,7 +1110,6 @@ describe('TimeTest', function() {
         systemTime.setDate(new Date("!!@#$%^&*"))
             .then(data =>{
             console.log("setDate ===data " + data)
-			expect(false).to.a('boolean')
         }).catch(error => {
             console.log("setDate ===error " + error)
             console.log("setDate ===data " + data)
@@ -1182,7 +1132,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Anadyr, Russia")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1205,7 +1154,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Honiara, SolomonIslands")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1228,7 +1176,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Melbourne, Australia")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1251,7 +1198,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Tokyo, Japan")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1274,7 +1220,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Beijing, China")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1297,7 +1242,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Jakarta, Indonesia")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1320,7 +1264,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Dhaka, Bangladesh")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1343,7 +1286,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Tashkent, Uzbekistan")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1366,7 +1308,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Dubai, U.A.E.")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1389,7 +1330,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Moscow, Russia")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1412,7 +1352,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Brussels, Belgium")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1435,7 +1374,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("London, England")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1458,7 +1396,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Accra, Ghana")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1481,7 +1418,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Praia, CaboVerde")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1504,7 +1440,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Nuuk, Greenland")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1527,7 +1462,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Buenos Aires, Argentina")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1550,7 +1484,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("New York, U.S.A.")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1573,7 +1506,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Mexico City, Mexico")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1596,7 +1528,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Guatemala City, Guatemala")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1619,7 +1550,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Los Angeles, U.S.A.")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1642,7 +1572,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Anchorage, U.S.A.")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1665,7 +1594,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Adak, U.S.A.")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1688,7 +1616,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Honolulu, U.S.A.")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1711,7 +1638,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Alofi, Niue")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1734,7 +1660,6 @@ describe('TimeTest', function() {
         systemTime.setTimezone("Baker Island, U.S.A.")
             .then(data =>{
             console.log("setTimezone ===data " + data)
-			expect(true).to.a('boolean')
         }).catch(error => {
             console.log("setTimezone ===error " + error)
             console.log("setTimezone ===data " + data)
@@ -1820,8 +1745,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test29', 0, async function (done) {
         console.log("SUB_systemTime_setTimezone_JS_API_2900 start")
-        systemTime.setTimezone("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-		AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+        systemTime.setTimezone("AAAAAAAAAAAAAAAAAAAAAAAAAA")
             .then(data =>{
             console.log("setTimezone ===data " + data)
         }).catch(error => {
