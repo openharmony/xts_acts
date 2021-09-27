@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.neu.actsanswantagentfourtest",
+    "bundleName": "com.example.actsanswantagentfourtest",
     "vendor": "example",
     "version": {
       "code": 1,

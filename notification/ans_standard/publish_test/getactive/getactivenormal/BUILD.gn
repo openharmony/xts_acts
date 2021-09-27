@@ -19,7 +19,7 @@ group("getactivenormal") {
     deps = [
       "active:ActsAnsGetActiveTest",
 
-      # "sub:ActsAnsActiveSubscriberTest",
+      #"sub:ActsAnsActiveSubscriberTest",
       "publish:ActsAnsActivePublishTest",
     ]
   }

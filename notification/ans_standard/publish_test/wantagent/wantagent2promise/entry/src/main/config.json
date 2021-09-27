@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.neu.actsanswantagenttwoprotest",
+    "bundleName": "com.example.actsanswantagenttwoprotest",
     "vendor": "example",
     "version": {
       "code": 1,

@@ -159,12 +159,22 @@ describe('ActsAmsTestFourthScene', function () {
         done();
     }
 
+    function sleep(delay) {
+        var start = (new Date()).getTime();
+        while((new Date()).getTime() - start < delay) {
+            continue;
+        }
+    }
+
     /*
      * @tc.number    : Acts_Ams_test_4900
      * @tc.name      : getAllRunningProcesses : Get All Running Processes Info
      * @tc.desc      : Get All Running Processes Info(by Promise)
      */
     it('Acts_Ams_test_4900', 0, async function (done) {
+        console.info("sleep begin");
+        sleep(5000);
+        console.info("sleep end");
         var info = await abilitymanager.getAllRunningProcesses();
         console.info('getAllRunningProcesses data length [' + info.length + ']');
         console.info('Acts_Ams_test_4900 getAllRunningProcesses JSON String: ' + JSON.stringify(info));

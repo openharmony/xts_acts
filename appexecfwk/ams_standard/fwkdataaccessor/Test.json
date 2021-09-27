@@ -1,8 +1,8 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSStTest",
-        "test-timeout": "60000",
+        "type": "JSUnitTest",
+        "test-timeout": "180000",
         "package": "com.amsst.fwkdataaccessor",
         "shell-timeout": "60000"
     },
@@ -10,9 +10,30 @@
         {
             "test-file-name": [
                 "FWKDataAccessor.hap"
+               
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        }
-    ]
+        },
+		{
+            "type": "ShellKit",
+            "run-command": [
+                "remount",
+                "mkdir /system/vendor"
+            ]
+        },
+        {
+            "type": "PushKit",
+            "push": [
+                  "amsStDataAbility.hap->/system/vendor/amsStDataAbility.hap"
+            ]
+            
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "chmod 644 /system/vendor/*.hap"
+			]
+		}
+	]
 }

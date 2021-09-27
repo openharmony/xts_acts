@@ -93,12 +93,12 @@ describe('ActsAnsWantAgentTwoProTest', function () {
                             done();
                         }
                     );
-                    done();
-                    setTimeout(function(){
-                        console.debug("====>time out ACTS_SetWant_0400====>");
-                    }, time);
+                    done();         
             }
         );
+	setTimeout(function(){
+                        console.debug("====>time out ACTS_SetWant_0400====>");
+                    }, time);
         console.info('----getWantAgent after----');
     })
 

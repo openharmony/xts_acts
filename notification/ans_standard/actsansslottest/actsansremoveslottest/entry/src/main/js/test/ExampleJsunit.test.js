@@ -61,7 +61,7 @@ describe('ActsAnsRemoveSlotTest', function () {
         })
         setTimeout(function(){
             console.debug("====>time out ActsAnsRemoveSlotTest_0100====>");
-        }, 10000);
+        }, 5000);
     })
 
     /*
@@ -92,21 +92,21 @@ describe('ActsAnsRemoveSlotTest', function () {
         })
         notification.removeSlot(notification.SlotType.SERVICE_INFORMATION).then(()=>{
             console.debug("====>removeSlot first time promise====>");
-            notification.getSlot(notification.SlotType.SERVICE_INFORMATION, (err, data)=>{
-                console.debug("====>second getSlot enter====>");
-                console.debug("====>second getSlot enter err====>" + JSON.stringify(err));
+        })
+        notification.getSlot(notification.SlotType.SERVICE_INFORMATION, (err, data)=>{
+            console.debug("====>second getSlot enter====>");
+            console.debug("====>second getSlot enter err====>" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.debug("====>second getSlot data====>" + JSON.stringify(data));
+            notification.removeSlot(notification.SlotType.SERVICE_INFORMATION, (err)=>{
+                console.debug("====>removeSlot second time err====>" + JSON.stringify(err));
+                console.debug("====>ActsAnsRemoveSlotTest_0200 end====>");
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>second getSlot data====>" + JSON.stringify(data));
-                notification.removeSlot(notification.SlotType.SERVICE_INFORMATION, (err)=>{
-                    console.debug("====>removeSlot second time err====>" + JSON.stringify(err));
-                    console.debug("====>ActsAnsRemoveSlotTest_0200 end====>");
-                    expect(err.code != 0).assertEqual(true);
-                    done();
-                })
+                done();
             })
         })
         setTimeout(function(){
             console.debug("====>time out ActsAnsRemoveSlotTest_0200====>");
-        }, 10000);
+        }, 15000);
     })
 })

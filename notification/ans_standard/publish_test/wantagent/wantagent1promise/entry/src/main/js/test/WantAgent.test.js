@@ -76,11 +76,12 @@ describe('ActsAnsWantAgentOneProTest', function () {
                     }
                 );
                 done();
-                setTimeout(function(){
-                    console.debug("====>time out ACTS_SetWant_0200====>");
-                }, time);
+               
             }
         );
+	setTimeout(function(){
+            console.debug("====>time out ACTS_SetWant_0200====>");
+        }, time);
         console.info('----getWantAgent after----');
     })
 })

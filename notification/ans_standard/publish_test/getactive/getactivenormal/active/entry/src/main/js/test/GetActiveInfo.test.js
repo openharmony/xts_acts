@@ -55,10 +55,9 @@ describe('ActsAnsGetActiveTest', function () {
             console.log("===>getAllActiveNotificationsPromiseadditionalText1===>" + promise[i].content.normal.additionalText)
         }
         done();
-        setTimeout(function(){
+	setTimeout(function(){
             console.debug("====>time out ActsActive_test_0100====>");
         }, time);
-    })
-
-})
+    })	
+})	
 

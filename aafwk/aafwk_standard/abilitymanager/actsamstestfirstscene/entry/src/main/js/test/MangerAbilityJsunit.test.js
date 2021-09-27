@@ -100,12 +100,22 @@ describe('ActsAmsTestFirstScene', function () {
         done();
     }
 
+    function sleep(delay) {
+        var start = (new Date()).getTime();
+        while((new Date()).getTime() - start < delay) {
+            continue;
+        }
+    }
+
     /*
     * @tc.number    : Acts_Ams_test_0100
     * @tc.name      : getAllRunningProcesses : Get All Running Processes Info
     * @tc.desc      : Get All Running Processes Info(by Promise)
     */
     it('Acts_Ams_test_0100', 0, async function (done) {
+        console.info("sleep begin");
+        sleep(5000);
+        console.info("sleep end");
         var info = await abilitymanager.getAllRunningProcesses();
         console.info('Acts_Ams_test_0100 getAllRunningProcesses JSON String: ' + JSON.stringify(info));
         expect(Array.isArray(info)).assertEqual(true);
@@ -133,6 +143,21 @@ describe('ActsAmsTestFirstScene', function () {
             expect(typeof (info[i].weightReasonCode)).assertEqual("number");
             expect(info[i].weightReasonCode).assertEqual(WeightReasonCode.REASON_UNKNOWN);
         }
+        done();
+        setTimeout(timeout, 5000);
+    })
+
+    /*
+    * @tc.number    : Acts_Ams_test_1100
+    * @tc.name      : moveMissionToTop : Move Mission To Top
+    * @tc.desc      : Move Mission To Top(by Promise)
+    */
+    it('Acts_Ams_test_1100', 0, async function (done) {
+        var maxnum = 10;
+        var result = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
+        var info = await abilitymanager.moveMissionToTop(result[0].id);
+        console.info('Acts_Ams_test_1100 moveMissionToTop data  [' + info + ']');
+        expect(info).assertEqual(0);
         done();
         setTimeout(timeout, 5000);
     })
@@ -238,17 +263,17 @@ describe('ActsAmsTestFirstScene', function () {
     })
 
     /*
-    * @tc.number    : Acts_Ams_test_1300
+    * @tc.number    : Acts_Ams_test_11100
     * @tc.name      : deleteMissions: delete Missions
     * @tc.desc      : delete Missions(by Promise)
     */
-    it('Acts_Ams_test_1300', 0, async function (done) {
+    it('Acts_Ams_test_11100', 0, async function (done) {
         var maxnum = 10;
         var result = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
         expect(result.length).assertEqual(1);
         var missionID = result[0].id + 1;
         var info = await abilitymanager.deleteMissions([missionID]);
-        console.info('Acts_Ams_test_1300 deleteMissions data  [' + info + ']');
+        console.info('Acts_Ams_test_11100 deleteMissions data  [' + info + ']');
         expect(info).assertLarger(0);
         done();
         setTimeout(timeout, 5000);

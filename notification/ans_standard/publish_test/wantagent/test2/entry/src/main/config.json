@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.neu.WantAgenTest2",
+    "bundleName": "com.example.WantAgenTest2",
     "vendor": "example",
     "version": {
       "code": 1,
@@ -14,7 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.test",
+    "package": "com.example.WantAgenTest2",
     "name": ".MyApplication",
     "deviceType": [
       "phone"
@@ -36,7 +36,7 @@
             ]
           }
         ],
-        "name": "com.example.test.MainAbility",
+        "name": "com.example.WantAgenTest2.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",

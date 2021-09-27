@@ -20,7 +20,7 @@ group("getwantagentinfo") {
       "getwantagentinfoone:ActsAnsGetWantAgentInfoOneTest",
       "getwantagentinfoonepro:ActsAnsGetWantAgentInfoOneProTest",
       "getwantagentinfotwo:ActsAnsGetWantAgentInfoTwoTest",
-      "getwantagentinfotwopro:ActsAnsGetWantAgentInfoTwoProTest-signed",
+      "getwantagentinfotwopro:ActsAnsGetWantAgentInfoTwoProTest",
     ]
   }
 }

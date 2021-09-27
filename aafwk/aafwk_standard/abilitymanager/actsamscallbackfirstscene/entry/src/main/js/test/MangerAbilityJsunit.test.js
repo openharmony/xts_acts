@@ -89,6 +89,13 @@ describe('ActsAmsCallBackFirstScene', function () {
         console.debug('Acts_Ams_test=========timeout========');
         done();
     }
+
+    function sleep(delay) {
+        var start = (new Date()).getTime();
+        while((new Date()).getTime() - start < delay) {
+            continue;
+        }
+    }
     
     /*
      * @tc.number    : Acts_Ams_test_0200
@@ -96,6 +103,9 @@ describe('ActsAmsCallBackFirstScene', function () {
      * @tc.desc      : Get All Running Processes Info(by CallBack)
      */
     it('Acts_Ams_test_0200', 0, async function (done) {
+        console.info("sleep begin");
+        sleep(5000);
+        console.info("sleep end");
         abilitymanager.getAllRunningProcesses(
             (error, info) => {
                 console.info('getAllRunningProcesses error.code \

@@ -80,7 +80,7 @@ describe('ActsDataAbilityHelperTest', function () {
 /*
 * @tc.number: ACTS_GetDataAbilityHelper_0100
 * @tc.name: GetDataAbilityHelper : Connects an ability to a Service ability
-* @tc.desc: Check the return value of the interface (by Promise)
+* @tc.desc: Check the return value of the interface ()
 */
     it('ACTS_GetDataAbilityHelper_0100',0, async function (done) {
         console.log('ACTS_GetDataAbilityHelper_0100====<begin');
@@ -88,21 +88,24 @@ describe('ActsDataAbilityHelperTest', function () {
         + (" json dataAbilityUri 【") + JSON.stringify(dataAbilityUri)+ (" 】; ====>"))
         let ret = false;
         try{
-            var promise = featureAbility.getDataAbilityHelper(dataAbilityUri)
-                .then(function (data) {
-                console.debug("=ACTS_GetDataAbilityHelper_0100 then data====>"
-                + (" json data 【") + JSON.stringify(data)+ (" 】; ====>")+data);
-                expect(typeof(data)).assertEqual("object");
-                console.log('=ACTS_GetDataAbilityHelper_0100 promise JSON.stringify([object])====>:' + JSON.stringify(promise)+","+promise);
-                ret = true;
-                done()
-            }).catch(function (err){
-                console.debug("=ACTS_GetDataAbilityHelper_0100 catch err====>"
-                + ("json err 【") + JSON.stringify(err) + (" 】 ====>")+err);
-                console.log('=ACTS_GetDataAbilityHelper_0100 promise====>:' + JSON.stringify(promise))
-                ret = false;
-                done();
-            });
+            var abilityHelper = featureAbility.acquireDataAbilityHelper(dataAbilityUri)
+//                .then(function (data) {
+//                console.debug("=ACTS_GetDataAbilityHelper_0100 then data====>"
+//                + (" json data 【") + JSON.stringify(data)+ (" 】; ====>")+data);
+//                expect(typeof(data)).assertEqual("object");
+//                console.log('=ACTS_GetDataAbilityHelper_0100 promise JSON.stringify([object])====>:' + JSON.stringify(promise)+","+promise);
+//                ret = true;
+//                done()
+//            }).catch(function (err){
+//                console.debug("=ACTS_GetDataAbilityHelper_0100 catch err====>"
+//                + ("json err 【") + JSON.stringify(err) + (" 】 ====>")+err);
+//                console.log('=ACTS_GetDataAbilityHelper_0100 promise====>:' + JSON.stringify(promise))
+//                ret = false;
+//                done();
+//            });
+            DAHelper = abilityHelper;
+            ret = true;
+            done()
         }catch(err) {
             console.error('=ACTS_GetDataAbilityHelper_0100 getDataAbilityHelper catch(err)====>:'+err);
             ret = false;
@@ -114,41 +117,41 @@ describe('ActsDataAbilityHelperTest', function () {
         console.log('ACTS_GetDataAbilityHelper_0100====<end')
     })
 
-/*
-* @tc.number: ACTS_GetDataAbilityHelper_0200
-* @tc.name: GetDataAbilityHelper : Connects an ability to a Service ability
-* @tc.desc: Check the return value of the interface (by AsyncCallback)
-*/
-    it('ACTS_GetDataAbilityHelper_0200', 0, async function (done) {
-        console.log('ACTS_GetDataAbilityHelper_0200====<begin');
-        let ret = false;
-        try{
-            var asyncCallback = await featureAbility.getDataAbilityHelper(dataAbilityUri,
-            function (err,data){
-                    console.debug("=ACTS_GetDataAbilityHelper_0200 getDataAbilityHelperCallback_0200 err,data====>"
-                    + ("json err【") + JSON.stringify(err) + (" 】json data【") + JSON.stringify(data)+ (" 】;"));
-                    expect(typeof(asyncCallback)).assertEqual("object");
-                    DAHelper = data;
-                    console.log('=ACTS_GetDataAbilityHelper_0200 asyncCallback err data====>:' + JSON.stringify(asyncCallback))
-                    console.log('=ACTS_GetDataAbilityHelper_0200 DAHelper JSON.stringify([object])====>:' + JSON.stringify(DAHelper));
-                    ret = true;
-                    done();
-                }
-            );
-        }catch(err) {
-            console.error('=ACTS_GetDataAbilityHelper_0200 getDataAbilityHelper catch(err)====>:'+err);
-            ret = false;
-            done();
-        }
-        console.log('=ACTS_GetDataAbilityHelper_0200 asyncCallback ====>:' + JSON.stringify(asyncCallback))
-
-
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, g_setTimeout);
-        console.log('ACTS_GetDataAbilityHelper_0200====<end')
-
-    })
+///*
+//* @tc.number: ACTS_GetDataAbilityHelper_0200
+//* @tc.name: GetDataAbilityHelper : Connects an ability to a Service ability
+//* @tc.desc: Check the return value of the interface (by AsyncCallback)
+//*/
+//    it('ACTS_GetDataAbilityHelper_0200', 0, async function (done) {
+//        console.log('ACTS_GetDataAbilityHelper_0200====<begin');
+//        let ret = false;
+//        try{
+//            var asyncCallback = await featureAbility.acquireDataAbilityHelper(dataAbilityUri,
+//            function (err,data){
+//                    console.debug("===========ACTS_GetDataAbilityHelper_0200===========>getDataAbilityHelperCallback_0200 err,data=======>"
+//                    + ("json err【") + JSON.stringify(err) + (" 】json data【") + JSON.stringify(data)+ (" 】;"));
+//                    expect(typeof(asyncCallback)).assertEqual("object");
+//                    DAHelper = data;
+//                    console.log('=ACTS_GetDataAbilityHelper_0200 asyncCallback err data====>:' + JSON.stringify(asyncCallback))
+//                    console.log('=ACTS_GetDataAbilityHelper_0200 DAHelper JSON.stringify([object])====>:' + JSON.stringify(DAHelper));
+//                    ret = true;
+//                    done();
+//                }
+//            );
+//        }catch(err) {
+//            console.error('=ACTS_GetDataAbilityHelper_0200 getDataAbilityHelper catch(err)====>:'+err);
+//            ret = false;
+//            done();
+//        }
+//        console.log('=ACTS_GetDataAbilityHelper_0200 asyncCallback ====>:' + JSON.stringify(asyncCallback))
+//
+//
+//        setTimeout(function(){
+//            expect(ret).assertTrue();
+//        }, g_setTimeout);
+//        console.log('ACTS_GetDataAbilityHelper_0200====<end')
+//
+//    })
 
 /*
 * @tc.number: ACTS_Insert_0100
@@ -158,21 +161,20 @@ describe('ActsDataAbilityHelperTest', function () {
     it('ACTS_Insert_0100', 0, async function (done) {
         console.log('ACTS_Insert_0100====<begin');
         let ret = false;
-        //DAHelper = await featureAbility.getDataAbilityHelper(dataAbilityUri)
         expect(typeof(DAHelper)).assertEqual("object");
         console.log('Insert_0100 DAHelper ====>: ' + JSON.stringify(DAHelper)+","+ DAHelper)
         let valueBucket
         try{
             DAHelper.insert(dataAbilityUri,valueBucket)
             .then(function (data){
-                console.debug("=ACTS_Insert_0100 insert Promise then data====>"
+                console.debug("=ACTS_Insert_0100====insert Promise then data====>"
                 + ("json data 【") + JSON.stringify(data)+ (" 】"));
                 expect(typeof(data)).assertEqual("number");
                 expect(data).assertEqual(1);
                 ret = true;
                 done();
             }).catch(function (err){
-                console.debug("=ACTS_Insert_0100 insert Promise catch err ====>"
+                console.debug("=ACTS_Insert_0100====insert Promise catch err ====>"
                 + ("json err 【") + JSON.stringify(err) + (" 】 "));
                 ret = false;
                 done();
@@ -204,7 +206,7 @@ describe('ActsDataAbilityHelperTest', function () {
         try{
             var asyncCallback = await DAHelper.insert(dataAbilityUri,valueBucket,
                 (err,data)=>{
-                    console.debug("=ACTS_Insert_0200 insert AsyncCallback err,data====>"
+                    console.debug("=ACTS_Insert_0200 insert AsyncCallback err,data=======>"
                     + ("json err【") + JSON.stringify(err) + (" 】json data【") + JSON.stringify(data)+ (" 】;"));
                     expect(typeof(data)).assertEqual("number");
                     expect(data).assertEqual(1);
@@ -244,14 +246,14 @@ describe('ActsDataAbilityHelperTest', function () {
         try{
             var Promise = DAHelper.insert(dataAbilityUri,valueBucket)
                 .then((data) => {
-                console.debug("=ACTS_Insert_0300 insert Promise then data====>"
+                console.debug("=ACTS_Insert_0300====insert Promise then data====>"
                 + ("json data 【") + JSON.stringify(data)+ (" 】"));
                 expect(typeof(data)).assertEqual("number");
                 expect(data).assertEqual(1);
                 ret = true;
                 done();
             }).catch((err)=>{
-                console.debug("=ACTS_Insert_0300 insert Promise catch err ====>"
+                console.debug("=ACTS_Insert_0300====insert Promise catch err ====>"
                 + ("json err 【") + JSON.stringify(err) + (" 】 "));
                 //debugAnsErrorCodePrint(err.code);
                 ret = false;
@@ -463,25 +465,20 @@ describe('ActsDataAbilityHelperTest', function () {
         expect(typeof(DAHelper)).assertEqual("object");
         console.log('featureAbility BatchInsert getDataAbilityHelper ====>: ' + DAHelper)
         try{
-        const valueBucket = {
-            "name": "ACTS_BatchInsert_0500_roe1",
-            "age": 21,
-            "salary": 20.5,
-        }
-        var valueBucketArray = new Array({"name": "BatchInsert_0500_roe11", "age": 21, "salary": 20.5, },
-            {"name": "BatchInsert_0500_roe12", "age": 21, "salary": 20.5, },
-            {"name": "BatchInsert_0500_roe13", "age": 21, "salary": 20.5, })
-        }catch(err) {
-            console.error('=ACTS_BatchInsert_0500 valueBucketArray catch(err)====>:'+err);
-            ret = false
-            done();
-        }
-        try{
+            const valueBucket = {
+                "name": "ACTS_BatchInsert_0500_roe1",
+                "age": 21,
+                "salary": 20.5,
+            }
+            var valueBucketArray = new Array({"name": "BatchInsert_0500_roe11", "age": 21, "salary": 20.5, },
+                {"name": "BatchInsert_0500_roe12", "age": 21, "salary": 20.5, },
+                {"name": "BatchInsert_0500_roe13", "age": 21, "salary": 20.5, })
+
             DAHelper.batchInsert(
                 dataAbilityUri,
                 valueBucketArray,
             ).then((data) => {
-                console.debug("=ACTS_BatchInsert_0300 BatchInsert Promise then data====>"
+                console.debug("=ACTS_BatchInsert_0500 BatchInsert Promise then data====>"
                 + ("json data 【") + JSON.stringify(data)+ (" 】"));
                 expect(typeof(data)).assertEqual("number");
                 ret = true
@@ -544,7 +541,397 @@ describe('ActsDataAbilityHelperTest', function () {
         console.log('ACTS_BatchInsert_0600====<end');
     })
 
+    /*
+* @tc.number: ACTS_ExecuteBatch_0100
+* @tc.name: ExecuteBatch : Preforms batch operations on the database
+* @tc.desc: Check the return value of the interface (by Promise)
+*/
+    it('ACTS_ExecuteBatch_0100', 0, async function (done) {
+        console.log('ACTS_ExecuteBatch_0100====<begin');
+        let ret = false;
+        expect(typeof(DAHelper)).assertEqual("object");
+        try{
+            const valuesBucket = {
+                "name": "ACTS_ExecuteBatch_0100_rose",
+                "age": 22,
+                "salary": 200.5,
+                "blobType": "u8",
+            }
+            DAHelper.executeBatch(dataAbilityUri,
+                [
+                        {
+                            uri: dataAbilityUri,
+                            type: featureAbility.DataAbilityOperationType.TYPE_INSERT,
+                            valuesBucket: valuesBucket,
+                            predicates: null,
+                            expectedCount:1,
+                            PredicatesBackReferences: {},
+                            interrupted:true,
+                        }
+                ],
+            ).then((data) => {
+                console.debug("=ACTS_ExecuteBatch_0100 executeBatch then data====>"
+                + ("json data 【") + JSON.stringify(data)+ (" 】"));
+                ret = true
+                done();
+            }).catch((err)=>{
+                console.debug("=ACTS_ExecuteBatch_0100 executeBatch catch err ====>"
+                + ("json err 【") + JSON.stringify(err) + (" 】 "));
+                ret = false
+                done();
+            });
+        }catch(err) {
+            console.error('=ACTS_ExecuteBatch_0100 catch(err)====>:'
+            + ("json err 【") + JSON.stringify(err) + (" 】 ,")+err);
+            ret = false;
+            done();
+        }
+        setTimeout(function(){
+            expect(ret).assertTrue();
+        }, g_setTimeout);
+        console.log('ACTS_ExecuteBatch_0100====<end');
+    })
 
+/*
+* @tc.number: ACTS_ExecuteBatch_0200
+* @tc.name: ExecuteBatch : Preforms batch operations on the database
+* @tc.desc: Check the return value of the interface (by AsyncCallback)
+*/
+    it('ACTS_ExecuteBatch_0200', 0, async function (done) {
+        console.log('ACTS_ExecuteBatch_0200====<begin');
+        let ret = false;
+        expect(typeof(DAHelper)).assertEqual("object");
+        try{
+            const valuesBucket = {
+                "name": "ACTS_ExecuteBatch_0200_rose",
+                "age": 22,
+                "salary": 200.5,
+                "blobType": "u8",
+            }
+            DAHelper.executeBatch(dataAbilityUri,
+                [
+                    {
+                        uri: dataAbilityUri,
+                        type: featureAbility.DataAbilityOperationType.TYPE_INSERT,
+                        valuesBucket: valuesBucket,
+                        predicates: null,
+                        expectedCount:1,
+                        PredicatesBackReferences: {},
+                        interrupted:true,
+                    }
+                ],
+                (err,data)=>{
+                    console.debug("=ACTS_ExecuteBatch_0200 executeBatch err,data====>"
+                    + ("json err【") + JSON.stringify(err) + (" 】json data【") + JSON.stringify(data)+ (" 】;")+ data.length);
+                    ret = true
+                    done();
+                }
+            );
+        }catch(err) {
+            console.error('=ACTS_ExecuteBatch_0200 catch(err)====>:'
+            + ("json err 【") + JSON.stringify(err) + (" 】 ,")+err);
+            ret = false;
+            done();
+        }
+        setTimeout(function(){
+            expect(ret).assertTrue();
+        }, g_setTimeout);
+        console.log('ACTS_ExecuteBatch_0200====<end');
+    })
+
+    /*
+* @tc.number: ACTS_ExecuteBatch_0300
+* @tc.name: ExecuteBatch : Preforms batch operations on the database
+* @tc.desc: Check the return value of the interface (by Promise)
+*/
+    it('ACTS_ExecuteBatch_0300', 0, async function (done) {
+        console.log('ACTS_ExecuteBatch_0300====<begin');
+        let ret = false;
+        expect(typeof(DAHelper)).assertEqual("object");
+        try{
+            const valuesBucket = {
+                "name": "ACTS_ExecuteBatch_0300_rose",
+                "age": 22,
+                "salary": 200.5,
+                "blobType": "u8",
+            }
+            DAHelper.executeBatch(dataAbilityUri,
+                [
+                        {
+                            uri: dataAbilityUri,
+                            type: featureAbility.DataAbilityOperationType.TYPE_UPDATE,
+                            valuesBucket: valuesBucket,
+                            predicates: null,
+                            expectedCount:1,
+                            PredicatesBackReferences: {},
+                            interrupted:true,
+                        }
+                ],
+            ).then((data) => {
+                console.debug("=ACTS_ExecuteBatch_0300 executeBatch then data====>"
+                + ("json data 【") + JSON.stringify(data)+ (" 】"));
+                ret = true
+                done();
+            }).catch((err)=>{
+                console.debug("=ACTS_ExecuteBatch_0300 executeBatch catch err ====>"
+                + ("json err 【") + JSON.stringify(err) + (" 】 "));
+                ret = false
+                done();
+            });
+        }catch(err) {
+            console.error('=ACTS_ExecuteBatch_0300 catch(err)====>:'
+            + ("json err 【") + JSON.stringify(err) + (" 】 ,")+err);
+            ret = false;
+            done();
+        }
+        setTimeout(function(){
+            expect(ret).assertTrue();
+        }, g_setTimeout);
+        console.log('ACTS_ExecuteBatch_0300====<end');
+    })
+
+    /*
+* @tc.number: ACTS_ExecuteBatch_0400
+* @tc.name: ExecuteBatch : Preforms batch operations on the database
+* @tc.desc: Check the return value of the interface (by AsyncCallback)
+*/
+    it('ACTS_ExecuteBatch_0400', 0, async function (done) {
+        console.log('ACTS_ExecuteBatch_0400====<begin');
+        let ret = false;
+        expect(typeof(DAHelper)).assertEqual("object");
+        try{
+            const valuesBucket = {
+                "name": "ACTS_ExecuteBatch_0400_rose",
+                "age": 22,
+                "salary": 200.5,
+                "blobType": "u8",
+            }
+            DAHelper.executeBatch(dataAbilityUri,
+                [
+                        {
+                            uri: dataAbilityUri,
+                            type: featureAbility.DataAbilityOperationType.TYPE_UPDATE,
+                            valuesBucket: valuesBucket,
+                            predicates: null,
+                            expectedCount:1,
+                            PredicatesBackReferences: {},
+                            interrupted:true,
+                        }
+                ],
+                (err,data)=>{
+                    console.debug("=ACTS_ExecuteBatch_0400 executeBatch err,data====>"
+                    + ("json err【") + JSON.stringify(err) + (" 】json data【") + JSON.stringify(data)+ (" 】;")+ data.length);
+                    ret = true
+                    done();
+                }
+            );
+        }catch(err) {
+            console.error('=ACTS_ExecuteBatch_0400 catch(err)====>:'
+            + ("json err 【") + JSON.stringify(err) + (" 】 ,")+err);
+            ret = false;
+            done();
+        }
+        setTimeout(function(){
+            expect(ret).assertTrue();
+        }, g_setTimeout);
+        console.log('ACTS_ExecuteBatch_0400====<end');
+    })
+
+    /*
+* @tc.number: ACTS_ExecuteBatch_0500
+* @tc.name: ExecuteBatch : Preforms batch operations on the database
+* @tc.desc: Check the return value of the interface (by Promise)
+*/
+    it('ACTS_ExecuteBatch_0500', 0, async function (done) {
+        console.log('ACTS_ExecuteBatch_0500====<begin');
+        let ret = false;
+        expect(typeof(DAHelper)).assertEqual("object");
+        try{
+            const valuesBucket = {
+                "name": "ACTS_ExecuteBatch_0500_rose",
+                "age": 22,
+                "salary": 200.5,
+                "blobType": "u8",
+            }
+            DAHelper.executeBatch(dataAbilityUri,
+                [
+                        {
+                            uri: dataAbilityUri,
+                            type: featureAbility.DataAbilityOperationType.TYPE_DELETE,
+                            valuesBucket: valuesBucket,
+                            predicates: null,
+                            expectedCount:1,
+                            PredicatesBackReferences: {},
+                            interrupted:true,
+                        }
+                ],
+            ).then((data) => {
+                console.debug("=ACTS_ExecuteBatch_0500 executeBatch then data====>"
+                + ("json data 【") + JSON.stringify(data)+ (" 】"));
+                ret = true
+                done();
+            }).catch((err)=>{
+                console.debug("=ACTS_ExecuteBatch_0500 executeBatch catch err ====>"
+                + ("json err 【") + JSON.stringify(err) + (" 】 "));
+                ret = false
+                done();
+            });
+        }catch(err) {
+            console.error('=ACTS_ExecuteBatch_0500 catch(err)====>:'
+            + ("json err 【") + JSON.stringify(err) + (" 】 ,")+err);
+            ret = false;
+            done();
+        }
+        setTimeout(function(){
+            expect(ret).assertTrue();
+        }, g_setTimeout);
+        console.log('ACTS_ExecuteBatch_0500====<end');
+    })
+
+    /*
+* @tc.number: ACTS_ExecuteBatch_0600
+* @tc.name: ExecuteBatch : Preforms batch operations on the database
+* @tc.desc: Check the return value of the interface (by AsyncCallback)
+*/
+    it('ACTS_ExecuteBatch_0600', 0, async function (done) {
+        console.log('ACTS_ExecuteBatch_0600====<begin');
+        let ret = false;
+        expect(typeof(DAHelper)).assertEqual("object");
+        try{
+            const valuesBucket = {
+                "name": "ACTS_ExecuteBatch_0600_rose",
+                "age": 22,
+                "salary": 200.5,
+                "blobType": "u8",
+            }
+            DAHelper.executeBatch(dataAbilityUri,
+                [
+                        {
+                            uri: dataAbilityUri,
+                            type: featureAbility.DataAbilityOperationType.TYPE_DELETE,
+                            valuesBucket: valuesBucket,
+                            predicates: null,
+                            expectedCount:1,
+                            PredicatesBackReferences: {},
+                            interrupted:true,
+                        }
+                ],
+                (err,data)=>{
+                    console.debug("=ACTS_ExecuteBatch_0600 executeBatch err,data====>"
+                    + ("json err【") + JSON.stringify(err) + (" 】json data【") + JSON.stringify(data)+ (" 】;")+ data.length);
+                    ret = true
+                    done();
+                }
+            );
+        }catch(err) {
+            console.error('=ACTS_ExecuteBatch_0600 catch(err)====>:'
+            + ("json err 【") + JSON.stringify(err) + (" 】 ,")+err);
+            ret = false;
+            done();
+        }
+        setTimeout(function(){
+            expect(ret).assertTrue();
+        }, g_setTimeout);
+        console.log('ACTS_ExecuteBatch_0600====<end');
+    })
+
+    /*
+* @tc.number: ACTS_ExecuteBatch_0700
+* @tc.name: ExecuteBatch : Preforms batch operations on the database
+* @tc.desc: Check the return value of the interface (by Promise)
+*/
+    it('ACTS_ExecuteBatch_0700', 0, async function (done) {
+        console.log('ACTS_ExecuteBatch_0700====<begin');
+        let ret = false;
+        expect(typeof(DAHelper)).assertEqual("object");
+        try{
+            const valuesBucket = {
+                "name": "ACTS_ExecuteBatch_0700_rose",
+                "age": 22,
+                "salary": 200.5,
+                "blobType": "u8",
+            }
+            DAHelper.executeBatch(dataAbilityUri,
+                [
+                        {
+                            uri: dataAbilityUri,
+                            type: featureAbility.DataAbilityOperationType.TYPE_ASSERT,
+                            valuesBucket: valuesBucket,
+                            predicates: null,
+                            expectedCount:1,
+                            PredicatesBackReferences: {},
+                            interrupted:true,
+                        }
+                ],
+            ).then((data) => {
+                console.debug("=ACTS_ExecuteBatch_0700 executeBatch then data====>"
+                + ("json data 【") + JSON.stringify(data)+ (" 】"));
+                ret = true
+                done();
+            }).catch((err)=>{
+                console.debug("=ACTS_ExecuteBatch_0700 executeBatch catch err ====>"
+                + ("json err 【") + JSON.stringify(err) + (" 】 "));
+                ret = false
+                done();
+            });
+        }catch(err) {
+            console.error('=ACTS_ExecuteBatch_0700 catch(err)====>:'
+            + ("json err 【") + JSON.stringify(err) + (" 】 ,")+err);
+            ret = false;
+            done();
+        }
+        setTimeout(function(){
+            expect(ret).assertTrue();
+        }, g_setTimeout);
+        console.log('ACTS_ExecuteBatch_0700====<end');
+    })
+
+    /*
+* @tc.number: ACTS_ExecuteBatch_0800
+* @tc.name: ExecuteBatch : Preforms batch operations on the database
+* @tc.desc: Check the return value of the interface (by AsyncCallback)
+*/
+    it('ACTS_ExecuteBatch_0800', 0, async function (done) {
+        console.log('ACTS_ExecuteBatch_0800====<begin');
+        let ret = false;
+        expect(typeof(DAHelper)).assertEqual("object");
+        try{
+            const valuesBucket = {
+                "name": "ACTS_ExecuteBatch_0800_rose",
+                "age": 22,
+                "salary": 200.5,
+                "blobType": "u8",
+            }
+            DAHelper.executeBatch(dataAbilityUri,
+                [
+                        {
+                            uri: dataAbilityUri,
+                            type: featureAbility.DataAbilityOperationType.TYPE_ASSERT,
+                            valuesBucket: valuesBucket,
+                            predicates: null,
+                            expectedCount:1,
+                            PredicatesBackReferences: {},
+                            interrupted:true,
+                        }
+                ],
+                (err,data)=>{
+                    console.debug("=ACTS_ExecuteBatch_0800 executeBatch err,data====>"
+                    + ("json err【") + JSON.stringify(err) + (" 】json data【") + JSON.stringify(data)+ (" 】;")+ data.length);
+                    ret = true
+                    done();
+                }
+            );
+        }catch(err) {
+            console.error('=ACTS_ExecuteBatch_0800 catch(err)====>:'
+            + ("json err 【") + JSON.stringify(err) + (" 】 ,")+err);
+            ret = false;
+            done();
+        }
+        setTimeout(function(){
+            expect(ret).assertTrue();
+        }, g_setTimeout);
+        console.log('ACTS_ExecuteBatch_0800====<end');
+    })
 
     /*
     * @tc.number: bms_uninstallAbility_0100
