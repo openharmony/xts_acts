@@ -20,7 +20,10 @@ group("securitytest") {
       "//test/xts/acts/security_lite/permission_posix/pms:ActsPMSTest",
     ]
   } else if (ohos_kernel_type == "linux") {
-    deps = [ "//test/xts/acts/security_lite/permission_posix/pms:ActsPMSTest" ]
+    deps = [
+      "//test/xts/acts/security_lite/huks/liteos_a_adapter:Hukslitetest",
+      "//test/xts/acts/security_lite/permission_posix/pms:ActsPMSTest",
+    ]
   } else if (ohos_kernel_type == "liteos_m") {
     deps = [ "//test/xts/acts/security_lite/huks/liteos_m_adapter:ActsHuksHalFunctionTest" ]
   }
