@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import wifi_js from '@ohos.wifi_js'
+import wifi_native_js from '@ohos.wifi_native_js'
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
@@ -35,39 +35,39 @@ describe('appInfoTest', function () {
     console.log("*************[wifi_test]start wifi js unit test[ver:18]*************");
     
     /**
-    * @tc.number     wifi_js_unit_test_001
+    * @tc.number     wifi_native_js_unit_test_001
     * @tc.name       Test wifi.isWifiActive.
     * @tc.desc       Test wifi.isWifiActive API functionality.
     */
-    it('wifi_js_unit_test_001', 0, function () {
+    it('wifi_native_js_unit_test_001', 0, function () {
         console.info("[wifi_test] wifi active  test.");
-        expect(wifi_js.isWifiActive()).assertTrue();
+        expect(wifi_native_js.isWifiActive()).assertTrue();
     })
 
     /**
-    * @tc.number     wifi_js_unit_test_002
+    * @tc.number     wifi_native_js_unit_test_002
     * @tc.name       Test wifi.scan.
     * @tc.desc       Test wifi.scan API functionality.
     */
-    it('wifi_js_unit_test_002', 0, async function (done) {
+    it('wifi_native_js_unit_test_002', 0, async function (done) {
         console.info("[wifi_test] wifi scan test.");
-        expect(wifi_js.scan()).assertTrue();
+        expect(wifi_native_js.scan()).assertTrue();
         sleep(3000);
 
-        wifi_js.getScanInfos(result => {
+        wifi_native_js.getScanInfos(result => {
             console.info('[wifi_test] getScanInfos -> ' + JSON.stringify(result));
             expect(Object.keys(result).length).assertLarger(0);
 
             for (var i = 0; i < Object.keys(result).length; ++i) {
-                console.info("[wifi_test] rssi: " + result[i].rssi + ", band: " + result[i].band + ", level: " + wifi_js.getSignalLevel(result[i].rssi, result[i].band));
+                console.info("[wifi_test] rssi: " + result[i].rssi + ", band: " + result[i].band + ", level: " + wifi_native_js.getSignalLevel(result[i].rssi, result[i].band));
             }
         })
 
         sleep(3000);
-        expect(wifi_js.scan()).assertTrue();
+        expect(wifi_native_js.scan()).assertTrue();
         sleep(3000);
 
-        wifi_js.getScanInfos().then(result => {
+        wifi_native_js.getScanInfos().then(result => {
             console.info("[wifi_test] wifi scan result call promise.");
             expect(Object.keys(result).length).assertLarger(0);
         });
@@ -75,24 +75,24 @@ describe('appInfoTest', function () {
     })
 
     /**
-    * @tc.number     wifi_js_unit_test_003
+    * @tc.number     wifi_native_js_unit_test_003
     * @tc.name       Test wifi.getSignalLevel.
     * @tc.desc       Test wifi.getSignalLevel API functionality.
     */
-    it('wifi_js_unit_test_003', 0, function () {
+    it('wifi_native_js_unit_test_003', 0, function () {
         console.info("[wifi_test] wifi get signal level test.");
-        expect(wifi_js.getSignalLevel(1, 1)).assertEqual(4);
+        expect(wifi_native_js.getSignalLevel(1, 1)).assertEqual(4);
         sleep(3000);
     })
 
     /**
-    * @tc.number     wifi_js_unit_test_005
+    * @tc.number     wifi_native_js_unit_test_005
     * @tc.name       Test wifi.getScanInfos 0.
     * @tc.desc       Test wifi.getScanInfos API functionality.
     */
-    it('wifi_js_unit_test_005', 0, async function (done) {
+    it('wifi_native_js_unit_test_005', 0, async function (done) {
         console.info("[wifi_test] Wifi get scan infos callback test[1].");
-        wifi_js.getScanInfos(result => {
+        wifi_native_js.getScanInfos(result => {
             var clen = Object.keys(result).length;
             console.log("[wifi_test] wifi received scan info call back: " + clen);
             expect(result).assertLarger(0);
@@ -114,13 +114,13 @@ describe('appInfoTest', function () {
     sleep(20000);
 
     /**
-    * @tc.number     wifi_js_unit_test_006
+    * @tc.number     wifi_native_js_unit_test_006
     * @tc.name       Test wifi.getScanInfos 1.
     * @tc.desc       Test wifi.getScanInfos API functionality.
     */
-    it('wifi_js_unit_test_006', 0, async function (done) {
+    it('wifi_native_js_unit_test_006', 0, async function (done) {
         console.info("[wifi_test] Wifi get scan infos callback test[2].");
-        wifi_js.getScanInfos().then(
+        wifi_native_js.getScanInfos().then(
             result => {
                 var clen = Object.keys(result).length;
                 console.log("[wifi_test] wifi received scan promise result: " + clen);
@@ -140,43 +140,6 @@ describe('appInfoTest', function () {
                 }
             });
         done();
-    })
-    sleep(20000);
-
-    /**
-    * @tc.number     wifi_js_unit_test_007
-    * @tc.name       Test wifi.getLinkedInfo 1.
-    * @tc.desc       Test wifi.getLinkedInfo API functionality.
-    */
-    it('wifi_js_unit_test_007', 0, async function (done) {
-        console.info("[wifi_test] get wifi  linked callback test[1].");
-        wifi_js.getLinkedInfo().then(
-            data => {
-                console.info("[wifi_test] test_007 wifi link [promise]: " + JSON.stringify(data));
-                expect(JSON.stringify(data)).assertContain('ssid');
-                sleep(5000);
-                console.info("[wifi_js]  wifi link info" + ": ssid: " + data.ssid + ", bssid: " + data.bssid + ", ipAddress: " + data.ipAddress + ", isHidden: " + data.isHidden);
-            });
-        done();
-    })
-    sleep(3000);
-    /**
-    * @tc.number    wifi_js_unit_test_008
-    * @tc.name       Test wifi.getLinkedInfo 2.
-    * @tc.desc       Test wifi.getLinkedInfo API functionality.
-    */
-    it('wifi_js_unit_test_008', 0, async function (done) {
-        console.info('[wifi_test] get wifi  linked callback test[2]');
-        wifi.getLinkedInfo(result => {
-            console.info("[wifi_js] get wifi link [promise] -> " + JSON.stringify(data));
-            expect(JSON.stringify(data)).assertContain('band');
-            console.info("[wifi_js] get wifi link [promise].");
-            done();
-        }).catch(error => {
-            console.info("[wifi_js] promise then error.");
-            expect().assertFail();
-            done();
-        });
     })
 
     console.log("*************[wifi_test] start wifi js unit test end*************");
