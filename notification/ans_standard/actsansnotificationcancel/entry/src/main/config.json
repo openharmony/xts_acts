@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.example.actsansnotificationremove",
+    "bundleName": "com.example.actsansnotificationcancel",
     "vendor": "example",
     "version": {
       "code": 1,
@@ -14,8 +14,8 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.actsansnotificationremove",
-    "name": ".actsansnotificationremove",
+    "package": "com.example.actsansnotificationcancel",
+    "name": ".actsansnotificationcancel",
     "deviceType": [
       "phone"
     ],
@@ -36,7 +36,7 @@
             ]
           }
         ],
-        "name": "com.example.actsansnotificationremove.MainAbility",
+        "name": "com.example.actsansnotificationcancel.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",

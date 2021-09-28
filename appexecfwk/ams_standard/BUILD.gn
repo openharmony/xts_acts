@@ -20,6 +20,9 @@ group("ams_standard") {
       "amsdatauriutils:amsDataUriUtils",
       "amszipfileunzipfilest:amsZipfileUnzipfileST",
       "fwkdataaccessor:FWKDataAccessor",
+      "serviceability/actsparticleabilitytest:ActsParticleAbilityTest",
+      "serviceability/sceneProject/particlestartability:ParticleStartAbility",
+      "serviceability/sceneProject/particletestserver:ParticleTestServer",
       "serviceability/stserviceabilityclient:amsStServiceAbilityClient",
       "serviceability/stserviceabilityserver:amsStServiceAilityServer",
     ]

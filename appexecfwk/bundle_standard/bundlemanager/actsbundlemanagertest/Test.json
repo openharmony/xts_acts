@@ -32,7 +32,8 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "chmod 644 /data/*.hap"
+                "chmod 644 /data/*.hap",
+                "chmod 600 /data/bmsJstest7.hap"
             ]
         }        
     ]

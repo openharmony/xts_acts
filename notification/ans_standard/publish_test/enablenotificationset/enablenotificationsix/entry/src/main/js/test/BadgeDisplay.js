@@ -26,7 +26,7 @@ describe('ActsAnsEnableNotificationSetSixTest', function () {
      */
     it('ActsEnableNotificationSet_test_1100', 0, async function (done) {
         await notify.enableNotification({
-            bundle:"com.neu.actsanslocalnotificationtest",
+            bundle:"com.example.actsanslocalnotificationtest",
         },true,(err) => {
             console.log("====>ActsEnableNotificationSet_test_1100 success====>"+err)
         })
@@ -44,7 +44,7 @@ describe('ActsAnsEnableNotificationSetSixTest', function () {
     it('ActsEnableNotificationSet_test_1200', 0, async function (done) {
         await notify.enableNotification(
             {
-                bundle:"com.neu.actsanslocalnotificationtest",
+                bundle:"com.example.actsanslocalnotificationtest",
             },true).then(console.log("====>ActsEnableNotificationSet_test_1200 success====>"))
         done();
         setTimeout(function(){

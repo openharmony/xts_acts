@@ -2340,7 +2340,9 @@ describe('ActsFeatureAbilityTest', function () {
             }
             console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
             if (events.size == 1) {
-                expect(events.has("ACTS_GetCallingBundle_0100_CommonEvent")).assertTrue();
+                expect(events.has("ACTS_GetCallingBundle_0100_CommonEvent") || 
+                events.has("com.example.actsfeatureabilitytest.promise") ||
+                events.has("com.example.actsfeatureabilitytest.callback")).assertTrue();
             } else if (events.size == 2) {
                 expect(events.has("com.example.actsfeatureabilitytest.promise") ||
                     events.has("com.example.actsfeatureabilitytest.callback")).assertTrue();

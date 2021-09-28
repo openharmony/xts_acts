@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.neu.actsansbadgedisplaysettwotest",
+    "bundleName": "com.example.actsansbadgedisplaytwotest",
     "vendor": "example",
     "version": {
       "code": 1,
@@ -14,7 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.actsansbadgedisplaysettwotest",
+    "package": "com.example.actsansbadgedisplaytwotest",
     "name": ".MyApplication",
     "deviceType": [
       "phone"
@@ -36,13 +36,14 @@
             ]
           }
         ],
-        "name": "com.example.actsansbadgedisplaysettwotest.MainAbility",
+        "name": "com.example.actsansbadgedisplaytwotest.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "page",
         "isVisible": "true",
-        "launchType": "standard"
+        "launchType": "standard",
+	"visible": true
       }
     ],
     "js": [

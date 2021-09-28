@@ -20,10 +20,11 @@ group("ActsAnsSlotTest") {
       "actsansgetslottestcallback:ActsAnsGetSlotTestCallback",
       "actsansgetslottestpromise:ActsAnsGetSlotTestPromise",
       "actsansremoveslottest:ActsAnsRemoveSlotTest",
-      "actsansslotbybundle:ActsAnsSlotByBundle",
-      "actsansslotsystemcallback:ActsAnsSlotSystemCallback",
-      "actsansslotsystempromise:ActsAnsSlotSystemPromise",
-      "actsansslottaddremoveall:ActsAnsSlotAddRemoveAll",
+
+      #"actsansslotbybundle:ActsAnsSlotByBundle",
+      #"actsansslotsystemcallback:ActsAnsSlotSystemCallback",
+      #"actsansslotsystempromise:ActsAnsSlotSystemPromise",
+      #"actsansslottaddremoveall:ActsAnsSlotAddRemoveAll",
     ]
   }
 }

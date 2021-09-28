@@ -235,11 +235,13 @@ describe('ActsBundleManagerTest', function () {
         })
         function UnSubscribeCallback() {
             console.debug('====>UnSubscribe CallBack====>');
+            done();
         }
         function timeout() {
             expect().assertFail();
             console.debug('uninstall_0800=====timeout======');
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
+            done();
         }
         id = setTimeout(timeout, START_ABILITY_TIMEOUT);
         console.debug('=======start ability========')
@@ -275,6 +277,7 @@ describe('ActsBundleManagerTest', function () {
                 processMap2.set(processInfos2[i].uid, 0);
             }
             expect(processMap2.has(uid)).assertFalse();
+            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
             done();
         }
         setTimeout(function () {

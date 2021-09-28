@@ -26,7 +26,7 @@ describe('ActsAnsBadgeDisplaySetSixTest', function () {
      */
     it('ActsBadgeDisplaySet_test_1100', 0, async function (done) {
         await notify.displayBadge({
-            bundle:"com.neu.actsanslocalcandisplaytest"
+            bundle:"com.example.actsanslocalcandisplaytest"
         },true,(err) => {
             console.log("====>ActsBadgeDisplaySet_test_1100 success====>"+err)
         })
@@ -44,7 +44,7 @@ describe('ActsAnsBadgeDisplaySetSixTest', function () {
     it('ActsBadgeDisplaySet_test_1200', 0, async function (done) {
         await notify.displayBadge(
             {
-                bundle:"com.neu.actsanslocalcandisplaytest"
+                bundle:"com.example.actsanslocalcandisplaytest"
             },true).then(console.log("====>ActsBadgeDisplaySet_test_1200 success====>"))
         done();
         setTimeout(function(){
