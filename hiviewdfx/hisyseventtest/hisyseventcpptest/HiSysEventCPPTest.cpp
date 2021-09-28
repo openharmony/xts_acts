@@ -33,6 +33,7 @@ public:
     static void TearDownTestCase();
     void SetUp();
     void TearDown();
+    void RedHiSysEventLog(std::string &hilogredirect, std::string &timeout);
 private:
 };
 void HiSysEventCPPTest::SetUp()
@@ -62,6 +63,23 @@ void HiSysEventCPPTest::TearDownTestCase()
 {
     std::cout << "TearDownTestCase" << std::endl;
 }
+void HiSysEventCPPTest::RedHiSysEventLog(std::string &hilogredirect, std::string &timeout)
+{
+    unsigned long i;
+    std::vector<std::string> cmdret;
+    unsigned long cmdretlen;
+    std::string cmd = "rm " + hilogredirect;
+    cmdretlen = ExecCmdWithRet(cmd, cmdret);
+    for (i = 0; i < cmdretlen; i++) {
+        std::cout<<cmdret[i].c_str()<<std::endl;
+    }
+    cmd = "timeout " + timeout + " hilog | grep HISYSEVENT >" + hilogredirect;
+    std::cout<<cmd<<std::endl;
+    cmdretlen = ExecCmdWithRet(cmd, cmdret);
+    for (i = 0; i < cmdretlen; i++) {
+        std::cout<<cmdret[i].c_str()<<std::endl;
+    }
+}
 /**
 * @tc.name HiSysEvent Native Write Interface Test, Reported When the KeyValue Is of the
 *       boolean Type and the bool Value Is False
@@ -76,10 +94,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_0100, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::AAFWK;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::FAULT;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, param);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo;
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"AAFWK", "eventNameDemo", "\"event_type_\":1", "\"key\":0"};
+    std::vector<std::string> para = {"AAFWK", "eventNameDemo", "\"type_\":1", "\"key\":0"};
     if (!fileinfo.empty()) {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -102,10 +120,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_0200, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::APPEXECFWK;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::FAULT;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, param);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"APPEXECFWK", "eventNameDemo", "\"event_type_\":1", "\"key\":1"};
+    std::vector<std::string> para = {"APPEXECFWK", "eventNameDemo", "\"type_\":1", "\"key\":1"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -129,10 +147,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_0300, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::ACCOUNT;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::FAULT;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, test);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"ACCOUNT", "eventNameDemo", "\"event_type_\":1", "\"key\":[0]"};
+    std::vector<std::string> para = {"ACCOUNT", "eventNameDemo", "\"type_\":1", "\"key\":[0]"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -154,10 +172,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_0400, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::OTHERS;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::FAULT;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, param);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"OTHERS", "eventNameDemo", "\"event_type_\":1", "\"key\":97"};
+    std::vector<std::string> para = {"OTHERS", "eventNameDemo", "\"type_\":1", "\"key\":97"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -181,10 +199,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_0500, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::WEARABLE;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::FAULT;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, test);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"WEARABLE", "eventNameDemo", "\"event_type_\":1", "\"key\":[97]"};
+    std::vector<std::string> para = {"WEARABLE", "eventNameDemo", "\"type_\":1", "\"key\":[97]"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -206,10 +224,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_0600, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::WEARABLE_HARDWARE;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::FAULT;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, param);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"WEARABLEHW", "eventNameDemo", "\"event_type_\":1", "\"key\":30949.4"};
+    std::vector<std::string> para = {"WEARABLEHW", "eventNameDemo", "\"type_\":1", "\"key\":30949.4"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -233,10 +251,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_0700, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::USB;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::FAULT;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, test);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"USB", "eventNameDemo", "\"event_type_\":1", "\"key\":[30949.4]"};
+    std::vector<std::string> para = {"USB", "eventNameDemo", "\"type_\":1", "\"key\":[30949.4]"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -258,10 +276,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_0800, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::UPDATE;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::FAULT;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, param);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"UPDATE", "eventNameDemo", "\"event_type_\":1", "\"key\":230.47"};
+    std::vector<std::string> para = {"UPDATE", "eventNameDemo", "\"type_\":1", "\"key\":230.47"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -285,10 +303,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_0900, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::TELEPHONY;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::FAULT;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, test);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"TELEPHONY", "eventNameDemo", "\"event_type_\":1", "\"key\":[230.47]"};
+    std::vector<std::string> para = {"TELEPHONY", "eventNameDemo", "\"type_\":1", "\"key\":[230.47]"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -310,10 +328,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_1000, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::STARTUP;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::FAULT;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, param);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"STARTUP", "eventNameDemo", "\"event_type_\":1", "\"key\":100"};
+    std::vector<std::string> para = {"STARTUP", "eventNameDemo", "\"type_\":1", "\"key\":100"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -337,10 +355,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_1100, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::SOURCE_CODE_TRANSFORMER;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::FAULT;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, test);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"SRCTRANSFORMER", "eventNameDemo", "\"event_type_\":1", "\"key\":[100]"};
+    std::vector<std::string> para = {"SRCTRANSFORMER", "eventNameDemo", "\"type_\":1", "\"key\":[100]"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -362,10 +380,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_1200, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::SENSORS;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::FAULT;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, param);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"SENSORS", "eventNameDemo", "\"event_type_\":1", "\"key\":1000000"};
+    std::vector<std::string> para = {"SENSORS", "eventNameDemo", "\"type_\":1", "\"key\":1000000"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -389,10 +407,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_1300, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::SECURITY;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::FAULT;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, test);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"SECURITY", "eventNameDemo", "\"event_type_\":1", "\"key\":[1000000]"};
+    std::vector<std::string> para = {"SECURITY", "eventNameDemo", "\"type_\":1", "\"key\":[1000000]"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -414,10 +432,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_1400, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::ROUTER;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::FAULT;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, param);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"ROUTER", "eventNameDemo", "\"event_type_\":1", "\"key\":10"};
+    std::vector<std::string> para = {"ROUTER", "eventNameDemo", "\"type_\":1", "\"key\":10"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -441,10 +459,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_1500, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::POWERMGR;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::STATISTIC;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, test);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"POWERMGR", "eventNameDemo", "\"event_type_\":2", "\"key\":[10]"};
+    std::vector<std::string> para = {"POWERMGR", "eventNameDemo", "\"type_\":2", "\"key\":[10]"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -466,10 +484,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_1600, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::NOTIFICATION;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::STATISTIC;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, param);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"NOTIFICATION", "eventNameDemo", "\"event_type_\":2", "\"key\":\"abc\""};
+    std::vector<std::string> para = {"NOTIFICATION", "eventNameDemo", "\"type_\":2", "\"key\":\"abc\""};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -493,10 +511,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_1700, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::MULTI_MODAL_INPUT;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::SECURITY;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, test);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"MULTIMODALINPUT", "eventNameDemo", "\"event_type_\":3", "\"key\":[\"abc\"]"};
+    std::vector<std::string> para = {"MULTIMODALINPUT", "eventNameDemo", "\"type_\":3", "\"key\":[\"abc\"]"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -528,10 +546,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_1800, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::MULTI_MEDIA;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::SECURITY;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, test);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"MULTIMEDIA", "eventNameDemo", "\"event_type_\":3", str};
+    std::vector<std::string> para = {"MULTIMEDIA", "eventNameDemo", "\"type_\":3", str};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -564,10 +582,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_2000, Function|M
         g_key, param, g_key, param, g_key, param, g_key, param, g_key, param, g_key, param,
         g_key, param, g_key, param, g_key, param, g_key, param, g_key, param, g_key, param,
         g_key, param, g_key, param);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"MSDP", "eventNameDemo", "\"event_type_\":4", str};
+    std::vector<std::string> para = {"MSDP", "eventNameDemo", "\"type_\":4", str};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -592,10 +610,10 @@ HWTEST_F(HiSysEventCPPTest, DFX_DFT_HiviewKit_HiSysEvent_Native_2200, Function|M
     string domain = OHOS::HiviewDFX::HiSysEvent::Domain::LOCATION;
     OHOS::HiviewDFX::HiSysEvent::EventType eventtype = OHOS::HiviewDFX::HiSysEvent::EventType::BEHAVIOR;
     OHOS::HiviewDFX::HiSysEvent::Write(domain, "eventNameDemo", eventtype, g_key, param);
-    RedirecthiLog(g_hiLogRedirect, g_reDiRectTimeout);
+    RedHiSysEventLog(g_hiLogRedirect, g_reDiRectTimeout);
     string fileinfo = "";
     fileinfo = ReadFile(g_hiLogRedirect);
-    std::vector<std::string> para = {"LOCATION", "eventNameDemo", "\"event_type_\":4", g_key, param};
+    std::vector<std::string> para = {"LOCATION", "eventNameDemo", "\"type_\":4", g_key, param};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {

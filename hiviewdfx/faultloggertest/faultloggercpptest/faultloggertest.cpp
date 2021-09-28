@@ -89,14 +89,16 @@ HWTEST_F(faultloggertest, Faultlogger_Faultdetect, Function|MediumTest|Level1)
     printf("pid is %d\r\n", pid);
     printf("sub process end with status %d\r\n", faultloggertest::status);
     ASSERT_FALSE(status == 0);
+    sleep(1);
     std::vector<std::string> faultfilelist;
     faultfilelist = getfileinpath("/data/log/faultlog/temp/");
     printf("sizeof faultfilelist is %d\r\n", faultfilelist.size());
     bool result = false;
     for (std::string filename : faultfilelist) {
         printf("file list is %s\r\n", filename.c_str());
-        if (filename.find("cppcrash-" + to_string(pid))) {
+        if (filename.find("cppcrash-" + to_string(pid)) != string::npos) {
             result = true;
+            break;
         }
     }
     ASSERT_TRUE(true == result);
@@ -112,6 +114,7 @@ HWTEST_F(faultloggertest, Faultlogger_Faultdetect1, Function|MediumTest|Level1)
     pid_t pid = DoTestProcess(3);
     printf("pid is %d\r\n", pid);
     printf("sub process end with status %d\r\n", faultloggertest::status);
+    sleep(1);
     std::vector<std::string> faultfilelist;
     faultfilelist = getfileinpath("/data/log/faultlog/temp/");
     printf("sizeof faultfilelist is %d\r\n", faultfilelist.size());
@@ -127,7 +130,7 @@ HWTEST_F(faultloggertest, Faultlogger_Faultdetect1, Function|MediumTest|Level1)
     string fileinfo;
     fileinfo = ReadFile("/data/log/faultlog/temp/" + faultloggerfile);
     std::vector<std::string> para = {"Pid:" + to_string(pid), "Uid:0",
-                            "Process name:./faultloggertest",
+                            "Process name:./data/local/tmp/faultloggertest",
                             "Reason:Signal:SIGILL", "Fault thread Info:",
                             "Tid:" + to_string(pid), "Name:faultloggertest"};
     if (!fileinfo.empty()) {
