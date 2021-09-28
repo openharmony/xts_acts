@@ -97,7 +97,7 @@ void hilogtest::TearDownTestCase()
 HWTEST_F(hilogtest, Hilogtool_exit, Function|MediumTest|Level3)
 {
     CleanCmd();
-    std::string saveFile= "test_data_31.txt";
+    std::string saveFile= "/data/local/tmp/test_data_31.txt";
     std::string cmd1 = gHilogtoolExecutable + " -r";
     std::string cmdResult;
     CmdRun(cmd1, cmdResult);
@@ -128,7 +128,7 @@ HWTEST_F(hilogtest, Hilogtool_exit, Function|MediumTest|Level3)
 HWTEST_F(hilogtest, Hilogtool_type_app, Function|MediumTest|Level3)
 {
     CleanCmd();
-    std::string saveFile= "test_data_33_1.txt";
+    std::string saveFile= "/data/local/tmp/test_data_33_1.txt";
     LogType type = LOG_APP;
     int i = 0;
     while (i++ <= 5) {
@@ -157,7 +157,7 @@ HWTEST_F(hilogtest, Hilogtool_type_app, Function|MediumTest|Level3)
 HWTEST_F(hilogtest, Hilogtool_type_core, Function|MediumTest|Level3)
 {
     CleanCmd();
-    std::string saveFile= "test_data_33_2.txt";
+    std::string saveFile= "/data/local/tmp/test_data_33_2.txt";
     LogType type = LOG_CORE;
     int i = 0;
     while (i++ <= 5) {
@@ -185,7 +185,7 @@ HWTEST_F(hilogtest, Hilogtool_type_core, Function|MediumTest|Level3)
 HWTEST_F(hilogtest, Hilogtool_type_init, Function|MediumTest|Level3)
 {
     CleanCmd();
-    std::string saveFile= "test_data_33_3.txt";
+    std::string saveFile= "/data/local/tmp/test_data_33_3.txt";
     LogType type = LOG_INIT;
     int i = 0;
     while (i++ <= 5) {
@@ -213,7 +213,7 @@ HWTEST_F(hilogtest, Hilogtool_type_init, Function|MediumTest|Level3)
 HWTEST_F(hilogtest, Hilogtool_type_multiple, Function|MediumTest|Level2)
 {
     CleanCmd();
-    std::string saveFile= "test_data_33_4.txt";
+    std::string saveFile= "/data/local/tmp/test_data_33_4.txt";
     LogType type = LOG_INIT;
     int i = 0;
     while (i++ <= 3) {
@@ -245,7 +245,7 @@ HWTEST_F(hilogtest, Hilogtool_type_multiple, Function|MediumTest|Level2)
 HWTEST_F(hilogtest, Hilogtool_time, Function|MediumTest|Level3)
 {
     std::string cmd = gHilogtoolExecutable + " -a 1 -v time ";
-    std::string saveFile= "test_data_35_1.txt";
+    std::string saveFile= "/data/local/tmp/test_data_35_1.txt";
     SaveCmdOutput(cmd, saveFile);
     string hilogInfo = ReadFile(saveFile);
     bool result = false;
@@ -272,7 +272,7 @@ HWTEST_F(hilogtest, Hilogtool_time, Function|MediumTest|Level3)
 HWTEST_F(hilogtest, Hilogtool_epoch, Function|MediumTest|Level4)
 {
     std::string cmd = gHilogtoolExecutable + " -a 1 -v epoch ";
-    std::string saveFile= "test_data_35_2.txt";
+    std::string saveFile= "/data/local/tmp/test_data_35_2.txt";
     SaveCmdOutput(cmd, saveFile);
     string hilogInfo = ReadFile(saveFile);
     bool result = false;
@@ -298,7 +298,7 @@ HWTEST_F(hilogtest, Hilogtool_epoch, Function|MediumTest|Level4)
 HWTEST_F(hilogtest, Hilogtool_monotonic, Function|MediumTest|Level3)
 {
     std::string cmd = gHilogtoolExecutable + " -a 1 -v monotonic";
-    std::string saveFile= "test_data_35_3.txt";
+    std::string saveFile= "/data/local/tmp/test_data_35_3.txt";
     SaveCmdOutput(cmd, saveFile);
     string hilogInfo = ReadFile(saveFile);
     bool result = false;
@@ -324,7 +324,7 @@ HWTEST_F(hilogtest, Hilogtool_monotonic, Function|MediumTest|Level3)
 HWTEST_F(hilogtest, Hilogtool_usec, Function|MediumTest|Level4)
 {
     std::string cmd = gHilogtoolExecutable + " -a 1 -v usec";
-    std::string saveFile= "test_data_35_4.txt";
+    std::string saveFile= "/data/local/tmp/test_data_35_4.txt";
     SaveCmdOutput(cmd, saveFile);
     string hilogInfo = ReadFile(saveFile);
     bool result = false;
@@ -351,7 +351,7 @@ HWTEST_F(hilogtest, Hilogtool_usec, Function|MediumTest|Level4)
 HWTEST_F(hilogtest, Hilogtool_nsec, Function|MediumTest|Level4)
 {
     std::string cmd = gHilogtoolExecutable + " -a 1 -v nsec";
-    std::string saveFile= "test_data_35_5.txt";
+    std::string saveFile= "/data/local/tmp/test_data_35_5.txt";
     SaveCmdOutput(cmd, saveFile);
     string hilogInfo = ReadFile(saveFile);
     bool result = false;
@@ -379,7 +379,7 @@ HWTEST_F(hilogtest, Hilogtool_nsec, Function|MediumTest|Level4)
 HWTEST_F(hilogtest, Hilogtool_year, Function|MediumTest|Level4)
 {
     std::string cmd = gHilogtoolExecutable + " -a 1 -v year";
-    char saveFile356[] = "test_data_35_6.txt";
+    char saveFile356[] = "/data/local/tmp/test_data_35_6.txt";
     SaveCmdOutput(cmd, saveFile356);
     string hilogInfo = ReadFile(saveFile356);
     bool result = false;
@@ -406,7 +406,7 @@ HWTEST_F(hilogtest, Hilogtool_year, Function|MediumTest|Level4)
 HWTEST_F(hilogtest, Hilogtool_zone, Function|MediumTest|Level4)
 {
     std::string cmd = gHilogtoolExecutable + " -a 1 -v zone";
-    std::string saveFile= "test_data_35_6.txt";
+    std::string saveFile= "/data/local/tmp/test_data_35_7.txt";
     SaveCmdOutput(cmd, saveFile);
     string hilogInfo = ReadFile(saveFile);
     bool result = false;
@@ -435,7 +435,7 @@ HWTEST_F(hilogtest, Hilogtool_regex_null, Function|MediumTest|Level3)
     CleanCmd();
     std::string cmd = gHilogtoolExecutable + " -x -e \"\"";
     // " -type app core init -x "
-    std::string saveFile= "test_data_46_1.txt";
+    std::string saveFile= "/data/local/tmp/test_data_46_1.txt";
     SaveCmdOutput(cmd, saveFile);
     string hilogInfo = ReadFile(saveFile);
     bool result = false;
@@ -458,7 +458,7 @@ HWTEST_F(hilogtest, Hilogtool_regex, Function|MediumTest|Level3)
     CleanCmd();
     std::string cmd1 = gHilogtoolExecutable + " -x -e \"^(123)\"";
 
-    char saveFile462[] = "test_data_46_2.txt";
+    char saveFile462[] = "/data/local/tmp/test_data_46_2.txt";
     SaveCmdOutput(cmd1, saveFile462);
     string hilogInfo = ReadFile(saveFile462);
     bool result = false;
@@ -499,7 +499,7 @@ HWTEST_F(hilogtest, Hilogtool_head_1, Function|MediumTest|Level3)
         HILOG_DEBUG(type, g_logContent.c_str(), i, 1.00001, 2.333333, "sse", 'a');
     }
     std::string cmd = gHilogtoolExecutable + " -a 1 -x ";
-    std::string saveFile = "test_data_47_1.txt";
+    std::string saveFile = "/data/local/tmp/test_data_47_1.txt";
     SaveCmdOutput(cmd, saveFile);
     string hilogInfo = ReadFile(saveFile);
     bool result = false;
@@ -527,7 +527,7 @@ HWTEST_F(hilogtest, Hilogtool_head_20, Function|MediumTest|Level4)
         usleep(1);
         HILOG_DEBUG(type, g_logContent.c_str(), i, 1.00001, 2.333333, "sse", 'a');
     }
-    std::string saveFile= "test_data_47_2.txt";
+    std::string saveFile= "/data/local/tmp/test_data_47_2.txt";
     std::string cmd = gHilogtoolExecutable + " -a 20 -x ";
     SaveCmdOutput(cmd, saveFile);
     int n = GetTxtLine(saveFile);
@@ -549,7 +549,7 @@ HWTEST_F(hilogtest, Hilogtool_tail_1, Function|MediumTest|Level4)
         usleep(1);
         HILOG_DEBUG(type, g_logContent.c_str(), i, 1.00001, 2.333333, "sse", 'a');
     }
-    std::string saveFile= "test_data_47_3.txt";
+    std::string saveFile= "/data/local/tmp/test_data_47_3.txt";
     std::string cmd = gHilogtoolExecutable + "-t init -z 1";
     SaveCmdOutput(cmd, saveFile);
     sleep(2);
@@ -579,7 +579,7 @@ HWTEST_F(hilogtest, Hilogtool_tail_20, Function|MediumTest|Level4)
         usleep(1);
         HILOG_DEBUG(type, g_logContent.c_str(), i, 1.00001, 2.333333, "sse", 'a');
     }
-    std::string saveFile= "test_data_47_4.txt";
+    std::string saveFile= "/data/local/tmp/test_data_47_4.txt";
     std::string cmd = gHilogtoolExecutable + "-t init -z 20";
     SaveCmdOutput(cmd, saveFile);
     int n = GetTxtLine(saveFile);
@@ -602,7 +602,7 @@ HWTEST_F(hilogtest, Hilogtool_filter_null, Function|MediumTest|Level4)
         usleep(1000);
         HILOG_DEBUG(type, g_logContent.c_str(), i, 1.00001, 2.333333, "sse", 'a');
     }
-    std::string saveFile= "test_data_48_1.txt";
+    std::string saveFile= "/data/local/tmp/test_data_48_1.txt";
     std::string cmd = gHilogtoolExecutable + " -t init  -x";
     SaveCmdOutput(cmd, saveFile);
     string hilogInfo = ReadFile(saveFile);
@@ -632,7 +632,7 @@ HWTEST_F(hilogtest, Hilogtool_filter_level, Function|MediumTest|Level4)
         usleep(1);
         HILOG_DEBUG(type, g_logContent.c_str(), i, 1.00001, 2.333333, "sse", 'a');
     }
-    std::string saveFile= "test_data_48_4.txt";
+    std::string saveFile= "/data/local/tmp/test_data_48_4.txt";
     std::string cmd = gHilogtoolExecutable + " -t init -L D -x";
     SaveCmdOutput(cmd, saveFile);
     string hilogInfo = ReadFile(saveFile);
@@ -663,7 +663,7 @@ HWTEST_F(hilogtest, Hilogtool_filter_domain, Function|MediumTest|Level3)
         usleep(1);
         HILOG_DEBUG(type, g_logContent.c_str(), i, 1.00001, 2.333333, "sse", 'a');
     }
-    std::string saveFile= "test_data_48_3.txt";
+    std::string saveFile= "/data/local/tmp/test_data_48_3.txt";
     std::string cmd = gHilogtoolExecutable + " -t init -D 0xd003200 -x";
     SaveCmdOutput(cmd, saveFile);
     string hilogInfo = ReadFile(saveFile);
@@ -692,7 +692,7 @@ HWTEST_F(hilogtest, Hilogtool_filter_tag, Function|MediumTest|Level4)
         usleep(1);
         HILOG_DEBUG(type, g_logContent.c_str(), i, 1.00001, 2.333333, "sse", 'a');
     }
-    std::string saveFile= "test_data_48_5.txt";
+    std::string saveFile= "/data/local/tmp/test_data_48_5.txt";
     std::string cmd = gHilogtoolExecutable + " -T HILOGTOOLTEST -x";
     SaveCmdOutput(cmd, saveFile);
     string hilogInfo = ReadFile(saveFile);
@@ -722,7 +722,7 @@ HWTEST_F(hilogtest, Hilogtool_filter_multiple, Function|MediumTest|Level2)
         usleep(1);
         HILOG_DEBUG(type, g_logContent.c_str(), i, 1.00001, 2.333333, "sse", 'a');
     }
-    std::string saveFile= "test_data_48_6.txt";
+    std::string saveFile= "/data/local/tmp/test_data_48_6.txt";
     std::string cmd = gHilogtoolExecutable + \
     " -T HILOGTOOLTEST -L D -x";
     SaveCmdOutput(cmd, saveFile);
@@ -744,7 +744,7 @@ HWTEST_F(hilogtest, Hilogtool_filter_multiple, Function|MediumTest|Level2)
 HWTEST_F(hilogtest, Hilogtool_count, Function|MediumTest|Level2)
 {
     CleanCmd();
-    std::string saveFile= "test_data_30.txt";
+    std::string saveFile= "/data/local/tmp/test_data_30.txt";
     std::string cmd1 = gHilogtoolExecutable + " -r";
     std::string cmdResult;
     CmdRun(cmd1, cmdResult);
