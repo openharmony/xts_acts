@@ -21,7 +21,7 @@ var commonEventSubscribeInfo;
 var commonEventSubscriber;
 var WantAgent;
 var time = 1000
-describe('ActsAnsActiveSubscriberTest', function () {
+describe('ActsAnsCommonSubscriberTest', function () {
     console.info("===========ActsSubscriberTest start====================>");
 
     //consume

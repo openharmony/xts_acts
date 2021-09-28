@@ -26,7 +26,7 @@ describe('ActsAnsBadgeDisplaySetOneTest', function () {
      */
     it('ActsBadgeDisplaySet_test_0100', 0, async function (done) {
         await notify.displayBadge({
-            bundle:"com.neu.actsanslocalcandisplaytest"
+            bundle:"com.example.actsanslocalcandisplaytest"
         },true,(err) => {
             console.log("====>ActsBadgeDisplaySet_test_0100 success====>"+err)
         })
@@ -43,7 +43,7 @@ describe('ActsAnsBadgeDisplaySetOneTest', function () {
     it('ActsBadgeDisplaySet_test_0200', 0, async function (done) {
         await notify.displayBadge(
             {
-                bundle:"com.neu.actsanslocalcandisplaytest"
+                bundle:"com.example.actsanslocalcandisplaytest"
             },true).then(console.log("====>ActsBadgeDisplaySet_test_0200 success====>"))
         done();
         setTimeout(function(){
@@ -58,7 +58,7 @@ describe('ActsAnsBadgeDisplaySetOneTest', function () {
      */
     it('ActsSystemCanDisplaySet_test_0100', 0, async function (done) {
         await notify.isBadgeDisplayed({
-            bundle:"com.neu.actsanslocalcandisplaytest",
+            bundle:"com.example.actsanslocalcandisplaytest",
         },(err,data) => {
             console.log("====>ActsSystemCanDisplaySet_test_0100 success====>"+err+data)
             expect(typeof(data)).assertEqual('boolean')
@@ -77,7 +77,7 @@ describe('ActsAnsBadgeDisplaySetOneTest', function () {
     it('ActsSystemCanDisplaySet_test_0200', 0, async function (done) {
         var promise = await notify.isBadgeDisplayed(
             {
-                bundle:"com.neu.actsanslocalcandisplaytest",
+                bundle:"com.example.actsanslocalcandisplaytest",
             })
         console.log("====>ActsSystemCanDisplaySet_test_0200 success====>"+promise)
         expect(typeof(promise)).assertEqual('boolean')

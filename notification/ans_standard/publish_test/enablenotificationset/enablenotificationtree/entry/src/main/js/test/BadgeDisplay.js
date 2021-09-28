@@ -26,7 +26,7 @@ describe('ActsAnsEnableNotificationSetTreeTest', function () {
      */
     it('ActsEnableNotificationSet_test_0500', 0, async function (done) {
         await notify.enableNotification({
-            bundle:"com.neu.actsanslocalnotificationtest",
+            bundle:"com.example.actsanslocalnotificationtest",
         },false,(err) => {
             console.log("====>ActsEnableNotificationSet_test_0500 success====>"+err)
         })
@@ -44,7 +44,7 @@ describe('ActsAnsEnableNotificationSetTreeTest', function () {
     it('ActsEnableNotificationSet_test_0600', 0, async function (done) {
         await notify.enableNotification(
             {
-                bundle:"com.neu.actsanslocalnotificationtest",
+                bundle:"com.example.actsanslocalnotificationtest",
             },true).then(console.log("====>ActsEnableNotificationSet_test_0600 success====>"))
         done();
         setTimeout(function(){
@@ -59,7 +59,7 @@ describe('ActsAnsEnableNotificationSetTreeTest', function () {
      */
     it('ActsSystemNotificationSet_test_0500', 0, async function (done) {
         await notify.isNotificationEnabled({
-            bundle:"com.neu.actsanslocalnotificationtest",
+            bundle:"com.example.actsanslocalnotificationtest",
         },(err,data) => {
             console.log("====>ActsSystemNotificationSet_test_0500 success====>"+err+data)
             expect(typeof(data)).assertEqual('boolean')
@@ -78,7 +78,7 @@ describe('ActsAnsEnableNotificationSetTreeTest', function () {
     it('ActsSystemNotificationSet_test_0600', 0, async function (done) {
         var promise = await notify.isNotificationEnabled(
             {
-                bundle:"com.neu.actsanslocalnotificationtest",
+                bundle:"com.example.actsanslocalnotificationtest",
             })
         expect(typeof(promise)).assertEqual('boolean')
         console.log("====>ActsSystemNotificationSet_test_0600 success====>"+promise)

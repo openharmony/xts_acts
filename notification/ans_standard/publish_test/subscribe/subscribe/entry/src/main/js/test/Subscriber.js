@@ -14,7 +14,7 @@
  */
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-
+var time = 1000
 describe('ActsAnsSubscriberTest', function () {
     console.info("==ActsDoNotSubscriberTest start==>");
 
@@ -108,6 +108,9 @@ describe('ActsAnsSubscriberTest', function () {
         }
         console.debug("==ActsSubscriber_test_0100==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_0100====>");
+        }, time);
     })
 
     /*
@@ -129,6 +132,9 @@ describe('ActsAnsSubscriberTest', function () {
         }
         console.debug("==ActsSubscriber_test_0200==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_0200====>");
+        }, time);
     })
 
     /*
@@ -155,6 +161,9 @@ describe('ActsAnsSubscriberTest', function () {
         }
         console.debug("==ActsSubscriber_test_0300==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_0300====>");
+        }, time);
     })
 
     /*
@@ -174,6 +183,9 @@ describe('ActsAnsSubscriberTest', function () {
         }
         console.debug("==ActsSubscriber_test_0400==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_0400====>");
+        }, time);
     })
 
     /*
@@ -205,6 +217,9 @@ describe('ActsAnsSubscriberTest', function () {
         }
         console.debug("==ActsSubscriber_test_0500==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_0500====>");
+        }, time);
     })
 
     /*
@@ -227,6 +242,9 @@ describe('ActsAnsSubscriberTest', function () {
         }
         console.debug("==ActsSubscriber_test_0600==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_0600====>");
+        }, time);
     })
 
     /*
@@ -251,6 +269,9 @@ describe('ActsAnsSubscriberTest', function () {
         }
         console.debug("==ActsSubscriber_test_0700==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_0700====>");
+        }, time);
     })
 
     /*
@@ -273,6 +294,9 @@ describe('ActsAnsSubscriberTest', function () {
         }
         console.debug("==ActsSubscriber_test_0800==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_0800====>");
+        }, time);
     })
 
     /*
@@ -297,6 +321,9 @@ describe('ActsAnsSubscriberTest', function () {
         }
         console.debug("==ActsSubscriber_test_0900==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_0900====>");
+        }, time);
     })
 
     /*
@@ -319,6 +346,9 @@ describe('ActsAnsSubscriberTest', function () {
         }
         console.debug("==ActsSubscriber_test_1000==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_1000====>");
+        }, time);
     })
 
     /*
@@ -343,6 +373,9 @@ describe('ActsAnsSubscriberTest', function () {
         }
         console.debug("==ActsSubscriber_test_1100==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_1100====>");
+        }, time);
     })
 
     /*
@@ -365,6 +398,10 @@ describe('ActsAnsSubscriberTest', function () {
             classification:"classification1",
             sortingKey:"sortingKey1",
         },publishCallback001);
-        })
+	done();
+ 	setTimeout(function(){
+            console.debug("====>time out ACTS_publishTest_0100====>");
+        }, time);
+    })
 })
 

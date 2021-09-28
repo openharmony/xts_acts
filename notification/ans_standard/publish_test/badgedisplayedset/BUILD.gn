@@ -17,12 +17,12 @@ group("badgedisplayedset") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "badgedisplaysetfive:ActsAnsBadgeDisplaySetFiveTest",
-      "badgedisplaysetfour:ActsAnsBadgeDisplaySetFourTest",
-      "badgedisplaysetone:ActsAnsBadgeDisplaySetOneTest",
-      "badgedisplaysetsix:ActsAnsBadgeDisplaySetSixTest",
-      "badgedisplaysettree:ActsAnsBadgeDisplaySetTreeTest",
-      "badgedisplaysettwo:ActsAnsBadgeDisplaySetTwoTest",
+      #"badgedisplaysetfive:ActsAnsBadgeDisplaySetFiveTest",
+      #"badgedisplaysetfour:ActsAnsBadgeDisplaySetFourTest",
+      #"badgedisplaysetone:ActsAnsBadgeDisplaySetOneTest",
+      #"badgedisplaysetsix:ActsAnsBadgeDisplaySetSixTest",
+      #"badgedisplaysettree:ActsAnsBadgeDisplaySetTreeTest",
+      #"badgedisplaysettwo:ActsAnsBadgeDisplaySetTwoTest",
     ]
   }
 }

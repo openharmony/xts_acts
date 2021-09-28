@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.neu.actsansgetcancelactivenumtest",
+    "bundleName": "com.example.actsansgetcancelactivenumtest",
     "vendor": "example",
     "version": {
       "code": 1,

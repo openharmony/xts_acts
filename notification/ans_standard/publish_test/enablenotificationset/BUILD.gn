@@ -17,14 +17,12 @@ group("enablenotificationset") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "enablenotificationfive:ActsAnsEnableNotificationSetFiveTest",
-      "enablenotificationfour:ActsAnsEnableNotificationSetFourTest",
-      "enablenotificationone:ActsAnsEnableNotificationSetOneTest",
-      "enablenotificationsix:ActsAnsEnableNotificationSetSixTest",
-      "enablenotificationtree:ActsAnsEnableNotificationSetTreeTest",
-      "enablenotificationtwo:ActsAnsEnableNotificationSetTwoTest",
-
-      #"localnotificationenable:ActsAnsLocalNotificationTest",
+      #"enablenotificationfive:ActsAnsEnableNotificationSetFiveTest",
+      #"enablenotificationfour:ActsAnsEnableNotificationSetFourTest",
+      #"enablenotificationone:ActsAnsEnableNotificationSetOneTest",
+      #"enablenotificationsix:ActsAnsEnableNotificationSetSixTest",
+      #"enablenotificationtree:ActsAnsEnableNotificationSetTreeTest",
+      #"enablenotificationtwo:ActsAnsEnableNotificationSetTwoTest",
     ]
   }
 }

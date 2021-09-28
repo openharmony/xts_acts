@@ -207,7 +207,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfos interfaces with one hap.
      */
     it('getApplicationInfos_0100', 0, async function (done) {
-        var datainfo = await demo.getApplicationInfos(8, 0)
+        var datainfo = await demo.getAllApplicationInfo(8, 0)
         checkgetApplicationInfos(datainfo)
         done()
         setTimeout(function () {
@@ -240,7 +240,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfos interfaces with one hap.
      */
     it('getApplicationInfos_0600', 0, async function (done) {
-        await demo.getApplicationInfos(8, 0, (error, datainfo) => {
+        await demo.getAllApplicationInfo(8, 0, (error, datainfo) => {
             expect(datainfo.length).assertLarger(0)
             for (var i = 0; i < datainfo.length; i++) {
                 expect(datainfo[i].name.length).assertLarger(0)
@@ -270,7 +270,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getBundleInfos interfaces with one hap.
      */
     it('getBundleInfos_0100', 0, async function (done) {
-        var data = await demo.getBundleInfos(0)
+        var data = await demo.getAllBundleInfo(0)
         expect(typeof data).assertEqual(OBJECT)
         expect(data.length).assertLarger(0)
         for (var i = 0; i < data.length; i++) {
@@ -335,15 +335,15 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleInfos_0600', 0, async function (done) {
         await demo.getAllBundleInfo(0, (error, data) => {
             expect(typeof data).assertEqual(OBJECT)
-            for (var i = 0; i < data.length; i++) {
-                expect(data[i].name.length).assertLarger(0)
-                expect(data[i].appInfo.name.length).assertLarger(0)
-                expect(data[i].appInfo.description.length).assertLarger(0)
-                expect(data[i].appInfo.icon.length).assertLarger(0)
-                expect(data[i].appInfo.label.length).assertLarger(0)
-                expect(data[i].appInfo.supportedModes).assertEqual(0)
-                expect(data[i].appInfo.moduleInfos.length).assertLarger(0)
-            }
+        for (var i = 0; i < data.length; i++) {
+            expect(data[i].name.length).assertLarger(0)
+            expect(data[i].appInfo.name.length).assertLarger(0)
+            expect(data[i].appInfo.description.length).assertLarger(0)
+            expect(data[i].appInfo.icon.length).assertLarger(0)
+            expect(data[i].appInfo.label.length).assertLarger(0)
+            expect(data[i].appInfo.supportedModes).assertEqual(0)
+            expect(data[i].appInfo.moduleInfos.length).assertLarger(0)
+        }
             done();
         })
 
@@ -495,8 +495,8 @@ describe('ActsBundleManagerTest', function () {
                     entities: ["entity.system.home"],
                     elementName: {
                         deviceId: "0",
-                        bundleName: "com.example.myapplication1",
-                        abilityName: "",
+                        bundleName: "",
+                        abilityName: "com.example.myapplication1.MainAbility",
                     },
                 }
             }, 0, 0)
@@ -599,8 +599,8 @@ describe('ActsBundleManagerTest', function () {
                 entities: ["entity.system.home"],
                 elementName: {
                     deviceId: "0",
-                    bundleName: "com.example.myapplication1",
-                    abilityName: "",
+                    bundleName: "",
+                    abilityName: "com.example.myapplication1.MainAbility",
                 },
             }
         }, 0, 0, OnReceiveEvent)
@@ -690,7 +690,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfos interfaces with two haps.
      */
     it('getApplicationInfos_0200', 0, async function (done) {
-        var datainfo = await demo.getApplicationInfos(8, 0)
+        var datainfo = await demo.getAllApplicationInfo(8, 0)
         console.info("==========ActsBmsGetInfosSecondScene is ==========" + JSON.stringify(datainfo));
         checkgetApplicationInfos(datainfo)
         done()
@@ -705,7 +705,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfos interfaces with two haps and different param.
      */
     it('getApplicationInfos_0400', 0, async function (done) {
-        var datainfo = await demo.getApplicationInfos(0, 0)
+        var datainfo = await demo.getAllApplicationInfo(0, 0)
         expect(datainfo.length).assertLarger(0)
         checkgetApplicationInfos(datainfo)
         done()
@@ -720,7 +720,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfos interfaces with two haps.
      */
     it('getApplicationInfos_0700', 0, async function (done) {
-        await demo.getApplicationInfos(8, 0, (error, datainfo) => {
+        await demo.getAllApplicationInfo(8, 0, (error, datainfo) => {
             for (var i = 0; i < datainfo.length; i++) {
                 expect(datainfo[i].name.length).assertLarger(0)
                 expect(datainfo[i].description.length).assertLarger(0)
@@ -750,7 +750,7 @@ describe('ActsBundleManagerTest', function () {
      */
     it('getApplicationInfos_0900', 0, async function (done) {
 
-        await demo.getApplicationInfos(0, 0, (error, datainfo) => {
+        await demo.getAllApplicationInfo(0, 0, (error, datainfo) => {
             for (var i = 0; i < datainfo.length; i++) {
                 expect(datainfo[i].name.length).assertLarger(0)
                 expect(datainfo[i].description.length).assertLarger(0)
@@ -1171,7 +1171,7 @@ describe('ActsBundleManagerTest', function () {
      */
     it('getApplicationInfos_0300', 0, async function (done) {
         console.info('===start getApplicationInfos===')
-        var datainfo = await demo.getApplicationInfos(8, 0)
+        var datainfo = await demo.getAllApplicationInfo(8, 0)
         expect(datainfo.length).assertLarger(0)
         checkgetApplicationInfos(datainfo)
         done()
@@ -2571,11 +2571,13 @@ describe('ActsBundleManagerTest', function () {
         })
         function UnSubscribeCallback() {
             console.debug('====>UnSubscribe CallBack====>');
+            done();
         }
         function timeout() {
             expect().assertFail();
             console.debug('install_1000=====timeout======');
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
+            done();
         }
         id = setTimeout(timeout, START_ABILITY_TIMEOUT);
         console.debug('=======start ability========')
@@ -2611,6 +2613,7 @@ describe('ActsBundleManagerTest', function () {
             }
             expect(processMap2.has(uid)).assertFalse();
             await uninstall(THIRD1);
+            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
             done();
         }
         setTimeout(function () {

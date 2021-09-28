@@ -16,16 +16,17 @@ group("publish_test") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsanspublishcontroltest:ActsAnsPublishControlTest",
-      "badgedisplayed:badgedisplayed",
-      "badgedisplayedset:badgedisplayedset",
-      "enablenotification:enablenotification",
-      "enablenotificationset:enablenotificationset",
+      #"actsanspublishcontroltest:ActsAnsPublishControlTest",
+      #"badgedisplayed:badgedisplayed",
+      #"badgedisplayedset:badgedisplayedset",
+      #"enablenotification:enablenotification",
+      #"enablenotificationset:enablenotificationset",
       "getactive:getactive",
       "getwantagentinfo:getwantagentinfo",
-      "publishcontentype:ActsAnsNotificationTest",
-      "subscribe:subscribe",
-      "unsubscribe:ActsAnsUnSubscriberTest",
+
+      #"publishcontentype:ActsAnsNotificationTest",
+      #"subscribe:subscribe",
+      #"unsubscribe:ActsAnsUnSubscriberTest",
       "wantagent:wantagent",
     ]
   }

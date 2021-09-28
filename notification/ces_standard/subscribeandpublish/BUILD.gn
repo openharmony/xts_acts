@@ -19,6 +19,8 @@ group("SubscribeAndPublish") {
     deps = [
       "actssubscriberorderedtest:ActsSubscriberOrderTest",
       "actssubscriberunordertest:ActsSubscriberUnorderTest",
+
+      #"actssubscriberunordersystemtest:ActsSubscriberTestUnorderSystem"
     ]
   }
 }
