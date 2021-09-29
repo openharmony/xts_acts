@@ -26,7 +26,7 @@ import {
 from 'deccjsunit/index'
 
 describe('dsmTest', function () {
-
+  let mid = 0;
   /**
    * @tc.number SUB_STORAGE_DSM_JS_Function_0000
    * @tc.name DSM_JS_Function_0000
@@ -36,6 +36,7 @@ describe('dsmTest', function () {
     devicesmgr.getVolumes({
       success: function (data) {
         console.log('DSM_JS_Function_0000 call getVolumes success. data:' + JSON.stringify(data));
+        mid = data.volumeInfos[2].mId;
         expect(data.volumeInfos[2].mId !== null).assertTrue();
         expect(data.volumeInfos[2].mState == 2).assertTrue();
       },
@@ -150,7 +151,7 @@ describe('dsmTest', function () {
    */
   it('DSM_JS_Function_0400', 0, function () {
     devicesmgr.mount({
-      volId: 'public:179,33',
+      volId: mid,
       success: function () {
         devicesmgr.getVolumes({
           success: function (data) {
@@ -163,24 +164,6 @@ describe('dsmTest', function () {
             expect(null).assertFail();
           },
         })
-      },
-    })
-  })
-
-  /**
-   * @tc.number SUB_STORAGE_DSM_JS_Function_0700
-   * @tc.name DSM_JS_Function_0700
-   * @tc.desc Obtain disk information and check whether it is successful.
-   */
-  it('DSM_JS_Function_0700', 0, function () {
-    devicesmgr.getDisks({
-      success: function (data) {
-        console.log('DSM_JS_Function_0700 call getDisks success.' + JSON.stringify(data));
-        expect(data.getDisks[2].Description == 'SD card').assertTrue()
-      },
-      fail: function (data, code) {
-        console.log('DSM_JS_Function_0700 call getDisks fail, code: ' + code + ', data: ' + data);
-        expect(null).assertFail();
       },
     })
   })

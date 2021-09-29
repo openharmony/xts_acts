@@ -44,7 +44,7 @@ describe('FmsTest', function () {
    * @tc.name FMS_Function_0000
    * @tc.desc Function of API,Get current device information
    */
-  it('FMS_Function_0000', 0,  function (done) {
+  it('FMS_Function_0000', 0, async function (done) {
     let progetDeviceInfo = new Promise(function (resolve, reject) {
       filepicker.getDeviceInfo({
         success: function (data) {
@@ -74,7 +74,7 @@ describe('FmsTest', function () {
    * @tc.name FMS_Function_0100
    * @tc.desc Function of API, Creates the specified directory recursively
    */
-  it('FMS_Function_0100', 0,  function (done) {
+  it('FMS_Function_0100', 0, async function (done) {
     let proMkdir = new Promise(function (resolve, reject) {
       filepicker.mkdir({
         uri: 'dataability:///public.storage.ability/' + deviceID + '/document/fms_test/leaf',
@@ -88,7 +88,7 @@ describe('FmsTest', function () {
         },
       })
     })
-    proMkdir.catch(function () {
+    proMkdir.then(function () {
       console.log('FMS_Function_0100 success');
     });
   })
@@ -98,7 +98,7 @@ describe('FmsTest', function () {
    * @tc.name FMS_Function_0200
    * @tc.desc Function of API, Creates the specified directory recursively
    */
-  it('FMS_Function_0200', 0,  function (done) {
+  it('FMS_Function_0200', 0, async function (done) {
     let proMkdir = new Promise(function (resolve, reject) {
       filepicker.mkdir({
         uri: 'dataability:///public.storage.ability/' + deviceID + '/document/你好/leaf',
@@ -122,7 +122,7 @@ describe('FmsTest', function () {
    * @tc.name FMS_Function_0300
    * @tc.desc Function of API, Creates the specified directory recursively
    */
-  it('FMS_Function_0300', 0,  function (done) {
+  it('FMS_Function_0300', 0,async  function (done) {
     let proMkdir = new Promise(function (resolve, reject) {
       filepicker.mkdir({
         uri: 'dataability:///public.storage.ability/' + deviceID + '/document/a/b/c/leaf',
@@ -146,7 +146,7 @@ describe('FmsTest', function () {
    * @tc.name FMS_Function_0400
    * @tc.desc Function of API,
    */
-  it('FMS_Function_0400', 0,  function (done) {
+  it('FMS_Function_0400', 0, async function (done) {
     let proMkdir = new Promise(function (resolve, reject) {
       filepicker.mkdir({
         uri: 'dataability:///public.storage.ability/' + deviceID + '/root/files',
@@ -170,7 +170,7 @@ describe('FmsTest', function () {
    * @tc.name FMS_Function_0500
    * @tc.desc Function of API, save file.The test file is exist.
    */
-  it('FMS_Function_0500', 0,  function (done) {
+  it('FMS_Function_0500', 0, async function (done) {
     let fpath = filePickerName("a.txt", deviceID);
     expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
     let proMkdir = new Promise(function (resolve, reject) {

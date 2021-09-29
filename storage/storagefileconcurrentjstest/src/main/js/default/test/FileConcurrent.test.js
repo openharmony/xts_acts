@@ -72,6 +72,11 @@ describe('fileconcurrent', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -127,6 +132,11 @@ describe('fileconcurrent', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -186,6 +196,11 @@ describe('fileconcurrent', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -221,6 +236,11 @@ describe('fileconcurrent', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -277,6 +297,11 @@ describe('fileconcurrent', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -324,6 +349,11 @@ describe('fileconcurrent', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -357,6 +387,11 @@ describe('fileconcurrent', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -391,6 +426,11 @@ describe('fileconcurrent', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -425,5 +465,10 @@ describe('fileconcurrent', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 });
