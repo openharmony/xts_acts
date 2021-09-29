@@ -20,9 +20,9 @@ group("sim") {
       "sim_file_manager_function_test:SimFileManagerFunctionTest",
       "sim_manager_function_test:SimManagerFunctionTest",
       "sim_no_sim_function_test:SimNoSimFunctionTest",
-      "sim_state_manager_function_test:SimStateManagerFunctionTest",
-      "sim_reliability_test:SimReliabilityTest",
       "sim_performance_test:SimPerformanceTest",
+      "sim_reliability_test:SimReliabilityTest",
+      "sim_state_manager_function_test:SimStateManagerFunctionTest",
     ]
   }
 }

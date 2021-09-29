@@ -18,8 +18,8 @@ group("call_manager") {
   if (is_standard_system) {
     deps = [
       "call_manager_mmi:CallManagerMMI",
-      "call_manager_test:CallManagerTest",
       "call_manager_on_dail:CallManagerOnDail",
+      "call_manager_test:CallManagerTest",
     ]
   }
 }

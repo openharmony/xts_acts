@@ -13,7 +13,5 @@
 
 group("telephony") {
   testonly = true
-  deps = [
-    "telephonyjstest:telephonyjstest",
-  ]
+  deps = [ "telephonyjstest:telephonyjstest" ]
 }

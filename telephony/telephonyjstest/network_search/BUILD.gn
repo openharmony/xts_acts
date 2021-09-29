@@ -19,8 +19,8 @@ group("network_search") {
       "network_search_information:NetworkSearchInformation",
       "network_search_performance:NetworkSearchPerformance",
       "network_search_radio:NetworkSearchRadio",
-      "network_search_selection_mode:NetworkSearchSelectionMoce",
       "network_search_reliability:NetworkSearchReliability",
+      "network_search_selection_mode:NetworkSearchSelectionMoce",
     ]
   }
 }
