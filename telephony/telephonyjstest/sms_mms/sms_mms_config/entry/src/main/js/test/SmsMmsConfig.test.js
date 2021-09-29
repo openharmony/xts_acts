@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import sms from '@ohos.telephony_sms';
+import sms from '@ohos.telephony.sms';
 import {
   describe,
   beforeAll,
@@ -356,32 +356,6 @@ describe('SmsMmsConfigTest', function () {
   });
 
   /**
-   * @tc.number   Telephony_SmsMms_setCBConfig_Async_1100
-   * @tc.name     Set the network standard parameter "RANTYPE" to RANTYPE_CDMA(Cdma),
-   *              Configure a cell broadcast for an identity.
-   * @tc.desc     Function test
-   */
-  it('Telephony_SmsMms_setCBConfig_Async_1100', 0, async function (done) {
-    let data = {
-      slotId: TRUE_SLOT_ID,
-      enable: true,
-      startMessageId: IDENTIFIER_MIN,
-      endMessageId: IDENTIFIER_MAX,
-      ranType: RANTYPE_CDMA
-    };
-    sms.setCBConfig(data, (err) => {
-      if (err) {
-        expect().assertFail();
-        console.log('Telephony_SmsMms_setCBConfig_Async_1100 fail');
-        done();
-        return;
-      }
-      console.log('Telephony_SmsMms_setCBConfig_Async_1100 finish');
-      done();
-    });
-  });
-
-  /**
    * @tc.number   Telephony_SmsMms_setCBConfig_Async_1200
    * @tc.name     Set the network standard parameter "RANTYPE" to an error value,
    *              Configure a cell broadcast for an identity.
@@ -702,31 +676,6 @@ describe('SmsMmsConfigTest', function () {
     } catch (err) {
       expect().assertFail();
       console.log('Telephony_SmsMms_setCBConfig_Promise_1000 2 fail');
-      done();
-    }
-  });
-
-  /**
-   * @tc.number   Telephony_SmsMms_setCBConfig_Promise_1100
-   * @tc.name     Set the network standard parameter "RANTYPE" to RANTYPE_CDMA(Cdma),
-   *              Configure a cell broadcast for an identity.
-   * @tc.desc     Function test
-   */
-  it('Telephony_SmsMms_setCBConfig_Promise_1100', 0, async function (done) {
-    let data = {
-      slotId: TRUE_SLOT_ID,
-      enable: true,
-      startMessageId: IDENTIFIER_MIN,
-      endMessageId: IDENTIFIER_MAX,
-      ranType: RANTYPE_CDMA
-    };
-    try {
-      await sms.setCBConfig(data);
-      console.log('Telephony_SmsMms_setCBConfig_Promise_1100 finish');
-      done();
-    } catch (err) {
-      expect().assertFail();
-      console.log('Telephony_SmsMms_setCBConfig_Promise_1100 fail');
       done();
     }
   });
