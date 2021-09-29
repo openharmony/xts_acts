@@ -9,8 +9,9 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsContextTest.hap",
-                "DefPermission.hap"
+                "DefPermission.hap",
+                "ActsContextTest.hap"
+            
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

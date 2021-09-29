@@ -16,11 +16,11 @@ group("ans_standard") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsansnotificationcancel:ActsAnsNotificationCancel",
-      "actsansnotificationremove:ActsAnsNotificationRemove",
+      #"actsansnotificationcancel:ActsAnsNotificationCancel",
+      #"actsansnotificationremove:ActsAnsNotificationRemove",
       "actsansslottest:ActsAnsSlotTest",
       "publish_test:publish_test",
-      "publishicontest:ActsAnsIconTest",
+      #"publishicontest:ActsAnsIconTest",
     ]
   }
 }

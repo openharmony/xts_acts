@@ -17,10 +17,10 @@ group("aafwk_standard") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "abilitymanager:actsabilitymanagertest",
+      #"abilitymanager:actsabilitymanagertest",
       "context:context",
-      "featureability:featureability",
-      "want:want",
+      #"featureability:featureability",
+      #"want:want",
     ]
   }
 }

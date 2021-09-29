@@ -14,86 +14,87 @@
  */
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-
+var time = 1000
 describe('ActsAnsSubscriberTest', function () {
-    console.info("===========ActsDoNotSubscriberTest start====================>");
+    console.info("==ActsDoNotSubscriberTest start==>");
 
     //consume
     function consumeCallbackOne(err,data) {
-        console.debug("==========================>consumeDoNotCallback1 data : =======================>" +err+ JSON.stringify(data));
+        console.debug("==>consumeDoNotCallback1 data : ==>" +err+ JSON.stringify(data));
         expect(typeof(data)).assertEqual("object")
     }
     function consumeCallbackTwo(err,data) {
-        console.debug("==========================>consumeDoNotCallback2 data : =======================>" +err+ JSON.stringify(data));
+        console.debug("==>consumeDoNotCallback2 data : ==>" +err+ JSON.stringify(data));
         expect(typeof(data)).assertEqual("object")
     }
     function consumeCallbackTree(err,data) {
-        console.debug("==========================>consumeDoNotCallback3 data : =======================>" +err+ JSON.stringify(data));
+        console.debug("==>consumeDoNotCallback3 data : ==>" +err+ JSON.stringify(data));
         expect(typeof(data)).assertEqual("object")
     }
     function consumeCallbackFour(err,data) {
-        console.debug("==========================>consumeDoNotCallback4 data : =======================>" +err+ JSON.stringify(data));
+        console.debug("==>consumeDoNotCallback4 data : ==>" +err+ JSON.stringify(data));
         expect(typeof(data)).assertEqual("object")
     }
     function consumeCallbackFive(err,data) {
-        console.debug("==========================>consumeDoNotCallback5 data : =======================>" +err+ JSON.stringify(data));
+        console.debug("==>consumeDoNotCallback5 data : ==>" +err+ JSON.stringify(data));
         expect(typeof(data)).assertEqual("object")
     }
     function consumeCallbackSix(err,data) {
-        console.debug("==========================>consumeDoNotCallback6 data : =======================>" +err+ JSON.stringify(data));
+        console.debug("==>consumeDoNotCallback6 data : ==>" +err+ JSON.stringify(data));
         expect(typeof(data)).assertEqual("object")
     }
     function consumeCallbackSeven(err,data) {
-        console.debug("==========================>consumeDoNotCallback7 data : =======================>" +err+ JSON.stringify(data));
+        console.debug("==>consumeDoNotCallback7 data : ==>" +err+ JSON.stringify(data));
         expect(typeof(data)).assertEqual("object")
     }
     function consumeCallbackEight(err,data) {
-        console.debug("==========================>consumeDoNotCallback8 data : =======================>" +err+ JSON.stringify(data));
+        console.debug("==>consumeDoNotCallback8 data : ==>" +err+ JSON.stringify(data));
         expect(typeof(data)).assertEqual("object")
     }
     function consumeCallbacka(err,data) {
-        console.debug("==========================>consumeCallbacka data : =======================>" +err+ JSON.stringify(data));
+        console.debug("==>consumeCallbacka data : ==>" +err+ JSON.stringify(data));
         expect(typeof(data)).assertEqual("object")
     }
     function consumeCallbackb(err,data) {
-        console.debug("==========================>consumeCallbackb data : =======================>" +err+ JSON.stringify(data));
+        console.debug("==>consumeCallbackb data : ==>" +err+ JSON.stringify(data));
         expect(typeof(data)).assertEqual("object")
     }
     function consumeCallbackc(err,data) {
-        console.debug("==========================>consumeCallbackc data : =======================>" +err+ JSON.stringify(data));
+        console.debug("==>consumeCallbackc data : ==>" +err+ JSON.stringify(data));
         expect(typeof(data)).assertEqual("object")
     }
     function consumeCallbackd(err,data) {
-        console.debug("==========================>consumeCallbackd data : =======================>" +err+ JSON.stringify(data));
+        console.debug("==>consumeCallbackd data : ==>" +err+ JSON.stringify(data));
         expect(typeof(data)).assertEqual("object")
     }
     function consumeCallbacke(err,data) {
-        console.debug("==========================>consumeCallbacke data : =======================>" +err+ JSON.stringify(data));
+        console.debug("==>consumeCallbacke data : ==>" +err+ JSON.stringify(data));
         expect(typeof(data)).assertEqual("object")
     }
     function consumeCallbackf(err,data) {
-        console.debug("==========================>consumeCallbackf data : =======================>" +err+ JSON.stringify(data));
+        console.debug("==>consumeCallbackf data : ==>" +err+ JSON.stringify(data));
         expect(typeof(data)).assertEqual("object")
     }
     //subscribeOn
     function subscribeOnCallback(err) {
-        console.debug("==========================>subscribeDoNotOnCallback=======================>");
+        console.debug("==>subscribeDoNotOnCallback==>");
     }
     //subscribe
     function subscribeCallback(err) {
-        console.debug("==========================>subscribeDoNotCallback=======================>");
+        console.debug("==>subscribeDoNotCallback==>");
 
     }
     function publishCallback001(){
         console.log('ActsAnsSubscriberTest ACTS_Publish_0100 asyncCallback')
     }
+
     /*
      * @tc.number: ActsDoNotSubscriber_test_0100
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
     it('ActsSubscriber_test_0100', 0, async function (done) {
-        console.debug("===============ActsDoNotSubscriber_test_0100======begin====================>");
+        console.debug("==ActsDoNotSubscriber_test_0100==begin==>");
 
         var subInfo ={
             onConsumed:consumeCallbackOne,
@@ -105,16 +106,20 @@ describe('ActsAnsSubscriberTest', function () {
         catch(err) {
             console.error('=ActsDoNotSubscriber_test_0100  订阅 subscribeDoNotCallback err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_0100=======end3===================>");
+        console.debug("==ActsSubscriber_test_0100==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_0100====>");
+        }, time);
     })
+
     /*
      * @tc.number: ActsSubscriber_test_0200
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
     it('ActsSubscriber_test_0200', 0, async function (done) {
-        console.debug("===============ActsSubscriber_test_0200======begin====================>");
+        console.debug("==ActsSubscriber_test_0200==begin==>");
         var subInfo ={
             onConsumed:consumeCallbackTwo,
             onConnected:subscribeOnCallback,
@@ -125,16 +130,20 @@ describe('ActsAnsSubscriberTest', function () {
         }catch(err) {
             console.error('=ActsDoNotSubscriber_test_0200  订阅 subscribeDoNotCallback err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_0200=======end3===================>");
+        console.debug("==ActsSubscriber_test_0200==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_0200====>");
+        }, time);
     })
+
     /*
      * @tc.number: ActsSubscriber_test_0300
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
     it('ActsSubscriber_test_0300', 0, async function (done) {
-        console.debug("===============ActsSubscriber_test_0300======begin====================>");
+        console.debug("==ActsSubscriber_test_0300==begin==>");
 
         var subInfo ={
             onConsumed:consumeCallbackTree,
@@ -150,16 +159,20 @@ describe('ActsAnsSubscriberTest', function () {
         }catch(err) {
             console.error('=ActsSubscriber_test_0300  订阅 subscribeDoNotCallback err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_0300=======end3===================>");
+        console.debug("==ActsSubscriber_test_0300==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_0300====>");
+        }, time);
     })
+
     /*
      * @tc.number: ActsSubscriber_test_0400
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
     it('ActsSubscriber_test_0400', 0, async function (done) {
-        console.debug("===============ActsSubscriber_test_0400======begin====================>");
+        console.debug("==ActsSubscriber_test_0400==begin==>");
         try{
             await notify.subscribe({
                 onConsumed:consumeCallbackFive,
@@ -168,16 +181,20 @@ describe('ActsAnsSubscriberTest', function () {
         }catch(err) {
             console.error('=ActsSubscriber_test_0400  订阅 subscribeDoNotCallback err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_0400=======end3===================>");
+        console.debug("==ActsSubscriber_test_0400==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_0400====>");
+        }, time);
     })
+
     /*
      * @tc.number: ActsSubscriber_test_0500
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
     it('ActsSubscriber_test_0500', 0, async function (done) {
-        console.debug("===============ActsSubscriber_test_0500======begin====================>");
+        console.debug("==ActsSubscriber_test_0500==begin==>");
 
         var subInfo ={
             onConsumed:consumeCallbackSix,
@@ -198,16 +215,20 @@ describe('ActsAnsSubscriberTest', function () {
         }catch(err) {
             console.error('=ActsSubscriber_test_0500  订阅 subscribeDoNotCallback err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_0500=======end3===================>");
+        console.debug("==ActsSubscriber_test_0500==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_0500====>");
+        }, time);
     })
+
     /*
      * @tc.number: ActsSubscriber_test_0600
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
     it('ActsSubscriber_test_0600', 0, async function (done) {
-        console.debug("===============ActsSubscriber_test_0600======begin====================>");
+        console.debug("==ActsSubscriber_test_0600==begin==>");
 
         var subInfo ={
             onConsumed:consumeCallbacka,
@@ -219,16 +240,20 @@ describe('ActsAnsSubscriberTest', function () {
         catch(err) {
             console.error('=ActsSubscriber_test_0600  订阅 subscribeDoNotCallback err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_0600=======end3===================>");
+        console.debug("==ActsSubscriber_test_0600==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_0600====>");
+        }, time);
     })
+
     /*
      * @tc.number: ActsSubscriber_test_0700
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
     it('ActsSubscriber_test_0700', 0, async function (done) {
-        console.debug("===============ActsSubscriber_test_0700======begin====================>");
+        console.debug("==ActsSubscriber_test_0700==begin==>");
 
         var subInfo ={
             onConsumed:consumeCallbackb,
@@ -242,16 +267,20 @@ describe('ActsAnsSubscriberTest', function () {
         catch(err) {
             console.error('=ActsSubscriber_test_0700  订阅 promise err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_0700=======end3===================>");
+        console.debug("==ActsSubscriber_test_0700==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_0700====>");
+        }, time);
     })
+
     /*
      * @tc.number: ActsSubscriber_test_0800
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
     it('ActsSubscriber_test_0800', 0, async function (done) {
-        console.debug("===============ActsDoNotSubscriber_test_0100======begin====================>");
+        console.debug("==ActsDoNotSubscriber_test_0100==begin==>");
 
         var subInfo ={
             onConsumed:consumeCallbackc,
@@ -263,16 +292,20 @@ describe('ActsAnsSubscriberTest', function () {
         catch(err) {
             console.error('=ActsSubscriber_test_0800  订阅 subscribeCallback err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_0800=======end3===================>");
+        console.debug("==ActsSubscriber_test_0800==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_0800====>");
+        }, time);
     })
+
     /*
      * @tc.number: ActsSubscriber_test_0900
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
     it('ActsSubscriber_test_0900', 0, async function (done) {
-        console.debug("===============ActsSubscriber_test_0800======begin====================>");
+        console.debug("==ActsSubscriber_test_0800==begin==>");
 
         var subInfo ={
             onConsumed:consumeCallbackd,
@@ -286,16 +319,20 @@ describe('ActsAnsSubscriberTest', function () {
         catch(err) {
             console.error('=ActsSubscriber_test_0900  订阅 promise err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_0900=======end3===================>");
+        console.debug("==ActsSubscriber_test_0900==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_0900====>");
+        }, time);
     })
+
     /*
      * @tc.number: ActsSubscriber_test_1000
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
     it('ActsSubscriber_test_1000', 0, async function (done) {
-        console.debug("===============ActsSubscriber_test_1000======begin====================>");
+        console.debug("==ActsSubscriber_test_1000==begin==>");
 
         var subInfo ={
             onConsumed:consumeCallbacke,
@@ -307,16 +344,20 @@ describe('ActsAnsSubscriberTest', function () {
         catch(err) {
             console.error('=ActsSubscriber_test_1000  订阅 subscribeCallback err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_1000=======end3===================>");
+        console.debug("==ActsSubscriber_test_1000==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_1000====>");
+        }, time);
     })
+
     /*
      * @tc.number: ActsSubscriber_test_1100
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
     it('ActsSubscriber_test_1100', 0, async function (done) {
-        console.debug("===============ActsSubscriber_test_1100======begin====================>");
+        console.debug("==ActsSubscriber_test_1100==begin==>");
 
         var subInfo ={
             onConsumed:consumeCallbackf,
@@ -330,9 +371,13 @@ describe('ActsAnsSubscriberTest', function () {
         catch(err) {
             console.error('=ActsSubscriber_test_1100  订阅 subscribeDoNotCallback err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_1100=======end3===================>");
+        console.debug("==ActsSubscriber_test_1100==end3==>");
         done();
+ 	setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_1100====>");
+        }, time);
     })
+
     /*
      * @tc.number: ACTS_publishTest_0100
      * @tc.name: publish()
@@ -353,6 +398,10 @@ describe('ActsAnsSubscriberTest', function () {
             classification:"classification1",
             sortingKey:"sortingKey1",
         },publishCallback001);
-        })
+	done();
+ 	setTimeout(function(){
+            console.debug("====>time out ACTS_publishTest_0100====>");
+        }, time);
+    })
 })
 

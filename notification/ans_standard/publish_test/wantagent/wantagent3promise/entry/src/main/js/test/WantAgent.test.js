@@ -19,6 +19,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 var time = 1000
 var WantAgent;
 describe('ActsAnsWantAgentTreeProTest', function () {
+
     /*
      * @tc.number: ACTS_SetWant_0600
      * @tc.name: getWantAgent(OperationType.SEND_COMMON_EVENT)
@@ -74,11 +75,12 @@ describe('ActsAnsWantAgentTreeProTest', function () {
                         }
                     );
                     done();
-                    setTimeout(function(){
-                        console.debug("====>time out ACTS_SetWant_0600====>");
-                    }, time);
+                    
             }
         );
+setTimeout(function(){
+                        console.debug("====>time out ACTS_SetWant_0600====>");
+                    }, time);
         console.info('----getWantAgent after----');
     })
 })

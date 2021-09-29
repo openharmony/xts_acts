@@ -12,14 +12,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import commonEvent from '@ohos.commonevent'
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 
+function PublishCallBackOne() {
+    console.debug("====>Publish CallBack Third1_Publish_CommonEvent====>");
+}
 export default {
     data: {
         title: ""
     },
     onInit() {
         this.title = this.$t('strings.world');
+    },
+    onShow() {
+        commonEvent.publish("Third1_Publish_CommonEvent", PublishCallBackOne);
     }
 }

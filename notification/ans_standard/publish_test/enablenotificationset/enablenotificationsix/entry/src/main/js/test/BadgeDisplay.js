@@ -17,7 +17,8 @@ import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 var time = 1000
 describe('ActsAnsEnableNotificationSetSixTest', function () {
-    console.info("===========ActsEnableNotificationSetTest1 start====================>");
+    console.info("===ActsEnableNotificationSetTest1 start===>");
+
     /*
      * @tc.number: ActsEnableNotificationSet_test_1100
      * @tc.name: enableNotification()
@@ -25,15 +26,16 @@ describe('ActsAnsEnableNotificationSetSixTest', function () {
      */
     it('ActsEnableNotificationSet_test_1100', 0, async function (done) {
         await notify.enableNotification({
-            bundle:"com.neu.actsanslocalnotificationtest",
+            bundle:"com.example.actsanslocalnotificationtest",
         },true,(err) => {
-            console.log("==========================>ActsEnableNotificationSet_test_1100 success=======================>"+err)
+            console.log("====>ActsEnableNotificationSet_test_1100 success====>"+err)
         })
         done();
         setTimeout(function(){
             console.debug("====>time out ActsEnableNotificationSet_test_1100====>");
         }, time);
     })
+
     /*
      * @tc.number: ActsEnableNotificationSet_test_1200
      * @tc.name: enableNotification()
@@ -42,13 +44,14 @@ describe('ActsAnsEnableNotificationSetSixTest', function () {
     it('ActsEnableNotificationSet_test_1200', 0, async function (done) {
         await notify.enableNotification(
             {
-                bundle:"com.neu.actsanslocalnotificationtest",
-            },true).then(console.log("==========================>ActsEnableNotificationSet_test_1200 success=======================>"))
+                bundle:"com.example.actsanslocalnotificationtest",
+            },true).then(console.log("====>ActsEnableNotificationSet_test_1200 success====>"))
         done();
         setTimeout(function(){
             console.debug("====>time out ActsEnableNotificationSet_test_1200====>");
         }, time);
     })
+
     /*
      * @tc.number: ActsSystemNotificationSet_test_1100
      * @tc.name: isNotificationEnabled(bundle)
@@ -56,7 +59,7 @@ describe('ActsAnsEnableNotificationSetSixTest', function () {
      */
     it('ActsSystemNotificationSet_test_1100', 0, async function (done) {
         await notify.isNotificationEnabled({bundle:""},(err,data) => {
-            console.log("==========================>ActsSystemNotificationSet_test_1100 success=======================>"+err+data)
+            console.log("====>ActsSystemNotificationSet_test_1100 success====>"+err+data)
             expect(typeof(data)).assertEqual('boolean')
         })
         done();
@@ -64,6 +67,7 @@ describe('ActsAnsEnableNotificationSetSixTest', function () {
             console.debug("====>time out ActsSystemNotificationSet_test_1100====>");
         }, time);
     })
+
     /*
      * @tc.number: ActsSystemNotificationSet_test_1200
      * @tc.name: isNotificationEnabled(bundle)
@@ -71,7 +75,7 @@ describe('ActsAnsEnableNotificationSetSixTest', function () {
      */
     it('ActsSystemNotificationSet_test_1200', 0, async function (done) {
         var promise = await notify.isNotificationEnabled()
-        console.log("==========================>ActsSystemNotificationSet_test_1200 success=======================>"+promise)
+        console.log("====>ActsSystemNotificationSet_test_1200 success====>"+promise)
         expect(typeof(promise)).assertEqual('boolean')
         done();
         setTimeout(function(){

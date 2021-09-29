@@ -19,9 +19,10 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 var WantAgent1;
 var WantAgent2;
-var time = 1000
+var time = 5000
 describe('ActsAnsGetWantAgentInfoOneProTest', function () {
     console.info('----ActsGetWantAgentInfoTest----');
+
     /*
     * @tc.number: ACTS_SetWantInfo_0300
     * @tc.name: getWantAgent(),getBundleName(),getUid(),getWant(),cancel()
@@ -96,10 +97,10 @@ describe('ActsAnsGetWantAgentInfoOneProTest', function () {
                     expect(typeof(data)).assertEqual("object");
                 }
                 done();
-                setTimeout(function(){
+            }),
+ 	       setTimeout(function(){
                     console.debug("====>time out ACTS_SetWantInfo_0300====>");
                 }, time)
-            }),
             console.info('----getWantAgent1 after----');
     })
 
@@ -141,8 +142,8 @@ describe('ActsAnsGetWantAgentInfoOneProTest', function () {
                 if (err.code == 0) {
                     WantAgent2 = data;
                     console.info('----getWantAgent2 Promise success!----');
-                    console.log("=======WantAgent1======="+JSON.stringify(WantAgent1))
-                    console.log("=======WantAgent2======="+JSON.stringify(WantAgent2))
+                    console.log("==WantAgent1=="+JSON.stringify(WantAgent1))
+                    console.log("==WantAgent2=="+JSON.stringify(WantAgent2))
                     console.info(data);
                     expect(typeof(data)).assertEqual("object");
                     wantAgent.equal(WantAgent1,WantAgent2).then(
@@ -165,11 +166,11 @@ describe('ActsAnsGetWantAgentInfoOneProTest', function () {
                     console.info(data);
                     expect(typeof(data)).assertEqual("object");
                 }
-                done();
-                setTimeout(function(){
+                done(); 
+            });
+ 	      setTimeout(function(){
                     console.debug("====>time out ACTS_SetWantInfo_0400====>");
                 }, time)
-            });
             console.info('----getWantAgent2 after----');
       })
 })
