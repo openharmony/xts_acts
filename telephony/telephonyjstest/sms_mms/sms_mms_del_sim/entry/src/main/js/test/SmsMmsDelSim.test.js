@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import sms from '@ohos.telephony_sms';
+import sms from '@ohos.telephony.sms';
 import {
   describe,
   beforeAll,
@@ -29,25 +29,31 @@ describe('SmsMmsDelTest', function () {
   const CORRECT_SMS_PDU = '01000F9168683106019196F400080A00680065006C006C006F';
 
   beforeAll(async function () {
-    // Delete the first 10 SMS messages at each run to ensure the execution of the use case
-    let allSmsRecord = [];
+    //Delete all SMS messages from the SIM card
     sms.getAllSimMessages(TRUE_SLOT_ID, (geterr, getresult) => {
       if (geterr) {
         return;
       }
-      allSmsRecord = getresult;
-    });
-    if (allSmsRecord.length !== 0) {
-      for (let index = 0;index < 10;++index) {
-        sms.delSimMessage(TRUE_SLOT_ID, index, (err) => {});
+      if (getresult.length !== 0) {
+        for (let index = 0; index < getresult.length; ++index) {
+          sms.delSimMessage(TRUE_SLOT_ID, getresult[index].indexOnSim, (err) => {});
+        }
       }
-    }
+    });
   });
 
   afterEach(async function () {
-    for (let index = 0;index < 10;++index) {
-      sms.delSimMessage(TRUE_SLOT_ID, index, (err) => {});
-    }
+    //Delete all SMS messages from the SIM card
+    sms.getAllSimMessages(TRUE_SLOT_ID, (geterr, getresult) => {
+      if (geterr) {
+        return;
+      }
+      if (getresult.length !== 0) {
+        for (let index = 0; index < getresult.length; ++index) {
+          sms.delSimMessage(TRUE_SLOT_ID, getresult[index].indexOnSim, (err) => {});
+        }
+      }
+    });
   });
 
   /**
@@ -56,38 +62,28 @@ describe('SmsMmsDelTest', function () {
    * @tc.desc     Function test
    */
   it('Telephony_SmsMms_delSimMessage_Async_0100', 0, async function (done) {
-    let beforeSmsRecord = [];
     let data = {
       slotId: TRUE_SLOT_ID,
       smsc: '',
       pdu: CORRECT_SMS_PDU,
       status: sms.MESSAGE_HAS_BEEN_SENT
     };
-    let addIndex = 0;
-    sms.getAllSimMessages(TRUE_SLOT_ID, (err, result) => {
-      if (err) {
+    sms.addSimMessage(data, (adderr) => {
+      if (adderr) {
         expect().assertFail();
-        console.log('Telephony_SmsMms_delSimMessage_Async_0100 get 1 fail');
+        console.log('Telephony_SmsMms_delSimMessage_Async_0100 add fail');
         done();
         return;
       }
-      beforeSmsRecord = result;
-      console.log('Telephony_SmsMms_delSimMessage_Async_0100 getAllSimMessages before finish');
-      for (let index = 0, len = beforeSmsRecord.length;index < len;index++) {
-        if (beforeSmsRecord[index].shortMessage.pdu.length === 0) {
-          addIndex = index;
-          break;
-        }
-      }
-      sms.addSimMessage(data, (adderr) => {
-        if (adderr) {
+      console.log('Telephony_SmsMms_delSimMessage_Async_0100 addSimMessage finish ');
+      sms.getAllSimMessages(TRUE_SLOT_ID, (err, result) => {
+        if (err) {
           expect().assertFail();
-          console.log('Telephony_SmsMms_delSimMessage_Async_0100 add fail');
+          console.log('Telephony_SmsMms_delSimMessage_Async_0100 get 1 fail');
           done();
           return;
         }
-        console.log('Telephony_SmsMms_delSimMessage_Async_0100 addSimMessage finish ');
-        sms.delSimMessage(TRUE_SLOT_ID, addIndex, (delerr) => {
+        sms.delSimMessage(TRUE_SLOT_ID, result[0].indexOnSim, (delerr) => {
           if (delerr) {
             expect().assertFail();
             console.log('Telephony_SmsMms_delSimMessage_Async_0100 del fail');
@@ -102,7 +98,7 @@ describe('SmsMmsDelTest', function () {
               done();
               return;
             }
-            expect(getresult[addIndex].shortMessage.pdu.length === 0).assertTrue();
+            expect(getresult.length === 0).assertTrue();
             console.log('Telephony_SmsMms_delSimMessage_Async_0100 getAllSimMessages cur finish');
             done();
           });
@@ -135,42 +131,24 @@ describe('SmsMmsDelTest', function () {
    * @tc.desc     Function test
    */
   it('Telephony_SmsMms_delSimMessage_Async_0300', 0, async function (done) {
-    let beforeSmsRecord = [];
-    let addIndex = 0;
-    sms.getAllSimMessages(TRUE_SLOT_ID, (err, result) => {
-      if (err) {
+    sms.delSimMessage(TRUE_SLOT_ID, 0, (delerr) => {
+      if (delerr) {
         expect().assertFail();
-        console.log('Telephony_SmsMms_delSimMessage_Async_0300 get 1 fail');
+        console.log('Telephony_SmsMms_delSimMessage_Async_0300 del fail');
         done();
         return;
       }
-      beforeSmsRecord = result;
-      console.log('Telephony_SmsMms_delSimMessage_Async_0300 getAllSimMessages before finish');
-      for (let index = 0, len = beforeSmsRecord.length;index < len;index++) {
-        if (beforeSmsRecord[index].shortMessage.pdu.length === 0) {
-          addIndex = index;
-          break;
-        }
-      }
-      sms.delSimMessage(TRUE_SLOT_ID, addIndex, (delerr) => {
-        if (delerr) {
+      console.log('Telephony_SmsMms_delSimMessage_Async_0300 delSimMessage finish');
+      sms.getAllSimMessages(TRUE_SLOT_ID, (geterr, getresult) => {
+        if (geterr) {
           expect().assertFail();
-          console.log('Telephony_SmsMms_delSimMessage_Async_0300 del fail');
+          console.log('Telephony_SmsMms_delSimMessage_Async_0300 get 2 fail');
           done();
           return;
         }
-        console.log('Telephony_SmsMms_delSimMessage_Async_0300 delSimMessage finish');
-        sms.getAllSimMessages(TRUE_SLOT_ID, (geterr, getresult) => {
-          if (geterr) {
-            expect().assertFail();
-            console.log('Telephony_SmsMms_delSimMessage_Async_0300 get 2 fail');
-            done();
-            return;
-          }
-          expect(getresult[addIndex].shortMessage.pdu.length === 0).assertTrue();
-          console.log('Telephony_SmsMms_delSimMessage_Async_0300 getAllSimMessages cur finish');
-          done();
-        });
+        expect(getresult.length === 0).assertTrue();
+        console.log('Telephony_SmsMms_delSimMessage_Async_0300 getAllSimMessages cur finish');
+        done();
       });
     });
   });
@@ -207,28 +185,23 @@ describe('SmsMmsDelTest', function () {
       pdu: CORRECT_SMS_PDU,
       status: sms.MESSAGE_HAS_BEEN_SENT
     };
-    let addIndex = 0;
-    try {
-      beforeSmsRecord = await sms.getAllSimMessages(TRUE_SLOT_ID);
-      console.log('Telephony_SmsMms_delSimMessage_Promise_0100 getAllSimMessages before finish');
-      for (let index = 0, len = beforeSmsRecord.length;index < len;index++) {
-        if (beforeSmsRecord[index].shortMessage.pdu.length === 0) {
-          addIndex = index;
-          break;
-        }
-      }
-    } catch (err) {
-      expect().assertFail();
-      console.log('Telephony_SmsMms_delSimMessage_Promise_0100 get 1 fail');
-      done();
-      return;
-    }
     try {
       await sms.addSimMessage(data);
       console.log('Telephony_SmsMms_delSimMessage_Promise_0100 addSimMessage finish');
     } catch (err) {
       expect().assertFail();
       console.log('Telephony_SmsMms_delSimMessage_Promise_0100 add fail');
+      done();
+      return;
+    }
+    let addIndex = 0;
+    try {
+      beforeSmsRecord = await sms.getAllSimMessages(TRUE_SLOT_ID);
+      console.log('Telephony_SmsMms_delSimMessage_Promise_0100 getAllSimMessages before finish');
+      addIndex = beforeSmsRecord[0].indexOnSim;
+    } catch (err) {
+      expect().assertFail();
+      console.log('Telephony_SmsMms_delSimMessage_Promise_0100 get 1 fail');
       done();
       return;
     }
@@ -243,7 +216,7 @@ describe('SmsMmsDelTest', function () {
     }
     try {
       let promise = await sms.getAllSimMessages(TRUE_SLOT_ID);
-      expect(promise[addIndex].shortMessage.pdu.length === 0).assertTrue();
+      expect(promise.length === 0).assertTrue();
       console.log('Telephony_SmsMms_delSimMessage_Promise_0100 getAllSimMessages cur finish');
       done();
     } catch (err) {
@@ -276,25 +249,8 @@ describe('SmsMmsDelTest', function () {
    * @tc.desc     Function test
    */
   it('Telephony_SmsMms_delSimMessage_Promise_0300', 0, async function (done) {
-    let beforeSmsRecord = [];
-    let addIndex = 0;
     try {
-      beforeSmsRecord = await sms.getAllSimMessages(TRUE_SLOT_ID);
-      console.log('Telephony_SmsMms_delSimMessage_Promise_0300 getAllSimMessages before finish');
-      for (let index = 0, len = beforeSmsRecord.length;index < len;index++) {
-        if (beforeSmsRecord[index].shortMessage.pdu.length === 0) {
-          addIndex = index;
-          break;
-        }
-      }
-    } catch (err) {
-      expect().assertFail();
-      console.log('Telephony_SmsMms_delSimMessage_Promise_0300 get 1 fail');
-      done();
-      return;
-    }
-    try {
-      await sms.delSimMessage(TRUE_SLOT_ID, addIndex);
+      await sms.delSimMessage(TRUE_SLOT_ID, 0);
       console.log('Telephony_SmsMms_delSimMessage_Promise_0300 delAllSIMMessages cur finish');
     } catch (err) {
       expect().assertFail();
@@ -304,7 +260,7 @@ describe('SmsMmsDelTest', function () {
     }
     try {
       let promise = await sms.getAllSimMessages(TRUE_SLOT_ID);
-      expect(promise[addIndex].shortMessage.pdu.length === 0).assertTrue();
+      expect(promise.length === 0).assertTrue();
       console.log('Telephony_SmsMms_delSimMessage_Promise_0300 getAllSimMessages cur finish');
       done();
     } catch (err) {

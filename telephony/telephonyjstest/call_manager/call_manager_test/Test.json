@@ -2,10 +2,10 @@
     "description": "Configuration for callmanager Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "240000",
+        "test-timeout": "4800000",
         "package": "com.ohos.callmanager",
-        "shell-timeout": "21600000",
-        "native-test-timeout":"21600000"
+        "shell-timeout": "4800000",
+        "native-test-timeout":"4800000"
     },
     "kits": [
         {

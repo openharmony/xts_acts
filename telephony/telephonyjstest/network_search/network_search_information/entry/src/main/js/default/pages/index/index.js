@@ -37,8 +37,8 @@ export default {
         core.init()
 
         const configService = core.getDefaultService('config')
+        configService.timeout = 8000
         configService.setConfig(this)
-
         require('../../../test/List.test')
         core.execute()
     },
