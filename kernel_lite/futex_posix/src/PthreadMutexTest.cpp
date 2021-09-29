@@ -50,7 +50,7 @@ void *ThreadMutex(void *arg)
 HWTEST_F(FutexTest, testPthreadMutex, Function | MediumTest | Level3)
 {
     pthread_mutex_t mtx;
-    const int loopNum = 10;
+    const int loopNum = 5;
     pthread_t tid[loopNum];
 
     EXPECT_EQ(pthread_mutex_init(&mtx, nullptr), 0) << "> return errno";
@@ -504,7 +504,7 @@ void *ThreadSpinlock(void *arg)
 HWTEST_F(FutexTest, testPthreadSpinlock, Function | MediumTest | Level3)
 {
     pthread_spinlock_t spinLock;
-    const int loopNum = 30;
+    const int loopNum = 5;
     pthread_t tid[loopNum];
 
     EXPECT_EQ(pthread_spin_init(&spinLock, 0), 0);
