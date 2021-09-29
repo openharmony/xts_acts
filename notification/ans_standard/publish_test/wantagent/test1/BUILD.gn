@@ -10,17 +10,20 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("test1") {
+ohos_hap("test1") {
   hap_profile = "./entry/src/main/config.json"
+  hap_name = "test1"
+  subsystem_name = XTS_SUITENAME
+  final_hap_path =
+      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  testonly = true
   deps = [
     ":hjs_demo_js_assets",
     ":hjs_demo_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "test1"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "./entry/src/main/js/default"
