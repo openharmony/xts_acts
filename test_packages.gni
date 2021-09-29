@@ -24,7 +24,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/appexecfwk:appexecfwk",
   "${ACTS_ROOT}/account:account",
 
-  # "${ACTS_ROOT}/communication:communication",
+  "${ACTS_ROOT}/communication:communication",
   "${ACTS_ROOT}/notification:notification",
   "${ACTS_ROOT}/aafwk:aafwk",
   "${ACTS_ROOT}/location:location",
