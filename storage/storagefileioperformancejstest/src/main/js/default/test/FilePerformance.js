@@ -51,6 +51,11 @@ describe('fileTest', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -76,6 +81,11 @@ describe('fileTest', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -101,6 +111,11 @@ describe('fileTest', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -150,6 +165,11 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -175,6 +195,11 @@ describe('fileTest', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -212,6 +237,11 @@ describe('fileTest', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -251,6 +281,11 @@ describe('fileTest', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -288,6 +323,11 @@ describe('fileTest', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -328,6 +368,11 @@ describe('fileTest', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -355,6 +400,11 @@ describe('fileTest', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -380,6 +430,11 @@ describe('fileTest', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -411,6 +466,11 @@ describe('fileTest', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -436,5 +496,10 @@ describe('fileTest', function () {
         },
       });
     }
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 });
