@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import radio from '@ohos.telephony_radio';
+import radio from '@ohos.telephony.radio';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
 describe('NetworkSearchTest', function () {
@@ -65,9 +65,6 @@ describe('NetworkSearchTest', function () {
     const ISO_COUNTRY_CODE = 'cn';
     const PLMN_SIZE = 5;
 
-    afterAll(async function () {
-        console.log('Telephony_NetworkSearch_InformationTest End!!!');
-    });
 
     /**
      * @tc.number  Telephony_NetworkSearch_getNetworkState_Async_0100
@@ -100,7 +97,7 @@ describe('NetworkSearchTest', function () {
                 data.plmnNumeric != null
             ).assertTrue();
             expect(data.plmnNumeric.length == 5 && data.plmnNumeric.substr(0, 3) === '460').assertTrue();
-            expect(data.regStatus === 1).assertTrue();
+            expect(garrRegState).assertContain(data.regStatus);
             expect(data.nsaState === 1).assertTrue();
             expect(data.isRoaming === false).assertTrue();
             expect(data.isCaActive === false).assertTrue();
@@ -132,7 +129,7 @@ describe('NetworkSearchTest', function () {
                 data.shortOperatorName != undefined && data.shortOperatorName != '' && data.shortOperatorName != null
             ).assertTrue();
             expect(data.plmnNumeric.length === PLMN_SIZE && data.plmnNumeric.substr(0, 3) === '460').assertTrue();
-            expect(data.regStatus === 1).assertTrue();
+            expect(garrRegState).assertContain(data.regStatus);
             expect(data.nsaState === 1).assertTrue();
             expect(data.isRoaming === false).assertTrue();
             expect(data.isCaActive === false).assertTrue();
@@ -274,7 +271,7 @@ describe('NetworkSearchTest', function () {
                 data.shortOperatorName != undefined && data.shortOperatorName != '' && data.shortOperatorName != null
             ).assertTrue();
             expect(data.plmnNumeric.length === PLMN_SIZE && data.plmnNumeric.substr(0, 3) === '460').assertTrue();
-            expect(data.regStatus === 1).assertTrue();
+            expect(garrRegState).assertContain(data.regStatus);
             expect(data.nsaState === 1).assertTrue();
             expect(data.isRoaming === false).assertTrue();
             expect(data.isCaActive === false).assertTrue();
@@ -307,7 +304,7 @@ describe('NetworkSearchTest', function () {
                 data.shortOperatorName != undefined && data.shortOperatorName != '' && data.shortOperatorName != null
             ).assertTrue();
             expect(data.plmnNumeric.length === PLMN_SIZE && data.plmnNumeric.substr(0, 3) === '460').assertTrue();
-            expect(data.regStatus === 1).assertTrue();
+            expect(garrRegState).assertContain(data.regStatus);
             expect(data.nsaState === 1).assertTrue();
             expect(data.isRoaming === false).assertTrue();
             expect(data.isCaActive === false).assertTrue();
@@ -445,9 +442,9 @@ describe('NetworkSearchTest', function () {
                 done();
                 return;
             }
-            expect(data === ISO_COUNTRY_CODE).assertTrue();
             console.log(
-                `Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0100 finish data: ${JSON.stringify(data)}`);
+            `Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0100 finish data: ${JSON.stringify(data)}`);
+            expect(data === ISO_COUNTRY_CODE).assertTrue();
             done();
         });
     });

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import call from '@ohos.telephony_call';
+import call from '@ohos.telephony.call';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 
 describe('CallManagerMMI', function () {

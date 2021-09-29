@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import sim from '@ohos.telephony_sim';
+import sim from '@ohos.telephony.sim';
 import {simSlotId, OPERATOR_NUM_LENGTH, operatorCode, ICC_LENGTH, IMSI_LENGTH} from '../default/utils/Constant.test.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 

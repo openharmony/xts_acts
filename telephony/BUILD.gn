@@ -13,9 +13,5 @@
 
 group("telephony") {
   testonly = true
-  deps = [
-    #"telephonycpptest:telephonycpptest",
-    #"telephonyothertest:telephonyothertest",
-    "telephonyjstest:telephonyjstest",
-  ]
+  deps = [ "telephonyjstest:telephonyjstest" ]
 }
