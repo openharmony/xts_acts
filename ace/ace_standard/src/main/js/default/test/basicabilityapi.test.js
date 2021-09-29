@@ -338,43 +338,6 @@ describe('basicabilityapi', function () {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASICABILITY_JS_API_0710
-     * @tc.name      testRouterMaxLength
-     * @tc.desc      Test the max number of the page stack is 32.
-     */
-    it('testRouterMaxLength', 0, async function (done) {
-        console.info('testRouterMaxLength START');
-        let intervalID = -1;
-        let promise1 = new Promise((resolve, reject) => {
-            intervalID = setInterval(function () {
-                router.push({
-                    uri: 'pages/routerPush/index'
-                });
-                console.info('testRouterMaxLength router.getLength:' + router.getLength());
-                resolve();
-            }, 100);
-        });
-        let promise2 = new Promise((resolve, reject) => {
-            setTimeout(function () {
-                console.info('testRouterMaxLength[clearInterval] start');
-                clearInterval(intervalID);
-                console.info('testRouterMaxLength[clearInterval] end');
-                resolve();
-            }, 500 * 34);
-        });
-        Promise.all([promise1, promise2]).then(() => {
-            setTimeout(async () => {
-                console.info("testRouterMaxLength getLength:" + router.getLength());
-                expect("32").assertEqual(router.getLength());
-                console.info('testRouterMaxLength success');
-                await backToIndex();
-                console.info('testRouterMaxLength END');
-                done();
-            }, 500);
-        });
-    });
-
-    /**
      * @tc.number    SUB_ACE_BASICABILITY_JS_API_0900
      * @tc.name      testPromptShowToast
      * @tc.desc      Show text pop-up window.
