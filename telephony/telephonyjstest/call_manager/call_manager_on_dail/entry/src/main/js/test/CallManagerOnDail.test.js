@@ -13,24 +13,27 @@
  * limitations under the License.
  */
 
-import call from '@ohos.telephony_call';
+import call from '@ohos.telephony.call';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 describe('CallManagerOnDial', function () {
     const TEST_PHONY_NUMBER = '10086';
     var callId = 0;
-    var callState = 0;
+    var callState = -1;
     var timeOut = 0;
     var endTime = 0;
     var onTime = 25000;
+    var newCallId = 0
     var waitTime = 200;
-    var timer = 0;
-    const INVALID_NUMBER = '13088888888'
+    const INVALID_NUMBER = '13800000000'
     const GETMAIN_CALLID_ERRO = -1;
 
-    var sleep = function (time) {
-        var startTime = new Date().getTime() + parseInt(time, 10);
-        while (new Date().getTime() < startTime) {}
-    };
+    const sleep = (time) => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve()
+            }, time )
+        })
+    }
 
     beforeAll(async function () {
         call.on('callDetailsChange', (err, callStateInfo) => {
@@ -52,35 +55,33 @@ describe('CallManagerOnDial', function () {
         })
     })
 
-    afterEach(async function (done) {
-        if (callState === call.CALL_STATUS_DISCONNECTED) {
-            done();
-            return;
-        }
-        call.hangup(callId, (err) => {
-            console.log('Telephony_CallManager_hangup_Async callId = ' + callId);
-            if (err) {
-                console.log('Telephony_CallManager_hangup_Async fail err  = ' + err);
-                expect().assertFail();
-                done();
-                return;
-            }
-            console.log('Telephony_CallManager_hangup_Async finish');
-            const startTime = new Date().getTime();
-            while (true) {
+    afterEach(async function () {
+        const startTime = new Date().getTime();
+        while(true){
+            if (callId > newCallId) {
                 if (callState === call.CALL_STATUS_DISCONNECTED) {
-                    done();
                     return;
                 }
-                sleep(waitTime);
-                endTime = new Date().getTime();
-                timeOut = endTime - startTime;
-                if (timeOut > onTime) {
-                    done();
-                    break;
-                }
+                newCallId = callId
+                console.log('Telephony_CallManager_hangup_Async callId = ' + callId);
+                call.hangup(callId, async (err) => {
+                    if (err) {
+                        console.log('Telephony_CallManager_hangup_Async fail err  = ' + err);
+                        return;
+                    }
+                    console.log('Telephony_CallManager_hangup_Async finish');
+                    return;
+                })
             }
-        })
+            await sleep(waitTime);
+            endTime = new Date().getTime();
+            timeOut = endTime - startTime;
+            if (timeOut > onTime) {
+                console.log("Telephony_CallManager_hangup is out of time");
+                break;
+
+            }
+        }
     })
 
     /*
@@ -106,10 +107,10 @@ describe('CallManagerOnDial', function () {
                 done();
                 return;
             }
-            sleep(waitTime);
+            await sleep(waitTime);
             endTime = new Date().getTime();
             timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+            if (timeOut > onTime) {
                 done();
                 break;
             }
@@ -139,10 +140,10 @@ describe('CallManagerOnDial', function () {
                 done();
                 return;
             }
-            sleep(waitTime);
+            await sleep(waitTime);
             endTime = new Date().getTime();
             timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+            if (timeOut > onTime) {
                 done();
                 break;
             }
@@ -172,10 +173,10 @@ describe('CallManagerOnDial', function () {
                 done();
                 return;
             }
-            sleep(waitTime);
+            await sleep(waitTime);
             endTime = new Date().getTime();
             timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+            if (timeOut > onTime) {
                 done();
                 break;
             }
@@ -207,10 +208,10 @@ describe('CallManagerOnDial', function () {
                 done();
                 return;
             }
-            sleep(waitTime);
+            await sleep(waitTime);
             endTime = new Date().getTime();
             timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+            if (timeOut > onTime) {
                 done();
                 break;
             }
@@ -223,7 +224,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_dial_Async_1200', 0, async function (done) {
-        call.dial('INVALID_NUMBER', (err, data) => {
+        call.dial(INVALID_NUMBER, (err, data) => {
             if (err) {
                 console.log('Telephony_CallManager_dial_Async_1200 fail err = ' + err);
                 expect().assertFail();
@@ -239,10 +240,10 @@ describe('CallManagerOnDial', function () {
                 done();
                 return;
             }
-            sleep(waitTime);
+            await sleep(waitTime);
             endTime = new Date().getTime();
             timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+            if (timeOut > onTime) {
                 done();
                 break;
             }
@@ -273,10 +274,10 @@ describe('CallManagerOnDial', function () {
                 done();
                 return;
             }
-            sleep(waitTime);
+            await sleep(waitTime);
             endTime = new Date().getTime();
             timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+            if (timeOut > onTime) {
                 done();
                 break;
             }
@@ -300,10 +301,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -338,10 +339,10 @@ describe('CallManagerOnDial', function () {
                 done();
                 return;
             }
-            sleep(waitTime);
+            await sleep(waitTime);
             endTime = new Date().getTime();
             timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+            if (timeOut > onTime) {
                 done();
                 break;
             }
@@ -371,10 +372,10 @@ describe('CallManagerOnDial', function () {
                 done();
                 return;
             }
-            sleep(waitTime);
+            await sleep(waitTime);
             endTime = new Date().getTime();
             timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+            if (timeOut > onTime) {
                 done();
                 break;
             }
@@ -389,7 +390,7 @@ describe('CallManagerOnDial', function () {
      */
     it('Telephony_CallManager_dial_Promise_0700', 0, async function (done) {
         try {
-            var data = await call.dial('INVALID_NUMBER', { accountId: 0 })
+            var data = await call.dial(INVALID_NUMBER, { accountId: 0 })
             console.log('Telephony_CallManager_dial_Promise_0700 finish data = ' + data);
             expect(data).assertTrue();
         } catch (err) {
@@ -404,10 +405,10 @@ describe('CallManagerOnDial', function () {
                 done();
                 return;
             }
-            sleep(waitTime);
+            await sleep(waitTime);
             endTime = new Date().getTime();
             timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+            if (timeOut > onTime) {
                 done();
                 break;
             }
@@ -437,10 +438,10 @@ describe('CallManagerOnDial', function () {
                 done();
                 return;
             }
-            sleep(waitTime);
+            await sleep(waitTime);
             endTime = new Date().getTime();
             timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+            if (timeOut > onTime) {
                 done();
                 break;
             }
@@ -449,7 +450,7 @@ describe('CallManagerOnDial', function () {
 
     /*
      * @tc.number  Telephony_CallManager_dial_Promise_1000
-     * @tc.name    Will choose parameter number add ', '(10086123567901345789 123), with no optional parameters,
+     * @tc.name    Will choose parameter number add ', '(10086123567901345789123), with no optional parameters,
      *             call dial () to dial, return: true
      * @tc.desc    Function test
      */
@@ -470,10 +471,10 @@ describe('CallManagerOnDial', function () {
                 done();
                 return;
             }
-            sleep(waitTime);
+            await sleep(waitTime);
             endTime = new Date().getTime();
             timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+            if (timeOut > onTime) {
                 done();
                 break;
             }
@@ -482,7 +483,7 @@ describe('CallManagerOnDial', function () {
 
     /*
      * @tc.number  Telephony_CallManager_dial_Promise_1100
-     * @tc.name    This parameter is mandatory. The phone number is 9985 585.
+     * @tc.name    This parameter is mandatory. The phone number is 00000000.
      *             Dial () with no optional parameters returns true
      * @tc.desc    Function test
      */
@@ -503,10 +504,10 @@ describe('CallManagerOnDial', function () {
                 done();
                 return;
             }
-            sleep(waitTime);
+            await sleep(waitTime);
             endTime = new Date().getTime();
             timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+            if (timeOut > onTime) {
                 done();
                 break;
             }
@@ -515,7 +516,7 @@ describe('CallManagerOnDial', function () {
 
     /*
      * @tc.number  Telephony_CallManager_dial_Promise_1200
-     * @tc.name    The phone number is 12593 + 00852 + 92685094. Dial () without any optional parameters.
+     * @tc.name    The phone number is 000000000000000000. Dial () without any optional parameters.
      *             True is returned
      * @tc.desc    Function test
      */
@@ -536,10 +537,10 @@ describe('CallManagerOnDial', function () {
                 done();
                 return;
             }
-            sleep(waitTime);
+            await sleep(waitTime);
             endTime = new Date().getTime();
             timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+            if (timeOut > onTime) {
                 done();
                 break;
             }
@@ -548,13 +549,13 @@ describe('CallManagerOnDial', function () {
 
     /*
      * @tc.number  Telephony_CallManager_dial_Promise_1300
-     * @tc.name    The phone number is the area code (0898) and the number is 9985 5857. Dial () without optional
+     * @tc.name    The phone number is the area code (0898) and the number is 0000 0000. Dial () without optional
      *             parameters returns true
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_dial_Promise_1300', 0, async function (done) {
         try {
-            var data = await call.dial('0898 9985 5857');
+            var data = await call.dial('0898 0000 0000');
             expect(data).assertTrue();
             console.log('Telephony_CallManager_dial_Promise_1300 finish data = ' + data);
         } catch (err) {
@@ -569,10 +570,10 @@ describe('CallManagerOnDial', function () {
                 done();
                 return;
             }
-            sleep(waitTime);
+            await sleep(waitTime);
             endTime = new Date().getTime();
             timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+            if (timeOut > onTime) {
                 done();
                 break;
             }
@@ -586,7 +587,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_switchCall_Async_0400', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER, async (err, data) => {
             if (err) {
                 expect().assertFail();
                 console.log('Telephony_CallManager_switchCall_Async_0400 dial fail err = ' + err);
@@ -611,10 +612,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -654,10 +655,10 @@ describe('CallManagerOnDial', function () {
                 done();
                 return;
             }
-            sleep(waitTime);
+            await sleep(waitTime);
             endTime = new Date().getTime();
             timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+            if (timeOut > onTime) {
                 done();
                 break;
             }
@@ -671,7 +672,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_holdCall_Async_0400', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER, async (err, data) => {
             if (err) {
                 expect().assertFail();
                 console.log('Telephony_CallManager_holdCall_Async_0400 dial fail err = ' + err);
@@ -695,10 +696,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -738,24 +739,24 @@ describe('CallManagerOnDial', function () {
                 done();
                 return;
             }
-            sleep(waitTime);
+            await sleep(waitTime);
             endTime = new Date().getTime();
             timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+            if (timeOut > onTime) {
                 done();
                 break;
             }
         }
     })
 
-    /*
+     /*
      * @tc.number  Telephony_CallManager_unholdCall_Async_0400
      * @tc.name    The call is connected, passing in the current call ID, calling unHoldCall() to deactivate the call,
      *             or calling unHoldCall() to enable the call unHoldCall, with no return value
      * @tc.desc    Function test
      */
-    it('Telephony_CallManager_unholdCall_Async_0400', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+     it('Telephony_CallManager_unholdCall_Async_0400', 0, async function (done) {
+        call.dial(TEST_PHONY_NUMBER, async (err, data) => {
             if (err) {
                 expect().assertFail();
                 console.log('Telephony_CallManager_unholdCall_Async_0400 dial fail err = ' + err);
@@ -765,8 +766,11 @@ describe('CallManagerOnDial', function () {
             expect(data).assertTrue();
             console.log('Telephony_CallManager_unholdCall_Async_0400  dial finish data = ' + data);
             const startTime = new Date().getTime();
+            let holdCallflig = true;
+            let unHoldCallflig = true;
             while (true) {
-                if (callState === call.CALL_STATUS_ACTIVE) {
+                if (callState === call.CALL_STATUS_ACTIVE && holdCallflig === true) {
+                    holdCallflig = false;
                     call.holdCall(callId, (err) => {
                         if (err) {
                             expect().assertFail();
@@ -778,37 +782,29 @@ describe('CallManagerOnDial', function () {
                         }
                         console.log('Telephony_CallManager_unholdCall_Async_0400 holdCall finish');
                     })
-                    while (true) {
-                        if (callState === call.CALL_STATUS_HOLDING) {
-                            call.unHoldCall(callId, (err) => {
-                                if (err) {
-                                    expect().assertFail();
-                                    console.log(
-                                        'Telephony_CallManager_unholdCall_Async_0400 unHoldCall fail err = ' +
-                                            err.message
-                                    );
-                                    done();
-                                    return;
-                                }
-                                console.log('Telephony_CallManager_unholdCall_Async_0400 unHoldCall finish');
-                                done();
-                            })
+                }
+                await sleep(waitTime);
+                if (callState === call.CALL_STATUS_HOLDING && unHoldCallflig === true) {
+                    unHoldCallflig = false;
+                    call.unHoldCall(callId, (err) => {
+                        if (err) {
+                            expect().assertFail();
+                            console.log(
+                                'Telephony_CallManager_unholdCall_Async_0400 unHoldCall fail err = ' +
+                                err.message
+                            );
+                            done();
                             return;
                         }
-                        sleep(waitTime);
-                        endTime = new Date().getTime();
-                        timeOut = endTime - startTime;
-                        if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
-                            done();
-                            break;
-                        }
-                    }
+                        console.log('Telephony_CallManager_unholdCall_Async_0400 unHoldCall finish');
+                        done();
+                    })
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -833,9 +829,12 @@ describe('CallManagerOnDial', function () {
             done();
             return;
         }
+        let holdCallflig = true;
+        let unHoldCallflig = true;
         const startTime = new Date().getTime();
         while (true) {
-            if (callState === call.CALL_STATUS_ACTIVE) {
+            if (callState === call.CALL_STATUS_ACTIVE && holdCallflig === true) {
+                holdCallflig = false;
                 try {
                     await call.holdCall(callId);
                     console.log('Telephony_CallManager_unholdCall_Promise_0400 holdCall finish');
@@ -843,41 +842,32 @@ describe('CallManagerOnDial', function () {
                     console.log('Telephony_CallManager_unholdCall_Promise_0400 holdCall fail err = ' + err.message);
                     expect().assertFail();
                     done();
+                }
+            }
+            await sleep(waitTime);
+            if (callState === call.CALL_STATUS_HOLDING && unHoldCallflig === true) {
+                unHoldCallflig = false;
+                try {
+                    await call.unHoldCall(callId);
+                    console.log('Telephony_CallManager_unholdCall_Promise_0400 unHoldCall finish');
+                    done();
+                    return;
+                } catch (err) {
+                    console.log(
+                        'Telephony_CallManager_unholdCall_Promise_0400 unHoldCall fail err = ' + err.message
+                    );
+                    expect().assertFail();
+                    done();
                     return;
                 }
-                while (true) {
-                    if (callState === call.CALL_STATUS_HOLDING) {
-                        try {
-                            await call.unHoldCall(callId);
-                            console.log('Telephony_CallManager_unholdCall_Promise_0400 unHoldCall finish');
-                        } catch (err) {
-                            console.log(
-                                'Telephony_CallManager_unholdCall_Promise_0400 unHoldCall fail err = ' + err.message
-                            );
-                            expect().assertFail();
-                            done();
-                            return;
-                        }
-                        done();
-                        return;
-                    }
-                    sleep(waitTime);
-                    endTime = new Date().getTime();
-                    timeOut = endTime - startTime;
-                    if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
-                        done();
-                        break;
-                    }
-                }
-                return;
             }
-            sleep(waitTime);
-            endTime = new Date().getTime();
-            timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
-                done();
-                break;
-            }
+        }
+        await sleep(waitTime);
+        endTime = new Date().getTime();
+        timeOut = endTime - startTime;
+        if (timeOut > onTime) {
+            done();
+            return;
         }
     })
 
@@ -887,7 +877,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_hasCall_Async_0500', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER, async (err, data) => {
             if (err) {
                 expect().assertFail();
                 console.log('Telephony_CallManager_hasCall_Async_0500 dial fail err = ' + err);
@@ -912,10 +902,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -955,10 +945,10 @@ describe('CallManagerOnDial', function () {
                 done();
                 return;
             }
-            sleep(waitTime);
+            await sleep(waitTime);
             endTime = new Date().getTime();
             timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+            if (timeOut > onTime) {
                 done();
                 break;
             }
@@ -972,7 +962,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_getCallState_Async_0200', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER, async (err, data) => {
             if (err) {
                 expect().assertFail();
                 console.log('Telephony_CallManager_getCallState_Async_0200 dial fail err = ' + err);
@@ -997,10 +987,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1041,10 +1031,10 @@ describe('CallManagerOnDial', function () {
                 done();
                 return;
             }
-            sleep(waitTime);
+            await sleep(waitTime);
             endTime = new Date().getTime();
             timeOut = endTime - startTime;
-            if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+            if (timeOut > onTime) {
                 done();
                 break;
             }
@@ -1057,7 +1047,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_startDTMF_Async_0100', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER, async (err, data) => {
             if (err) {
                 console.log('Telephony_CallManager_startDTMF_Async_0100 dial fail err = ' + err);
                 expect().assertFail();
@@ -1088,10 +1078,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1105,7 +1095,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_startDTMF_Async_0200', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER, async (err, data) => {
             if (err) {
                 console.log('Telephony_CallManager_startDTMF_Async_0200 dial fail err = ' + err);
                 expect().assertFail();
@@ -1136,10 +1126,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1153,7 +1143,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_startDTMF_Async_0300', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER, async (err, data) => {
             if (err) {
                 console.log('Telephony_CallManager_startDTMF_Async_0300 dial fail err = ' + err);
                 expect().assertFail();
@@ -1184,10 +1174,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1201,7 +1191,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_startDTMF_Async_0400', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER, async (err, data) => {
             if (err) {
                 console.log('Telephony_CallManager_startDTMF_Async_0400 dial fail err = ' + err);
                 expect().assertFail();
@@ -1232,10 +1222,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1249,7 +1239,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_startDTMF_Async_0500', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER,async (err, data) => {
             if (err) {
                 console.log('Telephony_CallManager_startDTMF_Async_0500 dial fail : err = ' + err);
                 expect().assertFail();
@@ -1280,10 +1270,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1297,7 +1287,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_startDTMF_Async_0600', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER, async (err, data) => {
             if (err) {
                 console.log('Telephony_CallManager_startDTMF_Async_0600 dial fail : err = ' + err);
                 expect().assertFail();
@@ -1328,10 +1318,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1345,7 +1335,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_startDTMF_Async_0700', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER, async (err, data) => {
             if (err) {
                 console.log('Telephony_CallManager_startDTMF_Async_0700 dial fail : err = ' + err);
                 expect().assertFail();
@@ -1368,10 +1358,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1385,7 +1375,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_startDTMF_Async_0800', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER, async (err, data) => {
             if (err) {
                 console.log('Telephony_CallManager_startDTMF_Async_0800 dial fail : err = ' + err);
                 expect().assertFail();
@@ -1416,10 +1406,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1433,7 +1423,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_startDTMF_Async_0900', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER, async (err, data) => {
             if (err) {
                 console.log('Telephony_CallManager_startDTMF_Async_0900 dial fail : err = ' + err);
                 expect().assertFail();
@@ -1464,10 +1454,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1507,10 +1497,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1554,10 +1544,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1601,10 +1591,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1648,10 +1638,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1695,10 +1685,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1739,10 +1729,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1785,10 +1775,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1831,10 +1821,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1878,10 +1868,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1899,7 +1889,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_stopDTMF_Async_0200', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER, async (err, data) => {
             if (err) {
                 expect().assertFail();
                 console.log('Telephony_CallManager_stopDTMF_Async_0200 dial fail : err = ' + err);
@@ -1922,10 +1912,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1957,10 +1947,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -1978,7 +1968,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_combineConference_Async_0200', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER, async (err, data) => {
             if (err) {
                 expect().assertFail();
                 console.log('Telephony_CallManager_combineConference_Async_0200 dial fail : err = ' + err);
@@ -2003,10 +1993,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -2038,10 +2028,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -2059,7 +2049,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_getMainCallId_Async_0200', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER,async (err, data) => {
             if (err) {
                 expect().assertFail();
                 console.log('Telephony_CallManager_getMainCallId_Async_0200 dial fail : err = ' + err);
@@ -2082,10 +2072,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -2118,10 +2108,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -2139,7 +2129,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_getSubCallIdList_Async_0200', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER, async (err, data) => {
             if (err) {
                 expect().assertFail();
                 console.log('Telephony_CallManager_getSubCallIdList_Async_0200 dial fail : err = ' + err);
@@ -2163,10 +2153,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -2199,10 +2189,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -2221,7 +2211,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_getCallIdListForConference_Async_0200', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER, async (err, data) => {
             if (err) {
                 expect().assertFail();
                 console.log('Telephony_CallManager_getCallIdListForConference_Async_0200 dial fail : err = ' + err);
@@ -2249,10 +2239,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -2290,10 +2280,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -2312,7 +2302,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_isInEmergencyCall_Async_0100', 0, async function (done) {
-        call.dial(TEST_PHONY_NUMBER, (err, data) => {
+        call.dial(TEST_PHONY_NUMBER, async (err, data) => {
             if (err) {
                 expect().assertFail();
                 console.log('Telephony_CallManager_isInEmergencyCall_Async_0100 dial fail : err = ' + err);
@@ -2328,23 +2318,23 @@ describe('CallManagerOnDial', function () {
                         if (err) {
                             console.log(
                                 'Telephony_CallManager_isInEmergencyCall_Async_0100 isInEmrgencyCall fail : err = ' +
-                                    err
+                                err
                             );
                             expect().assertFail();
                         }
                         expect(data === false).assertTrue();
                         console.log(
                             'Telephony_CallManager_isInEmergencyCall_Async_0100 isInEmrgencyCall finish : data = ' +
-                                data
+                            data
                         );
                     })
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -2359,7 +2349,7 @@ describe('CallManagerOnDial', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_isInEmergencyCall_Async_0200', 0, async function (done) {
-        call.dial('112', (err, data) => {
+        call.dial('112', async (err, data) => {
             if (err) {
                 expect().assertFail();
                 console.log('Telephony_CallManager_isInEmergencyCall_Async_0200 dial fail : err = ' + err);
@@ -2375,7 +2365,7 @@ describe('CallManagerOnDial', function () {
                         if (err) {
                             console.log(
                                 'Telephony_CallManager_isInEmergencyCall_Async_0200 isInEmrgencyCall fail : err = ' +
-                                    err
+                                err
                             );
                             expect().assertFail();
                             return;
@@ -2383,16 +2373,16 @@ describe('CallManagerOnDial', function () {
                         expect(data).assertTrue();
                         console.log(
                             'Telephony_CallManager_isInEmergencyCall_Async_0200 isInEmrgencyCall finish : data = ' +
-                                data
+                            data
                         );
                     })
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -2408,7 +2398,7 @@ describe('CallManagerOnDial', function () {
      */
     it('Telephony_CallManager_isInEmergencyCall_Promise_0100', 0, async function (done) {
         try {
-            var data = await call.dial('INVALID_NUMBER');
+            var data = await call.dial(INVALID_NUMBER);
             expect(data).assertTrue();
             console.log('Telephony_CallManager_isInEmergencyCall_Promise_0100 dial finish : data = ' + data);
             const startTime = new Date().getTime();
@@ -2425,10 +2415,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }
@@ -2465,10 +2455,10 @@ describe('CallManagerOnDial', function () {
                     done();
                     return;
                 }
-                sleep(waitTime);
+                await sleep(waitTime);
                 endTime = new Date().getTime();
                 timeOut = endTime - startTime;
-                if (timeOut > onTime || callState === call.CALL_STATUS_DISCONNECTED) {
+                if (timeOut > onTime) {
                     done();
                     break;
                 }

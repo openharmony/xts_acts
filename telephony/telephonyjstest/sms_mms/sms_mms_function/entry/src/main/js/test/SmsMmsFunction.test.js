@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import sms from '@ohos.telephony_sms';
+import sms from '@ohos.telephony.sms';
 import {
   describe,
   beforeAll,
@@ -25,7 +25,7 @@ import {
 } from 'deccjsunit/index';
 
 describe('SmsMmsTest', function () {
-  const TEST_PHONY_NUMBER = '15895502170';
+  const SMS_SEND_DST_NUMBER = '';
   const MAX_TEST = 160;
 
   const TRUE_SLOT_ID = 0;
@@ -40,7 +40,7 @@ describe('SmsMmsTest', function () {
   it('Telephony_SmsMms_sendMessage_0100', 0, async function (done) {
     sms.sendMessage({
       slotId: TRUE_SLOT_ID,
-      destinationHost: TEST_PHONY_NUMBER,
+      destinationHost: SMS_SEND_DST_NUMBER,
       content: '111111',
       sendCallback: (err, value) => {
         if (err) {
@@ -51,6 +51,7 @@ describe('SmsMmsTest', function () {
         }
         expect(value.result === sms.SEND_SMS_SUCCESS).assertTrue();
         console.log('Telephony_SmsMms_sendMessage_0100 sendCallback finish');
+        done()
       },
       deliveryCallback: (err, value) => {
         if (err) {
@@ -75,7 +76,7 @@ describe('SmsMmsTest', function () {
   it('Telephony_SmsMms_sendMessage_0200', 0, async function (done) {
     sms.sendMessage({
       slotId: FALSE_SLOT_ID,
-      destinationHost: TEST_PHONY_NUMBER,
+      destinationHost: SMS_SEND_DST_NUMBER,
       content: 'hello',
       sendCallback: (err, value) => {
         if (err) {
@@ -127,7 +128,7 @@ describe('SmsMmsTest', function () {
   it('Telephony_SmsMms_sendMessage_0400', 0, async function (done) {
     sms.sendMessage({
       slotId: TRUE_SLOT_ID,
-      destinationHost: TEST_PHONY_NUMBER,
+      destinationHost: SMS_SEND_DST_NUMBER,
       content: '',
       sendCallback: (err, value) => {
         if (err) {
@@ -158,7 +159,7 @@ describe('SmsMmsTest', function () {
     }
     sms.sendMessage({
       slotId: TRUE_SLOT_ID,
-      destinationHost: TEST_PHONY_NUMBER,
+      destinationHost: SMS_SEND_DST_NUMBER,
       content: str,
       sendCallback: (err, value) => {
         if (err) {
@@ -170,6 +171,7 @@ describe('SmsMmsTest', function () {
         console.log(`sendCallback success sendResult = ${value.result}`);
         expect(value.result === sms.SEND_SMS_SUCCESS).assertTrue();
         console.log('Telephony_SmsMms_sendMessage_0500 sendCallback finish');
+        done()
       },
       deliveryCallback: (err, value) => {
         if (err) {
@@ -199,7 +201,7 @@ describe('SmsMmsTest', function () {
     }
     sms.sendMessage({
       slotId: TRUE_SLOT_ID,
-      destinationHost: TEST_PHONY_NUMBER,
+      destinationHost: SMS_SEND_DST_NUMBER,
       content: str,
       sendCallback: (err, value) => {
         if (err) {
@@ -211,6 +213,7 @@ describe('SmsMmsTest', function () {
         console.log(`sendCallback success sendResult = ${value.result}`);
         expect(value.result === sms.SEND_SMS_SUCCESS).assertTrue();
         console.log('Telephony_SmsMms_sendMessage_0600 sendCallback finish');
+        done()
       },
       deliveryCallback: (err, value) => {
         if (err) {
@@ -236,7 +239,7 @@ describe('SmsMmsTest', function () {
   it('Telephony_SmsMms_sendMessage_0700', 0, async function (done) {
     sms.sendMessage({
       slotId: TRUE_SLOT_ID,
-      destinationHost: TEST_PHONY_NUMBER,
+      destinationHost: SMS_SEND_DST_NUMBER,
       content: '中文',
       sendCallback: (err, value) => {
         if (err) {
@@ -248,6 +251,7 @@ describe('SmsMmsTest', function () {
         console.log(`sendCallback success sendResult = ${value.result}`);
         expect(value.result === sms.SEND_SMS_SUCCESS).assertTrue();
         console.log('Telephony_SmsMms_sendMessage_0700 sendCallback finish');
+        done()
       },
       deliveryCallback: (err, value) => {
         if (err) {
@@ -273,7 +277,7 @@ describe('SmsMmsTest', function () {
   it('Telephony_SmsMms_sendMessage_0800', 0, async function (done) {
     sms.sendMessage({
       slotId: TRUE_SLOT_ID,
-      destinationHost: TEST_PHONY_NUMBER,
+      destinationHost: SMS_SEND_DST_NUMBER,
       content: 'hhhAAA112089',
       sendCallback: (err, value) => {
         if (err) {
@@ -285,6 +289,7 @@ describe('SmsMmsTest', function () {
         console.log(`sendCallback success sendResult = ${value.result}`);
         expect(value.result === sms.SEND_SMS_SUCCESS).assertTrue();
         console.log('Telephony_SmsMms_sendMessage_0800 sendCallback finish');
+        done()
       },
       deliveryCallback: (err, value) => {
         if (err) {
@@ -310,7 +315,7 @@ describe('SmsMmsTest', function () {
   it('Telephony_SmsMms_sendMessage_0900', 0, async function (done) {
     sms.sendMessage({
       slotId: TRUE_SLOT_ID,
-      destinationHost: TEST_PHONY_NUMBER,
+      destinationHost: SMS_SEND_DST_NUMBER,
       content: 'ㄅㄆ$￡á ǎ㊊↑◎┴%@&*^#',
       sendCallback: (err, value) => {
         if (err) {
@@ -322,6 +327,7 @@ describe('SmsMmsTest', function () {
         console.log(`sendCallback success sendResult = ${value.result}`);
         expect(value.result === sms.SEND_SMS_SUCCESS).assertTrue();
         console.log('Telephony_SmsMms_sendMessage_0900 sendCallback finish');
+        done()
       },
       deliveryCallback: (err, value) => {
         if (err) {
@@ -347,7 +353,7 @@ describe('SmsMmsTest', function () {
   it('Telephony_SmsMms_sendMessage_1000', 0, async function (done) {
     sms.sendMessage({
       slotId: TRUE_SLOT_ID,
-      destinationHost: TEST_PHONY_NUMBER,
+      destinationHost: SMS_SEND_DST_NUMBER,
       content: [54, 2, 3, 6, 3, 1, 1],
       destinationPort: 0x00,
       sendCallback: (err, value) => {
@@ -360,6 +366,7 @@ describe('SmsMmsTest', function () {
         console.log(`rawdata msg sendCallback success sendResult = ${value.result}`);
         expect(value.result === sms.SEND_SMS_SUCCESS).assertTrue();
         console.log('Telephony_SmsMms_sendMessage_1000 sendCallback finish');
+        done()
       },
       deliveryCallback: (err, value) => {
         if (err) {
@@ -386,7 +393,7 @@ describe('SmsMmsTest', function () {
   it('Telephony_SmsMms_sendMessage_1100', 0, async function (done) {
     sms.sendMessage({
       slotId: TRUE_SLOT_ID,
-      destinationHost: TEST_PHONY_NUMBER,
+      destinationHost: SMS_SEND_DST_NUMBER,
       content: [54, 2, 3, 6, 3, 1, 1],
       destinationPort: 0xffff,
       sendCallback: (err, value) => {
@@ -399,6 +406,7 @@ describe('SmsMmsTest', function () {
         console.log(`rawdata msg sendCallback success sendResult = ${value.result}`);
         expect(value.result === sms.SEND_SMS_SUCCESS).assertTrue();
         console.log('Telephony_SmsMms_sendMessage_1100 sendCallback finish');
+        done()
       },
       deliveryCallback: (err, value) => {
         if (err) {
@@ -425,7 +433,7 @@ describe('SmsMmsTest', function () {
   it('Telephony_SmsMms_sendMessage_1200', 0, async function (done) {
     sms.sendMessage({
       slotId: TRUE_SLOT_ID,
-      destinationHost: TEST_PHONY_NUMBER,
+      destinationHost: SMS_SEND_DST_NUMBER,
       content: [54, 2, 3, 6, 3, 1, 1],
       destinationPort: 0x00 - 1,
       sendCallback: (err, value) => {
@@ -438,6 +446,7 @@ describe('SmsMmsTest', function () {
         console.log(`sendCallback success sendResult = ${value.result}`);
         expect(value.result === sms.SEND_SMS_SUCCESS).assertTrue();
         console.log('Telephony_SmsMms_sendMessage_1200 sendCallback finish');
+        done()
       },
       deliveryCallback: (err, value) => {
         if (err) {
@@ -467,7 +476,7 @@ describe('SmsMmsTest', function () {
     }
     sms.sendMessage({
       slotId: TRUE_SLOT_ID,
-      destinationHost: TEST_PHONY_NUMBER,
+      destinationHost: SMS_SEND_DST_NUMBER,
       content: contentArray,
       destinationPort: 0x00,
       sendCallback: (err, value) => {
@@ -480,6 +489,7 @@ describe('SmsMmsTest', function () {
         console.log(`sendCallback success sendResult = ${value.result}`);
         expect(value.result === sms.SEND_SMS_SUCCESS).assertTrue();
         console.log('Telephony_SmsMms_sendMessage_1300 sendCallback  finish');
+        done()
       },
       deliveryCallback: (err, value) => {
         if (err) {
@@ -508,7 +518,7 @@ describe('SmsMmsTest', function () {
     }
     sms.sendMessage({
       slotId: TRUE_SLOT_ID,
-      destinationHost: TEST_PHONY_NUMBER,
+      destinationHost: SMS_SEND_DST_NUMBER,
       content: contentArray,
       destinationPort: 0x00,
       sendCallback: (err, value) => {
@@ -521,6 +531,7 @@ describe('SmsMmsTest', function () {
         console.log(`sendCallback success sendResult = ${value.result}`);
         expect(value.result === sms.SEND_SMS_SUCCESS).assertTrue();
         console.log('Telephony_SmsMms_sendMessage_1400 sendCallback finish');
+        done()
       },
       deliveryCallback: (err, value) => {
         if (err) {
@@ -545,7 +556,7 @@ describe('SmsMmsTest', function () {
   it('Telephony_SmsMms_sendMessage_1500', 0, async function (done) {
     sms.sendMessage({
       slotId: TRUE_SLOT_ID,
-      destinationHost: TEST_PHONY_NUMBER,
+      destinationHost: SMS_SEND_DST_NUMBER,
       content: [54, 2, 3, 6, 3, 1, 1],
       destinationPort: 0xffff + 1,
       sendCallback: (err, value) => {

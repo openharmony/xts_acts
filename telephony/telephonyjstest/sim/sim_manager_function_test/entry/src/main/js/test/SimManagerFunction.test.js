@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import sim from '@ohos.telephony_sim';
+import sim from '@ohos.telephony.sim';
 import {simSlotId} from '../default/utils/Constant.test.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 
@@ -287,7 +287,7 @@ describe('SimManagerFunction', function () {
         // Expect slotid 4 return err here.
         sim.getDefaultVoiceSlotId((err, result) => {
           if (err) {
-            console.log(`Telephony_Sim_setDefaultVoiceSlotId_Async_0300 getDefaultVoiceSLOT_ID_fail, err: ${
+            console.log(`Telephony_Sim_setDefaultVoiceSlotId_Async_0100 getDefaultVoiceSLOT_ID_fail, err: ${
               err.message}`);
             expect().assertFail();
             done();
@@ -295,12 +295,12 @@ describe('SimManagerFunction', function () {
           }
           expect(result !== simSlotId.SLOT_ID_4).assertTrue();
         });
-        console.log('Telephony_Sim_setDefaultVoiceSlotId_Async_0200 finish');
+        console.log('Telephony_Sim_setDefaultVoiceSlotId_Async_0100 finish');
         done();
         return;
       }
       expect().assertFail();
-      console.log('Telephony_Sim_setDefaultVoiceSlotId_Async_0200 fail');
+      console.log('Telephony_Sim_setDefaultVoiceSlotId_Async_0100 fail');
       done();
     });
   });
@@ -317,12 +317,12 @@ describe('SimManagerFunction', function () {
       // Expect slotid 4 return err here.
       var result = await sim.getDefaultVoiceSlotId();
       expect(result !== simSlotId.SLOT_ID_4).assertTrue();
-      console.log('Telephony_Sim_setDefaultVoiceSlotId_Promise_0300 finish');
+      console.log('Telephony_Sim_setDefaultVoiceSlotId_Promise_0100 finish');
       done();
       return;
     }
     expect().assertFail();
-    console.log('Telephony_Sim_setDefaultVoiceSlotId_Promise_0300 fail');
+    console.log('Telephony_Sim_setDefaultVoiceSlotId_Promise_0100 fail');
     done();
   });
 });

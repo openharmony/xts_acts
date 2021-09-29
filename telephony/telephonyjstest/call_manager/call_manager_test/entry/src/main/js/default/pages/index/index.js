@@ -30,17 +30,16 @@ export default {
         this.title = this.$t('strings.world');
     },
     onShow() {
-        console.info('onShow finish!')
+        console.info('onShow finish')
         const core = Core.getInstance()
         const expectExtend = new ExpectExtend({
             'id': 'extend'
         })
         core.addService('expect', expectExtend)
         core.init()
-
         const configService = core.getDefaultService('config')
+        configService.timeout = 15000;
         configService.setConfig(this)
-
         require('../../../test/List.test')
         core.execute()
     },
