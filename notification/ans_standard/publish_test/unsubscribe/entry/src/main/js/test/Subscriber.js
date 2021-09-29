@@ -16,39 +16,39 @@ import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 var time = 1000
 describe('ActsAnsUnSubscriberTest', function () {
-    console.info("===========ActsDoNotSubscriberTest start====================>");
+    console.info("==ActsDoNotSubscriberTest start==>");
     //subscribeOn
     function subscribeOnCallback(err) {
-        console.debug("==========================>subscribeDoNotOnCallback=======================>");
+        console.debug("===>subscribeDoNotOnCallback===>");
     }
     //subscribe
     function subscribeCallback(err) {
-        console.debug("==========================>subscribeDoNotCallback=======================>");
+        console.debug("===>subscribeDoNotCallback===>");
 
     }
     function unSubscribeCallbackOne(err) {
-        console.debug("==========================>unSubscribeCallbackOne=======================>");
+        console.debug("===>unSubscribeCallbackOne===>");
     }
     function unSubscribeCallbackTwo(err) {
-        console.debug("==========================>unSubscribeCallbackTwo=======================>");
+        console.debug("===>unSubscribeCallbackTwo===>");
     }
     function unSubscribeCallbackThree(err) {
-        console.debug("==========================>unSubscribeCallbackThree=======================>");
+        console.debug("===>unSubscribeCallbackThree===>");
     }
     function unSubscribeCallbackFour(err) {
-        console.debug("==========================>unSubscribeCallbackFour=======================>");
+        console.debug("===>unSubscribeCallbackFour===>");
     }
     function unSubscribeCallbackFive(err) {
-        console.debug("==========================>unSubscribeCallbackFive=======================>");
+        console.debug("===>unSubscribeCallbackFive===>");
     }
     function unSubscribeCallbackSix(err) {
-        console.debug("==========================>unSubscribeCallbackSix=======================>");
+        console.debug("===>unSubscribeCallbackSix===>");
     }
     function unSubscribeCallbackSeven(err) {
-        console.debug("==========================>unSubscribeCallbackSeven=======================>");
+        console.debug("===>unSubscribeCallbackSeven===>");
     }
     function unSubscribeCallbackEight(err) {
-        console.debug("==========================>unSubscribeCallbackEight=======================>");
+        console.debug("===>unSubscribeCallbackEight===>");
     }
 
     function publishCallback001(){
@@ -60,8 +60,8 @@ describe('ActsAnsUnSubscriberTest', function () {
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
-    it('ActsSubscriber_test_0100', 0, async function (done) {
-        console.debug("===============ActsDoNotSubscriber_test_0100======begin====================>");
+    it('ActsUnSubscriber_test_0100', 0, async function (done) {
+        console.debug("===ActsDoNotSubscriber_test_0100===begin===>");
 
         var subInfoOne ={
             onConnecte:subscribeOnCallback,
@@ -79,19 +79,20 @@ describe('ActsAnsUnSubscriberTest', function () {
         catch(err) {
             console.error('=ActsSubscriber_test_0100  取消订阅 unSubscribeCallbackOne err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_0100=======end3===================>");
+        console.debug("===ActsSubscriber_test_0100===end3===>");
         done();
         setTimeout(function(){
             console.debug("====>time out ActsSubscriber_test_0100====>");
         }, time);
     })
+
     /*
      * @tc.number: ActsDoNotSubscriber_test_0200
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
-    it('ActsSubscriber_test_0200', 0, async function (done) {
-        console.debug("===============ActsSubscriber_test_0200======begin====================>");
+    it('ActsUnSubscriber_test_0200', 0, async function (done) {
+        console.debug("===ActsSubscriber_test_0200===begin===>");
 
         var subInfoOne ={
             onConnecte:subscribeOnCallback,
@@ -105,25 +106,26 @@ describe('ActsAnsUnSubscriberTest', function () {
         }
         try{
             notify.unsubscribe(subInfoOne).then(()=>
-            console.log("============promise============")
+            console.log("====promise====")
             )
         }
         catch(err) {
             console.error('=ActsSubscriber_test_0200  取消订阅 unSubscribeCallbackOne err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_0200=======end3===================>");
+        console.debug("===ActsSubscriber_test_0200===end3===>");
         done();
         setTimeout(function(){
             console.debug("====>time out ActsSubscriber_test_0200====>");
         }, time);
     })
+
     /*
      * @tc.number: ActsSubscriber_test_0300
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
-    it('ActsSubscriber_test_0300', 0, async function (done) {
-        console.debug("===============ActsSubscriber_test_0300======begin====================>");
+    it('ActsUnSubscriber_test_0300', 0, async function (done) {
+        console.debug("===ActsSubscriber_test_0300===begin===>");
         var subInfoTwo ={
         //            onConsumed:consumeCallbackTwo,
             onConnecte:subscribeOnCallback,
@@ -142,19 +144,20 @@ describe('ActsAnsUnSubscriberTest', function () {
         catch(err) {
             console.error('=ActsSubscriber_test_0300  取消订阅 unSubscribeCallbackOne err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_0300=======end3===================>");
+        console.debug("===ActsSubscriber_test_0300===end3===>");
         done();
         setTimeout(function(){
             console.debug("====>time out ActsSubscriber_test_0300====>");
         }, time);
     })
+
     /*
      * @tc.number: ActsSubscriber_test_0400
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
-    it('ActsSubscriber_test_0400', 0, async function (done) {
-        console.debug("===============ActsSubscriber_test_0400======begin====================>");
+    it('ActsUnSubscriber_test_0400', 0, async function (done) {
+        console.debug("====ActsSubscriber_test_0400===begin====>");
         var subInfoTwo ={
         //            onConsumed:consumeCallbackTwo,
             onConnecte:subscribeOnCallback,
@@ -168,27 +171,28 @@ describe('ActsAnsUnSubscriberTest', function () {
         }
         try{
              notify.unsubscribe(subInfoTwo).then(
-                console.log("=======unsubscribeTwo Promise=======")
+                console.log("===unsubscribeTwo Promise===")
             )
              notify.unsubscribe(subInfoTwo).then(
-                console.log("=======unsubscribeTwo Promise=======")
+                console.log("===unsubscribeTwo Promise===")
             )
         }
         catch(err) {
             console.error('=ActsSubscriber_test_0400  取消订阅 unSubscribeCallbackOne err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_0400=======end3===================>");
+        console.debug("===ActsSubscriber_test_0400===end3===>");
         done();
         setTimeout(function(){
             console.debug("====>time out ActsSubscriber_test_0400====>");
         }, time);
     })
+
     /*
      * @tc.number: ActsSubscriber_test_0500
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
-    it('ActsSubscriber_test_0500', 0, async function (done) {
+    it('ActsUnSubscriber_test_0500', 0, async function (done) {
         console.debug("===============ActsSubscriber_test_0500======begin====================>");
 
         var subInfo1 ={
@@ -212,19 +216,20 @@ describe('ActsAnsUnSubscriberTest', function () {
         catch(err) {
             console.error('=ActsSubscriber_test_0500  取消订阅 unSubscribeCallback err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_0500=======end3===================>");
+        console.debug("===ActsSubscriber_test_0500===end3===>");
         done();
         setTimeout(function(){
             console.debug("====>time out ActsSubscriber_test_0500====>");
         }, time);
     })
+
     /*
      * @tc.number: ActsSubscriber_test_0600
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
-    it('ActsSubscriber_test_0600', 0, async function (done) {
-        console.debug("===============ActsSubscriber_test_0600======begin====================>");
+    it('ActsUnSubscriber_test_0600', 0, async function (done) {
+        console.debug("===ActsSubscriber_test_0600===begin====>");
 
         var subInfo1 ={
             onConnecte:subscribeOnCallback,
@@ -242,28 +247,29 @@ describe('ActsAnsUnSubscriberTest', function () {
         }
         try{
                 notify.unsubscribe(subInfo1).then(
-                    console.log("=======unsubscribeTree Promise=======")
+                    console.log("==unsubscribeTree Promise==")
                 )
                 notify.unsubscribe(subInfo2).then(
-                    console.log("=======unsubscribeTree Promise=======")
+                    console.log("===unsubscribeTree Promise===")
                 )
         }
         catch(err) {
             console.error('=ActsSubscriber_test_0600  取消订阅 unSubscribeCallback err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_0600=======end3===================>");
+        console.debug("===ActsSubscriber_test_0600===end3===>");
         done();
         setTimeout(function(){
             console.debug("====>time out ActsSubscriber_test_0600====>");
         }, time);
     })
+
     /*
      * @tc.number: ActsSubscriber_test_0700
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
-    it('ActsSubscriber_test_0700', 0, async function (done) {
-        console.debug("===============ActsSubscriber_test_0700======begin====================>");
+    it('ActsUnSubscriber_test_0700', 0, async function (done) {
+        console.debug("===ActsSubscriber_test_0700===begin===>");
         try{
             await notify.subscribe({
                 onConnecte:subscribeOnCallback,
@@ -280,19 +286,20 @@ describe('ActsAnsUnSubscriberTest', function () {
         }catch(err) {
             console.error('=ActsSubscriber_test_0700  订阅 subscribeDoNotCallback err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_0700=======end3===================>");
+        console.debug("===ActsSubscriber_test_0700===end3===>");
         done();
         setTimeout(function(){
             console.debug("====>time out ActsSubscriber_test_0700====>");
         }, time);
     })
+
     /*
      * @tc.number: ActsSubscriber_test_0800
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
-    it('ActsSubscriber_test_0800', 0, async function (done) {
-        console.debug("===============ActsSubscriber_test_0800======begin====================>");
+    it('ActsUnSubscriber_test_0800', 0, async function (done) {
+        console.debug("===ActsSubscriber_test_0800===begin===>");
         try{
             await notify.subscribe({
                 onConnecte:subscribeOnCallback,
@@ -306,12 +313,12 @@ describe('ActsAnsUnSubscriberTest', function () {
                     onConnecte:subscribeOnCallback,
                     onDestroy:unSubscribeCallbackFive
                 }).then(
-                    console.log("=======unsubscribeFour Promise=======")
+                    console.log("====unsubscribeFour Promise====")
                 )
         }catch(err) {
             console.error('=ActsSubscriber_test_0800  订阅 subscribeDoNotCallback err:'+err);
         }
-        console.debug("===============ActsSubscriber_test_0800=======end3===================>");
+        console.debug("===ActsSubscriber_test_0800===end3===>");
         done();
         setTimeout(function(){
             console.debug("====>time out ActsSubscriber_test_0800====>");

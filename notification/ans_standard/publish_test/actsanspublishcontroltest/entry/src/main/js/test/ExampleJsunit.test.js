@@ -186,9 +186,6 @@ function publish_the_eighteenth_notification(err){
 function publish_the_nineteenth_notification(err){
     console.debug("====>publish the nineteenth notification 19 19 err: ====>" + JSON.stringify(err));
 }
-function publish_the_twentieth_notification(err){
-    console.debug("====>publish the twentieth notification 20 20 err: ====>" + JSON.stringify(err));
-}
 
 describe('ActsAnsPublishControlTest', function () {
 
@@ -223,7 +220,13 @@ describe('ActsAnsPublishControlTest', function () {
             done();
         }
 
-        notification.publish({
+        function publish_the_twentieth_notification(err){
+            console.debug("====>publish the twentieth notification 20 20 err: ====>" + JSON.stringify(err));
+            console.debug("====>time out start====>");
+            setTimeout(timeOut, 5000);
+        }
+
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -234,7 +237,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 1
         }, publish_the_first_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -245,7 +248,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 2
         }, publish_the_second_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -256,7 +259,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 3
         }, publish_the_third_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -267,7 +270,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 4
         }, publish_the_fourth_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -278,7 +281,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 5
         }, publish_the_fifth_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -289,7 +292,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 6
         }, publish_the_sixth_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -300,7 +303,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 7
         }, publish_the_seventh_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -311,7 +314,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 8
         }, publish_the_eighth_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -322,7 +325,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 9
         }, publish_the_ninth_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -333,7 +336,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 10
         }, publish_the_tenth_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -344,7 +347,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 11
         }, publish_the_eleventh_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -355,7 +358,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 12
         }, publish_the_twelfth_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -366,7 +369,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 13
         }, publish_the_thirteenth_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -377,7 +380,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 14
         }, publish_the_fourteenth_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -388,7 +391,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 15
         }, publish_the_fifteenth_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -399,7 +402,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 16
         }, publish_the_sixteenth_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -410,7 +413,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 17
         }, publish_the_seventeenth_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -421,7 +424,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 18
         }, publish_the_eighteenth_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -432,7 +435,7 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 19
         }, publish_the_nineteenth_notification);
-        notification.publish({
+        await notification.publish({
             content: {
                 contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -443,7 +446,5 @@ describe('ActsAnsPublishControlTest', function () {
             },
             id: 20
         }, publish_the_twentieth_notification);
-        console.debug("====>time out start====>");
-        setTimeout(timeOut, 15000);
     })
 })

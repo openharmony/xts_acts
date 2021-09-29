@@ -51,7 +51,7 @@ export default {
         commonEvent.publish("ACTS_StartAbilityForResult_0400_CommonEvent", PublishCallBackfour);
         commonEvent.publish("ACTS_StartAbilityForResult_0500_CommonEvent", PublishCallBackfive);
         commonEvent.publish("ACTS_StartAbilityForResult_0600_CommonEvent", PublishCallBacksix);
-        var promise = await featureAbility.finishWithResult(
+        var promise = await featureAbility.terminateSelfWithResult(
             {
                 resultCode: 1,
                 want:

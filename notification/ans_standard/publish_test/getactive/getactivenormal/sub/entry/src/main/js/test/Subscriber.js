@@ -17,19 +17,19 @@ import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 var time = 1000
 describe('ActsAnsActiveSubscriberTest', function () {
-    console.info("===========ActsSubscriberTest start====================>");
+    console.info("===ActsSubscriberTest start===>");
 
     //consume
     function consumeCallback(err, data) {
-        console.debug("==========================>consumeCallback data : =======================>" + JSON.stringify(data));
+        console.debug("===>consumeCallback data : ===>" + JSON.stringify(data));
     }
     //subscribeOn
     function subscribeOnCallback(err) {
-        console.debug("==========================>subscribeOnCallback=======================>");
+        console.debug("===>subscribeOnCallback===>");
     }
     //subscribe
     function subscribeCallback(err) {
-        console.debug("==========================>subscribeCallback=======================>");
+        console.debug("===>subscribeCallback===>");
     }
 
     /*
@@ -38,7 +38,7 @@ describe('ActsAnsActiveSubscriberTest', function () {
     * @tc.desc: verify the function of createSubscriber,subscribe
     */
     it('ActsActiveSubscriber_test_0100', 0, async function (done) {
-        console.debug("===============ActsWantAgent_test_0100======begin====================>");
+        console.debug("==ActsWantAgent_test_0100==begin==>");
 
         var subInfo ={
             onConsume:consumeCallback,
@@ -49,7 +49,7 @@ describe('ActsAnsActiveSubscriberTest', function () {
         }catch(err) {
             console.error('=ActsActiveSubscriber_test_0100  订阅 subscribeCallback err:'+err);
         }
-        console.debug("===============ActsActiveSubscriber_test_0100=======end===================>");
+        console.debug("==ActsActiveSubscriber_test_0100==end==>");
         done();
         setTimeout(function(){
             console.debug("====>time out ActsActiveSubscriber_test_0100====>");

@@ -2,7 +2,7 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "1700000",
+        "test-timeout": "300000",
         "package": "com.example.actsbundlemanagertest",
         "shell-timeout": "60000"
     },
@@ -32,7 +32,8 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "chmod 644 /data/*.hap"
+                "chmod 644 /data/*.hap",
+                "chmod 600 /data/bmsJstest7.hap"
             ]
         }        
     ]

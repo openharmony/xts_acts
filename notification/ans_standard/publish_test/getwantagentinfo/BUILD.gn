@@ -18,9 +18,9 @@ group("getwantagentinfo") {
   if (is_standard_system) {
     deps = [
       "getwantagentinfoone:ActsAnsGetWantAgentInfoOneTest",
-      "getwantagentinfoonepro:ActsAnsGetWantAgentInfoOneProTest",
-      "getwantagentinfotwo:ActsAnsGetWantAgentInfoTwoTest",
-      "getwantagentinfotwopro:ActsAnsGetWantAgentInfoTwoProTest-signed",
+      #"getwantagentinfoonepro:ActsAnsGetWantAgentInfoOneProTest",
+      #"getwantagentinfotwo:ActsAnsGetWantAgentInfoTwoTest",
+      #"getwantagentinfotwopro:ActsAnsGetWantAgentInfoTwoProTest",
     ]
   }
 }

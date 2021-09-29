@@ -17,7 +17,8 @@ import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 var time = 1000
 describe('ActsAnsBadgeDisplayFiveTest', function () {
-    console.info("===========ActsDoNotDisturbModeTest5 start====================>");
+    console.info("====ActsDoNotDisturbModeTest5 start=====>");
+
      /*
      * @tc.number: ActsBadgeDisplay_test_0900
      * @tc.name: displayBadge()
@@ -25,15 +26,16 @@ describe('ActsAnsBadgeDisplayFiveTest', function () {
      */
     it('ActsBadgeDisplay_test_0900', 0, async function (done) {
         await notify.displayBadge({
-            bundle:"com.neu.actsanslocalcandisplaytest"
+            bundle:"com.example.actsanslocalcandisplaytest"
         },"",(err) => {
-            console.log("==========================>ActsBadgeDisplay_test_0900 success=======================>"+err)
+            console.log("====>ActsBadgeDisplay_test_0900 success====>"+err)
         })
         done();
         setTimeout(function(){
             console.debug("====>time out ActsBadgeDisplay_test_0900====>");
         }, time);
     })
+
      /*
      * @tc.number: ActsBadgeDisplay_test_1000
      * @tc.name: displayBadge()
@@ -42,13 +44,14 @@ describe('ActsAnsBadgeDisplayFiveTest', function () {
     it('ActsBadgeDisplay_test_1000', 0, async function (done) {
         await notify.displayBadge(
             {
-                bundle:"com.neu.actsanslocalcandisplaytest"
-            },"").then(console.log("==========================>ActsBadgeDisplay_test_1000 success=======================>"))
+                bundle:"com.example.actsanslocalcandisplaytest"
+            },"").then(console.log("====>ActsBadgeDisplay_test_1000 success====>"))
         done();
         setTimeout(function(){
             console.debug("====>time out ActsBadgeDisplay_test_1000====>");
         }, time);
     })
+
     /*
      * @tc.number: ActsSystemCanDisplay_test_0900
      * @tc.name: isBadgeDisplayed(bundle)
@@ -56,9 +59,9 @@ describe('ActsAnsBadgeDisplayFiveTest', function () {
      */
     it('ActsSystemCanDisplay_test_0900', 0, async function (done) {
         await notify.isBadgeDisplayed({
-            bundle:"com.neu.actsanslocalcandisplaytest",
+            bundle:"com.example.actsanslocalcandisplaytest",
         },(err,data) => {
-            console.log("==========================>ActsSystemCanDisplay_test_0900 success=======================>"+err+data)
+            console.log("====>ActsSystemCanDisplay_test_0900 success====>"+err+data)
             expect(typeof(data)).assertEqual('boolean')
         })
         done();
@@ -66,6 +69,7 @@ describe('ActsAnsBadgeDisplayFiveTest', function () {
             console.debug("====>time out ActsSystemCanDisplay_test_0900====>");
         }, time);
     })
+
     /*
      * @tc.number: ActsSystemCanDisplay_test_1000
      * @tc.name: isBadgeDisplayed(bundle)
@@ -74,9 +78,9 @@ describe('ActsAnsBadgeDisplayFiveTest', function () {
     it('ActsSystemCanDisplay_test_1000', 0, async function (done) {
         var promise = await notify.isBadgeDisplayed(
             {
-                bundle:"com.neu.actsanslocalcandisplaytest",
+                bundle:"com.example.actsanslocalcandisplaytest",
             })
-        console.log("==========================>ActsSystemCanDisplay_test_1000 success=======================>"+promise)
+        console.log("====>ActsSystemCanDisplay_test_1000 success====>"+promise)
         expect(typeof(promise)).assertEqual('boolean')
         done();
         setTimeout(function(){

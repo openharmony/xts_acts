@@ -17,12 +17,14 @@ group("enablenotification") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "enablenotificationfive:ActsAnsEnableNotificationFiveTest",
-      "enablenotificationfour:ActsAnsEnableNotificationFourTest",
-      "enablenotificationone:ActsAnsEnableNotificationOneTest",
-      "enablenotificationsix:ActsAnsEnableNotificationSixTest",
-      "enablenotificationtree:ActsAnsEnableNotificationTreeTest",
-      "enablenotificationtwo:ActsAnsEnableNotificationTwoTest",
+      #"enablenotificationfive:ActsAnsEnableNotificationFiveTest",
+
+      #"enablenotificationfour:ActsAnsEnableNotificationFourTest",
+      #"enablenotificationone:ActsAnsEnableNotificationOneTest",
+      #"enablenotificationsix:ActsAnsEnableNotificationSixTest",
+
+      #"enablenotificationtree:ActsAnsEnableNotificationTreeTest",
+      #"enablenotificationtwo:ActsAnsEnableNotificationTwoTest",
       "localnotificationenable:ActsAnsLocalNotificationTest",
     ]
   }

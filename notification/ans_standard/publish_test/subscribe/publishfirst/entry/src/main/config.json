@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.neu.actsanspublishonetest",
+    "bundleName": "com.example.actsanspublishonetest",
     "vendor": "example",
     "version": {
       "code": 1,

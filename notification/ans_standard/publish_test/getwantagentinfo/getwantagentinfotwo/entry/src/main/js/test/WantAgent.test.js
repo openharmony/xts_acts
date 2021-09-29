@@ -26,6 +26,7 @@ describe('ActsAnsGetWantAgentInfoTwoTest', function () {
     function CancelWantCallback(){
         console.log("=========CancelWantCallback===========")
     }
+
     /*
     * @tc.number: ACTS_SetWantInfo_0500
     * @tc.name: getWantAgent(),cancel()
@@ -76,10 +77,10 @@ describe('ActsAnsGetWantAgentInfoTwoTest', function () {
                     expect(typeof(data)).assertEqual("object");
                 }
                 done();
-                setTimeout(function(){
+            }),
+ 		setTimeout(function(){
                     console.debug("====>time out ACTS_SetWantInfo_0500====>");
                 }, time)
-            }),
             console.info('----getWantAgent1 after----');
     })
 
@@ -121,8 +122,8 @@ describe('ActsAnsGetWantAgentInfoTwoTest', function () {
                 if (err.code == 0) {
                     WantAgent2 = data;
                     console.info('----getWantAgent2 success!----');
-                    console.log("=======WantAgent1======="+JSON.stringify(WantAgent1))
-                    console.log("=======WantAgent2======="+JSON.stringify(WantAgent2))
+                    console.log("==WantAgent1=="+JSON.stringify(WantAgent1))
+                    console.log("==WantAgent2=="+JSON.stringify(WantAgent2))
                     console.info(data);
                     expect(typeof(data)).assertEqual("object");
                     wantAgent.equal(WantAgent1,WantAgent2,
@@ -153,11 +154,11 @@ describe('ActsAnsGetWantAgentInfoTwoTest', function () {
                     console.info(data);
                     expect(typeof(data)).assertEqual("object");
                 }
-                done();
-                setTimeout(function(){
+                done(); 
+            });
+	       setTimeout(function(){
                     console.debug("====>time out ACTS_SetWantInfo_0600====>");
                 }, time)
-            });
             console.info('----getWantAgent2 after----');
       })
 
