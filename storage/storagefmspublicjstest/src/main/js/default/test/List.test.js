@@ -14,4 +14,4 @@
  */
 
 require('./FmsPublic.test.js')
-require('./FmsPublicError.test.js')
+
