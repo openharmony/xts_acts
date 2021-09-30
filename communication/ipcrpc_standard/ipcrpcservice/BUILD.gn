@@ -20,7 +20,7 @@ ohos_js_hap_suite("ipcrpcService") {
   ]
 
   certificate_profile = "./signature/openharmony_sx.p7b"
-  
+
   hap_name = "IpcRpcService"
 }
 ohos_js_assets("ipcrpcService_assets") {

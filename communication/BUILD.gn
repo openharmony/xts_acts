@@ -16,9 +16,9 @@ group("communication") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "wifi_standard:wifi_standard_test",
-      "ipcrpc_standard/ipcrpctest:ipcrpcTest",
       "ipcrpc_standard/ipcrpcservice:ipcrpcService",
+      "ipcrpc_standard/ipcrpctest:ipcrpcTest",
+      "wifi_standard:wifi_standard_test",
     ]
   } else {
     deps = [ "wifi_standard:wifi_standard_test" ]
