@@ -11,16 +11,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos_var.gni")
-group("communication") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "wifi_standard:wifi_standard_test",
-      "ipcrpc_standard/ipcrpctest:ipcrpcTest",
-      "ipcrpc_standard/ipcrpcservice:ipcrpcService",
-    ]
-  } else {
-    deps = [ "wifi_standard:wifi_standard_test" ]
-  }
+import("//test/xts/tools/build/suite.gni")
+ohos_js_hap_suite("ipcrpcTest") {
+  hap_profile = "./entry/src/main/config.json"
+  deps = [
+    ":ipcrpcTest_assets",
+    ":ipcrpcTest_resources",
+  ]
+
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  
+  hap_name = "IpcRpcTest"
+}
+ohos_js_assets("ipcrpcTest_assets") {
+  source_dir = "./entry/src/main/js/default"
+}
+ohos_resources("ipcrpcTest_resources") {
+  sources = [ "./entry/src/main/resources" ]
+  hap_profile = "./entry/src/main/config.json"
 }
