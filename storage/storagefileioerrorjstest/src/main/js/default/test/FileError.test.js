@@ -51,6 +51,11 @@ describe('FileError', function () {
         done();
       },
     });
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -73,6 +78,11 @@ describe('FileError', function () {
         done();
       },
     });
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -82,7 +92,7 @@ describe('FileError', function () {
    */
   it('File_test_error_002', 0, async function (done) {
     file.writeText({
-      uri: 'internal://app/file_test_error',
+      uri: 'internal://app../file_test_error',
       text: FILE_CONTENT,
       success: function () {
         console.log('file_test_error_002 call writeText success.');
@@ -93,6 +103,11 @@ describe('FileError', function () {
         done();
       },
     });
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -114,6 +129,11 @@ describe('FileError', function () {
         done();
       },
     });
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -133,6 +153,11 @@ describe('FileError', function () {
         done();
       },
     });
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -153,6 +178,11 @@ describe('FileError', function () {
         done();
       },
     });
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -173,6 +203,11 @@ describe('FileError', function () {
         done();
       },
     });
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -195,6 +230,11 @@ describe('FileError', function () {
         done();
       },
     });
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -226,6 +266,11 @@ describe('FileError', function () {
         done();
       },
     });
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -250,6 +295,11 @@ describe('FileError', function () {
         done();
       },
     });
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -274,6 +324,11 @@ describe('FileError', function () {
         done();
       },
     });
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -295,6 +350,11 @@ describe('FileError', function () {
         done();
       },
     });
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 
   /**
@@ -338,5 +398,10 @@ describe('FileError', function () {
         });
       },
     });
+    setTimeout(
+      function(){
+        expect(null).assertFail();
+        done();
+      },30)
   });
 });

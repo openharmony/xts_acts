@@ -33,7 +33,8 @@ import {
   prepareEmptyFile,
   differentFileName,
   randomString,
-  fileName
+  fileName,
+  sleep
 }
   from './Common'
 
@@ -1600,6 +1601,7 @@ describe('fileIOTest', function () {
     let fpath = nextFileName('fileio_test_read_sync_000');
     let text = '0123456789abcdefg';
     expect(prepareFile(fpath, text)).assertTrue();
+    sleep(10)
     try {
       let fd = fileio.openSync(fpath, 0o2);
       let len = fileio.readSync(fd, new ArrayBuffer(4096));

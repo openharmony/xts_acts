@@ -46,7 +46,7 @@ describe('fileIOTestStream', function () {
    */
   it('fileio_test_stream_create_stream_sync_000', 0, function () {
     let fpath = nextFileName('fileio_test_stream_create_stream_sync_000');
-    expect(prepareFile(fpath, '')).assertTrue();
+    expect(prepareFile(fpath, 'hello')).assertTrue();
     expect(fileToReadOnly(fpath)).assertTrue();
     try {
       let ss = fileio.createStreamSync(fpath, 'r');
@@ -69,7 +69,7 @@ describe('fileIOTestStream', function () {
   it('fileio_test_stream_create_stream_sync_001', 0, function () {
     let fpath = nextFileName('fileio_test_stream_create_stream_sync_001');
     try {
-      expect(fileio.createStreamSync(fpath, 'r') == null).assertTrue();
+      fileio.createStreamSync(fpath, 'r');
       expect(null).assertFail();
     }
     catch (e) {

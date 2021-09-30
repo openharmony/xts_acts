@@ -14,5 +14,3 @@
  */
 
 require('./FileIOError.test.js')
-require('./FileError.test.js')
-require('./FileVirtualPath.test.js')

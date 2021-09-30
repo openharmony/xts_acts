@@ -29,7 +29,7 @@ import {
 }
 from './Common'
 
-describe('fileTest', function () {
+describe('fmsShareTest', function () {
   beforeAll(() => {
     prepareFile(fmsFileName('music.mp3'), 'content');
     prepareFile(fmsFileName('f0.txt'), 'content');
@@ -403,61 +403,6 @@ describe('fileTest', function () {
         expect(code == 300).assertTrue();
       },
     });
-  })
-
-  /**
-   * @tc.number SUB_STORAGE_FMS_Performance_0000
-   * @tc.name FMS_Performance_0000
-   * @tc.desc Performance test
-   */
-  it('FMS_Performance_0000', 0, function () {
-    let start = new Date().getTime();
-    for(let i = 0; i < 1000;i++){
-      fileShareAbility.fuzzyFileToUri({
-        deviceId: '440E-0906',
-        authority: 'ohos.acts.test.ability',
-        uri: 'internal://app/f0.txt',
-        displayName: 'f1.txt',
-        success: function () {
-          let end = new Date().getTime();
-          let time = end - start ;
-          console.log('FMS_Performance_0000 call fuzzyFileToUri success. time:' +time+','+i);
-        },
-        fail: function (data, code) {
-          console.log('FMS_Performance_0000 call fuzzyFileToUri fail, code: ' + code + ', data: ' + data);
-          expect(null).assertFail();
-        },
-        complete: function () {
-          console.log('FMS_Performance_0000 call fuzzyFileToUri in complete');
-        }
-      });
-    }
-  })
-
-  /**
-   * @tc.number SUB_STORAGE_FMS_Performance_0000
-   * @tc.name FMS_Performance_0000
-   * @tc.desc stability test
-   */
-  it('FMS_stability_0000', 0, function () {
-    for(let i = 0; i < 100000;i++){
-      fileShareAbility.fuzzyFileToUri({
-        deviceId: '440E-0906',
-        authority: 'ohos.acts.test.ability',
-        uri: 'internal://app/f0.txt',
-        displayName: 'f1.txt',
-        success: function () {
-          console.log('FMS_stability_0000  success. '+i);
-        },
-        fail: function (data, code) {
-          console.log('FMS_stability_0000 fail, code: ' + code + ', data: ' + data);
-          expect(null).assertFail();
-        },
-        complete: function () {
-          console.log('FMS_stability_0000 call fuzzyFileToUri in complete');
-        }
-      });
-    }
   })
 
 })
