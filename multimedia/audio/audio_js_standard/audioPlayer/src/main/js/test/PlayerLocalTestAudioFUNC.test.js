@@ -19,9 +19,9 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 describe('PlayerLocalTestAudioFUNC', function () {
     let audioPlayer = media.createAudioPlayer();
     let isTimeOut = false;
-    const AUDIO_SOURCE = 'file://data/media/audio/01.mp3';
+    const AUDIO_SOURCE = 'file://data/media/01.mp3';
     const PLAY_TIME = 3000;
-    const DURATION_TIME = 99432;
+    const DURATION_TIME = 219600;
     const SEEK_TIME = 5000;
     const DELTA_TIME  = 1000;
     const END_STATE = 0;
