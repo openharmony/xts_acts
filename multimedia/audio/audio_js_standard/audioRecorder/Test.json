@@ -1,9 +1,9 @@
 {
-    "description": "Configuration for audio manager Tests",
+    "description": "Configuration for audioRecorder Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "60000",
-        "package": "ohos.acts.multimedia.audio.function",
+        "test-timeout": "3000000",
+        "package": "ohos.acts.multimedia.audio.audiorecorder",
         "shell-timeout": "60000"
     },
     "kits": [

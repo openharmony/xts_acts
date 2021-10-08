@@ -20,7 +20,7 @@ describe('PlayerLocalTestAudioAPI', function () {
     let audioPlayer = media.createAudioPlayer();
     let loopValue = false;
     let isTimeOut = false;
-    const AUDIO_SOURCE = 'file://data/media/audio/01.mp3';
+    const AUDIO_SOURCE = 'file://data/media/01.mp3';
     const PLAY_TIME = 3000;
     const END_STATE = 0;
     const SRC_STATE = 1;
@@ -34,7 +34,7 @@ describe('PlayerLocalTestAudioAPI', function () {
     const ERROR_STATE = 9;
     const FINISH_STATE = 10;
     const LOOP_STATE = 11;
-    const DURATION_TIME = 99432;
+    const DURATION_TIME = 219600;
     const SEEK_TIME = 5000;
     const DELTA_TIME  = 1000;
     const SECOND_INDEX = 1;

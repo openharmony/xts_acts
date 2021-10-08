@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 
-import device from '@system.device';
-
 export default {
     onCreate() {
         console.info('AceApplication onCreate');

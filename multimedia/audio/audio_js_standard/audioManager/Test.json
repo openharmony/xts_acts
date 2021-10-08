@@ -3,7 +3,7 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "4800000",
-        "package": "ohos.acts.multimedia.audio.function",
+        "package": "ohos.acts.multimedia.audio.audiomanager",
         "shell-timeout": "60000"
     },
     "kits": [
