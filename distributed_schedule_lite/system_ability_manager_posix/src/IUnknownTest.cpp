@@ -194,6 +194,8 @@ HWTEST_F(IUnknownTest, testQueryInterface0010, Function | MediumTest | Level2) {
     int resultRelease = iUnknown->Release(iUnknown);
     ASSERT_EQ(1, resultAdd - resultRelease);
 
+    (void)iUnknown->Release(iUnknown);
+
     SAMGR_GetInstance()->UnregisterFeatureApi(SERVICE_NAME, FEATURE_NAME);
 }
 
