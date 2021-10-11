@@ -15,17 +15,18 @@
 
 #include <ctime>
 #include <gtest/gtest.h>
+#include "deviceauth_test_mock.h"
+#include "deviceauth_standard_test.h"
+extern "C" {
 #include "common_defs.h"
 #include "json_utils.h"
+#include "device_auth.h"
+#include "device_auth_defines.h"
+#include "database_manager.h"
 #include "hc_condition.h"
 #include "hc_mutex.h"
 #include "hc_types.h"
-#include "ipc_sdk.h"
-#include "device_auth.h"
-#include "database_manager.h"
-#include "device_auth_defines.h"
-#include "deviceauth_test_mock.h"
-#include "deviceauth_standard_test.h"
+}
 
 using namespace std;
 using namespace testing::ext;
@@ -101,6 +102,16 @@ static int DeleteDatabase()
     return 0;
 }
 
+#define CHECK_GROUP_ID(groupInfo) const char *groupId = GetStringFromJson(groupInfo, FIELD_GROUP_ID); \
+ret = strcmp(groupId, "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B"); \
+ASSERT_EQ(ret == HC_SUCCESS, true);
+
+#define PRINT_COST_TIME(costTime) cout << "[   TIME   ] used time: " << costTime << "(ms)" << endl;
+
+#define CHECK_EXPIRE_TIME(groupInfo, tmpExpireTime) int expireTime = 0; \
+GetIntFromJson(groupInfo, FIELD_EXPIRE_TIME, &expireTime); \
+ASSERT_EQ(expireTime, tmpExpireTime);
+
 static char *OnRequestNormal(int64_t requestId, int operationCode, const char *reqParams)
 {
     g_messageCode = ON_REQUEST;
@@ -113,6 +124,90 @@ static char *OnRequestNormal(int64_t requestId, int operationCode, const char *r
     AddIntToJson(json, FIELD_USER_TYPE, DEVICE_TYPE_ACCESSORY);
     AddIntToJson(json, FIELD_GROUP_VISIBILITY, GROUP_VISIBILITY_PUBLIC);
     AddIntToJson(json, FIELD_EXPIRE_TIME, expireTime);
+    char *returnDataStr = PackJsonToString(json);
+    FreeJson(json);
+    return returnDataStr;
+}
+
+static char *OnRequestError1(int64_t requestId, int operationCode, const char *reqParams)
+{
+    g_messageCode = ON_REQUEST;
+    g_requestId = requestId;
+    g_operationCode = operationCode;
+    CJson *json = CreateJson();
+    AddIntToJson(json, FIELD_CONFIRMATION, REQUEST_REJECTED);
+    AddStringToJson(json, FIELD_PIN_CODE, "123456");
+    AddStringToJson(json, FIELD_DEVICE_ID, SERVER_AUTH_ID);
+    AddIntToJson(json, FIELD_USER_TYPE, DEVICE_TYPE_ACCESSORY);
+    AddIntToJson(json, FIELD_GROUP_VISIBILITY, GROUP_VISIBILITY_PUBLIC);
+    AddIntToJson(json, FIELD_EXPIRE_TIME, 90);
+    char *returnDataStr = PackJsonToString(json);
+    FreeJson(json);
+    return returnDataStr;
+}
+
+static char *OnRequestError2(int64_t requestId, int operationCode, const char *reqParams)
+{
+    g_messageCode = ON_REQUEST;
+    g_requestId = requestId;
+    g_operationCode = operationCode;
+    CJson *json = CreateJson();
+    AddIntToJson(json, FIELD_CONFIRMATION, REQUEST_ACCEPTED);
+    AddStringToJson(json, FIELD_DEVICE_ID, SERVER_AUTH_ID);
+    AddIntToJson(json, FIELD_USER_TYPE, DEVICE_TYPE_ACCESSORY);
+    AddIntToJson(json, FIELD_GROUP_VISIBILITY, GROUP_VISIBILITY_PUBLIC);
+    AddIntToJson(json, FIELD_EXPIRE_TIME, 90);
+    char *returnDataStr = PackJsonToString(json);
+    FreeJson(json);
+    return returnDataStr;
+}
+
+static char *OnRequestError3(int64_t requestId, int operationCode, const char *reqParams)
+{
+    g_messageCode = ON_REQUEST;
+    g_requestId = requestId;
+    g_operationCode = operationCode;
+    CJson *json = CreateJson();
+    AddIntToJson(json, FIELD_CONFIRMATION, REQUEST_ACCEPTED);
+    AddStringToJson(json, FIELD_PIN_CODE, "123456");
+    AddStringToJson(json, FIELD_DEVICE_ID, SERVER_AUTH_ID);
+    AddIntToJson(json, FIELD_USER_TYPE, -1);
+    AddIntToJson(json, FIELD_GROUP_VISIBILITY, GROUP_VISIBILITY_PUBLIC);
+    AddIntToJson(json, FIELD_EXPIRE_TIME, 90);
+    char *returnDataStr = PackJsonToString(json);
+    FreeJson(json);
+    return returnDataStr;
+}
+
+static char *OnRequestError4(int64_t requestId, int operationCode, const char *reqParams)
+{
+    g_messageCode = ON_REQUEST;
+    g_requestId = requestId;
+    g_operationCode = operationCode;
+    CJson *json = CreateJson();
+    AddIntToJson(json, FIELD_CONFIRMATION, REQUEST_ACCEPTED);
+    AddStringToJson(json, FIELD_PIN_CODE, "123456");
+    AddStringToJson(json, FIELD_DEVICE_ID, SERVER_AUTH_ID);
+    AddIntToJson(json, FIELD_USER_TYPE, DEVICE_TYPE_ACCESSORY);
+    AddIntToJson(json, FIELD_GROUP_VISIBILITY, GROUP_VISIBILITY_SIGNATURE);
+    AddIntToJson(json, FIELD_EXPIRE_TIME, 90);
+    char *returnDataStr = PackJsonToString(json);
+    FreeJson(json);
+    return returnDataStr;
+}
+
+static char *OnRequestError5(int64_t requestId, int operationCode, const char *reqParams)
+{
+    g_messageCode = ON_REQUEST;
+    g_requestId = requestId;
+    g_operationCode = operationCode;
+    CJson *json = CreateJson();
+    AddIntToJson(json, FIELD_CONFIRMATION, REQUEST_ACCEPTED);
+    AddStringToJson(json, FIELD_PIN_CODE, "123456");
+    AddStringToJson(json, FIELD_DEVICE_ID, SERVER_AUTH_ID);
+    AddIntToJson(json, FIELD_USER_TYPE, DEVICE_TYPE_ACCESSORY);
+    AddIntToJson(json, FIELD_GROUP_VISIBILITY, GROUP_VISIBILITY_PUBLIC);
+    AddIntToJson(json, FIELD_EXPIRE_TIME, -2);
     char *returnDataStr = PackJsonToString(json);
     FreeJson(json);
     return returnDataStr;
@@ -405,6 +500,57 @@ void AUTHENTICATE_GA::TearDown()
 {
 }
 
+/* test suit - ADD_MEMBER_TO_GROUP */
+class ADD_MEMBER_TO_GROUP : public testing::Test {
+public:
+    static void SetUpTestCase(void);
+
+    static void TearDownTestCase(void);
+
+    void SetUp();
+
+    void TearDown();
+};
+
+void ADD_MEMBER_TO_GROUP::SetUpTestCase()
+{
+}
+
+void ADD_MEMBER_TO_GROUP::TearDownTestCase()
+{
+}
+
+void ADD_MEMBER_TO_GROUP::SetUp()
+{
+    int32_t ret;
+    const DeviceGroupManager *gmTmp = nullptr;
+    DeleteDatabase();
+    ret = InitDeviceAuthService();
+    ASSERT_EQ(ret == HC_SUCCESS, true);
+    g_gaCallback = {
+        OnTransmit,
+        OnSessionKeyReturned,
+        OnFinish2,
+        OnError2,
+        OnRequestNormal
+    };
+    gmTmp = GetGmInstance();
+    ASSERT_NE(gmTmp, nullptr);
+    g_testGm = gmTmp;
+    ret = g_testGm->regCallback(TEST_APP_NAME, &g_gaCallback);
+    ASSERT_EQ(ret == HC_SUCCESS, true);
+    SetClient(false);
+}
+
+void ADD_MEMBER_TO_GROUP::TearDown()
+{
+    DestroyDeviceAuthService();
+    DeleteDatabase();
+    ClearTempValue();
+    g_testGm = nullptr;
+}
+
+
 class REGISTER_LISTENER : public testing::Test {
 public:
     static void SetUpTestCase(void);
@@ -498,6 +644,53 @@ HWTEST_F(GET_INSTANCE, TC_GET_GM_INSTANCE, TestSize.Level1)
 }
 
 /**
+ * @tc.name: CREATE_GROUP_P2P.TC_CREATE_P2P_GROUP
+ * @tc.desc: Test CREATE_GROUP_P2P interface function;
+ * @tc.type: FUNC
+ */
+HWTEST_F(CREATE_GROUP_P2P, TC_CREATE_P2P_GROUP, TestSize.Level1)
+{
+    g_gaCallback.onRequest = OnRequestNormal;
+    g_gaCallback.onTransmit = OnTransmit;
+    g_gaCallback.onFinish = OnFinish;
+    g_gaCallback.onError = OnError;
+    g_gaCallback.onSessionKeyReturned = OnSessionKeyReturned;
+    g_testGm->regCallback(TEST_APP_NAME, &g_gaCallback);
+    DelayWithMSec(500);
+    CJson *createParams = CreateJson();
+    AddIntToJson(createParams, FIELD_GROUP_TYPE, PEER_TO_PEER_GROUP);
+    AddStringToJson(createParams, FIELD_DEVICE_ID, "3C58C27533D8");
+    AddIntToJson(createParams, FIELD_USER_TYPE, DEVICE_TYPE_ACCESSORY);
+    AddIntToJson(createParams, FIELD_GROUP_VISIBILITY, GROUP_VISIBILITY_PUBLIC);
+    AddIntToJson(createParams, FIELD_EXPIRE_TIME, 90);
+    AddStringToJson(createParams, FIELD_GROUP_NAME, "P2PGroup");
+    char *createParamsStr = PackJsonToString(createParams);
+    int ret = g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+    FreeJsonString(createParamsStr);
+    FreeJson(createParams);
+    g_testCondition.wait(&g_testCondition);
+    ASSERT_EQ(ret == HC_SUCCESS, true);
+    ASSERT_EQ(g_messageCode, ON_FINISH);
+    ASSERT_EQ(g_operationCode, GROUP_CREATE);
+    ASSERT_EQ(g_requestId, TEMP_REQUEST_ID);
+    CJson *returnData = CreateJson();
+    AddStringToJson(returnData, FIELD_GROUP_OWNER, TEST_APP_NAME);
+    char *queryParams = PackJsonToString(returnData);
+    FreeJson(returnData);
+    char *groupVec = nullptr;
+    uint32_t num = 0;
+    ret = g_testGm->getGroupInfo(TEST_APP_NAME, queryParams, &groupVec, &num);
+    FreeJsonString(queryParams);
+    ASSERT_EQ(ret == HC_SUCCESS, true);
+    ASSERT_EQ(num, 1u);
+    CJson *groupVecJson = CreateJsonFromString(groupVec);
+    CJson *groupInfo = GetItemFromArray(groupVecJson, 0);
+    CHECK_GROUP_ID(groupInfo);
+    FreeJson(groupVecJson);
+    g_testGm->destroyInfo(&groupVec);
+}
+
+/**
  * @tc.name: CREATE_GROUP_P2P.TC_INVALID_PARAM_01
  * @tc.desc: Test CREATE_GROUP_P2P interface function;
  * @tc.type: FUNC
@@ -522,40 +715,7 @@ HWTEST_F(CREATE_GROUP_P2P, TC_INVALID_PARAM_01, TestSize.Level1)
     ASSERT_EQ(g_requestId, TEMP_REQUEST_ID);
     ASSERT_EQ(g_errorCode == HC_ERR_INVALID_PARAMS, true);
 }
-/**
- * @tc.name: CREATE_GROUP_P2P.TC_INVALID_PARAM_02
- * @tc.desc: Test CREATE_GROUP_P2P interface function;
- * @tc.type: FUNC
- */
-HWTEST_F(CREATE_GROUP_P2P, TC_INVALID_PARAM_02, TestSize.Level1)
-{
-    CJson *createParams = CreateJson();
-    AddIntToJson(createParams, FIELD_GROUP_TYPE, PEER_TO_PEER_GROUP);
-    AddIntToJson(createParams, FIELD_USER_TYPE, DEVICE_TYPE_ACCESSORY);
-    AddIntToJson(createParams, FIELD_GROUP_VISIBILITY, GROUP_VISIBILITY_PUBLIC);
-    AddIntToJson(createParams, FIELD_EXPIRE_TIME, expireTime);
-    AddStringToJson(createParams, FIELD_GROUP_NAME, "P2PGroup");
-    char *createParamsStr = PackJsonToString(createParams);
-    FreeJson(createParams);
-    int ret = g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
-    FreeJsonString(createParamsStr);
-    g_testCondition.wait(&g_testCondition);
-    ASSERT_EQ(ret == HC_SUCCESS, true);
-    ASSERT_EQ(g_messageCode, ON_ERROR);
-    ASSERT_EQ(g_operationCode, GROUP_CREATE);
-    ASSERT_EQ(g_requestId, TEMP_REQUEST_ID);
-    CJson *returnData = CreateJson();
-    AddStringToJson(returnData, FIELD_GROUP_OWNER, TEST_APP_NAME);
-    char *queryParams = PackJsonToString(returnData);
-    FreeJson(returnData);
-    char *groupVec = nullptr;
-    uint32_t num = 0;
-    ret = g_testGm->getGroupInfo(TEST_APP_NAME, queryParams, &groupVec, &num);
-    FreeJsonString(queryParams);
-    ASSERT_EQ(ret == HC_SUCCESS, true);
-    ASSERT_EQ(num, 1u);
-    g_testGm->destroyInfo(&groupVec);
-}
+
 /**
  * @tc.name: CREATE_GROUP_P2P.TC_INVALID_PARAM_03
  * @tc.desc: Test CREATE_GROUP_P2P interface function;
@@ -735,6 +895,648 @@ HWTEST_F(CREATE_GROUP_P2P, TC_INVALID_PARAM_09, TestSize.Level1)
 }
 
 /**
+ * @tc.name: CREATE_GROUP_P2P.TC_VALID_PARAM_01
+ * @tc.desc: Test CREATE_GROUP_P2P interface function;
+ * @tc.type: FUNC
+ */
+HWTEST_F(CREATE_GROUP_P2P, TC_VALID_PARAM_01, TestSize.Level1)
+{
+    CJson *createParams = CreateJson();
+    AddIntToJson(createParams, FIELD_GROUP_TYPE, PEER_TO_PEER_GROUP);
+    AddStringToJson(createParams, FIELD_DEVICE_ID, "3C58C27533D9");
+    AddIntToJson(createParams, FIELD_USER_TYPE, DEVICE_TYPE_ACCESSORY);
+    AddIntToJson(createParams, FIELD_GROUP_VISIBILITY, GROUP_VISIBILITY_PUBLIC);
+    AddIntToJson(createParams, FIELD_EXPIRE_TIME, 1);
+    AddStringToJson(createParams, FIELD_GROUP_NAME, "P2PGroup");
+    char *createParamsStr = PackJsonToString(createParams);
+    FreeJson(createParams);
+    int ret = g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+    FreeJsonString(createParamsStr);
+    g_testCondition.wait(&g_testCondition);
+    ASSERT_EQ(ret == HC_SUCCESS, true);
+    ASSERT_EQ(g_messageCode, ON_FINISH);
+    ASSERT_EQ(g_operationCode, GROUP_CREATE);
+    ASSERT_EQ(g_requestId, TEMP_REQUEST_ID);
+}
+/**
+ * @tc.name: CREATE_GROUP_P2P.TC_VALID_PARAM_02
+ * @tc.desc: Test CREATE_GROUP_P2P interface function;
+ * @tc.type: FUNC
+ */
+HWTEST_F(CREATE_GROUP_P2P, TC_VALID_PARAM_02, TestSize.Level1)
+{
+    CJson *createParams = CreateJson();
+    AddIntToJson(createParams, FIELD_GROUP_TYPE, PEER_TO_PEER_GROUP);
+    AddStringToJson(createParams, FIELD_DEVICE_ID, "3C58C27533D9");
+    AddIntToJson(createParams, FIELD_USER_TYPE, DEVICE_TYPE_ACCESSORY);
+    AddIntToJson(createParams, FIELD_GROUP_VISIBILITY, GROUP_VISIBILITY_PUBLIC);
+    AddIntToJson(createParams, FIELD_EXPIRE_TIME, -1);
+    AddStringToJson(createParams, FIELD_GROUP_NAME, "P2PGroup");
+    char *createParamsStr = PackJsonToString(createParams);
+    FreeJson(createParams);
+    int ret = g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+    FreeJsonString(createParamsStr);
+    g_testCondition.wait(&g_testCondition);
+    ASSERT_EQ(ret == HC_SUCCESS, true);
+    ASSERT_EQ(g_messageCode, ON_FINISH);
+    ASSERT_EQ(g_operationCode, GROUP_CREATE);
+    ASSERT_EQ(g_requestId, TEMP_REQUEST_ID);
+}
+
+/**
+ * @tc.name: CREATE_GROUP_P2P.TC_MAX_GROUP_NUMBER
+ * @tc.desc: Test CREATE_GROUP_P2P interface function;
+ * @tc.type: FUNC
+ */
+HWTEST_F(CREATE_GROUP_P2P, TC_MAX_GROUP_NUMBER, TestSize.Level1)
+{
+    CJson *createParams = CreateJson();
+    AddIntToJson(createParams, FIELD_GROUP_TYPE, PEER_TO_PEER_GROUP);
+    AddStringToJson(createParams, FIELD_DEVICE_ID, "7533D8");
+    AddIntToJson(createParams, FIELD_USER_TYPE, DEVICE_TYPE_ACCESSORY);
+    AddIntToJson(createParams, FIELD_GROUP_VISIBILITY, GROUP_VISIBILITY_PUBLIC);
+    AddIntToJson(createParams, FIELD_EXPIRE_TIME, 90);
+    for (int i = 1; i < 101; ++i) {
+        char str[STR_BUFF_SZ_MIN] = {0};
+        (void)sprintf_s(str, sizeof(str) - 1, "P2PGroup%d", i);
+        AddStringToJson(createParams, FIELD_GROUP_NAME, str);
+        char *createParamsStr = PackJsonToString(createParams);
+        int ret = g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+        FreeJsonString(createParamsStr);
+        g_testCondition.wait(&g_testCondition);
+        ASSERT_EQ(ret == HC_SUCCESS, true);
+        ASSERT_EQ(g_messageCode, ON_FINISH);
+        ASSERT_EQ(g_operationCode, GROUP_CREATE);
+        ASSERT_EQ(g_requestId, TEMP_REQUEST_ID);
+        (void)DelTrustedDevice(
+            "ABCDEF00ABCDEF00ABCDEF00ABCDEF00ABCDEF00ABCDEF00ABCDEF00ABCDEF00", g_dataBuffer);
+        DelayWithMSec(500);
+    }
+    char str[STR_BUFF_SZ_MIN] = {0};
+    (void)sprintf_s(str, sizeof(str) - 1, "P2PGroup%d", 101);
+    AddStringToJson(createParams, FIELD_GROUP_NAME, str);
+    char *createParamsStr = PackJsonToString(createParams);
+    FreeJson(createParams);
+    int ret = g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+    FreeJsonString(createParamsStr);
+    g_testCondition.wait(&g_testCondition);
+    ASSERT_EQ(ret == HC_SUCCESS, true);
+    ASSERT_EQ(g_messageCode, ON_ERROR);
+    ASSERT_EQ(g_operationCode, GROUP_CREATE);
+    ASSERT_EQ(g_requestId, TEMP_REQUEST_ID);
+}
+
+/**
+ * @tc.name: ADD_MEMBER_TO_GROUP.TC_DEV_P2P_BIND_01
+ * @tc.desc: Test ADD_MEMBER_TO_GROUP interface function;
+ * @tc.type: FUNC
+ */
+HWTEST_F(ADD_MEMBER_TO_GROUP, TC_DEV_P2P_BIND_01, TestSize.Level1)
+{
+    SetClient(true);
+    g_isNeedContinue = true;
+    const char * createParamsStr = "{\"groupType\":256,\"deviceId\":\"3C58C27533D8\",\"userType\":0,\""
+                                   "groupVisibility\":-1,\"expireTime\":90,\"groupName\":\"P2PGroup\"}";
+    (void)g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+    DelayWithMSec(500);
+    DeviceInfo *devAuthParams = CreateDeviceInfoStruct();
+    devAuthParams->devType = DEVICE_TYPE_ACCESSORY;
+    StringSetPointer(&(devAuthParams->authId), "CAF34E13190CBA510AA8DABB70CDFF8E9F623656DED400EF0D4CFD9E88FD6202");
+    StringSetPointer(&(devAuthParams->udid), "ABCDEF00ABCDEF00ABCDEF00ABCDEF00ABCDEF00ABCDEF00ABCDEF00ABCDEF00");
+    StringSetPointer(&(devAuthParams->groupId), "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B");
+    StringSetPointer(&(devAuthParams->serviceType), "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B");
+    AddTrustedDevice(devAuthParams, NULL);
+    DestroyDeviceInfoStruct(devAuthParams);
+    CJson *addParams = CreateJson();
+    AddStringToJson(addParams, FIELD_GROUP_ID, "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B");
+    AddIntToJson(addParams, FIELD_GROUP_TYPE, PEER_TO_PEER_GROUP);
+    AddStringToJson(addParams, FIELD_PIN_CODE, "123456");
+    AddBoolToJson(addParams, FIELD_IS_ADMIN, true);
+    char *addParamsStr = PackJsonToString(addParams);
+    FreeJson(addParams);
+    (void)g_testGm->addMemberToGroup(CLIENT_REQUEST_ID, TEST_APP_NAME, addParamsStr);
+    FreeJsonString(addParamsStr);
+    DelayWithMSec(500);
+    while (g_isNeedContinue)
+    {
+        SetClient(!GetClient());
+        CJson *data = CreateJsonFromString(g_dataBuffer);
+        int64_t req = DEFAULT_REQUEST_ID;
+        GetInt64FromJson(data, FIELD_REQUEST_ID, &req);
+        if (req == CLIENT_REQUEST_ID) {
+            req = SERVER_REQUEST_ID;
+        } else {
+            req = CLIENT_REQUEST_ID;
+        }
+        AddInt64StringToJson(data, FIELD_REQUEST_ID, req);
+        char *dataStr = PackJsonToString(data);
+        FreeJson(data);
+        memset_s(g_dataBuffer, BUFFER_SIZE, 0, BUFFER_SIZE);
+        memcpy_s(g_dataBuffer, BUFFER_SIZE, dataStr, strlen(dataStr) + 1);
+        FreeJsonString(dataStr);
+        g_testGm->processData(req, (uint8_t *)g_dataBuffer, strlen(g_dataBuffer) + 1);
+        g_isNeedContinue = false;
+        DelayWithMSec(500);
+    }
+    ASSERT_EQ(g_messageCode, ON_FINISH);
+    ASSERT_EQ(g_operationCode, MEMBER_INVITE);
+}
+
+static char *ConstructAddParams02()
+{
+    CJson *addParams = CreateJson();
+    AddStringToJson(addParams, FIELD_GROUP_ID, "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B");
+    AddIntToJson(addParams, FIELD_GROUP_TYPE, PEER_TO_PEER_GROUP);
+    AddStringToJson(addParams, FIELD_PIN_CODE, "123456");
+    AddBoolToJson(addParams, FIELD_IS_ADMIN, false);
+    AddStringToJson(addParams, FIELD_DEVICE_ID, CLIENT_AUTH_ID);
+    AddStringToJson(addParams, FIELD_GROUP_NAME, "P2PGroup");
+    char *addParamsStr = PackJsonToString(addParams);
+    FreeJson(addParams);
+    return addParamsStr;
+}
+
+
+/**
+ * @tc.name: ADD_MEMBER_TO_GROUP.TC_DEV_P2P_BIND_02
+ * @tc.desc: Test ADD_MEMBER_TO_GROUP interface function;
+ * @tc.type: FUNC
+ */
+HWTEST_F(ADD_MEMBER_TO_GROUP, TC_DEV_P2P_BIND_02, TestSize.Level1)
+{
+    SetClient(false);
+    g_isNeedContinue = true;
+    const char * createParamsStr =
+        "{\"groupType\":256,\"deviceId\":\"CAF34E13190CBA510AA8DABB70CDFF8E9F623656DED400EF0D4CFD9E88FD6202\","
+        "\"userType\":0,\"groupVisibility\":-1,\"expireTime\":90,\"groupName\":\"P2PGroup\"}";
+    g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+    DelayWithMSec(500);
+    SetClient(true);
+    DeviceInfo *devAuthParams = CreateDeviceInfoStruct();
+    devAuthParams->devType = DEVICE_TYPE_ACCESSORY;
+    StringSetPointer(&(devAuthParams->authId), "3C58C27533D8");
+    StringSetPointer(&(devAuthParams->udid), "D6350E39AD8F11963C181BEEDC11AC85158E04466B68F1F4E6D895237E0FE81C");
+    StringSetPointer(&(devAuthParams->groupId), "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B");
+    StringSetPointer(&(devAuthParams->serviceType), "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B");
+    AddTrustedDevice(devAuthParams, NULL);
+    DestroyDeviceInfoStruct(devAuthParams);
+    char *addParamsStr = ConstructAddParams02();
+    g_testGm->addMemberToGroup(CLIENT_REQUEST_ID, TEST_APP_NAME, addParamsStr);
+    FreeJsonString(addParamsStr);
+    DelayWithMSec(500);
+    while (g_isNeedContinue)
+    {
+        SetClient(!GetClient());
+        CJson *data = CreateJsonFromString(g_dataBuffer);
+        int64_t req = DEFAULT_REQUEST_ID;
+        GetInt64FromJson(data, FIELD_REQUEST_ID, &req);
+        if (req == CLIENT_REQUEST_ID) {
+            req = SERVER_REQUEST_ID;
+        } else {
+            req = CLIENT_REQUEST_ID;
+        }
+        AddInt64StringToJson(data, FIELD_REQUEST_ID, req);
+        char *dataStr = PackJsonToString(data);
+        FreeJson(data);
+        memset_s(g_dataBuffer, BUFFER_SIZE, 0, BUFFER_SIZE);
+        memcpy_s(g_dataBuffer, BUFFER_SIZE, dataStr, strlen(dataStr) + 1);
+        FreeJsonString(dataStr);
+        g_testGm->processData(req, (uint8_t *)g_dataBuffer, strlen(g_dataBuffer) + 1);
+        g_isNeedContinue = false;
+        DelayWithMSec(500);
+    }
+    ASSERT_EQ(g_messageCode, ON_FINISH);
+    ASSERT_EQ(g_operationCode, MEMBER_JOIN);
+}
+
+/**
+ * @tc.name: ADD_MEMBER_TO_GROUP.TC_DEV_P2P_BIND_03
+ * @tc.desc: Test ADD_MEMBER_TO_GROUP interface function;
+ * @tc.type: FUNC
+ */
+HWTEST_F(ADD_MEMBER_TO_GROUP, TC_DEV_P2P_BIND_03, TestSize.Level1)
+{
+    SetClient(true);
+    g_isNeedContinue = true;
+    const char * createParamsStr = "{\"groupType\":256,\"deviceId\":\"3C58C27533D8\",\"userType\":0,\""
+                                   "groupVisibility\":-1,\"expireTime\":90,\"groupName\":\"P2PGroup\"}";
+    g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+    /* delay 1 seconds */
+    DelayWithMSec(500);
+    CJson *addParams = CreateJson();
+    AddStringToJson(addParams, FIELD_GROUP_ID, "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B");
+    AddIntToJson(addParams, FIELD_GROUP_TYPE, PEER_TO_PEER_GROUP);
+    AddStringToJson(addParams, FIELD_PIN_CODE, "123456");
+    AddBoolToJson(addParams, FIELD_IS_ADMIN, true);
+    char *addParamsStr = PackJsonToString(addParams);
+    FreeJson(addParams);
+    g_testGm->addMemberToGroup(CLIENT_REQUEST_ID, TEST_APP_NAME, addParamsStr);
+    DelayWithMSec(500);
+    g_testGm->addMemberToGroup(CLIENT_REQUEST_ID, TEST_APP_NAME, addParamsStr);
+    FreeJsonString(addParamsStr);
+    DelayWithMSec(500);
+    ASSERT_EQ(g_messageCode, ON_ERROR);
+    ASSERT_EQ(g_operationCode, MEMBER_INVITE);
+}
+
+/**
+ * @tc.name: ADD_MEMBER_TO_GROUP.TC_DEV_P2P_BIND_04
+ * @tc.desc: Test ADD_MEMBER_TO_GROUP interface function;
+ * @tc.type: FUNC
+ */
+HWTEST_F(ADD_MEMBER_TO_GROUP, TC_DEV_P2P_BIND_04, TestSize.Level1)
+{
+    SetClient(true);
+    g_isNeedContinue = true;
+    const char * createParamsStr = "{\"groupType\":256,\"deviceId\":\"3C58C27533D8\",\"userType\":0,\""
+                                   "groupVisibility\":-1,\"expireTime\":90,\"groupName\":\"P2PGroup\"}";
+    g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+    /* delay 1 seconds */
+    DelayWithMSec(500);
+    CJson *addParams = CreateJson();
+    AddStringToJson(addParams, FIELD_GROUP_ID, "abc");
+    AddIntToJson(addParams, FIELD_GROUP_TYPE, PEER_TO_PEER_GROUP);
+    AddStringToJson(addParams, FIELD_PIN_CODE, "123456");
+    AddBoolToJson(addParams, FIELD_IS_ADMIN, true);
+    char *addParamsStr = PackJsonToString(addParams);
+    FreeJson(addParams);
+    g_testGm->addMemberToGroup(CLIENT_REQUEST_ID, TEST_APP_NAME, addParamsStr);
+    FreeJsonString(addParamsStr);
+    DelayWithMSec(500);
+    ASSERT_EQ(g_messageCode, ON_ERROR);
+    ASSERT_EQ(g_operationCode, MEMBER_INVITE);
+}
+
+/**
+ * @tc.name: ADD_MEMBER_TO_GROUP.TC_DEV_P2P_BIND_05
+ * @tc.desc: Test ADD_MEMBER_TO_GROUP interface function;
+ * @tc.type: FUNC
+ */
+HWTEST_F(ADD_MEMBER_TO_GROUP, TC_DEV_P2P_BIND_05, TestSize.Level1)
+{
+    SetClient(true);
+    g_isNeedContinue = true;
+    const char * createParamsStr = "{\"groupType\":256,\"deviceId\":\"3C58C27533D8\",\"userType\":0,\""
+                                   "groupVisibility\":-1,\"expireTime\":90,\"groupName\":\"P2PGroup\"}";
+    g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+    /* delay 1 seconds */
+    DelayWithMSec(500);
+    CJson *addParams = CreateJson();
+    AddStringToJson(addParams, FIELD_GROUP_ID, "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B");
+    AddIntToJson(addParams, FIELD_GROUP_TYPE, PEER_TO_PEER_GROUP);
+    AddStringToJson(addParams, FIELD_PIN_CODE, "123456");
+    AddBoolToJson(addParams, FIELD_IS_ADMIN, true);
+    char *addParamsStr = PackJsonToString(addParams);
+    FreeJson(addParams);
+    int ret = g_testGm->addMemberToGroup(CLIENT_REQUEST_ID, "testApp2", addParamsStr);
+    FreeJsonString(addParamsStr);
+    DelayWithMSec(500);
+    ASSERT_EQ(ret != HC_SUCCESS, true);
+}
+
+/**
+ * @tc.name: ADD_MEMBER_TO_GROUP.TC_DEV_P2P_BIND_06
+ * @tc.desc: Test ADD_MEMBER_TO_GROUP interface function;
+ * @tc.type: FUNC
+ */
+HWTEST_F(ADD_MEMBER_TO_GROUP, TC_DEV_P2P_BIND_06, TestSize.Level1)
+{
+    SetClient(true);
+    g_isNeedContinue = true;
+    const char * createParamsStr = "{\"groupType\":256,\"deviceId\":\"3C58C27533D8\",\"userType\":0,\""
+                                   "groupVisibility\":-1,\"expireTime\":90,\"groupName\":\"P2PGroup\"}";
+    g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+    /* delay 1 seconds */
+    DelayWithMSec(500);
+    CJson *addParams = CreateJson();
+    AddStringToJson(addParams, FIELD_GROUP_ID, "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B");
+    AddIntToJson(addParams, FIELD_GROUP_TYPE, PEER_TO_PEER_GROUP);
+    AddBoolToJson(addParams, FIELD_IS_ADMIN, true);
+    char *addParamsStr = PackJsonToString(addParams);
+    FreeJson(addParams);
+    g_testGm->addMemberToGroup(CLIENT_REQUEST_ID, TEST_APP_NAME, addParamsStr);
+    FreeJsonString(addParamsStr);
+    DelayWithMSec(500);
+    ASSERT_EQ(g_messageCode, ON_ERROR);
+    ASSERT_EQ(g_operationCode, MEMBER_INVITE);
+}
+
+/**
+ * @tc.name: ADD_MEMBER_TO_GROUP.TC_DEV_P2P_BIND_07
+ * @tc.desc: Test ADD_MEMBER_TO_GROUP interface function;
+ * @tc.type: FUNC
+ */
+HWTEST_F(ADD_MEMBER_TO_GROUP, TC_DEV_P2P_BIND_07, TestSize.Level1)
+{
+    SetClient(true);
+    g_isNeedContinue = true;
+    g_gaCallback.onRequest = OnRequestError1;
+    const char * createParamsStr = "{\"groupType\":256,\"deviceId\":\"3C58C27533D8\",\"userType\":0,\""
+                                   "groupVisibility\":-1,\"expireTime\":90,\"groupName\":\"P2PGroup\"}";
+    g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+    /* delay 1 seconds */
+    DelayWithMSec(500);
+    CJson *addParams = CreateJson();
+    AddStringToJson(addParams, FIELD_GROUP_ID, "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B");
+    AddIntToJson(addParams, FIELD_GROUP_TYPE, PEER_TO_PEER_GROUP);
+    AddStringToJson(addParams, FIELD_PIN_CODE, "123456");
+    AddBoolToJson(addParams, FIELD_IS_ADMIN, true);
+    char *addParamsStr = PackJsonToString(addParams);
+    FreeJson(addParams);
+    g_testGm->addMemberToGroup(CLIENT_REQUEST_ID, TEST_APP_NAME, addParamsStr);
+    FreeJsonString(addParamsStr);
+    DelayWithMSec(500);
+    while (g_isNeedContinue)
+    {
+        SetClient(!GetClient());
+        CJson *data = CreateJsonFromString(g_dataBuffer);
+        int64_t req = DEFAULT_REQUEST_ID;
+        GetInt64FromJson(data, FIELD_REQUEST_ID, &req);
+        if (req == CLIENT_REQUEST_ID) {
+            req = SERVER_REQUEST_ID;
+        } else {
+            req = CLIENT_REQUEST_ID;
+        }
+        AddInt64StringToJson(data, FIELD_REQUEST_ID, req);
+        char *dataStr = PackJsonToString(data);
+        FreeJson(data);
+        memset_s(g_dataBuffer, BUFFER_SIZE, 0, BUFFER_SIZE);
+        memcpy_s(g_dataBuffer, BUFFER_SIZE, dataStr, strlen(dataStr) + 1);
+        FreeJsonString(dataStr);
+        g_testGm->processData(req, (uint8_t *)g_dataBuffer, strlen(g_dataBuffer) + 1);
+        g_isNeedContinue = false;
+        DelayWithMSec(500);
+    }
+    ASSERT_EQ(g_messageCode, ON_ERROR);
+    ASSERT_EQ(g_operationCode, MEMBER_INVITE);
+}
+
+/**
+ * @tc.name: ADD_MEMBER_TO_GROUP.TC_DEV_P2P_BIND_08
+ * @tc.desc: Test ADD_MEMBER_TO_GROUP interface function;
+ * @tc.type: FUNC
+ */
+HWTEST_F(ADD_MEMBER_TO_GROUP, TC_DEV_P2P_BIND_08, TestSize.Level1)
+{
+    SetClient(true);
+    g_isNeedContinue = true;
+    g_gaCallback.onRequest = OnRequestError2;
+    const char * createParamsStr = "{\"groupType\":256,\"deviceId\":\"3C58C27533D8\",\"userType\":0,\""
+                                   "groupVisibility\":-1,\"expireTime\":90,\"groupName\":\"P2PGroup\"}";
+    g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+    /* delay 1 seconds */
+    DelayWithMSec(500);
+    CJson *addParams = CreateJson();
+    AddStringToJson(addParams, FIELD_GROUP_ID, "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B");
+    AddIntToJson(addParams, FIELD_GROUP_TYPE, PEER_TO_PEER_GROUP);
+    AddStringToJson(addParams, FIELD_PIN_CODE, "123456");
+    AddBoolToJson(addParams, FIELD_IS_ADMIN, true);
+    char *addParamsStr = PackJsonToString(addParams);
+    FreeJson(addParams);
+    g_testGm->addMemberToGroup(CLIENT_REQUEST_ID, TEST_APP_NAME, addParamsStr);
+    FreeJsonString(addParamsStr);
+    DelayWithMSec(500);
+    while (g_isNeedContinue)
+    {
+        SetClient(!GetClient());
+        CJson *data = CreateJsonFromString(g_dataBuffer);
+        int64_t req = DEFAULT_REQUEST_ID;
+        GetInt64FromJson(data, FIELD_REQUEST_ID, &req);
+        if (req == CLIENT_REQUEST_ID) {
+            req = SERVER_REQUEST_ID;
+        } else {
+            req = CLIENT_REQUEST_ID;
+        }
+        AddInt64StringToJson(data, FIELD_REQUEST_ID, req);
+        char *dataStr = PackJsonToString(data);
+        FreeJson(data);
+        memset_s(g_dataBuffer, BUFFER_SIZE, 0, BUFFER_SIZE);
+        memcpy_s(g_dataBuffer, BUFFER_SIZE, dataStr, strlen(dataStr) + 1);
+        FreeJsonString(dataStr);
+        g_testGm->processData(req, (uint8_t *)g_dataBuffer, strlen(g_dataBuffer) + 1);
+        g_isNeedContinue = false;
+        DelayWithMSec(500);
+    }
+    ASSERT_EQ(g_messageCode, ON_ERROR);
+    ASSERT_EQ(g_operationCode, MEMBER_INVITE);
+}
+
+/**
+ * @tc.name: ADD_MEMBER_TO_GROUP.TC_DEV_P2P_BIND_10
+ * @tc.desc: Test ADD_MEMBER_TO_GROUP interface function;
+ * @tc.type: FUNC
+ */
+HWTEST_F(ADD_MEMBER_TO_GROUP, TC_DEV_P2P_BIND_10, TestSize.Level1)
+{
+    SetClient(true);
+    g_isNeedContinue = true;
+    g_gaCallback.onRequest = OnRequestError3;
+    const char * createParamsStr = "{\"groupType\":256,\"deviceId\":\"3C58C27533D8\",\"userType\":0,\""
+                                   "groupVisibility\":-1,\"expireTime\":90,\"groupName\":\"P2PGroup\"}";
+    g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+    /* delay 1 seconds */
+    DelayWithMSec(500);
+    CJson *addParams = CreateJson();
+    AddStringToJson(addParams, FIELD_GROUP_ID, "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B");
+    AddIntToJson(addParams, FIELD_GROUP_TYPE, PEER_TO_PEER_GROUP);
+    AddStringToJson(addParams, FIELD_PIN_CODE, "123456");
+    AddBoolToJson(addParams, FIELD_IS_ADMIN, true);
+    char *addParamsStr = PackJsonToString(addParams);
+    FreeJson(addParams);
+    g_testGm->addMemberToGroup(CLIENT_REQUEST_ID, TEST_APP_NAME, addParamsStr);
+    FreeJsonString(addParamsStr);
+    DelayWithMSec(500);
+    while (g_isNeedContinue)
+    {
+        SetClient(!GetClient());
+        CJson *data = CreateJsonFromString(g_dataBuffer);
+        int64_t req = DEFAULT_REQUEST_ID;
+        GetInt64FromJson(data, FIELD_REQUEST_ID, &req);
+        if (req == CLIENT_REQUEST_ID) {
+            req = SERVER_REQUEST_ID;
+        } else {
+            req = CLIENT_REQUEST_ID;
+        }
+        AddInt64StringToJson(data, FIELD_REQUEST_ID, req);
+        char *dataStr = PackJsonToString(data);
+        FreeJson(data);
+        memset_s(g_dataBuffer, BUFFER_SIZE, 0, BUFFER_SIZE);
+        memcpy_s(g_dataBuffer, BUFFER_SIZE, dataStr, strlen(dataStr) + 1);
+        FreeJsonString(dataStr);
+        g_testGm->processData(req, (uint8_t *)g_dataBuffer, strlen(g_dataBuffer) + 1);
+        g_isNeedContinue = false;
+        DelayWithMSec(500);
+    }
+    ASSERT_EQ(g_messageCode, ON_ERROR);
+    ASSERT_EQ(g_operationCode, MEMBER_INVITE);
+}
+
+/**
+ * @tc.name: ADD_MEMBER_TO_GROUP.TC_DEV_P2P_BIND_11
+ * @tc.desc: Test ADD_MEMBER_TO_GROUP interface function;
+ * @tc.type: FUNC
+ */
+HWTEST_F(ADD_MEMBER_TO_GROUP, TC_DEV_P2P_BIND_11, TestSize.Level1)
+{
+    SetClient(true);
+    g_isNeedContinue = true;
+    g_gaCallback.onRequest = OnRequestError4;
+    const char * createParamsStr = "{\"groupType\":256,\"deviceId\":\"3C58C27533D8\",\"userType\":0,\""
+                                   "groupVisibility\":-1,\"expireTime\":90,\"groupName\":\"P2PGroup\"}";
+    g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+    /* delay 1 second */
+    DelayWithMSec(500);
+    CJson *addParams = CreateJson();
+    AddStringToJson(addParams, FIELD_GROUP_ID, "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B");
+    AddIntToJson(addParams, FIELD_GROUP_TYPE, PEER_TO_PEER_GROUP);
+    AddStringToJson(addParams, FIELD_PIN_CODE, "123456");
+    AddBoolToJson(addParams, FIELD_IS_ADMIN, true);
+    char *addParamsStr = PackJsonToString(addParams);
+    FreeJson(addParams);
+    g_testGm->addMemberToGroup(CLIENT_REQUEST_ID, TEST_APP_NAME, addParamsStr);
+    FreeJsonString(addParamsStr);
+    DelayWithMSec(500);
+    while (g_isNeedContinue)
+    {
+        SetClient(!GetClient());
+        CJson *data = CreateJsonFromString(g_dataBuffer);
+        int64_t req = DEFAULT_REQUEST_ID;
+        GetInt64FromJson(data, FIELD_REQUEST_ID, &req);
+        if (req == CLIENT_REQUEST_ID) {
+        req = SERVER_REQUEST_ID;
+        } else {
+        req = CLIENT_REQUEST_ID;
+        }
+        AddInt64StringToJson(data, FIELD_REQUEST_ID, req);
+        char *dataStr = PackJsonToString(data);
+        FreeJson(data);
+        memset_s(g_dataBuffer, BUFFER_SIZE, 0, BUFFER_SIZE);
+        memcpy_s(g_dataBuffer, BUFFER_SIZE, dataStr, strlen(dataStr) + 1);
+        FreeJsonString(dataStr);
+        g_testGm->processData(req, (uint8_t *)g_dataBuffer, strlen(g_dataBuffer) + 1);
+        g_isNeedContinue = false;
+        DelayWithMSec(500);
+    }
+    ASSERT_EQ(g_messageCode, ON_ERROR);
+    ASSERT_EQ(g_operationCode, MEMBER_INVITE);
+}
+
+/**
+ * @tc.name: ADD_MEMBER_TO_GROUP.TC_DEV_P2P_BIND_12
+ * @tc.desc: Test ADD_MEMBER_TO_GROUP interface function;
+ * @tc.type: FUNC
+ */
+HWTEST_F(ADD_MEMBER_TO_GROUP, TC_DEV_P2P_BIND_12, TestSize.Level1)
+{
+    SetClient(true);
+    g_isNeedContinue = true;
+    g_gaCallback.onRequest = OnRequestError5;
+    const char * createParamsStr = "{\"groupType\":256,\"deviceId\":\"3C58C27533D8\",\"userType\":0,\""
+                                   "groupVisibility\":-1,\"expireTime\":90,\"groupName\":\"P2PGroup\"}";
+    g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+    /* delay 1 second */
+    DelayWithMSec(500);
+    CJson *addParams = CreateJson();
+    AddStringToJson(addParams, FIELD_GROUP_ID, "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B");
+    AddIntToJson(addParams, FIELD_GROUP_TYPE, PEER_TO_PEER_GROUP);
+    AddStringToJson(addParams, FIELD_PIN_CODE, "123456");
+    AddBoolToJson(addParams, FIELD_IS_ADMIN, true);
+    char *addParamsStr = PackJsonToString(addParams);
+    FreeJson(addParams);
+    g_testGm->addMemberToGroup(CLIENT_REQUEST_ID, TEST_APP_NAME, addParamsStr);
+    FreeJsonString(addParamsStr);
+    DelayWithMSec(500);
+    while (g_isNeedContinue)
+    {
+        SetClient(!GetClient());
+        CJson *data = CreateJsonFromString(g_dataBuffer);
+        int64_t req = DEFAULT_REQUEST_ID;
+        GetInt64FromJson(data, FIELD_REQUEST_ID, &req);
+        if (req == CLIENT_REQUEST_ID) {
+            req = SERVER_REQUEST_ID;
+        } else {
+            req = CLIENT_REQUEST_ID;
+        }
+        AddInt64StringToJson(data, FIELD_REQUEST_ID, req);
+        char *dataStr = PackJsonToString(data);
+        FreeJson(data);
+        memset_s(g_dataBuffer, BUFFER_SIZE, 0, BUFFER_SIZE);
+        memcpy_s(g_dataBuffer, BUFFER_SIZE, dataStr, strlen(dataStr) + 1);
+        FreeJsonString(dataStr);
+        g_testGm->processData(req, (uint8_t *)g_dataBuffer, strlen(g_dataBuffer) + 1);
+        g_isNeedContinue = false;
+        DelayWithMSec(500);
+    }
+    ASSERT_EQ(g_messageCode, ON_ERROR);
+    ASSERT_EQ(g_operationCode, MEMBER_INVITE);
+}
+
+static char *ConstructAddParams13()
+{
+    CJson *addParams = CreateJson();
+    AddStringToJson(addParams, FIELD_GROUP_ID, "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B");
+    AddIntToJson(addParams, FIELD_GROUP_TYPE, PEER_TO_PEER_GROUP);
+    AddStringToJson(addParams, FIELD_PIN_CODE, "123456");
+    AddBoolToJson(addParams, FIELD_IS_ADMIN, true);
+    char *addParamsStr = PackJsonToString(addParams);
+    FreeJson(addParams);
+    return addParamsStr;
+}
+
+/**
+ * @tc.name: ADD_MEMBER_TO_GROUP.TC_DEV_P2P_BIND_13
+ * @tc.desc: Test ADD_MEMBER_TO_GROUP interface function;
+ * @tc.type: FUNC
+ */
+HWTEST_F(ADD_MEMBER_TO_GROUP, TC_DEV_P2P_BIND_13, TestSize.Level1)
+{
+    SetClient(true);
+    g_isNeedContinue = true;
+    const char * createParamsStr = "{\"groupType\":256,\"deviceId\":\"3C58C27533D8\",\"userType\":0,\""
+                                   "groupVisibility\":-1,\"expireTime\":90,\"groupName\":\"P2PGroup\"}";
+    g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+    /* delay 1 second */
+    DelayWithMSec(500);
+    DeviceInfo *devAuthParams = CreateDeviceInfoStruct();
+    devAuthParams->devType = DEVICE_TYPE_ACCESSORY;
+    StringSetPointer(&(devAuthParams->authId), "CAF34E13190CBA510AA8DABB70CDFF8E9F623656DED400EF0D4CFD9E88FD6202");
+    StringSetPointer(&(devAuthParams->udid), "ABCDEF00ABCDEF00ABCDEF00ABCDEF00ABCDEF00ABCDEF00ABCDEF00ABCDEF00");
+    StringSetPointer(&(devAuthParams->groupId), "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B");
+    StringSetPointer(&(devAuthParams->serviceType), "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B");
+    AddTrustedDevice(devAuthParams, NULL);
+    DestroyDeviceInfoStruct(devAuthParams);
+    char *addParamsStr = ConstructAddParams13();
+    g_testGm->addMemberToGroup(CLIENT_REQUEST_ID, TEST_APP_NAME, addParamsStr);
+    FreeJsonString(addParamsStr);
+    DelayWithMSec(500);
+    while (g_isNeedContinue)
+    {
+        SetClient(!GetClient());
+        CJson *data = CreateJsonFromString(g_dataBuffer);
+        int64_t req = DEFAULT_REQUEST_ID;
+        GetInt64FromJson(data, FIELD_REQUEST_ID, &req);
+        if (req == CLIENT_REQUEST_ID) {
+            req = SERVER_REQUEST_ID;
+        } else {
+            req = CLIENT_REQUEST_ID;
+        }
+        AddInt64StringToJson(data, FIELD_REQUEST_ID, req);
+        char *dataStr = PackJsonToString(data);
+        FreeJson(data);
+        memset_s(g_dataBuffer, BUFFER_SIZE, 0, BUFFER_SIZE);
+        memcpy_s(g_dataBuffer, BUFFER_SIZE, dataStr, strlen(dataStr) + 1);
+        FreeJsonString(dataStr);
+        g_testGm->processData(req, (uint8_t *)g_dataBuffer, strlen(g_dataBuffer) + 1);
+        g_isNeedContinue = false;
+        DelayWithMSec(500);
+    }
+    g_testGm->processData(CLIENT_REQUEST_ID, (uint8_t *)g_dataBuffer, strlen(g_dataBuffer) + 1);
+    DelayWithMSec(500);
+    ASSERT_EQ(g_messageCode, ON_FINISH);
+    ASSERT_EQ(g_operationCode, MEMBER_INVITE);
+}
+
+/**
  * @tc.name: REGISTER_LISTENER.TC_LISTENER_01
  * @tc.desc: Test REGISTER_LISTENER interface function;
  * @tc.type: FUNC
@@ -814,6 +1616,61 @@ HWTEST_F(REGISTER_LISTENER, TC_LISTENER_04, TestSize.Level1)
     ASSERT_EQ(ret == HC_SUCCESS, true);
     ret = g_testGm->unRegDataChangeListener(TEST_APP_NAME);
     ASSERT_EQ(ret == HC_SUCCESS, true);
+}
+
+/**
+ * @tc.name: REGISTER_LISTENER.TC_LISTENER_05
+ * @tc.desc: Test REGISTER_LISTENER interface function;
+ * @tc.type: FUNC
+ */
+HWTEST_F(REGISTER_LISTENER, TC_LISTENER_05, TestSize.Level1)
+{
+    DataChangeListener listener;
+    listener.onGroupCreated = OnGroupCreated;
+    listener.onGroupDeleted = OnGroupDeleted;
+    listener.onDeviceBound = OnDeviceBound;
+    listener.onDeviceUnBound = OnDeviceUnBound;
+    listener.onDeviceNotTrusted = OnDeviceNotTrusted;
+    listener.onLastGroupDeleted = OnLastGroupDeleted;
+    listener.onTrustedDeviceNumChanged = OnTrustedDeviceNumChanged;
+    int ret = g_testGm->regDataChangeListener(TEST_APP_NAME, &listener);
+    ASSERT_EQ(ret == HC_SUCCESS, true);
+    const char * createParamsStr = "{\"groupType\":256,\"deviceId\":\"3C58C27533D8\",\"userType\":0,\""
+                                   "groupVisibility\":-1,\"expireTime\":90,\"groupName\":\"P2PGroup\"}";
+    g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+    g_testCondition.wait(&g_testCondition);
+    ASSERT_EQ(g_receivedMessageNum[GROUP_CREATED], 1);
+}
+
+/**
+ * @tc.name: REGISTER_LISTENER.TC_LISTENER_06
+ * @tc.desc: Test REGISTER_LISTENER interface function;
+ * @tc.type: FUNC
+ */
+HWTEST_F(REGISTER_LISTENER, TC_LISTENER_06, TestSize.Level1)
+{
+    DataChangeListener listener;
+    listener.onGroupCreated = OnGroupCreated;
+    listener.onGroupDeleted = OnGroupDeleted;
+    listener.onDeviceBound = OnDeviceBound;
+    listener.onDeviceUnBound = OnDeviceUnBound;
+    listener.onDeviceNotTrusted = OnDeviceNotTrusted;
+    listener.onLastGroupDeleted = OnLastGroupDeleted;
+    listener.onTrustedDeviceNumChanged = OnTrustedDeviceNumChanged;
+    int ret = g_testGm->regDataChangeListener(TEST_APP_NAME, &listener);
+    ASSERT_EQ(ret == HC_SUCCESS, true);
+    const char * createParamsStr = "{\"groupType\":256,\"deviceId\":\"3C58C27533D8\",\"userType\":0,\""
+                                   "groupVisibility\":-1,\"expireTime\":90,\"groupName\":\"P2PGroup\"}";
+    g_testGm->createGroup(TEMP_REQUEST_ID, TEST_APP_NAME, createParamsStr);
+    g_testCondition.wait(&g_testCondition);
+    const char *deleteParamsStr = R"({"groupId": "BC680ED1137A5731F4A5A90B1AACC4A0A3663F6FC2387B7273EFBCC66A54DC0B"})";
+    g_testGm->deleteGroup(TEMP_REQUEST_ID, TEST_APP_NAME, deleteParamsStr);
+    DelayWithMSec(500);
+    ASSERT_EQ(g_receivedMessageNum[DEVICE_UNBOUND], 1);
+    ASSERT_EQ(g_receivedMessageNum[LAST_GROUP_DELETED], 1);
+    ASSERT_EQ(g_receivedMessageNum[TRUSTED_DEVICE_NUM_CHANGED], 3);
+    ASSERT_EQ(g_receivedMessageNum[DEVICE_NOT_TRUSTED], 1);
+    ASSERT_EQ(g_receivedMessageNum[GROUP_DELETED], 1);
 }
 
 /**

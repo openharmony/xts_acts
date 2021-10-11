@@ -16,9 +16,7 @@
 #ifndef DEVICEAUTH_STANDARD_TEST_H
 #define DEVICEAUTH_STANDARD_TEST_H
 #include <cstdint>
-#include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "device_auth.h"
 
 
 const char *TEST_APP_NAME = "TestApp";
