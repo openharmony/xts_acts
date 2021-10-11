@@ -39,6 +39,7 @@ describe('SystemParameterTest', function () {
                 if (err == undefined) {
                     ret = true;
                     console.info('system_parameter_test_0100 set callback hw_sc.build.os.version value success ');
+                    expect(ret).assertTrue();
                 } else {
                     console.info('system_parameter_test_0100 set callback hw_sc.build.os.version value err:'
                     + err.code);
@@ -48,9 +49,6 @@ describe('SystemParameterTest', function () {
         } catch (err) {
             console.info('system_parameter_test_0100 set callback hw_sc.build.os.version unexpect err:' + err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
         console.info('system_parameter_test_0100 : end');
     })
 
@@ -74,12 +72,10 @@ describe('SystemParameterTest', function () {
 
         } catch (err) {
             ret = true;
-            console.info('system_parameter_test_0110 set callback hw_sc.build.os.version unexpect err:' + err)
+            console.info('system_parameter_test_0110 set callback hw_sc.build.os.version unexpect err:' + err);
+            expect(ret).assertTrue();
             done();
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
         console.info('system_parameter_test_0110 : end');
     })
 
@@ -99,6 +95,7 @@ describe('SystemParameterTest', function () {
                     ret = true;
                     console.info('system_parameter_test_0120 set callback hw_sc.build.os.version value err:' +
                     err.code);
+                    expect(ret).assertTrue();
                     done();
                 }
             });
@@ -106,9 +103,6 @@ describe('SystemParameterTest', function () {
         } catch (err) {
             console.info('system_parameter_test_0120 set callback hw_sc.build.os.version unexpect err:' + err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
         console.info('system_parameter_test_0120 : end');
     })
 
@@ -125,6 +119,7 @@ describe('SystemParameterTest', function () {
             parameterInfo.then(function (value) {
                 console.info('system_parameter_test_0200 promise  set hw_sc.build.os.version success: ' + value);
                 ret = true;
+                expect(ret).assertTrue();
                 done();
             }).catch(function (err) {
                 console.info('system_parameter_test_0200 promise  set hw_sc.build.os.version error: ' + err.code);
@@ -132,10 +127,6 @@ describe('SystemParameterTest', function () {
         } catch (err) {
             console.info('system_parameter_test_0200 set callback hw_sc.build.os.version unexpect err:' + err)
         }
-
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
         console.info('system_parameter_test_0200 : end');
     })
 
@@ -154,14 +145,12 @@ describe('SystemParameterTest', function () {
             }).catch(function (err) {
                 ret = true;
                 console.info('system_parameter_test_0220 promise  set hw_sc.build.os.version error: ' + err.code);
+                expect(ret).assertTrue();
                 done();
             });
         } catch (err) {
             console.info('system_parameter_test_0220 set callback hw_sc.build.os.version unexpect err:' + err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
         console.info('system_parameter_test_0220 : end');
     })
 
@@ -183,11 +172,9 @@ describe('SystemParameterTest', function () {
         } catch (err) {
             ret = true;
             console.info('system_parameter_test_0230 set callback hw_sc.build.os.version unexpect err:' + err);
+            expect(ret).assertTrue();
             done();
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
         console.info('system_parameter_test_0230 : end');
     })
 
@@ -232,15 +219,13 @@ describe('SystemParameterTest', function () {
                 } else {
                     console.info('system_parameter_test_0310 promise  setSync hw_sc.build.os.version: ' + sysValue);
                     ret = true;
+                    expect(ret).assertTrue();
                     done();
                 }
             })
         } catch (err) {
             console.info('system_parameter_test_0310 promise  setSync hw_sc.build.os.version: ' + err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
         console.info('system_parameter_test_0310 : end');
     })
 
@@ -283,6 +268,7 @@ describe('SystemParameterTest', function () {
                 if (sysValue === ' ') {
                     console.info('system_parameter_test_0340 promise  get rhw_sc.build.os.version :' + sysValue);
                     ret = true;
+                    expect(ret).assertTrue();
                     done();
                 } else {
                     console.info('system_parameter_test_0340 promise  get hw_sc.build.os.version: ' + sysValue);
@@ -292,9 +278,6 @@ describe('SystemParameterTest', function () {
             ret = true;
             console.info('promise  get hw_sc.build.os.version: ' + err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
         console.info('system_parameter_test_0340 : end');
     })
 
@@ -311,6 +294,7 @@ describe('SystemParameterTest', function () {
             parameterInfo.then(function (value) {
                 ret = true;
                 console.info(' system_parameter_test_0400 promise get hw_sc.build.os.version success: ' + value);
+                    expect(ret).assertTrue();
                 done();
             }).catch(function (err) {
                 console.info(' system_parameter_test_0400 promise get hw_sc.build.os.version error: ' + err.code);
@@ -318,9 +302,7 @@ describe('SystemParameterTest', function () {
         } catch (err) {
             console.info('system_parameter_test_0400 promise  setSync hw_sc.build.os.version error: ' + err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
+
         console.info('system_parameter_test_0400 : end');
     })
 
@@ -345,6 +327,8 @@ describe('SystemParameterTest', function () {
             parameterInfo.then(function (value) {
                 if (value === '1.1.1.1') {
                     console.info(' system_parameter_test_0410 promise get hw_sc.build.os.version success: ' + value);
+                    ret = true;
+                    expect(ret).assertTrue();
                     done();
                 }
             }).catch(function (err) {
@@ -353,9 +337,7 @@ describe('SystemParameterTest', function () {
         } catch (err) {
             console.info('system_parameter_test_0400 promise  get shw_sc.build.os.version error: ' + err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
+
         console.info('system_parameter_test_0400 : end');
     })
 
@@ -379,23 +361,20 @@ describe('SystemParameterTest', function () {
             let parameter = systemparameter.get('hw_sc.build.os.version', '10.3.4.5.63');
             parameter.then(function (value) {
                 sysValue = value;
-                if (sysValue === '10.3.4.5.63') {
+                if (sysValue === '1.1.1.1') {
                     ret = true;
                     console.info(' system_parameter_test_0420 promise get hw_sc.build.os.version success: ' + value);
-
+                    expect(ret).assertTrue();
+                    done();
                 } else {
                     console.info(' system_parameter_test_0420 promise get hw_sc.build.os.version faile ' + value);
                 }
             }).catch(function (err) {
                 console.info(' system_parameter_test_0420 promise get hw_sc.build.os.version error: ' + err.code);
             });
-            done();
         } catch (err) {
             console.info('system_parameter_test_0420 promise  get hw_sc.build.os.version error: ' + err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
         console.info('system_parameter_test_0420 : end');
     })
 
@@ -412,6 +391,7 @@ describe('SystemParameterTest', function () {
                 if (err == undefined) {
                     console.info('system_parameter_test_0430 promise  success: ' + data);
                     ret = true;
+                    expect(ret).assertTrue();
                     done();
                 } else {
                     console.info(' system_parameter_test_0430 promise get  faile ' + err);
@@ -421,9 +401,7 @@ describe('SystemParameterTest', function () {
         } catch (err) {
             console.info('system_parameter_test_0430 promise  catch get failed ' + err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
+
         console.info('system_parameter_test_0430 : end');
     })
 
@@ -435,23 +413,19 @@ describe('SystemParameterTest', function () {
     it('system_parameter_test_0440', 0, async function (done) {
         console.info('system_parameter_test_0440 start');
         let ret = false;
-        let sysValue = 0;
         try {
-            let parameter = systemparameter.get('hw_sc.build.os.version', '10.3.4.5.63');
+            let parameter = systemparameter.get('c.c.c.c', '10.3.4.5.63');
             parameter.then(function (value) {
-                sysValue = value;
                 ret = true;
                 console.info(' system_parameter_test_0440 promise get hw_sc.build.os.version success: ' + value);
+                expect(ret).assertTrue();
+                done();
             }).catch(function (err) {
                 console.info(' system_parameter_test_0440 promise get hw_sc.build.os.version error: ' + err.code);
             });
-            done();
         } catch (err) {
             console.info('system_parameter_test_0440 promise  setSync hw_sc.build.os.version: ' + err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
         console.info('system_parameter_test_0440 : end');
     })
 
@@ -470,14 +444,13 @@ describe('SystemParameterTest', function () {
             }).catch(function (err) {
                 ret = true;
                 console.info(' system_parameter_test_0450 promise get a.b.b.c error: ' + err.code);
+                expect(ret).assertTrue();
                 done();
             });
         } catch (err) {
             console.info('system_parameter_test_0450 promise  setSync a.b.b.c error: ' + err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
+
         console.info('system_parameter_test_0450 : end');
     })
 
@@ -486,26 +459,23 @@ describe('SystemParameterTest', function () {
      * @tc.name      testGet0500
      * @tc.desc      Get a property key value
      */
-    it('system_parameter_test_0500', 0,  function (done) {
+    it('system_parameter_test_0500', 0, async function (done) {
         console.info('system_parameter_test_0500 start');
         let ret = false;
         try {
-            systemparameter.get('hw_sc.build.os.version', async function (err, data) {
+            systemparameter.get('hw_sc.build.os.version', (err, data) => {
                 if (err == undefined) {
                     console.log('system_parameter_test_0500 get test.parameter.key value success:' + data);
                     ret = ture;
-                    done();
+                    expect(ret).assertTrue();
+                    done(); 
                 } else {
                     console.log('system_parameter_test_0500  get test.parameter.key value err:' + err.code)
                 }
             });
-            done();
         } catch (err) {
             console.log('system_parameter_test_0500 get unexpected error: ' + err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
         console.info('system_parameter_test_0500 : end');
     })
 
@@ -528,6 +498,7 @@ describe('SystemParameterTest', function () {
                 if (err == undefined) {
                     console.info('system_parameter_test_0510 get aaaaa sucess :' + data);
                     ret = true;
+                    expect(ret).assertTrue();
                     done();
                 } else {
                     console.info('system_parameter_test_0510 get aaaaa failed :' + err.code);
@@ -536,9 +507,7 @@ describe('SystemParameterTest', function () {
         } catch (err) {
             console.info('system_parameter_test_0510 promise get input error: ' + err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
+
         console.info('system_parameter_test_0510 : end');
     })
 
@@ -555,6 +524,7 @@ describe('SystemParameterTest', function () {
                 if (err == undefined) {
                     console.info('system_parameter_test_0520 get systemparameter sucess: ' + data);
                     ret = true;
+                    expect(ret).assertTrue();
                     done();
                 } else {
                     console.info('system_parameter_test_0520 get systemparameter sucess: ' + err.code);
@@ -563,9 +533,6 @@ describe('SystemParameterTest', function () {
         } catch (err) {
             console.info('system_parameter_test_0520 promise get input error: ' + err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
         console.info('system_parameter_test_0520 : end');
     })
 
@@ -582,6 +549,7 @@ describe('SystemParameterTest', function () {
                 if (err == undefined) {
                     console.info('system_parameter_test_0530 get systemparameter sucess: ' + data);
                     ret = true;
+                    expect(ret).assertTrue();
                     done();
                 } else {
                     console.info('system_parameter_test_0530 get systemparameter sucess: ' + err.code);
@@ -590,9 +558,6 @@ describe('SystemParameterTest', function () {
         } catch (err) {
             console.info('system_parameter_test_0530 promise get input error: ' + err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
         console.info('system_parameter_test_0530 : end');
     })
 
@@ -610,6 +575,7 @@ describe('SystemParameterTest', function () {
                     ret = true;
                     console.info('system_parameter_test_0600 get systemparameter hw_sc.build.os.version sucess: '
                     + data);
+                    expect(ret).assertTrue();
                     done();
                 } else {
                     console.info('system_parameter_test_0600 get systemparameter hw_sc.build.os.version failed: '
@@ -619,9 +585,7 @@ describe('SystemParameterTest', function () {
         } catch (err) {
             console.info('system_parameter_test_0600 get systemparameter hw_sc.build.os.version abnormal: ', err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
+
         console.info('system_parameter_test_0610 : end');
     })
 
@@ -647,10 +611,10 @@ describe('SystemParameterTest', function () {
             ret = true;
             console.info('system_parameter_test_0610 get systemparameter hw_sc.build.os.version abnormal: ', err);
             done();
+            setTimeout(function(){
+                expect(ret).assertTrue();
+            }, '1000');
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
         console.info('system_parameter_test_0610 : end');
     })
 
@@ -668,6 +632,9 @@ describe('SystemParameterTest', function () {
                     ret = true;
                     console.info('system_parameter_test_0620 get systemparameter hw_sc.build.os.version sucess: '
                     + data);
+                    setTimeout(function(){
+                        expect(ret).assertTrue();
+                    }, '1000');
                     done();
                 } else {
                     console.info('system_parameter_test_0620 get systemparameter hw_sc.build.os.version failed: '
@@ -677,9 +644,6 @@ describe('SystemParameterTest', function () {
         } catch (err) {
             console.info('system_parameter_test_0620 get systemparameter hw_sc.build.os.version abnormal: ', err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
         console.info('system_parameter_test_0620 : end');
     })
 
@@ -703,15 +667,15 @@ describe('SystemParameterTest', function () {
                     ret = true;
                     console.info('system_parameter_test_0640 get systemparameter b.b.b.b.b failed: '
                     + err.code);
+                    setTimeout(function(){
+                        expect(ret).assertTrue();
+                    }, '1000');
                     done();
                 }
             })
         } catch (err) {
             console.info('system_parameter_test_0640 get systemparameter b.b.b.b.b abnormal: ', err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
         console.info('system_parameter_test_0640 : end');
     })
 
