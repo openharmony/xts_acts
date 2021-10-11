@@ -574,6 +574,22 @@ describe('HiAppEventApiTest', function () {
                 done();
             }
         });
+
+    HiAppEvent.write(HiAppEvent.Event.DISTRIBUTED_SERVICE_START, HiAppEvent.EventType.BEHAVIOR,
+        {[HiAppEvent.Param.USER_ID]: 'distributedservicestart', [HiAppEvent.Param.DISTRIBUTED_SERVICE_NAME]: 'HiAppEvent',
+        [HiAppEvent.Param.DISTRIBUTED_SERVICE_INSTANCE_ID]: 100},
+        (err, value) => {
+            console.log('HiAppEvent into json-callback');
+            if (err) {
+                console.error('HiAppEvent json-callback-error code=${err.code}');
+                expect().assertFail();
+                done();
+            } else {
+                console.log('HiAppEvent json-callback-success value=${value}');
+                expect(value == 0).assertTrue();
+                done();
+            }
+        });
     console.info('testHiAppEventApi25 end')
     })
 })
