@@ -19,14 +19,20 @@ const KEY_TEST_INT_ELEMENT = 'key_test_int_2';
 const KEY_TEST_FLOAT_ELEMENT = 'key_test_float_2';
 const KEY_TEST_BOOLEAN_ELEMENT = 'key_test_boolean_2';
 const KEY_TEST_STRING_ELEMENT = 'key_test_string_2';
+const KEY_TEST_SYNC_ELEMENT = 'key_test_sync';
 
 const VALUE_TEST_INT_ELEMENT = 1234;
 const VALUE_TEST_FLOAT_ELEMENT = 4321.12;
 const VALUE_TEST_BOOLEAN_ELEMENT = true;
 const VALUE_TEST_STRING_ELEMENT = 'value-string-002';
+const VALUE_TEST_SYNC_ELEMENT = 'value-string-001';
 
 const SINGLE_VERSION = 1;
 const SECURITY_LEVEL = 3;
+
+const PULL_ONLY = 0;
+const PUSH_ONLY = 1;
+const PUSH_PULL = 2;
 
 var kvManager = null;
 var kvStore = null;
@@ -317,6 +323,66 @@ describe('KvStoreTest', function () {
                 if (err != undefined) {
                     expect(null).assertFail();
                 }
+            });
+            await(3000);
+        }catch(e) {
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+    it('testOnSyncComplete101', 0, async function (done) {
+        try {
+            kvStore.on('syncComplete', function (data) {
+                expect(true).assertEqual(data !=null);
+            });
+            await kvStore.put(KEY_TEST_SYNC_ELEMENT + 'testSync101', VALUE_TEST_SYNC_ELEMENT, function (err,data) {
+                if (err != undefined) {
+                    expect(null).assertFail();
+                }
+                var devices = ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
+                var mode = PULL_ONLY;
+                kvStore.sync(devices, mode, 10);
+            });
+            await(3000);
+        }catch(e) {
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+    it('testOnSyncComplete102', 0, async function (done) {
+        try {
+            kvStore.on('syncComplete', function (data) {
+                expect(true).assertEqual(data !=null);
+            });
+            await kvStore.put(KEY_TEST_SYNC_ELEMENT + 'testSync101', VALUE_TEST_SYNC_ELEMENT, function (err,data) {
+                if (err != undefined) {
+                    expect(null).assertFail();
+                }
+                var devices = ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
+                var mode = PUSH_ONLY;
+                kvStore.sync(devices, mode, 10);
+            });
+            await(3000);
+        }catch(e) {
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+    it('testOnSyncComplete103', 0, async function (done) {
+        try {
+            kvStore.on('syncComplete', function (data) {
+                expect(true).assertEqual(data !=null);
+            });
+            await kvStore.put(KEY_TEST_SYNC_ELEMENT + 'testSync101', VALUE_TEST_SYNC_ELEMENT, function (err,data) {
+                if (err != undefined) {
+                    expect(null).assertFail();
+                }
+                var devices = ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
+                var mode = PUSH_PULL;
+                kvStore.sync(devices, mode, 10);
             });
             await(3000);
         }catch(e) {
