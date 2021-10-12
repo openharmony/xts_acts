@@ -49,13 +49,12 @@ ohos_moduletest_suite("DeviceAuthFunctionTest") {
     "//base/security/deviceauth/services/common/inc/broadcast_manager",
     "//base/security/deviceauth/hals/inc/common",
     "//base/security/deviceauth/hals/inc/linux",
-    "//base/security/deviceauth/hals/inc/liteos",
     "//base/security/deviceauth/hals/inc/dev_info/3516",
-    "//base/security/deviceauth/frameworks/inc",
   ]
 
   deps = [
-    "//base/security/deviceauth/services:deviceauth_sdk",
+    "//base/security/deviceauth/services:deviceauth",
+    "//base/security/deviceauth/services:deviceauth_service",
     "//base/security/huks/interfaces/innerkits/huks_standard/main:libhukssdk",
     "//third_party/bounds_checking_function:libsec_static",
     "//third_party/cJSON:cjson_static",
