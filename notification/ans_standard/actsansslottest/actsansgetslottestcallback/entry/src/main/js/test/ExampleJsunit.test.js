@@ -63,7 +63,7 @@ describe('ActsAnsGetSlotTestCallback', function () {
             expect(err.code).assertEqual(0);
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0100 data====>" + JSON.stringify(data));
             expect(data.type).assertEqual(notification.SlotType.SOCIAL_COMMUNICATION);
-            expect(data.level).assertEqual(3);
+            expect(data.level).assertEqual(4);
             expect(data.desc).assertEqual("");
             expect(data.badgeFlag).assertEqual(true);
             expect(data.bypassDnd).assertEqual(false);
@@ -127,7 +127,7 @@ describe('ActsAnsGetSlotTestCallback', function () {
             expect(err.code).assertEqual(0);
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0300 data====>" + JSON.stringify(data));
             expect(data.type).assertEqual(notification.SlotType.CONTENT_INFORMATION);
-            expect(data.level).assertEqual(3);
+            expect(data.level).assertEqual(2);
             expect(data.desc).assertEqual("");
             expect(data.badgeFlag).assertEqual(true);
             expect(data.bypassDnd).assertEqual(false);
@@ -161,7 +161,7 @@ describe('ActsAnsGetSlotTestCallback', function () {
             expect(err.code).assertEqual(0);
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0400 data====>" + JSON.stringify(data));
             expect(data.type).assertEqual(notification.SlotType.OTHER_TYPES);
-            expect(data.level).assertEqual(3);
+            expect(data.level).assertEqual(1);
             expect(data.desc).assertEqual("");
             expect(data.badgeFlag).assertEqual(true);
             expect(data.bypassDnd).assertEqual(false);
@@ -195,7 +195,7 @@ describe('ActsAnsGetSlotTestCallback', function () {
             expect(err.code).assertEqual(0);
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0500 data====>" + JSON.stringify(data));
             expect(data.type).assertEqual(notification.SlotType.OTHER_TYPES);
-            expect(data.level).assertEqual(3);
+            expect(data.level).assertEqual(1);
             expect(data.desc).assertEqual("");
             expect(data.badgeFlag).assertEqual(true);
             expect(data.bypassDnd).assertEqual(false);
