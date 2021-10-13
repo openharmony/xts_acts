@@ -13,4 +13,4 @@
  * limitations under the License.
  */
 
-require('./Wifi.test.js')
+require('./WifiSta.test.js')
