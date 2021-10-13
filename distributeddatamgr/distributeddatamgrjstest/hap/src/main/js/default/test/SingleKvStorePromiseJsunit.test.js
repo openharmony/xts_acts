@@ -19,17 +19,26 @@ const KEY_TEST_INT_ELEMENT = 'key_test_int';
 const KEY_TEST_FLOAT_ELEMENT = 'key_test_float';
 const KEY_TEST_BOOLEAN_ELEMENT = 'key_test_boolean';
 const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+const KEY_TEST_SYNC_ELEMENT = 'key_test_sync';
 
 const VALUE_TEST_INT_ELEMENT = 123;
 const VALUE_TEST_FLOAT_ELEMENT = 321.12;
 const VALUE_TEST_BOOLEAN_ELEMENT = true;
 const VALUE_TEST_STRING_ELEMENT = 'value-string-001';
+const VALUE_TEST_SYNC_ELEMENT = 'value-string-001';
 const SINGLE_VERSION = 1;
 const SECURITY_LEVEL = 3;
+
+const PULL_ONLY = 0;
+const PUSH_ONLY = 1;
+const PUSH_PULL = 2;
 
 var kvManager = null;
 var kvStore = null;
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 describe('KvStoreTest', function () {
     const config = {
         bundleName : 'ohos.acts.distributeddatamgr',
@@ -58,7 +67,7 @@ describe('KvStoreTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
+            await sleep(3000);
         }catch (e) {
             expect(null).assertFail();
         }
@@ -75,7 +84,7 @@ describe('KvStoreTest', function () {
                 expect(null).assertFail();
             });
             expect(null).assertFail();
-            await promise;
+            await sleep(3000);
         } catch (e) {
         }
         done();
@@ -90,7 +99,7 @@ describe('KvStoreTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
+            await sleep(3000);
         }catch(e) {
             expect(null).assertFail();
         }
@@ -104,7 +113,7 @@ describe('KvStoreTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
+            await sleep(3000);
         } catch (e) {
             expect(null).assertFail();
         }
@@ -118,7 +127,7 @@ describe('KvStoreTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
+            await sleep(3000);
         } catch (e) {
             expect(null).assertFail();
         }
@@ -132,7 +141,7 @@ describe('KvStoreTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
+            await sleep(3000);
         } catch (e) {
             expect(null).assertFail();
         }
@@ -147,7 +156,7 @@ describe('KvStoreTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
+            await sleep(3000);
         }catch (e){
             expect(null).assertFail();
         }
@@ -162,18 +171,16 @@ describe('KvStoreTest', function () {
             }
             const promise = kvStore.put(KEY_TEST_STRING_ELEMENT+'002', str);
             promise.then((data) => {
+                const promise1 = kvStore.get(KEY_TEST_STRING_ELEMENT + '002');
+                promise1.then((data) => {
+                    expect(str).assertEqual(data);
+                }).catch((err) => {
+                    expect(null).assertFail();
+                });
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
-
-            const promise1 = kvStore.get(KEY_TEST_STRING_ELEMENT + '002');
-            promise1.then((data) => {
-                expect(str).assertEqual(data);
-            }).catch((err) => {
-                expect(null).assertFail();
-            });
-            await promise1;
+            await sleep(3000);
         }catch (e) {
             expect(null).assertFail();
         }
@@ -187,7 +194,7 @@ describe('KvStoreTest', function () {
                 expect(null).assertFail();
             }).catch((err) => {
             });
-            await promise1;
+            await sleep(3000);
         }catch(e) {
         }
         done();
@@ -200,7 +207,7 @@ describe('KvStoreTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
+            await sleep(3000);
         }catch(e) {
             expect(null).assertFail();
         }
@@ -211,17 +218,16 @@ describe('KvStoreTest', function () {
         try {
             const promise = kvStore.put(KEY_TEST_INT_ELEMENT+ '001', VALUE_TEST_INT_ELEMENT);
             promise.then((data) => {
+                const promise1 = kvStore.get(KEY_TEST_INT_ELEMENT+ '001');
+                promise1.then((data) => {
+                    expect(VALUE_TEST_INT_ELEMENT).assertEqual(data);
+                }).catch((err) => {
+                    expect(null).assertFail();
+                });
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
-            const promise1 = kvStore.get(KEY_TEST_INT_ELEMENT+ '001');
-            promise1.then((data) => {
-                expect(VALUE_TEST_INT_ELEMENT).assertEqual(data);
-            }).catch((err) => {
-                expect(null).assertFail();
-            });
-            await promise1;
+            await sleep(3000);
         }catch(e) {
             expect(null).assertFail();
         }
@@ -233,18 +239,16 @@ describe('KvStoreTest', function () {
             var intValue = 987654321;
             const promise = kvStore.put(KEY_TEST_INT_ELEMENT+'002', intValue);
             promise.then((data) => {
+                const promise1 = kvStore.get(KEY_TEST_INT_ELEMENT+'002');
+                promise1.then((data) => {
+                    expect(intValue).assertEqual(data);
+                }).catch((err) => {
+                    expect(null).assertFail();
+                });
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
-
-            const promise1 = kvStore.get(KEY_TEST_INT_ELEMENT+'002');
-            promise1.then((data) => {
-                expect(intValue).assertEqual(data);
-            }).catch((err) => {
-                expect(null).assertFail();
-            });
-            await promise1;
+            await sleep(3000);
         }catch(e) {
             expect(null).assertFail();
         }
@@ -256,18 +260,16 @@ describe('KvStoreTest', function () {
             var intValue = Number.MAX_VALUE;
             const promise = kvStore.put(KEY_TEST_INT_ELEMENT+'003', intValue);
             promise.then((data) => {
+                const promise1 = kvStore.get(KEY_TEST_INT_ELEMENT+'003');
+                promise1.then((data) => {
+                    expect(intValue).assertEqual(data);
+                }).catch((err) => {
+                    expect(null).assertFail();
+                });
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
-
-            const promise1 = kvStore.get(KEY_TEST_INT_ELEMENT+'003');
-            promise1.then((data) => {
-                expect(intValue).assertEqual(data);
-            }).catch((err) => {
-                expect(null).assertFail();
-            });
-            await promise1;
+            await sleep(3000);
         }catch(e) {
             expect(null).assertFail();
         }
@@ -279,18 +281,16 @@ describe('KvStoreTest', function () {
             var intValue = Number.MIN_VALUE;
             const promise = kvStore.put(KEY_TEST_INT_ELEMENT+'004', intValue);
             promise.then((data) => {
+                const promise1 = kvStore.get(KEY_TEST_INT_ELEMENT+'004');
+                promise1.then((data) => {
+                    expect(intValue).assertEqual(data);
+                }).catch((err) => {
+                    expect(null).assertFail();
+                });
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
-
-            const promise1 = kvStore.get(KEY_TEST_INT_ELEMENT+'004');
-            promise1.then((data) => {
-                expect(intValue).assertEqual(data);
-            }).catch((err) => {
-                expect(null).assertFail();
-            });
-            await promise1;
+            await sleep(3000);
         }catch(e) {
             expect(null).assertFail();
         }
@@ -304,7 +304,7 @@ describe('KvStoreTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
+            await sleep(3000);
         }catch(e) {
             expect(null).assertFail();
         }
@@ -315,17 +315,16 @@ describe('KvStoreTest', function () {
         var boolValue = false;
         const promise = kvStore.put(KEY_TEST_BOOLEAN_ELEMENT+ '002', boolValue);
         promise.then((data) => {
+            const promise1 = kvStore.get(KEY_TEST_BOOLEAN_ELEMENT+ '002');
+            promise1.then((data) => {
+                expect(boolValue).assertEqual(data);
+            }).catch((err) => {
+                expect(null).assertFail();
+            });
         }).catch((err) => {
             expect(null).assertFail();
         });
-        await promise;
-        const promise1 = kvStore.get(KEY_TEST_BOOLEAN_ELEMENT+ '002');
-        promise1.then((data) => {
-            expect(boolValue).assertEqual(data);
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise1;
+        await sleep(3000);
         done();
     })
 
@@ -336,7 +335,7 @@ describe('KvStoreTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
+            await sleep(3000);
         }catch(e) {
             expect(null).assertFail();
         }
@@ -348,17 +347,16 @@ describe('KvStoreTest', function () {
             var floatValue = 123456.654321;
             const promise = kvStore.put(KEY_TEST_FLOAT_ELEMENT+ '002', floatValue);
             promise.then((data) => {
+                const promise1 = kvStore.get(KEY_TEST_FLOAT_ELEMENT+ '002');
+                promise1.then((data) => {
+                    expect(floatValue).assertEqual(data);
+                }).catch((err) => {
+                    expect(null).assertFail();
+                });
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
-            const promise1 = kvStore.get(KEY_TEST_FLOAT_ELEMENT+ '002');
-            promise1.then((data) => {
-                expect(floatValue).assertEqual(data);
-            }).catch((err) => {
-                expect(null).assertFail();
-            });
-            await promise1;
+            await sleep(3000);
         }catch (e) {
             expect(null).assertFail();
         }
@@ -370,17 +368,16 @@ describe('KvStoreTest', function () {
             var floatValue = 123456.0;
             const promise = kvStore.put(KEY_TEST_FLOAT_ELEMENT+ '003', floatValue);
             promise.then((data) => {
+                const promise1 = kvStore.get(KEY_TEST_FLOAT_ELEMENT+ '003');
+                promise1.then((data) => {
+                    expect(floatValue).assertEqual(data);
+                }).catch((err) => {
+                    expect(null).assertFail();
+                });
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
-            const promise1 = kvStore.get(KEY_TEST_FLOAT_ELEMENT+ '003');
-            promise1.then((data) => {
-                expect(floatValue).assertEqual(data);
-            }).catch((err) => {
-                expect(null).assertFail();
-            });
-            await promise1;
+            await sleep(3000);
         }catch (e) {
             expect(null).assertFail();
         }
@@ -392,17 +389,16 @@ describe('KvStoreTest', function () {
             var floatValue = 123456.00;
             const promise = kvStore.put(KEY_TEST_FLOAT_ELEMENT+ '004', floatValue);
             promise.then((data) => {
+                const promise1 = kvStore.get(KEY_TEST_FLOAT_ELEMENT+ '004');
+                promise1.then((data) => {
+                    expect(floatValue).assertEqual(data);
+                }).catch((err) => {
+                    expect(null).assertFail();
+                });
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
-            const promise1 = kvStore.get(KEY_TEST_FLOAT_ELEMENT+ '004');
-            promise1.then((data) => {
-                expect(floatValue).assertEqual(data);
-            }).catch((err) => {
-                expect(null).assertFail();
-            });
-            await promise1;
+            await sleep(3000);
         }catch (e) {
             expect(null).assertFail();
         }
@@ -414,16 +410,15 @@ describe('KvStoreTest', function () {
             var str = 'this is a test string';
             const promise = kvStore.put(KEY_TEST_STRING_ELEMENT+'003', str);
             promise.then((data) => {
+                const promise1 = kvStore.delete(KEY_TEST_STRING_ELEMENT+'003');
+                promise1.then((data) => {
+                }).catch((err) => {
+                    expect(null).assertFail();
+                });
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
-            const promise1 = kvStore.delete(KEY_TEST_STRING_ELEMENT+'003');
-            promise1.then((data) => {
-            }).catch((err) => {
-                expect(null).assertFail();
-            });
-            await promise1;
+            await sleep(3000);
         }catch(e) {
             expect(null).assertFail();
         }
@@ -438,17 +433,15 @@ describe('KvStoreTest', function () {
             }
             const promise = kvStore.put(KEY_TEST_STRING_ELEMENT+'003', str);
             promise.then((data) => {
+                const promise1 = kvStore.delete(KEY_TEST_STRING_ELEMENT+'003');
+                promise1.then((data) => {
+                }).catch((err) => {
+                    expect(null).assertFail();
+                });
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
-
-            const promise1 = kvStore.delete(KEY_TEST_STRING_ELEMENT+'003');
-            promise1.then((data) => {
-            }).catch((err) => {
-                expect(null).assertFail();
-            });
-            await promise1;
+            await sleep(3000);
         }catch(e) {
             expect(null).assertFail();
         }
@@ -462,7 +455,7 @@ describe('KvStoreTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise1;
+            await sleep(3000);
         }catch(e) {
             expect(null).assertFail();
         }
@@ -476,7 +469,7 @@ describe('KvStoreTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
+            await sleep(3000);
         }catch(e) {
             expect(null).assertFail();
         }
@@ -490,7 +483,7 @@ describe('KvStoreTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
+            await sleep(3000);
         }catch(e) {
             expect(null).assertFail();
         }
@@ -501,22 +494,15 @@ describe('KvStoreTest', function () {
         try {
             const promise = kvStore.put(KEY_TEST_FLOAT_ELEMENT+'002', VALUE_TEST_FLOAT_ELEMENT);
             promise.then((data) => {
+                const promise1 = kvStore.delete(KEY_TEST_FLOAT_ELEMENT+'002');
+                promise1.then((data) => {
+                }).catch((err) => {
+                    expect(null).assertFail();
+                });
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
-            const promise1 = kvStore.delete(KEY_TEST_FLOAT_ELEMENT+'002');
-            promise1.then((data) => {
-            }).catch((err) => {
-                expect(null).assertFail();
-            });
-            await promise1;
-            const promise2 = kvStore.delete(KEY_TEST_FLOAT_ELEMENT+'002');
-            promise2.then((data) => {
-            }).catch((err) => {
-                expect(null).assertFail();
-            });
-            await promise2;
+            await sleep(3000);
         }catch(e) {
             expect(null).assertFail();
         }
@@ -530,7 +516,7 @@ describe('KvStoreTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
+            await sleep(3000);
         }catch (e) {
             expect(null).assertFail();
         }
@@ -548,8 +534,7 @@ describe('KvStoreTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
-            await(3000);
+            await sleep(3000);
         }catch(e) {
             expect(null).assertFail();
         }
@@ -567,8 +552,7 @@ describe('KvStoreTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
-            await(3000);
+            await sleep(3000);
         }catch(e) {
             expect(null).assertFail();
         }
@@ -586,8 +570,67 @@ describe('KvStoreTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
-            await(3000);
+            await sleep(3000);
+        }catch(e) {
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+    it('testOnSyncComplete001', 0, async function (done) {
+        try {
+            kvStore.on('syncComplete', function (data) {
+                expect(true).assertEqual(data !=null);
+            });
+            const promise = kvStore.put(KEY_TEST_SYNC_ELEMENT + 'testSync001', VALUE_TEST_SYNC_ELEMENT);
+            promise.then((data) => {
+                var devices = ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
+                var mode = PULL_ONLY;
+                kvStore.sync(devices, mode, 10);
+            }).catch((err) => {
+                expect(null).assertFail();
+            });
+            await sleep(3000);
+        }catch(e) {
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+    it('testOnSyncComplete002', 0, async function (done) {
+        try {
+            kvStore.on('syncComplete', function (data) {
+                expect(true).assertEqual(data !=null);
+            });
+            const promise = kvStore.put(KEY_TEST_SYNC_ELEMENT + 'testSync001', VALUE_TEST_SYNC_ELEMENT);
+            promise.then((data) => {
+                var devices = ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
+                var mode = PUSH_ONLY;
+                kvStore.sync(devices, mode, 10);
+            }).catch((err) => {
+                expect(null).assertFail();
+            });
+            await sleep(3000);
+        }catch(e) {
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+    it('testOnSyncComplete003', 0, async function (done) {
+        try {
+            kvStore.on('syncComplete', function (data) {
+                expect(true).assertEqual(data !=null);
+            });
+            const promise = kvStore.put(KEY_TEST_SYNC_ELEMENT + 'testSync001', VALUE_TEST_SYNC_ELEMENT);
+            promise.then((data) => {
+                var devices = ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
+                var mode = PUSH_PULL;
+                kvStore.sync(devices, mode, 10);
+            }).catch((err) => {
+                expect(null).assertFail();
+            });
+            await sleep(3000);
         }catch(e) {
             expect(null).assertFail();
         }
