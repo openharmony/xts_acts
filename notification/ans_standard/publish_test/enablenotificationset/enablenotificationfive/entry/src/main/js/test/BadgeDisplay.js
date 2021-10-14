@@ -42,10 +42,11 @@ describe('ActsAnsEnableNotificationSetFiveTest', function () {
      * @tc.desc: verify the function of enableNotification
      */
     it('ActsEnableNotificationSet_test_1000', 0, async function (done) {
-        await notify.enableNotification(
+        var promise =  notify.enableNotification(
             {
                 bundle:"com.example.actsanslocalnotificationtest",
-            },"").then(console.log("====>ActsEnableNotificationSet_test_1000 success====>"))
+            },"")
+	expect(promise).assertEqual(undefined)
         done();
         setTimeout(function(){
             console.debug("====>time out ActsEnableNotificationSet_test_1000====>");

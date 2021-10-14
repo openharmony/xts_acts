@@ -32,7 +32,7 @@ describe('ActsAnsGetSlotTestPromise', function () {
             console.debug("====>getSlotActsAnsGetSlotTestPromise_0100 enter====>");
             console.debug("====>getSlotActsAnsGetSlotTestPromise_0100 data====>" + JSON.stringify(data));
             expect(data.type).assertEqual(notification.SlotType.SOCIAL_COMMUNICATION);
-            expect(data.level).assertEqual(3);
+            expect(data.level).assertEqual(4);
             expect(data.desc).assertEqual("");
             expect(data.badgeFlag).assertEqual(true);
             expect(data.bypassDnd).assertEqual(false);
@@ -99,7 +99,7 @@ describe('ActsAnsGetSlotTestPromise', function () {
             console.debug("====>getSlotPromise CONTENT_INFORMATION ActsAnsGetSlotTestPromise_0300 enter====>");
             console.debug("====>getSlotPromise ActsAnsGetSlotTestPromise_0300 data====>" + JSON.stringify(data));
             expect(data.type).assertEqual(notification.SlotType.CONTENT_INFORMATION);
-            expect(data.level).assertEqual(3);
+            expect(data.level).assertEqual(2);
             expect(data.desc).assertEqual("");
             expect(data.badgeFlag).assertEqual(true);
             expect(data.bypassDnd).assertEqual(false);
@@ -133,7 +133,7 @@ describe('ActsAnsGetSlotTestPromise', function () {
             console.debug("====>getSlotPromise OTHER_TYPES ActsAnsGetSlotTestPromise_0400 enter====>");
             console.debug("====>getSlotPromise ActsAnsGetSlotTestPromise_0400 data====>" + JSON.stringify(data));
             expect(data.type).assertEqual(notification.SlotType.OTHER_TYPES);
-            expect(data.level).assertEqual(3);
+            expect(data.level).assertEqual(1);
             expect(data.desc).assertEqual("");
             expect(data.badgeFlag).assertEqual(true);
             expect(data.bypassDnd).assertEqual(false);
@@ -167,7 +167,7 @@ describe('ActsAnsGetSlotTestPromise', function () {
             console.debug("====>getSlotPromise UNKNOWN_TYPE ActsAnsGetSlotTestPromise_0500 enter====>");
             console.debug("====>getSlotPromise  ActsAnsGetSlotTestPromise_0500 data====>" + JSON.stringify(data));
             expect(data.type).assertEqual(notification.SlotType.OTHER_TYPES);
-            expect(data.level).assertEqual(3);
+            expect(data.level).assertEqual(1);
             expect(data.desc).assertEqual("");
             expect(data.badgeFlag).assertEqual(true);
             expect(data.bypassDnd).assertEqual(false);
