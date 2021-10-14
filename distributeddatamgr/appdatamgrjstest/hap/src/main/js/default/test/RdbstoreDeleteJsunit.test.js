@@ -14,6 +14,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import ohos_data_rdb from '@ohos.data.rdb';
+import ability_featureAbility from '@ohos.ability.featureAbility';
 
 const TAG = "[RDB_JSKITS_TEST]"
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
@@ -22,6 +23,7 @@ const STORE_CONFIG = {
     name: "Delete.db",
 }
 var rdbStore = undefined;
+var context = undefined;
 
 describe('rdbStoreDeleteTest', function () {
     beforeAll(function () {
@@ -30,7 +32,8 @@ describe('rdbStoreDeleteTest', function () {
 
     beforeEach(async function () {
         console.info(TAG + 'beforeEach')
-        rdbStore = await ohos_data_rdb.getRdbStore(STORE_CONFIG, 1);
+        context = await ability_featureAbility.getContext();
+        rdbStore = await ohos_data_rdb.getRdbStore(context, STORE_CONFIG, 1);
         await rdbStore.executeSql(CREATE_TABLE_TEST, null);
     })
 
@@ -38,7 +41,7 @@ describe('rdbStoreDeleteTest', function () {
         console.info(TAG + 'afterEach')
         await rdbStore.executeSql("DELETE FROM test");
         rdbStore = null
-        await ohos_data_rdb.deleteRdbStore("Delete.db");
+        await ohos_data_rdb.deleteRdbStore(context, "Delete.db");
     })
 
     afterAll(async function () {
