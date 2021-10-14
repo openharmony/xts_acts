@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.example.actsansactivesubscribertest",
+    "bundleName": "com.example.actsansactionbuttontest",
     "vendor": "example",
     "version": {
       "code": 1,
@@ -14,7 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.actsansactivesubscribertest",
+    "package": "com.example.actsansactionbuttontest",
     "name": ".MyApplication",
     "deviceType": [
       "phone"
@@ -36,7 +36,7 @@
             ]
           }
         ],
-        "name": "com.example.actsansactivesubscribertest.MainAbility",
+        "name": "com.example.actsansactionbuttontest.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",

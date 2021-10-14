@@ -147,17 +147,17 @@ describe('ActsAnsGetWantAgentInfoOneProTest', function () {
                     console.info(data);
                     expect(typeof(data)).assertEqual("object");
                     wantAgent.equal(WantAgent1,WantAgent2).then(
-                        (error,data) => {
+                        (data) => {
                         console.info('----equalPromise1 success!----')
                         console.info(data);
-                        expect(typeof(data)).assertEqual("boolean");
+                        expect(data).assertEqual(false);
                         }
                     )
                     wantAgent.equal(WantAgent1,WantAgent1).then(
-                        (error,data) => {
+                        (data) => {
                             console.info('----equalPromise2 success!----')
                             console.info(data);
-                            expect(typeof(data)).assertEqual("boolean");
+                            expect(data).assertEqual(true);
                         }
                     )
                 }
