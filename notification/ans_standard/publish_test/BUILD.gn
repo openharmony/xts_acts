@@ -20,6 +20,7 @@ group("publish_test") {
       #"badgedisplayed:badgedisplayed",
       #"badgedisplayedset:badgedisplayedset",
       "enablenotification:enablenotification",
+
       #"enablenotificationset:enablenotificationset",
       #"getactive:getactive",
       "getwantagentinfo:getwantagentinfo",
@@ -27,6 +28,9 @@ group("publish_test") {
       #"publishcontentype:ActsAnsNotificationTest",
       #"subscribe:subscribe",
       #"unsubscribe:ActsAnsUnSubscriberTest",
+      #"activeButton:ActsAnsActionButtonTest",
+      #"publishicontest:ActsAnsIconTest",
+      #"publishimage:ActsAnsPublishImageTest",
       "wantagent:wantagent",
     ]
   }
