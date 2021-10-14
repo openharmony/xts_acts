@@ -32,7 +32,7 @@ describe('ActsAnsRemoveSlotTest', function () {
             console.debug("====>getSlotActsAnsGetSlotTestPromise_0100 enter====>");
             console.debug("====>getSlotActsAnsGetSlotTestPromise_0100 data====>" + JSON.stringify(data));
             expect(data.type).assertEqual(notification.SlotType.SOCIAL_COMMUNICATION);
-            expect(data.level).assertEqual(3);
+            expect(data.level).assertEqual(4);
             expect(data.desc).assertEqual("");
             expect(data.badgeFlag).assertEqual(true);
             expect(data.bypassDnd).assertEqual(false);
