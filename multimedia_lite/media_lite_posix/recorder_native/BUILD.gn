@@ -15,11 +15,19 @@ import("//test/xts/tools/lite/build/suite_lite.gni")
 
 hcpptest_suite("ActsMediaRecorderTest") {
   suite_name = "acts"
-  sources = [ "src/testcase/ActsMediaRecorderNDKTest.cpp" ]
+  sources = [ "src/ActsMediaRecorderTest.cpp" ]
 
   include_dirs = [
-    "src/include",
+    "src",
     "//test/xts/acts/multimedia_lite/utils_posix/common/include",
+    "//third_party/bounds_checking_function/include",
+    "//drivers/peripheral/codec/interfaces/include",
+    "//foundation/multimedia/utils/lite/hals",
+    "//foundation/multimedia/media_lite/test/unittest/recorder_lite",
+    "//foundation/multimedia/media_lite/interfaces/kits/recorder_lite",
+    "//foundation/multimedia/media_lite/frameworks/recorder_lite",
+    "//foundation/multimedia/media_lite/frameworks/recorder_lite/recoder_sink/include",
+    "//foundation/multimedia/media_lite/frameworks/recorder_lite/recoder_source/include",
   ]
 
   deps = [
