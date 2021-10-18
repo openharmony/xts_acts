@@ -12,7 +12,7 @@
             "pre-push": [
             ],
             "push": [
-                "resource/audio/01.mP3 ->/data/media/",
+                "resource/audio/01.mp3 ->/data/media/",
                 "resource/audio/02.mp3 ->/data/media/",
                 "resource/audio/03.mp3 ->/data/media/",
                 "resource/audio/04.mp3 ->/data/media/",
@@ -39,6 +39,13 @@
             ]
         },
         {
+            "test-file-name": [
+                "AudioPlayerJsTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
             "type": "ShellKit",
             "run-command": [
                 "chmod -R 666 /data/media/*",
@@ -47,13 +54,6 @@
             "teardown-command":[
                 "setenforce 1"
             ]
-        },
-        {
-            "test-file-name": [
-                "AudioPlayerApiJsTest.hap"
-            ],
-            "type": "AppInstallKit",
-            "cleanup-apps": true
         }
     ]
 }

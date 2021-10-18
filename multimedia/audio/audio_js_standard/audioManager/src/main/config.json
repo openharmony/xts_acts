@@ -3,26 +3,25 @@
     "bundleName": "ohos.acts.multimedia.audio.audiomanager",
     "vendor": "acts",
     "version": {
-      "code": 1000000,
-      "name": "1.0.0"
+      "code": 1,
+      "name": "1.0"
+    },
+    "apiVersion": {
+      "compatible": 6,
+      "target": 5
     }
   },
   "deviceConfig": {},
   "module": {
     "package": "ohos.acts.multimedia.audio.audiomanager",
     "name": ".MyApplication",
-    "mainAbility": "ohos.acts.multimedia.audio.audiomanager.MainAbility",
     "deviceType": [
-      "phone",
-      "tablet",
-      "tv",
-      "wearable"
+      "phone"
     ],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",
-      "moduleType": "entry",
-      "installationFree": false
+      "moduleType": "entry"
     },
     "abilities": [
       {
