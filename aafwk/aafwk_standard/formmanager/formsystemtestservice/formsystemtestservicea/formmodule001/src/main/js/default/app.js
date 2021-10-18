@@ -96,7 +96,8 @@ export default {
     },
 
     onDelete(formId) {
-        console.log('formSystemTestServiceA:  onDelete ok, formId:' + formId + ', time stamp:'+ Date.parse(new Date()));
+        console.log('formSystemTestServiceA:  onDelete ok, formId:' + formId +
+            ', time stamp:'+ Date.parse(new Date()));
 
         Subscriber.publish(
             "fms_serviceA_onDelete",
@@ -107,7 +108,8 @@ export default {
     },
 
     onTriggerEvent(formId, message) {
-        console.log('formSystemTestServiceA:  onTriggerEvent ok, formId:' + formId + 'message:' + message + ', time stamp:'+ Date.parse(new Date()));
+        console.log('formSystemTestServiceA:  onTriggerEvent ok, formId:' + formId
+            + ', message:' + message + ', time stamp:'+ Date.parse(new Date()));
 
         Subscriber.publish(
             "fms_serviceA_onTriggerEvent",
@@ -118,7 +120,8 @@ export default {
     },
 
     onUpdate(formId) {
-        console.log('formSystemTestServiceA:  onUpdate ok, formId:' + formId + ', time stamp:'+ Date.parse(new Date()));
+        console.log('formSystemTestServiceA:  onUpdate ok, formId:' + formId +
+            ', time stamp:'+ Date.parse(new Date()));
 
         Subscriber.publish(
             "fms_serviceA_onUpdate",
@@ -129,7 +132,8 @@ export default {
     },
 
     onCastTemp(formId) {
-        console.log('formSystemTestServiceA:  onCastTemp ok, formId:' + formId + ', time stamp:'+ Date.parse(new Date()));
+        console.log('formSystemTestServiceA:  onCastTemp ok, formId:' + formId +
+            ', time stamp:'+ Date.parse(new Date()));
 
         Subscriber.publish(
             "fms_serviceA_onCastTemp",
@@ -140,7 +144,8 @@ export default {
     },
 
     onVisibilityChanged(formEventsMap) {
-        console.log('formSystemTestServiceA:  OnVisibilityChanged ok, map:'+ formEventsMap + ', time stamp:'+ Date.parse(new Date()));
+        console.log('formSystemTestServiceA:  OnVisibilityChanged ok, map:'+ formEventsMap +
+            ', time stamp:'+ Date.parse(new Date()));
 
         Subscriber.publish(
             "fms_serviceA_onVisibilityChanged",
@@ -151,7 +156,8 @@ export default {
     },
 
     onAcquireState(want) {
-        console.log('formSystemTestServiceA:  OnAcquireState ok, '+ 'want.abilityName:' + want.abilityName + ', want.bundleName:' + want.bundleName + ', time stamp:'+ Date.parse(new Date()));
+        console.log('formSystemTestServiceA:  OnAcquireState ok, '+ 'want.abilityName:' + want.abilityName +
+            ', want.bundleName:' + want.bundleName + ', time stamp:'+ Date.parse(new Date()));
 
         Subscriber.publish(
             "fms_serviceA_onAcquireState",

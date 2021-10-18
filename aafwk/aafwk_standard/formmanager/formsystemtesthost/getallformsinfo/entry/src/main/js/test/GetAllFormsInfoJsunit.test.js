@@ -23,15 +23,16 @@ describe('getAllFormsInfoTest', function () {
     /**
      * @tc.name getAllFormsInfo test
      * @tc.number FMS_getFormsInfo_0300
-     * @tc.desc All form configuration information is queried successfully (by AsyncCallback).
+     * @tc.desc All form configuration information is queried successfully (by AsyncCallback)
      */
     it('FMS_getFormsInfo_0300_callback', 0, async function (done) {
         console.log("FMS_getFormsInfo_0300_callback begin");
 
         var ret = formManager.getAllFormsInfo(
             (result, data) => {
-                console.log("FMS_getFormsInfo_0300_callback getAllFormsInfo async::sucess, data json:" + JSON.stringify(data));
-                console.log("FMS_getFormsInfo_0300_callback getAllFormsInfo callback async::result, result:" + result);
+                console.log("FMS_getFormsInfo_0300_callback async::sucess, data json:"
+                    + JSON.stringify(data));
+                console.log("FMS_getFormsInfo_0300_callback async::result, result:" + result);
                 expect(result).assertEqual(1);
 
                 for(var i = 0; i < data.length; i++) {
@@ -68,7 +69,7 @@ describe('getAllFormsInfoTest', function () {
     /**
      * @tc.name getAllFormsInfo test
      * @tc.number FMS_getFormsInfo_0300
-     * @tc.desc All form configuration information is queried successfully (by Promise).
+     * @tc.desc All form configuration information is queried successfully (by Promise)
      */
     it('FMS_getFormsInfo_0300_promise', 0, async function (done) {
         console.log("FMS_getFormsInfo_0300_promise begin");
@@ -109,7 +110,8 @@ describe('getAllFormsInfoTest', function () {
     /**
      * @tc.name bundleName is null test
      * @tc.number FMS_getFormsInfo_0600
-     * @tc.desc When the bundleName is null, the form configuration information query fails (by AsyncCallback).
+     * @tc.desc When the bundleName is null, the form configuration information query fails
+     *  (by AsyncCallback)
      */
     it('FMS_getFormsInfo_0600_callback', 0, async function (done) {
         console.log("FMS_getFormsInfo_0600_callback begin");
@@ -117,8 +119,9 @@ describe('getAllFormsInfoTest', function () {
         var ret = formManager.getFormsInfo(
             "",
             (result, data) => {
-                console.log("FMS_getFormsInfo_0600_callback getFormsInfo async::sucess, data json:" + JSON.stringify(data));
-                console.log("FMS_getFormsInfo_0600_callback getFormsInfo callback async::result, result:" + result);
+                console.log("FMS_getFormsInfo_0600_callback getFormsInfo async::sucess, data json:"
+                    + JSON.stringify(data));
+                console.log("FMS_getFormsInfo_0600_callback async::result, result:" + result);
                 expect(result).assertEqual(0);
                 console.log("FMS_getFormsInfo_0600_callback result end");
                 done();
@@ -134,7 +137,7 @@ describe('getAllFormsInfoTest', function () {
     /**
      * @tc.name bundleName is null test
      * @tc.number FMS_getFormsInfo_0600
-     * @tc.desc When the bundleName is null, the form configuration information query fails (by Promise).
+     * @tc.desc When the bundleName is null, the form configuration information query fails (by Promise)
      */
     it('FMS_getFormsInfo_0600_promise', 0, async function (done) {
         console.log("FMS_getFormsInfo_0600_promise begin");
@@ -158,7 +161,8 @@ describe('getAllFormsInfoTest', function () {
     /**
      * @tc.name bundleName isn't exist test
      * @tc.number FMS_getFormsInfo_0700
-     * @tc.desc When the bundleName isn't exist, the form configuration information query fails (by AsyncCallback).
+     * @tc.desc When the bundleName isn't exist, the form configuration information query fails
+     *  (by AsyncCallback).
      */
     it('FMS_getFormsInfo_0700_callback', 0, async function (done) {
         console.log("FMS_getFormsInfo_0700_callback begin");
@@ -166,8 +170,9 @@ describe('getAllFormsInfoTest', function () {
         var ret = formManager.getFormsInfo(
             "aaaaaaa",
             (result, data) => {
-                console.log("FMS_getFormsInfo_0700_callback getFormsInfo async::sucess, data json:" + JSON.stringify(data));
-                console.log("FMS_getFormsInfo_0700_callback getFormsInfo callback async::result, result:" + result);
+                console.log("FMS_getFormsInfo_0700_callback getFormsInfo async::sucess, data json:"
+                    + JSON.stringify(data));
+                console.log("FMS_getFormsInfo_0700_callback async::result, result:" + result);
                 expect(result).assertEqual(0);
                 console.log("FMS_getFormsInfo_0700_callback result end");
                 done();
@@ -183,7 +188,7 @@ describe('getAllFormsInfoTest', function () {
     /**
      * @tc.name bundleName isn't exist test
      * @tc.number FMS_getFormsInfo_0700
-     * @tc.desc When the bundleName isn't exist, the form configuration information query fails (by Promise).
+     * @tc.desc When the bundleName isn't exist, the form configuration information query fails (by Promise)
      */
     it('FMS_getFormsInfo_0700_promise', 0, async function (done) {
         console.log("FMS_getFormsInfo_0700_promise begin");
@@ -207,7 +212,8 @@ describe('getAllFormsInfoTest', function () {
     /**
      * @tc.name getFormsInfo test
      * @tc.number FMS_getFormsInfo_0800
-     * @tc.desc When the bundleName exist, the form configuration information is queried successfully (by AsyncCallback).
+     * @tc.desc When the bundleName exist, the form configuration information is queried successfully
+     * (by AsyncCallback)
      */
     it('FMS_getFormsInfo_0800_callback', 0, async function (done) {
         console.log("FMS_getFormsInfo_0800_callback begin");
@@ -215,8 +221,9 @@ describe('getAllFormsInfoTest', function () {
         var ret = formManager.getFormsInfo(
             "com.form.formsystemtestservicea",
             (result, data) => {
-                console.log("FMS_getFormsInfo_0800_callback getFormsInfo async::sucess, data json:" + JSON.stringify(data));
-                console.log("FMS_getFormsInfo_0800_callback getFormsInfo callback async::result, result:" + result);
+                console.log("FMS_getFormsInfo_0800_callback getFormsInfo async::sucess, data json:"
+                    + JSON.stringify(data));
+                console.log("FMS_getFormsInfo_0800_callback async::result, result:" + result);
                 for(var i = 0; i < data.length; i++) {
                     expect(typeof (data[i].description)).assertEqual("string");
                     expect(data[i].description).assertEqual("form_description");
@@ -251,7 +258,8 @@ describe('getAllFormsInfoTest', function () {
     /**
      * @tc.name getFormsInfo test
      * @tc.number FMS_getFormsInfo_0800
-     * @tc.desc When the bundleName exist, the form configuration information is queried successfully (by Promise).
+     * @tc.desc When the bundleName exist, the form configuration information is queried successfully
+     *  (by Promise)
      */
     it('FMS_getFormsInfo_0800_promise', 0, async function (done) {
         console.log("FMS_getFormsInfo_0800_promise begin");
@@ -294,7 +302,8 @@ describe('getAllFormsInfoTest', function () {
     /**
      * @tc.name getFormsInfo test
      * @tc.number FMS_getFormsInfo_1100
-     * @tc.desc When the bundleName is null, moduleName is exist，the form configuration information query fails (by AsyncCallback).
+     * @tc.desc When the bundleName is null, moduleName is exist，the form configuration information 
+     * query fails (by AsyncCallback).
      */
     it('FMS_getFormsInfo_1100_callback', 0, async function (done) {
         console.log("FMS_getFormsInfo_1100_callback begin");
@@ -303,8 +312,9 @@ describe('getAllFormsInfoTest', function () {
             "",
             "formmodule001",
             (result, data) => {
-                console.log("FMS_getFormsInfo_1100_callback getFormsInfo async::sucess, data json:" + JSON.stringify(data));
-                console.log("FMS_getFormsInfo_1100_callback getFormsInfo callback async::result, result:" + result);
+                console.log("FMS_getFormsInfo_1100_callback getFormsInfo async::sucess, data json:"
+                    + JSON.stringify(data));
+                console.log("FMS_getFormsInfo_1100_callback async::result, result:" + result);
                 expect(result).assertEqual(0);
                 console.log("FMS_getFormsInfo_1100_callback result end");
                 done();
@@ -320,7 +330,8 @@ describe('getAllFormsInfoTest', function () {
     /**
      * @tc.name getFormsInfo test
      * @tc.number FMS_getFormsInfo_1100
-     * @tc.desc When the bundleName is null, moduleName is exist，the form configuration information query fails (by Promise).
+     * @tc.desc When the bundleName is null, moduleName is exist，the form configuration information
+     *  query fails (by Promise)
      */
     it('FMS_getFormsInfo_1100_promise', 0, async function (done) {
         console.log("FMS_getFormsInfo_1100_promise begin");
@@ -345,7 +356,8 @@ describe('getAllFormsInfoTest', function () {
     /**
      * @tc.name getFormsInfo test
      * @tc.number FMS_getFormsInfo_1200
-     * @tc.desc When the bundleName isn't exist, moduleName is exist, the form configuration information query fails (by AsyncCallback).
+     * @tc.desc When the bundleName isn't exist, moduleName is exist, the form configuration information
+     *  query fails (by AsyncCallback)
      */
     it('FMS_getFormsInfo_1200_callback', 0, async function (done) {
         console.log("FMS_getFormsInfo_1200_callback begin");
@@ -354,8 +366,9 @@ describe('getAllFormsInfoTest', function () {
             "aaaaaa",
             "formmodule001",
             (result, data) => {
-                console.log("FMS_getFormsInfo_1200_callback getFormsInfo async::sucess, data json:" + JSON.stringify(data));
-                console.log("FMS_getFormsInfo_1200_callback getFormsInfo callback async::result, result:" + result);
+                console.log("FMS_getFormsInfo_1200_callback getFormsInfo async::sucess, data json:"
+                    + JSON.stringify(data));
+                console.log("FMS_getFormsInfo_1200_callback async::result, result:" + result);
                 expect(result).assertEqual(0);
                 console.log("FMS_getFormsInfo_1200_callback result end");
                 done();
@@ -371,7 +384,8 @@ describe('getAllFormsInfoTest', function () {
     /**
      * @tc.name getFormsInfo test
      * @tc.number FMS_getFormsInfo_1200
-     * @tc.desc When the bundleName isn't exist, moduleName is exist, the form configuration information query fails (by Promise).
+     * @tc.desc When the bundleName isn't exist, moduleName is exist, the form configuration
+     *  information query fails (by Promise)
      */
     it('FMS_getFormsInfo_1200_promise', 0, async function (done) {
         console.log("FMS_getFormsInfo_1200_promise begin");
@@ -396,7 +410,8 @@ describe('getAllFormsInfoTest', function () {
     /**
      * @tc.name getFormsInfo test
      * @tc.number FMS_getFormsInfo_1300
-     * @tc.desc When the bundleName is exist, moduleName is null, the form configuration information query fails (by AsyncCallback).
+     * @tc.desc When the bundleName is exist, moduleName is null, the form configuration information
+     * query fails (by AsyncCallback)
      */
     it('FMS_getFormsInfo_1300_callback', 0, async function (done) {
         console.log("FMS_getFormsInfo_1300_callback begin");
@@ -405,8 +420,9 @@ describe('getAllFormsInfoTest', function () {
             "com.form.formsystemtestservicea",
             "",
             (result, data) => {
-                console.log("FMS_getFormsInfo_1300_callback getFormsInfo async::sucess, data json:" + JSON.stringify(data));
-                console.log("FMS_getFormsInfo_1300_callback getFormsInfo callback async::result, result:" + result);
+                console.log("FMS_getFormsInfo_1300_callback getFormsInfo async::sucess, data json:"
+                    + JSON.stringify(data));
+                console.log("FMS_getFormsInfo_1300_callback async::result, result:" + result);
                 expect(result).assertEqual(0);
                 console.log("FMS_getFormsInfo_1300_callback result end");
                 done();
@@ -422,7 +438,8 @@ describe('getAllFormsInfoTest', function () {
     /**
      * @tc.name getFormsInfo test
      * @tc.number FMS_getFormsInfo_1300
-     * @tc.desc When the bundleName is exist, moduleName is null, the form configuration information query fails (by Promise).
+     * @tc.desc When the bundleName is exist, moduleName is null, the form configuration information
+     *  query fails (by Promise)
      */
     it('FMS_getFormsInfo_1300_promise', 0, async function (done) {
         console.log("FMS_getFormsInfo_1300_promise begin");
@@ -447,7 +464,8 @@ describe('getAllFormsInfoTest', function () {
     /**
      * @tc.name getFormsInfo test
      * @tc.number FMS_getFormsInfo_1400
-     * @tc.desc When the bundleName is exist, moduleName is null, the form configuration information query fails (by AsyncCallback).
+     * @tc.desc When the bundleName is exist, moduleName is null, the form configuration information 
+     * query fails (by AsyncCallback)
      */
     it('FMS_getFormsInfo_1400_callback', 0, async function (done) {
         console.log("FMS_getFormsInfo_1400_callback begin");
@@ -456,8 +474,9 @@ describe('getAllFormsInfoTest', function () {
             "com.form.formsystemtestservicea",
             "aaaaa",
             (result, data) => {
-                console.log("FMS_getFormsInfo_1400_callback getFormsInfo async::sucess, data json:" + JSON.stringify(data));
-                console.log("FMS_getFormsInfo_1400_callback getFormsInfo callback async::result, result:" + result);
+                console.log("FMS_getFormsInfo_1400_callback getFormsInfo async::sucess, data json:"
+                    + JSON.stringify(data));
+                console.log("FMS_getFormsInfo_1400_callback async::result, result:" + result);
                 expect(result).assertEqual(0);
                 console.log("FMS_getFormsInfo_1400_callback result end");
                 done();
@@ -473,7 +492,8 @@ describe('getAllFormsInfoTest', function () {
     /**
      * @tc.name getFormsInfo test
      * @tc.number FMS_getFormsInfo_1400
-     * @tc.desc When the bundleName is exist, moduleName is null, the form configuration information query fails (by Promise).
+     * @tc.desc When the bundleName is exist, moduleName is null, the form configuration information 
+     * query fails (by Promise)
      */
     it('FMS_getFormsInfo_1400_promise', 0, async function (done) {
         console.log("FMS_getFormsInfo_1400_promise begin");
@@ -498,7 +518,8 @@ describe('getAllFormsInfoTest', function () {
     /**
      * @tc.name getFormsInfo test
      * @tc.number FMS_getFormsInfo_1500
-     * @tc.desc When the bundleName and moduleName is exist, the form configuration information is queried successfully (by AsyncCallback).
+     * @tc.desc When the bundleName and moduleName is exist, the form configuration information is 
+     * queried successfully (by AsyncCallback).
      */
     it('FMS_getFormsInfo_1500_callback', 0, async function (done) {
         console.log("FMS_getFormsInfo_1500_callback begin");
@@ -507,8 +528,9 @@ describe('getAllFormsInfoTest', function () {
             "com.form.formsystemtestservicea",
             "formmodule001",
             (result, data) => {
-                console.log("FMS_getFormsInfo_1500_callback getFormsInfo async::sucess, data json:" + JSON.stringify(data));
-                console.log("FMS_getFormsInfo_1500_callback getFormsInfo callback async::result, result:" + result);
+                console.log("FMS_getFormsInfo_1500_callback getFormsInfo async::sucess, data json:"
+                    + JSON.stringify(data));
+                console.log("FMS_getFormsInfo_1500_callback async::result, result:" + result);
                 for(var i = 0; i < data.length; i++) {
                     expect(typeof (data[i].description)).assertEqual("string");
                     expect(data[i].description).assertEqual("form_description");
@@ -533,7 +555,7 @@ describe('getAllFormsInfoTest', function () {
                 done();
             }
         );
-
+                
         setTimeout(function () {
             console.info('=====================FMS_getFormsInfo_1500_callback==================end');
         }, TIMEOUT)
@@ -543,7 +565,8 @@ describe('getAllFormsInfoTest', function () {
     /**
      * @tc.name getFormsInfo test
      * @tc.number FMS_getFormsInfo_1500
-     * @tc.desc When the bundleName and moduleName is exist, the form configuration information is queried successfully (by Promise).
+     * @tc.desc When the bundleName and moduleName is exist, the form configuration information is
+     * queried successfully (by Promise)
      */
     it('FMS_getFormsInfo_1500_promise', 0, async function (done) {
         console.log("FMS_getFormsInfo_1500_promise begin");
@@ -553,7 +576,7 @@ describe('getAllFormsInfoTest', function () {
             "formmodule001",
         );
         promise.then((data) => {
-            console.log("FMS_getFormsInfo_0300_promise async::sucess, data json:" + JSON.stringify(data));
+            console.log("FMS_getFormsInfo_1500_promise async::sucess, data json:" + JSON.stringify(data));
             for(var i = 0; i < data.length; i++) {
                 expect(typeof (data[i].description)).assertEqual("string");
                 expect(data[i].description).assertEqual("form_description");
