@@ -17,7 +17,6 @@ group("formmanager") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "formsystemtesthost/FormFuzzTest:FormFuzzTest",
       "formsystemtesthost/getallformsinfo:GetAllFormsInfo",
       "formsystemtestservice/formsystemtestservicea:ActsFormSystemTestServiceA",
       "formsystemtestservice/formsystemtestserviceb:ActsFormSystemTestServiceB",
