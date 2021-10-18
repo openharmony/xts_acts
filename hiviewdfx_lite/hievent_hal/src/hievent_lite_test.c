@@ -26,7 +26,7 @@
  * @param        : module name is hievet_lite
  * @param        : test suit name is HieventLiteTest
  */
-LITE_TEST_SUIT(hiviewdfx, hievent_lite, HieventLiteTest);
+LITE_TEST_SUIT(hiviewdfx, hievent_lite, HieventLiteTestSuite);
 
 /**
  * @tc.setup     : setup for all testcases
@@ -124,3 +124,4 @@ LITE_TEST_CASE(HieventLiteTestSuite, HieventLiteFuncTest004, Level1)
     HIEVENT_FAULT_REPORT(8, 1, 2);
 };
 
+RUN_TEST_SUITE(HieventLiteTestSuite);
