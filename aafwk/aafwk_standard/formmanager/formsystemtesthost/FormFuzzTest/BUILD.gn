@@ -11,17 +11,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos_var.gni")
+import("//test/xts/tools/build/suite.gni")
 
-group("aafwk_standard") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "abilitymanager:actsabilitymanagertest",
-      "context:context",
-      "featureability:featureability",
-      "formmanager:formmanager",
-      "want:want",
-    ]
-  }
+ohos_js_hap_suite("FormFuzzTest") {
+  hap_profile = "./entry/src/main/config.json"
+  deps = [
+    ":hjs_demo_js_assets",
+    ":hjs_demo_resources",
+  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "FormFuzzTest"
+}
+ohos_js_assets("hjs_demo_js_assets") {
+  source_dir = "./entry/src/main/js/default"
+}
+ohos_resources("hjs_demo_resources") {
+  sources = [ "./entry/src/main/resources" ]
+  hap_profile = "./entry/src/main/config.json"
 }
