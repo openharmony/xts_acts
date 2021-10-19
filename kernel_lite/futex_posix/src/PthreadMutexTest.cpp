@@ -480,7 +480,7 @@ HWTEST_F(FutexTest, testPthreadMattrTypeRecursive5, Function | MediumTest | Leve
     }
     LOG("> parent pid = %d", getpid());
     Msleep(50);
-    AssertProcExitedOK(pid);
+    WaitProcExitedOK(pid);
 }
 
 /********************************************* Test case dividing line ***********************************************/
