@@ -84,6 +84,8 @@ it('wifi_native_js_unit_test_003', 0, function () {
     */
 it('wifi_native_js_unit_test_005', 0, async function (done) {
     console.info("[wifi_test] Wifi get scan infos callback test[1].");
+    var result = wifi.scan();
+    sleep(20000);
     wifi.getScanInfos(
         (result) => {
             var clen = Object.keys(result).length;
@@ -130,6 +132,8 @@ it('wifi_native_js_unit_test_006', 0, async function (done) {
                 console.info("band: " + result[j].band);
                 console.info("frequency: " + result[j].frequency);
                 console.info("timestamp: " + result[j].timestamp);
+                console.info("capabilities: " + result[j].capabilities);
+                console.info("channelWidth: " + result[j].channelWidth);
             }
         });
         done();
