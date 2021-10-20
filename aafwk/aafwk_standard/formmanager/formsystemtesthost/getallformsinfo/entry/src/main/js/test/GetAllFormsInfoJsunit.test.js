@@ -46,7 +46,8 @@ describe('getAllFormsInfoTest', function () {
                     expect(data[i].scheduledUpdateTime).assertEqual("0:0");
                     expect(data[i].formVisibleNotify).assertEqual(0);
                     expect(data[i].defaultDimension).assertEqual(1);
-                    expect(data[i].supportDimensions).assertEqual("1,2");
+                    expect(data[i].supportDimensions[0]).assertEqual(1);
+                    expect(data[i].supportDimensions[1]).assertEqual(2);
                     expect(data[i].metaData.customizeData[0].name).assertEqual("originWidgetName");
                     expect(data[i].metaData.customizeData[0].value).assertEqual("myTest");
                 }
@@ -88,7 +89,8 @@ describe('getAllFormsInfoTest', function () {
                 expect(data[i].scheduledUpdateTime).assertEqual("0:0");
                 expect(data[i].formVisibleNotify).assertEqual(0);
                 expect(data[i].defaultDimension).assertEqual(1);
-                expect(data[i].supportDimensions).assertEqual("1,2");
+                expect(data[i].supportDimensions[0]).assertEqual(1);
+                expect(data[i].supportDimensions[1]).assertEqual(2);
                 expect(data[i].metaData.customizeData[0].name).assertEqual("originWidgetName");
                 expect(data[i].metaData.customizeData[0].value).assertEqual("myTest");
             }
@@ -235,7 +237,8 @@ describe('getAllFormsInfoTest', function () {
                     expect(data[i].scheduledUpdateTime).assertEqual("0:0");
                     expect(data[i].formVisibleNotify).assertEqual(0);
                     expect(data[i].defaultDimension).assertEqual(1);
-                    expect(data[i].supportDimensions).assertEqual("1,2");
+                    expect(data[i].supportDimensions[0]).assertEqual(1);
+                    expect(data[i].supportDimensions[1]).assertEqual(2);
                     expect(data[i].metaData.customizeData[0].name).assertEqual("originWidgetName");
                     expect(data[i].metaData.customizeData[0].value).assertEqual("myTest");
                 }
@@ -280,7 +283,8 @@ describe('getAllFormsInfoTest', function () {
                 expect(data[i].scheduledUpdateTime).assertEqual("0:0");
                 expect(data[i].formVisibleNotify).assertEqual(0);
                 expect(data[i].defaultDimension).assertEqual(1);
-                expect(data[i].supportDimensions).assertEqual("1,2");
+                expect(data[i].supportDimensions[0]).assertEqual(1);
+                expect(data[i].supportDimensions[1]).assertEqual(2);
                 expect(data[i].metaData.customizeData[0].name).assertEqual("originWidgetName");
                 expect(data[i].metaData.customizeData[0].value).assertEqual("myTest");
             }
@@ -542,7 +546,8 @@ describe('getAllFormsInfoTest', function () {
                     expect(data[i].scheduledUpdateTime).assertEqual("0:0");
                     expect(data[i].formVisibleNotify).assertEqual(0);
                     expect(data[i].defaultDimension).assertEqual(1);
-                    expect(data[i].supportDimensions).assertEqual("1,2");
+                    expect(data[i].supportDimensions[0]).assertEqual(1);
+                    expect(data[i].supportDimensions[1]).assertEqual(2);
                     expect(data[i].metaData.customizeData[0].name).assertEqual("originWidgetName");
                     expect(data[i].metaData.customizeData[0].value).assertEqual("myTest");
                 }
@@ -588,7 +593,8 @@ describe('getAllFormsInfoTest', function () {
                 expect(data[i].scheduledUpdateTime).assertEqual("0:0");
                 expect(data[i].formVisibleNotify).assertEqual(0);
                 expect(data[i].defaultDimension).assertEqual(1);
-                expect(data[i].supportDimensions).assertEqual("1,2");
+                expect(data[i].supportDimensions[0]).assertEqual(1);
+                expect(data[i].supportDimensions[1]).assertEqual(2);
                 expect(data[i].metaData.customizeData[0].name).assertEqual("originWidgetName");
                 expect(data[i].metaData.customizeData[0].value).assertEqual("myTest");
             }
