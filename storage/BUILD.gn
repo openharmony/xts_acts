@@ -16,14 +16,14 @@ group("storage") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "storagedsmjstest:storagedsm_js_test",
-
+      #"storagedsmjstest:storagedsm_js_test",
       # "storagedsmstabilityjstest:storagedsmstability_js_test",
       "storagefileconcurrentjstest:storagefileconcurrent_js_test",
       "storagefileioerrorjstest:storagefileioerror_js_test",
       "storagefileiojstest:storagefileio_js_test",
-      "storagefmspublicjstest:storagefmspublic_js_test",
-      "storagefmssharejstest:storagefmsshare_js_test",
+
+      # "storagefmspublicjstest:storagefmspublic_js_test",
+      # "storagefmssharejstest:storagefmsshare_js_test",
 
       # "storagefileioperformancejstest:storagefileioperformance_js_test",
       # "storagefileioreliabilityjstest:storagefileioreliability_js_test",
