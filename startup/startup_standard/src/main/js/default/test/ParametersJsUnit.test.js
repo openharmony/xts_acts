@@ -470,14 +470,13 @@ describe('SystemParameterTest', function () {
             }).catch(function (err) {
                 ret = true;
                 console.info(' system_parameter_test_0450 promise get a.b.b.c error: ' + err.code);
+                expect(ret).assertTrue();
                 done();
             });
         } catch (err) {
             console.info('system_parameter_test_0450 promise  setSync a.b.b.c error: ' + err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
+
         console.info('system_parameter_test_0450 : end');
     })
 
@@ -582,6 +581,7 @@ describe('SystemParameterTest', function () {
                 if (err == undefined) {
                     console.info('system_parameter_test_0530 get systemparameter sucess: ' + data);
                     ret = true;
+                    expect(ret).assertTrue();
                     done();
                 } else {
                     console.info('system_parameter_test_0530 get systemparameter sucess: ' + err.code);
@@ -590,9 +590,6 @@ describe('SystemParameterTest', function () {
         } catch (err) {
             console.info('system_parameter_test_0530 promise get input error: ' + err);
         }
-        setTimeout(function(){
-            expect(ret).assertTrue();
-        }, '1000');
         console.info('system_parameter_test_0530 : end');
     })
 
