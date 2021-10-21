@@ -78,6 +78,7 @@ lite_component("acts_component") {
       all_features += [
         "//test/xts/acts/utils_lite/kv_store_posix:ActsKvStoreTest",
         "//test/xts/acts/startup_lite/syspara_posix:ActsParameterTest",
+        "//test/xts/acts/startup_lite/bootstrap_posix:ActsBootstrapTest",
         "//test/xts/acts/security_lite/datahuks_posix:ActsSecurityDataTest",
         #"//test/xts/acts/multimedia_lite/camera_lite_posix/camera_native:ActsMediaCameraTest",
         #"//test/xts/acts/multimedia_lite/media_lite_posix/player_native:ActsMediaPlayerTest",
