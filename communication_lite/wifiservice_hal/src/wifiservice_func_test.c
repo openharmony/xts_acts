@@ -24,7 +24,7 @@
 #include <unistd.h>
 
 #define DEF_TIMEOUT 15
-#define ONE_SECOND 1
+#define ONE_SECOND 100
 #define LEVEL_ERROR (-1)
 #define LEVEL_ONE 1
 #define LEVEL_TWO 2
@@ -32,6 +32,7 @@
 #define LEVEL_FOUR 4
 #define DEF_TASK_STACK 2000
 #define DEF_TASK_PRIORITY 20
+#define TEST_SSID_COUNT 9
 
 static int g_apEnableSuccess = 0;
 static int g_staScanSuccess = 0;
