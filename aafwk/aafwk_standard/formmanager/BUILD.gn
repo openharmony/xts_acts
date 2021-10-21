@@ -19,6 +19,7 @@ group("formmanager") {
     deps = [
       "formsystemtesthost/getallformsinfo:GetAllFormsInfo",
       "formsystemtestservice/formsystemtestservicea:ActsFormSystemTestServiceA",
+
       #"formsystemtestservice/formsystemtestserviceb:ActsFormSystemTestServiceB",
     ]
   }
