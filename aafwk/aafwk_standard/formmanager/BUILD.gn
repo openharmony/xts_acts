@@ -11,17 +11,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos_var.gni")
+import("//test/xts/tools/build/suite.gni")
 
-group("aafwk_standard") {
+group("formmanager") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      #"abilitymanager:actsabilitymanagertest",
-      "context:context",
-      "featureability:featureability",
-      "formmanager:formmanager",
-      "want:want",
+      "formsystemtesthost/getallformsinfo:GetAllFormsInfo",
+      "formsystemtestservice/formsystemtestservicea:ActsFormSystemTestServiceA",
+      "formsystemtestservice/formsystemtestserviceb:ActsFormSystemTestServiceB",
     ]
   }
 }
