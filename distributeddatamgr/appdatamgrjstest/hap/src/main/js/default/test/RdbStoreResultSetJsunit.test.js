@@ -1529,7 +1529,7 @@ describe('rdbResultSetTest', function () {
             let resultSet = await rdbStore.query(predicates)
             {
                 resultSet.goToRow(5)
-                expect(false).assertEqual(resultSet.isColumnNull(1))
+                expect(true).assertEqual(resultSet.isColumnNull(1))
             }
             resultSet = null;
             done();

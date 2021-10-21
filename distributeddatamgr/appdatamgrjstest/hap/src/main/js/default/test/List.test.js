@@ -13,9 +13,9 @@
 * limitations under the License.
 */
 require('./StorageHelperJsunit.test.js')
-require('./StorageSyncJsunit.test.js')
 require('./StoragePromiseJsunit.test.js')
 require('./StorageCallBackJsunit.test.js')
+require('./StorageSyncJsunit.test.js')
 require('./RdbstoreInsertJsunit.test.js')
 require('./RdbstoreDeleteJsunit.test.js')
 require('./RdbStoreResultSetJsunit.test.js')
