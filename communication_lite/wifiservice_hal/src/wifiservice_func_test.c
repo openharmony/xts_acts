@@ -392,16 +392,17 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testConnectDisConnect, Function | Mediu
 LITE_TEST_CASE(WifiServiceFuncTestSuite, testHandleDeviceConfig, Function | MediumTest | Level2)
 {
     int netId = 0;
-    const char* ssid1 = "XtsTestWifi1";
-    const char* ssid2 = "XtsTestWifi2";
-    const char* ssid3 = "XtsTestWifi3";
+	const char* ssid0 = "TestWifi01";
+    const char* ssid[TEST_SSID_COUNT] = {"TestWifi02", "TestWifi03", "TestWifi04", "TestWifi05", "TestWifi06",
+    		"TestWifi07", "TestWifi08", "TestWifi09", "TestWifi10"};
+    const char* ssid10 = "TestWifi11";
     const char* info = "12345678";
     unsigned char bssid[WIFI_MAC_LEN] = {0xac, 0x75, 0x1d, 0xd8, 0x55, 0xc1};
     WifiDeviceConfig config = {0};
     config.freq = 20;
     config.securityType = WIFI_SEC_TYPE_SAE;
     config.wapiPskType = WIFI_PSK_TYPE_ASCII;
-    int ret = strncpy_s(config.ssid, WIFI_MAX_SSID_LEN, ssid1, strlen(ssid1));
+    int ret = strncpy_s(config.ssid, WIFI_MAX_SSID_LEN, ssid0, strlen(ssid0));
     TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, ret);
     ret = strncpy_s(config.preSharedKey, WIFI_MAX_KEY_LEN, info, strlen(info));
     TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, ret);
@@ -413,7 +414,7 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testHandleDeviceConfig, Function | Medi
     for (int i = 0; i < WIFI_MAX_CONFIG_SIZE - 1; i++) {
         config.securityType = WIFI_SEC_TYPE_PSK;
         config.wapiPskType = WIFI_PSK_TYPE_HEX;
-        ret = strncpy_s(config.ssid, WIFI_MAX_SSID_LEN, ssid2, sizeof(ssid2));
+        ret = strncpy_s(config.ssid, WIFI_MAX_SSID_LEN, ssid[i], sizeof(ssid[i]));
         TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, ret);
         ret = strncpy_s(config.preSharedKey, WIFI_MAX_KEY_LEN, info, strlen(info));
         TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, ret);
@@ -424,8 +425,8 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testHandleDeviceConfig, Function | Medi
             break;
         }
     }
-
-    ret = strncpy_s(config.ssid, WIFI_MAX_SSID_LEN, ssid3, strlen(ssid3));
+	
+    ret = strncpy_s(config.ssid, WIFI_MAX_SSID_LEN, ssid10, strlen(ssid10));
     TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, ret);
     ret = strncpy_s(config.preSharedKey, WIFI_MAX_KEY_LEN, info, strlen(info));
     TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, ret);
