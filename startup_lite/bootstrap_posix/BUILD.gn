@@ -26,10 +26,15 @@ hcpptest_suite("ActsBootstrapTest") {
     "//third_party/bounds_checking_function/include/",
     "//foundation/distributedschedule/samgr_lite/interfaces/kits/samgr",
   ]
-  cflags = [ "-Wno-error" ]
-
+  
   deps = [
     "//foundation/distributedschedule/samgr_lite/samgr:samgr",
     "//third_party/bounds_checking_function:libsec_shared",
+  ]
+  cflags = [ "-Wno-error" ]
+  ldflags = [
+    "-lstdc++",
+    "-lm",
+    "-lpthread",
   ]
 }
