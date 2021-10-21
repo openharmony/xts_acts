@@ -14,3 +14,4 @@
  */
 
 require('./basicabilityapi.test.js')
+require('./mediaquery.test.js')
