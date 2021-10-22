@@ -17,9 +17,6 @@
 #include "ohos_types.h"
 #include "wifi_device.h"
 #include "wifi_hotspot.h"
-#include "lwip/netif.h"
-#include "lwip/netifapi.h"
-#include "lwip/ip4_addr.h"
 #include "cmsis_os2.h"
 #include <unistd.h>
 
@@ -188,7 +185,7 @@ static void WaitScanResult(void)
 {
     int scanTimeout = DEF_TIMEOUT;
     while (scanTimeout > 0) {
-        sleep(ONE_SECOND);
+        osDelay(ONE_SECOND);
         scanTimeout--;
         if (g_staScanSuccess == 1) {
             printf("WaitScanResult:wait success[%d]s\n", (DEF_TIMEOUT - scanTimeout));
@@ -393,7 +390,7 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testConnectDisConnect, Function | Mediu
 LITE_TEST_CASE(WifiServiceFuncTestSuite, testHandleDeviceConfig, Function | MediumTest | Level2)
 {
     int netId = 0;
-	const char* ssid0 = "TestWifi01";
+    const char* ssid0 = "TestWifi01";
     const char* ssid[TEST_SSID_COUNT] = {"TestWifi02", "TestWifi03", "TestWifi04", "TestWifi05", "TestWifi06",
     		"TestWifi07", "TestWifi08", "TestWifi09", "TestWifi10"};
     const char* ssid10 = "TestWifi11";
@@ -426,7 +423,7 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testHandleDeviceConfig, Function | Medi
             break;
         }
     }
-	
+
     ret = strncpy_s(config.ssid, WIFI_MAX_SSID_LEN, ssid10, strlen(ssid10));
     TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, ret);
     ret = strncpy_s(config.preSharedKey, WIFI_MAX_KEY_LEN, info, strlen(info));
@@ -525,7 +522,7 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testEnableDisableHotSpot, Function | Me
     int timeout = 3;
     g_apEnableSuccess = 0;
     while (timeout > 0) {
-        sleep(ONE_SECOND);
+        osDelay(ONE_SECOND);
         timeout--;
         if (g_apEnableSuccess >= 1) {
             printf("Wait %d seconds.\n", (DEF_TIMEOUT - timeout));
