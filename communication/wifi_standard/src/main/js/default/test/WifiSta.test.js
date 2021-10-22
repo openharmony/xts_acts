@@ -48,172 +48,174 @@ var ipConfig = {
     "domains": ["aaa"],
 }
 
+describe('ACTS_WifiTest', function () {
     beforeEach(function () {
     })
 
     afterEach(function () {
     })
     
-/**
+   /**
     * @tc.number     wifi_native_js_unit_test_001
     * @tc.name       Test wifi.isWifiActive.
     * @tc.desc       Test wifi.isWifiActive API functionality.
     */
-it('wifi_native_js_unit_test_001', 0, function () {
-    console.info("[wifi_test] wifi active  test.");
-    var isactive = wifi.isWifiActive();
-    expect(isactive).assertTrue();
-})
+    it('wifi_native_js_unit_test_001', 0, function () {
+        console.info("[wifi_test] wifi active  test.");
+        var isactive = wifi.isWifiActive();
+        expect(isactive).assertTrue();
+    })
 
-/**
+   /**
     * @tc.number     wifi_native_js_unit_test_003
     * @tc.name       Test wifi.getSignalLevel.
     * @tc.desc       Test wifi.getSignalLevel API functionality.
     */
-it('wifi_native_js_unit_test_003', 0, function () {
-    console.info("[wifi_test] wifi get signal level test.");
-    var result = wifi.getSignalLevel(1, 1)
-    expect(result).assertEqual(4);
-    sleep(3000);
-})
+    it('wifi_native_js_unit_test_003', 0, function () {
+        console.info("[wifi_test] wifi get signal level test.");
+        var result = wifi.getSignalLevel(1, 1)
+        expect(result).assertEqual(4);
+        sleep(3000);
+    })
 
-/**
+   /**
     * @tc.number     wifi_native_js_unit_test_005
     * @tc.name       Test wifi.getScanInfos 0.
     * @tc.desc       Test wifi.getScanInfos API functionality.
     */
-it('wifi_native_js_unit_test_005', 0, async function (done) {
-    console.info("[wifi_test] Wifi get scan infos callback test[1].");
-    var result = wifi.scan();
+    it('wifi_native_js_unit_test_005', 0, async function (done) {
+        console.info("[wifi_test] Wifi get scan infos callback test[1].");
+        var result = wifi.scan();
+        sleep(20000);
+        wifi.getScanInfos(
+            (result) => {
+                var clen = Object.keys(result).length;
+                console.log("[wifi_test] wifi received scan info call back: " + clen);
+                expect(result).assertLarger(0);
+                console.info("[wifi_test] add device config callback: " + JSON.stringify(result));
+                expect(JSON.stringify(result)).assertContain('ssid');
+                sleep(5000);
+                for (var j = 0; j < clen; ++j) {
+                    console.info("ssid: " + result[j].ssid);
+                    console.info("bssid: " + result[j].bssid);
+                    console.info("securityType: " + result[j].securityType);
+                    console.info("rssi: " + result[j].rssi);
+                    console.info("band: " + result[j].band);
+                    console.info("frequency: " + result[j].frequency);
+                    console.info("timestamp: " + result[j].timestamp);
+                }
+            });
+            done();
+    })
     sleep(20000);
-    wifi.getScanInfos(
-        (result) => {
-            var clen = Object.keys(result).length;
-            console.log("[wifi_test] wifi received scan info call back: " + clen);
-            expect(result).assertLarger(0);
-            console.info("[wifi_test] add device config callback: " + JSON.stringify(result));
-            expect(JSON.stringify(result)).assertContain('ssid');
-            sleep(5000);
-            for (var j = 0; j < clen; ++j) {
-                console.info("ssid: " + result[j].ssid);
-                console.info("bssid: " + result[j].bssid);
-                console.info("securityType: " + result[j].securityType);
-                console.info("rssi: " + result[j].rssi);
-                console.info("band: " + result[j].band);
-                console.info("frequency: " + result[j].frequency);
-                console.info("timestamp: " + result[j].timestamp);
-            }
-        });
-        done();
-})
-sleep(20000);
 
-/**
+   /**
     * @tc.number     wifi_native_js_unit_test_006
     * @tc.name       Test wifi.getScanInfos 1.
     * @tc.desc       Test wifi.getScanInfos API functionality.
     */
-it('wifi_native_js_unit_test_006', 0, async function (done) {
-    console.info("[wifi_test] Wifi get scan infos callback test[2].");
-    wifi.getScanInfos()
-        .then(result => {
-            var clen = Object.keys(result).length;
-            console.log("[wifi_test] wifi received scan promise result: " + clen);
-            expect(result).assertLarger(0);
-            console.info("[wifi_test] test_006 promise... " + JSON.stringify(result));
-            expect(JSON.stringify(result)).assertContain('ssid');
+    it('wifi_native_js_unit_test_006', 0, async function (done) {
+        console.info("[wifi_test] Wifi get scan infos callback test[2].");
+        wifi.getScanInfos()
+            .then(result => {
+                var clen = Object.keys(result).length;
+                console.log("[wifi_test] wifi received scan promise result: " + clen);
+                expect(result).assertLarger(0);
+                console.info("[wifi_test] test_006 promise... " + JSON.stringify(result));
+                expect(JSON.stringify(result)).assertContain('ssid');
 
-            sleep(5000);
-            for (var j = 0; j < clen; ++j) {
-                console.info("ssid: " + result[j].ssid);
-                console.info("bssid: " + result[j].bssid);
-                console.info("securityType: " + result[j].securityType);
-                console.info("rssi: " + result[j].rssi);
-                console.info("band: " + result[j].band);
-                console.info("frequency: " + result[j].frequency);
-                console.info("timestamp: " + result[j].timestamp);
-                console.info("capabilities: " + result[j].capabilities);
-                console.info("channelWidth: " + result[j].channelWidth);
-            }
-        });
-        done();
-})
+                sleep(5000);
+                for (var j = 0; j < clen; ++j) {
+                    console.info("ssid: " + result[j].ssid);
+                    console.info("bssid: " + result[j].bssid);
+                    console.info("securityType: " + result[j].securityType);
+                    console.info("rssi: " + result[j].rssi);
+                    console.info("band: " + result[j].band);
+                    console.info("frequency: " + result[j].frequency);
+                    console.info("timestamp: " + result[j].timestamp);
+                    console.info("capabilities: " + result[j].capabilities);
+                    console.info("channelWidth: " + result[j].channelWidth);
+                }
+            });
+            done();
+    })
 
-/**
+  /**
     * @tc.number    wifi_native_js_unit_test_007
     * @tc.name       Test wifi.removeDeviceconfig 1.
     * @tc.desc       Test wifi.addDeviceconfig API functionality.
     */
-it('wifi_native_js_unit_test_007', 0, async function (done) {
-    console.info('[wifi_test] wifi add device config  test[1]');
-    var active = wifi.isWifiActive();
-    if(!active){
-        var enable = wifi.enableWifi();
-        except(enable).assertTrue();
-        sleep(3000);
-    }
-    wifi.addDeviceConfig(wifiConfig,
-        (result) => {
-            expect(result).assertLarger(0);
-            console.info("[wifi_test] test_007 wifi addDeviceconfig callback: " +JSON.stringify(result));
-            var conn = wifi.connectToNetwork(result);
-            expect(conn).assertTrue();
-            sleep(5000);
-            console.info("[wifi_test] test_007 wifi addDeviceconfig callback: " + result);
-            for (var j = 0; j < JSON.stringify(result).length; ++j) {
-                console.info("ssid: " + result[j].ssid);
-                console.info("bssid: " + result[j].bssid);
-                console.info("securityType: " + result[j].securityType);
-                console.info("isHiddenSsid: " + result[j].isHiddenSsid);
-                console.info("preSharedKey: " + result[j].preSharedKey);
-                console.info("ipType: " + result[j].ipType);
-                console.info("creatorUid: " + result[j].creatorUid);
-                console.info("netId: " + result[j].netId);
-                console.info("disableReason: " + result[j].disableReason);
-                console.info("randomMacType: " + result[j].randomMacType);
-                console.info("randomMacAddr: " + result[j].randomMacAddr);
-                console.info("staticIp: " + result[j].staticIp);
-            }
-            var discon = wifi.disconnect();
-            except(discon).assertTrue();
+    it('wifi_native_js_unit_test_007', 0, async function (done) {
+        console.info('[wifi_test] wifi add device config  test[1]');
+        var active = wifi.isWifiActive();
+        if(!active){
+            var enable = wifi.enableWifi();
+            except(enable).assertTrue();
             sleep(3000);
-            var disable = wifi.disableWifi();
-            except(disable).assertTrue();
-        });
-        done();
-})
+        }
+        wifi.addDeviceConfig(wifiConfig,
+            (result) => {
+                expect(result).assertLarger(0);
+                console.info("[wifi_test] test_007 wifi addDeviceconfig callback: " +JSON.stringify(result));
+                var conn = wifi.connectToNetwork(result);
+                expect(conn).assertTrue();
+                sleep(5000);
+                console.info("[wifi_test] test_007 wifi addDeviceconfig callback: " + result);
+                for (var j = 0; j < JSON.stringify(result).length; ++j) {
+                    console.info("ssid: " + result[j].ssid);
+                    console.info("bssid: " + result[j].bssid);
+                    console.info("securityType: " + result[j].securityType);
+                    console.info("isHiddenSsid: " + result[j].isHiddenSsid);
+                    console.info("preSharedKey: " + result[j].preSharedKey);
+                    console.info("ipType: " + result[j].ipType);
+                    console.info("creatorUid: " + result[j].creatorUid);
+                    console.info("netId: " + result[j].netId);
+                    console.info("disableReason: " + result[j].disableReason);
+                    console.info("randomMacType: " + result[j].randomMacType);
+                    console.info("randomMacAddr: " + result[j].randomMacAddr);
+                    console.info("staticIp: " + result[j].staticIp);
+                }
+                var discon = wifi.disconnect();
+                except(discon).assertTrue();
+                sleep(3000);
+                var disable = wifi.disableWifi();
+                except(disable).assertTrue();
+            });
+            done();
+    })
 
-/**
+  /**
     * @tc.number     wifi_native_js_unit_test_008
     * @tc.name       Test wifi.deviceconfig 2.
     * @tc.desc       Test wifi.adddeviceconfig API functionality.
     */
-it('wifi_native_js_unit_test_008', 0, async function (done) {
-    console.info("[wifi_test]wifi  add device config  test[2].");
-    var active = wifi.isWifiActive();
-    if(!active){
-        var enable = wifi.enableWifi();
-        except(enable).assertTrue();
-        sleep(3000);
-    }
-    wifi.addDeviceConfig(wifiConfig)
-        .then(result => {
-            console.info("[wifi_test] test_008 wifi addDeviceconfig promise result: " + JSON.stringify(result));
-            expect(result).assertLarger(0);
-            console.info("[wifi_test] test_008 wifi addDeviceconfig promise result: " + result)
-            sleep(5000);
-            var conn = wifi.connectToNetwork(result);
-            expect(conn).assertTrue();
-            sleep(5000);
-            var discon = wifi.disconnect();
-            except(discon).assertTrue();
+    it('wifi_native_js_unit_test_008', 0, async function (done) {
+        console.info("[wifi_test]wifi  add device config  test[2].");
+        var active = wifi.isWifiActive();
+        if(!active){
+            var enable = wifi.enableWifi();
+            except(enable).assertTrue();
             sleep(3000);
-            var disable = wifi.disableWifi();
-            except(disable).assertTrue();
-        });
-        done();
-})
+        }
+        wifi.addDeviceConfig(wifiConfig)
+            .then(result => {
+                console.info("[wifi_test] test_008 wifi addDeviceconfig promise result: " + JSON.stringify(result));
+                expect(result).assertLarger(0);
+                console.info("[wifi_test] test_008 wifi addDeviceconfig promise result: " + result)
+                sleep(5000);
+                var conn = wifi.connectToNetwork(result);
+                expect(conn).assertTrue();
+                sleep(5000);
+                var discon = wifi.disconnect();
+                except(discon).assertTrue();
+                sleep(3000);
+                var disable = wifi.disableWifi();
+                except(disable).assertTrue();
+            });
+            done();
+    })
 
-console.log("*************[wifi_test] start wifi js unit test end*************");
+    console.log("*************[wifi_test] start wifi js unit test end*************");
+})
 
 
