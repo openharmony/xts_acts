@@ -20,7 +20,6 @@
 #include <fcntl.h>
 #include <sys/prctl.h>
 #include "securec.h"
-#include "securec.h"
 #include "gtest/gtest.h"
 #include "source.h"
 #include "player.h"
@@ -181,7 +180,7 @@ public:
 
     void OnError(int32_t errorType, int32_t errorCode) override;
 
-    void OnInfo(int type, int extra) override;
+    void OnInfo(int32_t type, int32_t extra) override;
 
     void OnVideoSizeChanged(int width, int height) override;
 
