@@ -38,7 +38,7 @@
 #define LWIP_TEST_FAIL (-1)
 #define DEF_TASK_STACK 2000
 #define DEF_TASK_PRIORITY 20
-#define ONE_SECOND 1
+#define ONE_SECOND 100
 #define TIMEOUT 4
 #define TEST_FD_COUNT 10
 
@@ -56,7 +56,7 @@ static int g_selectTimeout = 2;
 static void WaitClient(void)
 {
     while (1) {
-        sleep(ONE_SECOND);
+        osDelay(ONE_SECOND);
         if (g_clientWait) {
             break;
         }
@@ -68,7 +68,7 @@ static void WaitClient(void)
 static void WaitServer(void)
 {
     while (1) {
-        sleep(ONE_SECOND);
+        osDelay(ONE_SECOND);
         if (g_serverWait) {
             break;
         }
@@ -500,7 +500,7 @@ LITE_TEST_CASE(LwipFuncTestSuite, testTcp, Function | MediumTest | Level2)
         printf("[testTcp]create client task fail!\n");
     }
 
-    sleep(ONE_SECOND);
+    osDelay(ONE_SECOND);
     int timeout = TIMEOUT;
     g_serverWait = 1;
     g_clientWait = 1;
@@ -510,11 +510,11 @@ LITE_TEST_CASE(LwipFuncTestSuite, testTcp, Function | MediumTest | Level2)
             break;
         }
         timeout--;
-        sleep(ONE_SECOND);
+        osDelay(ONE_SECOND);
         printf("[testTcp] wait[1]...\n");
     }
 
-    sleep(ONE_SECOND);
+    osDelay(ONE_SECOND);
     timeout = TIMEOUT;
     g_serverWait = 1;
     g_clientWait = 1;
@@ -524,11 +524,11 @@ LITE_TEST_CASE(LwipFuncTestSuite, testTcp, Function | MediumTest | Level2)
             break;
         }
         timeout--;
-        sleep(ONE_SECOND);
+        osDelay(ONE_SECOND);
         printf("[testTcp] wait[2]...\n");
     }
 
-    sleep(ONE_SECOND);
+    osDelay(ONE_SECOND);
     timeout = TIMEOUT;
     g_serverWait = 1;
     g_clientWait = 1;
@@ -538,10 +538,10 @@ LITE_TEST_CASE(LwipFuncTestSuite, testTcp, Function | MediumTest | Level2)
             break;
         }
         timeout--;
-        sleep(ONE_SECOND);
+        osDelay(ONE_SECOND);
         printf("[testTcp] wait[3]...\n");
     }
-    sleep(ONE_SECOND);
+    osDelay(ONE_SECOND);
     timeout = TIMEOUT;
     g_serverWait = 1;
     g_clientWait = 1;
@@ -551,7 +551,7 @@ LITE_TEST_CASE(LwipFuncTestSuite, testTcp, Function | MediumTest | Level2)
             break;
         }
         timeout--;
-        sleep(ONE_SECOND);
+        osDelay(ONE_SECOND);
         printf("[testTcp] wait[4]...\n");
     }
     TEST_ASSERT_EQUAL_INT(1, g_clientResult);
@@ -639,7 +639,7 @@ LITE_TEST_CASE(LwipFuncTestSuite, testSelectTimeout, Function | MediumTest | Lev
         printf("create select server task fail!\n");
     } else {
         while (g_selectFlag) {
-            sleep(ONE_SECOND);
+            osDelay(ONE_SECOND);
             printf("wait select server finish...\n");
         }
         TEST_ASSERT_EQUAL_INT(-2, g_selectResult);
@@ -685,7 +685,7 @@ LITE_TEST_CASE(LwipFuncTestSuite, testSelectMultiClients, Function | MediumTest 
 
         g_selectFlag = 1;
         while (g_selectFlag) {
-            sleep(ONE_SECOND);
+            osDelay(ONE_SECOND);
             printf("wait select server finish...\n");
         }
         TEST_ASSERT_EQUAL_INT(0, g_selectResult);
