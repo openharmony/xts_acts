@@ -400,6 +400,7 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testHandleDeviceConfig, Function | Medi
     config.freq = 20;
     config.securityType = WIFI_SEC_TYPE_SAE;
     config.wapiPskType = WIFI_PSK_TYPE_ASCII;
+
     int ret = strncpy_s(config.ssid, WIFI_MAX_SSID_LEN, ssid0, strlen(ssid0));
     TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, ret);
     ret = strncpy_s(config.preSharedKey, WIFI_MAX_KEY_LEN, info, strlen(info));
