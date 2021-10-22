@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
+#include <unistd.h>
 #include "hctest.h"
 #include "ohos_types.h"
 #include "wifi_device.h"
 #include "wifi_hotspot.h"
 #include "cmsis_os2.h"
-#include <unistd.h>
 
 #define DEF_TIMEOUT 15
 #define ONE_SECOND 100
