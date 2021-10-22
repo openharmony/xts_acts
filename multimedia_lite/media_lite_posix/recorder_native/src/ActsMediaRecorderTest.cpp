@@ -82,6 +82,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_Start_test_001, Level1)
     retStatus = recInstance->SetRecorderCallback(cb);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Start();
+    sleep(1);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Release();
     delete recInstance;
@@ -108,6 +109,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_Start_test_002, Level1)
     retStatus = recInstance->SetRecorderCallback(cb);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Start();
+    sleep(1);
     EXPECT_NE(RET_OK, retStatus);
     retStatus = recInstance->Release();
     delete recInstance;
@@ -136,6 +138,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_Pause_test_001, Level1)
     retStatus = recInstance->SetRecorderCallback(cb);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Start();
+    sleep(1);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Pause();
     EXPECT_EQ(RET_OK, retStatus);
@@ -166,6 +169,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_Pause_test_002, Level1)
     retStatus = recInstance->SetRecorderCallback(cb);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Start();
+    sleep(1);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Pause();
     EXPECT_EQ(RET_OK, retStatus);
@@ -198,6 +202,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_Resume_test_001, Level1)
     retStatus = recInstance->SetRecorderCallback(cb);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Start();
+    sleep(1);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Pause();
     EXPECT_EQ(RET_OK, retStatus);
@@ -230,6 +235,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_Resume_test_002, Level1)
     retStatus = recInstance->SetRecorderCallback(cb);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Start();
+    sleep(1);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Pause();
     EXPECT_EQ(RET_OK, retStatus);
@@ -264,6 +270,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_Stop_test_001, Level1)
     retStatus = recInstance->SetRecorderCallback(cb);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Start();
+    sleep(1);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Stop(true);
     EXPECT_EQ(RET_OK, retStatus);
@@ -294,6 +301,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_Stop_test_002, Level1)
     retStatus = recInstance->SetRecorderCallback(cb);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Start();
+    sleep(1);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Stop(true);
     EXPECT_EQ(RET_OK, retStatus);
@@ -326,6 +334,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_Reset_test_001, Level1)
     retStatus = recInstance->SetRecorderCallback(cb);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Start();
+    sleep(1);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Reset();
     EXPECT_EQ(RET_OK, retStatus);
@@ -356,6 +365,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_Reset_test_002, Level1)
     retStatus = recInstance->SetRecorderCallback(cb);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Start();
+    sleep(1);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Reset();
     EXPECT_EQ(RET_OK, retStatus);
@@ -388,6 +398,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_Release_test_001, Level1)
     retStatus = recInstance->SetRecorderCallback(cb);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Start();
+    sleep(1);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Release();
     EXPECT_EQ(RET_OK, retStatus);
@@ -417,6 +428,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_Release_test_002, Level1)
     retStatus = recInstance->SetRecorderCallback(cb);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Start();
+    sleep(1);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Release();
     EXPECT_EQ(RET_OK, retStatus);
@@ -451,6 +463,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_SetFileSplitDuration_test_001, Leve
     retStatus = recInstance->SetRecorderCallback(cb);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Start();
+    sleep(1);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->SetFileSplitDuration(type, timestamp, duration);
     EXPECT_EQ(RET_OK, retStatus);
@@ -484,6 +497,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_SetFileSplitDuration_test_002, Leve
     retStatus = recInstance->SetRecorderCallback(cb);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Start();
+    sleep(1);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->SetFileSplitDuration(type, timestamp, duration);
     EXPECT_EQ(RET_OK, retStatus);
@@ -517,6 +531,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_SetFileSplitDuration_test_003, Leve
     retStatus = recInstance->SetRecorderCallback(cb);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Start();
+    sleep(1);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->SetFileSplitDuration(type, timestamp, duration);
     EXPECT_EQ(RET_OK, retStatus);
@@ -550,6 +565,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_SetFileSplitDuration_test_004, Leve
     retStatus = recInstance->SetRecorderCallback(cb);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Start();
+    sleep(1);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Pause();
     EXPECT_EQ(RET_OK, retStatus);
