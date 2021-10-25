@@ -11,11 +11,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import("//build/lite/config/subsystem/aafwk/config.gni")
 import("//test/xts/tools/lite/build/suite_lite.gni")
 
 hcpptest_suite("ActsMediaPlayerTest") {
   suite_name = "acts"
-  sources = [ "src/ActsMediaPlayerTest.cpp" ]
+  sources = [ "src/ActsMediaPlayerAudioTest.cpp" ]
+  if (ohos_kernel_type == "liteos_a" &&
+      enable_ohos_appexecfwk_feature_ability == true) {
+    sources += [ "src/ActsMediaPlayerVideoTest.cpp" ]
+  }
+
   ldflags = [ "-lstdc++" ]
   ldflags += [ "-lm" ]
   if (ohos_kernel_type == "linux") {
