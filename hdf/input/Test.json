@@ -1,0 +1,18 @@
+{
+    "kits": [
+        {
+            "push": [
+                "hdf_xtstest_input->/data/local/tmp/hdf_xtstest_input"
+            ],
+            "type": "PushKit"
+        }
+    ],
+    "driver": {
+        "native-test-timeout": "120000",
+        "type": "CppTest",
+        "module-name": "hdf_xtstest_input",
+        "runtime-hint": "1s",
+        "native-test-device-path": "/data/local/tmp"
+    },
+    "description": "Configuration for hdf_xtstest_input Tests"
+}
