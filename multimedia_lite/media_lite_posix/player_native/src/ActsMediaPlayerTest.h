@@ -15,9 +15,18 @@
  
 #ifndef PLAYER_LITE_TEST_H
 #define PLAYER_LITE_TEST_H
-
+#include <sys/prctl.h>
+#include <fcntl.h>
+#include <climits>
+#include "securec.h"
 #include "gtest/gtest.h"
+#include "source.h"
 #include "player.h"
+#include "format.h"
+#include "fstream"
+#include "iostream"
+#include "thread"
+#include "unistd.h"
 
 namespace OHOS {
 using OHOS::Media::Player;
@@ -35,11 +44,43 @@ using namespace testing::ext;
 
 const int FILE_PATH_LEN = 2048;
 
+class StreamSourceSample;
 using TestSample = struct TagTestSample {
     std::shared_ptr<Player> adaptr;
+    pthread_t process;
+    pthread_mutex_t mutex;
+    int32_t isThreadRunning;
+    int32_t sourceType;
     char filePath[FILE_PATH_LEN];
+    std::shared_ptr<StreamSourceSample> streamSample;
 };
 
+using IdleBuffer =  struct TagIdleBuffer {
+    size_t idx;
+    size_t offset;
+    size_t size;
+};
+
+class StreamSourceSample : public StreamSource {
+public:
+    StreamSourceSample(void);
+    ~StreamSourceSample(void);
+    void OnBufferAvailable(size_t index, size_t offset, size_t size);
+    void SetStreamCallback(const std::shared_ptr<StreamCallback> &callback);
+    uint8_t *GetBufferAddress(size_t idx);
+    void QueueBuffer(size_t index, size_t offset, size_t size, int64_t timestampUs, uint32_t flags);
+    int GetAvailableBuffer(IdleBuffer *buffer);
+    std::weak_ptr<StreamCallback> m_callBack;
+    pthread_mutex_t m_mutex;
+private:
+    std::vector<IdleBuffer> aviableBuffer;
+};
+
+void *StreamProcess(const void *arg);
+void SetSchParam(void);
+
+const int32_t HI_SUCCESS = 0;
+const int32_t HI_FAILURE = -1;
 static TagTestSample g_tagTestSample;
 static Surface *g_surface = Surface::CreateSurface();
 } // namespace OHOS
