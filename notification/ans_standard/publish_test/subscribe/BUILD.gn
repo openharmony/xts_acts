@@ -17,8 +17,7 @@ group("subscribe") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "publishfirst:ActsAnsPublishOneTest",
-      "publishsecond:ActsAnsPublishTwoTest",
+      "publish:ActsAnsPublishTest",
       "subscribe:ActsAnsSubscriberTest",
     ]
   }

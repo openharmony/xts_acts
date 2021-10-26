@@ -381,6 +381,7 @@ describe('ActsAmsTestFourthScene', function () {
      * @tc.desc      : Get All Active Processes Info(by Promise)
      */
     it('Acts_Ams_test_8400', 0, async function (done) {
+        sleep(5000);
         var info = await abilitymanager.getActiveProcessInfos();
         console.info('Acts_Ams_test_8400 getActiveProcessInfos JSON String: ' + JSON.stringify(info));
         expect(Array.isArray(info)).assertEqual(true);

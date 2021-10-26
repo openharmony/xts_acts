@@ -17,8 +17,8 @@ import bundle from '@ohos.bundle'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 const BUNDLE_NAME = 'com.example.actsbmscheckpermissiontest';
-const PERMISSION_ONE = 'com.permission.CAMERA';
-const PERMISSION_TWO = 'com.permission.PERMISSION_A';
+const PERMISSION_ONE = 'com.permission.PERMISSION_A';
+const PERMISSION_TWO = 'com.permission.PERMISSION_B';
 const TIMEOUT = 1000;
 const NAMECOUNT = 10000;
 
@@ -31,7 +31,7 @@ describe('ActsBmsCheckPermissionTest', function () {
     */
     it('bms_checkPermission_0100', 0, async function (done) {
         console.info('=====================bms_checkPermission_0100==================');
-        var data = await bundle.checkPermission(BUNDLE_NAME, PERMISSION_TWO)
+        var data = await bundle.checkPermission(BUNDLE_NAME, PERMISSION_ONE)
         expect(data).assertEqual(0);
         done();
         setTimeout(function () {
@@ -46,7 +46,7 @@ describe('ActsBmsCheckPermissionTest', function () {
     */
     it('bms_checkPermission_0200', 0, async function (done) {
         console.info('=====================bms_checkPermission_0200==================');
-        await bundle.checkPermission(BUNDLE_NAME, PERMISSION_TWO, (err, data) => {
+        await bundle.checkPermission(BUNDLE_NAME, PERMISSION_ONE, (err, data) => {
             expect(err.code).assertEqual(0);
             expect(data).assertEqual(0);
             done();
@@ -273,6 +273,40 @@ describe('ActsBmsCheckPermissionTest', function () {
         })
         setTimeout(function () {
             console.info('=====================bms_checkPermission_1400==================end');
+        }, TIMEOUT)
+    })
+
+    /*
+    * @tc.number: bms_checkPermission_1500
+    * @tc.name: check whether the permission is granted
+    * @tc.desc: Verify that permissions which availableScope is system_grant requested
+    *                   from other apps are granted. (by promise)
+    */
+    it('bms_checkPermission_1500', 0, async function (done) {
+        console.info('=====================bms_checkPermission_1500==================');
+        var data = await bundle.checkPermission(BUNDLE_NAME, PERMISSION_TWO)
+        expect(data).assertEqual(0);
+        done();
+        setTimeout(function () {
+            console.info('=====================bms_checkPermission_1500==================end');
+        }, TIMEOUT)
+    })
+
+    /*
+    * @tc.number: bms_checkPermission_1600
+    * @tc.name: check whether the permission is granted
+    * @tc.desc: Verify that permissions which availableScope is system_grant requested
+    *                   from other apps are granted.  (by callback)
+    */
+    it('bms_checkPermission_1600', 0, async function (done) {
+        console.info('=====================bms_checkPermission_1600==================');
+        await bundle.checkPermission(BUNDLE_NAME, PERMISSION_TWO, (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data).assertEqual(0);
+            done();
+        })
+        setTimeout(function () {
+            console.info('=====================bms_checkPermission_1600==================end');
         }, TIMEOUT)
     })
 })

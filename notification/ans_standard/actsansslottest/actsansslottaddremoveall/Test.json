@@ -2,9 +2,9 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "150000",
+        "test-timeout": "60000",
         "package": "com.example.actsansslotaddremoveall",
-        "shell-timeout": "150000"
+        "shell-timeout": "60000"
     },
     "kits": [
         {

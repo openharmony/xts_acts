@@ -73,6 +73,7 @@ describe('ActsBmsMetaDataTest', function () {
             checkMetaData(dataMap2.get(abilityName1), 'Data1');
             checkMetaData(dataMap2.get(abilityName2), 'Data3');
         }
+        await uninstall('com.example.third1');
         done();
         setTimeout(function () {
             console.debug('============bms_getMetaData_0100===========')
@@ -86,6 +87,8 @@ describe('ActsBmsMetaDataTest', function () {
     */
     it('bms_getMetaData_0200', 0, async function (done) {
         console.info('=====================bms_getMetaData_0200==================');
+        await install(['/data/test/bmsThirdBundleTest1.hap'])
+        await install(['/data/test/bmsThirdBundleTest3.hap'])
         await install(['/data/test/bmsThirdBundleTestA1.hap'])
         let dataMap = new Map();
         let abilityName1 = 'com.example.third1.AMainAbility';
@@ -110,6 +113,7 @@ describe('ActsBmsMetaDataTest', function () {
             checkMetaData(dataMap.get(abilityName1), 'DataA1');
             checkMetaData(dataMap.get(abilityName2), 'Data3');
         }
+        await uninstall('com.example.third1');
         done();
         setTimeout(function () {
             console.debug('============bms_getMetaData_0200===========')
@@ -123,6 +127,7 @@ describe('ActsBmsMetaDataTest', function () {
     */
     it('bms_getMetaData_0300', 0, async function (done) {
         console.info('=====================bms_getMetaData_0300==================');
+        await install(['/data/test/bmsThirdBundleTest1.hap'])
         await uninstall('com.example.third1');
         var dataInfos = await bundle.queryAbilityByWant({
             want: {
@@ -267,7 +272,29 @@ describe('ActsBmsMetaDataTest', function () {
         }
         expect(dataMap.has(abilityName1)).assertTrue();
         if (dataMap.has(abilityName1)) {
-            checkMetaData(dataMap.get(abilityName1), 'Data1V');
+            let data = dataMap.get(abilityName1);
+            var parameters = data.parameters;
+            var results = data.results;
+            var customizeDatas = data.customizeDatas;
+            expect(parameters.length).assertEqual(2);
+            expect(results.length).assertEqual(1);
+            expect(customizeDatas.length).assertEqual(1);
+            console.debug('=====customizeDatas length=====' + customizeDatas.length);
+            for (let i = 0; i < parameters.length; i++) {
+                expect(parameters[i].description).assertEqual('$string:mainability_description');
+                expect(parameters[i].name).assertEqual("Data1V"+i);
+                expect(parameters[i].type).assertEqual('float');
+            }
+            for (let i = 0; i < results.length; i++) {
+                expect(results[i].description).assertEqual('$string:mainability_description');
+                expect(results[i].name).assertEqual('Data1V');
+                expect(results[i].type).assertEqual('float');
+            }
+            for (let i = 0; i < customizeDatas.length; i++) {
+                expect(customizeDatas[i].name).assertEqual('');
+                expect(customizeDatas[i].value).assertEqual('');
+                expect(customizeDatas[i].extra).assertEqual('');
+            }
         }
         done();
         setTimeout(function () {

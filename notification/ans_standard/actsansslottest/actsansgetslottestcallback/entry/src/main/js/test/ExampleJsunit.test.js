@@ -72,8 +72,12 @@ describe('ActsAnsGetSlotTestCallback', function () {
             expect(data.sound).assertEqual("");
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
-            console.debug("====>getSlotActsAnsGetSlotTestCallback_0100 finish====>");
-            done();
+            console.debug("====>getSlot ActsAnsGetSlotTestCallback_0100 finish====>");
+            notification.removeSlot(notification.SlotType.SOCIAL_COMMUNICATION, (err)=>{
+                console.debug("====>removeSlot SOCIAL_COMMUNICATION enter====>");
+                expect(err.code).assertEqual(0);
+                done();
+            })
         });
         setTimeout(function(){
             console.debug("====>time out ActsAnsGetSlotTestCallback_0100====>");
@@ -103,7 +107,11 @@ describe('ActsAnsGetSlotTestCallback', function () {
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0200 finish====>");
-            done();
+            notification.removeSlot(notification.SlotType.SERVICE_INFORMATION, (err)=>{
+                console.debug("====>removeSlot SERVICE_INFORMATION enter====>");
+                expect(err.code).assertEqual(0);
+                done();
+            })
         }
         console.debug("====>addSlot SlotType.SERVICE_INFORMATION: ====>");
         await notification.addSlot(notification.SlotType.SERVICE_INFORMATION, addSlotActsAnsGetSlotTestCallbackSecond);
@@ -137,7 +145,11 @@ describe('ActsAnsGetSlotTestCallback', function () {
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0300 finish====>");
-            done();
+            notification.removeSlot(notification.SlotType.CONTENT_INFORMATION, (err)=>{
+                console.debug("====>removeSlot CONTENT_INFORMATION enter====>");
+                expect(err.code).assertEqual(0);
+                done();
+            })
         }
         console.debug("====>addSlot SlotType.CONTENT_INFORMATION: ====>");
         await notification.addSlot(notification.SlotType.CONTENT_INFORMATION, addSlotActsAnsGetSlotTestCallbackThird);
@@ -171,7 +183,11 @@ describe('ActsAnsGetSlotTestCallback', function () {
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0400 finish====>");
-            done();
+            notification.removeSlot(notification.SlotType.OTHER_TYPES, (err)=>{
+                console.debug("====>removeSlot OTHER_TYPES enter====>");
+                expect(err.code).assertEqual(0);
+                done();
+            })
         }
         console.debug("====>addSlot SlotType.OTHER_TYPES: ====>");
         await notification.addSlot(notification.SlotType.OTHER_TYPES, addSlotActsAnsGetSlotTestCallbackFourth);
@@ -205,7 +221,11 @@ describe('ActsAnsGetSlotTestCallback', function () {
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0500 finish====>");
-            done();
+            notification.removeSlot(notification.SlotType.OTHER_TYPES, (err)=>{
+                console.debug("====>removeSlot OTHER_TYPES enter====>");
+                expect(err.code).assertEqual(0);
+                done();
+            })
         }
         console.debug("====>addSlot SlotType.UNKNOWN_TYPE: ====>");
         await notification.addSlot(notification.SlotType.UNKNOWN_TYPE, addSlotActsAnsGetSlotTestCallbackFifth);
@@ -215,4 +235,4 @@ describe('ActsAnsGetSlotTestCallback', function () {
             console.debug("====>time out ActsAnsGetSlotTestCallback_0500====>");
         }, 1000);
     })
-}) 
+})

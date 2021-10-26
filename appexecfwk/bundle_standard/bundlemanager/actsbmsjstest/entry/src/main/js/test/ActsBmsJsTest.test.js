@@ -32,7 +32,12 @@ describe('ActsBmsJsTest', function () {
         await install(['/data/test/bmsThirdBundleTest2.hap']);
         let data = await bundle.getBundleInfo(bundleName, 1);
         expect(data.abilityInfo.length).assertEqual(1);
-        checkIsExist(abilityName, data);
+        if(data.abilityInfo.length == 1){
+            console.debug('========check abilityName ========' + JSON.stringify(data.abilityInfo));
+            expect(data.abilityInfo[0].name).assertEqual(abilityName);
+            expect(data.abilityInfo[0].srcLanguage).assertEqual('js');
+            expect(data.abilityInfo[0].srcPath).assertEqual('');
+        }
         await uninstall(bundleName);
         done();
         setTimeout(function () {
@@ -54,9 +59,16 @@ describe('ActsBmsJsTest', function () {
         await install(['/data/test/bmsThirdBundleTest5.hap']);
         let data = await bundle.getBundleInfo(bundleName, 1)
         console.debug('==========bundleInfo==========' + JSON.stringify(data))
-        expect(data.abilityInfo.length).assertLarger(1);
-        checkIsExist(abilityName1, data);
-        checkIsExist(abilityName2, data);
+        expect(data.abilityInfo.length).assertEqual(2);
+        if(data.abilityInfo.length == 2){
+            console.debug('========check abilityName ========' + JSON.stringify(data.abilityInfo));
+            expect(data.abilityInfo[0].name).assertEqual(abilityName1);
+            expect(data.abilityInfo[0].srcLanguage).assertEqual('js');
+            expect(data.abilityInfo[0].srcPath).assertEqual('');
+            expect(data.abilityInfo[1].name).assertEqual(abilityName2);
+            expect(data.abilityInfo[1].srcLanguage).assertEqual('js');
+            expect(data.abilityInfo[1].srcPath).assertEqual('');
+        }
         await uninstall(bundleName);
         done();
         setTimeout(function () {
@@ -77,13 +89,45 @@ describe('ActsBmsJsTest', function () {
         await install(['/data/test/bmsThirdBundleJs.hap']);
         let data = await bundle.getBundleInfo(bundleName, 1);
         expect(data.abilityInfo.length).assertEqual(1);
-        checkIsExist(abilityName, data);
+        if(data.abilityInfo.length == 1){
+            console.debug('========check abilityName ========' + JSON.stringify(data.abilityInfo));
+            expect(data.abilityInfo[0].name).assertEqual(abilityName);
+            expect(data.abilityInfo[0].srcLanguage).assertEqual('js');
+            expect(data.abilityInfo[0].srcPath).assertEqual('default');
+        }
         await uninstall(bundleName);
         done();
         setTimeout(function () {
             console.info('=====================bms_getJsAbility_0300==================end');
         }, TIMEOUT)
     })
+
+    /*
+    * @tc.number: bms_getJsAbility_0400
+    * @tc.name: test the multi js ability
+    * @tc.desc: 1.install a c++ hap which has an ability with short domain name
+    *           2.check the ability name by the interface of getBundleInfo
+    */
+    it('bms_getJsAbility_0400', 0, async function (done) {
+        console.info('=====================bms_getJsAbility_0400==================');
+        let bundleName = 'com.example.c';
+        let abilityName = '.MainAbility';
+        await install(['/data/test/bmsThirdBundleC.hap']);
+        let data = await bundle.getBundleInfo(bundleName, 1);
+        expect(data.abilityInfo.length).assertEqual(1);
+        if(data.abilityInfo.length == 1){
+            console.debug('========check abilityName ========' + JSON.stringify(data.abilityInfo));
+            expect(data.abilityInfo[0].name).assertEqual(abilityName);
+            expect(data.abilityInfo[0].srcLanguage).assertEqual('c++');
+            expect(data.abilityInfo[0].srcPath).assertEqual('default/c++/');
+        }
+        await uninstall(bundleName);
+        done();
+        setTimeout(function () {
+            console.info('=====================bms_getJsAbility_0300==================end');
+        }, TIMEOUT)
+    })
+
     async function install(bundlePath) {
         var installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
@@ -122,16 +166,5 @@ describe('ActsBmsJsTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
         }
-    }
-    function checkIsExist(abilityName, data)
-    {
-        console.debug('==========bundleInfo==========' + JSON.stringify(data))
-        console.debug('==========AbilityInfo===========' + JSON.stringify(data.abilityInfo))
-        let abilityNames = new Map();
-        for (var i = 0; i < data.abilityInfo.length; i++) {
-            console.debug('==========abilityName==========' + data.abilityInfo[i].name);
-            abilityNames.set(data.abilityInfo[i].name, data.abilityInfo[i]);
-        }
-        expect(abilityNames.has(abilityName)).assertEqual(true);
     }
 })

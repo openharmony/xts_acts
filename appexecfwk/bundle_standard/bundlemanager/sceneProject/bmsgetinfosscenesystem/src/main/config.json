@@ -16,6 +16,7 @@
   "module": {
     "package": "com.example.system1",
     "name": ".BmsSystemBundle1",
+    "mainAbility": "com.example.system1.MainAbility",
     "deviceType": [
       "phone"
     ],

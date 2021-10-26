@@ -19,8 +19,8 @@ describe('ActsAnsSlotSystemCallback', function () {
 
     /*
      * @tc.number    : ActsAnsSlotSystemCallback_0100
-     * @tc.name      : Verify getSlots after adding slots and removeSlot
-     * @tc.desc      : getSlots after adding all type slots and removing slot
+     * @tc.name      : Verify getSlots after adding slots and removeAllSlots
+     * @tc.desc      : getSlots after adding all type slots and remove all slots
      */
     it('ActsAnsSlotSystemCallback_0100', 0, async function (done) {
         console.debug("====>ActsAnsSlotSystemCallback_0100 start====>");
@@ -159,9 +159,9 @@ describe('ActsAnsSlotSystemCallback', function () {
                 expect(data[3].lightEnabled).assertEqual(true);
                 expect(data[3].lightColor).assertEqual(4);
                 console.debug("====>getSlots end====>");
-                console.debug("====>ActsAnsSlotSystemCallback_0100 end====>");
-                notification.removeSlot(notification.SlotType.SOCIAL_COMMUNICATION, (err)=>{
-                    console.debug("====>removeSlot ActsAnsSlotSystemCallback_0100 err====>" + JSON.stringify(err));
+                notification.removeAllSlots((err)=>{
+                    console.debug("====>removeAllSlots ActsAnsSlotSystemCallback_0100 err====>" + JSON.stringify(err));
+                    console.debug("====>ActsAnsSlotSystemCallback_0100 end====>");
                     expect(err.code).assertEqual(0);
                     done();
                 })
@@ -170,7 +170,7 @@ describe('ActsAnsSlotSystemCallback', function () {
                 expect().assertFail();
             }
         })
-        setTimeout(timeOut, 10000);
+        setTimeout(timeOut, 2000);
     })
 
     /*
@@ -230,9 +230,13 @@ describe('ActsAnsSlotSystemCallback', function () {
             expect(data.lightEnabled).assertEqual(true);
             expect(data.lightColor).assertEqual(1);
             console.debug("====>getSlotActsAnsSlotSystemCallback_0200 finish====>");
-            console.debug("====>ActsAnsSlotSystemCallback_0200 end====>");
-            done();
+            notification.removeSlot(notification.SlotType.SOCIAL_COMMUNICATION, (err)=>{
+                console.debug("====>removeSlot SOCIAL_COMMUNICATION err====>" + JSON.stringify(err));
+                console.debug("====>ActsAnsSlotSystemCallback_0200 end====>");
+                expect(err.code).assertEqual(0);
+                done();
+            })
         })
-        setTimeout(timeOutTwo, 10000);
+        setTimeout(timeOutTwo, 2000);
     })
 }) 

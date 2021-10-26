@@ -42,7 +42,8 @@
         "label": "$string:app_name",
         "type": "page",
         "isVisible": "true",
-        "launchType": "standard"
+        "launchType": "standard",
+	"visible": true
       }
     ],
     "js": [

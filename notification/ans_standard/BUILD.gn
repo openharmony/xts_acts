@@ -20,7 +20,6 @@ group("ans_standard") {
       #"actsansnotificationremove:ActsAnsNotificationRemove",
       "actsansslottest:ActsAnsSlotTest",
       "publish_test:publish_test",
-      "publishicontest:ActsAnsIconTest",
     ]
   }
 }
