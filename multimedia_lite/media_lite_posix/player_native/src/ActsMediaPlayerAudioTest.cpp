@@ -584,7 +584,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_015, Level1)
     g_tagTestSample.adaptr->SetPlayerCallback(callBack);
     ret = CreateAndSetSource();
     EXPECT_EQ(HI_SUCCESS, ret);
-    ret = g_tagTestSample.adaptr->Prepare();   
+    ret = g_tagTestSample.adaptr->Prepare();
     EXPECT_EQ(HI_SUCCESS, ret);
     ret = g_tagTestSample.adaptr->Play();
     EXPECT_EQ(HI_SUCCESS, ret);
