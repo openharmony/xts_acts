@@ -249,6 +249,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_001, Level1)
     EXPECT_EQ(HI_SUCCESS, ret);
     sleep(2);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
 /* *
@@ -276,6 +277,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_002, Level1)
     ret = g_tagTestSample.adaptr->Stop();
     EXPECT_EQ(HI_SUCCESS, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
 /* *
@@ -301,6 +303,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_003, Level1)
     ret = g_tagTestSample.adaptr->Play();
     EXPECT_EQ(HI_FAILURE, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
 /* *
@@ -320,6 +323,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_004, Level1)
     ret = g_tagTestSample.adaptr->Prepare();
     EXPECT_EQ(HI_SUCCESS, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
 /* *
@@ -341,6 +345,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_005, Level1)
     ret = g_tagTestSample.adaptr->Prepare();
     EXPECT_EQ(HI_SUCCESS, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
 /* *
@@ -364,6 +369,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_006, Level1)
     ret = g_tagTestSample.adaptr->Stop();
     EXPECT_EQ(HI_SUCCESS, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
  /* *
@@ -389,6 +395,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_007, Level1)
     bool flag = g_tagTestSample.adaptr->IsPlaying();
     EXPECT_EQ(false, flag);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
  /* *
@@ -412,6 +419,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_008, Level1)
     bool flag = g_tagTestSample.adaptr->IsPlaying();
     EXPECT_EQ(true, flag);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
  /* *
@@ -437,6 +445,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_009, Level1)
     ret = g_tagTestSample.adaptr->Pause();
     EXPECT_EQ(HI_SUCCESS, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
  /* *
@@ -458,6 +467,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_010, Level1)
     ret = g_tagTestSample.adaptr->Pause();
     EXPECT_EQ(HI_FAILURE, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
  /* *
@@ -482,6 +492,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_011, Level1)
     sleep(10);
     EXPECT_EQ(HI_SUCCESS, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
  /* *
@@ -506,6 +517,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_012, Level1)
     sleep(10);
     EXPECT_EQ(HI_SUCCESS, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
 /* *
@@ -530,6 +542,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_013, Level1)
     sleep(10);
     EXPECT_EQ(HI_FAILURE, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
 /* *
@@ -554,6 +567,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_014, Level1)
     sleep(10);
     EXPECT_EQ(HI_SUCCESS, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
 /* *
@@ -578,6 +592,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_015, Level1)
     sleep(10);
     EXPECT_EQ(HI_FAILURE, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
 /* *
@@ -602,6 +617,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_016, Level1)
     sleep(10);
     EXPECT_EQ(HI_SUCCESS, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
 /* *
@@ -627,6 +643,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_017, Level1)
     ret = g_tagTestSample.adaptr->GetCurrentTime(currentPosition);
     EXPECT_EQ(HI_SUCCESS, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
 /* *
@@ -654,6 +671,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_018, Level1)
     ret = g_tagTestSample.adaptr->GetCurrentTime(currentPosition);
     EXPECT_EQ(HI_SUCCESS, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
 /* *
@@ -678,6 +696,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_019, Level1)
     ret = g_tagTestSample.adaptr->Rewind(4, PLAYER_SEEK_NEXT_SYNC);
     EXPECT_EQ(HI_SUCCESS, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
 /* *
@@ -700,6 +719,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_020, Level1)
     ret = g_tagTestSample.adaptr->GetDuration(duration);
     EXPECT_EQ(HI_SUCCESS, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
 /* *
@@ -724,6 +744,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_021, Level1)
     ret = g_tagTestSample.adaptr->GetDuration(duration);
     EXPECT_EQ(HI_SUCCESS, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
 /* *
@@ -747,6 +768,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_022, Level1)
     ret = g_tagTestSample.adaptr->Reset();
     EXPECT_EQ(HI_SUCCESS, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
 /* *
@@ -766,6 +788,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_023, Level1)
     ret = g_tagTestSample.adaptr->Reset();
     EXPECT_EQ(HI_SUCCESS, ret);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
 /* *
@@ -792,6 +815,7 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_024, Level1)
     bool flag = g_tagTestSample.adaptr->IsPlaying();
     EXPECT_EQ(true, flag);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 
 /* *
@@ -819,5 +843,6 @@ HWTEST_F(ActsMediaPlayerAudioTest, player_lite_audio_test_025, Level1)
     bool flag = g_tagTestSample.adaptr->IsPlaying();
     EXPECT_EQ(true, flag);
     g_tagTestSample.adaptr->Release();
+    sleep(1);
 }
 } // OHOS
