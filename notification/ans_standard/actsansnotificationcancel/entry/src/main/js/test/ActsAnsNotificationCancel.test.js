@@ -251,12 +251,12 @@ describe('ActsAnsNotificationCancel', function () {
     function onConsumeCancelAllNoNotify(err, data) {
         console.info("================onConsume_cancelAll_noNotify_0300=======================>");
         console.info("================onConsume_0300 data: =======================>" + JSON.stringify(data));
-        expect(1).assertequal(0);
+        expect().assertFail();
         console.info("================onConsume_cancelAll_noNotify_0300 end=======================>");
     }
     function onCancelCancelAllNoNotify(err, data) {
         console.info("=================onCancel_cancelAll_0300=======================>");
-        expect(1).assertequal(0);
+        expect().assertFail();
         console.info("================onCancel_0300 data : =======================>" + JSON.stringify(data));
         console.info("================onCancel_0300 err : =======================>" + JSON.stringify(err));
         console.info("================onCancel_0300 end=======================>");
@@ -297,14 +297,14 @@ describe('ActsAnsNotificationCancel', function () {
     function onConsumeCancelAllNoNotifyPromise(err, data) {
         console.info("================onConsume_cancelAll_noNotify_promise_0400=======================>");
         console.info("================onConsume_promise_0400 data: =======================>" + JSON.stringify(data));
-        expect(1).assertequal(0);
+        expect().assertFail();
         console.info("================onConsume_promise_0400 end=======================>");
     }
     function onCancelCancelAllNoNotifyPromise(err, data) {
         console.info("===============onCancel_cancelAll_noNotify_promise_0400=======================>");
         console.info("===============onCancel_promise_0400 data=================>" + JSON.stringify(data));
         console.info("===============onCancel_promise_0400 err=====================>" + JSON.stringify(err));
-        expect(1).assertequal(0);
+        expect().assertFail();
         console.info("===============onCancel_cancelAll_noNotify_promise_0400 end=======================>");
     }
 

@@ -90,19 +90,21 @@
         "launchType": "standard",
         "metaData": {
           "parameters": [{
-            "name": "Data1V",
+            "name": "Data1V0",
             "type": "float",
             "description": "$string:mainability_description"
-          }],
+          },
+        {
+          "name": "Data1V1",
+          "type": "float",
+          "description": "$string:mainability_description"
+        }],
           "results": [{
             "name": "Data1V",
             "type": "float",
             "description": "$string:mainability_description"
           }],
-          "customizeData": [{
-            "name": "Data1V",
-            "value": "float",
-            "extra": "$string:mainability_description"
+          "customizeData": [{  
           }]
         }
       }

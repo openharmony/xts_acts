@@ -42,7 +42,11 @@ describe('ActsAnsGetSlotTestPromise', function () {
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlotActsAnsGetSlotTestPromise_0100 finish====>");
-            done();
+            notification.removeSlot(notification.SlotType.SOCIAL_COMMUNICATION, (err)=>{
+                console.debug("====>removeSlot SOCIAL_COMMUNICATION enter====>");
+                expect(err.code).assertEqual(0);
+                done();
+            })
         })
         console.debug("====>ActsAnsGetSlotTestPromise_0100 end====>");
         setTimeout(function(){
@@ -75,7 +79,11 @@ describe('ActsAnsGetSlotTestPromise', function () {
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlotPromise SERVICE_INFORMATION ActsAnsGetSlotTestPromise_0200 finish====>");
-            done();
+            notification.removeSlot(notification.SlotType.SERVICE_INFORMATION, (err)=>{
+                console.debug("====>removeSlot SERVICE_INFORMATION enter====>");
+                expect(err.code).assertEqual(0);
+                done();
+            })
         })
         console.debug("====>ActsAnsGetSlotTestPromise_0200 end====>");
         setTimeout(function(){
@@ -109,7 +117,11 @@ describe('ActsAnsGetSlotTestPromise', function () {
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlotPromise CONTENT_INFORMATION ActsAnsGetSlotTestPromise_0300 finish====>");
-            done();
+            notification.removeSlot(notification.SlotType.CONTENT_INFORMATION, (err)=>{
+                console.debug("====>removeSlot CONTENT_INFORMATION enter====>");
+                expect(err.code).assertEqual(0);
+                done();
+            })
         })
         console.info("====>ActsAnsGetSlotTestPromise_0300 end====>");
         setTimeout(function(){
@@ -143,7 +155,11 @@ describe('ActsAnsGetSlotTestPromise', function () {
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlotPromise OTHER_TYPES ActsAnsGetSlotTestPromise_0400 finish====>");
-            done();
+            notification.removeSlot(notification.SlotType.OTHER_TYPES, (err)=>{
+                console.debug("====>removeSlot OTHER_TYPES enter====>");
+                expect(err.code).assertEqual(0);
+                done();
+            })
         })
         console.debug("====>ActsAnsGetSlotTestPromise_0400 end====>");
         setTimeout(function(){
@@ -177,7 +193,11 @@ describe('ActsAnsGetSlotTestPromise', function () {
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlotPromise UNKNOWN_TYPE ActsAnsGetSlotTestPromise_0500 finish====>");
-            done();
+            notification.removeSlot(notification.SlotType.OTHER_TYPES, (err)=>{
+                console.debug("====>removeSlot OTHER_TYPES enter====>");
+                expect(err.code).assertEqual(0);
+                done();
+            })
         })
         console.debug("====>ActsAnsGetSlotTestPromise_0500 end====>");
         setTimeout(function(){

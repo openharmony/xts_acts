@@ -31,11 +31,39 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         var bundlePath = ['/data/test/bmsThirdBundleTest1.hap'];
         await install(bundlePath);
         var bundleName = 'com.example.third1';
-        bundle.getAllShortcutInfo(bundleName).then((data) => {
+        bundle.getAllShortcutInfo(bundleName).then(async(data) => {
+                for (var i = 0; i < data.length; i++) {
+                expect(data[i].id).assertEqual('id.third1');
+                console.info('==========data[i].id==========' + data[i].id)
+                expect(data[i].bundleName).assertEqual('com.example.third1');
+                console.info('==========data[i].bundleName==========' + data[i].bundleName)
+                expect(data[i].hostAbility).assertEqual("");
+                console.info('==========data[i].hostAbility==========' + data[i].hostAbility)
+                expect(data[i].icon).assertEqual('$media:icon');
+                console.info('==========data[i].icon==========' + data[i].icon)
+                expect(data[i].label).assertEqual('$string:app_name');
+                console.info('==========data[i].label==========' + data[i].label)
+                expect(data[i].disableMessage).assertEqual("");
+                console.info('==========data[i].disableMessage==========' + data[i].disableMessage)
+                expect(data[i].isStatic).assertEqual(false);
+                console.info('==========data[i].isStatic==========' + data[i].isStatic)
+                expect(data[i].isHomeShortcut).assertEqual(false);
+                console.info('==========data[i].isHomeShortcut==========' + data[i].isHomeShortcut)
+                expect(data[i].isEnabled).assertEqual(false);
+                console.info('==========data[i].isEnabled==========' + data[i].isEnabled)
+                for (var j = 0; j < data[i].wants.length; j++) {
+                    console.info('==========data[i].wants[j].targetClass==========' + data[i].wants[j].targetClass)
+                    expect(data[i].wants[j].targetClass).assertEqual('com.example.third1.MainAbility');
+                    console.info('==========data[i].wants[j].targetBundle==========' + data[i].wants[j].targetBundle)
+                    expect(data[i].wants[j].targetBundle).assertEqual('com.example.third1');
+                }
+            }
             expect(typeof data).assertEqual('object');
             expect(data.length).assertEqual(1);
             checkShortcutIsExist(data, 'id.third1', 'third1');
+            await uninstall('com.example.third1');
             done();
+            
         });
         setTimeout(function () {
             console.info('=====================bms_getAllShortcutInfo_0100==================end');
@@ -49,11 +77,14 @@ describe('ActsBmsAllShortcutInfoTest', function () {
      */
     it('bms_getAllShortcutInfo_0200', 0, async function (done) {
         console.info('=====================bms_getAllShortcutInfo_0200==================');
+        var bundlePath = ['/data/test/bmsThirdBundleTest1.hap'];
+        await install(bundlePath);
         var bundleName = 'com.example.third1';
-        bundle.getAllShortcutInfo(bundleName, (result, data) => {
+        bundle.getAllShortcutInfo(bundleName, async(result, data) => {
             expect(result.code).assertEqual(0);
             expect(data.length).assertEqual(1);
             checkShortcutIsExist(data, 'id.third1', 'third1');
+            await uninstall('com.example.third1');
             done();
         });
         setTimeout(function () {
@@ -70,13 +101,14 @@ describe('ActsBmsAllShortcutInfoTest', function () {
     it('bms_getAllShortcutInfo_0300', 0, async function (done) {
         console.info('=====================bms_getAllShortcutInfo_0300==================');
         var bundleName = 'com.example.third1';
-        var bundlePath = ['/data/test/bmsThirdBundleTest3.hap'];
+        var bundlePath = ['/data/test/bmsThirdBundleTest1.hap', '/data/test/bmsThirdBundleTest3.hap'];
         await install(bundlePath);
         var data = await bundle.getAllShortcutInfo(bundleName);
         expect(typeof data).assertEqual('object');
         expect(data.length).assertEqual(2);
         checkShortcutIsExist(data, 'id.third1', 'third1');
         checkShortcutIsExist(data, 'id.third3', 'third3');
+        await uninstall('com.example.third1');
         done();
         setTimeout(function () {
             console.info('=====================bms_getAllShortcutInfo_0300==================end');
@@ -90,13 +122,15 @@ describe('ActsBmsAllShortcutInfoTest', function () {
      */
     it('bms_getAllShortcutInfo_0400', 0, async function (done) {
         console.info('=====================bms_getAllShortcutInfo_0400==================');
+        var bundlePath = ['/data/test/bmsThirdBundleTest1.hap', '/data/test/bmsThirdBundleTest3.hap'];
+        await install(bundlePath);
         var bundleName = 'com.example.third1';
         bundle.getAllShortcutInfo(bundleName, async (result, data) => {
             expect(result.code).assertEqual(0);
             expect(data.length).assertEqual(2);
             checkShortcutIsExist(data, 'id.third1', 'third1');
             checkShortcutIsExist(data, 'id.third3', 'third3');
-            await uninstall(bundleName);
+            await uninstall('com.example.third1');
             done();
         });
         setTimeout(function () {
@@ -172,6 +206,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 }
             }
         }
+        await uninstall('com.example.third1')
         done();
         setTimeout(function () {
             console.info('=====================bms_getAllShortcutInfo_0700==================end');
@@ -186,6 +221,10 @@ describe('ActsBmsAllShortcutInfoTest', function () {
     it('bms_getAllShortcutInfo_0800', 0, async function (done) {
         console.info('=====================bms_getAllShortcutInfo_0800==================');
         var bundleName = 'com.example.third1';
+        var bundlePath1 = ['/data/test/bmsThirdBundleTest1.hap'];
+        await install(bundlePath1);
+        var bundlePath2 = ['/data/test/bmsThirdBundleTestA1.hap'];
+        await install(bundlePath2);
         bundle.getAllShortcutInfo(bundleName, async (result, data) => {
             expect(result.code).assertEqual(0);
             expect(data.length).assertEqual(1);
@@ -206,7 +245,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                     }
                 }
             }
-            await uninstall(bundleName);
+            await uninstall('com.example.third1');
             done();
         });
         setTimeout(function () {
@@ -227,6 +266,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         var data = await bundle.getAllShortcutInfo(bundleName);
         expect(typeof data).assertEqual('object');
         expect(data.length).assertEqual(0);
+        await uninstall('com.example.third2')
         done();
         setTimeout(function () {
             console.info('=====================bms_getAllShortcutInfo_0900==================end');
@@ -241,10 +281,12 @@ describe('ActsBmsAllShortcutInfoTest', function () {
     it('bms_getAllShortcutInfo_1000', 0, async function (done) {
         console.info('=====================bms_getAllShortcutInfo_1000==================');
         var bundleName = 'com.example.third2';
+        var bundlePath = ['/data/test/bmsThirdBundleTest2.hap'];
+        await install(bundlePath);
         bundle.getAllShortcutInfo(bundleName, async (result, data) => {
             expect(result.code).assertEqual(0);
             expect(data.length).assertEqual(0);
-            await uninstall(bundleName);
+            await uninstall('com.example.third2');
             done();
         });
         setTimeout(function () {
@@ -342,7 +384,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         expect(typeof data).assertEqual('object');
         expect(data.length).assertEqual(1);
         checkShortcutIsExist(data, 'id.third1', 'third1');
-        await uninstall(bundleName);
+        await uninstall('com.example.third1');
         var info = await bundle.getAllShortcutInfo(bundleName);
         expect(info.length).assertEqual(0);
         done();
@@ -357,9 +399,16 @@ describe('ActsBmsAllShortcutInfoTest', function () {
      * @tc.desc: get the shortcut information of this hap after uninstalling the hap
      */
     it('bms_getAllShortcutInfo_1600', 0, async function (done) {
-        console.info('=====================bms_getAllShortcutInfo_1600==================');;
+        console.info('=====================bms_getAllShortcutInfo_1600==================');
+        var bundlePath = ['/data/test/bmsThirdBundleTest1.hap'];
+        await install(bundlePath);
         var bundleName = 'com.example.third1';
-        bundle.getAllShortcutInfo(bundleName, (result, data) => {
+        var data = await bundle.getAllShortcutInfo(bundleName);
+        expect(typeof data).assertEqual('object');
+        expect(data.length).assertEqual(1);
+        checkShortcutIsExist(data, 'id.third1', 'third1');
+        await uninstall('com.example.third1');
+        bundle.getAllShortcutInfo(bundleName, async(result, data) => {
             expect(result.code).assertEqual(-1);
             expect(data.length).assertEqual(0);
             done();
@@ -384,6 +433,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         expect(data.length).assertEqual(2);
         checkShortcutIsExist(data, 'id.third4A', 'third4A');
         checkShortcutIsExist(data, 'id.third4B', 'third4B');
+        await uninstall('com.example.third4')
         done();
         setTimeout(function () {
             console.info('=====================bms_getAllShortcutInfo_1700==================end');
@@ -398,12 +448,14 @@ describe('ActsBmsAllShortcutInfoTest', function () {
     it('bms_getAllShortcutInfo_1800', 0, async function (done) {
         console.info('=====================bms_getAllShortcutInfo_1800==================');
         var bundleName = 'com.example.third4';
+        var bundlePath = ['/data/test/bmsThirdBundleTest4.hap'];
+        await install(bundlePath);
         bundle.getAllShortcutInfo(bundleName, async (result, data) => {
             expect(result.code).assertEqual(0);
             expect(data.length).assertEqual(2);
             checkShortcutIsExist(data, 'id.third4A', 'third4A');
             checkShortcutIsExist(data, 'id.third4B', 'third4B');
-            await uninstall(bundleName);
+            await uninstall('com.example.third4');
             done();
         });
         setTimeout(function () {

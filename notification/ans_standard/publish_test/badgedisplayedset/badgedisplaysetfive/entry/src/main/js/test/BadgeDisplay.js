@@ -42,10 +42,11 @@ describe('ActsAnsBadgeDisplaySetFiveTest', function () {
      * @tc.desc: verify the function of displayBadge
      */
     it('ActsBadgeDisplaySet_test_1000', 0, async function (done) {
-        await notify.displayBadge(
+        var promise = await notify.displayBadge(
             {
                 bundle:"com.example.actsanslocalcandisplaytest"
-            },"").then(console.log("====>ActsBadgeDisplaySet_test_1000 success====>"))
+            },"")
+	expect(promise).assertEqual(undefined)
         done();
         setTimeout(function(){
             console.debug("====>time out ActsBadgeDisplaySet_test_1000====>");

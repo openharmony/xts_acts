@@ -26,7 +26,8 @@
             "push": [
                 "bmsThirdBundleTest2.hap->/data/test/bmsThirdBundleTest2.hap",
                 "bmsThirdBundleTest5.hap->/data/test/bmsThirdBundleTest5.hap",
-                "bmsThirdBundleJs.hap->/data/test/bmsThirdBundleJs.hap"
+                "bmsThirdBundleJs.hap->/data/test/bmsThirdBundleJs.hap",
+                "bmsThirdBundleC.hap->/data/test/bmsThirdBundleC.hap"
             ]
         },
         {

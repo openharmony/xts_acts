@@ -130,6 +130,18 @@
           "autoDesignWidth": false
         }
       }
+    ],
+    "defPermissions": [
+      {
+        "name": "com.permission.PERMISSION_THIRD1",
+        "grantMode": "user_grant",
+        "availableScope": ["signature"]
+      },
+      {
+        "name": "com.permission.PERMISSION_B",
+        "grantMode": "system_grant",
+        "availableScope": ["signature"]
+      }
     ]
   }
 }

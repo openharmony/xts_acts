@@ -191,12 +191,16 @@ describe('ActsAnsSlotSystemPromise', function () {
             expect(data.lightEnabled).assertEqual(true);
             expect(data.lightColor).assertEqual(2);
             console.debug("====>getSlotPromise SERVICE_INFORMATION ActsAnsSlotSystemPromise_0100 finish====>");
-            done();
+            notification.removeSlot(notification.SlotType.SERVICE_INFORMATION, (err)=>{
+                console.debug("====>removeSlot SERVICE_INFORMATION err====>" + JSON.stringify(err));
+                console.debug("====>ActsAnsSlotSystemPromise_0100 end====>");
+                expect(err.code).assertEqual(0);
+                done();
+            })
         })
-        console.debug("====>ActsAnsSlotTestSystem_0100 end====>");
         setTimeout(function (){
             console.debug("====>time out ActsAnsSlotTestSystem_0100====>");
-        }, 10000);
+        }, 2000);
 
     })
 
@@ -240,8 +244,8 @@ describe('ActsAnsSlotSystemPromise', function () {
         })
         console.debug("====>getSlot SlotType.SOCIAL_COMMUNICATION: ====>");
         notification.getSlot(notification.SlotType.SOCIAL_COMMUNICATION).then((data) => {
-            console.debug("====>getSlotActsAnsSlotSystemPromise_0200 enter====>");
-            console.debug("====>getSlotActsAnsSlotSystemPromise_0200 data====>" + JSON.stringify(data));
+            console.debug("====>getSlot ActsAnsSlotSystemPromise_0200 enter====>");
+            console.debug("====>getSlot ActsAnsSlotSystemPromise_0200 data====>" + JSON.stringify(data));
             expect(data.type).assertEqual(notification.SlotType.SOCIAL_COMMUNICATION);
             expect(data.level).assertEqual(notification.SlotLevel.LEVEL_NONE);
             expect(data.desc).assertEqual("slot_SOCIAL_COMMUNICATION_Desc_First");
@@ -251,12 +255,16 @@ describe('ActsAnsSlotSystemPromise', function () {
             expect(data.sound).assertEqual("slot_SOCIAL_COMMUNICATION_Sound_First");
             expect(data.lightEnabled).assertEqual(true);
             expect(data.lightColor).assertEqual(1);
-            console.debug("====>getSlotActsAnsSlotSystemPromise_0200 finish====>");
-            done();
+            console.debug("====>getSlot ActsAnsSlotSystemPromise_0200 finish====>");
+            notification.removeSlot(notification.SlotType.SOCIAL_COMMUNICATION, (err)=>{
+                console.debug("====>removeSlot SOCIAL_COMMUNICATION err====>" + JSON.stringify(err));
+                console.debug("====>ActsAnsSlotSystemPromise_0200 end====>");
+                expect(err.code).assertEqual(0);
+                done();
+            })
         })
-        console.debug("====>ActsAnsSlotSystemPromise_0200 end====>");
         setTimeout(function (){
             console.debug("====>time out ActsAnsSlotSystemPromise_0200====>");
-        }, 10000);
+        }, 2000);
     })
 }) 

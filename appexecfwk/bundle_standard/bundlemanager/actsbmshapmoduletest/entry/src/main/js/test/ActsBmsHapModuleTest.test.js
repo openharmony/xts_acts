@@ -1,22 +1,22 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+* Copyright (c) 2021 Huawei Device Co., Ltd.
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 
 import bundle from '@ohos.bundle'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-const TIMEOUT = 1000;
+const TIMEOUT = 2000;
 
 describe('ActsBmsHapModuleTest', function () {
 
@@ -31,15 +31,43 @@ describe('ActsBmsHapModuleTest', function () {
         let bundleName = 'com.example.bmsmainabilityfirstscene';
         let ret = false
         bundle.getBundleInfo(bundleName, 1, callback);
-        function callback(err, data) {
+        async function callback(err, data) {
             console.debug('=======get bundle========' + JSON.stringify(data));
-            let hapModuleInfo = data.hapModuleInfo[0];
-            console.debug('=======get hapModule========' + JSON.stringify(hapModuleInfo))
-            console.debug('=======get hapModule mainAbilityName========' + hapModuleInfo.mainAbilityName)
-            expect(hapModuleInfo.moduleName).assertEqual('entry');
-            expect(hapModuleInfo.mainAbilityName).assertEqual('com.example.bmsmainabilityfirstscene.MainAbility');
-            checkHapModuleInfo(hapModuleInfo);
-            ret = true;
+            expect(data.hapModuleInfo.length).assertEqual(1);
+            if (data.hapModuleInfo.length > 0) {
+                let hapModuleInfo = data.hapModuleInfo[0];
+                console.debug('=======get hapModule========' + JSON.stringify(hapModuleInfo))
+                console.debug('=======get hapModule mainAbilityName========' + hapModuleInfo.mainAbilityName)
+                expect(hapModuleInfo.moduleName).assertEqual('entry');
+                expect(hapModuleInfo.mainAbilityName).assertEqual('com.example.bmsmainabilityfirstscene.MainAbility');
+                expect(hapModuleInfo.name).assertEqual('com.example.bmsmainabilityfirstscene');
+                expect(hapModuleInfo.description).assertEqual('');
+                expect(hapModuleInfo.descriptionId).assertEqual(0);
+                expect(hapModuleInfo.icon).assertEqual('');
+                expect(hapModuleInfo.label).assertEqual('$string:app_name');
+                expect(hapModuleInfo.labelId).assertEqual(0);
+                expect(hapModuleInfo.iconId).assertEqual(0);
+                expect(hapModuleInfo.backgroundImg).assertEqual('');
+                expect(hapModuleInfo.supportedModes).assertEqual(0);
+                console.info('===============hapModuleInfo.reqCapabilities==========' + JSON.stringify(hapModuleInfo.reqCapabilities))
+                expect(typeof hapModuleInfo.reqCapabilities).assertEqual('object');
+                expect(hapModuleInfo.deviceTypes).assertEqual('phone');
+                console.info('===============hapModuleInfo.abilityInfo==========' + JSON.stringify(hapModuleInfo.abilityInfo))
+                expect(typeof hapModuleInfo.abilityInfo).assertEqual('object');
+                expect(hapModuleInfo.moduleName).assertEqual('entry');
+                expect(hapModuleInfo.mainAbilityName).assertEqual('com.example.bmsmainabilityfirstscene.MainAbility');
+                expect(hapModuleInfo.installationFree).assertEqual(false);
+                for (let i = 0, len = hapModuleInfo.reqCapabilities.length; i < len; i++) {
+                    console.debug('=======get reqCapabilities========' + JSON.stringify(hapModuleInfo.reqCapabilities[i]));
+                    expect(hapModuleInfo.reqCapabilities[i]).assertEqual('');
+                }
+                for (let j = 0, len = hapModuleInfo.abilityInfo.length; j < len; j++) {
+                    console.debug('=======get abilityInfo========' + JSON.stringify(hapModuleInfo.abilityInfo[j]))
+                    expect(hapModuleInfo.abilityInfo[j].name).assertEqual('com.example.bmsmainabilityfirstscene.MainAbility');
+                }
+                ret = true;
+            }
+            await uninstall(bundleName);
             done();
         }
         setTimeout(function () {
@@ -54,12 +82,12 @@ describe('ActsBmsHapModuleTest', function () {
      */
     it('bms_getHapModuleInfo_0200', 0, async function (done) {
         console.debug('===========begin bms_getHapModuleInfo_0200===========')
+        await install(['/data/test/bmsMainAbilityFirstScene.hap']);
         await install(['/data/test/bmsMainAbilitySecondScene.hap']);
         let ret = false
         let bundleName = 'com.example.bmsmainabilityfirstscene';
         let firstMainAbility = 'com.example.bmsmainabilityfirstscene.MainAbility';
         let secondMainAbility = 'com.example.bmsmainabilitysecondscene.MainAbility';
-        let result = new Map();
         bundle.getBundleInfo(bundleName, 1, async (err, data) => {
             console.debug('=======hapModule length========' + data.hapModuleInfo.length);
             expect(data.hapModuleInfo.length).assertEqual(2);
@@ -67,12 +95,13 @@ describe('ActsBmsHapModuleTest', function () {
                 console.debug('=======get hapModule========' + JSON.stringify(data.hapModuleInfo[i]))
                 console.debug('=======get hapModule mainAbilityName========' + data.hapModuleInfo[i].mainAbilityName);
                 checkHapModuleInfo(data.hapModuleInfo[i]);
-                result.set(data.hapModuleInfo[i].mainAbilityName, data.hapModuleInfo[i]);
             }
-            expect(result.has(firstMainAbility)).assertTrue();
-            expect(result.has(secondMainAbility)).assertTrue();
-            expect(result.get(firstMainAbility).moduleName).assertEqual('entry');
-            expect(result.get(secondMainAbility).moduleName).assertEqual('bmsmainabilitysecondscene');
+            if (data.hapModuleInfo.length == 2) {
+                expect(data.hapModuleInfo[0].mainAbilityName).assertEqual(firstMainAbility);
+                expect(data.hapModuleInfo[0].moduleName).assertEqual('entry');
+                expect(data.hapModuleInfo[1].mainAbilityName).assertEqual(secondMainAbility);
+                expect(data.hapModuleInfo[1].moduleName).assertEqual('bmsmainabilitysecondscene');
+            }
             await uninstall(bundleName);
             ret = true;
             done();
@@ -92,21 +121,98 @@ describe('ActsBmsHapModuleTest', function () {
         await install(['/data/test/bmsThirdBundleTest2.hap']);
         let bundleName = 'com.example.third2';
         let ret = false;
-        bundle.getBundleInfo(bundleName, 1).then(async (data) => {
+        bundle.getBundleInfo(bundleName, 1,).then(async (data) => {
             console.debug('=======get hapModule========' + JSON.stringify(data))
             expect(data.hapModuleInfo.length).assertEqual(1);
-            console.debug('=======get hapModule mainAbilityName========' + data.hapModuleInfo[0].mainAbilityName)
-            expect(data.hapModuleInfo[0].mainAbilityName).assertEqual('');
-            expect(data.hapModuleInfo[0].moduleName).assertEqual('entry');
-            checkHapModuleInfo(data.hapModuleInfo[0]);
+            if (data.hapModuleInfo.length > 0) {
+                console.debug('=======get hapModule mainAbilityName========' + data.hapModuleInfo[0].mainAbilityName)
+                expect(data.hapModuleInfo[0].mainAbilityName).assertEqual('');
+                expect(data.hapModuleInfo[0].moduleName).assertEqual('entry');
+                checkHapModuleInfo(data.hapModuleInfo[0]);
+                ret = true;
+            }
             await uninstall(bundleName);
-            ret = true;
             done();
         })
         setTimeout(function () {
             expect(ret).assertTrue();
         }, TIMEOUT);
     })
+
+    it('bms_getHapModuleInfo_0400', 0, async function (done) {
+        console.debug('===========begin bms_getHapModuleInfo_0400===========')
+        await install(['/data/test/bmsThirdBundleTest5.hap']);
+        let bundleName = 'com.example.third5';
+        let ret = true;
+        bundle.getBundleInfo(bundleName, 1, async (err, data) => {
+            console.debug('=======get hapModule========' + JSON.stringify(data))
+            expect(data.hapModuleInfo.length).assertEqual(1);
+            if (data.hapModuleInfo.length == 1) {
+                console.debug('=======get hapModule mainAbilityName========' + data.hapModuleInfo[0].mainAbilityName)
+                expect(data.hapModuleInfo[0].mainAbilityName).assertEqual('com.example.third5.AMainAbility');
+                expect(data.hapModuleInfo[0].moduleName).assertEqual('entry');
+                checkHapModuleInfo(data.hapModuleInfo[0]);
+                ret = true;
+            }
+            await uninstall(bundleName);
+            done();
+        })
+        setTimeout(function () {
+            expect(ret).assertTrue();
+        }, TIMEOUT);
+    })
+
+    it('bms_getHapModuleInfo_0500', 0, async function (done) {
+        console.debug('===========begin bms_getHapModuleInfo_0500===========')
+        await install(['/data/test/bmsThirdBundleTest1.hap']);
+        await install(['/data/test/bmsThirdBundleTestA1.hap']);
+        let bundleName = 'com.example.third1';
+        let ret = false
+        bundle.getBundleInfo(bundleName, 1, callback);
+        async function callback(err, data) {
+            console.debug('=======get bundle========' + JSON.stringify(data));
+            expect(data.hapModuleInfo.length).assertEqual(1);
+            if (data.hapModuleInfo.length == 1) {
+                let hapModuleInfo = data.hapModuleInfo[0];
+                console.debug('=======get hapModule========' + JSON.stringify(hapModuleInfo))
+                console.debug('=======get hapModule mainAbilityName========' + hapModuleInfo.mainAbilityName)
+                expect(hapModuleInfo.moduleName).assertEqual('entry');
+                expect(hapModuleInfo.mainAbilityName).assertEqual('com.example.third1.AMainAbility');
+                checkHapModuleInfo(hapModuleInfo);
+            }
+            await uninstall(bundleName);
+            ret = true;
+            done();
+        }
+        setTimeout(function () {
+            expect(ret).assertTrue();
+        }, TIMEOUT);
+    });
+
+    it('bms_getHapModuleInfo_0600', 0, async function (done) {
+        console.debug('===========begin bms_getHapModuleInfo_0600===========')
+        let bundleName = 'com.example.system1';
+        let ret = false
+        bundle.getBundleInfo(bundleName, 1, callback);
+        function callback(err, data) {
+            console.debug('=======get bundle========' + JSON.stringify(data));
+            console.debug('=======data.hapModuleInfo.length========' + data.hapModuleInfo.length);
+            expect(data.hapModuleInfo.length).assertEqual(1);
+            if (data.hapModuleInfo.length == 1) {
+                let hapModuleInfo = data.hapModuleInfo[0];
+                console.debug('=======get hapModule========' + JSON.stringify(hapModuleInfo))
+                console.debug('=======get hapModule mainAbilityName========' + hapModuleInfo.mainAbilityName)
+                expect(hapModuleInfo.moduleName).assertEqual('entry');
+                expect(hapModuleInfo.mainAbilityName).assertEqual('com.example.system1.MainAbility');
+                checkHapModuleInfo(hapModuleInfo);
+                ret = true;
+            }
+            done();
+        }
+        setTimeout(function () {
+            expect(ret).assertTrue();
+        }, TIMEOUT);
+    });
 
     function checkHapModuleInfo(dataInfo) {
         console.debug('========begin check hapModuleInfo========')

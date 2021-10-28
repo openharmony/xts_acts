@@ -86,7 +86,7 @@ describe('ActsAnsNotificationTest', function () {
     //consume
     function consumeCallback(err,data) {
         console.debug("==========================>consumeDoNotCallback1 data : =======================>" + err + JSON.stringify(data));
-        comsumData = data
+        expect(data).assertEqual('object')
     }
     //subscribeOn
     function subscribeOnCallback(err) {
@@ -144,13 +144,10 @@ describe('ActsAnsNotificationTest', function () {
            }, publishMULTILINEContentCallback001);
        }catch(error){
         console.log('ActsNotificationTest ACTS_PublishMULTILINEContent_0100 error'+JSON.stringify(error.code))}
-//        console.log("============ACTS_PublishMULTILINEContent_0100 finished============"+comsumData.request.id)
         done();
        setTimeout(function(){
            console.debug("====>time out ACTS_PublishMULTILINEContent_0100====>");
        }, time);
-       expect(comsumData.request.id).assertEqual(1)
-
     })
 
     /*
@@ -183,12 +180,10 @@ describe('ActsAnsNotificationTest', function () {
        }catch(error){
            console.log('ActsNotificationTest ACTS_PublishMULTILINEContent_0200 asyncCallback'+error)
        }
-//        console.log("============ACTS_PublishMULTILINEContent_0200 finished============"+comsumData.request.id)
         done();
        setTimeout(function(){
            console.debug("====>time out ACTS_PublishMULTILINEContent_0200====>");
        }, time);
-       expect(comsumData.request.id).assertEqual(2)
     })
 
     /*
@@ -219,7 +214,6 @@ describe('ActsAnsNotificationTest', function () {
        setTimeout(function(){
            console.debug("====>time out ACTS_PublishMULTILINEContent_0300====>");
        }, time);
-       expect(comsumData.request.id).assertEqual(3)
     })
 
     /*
@@ -246,7 +240,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishMULTILINEContent_0400====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(4)
     })
     /*
      * @tc.number: ACTS_PublishMULTILINEContent_0500
@@ -272,7 +265,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishMULTILINEContent_0500====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(5)
     })
 
     /*
@@ -299,7 +291,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishMULTILINEContent_0600====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(6)
     })
 
     /*
@@ -326,7 +317,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishLONGContent_0100====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(7)
     })
 
     /*
@@ -353,7 +343,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishLONGContent_0200====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(8)
     })
 
     /*
@@ -380,7 +369,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishLONGContent_0300====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(9)
     })
 
     /*
@@ -406,7 +394,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishLONGContent_0400====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(10)
     })
 
     /*
@@ -432,7 +419,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishLONGContent_0500====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(11)
     })
 
     /*
@@ -458,7 +444,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishLONGContent_0600====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(12)
     })
 
     /*
@@ -484,7 +469,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_Publish_SlotTypeContent_0100====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(13)
     })
 
     /*
@@ -510,7 +494,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_Publish_SlotTypeContent_0200====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(14)
     })
 
     /*
@@ -536,7 +519,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_Publish_SlotTypeContent_0300====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(15)
     })
 
     /*
@@ -562,7 +544,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_Publish_SlotTypeContent_0400====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(16)
     })
 
     /*
@@ -587,7 +568,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_Publish_SlotTypeContent_0500====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(17)
     })
 
     /*
@@ -612,7 +592,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_Publish_SlotTypeContent_0600====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(18)
     })
 
     /*
@@ -637,7 +616,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_Publish_SlotTypeContent_0700====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(19)
     })
 
     /*
@@ -662,7 +640,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_Publish_SlotTypeContent_0800====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(20)
     })
 
     /*
@@ -688,7 +665,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeOther_0100====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(21)
     })
 
     /*
@@ -714,7 +690,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeOther_0200====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(22)
     })
 
     /*
@@ -740,7 +715,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeOther_0300====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(23)
     })
 
     /*
@@ -766,7 +740,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeOther_0400====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(24)
     })
 
     /*
@@ -791,7 +764,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeOther_0500====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(25)
     })
 
     /*
@@ -816,7 +788,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeOther_0600====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(26)
     })
 
     /*
@@ -841,7 +812,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeOther_0700====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(27)
     })
 
     /*
@@ -866,7 +836,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeOther_0800====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(28)
     })
 
     /*
@@ -892,7 +861,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeService_0100====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(29)
     })
 
     /*
@@ -918,7 +886,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeService_0200====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(30)
     })
 
     /*
@@ -944,7 +911,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeService_0300====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(31)
     })
 
     /*
@@ -970,7 +936,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeService_0400====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(32)
     })
 
     /*
@@ -995,7 +960,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeService_0500====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(33)
     })
 
     /*
@@ -1020,7 +984,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeService_0600====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(34)
     })
 
     /*
@@ -1045,7 +1008,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeService_0700====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(35)
     })
 
     /*
@@ -1070,7 +1032,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeService_0800====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(36)
     })
 
     /*
@@ -1096,7 +1057,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeSocial_0100====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(37)
     })
 
     /*
@@ -1122,7 +1082,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeSocial_0200====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(38)
     })
 
     /*
@@ -1148,7 +1107,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeSocial_0300====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(39)
     })
 
     /*
@@ -1174,7 +1132,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeSocial_0400====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(40)
     })
 
     /*
@@ -1199,7 +1156,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeSocial_0500====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(41)
     })
 
     /*
@@ -1224,7 +1180,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeSocial_0600====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(42)
     })
 
     /*
@@ -1250,7 +1205,6 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeSocial_0700====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(43)
     })
 
     /*
@@ -1275,6 +1229,5 @@ describe('ActsAnsNotificationTest', function () {
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeSocial_0800====>");
         }, time);
-        expect(comsumData.request.id).assertEqual(44)
     })
 })

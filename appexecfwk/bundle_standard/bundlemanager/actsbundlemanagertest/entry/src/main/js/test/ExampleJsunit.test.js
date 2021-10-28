@@ -2402,8 +2402,8 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test install interfaces.
      */
     it('install_0600', 0, async function (done) {
-        let data = await demo.getBundleInstaller()
-        await data.install([PATH + BMSJSTEST1], {
+        let installer = await demo.getBundleInstaller()
+        await installer.install([PATH + BMSJSTEST1], {
             param: {
                 userId: 0,
                 installFlag: 1,
@@ -2417,18 +2417,18 @@ describe('ActsBundleManagerTest', function () {
             var datainfo1 = await demo.getBundleInfo(NAME1, 1);
             expect(datainfo1.name).assertEqual(NAME1);
             expect(datainfo1.uid).assertLarger(UIDMINVALUE);
+            await installer.uninstall(NAME1, {
+                param: {
+                    userId: 0,
+                    installFlag: 1,
+                    isKeepData: true
+                }
+            }, async (err, data) => {
+                expect(typeof data).assertEqual(OBJECT);
+                expect(data.statusMessage).assertEqual("SUCCESS");
+                done();
+            });
         }
-        await data.uninstall(NAME1, {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: true
-            }
-        }, async (err, data) => {
-            expect(typeof data).assertEqual(OBJECT);
-            expect(data.statusMessage).assertEqual("SUCCESS");
-            done();
-        });
         setTimeout(function () {
             console.info('====> install_0600 =====>')
         }, TIMEOUT)
@@ -2451,8 +2451,8 @@ describe('ActsBundleManagerTest', function () {
             function OnReceiveinstallEvent(err, data) {
                 expect(typeof data).assertEqual(OBJECT);
                 expect(data.statusMessage).assertEqual("STATUS_INSTALL_FAILURE_INVALID");
-            }
-            done();
+                done();
+            }     
         });
         setTimeout(function () {
             console.info('====> install_0700 =====>')

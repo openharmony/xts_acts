@@ -10,7 +10,7 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License.
+ * limitations under the License.ActsGetCancelActiveNum_test_0200
  */
 
 import notify from '@ohos.notification'
@@ -134,14 +134,14 @@ describe('ActsAnsGetCancelActiveNumTest', function () {
             console.log("==========================>publishGetAllActiveNotificationsPromisehashCode=======================>" + promise[i].content.normal.additionalText)
         }
 
-        await notify.getActiveNotificationCount((error,data) => {
+        await notify.getActiveNotificationCount((err,data) => {
             console.log("============getActiveNotificationNumsTest1============"+JSON.stringify(data))
             expect(typeof(data)).assertEqual('number')
         })
 
-        var promise = await notify.getActiveNotificationCount();
-        expect(typeof(promise)).assertEqual('number')
-        console.log("============getActiveNotificationNumsTest1Promise============"+JSON.stringify(promise))
+        var num = await notify.getActiveNotificationCount();
+        expect(typeof(num)).assertEqual('number')
+        console.log("============getActiveNotificationNumsTest1Promise============"+JSON.stringify(num))
         console.log("============ActsGetCancelActiveNum_test_0200 finished============")
         done();
         setTimeout(function(){
@@ -156,16 +156,15 @@ describe('ActsAnsGetCancelActiveNumTest', function () {
     */
     it('ActsGetCancelActiveNum_test_0300', 0,async function (done) {
 
-        await notify.cancel(1,cancelAllCallBack);
-
-        await notify.getActiveNotificationCount((error,data) => {
-            expect(typeof(data)).assertEqual('number')
-            console.log("============getActiveNotificationCancelNums============"+data)
+        await notify.cancel(1,cancelAllCallBack)
+        await notify.getActiveNotificationCount((error, data) => {
+            expect(typeof (data)).assertEqual('number')
+            console.log("============getActiveNotificationCancelNums============" + JSON.stringify(data))
         })
 
-        var promise = await notify.getActiveNotificationCount();
-        expect(typeof(promise)).assertEqual('number')
-        console.log("============getActiveNotificationCancelNumsPromise============"+JSON.stringify(promise))
+        var cancelNum = await notify.getActiveNotificationCount();
+        expect(typeof (cancelNum)).assertEqual('number')
+        console.log("============getActiveNotificationCancelNumsPromise============" + JSON.stringify(cancelNum))
         console.log("============ActsGetCancelActiveNum_test_0300 finished============")
         done();
         setTimeout(function(){

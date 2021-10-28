@@ -17,7 +17,7 @@ group("getactive") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      #"getactivenormal:getactivenormal",
+      #"getactivenormal:ActsAnsActiveTest",
       #"getcancelactivenum:ActsAnsGetCancelActiveNumTest",
     ]
   }
