@@ -302,7 +302,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara021, Function | MediumTe
 {
     const char* value = GetBuildTime();
     printf("Build Time=%s\n", value);
-    AssertNotEmpty("value");
+    AssertNotEmpty(value);
 };
 
 /**
