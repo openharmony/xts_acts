@@ -21,6 +21,7 @@
 #include <string.h>
 #include <errno.h>
 #include <stdlib.h>
+#include <signal.h>
 #include "securec.h"
 
 using namespace std;
@@ -41,7 +42,11 @@ static pthread_barrier_t g_barrier;
 class ActsLwipTest : public testing::Test {
 protected:
     // SetUpTestCase: Testsuit setup, run before 1st testcase
-    static void SetUpTestCase(void) {}
+    static void SetUpTestCase(void)
+    {
+        // Ignore SIGPIPE Signals
+        signal(SIGPIPE, SIG_IGN);
+    }
     // TearDownTestCase: Testsuit teardown, run after last testcase
     static void TearDownTestCase(void) {}
     // Testcase setup
