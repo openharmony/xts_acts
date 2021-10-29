@@ -19,7 +19,7 @@ group("getactive") {
     deps = [
       #"actsansgetactive:ActsAnsActiveTest",
       #"actsansgetallactive:ActsAnsAllActiveTestOne",
-      #"getactiveotherapp:ActsAnsAllActiveTestOne"
+      #"getactiveotherapp:ActsAnsAllActiveTestTwo"
     ]
   }
 }
