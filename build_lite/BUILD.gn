@@ -43,7 +43,8 @@ lite_component("acts_component") {
         "//test/xts/acts/hiviewdfx_lite/hievent_hal:ActsHieventLiteTest",
         "//test/xts/acts/distributed_schedule_lite/system_ability_manager_hal:ActsSamgrTest",
         "//test/xts/acts/update_lite/dupdate_hal:ActsUpdaterFuncTest",
-        "//test/xts/acts/startup_lite/bootstrap_hal:ActsBootstrapTest",
+
+        #"//test/xts/acts/startup_lite/bootstrap_hal:ActsBootstrapTest",
       ]
     } else if (ohos_kernel_type == "liteos_a") {
       all_features += [
@@ -77,7 +78,8 @@ lite_component("acts_component") {
       all_features += [
         "//test/xts/acts/utils_lite/kv_store_posix:ActsKvStoreTest",
         "//test/xts/acts/startup_lite/syspara_posix:ActsParameterTest",
-        "//test/xts/acts/startup_lite/bootstrap_posix:ActsBootstrapTest",
+
+        #"//test/xts/acts/startup_lite/bootstrap_posix:ActsBootstrapTest",
         "//test/xts/acts/communication_lite/lwip_posix:ActsLwipTest",
         "//test/xts/acts/security_lite:securitytest",
 
