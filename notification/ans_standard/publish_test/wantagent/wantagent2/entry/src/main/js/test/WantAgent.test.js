@@ -29,7 +29,7 @@ describe('ActsAnsWantAgentTwoTest', function () {
         var agentInfo = {
             wants: [
                     {
-                        deviceId: "deviceId",
+                        deviceId: "",
                         bundleName: "com.neu.WantAgentTest1",
                         abilityName: "com.example.test.MainAbility",
                         action: "action1",
@@ -48,7 +48,7 @@ describe('ActsAnsWantAgentTwoTest', function () {
                         }
                     },
                     {
-                        deviceId: "deviceId",
+                        deviceId: "",
                         bundleName: "com.neu.WantAgenTest2",
                         abilityName: "com.example.test.MainAbility",
                         action: "action1",

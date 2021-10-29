@@ -139,6 +139,11 @@ describe('ActsBmsHapModuleTest', function () {
         }, TIMEOUT);
     })
 
+    /*
+     * @tc.number: bms_getHapModuleInfo_0400
+     * @tc.name: get hapModuleInfo through getBundleInfo, an application that adds mainAbility  
+     * @tc.desc: get the module information of the hap with the added field mainAbility 
+     */
     it('bms_getHapModuleInfo_0400', 0, async function (done) {
         console.debug('===========begin bms_getHapModuleInfo_0400===========')
         await install(['/data/test/bmsThirdBundleTest5.hap']);
@@ -162,6 +167,11 @@ describe('ActsBmsHapModuleTest', function () {
         }, TIMEOUT);
     })
 
+     /*
+     * @tc.number: bms_getHapModuleInfo_0500
+     * @tc.name: get the hapModuleInfo of the upgraded hap package from an application through getBundleInfo 
+     * @tc.desc: get the module information of the mainAbility upgrade hap  
+     */
     it('bms_getHapModuleInfo_0500', 0, async function (done) {
         console.debug('===========begin bms_getHapModuleInfo_0500===========')
         await install(['/data/test/bmsThirdBundleTest1.hap']);
@@ -189,6 +199,11 @@ describe('ActsBmsHapModuleTest', function () {
         }, TIMEOUT);
     });
 
+    /*
+     * @tc.number: bms_getHapModuleInfo_0600
+     * @tc.name: get hapModuleInfo from the system through getBundleInfo 
+     * @tc.desc: get module information of mainAbility system application 
+     */
     it('bms_getHapModuleInfo_0600', 0, async function (done) {
         console.debug('===========begin bms_getHapModuleInfo_0600===========')
         let bundleName = 'com.example.system1';

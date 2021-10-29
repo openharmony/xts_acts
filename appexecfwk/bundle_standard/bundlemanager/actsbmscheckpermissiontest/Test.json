@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "bmsThirdBundleTest1",
+                "bmsThirdBundleTest1.hap",
                 "ActsBmsCheckPermissionTest.hap"
             ],
             "type": "AppInstallKit",

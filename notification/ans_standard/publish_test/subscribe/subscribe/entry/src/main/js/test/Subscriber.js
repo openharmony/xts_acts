@@ -160,7 +160,7 @@ describe('ActsAnsSubscriberTest', function () {
     //ActsSubscriber_test_0700
     var subInfoc ={
         onConsume:consumeCallbackb,
-        onConnecte:connectCallbackj,
+        onConnect:connectCallbackj,
     }
     function consumeCallbackb(err,data) {
         console.debug("==>consumeCallbackb data : ==>" +err+ JSON.stringify(data));
@@ -226,6 +226,19 @@ describe('ActsAnsSubscriberTest', function () {
     }
     function unSubscribeCallbackn(err){
         console.debug("==>unSubscribeCallbackn code==>" +err.code);
+        expect(err.code).assertEqual(0);
+    }
+    //ActsSubscriber_test_1500
+    function connectCallbacko(err){
+        console.debug("==>connectCallbacko   code==>" +err.code);
+        expect(err.code).assertEqual(0);
+    }
+    function subscribeCallbackp(err){
+        console.debug("==>subscribeCallbackp code==>" +err.code);
+        expect(err.code).assertEqual(0);
+    }
+    function unSubscribeCallbacko(err){
+        console.debug("==>unSubscribeCallbacko code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
     function checkConsumeData(data){
@@ -406,12 +419,12 @@ describe('ActsAnsSubscriberTest', function () {
      * @tc.desc: verify the function of subscribe
      */
     it('ActsSubscriber_test_0800', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_1000==begin==>");
+        console.debug("==ActsSubscriber_test_0800==begin==>");
         await notify.subscribe(subInfod, {bundleNames:["com.example.actsanspublishtest","com.example.actsanspublishtest"]},subscribeCallbackn);
-        console.debug("==ActsSubscriber_test_9000==end==>");
+        console.debug("==ActsSubscriber_test_0800==end==>");
         done();
         setTimeout(function(){
-            console.debug("====>time out ActsSubscriber_test_9000====>");
+            console.debug("====>time out ActsSubscriber_test_0800====>");
         }, time);
     })
 
@@ -421,14 +434,14 @@ describe('ActsAnsSubscriberTest', function () {
      * @tc.desc: verify the function of subscribe
      */
     it('ActsSubscriber_test_0900', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_1000==begin==>");
+        console.debug("==ActsSubscriber_test_0900==begin==>");
         await notify.subscribe(subInfoe, {bundleNames:["com.example.actsanspublishtest","com.example.actsanspublishtest"]}).then(
-                console.log("ActsSubscriber_test_1100=======promise")
+                console.log("ActsSubscriber_test_0900=======promise")
             );
-        console.debug("==ActsSubscriber_test_1000==end==>");
+        console.debug("==ActsSubscriber_test_0900==end==>");
         done();
         setTimeout(function(){
-            console.debug("====>time out ActsSubscriber_test_1000====>");
+            console.debug("====>time out ActsSubscriber_test_0900====>");
         }, time);
     })
     /*
@@ -437,13 +450,13 @@ describe('ActsAnsSubscriberTest', function () {
      * @tc.desc: verify the function of subscribe
      */
     it('ActsSubscriber_test_1000', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_1100==begin==>");
+        console.debug("==ActsSubscriber_test_1000==begin==>");
         var promise = notify.subscribe(100,{bundleNames:["com.example.actsanspublishtest"]});
         expect(promise).assertEqual(undefined);
-        console.debug("==ActsSubscriber_test_1100==end==>");
+        console.debug("==ActsSubscriber_test_1000==end==>");
         done();
         setTimeout(function(){
-            console.debug("====>time out ActsSubscriber_test_1100====>");
+            console.debug("====>time out ActsSubscriber_test_1000====>");
         }, time);
     })
     /*
@@ -452,14 +465,14 @@ describe('ActsAnsSubscriberTest', function () {
      * @tc.desc: verify the function of subscribe
      */
     it('ActsSubscriber_test_1100', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_1200==begin==>");
+        console.debug("==ActsSubscriber_test_1100==begin==>");
         var subInfo = null
         var promise = await notify.subscribe(subInfo,{bundleNames:["com.example.actsanspublishtest"]});
         expect(promise).assertEqual(undefined);
-        console.debug("==ActsSubscriber_test_1200==end==>");
+        console.debug("==ActsSubscriber_test_1100==end==>");
         done();
         setTimeout(function(){
-            console.debug("====>time out ActsSubscriber_test_1200====>");
+            console.debug("====>time out ActsSubscriber_test_1100====>");
         }, time);
     })
     /*
@@ -468,14 +481,14 @@ describe('ActsAnsSubscriberTest', function () {
      * @tc.desc: verify the function of subscribe
      */
     it('ActsSubscriber_test_1200', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_1300==begin==>");
+        console.debug("==ActsSubscriber_test_1200==begin==>");
         var subInfo = "#$#%$%$^&%^%"
         var promise = notify.subscribe(subInfo,{bundleNames:["com.example.actsanspublishtest"]});
         expect(promise).assertEqual(undefined);
-        console.debug("==ActsSubscriber_test_1300==end==>");
+        console.debug("==ActsSubscriber_test_1200==end==>");
         done();
         setTimeout(function(){
-            console.debug("====>time out ActsSubscriber_test_1300====>");
+            console.debug("====>time out ActsSubscriber_test_1200====>");
         }, time);
     })
     /*
@@ -484,14 +497,14 @@ describe('ActsAnsSubscriberTest', function () {
      * @tc.desc: verify the function of subscribe
      */
     it('ActsSubscriber_test_1300', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_1100==begin==>");
+        console.debug("==ActsSubscriber_test_1300==begin==>");
         var subInfo = ""
         var promise = await notify.subscribe(subInfo,{bundleNames:["com.example.actsanspublishtest"]});
         expect(promise).assertEqual(undefined);
-        console.debug("==ActsSubscriber_test_1400==end==>");
+        console.debug("==ActsSubscriber_test_1300==end==>");
         done();
         setTimeout(function(){
-            console.debug("====>time out ActsSubscriber_test_1400====>");
+            console.debug("====>time out ActsSubscriber_test_1300====>");
         }, time);
     })
     /*
@@ -510,6 +523,24 @@ describe('ActsAnsSubscriberTest', function () {
         done();
         setTimeout(function(){
             console.debug("====>time out ActsSubscriber_test_1400====>");
+        }, time);
+    })
+    /*
+     * @tc.number: ActsSubscriber_test_1500
+     * @tc.name: subscribe()
+     * @tc.desc: verify the function of subscribe
+     */
+    it('ActsSubscriber_test_1500', 0, async function (done) {
+        console.debug("==ActsSubscriber_test_1500==begin==>");
+        var subInfo ={
+            onConnect:connectCallbacko,
+        }
+        await notify.subscribe(subInfo,{bundleNames:[]},subscribeCallbackp);
+        await notify.unsubscribe(subInfo, unSubscribeCallbacko);
+        console.debug("==ActsSubscriber_test_1500==end==>");
+        done();
+        setTimeout(function(){
+            console.debug("====>time out ActsSubscriber_test_1500====>");
         }, time);
     })
 })
