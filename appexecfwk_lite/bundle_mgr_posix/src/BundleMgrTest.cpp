@@ -83,7 +83,7 @@ protected:
     {
         sem_init(&g_sem, 0, 0);
         InstallParam installParam = { .installLocation = 1, .keepData = false };
-        Uninstall("com.huawei.testjsdemo", &installParam, TestBundleStateCallback);
+        Uninstall("com.openharmony.testjsdemo", &installParam, TestBundleStateCallback);
         sem_wait(&g_sem);
         printf("callback uninstallresult is %d \n", g_errorCode);
         EXPECT_EQ(g_errorCode, 0);
@@ -103,10 +103,10 @@ HWTEST_F(BundleMgrTest, testClearAbilityInfoIllegal, Function | MediumTest | Lev
     // abilityInfo is nullptr
     AbilityInfo abilityInfo;
     memset_s(&abilityInfo, sizeof(abilityInfo), 0, sizeof(abilityInfo));
-    abilityInfo.bundleName = (char*)"com.huawei.testjsdemo";
+    abilityInfo.bundleName = (char*)"com.openharmony.testjsdemo";
     printf("abilityInfo.bundleName is %s \n", abilityInfo.bundleName);
     ClearAbilityInfo(nullptr);
-    EXPECT_STREQ(abilityInfo.bundleName, "com.huawei.testjsdemo");
+    EXPECT_STREQ(abilityInfo.bundleName, "com.openharmony.testjsdemo");
     printf("------end testClearAbilityInfoIllegal------\n");
 }
 
@@ -120,11 +120,11 @@ HWTEST_F(BundleMgrTest, testClearBundleInfoIllegal, Function | MediumTest | Leve
     printf("------start testClearBundleInfoIllegal------\n");
     BundleInfo bundleInfo;
     memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
-    bundleInfo.bundleName = (char*)"com.huawei.testjsdemo";
+    bundleInfo.bundleName = (char*)"com.openharmony.testjsdemo";
     printf("abilityInfo.bundleName is %s \n", bundleInfo.bundleName);
     ClearBundleInfo(nullptr);
     printf("abilityInfo.bundleName afterclear is %s \n", bundleInfo.bundleName);
-    EXPECT_STREQ(bundleInfo.bundleName, "com.huawei.testjsdemo");
+    EXPECT_STREQ(bundleInfo.bundleName, "com.openharmony.testjsdemo");
     printf("------end testClearBundleInfoIllegal------\n");
 }
 
@@ -201,10 +201,10 @@ HWTEST_F(BundleMgrTest, testSetElementBundleName, Function | MediumTest | Level0
     printf("------start testSetElementBundleName------\n");
     Want want = { nullptr };
     ElementName element = { nullptr };
-    SetElementBundleName(&element, "com.huawei.testjsdemo");
+    SetElementBundleName(&element, "com.openharmony.testjsdemo");
     SetWantElement(&want, element);
     printf("element is %s \n", want.element->bundleName);
-    char bName[] = "com.huawei.testjsdemo";
+    char bName[] = "com.openharmony.testjsdemo";
     EXPECT_STREQ(want.element->bundleName, bName);
     ClearElement(&element);
     ClearWant(&want);
@@ -439,7 +439,7 @@ HWTEST_F(BundleMgrTest, testBundleMgrInstallBadfile, Function | MediumTest | Lev
 HWTEST_F(BundleMgrTest, testUninstallNullCallback, Function | MediumTest | Level2)
 {
     printf("------start testUninstallNullCallback------\n");
-    const char *bundleName = (char*)"com.huawei.testdemo";
+    const char *bundleName = (char*)"com.openharmony.testdemo";
     InstallParam installParam = { .installLocation = 1, .keepData = false };
     bool isUninstallSuccess = Uninstall(bundleName, &installParam, nullptr);
     EXPECT_FALSE(isUninstallSuccess);
@@ -477,7 +477,7 @@ HWTEST_F(BundleMgrTest, testUninstallright, Function | MediumTest | Level0)
     sem_wait(&g_sem);
     EXPECT_TRUE(installResult);
     sleep(1);
-    const char *bundleName = (char*)"com.huawei.testnative";
+    const char *bundleName = (char*)"com.openharmony.testnative";
     bool isUninstallSuccess = false;
     sem_init(&g_sem, 0, 0);
     bool uninstallState = Uninstall(bundleName, &installParam, TestBundleStateCallback);
@@ -502,7 +502,7 @@ HWTEST_F(BundleMgrTest, testUninstallright, Function | MediumTest | Level0)
 HWTEST_F(BundleMgrTest, testUninstallErrorName, Function | MediumTest | Level2)
 {
     printf("------start testUninstallErrorName------\n");
-    const char *bundleName = (char*)"com.huawei.nothisBundleName";
+    const char *bundleName = (char*)"com.openharmony.nothisBundleName";
     bool isUninstallSuccess = false;
     sem_init(&g_sem, 0, 0);
     InstallParam installParam = { .installLocation = 1, .keepData = false };
@@ -560,7 +560,7 @@ HWTEST_F(BundleMgrTest, testQueryAbilityInfoRight, Function | MediumTest | Level
     ElementName element;
     memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
     SetElementAbilityName(&element, "MainAbility");
-    SetElementBundleName(&element, "com.huawei.testjsdemo");
+    SetElementBundleName(&element, "com.openharmony.testjsdemo");
     SetWantElement(&want, element);
     SetWantData(&want, "test", 4);
     AbilityInfo abilityInfo;
@@ -595,7 +595,7 @@ HWTEST_F(BundleMgrTest, testQueryAbilityInfoIllegal, Function | MediumTest | Lev
     ElementName element;
     memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
     SetElementAbilityName(&element, "MainAbility");
-    SetElementBundleName(&element, "com.huawei.testjsdemo");
+    SetElementBundleName(&element, "com.openharmony.testjsdemo");
     SetWantElement(&want, element);
     SetWantData(&want, "test", 4);
     g_errorCode = QueryAbilityInfo(&want, nullptr);
@@ -625,7 +625,7 @@ HWTEST_F(BundleMgrTest, testGetBundleInfoRight, Function | MediumTest | Level1)
     printf("------start testGetBundleInfoRight------\n");
     BundleInfo bundleInfo;
     memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
-    const char *bundleName = (char*)"com.huawei.testjsdemo";
+    const char *bundleName = (char*)"com.openharmony.testjsdemo";
     int32_t flags = 0;
     printf("bundleName is %s \n", bundleName);
     sleep(2);
@@ -656,7 +656,7 @@ HWTEST_F(BundleMgrTest, testGetBundleInfoIllegal, Function | MediumTest | Level2
     printf("------start testGetBundleInfoIllegal------\n");
     BundleInfo bundleInfo;
     memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
-    const char *bundleName = (char*)"com.huawei.nothishap";
+    const char *bundleName = (char*)"com.openharmony.nothishap";
     int32_t flags = 0;
     // error bundleName
     g_errorCode = GetBundleInfo(bundleName, flags, &bundleInfo);
@@ -678,7 +678,7 @@ HWTEST_F(BundleMgrTest, testGetBundleInfoIllegal, Function | MediumTest | Level2
     printf("bundleInfo3.codePath is %s \n", bundleInfo.codePath);
     EXPECT_TRUE(g_errorCode == 2);
     // flags not exit
-    g_errorCode = GetBundleInfo("com.huawei.testjsdemo", 2, &bundleInfo);
+    g_errorCode = GetBundleInfo("com.openharmony.testjsdemo", 2, &bundleInfo);
     sleep(2);
     printf("bundleInfo3.bundleName is %s \n", bundleInfo.bundleName);
     printf("bundleInfo3.versionCode is %d \n", bundleInfo.versionCode);
