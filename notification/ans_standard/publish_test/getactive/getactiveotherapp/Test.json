@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAnsAllActiveTestOne.hap"
+                "ActsAnsAllActiveTestTwo.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
