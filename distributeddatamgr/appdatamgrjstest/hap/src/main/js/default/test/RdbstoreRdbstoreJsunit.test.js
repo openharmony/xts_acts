@@ -14,8 +14,7 @@
  */
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-import ohos_data_rdb from '@ohos.data.rdb';
-import ability_featureAbility from '@ohos.ability.featureAbility';
+import dataRdb from '@ohos.data.rdb';
 
 const TAG = "[RDB_JSKITS_TEST]"
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
@@ -23,11 +22,9 @@ const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIM
 const STORE_CONFIG = {
     name: "rdbstore.db",
 }
-var context = undefined;
 describe('rdbStoreTest', function () {
     beforeAll(async function () {
         console.info(TAG + 'beforeAll')
-        context = await ability_featureAbility.getContext();
     })
 
     beforeEach(function () {
@@ -51,7 +48,7 @@ describe('rdbStoreTest', function () {
      */
     it('testRdbStore0001', 0, async function (done) {
         console.log(TAG + "************* testRdbStore0001 start *************");
-        let storePromise = ohos_data_rdb.getRdbStore(context, STORE_CONFIG, 1);
+        let storePromise = dataRdb.getRdbStore(STORE_CONFIG, 1);
         storePromise.then(async (store) => {
             try {
                 await console.log(TAG + "getRdbStore done: " + store);
@@ -63,7 +60,7 @@ describe('rdbStoreTest', function () {
         })
         await storePromise
         storePromise = null
-        await ohos_data_rdb.deleteRdbStore(context, "rdbstore.db");
+        await dataRdb.deleteRdbStore("rdbstore.db");
         done();
         console.log(TAG + "************* testRdbStore0001 end   *************");
     })
@@ -75,7 +72,7 @@ describe('rdbStoreTest', function () {
      */
     it('testRdbStore0002', 0, async function (done) {
         console.log(TAG + "************* testRdbStore0002 start *************");
-        let storePromise = ohos_data_rdb.getRdbStore(context, STORE_CONFIG, 2);
+        let storePromise = dataRdb.getRdbStore(STORE_CONFIG, 2);
         storePromise.then(async (store) => {
             try {
                 await console.log(TAG + "getRdbStore done: " + store);
@@ -88,7 +85,7 @@ describe('rdbStoreTest', function () {
         })
         await storePromise
         storePromise = null
-        await ohos_data_rdb.deleteRdbStore(context, "rdbstore.db");
+        await dataRdb.deleteRdbStore("rdbstore.db");
         done();
         console.log(TAG + "************* testRdbStore0002 end   *************");
     })
@@ -104,7 +101,7 @@ describe('rdbStoreTest', function () {
         let storeConfig = {
             name: "/wrong/rdbstore.db",
         }
-        let storePromise = ohos_data_rdb.getRdbStore(context, storeConfig, 4);
+        let storePromise = dataRdb.getRdbStore(storeConfig, 4);
         storePromise.then(async (ret) => {
             await console.log(TAG + "getRdbStore done" + ret);
             expect(null).assertFail();
@@ -124,7 +121,7 @@ describe('rdbStoreTest', function () {
     it('testRdbStore0004', 0, async function (done) {
         console.log(TAG + "************* testRdbStore0004 start *************");
 
-        let storePromise = ohos_data_rdb.getRdbStore(context, STORE_CONFIG, 6);
+        let storePromise = dataRdb.getRdbStore(STORE_CONFIG, 6);
         storePromise.then(async (store) => {
             try {
                 await store.executeSql(CREATE_TABLE_TEST);
@@ -136,7 +133,7 @@ describe('rdbStoreTest', function () {
         })
         await storePromise
         storePromise = null
-        await ohos_data_rdb.deleteRdbStore(context, "rdbstore.db");
+        await dataRdb.deleteRdbStore("rdbstore.db");
         done();
         console.log(TAG + "************* testRdbStore0004 end   *************");
     })
