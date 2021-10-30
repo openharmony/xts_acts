@@ -10,11 +10,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsFormSystemTestServiceA") {
-  hap_profile = "./formmodule001/src/main/config.json"
+ohos_hap("ActsFormSystemTestServiceA") {
+  hap_profile = "./src/main/config.json"
   hap_name = "ActsFormSystemTestServiceA"
   subsystem_name = XTS_SUITENAME
   final_hap_path =
@@ -27,9 +26,9 @@ ohos_js_hap_suite("ActsFormSystemTestServiceA") {
   certificate_profile = "./signature/openharmony_sx.p7b"
 }
 ohos_js_assets("hjs_demo_js_assets") {
-  source_dir = "./formmodule001/src/main/js/default"
+  source_dir = "./src/main/js/default"
 }
 ohos_resources("hjs_demo_resources") {
-  sources = [ "./formmodule001/src/main/resources" ]
-  hap_profile = "./formmodule001/src/main/config.json"
+  sources = [ "./src/main/js/resources" ]
+  hap_profile = "./src/main/config.json"
 }
