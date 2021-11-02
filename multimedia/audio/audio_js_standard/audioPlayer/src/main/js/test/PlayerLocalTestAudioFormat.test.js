@@ -45,16 +45,15 @@ describe('PlayerLocalTestAudioFormat', function () {
         for(let t = Date.now(); Date.now() - t <= time;);
     }
 
-    function setSrcCallback(audioPlayer) {
+    function playSource(audioSource, done) {
+        let audioPlayer = media.createAudioPlayer();
+        audioPlayer.src = audioSource;
         audioPlayer.on('dataLoad', () => {
             console.info('case set source success');
             expect(audioPlayer.state).assertEqual('paused');
             expect(audioPlayer.currentTime).assertEqual(0);
             audioPlayer.play();
         });
-    }
-
-    function setPlayCallback(audioPlayer) {
         audioPlayer.on('play', () => {
             console.info('case start to play');
             expect(audioPlayer.state).assertEqual('playing');
@@ -65,17 +64,16 @@ describe('PlayerLocalTestAudioFormat', function () {
                 audioPlayer.seek(SEEK_TIME);
             }
         });
-    }
-
-    function setPauseCallback(audioPlayer) {
         audioPlayer.on('pause', () => {
             console.info('case now is paused');
             expect(audioPlayer.state).assertEqual('paused');
             audioPlayer.setVolume(MAX_VOLUME);
         });
-    }
-
-    function setResetCallback(audioPlayer, done) {
+        audioPlayer.on('stop', () => {
+            console.info('case stop success');
+            expect(audioPlayer.state).assertEqual('stopped');
+            audioPlayer.reset();
+        });
         audioPlayer.on('reset', () => {
             console.info('case reset success');
             expect(audioPlayer.state).assertEqual('idle');
@@ -83,17 +81,6 @@ describe('PlayerLocalTestAudioFormat', function () {
             audioPlayer = undefined;
             done();
         });
-    }
-
-    function setStopCallback(audioPlayer) {
-        audioPlayer.on('stop', () => {
-            console.info('case stop success');
-            expect(audioPlayer.state).assertEqual('stopped');
-            audioPlayer.reset();
-        });
-    }
-
-    function setSeekCallback(audioPlayer, done) {
         audioPlayer.on('timeUpdate', (seekDoneTime) => {
             if (typeof (seekDoneTime) == "undefined") {
                 console.info(`case seek filed,errcode is ${seekDoneTime}`);
@@ -112,25 +99,16 @@ describe('PlayerLocalTestAudioFormat', function () {
                 expect(audioPlayer.duration).assertEqual(seekDoneTime);
             }
         });
-    }
-
-    function setVolumeCallback(audioPlayer) {
         audioPlayer.on('volumeChange', () => {
             console.info('case set volume value to ' + MAX_VOLUME);
             audioPlayer.play();
             isToSeek = true;
         });
-    }
-
-    function setFinishCallback(audioPlayer) {
         audioPlayer.on('finish', () => {
             console.info('case play end');
             expect(audioPlayer.state).assertEqual('stopped');
             audioPlayer.stop();
         });
-    }
-
-    function setErrorCallback(audioPlayer, done) {
         audioPlayer.on('error', (err) => {
             console.info(`case error called,errName is ${err.name}`);
             console.info(`case error called,errCode is ${err.code}`);
@@ -139,26 +117,6 @@ describe('PlayerLocalTestAudioFormat', function () {
             expect().assertFail();
             done();
         });
-    }
-
-    function playSource(audioSource, done) {
-        let audioPlayer = media.createAudioPlayer();
-        if (typeof (audioPlayer) == 'undefined') {
-            console.info('case create player is faild');
-            expect().assertFail();
-            done();
-            return;
-        }
-        setSrcCallback(audioPlayer);
-        setPlayCallback(audioPlayer);
-        setPauseCallback(audioPlayer);
-        setResetCallback(audioPlayer, done);
-        setStopCallback(audioPlayer);
-        setSeekCallback(audioPlayer, done);
-        setVolumeCallback(audioPlayer);
-        setFinishCallback(audioPlayer);
-        setErrorCallback(audioPlayer, done);
-        audioPlayer.src = audioSource;
     }
 
     /* *
@@ -173,6 +131,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP3_01_0100', 0, async function (done) {
         playSource(BASIC_PATH + '01.mp3', done);
     })
@@ -189,6 +148,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP3_01_0200', 0, async function (done) {
         playSource(BASIC_PATH + '02.mp3', done);
     })
@@ -205,6 +165,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP3_01_0300', 0, async function (done) {
         playSource(BASIC_PATH + '03.mp3', done);
     })
@@ -221,6 +182,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP3_01_0400', 0, async function (done) {
         playSource(BASIC_PATH + '04.mp3', done);
     })
@@ -237,6 +199,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP4_01_0100', 0, async function (done) {
         playSource(BASIC_PATH + '47.mp4', done);
     })
@@ -254,6 +217,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP4_01_0300', 0, async function (done) {
         playSource(BASIC_PATH + '49.mp4', done);
     })
@@ -270,6 +234,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP4_01_0400', 0, async function (done) {
         playSource(BASIC_PATH + '50.mp4', done);
     })
@@ -286,6 +251,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP4_01_0500', 0, async function (done) {
         playSource(BASIC_PATH + '51.mp4', done);
     })
@@ -302,6 +268,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP4_01_0600', 0, async function (done) {
         playSource(BASIC_PATH + '54.mp4', done);
     })
@@ -318,6 +285,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP4_01_0700', 0, async function (done) {
         playSource(BASIC_PATH + '64.mp4', done);
     })
@@ -334,6 +302,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP4_01_0800', 0, async function (done) {
         playSource(BASIC_PATH + '65.mp4', done);
     })
@@ -350,6 +319,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP4_01_0900', 0, async function (done) {
         playSource(BASIC_PATH + '66.mp4', done);
     })
@@ -366,6 +336,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP4_01_1000', 0, async function (done) {
         playSource(BASIC_PATH + '67.mp4', done);
     })
@@ -382,6 +353,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP4_01_1100', 0, async function (done) {
         playSource(BASIC_PATH + '92.mp4', done);
     })
@@ -398,6 +370,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP4_01_1200', 0, async function (done) {
         playSource(BASIC_PATH + '93.mp4', done);
     })
@@ -414,6 +387,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP4_01_1300', 0, async function (done) {
         playSource(BASIC_PATH + '94.mp4', done);
     })
@@ -430,6 +404,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP4_01_1400', 0, async function (done) {
         playSource(BASIC_PATH + '96.mp4', done);
     })
@@ -446,6 +421,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP4_01_1500', 0, async function (done) {
         playSource(BASIC_PATH + '97.mp4', done);
     })
@@ -462,6 +438,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_MP4_01_1600', 0, async function (done) {
         playSource(BASIC_PATH + '98.mp4', done);
     })
@@ -478,6 +455,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_M4A_01_0100', 0, async function (done) {
         playSource(BASIC_PATH + '55.m4a', done);
     })
@@ -495,6 +473,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_M4A_01_0300', 0, async function (done) {
         playSource(BASIC_PATH + '57.m4a', done);
     })
@@ -511,6 +490,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_M4A_01_0400', 0, async function (done) {
         playSource(BASIC_PATH + '58.m4a', done);
     })
@@ -527,6 +507,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_M4A_01_0500', 0, async function (done) {
         playSource(BASIC_PATH + '59.m4a', done);
     })
@@ -543,6 +524,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_PLAYER_LOCAL_Format_M4A_01_0700', 0, async function (done) {
         playSource(BASIC_PATH + '62.m4a', done);
     })

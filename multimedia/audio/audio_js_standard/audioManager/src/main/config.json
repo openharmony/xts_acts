@@ -1,60 +1,74 @@
 {
   "app": {
-    "bundleName": "ohos.acts.multimedia.audio.audiomanager",
-    "vendor": "acts",
-    "version": {
-      "code": 1,
-      "name": "1.0"
-    },
     "apiVersion": {
-      "compatible": 6,
-      "target": 5
-    }
-  },
-  "deviceConfig": {},
-  "module": {
-    "package": "ohos.acts.multimedia.audio.audiomanager",
-    "name": ".MyApplication",
-    "deviceType": [
-      "phone"
-    ],
-    "distro": {
-      "deliveryWithInstall": true,
-      "moduleName": "entry",
-      "moduleType": "entry"
+        "compatible": 6,
+        "releaseType": "Beta1",
+        "target": 7
     },
-    "abilities": [
-      {
-        "skills": [
+      "vendor": "acts",
+      "bundleName": "ohos.acts.multimedia.audio.audiomanager",
+      "version": {
+          "code": 1000000,
+          "name": "1.0.0"
+      }
+  },
+  "deviceConfig": {
+      "default": {
+          "debug": true
+      }
+  },
+  "module": {
+      "abilities": [
           {
-            "entities": [
-              "entity.system.home"
-            ],
-            "actions": [
-              "action.system.home"
-            ]
+              "iconId": 16777218,
+              "skills": [
+                  {
+                      "entities": [
+                          "entity.system.home"
+                      ],
+                      "actions": [
+                          "action.system.home"
+                      ]
+                  }
+              ],
+              "descriptionId": 16777217,
+              "visible": true,
+              "labelId": 16777216,
+              "icon": "$media:icon",
+              "name": "ohos.acts.multimedia.audio.audiomanager.MainAbility",
+              "description": "$string:mainability_description",
+              "label": "$string:entry_MainAbility",
+              "type": "page",
+              "homeAbility": true,
+              "launchType": "standard"
           }
-        ],
-        "visible": true,
-        "name": "ohos.acts.multimedia.audio.audiomanager.MainAbility",
-        "icon": "$media:icon",
-        "description": "$string:mainability_description",
-        "label": "$string:entry_MainAbility",
-        "type": "page",
-        "launchType": "standard"
-      }
-    ],
-    "js": [
-      {
-        "pages": [
-          "pages/index/index"
-        ],
-        "name": "default",
-        "window": {
-          "designWidth": 720,
-          "autoDesignWidth": true
-        }
-      }
-    ]
+      ],
+      "deviceType": [
+          "phone",
+          "tablet",
+          "tv",
+          "wearable"
+      ],
+      "mainAbility": "ohos.acts.multimedia.audio.audiomanager.MainAbility",
+      "distro": {
+          "moduleType": "entry",
+          "installationFree": false,
+          "deliveryWithInstall": true,
+          "moduleName": "entry"
+      },
+      "package": "ohos.acts.multimedia.audio.audiomanager",
+      "name": ".MyApplication",
+      "js": [
+          {
+              "pages": [
+                  "pages/index/index"
+              ],
+              "name": "default",
+              "window": {
+                  "designWidth": 720,
+                  "autoDesignWidth": true
+              }
+          }
+      ]
   }
 }

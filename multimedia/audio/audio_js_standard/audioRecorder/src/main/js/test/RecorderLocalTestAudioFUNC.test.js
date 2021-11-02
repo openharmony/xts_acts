@@ -77,9 +77,10 @@ describe('RecorderLocalTestAudioFUNC', function () {
         console.info('afterAll case');
     })
 
-    function nextStep(mySteps) {
+    function nextStep(mySteps,done) {
         if (mySteps[0] == END_STATE) {
-            isTimeOut = true;
+            done();
+            console.info('case to done');
             return;
         }
         switch (mySteps[0]) {
@@ -118,8 +119,50 @@ describe('RecorderLocalTestAudioFUNC', function () {
                 break;
         }
     }
-	
-	function setErrorCallback(mySteps) {
+
+    function setCallback(mySteps, done) {
+        audioRecorder.on('prepare', () => {
+            console.info('setCallback prepare() case callback is called');
+            mySteps.shift();
+            nextStep(mySteps,done);
+        });
+
+        audioRecorder.on('start', () => {
+            console.info('setCallback start() case callback is called');
+            sleep(RECORDER_TIME);
+            mySteps.shift();
+            nextStep(mySteps,done);
+        });
+
+        audioRecorder.on('pause', () => {
+            console.info('setCallback pause() case callback is called');
+            mySteps.shift();
+            nextStep(mySteps,done);
+        });
+
+        audioRecorder.on('resume', () => {
+            console.info('setCallback resume() case callback is called');
+            mySteps.shift();
+            nextStep(mySteps,done);
+        });
+
+        audioRecorder.on('stop', () => {
+            console.info('setCallback stop() case callback is called');
+            mySteps.shift();
+            nextStep(mySteps,done);
+        });
+
+        audioRecorder.on('reset', () => {
+            console.info('setCallback reset() case callback is called');
+            mySteps.shift();
+            nextStep(mySteps,done);
+        });
+
+        audioRecorder.on('release', () => {
+            console.info('setCallback release() case callback is called');
+            mySteps.shift();
+            nextStep(mySteps,done);
+        });
         audioRecorder.on('error', (err) => {
             console.info(`case error called,errName is ${err.name}`);
             console.info(`case error called,errCode is ${err.code}`);
@@ -127,63 +170,8 @@ describe('RecorderLocalTestAudioFUNC', function () {
             mySteps.shift();
             expect(mySteps[0]).assertEqual(ERROR_STATE);
             mySteps.shift();
-            nextStep(mySteps);
+            nextStep(mySteps,done);
         });  
-	}
-
-    function setCallback(mySteps, done) {
-        audioRecorder.on('prepare', () => {
-            console.info('setCallback prepare() case callback is called');
-            mySteps.shift();
-            nextStep(mySteps);
-        });
-
-        audioRecorder.on('start', () => {
-            console.info('setCallback start() case callback is called');
-            sleep(RECORDER_TIME);
-            mySteps.shift();
-            nextStep(mySteps);
-        });
-
-        audioRecorder.on('pause', () => {
-            console.info('setCallback pause() case callback is called');
-            mySteps.shift();
-            nextStep(mySteps);
-        });
-
-        audioRecorder.on('resume', () => {
-            console.info('setCallback resume() case callback is called');
-            mySteps.shift();
-            nextStep(mySteps);
-        });
-
-        audioRecorder.on('stop', () => {
-            console.info('setCallback stop() case callback is called');
-            mySteps.shift();
-            nextStep(mySteps);
-        });
-
-        audioRecorder.on('reset', () => {
-            console.info('setCallback reset() case callback is called');
-            mySteps.shift();
-            nextStep(mySteps);
-        });
-
-        audioRecorder.on('release', () => {
-            console.info('setCallback release() case callback is called');
-            mySteps.shift();
-            nextStep(mySteps);
-        });
-
-		setErrorCallback(mySteps);
-        setTimeout(function() {
-            if (!isTimeOut) {
-                console.info('case is time out!');
-                expect(isTimeOut).assertTrue();
-            }
-            mySteps = undefined;
-            done();
-        }, TIME_OUT);
     }
 
     /* *
@@ -194,6 +182,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0100', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test1.m4a';
         initAudioRecorder();
@@ -210,6 +199,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0210', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test2.m4a';
         audioConfig.numberOfChannels = CHANNEL_ONE;
@@ -227,6 +217,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0220', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test3.m4a';
         audioConfig.numberOfChannels = CHANNEL_TWO;
@@ -244,6 +235,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0310', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test4.m4a';
         audioConfig.audioSampleRate = 8000; // samplerate 8000
@@ -262,6 +254,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0320', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test5.mp4';
         audioConfig.audioSampleRate = 32000; // samplerate 32000
@@ -281,6 +274,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0330', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test6.mp4';
         audioConfig.audioSampleRate = 44100; // samplerate 44100
@@ -300,6 +294,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0340', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test7.m4a';
         audioConfig.audioSampleRate = 64000; // samplerate 64000
@@ -319,6 +314,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0340', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test8.m4a';
         audioConfig.audioSampleRate = 96000; // samplerate 96000
@@ -338,6 +334,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0410', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test9.mp4';
         audioConfig.audioSampleRate = 22050; // samplerate 22050
@@ -358,6 +355,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0420', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test10.mp4';
         audioConfig.audioSampleRate = 44100; // samplerate 44100
@@ -378,6 +376,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0430', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test11.m4a';
         audioConfig.audioSampleRate = 44100; // samplerate 44100
@@ -398,6 +397,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0440', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test12.m4a';
         audioConfig.audioSampleRate = 44100; // samplerate 44100
@@ -418,6 +418,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0450', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test13.m4a';
         audioConfig.audioSampleRate = 44100; // samplerate 44100
@@ -438,6 +439,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_RECORDER_Format_MP4_Function_0200', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test14.mp4';
         audioConfig.audioEncodeBitRate = 22050; // samplerate 22050
@@ -458,6 +460,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_RECORDER_Format_MP4_Function_0200', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test15.m4a';
         audioConfig.audioEncodeBitRate = 22050; // samplerate 22050
@@ -478,6 +481,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_RECORDER_LOCAL_AUDIO_Function_06_0100', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test16.m4a';
         audioConfig.fileFormat = FORMAT_M4A;
@@ -495,6 +499,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_RECORDER_LOCAL_AUDIO_Function_06_0500', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test17.m4a';
         audioConfig.fileFormat = FORMAT_M4A;
@@ -512,6 +517,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
+       
     it('SUB_MEDIA_RECORDER_LOCAL_AUDIO_Function_06_1100', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test18.mp4';
         audioConfig.fileFormat = FORMAT_MP4;
