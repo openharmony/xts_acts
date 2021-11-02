@@ -57,7 +57,7 @@
             "updateEnabled": true,
             "scheduledUpdateTime": "10:30",
             "jsComponentName": "card",
-            "formVisibleNotify" : true,
+            "formVisibleNotify" : false,
             "metaData": {
               "customizeData": [
                 {
@@ -78,7 +78,7 @@
             "updateEnabled": true,
             "updateDuration": 1,
             "jsComponentName": "card",
-            "formVisibleNotify" : true,
+            "formVisibleNotify" : false,
             "metaData": {
               "customizeData": [
                 {
