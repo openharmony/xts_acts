@@ -16,7 +16,7 @@
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 var time = 1000
-var errorCode = 67108870
+var ERR_ANS_INVALID_BUNDLE = 67108870
 describe('ActsAnsEnableNotificationTest', function () {
     console.info("===========ActsAnsEnableNotificationTest start====================>");
     /*
@@ -78,14 +78,13 @@ describe('ActsAnsEnableNotificationTest', function () {
      * @tc.desc: verify the function of isNotificationEnabled
      */
     it('ActsGetEnable_test_0400', 0, async function (done) {
-        var promise =  await notify.isNotificationEnabled({
+         notify.isNotificationEnabled({
             bundle:"wrong BundleName",
-        })
-        expect(promise).assertEqual(false)
-        done();
-        setTimeout(function(){
-            console.debug("====>time out ActsGetEnable_test_0400====>");
-        }, time);
+        }).then().catch((err)=>{
+             console.debug("====>ActsGetEnable_test_0400 promsie====>"+err.code);
+             expect(err.code).assertEqual(ERR_ANS_INVALID_BUNDLE)
+             done();
+         })
     })
     /*
      * @tc.number: ActsGetEnable_test_0500
@@ -98,9 +97,6 @@ describe('ActsAnsEnableNotificationTest', function () {
             expect(typeof(data)).assertEqual('boolean')
         })
         done();
-        setTimeout(function(){
-            console.debug("====>time out ActsGetDisplay_test_0500====>");
-        }, time);
     })
     /*
      * @tc.number: ActsGetEnable_test_0600
@@ -111,9 +107,6 @@ describe('ActsAnsEnableNotificationTest', function () {
         var promise =  await notify.isNotificationEnabled("#$#$%$%^")
         expect(promise).assertEqual(undefined)
         done();
-        setTimeout(function(){
-            console.debug("====>time out ActsGetEnable_test_0600====>");
-        }, time);
     })
     /*
      * @tc.number: ActsGetDisplay_test_0700
@@ -126,9 +119,6 @@ describe('ActsAnsEnableNotificationTest', function () {
             expect(typeof(data)).assertEqual('boolean')
         })
         done();
-        setTimeout(function(){
-            console.debug("====>time out ActsGetDisplay_test_0700====>");
-        }, time);
     })
     /*
      * @tc.number: ActsGetEnable_test_0800
@@ -139,9 +129,6 @@ describe('ActsAnsEnableNotificationTest', function () {
         var promise =  await notify.isNotificationEnabled({})
         expect(promise).assertEqual(undefined)
         done();
-        setTimeout(function(){
-            console.debug("====>time out ActsGetEnable_test_0800====>");
-        }, time);
     })
     /*
      * @tc.number: ActsGetEnable_test_0900
@@ -162,9 +149,6 @@ describe('ActsAnsEnableNotificationTest', function () {
                 done();
             })
         })
-        setTimeout(function(){
-            console.debug("====>time out ActsGetDisplay_test_0900====>");
-        }, time);
     })
     /*
      * @tc.number: ActsGetEnable_test_1000
@@ -184,9 +168,6 @@ describe('ActsAnsEnableNotificationTest', function () {
             expect(promise).assertEqual(true)
             done();
         })
-        setTimeout(function(){
-            console.debug("===>time out ActsGetDisplay_test_1000===>");
-        }, time);
     })
     /*
      * @tc.number: ActsSetEnable_test_0100
@@ -200,9 +181,6 @@ describe('ActsAnsEnableNotificationTest', function () {
             console.log("===>ActsSetEnable_test_0100 success===>"+err)
         })
         done();
-        setTimeout(function(){
-            console.debug("====>time out ActsSetEnable_test_0100====>");
-        }, time);
     })
     /*
      * @tc.number: ActsSetEnable_test_0200
@@ -215,9 +193,6 @@ describe('ActsAnsEnableNotificationTest', function () {
         },100)
         expect(promise).assertEqual(undefined)
         done();
-        setTimeout(function(){
-            console.debug("===>time out ActsSetEnable_test_0200===>");
-        }, time);
     })
     /*
      * @tc.number: ActsSetEnable_test_0300
@@ -229,12 +204,9 @@ describe('ActsAnsEnableNotificationTest', function () {
             bundle:"Wrong BundleName"
         },true,(err) => {
             console.log("===>ActsSetEnable_test_0300 success===>"+err.code)
-            expect(err.code).assertEqual(errorCode)
+            expect(err.code).assertEqual(ERR_ANS_INVALID_BUNDLE)
         })
         done();
-        setTimeout(function(){
-            console.debug("====>time out ActsSetDisplay_test_0300====>");
-        }, time);
     })
     /*
      * @tc.number: ActsSetEnable_test_0400
@@ -242,14 +214,13 @@ describe('ActsAnsEnableNotificationTest', function () {
      * @tc.desc: verify the function of enableNotification
      */
     it('ActsSetEnable_test_0400', 0, async function (done) {
-        var promise =  await notify.enableNotification({
+       notify.enableNotification({
             bundle:"Wrong BundleName"
-        },true)
-        expect(promise).assertEqual(undefined)
-        done();
-        setTimeout(function(){
-            console.debug("===>time out ActsSetEnable_test_0400===>");
-        }, time);
+        },true).then().catch((err)=>{
+           console.log("===>ActsSetEnable_test_0400 err===>"+err.code)
+           expect(err.code).assertEqual(ERR_ANS_INVALID_BUNDLE)
+           done();
+       })
     })
     /*
      * @tc.number: ActsSetEnable_test_0500
@@ -346,7 +317,7 @@ describe('ActsAnsEnableNotificationTest', function () {
         await notify.isNotificationEnabled({
             bundle:"com.example.actsanslocalnotificationtest",
         },(err,data) => {
-            console.log("===>ActsGetEnable_test_0100 success===>"+err+data)
+            console.log("===>ActsSetEnable_test_0900 success===>"+err+data)
             expect(typeof(data)).assertEqual('boolean')
             expect(data).assertEqual(false)
         })

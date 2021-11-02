@@ -19,20 +19,21 @@
             "type": "ShellKit",
             "run-command": [
                 "remount",
-                "mkdir /system/vendor"
+                "mkdir /data/test"
             ]
         },
         {
             "type": "PushKit",
             "push": [
-                  "amsStDataAbility.hap->/system/vendor/amsStDataAbility.hap"
+                  "amsStDataAbility.hap->/data/test/amsStDataAbility.hap"
             ]
             
         },
         {
             "type": "ShellKit",
             "run-command": [
-                "chmod 644 /system/vendor/*.hap"
+                "chmod 644 /data/test/*.hap",
+		        "bm install -p /data/test/amsStDataAbility.hap"
 			]
 		}
 	]

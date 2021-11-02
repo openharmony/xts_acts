@@ -554,9 +554,8 @@ describe('ActsAnsCommonEventTest', function () {
         }
     }
     //subscribeOn
-    function subscribeOnCallback(err) {
-        console.debug("===>subscribeOnCallback===>"+err.code);
-        expect(err.code).assertEqual(0);
+    function subscribeOnCallback() {
+        console.debug("===>subscribeOnCallback===>");
     }
     //subscribe
     function subscribeCallback(err) {
