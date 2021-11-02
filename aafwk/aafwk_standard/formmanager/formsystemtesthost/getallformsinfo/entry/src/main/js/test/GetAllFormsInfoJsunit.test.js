@@ -43,8 +43,7 @@ describe('getAllFormsInfoTest', function () {
                     expect(data[i].colorMode).assertEqual(-1);
                     expect(data[i].isDefault).assertEqual(1);
                     expect(data[i].updateEnabled).assertEqual(1);
-                    expect(data[i].scheduledUpdateTime).assertEqual("0:0");
-                    expect(data[i].formVisibleNotify).assertEqual(0);
+                    expect(data[i].formVisibleNotify).assertEqual(1);
                     expect(data[i].defaultDimension).assertEqual(1);
                     expect(data[i].supportDimensions[0]).assertEqual(1);
                     expect(data[i].supportDimensions[1]).assertEqual(2);
@@ -52,6 +51,7 @@ describe('getAllFormsInfoTest', function () {
                     expect(data[i].metaData.customizeData[0].value).assertEqual("myTest");
                 }
                 
+                expect(data[0].scheduledUpdateTime).assertEqual("10:30");
                 expect(data[0].name).assertEqual("Form_Js001");
                 expect(data[1].name).assertEqual("Form_Js002");
                 expect(data[0].updateDuration).assertEqual(0);
@@ -86,8 +86,7 @@ describe('getAllFormsInfoTest', function () {
                 expect(data[i].colorMode).assertEqual(-1);
                 expect(data[i].isDefault).assertEqual(1);
                 expect(data[i].updateEnabled).assertEqual(1);
-                expect(data[i].scheduledUpdateTime).assertEqual("0:0");
-                expect(data[i].formVisibleNotify).assertEqual(0);
+                expect(data[i].formVisibleNotify).assertEqual(1);
                 expect(data[i].defaultDimension).assertEqual(1);
                 expect(data[i].supportDimensions[0]).assertEqual(1);
                 expect(data[i].supportDimensions[1]).assertEqual(2);
@@ -95,6 +94,7 @@ describe('getAllFormsInfoTest', function () {
                 expect(data[i].metaData.customizeData[0].value).assertEqual("myTest");
             }
 
+            expect(data[0].scheduledUpdateTime).assertEqual("10:30");
             expect(data[0].name).assertEqual("Form_Js001");
             expect(data[1].name).assertEqual("Form_Js002");
             expect(data[0].updateDuration).assertEqual(0);
@@ -234,8 +234,7 @@ describe('getAllFormsInfoTest', function () {
                     expect(data[i].colorMode).assertEqual(-1);
                     expect(data[i].isDefault).assertEqual(1);
                     expect(data[i].updateEnabled).assertEqual(1);
-                    expect(data[i].scheduledUpdateTime).assertEqual("0:0");
-                    expect(data[i].formVisibleNotify).assertEqual(0);
+                    expect(data[i].formVisibleNotify).assertEqual(1);
                     expect(data[i].defaultDimension).assertEqual(1);
                     expect(data[i].supportDimensions[0]).assertEqual(1);
                     expect(data[i].supportDimensions[1]).assertEqual(2);
@@ -243,6 +242,7 @@ describe('getAllFormsInfoTest', function () {
                     expect(data[i].metaData.customizeData[0].value).assertEqual("myTest");
                 }
 
+                expect(data[0].scheduledUpdateTime).assertEqual("10:30");
                 expect(data[0].name).assertEqual("Form_Js001");
                 expect(data[1].name).assertEqual("Form_Js002");
                 expect(data[0].updateDuration).assertEqual(0);
@@ -280,8 +280,7 @@ describe('getAllFormsInfoTest', function () {
                 expect(data[i].colorMode).assertEqual(-1);
                 expect(data[i].isDefault).assertEqual(1);
                 expect(data[i].updateEnabled).assertEqual(1);
-                expect(data[i].scheduledUpdateTime).assertEqual("0:0");
-                expect(data[i].formVisibleNotify).assertEqual(0);
+                expect(data[i].formVisibleNotify).assertEqual(1);
                 expect(data[i].defaultDimension).assertEqual(1);
                 expect(data[i].supportDimensions[0]).assertEqual(1);
                 expect(data[i].supportDimensions[1]).assertEqual(2);
@@ -289,6 +288,7 @@ describe('getAllFormsInfoTest', function () {
                 expect(data[i].metaData.customizeData[0].value).assertEqual("myTest");
             }
 
+            expect(data[0].scheduledUpdateTime).assertEqual("10:30");
             expect(data[0].name).assertEqual("Form_Js001");
             expect(data[1].name).assertEqual("Form_Js002");
             expect(data[0].updateDuration).assertEqual(0);
@@ -543,8 +543,7 @@ describe('getAllFormsInfoTest', function () {
                     expect(data[i].colorMode).assertEqual(-1);
                     expect(data[i].isDefault).assertEqual(1);
                     expect(data[i].updateEnabled).assertEqual(1);
-                    expect(data[i].scheduledUpdateTime).assertEqual("0:0");
-                    expect(data[i].formVisibleNotify).assertEqual(0);
+                    expect(data[i].formVisibleNotify).assertEqual(1);
                     expect(data[i].defaultDimension).assertEqual(1);
                     expect(data[i].supportDimensions[0]).assertEqual(1);
                     expect(data[i].supportDimensions[1]).assertEqual(2);
@@ -552,6 +551,7 @@ describe('getAllFormsInfoTest', function () {
                     expect(data[i].metaData.customizeData[0].value).assertEqual("myTest");
                 }
 
+                expect(data[0].scheduledUpdateTime).assertEqual("10:30");
                 expect(data[0].name).assertEqual("Form_Js001");
                 expect(data[1].name).assertEqual("Form_Js002");
                 expect(data[0].updateDuration).assertEqual(0);
@@ -590,8 +590,7 @@ describe('getAllFormsInfoTest', function () {
                 expect(data[i].colorMode).assertEqual(-1);
                 expect(data[i].isDefault).assertEqual(1);
                 expect(data[i].updateEnabled).assertEqual(1);
-                expect(data[i].scheduledUpdateTime).assertEqual("0:0");
-                expect(data[i].formVisibleNotify).assertEqual(0);
+                expect(data[i].formVisibleNotify).assertEqual(1);
                 expect(data[i].defaultDimension).assertEqual(1);
                 expect(data[i].supportDimensions[0]).assertEqual(1);
                 expect(data[i].supportDimensions[1]).assertEqual(2);
@@ -599,6 +598,7 @@ describe('getAllFormsInfoTest', function () {
                 expect(data[i].metaData.customizeData[0].value).assertEqual("myTest");
             }
 
+            expect(data[0].scheduledUpdateTime).assertEqual("10:30");
             expect(data[0].name).assertEqual("Form_Js001");
             expect(data[1].name).assertEqual("Form_Js002");
             expect(data[0].updateDuration).assertEqual(0);
