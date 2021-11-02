@@ -15,8 +15,7 @@
 
 import formManager from '@ohos.ability.formManager'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-import {parameterValue, stringTest, numberTest, booleanTest,
-        nullTest, undefinedTest, objectTest, arrayTest, functionTest} from './getParam.js'
+import {parameterValue, stringTest, numberTest, booleanTest, nullTest, undefinedTest, objectTest, arrayTest, functionTest} from './getParam.js'
 
 const TIMEOUT = 2000;
 describe('formFuzzTest', function () {
@@ -139,8 +138,7 @@ describe('formFuzzTest', function () {
 
        var retResult;
        try{
-           // formId: number>0 ok, isReleaseCache: boolean
-           retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
+           retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache)); // formId: number>0 ok, isReleaseCache: boolean
            console.log("FMS_fuzzTest_0300_param_01_promise async::sucess retResult:" + retResult);
            expect(retResult).assertEqual(1);
            done();
@@ -165,8 +163,7 @@ describe('formFuzzTest', function () {
        console.log("FMS_fuzzTest_0300_param_02_callback releaseForm begin");
 
        var formId = stringTest();
-       console.log("FMS_fuzzTest_0300_param_02_callback releaseForm formId typeof:"+ typeof(formId)
-           + ",formId:" + formId);
+       console.log("FMS_fuzzTest_0300_param_02_callback releaseForm formId typeof:"+ typeof(formId) + ",formId:" + formId);
 
        var isReleaseCache = parameterValue();
        console.log("FMS_fuzzTest_0300_param_02_callback releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
@@ -205,16 +202,14 @@ describe('formFuzzTest', function () {
        console.log("FMS_fuzzTest_0300_param_02_promise releaseForm begin");
 
        var formId = stringTest();
-       console.log("FMS_fuzzTest_0300_param_02_promise releaseForm formId typeof:"+ typeof(formId)
-           + ",formId:" + formId);
+       console.log("FMS_fuzzTest_0300_param_02_promise releaseForm formId typeof:"+ typeof(formId) + ",formId:" + formId);
 
        var isReleaseCache = parameterValue();
        console.log("FMS_fuzzTest_0300_param_02_promise releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
 
        var retResult;
        try{
-           // formId: number>0 ok, isReleaseCache: boolean
-           retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
+           retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));  // formId: number>0 ok, isReleaseCache: boolean
            console.log("FMS_fuzzTest_0300_param_02_promise async::sucess retResult:" + retResult);
            expect(retResult).assertEqual(1);
            done();
@@ -229,6 +224,133 @@ describe('formFuzzTest', function () {
            console.info('=====================FMS_fuzzTest_0300_param_02_promise==================end');
        }, TIMEOUT)
    })
+
+    /**
+     * @tc.name fuzzTest
+     * @tc.number FMS_fuzzTest_0300
+     * @tc.desc Check whether the releaseForm interface can pass the fuzzy test (by AsyncCallback)
+     */
+     it('FMS_fuzzTest_0300_param_03_callback', 0, async function (done) {
+        console.log("FMS_fuzzTest_0300_param_03_callback releaseForm begin");
+ 
+        var formId = stringTest();
+        console.log("FMS_fuzzTest_0300_param_03_callback releaseForm formId typeof:"+ typeof(formId) + ",formId:" + formId);
+ 
+        try{
+            formManager.releaseForm(
+                formId, // formId: number>0 ok
+                (err,data) => {
+                    console.log("FMS_fuzzTest_0300_param_03_callback async::callbak return!!!")
+                    console.log("FMS_fuzzTest_0300_param_03_callback async::sucess data:" + data);
+                    console.log("FMS_fuzzTest_0300_param_03_callback async::error err:" + err);
+                    expect(err).assertEqual(1);
+                    done();
+                }
+ 
+            );
+        } catch (e) {
+            console.log("FMS_fuzzTest_0300_param_03_callback Exception caught:" + e);
+            expect(0).assertEqual(0);
+        }
+ 
+        console.log("FMS_fuzzTest_0300_param_03_callback releaseForm end");
+        done();
+        setTimeout(function () {
+            console.info('=====================FMS_fuzzTest_0300_param_03_callback==================end');
+        }, TIMEOUT)
+    })
+ 
+     /**
+      * @tc.name fuzzTest
+      * @tc.number FMS_fuzzTest_0300
+      * @tc.desc Check whether the releaseForm interface can pass the fuzzy test (by Promise)
+      */
+    it('FMS_fuzzTest_0300_param_03_promise', 0, async function (done) {
+        console.log("FMS_fuzzTest_0300_param_03_promise releaseForm begin");
+ 
+        var formId = stringTest();
+        console.log("FMS_fuzzTest_0300_param_03_promise releaseForm formId typeof:"+ typeof(formId) + ",formId:" + formId);
+ 
+        var retResult;
+        try{
+            retResult = await Promise.all(await formManager.releaseForm(formId));  // formId: number>0 ok
+            console.log("FMS_fuzzTest_0300_param_03_promise async::sucess retResult:" + retResult);
+            expect(retResult).assertEqual(1);
+            done();
+        } catch (e) {
+            console.log("FMS_fuzzTest_0300_param_03_promise Exception caught:" + e);
+            expect(0).assertEqual(0);
+        }
+ 
+        console.log("FMS_fuzzTest_0300_param_03_promise releaseForm end");
+        done();
+        setTimeout(function () {
+            console.info('=====================FMS_fuzzTest_0300_param_03_promise==================end');
+        }, TIMEOUT)
+    })
+ 
+    /**
+     * @tc.name fuzzTest
+     * @tc.number FMS_fuzzTest_0300
+     * @tc.desc Check whether the releaseForm interface can pass the fuzzy test (by AsyncCallback)
+     */
+   it('FMS_fuzzTest_0300_param_04_callback', 0, async function (done) {
+    console.log("FMS_fuzzTest_0300_param_04_callback releaseForm begin");
+
+    var formId = parameterValue();
+    console.log("FMS_fuzzTest_0300_param_04_callback releaseForm formId typeof:"+ typeof(formId));
+
+    try{
+        formManager.releaseForm(
+            formId, // formId: number>0 ok
+            (err,data) => {
+                console.log("FMS_fuzzTest_0300_param_04_callback async::callbak return!!!")
+                console.log("FMS_fuzzTest_0300_param_04_callback async::sucess data:" + data);
+                console.log("FMS_fuzzTest_0300_param_04_callback async::error err:" + err);
+                expect(err).assertEqual(1);
+                done();
+            }
+        );
+    } catch (e) {
+        console.log("FMS_fuzzTest_0300_param_04_callback Exception caught:" + e);
+        expect(0).assertEqual(0);
+    }
+
+    console.log("FMS_fuzzTest_0300_param_04_callback releaseForm end");
+    done();
+    setTimeout(function () {
+        console.info('=====================FMS_fuzzTest_0300_param_04_callback==================end');
+    }, TIMEOUT)
+})
+
+ /**
+  * @tc.name fuzzTest
+  * @tc.number FMS_fuzzTest_0300
+  * @tc.desc Check whether the releaseForm interface can pass the fuzzy test (by Promise)
+  */
+it('FMS_fuzzTest_0300_param_04_promise', 0, async function (done) {
+    console.log("FMS_fuzzTest_0300_param_04_promise releaseForm begin");
+
+    var formId = parameterValue();
+    console.log("FMS_fuzzTest_0300_param_04_promise releaseForm formId typeof:"+ typeof(formId));
+
+    var retResult;
+    try{
+        retResult = await Promise.all(await formManager.releaseForm(formId)); // formId: number>0 ok
+        console.log("FMS_fuzzTest_0300_param_04_promise async::sucess retResult:" + retResult);
+        expect(retResult).assertEqual(1);
+        done();
+    } catch (e) {
+        console.log("FMS_fuzzTest_0300_param_04_promise Exception caught:" + e);
+        expect(0).assertEqual(0);
+    }
+
+    console.log("FMS_fuzzTest_0300_param_04_promise releaseForm end");
+    done();
+    setTimeout(function () {
+        console.info('=====================FMS_fuzzTest_0300_param_04_promise==================end');
+    }, TIMEOUT)
+})
 
     /**
      * @tc.name fuzzTest
