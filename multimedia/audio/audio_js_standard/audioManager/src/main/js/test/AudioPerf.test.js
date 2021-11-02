@@ -19,10 +19,10 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe('audioApiResponseTime', function () {
     console.info('AudioFrameworkTestPerf: Running AudioManger API Perfomance Test');
-    var audioMedia = 3;
-    var audioRingtone = 2;
-    var maxVol = 15;
-    var lowVol = 5;
+    var AUDIO_MEDIA = 3;
+    var AUDIO_RINGTONE = 2;
+    var MAX_VOL = 15;
+    var LOW_VOL = 5;
     var MAXNUM = 1000;
     var err;
 
@@ -43,18 +43,19 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_001
-                * @tc.name      : API Response - setVolume - Promise
-                * @tc.desc      : Check setVolume API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_001
+        * @tc.name      : API Response - setVolume - Promise
+        * @tc.desc      : Check setVolume API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_001', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
         for (let i = 0; i < MAXNUM; i++) {
-            audioManagerPerf.setVolume(audioRingtone,maxVol);
+            audioManagerPerf.setVolume(AUDIO_RINGTONE,MAX_VOL);
             };
         let waitTime = new Date().getTime()-startTime;
         let avgTime = waitTime/MAXNUM;
@@ -72,18 +73,19 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_002
-                * @tc.name      : API Response - setVolume - CallBack
-                * @tc.desc      : Check setVolume API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_002
+        * @tc.name      : API Response - setVolume - CallBack
+        * @tc.desc      : Check setVolume API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_002', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
         for (let i = 0; i < MAXNUM; i++) {
-            audioManagerPerf.setVolume(audioMedia,lowVol,(err, value) => {
+            audioManagerPerf.setVolume(AUDIO_MEDIA,LOW_VOL,(err, value) => {
                 if (err) {
                     console.error(`AudioFrameworkTestPerf: callback : ERROR : ${err.message}`);
                     expect(false).assertTrue();
@@ -106,18 +108,19 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_003
-                * @tc.name      : API Response - getVolume - Promise
-                * @tc.desc      : Check getVolume API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_003
+        * @tc.name      : API Response - getVolume - Promise
+        * @tc.desc      : Check getVolume API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_003', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
         for (let i = 0; i < MAXNUM; i++) {
-            audioManagerPerf.getVolume(audioRingtone);
+            audioManagerPerf.getVolume(AUDIO_RINGTONE);
             };
         let waitTime = new Date().getTime()-startTime;
         let avgTime = waitTime/MAXNUM;                     
@@ -135,18 +138,19 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_004
-                * @tc.name      : API Response - getVolume - CallBack
-                * @tc.desc      : Check getVolume API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_004
+        * @tc.name      : API Response - getVolume - CallBack
+        * @tc.desc      : Check getVolume API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_004', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
         for (let i = 0; i < MAXNUM; i++) {
-            audioManagerPerf.getVolume(audioMedia,(err, value) => {
+            audioManagerPerf.getVolume(AUDIO_MEDIA,(err, value) => {
                 if (err) {
                     console.error(`AudioFrameworkTestPerf: callback : ERROR : ${err.message}`);
                     expect(false).assertTrue();
@@ -169,18 +173,19 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_005
-                * @tc.name      : API Response - getMinVolume - Promise
-                * @tc.desc      : Check getMinVolume API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_005
+        * @tc.name      : API Response - getMinVolume - Promise
+        * @tc.desc      : Check getMinVolume API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_005', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
         for (let i = 0; i < MAXNUM; i++) {
-            audioManagerPerf.getMinVolume(audioMedia);
+            audioManagerPerf.getMinVolume(AUDIO_MEDIA);
             };
         let waitTime = new Date().getTime()-startTime;
         let avgTime = waitTime/MAXNUM;                     
@@ -198,18 +203,19 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_006
-                * @tc.name      : API Response - getMinVolume - CallBack
-                * @tc.desc      : Check getMinVolume API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_006
+        * @tc.name      : API Response - getMinVolume - CallBack
+        * @tc.desc      : Check getMinVolume API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_006', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
         for (let i = 0; i < MAXNUM; i++) {
-            audioManagerPerf.getMinVolume(audioRingtone,(err, value) => {
+            audioManagerPerf.getMinVolume(AUDIO_RINGTONE,(err, value) => {
                 if (err) {
                     console.error(`AudioFrameworkTestPerf: callback : ERROR : ${err.message}`);
                     expect(false).assertTrue();
@@ -232,18 +238,19 @@ describe('audioApiResponseTime', function () {
     })
     
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_007
-                * @tc.name      : API Response - getMaxVolume - Promise
-                * @tc.desc      : Check getMaxVolume API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_007
+        * @tc.name      : API Response - getMaxVolume - Promise
+        * @tc.desc      : Check getMaxVolume API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_007', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
         for (let i = 0; i < MAXNUM; i++) {
-            audioManagerPerf.getMaxVolume(audioMedia);
+            audioManagerPerf.getMaxVolume(AUDIO_MEDIA);
             };
         let waitTime = new Date().getTime()-startTime;
         let avgTime = waitTime/MAXNUM;                     
@@ -261,18 +268,19 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_008
-                * @tc.name      : API Response - getMaxVolume - CallBack
-                * @tc.desc      : Check getMaxVolume API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_008
+        * @tc.name      : API Response - getMaxVolume - CallBack
+        * @tc.desc      : Check getMaxVolume API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_008', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
         for (let i = 0; i < MAXNUM; i++) {
-            audioManagerPerf.getMaxVolume(audioRingtone,(err, value) => {
+            audioManagerPerf.getMaxVolume(AUDIO_RINGTONE,(err, value) => {
                 if (err) {
                     console.error(`AudioFrameworkTestPerf: callback : ERROR : ${err.message}`);
                     expect(false).assertTrue();
@@ -295,18 +303,19 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_009
-                * @tc.name      : API Response - mute - Promise
-                * @tc.desc      : Check mute API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_009
+        * @tc.name      : API Response - mute - Promise
+        * @tc.desc      : Check mute API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_009', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
         for (let i = 0; i < MAXNUM; i++) {
-            audioManagerPerf.mute(audioMedia,true);
+            audioManagerPerf.mute(AUDIO_MEDIA,true);
             };
         let waitTime = new Date().getTime()-startTime;
         let avgTime = waitTime/MAXNUM;                     
@@ -324,18 +333,19 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_010
-                * @tc.name      : API Response - mute - CallBack
-                * @tc.desc      : Check mute API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_010
+        * @tc.name      : API Response - mute - CallBack
+        * @tc.desc      : Check mute API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_010', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
         for (let i = 0; i < MAXNUM; i++) {
-            audioManagerPerf.mute(audioRingtone,true,(err, value) => {
+            audioManagerPerf.mute(AUDIO_RINGTONE,true,(err, value) => {
                 if (err) {
                     console.error(`AudioFrameworkTestPerf: callback : ERROR : ${err.message}`);
                     expect(false).assertTrue();
@@ -358,18 +368,19 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_011
-                * @tc.name      : API Response - isMute - Promise
-                * @tc.desc      : Check isMute API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_011
+        * @tc.name      : API Response - isMute - Promise
+        * @tc.desc      : Check isMute API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_011', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
         for (let i = 0; i < MAXNUM; i++) {
-            audioManagerPerf.isMute(audioMedia);
+            audioManagerPerf.isMute(AUDIO_MEDIA);
             };
         let waitTime = new Date().getTime()-startTime;
         let avgTime = waitTime/MAXNUM;                     
@@ -387,18 +398,19 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_012
-                * @tc.name      : API Response - isMute - CallBack
-                * @tc.desc      : Check isMute API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_012
+        * @tc.name      : API Response - isMute - CallBack
+        * @tc.desc      : Check isMute API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_012', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
         for (let i = 0; i < MAXNUM; i++) {
-            audioManagerPerf.isMute(audioRingtone,(err, value) => {
+            audioManagerPerf.isMute(AUDIO_RINGTONE,(err, value) => {
                 if (err) {
                     console.error(`AudioFrameworkTestPerf: callback : ERROR : ${err.message}`);
                     expect(false).assertTrue();
@@ -421,18 +433,19 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_013
-                * @tc.name      : API Response - isActive - Promise
-                * @tc.desc      : Check isActive API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_013
+        * @tc.name      : API Response - isActive - Promise
+        * @tc.desc      : Check isActive API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_013', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
         for (let i = 0; i < MAXNUM; i++) {
-            audioManagerPerf.isActive(audioMedia);
+            audioManagerPerf.isActive(AUDIO_MEDIA);
             };
         let waitTime = new Date().getTime()-startTime;
         let avgTime = waitTime/MAXNUM;                     
@@ -450,18 +463,19 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_014
-                * @tc.name      : API Response - isActive - CallBack
-                * @tc.desc      : Check isActive API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_014
+        * @tc.name      : API Response - isActive - CallBack
+        * @tc.desc      : Check isActive API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_014', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
         for (let i = 0; i < MAXNUM; i++) {
-            audioManagerPerf.isActive(audioRingtone,(err, value) => {
+            audioManagerPerf.isActive(AUDIO_RINGTONE,(err, value) => {
                 if (err) {
                     console.error(`AudioFrameworkTestPerf: callback : ERROR : ${err.message}`);
                     expect(false).assertTrue();
@@ -484,13 +498,14 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_015
-                * @tc.name      : API Response - setMicrophoneMute - Promise
-                * @tc.desc      : Check setMicrophoneMute API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_015
+        * @tc.name      : API Response - setMicrophoneMute - Promise
+        * @tc.desc      : Check setMicrophoneMute API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_015', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
@@ -513,13 +528,14 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_016
-                * @tc.name      : API Response - setMicrophoneMute - CallBack
-                * @tc.desc      : Check setMicrophoneMute API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_016
+        * @tc.name      : API Response - setMicrophoneMute - CallBack
+        * @tc.desc      : Check setMicrophoneMute API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_016', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
@@ -547,13 +563,14 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_017
-                * @tc.name      : API Response - isMicrophoneMute - Promise
-                * @tc.desc      : Check isMicrophoneMute API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_017
+        * @tc.name      : API Response - isMicrophoneMute - Promise
+        * @tc.desc      : Check isMicrophoneMute API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_017', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
@@ -576,13 +593,14 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_018
-                * @tc.name      : API Response - isMicrophoneMute - CallBack
-                * @tc.desc      : Check isMicrophoneMute API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_018
+        * @tc.name      : API Response - isMicrophoneMute - CallBack
+        * @tc.desc      : Check isMicrophoneMute API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_018', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
@@ -610,13 +628,14 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_019
-                * @tc.name      : API Response - setRingerMode - Promise
-                * @tc.desc      : Check setRingerMode API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_019
+        * @tc.name      : API Response - setRingerMode - Promise
+        * @tc.desc      : Check setRingerMode API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_019', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
@@ -639,13 +658,14 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_020
-                * @tc.name      : API Response - setRingerMode - CallBack
-                * @tc.desc      : Check setRingerMode API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_020
+        * @tc.name      : API Response - setRingerMode - CallBack
+        * @tc.desc      : Check setRingerMode API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_020', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
@@ -673,13 +693,14 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_021
-                * @tc.name      : API Response - getRingerMode - Promise
-                * @tc.desc      : Check getRingerMode API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_021
+        * @tc.name      : API Response - getRingerMode - Promise
+        * @tc.desc      : Check getRingerMode API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_021', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
@@ -702,13 +723,14 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_022
-                * @tc.name      : API Response - getRingerMode - CallBack
-                * @tc.desc      : Check getRingerMode API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_022
+        * @tc.name      : API Response - getRingerMode - CallBack
+        * @tc.desc      : Check getRingerMode API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_022', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
@@ -736,13 +758,14 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_023
-                * @tc.name      : API Response - setAudioParameter - Promise
-                * @tc.desc      : Check setAudioParameter API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_023
+        * @tc.name      : API Response - setAudioParameter - Promise
+        * @tc.desc      : Check setAudioParameter API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_023', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
@@ -765,13 +788,14 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_024
-                * @tc.name      : API Response - setAudioParameter - CallBack
-                * @tc.desc      : Check setAudioParameter API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_024
+        * @tc.name      : API Response - setAudioParameter - CallBack
+        * @tc.desc      : Check setAudioParameter API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_024', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
@@ -799,13 +823,14 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_025
-                * @tc.name      : API Response - getAudioParameter - Promise
-                * @tc.desc      : Check getAudioParameter API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_025
+        * @tc.name      : API Response - getAudioParameter - Promise
+        * @tc.desc      : Check getAudioParameter API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_025', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
@@ -828,13 +853,14 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_026
-                * @tc.name      : API Response - getAudioParameter - CallBack
-                * @tc.desc      : Check getAudioParameter API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_026
+        * @tc.name      : API Response - getAudioParameter - CallBack
+        * @tc.desc      : Check getAudioParameter API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_026', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
@@ -862,13 +888,14 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_027
-                * @tc.name      : API Response - getDevices - Promise
-                * @tc.desc      : Check getDevices API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_027
+        * @tc.name      : API Response - getDevices - Promise
+        * @tc.desc      : Check getDevices API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_027', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
@@ -891,13 +918,14 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_028
-                * @tc.name      : API Response - getDevices - CallBack
-                * @tc.desc      : Check getDevices API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_028
+        * @tc.name      : API Response - getDevices - CallBack
+        * @tc.desc      : Check getDevices API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_028', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
@@ -925,13 +953,14 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_029
-                * @tc.name      : API Response - setDeviceActive - Promise
-                * @tc.desc      : Check setDeviceActive API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_029
+        * @tc.name      : API Response - setDeviceActive - Promise
+        * @tc.desc      : Check setDeviceActive API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_029', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
@@ -954,13 +983,14 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_030
-                * @tc.name      : API Response - setDeviceActive - CallBack
-                * @tc.desc      : Check setDeviceActive API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_030
+        * @tc.name      : API Response - setDeviceActive - CallBack
+        * @tc.desc      : Check setDeviceActive API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_030', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
@@ -988,13 +1018,14 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_031
-                * @tc.name      : API Response - isDeviceActive - Promise
-                * @tc.desc      : Check isDeviceActive API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_031
+        * @tc.name      : API Response - isDeviceActive - Promise
+        * @tc.desc      : Check isDeviceActive API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_031', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();
@@ -1017,13 +1048,14 @@ describe('audioApiResponseTime', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_Performance_032
-                * @tc.name      : API Response - isDeviceActive - CallBack
-                * @tc.desc      : Check isDeviceActive API Response time
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
+        * @tc.number    : SUB_AUDIO_MANAGER_Performance_032
+        * @tc.name      : API Response - isDeviceActive - CallBack
+        * @tc.desc      : Check isDeviceActive API Response time
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+       
     it('SUB_AUDIO_MANAGER_Performance_032', 0, function (done) {
         let audioManagerPerf = audio.getAudioManager(); 
         let startTime = new Date().getTime();

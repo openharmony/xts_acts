@@ -13,5 +13,17 @@
  * limitations under the License.
  */
 
+ package ohos.acts.multimedia.audio.audioplayerapi;
 
-require('./AudioFramework.test.js')
+ import ohos.aafwk.ability.AbilityPackage;
+
+/*
+ * java MyApplication
+ */
+
+ public class MyApplication extends AbilityPackage {
+    @Override
+    public void onInitialize() {
+        super.onInitialize();
+    }
+ }
