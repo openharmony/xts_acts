@@ -1,12 +1,12 @@
 {
   "string": [
     {
-      "name": "app_name",
-      "value": "MyApplication"
+      "name": "entry_MainAbility",
+      "value": "entry_MainAbility"
     },
     {
       "name": "mainability_description",
-      "value": "JS_Phone_Empty Feature Ability"
+      "value": "JS_Empty Ability"
     }
   ]
 }

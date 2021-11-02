@@ -13,11 +13,5 @@
  * limitations under the License.
  */
 
-export default {
-    onCreate() {
-        console.info('AceApplication onCreate');
-    },
-    onDestroy() {
-        console.info('AceApplication onDestroy');
-    }
-};
+
+require('./AudioFramework.test.js')

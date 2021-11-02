@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-export default {
-    onCreate() {
-        console.info('AceApplication onCreate');
-    },
-    onDestroy() {
-        console.info('AceApplication onDestroy');
+ package ohos.acts.multimedia.audio.audioplayer;
+
+ import ohos.aafwk.ability.AbilityPackage;
+
+/*
+ * java MyApplication
+ */
+
+ public class MyApplication extends AbilityPackage {
+    @Override
+    public void onInitialize() {
+        super.onInitialize();
     }
-};
+ }

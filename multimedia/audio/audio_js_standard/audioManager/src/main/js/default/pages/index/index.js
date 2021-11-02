@@ -13,11 +13,7 @@
  * limitations under the License.
  */
 
-import app from '@system.app'
 import {Core, ExpectExtend} from 'deccjsunit/index'
-
-const injectRef = Object.getPrototypeOf(global) || global
-injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 
 export default {
     data: {
@@ -36,8 +32,8 @@ export default {
         core.init()
         const configService = core.getDefaultService('config')
         configService.setConfig(this)
-
-        require('../../test/List.test')
+        this.timeout = 60000
+        require('../../../test/List.test')
         core.execute()
     },
     onReady() {
