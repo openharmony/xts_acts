@@ -18,7 +18,6 @@
 
 #include <cstdbool>
 #include <cstdint>
-#include "hc_dev_info.h"
 
 void SetClient(bool tag);
 bool GetClient();
