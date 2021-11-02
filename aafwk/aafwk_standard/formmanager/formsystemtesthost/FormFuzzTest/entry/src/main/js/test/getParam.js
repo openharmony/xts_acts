@@ -137,15 +137,10 @@ const functionTest = function() {
 const parameterValue = function() {
 
     var fuzzConfigData = [
-            {"name":"string", "paramWeight":25},
-            {"name":"number", "paramWeight":45},
-            {"name":"boolean", "paramWeight":50},
-            {"name":"null", "paramWeight":52},
-            {"name":"undefined", "paramWeight":54},
-            {"name":"object", "paramWeight":62},
-            {"name":"array", "paramWeight":92},
-            {"name":"function", "paramWeight":100},
-        ]
+        {"name":"string", "paramWeight":25},{"name":"number", "paramWeight":45},{"name":"boolean", "paramWeight":50},
+        {"name":"null", "paramWeight":52},{"name":"undefined", "paramWeight":54},{"name":"object", "paramWeight":62},
+        {"name":"array", "paramWeight":92},{"name":"function", "paramWeight":100},
+    ]
 
     var weightSum = fuzzConfigData[fuzzConfigData.length - 1].paramWeight;
     console.log("The weight sum of this fuzzTest:" + weightSum);
@@ -156,8 +151,7 @@ const parameterValue = function() {
 
     for(var iFuzzDataNumber = 0; iFuzzDataNumber < fuzzConfigData.length; iFuzzDataNumber ++) {
 
-        if((iFuzzDataNumber == 0 &&
-        iNumber < fuzzConfigData[iFuzzDataNumber].paramWeight) ||
+        if((iFuzzDataNumber == 0 && iNumber < fuzzConfigData[iFuzzDataNumber].paramWeight) ||
         (iNumber < fuzzConfigData[iFuzzDataNumber].paramWeight &&
         iNumber > fuzzConfigData[iFuzzDataNumber - 1].paramWeight) ) {
             console.log("The name of this fuzzTest random:" + fuzzConfigData[iFuzzDataNumber].name);
