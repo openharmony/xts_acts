@@ -13,18 +13,14 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap("ActsAnsAllActiveTestTwo") {
+ohos_js_hap_suite("ActsAnsAllActiveTestOne") {
   hap_profile = "./entry/src/main/config.json"
-  hap_name = "ActsAnsAllActiveTestTwo"
-  subsystem_name = XTS_SUITENAME
-  final_hap_path =
-      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
-  testonly = true
   deps = [
     ":hjs_demo_js_assets",
     ":hjs_demo_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAnsAllActiveTestOne"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "./entry/src/main/js/default"

@@ -16,7 +16,7 @@
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 var time = 1000
-var errorCode = 67108870
+var ERR_ANS_INVALID_BUNDLE = 67108870
 describe('ActsAnsBadgeDisplayTest', function () {
     console.info("===ActsAnsBadgeDisplayTest start===>");
     /*
@@ -28,13 +28,10 @@ describe('ActsAnsBadgeDisplayTest', function () {
         await notify.isBadgeDisplayed({
             bundle:"com.example.actsanslocalcandisplaytest",
         },(err,data) => {
-            console.log("===>ActsGetDisplay_test_0100 success===>"+err+data)
+            console.log("===>ActsGetDisplay_test_0100 success===>"+JSON.stringify(err)+data)
             expect(typeof(data)).assertEqual('boolean')
             done();
         })
-        setTimeout(function(){
-            console.debug("====>time out ActsGetDisplay_test_0100====>");
-        }, time);
     })
     /*
      * @tc.number: ActsGetDisplay_test_0200
@@ -42,15 +39,15 @@ describe('ActsAnsBadgeDisplayTest', function () {
      * @tc.desc: verify the function of isBadgeDisplayed
      */
     it('ActsGetDisplay_test_0200', 0, async function (done) {
-        var promise = await notify.isBadgeDisplayed({
+       notify.isBadgeDisplayed({
                 bundle:"com.example.actsanslocalcandisplaytest",
-            })
-        console.log("===>ActsGetDisplay_test_0200 success===>"+promise)
-        expect(typeof(promise)).assertEqual('boolean')
-        done();
-        setTimeout(function(){
-            console.debug("====>time out ActsGetDisplay_test_0200====>");
-        }, time);
+            }).then((promise)=>{
+                 console.log("===>ActsGetDisplay_test_0200 success===>"+promise)
+                 expect(typeof(promise)).assertEqual('boolean')
+                 done()}
+               ).catch((err)=>{
+           console.log("===>ActsGetDisplay_test_0200 err===>"+err.code)
+       })
     })
     /*
      * @tc.number: ActsGetDisplay_test_0300
@@ -66,9 +63,6 @@ describe('ActsAnsBadgeDisplayTest', function () {
             expect(data).assertEqual(false)
             done();
         })
-        setTimeout(function(){
-            console.debug("====>time out ActsGetDisplay_test_0300====>");
-        }, time);
     })
     /*
      * @tc.number: ActsGetDisplay_test_0400
@@ -76,14 +70,14 @@ describe('ActsAnsBadgeDisplayTest', function () {
      * @tc.desc: verify the function of isBadgeDisplayed
      */
     it('ActsGetDisplay_test_0400', 0, async function (done) {
-       var promise =  await notify.isBadgeDisplayed({
+      notify.isBadgeDisplayed({
             bundle:"wrong BundleName",
-        })
-            expect(promise).assertEqual(false)
-            done();
-        setTimeout(function(){
-            console.debug("====>time out ActsGetDisplay_test_0400====>");
-        }, time);
+        }).then().catch((err)=>{
+          console.log("===>ActsGetDisplay_test_0400 success===>"+err.code)
+           expect(err.code).assertEqual(ERR_ANS_INVALID_BUNDLE)
+           done();
+       })
+
     })
     /*
      * @tc.number: ActsGetDisplay_test_0500
@@ -96,9 +90,6 @@ describe('ActsAnsBadgeDisplayTest', function () {
             expect(typeof(data)).assertEqual('boolean')
         })
         done();
-        setTimeout(function(){
-            console.debug("====>time out ActsGetDisplay_test_0500====>");
-        }, time);
     })
     /*
      * @tc.number: ActsGetDisplay_test_0600
@@ -109,9 +100,6 @@ describe('ActsAnsBadgeDisplayTest', function () {
         var promise =  await notify.isBadgeDisplayed("#$#$%$%^")
         expect(promise).assertEqual(undefined)
         done();
-        setTimeout(function(){
-            console.debug("====>time out ActsGetDisplay_test_0600====>");
-        }, time);
     })
     /*
      * @tc.number: ActsGetDisplay_test_0700
@@ -124,9 +112,6 @@ describe('ActsAnsBadgeDisplayTest', function () {
             expect(typeof(data)).assertEqual('boolean')
         })
         done();
-        setTimeout(function(){
-            console.debug("====>time out ActsGetDisplay_test_0700====>");
-        }, time);
     })
     /*
      * @tc.number: ActsGetDisplay_test_0800
@@ -137,9 +122,6 @@ describe('ActsAnsBadgeDisplayTest', function () {
         var promise =  await notify.isBadgeDisplayed({})
         expect(promise).assertEqual(undefined)
         done();
-        setTimeout(function(){
-            console.debug("====>time out ActsGetDisplay_test_0800====>");
-        }, time);
     })
     /*
      * @tc.number: ActsGetDisplay_test_0900
@@ -160,9 +142,6 @@ describe('ActsAnsBadgeDisplayTest', function () {
                 done();
             })
         })
-        setTimeout(function(){
-            console.debug("====>time out ActsGetDisplay_test_0900====>");
-        }, time);
     })
     /*
      * @tc.number: ActsGetDisplay_test_1000
@@ -182,9 +161,6 @@ describe('ActsAnsBadgeDisplayTest', function () {
             expect(promise).assertEqual(true)
             done();
             })
-        setTimeout(function(){
-            console.debug("===>time out ActsGetDisplay_test_1000===>");
-        }, time);
     })
     /*
      * @tc.number: ActsSetDisplay_test_0100
@@ -198,9 +174,6 @@ describe('ActsAnsBadgeDisplayTest', function () {
             console.log("===>ActsSetDisplay_test_0100 success===>"+err)
         })
         done();
-        setTimeout(function(){
-            console.debug("====>time out ActsSetDisplay_test_0100====>");
-        }, time);
     })
     /*
      * @tc.number: ActsSetDisplay_test_0200
@@ -213,9 +186,6 @@ describe('ActsAnsBadgeDisplayTest', function () {
             },100)
         expect(promise).assertEqual(undefined)
         done();
-        setTimeout(function(){
-            console.debug("===>time out ActsSetDisplay_test_0200===>");
-        }, time);
     })
     /*
      * @tc.number: ActsSetDisplay_test_0300
@@ -227,12 +197,9 @@ describe('ActsAnsBadgeDisplayTest', function () {
             bundle:"Wrong BundleName"
         },true,(err) => {
             console.log("===>ActsSetDisplay_test_0300 success===>"+err.code)
-            expect(err.code).assertEqual(errorCode)
+            expect(err.code).assertEqual(ERR_ANS_INVALID_BUNDLE)
         })
         done();
-        setTimeout(function(){
-            console.debug("====>time out ActsSetDisplay_test_0300====>");
-        }, time);
     })
     /*
      * @tc.number: ActsSetDisplay_test_0400
@@ -240,14 +207,13 @@ describe('ActsAnsBadgeDisplayTest', function () {
      * @tc.desc: verify the function of displayBadge
      */
     it('ActsSetDisplay_test_0400', 0, async function (done) {
-        var promise =  await notify.displayBadge({
+        notify.displayBadge({
             bundle:"Wrong BundleName"
-        },true)
-        expect(promise).assertEqual(undefined)
-        done();
-        setTimeout(function(){
-            console.debug("===>time out ActsSetDisplay_test_0400===>");
-        }, time);
+        },true).then().catch((err)=>{
+            console.log("===>ActsSetDisplay_test_0400 err===>"+err.code)
+            expect(err.code).assertEqual(ERR_ANS_INVALID_BUNDLE)
+            done();
+        })
     })
     /*
      * @tc.number: ActsSetDisplay_test_0500
@@ -267,9 +233,6 @@ describe('ActsAnsBadgeDisplayTest', function () {
                 done();
             })
         })
-        setTimeout(function(){
-            console.debug("====>time out ActsGetDisplay_test_0900====>");
-        }, time);
     })
     /*
      * @tc.number: ActsSetDisplay_test_0600
@@ -288,9 +251,6 @@ describe('ActsAnsBadgeDisplayTest', function () {
             expect(promise).assertEqual(true)
             done();
         })
-        setTimeout(function(){
-            console.debug("===>time out ActsSetDisplay_test_0600===>");
-        }, time);
     })
     /*
      * @tc.number: ActsSetDisplay_test_0700
@@ -310,9 +270,6 @@ describe('ActsAnsBadgeDisplayTest', function () {
                 done();
             })
         })
-        setTimeout(function(){
-            console.debug("====>time out ActsSetDisplay_test_0700====>");
-        }, time);
     })
     /*
      * @tc.number: ActsSetDisplay_test_0800
@@ -331,9 +288,6 @@ describe('ActsAnsBadgeDisplayTest', function () {
             expect(promise).assertEqual(false)
             done();
         })
-        setTimeout(function(){
-            console.debug("===>time out ActsSetDisplay_test_0800===>");
-        }, time);
     })
     /*
      * @tc.number: ActsSetDisplay_test_0900
@@ -359,9 +313,6 @@ describe('ActsAnsBadgeDisplayTest', function () {
             expect(promise).assertEqual(true)
             done();
         })
-        setTimeout(function(){
-            console.debug("===>time out ActsSetDisplay_test_0900===>");
-        }, time);
     })
 })
 

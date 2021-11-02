@@ -20,7 +20,7 @@ group("publish_test") {
       #"badgedisplayed:badgedisplayed",
       #"enablenotification:enablenotification",
       "getactive:getactive",
-      "getwantagentinfo:getwantagentinfo",
+      "getwantagentinfo:ActsAnsGetWantAgentInfoTest",
 
       #"publishcontentype:publishcontentype",
       #"subscribe:subscribe",

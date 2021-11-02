@@ -16,6 +16,7 @@
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 var time = 1000
+var ERR_ANS_NON_SYSTEM_APP = 67108877
 describe('ActsAnsActiveTest', function () {
     console.info("===========ActsAnsActiveTest start====================>");
     function getCallback(err, data){
@@ -1060,13 +1061,11 @@ describe('ActsAnsActiveTest', function () {
         }
         await notify.publish(notificationRequestOfCurrentApp);
         console.debug("===============Ans_GetAllActive_1000 publish CurrentApp notify end==================>");
-        var promiseData = await notify.getAllActiveNotifications();
-        expect(promiseData).assertEqual(undefined);
-        console.debug("===============Ans_GetAllActive_1000 getAllActiveNotifications end==================>");
-        done();
-        setTimeout(async function(){
-            console.debug("===============Ans_GetAllActive_1000 done==================>");
-        }, time);
+        await notify.getAllActiveNotifications().then().catch((err)=>{
+            expect(err.code).assertEqual(ERR_ANS_NON_SYSTEM_APP);
+            console.debug("==Ans_GetAllActive_1000 err==>"+err.code);
+            done();
+        });
     })
 })
 
