@@ -1,12 +1,22 @@
 {
-    "description": "Configuration for audio manager Tests",
+    "description": "Configuration for audioRecorder Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "60000",
-        "package": "ohos.acts.multimedia.audio.function",
+        "test-timeout": "1000000",
+        "package": "ohos.acts.multimedia.audio.audiorecorder",
         "shell-timeout": "60000"
     },
     "kits": [
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "chmod -R 777 /data/accounts/account_0/appdata/recorder/*",
+                "setenforce 0"
+            ],
+            "teardown-command":[
+                "setenforce 1"
+            ]
+        },
         {
             "test-file-name": [
                 "AudioRecorderJsTest.hap"
