@@ -15,46 +15,74 @@
 import bundle from '@ohos.bundle'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import featureAbility from '@ohos.ability.featureability'
+import commonEvent from '@ohos.commonevent'
+var subscriberInfo_0100 = {
+    events: ['ACTS_Third1_Publish_CommonEvent'],
+};
 
 const BUNDLE_NAME = 'com.example.third1';
 const NUM_TWO = 2;
 const NUM_TEN = 10;
 const INVALID_NUM = -1;
-const TIMEOUT = 1000;
-const EVENTTIMEOUT = 2000;
+const START_ABILITY_TIMEOUT = 3000;
+const START_RECORD = 900;
 
 var START_COUNT = 1;
 var RECORD_COUNT = 0;
 describe('ActsBmsModuleUsageRecordTest', function () {
     beforeAll(async (done) => {
-        console.debug('=======before all install========');
-        await install(['/data/test/bmsThirdBundleTest1.hap'])
-        console.debug('=======start ability========')
-        sleep(TIMEOUT);
-        await featureAbility.startAbility(
-            {
-                want:
-                {
-                    deviceId: "",
-                    bundleName: "com.example.third1",
-                    abilityName: "com.example.third1.MainAbility"
-                },
-            },
-        );
-        sleep(TIMEOUT);
-        let records = await bundle.getModuleUsageRecords(1000);
-        RECORD_COUNT = records.length;
-        for (let i = 0, len = records.length; i < len; i++) {
-            if (records[i].bundleName == 'com.example.third1') {
-                START_COUNT = records[i].launchedCount;
+        var subscriber;
+        let id;
+        async function subscribeCallBack(err, data) {
+            clearTimeout(id);
+            console.debug('=====subscribeCallBack=====' + data.event);
+            let records = await bundle.getModuleUsageRecords(START_RECORD);
+            RECORD_COUNT = records.length;
+            for (let i = 0, len = records.length; i < len; i++) {
+                if (records[i].bundleName == 'com.example.third1') {
+                    START_COUNT = records[i].launchedCount;
+                }
             }
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+            console.debug('=====subscribeCallBack end=====');
+            done();
         }
-        done();
-        setTimeout(function () {
-            console.debug('=======before all install finish========');
-        }, TIMEOUT)
+        commonEvent.createSubscriber(subscriberInfo_0100).then((data) => {
+            console.debug('====>Create Subscriber====>');
+            subscriber = data;
+            commonEvent.subscribe(subscriber, subscribeCallBack);
+        })
+        function unSubscribeCallback(err, data) {
+            console.debug('====>UnSubscribe CallBack====>');
+            done();
+        }
+        function timeout() {
+            console.debug('=====timeout======');
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback)
+            done();
+        }
+        console.debug('=======start ability========')
+        let installer = await bundle.getBundleInstaller();
+        installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
+            }
+        }, async (err, data) => {
+            console.debug('========install Finish========');
+            id = setTimeout(timeout, START_ABILITY_TIMEOUT);
+            await featureAbility.startAbility(
+                {
+                    want:
+                    {
+                        bundleName: 'com.example.third1',
+                        abilityName: 'com.example.third1.MainAbility'
+                    }
+                }
+            )
+        });
     })
-
     /*
     * @tc.number: bms_getModuleUsageRecordTest_0100
     * @tc.name: getModuleUsageRecord(maxNum)
@@ -64,55 +92,29 @@ describe('ActsBmsModuleUsageRecordTest', function () {
     it('bms_getModuleUsageRecordTest_0100', 0, async function (done) {
         console.debug('=====================bms_getModuleUsageRecordTest_0100==================');
         let records = await bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TWO);
-        checkModuleUsageRecord(records, 'bms_getModuleUsageRecordTest_0100');
+        checkModuleUsageRecord(records);
         let dataMap = new Map();
         for (let i = 0, length = records.length; i < length; i++) {
             console.debug('=============bundleName is=========' + JSON.stringify(records[i].bundleName));
             dataMap.set(records[i].bundleName, records[i]);
         }
-        let data = dataMap.get(BUNDLE_NAME);
-        console.debug('=============data is=========' + JSON.stringify(data));
-        console.debug('=============bundleName is=========' + JSON.stringify(data.bundleName));
-        expect(data.bundleName).assertEqual('com.example.third1');
-        console.debug('=============appLabelId==============' + JSON.stringify(data.appLabelId));
-        expect(data.appLabelId).assertLarger(0);
-        console.debug('=============name==============' + JSON.stringify(data.name));
-        expect(data.name).assertEqual('entry');
-        console.debug('=============labelId==============' + JSON.stringify(data.labelId));
-        expect(data.labelId >= 0).assertTrue();
-        console.debug('=============descriptionId==============' + JSON.stringify(data.descriptionId));
-        expect(data.descriptionId).assertEqual(0);
-        console.debug('=============abilityName==============' + JSON.stringify(data.abilityName));
-        expect(data.abilityName).assertEqual('com.example.third1.MainAbility');
-        console.debug('=============abilityLabelId==============' + JSON.stringify(data.abilityLabelId));
-        expect(data.abilityLabelId).assertLarger(0);
-        console.debug('===========abilityDescriptionId===========' + JSON.stringify(data.abilityDescriptionId));
-        expect(data.abilityDescriptionId).assertLarger(0);
-        console.debug('=============abilityIconId==============' + JSON.stringify(data.abilityIconId));
-        expect(data.abilityIconId).assertLarger(0);
-        console.debug('=============launchedCount==============' + JSON.stringify(data.launchedCount));
-        expect(data.launchedCount).assertLarger(0);
-        console.debug('=============lastLaunchTime==============' + JSON.stringify(data.lastLaunchTime));
-        expect(data.lastLaunchTime).assertLarger(0);
-        console.debug('=============isRemoved==============' + JSON.stringify(data.isRemoved));
-        expect(data.isRemoved).assertEqual(false);
-        expect(data.installationFreeSupported).assertEqual(false);
-
-        var result = checkIsExist(records, BUNDLE_NAME);
-        expect(result).assertEqual(true);
-        if (result) {
-            let counts = new Map();
-            console.debug('======LaunchedCount======' + START_COUNT);
-            for (let i = 0, length = records.length; i < length; i++) {
-                counts.set(records[i].bundleName, records[i].launchedCount);
-                console.debug('=============launchedCount is=========' + records[i].launchedCount);
-            }
-            expect(counts.get(BUNDLE_NAME)).assertEqual(START_COUNT);
+        if (dataMap.has(BUNDLE_NAME)) {
+            let data = dataMap.get(BUNDLE_NAME);
+            expect(data.bundleName).assertEqual('com.example.third1');
+            expect(data.appLabelId >= 0).assertTrue();
+            expect(data.name).assertEqual('entry');
+            expect(data.labelId >= 0).assertTrue();
+            expect(data.descriptionId).assertEqual(0);
+            expect(data.abilityName).assertEqual('com.example.third1.MainAbility');
+            expect(data.abilityLabelId >= 0).assertTrue();
+            expect(data.abilityDescriptionId >= 0).assertTrue();
+            expect(data.abilityIconId >= 0).assertTrue();
+            expect(data.launchedCount).assertEqual(START_COUNT);
+            expect(data.lastLaunchTime).assertLarger(0);
+            expect(data.isRemoved).assertEqual(false);
+            expect(data.installationFreeSupported).assertEqual(false);
         }
         done();
-        setTimeout(function () {
-            console.debug('=====================bms_getModuleUsageRecordTest_0100==================end');
-        }, EVENTTIMEOUT)
     })
 
     /*
@@ -124,23 +126,11 @@ describe('ActsBmsModuleUsageRecordTest', function () {
         console.debug('=====================bms_getModuleUsageRecordTest_0200==================');
         bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TWO, (err, data) => {
             expect(err.code).assertEqual(0);
-            checkModuleUsageRecord(data, 'bms_getModuleUsageRecordTest_0200');
+            checkModuleUsageRecord(data);
             var result = checkIsExist(data, BUNDLE_NAME);
             expect(result).assertEqual(true);
-            if (result) {
-                let counts = new Map();
-                console.debug('======LaunchedCount======' + START_COUNT);
-                for (let i = 0, length = data.length; i < length; i++) {
-                    counts.set(data[i].bundleName, data[i].launchedCount);
-                    console.debug('=============launchedCount is=========' + data[i].launchedCount);
-                }
-                expect(counts.get(BUNDLE_NAME)).assertEqual(START_COUNT);
-            }
             done();
         });
-        setTimeout(function () {
-            console.debug('=====================bms_getModuleUsageRecordTest_0200==================end');
-        }, TIMEOUT)
     })
 
     /*
@@ -152,7 +142,7 @@ describe('ActsBmsModuleUsageRecordTest', function () {
         console.debug('=====================bms_getModuleUsageRecordTest_0300==================');
         bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TWO, (err, data) => {
             expect(err.code).assertEqual(0);
-            checkModuleUsageRecord(data, 'bms_getModuleUsageRecordTest_0300');
+            checkModuleUsageRecord(data);
             var result = checkIsExist(data, BUNDLE_NAME);
             expect(result).assertEqual(true);
             if (result) {
@@ -166,9 +156,6 @@ describe('ActsBmsModuleUsageRecordTest', function () {
             }
             done();
         });
-        setTimeout(function () {
-            console.debug('=====================bms_getModuleUsageRecordTest_0300==================end');
-        }, TIMEOUT)
     })
 
     /*
@@ -179,7 +166,7 @@ describe('ActsBmsModuleUsageRecordTest', function () {
     it('bms_getModuleUsageRecordTest_0400', 0, async function (done) {
         console.debug('=====================bms_getModuleUsageRecordTest_0400==================');
         var records = await bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TWO);
-        checkModuleUsageRecord(records, 'bms_getModuleUsageRecordTest_0400');
+        checkModuleUsageRecord(records);
         var result = checkIsExist(records, BUNDLE_NAME);
         expect(result).assertEqual(true);
         if (result) {
@@ -193,9 +180,6 @@ describe('ActsBmsModuleUsageRecordTest', function () {
             expect(counts.get(BUNDLE_NAME)).assertEqual(START_COUNT);
         }
         done();
-        setTimeout(function () {
-            console.debug('=====================bms_getModuleUsageRecordTest_0400==================end');
-        }, TIMEOUT)
     })
 
     /*
@@ -206,18 +190,38 @@ describe('ActsBmsModuleUsageRecordTest', function () {
     */
     it('bms_getModuleUsageRecordTest_0500', 0, async function (done) {
         console.debug('=====================bms_getModuleUsageRecordTest_0500==================');
-        await uninstall(BUNDLE_NAME);
-        sleep(TIMEOUT);
-        console.debug('===================uninstall third1====================');
-        var records = await bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TWO)
-        checkModuleUsageRecord(records, 'bms_getModuleUsageRecordTest_0500');
-        var result = checkIsExist(records, BUNDLE_NAME);
-        expect(result).assertEqual(false);
-        await install(['/data/test/bmsThirdBundleTest1.hap']);
-        done();
-        setTimeout(function () {
-            console.debug('=====================bms_getModuleUsageRecordTest_0500==================end');
-        }, TIMEOUT)
+        var installer = await bundle.getBundleInstaller();
+        installer.uninstall(BUNDLE_NAME, {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
+            }
+        }, onReceiveinstallEvent);
+
+        async function onReceiveinstallEvent(err, data) {
+            console.debug('========uninstall Finish========');
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual('SUCCESS');
+            console.debug('========data.statusMessage========' + data.statusMessage);
+            var records = await bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TWO)
+            checkModuleUsageRecord(records);
+            var result = checkIsExist(records, BUNDLE_NAME);
+            expect(result).assertEqual(false);
+            installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
+                param: {
+                    userId: 0,
+                    installFlag: 1,
+                    isKeepData: false
+                }
+            }, (err, data) => {
+                console.debug('========install Finish========');
+                expect(err.code).assertEqual(0);
+                expect(data.statusMessage).assertEqual('SUCCESS');
+                done();
+            });
+        }
     })
 
     /*
@@ -228,19 +232,30 @@ describe('ActsBmsModuleUsageRecordTest', function () {
     */
     it('bms_getModuleUsageRecordTest_0600', 0, async function (done) {
         console.debug('=====================bms_getModuleUsageRecordTest_0600==================');
-        await uninstall(BUNDLE_NAME);
-        sleep(TIMEOUT);
-        await bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TWO, async (err, data) => {
-            expect(err.code).assertEqual(0);
-            checkModuleUsageRecord(data, 'bms_getModuleUsageRecordTest_0600');
-            var result = checkIsExist(data, BUNDLE_NAME);
-            expect(result).assertEqual(false);
-            await install(['/data/test/bmsThirdBundleTest1.hap']);
-            done();
+        var installer = await bundle.getBundleInstaller();
+        installer.uninstall(BUNDLE_NAME, {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
+            }
+        }, (err, data) => {
+            bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TWO, async (funcErr, moduleUsageRecord) => {
+                expect(funcErr.code).assertEqual(0);
+                var result = checkIsExist(moduleUsageRecord, BUNDLE_NAME);
+                expect(result).assertEqual(false);
+                installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
+                    param: {
+                        userId: 0,
+                        installFlag: 1,
+                        isKeepData: false
+                    }
+                }, (err, data) => {
+                    done();
+                });
+
+            });
         });
-        setTimeout(function () {
-            console.debug('=====================bms_getModuleUsageRecordTest_0600==================end');
-        }, TIMEOUT)
     })
 
     /*
@@ -252,13 +267,10 @@ describe('ActsBmsModuleUsageRecordTest', function () {
         console.debug('=====================bms_getModuleUsageRecordTest_0700==================');
         await bundle.getModuleUsageRecords(INVALID_NUM, (err, data) => {
             console.debug('============err.code==========' + err.code);
-            expect(err.code).assertEqual(0);
+            expect(err.code).assertEqual(-1);
             expect(data.length).assertEqual(0);
             done();
         });
-        setTimeout(function () {
-            console.debug('=====================bms_getModuleUsageRecordTest_0700==================end');
-        }, TIMEOUT)
     })
 
     /*
@@ -271,9 +283,6 @@ describe('ActsBmsModuleUsageRecordTest', function () {
         var data = await bundle.getModuleUsageRecords(INVALID_NUM);
         expect(data.length).assertEqual(0);
         done();
-        setTimeout(function () {
-            console.debug('=====================bms_getModuleUsageRecordTest_0800==================end');
-        }, TIMEOUT)
     })
 
     /*
@@ -285,13 +294,10 @@ describe('ActsBmsModuleUsageRecordTest', function () {
         console.debug('=====================bms_getModuleUsageRecordTest_0900==================');
         await bundle.getModuleUsageRecords(0, (err, data) => {
             console.debug('============err.code==========' + err.code);
-            expect(err.code).assertEqual(0);
+            expect(err.code).assertEqual(-1);
             expect(data.length).assertEqual(0);
             done();
         });
-        setTimeout(function () {
-            console.debug('=====================bms_getModuleUsageRecordTest_0900==================end');
-        }, TIMEOUT)
     })
 
     /*
@@ -304,9 +310,6 @@ describe('ActsBmsModuleUsageRecordTest', function () {
         var data = await bundle.getModuleUsageRecords(0);
         expect(data.length).assertEqual(0);
         done();
-        setTimeout(function () {
-            console.debug('=====================bms_getModuleUsageRecordTest_1000==================end');
-        }, TIMEOUT)
     })
 
     /*
@@ -317,29 +320,27 @@ describe('ActsBmsModuleUsageRecordTest', function () {
     */
     it('bms_getModuleUsageRecordTest_1100', 0, async function (done) {
         console.debug('=====================bms_getModuleUsageRecordTest_1100==================');
-        await uninstall(BUNDLE_NAME);
-        sleep(TIMEOUT);
-        var bundlePath = ['/data/test/bmsThirdBundleTest1.hap']
-        await install(bundlePath);
-        sleep(TIMEOUT);
-        console.debug('===================install third1====================');
-        var records = await bundle.getModuleUsageRecords(NUM_TEN)
-        checkModuleUsageRecord(records, 'bms_getModuleUsageRecordTest_1100');
-        var result = checkIsExist(records, BUNDLE_NAME);
-        expect(result).assertEqual(true);
-        if (result) {
-            let counts = new Map();
-            console.debug('======LaunchedCount======' + START_COUNT);
-            for (let i = 0, length = records.length; i < length; i++) {
-                counts.set(records[i].bundleName, records[i].launchedCount);
-                console.debug('=============launchedCount is=========' + records[i].launchedCount);
+        var installer = await bundle.getBundleInstaller();
+        installer.uninstall(BUNDLE_NAME, {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
             }
-            expect(counts.get(BUNDLE_NAME)).assertEqual(START_COUNT);
-        }
-        done();
-        setTimeout(function () {
-            console.debug('=====================bms_getModuleUsageRecordTest_1100==================end');
-        }, TIMEOUT)
+        }, (err, data) => {
+            var bundlePath = ['/data/test/bmsThirdBundleTest1.hap'];
+            installer.install(bundlePath, {
+                param: {
+                    userId: 0,
+                    installFlag: 1,
+                    isKeepData: false
+                }
+            }, async (err, data) => {
+                var records = await bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TEN)
+                expect(checkLaunchCount(records, BUNDLE_NAME, START_COUNT)).assertEqual(true);
+                done();
+            });
+        });
     })
 
     /*
@@ -350,30 +351,29 @@ describe('ActsBmsModuleUsageRecordTest', function () {
     */
     it('bms_getModuleUsageRecordTest_1200', 0, async function (done) {
         console.debug('=====================bms_getModuleUsageRecordTest_1200==================');
-        await uninstall(BUNDLE_NAME);
-        sleep(TIMEOUT);
-        var bundlePath = ['/data/test/bmsThirdBundleTest1.hap']
-        await install(bundlePath);
-        sleep(TIMEOUT);
-        await bundle.getModuleUsageRecords(NUM_TEN, (err, data) => {
-            expect(err.code).assertEqual(0);
-            checkModuleUsageRecord(data, 'bms_getModuleUsageRecordTest_1200');
-            var result = checkIsExist(data, BUNDLE_NAME);
-            expect(result).assertEqual(true);
-            if (result) {
-                let counts = new Map();
-                console.debug('======LaunchedCount======' + START_COUNT);
-                for (let i = 0, length = data.length; i < length; i++) {
-                    counts.set(data[i].bundleName, data[i].launchedCount);
-                    console.debug('=============launchedCount is=========' + data[i].launchedCount);
-                }
-                expect(counts.get(BUNDLE_NAME)).assertEqual(START_COUNT);
+        var installer = await bundle.getBundleInstaller();
+        installer.uninstall(BUNDLE_NAME, {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
             }
-            done();
-        })
-        setTimeout(function () {
-            console.debug('=====================bms_getModuleUsageRecordTest_1200==================end');
-        }, TIMEOUT)
+        }, (err, data) => {
+            var bundlePath = ['/data/test/bmsThirdBundleTest1.hap']
+            installer.install(bundlePath, {
+                param: {
+                    userId: 0,
+                    installFlag: 1,
+                    isKeepData: false
+                }
+            }, async (err, data) => {
+                bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TEN, (err, records) => {
+                    expect(err.code).assertEqual(0);
+                    expect(checkLaunchCount(records, BUNDLE_NAME, START_COUNT)).assertEqual(true);
+                    done();
+                })
+            });
+        });
     })
     /*
     * @tc.number: bms_getModuleUsageRecordTest_1300
@@ -383,42 +383,60 @@ describe('ActsBmsModuleUsageRecordTest', function () {
     */
     it('bms_getModuleUsageRecordTest_1300', 0, async function (done) {
         console.debug('=====================bms_getModuleUsageRecordTest_1300==================');
-        await uninstall(BUNDLE_NAME);
-        sleep(TIMEOUT);
-        var bundlePath = ['/data/test/bmsThirdBundleTest1.hap']
-        await install(bundlePath);
-        sleep(TIMEOUT);
-        console.debug('=======start ability========')
-        await featureAbility.startAbility(
-            {
-                want:
-                {
-                    bundleName: 'com.example.third1',
-                    abilityName: 'com.example.third1.MainAbility'
-                }
-            }
-        )
-        sleep(TIMEOUT);
-        START_COUNT += 1;
-        await bundle.getModuleUsageRecords(NUM_TEN, (err, data) => {
-            expect(err.code).assertEqual(0);
-            checkModuleUsageRecord(data, 'bms_getModuleUsageRecordTest_1300');
-            var result = checkIsExist(data, BUNDLE_NAME);
-            expect(result).assertEqual(true);
-            if (result) {
-                let counts = new Map();
-                console.debug('======LaunchedCount======' + START_COUNT);
-                for (let i = 0, length = data.length; i < length; i++) {
-                    counts.set(data[i].bundleName, data[i].launchedCount);
-                    console.debug('=============launchedCount is=========' + data[i].launchedCount);
-                }
-                expect(counts.get(BUNDLE_NAME)).assertEqual(START_COUNT);
-            }
-            done();
+        var subscriber;
+        let id;
+        async function subscribeCallBack(err, data) {
+            clearTimeout(id);
+            START_COUNT += 1;
+            expect(data.event).assertEqual('ACTS_Third1_Publish_CommonEvent');
+            await bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TEN, (err, records) => {
+                expect(err.code).assertEqual(0);
+                var result = checkLaunchCount(records, BUNDLE_NAME, START_COUNT);
+                expect(result).assertEqual(true);
+                commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+                done();
+            })
+        }
+        commonEvent.createSubscriber(subscriberInfo_0100).then((data) => {
+            console.debug('====>Create Subscriber====>');
+            subscriber = data;
+            commonEvent.subscribe(subscriber, subscribeCallBack);
         })
-        setTimeout(function () {
-            console.debug('=====================bms_getModuleUsageRecordTest_1300==================end');
-        }, TIMEOUT)
+        function unSubscribeCallback(err, data) {
+            done();
+        }
+        function timeout() {
+            console.debug('=====timeout======');
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback)
+            done();
+        }
+        let installer = await bundle.getBundleInstaller();
+        installer.uninstall(BUNDLE_NAME, {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
+            }
+        }, (err, data) => {
+            installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
+                param: {
+                    userId: 0,
+                    installFlag: 1,
+                    isKeepData: false
+                }
+            }, async (err, data) => {
+                id = setTimeout(timeout, START_ABILITY_TIMEOUT);
+                await featureAbility.startAbility(
+                    {
+                        want:
+                        {
+                            bundleName: 'com.example.third1',
+                            abilityName: 'com.example.third1.MainAbility'
+                        }
+                    }
+                )
+            });
+        });
     })
     /*
     * @tc.number: bms_getModuleUsageRecordTest_1400
@@ -428,52 +446,129 @@ describe('ActsBmsModuleUsageRecordTest', function () {
     */
     it('bms_getModuleUsageRecordTest_1400', 0, async function (done) {
         console.debug('=====================bms_getModuleUsageRecordTest_1400==================');
-        await uninstall(BUNDLE_NAME);
-        sleep(TIMEOUT);
-        var bundlePath = ['/data/test/bmsThirdBundleTest1.hap']
-        await install(bundlePath);
-        sleep(TIMEOUT);
-        console.debug('=======start ability========')
-        await featureAbility.startAbility(
-            {
-                want:
-                {
-                    bundleName: 'com.example.third1',
-                    abilityName: 'com.example.third1.MainAbility'
-                }
-            }
-        )
-        sleep(TIMEOUT);
-        START_COUNT += 1;
-        console.debug('=======start ability result========' + result);
-        var records = await bundle.getModuleUsageRecords(NUM_TEN)
-        checkModuleUsageRecord(records, 'bms_getModuleUsageRecordTest_1400');
-        var result = checkIsExist(records, BUNDLE_NAME);
-        expect(result).assertEqual(true);
-        if (result) {
-            let counts = new Map();
-            console.debug('======LaunchedCount======' + START_COUNT);
-            for (let i = 0, length = records.length; i < length; i++) {
-                counts.set(records[i].bundleName, records[i].launchedCount);
-                console.debug('=============launchedCount is=========' + records[i].launchedCount);
-            }
-            expect(counts.get(BUNDLE_NAME)).assertEqual(START_COUNT);
+        var subscriber;
+        let id;
+        async function subscribeCallBack(err, data) {
+            clearTimeout(id);
+            START_COUNT += 1;
+            expect(data.event).assertEqual('ACTS_Third1_Publish_CommonEvent');
+            var records = await bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TEN)
+            expect(checkLaunchCount(records, BUNDLE_NAME, START_COUNT)).assertEqual(true);
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+            done();
         }
-        done();
-        setTimeout(function () {
-            console.debug('=====================bms_getModuleUsageRecordTest_1400==================end');
-        }, TIMEOUT)
+        commonEvent.createSubscriber(subscriberInfo_0100).then((data) => {
+            console.debug('====>Create Subscriber====>');
+            subscriber = data;
+            commonEvent.subscribe(subscriber, subscribeCallBack);
+        })
+        function unSubscribeCallback(err, data) {
+            done();
+        }
+        function timeout() {
+            console.debug('=====timeout======');
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback)
+            done();
+        }
+        let installer = await bundle.getBundleInstaller();
+        installer.uninstall(BUNDLE_NAME, {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
+            }
+        }, (err, data) => {
+            installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
+                param: {
+                    userId: 0,
+                    installFlag: 1,
+                    isKeepData: false
+                }
+            }, async (err, data) => {
+                console.debug('========install Finish========');
+                id = setTimeout(timeout, START_ABILITY_TIMEOUT);
+                await featureAbility.startAbility(
+                    {
+                        want:
+                        {
+                            bundleName: 'com.example.third1',
+                            abilityName: 'com.example.third1.MainAbility'
+                        }
+                    }
+                )
+            });
+        });
     })
-    function checkModuleUsageRecord(data, caseName) {
+
+    /*
+   * @tc.number: bms_getModuleUsageRecordTest_1500
+   * @tc.name: getModuleUsageRecord(maxNum, callback: AsyncCallback<Array<ModuleUsageRecord>>)
+   * @tc.desc: test getModuleUsageRecord with the critical value
+   */
+    it('bms_getModuleUsageRecordTest_1500', 0, async function (done) {
+        console.debug('=====================bms_getModuleUsageRecordTest_1500==================');
+        await bundle.getModuleUsageRecords(1000, (err, records) => {
+            expect(err.code).assertEqual(0);
+            console.info('============data length_1500===========' + records.length);
+            checkModuleUsageRecord(records);
+            expect(checkIsExist(records, BUNDLE_NAME)).assertTrue();
+            done();
+        });
+    })
+
+    /*
+    * @tc.number: bms_getModuleUsageRecordTest_1600
+    * @tc.name: getModuleUsageRecord(maxNum, callback: AsyncCallback<Array<ModuleUsageRecord>>)
+    * @tc.desc: test getModuleUsageRecord with the critical value
+    */
+    it('bms_getModuleUsageRecordTest_1600', 0, async function (done) {
+        console.debug('=====================bms_getModuleUsageRecordTest_1600==================');
+        var records = await bundle.getModuleUsageRecords(1000);
+        console.info('============data length_1600===========' + records.length);
+        checkModuleUsageRecord(records);
+        expect(checkIsExist(records, BUNDLE_NAME)).assertTrue();
+        done();
+    })
+
+    /*
+    * @tc.number: bms_getModuleUsageRecordTest_1700
+    * @tc.name: getModuleUsageRecord(maxNum, callback: AsyncCallback<Array<ModuleUsageRecord>>)
+    * @tc.desc: test getModuleUsageRecord with the invalid parameter
+    */
+    it('bms_getModuleUsageRecordTest_1700', 0, async function (done) {
+        console.debug('=====================bms_getModuleUsageRecordTest_1700==================');
+        await bundle.getModuleUsageRecords(1001, (err, data) => {
+            console.debug('============err.code==========' + err.code);
+            expect(err.code).assertEqual(-1);
+            console.info('============data length_1700===========' + data.length);
+            expect(data.length).assertEqual(0);
+            done();
+        });
+    })
+
+    /*
+    * @tc.number: bms_getModuleUsageRecordTest_1800
+    * @tc.name: getModuleUsageRecord(maxNum, callback: AsyncCallback<Array<ModuleUsageRecord>>)
+    * @tc.desc: test getModuleUsageRecord with the invalid parameter
+    */
+    it('bms_getModuleUsageRecordTest_1800', 0, async function (done) {
+        console.debug('=====================bms_getModuleUsageRecordTest_1800==================');
+        var data = await bundle.getModuleUsageRecords(1001);
+        console.info('============data length_1800===========' + data.length);
+        expect(data.length).assertEqual(0);
+        done();
+    })
+
+
+    function checkModuleUsageRecord(data) {
         console.debug('======================check ModuleUsageRecord begin==========================');
-        console.debug(caseName + ' ==========record length is ========== ' + data.length);
         expect(data.length).assertLarger(0);
         for (let i = 0, length = data.length; i < length; i++) {
             console.debug('=======All Info========' + JSON.stringify(data[i]));
             console.debug('=============bundleName is=========' + JSON.stringify(data[i].bundleName));
             expect(data[i].bundleName.length).assertLarger(0);
             console.debug('=============appLabelId==============' + JSON.stringify(data[i].appLabelId));
-            expect(data[i].appLabelId).assertLarger(0);
+            expect(data[i].appLabelId >= 0).assertTrue();
             console.debug('=============name==============' + JSON.stringify(data[i].name));
             expect(data[i].name.length).assertLarger(0);
             console.debug('=============labelId==============' + JSON.stringify(data[i].labelId));
@@ -483,11 +578,11 @@ describe('ActsBmsModuleUsageRecordTest', function () {
             console.debug('=============abilityName==============' + JSON.stringify(data[i].abilityName));
             expect(data[i].abilityName.length).assertLarger(0);
             console.debug('=============abilityLabelId==============' + JSON.stringify(data[i].abilityLabelId));
-            expect(data[i].abilityLabelId).assertLarger(0);
+            expect(data[i].abilityLabelId >= 0).assertTrue();
             console.debug('===========abilityDescriptionId===========' + JSON.stringify(data[i].abilityDescriptionId));
-            expect(data[i].abilityDescriptionId).assertLarger(0);
+            expect(data[i].abilityDescriptionId >= 0).assertTrue();
             console.debug('=============abilityIconId==============' + JSON.stringify(data[i].abilityIconId));
-            expect(data[i].abilityIconId).assertLarger(0);
+            expect(data[i].abilityIconId >= 0).assertTrue();
             console.debug('=============launchedCount==============' + JSON.stringify(data[i].launchedCount));
             expect(data[i].launchedCount).assertLarger(0);
             console.debug('=============lastLaunchTime==============' + JSON.stringify(data[i].lastLaunchTime));
@@ -500,66 +595,43 @@ describe('ActsBmsModuleUsageRecordTest', function () {
     function checkIsExist(data, bundleName) {
         let bundles = new Map();
         for (let i = 0, length = data.length; i < length; i++) {
-            console.debug('=============bundleName is=========' + JSON.stringify(data[i].bundleName));
             bundles.set(data[i].bundleName, data[i]);
         }
         if (bundles.has(bundleName)) {
-            console.debug(bundleName + ' is exist');
             return true;
         }
         else {
-            console.debug(bundleName + ' is not exist');
             return false;
         }
     }
-    async function install(bundlePath) {
-        var installer = await bundle.getBundleInstaller();
-        installer.install(bundlePath, {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
-        }, onReceiveinstallEvent);
 
-        function onReceiveinstallEvent(err, data) {
-            console.debug('========install Finish========');
-            expect(typeof err).assertEqual('object');
-            expect(err.code).assertEqual(0);
-            expect(typeof data).assertEqual('object');
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
+    function checkLaunchCount(data, bundleName, count) {
+        let i = 0;
+        for (let length = data.length; i < length; i++) {
+            if (data[i].bundleName == bundleName) {
+                expect(data[i].launchedCount).assertEqual(count);
+                return true;
+            }
+        }
+        if (i == data.length) {
+            return false;
         }
     }
-    async function uninstall(bundleName) {
-        var installer = await bundle.getBundleInstaller();
-        installer.uninstall(bundleName, {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
-        }, onReceiveinstallEvent);
 
-        function onReceiveinstallEvent(err, data) {
-            console.debug('========uninstall Finish========');
-            expect(err.code).assertEqual(0);
-            expect(typeof data).assertEqual('object');
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-            console.debug('========data.statusMessage========' + data.statusMessage);
-        }
-    }
     afterAll(async (done) => {
         console.debug('=======after all install========');
-        let bundleName = 'com.example.third1'
-        uninstall(bundleName);
+        let installer = await bundle.getBundleInstaller();
+        installer.uninstall(BUNDLE_NAME, {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
+            }
+        }, (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual('SUCCESS');
+        });
         done();
     })
-    function sleep(delay) {
-        var start = (new Date()).getTime();
-        while ((new Date()).getTime() - start < delay) {
-            continue;
-        }
-    }
 })

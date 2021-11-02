@@ -26,7 +26,8 @@ group("bundlemanager") {
       "actsbmsmoduleusagerecordtest:ActsBmsModuleUsageRecordTest",
       "actsbundlemanagertest:ActsBundleManagerTest",
       "actsbundlemanageruninstall:ActsBundleManagerUninstall",
-      "bmscheckpermissiontest:BmsCheckPermissionTest",
+
+      # "bmscheckpermissiontest:BmsCheckPermissionTest",
       "sceneProject/bmsgetinfosfifthscene:bmsThirdBundleTest5",
       "sceneProject/bmsgetinfosfirstscene:bmsThirdBundleTest1",
       "sceneProject/bmsgetinfosfirstsceneupdate:bmsThirdBundleTestA1",

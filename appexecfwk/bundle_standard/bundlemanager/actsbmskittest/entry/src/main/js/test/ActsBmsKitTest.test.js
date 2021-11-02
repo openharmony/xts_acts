@@ -18,7 +18,6 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import featureAbility from '@ohos.ability.featureability'
 import commonEvent from '@ohos.commonevent'
 
-const TIMEOUT = 2000;
 const STRESSLEVEL = 20;
 const BUNDLE_NAME = 'com.example.actsbmskittest';
 const PERMISSION_NAME = 'com.permission.PERMISSION_A';
@@ -64,9 +63,6 @@ describe('ActsBmsKitTest', function () {
                 }
             }
         )
-        setTimeout(function () {
-            console.info('==================beforeAll==================end');
-        }, TIMEOUT)
     })
     /*
     * @tc.number: ActsBmsKit_getAllShortcutInfo_0100
@@ -85,9 +81,6 @@ describe('ActsBmsKitTest', function () {
                 break;
         }
         done();
-        setTimeout(function () {
-            console.info('==================ActsBmsKit_getAllShortcutInfo_0100==================end');
-        }, TIMEOUT)
     });
 
     /*
@@ -112,9 +105,6 @@ describe('ActsBmsKitTest', function () {
                 }
             })
         }
-        setTimeout(function () {
-            console.info('=====================ActsBmsKit_getAllShortcutInfo_0200==================end');
-        }, TIMEOUT)
     })
 
     /*
@@ -133,9 +123,6 @@ describe('ActsBmsKitTest', function () {
             }
         }
         done();
-        setTimeout(function () {
-            console.info('=====================ActsBmsKit_checkPermission_0100==================end');
-        }, TIMEOUT)
     })
 
     /*
@@ -159,9 +146,6 @@ describe('ActsBmsKitTest', function () {
                 }
             })
         }
-        setTimeout(function () {
-            console.info('=====================ActsBmsKit_checkPermission_0200==================end');
-        }, TIMEOUT)
     })
 
     /*
@@ -213,9 +197,6 @@ describe('ActsBmsKitTest', function () {
                 count++;
             });
         }
-        setTimeout(function () {
-            console.debug('==========ActsBmsKit_getModuleUsageRecordTest_0200==================end');
-        }, TIMEOUT)
     })
     function checkModuleUsageRecord(data, caseName) {
         console.debug('======================check ModuleUsageRecord begin==========================');
@@ -226,21 +207,21 @@ describe('ActsBmsKitTest', function () {
             console.debug('=============bundleName is=========' + JSON.stringify(data[i].bundleName));
             expect(data[i].bundleName.length).assertLarger(0);
             console.debug('=============appLabelId==============' + JSON.stringify(data[i].appLabelId));
-            expect(data[i].appLabelId).assertLarger(0);
+            expect(data[i].appLabelId >= 0).assertTrue();
             console.debug('=============name==============' + JSON.stringify(data[i].name));
             expect(data[i].name.length).assertLarger(0);
             console.debug('=============labelId==============' + JSON.stringify(data[i].labelId));
-            expect(data[i].labelId >=0 ).assertTrue();
+            expect(data[i].labelId >= 0).assertTrue();
             console.debug('=============descriptionId==============' + JSON.stringify(data[i].descriptionId));
             expect(data[i].descriptionId).assertEqual(0);
             console.debug('=============abilityName==============' + JSON.stringify(data[i].abilityName));
             expect(data[i].abilityName.length).assertLarger(0);
             console.debug('=============abilityLabelId==============' + JSON.stringify(data[i].abilityLabelId));
-            expect(data[i].abilityLabelId).assertLarger(0);
+            expect(data[i].abilityLabelId >= 0).assertTrue();
             console.debug('===========abilityDescriptionId===========' + JSON.stringify(data[i].abilityDescriptionId));
-            expect(data[i].abilityDescriptionId).assertLarger(0);
+            expect(data[i].abilityDescriptionId >= 0).assertTrue();
             console.debug('=============abilityIconId==============' + JSON.stringify(data[i].abilityIconId));
-            expect(data[i].abilityIconId).assertLarger(0);
+            expect(data[i].abilityIconId >= 0).assertTrue();
             console.debug('=============launchedCount==============' + JSON.stringify(data[i].launchedCount));
             expect(data[i].launchedCount).assertLarger(0);
             console.debug('=============lastLaunchTime==============' + JSON.stringify(data[i].lastLaunchTime));
