@@ -654,9 +654,6 @@ describe('SystemParameterTest', function () {
      * @tc.number    SUB_STARTUP_JS_SYSTEM_PARAMETER_0640
      * @tc.name      testGet0640
      * @tc.desc      Set the property value to an extra long string
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
      */
     it('system_parameter_test_0640', 0, async function (done) {
         console.info('system_parameter_test_0640 start');
