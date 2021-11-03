@@ -146,7 +146,7 @@ protected:
         bool uninstallResult = false;
         sem_init(&g_sem, 0, 0);
         InstallParam installParam = { .installLocation = 1, .keepData = false };
-        uninstallResult = Uninstall("com.openharmony.testnative", &installParam, TestBundleStateCallback);
+        uninstallResult = Uninstall("com.huawei.testnative", &installParam, TestBundleStateCallback);
         sem_wait(&g_sem);
         if (uninstallResult) {
             printf("sem exit \n");
@@ -207,14 +207,14 @@ HWTEST_F(AbilityMgrTest2, testSetWantElement, Function | MediumTest | Level0)
     Want want = { nullptr };
     ElementName element = { nullptr };
     SetElementDeviceID(&element, "0001000");
-    SetElementBundleName(&element, "com.openharmony.testnative");
+    SetElementBundleName(&element, "com.huawei.testnative");
     SetElementAbilityName(&element, "ServiceAbility");
     if (element.abilityName != nullptr) {
         bool setResult = SetWantElement(&want, element);
         if (setResult) {
             EXPECT_STREQ(want.element->deviceId, "0001000");
             EXPECT_STREQ(want.element->abilityName, "ServiceAbility");
-            EXPECT_STREQ(want.element->bundleName, "com.openharmony.testnative");
+            EXPECT_STREQ(want.element->bundleName, "com.huawei.testnative");
         }
     }
     ClearElement(&element);
@@ -280,14 +280,14 @@ HWTEST_F(AbilityMgrTest2, testWantToUri, Function | MediumTest | Level0)
     Want want = { nullptr };
     ElementName element = { nullptr };
     SetElementDeviceID(&element, "0001000");
-    SetElementBundleName(&element, "com.openharmony.testnative");
+    SetElementBundleName(&element, "com.huawei.testnative");
     SetElementAbilityName(&element, "SecondAbility");
     if (element.abilityName !=nullptr) {
         bool setResult = SetWantElement(&want, element);
         if (setResult) {
             const char *uri = WantToUri(want);
             printf("uri is %s \n", uri);
-            const char *expectResult = "#Want;device=0001000;bundle=com.openharmony.testnative;ability=SecondAbility;end";
+            const char *expectResult = "#Want;device=0001000;bundle=com.huawei.testnative;ability=SecondAbility;end";
             EXPECT_STREQ(uri, expectResult);
             free((void*)uri);
         }
@@ -367,7 +367,7 @@ HWTEST_F(AbilityMgrTest2, testWantParseUri, Function | MediumTest | Level0)
     Want want = { nullptr };
     ElementName element = { nullptr };
     SetElementDeviceID(&element, "0001000");
-    SetElementBundleName(&element, "com.openharmony.testnative");
+    SetElementBundleName(&element, "com.huawei.testnative");
     SetElementAbilityName(&element, "ServiceAbility");
     if (element.abilityName != nullptr) {
         bool setResult = SetWantElement(&want, element);
@@ -446,7 +446,7 @@ HWTEST_F(AbilityMgrTest2, testGetBundleNameIllegal, Function | MediumTest | Leve
     memset_s(&want, sizeof(Want), 0, sizeof(Want));
     ElementName element;
     memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
-    SetElementBundleName(&element, "com.openharmony.testnative");
+    SetElementBundleName(&element, "com.huawei.testnative");
     SetElementAbilityName(&element, "ServiceAbility");
     SetWantElement(&want, element);
     int result = StartAbility(&want);
@@ -470,7 +470,7 @@ HWTEST_F(AbilityMgrTest2, testGetSrcPathIllegal, Function | MediumTest | Level1)
     printf("------start testGetSrcPathIllegal------\n");
     Want want = { nullptr };
     ElementName element = { nullptr };
-    SetElementBundleName(&element, "com.openharmony.testnative");
+    SetElementBundleName(&element, "com.huawei.testnative");
     SetElementAbilityName(&element, "ServiceAbility");
     SetWantElement(&want, element);
     int result = StartAbility(&want);
@@ -494,7 +494,7 @@ HWTEST_F(AbilityMgrTest2, testGetDataPathIllegal, Function | MediumTest | Level1
     printf("------start testGetDataPathIllegal------\n");
     Want want = { nullptr };
     ElementName element = { nullptr };
-    SetElementBundleName(&element, "com.openharmony.testnative");
+    SetElementBundleName(&element, "com.huawei.testnative");
     SetElementAbilityName(&element, "ServiceAbility");
     SetWantElement(&want, element);
     int result = StartAbility(&want);
@@ -520,7 +520,7 @@ HWTEST_F(AbilityMgrTest2, testDumpIllegal, Function | MediumTest | Level1)
     memset_s(&want, sizeof(Want), 0, sizeof(Want));
     ElementName element;
     memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
-    SetElementBundleName(&element, "com.openharmony.testnative");
+    SetElementBundleName(&element, "com.huawei.testnative");
     SetElementAbilityName(&element, "ServiceAbility");
     SetWantElement(&want, element);
     Ability *ability = new Ability();
@@ -545,7 +545,7 @@ HWTEST_F(AbilityMgrTest2, testStartAbility, Function | MediumTest | Level1)
     printf("------start testStartAbility------\n");
     Want want = { nullptr };
     ElementName element = { nullptr };
-    SetElementBundleName(&element, "com.openharmony.testnative");
+    SetElementBundleName(&element, "com.huawei.testnative");
     SetElementAbilityName(&element, "ServiceAbility");
     SetWantElement(&want, element);
     int result = StartAbility(&want);
@@ -584,7 +584,7 @@ HWTEST_F(AbilityMgrTest2, testStopAbility, Function | MediumTest | Level0)
     printf("------start testStopAbility------\n");
     Want want = { nullptr };
     ElementName element = { nullptr };
-    SetElementBundleName(&element, "com.openharmony.testnative");
+    SetElementBundleName(&element, "com.huawei.testnative");
     SetElementAbilityName(&element, "ServiceAbility");
     SetWantElement(&want, element);
     g_errorCode = StartAbility(&want);
@@ -624,7 +624,7 @@ HWTEST_F(AbilityMgrTest2, testConnectAbility, Function | MediumTest | Level1)
     printf("------start testConnectAbility------\n");
     Want want = { nullptr };
     ElementName element = { nullptr };
-    SetElementBundleName(&element, "com.openharmony.testnative");
+    SetElementBundleName(&element, "com.huawei.testnative");
     SetElementAbilityName(&element, "ServiceAbility");
     SetWantElement(&want, element);
     sem_init(&g_sem, 0, 0);
@@ -655,7 +655,7 @@ HWTEST_F(AbilityMgrTest2, testDisConnectAbility, Function | MediumTest | Level1)
     printf("------start testDisConnectAbility------\n");
     Want want = { nullptr };
     ElementName element = { nullptr };
-    SetElementBundleName(&element, "com.openharmony.testnative");
+    SetElementBundleName(&element, "com.huawei.testnative");
     SetElementAbilityName(&element, "ServiceAbility");
     SetWantElement(&want, element);
     sem_init(&g_sem, 0, 0);
@@ -688,7 +688,7 @@ HWTEST_F(AbilityMgrTest2, testConnectAbilityIllegal, Function | MediumTest | Lev
     printf("------start testConnectAbilityIllegal------\n");
     Want want = { nullptr };
     ElementName element = { nullptr };
-    SetElementBundleName(&element, "com.openharmony.testnative");
+    SetElementBundleName(&element, "com.huawei.testnative");
     SetElementAbilityName(&element, "ServiceAbility");
     SetWantElement(&want, element);
     g_errorCode = ConnectAbility(nullptr, &g_conn, this);
@@ -712,7 +712,7 @@ HWTEST_F(AbilityMgrTest2, testDisConnectAbilityIllegal, Function | MediumTest | 
     printf("------start testDisConnectAbilityIllegal------\n");
     Want want = { nullptr };
     ElementName element = { nullptr };
-    SetElementBundleName(&element, "com.openharmony.testnative");
+    SetElementBundleName(&element, "com.huawei.testnative");
     SetElementAbilityName(&element, "ServiceAbility");
     SetWantElement(&want, element);
     sem_init(&g_sem, 0, 0);
@@ -744,7 +744,7 @@ HWTEST_F(AbilityMgrTest2, testTerminateAbility, Function | MediumTest | Level1)
     printf("------start testTerminateAbility------\n");
     Want want = { nullptr };
     ElementName element = { nullptr };
-    SetElementBundleName(&element, "com.openharmony.testnative");
+    SetElementBundleName(&element, "com.huawei.testnative");
     SetElementAbilityName(&element, "ServiceAbility");
     SetWantElement(&want, element);
     int result1 = StartAbility(&want);
@@ -775,7 +775,7 @@ HWTEST_F(AbilityMgrTest2, testWantMatchBundle, Function | MediumTest | Level1)
     ElementName element;
     memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
     SetElementAbilityName(&element, "ServiceAbility");
-    SetElementBundleName(&element, "com.openharmony.testnative");
+    SetElementBundleName(&element, "com.huawei.testnative");
     SetElementDeviceID(&element, "");
     SetWantElement(&want, element);
     AbilityInfo abilityInfo;
@@ -815,7 +815,7 @@ HWTEST_F(AbilityMgrTest2, testWantNotMathBundle, Function | MediumTest | Level2)
     std::string aName = "NoThisAbility";
     memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
     SetElementAbilityName(&element, aName.c_str());
-    SetElementBundleName(&element, "com.openharmony.nothishap");
+    SetElementBundleName(&element, "com.huawei.nothishap");
     SetWantElement(&want, element);
     AbilityInfo abilityInfo;
     memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
@@ -848,7 +848,7 @@ HWTEST_F(AbilityMgrTest2, testWantOnlyMathBundleName, Function | MediumTest | Le
     std::string aName = "Ability";
     memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
     SetElementAbilityName(&element, aName.c_str());
-    SetElementBundleName(&element, "com.openharmony.testnative");
+    SetElementBundleName(&element, "com.huawei.testnative");
     SetWantElement(&want, element);
     AbilityInfo abilityInfo;
     memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
@@ -881,7 +881,7 @@ HWTEST_F(AbilityMgrTest2, testWantOnlyMathAbility, Function | MediumTest | Level
     std::string aName = "ServiceAbility";
     memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
     SetElementAbilityName(&element, aName.c_str());
-    SetElementBundleName(&element, "com.openharmony.test");
+    SetElementBundleName(&element, "com.huawei.test");
     SetWantElement(&want, element);
     AbilityInfo abilityInfo;
     memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
@@ -913,7 +913,7 @@ HWTEST_F(AbilityMgrTest2, testWantDataMatchLength, Function | MediumTest | Level
     ElementName element;
     memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
     SetElementAbilityName(&element, "ServiceAbility");
-    SetElementBundleName(&element, "com.openharmony.testnative");
+    SetElementBundleName(&element, "com.huawei.testnative");
     SetWantElement(&want, element);
     SetWantData(&want, "test", 5);
     AbilityInfo abilityInfo;
@@ -946,7 +946,7 @@ HWTEST_F(AbilityMgrTest2, testWantDataNotMatchLength, Function | MediumTest | Le
     ElementName element;
     memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
     SetElementAbilityName(&element, "ServiceAbility");
-    SetElementBundleName(&element, "com.openharmony.testnative");
+    SetElementBundleName(&element, "com.huawei.testnative");
     SetWantElement(&want, element);
     SetWantData(&want, "test", 3);
     int result = StartAbility(&want);

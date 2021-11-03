@@ -36,18 +36,18 @@ protected:
     static void SetUpTestCase(void)
     {
         printf("----------test case with KvStoreTest start-------------\n");
-        int ret = mkdir("/storage/com.openharmony.kv", S_IRUSR | S_IWUSR);
-        printf("/storage/com.openharmony.kv ret = %d\n", ret);
-        ret = UtilsSetEnv("/storage/com.openharmony.kv");
+        int ret = mkdir("/storage/com.huawei.kv", S_IRUSR | S_IWUSR);
+        printf("/storage/com.huawei.kv ret = %d\n", ret);
+        ret = UtilsSetEnv("/storage/com.huawei.kv");
         EXPECT_EQ(ret, 0);
     }
     // TearDownTestCase：测试套清理动作，在最后一个TestCase之后执行
     static void TearDownTestCase(void)
     {
-        int ret = rmdir("/storage/com.openharmony.kv/kvstore");
-        printf("/storage/com.openharmony.kv/kvstore ret = %d\n", ret);
-        ret = rmdir("/storage/com.openharmony.kv");
-        printf("/storage/com.openharmony.kv ret = %d\n", ret);
+        int ret = rmdir("/storage/com.huawei.kv/kvstore");
+        printf("/storage/com.huawei.kv/kvstore ret = %d\n", ret);
+        ret = rmdir("/storage/com.huawei.kv");
+        printf("/storage/com.huawei.kv ret = %d\n", ret);
         printf("----------test case with KvStoreTest end-------------\n");
     }
     // 用例的预置动作
