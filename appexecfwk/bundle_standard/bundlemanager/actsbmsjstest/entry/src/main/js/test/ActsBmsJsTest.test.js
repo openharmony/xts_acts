@@ -58,6 +58,7 @@ describe('ActsBmsJsTest', function () {
             }, (err, data) => {
                 console.info('========uninstall Finish========');
                 expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 done();
             });
@@ -111,6 +112,7 @@ describe('ActsBmsJsTest', function () {
                 }
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 done();
             });
@@ -160,6 +162,7 @@ describe('ActsBmsJsTest', function () {
             }, (err, data) => {
                 console.info('========uninstall Finish========');
                 expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 done();
             });
@@ -209,6 +212,7 @@ describe('ActsBmsJsTest', function () {
             }, (err, data) => {
                 console.info('========uninstall Finish========');
                 expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 done();
             });

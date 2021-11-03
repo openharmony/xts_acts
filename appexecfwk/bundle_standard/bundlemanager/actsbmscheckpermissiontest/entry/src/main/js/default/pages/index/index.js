@@ -23,7 +23,7 @@ export default {
         title: 'Test CheckPermission'
     },
     onInit() {
-        this.title = this.data.title;
+        this.title = 'Test CheckPermission';
     },
     onShow() {
         console.info('onReady finish')

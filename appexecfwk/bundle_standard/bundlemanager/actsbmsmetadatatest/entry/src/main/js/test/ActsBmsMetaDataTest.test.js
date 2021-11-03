@@ -37,6 +37,8 @@ describe('ActsBmsMetaDataTest', function () {
                 isKeepData: false
             }
         }, async (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             var dataInfos = await bundle.queryAbilityByWant({
                 want: {
@@ -65,6 +67,8 @@ describe('ActsBmsMetaDataTest', function () {
                     isKeepData: false
                 }
             }, (err, data) => {
+                expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 done();
             });
@@ -101,6 +105,8 @@ describe('ActsBmsMetaDataTest', function () {
                     isKeepData: false
                 }
             }, async (err, data) => {
+                expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 var dataInfos = await bundle.queryAbilityByWant({
                     want: {
@@ -127,6 +133,8 @@ describe('ActsBmsMetaDataTest', function () {
                         isKeepData: false
                     }
                 }, (err, data) => {
+                    expect(err.code).assertEqual(0);
+                    expect(data.status).assertEqual(0);
                     expect(data.statusMessage).assertEqual('SUCCESS');
                     done();
                 });
@@ -152,6 +160,7 @@ describe('ActsBmsMetaDataTest', function () {
             }
         }, (err, data) => {
             expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.uninstall(bundleName, {
                 param: {
@@ -161,6 +170,7 @@ describe('ActsBmsMetaDataTest', function () {
                 }
             }, async (err, data) => {
                 expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 var dataInfos = await bundle.queryAbilityByWant({
                     want: {
@@ -199,7 +209,8 @@ describe('ActsBmsMetaDataTest', function () {
             }
         }, onReceiveinstallEvent);
         async function onReceiveinstallEvent(err, data) {
-            expect(err.code).assertEqual(0);;
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             var dataInfos = await bundle.queryAbilityByWant({
                 want: {
@@ -229,6 +240,7 @@ describe('ActsBmsMetaDataTest', function () {
                 }
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 done();
             })

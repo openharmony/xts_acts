@@ -20,23 +20,11 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 describe('ActsAnsNotificationRemove', function () {
     console.info("===========ActsAnsNotificationRemove start====================>");
     var subscriber;
-    function updateCallback(err, data) {
-        console.info("================updateCallback======================>");
-    }
-    function subscribeCallback(err) {
-        console.info("==================subscribeCallback=======================>");
-    }
-    function onUnsubscribeCallback(err) {
-        console.info("================onUnsubscribeCallback=======================>");
-    }
-    function unSubscribeCallback(err) {
-        console.info("==========================unSubscribeCallback=======================>");
-    }
     function publishCallback(err) {
         console.info("==========================publishCallback=======================>");
     }
     var hashCode;
-    function onConsumeRemove(err, data) {
+    function onConsumeRemove(data) {
         console.info("=============OnConsume_remove_0100=======================>");
         console.info("=============OnConsume_remove_0100 data:==================>" + JSON.stringify(data));
         console.info("=============OnConsume_remove_0100 hascode:===============>" + data.request.hashCode);
@@ -46,10 +34,9 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsume_remove_0100 end=======================>");
     }
 
-    function onCancelRemove(err, data) {
+    function onCancelRemove(data) {
         console.info("==========================OnCancel_remove_0100=======================>");
         console.info("================OnCancel_remove_0100 data : =======================>" + JSON.stringify(data));
-        console.info("================OnCancel_remove_0100 err : =======================>" + JSON.stringify(err));
         console.info("================OnCancel_remove_0100 hashCode=======================>" + hashCode);
         console.info("================OnCancel_0100 data.request.hashCode==========>" + data.request.hashCode);
         expect(hashCode).assertequal(data.request.hashCode);
@@ -60,14 +47,9 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================removeCallBack_0100 err : =======================>" + JSON.stringify(err));
         console.info("================removeCallBack_0100 data : =======================>" + JSON.stringify(data));
     }
-
     function subscriberCallBack(err, data) {
         console.info("================subscriberCallBack err : =======================>" + JSON.stringify(err));
         console.info("================subscriberCallBack data : =======================>" + JSON.stringify(data));
-    }
-    function unsubscribeCallBack(err, data) {
-        console.info("================unsubscribeCallBack err : =======================>" + JSON.stringify(err));
-        console.info("================unsubscribeCallBack data : =======================>" + JSON.stringify(data));
     }
     function publishCallback(err, data) {
         console.info("================publishCallback err : =======================>" + JSON.stringify(err));
@@ -130,7 +112,7 @@ describe('ActsAnsNotificationRemove', function () {
 
     })
 
-    function onConsumeRemovePromise(err, data) {
+    function onConsumeRemovePromise(data) {
         console.info("================OnConsume_remove_promise_0200=======================>");
         console.info("================OnConsume_remove_promise_0200 data:================>" + JSON.stringify(data));
         console.info("================OnConsume_remove_promise_0200 hascode:=============>" + data.request.hashCode);
@@ -140,10 +122,9 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsume_remove_promise_0200 end=======================>");
     }
 
-    function onCancelRemovePromise(err, data) {
+    function onCancelRemovePromise(data) {
         console.info("==========================OnCancel_remove_0200=======================>");
         console.info("================OnCancel_remove_0200 data : =======================>" + JSON.stringify(data));
-        console.info("================OnCancel_remove_0200 err : =======================>" + JSON.stringify(err));
         console.info("================OnCancel_remove_0200 hashCode=======================>" + hashCode);
         console.info("================OnCancel_remove_0200 data.request.hashCode==========>" + data.request.hashCode);
         expect(hashCode).assertequal(data.request.hashCode);
@@ -203,7 +184,7 @@ describe('ActsAnsNotificationRemove', function () {
             console.info("==================ANS_Remove_0200 done==================>");
         }),1000);
     })
-    function onConsumeRemoveErrHashCode(err, data) {
+    function onConsumeRemoveErrHashCode(data) {
         console.info("================OnConsume_removeErrHashCode_0300 start=======================>");
         console.info("================OnConsume_removeErrHashCode_0300 data:=============>" + JSON.stringify(data));
         notify.remove("errorHashCode",removeErrHashCodeCallBack);
@@ -278,7 +259,7 @@ describe('ActsAnsNotificationRemove', function () {
             console.info("==================ANS_Remove_0300 done==================>");
         }),1000);
     })
-    function onConsumeRemoveErrHashCodePromise(err, data) {
+    function onConsumeRemoveErrHashCodePromise(data) {
         console.info("===========OnConsume_removeErrHashCode_promise_0400 data:===========>" + JSON.stringify(data));
         notify.remove("errorHashCode");
         console.info("================OnConsume_removeErrHashCode_promise_0400 end=======================>");
@@ -342,14 +323,14 @@ describe('ActsAnsNotificationRemove', function () {
             console.info("==================ANS_Remove_0400 done==================>");
         }),1000);
     })
-    function onConsumeRemoveUseEmptyCharacter(err, data) {
+    function onConsumeRemoveUseEmptyCharacter(data) {
         console.info("================OnConsume_removeUseEmptyCharacter_0500 start=======================>");
         console.info("OnConsume_removeUseEmptyCharacter_0500 data:===================>" + JSON.stringify(data));
         notify.remove('',removeCallBackUseEmptyCharacter);
         console.info("================OnConsume_removeUseEmptyCharacter_0500 end=======================>");
     }
 
-    function onCancelRemoveUseEmptyCharacter(err, data) {
+    function onCancelRemoveUseEmptyCharacter(data) {
         console.info("OnCancel_removeUseEmptyCharacter_0500 start=======================>");
         console.info("================OnCancel_0500 data : =======================>" + JSON.stringify(data));
         expect().assertFail();
@@ -418,7 +399,7 @@ describe('ActsAnsNotificationRemove', function () {
         }),1000);
     })
 
-    function OnConsumeRemoveUseEmptyCharacterPromise(err, data) {
+    function OnConsumeRemoveUseEmptyCharacterPromise(data) {
         console.info("================OnConsume_removeUseEmptyCharacter_promise_0600 start=======================>");
         console.info("OnConsume_removeUseEmptyCharacter_promise_0600 data:==================>" + JSON.stringify(data));
         notify.remove('',removeCallBackUseEmptyCharacter);
@@ -426,7 +407,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsume_removeUseEmptyCharacter_promise_0600 end=======================>");
     }
 
-    function OnCancelRemoveUseEmptyCharacterPromise(err, data) {
+    function OnCancelRemoveUseEmptyCharacterPromise(data) {
         console.info("==============OnCancel_removeUseEmptyCharacter_0600 start================>");
         console.info("OnCancel_removeUseEmptyCharacter_0600 data:=============>" + JSON.stringify(data));
         expect().assertFail();
@@ -487,7 +468,7 @@ describe('ActsAnsNotificationRemove', function () {
         done();
     })
 
-    function onConsumeRemoveNotExistHashCode(err, data) {
+    function onConsumeRemoveNotExistHashCode(data) {
         console.info("================OnConsume_removeNotExistHashCode_0700=======================>");
         console.info("OnConsume_removeNotExistHashCode_0700 data: =======================>" + JSON.stringify(data));
         notify.remove("9999_9999_9",removeNotExistHashCodeCallBack);
@@ -495,7 +476,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsume_removeNotExistHashCode_0700 end=======================>");
     }
 
-    function onCancelRemoveNotExistHashCode(err, data) {
+    function onCancelRemoveNotExistHashCode(data) {
         console.info("===========OnCancel_removeNotExistHashCode_0700 start=======================>");
         console.info("OnCancel_removeNotExistHashCode_0700 data:============>" + JSON.stringify(data));
         expect().assertFail();
@@ -564,18 +545,16 @@ describe('ActsAnsNotificationRemove', function () {
         done();
     })
 
-    function onConsumeRemoveNotExistHashCodePromise(err, data) {
+    function onConsumeRemoveNotExistHashCodePromise(data) {
         console.info("================OnConsume_removeNotExistHashCode_promise_0800=======================>");
         console.info("OnConsume_removeNotExistHashCode_promise_0800 data:===============>" + JSON.stringify(data));
-        console.info("OnConsume_removeNotExistHashCode_promise_0800 err:===========>" + JSON.stringify(err));
         notify.remove("9999_9999_9");
         console.info("================OnConsume_removeNotExistHashCode_promise_0800 end=======================>");
     }
 
-    function onCancelRemoveNotExistHashCodePromise(err, data) {
+    function onCancelRemoveNotExistHashCodePromise(data) {
         console.info("================OnCancelCallback_removeNotExistHashCode_promise_0800=======================>");
         console.info("================OnCancelCallback_0800 data : =======================>" + JSON.stringify(data));
-        console.info("================OnCancelCallback_0800 err : =======================>" + JSON.stringify(err));
         expect().assertFail();
         console.info("================OnCancelCallback_removeNotExistHashCode_promise_0800 end===========>");
     }
@@ -633,18 +612,16 @@ describe('ActsAnsNotificationRemove', function () {
             console.info("==================ANS_Remove_0800 done==================>");
         }),1000);
     })
-    function onConsumeRemoveNonComplianceHashCode(err, data) {
+    function onConsumeRemoveNonComplianceHashCode(data) {
         console.info("================OnConsumeCallback_removeNonComplianceHashCode_0900 start===================>");
         console.info("================OnConsumeCallback_0900 data: =======================>" + JSON.stringify(data));
-        console.info("================OnConsumeCallback_0900 err: =======================>" + JSON.stringify(err));
         notify.remove("哈希码",removeNonComplianceHashCallBack);
         console.info("================OnConsumeCallback_removeNonComplianceHashCode_0900 remove===================>");
         console.info("================OnConsumeCallback_removeNonComplianceHashCode_0900 end======================>");
     }
 
-    function onCancelRemoveNonComplianceHashCode(err, data) {
+    function onCancelRemoveNonComplianceHashCode(data) {
         console.info("================OnCancelCallback_removeNonComplianceHashCode_0900 start====================>");
-        console.info("================OnCancelCallback_0900 err: =======================>" + JSON.stringify(err));
         console.info("================OnCancelCallback_0900 data: =======================>" + JSON.stringify(data));
         console.info("================OnCancelCallback_removeNonComplianceHashCode_0900 end=======================>");
     }
@@ -710,17 +687,15 @@ describe('ActsAnsNotificationRemove', function () {
             console.info("==================ANS_Remove_0900 done==================>");
         }),1000);
     })
-    function onConsumeRemoveNonComplianceHashCodePromise(err, data) {
+    function onConsumeRemoveNonComplianceHashCodePromise(data) {
         console.info("================OnConsumeCallback_removeNonComplianceHashCode_1000 start================>");
         console.info("================OnConsumeCallback_1000 data: =======================>" + JSON.stringify(data));
-        console.info("================OnConsumeCallback_1000 err: =======================>" + JSON.stringify(err));
         notify.remove("哈希码");
         console.info("================OnConsumeCallback_removeNonComplianceHashCode_1000 end=======================>");
     }
 
-    function onCancelRemoveNonComplianceHashCodePromise(err, data) {
+    function onCancelRemoveNonComplianceHashCodePromise(data) {
         console.info("OnCancel_removeNonComplianceHashCode_1000 start=======================>");
-        console.info("================OnCancel_1000 err: =======================>" + JSON.stringify(err));
         console.info("================OnCancel_1000 data: =======================>" + JSON.stringify(data));
         expect().assertFail();
         console.info("OnCancelCallback_removeNonComplianceHashCode_1000 end=======================>");
@@ -791,7 +766,7 @@ describe('ActsAnsNotificationRemove', function () {
         expect(err.code).assertequal(0);
         notify.remove(hashCode,removeCallBack2TimesOf2);
     }
-    function onConsumeCallbackRemove2Times(err, data) {
+    function onConsumeCallbackRemove2Times(data) {
         console.info("================OnConsumeCallback_remove2Times_1100 start=======================>");
         console.info("================OnConsumeCallback_1100 data: =======================>" + JSON.stringify(data));
         notify.remove(hashCode,removeCallBack2TimesOf1);
@@ -799,11 +774,10 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsumeCallback_remove2Times_1100 end=======================>");
     }
     var timesOfOnCancelCallbackRemove2Times
-    function onCancelCallbackRemove2Times(err, data) {
+    function onCancelCallbackRemove2Times(data) {
         timesOfOnCancelCallbackRemove2Times = timesOfOnCancelCallbackRemove2Times + 1
         console.info("==========================OnCancelCallback_remove2Times_1100=======================>");
         console.info("================OnCancelCallback_1100 data : =======================>" + JSON.stringify(data));
-        console.info("================OnCancelCallback_1100 err : =======================>" + JSON.stringify(err));
         if (timesOfOnCancelCallbackRemove2Times == 1){
             expect(data.request.id).assertequal(1);
         } else if  (timesOfOnCancelCallbackRemove2Times == 2){
@@ -867,7 +841,7 @@ describe('ActsAnsNotificationRemove', function () {
             console.info("==================ANS_Remove_1100 done==================>");
         }),1000);
     })
-    function onConsumeCallbackRemove2TimesPromise(err, data) {
+    function onConsumeCallbackRemove2TimesPromise(data) {
         console.info("================OnConsumeCallback_remove2Times_promise_1200 start=======================>");
         console.info("================OnConsumeCallback_1200 data: =======================>" + JSON.stringify(data));
         notify.remove(hashCode);
@@ -878,11 +852,10 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsumeCallback_remove2Times_promise_1200 end=======================>");
     }
     var timesOfOnCancelCallbackRemove2TimesPromise
-    function onCancelCallbackRemove2TimesPromise(err, data) {
+    function onCancelCallbackRemove2TimesPromise(data) {
         timesOfOnCancelCallbackRemove2TimesPromise = timesOfOnCancelCallbackRemove2TimesPromise + 1
         console.info("==========================OnCancelCallback_remove2Times_1200=======================>");
         console.info("================OnCancelCallback_1200 data : =======================>" + JSON.stringify(data));
-        console.info("================OnCancelCallback_1200 err : =======================>" + JSON.stringify(err));
         if (timesOfOnCancelCallbackRemove2TimesPromise == 1){
             expect(data.request.id).assertequal(1);
         } else if  (timesOfOnCancelCallbackRemove2TimesPromise == 2){
@@ -946,21 +919,19 @@ describe('ActsAnsNotificationRemove', function () {
         }),1000);
     })
 
-    function onConsumeRemoveIsUnremovable(err, data) {
+    function onConsumeRemoveIsUnremovable(data) {
         console.info("OnConsume_removeIsUnremovable_1300 start=================>");
         console.info("OnConsume_removeIsUnremovable_1300 data:===================>" + JSON.stringify(data));
-        console.info("OnConsume_removeIsUnremovable_1300 err:=================>" + JSON.stringify(err));
         notify.remove(data.request.hashCode,removeIsUnremovableCallBack);
         console.info("OnConsume_removeIsUnremovable_1300 remove=============>");
         console.info("OnConsume_removeIsUnremovable_1300 end=============>");
     }
 
-    function onCancelRemoveIsUnremovable(err, data) {
-        console.info("==========================OnCancel_removeIsUnremovable_1300 start=======================>");
-        console.info("================OnCancel_removeIsUnremovable_1300 err: ===============>" + JSON.stringify(err));
-        console.info("================OnCancel_removeIsUnremovable_1300 data: ==============>" + JSON.stringify(data));
+    function onCancelRemoveIsUnremovable(data) {
+        console.info("=============OnCancel_removeIsUnremovable_1300 start================>");
+        console.info("=============OnCancel_removeIsUnremovable_1300 data:===========>" + JSON.stringify(data));
         expect().assertFail();
-        console.info("================OnCancel_removeIsUnremovable_1300 end=======================>");
+        console.info("=============OnCancel_removeIsUnremovable_1300 end===============>");
     }
 
     function removeIsUnremovableCallBack(err, data) {
@@ -1026,18 +997,16 @@ describe('ActsAnsNotificationRemove', function () {
         }),1000);
     })
 
-    function OnConsumeRemoveIsUnremovablePromise(err, data) {
+    function OnConsumeRemoveIsUnremovablePromise(data) {
         console.info("================OnConsume_removeIsUnremovable_promise_1400 start=======================>");
         console.info("================OnConsume_1400 data: =======================>" + JSON.stringify(data));
-        console.info("================OnConsume_1400 err: =======================>" + JSON.stringify(err));
         notify.remove(data.request.hashCode);
         console.info("================removeIsUnremovable_promise_1400=======================>");
         console.info("================OnConsume_removeIsUnremovable_promise_1400 end=======================>");
     }
 
-    function OnCancelRemoveIsUnremovablePromise(err, data) {
+    function OnCancelRemoveIsUnremovablePromise(data) {
         console.info("=====OnCancel_removeIsUnremovable_promise_1400 start=======================>");
-        console.info("================OnCancel_1400 err: =======================>" + JSON.stringify(err));
         console.info("================OnCancel_1400 data: =======================>" + JSON.stringify(data));
         expect().assertFail();
         console.info("================OnCancel_removeIsUnremovable_promise_1400 end=======================>");
@@ -1099,11 +1068,10 @@ describe('ActsAnsNotificationRemove', function () {
     })
 
     var timesOfOnConsumeRemoveAllByBundleOption
-    function onConsumeRemoveAllByBundleOption(err, data) {
+    function onConsumeRemoveAllByBundleOption(data) {
         timesOfOnConsumeRemoveAllByBundleOption = timesOfOnConsumeRemoveAllByBundleOption + 1
         console.info("================OnConsume_removeAllByBundleOption_1500 start=======================>");
         console.info("================OnConsume_1500 data: ====================>" + JSON.stringify(data));
-        console.info("================OnConsume_1500 err: =====================>" + JSON.stringify(err));
         var bundleOption = {
             bundle:data.request.creatorBundleName,
             uid:data.request.creatorUid,
@@ -1115,10 +1083,9 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsume_removeAllByBundleOption_1500 end=======================>");
     }
     var timesOfOnCancelRemoveAllByBundleOption
-    function onCancelRemoveAllByBundleOption(err, data) {
+    function onCancelRemoveAllByBundleOption(data) {
         timesOfOnCancelRemoveAllByBundleOption = timesOfOnCancelRemoveAllByBundleOption + 1
         console.info("==========================OnCancel_removeAllByBundleOption_1500 start=======================>");
-        console.info("================OnCancel_1500 err: =======================>" + JSON.stringify(err));
         console.info("================OnCancel_1500 data: =======================>" + JSON.stringify(data));
         if (timesOfOnCancelRemoveAllByBundleOption == 1){
             expect(data.request.label).assertequal("1500_1");
@@ -1127,9 +1094,8 @@ describe('ActsAnsNotificationRemove', function () {
         }
         console.info("================OnCancel_removeIsUnremovable_1500 end=======================>");
     }
-    function removeAllByBundleOptionCallBack(err, data) {
+    function removeAllByBundleOptionCallBack(data) {
         console.info("================removeAllByBundleOptionCallBack_1500 start=======================>");
-        console.info("================removeAllByBundleOptionCallBack_1500==================>" + JSON.stringify(err));
         console.info("================removeAllByBundleOptionCallBack_1500==================>" + JSON.stringify(data));
         console.info("================removeAllByBundleOptionCallBack_1500 end=======================>");
     }
@@ -1224,10 +1190,9 @@ describe('ActsAnsNotificationRemove', function () {
     })
 
     var timesOfOnConsumeRemoveAllByBundleOptionNullUid
-    function onConsumeRemoveAllByBundleOptionNullUid(err, data) {
+    function onConsumeRemoveAllByBundleOptionNullUid(data) {
         console.info("OnConsume_removeAllByBundleOption_nullUid_1600 start==========>");
         console.info("OnConsume_removeAllByBundleOption_nullUid_1600 data:========>" + JSON.stringify(data));
-        console.info("OnConsume_removeAllByBundleOption_nullUid_1600 err:======>" + JSON.stringify(err));
         var bundleOption = {
             bundle:data.request.creatorBundleName,
             uid:data.request.creatorUid,
@@ -1240,10 +1205,9 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsume_removeAllByBundleOption_nullUid_1600 end=======================>");
     }
     var timesOfOnCancelRemoveAllByBundleOptionNullUid
-    function onCancelRemoveAllByBundleOptionNullUid(err, data) {
+    function onCancelRemoveAllByBundleOptionNullUid(data) {
         timesOfOnCancelRemoveAllByBundleOptionNullUid = timesOfOnCancelRemoveAllByBundleOptionNullUid + 1
         console.info("================OnCancel_removeAllByBundleOption_nullUid_1600 start=======================>");
-        console.info("================OnCancel_1600 err: =======================>" + JSON.stringify(err));
         console.info("================OnCancel_1600 data: =======================>" + JSON.stringify(data));
         if (timesOfOnCancelRemoveAllByBundleOptionNullUid == 1){
             expect(data.request.label).assertequal("1600_1");
@@ -1348,10 +1312,9 @@ describe('ActsAnsNotificationRemove', function () {
         }),1000);
     })
 
-    function onConsumeRemoveAllByBundleOptionWrongUid(err, data) {
+    function onConsumeRemoveAllByBundleOptionWrongUid(data) {
         console.info("================OnConsume_removeAllByBundleOption_wrongUid_1700 start=======================>");
         console.info("================OnConsume_1700 data: =======================>" + JSON.stringify(data));
-        console.info("================OnConsume_1700 err: =======================>" + JSON.stringify(err));
         var bundleOption = {
             bundle:data.request.creatorBundleName,
             uid:123456789
@@ -1360,9 +1323,8 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsume_removeAllByBundleOption_wrongUid_1700 remove====================>");
         console.info("================OnConsume_removeAllByBundleOption_wrongUid_1700 end=======================>");
     }
-    function onCancelRemoveAllByBundleOptionWrongUid(err, data) {
+    function onCancelRemoveAllByBundleOptionWrongUid(data) {
         console.info("================OnCancel_removeAllByBundleOption_wrongUid_1700 start======================>");
-        console.info("================OnCancel_1700 err: =======================>" + JSON.stringify(err));
         console.info("================OnCancel_1700 data: =======================>" + JSON.stringify(data));
         expect().assertFail();
         console.info("================OnCancel_removeAllByBundleOption_wrongUid_1700 end=======================>");
@@ -1431,10 +1393,9 @@ describe('ActsAnsNotificationRemove', function () {
 
     })
 
-    function onConsumeRemoveAllByBundleOptionWrongBundleCorrectUid(err, data) {
+    function onConsumeRemoveAllByBundleOptionWrongBundleCorrectUid(data) {
         console.info("OnConsume_removeAllByBundleOption_wrongBundle_correctUid_1800 start=============>");
         console.info("================OnConsume_1800 data: =======================>" + JSON.stringify(data));
-        console.info("================OnConsume_1800 err: =======================>" + JSON.stringify(err));
         var bundleOption = {
             bundle:"wrongBundleName",
             uid:data.request.creatorUid,
@@ -1443,12 +1404,11 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsume_wrongBundle_correctUid_1800 remove=======================>");
         console.info("================OnConsume_wrongBundle_correctUid_1800 end=======================>");
     }
-    function onCancelremoveAllByBundleOptionwrongBundleCorrectUid(err, data) {
-        console.info("OnCancel_removeAllByBundleOption_wrongBundle_correctUid_1800 start=======================>");
-        console.info("================OnCancel_1800 err: =======================>" + JSON.stringify(err));
+    function onCancelremoveAllByBundleOptionwrongBundleCorrectUid(data) {
+        console.info("OnCancel_removeAllByBundleOption_wrongBundle_correctUid_1800 start==================>");
         console.info("================OnCancel_1800 data: =======================>" + JSON.stringify(data));
         expect().assertFail();
-        console.info("OnCancel_removeAllByBundleOption_wrongBundle_correctUid_1800 end=======================>");
+        console.info("OnCancel_removeAllByBundleOption_wrongBundle_correctUid_1800 end==================>");
     }
     function removeAllByBundleOptionCallBackWrongBundleCorrectUid(err, data) {
         console.info("================removeAllByBundleOptionCallBack_wrongBundle_correctUid_1800 start==========>");
@@ -1513,10 +1473,9 @@ describe('ActsAnsNotificationRemove', function () {
         }),1000);
     })
 
-    function onConsumeRemoveAllByBundleOptionNullCharacterBundleCorrectUid(err, data) {
+    function onConsumeRemoveAllByBundleOptionNullCharacterBundleCorrectUid(data) {
         console.info("================OnConsume_nullCharacterBundle_correctUid_1900 start=======================>");
         console.info("================OnConsume_correctUid_1900 data: ============>" + JSON.stringify(data));
-        console.info("================OnConsume_correctUid_1900 err: =============>" + JSON.stringify(err));
         var bundleOption = {
             bundle:"",
             uid:data.request.creatorUid,
@@ -1525,9 +1484,8 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsume_nullCharacterBundle_correctUid_1900 remove====================>");
         console.info("================OnConsume_nullCharacterBundle_correctUid_1900 end=======================>");
     }
-    function onCancelRemoveAllByBundleOptionNullCharacterBundleCorrectUid(err, data) {
+    function onCancelRemoveAllByBundleOptionNullCharacterBundleCorrectUid(data) {
         console.info("OnCancel_removeAllByBundleOption_nullCharacterBundle_correctUid_1900 start===========>");
-        console.info("OnCancel_1900 err:=======>" + JSON.stringify(err));
         console.info("OnCancel_1900 data:==========>" + JSON.stringify(data));
         expect().assertFail();
         console.info("OnCancel_removeAllByBundleOption_nullCharacterBundle_correctUid_1900 end=============>");
@@ -1594,10 +1552,9 @@ describe('ActsAnsNotificationRemove', function () {
         }),1000);
     })
 
-    function onConsumeRemoveAllByBundleOptionWrongBundleWrongUid(err, data) {
+    function onConsumeRemoveAllByBundleOptionWrongBundleWrongUid(data) {
         console.info("OnConsume_removeAllByBundleOption_wrongBundle_wrongUid_2000 start=======================>");
         console.info("OnConsume_2000 data: =======================>" + JSON.stringify(data));
-        console.info("OnConsume_2000 err: =======================>" + JSON.stringify(err));
         var bundleOption = {
             bundle:"wrongBundleName",
             uid:123456789,
@@ -1606,9 +1563,8 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsume_2000 remove=======================>");
         console.info("OnConsume_removeAllByBundleOption_wrongBundle_wrongUid_2000 end=======================>");
     }
-    function onCancelRemoveAllByBundleOptionWrongBundleWrongUid(err, data) {
+    function onCancelRemoveAllByBundleOptionWrongBundleWrongUid(data) {
         console.info("================OnCancel_wrongBundle_wrongUid_2000 start======================>");
-        console.info("================OnCancel_wrongBundle_wrongUid_2000 err: =============>" + JSON.stringify(err));
         console.info("================OnCancel_wrongUid_2000 data: =======================>" + JSON.stringify(data));
         expect().assertFail();
         console.info("================OnCancel_removeAllByBundleOption_wrongBundle_wrongUid_2000 end==============>");
@@ -1675,10 +1631,9 @@ describe('ActsAnsNotificationRemove', function () {
         }),1000);
     })
 
-    function onConsumeRemoveAllByBundleOptionNullCharacterBundleWrongUid(err, data) {
+    function onConsumeRemoveAllByBundleOptionNullCharacterBundleWrongUid(data) {
         console.info("OnConsume_removeAllByBundleOption_nullCharacterBundle_wrongUid_2100 start===================>");
         console.info("OnConsume_2100 data:======>" + JSON.stringify(data));
-        console.info("OnConsume_2100 err:=====>" + JSON.stringify(err));
         var bundleOption = {
             bundle:"",
             uid:123456789,
@@ -1687,9 +1642,8 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("OnConsume_removeAllByBundleOption_nullCharacterBundle_wrongUid_2100 remove==============>");
         console.info("OnConsume_removeAllByBundleOption_nullCharacterBundle_wrongUid_2100 end=================>");
     }
-    function onCancelRemoveAllByBundleOptionNullCharacterBundleWrongUid(err, data) {
+    function onCancelRemoveAllByBundleOptionNullCharacterBundleWrongUid(data) {
         console.info("OnCancel_removeAllByBundleOption_nullCharacterBundle_wrongUid_2100 start============>");
-        console.info("OnCancel_2100 err:===========>" + JSON.stringify(err));
         console.info("OnCancel_2100 data:==========>" + JSON.stringify(data));
         expect().assertFail();
         console.info("OnCancel_removeAllByBundleOption_nullCharacterBundle_wrongUid_2100 end=====================>");
@@ -1756,10 +1710,9 @@ describe('ActsAnsNotificationRemove', function () {
         }),1000);
     })
 
-    function onConsumeRemoveAllByBundleOptionIsUnremovable(err, data) {
+    function onConsumeRemoveAllByBundleOptionIsUnremovable(data) {
         console.info("================OnConsume_removeAllByBundleOption_isUnremovable_2200 start==================>");
         console.info("================OnConsume_2200 data: ==================>" + JSON.stringify(data));
-        console.info("================OnConsume_2200 err: =======================>" + JSON.stringify(err));
         var bundleOption = {
             bundle:data.request.bundle,
             uid:data.request.creatorUidss,
@@ -1768,9 +1721,8 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsume_removeAllByBundleOption_isUnremovable_2200 removeAll==============>");
         console.info("================OnConsume_removeAllByBundleOption_isUnremovable_2200 end====================>");
     }
-    function onCancelRemoveAllByBundleOptionIsUnremovable(err, data) {
+    function onCancelRemoveAllByBundleOptionIsUnremovable(data) {
         console.info("================OnCancel_2200 start=======================>");
-        console.info("================OnCancel_2200 err: =======================>" + JSON.stringify(err));
         console.info("================OnCancel_2200 data: =======================>" + JSON.stringify(data));
         expect().assertFail();
         console.info("================OnCancel_2200 end=======================>");
@@ -1844,7 +1796,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================removeAllCallBack_2300 end: =======================>");
     }
     var timesOfOnConsumeRemoveAll
-    function onConsumeRemoveAll(err, data, ) {
+    function onConsumeRemoveAll(data) {
         timesOfOnConsumeRemoveAll = timesOfOnConsumeRemoveAll + 1
         console.info("================OnConsume_removeAll_2300 start=======================>");
         console.info("================OnConsume_removeAll_2300 data: =======================>" + JSON.stringify(data));
@@ -1856,7 +1808,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsume_removeAll_2300 end=======================>");
     }
     var timesOfOnCancelRemoveAll
-    function onCancelRemoveAll(err, data) {
+    function onCancelRemoveAll(data) {
         timesOfOnCancelRemoveAll = timesOfOnCancelRemoveAll + 1
         console.info("==========================OnCancel_removeAll_2300=======================>");
         console.info("================OnCancel_removeAll_2300 data : =======================>" + JSON.stringify(data));
@@ -1960,7 +1912,7 @@ describe('ActsAnsNotificationRemove', function () {
     })
 
     var timesOfOnConsumeRemoveAll
-    function onConsumeRemoveAllPromise(err, data) {
+    function onConsumeRemoveAllPromise(data) {
         timesOfOnConsumeRemoveAll = timesOfOnConsumeRemoveAll + 1
         console.info("================OnConsume_removeAll_promise_2400 start=======================>");
         console.info("================OnConsume_removeAll_promise_2400 data: =============>" + JSON.stringify(data));
@@ -1972,7 +1924,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsume_removeAll_promise_2400 end=======================>");
     }
     var timesOfOnCancelRemoveAll
-    function onCancelRemoveAllPromise(err, data) {
+    function onCancelRemoveAllPromise(data) {
         timesOfOnCancelRemoveAll = timesOfOnCancelRemoveAll + 1
         console.info("==========================OnCancel_removeAll_promise_2400 start=======================>");
         console.info("================OnCancel_removeAll_promise_2400 data : =============>" + JSON.stringify(data));
@@ -2081,16 +2033,15 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================removeAllCallBack_2500 JSON.stringify(data): =========>" + JSON.stringify(data));
         console.info("================removeAllCallBack_isUnremovable_2500 end=======================>");
     }
-    function onConsumeRemoveAllIsUnremovable(err, data) {
+    function onConsumeRemoveAllIsUnremovable(data) {
         console.info("================OnConsume_removeAll_isUnremovable_2500 start=======================>");
         console.info("================OnConsume_2500 data: =======================>" + JSON.stringify(data));
         notify.removeAll(removeAllCallBackIsUnremovable);
         console.info("================removeAll_isUnremovable_2500 =======================>");
         console.info("================OnConsume_removeAll_isUnremovable_2500 end=======================>");
     }
-    function onCancelCallbackRemoveAllIsUnremovable(err, data) {
+    function onCancelCallbackRemoveAllIsUnremovable(data) {
         console.info("================OnCancelCallback_removeAll_isUnremovable_2500 start=======================>");
-        console.info("================OnCancelCallback_2500 err : =======================>" + JSON.stringify(err));
         console.info("================OnCancelCallback_2500 data : =======================>" + JSON.stringify(data));
         console.info("================OnCancelCallback_removeAll_isUnremovable_2500 end=======================>");
     }
@@ -2149,17 +2100,15 @@ describe('ActsAnsNotificationRemove', function () {
         }),1000);
     })
 
-    function OnConsumeRemoveAllIsUnremovablePromise(err, data) {
+    function OnConsumeRemoveAllIsUnremovablePromise(data) {
         console.info("================OnConsume_removeAll_isUnremovable_promise_2600 start=======================>");
         console.info("================OnConsume_2600 data=======================>" + JSON.stringify(data));
-        console.info("================OnConsume_2600 err=======================>" + JSON.stringify(err));
         notify.removeAll()
         console.info("================removeAll_isUnremovable_2600 end=======================>");
         console.info("================OnConsume_removeAll_isUnremovable_promise_2600 end=======================>");
     }
-    function OnCancelCallbackRemoveAllIsUnremovablePromise(err, data) {
+    function OnCancelCallbackRemoveAllIsUnremovablePromise(data) {
         console.info("================OnCancelCallback_removeAll_isUnremovable_promise_2600 start================>");
-        console.info("================OnCancelCallback_2600 err : =======================>" + JSON.stringify(err));
         console.info("================OnCancelCallback_2600 data : =======================>" + JSON.stringify(data));
         console.info("================OnCancelCallback_2600 end=======================>");
     }
@@ -2234,7 +2183,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================removeAllCallBack2TimesOf1_2700 removeCallBack2TimesOf2====================>");
         console.info("================removeAllCallBack2TimesOf1_2700 end=======================>");
     }
-    function onConsumeRemoveAll2Times(err, data) {
+    function onConsumeRemoveAll2Times(data) {
         console.info("================OnConsumeCallback_removeAll2Times_2700 start=======================>");
         console.info("================OnConsumeCallback_removeAll2Times_2700 data: ========>" + JSON.stringify(data));
         notify.removeAll(removeCallBack2TimesOf1);
@@ -2242,11 +2191,10 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsumeCallback_removeAll2Times_2700 end=======================>");
     }
     var timesOfOnCancelCallbackRemoveAll2Times
-    function onCancelRemoveAll2Times(err, data) {
+    function onCancelRemoveAll2Times(data) {
         timesOfOnCancelCallbackRemoveAll2Times = timesOfOnCancelCallbackRemoveAll2Times + 1
         console.info("================OnCancelCallback_removeAll2Times_2700 start=======================>");
         console.info("================OnCancelCallback_2700 data : =======================>" + JSON.stringify(data));
-        console.info("================OnCancelCallback_2700 err : =======================>" + JSON.stringify(err));
         if (timesOfOnCancelCallbackRemoveAll2Times == 1){
             expect(data.request.id).assertequal(1);
         } else if  (timesOfOnCancelCallbackRemoveAll2Times == 2){
@@ -2310,7 +2258,7 @@ describe('ActsAnsNotificationRemove', function () {
         }),1000);
     })
 
-    function onConsumeCallbackRemoveAll2TimesPromise(err, data) {
+    function onConsumeCallbackRemoveAll2TimesPromise(data) {
         console.info("================OnConsumeCallback_removeAll2Times_promise_2800 start=======================>");
         console.info("================OnConsumeCallback_2800 data: =======================>" + JSON.stringify(data));
         notify.removeAll()
@@ -2321,11 +2269,10 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsumeCallback_removeAll2Times_promise_2800 end=======================>");
     }
     var timesOfOnCancelCallbackRemoveAll2TimesPromise
-    function onCancelCallbackRemoveAll2TimesPromise(err, data) {
+    function onCancelCallbackRemoveAll2TimesPromise(data) {
         timesOfOnCancelCallbackRemoveAll2TimesPromise = timesOfOnCancelCallbackRemoveAll2TimesPromise + 1
         console.info("==========================OnCancelCallback_removeAll2Times_2800 start=======================>");
         console.info("================OnCancelCallback_removeAll2Times_2800 data : ========>" + JSON.stringify(data));
-        console.info("================OnCancelCallback_removeAll2Times_2800 err : ==========>" + JSON.stringify(err));
         if (timesOfOnCancelCallbackRemoveAll2TimesPromise == 1){
             expect(data.request.id).assertequal(1);
         } else if  (timesOfOnCancelCallbackRemoveAll2TimesPromise == 2){
@@ -2389,10 +2336,9 @@ describe('ActsAnsNotificationRemove', function () {
         }),1000);
     })
 
-    function onConsumeRemoveByNotificationKey(err, data) {
+    function onConsumeRemoveByNotificationKey(data) {
         console.info("================OnConsume_removeByNotificationKey_2900 start=======================>");
         console.info("================OnConsume_2900 data: =======================>" + JSON.stringify(data));
-        console.info("================OnConsume_2900 err: =======================>" + JSON.stringify(err));
         console.info("OnConsume_2900 creatorBundleName: =======================>" + data.request.creatorBundleName);
         console.info("================OnConsume_2900 creatorUid: =======================>" + data.request.creatorUid);
         console.info("================OnConsume_2900 id: =======================>" + data.request.id);
@@ -2409,9 +2355,8 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsume_removeByNotificationKey_2900 remove=======================>");
         console.info("================OnConsume_removeByNotificationKey_2900 end=======================>");
     }
-    function onCancelRemoveByNotificationKey(err, data) {
+    function onCancelRemoveByNotificationKey(data) {
         console.info("================OnCancel_removeByNotificationKey_2900 start=======================>");
-        console.info("================OnCancel_removeByNotificationKey_2900 err: ===========>" + JSON.stringify(err));
         console.info("================OnCancel_removeByNotificationKey_2900 data: ==========>" + JSON.stringify(data));
         expect(data.request.label).assertequal("2900");
         expect(data.request.id).assertequal(29);
@@ -2479,10 +2424,9 @@ describe('ActsAnsNotificationRemove', function () {
         }),1000);
     })
 
-    function onConsumeRemoveByNotificationKeyPromise(err, data) {
+    function onConsumeRemoveByNotificationKeyPromise(data) {
         console.info("================OnConsume_removeByNotificationKey_promise_3000 start=======================>");
         console.info("================OnConsume_3000 data: =======================>" + JSON.stringify(data));
-        console.info("================OnConsume_3000 err: =======================>" + JSON.stringify(err));
         var bundleOption = {
             bundle:data.request.creatorBundleName,
             uid:data.request.creatorUid,
@@ -2495,9 +2439,8 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsume_removeByNotificationKey_promise_3000 remove=======================>");
         console.info("================OnConsume_removeByNotificationKey_promise_3000 end=======================>");
     }
-    function onCancelRemoveByNotificationKeyPromise(err, data) {
+    function onCancelRemoveByNotificationKeyPromise(data) {
         console.info("================OnCancel_removeByNotificationKey_promise_3000 start=======================>");
-        console.info("================OnCancel_3000 err: =======================>" + JSON.stringify(err));
         console.info("================OnCancel_3000 data: =======================>" + JSON.stringify(data));
         expect(data.request.label).assertequal("3000");
         expect(data.request.id).assertequal(30);
@@ -2559,10 +2502,9 @@ describe('ActsAnsNotificationRemove', function () {
         }),1000);
     })
 
-    function onConsumeRemoveByNotificationKeyWrongKey(err, data) {
+    function onConsumeRemoveByNotificationKeyWrongKey(data) {
         console.info("================OnConsume_removeByNotificationKey_wrongKey_3100 start=======================>");
         console.info("================OnConsume_3100 data: =======================>" + JSON.stringify(data));
-        console.info("================OnConsume_3100 err: =======================>" + JSON.stringify(err));
         var bundleOption = {
             bundle:data.request.creatorBundleName,
             uid:data.request.creatorUid,
@@ -2575,9 +2517,8 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsume_removeByNotificationKey_wrongKey_3100 remove=======================>");
         console.info("================OnConsume_removeByNotificationKey_wrongKey_3100 end=======================>");
     }
-    function onCancelRemoveByNotificationKeyWrongKey(err, data) {
+    function onCancelRemoveByNotificationKeyWrongKey(data) {
         console.info("================OnCancel_removeByNotificationKey_wrongKey_3100 start=======================>");
-        console.info("================OnCancel_3100 err: =======================>" + JSON.stringify(err));
         console.info("================OnCancel_3100 data: =======================>" + JSON.stringify(data));
         expect().assertFail();
         console.info("================OnCancel_removeByNotificationKey_wrongKey_3100 end=======================>");
@@ -2645,10 +2586,9 @@ describe('ActsAnsNotificationRemove', function () {
         }),1000);
     })
 
-    function onConsumeRemoveByNotificationKeyWrongKeyPromise(err, data) {
+    function onConsumeRemoveByNotificationKeyWrongKeyPromise(data) {
         console.info("================OnConsume_removeByNotificationKey_wrongKey_promise_3200 start===============>");
         console.info("================OnConsume_3200 data: =======================>" + JSON.stringify(data));
-        console.info("================OnConsume_3200 err: =======================>" + JSON.stringify(err));
         var bundleOption = {
             bundle:data.request.creatorBundleName,
             uid:data.request.creatorUid,
@@ -2661,9 +2601,8 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================removeByNotificationKey_wrongKey_promise_3200 end=======================>");
         console.info("================OnConsume_removeByNotificationKey_wrongKey_promise_3200 end==================>");
     }
-    function onCancelRemoveByNotificationKeyWrongKeyPromise(err, data) {
+    function onCancelRemoveByNotificationKeyWrongKeyPromise(data) {
         console.info("================OnCancel_removeByNotificationKey_wrongKey_promise_3200 start=================>");
-        console.info("================OnCancel_3200 err: =====================>" + JSON.stringify(err));
         console.info("================OnCancel_3200 data: =======================>" + JSON.stringify(data));
         expect().assertFail();
         console.info("================OnCancel_removeByNotificationKey_wrongKey_promise_3200 end===================>");
@@ -2725,10 +2664,9 @@ describe('ActsAnsNotificationRemove', function () {
         done();
     })
 
-    function OnConsumeRemoveByNotificationKeyWrongBundle(err, data) {
+    function OnConsumeRemoveByNotificationKeyWrongBundle(data) {
         console.info("================OnConsume_removeByNotificationKey_wrongBundle_3300 start==================>");
         console.info("================OnConsume_3300 data: =======================>" + JSON.stringify(data));
-        console.info("================OnConsume_3300 err: =======================>" + JSON.stringify(err));
         var bundleOption = {
             bundle:"wrongBundleName",
             uid:0,
@@ -2741,9 +2679,8 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsume_3300 remove=======================>");
         console.info("================OnConsume_removeByNotificationKey_wrongBundle_3300 end=====================>");
     }
-    function OnCancelRemoveByNotificationKeyWrongBundle(err, data) {
+    function OnCancelRemoveByNotificationKeyWrongBundle(data) {
         console.info("OnCancel_removeByNotificationKey_wrongBundle_3300 start==========>");
-        console.info("OnCancel_removeByNotificationKey_wrongBundle_3300 err:============>" + JSON.stringify(err));
         console.info("OnCancel_removeByNotificationKey_wrongBundle_3300 data:===========>" + JSON.stringify(data));
         expect().assertFail();
         console.info("================OnCancel_removeByNotificationKey_wrongBundle_3300 end======================>");
@@ -2811,10 +2748,9 @@ describe('ActsAnsNotificationRemove', function () {
         }),1000);
     })
 
-    function onConsumeRemoveByNotificationKeyWrongBundlePromise(err, data) {
+    function onConsumeRemoveByNotificationKeyWrongBundlePromise(data) {
         console.info("================OnConsume_removeByNotificationKey_wrongBundle_promise_3400 start============>");
         console.info("================OnConsume_3400 data: =======================>" + JSON.stringify(data));
-        console.info("================OnConsume_3400 err: =======================>" + JSON.stringify(err));
         var bundleOption = {
             bundle:"wrongBundleName",
             uid:0,
@@ -2827,9 +2763,8 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================removeByNotificationKey_wrongBundle_promise_3400 end=====================>");
         console.info("================OnConsume_removeByNotificationKey_wrongBundle_promise_3400 end==============>");
     }
-    function onCancelRemoveByNotificationKeyWrongBundlePromise(err, data) {
+    function onCancelRemoveByNotificationKeyWrongBundlePromise(data) {
         console.info("================OnCancel_removeByNotificationKey_wrongBundle_promise_3400 start=============>");
-        console.info("================OnCancel_3400 err: =======================>" + JSON.stringify(err));
         console.info("================OnCancel_3400 data: =======================>" + JSON.stringify(data));
         expect().assertFail();
         console.info("================OnCancel_removeByNotificationKey_wrongBundle_promise_3400 end================>");
@@ -2914,7 +2849,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================removeByNotificationKey2Times1CB_3500 removeCallBack2TimesOf2===============>");
         console.info("================removeByNotificationKey2Times1CB_3500 end=======================>");
     }
-    function onConsumeRemoveByNotificationKey2Times(err, data) {
+    function onConsumeRemoveByNotificationKey2Times(data) {
         console.info("================OnConsume_removeByNotificationKey2Times_3500 start=======================>");
         console.info("================OnConsume_3500 data: ========>" + JSON.stringify(data));
         var bundleOption = {
@@ -2930,11 +2865,10 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsume_removeByNotificationKey2Times_3500 end=======================>");
     }
     var timesOfOnCancelRemoveByNotificationKey2Times
-    function onCancelRemoveByNotificationKey2Times(err, data) {
+    function onCancelRemoveByNotificationKey2Times(data) {
         timesOfOnCancelRemoveByNotificationKey2Times = timesOfOnCancelRemoveByNotificationKey2Times + 1
         console.info("================OnCancelCallback_removeAll2Times_2700 start=======================>");
         console.info("================OnCancelCallback_removeAll2Times_2700 data : ========>" + JSON.stringify(data));
-        console.info("================OnCancelCallback_removeAll2Times_2700 err : =======>" + JSON.stringify(err));
         if (timesOfOnCancelRemoveByNotificationKey2Times == 1){
             expect(data.request.id).assertequal(35);
             expect(data.request.label).assertequal("3500");
@@ -2999,7 +2933,7 @@ describe('ActsAnsNotificationRemove', function () {
         }),1000);
     })
 
-    function onConsumeRemoveByNotificationKey2TimesPromise(err, data) {
+    function onConsumeRemoveByNotificationKey2TimesPromise(data) {
         console.info("================OnConsumeCallback_removeByNotificationKey2Times_promise_3600 start===========>");
         console.info("================OnConsumeCallback_3600 data: =======================>" + JSON.stringify(data));
         var bundleOption = {
@@ -3017,11 +2951,10 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================OnConsumeCallback_removeByNotificationKey2Times_promise_3600 end============>");
     }
     var timesOnCancelcbRemoveByKey2TimesPromise
-    function onCancelRemoveByNotificationKey2TimesPromise(err, data) {
+    function onCancelRemoveByNotificationKey2TimesPromise(data) {
         timesOnCancelcbRemoveByKey2TimesPromise = timesOnCancelcbRemoveByKey2TimesPromise + 1
         console.info("OnCancelCallback_removeByNotificationKey2Times_promise_3600 start=======================>");
         console.info("OnCancelCallback_removeByNotificationKey2Times_promise_3600 data:====>" + JSON.stringify(data));
-        console.info("OnCancelCallback_removeByNotificationKey2Times_promise_3600 err:====>" + JSON.stringify(err));
         if (timesOnCancelcbRemoveByKey2TimesPromise == 1){
             expect(data.request.id).assertequal(36);
             expect(data.request.label).assertequal("3600");

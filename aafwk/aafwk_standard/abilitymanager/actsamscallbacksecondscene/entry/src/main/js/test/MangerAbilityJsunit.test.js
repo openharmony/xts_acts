@@ -31,6 +31,7 @@ var WeightReasonCode = {
 
 var abilityNameList = [
     "com.ohos.launcher.MainAbility",
+    "com.ohos.callui.ServiceAbility",
     "com.example.SimulateFeatureAbilityFir",
     "com.example.VerifyIoThirdAbility",
     "com.example.actsamscallbacksecondscene.MainAbility"
@@ -39,6 +40,7 @@ var abilityNameList = [
 var bundleNameList = [
     "com.ohos.launcher",
     "com.ohos.systemui",
+    "com.ohos.callui",
     "com.ix.simulate.feature",
     "com.ix.verify.io",
     "com.example.actsamscallbacksecondscene"
@@ -107,7 +109,7 @@ describe('ActsAmsCallBackSecondScene', function () {
 
     function sleep(delay) {
         var start = (new Date()).getTime();
-        while((new Date()).getTime() - start < delay) {
+        while ((new Date()).getTime() - start < delay) {
             continue;
         }
     }
@@ -127,7 +129,7 @@ describe('ActsAmsCallBackSecondScene', function () {
                 ' + error.code + ', data length [' + info.length + ']');
                 console.info('Acts_Ams_test_1800 getAllRunningProcesses data  ' + JSON.stringify(info));
                 expect(Array.isArray(info)).assertEqual(true);
-                expect(info.length).assertEqual(5);
+                expect(info.length).assertEqual(6);
                 for (var i = 0; i < info.length; i++) {
                     expect(typeof (info[i].pid)).assertEqual("number");
                     expect(info[i].pid).assertLarger(0);
@@ -251,99 +253,29 @@ describe('ActsAmsCallBackSecondScene', function () {
     })
 
     /*
-     * @tc.number    : Acts_Ams_test_2400
-     * @tc.name      : removeMission : Remove Mission
-     * @tc.desc      : Remove Mission(by CallBack)
-     */
-    it('Acts_Ams_test_2400', 0, async function (done) {
-        var maxnum = 20;
-        var result = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
-        abilitymanager.removeMission(result[1].id,
-            (error, info) => {
-                console.info('Acts_Ams_test_2400 removeMission error.code \
-                ' + error.code + ',data  [' + info + ']');
-                expect(info).assertEqual(0);
-                done();
-            });
-        setTimeout(timeout, 5000);
-    })
-
-    /*
-     * @tc.number    : Acts_Ams_test_2800
-     * @tc.name      : moveMissionToTop : Move Mission To Top
-     * @tc.desc      : Move Mission To Top(by CallBack)
-     */
-    it('Acts_Ams_test_2800', 0, async function (done) {
-        var maxnum = 20;
-        var result = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
-        abilitymanager.moveMissionToTop(result[0].id,
-            (error, info) => {
-                console.info('Acts_Ams_test_2800 moveMissionToTop error.code \
-                ' + error.code + ',data  [' + info + ']');
-                expect(info).assertEqual(0);
-                done();
-            });
-        setTimeout(timeout, 5000);
-    })
-
-    /*
-     * @tc.number    : Acts_Ams_test_3000
-     * @tc.name      : removeMissions: Remove Missions
-     * @tc.desc      : Remove Missions(by CallBack)
-     */
-    it('Acts_Ams_test_3000', 0, async function (done) {
-        var maxnum = 20;
-        var result = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
-        abilitymanager.removeMissions([result[0].id],
-            (error, info) => {
-                console.info('Acts_Ams_test_3000 removeMissions error.code \
-                ' + error.code + ',data  [' + info + ']');
-                expect(info).assertEqual(0);
-                done();
-            });
-        setTimeout(timeout, 5000);
-    })
-
-    /*
-     * @tc.number    : Acts_Ams_test_3200
-     * @tc.name      : killProcessesByBundleName : Kill Processes By BundleName
-     * @tc.desc      : Kill Processes By BundleName(by CallBack)
-     */
-    it('Acts_Ams_test_3200', 0, async function (done) {
-        abilitymanager.killProcessesByBundleName('XXXXXXXXXXXX',
-            (error, info) => {
-                console.info('Acts_Ams_test_3200 killProcessesByBundleName error.code: \
-                ' + error.code + ',data  [' + info + ']');
-                expect(info).assertEqual(0);
-                done();
-            });
-        setTimeout(timeout, 5000);
-    })
-
-   /*
-     * @tc.number    : Acts_Ams_test_8700
-     * @tc.name      : getActiveProcessInfos : Get All Active Processes Info
-     * @tc.desc      : Get All Active Processes Info(by CallBack)
-     */
+      * @tc.number    : Acts_Ams_test_8700
+      * @tc.name      : getActiveProcessInfos : Get All Active Processes Info
+      * @tc.desc      : Get All Active Processes Info(by CallBack)
+      */
     it('Acts_Ams_test_8700', 0, async function (done) {
         abilitymanager.getActiveProcessInfos(
             (error, info) => {
                 console.info('getActiveProcessInfos error.code \
-                ' + error.code + ', data length [' + info.length + ']');
+            ' + error.code + ', data length [' + info.length + ']');
                 console.info('Acts_Ams_test_8700 getActiveProcessInfos data ' + JSON.stringify(info));
                 expect(Array.isArray(info)).assertEqual(true);
-                expect(info.length).assertEqual(3);
+                expect(info.length).assertEqual(6);
                 for (var i = 0; i < info.length; i++) {
                     expect(typeof (info[i].pid)).assertEqual("number");
                     expect(info[i].pid).assertLarger(0);
-                
+
                     expect(typeof (info[i].processName)).assertEqual("string");
                     expect(info[i].processName.length).assertLarger(0);
                     expect(bundleNameList.indexOf(info[i].processName)).assertLarger(-1);
-                
+
                     expect(Array.isArray(info[i].bundleNames)).assertEqual(true);
                     expect(info[i].bundleNames.length).assertEqual(0);
-                
+
                     expect(typeof (info[i].uid)).assertEqual("number");
                     expect(info[i].uid).assertLarger(0);
                 }
@@ -362,10 +294,10 @@ describe('ActsAmsCallBackSecondScene', function () {
         abilitymanager.getActiveAbilityMissionInfos(maxnum,
             (error, info) => {
                 console.info('queryRecentAbilityMissionInfos error.code : \
-                ' + error.code + ',data length [' + info.length + ']');
+            ' + error.code + ',data length [' + info.length + ']');
                 console.info('Acts_Ams_test_9700 getActiveAbilityMissionInfos info ' + JSON.stringify(info));
                 expect(Array.isArray(info)).assertEqual(true);
-                expect(info.length).assertEqual(1);
+                expect(info.length).assertEqual(3);
                 for (var i = 0; i < info.length; i++) {
                     expect(typeof (info[i].missionId)).assertEqual("number");
                     expect(info[i].missionId).assertLarger(0);
@@ -416,10 +348,10 @@ describe('ActsAmsCallBackSecondScene', function () {
         abilitymanager.getPreviousAbilityMissionInfos(maxnum,
             (error, info) => {
                 console.info('queryRecentAbilityMissionInfos error.code : \
-                ' + error.code + ',data length [' + info.length + ']');
+            ' + error.code + ',data length [' + info.length + ']');
                 console.info('Acts_Ams_test_10700 getPreviousAbilityMissionInfos info ' + JSON.stringify(info));
                 expect(Array.isArray(info)).assertEqual(true);
-                expect(info.length).assertEqual(1);
+                expect(info.length).assertEqual(3);
                 for (var i = 0; i < info.length; i++) {
                     expect(typeof (info[i].missionId)).assertEqual("number");
                     expect(info[i].missionId).assertLarger(0);
@@ -455,6 +387,76 @@ describe('ActsAmsCallBackSecondScene', function () {
                     expect(typeof (info[i].windowMode)).assertEqual("number");
                     expect(info[i].windowMode).assertEqual(0);
                 }
+                done();
+            });
+        setTimeout(timeout, 5000);
+    })
+
+    /*
+     * @tc.number    : Acts_Ams_test_2400
+     * @tc.name      : removeMission : Remove Mission
+     * @tc.desc      : Remove Mission(by CallBack)
+     */
+    it('Acts_Ams_test_2400', 0, async function (done) {
+        var maxnum = 20;
+        var result = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
+        abilitymanager.removeMission(result[1].id,
+            (error, info) => {
+                console.info('Acts_Ams_test_2400 removeMission error.code \
+                ' + error.code + ',data  [' + info + ']');
+                expect(info).assertEqual(0);
+                done();
+            });
+        setTimeout(timeout, 5000);
+    })
+
+    /*
+     * @tc.number    : Acts_Ams_test_2800
+     * @tc.name      : moveMissionToTop : Move Mission To Top
+     * @tc.desc      : Move Mission To Top(by CallBack)
+     */
+    it('Acts_Ams_test_2800', 0, async function (done) {
+        var maxnum = 20;
+        var result = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
+        abilitymanager.moveMissionToTop(result[0].id,
+            (error, info) => {
+                console.info('Acts_Ams_test_2800 moveMissionToTop error.code \
+                ' + error.code + ',data  [' + info + ']');
+                expect(info).assertEqual(0);
+                done();
+            });
+        setTimeout(timeout, 5000);
+    })
+
+    /*
+ * @tc.number    : Acts_Ams_test_3200
+ * @tc.name      : killProcessesByBundleName : Kill Processes By BundleName
+ * @tc.desc      : Kill Processes By BundleName(by CallBack)
+ */
+    it('Acts_Ams_test_3200', 0, async function (done) {
+        abilitymanager.killProcessesByBundleName('XXXXXXXXXXXX',
+            (error, info) => {
+                console.info('Acts_Ams_test_3200 killProcessesByBundleName error.code: \
+                    ' + error.code + ',data  [' + info + ']');
+                expect(info).assertEqual(0);
+                done();
+            });
+        setTimeout(timeout, 5000);
+    })
+
+    /*
+     * @tc.number    : Acts_Ams_test_3000
+     * @tc.name      : removeMissions: Remove Missions
+     * @tc.desc      : Remove Missions(by CallBack)
+     */
+    it('Acts_Ams_test_3000', 0, async function (done) {
+        var maxnum = 20;
+        var result = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
+        abilitymanager.removeMissions([result[0].id],
+            (error, info) => {
+                console.info('Acts_Ams_test_3000 removeMissions error.code \
+                ' + error.code + ',data  [' + info + ']');
+                expect(info).assertEqual(0);
                 done();
             });
         setTimeout(timeout, 5000);

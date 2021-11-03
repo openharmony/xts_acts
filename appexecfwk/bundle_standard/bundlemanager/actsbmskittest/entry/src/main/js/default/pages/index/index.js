@@ -22,7 +22,7 @@ export default {
         title: 'Bms Stress Test'
     },
     onInit() {
-        this.title = this.data.title;
+        this.title = 'Bms Stress Test';
     },
     onShow() {
         console.info('onReady finish')

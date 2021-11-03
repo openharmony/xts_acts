@@ -101,14 +101,14 @@ describe('ActsBmsModuleUsageRecordTest', function () {
         if (dataMap.has(BUNDLE_NAME)) {
             let data = dataMap.get(BUNDLE_NAME);
             expect(data.bundleName).assertEqual('com.example.third1');
-            expect(data.appLabelId >= 0).assertTrue();
+            expect(data.appLabelId).assertEqual(0);
             expect(data.name).assertEqual('entry');
-            expect(data.labelId >= 0).assertTrue();
+            expect(data.labelId).assertEqual(0);
             expect(data.descriptionId).assertEqual(0);
             expect(data.abilityName).assertEqual('com.example.third1.MainAbility');
-            expect(data.abilityLabelId >= 0).assertTrue();
-            expect(data.abilityDescriptionId >= 0).assertTrue();
-            expect(data.abilityIconId >= 0).assertTrue();
+            expect(data.abilityLabelId).assertEqual(0);
+            expect(data.abilityDescriptionId).assertEqual(0);
+            expect(data.abilityIconId).assertEqual(0);
             expect(data.launchedCount).assertEqual(START_COUNT);
             expect(data.lastLaunchTime).assertLarger(0);
             expect(data.isRemoved).assertEqual(false);
@@ -216,8 +216,8 @@ describe('ActsBmsModuleUsageRecordTest', function () {
                     isKeepData: false
                 }
             }, (err, data) => {
-                console.debug('========install Finish========');
                 expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 done();
             });
@@ -240,6 +240,9 @@ describe('ActsBmsModuleUsageRecordTest', function () {
                 isKeepData: false
             }
         }, (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual("SUCCESS");
             bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TWO, async (funcErr, moduleUsageRecord) => {
                 expect(funcErr.code).assertEqual(0);
                 var result = checkIsExist(moduleUsageRecord, BUNDLE_NAME);
@@ -251,6 +254,9 @@ describe('ActsBmsModuleUsageRecordTest', function () {
                         isKeepData: false
                     }
                 }, (err, data) => {
+                    expect(err.code).assertEqual(0);
+                    expect(data.status).assertEqual(0);
+                    expect(data.statusMessage).assertEqual("SUCCESS");
                     done();
                 });
 
@@ -328,6 +334,9 @@ describe('ActsBmsModuleUsageRecordTest', function () {
                 isKeepData: false
             }
         }, (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual("SUCCESS");
             var bundlePath = ['/data/test/bmsThirdBundleTest1.hap'];
             installer.install(bundlePath, {
                 param: {
@@ -336,6 +345,9 @@ describe('ActsBmsModuleUsageRecordTest', function () {
                     isKeepData: false
                 }
             }, async (err, data) => {
+                expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
+                expect(data.statusMessage).assertEqual("SUCCESS");
                 var records = await bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TEN)
                 expect(checkLaunchCount(records, BUNDLE_NAME, START_COUNT)).assertEqual(true);
                 done();
@@ -359,6 +371,9 @@ describe('ActsBmsModuleUsageRecordTest', function () {
                 isKeepData: false
             }
         }, (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual("SUCCESS");
             var bundlePath = ['/data/test/bmsThirdBundleTest1.hap']
             installer.install(bundlePath, {
                 param: {
@@ -367,6 +382,9 @@ describe('ActsBmsModuleUsageRecordTest', function () {
                     isKeepData: false
                 }
             }, async (err, data) => {
+                expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
+                expect(data.statusMessage).assertEqual("SUCCESS");
                 bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TEN, (err, records) => {
                     expect(err.code).assertEqual(0);
                     expect(checkLaunchCount(records, BUNDLE_NAME, START_COUNT)).assertEqual(true);
@@ -418,6 +436,9 @@ describe('ActsBmsModuleUsageRecordTest', function () {
                 isKeepData: false
             }
         }, (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual("SUCCESS");
             installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
                 param: {
                     userId: 0,
@@ -425,6 +446,9 @@ describe('ActsBmsModuleUsageRecordTest', function () {
                     isKeepData: false
                 }
             }, async (err, data) => {
+                expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
+                expect(data.statusMessage).assertEqual("SUCCESS");
                 id = setTimeout(timeout, START_ABILITY_TIMEOUT);
                 await featureAbility.startAbility(
                     {
@@ -478,6 +502,9 @@ describe('ActsBmsModuleUsageRecordTest', function () {
                 isKeepData: false
             }
         }, (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual("SUCCESS");
             installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
                 param: {
                     userId: 0,
@@ -485,7 +512,9 @@ describe('ActsBmsModuleUsageRecordTest', function () {
                     isKeepData: false
                 }
             }, async (err, data) => {
-                console.debug('========install Finish========');
+                expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
+                expect(data.statusMessage).assertEqual("SUCCESS");
                 id = setTimeout(timeout, START_ABILITY_TIMEOUT);
                 await featureAbility.startAbility(
                     {
@@ -567,22 +596,24 @@ describe('ActsBmsModuleUsageRecordTest', function () {
             console.debug('=======All Info========' + JSON.stringify(data[i]));
             console.debug('=============bundleName is=========' + JSON.stringify(data[i].bundleName));
             expect(data[i].bundleName.length).assertLarger(0);
+            if (data[i].bundleName == BUNDLE_NAME) {
+                expect(data[i].appLabelId).assertEqual(0);
+                expect(data[i].labelId).assertEqual(0);
+                expect(data[i].abilityLabelId).assertEqual(0);
+                expect(data[i].abilityDescriptionId).assertEqual(0);
+                expect(data[i].abilityIconId).assertEqual(0);
+            }
             console.debug('=============appLabelId==============' + JSON.stringify(data[i].appLabelId));
-            expect(data[i].appLabelId >= 0).assertTrue();
             console.debug('=============name==============' + JSON.stringify(data[i].name));
             expect(data[i].name.length).assertLarger(0);
             console.debug('=============labelId==============' + JSON.stringify(data[i].labelId));
-            expect(data[i].labelId >= 0).assertTrue();
             console.debug('=============descriptionId==============' + JSON.stringify(data[i].descriptionId));
             expect(data[i].descriptionId).assertEqual(0);
             console.debug('=============abilityName==============' + JSON.stringify(data[i].abilityName));
             expect(data[i].abilityName.length).assertLarger(0);
             console.debug('=============abilityLabelId==============' + JSON.stringify(data[i].abilityLabelId));
-            expect(data[i].abilityLabelId >= 0).assertTrue();
             console.debug('===========abilityDescriptionId===========' + JSON.stringify(data[i].abilityDescriptionId));
-            expect(data[i].abilityDescriptionId >= 0).assertTrue();
             console.debug('=============abilityIconId==============' + JSON.stringify(data[i].abilityIconId));
-            expect(data[i].abilityIconId >= 0).assertTrue();
             console.debug('=============launchedCount==============' + JSON.stringify(data[i].launchedCount));
             expect(data[i].launchedCount).assertLarger(0);
             console.debug('=============lastLaunchTime==============' + JSON.stringify(data[i].lastLaunchTime));
@@ -628,10 +659,8 @@ describe('ActsBmsModuleUsageRecordTest', function () {
                 isKeepData: false
             }
         }, (err, data) => {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
+            console.info('uninstall finish');
+            done();
         });
-        done();
     })
 })

@@ -16,7 +16,7 @@
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 var time = 1000
-describe('ActsAnsAllActiveTestOne', function () {
+describe('ActsAnsGetActiveOtherApp', function () {
     console.info("===========ActsAnsAllActiveTestOne start====================>");
 
     /*

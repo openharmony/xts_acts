@@ -23,7 +23,7 @@ export default {
         title: "测试RemoveSlot接口"
     },
     onInit() {
-        this.title = this.data.title;
+        this.title = "测试RemoveSlot接口";
     },
     onShow() {
         console.info('onShow finish')

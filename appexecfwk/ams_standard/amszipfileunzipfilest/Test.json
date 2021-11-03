@@ -24,16 +24,14 @@
         {
             "type": "PushKit",
             "push": [
-                "ceshi.txt->/data/test/ceshi.txt"
+                "ceshi.txt->/data/test/ceshi.txt",
+                "ceshitwo.zip->/data/test/ceshitwo.zip",
+                "ceshitwo.txt->/data/test/ceshitwo.txt"
+                
                
             ]
         },
-        {
-            "type": "ShellKit",
-            "run-command": [
-                "chmod 777 /data/test/*"
-            ]
-        },
+        
         {
             "type": "ShellKit",
             "run-command": [
@@ -45,6 +43,27 @@
             "type": "ShellKit",
             "run-command": [
                 "chmod 777 /data/testA/*"
+            ]
+        },
+       
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "chmod 777 /data/test/*"
+            ]
+        },
+       
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "remount",
+                "mkdir /data/testb"
+            ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "chmod 777 /data/testb/*"
             ]
         }
        
