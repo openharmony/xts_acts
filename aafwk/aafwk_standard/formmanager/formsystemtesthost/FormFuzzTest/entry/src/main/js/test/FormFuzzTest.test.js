@@ -15,7 +15,8 @@
 
 import formManager from '@ohos.ability.formManager'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-import {parameterValue, stringTest, numberTest, booleanTest, nullTest, undefinedTest, objectTest, arrayTest, functionTest} from './getParam.js'
+import {parameterValue, stringTest, numberTest, booleanTest,
+nullTest, undefinedTest, objectTest, arrayTest, functionTest} from './getParam.js'
 
 const TIMEOUT = 2000;
 describe('formFuzzTest', function () {
@@ -138,7 +139,8 @@ describe('formFuzzTest', function () {
 
        var retResult;
        try{
-           retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache)); // formId: number>0 ok, isReleaseCache: boolean
+           // formId: number>0 ok, isReleaseCache: boolean
+           retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache)); 
            console.log("FMS_fuzzTest_0300_param_01_promise async::sucess retResult:" + retResult);
            expect(retResult).assertEqual(1);
            done();
@@ -163,7 +165,8 @@ describe('formFuzzTest', function () {
        console.log("FMS_fuzzTest_0300_param_02_callback releaseForm begin");
 
        var formId = stringTest();
-       console.log("FMS_fuzzTest_0300_param_02_callback releaseForm formId typeof:"+ typeof(formId) + ",formId:" + formId);
+       console.log("FMS_fuzzTest_0300_param_02_callback releaseForm formId typeof:"+
+           typeof(formId) + ",formId:" + formId);
 
        var isReleaseCache = parameterValue();
        console.log("FMS_fuzzTest_0300_param_02_callback releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
@@ -202,14 +205,16 @@ describe('formFuzzTest', function () {
        console.log("FMS_fuzzTest_0300_param_02_promise releaseForm begin");
 
        var formId = stringTest();
-       console.log("FMS_fuzzTest_0300_param_02_promise releaseForm formId typeof:"+ typeof(formId) + ",formId:" + formId);
+       console.log("FMS_fuzzTest_0300_param_02_promise releaseForm formId typeof:"+
+           typeof(formId) + ",formId:" + formId);
 
        var isReleaseCache = parameterValue();
        console.log("FMS_fuzzTest_0300_param_02_promise releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
 
        var retResult;
        try{
-           retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));  // formId: number>0 ok, isReleaseCache: boolean
+           // formId: number>0 ok, isReleaseCache: boolean
+           retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
            console.log("FMS_fuzzTest_0300_param_02_promise async::sucess retResult:" + retResult);
            expect(retResult).assertEqual(1);
            done();
@@ -234,7 +239,8 @@ describe('formFuzzTest', function () {
         console.log("FMS_fuzzTest_0300_param_03_callback releaseForm begin");
  
         var formId = stringTest();
-        console.log("FMS_fuzzTest_0300_param_03_callback releaseForm formId typeof:"+ typeof(formId) + ",formId:" + formId);
+        console.log("FMS_fuzzTest_0300_param_03_callback releaseForm formId typeof:"+
+            typeof(formId) + ",formId:" + formId);
  
         try{
             formManager.releaseForm(
@@ -269,7 +275,8 @@ describe('formFuzzTest', function () {
         console.log("FMS_fuzzTest_0300_param_03_promise releaseForm begin");
  
         var formId = stringTest();
-        console.log("FMS_fuzzTest_0300_param_03_promise releaseForm formId typeof:"+ typeof(formId) + ",formId:" + formId);
+        console.log("FMS_fuzzTest_0300_param_03_promise releaseForm formId typeof:"+
+            typeof(formId) + ",formId:" + formId);
  
         var retResult;
         try{
