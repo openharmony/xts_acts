@@ -22,7 +22,7 @@ export default {
         title: 'Test Shortcut'
     },
     onInit() {
-        this.title = this.data.title;
+        this.title = 'Test Shortcut';
     },
     onShow() {
         console.info('onReady finish')

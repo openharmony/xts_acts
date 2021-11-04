@@ -159,8 +159,8 @@ function publishCallbackC(err) {
 describe('ActsAnsCommonEventTest', function () {
     console.info("==ActsAnsCommonEventTest start==>");
     //consume
-    function consumeCallback(err,data) {
-        console.debug("===>consumeCallback data===>" + err + JSON.stringify(data));
+    function consumeCallback(data) {
+        console.debug("===>consumeCallback data===>" + JSON.stringify(data));
         if(data.request.id == 1) {
             if(data.request.content.multiLine.title === "test1_title")
             {
@@ -555,35 +555,24 @@ describe('ActsAnsCommonEventTest', function () {
     }
     //subscribeOn
     function subscribeOnCallback() {
-        console.debug("===>subscribeOnCallback===>");
-    }
-    //subscribe
-    function subscribeCallback(err) {
-        console.debug("===>subscribeCallback===>"+err.code);
-        expect(err.code).assertEqual(0);
+        console.debug("===>onConnectCallback===>");
     }
     /*
      * @tc.number: ActsDoNotSubscriber_test_0100
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
-    it('ActsSubscriber_test_0100', 0, async function (done) {
-        console.debug("===ActsSubscriber_test_0100====begin===>");
+    it('ActsCommonSubscriber_test_0100', 0, async function (done) {
+        console.debug("===ActsCommonSubscriber_test_0100====begin===>");
         var subInfo ={
             onConsume:consumeCallback,
             onConnect:subscribeOnCallback,
         }
-        try {
-            await notification.subscribe(subInfo, subscribeCallback);
-        }
-        catch(err) {
-            console.error('ActsSubscriber_test_0100  err:'+err);
-        }
-        console.debug("===ActsSubscriber_test_0100===end===>");
-        done()
-        setTimeout(function(){
-            console.debug("====>time out ActsSubscriber_test_0100====>");
-        }, time);
+            await notification.subscribe(subInfo,(err) => {
+                console.debug("===>subscribeCallback===>"+err.code)
+                expect(err.code).assertEqual(0);
+                done()
+        });
     })
 })
 

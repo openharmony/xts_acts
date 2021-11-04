@@ -17,11 +17,14 @@ group("ActsAnsSlotTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "actsansgetslotWithoutadd:ActsAnsGetSlotWithoutAdd",
       "actsansgetslottestcallback:ActsAnsGetSlotTestCallback",
       "actsansgetslottestpromise:ActsAnsGetSlotTestPromise",
       "actsansremoveslottest:ActsAnsRemoveSlotTest",
+      "actsansremoveslotwithoutadd:ActsAnsRemoveSlotWithoutAdd",
 
       #"actsansslotbybundle:ActsAnsSlotByBundle",
+      #"actsansaddslotsystem:ActsAnsAddSlotSystem",
       #"actsansslotsystemcallback:ActsAnsSlotSystemCallback",
       #"actsansslotsystempromise:ActsAnsSlotSystemPromise",
       #"actsansslottaddremoveall:ActsAnsSlotAddRemoveAll",

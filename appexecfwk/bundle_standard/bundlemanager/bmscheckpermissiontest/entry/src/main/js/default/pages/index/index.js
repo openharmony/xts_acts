@@ -23,13 +23,13 @@ export default {
         logmessage: "check permission test: \n"
     },
     onInit() {
-        this.title = this.data.title;
-        this.logmessage = this.data.logmessage;
+        this.title =  "checkPermission Test";
+        this.logmessage = "check permission test: \n";
     },
     onReady() {
     },
     async requestPermissons() {
-        this.data.logmessage += 'requestPermissons\n'
+        this.logmessage += 'requestPermissons\n'
         console.debug("==========begin request permissions==========")
         var context = await featureAbility.getContext();
         await context.requestPermissionsFromUser(["com.permission.PERMISSION_THIRD1",
@@ -56,9 +56,9 @@ export default {
         var data = await bundle.checkPermission("com.example.bmscheckpermissiontest",
             'com.permission.LOCATION_IN_BACKGROUND')
         if (data == 0) {
-            this.data.logmessage += 'bms_checkPermission_1700 result: PERMISSION_GRANTED\n'
+            this.logmessage += 'bms_checkPermission_1700 result: PERMISSION_GRANTED\n'
         } else {
-            this.data.logmessage += 'bms_checkPermission_1700 result: PERMISSION_NOT_GRANTED\n'
+            this.logmessage += 'bms_checkPermission_1700 result: PERMISSION_NOT_GRANTED\n'
         }
 
     },
@@ -74,9 +74,9 @@ export default {
             console.debug("======err code======:" + err.code);
             console.debug("======result======:" + data);
             if (data == 0 && err.code == 0) {
-                this.data.logmessage += 'bms_checkPermission_1800 result: PERMISSION_GRANTED\n'
+                this.logmessage += 'bms_checkPermission_1800 result: PERMISSION_GRANTED\n'
             } else {
-                this.data.logmessage += 'bms_checkPermission_1800 result: PERMISSION_NOT_GRANTED\n'
+                this.logmessage += 'bms_checkPermission_1800 result: PERMISSION_NOT_GRANTED\n'
             }
 
         })
@@ -92,9 +92,9 @@ export default {
         var data = await bundle.checkPermission("com.example.bmscheckpermissiontest",
             'com.permission.PERMISSION_THIRD1')
         if (data == 0) {
-            this.data.logmessage += 'bms_checkPermission_1900 result: PERMISSION_GRANTED\n'
+            this.logmessage += 'bms_checkPermission_1900 result: PERMISSION_GRANTED\n'
         } else {
-            this.data.logmessage += 'bms_checkPermission_1900 result: PERMISSION_NOT_GRANTED\n'
+            this.logmessage += 'bms_checkPermission_1900 result: PERMISSION_NOT_GRANTED\n'
         }
 
     },
@@ -112,14 +112,14 @@ export default {
                 console.debug("======err code======:" + err.code);
                 console.debug("======result======:" + data);
                 if (data == 0 && err.code == 0) {
-                    this.data.logmessage += 'bms_checkPermission_2000 result: PERMISSION_GRANTED\n'
+                    this.logmessage += 'bms_checkPermission_2000 result: PERMISSION_GRANTED\n'
                 } else {
-                    this.data.logmessage += 'bms_checkPermission_2000 result: PERMISSION_NOT_GRANTED\n'
+                    this.logmessage += 'bms_checkPermission_2000 result: PERMISSION_NOT_GRANTED\n'
                 }
 
             })
     },
     clearLog() {
-        this.data.logmessage = "";
+        this.logmessage = "";
     }
 }

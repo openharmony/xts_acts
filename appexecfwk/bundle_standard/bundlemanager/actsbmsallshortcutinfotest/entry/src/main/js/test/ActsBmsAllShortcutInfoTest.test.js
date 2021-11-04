@@ -39,6 +39,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         }, OnReceiveInstallEvent);
 
         async function OnReceiveInstallEvent(err, data) {
+            expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual("SUCCESS");
             let shortInfos = await bundle.getAllShortcutInfo(bundleName)
@@ -67,11 +68,12 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                     isKeepData: false
                 }
             }, OnReceiveUninstallEvent);
-            done();
         };
         function OnReceiveUninstallEvent(err, data) {
+            expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual("SUCCESS");
+            done();
         };
     });
 
@@ -94,6 +96,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         }, OnReceiveInstallEvent);
 
         function OnReceiveInstallEvent(err, data) {
+            expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual("SUCCESS");
             bundle.getAllShortcutInfo(bundleName, async (result, shortcutInfos) => {
@@ -133,6 +136,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 isKeepData: false
             }
         }, async (err, data) => {
+            expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual("SUCCESS");
             var shortInfos = await bundle.getAllShortcutInfo(bundleName);
@@ -171,6 +175,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 isKeepData: false
             }
         }, (err, data) => {
+            expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual("SUCCESS");
             bundle.getAllShortcutInfo(bundleName, async (result, shortInfos) => {
@@ -241,6 +246,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 isKeepData: false
             }
         }, async (err, data) => {
+            expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual("SUCCESS");
             installer.install(bundlePath2, {
@@ -250,6 +256,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                     isKeepData: false
                 }
             }, async (err, data) => {
+                expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual("SUCCESS");
                 var shortInfos = await bundle.getAllShortcutInfo(bundleName);
@@ -305,6 +312,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 isKeepData: false
             }
         }, (err, data) => {
+            expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual("SUCCESS");
             installer.install(bundlePath2, {
@@ -369,6 +377,9 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 isKeepData: false
             }
         }, async (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual("SUCCESS");
             var shortcutInfos = await bundle.getAllShortcutInfo(bundleName);
             expect(typeof shortcutInfos).assertEqual('object');
             expect(shortcutInfos.length).assertEqual(0);
@@ -403,6 +414,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 isKeepData: false
             }
         }, async (err, data) => {
+            expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual("SUCCESS");
             bundle.getAllShortcutInfo(bundleName, async (result, shortcutInfos) => {
@@ -504,6 +516,9 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 isKeepData: false
             }
         }, async (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual("SUCCESS");
             var shortcutInfos = await bundle.getAllShortcutInfo(bundleName);
             checkShortcutIsExist(shortcutInfos, 'id.third1', 'third1');
             installer.uninstall(bundleName, {
@@ -513,6 +528,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                     isKeepData: false
                 }
             }, async (err, data) => {
+                expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual("SUCCESS");
                 var shortcutInfos = await bundle.getAllShortcutInfo(bundleName);
@@ -539,10 +555,13 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 isKeepData: false
             }
         }, async (err, data) => {
-            var data = await bundle.getAllShortcutInfo(bundleName);
-            expect(typeof data).assertEqual('object');
-            expect(data.length).assertEqual(1);
-            checkShortcutIsExist(data, 'id.third1', 'third1');
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual("SUCCESS");
+            var shortcutInfos = await bundle.getAllShortcutInfo(bundleName);
+            expect(typeof shortcutInfos).assertEqual('object');
+            expect(shortcutInfos.length).assertEqual(1);
+            checkShortcutIsExist(shortcutInfos, 'id.third1', 'third1');
             installer.uninstall(bundleName, {
                 param: {
                     userId: 0,
@@ -550,6 +569,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                     isKeepData: false
                 }
             }, async (err, data) => {
+                expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual("SUCCESS");
                 bundle.getAllShortcutInfo(bundleName, async (result, data) => {
@@ -578,13 +598,14 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 isKeepData: false
             }
         }, async (err, data) => {
+            expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual("SUCCESS");
             var shortcutInfos = await bundle.getAllShortcutInfo(bundleName);
             expect(typeof shortcutInfos).assertEqual('object');
             expect(shortcutInfos.length).assertEqual(2);
-            checkShortcutIsExist(shortcutInfos, 'id.third4A', 'third4A');
-            checkShortcutIsExist(shortcutInfos, 'id.third4B', 'third4B');
+            checkShortcutInfo(shortcutInfos[0], 'third4A');
+            checkShortcutInfo(shortcutInfos[1], 'third4B');
             installer.uninstall(bundleName, {
                 param: {
                     userId: 0,
@@ -592,6 +613,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                     isKeepData: false
                 }
             }, async (err, data) => {
+                expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual("SUCCESS");
                 done();
@@ -615,11 +637,14 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 isKeepData: false
             }
         }, async (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual("SUCCESS");
             bundle.getAllShortcutInfo(bundleName, async (result, shortcutInfos) => {
                 expect(result.code).assertEqual(0);
                 expect(shortcutInfos.length).assertEqual(2);
-                checkShortcutIsExist(shortcutInfos, 'id.third4A', 'third4A');
-                checkShortcutIsExist(shortcutInfos, 'id.third4B', 'third4B');
+                checkShortcutInfo(shortcutInfos[0], 'third4A');
+                checkShortcutInfo(shortcutInfos[1], 'third4B');
                 installer.uninstall(bundleName, {
                     param: {
                         userId: 0,
@@ -627,6 +652,8 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                         isKeepData: false
                     }
                 }, async (err, data) => {
+                    expect(err.code).assertEqual(0);
+                    expect(data.status).assertEqual(0);
                     expect(data.statusMessage).assertEqual("SUCCESS");
                     done();
                 });

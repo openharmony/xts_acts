@@ -22,7 +22,7 @@ export default {
         title: "Test Multi Js Ability"
     },
     onInit() {
-        this.title = this.data.title;
+        this.title = "Test Multi Js Ability";
     },
     onShow() {
     },

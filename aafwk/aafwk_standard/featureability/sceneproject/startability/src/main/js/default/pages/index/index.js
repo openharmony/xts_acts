@@ -41,7 +41,7 @@ export default {
         title: "StartAbility"
     },
     onInit() {
-        this.title = this.data.title;
+        this.title = "StartAbility";
     },
     onShow() {
         commonEvent.publish("ACTS_StartAbility_0100_CommonEvent", PublishCallBackOne);

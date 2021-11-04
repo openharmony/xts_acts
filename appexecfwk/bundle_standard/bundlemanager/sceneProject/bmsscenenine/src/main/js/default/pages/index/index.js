@@ -20,6 +20,6 @@ export default {
         title: "publish_event0100"
     },
     onInit() {
-        this.title = this.data.title;
+        this.title = "publish_event0100";
     },
 }

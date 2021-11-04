@@ -19,7 +19,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 describe('ActsAnsNotificationCancel', function () {
     console.info("===========ActsAnsNotificationCancel start====================>");
     var timesOfOnConsume
-    function onConsumeCancelAll(err, data) {
+    function onConsumeCancelAll(data) {
         console.info("================onConsumeCancelAll_0100=======================>");
         console.info("================onConsumeCancelAll_0100 data: =======================>" + JSON.stringify(data));
         timesOfOnConsume = timesOfOnConsume + 1
@@ -30,10 +30,9 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("================onConsumeCancelAll_0100 end=======================>");
     }
     var timesOfOnCancel
-    function onCancelCancelAll(err, data) {
+    function onCancelCancelAll(data) {
         console.info("================onCancelCancelAll_0100=======================>");
         console.info("================onCancelCancelAll_0100 data : =======================>" + JSON.stringify(data));
-        console.info("================onCancelCancelAll_0100 err : =======================>" + JSON.stringify(err));
         timesOfOnCancel = timesOfOnCancel + 1
         if (timesOfOnCancel == 1){
             expect(data.request.id).assertequal(1);
@@ -136,7 +135,7 @@ describe('ActsAnsNotificationCancel', function () {
         }),1000);
         done();
     })
-    function onConsumeCancelAllPromise(err, data) {
+    function onConsumeCancelAllPromise(data) {
         console.info("================onConsume_cancelAll_promise_0200=======================>");
         console.info("================onConsume_0200 data: =======================>" + JSON.stringify(data));
         timesOfOnConsume = timesOfOnConsume + 1
@@ -146,11 +145,10 @@ describe('ActsAnsNotificationCancel', function () {
         }
         console.info("================onConsume_cancelAll_promise_0200 end=======================>");
     }
-    function onCancelCancelAllPromise(err, data) {
+    function onCancelCancelAllPromise(data) {
         timesOfOnCancel = timesOfOnCancel + 1
         console.info("================onCancel_cancelAll_promise_0200=======================>");
         console.info("================onCancel_0200 data : =======================>" + JSON.stringify(data));
-        console.info("================onCancel_0200 err : =======================>" + JSON.stringify(err));
         if (timesOfOnCancel == 1){
             expect(data.request.id).assertequal(1);
         } else if (timesOfOnCancel == 2){
@@ -248,17 +246,16 @@ describe('ActsAnsNotificationCancel', function () {
 
     })
 
-    function onConsumeCancelAllNoNotify(err, data) {
+    function onConsumeCancelAllNoNotify(data) {
         console.info("================onConsume_cancelAll_noNotify_0300=======================>");
         console.info("================onConsume_0300 data: =======================>" + JSON.stringify(data));
         expect().assertFail();
         console.info("================onConsume_cancelAll_noNotify_0300 end=======================>");
     }
-    function onCancelCancelAllNoNotify(err, data) {
+    function onCancelCancelAllNoNotify(data) {
         console.info("=================onCancel_cancelAll_0300=======================>");
         expect().assertFail();
         console.info("================onCancel_0300 data : =======================>" + JSON.stringify(data));
-        console.info("================onCancel_0300 err : =======================>" + JSON.stringify(err));
         console.info("================onCancel_0300 end=======================>");
     }
     function cancelAllCallBackNoNotify(err, data){
@@ -294,16 +291,15 @@ describe('ActsAnsNotificationCancel', function () {
         }),1000);
     })
 
-    function onConsumeCancelAllNoNotifyPromise(err, data) {
+    function onConsumeCancelAllNoNotifyPromise(data) {
         console.info("================onConsume_cancelAll_noNotify_promise_0400=======================>");
         console.info("================onConsume_promise_0400 data: =======================>" + JSON.stringify(data));
         expect().assertFail();
         console.info("================onConsume_promise_0400 end=======================>");
     }
-    function onCancelCancelAllNoNotifyPromise(err, data) {
+    function onCancelCancelAllNoNotifyPromise(data) {
         console.info("===============onCancel_cancelAll_noNotify_promise_0400=======================>");
         console.info("===============onCancel_promise_0400 data=================>" + JSON.stringify(data));
-        console.info("===============onCancel_promise_0400 err=====================>" + JSON.stringify(err));
         expect().assertFail();
         console.info("===============onCancel_cancelAll_noNotify_promise_0400 end=======================>");
     }
@@ -336,7 +332,7 @@ describe('ActsAnsNotificationCancel', function () {
 
     })
 
-    function onConsumeCancelAll2Times(err, data) {
+    function onConsumeCancelAll2Times(data) {
         console.info("================onConsume_cancelAll2Times_0500=======================>");
         console.info("================onConsume_cancelAll2Times_0500 data:==============>" + JSON.stringify(data));
         notify.cancelAll(cancelAllCallBack2Times1);
@@ -344,10 +340,9 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("================onConsume_cancelAll2Times_0500 end=======================>");
     }
 
-    function onCancelCancelAll2Times(err, data) {
+    function onCancelCancelAll2Times(data) {
         console.info("==========================onCancel_cancelAll2Times_0500=======================>");
         console.info("onCancel_cancelAll2Times_0500 data : =======================>" + JSON.stringify(data));
-        console.info("onCancel_cancelAll2Times_0500 err : =======================>" + JSON.stringify(err));
         timesOfOnCancel = timesOfOnCancel + 1
         if (timesOfOnCancel == 1){
             expect(data.request.id).assertequal(5);
@@ -425,7 +420,7 @@ describe('ActsAnsNotificationCancel', function () {
         }),1000);
     })
 
-    function onConsumeCancelAll2TimesPromise(err, data) {
+    function onConsumeCancelAll2TimesPromise(data) {
         console.info("================onConsume_cancelAll2Times_promise_0600=======================>");
         console.info("================onConsume_promise_0600 data: =======================>" + JSON.stringify(data));
         notify.cancelAll();
@@ -435,11 +430,10 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("================onConsume_cancelAll2Times_promise_0600 cancelAll=========>");
         console.info("================onConsume_cancelAll2Times_promise_0600 end==========>");
     }
-    function onCancelCancelAll2TimesPromise(err, data) {
+    function onCancelCancelAll2TimesPromise(data) {
         timesOfOnCancel = timesOfOnCancel + 1
         console.info("==============onCancel_cancelAll2Times_promise_0600=======================>");
         console.info("==============onCancel_0600 data:===================>" + JSON.stringify(data));
-        console.info("==============onCancel_0600 err : =======================>" + JSON.stringify(err));
         if (timesOfOnCancel == 1){
             expect(data.request.id).assertequal(6);
         } else if (timesOfOnCancel == 2){
@@ -503,17 +497,16 @@ describe('ActsAnsNotificationCancel', function () {
         }),1000);
     })
 
-    function onConsumeCancelAllIsUnremovable(err, data) {
+    function onConsumeCancelAllIsUnremovable(data) {
         console.info("================onConsume_cancelAll_isUnremovable_0700 start=======================>");
         console.info("================onConsume_0700 data: =======================>" + JSON.stringify(data));
         notify.cancelAll(cancelAllCallBackIsUnremovable);
         console.info("================onConsume_0700 cancelAll=======================>");
         console.info("================onConsume__0700 end=======================>");
     }
-    function onCancelCancelAllIsUnremovable(err, data) {
+    function onCancelCancelAllIsUnremovable(data) {
         console.info("================onCancel_cancelAll_isUnremovable_0700 start=======================>");
         console.info("================onCancel_0700 data : =======================>" + JSON.stringify(data));
-        console.info("================onCancel_0700 err : =======================>" + JSON.stringify(err));
         expect(data.request.id).assertequal(7);
         console.info("================onCancel_cancelAll_isUnremovable_0700 end=======================>");
     }
@@ -579,17 +572,16 @@ describe('ActsAnsNotificationCancel', function () {
         }),1000);
     })
 
-    function onConsumeCancelAllIsUnremovablPromise(err, data) {
+    function onConsumeCancelAllIsUnremovablPromise(data) {
         console.info("================onConsume_cancelAll_isUnremovable_0800 start=======================>");
         console.info("================onConsume_0800 data: =======================>" + JSON.stringify(data));
         notify.cancelAll();
         console.info("==========cancelAll_promise_isUnremovable_0800 end==========>");
         console.info("================onConsume_cancelAll_isUnremovable_0800 end=======================>");
     }
-    function onCancelCancelAllIsUnremovablePromise(err, data) {
+    function onCancelCancelAllIsUnremovablePromise(data) {
         console.info("================onCancel_cancelAll_isUnremovable_promise_0800 start================>");
         console.info("================onCancel_promise_0800 data :===============>" + JSON.stringify(data));
-        console.info("================onCancel_promise_0800 err :==================>" + JSON.stringify(err));
         expect(data.request.id).assertequal(8);
         console.info("================onCancel_cancelAll_isUnremovable_promise_0800 end==================>");
     }
@@ -649,17 +641,16 @@ describe('ActsAnsNotificationCancel', function () {
         }),1000);
     })
 
-    function onConsumeCancel(err, data) {
+    function onConsumeCancel(data) {
         console.info("================onConsume_cancel_0900 start=======================>");
         console.info("================onConsume_cancel_0900 data: =======================>" + JSON.stringify(data));
         notify.cancel(data.request.id,cancelCallBackCancel);
         console.info("================onConsume_cancel_0900 cancel=======================>");
         console.info("================onConsume_cancel_0900 end=======================>");
     }
-    function onCancelCancel(err, data) {
+    function onCancelCancel(data) {
         console.info("===============onCancel_cancel_0900 start=======================>");
         console.info("===============onCancel_cancel_0900 data : =======================>" + JSON.stringify(data));
-        console.info("===============onCancel_cancel_0900 err : =======================>" + JSON.stringify(err));
         expect(data.request.id).assertequal(9);
         console.info("===============onCancel_cancel_0900 end=======================>");
     }
@@ -722,7 +713,7 @@ describe('ActsAnsNotificationCancel', function () {
         }),1000);
     })
 
-    function onConsumeCancelWrongId(err, data) {
+    function onConsumeCancelWrongId(data) {
         console.info("================onConsume_cancel_cancel_wrongId_1000 start=======================>");
         console.info("================onConsume_1000 data: =======================>" + JSON.stringify(data));
         console.info("================onConsume_1000 label: =======================>" + data.request.label);
@@ -731,10 +722,9 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("================onConsume_cancel_cancel_wrongId_1000 cancel_id=======================>");
         console.info("================onConsume_cancel_cancel_wrongId_1000 end=======================>");
     }
-    function onCancelCancelWrongId(err, data) {
+    function onCancelCancelWrongId(data) {
         console.info("================onCancel_cancel_wrongId_1000 start=======================>");
         console.info("================onCancel_1000 data : =======================>" + JSON.stringify(data));
-        console.info("================onCancel_1000 err : =======================>" + JSON.stringify(err));
         expect(data.request.id).assertequal(0);
         console.info("================onCancel_cancel_wrongId_1000 end=======================>");
     }
@@ -798,7 +788,7 @@ describe('ActsAnsNotificationCancel', function () {
         }),1000);
     })
 
-    function onConsumeCancelIsUnremovable(err, data) {
+    function onConsumeCancelIsUnremovable(data) {
         console.info("================onConsume_cancel_isUnremovable_1100 start=======================>");
         console.info("================onConsume_1100 data: =======================>" + JSON.stringify(data));
         console.info("================onConsume_1100 label: =======================>" + data.request.label);
@@ -807,10 +797,9 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("================onConsume_1100 cancel=======================>");
         console.info("================onConsume_cancel_isUnremovable_1100 end=======================>");
     }
-    function onCancelCancelIsUnremovable(err, data) {
+    function onCancelCancelIsUnremovable(data) {
         console.info("===============onCancel_cancel_isUnremovable_1100 start=======================>");
         console.info("===============onCancel_1100 data : =======================>" + JSON.stringify(data));
-        console.info("===============onCancel_1100 err : =======================>" + JSON.stringify(err));
         expect(data.request.id).assertequal(11);
         console.info("===============onCancel_cancel_isUnremovable_1100 end=======================>");
     }
@@ -874,7 +863,7 @@ describe('ActsAnsNotificationCancel', function () {
     })
 
     var id1200
-    function onConsumeCancel2Times(err, data) {
+    function onConsumeCancel2Times(data) {
         console.info("================onConsume_cancel_2Times_1200 start=======================>");
         console.info("================onConsume_1200 data: =======================>" + JSON.stringify(data));
         console.info("================onConsume_1200 label: =======================>" + data.request.label);
@@ -884,11 +873,10 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("================onConsume_cancel_2Times_1200 cancel_2Times1=======================>");
         console.info("================onConsume_cancel_2Times_1200 end=======================>");
     }
-    function onCancelCancel2Times(err, data) {
+    function onCancelCancel2Times(data) {
         timesOfOnCancel = timesOfOnCancel + 1
         console.info("============onCancel_cancel_2Times_1200 start=======================>");
         console.info("===========onCancel_cancel_2Times_1200 data : =======================>" + JSON.stringify(data));
-        console.info("===========onCancel_cancel_2Times_1200 err : =======================>" + JSON.stringify(err));
         if (timesOfOnCancel == 1){
             expect(data.request.id).assertequal(12);
         }else if(timesOfOnCancel == 2) {
@@ -964,7 +952,7 @@ describe('ActsAnsNotificationCancel', function () {
         }),1000);
     })
 
-    function onConsumeCancelLabel(err, data) {
+    function onConsumeCancelLabel(data) {
         console.info("================onConsume_cancel_label_1300 start=======================>");
         console.info("================onConsume_1300 data: =======================>" + JSON.stringify(data));
         console.info("================onConsume_1300 label: =======================>" + data.request.label);
@@ -973,10 +961,9 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("================onConsume_cancel_label_1300 cancel_label=======================>");
         console.info("================onConsume_cancel_label_1300 end=======================>");
     }
-    function onCancelCancelLabel(err, data) {
+    function onCancelCancelLabel(data) {
         console.info("================onCancel_cancel_label_1300 start=======================>");
         console.info("================onCancel_1300 data : =======================>" + JSON.stringify(data));
-        console.info("================onCancel_1300 err : =======================>" + JSON.stringify(err));
         expect(data.request.id).assertequal(13);
         expect(data.request.label).assertequal("1300");
         console.info("================onCancel_cancel_label_1300 end=======================>");
@@ -1042,7 +1029,7 @@ describe('ActsAnsNotificationCancel', function () {
         }),1000);
     })
 
-    function onConsumeCancelLabelPromise(err, data) {
+    function onConsumeCancelLabelPromise(data) {
         console.info("================onConsume_cancel_label_promise start=======================>");
         console.info("================onConsume_promise data: =======================>" + JSON.stringify(data));
         console.info("================onConsume_promise label: =======================>" + data.request.label);
@@ -1051,10 +1038,9 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("==========cancel_labe_lpromise_1400 end==========>");
         console.info("================onConsume_cancel_label_promise end=======================>");
     }
-    function onCancelCancelLabelPromise(err, data) {
+    function onCancelCancelLabelPromise(data) {
         console.info("================onCancel_cancel_label_promise_1400 start=======================>");
         console.info("================onCancel_1400 data : =======================>" + JSON.stringify(data));
-        console.info("================onCancel_1400 err : =======================>" + JSON.stringify(err));
         console.info("================onCancel_1400 end=======================>");
     }
 
@@ -1112,7 +1098,7 @@ describe('ActsAnsNotificationCancel', function () {
         }),1000);
     })
 
-    function onConsumeCancelLabelIsUnremoveable(err, data) {
+    function onConsumeCancelLabelIsUnremoveable(data) {
         console.info("onConsume_cancel_label_isUnremoveable_1500 start=======================>");
         console.info("================onConsume_1500 data: =======================>" + JSON.stringify(data));
         console.info("================onConsume_1500 label: =======================>" + data.request.label);
@@ -1121,10 +1107,9 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("================onConsume_1500 cancel_label=======================>");
         console.info("================onConsume_1500 end=======================>");
     }
-    function onCancelCancelLabelIsUnremoveable(err, data) {
+    function onCancelCancelLabelIsUnremoveable(data) {
         console.info("================onCancel_Cancel_Label_IsUnremoveable_1500 start=======================>");
         console.info("================onCancel_1500 data : =======================>" + JSON.stringify(data));
-        console.info("================onCancel_1500 err : =======================>" + JSON.stringify(err));
         expect(data.request.id).assertequal(15);
         expect(data.request.label).assertequal("1500");
         console.info("================onCancel_Cancel_Label_IsUnremoveable_1500 end=======================>");
@@ -1189,7 +1174,7 @@ describe('ActsAnsNotificationCancel', function () {
         }),1000);
     })
 
-    function onConsumeCancelLabelIsUnremoveablePromise(err, data) {
+    function onConsumeCancelLabelIsUnremoveablePromise(data) {
         console.info("================onConsume_cancel_label_isUnremoveable_1600 start=======================>");
         console.info("================onConsume_1600 data: =======================>" + JSON.stringify(data));
         console.info("================onConsume_1600 label: =======================>" + data.request.label);
@@ -1198,10 +1183,9 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("==========cancel_label_isUnremoveable_promise_1600 end==========>");
         console.info("================onConsume_cancel_label_isUnremoveable_1600 end=======================>");
     }
-    function onCancelCancelLabelIsUnremoveablePromise(err, data) {
+    function onCancelCancelLabelIsUnremoveablePromise(data) {
         console.info("===============onConsume_cancel_label_isUnremoveable_1600 start=======================>");
         console.info("===============onConsume_1600 data : =======================>" + JSON.stringify(data));
-        console.info("===============onConsume_1600 err : =======================>" + JSON.stringify(err));
         console.info("===============onConsume_cancel_label_isUnremoveable_1600 end=======================>");
     }
 
@@ -1258,7 +1242,7 @@ describe('ActsAnsNotificationCancel', function () {
             console.info("==================ANS_Cancel_1600 done==================>");
         }),1000);
     })
-    function onConsumeCancelWrongLabel(err, data) {
+    function onConsumeCancelWrongLabel(data) {
         console.info("================onConsume_cancel_wrongLabel_1700 start=======================>");
         console.info("================onConsume_1700 data: =======================>" + JSON.stringify(data));
         console.info("================onConsume_1700 label: =======================>" + data.request.label);
@@ -1267,10 +1251,9 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("================onConsume_1700 cancel_label=======================>");
         console.info("================onConsume_cancel_wrongLabel_1700 end=======================>");
     }
-    function onCancelCancelWrongLabel(err, data) {
+    function onCancelCancelWrongLabel(data) {
         console.info("================onCancel_cancel_wrongLabel_1700 start=======================>");
         console.info("================onCancel_1700 data : =======================>" + JSON.stringify(data));
-        console.info("================onCancel_1700 err : =======================>" + JSON.stringify(err));
         expect(data.request.id).assertequal(0);
         expect(data.request.label).assertequal("0");
         console.info("=================onCancel_cancel_wrongLabel_1700 end=======================>");
@@ -1335,7 +1318,7 @@ describe('ActsAnsNotificationCancel', function () {
         }),1000);
     })
 
-    function onConsumeCancelWrongLabelPromise(err, data) {
+    function onConsumeCancelWrongLabelPromise(data) {
         console.info("onConsume_cancel_wrongLabel_1800 start=======================>");
         console.info("onConsume_cancel_wrongLabel_1800 data: =======================>" + JSON.stringify(data));
         console.info("onConsume_cancel_wrongLabel_1800 label: =======================>" + data.request.label);
@@ -1343,10 +1326,9 @@ describe('ActsAnsNotificationCancel', function () {
         notify.cancel(data.request.id, "9999");
         console.info("================onConsume_cancel_wrongLabel_1800 end=======================>");
     }
-    function onCancelCancelWrongLabelPromise(err, data) {
+    function onCancelCancelWrongLabelPromise(data) {
         console.info("================onCancel_cancel_wrongLabel_1800 start=======================>");
         console.info("================onCancel_1800 data : =======================>" + JSON.stringify(data));
-        console.info("================onCancel_1800 err : =======================>" + JSON.stringify(err));
         expect(data.request.id).assertequal(0);
         expect(data.request.label).assertequal("0");
         console.info("================onCancel_cancel_wrongLabel_1800 end=======================>");
@@ -1406,7 +1388,7 @@ describe('ActsAnsNotificationCancel', function () {
         }),1000);
     })
 
-    function onConsumeCancelLabelNullCharacter(err, data) {
+    function onConsumeCancelLabelNullCharacter(data) {
         console.info("================onConsume_cancel_label_nullCharacter_1900 start=======================>");
         console.info("================onConsume_1900 data: =======================>" + JSON.stringify(data));
         console.info("================onConsume_1900 label: =======================>" + data.request.label);
@@ -1415,10 +1397,9 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("================onConsume_cancel_nullCharacte_1900 cancel_label=======================>");
         console.info("================onConsume_cancel_nullCharacte_1900 end=======================>");
     }
-    function onCancelCancelLabelNullCharacter(err, data) {
+    function onCancelCancelLabelNullCharacter(data) {
         console.info("onCancel_cancel_label_nullCharacter_1900 start=======================>");
         console.info("================onCancel_1900 data : =======================>" + JSON.stringify(data));
-        console.info("================onCancel_1900 err : =======================>" + JSON.stringify(err));
         expect(data.request.id).assertequal(0);
         expect(data.request.label).assertequal("0");
         console.info("onCancel_cancel_nullCharacter_1900 end=======================>");
@@ -1483,7 +1464,7 @@ describe('ActsAnsNotificationCancel', function () {
         done();
     })
 
-    function onConsumeCancelNullCharacter(err, data) {
+    function onConsumeCancelNullCharacter(data) {
         console.info("==========onConsume_cancel_nullCharacte_2000 start=======================>");
         console.info("==========onConsume_2000 data: =======================>" + JSON.stringify(data));
         console.info("==========onConsume_2000 label: =======================>" + data.request.label);
@@ -1492,7 +1473,7 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("==========cancel_nullCharacte_2000 end==========>");
         console.info("================onConsume_cancel_nullCharacte_2000 end=======================>");
     }
-    function onCancelCancelNullCharacter(err, data) {
+    function onCancelCancelNullCharacter(data) {
         console.info("================onCancel_cancel_nullCharacter_2000 start=======================>");
         console.info("================onCancel_2000 data : =======================>" + JSON.stringify(data));
         console.info("================onCancel_2000 err : =======================>" + JSON.stringify(err));
@@ -1557,7 +1538,7 @@ describe('ActsAnsNotificationCancel', function () {
 
     var id2100
     var label2100
-    function onConsumeCancelLabel2Times(err, data) {
+    function onConsumeCancelLabel2Times(data) {
         console.info("onConsume_cancel_label_2Times_2100 start=======================>");
         console.info("onConsume_cancel_label_2Times_2100 data:====================>" + JSON.stringify(data));
         console.info("onConsume_cancel_label_2Times_2100 label:====================>" + data.request.label);
@@ -1568,11 +1549,10 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("=============onConsume_cancel_label_2Times_2100 cancel_label=======================>");
         console.info("=============onConsume_cancel_label_2Times_2100 end=======================>");
     }
-    function onCancelCancelLabel2Times(err, data) {
+    function onCancelCancelLabel2Times(data) {
         timesOfOnCancel = timesOfOnCancel + 1
         console.info("===============onCancel_cancel_label_2Times_2100 start=======================>");
         console.info("===============onCancel_2100 data : =======================>" + JSON.stringify(data));
-        console.info("===============onCancel_2100 err : =======================>" + JSON.stringify(err));
         if (timesOfOnCancel == 1){
             expect(data.request.id).assertequal(21);
             expect(data.request.label).assertequal("2100");
@@ -1651,7 +1631,7 @@ describe('ActsAnsNotificationCancel', function () {
 
     var id2200
     var label2200
-    function onConsumeCancelLabelPromise2Times(err, data) {
+    function onConsumeCancelLabelPromise2Times(data) {
         console.info("================onConsume_cancel_label_2Times_poromise_2200 start=======================>");
         console.info("onConsume_cancel_label_2Times_poromise_2200 data:========>" + JSON.stringify(data));
         console.info("onConsume_cancel_label_2Times_poromise_2200 label:========>" + data.request.label);
@@ -1664,11 +1644,10 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("==========cancel_label_2Times2_promise_2200 end==========>");
         console.info("================onConsume_cancel_label_2Times_poromise_2200 end=======================>");
     }
-    function onCancelCancelLabelPromise2Times(err, data) {
+    function onCancelCancelLabelPromise2Times(data) {
         console.info("onCancel_cancel_label_2Times_2200 start=======================>");
         timesOfOnCancel = timesOfOnCancel + 1
         console.info("onCancel_cancel_label_2Times_2200 data : =======================>" + JSON.stringify(data));
-        console.info("onCancel_cancel_label_2Times_2200 err : =======================>" + JSON.stringify(err));
         if (timesOfOnCancel == 1){
             expect(data.request.id).assertequal(22);
             expect(data.request.label).assertequal("2200");
@@ -1733,7 +1712,7 @@ describe('ActsAnsNotificationCancel', function () {
         }),1000);
     })
 
-    function onConsumeCancelRightLabelWrongId(err, data) {
+    function onConsumeCancelRightLabelWrongId(data) {
         console.info("================onConsume_cancel_rightLabel_wrongId_2300 start=======================>");
         console.info("================onConsume_2300 data: =======================>" + JSON.stringify(data));
         console.info("================onConsume_2300 label: =======================>" + data.request.label);
@@ -1742,10 +1721,9 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("================onConsume_2300 cancel_rightLabel_wrongId=======================>");
         console.info("================onConsume_cancel_rightLabel_wrongId_2300 end=======================>");
     }
-    function onCancelCancelRightLabelWrongId(err, data) {
+    function onCancelCancelRightLabelWrongId(data) {
         console.info("===================onCancel_cancel_rightLabel_wrongId_2300 start=======================>");
         console.info("================onCancel_2300 data : =======================>" + JSON.stringify(data));
-        console.info("================onCancel_2300 err : =======================>" + JSON.stringify(err));
         expect().assertFail();
         console.info("================onCancel_cancel_rightLabel_wrongId_2300 end=======================>");
     }
@@ -1809,7 +1787,7 @@ describe('ActsAnsNotificationCancel', function () {
         }),1000);
     })
 
-    function onConsumeCancelRightLabelWrongIdPromise(err, data) {
+    function onConsumeCancelRightLabelWrongIdPromise(data) {
         console.info("onConsume_cancel_rightLabel_wrongId_promise_2400 start=======================>");
         console.info("================onConsume_2400 data: =======================>" + JSON.stringify(data));
         console.info("================onConsume_2400 label: =======================>" + data.request.label);
@@ -1819,10 +1797,9 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("================onConsume_2400 cancel_rightLabel_wrongId=======================>");
         console.info("================onConsume_2400 end=======================>");
     }
-    function onCancelCancelRightLabelWrongIdPromise(err, data) {
+    function onCancelCancelRightLabelWrongIdPromise(data) {
         console.info("================onCancel_cancel_rightLabel_wrongId_2400 start : =======================>");
         console.info("================onCancel_2400 data : =======================>" + JSON.stringify(data));
-        console.info("================onCancel_2400 err : =======================>" + JSON.stringify(err));
         expect(data.request.id).assertequal(0);
         expect(data.request.label).assertequal("0");
         console.info("================onCancel_cancel_rightLabel_wrongId_2400 end=======================>");
@@ -1882,7 +1859,7 @@ describe('ActsAnsNotificationCancel', function () {
         }),1000);
     })
 
-    function onConsumeCancelWrongLabelWrongId(err, data) {
+    function onConsumeCancelWrongLabelWrongId(data) {
         console.info("================onConsume_cancel_wrongLabel_wrongId_2500 start=======================>");
         console.info("================onConsume_2500 data: =======================>" + JSON.stringify(data));
         console.info("================onConsume_2500 label: =======================>" + data.request.label);
@@ -1891,10 +1868,9 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("================onConsume__2500 cancel=======================>");
         console.info("================onConsume_cancel_wrongLabel_wrongId_2500 end=======================>");
     }
-    function onCancelCancelWrongLabelWrongId(err, data) {
+    function onCancelCancelWrongLabelWrongId(data) {
         console.info("================onCancel_cancel_wrongLabel_wrongId_2500 start=======================>");
         console.info("================onCancel_2500 data : =======================>" + JSON.stringify(data));
-        console.info("================onCancel__2500 err : =======================>" + JSON.stringify(err));
         expect().assertFail();
         console.info("================onCancel_cancel_wrongLabel_wrongId_2500 end=======================>");
     }
@@ -1958,7 +1934,7 @@ describe('ActsAnsNotificationCancel', function () {
         }),1000);
     })
 
-    function onConsumeCancelWrongLabelWrongIdPromise(err, data) {
+    function onConsumeCancelWrongLabelWrongIdPromise(data) {
         console.info("===========onConsume_cancel_wrongLabel_wrongId_2600 start=======================>");
         console.info("onConsume_cancel_2600 data: =======================>" + JSON.stringify(data));
         console.info("onConsume_cancel_2600 label: =======================>" + data.request.label);
@@ -1967,10 +1943,9 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("==========cancel_wrongLabel_wrongId_2600 end==========>");
         console.info("================onConsume_cancel_wrongLabel_wrongId_2600 end=======================>");
     }
-    function onCancelCancelWrongLabelWrongIdPromise(err, data) {
+    function onCancelCancelWrongLabelWrongIdPromise(data) {
         console.info("================onCancel_cancel_wrongLabel_wrongId_2600 start=======================>");
         console.info("onCancel_2600 data : =======================>" + JSON.stringify(data));
-        console.info("onCancel_2600 err : =======================>" + JSON.stringify(err));
         expect().assertFail();
         console.info("================onCancel_cancel_wrongLabel_wrongId_2600 end=======================>");
     }

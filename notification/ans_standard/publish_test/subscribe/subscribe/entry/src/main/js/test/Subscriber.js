@@ -23,12 +23,12 @@ describe('ActsAnsSubscriberTest', function () {
         onConnect:connectCallbacka,
         onDisconnect:disconnectCallbacka,
     }
-    function consumeCallbackc(err,data) {
-        console.debug("==>consumeCallbackc data : ==>" +err+ JSON.stringify(data));
+    function consumeCallbackc(data) {
+        console.debug("==>consumeCallbackc data : ==>" + JSON.stringify(data));
         checkConsumeData(data)
         notify.unsubscribe(subInfoa, unSubscribeCallbacka);
     }
-    function connectCallbacka(err) {
+    function connectCallbacka() {
         console.debug("==>connectCallbacka code==>");
     }
     function subscribeCallbacka(err) {
@@ -39,11 +39,11 @@ describe('ActsAnsSubscriberTest', function () {
         console.debug("==>unSubscribeCallbacka code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
-    function disconnectCallbacka(err){
+    function disconnectCallbacka(){
         console.debug("==>disconnectCallbacka code==>");
     }
     //ActsSubscriber_test_0200
-    function connectCallbackb(err) {
+    function connectCallbackb() {
         console.debug("==>connectCallbackb code==>");
     }
     function subscribeCallbackb(err) {
@@ -58,14 +58,14 @@ describe('ActsAnsSubscriberTest', function () {
         console.debug("==>unSubscribeCallbackb code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
-    function disconnectCallbackb(err){
+    function disconnectCallbackb(){
         console.debug("==>disconnectCallbackb code==>");
     }
     //ActsSubscriber_test_0300
-    function connectCallbackc(err) {
+    function connectCallbackc() {
         console.debug("==>connectCallbackc code==>");
     }
-    function connectCallbackd(err) {
+    function connectCallbackd() {
         console.debug("==>connectCallbackd code==>");
     }
     function subscribeCallbackd(err) {
@@ -84,17 +84,17 @@ describe('ActsAnsSubscriberTest', function () {
         console.debug("==>unSubscribeCallbackd code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
-    function disconnectCallbackc(err){
+    function disconnectCallbackc(){
         console.debug("==>disconnectCallbackc code==>");
     }
-    function disconnectCallbackd(err){
+    function disconnectCallbackd(){
         console.debug("==>disconnectCallbackd code==>");
     }
     //ActsSubscriber_test_0500
-    function connectCallbackf(err) {
+    function connectCallbackf() {
         console.debug("==>connectCallbackf code==>");
     }
-    function connectCallbackg(err) {
+    function connectCallbackg() {
         console.debug("==>connectCallbackg code==>");
     }
     function subscribeCallbackg(err) {
@@ -117,10 +117,10 @@ describe('ActsAnsSubscriberTest', function () {
         console.debug("==>unSubscribeCallbackg code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
-    function disconnectCallbackf(err){
+    function disconnectCallbackf(){
         console.debug("==>disconnectCallbackf code==>");
     }
-    function disconnectCallbackg(err){
+    function disconnectCallbackg(){
         console.debug("==>disconnectCallbackg code==>");
     }
     //ActsSubscriber_test_0600
@@ -129,12 +129,12 @@ describe('ActsAnsSubscriberTest', function () {
         onConnect:connectCallbacki,
         onDisconnect:disconnectCallbacki,
     }
-    function consumeCallbacka(err,data) {
-        console.debug("==>consumeCallbacka data : ==>" +err+ JSON.stringify(data));
+    function consumeCallbacka(data) {
+        console.debug("==>consumeCallbacka data : ==>" + JSON.stringify(data));
         checkConsumeData(data)
         notify.unsubscribe(subInfob, unSubscribeCallbacki);
     }
-    function connectCallbacki(err) {
+    function connectCallbacki() {
         console.debug("==>connectCallbacki code==>");
     }
     function subscribeCallbackl(err) {
@@ -145,7 +145,7 @@ describe('ActsAnsSubscriberTest', function () {
         console.debug("==>unSubscribeCallbacki code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
-    function disconnectCallbacki(err){
+    function disconnectCallbacki(){
         console.debug("==>disconnectCallbacki code==>");
     }
     //ActsSubscriber_test_0700
@@ -154,19 +154,19 @@ describe('ActsAnsSubscriberTest', function () {
         onConnecte:connectCallbackj,
         onDisconnect:disconnectCallbackj,
     }
-    function consumeCallbackb(err,data) {
-        console.debug("==>consumeCallbackb data : ==>" +err+ JSON.stringify(data));
+    function consumeCallbackb(data) {
+        console.debug("==>consumeCallbackb data : ==>" + JSON.stringify(data));
         checkConsumeData(data)
         notify.unsubscribe(subInfoc, unSubscribeCallbackj);
     }
-    function connectCallbackj(err) {
+    function connectCallbackj() {
         console.debug("==>connectCallbackj code==>");
     }
     function unSubscribeCallbackj(err){
         console.debug("==>unSubscribeCallbackj code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
-    function disconnectCallbackj(err){
+    function disconnectCallbackj(){
         console.debug("==>disconnectCallbackj code==>");
     }
     //ActsSubscriber_test_0800
@@ -175,12 +175,12 @@ describe('ActsAnsSubscriberTest', function () {
         onConnect:connectCallbackm,
         onDisconnect:disconnectCallbackl,
     }
-    function consumeCallbackd(err,data) {
-        console.debug("==>consumeCallbackd data : ==>" +err+ JSON.stringify(data));
+    function consumeCallbackd(data) {
+        console.debug("==>consumeCallbackd data : ==>" + JSON.stringify(data));
         checkConsumeData(data)
         notify.unsubscribe(subInfod, unSubscribeCallbackl);
     }
-    function connectCallbackm(err) {
+    function connectCallbackm() {
         console.debug("==>connectCallbackm code==>");
     }
     function subscribeCallbackn(err) {
@@ -191,7 +191,7 @@ describe('ActsAnsSubscriberTest', function () {
         console.debug("==>unSubscribeCallbackl code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
-    function disconnectCallbackl(err){
+    function disconnectCallbackl(){
         console.debug("==>disconnectCallbackl code==>");
     }
     //ActsSubscriber_test_0900
@@ -200,23 +200,23 @@ describe('ActsAnsSubscriberTest', function () {
         onConnect:connectCallbackn,
         onDisconnect:disconnectCallbackm,
     }
-    function consumeCallbacke(err,data) {
-        console.debug("==>consumeCallbacke data : ==>" +err+ JSON.stringify(data));
+    function consumeCallbacke(data) {
+        console.debug("==>consumeCallbacke data : ==>" + JSON.stringify(data));
         checkConsumeData(data)
         notify.unsubscribe(subInfoe, unSubscribeCallbackm);
     }
-    function connectCallbackn(err) {
+    function connectCallbackn() {
         console.debug("==>connectCallbackn code==>");
     }
     function unSubscribeCallbackm(err){
         console.debug("==>unSubscribeCallbackm code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
-    function disconnectCallbackm(err){
+    function disconnectCallbackm(){
         console.debug("==>disconnectCallbackm code==>");
     }
     //ActsSubscriber_test_1400
-    function connectCallbackl(err){
+    function connectCallbackl(){
         console.debug("==>connectCallbackl code==>");
     }
     function subscribeCallbacko(err){
@@ -227,11 +227,11 @@ describe('ActsAnsSubscriberTest', function () {
         console.debug("==>unSubscribeCallbackn code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
-    function disconnectCallbackn(err){
+    function disconnectCallbackn(){
         console.debug("==>disconnectCallbackn code==>");
     }
     //ActsSubscriber_test_1500
-    function connectCallbacko(err){
+    function connectCallbacko(){
         console.debug("==>connectCallbacko  code==>");
     }
     function subscribeCallbackp(err){
@@ -242,7 +242,7 @@ describe('ActsAnsSubscriberTest', function () {
         console.debug("==>unSubscribeCallbacko code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
-    function disconnectCallbacko(err){
+    function disconnectCallbacko(){
         console.debug("==>disconnectCallbacko code==>");
     }
     function checkConsumeData(data){
