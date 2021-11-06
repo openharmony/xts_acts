@@ -18,7 +18,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe('ActsAmsCallBackSixth Scene', function () {
     console.info('----ActsAmsCallBackSixth----');
-    beforeAll(function () {
+    beforeAll(function() {
         featureAbility.startAbility(
             {
                 want:
@@ -37,21 +37,26 @@ describe('ActsAmsCallBackSixth Scene', function () {
                 },
             },
         );
+        sleep(5000)
     });
+
+    function sleep(delay) {
+        var start = (new Date()).getTime();
+        while((new Date()).getTime() - start < delay) {
+            continue;
+        }
+    }
+
     /*
-    * @tc.number    : Acts_Ams_test_12200
+    * @tc.number    : Acts_Ams_test_12100
     * @tc.name      : clearMissions : Clear Missions
-    * @tc.desc      : Clear Missions(by CallBack)
+    * @tc.desc      : Clear Missions(by Promise)
      */
-    it('Acts_Ams_test_12200', 0, async function (done) {
-        setTimeout(function (){
-            abilitymanager.clearMissions(
-                (error,info) => {
-                    console.info('Acts_Ams_test_12200 clearMissions error.code ' + error.code + ',data  [' + info + ']' );
-                    expect(typeof(info)).assertEqual("number");
-                    expect(info).assertEqual(0);
-                });
-            done();
-        },5000)
+    it('Acts_Ams_test_12100', 0, async function (done) {
+        var info = await abilitymanager.clearMissions();
+        console.info('Acts_Ams_test_12100 clearMissions data  [' + info + ']');
+        expect(typeof(info)).assertEqual("number");
+        expect(info).assertEqual(0);
+        done();
     })
 })
