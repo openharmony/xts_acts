@@ -83,6 +83,27 @@ describe('ActsBmsModuleUsageRecordTest', function () {
             )
         });
     })
+
+    beforeEach(async (done) => {
+        bundle.getBundleInfo(BUNDLE_NAME, 1, async (err, data) => {
+            if (err.code != 0 && data.name.length == 0) {
+                let installer = await bundle.getBundleInstaller();
+                installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
+                    param: {
+                        userId: 0,
+                        installFlag: 1,
+                        isKeepData: false
+                    }
+                }, async (err, data) => {
+                    console.debug('========install Finish========' + JSON.stringify(data));
+                    done();
+                });
+            } else {
+                console.info("third1 is exist");
+                done();
+            }
+        });
+    })
     /*
     * @tc.number: bms_getModuleUsageRecordTest_0100
     * @tc.name: getModuleUsageRecord(maxNum)
@@ -101,14 +122,14 @@ describe('ActsBmsModuleUsageRecordTest', function () {
         if (dataMap.has(BUNDLE_NAME)) {
             let data = dataMap.get(BUNDLE_NAME);
             expect(data.bundleName).assertEqual('com.example.third1');
-            expect(data.appLabelId).assertEqual(0);
+            expect(data.appLabelId >= 0).assertTrue();
             expect(data.name).assertEqual('entry');
-            expect(data.labelId).assertEqual(0);
+            expect(data.labelId >= 0).assertTrue();
             expect(data.descriptionId).assertEqual(0);
             expect(data.abilityName).assertEqual('com.example.third1.MainAbility');
-            expect(data.abilityLabelId).assertEqual(0);
-            expect(data.abilityDescriptionId).assertEqual(0);
-            expect(data.abilityIconId).assertEqual(0);
+            expect(data.abilityLabelId >= 0).assertTrue();
+            expect(data.abilityDescriptionId >= 0).assertTrue();
+            expect(data.abilityIconId >= 0).assertTrue();
             expect(data.launchedCount).assertEqual(START_COUNT);
             expect(data.lastLaunchTime).assertLarger(0);
             expect(data.isRemoved).assertEqual(false);
@@ -596,13 +617,11 @@ describe('ActsBmsModuleUsageRecordTest', function () {
             console.debug('=======All Info========' + JSON.stringify(data[i]));
             console.debug('=============bundleName is=========' + JSON.stringify(data[i].bundleName));
             expect(data[i].bundleName.length).assertLarger(0);
-            if (data[i].bundleName == BUNDLE_NAME) {
-                expect(data[i].appLabelId).assertEqual(0);
-                expect(data[i].labelId).assertEqual(0);
-                expect(data[i].abilityLabelId).assertEqual(0);
-                expect(data[i].abilityDescriptionId).assertEqual(0);
-                expect(data[i].abilityIconId).assertEqual(0);
-            }
+            expect(data[i].appLabelId >= 0).assertTrue();
+            expect(data[i].labelId >= 0).assertTrue();
+            expect(data[i].abilityLabelId >= 0).assertTrue();
+            expect(data[i].abilityDescriptionId >= 0).assertTrue();
+            expect(data[i].abilityIconId >= 0).assertTrue();
             console.debug('=============appLabelId==============' + JSON.stringify(data[i].appLabelId));
             console.debug('=============name==============' + JSON.stringify(data[i].name));
             expect(data[i].name.length).assertLarger(0);

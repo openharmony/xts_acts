@@ -15,9 +15,9 @@
 
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-var time = 1000
+var time = 500
 describe('ActsAnsAllActiveTestOne', function () {
-    console.info("===========ActsAnsAllActiveTestOne start====================>");
+    console.info("===========ActsAnsAllActiveTestOne  start====================>");
     function getAllCallback(err, data){
         console.log("Ans_GetAllActive_0100 getAllCallback ============>");
         var i;
@@ -76,9 +76,9 @@ describe('ActsAnsAllActiveTestOne', function () {
         console.debug("===============Ans_GetAllActive_0100 publish CurrentApp notify end==================>");
         notify.getAllActiveNotifications(getAllCallback);
         console.debug("===============Ans_GetAllActive_0100 getAllActiveNotifications end==================>");
-        done();
-        setTimeout(async function(){
-            console.debug("===============Ans_GetAllActive_0100 done==================>");
+        setTimeout(function(){
+            console.debug("===============Ans_GetAllActive_0100 setTimeout==================>");
+            done();
         }, time);
     })
 
@@ -134,9 +134,9 @@ describe('ActsAnsAllActiveTestOne', function () {
                 console.log("============Ans_GetAllActive_0200 label=====>"+promiseData[i].label)
             }
         }
-        done();
-        setTimeout(async function(){
-            console.debug("===============Ans_GetAllActive_0200 done==================>");
+        setTimeout(function(){
+            console.debug("===============Ans_GetAllActive_0200 setTimeout==================>");
+            done();
         }, time);
     })
 
@@ -186,9 +186,9 @@ describe('ActsAnsAllActiveTestOne', function () {
         await notify.cancel(1, "currentApp_0300");
         notify.getAllActiveNotifications(getAllCallbackThree);
         console.debug("===============Ans_GetAllActive_0300 getAllActiveNotifications end==================>");
-        done();
-        setTimeout(async function(){
-            console.debug("===============Ans_GetAllActive_0300 done==================>");
+        setTimeout(function(){
+            console.debug("===============Ans_GetAllActive_0300 setTimeout==================>");
+            done();
         }, time);
     })
 
@@ -232,9 +232,9 @@ describe('ActsAnsAllActiveTestOne', function () {
             console.log("============Ans_GetAllActive_0400 label=====>"+promiseData[i].label)
         }
         console.debug("===============Ans_GetAllActive_0400 getAllActiveNotifications end==================>");
-        done();
         setTimeout(function(){
-            console.debug("===============Ans_GetAllActive_0400 done==================>");
+            console.debug("===============Ans_GetAllActive_0400 setTimeout==================>");
+            done();
         }, time);
     })
 
@@ -269,9 +269,9 @@ describe('ActsAnsAllActiveTestOne', function () {
         await notify.removeAll();
         notify.getAllActiveNotifications(getAllCallbackFive);
         console.debug("===============Ans_GetAllActive_0500 getAllActiveNotifications end==================>");
-        done();
-        setTimeout(async function(){
-            console.debug("===============Ans_GetAllActive_0500 done==================>");
+        setTimeout(function(){
+            console.debug("===============Ans_GetAllActive_0500 setTimeout==================>");
+            done();
         }, time);
     })
 
@@ -303,9 +303,9 @@ describe('ActsAnsAllActiveTestOne', function () {
         expect(promiseData.length).assertEqual(0);
         console.debug("=======Ans_GetAllActive_0600 promiseData.length==========>"+promiseData.length);
         console.debug("=======Ans_GetAllActive_0600 promiseData==========>"+JSON.stringify(promiseData));
-        done();
-        setTimeout(async function(){
-            console.debug("===============Ans_GetAllActive_0600 done==================>");
+        setTimeout(function(){
+            console.debug("===============Ans_GetAllActive_0600 setTimeout==================>");
+            done();
         }, time);
     })
 
@@ -324,9 +324,9 @@ describe('ActsAnsAllActiveTestOne', function () {
         await notify.removeAll();
         notify.getAllActiveNotifications(getAllCallbackSeven);
         console.debug("===============Ans_GetAllActive_0700 getAllActiveNotifications end==================>");
-        done();
-        setTimeout(async function(){
-            console.debug("===============Ans_GetAllActive_0700 done==================>");
+        setTimeout(function(){
+            console.debug("===============Ans_GetAllActive_0700 setTimeout==================>");
+            done();
         }, time);
     })
 
@@ -341,9 +341,9 @@ describe('ActsAnsAllActiveTestOne', function () {
         var promiseData = await notify.getAllActiveNotifications();
         console.debug("=========Ans_GetAllActive_0800 promiseData.length=============>"+promiseData.length);
         expect(promiseData.length).assertEqual(0);
-        done();
-        setTimeout(async function(){
-            console.debug("===============Ans_GetAllActive_0800 done==================>");
+        setTimeout(function(){
+            console.debug("===============Ans_GetAllActive_0800 setTimeout==================>");
+            done();
         }, time);
     })
 })

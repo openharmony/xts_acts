@@ -14,7 +14,7 @@
  */
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-var time = 1000
+var time = 500
 describe('ActsAnsUnSubscriberTest', function () {
     console.debug("===============ActsAnsUnSubscriberTest start=================>");
     function onConnecteOne() {
@@ -31,22 +31,19 @@ describe('ActsAnsUnSubscriberTest', function () {
      */
     it('Ans_UnSubscriber_0100', 0, async function (done) {
         console.info("===========Ans_UnSubscriber_0100 start=============>");
-        function unSubscribeCallbackOne(err) {
-            console.debug("===========Ans_UnSubscriber_0100 unSubscribeCallbackOne err.code=================>"+err.code);
-            expect(err.code).assertEqual(0)
-            done();
-        }
         var subscriber ={
             onConnect:onConnecteOne,
             onDisconnect:onDisconnectOne
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===========Ans_UnSubscriber_0100 subscribe=============>");
-        await notify.unsubscribe(subscriber, unSubscribeCallbackOne);
-        console.info("===========Ans_UnSubscriber_0100 unsubscribe=============>");
-
+        notify.unsubscribe(subscriber, (err)=>{
+            console.debug("===========Ans_UnSubscriber_0100 unsubscribe err.code=================>"+err.code);
+            expect(err.code).assertEqual(0);
+        });
         setTimeout(function(){
-            console.debug("===========Ans_UnSubscriber_0100 done=============>");
+            console.debug("===========Ans_UnSubscriber_0100 setTimeout=============>");
+            done();
         }, time);
     })
 
@@ -68,13 +65,16 @@ describe('ActsAnsUnSubscriberTest', function () {
             onConnect:onConnecteTwo,
             onDisconnect:onDisconnectTwo
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===========Ans_UnSubscriber_0200 subscribe=============>");
-        await notify.unsubscribe(subscriber);
-        console.info("===========Ans_UnSubscriber_0200 unsubscribe=============>");
-        done();
+        notify.unsubscribe(subscriber).then(()=>{
+            console.debug("=======Ans_UnSubscriber_0200 subscribe then==========>");
+        }).catch((err)=>{
+            console.debug("=======Ans_UnSubscriber_0200 subscribe catch err==========>"+err.code);
+        });
         setTimeout(function(){
-            console.debug("===========Ans_UnSubscriber_0200 done=============>");
+            console.debug("===========Ans_UnSubscriber_0200 setTimeout=============>");
+            done();
         }, time);
     })
 
@@ -84,10 +84,6 @@ describe('ActsAnsUnSubscriberTest', function () {
     function onDisconnectThree() {
         console.debug("=======Ans_UnSubscriber_0300 onDisconnectThree=================>");
         expect().assertFail();
-    }
-    function unSubscribeCallbackThree(err){
-        console.debug("Ans_UnSubscriber_0300 unSubscribeCallbackThree err.code=================>"+err.code);
-        expect(err.code).assertNotEqual(0);
     }
 
     /*
@@ -107,11 +103,13 @@ describe('ActsAnsUnSubscriberTest', function () {
         }
         await notify.subscribe(subscriber);
         console.info("===========Ans_UnSubscriber_0300 subscribe=============>");
-        await notify.unsubscribe(subscriberErr,unSubscribeCallbackThree);
-        console.info("===========Ans_UnSubscriber_0300 unsubscribe=============>");
-        done();
+        notify.unsubscribe(subscriberErr,(err)=>{
+            console.debug("Ans_UnSubscriber_0300 unsubscribe callback err=========>"+err.code);
+            expect(err.code != 0).assertEqual(true);
+        });
         setTimeout(function(){
-            console.debug("===========Ans_UnSubscriber_0300 done=============>");
+            console.debug("===========Ans_UnSubscriber_0300 setTimeout=============>");
+            done();
         }, time);
     })
 
@@ -141,12 +139,12 @@ describe('ActsAnsUnSubscriberTest', function () {
         await notify.subscribe(subscriber);
         console.info("===========Ans_UnSubscriber_0400 subscribe=============>");
         notify.unsubscribe(subscriberErr).then().catch((err)=>{
-            console.debug("=======Ans_UnSubscriber_0400 subscribe catch err=================>"+err.code);
-            expect(err.code).assertEqual(67108867)
+            console.debug("=======Ans_UnSubscriber_0400 subscribe catch err==========>"+err.code);
+            expect(err.code != 0).assertEqual(true);
         });
-        done();
         setTimeout(function(){
-            console.debug("===========Ans_UnSubscriber_0400 done=============>");
+            console.debug("===========Ans_UnSubscriber_0400 setTimeout=============>");
+            done();
         }, time);
     })
 
@@ -156,10 +154,6 @@ describe('ActsAnsUnSubscriberTest', function () {
     function onDisconnectFive() {
         console.debug("=======Ans_UnSubscriber_0500 onDisconnectFive=================>");
         expect().assertFail();
-    }
-    function unSubscribeCallbackFive(err){
-        console.debug("Ans_UnSubscriber_0500 unSubscribeCallbackFive err.code=================>"+err.code);
-        expect(err.code).assertNotEqual(0);
     }
     function onConnecteTest() {
         console.debug("=======Ans_UnSubscriber_0500 onConnecteTest=================>");
@@ -185,13 +179,16 @@ describe('ActsAnsUnSubscriberTest', function () {
             onConnect:onConnecteTest,
             onDisconnect:onDisconnectTest
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===========Ans_UnSubscriber_0500 subscribe=============>");
-        await notify.unsubscribe(subscriberTest,unSubscribeCallbackFive);
+        notify.unsubscribe(subscriberTest,(err)=>{
+            console.debug("Ans_UnSubscriber_0500 unsubscribe err.code=================>"+err.code);
+            expect(err.code != 0).assertEqual(true);
+        });
         console.info("===========Ans_UnSubscriber_0500 unsubscribe=============>");
-        done();
         setTimeout(function(){
-            console.debug("===========Ans_UnSubscriber_0500 done=============>");
+            console.debug("===========Ans_UnSubscriber_0500 setTimeout=============>");
+            done();
         }, time);
     })
 
@@ -226,15 +223,15 @@ describe('ActsAnsUnSubscriberTest', function () {
             onConnect:onConnecteTestTwo,
             onDisconnect:onDisconnectTestTwo
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===========Ans_UnSubscriber_0600 subscribe=============>");
         notify.unsubscribe(subscriberTest).then().catch((err)=>{
             console.debug("=======Ans_UnSubscriber_0600 unsubscribe catch err=================>"+err.code);
-            expect(err.code).assertNotEqual(0)
+            expect(err.code != 0).assertEqual(true);
         });
-        done();
         setTimeout(function(){
-            console.debug("===========Ans_UnSubscriber_0600 done=============>");
+            console.debug("===========Ans_UnSubscriber_0600 setTimeout=============>");
+            done();
         }, time);
     })
 
@@ -249,14 +246,6 @@ describe('ActsAnsUnSubscriberTest', function () {
             expect().assertFail();
         }
     }
-    function unSubscribeCallbackSevenFirst(err){
-        console.debug("Ans_UnSubscriber_0700 unSubscribeCallbackSevenFirst err.code=================>"+err.code);
-        expect(err.code).assertEqual(0)
-    }
-    function unSubscribeCallbackSevenSecond(err){
-        console.debug("Ans_UnSubscriber_0700 unSubscribeCallbackSevenSecond err.code=================>"+err.code);
-        expect(err.code).assertNotEqual(0);
-    }
 
     /*
      * @tc.number: Ans_UnSubscriber_0700
@@ -265,21 +254,24 @@ describe('ActsAnsUnSubscriberTest', function () {
      */
     it('Ans_UnSubscriber_0700', 0, async function (done) {
         console.info("===========Ans_UnSubscriber_0700 start=============>");
-
         timesOfOnDis = 0
         var subscriber ={
             onConnect:onConnecteSeven,
             onDisconnect:onDisconnectSeven
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===========Ans_UnSubscriber_0700 subscribe=============>");
-        await notify.unsubscribe(subscriber, unSubscribeCallbackSevenFirst);
-        console.info("===========Ans_UnSubscriber_0700 unsubscribe first end=============>");
-        await notify.unsubscribe(subscriber, unSubscribeCallbackSevenSecond);
-        console.info("===========Ans_UnSubscriber_0700 unsubscribe second end=============>");
-        done();
+        notify.unsubscribe(subscriber, (err)=>{
+            console.debug("Ans_UnSubscriber_0700 unsubscribe first err.code=================>"+err.code);
+            expect(err.code).assertEqual(0);
+            notify.unsubscribe(subscriber, (err)=>{
+                console.debug("Ans_UnSubscriber_0700 unsubscribe Second err.code=================>"+err.code);
+                expect(err.code != 0).assertEqual(true);
+            });
+        });
         setTimeout(function(){
-            console.info("===========Ans_UnSubscriber_0700 done=============>");
+            console.debug("===========Ans_UnSubscriber_0700 setTimeout=============>");
+            done();
         }, time);
     })
 
@@ -307,36 +299,28 @@ describe('ActsAnsUnSubscriberTest', function () {
             onConnect:onConnecteEight,
             onDisconnect:onDisconnectEight
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===========Ans_UnSubscriber_0800 subscribe=============>");
         notify.unsubscribe(subscriber).then((err)=>{
             console.debug("=======Ans_UnSubscriber_0800 subscribe first then err=================>"+err.code);
+            notify.unsubscribe(subscriber).then((err)=>{
+                console.debug("=======Ans_UnSubscriber_0800 subscribe second then err=================>"+err.code);
+            }).catch((err)=>{
+                console.debug("=======Ans_UnSubscriber_0800 subscribe second catch err=================>"+err.code);
+                expect(err.code != 0).assertEqual(true);
+            });
         }).catch((err)=>{
             console.debug("=======Ans_UnSubscriber_0800 subscribe first catch err=================>"+err.code);
         });
-        notify.unsubscribe(subscriber).then((err)=>{
-            console.debug("=======Ans_UnSubscriber_0800 subscribe second then err=================>"+err.code);
-        }).catch((err)=>{
-            console.debug("=======Ans_UnSubscriber_0800 subscribe second catch err=================>"+err.code);
-            expect(err.code).assertNotEqual(0)
-        });
-        done();
         setTimeout(function(){
-            console.info("===========Ans_UnSubscriber_0800 done=============>");
+            console.debug("===========Ans_UnSubscriber_0800 setTimeout=============>");
+            done();
         }, time);
     })
 
     function onDisconnectTestNine() {
         console.debug("=======Ans_UnSubscriber_0900 onDisconnectTestNine =================>");
         expect().assertFail();
-    }
-    function subscribeCallbackNine(err){
-        console.debug("Ans_UnSubscriber_0900 subscribeCallbackNine err.code=================>"+err.code);
-        expect(err.code).assertNotEqual(0);
-    }
-    function unSubscribeCallbackNine(err){
-        console.debug("Ans_UnSubscriber_0900 unSubscribeCallbackNine err.code=================>"+err.code);
-        expect(err.code).assertNotEqual(0);
     }
 
     /*
@@ -350,11 +334,17 @@ describe('ActsAnsUnSubscriberTest', function () {
             onConnect:"",
             onDisconnect:onDisconnectTestNine
         }
-        await notify.subscribe(subscriber, subscribeCallbackNine);
-        notify.unsubscribe(subscriber, unSubscribeCallbackNine);
-        done();
+        notify.subscribe(subscriber, (err)=>{
+            console.debug("Ans_UnSubscriber_0900 subscribeCallbackNine err.code=================>"+err.code);
+            expect(err.code != 0).assertEqual(true);
+            notify.unsubscribe(subscriber, (err)=>{
+                console.debug("Ans_UnSubscriber_0900 unsubscribe err.code=================>"+err.code);
+                expect(err.code != 0).assertEqual(true);
+            });
+        });
         setTimeout(function(){
-            console.info("===========Ans_UnSubscriber_0900 done=============>");
+            console.debug("===========Ans_UnSubscriber_0900 setTimeout=============>");
+            done();
         }, time);
     })
 
@@ -362,10 +352,7 @@ describe('ActsAnsUnSubscriberTest', function () {
         console.debug("=======Ans_UnSubscriber_1000 onDisconnectTestTen =================>");
         expect().assertFail();
     }
-    function subscribeCallbackTen(err){
-        console.debug("Ans_UnSubscriber_1000 subscribeCallbackTen err.code=================>"+err.code);
-        expect(err.code).assertNotEqual(0);
-    }
+
     /*
      * @tc.number: Ans_UnSubscriber_1000
      * @tc.name: unsubscribe(subscriber: NotificationSubscriber): Promise<void>;
@@ -377,17 +364,17 @@ describe('ActsAnsUnSubscriberTest', function () {
             onConnect:"",
             onDisconnect:onDisconnectTestTen
         }
-        await notify.subscribe(subscriber, subscribeCallbackTen);
-        console.info("===========Ans_UnSubscriber_1000 subscribe end=============>");
-        notify.unsubscribe(subscriber).then((err)=>{
-            console.debug("=======Ans_UnSubscriber_1000 subscribe then err=================>"+err.code);
-        }).catch((err)=>{
-            console.debug("=======Ans_UnSubscriber_1000 subscribe catch err=================>"+err.code);
-            expect(err.code).assertNotEqual(0)
+        notify.subscribe(subscriber, (err)=>{
+            notify.unsubscribe(subscriber).then((err)=>{
+                console.debug("=======Ans_UnSubscriber_1000 subscribe then err=================>"+err.code);
+            }).catch((err)=>{
+                console.debug("=======Ans_UnSubscriber_1000 subscribe catch err=================>"+err.code);
+                expect(err.code != 0).assertEqual(true);
+            });
         });
-        done();
         setTimeout(function(){
-            console.info("===========Ans_UnSubscriber_1000 done=============>");
+            console.debug("===========Ans_UnSubscriber_1000 setTimeout=============>");
+            done();
         }, time);
     })
 
@@ -398,10 +385,6 @@ describe('ActsAnsUnSubscriberTest', function () {
         console.debug("============Ans_UnSubscriber_1100 onDisconnectEleven=================>");
         expect().assertFail();
     }
-    function unSubscribeCallbackEleven(err){
-        console.debug("Ans_UnSubscriber_1100 unSubscribeCallbackEleven err.code=================>"+err.code);
-        expect(err.code).assertNotEqual(0);
-    }
 
     /*
      * @tc.number: Ans_UnSubscriber_1100
@@ -411,7 +394,7 @@ describe('ActsAnsUnSubscriberTest', function () {
      */
     it('Ans_UnSubscriber_1100', 0, async function (done) {
         console.info("===========Ans_UnSubscriber_1100 start=============>");
-        await notify.subscribe({
+        notify.subscribe({
             onConnect:onConnecteEleven,
             onDisconnect:onDisconnectEleven
         });
@@ -422,11 +405,11 @@ describe('ActsAnsUnSubscriberTest', function () {
             },
             (err)=>{
                 console.debug("Ans_UnSubscriber_1100 unSubscribeCallbackEleven err.code=================>"+err.code);
-                expect(err.code).assertNotEqual(0);
+                expect(err.code != 0).assertEqual(true);
             });
-        done();
         setTimeout(function(){
-            console.info("===========Ans_UnSubscriber_1100 done=============>");
+            console.debug("===========Ans_UnSubscriber_1100 setTimeout=============>");
+            done();
         }, time);
     })
 
@@ -446,7 +429,7 @@ describe('ActsAnsUnSubscriberTest', function () {
      */
     it('Ans_UnSubscriber_1200', 0, async function (done) {
         console.info("===========Ans_UnSubscriber_1200 start=============>");
-        await notify.subscribe({
+        notify.subscribe({
             onConnect:onConnecteTwelve,
             onDisconnect:onConnecteTwelve
         });
@@ -454,14 +437,15 @@ describe('ActsAnsUnSubscriberTest', function () {
                 onConnect:onConnecteTwelve,
                 onDisconnect:onDisconnectTwelve
         }).then((err)=>{
-            console.info("===========Ans_UnSubscriber_1200 unsubscribe then err=============>"+err);
+            console.info("===========Ans_UnSubscriber_1200 unsubscribe then err=============>"+err.code);
         }).catch((err)=>{
-            console.info("===========Ans_UnSubscriber_1200 unsubscribe catch err=============>"+err);
-            expect(err.code).assertNotEqual(0)
+            console.info("===========Ans_UnSubscriber_1200 unsubscribe catch err=============>"+err.code);
+            expect(err.code != 0).assertEqual(true);
+
         });
-        done();
         setTimeout(function(){
-            console.info("===========Ans_UnSubscriber_1200 done=============>");
+            console.debug("===========Ans_UnSubscriber_1200 setTimeout=============>");
+            done();
         }, time);
     });
 })

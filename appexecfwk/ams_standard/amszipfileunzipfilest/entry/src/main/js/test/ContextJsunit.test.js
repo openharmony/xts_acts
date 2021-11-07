@@ -1432,8 +1432,8 @@ it('FWK_zipFile_3400', 0, async function (done) {
 */
 it('FWK_zipFile_3500', 0, async function (done) {
     console.log("==================FWK_zipFile_3500 start==================");
-    var src = "/data/test/fefsef.txt";
-    var dest = "/data/testA/ceshi.txt";
+    var src = "/data/teste/fefsef.txt";
+    var dest = "/data/testA/sfefsfe.zip";
     var options = {}   
 
 
@@ -1458,6 +1458,7 @@ it('FWK_zipFile_3600', 0, async function (done) {
     console.log("==================FWK_zipFile_3600 start==================");
     var src = "/data/test/ceshi.txt";
     var dest = "";
+    var options = {}
 
     zlib.zipFile(src, dest, options).then((data) => {
        console.log("zipFilePromise_3600 data: " + data);
