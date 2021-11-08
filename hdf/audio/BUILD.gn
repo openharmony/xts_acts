@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Huawei Device Co., Ltd.
+# Copyright (c) 2021 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -10,15 +10,18 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 import("//build/ohos_var.gni")
-group("hdfacttest") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "audio:hdf_xtstest_audio",
-      "input:hdf_xtstest_input",
-      "sensor:hdf_xtstest_sensor",
-      "wlan/wifi:hdf_xtstest_wifi",
-    ]
+import("//drivers/adapter/uhdf2/uhdf.gni")
+import("//test/xts/tools/build/suite.gni")
+
+#################################group#########################################
+group("hdf_xtstest_audio") {
+  if (!defined(ohos_lite)) {
+    testonly = true
   }
+  deps = []
+
+  deps += [ "hdi:hdi" ]
 }
+###############################################################################
