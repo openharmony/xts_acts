@@ -104,6 +104,7 @@ describe('ActsBmsModuleUsageRecordTest', function () {
             }
         });
     })
+
     /*
     * @tc.number: bms_getModuleUsageRecordTest_0100
     * @tc.name: getModuleUsageRecord(maxNum)
@@ -414,6 +415,7 @@ describe('ActsBmsModuleUsageRecordTest', function () {
             });
         });
     })
+
     /*
     * @tc.number: bms_getModuleUsageRecordTest_1300
     * @tc.name: getModuleUsageRecord(maxNum, callback: AsyncCallback<Array<ModuleUsageRecord>>)
@@ -483,6 +485,7 @@ describe('ActsBmsModuleUsageRecordTest', function () {
             });
         });
     })
+
     /*
     * @tc.number: bms_getModuleUsageRecordTest_1400
     * @tc.name: getModuleUsageRecord(maxNum, callback: AsyncCallback<Array<ModuleUsageRecord>>)
@@ -551,10 +554,10 @@ describe('ActsBmsModuleUsageRecordTest', function () {
     })
 
     /*
-   * @tc.number: bms_getModuleUsageRecordTest_1500
-   * @tc.name: getModuleUsageRecord(maxNum, callback: AsyncCallback<Array<ModuleUsageRecord>>)
-   * @tc.desc: test getModuleUsageRecord with the critical value
-   */
+    * @tc.number: bms_getModuleUsageRecordTest_1500
+    * @tc.name: getModuleUsageRecord(maxNum, callback: AsyncCallback<Array<ModuleUsageRecord>>)
+    * @tc.desc: test getModuleUsageRecord with the critical value
+    */
     it('bms_getModuleUsageRecordTest_1500', 0, async function (done) {
         console.debug('=====================bms_getModuleUsageRecordTest_1500==================');
         await bundle.getModuleUsageRecords(1000, (err, records) => {

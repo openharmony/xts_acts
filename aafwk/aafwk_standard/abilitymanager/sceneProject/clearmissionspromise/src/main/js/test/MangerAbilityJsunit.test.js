@@ -42,9 +42,7 @@ describe('ActsAmsCallBackSixth Scene', function () {
 
     function sleep(delay) {
         var start = (new Date()).getTime();
-        while((new Date()).getTime() - start < delay) {
-            continue;
-        }
+        while((new Date()).getTime() - start < delay) {}
     }
 
     /*

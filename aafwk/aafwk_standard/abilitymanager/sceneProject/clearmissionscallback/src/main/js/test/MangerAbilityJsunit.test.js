@@ -39,6 +39,12 @@ describe('ActsAmsCallBackSixth Scene', function () {
         );
         sleep(5000)
     });
+
+    function sleep(delay) {
+        var start = (new Date()).getTime();
+        while((new Date()).getTime() - start < delay) {}
+    }
+
     /*
     * @tc.number    : Acts_Ams_test_12200
     * @tc.name      : clearMissions : Clear Missions
