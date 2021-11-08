@@ -83,11 +83,11 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.entryModuleName).assertEqual("entry")
             expect(datainfo.appInfo.name).assertEqual(NAME1)
             expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
-            expect(datainfo.appInfo.descriptionId).assertEqual(0)
+            expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
             expect(datainfo.appInfo.icon).assertEqual("$media:icon")
-            expect(datainfo.appInfo.iconId).assertEqual(0)
+            expect(datainfo.appInfo.iconId >= 0).assertTrue()
             expect(datainfo.appInfo.label).assertEqual("$string:app_name")
-            expect(datainfo.appInfo.labelId).assertEqual(0)
+            expect(datainfo.appInfo.labelId >= 0).assertTrue()
             expect(datainfo.appInfo.systemApp).assertEqual(false)
             expect(datainfo.appInfo.supportedModes).assertEqual(0)
             for (var j = 0; j < datainfo.appInfo.moduleInfos; j++) {
@@ -138,11 +138,11 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.entryModuleName).assertEqual("entry")
                 expect(datainfo.appInfo.name).assertEqual(NAME1)
                 expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
-                expect(datainfo.appInfo.descriptionId).assertEqual(0)
+                expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
                 expect(datainfo.appInfo.icon).assertEqual("$media:icon")
-                expect(datainfo.appInfo.iconId).assertEqual(0)
+                expect(datainfo.appInfo.iconId >= 0).assertTrue()
                 expect(datainfo.appInfo.label).assertEqual("$string:app_name")
-                expect(datainfo.appInfo.labelId).assertEqual(0)
+                expect(datainfo.appInfo.labelId >= 0).assertTrue()
                 expect(datainfo.appInfo.systemApp).assertEqual(false)
                 expect(datainfo.appInfo.supportedModes).assertEqual(0)
                 for (var j = 0; j < datainfo.appInfo.moduleInfos; j++) {
@@ -194,11 +194,11 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.entryModuleName).assertEqual("entry")
             expect(datainfo.appInfo.name).assertEqual(NAME1)
             expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
-            expect(datainfo.appInfo.descriptionId).assertEqual(0)
+            expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
             expect(datainfo.appInfo.icon).assertEqual("$media:icon")
-            expect(datainfo.appInfo.iconId).assertEqual(0)
+            expect(datainfo.appInfo.iconId >= 0).assertTrue()
             expect(datainfo.appInfo.label).assertEqual("$string:app_name")
-            expect(datainfo.appInfo.labelId).assertEqual(0)
+            expect(datainfo.appInfo.labelId >= 0).assertTrue()
             expect(datainfo.appInfo.systemApp).assertEqual(false)
             expect(datainfo.appInfo.supportedModes).assertEqual(0)
             expect(datainfo.appInfo.enabled).assertEqual(true)
@@ -246,11 +246,11 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.entryModuleName).assertEqual("entry")
                 expect(datainfo.appInfo.name).assertEqual(NAME1)
                 expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
-                expect(datainfo.appInfo.descriptionId).assertEqual(0)
+                expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
                 expect(datainfo.appInfo.icon).assertEqual("$media:icon")
-                expect(datainfo.appInfo.iconId).assertEqual(0)
+                expect(datainfo.appInfo.iconId >= 0).assertTrue()
                 expect(datainfo.appInfo.label).assertEqual("$string:app_name")
-                expect(datainfo.appInfo.labelId).assertEqual(0)
+                expect(datainfo.appInfo.labelId >= 0).assertTrue()
                 expect(datainfo.appInfo.systemApp).assertEqual(false)
                 expect(datainfo.appInfo.supportedModes).assertEqual(0)
                 for (var j = 0; j < datainfo.appInfo.moduleInfos; j++) {
@@ -312,7 +312,7 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.length).assertLarger(0)
         for (var i = 0; i < datainfo.length; i++) {
             expect(datainfo[i].name.length).assertLarger(0)
-            if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2 
+            if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2
                 || datainfo[i].name == NAME3 || datainfo[i].name == NAME4 || datainfo[i].name == NAME5) {
                 expect(datainfo[i].description.length).assertLarger(0)
                 expect(datainfo[i].icon.length).assertLarger(0)
@@ -408,7 +408,7 @@ describe('ActsBundleManagerTest', function () {
             for (var i = 0; i < data.length; i++) {
                 expect(data[i].name.length).assertLarger(0)
                 expect(data[i].appInfo.name.length).assertLarger(0)
-                if (data[i].name == NAME1 || data[i].name == NAME2 
+                if (data[i].name == NAME1 || data[i].name == NAME2
                     || data[i].name == NAME3 || data[i].name == NAME4 || data[i].name == NAME5) {
                     expect(data[i].appInfo.description.length).assertLarger(0)
                     expect(data[i].appInfo.icon.length).assertLarger(0)
@@ -465,9 +465,9 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.icon).assertEqual("$media:icon")
             expect(datainfo.label).assertEqual("$string:app_name")
             expect(datainfo.systemApp).assertEqual(false)
-            expect(datainfo.descriptionId).assertEqual(0)
-            expect(datainfo.iconId).assertEqual(0)
-            expect(datainfo.labelId).assertEqual(0)
+            expect(datainfo.descriptionId >= 0).assertTrue()
+            expect(datainfo.iconId >= 0).assertTrue()
+            expect(datainfo.labelId >= 0).assertTrue()
             expect(datainfo.supportedModes).assertEqual(0)
             expect(datainfo.process).assertEqual("")
             expect(datainfo.enabled).assertEqual(true)
@@ -516,7 +516,7 @@ describe('ActsBundleManagerTest', function () {
                 for (var i = 0; i < data.length; i++) {
                     expect(data[i].name.length).assertLarger(0)
                     expect(data[i].appInfo.name.length).assertLarger(0)
-                    if (data[i].name == NAME1 || data[i].name == NAME2 
+                    if (data[i].name == NAME1 || data[i].name == NAME2
                         || data[i].name == NAME3 || data[i].name == NAME4 || data[i].name == NAME5) {
                         expect(data[i].appInfo.description.length).assertLarger(0)
                         expect(data[i].appInfo.icon.length).assertLarger(0)
@@ -567,11 +567,11 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.icon).assertEqual("$media:icon")
                 expect(datainfo.name).assertEqual(NAME1)
                 expect(datainfo.description).assertEqual("$string:mainability_description")
-                expect(datainfo.descriptionId).assertEqual(0)
+                expect(datainfo.descriptionId >= 0).assertTrue()
                 expect(datainfo.icon).assertEqual("$media:icon")
-                expect(datainfo.iconId).assertEqual(0)
+                expect(datainfo.iconId >= 0).assertTrue()
                 expect(datainfo.label).assertEqual("$string:app_name")
-                expect(datainfo.labelId).assertEqual(0)
+                expect(datainfo.labelId >= 0).assertTrue()
                 expect(datainfo.systemApp).assertEqual(false)
                 expect(datainfo.supportedModes).assertEqual(0)
                 expect(datainfo.enabled).assertEqual(true)
@@ -622,11 +622,11 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.icon).assertEqual("$media:icon")
             expect(datainfo.name).assertEqual(NAME1)
             expect(datainfo.description).assertEqual("$string:mainability_description")
-            expect(datainfo.descriptionId).assertEqual(0)
+            expect(datainfo.descriptionId >= 0).assertTrue()
             expect(datainfo.icon).assertEqual("$media:icon")
-            expect(datainfo.iconId).assertEqual(0)
+            expect(datainfo.iconId >= 0).assertTrue()
             expect(datainfo.label).assertEqual("$string:app_name")
-            expect(datainfo.labelId).assertEqual(0)
+            expect(datainfo.labelId >= 0).assertTrue()
             expect(datainfo.systemApp).assertEqual(false)
             expect(datainfo.supportedModes).assertEqual(0)
             installData.uninstall(NAME1, {
@@ -670,11 +670,11 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.icon).assertEqual("$media:icon")
                 expect(datainfo.name).assertEqual(NAME1)
                 expect(datainfo.description).assertEqual("$string:mainability_description")
-                expect(datainfo.descriptionId).assertEqual(0)
+                expect(datainfo.descriptionId >= 0).assertTrue()
                 expect(datainfo.icon).assertEqual("$media:icon")
-                expect(datainfo.iconId).assertEqual(0)
+                expect(datainfo.iconId >= 0).assertTrue()
                 expect(datainfo.label).assertEqual("$string:app_name")
-                expect(datainfo.labelId).assertEqual(0)
+                expect(datainfo.labelId >= 0).assertTrue()
                 expect(datainfo.systemApp).assertEqual(false)
                 expect(datainfo.supportedModes).assertEqual(0)
                 installData.uninstall(NAME1, {
@@ -719,11 +719,11 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.entryModuleName).assertEqual("entry")
             expect(datainfo.appInfo.name).assertEqual(NAME1)
             expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
-            expect(datainfo.appInfo.descriptionId).assertEqual(0)
+            expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
             expect(datainfo.appInfo.icon).assertEqual("$media:icon")
-            expect(datainfo.appInfo.iconId).assertEqual(0)
+            expect(datainfo.appInfo.iconId >= 0).assertTrue()
             expect(datainfo.appInfo.label).assertEqual("$string:app_name")
-            expect(datainfo.appInfo.labelId).assertEqual(0)
+            expect(datainfo.appInfo.labelId >= 0).assertTrue()
             expect(datainfo.appInfo.systemApp).assertEqual(false)
             expect(datainfo.appInfo.supportedModes).assertEqual(0)
             for (var j = 0; j < datainfo.appInfo.moduleInfos; j++) {
@@ -887,11 +887,11 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo.bundleName).assertEqual(NAME2)
                     expect(datainfo.applicationInfo.name).assertEqual(NAME2)
                     expect(datainfo.applicationInfo.description).assertEqual("$string:mainability_description")
-                    expect(datainfo.applicationInfo.descriptionId).assertEqual(0)
+                    expect(datainfo.applicationInfo.descriptionId >= 0).assertTrue()
                     expect(datainfo.applicationInfo.icon).assertEqual("$media:icon")
-                    expect(datainfo.applicationInfo.iconId).assertEqual(0)
+                    expect(datainfo.applicationInfo.iconId >= 0).assertTrue()
                     expect(datainfo.applicationInfo.label).assertEqual("$string:app_name")
-                    expect(datainfo.applicationInfo.labelId).assertEqual(0)
+                    expect(datainfo.applicationInfo.labelId >= 0).assertTrue()
                     expect(datainfo.applicationInfo.systemApp).assertEqual(false)
                     expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
                     expect(datainfo.applicationInfo.enabled).assertEqual(true)
@@ -991,11 +991,11 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.entryModuleName).assertEqual("entry")
             expect(datainfo.appInfo.name).assertEqual(NAME2)
             expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
-            expect(datainfo.appInfo.descriptionId).assertEqual(0)
+            expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
             expect(datainfo.appInfo.icon).assertEqual("$media:icon")
-            expect(datainfo.appInfo.iconId).assertEqual(0)
+            expect(datainfo.appInfo.iconId >= 0).assertTrue()
             expect(datainfo.appInfo.label).assertEqual("$string:app_name")
-            expect(datainfo.appInfo.labelId).assertEqual(0)
+            expect(datainfo.appInfo.labelId >= 0).assertTrue()
             expect(datainfo.appInfo.systemApp).assertEqual(false)
             installData.uninstall(NAME2, {
                 param: {
@@ -1039,11 +1039,11 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.entryModuleName).assertEqual("entry")
                 expect(datainfo.appInfo.name).assertEqual(NAME2)
                 expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
-                expect(datainfo.appInfo.descriptionId).assertEqual(0)
+                expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
                 expect(datainfo.appInfo.icon).assertEqual("$media:icon")
-                expect(datainfo.appInfo.iconId).assertEqual(0)
+                expect(datainfo.appInfo.iconId >= 0).assertTrue()
                 expect(datainfo.appInfo.label).assertEqual("$string:app_name")
-                expect(datainfo.appInfo.labelId).assertEqual(0)
+                expect(datainfo.appInfo.labelId >= 0).assertTrue()
                 expect(datainfo.appInfo.systemApp).assertEqual(false)
                 installData.uninstall(NAME2, {
                     param: {
@@ -1156,7 +1156,7 @@ describe('ActsBundleManagerTest', function () {
             await demo.getAllApplicationInfo(8, 0, (error, datainfo) => {
                 for (var i = 0; i < datainfo.length; i++) {
                     expect(datainfo[i].name.length).assertLarger(0)
-                    if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2 
+                    if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2
                         || datainfo[i].name == NAME3 || datainfo[i].name == NAME4 || datainfo[i].name == NAME5) {
                         expect(datainfo[i].description.length).assertLarger(0)
                         expect(datainfo[i].icon.length).assertLarger(0)
@@ -1208,7 +1208,7 @@ describe('ActsBundleManagerTest', function () {
             await demo.getAllApplicationInfo(0, 0, (error, datainfo) => {
                 for (var i = 0; i < datainfo.length; i++) {
                     expect(datainfo[i].name.length).assertLarger(0)
-                    if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2 
+                    if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2
                         || datainfo[i].name == NAME3 || datainfo[i].name == NAME4 || datainfo[i].name == NAME5) {
                         expect(datainfo[i].description.length).assertLarger(0)
                         expect(datainfo[i].icon.length).assertLarger(0)
@@ -1273,7 +1273,7 @@ describe('ActsBundleManagerTest', function () {
                 console.info('====> getBundleInfos_09900 =====>' + JSON.stringify(data[i].appInfo.moduleInfos.length))
                 expect(data[i].name.length).assertLarger(0)
                 expect(data[i].appInfo.name.length).assertLarger(0)
-                if (data[i].name == NAME1 || data[i].name == NAME2 
+                if (data[i].name == NAME1 || data[i].name == NAME2
                     || data[i].name == NAME3 || data[i].name == NAME4 || data[i].name == NAME5) {
                     expect(data[i].appInfo.description.length).assertLarger(0)
                     expect(data[i].appInfo.icon.length).assertLarger(0)
@@ -1323,7 +1323,7 @@ describe('ActsBundleManagerTest', function () {
             for (var i = 0; i < data.length; i++) {
                 expect(data[i].name.length).assertLarger(0)
                 expect(data[i].appInfo.name.length).assertLarger(0)
-                if (data[i].name == NAME1 || data[i].name == NAME2 
+                if (data[i].name == NAME1 || data[i].name == NAME2
                     || data[i].name == NAME3 || data[i].name == NAME4 || data[i].name == NAME5) {
                     expect(data[i].appInfo.description.length).assertLarger(0)
                     expect(data[i].appInfo.icon.length).assertLarger(0)
@@ -1378,9 +1378,9 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.icon).assertEqual("$media:icon")
             expect(datainfo.label).assertEqual("$string:app_name")
             expect(datainfo.systemApp).assertEqual(false)
-            expect(datainfo.descriptionId).assertEqual(0)
-            expect(datainfo.iconId).assertEqual(0)
-            expect(datainfo.labelId).assertEqual(0)
+            expect(datainfo.descriptionId >= 0).assertTrue()
+            expect(datainfo.iconId >= 0).assertTrue()
+            expect(datainfo.labelId >= 0).assertTrue()
             expect(datainfo.supportedModes).assertEqual(0)
             expect(datainfo.process).assertEqual("")
             expect(datainfo.enabled).assertEqual(true)
@@ -1430,7 +1430,7 @@ describe('ActsBundleManagerTest', function () {
                 for (var i = 0; i < data.length; i++) {
                     expect(data[i].name.length).assertLarger(0)
                     expect(data[i].appInfo.name.length).assertLarger(0)
-                    if (data[i].name == NAME1 || data[i].name == NAME2 
+                    if (data[i].name == NAME1 || data[i].name == NAME2
                         || data[i].name == NAME3 || data[i].name == NAME4 || data[i].name == NAME5) {
                         expect(data[i].appInfo.description.length).assertLarger(0)
                         expect(data[i].appInfo.icon.length).assertLarger(0)
@@ -1480,7 +1480,7 @@ describe('ActsBundleManagerTest', function () {
                 for (var i = 0; i < data.length; i++) {
                     expect(data[i].name.length).assertLarger(0)
                     expect(data[i].appInfo.name.length).assertLarger(0)
-                    if (data[i].name == NAME1 || data[i].name == NAME2 
+                    if (data[i].name == NAME1 || data[i].name == NAME2
                         || data[i].name == NAME3 || data[i].name == NAME4 || data[i].name == NAME5) {
                         expect(data[i].appInfo.description.length).assertLarger(0)
                         expect(data[i].appInfo.icon.length).assertLarger(0)
@@ -1532,11 +1532,11 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.icon).assertEqual("$media:icon")
                 expect(datainfo.name).assertEqual(NAME2)
                 expect(datainfo.description).assertEqual("$string:mainability_description")
-                expect(datainfo.descriptionId).assertEqual(0)
+                expect(datainfo.descriptionId >= 0).assertTrue()
                 expect(datainfo.icon).assertEqual("$media:icon")
-                expect(datainfo.iconId).assertEqual(0)
+                expect(datainfo.iconId >= 0).assertTrue()
                 expect(datainfo.label).assertEqual("$string:app_name")
-                expect(datainfo.labelId).assertEqual(0)
+                expect(datainfo.labelId >= 0).assertTrue()
                 expect(datainfo.systemApp).assertEqual(false)
                 expect(datainfo.supportedModes).assertEqual(0)
                 installData.uninstall(NAME2, {
@@ -1580,11 +1580,11 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.versionName).assertLarger(0)
             expect(datainfo.entryModuleName).assertEqual("entry")
             expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
-            expect(datainfo.appInfo.descriptionId).assertEqual(0)
+            expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
             expect(datainfo.appInfo.icon).assertEqual("$media:icon")
-            expect(datainfo.appInfo.iconId).assertEqual(0)
+            expect(datainfo.appInfo.iconId >= 0).assertTrue()
             expect(datainfo.appInfo.label).assertEqual("$string:app_name")
-            expect(datainfo.appInfo.labelId).assertEqual(0)
+            expect(datainfo.appInfo.labelId >= 0).assertTrue()
             expect(datainfo.appInfo.systemApp).assertEqual(false)
             installData.uninstall(NAME2, {
                 param: {
@@ -1628,11 +1628,11 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.versionName).assertLarger(0)
                 expect(datainfo.entryModuleName).assertEqual("entry")
                 expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
-                expect(datainfo.appInfo.descriptionId).assertEqual(0)
+                expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
                 expect(datainfo.appInfo.icon).assertEqual("$media:icon")
-                expect(datainfo.appInfo.iconId).assertEqual(0)
+                expect(datainfo.appInfo.iconId >= 0).assertTrue()
                 expect(datainfo.appInfo.label).assertEqual("$string:app_name")
-                expect(datainfo.appInfo.labelId).assertEqual(0)
+                expect(datainfo.appInfo.labelId >= 0).assertTrue()
                 expect(datainfo.appInfo.systemApp).assertEqual(false)
                 installData.uninstall(NAME2, {
                     param: {
@@ -1691,11 +1691,11 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.bundleName).assertEqual(NAME2)
                 expect(datainfo.applicationInfo.name).assertEqual(NAME2)
                 expect(datainfo.applicationInfo.description).assertEqual("$string:mainability_description")
-                expect(datainfo.applicationInfo.descriptionId).assertEqual(0)
+                expect(datainfo.applicationInfo.descriptionId >= 0).assertTrue()
                 expect(datainfo.applicationInfo.icon).assertEqual("$media:icon")
-                expect(datainfo.applicationInfo.iconId).assertEqual(0)
+                expect(datainfo.applicationInfo.iconId >= 0).assertTrue()
                 expect(datainfo.applicationInfo.label).assertEqual("$string:app_name")
-                expect(datainfo.applicationInfo.labelId).assertEqual(0)
+                expect(datainfo.applicationInfo.labelId >= 0).assertTrue()
                 expect(datainfo.applicationInfo.systemApp).assertEqual(false)
                 expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
                 expect(datainfo.applicationInfo.enabled).assertEqual(true)
@@ -1761,11 +1761,11 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo.bundleName).assertEqual(NAME2)
                     expect(datainfo.applicationInfo.name).assertEqual(NAME2)
                     expect(datainfo.applicationInfo.description).assertEqual("$string:mainability_description")
-                    expect(datainfo.applicationInfo.descriptionId).assertEqual(0)
+                    expect(datainfo.applicationInfo.descriptionId >= 0).assertTrue()
                     expect(datainfo.applicationInfo.icon).assertEqual("$media:icon")
-                    expect(datainfo.applicationInfo.iconId).assertEqual(0)
+                    expect(datainfo.applicationInfo.iconId >= 0).assertTrue()
                     expect(datainfo.applicationInfo.label).assertEqual("$string:app_name")
-                    expect(datainfo.applicationInfo.labelId).assertEqual(0)
+                    expect(datainfo.applicationInfo.labelId >= 0).assertTrue()
                     expect(datainfo.applicationInfo.systemApp).assertEqual(false)
                     expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
                     expect(datainfo.applicationInfo.enabled).assertEqual(true)
@@ -1816,11 +1816,11 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.entryModuleName).assertEqual("entry")
             expect(datainfo.appInfo.name).assertEqual(NAME3)
             expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
-            expect(datainfo.appInfo.descriptionId).assertEqual(0)
+            expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
             expect(datainfo.appInfo.icon).assertEqual("$media:icon")
-            expect(datainfo.appInfo.iconId).assertEqual(0)
+            expect(datainfo.appInfo.iconId >= 0).assertTrue()
             expect(datainfo.appInfo.label).assertEqual("$string:app_name")
-            expect(datainfo.appInfo.labelId).assertEqual(0)
+            expect(datainfo.appInfo.labelId >= 0).assertTrue()
             expect(datainfo.appInfo.systemApp).assertEqual(false)
             installData.uninstall(NAME3, {
                 param: {
@@ -1876,11 +1876,11 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.entryModuleName).assertEqual("entry")
                 expect(datainfo.appInfo.name).assertEqual(NAME3)
                 expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
-                expect(datainfo.appInfo.descriptionId).assertEqual(0)
+                expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
                 expect(datainfo.appInfo.icon).assertEqual("$media:icon")
-                expect(datainfo.appInfo.iconId).assertEqual(0)
+                expect(datainfo.appInfo.iconId >= 0).assertTrue()
                 expect(datainfo.appInfo.label).assertEqual("$string:app_name")
-                expect(datainfo.appInfo.labelId).assertEqual(0)
+                expect(datainfo.appInfo.labelId >= 0).assertTrue()
                 expect(datainfo.appInfo.systemApp).assertEqual(false)
             }
             installData.uninstall(NAME3, {
@@ -1979,7 +1979,7 @@ describe('ActsBundleManagerTest', function () {
 
                 for (var i = 0; i < datainfo.length; i++) {
                     expect(datainfo[i].name.length).assertLarger(0)
-                    if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2 
+                    if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2
                         || datainfo[i].name == NAME3 || datainfo[i].name == NAME4 || datainfo[i].name == NAME5) {
                         expect(datainfo[i].description.length).assertLarger(0)
                         expect(datainfo[i].icon.length).assertLarger(0)
@@ -2043,7 +2043,7 @@ describe('ActsBundleManagerTest', function () {
             await demo.getAllApplicationInfo(8, 0, (error, datainfo) => {
                 for (var i = 0; i < datainfo.length; i++) {
                     expect(datainfo[i].name.length).assertLarger(0)
-                    if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2 
+                    if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2
                         || datainfo[i].name == NAME3 || datainfo[i].name == NAME4 || datainfo[i].name == NAME5) {
                         expect(datainfo[i].description.length).assertLarger(0)
                         expect(datainfo[i].icon.length).assertLarger(0)
@@ -2107,7 +2107,7 @@ describe('ActsBundleManagerTest', function () {
 
                 for (var i = 0; i < datainfo.length; i++) {
                     expect(datainfo[i].name.length).assertLarger(0)
-                    if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2 
+                    if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2
                         || datainfo[i].name == NAME3 || datainfo[i].name == NAME4 || datainfo[i].name == NAME5) {
                         expect(datainfo[i].description.length).assertLarger(0)
                         expect(datainfo[i].icon.length).assertLarger(0)
@@ -2172,7 +2172,7 @@ describe('ActsBundleManagerTest', function () {
             for (var i = 0; i < data.length; i++) {
                 expect(data[i].name.length).assertLarger(0)
                 expect(data[i].appInfo.name.length).assertLarger(0)
-                if (data[i].name == NAME1 || data[i].name == NAME2 
+                if (data[i].name == NAME1 || data[i].name == NAME2
                     || data[i].name == NAME3 || data[i].name == NAME4 || data[i].name == NAME5) {
                     expect(data[i].appInfo.description.length).assertLarger(0)
                     expect(data[i].appInfo.icon.length).assertLarger(0)
@@ -2230,7 +2230,7 @@ describe('ActsBundleManagerTest', function () {
             for (var i = 0; i < data.length; i++) {
                 expect(data[i].name.length).assertLarger(0)
                 expect(data[i].appInfo.name.length).assertLarger(0)
-                if (data[i].name == NAME1 || data[i].name == NAME2 
+                if (data[i].name == NAME1 || data[i].name == NAME2
                     || data[i].name == NAME3 || data[i].name == NAME4 || data[i].name == NAME5) {
                     expect(data[i].appInfo.description.length).assertLarger(0)
                     expect(data[i].appInfo.icon.length).assertLarger(0)
@@ -2289,7 +2289,7 @@ describe('ActsBundleManagerTest', function () {
                 for (var i = 0; i < data.length; i++) {
                     expect(data[i].name.length).assertLarger(0)
                     expect(data[i].appInfo.name.length).assertLarger(0)
-                    if (data[i].name == NAME1 || data[i].name == NAME2 
+                    if (data[i].name == NAME1 || data[i].name == NAME2
                         || data[i].name == NAME3 || data[i].name == NAME4 || data[i].name == NAME5) {
                         expect(data[i].appInfo.description.length).assertLarger(0)
                         expect(data[i].appInfo.icon.length).assertLarger(0)
@@ -2348,7 +2348,7 @@ describe('ActsBundleManagerTest', function () {
                 for (var i = 0; i < data.length; i++) {
                     expect(data[i].name.length).assertLarger(0)
                     expect(data[i].appInfo.name.length).assertLarger(0)
-                    if (data[i].name == NAME1 || data[i].name == NAME2 
+                    if (data[i].name == NAME1 || data[i].name == NAME2
                         || data[i].name == NAME3 || data[i].name == NAME4 || data[i].name == NAME5) {
                         expect(data[i].appInfo.description.length).assertLarger(0)
                         expect(data[i].appInfo.icon.length).assertLarger(0)
@@ -2409,11 +2409,11 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.icon).assertEqual("$media:icon")
             expect(datainfo.name).assertEqual(NAME3)
             expect(datainfo.description).assertEqual("$string:mainability_description")
-            expect(datainfo.descriptionId).assertEqual(0)
+            expect(datainfo.descriptionId >= 0).assertTrue()
             expect(datainfo.icon).assertEqual("$media:icon")
-            expect(datainfo.iconId).assertEqual(0)
+            expect(datainfo.iconId >= 0).assertTrue()
             expect(datainfo.label).assertEqual("$string:app_name")
-            expect(datainfo.labelId).assertEqual(0)
+            expect(datainfo.labelId >= 0).assertTrue()
             expect(datainfo.systemApp).assertEqual(false)
             expect(datainfo.supportedModes).assertEqual(0)
             installData.uninstall(NAME3, {
@@ -2467,11 +2467,11 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.icon).assertEqual("$media:icon")
                 expect(datainfo.name).assertEqual(NAME3)
                 expect(datainfo.description).assertEqual("$string:mainability_description")
-                expect(datainfo.descriptionId).assertEqual(0)
+                expect(datainfo.descriptionId >= 0).assertTrue()
                 expect(datainfo.icon).assertEqual("$media:icon")
-                expect(datainfo.iconId).assertEqual(0)
+                expect(datainfo.iconId >= 0).assertTrue()
                 expect(datainfo.label).assertEqual("$string:app_name")
-                expect(datainfo.labelId).assertEqual(0)
+                expect(datainfo.labelId >= 0).assertTrue()
                 expect(datainfo.systemApp).assertEqual(false)
                 expect(datainfo.supportedModes).assertEqual(0)
                 installData.uninstall(NAME3, {
@@ -2526,11 +2526,11 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.versionName).assertLarger(0)
             expect(datainfo.entryModuleName).assertEqual("entry")
             expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
-            expect(datainfo.appInfo.descriptionId).assertEqual(0)
+            expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
             expect(datainfo.appInfo.icon).assertEqual("$media:icon")
-            expect(datainfo.appInfo.iconId).assertEqual(0)
+            expect(datainfo.appInfo.iconId >= 0).assertTrue()
             expect(datainfo.appInfo.label).assertEqual("$string:app_name")
-            expect(datainfo.appInfo.labelId).assertEqual(0)
+            expect(datainfo.appInfo.labelId >= 0).assertTrue()
             expect(datainfo.appInfo.systemApp).assertEqual(false)
             installData.uninstall(NAME3, {
                 param: {
@@ -2585,11 +2585,11 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.versionName).assertLarger(0)
                 expect(datainfo.entryModuleName).assertEqual("entry")
                 expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
-                expect(datainfo.appInfo.descriptionId).assertEqual(0)
+                expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
                 expect(datainfo.appInfo.icon).assertEqual("$media:icon")
-                expect(datainfo.appInfo.iconId).assertEqual(0)
+                expect(datainfo.appInfo.iconId >= 0).assertTrue()
                 expect(datainfo.appInfo.label).assertEqual("$string:app_name")
-                expect(datainfo.appInfo.labelId).assertEqual(0)
+                expect(datainfo.appInfo.labelId >= 0).assertTrue()
                 expect(datainfo.appInfo.systemApp).assertEqual(false)
                 installData.uninstall(NAME3, {
                     param: {
@@ -2659,11 +2659,11 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.bundleName).assertEqual(NAME3)
                 expect(datainfo.applicationInfo.name).assertEqual(NAME3)
                 expect(datainfo.applicationInfo.description).assertEqual("$string:mainability_description")
-                expect(datainfo.applicationInfo.descriptionId).assertEqual(0)
+                expect(datainfo.applicationInfo.descriptionId >= 0).assertTrue()
                 expect(datainfo.applicationInfo.icon).assertEqual("$media:icon")
-                expect(datainfo.applicationInfo.iconId).assertEqual(0)
+                expect(datainfo.applicationInfo.iconId >= 0).assertTrue()
                 expect(datainfo.applicationInfo.label).assertEqual("$string:app_name")
-                expect(datainfo.applicationInfo.labelId).assertEqual(0)
+                expect(datainfo.applicationInfo.labelId >= 0).assertTrue()
                 expect(datainfo.applicationInfo.systemApp).assertEqual(false)
                 expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
                 expect(datainfo.applicationInfo.enabled).assertEqual(true)
@@ -2739,11 +2739,11 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo.bundleName).assertEqual(NAME3)
                     expect(datainfo.applicationInfo.name).assertEqual(NAME3)
                     expect(datainfo.applicationInfo.description).assertEqual("$string:mainability_description")
-                    expect(datainfo.applicationInfo.descriptionId).assertEqual(0)
+                    expect(datainfo.applicationInfo.descriptionId >= 0).assertTrue()
                     expect(datainfo.applicationInfo.icon).assertEqual("$media:icon")
-                    expect(datainfo.applicationInfo.iconId).assertEqual(0)
+                    expect(datainfo.applicationInfo.iconId >= 0).assertTrue()
                     expect(datainfo.applicationInfo.label).assertEqual("$string:app_name")
-                    expect(datainfo.applicationInfo.labelId).assertEqual(0)
+                    expect(datainfo.applicationInfo.labelId >= 0).assertTrue()
                     expect(datainfo.applicationInfo.systemApp).assertEqual(false)
                     expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
                     expect(datainfo.applicationInfo.enabled).assertEqual(true)
@@ -2941,11 +2941,11 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.entryModuleName).assertEqual("entry")
                 expect(datainfo.appInfo.name).assertEqual(NAME1)
                 expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
-                expect(datainfo.appInfo.descriptionId).assertEqual(0)
+                expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
                 expect(datainfo.appInfo.icon).assertEqual("$media:icon")
-                expect(datainfo.appInfo.iconId).assertEqual(0)
+                expect(datainfo.appInfo.iconId >= 0).assertTrue()
                 expect(datainfo.appInfo.label).assertEqual("$string:app_name")
-                expect(datainfo.appInfo.labelId).assertEqual(0)
+                expect(datainfo.appInfo.labelId >= 0).assertTrue()
                 expect(datainfo.appInfo.systemApp).assertEqual(false)
                 expect(datainfo.appInfo.supportedModes).assertEqual(0)
                 for (var j = 0; j < datainfo.appInfo.moduleInfos; j++) {
@@ -3018,11 +3018,11 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.entryModuleName).assertEqual("entry")
                 expect(datainfo.appInfo.name).assertEqual(NAME1)
                 expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
-                expect(datainfo.appInfo.descriptionId).assertEqual(0)
+                expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
                 expect(datainfo.appInfo.icon).assertEqual("$media:icon")
-                expect(datainfo.appInfo.iconId).assertEqual(0)
+                expect(datainfo.appInfo.iconId >= 0).assertTrue()
                 expect(datainfo.appInfo.label).assertEqual("$string:app_name")
-                expect(datainfo.appInfo.labelId).assertEqual(0)
+                expect(datainfo.appInfo.labelId >= 0).assertTrue()
                 expect(datainfo.appInfo.systemApp).assertEqual(false)
                 expect(datainfo.appInfo.supportedModes).assertEqual(0)
                 for (var j = 0; j < datainfo.appInfo.moduleInfos; j++) {
@@ -3081,11 +3081,11 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.entryModuleName).assertEqual("entry")
                 expect(datainfo.appInfo.name).assertEqual(NAME1)
                 expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
-                expect(datainfo.appInfo.descriptionId).assertEqual(0)
+                expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
                 expect(datainfo.appInfo.icon).assertEqual("$media:icon")
-                expect(datainfo.appInfo.iconId).assertEqual(0)
+                expect(datainfo.appInfo.iconId >= 0).assertTrue()
                 expect(datainfo.appInfo.label).assertEqual("$string:app_name")
-                expect(datainfo.appInfo.labelId).assertEqual(0)
+                expect(datainfo.appInfo.labelId >= 0).assertTrue()
                 expect(datainfo.appInfo.systemApp).assertEqual(false)
                 expect(datainfo.appInfo.supportedModes).assertEqual(0)
                 for (var j = 0; j < datainfo.appInfo.moduleInfos; j++) {
@@ -3157,11 +3157,11 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.bundleName).assertEqual(NAME1)
                 expect(datainfo.applicationInfo.name).assertEqual(NAME1)
                 expect(datainfo.applicationInfo.description).assertEqual("$string:mainability_description")
-                expect(datainfo.applicationInfo.descriptionId).assertEqual(0)
+                expect(datainfo.applicationInfo.descriptionId >= 0).assertTrue()
                 expect(datainfo.applicationInfo.icon).assertEqual("$media:icon")
-                expect(datainfo.applicationInfo.iconId).assertEqual(0)
+                expect(datainfo.applicationInfo.iconId >= 0).assertTrue()
                 expect(datainfo.applicationInfo.label).assertEqual("$string:app_name")
-                expect(datainfo.applicationInfo.labelId).assertEqual(0)
+                expect(datainfo.applicationInfo.labelId >= 0).assertTrue()
                 expect(datainfo.applicationInfo.systemApp).assertEqual(false)
                 expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
                 expect(datainfo.applicationInfo.enabled).assertEqual(true)
