@@ -1,0 +1,26 @@
+<div class="container">
+    <div>
+        <text class="title">
+            {{ title }}
+        </text>
+    </div>
+    <div class="log">
+        <textarea class="log">
+            {{logmessage}}
+        </textarea>
+    </div>
+    <div>
+<!--        <input class="btn" type="button" onclick="ShowMenu" class="text">Select Case</input>-->
+        <select class="menu-wraper" id="menu-wraper" onchange="CaseChange">
+            <option for="{{testcase}}" value="{{$item}}">abc</option>
+        </select>
+        <button type="capsule" class="btn" value="RunSelectCase" on:click="RunSelectCase"></button>
+        <list class="todo-wraper">
+            <list-item for="{{testcase}}" class="todo-item">
+                <input class="btn" type="button" value="{{$item}}" on:click="runCase({{$item}})"></input>
+            </list-item>
+        </list>
+        <button type="capsule" class="btn" value="RunTest" on:click="testAction"></button>
+        <input class="btn" type="button" value="Back" on:click="clickAction"></input>
+    </div>
+</div>

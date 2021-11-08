@@ -63,6 +63,7 @@ describe('ActsBmsKitTest', function () {
             }
         )
     })
+
     /*
     * @tc.number: ActsBmsKit_getAllShortcutInfo_0100
     * @tc.name: Pressure test interface getAllShortcutInfo by promise

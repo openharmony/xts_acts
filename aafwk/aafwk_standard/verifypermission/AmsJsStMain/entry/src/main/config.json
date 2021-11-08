@@ -1,0 +1,276 @@
+{
+  "app": {
+    "bundleName": "com.amsst.amsjsstmain",
+    "vendor": "amsst",
+    "version": {
+      "code": 1,
+      "name": "1.0"
+    },
+    "apiVersion": {
+      "compatible": 4,
+      "target": 5,
+      "releaseType": "Beta1"
+    }
+  },
+  "deviceConfig": {},
+  "module": {
+    "defPermissions": [
+      {
+        "name": "com.amsst.permission.SYSPERMISSION",
+        "grantMode": "system_grant",
+        "availableScope": []
+      },
+      {
+        "name": "ohos.permission.GET_NETWORK_INFO",
+        "grantMode": "system_grant",
+        "availableScope": []
+      },
+      {
+        "name": "ohos.permission.GET_WIFI_INFO",
+        "grantMode": "system_grant",
+        "availableScope": []
+      },
+      {
+        "name": "ohos.permission.SET_NETWORK_INFO",
+        "grantMode": "system_grant",
+        "availableScope": []
+      },
+      {
+        "name": "ohos.permission.SET_WIFI_INFO",
+        "grantMode": "system_grant",
+        "availableScope": []
+      },
+      {
+        "name": "ohos.permission.CAMERA",
+        "grantMode": "user_grant",
+        "availableScope": []
+      },
+      {
+        "name": "ohos.permission.PERMISSIONA",
+        "grantMode": "user_grant",
+        "availableScope": []
+      },
+      {
+        "name": "ohos.permission.PERMISSIONB",
+        "grantMode": "user_grant",
+        "availableScope": []
+      },
+      {
+        "name": "ohos.permission.PERMISSIONC",
+        "grantMode": "user_grant",
+        "availableScope": []
+      },
+      {
+        "name": "ohos.permission.PERMISSIOND",
+        "grantMode": "user_grant",
+        "availableScope": []
+      }
+    ],
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.CAMERA",
+        "reason": "$string:permreason_camera",
+        "usedScene": {
+          "ability": [
+            "com.amsst.amsjsstmain.MainAbility"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "com.amsst.permission.SYSPERMISSION",
+        "reason": "$string:permreason_sys",
+        "usedScene": {
+          "ability": [
+            "com.amsst.amsjsstmain.MainAbility"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.PERMISSIONA",
+        "reason": "NEED ohos.permission.PERMISSIONA",
+        "usedScene": {
+          "ability": [
+            "com.amsst.amsjsstmain.MainAbility"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.PERMISSIONB",
+        "reason": "NEED ohos.permission.PERMISSIONB",
+        "usedScene": {
+          "ability": [
+            "com.amsst.amsjsstmain.MainAbility"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.PERMISSIONC",
+        "reason": "NEED ohos.permission.PERMISSIONC",
+        "usedScene": {
+          "ability": [
+            "com.amsst.amsjsstmain.MainAbility"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.PERMISSIOND",
+        "reason": "NEED ohos.permission.PERMISSIOND",
+        "usedScene": {
+          "ability": [
+            "com.amsst.amsjsstmain.MainAbility"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.GET_NETWORK_INFO",
+        "reason": "$string:permreason_getnetworkinfo",
+        "usedScene": {
+          "ability": [
+            "com.amsst.amsjsstmain.MainAbility"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.USE_BLUETOOTH"
+      },
+      {
+        "name": "ohos.permission.DISCOVER_BLUETOOTH"
+      },
+      {
+        "name": "ohos.permission.SET_NETWORK_INFO"
+      },
+      {
+        "name": "ohos.permission.SET_WIFI_INFO"
+      },
+      {
+        "name": "ohos.permission.SPREAD_STATUS_BAR"
+      },
+      {
+        "name": "ohos.permission.INTERNET"
+      },
+      {
+        "name": "ohos.permission.MODIFY_AUDIO_SETTINGS"
+      },
+      {
+        "name": "ohos.permission.RECEIVER_STARTUP_COMPLETED"
+      },
+      {
+        "name": "ohos.permission.RUNNING_LOCK"
+      },
+      {
+        "name": "ohos.permission.ACCESS_BIOMETRIC"
+      },
+      {
+        "name": "ohos.permission.RCV_NFC_TRANSACTION_EVENT"
+      },
+      {
+        "name": "ohos.permission.COMMONEVENT_STICKY"
+      },
+      {
+        "name": "ohos.permission.SYSTEM_FLOAT_WINDOW"
+      },
+      {
+        "name": "ohos.permission.VIBRATE"
+      },
+      {
+        "name": "ohos.permission.USE_TRUSTCIRCLE_MANAGER"
+      },
+      {
+        "name": "ohos.permission.USE_WHOLE_SCREEN"
+      },
+      {
+        "name": "ohos.permission.SET_WALLPAPER"
+      },
+      {
+        "name": "ohos.permission.SET_WALLPAPER_DIMENSION"
+      },
+      {
+        "name": "ohos.permission.REARRANGE_MISSIONS"
+      },
+      {
+        "name": "ohos.permission.CLEAN_BACKGROUND_PROCESSES"
+      },
+      {
+        "name": "ohos.permission.KEEP_BACKGROUND_RUNNING"
+      },
+      {
+        "name": "ohos.permission.GET_BUNDLE_INFO"
+      },
+      {
+        "name": "ohos.permission.ACCELEROMETER"
+      },
+      {
+        "name": "ohos.permission.GYROSCOPE"
+      },
+      {
+        "name": "ohos.permission.MULTIMODAL_INTERACTIVE"
+      },
+      {
+        "name": "ohos.permission.radio.ACCESS_FM_AM"
+      },
+      {
+        "name": "ohos.permission.NFC_TAG"
+      },
+      {
+        "name": "ohos.permission.NFC_CARD_EMULATION"
+      },
+      {
+        "name": "ohos.permission.DISTRIBUTED_DEVICE_STATE_CHANGE"
+      },
+      {
+        "name": "ohos.permission.GET_DISTRIBUTED_DEVICE_INFO"
+      }
+    ],
+    "package": "com.amsst.amsjsstmain",
+    "name": ".MyApplication",
+    "deviceType": [
+      "phone"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry"
+    },
+    "abilities": [
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "name": "com.amsst.amsjsstmain.MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "$string:app_name",
+        "type": "page",
+        "launchType": "standard",
+        "visible": true
+      }
+    ],
+    "js": [
+      {
+        "pages": [
+          "pages/index/index",
+          "pages/permissionPage/permissionPage"
+        ],
+        "name": "default",
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": true
+        }
+      }
+    ]
+  }
+}

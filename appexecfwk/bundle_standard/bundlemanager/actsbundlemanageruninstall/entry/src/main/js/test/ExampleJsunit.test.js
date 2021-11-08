@@ -305,7 +305,7 @@ describe('ActsBundleManagerTest', function () {
             done();
         }
         let installData = await demo.getBundleInstaller();
-        installData.install([PATH + BMSJSTEST1], {
+        installData.install([PATH + BMSJSTEST8], {
             param: {
                 userId: 0,
                 installFlag: 1,
