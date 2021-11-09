@@ -22,6 +22,7 @@ group("bundlemanager") {
       "actsbmshapmoduletest:ActsBmsHapModuleTest",
       "actsbmsjstest:ActsBmsJsTest",
       "actsbmskittest:ActsBmsKitTest",
+
       #"actsbmsmetadatatest:ActsBmsMetaDataTest",
       "actsbmsmoduleusagerecordtest:ActsBmsModuleUsageRecordTest",
       "actsbundlemanagertest:ActsBundleManagerTest",
