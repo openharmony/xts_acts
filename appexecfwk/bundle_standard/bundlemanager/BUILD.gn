@@ -17,12 +17,12 @@ group("bundlemanager") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      # "actsbmsallshortcutinfotest:ActsBmsAllShortcutInfoTest",
+      #"actsbmsallshortcutinfotest:ActsBmsAllShortcutInfoTest",
       "actsbmscheckpermissiontest:ActsBmsCheckPermissionTest",
       "actsbmshapmoduletest:ActsBmsHapModuleTest",
       "actsbmsjstest:ActsBmsJsTest",
       "actsbmskittest:ActsBmsKitTest",
-      # "actsbmsmetadatatest:ActsBmsMetaDataTest",
+      #"actsbmsmetadatatest:ActsBmsMetaDataTest",
       "actsbmsmoduleusagerecordtest:ActsBmsModuleUsageRecordTest",
       "actsbundlemanagertest:ActsBundleManagerTest",
       "actsbundlemanageruninstall:ActsBundleManagerUninstall",
