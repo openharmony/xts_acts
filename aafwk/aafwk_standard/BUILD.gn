@@ -20,7 +20,7 @@ group("aafwk_standard") {
       #"abilitymanager:actsabilitymanagertest",
       "context:context",
       "featureability:featureability",
-      #"formmanager:formmanager",
+      "formmanager:formmanager",
       "want:want",
 
       #"verifypermission:verifypermission"
