@@ -67,26 +67,31 @@ const stringTest = function() {
         var asciiToChar = String.fromCharCode(iNumber);
         res += asciiToChar;
     }
+    console.log("The stringTest of this fuzzTest random:" + res);
     return res;
 }
 
 // return number random, the number length is: [Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]
 const numberTest = function() {
+    console.log("The numberTest of this fuzzTest random" );
     return getIntegerRandom(Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER + 1);
 }
 
 // return boolean random, the boolean value is: 0->(false), 1->(true)
 const booleanTest = function() {
-    return getIntegerRandom(RANDOM_BEGIN_POSITION, BOOLEAN_RANDOM_LENGTH);
+    console.log("The booleanTest of this fuzzTest random" );
+    return Boolean(getIntegerRandom(RANDOM_BEGIN_POSITION, BOOLEAN_RANDOM_LENGTH));
 }
 
-// null
+// return null
 const nullTest = function() {
+    console.log("The nullTest of this fuzzTest random" );
     return null;
 }
 
-// undefinedTest
+// return undefinedTest
 const undefinedTest = function() {
+    console.log("The undefinedTest of this fuzzTest random" );
     return undefined;
 }
 
@@ -114,14 +119,17 @@ const arrayTest = function() {
             arrValue[iArrNumber] = '';
         }
     }
+    console.log("The arrayTest of this fuzzTest random:" + arrValue);
     return arrValue;
 }
 
 // return objectTest random, the objectTest value is: null, not null
 const objectTest = function() {
-    var objectA = Object.create(null);
-    var objectB = Object.create("objectTest");
+    var objectA = {};
+    var objectb = {id : 'objectTest'};
+    var objectB = Object.create(objectb);
 
+    console.log("The objectTest of this fuzzTest random" );
     return getIntegerRandom(RANDOM_BEGIN_POSITION, OBJECT_RANDOM_LENGTH) ? objectA: objectB;
 }
 
@@ -130,67 +138,10 @@ const functionTest = function() {
     var functionA = {};
     var functionB = {id:"functionTest"};
 
+    console.log("The functionTest of this fuzzTest random" );
     return getIntegerRandom(RANDOM_BEGIN_POSITION, FUNCTION_RANDOM_LENGTH) ? functionA: functionB;
 }
 
-// get parameter value from: string, number, bool, null, undefined, object, array, function
-const parameterValue = function() {
-
-    var fuzzConfigData = [
-        {"name":"string", "paramWeight":25},{"name":"number", "paramWeight":45},{"name":"boolean", "paramWeight":50},
-        {"name":"null", "paramWeight":52},{"name":"undefined", "paramWeight":54},{"name":"object", "paramWeight":62},
-        {"name":"array", "paramWeight":92},{"name":"function", "paramWeight":100},
-    ]
-
-    var weightSum = fuzzConfigData[fuzzConfigData.length - 1].paramWeight;
-    console.log("The weight sum of this fuzzTest:" + weightSum);
-
-    var paramValue = '';
-    var iNumber = getIntegerRandom(RANDOM_BEGIN_POSITION, weightSum);
-    console.log("The iNumber of this fuzzTest random:" + iNumber);
-
-    for(var iFuzzDataNumber = 0; iFuzzDataNumber < fuzzConfigData.length; iFuzzDataNumber ++) {
-
-        if((iFuzzDataNumber == 0 && iNumber < fuzzConfigData[iFuzzDataNumber].paramWeight) ||
-        (iNumber < fuzzConfigData[iFuzzDataNumber].paramWeight &&
-        iNumber > fuzzConfigData[iFuzzDataNumber - 1].paramWeight) ) {
-            console.log("The name of this fuzzTest random:" + fuzzConfigData[iFuzzDataNumber].name);
-            switch(fuzzConfigData[iFuzzDataNumber].name) {
-                case "string":
-                    paramValue = stringTest();
-                    break;
-                case "number":
-                    paramValue = numberTest();
-                    break;
-                case "boolean":
-                    paramValue = booleanTest();
-                    break;
-                case "null":
-                    paramValue = nullTest();
-                    break;
-                case "undefined":
-                    paramValue = undefinedTest();
-                    break;
-                case "object":
-                    paramValue = objectTest();
-                    break;
-                case "array":
-                    paramValue = arrayTest();
-                    break;
-                case "function":
-                    paramValue = functionTest();
-                    break;
-                default:
-                    paramValue = '';
-                    break;
-            }
-        }
-    }
-
-    console.log("The paramValue of this fuzzTest random:" + paramValue);
-    return paramValue;
-}
-
 export {
-    parameterValue, stringTest, numberTest, booleanTest, nullTest, undefinedTest, objectTest, arrayTest, functionTest
+    stringTest, numberTest, booleanTest, nullTest, undefinedTest, objectTest, arrayTest, functionTest
 }
