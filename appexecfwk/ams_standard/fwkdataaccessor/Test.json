@@ -25,7 +25,7 @@
         {
             "type": "PushKit",
             "push": [
-                  "resource/appexecfwk/amsStDataAbility.hap->/data/test/amsStDataAbility.hap"
+                  "/resource/appexecfwk/amsStDataAbility.hap->/data/test/amsStDataAbility.hap"
             ]
             
         },

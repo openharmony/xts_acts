@@ -24,9 +24,9 @@
         {
             "type": "PushKit",
             "push": [
-                "resource/appexecfwk/ceshi.txt->/data/test/ceshi.txt",
-                "resource/appexecfwk/ceshitwo.zip->/data/test/ceshitwo.zip",
-                "resource/appexecfwk/ceshitwo.txt->/data/test/ceshitwo.txt"
+                "/resource/appexecfwk/ceshi.txt->/data/test/ceshi.txt",
+                "/resource/appexecfwk/ceshitwo.zip->/data/test/ceshitwo.zip",
+                "/resource/appexecfwk/ceshitwo.txt->/data/test/ceshitwo.txt"
                 
                
             ]
