@@ -19,8 +19,8 @@ import {stringTest, numberTest, booleanTest, nullTest, undefinedTest,
     objectTest, arrayTest, functionTest} from './getParam.js'
 
 const TIMEOUT = 5000;
-describe('formFuzzTest', function () {
-    console.log("formFuzzTest===start");
+describe('FMS_FuzzTest', function () {
+    console.log("FMS_FuzzTest===start");
 
     /**
      * @tc.name fuzzTest
