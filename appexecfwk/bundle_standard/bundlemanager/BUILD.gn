@@ -19,7 +19,8 @@ group("bundlemanager") {
     deps = [
       #"actsbmsallshortcutinfotest:ActsBmsAllShortcutInfoTest",
       "actsbmscheckpermissiontest:ActsBmsCheckPermissionTest",
-      "actsbmshapmoduletest:ActsBmsHapModuleTest",
+
+      #"actsbmshapmoduletest:ActsBmsHapModuleTest",
       "actsbmsjstest:ActsBmsJsTest",
       "actsbmskittest:ActsBmsKitTest",
 
