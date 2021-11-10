@@ -30,7 +30,7 @@ describe('FMS_fuzzTestObject', function () {
        console.log("FMS_fuzzTestObject_0200_callback deleteForm begin");
 
        var formId = objectTest();
-       console.log("FMS_fuzzTestObject_0200_callback deleteForm formId typeof:"+ typeof(formId));
+       console.log("FMS_fuzzTestObject_0200_callback deleteForm formId typeof:" + typeof(formId));
 
        try{
         formManager.deleteForm(
@@ -64,7 +64,7 @@ describe('FMS_fuzzTestObject', function () {
        console.log("FMS_fuzzTestObject_0200_promise deleteForm begin");
 
        var formId = objectTest();
-       console.log("FMS_fuzzTestObject_0200_promise deleteForm formId typeof:"+ typeof(formId));
+       console.log("FMS_fuzzTestObject_0200_promise deleteForm formId typeof:" + typeof(formId));
 
        var retResult;
        try{
@@ -93,10 +93,11 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_0300_param_01_callback releaseForm begin");
  
         var formId = objectTest();
-        console.log("FMS_fuzzTestObject_0300_param_01_callback releaseForm formId typeof:"+ typeof(formId));
+        console.log("FMS_fuzzTestObject_0300_param_01_callback releaseForm formId typeof:" + typeof(formId));
  
         var isReleaseCache = arrayTest();
-        console.log("FMS_fuzzTestObject_0300_param_01_callback releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
+        console.log("FMS_fuzzTestObject_0300_param_01_callback releaseForm isReleaseCache typeof:"
+            + typeof(isReleaseCache));
  
         try{
             formManager.releaseForm(
@@ -131,10 +132,11 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_0300_param_01_promise releaseForm begin");
  
         var formId = objectTest();
-        console.log("FMS_fuzzTestObject_0300_param_01_promise releaseForm formId typeof:"+ typeof(formId));
+        console.log("FMS_fuzzTestObject_0300_param_01_promise releaseForm formId typeof:" + typeof(formId));
  
         var isReleaseCache = arrayTest();
-        console.log("FMS_fuzzTestObject_0300_param_01_promise releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
+        console.log("FMS_fuzzTestObject_0300_param_01_promise releaseForm isReleaseCache typeof:"
+            + typeof(isReleaseCache));
  
         var retResult;
         try{
@@ -163,10 +165,11 @@ describe('FMS_fuzzTestObject', function () {
          console.log("FMS_fuzzTestObject_0300_param_02_callback releaseForm begin");
   
          var formId = objectTest();
-         console.log("FMS_fuzzTestObject_0300_param_02_callback releaseForm formId typeof:"+ typeof(formId));
+         console.log("FMS_fuzzTestObject_0300_param_02_callback releaseForm formId typeof:" + typeof(formId));
   
          var isReleaseCache = booleanTest();
-         console.log("FMS_fuzzTestObject_0300_param_02_callback releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
+         console.log("FMS_fuzzTestObject_0300_param_02_callback releaseForm isReleaseCache typeof:"
+            + typeof(isReleaseCache));
   
          try{
              formManager.releaseForm(
@@ -201,10 +204,11 @@ describe('FMS_fuzzTestObject', function () {
          console.log("FMS_fuzzTestObject_0300_param_02_promise releaseForm begin");
   
          var formId = objectTest();
-         console.log("FMS_fuzzTestObject_0300_param_02_promise releaseForm formId typeof:"+ typeof(formId));
+         console.log("FMS_fuzzTestObject_0300_param_02_promise releaseForm formId typeof:" + typeof(formId));
   
          var isReleaseCache = booleanTest();
-         console.log("FMS_fuzzTestObject_0300_param_02_promise releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
+         console.log("FMS_fuzzTestObject_0300_param_02_promise releaseForm isReleaseCache typeof:"
+            + typeof(isReleaseCache));
   
          var retResult;
          try{
@@ -233,10 +237,11 @@ describe('FMS_fuzzTestObject', function () {
          console.log("FMS_fuzzTestObject_0300_param_03_callback releaseForm begin");
   
          var formId = objectTest();
-         console.log("FMS_fuzzTestObject_0300_param_03_callback releaseForm formId typeof:"+ typeof(formId));
+         console.log("FMS_fuzzTestObject_0300_param_03_callback releaseForm formId typeof:" + typeof(formId));
   
          var isReleaseCache = functionTest();
-         console.log("FMS_fuzzTestObject_0300_param_03_callback releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
+         console.log("FMS_fuzzTestObject_0300_param_03_callback releaseForm isReleaseCache typeof:"
+            + typeof(isReleaseCache));
   
          try{
              formManager.releaseForm(
@@ -271,10 +276,11 @@ describe('FMS_fuzzTestObject', function () {
          console.log("FMS_fuzzTestObject_0300_param_03_promise releaseForm begin");
   
          var formId = objectTest();
-         console.log("FMS_fuzzTestObject_0300_param_03_promise releaseForm formId typeof:"+ typeof(formId));
+         console.log("FMS_fuzzTestObject_0300_param_03_promise releaseForm formId typeof:" + typeof(formId));
   
          var isReleaseCache = functionTest();
-         console.log("FMS_fuzzTestObject_0300_param_03_promise releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
+         console.log("FMS_fuzzTestObject_0300_param_03_promise releaseForm isReleaseCache typeof:"
+            + typeof(isReleaseCache));
   
          var retResult;
          try{
@@ -303,10 +309,11 @@ describe('FMS_fuzzTestObject', function () {
          console.log("FMS_fuzzTestObject_0300_param_04_callback releaseForm begin");
   
          var formId = objectTest();
-         console.log("FMS_fuzzTestObject_0300_param_04_callback releaseForm formId typeof:"+ typeof(formId));
+         console.log("FMS_fuzzTestObject_0300_param_04_callback releaseForm formId typeof:" + typeof(formId));
   
          var isReleaseCache = nullTest();
-         console.log("FMS_fuzzTestObject_0300_param_04_callback releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
+         console.log("FMS_fuzzTestObject_0300_param_04_callback releaseForm isReleaseCache typeof:"
+            + typeof(isReleaseCache));
   
          try{
              formManager.releaseForm(
@@ -341,10 +348,11 @@ describe('FMS_fuzzTestObject', function () {
          console.log("FMS_fuzzTestObject_0300_param_04_promise releaseForm begin");
   
          var formId = objectTest();
-         console.log("FMS_fuzzTestObject_0300_param_04_promise releaseForm formId typeof:"+ typeof(formId));
+         console.log("FMS_fuzzTestObject_0300_param_04_promise releaseForm formId typeof:" + typeof(formId));
   
          var isReleaseCache = nullTest();
-         console.log("FMS_fuzzTestObject_0300_param_04_promise releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
+         console.log("FMS_fuzzTestObject_0300_param_04_promise releaseForm isReleaseCache typeof:"
+            + typeof(isReleaseCache));
   
          var retResult;
          try{
@@ -373,10 +381,11 @@ describe('FMS_fuzzTestObject', function () {
          console.log("FMS_fuzzTestObject_0300_param_05_callback releaseForm begin");
   
          var formId = objectTest();
-         console.log("FMS_fuzzTestObject_0300_param_05_callback releaseForm formId typeof:"+ typeof(formId));
+         console.log("FMS_fuzzTestObject_0300_param_05_callback releaseForm formId typeof:" + typeof(formId));
   
          var isReleaseCache = numberTest();
-         console.log("FMS_fuzzTestObject_0300_param_05_callback releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
+         console.log("FMS_fuzzTestObject_0300_param_05_callback releaseForm isReleaseCache typeof:"
+            + typeof(isReleaseCache));
   
          try{
              formManager.releaseForm(
@@ -411,10 +420,11 @@ describe('FMS_fuzzTestObject', function () {
          console.log("FMS_fuzzTestObject_0300_param_05_promise releaseForm begin");
   
          var formId = objectTest();
-         console.log("FMS_fuzzTestObject_0300_param_05_promise releaseForm formId typeof:"+ typeof(formId));
+         console.log("FMS_fuzzTestObject_0300_param_05_promise releaseForm formId typeof:" + typeof(formId));
   
          var isReleaseCache = numberTest();
-         console.log("FMS_fuzzTestObject_0300_param_05_promise releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
+         console.log("FMS_fuzzTestObject_0300_param_05_promise releaseForm isReleaseCache typeof:"
+            + typeof(isReleaseCache));
   
          var retResult;
          try{
@@ -443,10 +453,11 @@ describe('FMS_fuzzTestObject', function () {
          console.log("FMS_fuzzTestObject_0300_param_06_callback releaseForm begin");
   
          var formId = objectTest();
-         console.log("FMS_fuzzTestObject_0300_param_06_callback releaseForm formId typeof:"+ typeof(formId));
+         console.log("FMS_fuzzTestObject_0300_param_06_callback releaseForm formId typeof:" + typeof(formId));
   
          var isReleaseCache = objectTest();
-         console.log("FMS_fuzzTestObject_0300_param_06_callback releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
+         console.log("FMS_fuzzTestObject_0300_param_06_callback releaseForm isReleaseCache typeof:"
+            + typeof(isReleaseCache));
   
          try{
              formManager.releaseForm(
@@ -481,10 +492,11 @@ describe('FMS_fuzzTestObject', function () {
          console.log("FMS_fuzzTestObject_0300_param_06_promise releaseForm begin");
   
          var formId = objectTest();
-         console.log("FMS_fuzzTestObject_0300_param_06_promise releaseForm formId typeof:"+ typeof(formId));
+         console.log("FMS_fuzzTestObject_0300_param_06_promise releaseForm formId typeof:" + typeof(formId));
   
          var isReleaseCache = objectTest();
-         console.log("FMS_fuzzTestObject_0300_param_06_promise releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
+         console.log("FMS_fuzzTestObject_0300_param_06_promise releaseForm isReleaseCache typeof:"
+            + typeof(isReleaseCache));
   
          var retResult;
          try{
@@ -513,10 +525,11 @@ describe('FMS_fuzzTestObject', function () {
          console.log("FMS_fuzzTestObject_0300_param_07_callback releaseForm begin");
   
          var formId = objectTest();
-         console.log("FMS_fuzzTestObject_0300_param_07_callback releaseForm formId typeof:"+ typeof(formId));
+         console.log("FMS_fuzzTestObject_0300_param_07_callback releaseForm formId typeof:" + typeof(formId));
   
          var isReleaseCache = stringTest();
-         console.log("FMS_fuzzTestObject_0300_param_07_callback releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
+         console.log("FMS_fuzzTestObject_0300_param_07_callback releaseForm isReleaseCache typeof:"
+            + typeof(isReleaseCache));
   
          try{
              formManager.releaseForm(
@@ -551,10 +564,11 @@ describe('FMS_fuzzTestObject', function () {
          console.log("FMS_fuzzTestObject_0300_param_07_promise releaseForm begin");
   
          var formId = objectTest();
-         console.log("FMS_fuzzTestObject_0300_param_07_promise releaseForm formId typeof:"+ typeof(formId));
+         console.log("FMS_fuzzTestObject_0300_param_07_promise releaseForm formId typeof:" + typeof(formId));
   
          var isReleaseCache = stringTest();
-         console.log("FMS_fuzzTestObject_0300_param_07_promise releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
+         console.log("FMS_fuzzTestObject_0300_param_07_promise releaseForm isReleaseCache typeof:"
+            + typeof(isReleaseCache));
   
          var retResult;
          try{
@@ -583,10 +597,11 @@ describe('FMS_fuzzTestObject', function () {
          console.log("FMS_fuzzTestObject_0300_param_08_callback releaseForm begin");
   
          var formId = objectTest();
-         console.log("FMS_fuzzTestObject_0300_param_08_callback releaseForm formId typeof:"+ typeof(formId));
+         console.log("FMS_fuzzTestObject_0300_param_08_callback releaseForm formId typeof:" + typeof(formId));
   
          var isReleaseCache = undefinedTest();
-         console.log("FMS_fuzzTestObject_0300_param_08_callback releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
+         console.log("FMS_fuzzTestObject_0300_param_08_callback releaseForm isReleaseCache typeof:"
+            + typeof(isReleaseCache));
   
          try{
              formManager.releaseForm(
@@ -621,10 +636,11 @@ describe('FMS_fuzzTestObject', function () {
          console.log("FMS_fuzzTestObject_0300_param_08_promise releaseForm begin");
   
          var formId = objectTest();
-         console.log("FMS_fuzzTestObject_0300_param_08_promise releaseForm formId typeof:"+ typeof(formId));
+         console.log("FMS_fuzzTestObject_0300_param_08_promise releaseForm formId typeof:" + typeof(formId));
   
          var isReleaseCache = undefinedTest();
-         console.log("FMS_fuzzTestObject_0300_param_08_promise releaseForm isReleaseCache typeof:"+ typeof(isReleaseCache));
+         console.log("FMS_fuzzTestObject_0300_param_08_promise releaseForm isReleaseCache typeof:"
+            + typeof(isReleaseCache));
   
          var retResult;
          try{
@@ -653,7 +669,8 @@ describe('FMS_fuzzTestObject', function () {
          console.log("FMS_fuzzTestObject_0300_param_09_callback releaseForm begin");
   
          var formId = objectTest();
-         console.log("FMS_fuzzTestObject_0300_param_09_callback releaseForm formId typeof:"+ typeof(formId) + ",formId:" + formId);
+         console.log("FMS_fuzzTestObject_0300_param_09_callback releaseForm formId typeof:"
+            + typeof(formId) + ",formId:" + formId);
   
          try{
              formManager.releaseForm(
@@ -688,7 +705,8 @@ describe('FMS_fuzzTestObject', function () {
          console.log("FMS_fuzzTestObject_0300_param_09_promise releaseForm begin");
   
          var formId = objectTest();
-         console.log("FMS_fuzzTestObject_0300_param_09_promise releaseForm formId typeof:"+ typeof(formId) + ",formId:" + formId);
+         console.log("FMS_fuzzTestObject_0300_param_09_promise releaseForm formId typeof:"
+            + typeof(formId) + ",formId:" + formId);
   
          var retResult;
          try{
@@ -717,7 +735,7 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1200_callback getAllFormsInfo begin");
 
         var testParam = objectTest();
-        console.log("FMS_fuzzTestObject_1200_callback getAllFormsInfo formIds typeof:"+ typeof(testParam));
+        console.log("FMS_fuzzTestObject_1200_callback getAllFormsInfo formIds typeof:" + typeof(testParam));
 
         try{
             formManager.getAllFormsInfo(
@@ -751,7 +769,7 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1200_promise getAllFormsInfo begin");
 
         var testParam = objectTest();
-        console.log("FMS_fuzzTestObject_1200_promise getAllFormsInfo formIds typeof:"+ typeof(testParam));
+        console.log("FMS_fuzzTestObject_1200_promise getAllFormsInfo formIds typeof:" + typeof(testParam));
 
         var retResult;
         try{
@@ -781,7 +799,7 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1300_callback getFormsInfoByApp begin");
 
         var bundleName = objectTest();
-        console.log("FMS_fuzzTestObject_1300_callback getFormsInfoByApp bundleName typeof:"+ typeof(bundleName));
+        console.log("FMS_fuzzTestObject_1300_callback getFormsInfoByApp bundleName typeof:" + typeof(bundleName));
 
         try{
             formManager.getFormsInfo(
@@ -816,7 +834,7 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1300_promise getFormsInfoByApp begin");
 
         var bundleName = objectTest();
-        console.log("FMS_fuzzTestObject_1300_promise getFormsInfoByApp bundleName typeof:"+ typeof(bundleName));
+        console.log("FMS_fuzzTestObject_1300_promise getFormsInfoByApp bundleName typeof:" + typeof(bundleName));
 
         var retResult;
         try{
@@ -846,10 +864,12 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1400_param_01_callback getFormsInfoByModule begin");
 
         var bundleName = objectTest();
-        console.log("FMS_fuzzTestObject_1400_param_01_callback getFormsInfoByModule bundleName typeof:"+ typeof(bundleName));
+        console.log("FMS_fuzzTestObject_1400_param_01_callback getFormsInfoByModule bundleName typeof:"
+            + typeof(bundleName));
 
         var moduleName = arrayTest();
-        console.log("FMS_fuzzTestObject_1400_param_01_callback getFormsInfoByModule moduleName typeof:"+ typeof(moduleName));
+        console.log("FMS_fuzzTestObject_1400_param_01_callback getFormsInfoByModule moduleName typeof:"
+            + typeof(moduleName));
 
         try{
             formManager.getFormsInfo(
@@ -885,10 +905,12 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1400_param_01_promise getFormsInfoByModule begin");
 
         var bundleName = objectTest();
-        console.log("FMS_fuzzTestObject_1400_param_01_promise getFormsInfoByModule bundleName typeof:"+ typeof(bundleName));
+        console.log("FMS_fuzzTestObject_1400_param_01_promise getFormsInfoByModule bundleName typeof:"
+            + typeof(bundleName));
 
         var moduleName = arrayTest();
-        console.log("FMS_fuzzTestObject_1400_param_01_promise getFormsInfoByModule moduleName typeof:"+ typeof(moduleName));
+        console.log("FMS_fuzzTestObject_1400_param_01_promise getFormsInfoByModule moduleName typeof:"
+            + typeof(moduleName));
 
         var retResult;
         try{
@@ -918,10 +940,12 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1400_param_02_callback getFormsInfoByModule begin");
 
         var bundleName = objectTest();
-        console.log("FMS_fuzzTestObject_1400_param_02_callback getFormsInfoByModule bundleName typeof:"+ typeof(bundleName));
+        console.log("FMS_fuzzTestObject_1400_param_02_callback getFormsInfoByModule bundleName typeof:"
+            + typeof(bundleName));
 
         var moduleName = booleanTest();
-        console.log("FMS_fuzzTestObject_1400_param_02_callback getFormsInfoByModule moduleName typeof:"+ typeof(moduleName));
+        console.log("FMS_fuzzTestObject_1400_param_02_callback getFormsInfoByModule moduleName typeof:"
+            + typeof(moduleName));
 
         try{
             formManager.getFormsInfo(
@@ -957,10 +981,12 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1400_param_02_promise getFormsInfoByModule begin");
 
         var bundleName = objectTest();
-        console.log("FMS_fuzzTestObject_1400_param_02_promise getFormsInfoByModule bundleName typeof:"+ typeof(bundleName));
+        console.log("FMS_fuzzTestObject_1400_param_02_promise getFormsInfoByModule bundleName typeof:"
+            + typeof(bundleName));
 
         var moduleName = booleanTest();
-        console.log("FMS_fuzzTestObject_1400_param_02_promise getFormsInfoByModule moduleName typeof:"+ typeof(moduleName));
+        console.log("FMS_fuzzTestObject_1400_param_02_promise getFormsInfoByModule moduleName typeof:"
+            + typeof(moduleName));
 
         var retResult;
         try{
@@ -990,10 +1016,12 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1400_param_03_callback getFormsInfoByModule begin");
 
         var bundleName = objectTest();
-        console.log("FMS_fuzzTestObject_1400_param_03_callback getFormsInfoByModule bundleName typeof:"+ typeof(bundleName));
+        console.log("FMS_fuzzTestObject_1400_param_03_callback getFormsInfoByModule bundleName typeof:"
+            + typeof(bundleName));
 
         var moduleName = functionTest();
-        console.log("FMS_fuzzTestObject_1400_param_03_callback getFormsInfoByModule moduleName typeof:"+ typeof(moduleName));
+        console.log("FMS_fuzzTestObject_1400_param_03_callback getFormsInfoByModule moduleName typeof:"
+            + typeof(moduleName));
 
         try{
             formManager.getFormsInfo(
@@ -1029,10 +1057,12 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1400_param_03_promise getFormsInfoByModule begin");
 
         var bundleName = objectTest();
-        console.log("FMS_fuzzTestObject_1400_param_03_promise getFormsInfoByModule bundleName typeof:"+ typeof(bundleName));
+        console.log("FMS_fuzzTestObject_1400_param_03_promise getFormsInfoByModule bundleName typeof:"
+            + typeof(bundleName));
 
         var moduleName = functionTest();
-        console.log("FMS_fuzzTestObject_1400_param_03_promise getFormsInfoByModule moduleName typeof:"+ typeof(moduleName));
+        console.log("FMS_fuzzTestObject_1400_param_03_promise getFormsInfoByModule moduleName typeof:"
+            + typeof(moduleName));
 
         var retResult;
         try{
@@ -1062,10 +1092,12 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1400_param_04_callback getFormsInfoByModule begin");
 
         var bundleName = objectTest();
-        console.log("FMS_fuzzTestObject_1400_param_04_callback getFormsInfoByModule bundleName typeof:"+ typeof(bundleName));
+        console.log("FMS_fuzzTestObject_1400_param_04_callback getFormsInfoByModule bundleName typeof:"
+            + typeof(bundleName));
 
         var moduleName = nullTest();
-        console.log("FMS_fuzzTestObject_1400_param_04_callback getFormsInfoByModule moduleName typeof:"+ typeof(moduleName));
+        console.log("FMS_fuzzTestObject_1400_param_04_callback getFormsInfoByModule moduleName typeof:"
+            + typeof(moduleName));
 
         try{
             formManager.getFormsInfo(
@@ -1101,10 +1133,12 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1400_param_04_promise getFormsInfoByModule begin");
 
         var bundleName = objectTest();
-        console.log("FMS_fuzzTestObject_1400_param_04_promise getFormsInfoByModule bundleName typeof:"+ typeof(bundleName));
+        console.log("FMS_fuzzTestObject_1400_param_04_promise getFormsInfoByModule bundleName typeof:"
+            + typeof(bundleName));
 
         var moduleName = nullTest();
-        console.log("FMS_fuzzTestObject_1400_param_04_promise getFormsInfoByModule moduleName typeof:"+ typeof(moduleName));
+        console.log("FMS_fuzzTestObject_1400_param_04_promise getFormsInfoByModule moduleName typeof:"
+            + typeof(moduleName));
 
         var retResult;
         try{
@@ -1134,10 +1168,12 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1400_param_05_callback getFormsInfoByModule begin");
 
         var bundleName = objectTest();
-        console.log("FMS_fuzzTestObject_1400_param_05_callback getFormsInfoByModule bundleName typeof:"+ typeof(bundleName));
+        console.log("FMS_fuzzTestObject_1400_param_05_callback getFormsInfoByModule bundleName typeof:"
+            + typeof(bundleName));
 
         var moduleName = numberTest();
-        console.log("FMS_fuzzTestObject_1400_param_05_callback getFormsInfoByModule moduleName typeof:"+ typeof(moduleName));
+        console.log("FMS_fuzzTestObject_1400_param_05_callback getFormsInfoByModule moduleName typeof:"
+            + typeof(moduleName));
 
         try{
             formManager.getFormsInfo(
@@ -1173,10 +1209,12 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1400_param_05_promise getFormsInfoByModule begin");
 
         var bundleName = objectTest();
-        console.log("FMS_fuzzTestObject_1400_param_05_promise getFormsInfoByModule bundleName typeof:"+ typeof(bundleName));
+        console.log("FMS_fuzzTestObject_1400_param_05_promise getFormsInfoByModule bundleName typeof:"
+            + typeof(bundleName));
 
         var moduleName = numberTest();
-        console.log("FMS_fuzzTestObject_1400_param_05_promise getFormsInfoByModule moduleName typeof:"+ typeof(moduleName));
+        console.log("FMS_fuzzTestObject_1400_param_05_promise getFormsInfoByModule moduleName typeof:"
+            + typeof(moduleName));
 
         var retResult;
         try{
@@ -1206,10 +1244,12 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1400_param_06_callback getFormsInfoByModule begin");
 
         var bundleName = objectTest();
-        console.log("FMS_fuzzTestObject_1400_param_06_callback getFormsInfoByModule bundleName typeof:"+ typeof(bundleName));
+        console.log("FMS_fuzzTestObject_1400_param_06_callback getFormsInfoByModule bundleName typeof:"
+            + typeof(bundleName));
 
         var moduleName = objectTest();
-        console.log("FMS_fuzzTestObject_1400_param_06_callback getFormsInfoByModule moduleName typeof:"+ typeof(moduleName));
+        console.log("FMS_fuzzTestObject_1400_param_06_callback getFormsInfoByModule moduleName typeof:"
+            + typeof(moduleName));
 
         try{
             formManager.getFormsInfo(
@@ -1245,10 +1285,12 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1400_param_06_promise getFormsInfoByModule begin");
 
         var bundleName = objectTest();
-        console.log("FMS_fuzzTestObject_1400_param_06_promise getFormsInfoByModule bundleName typeof:"+ typeof(bundleName));
+        console.log("FMS_fuzzTestObject_1400_param_06_promise getFormsInfoByModule bundleName typeof:"
+            + typeof(bundleName));
 
         var moduleName = objectTest();
-        console.log("FMS_fuzzTestObject_1400_param_06_promise getFormsInfoByModule moduleName typeof:"+ typeof(moduleName));
+        console.log("FMS_fuzzTestObject_1400_param_06_promise getFormsInfoByModule moduleName typeof:"
+            + typeof(moduleName));
 
         var retResult;
         try{
@@ -1278,10 +1320,12 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1400_param_07_callback getFormsInfoByModule begin");
 
         var bundleName = objectTest();
-        console.log("FMS_fuzzTestObject_1400_param_07_callback getFormsInfoByModule bundleName typeof:"+ typeof(bundleName));
+        console.log("FMS_fuzzTestObject_1400_param_07_callback getFormsInfoByModule bundleName typeof:"
+            + typeof(bundleName));
 
         var moduleName = stringTest();
-        console.log("FMS_fuzzTestObject_1400_param_07_callback getFormsInfoByModule moduleName typeof:"+ typeof(moduleName));
+        console.log("FMS_fuzzTestObject_1400_param_07_callback getFormsInfoByModule moduleName typeof:"
+            + typeof(moduleName));
 
         try{
             formManager.getFormsInfo(
@@ -1317,10 +1361,12 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1400_param_07_promise getFormsInfoByModule begin");
 
         var bundleName = objectTest();
-        console.log("FMS_fuzzTestObject_1400_param_07_promise getFormsInfoByModule bundleName typeof:"+ typeof(bundleName));
+        console.log("FMS_fuzzTestObject_1400_param_07_promise getFormsInfoByModule bundleName typeof:"
+            + typeof(bundleName));
 
         var moduleName = stringTest();
-        console.log("FMS_fuzzTestObject_1400_param_07_promise getFormsInfoByModule moduleName typeof:"+ typeof(moduleName));
+        console.log("FMS_fuzzTestObject_1400_param_07_promise getFormsInfoByModule moduleName typeof:"
+            + typeof(moduleName));
 
         var retResult;
         try{
@@ -1350,10 +1396,12 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1400_param_08_callback getFormsInfoByModule begin");
 
         var bundleName = objectTest();
-        console.log("FMS_fuzzTestObject_1400_param_08_callback getFormsInfoByModule bundleName typeof:"+ typeof(bundleName));
+        console.log("FMS_fuzzTestObject_1400_param_08_callback getFormsInfoByModule bundleName typeof:"
+            + typeof(bundleName));
 
         var moduleName = undefinedTest();
-        console.log("FMS_fuzzTestObject_1400_param_08_callback getFormsInfoByModule moduleName typeof:"+ typeof(moduleName));
+        console.log("FMS_fuzzTestObject_1400_param_08_callback getFormsInfoByModule moduleName typeof:"
+            + typeof(moduleName));
 
         try{
             formManager.getFormsInfo(
@@ -1389,10 +1437,12 @@ describe('FMS_fuzzTestObject', function () {
         console.log("FMS_fuzzTestObject_1400_param_08_promise getFormsInfoByModule begin");
 
         var bundleName = objectTest();
-        console.log("FMS_fuzzTestObject_1400_param_08_promise getFormsInfoByModule bundleName typeof:"+ typeof(bundleName));
+        console.log("FMS_fuzzTestObject_1400_param_08_promise getFormsInfoByModule bundleName typeof:"
+            + typeof(bundleName));
 
         var moduleName = undefinedTest();
-        console.log("FMS_fuzzTestObject_1400_param_08_promise getFormsInfoByModule moduleName typeof:"+ typeof(moduleName));
+        console.log("FMS_fuzzTestObject_1400_param_08_promise getFormsInfoByModule moduleName typeof:"
+            + typeof(moduleName));
 
         var retResult;
         try{

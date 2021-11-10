@@ -15,7 +15,6 @@
 var RANDOM_BEGIN_POSITION = 0;
 var RANDOM_BEGIN_POSITION_A = 2;
 var STRING_RANDOM_LENGTH = 2064;
-var ASCII_RANDOM_LENGTH = 256;
 var BOOLEAN_RANDOM_LENGTH = 2;
 var ARRAY_RANDOM_LENGTH = 10;
 var ARRAY_RANDOM_TYPE_LENGTH = 3;
@@ -83,13 +82,13 @@ const booleanTest = function() {
     return Boolean(getIntegerRandom(RANDOM_BEGIN_POSITION, BOOLEAN_RANDOM_LENGTH));
 }
 
-// return null
+// null
 const nullTest = function() {
     console.log("The nullTest of this fuzzTest random" );
     return null;
 }
 
-// return undefinedTest
+// undefined
 const undefinedTest = function() {
     console.log("The undefinedTest of this fuzzTest random" );
     return undefined;
