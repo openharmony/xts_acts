@@ -15,7 +15,8 @@
 
 import formManager from '@ohos.ability.formManager'
 import {describe, it, expect} from 'deccjsunit/index'
-import {stringTest, numberTest, booleanTest, nullTest, undefinedTest, objectTest, arrayTest, functionTest} from './getParam.js'
+import {stringTest, numberTest, booleanTest, nullTest, undefinedTest,
+    objectTest, arrayTest, functionTest} from './getParam.js'
 
 const TIMEOUT = 5000;
 describe('FMS_fuzzTestObject', function () {
