@@ -23,33 +23,20 @@ function publishCallBackOne() {
 function publishCallBackTwo() {
     console.debug("====>Publish CallBack ACTS_Particle_StartAbility_0200_CommonEvent====>");
 }
-function publishCallBackThree() {
-    console.debug("====>Publish CallBack ACTS_Particle_StartAbility_0300_CommonEvent====>");
-}
-function publishCallBackFour() {
-    console.debug("====>Publish CallBack ACTS_Particle_StartAbility_0400_CommonEvent====>");
-}
-function publishCallBackFive() {
-    console.debug("====>Publish CallBack ACTS_Particle_StartAbility_0500_CommonEvent====>");
-}
-function publishCallBackSix() {
-    console.debug("====>Publish CallBack ACTS_Particle_StartAbility_0600_CommonEvent====>");
-}
+
 
 export default {
     data: {
         title: "ParticleStartAbility"
     },
     onInit() {
-        this.title = this.data.title;
+        this.title = "ParticleStartAbility";
     },
     onShow() {
         commonEvent.publish("ACTS_Particle_StartAbility_0100_CommonEvent", publishCallBackOne);
         commonEvent.publish("ACTS_Particle_StartAbility_0200_CommonEvent", publishCallBackTwo);
-        commonEvent.publish("ACTS_Particle_StartAbility_0300_CommonEvent", publishCallBackThree);
-        commonEvent.publish("ACTS_Particle_StartAbility_0400_CommonEvent", publishCallBackFour);
-        commonEvent.publish("ACTS_Particle_StartAbility_0500_CommonEvent", publishCallBackFive);
-        commonEvent.publish("ACTS_Particle_StartAbility_0600_CommonEvent", publishCallBackSix);
+        
+       
     },
     onReady() {
     },

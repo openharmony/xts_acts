@@ -14,6 +14,7 @@
  */
 import rpc from "@ohos.rpc"
 import particleAbility from '@ohos.ability.particleability'
+import commonEvent from '@ohos.commonevent'
 
 let mMyStub;
 let mMyProxy;
@@ -100,6 +101,42 @@ export default {
                 }
             );
         }
+        if (want.action == "AcquireDataHelper") {
+            console.log('stub SerivceAbilityServer OnConnect start 3')
+            let dataAbilityUri = "dataability:///com.ix.VerifyActDataAbility";
+            const valueBucket = {
+                "name": "ACTS_AcquireDataHelper",
+                "age": 221,
+                "salary": 20.5,
+                "blobType": "u8",
+            }
+            let DAHelper = particleAbility.acquireDataAbilityHelper(dataAbilityUri);
+            console.log('stub SerivceAbilityServer OnConnect ' + DAHelper + JSON.stringify(DAHelper) + typeof DAHelper)
+            if (JSON.stringify(DAHelper) != 'null') {
+                var asyncCallback = DAHelper.insert(dataAbilityUri, valueBucket,
+                    (err, data) => {
+                        console.log("json err【" + JSON.stringify(err) + " 】json data【" + JSON.stringify(data) + " 】;");
+                        commonEvent.publish("ACTS_AcquireDataHelper_0100" + data, err => {
+                            console.log('Publish ACTS_AcquireDataHelper_0100 result: ' + err.code);
+                        });
+                    }
+                );
+            }
+            console.log('stub SerivceAbilityServer OnConnect is null');
+        }
+        if (want.action == "AcquireDataHelper_no") {
+            console.log('stub SerivceAbilityServer OnConnect start 4')
+            let dataAbilityUri = "";
+            var DAHelper = particleAbility.acquireDataAbilityHelper(dataAbilityUri);
+            console.log('stub SerivceAbilityServer OnConnect ' + DAHelper + JSON.stringify(DAHelper) + typeof DAHelper);
+            if (JSON.stringify(DAHelper) == 'null') {
+                console.log('stub SerivceAbilityServer OnConnect DAHelper is null')
+                commonEvent.publish("ACTS_AcquireDataHelper_02000", err => {
+                    console.log('Publish ACTS_AcquireDataHelper_0200 result: ' + err.code)
+                });
+            }
+            console.log('stub SerivceAbilityServer OnConnect end')
+        }
         return mMyStub;
     },
     onReconnect(want) {
@@ -112,4 +149,3 @@ export default {
         console.log('SerivceAbilityServer onCommand');
     },
 }
-
