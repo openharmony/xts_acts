@@ -10,7 +10,8 @@
         {
             "test-file-name": [
                 "ActsParticleAbilityTest.hap",
-                "ParticleStartAbility.hap"
+                "ParticleStartAbility.hap",
+                "amsStDataAbility.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
