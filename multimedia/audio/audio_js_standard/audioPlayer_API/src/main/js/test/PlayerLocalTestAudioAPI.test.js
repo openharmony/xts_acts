@@ -114,14 +114,14 @@ describe('PlayerLocalTestAudioAPI', function () {
                 mySteps.shift();
                 audioPlayer.release();
                 audioPlayer = undefined;
-                nextStep(mySteps);
+                nextStep(mySteps,done);
                 break;
             case LOOP_STATE:
                 loopValue = mySteps[SECOND_INDEX];
                 mySteps.shift();
                 mySteps.shift();
                 audioPlayer.loop = loopValue;
-                nextStep(mySteps);
+                nextStep(mySteps,done);
                 break;
             default:
                 break;
@@ -223,7 +223,7 @@ describe('PlayerLocalTestAudioAPI', function () {
                 mySteps.shift();
                 mySteps.shift();
                 mySteps.shift();
-                nextStep(mySteps);
+                nextStep(mySteps,done);
             } else if (mySteps[0] == ERROR_STATE) {
                 mySteps.shift();
             } else if (mySteps[0] == END_STATE) {
@@ -635,7 +635,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         initAudioPlayer();
         expect(audioPlayer.src).assertEqual(undefined);
         expect(audioPlayer.duration).assertEqual(undefined);
-        expect(audioPlayer.currentTime).assertEqual(undefined);
+        expect(audioPlayer.currentTime).assertEqual(0);
         expect(audioPlayer.state).assertEqual('idle');
         expect(audioPlayer.loop).assertEqual(false);
         done();
