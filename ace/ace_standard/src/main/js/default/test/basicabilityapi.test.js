@@ -329,7 +329,7 @@ describe('basicabilityapi', function () {
             console.info('[router.getState] index: ' + page.index);
             console.info('[router.getState] name: ' + page.name);
             console.info('[router.getState] path: ' + page.path);
-            expect(page.index).assertEqual('1');
+            expect(page.index).assertEqual(1);
             expect(page.name).assertEqual('index');
             expect(page.path).assertEqual('pages/index/');
             console.info('testRouterGetState END');
