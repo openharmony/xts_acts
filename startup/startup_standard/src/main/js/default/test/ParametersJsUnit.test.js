@@ -331,17 +331,14 @@ describe('SystemParameterTest', function () {
                         ret = true;
                         expect(ret).assertTrue();
                         done();
-                        return;
                     }
                 }).catch(function (err) {
                     console.info('promise get hw_sc.build.os.version error: ' + err.code);
-                    return;
                 });
             }, '1000');
         } catch (err) {
             console.info('system_parameter_test_0400 promise  get shw_sc.build.os.version error: ' + err);
         }
-
         console.info('system_parameter_test_0400 : end');
     })
 
@@ -1414,11 +1411,11 @@ describe('SystemParameterTest', function () {
                 ret = false;
             } else {
                 let code = watcher.on("valueChange222", callback1);
-                if (code === 0) { // return error
+                if (code === 0) {
                     ret = false;
                 }
                 code = watcher.off("valueChange222", callback1);
-                if (code === 0) { // return error
+                if (code === 0) {
                     ret = false;
                 }
             }
@@ -1482,7 +1479,7 @@ describe('SystemParameterTest', function () {
             } else {
                 ret = false;
                 let code = watcher.on("valueChange", callback1);
-                if (code === 0) { // return ok
+                if (code === 0) {
                     ret = true;
                 }
                 code = watcher.off("valueChange", callback1);
@@ -1508,6 +1505,7 @@ describe('SystemParameterTest', function () {
         console.info("system_parameter_test_0825 callback key: " + key);
         console.info("system_parameter_test_0825 callback value: " + value);
     }
+
     /**
      * @tc.number    SUB_STARTUP_JS_SYSTEM_PARAMETER_0825
      * @tc.name      testWatcherOff05
