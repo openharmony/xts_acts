@@ -96,7 +96,7 @@ describe('appInfoTest', function () {
   it('battery_temperature_test', 0, function () {
     var batteryTemperature = batteryInfo.batteryTemperature;
     console.info('batteryTemperature = ' + batteryTemperature);
-    expect(batteryTemperature <= 100).assertTrue()
+    expect(batteryTemperature <= 700).assertTrue()
   })
 
   /**
