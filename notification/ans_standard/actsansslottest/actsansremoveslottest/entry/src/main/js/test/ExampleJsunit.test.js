@@ -16,6 +16,7 @@ import notification from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 const TIMEOUT = 3000;
+const SOUNDURL = "file://system/etc/Light.ogg";
 describe('ActsAnsRemoveSlotTest', function () {
 
     /*
@@ -38,6 +39,7 @@ describe('ActsAnsRemoveSlotTest', function () {
         expect(data.bypassDnd).assertEqual(false);
         expect(data.lockscreenVisibility).assertEqual(2);
         expect(data.vibrationEnabled).assertEqual(true);
+        expect(data.sound).assertEqual(SOUNDURL);
         expect(data.lightEnabled).assertEqual(false);
         expect(data.lightColor).assertEqual(0);
         console.debug("====>getSlot ActsAnsRemoveSlotTest_0100 finish====>");
@@ -82,6 +84,7 @@ describe('ActsAnsRemoveSlotTest', function () {
         expect(data.bypassDnd).assertEqual(false);
         expect(data.lockscreenVisibility).assertEqual(2);
         expect(data.vibrationEnabled).assertEqual(true);
+        expect(data.sound).assertEqual(SOUNDURL);
         expect(data.lightEnabled).assertEqual(false);
         expect(data.lightColor).assertEqual(0);
         console.debug("====>getSlot ActsAnsRemoveSlotTest_0200 finish====>");
