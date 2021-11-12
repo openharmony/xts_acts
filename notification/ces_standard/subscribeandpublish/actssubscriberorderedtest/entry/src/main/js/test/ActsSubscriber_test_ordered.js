@@ -21,14 +21,14 @@ describe('ActsSubscriberTestOrder', function () {
     var order = false;
     var commonEventSubscriber0100;
     var commonEventSubscriber0101;
-    var commonEventSubscriber0200_1;
-    var commonEventSubscriber0200_2;
-    var commonEventSubscriber0300_1;
-    var commonEventSubscriber0300_2;
-    var commonEventSubscriber0400_1;
-    var commonEventSubscriber0400_2;
-    var commonEventSubscriber0500_1;
-    var commonEventSubscriber0500_2;
+    var commonEventSubscriber0200;
+    var commonEventSubscriber0201;
+    var commonEventSubscriber0300;
+    var commonEventSubscriber0301;
+    var commonEventSubscriber0400;
+    var commonEventSubscriber0401;
+    var commonEventSubscriber0500;
+    var commonEventSubscriber0501;
 
     function publishCallback(err) {
         console.info("===============>publishCallback");
@@ -46,12 +46,12 @@ describe('ActsSubscriberTestOrder', function () {
     it('ActsSubscriberTestOrder_0100', 0, async function (done) {
         console.info("===============ActsSubscriberTestOrder_0100===============>");
 
-        var commonEventSubscribeInfo_1 = {
+        var commonEventSubscribeInfo1 = {
             events: ["publish_event0100"],
             priority: 10
         };
 
-        var commonEventSubscribeInfo_2 = {
+        var commonEventSubscribeInfo2 = {
             events: ["publish_event0100"],
             priority: 9
         };
@@ -61,7 +61,6 @@ describe('ActsSubscriberTestOrder', function () {
             code: 1,
             data: "publish_event1001_init",
             isOrdered: true,
-            isSticky: false,
         }
 
         async function subscriberCallBack0100(err, data) {
@@ -75,27 +74,29 @@ describe('ActsSubscriberTestOrder', function () {
             expect(data.bundleName).assertEqual("publish_event0100_bundleName");
 
             commonEventSubscriber0100.setCode(2).then(()=>{
-                console.info("===============>subscriberCallBack0100 setCodeCallBack promise");
+                console.info("===============>subscriberCallBack0100 setCode promise");
             })
 
             commonEventSubscriber0100.setData("publish_event1001_change").then(()=>{
-                console.info("===============>subscriberCallBack0100 setDataCallBack promise");
+                console.info("===============>subscriberCallBack0100 setData promise");
             })
 
             commonEventSubscriber0100.setCodeAndData(2, "publish_event1001_change").then(()=>{
-                console.info("===============>subscriberCallBack0100 setCodeAndDataCallback promise");
+                console.info("===============>subscriberCallBack0100 setCodeAndData promise");
             })
 
             commonEventSubscriber0100.getAbortCommonEvent().then(function(data) {
-                console.info("===============>subscriberCallBack0100 getAbortCommonEventCallback1 promise abort: " + data);
+                console.info(
+                    "===============>subscriberCallBack0100 getAbortCommonEvent promise abort: " + data);
             })
 
             commonEventSubscriber0100.clearAbortCommonEvent().then(()=>{
-                console.info("===============>subscriberCallBack0100 clearAbortCommonEventCallback promise");
+                console.info("===============>subscriberCallBack0100 clearAbortCommonEvent promise");
             })
 
             commonEventSubscriber0100.getAbortCommonEvent().then(function(data) {
-                console.info("===============>subscriberCallBack0100 getAbortCommonEventCallback2 promise abort: " + data);
+                console.info(
+                    "===============>subscriberCallBack0100 getAbortCommonEvent promise abort: " + data);
             })
 
             commonEventSubscriber0100.finishCommonEvent().then(()=>{
@@ -113,11 +114,11 @@ describe('ActsSubscriberTestOrder', function () {
             console.info("===============>subscriberCallBack0101=========1 code "+ data.code);
             expect(data.code).assertEqual(2);
             commonEventSubscriber0101.getCode().then(function(data) {
-                console.info("===============>subscriberCallBack0101 getCodeCallBack promise code: "+ data);
+                console.info("===============>subscriberCallBack0101 getCode promise code: "+ data);
             })
             expect(data.data).assertEqual("publish_event1001_change");
             commonEventSubscriber0100.getData().then(function(data) {
-                console.info("===============>subscriberCallBack0100 getDataCallBack promise data: "+ data);
+                console.info("===============>subscriberCallBack0101 getData promise data: "+ data);
             })
             expect(data.bundleName).assertEqual("publish_event0100_bundleName");
             commonEventSubscriber0101.finishCommonEvent().then(()=>{
@@ -127,7 +128,7 @@ describe('ActsSubscriberTestOrder', function () {
         }
 
         Subscriber.createSubscriber(
-            commonEventSubscribeInfo_1
+            commonEventSubscribeInfo1
         ).then(function (data) {
             console.info("===============ActsSubscriberTestOrder_0100==========createSubscriber promise1");
             commonEventSubscriber0100 = data;
@@ -138,7 +139,7 @@ describe('ActsSubscriberTestOrder', function () {
         })
 
         Subscriber.createSubscriber(
-            commonEventSubscribeInfo_2
+            commonEventSubscribeInfo2
         ).then(function (data) {
             console.info("===============ActsSubscriberTestOrder_0100==========createSubscriber promise2");
             commonEventSubscriber0101 = data;
@@ -162,13 +163,13 @@ describe('ActsSubscriberTestOrder', function () {
     it ('ActsSubscriberTestOrder_0200', 0, async function (done) {
         console.info("===============ActsSubscriberTestOrder_0200===============>");
 
-        var commonEventSubscribeInfo_1 = {
+        var commonEventSubscribeInfo1 = {
             events: ["publish_event0200",
                 "publish_event0201"],
             priority: 10
         };
 
-        var commonEventSubscribeInfo_2 = {
+        var commonEventSubscribeInfo2 = {
             events: ["publish_event0201"],
             priority: 9
         };
@@ -178,7 +179,6 @@ describe('ActsSubscriberTestOrder', function () {
             code: 1,
             data: "publish_event0200_init",
             isOrdered: false,
-            isSticky: false,
         }
 
         var commonEventPublishData2 = {
@@ -186,72 +186,71 @@ describe('ActsSubscriberTestOrder', function () {
             code: 1,
             data: "publish_event0201_init",
             isOrdered: true,
-            isSticky: false,
         }
 
-        async function subscriberCallBack0200_1(err, data) {
-            console.info("===============>subscriberCallBack0200_1========event: " + data.event);
-            console.info("===============>subscriberCallBack0200_1========bundleName: " + data.bundleName);
-            console.info("===============>subscriberCallBack0200_1=========code: " + data.code);
-            console.info("===============>subscriberCallBack0200_1=========data: " + data.data);
-            console.info("===============>subscriberCallBack0200_1=========num2: " + num2);
+        async function subscriberCallBack0200(err, data) {
+            console.info("===============>subscriberCallBack0200========event: " + data.event);
+            console.info("===============>subscriberCallBack0200========bundleName: " + data.bundleName);
+            console.info("===============>subscriberCallBack0200=========code: " + data.code);
+            console.info("===============>subscriberCallBack0200=========data: " + data.data);
+            console.info("===============>subscriberCallBack0200=========num2: " + num2);
             if (num2 == 0) {
                 num2++;
                 expect(data.event).assertEqual("publish_event0200");
-                console.info("===============>subscriberCallBack0200_1=====num2:0====code: " + data.code);
+                console.info("===============>subscriberCallBack0200=====num2:0====code: " + data.code);
                 expect(data.code).assertEqual(1);
                 expect(data.data).assertEqual("publish_event0200_init");
                 expect(data.bundleName).assertEqual("publish_event0200_bundleName");
             }else {
                 num2 = 0;
                 expect(data.event).assertEqual("publish_event0201");
-                console.info("===============>subscriberCallBack0200_1=====num2:1====code: " + data.code);
+                console.info("===============>subscriberCallBack0200=====num2:1====code: " + data.code);
                 expect(data.code).assertEqual(1);
                 expect(data.data).assertEqual("publish_event0201_init");
                 expect(data.bundleName).assertEqual("publish_event0201_bundleName");
-                commonEventSubscriber0200_1.finishCommonEvent().then(()=>{
-                    console.info("===============>subscriberCallBack0200_1:num:1:finishCommonEventCallBack");
+                commonEventSubscriber0200.finishCommonEvent().then(()=>{
+                    console.info("===============>subscriberCallBack0200:num:1:finishCommonEvent promise");
                 })
             }
         }
 
-        async function subscriberCallBack0200_2(err, data) {
-            console.info("===============>subscriberCallBack0200_2========event: " + data.event);
-            console.info("===============>subscriberCallBack0200_2========bundleName: " + data.bundleName);
-            console.info("===============>subscriberCallBack0200_2=========code=: " + data.code);
-            console.info("===============>subscriberCallBack0200_2=========data: " + data.data);
+        async function subscriberCallBack0201(err, data) {
+            console.info("===============>subscriberCallBack0201========event: " + data.event);
+            console.info("===============>subscriberCallBack0201========bundleName: " + data.bundleName);
+            console.info("===============>subscriberCallBack0201=========code=: " + data.code);
+            console.info("===============>subscriberCallBack0201=========data: " + data.data);
 
             expect(data.event).assertEqual("publish_event0201");
-            console.info("===============>subscriberCallBack0200_2=========code: " + data.code);
+            console.info("===============>subscriberCallBack0201=========code: " + data.code);
             expect(data.code).assertEqual(1);
             expect(data.data).assertEqual("publish_event0201_init");
             expect(data.bundleName).assertEqual("publish_event0201_bundleName");
-            commonEventSubscriber0200_2.finishCommonEvent().then(()=>{
-                console.info("===============>subscriberCallBack0200_2:finishCommonEventCallBack");
+            commonEventSubscriber0201.finishCommonEvent().then(()=>{
+                console.info("===============>subscriberCallBack0201:finishCommonEvent promise");
             })
             done();
         }
 
         Subscriber.createSubscriber(
-            commonEventSubscribeInfo_1,
+            commonEventSubscribeInfo1,
         ).then(function (data) {
             console.info("===============ActsSubscriberTestOrder_0200==========createSubscriber promise1");
-            commonEventSubscriber0200_1 = data;
+            commonEventSubscriber0200 = data;
             data.getSubscribeInfo().then(function (data) {
                 console.info("===============ActsSubscriberTestOrder_0200=========getSubscribeInfo promise1");
-                Subscriber.subscribe(commonEventSubscriber0200_1, subscriberCallBack0200_1);
+                Subscriber.subscribe(commonEventSubscriber0200, subscriberCallBack0200);
             });
         })
 
         Subscriber.createSubscriber(
-            commonEventSubscribeInfo_2,
+            commonEventSubscribeInfo2,
         ).then(function (data) {
             console.info("===============ActsSubscriberTestOrder_0200==========createSubscriber promise2");
-            commonEventSubscriber0200_2 = data;
+            commonEventSubscriber0201 = data;
             data.getSubscribeInfo().then(function (data) {
                 console.info("===============ActsSubscriberTestOrder_0200=========getSubscribeInfo promise2");
-                Subscriber.subscribe(commonEventSubscriber0200_2, subscriberCallBack0200_2);
-                Subscriber.unsubscribe(commonEventSubscriber0200_1,unsubscribeCallback);
+                Subscriber.subscribe(commonEventSubscriber0201, subscriberCallBack0201);
+                Subscriber.unsubscribe(commonEventSubscriber0200, unsubscribeCallback);
                 Subscriber.publish("publish_event0200", commonEventPublishData1, publishCallback);
                 Subscriber.publish("publish_event0201", commonEventPublishData2, publishCallback);
 
@@ -271,12 +270,12 @@ describe('ActsSubscriberTestOrder', function () {
     it ('ActsSubscriberTestOrder_0300', 0, async function (done) {
         console.info("===============ActsSubscriberTestOrder_0300===============>");
 
-        var commonEventSubscribeInfo_1 = {
+        var commonEventSubscribeInfo1 = {
             events: ["publish_event0301"],
             priority: 9
         };
 
-        var commonEventSubscribeInfo_2 = {
+        var commonEventSubscribeInfo2 = {
             events: ["publish_event0301"],
             priority: 10
         };
@@ -286,42 +285,41 @@ describe('ActsSubscriberTestOrder', function () {
             code: 1,
             data: "publish_event0301_init",
             isOrdered: true,
-            isSticky: false,
         }
 
-        async function subscriberCallBack0300_1(err, data) {
-            console.info("===============>subscriberCallBack0300_1========event: " + data.event);
-            console.info("===============>subscriberCallBack0300_1========bundleName: " + data.bundleName);
-            console.info("===============>subscriberCallBack0300_1=========code: " + data.code);
-            console.info("===============>subscriberCallBack0300_1=========dat: " + data.data);
-            console.info("===============>subscriberCallBack0300_1=========order: " + order);
+        async function subscriberCallBack0300(err, data) {
+            console.info("===============>subscriberCallBack0300========event: " + data.event);
+            console.info("===============>subscriberCallBack0300========bundleName: " + data.bundleName);
+            console.info("===============>subscriberCallBack0300=========code: " + data.code);
+            console.info("===============>subscriberCallBack0300=========dat: " + data.data);
+            console.info("===============>subscriberCallBack0300=========order: " + order);
 
             expect(data.event).assertEqual("publish_event0301");
             expect(data.code).assertEqual(1);
             expect(data.data).assertEqual("publish_event0301_init");
             expect(data.bundleName).assertEqual("publish_event0301_bundleName");
-            expect(order).assertEqual(1);
+            expect(order).assertEqual(true);
 
             if (order == true) {
                 order = false;
             }
 
-            commonEventSubscriber0300_1.isOrderedCommonEvent().then(function(data) {
-                console.info("========>subscriberCallBack0300_1 publish_event0301 isOrderedCommonEvent promise " + data);
-                expect(data).assertEqual(1);
+            commonEventSubscriber0300.isOrderedCommonEvent().then(function(data) {
+                console.info("========>subscriberCallBack0300 isOrderedCommonEvent promise " + data);
+                expect(data).assertEqual(true);
             })
-            commonEventSubscriber0300_1.finishCommonEvent().then(()=>{
-                console.info("===============>subscriberCallBack0300_1 publish_event0301 finishCommonEventCallBack");
+            commonEventSubscriber0300.finishCommonEvent().then(()=>{
+                console.info("===============>subscriberCallBack0300 finishCommonEvent promise");
             })
             done();
         }
 
-        async function subscriberCallBack0300_2(err, data) {
-            console.info("===============>subscriberCallBack0300_2========event: " + data.event);
-            console.info("===============>subscriberCallBack0300_2========bundleName: " + data.bundleName);
-            console.info("===============>subscriberCallBack0300_2=========code: " + data.code);
-            console.info("===============>subscriberCallBack0300_2=========data: " + data.data);
-            console.info("===============>subscriberCallBack0300_2=========order: " + order);
+        async function subscriberCallBack0301(err, data) {
+            console.info("===============>subscriberCallBack0301========event: " + data.event);
+            console.info("===============>subscriberCallBack0301========bundleName: " + data.bundleName);
+            console.info("===============>subscriberCallBack0301=========code: " + data.code);
+            console.info("===============>subscriberCallBack0301=========data: " + data.data);
+            console.info("===============>subscriberCallBack0301=========order: " + order);
 
             expect(data.event).assertEqual("publish_event0301");
             expect(data.code).assertEqual(1);
@@ -332,34 +330,34 @@ describe('ActsSubscriberTestOrder', function () {
                 order = true;
             }
 
-            commonEventSubscriber0300_2.isOrderedCommonEvent().then(function(data) {
-                console.info("===============>subscriberCallBack0300_2 isOrderedCommonEvent promise " + data);
-                expect(data).assertEqual(1);
+            commonEventSubscriber0301.isOrderedCommonEvent().then(function(data) {
+                console.info("===============>subscriberCallBack0301 isOrderedCommonEvent promise" + data);
+                expect(data).assertEqual(true);
             })
-            commonEventSubscriber0300_2.finishCommonEvent().then(()=>{
-                console.info("===============>subscriberCallBack0300_2 publish_event0301 finishCommonEventCallBack");
+            commonEventSubscriber0301.finishCommonEvent().then(()=>{
+                console.info("===============>subscriberCallBack0301 finishCommonEvent promise");
             })
         }
 
         Subscriber.createSubscriber(
-            commonEventSubscribeInfo_1,
+            commonEventSubscribeInfo1,
         ).then(function (data) {
             console.info("===============ActsSubscriberTestOrder_0300==========createSubscriber promise1");
-            commonEventSubscriber0300_1 = data;
+            commonEventSubscriber0300 = data;
             data.getSubscribeInfo().then(function (data) {
                 console.info("===============ActsSubscriberTestOrder_0300=========getSubscribeInfo promise1");
-                Subscriber.subscribe(commonEventSubscriber0300_1, subscriberCallBack0300_1);
+                Subscriber.subscribe(commonEventSubscriber0300, subscriberCallBack0300);
             });
         })
 
         Subscriber.createSubscriber(
-            commonEventSubscribeInfo_2,
+            commonEventSubscribeInfo2,
         ).then(function (data) {
             console.info("===============ActsSubscriberTestOrder_0300==========createSubscriber promise2");
-            commonEventSubscriber0300_2 = data;
+            commonEventSubscriber0301 = data;
             data.getSubscribeInfo().then(function (data) {
                 console.info("===============ActsSubscriberTestOrder_0300=========getSubscribeInfo promise2");
-                Subscriber.subscribe(commonEventSubscriber0300_2, subscriberCallBack0300_2);
+                Subscriber.subscribe(commonEventSubscriber0301, subscriberCallBack0301);
                 var numindex = 0;
                 for (; numindex < 3; ++numindex) {
                     Subscriber.publish("publish_event0301", commonEventPublishData2, publishCallback);
@@ -381,12 +379,12 @@ describe('ActsSubscriberTestOrder', function () {
     it ('ActsSubscriberTestOrder_0400', 0, async function (done) {
         console.info("===============ActsSubscriberTestOrder_0400===============>");
 
-        var commonEventSubscribeInfo_1 = {
+        var commonEventSubscribeInfo1 = {
             events: ["publish_event0400"],
             priority: 10
         };
 
-        var commonEventSubscribeInfo_2 = {
+        var commonEventSubscribeInfo2 = {
             events: ["publish_event0400"],
             priority: 9
         };
@@ -396,59 +394,59 @@ describe('ActsSubscriberTestOrder', function () {
             code: 1,
             data: "publish_event0400_init",
             isOrdered: true,
-            isSticky: false,
         }
 
-        async function subscriberCallBack0400_1(err, data) {
-            console.info("===============>SubscriberPromise0400_1========event: " + data.event);
-            console.info("===============>SubscriberPromise0400_1========bundleName: " + data.bundleName);
-            console.info("===============>SubscriberPromise0400_1=========code: " + data.code);
-            console.info("===============>SubscriberPromise0400_1=========data: " + data.data);
+        async function subscriberCallBack0400(err, data) {
+            console.info("===============>subscriberCallBack0400========event: " + data.event);
+            console.info("===============>subscriberCallBack0400========bundleName: " + data.bundleName);
+            console.info("===============>subscriberCallBack0400=========code: " + data.code);
+            console.info("===============>subscriberCallBack0400=========data: " + data.data);
             expect(data.event).assertEqual("publish_event0400");
             expect(data.code).assertEqual(1);
             expect(data.data).assertEqual("publish_event0400_init");
             expect(data.bundleName).assertEqual("publish_event0400_bundleName");
-            commonEventSubscriber0400_1.getAbortCommonEvent().then(function(data) {
-                console.info("====>SubscriberPromise0400_1======>getAbortCommonEventPromise0400_1:1 abort2: " + data);
+            commonEventSubscriber0400.getAbortCommonEvent().then(function(data) {
+                console.info("===============>subscriberCallBack0400 getAbortCommonEvent promise abort2: " + data);
             });
-            commonEventSubscriber0400_1.abortCommonEvent().then(() => {
-                console.info("===============>SubscriberPromise0400_1=========>AbortCommonEventPromise0400_1");
+            commonEventSubscriber0400.abortCommonEvent().then(() => {
+                console.info("===============>subscriberCallBack0400 abortCommonEvent promise");
             });
-            commonEventSubscriber0400_1.getAbortCommonEvent().then(function(data) {
-                console.info("===>SubscriberPromise0400_1===========>getAbortCommonEventPromise0400_1:2 abort2: " + data);
+            commonEventSubscriber0400.getAbortCommonEvent().then(function(data) {
+                console.info(
+                    "===============>subscriberCallBack0400 getAbortCommonEvent promise abort2: " + data);
             });
-            commonEventSubscriber0400_1.finishCommonEvent().then(()=> {
-                console.info("===============>SubscriberPromise0400_1==========>finishCommonEventPromise0400_1");
+            commonEventSubscriber0400.finishCommonEvent().then(()=> {
+                console.info("===============>subscriberCallBack0400 finishCommonEvent promise");
             });
             done();
         }
 
-        async function subscriberCallBack0400_2(err, data) {
-            console.info("===============>SubscriberPromise0400_2========event: " + data.event);
+        async function subscriberCallBack0401(err, data) {
+            console.info("===============>subscriberCallBack0401========event: " + data.event);
             expect().assertFail();
         }
 
         Subscriber.createSubscriber(
-            commonEventSubscribeInfo_1
+            commonEventSubscribeInfo1
         ).then(function (data) {
-            console.info("===============createSubscriberPromise0400_1:1");
-            commonEventSubscriber0400_1 = data;
+            console.info("===============ActsSubscriberTestOrder_0400==========createSubscriber promise1");
+            commonEventSubscriber0400 = data;
             data.getSubscribeInfo().then(function (data) {
-                console.info("=============GetSubscribeInfoPromisek0400_1 data.events[0]: " + data.events[0]);
+                console.info("===============ActsSubscriberTestOrder_0400=========getSubscribeInfo promise1");
                 expect(data.events[0]).assertEqual("publish_event0400");
-                Subscriber.subscribe(commonEventSubscriber0400_1, subscriberCallBack0400_1);
+                Subscriber.subscribe(commonEventSubscriber0400, subscriberCallBack0400);
             })
         })
 
         Subscriber.createSubscriber(
-            commonEventSubscribeInfo_2
+            commonEventSubscribeInfo2
         ).then(function (data) {
-            console.info("==================createSubscriberPromise0400_1:2");
-            commonEventSubscriber0400_2 = data;
+            console.info("===============ActsSubscriberTestOrder_0400==========createSubscriber promise2");
+            commonEventSubscriber0401 = data;
             data.getSubscribeInfo().then(function (data) {
-                console.info("==============GetSubscribeInfoPromisek0400_1 data.events[0] : " + data.events[0]);
+                console.info("===============ActsSubscriberTestOrder_0400=========getSubscribeInfo promise2");
                 expect(data.events[0]).assertEqual("publish_event0400");
-                Subscriber.subscribe(commonEventSubscriber0400_2, subscriberCallBack0400_2);
+                Subscriber.subscribe(commonEventSubscriber0401, subscriberCallBack0401);
                 Subscriber.publish("publish_event0400", commonEventPublishData, publishCallback);
             })
         })
@@ -467,12 +465,12 @@ describe('ActsSubscriberTestOrder', function () {
     it ('ActsSubscriberTestOrder_0500', 0, async function (done) {
         console.info("===============ActsSubscriberTestOrder_0500===============>");
 
-        var commonEventSubscribeInfo_1 = {
+        var commonEventSubscribeInfo1 = {
             events: ["publish_event0500"],
             priority: 1001
         };
 
-        var commonEventSubscribeInfo_2 = {
+        var commonEventSubscribeInfo2 = {
             events: ["publish_event0500"],
             priority: -101
         };
@@ -482,56 +480,58 @@ describe('ActsSubscriberTestOrder', function () {
             code: 10,
             data: "publish_event0500_init",
             isOrdered: true,
-            isSticky: false,
         }
 
-        async function subscriberCallBack0500_1(err, data) {
-            console.info("===============>SubscriberPromise0500_1========event: " + data.event);
-            console.info("===============>SubscriberPromise0500_1========bundleName: " + data.bundleName);
-            console.info("===============>SubscriberPromise0500_1=========code: " + data.code);
-            console.info("===============>SubscriberPromise0500_1=========data: " + data.data);
+        async function subscriberCallBack0500(err, data) {
+            console.info("===============>subscriberCallBack0500========event: " + data.event);
+            console.info("===============>subscriberCallBack0500========bundleName: " + data.bundleName);
+            console.info("===============>subscriberCallBack0500=========code: " + data.code);
+            console.info("===============>subscriberCallBack0500=========data: " + data.data);
             expect(data.event).assertEqual("publish_event0500");
             expect(data.code).assertEqual(10);
             expect(data.data).assertEqual("publish_event0500_init");
             expect(data.bundleName).assertEqual("publish_event0500_bundleName");
-            commonEventSubscriber0500_1.finishCommonEvent().then(() => {
-                console.info("===============>SubscriberPromise0500_1==========>finishCommonEventPromise0500_1");
+            commonEventSubscriber0500.finishCommonEvent().then(() => {
+                console.info("===============>subscriberCallBack0500 finishCommonEvent promise");
             });
         }
 
-        async function subscriberCallBack0500_2(err, data) {
-            console.info("===============>SubscriberPromise0500_2========event: " + data.event);
-            console.info("===============>SubscriberPromise0500_2========bundleName: " + data.bundleName);
-            console.info("===============>SubscriberPromise0500_2=========code: " + data.code);
-            console.info("===============>SubscriberPromise0500_2========data: " + data.data);
+        async function subscriberCallBack0501(err, data) {
+            console.info("===============>subscriberCallBack0501========event: " + data.event);
+            console.info("===============>subscriberCallBack0501========bundleName: " + data.bundleName);
+            console.info("===============>subscriberCallBack0501=========code: " + data.code);
+            console.info("===============>subscriberCallBack0501========data: " + data.data);
             expect(data.event).assertEqual("publish_event0500");
             expect(data.code).assertEqual(10);
             expect(data.data).assertEqual("publish_event0500_init");
             expect(data.bundleName).assertEqual("publish_event0500_bundleName");
+            commonEventSubscriber0501.finishCommonEvent().then(() => {
+                console.info("===============>subscriberCallBack0501 finishCommonEvent promise");
+            });
             done();
         }
 
         Subscriber.createSubscriber(
-            commonEventSubscribeInfo_1
+            commonEventSubscribeInfo1
         ).then(function (data) {
-            console.info("===============createSubscriberPromise0500_1:1");
-            commonEventSubscriber0500_1 = data;
+            console.info("===============ActsSubscriberTestOrder_0500==========createSubscriber promise1");
+            commonEventSubscriber0500 = data;
             data.getSubscribeInfo().then(function (data) {
-                console.info("=============GetSubscribeInfoPromisek0500_1:1 data.events[0]: " + data.events[0]);
+                console.info("===============ActsSubscriberTestOrder_0500==========getSubscribeInfo promise1");
                 expect(data.events[0]).assertEqual("publish_event0500");
-                Subscriber.subscribe(commonEventSubscriber0500_1, subscriberCallBack0500_1);
+                Subscriber.subscribe(commonEventSubscriber0500, subscriberCallBack0500);
             })
         })
 
         Subscriber.createSubscriber(
-            commonEventSubscribeInfo_2
+            commonEventSubscribeInfo2
         ).then(function (data) {
-            console.info("==================createSubscriberPromise0500_1:2");
-            commonEventSubscriber0500_2 = data;
+            console.info("===============ActsSubscriberTestOrder_0500==========createSubscriber promise2");
+            commonEventSubscriber0501 = data;
             data.getSubscribeInfo().then(function (data) {
-                console.info("==============GetSubscribeInfoPromisek0500_1:2 data.events[0] : " + data.events[0]);
+                console.info("===============ActsSubscriberTestOrder_0500==========getSubscribeInfo promise2");
                 expect(data.events[0]).assertEqual("publish_event0500");
-                Subscriber.subscribe(commonEventSubscriber0500_2, subscriberCallBack0500_2);
+                Subscriber.subscribe(commonEventSubscriber0501, subscriberCallBack0501);
                 Subscriber.publish("publish_event0500", commonEventPublishData, publishCallback);
             })
         })
