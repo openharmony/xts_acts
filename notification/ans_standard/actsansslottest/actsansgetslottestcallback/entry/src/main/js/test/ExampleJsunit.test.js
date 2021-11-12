@@ -16,6 +16,7 @@ import notification from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 const TIMEOUT = 2000;
+const SOUNDURL = "file://system/etc/Light.ogg";
 describe('ActsAnsGetSlotTestCallback', function () {
 
     /*
@@ -43,6 +44,7 @@ describe('ActsAnsGetSlotTestCallback', function () {
                 expect(data.bypassDnd).assertEqual(false);
                 expect(data.lockscreenVisibility).assertEqual(2);
                 expect(data.vibrationEnabled).assertEqual(true);
+                expect(data.sound).assertEqual(SOUNDURL);
                 expect(data.lightEnabled).assertEqual(false);
                 expect(data.lightColor).assertEqual(0);
                 console.debug("====>getSlot ActsAnsGetSlotTestCallback_0100 finish====>");
@@ -77,6 +79,7 @@ describe('ActsAnsGetSlotTestCallback', function () {
             expect(data.bypassDnd).assertEqual(false);
             expect(data.lockscreenVisibility).assertEqual(2);
             expect(data.vibrationEnabled).assertEqual(true);
+            expect(data.sound).assertEqual(SOUNDURL);
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlot ActsAnsGetSlotTestCallback_0200 finish====>");
@@ -118,6 +121,7 @@ describe('ActsAnsGetSlotTestCallback', function () {
             expect(data.bypassDnd).assertEqual(false);
             expect(data.lockscreenVisibility).assertEqual(3);
             expect(data.vibrationEnabled).assertEqual(false);
+            expect(data.sound).assertEqual("");
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlot ActsAnsGetSlotTestCallback_0300 finish====>");
@@ -159,6 +163,7 @@ describe('ActsAnsGetSlotTestCallback', function () {
             expect(data.bypassDnd).assertEqual(false);
             expect(data.lockscreenVisibility).assertEqual(3);
             expect(data.vibrationEnabled).assertEqual(false);
+            expect(data.sound).assertEqual("");
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlotActsAnsGetSlotTestCallback_0400 finish====>");
@@ -200,6 +205,7 @@ describe('ActsAnsGetSlotTestCallback', function () {
             expect(data.bypassDnd).assertEqual(false);
             expect(data.lockscreenVisibility).assertEqual(3);
             expect(data.vibrationEnabled).assertEqual(false);
+            expect(data.sound).assertEqual("");
             expect(data.lightEnabled).assertEqual(false);
             expect(data.lightColor).assertEqual(0);
             console.debug("====>getSlot ActsAnsGetSlotTestCallback_0500 finish====>");
