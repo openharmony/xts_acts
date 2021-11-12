@@ -119,7 +119,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
                 audioPlayer.loop = mySteps[SECOND_INDEX];
                 mySteps.shift();
                 mySteps.shift();
-                nextStep(mySteps);
+                nextStep(mySteps,done);
                 break;
             default:
                 break;
