@@ -47,7 +47,7 @@
         "srcLanguage": "c++",
         "forms": [
           {
-            "name": "Form_Js001",
+            "name": "FormA_Js001",
             "description": "form_description",
             "isDefault": true,
             "type": "JS",
@@ -55,6 +55,7 @@
             "supportDimensions":[ "1*2", "2*2" ],
             "defaultDimension": "1*2",
             "updateEnabled": true,
+            "updateDuration": 1,
             "scheduledUpdateTime": "10:30",
             "jsComponentName": "card",
             "formVisibleNotify" : true,
@@ -68,7 +69,7 @@
             }
           },
           {
-            "name": "Form_Js002",
+            "name": "FormA_Js002",
             "description": "form_description",
             "isDefault": true,
             "type": "JS",
@@ -77,6 +78,7 @@
             "defaultDimension": "1*2",
             "updateEnabled": true,
             "updateDuration": 1,
+            "scheduledUpdateTime": "10:30",
             "jsComponentName": "card",
             "formVisibleNotify" : true,
             "metaData": {

@@ -13,4 +13,11 @@
  * limitations under the License.
  */
 
-require('./FormFuzzTest.test.js')
+require('./FormFuzzTestArray.test.js')
+require('./FormFuzzTestBool.test.js')
+require('./FormFuzzTestFunction.test.js')
+require('./FormFuzzTestNull.test.js')
+require('./FormFuzzTestNum.test.js')
+require('./FormFuzzTestObject.test.js')
+require('./FormFuzzTestString.test.js')
+require('./FormFuzzTestUndefined.test.js')
