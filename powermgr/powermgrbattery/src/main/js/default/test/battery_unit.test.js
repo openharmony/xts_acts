@@ -262,6 +262,6 @@ describe('appInfoTest', function () {
     brightness.setValue(10);
     brightness.setValue(0);
     brightness.setValue(255);
-    expect(0).assertEqual('0')
+    expect(0 == 0).assertTrue();
   })
 })
