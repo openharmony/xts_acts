@@ -14,8 +14,6 @@
  */
 
 import fileio from '@ohos.fileio';
-import file from '@system.file';
-import bundle_mgr from '@ohos.bundle_mgr'
 import {
   describe,
   beforeAll,
@@ -1589,41 +1587,6 @@ describe('fileIOTest', function () {
       console.log('fileio_test_write_sync_010 has failed for ' + e);
       expect(fileio.closeSync(fd) !== null).assertTrue();
       expect(fileio.unlinkSync(fpath) !== null).assertTrue();
-    }
-  });
-
-  /**
-   * @tc.number SUB_STORAGE_FileIO_ReadSync_0000
-   * @tc.name fileio_test_read_sync_000
-   * @tc.desc Function of API, readSync.
-   */
-  it('fileio_test_read_sync_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_read_sync_000');
-    let text = '0123456789abcdefg';
-    expect(prepareFile(fpath, text)).assertTrue();
-    sleep(10)
-    try {
-      let fd = fileio.openSync(fpath, 0o2);
-      let len = fileio.readSync(fd, new ArrayBuffer(4096));
-      expect(len == text.length).assertTrue();
-      expect(fileio.closeSync(fd) !== null).assertTrue();
-      file.readText({
-        uri: 'internal://cache/fileio_test_read_sync_000',
-        success: function (data) {
-          console.log('call readText success: ' + data.text);
-          expect(text == data.text).assertTrue();
-          expect(fileio.unlinkSync(fpath) !== null).assertTrue();
-          done();
-        },
-        fail: function (data, code) {
-          console.error('call fail callback fail, code: ' + code + ', data: ' + data);
-          expect(null).assertFail();
-        },
-      });
-    }
-    catch (e) {
-      console.log('fileio_test_read_sync_000 has failed for ' + e);
-      expect(null).assertFail();
     }
   });
 

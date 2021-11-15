@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import fileio from '@system.fileio';
+import fileio from '@ohos.fileio';
 import {
   describe,
   it,
