@@ -264,4 +264,19 @@ describe('appInfoTest', function () {
     brightness.setValue(255);
     expect(0 == 0).assertTrue();
   })
+
+  /**
+   * @tc.number battery_manager_js_2300
+   * @tc.name is_battery_present_test
+   * @tc.desc Battry Present Interface Test
+   */
+  it('is_battery_present_test', 0, function () {
+    var isBatteryPresent = batteryInfo.isBatteryPresent;
+    console.info('isBatteryPresent = ' + isBatteryPresent);
+    if (isBatteryPresent) {
+        expect(isBatteryPresent).assertTrue();
+    }else{
+        expect(isBatteryPresent).assertFalse();        
+    }
+  })
 })
