@@ -17,8 +17,9 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import systemTime from '@ohos.systemTime'
 
-describe('TimeTest', function() {
+describe('TimeTest', function(){
     console.log('start################################start');
+    
     /**
      * @tc.number    SUB_systemTime_setTime_JS_API_0100
      * @tc.name      Test systemTime.setTime
@@ -103,18 +104,19 @@ describe('TimeTest', function() {
         console.log('SUB_systemTime_setTime_JS_API_0400 end');
         done()
     })
+    
      /**
-     * @tc.number    SUB_systemTime_setData_JS_API_0100
-     * @tc.name      Test systemTime.setData Invalid value
-     * @tc.desc      Test systemTime_setData API functionality.
+     * @tc.number    SUB_systemTime_setDate_JS_API_0100
+     * @tc.name      Test systemTime.setDate Invalid value
+     * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setData_test1', 0, async function (done) {
-        console.log("SUB_systemTime_setTime_JS_API_0100 start");
-        var data = new Data("October 13, 2020 11:13:00");
-        systemTime.setData(-1).then(data => {
+    it('systemTime_setDate_test1', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_0100 start");
+        var data = new Date("October 13, 2020 11:13:00");
+        systemTime.setDate(-1).then(data => {
             console.log("setTime ===data " + data);
             done();
         }).catch(error => {
@@ -122,17 +124,18 @@ describe('TimeTest', function() {
             done();
         });
     });
+    
      /**
-     * @tc.number    SUB_systemTime_setData_JS_API_0200
-     * @tc.name      Test systemTime.setData Invalid value
-     * @tc.desc      Test systemTime_setData API functionality.
+     * @tc.number    SUB_systemTime_setDate_JS_API_0200
+     * @tc.name      Test systemTime.setDate Invalid value
+     * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setData_test2', 0, async function (done) {
-        console.log("SUB_systemTime_setTime_JS_API_0200 start");
-        systemTime.setData(0).then(data => {
+    it('systemTime_setDate_test2', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_0200 start");
+        systemTime.setDate(0).then(data => {
             console.log("setTime ===data " + data);
             done();
         }).catch(error => {
@@ -140,18 +143,19 @@ describe('TimeTest', function() {
             done();
         });
     });
+    
      /**
-     * @tc.number    SUB_systemTime_setData_JS_API_0300
-     * @tc.name      Test systemTime.setData Invalid value
-     * @tc.desc      Test systemTime_setData API functionality.
+     * @tc.number    SUB_systemTime_setDate_JS_API_0300
+     * @tc.name      Test systemTime.setDate Invalid value
+     * @tc.desc      Test systemTime_setDate API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setData_test3', 0, async function (done) {
-        console.log("SUB_systemTime_setTime_JS_API_0200 start");
-        var data = new Data("October 13, 2020 11:13:00");
-        systemTime.setData(data, (error, data) => {
+    it('systemTime_setDate_test3', 0, async function (done) {
+        console.log("SUB_systemTime_setDate_JS_API_0300 start");
+        var data = new Date("October 13, 2020 11:13:00");
+        systemTime.setDate(data, (error, data) => {
             if(error){
                 console.log("setTime ===error " + error);
                 done();
@@ -161,6 +165,7 @@ describe('TimeTest', function() {
             }
         });
     });
+    
      /**
      * @tc.number    SUB_systemTime_setTimezone_JS_API_0100
      * @tc.name      Test systemTime.setTimezone Invalid value
@@ -179,6 +184,7 @@ describe('TimeTest', function() {
             done();
         });
     });
+    
      /**
      * @tc.number    SUB_systemTime_setTimezone_JS_API_0200
      * @tc.name      Test systemTime.setTimezone Invalid value
@@ -197,6 +203,7 @@ describe('TimeTest', function() {
             done();
         });
     });
+    
      /**
      * @tc.number    SUB_systemTime_setTimezone_JS_API_0300
      * @tc.name      Test systemTime.setTimezone Invalid value
