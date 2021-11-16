@@ -103,4 +103,116 @@ describe('TimeTest', function() {
         console.log('SUB_systemTime_setTime_JS_API_0400 end');
         done()
     })
+     /**
+     * @tc.number    SUB_systemTime_setData_JS_API_0100
+     * @tc.name      Test systemTime.setData Invalid value
+     * @tc.desc      Test systemTime_setData API functionality.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('systemTime_setData_test1', 0, async function (done) {
+        console.log("SUB_systemTime_setTime_JS_API_0100 start");
+        var data = new Data("October 13, 2020 11:13:00");
+        systemTime.setData(-1).then(data => {
+            console.log("setTime ===data " + data);
+            done();
+        }).catch(error => {
+            console.log("setTime ===error " + error);
+            done();
+        });
+    });
+     /**
+     * @tc.number    SUB_systemTime_setData_JS_API_0200
+     * @tc.name      Test systemTime.setData Invalid value
+     * @tc.desc      Test systemTime_setData API functionality.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('systemTime_setData_test2', 0, async function (done) {
+        console.log("SUB_systemTime_setTime_JS_API_0200 start");
+        systemTime.setData(0).then(data => {
+            console.log("setTime ===data " + data);
+            done();
+        }).catch(error => {
+            console.log("setTime ===error " + error);
+            done();
+        });
+    });
+     /**
+     * @tc.number    SUB_systemTime_setData_JS_API_0300
+     * @tc.name      Test systemTime.setData Invalid value
+     * @tc.desc      Test systemTime_setData API functionality.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('systemTime_setData_test3', 0, async function (done) {
+        console.log("SUB_systemTime_setTime_JS_API_0200 start");
+        var data = new Data("October 13, 2020 11:13:00");
+        systemTime.setData(data, (error, data) => {
+            if(error){
+                console.log("setTime ===error " + error);
+                done();
+            }else{
+                console.log("setTime ===data " + data);
+                done();
+            }
+        });
+    });
+     /**
+     * @tc.number    SUB_systemTime_setTimezone_JS_API_0100
+     * @tc.name      Test systemTime.setTimezone Invalid value
+     * @tc.desc      Test systemTime_setTimezone API functionality.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('systemTime_setTimezone_test1', 0, async function (done) {
+        console.log("SUB_systemTime_setTimezone_JS_API_0100 start");
+        systemTime.setTimezone('Asia, Shanghai').then(data => {
+            console.log("setTime ===data " + data)
+            done();
+        }).catch(error => {
+            console.log("setTime ===error " + error)
+            done();
+        });
+    });
+     /**
+     * @tc.number    SUB_systemTime_setTimezone_JS_API_0200
+     * @tc.name      Test systemTime.setTimezone Invalid value
+     * @tc.desc      Test systemTime_setTimezone API functionality.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('systemTime_setTimezone_test1', 0, async function (done) {
+        console.log("SUB_systemTime_setTimezone_JS_API_0100 start");
+        systemTime.setTimezone('Beijing,China').then(data => {
+            console.log("setTime ===data " + data)
+            done();
+        }).catch(error => {
+            console.log("setTime ===error " + error)
+            done();
+        });
+    });
+     /**
+     * @tc.number    SUB_systemTime_setTimezone_JS_API_0300
+     * @tc.name      Test systemTime.setTimezone Invalid value
+     * @tc.desc      Test systemTime_setTimezone API functionality.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('systemTime_setTimezone_test1', 0, async function (done) {
+        console.log("SUB_systemTime_setTimezone_JS_API_0100 start");
+        systemTime.setTimezone('Baker Island, U.S.A.').then(data => {
+            console.log("setTime ===data " + data)
+            done();
+        }).catch(error => {
+            console.log("setTime ===error " + error)
+            done();
+        });
+    });
 })
