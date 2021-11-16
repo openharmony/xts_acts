@@ -51,6 +51,7 @@ ohos_moduletest_suite("DeviceAuthFunctionTest") {
     "//base/security/deviceauth/deps_adapter/os_adapter/impl/interfaces/",
     "//base/security/deviceauth/deps_adapter/os_adapter/impl/interfaces/linux/",
     "//base/security/deviceauth/deps_adapter/os_adapter/interfaces/liteos",
+    "//base/security/deviceauth/deps_adapter/os_adapter/interfaces"
   ]
 
   deps = [
