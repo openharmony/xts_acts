@@ -313,7 +313,9 @@ describe('deviceManagerTest', function() {
                 expect().assertFail();
                 return ;
             }
-            var fa = data.on('deviceStateChange', () => {});
+            var fa = data.on('deviceStateChange', (deviceStateChangeAction, deviceInfo) => {
+                expect(true).assertEqual(deviceStateChangeAction.ONLINE == 0);
+            });
             expect(fa).assertUndefined();
         });
         console.log("----------stop running deviceManagerTest_on-deviceStateChange_0100----------");
