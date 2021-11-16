@@ -220,7 +220,7 @@ describe('deviceManagerTest', function() {
             let deviceInfo = {
             deviceId: "",
             deviceName: "",
-            deviceType: 0
+            deviceType: WEARABLE
             }
             let extraInfo = {
                 "targetPkgName": 'com.ohos.devicemangagerdemo',
