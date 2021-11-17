@@ -22,13 +22,6 @@
             ]
         },
         {
-            "type": "PushKit",
-            "push": [
-                "FormFuzzTest.hap->/data/FormFuzzTest.hap"
-            ]
-            
-        },
-        {
             "type": "ShellKit",
             "run-command": [
                 "chmod 644 /system/vendor/*.hap"
