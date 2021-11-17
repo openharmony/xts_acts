@@ -9,7 +9,9 @@
     "kits": [
         {
             "test-file-name": [
-                "GetAllFormsInfo201.hap"
+                "GetAllFormsInfo201.hap",
+                "ActsFormSystemTestServiceB",
+                "ActsFormSystemTestServiceD"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
@@ -20,13 +22,6 @@
                 "remount",
                 "mkdir /system/vendor"
             ]
-        },
-        {
-            "type": "PushKit",
-            "push": [
-                "GetAllFormsInfo201.hap->/data/GetAllFormsInfo201.hap"
-            ]
-            
         },
         {
             "type": "ShellKit",
