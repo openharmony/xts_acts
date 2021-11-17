@@ -57,6 +57,17 @@
           "autoDesignWidth": false
         }
       }
+    ],
+    "defPermissions": [
+      {
+        "availableScope": [
+          "signature"
+        ],
+        "grantMode": "system_grant",
+        "name": "com.permission.BMS_PERMISSION_WECHAT",
+        "description": "BMS_PERMISSION_WECHAT permission in detail",
+        "label": "BMS_PERMISSION_WECHAT permission"
+      }
     ]
   }
 }

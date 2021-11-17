@@ -46,9 +46,9 @@ const SUCCESS = "SUCCESS"
 const DIR1 = "/data/accounts/account_0/applications/com.example.myapplication1/com.example.myapplication1"
 const DIR2 = "/data/accounts/account_0/applications/com.example.myapplication2/com.example.myapplication2"
 const SYSTEMDIR1 = "/data/accounts/account_0/applications/com.ohos.launcher/com.ohos.launcher.settings"
-const CAMERA = 'com.permission.CAMERA'
-const MUSIC = 'com.permission.music'
-const WECHAT = 'com.permission.WeChat'
+const CAMERA = 'com.permission.BMS_PERMISSION_CAMERA'
+const MUSIC = 'com.permission.BMS_PERMISSION_MUSIC'
+const WECHAT = 'com.permission.BMS_PERMISSION_WECHAT'
 const START_ABILITY_TIMEOUT = 3000;
 var subscriberInfoEvent_0100 = {
     events: ['Third1_Publish_CommonEvent'],
@@ -3249,11 +3249,11 @@ describe('ActsBundleManagerTest', function () {
         });
         async function getInfo() {
             demo.getPermissionDef(CAMERA).then((infos) => {
-                expect(infos.name).assertEqual("com.permission.CAMERA");
+                expect(infos.name).assertEqual("com.permission.BMS_PERMISSION_CAMERA");
                 expect(infos.grantMode).assertEqual(1);
                 expect(infos.availableScope).assertEqual(2);
-                expect(infos.label).assertEqual("CAMERA permission");
-                expect(infos.description).assertEqual("CAMERA permission in detail");
+                expect(infos.label).assertEqual("BMS_PERMISSION_CAMERA permission");
+                expect(infos.description).assertEqual("BMS_PERMISSION_CAMERA permission in detail");
                 installData.uninstall(NAME1, {
                     param: {
                         userId: 0,
@@ -3289,18 +3289,18 @@ describe('ActsBundleManagerTest', function () {
         });
         async function getInfo() {
             demo.getPermissionDef(CAMERA).then((infos) => {
-                expect(infos.name).assertEqual("com.permission.CAMERA");
+                expect(infos.name).assertEqual("com.permission.BMS_PERMISSION_CAMERA");
                 expect(infos.grantMode).assertEqual(1);
                 expect(infos.availableScope).assertEqual(2);
-                expect(infos.label).assertEqual("CAMERA permission");
-                expect(infos.description).assertEqual("CAMERA permission in detail");
+                expect(infos.label).assertEqual("BMS_PERMISSION_CAMERA permission");
+                expect(infos.description).assertEqual("BMS_PERMISSION_CAMERA permission in detail");
             });
             demo.getPermissionDef(MUSIC).then((infos) => {
-                expect(infos.name).assertEqual("com.permission.music");
+                expect(infos.name).assertEqual("com.permission.BMS_PERMISSION_MUSIC");
                 expect(infos.grantMode).assertEqual(1);
                 expect(infos.availableScope).assertEqual(2);
-                expect(infos.label).assertEqual("music permission");
-                expect(infos.description).assertEqual("music permission in detail");
+                expect(infos.label).assertEqual("BMS_PERMISSION_MUSIC permission");
+                expect(infos.description).assertEqual("BMS_PERMISSION_MUSIC permission in detail");
                 installData.uninstall(NAME2, {
                     param: {
                         userId: 0,
@@ -3347,27 +3347,27 @@ describe('ActsBundleManagerTest', function () {
         });
         async function getInfo() {
             demo.getPermissionDef(CAMERA).then((infos) => {
-                expect(infos.name).assertEqual("com.permission.CAMERA");
+                expect(infos.name).assertEqual("com.permission.BMS_PERMISSION_CAMERA");
                 expect(infos.grantMode).assertEqual(1);
                 expect(infos.availableScope).assertEqual(2);
-                expect(infos.label).assertEqual("CAMERA permission");
-                expect(infos.description).assertEqual("CAMERA permission in detail");
+                expect(infos.label).assertEqual("BMS_PERMISSION_CAMERA permission");
+                expect(infos.description).assertEqual("BMS_PERMISSION_CAMERA permission in detail");
             });
 
             demo.getPermissionDef(MUSIC).then((infos) => {
-                expect(infos.name).assertEqual("com.permission.music");
+                expect(infos.name).assertEqual("com.permission.BMS_PERMISSION_MUSIC");
                 expect(infos.grantMode).assertEqual(1);
                 expect(infos.availableScope).assertEqual(2);
-                expect(infos.label).assertEqual("music permission");
-                expect(infos.description).assertEqual("music permission in detail");
+                expect(infos.label).assertEqual("BMS_PERMISSION_MUSIC permission");
+                expect(infos.description).assertEqual("BMS_PERMISSION_MUSIC permission in detail");
             });
 
             demo.getPermissionDef(WECHAT).then((infos) => {
-                expect(infos.name).assertEqual("com.permission.WeChat");
+                expect(infos.name).assertEqual("com.permission.BMS_PERMISSION_WECHAT");
                 expect(infos.grantMode).assertEqual(1);
                 expect(infos.availableScope).assertEqual(2);
-                expect(infos.label).assertEqual("WeChat permission");
-                expect(infos.description).assertEqual("WeChat permission in detail");
+                expect(infos.label).assertEqual("BMS_PERMISSION_WECHAT permission");
+                expect(infos.description).assertEqual("BMS_PERMISSION_WECHAT permission in detail");
                 installData.uninstall(NAME3, {
                     param: {
                         userId: 0,
@@ -3448,11 +3448,11 @@ describe('ActsBundleManagerTest', function () {
             await demo.getPermissionDef(CAMERA, OnReceiveEvent);
 
             function OnReceiveEvent(err, data) {
-                expect(data.name).assertEqual("com.permission.CAMERA");
+                expect(data.name).assertEqual("com.permission.BMS_PERMISSION_CAMERA");
                 expect(data.grantMode).assertEqual(1);
                 expect(data.availableScope).assertEqual(2);
-                expect(data.label).assertEqual("CAMERA permission");
-                expect(data.description).assertEqual("CAMERA permission in detail");
+                expect(data.label).assertEqual("BMS_PERMISSION_CAMERA permission");
+                expect(data.description).assertEqual("BMS_PERMISSION_CAMERA permission in detail");
                 installData.uninstall(NAME1, {
                     param: {
                         userId: 0,
@@ -3490,18 +3490,18 @@ describe('ActsBundleManagerTest', function () {
             await demo.getPermissionDef(CAMERA, OnReceiveEvent1);
             await demo.getPermissionDef(MUSIC, OnReceiveEvent2);
             function OnReceiveEvent1(err, data) {
-                expect(data.name).assertEqual("com.permission.CAMERA");
+                expect(data.name).assertEqual("com.permission.BMS_PERMISSION_CAMERA");
                 expect(data.grantMode).assertEqual(1);
                 expect(data.availableScope).assertEqua(2);
-                expect(data.label).assertEqual("CAMERA permission");
-                expect(data.description).assertEqual("CAMERA permission in detail");
+                expect(data.label).assertEqual("BMS_PERMISSION_CAMERA permission");
+                expect(data.description).assertEqual("BMS_PERMISSION_CAMERA permission in detail");
             }
             function OnReceiveEvent2(err, data) {
-                expect(data.name).assertEqual("com.permission.music");
+                expect(data.name).assertEqual("com.permission.BMS_PERMISSION_MUSIC");
                 expect(data.grantMode).assertEqual(1);
                 expect(data.availableScope).assertEqual(2);
-                expect(data.label).assertEqual("music permission");
-                expect(data.description).assertEqual("music permission in detail");
+                expect(data.label).assertEqual("BMS_PERMISSION_MUSIC permission");
+                expect(data.description).assertEqual("BMS_PERMISSION_MUSIC permission in detail");
                 installData.uninstall(NAME2, {
                     param: {
                         userId: 0,
@@ -3538,27 +3538,27 @@ describe('ActsBundleManagerTest', function () {
         async function getInfo() {
             await demo.getPermissionDef(CAMERA, OnReceiveEvent1);
             async function OnReceiveEvent1(err, data) {
-                expect(data.name).assertEqual("com.permission.CAMERA");
+                expect(data.name).assertEqual("com.permission.BMS_PERMISSION_CAMERA");
                 expect(data.grantMode).assertEqual(1);
                 expect(data.availableScope).assertEqual(2);
-                expect(data.label).assertEqual("CAMERA permission");
-                expect(data.description).assertEqual("CAMERA permission in detail");
+                expect(data.label).assertEqual("BMS_PERMISSION_CAMERA permission");
+                expect(data.description).assertEqual("BMS_PERMISSION_CAMERA permission in detail");
                 await demo.getPermissionDef(MUSIC, OnReceiveEvent2);
             }
             async function OnReceiveEvent2(err, data) {
-                expect(data.name).assertEqual("com.permission.music");
+                expect(data.name).assertEqual("com.permission.BMS_PERMISSION_MUSIC");
                 expect(data.grantMode).assertEqual(1);
                 expect(data.availableScope).assertEqual(2);
-                expect(data.label).assertEqual("music permission");
-                expect(data.description).assertEqual("music permission in detail");
+                expect(data.label).assertEqual("BMS_PERMISSION_MUSIC permission");
+                expect(data.description).assertEqual("BMS_PERMISSION_MUSIC permission in detail");
                 await demo.getPermissionDef(WECHAT, OnReceiveEvent3);
             }
             async function OnReceiveEvent3(err, data) {
-                expect(data.name).assertEqual("com.permission.WeChat");
+                expect(data.name).assertEqual("com.permission.BMS_PERMISSION_WECHAT");
                 expect(data.grantMode).assertEqual(1);
                 expect(data.availableScope).assertEqual(2);
-                expect(data.label).assertEqual("WeChat permission");
-                expect(data.description).assertEqual("WeChat permission in detail");
+                expect(data.label).assertEqual("BMS_PERMISSION_WECHAT permission");
+                expect(data.description).assertEqual("BMS_PERMISSION_WECHAT permission in detail");
                 installData.uninstall(NAME3, {
                     param: {
                         userId: 0,
