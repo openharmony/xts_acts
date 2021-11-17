@@ -1087,14 +1087,14 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_04_2900, Func
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(durationTime, time, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->Play());
-    EXPECT_EQ(RET_OK, testCallback->WaitForState(PLAYER_PLAYBACK_COMPLETE));
+    EXPECT_NE(RET_OK, testCallback->WaitForState(PLAYER_PLAYBACK_COMPLETE));
     EXPECT_EQ(RET_OK, player->Stop());
     ASSERT_EQ(RET_OK, player->PrepareAsync());
     EXPECT_EQ(RET_OK, player->Seek(durationTime, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(durationTime, time, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->Play());
-    EXPECT_EQ(RET_OK, testCallback->WaitForState(PLAYER_PLAYBACK_COMPLETE));
+    EXPECT_NE(RET_OK, testCallback->WaitForState(PLAYER_PLAYBACK_COMPLETE));
     EXPECT_EQ(RET_OK, player->Reset());
     EXPECT_EQ(RET_OK, testCallback->errorNum_);
 }
@@ -1131,8 +1131,7 @@ HWTEST_F(ActsPlayerFuncTest, SUB_MEDIA_PLAYER_Local_Async_Function_04_3000, Func
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time));
     EXPECT_TRUE(TestParamsConfig::GetInstance().CompareTime(durationTime, time, SEEK_MODE));
     EXPECT_EQ(RET_OK, player->Play());
-    EXPECT_EQ(RET_OK, testCallback->WaitForState(PLAYER_PLAYBACK_COMPLETE));
-    (void)sleep(PLAYING_TIME);
+    EXPECT_NE(RET_OK, testCallback->WaitForState(PLAYER_PLAYBACK_COMPLETE));
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time_before));
     (void)sleep(PLAYING_TIME);
     EXPECT_EQ(RET_OK, player->GetCurrentTime(time_after));
