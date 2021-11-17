@@ -15,8 +15,8 @@
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import util from '@ohos.util'
-describe('textEncoderTest', function () {
-    it('util_printf_test_001', 0, function () {
+describe('textEncoderTest', function() {
+    it('util_printf_test_001', 0, function() {
         var format = "%i,%s";
         var value1 = 1.5;
         var value2 = "qwer";
@@ -27,9 +27,9 @@ describe('textEncoderTest', function () {
 
     it('util_printf_test_002', 0, function () {
         var format = "%O";
-        var value = { name: 'jack', age: 15 };
+        var value = { name: 'jack' ,age: 15 };
         var result = util.printf(format, value);
-        expect(result).assertEqual("{ name: 'jack' ,age: 15 }\n");
+        expect(result).assertEqual("{ name: 'jack',\n  age: 15 }");
     })
 
     it('util_printf_test_003', 0, function () {
@@ -37,7 +37,7 @@ describe('textEncoderTest', function () {
         var value = [1, 2, 3];
         var result = util.printf(format, value);
         var res = '[ 1, 2, 3, [length]: 3 ]'
-        expect(result).assertEqual(' [ 1, 2, 3, [length]: 3 ]');
+        expect(result).assertEqual('[ 1, 2, 3, [length]: 3 ]');
     })
 
     it('util_printf_test_004', 0, function () {
@@ -48,26 +48,46 @@ describe('textEncoderTest', function () {
         expect(result).assertEqual('1.5,qwer,%s');
     })
 
+    it('util_printf_test_005', 0, function () {
+        var format = "%d,%d";
+        var value1 = 6;
+        var value2 = 16;
+        var result = util.printf(format, value1, value2);
+        expect(result).assertEqual('6,16');
+    })
+
     it('util_getErrorString_test_001', 0, async function () {
         var errnum = 10;
         var result = util.getErrorString(errnum);
         expect(result).assertEqual('No child process');
     })
 
-    it('util_getErrorString_test_002', 0, async function () {
-        console.log('--SK-- util_getErrorString_test_002');
+    it('util_getErrorString_test_002', 0, function () {
         var errnum = 0;
         var result = util.getErrorString(errnum);
         expect(result).assertEqual('No error information');
     })
 
-    it('util_getErrorString_test_003', 0, async function () {
+    it('util_getErrorString_test_003', 0, function () {
         var errnum = -1;
         var result = util.getErrorString(errnum);
         expect(result).assertEqual('No error information');
     })
 
-    it('util_promisewrapper_test_002', 0, async function () {
+    it('util_getErrorString_test_004', 0, function () {
+        var errnum = 9;
+        var result = util.getErrorString(errnum);
+        expect(result).assertEqual('Bad file descriptor');
+    })
+
+    it('util_getErrorString_test_005', 0, function () {
+        var errnum = 555;
+        var result = util.getErrorString(errnum);
+        expect(result).assertEqual('No error information');
+    })
+
+    it('util_promisewrapper_test_001', 0, async function () {
+        console.info('test AAAAAAAAAAAAAAAA')
         function aysnFun(str1, str2, callback) {
             if (typeof str1 === 'string' && typeof str1 === 'string') {
                 callback(null, str1 + str2);
@@ -75,13 +95,15 @@ describe('textEncoderTest', function () {
                 callback('type err');
             }
         }
+        console.info('test BBBBBBBBBBB')
         let newPromiseObj = util.promiseWrapper(aysnFun)("Hello", 'World');
         newPromiseObj.then(res => {
+            console.info('test CCCCCCCCCCCCCCCCC')
             expect(res).strictEqual('HelloWorld');
         })
     })
 
-    it('util_promisewrapper_test_003', 0, async function () {
+    it('util_promisewrapper_test_002', 0, async function () {
         function aysnFun(str1, str2, callback) {
             if (typeof str1 === 'string' && typeof str1 === 'string') {
                 callback(null, str1 + str2);
@@ -95,13 +117,16 @@ describe('textEncoderTest', function () {
         })
     })
 
-    it('util_promisewrapper_test_004', 0, async function () {
-        const a = util.promiseWrapper(function() {});
-        const b = util.promiseWrapper(a);
-        expect(a).strictEqual(b);
+    it('util_promisewrapper_test_003', 0, async function () {
+        const a = util.promiseWrapper(function() {})();
+//        const b = util.promiseWrapper(a);
+        const b = util.promiseWrapper(function() {})();
+//        expect(a==b).assertTrue()
+        expect(a).assertInstanceOf('Promise');
+        expect(b).assertInstanceOf('Promise');
     })
 
-    it('util_promisewrapper_test_005', 0, async function () {
+    it('util_promisewrapper_test_004', 0, async function () {
         let errToThrow;
         const thrower = util.promiseWrapper(function(a, b, c, cb) {
             errToThrow = new Error();
@@ -112,7 +137,7 @@ describe('textEncoderTest', function () {
         })
     })
 
-    it('util_promisewrapper_test_006', 0, async function () {
+    it('util_promisewrapper_test_005', 0, async function () {
         const err = new Error();
         const a = util.promiseWrapper((cb) => cb(err))();
         const b = util.promiseWrapper(() => {throw err;})();
@@ -126,7 +151,7 @@ describe('textEncoderTest', function () {
         ]);
     })
 
-    it('util_promisewrapper_test_007', 0, async function () {
+    it('util_promisewrapper_test_006', 0, async function () {
         const err = new Error('callback with the error.');
         const stack = err.stack;
         const fn = util.promiseWrapper(function(cb) {
@@ -140,7 +165,7 @@ describe('textEncoderTest', function () {
         })();
     })
 
-    it('util_promisewrapper_test_008', 0, async function () {
+    it('util_promisewrapper_test_007', 0, async function () {
         function fn(err, val, callback) {
             callback(err, val);
         }
@@ -150,12 +175,13 @@ describe('textEncoderTest', function () {
         })();
     })
 
-    it('util_callbackWrapper_test_001', 0, async function () {
+    it('util_callbackWrapper_test_001', 0, function () {
         const promiseFn = [1, 2];
         try {
             util.callbackWrapper(promiseFn);
         } catch(e) {
-            expect(e.message).strictEqual('original is not function');
+            console.info('util_callbackWrapper_test_001 ' + e.message)
+            expect(e.message).assertEqual('original is not function');
         }
     })
 
@@ -192,27 +218,31 @@ describe('textEncoderTest', function () {
         })
     })
 
-    it('util_callbackWrapper_test_005', 0, async function () {
+    it('util_callbackWrapper_test_005', 0, async function (done) {
         async function promiseFn(a, b) {
             return a + b;
         };
         var cb = util.callbackWrapper(promiseFn);
         cb(1, 2, (err, ret) => {
-            expect(err).strictEqual(null);
-            expect(ret).strictEqual(3);
+            expect(err).assertEqual(null);
+            expect(ret).assertEqual(3);
+            done()
         })
     })
 
-    it('util_callbackWrapper_test_006', 0, async function () {
-        async function promiseFn(){
-            return null;
+    it('util_callbackWrapper_test_006', 0,async  function () {
+        async function promiseFn(a, b) {
+            return a + b;
         };
-        var cb = util.callbackWrapper(promiseFn);
         try {
+            var cb = util.callbackWrapper(promiseFn);
             cb([1, 2])
+            console.info('')
         } catch(err) {
-            expect(err.message).strictEqual('maybe is not function');
+            console.info('util_callbackWrapper_test_006 ' + err.message)
+            expect(err.message).assertEqual('maybe is not function');
         }
+
     })
 
     it('encoding_test_001', 0, function () {
@@ -233,6 +263,19 @@ describe('textEncoderTest', function () {
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-16be')
     })
+
+    it('encoding_test_004', 0, function () {
+        var that = new util.TextDecoder('utf-16be', { ignoreBOM : true })
+        var encodingStr = that.encoding
+        expect(encodingStr).assertEqual('utf-16be')
+    })
+
+    it('encoding_test_005', 0, function () {
+        var that = new util.TextDecoder('utf-16be', { ignoreBOM : false })
+        var encodingStr = that.encoding
+        expect(encodingStr).assertEqual('utf-16be')
+    })
+
 
     // fatal test
     it('fatal_test_001', 0, function () {
@@ -255,6 +298,12 @@ describe('textEncoderTest', function () {
 
     it('fatal_test_004', 0, function () {
         var that = new util.TextDecoder('utf-8')
+        var fatalStr = that.fatal
+        expect(fatalStr).assertEqual(false)
+    })
+
+    it('fatal_test_005', 0, function () {
+        var that = new util.TextDecoder('utf-16le')
         var fatalStr = that.fatal
         expect(fatalStr).assertEqual(false)
     })
@@ -283,6 +332,13 @@ describe('textEncoderTest', function () {
         var ignoreBOMStr = that.ignoreBOM
         expect(ignoreBOMStr).assertEqual(false)
     })
+
+    it('ignoreBOM_test_005', 0, function () {
+        var that = new util.TextDecoder('utf-16le')
+        var ignoreBOMStr = that.ignoreBOM
+        expect(ignoreBOMStr).assertEqual(false)
+    })
+
 
     it('decode_test_001', 0, function () {
         var that = new util.TextDecoder('utf-8');
@@ -368,11 +424,19 @@ describe('textEncoderTest', function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(20)
         var result = new Uint8Array(buffer)
+        result = that.encode('abc')
+        expect(result[0]).assertEqual(0x61)
+    })
+
+    it('test_encode_02', 0, function () {
+        var that = new util.TextEncoder()
+        var buffer = new ArrayBuffer(20)
+        var result = new Uint8Array(buffer)
         result = that.encode('\uD800楼楼')
         expect(result[5]).assertEqual(188)
     })
 
-    it('test_encode_02', 0, function () {
+    it('test_encode_03', 0, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(20)
         var result = new Uint8Array(buffer)
@@ -380,7 +444,7 @@ describe('textEncoderTest', function () {
         expect(result[0]).assertEqual(0x61)
     })
 
-    it('test_encode_03', 0, function () {
+    it('test_encode_04', 0, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(20)
         var result = new Uint8Array(buffer)
@@ -388,13 +452,37 @@ describe('textEncoderTest', function () {
         expect(result[1]).assertEqual(0x62)
     })
 
-    it('test_encode_04', 0, function () {
+    it('test_encode_05', 0, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(20)
         var result = new Uint8Array(buffer)
         result = that.encode('123\uD800楼楼')
         expect(result[0]).assertEqual(49)
         expect(result[9]).assertEqual(230)
+    })
+
+    it('test_encode_06', 0, function () {
+        var that = new util.TextEncoder()
+        var buffer = new ArrayBuffer(20)
+        var result = new Uint8Array(buffer)
+        result = that.encode('123¥\uD800楼')
+        expect(result[10]).assertEqual(0xbc)
+    })
+
+    it('test_encode_07', 0, function () {
+        var that = new util.TextEncoder()
+        var buffer = new ArrayBuffer(20)
+        var result = new Uint8Array(buffer)
+        result = that.encode('¥¥')
+        expect(result[0]).assertEqual(0xc2)
+    })
+
+    it('test_encode_08', 0, function () {
+        var that = new util.TextEncoder()
+        var buffer = new ArrayBuffer(20)
+        var result = new Uint8Array(buffer)
+        result = that.encode('$$')
+        expect(result[0]).assertEqual(0x24)
     })
 
     it('test_encodeInto_01', 0, function () {
@@ -445,5 +533,35 @@ describe('textEncoderTest', function () {
         result = that.encodeInto('123 4*!@#', dest)
         expect(result.read).assertEqual(4)
         expect(result.written).assertEqual(4)
+    })
+
+    it('test_encodeInto_06', 0, function () {
+        var that = new util.TextEncoder()
+        var buffer = new ArrayBuffer(4)
+        var dest = new Uint8Array(buffer)
+        var result = new Object()
+        result = that.encodeInto('', dest)
+        expect(result.read).assertEqual(0)
+        expect(result.written).assertEqual(0)
+    })
+
+    it('test_encodeInto_07', 0, function () {
+        var that = new util.TextEncoder()
+        var buffer = new ArrayBuffer(20)
+        var dest = new Uint8Array(buffer)
+        var result = new Uint32Array(20)
+        result = that.encodeInto('12ab', dest)
+        expect(result.read).assertEqual(4)
+        expect(result.written).assertEqual(4)
+    })
+
+    it('test_encodeInto_08', 0, function () {
+        var that = new util.TextEncoder()
+        var buffer = new ArrayBuffer(20)
+        var dest = new Uint8Array(buffer, 0, 0)
+        var result = new Uint32Array(20)
+        result = that.encodeInto('\uD800A\uDF06A楼HiA', dest)
+        expect(result.read).assertEqual(0)
+        expect(result.written).assertEqual(0)
     })
 })
