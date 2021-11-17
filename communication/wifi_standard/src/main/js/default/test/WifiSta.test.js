@@ -54,16 +54,23 @@ describe('ACTS_WifiTest', function () {
 
     afterEach(function () {
     })
-    
-   /**
+
+     /**
     * @tc.number     wifi_native_js_unit_test_001
-    * @tc.name       Test wifi.isWifiActive.
-    * @tc.desc       Test wifi.isWifiActive API functionality.
+    * @tc.name       Test wifi.isWifiEnable.
+    * @tc.desc       Test wifi.isWifiEnable API functionality.
     */
     it('wifi_native_js_unit_test_001', 0, function () {
-        console.info("[wifi_test] wifi active  test.");
-        var isactive = wifi.isWifiActive();
-        expect(isactive).assertTrue();
+        console.info("[wifi_test] wifi open  test.");
+        var active = wifi.isWifiActive();
+        if(!active){
+            var enable = wifi.enableWifi();
+            sleep(3000);
+            console.log("[wifi_test] wifi open result: " + enable);
+            expect(enable).assertTrue();
+
+        }
+    sleep(300000);
     })
 
    /**
@@ -148,10 +155,13 @@ describe('ACTS_WifiTest', function () {
     it('wifi_native_js_unit_test_007', 0, async function (done) {
         console.info('[wifi_test] wifi add device config  test[1]');
         var active = wifi.isWifiActive();
+        sleep(30000);
+        console.log("[wifi_test] wifi active result: " + active);
         if(!active){
             var enable = wifi.enableWifi();
+            sleep(3000);		
             except(enable).assertTrue();
-            sleep(3000);
+            
         }
         wifi.addDeviceConfig(wifiConfig,
             (result) => {
@@ -209,7 +219,10 @@ describe('ACTS_WifiTest', function () {
                 var discon = wifi.disconnect();
                 except(discon).assertTrue();
                 sleep(3000);
+                		    
                 var disable = wifi.disableWifi();
+                sleep(30000);
+                console.log("[wifi_test] wifi active result: " + disable);
                 except(disable).assertTrue();
             });
             done();
