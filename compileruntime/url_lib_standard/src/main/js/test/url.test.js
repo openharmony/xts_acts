@@ -16,6 +16,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import  Url from '@ohos.url'
 
 describe('UrlFunTest', function () {
+    
     /**
      * @tc.name: testUrlAppend001
      * @tc.desc: Appends a specified key/value pair as a new search parameter.
@@ -656,7 +657,6 @@ describe('UrlFunTest', function () {
      */
     it('testUrlSet001', 0, function () {
         let params = new Url.URLSearchParams("1=value1&2=value2&key3=3");
-        // params.append("11","ACA");
         params.set("11","CCC");
         var res = params.toString();
         expect(res).assertEqual("1=value1&2=value2&key3=3&11=CCC");
@@ -702,7 +702,6 @@ describe('UrlFunTest', function () {
      */
     it('testUrlSet004', 0, function () {
         let params = new Url.URLSearchParams("1=value1&2=value2&key3=3");
-        // params.append("1","ACA");
         params.set("1","CCC");
         var res = params.toString();
         expect(res).assertEqual("1=CCC&2=value2&key3=3");
