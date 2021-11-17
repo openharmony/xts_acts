@@ -1316,6 +1316,7 @@ describe('SystemParameterTest', function () {
                     console.info("system_parameter_test_0819 callback value: " + value);
                 });
                 console.info("system_parameter_test_0819 code: " + code);
+            } else {
                 ret = true;
             }
         } catch (e) {
@@ -1391,8 +1392,10 @@ describe('SystemParameterTest', function () {
             ret = false;
             console.info("input error: " + e);
         }
-        expect(ret).assertTrue();
-        done();
+        setTimeout(function(){
+            expect(ret).assertTrue();
+            done();
+        }, '1000');
         console.info('system_parameter_test_0821 end ');
     })
 
