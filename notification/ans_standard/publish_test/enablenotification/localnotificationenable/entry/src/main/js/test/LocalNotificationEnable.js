@@ -17,8 +17,7 @@ import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 var time = 1000
 describe('ActsAnsLocalNotificationTest', function () {
-    console.info("===ActsLocalNotificationTest start===>");
-
+    console.info("===========ActsLocalNotificationTest start====================>");
     /*
      * @tc.number: ActsLocalNotification_test_0100
      * @tc.name: isNotificationEnabled()
@@ -26,7 +25,7 @@ describe('ActsAnsLocalNotificationTest', function () {
      */
     it('ActsLocalNotification_test_0100', 0, async function (done) {
         await notify.isNotificationEnabled((err,data) => {
-            console.log("====>ActsLocalNotification_test_0100 success====>"+err+data)
+            console.log("==========================>ActsLocalNotification_test_0100 success=======================>"+err+data)
             expect(typeof(data)).assertEqual('boolean')
         })
         done();
@@ -34,7 +33,6 @@ describe('ActsAnsLocalNotificationTest', function () {
             console.debug("====>time out ActsLocalNotification_test_0100====>");
         }, time);
     })
-
     /*
      * @tc.number: ActsLocalNotification_test_0200
      * @tc.name: isNotificationEnabled()
@@ -42,7 +40,7 @@ describe('ActsAnsLocalNotificationTest', function () {
      */
     it('ActsLocalNotification_test_0200', 0, async function (done) {
         var promise = await notify.isNotificationEnabled()
-        console.log("====>ActsLocalNotification_test_0200 success====>"+promise)
+        console.log("==========================>ActsLocalNotification_test_0200 success=======================>"+promise)
         expect(typeof(promise)).assertEqual('boolean')
         done();
         setTimeout(function(){

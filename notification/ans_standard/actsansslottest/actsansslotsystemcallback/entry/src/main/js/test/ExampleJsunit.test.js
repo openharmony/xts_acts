@@ -15,12 +15,13 @@
 import notification from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
+const TIMEOUT = 2000;
 describe('ActsAnsSlotSystemCallback', function () {
 
     /*
      * @tc.number    : ActsAnsSlotSystemCallback_0100
-     * @tc.name      : Verify getSlots after adding slots and removeSlot
-     * @tc.desc      : getSlots after adding all type slots and removing slot
+     * @tc.name      : Verify getSlots after adding slots and removeAllSlots
+     * @tc.desc      : getSlots after adding all type slots and remove all slots
      */
     it('ActsAnsSlotSystemCallback_0100', 0, async function (done) {
         console.debug("====>ActsAnsSlotSystemCallback_0100 start====>");
@@ -39,11 +40,7 @@ describe('ActsAnsSlotSystemCallback', function () {
                 sound: "slot_SOCIAL_COMMUNICATION_sound",
                 lightEnabled: true,
                 lightColor: 1
-            },
-            (err)=>{
-                console.debug("====>addSlot SOCIAL_COMMUNICATION callback====>");
-                expect(err.code).assertEqual(0);
-            })
+            });
         console.debug("====>addSlot SERVICE_INFORMATION====>");
         await notification.addSlot(
             {
@@ -56,12 +53,7 @@ describe('ActsAnsSlotSystemCallback', function () {
                 sound: "slot_SERVICE_INFORMATION_sound",
                 lightEnabled: true,
                 lightColor: 2
-            },
-            (err)=>{
-                console.debug("====>addSlot SERVICE_INFORMATION callback====>");
-                expect(err.code).assertEqual(0);
-            })
-        console.debug("====>addSlot CONTENT_INFORMATION====>");
+            });
         await notification.addSlot(
             {
                 type: notification.SlotType.CONTENT_INFORMATION,
@@ -73,11 +65,7 @@ describe('ActsAnsSlotSystemCallback', function () {
                 sound: "slot_CONTENT_INFORMATION_sound",
                 lightEnabled: true,
                 lightColor: 3
-            },
-            (err)=>{
-                console.debug("====>addSlot CONTENT_INFORMATION callback====>");
-                expect(err.code).assertEqual(0);
-            })
+            });
         console.debug("====>addSlot OTHER_TYPES====>");
         await notification.addSlot(
             {
@@ -90,11 +78,7 @@ describe('ActsAnsSlotSystemCallback', function () {
                 sound: "slot_OTHER_TYPES_sound",
                 lightEnabled: true,
                 lightColor: 4
-            },
-            (err)=>{
-                console.debug("====>addSlot OTHER_TYPES callback====>");
-                expect(err.code).assertEqual(0);
-            })
+            });
         console.debug("====>addSlot UNKNOWN_TYPE====>");
         await notification.addSlot(
             {
@@ -107,13 +91,8 @@ describe('ActsAnsSlotSystemCallback', function () {
                 sound: "slot_UNKNOWN_TYPE_sound",
                 lightEnabled: true,
                 lightColor: 5
-            },
-            (err)=>{
-                console.debug("====>addSlot UNKNOWN_TYPE callback====>");
-                expect(err.code).assertEqual(0);
-            })
-
-        await notification.getSlots((err, data)=>{
+            });
+        notification.getSlots((err, data)=>{
             console.debug("====>getSlots enter====>");
             console.debug("====>getSlots data====>" + JSON.stringify(err));
             expect(err.code).assertEqual(0);
@@ -159,18 +138,19 @@ describe('ActsAnsSlotSystemCallback', function () {
                 expect(data[3].lightEnabled).assertEqual(true);
                 expect(data[3].lightColor).assertEqual(4);
                 console.debug("====>getSlots end====>");
-                console.debug("====>ActsAnsSlotSystemCallback_0100 end====>");
-                notification.removeSlot(notification.SlotType.SOCIAL_COMMUNICATION, (err)=>{
-                    console.debug("====>removeSlot ActsAnsSlotSystemCallback_0100 err====>" + JSON.stringify(err));
+                notification.removeAllSlots((err)=>{
+                    console.debug("====>removeAllSlots ActsAnsSlotSystemCallback_0100 err====>" + JSON.stringify(err));
+                    console.debug("====>ActsAnsSlotSystemCallback_0100 end====>");
                     expect(err.code).assertEqual(0);
                     done();
                 })
             }catch(err){
                 console.error("====>getSlots catch err====>" + JSON.stringify(err));
                 expect().assertFail();
+                done();
             }
         })
-        setTimeout(timeOut, 10000);
+        setTimeout(timeOut, TIMEOUT);
     })
 
     /*
@@ -184,7 +164,7 @@ describe('ActsAnsSlotSystemCallback', function () {
             console.debug("====>time out enter ActsAnsSlotSystemCallback_0200====>");
         }
         console.debug("====>addSlot SOCIAL_COMMUNICATION====>");
-        notification.addSlot(
+        await notification.addSlot(
             {
                 type: notification.SlotType.SOCIAL_COMMUNICATION,
                 level: notification.SlotLevel.LEVEL_NONE,
@@ -195,11 +175,8 @@ describe('ActsAnsSlotSystemCallback', function () {
                 sound: "slot_SOCIAL_COMMUNICATION_Sound_First",
                 lightEnabled: true,
                 lightColor: 1
-            }
-        ).then(()=>{
-            console.debug("====>addSlot SOCIAL_COMMUNICATION callback====>");
-        })
-        notification.addSlot(
+            });
+        await notification.addSlot(
             {
                 type: notification.SlotType.SOCIAL_COMMUNICATION,
                 level: notification.SlotLevel.LEVEL_DEFAULT,
@@ -210,12 +187,9 @@ describe('ActsAnsSlotSystemCallback', function () {
                 sound: "slot_SOCIAL_COMMUNICATION_Sound_Second",
                 lightEnabled: true,
                 lightColor: 1
-            }
-        ).then(()=>{
-            console.debug("====>addSlot SOCIAL_COMMUNICATION callback====>");
-        })
+            });
         console.debug("====>getSlot SlotType.SOCIAL_COMMUNICATION: ====>");
-        await notification.getSlot(notification.SlotType.SOCIAL_COMMUNICATION, (err, data) => {
+        notification.getSlot(notification.SlotType.SOCIAL_COMMUNICATION, (err, data) => {
             console.debug("====>getSlotActsAnsSlotSystemCallback_0200 enter====>");
             console.debug("====>getSlotActsAnsSlotSystemCallback_0200 err====>" + JSON.stringify(err));
             expect(err.code).assertEqual(0);
@@ -230,9 +204,13 @@ describe('ActsAnsSlotSystemCallback', function () {
             expect(data.lightEnabled).assertEqual(true);
             expect(data.lightColor).assertEqual(1);
             console.debug("====>getSlotActsAnsSlotSystemCallback_0200 finish====>");
-            console.debug("====>ActsAnsSlotSystemCallback_0200 end====>");
-            done();
+            notification.removeSlot(notification.SlotType.SOCIAL_COMMUNICATION, (err)=>{
+                console.debug("====>removeSlot SOCIAL_COMMUNICATION err====>" + JSON.stringify(err));
+                console.debug("====>ActsAnsSlotSystemCallback_0200 end====>");
+                expect(err.code).assertEqual(0);
+                done();
+            })
         })
-        setTimeout(timeOutTwo, 10000);
+        setTimeout(timeOutTwo, TIMEOUT);
     })
 }) 

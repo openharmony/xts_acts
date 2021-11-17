@@ -31,7 +31,7 @@ describe('ActsAnsWantAgentOneTest', function () {
         var agentInfo = {
             wants: [
                     {
-                        deviceId: "deviceId",
+                        deviceId: "",
                         bundleName: "com.neu.WantAgentTest1",
                         abilityName: "com.example.test.MainAbility",
                         action: "action1",

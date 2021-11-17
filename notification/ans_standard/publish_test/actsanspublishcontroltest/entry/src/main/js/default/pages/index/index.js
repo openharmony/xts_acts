@@ -23,7 +23,7 @@ export default {
         title: "测试发布流控"
     },
     onInit() {
-        this.title = this.data.title;
+        this.title = "测试发布流控";
     },
     onShow() {
         console.info('onShow finish')

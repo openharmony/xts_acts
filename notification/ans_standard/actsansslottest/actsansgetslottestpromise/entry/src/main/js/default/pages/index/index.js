@@ -23,7 +23,7 @@ export default {
         title: "测试GetSlot接口：promise形式"
     },
     onInit() {
-        this.title = this.data.title;
+        this.title = "测试GetSlot接口：promise形式";
     },
     onShow() {
         console.info('onShow finish')

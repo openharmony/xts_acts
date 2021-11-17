@@ -18,19 +18,13 @@ group("publish_test") {
     deps = [
       #"actsanspublishcontroltest:ActsAnsPublishControlTest",
       #"badgedisplayed:badgedisplayed",
-      #"badgedisplayedset:badgedisplayedset",
-      "enablenotification:enablenotification",
+      #"enablenotification:enablenotification",
+      "getactive:getactive",
+      "getwantagentinfo:ActsAnsGetWantAgentInfoTest",
 
-      #"enablenotificationset:enablenotificationset",
-      #"getactive:getactive",
-      "getwantagentinfo:getwantagentinfo",
-
-      #"publishcontentype:ActsAnsNotificationTest",
+      #"publishcontentype:publishcontentype",
       #"subscribe:subscribe",
       #"unsubscribe:ActsAnsUnSubscriberTest",
-      #"activeButton:ActsAnsActionButtonTest",
-      #"publishicontest:ActsAnsIconTest",
-      #"publishimage:ActsAnsPublishImageTest",
       "wantagent:wantagent",
     ]
   }
