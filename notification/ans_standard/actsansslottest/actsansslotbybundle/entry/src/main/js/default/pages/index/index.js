@@ -20,10 +20,10 @@ injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 
 export default {
     data: {
-        title: "测试slot接口promise形式：系统应用"
+        title: "测试slotbybundle接口"
     },
     onInit() {
-        this.title = this.data.title;
+        this.title = "测试slotbybundle接口";
     },
     onShow() {
         console.info('onShow finish')

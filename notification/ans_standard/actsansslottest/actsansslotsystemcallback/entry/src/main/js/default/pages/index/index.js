@@ -23,7 +23,7 @@ export default {
         title: "测试slot接口callback形式：系统应用"
     },
     onInit() {
-        this.title = this.data.title;
+        this.title = "测试slot接口callback形式：系统应用";
     },
     onShow() {
         console.info('onShow finish')

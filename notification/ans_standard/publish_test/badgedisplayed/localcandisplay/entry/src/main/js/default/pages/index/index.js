@@ -37,8 +37,6 @@ export default {
 
         const configService = core.getDefaultService('config')
         configService.setConfig(this)
-
-        require('../../../test/List.test')
         core.execute()
     },
     onReady() {

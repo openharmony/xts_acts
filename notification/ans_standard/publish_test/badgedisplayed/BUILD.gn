@@ -17,13 +17,8 @@ group("badgedisplayed") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      #"badgedisplayfive:ActsAnsBadgeDisplayFiveTest",
-      #"badgedisplayfour:ActsAnsBadgeDisplayFourTest",
-      #"badgedisplayone:ActsAnsBadgeDisplayOneTest",
-      #"badgedisplaysix:ActsAnsBadgeDisplaySixTest",
-      #"badgedisplaytree:ActsAnsBadgeDisplayTreeTest",
-      #"badgedisplaytwo:ActsAnsBadgeDisplayTwoTest",
-      "localcandisplay:ActsAnsLocalCanDisplayTest",
+      #"badgedisplay:ActsAnsBadgeDisplayTest",
+      #"localcandisplay:localcandisplay",
     ]
   }
 }
