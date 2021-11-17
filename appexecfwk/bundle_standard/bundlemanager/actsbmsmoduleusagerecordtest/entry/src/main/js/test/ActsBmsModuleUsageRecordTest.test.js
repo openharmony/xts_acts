@@ -26,21 +26,32 @@ const NUM_TEN = 10;
 const INVALID_NUM = -1;
 const START_ABILITY_TIMEOUT = 3000;
 const START_RECORD = 900;
+const TIMEOUT = 3000;
 
 var START_COUNT = 1;
 var RECORD_COUNT = 0;
 describe('ActsBmsModuleUsageRecordTest', function () {
+    function sleep(delay) {
+        var start = (new Date()).getTime();
+        while ((new Date()).getTime() - start < delay) {
+            continue;
+        }
+    }
+
     beforeAll(async (done) => {
         var subscriber;
         let id;
         async function subscribeCallBack(err, data) {
             clearTimeout(id);
             console.debug('=====subscribeCallBack=====' + data.event);
+            sleep(TIMEOUT);
             let records = await bundle.getModuleUsageRecords(START_RECORD);
+            console.debug('=====get moduleUsageRecord finish=====');
             RECORD_COUNT = records.length;
             for (let i = 0, len = records.length; i < len; i++) {
                 if (records[i].bundleName == 'com.example.third1') {
                     START_COUNT = records[i].launchedCount;
+                    console.debug('=====START_COUNT is =====' + START_COUNT);
                 }
             }
             commonEvent.unsubscribe(subscriber, unSubscribeCallback);
@@ -120,6 +131,7 @@ describe('ActsBmsModuleUsageRecordTest', function () {
             console.debug('=============bundleName is=========' + JSON.stringify(records[i].bundleName));
             dataMap.set(records[i].bundleName, records[i]);
         }
+        expect(dataMap.has(BUNDLE_NAME)).assertTrue();
         if (dataMap.has(BUNDLE_NAME)) {
             let data = dataMap.get(BUNDLE_NAME);
             expect(data.bundleName).assertEqual('com.example.third1');
@@ -150,7 +162,16 @@ describe('ActsBmsModuleUsageRecordTest', function () {
             expect(err.code).assertEqual(0);
             checkModuleUsageRecord(data);
             var result = checkIsExist(data, BUNDLE_NAME);
-            expect(result).assertEqual(true);
+            expect(result).assertTrue();
+            if (result) {
+                let counts = new Map();
+                console.debug('======LaunchedCount======' + START_COUNT);
+                for (let i = 0, length = data.length; i < length; i++) {
+                    counts.set(data[i].bundleName, data[i].launchedCount);
+                    console.debug('=============launchedCount is=========' + data[i].launchedCount);
+                }
+                expect(counts.get(BUNDLE_NAME)).assertEqual(START_COUNT);
+            }
             done();
         });
     })
@@ -166,7 +187,7 @@ describe('ActsBmsModuleUsageRecordTest', function () {
             expect(err.code).assertEqual(0);
             checkModuleUsageRecord(data);
             var result = checkIsExist(data, BUNDLE_NAME);
-            expect(result).assertEqual(true);
+            expect(result).assertTrue();
             if (result) {
                 let counts = new Map();
                 console.debug('======LaunchedCount======' + START_COUNT);
@@ -190,7 +211,7 @@ describe('ActsBmsModuleUsageRecordTest', function () {
         var records = await bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TWO);
         checkModuleUsageRecord(records);
         var result = checkIsExist(records, BUNDLE_NAME);
-        expect(result).assertEqual(true);
+        expect(result).assertTrue();
         if (result) {
             let counts = new Map();
             console.debug('======LaunchedCount======' + START_COUNT);
@@ -371,7 +392,7 @@ describe('ActsBmsModuleUsageRecordTest', function () {
                 expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual("SUCCESS");
                 var records = await bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TEN)
-                expect(checkLaunchCount(records, BUNDLE_NAME, START_COUNT)).assertEqual(true);
+                expect(checkLaunchCount(records, BUNDLE_NAME, START_COUNT)).assertTrue();
                 done();
             });
         });
@@ -409,7 +430,7 @@ describe('ActsBmsModuleUsageRecordTest', function () {
                 expect(data.statusMessage).assertEqual("SUCCESS");
                 bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TEN, (err, records) => {
                     expect(err.code).assertEqual(0);
-                    expect(checkLaunchCount(records, BUNDLE_NAME, START_COUNT)).assertEqual(true);
+                    expect(checkLaunchCount(records, BUNDLE_NAME, START_COUNT)).assertTrue();
                     done();
                 })
             });
@@ -430,10 +451,11 @@ describe('ActsBmsModuleUsageRecordTest', function () {
             clearTimeout(id);
             START_COUNT += 1;
             expect(data.event).assertEqual('ACTS_Third1_Publish_CommonEvent');
+            sleep(TIMEOUT);
             await bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TEN, (err, records) => {
                 expect(err.code).assertEqual(0);
                 var result = checkLaunchCount(records, BUNDLE_NAME, START_COUNT);
-                expect(result).assertEqual(true);
+                expect(result).assertTrue();
                 commonEvent.unsubscribe(subscriber, unSubscribeCallback);
                 done();
             })
@@ -448,6 +470,7 @@ describe('ActsBmsModuleUsageRecordTest', function () {
         }
         function timeout() {
             console.debug('=====timeout======');
+            expect().assertFail();
             commonEvent.unsubscribe(subscriber, unSubscribeCallback)
             done();
         }
@@ -500,8 +523,9 @@ describe('ActsBmsModuleUsageRecordTest', function () {
             clearTimeout(id);
             START_COUNT += 1;
             expect(data.event).assertEqual('ACTS_Third1_Publish_CommonEvent');
+            sleep(TIMEOUT);
             var records = await bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TEN)
-            expect(checkLaunchCount(records, BUNDLE_NAME, START_COUNT)).assertEqual(true);
+            expect(checkLaunchCount(records, BUNDLE_NAME, START_COUNT)).assertTrue();
             commonEvent.unsubscribe(subscriber, unSubscribeCallback);
             done();
         }
@@ -515,6 +539,7 @@ describe('ActsBmsModuleUsageRecordTest', function () {
         }
         function timeout() {
             console.debug('=====timeout======');
+            expect().assertFail();
             commonEvent.unsubscribe(subscriber, unSubscribeCallback)
             done();
         }
