@@ -91,7 +91,9 @@ describe('ActsBmsKitTest', function () {
     it('ActsBmsKit_getAllShortcutInfo_0200', 0, async function (done) {
         console.info('=====================ActsBmsKit_getAllShortcutInfo_0200==================');
         var bundleName = 'com.example.third1';
-        for (let count = 0; count < STRESSLEVEL; count++) {
+        let flag = true;
+        let count = 0;
+        for (let i = 0; i < STRESSLEVEL; i++) {
             bundle.getAllShortcutInfo(bundleName, async (err, data) => {
                 expect(data.length).assertEqual(1);
                 expect(err.code).assertEqual(0);
@@ -101,9 +103,14 @@ describe('ActsBmsKitTest', function () {
                 } else if (err.code != 0) {
                     console.log('call function level is: ' + count);
                     expect().assertFail();
-                    done();
+                    flag = false;
                 }
+                count++;
             })
+            if (!flag) {
+                done();
+                break;
+            }
         }
     })
 
@@ -132,8 +139,10 @@ describe('ActsBmsKitTest', function () {
     */
     it('ActsBmsKit_checkPermission_0200', 0, async function (done) {
         console.info('=====================ActsBmsKit_checkPermission_0200==================');
-        for (let count = 0; count < STRESSLEVEL; count++) {
-            await bundle.checkPermission(BUNDLE_NAME, PERMISSION_NAME, (err, data) => {
+        let flag = true;
+        let count = 0;
+        for (let i = 0; i < STRESSLEVEL; i++) {
+            bundle.checkPermission(BUNDLE_NAME, PERMISSION_NAME, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data).assertEqual(0);
                 console.log('checkPermission is granted: ' + data);
@@ -142,9 +151,14 @@ describe('ActsBmsKitTest', function () {
                 } else if (err.code != 0 || data != 0) {
                     console.log('call function level is: ' + count);
                     expect().assertFail();
-                    done();
+                    flag = false;
                 }
+                count++;
             })
+            if (!flag) {
+                done();
+                break;
+            }
         }
     })
 
@@ -178,6 +192,7 @@ describe('ActsBmsKitTest', function () {
         console.debug('=====================ActsBmsKit_getModuleUsageRecordTest_0200==================');
         var bundleName = 'com.example.third1';
         let count = 0;
+        let flag = true;
         for (let i = 0; i < STRESSLEVEL; i++) {
             bundle.getModuleUsageRecords(50, (err, data) => {
                 expect(err.code).assertEqual(0);
@@ -189,10 +204,14 @@ describe('ActsBmsKitTest', function () {
                 } else if (err.code != 0) {
                     console.log('call function level is: ' + count);
                     expect().assertFail();
-                    done();
+                    flag = false;
                 }
                 count++;
             });
+            if (!flag) {
+                done();
+                break;
+            }
         }
     })
     function checkModuleUsageRecord(data, caseName) {

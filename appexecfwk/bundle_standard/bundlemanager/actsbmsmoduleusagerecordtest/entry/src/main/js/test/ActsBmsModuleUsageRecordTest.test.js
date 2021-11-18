@@ -24,7 +24,7 @@ const BUNDLE_NAME = 'com.example.third1';
 const NUM_TWO = 2;
 const NUM_TEN = 10;
 const INVALID_NUM = -1;
-const START_ABILITY_TIMEOUT = 3000;
+const START_ABILITY_TIMEOUT = 5000;
 const START_RECORD = 900;
 const TIMEOUT = 3000;
 
