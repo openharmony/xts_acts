@@ -70,7 +70,7 @@ describe('ACTS_WifiTest', function () {
             expect(enable).assertTrue();
 
         }
-    sleep(300000);
+        sleep(30000);
     })
 
    /**
@@ -159,9 +159,8 @@ describe('ACTS_WifiTest', function () {
         console.log("[wifi_test] wifi active result: " + active);
         if(!active){
             var enable = wifi.enableWifi();
-            sleep(3000);		
-            except(enable).assertTrue();
-            
+            sleep(30000);		
+            except(enable).assertTrue();            
         }
         wifi.addDeviceConfig(wifiConfig,
             (result) => {
@@ -169,7 +168,7 @@ describe('ACTS_WifiTest', function () {
                 console.info("[wifi_test] test_007 wifi addDeviceconfig callback: " +JSON.stringify(result));
                 var conn = wifi.connectToNetwork(result);
                 expect(conn).assertTrue();
-                sleep(5000);
+                sleep(50000);
                 console.info("[wifi_test] test_007 wifi addDeviceconfig callback: " + result);
                 for (var j = 0; j < JSON.stringify(result).length; ++j) {
                     console.info("ssid: " + result[j].ssid);
@@ -187,7 +186,7 @@ describe('ACTS_WifiTest', function () {
                 }
                 var discon = wifi.disconnect();
                 except(discon).assertTrue();
-                sleep(3000);
+                sleep(30000);
                 var disable = wifi.disableWifi();
                 except(disable).assertTrue();
             });
@@ -205,7 +204,7 @@ describe('ACTS_WifiTest', function () {
         if(!active){
             var enable = wifi.enableWifi();
             except(enable).assertTrue();
-            sleep(3000);
+            sleep(30000);
         }
         wifi.addDeviceConfig(wifiConfig)
             .then(result => {
