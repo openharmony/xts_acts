@@ -22,7 +22,7 @@ export default {
         title: 'Test MetaData'
     },
     onInit() {
-        this.title = this.data.title;
+        this.title = 'Test MetaData';
     },
     onShow() {
         console.info('onReady finish')

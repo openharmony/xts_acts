@@ -12,19 +12,23 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ClearMissionsPromise") {
-  hap_profile = "./entry/src/main/config.json"
+ohos_hap("ClearMissionsPromise") {
+  hap_profile = "./src/main/config.json"
+  hap_name = "ClearMissionsPromise"
+  subsystem_name = XTS_SUITENAME
+  final_hap_path =
+      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  testonly = true
   deps = [
     ":hjs_demo_js_assets",
     ":hjs_demo_resources",
   ]
-  certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ClearMissionsPromise"
+  certificate_profile = "./signature/systemui.p7b"
 }
 ohos_js_assets("hjs_demo_js_assets") {
-  source_dir = "./entry/src/main/js/default"
+  source_dir = "./src/main/js/default"
 }
 ohos_resources("hjs_demo_resources") {
-  sources = [ "./entry/src/main/js/resources" ]
-  hap_profile = "./entry/src/main/config.json"
+  sources = [ "./src/main/js/resources" ]
+  hap_profile = "./src/main/config.json"
 }

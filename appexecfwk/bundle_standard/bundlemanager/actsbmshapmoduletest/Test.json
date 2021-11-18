@@ -26,7 +26,10 @@
             "push": [
                 "bmsMainAbilityFirstScene.hap->/data/test/bmsMainAbilityFirstScene.hap",
                 "bmsMainAbilitySecondScene.hap->/data/test/bmsMainAbilitySecondScene.hap",
-                "bmsThirdBundleTest2.hap->/data/test/bmsThirdBundleTest2.hap"
+                "bmsThirdBundleTest1.hap->/data/test/bmsThirdBundleTest1.hap",
+                "bmsThirdBundleTestA1.hap->/data/test/bmsThirdBundleTestA1.hap",
+                "bmsThirdBundleTest2.hap->/data/test/bmsThirdBundleTest2.hap",
+                "bmsThirdBundleTest5.hap->/data/test/bmsThirdBundleTest5.hap"
             ]
         },
         {

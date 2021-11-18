@@ -9,17 +9,11 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsGetWantAllTest.hap"
+                "ActsGetWantAllTest.hap",
+                "ActsGetWantAllTestHap.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
-            "type": "PushKit",
-            "push": [
-                "ActsGetWantAllTestHap.hap->/data/ActsGetWantAllTestHap.hap"
-            ]
-            
-        }        
+        }
     ]
 }

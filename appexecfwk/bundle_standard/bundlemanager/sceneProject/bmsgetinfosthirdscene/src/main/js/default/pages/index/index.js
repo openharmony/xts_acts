@@ -20,7 +20,7 @@ export default {
         title: "third3"
     },
     onInit() {
-        this.title = this.data.title;
+        this.title = "third3";
     },
     onShow() {
     },

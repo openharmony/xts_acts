@@ -19,8 +19,8 @@ group("aafwk_standard") {
     deps = [
       #"abilitymanager:actsabilitymanagertest",
       "context:context",
-      #"featureability:featureability",
-      #"want:want",
+      "featureability:featureability",
+      "want:want",
     ]
   }
 }

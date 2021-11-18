@@ -16,8 +16,6 @@
 import bundle from '@ohos.bundle'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-const TIMEOUT = 1000;
-
 describe('ActsBmsMetaDataTest', function () {
 
     /*
@@ -27,56 +25,55 @@ describe('ActsBmsMetaDataTest', function () {
     */
     it('bms_getMetaData_0100', 0, async function (done) {
         console.info('=====================bms_getMetaData_0100==================');
-        await install(['/data/test/bmsThirdBundleTest1.hap'])
-        await install(['/data/test/bmsThirdBundleTest3.hap'])
+        var bundlePath = ['/data/test/bmsThirdBundleTest1.hap', '/data/test/bmsThirdBundleTest3.hap']
+        var installer = await bundle.getBundleInstaller();
         let abilityName1 = 'com.example.third1.MainAbility';
         let abilityName2 = 'com.example.third3.MainAbility';
-        let dataMap1 = new Map();
-        let dataMap2 = new Map();
-        var dataInfos = await bundle.queryAbilityByWant({
-            want: {
-                action: 'action.system.home',
-                entities: ['entity.system.home'],
-                elementName: {
-                    deviceId: '0',
-                    bundleName: 'com.example.third1',
-                    abilityName: abilityName1,
-                },
+        let dataMap = new Map();
+        installer.install(bundlePath, {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
             }
-        }, 0, 0)
-        for (let i = 0, len = dataInfos.length; i < len; i++) {
-            dataMap1.set(dataInfos[i].name, dataInfos[i].metaData)
-        }
-        expect(dataMap1.has(abilityName1)).assertTrue();
-        expect(dataMap1.has(abilityName2)).assertTrue();
-        if (dataMap1.has(abilityName1) && dataMap1.has(abilityName2)) {
-            checkMetaData(dataMap1.get(abilityName1), 'Data1');
-            checkMetaData(dataMap1.get(abilityName2), 'Data3');
-        }
-        dataInfos = await bundle.queryAbilityByWant({
-            want: {
-                action: 'action.system.home',
-                entities: ['entity.system.home'],
-                elementName: {
-                    deviceId: '0',
-                    bundleName: 'com.example.third1',
-                    abilityName: abilityName2,
-                },
+        }, async (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual('SUCCESS');
+            var dataInfos = await bundle.queryAbilityByWant({
+                want: {
+                    action: 'action.system.home',
+                    entities: ['entity.system.home'],
+                    elementName: {
+                        deviceId: '0',
+                        bundleName: 'com.example.third1',
+                        abilityName: 'com.example.third1.MainAbility',
+                    },
+                }
+            }, 0, 0)
+            for (let i = 0, len = dataInfos.length; i < len; i++) {
+                dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
             }
-        }, 0, 0)
-        for (let i = 0, len = dataInfos.length; i < len; i++) {
-            dataMap2.set(dataInfos[i].name, dataInfos[i].metaData)
-        }
-        expect(dataMap2.has(abilityName1)).assertTrue();
-        expect(dataMap2.has(abilityName2)).assertTrue();
-        if (dataMap2.has(abilityName1) && dataMap2.has(abilityName2)) {
-            checkMetaData(dataMap2.get(abilityName1), 'Data1');
-            checkMetaData(dataMap2.get(abilityName2), 'Data3');
-        }
-        done();
-        setTimeout(function () {
-            console.debug('============bms_getMetaData_0100===========')
-        }, TIMEOUT);
+            expect(dataMap.has(abilityName1)).assertTrue();
+            expect(dataMap.has(abilityName2)).assertTrue();
+            if (dataMap.has(abilityName1) && dataMap.has(abilityName2)) {
+                checkMetaData(dataMap.get(abilityName1), 'Data1');
+                checkMetaData(dataMap.get(abilityName2), 'Data3');
+            }
+            installer.uninstall('com.example.third1', {
+                param: {
+                    userId: 0,
+                    installFlag: 1,
+                    isKeepData: false
+                }
+            }, (err, data) => {
+                expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
+                expect(data.statusMessage).assertEqual('SUCCESS');
+                done();
+            });
+        });
+
     })
 
     /*
@@ -86,34 +83,63 @@ describe('ActsBmsMetaDataTest', function () {
     */
     it('bms_getMetaData_0200', 0, async function (done) {
         console.info('=====================bms_getMetaData_0200==================');
-        await install(['/data/test/bmsThirdBundleTestA1.hap'])
+        var bundlePath1 = ['/data/test/bmsThirdBundleTest1.hap']
+        var bundlePath2 = ['/data/test/bmsThirdBundleTestA1.hap']
         let dataMap = new Map();
         let abilityName1 = 'com.example.third1.AMainAbility';
-        let abilityName2 = 'com.example.third3.MainAbility';
-        var dataInfos = await bundle.queryAbilityByWant({
-            want: {
-                action: 'action.system.home',
-                entities: ['entity.system.home'],
-                elementName: {
-                    deviceId: '0',
-                    bundleName: 'com.example.third1',
-                    abilityName: 'com.example.third1.AMainAbility',
-                },
+        var installer = await bundle.getBundleInstaller();
+        installer.install(bundlePath1, {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
             }
-        }, 0, 0)
-        for (let i = 0, len = dataInfos.length; i < len; i++) {
-            dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
-        }
-        expect(dataMap.has(abilityName1)).assertTrue();
-        expect(dataMap.has(abilityName2)).assertTrue();
-        if (dataMap.has(abilityName1) && dataMap.has(abilityName2)) {
-            checkMetaData(dataMap.get(abilityName1), 'DataA1');
-            checkMetaData(dataMap.get(abilityName2), 'Data3');
-        }
-        done();
-        setTimeout(function () {
-            console.debug('============bms_getMetaData_0200===========')
-        }, TIMEOUT);
+        }, async (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual('SUCCESS');
+            installer.install(bundlePath2, {
+                param: {
+                    userId: 0,
+                    installFlag: 1,
+                    isKeepData: false
+                }
+            }, async (err, data) => {
+                expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
+                expect(data.statusMessage).assertEqual('SUCCESS');
+                var dataInfos = await bundle.queryAbilityByWant({
+                    want: {
+                        action: 'action.system.home',
+                        entities: ['entity.system.home'],
+                        elementName: {
+                            deviceId: '0',
+                            bundleName: 'com.example.third1',
+                            abilityName: 'com.example.third1.AMainAbility',
+                        },
+                    }
+                }, 0, 0)
+                for (let i = 0, len = dataInfos.length; i < len; i++) {
+                    dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
+                }
+                expect(dataMap.has(abilityName1)).assertTrue();
+                if (dataMap.has(abilityName1)) {
+                    checkMetaData(dataMap.get(abilityName1), 'DataA1');
+                }
+                installer.uninstall('com.example.third1', {
+                    param: {
+                        userId: 0,
+                        installFlag: 1,
+                        isKeepData: false
+                    }
+                }, (err, data) => {
+                    expect(err.code).assertEqual(0);
+                    expect(data.status).assertEqual(0);
+                    expect(data.statusMessage).assertEqual('SUCCESS');
+                    done();
+                });
+            })
+        })
     })
 
     /*
@@ -123,25 +149,44 @@ describe('ActsBmsMetaDataTest', function () {
     */
     it('bms_getMetaData_0300', 0, async function (done) {
         console.info('=====================bms_getMetaData_0300==================');
-        await uninstall('com.example.third1');
-        var dataInfos = await bundle.queryAbilityByWant({
-            want: {
-                action: 'action.system.home',
-                entities: ['entity.system.home'],
-                elementName: {
-                    deviceId: '0',
-                    bundleName: 'com.example.third1',
-                    abilityName: 'com.example.third1.MainAbility',
-                },
+        var bundlePath = ['/data/test/bmsThirdBundleTest1.hap']
+        let bundleName = 'com.example.third1';
+        var installer = await bundle.getBundleInstaller();
+        installer.install(bundlePath, {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
             }
-        }, 0, 0)
-        console.info('==========abilityInfo is ==========' + dataInfos);
-        console.info('==========abilityInfo is ==========' + JSON.stringify(dataInfos));
-        expect(dataInfos.length).assertEqual(0);
-        done();
-        setTimeout(function () {
-            console.debug('============bms_getMetaData_0300===========')
-        }, TIMEOUT);
+        }, (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual('SUCCESS');
+            installer.uninstall(bundleName, {
+                param: {
+                    userId: 0,
+                    installFlag: 1,
+                    isKeepData: false
+                }
+            }, async (err, data) => {
+                expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
+                expect(data.statusMessage).assertEqual('SUCCESS');
+                var dataInfos = await bundle.queryAbilityByWant({
+                    want: {
+                        action: 'action.system.home',
+                        entities: ['entity.system.home'],
+                        elementName: {
+                            deviceId: '0',
+                            bundleName: 'com.example.third1',
+                            abilityName: 'com.example.third1.MainAbility',
+                        },
+                    }
+                }, 0, 0);
+                expect(dataInfos.length).assertEqual(0);
+                done();
+            });
+        });
     })
 
     /*
@@ -151,35 +196,55 @@ describe('ActsBmsMetaDataTest', function () {
     */
     it('bms_getMetaData_0400', 0, async function (done) {
         console.info('=====================bms_getMetaData_0400==================');
-        await install(['/data/test/bmsThirdBundleTest5.hap']);
+        var bundlePath = ['/data/test/bmsThirdBundleTest5.hap']
         let dataMap = new Map();
         let abilityName1 = 'com.example.third5.AMainAbility';
         let abilityName2 = 'com.example.third5.BMainAbility';
-        var dataInfos = await bundle.queryAbilityByWant({
-            want: {
-                action: 'action.system.home',
-                entities: ['entity.system.home'],
-                elementName: {
-                    deviceId: '0',
-                    bundleName: 'com.example.third5',
-                    abilityName: 'com.example.third5.AMainAbility',
-                },
+        var installer = await bundle.getBundleInstaller();
+        installer.install(bundlePath, {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
             }
-        }, 0, 0)
-        for (let i = 0, len = dataInfos.length; i < len; i++) {
-            dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
+        }, onReceiveinstallEvent);
+        async function onReceiveinstallEvent(err, data) {
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual('SUCCESS');
+            var dataInfos = await bundle.queryAbilityByWant({
+                want: {
+                    action: 'action.system.home',
+                    entities: ['entity.system.home'],
+                    elementName: {
+                        deviceId: '0',
+                        bundleName: 'com.example.third5',
+                        abilityName: 'com.example.third5.AMainAbility',
+                    },
+                }
+            }, 0, 0)
+            for (let i = 0, len = dataInfos.length; i < len; i++) {
+                dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
+            }
+            expect(dataMap.has(abilityName1)).assertTrue();
+            expect(dataMap.has(abilityName2)).assertTrue();
+            if (dataMap.has(abilityName1) && dataMap.has(abilityName2)) {
+                checkMetaData(dataMap.get(abilityName1), 'Data5A');
+                checkMetaData(dataMap.get(abilityName2), 'Data5B');
+            }
+            installer.uninstall('com.example.third5', {
+                param: {
+                    userId: 0,
+                    installFlag: 1,
+                    isKeepData: false
+                }
+            }, (err, data) => {
+                expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
+                expect(data.statusMessage).assertEqual('SUCCESS');
+                done();
+            })
         }
-        expect(dataMap.has(abilityName1)).assertTrue();
-        expect(dataMap.has(abilityName2)).assertTrue();
-        if (dataMap.has(abilityName1) && dataMap.has(abilityName2)) {
-            checkMetaData(dataMap.get(abilityName1), 'Data5A');
-            checkMetaData(dataMap.get(abilityName2), 'Data5B');
-        }
-        await uninstall('com.example.third5');
-        done();
-        setTimeout(function () {
-            console.debug('============bms_getMetaData_0400===========')
-        }, TIMEOUT);
     })
 
     /*
@@ -200,13 +265,8 @@ describe('ActsBmsMetaDataTest', function () {
                 },
             }
         }, 0, 0)
-        console.info('==========abilityInfo is ==========' + dataInfos);
-        console.info('==========abilityInfo is ==========' + JSON.stringify(dataInfos));
         expect(dataInfos.length).assertEqual(0);
         done();
-        setTimeout(function () {
-            console.debug('============bms_getMetaData_0500===========')
-        }, TIMEOUT);
     })
 
     /*
@@ -228,7 +288,7 @@ describe('ActsBmsMetaDataTest', function () {
                     abilityName: 'com.example.system1.MainAbility',
                 },
             }
-        }, 0, 0)
+        }, 0, 0);
         for (let i = 0, len = dataInfos.length; i < len; i++) {
             dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
         }
@@ -237,9 +297,6 @@ describe('ActsBmsMetaDataTest', function () {
             checkMetaData(dataMap.get(abilityName1), 'Data1S');
         }
         done();
-        setTimeout(function () {
-            console.debug('============bms_getMetaData_0600===========')
-        }, TIMEOUT);
     })
 
     /*
@@ -261,97 +318,66 @@ describe('ActsBmsMetaDataTest', function () {
                     abilityName: 'com.example.vendor1.MainAbility',
                 },
             }
-        }, 0, 0)
+        }, 0, 0);
         for (let i = 0, len = dataInfos.length; i < len; i++) {
             dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
         }
         expect(dataMap.has(abilityName1)).assertTrue();
         if (dataMap.has(abilityName1)) {
-            checkMetaData(dataMap.get(abilityName1), 'Data1V');
+            let data = dataMap.get(abilityName1);
+            var parameters = data.parameters;
+            var results = data.results;
+            var customizeDatas = data.customizeDatas;
+            expect(parameters.length).assertEqual(2);
+            expect(results.length).assertEqual(1);
+            expect(customizeDatas.length).assertEqual(1);
+            console.debug('=====customizeDatas length=====' + customizeDatas.length);
+            for (let i = 0; i < parameters.length; i++) {
+                expect(parameters[i].description).assertEqual('$string:mainability_description');
+                expect(parameters[i].name).assertEqual("Data1V" + i);
+                expect(parameters[i].type).assertEqual('float');
+            }
+            for (let i = 0; i < results.length; i++) {
+                expect(results[i].description).assertEqual('$string:mainability_description');
+                expect(results[i].name).assertEqual('Data1V');
+                expect(results[i].type).assertEqual('float');
+            }
+            for (let i = 0; i < customizeDatas.length; i++) {
+                expect(customizeDatas[i].name).assertEqual('');
+                expect(customizeDatas[i].value).assertEqual('');
+                expect(customizeDatas[i].extra).assertEqual('');
+            }
         }
         done();
-        setTimeout(function () {
-            console.debug('============bms_getMetaData_0700===========')
-        }, TIMEOUT);
     })
 
     function checkMetaData(data, name) {
-        console.info('==========MetaData is==========' + JSON.stringify(data));
         var parameters = data.parameters;
         var results = data.results;
         var customizeDatas = data.customizeDatas;
         expect(typeof parameters).assertEqual('object');
         expect(typeof results).assertEqual('object');
         expect(typeof customizeDatas).assertEqual('object');
-        console.info('==========parameters.length is==========' + parameters.length);
-        console.info('==========results.length is==========' + results.length);
-        console.info('==========customizeDatas.length is==========' + customizeDatas.length);
         expect(parameters.length).assertLarger(0);
         expect(results.length).assertLarger(0);
         expect(customizeDatas.length).assertLarger(0);
         for (let i = 0; i < parameters.length; i++) {
-            console.info('==========Parameter description is==========' + parameters[i].description);
             expect(typeof parameters[i].description).assertEqual('string');
-            console.info('==========Parameter name is==========' + parameters[i].name);
             expect(typeof parameters[i].name).assertEqual('string');
             expect(parameters[i].name).assertEqual(name);
-            console.info('==========Parameter type is==========' + parameters[i].type);
             expect(typeof parameters[i].type).assertEqual('string');
         }
         for (let i = 0; i < results.length; i++) {
-            console.info('==========Results description is==========' + results[i].description);
             expect(typeof results[i].description).assertEqual('string');
-            console.info('==========Results name is==========' + results[i].name);
             expect(typeof results[i].name).assertEqual('string');
             expect(results[i].name).assertEqual(name);
-            console.info('==========Results type is==========' + results[i].type);
             expect(typeof results[i].type).assertEqual('string');
         }
         for (let i = 0; i < customizeDatas.length; i++) {
-            console.info('==========CustomizeData name is==========' + customizeDatas[i].name);
             expect(typeof customizeDatas[i].name).assertEqual('string');
-            console.info('==========CustomizeData value is==========' + customizeDatas[i].value);
             expect(typeof customizeDatas[i].value).assertEqual('string');
             expect(customizeDatas[i].name).assertEqual(name);
-            console.info('==========CustomizeData extra is==========' + customizeDatas[i].extra);
             expect(typeof customizeDatas[i].extra).assertEqual('string');
-        }
-    }
-    async function install(bundlePath) {
-        var installer = await bundle.getBundleInstaller();
-        installer.install(bundlePath, {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
-        }, onReceiveinstallEvent);
-        function onReceiveinstallEvent(err, data) {
-            console.info('========install Finish========');
-            expect(typeof err).assertEqual('object');
-            expect(err.code).assertEqual(0);
-            expect(typeof data).assertEqual('object');
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-        }
-    }
-
-    async function uninstall(bundleName) {
-        var installer = await bundle.getBundleInstaller();
-        installer.uninstall(bundleName, {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
-        }, onReceiveinstallEvent);
-        function onReceiveinstallEvent(err, data) {
-            console.info('========uninstall Finish========');
-            expect(typeof err).assertEqual('object');
-            expect(err.code).assertEqual(0);
-            expect(typeof data).assertEqual('object');
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
         }
     }
 })

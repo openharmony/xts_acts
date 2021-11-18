@@ -18,6 +18,7 @@ import {Core, ExpectExtend} from 'deccjsunit/index'
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 
+var once = true
 export default {
     data: {
         title: ""
@@ -26,20 +27,23 @@ export default {
         this.title = this.$t('strings.world');
     },
     onShow() {
-        console.info('onShow finish')
+        if (once) {
+            once = false
+            console.info('onShow finish')
 
-        const core = Core.getInstance()
-        const expectExtend = new ExpectExtend({
-            'id': 'extend'
-        })
-        core.addService('expect', expectExtend)
-        core.init()
-
-        const configService = core.getDefaultService('config')
-        configService.setConfig(this)
-
-        require('../../../test/List.test')
-        core.execute()
+            const core = Core.getInstance()
+            const expectExtend = new ExpectExtend({
+                'id': 'extend'
+            })
+            core.addService('expect', expectExtend)
+            core.init()
+    
+            const configService = core.getDefaultService('config')
+            configService.setConfig(this)
+    
+            require('../../../test/List.test')
+            core.execute()
+        }
     },
     onReady() {
         console.info('onReady');

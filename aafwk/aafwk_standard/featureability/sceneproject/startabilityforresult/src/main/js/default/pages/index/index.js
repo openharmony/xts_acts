@@ -12,45 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import commonEvent from '@ohos.commonevent'
 import featureAbility from '@ohos.ability.featureAbility'
 
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
-
-function PublishCallBackone() {
-    console.debug("====>Publish CallBack ACTS_StartAbilityForResult_0100_CommonEvent====>");
-}
-function PublishCallBacktwo() {
-    console.debug("====>Publish CallBack ACTS_StartAbilityForResult_0200_CommonEvent====>");
-}
-function PublishCallBackthree() {
-    console.debug("====>Publish CallBack ACTS_StartAbilityForResult_0300_CommonEvent====>");
-}
-function PublishCallBackfour() {
-    console.debug("====>Publish CallBack ACTS_StartAbilityForResult_0400_CommonEvent====>");
-}
-function PublishCallBackfive() {
-    console.debug("====>Publish CallBack ACTS_StartAbilityForResult_0500_CommonEvent====>");
-}
-function PublishCallBacksix() {
-    console.debug("====>Publish CallBack ACTS_StartAbilityForResult_0600_CommonEvent====>");
-}
 
 export default {
     data: {
         title: "StartAbility"
     },
     onInit() {
-        this.title = this.data.title;
+        this.title = "StartAbilityForResult";
     },
     async onShow() {
-        commonEvent.publish("ACTS_StartAbilityForResult_0100_CommonEvent", PublishCallBackone);
-        commonEvent.publish("ACTS_StartAbilityForResult_0200_CommonEvent", PublishCallBacktwo);
-        commonEvent.publish("ACTS_StartAbilityForResult_0300_CommonEvent", PublishCallBackthree);
-        commonEvent.publish("ACTS_StartAbilityForResult_0400_CommonEvent", PublishCallBackfour);
-        commonEvent.publish("ACTS_StartAbilityForResult_0500_CommonEvent", PublishCallBackfive);
-        commonEvent.publish("ACTS_StartAbilityForResult_0600_CommonEvent", PublishCallBacksix);
         var promise = await featureAbility.terminateSelfWithResult(
             {
                 resultCode: 1,

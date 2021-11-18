@@ -19,16 +19,20 @@ group("bundlemanager") {
     deps = [
       #"actsbmsallshortcutinfotest:ActsBmsAllShortcutInfoTest",
       "actsbmscheckpermissiontest:ActsBmsCheckPermissionTest",
+
       #"actsbmshapmoduletest:ActsBmsHapModuleTest",
       "actsbmsjstest:ActsBmsJsTest",
+      "actsbmskittest:ActsBmsKitTest",
+
       #"actsbmsmetadatatest:ActsBmsMetaDataTest",
       "actsbmsmoduleusagerecordtest:ActsBmsModuleUsageRecordTest",
-      #"actsbundlemanagertest:ActsBundleManagerTest",
+      "actsbundlemanagertest:ActsBundleManagerTest",
       "actsbundlemanageruninstall:ActsBundleManagerUninstall",
       "sceneProject/bmsgetinfosfifthscene:bmsThirdBundleTest5",
       "sceneProject/bmsgetinfosfirstscene:bmsThirdBundleTest1",
       "sceneProject/bmsgetinfosfirstsceneupdate:bmsThirdBundleTestA1",
       "sceneProject/bmsgetinfosfourthscene:bmsThirdBundleTest4",
+      "sceneProject/bmsgetinfoshapc:bmsThirdBundleC",
       "sceneProject/bmsgetinfosjsscene:bmsThirdBundleJs",
       "sceneProject/bmsgetinfosscenesystem:bmsSystemBundleTest1",
       "sceneProject/bmsgetinfosscenevendor:bmsVendorBundleTest1",
