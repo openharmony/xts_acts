@@ -16,6 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import util from '@ohos.util'
 describe('TextEncoderTest', function () {
+
     /**
      * @tc.name: testUtilPrintf001
      * @tc.desc: Returns the formatted string.
@@ -148,7 +149,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testUtilPromiseWrapper001
-     * @tc.desc: Takes a function following the common error-first callback style, taking an callback as the last argument, and return a version that returns promises.
+     * @tc.desc: Takes a function following the common error-first callback style,
+     * taking an callback as the last argument, and return a version that returns promises.
      * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
@@ -168,7 +170,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testUtilPromiseWrapper002
-     * @tc.desc: Takes a function following the common error-first callback style, taking an callback as the last argument, and return a version that returns promises.
+     * @tc.desc: Takes a function following the common error-first callback style,
+     * taking an callback as the last argument, and return a version that returns promises.
      * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
@@ -188,7 +191,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testUtilPromiseWrapper003
-     * @tc.desc: Takes a function following the common error-first callback style, taking an callback as the last argument, and return a version that returns promises.
+     * @tc.desc: Takes a function following the common error-first callback style,
+     * taking an callback as the last argument, and return a version that returns promises.
      * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
@@ -202,7 +206,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testUtilPromiseWrapper004
-     * @tc.desc: Takes a function following the common error-first callback style, taking an callback as the last argument, and return a version that returns promises.
+     * @tc.desc: Takes a function following the common error-first callback style,
+     * taking an callback as the last argument, and return a version that returns promises.
      * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
@@ -219,7 +224,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testUtilPromiseWrapper005
-     * @tc.desc: Takes a function following the common error-first callback style, taking an callback as the last argument, and return a version that returns promises.
+     * @tc.desc: Takes a function following the common error-first callback style,
+     * taking an callback as the last argument, and return a version that returns promises.
      * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
@@ -239,7 +245,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testUtilPromiseWrapper006
-     * @tc.desc: Takes a function following the common error-first callback style, taking an callback as the last argument, and return a version that returns promises.
+     * @tc.desc: Takes a function following the common error-first callback style,
+     * taking an callback as the last argument, and return a version that returns promises.
      * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
@@ -259,7 +266,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testUtilPromiseWrapper007
-     * @tc.desc: Takes a function following the common error-first callback style, taking an callback as the last argument, and return a version that returns promises.
+     * @tc.desc: Takes a function following the common error-first callback style,
+     * taking an callback as the last argument, and return a version that returns promises.
      * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
@@ -275,7 +283,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testUtilCallbackWrapper001
-     * @tc.desc: Takes an async function (or a function that returns a Promise) and returns a function following the error-first callback style.
+     * @tc.desc: Takes an async function (or a function that returns a Promise) 
+     * and returns a function following the error-first callback style.
      * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
@@ -292,7 +301,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testUtilCallbackWrapper002
-     * @tc.desc: Takes an async function (or a function that returns a Promise) and returns a function following the error-first callback style.
+     * @tc.desc: Takes an async function (or a function that returns a Promise)
+     * and returns a function following the error-first callback style.
      * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
@@ -309,7 +319,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testUtilCallbackWrapper003
-     * @tc.desc: Takes an async function (or a function that returns a Promise) and returns a function following the error-first callback style.
+     * @tc.desc: Takes an async function (or a function that returns a Promise)
+     * and returns a function following the error-first callback style.
      * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
@@ -326,7 +337,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testUtilCallbackWrapper004
-     * @tc.desc: Takes an async function (or a function that returns a Promise) and returns a function following the error-first callback style.
+     * @tc.desc: Takes an async function (or a function that returns a Promise)
+     * and returns a function following the error-first callback style.
      * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
@@ -343,7 +355,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testUtilCallbackWrapper005
-     * @tc.desc: Takes an async function (or a function that returns a Promise) and returns a function following the error-first callback style.
+     * @tc.desc: Takes an async function (or a function that returns a Promise)
+     * and returns a function following the error-first callback style.
      * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
@@ -361,7 +374,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testUtilCallbackWrapper006
-     * @tc.desc: Takes an async function (or a function that returns a Promise) and returns a function following the error-first callback style.
+     * @tc.desc: Takes an async function (or a function that returns a Promise)
+     * and returns a function following the error-first callback style.
      * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
