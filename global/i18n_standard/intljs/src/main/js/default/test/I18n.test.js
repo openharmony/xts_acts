@@ -608,7 +608,7 @@ describe('I18nTest', function () {
     it('i18n_test_4400', 0, function () {
         let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-US', true);
         console.log('i18n_test_4400 ' + value);
-        expect(value).assertEqual('Chinese');
+        expect(value).assertEqual('Simplified Chinese');
     })
 
     /* *
@@ -619,7 +619,7 @@ describe('I18nTest', function () {
     it('i18n_test_4500', 0, function () {
         let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-GB', true);
         console.log('i18n_test_4500 ' + value);
-        expect(value).assertEqual('Chinese');
+        expect(value).assertEqual('Simplified Chinese');
     })
 
     /* *
@@ -663,7 +663,7 @@ describe('I18nTest', function () {
     it('i18n_test_4900', 0, function () {
         let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-US', false);
         console.log('i18n_test_4900 ' + value);
-        expect(value).assertEqual('Chinese');
+        expect(value).assertEqual('Simplified Chinese');
     })
 
     /* *
@@ -674,7 +674,7 @@ describe('I18nTest', function () {
     it('i18n_test_5000', 0, function () {
         let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-US');
         console.log('i18n_test_5000 ' + value);
-        expect(value).assertEqual('Chinese');
+        expect(value).assertEqual('Simplified Chinese');
     })
 
     console.log('*************end I18NTest*************');
