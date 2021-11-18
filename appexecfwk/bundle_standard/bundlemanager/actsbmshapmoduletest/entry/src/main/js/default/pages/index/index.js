@@ -23,7 +23,7 @@ export default {
         title: 'Test HapModuleInfo'
     },
     onInit() {
-        this.title = this.data.title;
+        this.title = 'Test HapModuleInfo';
     },
     onShow() {
         console.info('onReady finish')

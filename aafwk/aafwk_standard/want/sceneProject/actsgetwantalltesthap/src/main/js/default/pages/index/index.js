@@ -38,7 +38,7 @@ export default {
                             want: globalWant
                         }
                     );
-                },5000);
+                },1000);
             }
         )
     },

@@ -14,21 +14,12 @@
  */
 import featureAbility from '@ohos.ability.featureAbility'
 import wantconstant from '@ohos.ability.wantConstant'
-import bundle from '@ohos.bundle'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import commonEvent from '@ohos.commonevent'
 
-const BUNDLES_COUNT = 7;
-const START_ABILITY_TIMEOUT = 5000;
-const TERMINATE_ABILITY_TIMEOUT = 6000;
-const TIMEOUTINSTALL = 3000;
-const TIMEOUTUNINSTALL = 3000;
-const TIMEOUTSIX = 6000;
-const TIMEOUTTERMINATE = 7000;
-const TIMEOUTFORRESULT = 8000;
+const START_ABILITY_TIMEOUT = 4000;
+const TERMINATE_ABILITY_TIMEOUT = 1000;
 const TIMEOUT = 1000;
-
-const PATH = '/data/'
 var subscriberInfo_ACTS_StartAbility_0100 = {
     events: ["ACTS_StartAbility_0100_CommonEvent"],
 };
@@ -76,12 +67,6 @@ var subscriberInfo_ACTS_TerminateAbility_0200 = {
 var subscriberInfo_ACTS_FinishWithResult_0100 = {
     events: ["ACTS_FinishWithResult_0100_CommonEvent"],
 };
-var subscriberInfo_ACTS_FinishWithResult_0200 = {
-    events: ["ACTS_FinishWithResult_0200_CommonEvent"],
-};
-var subscriberInfo_ACTS_FinishWithResult_0300 = {
-    events: ["ACTS_FinishWithResult_0300_CommonEvent"],
-};
 var subscriberInfo_ACTS_GetCallingBundle_0100 = {
     events: ["ACTS_GetCallingBundle_0100_CommonEvent",
         "com.example.actsfeatureabilitytest.promise",
@@ -89,75 +74,6 @@ var subscriberInfo_ACTS_GetCallingBundle_0100 = {
 };
 
 describe('ActsFeatureAbilityTest', function () {
-    beforeAll(async (done) => {
-        console.debug('=======before all install========');
-        bundle.getBundleInstaller().then(data => {
-            data.install([
-                PATH + "FinishWithResultEmptyTest.hap",
-                PATH + "FinishWithResultPromiseParametersTest.hap",
-                PATH + "FinishWithResultTest.hap",
-                PATH + "GetCallingBundlePromiseTest.hap",
-                PATH + "StartAbility.hap",
-                PATH + "StartAbilityForResult.hap",
-                PATH + "TerminateAbilityTest.hap"], {
-                param: {
-                    userId: 0,
-                    isKeepData: false
-                }
-            }, onReceiveinstallEvent);
-        })
-
-        function onReceiveinstallEvent(err, data) {
-            console.info('========install finish========' + JSON.stringify(err));
-            console.info('========install finish========' + JSON.stringify(data));
-            console.info('========install finish========' + data.status);
-            console.info('========install finish========' + data.statusMessage);
-            done()
-        }
-        setTimeout(function () {
-            console.info('====> before all install finish =====>')
-        }, TIMEOUTINSTALL)
-    })
-    afterAll((done) => {
-        console.debug('=======after all uninstall========');
-        uninstall([
-            "com.example.finishwithresultemptytest",
-            "com.example.finishwithresultpromiseparameterstest",
-            "com.example.finishwithresulttest",
-            "com.example.getcallingbundlepromisetest",
-            "com.example.startability",
-            "com.example.startabilityforresult",
-            "com.example.terminateabilitytest"]);
-        function uninstall(bundleNames) {
-            var uninstallArray = new Array();
-            bundle.getBundleInstaller().then(data => {
-                for (let bundleName of bundleNames) {
-                    data.uninstall(bundleName, {
-                        param: {
-                            userId: 0,
-                            isKeepData: false
-                        }
-                    }, onReceiveinstallEvent);
-                }
-            })
-
-            function onReceiveinstallEvent(err, data) {
-                console.info('========uninstall finish========' + JSON.stringify(err));
-                console.info('========uninstall finish========' + JSON.stringify(data));
-                console.info('========uninstall finish========' + data.status);
-                console.info('========uninstall finish========' + data.statusMessage);
-                uninstallArray.push(data);
-                if (uninstallArray.length == BUNDLES_COUNT) {
-                    console.debug('======uninstall all finish=======');
-                    done();
-                }
-
-            }
-        }
-        setTimeout(function () {
-            console.info('====> after all uninstall finish =====>')
-        }, TIMEOUTUNINSTALL)
-    })
 
     /**
      * @tc.number: ACTS_wantConstant_0100
@@ -324,9 +240,6 @@ describe('ActsFeatureAbilityTest', function () {
             }
         );
         expect(promise).assertEqual(0);
-        setTimeout(function () {
-            console.info('====> ACTS_StartAbility_0100 =====>')
-        }, TIMEOUTSIX)
     })
 
     /**
@@ -421,9 +334,6 @@ describe('ActsFeatureAbilityTest', function () {
             }
         );
         expect(promise).assertEqual(0);
-        setTimeout(function () {
-            console.info('====> ACTS_StartAbility_0200 =====>')
-        }, TIMEOUTSIX)
     })
 
     /**
@@ -506,9 +416,6 @@ describe('ActsFeatureAbilityTest', function () {
             }
         );
         expect(promise).assertEqual(0);
-        setTimeout(function () {
-            console.info('====> ACTS_StartAbility_0300 =====>')
-        }, TIMEOUTSIX)
     })
 
     /**
@@ -595,9 +502,6 @@ describe('ActsFeatureAbilityTest', function () {
 
             },
         );
-        setTimeout(function () {
-            console.info('====> ACTS_StartAbility_0400 =====>')
-        }, TIMEOUTSIX)
     })
 
     /**
@@ -695,9 +599,6 @@ describe('ActsFeatureAbilityTest', function () {
 
             },
         );
-        setTimeout(function () {
-            console.info('====> ACTS_StartAbility_0500 =====>')
-        }, TIMEOUTSIX)
     })
 
     /**
@@ -784,9 +685,6 @@ describe('ActsFeatureAbilityTest', function () {
 
             },
         );
-        setTimeout(function () {
-            console.info('====> ACTS_StartAbility_0600 =====>')
-        }, TIMEOUTSIX)
     })
 
     /**
@@ -795,33 +693,6 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Check the return value of the interface (by Promise)
      */
     it('ACTS_StartAbilityForResult_0100', 0, async function (done) {
-        var Subscriber;
-        let id;
-        function SubscribeCallBack(err, data) {
-            clearTimeout(id);
-            expect(data.event).assertEqual("ACTS_StartAbilityForResult_0100_CommonEvent");
-            console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-        }
-
-        commonEvent.createSubscriber(subscriberInfo_ACTS_StartAbilityForResult_0100).then(async (data) => {
-            console.debug("====>Create Subscriber====>");
-            Subscriber = data;
-            commonEvent.subscribe(Subscriber, SubscribeCallBack);
-        })
-
-        function UnSubscribeCallback() {
-            console.debug("====>UnSubscribe CallBack====>");
-        }
-
-        function timeout() {
-            expect().assertFail();
-            console.debug('ACTS_StartAbilityForResult_0100=====timeout======');
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-            done();
-        }
-
-        id = setTimeout(timeout, START_ABILITY_TIMEOUT);
         var promise = await featureAbility.startAbilityForResult(
             {
                 want:
@@ -868,9 +739,6 @@ describe('ActsFeatureAbilityTest', function () {
         console.info('====> ACTS_StartAbilityForResult_0100 start ability=====>' + JSON.stringify(promise))
         checkOnAbilityResult(promise);
         done();
-        setTimeout(function () {
-            console.info('====> ACTS_StartAbilityForResult_0100 =====>')
-        }, TIMEOUTSIX)
     })
 
     /**
@@ -879,33 +747,6 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Pass the parameters, Check the return value of the interface (by Promise)
      */
     it('ACTS_StartAbilityForResult_0200', 0, async function (done) {
-        var Subscriber;
-        let id;
-        function SubscribeCallBack(err, data) {
-            clearTimeout(id);
-            expect(data.event).assertEqual("ACTS_StartAbilityForResult_0200_CommonEvent");
-            console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
-        }
-
-        commonEvent.createSubscriber(subscriberInfo_ACTS_StartAbilityForResult_0200).then(async (data) => {
-            console.debug("====>Create Subscriber====>");
-            Subscriber = data;
-            await commonEvent.subscribe(Subscriber, SubscribeCallBack);
-        })
-
-        function UnSubscribeCallback() {
-            console.debug("====>UnSubscribe CallBack====>");
-        }
-
-        function timeout() {
-            expect().assertFail();
-            console.debug('ACTS_StartAbilityForResult_0200=====timeout======');
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-            done();
-        }
-
-        id = setTimeout(timeout, START_ABILITY_TIMEOUT);
         var promise = await featureAbility.startAbilityForResult(
             {
                 want:
@@ -962,9 +803,6 @@ describe('ActsFeatureAbilityTest', function () {
         );
         checkOnAbilityResult(promise);
         done();
-        setTimeout(function () {
-            console.info('====> ACTS_StartAbilityForResult_0200 =====>')
-        }, TIMEOUTFORRESULT)
     })
 
     /**
@@ -973,34 +811,6 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Passing null, Check the return value of the interface (by AsyncCallback)
      */
     it('ACTS_StartAbilityForResult_0300', 0, async function (done) {
-        var Subscriber;
-        let id;
-
-        function SubscribeCallBack(err, data) {
-            clearTimeout(id);
-            expect(data.event).assertEqual("ACTS_StartAbilityForResult_0300_CommonEvent");
-            console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-        }
-
-        commonEvent.createSubscriber(subscriberInfo_ACTS_StartAbilityForResult_0300).then(async (data) => {
-            console.debug("====>Create Subscriber====>");
-            Subscriber = data;
-            await commonEvent.subscribe(Subscriber, SubscribeCallBack);
-        })
-
-        function UnSubscribeCallback() {
-            console.debug("====>UnSubscribe CallBack====>");
-        }
-
-        function timeout() {
-            expect().assertFail();
-            console.debug('ACTS_StartAbilityForResult_0300=====timeout======');
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-            done();
-        }
-
-        id = setTimeout(timeout, START_ABILITY_TIMEOUT);
         var promise = await featureAbility.startAbilityForResult(
             {
                 want:
@@ -1046,10 +856,6 @@ describe('ActsFeatureAbilityTest', function () {
         );
         checkOnAbilityResult(promise);
         done();
-        setTimeout(function () {
-            console.info('====> ACTS_StartAbilityForResult_0300 =====>')
-        }, TIMEOUTFORRESULT)
-
     })
 
     /**
@@ -1058,35 +864,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      */
     it('ACTS_StartAbilityForResult_0400', 0, async function (done) {
-        var Subscriber;
-        let id;
-
-        function SubscribeCallBack(err, data) {
-            clearTimeout(id);
-            expect(data.event).assertEqual("ACTS_StartAbilityForResult_0400_CommonEvent");
-            console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-        }
-
-        commonEvent.createSubscriber(subscriberInfo_ACTS_StartAbilityForResult_0400).then(async (data) => {
-            console.debug("====>Create Subscriber====>");
-            Subscriber = data;
-            await commonEvent.subscribe(Subscriber, SubscribeCallBack);
-        })
-
-        function UnSubscribeCallback() {
-            console.debug("====>UnSubscribe CallBack====>");
-        }
-
-        function timeout() {
-            expect().assertFail();
-            console.debug('ACTS_StartAbilityForResult_0400=====timeout======');
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-            done();
-        }
-
-        id = setTimeout(timeout, START_ABILITY_TIMEOUT);
-        var result = featureAbility.startAbilityForResult(
+        featureAbility.startAbilityForResult(
             {
                 want:
                 {
@@ -1135,9 +913,6 @@ describe('ActsFeatureAbilityTest', function () {
                 done();
             }
         );
-        setTimeout(function () {
-            console.info('====> ACTS_StartAbilityForResult_0400 =====>')
-        }, TIMEOUTFORRESULT)
     })
 
     /**
@@ -1146,35 +921,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Pass the parameters, Check the return value of the interface (by AsyncCallback)
      */
     it('ACTS_StartAbilityForResult_0500', 0, async function (done) {
-        var Subscriber;
-        let id;
-
-        function SubscribeCallBack(err, data) {
-            clearTimeout(id);
-            expect(data.event).assertEqual("ACTS_StartAbilityForResult_0500_CommonEvent");
-            console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-        }
-
-        commonEvent.createSubscriber(subscriberInfo_ACTS_StartAbilityForResult_0500).then(async (data) => {
-            console.debug("====>Create Subscriber====>");
-            Subscriber = data;
-            await commonEvent.subscribe(Subscriber, SubscribeCallBack);
-        })
-
-        function UnSubscribeCallback() {
-            console.debug("====>UnSubscribe CallBack====>");
-        }
-
-        function timeout() {
-            expect().assertFail();
-            console.debug('ACTS_StartAbilityForResult_0500=====timeout======');
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-            done();
-        }
-
-        id = setTimeout(timeout, START_ABILITY_TIMEOUT);
-        var result = featureAbility.startAbilityForResult(
+        featureAbility.startAbilityForResult(
             {
                 want:
                 {
@@ -1234,10 +981,6 @@ describe('ActsFeatureAbilityTest', function () {
                 done();
             }
         );
-        setTimeout(function () {
-            console.info('====> ACTS_StartAbilityForResult_0500 =====>')
-        }, TIMEOUTFORRESULT)
-
     })
 
     /**
@@ -1246,35 +989,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Passing null, Check the return value of the interface (by AsyncCallback)
      */
     it('ACTS_StartAbilityForResult_0600', 0, async function (done) {
-        var Subscriber;
-        let id;
-
-        function SubscribeCallBack(err, data) {
-            clearTimeout(id);
-            expect(data.event).assertEqual("ACTS_StartAbilityForResult_0600_CommonEvent");
-            console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-        }
-
-        commonEvent.createSubscriber(subscriberInfo_ACTS_StartAbilityForResult_0600).then(async (data) => {
-            console.debug("====>Create Subscriber====>");
-            Subscriber = data;
-            await commonEvent.subscribe(Subscriber, SubscribeCallBack);
-        })
-
-        function UnSubscribeCallback() {
-            console.debug("====>UnSubscribe CallBack====>");
-        }
-
-        function timeout() {
-            expect().assertFail();
-            console.debug('ACTS_StartAbilityForResult_0600=====timeout======');
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-            done();
-        }
-
-        id = setTimeout(timeout, START_ABILITY_TIMEOUT);
-        var result = featureAbility.startAbilityForResult(
+        featureAbility.startAbilityForResult(
             {
                 want:
                 {
@@ -1323,9 +1038,6 @@ describe('ActsFeatureAbilityTest', function () {
                 done();
             }
         );
-        setTimeout(function () {
-            console.info('====> ACTS_StartAbilityForResult_0600 =====>')
-        }, TIMEOUTFORRESULT)
 
     })
 
@@ -1341,6 +1053,7 @@ describe('ActsFeatureAbilityTest', function () {
         expect(typeof (data.want.uri)).assertEqual("string");
 
         console.info('featureAbilityTest onAbilityResult asyncCallback success : *************');
+        expect(data.resultCode).assertEqual(1);
         console.info('resultCode : ' + data.resultCode);
         console.info('want.action : ' + data.want.action);
         console.info('want.entities.length : ' + data.want.entities.length);
@@ -1405,7 +1118,8 @@ describe('ActsFeatureAbilityTest', function () {
             if (events.size > 1) {
                 checkResult();
             } else {
-                setTimeout(timeout, TERMINATE_ABILITY_TIMEOUT);
+                expect(events.has("ACTS_TerminateAbility_0100_CommonEvent") ||
+                    events.has("ACTS_TerminateAbility_0100_Return")).assertTrue();
             }
         }
 
@@ -1433,9 +1147,6 @@ describe('ActsFeatureAbilityTest', function () {
             expect(events.has("ACTS_TerminateAbility_0100_Return")).assertTrue();
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
             done();
-            setTimeout(function () {
-                console.info('====> ACTS_TerminateAbility_0100 =====>')
-            }, TIMEOUTTERMINATE)
         }
 
         id = setTimeout(timeout, START_ABILITY_TIMEOUT);
@@ -1500,9 +1211,13 @@ describe('ActsFeatureAbilityTest', function () {
             events.set(data.event, 0);
             console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
             if (events.size > 1) {
-                checkResult();
+                expect(events.has("ACTS_TerminateAbility_0200_CommonEvent") &&
+                    events.has("ACTS_TerminateAbility_0200_Return")).assertTrue();
+                commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
+                done();
             } else {
-                setTimeout(timeout, TERMINATE_ABILITY_TIMEOUT);
+                expect(events.has("ACTS_TerminateAbility_0200_CommonEvent") ||
+                    events.has("ACTS_TerminateAbility_0200_Return")).assertTrue();
             }
         }
 
@@ -1523,17 +1238,7 @@ describe('ActsFeatureAbilityTest', function () {
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
             done();
         }
-
-        function checkResult() {
-            expect(events.has("ACTS_TerminateAbility_0200_CommonEvent")).assertTrue();
-            expect(events.has("ACTS_TerminateAbility_0200_Return")).assertTrue();
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-            done();
-            setTimeout(function () {
-                console.info('====> ACTS_TerminateAbility_0100 =====>')
-            }, TIMEOUTTERMINATE)
-        }
-
+        console.log('=====start ability=====');
         id = setTimeout(timeout, START_ABILITY_TIMEOUT);
         var promise = featureAbility.startAbility(
             {
@@ -1560,33 +1265,6 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Check the return value of the interface (by promise)
      */
     it('ACTS_FinishWithResult_0100', 0, async function (done) {
-        var Subscriber;
-        let id;
-        function SubscribeCallBack(err, data) {
-            clearTimeout(id);
-            expect(data.event).assertEqual("ACTS_FinishWithResult_0100_CommonEvent");
-            console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-        }
-
-        commonEvent.createSubscriber(subscriberInfo_ACTS_FinishWithResult_0100).then(async (data) => {
-            console.debug("====>Create Subscriber====>");
-            Subscriber = data;
-            await commonEvent.subscribe(Subscriber, SubscribeCallBack);
-        })
-
-        function UnSubscribeCallback() {
-            console.debug("====>UnSubscribe CallBack====>");
-        }
-
-        function timeout() {
-            expect().assertFail();
-            console.debug('ACTS_FinishWithResult_0100=====timeout======');
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-            done();
-        }
-
-        id = setTimeout(timeout, START_ABILITY_TIMEOUT);
         var promise = await featureAbility.startAbilityForResult(
             {
                 want:
@@ -1632,9 +1310,6 @@ describe('ActsFeatureAbilityTest', function () {
         );
         checkOnAbilityResult(promise);
         done();
-        setTimeout(function () {
-            console.info('====> ACTS_FinishWithResult_0100 =====>')
-        }, TIMEOUTFORRESULT)
     })
 
     /**
@@ -1689,9 +1364,6 @@ describe('ActsFeatureAbilityTest', function () {
         );
         checkOnAbilityResult(promise);
         done();
-        setTimeout(function () {
-            console.info('====> ACTS_FinishWithResult_0200 =====>')
-        }, 10000)
     })
 
     /**
@@ -1746,9 +1418,6 @@ describe('ActsFeatureAbilityTest', function () {
         );
         checkOnAbilityResult(promise);
         done();
-        setTimeout(function () {
-            console.info('====> ACTS_FinishWithResult_0300 =====>')
-        }, TIMEOUTFORRESULT)
     })
 
     // checkAbilityName
@@ -2335,19 +2004,21 @@ describe('ActsFeatureAbilityTest', function () {
 
         function SubscribeCallBack(err, data) {
             clearTimeout(id);
-            if (typeof data.event != 'undefined') {
-                events.set(data.event, 0)
-            }
+            events.set(data.event, 0)
             console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
             if (events.size == 1) {
-                expect(events.has("ACTS_GetCallingBundle_0100_CommonEvent") || 
-                events.has("com.example.actsfeatureabilitytest.promise") ||
-                events.has("com.example.actsfeatureabilitytest.callback")).assertTrue();
+                expect(events.has("ACTS_GetCallingBundle_0100_CommonEvent") ||
+                    events.has("com.example.actsfeatureabilitytest.promise") ||
+                    events.has("com.example.actsfeatureabilitytest.callback")).assertTrue();
             } else if (events.size == 2) {
                 expect(events.has("com.example.actsfeatureabilitytest.promise") ||
                     events.has("com.example.actsfeatureabilitytest.callback")).assertTrue();
             } else if (events.size == 3) {
-                checkResult();
+                expect(events.has("ACTS_GetCallingBundle_0100_CommonEvent") &&
+                    events.has("com.example.actsfeatureabilitytest.promise") &&
+                    events.has("com.example.actsfeatureabilitytest.callback")).assertTrue();
+                commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
+                done();
             }
         }
 
@@ -2368,17 +2039,7 @@ describe('ActsFeatureAbilityTest', function () {
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
             done();
         }
-
-        function checkResult() {
-            expect(events.has("ACTS_GetCallingBundle_0100_CommonEvent")).assertTrue();
-            expect(events.has("com.example.actsfeatureabilitytest.promise")).assertTrue();
-            expect(events.has("com.example.actsfeatureabilitytest.callback")).assertTrue();
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-            done();
-        }
-
         id = setTimeout(timeout, START_ABILITY_TIMEOUT);
-        // startAbility
         var result = await featureAbility.startAbility(
             {
                 want:
@@ -2388,8 +2049,6 @@ describe('ActsFeatureAbilityTest', function () {
                 },
             }
         );
-        expect(result).assertEqual(0);
-        setTimeout(timeout, TIMEOUTFORRESULT)
     })
 
     // checkGetOrCreateLocalDir

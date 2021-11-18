@@ -22,7 +22,7 @@ export default {
         title: "Test ModuleUsageRecord"
     },
     onInit() {
-        this.title = this.data.title;
+        this.title = "Test ModuleUsageRecord";
     },
     onShow() {
         console.info('onReady finish')

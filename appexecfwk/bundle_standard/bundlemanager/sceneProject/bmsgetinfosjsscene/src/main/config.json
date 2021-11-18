@@ -38,6 +38,7 @@
         ],
         "name": ".MainAbility",
         "srcLanguage": "js",
+        "srcPath": "default",
         "visible": true,
         "icon": "$media:icon",
         "description": "$string:mainability_description",

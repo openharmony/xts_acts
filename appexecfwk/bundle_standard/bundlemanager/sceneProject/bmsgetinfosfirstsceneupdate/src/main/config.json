@@ -16,6 +16,7 @@
   "module": {
     "package": "com.example.third1.entry",
     "name": "com.example.third1.BmsThirdBundle1",
+    "mainAbility": "com.example.third1.AMainAbility",
     "deviceType": [
       "phone"
     ],

@@ -64,6 +64,17 @@
           "autoDesignWidth": false
         }
       }
+    ],
+    "defPermissions": [
+      {
+        "availableScope": [
+          "signature"
+        ],
+        "grantMode": "system_grant",
+        "name": "com.permission.BMS_PERMISSION_MUSIC",
+        "description": "BMS_PERMISSION_MUSIC permission in detail",
+        "label": "BMS_PERMISSION_MUSIC permission"
+      }
     ]
   }
 }

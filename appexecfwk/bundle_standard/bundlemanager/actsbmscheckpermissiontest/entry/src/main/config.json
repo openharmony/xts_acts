@@ -57,7 +57,6 @@
         }
       }
     ],
-
     "defPermissions": [
       {
         "name": "com.permission.CAMERA",
@@ -84,6 +83,16 @@
       {
         "name": "com.permission.PERMISSION_A",
         "reason": "Need PERMISSION_A",
+        "usedScene": {
+          "ability": [
+            "com.example.actsbmscheckpermissiontest.MainAbility"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "com.permission.PERMISSION_B",
+        "reason": "Need PERMISSION_B",
         "usedScene": {
           "ability": [
             "com.example.actsbmscheckpermissiontest.MainAbility"
