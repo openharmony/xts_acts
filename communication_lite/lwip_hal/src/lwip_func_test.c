@@ -38,7 +38,7 @@
 #define LWIP_TEST_FAIL (-1)
 #define DEF_TASK_STACK 2000
 #define DEF_TASK_PRIORITY 20
-#define ONE_SECOND 100
+#define ONE_SECOND 1
 #define TIMEOUT 4
 #define TEST_FD_COUNT 10
 
@@ -56,7 +56,7 @@ static int g_selectTimeout = 2;
 static void WaitClient(void)
 {
     while (1) {
-        osDelay(ONE_SECOND);
+        sleep(ONE_SECOND);
         if (g_clientWait) {
             break;
         }
@@ -68,7 +68,7 @@ static void WaitClient(void)
 static void WaitServer(void)
 {
     while (1) {
-        osDelay(ONE_SECOND);
+        sleep(ONE_SECOND);
         if (g_serverWait) {
             break;
         }
@@ -134,7 +134,7 @@ static void CommTcpClientTask(void)
     char sendMsgList[5][50] = {"Hi, I'm client,FD:[%d]", "client:123456789abcdefg,FD:[%d]",
         "client:!!@@##$$%%^^&&**(()),FD:[%d]", "client:(((112233445566778899))),FD:[%d]", "bye"};
     for (int i = 0; i < count; i++) {
-        osDelay(ONE_SECOND);
+        sleep(ONE_SECOND);
         memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
         rst = sprintf_s(dataBuf, sizeof(dataBuf), sendMsgList[i], clnFd);
         if (rst < 0) {
@@ -499,7 +499,7 @@ LITE_TEST_CASE(LwipFuncTestSuite, testTcp, Function | MediumTest | Level2)
         printf("[testTcp]create client task fail!\n");
     }
 
-    osDelay(ONE_SECOND);
+    sleep(ONE_SECOND);
     int timeout = TIMEOUT;
     g_serverWait = 1;
     g_clientWait = 1;
@@ -509,11 +509,11 @@ LITE_TEST_CASE(LwipFuncTestSuite, testTcp, Function | MediumTest | Level2)
             break;
         }
         timeout--;
-        osDelay(ONE_SECOND);
+        sleep(ONE_SECOND);
         printf("[testTcp] wait[1]...\n");
     }
 
-    osDelay(ONE_SECOND);
+    sleep(ONE_SECOND);
     timeout = TIMEOUT;
     g_serverWait = 1;
     g_clientWait = 1;
@@ -523,11 +523,11 @@ LITE_TEST_CASE(LwipFuncTestSuite, testTcp, Function | MediumTest | Level2)
             break;
         }
         timeout--;
-        osDelay(ONE_SECOND);
+        sleep(ONE_SECOND);
         printf("[testTcp] wait[2]...\n");
     }
 
-    osDelay(ONE_SECOND);
+    sleep(ONE_SECOND);
     timeout = TIMEOUT;
     g_serverWait = 1;
     g_clientWait = 1;
@@ -537,10 +537,10 @@ LITE_TEST_CASE(LwipFuncTestSuite, testTcp, Function | MediumTest | Level2)
             break;
         }
         timeout--;
-        osDelay(ONE_SECOND);
+        sleep(ONE_SECOND);
         printf("[testTcp] wait[3]...\n");
     }
-    osDelay(ONE_SECOND);
+    sleep(ONE_SECOND);
     timeout = TIMEOUT;
     g_serverWait = 1;
     g_clientWait = 1;
@@ -550,13 +550,13 @@ LITE_TEST_CASE(LwipFuncTestSuite, testTcp, Function | MediumTest | Level2)
             break;
         }
         timeout--;
-        osDelay(ONE_SECOND);
+        sleep(ONE_SECOND);
         printf("[testTcp] wait[4]...\n");
     }
     TEST_ASSERT_EQUAL_INT(1, g_clientResult);
     TEST_ASSERT_EQUAL_INT(1, g_serverResult);
     
-    osDelay(ONE_SECOND);
+    sleep(ONE_SECOND);
     g_serverWait = 1;
     g_clientWait = 1;
 }
@@ -642,7 +642,7 @@ LITE_TEST_CASE(LwipFuncTestSuite, testSelectTimeout, Function | MediumTest | Lev
         printf("create select server task fail!\n");
     } else {
         while (g_selectFlag) {
-            osDelay(ONE_SECOND);
+            sleep(ONE_SECOND);
             printf("wait select server finish...\n");
         }
         TEST_ASSERT_EQUAL_INT(-2, g_selectResult);
@@ -668,7 +668,7 @@ LITE_TEST_CASE(LwipFuncTestSuite, testSelectOneClient, Function | MediumTest | L
     g_selectTimeout = 5;
     osThreadId_t serverTaskId = osThreadNew((osThreadFunc_t)SelectServerTask, NULL, &tSelect);
     TEST_ASSERT_NOT_NULL(serverTaskId);
-    osDelay(ONE_SECOND);
+    sleep(ONE_SECOND);
     if (serverTaskId == NULL) {
         printf("create select server task fail!\n");
     } else {
@@ -687,7 +687,7 @@ LITE_TEST_CASE(LwipFuncTestSuite, testSelectOneClient, Function | MediumTest | L
 
         g_selectFlag = 1;
         while (g_selectFlag) {
-            osDelay(ONE_SECOND);
+            sleep(ONE_SECOND);
             printf("wait select server finish...\n");
         }
         TEST_ASSERT_EQUAL_INT(0, g_selectResult);
