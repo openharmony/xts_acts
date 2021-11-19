@@ -20,18 +20,25 @@ import wifi from '@ohos.wifi_native_js'
 
 // delay x ms
 function sleep(delay) {
-    var start = (new Date()).getTime();
-    while ((new Date()).getTime() - start < delay) {
-        break; 
+    
+    for (var start = (new Date()).getTime();(new Date()).getTime() - start <= delay;) {
+        
     }
 }
+var WifiSecurityType = {
+    WIFI_SEC_TYPE_INVALID : 0,
+    WIFI_SEC_TYPE_OPEN : 1,
+    WIFI_SEC_TYPE_WEP : 2,
+    WIFI_SEC_TYPE_PSK : 3,
+    WIFI_SEC_TYPE_SAE : 4,
+}
 
-var wifiConfig = {
+var wifiDeviceConfig = {
     "ssid": "TEST",
     "bssid": "A1:B1:C1:D1:E1:F1",
     "preSharedKey": "12345678",
     "isHiddenSsid": "false",
-    "securityType": 3,
+    "securityType": WifiSecurityType.WIFI_SEC_TYPE_SAE,
     "netId": 0,
     "ipType": 1,
     "creatorUid": 7,
@@ -70,7 +77,7 @@ describe('ACTS_WifiTest', function () {
             expect(enable).assertTrue();
 
         }
-        sleep(30000);
+        sleep(3000);
     })
 
    /**
@@ -93,7 +100,7 @@ describe('ACTS_WifiTest', function () {
     it('wifi_native_js_unit_test_005', 0, async function (done) {
         console.info("[wifi_test] Wifi get scan infos callback test[1].");
         var result = wifi.scan();
-        sleep(20000);
+        sleep(2000);
         wifi.getScanInfos(
             (result) => {
                 var clen = Object.keys(result).length;
@@ -101,7 +108,7 @@ describe('ACTS_WifiTest', function () {
                 expect(result).assertLarger(0);
                 console.info("[wifi_test] add device config callback: " + JSON.stringify(result));
                 expect(JSON.stringify(result)).assertContain('ssid');
-                sleep(5000);
+                sleep(3000);
                 for (var j = 0; j < clen; ++j) {
                     console.info("ssid: " + result[j].ssid);
                     console.info("bssid: " + result[j].bssid);
@@ -114,7 +121,7 @@ describe('ACTS_WifiTest', function () {
             });
             done();
     })
-    sleep(20000);
+    sleep(2000);
 
    /**
     * @tc.number     wifi_native_js_unit_test_006
@@ -131,7 +138,7 @@ describe('ACTS_WifiTest', function () {
                 console.info("[wifi_test] test_006 promise... " + JSON.stringify(result));
                 expect(JSON.stringify(result)).assertContain('ssid');
 
-                sleep(5000);
+                sleep(2000);
                 for (var j = 0; j < clen; ++j) {
                     console.info("ssid: " + result[j].ssid);
                     console.info("bssid: " + result[j].bssid);
@@ -155,20 +162,20 @@ describe('ACTS_WifiTest', function () {
     it('wifi_native_js_unit_test_007', 0, async function (done) {
         console.info('[wifi_test] wifi add device config  test[1]');
         var active = wifi.isWifiActive();
-        sleep(30000);
-        console.log("[wifi_test] wifi active result: " + active);
+        sleep(3000);
+        console.log("[wifi_test] wifi active result1: " + active);
         if(!active){
             var enable = wifi.enableWifi();
-            sleep(30000);		
-            except(enable).assertTrue();            
+            sleep(3000);		
+            expect(enable).assertTrue();            
         }
-        wifi.addDeviceConfig(wifiConfig,
+        wifi.addDeviceConfig(wifiDeviceConfig,
             (result) => {
                 expect(result).assertLarger(0);
                 console.info("[wifi_test] test_007 wifi addDeviceconfig callback: " +JSON.stringify(result));
                 var conn = wifi.connectToNetwork(result);
                 expect(conn).assertTrue();
-                sleep(50000);
+                sleep(5000);
                 console.info("[wifi_test] test_007 wifi addDeviceconfig callback: " + result);
                 for (var j = 0; j < JSON.stringify(result).length; ++j) {
                     console.info("ssid: " + result[j].ssid);
@@ -184,13 +191,13 @@ describe('ACTS_WifiTest', function () {
                     console.info("randomMacAddr: " + result[j].randomMacAddr);
                     console.info("staticIp: " + result[j].staticIp);
                 }
-                var discon = wifi.disconnect();
-                except(discon).assertTrue();
-                sleep(30000);
-                var disable = wifi.disableWifi();
-                except(disable).assertTrue();
             });
-            done();
+        var discon1 = wifi.disconnect();
+        console.log("[wifi_test] wifi discon1 result: " + discon1);
+        expect(discon1).assertTrue();
+        sleep(3000);
+
+        done();
     })
 
   /**
@@ -203,29 +210,32 @@ describe('ACTS_WifiTest', function () {
         var active = wifi.isWifiActive();
         if(!active){
             var enable = wifi.enableWifi();
-            except(enable).assertTrue();
-            sleep(30000);
+            sleep(3000);
+            expect(enable).assertTrue();
+            
         }
-        wifi.addDeviceConfig(wifiConfig)
+        wifi.addDeviceConfig(wifiDeviceConfig)
             .then(result => {
                 console.info("[wifi_test] test_008 wifi addDeviceconfig promise result: " + JSON.stringify(result));
                 expect(result).assertLarger(0);
                 console.info("[wifi_test] test_008 wifi addDeviceconfig promise result: " + result)
-                sleep(5000);
+                sleep(3000);
                 var conn = wifi.connectToNetwork(result);
                 expect(conn).assertTrue();
-                sleep(5000);
-                var discon = wifi.disconnect();
-                except(discon).assertTrue();
+                sleep(2000);
+                var discon2 = wifi.disconnect();
+                console.log("[wifi_test] wifi discon2 result: " + discon2);
+                expect(discon2).assertTrue();
                 sleep(3000);
-                		    
                 var disable = wifi.disableWifi();
-                sleep(30000);
-                console.log("[wifi_test] wifi active result: " + disable);
-                except(disable).assertTrue();
+                sleep(3000);
+                console.log("[wifi_test] wifi disable result: " + disable);
+                expect(disable).assertTrue();
+   
             });
-            done();
-    })
+      
+        done();
+    }) 
 
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })
