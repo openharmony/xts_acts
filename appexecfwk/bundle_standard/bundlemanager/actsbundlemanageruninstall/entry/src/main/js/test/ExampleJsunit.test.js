@@ -218,7 +218,7 @@ describe('ActsBundleManagerTest', function () {
             function OnReceiveinstallEvent(err, data) {
                 expect(typeof data).assertEqual(OBJECT);
                 console.info('======data.statusMessage=====' + JSON.stringify(data.statusMessage));
-                expect(data.statusMessage).assertEqual("STATUS_UNINSTALL_FAILURE");
+                expect(data.statusMessage).assertEqual("STATUS_UNINSTALL_FAILURE_ABORTED");
                 done();
             }
         });
@@ -242,7 +242,7 @@ describe('ActsBundleManagerTest', function () {
             function OnReceiveinstallEvent(err, data) {
                 expect(typeof data).assertEqual(OBJECT);
                 console.info('======data.statusMessage=====' + JSON.stringify(data.statusMessage));
-                expect(data.statusMessage).assertEqual("STATUS_UNINSTALL_FAILURE");
+                expect(data.statusMessage).assertEqual("STATUS_UNINSTALL_FAILURE_CONFLICT");
                 done();
             }
         });
