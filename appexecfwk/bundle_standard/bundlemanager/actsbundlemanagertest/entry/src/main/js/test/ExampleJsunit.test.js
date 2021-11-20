@@ -724,7 +724,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.iconId >= 0).assertTrue()
             expect(datainfo.appInfo.label).assertEqual("$string:app_name")
             expect(datainfo.appInfo.labelId >= 0).assertTrue()
-            expect(datainfo.appInfo.systemApp).assertEqual(true)
+            expect(datainfo.appInfo.systemApp).assertEqual(false)
             expect(datainfo.appInfo.supportedModes).assertEqual(0)
             for (var j = 0; j < datainfo.appInfo.moduleInfos; j++) {
                 expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
@@ -1585,7 +1585,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.iconId >= 0).assertTrue()
             expect(datainfo.appInfo.label).assertEqual("$string:app_name")
             expect(datainfo.appInfo.labelId >= 0).assertTrue()
-            expect(datainfo.appInfo.systemApp).assertEqual(true)
+            expect(datainfo.appInfo.systemApp).assertEqual(false)
             installData.uninstall(NAME2, {
                 param: {
                     userId: 0,
@@ -1633,7 +1633,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.appInfo.iconId >= 0).assertTrue()
                 expect(datainfo.appInfo.label).assertEqual("$string:app_name")
                 expect(datainfo.appInfo.labelId >= 0).assertTrue()
-                expect(datainfo.appInfo.systemApp).assertEqual(true)
+                expect(datainfo.appInfo.systemApp).assertEqual(false)
                 installData.uninstall(NAME2, {
                     param: {
                         userId: 0,
@@ -2531,7 +2531,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.iconId >= 0).assertTrue()
             expect(datainfo.appInfo.label).assertEqual("$string:app_name")
             expect(datainfo.appInfo.labelId >= 0).assertTrue()
-            expect(datainfo.appInfo.systemApp).assertEqual(true)
+            expect(datainfo.appInfo.systemApp).assertEqual(false)
             installData.uninstall(NAME3, {
                 param: {
                     userId: 0,
@@ -2590,7 +2590,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.appInfo.iconId >= 0).assertTrue()
                 expect(datainfo.appInfo.label).assertEqual("$string:app_name")
                 expect(datainfo.appInfo.labelId >= 0).assertTrue()
-                expect(datainfo.appInfo.systemApp).assertEqual(true)
+                expect(datainfo.appInfo.systemApp).assertEqual(false)
                 installData.uninstall(NAME3, {
                     param: {
                         userId: 0,
@@ -2946,7 +2946,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.appInfo.iconId >= 0).assertTrue()
                 expect(datainfo.appInfo.label).assertEqual("$string:app_name")
                 expect(datainfo.appInfo.labelId >= 0).assertTrue()
-                expect(datainfo.appInfo.systemApp).assertEqual(true)
+                expect(datainfo.appInfo.systemApp).assertEqual(false)
                 expect(datainfo.appInfo.supportedModes).assertEqual(0)
                 for (var j = 0; j < datainfo.appInfo.moduleInfos; j++) {
                     expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
@@ -3023,7 +3023,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.appInfo.iconId >= 0).assertTrue()
                 expect(datainfo.appInfo.label).assertEqual("$string:app_name")
                 expect(datainfo.appInfo.labelId >= 0).assertTrue()
-                expect(datainfo.appInfo.systemApp).assertEqual(true)
+                expect(datainfo.appInfo.systemApp).assertEqual(false)
                 expect(datainfo.appInfo.supportedModes).assertEqual(0)
                 for (var j = 0; j < datainfo.appInfo.moduleInfos; j++) {
                     expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
@@ -3086,7 +3086,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.appInfo.iconId >= 0).assertTrue()
                 expect(datainfo.appInfo.label).assertEqual("$string:app_name")
                 expect(datainfo.appInfo.labelId >= 0).assertTrue()
-                expect(datainfo.appInfo.systemApp).assertEqual(true)
+                expect(datainfo.appInfo.systemApp).assertEqual(false)
                 expect(datainfo.appInfo.supportedModes).assertEqual(0)
                 for (var j = 0; j < datainfo.appInfo.moduleInfos; j++) {
                     expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
