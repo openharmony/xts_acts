@@ -30,6 +30,7 @@ describe('ActsCreatAppAccountManager', function () {
         console.debug("====>beforeAll end====");
         done();
     });
+    
     /*
      * @tc.number    : ActsCreatAppAccountManager_0100
      * @tc.name      : createAppAccountManager
