@@ -2,7 +2,7 @@
     "description": "Configuration for resmgrjs Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "60000",
+        "test-timeout": "300000",
         "package": "ohos.resmgr.test",
         "shell-timeout": "60000"
     },
