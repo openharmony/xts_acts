@@ -1510,7 +1510,7 @@ describe('ActsFeatureAbilityTest', function () {
         expect(info.name).assertEqual("com.example.actsfeatureabilitytest");
         expect(info.description).assertEqual("$string:mainability_description");
         //            expect(info.descriptionId).assertEqual(0);    //create by DevEco when building HAP.
-        expect(info.systemApp).assertEqual(false);
+        expect(info.systemApp).assertEqual(true);
         expect(info.enabled).assertEqual(true);
         expect(info.label).assertEqual("$string:app_name");
         //            expect(info.labelId).assertEqual(0);  //create by DevEco when building HAP.
@@ -1672,7 +1672,7 @@ describe('ActsFeatureAbilityTest', function () {
     function checkAppType(info) {
         console.log("AppType : " + info);
         expect(typeof (info)).assertEqual("string");
-        expect(info).assertEqual("third-party");
+        expect(info).assertEqual("system");
     }
 
     /**
