@@ -31,8 +31,8 @@ export default {
         core.addService('expect', expectExtend)
         core.init()
         const configService = core.getDefaultService('config')
-        configService.setConfig(this)
         this.timeout = 60000
+        configService.setConfig(this)
         require('../../../test/List.test')
         core.execute()
     },
