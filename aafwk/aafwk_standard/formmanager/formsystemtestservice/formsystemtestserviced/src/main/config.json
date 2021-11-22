@@ -37,7 +37,7 @@
           }
         ],
         "visible": true,
-        "name": "FormStServiceAbilityA",
+        "name": "FormStServiceAbilityD",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:entry_MainAbility",
