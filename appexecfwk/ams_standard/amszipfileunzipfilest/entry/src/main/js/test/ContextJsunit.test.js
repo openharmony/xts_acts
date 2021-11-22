@@ -8,2042 +8,1888 @@
 *
 * Unless required by applicable law or agreed to in writing, software
 * distributed under the License is distributed on an "AS IS" BASIS,
+
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
 import zlib from '@ohos.zlib'
 import fileio from '@ohos.fileio'
-
-
+import file from '@system.file'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-console.log("-----------------888888888------------------");
-
 describe('ZlibTest', function () {
-   var FLUSH_TYPE_NO_FLUSH = 0;
-   var FLUSH_TYPE_PARTIAL_FLUSH = 1;
-   var FLUSH_TYPE_SYNC_FLUSH = 2;
-   var FLUSH_TYPE_FULL_FLUSH = 3;
-   var FLUSH_TYPE_FINISH = 4;
-   var FLUSH_TYPE_BLOCK = 5;
-   var FLUSH_TYPE_TREES = 6;
-   var COMPRESS_LEVEL_NO_COMPRESSION = 0;
-   var COMPRESS_LEVEL_BEST_SPEED = 1;
-   var COMPRESS_LEVEL_BEST_COMPRESSION = 9;
-   var COMPRESS_LEVEL_DEFAULT_COMPRESSION = -1;
-   var COMPRESS_STRATEGY_DEFAULT_STRATEGY = 0;
-   var COMPRESS_STRATEGY_FILTERED = 1;
-   var COMPRESS_STRATEGY_HUFFMAN_ONLY = 2;
-   var COMPRESS_STRATEGY_RLE = 3;
-   var COMPRESS_STRATEGY_FIXED = 4;
-   var MEM_LEVEL_MIN_MEMLEVEL = 1;
-   var MEM_LEVEL_DEFAULT_MEMLEVEL = 8;
-   var MEM_LEVEL_MAX_MEMLEVEL = 9;
-
 
 /*
-* @tc.number: ACTS_zipFile_0100
-* @tc.name: zipFile :
-* @tc.desc:
+* @tc.number: FWK_ZipFile_0100
+* @tc.name: zipFile
+* @tc.desc: inFile is empty
 */
+it('FWK_ZipFile_0100', 0, async function (done) {
+    console.log("==================FWK_ZipFile_0100 start==================");
+    var src = "";
+    var dest = "/data/testA/";
+    var options = {}
+    zlib.zipFile(src, dest, options,
+        (err, data) => {
 
-  function zipFileCallBack(err, data){
-       console.log("zipFileCallBack_0100 err: " + err.code);
-       console.log("zipFileCallBack_0100 data: " + data);
-       expect(err).assertEqual(0);
-       expect(data).assertEqual(0);
-   }
-   it('ACTS_zipFile_0100', 0, async function (done) {
-       console.log("==================ACTS_zipFile_0100 start==================");
-       var src ="";
-       var dest ="";
-
-       zlib.zipFile(src,dest,
-           (err, data) => {
-               console.log("zipFileCallBack_0100 err: " + err.code);
-               console.log("zipFileCallBack_0100 data: " + data);
-               expect(err).assertEqual(0);
-               expect(data).assertEqual(0);
-           });
-
-       function timeout() {
-           expect().assertFail();
-           console.debug('ACTS_zipFile_0100=====timeout======');
-       }
-       setTimeout(timeout, 5000);
-       done();
-   })
-   
-
-/*
-* @tc.number: ACTS_zipFile_0200
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-   it('ACTS_zipFile_0200', 0, async function (done) {
-       console.log("==================ACTS_zipFile_0200 start==================");
-       var src ="/data/test/";
-       var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-
-       zlib.zipFile(src,dest,
-           (err, data) => {
-               console.log("zipFileCallBack_0200 err: " + err.code);
-               console.log("zipFileCallBack_0200 data: " + data);
-               expect(err).assertEqual(0);
-               expect(data).assertEqual(0);
-           });
-
-       function timeout() {
-           expect().assertFail();
-           console.debug('ACTS_zipFile_0100=====timeout======');
-       }
-       setTimeout(timeout, 5000);
-       done();
-   })
-
-/*
-* @tc.number: ACTS_zipFile_0300
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-   it('ACTS_zipFile_0300', 0, async function (done) {
-       console.log("==================ACTS_zipFile_0300 start==================");
-       var src ="/data/test/amsZipfileUnzipfileST.hap";
-       var dest ="";
-
-       zlib.zipFile(src,dest,
-           (err, data) => {
-               console.log("zipFileCallBack_0300 err: " + err.code);
-               console.log("zipFileCallBack_0300 data: " + data);
-               expect(err).assertEqual(0);
-               expect(data).assertEqual(0);
-           });
-
-       function timeout() {
-           expect().assertFail();
-           console.debug('ACTS_zipFile_0300=====timeout======');
-       }
-       setTimeout(timeout, 5000);
-       done();
-   })
-
-/*
-* @tc.number: ACTS_zipFile_0400
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-   it('ACTS_zipFile_0400', 0, async function (done) {
-       console.log("==================ACTS_zipFile_0400 start==================");
-       var src ="/data/test/";
-       var dest ="/data/testA/zip_amsZipfileUnzipfileST-signed.zip";
-
-       zlib.zipFile(src,dest,
-           (err, data) => {
-               console.log("zipFileCallBack_0400 err: " + err.code);
-               console.log("zipFileCallBack_0400 data: " + data);
-               expect(err).assertEqual(0);
-               expect(data).assertEqual(0);
-           });
-
-       function timeout() {
-           expect().assertFail();
-           console.debug('ACTS_zipFile_0400=====timeout======');
-       }
-       setTimeout(timeout, 5000);
-       done();
-   })
-   
-
-/*
-* @tc.number: ACTS_zipFile_0500
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-   it('ACTS_zipFile_0500', 0, async function (done) {
-       console.log("==================ACTS_zipFile_0500 start==================");
-       var src ="/data/test/amsZipfileUnzipfileST.hap";
-       var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-           
-       try{
-        var Options= {
-            flush:FLUSH_TYPE_NO_FLUSH,
-        };
-          await zlib.zipFile(src,dest,Options,
-               () => {
-                   console.log("ACTS_zipFile_0500 err:================================ ");
-                    try{
-                        var isfileio = fileio.accessSync(dest)
-                        console.log("ACTS_zipFile_0500 isfileio:==============> "+JSON.stringify(isfileio));
-                        var isDest = (fileio.accessSync(dest) !== null)
-                        console.log("ACTS_zipFile_0500 isDest:==============> " +isDest);
-                        expect(isDest).assertTrue();
-                        var big = fileio.statSync(src).size;
-                        var small = fileio.statSync(dest).size;
-                        var isBigSmall = (big>=small)
-                        expect(isBigSmall).assertTrue();
-                        console.log("ACTS_zipFile_0500 big=" + big);
-                        console.log("ACTS_zipFile_0500 small=" + small);
-                        console.log("ACTS_zipFile_0500 big>=small=" + isBigSmall);
-                    }catch(err) {
-                        console.error('ACTS_zipFile_0500  assertTure  err:' + err);
-                    }
-                    console.debug('ACTS_zipFile_0500=====size======');
-                   done();
-               });
-       }catch(err) {
-           console.error('ACTS_zipFile_0500  size  err:' + err);
-
-           done();
-       }
- 
-    setTimeout(function(){
-        console.debug('ACTS_zipFile_0500=====timeout======');
-    }, '1000');
-       
-   })
-
-/*
-* @tc.number: ACTS_zipFile_0600
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-it('ACTS_zipFile_0600', 0, async function (done) {
-    console.log("==================ACTS_zipFile_0600 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-         flush:FLUSH_TYPE_NO_FLUSH,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_0600 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_0600 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_0600 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_0600 big=" + big);
-                     console.log("ACTS_zipFile_0600 small=" + small);
-                     console.log("ACTS_zipFile_0600 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_0600  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_0600=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_0600  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_000=====timeout======');
- }, '1000');
-    
+            console.log("zipFileCallback_0100 data: " + data);
+            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_STREAM_ERROR);
+            done();
+    });
 })
 
 /*
-* @tc.number: ACTS_zipFile_700
-* @tc.name: zipFile :
-* @tc.desc:
+* @tc.number: FWK_ZipFile_0200
+* @tc.name: zipFile
+* @tc.desc: inFile doesn't exist
 */
-
-it('ACTS_zipFile_0700', 0, async function (done) {
-    console.log("==================ACTS_zipFile_0700 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-         flush:FLUSH_TYPE_SYNC_FLUSH,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_0500 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_0700 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_0700 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_0700 big=" + big);
-                     console.log("ACTS_zipFile_0700 small=" + small);
-                     console.log("ACTS_zipFile_0700 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_0700  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_0700=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_0700  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_0700=====timeout======');
- }, '1000');
-    
-})
-/*
-* @tc.number: ACTS_zipFile_0800
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-it('ACTS_zipFile_0800', 0, async function (done) {
-    console.log("==================ACTS_zipFile_0800 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-         flush:FLUSH_TYPE_FULL_FLUSH,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_0800 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_0800 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_0800 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_0800 big=" + big);
-                     console.log("ACTS_zipFile_0800 small=" + small);
-                     console.log("ACTS_zipFile_0800 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_0800  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_0800=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_0800  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_0800=====timeout======');
- }, '1000');
-    
-})
-
-
-/*
-* @tc.number: ACTS_zipFile_0900
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-it('ACTS_zipFile_0900', 0, async function (done) {
-    console.log("==================ACTS_zipFile_0900 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-        flush:FLUSH_TYPE_FINISH,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_0900 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_0900 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_0900 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_0900 big=" + big);
-                     console.log("ACTS_zipFile_0900 small=" + small);
-                     console.log("ACTS_zipFile_0900 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_0900  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_0900=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_0900  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_0900=====timeout======');
- }, '1000');
-    
-})
-
-
-/*
-* @tc.number: ACTS_zipFile_1000
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-it('ACTS_zipFile_1000', 0, async function (done) {
-    console.log("==================ACTS_zipFile_1000 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-        flush:FLUSH_TYPE_BLOCK,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_1000 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_1000 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_1000 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_1000 big=" + big);
-                     console.log("ACTS_zipFile_1000 small=" + small);
-                     console.log("ACTS_zipFile_1000 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_1000  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_1000=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_1000  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_1000=====timeout======');
- }, '1000');
-    
-})
-/*
-* @tc.number: ACTS_zipFile_1100
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-it('ACTS_zipFile_1100', 0, async function (done) {
-    console.log("==================ACTS_zipFile_1100 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-        flush:FLUSH_TYPE_TREES,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_1100 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_1100 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_1100 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_1100 big=" + big);
-                     console.log("ACTS_zipFile_1100 small=" + small);
-                     console.log("ACTS_zipFile_1100 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_1100  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_1100=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_1100  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_1100=====timeout======');
- }, '1000');
-    
+it('FWK_ZipFile_0200', 0, async function (done) {
+    console.log("==================FWK_ZipFile_0200 start==================");
+    var src = "/data/test/notExist.txt";
+    var dest = "/data/testA/";
+    var options = {}
+    zlib.zipFile(src, dest, options,
+        (err, data) => {
+            console.log("zipFileCallBack_0200 data: " + data);
+            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_STREAM_ERROR);
+            done();
+        });  
 })
 
 /*
-* @tc.number: ACTS_zipFile_1200
-* @tc.name: zipFile :
-* @tc.desc:
+* @tc.number: FWK_ZipFile_0300
+* @tc.name: zipFile
+* @tc.desc: output file not specified
 */
-
-   it('ACTS_zipFile_1200', 0, async function (done) {
-    console.log("==================ACTS_zipFile_0900 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-        finishFlush:FLUSH_TYPE_NO_FLUSH,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_1200 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_1200 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_1200 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_1200 big=" + big);
-                     console.log("ACTS_zipFile_1200 small=" + small);
-                     console.log("ACTS_zipFile_1200 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_1200  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_1200=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_1200  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_1200=====timeout======');
- }, '1000');
-    
+it('FWK_ZipFile_0300', 0, async function (done) {
+    console.log("==================FWK_ZipFile_0300 start==================");
+    var src = "/data/test/ceshi.txt";
+    var dest = "";
+    var options = {}
+    zlib.zipFile(src, dest, options,
+        (err, data) => {
+            console.log("zipFileCallBack_0300 data: " + data);
+            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_STREAM_ERROR);
+            done();
+        });
 })
 
 /*
-* @tc.number: ACTS_zipFile_1300
-* @tc.name: zipFile :
-* @tc.desc:
+* @tc.number: FWK_ZipFile_0400
+* @tc.name: zipFile 
+* @tc.desc: The ouput file is a directory that does not exist
 */
-
-it('ACTS_zipFile_1300', 0, async function (done) {
-    console.log("==================ACTS_zipFile_1300 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-        flushFlush:FLUSH_TYPE_PARTIAL_FLUSH
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_1300 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_1300 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_1300 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_1300 big=" + big);
-                     console.log("ACTS_zipFile_1300 small=" + small);
-                     console.log("ACTS_zipFile_1300 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_1300  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_1300=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_1300  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_1300=====timeout======');
- }, '1000');
-    
+it('FWK_ZipFile_0400', 0, async function (done) {
+    console.log("==================FWK_ZipFile_0400 start==================");
+    var src = "/data/test/ceshi.txt";
+    var dest = "/data/notExist/";
+    var options = {}
+    zlib.zipFile(src, dest, options,
+        (err, data) => {
+            console.log("zipFileCallBack_0400 data: " + data);
+            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_STREAM_ERROR);
+            done();
+        });
 })
 
 /*
-* @tc.number: ACTS_zipFile_1400
-* @tc.name: zipFile :
-* @tc.desc:
+* @tc.number: FWK_ZipFile_0500
+* @tc.name: zipFile 
+* @tc.desc: FlushType.FLUSH_TYPE_NO_FLUSH
 */
-
-it('ACTS_zipFile_1400', 0, async function (done) {
-    console.log("==================ACTS_zipFile_1400 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
+it('FWK_ZipFile_0500', 0, async function (done) {
+    console.log("==================FWK_ZipFile_0500 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
         
-    try{
-     var Options= {
-        flushFlush:FLUSH_TYPE_SYNC_FLUSH,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_1400 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_1400 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_1400 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_1400 big=" + big);
-                     console.log("ACTS_zipFile_1400 small=" + small);
-                     console.log("ACTS_zipFile_1400 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_1400  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_1400=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_1400  size  err:' + err);
-
+    try {
+        var options = {};
+        options.flush = zlib.FlushType.FLUSH_TYPE_NO_FLUSH;
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
         done();
     }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_1400=====timeout======');
- }, '1000');
-    
-})
-/*
-* @tc.number: ACTS_zipFile_1500
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-it('ACTS_zipFile_1500', 0, async function (done) {
-    console.log("==================ACTS_zipFile_1500 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-        flushFlush:FLUSH_TYPE_FULL_FLUSH,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_1500 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_1500 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_1500 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_1500 big=" + big);
-                     console.log("ACTS_zipFile_1500 small=" + small);
-                     console.log("ACTS_zipFile_1500 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_1500  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_1500=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_1500  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_1500=====timeout======');
- }, '1000');
-    
+    console.log("==================FWK_ZipFile_0500 end==================");
 })
 
 /*
-* @tc.number: ACTS_zipFile_1600
-* @tc.name: zipFile :
-* @tc.desc:
+* @tc.number: FWK_ZipFile_0600
+* @tc.name: zipFile 
+* @tc.desc: FlushType.FLUSH_TYPE_NO_FLUSH
 */
-
-it('ACTS_zipFile_1600', 0, async function (done) {
-    console.log("==================ACTS_zipFile_1600 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
+it('FWK_ZipFile_0600', 0, async function (done) {
+    console.log("==================FWK_ZipFile_0600 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
         
-    try{
-     var Options= {
-        flushFlush:FLUSH_TYPE_FINISH,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_1600 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_1600 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_1600 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_1600 big=" + big);
-                     console.log("ACTS_zipFile_1600 small=" + small);
-                     console.log("ACTS_zipFile_1600 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_1600  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_1600=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_1600  size  err:' + err);
-
+    try {
+        var options = {};
+        options.flush = zlib.FlushType.FLUSH_TYPE_NO_FLUSH,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
         done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_1600=====timeout======');
- }, '1000');
-    
+     }
+    console.log("==================FWK_ZipFile_0600 end==================");
 })
 
 /*
-* @tc.number: ACTS_zipFile_1700
-* @tc.name: zipFile :
-* @tc.desc:
+* @tc.number: FWK_ZipFile_0700
+* @tc.name: zipFile 
+* @tc.desc: zipFile
 */
-
-it('ACTS_zipFile_1700', 0, async function (done) {
-    console.log("==================ACTS_zipFile_1700 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
+it('FWK_ZipFile_0700', 0, async function (done) {
+    console.log("==================FWK_ZipFile_0700 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
         
     try{
-     var Options= {
-        flushFlush:FLUSH_TYPE_BLOCK,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_1700 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_1700 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_1700 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_1700 big=" + big);
-                     console.log("ACTS_zipFile_1700 small=" + small);
-                     console.log("ACTS_zipFile_1700 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_1700  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_1700=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_1700  size  err:' + err);
-
+        var options = {};
+        options.flush = zlib.FlushType.FLUSH_TYPE_SYNC_FLUSH,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
         done();
     }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_1700=====timeout======');
- }, '1000');
-    
+    console.log("==================FWK_ZipFile_0700 end==================");    
 })
 
 /*
-* @tc.number: ACTS_zipFile_1800
-* @tc.name: zipFile :
-* @tc.desc:
+* @tc.number: FWK_ZipFile_0800
+* @tc.name: zipFile 
+* @tc.desc: FlushType.FLUSH_TYPE_FULL_FLUSH
 */
-
-it('ACTS_zipFile_1800', 0, async function (done) {
-    console.log("==================ACTS_zipFile_1800 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
+it('FWK_ZipFile_0800', 0, async function (done) {
+    console.log("==================FWK_ZipFile_0800 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
         
     try{
-     var Options= {
-        flushFlush:FLUSH_TYPE_TREES,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_1800 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_1800 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_1800 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_1800 big=" + big);
-                     console.log("ACTS_zipFile_1800 small=" + small);
-                     console.log("ACTS_zipFile_1800 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_1800  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_1800=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_1800  size  err:' + err);
-
+        var options = {};
+        options.flush = zlib.FlushType.FLUSH_TYPE_FULL_FLUSH,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
         done();
     }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_1800=====timeout======');
- }, '1000');
-    
+    console.log("==================FWK_ZipFile_0800 end==================");
 })
 
 /*
-* @tc.number: ACTS_zipFile_1900
-* @tc.name: zipFile :
-* @tc.desc:
+* @tc.number: FWK_ZipFile_0900
+* @tc.name: zipFile 
+* @tc.desc: zipFile
 */
-
-it('ACTS_zipFile_1900', 0, async function (done) {
-    console.log("==================ACTS_zipFile_1900 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
+it('FWK_ZipFile_0900', 0, async function (done) {
+    console.log("==================FWK_ZipFile_0900 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
         
     try{
-     var Options= {
+        var options = {};
+        options.flush = zlib.FlushType.FLUSH_TYPE_FINISH,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_0900 end==================");
+})
+
+/*
+* @tc.number: FWK_ZipFile_1000
+* @tc.name: zipFile 
+* @tc.desc: FlushType.FLUSH_TYPE_BLOCK
+*/
+it('FWK_ZipFile_1000', 0, async function (done) {
+    console.log("==================FWK_ZipFile_1000 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+        var options = {};
+        options.flush = zlib.FlushType.FLUSH_TYPE_BLOCK,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_1000 end==================");  
+})
+
+/*
+* @tc.number: FWK_ZipFile_1100
+* @tc.name: zipFile 
+* @tc.desc: FlushType.FLUSH_TYPE_TREES
+*/
+it('FWK_ZipFile_1100', 0, async function (done) {
+    console.log("==================FWK_ZipFile_1100 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+        var options = {};
+        options.flush = zlib.FlushType.FLUSH_TYPE_TREES,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_1100 end=================="); 
+    sleep(10); 
+})
+
+/*
+* @tc.number: FWK_ZipFile_1200
+* @tc.name: zipFile 
+* @tc.desc: FlushType.FLUSH_TYPE_NO_FLUSH
+*/
+   it('FWK_ZipFile_1200', 0, async function (done) {
+    console.log("==================FWK_ZipFile_1200 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+        var options = {};
+        options.flush = zlib.FlushType.FLUSH_TYPE_NO_FLUSH,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_1200 end==================");  
+    sleep(10);
+})
+
+/*
+* @tc.number: FWK_ZipFile_1300
+* @tc.name: zipFile 
+* @tc.desc: FlushType.FLUSH_TYPE_PARTIAL_FLUSH
+*/
+it('FWK_ZipFile_1300', 0, async function (done) {
+    console.log("==================FWK_ZipFile_1300 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+        var options = {};
+        options.flush = zlib.FlushType.FLUSH_TYPE_PARTIAL_FLUSH,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_1300 end=================="); 
+})
+
+/*
+* @tc.number: FWK_ZipFile_1400
+* @tc.name: zipFile 
+* @tc.desc: FlushType.FLUSH_TYPE_SYNC_FLUSH
+*/
+it('FWK_ZipFile_1400', 0, async function (done) {
+    console.log("==================FWK_ZipFile_1400 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+        var options = {};
+        options.flush = zlib.FlushType.FLUSH_TYPE_SYNC_FLUSH,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_1400 end=================="); 
+})
+
+/*
+* @tc.number: FWK_ZipFile_1500
+* @tc.name: zipFile 
+* @tc.desc: FlushType.FLUSH_TYPE_FULL_FLUSH
+*/
+it('FWK_ZipFile_1500', 0, async function (done) {
+    console.log("==================FWK_ZipFile_1500 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+        var options = {};
+        options.flush = zlib.FlushType.FLUSH_TYPE_FULL_FLUSH,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_1500 end=================="); 
+})
+
+/*
+* @tc.number: FWK_ZipFile_1600
+* @tc.name: zipFile 
+* @tc.desc: FlushType.FLUSH_TYPE_FINISH
+*/
+it('FWK_ZipFile_1600', 0, async function (done) {
+    console.log("==================FWK_ZipFile_1600 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+        var options = {};
+        options.flush = zlib.FlushType.FLUSH_TYPE_FINISH,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_1600 end=================="); 
+})
+
+/*
+* @tc.number: FWK_ZipFile_1700
+* @tc.name: zipFile 
+* @tc.desc: zipFile
+*/
+it('FWK_ZipFile_1700', 0, async function (done) {
+    console.log("==================FWK_ZipFile_1700 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+        var options = {};
+        options.flush = zlib.FlushType.FLUSH_TYPE_BLOCK,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_1700 end==================");
+})
+
+/*
+* @tc.number: FWK_ZipFile_1800
+* @tc.name: zipFile 
+* @tc.desc: FlushType.FLUSH_TYPE_TREES
+*/
+it('FWK_ZipFile_1800', 0, async function (done) {
+    console.log("==================FWK_ZipFile_1800 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+        var options = {};
+        options.flush = zlib.FlushType.FLUSH_TYPE_TREES,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_1800 end=================="); 
+})
+
+/*
+* @tc.number: FWK_ZipFile_1900
+* @tc.name: zipFile 
+* @tc.desc: chunkSize:64
+*/
+it('FWK_ZipFile_1900', 0, async function (done) {
+    console.log("==================FWK_ZipFile_1900 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+     var options = {
         chunkSize:64,
      };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_1900 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_1900 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_1900 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_1900 big=" + big);
-                     console.log("ACTS_zipFile_1900 small=" + small);
-                     console.log("ACTS_zipFile_1900 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_1900  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_1900=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_1900  size  err:' + err);
-
-        done();
+     await zlib.zipFile(src, zipDest, options,
+        (err, data) => {
+            var zipStat = fileio.statSync(zipDest);
+            var isFile = zipStat.isFile();
+            expect(isFile).assertTrue();
+            var srcSize = fileio.statSync(src).size;
+            var destSize = zipStat.size;
+            expect(srcSize>destSize).assertTrue();
+            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+            
+    zlib.unzipFile(zipDest, unzipDir, options,
+        (err, data) => {
+            var unzipStat = fileio.statSync(unzipDest);
+            var isFile = unzipStat.isFile();
+            expect(isFile).assertTrue();           
+            var destSize = unzipStat.size;
+            var originSize = fileio.statSync(src).size;
+            var result = (originSize == destSize);
+            expect(result).assertTrue();
+            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+            done();          
+        })
+    });        
+} catch(err) {
+    console.error('FWK_ZipFile_0500 err:' + err);
+    done();
     }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_1900=====timeout======');
- }, '1000');
-    
+    console.log("==================FWK_ZipFile_1900 end=================="); 
 })
-/*
-* @tc.number: ACTS_zipFile_2000
-* @tc.name: zipFile :
-* @tc.desc:
-*/
 
-it('ACTS_zipFile_2000', 0, async function (done) {
-    console.log("==================ACTS_zipFile_2000 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
+/*
+* @tc.number: FWK_ZipFile_2000
+* @tc.name: zipFile 
+* @tc.desc: chunkSize:1024
+*/
+it('FWK_ZipFile_2000', 0, async function (done) {
+    console.log("==================FWK_ZipFile_2000 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
         
     try{
-     var Options= {
+     var options = {
         chunkSize:1024,
      };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_2000 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_2000 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_2000 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_2000 big=" + big);
-                     console.log("ACTS_zipFile_2000 small=" + small);
-                     console.log("ACTS_zipFile_2000 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_2000  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_2000=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_2000  size  err:' + err);
-
-        done();
+     await zlib.zipFile(src, zipDest, options,
+        (err, data) => {
+            var zipStat = fileio.statSync(zipDest);
+            var isFile = zipStat.isFile();
+            expect(isFile).assertTrue();
+            var srcSize = fileio.statSync(src).size;
+            var destSize = zipStat.size;
+            expect(srcSize>destSize).assertTrue();
+            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+            
+    zlib.unzipFile(zipDest, unzipDir, options,
+        (err, data) => {
+            var unzipStat = fileio.statSync(unzipDest);
+            var isFile = unzipStat.isFile();
+            expect(isFile).assertTrue();           
+            var destSize = unzipStat.size;
+            var originSize = fileio.statSync(src).size;
+            var result = (originSize == destSize);
+            expect(result).assertTrue();
+            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+            done();          
+        })
+    });        
+} catch(err) {
+    console.error('FWK_ZipFile_0500 err:' + err);
+    done();
     }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_2000=====timeout======');
- }, '1000');
-    
+    console.log("==================FWK_ZipFile_2000 end==================");
 })
 
 /*
-* @tc.number: ACTS_zipFile_2100
-* @tc.name: zipFile :
-* @tc.desc:
+* @tc.number: FWK_ZipFile_2100
+* @tc.name: zipFile 
+* @tc.desc: chunkSize:999
 */
-
-it('ACTS_zipFile_2100', 0, async function (done) {
-    console.log("==================ACTS_zipFile_2100 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
+it('FWK_ZipFile_2100', 0, async function (done) {
+    console.log("==================FWK_ZipFile_2100 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
         
     try{
-     var Options= {
+     var options = {
         chunkSize:999,
      };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_2100 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_2100 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_2100 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_2100 big=" + big);
-                     console.log("ACTS_zipFile_2100 small=" + small);
-                     console.log("ACTS_zipFile_2100 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_2100  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_2100=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_2100  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_2100=====timeout======');
- }, '1000');
-    
-})
-
-
-/*
-* @tc.number: ACTS_zipFile_2200
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-it('ACTS_zipFile_2200', 0, async function (done) {
-    console.log("==================ACTS_zipFile_2200 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-        level:COMPRESS_LEVEL_NO_COMPRESSION ,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_2200 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_2200 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_2200 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_2200 big=" + big);
-                     console.log("ACTS_zipFile_2200 small=" + small);
-                     console.log("ACTS_zipFile_2200 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_2200  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_2200=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_2200  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_2200=====timeout======');
- }, '1000');
-    
-})
-
-/*
-* @tc.number: ACTS_zipFile_2300
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-it('ACTS_zipFile_2300', 0, async function (done) {
-    console.log("==================ACTS_zipFile_2300 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-        level:COMPRESS_LEVEL_BEST_SPEED,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_2300 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_2300 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_2300 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_2300 big=" + big);
-                     console.log("ACTS_zipFile_2300 small=" + small);
-                     console.log("ACTS_zipFile_2300 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_2300  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_2300=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_2300  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_2300=====timeout======');
- }, '1000');
-    
-})
-
-
-/*
-* @tc.number: ACTS_zipFile_2400
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-it('ACTS_zipFile_2400', 0, async function (done) {
-    console.log("==================ACTS_zipFile_2400 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-        level:COMPRESS_LEVEL_BEST_COMPRESSION,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_2400 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_2400 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_2400 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_2400 big=" + big);
-                     console.log("ACTS_zipFile_2400 small=" + small);
-                     console.log("ACTS_zipFile_2400 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_2400  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_2400=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_2400  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_2400=====timeout======');
- }, '1000');
-    
-})
-
-
-/*
-* @tc.number: ACTS_zipFile_2500
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-it('ACTS_zipFile_2500', 0, async function (done) {
-    console.log("==================ACTS_zipFile_2500 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-       level:COMPRESS_LEVEL_DEFAULT_COMPRESSION,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_2000 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_2500 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_2500 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_2500 big=" + big);
-                     console.log("ACTS_zipFile_2500 small=" + small);
-                     console.log("ACTS_zipFile_2500 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_2500  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_2500=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_2500  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_2500=====timeout======');
- }, '1000');
-    
-})
-
-
-/*
-* @tc.number: ACTS_zipFile_2600
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-it('ACTS_zipFile_2600', 0, async function (done) {
-    console.log("==================ACTS_zipFile_2600 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-        memlevel:MEM_LEVEL_MIN_MEMLEVEL,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_2600 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_2600 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_2600 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_2600 big=" + big);
-                     console.log("ACTS_zipFile_2600 small=" + small);
-                     console.log("ACTS_zipFile_2600 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_2600  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_2600=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_2600  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_2600=====timeout======');
- }, '1000');
-    
-})
-
-
-/*
-* @tc.number: ACTS_zipFile_2700
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-it('ACTS_zipFile_2700', 0, async function (done) {
-    console.log("==================ACTS_zipFile_2700 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-        memlevel:MEM_LEVEL_MAX_MEMLEVEL,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_2700 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_2700 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_2700 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_2700 big=" + big);
-                     console.log("ACTS_zipFile_2700 small=" + small);
-                     console.log("ACTS_zipFile_2700 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_2700  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_2700=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_2700  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_2700=====timeout======');
- }, '1000');
-    
-})
-
-
-/*
-* @tc.number: ACTS_zipFile_2800
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-it('ACTS_zipFile_2800', 0, async function (done) {
-    console.log("==================ACTS_zipFile_2800 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-        memlevel:MEM_LEVEL_DEFAULT_MEMLEVEL,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_2800 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_2800 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_2800 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_2800 big=" + big);
-                     console.log("ACTS_zipFile_2800 small=" + small);
-                     console.log("ACTS_zipFile_2800 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_2800  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_2800=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_2800  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_2800=====timeout======');
- }, '1000');
-    
-})
-
-
-/*
-* @tc.number: ACTS_zipFile_2900
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-it('ACTS_zipFile_2900', 0, async function (done) {
-    console.log("==================ACTS_zipFile_2900 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-        strategy:COMPRESS_STRATEGY_DEFAULT_STRATEGY,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_2900 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_2900 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_2900 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_2900 big=" + big);
-                     console.log("ACTS_zipFile_2900 small=" + small);
-                     console.log("ACTS_zipFile_2900 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_2900  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_2900=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_2900  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_2900=====timeout======');
- }, '1000');
-    
-})
-
-
-/*
-* @tc.number: ACTS_zipFile_3000
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-it('ACTS_zipFile_3000', 0, async function (done) {
-    console.log("==================ACTS_zipFile_3000 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-        strategy:COMPRESS_STRATEGY_FILTERED,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_3000 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_3000 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_3000 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_3000 big=" + big);
-                     console.log("ACTS_zipFile_3000 small=" + small);
-                     console.log("ACTS_zipFile_3000 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_3000  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_3000=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_3000  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_3000=====timeout======');
- }, '1000');
-    
-})
-
-/*
-* @tc.number: ACTS_zipFile_3100
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-it('ACTS_zipFile_3100', 0, async function (done) {
-    console.log("==================ACTS_zipFile_3100 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-        strategy:COMPRESS_STRATEGY_HUFFMAN_ONLY,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_3100 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_3100 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_3100 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_3100 big=" + big);
-                     console.log("ACTS_zipFile_3100 small=" + small);
-                     console.log("ACTS_zipFile_3100 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_3100  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_3100=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_3100  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_3100=====timeout======');
- }, '1000');
-    
-})
-
-
-/*
-* @tc.number: ACTS_zipFile_3200
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-it('ACTS_zipFile_3200', 0, async function (done) {
-    console.log("==================ACTS_zipFile_3200 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-        strategy:COMPRESS_STRATEGY_RLE,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_3200 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_3200 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_3200 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_3200 big=" + big);
-                     console.log("ACTS_zipFile_3200 small=" + small);
-                     console.log("ACTS_zipFile_3200 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_3200  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_3200=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_3200  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_3200=====timeout======');
- }, '1000');
-    
-})
-
-
-/*
-* @tc.number: ACTS_zipFile_3300
-* @tc.name: zipFile :
-* @tc.desc:
-*/
-
-it('ACTS_zipFile_3300', 0, async function (done) {
-    console.log("==================ACTS_zipFile_3300 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-        
-    try{
-     var Options= {
-        strategy:COMPRESS_STRATEGY_HUFFMAN_ONLY,
-     };
-       await zlib.zipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_zipFile_3300 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_zipFile_3300 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_zipFile_3300 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big>=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_zipFile_3300 big=" + big);
-                     console.log("ACTS_zipFile_3300 small=" + small);
-                     console.log("ACTS_zipFile_3300 big>=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_zipFile_3300  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_zipFile_3300=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_zipFile_3300  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_zipFile_3300=====timeout======');
- }, '1000');
-    
-})
-
-
-
-/*
-* @tc.number: ACTS_unzipFile_0100
-* @tc.name: unzipFile :
-* @tc.desc:
-*/
-
-it('ACTS_unzipFile_0100', 0, async function (done) {
-    console.log("==================ACTS_unzipFile_0100 start==================");
-    var src ="";
-    var dest ="";
-
-    zlib.unzipFile(src,dest,
+     await zlib.zipFile(src, zipDest, options,
         (err, data) => {
-            console.log("unzipFileCallBack_0100 err: " + err.code);
-            console.log("unzipFileCallBack_0100 data: " + data);
-            expect(err).assertEqual(0);
-            expect(data).assertEqual(0);
-        });
-
-    function timeout() {
-        expect().assertFail();
-        console.debug('ACTS_unzipFile_0100=====timeout======');
-    }
-    setTimeout(timeout, 5000);
-    done();
-})
-
-
-/*
-* @tc.number: ACTS_unzipFile_0200
-* @tc.name: unzipFile :
-* @tc.desc:
-*/
-
-it('ACTS_unzipFile_0200', 0, async function (done) {
-    console.log("==================ACTS_unzipFile_0200 start==================");
-    var src ="/data/test/";
-    var dest ="/data/test/amsZipfileUnzipfileST.hap";
-
-    zlib.unzipFile(src,dest,
+            var zipStat = fileio.statSync(zipDest);
+            var isFile = zipStat.isFile();
+            expect(isFile).assertTrue();
+            var srcSize = fileio.statSync(src).size;
+            var destSize = zipStat.size;
+            expect(srcSize>destSize).assertTrue();
+            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+            
+    zlib.unzipFile(zipDest, unzipDir, options,
         (err, data) => {
-            console.log("unzipFileCallBack_0200 err: " + err.code);
-            console.log("unzipFileCallBack_0200 data: " + data);
-            expect(err).assertEqual(0);
-            expect(data).assertEqual(0);
-        });
-
-    function timeout() {
-        expect().assertFail();
-        console.debug('ACTS_unzipFile_0200=====timeout======');
-    }
-    setTimeout(timeout, 5000);
+            var unzipStat = fileio.statSync(unzipDest);
+            var isFile = unzipStat.isFile();
+            expect(isFile).assertTrue();           
+            var destSize = unzipStat.size;
+            var originSize = fileio.statSync(src).size;
+            var result = (originSize == destSize);
+            expect(result).assertTrue();
+            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+            done();          
+        })
+    });        
+} catch(err) {
+    console.error('FWK_ZipFile_0500 err:' + err);
     done();
+    }
+    console.log("==================FWK_ZipFile_2100 end==================");  
+})
+
+/*
+* @tc.number: FWK_ZipFile_2200
+* @tc.name: zipFile 
+* @tc.desc: level.COMPRESS_LEVEL_NO_COMPRESSION
+*/
+it('FWK_ZipFile_2200', 0, async function (done) {
+    console.log("==================FWK_ZipFile_2200 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+    try{
+        var options = {};
+        options.level = zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION ,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_2200 end==================");
+})
+
+/*
+* @tc.number: FWK_ZipFile_2300
+* @tc.name: zipFile 
+* @tc.desc: level.COMPRESS_LEVEL_BEST_SPEED
+*/
+it('FWK_ZipFile_2300', 0, async function (done) {
+    console.log("==================FWK_ZipFile_2300 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+        var options = {};
+        options.level = zlib.CompressLevel.COMPRESS_LEVEL_BEST_SPEED,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_2300 end==================");
+})
+
+/*
+* @tc.number: FWK_ZipFile_2400
+* @tc.name: zipFile 
+* @tc.desc: level.COMPRESS_LEVEL_BEST_COMPRESSION
+*/
+it('FWK_ZipFile_2400', 0, async function (done) {
+    console.log("==================FWK_ZipFile_2400 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+        var options = {};
+        options.level = zlib.CompressLevel.COMPRESS_LEVEL_BEST_COMPRESSION,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_2400 end=================="); 
+})
+
+/*
+* @tc.number: FWK_ZipFile_2500
+* @tc.name: zipFile 
+* @tc.desc: level.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+*/
+it('FWK_ZipFile_2500', 0, async function (done) {
+    console.log("==================FWK_ZipFile_2500 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+        var options = {};
+        options.level = zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_2500 end==================");
+})
+
+/*
+* @tc.number: FWK_ZipFile_2600
+* @tc.name: zipFile 
+* @tc.desc: memlevel.MEM_LEVEL_MIN_MEMLEVEL
+*/
+it('FWK_ZipFile_2600', 0, async function (done) {
+    console.log("==================FWK_ZipFile_2600 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+
+    try{
+        var options = {};
+        options.memlevel = zlib.MemLevel.MEM_LEVEL_MIN_MEMLEVEL,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_2600 end=================="); 
+})
+
+/*
+* @tc.number: FWK_ZipFile_2700
+* @tc.name: zipFile 
+* @tc.desc: memlevel.MEM_LEVEL_MAX_MEMLEVEL
+*/
+it('FWK_ZipFile_2700', 0, async function (done) {
+    console.log("==================FWK_ZipFile_2700 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+        var options = {};
+        options.memlevel = zlib.MemLevel.MEM_LEVEL_MAX_MEMLEVEL,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_2700 end=================="); 
+})
+
+/*
+* @tc.number: FWK_ZipFile_2800
+* @tc.name: zipFile 
+* @tc.desc: memlevel.MEM_LEVEL_DEFAULT_MEMLEVEL
+*/
+it('FWK_ZipFile_2800', 0, async function (done) {
+    console.log("==================FWK_ZipFile_2800 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+        var options = {};
+        options.memlevel = zlib.MemLevel.MEM_LEVEL_DEFAULT_MEMLEVEL,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_2800 end==================");
+})
+
+/*
+* @tc.number: FWK_ZipFile_2900
+* @tc.name: zipFile 
+* @tc.desc: strategy.COMPRESS_STRATEGY_DEFAULT_STRATEGY
+*/
+it('FWK_ZipFile_2900', 0, async function (done) {
+    console.log("==================FWK_ZipFile_2900 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+        var options = {};
+        options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_DEFAULT_STRATEGY,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_2900 end==================");
+})
+
+/*
+* @tc.number: FWK_ZipFile_3000
+* @tc.name: zipFile 
+* @tc.desc: strategy.COMPRESS_STRATEGY_FILTERED
+*/
+it('FWK_ZipFile_3000', 0, async function (done) {
+    console.log("==================FWK_ZipFile_3000 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+
+    try{
+        var options = {};
+        options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_FILTERED,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_3000 end=================="); 
+})
+
+/*
+* @tc.number: FWK_ZipFile_3100
+* @tc.name: zipFile 
+* @tc.desc: strategy.COMPRESS_STRATEGY_HUFFMAN_ONLY
+*/
+it('FWK_ZipFile_3100', 0, async function (done) {
+    console.log("==================FWK_ZipFile_3100 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+        var options = {};
+        options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_HUFFMAN_ONLY,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_3100 end=================="); 
+})
+
+/*
+* @tc.number: FWK_ZipFile_3200
+* @tc.name: zipFile 
+* @tc.desc: strategy.COMPRESS_STRATEGY_RLE
+*/
+it('FWK_ZipFile_3200', 0, async function (done) {
+    console.log("==================FWK_ZipFile_3200 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+        var options = {};
+        options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_RLE,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_3200 end==================");
+})
+
+/*
+* @tc.number: FWK_ZipFile_3300
+* @tc.name: zipFile 
+* @tc.desc: strategy.COMPRESS_STRATEGY_HUFFMAN_ONLY
+*/
+it('FWK_ZipFile_3300', 0, async function (done) {
+    console.log("==================FWK_ZipFile_3300 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testA/ceshi.zip";
+    var unzipDir = "/data/testA/";
+    var unzipDest = "/data/testA/ceshi.txt";
+        
+    try{
+        var options = {};
+        options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_FILTERED,
+        await zlib.zipFile(src, zipDest, options,
+            (err, data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                
+        zlib.unzipFile(zipDest, unzipDir, options,
+            (err, data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();          
+            })
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_0500 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_3300 end=================="); 
+})
+
+/*
+* @tc.number: FWK_zipFile_3400
+* @tc.name: zipFile
+* @tc.desc: inFile doesn't exist
+*/
+it('FWK_zipFile_3400', 0, async function (done) {
+    console.log("==================FWK_zipFile_3400 start==================");
+    var src = "/data/noExist.txt";
+    var dest = "/data/test/";
+    var options = {}   
+
+    zlib.zipFile(src, dest, options).then((data) => {
+       console.log("zipFilePromise_3400 data: " + data);
+       expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_STREAM_ERROR);
+       done();
+    }).catch((err)=>{
+       console.log("zipFilePromise_3400 err: " + err);
+       done();
+    });
+    console.log("==================zipFilePromise_3400 end ==================");
+
+})
+
+/*
+* @tc.number: FWK_zipFile_3500
+* @tc.name: zipFile
+* @tc.desc: inFile is a directory that doesn't exist
+*/
+it('FWK_zipFile_3500', 0, async function (done) {
+    console.log("==================FWK_zipFile_3500 start==================");
+    var src = "/data/teste/fefsef.txt";
+    var dest = "/data/testA/sfefsfe.zip";
+    var options = {}   
+
+
+    zlib.zipFile(src, dest, options).then((data) => {
+       console.log("zipFilePromise_3500 data: " + data);
+       expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_DATA_ERROR);
+       done();
+    }).catch((err)=>{
+       console.log("zipFilePromise_3500 err: " + err);
+       done();
+    });
+    console.log("==================zipFilePromise_3500 end ==================");
+
+})
+
+/*
+* @tc.number: FWK_zipFile_3600
+* @tc.name: zipFile
+* @tc.desc:output file not specified
+*/
+it('FWK_zipFile_3600', 0, async function (done) {
+    console.log("==================FWK_zipFile_3600 start==================");
+    var src = "/data/test/ceshi.txt";
+    var dest = "";
+    var options = {}
+
+    zlib.zipFile(src, dest, options).then((data) => {
+       console.log("zipFilePromise_3600 data: " + data);
+       expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_STREAM_ERROR);
+       done();
+    }).catch((err)=>{
+       console.log("zipFilePromise_3600 err: " + err);
+       done();
+    });
+    console.log("==================zipFilePromise_3600 end ==================")
+
+})
+
+/*
+* @tc.number: FWK_zipFile_3700
+* @tc.name: zipFile
+* @tc.desc:output file not specified
+*/
+it('FWK_ZipFile_3700', 0, async function (done) {
+    console.log("==================zipFilePromise_3700 start==================");
+    var src = "/data/test/ceshi.txt";
+    var dest = "/data/testB/ceshi.txt.zip";
+    var options = {}   
+    zlib.zipFile(src, dest, options).then((data) => {
+       console.log("zipFilePromise_3700 data: " + data);
+       expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_STREAM_ERROR);
+       done();
+    }).catch((err)=>{
+       console.log("zipFilePromise_3700 err: " + err);
+       done();
+    });
+    console.log("==================zipFilePromise_3700 end ==================");
+
 })
 
 
+
+
 /*
-* @tc.number: ACTS_unzipFile_0300
-* @tc.name: unzipFile :
-* @tc.desc:
+* @tc.number: FWK_ZipFile_3800
+* @tc.name: zipFile 
+* @tc.desc: FlushType.FLUSH_TYPE_NO_FLUSH
 */
+it('FWK_ZipFile_3800', 0, async function (done) {
+    console.log("==================FWK_ZipFile_3800 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testb/ceshi.zip";
+    var unzipDir = "/data/testb/";
+    var unzipDest = "/data/testb/ceshi.txt";
+        
+    try {
+        var options = {};
+        options.flush = zlib.FlushType.FLUSH_TYPE_NO_FLUSH;
+         zlib.zipFile(src, unzipDir, options,).then((data) => {
+                var zipStat = fileio.statSync(zipDest);
+                var isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                var srcSize = fileio.statSync(src).size;
+                var destSize = zipStat.size;
+                expect(srcSize>destSize).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
 
-it('ACTS_unzipFile_0300', 0, async function (done) {
-    console.log("==================ACTS_unzipFile_0300 start==================");
-    var src ="/data/test/amsZipfileUnzipfileST.hap";
-    var dest ="/data/test/amsZipfileUnzipfileST.hap";
+                zlib.zipFile(zipDest, unzipDir, options,).then((data) => {
+                    var unzipStat = fileio.statSync(unzipDest);
+                    var isFile = unzipStat.isFile();
+                    expect(isFile).assertTrue();           
+                    var destSize = unzipStat.size;
+                    var originSize = fileio.statSync(src).size;
+                    var result = (originSize == destSize);
+                    expect(result).assertTrue();
+                    expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                    done(); 
+                }).catch((err)=>{
+                    console.log("FWK_ZipFile_3800 .catch((err)=>" + err);
+                    done();         
+                })
+            }).catch((err)=>{
+                console.log("FWK_ZipFile_3800 .catch((err)=>" + err);
+                done();
+        });        
+    } catch(err) {
+        console.error('FWK_ZipFile_3800 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_3800 end==================");
+})
 
-    zlib.unzipFile(src,dest,
+/*
+* @tc.number: FWK_ZipFile_3900
+* @tc.name: zipFile 
+* @tc.desc: FlushType.FLUSH_TYPE_NO_FLUSH
+*/
+it('FWK_ZipFile_3900', 0, async function (done) {
+    console.log("==================FWK_ZipFile_3900 start==================");
+    var src = "/data/test/ceshi.txt";
+    var zipDest = "/data/testb/ceshi.zip";
+    var unzipDir = "/data/testb/";
+    var unzipDest = "/data/testb/ceshi.txt";
+        
+    try {
+        var options = {};
+        options.flush = zlib.FlushType.FLUSH_TYPE_PARTIAL_FLUSH,
+         zlib.zipFile(src, unzipDir, options,).then((data) => {
+            var zipStat = fileio.statSync(zipDest);
+            var isFile = zipStat.isFile();
+            expect(isFile).assertTrue();
+            var srcSize = fileio.statSync(src).size;
+            var destSize = zipStat.size;
+            expect(srcSize>destSize).assertTrue();
+            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+
+            zlib.zipFile(zipDest, unzipDir, options,).then((data) => {
+                var unzipStat = fileio.statSync(unzipDest);
+                var isFile = unzipStat.isFile();
+                expect(isFile).assertTrue();           
+                var destSize = unzipStat.size;
+                var originSize = fileio.statSync(src).size;
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done(); 
+            }).catch((err)=>{
+                console.log("FWK_ZipFile_3900 .catch((err)=>" + err);
+                done();         
+            })
+            
+        }).catch((err)=>{
+            console.log("FWK_ZipFile_3900 .catch((err)=>" + err);
+            done();
+            
+    });        
+} catch(err) {
+    console.error('FWK_ZipFile_3900 err:' + err);
+    done();
+     }
+    console.log("==================FWK_ZipFile_3900 end==================");
+})
+
+/*
+* @tc.number: FWK_ZipFile_4000
+* @tc.name: zipFile 
+* @tc.desc: FlushType.FLUSH_TYPE_NO_FLUSH
+*/
+it('FWK_ZipFile_4000', 0, async function (done) {
+    console.log("==================FWK_ZipFile_4000 start==================");
+    var src = "/data/test/";
+    var dest = "/data/testA/ceshi.txt.zip";
+        
+    try {
+        var options = {};
+        options.flush = zlib.FlushType.FLUSH_TYPE_NO_FLUSH;
+        await zlib.zipFile(src, dest, options,
+            (err, data) => {
+                var smallStat = fileio.statSync(dest);
+                var isFile = smallStat.isFile();
+                expect(isFile).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();
+            });
+    } catch(err) {
+        console.error('FWK_ZipFile_4000 err:' + err);
+        done();
+    }
+    console.log("==================FWK_ZipFile_4000 end==================");
+})
+
+/*
+* @tc.number: FWK_ZipFile_4100
+* @tc.name: zipFile 
+* @tc.desc: FlushType.FLUSH_TYPE_NO_FLUSH
+*/
+it('FWK_ZipFile_4100', 0, async function (done) {
+    console.log("==================FWK_ZipFile_4100 start==================");
+    var src = "/data/test/";
+    var dest = "/data/testA/ceshi.txt.zip";
+        
+    try {
+        var options = {};
+        options.flush = zlib.FlushType.FLUSH_TYPE_PARTIAL_FLUSH,
+        await zlib.zipFile(src, dest, options,).then((data) => {
+                var smallStat = fileio.statSync(dest);
+                var isFile = smallStat.isFile();
+                expect(isFile).assertTrue();
+
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();
+            }).catch((err)=>{
+                console.log("FWK_ZipFile_4100 .catch((err)=>" + err);
+                done();
+            });
+    } catch(err) {
+        console.error('FWK_ZipFile_4100 err:' + err);
+        done();
+     }
+    console.log("==================FWK_ZipFile_4100 end==================");
+})
+
+/*
+* @tc.number: FWK_ZipFile_4200
+* @tc.name: unzipFile 
+* @tc.desc: unzipFile
+*/
+it('FWK_ZipFile_4200', 0, async function (done) {
+    console.log("==================FWK_UnzipFile_0100 start==================");
+    var src = "/data/noExist.txt";
+    var dest = "/data/test/";
+    var options = {}
+    zlib.unzipFile(src, dest, options,
         (err, data) => {
-            console.log("unzipFileCallBack_0300 err: " + err.code);
-            console.log("unzipFileCallBack_0300 data: " + data);
-            expect(err).assertEqual(0);
-            expect(data).assertEqual(0);
-        });
-
-    function timeout() {
-        expect().assertFail();
-        console.debug('ACTS_unzipFile_0300=====timeout======');
-    }
-    setTimeout(timeout, 5000);
-    done();
+            console.log("FWK_ZipFile_4200 data: " + data);
+            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_DATA_ERROR);
+            done();
+    });
 })
 
-
 /*
-* @tc.number: ACTS_unzipFile_0400
-* @tc.name: unzipFile :
-* @tc.desc:
+* @tc.number: FWK_ZipFile_4300
+* @tc.name: unzipFile 
+* @tc.desc: unzipFile
 */
-
-it('ACTS_unzipFile_0400', 0, async function (done) {
-    console.log("==================ACTS_unzipFile_0400 start==================");
-    var src ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-    var dest ="/data/testA/";
-
-    zlib.unzipFile(src,dest,
+it('FWK_ZipFile_4300', 0, async function (done) {
+    console.log("==================FWK_ZipFile_4300 start==================");
+    var src = "/data/test/";
+    var dest = "/data/testA/ceshi.txt.zip";
+    var options = {}
+    zlib.unzipFile(src, dest, options,
         (err, data) => {
-            console.log("unzipFileCallBack_0400 err: " + err.code);
-            console.log("unzipFileCallBack_0400 data: " + data);
-            expect(err).assertEqual(0);
-            expect(data).assertEqual(0);
-        });
-
-    function timeout() {
-        expect().assertFail();
-        console.debug('ACTS_unzipFile_0400=====timeout======');
-    }
-    setTimeout(timeout, 5000);
-    done();
+            console.log("FWK_ZipFile_4300 data: " + data);
+            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
+            done();
+    });
 })
 
 /*
-* @tc.number: ACTS_unzipFile_0500
-* @tc.name: unzipFile :
-* @tc.desc:
+* @tc.number: FWK_ZipFile_4400
+* @tc.name: unzipFile 
+* @tc.desc: unzipFile
 */
-
-it('ACTS_unzipFile_0500', 0, async function (done) {
-    console.log("==================ACTS_unzipFile_0500 start==================");
-    var src ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-    var dest ="/data/test/amsZipfileUnzipfileST.hap";
-        
-    try{
-     var Options= {
-         flushFlush:FLUSH_TYPE_NO_FLUSH,
-     };
-       await zlib.unzipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_unzipFile_0500 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_unzipFile_0500 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_unzipFile_0500 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big<=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_unzipFile_0500 big=" + big);
-                     console.log("ACTS_unzipFile_0500 small=" + small);
-                     console.log("ACTS_unzipFile_0500 big<=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_unzipFile_0500  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_unzipFile_0500=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_unzipFile_0500  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_unzipFile_0500=====timeout======');
- }, '1000');
-    
+it('FWK_ZipFile_4400', 0, async function (done) {
+    console.log("==================FWK_ZipFile_4300 start==================");
+    var src = "/data/test/cdshitwo.txt";
+    var dest = "/data/testA/ceshi.txt.zip";
+    var options = {}
+    zlib.unzipFile(src, dest, options,
+        (err, data) => {
+            console.log("FWK_ZipFile_4400 data: " + data);
+            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_DATA_ERROR);
+            done();
+    });
 })
 
 /*
-* @tc.number: ACTS_unzipFile_0600
-* @tc.name: unzipFile :
-* @tc.desc:
+* @tc.number: FWK_ZipFile_4500
+* @tc.name: unzipFile 
+* @tc.desc: unzipFile
 */
-
-it('ACTS_unzipFile_0600', 0, async function (done) {
-    console.log("==================ACTS_unzipFile_0600 start==================");
-    var src ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-    var dest ="/data/test/amsZipfileUnzipfileST.hap";
-        
-    try{
-     var Options= {
-        flushFlush:FLUSH_TYPE_PARTIAL_FLUSH,
-     };
-       await zlib.unzipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_unzipFile_0600 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_unzipFile_0600 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_unzipFile_0600 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big<=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_unzipFile_0600 big=" + big);
-                     console.log("ACTS_unzipFile_0600 small=" + small);
-                     console.log("ACTS_unzipFile_0600 big<=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_unzipFile_0600  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_unzipFile_0600=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_unzipFile_0600  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_unzipFile_0600=====timeout======');
- }, '1000');
-    
+it('FWK_ZipFile_4500', 0, async function (done) {
+    console.log("==================FWK_ZipFile_4500 start==================");
+    var src = "/data/testA/ceshi.txt.zip";
+    var dest =  "";
+    var options = {}
+    zlib.unzipFile(src, dest, options,
+        (err, data) => {
+            console.log("FWK_ZipFile_4500 data: " + data);
+            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
+            done();
+    });
 })
 
 
 /*
-* @tc.number: ACTS_unzipFile_0700
-* @tc.name: unzipFile :
-* @tc.desc:
+* @tc.number: FWK_ZipFile_4600
+* @tc.name: zipFile 
+* @tc.desc: FlushType.FLUSH_TYPE_NO_FLUSH
 */
-
-it('ACTS_unzipFile_0700', 0, async function (done) {
-    console.log("==================ACTS_unzipFile_0700 start==================");
-    var src ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-    var dest ="/data/test/amsZipfileUnzipfileST.hap";
+it('FWK_ZipFile_4600', 0, async function (done) {
+    console.log("==================FWK_ZipFile_4600 start==================");
+    var src = "/data/test/ceshitwo.zip";
+    var dest =  "/data/testb";
+    var origin =  "/data/test/ceshitwo.txt";
+    var destFile = "/data/testb/ceshitwo.txt";
         
-    try{
-     var Options= {
-        flushFlush:FLUSH_TYPE_SYNC_FLUSH,
-     };
-       await zlib.unzipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_unzipFile_0700 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_unzipFile_0700 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_unzipFile_0700 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big<=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_unzipFile_0700 big=" + big);
-                     console.log("ACTS_unzipFile_0700 small=" + small);
-                     console.log("ACTS_unzipFile_0700 big<=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_unzipFile_0700  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_unzipFile_0700=====size======');
+    try {
+        var options = {};
+        options.flushFlush = zlib.FlushType.FLUSH_TYPE_NO_FLUSH,
+        await zlib.unzipFile(src, dest, options,
+            (err, data) => {
+                var smallStat = fileio.statSync(destFile);
+                var isFile = smallStat.isFile();
+                expect(isFile).assertTrue();
+
+                var destSize = smallStat.size;
+                var originStat = fileio.statSync(origin);
+                var originSize = originStat.size; 
+                console.log("FWK_ZipFile_4600 destSize=" + destSize);
+                console.log("FWK_ZipFile_4600 data=" + data);
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
                 done();
             });
-    }catch(err) {
-        console.error('ACTS_unzipFile_0700  size  err:' + err);
-
+    } catch(err) {  
+        console.error('FWK_ZipFilFWK_ZipFile_4600e_4200   err:' + err);
         done();
     }
-
- setTimeout(function(){
-     console.debug('ACTS_unzipFile_0700=====timeout======');
- }, '1000');
-    
-})
-
-
-/*
-* @tc.number: ACTS_unzipFile_0800
-* @tc.name: unzipFile :
-* @tc.desc:
-*/
-
-it('ACTS_unzipFile_0800', 0, async function (done) {
-    console.log("==================ACTS_unzipFile_0800 start==================");
-    var src ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-    var dest ="/data/test/amsZipfileUnzipfileST.hap";
-        
-    try{
-     var Options= {
-        flushFlush:FLUSH_TYPE_FULL_FLUSH,
-     };
-       await zlib.unzipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_unzipFile_0800 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_unzipFile_0800 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_unzipFile_0800 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big<=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_unzipFile_0800 big=" + big);
-                     console.log("ACTS_unzipFile_0800 small=" + small);
-                     console.log("ACTS_unzipFile_0800 big<=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_unzipFile_0800  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_unzipFile_0800=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_unzipFile_0800  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_unzipFile_0800=====timeout======');
- }, '1000');
-    
-})
-
-
-/*
-* @tc.number: ACTS_unzipFile_0900
-* @tc.name: unzipFile :
-* @tc.desc:
-*/
-
-it('ACTS_unzipFile_0900', 0, async function (done) {
-    console.log("==================ACTS_unzipFile_0900 start==================");
-    var src ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-    var dest ="/data/test/amsZipfileUnzipfileST.hap";
-        
-    try{
-     var Options= {
-        flushFlush:FLUSH_TYPE_FINISH,
-     };
-       await zlib.unzipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_unzipFile_0900 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_unzipFile_0900 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_unzipFile_0900 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big<=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_unzipFile_0900 big=" + big);
-                     console.log("ACTS_unzipFile_0900 small=" + small);
-                     console.log("ACTS_unzipFile_0900 big<=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_unzipFile_0900  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_unzipFile_0900=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_unzipFile_0900  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_unzipFile_0900=====timeout======');
- }, '1000');
-    
-})
-
-
-/*
-* @tc.number: ACTS_unzipFile_1000
-* @tc.name: unzipFile :
-* @tc.desc:
-*/
-
-it('ACTS_unzipFile_1000', 0, async function (done) {
-    console.log("==================ACTS_unzipFile_1000 start==================");
-    var src ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-    var dest ="/data/test/amsZipfileUnzipfileST.hap";
-        
-    try{
-     var Options= {
-        flushFlush:FLUSH_TYPE_BLOCK,
-     };
-       await zlib.unzipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_unzipFile_1000 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_unzipFile_1000 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_unzipFile_1000 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big<=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_unzipFile_1000 big=" + big);
-                     console.log("ACTS_unzipFile_1000 small=" + small);
-                     console.log("ACTS_unzipFile_1000 big<=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_unzipFile_1000  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_unzipFile_1000=====size======');
-                done();
-            });
-    }catch(err) {
-        console.error('ACTS_unzipFile_1000  size  err:' + err);
-
-        done();
-    }
-
- setTimeout(function(){
-     console.debug('ACTS_unzipFile_1000=====timeout======');
- }, '1000');
-    
+    console.log("==================FWK_ZipFile_4600 end==================");
 })
 
 /*
-* @tc.number: ACTS_unzipFile_1100
-* @tc.name: unzipFile :
-* @tc.desc:
+* @tc.number: FWK_ZipFile_4700
+* @tc.name: zipFile
+* @tc.desc: inFile doesn't exist
 */
+it('FWK_ZipFile_4700', 0, async function (done) {
+    console.log("==================FWK_UnzipFile_1200 start==================");
+    var src = "/data/noExist.txt";
+    var dest = "/data/test/";
+    var options = {}   
+    zlib.unzipFile(src, dest, options).then((data) => {
+       console.log("FWK_ZipFile_4700 data: " + data);
+       expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_DATA_ERROR);
+       done();
+    }).catch((err)=>{
+       console.log("FWK_ZipFile_4700 err: " + err);
+       done();
+    });
+    console.log("==================FWK_ZipFile_4700 end ==================");
+})
 
-it('ACTS_unzipFile_1100', 0, async function (done) {
-    console.log("==================ACTS_unzipFile_1100 start==================");
-    var src ="/data/test/zip_amsZipfileUnzipfileST-signed.zip";
-    var dest ="/data/test/amsZipfileUnzipfileST.hap";
+/*
+* @tc.number: FWK_ZipFile_4800
+* @tc.name: zipFile
+* @tc.desc: inFile is a directory that doesn't exist
+*/
+it('FWK_ZipFile_4800', 0, async function (done) {
+    console.log("==================FWK_ZipFile_4800 start==================");
+    var src = "/data/test";
+    var dest = "/data/testA/ceshi.txt";
+    var options = {}   
+    zlib.unzipFile(src, dest, options).then((data) => {
+       console.log("FWK_ZipFile_4800 data: " + data);
+       expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
+       done();
+    }).catch((err)=>{
+       console.log("FWK_ZipFile_4800 err: " + err);
+       done();
+    });
+    console.log("==================FWK_ZipFile_4800 end ==================");
+})
+
+/*
+* @tc.number: FWK_ZipFile_4900
+* @tc.name: zipFile
+* @tc.desc:output file not specified
+*/
+it('FWK_ZipFile_4900', 0, async function (done) {
+    console.log("==================FWK_ZipFile_4900 start==================");
+    var src = "/data/test/ceshi.txt";
+    var dest = "/data/testc/ceshi.txt.zip";
+    var options = {}   
+    zlib.unzipFile(src, dest, options).then((data) => {
+       console.log("FWK_ZipFile_4900 data: " + data);
+       expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
+       done();
+    }).catch((err)=>{
+       console.log("FWK_ZipFile_4900 err: " + err);
+       done();
+    });
+    console.log("==================FWK_ZipFile_4900 end ==================");
+})
+
+/*
+* @tc.number: FWK_ZipFile_5000
+* @tc.name: unzipFile 
+* @tc.desc: unzipFile
+*/
+it('FWK_ZipFile_5000', 0, async function (done) {
+    console.log("==================FWK_ZipFile_5000 start==================");
+    var src = "/data/test/cdshitwo.txt";
+    var dest = "/data/testA/ceshi.txt.zip";
+    var options = {}
+    zlib.unzipFile(src, dest, options,).then((data)=>{
+            console.log("FWK_ZipFile_5000 data: " + data);
+            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_DATA_ERROR);
+            done();
+        }).catch((err)=>{
+            console.log("FWK_ZipFile_5000 err: " + err);
+            done();
+    });
+})
+
+/*
+* @tc.number: FWK_ZipFile_5100
+* @tc.name: zipFile 
+* @tc.desc: FlushType.FLUSH_TYPE_NO_FLUSH
+*/
+it('FWK_ZipFile_5100', 0, async function (done) {
+    console.log("==================FWK_ZipFile_5100 start==================");
+    var src = "/data/test/ceshitwo.zip";
+    var dest =  "/data/testb";
+    var origin =  "/data/test/ceshitwo.txt";
+    var destFile = "/data/testb/ceshitwo.txt";
         
-    try{
-     var Options= {
-        flushFlush:FLUSH_TYPE_TREES,
-     };
-       await zlib.unzipFile(src,dest,Options,
-            () => {
-                console.log("ACTS_unzipFile_1100 err:================================ ");
-                 try{
-                     var isfileio = fileio.accessSync(dest)
-                     console.log("ACTS_unzipFile_1100 isfileio:==============> "+JSON.stringify(isfileio));
-                     var isDest = (fileio.accessSync(dest) !== null)
-                     console.log("ACTS_unzipFile_1100 isDest:==============> " +isDest);
-                     expect(isDest).assertTrue();
-                     var big = fileio.statSync(src).size;
-                     var small = fileio.statSync(dest).size;
-                     var isBigSmall = (big<=small)
-                     expect(isBigSmall).assertTrue();
-                     console.log("ACTS_unzipFile_1100 big=" + big);
-                     console.log("ACTS_unipFile_1100 small=" + small);
-                     console.log("ACTS_unzipFile_1100 big<=small=" + isBigSmall);
-                 }catch(err) {
-                     console.error('ACTS_unzipFile_1100  assertTure  err:' + err);
-                 }
-                 console.debug('ACTS_unzipFile_1100=====size======');
+    try {
+        var options = {};
+        options.flushFlush = zlib.FlushType.FLUSH_TYPE_NO_FLUSH,
+         zlib.unzipFile(src, dest, options).then((data)=>{
+                var smallStat = fileio.statSync(destFile);
+                var isFile = smallStat.isFile();
+                expect(isFile).assertTrue();
+
+                var destSize = smallStat.size;
+                var originStat = fileio.statSync(origin);
+                var originSize = originStat.size; 
+                console.log("FWK_ZipFile_5100 destSize=" + destSize);
+                console.log("FWK_ZipFile_5100 data=" + data);
+                var result = (originSize == destSize);
+                expect(result).assertTrue();
+                expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
+                done();
+            }).catch((err)=>{
+                expect(fail).assertTrue();
+                console.log("FWK_ZipFile_5100 .catch((err)=>" + err);
                 done();
             });
-    }catch(err) {
-        console.error('ACTS_unzipFile_0500  size  err:' + err);
-
+    } catch(err) {  
+        console.error('FWK_ZipFile_5100   err:' + err);
+        expect(fail).assertTrue();
         done();
     }
-
- setTimeout(function(){
-     console.debug('ACTS_unzipFile_1100=====timeout======');
- }, '1000');
-    
+    console.log("==================FWK_ZipFile_5100 end==================");
 })
+
 })

@@ -20,7 +20,10 @@ let mMyProxy;
 
 export default {
     data: {
-        title: ""
+        title: "ParticleStartAbility"
+    },
+    onInit() {
+        this.title = "ParticleStartAbility";
     },
     onStart(want) {
         console.log('SerivceAbilityServer onStart');
