@@ -35,9 +35,7 @@ import {
   sleep
 }
   from './Common'
-
 describe('fileIOTest', function () {
-  1
   /**
    * @tc.number SUB_STORAGE_FileIO_open&closesync_0000
    * @tc.name fileio_test_open_close_sync_000
@@ -206,7 +204,6 @@ describe('fileIOTest', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('fileio_test_open_006 has failed for ' + e);
       expect(fileio.unlinkSync(fpath) !== null).assertTrue();
     }
   });
@@ -656,7 +653,6 @@ describe('fileIOTest', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('fileio_test_open_027 has failed for ' + e);
       expect(fileio.unlinkSync(fpath) !== null).assertTrue();
     }
   });
@@ -684,7 +680,6 @@ describe('fileIOTest', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('fileio_test_open_028 has failed for ' + e);
       expect(fileio.unlinkSync(fpath) !== null).assertTrue();
     }
   });
@@ -762,7 +757,6 @@ describe('fileIOTest', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('fileio_test_open_031 has failed for ' + e);
       expect(fileio.unlinkSync(fpath) !== null).assertTrue();
     }
   });
@@ -790,7 +784,6 @@ describe('fileIOTest', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('fileio_test_open_032 has failed for ' + e);
       expect(fileio.unlinkSync(fpath) !== null).assertTrue();
     }
   });
@@ -868,7 +861,6 @@ describe('fileIOTest', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('fileio_test_open_035 has failed for ' + e);
       expect(fileio.unlinkSync(fpath) !== null).assertTrue();
     }
   });
@@ -896,7 +888,6 @@ describe('fileIOTest', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('fileio_test_open_036 has failed for ' + e);
       expect(fileio.unlinkSync(fpath) !== null).assertTrue();
     }
   });
@@ -1075,7 +1066,6 @@ describe('fileIOTest', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('fileio_test_open_sync_007 has failed for ' + e);
     }
   });
 
@@ -1116,7 +1106,6 @@ describe('fileIOTest', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('fileio_test_open_sync_009 has failed for ' + e);
     }
   });
 
@@ -1132,7 +1121,6 @@ describe('fileIOTest', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('fileio_test_open_sync_010 has failed for ' + e);
     }
   });
 
@@ -2325,7 +2313,6 @@ describe('fileIOTest', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('fileio_test_copy_file_sync_008 has failed for ' + e);
     }
   });
 
@@ -2372,7 +2359,6 @@ describe('fileIOTest', function () {
     } 
     catch (e) {
       fileio.unlinkSync(fpath);
-      console.log('fileio_test_copy_file_sync_010 has failed for ' + e);
     }
   });
 
@@ -2551,7 +2537,6 @@ describe('fileIOTest', function () {
     } 
     catch (e) {
       expect(fileio.unlinkSync(fpath) !== null).assertTrue();
-      console.log('fileio_test_rename_sync_003 Test finish. ' + e);
     }
   });
 
@@ -3507,7 +3492,6 @@ describe('fileIOTest', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('fileio_test_fstat_sync_001 has failed for ' + e);
     }
   });
 
@@ -3522,7 +3506,6 @@ describe('fileIOTest', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('fileio_test_fstat_sync_002 has failed for ' + e);
     }
   });
 
