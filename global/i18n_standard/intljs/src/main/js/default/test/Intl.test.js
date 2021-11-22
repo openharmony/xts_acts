@@ -101,7 +101,7 @@ describe('intlTest', function () {
     * @tc.desc check the calendar
     */
     it('locale_test_0800', 0, function () {
-        let locale = new Intl.Locale('zh-CN', {hourCycle: '24', calendar: 'gregory'});
+        let locale = new Intl.Locale('zh-CN', {hourCycle: 'h24', calendar: 'gregory'});
         console.log('locale_test_0800 ' + locale.calendar);
         expect(locale.calendar).assertEqual('gregory');
     })
