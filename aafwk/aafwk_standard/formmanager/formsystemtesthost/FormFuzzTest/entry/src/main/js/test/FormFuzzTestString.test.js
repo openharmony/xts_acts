@@ -810,30 +810,6 @@ describe('FMS_FuzzTest', function () {
             console.info('=====================FMS_fuzzTestString_0300_param_10_callback==================end');
         }, TIMEOUT)
     })
- 
-     /**
-      * @tc.name fuzzTest
-      * @tc.number FMS_fuzzTestString_0300
-      * @tc.desc Check whether the releaseForm interface can pass the fuzzy test (by Promise)
-      */
-    it('FMS_fuzzTestString_0300_param_10_promise', 0, async function (done) {
-        console.log("FMS_fuzzTestString_0300_param_10_promise releaseForm begin");
- 
-        var formId = numberTest() + "";
-        console.log("FMS_fuzzTestString_0300_param_10_promise releaseForm formId typeof:"
-            + typeof(formId) + ",formId:" + formId);
-
-        formManager.releaseForm(formId).then((err) => {
-            console.log("FMS_fuzzTestString_0300_param_10_promise async::sucess err:" + err);
-            expect(err).assertEqual(0);
-            console.log("FMS_fuzzTestString_0300_param_10_promise deleteForm end");
-            done();
-        });
-    
-        setTimeout(function () {
-            console.info('=====================FMS_fuzzTestString_0300_param_10_promise==================end');
-        }, TIMEOUT)
-    })
 
      /**
       * @tc.name fuzzTest
@@ -867,34 +843,6 @@ describe('FMS_FuzzTest', function () {
         done();
         setTimeout(function () {
             console.info('=====================FMS_fuzzTestString_0300_param_011_callback==================end');
-        }, TIMEOUT)
-    })
-
-     /**
-      * @tc.name fuzzTest
-      * @tc.number FMS_fuzzTestString_0300
-      * @tc.desc Check whether the releaseForm interface can pass the fuzzy test (by Promise)
-      */
-    it('FMS_fuzzTestString_0300_param_11_promise', 0, async function (done) {
-        console.log("FMS_fuzzTestString_0300_param_11_promise releaseForm begin");
- 
-        var formId = numberTest() + "";
-        console.log("FMS_fuzzTestString_0300_param_11_promise releaseForm formId typeof:"
-            + typeof(formId) + ",formId:" + formId);
- 
-        var isReleaseCache = booleanTest();
-        console.log("FMS_fuzzTestString_0300_param_11_promise releaseForm isReleaseCache typeof:"
-            + typeof(isReleaseCache));
- 
-        formManager.releaseForm(formId, isReleaseCache).then((err) => {
-            console.log("FMS_fuzzTestString_0300_param_11_promise async::sucess err:" + err);
-            expect(err).assertEqual(0);
-            console.log("FMS_fuzzTestString_0300_param_11_promise deleteForm end");
-            done();
-        });
-
-        setTimeout(function () {
-            console.info('=====================FMS_fuzzTestString_0300_param_11_promise==================end');
         }, TIMEOUT)
     })
 

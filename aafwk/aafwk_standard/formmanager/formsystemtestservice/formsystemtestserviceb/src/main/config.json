@@ -1,7 +1,7 @@
 {
   "app": {
     "bundleName": "com.form.formsystemtestserviceb",
-    "vendor": "neusoft",
+    "vendor": "ohos",
     "version": {
       "code": 1,
       "name": "1.0"
@@ -37,7 +37,7 @@
           }
         ],
         "visible": true,
-        "name": "com.form.formmodule001.FormAbility001",
+        "name": "FormStServiceAbilityB",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:entry_MainAbility",
@@ -66,7 +66,7 @@
                 }
               ]
             }
-          }  
+          }
         ]
       }
     ],
