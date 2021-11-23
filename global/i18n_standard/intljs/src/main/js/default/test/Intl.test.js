@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import I18n from '@ohos.i18n'
 import Intl from '@ohos.intl'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
@@ -880,7 +882,10 @@ describe('intlTest', function () {
     it('formatNumber_test_0800', 0, function () {
         let numfmt = new Intl.NumberFormat('aa');
         console.log('formatNumber_test_0800 ' + numfmt.format(123456.789));
-        expect(numfmt.format(123456.789)).assertEqual('123456.789');
+        let lang = I18n.getSystemLanguage();
+        if (lang === 'zh') {
+            expect(numfmt.format(123456.789)).assertEqual('123,456.789');
+        }
     })
 
     /* *
@@ -935,7 +940,10 @@ describe('intlTest', function () {
     it('formatNumber_test_1300', 0, function () {
         let numfmt = new Intl.NumberFormat(['aa','bb']);
         console.log('formatNumber_test_1300 ' + numfmt.format(123456.789));
-        expect(numfmt.format(123456.789)).assertEqual('123456.789');
+        let lang = I18n.getSystemLanguage();
+        if (lang === 'zh') {
+            expect(numfmt.format(123456.789)).assertEqual('123,456.789');
+        }
     })
 
     /* *
