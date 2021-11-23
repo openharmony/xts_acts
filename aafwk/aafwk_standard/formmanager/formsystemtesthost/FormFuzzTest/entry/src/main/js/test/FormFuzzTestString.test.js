@@ -810,7 +810,7 @@ describe('FMS_FuzzTest', function () {
             console.info('=====================FMS_fuzzTestString_0300_param_10_callback==================end');
         }, TIMEOUT)
     })
-
+   
      /**
       * @tc.name fuzzTest
       * @tc.number FMS_fuzzTestString_0300
@@ -870,7 +870,7 @@ describe('FMS_FuzzTest', function () {
             );
         } catch (e) {
             console.log("FMS_fuzzTestString_1200_callback Exception caught:" + e);
-            expect(0).assertEqual(0);
+            expect(e.message.indexOf("type of getAllFormsInfo is incorrect") > -1).assertTrue();
         }
 
         console.log("FMS_fuzzTestString_1200_callback getAllFormsInfo end");
@@ -899,7 +899,7 @@ describe('FMS_FuzzTest', function () {
             done();
         } catch (e) {
             console.log("FMS_fuzzTestString_1200_promise Exception caught:" + e);
-            expect(0).assertEqual(0);
+            expect(e.message.indexOf("type of getAllFormsInfo is incorrect") > -1).assertTrue();
         }
 
         console.log("FMS_fuzzTestString_1200_promise getAllFormsInfo end");
@@ -921,21 +921,16 @@ describe('FMS_FuzzTest', function () {
         var bundleName = stringTest();
         console.log("FMS_fuzzTestString_1300_callback getFormsInfoByApp bundleName typeof:" + typeof(bundleName));
 
-        try{
-            formManager.getFormsInfo(
-                bundleName,
-                (err,data) => {
-                    console.log("FMS_fuzzTestString_1300_callback async::callbak return!!!")
-                    console.log("FMS_fuzzTestString_1300_callback async::sucess data:" + data);
-                    console.log("FMS_fuzzTestString_1300_callback async::error err:" + err);
-                    expect(err).assertEqual(0);
-                    done();
-                }
-            );
-        } catch (e) {
-            console.log("FMS_fuzzTestString_1300_callback Exception caught:" + e);
-            expect(0).assertEqual(0);
-        }
+        formManager.getFormsInfo(
+            bundleName,
+            (err,data) => {
+                console.log("FMS_fuzzTestString_1300_callback async::callbak return!!!")
+                console.log("FMS_fuzzTestString_1300_callback async::sucess data:" + data);
+                console.log("FMS_fuzzTestString_1300_callback async::error err:" + err);
+                expect(err).assertEqual(0);
+                done();
+            }
+        );
 
         console.log("FMS_fuzzTestString_1300_callback getFormsInfoByApp end");
         done();
@@ -950,25 +945,19 @@ describe('FMS_FuzzTest', function () {
      * @tc.desc Check whether the form configuration information query interface of the specified package 
      * can pass the fuzzy test (by Promise)
      */
-    it('FMS_fuzzTestString_1300_promise', 0, async function (done) {
+     it('FMS_fuzzTestString_1300_promise', 0, async function (done) {
         console.log("FMS_fuzzTestString_1300_promise getFormsInfoByApp begin");
 
         var bundleName = stringTest();
         console.log("FMS_fuzzTestString_1300_promise getFormsInfoByApp bundleName typeof:" + typeof(bundleName));
-
-        var retResult;
-        try{
-            retResult = await Promise.all(await formManager.getFormsInfo(bundleName));
-            console.log("FMS_fuzzTestString_1300_promise async::sucess retResult:" + retResult);
-            expect(retResult).assertEqual(0);
+        
+        formManager.getFormsInfo(bundleName).then((err) => {
+            console.log("FMS_fuzzTestString_1300_promise async::sucess err:" + err);
+            expect(err).assertEqual(0);
+            console.log("FMS_fuzzTestString_1300_promise getFormsInfoByApp end");
             done();
-        } catch (e) {
-            console.log("FMS_fuzzTestString_1300_promise Exception caught:" + e);
-            expect(0).assertEqual(0);
-        }
+        });
 
-        console.log("FMS_fuzzTestString_1300_promise getFormsInfoByApp end");
-        done();
         setTimeout(function () {
             console.info('=====================FMS_fuzzTestString_1300_promise==================end');
         }, TIMEOUT)
