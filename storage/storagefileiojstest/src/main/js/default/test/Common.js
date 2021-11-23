@@ -13,7 +13,11 @@
  * limitations under the License.
  */
 
-import fileio from '@system.fileio'
+import fileio from '@ohos.fileio'
+import {
+  expect
+}
+from 'deccjsunit/index'
 
 export const FILE_CONTENT = 'hello world'
 
@@ -97,27 +101,27 @@ export function fileToReadAndWrite(fpath) {
 }
 export function appName(testName) {
   const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.stroage.fileio/'
-  return BASE_PATH + testName
+  return BASE_PATH + testName + '_' + randomString(testName.length)
 }
 export function nextFileName(testName) {
   const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.stroage.fileio/cache/'
-  return BASE_PATH + testName
+  return BASE_PATH + testName + '_' + randomString(testName.length)
 }
 export function fileName(testName) {
   const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.stroage.fileio/files/'
-  return BASE_PATH + testName
+  return BASE_PATH + testName + '_' + randomString(testName.length)
 }
 export function cacheFileName(testName) {
   const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.stroage.fileio/files/cache/'
-  return BASE_PATH + testName
+  return BASE_PATH + testName + '_' + randomString(testName.length)
 }
 export function differentFileName(testName) {
   const BASE_PATH = '/data/accounts/account_0/ohos.acts.distributeddatamgr.distributedfile/'
-  return BASE_PATH + testName
+  return BASE_PATH + testName + '_' + randomString(testName.length)
 }
 export function differentCacheName(testName) {
   const BASE_PATH = '/data/accounts/account_0/ohos.acts.distributeddatamgr.distributedfile/cache/'
-  return BASE_PATH + testName
+  return BASE_PATH + testName + '_' + randomString(testName.length)
 }
 
 export function getFileTextLen(fpath) {
