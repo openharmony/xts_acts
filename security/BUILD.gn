@@ -18,11 +18,11 @@ group("security") {
   if (is_standard_system) {
     deps = [
       # "authentication_standard/deviceauth_p2p:DeviceauthP2PFunctionCPPTest",
-      # "permission/permissionkitcpp:PermissionKitFunctionCPPTest",
-      # "permission/permissionkitcpp:PermissionKitPerformanceCPPTest",
-      # "permission/permissionkitcpp:PermissionKitReliabilityCPPTest",
       "dataprotect/huks_standard_adapter:huks_std_function_test",
       "deviceauth/deviceauth_function:DeviceAuthFunctionTest",
+      "permission/permissionkitcpp:PermissionKitFunctionCPPTest",
+      "permission/permissionkitcpp:PermissionKitPerformanceCPPTest",
+      "permission/permissionkitcpp:PermissionKitReliabilityCPPTest",
     ]
   } else {
     deps =
