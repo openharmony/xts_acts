@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-require('./File.test.js')
 require('./FileIO.test.js')
 require('./FileIODir.test.js')
 require('./FileIODirent.test.js')
