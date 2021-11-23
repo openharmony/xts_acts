@@ -18,7 +18,7 @@ group("storage") {
     deps = [
       #"storagedsmjstest:storagedsm_js_test",
       # "storagedsmstabilityjstest:storagedsmstability_js_test",
-      "storagefileconcurrentjstest:storagefileconcurrent_js_test",
+      #"storagefileconcurrentjstest:storagefileconcurrent_js_test",
       "storagefileioerrorjstest:storagefileioerror_js_test",
       "storagefileiojstest:storagefileio_js_test",
 
