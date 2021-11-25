@@ -15,7 +15,7 @@
 import account from '@ohos.account.appAccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-const TIMEOUT = 10000;
+const TIMEOUT = 1000;
 const STRCOUNT = 1025;
 describe('ActsAccountDeleteAccount', function () {
     function sleep(delay) {
@@ -55,31 +55,72 @@ describe('ActsAccountDeleteAccount', function () {
 
     /*
      * @tc.number    : ActsAccountDeleteAccount_0200
-     * @tc.name      : Delete account calllback form
-     * @tc.desc      : Delete unadded account in callback form
+     * @tc.name      : Delete account promise form
+     * @tc.desc      : Delete the added account in promise form
      */
-    it('ActsAccountDeleteAccount_0200', 0, async function (done) {
+    it('ActsAccountDeleteAccount_0200',0,async function (done){
         console.debug("====>ActsAccountDeleteAccount_0200 start====");
         var appAccountManager = account.createAppAccountManager();
-        console.debug("====>creat finish====");
-        appAccountManager.deleteAccount("deleteAccount_name_callback_second", (err)=>{
-            console.debug("====>delete Account ActsAccountDeleteAccount_0200 err:" + JSON.stringify(err));
-            expect(err.code != 0).assertEqual(true);
+        console.debug("====>add account ActsAccountAddAccount_0200 start====");
+        await appAccountManager.addAccount("deleteAccount_name_promise_first","extraInfo_promise_first");
+        try{
+            await appAccountManager.deleteAccount("deleteAccount_name_promise_first");
             console.debug("====>ActsAccountDeleteAccount_0200 end====");
             done();
-        });
+        }
+        catch(err){
+            console.error("====>delete account ActsAccountDeleteAccount_0200 err:" + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
     });
 
     /*
      * @tc.number    : ActsAccountDeleteAccount_0300
      * @tc.name      : Delete account calllback form
-     * @tc.desc      : Delete the added account, the first time it can be deleted, the second time the deletion fails
+     * @tc.desc      : Delete unadded account in callback form
      */
     it('ActsAccountDeleteAccount_0300', 0, async function (done) {
         console.debug("====>ActsAccountDeleteAccount_0300 start====");
         var appAccountManager = account.createAppAccountManager();
+        console.debug("====>creat finish====");
+        appAccountManager.deleteAccount("deleteAccount_name_callback_second", (err)=>{
+            console.debug("====>delete Account ActsAccountDeleteAccount_0300 err:" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.debug("====>ActsAccountDeleteAccount_0300 end====");
+            done();
+        });
+    });
+
+    /*
+     * @tc.number    : ActsAccountDeleteAccount_0400
+     * @tc.name      : Delete account promise form
+     * @tc.desc      : Delete unadded account in promise form
+     */
+    it('ActsAccountDeleteAccount_0400', 0, async function(done){
+        console.debug("====>ActsAccountDeleteAccount_0400 start====");
+        var appAccountManager = account.createAppAccountManager();
+        try{
+            await appAccountManager.deleteAccount("deleteAccount_name_promise_second");
+        }
+        catch(err){
+            console.debug("====>delete account ActsAccountDeleteAccount_0400 err:" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.debug("====>ActsAccountDeleteAccount_0400 end====");
+            done();
+        }
+    });
+
+    /*
+     * @tc.number    : ActsAccountDeleteAccount_0500
+     * @tc.name      : Delete account calllback form
+     * @tc.desc      : Delete the added account, the first time it can be deleted, the second time the deletion fails
+     */
+    it('ActsAccountDeleteAccount_0500', 0, async function (done) {
+        console.debug("====>ActsAccountDeleteAccount_0500 start====");
+        var appAccountManager = account.createAppAccountManager();
         appAccountManager.addAccount("deleteAccount_name_callback_third", "extraInfo_callback_third", (err)=>{
-            console.debug("====>add account ActsAccountDeleteAccount_0300 err:" + JSON.stringify(err));
+            console.debug("====>add account ActsAccountDeleteAccount_0500 err:" + JSON.stringify(err));
             expect(err.code).assertEqual(0);
             appAccountManager.deleteAccount("deleteAccount_name_callback_third", (err)=>{
                 console.debug("====>delete account first time  err:" + JSON.stringify(err));
@@ -87,7 +128,7 @@ describe('ActsAccountDeleteAccount', function () {
                 appAccountManager.deleteAccount("deleteAccount_name_callback_third", (err)=>{
                     console.debug("====>delete Account second time err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
-                    console.debug("====>ActsAccountDeleteAccount_0300 end====");
+                    console.debug("====>ActsAccountDeleteAccount_0500 end====");
                     done();
                 });
             });
@@ -95,129 +136,88 @@ describe('ActsAccountDeleteAccount', function () {
     });
 
     /*
-     * @tc.number    : ActsAccountDeleteAccount_0400
-     * @tc.name      : Delete account calllback form
-     * @tc.desc      : Delete the account name exceeds the length limit of 1024
-     */
-    it('ActsAccountDeleteAccount_0400',0, async function (done){
-        console.debug("====>ActsAccountDeleteAccount_0400 start====");
-        var bigStr = '';
-        for (var i = 0; i < STRCOUNT; i++) {
-            bigStr += 't';
-        }
-        var appAccountManager = account.createAppAccountManager();
-        appAccountManager.deleteAccount(bigStr, (err)=>{
-            console.debug("====>delete Account ActsAccountDeleteAccount_0400 err:" + JSON.stringify(err));
-            expect(err.code != 0).assertEqual(true);
-            console.debug("====>ActsAccountDeleteAccount_0400 end====");
-            done();
-        });
-    });
-
-    /*
-     * @tc.number    : ActsAccountDeleteAccount_0500
-     * @tc.name      : Delete account calllback form
-     * @tc.desc      : Delete the account name is an empty string
-     */
-    it('ActsAccountDeleteAccount_0500',0, async function (done){
-        console.debug("====>ActsAccountDeleteAccount_0500 start====");
-        var appAccountManager = account.createAppAccountManager();
-        appAccountManager.deleteAccount("", (err)=>{
-            console.debug("====>delete Account ActsAccountDeleteAccount_0500 err:" + JSON.stringify(err));
-            expect(err.code != 0).assertEqual(true);
-            console.debug("====>ActsAccountDeleteAccount_0500 end====");
-            done();
-        });
-    });
-
-    /*
      * @tc.number    : ActsAccountDeleteAccount_0600
      * @tc.name      : Delete account promise form
-     * @tc.desc      : Delete the added account in promise form
+     * @tc.desc      : Delete the added account, the first time it can be deleted, the second time the deletion fails
      */
-    it('ActsAccountDeleteAccount_0600',0,async function (done){
+    it('ActsAccountDeleteAccount_0600', 0, async function (done){
         console.debug("====>ActsAccountDeleteAccount_0600 start====");
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>add account ActsAccountAddAccount_0600 start====");
-        await appAccountManager.addAccount("deleteAccount_name_promise_first","extraInfo_promise_first");
+        await appAccountManager.addAccount("deleteAccount_name_promise_third", "extraInfo_promise_third");
+        console.debug("====>delete Account first time ActsAccountDeleteAccount_0600 start====");
+        await appAccountManager.deleteAccount("deleteAccount_name_promise_third");
+        console.debug("====>delete Account second time ActsAccountDeleteAccount_0600 start====");
         try{
-            await appAccountManager.deleteAccount("deleteAccount_name_promise_first");
-            console.debug("====>ActsAccountDeleteAccount_0600 end====");
-            done();
+            await appAccountManager.deleteAccount("deleteAccount_name_promise_third");
         }
         catch(err){
-            console.error("====>delete account ActsAccountDeleteAccount_0600 err:" + JSON.stringify(err));
-            expect().assertFail();
+            console.debug("====>delete account ActsAccountDeleteAccount_0600 err:" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.debug("====>ActsAccountDeleteAccount_0600 end====");
             done();
         }
     });
 
     /*
      * @tc.number    : ActsAccountDeleteAccount_0700
-     * @tc.name      : Delete account promise form
-     * @tc.desc      : Delete unadded account in promise form
-     */
-    it('ActsAccountDeleteAccount_0700', 0, async function(done){
-        console.debug("====>ActsAccountDeleteAccount_0700 start====");
-        var appAccountManager = account.createAppAccountManager();
-        try{
-            await appAccountManager.deleteAccount("deleteAccount_name_promise_second");
-        }
-        catch(err){
-            console.debug("====>delete account ActsAccountDeleteAccount_0700 err:" + JSON.stringify(err));
-            expect(err.code != 0).assertEqual(true);
-            console.debug("====>ActsAccountDeleteAccount_0700 end====");
-            done();
-        }
-    });
-
-    /*
-     * @tc.number    : ActsAccountDeleteAccount_0800
-     * @tc.name      : Delete account promise form
-     * @tc.desc      : Delete the added account, the first time it can be deleted, the second time the deletion fails
-     */
-    it('ActsAccountDeleteAccount_0800', 0, async function (done){
-        console.debug("====>ActsAccountDeleteAccount_0800 start====");
-        var appAccountManager = account.createAppAccountManager();
-        console.debug("====>add account ActsAccountAddAccount_0800 start====");
-        await appAccountManager.addAccount("deleteAccount_name_promise_third", "extraInfo_promise_third");
-        console.debug("====>delete Account first time ActsAccountDeleteAccount_0800 start====");
-        await appAccountManager.deleteAccount("deleteAccount_name_promise_third");
-        console.debug("====>delete Account second time ActsAccountDeleteAccount_0800 start====");
-        try{
-            await appAccountManager.deleteAccount("deleteAccount_name_promise_third");
-        }
-        catch(err){
-            console.debug("====>delete account ActsAccountDeleteAccount_0700 err:" + JSON.stringify(err));
-            expect(err.code != 0).assertEqual(true);
-            console.debug("====>ActsAccountDeleteAccount_0700 end====");
-            done();
-        }
-    });
-
-    /*
-     * @tc.number    : ActsAccountDeleteAccount_0900
-     * @tc.name      : Delete account promise form
+     * @tc.name      : Delete account calllback form
      * @tc.desc      : Delete the account name exceeds the length limit of 1024
      */
-    it('ActsAccountDeleteAccount_0900', 0, async function (done){
-        console.debug("====>ActsAccountDeleteAccount_0900 start====");
+    it('ActsAccountDeleteAccount_0700',0, async function (done){
+        console.debug("====>ActsAccountDeleteAccount_0700 start====");
         var bigStr = '';
         for (var i = 0; i < STRCOUNT; i++) {
             bigStr += 't';
         }
         var appAccountManager = account.createAppAccountManager();
-        console.debug("====>delete Account ActsAccountDeleteAccount_0900 start====");
+        appAccountManager.deleteAccount(bigStr, (err)=>{
+            console.debug("====>delete Account ActsAccountDeleteAccount_0700 err:" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.debug("====>ActsAccountDeleteAccount_0700 end====");
+            done();
+        });
+    });
+
+    /*
+     * @tc.number    : ActsAccountDeleteAccount_0800
+     * @tc.name      : Delete account promise form
+     * @tc.desc      : Delete the account name exceeds the length limit of 1024
+     */
+    it('ActsAccountDeleteAccount_0800', 0, async function (done){
+        console.debug("====>ActsAccountDeleteAccount_0800 start====");
+        var bigStr = '';
+        for (var i = 0; i < STRCOUNT; i++) {
+            bigStr += 't';
+        }
+        var appAccountManager = account.createAppAccountManager();
+        console.debug("====>delete Account ActsAccountDeleteAccount_0800 start====");
         try{
             await appAccountManager.deleteAccount(bigStr);
         }
         catch(err){
-            console.debug("====>delete account ActsAccountDeleteAccount_0900 err:" + JSON.stringify(err));
+            console.debug("====>delete account ActsAccountDeleteAccount_0800 err:" + JSON.stringify(err));
             expect(err.code != 0).assertEqual(true);
-            console.debug("====>ActsAccountDeleteAccount_0900 end====");
+            console.debug("====>ActsAccountDeleteAccount_0800 end====");
             done();
         }
     })
+
+    /*
+     * @tc.number    : ActsAccountDeleteAccount_0900
+     * @tc.name      : Delete account calllback form
+     * @tc.desc      : Delete the account name is an empty string
+     */
+    it('ActsAccountDeleteAccount_0900',0, async function (done){
+        console.debug("====>ActsAccountDeleteAccount_0900 start====");
+        var appAccountManager = account.createAppAccountManager();
+        appAccountManager.deleteAccount("", (err)=>{
+            console.debug("====>delete Account ActsAccountDeleteAccount_0900 err:" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.debug("====>ActsAccountDeleteAccount_0900 end====");
+            done();
+        });
+    });
 
     /*
      * @tc.number    : ActsAccountDeleteAccount_1000

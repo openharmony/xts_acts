@@ -15,7 +15,8 @@
 import account from '@ohos.account.appAccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-const STRCOUNT = 1025;
+const NAMELIMIT = 512;
+const LENGTHLIMIT = 1024;
 describe('ActsAccountAddAccount', function () {
 
     /*
@@ -159,16 +160,16 @@ describe('ActsAccountAddAccount', function () {
     /*
      * @tc.number    : ActsAccountAddAccount_0700
      * @tc.name      : Add account calllback form
-     * @tc.desc      : The account name exceeds the length limit of 1024
+     * @tc.desc      : The account name exceeds the length limit of 512 characters
      */
     it('ActsAccountAddAccount_0700', 0, async function (done) {
         console.debug("====>ActsAccountAddAccount_0700 start====");
-        var bigAccountName = '';
-        for (var i = 0; i < STRCOUNT; i++) {
-            bigAccountName += 't';
+        var limitAccountName = '';
+        for (var i = 0; i < NAMELIMIT + 1; i++) {
+            limitAccountName += 't';
         }
         var appAccountManager = account.createAppAccountManager();
-        appAccountManager.addAccount(bigAccountName, "account_extraInfo_callback_fourth", (err)=>{
+        appAccountManager.addAccount(limitAccountName, "account_extraInfo_callback_fourth", (err)=>{
             console.debug("====>add account ActsAccountAddAccount_0700 err:" + JSON.stringify(err));
             expect(err.code != 0).assertEqual(true);
             console.debug("====>ActsAccountAddAccount_0700 end====");
@@ -179,17 +180,17 @@ describe('ActsAccountAddAccount', function () {
     /*
      * @tc.number    : ActsAccountAddAccount_0800
      * @tc.name      : Add account promise form
-     * @tc.desc      : The account name exceeds the length limit of 1024
+     * @tc.desc      : The account name exceeds the length limit of 512 characters
      */
     it('ActsAccountAddAccount_0800', 0, async function (done) {
         console.debug("====>ActsAccountAddAccount_0800 start====");
-        var bigStr = '';
-        for (var i = 0; i < STRCOUNT; i++) {
-            bigStr += 't';
+        var limitAccountName = '';
+        for (var i = 0; i < NAMELIMIT + 1; i++) {
+            limitAccountName += 'n';
         }
         var appAccountManager = account.createAppAccountManager();
         try{
-            await appAccountManager.addAccount(bigStr, "account_extraInfo_promise_fourth");
+            await appAccountManager.addAccount(limitAccountName, "account_extraInfo_promise_fourth");
         }
         catch(err){
             console.debug("====>add account ActsAccountAddAccount_0800 err:" + JSON.stringify(err));
@@ -202,16 +203,16 @@ describe('ActsAccountAddAccount', function () {
     /*
      * @tc.number    : ActsAccountAddAccount_0900
      * @tc.name      : Add account calllback form
-     * @tc.desc      : Additional information exceeds the length limit of 1024
+     * @tc.desc      : Additional information exceeds the length limit of 1024 characters
      */
     it('ActsAccountAddAccount_0900', 0, async function (done) {
         console.debug("====>ActsAccountAddAccount_0900 start====");
-        var bigExtraInfo = '';
-        for (var i = 0; i < STRCOUNT; i++) {
-            bigExtraInfo += 't';
+        var limitAccountExtra = '';
+        for (var i = 0; i < LENGTHLIMIT + 1; i++) {
+            limitAccountExtra += 't';
         }
         var appAccountManager = account.createAppAccountManager();
-        appAccountManager.addAccount("account_name_callback_fifth", bigExtraInfo, (err)=>{
+        appAccountManager.addAccount("account_name_callback_fifth", limitAccountExtra, (err)=>{
             console.debug("====>add account ActsAccountAddAccount_0900 err:" + JSON.stringify(err));
             expect(err.code != 0).assertEqual(true);
             console.debug("====>ActsAccountAddAccount_0900 end====");
@@ -222,17 +223,17 @@ describe('ActsAccountAddAccount', function () {
     /*
      * @tc.number    : ActsAccountAddAccount_1000
      * @tc.name      : Add account promise form
-     * @tc.desc      : Additional information exceeds the length limit of 1024
+     * @tc.desc      : Additional information exceeds the length limit of 1024 characters
      */
     it('ActsAccountAddAccount_1000', 0, async function (done) {
         console.debug("====>ActsAccountAddAccount_1000 start====");
-        var bigStrExtra = '';
-        for (var i = 0; i < STRCOUNT; i++) {
-            bigStrExtra += 't';
+        var limitAccountExtra = '';
+        for (var i = 0; i < LENGTHLIMIT + 1; i++) {
+            limitAccountExtra += 'e';
         }
         var appAccountManager = account.createAppAccountManager();
         try{
-            await appAccountManager.addAccount("account_name_promise_fifth", bigStrExtra);
+            await appAccountManager.addAccount("account_name_promise_fifth", limitAccountExtra);
         }
         catch(err){
             console.debug("====>add account ActsAccountAddAccount_1000 err:" + JSON.stringify(err));
@@ -538,5 +539,106 @@ describe('ActsAccountAddAccount', function () {
             console.debug("====>ActsAccountAddAccount_2400 end====");
             done();
         }
+    });
+
+    /*
+     * @tc.number    : ActsAccountAddAccount_2500
+     * @tc.name      : Add account calllback form
+     * @tc.desc      : The account name reaches the limit of 512 characters
+     */
+    it('ActsAccountAddAccount_2500', 0, async function (done) {
+        console.debug("====>ActsAccountAddAccount_2500 start====");
+        var limitName = '';
+        for (var i = 0; i < NAMELIMIT; i++) {
+            limitName += 't';
+        }
+        var appAccountManager = account.createAppAccountManager();
+        appAccountManager.addAccount(limitName, "account_extraInfo_callback", (err)=>{
+            console.debug("====>add account ActsAccountAddAccount_2500 err:" + JSON.stringify(err));
+            expect(err.code).assertEqual(0);
+            appAccountManager.deleteAccount(limitName, (err)=>{
+                console.debug("====>delete Account ActsAccountAddAccount_2500 err:" + JSON.stringify(err));
+                expect(err.code).assertEqual(0);
+                console.debug("====>ActsAccountAddAccount_2500 end====");
+                done();
+            });
+        });
+    });
+
+    /*
+     * @tc.number    : ActsAccountAddAccount_2600
+     * @tc.name      : Add account promise form
+     * @tc.desc      : The account name reaches the limit of 512 characters
+     */
+    it('ActsAccountAddAccount_2600', 0, async function (done) {
+        console.debug("====>ActsAccountAddAccount_2600 start====");
+        var nameLimit = '';
+        for (var i = 0; i < NAMELIMIT; i++) {
+            nameLimit += 't';
+        }
+        var appAccountManager = account.createAppAccountManager();
+        console.debug("====>add account ActsAccountAddAccount_2600 start====");
+        try{
+            await appAccountManager.addAccount(nameLimit, "account_extraInfo_promise");
+        }
+        catch(err){
+            console.error("====>add account ActsAccountAddAccount_2600 err:" + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
+        console.debug("====>delete account ActsAccountAddAccount_2600 start====");
+        await appAccountManager.deleteAccount(nameLimit);
+        console.debug("====>ActsAccountAddAccount_2600 end====");
+        done();
+    });
+
+    /*
+     * @tc.number    : ActsAccountAddAccount_2700
+     * @tc.name      : Add account calllback form
+     * @tc.desc      : Additional information reaches the limit of 1024 characters
+     */
+    it('ActsAccountAddAccount_2700', 0, async function (done) {
+        console.debug("====>ActsAccountAddAccount_2700 start====");
+        var limitExtra = '';
+        for (var i = 0; i < LENGTHLIMIT; i++) {
+            limitExtra += 't';
+        }
+        var appAccountManager = account.createAppAccountManager();
+        appAccountManager.addAccount("account_extra_callback_limit", limitExtra, (err)=>{
+            console.debug("====>add account ActsAccountAddAccount_2700 err:" + JSON.stringify(err));
+            expect(err.code).assertEqual(0);
+            appAccountManager.deleteAccount("account_extra_callback_limit", (err)=>{
+                console.debug("====>delete Account ActsAccountAddAccount_2700 err:" + JSON.stringify(err));
+                expect(err.code).assertEqual(0);
+                console.debug("====>ActsAccountAddAccount_2700 end====");
+                done();
+            });
+        });
+    });
+
+    /*
+     * @tc.number    : ActsAccountAddAccount_2800
+     * @tc.name      : Add account promise form
+     * @tc.desc      : Additional information reaches the limit of 1024 characters
+     */
+    it('ActsAccountAddAccount_2800', 0, async function (done) {
+        console.debug("====>ActsAccountAddAccount_2800 start====");
+        var extraLimit = '';
+        for (var i = 0; i < LENGTHLIMIT; i++) {
+            extraLimit += 't';
+        }
+        var appAccountManager = account.createAppAccountManager();
+        try{
+            await appAccountManager.addAccount("account_extra_promise_limit", extraLimit);
+        }
+        catch(err){
+            console.error("====>add account ActsAccountAddAccount_2800 err:" + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
+        console.debug("====>delete account ActsAccountAddAccount_2800 start====");
+        appAccountManager.deleteAccount("account_extra_promise_limit");
+        console.debug("====>ActsAccountAddAccount_2800 end====");
+        done();
     });
 })

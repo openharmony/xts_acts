@@ -15,7 +15,7 @@
 import account from '@ohos.account.appAccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-const TIMEOUT = 10000;
+const TIMEOUT = 1000;
 describe('ActsAccountCredential', function () {
     function sleep(delay) {
         var start = (new Date()).getTime();

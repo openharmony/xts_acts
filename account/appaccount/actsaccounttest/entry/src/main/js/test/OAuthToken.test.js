@@ -15,7 +15,8 @@
 import account from '@ohos.account.appAccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-const TIMEOUT = 10000;
+const TIMEOUT = 1000;
+const LENGTHLIMIT = 1024;
 describe('ActsAccountOAuthToken', function () {
     function sleep(delay) {
         var start = (new Date()).getTime();
@@ -558,5 +559,349 @@ describe('ActsAccountOAuthToken', function () {
         await appAccountManager.deleteAccount("accountToken_promise_setclear");
         console.debug("====>ActsAccountOAuthToken_2000 end====");
         done();
+    });
+
+    /*
+     * @tc.number    : ActsAccountOAuthToken_2100
+     * @tc.name      : Test oauth token in callback form
+     * @tc.desc      : Get the token after setting the token to an empty string
+     */
+    it('ActsAccountOAuthToken_2100', 0, async function (done) {
+        console.debug("====>ActsAccountOAuthToken_2100 start====");
+        var appAccountManager = account.createAppAccountManager();
+        console.debug("====>creat finish====");
+        appAccountManager.addAccount("account_callback_empty", (err)=>{
+            console.debug("====>add account ActsAccountOAuthToken_2100 err:" + JSON.stringify(err));
+            expect(err.code).assertEqual(0);
+            appAccountManager.setOAuthToken("account_callback_empty", "", (err)=>{
+                console.debug("====>setOAuthToken 2100 err:" + JSON.stringify(err));
+                expect(err.code).assertEqual(0);
+                appAccountManager.getOAuthToken("account_callback_empty", (err, data)=>{
+                    console.debug("====>getOAuthToken 2100 err:" + JSON.stringify(err));
+                    console.debug("====>getOAuthToken 2100 data:" + data);
+                    expect(err.code).assertEqual(0);
+                    expect(data).assertEqual("");
+                    appAccountManager.deleteAccount("account_callback_empty", (err)=>{
+                        console.debug("====>delete Account 2100 err:" + JSON.stringify(err));
+                        expect(err.code).assertEqual(0);
+                        console.debug("====>ActsAccountOAuthToken_2100 end====");
+                        done();
+                    });
+                });
+            });
+        });
+    });
+
+    /*
+     * @tc.number    : ActsAccountOAuthToken_2200
+     * @tc.name      : Test oauth token in promise form
+     * @tc.desc      : Get the token after setting the token to an empty string
+     */
+    it('ActsAccountOAuthToken_2200', 0, async function (done) {
+        console.debug("====>ActsAccountOAuthToken_2200 start====");
+        var appAccountManager = account.createAppAccountManager();
+        console.debug("====>creat finish====");
+        console.debug("====>add account ActsAccountOAuthToken_2200 start====");
+        await appAccountManager.addAccount("accountToken_promise_empty");
+        console.debug("====>setOAuthToken 2200 start====");
+        await appAccountManager.setOAuthToken("accountToken_promise_empty", "");
+        console.debug("====>getOAuthToken ActsAccountOAuthToken_2200 start====");
+        var data = await appAccountManager.getOAuthToken("accountToken_promise_empty");
+        expect(data).assertEqual("");
+        await appAccountManager.deleteAccount("accountToken_promise_empty");
+        console.debug("====>ActsAccountOAuthToken_2000 end====");
+        done();
+    });
+
+    /*
+     * @tc.number    : ActsAccountOAuthToken_2300
+     * @tc.name      : Test oauth token in callback form
+     * @tc.desc      : Get the token after setting the token to a space string
+     */
+    it('ActsAccountOAuthToken_2300', 0, async function (done) {
+        console.debug("====>ActsAccountOAuthToken_2300 start====");
+        var appAccountManager = account.createAppAccountManager();
+        console.debug("====>creat finish====");
+        appAccountManager.addAccount("account_callback_space", (err)=>{
+            console.debug("====>add account ActsAccountOAuthToken_2300 err:" + JSON.stringify(err));
+            expect(err.code).assertEqual(0);
+            appAccountManager.setOAuthToken("account_callback_space", " ", (err)=>{
+                console.debug("====>setOAuthToken 2300 err:" + JSON.stringify(err));
+                expect(err.code).assertEqual(0);
+                appAccountManager.getOAuthToken("account_callback_space", (err, data)=>{
+                    console.debug("====>getOAuthToken 2300 err:" + JSON.stringify(err));
+                    console.debug("====>getOAuthToken 2300 data:" + data);
+                    expect(err.code).assertEqual(0);
+                    expect(data).assertEqual(" ");
+                    appAccountManager.deleteAccount("account_callback_space", (err)=>{
+                        console.debug("====>delete Account 2300 err:" + JSON.stringify(err));
+                        expect(err.code).assertEqual(0);
+                        console.debug("====>ActsAccountOAuthToken_2300 end====");
+                        done();
+                    });
+                });
+            });
+        });
+    });
+
+    /*
+     * @tc.number    : ActsAccountOAuthToken_2400
+     * @tc.name      : Test oauth token in promise form
+     * @tc.desc      : Get the token after setting the token to a space string
+     */
+    it('ActsAccountOAuthToken_2400', 0, async function (done) {
+        console.debug("====>ActsAccountOAuthToken_2400 start====");
+        var appAccountManager = account.createAppAccountManager();
+        console.debug("====>creat finish====");
+        console.debug("====>add account ActsAccountOAuthToken_2400 start====");
+        await appAccountManager.addAccount("accountToken_promise_space");
+        console.debug("====>setOAuthToken 2400 start====");
+        await appAccountManager.setOAuthToken("accountToken_promise_space", " ");
+        console.debug("====>getOAuthToken ActsAccountOAuthToken_2400 start====");
+        var data = await appAccountManager.getOAuthToken("accountToken_promise_space");
+        expect(data).assertEqual(" ");
+        await appAccountManager.deleteAccount("accountToken_promise_space");
+        console.debug("====>ActsAccountOAuthToken_2400 end====");
+        done();
+    });
+
+    /*
+     * @tc.number    : ActsAccountOAuthToken_2500
+     * @tc.name      : Test oauth token in callback form
+     * @tc.desc      : Set the length of the token to exceed the length limit of 1024 characters
+     */
+    it('ActsAccountOAuthToken_2500', 0, async function (done) {
+        console.debug("====>ActsAccountOAuthToken_2500 start====");
+        var limitToken = '';
+        for (var i = 0; i < LENGTHLIMIT + 1; i++) {
+            limitToken += 't';
+        }
+        var appAccountManager = account.createAppAccountManager();
+        console.debug("====>creat finish====");
+        appAccountManager.addAccount("account_callback_lengthlimit", (err)=>{
+            console.debug("====>add account ActsAccountOAuthToken_2500 err:" + JSON.stringify(err));
+            expect(err.code).assertEqual(0);
+            appAccountManager.setOAuthToken("account_callback_lengthlimit", limitToken, (err)=>{
+                console.debug("====>setOAuthToken 2500 err:" + JSON.stringify(err));
+                expect(err.code != 0).assertEqual(true);
+                appAccountManager.deleteAccount("account_callback_lengthlimit", (err)=>{
+                    console.debug("====>delete Account 2500 err:" + JSON.stringify(err));
+                    expect(err.code).assertEqual(0);
+                    console.debug("====>ActsAccountOAuthToken_2500 end====");
+                    done();
+                });
+            });
+        });
+    });
+
+    /*
+     * @tc.number    : ActsAccountOAuthToken_2600
+     * @tc.name      : Test oauth token in promise form
+     * @tc.desc      : Set the length of the token to exceed the length limit of 1024 characters
+     */
+    it('ActsAccountOAuthToken_2600', 0, async function (done) {
+        console.debug("====>ActsAccountOAuthToken_2600 start====");
+        var limitToken = '';
+        for (var i = 0; i < LENGTHLIMIT + 1; i++) {
+            limitToken += 't';
+        }
+        var appAccountManager = account.createAppAccountManager();
+        console.debug("====>creat finish====");
+        console.debug("====>add account ActsAccountOAuthToken_2600 start====");
+        await appAccountManager.addAccount("account_promise_lengthlimit");
+        console.debug("====>setOAuthToken 2600 start====");
+        try{
+            await appAccountManager.setOAuthToken("account_promise_lengthlimit", limitToken);
+        }
+        catch(err){
+            console.debug("====>setOAuthToken ActsAccountOAuthToken_2600 err:" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.debug("====>delete account ActsAccountOAuthToken_2600 start====");
+            await appAccountManager.deleteAccount("account_promise_lengthlimit");
+            console.debug("====>ActsAccountOAuthToken_2600 end====");
+            done();
+        }
+    });
+
+    /*
+     * @tc.number    : ActsAccountOAuthToken_2700
+     * @tc.name      : Test oauth token in callback form
+     * @tc.desc      : Set the length of the token to just reach the length limit of 1024 characters
+     */
+    it('ActsAccountOAuthToken_2700', 0, async function (done) {
+        console.debug("====>ActsAccountOAuthToken_2700 start====");
+        var tokenLimit = '';
+        for (var i = 0; i < LENGTHLIMIT; i++) {
+            tokenLimit += 't';
+        }
+        var appAccountManager = account.createAppAccountManager();
+        console.debug("====>creat finish====");
+        appAccountManager.addAccount("account_callback_limit", (err)=>{
+            console.debug("====>add account ActsAccountOAuthToken_2700 err:" + JSON.stringify(err));
+            expect(err.code).assertEqual(0);
+            appAccountManager.setOAuthToken("account_callback_limit", tokenLimit, (err)=>{
+                console.debug("====>setOAuthToken 2700 err:" + JSON.stringify(err));
+                expect(err.code).assertEqual(0);
+                appAccountManager.getOAuthToken("account_callback_limit", (err, data)=>{
+                    console.debug("====>getOAuthToken 2700 err:" + JSON.stringify(err));
+                    console.debug("====>getOAuthToken 2700 data:" + data);
+                    expect(err.code).assertEqual(0);
+                    expect(data).assertEqual(tokenLimit);
+                    appAccountManager.deleteAccount("account_callback_limit", (err)=>{
+                        console.debug("====>delete Account 2700 err:" + JSON.stringify(err));
+                        expect(err.code).assertEqual(0);
+                        console.debug("====>ActsAccountOAuthToken_2700 end====");
+                        done();
+                    });
+                });
+            });
+        });
+    });
+
+    /*
+     * @tc.number    : ActsAccountOAuthToken_2800
+     * @tc.name      : Test oauth token in promise form
+     * @tc.desc      : Set the length of the token to just reach the length limit of 1024 characters
+     */
+    it('ActsAccountOAuthToken_2800', 0, async function (done) {
+        console.debug("====>ActsAccountOAuthToken_2800 start====");
+        var tokenLimit = '';
+        for (var i = 0; i < LENGTHLIMIT; i++) {
+            tokenLimit += 't';
+        }
+        var appAccountManager = account.createAppAccountManager();
+        console.debug("====>creat finish====");
+        console.debug("====>add account ActsAccountOAuthToken_2800 start====");
+        await appAccountManager.addAccount("accountToken_promise_limit");
+        console.debug("====>setOAuthToken 2400 start====");
+        await appAccountManager.setOAuthToken("accountToken_promise_limit", tokenLimit);
+        console.debug("====>getOAuthToken ActsAccountOAuthToken_2800 start====");
+        var data = await appAccountManager.getOAuthToken("accountToken_promise_limit");
+        expect(data).assertEqual(tokenLimit);
+        await appAccountManager.deleteAccount("accountToken_promise_limit");
+        console.debug("====>ActsAccountOAuthToken_2800 end====");
+        done();
+    });
+
+    /*
+     * @tc.number    : ActsAccountOAuthToken_2900
+     * @tc.name      : Test oauth token in callback form
+     * @tc.desc      : Clear token parameter name is an empty string
+     */
+    it('ActsAccountOAuthToken_2900', 0, async function (done) {
+        console.debug("====>ActsAccountOAuthToken_2900 start====");
+        var appAccountManager = account.createAppAccountManager();
+        console.debug("====>creat finish====");
+        appAccountManager.clearOAuthToken("", (err)=>{
+            console.debug("====>clearOAuthToken 2900 err:" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.debug("====>ActsAccountOAuthToken_1900 end====");
+            done();
+        });
+    });
+
+    /*
+     * @tc.number    : ActsAccountOAuthToken_3000
+     * @tc.name      : Test oauth token in promise form
+     * @tc.desc      : Clear token parameter name is an empty string
+     */
+    it('ActsAccountOAuthToken_3000', 0, async function (done) {
+        console.debug("====>ActsAccountOAuthToken_3000 start====");
+        var appAccountManager = account.createAppAccountManager();
+        console.debug("====>creat finish====");
+        console.debug("====>clearOAuthToken 3000 start====");
+        try{
+            await appAccountManager.clearOAuthToken("");
+        }
+        catch(err){
+            console.debug("====>clearOAuthToken ActsAccountOAuthToken_3000 err:" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.debug("====>ActsAccountOAuthToken_3000 end====");
+            done();
+        }
+    });
+
+    /*
+     * @tc.number    : ActsAccountOAuthToken_3100
+     * @tc.name      : Test oauth token in callback form
+     * @tc.desc      : The clear token parameter name is a space string
+     */
+    it('ActsAccountOAuthToken_3100', 0, async function (done) {
+        console.debug("====>ActsAccountOAuthToken_3100 start====");
+        var appAccountManager = account.createAppAccountManager();
+        console.debug("====>creat finish====");
+        appAccountManager.clearOAuthToken(" ", (err)=>{
+            console.debug("====>clearOAuthToken 3100 err:" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.debug("====>ActsAccountOAuthToken_3100 end====");
+            done();
+        });
+    });
+
+    /*
+     * @tc.number    : ActsAccountOAuthToken_3200
+     * @tc.name      : Test oauth token in promise form
+     * @tc.desc      : The clear token parameter name is a space string
+     */
+    it('ActsAccountOAuthToken_3200', 0, async function (done) {
+        console.debug("====>ActsAccountOAuthToken_3200 start====");
+        var appAccountManager = account.createAppAccountManager();
+        console.debug("====>creat finish====");
+        console.debug("====>clearOAuthToken 3200 start====");
+        try{
+            await appAccountManager.clearOAuthToken(" ");
+        }
+        catch(err){
+            console.debug("====>clearOAuthToken ActsAccountOAuthToken_3200 err:" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.debug("====>ActsAccountOAuthToken_3200 end====");
+            done();
+        }
+    });
+
+    /*
+     * @tc.number    : ActsAccountOAuthToken_3300
+     * @tc.name      : Test oauth token in callback form
+     * @tc.desc      : Clear the token parameter name exceeds the length limit of 1024 characters
+     */
+    it('ActsAccountOAuthToken_3300', 0, async function (done) {
+        console.debug("====>ActsAccountOAuthToken_3300 start====");
+        var nameLimit = '';
+        for (var i = 0; i < LENGTHLIMIT + 1; i++) {
+            nameLimit += 't';
+        }
+        var appAccountManager = account.createAppAccountManager();
+        console.debug("====>creat finish====");
+        appAccountManager.clearOAuthToken(nameLimit, (err)=>{
+            console.debug("====>clearOAuthToken first 3300 err:" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.debug("====>ActsAccountOAuthToken_3300 end====");
+            done();
+        });
+    });
+
+    /*
+     * @tc.number    : ActsAccountOAuthToken_3400
+     * @tc.name      : Test oauth token in promise form
+     * @tc.desc      : Clear the token parameter name exceeds the length limit of 1024 characters
+     */
+    it('ActsAccountOAuthToken_3400', 0, async function (done) {
+        console.debug("====>ActsAccountOAuthToken_3400 start====");
+        var nameLimit = '';
+        for (var i = 0; i < LENGTHLIMIT + 1; i++) {
+            nameLimit += 't';
+        }
+        var appAccountManager = account.createAppAccountManager();
+        console.debug("====>creat finish====");
+        console.debug("====>clearOAuthToken first 3400 start====");
+        try{
+            await appAccountManager.clearOAuthToken(nameLimit);
+        }
+        catch(err){
+            console.debug("====>clearOAuthToken ActsAccountOAuthToken_3400 err:" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.debug("====>ActsAccountOAuthToken_3400 end====");
+            done();
+        }
     });
 })
