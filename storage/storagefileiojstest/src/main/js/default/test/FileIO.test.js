@@ -398,10 +398,10 @@ describe('fileIOTest', function () {
     try {
       let fd = fileio.openSync(fpath, 0o4002);
       expect(fd !== null).assertTrue();
-      let fd_1 = fileio.openSync(fpath, 0o4002);
-      expect(fd_1 !== null).assertTrue();
+      let fd2 = fileio.openSync(fpath, 0o4002);
+      expect(fd2 !== null).assertTrue();
       expect(fileio.closeSync(fd) !== null).assertTrue();
-      expect(fileio.closeSync(fd_1) !== null).assertTrue();
+      expect(fileio.closeSync(fd2) !== null).assertTrue();
       expect(fileio.unlinkSync(fpath) !== null).assertTrue();
       done();
     } 
