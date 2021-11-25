@@ -29,7 +29,6 @@ import {
   prepareFile,
   nextFileName,
   prepareEmptyFile,
-  differentFileName,
   randomString,
   fileName,
   sleep
