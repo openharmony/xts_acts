@@ -504,7 +504,7 @@ describe('PlayerLocalTestAudioAPI', function () {
     */
 
     it('SUB_MEDIA_PLAYER_AudioPlayer_SetVolume_API_0100', 0, async function (done) {
-        var mySteps = new Array(VOLUME_STATE, VOLUME_VALUE, ERROR_STATE, END_STATE);
+        var mySteps = new Array(VOLUME_STATE, VOLUME_VALUE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
         audioPlayer.setVolume(VOLUME_VALUE);
