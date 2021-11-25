@@ -23,6 +23,7 @@ using namespace testing::ext;
 using namespace OHOS::Security::Permission;
 
 const int TIME_MILLIS = 1000;
+const int RUNNING_TIMES = 10000;
 static vector<PermissionDef> permDefNormal;
 static vector<PermissionDef> permDefAbnormal1;
 static vector<PermissionDef> permDefAbnormal2;
@@ -31,6 +32,14 @@ PermissionDef permissionDefAlpha;
 PermissionDef permissionDefBeta;
 PermissionDef permissionDefAbnormal1;
 PermissionDef permissionDefAbnormal2;
+
+class PermissionKitPerformanceTest : public testing::Test {
+public:
+    static void SetUpTestCase();
+    static void TearDownTestCase();
+    void SetUp();
+    void TearDown();
+};
 
 void initPermissionDef()
 {
@@ -77,7 +86,7 @@ void initPermissionDef()
     };
 }
 
-void PermissionKitTest::SetUpTestCase()
+void PermissionKitPerformanceTest::SetUpTestCase()
 {
     vector<PermissionDef> permDefList1;
     vector<PermissionDef> permDefList2;
@@ -122,7 +131,7 @@ void PermissionKitTest::SetUpTestCase()
     }
 }
 
-void PermissionKitTest::TearDownTestCase()
+void PermissionKitPerformanceTest::TearDownTestCase()
 {
     PermissionKit::RemoveDefPermissions(TEST_BUNDLE_NAME);
     PermissionKit::RemoveDefPermissions(ABNORMAL_BUNDLE_NAME);
@@ -139,7 +148,7 @@ void PermissionKitTest::TearDownTestCase()
     }
 }
 
-void PermissionKitTest::SetUp()
+void PermissionKitPerformanceTest::SetUp()
 {
     PermissionKit::RemoveDefPermissions(TEST_BUNDLE_NAME);
     PermissionKit::RemoveDefPermissions(ABNORMAL_BUNDLE_NAME);
@@ -152,7 +161,7 @@ void PermissionKitTest::SetUp()
     PermissionKit::RevokeSystemGrantedPermission(TEST_BUNDLE_NAME, TEST_PERMISSION_NAME_BETA);
 }
 
-void PermissionKitTest::TearDown()
+void PermissionKitPerformanceTest::TearDown()
 {
     PermissionKit::RemoveDefPermissions(TEST_BUNDLE_NAME);
     PermissionKit::RemoveDefPermissions(ABNORMAL_BUNDLE_NAME);
@@ -182,10 +191,10 @@ long GetCurrentTimeMillis()
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddDefPer_009, TestSize.Level3)
+HWTEST_F(PermissionKitPerformanceTest, Security_AppSecurity_PermissionManager_L2_AddDefPer_009, TestSize.Level3)
 {
     long timeAll = 0;
-    for (int i = 0; i < 10000; i++){
+    for (int i = 0; i < RUNNING_TIMES; i++){
         long startTime = GetCurrentTimeMillis();
         int ret = PermissionKit::AddDefPermissions(permDefNormal);
         ASSERT_EQ(RET_SUCCESS, ret);
@@ -194,8 +203,8 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddDefPer_
         ret = PermissionKit::RemoveDefPermissions(TEST_BUNDLE_NAME);
         ASSERT_EQ(RET_SUCCESS, ret);
     }
-    std::cout<<"Performance of AddDefPermissions interface is::"<<timeAll / 10000 <<"ms"<<std::endl;
-    ASSERT_LT(timeAll / 10000, 5);
+    std::cout<<"Performance of AddDefPermissions interface is::"<<timeAll / RUNNING_TIMES <<"ms"<<std::endl;
+    ASSERT_LT(timeAll / RUNNING_TIMES, 5);
 }
 
 /**
@@ -208,10 +217,10 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddDefPer_
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveDefPer_008, TestSize.Level3)
+HWTEST_F(PermissionKitPerformanceTest, Security_AppSecurity_PermissionManager_L2_RemoveDefPer_008, TestSize.Level3)
 {
     long timeAll = 0;
-    for (int i = 0; i < 10000; i++){
+    for (int i = 0; i < RUNNING_TIMES; i++){
         int ret = PermissionKit::AddDefPermissions(permDefNormal);
         ASSERT_EQ(RET_SUCCESS, ret);
         long startTime = GetCurrentTimeMillis();
@@ -220,8 +229,8 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveDefP
         long timeCost = GetCurrentTimeMillis() - startTime;
         timeAll = timeAll + timeCost;
     }
-    std::cout<<"Performance of RemoveDefPermissions interface is::"<<timeAll / 10000 <<"ms"<<std::endl;
-    ASSERT_LT(timeAll / 10000, 5);
+    std::cout<<"Performance of RemoveDefPermissions interface is::"<<timeAll / RUNNING_TIMES <<"ms"<<std::endl;
+    ASSERT_LT(timeAll / RUNNING_TIMES, 5);
 }
 
 /**
@@ -234,19 +243,19 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveDefP
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GetDefPer_006, TestSize.Level3)
+HWTEST_F(PermissionKitPerformanceTest, Security_AppSecurity_PermissionManager_L2_GetDefPer_006, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
     PermissionDef permissionDefResultAlpha;
     long startTime = GetCurrentTimeMillis();
-    for (int i = 0; i < 10000; i++) {
+    for (int i = 0; i < RUNNING_TIMES; i++) {
         ret = PermissionKit::GetDefPermission(TEST_PERMISSION_NAME_ALPHA, permissionDefResultAlpha);
         ASSERT_EQ(RET_SUCCESS, ret);
     }
     long timeAll = GetCurrentTimeMillis() - startTime;
-    std::cout<<"Performance of GetDefPermission interface is::"<<timeAll / 10000 <<"ms"<<std::endl;
-    ASSERT_LT(timeAll / 10000, 5);
+    std::cout<<"Performance of GetDefPermission interface is::"<<timeAll / RUNNING_TIMES <<"ms"<<std::endl;
+    ASSERT_LT(timeAll / RUNNING_TIMES, 5);
 }
 
 /**
@@ -259,14 +268,14 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GetDefPer_
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_014, TestSize.Level3)
+HWTEST_F(PermissionKitPerformanceTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_014, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
     vector<string> permList;
     permList.push_back(TEST_PERMISSION_NAME_ALPHA);
     long timeAll = 0;
-    for (int i = 0; i < 10000; i++){
+    for (int i = 0; i < RUNNING_TIMES; i++){
         long startTime = GetCurrentTimeMillis();
         ret = PermissionKit::AddUserGrantedReqPermissions(TEST_BUNDLE_NAME, permList, TEST_USER_ID);
         ASSERT_EQ(RET_SUCCESS, ret);
@@ -275,8 +284,8 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGra
         ret = PermissionKit::RemoveUserGrantedReqPermissions(TEST_BUNDLE_NAME, TEST_USER_ID);
         ASSERT_EQ(RET_SUCCESS, ret);
     }
-    std::cout<<"Performance of AddUserGrantedReqPermissions interface is::"<<timeAll / 10000 <<"ms"<<std::endl;
-    ASSERT_LT(timeAll / 10000, 5);
+    std::cout<<"Performance of AddUserGrantedReqPermissions interface is::"<<timeAll / RUNNING_TIMES <<"ms"<<std::endl;
+    ASSERT_LT(timeAll / RUNNING_TIMES, 5);
 }
 
 /**
@@ -289,14 +298,14 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGra
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddSystemGrantedPer_011, TestSize.Level3)
+HWTEST_F(PermissionKitPerformanceTest, Security_AppSecurity_PermissionManager_L2_AddSystemGrantedPer_011, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
     vector<string> permList;
     permList.push_back(TEST_PERMISSION_NAME_ALPHA);
     long timeAll = 0;
-    for (int i = 0; i < 10000; i++){
+    for (int i = 0; i < RUNNING_TIMES; i++){
         long startTime = GetCurrentTimeMillis();
         ret = PermissionKit::AddSystemGrantedReqPermissions(TEST_BUNDLE_NAME, permList);
         ASSERT_EQ(RET_SUCCESS, ret);
@@ -305,8 +314,8 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddSystemG
         ret = PermissionKit::RemoveSystemGrantedReqPermissions(TEST_BUNDLE_NAME);
         ASSERT_EQ(RET_SUCCESS, ret);
     }
-    std::cout<<"Performance of AddSystemGrantedReqPermissions interface is::"<<timeAll / 10000 <<"ms"<<std::endl;
-    ASSERT_LT(timeAll / 10000, 5);
+    std::cout<<"Performance of AddSystemGrantedReqPermissions interface is::"<<timeAll / RUNNING_TIMES <<"ms"<<std::endl;
+    ASSERT_LT(timeAll / RUNNING_TIMES, 5);
 }
 
 /**
@@ -319,14 +328,14 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddSystemG
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUserGrantedPer_012, TestSize.Level3)
+HWTEST_F(PermissionKitPerformanceTest, Security_AppSecurity_PermissionManager_L2_RemoveUserGrantedPer_012, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
     vector<string> permList;
     permList.push_back(TEST_PERMISSION_NAME_ALPHA);
     long timeAll = 0;
-    for (int i = 0; i < 10000; i++){
+    for (int i = 0; i < RUNNING_TIMES; i++){
         ret = PermissionKit::AddUserGrantedReqPermissions(TEST_BUNDLE_NAME, permList, TEST_USER_ID);
         ASSERT_EQ(RET_SUCCESS, ret);
         long startTime = GetCurrentTimeMillis();
@@ -335,8 +344,8 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUser
         timeAll = timeAll + timeCost;
         ASSERT_EQ(RET_SUCCESS, ret);
     }
-    std::cout<<"Performance of RemoveUserGrantedReqPermissions interface is::"<<timeAll / 10000 <<"ms"<<std::endl;
-    ASSERT_LT(timeAll / 10000, 5);
+    std::cout<<"Performance of RemoveUserGrantedReqPermissions interface is::"<<timeAll / RUNNING_TIMES <<"ms"<<std::endl;
+    ASSERT_LT(timeAll / RUNNING_TIMES, 5);
 }
 
 /**
@@ -349,14 +358,14 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUser
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveSystemGrantedPer_009, TestSize.Level3)
+HWTEST_F(PermissionKitPerformanceTest, Security_AppSecurity_PermissionManager_L2_RemoveSystemGrantedPer_009, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
     vector<string> permList;
     permList.push_back(TEST_PERMISSION_NAME_BETA);
     long timeAll = 0;
-    for (int i = 0; i < 10000; i++){
+    for (int i = 0; i < RUNNING_TIMES; i++){
         ret = PermissionKit::AddSystemGrantedReqPermissions(TEST_BUNDLE_NAME, permList);
         ASSERT_EQ(RET_SUCCESS, ret);
         long startTime = GetCurrentTimeMillis();
@@ -365,8 +374,8 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveSyst
         long timeCost = GetCurrentTimeMillis() - startTime;
         timeAll = timeAll + timeCost;
     }
-    std::cout<<"Performance of RemoveSystemGrantedReqPermissions interface is::"<<timeAll / 10000 <<"ms"<<std::endl;
-    ASSERT_LT(timeAll / 10000, 5);
+    std::cout<<"Performance of RemoveSystemGrantedReqPermissions interface is::"<<timeAll / RUNNING_TIMES <<"ms"<<std::endl;
+    ASSERT_LT(timeAll / RUNNING_TIMES, 5);
 }
 
 /**
@@ -379,7 +388,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveSyst
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_014, TestSize.Level3)
+HWTEST_F(PermissionKitPerformanceTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_014, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -388,7 +397,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserG
     ret = PermissionKit::AddUserGrantedReqPermissions(TEST_BUNDLE_NAME, permList, TEST_USER_ID);
     ASSERT_EQ(RET_SUCCESS, ret);
     long timeAll = 0;
-    for (int i = 0; i < 10000; i++){
+    for (int i = 0; i < RUNNING_TIMES; i++){
         long startTime = GetCurrentTimeMillis();
         ret = PermissionKit::GrantUserGrantedPermission(TEST_BUNDLE_NAME, TEST_PERMISSION_NAME_ALPHA, TEST_USER_ID);
         ASSERT_EQ(RET_SUCCESS, ret);
@@ -397,8 +406,8 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserG
         ret = PermissionKit::RevokeUserGrantedPermission(TEST_BUNDLE_NAME, TEST_PERMISSION_NAME_ALPHA, TEST_USER_ID);
         ASSERT_EQ(RET_SUCCESS, ret);
     }
-    std::cout<<"Performance of GrantUserGrantedPermission interface is::"<<timeAll / 10000 <<"ms"<<std::endl;
-    ASSERT_LT(timeAll / 10000, 5);
+    std::cout<<"Performance of GrantUserGrantedPermission interface is::"<<timeAll / RUNNING_TIMES <<"ms"<<std::endl;
+    ASSERT_LT(timeAll / RUNNING_TIMES, 5);
 }
 
 /**
@@ -411,7 +420,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserG
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantSystemGrantedPer_011, TestSize.Level3)
+HWTEST_F(PermissionKitPerformanceTest, Security_AppSecurity_PermissionManager_L2_GrantSystemGrantedPer_011, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -420,7 +429,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantSyste
     ret = PermissionKit::AddSystemGrantedReqPermissions(TEST_BUNDLE_NAME, permList);
     ASSERT_EQ(RET_SUCCESS, ret);
     long timeAll = 0;
-    for (int i = 0; i < 10000; i++){
+    for (int i = 0; i < RUNNING_TIMES; i++){
         long startTime = GetCurrentTimeMillis();
         ret = PermissionKit::GrantSystemGrantedPermission(TEST_BUNDLE_NAME, TEST_PERMISSION_NAME_BETA);
         ASSERT_EQ(RET_SUCCESS, ret);
@@ -429,8 +438,8 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantSyste
         ret = PermissionKit::RevokeSystemGrantedPermission(TEST_BUNDLE_NAME, TEST_PERMISSION_NAME_BETA);
         ASSERT_EQ(RET_SUCCESS, ret);
     }
-    std::cout<<"Performance of GrantSystemGrantedPermission interface is::"<<timeAll / 10000 <<"ms"<<std::endl;
-    ASSERT_LT(timeAll / 10000, 5);
+    std::cout<<"Performance of GrantSystemGrantedPermission interface is::"<<timeAll / RUNNING_TIMES <<"ms"<<std::endl;
+    ASSERT_LT(timeAll / RUNNING_TIMES, 5);
 }
 
 /**
@@ -443,7 +452,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantSyste
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_015, TestSize.Level3)
+HWTEST_F(PermissionKitPerformanceTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_015, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -452,7 +461,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUser
     ret = PermissionKit::AddUserGrantedReqPermissions(TEST_BUNDLE_NAME, permList, TEST_USER_ID);
     ASSERT_EQ(RET_SUCCESS, ret);
     long timeAll = 0;
-    for (int i = 0; i < 10000; i++){
+    for (int i = 0; i < RUNNING_TIMES; i++){
         ret = PermissionKit::GrantUserGrantedPermission(TEST_BUNDLE_NAME, TEST_PERMISSION_NAME_ALPHA, TEST_USER_ID);
         ASSERT_EQ(RET_SUCCESS, ret);
         long startTime = GetCurrentTimeMillis();
@@ -461,8 +470,8 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUser
         long timeCost = GetCurrentTimeMillis() - startTime;
         timeAll = timeAll + timeCost;
     }
-    std::cout<<"Performance of GrantUserGrantedPermission interface is::"<<timeAll / 10000 <<"ms"<<std::endl;
-    ASSERT_LT(timeAll / 10000, 5);
+    std::cout<<"Performance of GrantUserGrantedPermission interface is::"<<timeAll / RUNNING_TIMES <<"ms"<<std::endl;
+    ASSERT_LT(timeAll / RUNNING_TIMES, 5);
 }
 
 /**
@@ -475,7 +484,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUser
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_012, TestSize.Level3)
+HWTEST_F(PermissionKitPerformanceTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_012, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -484,7 +493,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSyst
     ret = PermissionKit::AddSystemGrantedReqPermissions(TEST_BUNDLE_NAME, permList);
     ASSERT_EQ(RET_SUCCESS, ret);
     long timeAll = 0;
-    for (int i = 0; i < 10000; i++){
+    for (int i = 0; i < RUNNING_TIMES; i++){
         ret = PermissionKit::GrantSystemGrantedPermission(TEST_BUNDLE_NAME, TEST_PERMISSION_NAME_BETA);
         ASSERT_EQ(RET_SUCCESS, ret);
         long startTime = GetCurrentTimeMillis();
@@ -493,8 +502,8 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSyst
         long timeCost = GetCurrentTimeMillis() - startTime;
         timeAll = timeAll + timeCost;
     }
-    std::cout<<"Performance of RevokeSystemGrantedPermission interface is::"<<timeAll / 10000 <<"ms"<<std::endl;
-    ASSERT_LT(timeAll / 10000, 5);
+    std::cout<<"Performance of RevokeSystemGrantedPermission interface is::"<<timeAll / RUNNING_TIMES <<"ms"<<std::endl;
+    ASSERT_LT(timeAll / RUNNING_TIMES, 5);
 }
 
 /**
@@ -507,7 +516,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSyst
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_017, TestSize.Level3)
+HWTEST_F(PermissionKitPerformanceTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_017, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -516,13 +525,13 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequest
     ret = PermissionKit::AddUserGrantedReqPermissions(TEST_BUNDLE_NAME, permList, TEST_USER_ID);
     ASSERT_EQ(RET_SUCCESS, ret);
     long startTime = GetCurrentTimeMillis();
-    for (int i = 0; i < 10000; i++){
+    for (int i = 0; i < RUNNING_TIMES; i++){
         bool isCanRequest = PermissionKit::CanRequestPermission(TEST_BUNDLE_NAME, TEST_PERMISSION_NAME_ALPHA, TEST_USER_ID);
         ASSERT_TRUE(isCanRequest);
     }
     long timeAll = GetCurrentTimeMillis() - startTime;
-    std::cout<<"Performance of CanRequestPermission interface is::"<<timeAll / 10000 <<"ms"<<std::endl;
-    ASSERT_LT(timeAll / 10000, 5);
+    std::cout<<"Performance of CanRequestPermission interface is::"<<timeAll / RUNNING_TIMES <<"ms"<<std::endl;
+    ASSERT_LT(timeAll / RUNNING_TIMES, 5);
 }
 
 /**
@@ -535,7 +544,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequest
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_015, TestSize.Level3)
+HWTEST_F(PermissionKitPerformanceTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_015, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -546,11 +555,11 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_
     ret = PermissionKit::GrantSystemGrantedPermission(TEST_BUNDLE_NAME, TEST_PERMISSION_NAME_BETA);
     ASSERT_EQ(RET_SUCCESS, ret);
     long startTime = GetCurrentTimeMillis();
-    for (int i = 0; i < 10000; i++){
+    for (int i = 0; i < RUNNING_TIMES; i++){
         ret = PermissionKit::VerifyPermission(TEST_BUNDLE_NAME, TEST_PERMISSION_NAME_BETA, TEST_USER_ID);
         ASSERT_EQ(PERMISSION_GRANTED, ret);
     }
     long timeAll = GetCurrentTimeMillis() - startTime;
-    std::cout<<"Performance of VerifyPermission interface is::"<<timeAll / 10000 <<"ms"<<std::endl;
-    ASSERT_LT(timeAll / 10000, 5);
+    std::cout<<"Performance of VerifyPermission interface is::"<<timeAll / RUNNING_TIMES <<"ms"<<std::endl;
+    ASSERT_LT(timeAll / RUNNING_TIMES, 5);
 }

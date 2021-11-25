@@ -24,7 +24,15 @@ static vector<PermissionDef> permDefNormal;
 static vector<PermissionDef> permDefAbnormal1;
 static vector<PermissionDef> permDefAbnormal2;
 
-void PermissionKitTest::SetUpTestCase()
+class PermissionKitFunctionTest : public testing::Test {
+public:
+    static void SetUpTestCase();
+    static void TearDownTestCase();
+    void SetUp();
+    void TearDown();
+};
+
+void PermissionKitFunctionTest::SetUpTestCase()
 {
     vector<PermissionDef> permDefList1;
     vector<PermissionDef> permDefList2;
@@ -80,10 +88,10 @@ void PermissionKitTest::SetUpTestCase()
     permDefAbnormal2 = permDefList3;
 }
 
-void PermissionKitTest::TearDownTestCase()
+void PermissionKitFunctionTest::TearDownTestCase()
 {}
 
-void PermissionKitTest::SetUp()
+void PermissionKitFunctionTest::SetUp()
 {
     PermissionKit::RemoveDefPermissions(TEST_BUNDLE_NAME);
     PermissionKit::RemoveDefPermissions(ABNORMAL_BUNDLE_NAME);
@@ -96,7 +104,7 @@ void PermissionKitTest::SetUp()
     PermissionKit::RevokeSystemGrantedPermission(TEST_BUNDLE_NAME, TEST_PERMISSION_NAME_BETA);
 }
 
-void PermissionKitTest::TearDown()
+void PermissionKitFunctionTest::TearDown()
 {
     PermissionKit::RemoveDefPermissions(TEST_BUNDLE_NAME);
     PermissionKit::RemoveDefPermissions(ABNORMAL_BUNDLE_NAME);
@@ -119,7 +127,7 @@ void PermissionKitTest::TearDown()
  * @tc.type       FUNC
  * @tc.level      Level0
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddDefPer_001, TestSize.Level0)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddDefPer_001, TestSize.Level0)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -141,7 +149,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddDefPer_
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddDefPer_002, TestSize.Level3)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddDefPer_002, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -162,7 +170,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddDefPer_
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddDefPer_004, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddDefPer_004, TestSize.Level4)
 {
     int ret = PermissionKit::AddDefPermissions(permDefAbnormal2);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -178,7 +186,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddDefPer_
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddDefPer_005, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddDefPer_005, TestSize.Level4)
 {
     int ret = PermissionKit::AddDefPermissions(permDefAbnormal1);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -194,7 +202,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddDefPer_
  * @tc.type       FUNC
  * @tc.level      Level0
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveDefPer_001, TestSize.Level0)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveDefPer_001, TestSize.Level0)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -221,7 +229,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveDefP
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveDefPer_002, TestSize.Level3)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveDefPer_002, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -246,7 +254,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveDefP
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveDefPer_003, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveDefPer_003, TestSize.Level4)
 {
     int ret = PermissionKit::RemoveDefPermissions(BUNDLE_NAME_NOT_EXIST);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -262,7 +270,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveDefP
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveDefPer_005, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveDefPer_005, TestSize.Level4)
 {
     int ret = PermissionKit::RemoveDefPermissions(ABNORMAL_BUNDLE_NAME);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -278,7 +286,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveDefP
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveDefPer_006, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveDefPer_006, TestSize.Level4)
 {
     int ret = PermissionKit::RemoveDefPermissions(LONG_BUNDLE_NAME);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -294,7 +302,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveDefP
  * @tc.type       FUNC
  * @tc.level      Level0
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GetDefPer_001, TestSize.Level0)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_GetDefPer_001, TestSize.Level0)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -316,7 +324,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GetDefPer_
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GetDefPer_002, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_GetDefPer_002, TestSize.Level4)
 {
     PermissionDef permissionDefResultAlpha;
     int ret = PermissionKit::GetDefPermission(PERMISSION_NAME_NOT_EXIST, permissionDefResultAlpha);
@@ -333,7 +341,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GetDefPer_
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GetDefPer_004, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_GetDefPer_004, TestSize.Level4)
 {
     PermissionDef permissionDefResultAlpha;
     int ret = PermissionKit::GetDefPermission(ABNORMAL_BUNDLE_NAME, permissionDefResultAlpha);
@@ -350,7 +358,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GetDefPer_
  * @tc.type       FUNC
  * @tc.level      Level0
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_001, TestSize.Level0)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_001, TestSize.Level0)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -374,7 +382,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGra
  * @tc.type       FUNC
  * @tc.level      Level1
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_002, TestSize.Level1)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_002, TestSize.Level1)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -398,7 +406,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGra
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_004, TestSize.Level3)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_004, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -422,7 +430,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGra
  * @tc.type       FUNC
  * @tc.level      Level1
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_005, TestSize.Level1)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_005, TestSize.Level1)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -444,7 +452,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGra
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_006, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_006, TestSize.Level4)
 {
     vector<string> permList;
     permList.push_back(TEST_PERMISSION_NAME_ALPHA);
@@ -466,7 +474,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGra
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_007, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_007, TestSize.Level4)
 {
     vector<string> permList;
     permList.push_back(TEST_PERMISSION_NAME_ALPHA);
@@ -484,7 +492,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGra
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_008, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_008, TestSize.Level4)
 {
     vector<string> permList;
     int ret = PermissionKit::AddUserGrantedReqPermissions(TEST_BUNDLE_NAME, permList, TEST_USER_ID);
@@ -501,7 +509,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGra
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_010, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_010, TestSize.Level4)
 {
     vector<string> permList;
     permList.push_back(TEST_PERMISSION_NAME_ALPHA);
@@ -519,7 +527,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGra
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_011, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddUserGrantedPer_011, TestSize.Level4)
 {
     vector<string> permList;
     permList.push_back(TEST_PERMISSION_NAME_ALPHA);
@@ -537,7 +545,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddUserGra
  * @tc.type       FUNC
  * @tc.level      Level0
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddSystemGrantedPer_001, TestSize.Level0)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddSystemGrantedPer_001, TestSize.Level0)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -561,7 +569,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddSystemG
  * @tc.type       FUNC
  * @tc.level      Level1
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddSystemGrantedPer_003, TestSize.Level1)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddSystemGrantedPer_003, TestSize.Level1)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -585,7 +593,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddSystemG
  * @tc.type       FUNC
  * @tc.level      Level1
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddSystemGrantedPer_004, TestSize.Level1)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddSystemGrantedPer_004, TestSize.Level1)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -611,7 +619,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddSystemG
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddSystemGrantedPer_005, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddSystemGrantedPer_005, TestSize.Level4)
 {
     vector<string> permList;
     permList.push_back(TEST_PERMISSION_NAME_BETA);
@@ -629,7 +637,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddSystemG
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddSystemGrantedPer_006, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddSystemGrantedPer_006, TestSize.Level4)
 {
     vector<string> permList;
     int ret = PermissionKit::AddSystemGrantedReqPermissions(TEST_BUNDLE_NAME, permList);
@@ -646,7 +654,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddSystemG
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddSystemGrantedPer_007, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddSystemGrantedPer_007, TestSize.Level4)
 {
     vector<string> permList;
     permList.push_back(TEST_PERMISSION_NAME_BETA);
@@ -664,7 +672,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddSystemG
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddSystemGrantedPer_008, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_AddSystemGrantedPer_008, TestSize.Level4)
 {
     vector<string> permList;
     permList.push_back(TEST_PERMISSION_NAME_BETA);
@@ -682,7 +690,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_AddSystemG
  * @tc.type       FUNC
  * @tc.level      Level0
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUserGrantedPer_001, TestSize.Level0)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveUserGrantedPer_001, TestSize.Level0)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -718,7 +726,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUser
  * @tc.type       FUNC
  * @tc.level      Level1
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUserGrantedPer_002, TestSize.Level1)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveUserGrantedPer_002, TestSize.Level1)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -754,7 +762,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUser
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUserGrantedPer_003, TestSize.Level3)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveUserGrantedPer_003, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -784,7 +792,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUser
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUserGrantedPer_004, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveUserGrantedPer_004, TestSize.Level4)
 {
     int ret = PermissionKit::RemoveUserGrantedReqPermissions(BUNDLE_NAME_NOT_EXIST, TEST_USER_ID);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -800,7 +808,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUser
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUserGrantedPer_005, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveUserGrantedPer_005, TestSize.Level4)
 {
     int ret = PermissionKit::RemoveUserGrantedReqPermissions(TEST_BUNDLE_NAME, USER_ID_NOT_EXIST);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -816,7 +824,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUser
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUserGrantedPer_006, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveUserGrantedPer_006, TestSize.Level4)
 {
     int ret = PermissionKit::RemoveUserGrantedReqPermissions("", TEST_USER_ID);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -832,7 +840,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUser
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUserGrantedPer_008, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveUserGrantedPer_008, TestSize.Level4)
 {
     int ret = PermissionKit::RemoveUserGrantedReqPermissions(ABNORMAL_BUNDLE_NAME, TEST_USER_ID);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -848,7 +856,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUser
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUserGrantedPer_009, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveUserGrantedPer_009, TestSize.Level4)
 {
     int ret = PermissionKit::RemoveUserGrantedReqPermissions(LONG_BUNDLE_NAME, TEST_USER_ID);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -864,7 +872,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveUser
  * @tc.type       FUNC
  * @tc.level      Level0
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveSystemGrantedPer_001, TestSize.Level0)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveSystemGrantedPer_001, TestSize.Level0)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -892,7 +900,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveSyst
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveSystemGrantedPer_002, TestSize.Level3)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveSystemGrantedPer_002, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -920,7 +928,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveSyst
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveSystemGrantedPer_003, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveSystemGrantedPer_003, TestSize.Level4)
 {
     int ret = PermissionKit::RemoveSystemGrantedReqPermissions(BUNDLE_NAME_NOT_EXIST);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -936,7 +944,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveSyst
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveSystemGrantedPer_004, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveSystemGrantedPer_004, TestSize.Level4)
 {
     int ret = PermissionKit::RemoveSystemGrantedReqPermissions("");
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -952,7 +960,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveSyst
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveSystemGrantedPer_005, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveSystemGrantedPer_005, TestSize.Level4)
 {
     int ret = PermissionKit::RemoveSystemGrantedReqPermissions(ABNORMAL_BUNDLE_NAME);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -968,7 +976,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveSyst
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveSystemGrantedPer_006, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RemoveSystemGrantedPer_006, TestSize.Level4)
 {
     int ret = PermissionKit::RemoveSystemGrantedReqPermissions(LONG_BUNDLE_NAME);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -984,7 +992,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RemoveSyst
  * @tc.type       FUNC
  * @tc.level      Level0
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_001, TestSize.Level0)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_001, TestSize.Level0)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1008,7 +1016,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserG
  * @tc.type       FUNC
  * @tc.level      Level1
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_002, TestSize.Level1)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_002, TestSize.Level1)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1032,7 +1040,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserG
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_005, TestSize.Level3)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_005, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1060,7 +1068,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserG
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_006, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_006, TestSize.Level4)
 {
     int ret = PermissionKit::GrantUserGrantedPermission(TEST_BUNDLE_NAME, TEST_PERMISSION_NAME_ALPHA, TEST_INVALID_USER_ID);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1078,7 +1086,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserG
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_007, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_007, TestSize.Level4)
 {
     int ret = PermissionKit::GrantUserGrantedPermission("", TEST_PERMISSION_NAME_ALPHA, TEST_USER_ID);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1094,7 +1102,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserG
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_008, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_008, TestSize.Level4)
 {
     int ret = PermissionKit::GrantUserGrantedPermission(TEST_BUNDLE_NAME, "", TEST_USER_ID);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1110,7 +1118,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserG
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_010, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_010, TestSize.Level4)
 {
     int ret = PermissionKit::GrantUserGrantedPermission(ABNORMAL_BUNDLE_NAME, TEST_PERMISSION_NAME_ALPHA, TEST_SUB_USER_ID);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1126,7 +1134,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserG
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_011, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_011, TestSize.Level4)
 {
     int ret = PermissionKit::GrantUserGrantedPermission(LONG_BUNDLE_NAME, TEST_PERMISSION_NAME_ALPHA, TEST_SUB_USER_ID);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1142,7 +1150,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserG
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_012, TestSize.Level3)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_GrantUserGrantedPer_012, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1166,7 +1174,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantUserG
  * @tc.type       FUNC
  * @tc.level      Level0
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantSystemGrantedPer_001, TestSize.Level0)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_GrantSystemGrantedPer_001, TestSize.Level0)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1190,7 +1198,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantSyste
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantSystemGrantedPer_004, TestSize.Level3)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_GrantSystemGrantedPer_004, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1216,7 +1224,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantSyste
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantSystemGrantedPer_005, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_GrantSystemGrantedPer_005, TestSize.Level4)
 {
     int ret = PermissionKit::GrantSystemGrantedPermission("", TEST_PERMISSION_NAME_BETA);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1232,7 +1240,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantSyste
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantSystemGrantedPer_006, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_GrantSystemGrantedPer_006, TestSize.Level4)
 {
     int ret = PermissionKit::GrantSystemGrantedPermission(TEST_BUNDLE_NAME, "");
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1248,7 +1256,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantSyste
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantSystemGrantedPer_007, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_GrantSystemGrantedPer_007, TestSize.Level4)
 {
     int ret = PermissionKit::GrantSystemGrantedPermission(ABNORMAL_BUNDLE_NAME, TEST_PERMISSION_NAME_BETA);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1264,7 +1272,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantSyste
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantSystemGrantedPer_008, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_GrantSystemGrantedPer_008, TestSize.Level4)
 {
     int ret = PermissionKit::GrantSystemGrantedPermission(LONG_BUNDLE_NAME, TEST_PERMISSION_NAME_BETA);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1280,7 +1288,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_GrantSyste
  * @tc.type       FUNC
  * @tc.level      Level0
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_001, TestSize.Level0)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_001, TestSize.Level0)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1316,7 +1324,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUser
  * @tc.type       FUNC
  * @tc.level      Level0
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_002, TestSize.Level0)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_002, TestSize.Level0)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1352,7 +1360,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUser
  * @tc.type       FUNC
  * @tc.level      Level1
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_003, TestSize.Level1)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_003, TestSize.Level1)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1380,7 +1388,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUser
  * @tc.type       FUNC
  * @tc.level      Level3
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_004, TestSize.Level3)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_004, TestSize.Level3)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1412,7 +1420,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUser
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_005, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_005, TestSize.Level4)
 {
     int ret = PermissionKit::RevokeUserGrantedPermission(BUNDLE_NAME_NOT_EXIST, TEST_PERMISSION_NAME_ALPHA, TEST_USER_ID);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1428,7 +1436,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUser
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_006, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_006, TestSize.Level4)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1446,7 +1454,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUser
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_007, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_007, TestSize.Level4)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1464,7 +1472,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUser
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_008, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_008, TestSize.Level4)
 {
     int ret = PermissionKit::RevokeUserGrantedPermission("", TEST_PERMISSION_NAME_ALPHA, TEST_USER_ID);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1480,7 +1488,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUser
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_009, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_009, TestSize.Level4)
 {
     int ret = PermissionKit::RevokeUserGrantedPermission(TEST_BUNDLE_NAME, "", TEST_USER_ID);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1496,7 +1504,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUser
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_011, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_011, TestSize.Level4)
 {
     int ret = PermissionKit::RevokeUserGrantedPermission(ABNORMAL_BUNDLE_NAME, TEST_PERMISSION_NAME_ALPHA, TEST_USER_ID);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1512,7 +1520,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUser
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_012, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeUserGrantedPer_012, TestSize.Level4)
 {
     int ret = PermissionKit::RevokeUserGrantedPermission(LONG_BUNDLE_NAME, TEST_PERMISSION_NAME_ALPHA, TEST_USER_ID);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1528,7 +1536,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeUser
  * @tc.type       FUNC
  * @tc.level      Level0
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_001, TestSize.Level0)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_001, TestSize.Level0)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1556,7 +1564,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSyst
  * @tc.type       FUNC
  * @tc.level      Level0
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_002, TestSize.Level0)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_002, TestSize.Level0)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1584,7 +1592,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSyst
  * @tc.type       FUNC
  * @tc.level      Level0
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_003, TestSize.Level0)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_003, TestSize.Level0)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1616,7 +1624,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSyst
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_004, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_004, TestSize.Level4)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1634,7 +1642,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSyst
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_005, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_005, TestSize.Level4)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1652,7 +1660,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSyst
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_006, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_006, TestSize.Level4)
 {
     int ret = PermissionKit::RevokeSystemGrantedPermission("", TEST_PERMISSION_NAME_BETA);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1668,7 +1676,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSyst
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_007, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_007, TestSize.Level4)
 {
     int ret = PermissionKit::RevokeSystemGrantedPermission(TEST_BUNDLE_NAME, "");
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1684,7 +1692,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSyst
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_008, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_008, TestSize.Level4)
 {
     int ret = PermissionKit::RevokeSystemGrantedPermission(ABNORMAL_BUNDLE_NAME, TEST_PERMISSION_NAME_BETA);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1700,7 +1708,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSyst
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_009, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_RevokeSystemGrantedPer_009, TestSize.Level4)
 {
     int ret = PermissionKit::RevokeSystemGrantedPermission(LONG_BUNDLE_NAME, TEST_PERMISSION_NAME_BETA);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1716,7 +1724,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_RevokeSyst
  * @tc.type       FUNC
  * @tc.level      Level0
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_001, TestSize.Level0)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_001, TestSize.Level0)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1738,7 +1746,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequest
  * @tc.type       FUNC
  * @tc.level      Level0
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_002, TestSize.Level0)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_002, TestSize.Level0)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1760,7 +1768,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequest
  * @tc.type       FUNC
  * @tc.level      Level0
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_003, TestSize.Level0)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_003, TestSize.Level0)
 {
     int ret = PermissionKit::RemoveDefPermissions(TEST_BUNDLE_NAME);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1788,7 +1796,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequest
  * @tc.type       FUNC
  * @tc.level      Level1
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_004, TestSize.Level1)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_004, TestSize.Level1)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1818,7 +1826,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequest
  * @tc.type       FUNC
  * @tc.level      Level1
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_005, TestSize.Level1)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_005, TestSize.Level1)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1850,7 +1858,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequest
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_009, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_009, TestSize.Level4)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1870,7 +1878,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequest
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_008, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_008, TestSize.Level4)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1892,7 +1900,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequest
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_010, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_010, TestSize.Level4)
 {
     bool isCanRequest = PermissionKit::CanRequestPermission("", TEST_PERMISSION_NAME_BETA, TEST_USER_ID);
     ASSERT_FALSE(isCanRequest);
@@ -1908,7 +1916,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequest
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_011, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_011, TestSize.Level4)
 {
     bool isCanRequest = PermissionKit::CanRequestPermission(TEST_BUNDLE_NAME, "", TEST_USER_ID);
     ASSERT_FALSE(isCanRequest);
@@ -1924,7 +1932,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequest
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_013, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_013, TestSize.Level4)
 {
     bool isCanRequest = PermissionKit::CanRequestPermission(ABNORMAL_BUNDLE_NAME, TEST_PERMISSION_NAME_BETA, TEST_USER_ID);
     ASSERT_FALSE(isCanRequest);
@@ -1940,7 +1948,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequest
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_014, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_CanRequestPer_014, TestSize.Level4)
 {
     bool isCanRequest = PermissionKit::CanRequestPermission(LONG_BUNDLE_NAME, TEST_PERMISSION_NAME_BETA, TEST_USER_ID);
     ASSERT_FALSE(isCanRequest);
@@ -1956,7 +1964,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_CanRequest
  * @tc.type       FUNC
  * @tc.level      Level0
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_001, TestSize.Level0)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_001, TestSize.Level0)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -1982,7 +1990,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_
  * @tc.type       FUNC
  * @tc.level      Level1
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_002, TestSize.Level1)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_002, TestSize.Level1)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -2010,7 +2018,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_
  * @tc.type       FUNC
  * @tc.level      Level1
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_003, TestSize.Level1)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_003, TestSize.Level1)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -2038,7 +2046,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_
  * @tc.type       FUNC
  * @tc.level      Level1
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_004, TestSize.Level1)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_004, TestSize.Level1)
 {
     int ret = PermissionKit::AddDefPermissions(permDefNormal);
     ASSERT_EQ(RET_SUCCESS, ret);
@@ -2070,7 +2078,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_005, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_005, TestSize.Level4)
 {
     int ret = PermissionKit::VerifyPermission(BUNDLE_NAME_NOT_EXIST, TEST_PERMISSION_NAME_ALPHA, TEST_USER_ID);
     ASSERT_EQ(PERMISSION_NOT_GRANTED, ret);
@@ -2086,7 +2094,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_006, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_006, TestSize.Level4)
 {
     int ret = PermissionKit::VerifyPermission(TEST_BUNDLE_NAME, PERMISSION_NAME_NOT_EXIST, TEST_USER_ID);
     ASSERT_EQ(PERMISSION_NOT_GRANTED, ret);
@@ -2102,7 +2110,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_007, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_007, TestSize.Level4)
 {
     int ret = PermissionKit::VerifyPermission(TEST_BUNDLE_NAME, TEST_PERMISSION_NAME_ALPHA, USER_ID_NOT_EXIST);
     ASSERT_EQ(PERMISSION_NOT_GRANTED, ret);
@@ -2118,7 +2126,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_008, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_008, TestSize.Level4)
 {
     int ret = PermissionKit::VerifyPermission("", TEST_PERMISSION_NAME_ALPHA, TEST_USER_ID);
     ASSERT_EQ(PERMISSION_NOT_GRANTED, ret);
@@ -2134,7 +2142,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_009, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_009, TestSize.Level4)
 {
     int ret = PermissionKit::VerifyPermission(TEST_BUNDLE_NAME, "", TEST_USER_ID);
     ASSERT_EQ(PERMISSION_NOT_GRANTED, ret);
@@ -2150,7 +2158,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_011, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_011, TestSize.Level4)
 {
     int ret = PermissionKit::VerifyPermission(ABNORMAL_BUNDLE_NAME, TEST_PERMISSION_NAME_ALPHA, TEST_USER_ID);
     ASSERT_EQ(PERMISSION_NOT_GRANTED, ret);
@@ -2166,7 +2174,7 @@ HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_
  * @tc.type       FUNC
  * @tc.level      Level4
  */
-HWTEST_F(PermissionKitTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_012, TestSize.Level4)
+HWTEST_F(PermissionKitFunctionTest, Security_AppSecurity_PermissionManager_L2_VerifyPer_012, TestSize.Level4)
 {
     int ret = PermissionKit::VerifyPermission(LONG_BUNDLE_NAME, TEST_PERMISSION_NAME_ALPHA, TEST_USER_ID);
     ASSERT_EQ(PERMISSION_NOT_GRANTED, ret);
