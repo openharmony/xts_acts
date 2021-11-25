@@ -17,11 +17,6 @@ import fileio from '@ohos.fileio';
 
 export const FILE_CONTENT = 'hello world';
 
-import {
-  expect
-}
-from 'deccjsunit/index'
-
 export function prepareFile(fpath, content) {
   try {
     let fd = fileio.openSync(fpath, 0o102, 0o666)
@@ -31,20 +26,6 @@ export function prepareFile(fpath, content) {
     fileio.closeSync(fd)
     return true
   } 
-  catch (e) {
-    console.log('Failed to prepareFile for ' + e)
-    return false
-  }
-}
-export function prepareFile1(fpath, content) {
-  try {
-    let fd = fileio.openSync(fpath, 0o102, 0o777)
-    fileio.ftruncateSync(fd)
-    fileio.writeSync(fd, content)
-    fileio.fsyncSync(fd)
-    fileio.closeSync(fd)
-    return true
-  }
   catch (e) {
     console.log('Failed to prepareFile for ' + e)
     return false
@@ -87,74 +68,19 @@ export function fileToWriteOnly(fpath) {
     return false
   }
 }
-export function fileToReadAndWrite(fpath) {
-  try {
-    let fd = fileio.openSync(fpath, 0o1)
-    fileio.fchmodSync(fd, 0o777)
-    fileio.fsyncSync(fd)
-    fileio.closeSync(fd)
-    return true
-  }
-  catch (e) {
-    console.log('Failed to fileToReadAndWrite ' + e);
-    return false
-  }
-}
-export function appName(testName) {
-  const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.stroage.fileio/'
-  return BASE_PATH + testName + '_' + randomString(testName.length);
-}
 export function nextFileName(testName) {
-  const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.stroage.fileio/cache/'
+  const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.storage.fileio/cache/'
   return BASE_PATH + testName + '_' + randomString(testName.length);
 }
 export function fileName(testName) {
-  const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.stroage.fileio/files/'
+  const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.storage.fileio/files/'
   return BASE_PATH + testName + '_' + randomString(testName.length);
 }
 export function cacheFileName(testName) {
-  const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.stroage.fileio/files/cache/'
-  return BASE_PATH + testName + '_' + randomString(testName.length);
-}
-export function differentFileName(testName) {
-  const BASE_PATH = '/data/accounts/account_0/ohos.acts.distributeddatamgr.distributedfile/'
-  return BASE_PATH + testName + '_' + randomString(testName.length);
-}
-export function differentCacheName(testName) {
-  const BASE_PATH = '/data/accounts/account_0/ohos.acts.distributeddatamgr.distributedfile/cache/'
+  const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.storage.fileio/files/cache/'
   return BASE_PATH + testName + '_' + randomString(testName.length);
 }
 
-export function getFileTextLen(fpath) {
-  let ss
-  try {
-    ss = fileio.Stream.createStreamSync(fpath, 'r+')
-    expect(ss !== null).assertTrue()
-    let len = ss.readSync(new ArrayBuffer(4096))
-    console.log('file:' + fpath)
-    console.log('file lenth:' + len)
-    expect(ss.closeSync() !== null).assertTrue()
-    return len
-  }
-  catch (e) {
-    console.log('Failed to getFileTextLen ' + e)
-    expect(ss.closeSync() !== null).assertTrue()
-    return null
-  }
-}
-export function isFileExist(fpath) {
-  try {
-    expect(fileio.accessSync(fpath) !== null).assertTrue()
-    console.log('file:' + fpath)
-    console.log('status:exist')
-    return true
-  }
-  catch (e) {
-    console.log('file:' + fpath)
-    console.log('status:non-existen')
-    return false
-  }
-}
 export function sleep(n) {
   var start = new Date().getTime();
   while (true) {
