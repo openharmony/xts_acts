@@ -110,8 +110,8 @@ describe('storageTest', function () {
         }
         try {
             perf.putSync("int", 3);
-            expect(null).assertFail();
         } catch (e) {
+            expect(null).assertFail();
         }
     })
 
