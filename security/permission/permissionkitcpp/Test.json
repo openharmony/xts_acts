@@ -2,9 +2,7 @@
     "kits": [
         {
             "push": [
-                "PermissionKitFunctionCPPTest->/data/local/tmp/PermissionKitFunctionCPPTest",
-                "PermissionKitPerformanceCPPTest->/data/local/tmp/PermissionKitPerformanceCPPTest",
-                "PermissionKitReliabilityCPPTest->/data/local/tmp/PermissionKitReliabilityCPPTest"
+                "PermissionKitCPPTest->/data/local/tmp/PermissionKitCPPTest"
             ],
             "type": "PushKit",
             "post-push": [
