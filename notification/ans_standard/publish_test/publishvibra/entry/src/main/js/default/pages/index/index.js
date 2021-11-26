@@ -1,3 +1,4 @@
+
 /*
 * Copyright (c) 2021 Huawei Device Co., Ltd.
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,23 +33,13 @@ export default {
             'id': 'extend'
         })
         const reportExtend = new ReportExtend(file)
-        //        const instrumentLog = new InstrumentLog({
-        //            'id': 'report'
-        //        })
         core.addService('expect', expectExtend)
         core.addService('report', reportExtend)
-        //        core.addService('report', instrumentLog)
         core.init()
-        //        core.subscribeEvent('spec', instrumentLog)
-        //        core.subscribeEvent('suite', instrumentLog)
-        //        core.subscribeEvent('task', instrumentLog)
-
         const configService = core.getDefaultService('config')
         configService.setConfig(this)
 
         require('../../../test/List.test')
         core.execute()
-    },
-    onReady() {
-    },
+    }
 }

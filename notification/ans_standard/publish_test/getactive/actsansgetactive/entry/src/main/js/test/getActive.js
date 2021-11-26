@@ -1005,6 +1005,7 @@ describe('ActsAnsActiveTest', function () {
         console.debug("===========Ans_GetAllActive_0900 getAllCallbackNine err.code============>"+err.code);
         expect(err.code).assertEqual(ERR_ANS_NON_SYSTEM_APP);
     }
+
     /*
     * @tc.number: Ans_GetAllActive_0900
     * @tc.name: getAllActiveNotifications(callback: AsyncCallback<Array<NotificationRequest>>): void;
