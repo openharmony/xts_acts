@@ -1,0 +1,93 @@
+# Copyright (C) 2021 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//test/xts/acts/security_lite/deviceauth_basic_deps/deviceauth.gni")
+import("//test/xts/tools/lite/build/suite_lite.gni")
+
+hctest_suite("ActsSecurityHichainBasicDeps") {
+  suite_name = "acts"
+
+  sources = [ "test.c" ]
+
+  sources += DEVICEAUTH_BASIC_DEPS_SOURCE
+
+  include_dirs = [
+    "//utils/native/base/include",
+    "//utils/native/lite/include",
+    "//test/xts/tools/lite/hctest/include",
+    "//third_party/unity/src",
+    "//foundation/distributedschedule/samgr_lite/interfaces/kits/samgr",
+  ]
+
+  include_dirs += DEVICEAUTH_BASIC_DEPS_INC
+
+  deps = []
+
+  cflags = [ "-Werror" ]
+
+  ldflags = [
+    "-lstdc++",
+    "-lm",
+    "-lpthread",
+  ]
+
+  defines = [
+    "MKDIR_IMPLEMENTED=0",
+    "STAT_IMPLEMENTED=0",
+    "ACCESS_IMPLEMENTED=0",
+    "F_API_IMPLEMENTED=0",
+    "FLASH_START_ADDRESS_HICHAIN=0",
+    "UTILS_FILE_IMPLEMENTED=1",
+    "TEST_PTHREAD_CREATE_DETACHED=0",
+    "TEST_HC_FILE_OPEN_SERIES=1",
+  ]
+
+  if (defined(ohos_lite)) {
+    if (ohos_kernel_type == "liteos_m") {
+      # liteos m
+      include_dirs += [ "//base/startup/syspara_lite/interfaces/kits" ]
+      deps +=
+          [ "//base/startup/syspara_lite/frameworks/parameter/src:sysparam" ]
+      if (board_name == "rtl8720") {
+        cflags +=
+            [ "-isystem${ohos_root_path}/kernel/liteos_m/kal/posix/include" ]
+        defines -= [
+          "FLASH_START_ADDRESS_HICHAIN=0",
+          "TEST_HC_FILE_OPEN_SERIES=1",
+        ]
+        defines += [
+          "FLASH_START_ADDRESS_HICHAIN=0x1F6000",
+          "TEST_HC_FILE_OPEN_SERIES=0",
+        ]
+      }
+      if (board_name == "hispark_pegasus") {
+        # 3861
+      }
+    } else {
+      #liteos a or L1 linux
+      include_dirs += [ "//base/startup/syspara_lite/interfaces/kits" ]
+      deps +=
+          [ "//base/startup/syspara_lite/frameworks/parameter/src:sysparam" ]
+    }
+  } else {
+    # linux
+    include_dirs += [
+      "//base/startup/syspara_lite/interfaces/innerkits/native/syspara/include",
+
+      "//base/security/deviceauth/deps_adapter/os_adapter/interfaces/linux",
+    ]
+    deps += [
+      "//base/startup/syspara_lite/interfaces/innerkits/native/syspara:syspara",
+    ]
+  }
+}

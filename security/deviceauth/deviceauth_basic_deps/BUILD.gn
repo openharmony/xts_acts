@@ -1,0 +1,88 @@
+# Copyright (C) 2021 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//test/xts/acts/security_lite/deviceauth_basic_deps/deviceauth.gni")
+import("//test/xts/tools/build/suite.gni")
+
+config("module_private_config") {
+  visibility = [ ":*" ]
+  include_dirs = [
+    "//utils/native/base/include",
+    "//third_party/bounds_checking_function/include",
+  ]
+}
+
+DEVICEAUTH_BASIC_DEPS_CPP_DIR =
+    "//test/xts/acts/security/deviceauth/deviceauth_basic_deps"
+
+DEVICEAUTH_BASIC_DEPS_CPP_SOURCE = [
+  "${DEVICEAUTH_BASIC_DEPS_CPP_DIR}/print_log.cpp",
+  "${DEVICEAUTH_BASIC_DEPS_CPP_DIR}/test_timer.cpp",
+  "${DEVICEAUTH_BASIC_DEPS_CPP_DIR}/hc_file_test.cpp",
+  "${DEVICEAUTH_BASIC_DEPS_CPP_DIR}/hc_mutex_test.cpp",
+  "${DEVICEAUTH_BASIC_DEPS_CPP_DIR}/hc_file_f_test.cpp",
+  "${DEVICEAUTH_BASIC_DEPS_CPP_DIR}/hc_thread_test.cpp",
+  "${DEVICEAUTH_BASIC_DEPS_CPP_DIR}/hc_dev_info_test.cpp",
+  "${DEVICEAUTH_BASIC_DEPS_CPP_DIR}/hc_condition_test.cpp",
+  "${DEVICEAUTH_BASIC_DEPS_CPP_DIR}/hc_file_utils_test.cpp",
+  "${DEVICEAUTH_BASIC_DEPS_CPP_DIR}/hc_file_iot_flash_test.cpp",
+  "${DEVICEAUTH_BASIC_DEPS_CPP_DIR}/hc_time_test.cpp",
+  "${DEVICEAUTH_BASIC_DEPS_CPP_DIR}/hc_file_common.cpp",
+]
+
+ohos_moduletest_suite("DeviceAuthBasicDepsTest") {
+  configs = [ ":module_private_config" ]
+
+  cflags_cc = [
+    "-DHILOG_ENABLE",
+    "-Werror",
+  ]
+
+  sources = [ "device_auth_test.cpp" ]
+
+  sources += DEVICEAUTH_BASIC_DEPS_CPP_SOURCE
+
+  include_dirs = [
+    "//third_party/googletest/googlemock/include",
+
+    # hctest.h compatible with c++
+    "//test/xts/acts/security/deviceauth/deviceauth_basic_deps",
+
+    "//utils/native/base/include",
+    "//third_party/bounds_checking_function/include",
+    "//base/security/deviceauth/deps_adapter/os_adapter/interfaces/liteos",
+    "//base/startup/syspara_lite/interfaces/kits",
+    "//test/xts/acts/security_lite/deviceauth_basic_deps",
+  ]
+
+  include_dirs += DEVICEAUTH_BASIC_DEPS_INC
+
+  deps = [
+    "//base/security/deviceauth/deps_adapter:deviceauth_hal_linux",
+    "//third_party/bounds_checking_function:libsec_static",
+    "//utils/native/base:utils",
+  ]
+
+  cflags = [ "-Werror" ]
+
+  defines = [
+    "MKDIR_IMPLEMENTED=1",
+    "STAT_IMPLEMENTED=1",
+    "ACCESS_IMPLEMENTED=1",
+    "F_API_IMPLEMENTED=1",
+    "FLASH_START_ADDRESS_HICHAIN=0",
+    "UTILS_FILE_IMPLEMENTED=0",
+    "TEST_PTHREAD_CREATE_DETACHED=1",
+    "TEST_HC_FILE_OPEN_SERIES=1",
+  ]
+}

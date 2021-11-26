@@ -1,0 +1,18 @@
+{
+    "kits": [
+        {
+            "push": [
+                "DeviceAuthBasicDepsTest->/data/local/tmp/DeviceAuthBasicDepsTest"
+            ],
+            "type": "PushKit"
+        }
+    ],
+    "driver": {
+        "native-test-timeout": "120000",
+        "type": "CppTest",
+        "module-name": "DeviceAuthBasicDepsTest",
+        "runtime-hint": "1s",
+        "native-test-device-path": "/data/local/tmp"
+    },
+    "description": "Configuration for DeviceAuthBasicDepsTest Tests"
+}
