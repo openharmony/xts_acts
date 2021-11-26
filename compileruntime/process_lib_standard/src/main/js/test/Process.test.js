@@ -2133,7 +2133,6 @@ describe('ChildProcessTest', function () {
             if(pri > 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
                 expect(flag).assertEqual(true)
             }
         }
@@ -2153,7 +2152,6 @@ describe('ChildProcessTest', function () {
             if(pri > 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
                 expect(flag).assertEqual(true)
             }
         }
@@ -2173,7 +2171,6 @@ describe('ChildProcessTest', function () {
             if(pri > 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
                 expect(flag).assertEqual(true)
             }
         }
@@ -2193,7 +2190,6 @@ describe('ChildProcessTest', function () {
             if(pri > 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
                 expect(flag).assertEqual(true)
             }
         }
@@ -2201,7 +2197,8 @@ describe('ChildProcessTest', function () {
 
     /**
      * @tc.name: testGetstartrealtime001
-     * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of the system to the start of the process.
+     * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of
+     * the system to the start of the process.
      * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
@@ -2212,7 +2209,6 @@ describe('ChildProcessTest', function () {
             if(pri > 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
             }
             expect(flag).assertEqual(true)
         }
@@ -2220,7 +2216,8 @@ describe('ChildProcessTest', function () {
 
     /**
      * @tc.name: testGetstartrealtime002
-     * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of the system to the start of the process.
+     * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of
+     * the system to the start of the process.
      * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
@@ -2229,14 +2226,14 @@ describe('ChildProcessTest', function () {
         if(pri > 0)
         {
             var flag = true
-            //            var flag = new Boolean(true)
         }
         expect(flag).assertEqual(true)
     })
 
     /**
      * @tc.name: testGetstartrealtime003
-     * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of the system to the start of the process.
+     * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of
+     * the system to the start of the process.
      * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
@@ -2247,7 +2244,6 @@ describe('ChildProcessTest', function () {
             if(pri > 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
             }
             expect(flag).assertEqual(true)
         }
@@ -2255,7 +2251,8 @@ describe('ChildProcessTest', function () {
 
     /**
      * @tc.name: testGetstartrealtime004
-     * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of the system to the start of the process.
+     * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of
+     * the system to the start of the process.
      * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
@@ -2266,7 +2263,6 @@ describe('ChildProcessTest', function () {
             if(pri > 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
             }
             expect(flag).assertEqual(true)
         }
@@ -2274,7 +2270,8 @@ describe('ChildProcessTest', function () {
 
     /**
      * @tc.name: testGetstartrealtime005
-     * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of the system to the start of the process.
+     * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of
+     * the system to the start of the process.
      * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
@@ -2285,7 +2282,6 @@ describe('ChildProcessTest', function () {
             if(pri > 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
             }
             expect(flag).assertEqual(true)
         }
@@ -2304,7 +2300,6 @@ describe('ChildProcessTest', function () {
             if(pri > 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
             }
             expect(flag).assertEqual(true)
         }
@@ -2321,7 +2316,6 @@ describe('ChildProcessTest', function () {
         if(pri > 0)
         {
             var flag = true
-            //            var flag = new Boolean(true)
         }
         expect(flag).assertEqual(true)
     })
@@ -2339,7 +2333,6 @@ describe('ChildProcessTest', function () {
             if(pri > 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
             }
             expect(flag).assertEqual(true)
         }
@@ -2358,7 +2351,6 @@ describe('ChildProcessTest', function () {
             if(pri > 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
             }
             expect(flag).assertEqual(true)
         }
@@ -2377,7 +2369,6 @@ describe('ChildProcessTest', function () {
             if(pri > 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
             }
             expect(flag).assertEqual(true)
         }
@@ -2395,7 +2386,6 @@ describe('ChildProcessTest', function () {
         if(pri > 0)
         {
             var flag = true
-            //            var flag = new Boolean(true)
         }
         expect(flag).assertEqual(true)
     })
@@ -2414,7 +2404,6 @@ describe('ChildProcessTest', function () {
             if(pri > 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
             }
             expect(flag).assertEqual(true)
         }
@@ -2434,7 +2423,6 @@ describe('ChildProcessTest', function () {
             if(pri > 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
             }
             expect(flag).assertEqual(true)
         }
@@ -2454,7 +2442,6 @@ describe('ChildProcessTest', function () {
             if(pri > 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
             }
             expect(flag).assertEqual(true)
         }
@@ -2474,7 +2461,6 @@ describe('ChildProcessTest', function () {
             if(pri > 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
             }
             expect(flag).assertEqual(true)
         }
@@ -2491,7 +2477,6 @@ describe('ChildProcessTest', function () {
         if(pri != null)
         {
             var flag = true
-            //            var flag = new Boolean(true)
         }
         expect(flag).assertEqual(true)
     })
@@ -2509,7 +2494,6 @@ describe('ChildProcessTest', function () {
             if(pri != 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
             }
             expect(flag).assertEqual(true)
         }
@@ -2528,7 +2512,6 @@ describe('ChildProcessTest', function () {
             if(pri != 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
             }
             expect(flag).assertEqual(true)
         }
@@ -2547,7 +2530,6 @@ describe('ChildProcessTest', function () {
             if(pri != 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
             }
             expect(flag).assertEqual(true)
         }
@@ -2566,7 +2548,6 @@ describe('ChildProcessTest', function () {
             if(pri != 0)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
             }
             expect(flag).assertEqual(true)
         }
@@ -2582,7 +2563,6 @@ describe('ChildProcessTest', function () {
         var pri = Process.getEnvironmentVar("USER")
         if(pri != null) {
             var flag = true
-            //            var flag = new Boolean(true)
             expect(flag).assertEqual(true)
         }
     })
@@ -2600,7 +2580,6 @@ describe('ChildProcessTest', function () {
             if(pri != null)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
                 expect(flag).assertEqual(true)
             }
         }
@@ -2619,7 +2598,6 @@ describe('ChildProcessTest', function () {
             if(pri != null)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
                 expect(flag).assertEqual(true)
             }
         }
@@ -2638,7 +2616,6 @@ describe('ChildProcessTest', function () {
             if(pri != null)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
                 expect(flag).assertEqual(true)
             }
         }
@@ -2657,7 +2634,6 @@ describe('ChildProcessTest', function () {
             if(pri != null)
             {
                 var flag = true
-                //            var flag = new Boolean(true)
                 expect(flag).assertEqual(true)
             }
         }
