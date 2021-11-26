@@ -9,7 +9,9 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsBmsAllShortcutInfoTest.hap"
+                "ActsBmsAllShortcutInfoTest.hap",
+                "bmsSystemBundleTest1.hap",
+                "bmsVendorBundleTest1.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
