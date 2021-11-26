@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.example.clearmissionscallback",
+    "bundleName": "com.ohos.launcher",
     "vendor": "example",
     "version": {
       "code": 1000013,
@@ -14,7 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.clearmissionscallback",
+    "package": "com.example.myapplication11",
     "name": ".MyApplication",
     "deviceType": [
       "phone"
@@ -28,7 +28,7 @@
     "abilities": [
       {
         "visible": true,
-        "name": "com.example.clearmissionscallback.MainAbility",
+        "name": "com.ohos.launcherSed11.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
