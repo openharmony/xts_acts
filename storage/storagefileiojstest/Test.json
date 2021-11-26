@@ -3,7 +3,7 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "60000",
-        "package": "ohos.acts.stroage.fileio",
+        "package": "ohos.acts.storage.fileio",
         "shell-timeout": "60000"
     },
     "kits": [
