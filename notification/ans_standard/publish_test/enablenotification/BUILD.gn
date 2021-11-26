@@ -17,8 +17,8 @@ group("enablenotification") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      #"enablenotification:ActsAnsEnableNotificationTest",
-      #"localnotificationenable:ActsAnsLocalNotificationTest",
+      "enablenotification:ActsAnsEnableNotificationTest",
+      "localnotificationenable:ActsAnsLocalNotificationTest",
     ]
   }
 }
