@@ -30,7 +30,6 @@ import {
   fileToReadOnly,
   fileToWriteOnly,
   sleep,
-  fileToReadAndWrite,
   nextFileName,
   randomString
 }
