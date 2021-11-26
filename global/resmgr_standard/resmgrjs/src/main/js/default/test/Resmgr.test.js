@@ -186,6 +186,8 @@ describe('resMgrTest', function () {
     it('getConfiguration_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getConfiguration((error, cfg) => {
+                cfg.direction = Direction.DIRECTION_VERTICAL;
+                cfg.locale = 'zh';
                 expect(cfg !== null).assertTrue();
             })
         })
@@ -200,6 +202,7 @@ describe('resMgrTest', function () {
     it('getConfiguration_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getConfiguration().then(cfg => {
+                cfg.direction = Direction.DIRECTION_HORIZONTAL;
                 expect(cfg !== null).assertTrue();
             })
         })
@@ -214,6 +217,12 @@ describe('resMgrTest', function () {
     it('getDeviceCapability_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getDeviceCapability((error, dc) => {
+                dc.screenDensity = ScreenDensity.SCREEN_SDPI;
+                dc.deviceType = DeviceType.DEVICE_TYPE_PHONE;
+                dc.screenDensity = ScreenDensity.SCREEN_MDPI;
+                dc.deviceType = DeviceType.DEVICE_TYPE_TABLET;
+                dc.screenDensity = ScreenDensity.SCREEN_LDPI;
+                dc.deviceType = DeviceType.DEVICE_TYPE_CAR;
                 expect(dc !== null).assertTrue();
             })
         })
@@ -228,6 +237,12 @@ describe('resMgrTest', function () {
     it('getDeviceCapability_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getDeviceCapability().then(dc => {
+                dc.screenDensity = ScreenDensity.SCREEN_XLDPI;
+                dc.deviceType = DeviceType.DEVICE_TYPE_PC;
+                dc.screenDensity = ScreenDensity.SCREEN_XXLDPI;
+                dc.deviceType = DeviceType.DEVICE_TYPE_TV;
+                dc.screenDensity = ScreenDensity.SCREEN_XXXLDPI;
+                dc.deviceType = DeviceType.DEVICE_TYPE_WEARABLE;
                 expect(dc !== null).assertTrue();
             })
         })
