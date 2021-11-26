@@ -13,8 +13,7 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-import ohos_data_rdb from '@ohos.data.rdb';
-import ability_featureAbility from '@ohos.ability.featureAbility';
+import dataRdb from '@ohos.data.rdb';
 
 const TAG = "[RDB_JSKITS_TEST]"
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT UNIQUE, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
@@ -22,13 +21,11 @@ const STORE_CONFIG = {
     name: "UpdataTest.db",
 }
 var rdbStore = undefined;
-var context = undefined;
 
 describe('rdbStoreUpdateTest', function () {
     beforeAll(async function () {
         console.info(TAG + 'beforeAll')
-        context = await ability_featureAbility.getContext();
-        rdbStore = await ohos_data_rdb.getRdbStore(context, STORE_CONFIG, 1);
+        rdbStore = await dataRdb.getRdbStore(STORE_CONFIG, 1);
         await rdbStore.executeSql(CREATE_TABLE_TEST, null);
     })
 
@@ -44,7 +41,7 @@ describe('rdbStoreUpdateTest', function () {
     afterAll(async function () {
         console.info(TAG + 'afterAll')
         rdbStore = null
-        await ohos_data_rdb.deleteRdbStore(context, "UpdataTest.db");
+        await dataRdb.deleteRdbStore("UpdataTest.db");
     })
 
     /**
@@ -81,7 +78,7 @@ describe('rdbStoreUpdateTest', function () {
                 "salary": 200.5,
                 "blobType": u8,
             }
-            let predicates = await new ohos_data_rdb.RdbPredicates("test")
+            let predicates = await new dataRdb.RdbPredicates("test")
             await predicates.equalTo("id", "1")
             let updatePromise = rdbStore.update(valueBucket, predicates)
             updatePromise.then(async (ret) => {
@@ -95,7 +92,7 @@ describe('rdbStoreUpdateTest', function () {
         }
         //查询
         {
-            let predicates = await new ohos_data_rdb.RdbPredicates("test")
+            let predicates = await new dataRdb.RdbPredicates("test")
             let resultSet = await rdbStore.query(predicates)
 
             expect(true).assertEqual(resultSet.goToFirstRow())
@@ -137,7 +134,7 @@ describe('rdbStoreUpdateTest', function () {
                 "blobType": u8,
             }
             {
-                let predicates = new ohos_data_rdb.RdbPredicates("")
+                let predicates = new dataRdb.RdbPredicates("")
                 let updatePromise = rdbStore.update(valueBucket, predicates)
                 updatePromise.then(async (ret) => {
                     await console.log(TAG + "update done: " + ret);
@@ -148,7 +145,7 @@ describe('rdbStoreUpdateTest', function () {
             }
             {
                 const emptyBucket = {};
-                let predicates = await new ohos_data_rdb.RdbPredicates("test")
+                let predicates = await new dataRdb.RdbPredicates("test")
                 let updatePromise = rdbStore.update(emptyBucket, predicates)
                 updatePromise.then(async (ret) => {
                     await console.log(TAG + "update done: " + ret);
@@ -158,7 +155,7 @@ describe('rdbStoreUpdateTest', function () {
                 })
             }
             {
-                let predicates = await new ohos_data_rdb.RdbPredicates("test")
+                let predicates = await new dataRdb.RdbPredicates("test")
                 await predicates.equalTo("aaa", "null")
                 let updatePromise = rdbStore.update(valueBucket, predicates)
                 updatePromise.then(async (ret) => {
@@ -191,7 +188,7 @@ describe('rdbStoreUpdateTest', function () {
                 "wrongColumn": 100.5,
             }
             {
-                let predicates = new ohos_data_rdb.RdbPredicates("wrongTable")
+                let predicates = new dataRdb.RdbPredicates("wrongTable")
                 let updatePromise = rdbStore.update(valueBucket, predicates)
                 updatePromise.then(async (ret) => {
                     await console.log(TAG + "update done: " + ret);
@@ -202,7 +199,7 @@ describe('rdbStoreUpdateTest', function () {
                 //await updatePromise
             }
             {
-                let predicates = await new ohos_data_rdb.RdbPredicates("test")
+                let predicates = await new dataRdb.RdbPredicates("test")
                 let updatePromise = rdbStore.update(valueBucket, predicates)
                 updatePromise.then(async (ret) => {
                     await console.log(TAG + "update done: " + ret);
@@ -234,7 +231,7 @@ describe('rdbStoreUpdateTest', function () {
                 "blobType": u8,
             }
             {
-                let predicates = await new ohos_data_rdb.RdbPredicates("test")
+                let predicates = await new dataRdb.RdbPredicates("test")
                 await predicates.equalTo("aaa", "null")
                 let updatePromise = rdbStore.update(valueBucket, predicates)
                 updatePromise.then(async (ret) => {
@@ -247,7 +244,7 @@ describe('rdbStoreUpdateTest', function () {
             }
             {
                 const emptyBucket = {};
-                let predicates = await new ohos_data_rdb.RdbPredicates("test")
+                let predicates = await new dataRdb.RdbPredicates("test")
                 await predicates.equalTo("name", "zhangsan")
                 await predicates.equalTo("age", 18)
                 await predicates.equalTo("null", 100.5)
