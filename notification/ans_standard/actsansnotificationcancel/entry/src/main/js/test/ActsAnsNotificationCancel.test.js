@@ -19,12 +19,12 @@ var timeout = 500;
 describe('ActsAnsNotificationCancel', function () {
     console.info("===========ActsAnsNotificationCancel start====================>");
     var timesOfOnConsume
-    async function onConsumeCancelAll(data) {
+    function onConsumeCancelAll(data) {
         console.info("================ANS_Cancel_0100 onConsume start=======================>");
         console.info("================ANS_Cancel_0100 onConsume data:=================>" + JSON.stringify(data));
         timesOfOnConsume = timesOfOnConsume + 1
         if (timesOfOnConsume == 2){
-            await notify.cancelAll(cancelAllCallBack);
+            notify.cancelAll(cancelAllCallBack);
             console.info("================ANS_Cancel_0100 onConsume cancelAll=======================>");
         }
         console.info("================ANS_Cancel_0100 onConsume end=======================>");
@@ -40,8 +40,6 @@ describe('ActsAnsNotificationCancel', function () {
             expect(data.request.id).assertEqual(2);
         }
         console.info("================ANS_Cancel_0100 onCancel end=======================>");
-        console.info("===========ANS_Cancel_0100 onCancel unsubscribe promise========>");
-
     }
     function cancelAllCallBack(err, data){
         console.info("========ANS_Cancel_0100 cancelAllCallBack start==============>");
@@ -124,15 +122,15 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===========ANS_Cancel_0100 subscribe promise=======>");
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("===========ANS_Cancel_0100 publish1 promise=======>");
-        await notify.publish(notificationRequest1);
+        notify.publish(notificationRequest1);
         console.info("===========ANS_Cancel_0100 publish2 promise=======>");
         setTimeout((async function(){
             console.info("======ANS_Cancel_0100 setTimeout==================>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_0100 setTimeout unsubscribe==================>");
             done();
         }),timeout);
@@ -176,7 +174,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelAllPromise,
             onCancel:onCancelCancelAllPromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("==================ANS_Cancel_0200 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -238,12 +236,12 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==========ANS_Cancel_0200 publish1 promise==================>");
-        await notify.publish(notificationRequest1);
+        notify.publish(notificationRequest1);
         console.info("==========ANS_Cancel_0200 publish2 promise==================>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_0200 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -283,12 +281,12 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelAllNoNotify,
             onCancel:onCancelCancelAllNoNotify,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===============ANS_Cancel_0300 subscribe promise===============>");
-        await　notify.cancelAll(cancelAllCallBackNoNotify);
+        notify.cancelAll(cancelAllCallBackNoNotify);
         console.info("===============ANS_Cancel_0300 cancelAll promise===============>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_0300 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -322,12 +320,12 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelAllNoNotifyPromise,
             onCancel:onCancelCancelAllNoNotifyPromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("================ANS_Cancel_0400 subscribe promise=============>");
-        await notify.cancelAll();
+        notify.cancelAll();
         console.info("================ANS_Cancel_0400 cancelAll promise=============>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_0400 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -380,7 +378,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelAll2Times,
             onCancel:onCancelCancelAll2Times,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("============ANS_Cancel_0500 subscribe promise======>");
         var notificationRequest = {
             content:{
@@ -412,10 +410,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==============ANS_Cancel_0500 publish promise end==============>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_0500 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -455,7 +453,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelAll2TimesPromise,
             onCancel:onCancelCancelAll2TimesPromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("==================ANS_Cancel_0600 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -487,10 +485,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==================ANS_Cancel_0600 publish promise==================>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_0600 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -529,7 +527,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelAllIsUnremovable,
             onCancel:onCancelCancelAllIsUnremovable,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("========ANS_Cancel_0700 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -561,10 +559,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("===========ANS_Cancel_0700 publish promise==================>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_0700 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -597,7 +595,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelAllIsUnremovablPromise,
             onCancel:onCancelCancelAllIsUnremovablePromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("==================ANS_Cancel_0800 subscribe promsie==================>");
         var notificationRequest = {
             content:{
@@ -629,10 +627,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("=========ANS_Cancel_0800 publish promise==================>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_0800 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -669,7 +667,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancel,
             onCancel:onCancelCancel,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("==================ANS_Cancel_0900 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -700,10 +698,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==================ANS_Cancel_0900 publish promise==================>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_0900 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -743,7 +741,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelWrongId,
             onCancel:onCancelCancelWrongId,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("================ANS_Cancel_1000 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -775,10 +773,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("===========ANS_Cancel_1000 publish promise==================>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_1000 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -818,7 +816,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelIsUnremovable,
             onCancel:onCancelCancelIsUnremovable,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===============ANS_Cancel_1100 subscribe promise=============>");
         var notificationRequest = {
             content:{
@@ -849,10 +847,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("============ANS_Cancel_1100 publish promise===========>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_1100 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -893,6 +891,7 @@ describe('ActsAnsNotificationCancel', function () {
     function cancelCallBackCancel2Times2(err){
         console.info("===========ANS_Cancel_1200 cancelCallBack2 start===========>");
         console.info("===========ANS_Cancel_1200 cancelCallBack2 err:============>" + JSON.stringify(err));
+        expect(err.code != 0).assertEqual(true);
         console.info("===========ANS_Cancel_1200 cancelCallBack2 end============>");
     }
 
@@ -909,7 +908,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancel2Times,
             onCancel:onCancelCancel2Times,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("=============ANS_Cancel_1200 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -940,10 +939,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("========ANS_Cancel_1200 publish promise=================>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_1200 setTimeout unsubscribe end==================>");
             done();
         }),1500);
@@ -986,7 +985,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelLabel,
             onCancel:onCancelCancelLabel,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("================ANS_Cancel_1300 subscribe promise==============>");
         var notificationRequest = {
             content:{
@@ -1018,10 +1017,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("===========ANS_Cancel_1300 publish promise==================>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_1300 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -1058,7 +1057,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelLabelPromise,
             onCancel:onCancelCancelLabelPromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("==========ANS_Cancel_1400 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1090,10 +1089,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("===============ANS_Cancel_1400 publish promise==============>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_1400 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -1135,7 +1134,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelLabelIsUnremoveable,
             onCancel:onCancelCancelLabelIsUnremoveable,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("=======ANS_Cancel_1500 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1167,10 +1166,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("===========ANS_Cancel_1500 publish promise=============>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_1500 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -1207,7 +1206,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelLabelIsUnremoveablePromise,
             onCancel:onCancelCancelLabelIsUnremoveablePromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("==============ANS_Cancel_1600 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1239,10 +1238,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==============ANS_Cancel_1600 publish promise==================>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_1600 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -1281,7 +1280,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelWrongLabel,
             onCancel:onCancelCancelWrongLabel,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("==============ANS_Cancel_1700 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1313,10 +1312,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==============ANS_Cancel_1700 publish promise==================>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_1700 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -1327,7 +1326,12 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("=========ANS_Cancel_1800 onConsume data:================>" + JSON.stringify(data));
         console.info("=========ANS_Cancel_1800 onConsume label:===============>" + data.request.label);
         console.info("=========ANS_Cancel_1800 onConsume id:==================>" + data.request.id);
-        notify.cancel(data.request.id, "9999");
+        notify.cancel(data.request.id, "9999").then(()=>{
+            console.info("=========ANS_Cancel_1800 onConsume cancel then======>");
+        }).catch((err)=>{
+            console.info("=========ANS_Cancel_1800 onConsume cancel catch err======>"+JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+        });
         console.info("=========ANS_Cancel_1800 onConsume end=======================>");
     }
     function onCancelCancelWrongLabelPromise(data) {
@@ -1349,7 +1353,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelWrongLabelPromise,
             onCancel:onCancelCancelWrongLabelPromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("==============ANS_Cancel_1800 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1381,10 +1385,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==============ANS_Cancel_1800 publish promise==================>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_1800 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -1424,7 +1428,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelLabelNullCharacter,
             onCancel:onCancelCancelLabelNullCharacter,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("=============ANS_Cancel_1900 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1456,10 +1460,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==========ANS_Cancel_1900 publish promise==============>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_1900 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -1470,7 +1474,12 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("==========ANS_Cancel_2000 onConsume data:=================>" + JSON.stringify(data));
         console.info("==========ANS_Cancel_2000 onConsume label:================>" + data.request.label);
         console.info("==========ANS_Cancel_2000 onConsume id:===================>" + data.request.id);
-        notify.cancel(data.request.id, "");
+        notify.cancel(data.request.id, "").then(()=>{
+            console.info("=========ANS_Cancel_2000 onConsume cancel then======>");
+        }).catch((err)=>{
+            console.info("=========ANS_Cancel_2000 onConsume cancel catch err======>"+JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+        });
         console.info("==========ANS_Cancel_2000 onConsume cancel end==========>");
         console.info("==========ANS_Cancel_2000 onConsume end=================>");
     }
@@ -1493,7 +1502,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelNullCharacter,
             onCancel:onCancelCancelNullCharacter,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("=========ANS_Cancel_2000 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1525,10 +1534,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("============ANS_Cancel_2000 publish promise===============>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_2000 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -1587,7 +1596,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelLabel2Times,
             onCancel:onCancelCancelLabel2Times,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("=============ANS_Cancel_2100 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1619,10 +1628,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("=============ANS_Cancel_2100 publish promise================>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_2100 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -1639,7 +1648,12 @@ describe('ActsAnsNotificationCancel', function () {
         label2200 = data.request.label
         notify.cancel(id2200, label2200);
         console.info("===========ANS_Cancel_2200 onConsume cancel1==========>");
-        notify.cancel(id2200, label2200)
+        notify.cancel(id2200, label2200).then(()=>{
+            console.info("=========ANS_Cancel_2200 onConsume cancel2 then======>");
+        }).catch((err)=>{
+            console.info("=========ANS_Cancel_2200 onConsume cancel2 catch err======>"+JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+        });
         console.info("===========ANS_Cancel_2200 onConsume cancel2==========>");
         console.info("===========ANS_Cancel_2200 onConsume end==============>");
     }
@@ -1669,7 +1683,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelLabelPromise2Times,
             onCancel:onCancelCancelLabelPromise2Times,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("================ANS_Cancel_2200 subscribe_2200_promise=============>");
         var notificationRequest = {
             content:{
@@ -1701,10 +1715,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("================ANS_Cancel_2200 publish promise==================>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_2200 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -1744,7 +1758,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelRightLabelWrongId,
             onCancel:onCancelCancelRightLabelWrongId,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("================ANS_Cancel_2300 promise==================>");
         var notificationRequest = {
             content:{
@@ -1776,10 +1790,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("============ANS_Cancel_2300 publish promise==================>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_2300 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -1790,7 +1804,12 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("============ANS_Cancel_2400 onConsume data:==============>" + JSON.stringify(data));
         console.info("============ANS_Cancel_2400 onConsume label:=============>" + data.request.label);
         console.info("============ANS_Cancel_2400 onConsume id:================>" + data.request.id);
-        notify.cancel(11111, data.request.label)
+        notify.cancel(11111, data.request.label).then(()=>{
+            console.info("=========ANS_Cancel_2400 onConsume cancel then======>");
+        }).catch((err)=>{
+            console.info("=========ANS_Cancel_2400 onConsume cancel catch err======>"+JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+        });
         console.info("============ANS_Cancel_2400 onConsume cancel==========>");
         console.info("============ANS_Cancel_2400 onConsume end=============>");
     }
@@ -1813,7 +1832,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelRightLabelWrongIdPromise,
             onCancel:onCancelCancelRightLabelWrongIdPromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("============ANS_Cancel_2400 subscribe promise========>");
         var notificationRequest = {
             content:{
@@ -1845,10 +1864,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("============ANS_Cancel_2400 publish promise==================>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_2400 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -1888,7 +1907,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelWrongLabelWrongId,
             onCancel:onCancelCancelWrongLabelWrongId,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("================ANS_Cancel_2500 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1920,10 +1939,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==========ANS_Cancel_2500 publish promise==================>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_2500 setTimeout unsubscribe end==================>");
             done();
         }),timeout);
@@ -1934,7 +1953,12 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("========ANS_Cancel_2600 onConsume data:==============>" + JSON.stringify(data));
         console.info("========ANS_Cancel_2600 onConsume label:=============>" + data.request.label);
         console.info("========ANS_Cancel_2600 onConsume id:================>" + data.request.id);
-        notify.cancel(6666, "6666")
+        notify.cancel(6666, "6666").then(()=>{
+            console.info("=========ANS_Cancel_2600 onConsume cancel then======>");
+        }).catch((err)=>{
+            console.info("=========ANS_Cancel_2600 onConsume cancel catch err======>"+JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+        });
         console.info("========ANS_Cancel_2600 onConsume end================>");
         console.info("========ANS_Cancel_2600 onConsume end================>");
     }
@@ -1957,7 +1981,7 @@ describe('ActsAnsNotificationCancel', function () {
             onConsume:onConsumeCancelWrongLabelWrongIdPromise,
             onCancel:onCancelCancelWrongLabelWrongIdPromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===============ANS_Cancel_2600 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1989,10 +2013,10 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("===============ANS_Cancel_2600 publish promise==================>");
         setTimeout((async function(){
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Cancel_2600 setTimeout unsubscribe end==================>");
             done();
         }),timeout);

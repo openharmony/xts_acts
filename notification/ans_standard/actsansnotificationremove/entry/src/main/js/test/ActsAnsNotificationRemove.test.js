@@ -15,7 +15,7 @@
 
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-var timeout = 500;
+var timeout = 300;
 describe('ActsAnsNotificationRemove', function () {
     console.info("===========ActsAnsNotificationRemove start====================>");
     var subscriber;
@@ -68,7 +68,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemove,
             onCancel:onCancelRemove,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("==================ANS_Remove_0100 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -100,13 +100,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("=============ANS_Remove_0100 publish promise===========>");
         setTimeout((async function(){
             console.info("======ANS_Remove_0100 setTimeout==================>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_0100 setTimeout unsubscribe==================>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
 
@@ -144,7 +144,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemovePromise,
             onCancel:onCancelRemovePromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===============ANS_Remove_0200 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -176,13 +176,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("======ANS_Remove_0200 publish==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_0200 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_0200 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -199,10 +199,9 @@ describe('ActsAnsNotificationRemove', function () {
         expect().assertFail();
         console.info("================ANS_Remove_0300 onCancel end=======================>");
     }
-    function removeErrHashCodeCallBack(err,data) {
+    function removeErrHashCodeCallBack(err) {
         console.info("==========ANS_Remove_0300 removeCallBack start==============>");
         console.info("==========ANS_Remove_0300 removeCallBack err====================>" + JSON.stringify(err));
-        console.info("==========ANS_Remove_0300 removeCallBack data===============>" + JSON.stringify(data));
         expect(err.code != 0).assertEqual(true);
         console.info("==========ANS_Remove_0300 removeCallBack end=======================>");
     }
@@ -219,7 +218,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveErrHashCode,
             onCancel:onCancelRemoveErrHashCode,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("==================ANS_Remove_0300 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -251,13 +250,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==================ANS_Remove_0300 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_0300 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_0300 setTimeout unsubscribe============>");
-            await notify.cancelAll()
+            notify.cancelAll()
             done();
         }),timeout);
     })
@@ -265,9 +264,13 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveErrHashCodePromise(data) {
         console.info("===========ANS_Remove_0400 onConsume start:===========>");
         console.info("===========ANS_Remove_0400 onConsume data:===========>" + JSON.stringify(data));
-        notify.remove("errorHashCode");
-        console.info("===========ANS_Remove_0400 onConsume remove:===========>");
-        console.info("===========ANS_Remove_0400 onConsume end:===========>");
+        notify.remove("errorHashCode").then((data)=>{
+            console.info("===========ANS_Remove_0400 onConsume remove data:===========>" + JSON.stringify(data));
+        }).catch((err)=>{
+            console.info("===========ANS_Remove_0400 onConsume remove err:============>" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.info("===========ANS_Remove_0400 onConsume end:===================>");
+        });
     }
 
     function onCancelRemoveErrHashCodePromise() {
@@ -288,7 +291,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveErrHashCodePromise,
             onCancel:onCancelRemoveErrHashCodePromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===============ANS_Remove_0400 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -320,13 +323,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==================ANS_Remove_0400 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_0400 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_0400 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -366,7 +369,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveUseEmptyCharacter,
             onCancel:onCancelRemoveUseEmptyCharacter,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("==================ANS_Remove_0500 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -398,23 +401,28 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==================ANS_Remove_0500 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_0500 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_0500 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
 
     function OnConsumeRemoveUseEmptyCharacterPromise(data) {
-        console.info("================ANS_Remove_0600 onConsume start=======================>");
-        console.info("================ANS_Remove_0600 onConsume data:==================>" + JSON.stringify(data));
-        notify.remove('',removeCallBackUseEmptyCharacter);
-        console.info("================ANS_Remove_0600 onConsume remove=======================>");
-        console.info("================ANS_Remove_0600 onConsume end=======================>");
+        console.info("===============ANS_Remove_0600 onConsume start==================>");
+        console.info("===============ANS_Remove_0600 onConsume data:==================>" + JSON.stringify(data));
+        notify.remove('').then((data)=>{
+            console.info("===========ANS_Remove_0600 onConsume remove data:============>" + JSON.stringify(data));
+        }).catch((err)=>{
+            console.info("===========ANS_Remove_0600 onConsume remove err:=============>" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.info("===========ANS_Remove_0600 onConsume end=====================>");
+        });
+
     }
 
     function OnCancelRemoveUseEmptyCharacterPromise(data) {
@@ -436,7 +444,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:OnConsumeRemoveUseEmptyCharacterPromise,
             onCancel:OnCancelRemoveUseEmptyCharacterPromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("==================ANS_Remove_0600 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -468,13 +476,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==================ANS_Remove_0600 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_0600 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_0600 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -514,7 +522,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveNotExistHashCode,
             onCancel:onCancelRemoveNotExistHashCode,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("================ANS_Remove_0700 subscribe promise=======>");
         var notificationRequest = {
             content:{
@@ -546,23 +554,28 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("============ANS_Remove_0700 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_0700 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_0700 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
 
     function onConsumeRemoveNotExistHashCodePromise(data) {
-        console.info("================ANS_Remove_0800 onConsume start=======================>");
+        console.info("================ANS_Remove_0800 onConsume start===============>");
         console.info("================ANS_Remove_0800 onConsume data:===============>" + JSON.stringify(data));
-        notify.remove("9999_9999_9");
-        console.info("================ANS_Remove_0800 onConsume remove====================>");
-        console.info("================ANS_Remove_0800 onConsume end=======================>");
+        notify.remove("9999_9999_9").then((data)=>{
+            console.info("===========ANS_Remove_0800 onConsume remove data:=========>" + JSON.stringify(data));
+        }).catch((err)=>{
+            console.info("===========ANS_Remove_0800 onConsume remove err:==========>" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.info("===========ANS_Remove_0800 onConsume end==================>");
+        });
+
     }
 
     function onCancelRemoveNotExistHashCodePromise(data) {
@@ -584,7 +597,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveNotExistHashCodePromise,
             onCancel:onCancelRemoveNotExistHashCodePromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("================ANS_Remove_0800 subscribe promise=======>");
         var notificationRequest = {
             content:{
@@ -616,13 +629,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==========ANS_Remove_0800 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_0800 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_0800 setTimeout unsubscribe============>");
-            await notify.cancelAll()
+            notify.cancelAll()
             done();
         }),timeout);
     })
@@ -662,7 +675,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveNonComplianceHashCode,
             onCancel:onCancelRemoveNonComplianceHashCode,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("============ANS_Remove_0900 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -694,13 +707,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==================ANS_Remove_0900 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_0900 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_0900 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -708,9 +721,13 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveNonComplianceHashCodePromise(data) {
         console.info("================ANS_Remove_1000 onConsume start===========>");
         console.info("================ANS_Remove_1000 onConsume data:===========>" + JSON.stringify(data));
-        notify.remove("哈希码");
-        console.info("================ANS_Remove_1000 onConsume remove==========>");
-        console.info("================ANS_Remove_1000 onConsume end=============>");
+        notify.remove("哈希码").then((data)=>{
+            console.info("===========ANS_Remove_1000 onConsume remove data:===========>" + JSON.stringify(data));
+        }).catch((err)=>{
+            console.info("===========ANS_Remove_1000 onConsume remove err:===========>" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.info("===========ANS_Remove_1000 onConsume end===================>");
+        });
     }
 
     function onCancelRemoveNonComplianceHashCodePromise(data) {
@@ -732,7 +749,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveNonComplianceHashCodePromise,
             onCancel:onCancelRemoveNonComplianceHashCodePromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("================ANS_Remove_1000 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -764,13 +781,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("================ANS_Remove_1000 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_1000 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_1000 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -824,7 +841,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeCallbackRemove2Times,
             onCancel:onCancelCallbackRemove2Times,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===============ANS_Remove_1100 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -856,33 +873,42 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==========ANS_Remove_1100 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_1100 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_1100 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
 
     function onConsumeCallbackRemove2TimesPromise(data) {
-        console.info("================ANS_Remove_1200 onConsume start=================>");
-        console.info("================ANS_Remove_1200 onConsume data:==========>" + JSON.stringify(data));
-        notify.remove(data.request.hashCode);
-        console.info("================ANS_Remove_1200 onConsume remove_2times1===========>");
-        notify.remove(data.request.hashCode);
-        console.info("================ANS_Remove_1200 onConsume remove_2times2===========>");
-        console.info("================ANS_Remove_1200 onConsume end=================>");
+        console.info("=======ANS_Remove_1200 onConsume start=============>");
+        console.info("=======ANS_Remove_1200 onConsume data:=============>" + JSON.stringify(data));
+        notify.remove(data.request.hashCode).then(()=>{
+            console.info("=======ANS_Remove_1200 onConsume remove_2times1:=======>");
+        }).catch((err)=>{
+            console.info("=======ANS_Remove_1200 onConsume remove_2times1 err:========>" + JSON.stringify(err));
+            expect(err.code = 0).assertEqual(true);
+        });
+        notify.remove(data.request.hashCode).then((data)=>{
+            console.info("=======ANS_Remove_1200 onConsume remove_2times2 data:=======>" + JSON.stringify(data));
+        }).catch((err)=>{
+            console.info("=======ANS_Remove_1200 onConsume remove_2times2 err:========>" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.info("================ANS_Remove_1200 onConsume end=================>");
+        });
     }
     var timesOfOnCancelCallbackRemove2TimesPromise
     function onCancelCallbackRemove2TimesPromise(data) {
         timesOfOnCancelCallbackRemove2TimesPromise = timesOfOnCancelCallbackRemove2TimesPromise + 1
-        console.info("================ANS_Remove_1200 onCancel start==========>");
+        console.info("================ANS_Remove_1200 onCancel start=========>");
         console.info("================ANS_Remove_1200 onCancel data:=========>" + JSON.stringify(data));
         if (timesOfOnCancelCallbackRemove2TimesPromise == 1){
             expect(data.request.id).assertEqual(12);
+            console.info("============ANS_Remove_1200 onCancel id:===========>" + JSON.stringify(data.request.id));
         } else if  (timesOfOnCancelCallbackRemove2TimesPromise == 2){
             expect().assertFail();
         }
@@ -902,7 +928,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeCallbackRemove2TimesPromise,
             onCancel:onCancelCallbackRemove2TimesPromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===============ANS_Remove_1200 subscribe promise=============>");
         var notificationRequest = {
             content:{
@@ -934,13 +960,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("============ANS_Remove_1200 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_1200 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_1200 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -949,23 +975,22 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("==========ANS_Remove_1300 onConsume start=================>");
         console.info("==========ANS_Remove_1300 onConsume data:=================>" + JSON.stringify(data));
         notify.remove(data.request.hashCode,removeIsUnremovableCallBack);
-        console.info("==========ANS_Remove_1300 onConsume remove=============>");
+        console.info("==========ANS_Remove_1300 onConsume remove==============>");
         console.info("==========ANS_Remove_1300 onConsume end=================>");
     }
 
     function onCancelRemoveIsUnremovable(data) {
         console.info("==========ANS_Remove_1300 onCancel start================>");
-        console.info("==========ANS_Remove_1300 onCancel data:===========>" + JSON.stringify(data));
+        console.info("==========ANS_Remove_1300 onCancel data:================>" + JSON.stringify(data));
         expect().assertFail();
         console.info("==========ANS_Remove_1300 onCancel end================>");
     }
 
-    function removeIsUnremovableCallBack(err, data) {
-        console.info("==========ANS_Remove_1300 removeCallBack start=======================>");
+    function removeIsUnremovableCallBack(err) {
+        console.info("==========ANS_Remove_1300 removeCallBack start===================>");
         console.info("==========ANS_Remove_1300 removeCallBack err=====================>" + JSON.stringify(err));
         expect(err.code != 0).assertEqual(true);
-        console.info("==========ANS_Remove_1300 removeCallBack data=====================>" + JSON.stringify(data));
-        console.info("==========ANS_Remove_1300 removeCallBack end=======================>");
+        console.info("==========ANS_Remove_1300 removeCallBack end=====================>");
     }
 
     /*
@@ -980,7 +1005,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveIsUnremovable,
             onCancel:onCancelRemoveIsUnremovable,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("================ANS_Remove_1300 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1012,13 +1037,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("================ANS_Remove_1300 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_1300 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_1300 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -1026,9 +1051,13 @@ describe('ActsAnsNotificationRemove', function () {
     function OnConsumeRemoveIsUnremovablePromise(data) {
         console.info("==============ANS_Remove_1400 onConsume start==============>");
         console.info("==============ANS_Remove_1400 onConsume data:==============>" + JSON.stringify(data));
-        notify.remove(data.request.hashCode);
-        console.info("==============ANS_Remove_1400 onConsume remove=============>");
-        console.info("==============ANS_Remove_1400 onConsume end================>");
+        notify.remove(data.request.hashCode).then((data)=>{
+            console.info("=======ANS_Remove_1400 onConsume remove data:=======>" + JSON.stringify(data));
+        }).catch((err)=>{
+            console.info("=======ANS_Remove_1400 onConsume remove err:========>" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.info("=======ANS_Remove_1400 onConsume end================>");
+        });
     }
 
     function OnCancelRemoveIsUnremovablePromise(data) {
@@ -1050,7 +1079,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:OnConsumeRemoveIsUnremovablePromise,
             onCancel:OnCancelRemoveIsUnremovablePromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===============ANS_Remove_1400 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1082,13 +1111,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==============ANS_Remove_1400 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_1400 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_1400 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -1140,7 +1169,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveAllByBundleOption,
             onCancel:onCancelRemoveAllByBundleOption,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===============ANS_Remove_1500 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1202,15 +1231,15 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("=============ANS_Remove_1500 publish1 promise==================>");
-        await notify.publish(notificationRequest1);
+        notify.publish(notificationRequest1);
         console.info("=============ANS_Remove_1500 publish2 promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_1500 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_1500 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -1221,7 +1250,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("===============ANS_Remove_1600 onConsume data:========>" + JSON.stringify(data));
         var bundleOption = {
             bundle:data.request.creatorBundleName,
-            uid:data.request.creatorUid,
+            uid:0,
         }
         timesOfOnConsumeRemoveAllByBundleOptionNullUid = timesOfOnConsumeRemoveAllByBundleOptionNullUid + 1
         if (timesOfOnConsumeRemoveAllByBundleOptionNullUid == 2){
@@ -1230,22 +1259,15 @@ describe('ActsAnsNotificationRemove', function () {
         }
         console.info("===============ANS_Remove_1600 onConsume end================>");
     }
-    var timesOfOnCancelRemoveAllByBundleOptionNullUid
     function onCancelRemoveAllByBundleOptionNullUid(data) {
-        timesOfOnCancelRemoveAllByBundleOptionNullUid = timesOfOnCancelRemoveAllByBundleOptionNullUid + 1
         console.info("===============ANS_Remove_1600 onCancel start===================>");
         console.info("===============ANS_Remove_1600 onCancel data:===================>" + JSON.stringify(data));
-        if (timesOfOnCancelRemoveAllByBundleOptionNullUid == 1){
-            expect(data.request.label).assertEqual("1600_1");
-        }else if (timesOfOnCancelRemoveAllByBundleOptionNullUid == 2){
-            expect(data.request.label).assertEqual("1600_2");
-        }
+        expect().assertFail();
         console.info("===============ANS_Remove_1600 onCancel end====================>");
     }
-    function removeAllByBundleOptionCallBackNullUid(err, data) {
+    function removeAllByBundleOptionCallBackNullUid(err) {
         console.info("=========ANS_Remove_1600 removeAllCallBack start=============>");
         console.info("=========ANS_Remove_1600 removeAllCallBack err===============>" + JSON.stringify(err));
-        console.info("=========ANS_Remove_1600 removeAllCallBack data==============>" + JSON.stringify(data));
         console.info("=========ANS_Remove_1600 removeAllCallBack end===============>");
     }
 
@@ -1253,17 +1275,16 @@ describe('ActsAnsNotificationRemove', function () {
      * @tc.number: ANS_Remove_1600
      * @tc.name: removeAll(bundle: BundleOption, callback: AsyncCallback<void>):void;
      * @tc.desc: Verify that the calling interface removeAll(bundle: BundleOption, callback: AsyncCallback<void>):void;
-     *           deletes all notification information through BundleOption Correct bundle, null uid.
+     *           deletes all notification information through BundleOption Correct bundle, 0 uid.
      */
     it('ANS_Remove_1600', 0, async function (done) {
         console.info("===============ANS_Remove_1600==========================>");
         timesOfOnConsumeRemoveAllByBundleOptionNullUid = 0
-        timesOfOnCancelRemoveAllByBundleOptionNullUid = 0
         var subscriber ={
             onConsume:onConsumeRemoveAllByBundleOptionNullUid,
             onCancel:onCancelRemoveAllByBundleOptionNullUid,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("==================ANS_Remove_1600 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1325,15 +1346,15 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==================ANS_Remove_1600 publish1 promise==================>");
-        await notify.publish(notificationRequest1);
+        notify.publish(notificationRequest1);
         console.info("==================ANS_Remove_1600 publish2 promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_1600 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_1600 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -1355,10 +1376,9 @@ describe('ActsAnsNotificationRemove', function () {
         expect().assertFail();
         console.info("==========ANS_Remove_1700 onCancel end======================>");
     }
-    function removeAllByBundleOptionCallBackWrongUid(err, data) {
+    function removeAllByBundleOptionCallBackWrongUid(err) {
         console.info("==========ANS_Remove_1700 removeAllCallBack start=============>");
         console.info("==========ANS_Remove_1700 removeAllCallBack err===============>" + JSON.stringify(err));
-        console.info("==========ANS_Remove_1700 removeAllCallBack data==============>" + JSON.stringify(data));
         console.info("==========ANS_Remove_1700 removeAllCallBack end=======================>");
     }
 
@@ -1374,7 +1394,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveAllByBundleOptionWrongUid,
             onCancel:onCancelRemoveAllByBundleOptionWrongUid,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("=============ANS_Remove_1700 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1406,13 +1426,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("===============ANS_Remove_1700 publish promise===============>");
         setTimeout((async function(){
             console.info("======ANS_Remove_1700 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_1700 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
 
@@ -1438,7 +1458,6 @@ describe('ActsAnsNotificationRemove', function () {
     function removeAllByBundleOptionCallBackWrongBundleCorrectUid(err, data) {
         console.info("=========ANS_Remove_1800 removeAllCallBack start==========>");
         console.info("=========ANS_Remove_1800 removeAllCallBack err============>" + JSON.stringify(err));
-        console.info("=========ANS_Remove_1800 removeAllCallBack data===========>" + JSON.stringify(data));
         console.info("=========ANS_Remove_1800 removeAllCallBack end==========>");
     }
 
@@ -1454,7 +1473,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveAllByBundleOptionWrongBundleCorrectUid,
             onCancel:onCancelremoveAllByBundleOptionwrongBundleCorrectUid,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("================ANS_Remove_1800 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1486,13 +1505,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("============ANS_Remove_1800 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_1800 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_1800 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -1514,11 +1533,11 @@ describe('ActsAnsNotificationRemove', function () {
         expect().assertFail();
         console.info("===========ANS_Remove_1900 onCancel end===========>");
     }
-    function removeAllByBundleOptionCallBackNullCharacterBundleCorrectUid(err, data) {
+    function removeAllByBundleOptionCallBackNullCharacterBundleCorrectUid(err) {
         console.info("========ANS_Remove_1900 removeAllCallback start===========>");
         console.info("========ANS_Remove_1900 removeAllCallback err=============>" + JSON.stringify(err));
-        console.info("========ANS_Remove_1900 removeAllCallback data=========>" + JSON.stringify(data));
-        console.info("========ANS_Remove_1900 removeAllCallback end=======================>");
+        expect(err.code != 0).assertEqual(true);
+        console.info("========ANS_Remove_1900 removeAllCallback end=============>");
     }
 
     /*
@@ -1533,7 +1552,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveAllByBundleOptionNullCharacterBundleCorrectUid,
             onCancel:onCancelRemoveAllByBundleOptionNullCharacterBundleCorrectUid,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===============ANS_Remove_1900 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1565,13 +1584,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("===============ANS_Remove_1900 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_1900 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_1900 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -1593,10 +1612,9 @@ describe('ActsAnsNotificationRemove', function () {
         expect().assertFail();
         console.info("============ANS_Remove_2000 onCancel end==============>");
     }
-    function removeAllByBundleOptionCallBackWrongBundleWrongUid(err, data) {
+    function removeAllByBundleOptionCallBackWrongBundleWrongUid(err) {
         console.info("============ANS_Remove_2000 removeAllCallBack start============>");
         console.info("============ANS_Remove_2000 removeAllCallBack err==============>" + JSON.stringify(err));
-        console.info("============ANS_Remove_2000 removeAllCallBack data=============>" + JSON.stringify(data));
         console.info("============ANS_Remove_2000 removeAllCallBack end=============>");
     }
 
@@ -1612,7 +1630,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveAllByBundleOptionWrongBundleWrongUid,
             onCancel:onCancelRemoveAllByBundleOptionWrongBundleWrongUid,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("==============ANS_Remove_2000 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1644,13 +1662,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==============ANS_Remove_2000 publish promise==============>");
         setTimeout((async function(){
             console.info("======ANS_Remove_2000 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_2000 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -1672,10 +1690,10 @@ describe('ActsAnsNotificationRemove', function () {
         expect().assertFail();
         console.info("=========ANS_Remove_2100 onCancel end============>");
     }
-    function removeAllByBundleOptionCallBackNullCharacterBundleWrongUid(err, data) {
+    function removeAllByBundleOptionCallBackNullCharacterBundleWrongUid(err) {
         console.info("=========ANS_Remove_2100 removeAllCallBack start===============>");
         console.info("=========ANS_Remove_2100 err=========>" + JSON.stringify(err));
-        console.info("=========ANS_Remove_2100 data=========>" + JSON.stringify(data));
+        expect(err.code != 0).assertEqual(true);
         console.info("=========ANS_Remove_2100 removeAllCallBack end===============>");
     }
 
@@ -1691,7 +1709,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveAllByBundleOptionNullCharacterBundleWrongUid,
             onCancel:onCancelRemoveAllByBundleOptionNullCharacterBundleWrongUid,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("============ANS_Remove_2100 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1723,13 +1741,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("=========ANS_Remove_2100 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_2100 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_2100 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -1751,10 +1769,9 @@ describe('ActsAnsNotificationRemove', function () {
         expect().assertFail();
         console.info("==========ANS_Remove_2200 onCancel end===================>");
     }
-    function removeAllByBundleOptionCallBackIsUnremovable(err, data) {
+    function removeAllByBundleOptionCallBackIsUnremovable(err) {
         console.info("==========ANS_Remove_2200 removeAllCallBack start==========>");
         console.info("==========ANS_Remove_2200 removeAllCallBack err============>" + JSON.stringify(err));
-        console.info("==========ANS_Remove_2200 removeAllCallBack data===========>" + JSON.stringify(data));
         console.info("==========ANS_Remove_2200 removeAllCallBack end============>");
     }
 
@@ -1770,7 +1787,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveAllByBundleOptionIsUnremovable,
             onCancel:onCancelRemoveAllByBundleOptionIsUnremovable,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("==============ANS_Remove_2200 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1802,13 +1819,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("=============ANS_Remove_2200 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_2200 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_2200 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -1861,7 +1878,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveAll,
             onCancel:onCancelRemoveAll,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("=============ANS_Remove_2300 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -1923,15 +1940,15 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("===========ANS_Remove_2300 publish1 promise================>");
-        await notify.publish(notificationRequest1);
+        notify.publish(notificationRequest1);
         console.info("============ANS_Remove_2300 publish2 promise===============>");
         setTimeout((async function(){
             console.info("======ANS_Remove_2300 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_2300 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -1978,7 +1995,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveAllPromise,
             onCancel:onCancelRemoveAllPromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("==============ANS_Remove_2400 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -2040,15 +2057,15 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("===ANS_Remove_2400 publish1 promise============>");
-        await notify.publish(notificationRequest1);
+        notify.publish(notificationRequest1);
         console.info("===ANS_Remove_2400 publish2 promise============>");
         setTimeout((async function(){
             console.info("======ANS_Remove_2400 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_2400 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -2067,6 +2084,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("=========ANS_Remove_2500 onConsume end=============>");
     }
     function onCancelCallbackRemoveAllIsUnremovable(data) {
+        expect().assertFail();
         console.info("=========ANS_Remove_2500 onCancel start==============>");
         console.info("=========ANS_Remove_2500 onCancel data:==============>" + JSON.stringify(data));
         console.info("=========ANS_Remove_2500 onCancel end================>");
@@ -2084,7 +2102,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveAllIsUnremovable,
             onCancel:onCancelCallbackRemoveAllIsUnremovable,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("======ANS_Remove_2500 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -2116,13 +2134,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("============ANS_Remove_2500 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_2500 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_2500 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -2152,7 +2170,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:OnConsumeRemoveAllIsUnremovablePromise,
             onCancel:OnCancelCallbackRemoveAllIsUnremovablePromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("============ANS_Remove_2600 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -2184,27 +2202,25 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==========ANS_Remove_2600 publish promise==============>");
         setTimeout((async function(){
             console.info("======ANS_Remove_2600 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_2600 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
 
-    function removeAllCallBack2TimesOf2(err,data) {
+    function removeAllCallBack2TimesOf2(err) {
         console.info("=======ANS_Remove_2700 removeAllCallBack2TimesOf2 start===========>");
         console.info("=======ANS_Remove_2700 removeAllCallBack2TimesOf2 err=============>" + JSON.stringify(err));
-        console.info("=======ANS_Remove_2700 removeAllCallBack2TimesOf2 data============>" + JSON.stringify(data));
         console.info("=======ANS_Remove_2700 removeAllCallBack2TimesOf2 end=============>");
     }
-    function removeAllCallBack2TimesOf1(err,data) {
+    function removeAllCallBack2TimesOf1(err) {
         console.info("=======ANS_Remove_2700 removeAllCallBack2TimesOf1 start==========>");
         console.info("=======ANS_Remove_2700 removeAllCallBack2TimesOf1 err============>" + JSON.stringify(err));
-        console.info("=======ANS_Remove_2700 removeAllCallBack2TimesOf1 data===========>" + JSON.stringify(data));
         expect(err.code).assertEqual(0);
         notify.removeAll(removeAllCallBack2TimesOf2);
         console.info("=======ANS_Remove_2700 removeAllCallBack2TimesOf1 removeAll=====>");
@@ -2224,6 +2240,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("=======ANS_Remove_2700 onCancel data:============>" + JSON.stringify(data));
         if (timesOfOnCancelCallbackRemoveAll2Times == 1){
             expect(data.request.id).assertEqual(27);
+            console.info("=======ANS_Remove_2700 onCancel id============>");
         } else if  (timesOfOnCancelCallbackRemoveAll2Times == 2){
             expect().assertFail();
         }
@@ -2243,7 +2260,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveAll2Times,
             onCancel:onCancelRemoveAll2Times,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("============ANS_Remove_2700 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -2275,13 +2292,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("=========ANS_Remove_2700 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_2700 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_2700 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -2289,9 +2306,9 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeCallbackRemoveAll2TimesPromise(data) {
         console.info("=============ANS_Remove_2800 onConsume start=============>");
         console.info("=============ANS_Remove_2800 onConsume data: =======================>" + JSON.stringify(data));
-        notify.removeAll()
+        notify.removeAll();
         console.info("=============ANS_Remove_2800 onConsume removeAll1=======================>");
-        notify.removeAll()
+        notify.removeAll();
         console.info("=============ANS_Remove_2800 onConsume removeAll2=======================>");
         console.info("=============ANS_Remove_2800 onConsume end=============>");
     }
@@ -2321,7 +2338,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeCallbackRemoveAll2TimesPromise,
             onCancel:onCancelCallbackRemoveAll2TimesPromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("================ANS_Remove_2800 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -2353,13 +2370,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("================ANS_Remove_2800 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_2800 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_2800 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -2412,7 +2429,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveByNotificationKey,
             onCancel:onCancelRemoveByNotificationKey,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("================ANS_Remove_2900 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -2444,13 +2461,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("==============ANS_Remove_2900 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_2900 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_2900 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -2491,7 +2508,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveByNotificationKeyPromise,
             onCancel:onCancelRemoveByNotificationKeyPromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===============ANS_Remove_3000 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -2523,13 +2540,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("=============ANS_Remove_3000 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_3000 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_3000 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -2576,7 +2593,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveByNotificationKeyWrongKey,
             onCancel:onCancelRemoveByNotificationKeyWrongKey,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("==============ANS_Remove_3100 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -2608,13 +2625,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("=============ANS_Remove_3100 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_3100 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_3100 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -2630,7 +2647,12 @@ describe('ActsAnsNotificationRemove', function () {
             id:0,
             label:"wrongLabel"
         }
-        notify.remove(bundleOption, notificationKey);
+        notify.remove(bundleOption, notificationKey).then((data)=>{
+            console.info("=======ANS_Remove_3200 onConsume remove data:=======>" + JSON.stringify(data));
+        }).catch((err)=>{
+            console.info("=======ANS_Remove_3200 onConsume remove err:========>" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+        });
         console.info("===========ANS_Remove_3200 onConsume remove============>");
         console.info("===========ANS_Remove_3200 onConsume end===============>");
     }
@@ -2654,7 +2676,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveByNotificationKeyWrongKeyPromise,
             onCancel:onCancelRemoveByNotificationKeyWrongKeyPromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===============ANS_Remove_3200 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -2686,13 +2708,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("===========ANS_Remove_3200 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_3200 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_3200 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -2739,7 +2761,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:OnConsumeRemoveByNotificationKeyWrongBundle,
             onCancel:OnCancelRemoveByNotificationKeyWrongBundle,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("================ANS_Remove_3300 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -2771,13 +2793,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("================ANS_Remove_3300 publish promise=================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_3300 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_3300 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -2793,7 +2815,12 @@ describe('ActsAnsNotificationRemove', function () {
             id:34,
             label:"3400"
         }
-        notify.remove(bundleOption, notificationKey)
+        notify.remove(bundleOption, notificationKey).then((data)=>{
+            console.info("=======ANS_Remove_3400 onConsume remove data:=======>" + JSON.stringify(data));
+        }).catch((err)=>{
+            console.info("=======ANS_Remove_3400 onConsume remove err:========>" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+        });
         console.info("===========ANS_Remove_3400 onConsume remove=========>");
         console.info("===========ANS_Remove_3400 onConsume end============>");
     }
@@ -2817,7 +2844,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveByNotificationKeyWrongBundlePromise,
             onCancel:onCancelRemoveByNotificationKeyWrongBundlePromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("============ANS_Remove_3400 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -2849,13 +2876,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("============ANS_Remove_3400 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_3400 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_3400 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -2872,16 +2899,6 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("==========ANS_Remove_3500 removeCallback2Times1 err=============>" + JSON.stringify(err));
         console.info("==========ANS_Remove_3500 removeCallback2Times1 data============>" + JSON.stringify(data));
         expect(err.code).assertEqual(0);
-        var bundleOption = {
-            bundle:data.request.creatorBundleName,
-            uid:data.request.creatorUid,
-        }
-        var notificationKey = {
-            id:35,
-            label:"3500"
-        }
-        notify.remove(bundleOption,notificationKey,removeByNotificationKey2Times2CB);
-        console.info("==========ANS_Remove_3500 removeCallback2Times1 remove===========>");
         console.info("==========ANS_Remove_3500 removeCallback2Times1 end==============>");
     }
     function onConsumeRemoveByNotificationKey2Times(data) {
@@ -2896,6 +2913,7 @@ describe('ActsAnsNotificationRemove', function () {
             label:"3500"
         }
         notify.remove(bundleOption,notificationKey,removeByNotificationKey2Times1CB);
+        notify.remove(bundleOption,notificationKey,removeByNotificationKey2Times2CB);
         console.info("=========ANS_Remove_3500 onConsume remove==============>");
         console.info("=========ANS_Remove_3500 onConsume end=================>");
     }
@@ -2926,7 +2944,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveByNotificationKey2Times,
             onCancel:onCancelRemoveByNotificationKey2Times,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("===========ANS_Remove_3500 subscribe promise==================>");
         var notificationRequest = {
             content:{
@@ -2958,13 +2976,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("============ANS_Remove_3500 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_3500 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_3500 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
@@ -2982,9 +3000,13 @@ describe('ActsAnsNotificationRemove', function () {
         }
         notify.remove(bundleOption, notificationKey)
         console.info("=========ANS_Remove_3600 onConsume remove1===========>");
-        notify.remove(bundleOption, notificationKey);
-        console.info("=========ANS_Remove_3600 onConsume remove2===========>");
-        console.info("=========ANS_Remove_3600 onConsume end===========>");
+        notify.remove(bundleOption, notificationKey).then((data)=>{
+            console.info("=======ANS_Remove_3600 onConsume remove2 data:=======>" + JSON.stringify(data));
+        }).catch((err)=>{
+            console.info("=======ANS_Remove_3600 onConsume remove2 err:========>" + JSON.stringify(err));
+            expect(err.code != 0).assertEqual(true);
+            console.info("=========ANS_Remove_3600 onConsume end===========>");
+        });
     }
     var timesOnCancelcbRemoveByKey2TimesPromise
     function onCancelRemoveByNotificationKey2TimesPromise(data) {
@@ -3014,7 +3036,7 @@ describe('ActsAnsNotificationRemove', function () {
             onConsume:onConsumeRemoveByNotificationKey2TimesPromise,
             onCancel:onCancelRemoveByNotificationKey2TimesPromise,
         }
-        await notify.subscribe(subscriber);
+        notify.subscribe(subscriber);
         console.info("========ANS_Remove_3600 subscribe promise=============>");
         var notificationRequest = {
             content:{
@@ -3046,13 +3068,13 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        await notify.publish(notificationRequest);
+        notify.publish(notificationRequest);
         console.info("============ANS_Remove_3600 publish promise==================>");
         setTimeout((async function(){
             console.info("======ANS_Remove_3600 setTimeout============>");
-            await notify.unsubscribe(subscriber);
+            notify.unsubscribe(subscriber);
             console.info("======ANS_Remove_3600 setTimeout unsubscribe============>");
-            await notify.cancelAll();
+            notify.cancelAll();
             done();
         }),timeout);
     })
