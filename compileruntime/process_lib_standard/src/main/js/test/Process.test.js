@@ -1757,4 +1757,909 @@ describe('ChildProcessTest', function () {
        var offtest = process.off("add")
        expect(offtest).assertEqual(true)
    })
+
+   /**
+     * @tc.name: testTid001
+     * @tc.desc: Returns the tid of the current thread.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testTid001', 0, function () {
+        var pres = Process.tid
+        console.info('test press value:' + pres)
+        if(pres > 0)
+        {
+            var flag = true
+        }
+        expect(flag).assertEqual(true)
+    })
+
+    /**
+     * @tc.name: testTid002
+     * @tc.desc: Returns the tid of the current thread.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testTid002', 0, function () {
+        for(var i=0; i<3; i++)
+        {
+            var pres = Process.tid
+            if(pres > 0)
+            {
+                var flag = true
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testTid003
+     * @tc.desc: Returns the tid of the current thread.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testTid003', 0, function () {
+        for(var i=0; i<8; i++)
+        {
+            var pres = Process.tid
+            if(pres > 0)
+            {
+                var flag = true
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testTid004
+     * @tc.desc: Returns the tid of the current thread.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testTid004', 0, function () {
+        for(var i=0; i<18; i++)
+        {
+            var pres = Process.tid
+            if(pres > 0)
+            {
+                var flag = true
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testTid005
+     * @tc.desc: Returns the tid of the current thread.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testTid005', 0, function () {
+        for(var i=0; i<26; i++)
+        {
+            var pres = Process.tid
+            if(pres > 0)
+            {
+                var flag = true
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testIsisolatedProcess001
+     * @tc.desc: Returns a boolean whether the process is isolated.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testIsisolatedProcess001', 0, function () {
+        var pres = Process.isIsolatedProcess()
+        expect(pres).assertEqual(true)
+    })
+
+    /**
+     * @tc.name: testIsisolatedProcess002
+     * @tc.desc: Returns a boolean whether the process is isolated.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testIsisolatedProcess002', 0, function () {
+        for(var i=0; i<3; i++)
+        {
+            var pres =Process.isIsolatedProcess()
+            expect(pres).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testIsisolatedProcess003
+     * @tc.desc: Returns a boolean whether the process is isolated.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testIsisolatedProcess003', 0, function () {
+        for(var i=0; i<18; i++)
+        {
+            var pres =Process.isIsolatedProcess()
+            expect(pres).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testIsisolatedProcess004
+     * @tc.desc: Returns a boolean whether the process is isolated.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testIsisolatedProcess004', 0, function () {
+        for(var i=0; i<20; i++)
+        {
+            var pres =Process.isIsolatedProcess()
+            expect(pres).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testIsisolatedProcess005
+     * @tc.desc: Returns a boolean whether the process is isolated.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testIsisolatedProcess005', 0, function () {
+        for(var i=0; i<25; i++)
+        {
+            var pres =Process.isIsolatedProcess()
+            expect(pres).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testIsappuid001
+     * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testIsappuid001', 0, function () {
+        var isorno = Process.isAppUid(456)
+        expect(isorno).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testIsappuid002
+     * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testIsappuid002', 0, function () {
+        var isorno = Process.isAppUid(123)
+        expect(isorno).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testIsappuid003
+     * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testIsappuid003', 0, function () {
+        var isorno = Process.isAppUid(80000)
+        expect(isorno).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testIsappuid004
+     * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testIsappuid004', 0, function () {
+        var isorno = Process.isAppUid(789)
+        expect(isorno).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testIsappuid005
+     * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testIsappuid005', 0, function () {
+        var isorno = Process.isAppUid(8569)
+        expect(isorno).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testIs64Bit001
+     * @tc.desc: Returns a boolean whether the process is running in a 64-bit environment.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testIs64Bit001', 0, function () {
+        var isorno = Process.is64Bit()
+        expect(isorno).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testIs64Bit002
+     * @tc.desc: Returns a boolean whether the process is running in a 64-bit environment.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testIs64Bit002', 0, function () {
+        for(var i=0; i<3; i++)
+        {
+            var isorno = Process.is64Bit()
+            expect(isorno).assertEqual(false)
+        }
+    })
+
+    /**
+     * @tc.name: testIs64Bit003
+     * @tc.desc: Returns a boolean whether the process is running in a 64-bit environment.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testIs64Bit003', 0, function () {
+        for(var i=0; i<15; i++)
+        {
+            var isorno = Process.is64Bit()
+            expect(isorno).assertEqual(false)
+        }
+    })
+
+    /**
+     * @tc.name: testIs64Bit004
+     * @tc.desc: Returns a boolean whether the process is running in a 64-bit environment.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testIs64Bit004', 0, function () {
+        for(var i=0; i<18; i++)
+        {
+            var isorno = Process.is64Bit()
+            expect(isorno).assertEqual(false)
+        }
+    })
+
+    /**
+     * @tc.name: testIs64Bit005
+     * @tc.desc: Returns a boolean whether the process is running in a 64-bit environment.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testIs64Bit005', 0, function () {
+        for(var i=0; i<22; i++)
+        {
+            var isorno = Process.is64Bit()
+            expect(isorno).assertEqual(false)
+        }
+    })
+
+    /**
+     * @tc.name: testGetuidforname001
+     * @tc.desc: Returns the uid based on the specified user name.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetuidforname001',0, function () {
+        var pres = Process.getUidForName("1111")
+        expect(pres).assertEqual(-1)
+    })
+
+    /**
+     * @tc.name: testGetuidforname002
+     * @tc.desc: Returns the uid based on the specified user name.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetuidforname002', 0, function () {
+        for(var i=0; i<3; i++)
+        {
+            var pres = Process.getUidForName("12356")
+            expect(pres).assertEqual(-1)
+        }
+    })
+
+    /**
+     * @tc.name: testGetuidforname003
+     * @tc.desc: Returns the uid based on the specified user name.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetuidforname003', 0, function () {
+        for(var i=0; i<18; i++)
+        {
+            var pres = Process.getUidForName("12356")
+            expect(pres).assertEqual(-1)
+        }
+    })
+
+    /**
+     * @tc.name: testGetuidforname004
+     * @tc.desc: Returns the uid based on the specified user name.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetuidforname004', 0, function () {
+        for(var i=0; i<16; i++)
+        {
+            var pres = Process.getUidForName("12356")
+            expect(pres).assertEqual(-1)
+        }
+    })
+
+    /**
+     * @tc.name: testGetuidforname005
+     * @tc.desc: Returns the uid based on the specified user name.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetuidforname005', 0, function () {
+        for(var i=0; i<21; i++)
+        {
+            var pres = Process.getUidForName("12356")
+            expect(pres).assertEqual(-1)
+        }
+    })
+
+    /**
+     * @tc.name: testGetthreadpriority001
+     * @tc.desc: Returns the thread priority based on the specified tid.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetthreadpriority001', 0, function () {
+        var pres = Process.tid
+        var pri = Process.getThreadPriority(pres)
+        if(pri)
+        {
+            var flag = true
+//            var flag = new Boolean(true)
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetthreadpriority002
+     * @tc.desc: Returns the thread priority based on the specified tid.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetthreadpriority002', 0, function () {
+        var pres = Process.tid
+        for(var i=0; i<3; i++)
+        {
+            var pri = Process.getThreadPriority(pres)
+            if(pri > 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+                expect(flag).assertEqual(true)
+            }
+        }
+    })
+
+    /**
+     * @tc.name: testGetthreadpriority003
+     * @tc.desc: Returns the thread priority based on the specified tid.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetthreadpriority003', 0, function () {
+        var pres = Process.tid
+        for(var i=0; i<16; i++)
+        {
+            var pri = Process.getThreadPriority(pres)
+            if(pri > 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+                expect(flag).assertEqual(true)
+            }
+        }
+    })
+
+    /**
+     * @tc.name: testGetthreadpriority004
+     * @tc.desc: Returns the thread priority based on the specified tid.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetthreadpriority004', 0, function () {
+        var pres = Process.tid
+        for(var i=0; i<18; i++)
+        {
+            var pri = Process.getThreadPriority(pres)
+            if(pri > 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+                expect(flag).assertEqual(true)
+            }
+        }
+    })
+
+    /**
+     * @tc.name: testGetthreadpriority005
+     * @tc.desc: Returns the thread priority based on the specified tid.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetthreadpriority005', 0, function () {
+        var pres = Process.tid
+        for(var i=0; i<25; i++)
+        {
+            var pri = Process.getThreadPriority(pres)
+            if(pri > 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+                expect(flag).assertEqual(true)
+            }
+        }
+    })
+
+    /**
+     * @tc.name: testGetstartrealtime001
+     * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of the system to the start of the process.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetstartrealtime001', 0, function () {
+        for(var i=0; i<3; i++)
+        {
+            var pri = Process.getStartRealtime()
+            if(pri > 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetstartrealtime002
+     * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of the system to the start of the process.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetstartrealtime002', 0, function () {
+        var pri = Process.getStartRealtime()
+        if(pri > 0)
+        {
+            var flag = true
+            //            var flag = new Boolean(true)
+        }
+        expect(flag).assertEqual(true)
+    })
+
+    /**
+     * @tc.name: testGetstartrealtime003
+     * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of the system to the start of the process.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetstartrealtime003', 0, function () {
+        for(var i=0; i<16; i++)
+        {
+            var pri = Process.getStartRealtime()
+            if(pri > 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetstartrealtime004
+     * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of the system to the start of the process.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetstartrealtime004', 0, function () {
+        for(var i=0; i<19; i++)
+        {
+            var pri = Process.getStartRealtime()
+            if(pri > 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetstartrealtime005
+     * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of the system to the start of the process.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetstartrealtime005', 0, function () {
+        for(var i=0; i<22; i++)
+        {
+            var pri = Process.getStartRealtime()
+            if(pri > 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetpastCputime001
+     * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetpastCputime001', 0, function () {
+        for(var i=0; i<3; i++)
+        {
+            var pri = Process.getPastCputime()
+            if(pri > 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetpastCputime002
+     * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetpastCputime002', 0, function () {
+        var pri = Process.getPastCputime()
+        if(pri > 0)
+        {
+            var flag = true
+            //            var flag = new Boolean(true)
+        }
+        expect(flag).assertEqual(true)
+    })
+
+    /**
+     * @tc.name: testGetpastCputime003
+     * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetpastCputime003', 0, function () {
+        for(var i=0; i<12; i++)
+        {
+            var pri = Process.getPastCputime()
+            if(pri > 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetpastCputime004
+     * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetpastCputime004', 0, function () {
+        for(var i=0; i<16; i++)
+        {
+            var pri = Process.getPastCputime()
+            if(pri > 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetpastCputime005
+     * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetpastCputime005', 0, function () {
+        for(var i=0; i<21; i++)
+        {
+            var pri = Process.getPastCputime()
+            if(pri > 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetSystemConfig001
+     * @tc.desc: Returns the system configuration at runtime.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetSystemConfig001', 0, function () {
+        var _SC_ARG_MAX = 0
+        var pri = Process.getSystemConfig(_SC_ARG_MAX)
+        if(pri > 0)
+        {
+            var flag = true
+            //            var flag = new Boolean(true)
+        }
+        expect(flag).assertEqual(true)
+    })
+
+    /**
+     * @tc.name: testGetSystemConfig002
+     * @tc.desc: Returns the system configuration at runtime.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetSystemConfig002', 0, function () {
+        var _SC_ARG_MAX = 0
+        for(var i=0; i<3; i++)
+        {
+            var pri = Process.getSystemConfig(_SC_ARG_MAX)
+            if(pri > 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetSystemConfig003
+     * @tc.desc: Returns the system configuration at runtime.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetSystemConfig003', 0, function () {
+        var _SC_ARG_MAX = 0
+        for(var i=0; i<8; i++)
+        {
+            var pri = Process.getSystemConfig(_SC_ARG_MAX)
+            if(pri > 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetSystemConfig004
+     * @tc.desc: Returns the system configuration at runtime.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetSystemConfig004', 0, function () {
+        var _SC_ARG_MAX = 0
+        for(var i=0; i<15; i++)
+        {
+            var pri = Process.getSystemConfig(_SC_ARG_MAX)
+            if(pri > 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetSystemConfig005
+     * @tc.desc: Returns the system configuration at runtime.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetSystemConfig005', 0, function () {
+        var _SC_ARG_MAX = 0
+        for(var i=0; i<19; i++)
+        {
+            var pri = Process.getSystemConfig(_SC_ARG_MAX)
+            if(pri > 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetAvailableCores001
+     * @tc.desc: Returns cpu cores available for the current process on a multi-core device.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetAvailableCores001', 0, function () {
+        var pri = Process.getAvailableCores()
+        if(pri != null)
+        {
+            var flag = true
+            //            var flag = new Boolean(true)
+        }
+        expect(flag).assertEqual(true)
+    })
+
+    /**
+     * @tc.name: testGetAvailableCores002
+     * @tc.desc: Returns cpu cores available for the current process on a multi-core device.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetAvailableCores002', 0, function () {
+        for(var i=0; i<3; i++)
+        {
+            var pri = Process.getAvailableCores()
+            if(pri != 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetAvailableCores003
+     * @tc.desc: Returns cpu cores available for the current process on a multi-core device.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetAvailableCores003', 0, function () {
+        for(var i=0; i<9; i++)
+        {
+            var pri = Process.getAvailableCores()
+            if(pri != 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetAvailableCores004
+     * @tc.desc: Returns cpu cores available for the current process on a multi-core device.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetAvailableCores004', 0, function () {
+        for(var i=0; i<12; i++)
+        {
+            var pri = Process.getAvailableCores()
+            if(pri != 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetAvailableCores005
+     * @tc.desc: Returns cpu cores available for the current process on a multi-core device.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetAvailableCores005', 0, function () {
+        for(var i=0; i<18; i++)
+        {
+            var pri = Process.getAvailableCores()
+            if(pri != 0)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+            }
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetEnvironmentVar001
+     * @tc.desc: Returns the system value for environment variables.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetEnvironmentVar001', 0, function () {
+        var pri = Process.getEnvironmentVar("USER")
+        if(pri != null) {
+            var flag = true
+            //            var flag = new Boolean(true)
+            expect(flag).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetEnvironmentVar002
+     * @tc.desc: Returns the system value for environment variables.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetEnvironmentVar002', 0, function () {
+        for(var i=0; i<3; i++)
+        {
+            var pri = Process.getEnvironmentVar("PATH")
+            if(pri != null)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+                expect(flag).assertEqual(true)
+            }
+        }
+    })
+
+    /**
+     * @tc.name: testGetEnvironmentVar003
+     * @tc.desc: Returns the system value for environment variables.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetEnvironmentVar003', 0, function () {
+        for(var i=0; i<15; i++)
+        {
+            var pri = Process.getEnvironmentVar("PATH")
+            if(pri != null)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+                expect(flag).assertEqual(true)
+            }
+        }
+    })
+
+    /**
+     * @tc.name: testGetEnvironmentVar004
+     * @tc.desc: Returns the system value for environment variables.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetEnvironmentVar004', 0, function () {
+        for(var i=0; i<26; i++)
+        {
+            var pri = Process.getEnvironmentVar("PATH")
+            if(pri != null)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+                expect(flag).assertEqual(true)
+            }
+        }
+    })
+
+    /**
+     * @tc.name: testGetEnvironmentVar005
+     * @tc.desc: Returns the system value for environment variables.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetEnvironmentVar005', 0, function () {
+        for(var i=0; i<19; i++)
+        {
+            var pri = Process.getEnvironmentVar("PATH")
+            if(pri != null)
+            {
+                var flag = true
+                //            var flag = new Boolean(true)
+                expect(flag).assertEqual(true)
+            }
+        }
+    })
 })
