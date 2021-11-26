@@ -170,6 +170,29 @@ describe('ActsAnsEnableNotificationTest', function () {
         })
     })
     /*
+     * @tc.number: ActsGetEnable_test_1100
+     * @tc.name: isNotificationEnabled()
+     * @tc.desc: verify the function of isNotificationEnabled
+     */
+    it('ActsGetEnable_test_1100', 0, async function (done) {
+        await notify.isNotificationEnabled((err,data) => {
+            console.log("==========================>ActsGetEnable_test_1100 success=======================>"+err+data)
+            expect(typeof(data)).assertEqual('boolean')
+        })
+        done();
+    })
+    /*
+     * @tc.number: ActsGetEnable_test_1200
+     * @tc.name: isNotificationEnabled()
+     * @tc.desc: verify the function of isNotificationEnabled
+     */
+    it('ActsGetEnable_test_1200', 0, async function (done) {
+        var promise = await notify.isNotificationEnabled()
+        console.log("==========================>ActsGetEnable_test_1200 success=======================>"+promise)
+        expect(typeof(promise)).assertEqual('boolean')
+        done();
+    })
+    /*
      * @tc.number: ActsSetEnable_test_0100
      * @tc.name: enableNotification()
      * @tc.desc: verify the function of enableNotification

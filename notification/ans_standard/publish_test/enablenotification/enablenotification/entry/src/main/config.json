@@ -14,7 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.actsansenablenotificationonetest",
+    "package": "com.example.actsansenablenotificationtest",
     "name": ".MyApplication",
     "deviceType": [
       "phone"
@@ -36,7 +36,7 @@
             ]
           }
         ],
-        "name": "com.example.actsansenablenotificationonetest.MainAbility",
+        "name": "com.example.actsansenablenotificationtest.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",

@@ -15,7 +15,7 @@
 
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-var time = 1000
+var time = 300
 var ERR_ANS_NON_SYSTEM_APP = 67108877
 describe('ActsAnsActiveTest', function () {
     console.info("===========ActsAnsActiveTest start====================>");
@@ -79,9 +79,9 @@ describe('ActsAnsActiveTest', function () {
         console.debug("===============Ans_GetActive_0100 publish end==================>");
         notify.getActiveNotifications(getCallback);
         console.debug("===============Ans_GetActive_0100 getActiveNotifications end==================>");
-        done();
         setTimeout(async function(){
             console.debug("===============Ans_GetActive_0100 done==================>");
+            done();
         }, time);
     })
 
@@ -142,9 +142,9 @@ describe('ActsAnsActiveTest', function () {
             console.log("=======Ans_GetActive_0200 getCallback badgeIconStyle=====>"+promiseData[i].badgeIconStyle)
         }
         console.debug("===============Ans_GetActive_0200 getActiveNotifications end==================>");
-        done();
         setTimeout(async function(){
             console.debug("===============Ans_GetActive_0200 done==================>");
+            done();
         }, time);
     })
 
@@ -218,9 +218,9 @@ describe('ActsAnsActiveTest', function () {
         console.debug("===============Ans_GetActive_0300 publish2 end==================>");
         notify.getActiveNotifications(getCallbackTwo);
         console.debug("===============Ans_GetActive_0300 getActiveNotifications end==================>");
-        done();
         setTimeout(async function(){
             console.debug("===============Ans_GetActive_0300 done==================>");
+            done();
         }, time);
     })
 
@@ -289,9 +289,9 @@ describe('ActsAnsActiveTest', function () {
             }
         }
         console.debug("===============Ans_GetActive_0400 getActiveNotifications end==================>");
-        done();
         setTimeout(async function(){
             console.debug("===============Ans_GetActive_0400 done==================>");
+            done();
         }, time);
     })
 
@@ -307,9 +307,9 @@ describe('ActsAnsActiveTest', function () {
             console.log("Ans_GetActive_0500 getCallback data.length============>" + data.length);
             console.log("Ans_GetActive_0500 getCallback JSON.stringify(data)============>" + JSON.stringify(data));
             expect(data.length).assertEqual(0);
-            done();
             setTimeout(function(){
                 console.debug("===============Ans_GetActive_0500 done==================>");
+                done();
             }, time);
         });
     })
@@ -327,9 +327,9 @@ describe('ActsAnsActiveTest', function () {
         expect(promiseData.length).assertEqual(0);
         console.debug("=========Ans_GetActive_0600 promiseData.length=============>"+promiseData.length);
         console.debug("==Ans_GetActivcae_0600 JSON.stringify(promiseData)========>"+JSON.stringify(promiseData));
-        done();
         setTimeout(function(){
             console.debug("===============Ans_GetActive_0600 done==================>");
+            done();
         }, time);
     })
 
@@ -394,9 +394,9 @@ describe('ActsAnsActiveTest', function () {
         console.debug("===============Ans_GetActive_0700 cancel end==================>");
         notify.getActiveNotifications(getCallbackFour);
         console.debug("===============Ans_GetActive_0700 getActiveNotifications end==================>");
-        done();
         setTimeout(async function(){
             console.debug("===============Ans_GetActive_0700 done==================>");
+            done();
         }, time);
     })
 
@@ -454,9 +454,9 @@ describe('ActsAnsActiveTest', function () {
             console.log("============Ans_GetActive_0800 getCallback label=====>"+promiseData[i].label)
         }
         console.debug("===============Ans_GetActive_0800 getActiveNotifications end==================>");
-        done();
         setTimeout(function(){
             console.debug("===============Ans_GetActive_0800 done==================>");
+            done();
         }, time);
     })
 
@@ -508,9 +508,9 @@ describe('ActsAnsActiveTest', function () {
         console.debug("===============Ans_GetActive_0900 cancelAll end==================>");
         notify.getActiveNotifications(getCallbackFive);
         console.debug("===============Ans_GetActive_0900 getActiveNotifications end==================>");
-        done();
         setTimeout(function(){
             console.debug("===============Ans_GetActive_0900 done==================>");
+            done();
         }, time);
     })
 
@@ -558,9 +558,9 @@ describe('ActsAnsActiveTest', function () {
         console.log("Ans_GetActive_1000 getCallback  data============>"+JSON.stringify(promiseData));
         expect(promiseData.length).assertEqual(0);
         console.debug("===============Ans_GetActive_1000 getActiveNotifications end==================>");
-        done();
         setTimeout(function(){
             console.debug("===============Ans_GetActive_1000 done==================>");
+            done();
         }, time);
     })
 
@@ -599,9 +599,9 @@ describe('ActsAnsActiveTest', function () {
         console.debug("===============Ans_GetActive_1100 publish end==================>");
         notify.getActiveNotificationCount(getCountCallback);
         console.debug("===============Ans_GetActive_1100 getActiveNotificationCount end==================>");
-        done();
         setTimeout(function(){
             console.debug("===============Ans_GetActive_1100 done==================>");
+            done();
         }, time);
     })
 
@@ -636,9 +636,9 @@ describe('ActsAnsActiveTest', function () {
         var promiseCount = await notify.getActiveNotificationCount();
         expect(promiseCount).assertEqual(1);
         console.debug("===============Ans_GetActive_1200 promiseCount==================>"+promiseCount);
-        done();
         setTimeout(function(){
             console.debug("===============Ans_GetActive_1200 done==================>");
+            done();
         }, time);
     })
 
@@ -698,9 +698,9 @@ describe('ActsAnsActiveTest', function () {
         console.debug("===============Ans_GetActive_1300 publish end==================>");
         notify.getActiveNotificationCount(getCountCallbackTwo);
         console.debug("===============Ans_GetActive_1300 getActiveNotificationCount end==================>");
-        done();
         setTimeout(function(){
             console.debug("===============Ans_GetActive_1300 done==================>");
+            done();
         }, time);
     })
 
@@ -755,9 +755,9 @@ describe('ActsAnsActiveTest', function () {
         var promiseCount = await notify.getActiveNotificationCount();
         expect(promiseCount).assertEqual(2);
         console.debug("===============Ans_GetActive_1400 promiseCount==================>"+promiseCount);
-        done();
         setTimeout(function(){
             console.debug("===============Ans_GetActive_1400 done==================>");
+            done();
         }, time);
     })
 
@@ -776,9 +776,9 @@ describe('ActsAnsActiveTest', function () {
         await notify.cancelAll();
         notify.getActiveNotificationCount(getCountCallbackThree);
         console.debug("===============Ans_GetActive_1500 getActiveNotificationCount end==================>");
-        done();
         setTimeout(function(){
             console.debug("===============Ans_GetActive_1500 done==================>");
+            done();
         }, time);
     })
 
@@ -793,9 +793,9 @@ describe('ActsAnsActiveTest', function () {
         var promiseCount = await notify.getActiveNotificationCount();
         expect(promiseCount).assertEqual(0);
         console.debug("===============Ans_GetActive_1600 promiseCount==================>"+promiseCount);
-        done();
         setTimeout(function(){
             console.debug("===============Ans_GetActive_1600 done==================>");
+            done();
         }, time);
     })
 
@@ -846,9 +846,9 @@ describe('ActsAnsActiveTest', function () {
         console.debug("===============Ans_GetActive_1700 cancel end==================>");
         notify.getActiveNotificationCount(getCountCallbackFour);
         console.debug("===============Ans_GetActive_1700 getActiveNotifications end==================>");
-        done();
         setTimeout(function(){
             console.debug("===============Ans_GetActive_1700 done==================>");
+            done();
         }, time);
     })
 
@@ -894,9 +894,9 @@ describe('ActsAnsActiveTest', function () {
         var promiseCount = await notify.getActiveNotificationCount();
         expect(promiseCount).assertEqual(1);
         console.debug("===============Ans_GetActive_1800 promiseCount===========>"+promiseCount);
-        done();
         setTimeout(function(){
             console.debug("===============Ans_GetActive_1800 done==================>");
+            done();
         }, time);
     })
 
@@ -946,9 +946,9 @@ describe('ActsAnsActiveTest', function () {
         console.debug("===============Ans_GetActive_1900 cancel end==================>");
         notify.getActiveNotificationCount(getCountCallbackFive);
         console.debug("===============Ans_GetActive_1900 getActiveNotifications end==================>");
-        done();
         setTimeout(function(){
             console.debug("===============Ans_GetActive_1900 done==================>");
+            done();
         }, time);
     })
 
@@ -994,17 +994,16 @@ describe('ActsAnsActiveTest', function () {
         var promiseCount = await notify.getActiveNotificationCount();
         expect(promiseCount).assertEqual(0);
         console.debug("===============Ans_GetActive_2000 promiseCount===========>"+promiseCount);
-        done();
         setTimeout(function(){
             console.debug("===============Ans_GetActive_2000 done==================>");
+            done();
         }, time);
     })
 
-    function getAllCallbackNine(err, data){
-        console.debug("========Ans_GetAllActive_0900 getAllCallbackNine data.length========>"+data.length);
-        console.debug("========Ans_GetAllActive_0900 getAllCallbackNine err.code========>"+err.code);
-        expect(err.code).assertEqual(67108877);
-        expect(data).assertEqual(undefined);
+    function getAllCallbackNine(err,data){
+        console.debug("===========Ans_GetAllActive_0900 getAllCallbackNine data.length============>"+data.length);
+        console.debug("===========Ans_GetAllActive_0900 getAllCallbackNine err.code============>"+err.code);
+        expect(err.code).assertEqual(ERR_ANS_NON_SYSTEM_APP);
     }
 
     /*
@@ -1032,9 +1031,9 @@ describe('ActsAnsActiveTest', function () {
         console.debug("===============Ans_GetAllActive_0900 publish CurrentApp notify end==================>");
         notify.getAllActiveNotifications(getAllCallbackNine);
         console.debug("===============Ans_GetAllActive_0900 getAllActiveNotifications end==================>");
-        done();
-        setTimeout(async function(){
+        setTimeout(function(){
             console.debug("===============Ans_GetAllActive_0900 done==================>");
+            done();
         }, time);
     })
 
@@ -1061,11 +1060,16 @@ describe('ActsAnsActiveTest', function () {
         }
         await notify.publish(notificationRequestOfCurrentApp);
         console.debug("===============Ans_GetAllActive_1000 publish CurrentApp notify end==================>");
-        await notify.getAllActiveNotifications().then().catch((err)=>{
+        await notify.getAllActiveNotifications().then(()=>{
+            console.debug("=======Ans_GetAllActive_1000 then========>");
+        }).catch((err)=>{
             expect(err.code).assertEqual(ERR_ANS_NON_SYSTEM_APP);
-            console.debug("==Ans_GetAllActive_1000 err==>"+err.code);
-            done();
+            console.debug("=======Ans_GetAllActive_1000 err==========>"+err.code);
         });
+        setTimeout(function(){
+            console.debug("===============Ans_GetAllActive_1000 done==================>");
+            done();
+        }, time);
     })
 })
 

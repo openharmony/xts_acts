@@ -19,7 +19,6 @@ group("subscribe") {
     deps = [
       "publish:ActsAnsPublishTest",
       "subscribe:ActsAnsSubscriberTest",
-      "subsystem:ActsAnsSubSystemTest",
     ]
   }
 }
