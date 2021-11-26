@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 import wifi from '@ohos.wifi_native_js'
@@ -25,6 +24,7 @@ function sleep(delay) {
         
     }
 }
+
 var WifiSecurityType = {
     WIFI_SEC_TYPE_INVALID : 0,
     WIFI_SEC_TYPE_OPEN : 1,
@@ -38,8 +38,8 @@ var wifiDeviceConfig = {
     "bssid": "A1:B1:C1:D1:E1:F1",
     "preSharedKey": "12345678",
     "isHiddenSsid": "false",
-    "securityType": WifiSecurityType.WIFI_SEC_TYPE_SAE,
-    "netId": 0,
+    "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
+    "netId": -1,
     "ipType": 1,
     "creatorUid": 7,
     "disableReason": 0,
@@ -227,15 +227,120 @@ describe('ACTS_WifiTest', function () {
                 console.log("[wifi_test] wifi discon2 result: " + discon2);
                 expect(discon2).assertTrue();
                 sleep(3000);
-                var disable = wifi.disableWifi();
-                sleep(3000);
-                console.log("[wifi_test] wifi disable result: " + disable);
-                expect(disable).assertTrue();
-   
             });
       
         done();
-    }) 
+    })
+    
+    /**
+    * @tc.number     wifi_native_js_unit_test_009
+    * @tc.name       Test wifi.connectToDevice.
+    * @tc.desc       Test wifi.connectToDevice API functionality.
+    */
+    it('wifi_native_js_unit_test_009', 0, function () {
+        console.info("[wifi_test] wifi connectToDevice test.");
+        var wifiDeviceConfig1 = {
+            "ssid": "TEST",
+            "bssid": "A1:B1:C1:D1:E1:F1",
+            "preSharedKey": "12345678",
+            "isHiddenSsid": "false",
+            "securityType": WifiSecurityType.WIFI_SEC_TYPE_INVALID,
+            "netId": -1,
+            "ipType": 1,
+            "creatorUid": 7,
+            "disableReason": 0,
+            "randomMacType": 0,
+            "randomMacAddr": "11:22:33:44:55:66",
+            "staticIp": {"ipAddress": 1284752956,"gateway": 1284752936},
+        };
+        var active = wifi.isWifiActive();
+        sleep(3000);
+        console.log("[wifi_test] wifi active result2: " + active);
+        if(!active){
+            var enable = wifi.enableWifi();
+            expect(enable).assertTrue();
+            sleep(3000);
+        }
+        var result1 = wifi.connectToDevice(wifiDeviceConfig1);
+        sleep(3000);
+        console.log("[wifi_test] wifi connectToDevice result: " + result1);
+        expect(result1).assertTrue();
+
+        console.log("[wifi_test] wifi disconnect() result: " + wifi.disconnect());
+        expect(wifi.disconnect()).assertTrue();
+        sleep(3000);
+       
+    })
+   
+    /**
+    * @tc.number     wifi_native_js_unit_test_010
+    * @tc.name       Test wifi.connectToDevice.
+    * @tc.desc       Test wifi.connectToDevice API functionality.
+    */
+    it('wifi_native_js_unit_test_010', 0, function () {
+        console.info("[wifi_test] wifi connectToDevice test.");
+        var wifiDeviceConfig2 = {
+            "ssid": "TEST",
+            "bssid": "A1:B1:C1:D1:E1:F1",
+            "preSharedKey": "12345678",
+            "isHiddenSsid": "false",
+            "securityType": WifiSecurityType.WIFI_SEC_TYPE_OPEN,
+            "netId": -1,
+            "ipType": 1,
+            "creatorUid": 7,
+            "disableReason": 0,
+            "randomMacType": 0,
+            "randomMacAddr": "11:22:33:44:55:66",
+            "staticIp": {"ipAddress": 1284752956,"gateway": 1284752936},
+        };
+        var active = wifi.isWifiActive();
+        sleep(3000);
+        console.log("[wifi_test] wifi active result3: " + active);
+        if(!active){
+            var enable = wifi.enableWifi();
+            expect(enable).assertTrue();
+            sleep(3000);
+        }
+        var result1 = wifi.connectToDevice(wifiDeviceConfig2);
+        sleep(3000);
+        console.log("[wifi_test] wifi connectToDevice result1: " + result1);
+        expect(result1).assertTrue();
+
+        console.log("[wifi_test] wifi disconnect() result1: " + wifi.disconnect());
+        expect(wifi.disconnect()).assertTrue();
+        sleep(3000);
+
+    })
+	
+   /**
+    * @tc.number     wifi_native_js_unit_test_011
+    * @tc.name       Test wifi.connectToDevice.
+    * @tc.desc       Test wifi.connectToDevice API functionality.
+    */
+    it('wifi_native_js_unit_test_011', 0, function () {
+        console.info("[wifi_test] wifi connectToDevice test.");
+        var active = wifi.isWifiActive();
+        sleep(3000);
+        console.log("[wifi_test] wifi active result2: " + active);
+        if(!active){
+            var enable = wifi.enableWifi();
+            expect(enable).assertTrue();
+            sleep(3000);
+        }
+        var result1 = wifi.connectToDevice(wifiDeviceConfig);
+        sleep(3000);
+        console.log("[wifi_test] wifi connectToDevice result: " + result1);
+        expect(result1).assertTrue();
+        
+        console.log("[wifi_test] wifi disconnect() result: " + wifi.disconnect());
+        expect(wifi.disconnect()).assertTrue();
+        sleep(3000);
+        var disable = wifi.disableWifi();
+        sleep(3000);
+        console.log("[wifi_test] wifi disable result: " + disable);
+        expect(disable).assertTrue();
+    })
+
 
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })
