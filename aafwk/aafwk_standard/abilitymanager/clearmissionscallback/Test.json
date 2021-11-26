@@ -3,7 +3,8 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "120000",
-        "package": "com.example.clearmissionscallback",
+        "bundleName": "com.ohos.launcher",
+        "package": "com.example.myapplication11",
         "shell-timeout": "60000"
     },
     "kits": [

@@ -648,7 +648,7 @@ HWTEST_F(AbilityMgrTest2, testConnectAbility, Function | MediumTest | Level1)
  * @tc.number    : SUB_APPEXECFWK_AMS_API_0010
  * @tc.name      : testWantMathBundle
  * @tc.desc      : [C- SOFTWARE -0100]
- * @tc.author    : lijiashan 00523117
+ * @tc.author    : lijiashan
  */
 HWTEST_F(AbilityMgrTest2, testDisConnectAbility, Function | MediumTest | Level1)
 {
