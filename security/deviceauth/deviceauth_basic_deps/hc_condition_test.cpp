@@ -1,0 +1,1 @@
+../../../security_lite/deviceauth_basic_deps/hc_condition_test.c
