@@ -43,7 +43,15 @@
         "type": "page",
         "isVisible": "true",
         "launchType": "standard",
-        "language": "C++"
+        "language": "C++",
+        "metaData": {
+            "customizeData": [
+                {
+                    "name": "originWidgetName",
+                    "value": "com.weather.testWidget"
+                }
+            ]
+        }
       }
     ],
     "js": [
