@@ -1948,4 +1948,125 @@ describe('updateclient', function() {
         console.info('[verifyVersion] success.');
         console.info('testVerifyVersion05 END');
     });
+
+    /**
+     * @tc.number    SUB_UPDATE_JS_API_0086
+     * @tc.name      testPackageTypes
+     * @tc.desc      check packageTypes is defined correct.
+     */
+     it('testPackageTypes', 0, function() {
+        console.info('testPackageTypes START');
+        try {
+            expect(updater.PackageTypes.PACKAGE_TYPE_NORMAL).assertEqual(1); 
+            expect(updater.PackageTypes.PACKAGE_TYPE_BASE).assertEqual(2); 
+            expect(updater.PackageTypes.PACKAGE_TYPE_CUST).assertEqual(3); 
+            expect(updater.PackageTypes.PACKAGE_TYPE_PRELOAD).assertEqual(4); 
+            expect(updater.PackageTypes.PACKAGE_TYPE_COTA).assertEqual(5); 
+            expect(updater.PackageTypes.PACKAGE_TYPE_VERSION).assertEqual(6); 
+            expect(updater.PackageTypes.PACKAGE_TYPE_PATCH).assertEqual(7); 
+        } catch(e) {
+            console.error('[testPackageTypes] fail.' + e);
+        }
+        console.info('[PackageTypes] success.');
+        console.info('testPackageTypes END');
+    });
+	
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0087
+     * @tc.name      testNewVersionStatus
+     * @tc.desc      check NewVersionStatus is defined correct.
+     */
+    it('testNewVersionStatus', 0, function() {
+        console.info('testNewVersionStatus START');
+        try {
+            expect(updater.NewVersionStatus.VERSION_STATUS_ERR).assertEqual(-1); 
+            expect(updater.NewVersionStatus.VERSION_STATUS_NEW).assertEqual(0); 
+            expect(updater.NewVersionStatus.VERSION_STATUS_NONE).assertEqual(1); 
+            expect(updater.NewVersionStatus.VERSION_STATUS_BUSY).assertEqual(2); 
+        } catch(e) {
+            console.error('[testNewVersionStatus] fail.' + e);
+        }
+        console.info('[NewVersionStatus] success.');
+        console.info('testNewVersionStatus END');
+    });
+
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0088
+     * @tc.name      testInstallMode
+     * @tc.desc      check InstallMode is defined correct.
+     */
+    it('testInstallMode', 0, function() {
+        console.info('testInstallMode START');
+        try {
+            expect(updater.InstallMode.INSTALL_MODE_NORMAL).assertEqual(0); 
+            expect(updater.InstallMode.INSTALL_MODE_NIGHT).assertEqual(1);
+            expect(updater.InstallMode.INSTALL_MODE_AUTO).assertEqual(2);			
+        } catch(e) {
+            console.error('[testInstallMode] fail.' + e);
+        }
+        console.info('[InstallMode] success.');
+        console.info('testInstallMode END');
+    });
+	
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0089
+     * @tc.name      testCheckResultAndDescriptionInfo
+     * @tc.desc      check checkResult and descriptionInfo is defined correct.
+     */
+    it('testInstallMode', 0, function() {
+        console.info('testCheckResultAndDescriptionInfo START');
+        try {
+            let descriptionInfo = updater.DescriptionInfo.content;
+			console.info('test DescriptionInfo.content is ' + descriptionInfo);
+            expect(updater.CheckResult.packageType.PACKAGE_TYPE_NORMAL).assertEqual(1);			
+        } catch(e) {
+            console.error('[testCheckResultAndDescriptionInfo] fail.' + e);
+        }
+        console.info('[CheckResultAndDescriptionInfo] success.');
+        console.info('testCheckResultAndDescriptionInfo END');
+    });
+
+    /**
+     * @tc.number    SUB_UPDATE_JS_API_0090
+     * @tc.name      testGetUpdaterForOther
+     * @tc.desc      Test getUpdaterForOther obj.
+     */
+    it('testGetUpdaterForOther', 0, function() {
+        console.info('testGetUpdaterForOther START');
+        try {
+            if (client === undefined) {
+                console.error("client not defined");
+                return;
+            }
+            let tmpGetUpdaterForOther = client.getUpdaterForOther('/data/updater/updater.zip', '1234567890', 'OTA');
+            expect(tmpGetUpdaterForOther != undefined).assertTrue();
+        } catch(e) {
+            console.error('[testGetUpdaterForOther] fail.' + e);
+        }
+
+        console.info('[client.getUpdaterForOther] success.');
+        console.info('testGetUpdaterForOther END');
+    });
+	
+    /**
+     * @tc.number    SUB_UPDATE_JS_API_0091
+     * @tc.name      testGetUpdaterFromOther
+     * @tc.desc      Test getUpdaterFromOther obj.
+     */
+    it('testGetUpdaterFromOther', 0, function() {
+        console.info('testGetUpdaterFromOther START');
+        try {
+            if (client === undefined) {
+                console.error("client not defined");
+                return;
+            }
+            let tmpGetUpdaterFromOther = client.getUpdaterFromOther('/data/updater/updater.zip', '1234567890', 'OTA');
+            expect(tmpGetUpdaterFromOther != undefined).assertTrue();
+        } catch(e) {
+            console.error('[testGetUpdaterFromOther] fail.' + e);
+        }
+
+        console.info('[client.getUpdaterFromOther] success.');
+        console.info('testGetUpdaterFromOther END');
+    });
 });
