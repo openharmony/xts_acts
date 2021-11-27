@@ -19,7 +19,8 @@ import systemTime from '@ohos.systemtime'
 
 describe('TimeTest', function() {
     console.log('start################################start');
-    /**
+    
+	/**
      * @tc.number    SUB_systemTime_setTime_JS_API_0100
      * @tc.name      Test systemTime.setTime time = 0
      * @tc.desc      Test systemTime_setTime API functionality.
