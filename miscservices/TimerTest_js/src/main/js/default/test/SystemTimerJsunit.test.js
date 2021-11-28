@@ -963,6 +963,75 @@ describe('TimerTest', function() {
 		expect(destroyTimerRes).assertEqual(false)
 		console.log('SUB_systemTimer_Timer_JS_API_2800 end');
 	});
+	
+#if 0
+	/**
+     * @tc.number    SUB_systemTimer_Timer_JS_API_2900
+     * @tc.name      Test systemTimer.Timer type = TIMER_TYPE_IDLE
+     * @tc.desc      Test systemTimer_Timer API functionality.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+	it('systemTimer_Timer_test29',0, async () => {
+		console.log("SUB_systemTimer_Timer_JS_API_2900 start")
+        var options = {
+			type:TIMER_TYPE_IDLE,
+			repeat:false,
+			persistent:false
+		}
+		console.log("create timer")
+        let timer = systemTimer.createTimer(options)
+		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
+		
+		console.log("start timer")
+		let startTimerRes = systemTimer.startTimer(timer, 100000)
+		expect(startTimerRes).assertEqual(true)
+		
+		console.log("stop timer")
+		let stopTimerRes = systemTimer.stopTimer(timer)
+		expect(stopTimerRes).assertEqual(true)
+		
+		console.log("destroy timer")
+		let destroyTimerRes = systemTimer.destroyTimer(timer)
+		expect(destroyTimerRes).assertEqual(true)
+		console.log('SUB_systemTimer_Timer_JS_API_2900 end');
+	});
+#endif
+	
+		/**
+     * @tc.number    SUB_systemTimer_Timer_JS_API_3000
+     * @tc.name      Test systemTimer.Timer type = TIMER_TYPE_WEAKUP
+     * @tc.desc      Test systemTimer_Timer API functionality.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+	it('systemTimer_Timer_test30',0, async () => {
+		console.log("SUB_systemTimer_Timer_JS_API_3000 start")
+        var options = {
+			type:TIMER_TYPE_WEAKUP,
+			repeat:false,
+			persistent:false
+		}
+		console.log("create timer")
+        let timer = systemTimer.createTimer(options)
+		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
+		
+		console.log("start timer")
+		let startTimerRes = systemTimer.startTimer(timer, 100000)
+		expect(startTimerRes).assertEqual(true)
+		
+		console.log("stop timer")
+		let stopTimerRes = systemTimer.stopTimer(timer)
+		expect(stopTimerRes).assertEqual(true)
+		
+		console.log("destroy timer")
+		let destroyTimerRes = systemTimer.destroyTimer(timer)
+		expect(destroyTimerRes).assertEqual(true)
+		console.log('SUB_systemTimer_Timer_JS_API_3000 end');
+	});
+	
 
 	/**
      * @function     Used for callback functions
