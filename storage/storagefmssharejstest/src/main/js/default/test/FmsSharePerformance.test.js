@@ -36,7 +36,7 @@ describe('fmsPerformanceTest', function () {
     prepareFile(fmsFileName('picture.jpg'), 'content');
     prepareFile(fmsFileName('picture2.jpg'), 'content');
     prepareFile(fmsFileName('文件.doc'), 'content');
-    prepareFile(fmsFileName('cross Fire.apk'), 'content');
+    prepareFile(fmsFileName('cross Fire.txt'), 'content');
     prepareFile(fmsCacheName('video.mp4'), 'content');
     prepareFile(fmsFileName('file.xlsx'), 'content');
     prepareFile(fmsFileName('f2.ppt'), 'content');
@@ -47,7 +47,7 @@ describe('fmsPerformanceTest', function () {
     '{"type": "files-path", "name": "primary_leaf3", "path": "/picture.jpg"},' +
     '{"type": "files-path", "name": "primary_leaf4", "path": "/picture2.jpg"},' +
     '{"type": "files-path", "name": "primary_leaf5", "path": "/文件.doc"},' +
-    '{"type": "files-path", "name": "primary_leaf6", "path": "/cross Fire.apk"},' +
+    '{"type": "files-path", "name": "primary_leaf6", "path": "/cross Fire.txt"},' +
     '{"type": "cache-path", "name": "cacheprimary_leaf", "path": "/video.mp4"},' +
     '{"type": "files-path", "name": "primary_leaf7", "path": "/file.xlsx"},' +
     '{"type": "files-path", "name": "primary_leaf8", "path": "/f3.doc"},' +

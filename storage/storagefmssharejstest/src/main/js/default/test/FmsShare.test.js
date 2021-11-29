@@ -36,7 +36,7 @@ describe('fmsShareTest', function () {
     prepareFile(fmsFileName('picture.jpg'), 'content');
     prepareFile(fmsFileName('picture2.jpg'), 'content');
     prepareFile(fmsFileName('文件.doc'), 'content');
-    prepareFile(fmsFileName('cross Fire.apk'), 'content');
+    prepareFile(fmsFileName('cross Fire.txt'), 'content');
     prepareFile(fmsCacheName('video.mp4'), 'content');
     prepareFile(fmsFileName('file.xlsx'), 'content');
     prepareFile(fmsFileName('f2.ppt'), 'content');
@@ -47,7 +47,7 @@ describe('fmsShareTest', function () {
     '{"type": "files-path", "name": "primary_leaf3", "path": "/picture.jpg"},' +
     '{"type": "files-path", "name": "primary_leaf4", "path": "/picture2.jpg"},' +
     '{"type": "files-path", "name": "primary_leaf5", "path": "/文件.doc"},' +
-    '{"type": "files-path", "name": "primary_leaf6", "path": "/cross Fire.apk"},' +
+    '{"type": "files-path", "name": "primary_leaf6", "path": "/cross Fire.txt"},' +
     '{"type": "cache-path", "name": "cacheprimary_leaf", "path": "/video.mp4"},' +
     '{"type": "files-path", "name": "primary_leaf7", "path": "/file.xlsx"},' +
     '{"type": "files-path", "name": "primary_leaf8", "path": "/f3.doc"},' +
@@ -165,12 +165,12 @@ describe('fmsShareTest', function () {
     fileShareAbility.fuzzyFileToUri({
       deviceId: '440E-0906',
       authority: 'ohos.acts.test.ability',
-      uri: 'internal://app/cross Fire.apk',
+      uri: 'internal://app/cross Fire.txt',
       displayName: '你好，世界',
       success: function (uri) {
         console.log('FMS_fuzzyFileToUri_500 call fuzzyFileToUri success. uri:' + uri);
         expect(uri == 'dataability://440E-0906/ohos.acts.test.ability/primary/document/files'
-        +'/primary_leaf6/cross Fire.apk/leaf?displayName=你好，世界#').assertTrue();
+        +'/primary_leaf6/cross Fire.txt/leaf?displayName=你好，世界#').assertTrue();
       },
       fail: function (data, code) {
         console.log('FMS_fuzzyFileToUri_500 call fuzzyFileToUri fail, code: ' + code + ', data: ' + data);
