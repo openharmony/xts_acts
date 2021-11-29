@@ -2114,7 +2114,6 @@ describe('ChildProcessTest', function () {
         if(pri)
         {
             var flag = true
-//            var flag = new Boolean(true)
             expect(flag).assertEqual(true)
         }
     })
