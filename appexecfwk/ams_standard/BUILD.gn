@@ -18,8 +18,8 @@ group("ams_standard") {
   if (is_standard_system) {
     deps = [
       "amsdatauriutils:amsDataUriUtils",
-      #"amszipfileunzipfilest:amsZipfileUnzipfileST",
-      #"fwkdataaccessor:FWKDataAccessor",
+      "amszipfileunzipfilest:amsZipfileUnzipfileST",
+      "fwkdataaccessor:FWKDataAccessor",
       #"serviceability/actsparticleabilitytest:ActsParticleAbilityTest",
       #"serviceability/sceneProject/particlestartability:ParticleStartAbility",
       #"serviceability/sceneProject/particletestserver:ParticleTestServer",
