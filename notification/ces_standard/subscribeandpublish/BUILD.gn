@@ -17,8 +17,9 @@ group("SubscribeAndPublish") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      #"actssubscriberorderedtest:ActsSubscriberOrderTest",
-      "actssubscriberunordersystemtest:ActsSubscriberTestUnorderSystem",
+      "actssubscriberorderedtest:ActsSubscriberOrderTest",
+
+      #"actssubscriberunordersystemtest:ActsSubscriberTestUnorderSystem",
       "actssubscriberunordertest:ActsSubscriberUnorderTest",
     ]
   }
