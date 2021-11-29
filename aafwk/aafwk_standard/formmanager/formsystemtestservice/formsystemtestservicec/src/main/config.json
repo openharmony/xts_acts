@@ -66,28 +66,6 @@
                 }
               ]
             }
-          },
-          {
-            "name": "FormC_Js002",
-            "description": "form_description",
-            "isDefault": true,
-            "type": "JS",
-            "colorMode": "auto",
-            "supportDimensions":[ "1*2", "2*2" ],
-            "defaultDimension": "1*2",
-            "updateEnabled": true,
-            "updateDuration": 1,
-            "scheduledUpdateTime": "10:30",
-            "jsComponentName": "card",
-            "formVisibleNotify" : true,
-            "metaData": {
-              "customizeData": [
-                {
-                  "name": "originWidgetName",
-                  "value": "myTest"
-                }
-              ]
-            }
           }
         ]
       }

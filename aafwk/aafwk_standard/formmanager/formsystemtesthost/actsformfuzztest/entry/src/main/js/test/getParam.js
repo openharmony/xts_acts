@@ -12,6 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+export const REPEAT_COUNT = 2;
+
 var RANDOM_BEGIN_POSITION = 0;
 var RANDOM_BEGIN_POSITION_A = 2;
 var STRING_RANDOM_LENGTH = 2064;
@@ -68,31 +71,31 @@ const stringTest = function() {
     }
     console.log("The stringTest of this fuzzTest random:" + res);
     return res;
-}
+};
 
 // return number random, the number length is: [Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]
 const numberTest = function() {
     console.log("The numberTest of this fuzzTest random" );
     return getIntegerRandom(Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER + 1);
-}
+};
 
 // return boolean random, the boolean value is: 0->(false), 1->(true)
 const booleanTest = function() {
     console.log("The booleanTest of this fuzzTest random" );
     return Boolean(getIntegerRandom(RANDOM_BEGIN_POSITION, BOOLEAN_RANDOM_LENGTH));
-}
+};
 
 // null
 const nullTest = function() {
     console.log("The nullTest of this fuzzTest random" );
     return null;
-}
+};
 
 // undefined
 const undefinedTest = function() {
     console.log("The undefinedTest of this fuzzTest random" );
     return undefined;
-}
+};
 
 // return array random, the array value is: string,number,bool
 const arrayTest = function() {
@@ -120,7 +123,7 @@ const arrayTest = function() {
     }
     console.log("The arrayTest of this fuzzTest random:" + arrValue);
     return arrValue;
-}
+};
 
 // return objectTest random, the objectTest value is: null, not null
 const objectTest = function() {
@@ -130,7 +133,7 @@ const objectTest = function() {
 
     console.log("The objectTest of this fuzzTest random" );
     return getIntegerRandom(RANDOM_BEGIN_POSITION, OBJECT_RANDOM_LENGTH) ? objectA: objectB;
-}
+};
 
 // return functionTest random, the functionTest value is: null, not null
 const functionTest = function() {
@@ -139,7 +142,7 @@ const functionTest = function() {
 
     console.log("The functionTest of this fuzzTest random" );
     return getIntegerRandom(RANDOM_BEGIN_POSITION, FUNCTION_RANDOM_LENGTH) ? functionA: functionB;
-}
+};
 
 export {
     stringTest, numberTest, booleanTest, nullTest, undefinedTest, objectTest, arrayTest, functionTest
