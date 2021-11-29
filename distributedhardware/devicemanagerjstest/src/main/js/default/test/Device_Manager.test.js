@@ -115,7 +115,7 @@ describe('deviceManagerTest', function() {
 
     /*
      * @tc.number  deviceManagerTest_startDeviceDiscovery_0100
-     * @tc.name    correct deviceinfo for startDeviceDiscovery
+     * @tc.name    correct deviceinfo for startDeviceDiscovery with different para 1
      * @tc.desc    Function test
      * @tc.level   3
      */
@@ -129,12 +129,72 @@ describe('deviceManagerTest', function() {
 
             var info = {
                 "subscribeId": 2115,
-                "mode": 0xAA,
-                "medium": 0,
-                "freq": 2,
+                "mode": DISCOVER_MODE_ACTIVE,
+                "medium": AUTO,
+                "freq": LOW,
                 "isSameAccount": false,
                 "isWakeRemote": true,
                 "capability": 0
+            };
+            var start = data.startDeviceDiscovery(info);
+            expect(start).assertUndefined();
+        });
+        console.log("----------stop running deviceManagerTest_startDeviceDiscovery_0100----------");
+        done();
+    })
+
+    /*
+     * @tc.number  deviceManagerTest_startDeviceDiscovery_0110
+     * @tc.name    correct deviceinfo for startDeviceDiscovery with different para 2
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('deviceManagerTest_startDeviceDiscovery_0110', 0, async function (done) {
+        console.log("----------start running deviceManagerTest_startDeviceDiscovery_0100----------");
+        deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
+            if (err) {
+                expect().assertFail();
+                return ;
+            }
+
+            var info = {
+                "subscribeId": 2115,
+                "mode": DISCOVER_MODE_PASSIVE,
+                "medium": BLE,
+                "freq": MID,
+                "isSameAccount": false,
+                "isWakeRemote": true,
+                "capability": SUBSCRIBE_CAPABILITY_OSD
+            };
+            var start = data.startDeviceDiscovery(info);
+            expect(start).assertUndefined();
+        });
+        console.log("----------stop running deviceManagerTest_startDeviceDiscovery_0100----------");
+        done();
+    })
+
+    /*
+     * @tc.number  deviceManagerTest_startDeviceDiscovery_0120
+     * @tc.name    correct deviceinfo for startDeviceDiscovery with different para 3
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('deviceManagerTest_startDeviceDiscovery_0120', 0, async function (done) {
+        console.log("----------start running deviceManagerTest_startDeviceDiscovery_0100----------");
+        deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
+            if (err) {
+                expect().assertFail();
+                return ;
+            }
+
+            var info = {
+                "subscribeId": 2115,
+                "mode": DISCOVER_MODE_PASSIVE,
+                "medium": COAP,
+                "freq": SUPER_HIGH,
+                "isSameAccount": false,
+                "isWakeRemote": true,
+                "capability": SUBSCRIBE_CAPABILITY_DDMP
             };
             var start = data.startDeviceDiscovery(info);
             expect(start).assertUndefined();
@@ -206,7 +266,7 @@ describe('deviceManagerTest', function() {
 
     /*
      * @tc.number  deviceManagerTest_authenticateDevice_0100
-     * @tc.name    testcase for authenticateDevice in correct para
+     * @tc.name    testcase for authenticateDevice in correct deviceType para with WEARABLE
      * @tc.desc    Function test
      * @tc.level   2
      */
@@ -221,6 +281,226 @@ describe('deviceManagerTest', function() {
             deviceId: "",
             deviceName: "",
             deviceType: WEARABLE
+            }
+            let extraInfo = {
+                "targetPkgName": 'com.ohos.devicemangagerdemo',
+                "appName": "myapplication",
+                "appDescription": "apply auth",
+                "business": '0',
+                "displayOwner": 0
+            }
+            let authParam = {
+                "authType": 1,
+                "appIcon": new Uint8Array([]),
+                "appThumbnail": new Uint8Array([]),
+                "extraInfo": extraInfo
+            }
+            data.authenticateDevice(deviceInfo, authParam, (err, data) => {
+                if (err) {
+                    expect().assertFail();
+                    return;
+                }
+                var token = data.pinToken;
+                expect(token).assertNotNull();
+            });
+        });
+        console.log("----------stop running deviceManagerTest_authenticateDevice_0100----------");
+        done();
+    })
+
+    /*
+     * @tc.number  deviceManagerTest_authenticateDevice_0110
+     * @tc.name    testcase for authenticateDevice in correct deviceType para with SPEAKER
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('deviceManagerTest_authenticateDevice_0110', 0, async function (done) {
+        console.log("----------start running deviceManagerTest_authenticateDevice_0100----------");
+        deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
+            if (err) {
+                expect().assertFail();
+                return ;
+            }
+            let deviceInfo = {
+                deviceId: "",
+                deviceName: "",
+                deviceType: SPEAKER
+            }
+            let extraInfo = {
+                "targetPkgName": 'com.ohos.devicemangagerdemo',
+                "appName": "myapplication",
+                "appDescription": "apply auth",
+                "business": '0',
+                "displayOwner": 0
+            }
+            let authParam = {
+                "authType": 1,
+                "appIcon": new Uint8Array([]),
+                "appThumbnail": new Uint8Array([]),
+                "extraInfo": extraInfo
+            }
+            data.authenticateDevice(deviceInfo, authParam, (err, data) => {
+                if (err) {
+                    expect().assertFail();
+                    return;
+                }
+                var token = data.pinToken;
+                expect(token).assertNotNull();
+            });
+        });
+        console.log("----------stop running deviceManagerTest_authenticateDevice_0100----------");
+        done();
+    })
+
+    /*
+     * @tc.number  deviceManagerTest_authenticateDevice_0120
+     * @tc.name    testcase for authenticateDevice in correct deviceType para with PHONE
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('deviceManagerTest_authenticateDevice_0120', 0, async function (done) {
+        console.log("----------start running deviceManagerTest_authenticateDevice_0100----------");
+        deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
+            if (err) {
+                expect().assertFail();
+                return ;
+            }
+            let deviceInfo = {
+                deviceId: "",
+                deviceName: "",
+                deviceType: PHONE
+            }
+            let extraInfo = {
+                "targetPkgName": 'com.ohos.devicemangagerdemo',
+                "appName": "myapplication",
+                "appDescription": "apply auth",
+                "business": '0',
+                "displayOwner": 0
+            }
+            let authParam = {
+                "authType": 1,
+                "appIcon": new Uint8Array([]),
+                "appThumbnail": new Uint8Array([]),
+                "extraInfo": extraInfo
+            }
+            data.authenticateDevice(deviceInfo, authParam, (err, data) => {
+                if (err) {
+                    expect().assertFail();
+                    return;
+                }
+                var token = data.pinToken;
+                expect(token).assertNotNull();
+            });
+        });
+        console.log("----------stop running deviceManagerTest_authenticateDevice_0100----------");
+        done();
+    })
+
+    /*
+     * @tc.number  deviceManagerTest_authenticateDevice_0130
+     * @tc.name    testcase for authenticateDevice in correct deviceType para with TABLET
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('deviceManagerTest_authenticateDevice_0130', 0, async function (done) {
+        console.log("----------start running deviceManagerTest_authenticateDevice_0100----------");
+        deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
+            if (err) {
+                expect().assertFail();
+                return ;
+            }
+            let deviceInfo = {
+                deviceId: "",
+                deviceName: "",
+                deviceType: TABLET
+            }
+            let extraInfo = {
+                "targetPkgName": 'com.ohos.devicemangagerdemo',
+                "appName": "myapplication",
+                "appDescription": "apply auth",
+                "business": '0',
+                "displayOwner": 0
+            }
+            let authParam = {
+                "authType": 1,
+                "appIcon": new Uint8Array([]),
+                "appThumbnail": new Uint8Array([]),
+                "extraInfo": extraInfo
+            }
+            data.authenticateDevice(deviceInfo, authParam, (err, data) => {
+                if (err) {
+                    expect().assertFail();
+                    return;
+                }
+                var token = data.pinToken;
+                expect(token).assertNotNull();
+            });
+        });
+        console.log("----------stop running deviceManagerTest_authenticateDevice_0100----------");
+        done();
+    })
+
+    /*
+     * @tc.number  deviceManagerTest_authenticateDevice_0140
+     * @tc.name    testcase for authenticateDevice in correct deviceType para with CAR
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('deviceManagerTest_authenticateDevice_0140', 0, async function (done) {
+        console.log("----------start running deviceManagerTest_authenticateDevice_0100----------");
+        deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
+            if (err) {
+                expect().assertFail();
+                return ;
+            }
+            let deviceInfo = {
+                deviceId: "",
+                deviceName: "",
+                deviceType: CAR
+            }
+            let extraInfo = {
+                "targetPkgName": 'com.ohos.devicemangagerdemo',
+                "appName": "myapplication",
+                "appDescription": "apply auth",
+                "business": '0',
+                "displayOwner": 0
+            }
+            let authParam = {
+                "authType": 1,
+                "appIcon": new Uint8Array([]),
+                "appThumbnail": new Uint8Array([]),
+                "extraInfo": extraInfo
+            }
+            data.authenticateDevice(deviceInfo, authParam, (err, data) => {
+                if (err) {
+                    expect().assertFail();
+                    return;
+                }
+                var token = data.pinToken;
+                expect(token).assertNotNull();
+            });
+        });
+        console.log("----------stop running deviceManagerTest_authenticateDevice_0100----------");
+        done();
+    })
+
+    /*
+     * @tc.number  deviceManagerTest_authenticateDevice_0150
+     * @tc.name    testcase for authenticateDevice in correct deviceType para with TV
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('deviceManagerTest_authenticateDevice_0150', 0, async function (done) {
+        console.log("----------start running deviceManagerTest_authenticateDevice_0100----------");
+        deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
+            if (err) {
+                expect().assertFail();
+                return ;
+            }
+            let deviceInfo = {
+                deviceId: "",
+                deviceName: "",
+                deviceType: TV
             }
             let extraInfo = {
                 "targetPkgName": 'com.ohos.devicemangagerdemo',
@@ -302,7 +582,7 @@ describe('deviceManagerTest', function() {
 
     /*
      * @tc.number  deviceManagerTest_on-deviceStateChange_0100
-     * @tc.name    testcase for deviceStateChange on
+     * @tc.name    testcase for deviceStateChange on with ONLINE
      * @tc.desc    Function test
      * @tc.level   2
      */
@@ -315,6 +595,72 @@ describe('deviceManagerTest', function() {
             }
             var fa = data.on('deviceStateChange', (deviceStateChangeAction, deviceInfo) => {
                 expect(true).assertEqual(deviceStateChangeAction.ONLINE == 0);
+            });
+            expect(fa).assertUndefined();
+        });
+        console.log("----------stop running deviceManagerTest_on-deviceStateChange_0100----------");
+        done();
+    })
+
+    /*
+     * @tc.number  deviceManagerTest_on-deviceStateChange_0110
+     * @tc.name    testcase for deviceStateChange on with OFFLINE
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('deviceManagerTest_on-deviceStateChange_0110', 0, async function (done) {
+        console.log("----------start running deviceManagerTest_on-deviceStateChange_0100----------");
+        deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
+            if (err) {
+                expect().assertFail();
+                return ;
+            }
+            var fa = data.on('deviceStateChange', (deviceStateChangeAction, deviceInfo) => {
+                expect(true).assertEqual(deviceStateChangeAction.OFFLINE == 0);
+            });
+            expect(fa).assertUndefined();
+        });
+        console.log("----------stop running deviceManagerTest_on-deviceStateChange_0100----------");
+        done();
+    })
+
+    /*
+     * @tc.number  deviceManagerTest_on-deviceStateChange_0120
+     * @tc.name    testcase for deviceStateChange on with READY
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('deviceManagerTest_on-deviceStateChange_0120', 0, async function (done) {
+        console.log("----------start running deviceManagerTest_on-deviceStateChange_0100----------");
+        deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
+            if (err) {
+                expect().assertFail();
+                return ;
+            }
+            var fa = data.on('deviceStateChange', (deviceStateChangeAction, deviceInfo) => {
+                expect(true).assertEqual(deviceStateChangeAction.READY == 0);
+            });
+            expect(fa).assertUndefined();
+        });
+        console.log("----------stop running deviceManagerTest_on-deviceStateChange_0100----------");
+        done();
+    })
+
+    /*
+     * @tc.number  deviceManagerTest_on-deviceStateChange_0130
+     * @tc.name    testcase for deviceStateChange on with CHANGE
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('deviceManagerTest_on-deviceStateChange_0130', 0, async function (done) {
+        console.log("----------start running deviceManagerTest_on-deviceStateChange_0100----------");
+        deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
+            if (err) {
+                expect().assertFail();
+                return ;
+            }
+            var fa = data.on('deviceStateChange', (deviceStateChangeAction, deviceInfo) => {
+                expect(true).assertEqual(deviceStateChangeAction.CHANGE == 0);
             });
             expect(fa).assertUndefined();
         });
