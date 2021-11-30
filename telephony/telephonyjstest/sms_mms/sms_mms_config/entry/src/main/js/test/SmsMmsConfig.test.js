@@ -34,17 +34,17 @@ describe('SmsMmsConfigTest', function () {
   const RANTYPE_CDMA = 2;
   const RANTYPE_ERROR = 3;
 
-  var DEFAULT_SMS_SLOTID = 0;
+  var defaultSmsSlotid = 0;
   beforeAll(async function () {
     sms.getDefaultSmsSlotId((geterr, getresult) => {
       if (geterr) {
         return;
       }
-      DEFAULT_SMS_SLOTID = getresult;
+      defaultSmsSlotid = getresult;
     });
   });
   beforeEach(async function () {
-    sms.setDefaultSmsSlotId(DEFAULT_SMS_SLOTID, (err) => {});
+    sms.setDefaultSmsSlotId(defaultSmsSlotid, (err) => {});
   });
 
   /**
