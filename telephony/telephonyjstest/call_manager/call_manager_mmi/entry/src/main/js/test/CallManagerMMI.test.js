@@ -27,6 +27,7 @@ describe('CallManagerMMI', function () {
     it('Telephony_CallManager_MMI_Async_0100', 0, async function (done) {
         call.dial('**21*12599*10#', (err, data) => {
             if (err) {
+                expect().assertFail();
                 console.log('Telephony_CallManager_MMI_Async_0100 fail');
                 done();
                 return;
@@ -34,16 +35,17 @@ describe('CallManagerMMI', function () {
             expect(data).assertTrue();
             console.log('Telephony_CallManager_MMI_Async_0100 finish data = ' + data);
             done();
-        })
-        call.dial('##002#', (err, data) => {
-            if (err) {
-                console.log('Telephony_CallManager_MMI_Async_0100 fail');
+            call.dial('##002#', (err, data) => {
+                if (err) {
+                    expect().assertFail();
+                    console.log('Telephony_CallManager_MMI_Async_0100 fail');
+                    done();
+                    return;
+                }
+                expect(data).assertTrue();
+                console.log('Telephony_CallManager_MMI_Async_0100 finish data = ' + data);
                 done();
-                return;
-            }
-            expect(data).assertTrue();
-            console.log('Telephony_CallManager_MMI_Async_0100 finish data = ' + data);
-            done();
+            })
         })
     })
 
@@ -56,22 +58,24 @@ describe('CallManagerMMI', function () {
     it('Telephony_CallManager_MMI_Async_0200', 0, async function (done) {
         call.dial('**33*0000#', (err, data) => {
             if (err) {
+                expect().assertFail();
                 console.log('Telephony_CallManager_MMI_Async_0200 fail');
                 done();
                 return;
             }
             expect(data).assertTrue();
             console.log('Telephony_CallManager_MMI_Async_0200 finish data = ' + data);
-        })
-        call.dial('#33*0000#', (err, data) => {
-            if (err) {
-                console.log('Telephony_CallManager_MMI_Async_0200 fail');
+            call.dial('#33*0000#', (err, data) => {
+                if (err) {
+                    expect().assertFail();
+                    console.log('Telephony_CallManager_MMI_Async_0200 fail');
+                    done();
+                    return;
+                }
+                expect(data).assertTrue();
+                console.log('Telephony_CallManager_MMI_Async_0200 finish data = ' + data);
                 done();
-                return;
-            }
-            expect(data).assertTrue();
-            console.log('Telephony_CallManager_MMI_Async_0200 finish data = ' + data);
-            done();
+            })
         })
     })
 
@@ -84,22 +88,24 @@ describe('CallManagerMMI', function () {
     it('Telephony_CallManager_MMI_Async_0300', 0, async function (done) {
         call.dial('*331*0000#', (err, data) => {
             if (err) {
+                expect().assertFail();
                 console.log('Telephony_CallManager_MMI_Async_0300 fail');
                 done();
                 return;
             }
             expect(data).assertTrue();
             console.log('Telephony_CallManager_MMI_Async_0300 finish data = ' + data);
-        })
-        call.dial('#331#0000#', (err, data) => {
-            if (err) {
-                console.log('Telephony_CallManager_MMI_Async_0300 fail');
+            call.dial('#331#0000#', (err, data) => {
+                if (err) {
+                    expect().assertFail();
+                    console.log('Telephony_CallManager_MMI_Async_0300 fail');
+                    done();
+                    return;
+                }
+                expect(data).assertTrue();
+                console.log('Telephony_CallManager_MMI_Async_0300 finish data = ' + data);
                 done();
-                return;
-            }
-            expect(data).assertTrue();
-            console.log('Telephony_CallManager_MMI_Async_0300 finish data = ' + data);
-            done();
+            })
         })
     })
 
@@ -112,6 +118,7 @@ describe('CallManagerMMI', function () {
     it('Telephony_CallManager_MMI_Async_0400', 0, async function (done) {
         call.dial('#35*0000#', (err, data) => {
             if (err) {
+                expect().assertFail();
                 console.log('Telephony_CallManager_MMI_Async_0400 fail');
                 done();
                 return;
@@ -132,12 +139,12 @@ describe('CallManagerMMI', function () {
             var data = await call.dial('##330*0000#');
             expect(data).assertTrue();
             console.log('Telephony_CallManager_MMI_Promise_0100 finish data = ' + data);
+            done();
         } catch (err) {
             console.log('Telephony_CallManager_MMI_Promise_0100 fail');
             expect().assertFail();
             done();
         }
-        done();
     })
 
     /*
@@ -151,12 +158,12 @@ describe('CallManagerMMI', function () {
             var data = await call.dial('*#330#0000#');
             expect(data).assertTrue();
             console.log('Telephony_CallManager_MMI_Promise_0200 finish data = ' + data);
+            done();
         } catch (err) {
             expect().assertFail();
             console.log('Telephony_CallManager_MMI_Promise_0200 fail');
             done();
         }
-        done();
     })
 
     /*
@@ -169,12 +176,12 @@ describe('CallManagerMMI', function () {
             var data = await call.dial('*#31#');
             expect(data).assertTrue();
             console.log('Telephony_CallManager_MMI_Promise_0300 finish data = ' + data);
+            done();
         } catch (err) {
             expect().assertFail();
             console.log('Telephony_CallManager_MMI_Promise_0300 fail');
             done();
         }
-        done();
     })
 
     /*
@@ -191,16 +198,17 @@ describe('CallManagerMMI', function () {
             expect().assertFail();
             console.log('Telephony_CallManager_MMI_Promise_0400 fail');
             done();
+            return;
         }
         try {
             var data = await call.dial('*31#');
             expect(data).assertTrue();
             console.log('Telephony_CallManager_MMI_Promise_0400 finish data = ' + data);
+            done();
         } catch (err) {
             expect().assertFail();
             console.log('Telephony_CallManager_MMI_Promise_0400 fail');
             done();
         }
-        done();
     })
 })
