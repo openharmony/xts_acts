@@ -259,4 +259,17 @@ describe('storageTest', function () {
             done();
         });
     })
+
+        /**
+     * @tc.name flush callback interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0010
+     * @tc.desc flush callback interface test
+     */
+    it('testFluesh00172', 0, async function (done) {
+        mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
+        await mPref.flush(function (err, ret) {
+            expect("test").assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "default"));
+            done();
+        });
+    })
 })
