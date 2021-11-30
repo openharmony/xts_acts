@@ -183,7 +183,7 @@ describe('ActsBmsModuleUsageRecordTest', function () {
     */
     it('bms_getModuleUsageRecordTest_0300', 0, async function (done) {
         console.debug('=====================bms_getModuleUsageRecordTest_0300==================');
-        bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TWO, (err, data) => {
+        bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TEN, (err, data) => {
             expect(err.code).assertEqual(0);
             checkModuleUsageRecord(data);
             var result = checkIsExist(data, BUNDLE_NAME);
@@ -208,7 +208,7 @@ describe('ActsBmsModuleUsageRecordTest', function () {
     */
     it('bms_getModuleUsageRecordTest_0400', 0, async function (done) {
         console.debug('=====================bms_getModuleUsageRecordTest_0400==================');
-        var records = await bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TWO);
+        var records = await bundle.getModuleUsageRecords(RECORD_COUNT + NUM_TEN);
         checkModuleUsageRecord(records);
         var result = checkIsExist(records, BUNDLE_NAME);
         expect(result).assertTrue();
