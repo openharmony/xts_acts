@@ -801,8 +801,7 @@ describe('ActsFormFuzzUndefinedTest', function () {
             console.log("FMS_fuzzTestUndefined_1300_callback getFormsInfoByApp begin");
     
             var bundleName = undefinedTest();
-            console.log("FMS_fuzzTestUndefined_1300_callback getFormsInfoByApp bundleName typeof:"
-                + typeof(bundleName));
+            console.log("FMS_fuzzTestUndefined_1300_callback bundleName typeof:" + typeof(bundleName));
     
             try{
                 formManager.getFormsInfo(
