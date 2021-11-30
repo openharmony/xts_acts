@@ -25,7 +25,7 @@ public:
     static void SetUpTestCase(void)
     {
         MEDIA_DEBUG_LOG("ActsPlayerFuncTest::SetUpTestCase");
-        TestPlayerBasic::TestParamsConfig::GetInstance().InitPlayProtocol();
+        TestPlayerBasic::TestParamsConfig::GetInstance().InitMountPath();
     };
     // TearDownTestCase: after all testcases
     static void TearDownTestCase(void)
@@ -35,6 +35,7 @@ public:
     // SetUp
     void SetUp(void)
     {
+        uri_ = TestPlayerBasic::TestParamsConfig::GetInstance().GetUri();
         const ::testing::TestInfo * const testInfo = ::testing::UnitTest::GetInstance()->current_test_info();
         MEDIA_DEBUG_LOG("ActsPlayerFuncTest::SetUp:%s", testInfo->name());
     };
@@ -45,6 +46,11 @@ public:
         MEDIA_DEBUG_LOG("ActsPlayerFuncTest::TearDown:%s", testInfo->name());
     };
     static void LocalPlayFunc(const std::string uri, bool isAsync, WindowConfig config = g_sub_config);
+    static void *LocalMultiPlayFunc(void *threadArg);
+    void PreparePlayEnv(std::shared_ptr<TestPlayer> &player);
+    std::string uri_ = "";
+    std::shared_ptr<TestPlayerCallback> testCallback_;
+    std::shared_ptr<PlayerSignal> testObj_;
 };
 }
 }

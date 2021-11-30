@@ -16,8 +16,8 @@
 #ifndef PLAYER_COMMON_TEST_H
 #define PLAYER_COMMON_TEST_H
 
-#include "gtest/gtest.h"
 #include "mediatest_log.h"
+#include "gtest/gtest.h"
 #include "player.h"
 
 namespace {
@@ -37,6 +37,7 @@ namespace {
 namespace TestPlayerBasic {
 class TestParamsConfig {
 public:
+    DISALLOW_COPY_AND_MOVE(TestParamsConfig);
     static TestParamsConfig &GetInstance()
     {
         static TestParamsConfig config;
@@ -54,7 +55,7 @@ public:
     }
     bool CompareTime(int32_t expectTime, int32_t realTme, OHOS::Media::PlayerSeekMode seekMode);
     std::string GetUri();
-    void InitPlayProtocol();
+    void InitMountPath();
 
 private:
     TestParamsConfig();

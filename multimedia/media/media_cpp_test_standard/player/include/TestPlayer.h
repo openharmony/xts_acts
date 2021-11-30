@@ -46,7 +46,6 @@ static WindowConfig g_sub_config = {
 class PlayerSignal {
 public:
     PlayerStates state_ = PLAYER_IDLE;
-    int32_t seekPositon_;
     bool seekDoneFlag_;
     bool mutexFlag_ = true;
     std::mutex mutexSeek_;
@@ -71,6 +70,7 @@ public:
     sptr<Window> window_ = nullptr;
     explicit TestPlayer(std::shared_ptr<PlayerSignal> test);
     virtual ~TestPlayer();
+    DISALLOW_COPY_AND_MOVE(TestPlayer);
     bool CreatePlayer();
     int32_t SetSource(const std::string &uri);
     int32_t SetDataSrc(const std::string &uri, bool seekable);
@@ -102,8 +102,9 @@ public:
     PlayerStates state_ = PLAYER_STATE_ERROR;
     explicit TestPlayerCallback(std::shared_ptr<PlayerSignal> test);
     virtual ~TestPlayerCallback();
+    DISALLOW_COPY_AND_MOVE(TestPlayerCallback);
     void OnError(PlayerErrorType errorType, int32_t errorCode);
-    int WaitForSeekDone(int32_t currentPositon);
+    int WaitForSeekDone(int32_t currentPosition);
     void OnInfo(PlayerOnInfoType type, int32_t extra, const Format &infoBody = {});
     int WaitForState(PlayerStates state);
 private:
