@@ -26,13 +26,14 @@ import {
 describe('SmsMmsUpdataTest', function () {
   const TRUE_SLOT_ID = 0;
   const FALSE_SLOT_ID = 9;
+  //PDU code data that meets specifications for testing
   const CORRECT_SMS_PDU = '01000F9168683106019196F400080A00680065006C006C006F';
   const RECEIVE_SMS_PDU = '240D91689141468496F600001270721142432302B319';
   const RECEIVE_OTHER_SMS_PDU = '240D91689141468496F600001270721174322302B91C';
-
-  // The PDU corresponding to the length is  CORRECT_SMS_PDU,RECEIVE_SMS_PDU,RECEIVE_OTHER_SMS_PDU
-  var pduLength = [50, 44, 44];
-
+  const OTHER_SMS_PDU = '010005910180F6000806003100320033';
+  //The PDU corresponding to the length is  CORRECT_SMS_PDU,RECEIVE_SMS_PDU,RECEIVE_OTHER_SMS_PDU,OTHER_SMS_PDU
+  var pduLength = [50, 44, 44, 32];
+  //Default length of the encoded SMS center service address
   const INTERCEPT_POINT_PLUS = 20;
 
   beforeAll(async function () {
@@ -1362,4 +1363,134 @@ describe('SmsMmsUpdataTest', function () {
       done();
     }
   });
+
+  /**
+   * @tc.number   Telephony_SmsMms_updateSimMessage_Async_2200
+   * @tc.name     The SMS status does not change,The STATUS of the SMS message is send,
+   *              The pdu of the sent type is changed to another PDU that meets the conditions.The update succeeds
+   * @tc.desc     Function test
+   */
+  it('Telephony_SmsMms_updateSimMessage_Promise_2200', 0, async function (done) {
+    let beforeSmsRecord = [];
+    let data = {
+      slotId: TRUE_SLOT_ID,
+      smsc: '',
+      pdu: OTHER_SMS_PDU,
+      status: sms.SIM_MESSAGE_STATUS_SENT
+    };
+    let addIndex = 0;
+    try {
+      await sms.addSimMessage(data);
+      console.log('Telephony_SmsMms_updateSimMessage_Promise_2200 addSimMessage finish');
+    } catch (err) {
+      expect().assertFail();
+      console.log('Telephony_SmsMms_updateSimMessage_Promise_2200 add fail');
+      done();
+      return;
+    }
+    try {
+      beforeSmsRecord = await sms.getAllSimMessages(TRUE_SLOT_ID);
+      console.log('Telephony_SmsMms_updateSimMessage_Promise_2200 getAllSimMessages before finish');
+      addIndex = beforeSmsRecord[0].indexOnSim;
+    } catch (err) {
+      expect().assertFail();
+      console.log('Telephony_SmsMms_updateSimMessage_Promise_2200 get fail');
+      done();
+      return;
+    }
+    let upDataPdu = CORRECT_SMS_PDU;
+    let upData = {
+      slotId: TRUE_SLOT_ID,
+      msgIndex: addIndex,
+      newStatus: sms.SIM_MESSAGE_STATUS_SENT,
+      pdu: upDataPdu,
+      smsc: ''
+    };
+    try {
+      await sms.updateSimMessage(upData);
+      console.log('Telephony_SmsMms_updateSimMessage_Promise_2200 promiseUpdata finish');
+    } catch (err) {
+      expect().assertFail();
+      console.log('Telephony_SmsMms_updateSimMessage_Promise_2200 add fail');
+      done();
+      return;
+    }
+    try {
+      let promise = await sms.getAllSimMessages(TRUE_SLOT_ID);
+      let addOfPdu = interceptionPdu(promise[0].shortMessage.pdu, pduLength[0]);
+      expect(addOfPdu === CORRECT_SMS_PDU).assertTrue();
+      console.log('Telephony_SmsMms_updateSimMessage_Promise_2200 getAllSimMessages cur finish');
+      done();
+    } catch (err) {
+      expect().assertFail();
+      console.log('Telephony_SmsMms_updateSimMessage_Promise_2200 fail');
+      done();
+    }
+  });
+
+  /**
+   * @tc.number   Telephony_SmsMms_updateSimMessage_Async_2300
+   * @tc.name     The SMS status does not change,The status of the SMS message is read,
+   *              The PDU of the read type is changed to another PDU that meets the conditions.
+   *              The update is successful
+   * @tc.desc     Function test
+   */
+  it('Telephony_SmsMms_updateSimMessage_Promise_2300', 0, async function (done) {
+    let beforeSmsRecord = [];
+    let data = {
+      slotId: TRUE_SLOT_ID,
+      smsc: '',
+      pdu: RECEIVE_SMS_PDU,
+      status: sms.SIM_MESSAGE_STATUS_READ
+    };
+    let addIndex = 0;
+    try {
+      await sms.addSimMessage(data);
+      console.log('Telephony_SmsMms_updateSimMessage_Promise_2300 addSimMessage finish');
+    } catch (err) {
+      expect().assertFail();
+      console.log('Telephony_SmsMms_updateSimMessage_Promise_2300 add fail');
+      done();
+      return;
+    }
+    try {
+      beforeSmsRecord = await sms.getAllSimMessages(TRUE_SLOT_ID);
+      console.log('Telephony_SmsMms_updateSimMessage_Promise_2300 getAllSimMessages before finish');
+      addIndex = beforeSmsRecord[0].indexOnSim;
+    } catch (err) {
+      expect().assertFail();
+      console.log('Telephony_SmsMms_updateSimMessage_Promise_2300 get fail');
+      done();
+      return;
+    }
+    let upDataPdu = RECEIVE_OTHER_SMS_PDU;
+    let upData = {
+      slotId: TRUE_SLOT_ID,
+      msgIndex: addIndex,
+      newStatus: sms.SIM_MESSAGE_STATUS_READ,
+      pdu: upDataPdu,
+      smsc: ''
+    };
+    try {
+      await sms.updateSimMessage(upData);
+      console.log('Telephony_SmsMms_updateSimMessage_Promise_2300 promiseUpdata finish');
+    } catch (err) {
+      expect().assertFail();
+      console.log('Telephony_SmsMms_updateSimMessage_Promise_2300 add fail');
+      done();
+      return;
+    }
+    try {
+      let promise = await sms.getAllSimMessages(TRUE_SLOT_ID);
+      let addOfPdu = interceptionPdu(promise[0].shortMessage.pdu, pduLength[2]);
+      expect(addOfPdu === RECEIVE_OTHER_SMS_PDU).assertTrue();
+      console.log('Telephony_SmsMms_updateSimMessage_Promise_2300 getAllSimMessages cur finish');
+      done();
+    } catch (err) {
+      expect().assertFail();
+      console.log('Telephony_SmsMms_updateSimMessage_Promise_2300 fail');
+      done();
+    }
+  });
+
 });
