@@ -43,6 +43,7 @@
         "type": "page",
         "isVisible": "true",
         "launchType": "standard",
+        "orientation": "unspecified",
         "language": "C++",
         "metaData": {
             "customizeData": [

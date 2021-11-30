@@ -58,6 +58,23 @@ var BundleFlag = {
     GET_BUNDLE_WITH_ABILITIES: 1,
     GET_APPLICATION_INFO_WITH_PERMISSION: 2
 };
+var AbilityType = {
+    UNKNOWN : 0,
+    PAGE : 1,
+    SERVICE : 2,
+    DATA : 3,
+    FORM : 4,
+};
+var DisplayOrientation = {
+    UNSPECIFIED: 0,
+    LANDSCAPE: 1,
+    PORTRAIT: 2,
+    FOLLOW_RECENT: 3
+};
+var LaunchMode = {
+    SINGLETON : 0,
+    STANDARD : 1
+};
 
 describe('ActsBundleManagerTest', function () {
 
@@ -1785,6 +1802,9 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.label).assertEqual("$string:app_name")
                 expect(datainfo.description).assertEqual("$string:mainability_description")
                 expect(datainfo.icon).assertEqual("$media:icon")
+                expect(datainfo.type).assertEqual(AbilityType.SERVICE)
+                expect(datainfo.launchMode).assertEqual(LaunchMode.SINGLETON)
+                expect(datainfo.orientation).assertEqual(DisplayOrientation.LANDSCAPE)
                 expect(datainfo.moduleName).assertEqual("entry")
                 expect(datainfo.bundleName).assertEqual(NAME2)
                 expect(datainfo.applicationInfo.name).assertEqual(NAME2)
@@ -2812,6 +2832,26 @@ describe('ActsBundleManagerTest', function () {
                         },
                     }
                 }, 0, 0)
+            var data1 =
+                await demo.queryAbilityByWant({
+                    want: {
+                        action: "action.system.home",
+                        entities: ["entity.system.home"],
+                        elementName: {
+                            deviceId: "0",
+                            bundleName: "com.example.myapplication5",
+                            abilityName: "com.example.myapplication.MainAbility",
+                            uri: "",
+                            shortName: ""
+                        },
+                    }
+                }, 0, 0)
+            expect(data1.length).assertLarger(0);
+            for (let i = 0, len = data1.length; i < len; i++) {
+                var datainfo = data1[i];
+                expect(datainfo.type).assertEqual(AbilityType.DATA)
+                expect(datainfo.orientation).assertEqual(DisplayOrientation.FOLLOW_RECENT)
+            }
             expect(data.length).assertLarger(0);
             for (let i = 0, len = data.length; i < len; i++) {
                 var datainfo = data[i];
@@ -2821,6 +2861,8 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.icon).assertEqual("$media:icon")
                 expect(datainfo.moduleName).assertEqual("entry")
                 expect(datainfo.bundleName).assertEqual(NAME3)
+                expect(datainfo.type).assertEqual(AbilityType.PAGE)
+                expect(datainfo.orientation).assertEqual(DisplayOrientation.PORTRAIT)
                 expect(datainfo.applicationInfo.name).assertEqual(NAME3)
                 expect(datainfo.applicationInfo.description).assertEqual("$string:mainability_description")
                 expect(datainfo.applicationInfo.descriptionId >= 0).assertTrue()
@@ -3341,6 +3383,8 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.icon).assertEqual("$media:icon")
                 expect(datainfo.moduleName).assertEqual("entry")
                 expect(datainfo.bundleName).assertEqual(NAME1)
+                expect(datainfo.launchMode).assertEqual(LaunchMode.STANDARD)
+   	            expect(datainfo.orientation).assertEqual(DisplayOrientation.UNSPECIFIED)
                 expect(datainfo.applicationInfo.name).assertEqual(NAME1)
                 expect(datainfo.applicationInfo.description).assertEqual("$string:mainability_description")
                 expect(datainfo.applicationInfo.descriptionId >= 0).assertTrue()

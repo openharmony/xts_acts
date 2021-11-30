@@ -40,10 +40,11 @@
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
-        "type": "page",
+        "type": "service",
         "isVisible": "true",
-        "launchType": "standard",
-        "language": "C++"
+        "launchType": "singleton",
+        "language": "C++",
+        "orientation": "landscape"
       }
     ],
     "js": [
