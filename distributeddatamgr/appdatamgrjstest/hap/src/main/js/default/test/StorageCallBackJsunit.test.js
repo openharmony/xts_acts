@@ -44,8 +44,8 @@ describe('storageTest', function () {
         mPref.flushSync();
         await mPref.clear(function (err, ret) {
             expect("defaultvalue").assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
+            done();
         });
-        done();
     })
 
     /**
@@ -57,8 +57,8 @@ describe('storageTest', function () {
         mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
         await mPref.has(KEY_TEST_STRING_ELEMENT, function (err, ret) {
             expect(true).assertEqual(ret);
+            done();
         })
-        done();
     })
 
     /**
@@ -70,8 +70,8 @@ describe('storageTest', function () {
         mPref.putSync(KEY_TEST_INT_ELEMENT, 1);
         await mPref.has(KEY_TEST_INT_ELEMENT, function (err, ret) {
             expect(true).assertEqual(ret);
+            done();
         })
-        done();
     })
 
     /**
@@ -83,8 +83,8 @@ describe('storageTest', function () {
         mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 1.1);
         await mPref.has(KEY_TEST_FLOAT_ELEMENT, function (err, ret) {
             expect(true).assertEqual(ret);
+            done();
         })
-        done();
     })
 
     /**
@@ -96,8 +96,8 @@ describe('storageTest', function () {
         mPref.putSync(KEY_TEST_LONG_ELEMENT, 0);
         await mPref.has(KEY_TEST_LONG_ELEMENT, function (err, ret) {
             expect(true).assertEqual(ret);
+            done();
         })
-        done();
     })
 
     /**
@@ -109,8 +109,8 @@ describe('storageTest', function () {
         mPref.putSync(KEY_TEST_BOOLEAN_ELEMENT, false);
         await mPref.has(KEY_TEST_BOOLEAN_ELEMENT, function (err, ret) {
             expect(true).assertEqual(ret);
+            done();
         })
-        done();
     })
 
     /**
@@ -122,8 +122,8 @@ describe('storageTest', function () {
         mPref.clearSync();
         await mPref.get(KEY_TEST_STRING_ELEMENT, "defaultValue", function (err, ret) {
             expect('defaultValue').assertEqual(ret);
+            done();
         })
-        done();
     })
 
     /**
@@ -136,8 +136,8 @@ describe('storageTest', function () {
         mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 3.0);
         await mPref.get(KEY_TEST_FLOAT_ELEMENT, 0.0, function (err, ret) {
             expect(3.0).assertEqual(ret);
+            done();
         })
-        done();
     })
 
     /**
@@ -150,8 +150,8 @@ describe('storageTest', function () {
         mPref.putSync(KEY_TEST_INT_ELEMENT, 3);
         await mPref.get(KEY_TEST_INT_ELEMENT, 0.0, function (err, ret) {
             expect(3).assertEqual(ret);
+            done();
         })
-        done();
     })
 
     /**
@@ -165,8 +165,8 @@ describe('storageTest', function () {
         expect(3).assertEqual(mPref.getSync(KEY_TEST_LONG_ELEMENT, 0));
         await mPref.get(KEY_TEST_LONG_ELEMENT, 0, function (err, ret) {
             expect(3).assertEqual(ret);
+            done();
         });
-        done();
     })
 
     /**
@@ -180,8 +180,8 @@ describe('storageTest', function () {
         mPref.flushSync();
         await mPref.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
             expect('test').assertEqual(ret);
+            done();
         });
-        done();
     })
 
     /**
@@ -195,8 +195,8 @@ describe('storageTest', function () {
             expect(true).assertEqual(mPref.getSync(KEY_TEST_BOOLEAN_ELEMENT, false));
             mPref.flushSync();
             expect(true).assertEqual(mPref.getSync(KEY_TEST_BOOLEAN_ELEMENT, false));
+            done();
         });
-        done();
     })
 
     /**
@@ -210,8 +210,8 @@ describe('storageTest', function () {
             expect(4.0).assertEqual(mPref.getSync(KEY_TEST_FLOAT_ELEMENT, 0.0));
             mPref.flushSync();
             expect(4.0).assertEqual(mPref.getSync(KEY_TEST_FLOAT_ELEMENT, 0.0));
+            done();
         });
-        done();
     })
 
     /**
@@ -225,8 +225,8 @@ describe('storageTest', function () {
             expect(4).assertEqual(mPref.getSync(KEY_TEST_INT_ELEMENT, 0));
             mPref.flushSync();
             expect(4).assertEqual(mPref.getSync(KEY_TEST_INT_ELEMENT, 0));
+            done();
         });
-        done();
     })
 
     /**
@@ -241,8 +241,8 @@ describe('storageTest', function () {
             expect(4).assertEqual(mPref.getSync(KEY_TEST_LONG_ELEMENT, 0));
             mPref.flushSync();
             expect(4).assertEqual(mPref.getSync(KEY_TEST_LONG_ELEMENT, 0));
+            done();
         });
-        done();
     })
 
     /**
@@ -252,17 +252,15 @@ describe('storageTest', function () {
      */
     it('testPutString0162', 0, async function (done) {
         mPref.clearSync();
-        await mPref.put(KEY_TEST_STRING_ELEMENT, "abc", function (err, ret) {
-            mPref.put(KEY_TEST_STRING_ELEMENT, '', function (err, ret) {
-                expect('').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
-                mPref.flushSync();
-                expect('').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
-            });
+        await mPref.put(KEY_TEST_STRING_ELEMENT, '', function (err, ret) {
+            expect('').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
+            mPref.flushSync();
+            expect('').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
+            done();
         });
-        done();
     })
 
-    /**
+        /**
      * @tc.name flush callback interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0010
      * @tc.desc flush callback interface test
