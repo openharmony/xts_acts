@@ -21,8 +21,8 @@ describe('ActsAccountAddAccount', function () {
 
     /*
      * @tc.number    : ActsAccountAddAccount_0100
-     * @tc.name      : Add account calllback form
-     * @tc.desc      : Add account in calllback form without additional information
+     * @tc.name      : Add account callback form
+     * @tc.desc      : Add account in callback form without additional information
      */
     it('ActsAccountAddAccount_0100', 0, async function (done) {
         console.debug("====>ActsAccountAddAccount_0100 start====");
@@ -66,8 +66,8 @@ describe('ActsAccountAddAccount', function () {
 
     /*
      * @tc.number    : ActsAccountAddAccount_0300
-     * @tc.name      : Add account calllback form
-     * @tc.desc      : Add account in calllback form with additional information
+     * @tc.name      : Add account callback form
+     * @tc.desc      : Add account in callback form with additional information
      */
     it('ActsAccountAddAccount_0300', 0, async function (done) {
         console.debug("====>ActsAccountAddAccount_0300 start====");
@@ -112,7 +112,7 @@ describe('ActsAccountAddAccount', function () {
 
     /*
      * @tc.number    : ActsAccountAddAccount_0500
-     * @tc.name      : Add account calllback form
+     * @tc.name      : Add account callback form
      * @tc.desc      : Repeatedly add the same name account and the same additional information
      */
     it('ActsAccountAddAccount_0500', 0, async function (done) {
@@ -159,7 +159,7 @@ describe('ActsAccountAddAccount', function () {
 
     /*
      * @tc.number    : ActsAccountAddAccount_0700
-     * @tc.name      : Add account calllback form
+     * @tc.name      : Add account callback form
      * @tc.desc      : The account name exceeds the length limit of 512 characters
      */
     it('ActsAccountAddAccount_0700', 0, async function (done) {
@@ -202,7 +202,7 @@ describe('ActsAccountAddAccount', function () {
 
     /*
      * @tc.number    : ActsAccountAddAccount_0900
-     * @tc.name      : Add account calllback form
+     * @tc.name      : Add account callback form
      * @tc.desc      : Additional information exceeds the length limit of 1024 characters
      */
     it('ActsAccountAddAccount_0900', 0, async function (done) {
@@ -245,7 +245,7 @@ describe('ActsAccountAddAccount', function () {
 
     /*
      * @tc.number    : ActsAccountAddAccount_1100
-     * @tc.name      : Add account calllback form
+     * @tc.name      : Add account callback form
      * @tc.desc      : The account name is an empty string
      */
     it('ActsAccountAddAccount_1100', 0, async function (done) {
@@ -281,7 +281,7 @@ describe('ActsAccountAddAccount', function () {
 
     /*
      * @tc.number    : ActsAccountAddAccount_1300
-     * @tc.name      : Add account calllback form
+     * @tc.name      : Add account callback form
      * @tc.desc      : Additional information is an empty string
      */
     it('ActsAccountAddAccount_1300', 0, async function (done) {
@@ -323,7 +323,7 @@ describe('ActsAccountAddAccount', function () {
 
     /*
      * @tc.number    : ActsAccountAddAccount_1500
-     * @tc.name      : Add account calllback form
+     * @tc.name      : Add account callback form
      * @tc.desc      : The account name is a special character such as a space
      */
     it('ActsAccountAddAccount_1500', 0, async function (done) {
@@ -361,7 +361,7 @@ describe('ActsAccountAddAccount', function () {
 
     /*
      * @tc.number    : ActsAccountAddAccount_1700
-     * @tc.name      : Add account calllback form
+     * @tc.name      : Add account callback form
      * @tc.desc      : The account name is a special string
      */
     it('ActsAccountAddAccount_1700', 0, async function (done) {
@@ -406,7 +406,7 @@ describe('ActsAccountAddAccount', function () {
 
     /*
      * @tc.number    : ActsAccountAddAccount_1900
-     * @tc.name      : Add account calllback form
+     * @tc.name      : Add account callback form
      * @tc.desc      : Additional information is a special character such as a space
      */
     it('ActsAccountAddAccount_1900', 0, async function (done) {
@@ -451,7 +451,7 @@ describe('ActsAccountAddAccount', function () {
 
     /*
      * @tc.number    : ActsAccountAddAccount_2100
-     * @tc.name      : Add account calllback form
+     * @tc.name      : Add account callback form
      * @tc.desc      : Additional information is a special string
      */
     it('ActsAccountAddAccount_2100', 0, async function (done) {
@@ -496,7 +496,7 @@ describe('ActsAccountAddAccount', function () {
 
     /*
      * @tc.number    : ActsAccountAddAccount_2300
-     * @tc.name      : Add account calllback form
+     * @tc.name      : Add account callback form
      * @tc.desc      : Repeatedly add accounts with the same name and different additional information
      */
     it('ActsAccountAddAccount_2300', 0, async function (done) {
@@ -543,7 +543,7 @@ describe('ActsAccountAddAccount', function () {
 
     /*
      * @tc.number    : ActsAccountAddAccount_2500
-     * @tc.name      : Add account calllback form
+     * @tc.name      : Add account callback form
      * @tc.desc      : The account name reaches the limit of 512 characters
      */
     it('ActsAccountAddAccount_2500', 0, async function (done) {
@@ -594,7 +594,7 @@ describe('ActsAccountAddAccount', function () {
 
     /*
      * @tc.number    : ActsAccountAddAccount_2700
-     * @tc.name      : Add account calllback form
+     * @tc.name      : Add account callback form
      * @tc.desc      : Additional information reaches the limit of 1024 characters
      */
     it('ActsAccountAddAccount_2700', 0, async function (done) {

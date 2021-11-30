@@ -16,7 +16,7 @@ import account from '@ohos.account.appAccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 const TIMEOUT = 1000;
-const ERR_APPACCOUNT_SERVICE_PERMISSION_DENIED = 4521990;
+const ERR_APPACCOUNT_SERVICE_PERMISSION_DENIED = 4521992;
 describe('ActsAccountNoPermission', function () {
     function sleep(delay) {
         var start = (new Date()).getTime();

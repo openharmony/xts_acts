@@ -17,7 +17,6 @@ import featureAbility from '@ohos.ability.featureability'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 const TIMEOUT = 2000;
-const TIMEOUTEND = 4000;
 describe('ActsGetAllAccessibleAccounts', function () {
 
     /*
@@ -534,8 +533,5 @@ describe('ActsGetAllAccessibleAccounts', function () {
             console.debug("====>ActsGetAllAccessibleAccounts_1100 end====");
             done();
         }, TIMEOUT);
-        setTimeout(function(){
-            console.debug("====>time out ActsGetAllAccessibleAccounts_1100====");
-        }, TIMEOUTEND);
     });
 })
