@@ -175,7 +175,7 @@ describe('ActsAmsCallBackFourthScene', function () {
                     expect(info[i].uid).assertLarger(0);
 
                     expect(typeof (info[i].lastMemoryLevel)).assertEqual("number");
-                    expect(info[i].lastMemoryLevel).assertEqual(-1);
+                    expect(info[i].lastMemoryLevel).assertEqual(1);
 
                     expect(typeof (info[i].weight)).assertEqual("number");
                     expect(info[i].weight).assertEqual(-1);
