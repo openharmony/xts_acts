@@ -16,8 +16,8 @@
 #ifndef PLAYER_COMMON_TEST_H
 #define PLAYER_COMMON_TEST_H
 
-#include "mediatest_log.h"
 #include "gtest/gtest.h"
+#include "mediatest_log.h"
 #include "player.h"
 
 namespace {

@@ -66,7 +66,7 @@ bool TestParamsConfig::CompareTime(int32_t expectTime, int32_t realTime, OHOS::M
         }
     }
     if (seekMode  == PlayerSeekMode::SEEK_PREVIOUS_SYNC) {
-        if (expectTime - realTime < DELTA_TIME && expectTime - realTime > -100) {
+        if (expectTime - realTime < DELTA_TIME && expectTime - realTime > -CLOSEST_DELTA_TIME) {
             return true;
         } else {
             return false;

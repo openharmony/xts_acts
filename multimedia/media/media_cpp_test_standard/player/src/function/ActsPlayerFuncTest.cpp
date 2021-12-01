@@ -22,7 +22,6 @@ using namespace OHOS::Media;
 using namespace testing::ext;
 using namespace TestPlayerBasic;
 
-
 void ActsPlayerFuncTest::PreparePlayEnv(std::shared_ptr<TestPlayer> &player)
 {
     testObj_ = std::make_shared<PlayerSignal>();
@@ -36,8 +35,6 @@ void ActsPlayerFuncTest::PreparePlayEnv(std::shared_ptr<TestPlayer> &player)
     sptr<Surface> videoSurface = player->GetVideoSurface(g_sub_config);
     EXPECT_EQ(RET_OK, player->SetVideoSurface(videoSurface));
 }
-
-
 
 /**
     * @tc.number    : SUB_MEDIA_PLAYER_FUNCTION_03_0100
