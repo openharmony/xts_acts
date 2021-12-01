@@ -36,11 +36,12 @@
         "icon": "$media:icon",
         "name": ".MainAbility",
         "description": "$string:mainability_description",
-        "language": "C++",
-        "isVisible": "true",
         "label": "$string:app_name",
-        "type": "page",
-        "launchType": "standard"
+        "type": "service",
+        "isVisible": "true",
+        "launchType": "singleton",
+        "language": "C++",
+        "orientation": "landscape"
       }
     ],
     "deviceType": [

@@ -42,8 +42,9 @@
         "label": "$string:app_name",
         "type": "page",
         "isVisible": "true",
+        "language": "C++",
         "launchType": "standard",
-        "language": "C++"
+        "orientation": "portrait"
       }
     ],
     "js": [
