@@ -46,6 +46,7 @@ static WindowConfig g_sub_config = {
 class PlayerSignal {
 public:
     PlayerStates state_ = PLAYER_IDLE;
+    int32_t seekPosition_;
     bool seekDoneFlag_;
     bool mutexFlag_ = true;
     std::mutex mutexSeek_;

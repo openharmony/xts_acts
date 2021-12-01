@@ -46,7 +46,6 @@ public:
         MEDIA_DEBUG_LOG("ActsPlayerFuncTest::TearDown:%s", testInfo->name());
     };
     static void LocalPlayFunc(const std::string uri, bool isAsync, WindowConfig config = g_sub_config);
-    static void *LocalMultiPlayFunc(void *threadArg);
     void PreparePlayEnv(std::shared_ptr<TestPlayer> &player);
     std::string uri_ = "";
     std::shared_ptr<TestPlayerCallback> testCallback_;

@@ -35,23 +35,38 @@ std::string TestParamsConfig::GetUri()
     MEDIA_INFO_LOG("PATH : %s", path);
     return path;
 }
-void TestParamsConfig::InitPlayProtocol()
+void TestParamsConfig::InitMountPath()
 {
     MEDIA_INFO_LOG("%s", __FUNCTION__);
-    char protocol[PARA_MAX_LEN] = "local";
-    GetParameter("sys.media.test.play.protocol", "local", &protocol[0], PARA_MAX_LEN);
-    if (strcmp(protocol, "local") == 0) {
-        TestPlayerBasic::TestParamsConfig::GetInstance().SetMountPath("file://data/media/");
-
-        MEDIA_INFO_LOG("MOUNT_PATH %s", TestPlayerBasic::TestParamsConfig::GetInstance().GetMountPath().c_str());
+    char mountPath[PARA_MAX_LEN] = "null";
+    GetParameter("sys.media.test.mount.path", "null", &mountPath[0], PARA_MAX_LEN);
+    if (strcmp(mountPath, "null") != 0) {
+        TestPlayerBasic::TestParamsConfig::GetInstance().SetMountPath(mountPath);
+    } else {
+        TestPlayerBasic::TestParamsConfig::GetInstance().SetMountPath("file:///data/media/");
     }
+    MEDIA_INFO_LOG("MOUNT_PATH %s", TestPlayerBasic::TestParamsConfig::GetInstance().GetMountPath().c_str());
 }
 
 bool TestParamsConfig::CompareTime(int32_t expectTime, int32_t realTime, OHOS::Media::PlayerSeekMode seekMode)
 {
     MEDIA_INFO_LOG("CompareTime: expectTime %d, realTime %d", expectTime, realTime);
-    if (seekMode  == OHOS::Media::PlayerSeekMode::SEEK_CLOSEST) {
+    if (seekMode  == PlayerSeekMode::SEEK_CLOSEST) {
         if (std::abs(expectTime - realTime) < CLOSEST_DELTA_TIME) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    if (seekMode  == PlayerSeekMode::SEEK_NEXT_SYNC) {
+        if (realTime - expectTime < DELTA_TIME && realTime - expectTime >= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    if (seekMode  == PlayerSeekMode::SEEK_PREVIOUS_SYNC) {
+        if (expectTime - realTime < DELTA_TIME && expectTime - realTime > -100) {
             return true;
         } else {
             return false;
