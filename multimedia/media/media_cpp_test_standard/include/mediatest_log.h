@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-#ifndef MEDIA_LOG_TEST_H
-#define MEDIA_LOG_TEST_H
+#ifndef MEDIA_TEST_LOG_H
+#define MEDIA_TEST_LOG_H
 
 #include "media_log.h"
 #include "securec.h"
