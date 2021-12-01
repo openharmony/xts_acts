@@ -15,13 +15,7 @@ import("//test/xts/tools/lite/build/suite_lite.gni")
 
 hcpptest_suite("ActsVFATDACTest") {
   suite_name = "acts"
-  sources = [
-    "../src/ActsDacPreTest.cpp",
-    "../src/ActsDacTest.cpp",
-    "../src/ActsSystemDevDacTest.cpp",
-    "../src/ActsSystemJffsDacTest.cpp",
-    "../src/DACFileSystemTest.cpp",
-  ]
+  sources = [ "../src/DacTestSuite.cpp" ]
 
   include_dirs = [
     "../src",
