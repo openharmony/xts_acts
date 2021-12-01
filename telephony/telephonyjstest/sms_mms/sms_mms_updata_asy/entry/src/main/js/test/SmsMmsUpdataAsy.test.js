@@ -26,13 +26,15 @@ import {
 describe('SmsMmsUpdataTest', function () {
   const TRUE_SLOT_ID = 0;
   const FALSE_SLOT_ID = 9;
+  //PDU code data that meets specifications for testing
   const CORRECT_SMS_PDU = '01000F9168683106019196F400080A00680065006C006C006F';
   const RECEIVE_SMS_PDU = '240D91689141468496F600001270721142432302B319';
   const RECEIVE_OTHER_SMS_PDU = '240D91689141468496F600001270721174322302B91C';
+  const OTHER_SMS_PDU = '010005910180F6000806003100320033';
+  // The PDU corresponding to the length is  CORRECT_SMS_PDU,RECEIVE_SMS_PDU,RECEIVE_OTHER_SMS_PDU,OTHER_SMS_PDU
+  var pduLength = [50, 44, 44, 32];
 
-  // The PDU corresponding to the length is  CORRECT_SMS_PDU,RECEIVE_SMS_PDU,RECEIVE_OTHER_SMS_PDU
-  var pduLength = [50, 44, 44];
-
+  //Default length of the encoded SMS center service address
   const INTERCEPT_POINT_PLUS = 20;
 
   beforeAll(async function () {
@@ -276,8 +278,8 @@ describe('SmsMmsUpdataTest', function () {
               }
               expect(getresult[0].simMessageStatus === sms.SIM_MESSAGE_STATUS_READ).assertTrue();
               console.log('Telephony_SmsMms_updateSimMessage_Async_0400 getAllSimMessages cur finish');
+              done();
             });
-            done();
             return;
           }
           expect().assertFail();
@@ -399,8 +401,8 @@ describe('SmsMmsUpdataTest', function () {
               }
               expect(getresult[0].simMessageStatus === sms.SIM_MESSAGE_STATUS_UNREAD).assertTrue();
               console.log('Telephony_SmsMms_updateSimMessage_Async_0600 getAllSimMessages cur finish');
+              done();
             });
-            done();
             return;
           }
           expect().assertFail();
@@ -461,8 +463,8 @@ describe('SmsMmsUpdataTest', function () {
               }
               expect(getresult[0].simMessageStatus === sms.SIM_MESSAGE_STATUS_UNREAD).assertTrue();
               console.log('Telephony_SmsMms_updateSimMessage_Async_0700 getAllSimMessages cur finish');
+              done();
             });
-            done();
             return;
           }
           expect().assertFail();
@@ -585,8 +587,8 @@ describe('SmsMmsUpdataTest', function () {
               }
               expect(getresult[0].simMessageStatus === sms.SIM_MESSAGE_STATUS_SENT).assertTrue();
               console.log('Telephony_SmsMms_updateSimMessage_Async_0900 getAllSimMessages cur finish');
+              done();
             });
-            done();
             return;
           }
           expect().assertFail();
@@ -647,8 +649,8 @@ describe('SmsMmsUpdataTest', function () {
               }
               expect(getresult[0].simMessageStatus === sms.SIM_MESSAGE_STATUS_SENT).assertTrue();
               console.log('Telephony_SmsMms_updateSimMessage_Async_1000 getAllSimMessages cur finish');
+              done();
             });
-            done();
             return;
           }
           expect().assertFail();
@@ -771,8 +773,8 @@ describe('SmsMmsUpdataTest', function () {
               }
               expect(getresult[0].simMessageStatus === sms.SIM_MESSAGE_STATUS_UNSENT).assertTrue();
               console.log('Telephony_SmsMms_updateSimMessage_Async_1200 getAllSimMessages cur finish');
+              done();
             });
-            done();
             return;
           }
           expect().assertFail();
@@ -833,8 +835,8 @@ describe('SmsMmsUpdataTest', function () {
               }
               expect(getresult[0].simMessageStatus === sms.SIM_MESSAGE_STATUS_UNSENT).assertTrue();
               console.log('Telephony_SmsMms_updateSimMessage_Async_1300 getAllSimMessages cur finish');
+              done();
             });
-            done();
             return;
           }
           expect().assertFail();
@@ -896,8 +898,8 @@ describe('SmsMmsUpdataTest', function () {
               let addOfPdu = interceptionPdu(getresult[0].shortMessage.pdu, pduLength[0]);
               expect(addOfPdu === CORRECT_SMS_PDU).assertTrue();
               console.log('Telephony_SmsMms_updateSimMessage_Async_1400 getAllSimMessages cur finish');
+              done();
             });
-            done();
             return;
           }
           expect().assertFail();
@@ -959,8 +961,8 @@ describe('SmsMmsUpdataTest', function () {
               let addOfPdu = interceptionPdu(getresult[0].shortMessage.pdu, pduLength[0]);
               expect(addOfPdu === CORRECT_SMS_PDU).assertTrue();
               console.log('Telephony_SmsMms_updateSimMessage_Async_1500 getAllSimMessages cur finish');
+              done();
             });
-            done();
             return;
           }
           expect().assertFail();
@@ -1022,8 +1024,8 @@ describe('SmsMmsUpdataTest', function () {
               let addOfPdu = interceptionPdu(getresult[0].shortMessage.pdu, pduLength[0]);
               expect(addOfPdu === CORRECT_SMS_PDU).assertTrue();
               console.log('Telephony_SmsMms_updateSimMessage_Async_1600 getAllSimMessages cur finish');
+              done();
             });
-            done();
             return;
           }
           expect().assertFail();
@@ -1085,8 +1087,8 @@ describe('SmsMmsUpdataTest', function () {
               let addOfPdu = interceptionPdu(getresult[0].shortMessage.pdu, pduLength[0]);
               expect(addOfPdu === CORRECT_SMS_PDU).assertTrue();
               console.log('Telephony_SmsMms_updateSimMessage_Async_1700 getAllSimMessages cur finish');
+              done();
             });
-            done();
             return;
           }
           expect().assertFail();
@@ -1148,8 +1150,8 @@ describe('SmsMmsUpdataTest', function () {
               let addOfPdu = interceptionPdu(getresult[0].shortMessage.pdu, pduLength[0]);
               expect(addOfPdu === CORRECT_SMS_PDU).assertTrue();
               console.log('Telephony_SmsMms_updateSimMessage_Async_1800 getAllSimMessages cur finish');
+              done();
             });
-            done();
             return;
           }
           expect().assertFail();
@@ -1211,8 +1213,8 @@ describe('SmsMmsUpdataTest', function () {
               let addOfPdu = interceptionPdu(getresult[0].shortMessage.pdu, pduLength[0]);
               expect(addOfPdu === CORRECT_SMS_PDU).assertTrue();
               console.log('Telephony_SmsMms_updateSimMessage_Async_1900 getAllSimMessages cur finish');
+              done();
             });
-            done();
             return;
           }
           expect().assertFail();
@@ -1275,8 +1277,8 @@ describe('SmsMmsUpdataTest', function () {
               let addOfPdu = interceptionPdu(getresult[0].shortMessage.pdu, pduLength[0]);
               expect(addOfPdu === CORRECT_SMS_PDU).assertTrue();
               console.log('Telephony_SmsMms_updateSimMessage_Async_2000 getAllSimMessages cur finish');
+              done();
             });
-            done();
             return;
           }
           expect().assertFail();
@@ -1339,8 +1341,8 @@ describe('SmsMmsUpdataTest', function () {
               let addOfPdu = interceptionPdu(getresult[0].shortMessage.pdu, pduLength[2]);
               expect(addOfPdu === RECEIVE_OTHER_SMS_PDU).assertTrue();
               console.log('Telephony_SmsMms_updateSimMessage_Async_2100 getAllSimMessages cur finish');
+              done();
             });
-            done();
             return;
           }
           expect().assertFail();
@@ -1350,4 +1352,134 @@ describe('SmsMmsUpdataTest', function () {
       });
     });
   });
+
+  /**
+   * @tc.number   Telephony_SmsMms_updateSimMessage_Async_2200
+   * @tc.name     The SMS status does not change,The STATUS of the SMS message is send,
+   *              The pdu of the sent type is changed to another PDU that meets the conditions. The update succeeds
+   * @tc.desc     Function test
+   */
+  it('Telephony_SmsMms_updateSimMessage_Async_2200', 0, async function (done) {
+    let data = {
+      slotId: TRUE_SLOT_ID,
+      smsc: '',
+      pdu: OTHER_SMS_PDU,
+      status: sms.SIM_MESSAGE_STATUS_SENT
+    };
+    let addIndex = 0;
+    let upDataPdu = CORRECT_SMS_PDU;
+    let upData = {
+      slotId: TRUE_SLOT_ID,
+      msgIndex: addIndex,
+      newStatus: sms.SIM_MESSAGE_STATUS_SENT,
+      pdu: upDataPdu,
+      smsc: ''
+    };
+    sms.addSimMessage(data, (adderr) => {
+      if (adderr) {
+        expect().assertFail();
+        console.log('Telephony_SmsMms_updateSimMessage_Async_2200 add fail');
+        done();
+        return;
+      }
+      console.log('Telephony_SmsMms_updateSimMessage_Async_2200 finish add result ');
+      sms.getAllSimMessages(TRUE_SLOT_ID, (err, result) => {
+        if (err) {
+          expect().assertFail();
+          console.log('Telephony_SmsMms_updateSimMessage_Async_2200 get fail');
+          done();
+          return;
+        }
+        addIndex = result[0].indexOnSim;
+        console.log('Telephony_SmsMms_updateSimMessage_Async_2200 getAllSimMessages finish');
+        sms.updateSimMessage(upData, (updataerr) => {
+          if (updataerr) {
+            expect().assertFail();
+            console.log('Telephony_SmsMms_updateSimMessage_Async_2200 update fail');
+            done();
+            return;
+          }
+          console.log('Telephony_SmsMms_updateSimMessage_Async_2200 update finish result ');
+          sms.getAllSimMessages(TRUE_SLOT_ID, (geterr, getresult) => {
+            if (geterr) {
+              expect().assertFail();
+              console.log('Telephony_SmsMms_updateSimMessage_Async_2200 fail');
+              done();
+              return;
+            }
+            let addOfPdu = interceptionPdu(getresult[0].shortMessage.pdu, pduLength[0]);
+            expect(addOfPdu === CORRECT_SMS_PDU).assertTrue();
+            console.log('Telephony_SmsMms_updateSimMessage_Async_2200 getAllSimMessages cur finish');
+            done();
+          });
+        });
+      });
+    });
+  });
+
+  /**
+   * @tc.number   Telephony_SmsMms_updateSimMessage_Async_2300
+   * @tc.name     The SMS status does not change,The status of the SMS message is read,
+   *              The PDU of the read type is changed to another PDU that meets the conditions.
+   *              The update is successful
+   * @tc.desc     Function test
+   */
+  it('Telephony_SmsMms_updateSimMessage_Async_2300', 0, async function (done) {
+    let data = {
+      slotId: TRUE_SLOT_ID,
+      smsc: '',
+      pdu: RECEIVE_SMS_PDU,
+      status: sms.SIM_MESSAGE_STATUS_READ
+    };
+    let addIndex = 0;
+    let upDataPdu = RECEIVE_OTHER_SMS_PDU;
+    let upData = {
+      slotId: TRUE_SLOT_ID,
+      msgIndex: addIndex,
+      newStatus: sms.SIM_MESSAGE_STATUS_READ,
+      pdu: upDataPdu,
+      smsc: ''
+    };
+    sms.addSimMessage(data, (adderr) => {
+      if (adderr) {
+        expect().assertFail();
+        console.log('Telephony_SmsMms_updateSimMessage_Async_2300 add fail');
+        done();
+        return;
+      }
+      console.log('Telephony_SmsMms_updateSimMessage_Async_2300 finish add result ');
+      sms.getAllSimMessages(TRUE_SLOT_ID, (err, result) => {
+        if (err) {
+          expect().assertFail();
+          console.log('Telephony_SmsMms_updateSimMessage_Async_2300 get fail');
+          done();
+          return;
+        }
+        addIndex = result[0].indexOnSim;
+        console.log('Telephony_SmsMms_updateSimMessage_Async_2300 getAllSimMessages finish');
+        sms.updateSimMessage(upData, (updataerr) => {
+          if (updataerr) {
+            expect().assertFail();
+            console.log('Telephony_SmsMms_updateSimMessage_Async_2300 update fail');
+            done();
+            return;
+          }
+          console.log('Telephony_SmsMms_updateSimMessage_Async_2300 update finish result ');
+          sms.getAllSimMessages(TRUE_SLOT_ID, (geterr, getresult) => {
+            if (geterr) {
+              expect().assertFail();
+              console.log('Telephony_SmsMms_updateSimMessage_Async_2300 fail');
+              done();
+              return;
+            }
+            let addOfPdu = interceptionPdu(getresult[0].shortMessage.pdu, pduLength[2]);
+            expect(addOfPdu === RECEIVE_OTHER_SMS_PDU).assertTrue();
+            console.log('Telephony_SmsMms_updateSimMessage_Async_2300 getAllSimMessages cur finish');
+            done();
+          });
+        });
+      });
+    });
+  });
+
 });

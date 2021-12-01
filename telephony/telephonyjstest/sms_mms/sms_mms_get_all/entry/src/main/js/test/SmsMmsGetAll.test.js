@@ -26,6 +26,7 @@ import {
 describe('SmsMmsGetAllTest', function () {
   const TRUE_SLOT_ID = 0;
   const FALSE_SLOT_ID = 9;
+  //PDU code data that meets specifications for testing
   const CORRECT_SMS_PDU = '01000F9168683106019196F400080A00680065006C006C006F';
   const PDU_LENGTH = 50;
   const INTERCEPT_POINT_PLUS = 20;
@@ -99,6 +100,7 @@ describe('SmsMmsGetAllTest', function () {
           done();
           return;
         }
+        expect(getresult.length > 0).assertTrue();
         let addOfPdu = interceptionPdu(getresult[0].shortMessage.pdu, PDU_LENGTH);
         let isAdd = (addOfPdu === CORRECT_SMS_PDU &&
                         getresult[0].simMessageStatus === sms.SIM_MESSAGE_STATUS_SENT);
@@ -171,6 +173,7 @@ describe('SmsMmsGetAllTest', function () {
     }
     try {
       let promiseGet = await sms.getAllSimMessages(TRUE_SLOT_ID);
+      expect(promiseGet.length > 0).assertTrue();
       let addOfPdu = interceptionPdu(promiseGet[0].shortMessage.pdu, PDU_LENGTH);
       let isAdd = (addOfPdu === CORRECT_SMS_PDU &&
                 promiseGet[0].simMessageStatus === sms.SIM_MESSAGE_STATUS_SENT);
