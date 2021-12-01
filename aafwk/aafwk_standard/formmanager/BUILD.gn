@@ -18,10 +18,10 @@ group("formmanager") {
   if (is_standard_system) {
     deps = [
       "formsystemtesthost/actsformfuzztest:ActsFormFuzzTest",
+      "formsystemtesthost/actsformszerotest:ActsFormsZeroTest",
+      "formsystemtesthost/actsformszeroandonetest:ActsFormsZeroAndOneTest",
       "formsystemtesthost/actsformsoneandonetest:ActsFormsOneAndOneTest",
       "formsystemtesthost/actsformsoneandtwotest:ActsFormsOneAndTwoTest",
-      "formsystemtesthost/actsformszeroandonetest:ActsFormsZeroAndOneTest",
-      "formsystemtesthost/actsformszerotest:ActsFormsZeroTest",
       "formsystemtestservice/formsystemtestservicea:ActsFormSystemTestServiceA",
       "formsystemtestservice/formsystemtestserviceb:ActsFormSystemTestServiceB",
       "formsystemtestservice/formsystemtestservicec:ActsFormSystemTestServiceC",

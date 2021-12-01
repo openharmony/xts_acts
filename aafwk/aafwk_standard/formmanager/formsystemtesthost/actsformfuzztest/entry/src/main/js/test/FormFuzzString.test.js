@@ -38,8 +38,8 @@ describe('ActsFormFuzzStringTest', function () {
             formManager.deleteForm(
                     formId, 
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_0200_param_01_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_0200_param_01_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_0200_param_01_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_0200_param_01_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_0200_param_01_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -71,7 +71,7 @@ describe('ActsFormFuzzStringTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.deleteForm(formId)); 
-                console.log("FMS_fuzzTestString_0200_param_01_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestString_0200_param_01_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -101,8 +101,8 @@ describe('ActsFormFuzzStringTest', function () {
             formManager.deleteForm(
                 formId,
                 (err,data) => {
-                    console.log("FMS_fuzzTestString_0200_param_02_callback async::callbak return!!!")
-                    console.log("FMS_fuzzTestString_0200_param_02_callback async::sucess data:" + data);
+                    console.log("FMS_fuzzTestString_0200_param_02_callback async::callback return!!!")
+                    console.log("FMS_fuzzTestString_0200_param_02_callback async::success data:" + data);
                     console.log("FMS_fuzzTestString_0200_param_02_callback async::error err:" + err);
                     expect(err).assertEqual(0);
                     done();
@@ -110,7 +110,6 @@ describe('ActsFormFuzzStringTest', function () {
             );
     
             console.log("FMS_fuzzTestString_0200_param_02_callback deleteForm end");
-            done();
             setTimeout(function () {
                 console.info('=====================FMS_fuzzTestString_0200_param_02_callback==================end');
             }, TIMEOUT)
@@ -129,7 +128,7 @@ describe('ActsFormFuzzStringTest', function () {
                 + typeof(formId) + ",formId:" + formId);
     
             formManager.deleteForm(formId).then((err) => {
-                console.log("FMS_fuzzTestString_0200_param_02_promise async::sucess err:" + err);
+                console.log("FMS_fuzzTestString_0200_param_02_promise async::success err:" + err);
                 expect(err).assertEqual(0);
                 console.log("FMS_fuzzTestString_0200_param_02_promise deleteForm end");
                 done();
@@ -160,8 +159,8 @@ describe('ActsFormFuzzStringTest', function () {
                     formId,
                     isReleaseCache,
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_0300_param_01_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_0300_param_01_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_0300_param_01_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_0300_param_01_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_0300_param_01_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -197,7 +196,7 @@ describe('ActsFormFuzzStringTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
-                console.log("FMS_fuzzTestString_0300_param_01_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestString_0300_param_01_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -232,8 +231,8 @@ describe('ActsFormFuzzStringTest', function () {
                     formId,
                     isReleaseCache,
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_0300_param_02_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_0300_param_02_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_0300_param_02_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_0300_param_02_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_0300_param_02_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -269,7 +268,7 @@ describe('ActsFormFuzzStringTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
-                console.log("FMS_fuzzTestString_0300_param_02_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestString_0300_param_02_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -304,8 +303,8 @@ describe('ActsFormFuzzStringTest', function () {
                     formId,
                     isReleaseCache,
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_0300_param_03_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_0300_param_03_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_0300_param_03_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_0300_param_03_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_0300_param_03_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -341,7 +340,7 @@ describe('ActsFormFuzzStringTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
-                console.log("FMS_fuzzTestString_0300_param_03_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestString_0300_param_03_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -376,8 +375,8 @@ describe('ActsFormFuzzStringTest', function () {
                     formId,
                     isReleaseCache,
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_0300_param_04_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_0300_param_04_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_0300_param_04_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_0300_param_04_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_0300_param_04_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -413,7 +412,7 @@ describe('ActsFormFuzzStringTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
-                console.log("FMS_fuzzTestString_0300_param_04_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestString_0300_param_04_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -448,8 +447,8 @@ describe('ActsFormFuzzStringTest', function () {
                     formId,
                     isReleaseCache,
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_0300_param_05_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_0300_param_05_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_0300_param_05_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_0300_param_05_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_0300_param_05_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -485,7 +484,7 @@ describe('ActsFormFuzzStringTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
-                console.log("FMS_fuzzTestString_0300_param_05_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestString_0300_param_05_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -520,8 +519,8 @@ describe('ActsFormFuzzStringTest', function () {
                     formId,
                     isReleaseCache,
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_0300_param_06_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_0300_param_06_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_0300_param_06_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_0300_param_06_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_0300_param_06_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -557,7 +556,7 @@ describe('ActsFormFuzzStringTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
-                console.log("FMS_fuzzTestString_0300_param_06_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestString_0300_param_06_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -592,8 +591,8 @@ describe('ActsFormFuzzStringTest', function () {
                     formId,
                     isReleaseCache,
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_0300_param_07_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_0300_param_07_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_0300_param_07_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_0300_param_07_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_0300_param_07_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -629,7 +628,7 @@ describe('ActsFormFuzzStringTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
-                console.log("FMS_fuzzTestString_0300_param_07_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestString_0300_param_07_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -664,8 +663,8 @@ describe('ActsFormFuzzStringTest', function () {
                     formId,
                     isReleaseCache,
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_0300_param_08_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_0300_param_08_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_0300_param_08_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_0300_param_08_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_0300_param_08_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -701,7 +700,7 @@ describe('ActsFormFuzzStringTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
-                console.log("FMS_fuzzTestString_0300_param_08_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestString_0300_param_08_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -732,8 +731,8 @@ describe('ActsFormFuzzStringTest', function () {
                 formManager.releaseForm(
                     formId,
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_0300_param_09_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_0300_param_09_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_0300_param_09_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_0300_param_09_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_0300_param_09_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -767,7 +766,7 @@ describe('ActsFormFuzzStringTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.releaseForm(formId));
-                console.log("FMS_fuzzTestString_0300_param_09_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestString_0300_param_09_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -797,16 +796,17 @@ describe('ActsFormFuzzStringTest', function () {
             formManager.releaseForm(
                 formId,
                 (err,data) => {
-                    console.log("FMS_fuzzTestString_0300_param_10_callback async::callbak return!!!")
-                    console.log("FMS_fuzzTestString_0300_param_10_callback async::sucess data:" + data);
+                    console.log("FMS_fuzzTestString_0300_param_10_callback async::callback return!!!")
+                    console.log("FMS_fuzzTestString_0300_param_10_callback async::success data:" + data);
                     console.log("FMS_fuzzTestString_0300_param_10_callback async::error err:" + err);
+                    if (Number.parseInt(formId) < 0) {
                     expect(err).assertEqual(0);
+                    } else expect(err).assertEqual(1);
                     done();
                 }
             );
     
             console.log("FMS_fuzzTestString_0300_param_10_callback releaseForm end");
-            done();
             setTimeout(function () {
                 console.info('=====================FMS_fuzzTestString_0300_param_10_callback==================end');
             }, TIMEOUT)
@@ -815,16 +815,42 @@ describe('ActsFormFuzzStringTest', function () {
         /**
          * @tc.name fuzzTest
          * @tc.number FMS_fuzzTestString_0300
+         * @tc.desc Check whether the releaseForm interface can pass the fuzzy test (by Promise)
+         */
+         it('FMS_fuzzTestString_0300_param_10_promise', 0, async function (done) {
+            console.log("FMS_fuzzTestString_0300_param_10_promise releaseForm begin");
+
+            var formId = numberTest() + "";
+            console.log("FMS_fuzzTestString_0300_param_10_promise releaseForm formId typeof:"
+                + typeof(formId) + ",formId:" + formId);
+
+            formManager.releaseForm(formId).then((err) => {
+                console.log("FMS_fuzzTestString_0300_param_10_promise async::sucess err:" + err);
+                if (Number.parseInt(formId) < 0) {
+                expect(err).assertEqual(0);
+                } else expect(err).assertEqual(1);
+                console.log("FMS_fuzzTestString_0300_param_10_promise deleteForm end");
+                done();
+            });
+        
+            setTimeout(function () {
+                console.info('=====================FMS_fuzzTestString_0300_param_10_promise==================end');
+            }, TIMEOUT)
+        })
+
+        /**
+         * @tc.name fuzzTest
+         * @tc.number FMS_fuzzTestString_0300
          * @tc.desc Check whether the releaseForm interface can pass the fuzzy test (by AsyncCallback)
          */
-        it('FMS_fuzzTestString_0300_param_11_callback', 0, async function (done) {
+        it('FMS_fuzzTestString_0300_param_11_callback_release_cache', 0, async function (done) {
             console.log("FMS_fuzzTestString_0300_param_11_callback releaseForm begin");
     
             var formId = numberTest() + "";
             console.log("FMS_fuzzTestString_0300_param_11_callback releaseForm formId typeof:"
                 + typeof(formId) + ",formId:" + formId);
     
-            var isReleaseCache = booleanTest();
+            var isReleaseCache = true;
             console.log("FMS_fuzzTestString_0300_param_011_callback releaseForm isReleaseCache typeof:"
                 + typeof(isReleaseCache));
     
@@ -832,18 +858,85 @@ describe('ActsFormFuzzStringTest', function () {
                 formId,
                 isReleaseCache,
                 (err,data) => {
-                    console.log("FMS_fuzzTestString_0300_param_011_callback async::callbak return!!!")
-                    console.log("FMS_fuzzTestString_0300_param_011_callback async::sucess data:" + data);
-                    console.log("FMS_fuzzTestString_0300_param_011_callback async::error err:" + err);
+                    console.log("FMS_fuzzTestString_0300_param_11_callback async::callback return!!!")
+                    console.log("FMS_fuzzTestString_0300_param_11_callback async::success data:" + data);
+                    console.log("FMS_fuzzTestString_0300_param_11_callback async::error err:" + err);
                     expect(err).assertEqual(0);
                     done();
                     }
                 );
     
-            console.log("FMS_fuzzTestString_0300_param_011_callback releaseForm end");
-            done();
+            console.log("FMS_fuzzTestString_0300_param_11_callback releaseForm end");
             setTimeout(function () {
-                console.info('=====================FMS_fuzzTestString_0300_param_011_callback==================end');
+                console.info('=====================FMS_fuzzTestString_0300_param_11_callback==================end');
+            }, TIMEOUT)
+        })
+
+        /**
+         * @tc.name fuzzTest
+         * @tc.number FMS_fuzzTestString_0300
+         * @tc.desc Check whether the releaseForm interface can pass the fuzzy test (by AsyncCallback)
+         */
+         it('FMS_fuzzTestString_0300_param_11_callback_no_release_cache', 0, async function (done) {
+            console.log("FMS_fuzzTestString_0300_param_11_callback releaseForm begin");
+    
+            var formId = numberTest() + "";
+            console.log("FMS_fuzzTestString_0300_param_11_callback releaseForm formId typeof:"
+                + typeof(formId) + ",formId:" + formId);
+    
+            var isReleaseCache = false;
+            console.log("FMS_fuzzTestString_0300_param_011_callback releaseForm isReleaseCache typeof:"
+                + typeof(isReleaseCache));
+    
+            formManager.releaseForm(
+                formId,
+                isReleaseCache,
+                (err,data) => {
+                    console.log("FMS_fuzzTestString_0300_param_11_callback async::callback return!!!")
+                    console.log("FMS_fuzzTestString_0300_param_11_callback async::success data:" + data);
+                    console.log("FMS_fuzzTestString_0300_param_11_callback async::error err:" + err);
+                    if (Number.parseInt(formId) < 0) {
+                        expect(err).assertEqual(0);
+                    } else {
+                        expect(err).assertEqual(1);
+                    }
+                    done();
+                    }
+                );
+    
+            console.log("FMS_fuzzTestString_0300_param_11_callback releaseForm end");
+            setTimeout(function () {
+                console.info('=====================FMS_fuzzTestString_0300_param_11_callback==================end');
+            }, TIMEOUT)
+        })
+        
+        /**
+         * @tc.name fuzzTest
+         * @tc.number FMS_fuzzTestString_0300
+         * @tc.desc Check whether the releaseForm interface can pass the fuzzy test (by Promise)
+         */
+         it('FMS_fuzzTestString_0300_param_11_promise', 0, async function (done) {
+            console.log("FMS_fuzzTestString_0300_param_11_promise releaseForm begin");
+
+            var formId = numberTest() + "";
+            console.log("FMS_fuzzTestString_0300_param_11_promise releaseForm formId typeof:"
+                + typeof(formId) + ",formId:" + formId);
+
+            var isReleaseCache = booleanTest();
+            console.log("FMS_fuzzTestString_0300_param_11_promise releaseForm isReleaseCache typeof:"
+                + typeof(isReleaseCache));
+
+            formManager.releaseForm(formId, isReleaseCache).then((err) => {
+                console.log("FMS_fuzzTestString_0300_param_11_promise async::sucess err:" + err);
+                if (Number.parseInt(formId) < 0) {
+                expect(err).assertEqual(0);
+                } else expect(err).assertEqual(1);
+                console.log("FMS_fuzzTestString_0300_param_11_promise deleteForm end");
+                done();
+            });
+
+            setTimeout(function () {
+                console.info('=====================FMS_fuzzTestString_0300_param_11_promise==================end');
             }, TIMEOUT)
         })
 
@@ -862,8 +955,8 @@ describe('ActsFormFuzzStringTest', function () {
                 formManager.getAllFormsInfo(
                     testParam,
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_1200_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_1200_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_1200_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_1200_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_1200_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -895,7 +988,7 @@ describe('ActsFormFuzzStringTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.getAllFormsInfo(testParam));
-                console.log("FMS_fuzzTestString_1200_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestString_1200_promise async::success retResult:" + retResult);
                         fail("should not reach here");
                 done();
             } catch (e) {
@@ -926,8 +1019,8 @@ describe('ActsFormFuzzStringTest', function () {
                 formManager.getFormsInfo(
                     bundleName,
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_1300_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_1300_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_1300_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_1300_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_1300_callback async::error err:" + err);
                         expect(err).assertEqual(0);
                         done();
@@ -939,7 +1032,6 @@ describe('ActsFormFuzzStringTest', function () {
             }
     
             console.log("FMS_fuzzTestString_1300_callback getFormsInfoByApp end");
-            done();
             setTimeout(function () {
                 console.info('=====================FMS_fuzzTestString_1300_callback==================end');
             }, TIMEOUT)
@@ -958,9 +1050,9 @@ describe('ActsFormFuzzStringTest', function () {
             console.log("FMS_fuzzTestString_1300_promise getFormsInfoByApp bundleName typeof:" + typeof(bundleName));
             
             formManager.getFormsInfo(bundleName).then((err) => {
-                console.log("FMS_fuzzTestString_1300_promise async::sucess err:" + err);
+                console.log("FMS_fuzzTestString_1300_promise async::success err:" + err);
                 expect(err).assertEqual(0);
-                console.log("FMS_fuzzTestString_1300_promise deleteForm end");
+                console.log("FMS_fuzzTestString_1300_promise getFormsInfoByApp end");
                 done();
             });
     
@@ -991,8 +1083,8 @@ describe('ActsFormFuzzStringTest', function () {
                     bundleName,
                     moduleName,
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_1400_param_01_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_1400_param_01_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_1400_param_01_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_1400_param_01_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_1400_param_01_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -1030,7 +1122,7 @@ describe('ActsFormFuzzStringTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.getFormsInfo(bundleName, moduleName));
-                console.log("FMS_fuzzTestString_1400_param_01_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestString_1400_param_01_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -1067,8 +1159,8 @@ describe('ActsFormFuzzStringTest', function () {
                     bundleName,
                     moduleName,
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_1400_param_02_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_1400_param_02_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_1400_param_02_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_1400_param_02_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_1400_param_02_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -1106,7 +1198,7 @@ describe('ActsFormFuzzStringTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.getFormsInfo(bundleName, moduleName));
-                console.log("FMS_fuzzTestString_1400_param_02_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestString_1400_param_02_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -1143,8 +1235,8 @@ describe('ActsFormFuzzStringTest', function () {
                     bundleName,
                     moduleName,
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_1400_param_03_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_1400_param_03_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_1400_param_03_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_1400_param_03_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_1400_param_03_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -1182,7 +1274,7 @@ describe('ActsFormFuzzStringTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.getFormsInfo(bundleName, moduleName));
-                console.log("FMS_fuzzTestString_1400_param_03_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestString_1400_param_03_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -1219,8 +1311,8 @@ describe('ActsFormFuzzStringTest', function () {
                     bundleName,
                     moduleName,
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_1400_param_04_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_1400_param_04_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_1400_param_04_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_1400_param_04_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_1400_param_04_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -1258,7 +1350,7 @@ describe('ActsFormFuzzStringTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.getFormsInfo(bundleName, moduleName));
-                console.log("FMS_fuzzTestString_1400_param_04_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestString_1400_param_04_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -1295,8 +1387,8 @@ describe('ActsFormFuzzStringTest', function () {
                     bundleName,
                     moduleName,
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_1400_param_05_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_1400_param_05_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_1400_param_05_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_1400_param_05_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_1400_param_05_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -1334,7 +1426,7 @@ describe('ActsFormFuzzStringTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.getFormsInfo(bundleName, moduleName));
-                console.log("FMS_fuzzTestString_1400_param_05_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestString_1400_param_05_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -1371,8 +1463,8 @@ describe('ActsFormFuzzStringTest', function () {
                     bundleName,
                     moduleName,
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_1400_param_06_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_1400_param_06_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_1400_param_06_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_1400_param_06_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_1400_param_06_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -1410,7 +1502,7 @@ describe('ActsFormFuzzStringTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.getFormsInfo(bundleName, moduleName));
-                console.log("FMS_fuzzTestString_1400_param_06_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestString_1400_param_06_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -1446,8 +1538,8 @@ describe('ActsFormFuzzStringTest', function () {
                 bundleName,
                 moduleName,
                 (err,data) => {
-                    console.log("FMS_fuzzTestString_1400_param_07_callback async::callbak return!!!")
-                    console.log("FMS_fuzzTestString_1400_param_07_callback async::sucess data:" + data);
+                    console.log("FMS_fuzzTestString_1400_param_07_callback async::callback return!!!")
+                    console.log("FMS_fuzzTestString_1400_param_07_callback async::success data:" + data);
                     console.log("FMS_fuzzTestString_1400_param_07_callback async::error err:" + err);
                     expect(retResult).assertEqual(0);
                     done();
@@ -1479,7 +1571,7 @@ describe('ActsFormFuzzStringTest', function () {
                 + typeof(moduleName));
     
             formManager.getFormsInfo(bundleName, moduleName).then((err) => {
-                console.log("FMS_fuzzTestString_1400_param_07_promise async::sucess err:" + err);
+                console.log("FMS_fuzzTestString_1400_param_07_promise async::success err:" + err);
                 expect(err).assertEqual(0);
                 console.log("FMS_fuzzTestString_1400_param_07_promise getFormsInfo end");
                 done();
@@ -1512,8 +1604,8 @@ describe('ActsFormFuzzStringTest', function () {
                     bundleName,
                     moduleName,
                     (err,data) => {
-                        console.log("FMS_fuzzTestString_1400_param_08_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestString_1400_param_08_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestString_1400_param_08_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestString_1400_param_08_callback async::success data:" + data);
                         console.log("FMS_fuzzTestString_1400_param_08_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -1551,7 +1643,7 @@ describe('ActsFormFuzzStringTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.getFormsInfo(bundleName, moduleName));
-                console.log("FMS_fuzzTestString_1400_param_08_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestString_1400_param_08_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {

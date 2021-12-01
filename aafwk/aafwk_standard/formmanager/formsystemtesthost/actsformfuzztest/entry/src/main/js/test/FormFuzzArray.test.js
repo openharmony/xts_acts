@@ -39,8 +39,8 @@ describe('ActsFormFuzzArrayTest', function () {
                 formManager.deleteForm(
                     formId,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_0200_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_0200_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_0200_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_0200_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_0200_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -72,7 +72,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.deleteForm(formId));
-                console.log("FMS_fuzzTestArray_0200_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_0200_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -108,8 +108,8 @@ describe('ActsFormFuzzArrayTest', function () {
                     formId,
                     isReleaseCache,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_0300_param_01_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_0300_param_01_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_0300_param_01_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_0300_param_01_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_0300_param_01_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -145,7 +145,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
-                console.log("FMS_fuzzTestArray_0300_param_01_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_0300_param_01_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -180,8 +180,8 @@ describe('ActsFormFuzzArrayTest', function () {
                     formId,
                     isReleaseCache,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_0300_param_02_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_0300_param_02_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_0300_param_02_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_0300_param_02_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_0300_param_02_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -217,7 +217,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
-                console.log("FMS_fuzzTestArray_0300_param_02_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_0300_param_02_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -252,8 +252,8 @@ describe('ActsFormFuzzArrayTest', function () {
                     formId,
                     isReleaseCache,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_0300_param_03_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_0300_param_03_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_0300_param_03_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_0300_param_03_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_0300_param_03_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -289,7 +289,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
-                console.log("FMS_fuzzTestArray_0300_param_03_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_0300_param_03_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -324,8 +324,8 @@ describe('ActsFormFuzzArrayTest', function () {
                     formId,
                     isReleaseCache,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_0300_param_04_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_0300_param_04_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_0300_param_04_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_0300_param_04_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_0300_param_04_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -361,7 +361,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
-                console.log("FMS_fuzzTestArray_0300_param_04_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_0300_param_04_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -396,8 +396,8 @@ describe('ActsFormFuzzArrayTest', function () {
                     formId,
                     isReleaseCache,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_0300_param_05_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_0300_param_05_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_0300_param_05_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_0300_param_05_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_0300_param_05_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -433,7 +433,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
-                console.log("FMS_fuzzTestArray_0300_param_05_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_0300_param_05_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -468,8 +468,8 @@ describe('ActsFormFuzzArrayTest', function () {
                     formId,
                     isReleaseCache,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_0300_param_06_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_0300_param_06_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_0300_param_06_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_0300_param_06_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_0300_param_06_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -505,7 +505,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
-                console.log("FMS_fuzzTestArray_0300_param_06_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_0300_param_06_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -540,8 +540,8 @@ describe('ActsFormFuzzArrayTest', function () {
                     formId,
                     isReleaseCache,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_0300_param_07_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_0300_param_07_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_0300_param_07_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_0300_param_07_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_0300_param_07_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -577,7 +577,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
-                console.log("FMS_fuzzTestArray_0300_param_07_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_0300_param_07_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -612,8 +612,8 @@ describe('ActsFormFuzzArrayTest', function () {
                     formId,
                     isReleaseCache,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_0300_param_08_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_0300_param_08_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_0300_param_08_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_0300_param_08_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_0300_param_08_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -649,7 +649,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.releaseForm(formId, isReleaseCache));
-                console.log("FMS_fuzzTestArray_0300_param_08_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_0300_param_08_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -680,8 +680,8 @@ describe('ActsFormFuzzArrayTest', function () {
                 formManager.releaseForm(
                     formId,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_0300_param_09_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_0300_param_09_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_0300_param_09_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_0300_param_09_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_0300_param_09_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -715,7 +715,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.releaseForm(formId)); 
-                console.log("FMS_fuzzTestArray_0300_param_09_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_0300_param_09_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -745,8 +745,8 @@ describe('ActsFormFuzzArrayTest', function () {
                 formManager.getAllFormsInfo(
                     testParam,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_1200_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_1200_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_1200_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_1200_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_1200_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -778,7 +778,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.getAllFormsInfo(testParam));
-                console.log("FMS_fuzzTestArray_1200_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_1200_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -809,8 +809,8 @@ describe('ActsFormFuzzArrayTest', function () {
                 formManager.getFormsInfo(
                     bundleName,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_1300_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_1300_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_1300_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_1300_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_1300_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -843,7 +843,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.getFormsInfo(bundleName));
-                console.log("FMS_fuzzTestArray_1300_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_1300_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -880,8 +880,8 @@ describe('ActsFormFuzzArrayTest', function () {
                     bundleName,
                     moduleName,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_1400_param_01_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_1400_param_01_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_1400_param_01_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_1400_param_01_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_1400_param_01_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -919,7 +919,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.getFormsInfo(bundleName, moduleName));
-                console.log("FMS_fuzzTestArray_1400_param_01_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_1400_param_01_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -956,8 +956,8 @@ describe('ActsFormFuzzArrayTest', function () {
                     bundleName,
                     moduleName,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_1400_param_02_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_1400_param_02_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_1400_param_02_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_1400_param_02_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_1400_param_02_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -995,7 +995,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.getFormsInfo(bundleName, moduleName));
-                console.log("FMS_fuzzTestArray_1400_param_02_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_1400_param_02_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -1032,8 +1032,8 @@ describe('ActsFormFuzzArrayTest', function () {
                     bundleName,
                     moduleName,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_1400_param_03_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_1400_param_03_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_1400_param_03_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_1400_param_03_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_1400_param_03_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -1071,7 +1071,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.getFormsInfo(bundleName, moduleName));
-                console.log("FMS_fuzzTestArray_1400_param_03_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_1400_param_03_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -1108,8 +1108,8 @@ describe('ActsFormFuzzArrayTest', function () {
                     bundleName,
                     moduleName,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_1400_param_04_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_1400_param_04_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_1400_param_04_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_1400_param_04_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_1400_param_04_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -1147,7 +1147,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.getFormsInfo(bundleName, moduleName));
-                console.log("FMS_fuzzTestArray_1400_param_04_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_1400_param_04_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -1184,8 +1184,8 @@ describe('ActsFormFuzzArrayTest', function () {
                     bundleName,
                     moduleName,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_1400_param_05_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_1400_param_05_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_1400_param_05_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_1400_param_05_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_1400_param_05_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -1223,7 +1223,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.getFormsInfo(bundleName, moduleName));
-                console.log("FMS_fuzzTestArray_1400_param_05_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_1400_param_05_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -1260,8 +1260,8 @@ describe('ActsFormFuzzArrayTest', function () {
                     bundleName,
                     moduleName,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_1400_param_06_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_1400_param_06_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_1400_param_06_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_1400_param_06_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_1400_param_06_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -1299,7 +1299,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.getFormsInfo(bundleName, moduleName));
-                console.log("FMS_fuzzTestArray_1400_param_06_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_1400_param_06_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -1336,8 +1336,8 @@ describe('ActsFormFuzzArrayTest', function () {
                     bundleName,
                     moduleName,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_1400_param_07_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_1400_param_07_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_1400_param_07_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_1400_param_07_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_1400_param_07_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -1375,7 +1375,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.getFormsInfo(bundleName, moduleName));
-                console.log("FMS_fuzzTestArray_1400_param_07_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_1400_param_07_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
@@ -1412,8 +1412,8 @@ describe('ActsFormFuzzArrayTest', function () {
                     bundleName,
                     moduleName,
                     (err,data) => {
-                        console.log("FMS_fuzzTestArray_1400_param_08_callback async::callbak return!!!")
-                        console.log("FMS_fuzzTestArray_1400_param_08_callback async::sucess data:" + data);
+                        console.log("FMS_fuzzTestArray_1400_param_08_callback async::callback return!!!")
+                        console.log("FMS_fuzzTestArray_1400_param_08_callback async::success data:" + data);
                         console.log("FMS_fuzzTestArray_1400_param_08_callback async::error err:" + err);
                         fail("should not reach here");
                         done();
@@ -1451,7 +1451,7 @@ describe('ActsFormFuzzArrayTest', function () {
             var retResult;
             try{
                 retResult = await Promise.all(await formManager.getFormsInfo(bundleName, moduleName));
-                console.log("FMS_fuzzTestArray_1400_param_08_promise async::sucess retResult:" + retResult);
+                console.log("FMS_fuzzTestArray_1400_param_08_promise async::success retResult:" + retResult);
                 fail("should not reach here");
                 done();
             } catch (e) {
