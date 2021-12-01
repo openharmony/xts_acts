@@ -12,12 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import rpc from "@ohos.rpc";
-
 let mMyStub;
-let mMyProxy;
-
+import particleAbility from '@ohos.ability.particleability'
+import featureAbility from '@ohos.ability.featureAbility'
+import commonEvent from '@ohos.commonevent'
+var serversecond_bundleName = "com.amsst.stserviceabilityserversecond";
+var serversecond_abilityName = "com.amsst.stserviceabilityserversecond.MainAbility";
+var mConnIdJs;
 export default {
     data: {
         title: ""
@@ -25,75 +27,150 @@ export default {
     onInit() {
         this.title = this.$t('strings.world');
     },
-    onStart(want) {
-        console.log('SerivceAbilityServer onStart');
-        class MyStub extends rpc.RemoteObject{
-            constructor(des) {
-                if (typeof des === 'string') {
-                    super(des, des.length);
-                }
-                return null;
-            }
-            onRemoteRequest(code, message, reply, option) {
-                console.log("RPCTestServer onRemoteRequest code:" + code);
-                if (code === 1) {
-                    console.log("RPCTestServer: 调用到方法");
-                    let getContextObject = rpc.IPCSkeleton.getContextObject();
-                    console.log("RPCTestServer: getContextObject 方法调用的结果为: " + getContextObject);
-                    let getCallingPid = rpc.IPCSkeleton.getCallingPid();
-                    console.log("RPCTestServer: getCallingPid 方法调用的结果为: " + getCallingPid);
-                    let getCallingUid = rpc.IPCSkeleton.getCallingUid();
-                    console.log("RPCTestServer: getCallingUid 方法调用的结果为: " + getCallingUid);
-                    let getCallingDeviceID = rpc.IPCSkeleton.getCallingDeviceID();
-                    console.log("RPCTestServer: getCallingDeviceID 方法调用的结果为: " + getCallingDeviceID);
-                    let getLocalDeviceID = rpc.IPCSkeleton.getLocalDeviceID();
-                    console.log("RPCTestServer: getLocalDeviceID 方法调用的结果为: " + getLocalDeviceID);
-                    let isLocalCalling = rpc.IPCSkeleton.isLocalCalling();
-                    console.log("RPCTestServer: isLocalCalling 方法调用的结果为: " + isLocalCalling);
-                    let remoteObject = new rpc.RemoteObject("aaa",3);
-                    let flushCommands = rpc.IPCSkeleton.flushCommands(remoteObject);
-                    console.log("RPCTestServer: flushCommands 方法调用的结果为: " + flushCommands);
-                    let resetCallingIdentity = rpc.IPCSkeleton.resetCallingIdentity();
-                    console.log("RPCTestServer: resetCallingIdentity 方法调用的结果为: " + resetCallingIdentity);
-                    let setCallingIdentity = rpc.IPCSkeleton.setCallingIdentity("aaa", 3);
-                    console.log("RPCTestServer: setCallingIdentity 方法调用的结果为: " + setCallingIdentity);
-                    let num = message.readInt();
-                    let msg = message.readString();
-                    console.log("num is " + num + "msg is " + msg);
-                    reply.writeString("Success");
-                    return true;
-                }
-            }
-        }
-
-        console.log("RPCTestServer: 判断其是否可以创建对象")
-        mMyStub = new MyStub("ServiceAbility-test");
-        console.log("xxx RPCTestServer: 创建的对象为:" + mMyStub)
-        // console.log("RPCTestServer: 向saMgr中注册stub");
-        // let result = rpc.IPCSkeleton.addLocalAbility(mMyStub);
-        // console.log("RPCTestServer: 注册的结果为：" + result);
-
-        // mMyProxy = rpc.IPCSkeleton.getLocalAbility();
-        // console.log("RPCTestProxy: 判断当前获取的对象是不是proxy:" + (mMyProxy instanceof rpc.RemoteProxy));
+    onShow() {
+        console.debug('ACTS_SerivceAbilityServer ====<onShow')
     },
     onReady() {
-        console.info('SerivceAbilityServer onReady');
-    },
-
-    onStop() {
-        console.info('SerivceAbilityServer onStop');
-    },
-    onConnect(want) {
-        console.info('stub SerivceAbilityServer OnConnect');
-        return mMyStub;
+        console.debug('ACTS_SerivceAbilityServer ====<onReady');
     },
     onReconnect(want) {
-        console.info('SerivceAbilityServer onReconnect');
+        console.debug('ACTS_SerivceAbilityServer ====>onReconnect='
+            + want + " , JSON." + JSON.stringify(want));
+        commonEvent.publish("ACTS_SerivceAbilityServer_onReconnect" + "_" + want.action, (err) => { });
     },
-    onDisconnect() {
-        console.info('SerivceAbilityServer OnDisConnect');
+    onActive() {
+        console.debug('ACTS_SerivceAbilityServer ====<onActive');
+        commonEvent.publish("ACTS_SerivceAbilityServer_onActive", (err) => { });
     },
     onCommand(want, restart, startId) {
-        console.info('SerivceAbilityServer onCommand');
+        console.debug('ACTS_SerivceAbilityServer ====>onCommand='
+            + "JSON(want)=" + JSON.stringify(want)
+            + " ,restart=" + restart + " ,startId=" + startId);
+        if (want.action == 'ServiceStartService_0900') {
+            particleAbility.startAbility(
+                {
+                    want:
+                    {
+                        bundleName: serversecond_bundleName,
+                        abilityName: serversecond_abilityName,
+                        action: "ServiceStartService_0900",
+                    },
+                }
+            );
+            featureAbility.terminateSelf();
+        } else if (want.action == 'ServiceStartService_1000') {
+            particleAbility.startAbility(
+                {
+                    want:
+                    {
+                        bundleName: serversecond_bundleName,
+                        abilityName: serversecond_abilityName,
+                        action: "ServiceStartService_1000",
+                    },
+                }, (err, data) => {
+                    console.debug('ACTS_SerivceAbilityServer start Ability 1000 callback====='
+                        + err + ', data= ' + data + " , JSON." + JSON.stringify(data));
+                    featureAbility.terminateSelf();
+                }
+            );
+        } else {
+            commonEvent.publish("ACTS_SerivceAbilityServer_onCommand" + "_" + want.action, (err) => {
+                if (!err.code) {
+                    if (want.action == 'PageStartService_0100' || want.action == 'PageStartService_0200'
+                        || want.action == 'PageStartService_0301' || want.action == 'PageStartService_0401') {
+                        console.debug('ACTS_SerivceAbilityServer_onCommand 100 200 301 401.terminateSelf()=====>'
+                            + want.action);
+                        featureAbility.terminateSelf();
+                    }
+                } else {
+                    console.debug('ACTS_SerivceAbilityServer_onCommand publish err=====>' + err);
+                }
+            });
+        }
+    },
+    onStart(want) {
+        console.debug('ACTS_SerivceAbilityServer ====>onStart='
+            + want + " , JSON." + JSON.stringify(want));
+        commonEvent.publish("ACTS_SerivceAbilityServer_onStart", (err) => { });
+        class MyStub extends rpc.RemoteObject {
+            constructor(des) { super(des); }
+        }
+        console.debug("ACTS_SerivceAbilityServer ====< RPCTestServer");
+        mMyStub = new MyStub("ServiceAbility-test");
+        console.debug("ACTS_SerivceAbilityServer RPCTestServer: mMyStub:" + mMyStub
+            + " , " + JSON.stringify(mMyStub))
+    },
+    onStop() {
+        console.debug('ACTS_SerivceAbilityServer ====<onStop');
+        commonEvent.publish("ACTS_SerivceAbilityServer_onStop", (err) => { });
+        featureAbility.terminateSelf();
+    },
+    onConnect(want) {
+        console.debug('ACTS_SerivceAbilityServer ====>onConnect='
+            + want + " , JSON." + JSON.stringify(want));
+        function onConnectCallback(element, remote) {
+            console.debug('ACTS_SerivceAbilityServer_onConnectCallback ====> mConnIdJs='
+                + JSON.stringify(mConnIdJs) + " , " + mConnIdJs);
+            console.debug('ACTS_SerivceAbilityServer_onConnectCallback ====> element='
+                + JSON.stringify(element) + " , " + element);
+            console.debug('ACTS_SerivceAbilityServer_onConnectCallback ====> remote='
+                + JSON.stringify(remote) + " , " + remote);
+        }
+        function onDisconnectCallback(element) {
+            console.debug('ACTS_SerivceAbilityServer_onDisconnectCallback ====> element='
+                + JSON.stringify(element) + " , " + element);
+        }
+        function onFailedCallback(code) {
+            console.debug('ACTS_SerivceAbilityServer_onFailedCallback ====> code='
+                + JSON.stringify(code) + " , " + code)
+        }
+        if (want.action == 'ServiceConnectService_1300' || want.action == 'ServiceConnectService_1400'
+            || want.action == 'ServiceConnectService_1500' || want.action == 'ServiceConnectService_1600') {
+            mConnIdJs = particleAbility.connectAbility(
+                {
+                    bundleName: serversecond_bundleName,
+                    abilityName: serversecond_abilityName,
+                    action: want.action,
+                },
+                {
+                    onConnect: onConnectCallback,
+                    onDisconnect: onDisconnectCallback,
+                    onFailed: onFailedCallback,
+                },
+            )
+        } else {
+            commonEvent.publish("ACTS_SerivceAbilityServer_onConnect" + "_" + want.action, (err) => { });
+        }
+        return mMyStub;
+    },
+    OnAbilityConnectDone(element, remoteObject, resultCode) {
+        console.debug('ACTS_SerivceAbilityServer ====>OnAbilityConnectDone='
+            + element + " , JSON." + JSON.stringify(element)
+            + remoteObject + " , JSON." + JSON.stringify(remoteObject)
+            + resultCode + " , JSON." + JSON.stringify(resultCode)
+        );
+        commonEvent.publish("ACTS_SerivceAbilityServer_OnAbilityConnectDone", (err) => { });
+    },
+    onDisconnect(want) {
+        console.debug('ACTS_SerivceAbilityServer ====>onDisConnect='
+            + want + " , JSON." + JSON.stringify(want));
+        commonEvent.publish("ACTS_SerivceAbilityServer_onDisConnect", (err) => {
+            if (err.code) {
+                console.debug('ACTS_SerivceAbilityServer_onDisConnect publish err=====>' + err);
+            } else {
+                console.debug('ACTS_SerivceAbilityServer_onDisConnect featureAbility.terminateSelf()=====<'
+                    + want.action);
+                if (want.action == 'ServiceConnectService_1300' || want.action == 'ServiceConnectService_1400'
+                    || want.action == 'ServiceConnectService_1500' || want.action == 'ServiceConnectService_1501'
+                    || want.action == 'ServiceConnectService_1600' || want.action == 'ServiceConnectService_1601'
+                ) {
+                    particleAbility.disconnectAbility(mConnIdJs, (err) => {
+                        console.debug("=ACTS_SerivceAbilityServer_onDisConnect 13 14 15 16 err====>"
+                            + ("json err=") + JSON.stringify(err) + " , " + want.action);
+                    })
+                }
+                featureAbility.terminateSelf();
+            }
+        });
     },
 }
