@@ -146,7 +146,7 @@ int32_t TestPlayer::Seek(int32_t mseconds, PlayerSeekMode mode)
 {
     MEDIA_DEBUG_LOG("%s", __FUNCTION__);
     test_->seekDoneFlag_ = false;
-    test_->seekPositon_ = mseconds;
+    test_->seekPosition_ = mseconds;
     int32_t ret = player_->Seek(mseconds, mode);
     if (ret == RET_OK && test_->mutexFlag_ == true && test_->seekDoneFlag_ == false) {
         std::unique_lock<std::mutex> lockSeek(test_->mutexSeek_);
@@ -274,8 +274,8 @@ void TestPlayerCallback::OnInfo(PlayerOnInfoType type, int32_t extra, const Form
         case INFO_TYPE_SEEKDONE:
             seekDoneFlag_ = true;
             test_->SetSeekResult(true);
-            MEDIA_INFO_LOG("TestPlayerCallback: OnSeekDone currentPositon is %d", extra);
-            if (abs(test_->seekPositon_ - extra) <= DELTA_TIME) {
+            MEDIA_INFO_LOG("TestPlayerCallback: OnSeekDone currentPosition is %d", extra);
+            if (abs(test_->seekPosition_ - extra) <= DELTA_TIME) {
                 test_->condVarSeek_.notify_all();
             } else {
                 test_->SetSeekResult(false);
@@ -299,17 +299,20 @@ void TestPlayerCallback::OnInfo(PlayerOnInfoType type, int32_t extra, const Form
     }
 }
 
-int TestPlayerCallback::WaitForSeekDone(int32_t currentPositon)
+int TestPlayerCallback::WaitForSeekDone(int32_t currentPosition)
 {
-    int64_t waitTime = 0;
+    auto start = std::chrono::system_clock::now();
+    auto end = std::chrono::system_clock::now();
+    uint64_t waitTime = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
     seekDoneFlag_ = false;
     while (seekDoneFlag_ != true && waitTime < WAITSECOND * TIME_SEC2MS) {
         (void)usleep(WAIT_TIME);
-        waitTime += 1;
+        end = std::chrono::system_clock::now();
+        waitTime = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
     }
     seekDoneFlag_ = false;
     if (waitTime >= WAITSECOND * TIME_SEC2MS) {
-        MEDIA_ERROR_LOG("Failed to seek [%d]s ", currentPositon);
+        MEDIA_ERROR_LOG("Failed to seek [%d] ms ", currentPosition);
         return -1;
     }
     return 0;
@@ -317,12 +320,16 @@ int TestPlayerCallback::WaitForSeekDone(int32_t currentPositon)
 
 int TestPlayerCallback::WaitForState(PlayerStates state)
 {
-    int64_t waitTime = 0;
-    while (state_ != state && waitTime < WAITSECOND * TIME_SEC2MS) {
+    auto start = std::chrono::system_clock::now();
+    auto end = std::chrono::system_clock::now();
+    uint64_t waitTime = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    const uint64_t waitTimeMax = 4000;
+    while (state_ != state && waitTime < waitTimeMax) {
         (void)usleep(WAIT_TIME);
-        waitTime += 1;
+        end = std::chrono::system_clock::now();
+        waitTime = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
     }
-    if (waitTime >= WAITSECOND * TIME_SEC2MS) {
+    if (waitTime >= waitTimeMax) {
         MEDIA_ERROR_LOG("Failed to wait for state[%d] down", state);
         return -1;
     }

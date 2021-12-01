@@ -1,4 +1,3 @@
-
 /*
  * Copyright (C) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,14 +13,17 @@
  * limitations under the License.
  */
 
+#ifndef MEDIA_TEST_LOG_H
+#define MEDIA_TEST_LOG_H
+
 #include "media_log.h"
 #include "securec.h"
 
-#define LOGMAXSIZE 200
+#define LOG_MAX_SIZE 200
 #define MEDIA_INFO_LOG(fmt, ...) \
 do { \
-    char ch[LOGMAXSIZE]; \
-    (void)sprintf_s(ch, LOGMAXSIZE, fmt, ##__VA_ARGS__); \
+    char ch[LOG_MAX_SIZE]; \
+    (void)sprintf_s(ch, LOG_MAX_SIZE, fmt, ##__VA_ARGS__); \
     (void)printf("%s", ch); \
     (void)printf("\n"); \
     __MEDIA_LOG(::OHOS::HiviewDFX::HiLog::Info, "%{public}s", ch); \
@@ -29,15 +31,15 @@ do { \
 
 #define MEDIA_DEBUG_LOG(fmt, ...) \
 do { \
-    char ch[LOGMAXSIZE]; \
-    (void)sprintf_s(ch, LOGMAXSIZE, fmt, ##__VA_ARGS__); \
+    char ch[LOG_MAX_SIZE]; \
+    (void)sprintf_s(ch, LOG_MAX_SIZE, fmt, ##__VA_ARGS__); \
     __MEDIA_LOG(::OHOS::HiviewDFX::HiLog::Debug, "%{public}s", ch); \
 } while (0)
 
 #define MEDIA_ERROR_LOG(fmt, ...) \
 do { \
-    char ch[LOGMAXSIZE]; \
-    (void)sprintf_s(ch, LOGMAXSIZE, fmt, ##__VA_ARGS__); \
+    char ch[LOG_MAX_SIZE]; \
+    (void)sprintf_s(ch, LOG_MAX_SIZE, fmt, ##__VA_ARGS__); \
     (void)printf("%s", ch); \
     (void)printf("\n"); \
     __MEDIA_LOG(::OHOS::HiviewDFX::HiLog::Error, "%{public}s", ch); \
@@ -56,3 +58,4 @@ namespace MediaTest {
     const int HEIGHT = 720;
     const int WIDTH = 1280;
 }
+#endif

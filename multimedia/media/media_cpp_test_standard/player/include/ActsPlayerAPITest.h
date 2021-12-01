@@ -25,6 +25,7 @@ public:
     static void SetUpTestCase(void)
     {
         MEDIA_DEBUG_LOG("ActsPlayerAPITest::SetUpTestCase");
+        TestPlayerBasic::TestParamsConfig::GetInstance().InitMountPath();
     };
     // TearDownTestCase: after all testcases
     static void TearDownTestCase(void)
