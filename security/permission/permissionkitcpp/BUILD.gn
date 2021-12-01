@@ -88,8 +88,8 @@ ohos_moduletest_suite("PermissionKitCPPTest") {
 
   sources = [
     "src/PermissionKitFunctionCPPTest.cpp",
-    "src/PermissionKitPerformanceCPPTest.cpp",
-    "src/PermissionKitReliabilityCPPTest.cpp",
+    # "src/PermissionKitPerformanceCPPTest.cpp",
+    # "src/PermissionKitReliabilityCPPTest.cpp",
   ]
   deps = [
     "//base/security/permission/frameworks/permission_standard/permissioninfrastructure:permission_standard_infrastructure_cxx",
