@@ -17,6 +17,11 @@ import fileio from '@ohos.fileio';
 
 export const FILE_CONTENT = 'hello world';
 
+import {
+  describe, beforeAll, beforeEach, afterEach, afterAll, it, expect
+}
+from 'deccjsunit/index'
+
 export function prepareFile(fpath, content) {
   try {
     let fd = fileio.openSync(fpath, 0o102, 0o666)
@@ -99,3 +104,29 @@ export function randomString(num) {
   }
   return pwd;
 }
+
+function isIntNum(val) {
+  return typeof val === 'number' && val % 1 === 0;
+}
+
+function isString(str) {
+  return (typeof str == 'string') && str.constructor == String;
+}
+
+function isBoolean(val) {
+  return typeof val == 'boolean';
+}
+
+export {
+  fileio,
+  isIntNum,
+  isString,
+  isBoolean,
+  describe,
+  beforeAll,
+  beforeEach,
+  afterEach,
+  afterAll,
+  it,
+  expect
+};

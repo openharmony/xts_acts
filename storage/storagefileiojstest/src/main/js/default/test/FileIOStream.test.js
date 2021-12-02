@@ -16,10 +16,6 @@
 import fileio from '@ohos.fileio';
 import {
   describe,
-  beforeAll,
-  beforeEach,
-  afterEach,
-  afterAll,
   it,
   expect
 }
@@ -29,7 +25,6 @@ import {
   prepareFile,
   fileToReadOnly,
   fileToWriteOnly,
-  sleep,
   nextFileName,
   randomString
 }
@@ -1278,7 +1273,7 @@ describe('fileIOTestStream', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o2);
-      fileio.fdopenStreamSync(fd, '')
+      fileio.fdopenStreamSync(fd, '');
       expect(null).assertFail();
     } 
     catch (e) {
