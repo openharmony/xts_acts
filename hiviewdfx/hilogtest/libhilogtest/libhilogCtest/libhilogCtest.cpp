@@ -711,7 +711,7 @@ HWTEST_F(LibhilogCtest, TAG_CHECK, Function|MediumTest|Level2)
 
 /**
  * @tc.name libhilog-log are not truncated with normal length tag
- * @tc.number DFX_DFT_HilogC_0280
+ * @tc.number DFX_DFT_HilogC_0300
  * @tc.desc libhilog-log are not truncated with normal length tag
  */
 HWTEST_F(LibhilogCtest, TYPE_APP_CHECK, Function|MediumTest|Level2)
