@@ -82,10 +82,6 @@ describe('ActsSubscriberTestUnorder', async function (done) {
                 }, 1000);
             });
         })
-
-        setTimeout(function (){
-            console.debug("===================ActsSubscriberTestUnorder_0100 end==================");
-        }, 30000);
     })
 
     /*
@@ -124,10 +120,6 @@ describe('ActsSubscriberTestUnorder', async function (done) {
                 }, 1000);
             });
         })
-
-        setTimeout(function (){
-            console.debug("===================ActsSubscriberTestUnorder_0200 end==================");
-        }, 30000);
     })
 
     /*
@@ -180,9 +172,6 @@ describe('ActsSubscriberTestUnorder', async function (done) {
                 }, 1000);
             });
         })
-        setTimeout(function (){
-            console.debug("===================ActsSubscriberTestUnorder_0300 end==================");
-        }, 30000);
     })
 
     /*
@@ -230,10 +219,6 @@ describe('ActsSubscriberTestUnorder', async function (done) {
                 }, 1000);
             });
         })
-
-        setTimeout(function (){
-            console.debug("===================ActsSubscriberTestUnorder_0400 end==================");
-        }, 30000);
     })
 
     /*
@@ -288,10 +273,6 @@ describe('ActsSubscriberTestUnorder', async function (done) {
                 }, 1000);
             });
         })
-
-        setTimeout(function (){
-            console.debug("===================ActsSubscriberTestUnorder_0500 end==================");
-        }, 30000);
     })
 
     /*
@@ -342,10 +323,6 @@ describe('ActsSubscriberTestUnorder', async function (done) {
                 }, 1000);
             });
         })
-
-        setTimeout(function (){
-            console.debug("===================ActsSubscriberTestUnorder_0600 end==================");
-        }, 30000);
     })
 
     /*
@@ -389,10 +366,6 @@ describe('ActsSubscriberTestUnorder', async function (done) {
                 }, 1000);
             });
         });
-
-        setTimeout(function (){
-            console.debug("===================ActsSubscriberTestUnorder_0700 end==================");
-        }, 30000);
     })
 
     /*
@@ -502,11 +475,6 @@ describe('ActsSubscriberTestUnorder', async function (done) {
                 }, 1000);
             });
         });
-
-        setTimeout(function (){
-            console.debug("===================ActsSubscriberTestUnorder_0900 end==================");
-        }, 30000);
-
     })
 
     /*
@@ -601,10 +569,6 @@ describe('ActsSubscriberTestUnorder', async function (done) {
                 }, 1000);
             });
         });
-
-        setTimeout(function (){
-            console.debug("===================ActsSubscriberTestUnorder_1000 end==================");
-        }, 30000);
     })
 
     /*
@@ -644,10 +608,6 @@ describe('ActsSubscriberTestUnorder', async function (done) {
         }
 
         Subscriber.createSubscriber(commonEventSubscribeInfo, createSubscriber1100CallBack);
-
-        setTimeout(function (){
-            console.debug("===================ActsSubscriberTestUnorder_1100 end==================");
-        }, 30000);
     })
 
     /*
@@ -702,10 +662,6 @@ describe('ActsSubscriberTestUnorder', async function (done) {
        }
 
        Subscriber.createSubscriber(commonEventSubscribeInfo, createSubscriber1200CallBack);
-
-       setTimeout(function (){
-           console.debug("===================ActsSubscriberTestUnorder_1200 end==================");
-       }, 30000);
    })
 })
 
