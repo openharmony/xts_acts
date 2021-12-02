@@ -425,7 +425,8 @@ describe('ActsSubscriberTestUnorder', async function (done) {
                 }, 1000);
             });
         });
-        sleep(5);
+
+        sleep(1000);
     })
 
     /*
