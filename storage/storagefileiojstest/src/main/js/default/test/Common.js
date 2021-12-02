@@ -70,15 +70,15 @@ export function fileToWriteOnly(fpath) {
 }
 export function nextFileName(testName) {
   const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.storage.fileio/cache/'
-  return BASE_PATH + testName + '_' + randomString(testName.length);
+  return BASE_PATH + testName
 }
 export function fileName(testName) {
   const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.storage.fileio/files/'
-  return BASE_PATH + testName + '_' + randomString(testName.length);
+  return BASE_PATH + testName
 }
 export function cacheFileName(testName) {
   const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.storage.fileio/files/cache/'
-  return BASE_PATH + testName + '_' + randomString(testName.length);
+  return BASE_PATH + testName
 }
 
 export function sleep(n) {

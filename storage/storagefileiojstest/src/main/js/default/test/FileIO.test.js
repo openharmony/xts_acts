@@ -14,6 +14,7 @@
  */
 
 import fileio from '@ohos.fileio';
+import file from '@system.file';
 import {
   describe,
   beforeAll,
@@ -1578,6 +1579,40 @@ describe('fileIOTest', function () {
   });
 
   /**
+   * @tc.number SUB_STORAGE_FileIO_ReadSync_0000
+   * @tc.name fileio_test_read_sync_000
+   * @tc.desc Function of API, readSync.
+   */
+  it("fileio_test_read_sync_000", 0, async function (done) {
+    let fpath = nextFileName("fileio_test_read_sync_000");
+    let text = "0123456789abcdefg";
+    expect(prepareFile(fpath, text)).assertTrue();
+    sleep(10);
+    try {
+      let fd = fileio.openSync(fpath, 0o2);
+      let len = fileio.readSync(fd, new ArrayBuffer(4096));
+      expect(len == text.length).assertTrue();
+      expect(fileio.closeSync(fd) !== null).assertTrue();
+      file.readText({
+        uri: "internal://cache/fileio_test_read_sync_000",
+        success: function (data) {
+          console.log("call readText success: " + data.text);
+          expect(text == data.text).assertTrue();
+          expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+          done();
+        },
+        fail: function (data, code) {
+          console.error("call fail callback fail, code: " + code + ", data: " + data);
+          expect(null).assertFail();
+        },
+      });
+    } catch (e) {
+      console.log("fileio_test_read_sync_000 has failed for " + e);
+      expect(null).assertFail();
+    }
+  });
+
+  /**
    * @tc.number SUB_STORAGE_FileIO_ReadSync_0100
    * @tc.name fileio_test_read_sync_001
    * @tc.desc Function of API, offset = 1.
@@ -2469,7 +2504,8 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_RenameSync_0000
    * @tc.name fileio_test_rename_sync_000
-   * @tc.desc Function of API, renameSync. The test file is exist, fpathTarget is not same with fpatch, file name are same.
+   * @tc.desc Function of API, renameSync. The test file is exist,
+   * fpathTarget is not same with fpatch, file name are same.
    */
   it('fileio_test_rename_sync_000', 0, function () {
     let fpath = nextFileName('fileio_test_rename_sync_000');
@@ -2489,7 +2525,8 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_RenameSync_0100
    * @tc.name fileio_test_rename_sync_001
-   * @tc.desc Function of API, renameSync. The test file is not exist, fpathTarget is not same with fpatch, file name are same.
+   * @tc.desc Function of API, renameSync. The test file is not exist, 
+   * fpathTarget is not same with fpatch, file name are same.
    */
   it('fileio_test_rename_sync_001', 0, function () {
     let fpath = nextFileName('fileio_test_rename_sync_001');
