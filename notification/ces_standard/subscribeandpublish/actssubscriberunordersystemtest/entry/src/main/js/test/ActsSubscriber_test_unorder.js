@@ -217,9 +217,6 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
                 Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
             }
         })
-        setTimeout(function (){
-            console.debug("===================>ActsSubscriberTestUnorderSystem_0100 end==================");
-        }, 30000);
     })
 
     /*
@@ -295,9 +292,6 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
                 Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
             }
         })
-        setTimeout(function (){
-            console.debug("===================>ActsSubscriberTestUnorderSystem_0200 end==================");
-        }, 30000);
     })
 })
 
