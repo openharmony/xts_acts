@@ -17,7 +17,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe('ActsSubscriberTestOrder', function () {
     console.info("===========ActsSubscriberTestOrder start====================>");
-    var num = 0, num2 = 0;
+    var num2 = 0;
     var order = false;
     var commonEventSubscriber0100;
     var commonEventSubscriber0101;
@@ -146,7 +146,10 @@ describe('ActsSubscriberTestOrder', function () {
             data.getSubscribeInfo().then(function (data) {
                 console.info("===============ActsSubscriberTestOrder_0100=========getSubscribeInfo promise2");
                 Subscriber.subscribe(commonEventSubscriber0101, subscriberCallBack0101);
-                Subscriber.publish("publish_event0100", commonEventPublishData, publishCallback);
+                setTimeout(function () {
+                    console.debug("===================ActsSubscriberTestOrder_0100 delay 100ms==================");
+                    Subscriber.publish("publish_event0100", commonEventPublishData, publishCallback);
+                }, 100); 
             });
         })
     })
@@ -206,7 +209,7 @@ describe('ActsSubscriberTestOrder', function () {
                 expect(data.data).assertEqual("publish_event0201_init");
                 expect(data.bundleName).assertEqual("publish_event0201_bundleName");
                 commonEventSubscriber0200.finishCommonEvent().then(()=>{
-                    console.info("===============>subscriberCallBack0200:num:1:finishCommonEvent promise");
+                    console.info("===============>subscriberCallBack0200:num2:1:finishCommonEvent promise");
                 })
             }
         }
@@ -247,10 +250,18 @@ describe('ActsSubscriberTestOrder', function () {
             data.getSubscribeInfo().then(function (data) {
                 console.info("===============ActsSubscriberTestOrder_0200=========getSubscribeInfo promise2");
                 Subscriber.subscribe(commonEventSubscriber0201, subscriberCallBack0201);
-                Subscriber.unsubscribe(commonEventSubscriber0200, unsubscribeCallback);
-                Subscriber.publish("publish_event0200", commonEventPublishData1, publishCallback);
-                Subscriber.publish("publish_event0201", commonEventPublishData2, publishCallback);
-
+                setTimeout(function () {
+                    console.debug("===================ActsSubscriberTestOrder_0200 delay 100ms==================");
+                    Subscriber.unsubscribe(commonEventSubscriber0200, unsubscribeCallback);
+                }, 100); 
+                setTimeout(function () {
+                    console.debug("===================ActsSubscriberTestOrder_0200 delay 100ms==================");
+                    Subscriber.publish("publish_event0200", commonEventPublishData1, publishCallback);
+                }, 100); 
+                setTimeout(function () {
+                    console.debug("===================ActsSubscriberTestOrder_0200 delay 100ms==================");
+                    Subscriber.publish("publish_event0201", commonEventPublishData2, publishCallback);
+                }, 100); 
             });
         })
     })
@@ -281,6 +292,7 @@ describe('ActsSubscriberTestOrder', function () {
             isOrdered: true,
         }
 
+        var callBackNum = 0;
         async function subscriberCallBack0300(err, data) {
             console.info("===============>subscriberCallBack0300========event: " + data.event);
             console.info("===============>subscriberCallBack0300========bundleName: " + data.bundleName);
@@ -305,7 +317,11 @@ describe('ActsSubscriberTestOrder', function () {
             commonEventSubscriber0300.finishCommonEvent().then(()=>{
                 console.info("===============>subscriberCallBack0300 finishCommonEvent promise");
             })
-            done();
+
+            callBackNum++;
+            if (callBackNum == 3) {
+                done();
+            }
         }
 
         async function subscriberCallBack0301(err, data) {
@@ -354,7 +370,10 @@ describe('ActsSubscriberTestOrder', function () {
                 Subscriber.subscribe(commonEventSubscriber0301, subscriberCallBack0301);
                 var numindex = 0;
                 for (; numindex < 3; ++numindex) {
-                    Subscriber.publish("publish_event0301", commonEventPublishData2, publishCallback);
+                    setTimeout(function () {
+                        console.debug("===================ActsSubscriberTestOrder_0300 delay 100ms==================");
+                        Subscriber.publish("publish_event0301", commonEventPublishData2, publishCallback);
+                    }, 100);   
                 }
             });
         })
@@ -437,7 +456,10 @@ describe('ActsSubscriberTestOrder', function () {
                 console.info("===============ActsSubscriberTestOrder_0400=========getSubscribeInfo promise2");
                 expect(data.events[0]).assertEqual("publish_event0400");
                 Subscriber.subscribe(commonEventSubscriber0401, subscriberCallBack0401);
-                Subscriber.publish("publish_event0400", commonEventPublishData, publishCallback);
+                setTimeout(function () {
+                    console.debug("===================ActsSubscriberTestOrder_0400 delay 100mss==================");
+                    Subscriber.publish("publish_event0400", commonEventPublishData, publishCallback);
+                }, 100);  
             })
         })
     })
@@ -518,7 +540,10 @@ describe('ActsSubscriberTestOrder', function () {
                 console.info("===============ActsSubscriberTestOrder_0500==========getSubscribeInfo promise2");
                 expect(data.events[0]).assertEqual("publish_event0500");
                 Subscriber.subscribe(commonEventSubscriber0501, subscriberCallBack0501);
-                Subscriber.publish("publish_event0500", commonEventPublishData, publishCallback);
+                setTimeout(function () {
+                    console.debug("===================ActsSubscriberTestOrder_0500 delay 100ms==================");
+                    Subscriber.publish("publish_event0500", commonEventPublishData, publishCallback);
+                }, 100);   
             })
         })
     })
