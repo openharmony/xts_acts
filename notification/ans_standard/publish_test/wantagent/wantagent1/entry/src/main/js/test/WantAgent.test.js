@@ -14,7 +14,7 @@
  */
 
 import wantAgent from '@ohos.wantAgent';
-import { OperationType, Flags } from '@ohos.wantagent';
+import { OperationType, WantAgentFlags } from '@ohos.wantagent';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 var time = 1000
 var WantAgent;
@@ -32,8 +32,8 @@ describe('ActsAnsWantAgentOneTest', function () {
             wants: [
                     {
                         deviceId: "",
-                        bundleName: "com.neu.WantAgentTest1",
-                        abilityName: "com.example.test.MainAbility",
+                        bundleName: "com.example.WantAgentTest1",
+                        abilityName: "com.example.WantAgentTest1.MainAbility",
                         action: "action1",
                         entities: ["entity1"],
                         type: "MIMETYPE",
@@ -52,7 +52,7 @@ describe('ActsAnsWantAgentOneTest', function () {
             ],
             operationType: OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[Flags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
         console.info('----getWantAgent before----');
        await wantAgent.getWantAgent(agentInfo,
@@ -73,8 +73,8 @@ describe('ActsAnsWantAgentOneTest', function () {
                                 expect(data.finalCode).assertEqual(0);
                                 expect(data.finalData).assertEqual("");
                                 expect(data.want.deviceId).assertEqual("");
-                                expect(data.want.bundleName).assertEqual("com.neu.WantAgentTest1");
-                                expect(data.want.abilityName).assertEqual("com.example.test.MainAbility");
+                                expect(data.want.bundleName).assertEqual("com.example.WantAgentTest1");
+                                expect(data.want.abilityName).assertEqual("com.example.WantAgentTest1.MainAbility");
                                 expect(data.want.uri).assertEqual("key={true,true,false}");
                                 expect(JSON.stringify(data.want.entities)).assertEqual(JSON.stringify(["entity1"]));
                                 expect(data.want.action).assertEqual("action1");
@@ -112,7 +112,7 @@ describe('ActsAnsWantAgentOneTest', function () {
             wants: [
                     {
                         deviceId: "",
-                        bundleName: "com.neu.WantAgentTest1",
+                        bundleName: "com.example.WantAgentTest1",
                         abilityName: "com.example.test.MainAbility",
                         action: "action1",
                         entities: ["entity1"],
@@ -132,7 +132,7 @@ describe('ActsAnsWantAgentOneTest', function () {
             ],
             operationType: OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[Flags.ONE_TIME_FLAG]
+            wantAgentFlags:[WantAgentFlags.ONE_TIME_FLAG]
         }
         console.info('----getWantAgent before----');
         await wantAgent.getWantAgent(agentInfo,
@@ -165,7 +165,7 @@ describe('ActsAnsWantAgentOneTest', function () {
             wants: [
                     {
                         deviceId: "",
-                        bundleName: "com.neu.WantAgentTest1",
+                        bundleName: "com.example.WantAgentTest1",
                         abilityName: "com.example.test.MainAbility",
                         action: "action1",
                         entities: ["entity1"],
@@ -185,7 +185,7 @@ describe('ActsAnsWantAgentOneTest', function () {
             ],
             operationType: OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[Flags.NO_BUILD_FLAG]
+            wantAgentFlags:[WantAgentFlags.NO_BUILD_FLAG]
         }
         console.info('----getWantAgent before----');
         await wantAgent.getWantAgent(agentInfo,
@@ -218,7 +218,7 @@ describe('ActsAnsWantAgentOneTest', function () {
             wants: [
                     {
                         deviceId: "",
-                        bundleName: "com.neu.WantAgentTest1",
+                        bundleName: "com.example.WantAgentTest1",
                         abilityName: "com.example.test.MainAbility",
                         action: "action1",
                         entities: ["entity1"],
@@ -238,7 +238,7 @@ describe('ActsAnsWantAgentOneTest', function () {
             ],
             operationType: OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[Flags.CANCEL_PRESENT_FLAG]
+            wantAgentFlags:[WantAgentFlags.CANCEL_PRESENT_FLAG]
         }
         console.info('----getWantAgent before----');
         await wantAgent.getWantAgent(agentInfo,
@@ -271,7 +271,7 @@ describe('ActsAnsWantAgentOneTest', function () {
             wants: [
                     {
                         deviceId: "",
-                        bundleName: "com.neu.WantAgentTest1",
+                        bundleName: "com.example.WantAgentTest1",
                         abilityName: "com.example.test.MainAbility",
                         action: "action1",
                         entities: ["entity1"],
@@ -291,7 +291,7 @@ describe('ActsAnsWantAgentOneTest', function () {
             ],
             operationType: OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[Flags.CONSTANT_FLAG]
+            wantAgentFlags:[WantAgentFlags.CONSTANT_FLAG]
         }
         console.info('----getWantAgent before----');
         await wantAgent.getWantAgent(agentInfo,
