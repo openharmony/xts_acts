@@ -17,8 +17,6 @@ import featureAbility from '@ohos.ability.featureability'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 const TIMEOUT = 3000;
-const TIMEOUTEND = 5000;
-
 describe('ActsGetAllAccessibleMultiple', function () {
     beforeAll(async function (done) {
         console.debug("====>startAbility first 0100 start====");
@@ -108,8 +106,5 @@ describe('ActsGetAllAccessibleMultiple', function () {
             console.debug("====>ActsGetAllAccessibleAccounts_0100 end====");
             done();
         }, TIMEOUT);
-        setTimeout(function(){
-            console.debug("====>time out ActsGetAllAccessibleMultiple_0100====>");
-        }, TIMEOUTEND);
     });
 })

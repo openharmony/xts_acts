@@ -17,7 +17,6 @@ group("appaccount_hap") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsaccountchangeonoff:ActsAccountChangeOnOff",
       "actsaccounttest:ActsAccountTest",
       "actsgetallaccounts:ActsGetAllAccounts",
       "actssetchecksyncenable:ActsSetCheckSyncEnable",

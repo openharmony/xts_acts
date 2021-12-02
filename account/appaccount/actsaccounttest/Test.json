@@ -2,7 +2,7 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "200000",
+        "test-timeout": "300000",
         "package": "com.example.actsaccounttest",
         "shell-timeout": "60000"
     },
@@ -10,7 +10,8 @@
         {
             "test-file-name": [
                 "ActsAccountTest.hap",
-                "ActsAccountSceneAppAccess.hap"
+                "ActsAccountSceneAppAccess.hap",
+                "ActsAccountSceneOnOff.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

@@ -15,8 +15,8 @@
 import account from '@ohos.account.appAccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
+const NAMELIMIT = 512;
 const TIMEOUT = 1000;
-const STRCOUNT = 1025;
 describe('ActsAccountDeleteAccount', function () {
     function sleep(delay) {
         var start = (new Date()).getTime();
@@ -34,7 +34,7 @@ describe('ActsAccountDeleteAccount', function () {
 
     /*
      * @tc.number    : ActsAccountDeleteAccount_0100
-     * @tc.name      : Delete account calllback form
+     * @tc.name      : Delete account callback form
      * @tc.desc      : Delete the added account in callback form
      */
     it('ActsAccountDeleteAccount_0100', 0, async function (done) {
@@ -77,7 +77,7 @@ describe('ActsAccountDeleteAccount', function () {
 
     /*
      * @tc.number    : ActsAccountDeleteAccount_0300
-     * @tc.name      : Delete account calllback form
+     * @tc.name      : Delete account callback form
      * @tc.desc      : Delete unadded account in callback form
      */
     it('ActsAccountDeleteAccount_0300', 0, async function (done) {
@@ -113,7 +113,7 @@ describe('ActsAccountDeleteAccount', function () {
 
     /*
      * @tc.number    : ActsAccountDeleteAccount_0500
-     * @tc.name      : Delete account calllback form
+     * @tc.name      : Delete account callback form
      * @tc.desc      : Delete the added account, the first time it can be deleted, the second time the deletion fails
      */
     it('ActsAccountDeleteAccount_0500', 0, async function (done) {
@@ -161,17 +161,17 @@ describe('ActsAccountDeleteAccount', function () {
 
     /*
      * @tc.number    : ActsAccountDeleteAccount_0700
-     * @tc.name      : Delete account calllback form
-     * @tc.desc      : Delete the account name exceeds the length limit of 1024
+     * @tc.name      : Delete account callback form
+     * @tc.desc      : Delete the account name exceeds the length limit of 512 characters
      */
     it('ActsAccountDeleteAccount_0700',0, async function (done){
         console.debug("====>ActsAccountDeleteAccount_0700 start====");
-        var bigStr = '';
-        for (var i = 0; i < STRCOUNT; i++) {
-            bigStr += 't';
+        var nameLimit = '';
+        for (var i = 0; i < NAMELIMIT + 1; i++) {
+            nameLimit += 't';
         }
         var appAccountManager = account.createAppAccountManager();
-        appAccountManager.deleteAccount(bigStr, (err)=>{
+        appAccountManager.deleteAccount(nameLimit, (err)=>{
             console.debug("====>delete Account ActsAccountDeleteAccount_0700 err:" + JSON.stringify(err));
             expect(err.code != 0).assertEqual(true);
             console.debug("====>ActsAccountDeleteAccount_0700 end====");
@@ -182,18 +182,18 @@ describe('ActsAccountDeleteAccount', function () {
     /*
      * @tc.number    : ActsAccountDeleteAccount_0800
      * @tc.name      : Delete account promise form
-     * @tc.desc      : Delete the account name exceeds the length limit of 1024
+     * @tc.desc      : Delete the account name exceeds the length limit of 512 characters
      */
     it('ActsAccountDeleteAccount_0800', 0, async function (done){
         console.debug("====>ActsAccountDeleteAccount_0800 start====");
-        var bigStr = '';
-        for (var i = 0; i < STRCOUNT; i++) {
-            bigStr += 't';
+        var nameLimit = '';
+        for (var i = 0; i < NAMELIMIT + 1; i++) {
+            nameLimit += 'n';
         }
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>delete Account ActsAccountDeleteAccount_0800 start====");
         try{
-            await appAccountManager.deleteAccount(bigStr);
+            await appAccountManager.deleteAccount(nameLimit);
         }
         catch(err){
             console.debug("====>delete account ActsAccountDeleteAccount_0800 err:" + JSON.stringify(err));
@@ -205,7 +205,7 @@ describe('ActsAccountDeleteAccount', function () {
 
     /*
      * @tc.number    : ActsAccountDeleteAccount_0900
-     * @tc.name      : Delete account calllback form
+     * @tc.name      : Delete account callback form
      * @tc.desc      : Delete the account name is an empty string
      */
     it('ActsAccountDeleteAccount_0900',0, async function (done){
