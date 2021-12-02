@@ -29,6 +29,7 @@ group("ams_standard") {
       "serviceability/sceneProject/particletestserver:ParticleTestServer",
       "serviceability/stserviceabilityclient:amsStServiceAbilityClient",
       "serviceability/stserviceabilityserver:amsStServiceAilityServer",
+      "serviceability/stserviceabilityserversecond:amsStServiceAilityServerSecond",
     ]
   }
 }
