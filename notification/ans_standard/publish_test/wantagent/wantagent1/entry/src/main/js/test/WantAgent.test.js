@@ -32,8 +32,8 @@ describe('ActsAnsWantAgentOneTest', function () {
             wants: [
                     {
                         deviceId: "",
-                        bundleName: "com.example.WantAgentTest1",
-                        abilityName: "com.example.WantAgentTest1.MainAbility",
+                        bundleName: "com.example.WantAgentTest",
+                        abilityName: "com.example.WantAgentTest.MainAbility",
                         action: "action1",
                         entities: ["entity1"],
                         type: "MIMETYPE",
@@ -73,8 +73,8 @@ describe('ActsAnsWantAgentOneTest', function () {
                                 expect(data.finalCode).assertEqual(0);
                                 expect(data.finalData).assertEqual("");
                                 expect(data.want.deviceId).assertEqual("");
-                                expect(data.want.bundleName).assertEqual("com.example.WantAgentTest1");
-                                expect(data.want.abilityName).assertEqual("com.example.WantAgentTest1.MainAbility");
+                                expect(data.want.bundleName).assertEqual("com.example.WantAgentTest");
+                                expect(data.want.abilityName).assertEqual("com.example.WantAgentTest.MainAbility");
                                 expect(data.want.uri).assertEqual("key={true,true,false}");
                                 expect(JSON.stringify(data.want.entities)).assertEqual(JSON.stringify(["entity1"]));
                                 expect(data.want.action).assertEqual("action1");
