@@ -150,9 +150,6 @@ describe('ActsSubscriberTestOrder', function () {
                 Subscriber.publish("publish_event0100", commonEventPublishData, publishCallback);
             });
         })
-        setTimeout(function (){
-            console.debug("===================ActsSubscriberTestOrder_0100 end==================");
-        }, 200000);
     })
 
     /*
@@ -259,9 +256,6 @@ describe('ActsSubscriberTestOrder', function () {
 
             });
         })
-        setTimeout(function (){
-            console.debug("===================ActsSubscriberTestOrder_0200 end==================");
-        }, 200000);
     })
 
     /*
@@ -369,10 +363,6 @@ describe('ActsSubscriberTestOrder', function () {
                 }
             });
         })
-
-        setTimeout(function (){
-            console.debug("===================ActsSubscriberTestOrder_0300 end==================");
-        }, 200000);
     })
 
     /*
@@ -456,10 +446,6 @@ describe('ActsSubscriberTestOrder', function () {
                 Subscriber.publish("publish_event0400", commonEventPublishData, publishCallback);
             })
         })
-
-        setTimeout(function (){
-            console.debug("===================ActsSubscriberTestOrder_0400 end==================");
-        }, 200000);
     })
 
     /*
@@ -539,9 +525,5 @@ describe('ActsSubscriberTestOrder', function () {
                 Subscriber.publish("publish_event0500", commonEventPublishData, publishCallback);
             })
         })
-
-        setTimeout(function (){
-            console.debug("===================ActsSubscriberTestOrder_0500 end==================");
-        }, 200000);
     })
 })
