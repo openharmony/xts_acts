@@ -829,7 +829,7 @@ HWTEST_F(LibhilogCPPtest, HILOG_E_UPPER_AUTO_CPP, Function|MediumTest|Level3)
 
 /**
  * @tc.name libhilog-The {private} flag parameter of mixed log formatting is hidden
- * @tc.number DFX_DFT_HilogCPP_31
+ * @tc.number DFX_DFT_HilogCPP_3100
  * @tc.desc libhilog-The {private} flag parameter of mixed log formatting is hidden
  */
 HWTEST_F(LibhilogCPPtest, HILOG_PRIVATE_CPP, Function|MediumTest|Level3)
@@ -852,7 +852,7 @@ HWTEST_F(LibhilogCPPtest, HILOG_PRIVATE_CPP, Function|MediumTest|Level3)
 
 /**
  * @tc.name libhilog-The parameters identified by {public} in mixed log formatting are displayed
- * @tc.number DFX_DFT_HilogCPP_31
+ * @tc.number DFX_DFT_HilogCPP_3200
  * @tc.desc libhilog-The parameters identified by {public} in mixed log formatting are displayed
  */
 HWTEST_F(LibhilogCPPtest, HILOG_PUBLIC_CPP, Function|MediumTest|Level3)
@@ -875,7 +875,7 @@ HWTEST_F(LibhilogCPPtest, HILOG_PUBLIC_CPP, Function|MediumTest|Level3)
 
 /**
  * @tc.name libhilog-Parameters without any privacy flag are not displayed in mixed log formatting
- * @tc.number DFX_DFT_HilogCPP_31
+ * @tc.number DFX_DFT_HilogCPP_3300
  * @tc.desc libhilog-Parameters without any privacy flag are not displayed in mixed log formatting
  */
 HWTEST_F(LibhilogCPPtest, HILOG_NO_SIGN_CPP, Function|MediumTest|Level3)
@@ -898,7 +898,7 @@ HWTEST_F(LibhilogCPPtest, HILOG_NO_SIGN_CPP, Function|MediumTest|Level3)
 /**
  * @tc.name libhilog-Log privacy flags are used together, and parameters are
  *          correctly displayed or hidden
- * @tc.number DFX_DFT_HilogCPP_31
+ * @tc.number DFX_DFT_HilogCPP_3400
  * @tc.desc libhilog-Log privacy flags are used together, and parameters are
  *          correctly displayed or hidden
  */
@@ -988,7 +988,7 @@ HWTEST_F(LibhilogCPPtest, DOMAIN_CHECK_CPP, Function|MediumTest|Level1)
 
 /**
  * @tc.name libhilog-log LOG_APP type test
- * @tc.number DFX_DFT_HilogCPP_0280
+ * @tc.number DFX_DFT_HilogCPP_0300
  * @tc.desc libhilog-log LOG_APP type test
  */
 HWTEST_F(LibhilogCPPtest, TYPE_APP_CHECK_CPP, Function|MediumTest|Level2)
