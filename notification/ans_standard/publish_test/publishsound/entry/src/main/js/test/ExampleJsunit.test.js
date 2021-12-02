@@ -17,7 +17,7 @@ import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 describe('ActsAnsPublishSoundTest', function () {
     console.info("===========ActsAnsPublishSoundTest start====================>");
-    var timeout = 300
+    var timeout = 1000
     var bundleoption = {
         bundle: "com.example.actsanspublishsoundtest"
     }

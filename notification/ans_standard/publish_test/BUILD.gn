@@ -24,6 +24,7 @@ group("publish_test") {
 
       #"publishcontentype:publishcontentype",
       #"subscribe:subscribe",
+      "activebtn:activebtn",
       "ansactscancelgroup:ActsAnsCancelGroup",
       "ansactsremovegroup:ActsAnsRemoveGroup",
       "donotdisturbmode:ActsAnsDoNotDisturbTest",
