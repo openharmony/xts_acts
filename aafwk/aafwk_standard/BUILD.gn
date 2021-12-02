@@ -34,8 +34,9 @@ group("aafwk_standard") {
       "serviceability/stserviceabilityserver:amsStServiceAilityServer",
       "serviceability/stserviceabilityserversecond:amsStServiceAilityServerSecond",
       "setshowonlockscreen:setshowonlockscreen",
+
       #"verifypermission:verifypermission",
-      "want:want"
+      "want:want",
     ]
   }
 }
