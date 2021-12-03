@@ -18,13 +18,26 @@ group("aafwk_standard") {
   if (is_standard_system) {
     deps = [
       "abilitymanager:actsabilitymanagertest",
+      "amsabilitymanager/amsMissionSnapshotTest:amsMissionSnapshotTest",
+      "amsabilitymanager/amsMissionSnapshotTestSingleton:amsMissionSnapshotTestSingleton",
+      "amsabilitymanager/amsMissionSnapshotTestSingletonS:amsMissionSnapshotTestSingletonS",
+      "amsdatauriutils:amsDataUriUtils",
+      "amszipfileunzipfilest:amsZipfileUnzipfileST",
       "context:context",
       "featureability:featureability",
       "formmanager:formmanager",
-      "setshowonlockscreen:setshowonlockscreen",
-      "want:want",
+      "fwkdataaccessor:FWKDataAccessor",
 
-      #"verifypermission:verifypermission"
+      #"serviceability/actsparticleabilitytest:ActsParticleAbilityTest",
+      "serviceability/sceneProject/particlestartability:ParticleStartAbility",
+      "serviceability/sceneProject/particletestserver:ParticleTestServer",
+      "serviceability/stserviceabilityclient:amsStServiceAbilityClient",
+      "serviceability/stserviceabilityserver:amsStServiceAilityServer",
+      "serviceability/stserviceabilityserversecond:amsStServiceAilityServerSecond",
+      "setshowonlockscreen:setshowonlockscreen",
+
+      #"verifypermission:verifypermission",
+      "want:want",
     ]
   }
 }

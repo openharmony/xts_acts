@@ -2,17 +2,18 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "260000",
-        "package": "com.example.actssubscribertestunordersystem",
+        "test-timeout": "180000",
+        "package": "com.amsst.fwkdataaccessor",
         "shell-timeout": "60000"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsSubscriberTestUnorderSystem.hap"
+                "FWKDataAccessor.hap",
+                "./resource/appexecfwk/amsStDataAbility.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
         }
-    ]
+	]
 }
