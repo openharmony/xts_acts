@@ -3386,7 +3386,7 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.uid).assertLarger(2099)
         expect(datainfo.appInfo.name).assertEqual(LAUNCHER)
         expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
-        expect(datainfo.appInfo.systemApp).assertEqual(false)
+        expect(datainfo.appInfo.systemApp).assertEqual(true)
         expect(datainfo.appInfo.supportedModes).assertEqual(0)
         expect(datainfo.appInfo.moduleInfos.length).assertLarger(0)
         expect(datainfo.appInfo.enabled).assertEqual(true)
@@ -3826,7 +3826,7 @@ describe('ActsBundleManagerTest', function () {
         }, async (err, data) => {
             var datainfo = await demo.getBundleInfo(NAME1, BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             expect(datainfo.name).assertEqual(NAME1);
-            expect(datainfo.uid < UIDMINVALUE).assertTrue();
+            expect(datainfo.uid > UIDMINVALUE).assertTrue();
             installData.uninstall(NAME1, {
                 param: {
                     userId: 0,
@@ -3858,7 +3858,7 @@ describe('ActsBundleManagerTest', function () {
         }, async (err, data) => {
             var datainfo = await demo.getBundleInfo(NAME2, BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             expect(datainfo.name).assertEqual(NAME2);
-            expect(datainfo.uid < UIDMINVALUE).assertTrue();
+            expect(datainfo.uid > UIDMINVALUE).assertTrue();
             installData.uninstall(NAME2, {
                 param: {
                     userId: 0,
@@ -3897,13 +3897,13 @@ describe('ActsBundleManagerTest', function () {
         async function getInfo() {
             var datainfo1 = await demo.getBundleInfo(NAME3, BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             expect(datainfo1.name).assertEqual(NAME3);
-            expect(datainfo1.uid < UIDMINVALUE).assertTrue();
+            expect(datainfo1.uid > UIDMINVALUE).assertTrue();
             var datainfo2 = await demo.getBundleInfo(NAME4, BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             expect(datainfo2.name).assertEqual(NAME4);
-            expect(datainfo2.uid < UIDMINVALUE).assertTrue();
+            expect(datainfo2.uid > UIDMINVALUE).assertTrue();
             var datainfo3 = await demo.getBundleInfo(NAME5, BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             expect(datainfo3.name).assertEqual(NAME5);
-            expect(datainfo3.uid < UIDMINVALUE).assertTrue();
+            expect(datainfo3.uid > UIDMINVALUE).assertTrue();
             installData.uninstall(NAME3, {
                 param: {
                     userId: 0,
@@ -4008,7 +4008,7 @@ describe('ActsBundleManagerTest', function () {
             expect(data.statusMessage).assertEqual(SUCCESS);
             var datainfo1 = await demo.getBundleInfo(NAME1, BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             expect(datainfo1.name).assertEqual(NAME1);
-            expect(datainfo1.uid < UIDMINVALUE).assertTrue();
+            expect(datainfo1.uid > UIDMINVALUE).assertTrue();
             installData.uninstall(NAME1, {
                 param: {
                     userId: 0,
@@ -4073,7 +4073,7 @@ describe('ActsBundleManagerTest', function () {
         async function getInfo() {
             var datainfo = await demo.getBundleInfo(THIRD1, BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             expect(datainfo.name).assertEqual(THIRD1);
-            expect(datainfo.uid < UIDMINVALUE).assertTrue();
+            expect(datainfo.uid > UIDMINVALUE).assertTrue();
             expect(datainfo.versionCode).assertEqual(VERSIONCODE1);
             expect(datainfo.versionName).assertLarger(0);
             installData.install([PATH + BMSJSTEST9], {
@@ -4092,7 +4092,7 @@ describe('ActsBundleManagerTest', function () {
         async function getInfo1() {
             var datainfo = await demo.getBundleInfo(THIRD1, BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             expect(datainfo.name).assertEqual(THIRD1);
-            expect(datainfo.uid < UIDMINVALUE).assertTrue();
+            expect(datainfo.uid > UIDMINVALUE).assertTrue();
             expect(datainfo.versionCode).assertEqual(VERSIONCODE2);
             expect(datainfo.versionName).assertLarger(0);
             installData.uninstall(THIRD1, {
