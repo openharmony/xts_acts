@@ -31,7 +31,8 @@ group("aafwk_standard") {
       #"serviceability/actsparticleabilitytest:ActsParticleAbilityTest",
       "serviceability/sceneProject/particlestartability:ParticleStartAbility",
       "serviceability/sceneProject/particletestserver:ParticleTestServer",
-      "serviceability/stserviceabilityclient:amsStServiceAbilityClient",
+
+      #"serviceability/stserviceabilityclient:amsStServiceAbilityClient",
       "serviceability/stserviceabilityserver:amsStServiceAilityServer",
       "serviceability/stserviceabilityserversecond:amsStServiceAilityServerSecond",
       "setshowonlockscreen:setshowonlockscreen",
