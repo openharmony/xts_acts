@@ -14,7 +14,7 @@
  */
 
 import wantAgent from '@ohos.wantAgent';
-import { OperationType, Flags } from '@ohos.wantagent';
+import { OperationType, WantAgentFlags } from '@ohos.wantagent';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 var time = 1000
 var WantAgent;
@@ -29,9 +29,8 @@ describe('ActsAnsWantAgentTwoProTest', function () {
         var agentInfo = {
             wants: [
                     {
-                        deviceId: "",
-                        bundleName: "com.neu.WantAgentTest1",
-                        abilityName: "com.example.test.MainAbility",
+                        bundleName: "com.example.WantAgentTest1",
+                        abilityName: "com.example.WantAgentTest1.MainAbility",
                         action: "action1",
                         entities: ["entity1"],
                         type: "MIMETYPE",
@@ -48,9 +47,8 @@ describe('ActsAnsWantAgentTwoProTest', function () {
                         }
                     },
                     {
-                        deviceId: "",
-                        bundleName: "com.neu.WantAgenTest2",
-                        abilityName: "com.example.test.MainAbility",
+                        bundleName: "com.example.WantAgenTest2",
+                        abilityName: "com.example.WantAgenTest2.MainAbility",
                         action: "action1",
                         entities: ["entity1"],
                         type: "MIMETYPE",
@@ -69,7 +67,7 @@ describe('ActsAnsWantAgentTwoProTest', function () {
             ],
             operationType: OperationType.START_ABILITIES,
             requestCode: 0,
-//            wantAgentFlags:[Flags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
         console.info('----getWantAgent before----');
         wantAgent.getWantAgent(agentInfo).then(
