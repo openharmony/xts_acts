@@ -351,11 +351,13 @@ describe('storageTest', function () {
      * @tc.desc flush promise interface test
      */
     it('testFlush00181', 0, async function (done) {
-        mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
-        mPref.flushSync();
-        const promise = mPref.flush();
+        mPref.clearSync();
+        mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
+        const promise = mPref.put(KEY_TEST_STRING_ELEMENT, 'test');
         promise.then((ret) => {
-            expect("test").assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "default"));
+            expect('test').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
+            mPref.flush();
+            expect('test').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
         }).catch((err) => {
             expect(null).assertFail();
         });
