@@ -75,6 +75,16 @@ var subscriberInfo_ACTS_GetCallingBundle_0100 = {
 
 describe('ActsFeatureAbilityTest', function () {
 
+    function sleep(delay) {
+        var start = (new Date()).getTime();
+        while ((new Date()).getTime() - start < delay) {
+            continue;
+        }
+    }
+    beforeEach(() => {
+        sleep(1000);
+    })
+
     /**
      * @tc.number: ACTS_wantConstant_0100
      * @tc.name: wantConstant : Check specific enum
