@@ -364,4 +364,17 @@ describe('storageTest', function () {
         await promise;
         done();
     })
+
+    /**
+     * @tc.name const test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0150
+     * @tc.desc const test
+     */
+     it('testConst001', 0, function () {
+        mPref = storage.getStorageSync(PATH);
+        console.info("testConstKEY1 " + mPref.MAX_KEY_LENGTH)
+        console.info("testConstVALUE1 " + mPref.MAX_VALUE_LENGTH)
+        expect("80").assertEqual(mPref.MAX_KEY_LENGTH);
+        expect("8192").assertEqual(mPref.MAX_VALUE_LENGTH);
+    })
 })
