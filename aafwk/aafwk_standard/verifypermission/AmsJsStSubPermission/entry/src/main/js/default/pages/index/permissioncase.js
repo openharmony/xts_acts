@@ -29,40 +29,41 @@ export function GetCaseInfo(caseName) {
 }
 
 var allCase = {
-    AppPermission_1300: {
-        func: AppPermission_1300,
-        info: "Verify that a system_grand system`s permission(ohos.permission.GET_NETWORK_INFO) is automatically requested during installation."
+    ACTS_AppPermission_1300: {
+        func: ACTS_AppPermission_1300,
+        info: "Verify that calling application(different application in the same device) is requested the system_grant system`s permission(ohos.permission.GET_NETWORK_INFO)."
     },
-    AppPermission_1400: {
-        func: AppPermission_1400,
-        info: ""
+    ACTS_AppPermission_1400: {
+        func: ACTS_AppPermission_1400,
+        info: "Verify that calling application(different application in the same device) is requested the system_grant system`s permission(ohos.permission.GET_NETWORK_INFO)."
     },
-    AppPermission_1500: {
-        func: AppPermission_1500,
-        info: ""
+    ACTS_AppPermission_1500: {
+        func: ACTS_AppPermission_1500,
+        info: "Verify that calling application(different application in the same device) is not requested the user_grant system`s permission(ohos.permission.CAMERA)."
     },
-    AppPermission_1600: {
-        func: AppPermission_1600,
-        info: ""
+    ACTS_AppPermission_1600: {
+        func: ACTS_AppPermission_1600,
+        info: "Verify that calling application(different application in the same device) is not requested the user_grant system`s permission(ohos.permission.CAMERA)."
     },
-    AppPermission_1700: {
-        func: AppPermission_1700,
-        info: ""
+    ACTS_AppPermission_1700: {
+        func: ACTS_AppPermission_1700,
+        info: "Verify that calling application(different application in the same device) is requested the system_grant user`s permission(com.amsst.permission.SYSPERMISSION)."
     },
-    AppPermission_1800: {
-        func: AppPermission_1800,
-        info: ""
+    ACTS_AppPermission_1800: {
+        func: ACTS_AppPermission_1800,
+        info: "Verify that calling application(different application in the same device) is requested the system_grant user`s permission(com.amsst.permission.SYSPERMISSION)."
     },
 
 }
 
-async function AppPermission_1300(thisobj) {
-    var thisFunctionName = AppPermission_1300.name
+async function ACTS_AppPermission_1300(thisobj) {
+    var thisFunctionName = ACTS_AppPermission_1300.name
     thisobj.logmessage = ""
-    thisobj.logmessage += "run test case " + thisFunctionName + "\n"
+    thisobj.logmessage += thisFunctionName + "\n";
+    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext()
-    await context.verifyPermission("ohos.permission.GET_NETWORK_INFO",
+    await context.verifyCallingPermission("ohos.permission.GET_NETWORK_INFO",
         (err, data) => {
             console.debug("======verifyCallingPermission:data======>:" + JSON.stringify(data));
             thisobj.logmessage += JSON.stringify(data) + "\n"
@@ -75,14 +76,14 @@ async function AppPermission_1300(thisobj) {
         })
 }
 
-async function AppPermission_1400(thisobj) {
-    var thisFunctionName = AppPermission_1400.name
+async function ACTS_AppPermission_1400(thisobj) {
+    var thisFunctionName = ACTS_AppPermission_1400.name
     thisobj.logmessage = ""
-    thisobj.logmessage += "run test case " + thisFunctionName + "\n"
+    thisobj.logmessage += thisFunctionName + "\n";
+    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext()
-    console.log("<======verfyPermissiom pass=====>")
-    var result = await context.verifyPermission("ohos.permission.GET_NETWORK_INFO")
+    var result = await context.verifyCallingPermission("ohos.permission.GET_NETWORK_INFO")
     console.debug("======verifyCallingPermission:result======>:" + JSON.stringify(result))
     thisobj.logmessage += JSON.stringify(result) + "\n"
     if (result == 0) {
@@ -93,13 +94,14 @@ async function AppPermission_1400(thisobj) {
     }
 }
 
-async function AppPermission_1500(thisobj) {
-    var thisFunctionName = AppPermission_1500.name
+async function ACTS_AppPermission_1500(thisobj) {
+    var thisFunctionName = ACTS_AppPermission_1500.name
     thisobj.logmessage = ""
-    thisobj.logmessage += "run test case " + thisFunctionName + "\n"
+    thisobj.logmessage += thisFunctionName + "\n";
+    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext()
-    await context.verifyPermission("ohos.permission.CAMERA",
+    await context.verifyCallingPermission("ohos.permission.CAMERA",
         (err, data) => {
             console.debug("======verifyCallingPermission:data======>:" + JSON.stringify(data));
             thisobj.logmessage += JSON.stringify(data) + "\n"
@@ -112,13 +114,14 @@ async function AppPermission_1500(thisobj) {
         })
 }
 
-async function AppPermission_1600(thisobj) {
-    var thisFunctionName = AppPermission_1600.name
+async function ACTS_AppPermission_1600(thisobj) {
+    var thisFunctionName = ACTS_AppPermission_1600.name
     thisobj.logmessage = ""
-    thisobj.logmessage += "run test case " + thisFunctionName + "\n"
+    thisobj.logmessage += thisFunctionName + "\n";
+    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext()
-    var result = await context.verifyPermission("ohos.permission.CAMERA")
+    var result = await context.verifyCallingPermission("ohos.permission.CAMERA")
     console.debug("======verifyCallingPermission:result======>:" + JSON.stringify(result))
     thisobj.logmessage += JSON.stringify(result) + "\n"
     if (result == -1) {
@@ -129,13 +132,14 @@ async function AppPermission_1600(thisobj) {
     }
 }
 
-async function AppPermission_1700(thisobj) {
-    var thisFunctionName = AppPermission_1700.name
+async function ACTS_AppPermission_1700(thisobj) {
+    var thisFunctionName = ACTS_AppPermission_1700.name
     thisobj.logmessage = ""
-    thisobj.logmessage += "run test case " + thisFunctionName + "\n"
+    thisobj.logmessage += thisFunctionName + "\n";
+    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext()
-    await context.verifyPermission("com.amsst.permission.SYSPERMISSION",
+    await context.verifyCallingPermission("com.amsst.permission.SYSPERMISSION",
         (err, data) => {
             console.debug("======verifyCallingPermission:data======>:" + JSON.stringify(data));
             thisobj.logmessage += JSON.stringify(data) + "\n"
@@ -148,13 +152,14 @@ async function AppPermission_1700(thisobj) {
         })
 }
 
-async function AppPermission_1800(thisobj) {
-    var thisFunctionName = AppPermission_1800.name
+async function ACTS_AppPermission_1800(thisobj) {
+    var thisFunctionName = ACTS_AppPermission_1800.name
     thisobj.logmessage = ""
-    thisobj.logmessage += "run test case " + thisFunctionName + "\n"
+    thisobj.logmessage += thisFunctionName + "\n";
+    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext()
-    var result = await context.verifyPermission("com.amsst.permission.SYSPERMISSION")
+    var result = await context.verifyCallingPermission("com.amsst.permission.SYSPERMISSION")
     console.debug("======verifyCallingPermission:result======>:" + JSON.stringify(result))
     thisobj.logmessage += JSON.stringify(result) + "\n"
     if (result == 0) {
