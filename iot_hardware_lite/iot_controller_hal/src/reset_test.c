@@ -47,7 +47,7 @@ static BOOL IotResetTestSuiteTearDown(void)
 }
 
 /**
- * @tc.number    : SUB_UTILS_WIFIIOT_API_7000
+ * @tc.number    : SUB_UTILS_WIFIIOT_API_8000
  * @tc.name      : UART operation with RebootDevice
  * @tc.desc      : [C- SOFTWARE -0200]
  */
