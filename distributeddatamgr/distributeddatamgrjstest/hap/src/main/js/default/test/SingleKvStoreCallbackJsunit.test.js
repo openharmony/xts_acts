@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-import factory from '@ohos.data.distributeddata'
+import factory from '@ohos.data.distributedData'
 
 const KEY_TEST_INT_ELEMENT = 'key_test_int_2';
 const KEY_TEST_FLOAT_ELEMENT = 'key_test_float_2';
