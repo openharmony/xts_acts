@@ -87,6 +87,7 @@ void CleanCmd()
     std::string cleanCmd = "hilog -r";
     CmdRun(cleanCmd, cmdResult);
     std::cout << cmdResult;
+    sleep(1);
 }
 
 std::string ExecuteCmd(std::string cmd)

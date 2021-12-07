@@ -46,11 +46,6 @@ void LibhilogCPPtest::TearDown()
 }
 void LibhilogCPPtest::SetUpTestCase()
 {
-    std::vector<std::string> cmdret;
-    string cmd = "setprop persist.sys.hilog.debug.on false";
-    ExecCmdWithRet(cmd, cmdret);
-    cmd = "setprop hilog.debug.on false";
-    ExecCmdWithRet(cmd, cmdret);
 }
 void LibhilogCPPtest::TearDownTestCase()
 {
