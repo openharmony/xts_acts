@@ -12,12 +12,18 @@
 # limitations under the License.
 
 import("//test/xts/tools/lite/build/suite_lite.gni")
+
+declare_args() {
+  enable_ohos_test_xts_acts_use_thirdparty_lwip = true
+}
+
 hctest_suite("ActsLwipTest") {
   suite_name = "acts"
 
   sources = [ "src/lwip_func_test.c" ]
 
-  include_dirs = [ "//kernel/liteos_m/kal" ]
-
+  if (enable_ohos_test_xts_acts_use_thirdparty_lwip) {
+    deps = [ "//kernel/liteos_m:kernel" ]
+  }
   cflags = [ "-Wno-error" ]
 }
