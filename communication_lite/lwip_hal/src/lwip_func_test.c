@@ -38,7 +38,7 @@
 #define LWIP_TEST_FAIL (-1)
 #define DEF_TASK_STACK 2000
 #define DEF_TASK_PRIORITY 20
-#define ONE_SECOND 100
+#define ONE_SECOND 1
 #define TIMEOUT 4
 #define TEST_FD_COUNT 10
 
@@ -56,7 +56,7 @@ static int g_selectTimeout = 2;
 static void WaitClient(void)
 {
     while (1) {
-        osDelay(ONE_SECOND);
+        sleep(ONE_SECOND);
         if (g_clientWait) {
             break;
         }
@@ -68,7 +68,7 @@ static void WaitClient(void)
 static void WaitServer(void)
 {
     while (1) {
-        osDelay(ONE_SECOND);
+        sleep(ONE_SECOND);
         if (g_serverWait) {
             break;
         }
@@ -129,13 +129,12 @@ static void CommTcpClientTask(void)
         lwip_close(clnFd);
         return;
     }
-    int sleepSecond = 1;
     int count = 4;
     char dataBuf[50] = {0};
     char sendMsgList[5][50] = {"Hi, I'm client,FD:[%d]", "client:123456789abcdefg,FD:[%d]",
         "client:!!@@##$$%%^^&&**(()),FD:[%d]", "client:(((112233445566778899))),FD:[%d]", "bye"};
     for (int i = 0; i < count; i++) {
-        sleep(sleepSecond);
+        sleep(ONE_SECOND);
         memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
         rst = sprintf_s(dataBuf, sizeof(dataBuf), sendMsgList[i], clnFd);
         if (rst < 0) {
@@ -500,7 +499,7 @@ LITE_TEST_CASE(LwipFuncTestSuite, testTcp, Function | MediumTest | Level2)
         printf("[testTcp]create client task fail!\n");
     }
 
-    osDelay(ONE_SECOND);
+    sleep(ONE_SECOND);
     int timeout = TIMEOUT;
     g_serverWait = 1;
     g_clientWait = 1;
@@ -510,11 +509,11 @@ LITE_TEST_CASE(LwipFuncTestSuite, testTcp, Function | MediumTest | Level2)
             break;
         }
         timeout--;
-        osDelay(ONE_SECOND);
+        sleep(ONE_SECOND);
         printf("[testTcp] wait[1]...\n");
     }
 
-    osDelay(ONE_SECOND);
+    sleep(ONE_SECOND);
     timeout = TIMEOUT;
     g_serverWait = 1;
     g_clientWait = 1;
@@ -524,11 +523,11 @@ LITE_TEST_CASE(LwipFuncTestSuite, testTcp, Function | MediumTest | Level2)
             break;
         }
         timeout--;
-        osDelay(ONE_SECOND);
+        sleep(ONE_SECOND);
         printf("[testTcp] wait[2]...\n");
     }
 
-    osDelay(ONE_SECOND);
+    sleep(ONE_SECOND);
     timeout = TIMEOUT;
     g_serverWait = 1;
     g_clientWait = 1;
@@ -538,10 +537,10 @@ LITE_TEST_CASE(LwipFuncTestSuite, testTcp, Function | MediumTest | Level2)
             break;
         }
         timeout--;
-        osDelay(ONE_SECOND);
+        sleep(ONE_SECOND);
         printf("[testTcp] wait[3]...\n");
     }
-    osDelay(ONE_SECOND);
+    sleep(ONE_SECOND);
     timeout = TIMEOUT;
     g_serverWait = 1;
     g_clientWait = 1;
@@ -551,11 +550,15 @@ LITE_TEST_CASE(LwipFuncTestSuite, testTcp, Function | MediumTest | Level2)
             break;
         }
         timeout--;
-        osDelay(ONE_SECOND);
+        sleep(ONE_SECOND);
         printf("[testTcp] wait[4]...\n");
     }
     TEST_ASSERT_EQUAL_INT(1, g_clientResult);
     TEST_ASSERT_EQUAL_INT(1, g_serverResult);
+    
+    sleep(ONE_SECOND);
+    g_serverWait = 1;
+    g_clientWait = 1;
 }
 
 /**
@@ -639,7 +642,7 @@ LITE_TEST_CASE(LwipFuncTestSuite, testSelectTimeout, Function | MediumTest | Lev
         printf("create select server task fail!\n");
     } else {
         while (g_selectFlag) {
-            osDelay(ONE_SECOND);
+            sleep(ONE_SECOND);
             printf("wait select server finish...\n");
         }
         TEST_ASSERT_EQUAL_INT(-2, g_selectResult);
@@ -648,10 +651,10 @@ LITE_TEST_CASE(LwipFuncTestSuite, testSelectTimeout, Function | MediumTest | Lev
 
 /**
  * @tc.number    : SUB_COMMUNICATION_LWIP_SDK_0600
- * @tc.name      : test select with multi clients
+ * @tc.name      : test select with one client
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-LITE_TEST_CASE(LwipFuncTestSuite, testSelectMultiClients, Function | MediumTest | Level2)
+LITE_TEST_CASE(LwipFuncTestSuite, testSelectOneClient, Function | MediumTest | Level2)
 {
     osThreadAttr_t tSelect;
     tSelect.name = "SelectServerTask";
@@ -665,27 +668,25 @@ LITE_TEST_CASE(LwipFuncTestSuite, testSelectMultiClients, Function | MediumTest 
     g_selectTimeout = 5;
     osThreadId_t serverTaskId = osThreadNew((osThreadFunc_t)SelectServerTask, NULL, &tSelect);
     TEST_ASSERT_NOT_NULL(serverTaskId);
+    sleep(ONE_SECOND);
     if (serverTaskId == NULL) {
         printf("create select server task fail!\n");
     } else {
-        osThreadAttr_t tClient[2];
+        osThreadAttr_t tClient;
         osThreadId_t clientTaskId;
-        char taskName[2][8] = {"client1", "client2"};
-        for (int i = 0; i < 2; i++) {
-            tClient[i].name = taskName[i];
-            tClient[i].attr_bits = 0U;
-            tClient[i].cb_mem = NULL;
-            tClient[i].cb_size = 0U;
-            tClient[i].stack_mem = NULL;
-            tClient[i].stack_size = DEF_TASK_STACK;
-            tClient[i].priority = DEF_TASK_PRIORITY;
-            clientTaskId = osThreadNew((osThreadFunc_t)CommTcpClientTask, NULL, &tClient[i]);
-            TEST_ASSERT_NOT_NULL(clientTaskId);
-        }
+        tClient.name = "CommTcpClientTask";
+        tClient.attr_bits = 0U;
+        tClient.cb_mem = NULL;
+        tClient.cb_size = 0U;
+        tClient.stack_mem = NULL;
+        tClient.stack_size = DEF_TASK_STACK;
+        tClient.priority = DEF_TASK_PRIORITY;
+        clientTaskId = osThreadNew((osThreadFunc_t)CommTcpClientTask, NULL, &tClient);
+        TEST_ASSERT_NOT_NULL(clientTaskId);
 
         g_selectFlag = 1;
         while (g_selectFlag) {
-            osDelay(ONE_SECOND);
+            sleep(ONE_SECOND);
             printf("wait select server finish...\n");
         }
         TEST_ASSERT_EQUAL_INT(0, g_selectResult);
