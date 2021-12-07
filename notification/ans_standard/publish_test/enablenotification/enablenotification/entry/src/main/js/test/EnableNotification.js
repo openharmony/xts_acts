@@ -16,7 +16,6 @@
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 var time = 1000
-var ERR_ANS_INVALID_BUNDLE = 67108870
 describe('ActsAnsEnableNotificationTest', function () {
     console.info("===========ActsAnsEnableNotificationTest start====================>");
     /*
@@ -82,7 +81,7 @@ describe('ActsAnsEnableNotificationTest', function () {
             bundle:"wrong BundleName",
         }).then().catch((err)=>{
              console.debug("====>ActsGetEnable_test_0400 promsie====>"+err.code);
-             expect(err.code).assertEqual(ERR_ANS_INVALID_BUNDLE)
+             expect(err.code != 0).assertEqual(true);
              done();
          })
     })
@@ -241,7 +240,7 @@ describe('ActsAnsEnableNotificationTest', function () {
             bundle:"Wrong BundleName"
         },true).then().catch((err)=>{
            console.log("===>ActsSetEnable_test_0400 err===>"+err.code)
-           expect(err.code).assertEqual(ERR_ANS_INVALID_BUNDLE)
+           expect(err.code != 0).assertEqual(true);
            done();
        })
     })

@@ -16,7 +16,6 @@
 import notification from '@ohos.notification'
 import image from '@ohos.multimedia.image'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-var ERR_ANS_ICON_OVER_SIZE = 67108882
 var largeIconA
 var smallIconA
 var largeBufferA
@@ -52,7 +51,7 @@ describe('ActsAnsPublishIconTest', function () {
     }
     function publishCallbackB(err){
         console.log('ActsAnsPublishIconTest publishCallbackB asyncCallback'+err.code)
-        expect(err.code).assertEqual(ERR_ANS_ICON_OVER_SIZE)
+        expect(err.code != 0).assertEqual(true);
     }
     function consumeCallbackA(data) {
         console.debug("===consumeCallbackA data : ===>" + JSON.stringify(data));
@@ -310,7 +309,7 @@ describe('ActsAnsPublishIconTest', function () {
                     largeIcon:largeIconD,
                 }).then().catch((err)=>{
                     console.debug("===ACTS_PublishIconTest_0400 promise===>"+err.code);
-                    expect(err.code).assertEqual(ERR_ANS_ICON_OVER_SIZE)
+                    expect(err.code != 0).assertEqual(true);
                     done()
                 });
             })
