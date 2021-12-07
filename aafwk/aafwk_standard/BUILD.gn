@@ -26,7 +26,8 @@ group("aafwk_standard") {
       "context:context",
       "featureability:featureability",
       "formmanager:formmanager",
-      "fwkdataaccessor:FWKDataAccessor",
+
+      #"fwkdataaccessor:FWKDataAccessor",
 
       #"serviceability/actsparticleabilitytest:ActsParticleAbilityTest",
       "serviceability/sceneProject/particlestartability:ParticleStartAbility",
