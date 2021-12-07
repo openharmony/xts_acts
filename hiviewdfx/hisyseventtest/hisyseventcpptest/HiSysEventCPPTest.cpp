@@ -39,11 +39,7 @@ private:
 void HiSysEventCPPTest::SetUp()
 {
     std::cout << "SetUp" << std::endl;
-    std::vector<std::string> cmdret;
-    string cmd = "hilog -r";
-    ExecCmdWithRet(cmd, cmdret);
-    cmd = "setprop persist.sys.hilog.debug.on false";
-    ExecCmdWithRet(cmd, cmdret);
+    CleanCmd();
 }
 void HiSysEventCPPTest::TearDown()
 {
