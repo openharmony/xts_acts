@@ -9,8 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "amsStServiceAbilityClient.hap",
-                "amsStServiceAilityServer.hap"
+                "amsStServiceAbilityClient.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
