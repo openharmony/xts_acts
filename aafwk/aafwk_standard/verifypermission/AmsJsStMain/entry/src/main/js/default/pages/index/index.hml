@@ -6,6 +6,5 @@
     </div>
     <div>
         <input class="btn" type="button" value="permissionTest" on:click="clickAction"></input>
-        <input class="btn" type="button" value="changeTitle" on:click="titleAction"></input>
     </div>
 </div>

@@ -26,12 +26,12 @@ export default {
         title: "AbilityA1",
         logmessage: "this is log message",
         testcase: [
-            "AppPermission_1300",
-            "AppPermission_1400",
-            "AppPermission_1500",
-            "AppPermission_1600",
-            "AppPermission_1700",
-            "AppPermission_1800",
+            "ACTS_AppPermission_1300",
+            "ACTS_AppPermission_1400",
+            "ACTS_AppPermission_1500",
+            "ACTS_AppPermission_1600",
+            "ACTS_AppPermission_1700",
+            "ACTS_AppPermission_1800",
         ],
     },
     onInit() {

@@ -17,8 +17,7 @@ import file from '@system.file'
 import app from '@system.app'
 import router from '@system.router';
 import featureAbility from '@ohos.ability.featureability'
-import abilityManager from '@ohos.app.abilitymanager'
-
+import bundle from '@ohos.bundle'
 import { Core, ExpectExtend, ReportExtend } from 'deccjsunit/index'
 
 export default {
@@ -27,37 +26,34 @@ export default {
         title: "AbilityA1",
         logmessage: "this is log message",
         testcase: [
-            "AppPermission_0100",
-            "AppPermission_0200",
-            "AppPermission_0300",
-            "AppPermission_0400",
-            "AppPermission_0500",
-            "AppPermission_0600",
-            "AppPermission_0700",
-            "AppPermission_0800",
-            "AppPermission_0900",
-            "AppPermission_1000",
-            "AppPermission_1100",
-            "AppPermission_1200",
-            "AppPermission_1300",
-            "AppPermission_1400",
-            "AppPermission_1500",
-            "AppPermission_1600",
-            "AppPermission_1700",
-            "AppPermission_1800",
-            "AppPermission_1900",
-            "AppPermission_2000",
-            "AppPermission_2100",
-            "AppPermission_2200",
-            "AppPermission_2300",
-            "AppPermission_2400",
-            "AppPermission_2500",
-            "AppPermission_2600_ResPermission",
-            "AppPermission_2600",
-            "AppPermission_2700_ResPermission",
-            "AppPermission_2700",
-            "AppPermission_2800_ResPermission",
-            "AppPermission_2800",
+            "ACTS_AppPermission_0100",
+            "ACTS_AppPermission_0200",
+            "ACTS_AppPermission_0300",
+            "ACTS_AppPermission_0400",
+            "ACTS_AppPermission_0500",
+            "ACTS_AppPermission_0600",
+            "ACTS_AppPermission_0700",
+            "ACTS_AppPermission_0800",
+            "ACTS_AppPermission_0900",
+            "ACTS_AppPermission_1000",
+            "ACTS_AppPermission_1100",
+            "ACTS_AppPermission_1200",
+            "ACTS_AppPermission_1300",
+            "ACTS_AppPermission_1400",
+            "ACTS_AppPermission_1500",
+            "ACTS_AppPermission_1600",
+            "ACTS_AppPermission_1700",
+            "ACTS_AppPermission_1800",
+            "ACTS_AppPermission_1900",
+            "ACTS_AppPermission_2000",
+            "ACTS_AppPermission_2100",
+            "ACTS_AppPermission_2200",
+            "ACTS_AppPermission_2300",
+            "ACTS_AppPermission_2400",
+            "ACTS_AppPermission_2500",
+            "ACTS_AppPermission_2600",
+            "ACTS_AppPermission_2700",
+            "ACTS_AppPermission_2800",
         ],
     },
     onInit() {
@@ -81,22 +77,6 @@ export default {
             uri: 'pages/index/index'
         })
     },
-    testAction() {
-        console.info('===========per testAction===========>')
-        const core = Core.getInstance()
-        const expectExtend = new ExpectExtend({
-            'id': 'extend'
-        })
-        const reportExtend = new ReportExtend(file)
-        core.addService('expect', expectExtend)
-        core.addService('report', reportExtend)
-        core.init()
-        const configService = core.getDefaultService('config')
-        configService.setConfig(this)
-
-        require('../../../test/List.test')
-        core.execute()
-    },
     runCase(caseName) {
         console.debug("======per runCase======>:" + JSON.stringify(caseName))
         this.logmessage += caseName + "\n"
@@ -104,19 +84,5 @@ export default {
         let { runAllCase } = require('./permissioncase.js')
         runAllCase(caseName, this)
 
-    },
-    CaseChange(newValue) {
-        let { GetCaseInfo } = require('./permissioncase.js')
-        this.logmessage = newValue.value
-        this.logmessage += GetCaseInfo(newValue.value)
-        this.currentCase = newValue.value
-    },
-    RunSelectCase() {
-        let { runAllCase } = require('./permissioncase.js')
-        runAllCase(this.currentCase, this)
-    },
-    ShowMenu() {
-        this.logmessage = "show"
-        this.$element("menu-wraper").show({ x: 200, y: 200 })
     }
 }
