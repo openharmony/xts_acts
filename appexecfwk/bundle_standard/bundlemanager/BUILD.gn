@@ -19,6 +19,7 @@ group("bundlemanager") {
     deps = [
       "actsbmsallshortcutinfotest:ActsBmsAllShortcutInfoTest",
       "actsbmscheckpermissiontest:ActsBmsCheckPermissionTest",
+      "actsbmsgetinfostest:ActsBmsGetInfosTest",
       "actsbmshapmoduletest:ActsBmsHapModuleTest",
       "actsbmsjstest:ActsBmsJsTest",
       "actsbmskittest:ActsBmsKitTest",
@@ -37,6 +38,7 @@ group("bundlemanager") {
       "sceneProject/bmsgetinfosscenesystem:bmsSystemBundleTest1",
       "sceneProject/bmsgetinfosscenevendor:bmsVendorBundleTest1",
       "sceneProject/bmsgetinfossecondscene:bmsThirdBundleTest2",
+      "sceneProject/bmsgetinfossixthscene:bmsThirdBundleTest6",
       "sceneProject/bmsgetinfosthirdscene:bmsThirdBundleTest3",
       "sceneProject/bmsmainabilityfirstscene:bmsMainAbilityFirstScene",
       "sceneProject/bmsmainabilitysecondscene:bmsMainAbilitySecondScene",
