@@ -22,131 +22,155 @@ export function runAllCase(caseName, obj) {
     console.debug("====runAllCase2====>:" + JSON.stringify(allCase))
     allCase[caseName].func(obj)
 }
-export function GetCaseInfo(caseName) {
-    console.debug("====GetCaseInfo====>:" + JSON.stringify(caseName))
+export function getCaseInfo(caseName) {
+    console.debug("====getCaseInfo====>:" + JSON.stringify(caseName))
     return allCase[caseName].info;
 }
 
 var MY_PERMISSIONS_REQUEST_PERMISSION = 1;
 var allCase = {
-    ACTS_AppPermission_0100: {
+    "ACTS_AppPermission_0100": {
         func: ACTS_AppPermission_0100,
-        info: "Verify that a system_grant system`s permission(ohos.permission.GET_NETWORK_INFO) is automatically requested during installation."
+        info: "Verify that a system_grant system`s permission(ohos.permission.GET_NETWORK_INFO) "
+            + "is automatically requested during installation."
     },
-    ACTS_AppPermission_0200: {
+    "ACTS_AppPermission_0200": {
         func: ACTS_AppPermission_0200,
-        info: "Verify that a system_grant system`s permission(ohos.permission.GET_NETWORK_INFO) is automatically requested during installation."
+        info: "Verify that a system_grant system`s permission(ohos.permission.GET_NETWORK_INFO) "
+            + "is automatically requested during installation."
     },
-    ACTS_AppPermission_0300: {
+    "ACTS_AppPermission_0300": {
         func: ACTS_AppPermission_0300,
-        info: "Verify that a user_grant system`s permission(ohos.permission.CAMERA) is not automatically requested during installation."
+        info: "Verify that a user_grant system`s permission(ohos.permission.CAMERA) "
+            + "is not automatically requested during installation."
     },
-    ACTS_AppPermission_0400: {
+    "ACTS_AppPermission_0400": {
         func: ACTS_AppPermission_0400,
-        info: "Verify that a user_grant system`s permission(ohos.permission.CAMERA) is not automatically requested during installation."
+        info: "Verify that a user_grant system`s permission(ohos.permission.CAMERA) "
+            + "is not automatically requested during installation."
     },
-    ACTS_AppPermission_0500: {
+    "ACTS_AppPermission_0500": {
         func: ACTS_AppPermission_0500,
-        info: "Verify that a system_grant user`s permission(com.amsst.permission.SYSPERMISSION) is automatically requested during installation."
+        info: "Verify that a system_grant user`s permission(com.amsst.permission.SYSPERMISSION) "
+            + "is automatically requested during installation."
     },
-    ACTS_AppPermission_0600: {
+    "ACTS_AppPermission_0600": {
         func: ACTS_AppPermission_0600,
-        info: "Verify that a system_grant user`s permission(com.amsst.permission.SYSPERMISSION) is automatically requested during installation."
+        info: "Verify that a system_grant user`s permission(com.amsst.permission.SYSPERMISSION) "
+            + "is automatically requested during installation."
     },
-    ACTS_AppPermission_0700: {
+    "ACTS_AppPermission_0700": {
         func: ACTS_AppPermission_0700,
-        info: "Verify that a system_grant system`s permission(ohos.permission.GET_NETWORK_INFO) is automatically requested during installation."
+        info: "Verify that a system_grant system`s permission(ohos.permission.GET_NETWORK_INFO) "
+            + "is automatically requested during installation."
     },
-    ACTS_AppPermission_0800: {
+    "ACTS_AppPermission_0800": {
         func: ACTS_AppPermission_0800,
-        info: "Verify that a system_grant system`s permission(ohos.permission.GET_NETWORK_INFO) is automatically requested during installation."
+        info: "Verify that a system_grant system`s permission(ohos.permission.GET_NETWORK_INFO) "
+            + "is automatically requested during installation."
     },
-    ACTS_AppPermission_0900: {
+    "ACTS_AppPermission_0900": {
         func: ACTS_AppPermission_0900,
-        info: "Verify that a user_grant system`s permission(ohos.permission.CAMERA) is not automatically requested during installation."
+        info: "Verify that a user_grant system`s permission(ohos.permission.CAMERA) "
+            + "is not automatically requested during installation."
     },
-    ACTS_AppPermission_1000: {
+    "ACTS_AppPermission_1000": {
         func: ACTS_AppPermission_1000,
-        info: "Verify that a user_grant system`s permission(ohos.permission.CAMERA) is not automatically requested during installation."
+        info: "Verify that a user_grant system`s permission(ohos.permission.CAMERA) "
+            + "is not automatically requested during installation."
     },
-    ACTS_AppPermission_1100: {
+    "ACTS_AppPermission_1100": {
         func: ACTS_AppPermission_1100,
-        info: "Verify that a system_grant user`s permission(com.amsst.permission.SYSPERMISSION) is automatically requested during installation."
+        info: "Verify that a system_grant user`s permission(com.amsst.permission.SYSPERMISSION) "
+            + "is automatically requested during installation."
     },
-    ACTS_AppPermission_1200: {
+    "ACTS_AppPermission_1200": {
         func: ACTS_AppPermission_1200,
-        info: "Verify that a system_grant user`s permission(com.amsst.permission.SYSPERMISSION) is automatically requested during installation."
+        info: "Verify that a system_grant user`s permission(com.amsst.permission.SYSPERMISSION) "
+            + "is automatically requested during installation."
     },
-    ACTS_AppPermission_1300: {
+    "ACTS_AppPermission_1300": {
         func: ACTS_AppPermission_1300,
-        info: "Verify that calling application(different application in the same device) is requested the system_grant system`s permission(ohos.permission.GET_NETWORK_INFO)"
+        info: "Verify that calling application(different application in the same device) "
+            + "is requested the system_grant system`s permission(ohos.permission.GET_NETWORK_INFO)"
     },
-    ACTS_AppPermission_1400: {
+    "ACTS_AppPermission_1400": {
         func: ACTS_AppPermission_1400,
-        info: "Verify that calling application(different application in the same device) is requested the system_grant system`s permission(ohos.permission.GET_NETWORK_INFO)"
+        info: "Verify that calling application(different application in the same device) "
+            + "is requested the system_grant system`s permission(ohos.permission.GET_NETWORK_INFO)"
     },
-    ACTS_AppPermission_1500: {
+    "ACTS_AppPermission_1500": {
         func: ACTS_AppPermission_1500,
-        info: "Verify that calling application(different application in the same device) is not requested the user_grant system`s permission(ohos.permission.CAMERA)"
+        info: "Verify that calling application(different application in the same device) "
+            + "is not requested the user_grant system`s permission(ohos.permission.CAMERA)"
     },
-    ACTS_AppPermission_1600: {
+    "ACTS_AppPermission_1600": {
         func: ACTS_AppPermission_1600,
-        info: "Verify that calling application(different application in the same device) is not requested the user_grant system`s permission(ohos.permission.CAMERA)"
+        info: "Verify that calling application(different application in the same device) "
+            + "is not requested the user_grant system`s permission(ohos.permission.CAMERA)"
     },
-    ACTS_AppPermission_1700: {
+    "ACTS_AppPermission_1700": {
         func: ACTS_AppPermission_1700,
-        info: "Verify that calling application(different application in the same device) is requested the system_grant user`s permission(com.amsst.permission.SYSPERMISSION)"
+        info: "Verify that calling application(different application in the same device) "
+            + "is requested the system_grant user`s permission(com.amsst.permission.SYSPERMISSION)"
     },
-    ACTS_AppPermission_1800: {
+    "ACTS_AppPermission_1800": {
         func: ACTS_AppPermission_1800,
-        info: "Verify that calling application(different application in the same device) is requested the system_grant user`s permission(com.amsst.permission.SYSPERMISSION)"
+        info: "Verify that calling application(different application in the same device) "
+            + "is requested the system_grant user`s permission(com.amsst.permission.SYSPERMISSION)"
     },
-    ACTS_AppPermission_1900: {
+    "ACTS_AppPermission_1900": {
         func: ACTS_AppPermission_1900,
-        info: "Verify that application without calling application(other device) is requested the system_grant system`s permission(ohos.permission.GET_NETWORK_INFO)"
+        info: "Verify that application without calling application(other device) "
+            + "is requested the system_grant system`s permission(ohos.permission.GET_NETWORK_INFO)"
     },
-    ACTS_AppPermission_2000: {
+    "ACTS_AppPermission_2000": {
         func: ACTS_AppPermission_2000,
-        info: "Verify that application without calling application(other device) is requested the system_grant system`s permission(ohos.permission.GET_NETWORK_INFO)"
+        info: "Verify that application without calling application(other device) "
+            + "is requested the system_grant system`s permission(ohos.permission.GET_NETWORK_INFO)"
     },
-    ACTS_AppPermission_2100: {
+    "ACTS_AppPermission_2100": {
         func: ACTS_AppPermission_2100,
-        info: "Verify that application without calling application(other device) is not requested the system_grant system`s permission(ohos.permission.GET_WIFI_INFO)"
+        info: "Verify that application without calling application(other device) "
+            + "is not requested the system_grant system`s permission(ohos.permission.GET_WIFI_INFO)"
     },
-    ACTS_AppPermission_2200: {
+    "ACTS_AppPermission_2200": {
         func: ACTS_AppPermission_2200,
-        info: "Verify that application without calling application(other device) is not requested the system_grant system`s permission(ohos.permission.GET_WIFI_INFO)"
+        info: "Verify that application without calling application(other device) "
+            + "is not requested the system_grant system`s permission(ohos.permission.GET_WIFI_INFO)"
     },
-    ACTS_AppPermission_2300: {
+    "ACTS_AppPermission_2300": {
         func: ACTS_AppPermission_2300,
-        info: "Verify that a system_grant system`s permission(ohos.permission.GET_NETWORK_INFO) can not requested during runtime."
+        info: "Verify that a system_grant system`s permission(ohos.permission.GET_NETWORK_INFO) "
+            + "can not requested during runtime."
     },
-    ACTS_AppPermission_2400: {
+    "ACTS_AppPermission_2400": {
         func: ACTS_AppPermission_2400,
-        info: "Verify that a system_grant system`s permission(ohos.permission.GET_NETWORK_INFO) can not requested during runtime."
+        info: "Verify that a system_grant system`s permission(ohos.permission.GET_NETWORK_INFO) "
+            + "can not requested during runtime."
     },
-    ACTS_AppPermission_2500: {
+    "ACTS_AppPermission_2500": {
         func: ACTS_AppPermission_2500,
-        info: "Verify that a user_grant system`s permission(ohos.permission.CAMERA) can requested during runtime."
+        info: "Verify that a user_grant system`s permission(ohos.permission.CAMERA) "
+            + "can requested during runtime."
     },
-    ACTS_AppPermission_2600: {
+    "ACTS_AppPermission_2600": {
         func: ACTS_AppPermission_2600,
         info: "Verify that a user_grant system`s permission(ohos.permission.CAMERA) can requested during runtime."
     },
-    ACTS_AppPermission_2700: {
+    "ACTS_AppPermission_2700": {
         func: ACTS_AppPermission_2700,
         info: "Verify that a user_grant system`s permission(ohos.permission.PERMISSIOND) can requested during runtime."
     },
-    ACTS_AppPermission_2800: {
+    "ACTS_AppPermission_2800": {
         func: ACTS_AppPermission_2800,
         info: "Verify that a user_grant system`s permission(2 permissions) can requested during runtime."
     },
 }
 
-async function GetThisProcessInfo() {
-    console.debug("====GetThisProcessInfo:begin====<");
+async function getThisProcessInfo() {
+    console.debug("====getThisProcessInfo:begin====<");
     var processInfoArray = await abilityManager.getAllRunningProcesses();
-    console.debug("====processInfoArray====>:" + JSON.stringify(processInfoArray.length) + " , " + JSON.stringify(processInfoArray));
     var thisProcessInfo = processInfoArray[0];
     for (let i = 0; i < processInfoArray.length; i++) {
         if (processInfoArray[i].processName == "com.amsst.amsjsstmain") {
@@ -154,7 +178,7 @@ async function GetThisProcessInfo() {
             break
         }
     }
-    console.debug("======GetThisProcessInfo:end======<");
+    console.debug("======getThisProcessInfo:end======<");
     return thisProcessInfo;
 }
 
@@ -169,9 +193,9 @@ async function ACTS_AppPermission_0100(thisobj) {
     var thisFunctionName = ACTS_AppPermission_0100.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
-    var thisProcessInfo = await GetThisProcessInfo();
+    var thisProcessInfo = await getThisProcessInfo();
     var context = await featureAbility.getContext();
     await context.verifyPermission("ohos.permission.GET_NETWORK_INFO",
         {
@@ -204,9 +228,9 @@ async function ACTS_AppPermission_0200(thisobj) {
     var thisFunctionName = ACTS_AppPermission_0200.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
-    var thisProcessInfo = await GetThisProcessInfo();
+    var thisProcessInfo = await getThisProcessInfo();
     var context = await featureAbility.getContext();
     var result = await context.verifyPermission("ohos.permission.GET_NETWORK_INFO", {
         options: {
@@ -235,9 +259,9 @@ async function ACTS_AppPermission_0300(thisobj) {
     var thisFunctionName = ACTS_AppPermission_0300.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
-    var thisProcessInfo = await GetThisProcessInfo();
+    var thisProcessInfo = await getThisProcessInfo();
     var context = await featureAbility.getContext();
     await context.verifyPermission("ohos.permission.CAMERA",
         {
@@ -271,9 +295,9 @@ async function ACTS_AppPermission_0400(thisobj) {
     var thisFunctionName = ACTS_AppPermission_0400.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
-    var thisProcessInfo = await GetThisProcessInfo();
+    var thisProcessInfo = await getThisProcessInfo();
     var context = await featureAbility.getContext();
     var result = await context.verifyPermission("ohos.permission.CAMERA", {
         options: {
@@ -303,9 +327,9 @@ async function ACTS_AppPermission_0500(thisobj) {
     var thisFunctionName = ACTS_AppPermission_0500.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
-    var thisProcessInfo = await GetThisProcessInfo();
+    var thisProcessInfo = await getThisProcessInfo();
     var context = await featureAbility.getContext();
     await context.verifyPermission("com.amsst.permission.SYSPERMISSION",
         {
@@ -338,9 +362,9 @@ async function ACTS_AppPermission_0600(thisobj) {
     var thisFunctionName = ACTS_AppPermission_0600.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
-    var thisProcessInfo = await GetThisProcessInfo();
+    var thisProcessInfo = await getThisProcessInfo();
     var context = await featureAbility.getContext();
     var result = await context.verifyPermission("com.amsst.permission.SYSPERMISSION", {
         options: {
@@ -371,7 +395,7 @@ async function ACTS_AppPermission_0700(thisobj) {
     var thisFunctionName = ACTS_AppPermission_0700.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext();
     await context.verifySelfPermission("ohos.permission.GET_NETWORK_INFO",
@@ -399,7 +423,7 @@ async function ACTS_AppPermission_0800(thisobj) {
     var thisFunctionName = ACTS_AppPermission_0800.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext();
     var result = await context.verifySelfPermission("ohos.permission.GET_NETWORK_INFO");
@@ -425,7 +449,7 @@ async function ACTS_AppPermission_0900(thisobj) {
     var thisFunctionName = ACTS_AppPermission_0900.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext();
     await context.verifySelfPermission("ohos.permission.CAMERA",
@@ -453,7 +477,7 @@ async function ACTS_AppPermission_1000(thisobj) {
     var thisFunctionName = ACTS_AppPermission_1000.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext();
     var result = await context.verifySelfPermission("ohos.permission.CAMERA")
@@ -479,7 +503,7 @@ async function ACTS_AppPermission_1100(thisobj) {
     var thisFunctionName = ACTS_AppPermission_1100.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext();
     await context.verifySelfPermission("com.amsst.permission.SYSPERMISSION",
@@ -507,7 +531,7 @@ async function ACTS_AppPermission_1200(thisobj) {
     var thisFunctionName = ACTS_AppPermission_1200.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext();
     var result = await context.verifySelfPermission("com.amsst.permission.SYSPERMISSION");
@@ -525,7 +549,8 @@ async function ACTS_AppPermission_1200(thisobj) {
 
 /*
  * @tc.number    : ACTS_AppPermission_1300
- * @tc.name      : Verify that calling application(different application in the same device) have requested ohos.permission.GET_NETWORK_INFO
+ * @tc.name      : Verify that calling application(different application in the same device) 
+ *                 have requested ohos.permission.GET_NETWORK_INFO
  * @tc.desc      : Verify that calling application(different application in the same device) is requested
  *                 the system_grant system`s permission(ohos.permission.GET_NETWORK_INFO)
  */
@@ -533,7 +558,7 @@ async function ACTS_AppPermission_1300(thisobj) {
     var thisFunctionName = ACTS_AppPermission_1300.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     featureAbility.startAbility(
         {
@@ -549,7 +574,8 @@ async function ACTS_AppPermission_1300(thisobj) {
 
 /*
  * @tc.number    : ACTS_AppPermission_1400
- * @tc.name      : Verify that calling application(different application in the same device) have requested ohos.permission.GET_NETWORK_INFO
+ * @tc.name      : Verify that calling application(different application in the same device)
+ *                 have requested ohos.permission.GET_NETWORK_INFO
  * @tc.desc      : Verify that calling application(different application in the same device) is requested
  *                 the system_grant system`s permission(ohos.permission.GET_NETWORK_INFO)
  */
@@ -557,7 +583,7 @@ async function ACTS_AppPermission_1400(thisobj) {
     var thisFunctionName = ACTS_AppPermission_1400.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     featureAbility.startAbility(
         {
@@ -573,7 +599,8 @@ async function ACTS_AppPermission_1400(thisobj) {
 
 /*
  * @tc.number    : ACTS_AppPermission_1500
- * @tc.name      : Verify that calling application(different application in the same device) have not requested ohos.permission.CAMERA
+ * @tc.name      : Verify that calling application(different application in the same device)
+ *                 have not requested ohos.permission.CAMERA
  * @tc.desc      : Verify that calling application(different application in the same device)
  *                 is not requested the user_grant system`s permission(ohos.permission.CAMERA)
  */
@@ -581,7 +608,7 @@ async function ACTS_AppPermission_1500(thisobj) {
     var thisFunctionName = ACTS_AppPermission_1500.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     featureAbility.startAbility(
         {
@@ -597,7 +624,8 @@ async function ACTS_AppPermission_1500(thisobj) {
 
 /*
  * @tc.number    : ACTS_AppPermission_1600
- * @tc.name      : Verify that calling application(different application in the same device) have not requested ohos.permission.CAMERA
+ * @tc.name      : Verify that calling application(different application in the same device)
+ *                 have not requested ohos.permission.CAMERA
  * @tc.desc      : Verify that calling application(different application in the same device)
  *                 is not requested the user_grant system`s permission(ohos.permission.CAMERA)
  */
@@ -605,7 +633,7 @@ async function ACTS_AppPermission_1600(thisobj) {
     var thisFunctionName = ACTS_AppPermission_1600.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     featureAbility.startAbility(
         {
@@ -621,7 +649,8 @@ async function ACTS_AppPermission_1600(thisobj) {
 
 /*
  * @tc.number    : ACTS_AppPermission_1700
- * @tc.name      : Verify that calling application(different application in the same device) have requested com.amsst.permission.SYSPERMISSION
+ * @tc.name      : Verify that calling application(different application in the same device)
+ *                 have requested com.amsst.permission.SYSPERMISSION
  * @tc.desc      : Verify that calling application(different application in the same device)
  *                 is requested the system_grant user`s permission(com.amsst.permission.SYSPERMISSION)
  */
@@ -629,7 +658,7 @@ async function ACTS_AppPermission_1700(thisobj) {
     var thisFunctionName = ACTS_AppPermission_1700.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     await featureAbility.startAbility(
         {
@@ -645,7 +674,8 @@ async function ACTS_AppPermission_1700(thisobj) {
 
 /*
  * @tc.number    : ACTS_AppPermission_1800
- * @tc.name      : Verify that calling application(different application in the same device) have requested com.amsst.permission.SYSPERMISSION
+ * @tc.name      : Verify that calling application(different application in the same device)
+ *                 have requested com.amsst.permission.SYSPERMISSION
  * @tc.desc      : Verify that calling application(different application in the same device)
  *                 is requested the system_grant user`s permission(com.amsst.permission.SYSPERMISSION)
  */
@@ -653,7 +683,7 @@ async function ACTS_AppPermission_1800(thisobj) {
     var thisFunctionName = ACTS_AppPermission_1800.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     await featureAbility.startAbility(
         {
@@ -669,7 +699,8 @@ async function ACTS_AppPermission_1800(thisobj) {
 
 /*
  * @tc.number    : ACTS_AppPermission_1900
- * @tc.name      : Verify that application without calling application(other device) have requested ohos.permission.GET_NETWORK_INFO
+ * @tc.name      : Verify that application without calling application(other device)
+ *                 have requested ohos.permission.GET_NETWORK_INFO
  * @tc.desc      : Verify that application without calling application(other device)
  *                 is requested the system_grant system`s permission(ohos.permission.GET_NETWORK_INFO)
  */
@@ -678,7 +709,7 @@ async function ACTS_AppPermission_1900(thisobj) {
     var thisFunctionName = ACTS_AppPermission_1900.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext();
     await context.verifyCallingOrSelfPermission("ohos.permission.GET_NETWORK_INFO",
@@ -698,7 +729,8 @@ async function ACTS_AppPermission_1900(thisobj) {
 
 /*
  * @tc.number    : ACTS_AppPermission_2000
- * @tc.name      : Verify that application without calling application(other device) have requested ohos.permission.GET_NETWORK_INFO
+ * @tc.name      : Verify that application without calling application(other device)
+ *                 have requested ohos.permission.GET_NETWORK_INFO
  * @tc.desc      : Verify that application without calling application(other device)
  *                 is requested the system_grant system`s permission(ohos.permission.GET_NETWORK_INFO)
  */
@@ -706,9 +738,9 @@ async function ACTS_AppPermission_2000(thisobj) {
     var thisFunctionName = ACTS_AppPermission_2000.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
-    var thisProcessInfo = await GetThisProcessInfo();
+    var thisProcessInfo = await getThisProcessInfo();
     var context = await featureAbility.getContext();
     var result = await context.verifyCallingOrSelfPermission("ohos.permission.GET_NETWORK_INFO");
     console.debug("======verifyCallingOrSelfPermission:result======>:" + JSON.stringify(result));
@@ -725,7 +757,8 @@ async function ACTS_AppPermission_2000(thisobj) {
 
 /*
  * @tc.number    : ACTS_AppPermission_2100
- * @tc.name      : Verify that application without calling application(other device) have not requested .GET_WIFI_INFO
+ * @tc.name      : Verify that application without calling application(other device)
+ *                 have not requested .GET_WIFI_INFO
  * @tc.desc      : Verify that application without calling application(other device)
  *                 is requested the system_grant system`s permission(ohos.permission..GET_WIFI_INFO)
  */
@@ -733,9 +766,9 @@ async function ACTS_AppPermission_2100(thisobj) {
     var thisFunctionName = ACTS_AppPermission_2100.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
-    var thisProcessInfo = await GetThisProcessInfo();
+    var thisProcessInfo = await getThisProcessInfo();
     var context = await featureAbility.getContext();
     await context.verifyCallingOrSelfPermission("ohos.permission.GET_WIFI_INFO",
         (err, data) => {
@@ -762,9 +795,9 @@ async function ACTS_AppPermission_2200(thisobj) {
     var thisFunctionName = ACTS_AppPermission_2200.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
-    var thisProcessInfo = await GetThisProcessInfo();
+    var thisProcessInfo = await getThisProcessInfo();
     var context = await featureAbility.getContext();
     var result = await context.verifyCallingOrSelfPermission("ohos.permission.GET_WIFI_INFO")
     console.debug("======verifyCallingOrSelfPermission:result======>:" + JSON.stringify(result));
@@ -789,7 +822,7 @@ async function ACTS_AppPermission_2300(thisobj) {
     var thisFunctionName = ACTS_AppPermission_2300.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext();
     await context.canRequestPermission("ohos.permission.GET_NETWORK_INFO",
@@ -817,7 +850,7 @@ async function ACTS_AppPermission_2400(thisobj) {
     var thisFunctionName = ACTS_AppPermission_2400.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext();
     var result = await context.canRequestPermission("ohos.permission.GET_NETWORK_INFO");
@@ -843,7 +876,7 @@ async function ACTS_AppPermission_2500(thisobj) {
     var thisFunctionName = ACTS_AppPermission_2500.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext();
     await context.canRequestPermission("ohos.permission.CAMERA",
@@ -871,7 +904,7 @@ async function ACTS_AppPermission_2600(thisobj) {
     var thisFunctionName = ACTS_AppPermission_2600.name;
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext();
     var result = await context.canRequestPermission("ohos.permission.CAMERA");
@@ -896,7 +929,7 @@ async function ACTS_AppPermission_2700(thisobj) {
     var thisFunctionName = ACTS_AppPermission_2700.name
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext()
     var result = await context.canRequestPermission("ohos.permission.PERMISSIOND")
@@ -934,7 +967,7 @@ async function ACTS_AppPermission_2800(thisobj) {
     var thisFunctionName = ACTS_AppPermission_2800.name
     thisobj.logmessage = "";
     thisobj.logmessage += thisFunctionName + "\n";
-    thisobj.logmessage += GetCaseInfo(thisFunctionName) + "\n";
+    thisobj.logmessage += getCaseInfo(thisFunctionName) + "\n";
 
     var context = await featureAbility.getContext();
     var result1 = await context.canRequestPermission("ohos.permission.PERMISSIONB");
