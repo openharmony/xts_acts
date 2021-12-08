@@ -350,29 +350,18 @@ describe('storageTest', function () {
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0150
      * @tc.desc flush promise interface test
      */
-    it('testFlush00181', 0, async function (done) {
-        mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
-        mPref.flushSync();
-        const promise = mPref.flush();
+     it('testFlush00181', 0, async function (done) {
+        mPref.clearSync();
+        mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
+        const promise = mPref.put(KEY_TEST_STRING_ELEMENT, 'test');
         promise.then((ret) => {
-            expect("test").assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
+            expect('test').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
+            mPref.flush();
+            expect('test').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
         }).catch((err) => {
             expect(null).assertFail();
         });
         await promise;
         done();
-    })
-
-    /**
-     * @tc.name const test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0150
-     * @tc.desc const test
-     */
-    it('testConst001', 0, function () {
-        mPref = storage.getStorageSync(PATH);
-        console.info("testConstKEY " +MAX_KEY_LENHTH)
-        console.info("testConstVALUE " +MAX_VALUE_LENHTH)
-        expect("80").assertEqual(mPref.MAX_KEY_LENHTH);
-        expect("8192").assertEqual(mPref.MAX_VALUE_LENHTH);
     })
 })
