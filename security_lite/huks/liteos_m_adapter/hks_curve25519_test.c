@@ -19,7 +19,7 @@
 
 #include "cmsis_os2.h"
 #include "hctest.h"
-#include "hi_watchdog.h"
+#include "iot_watchdog.h"
 #include "hks_api.h"
 #include "hks_param.h"
 #include "hks_test_curve25519.h"
@@ -56,7 +56,7 @@ static void ExecHksInitialize(void const *argument)
 static BOOL HksCurve25519TestSetUp()
 {
     LiteTestPrint("setup\n");
-    hi_watchdog_disable();
+    IoTWatchDogDisable();
     osThreadId_t id;
     osThreadAttr_t attr;
     g_setPriority = osPriorityAboveNormal6;
@@ -80,7 +80,7 @@ static BOOL HksCurve25519TestSetUp()
 static BOOL HksCurve25519TestTearDown()
 {
     LiteTestPrint("tearDown\n");
-    hi_watchdog_enable();
+    IoTWatchDogEnable();
     return TRUE;
 }
 
