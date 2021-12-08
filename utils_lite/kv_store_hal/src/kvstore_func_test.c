@@ -27,6 +27,10 @@
 #define MAX_CACHE_NUM_TEST    10
 #define INVALID_KEY_NUM    128
 
+#ifndef DATA_PATH
+#define DATA_PATH "/data"
+#endif
+
 /**
  * @tc.desc      : register a test suite, this suite is used to test basic flow and interface dependency
  * @param        : subsystem name is utils
@@ -41,6 +45,7 @@ LITE_TEST_SUIT(utils, kvStore, KvStoreFuncTestSuite);
  */
 static BOOL KvStoreFuncTestSuiteSetUp(void)
 {
+    UtilsSetEnv(DATA_PATH);
     return TRUE;
 }
 
