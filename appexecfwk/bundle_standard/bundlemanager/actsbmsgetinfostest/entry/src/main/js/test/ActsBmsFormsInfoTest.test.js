@@ -24,6 +24,7 @@ const VENDOR_BUNDLE = 'com.example.vendor1';
 const DESIGHN_WIDTH = 770;
 const DEFAULT_DESIGHN_WIDTH = 750;
 describe('ActsBmsFormsInfoTest', function () {
+
     /**
     * @tc.number: bms_getAllFormsInfo_0100
     * @tc.name: getAllFormsInfo : get forms information for all apps
@@ -1797,10 +1798,10 @@ describe('ActsBmsFormsInfoTest', function () {
         console.debug('====dataInfo.scheduledUpdateTime====' + dataInfo.scheduledUpdateTime)
         expect(typeof dataInfo.customizeDatas).assertEqual('object');
         for (var j = 0, len = dataInfo.customizeDatas.length; j < len; j++) {
-            console.info('=============customizeDatasName==============' + JSON.stringify(dataInfo.customizeDatas[j].name));
+            console.info('======customizeDatasName======' + JSON.stringify(dataInfo.customizeDatas[j].name));
             expect(dataInfo.customizeDatas[j].name).assertEqual('originWidgetName' + name);
             expect(typeof dataInfo.customizeDatas[j].name).assertEqual('string');
-            console.info('=============customizeDatasValue==============' + JSON.stringify(dataInfo.customizeDatas[j].value));
+            console.info('======customizeDatasValue=====' + JSON.stringify(dataInfo.customizeDatas[j].value));
             expect(dataInfo.customizeDatas[j].value).assertEqual('com.openharmony.weather.testWidget' + name);
             expect(typeof dataInfo.customizeDatas[j].value).assertEqual('string');
         }
