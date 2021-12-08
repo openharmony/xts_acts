@@ -137,57 +137,6 @@ describe('PlayerLocalTestAudioFormat', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_Format_MP3_01_0200
-        * @tc.name      : 002.Playing mp3 streams
-        * @tc.desc      : Format : MP3
-                          Codec : MP3
-                          Samplerate : 48000
-                          Bitrate : 16/32
-                          Channel : 2
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-       
-    it('SUB_MEDIA_PLAYER_LOCAL_Format_MP3_01_0200', 0, async function (done) {
-        playSource(BASIC_PATH + '02.mp3', done);
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_Format_MP3_01_0300
-        * @tc.name      : 003.Playing mp3 streams
-        * @tc.desc      : Format : MP3
-                          Codec : MP3
-                          Samplerate : 48000
-                          Bitrate : 32
-                          Channel : 2
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-       
-    it('SUB_MEDIA_PLAYER_LOCAL_Format_MP3_01_0300', 0, async function (done) {
-        playSource(BASIC_PATH + '03.mp3', done);
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_Format_MP3_01_0400
-        * @tc.name      : 004.Playing mp3 streams
-        * @tc.desc      : Format : MP3
-                          Codec : MP3
-                          Samplerate : 48000
-                          Bitrate : 64
-                          Channel : 2
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-       
-    it('SUB_MEDIA_PLAYER_LOCAL_Format_MP3_01_0400', 0, async function (done) {
-        playSource(BASIC_PATH + '04.mp3', done);
-    })
-
-    /* *
         * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_Format_MP4_01_0100
         * @tc.name      : 001.Playing mp4 streams
         * @tc.desc      : Format : MP4
