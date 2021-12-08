@@ -22,12 +22,13 @@ group("aafwk_standard") {
       "amszipfileunzipfilest:amsZipfileUnzipfileST",
       "context:context",
       "featureability:featureability",
-      "fwkdataaccessor:FWKDataAccessor",
+
+      #"fwkdataaccessor:FWKDataAccessor",
 
       #"serviceability/actsparticleabilitytest:ActsParticleAbilityTest",
       #"serviceability/sceneProject/particlestartability:ParticleStartAbility",
       #"serviceability/sceneProject/particletestserver:ParticleTestServer",
-      "serviceability/stserviceabilityclient:amsStServiceAbilityClient",
+      #"serviceability/stserviceabilityclient:amsStServiceAbilityClient",
       "serviceability/stserviceabilityserver:amsStServiceAilityServer",
       "serviceability/stserviceabilityserversecond:amsStServiceAilityServerSecond",
       "want:want",
