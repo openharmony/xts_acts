@@ -18,7 +18,7 @@
 #include "hks_safe_compare_key_test.h"
 
 #include <hctest.h>
-#include "hi_watchdog.h"
+#include "iot_watchdog.h"
 #include "hks_api.h"
 #include "hks_param.h"
 #include "hks_test_api_performance.h"
@@ -62,7 +62,7 @@ static void ExecHksInitialize(void const *argument)
 static BOOL HksSafeCompareKeyTestSetUp()
 {
     LiteTestPrint("setup\n");
-    hi_watchdog_disable();    
+    IoTWatchDogDisable();    
     osThreadId_t id;
     osThreadAttr_t attr;
     g_setPriority = osPriorityAboveNormal6;
@@ -86,7 +86,7 @@ static BOOL HksSafeCompareKeyTestSetUp()
 static BOOL HksSafeCompareKeyTestTearDown()
 {
     LiteTestPrint("tearDown\n");
-    hi_watchdog_enable();
+    IoTWatchDogEnable();
     return TRUE;
 }
 
