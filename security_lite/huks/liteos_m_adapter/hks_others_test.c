@@ -18,7 +18,7 @@
 #include "hks_others_test.h"
 
 #include <hctest.h>
-#include "hi_watchdog.h"
+#include "iot_watchdog.h"
 #include "hks_api.h"
 #include "hks_param.h"
 #include "hks_type.h"
@@ -53,7 +53,7 @@ static void ExecHksInitialize(void const *argument)
 static BOOL HksOthersTestSetUp()
 {
     LiteTestPrint("setup\n");
-    hi_watchdog_disable();
+    IoTWatchDogDisable();
     osThreadId_t id;
     osThreadAttr_t attr;
     g_setPriority = osPriorityAboveNormal6;
@@ -77,7 +77,7 @@ static BOOL HksOthersTestSetUp()
 static BOOL HksOthersTestTearDown()
 {
     LiteTestPrint("tearDown\n");
-    hi_watchdog_enable();
+    IoTWatchDogEnable();
     return TRUE;
 }
 

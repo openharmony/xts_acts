@@ -12,7 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include "hi_watchdog.h"
+
+#include "iot_watchdog.h"
 #include <hctest.h>
 
 #include "hks_derive_test.h"
@@ -55,7 +56,7 @@ static void ExecHksInitialize(void const *argument)
 static BOOL HksDeriveTestSetUp()
 {
     LiteTestPrint("setup\n");
-    hi_watchdog_disable();
+    IoTWatchDogDisable();
     osThreadId_t id;
     osThreadAttr_t attr;
     g_setPriority = osPriorityAboveNormal6;
@@ -79,7 +80,7 @@ static BOOL HksDeriveTestSetUp()
 static BOOL HksDeriveTestTearDown()
 {
     LiteTestPrint("tearDown\n");
-    hi_watchdog_enable();
+    IoTWatchDogEnable();
     return TRUE;
 }
 
