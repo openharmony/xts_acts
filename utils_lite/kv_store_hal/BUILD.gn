@@ -13,6 +13,10 @@
 
 import("//test/xts/tools/lite/build/suite_lite.gni")
 
+declare_args() {
+  config_ohos_xts_acts_utils_lite_kv_store_data_path = ""
+}
+
 hctest_suite("ActsKvStoreTest") {
   suite_name = "acts"
   sources = [ "src/kvstore_func_test.c" ]
@@ -23,4 +27,6 @@ hctest_suite("ActsKvStoreTest") {
     "//base/iot_hardware/peripheral/interfaces/kits",
   ]
   cflags = [ "-Wno-error" ]
+  defines =
+      [ "DATA_PATH=\"${config_ohos_xts_acts_utils_lite_kv_store_data_path}\"" ]
 }
