@@ -623,25 +623,6 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Time_API_0100
-        * @tc.name      : 01.get parameters after createAudioPlayer
-        * @tc.desc      : Reliability Test
-        * @tc.size      : MediumTest
-        * @tc.type      : Reliability
-        * @tc.level     : Level2
-    */
-
-    it('SUB_MEDIA_PLAYER_AudioPlayer_Time_API_0100', 0, async function (done) {
-        initAudioPlayer();
-        expect(audioPlayer.src).assertEqual(undefined);
-        expect(audioPlayer.duration).assertEqual(undefined);
-        expect(audioPlayer.currentTime).assertEqual(0);
-        expect(audioPlayer.state).assertEqual('idle');
-        expect(audioPlayer.loop).assertEqual(false);
-        done();
-    })
-
-    /* *
         * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_Time_API_0200
         * @tc.name      : 02.get parameters after src
         * @tc.desc      : Reliability Test
