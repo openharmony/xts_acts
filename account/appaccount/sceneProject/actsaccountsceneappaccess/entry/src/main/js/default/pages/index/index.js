@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import account from '@ohos.account.appAccount'
 import file from '@system.file'
 import {Core, ExpectExtend} from 'deccjsunit/index'
 
@@ -25,17 +26,27 @@ export default {
         this.title = "scene AppAccess";
     },
     onShow() {
-        console.info('onShow finish')
-        const core = Core.getInstance()
-        const expectExtend = new ExpectExtend({
-            'id': 'extend'
+        console.debug('====>scene application start====');
+        var appAccountManager = account.createAppAccountManager();
+        console.debug("====>creat scene manager finish====");
+        var enableBundle = "com.example.actsaccountpressure";
+        console.debug("====>add first account start====");
+        appAccountManager.addAccount("account_name_scene_first", (err)=>{
+            console.debug("====>add first account err:" + JSON.stringify(err));
+            appAccountManager.enableAppAccess("account_name_scene_first", enableBundle, (err)=>{
+                console.debug("====>enableAppAccess first account err:" + JSON.stringify(err));
+                appAccountManager.addAccount("account_name_scene_second", (err)=>{
+                    console.debug("====>add second account err:" + JSON.stringify(err));
+                    appAccountManager.enableAppAccess("account_name_scene_second", enableBundle, (err)=>{
+                        console.debug("====>enableAppAccess second account err:" + JSON.stringify(err));
+                        featureAbility.terminateSelf(
+                            (err, data)=>{
+                                console.debug('====>Terminate Ability Success====')
+                        });
+                    })
+                })
+            })
         })
-        core.addService('expect', expectExtend)
-        core.init()
-
-        const configService = core.getDefaultService('config')
-        configService.setConfig(this)
-        core.execute()
     },
     onReady() {
     },

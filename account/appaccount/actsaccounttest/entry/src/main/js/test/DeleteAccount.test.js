@@ -16,7 +16,7 @@ import account from '@ohos.account.appAccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 const NAMELIMIT = 512;
-const TIMEOUT = 1000;
+const TIMEOUT = 5000;
 describe('ActsAccountDeleteAccount', function () {
     function sleep(delay) {
         var start = (new Date()).getTime();
