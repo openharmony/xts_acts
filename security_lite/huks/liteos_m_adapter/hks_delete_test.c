@@ -16,7 +16,7 @@
 #ifndef _CUT_AUTHENTICATE_
 
 #include "hctest.h"
-#include "hi_watchdog.h"
+#include "iot_watchdog.h"
 #include "hks_delete_test.h"
 #include "hks_api.h"
 #include "hks_param.h"
@@ -82,7 +82,7 @@ static void ExecHksDeleteTest001(void const *argument)
 static BOOL HksDeleteTestSetUp()
 {
     LiteTestPrint("setup\n");
-    hi_watchdog_disable();
+    IoTWatchDogDisable();
     osThreadId_t id;
     osThreadAttr_t attr;
     g_setPriority = osPriorityAboveNormal6;
@@ -106,7 +106,7 @@ static BOOL HksDeleteTestSetUp()
 static BOOL HksDeleteTestTearDown()
 {
     LiteTestPrint("tearDown\n");
-    hi_watchdog_enable();
+    IoTWatchDogEnable();
     return TRUE;
 }
 
