@@ -32,6 +32,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/miscservices:miscservices",
   "${ACTS_ROOT}/powermgr:powermgr",
   "${ACTS_ROOT}/startup:startup",
+  "${ACTS_ROOT}/sensors:sensor",
   "${ACTS_ROOT}/distributeddatamgr:distributeddatamgr",
 
   # "${ACTS_ROOT}/distributedschedule:distributedschedule",
