@@ -18,12 +18,14 @@ ohos_js_hap_suite("powermgr_battery_test") {
     ":powermgr_battery_js_assets",
     ":powermgr_battery_resources",
   ]
+
 #  shared_libraries = [
     #    "//third_party/giflib:libgif",
 #    "//third_party/libpng:libpng",
 #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsPowerMgrBatteryTest"
+
 #  part_name = "prebuilt_hap"
 #  subsystem_name = "xts"
 }

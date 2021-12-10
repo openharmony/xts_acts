@@ -18,12 +18,14 @@ ohos_js_hap_suite("audio_player_api_js_hap") {
     ":audio_player_api_js_assets",
     ":audio_player_api_resources",
   ]
+
 #  shared_libraries = [
     #    "//third_party/giflib:libgif",
 #    "//third_party/libpng:libpng",
 #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAudioPlayerApiJsTest"
+
 #  part_name = "prebuilt_hap"
 #  subsystem_name = "xts"
 }
