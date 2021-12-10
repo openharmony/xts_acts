@@ -22,7 +22,7 @@ hcpptest_suite("ActsUpdateTest") {
     "//base/update/ota_lite/hals",
     "//utils/native/lite/include",
   ]
-  deps = [ 
+  deps = [
     "$ohos_third_party_dir/mbedtls:mbedtls_static",
     "//base/update/ota_lite/frameworks/source:hota",
   ]

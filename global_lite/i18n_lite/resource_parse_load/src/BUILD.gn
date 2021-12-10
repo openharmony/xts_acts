@@ -15,7 +15,7 @@ import("//test/xts/tools/lite/build/suite_lite.gni")
 
 hcpptest_suite("ResourceParseLoadtest") {
   suite_name = "acts"
-  sources = [ 
+  sources = [
     "global_test.cpp",
     "hap_manager_test.cpp",
     "hap_parser_test.cpp",
@@ -28,7 +28,7 @@ hcpptest_suite("ResourceParseLoadtest") {
     "resource_manager_test.cpp",
     "string_utils_test.cpp",
     "test_common.cpp",
-   ]
+  ]
 
   include_dirs = [
     "//base/global/i18n_lite/interfaces/kits/i18n/include",
