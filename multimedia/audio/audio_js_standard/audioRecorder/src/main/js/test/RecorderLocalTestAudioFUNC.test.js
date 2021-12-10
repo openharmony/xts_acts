@@ -18,7 +18,6 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe('RecorderLocalTestAudioFUNC', function () {
     let audioRecorder = media.createAudioRecorder();
-    let isTimeOut = false;
     const BASIC_PATH = 'file:///data/accounts/account_0/appdata/recorder/'
     const END_STATE = 0;
     const PRE_STATE = 1;
@@ -29,8 +28,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     const RESET_STATE = 6;
     const RELEASE_STATE = 7;
     const ERROR_STATE = 8;
-    const RECORDER_TIME = 5000;
-    const TIME_OUT = 20000; // 20s
+    const RECORDER_TIME = 1000;
     const CHANNEL_ONE = 1;
     const CHANNEL_TWO = 2;
     const FORMAT_MP4 = 2;
@@ -65,7 +63,6 @@ describe('RecorderLocalTestAudioFUNC', function () {
     })
 
     beforeEach(function () {
-        isTimeOut = false;
         console.info('beforeEach case');
     })
 
@@ -111,6 +108,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
             case RELEASE_STATE:
                 console.info('case to release');
                 audioRecorder.release();
+                audioRecorder = undefined;
                 break;
             case ERROR_STATE:
                 console.info('case to wait error callback');
