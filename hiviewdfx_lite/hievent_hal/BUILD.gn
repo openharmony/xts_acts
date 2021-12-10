@@ -17,8 +17,8 @@ hctest_suite("ActsHieventLiteTest") {
   sources = [ "src/hievent_lite_test.c" ]
 
   include_dirs = [
-      "src",
-      "//base/hiviewdfx/hievent_lite/interfaces/native/innerkits",
+    "src",
+    "//base/hiviewdfx/hievent_lite/interfaces/native/innerkits",
   ]
 
   cflags = [ "-Wno-error" ]
