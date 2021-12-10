@@ -25,11 +25,6 @@ hctest_suite("ActsKitFwkApiTest") {
     "//third_party/mbedtls/include/",
     "//third_party/cJSON/",
     "//base/startup/syspara_lite/interfaces/kits/",
-
-    # dir for oem_auth_config.h and oem_auth_result_storage.h
     "//vendor/kitframework/include/",
   ]
-
-  # un-comment this Macro for token-persist-test
-  # defines = [ "TOKEN_PERSIST_TEST" ]
 }
