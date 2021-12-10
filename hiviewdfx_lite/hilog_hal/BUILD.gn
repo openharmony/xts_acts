@@ -14,9 +14,7 @@
 import("//test/xts/tools/lite/build/suite_lite.gni")
 hctest_suite("ActsDfxFuncTest") {
     suite_name = "acts"
-    sources = [
-        "src/dfx_hilog.c",
-    ]
+    sources = [ "src/dfx_hilog.c" ]
 
     include_dirs = [
         "src",
@@ -25,7 +23,7 @@ hctest_suite("ActsDfxFuncTest") {
         "//base/hiviewdfx/hievent_lite/interfaces/native/innerkits",
         "//base/hiviewdfx/hilog_lite/frameworks/mini",
         "//vendor/hisi/hi3861/hi3861/include",
-        "//vendor/hisi/hi3861/hi3861/components/lwip_sack/include"
+        "//vendor/hisi/hi3861/hi3861/components/lwip_sack/include",
     ]
 
     cflags = [ "-Wno-error" ]

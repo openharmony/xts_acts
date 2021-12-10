@@ -14,9 +14,7 @@
 import("//test/xts/tools/lite/build/suite_lite.gni")
 hctest_suite("ActsHieventLiteTest") {
     suite_name = "acts"
-    sources = [
-        "src/hievent_lite_test.c",
-    ]
+    sources = [ "src/hievent_lite_test.c" ]
 
     include_dirs = [
         "src",

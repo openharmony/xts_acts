@@ -15,9 +15,7 @@ import("//test/xts/tools/lite/build/suite_lite.gni")
 
 hctest_suite("ActsBootstrapTest") {
   suite_name = "acts"
-  sources = [
-    "src/samgr_api_test.c"
-  ]
+  sources = [ "src/samgr_api_test.c" ]
 
   include_dirs = [
     "src",

@@ -27,9 +27,7 @@ config("hilogtest_config") {
 }
 ohos_moduletest_suite("ActsHiSysEventCPPTest") {
   module_out_path = module_output_path
-  sources = [
-    "HiSysEventCPPTest.cpp",
-  ]
+  sources = [ "HiSysEventCPPTest.cpp" ]
   deps = [
     "../../utils/native:utilskit",
     "//base/hiviewdfx/hilog/interfaces/native/innerkits:libhilog",

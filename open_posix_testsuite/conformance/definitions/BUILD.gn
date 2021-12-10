@@ -16,7 +16,8 @@ import("//test/xts/tools/lite/build/suite_lite.gni")
 open_source_suite("ActsOpenPosixBuildOnlyTest") {
   suite_name = "acts"
   exec_command_path = "//third_party/ltp/testcases/open_posix_testsuite/"
-  compiler = rebase_path("${ohos_build_compiler_dir}/bin/${ohos_build_compiler}")
+  compiler =
+      rebase_path("${ohos_build_compiler_dir}/bin/${ohos_build_compiler}")
   sysroot_path = rebase_path(ohos_current_sysroot)
   arch_cflags = string_join(" ", target_arch_cflags)
   prebuild_command = "make clean && make distclean && ./scripts/generate-makefiles.sh $compiler ${ohos_root_path} ${sysroot_path} \"${arch_cflags}\" && make -j -C conformance/definitions"
@@ -31,10 +32,10 @@ open_source_suite("ActsOpenPosixBuildOnlyTest") {
     "aio_h/logfile",
     "sched_h/logfile",
   ]
-  deps = [":install_patch"]
+  deps = [ ":install_patch" ]
 }
 
 build_ext_component("install_patch") {
-    exec_path = rebase_path(".", root_build_dir)
-    command = "./../../ltp-patch/patch.sh"
+  exec_path = rebase_path(".", root_build_dir)
+  command = "./../../ltp-patch/patch.sh"
 }

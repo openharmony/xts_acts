@@ -67,5 +67,6 @@ hcpptest_suite("ActsAiEngineTest") {
   ldflags = [
     "-lstdc++",
     "-ldl",
-    "-lpthread",]
+    "-lpthread",
+  ]
 }
