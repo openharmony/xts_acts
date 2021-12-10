@@ -24,7 +24,7 @@ ohos_js_hap_suite("wifi_standard_test") {
   #    "//third_party/libpng:libpng",
   #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "WifiJSApiTest"
+  hap_name = "ActsWifiJSApiTest"
 
   #  part_name = "prebuilt_hap"
   #  subsystem_name = "xts"

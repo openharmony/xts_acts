@@ -2,7 +2,7 @@
     "kits": [
         {
             "push": [
-                "DeviceAuthFunctionTest->/data/local/tmp/DeviceAuthFunctionTest"
+                "ActsDeviceAuthFunctionTest->/data/local/tmp/ActsDeviceAuthFunctionTest"
             ],
             "type": "PushKit"
         }

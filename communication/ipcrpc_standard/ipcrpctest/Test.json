@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "IpcRpcTest.hap",
+                "ActsIpcRpcTest.hap",
 				"IpcRpcService.hap"
             ],
             "type": "AppInstallKit",

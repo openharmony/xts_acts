@@ -29,7 +29,7 @@ config("module_private_config") {
 }
 
 ########################################################
-ohos_moduletest_suite("huks_std_function_test") {
+ohos_moduletest_suite("ActsHuksStdFunctionTest") {
   #subsystem_name = "acts"
   #part_name = "huks_standard"
   #module_output_path = subsystem_name + "/" + part_name
@@ -82,5 +82,5 @@ ohos_moduletest_suite("huks_std_function_test") {
 
 group("Huksstandardtest") {
   testonly = true
-  deps = [ ":huks_std_function_test" ]
+  deps = [ ":ActsHuksStdFunctionTest" ]
 }

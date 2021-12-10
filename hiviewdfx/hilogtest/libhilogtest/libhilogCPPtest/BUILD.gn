@@ -23,7 +23,7 @@ config("hilogtest_config") {
     "//base/hiviewdfx/hilog/interfaces/native/innerkits/include",
   ]
 }
-ohos_moduletest_suite("LibhilogCPPtest") {
+ohos_moduletest_suite("ActsLibhilogCPPTest") {
   module_out_path = module_output_path
   sources = [ "LibhilogCPPtest.cpp" ]
   deps = [

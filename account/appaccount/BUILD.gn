@@ -18,8 +18,8 @@ group("appaccount_hap") {
   if (is_standard_system) {
     deps = [
       "actsaccounttest:ActsAccountTest",
-      "actsgetallaccounts:ActsGetAllAccounts",
-      "actssetchecksyncenable:ActsSetCheckSyncEnable",
+      "actsgetallaccounts:ActsGetAllAccountsTest",
+      "actssetchecksyncenable:ActsSetCheckSyncEnableTest",
       "getallaccessibleaccounts:accessibleaccounts",
       "sceneProject:appaccount_scene",
     ]

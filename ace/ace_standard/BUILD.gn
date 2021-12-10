@@ -24,7 +24,7 @@ ohos_js_hap_suite("ace_standard_test") {
 #    "//third_party/libpng:libpng",
 #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ace_standard"
+  hap_name = "ActsAceStandardTest"
 #  part_name = "prebuilt_hap"
 #  subsystem_name = "xts"
 }

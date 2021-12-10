@@ -23,7 +23,7 @@ config("module_private_config") {
 }
 
 ##################################################################################
-ohos_moduletest_suite("PermissionKitFunctionCPPTest") {
+ohos_moduletest_suite("ActsPermissionKitCPPTest") {
   subsystem_name = "hits"
   part_name = "permission_standard"
   module_out_path = subsystem_name + "/" + part_name

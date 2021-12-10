@@ -19,7 +19,7 @@ ohos_js_hap_suite("NetworkSearchInformation") {
     ":hjs_demo_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "NetworkSearchInformation"
+  hap_name = "ActsNetworkSearchInformationTest"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "./entry/src/main/js/default"

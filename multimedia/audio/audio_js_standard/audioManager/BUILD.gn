@@ -23,7 +23,7 @@ ohos_js_hap_suite("audio_manager_js_hap") {
 #    "//third_party/libpng:libpng",
 #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "AudioManagerJsTest"
+  hap_name = "ActsAudioManagerJsTest"
 #  part_name = "prebuilt_hap"
 #  subsystem_name = "xts"
 }

@@ -15,13 +15,13 @@ group("hiviewdfxtestacts") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "faultloggertest/faultloggercpptest:faultloggertest",
-      "hiappeventtest/hiappeventjstest:hiappeventjstest",
-      "hicollietest/hicolliecpptest:HiCollieCppTest",
+      "faultloggertest/faultloggercpptest:ActsFaultLoggerTest",
+      "hiappeventtest/hiappeventjstest:ActsHiAppEventJsTest",
+      "hicollietest/hicolliecpptest:ActsHiCollieCppTest",
       "hilogtest/libhilogtest:libhilogtestacts",
-      "hisyseventtest/hisyseventcpptest:HiSysEventCPPTest",
-      "hitracetest/hitracecpptest:HitraceCPPtest",
-      "hitracetest/hitracectest:HitraceCtest",
+      "hisyseventtest/hisyseventcpptest:ActsHiSysEventCPPTest",
+      "hitracetest/hitracecpptest:ActsHitraceCPPTest",
+      "hitracetest/hitracectest:ActsHitraceCTest",
     ]
   }
 }

@@ -21,7 +21,7 @@ ohos_js_hap_suite("ipcrpcTest") {
 
   certificate_profile = "./signature/openharmony_sx.p7b"
 
-  hap_name = "IpcRpcTest"
+  hap_name = "ActsIpcRpcTest"
 }
 ohos_js_assets("ipcrpcTest_assets") {
   source_dir = "./entry/src/main/js/default"

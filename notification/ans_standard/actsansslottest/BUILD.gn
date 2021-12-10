@@ -17,17 +17,17 @@ group("ActsAnsSlotTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsansgetslotWithoutadd:ActsAnsGetSlotWithoutAdd",
-      "actsansgetslottestcallback:ActsAnsGetSlotTestCallback",
-      "actsansgetslottestpromise:ActsAnsGetSlotTestPromise",
+      "actsansgetslotWithoutadd:ActsAnsGetSlotWithoutAddTest",
+      "actsansgetslottestcallback:ActsAnsGetSlotTestCallbackTest",
+      "actsansgetslottestpromise:ActsAnsGetSlotTestPromiseTest",
       "actsansremoveslottest:ActsAnsRemoveSlotTest",
-      "actsansremoveslotwithoutadd:ActsAnsRemoveSlotWithoutAdd",
+      "actsansremoveslotwithoutadd:ActsAnsRemoveSlotWithoutAddTest",
 
-      #"actsansslotbybundle:ActsAnsSlotByBundle",
-      #"actsansaddslotsystem:ActsAnsAddSlotSystem",
-      #"actsansslotsystemcallback:ActsAnsSlotSystemCallback",
-      #"actsansslotsystempromise:ActsAnsSlotSystemPromise",
-      #"actsansslottaddremoveall:ActsAnsSlotAddRemoveAll",
+      #"actsansslotbybundle:ActsAnsSlotByBundleTest",
+      #"actsansaddslotsystem:ActsAnsAddSlotSystemTest",
+      #"actsansslotsystemcallback:ActsAnsSlotSystemCallbackTest",
+      #"actsansslotsystempromise:ActsAnsSlotSystemPromiseTest",
+      #"actsansslottaddremoveall:ActsAnsSlotAddRemoveAllTest",
     ]
   }
 }

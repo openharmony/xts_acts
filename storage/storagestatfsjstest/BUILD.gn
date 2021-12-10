@@ -24,7 +24,7 @@ ohos_js_hap_suite("storagestatfs_js_test") {
   #    "//third_party/libpng:libpng",
   #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "Storagestatfsjstest"
+  hap_name = "ActsStorageStatfsJsTest"
 
   #  part_name = "prebuilt_hap"
   #  subsystem_name = "xts"

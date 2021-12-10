@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "storagefilestabilityjstest.hap"
+                "ActsStorageFileStabilityJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

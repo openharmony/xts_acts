@@ -17,8 +17,8 @@ group("verifypermission") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "AmsJsStMain:AmsJsStMain",
-      "AmsJsStSubPermission:AmsJsStSubPermission",
+      "AmsJsStMain:ActsAmsJsStMainTest",
+      "AmsJsStSubPermission:ActsAmsJsStSubPermissionTest",
     ]
   }
 }

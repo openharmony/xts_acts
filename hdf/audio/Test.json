@@ -2,7 +2,7 @@
     "kits": [
         {
             "push": [
-                "hdf_xtstest_audio->/data/local/tmp/hdf_xtstest_audio"
+                "ActsHdfXtstestAudioTest->/data/local/tmp/ActsHdfXtstestAudioTest"
             ],
             "type": "PushKit"
         }

@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-				"IpcRpcService.hap"
+				"ActsIpcRpcServiceTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

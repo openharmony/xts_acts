@@ -19,7 +19,7 @@ ohos_js_hap_suite("NetworkSearchSelectionMoce") {
     ":hjs_demo_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "NetworkSearchSelectionMoce"
+  hap_name = "ActsNetworkSearchSelectionMoceTest"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "./entry/src/main/js/default"

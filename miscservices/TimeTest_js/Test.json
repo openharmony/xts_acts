@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "TimeJSApiTest.hap"
+                "ActsTimeJSApiTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "amsStServiceAbilityClient.hap",
+                "ActsAmsStServiceAbilityClientTest.hap",
                 "amsStServiceAilityServer.hap"
             ],
             "type": "AppInstallKit",

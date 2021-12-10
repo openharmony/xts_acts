@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "storagefileioperformancejstest.hap"
+                "ActsStorageFileIoPerformanceJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

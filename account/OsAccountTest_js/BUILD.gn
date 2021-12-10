@@ -12,7 +12,7 @@
 # limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
-ohos_js_hap_suite("osaccount_js_test") {
+ohos_js_hap_suite("ActsOsAccountJSApiTest") {
   hap_profile = "./src/main/config.json"
   deps = [
     ":osaccount_js_assets",
@@ -23,7 +23,7 @@ ohos_js_hap_suite("osaccount_js_test") {
 #    "//third_party/libpng:libpng",
 #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "OsAccountJSApiTest"
+  hap_name = "ActsOsAccountJSApiTest"
 #  part_name = "prebuilt_hap"
 #  subsystem_name = "xts"
 }

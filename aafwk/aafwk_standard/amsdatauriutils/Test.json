@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "amsDataUriUtils.hap"
+                "ActsAmsDataUriUtilsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

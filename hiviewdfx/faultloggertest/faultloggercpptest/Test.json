@@ -2,7 +2,7 @@
     "kits": [
         {
             "push": [
-                "faultloggertest->/data/local/tmp/faultloggertest"
+                "ActsFaultLoggerTest->/data/local/tmp/ActsFaultLoggerTest"
             ],
             "type": "PushKit"
         }

@@ -16,7 +16,7 @@ import("//test/xts/tools/build/suite.gni")
 #SUBSYSTEM_DIR = "//base/global"
 module_output_path = "hit/global"
 
-ohos_moduletest_suite("ZoneUtiltest") {
+ohos_moduletest_suite("ActsZoneUtilTest") {
   module_out_path = module_output_path
 
   sources = [

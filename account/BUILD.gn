@@ -16,7 +16,7 @@ group("account") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "OsAccountTest_js:osaccount_js_test",
+      "OsAccountTest_js:ActsOsAccountJSApiTest",
       "appaccount:appaccount_hap",
     ]
   } else {

@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsGetAllAccessibleMultiple.hap",
+                "ActsGetAllAccessibleMultipleTest.hap",
                 "ActsAccountAccessibleFirst.hap",
                 "ActsAccountAccessibleSecond.hap"
             ],

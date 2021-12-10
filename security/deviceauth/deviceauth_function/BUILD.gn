@@ -24,7 +24,7 @@ config("module_private_config") {
 }
 
 ########################################################
-ohos_moduletest_suite("DeviceAuthFunctionTest") {
+ohos_moduletest_suite("ActsDeviceAuthFunctionTest") {
   configs = [ ":module_private_config" ]
   cflags_cc = [ "-DHILOG_ENABLE" ]
   defines = [ "_STANDARD_SYSTEM_" ]

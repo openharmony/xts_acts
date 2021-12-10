@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ace_standard.hap"
+                "ActsAceStandardTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

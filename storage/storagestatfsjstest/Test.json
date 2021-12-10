@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "Storagestatfsjstest.hap"
+                "ActsStorageStatfsJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
