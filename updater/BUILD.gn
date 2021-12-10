@@ -16,6 +16,6 @@ import("//build/ohos_var.gni")
 group("update") {
   testonly = true
   if (is_standard_system) {
-     deps = [ "update_test:update_js_test" ]
+    deps = [ "update_test:update_js_test" ]
   }
 }

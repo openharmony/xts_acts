@@ -88,7 +88,6 @@ ohos_moduletest_suite("PermissionKitCPPTest") {
 
   sources = [
     "src/PermissionKitFunctionCPPTest.cpp",
-
     # "src/PermissionKitPerformanceCPPTest.cpp",
     # "src/PermissionKitReliabilityCPPTest.cpp",
   ]

@@ -16,6 +16,6 @@ import("//build/ohos_var.gni")
 group("startup") {
   testonly = true
   if (is_standard_system) {
-     deps = [ "startup_standard:startup_js_test" ]
+    deps = [ "startup_standard:startup_js_test" ]
   }
 }
