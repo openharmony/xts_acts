@@ -30,10 +30,6 @@ config("module_private_config") {
 
 ########################################################
 ohos_moduletest_suite("ActsHuksStdFunctionTest") {
-  #subsystem_name = "acts"
-  #part_name = "huks_standard"
-  #module_output_path = subsystem_name + "/" + part_name
-  #module_output_path  = module_output_path
   configs = [ ":module_private_config" ]
   cflags_cc = [ "-DHILOG_ENABLE" ]
   defines = [ "_STANDARD_SYSTEM_" ]
