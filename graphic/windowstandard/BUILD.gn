@@ -25,6 +25,7 @@ ohos_js_hap_suite("window_hap_test") {
   #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsWindowHapTest"
+
   #  part_name = "prebuilt_hap"
   #  subsystem_name = "xts"
 }
