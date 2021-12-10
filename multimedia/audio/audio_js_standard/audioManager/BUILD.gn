@@ -19,15 +19,15 @@ ohos_js_hap_suite("audio_manager_js_hap") {
     ":audio_manager_resources",
   ]
 
-#  shared_libraries = [
-    #    "//third_party/giflib:libgif",
-#    "//third_party/libpng:libpng",
-#  ]
+  #  shared_libraries = [
+  #    "//third_party/giflib:libgif",
+  #    "//third_party/libpng:libpng",
+  #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAudioManagerJsTest"
 
-#  part_name = "prebuilt_hap"
-#  subsystem_name = "xts"
+  #  part_name = "prebuilt_hap"
+  #  subsystem_name = "xts"
 }
 ohos_js_assets("audio_manager_js_assets") {
   source_dir = "./src/main/js/default"

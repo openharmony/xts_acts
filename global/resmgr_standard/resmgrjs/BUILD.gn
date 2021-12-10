@@ -19,15 +19,15 @@ ohos_js_hap_suite("resmgrjs_test") {
     ":resmgrjs_resources",
   ]
 
-#  shared_libraries = [
-    #    "//third_party/giflib:libgif",
-#    "//third_party/libpng:libpng",
-#  ]
+  #  shared_libraries = [
+  #    "//third_party/giflib:libgif",
+  #    "//third_party/libpng:libpng",
+  #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsResMgrJsTest"
 
-#  part_name = "prebuilt_hap"
-#  subsystem_name = "xts"
+  #  part_name = "prebuilt_hap"
+  #  subsystem_name = "xts"
 }
 ohos_js_assets("resmgrjs_assets") {
   source_dir = "./src/main/js/default"
