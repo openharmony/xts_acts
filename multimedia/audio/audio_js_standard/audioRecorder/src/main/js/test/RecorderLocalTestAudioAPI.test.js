@@ -18,7 +18,6 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe('RecorderLocalTestAudioAPI', function () {
     let audioRecorder = media.createAudioRecorder();
-    let isTimeOut = false;
     const END_STATE = 0;
     const PRE_STATE = 1;
     const START_STATE = 2;
@@ -28,11 +27,11 @@ describe('RecorderLocalTestAudioAPI', function () {
     const RESET_STATE = 6;
     const RELEASE_STATE = 7;
     const ERROR_STATE = 8;
-    const TIME_OUT = 15000; // 15s
     const FORMAT_M4A = 6;
     const SOURCE_TYPE = 1;
     const ENCORDER_AACLC = 3;
     const CHANNEL_TWO = 2;
+    const RECORDER_TIME = 1000;
     let audioConfig = {
         audioSourceType : SOURCE_TYPE,
         audioEncoder : ENCORDER_AACLC,
@@ -43,6 +42,10 @@ describe('RecorderLocalTestAudioAPI', function () {
         uri : 'file:///data/accounts/account_0/appdata/recorder/testAPI.m4a',
         location : { latitude : 1, longitude : 1 },
     }
+
+    function sleep(time) {
+        for(let t = Date.now();Date.now() - t <= time;);
+    };
 
     function initAudioRecorder() {
         if (typeof (audioRecorder) != 'undefined') {
@@ -86,6 +89,7 @@ describe('RecorderLocalTestAudioAPI', function () {
             case RELEASE_STATE:
                 console.info('case to release');
                 audioRecorder.release();
+                audioRecorder = undefined;
                 break;
             case ERROR_STATE:
                 console.info('case to wait error callback');
@@ -103,7 +107,7 @@ describe('RecorderLocalTestAudioAPI', function () {
         });
 
         audioRecorder.on('start', () => {
-            console.info('setCallback start() case callback is called');
+            console.info('setCallback start() case callback is called 111');
             sleep(RECORDER_TIME);
             mySteps.shift();
             nextStep(mySteps,done);
@@ -154,7 +158,6 @@ describe('RecorderLocalTestAudioAPI', function () {
     })
 
     beforeEach(function () {
-        isTimeOut = false;
         console.info('beforeEach case');
     })
 
@@ -586,6 +589,7 @@ describe('RecorderLocalTestAudioAPI', function () {
         let mySteps = new Array(RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.release();
+        audioRecorder = undefined;
     })
 
     /* *
