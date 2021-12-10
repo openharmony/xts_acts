@@ -19,12 +19,14 @@ ohos_js_hap_suite("ace_standard_test") {
     ":ace_js_assets",
     ":ace_resources",
   ]
+
 #  shared_libraries = [
     #    "//third_party/giflib:libgif",
 #    "//third_party/libpng:libpng",
 #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAceStandardTest"
+
 #  part_name = "prebuilt_hap"
 #  subsystem_name = "xts"
 }

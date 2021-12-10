@@ -19,7 +19,7 @@ ohos_js_hap_suite("sensor_js_test") {
     ":sensor_js_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "SensorJSApiTest"
+  hap_name = "ActsSensorJSApiTest"
 }
 ohos_js_assets("sensor_js_assets") {
   source_dir = "./src/main/js/default"
