@@ -12,15 +12,14 @@
 # limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
+
 ohos_js_hap_suite("ipcrpcTest") {
   hap_profile = "./entry/src/main/config.json"
   deps = [
     ":ipcrpcTest_assets",
     ":ipcrpcTest_resources",
   ]
-
   certificate_profile = "./signature/openharmony_sx.p7b"
-
   hap_name = "ActsIpcRpcTest"
 }
 ohos_js_assets("ipcrpcTest_assets") {

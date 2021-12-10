@@ -15,9 +15,7 @@ import("//test/xts/tools/lite/build/suite_lite.gni")
 
 hctest_suite("ActsKitFwkApiTest") {
   suite_name = "acts"
-
   sources = [ "kitfwk_oem_api_test.c" ]
-
   include_dirs = [
     "//test/xts/tools/lite/hctest/include",
     "//third_party/unity/src",
