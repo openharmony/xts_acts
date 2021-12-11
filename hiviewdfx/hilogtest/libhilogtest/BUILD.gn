@@ -14,8 +14,8 @@
 group("libhilogtestacts") {
   testonly = true
   deps = [
-    "hilogtest:hilogtest",
-    "libhilogCPPtest:LibhilogCPPtest",
-    "libhilogCtest:libhilogCtest",
+    "hilogtest:ActsHilogTest",
+    "libhilogCPPtest:ActsLibhilogCPPTest",
+    "libhilogCtest:ActsLibhilogCTest",
   ]
 }

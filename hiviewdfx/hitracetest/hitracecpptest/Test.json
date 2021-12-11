@@ -2,7 +2,7 @@
     "kits": [
         {
             "push": [
-                "HitraceCPPtest->/data/local/tmp/HitraceCPPtest"
+                "ActsHitraceCPPTest->/data/local/tmp/ActsHitraceCPPTest"
             ],
             "type": "PushKit",
             "post-push": [

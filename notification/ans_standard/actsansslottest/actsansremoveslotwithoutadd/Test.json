@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAnsRemoveSlotWithoutAdd.hap"
+                "ActsAnsRemoveSlotWithoutAddTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

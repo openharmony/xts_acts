@@ -2,7 +2,7 @@
     "kits": [
         {
             "push": [
-                "hdf_xtstest_wifi->/data/local/tmp/hdf_xtstest_wifi"
+                "ActsHdfXtstestWifiTest->/data/local/tmp/ActsHdfXtstestWifiTest"
             ],
             "type": "PushKit"
         }

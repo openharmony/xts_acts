@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "Powermgrbatterytest.hap"
+                "ActsPowerMgrBatteryTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

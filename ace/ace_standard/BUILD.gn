@@ -11,22 +11,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 import("//test/xts/tools/build/suite.gni")
+
 ohos_js_hap_suite("ace_standard_test") {
   hap_profile = "./src/main/config.json"
   deps = [
     ":ace_js_assets",
     ":ace_resources",
   ]
-#  shared_libraries = [
-    #    "//third_party/giflib:libgif",
-#    "//third_party/libpng:libpng",
-#  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ace_standard"
-#  part_name = "prebuilt_hap"
-#  subsystem_name = "xts"
+  hap_name = "ActsAceStandardTest"
 }
 ohos_js_assets("ace_js_assets") {
   source_dir = "./src/main/js/default"

@@ -2,7 +2,7 @@
     "kits": [
         {
             "push": [
-                "LibhilogCPPtest->/data/local/tmp/LibhilogCPPtest"
+                "ActsLibhilogCPPTest->/data/local/tmp/ActsLibhilogCPPTest"
             ],
             "type": "PushKit"
         }

@@ -2,7 +2,7 @@
     "kits": [
         {
             "push": [
-                "HiSysEventCPPTest->/data/local/tmp/HiSysEventCPPTest"
+                "ActsHiSysEventCPPTest->/data/local/tmp/ActsHiSysEventCPPTest"
             ],
             "type": "PushKit"
         }

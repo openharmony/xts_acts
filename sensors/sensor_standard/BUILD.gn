@@ -10,6 +10,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("sensor_js_test") {
@@ -19,7 +20,7 @@ ohos_js_hap_suite("sensor_js_test") {
     ":sensor_js_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "SensorJSApiTest"
+  hap_name = "ActsSensorJSApiTest"
 }
 ohos_js_assets("sensor_js_assets") {
   source_dir = "./src/main/js/default"

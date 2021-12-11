@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ClearMissionsPromise.hap",
+                "ActsClearMissionsPromiseTest.hap",
                 "verifyIAbility.hap"
             ],
             "type": "AppInstallKit",

@@ -2,7 +2,7 @@
     "kits": [
         {
             "push": [
-                "huks_std_function_test->/data/local/tmp/huks_std_function_test"
+                "ActsHuksStdFunctionTest->/data/local/tmp/ActsHuksStdFunctionTest"
             ],
             "type": "PushKit"
         }

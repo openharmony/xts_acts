@@ -2,7 +2,7 @@
     "kits": [
         {
             "push": [
-                "hilogtest->/data/local/tmp/hilogtest"
+                "ActsHilogTest->/data/local/tmp/ActsHilogTest"
             ],
             "type": "PushKit"
         }

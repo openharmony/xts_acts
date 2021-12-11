@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsSetCheckSyncEnable.hap"
+                "ActsSetCheckSyncEnableTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

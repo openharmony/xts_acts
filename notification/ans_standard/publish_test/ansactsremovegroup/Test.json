@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAnsRemoveGroup.hap"
+                "ActsAnsRemoveGroupTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

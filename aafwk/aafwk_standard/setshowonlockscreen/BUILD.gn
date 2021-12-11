@@ -17,8 +17,8 @@ group("setshowonlockscreen") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "setshowonlock:setshowonlock",
-      "showsethown:showsethown",
+      "setshowonlock:ActsSetshowonlockTest",
+      "showsethown:ActsShowsethownTest",
     ]
   }
 }

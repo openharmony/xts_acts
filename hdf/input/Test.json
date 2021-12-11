@@ -2,7 +2,7 @@
     "kits": [
         {
             "push": [
-                "hdf_xtstest_input->/data/local/tmp/hdf_xtstest_input"
+                "ActsHdfXtstestInputTest->/data/local/tmp/ActsHdfXtstestInputTest"
             ],
             "type": "PushKit"
         }

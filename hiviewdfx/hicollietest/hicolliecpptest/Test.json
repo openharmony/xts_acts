@@ -2,7 +2,7 @@
     "kits": [
         {
             "push": [
-                "HiCollieCppTest->/data/local/tmp/HiCollieCppTest"
+                "ActsHiCollieCppTest->/data/local/tmp/ActsHiCollieCppTest"
             ],
             "type": "PushKit",
             "post-push": [

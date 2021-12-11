@@ -17,8 +17,8 @@ group("accessibleaccounts") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsgetallaccessibleaccounts:ActsGetAllAccessibleAccounts",
-      "actsgetallaccessiblemultiple:ActsGetAllAccessibleMultiple",
+      "actsgetallaccessibleaccounts:ActsGetAllAccessibleAccountsTest",
+      "actsgetallaccessiblemultiple:ActsGetAllAccessibleMultipleTest",
     ]
   }
 }

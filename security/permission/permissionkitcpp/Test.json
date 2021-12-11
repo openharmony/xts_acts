@@ -2,7 +2,7 @@
     "kits": [
         {
             "push": [
-                "PermissionKitCPPTest->/data/local/tmp/PermissionKitCPPTest"
+                "ActsPermissionKitCPPTest->/data/local/tmp/ActsPermissionKitCPPTest"
             ],
             "type": "PushKit",
             "post-push": [

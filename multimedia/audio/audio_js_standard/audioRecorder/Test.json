@@ -19,7 +19,7 @@
         },
         {
             "test-file-name": [
-                "AudioRecorderJsTest.hap"
+                "ActsAudioRecorderJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

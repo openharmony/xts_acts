@@ -40,7 +40,7 @@ DEVICEAUTH_BASIC_DEPS_CPP_SOURCE = [
   "${DEVICEAUTH_BASIC_DEPS_CPP_DIR}/hc_file_common.cpp",
 ]
 
-ohos_moduletest_suite("DeviceAuthBasicDepsTest") {
+ohos_moduletest_suite("ActsDeviceAuthBasicDepsTest") {
   configs = [ ":module_private_config" ]
 
   cflags_cc = [

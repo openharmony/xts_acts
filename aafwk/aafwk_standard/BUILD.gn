@@ -18,24 +18,24 @@ group("aafwk_standard") {
   if (is_standard_system) {
     deps = [
       "abilitymanager:actsabilitymanagertest",
-      "amsabilitymanager/amsMissionSnapshotTest:amsMissionSnapshotTest",
+      "amsabilitymanager/amsMissionSnapshotTest:ActsAmsMissionSnapshotTest",
       "amsabilitymanager/amsMissionSnapshotTestSingleton:amsMissionSnapshotTestSingleton",
       "amsabilitymanager/amsMissionSnapshotTestSingletonS:amsMissionSnapshotTestSingletonS",
-      "amsdatauriutils:amsDataUriUtils",
-      "amszipfileunzipfilest:amsZipfileUnzipfileST",
+      "amsdatauriutils:ActsAmsDataUriUtilsTest",
+      "amszipfileunzipfilest:ActsAmsZipfileUnzipfileSTest",
       "context:context",
       "featureability:featureability",
       "formmanager:formmanager",
 
-      #"fwkdataaccessor:FWKDataAccessor",
+      #"fwkdataaccessor:ActsFWKDataAccessorTest",
 
       #"serviceability/actsparticleabilitytest:ActsParticleAbilityTest",
       "serviceability/sceneProject/particlestartability:ParticleStartAbility",
       "serviceability/sceneProject/particletestserver:ParticleTestServer",
 
-      #"serviceability/stserviceabilityclient:amsStServiceAbilityClient",
+      #"serviceability/stserviceabilityclient:ActsAmsStServiceAbilityClientTest",
       "serviceability/stserviceabilityserver:amsStServiceAilityServer",
-      "serviceability/stserviceabilityserversecond:amsStServiceAilityServerSecond",
+      "serviceability/stserviceabilityserversecond:ActsAmsStServiceAilityServerSecondTest",
       "setshowonlockscreen:setshowonlockscreen",
 
       #"verifypermission:verifypermission",

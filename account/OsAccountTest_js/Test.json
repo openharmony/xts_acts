@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "OsAccountJSApiTest.hap"
+                "ActsOsAccountJSApiTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

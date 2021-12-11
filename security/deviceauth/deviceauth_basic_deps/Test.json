@@ -2,7 +2,7 @@
     "kits": [
         {
             "push": [
-                "DeviceAuthBasicDepsTest->/data/local/tmp/DeviceAuthBasicDepsTest"
+                "ActsDeviceAuthBasicDepsTest->/data/local/tmp/ActsDeviceAuthBasicDepsTest"
             ],
             "type": "PushKit"
         }

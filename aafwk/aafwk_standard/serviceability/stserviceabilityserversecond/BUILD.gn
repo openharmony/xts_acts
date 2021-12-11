@@ -13,9 +13,9 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap("amsStServiceAilityServerSecond") {
+ohos_hap("ActsAmsStServiceAilityServerSecondTest") {
   hap_profile = "./entry/src/main/config.json"
-  hap_name = "amsStServiceAilityServerSecond"
+  hap_name = "ActsAmsStServiceAilityServerSecondTest"
   subsystem_name = XTS_SUITENAME
   final_hap_path =
       "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"

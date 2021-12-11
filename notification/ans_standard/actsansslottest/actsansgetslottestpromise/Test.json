@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAnsGetSlotTestPromise.hap"
+                "ActsAnsGetSlotTestPromiseTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

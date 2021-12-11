@@ -16,7 +16,7 @@ import("//drivers/adapter/uhdf2/uhdf.gni")
 import("//test/xts/tools/build/suite.gni")
 
 module_output_path = "hdf/sensor"
-ohos_moduletest_suite("hdf_xtstest_sensor") {
+ohos_moduletest_suite("ActsHdfXtstestSensorTest") {
   module_out_path = module_output_path
   include_dirs = []
 

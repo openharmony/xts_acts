@@ -16,5 +16,5 @@ group("powermgr") {
 
   if (is_standard_system) {
     deps = [ "powermgrbattery:powermgr_battery_test" ]
-  } 
+  }
 }
