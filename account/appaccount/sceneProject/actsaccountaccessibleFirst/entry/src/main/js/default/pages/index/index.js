@@ -38,10 +38,20 @@ export default {
                     console.debug("====>add second account err:" + JSON.stringify(err));
                     appAccountManager.enableAppAccess("account_name_scene_first_second", enableBundle, (err)=>{
                         console.debug("====>enableAppAccess second account err:" + JSON.stringify(err));
-                        featureAbility.terminateSelf(
-                            (err, data)=>{
-                                console.debug('====>Terminate Ability Success====')
-                        });
+                        console.debug("====>startAbility second start====");
+                        featureAbility.startAbility(
+                            {
+                                want:
+                                {
+                                    deviceId: "",
+                                    bundleName: "com.example.actsaccountaccessiblesecond",
+                                    abilityName: "com.example.actsaccountaccessiblesecond.MainAbility",
+                                    action: "action1",
+                                    parameters:
+                                    {},
+                                },
+                            }
+                        );
                     })
                 })
             })  

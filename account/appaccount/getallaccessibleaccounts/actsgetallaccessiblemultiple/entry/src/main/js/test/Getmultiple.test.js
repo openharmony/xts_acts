@@ -16,10 +16,10 @@ import account from '@ohos.account.appAccount'
 import featureAbility from '@ohos.ability.featureability'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-const TIMEOUT = 3000;
+const TIMEOUT = 5000;
 describe('ActsGetAllAccessibleMultiple', function () {
     beforeAll(async function (done) {
-        console.debug("====>startAbility first 0100 start====");
+        console.debug("====>startAbility first start====");
         await featureAbility.startAbility(
             {
                 want:
@@ -33,8 +33,16 @@ describe('ActsGetAllAccessibleMultiple', function () {
                 },
             },
         );
-        setTimeout(done(), 5000);
+        sleep(TIMEOUT);
+        done();
     });
+
+    function sleep(delay) {
+        var start = (new Date()).getTime();
+        while((new Date()).getTime() - start < delay) {
+            continue;
+        }
+    }
 
     /*
      * @tc.number    : ActsGetAllAccessibleMultiple_0100
@@ -44,6 +52,7 @@ describe('ActsGetAllAccessibleMultiple', function () {
      */
     it('ActsGetAllAccessibleMultiple_0100', 0, async function (done) {
         console.debug("====>ActsGetAllAccessibleMultiple_0100 start====");
+        let dataMap = new Map();
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat finish====");
         console.debug("====>add first account 0100 start====");
@@ -52,59 +61,68 @@ describe('ActsGetAllAccessibleMultiple', function () {
         await appAccountManager.addAccount("accessibleAccount_this_application_second");
         console.debug("====>add third account 0100 start====");
         await appAccountManager.addAccount("accessibleAccount_this_application_third");
-        console.debug("====>startAbility second 0100 start====");
-        await featureAbility.startAbility(
-            {
-                want:
-                {
-                    deviceId: "",
-                    bundleName: "com.example.actsaccountaccessiblesecond",
-                    abilityName: "com.example.actsaccountaccessiblesecond.MainAbility",
-                    action: "action1",
-                    parameters:
-                    {},
-                },
-            }
-        );
-        setTimeout(async function(){
-            console.debug("====>getAllAccessibleAccounts 0100 start====");
-            try{
-                var data = await appAccountManager.getAllAccessibleAccounts();
-            }
-            catch(err){
-                console.error("====>getAllAccessibleAccounts 0100 fail err:" + JSON.stringify(err));
-                expect().assertFail();
-                done();
-            }
-            console.debug("====>getAllAccessibleAccounts 0100 data:" + JSON.stringify(data));
-            expect(data.length).assertEqual(7);
-            try{
-                expect(data[0].name).assertEqual("account_name_scene_first_first");
-                expect(data[0].owner).assertEqual("com.example.actsaccountaccessiblefirst");
-                expect(data[1].name).assertEqual("account_name_scene_first_second");
-                expect(data[1].owner).assertEqual("com.example.actsaccountaccessiblefirst");
-                expect(data[2].name).assertEqual("account_name_scene_second_first");
-                expect(data[2].owner).assertEqual("com.example.actsaccountaccessiblesecond");
-                expect(data[3].name).assertEqual("account_name_scene_second_second");
-                expect(data[3].owner).assertEqual("com.example.actsaccountaccessiblesecond");
-                expect(data[4].name).assertEqual("accessibleAccount_this_application_first");
-                expect(data[4].owner).assertEqual("com.example.actsgetallaccessiblemultiple");
-                expect(data[5].name).assertEqual("accessibleAccount_this_application_second");
-                expect(data[5].owner).assertEqual("com.example.actsgetallaccessiblemultiple");
-                expect(data[6].name).assertEqual("accessibleAccount_this_application_third");
-                expect(data[6].owner).assertEqual("com.example.actsgetallaccessiblemultiple");
-            }
-            catch(err){
-                console.error("====>check data 0100 fail err:" + JSON.stringify(err));
-                expect().assertFail();
-                done();
-            }
-            console.debug("====>delete account 0100 start====");
-            await appAccountManager.deleteAccount("accessibleAccount_this_application_first");
-            await appAccountManager.deleteAccount("accessibleAccount_this_application_second");
-            await appAccountManager.deleteAccount("accessibleAccount_this_application_third");
-            console.debug("====>ActsGetAllAccessibleAccounts_0100 end====");
+        console.debug("====>getAllAccessibleAccounts 0100 start====");
+        try{
+            var data = await appAccountManager.getAllAccessibleAccounts();
+        }
+        catch(err){
+            console.error("====>getAllAccessibleAccounts 0100 fail err:" + JSON.stringify(err));
+            expect().assertFail();
             done();
-        }, TIMEOUT);
+        }
+        console.debug("====>getAllAccessibleAccounts 0100 data:" + JSON.stringify(data));
+        expect(data.length).assertEqual(7);
+        console.debug("====>data.length:" + data.length);
+        for (let i = 0, len = data.length; i < len; i++) {
+            dataMap.set(data[i].name, data[i].owner)
+        }
+        expect(dataMap.has("account_name_scene_first_first")).assertTrue();
+        if (dataMap.has("account_name_scene_first_first")) {
+            let data = dataMap.get("account_name_scene_first_first");
+            console.debug("====>first account owner is: " + data);
+            expect(data).assertEqual("com.example.actsaccountaccessiblefirst");
+        }
+        expect(dataMap.has("account_name_scene_first_second")).assertTrue();
+        if (dataMap.has("account_name_scene_first_second")) {
+            let data = dataMap.get("account_name_scene_first_second");
+            console.debug("====>second account owner is: " + data);
+            expect(data).assertEqual("com.example.actsaccountaccessiblefirst");
+        }
+        expect(dataMap.has("account_name_scene_second_first")).assertTrue();
+        if (dataMap.has("account_name_scene_second_first")) {
+            let data = dataMap.get("account_name_scene_second_first");
+            console.debug("====>third account owner is: " + data);
+            expect(data).assertEqual("com.example.actsaccountaccessiblesecond");
+        }
+        expect(dataMap.has("account_name_scene_second_second")).assertTrue();
+        if (dataMap.has("account_name_scene_second_second")) {
+            let data = dataMap.get("account_name_scene_second_second");
+            console.debug("====>fourth account owner is: " + data);
+            expect(data).assertEqual("com.example.actsaccountaccessiblesecond");
+        }
+        expect(dataMap.has("accessibleAccount_this_application_first")).assertTrue();
+        if (dataMap.has("accessibleAccount_this_application_first")) {
+            let data = dataMap.get("accessibleAccount_this_application_first");
+            console.debug("====>fifth account owner is: " + data);
+            expect(data).assertEqual("com.example.actsgetallaccessiblemultiple");
+        }
+        expect(dataMap.has("accessibleAccount_this_application_second")).assertTrue();
+        if (dataMap.has("accessibleAccount_this_application_second")) {
+            let data = dataMap.get("accessibleAccount_this_application_second");
+            console.debug("====>sixth account owner is: " + data);
+            expect(data).assertEqual("com.example.actsgetallaccessiblemultiple");
+        }
+        expect(dataMap.has("accessibleAccount_this_application_third")).assertTrue();
+        if (dataMap.has("accessibleAccount_this_application_third")) {
+            let data = dataMap.get("accessibleAccount_this_application_third");
+            console.debug("====>seventh account owner is: " + data);
+            expect(data).assertEqual("com.example.actsgetallaccessiblemultiple");
+        }
+        console.debug("====>delete account start====");
+        await appAccountManager.deleteAccount("accessibleAccount_this_application_first");
+        await appAccountManager.deleteAccount("accessibleAccount_this_application_second");
+        await appAccountManager.deleteAccount("accessibleAccount_this_application_third");
+        console.debug("====>ActsGetAllAccessibleAccounts_0100 end====");
+        done();
     });
 })

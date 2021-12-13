@@ -24,6 +24,13 @@ export default {
         this.title = "scene accessible second application";
     },
     onShow() {
+        function sleep(delay) {
+            var start = (new Date()).getTime();
+            while((new Date()).getTime() - start < delay) {
+                continue;
+            }
+        }
+
         console.debug('====>scene accessible second application start====');
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat second scene manager finish====");
@@ -37,6 +44,7 @@ export default {
                     console.debug("====>add second account err:" + JSON.stringify(err));
                     appAccountManager.enableAppAccess("account_name_scene_second_second", enableBundle, (err)=>{
                         console.debug("====>enableAppAccess second account err:" + JSON.stringify(err));
+                        sleep(3000);
                         featureAbility.terminateSelf(
                             (err, data)=>{
                                 console.debug('====>Terminate Ability Success====')
