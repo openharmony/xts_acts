@@ -69,8 +69,7 @@ HWTEST_F(LibhilogCtest, HILOG_INFO, Function|MediumTest|Level2)
     "%{private}lf,%{public}.2f,%s,%{private}c", i, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"I 03e00/testtag0testtag0testtag0testta: \
 123456789_1234567890_publicandprivatelogtestis:1,<private>,2.33,<private>,<private>"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
     std::cout<<"cmdRunResult = " + cmdRunResult<<std::endl;
     std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
@@ -90,8 +89,9 @@ HWTEST_F(LibhilogCtest, HILOG_DEBUG, Function|MediumTest|Level1)
     "%{public}.2f,%s,%{private}c", i, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"D 03e00/testtag0testtag0testtag0testta: \
 123456789_1234567890_publicandprivatelogtestis:1,<private>,2.33,<private>,<private>"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -109,8 +109,9 @@ HWTEST_F(LibhilogCtest, HILOG_WARNING, Function|MediumTest|Level2)
     "%{private}lf,%{public}.2f,%s,%{private}c", i, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"W 03e00/testtag0testtag0testtag0testta: \
 123456789_1234567890_publicandprivatelogtestis:1,<private>,2.33,<private>,<private>"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -128,8 +129,9 @@ HWTEST_F(LibhilogCtest, HILOG_ERROR, Function|MediumTest|Level2)
     "%{public}.2f,%s,%{private}c", i, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"E 03e00/testtag0testtag0testtag0testta: \
 123456789_1234567890_publicandprivatelogtestis:1,<private>,2.33,<private>,<private>"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -147,8 +149,9 @@ HWTEST_F(LibhilogCtest, HILOG_FATAL, Function|MediumTest|Level2)
     "%{public}.2f,%s,%{private}c", i, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"F 03e00/testtag0testtag0testtag0testta: \
 123456789_1234567890_publicandprivatelogtestis:1,<private>,2.33,<private>,<private>"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -163,8 +166,9 @@ HWTEST_F(LibhilogCtest, HILOG_INTEGER, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "INTEGER:%{private}d,%{public}d,%d;", 1, 1, 1);
     std::string expected{"INTEGER:<private>,1,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -179,8 +183,9 @@ HWTEST_F(LibhilogCtest, HILOG_INTEGER_LONG, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "INTEGER_long:%{private}ld,%{public}ld,%ld;", 2147483647L, 2147483647L, 2147483647L);
     std::string expected{"INTEGER_long:<private>,2147483647,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -195,8 +200,9 @@ HWTEST_F(LibhilogCtest, HILOG_INTEGER_4, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "INTEGER_4:%{private}4d,%{public}4d,%4d;", 2000, 2000, 2000);
     std::string expected{"INTEGER_4:<private>,2000,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -211,8 +217,9 @@ HWTEST_F(LibhilogCtest, HILOG_INTEGER_SHORT, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "INTEGER_short:%{private}hd,%{public}hd,%hd;", (short)1024, (short)1024, (short)1024);
     std::string expected{"INTEGER_short:<private>,1024,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -227,8 +234,9 @@ HWTEST_F(LibhilogCtest, HILOG_INTEGER_UN, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "INTEGER_un:%{private}u,%{public}u,%u;", 2147483647u, 2147483647u, 2147483647u);
     std::string expected{"INTEGER_un:<private>,2147483647,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -243,8 +251,9 @@ HWTEST_F(LibhilogCtest, HILOG_INTEGER_LONG_UN, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "INTEGER_long_un:%{private}lu,%{public}lu,%lu;", 7483647lu, 2147483647lu, 2147483647lu);
     std::string expected{"INTEGER_long_un:<private>,2147483647,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -259,8 +268,9 @@ HWTEST_F(LibhilogCtest, HILOG_INTEGER_4_UN, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "INTEGER_4_un:%{private}4u,%{public}4u,%4u;", 4000u, 4000u, 4000u);
     std::string expected{"INTEGER_4_un:<private>,4000,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -276,8 +286,9 @@ HWTEST_F(LibhilogCtest, HILOG_INTEGER_SHORT_UN, Function|MediumTest|Level3)
     HILOG_FATAL(type, "INTEGER_short_un:%{private}hu,%{public}hu,%hu;",
     (unsigned short)65535, (unsigned short)65535, (unsigned short)65535);
     std::string expected{"INTEGER_short_un:<private>,65535,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -292,8 +303,9 @@ HWTEST_F(LibhilogCtest, HILOG_FLOAT, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "FLOAT:%{private}f,%{public}f,%f;", 1.01, 1.01, 1.01);
     std::string expected{"FLOAT:<private>,1.010000,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -308,8 +320,9 @@ HWTEST_F(LibhilogCtest, HILOG_FLOAT_LONG, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "FLOAT_long:%{private}lf,%{public}lf,%lf;", 2.147483647, 2.147483647, 2.147483647);
     std::string expected{"FLOAT_long:<private>,2.147484,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -326,8 +339,9 @@ HWTEST_F(LibhilogCtest, HILOG_FLOAT_POINT2, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "FLOAT_.2:%{private}.2f,%{public}.2f,%.2f;", 2.147483647, 2.147483647, 2.147483647);
     std::string expected{"FLOAT_.2:<private>,2.15,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -344,8 +358,9 @@ HWTEST_F(LibhilogCtest, HILOG_FLOAT_3POINT2, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "FLOAT_3.2:%{private}3.2f,%{public}4.1f,%2.6f;", 32.147483647, 321.147483647, 23.147483647);
     std::string expected{"FLOAT_3.2:<private>,321.1,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -360,8 +375,9 @@ HWTEST_F(LibhilogCtest, HILOG_CHAR, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "CHAR:%{private}c,%{public}c,%c;", 'a', 'b', 'c');
     std::string expected{"CHAR:<private>,b,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -376,8 +392,9 @@ HWTEST_F(LibhilogCtest, HILOG_OCTAL, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "OCTAL:%{private}o,%{public}o,%o;", 15, 16, 17);
     std::string expected{"OCTAL:<private>,20,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -392,8 +409,9 @@ HWTEST_F(LibhilogCtest, HILOG_OCTAL_LONG, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "OCTAL_long:%{private}lo,%{public}lo,%lo;", 022l, 023l, 024l);
     std::string expected{"OCTAL_long:<private>,23,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -408,8 +426,9 @@ HWTEST_F(LibhilogCtest, HILOG_HEX, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "HEX:%{private}x,%{public}x,%x;", 0x0F, 0x10, 0x11);
     std::string expected{"HEX:<private>,10,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -424,8 +443,9 @@ HWTEST_F(LibhilogCtest, HILOG_HEX_UPPER, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "HEX_#:%{private}#x,%{public}#x,%#x;", 0x12, 0x13, 0x14);
     std::string expected{"HEX_#:<private>,0x13,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -442,8 +462,9 @@ HWTEST_F(LibhilogCtest, HILOG_HEX_LONG, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "HEX_long:%{private}lx,%{public}lx,%lx;", 0x15l, 0x16l, 0x17l);
     std::string expected{"HEX_long:<private>,16,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -460,8 +481,9 @@ HWTEST_F(LibhilogCtest, HILOG_HEX_X, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "HEX_X:%{private}X,%{public}X,%X;", 0x18, 0x19, 0x1A);
     std::string expected{"HEX_X:<private>,19,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -478,8 +500,9 @@ HWTEST_F(LibhilogCtest, HILOG_HEX_UPPER_X, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "HEX_#X:%{private}#X,%{public}#X,%#X;", 0x1B, 0x1C, 0x1C);
     std::string expected{"HEX_#X:<private>,0X1C,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -496,8 +519,9 @@ HWTEST_F(LibhilogCtest, HILOG_HEX_LONG_UPPER_X, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "HEX_long_X:%{private}lX,%{public}lX,%lX;", 0x1El, 0x1Fl, 0x20l);
     std::string expected{"HEX_long_X:<private>,1F,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -512,8 +536,9 @@ HWTEST_F(LibhilogCtest, HILOG_STR, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "STRING:%{private}s,%{public}s,%s;", "STRING1", "STRING2", "STRING3");
     std::string expected{"STRING:<private>,STRING2,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -528,8 +553,9 @@ HWTEST_F(LibhilogCtest, HILOG_STR_EMPTY, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "STRING_empty:%{private}s,%{public}s,%s;", "", "", "");
     std::string expected{"STRING_empty:<private>,,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -545,8 +571,9 @@ HWTEST_F(LibhilogCtest, HILOG_STR_CHINESE, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "STRING_Chinese:%{private}s,%{public}s,%s;", "中文", "中文", "中文");
     std::string expected{"STRING_Chinese:<private>,中文,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -561,8 +588,9 @@ HWTEST_F(LibhilogCtest, HILOG_E_DOUBLE, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "DOUBLE_e:%{private}e,%{public}e,%e;", 1e-30, 2.231e10, 3.999e-13);
     std::string expected{"DOUBLE_e:<private>,2.231000e+10,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -579,8 +607,9 @@ HWTEST_F(LibhilogCtest, HILOG_E_UPPER_DOUBLE, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "DOUBLE_E:%{private}E,%{public}E,%E;", 4.88E2, 5.676767e-2, 6.17E13);
     std::string expected{"DOUBLE_E:<private>,5.676767E-02,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -597,8 +626,9 @@ HWTEST_F(LibhilogCtest, HILOG_E_AUTO, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "AUTO:%{private}g,%{public}g,%g;", 1e-30, 2.231e10, 3.999e-13);
     std::string expected{"AUTO:<private>,2.231e+10,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -615,8 +645,9 @@ HWTEST_F(LibhilogCtest, HILOG_E_UPPER_AUTO, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "AUTO_E:%{private}G,%{public}G,%G;", 4.88E2, 5.676767e-2, 6.17E13);
     std::string expected{"AUTO_E:<private>,0.0567677,<private>;"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -632,8 +663,9 @@ HWTEST_F(LibhilogCtest, HILOG_PRIVATE, Function|MediumTest|Level3)
     HILOG_FATAL(type, "private:%{private}d,%{private}lf,%{private}.2f,"
     "%{private}s,%{private}c", 1, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"private:<private>,<private>,<private>,<private>,<private>"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -649,8 +681,9 @@ HWTEST_F(LibhilogCtest, HILOG_PUBLIC, Function|MediumTest|Level3)
     HILOG_FATAL(type, "public:%{public}d,%{public}lf,%{public}.2f,%{public}s,%{public}c",
     1, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"public:1,1.000010,2.33,sse,a"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -665,8 +698,9 @@ HWTEST_F(LibhilogCtest, HILOG_NO_SIGN, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "no_sign:%d,%lf,%.2f,%s,%c", 1, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"no_sign:<private>,<private>,<private>,<private>,<private>"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -683,8 +717,9 @@ HWTEST_F(LibhilogCtest, HILOG_MIX, Function|MediumTest|Level3)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "MIX:%{public}d,%{private}lf,%{public}.2f,%s,%{private}c", 1, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"MIX:1,<private>,2.33,<private>,<private>"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -699,8 +734,9 @@ HWTEST_F(LibhilogCtest, TAG_CHECK, Function|MediumTest|Level2)
     LogType type = LOG_CORE;
     HILOG_FATAL(type, "MIX:%{public}d,%{private}lf,%{public}.2f,%s,%{private}c", 1, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"03e00/testtag0testtag0testtag0testta:"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -715,8 +751,9 @@ HWTEST_F(LibhilogCtest, TYPE_APP_CHECK, Function|MediumTest|Level2)
     LogType type = LOG_APP;
     HILOG_FATAL(type, "MIX:%{public}d,%{private}lf,%{public}.2f,%s,%{private}c", 1, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"03e00/testtag0testtag0testtag0testta:"};
-    sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testta", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testta", cmdRunResult);
+    std::cout<<cmdRunResult<<std::endl;
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -734,7 +771,8 @@ HWTEST_F(LibhilogCtest, TAG_OVER_CHECK, Function|MediumTest|Level2)
     HILOG_FATAL(type, "MIX:%{public}d,%{private}lf,%{public}.2f,%s,%{private}c", 1, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"03e00/testtag0testtag0testtag0testtag:"};
     sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testtag", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testtag", cmdRunResult);
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
 
@@ -752,6 +790,7 @@ HWTEST_F(LibhilogCtest, DOMAIN_CHECK, Function|MediumTest|Level1)
     HILOG_FATAL(type, "MIX:%{public}d,%{private}lf,%{public}.2f,%s,%{private}c", 1, 1.00001, 2.333333, "sse", 'a');
     std::string expected{"01111/testtag0testtag0testtag0testtag:"};
     sleep(1);
-    CmdRun("hilog -x| grep testtag0testtag0testtag0testtag", cmdRunResult);
+    CmdRun("timeout 3 hilog | grep testtag0testtag0testtag0testtag", cmdRunResult);
+    std::cout<<"expected = " + expected<<std::endl;
     ASSERT_TRUE(cmdRunResult.find(expected) != std::string::npos);
 }
