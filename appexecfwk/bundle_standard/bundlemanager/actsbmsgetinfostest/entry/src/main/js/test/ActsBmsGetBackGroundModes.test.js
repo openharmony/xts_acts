@@ -23,6 +23,11 @@ const BUNDLE_PATH4 = '/data/test/bmsThirdBundleTest4.hap';
 const BUNDLE_PATH5 = '/data/test/bmsThirdBundleTest5.hap';
 const BUNDLE_PATH6 = '/data/test/bmsThirdBundleTest6.hap';
 const BUNDLE_PATHUPDATE = '/data/test/bmsThirdBundleTestA1.hap';
+const BUNDLE_NAME1 = 'com.example.third1';
+const BUNDLE_NAME2 = 'com.example.third2';
+const BUNDLE_NAME4 = 'com.example.third4';
+const BUNDLE_NAME5 = 'com.example.third5';
+const BUNDLE_NAME6 = 'com.example.third6';
 const NUM_TWO = 2;
 const NUM_NINE = 9;
 let dataTransfer = 1;
@@ -62,7 +67,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                     entities: ['entity.system.home'],
                     elementName: {
                         deviceId: '0',
-                        bundleName: 'com.example.third5',
+                        bundleName: BUNDLE_NAME5,
                         abilityName: 'com.example.third5.AMainAbility',
                     },
                 }
@@ -75,7 +80,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                 expect(dataInfos[1].name).assertEqual("com.example.third5.BMainAbility");
                 expect(dataInfos[1].backgroundModes).assertEqual(dataTransfer + voip);
             }
-            installer.uninstall('com.example.third5', {
+            installer.uninstall(BUNDLE_NAME5, {
                 param: {
                     userId: 0,
                     installFlag: 1,
@@ -92,7 +97,7 @@ describe('ActsBmsGetBackGroundModes', function () {
 
     /*
     * @tc.number: bms_backGroundModes_0200
-    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant 
+    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant
     * @tc.desc: Get all background modes information, and each ability of the application
     *               contains one of the background mode
     */
@@ -116,7 +121,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                     entities: ['entity.system.home'],
                     elementName: {
                         deviceId: '0',
-                        bundleName: 'com.example.third6',
+                        bundleName: BUNDLE_NAME6,
                         abilityName: '',
                     },
                 }
@@ -127,7 +132,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                 console.info("==========dataInfos[i].backgroundModes=========" + dataInfos[i].backgroundModes);
                 console.info("==========dataInfos[1].name=========" + dataInfos[i].name);
             }
-            installer.uninstall('com.example.third6', {
+            installer.uninstall(BUNDLE_NAME6, {
                 param: {
                     userId: 0,
                     installFlag: 1,
@@ -144,8 +149,8 @@ describe('ActsBmsGetBackGroundModes', function () {
 
     /*
     * @tc.number: bms_backGroundModes_0300
-    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant 
-    * @tc.desc: Read the backgroundModes information of the app's ability and replace invalid attributes 
+    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant
+    * @tc.desc: Read the backgroundModes information of the app's ability and replace invalid attributes
     */
     it('bms_backGroundModes_0300', 0, async function (done) {
         console.info('=====================bms_backGroundModes_0300==================');
@@ -167,7 +172,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                     entities: ['entity.system.home'],
                     elementName: {
                         deviceId: '0',
-                        bundleName: 'com.example.third2',
+                        bundleName: BUNDLE_NAME2,
                         abilityName: 'com.example.third2.MainAbility',
                     },
                 }
@@ -178,7 +183,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                 expect(dataInfos[0].backgroundModes).assertEqual(audioPlayback + audioRecording + location
                     + bluetoothInteraction + multiDeviceConnection + wifiInteraction + voip + taskKeeping)
             }
-            installer.uninstall('com.example.third2', {
+            installer.uninstall(BUNDLE_NAME2, {
                 param: {
                     userId: 0,
                     installFlag: 1,
@@ -195,8 +200,8 @@ describe('ActsBmsGetBackGroundModes', function () {
 
     /*
     * @tc.number: bms_backGroundModes_0400
-    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant 
-    * @tc.desc: Read the backgroundModes information of the app's ability and replace invalid attributes 
+    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant
+    * @tc.desc: Read the backgroundModes information of the app's ability and replace invalid attributes
     */
     it('bms_backGroundModes_0400', 0, async function (done) {
         console.info('=====================bms_backGroundModes_0400==================');
@@ -218,7 +223,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                     entities: ['entity.system.home'],
                     elementName: {
                         deviceId: '0',
-                        bundleName: 'com.example.third4',
+                        bundleName: BUNDLE_NAME4,
                         abilityName: 'com.example.third4.MainAbility',
                     },
                 }
@@ -228,7 +233,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                 expect(dataInfos[0].name).assertEqual("com.example.third4.MainAbility")
                 expect(dataInfos[0].backgroundModes).assertEqual(0)
             }
-            installer.uninstall('com.example.third4', {
+            installer.uninstall(BUNDLE_NAME4, {
                 param: {
                     userId: 0,
                     installFlag: 1,
@@ -245,8 +250,8 @@ describe('ActsBmsGetBackGroundModes', function () {
 
     /*
     * @tc.number: bms_backGroundModes_0500
-    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant 
-    * @tc.desc: Get the backgroundModes information of the multi-hap package of the application 
+    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant
+    * @tc.desc: Get the backgroundModes information of the multi-hap package of the application
     */
     it('bms_backGroundModes_0500', 0, async function (done) {
         console.info('=====================bms_backGroundModes_0500==================');
@@ -268,8 +273,8 @@ describe('ActsBmsGetBackGroundModes', function () {
                     entities: ['entity.system.home'],
                     elementName: {
                         deviceId: '0',
-                        bundleName: 'com.example.third1',
-                        abilityName: 'com.example.third1.AMainAbility',
+                        bundleName: BUNDLE_NAME1,
+                        abilityName: 'com.example.third1.MainAbility',
                     },
                 }
             }, 0, 0)
@@ -280,7 +285,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                     location + bluetoothInteraction + multiDeviceConnection + wifiInteraction + voip + taskKeeping)
             }
             console.info("========dataInfos[0].backgroundModes=======>" + dataInfos[0].backgroundModes)
-            installer.uninstall('com.example.third1', {
+            installer.uninstall(BUNDLE_NAME1, {
                 param: {
                     userId: 0,
                     installFlag: 1,
@@ -298,7 +303,7 @@ describe('ActsBmsGetBackGroundModes', function () {
     /*
     * @tc.number: bms_backGroundModes_0600
     * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant
-    * @tc.desc: Get the backgroundModes information of the upgraded application's ability 
+    * @tc.desc: Get the backgroundModes information of the upgraded application's ability
     */
     it('bms_backGroundModes_0600', 0, async function (done) {
         console.info('=====================bms_backGroundModes_0600==================');
@@ -321,7 +326,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                     entities: ['entity.system.home'],
                     elementName: {
                         deviceId: '0',
-                        bundleName: 'com.example.third1',
+                        bundleName: BUNDLE_NAME1,
                         abilityName: 'com.example.third1.MainAbility',
                     },
                 }
@@ -348,8 +353,8 @@ describe('ActsBmsGetBackGroundModes', function () {
                         entities: ['entity.system.home'],
                         elementName: {
                             deviceId: '0',
-                            bundleName: 'com.example.third1',
-                            abilityName: 'com.example.third1.AMainAbility',
+                            bundleName: BUNDLE_NAME1,
+                            abilityName: 'com.example.third1.MainAbility',
                         },
                     }
                 }, 0, 0)
@@ -359,8 +364,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                     expect(dataInfos[0].backgroundModes).assertEqual(audioRecording + location + bluetoothInteraction +
                         multiDeviceConnection + wifiInteraction + voip + taskKeeping);
                 }
-                console.info("========dataInfos[0].backgroundModes=======>" + dataInfos[0].backgroundModes)
-                installer.uninstall('com.example.third1', {
+                installer.uninstall(BUNDLE_NAME1, {
                     param: {
                         userId: 0,
                         installFlag: 1,
@@ -373,6 +377,69 @@ describe('ActsBmsGetBackGroundModes', function () {
                     done();
                 });
             })
+        })
+    })
+
+    /*
+    * @tc.number: bms_backGroundModes_0700
+    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant
+    * @tc.desc: Uninstall the application, get the backgroundModes information of the upgraded application's ability
+    */
+    it('bms_backGroundModes_0700', 0, async function (done) {
+        console.info('=====================bms_backGroundModes_0700==================');
+        var bundlePath = [BUNDLE_PATH1]
+        var installer = await bundle.getBundleInstaller();
+        installer.install(bundlePath, {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
+            }
+        }, async (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual('SUCCESS');
+            var dataInfos = await bundle.queryAbilityByWant({
+                want: {
+                    action: 'action.system.home',
+                    entities: ['entity.system.home'],
+                    elementName: {
+                        deviceId: '0',
+                        bundleName: BUNDLE_NAME1,
+                        abilityName: 'com.example.third1.MainAbility'
+                    }
+                }
+            }, 0, 0)
+            expect(dataInfos.length).assertEqual(1);
+            if (dataInfos.length == 1) {
+                expect(dataInfos[0].name).assertEqual("com.example.third1.MainAbility")
+                expect(dataInfos[0].backgroundModes).assertEqual(dataTransfer + audioPlayback + audioRecording +
+                    location + bluetoothInteraction + multiDeviceConnection + wifiInteraction + voip + taskKeeping)
+            }
+            installer.uninstall(BUNDLE_NAME1, {
+                param: {
+                    userId: 0,
+                    installFlag: 1,
+                    isKeepData: false
+                }
+            }, async (err, data) => {
+                expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
+                expect(data.statusMessage).assertEqual('SUCCESS');
+                var dataInfos = await bundle.queryAbilityByWant({
+                    want: {
+                        action: 'action.system.home',
+                        entities: ['entity.system.home'],
+                        elementName: {
+                            deviceId: '0',
+                            bundleName: BUNDLE_NAME1,
+                            abilityName: 'com.example.third1.MainAbility'
+                        }
+                    }
+                }, 0, 0)
+                expect(dataInfos.length).assertEqual(0);
+                done();
+            });
         })
     })
 })

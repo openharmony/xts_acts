@@ -2,6 +2,7 @@
   "app": {
     "bundleName": "com.example.third1",
     "vendor": "example",
+    "singleUser":false,
     "version": {
       "code": 2,
       "name": "2.0"
@@ -12,7 +13,11 @@
       "releaseType": "Beta1"
     }
   },
-  "deviceConfig": {},
+  "deviceConfig": {
+    "default":{
+      "keepAlive":false
+    }
+  },
   "module": {
     "package": "com.example.third1.entry",
     "name": "com.example.third1.BmsThirdBundle1",
@@ -36,6 +41,15 @@
               "action.system.home"
             ]
           }
+        ],
+        "backgroundModes": [
+          "audioRecording",
+          "location",
+          "bluetoothInteraction",
+          "multiDeviceConnection",
+          "wifiInteraction",
+          "voip",
+          "taskKeeping"
         ],
         "name": "com.example.third1.AMainAbility",
         "icon": "$media:icon",

@@ -19,8 +19,7 @@ group("bundlemanager") {
     deps = [
       "actsbmsallshortcutinfotest:ActsBmsAllShortcutInfoTest",
       "actsbmscheckpermissiontest:ActsBmsCheckPermissionTest",
-
-      #"actsbmsgetinfostest:ActsBmsGetInfosTest",
+      "actsbmsgetinfostest:ActsBmsGetInfosTest",
       "actsbmshapmoduletest:ActsBmsHapModuleTest",
       "actsbmsjstest:ActsBmsJsTest",
       "actsbmskittest:ActsBmsKitTest",
@@ -29,7 +28,10 @@ group("bundlemanager") {
       "actsbundlemanagertest:ActsBundleManagerTest",
       "actsbundlemanageruninstall:ActsBundleManagerUninstallTest",
 
-      # "bmscheckpermissiontest:ActsBmsCheckPermissionTest",
+      # "bmscheckpermissiontest:ActsBmsCheckPermissionManualTest",
+      # "bmspermissionchangetest:ActsBmsPermissionChangeManualTest",
+
+      "sceneProject/bmsfirstrequestpermissions:FirstRequestPermissions",
       "sceneProject/bmsgetinfosfifthscene:bmsThirdBundleTest5",
       "sceneProject/bmsgetinfosfirstscene:bmsThirdBundleTest1",
       "sceneProject/bmsgetinfosfirstsceneupdate:bmsThirdBundleTestA1",
@@ -39,8 +41,7 @@ group("bundlemanager") {
       "sceneProject/bmsgetinfosscenesystem:bmsSystemBundleTest1",
       "sceneProject/bmsgetinfosscenevendor:bmsVendorBundleTest1",
       "sceneProject/bmsgetinfossecondscene:bmsThirdBundleTest2",
-
-      #"sceneProject/bmsgetinfossixthscene:bmsThirdBundleTest6",
+      "sceneProject/bmsgetinfossixthscene:bmsThirdBundleTest6",
       "sceneProject/bmsgetinfosthirdscene:bmsThirdBundleTest3",
       "sceneProject/bmsmainabilityfirstscene:bmsMainAbilityFirstScene",
       "sceneProject/bmsmainabilitysecondscene:bmsMainAbilitySecondScene",
@@ -53,6 +54,7 @@ group("bundlemanager") {
       "sceneProject/bmsscenesix:bmsJstest6",
       "sceneProject/bmsscenethree:bmsJstest3",
       "sceneProject/bmsscenetwo:bmsJstest2",
+      "sceneProject/bmssecondrequestpermissions:SecondRequestPermissions",
     ]
   }
 }

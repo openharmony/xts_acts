@@ -2,6 +2,7 @@
   "app": {
     "bundleName": "com.example.system1",
     "vendor": "example",
+    "singleUser":true,
     "version": {
       "code": 1,
       "name": "1.0"
@@ -12,7 +13,11 @@
       "releaseType": "Beta1"
     }
   },
-  "deviceConfig": {},
+  "deviceConfig": {
+    "default":{
+      "keepAlive":true
+    }
+  },
   "module": {
     "package": "com.example.system1",
     "name": ".BmsSystemBundle1",
@@ -44,8 +49,7 @@
         "type": "page",
         "forms": [
           {
-            "colorMode": "light",
-            "description": " JS1S Form",
+            "description": "JS1S Form",
             "supportDimensions": [ "1*2", "2*2", "2*4", "4*4"],
             "type": "JS",
             "jsComponentName": "JS_name1S",
@@ -59,11 +63,17 @@
             },
             "isDefault": true,
             "deepLink": "ability://com.example.myapplication.fa/.MainAbility",
-            "defaultDimension": "1*2",
+            "defaultDimension": "4*4",
             "name": "Form_JS1S",
-            "scheduledUpateTime": "21:55",
+            "scheduledUpdateTime": "10:30",
             "updateEnabled": true,
-            "updateDuration": 1
+            "updateDuration": 1,
+            "formConfigAbility": "ability://com.example.system1.MainAbility",
+            "src": "/pages/card/index",
+            "window": {
+              "designWidth": 770,
+              "autoDesignWidth": true
+            }
           }
         ],
         "launchType": "standard",

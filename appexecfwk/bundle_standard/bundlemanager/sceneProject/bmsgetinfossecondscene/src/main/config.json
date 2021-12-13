@@ -36,6 +36,17 @@
             ]
           }
         ],
+        "backgroundModes": [
+          "hello",
+          "audioPlayback",
+          "audioRecording",
+          "location",
+          "bluetoothInteraction",
+          "multiDeviceConnection",
+          "wifiInteraction",
+          "voip",
+          "taskKeeping"
+        ],
         "name": "com.example.third2.MainAbility",
         "srcLanguage": "js",
         "visible": true,
