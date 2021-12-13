@@ -273,7 +273,8 @@ export default {
             * @tc.number: bms_anyPermissionChange_0800
             * @tc.name: on(anyPermissionChange, callback) : register all permission change
             *           off(anyPermissionChange, callback) : unregister all permission change
-            * @tc.desc: 1.Register three any permission changes events to monitor the permission changes of all applications
+            * @tc.desc: 1.Register three any permission changes events to monitor the permission changes of
+            *               all applications
             *           2.Request permissions
             *           3.Unregister any permission changes without callback
             */
@@ -319,5 +320,3 @@ export default {
         })
     },
 }
-
-
