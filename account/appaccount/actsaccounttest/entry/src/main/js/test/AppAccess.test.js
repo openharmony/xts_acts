@@ -15,7 +15,7 @@
 import account from '@ohos.account.appAccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-const TIMEOUT = 1000;
+const TIMEOUT = 5000;
 const STRCOUNT = 1025;
 describe('ActsAccountAppAccess', function () {
     function sleep(delay) {

@@ -20,10 +20,10 @@ injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 
 export default {
     data: {
-        title: "测试getAllAccessibleAccounts接口"
+        title: "account pressure test"
     },
     onInit() {
-        this.title = "测试getAllAccessibleAccounts接口";
+        this.title = "account pressure test";
     },
     onShow() {
         console.info('onShow finish')
@@ -35,7 +35,7 @@ export default {
         core.init()
 
         const configService = core.getDefaultService('config')
-        this.timeout = 20000;
+        this.timeout = 150000;
         configService.setConfig(this)
 
         require('../../../test/List.test')
