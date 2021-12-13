@@ -130,7 +130,7 @@ HWTEST_F(faultloggertest, Faultlogger_Faultdetect1, Function|MediumTest|Level1)
     string fileinfo;
     fileinfo = ReadFile("/data/log/faultlog/temp/" + faultloggerfile);
     std::vector<std::string> para = {"Pid:" + to_string(pid), "Uid:0",
-                            "Process name:/data/local/tmp/faultloggertest",
+                            "Process name:", "/data/local/tmp/faultloggertest",
                             "Reason:Signal:SIGILL", "Fault thread Info:",
                             "Tid:" + to_string(pid), "Name:faultloggertest"};
     if (!fileinfo.empty()) {
