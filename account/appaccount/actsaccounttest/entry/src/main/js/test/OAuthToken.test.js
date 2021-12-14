@@ -475,7 +475,7 @@ describe('ActsAccountOAuthToken', function () {
      * @tc.desc      : Obtain the oauth token after clearing the unset oauth token
      */
     it('ActsAccountOAuthToken_1800', 0, async function (done) {
-        console.debug("====>ActsAccountOAuthToken_1200 start====");
+        console.debug("====>ActsAccountOAuthToken_1800 start====");
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat finish====");
         console.debug("====>add account ActsAccountOAuthToken_1800 start====");
@@ -609,7 +609,7 @@ describe('ActsAccountOAuthToken', function () {
         var data = await appAccountManager.getOAuthToken("accountToken_promise_empty");
         expect(data).assertEqual("");
         await appAccountManager.deleteAccount("accountToken_promise_empty");
-        console.debug("====>ActsAccountOAuthToken_2000 end====");
+        console.debug("====>ActsAccountOAuthToken_2200 end====");
         done();
     });
 
@@ -773,7 +773,7 @@ describe('ActsAccountOAuthToken', function () {
         console.debug("====>creat finish====");
         console.debug("====>add account ActsAccountOAuthToken_2800 start====");
         await appAccountManager.addAccount("accountToken_promise_limit");
-        console.debug("====>setOAuthToken 2400 start====");
+        console.debug("====>setOAuthToken 2800 start====");
         await appAccountManager.setOAuthToken("accountToken_promise_limit", tokenLimit);
         console.debug("====>getOAuthToken ActsAccountOAuthToken_2800 start====");
         var data = await appAccountManager.getOAuthToken("accountToken_promise_limit");
@@ -795,7 +795,7 @@ describe('ActsAccountOAuthToken', function () {
         appAccountManager.clearOAuthToken("", (err)=>{
             console.debug("====>clearOAuthToken 2900 err:" + JSON.stringify(err));
             expect(err.code != 0).assertEqual(true);
-            console.debug("====>ActsAccountOAuthToken_1900 end====");
+            console.debug("====>ActsAccountOAuthToken_2900 end====");
             done();
         });
     });
