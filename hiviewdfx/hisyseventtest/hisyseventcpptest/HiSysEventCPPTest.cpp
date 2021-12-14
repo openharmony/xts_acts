@@ -24,7 +24,7 @@ using namespace std;
 using namespace OHOS::HiviewDFX;
 namespace {
 string g_key = "key";
-string g_reDiRectTimeout = "5";
+string g_reDiRectTimeout = "6";
 string g_hiLogRedirect = "/data/local/tmp/hilogredirect.log";
 }
 class HiSysEventCPPTest : public testing::Test {
