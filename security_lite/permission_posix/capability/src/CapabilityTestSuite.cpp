@@ -33,11 +33,17 @@ protected:
     void TearDown();
 };
 
-void CapabilityTestSuite::SetUp()
+int main()
 {
     if (CheckFsMount(TOP_DIR, TOP_DIR_MOUNT_INFO) != 0) {
-        return;
+        return 1;
+    } else {
+        return RUN_ALL_TESTS();
     }
+}
+
+void CapabilityTestSuite::SetUp()
+{
     // Permission mask preset when creating a file
     umask(ZERO);
     // Init capabilities

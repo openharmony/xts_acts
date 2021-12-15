@@ -33,12 +33,18 @@ protected:
     void TearDown();
 };
 
+int main()
+{
+    if (CheckFsMount(TOP_DIR, TOP_DIR_MOUNT_INFO) != 0) {
+        return 1;
+    } else {
+        return RUN_ALL_TESTS();
+    }
+}
+
 // Preset action of the test suite, which is executed before the first test case
 void DacTestSuite::SetUp()
 {
-    if (CheckFsMount(TOP_DIR, TOP_DIR_MOUNT_INFO) != 0) {
-        return;
-    }
     // Permission mask preset when creating a file
     umask(ZERO);
     // Init capabilities
