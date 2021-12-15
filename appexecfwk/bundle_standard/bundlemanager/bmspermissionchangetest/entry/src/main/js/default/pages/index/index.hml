@@ -1,0 +1,14 @@
+<div class="container">
+    <div>
+        <text class="title">
+            {{ title }}
+        </text>
+    </div>
+    <div>
+        <list class="todo-wraper" scrollbar="on" shapemode="rect" divider="true">
+            <list-item for="{{testcase}}" class="todo-item">
+                <button class="btn" value="{{$item.caseName}}" onclick="jumpPermission($item.num, $item.item)"></button>
+            </list-item>
+        </list>
+    </div>
+</div>

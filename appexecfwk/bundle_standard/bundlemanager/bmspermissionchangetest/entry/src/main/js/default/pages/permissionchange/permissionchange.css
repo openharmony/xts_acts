@@ -1,0 +1,57 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+    height: 80px;
+}
+div{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn{
+    margin-bottom: 10px;
+    width: 200px;
+    height: 80px;
+}
+
+.todo-title {
+    font-style: normal;
+    font-size: 30px;
+}
+
+.log {
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    height: 1000px;
+}
+.todo-wraper {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    diveder-color:#0090FF;
+    scrollbar-color: #57000000;
+    scrollbar-width: 10px;
+}
+.todo-item {
+    width: 100%;
+    height: 100px;
+    flex-direction: column;
+    justify-content: center;
+    align-self:center;
+}
+.text {
+    margin: 20%;
+}

@@ -33,9 +33,20 @@
               "entity.system.home"
             ],
             "actions": [
-              "action.system.home"
+              "action.system.third5A"
             ]
           }
+        ],
+        "backgroundModes": [
+          "dataTransfer",
+          "audioPlayback",
+          "audioRecording",
+          "location",
+          "bluetoothInteraction",
+          "multiDeviceConnection",
+          "wifiInteraction",
+          "voip",
+          "taskKeeping"
         ],
         "name": "com.example.third5.AMainAbility",
         "srcLanguage": "js",
@@ -114,9 +125,13 @@
               "entity.system.home"
             ],
             "actions": [
-              "action.system.home"
+              "action.system.third5B"
             ]
           }
+        ],
+        "backgroundModes": [
+          "dataTransfer",
+          "voip"
         ],
         "name": ".BMainAbility",
         "srcLanguage": "js",

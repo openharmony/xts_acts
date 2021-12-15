@@ -31,11 +31,13 @@ export default {
     },
     onShow() {
         console.debug('ACTS_MissionSnapshot_onShow');
-        commonEvent.publish("ACTS_MissionSnapshot_onShow", (err,data) =>{
-            console.debug("=ACTS_MissionSnapshot_onShow err,data=======>"
-                    + ("json err【") + JSON.stringify(err) + (" 】")
-                    + ("json data【") + JSON.stringify(data) + (" 】")
-                    + " ,err=" + err + " ,data=" + data);
-        });
+        setTimeout(()=>{
+            commonEvent.publish("ACTS_MissionSnapshot_onShow", (err,data) =>{
+                console.debug("=ACTS_MissionSnapshot_onShow err,data=======>"
+                        + ("json err【") + JSON.stringify(err) + (" 】")
+                        + ("json data【") + JSON.stringify(data) + (" 】")
+                        + " ,err=" + err + " ,data=" + data);
+            });
+        }, 3000);
     },
 }

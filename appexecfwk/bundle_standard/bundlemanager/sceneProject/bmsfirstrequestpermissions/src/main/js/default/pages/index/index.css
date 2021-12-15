@@ -1,0 +1,16 @@
+.container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 100px;
+}
+
+.button {
+    margin-top: 15px;
+    font-size:35px;
+    background-color: aqua;
+    text-color: black;
+}

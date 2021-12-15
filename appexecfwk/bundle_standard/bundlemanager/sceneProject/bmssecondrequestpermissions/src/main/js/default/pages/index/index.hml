@@ -1,0 +1,6 @@
+<div class="container">
+    <text class="title">
+         {{ title }}
+    </text>
+    <button class="button" type="capsule" value="申请权限" onclick="reqPermission"></button>
+</div>
