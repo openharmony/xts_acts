@@ -113,8 +113,15 @@ describe('ActsAccountPressure', function () {
         console.debug("====>creat finish====");
         let flag = true;
         let count = 0;
-        for (let i = 0; i < STRESSLEVEL; i++) {
+        let STRESSNUM;
+        if(STRESSLEVEL > ACCOUNTLIMIT){
+            STRESSNUM = ACCOUNTLIMIT;
+        }else{
+            STRESSNUM = STRESSLEVEL;
+        }
+        for (let i = 0; i < STRESSNUM; i++) {
             let accountName = "account_pressure_callback" + i;
+            sleep(TIMEOUT);
             appAccountManager.addAccount(accountName, (err)=>{
                 console.debug('====>addAccount name: ' + accountName);
                 expect(err.code).assertEqual(0);
@@ -124,6 +131,7 @@ describe('ActsAccountPressure', function () {
                     flag = false;
                     done();
                 }
+                sleep(TIMEOUT);
                 appAccountManager.deleteAccount(accountName, (err)=>{
                     console.debug('====>deleteAccount name: ' + accountName);
                     expect(err.code).assertEqual(0);
@@ -141,10 +149,8 @@ describe('ActsAccountPressure', function () {
                         done();
                     } 
                     count++;
-                    sleep(TIMEOUT);
                 })
             });
-            sleep(TIMEOUT);
             if (!flag) {
                 done();
                 break;
@@ -191,26 +197,43 @@ describe('ActsAccountPressure', function () {
             catch(err){
                 console.debug("====>add Account that exceed the limit err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                await appAccountManager.deleteAccount("account_name_limit");
-            }
-        }
-        console.debug("====>deleteAccount start====");
-        for (count = 0; count < STRESSNUM; count++) {
-            let accountName = "account_pressure_limit" + count;
-            console.debug('====>deleteAccount name: ' + accountName);
-            try{
-                await appAccountManager.deleteAccount(accountName);
-                sleep(TIMEOUT);
-            }
-            catch(err){
-                console.error("====>deleteAccount fail err:" + JSON.stringify(err));
-                expect().assertFail();
+                console.debug("====>deleteAccount start====");
+                for (count = 0; count < STRESSNUM; count++) {
+                    let accountName = "account_pressure_limit" + count;
+                    console.debug('====>deleteAccount name: ' + accountName);
+                    try{
+                        await appAccountManager.deleteAccount(accountName);
+                        sleep(TIMEOUT);
+                    }
+                    catch(err){
+                        console.error("====>deleteAccount fail err:" + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    }
+                }
+                console.debug("====>the number of times to complete the stress test is: " + count)
+                console.debug("====>ActsAccountPressure_0300 end====");
                 done();
             }
+        }else{
+            console.debug("====>deleteAccount start====");
+            for (count = 0; count < STRESSNUM; count++) {
+                let accountName = "account_pressure_limit" + count;
+                console.debug('====>deleteAccount name: ' + accountName);
+                try{
+                    await appAccountManager.deleteAccount(accountName);
+                    sleep(TIMEOUT);
+                }
+                catch(err){
+                    console.error("====>deleteAccount fail err:" + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                }
+            }
+            console.debug("====>the number of times to complete the stress test is: " + count)
+            console.debug("====>ActsAccountPressure_0300 end====");
+            done();
         }
-        console.debug("====>the number of times to complete the stress test is: " + count)
-        console.debug("====>ActsAccountPressure_0300 end====");
-        done();
     });
 
     /*

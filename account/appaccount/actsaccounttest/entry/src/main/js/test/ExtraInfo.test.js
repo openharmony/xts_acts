@@ -16,6 +16,7 @@ import account from '@ohos.account.appAccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 const TIMEOUT = 5000;
+const EACHTIMEOUT = 500;
 describe('ActsAccountSetGetExtraInfo', function () {
     function sleep(delay) {
         var start = (new Date()).getTime();
@@ -29,7 +30,13 @@ describe('ActsAccountSetGetExtraInfo', function () {
         sleep(TIMEOUT);
         console.debug("====>beforeAll end====");
         done();
-    });
+    })
+
+    beforeEach(async function (done) {
+        console.debug("====>beforeEach enter====");
+        sleep(EACHTIMEOUT);
+        done();
+    })
 
     /*
      * @tc.number    : ActsAccountSetGetExtraInfo_0100
