@@ -38,6 +38,7 @@ DEVICEAUTH_BASIC_DEPS_CPP_SOURCE = [
   "${DEVICEAUTH_BASIC_DEPS_CPP_DIR}/hc_file_iot_flash_test.cpp",
   "${DEVICEAUTH_BASIC_DEPS_CPP_DIR}/hc_time_test.cpp",
   "${DEVICEAUTH_BASIC_DEPS_CPP_DIR}/hc_file_common.cpp",
+  "${DEVICEAUTH_BASIC_DEPS_CPP_DIR}/hc_alg_test.cpp",
 ]
 
 ohos_moduletest_suite("DeviceAuthBasicDepsTest") {
@@ -84,5 +85,14 @@ ohos_moduletest_suite("DeviceAuthBasicDepsTest") {
     "UTILS_FILE_IMPLEMENTED=0",
     "TEST_PTHREAD_CREATE_DETACHED=1",
     "TEST_HC_FILE_OPEN_SERIES=1",
+
+    "TEST_HKDF_WITH_KEY_ALIAS_TRUE=1",
+    "TEST_IMPORT_ASYMMETRIC_KEY=0",
+    "TEST_COMPUTEHMAC_WITH_ISALIAS_TRUE=0",
+    "TEST_HASH_TO_POINT=1",
+    "TEST_GENERATE_KEY_PAIR_WITH_STORAGE=1",
+    "TEST_AGREE_SHARED_SECRET_WITH_STORAGE=1",
+    "TEST_AGREE_SHARED_SECRET=1",
+    "TEST_BIG_NUM_EXP_MOD=1",
   ]
 }

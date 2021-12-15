@@ -27,9 +27,16 @@ DEVICEAUTH_BASIC_DEPS_SOURCE = [
   "${DEVICEAUTH_BASIC_DEPS_DIR}/hc_file_iot_flash_test.c",
   "${DEVICEAUTH_BASIC_DEPS_DIR}/hc_time_test.c",
   "${DEVICEAUTH_BASIC_DEPS_DIR}/hc_file_common.c",
+  "${DEVICEAUTH_BASIC_DEPS_DIR}/hc_alg_test.c",
 ]
 
 DEVICEAUTH_BASIC_DEPS_INC = [
   "//base/iot_hardware/peripheral/interfaces/kits",
-  "//utils/native/lite/include",  # utils_file.h
+  "//utils/native/lite/include",  # utils_file.h ohos_types.h
+
+  # alg test
+  "//base/security/deviceauth/deps_adapter/key_management_adapter/interfaces",
+  "//base/security/deviceauth/deps_adapter/os_adapter/interfaces",
+  "//base/security/deviceauth/common_lib/interfaces",
+  "//base/security/deviceauth/interfaces/innerkits",
 ]
