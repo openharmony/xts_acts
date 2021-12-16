@@ -16,7 +16,8 @@ import file from '@system.file'
 import app from '@system.app'
 import device from '@system.device'
 import router from '@system.router'
-import {Core} from 'deccjsunit/lite'
+import {Core, Constant, ExpectExtend, ReportExtend, InstrumentLog} from 'deccjsunit/index'
+
 
 export default {
     data: {
@@ -29,7 +30,7 @@ export default {
         console.info('onShow finish')
         const core = Core.getInstance()
         core.init()
-        require('../../../test/List.test')
+        require('../../test/List.test')
         core.execute()
     },
     onReady() {

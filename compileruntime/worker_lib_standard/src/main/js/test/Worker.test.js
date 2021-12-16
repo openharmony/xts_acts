@@ -16,7 +16,7 @@
 // @ts-nocheck
 import app from '@system.app'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-//import worker from "@ohos.worker";
+import worker from '@ohos.worker'
 var worker = globalThis.requireNapi('worker');
 
 describe('workerTest', function () {
@@ -25,7 +25,7 @@ describe('workerTest', function () {
         console.info('total case over')
     })
 
-    function PromiseCase() {
+    function promiseCase() {
         let p = new Promise(function (resolve, reject) {
             setTimeout(function () {
                 resolve()
@@ -71,7 +71,7 @@ describe('workerTest', function () {
 
         ss.postMessage("hello world")
         while (!flag) {
-            await PromiseCase()
+            await promiseCase()
         }
         expect(res).assertEqual("hello world worker")
         done()
@@ -92,7 +92,7 @@ describe('workerTest', function () {
 
         ss.postMessage(12)
         while (!flag) {
-            await PromiseCase()
+            await promiseCase()
         }
         expect(res).assertEqual(25)
         done()
@@ -113,7 +113,7 @@ describe('workerTest', function () {
 
         ss.postMessage({"message":"hello world"})
         while (!flag) {
-            await PromiseCase()
+            await promiseCase()
         }
         expect(res).assertEqual("hello world worker")
         done()
@@ -133,7 +133,7 @@ describe('workerTest', function () {
 
         ss.postMessage("hello world")
         while (!flag) {
-            await PromiseCase()
+            await promiseCase()
         }
         expect(res).assertEqual("zhangsan")
         done()
@@ -163,7 +163,7 @@ describe('workerTest', function () {
 
         ss.postMessage("hello world")
         while (!flag) {
-            await PromiseCase()
+            await promiseCase()
         }
         expect(res).assertEqual("Error: 123")
         done()
@@ -181,7 +181,7 @@ describe('workerTest', function () {
         }
         ss.terminate()
         while (!flag) {
-            await PromiseCase()
+            await promiseCase()
         }
         expect(res).assertEqual(1)
         done()
@@ -203,7 +203,7 @@ describe('workerTest', function () {
         ss.terminate()
 
         while (!flag) {
-            await PromiseCase()
+            await promiseCase()
         }
         expect(res).assertEqual(1)
         done()
@@ -226,12 +226,12 @@ describe('workerTest', function () {
 
         ss.terminate()
         while (!flag) {
-            await PromiseCase()
+            await promiseCase()
         }
         expect(res).assertEqual(1)
 
         ss.postMessage("hello world")
-        await PromiseCase()
+        await promiseCase()
         expect(res).assertEqual(1)
         done()
     })
@@ -508,7 +508,7 @@ describe('workerTest', function () {
         }
 
         ss.postMessage("abc")
-        await PromiseCase()
+        await promiseCase()
         expect(res).assertEqual(0)
         done()
     })
@@ -525,11 +525,11 @@ describe('workerTest', function () {
         }
 
         ss1.postMessage("abc")
-        await PromiseCase()
+        await promiseCase()
         expect(res).assertEqual(0)
 
         ss2.postMessage("hello world")
-        await PromiseCase()
+        await promiseCase()
         expect(res).assertEqual(0)
 
         done()
@@ -547,7 +547,7 @@ describe('workerTest', function () {
         }
 
         ss1.postMessage("abc")
-        await PromiseCase()
+        await promiseCase()
         expect(res).assertEqual(0)
 
         ss2.addEventListener("zhangsan", ()=>{
@@ -575,12 +575,54 @@ describe('workerTest', function () {
 
         ss.postMessage("abc")
         while (!flag) {
-            await PromiseCase()
+            await promiseCase()
         }
 
         ss.postMessage("hello")
-        await PromiseCase()
+        await promiseCase()
         expect(res).assertEqual(0)
+        done()
+    })
+
+    // check onmessageerror is ok
+    it('worker_onmessageerror_test_001', 0, async function (done) {
+        var ss = new worker.Worker("workers/worker_008.js");
+        var res = 0
+        var flag = false;
+
+        ss.onexit = function () {
+            flag = true
+        }
+
+        ss.onmessageerror = function (e) {
+            res++;
+        }
+
+        ss.postMessage("abc")
+        while (!flag) {
+            await promiseCase()
+        }
+        expect(res).assertEqual(0)
+        done()
+    })
+
+    // check onmessageerror is ok
+    it('worker_onmessageerror_test_002', 0, async function (done) {
+        var ss = new worker.Worker("workers/worker_008.js");
+        var res = 0
+        var flag = false;
+
+        ss.onmessageerror = function (e) {
+            flag = true;
+            res++;
+        }
+        function foo() {
+        }
+        ss.postMessage(foo)
+        while (!flag) {
+            await promiseCase()
+        }
+        expect(res).assertEqual(1)
         done()
     })
 })

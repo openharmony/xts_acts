@@ -1,12 +1,12 @@
 {
   "string": [
     {
-      "name": "entry_MainAbility",
-      "value": "entry_MainAbility"
+      "name": "app_name",
+      "value": "OsAccountTest"
     },
     {
       "name": "mainability_description",
-      "value": "JS_Empty Ability"
+      "value": "JS_Phone_Empty Feature Ability"
     }
   ]
 }
