@@ -375,12 +375,12 @@ describe('TextEncoderTest', function () {
      */
     it('testUtilCallbackWrapper004', 0, async function () {
         async function promiseFn() {
-            return Promise.reject('value');
+            return 21;
         };
         var cb = util.callbackWrapper(promiseFn);
         cb((err, ret) => {
-            expect(err).strictEqual('value');
-            expect(ret).strictEqual(undefined);
+            expect(err).strictEqual(null);
+            expect(ret).strictEqual(21);
         })
     })
 
@@ -962,6 +962,7 @@ describe('TextEncoderTest', function () {
         expect(result.read).assertEqual(0)
         expect(result.written).assertEqual(0)
     })
+
     /**
     * @tc.name: testGetLower001
     * @tc.desc: Obtains the lower bound of the current range.
@@ -1461,7 +1462,8 @@ describe('TextEncoderTest', function () {
 
     /**
     * @tc.name: testInstersect001
-    * @tc.desc: Returns the intersection of the current range and the range specified by the given lower and upper bounds.
+    * @tc.desc: Returns the intersection of the current range and
+	* the range specified by the given lower and upper bounds.
     * @tc.require: AR000GFB4U
     * @tc.author: jiangkai
     */
@@ -1472,7 +1474,8 @@ describe('TextEncoderTest', function () {
 
     /**
     * @tc.name: testInstersect002
-    * @tc.desc: Returns the intersection of the current range and the range specified by the given lower and upper bounds.
+    * @tc.desc: Returns the intersection of the current range and
+	* the range specified by the given lower and upper bounds.
     * @tc.require: AR000GFB4U
     * @tc.author: jiangkai
     */
@@ -1483,7 +1486,8 @@ describe('TextEncoderTest', function () {
 
     /**
     * @tc.name: testInstersect003
-    * @tc.desc: Returns the intersection of the current range and the range specified by the given lower and upper bounds.
+    * @tc.desc: Returns the intersection of the current range and
+	* the range specified by the given lower and upper bounds.
     * @tc.require: AR000GFB4U
     * @tc.author: jiangkai
     */
@@ -1494,7 +1498,8 @@ describe('TextEncoderTest', function () {
 
     /**
     * @tc.name: testInstersect004
-    * @tc.desc: Returns the intersection of the current range and the range specified by the given lower and upper bounds.
+    * @tc.desc: Returns the intersection of the current range and
+	* the range specified by the given lower and upper bounds.
     * @tc.require: AR000GFB4U
     * @tc.author: jiangkai
     */
@@ -1505,7 +1510,8 @@ describe('TextEncoderTest', function () {
 
     /**
     * @tc.name: testInstersect005
-    * @tc.desc: Returns the intersection of the current range and the range specified by the given lower and upper bounds.
+    * @tc.desc: Returns the intersection of the current range and
+	* the range specified by the given lower and upper bounds.
     * @tc.require: AR000GFB4U
     * @tc.author: jiangkai
     */
@@ -1571,9 +1577,11 @@ describe('TextEncoderTest', function () {
 })
 
     describe('Base64Test', function () {
-    /**
+
+	/**
      * @tc.name: testEncode001
-     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8 array using the Base64 encoding scheme.
+     * @tc.desc: Encodes all bytes from the specified u8 array into
+	 * a newly-allocated u8 array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
@@ -1590,7 +1598,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testEncode002
-     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8 array using the Base64 encoding scheme.
+     * @tc.desc: Encodes all bytes from the specified u8 array into
+	 * a newly-allocated u8 array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
@@ -1607,14 +1616,17 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testEncode003
-     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8 array using the Base64 encoding scheme.
+     * @tc.desc: Encodes all bytes from the specified u8 array into
+	 * a newly-allocated u8 array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
     it('testEncode003', 0, function () {
         var that = new util.Base64()
-        var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,32,78,111,100,101,46,106,115]);
-        var rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,53,110,73,71,108,117,73,69,53,118,90,71,85,117,97,110,77,61]);
+        var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,
+		    105,110,103,32,105,110,32,78,111,100,101,46,106,115]);
+        var rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,
+		    50,57,107,97,87,53,110,73,71,108,117,73,69,53,118,90,71,85,117,97,110,77,61]);
         var flags = 0;
 		var result = that.encode(array, flags);
         for (var i = 0; i < 36; i++) {
@@ -1624,7 +1636,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testEncode004
-     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8 array using the Base64 encoding scheme.
+     * @tc.desc: Encodes all bytes from the specified u8 array into
+	 * a newly-allocated u8 array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
@@ -1641,7 +1654,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testEncode005
-     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8 array using the Base64 encoding scheme.
+     * @tc.desc: Encodes all bytes from the specified u8 array into
+	 * a newly-allocated u8 array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
@@ -1678,7 +1692,8 @@ describe('TextEncoderTest', function () {
      */
     it('testEncodeToString002', 0, function () {
         var that = new util.Base64()
-        var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
+        var array = new Uint8Array([66, 97, 115, 101, 54, 52,
+		    32, 78, 111, 100, 101, 46, 106, 115]);
         var flags = 0;
 		var result = that.encodeToString(array, flags);
         expect(result).assertEqual('QmFzZTY0IE5vZGUuanM=')
@@ -1692,7 +1707,8 @@ describe('TextEncoderTest', function () {
      */
     it('testEncodeToString003', 0, function () {
         var that = new util.Base64()
-        var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,32,78,111,100,101,46,106,115]);
+        var array = new Uint8Array([66,97,115,101,54,52,32,69,110,
+		    99,111,100,105,110,103,32,105,110,32,78,111,100,101,46,106,115]);
         var flags = 0;
 		var result = that.encodeToString(array, flags);
         expect(result).assertEqual('QmFzZTY0IEVuY29kaW5nIGluIE5vZGUuanM=')
@@ -1728,7 +1744,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testDecode001
-     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8 array using the Base64 encoding scheme.
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into
+	 * a newly-allocated u8 array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
@@ -1745,7 +1762,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testDecode002
-     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8 array using the Base64 encoding scheme.
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into
+	 * a newly-allocated u8 array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
@@ -1765,7 +1783,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testDecode003
-     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8 array using the Base64 encoding scheme.
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into
+	 * a newly-allocated u8 array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
@@ -1785,7 +1804,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testDecode004
-     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8 array using the Base64 encoding scheme.
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into
+	 * a newly-allocated u8 array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
@@ -1807,7 +1827,8 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.name: testDecode005
-     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8 array using the Base64 encoding scheme.
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into
+	 * a newly-allocated u8 array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
@@ -1828,7 +1849,8 @@ describe('TextEncoderTest', function () {
 })
 
     describe('RationalNumberFunTest', function () {
-    /**
+
+	/**
      * @tc.name: testRationalNumberCreateRationalFromString001
      * @tc.desc: Creates a RationalNumber object based on a given string.
      * @tc.require: AR000GFB5A
@@ -2505,7 +2527,8 @@ describe('TextEncoderTest', function () {
     })
 
     describe('LruBufferFunTest', function () {
-    /**
+
+	/**
      * @tc.name: testLruBufferUpdateCapacity001
      * @tc.desc: Updates the buffer capacity to a specified capacity.
      * @tc.require: AR000GFB59
