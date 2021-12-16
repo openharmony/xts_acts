@@ -35,7 +35,7 @@ describe('ActsAnsUnSubscriberTest', function () {
             onConnect:onConnecteOne,
             onDisconnect:onDisconnectOne
         }
-        notify.subscribe(subscriber);
+        await notify.subscribe(subscriber);
         console.info("===========Ans_UnSubscriber_0100 subscribe=============>");
         notify.unsubscribe(subscriber, (err)=>{
             console.debug("===========Ans_UnSubscriber_0100 unsubscribe err.code=================>"+err.code);
@@ -65,7 +65,7 @@ describe('ActsAnsUnSubscriberTest', function () {
             onConnect:onConnecteTwo,
             onDisconnect:onDisconnectTwo
         }
-        notify.subscribe(subscriber);
+        await notify.subscribe(subscriber);
         console.info("===========Ans_UnSubscriber_0200 subscribe=============>");
         notify.unsubscribe(subscriber).then(()=>{
             console.debug("=======Ans_UnSubscriber_0200 subscribe then==========>");
@@ -179,7 +179,7 @@ describe('ActsAnsUnSubscriberTest', function () {
             onConnect:onConnecteTest,
             onDisconnect:onDisconnectTest
         }
-        notify.subscribe(subscriber);
+        await notify.subscribe(subscriber);
         console.info("===========Ans_UnSubscriber_0500 subscribe=============>");
         notify.unsubscribe(subscriberTest,(err)=>{
             console.debug("Ans_UnSubscriber_0500 unsubscribe err.code=================>"+err.code);
@@ -223,7 +223,7 @@ describe('ActsAnsUnSubscriberTest', function () {
             onConnect:onConnecteTestTwo,
             onDisconnect:onDisconnectTestTwo
         }
-        notify.subscribe(subscriber);
+        await notify.subscribe(subscriber);
         console.info("===========Ans_UnSubscriber_0600 subscribe=============>");
         notify.unsubscribe(subscriberTest).then().catch((err)=>{
             console.debug("=======Ans_UnSubscriber_0600 unsubscribe catch err=================>"+err.code);
@@ -259,7 +259,7 @@ describe('ActsAnsUnSubscriberTest', function () {
             onConnect:onConnecteSeven,
             onDisconnect:onDisconnectSeven
         }
-        notify.subscribe(subscriber);
+        await notify.subscribe(subscriber);
         console.info("===========Ans_UnSubscriber_0700 subscribe=============>");
         notify.unsubscribe(subscriber, (err)=>{
             console.debug("Ans_UnSubscriber_0700 unsubscribe first err.code=================>"+err.code);
@@ -299,7 +299,7 @@ describe('ActsAnsUnSubscriberTest', function () {
             onConnect:onConnecteEight,
             onDisconnect:onDisconnectEight
         }
-        notify.subscribe(subscriber);
+        await notify.subscribe(subscriber);
         console.info("===========Ans_UnSubscriber_0800 subscribe=============>");
         notify.unsubscribe(subscriber).then((err)=>{
             console.debug("=======Ans_UnSubscriber_0800 subscribe first then err=================>"+err.code);
@@ -394,7 +394,7 @@ describe('ActsAnsUnSubscriberTest', function () {
      */
     it('Ans_UnSubscriber_1100', 0, async function (done) {
         console.info("===========Ans_UnSubscriber_1100 start=============>");
-        notify.subscribe({
+        await notify.subscribe({
             onConnect:onConnecteEleven,
             onDisconnect:onDisconnectEleven
         });
@@ -429,7 +429,7 @@ describe('ActsAnsUnSubscriberTest', function () {
      */
     it('Ans_UnSubscriber_1200', 0, async function (done) {
         console.info("===========Ans_UnSubscriber_1200 start=============>");
-        notify.subscribe({
+        await notify.subscribe({
             onConnect:onConnecteTwelve,
             onDisconnect:onConnecteTwelve
         });

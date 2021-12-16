@@ -1003,7 +1003,7 @@ describe('ActsAnsActiveTest', function () {
     function getAllCallbackNine(err,data){
         console.debug("===========Ans_GetAllActive_0900 getAllCallbackNine data.length============>"+data.length);
         console.debug("===========Ans_GetAllActive_0900 getAllCallbackNine err.code============>"+err.code);
-        expect(err.code).assertEqual(ERR_ANS_NON_SYSTEM_APP);
+        expect(err.code != 0).assertEqual(true);
     }
 
     /*
@@ -1063,7 +1063,7 @@ describe('ActsAnsActiveTest', function () {
         await notify.getAllActiveNotifications().then(()=>{
             console.debug("=======Ans_GetAllActive_1000 then========>");
         }).catch((err)=>{
-            expect(err.code).assertEqual(ERR_ANS_NON_SYSTEM_APP);
+            expect(err.code != 0).assertEqual(true);
             console.debug("=======Ans_GetAllActive_1000 err==========>"+err.code);
         });
         setTimeout(function(){
