@@ -770,7 +770,6 @@ describe('PlayerLocalTestAudioFUNC', function () {
         let isTimeDone = false;
         let testAudioPlayer = media.createAudioPlayer();
         testAudioPlayer.on('dataLoad', () => {
-            console.info(`case dataLoad called`);
             expect(testAudioPlayer.currentTime).assertEqual(0);
             expect(testAudioPlayer.duration).assertEqual(DURATION_TIME);
             expect(testAudioPlayer.state).assertEqual('paused');
@@ -778,7 +777,6 @@ describe('PlayerLocalTestAudioFUNC', function () {
             testAudioPlayer.play();
         });
         testAudioPlayer.on('play', () => {
-            console.info(`case play called`);
             console.info(`case play currentTime is ${testAudioPlayer.currentTime}`);
             expect(testAudioPlayer.duration).assertEqual(DURATION_TIME);
             expect(testAudioPlayer.state).assertEqual('playing');
@@ -800,22 +798,18 @@ describe('PlayerLocalTestAudioFUNC', function () {
             }
             seekCount++
             console.info(`case seekDoneTime is ${seekDoneTime}`);
-            console.info(`case seek called`);
         });
         testAudioPlayer.on('finish', () => {
             expect(testAudioPlayer.state).assertEqual('playing');
-            console.info(`case finish called`);
         });
         testAudioPlayer.on('reset', () => {
             expect(testAudioPlayer.state).assertEqual('idle');
-            console.info(`case reset called`);
             testAudioPlayer.release();
             isTimeDone = true;
         });
         testAudioPlayer.src = AUDIO_SOURCE;
         setTimeout(function() {
             if (!isTimeDone) {
-                console.info(`case is time out!`);
                 expect(isTimeOut).assertTrue();
             }
             done();
