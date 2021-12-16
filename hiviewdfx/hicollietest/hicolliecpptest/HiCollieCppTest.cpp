@@ -156,7 +156,7 @@ HWTEST_F(HiCollieCppTest, Xcollie_watchdog_test, Function|MediumTest|Level1) {
     bool result = false;
     sleep(90);
     std::vector<std::string> cmdret;
-    cmd = "ps -A |grep HiCollieCppTest";
+    cmd = "ps -A |grep ActsHiCollieCpp";
     unsigned long cmdretlen;
     cmdretlen = ExecCmdWithRet(cmd, cmdret);
     if (cmdretlen == 1) {
@@ -183,7 +183,7 @@ HWTEST_F(HiCollieCppTest, Xcollie_watchdog_test1, Function|MediumTest|Level1) {
     DoXCollieTest();
     sleep(90);
     std::vector<std::string> cmdret;
-    cmd = "ps -A |grep HiCollieCppTest";
+    cmd = "ps -A |grep ActsHiCollieCpp";
     unsigned long cmdretlen;
     cmdretlen = ExecCmdWithRet(cmd, cmdret);
     if (cmdretlen == 1) {
@@ -210,7 +210,7 @@ HWTEST_F(HiCollieCppTest, Xcollie_watchdog_test2, Function|MediumTest|Level1) {
     bool result = false;
     sleep(110);
     std::vector<std::string> cmdret;
-    cmd = "ps -A |grep HiCollieCppTest";
+    cmd = "ps -A |grep ActsHiCollieCpp";
     unsigned long cmdretlen;
     cmdretlen = ExecCmdWithRet(cmd, cmdret);
     if (cmdretlen == 1) {
