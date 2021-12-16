@@ -12,9 +12,9 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap("MultiAppServiceExecutor") {
+ohos_hap("ActsAmsMultiAppServiceExecutor") {
   hap_profile = "./src/main/config.json"
-  hap_name = "MultiAppServiceExecutor"
+  hap_name = "ActsAmsMultiAppServiceExecutor"
   subsystem_name = XTS_SUITENAME
   final_hap_path =
       "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"

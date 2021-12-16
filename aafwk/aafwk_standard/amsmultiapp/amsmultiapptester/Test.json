@@ -1,18 +1,3 @@
 {
-    "description": "Configuration for hjunit demo Tests",
-    "driver": {
-        "type": "JSUnitTest",
-        "test-timeout": "300000",
-        "package": "com.example.amsmultiapptester",
-        "shell-timeout": "60000"
-    },
-    "kits": [
-        {
-            "test-file-name": [
-                "MultiAppTester.hap"
-            ],
-            "type": "AppInstallKit",
-            "cleanup-apps": true
-        }
-    ]
+    "description": "Configuration for hjunit demo Tests"
 }
