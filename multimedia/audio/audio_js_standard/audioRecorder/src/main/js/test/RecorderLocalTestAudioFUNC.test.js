@@ -48,7 +48,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
 
     function sleep(time) {
         for(let t = Date.now();Date.now() - t <= time;);
-    };
+    }
 
     function initAudioRecorder() {
         if (typeof (audioRecorder) != 'undefined') {

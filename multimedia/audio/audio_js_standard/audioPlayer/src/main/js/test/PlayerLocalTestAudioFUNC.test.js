@@ -227,8 +227,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
             }
             nextStep(mySteps,done);
         });
-       
-    };
+    }
 
     /* *
         * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0100
