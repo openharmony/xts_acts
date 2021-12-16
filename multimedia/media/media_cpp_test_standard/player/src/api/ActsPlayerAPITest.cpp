@@ -21,11 +21,11 @@ using namespace testing::ext;
 using namespace TestPlayerBasic;
 
 /**
-    * @tc.number    : SUB_MEDIA_PLAYER_APITest_SetSource_0100
+    * @tc.number    : SUB_MEDIA_PLAYER_SetSource_0100
     * @tc.name      : 01.SetSource操作在new之后
     * @tc.desc      : test SetSource
 */
-HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_SetSource_0100, Reliability | MediumTest | Level2)
+HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_SetSource_0100, Reliability | MediumTest | Level2)
 {
     std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
     std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
@@ -36,11 +36,11 @@ HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_SetSource_0100, Reliability
 }
 
 /**
-    * @tc.number    : SUB_MEDIA_PLAYER_APITest_Prepare_0100
+    * @tc.number    : SUB_MEDIA_PLAYER_Prepare_0100
     * @tc.name      : 03.Prepare操作在SetSource之后
     * @tc.desc      : test Prepare
 */
-HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_Prepare_0100, Reliability | MediumTest | Level2)
+HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_Prepare_0100, Reliability | MediumTest | Level2)
 {
     std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
     std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
@@ -56,11 +56,11 @@ HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_Prepare_0100, Reliability |
 }
 
 /**
-    * @tc.number    : SUB_MEDIA_PLAYER_APITest_PrepareAsync_0100
+    * @tc.number    : SUB_MEDIA_PLAYER_PrepareAsync_0100
     * @tc.name      : 03.PrepareAsync操作在SetSource之后
     * @tc.desc      : test PrepareAsync
 */
-HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_PrepareAsync_0100, Reliability | MediumTest | Level2)
+HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_PrepareAsync_0100, Reliability | MediumTest | Level2)
 {
     std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
     std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
@@ -76,11 +76,11 @@ HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_PrepareAsync_0100, Reliabil
 }
 
 /**
-    * @tc.number    : SUB_MEDIA_PLAYER_APITest_Play_0100
+    * @tc.number    : SUB_MEDIA_PLAYER_Play_0100
     * @tc.name      : 02.Play操作在PrepareAsync之后
     * @tc.desc      : test Play
 */
-HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_Play_0100, Reliability | MediumTest | Level2)
+HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_Play_0100, Reliability | MediumTest | Level2)
 {
     std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
     std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
@@ -101,11 +101,11 @@ HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_Play_0100, Reliability | Me
 
 
 /**
-    * @tc.number    : SUB_MEDIA_PLAYER_APITest_Stop_0100
+    * @tc.number    : SUB_MEDIA_PLAYER_Stop_0100
     * @tc.name      : 04.Stop操作在Play之后
     * @tc.desc      : test Stop
 */
-HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_Stop_0100, Reliability | MediumTest | Level2)
+HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_Stop_0100, Reliability | MediumTest | Level2)
 {
     std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
     std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
@@ -126,11 +126,11 @@ HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_Stop_0100, Reliability | Me
 }
 
 /**
-    * @tc.number    : SUB_MEDIA_PLAYER_APITest_Pause_0100
+    * @tc.number    : SUB_MEDIA_PLAYER_Pause_0100
     * @tc.name      : 05.Pause操作在Play之后
     * @tc.desc      : test Pause
 */
-HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_Pause_0100, Reliability | MediumTest | Level2)
+HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_Pause_0100, Reliability | MediumTest | Level2)
 {
     std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
     std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
@@ -152,11 +152,11 @@ HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_Pause_0100, Reliability | M
 }
 
 /**
-    * @tc.number    : SUB_MEDIA_PLAYER_APITest_Reset_0100
+    * @tc.number    : SUB_MEDIA_PLAYER_Reset_0100
     * @tc.name      : 06.Reset操作在Seek之后
     * @tc.desc      : test Reset
 */
-HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_Reset_0100, Reliability | MediumTest | Level2)
+HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_Reset_0100, Reliability | MediumTest | Level2)
 {
     std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
     std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
@@ -180,11 +180,11 @@ HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_Reset_0100, Reliability | M
 }
 
 /**
-    * @tc.number    : SUB_MEDIA_PLAYER_APITest_Seek_0100
+    * @tc.number    : SUB_MEDIA_PLAYER_Seek_0100
     * @tc.name      : 04.Seek操作在Play之后
     * @tc.desc      : test Seek
 */
-HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_Seek_0100, Reliability | MediumTest | Level2)
+HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_Seek_0100, Reliability | MediumTest | Level2)
 {
     std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
     std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
@@ -208,11 +208,11 @@ HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_Seek_0100, Reliability | Me
 }
 
 /**
-    * @tc.number    : SUB_MEDIA_PLAYER_APITest_Seek_0200
+    * @tc.number    : SUB_MEDIA_PLAYER_Seek_0200
     * @tc.name      : 06.Seek操作在Pause之后
     * @tc.desc      : test Seek
 */
-HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_Seek_0200, Reliability | MediumTest | Level2)
+HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_Seek_0200, Reliability | MediumTest | Level2)
 {
     std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
     std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
@@ -238,11 +238,11 @@ HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_Seek_0200, Reliability | Me
 }
 
 /**
-    * @tc.number    : SUB_MEDIA_PLAYER_APITest_Seek_0300
+    * @tc.number    : SUB_MEDIA_PLAYER_Seek_0300
     * @tc.name      : 10.Seek操作调用3次
     * @tc.desc      : test Seek
 */
-HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_Seek_0300, Reliability | MediumTest | Level2)
+HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_Seek_0300, Reliability | MediumTest | Level2)
 {
     std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
     std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
@@ -279,11 +279,11 @@ HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_Seek_0300, Reliability | Me
 }
 
 /**
-    * @tc.number    : SUB_MEDIA_PLAYER_APITest_SetPlaybackSpeed_0100
+    * @tc.number    : SUB_MEDIA_PLAYER_SetPlaybackSpeed_0100
     * @tc.name      : 02.SetPlaybackSpeed操作在play之后
     * @tc.desc      :
 */
-HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_SetPlaybackSpeed_0100, Reliability | MediumTest | Level2)
+HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_SetPlaybackSpeed_0100, Reliability | MediumTest | Level2)
 {
     std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
     std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
@@ -305,11 +305,11 @@ HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_SetPlaybackSpeed_0100, Reli
 }
 
 /**
-    * @tc.number    : SUB_MEDIA_PLAYER_APITest_Seek_1500
+    * @tc.number    : SUB_MEDIA_PLAYER_Seek_1500
     * @tc.name      : 15.GET操作在每个可进行的操作后都调用一次
     * @tc.desc      : test Seek
 */
-HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_APITest_GetParameter_0100, Reliability | MediumTest | Level2)
+HWTEST_F(ActsPlayerAPITest, SUB_MEDIA_PLAYER_GetParameter_0100, Reliability | MediumTest | Level2)
 {
     std::shared_ptr<PlayerSignal> testObj = std::make_shared<PlayerSignal>();
     std::shared_ptr<TestPlayer> player = std::make_shared<TestPlayer>(testObj);
