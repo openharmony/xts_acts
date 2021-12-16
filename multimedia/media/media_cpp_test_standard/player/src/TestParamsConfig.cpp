@@ -51,27 +51,6 @@ void TestParamsConfig::InitMountPath()
 bool TestParamsConfig::CompareTime(int32_t expectTime, int32_t realTime, OHOS::Media::PlayerSeekMode seekMode)
 {
     MEDIA_INFO_LOG("CompareTime: expectTime %d, realTime %d", expectTime, realTime);
-    if (seekMode  == PlayerSeekMode::SEEK_CLOSEST) {
-        if (std::abs(expectTime - realTime) < CLOSEST_DELTA_TIME) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    if (seekMode  == PlayerSeekMode::SEEK_NEXT_SYNC) {
-        if (realTime - expectTime < DELTA_TIME && realTime - expectTime >= 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    if (seekMode  == PlayerSeekMode::SEEK_PREVIOUS_SYNC) {
-        if (expectTime - realTime < DELTA_TIME && expectTime - realTime > -CLOSEST_DELTA_TIME) {
-            return true;
-        } else {
-            return false;
-        }
-    }
     if (std::abs(expectTime - realTime) < DELTA_TIME) {
         return true;
     }

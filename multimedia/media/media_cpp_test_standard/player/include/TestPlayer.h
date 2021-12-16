@@ -48,6 +48,7 @@ public:
     PlayerStates state_ = PLAYER_IDLE;
     int32_t seekPosition_;
     bool seekDoneFlag_;
+    PlayerSeekMode seekMode_ = PlayerSeekMode::SEEK_CLOSEST;
     bool mutexFlag_ = true;
     std::mutex mutexSeek_;
     std::mutex mutexReset_;
@@ -107,6 +108,7 @@ public:
     void OnError(PlayerErrorType errorType, int32_t errorCode);
     int WaitForSeekDone(int32_t currentPosition);
     void OnInfo(PlayerOnInfoType type, int32_t extra, const Format &infoBody = {});
+    void SeekNotify(int32_t extra, const Format &infoBody);
     int WaitForState(PlayerStates state);
 private:
     void PrintState(PlayerStates state);
