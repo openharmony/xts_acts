@@ -150,7 +150,7 @@ int32_t TestPlayer::Seek(int32_t mseconds, PlayerSeekMode mode)
     player_->GetDuration(duration);
     if (mseconds < 0) {
         test_->seekPosition_ = 0;
-    } else if (mseconds > duration){
+    } else if (mseconds > duration) {
         test_->seekPosition_ = duration;
     } else {
         test_->seekPosition_ = mseconds;
