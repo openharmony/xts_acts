@@ -125,7 +125,7 @@ LITE_TEST_CASE(DfxFuncTestSuite, subDfxDftHilog0500, LEVEL1)
  */
 LITE_TEST_CASE(DfxFuncTestSuite, subDfxDftHilog0600, LEVEL0)
 {
-    bool ret = TRUE;
+    BOOL ret = TRUE;
     ret = HiLogRegisterModule(HILOG_MODULE_HIVIEW, "HIVIEW");
     TEST_ASSERT_FALSE(ret);
 };
