@@ -42,6 +42,10 @@ var bundleNameList = [
     "com.ohos.launcher",
     "com.ohos.systemui",
     "com.ohos.callui",
+    "com.ohos.contacts",
+    "com.ohos.mms",
+    "com.ohos.telephonydataability",
+    "com.ohos.contactsdataability",
     "com.ix.simulate.feature",
     "com.ix.verify.io",
     "com.example.actsamscallbackfifthscene"
