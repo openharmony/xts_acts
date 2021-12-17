@@ -146,7 +146,16 @@ int32_t TestPlayer::Seek(int32_t mseconds, PlayerSeekMode mode)
 {
     MEDIA_DEBUG_LOG("%s", __FUNCTION__);
     test_->seekDoneFlag_ = false;
-    test_->seekPosition_ = mseconds;
+    int32_t duration = 0;
+    player_->GetDuration(duration);
+    if (mseconds < 0) {
+        test_->seekPosition_ = 0;
+    } else if (mseconds > duration) {
+        test_->seekPosition_ = duration;
+    } else {
+        test_->seekPosition_ = mseconds;
+    }
+    test_->seekMode_ = mode;
     int32_t ret = player_->Seek(mseconds, mode);
     if (ret == RET_OK && test_->mutexFlag_ == true && test_->seekDoneFlag_ == false) {
         std::unique_lock<std::mutex> lockSeek(test_->mutexSeek_);
@@ -268,6 +277,28 @@ void TestPlayerCallback::OnError(PlayerErrorType errorType, int32_t errorCode)
         errorTypeMsg.c_str(), errorCodeMsg.c_str());
 }
 
+void TestPlayerCallback::SeekNotify(int32_t extra, const Format &infoBody)
+{
+    if (test_->seekMode_ == PlayerSeekMode::SEEK_CLOSEST) {
+        if (test_->seekPosition_ == extra) {
+            test_->condVarSeek_.notify_all();
+        }
+    } else if (test_->seekMode_ == PlayerSeekMode::SEEK_PREVIOUS_SYNC) {
+        if (test_->seekPosition_ - extra < DELTA_TIME && extra - test_->seekPosition_ >= 0) {
+            test_->condVarSeek_.notify_all();
+        }
+    } else if (test_->seekMode_ == PlayerSeekMode::SEEK_NEXT_SYNC) {
+        if (extra - test_->seekPosition_ < DELTA_TIME && test_->seekPosition_ - extra >= 0) {
+            test_->condVarSeek_.notify_all();
+        }
+    } else if (abs(test_->seekPosition_ - extra) <= DELTA_TIME) {
+        test_->condVarSeek_.notify_all();
+    } else {
+        test_->SetSeekResult(false);
+    }
+    return;
+}
+
 void TestPlayerCallback::OnInfo(PlayerOnInfoType type, int32_t extra, const Format &infoBody)
 {
     switch (type) {
@@ -275,11 +306,7 @@ void TestPlayerCallback::OnInfo(PlayerOnInfoType type, int32_t extra, const Form
             seekDoneFlag_ = true;
             test_->SetSeekResult(true);
             MEDIA_INFO_LOG("TestPlayerCallback: OnSeekDone currentPosition is %d", extra);
-            if (abs(test_->seekPosition_ - extra) <= DELTA_TIME) {
-                test_->condVarSeek_.notify_all();
-            } else {
-                test_->SetSeekResult(false);
-            }
+            SeekNotify(extra, infoBody);
             break;
         case INFO_TYPE_EOS:
             MEDIA_INFO_LOG("TestPlayerCallback: OnEndOfStream isLooping is %d", extra);

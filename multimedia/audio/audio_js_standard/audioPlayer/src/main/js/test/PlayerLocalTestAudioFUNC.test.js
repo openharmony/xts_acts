@@ -227,11 +227,10 @@ describe('PlayerLocalTestAudioFUNC', function () {
             }
             nextStep(mySteps,done);
         });
-       
-    };
+    }
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0100
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0100
         * @tc.name      : 001.play
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -239,7 +238,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0100', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0100', 0, async function (done) {
         console.info(`case update`);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, END_STATE);
         initAudioPlayer();
@@ -248,7 +247,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0200
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0200
         * @tc.name      : 002.play->pause
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTestTest
@@ -256,7 +255,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0200', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0200', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -264,7 +263,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0300
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0300
         * @tc.name      : 003.play->pause->play->reset
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -272,7 +271,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0300', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0300', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -280,7 +279,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0500
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0500
         * @tc.name      : 005.play->reset
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -288,7 +287,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0500', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0500', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -296,7 +295,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0600
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0600
         * @tc.name      : 006.play->pause->play->pause
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -304,7 +303,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0600', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0600', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, PAUSE_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -312,7 +311,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0700
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0700
         * @tc.name      : 007.play->pause->stop
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -320,7 +319,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0700', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0700', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, STOP_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -328,7 +327,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0800
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0800
         * @tc.name      : 008.play->pause->play->stop
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -336,7 +335,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0800', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0800', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, STOP_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -344,7 +343,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0900
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0900
         * @tc.name      : 009.play->stop->reset->play->pause->play->reset
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -352,7 +351,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_0900', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0900', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, RESET_STATE, SRC_STATE, PLAY_STATE,
             PAUSE_STATE, PLAY_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
@@ -361,7 +360,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1000
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1000
         * @tc.name      : 010.play->pause->stop->reset->play->pause->reset
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -369,7 +368,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1000', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1000', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, STOP_STATE, RESET_STATE, SRC_STATE, PLAY_STATE,
             PAUSE_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
@@ -378,7 +377,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1100
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1100
         * @tc.name      : 011.play->stop->reset->play->reset
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -386,7 +385,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1100', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1100', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, RESET_STATE,
             SRC_STATE, PLAY_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
@@ -395,23 +394,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1200
-        * @tc.name      : 012.play->pause->play->reset
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-       
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1200', 0, async function (done) {
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = AUDIO_SOURCE;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1300
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1300
         * @tc.name      : 013.play->stop->pause
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -419,7 +402,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1300', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1300', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, PAUSE_STATE, ERROR_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -427,7 +410,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1400
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1400
         * @tc.name      : 014.play->seek->pause
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -435,7 +418,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1400', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1400', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, 0, PAUSE_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -443,7 +426,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1500
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1500
         * @tc.name      : 015.play->pause->seek(duration)
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -451,7 +434,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1500', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1500', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, DURATION_TIME,
             PLAY_STATE, FINISH_STATE, END_STATE);
         initAudioPlayer();
@@ -460,7 +443,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1600
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1600
         * @tc.name      : 016.play->pause->play->seek(0)->pause
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -468,7 +451,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1600', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1600', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, SEEK_STATE, 0, PAUSE_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -476,7 +459,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1700
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1700
         * @tc.name      : 017.play->seek(0)->reset
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -484,7 +467,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1700', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1700', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, 0, RESET_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -492,7 +475,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1800
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1800
         * @tc.name      : 018.play->seek->stop->reset
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -500,7 +483,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1800', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1800', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, 0, STOP_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -508,7 +491,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1900
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1900
         * @tc.name      : 019.play->stop->seek
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -516,7 +499,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_1900', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1900', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, SEEK_STATE, 0, ERROR_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -524,7 +507,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2000
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2000
         * @tc.name      : 020.play->pause->seek->reset
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -532,7 +515,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2000', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2000', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, 0, RESET_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -540,7 +523,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2100
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2100
         * @tc.name      : 021.play->pause->seek->stop
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -548,7 +531,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2100', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2100', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, DURATION_TIME / RAND_NUM,
             STOP_STATE, END_STATE);
         initAudioPlayer();
@@ -557,7 +540,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2200
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2200
         * @tc.name      : 022.play->pause->play->seek(0)
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -565,7 +548,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2200', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2200', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, SEEK_STATE, 0, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -573,7 +556,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2300
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2300
         * @tc.name      : 023.play->pause->play->seek(0)->stop
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -581,7 +564,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2300', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2300', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, SEEK_STATE, 0, STOP_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -589,7 +572,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2400
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2400
         * @tc.name      : 024.play->stop->seek(0)->reset->play
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -597,7 +580,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2400', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2400', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, SEEK_STATE, 0, ERROR_STATE,
             RESET_STATE, SRC_STATE, PLAY_STATE, END_STATE);
         initAudioPlayer();
@@ -606,7 +589,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2500
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2500
         * @tc.name      : 025.play->seek(0)
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -614,7 +597,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2500', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2500', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, 0, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -622,7 +605,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2600
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2600
         * @tc.name      : 026.play->stop->seek->pause
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -630,7 +613,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level 3
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2600', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2600', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, SEEK_STATE, SEEK_TIME, ERROR_STATE,
             PAUSE_STATE, ERROR_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
@@ -639,7 +622,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2700
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2700
         * @tc.name      : 027.play->stop->seek->reset->play
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -647,7 +630,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level 3
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2700', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2700', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, SEEK_STATE, SEEK_TIME, ERROR_STATE,
             RESET_STATE, SRC_STATE, PLAY_STATE, END_STATE);
         initAudioPlayer();
@@ -656,7 +639,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2800
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2800
         * @tc.name      : 028.play->seek(duration)
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -664,7 +647,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2800', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2800', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, DURATION_TIME, FINISH_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -672,7 +655,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2900
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2900
         * @tc.name      : 029.play->seek(out of duration)
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -680,7 +663,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level 3
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_2900', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2900', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, DURATION_TIME + DELTA_TIME,
             FINISH_STATE, END_STATE);
         initAudioPlayer();
@@ -689,7 +672,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_3000
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3000
         * @tc.name      : 030.play->->seek(rand)
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -697,7 +680,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_3000', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3000', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, DURATION_TIME / RAND_NUM, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -705,7 +688,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_3200
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3200
         * @tc.name      : 032.play->pause->seek(0)->play
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -713,7 +696,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_3200', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3200', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, 0, PLAY_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -721,7 +704,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_3300
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3300
         * @tc.name      : 033.play->pause->seek(duration)->play
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -729,7 +712,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_3300', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3300', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, DURATION_TIME, PLAY_STATE,
             FINISH_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
@@ -738,7 +721,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_3400
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3400
         * @tc.name      : 034.play->pause->seek(out of duratin)->play
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -746,7 +729,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level 3
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_3400', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3400', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, DURATION_TIME + DELTA_TIME, PLAY_STATE,
             FINISH_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
@@ -755,7 +738,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_3500
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3500
         * @tc.name      : 035.play->seek(out of duratin)->play
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -763,7 +746,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level 3
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_3500', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3500', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, DURATION_TIME + DELTA_TIME,
             FINISH_STATE, PLAY_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
@@ -772,7 +755,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_3600
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3600
         * @tc.name      : 036.Loop Play
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -780,13 +763,12 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_3600', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3600', 0, async function (done) {
         let playCount = 0;
         let seekCount = 0;
         let isTimeDone = false;
         let testAudioPlayer = media.createAudioPlayer();
         testAudioPlayer.on('dataLoad', () => {
-            console.info(`case dataLoad called`);
             expect(testAudioPlayer.currentTime).assertEqual(0);
             expect(testAudioPlayer.duration).assertEqual(DURATION_TIME);
             expect(testAudioPlayer.state).assertEqual('paused');
@@ -794,7 +776,6 @@ describe('PlayerLocalTestAudioFUNC', function () {
             testAudioPlayer.play();
         });
         testAudioPlayer.on('play', () => {
-            console.info(`case play called`);
             console.info(`case play currentTime is ${testAudioPlayer.currentTime}`);
             expect(testAudioPlayer.duration).assertEqual(DURATION_TIME);
             expect(testAudioPlayer.state).assertEqual('playing');
@@ -816,22 +797,18 @@ describe('PlayerLocalTestAudioFUNC', function () {
             }
             seekCount++
             console.info(`case seekDoneTime is ${seekDoneTime}`);
-            console.info(`case seek called`);
         });
         testAudioPlayer.on('finish', () => {
             expect(testAudioPlayer.state).assertEqual('playing');
-            console.info(`case finish called`);
         });
         testAudioPlayer.on('reset', () => {
             expect(testAudioPlayer.state).assertEqual('idle');
-            console.info(`case reset called`);
             testAudioPlayer.release();
             isTimeDone = true;
         });
         testAudioPlayer.src = AUDIO_SOURCE;
         setTimeout(function() {
             if (!isTimeDone) {
-                console.info(`case is time out!`);
                 expect(isTimeOut).assertTrue();
             }
             done();
@@ -839,7 +816,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_3700
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3700
         * @tc.name      : 037.set volume 0 to 1
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
@@ -847,7 +824,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_Function_04_3700', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3700', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, VOLUME_STATE, 0,
             VOLUME_STATE, MAX_VOLUME, RESET_STATE, END_STATE);
         initAudioPlayer();

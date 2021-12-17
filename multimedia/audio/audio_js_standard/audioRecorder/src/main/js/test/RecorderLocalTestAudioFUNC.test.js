@@ -48,7 +48,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
 
     function sleep(time) {
         for(let t = Date.now();Date.now() - t <= time;);
-    };
+    }
 
     function initAudioRecorder() {
         if (typeof (audioRecorder) != 'undefined') {
@@ -173,7 +173,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_Codec_AAC_Function_0100
+        * @tc.number    : SUB_MEDIA_RECORDER_CODEC_AAC_0100
         * @tc.name      : 01.AAC
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
@@ -181,7 +181,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0100', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_CODEC_AAC_0100', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test1.m4a';
         initAudioRecorder();
         let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
@@ -190,7 +190,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_Codec_AAC_Function_0210
+        * @tc.number    : SUB_MEDIA_RECORDER_CODEC_AAC_0210
         * @tc.name      : 02.AAC_Different Channels 1
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
@@ -198,7 +198,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0210', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_CODEC_AAC_0210', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test2.m4a';
         audioConfig.numberOfChannels = CHANNEL_ONE;
         initAudioRecorder();
@@ -208,7 +208,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_Codec_AAC_Function_0220
+        * @tc.number    : SUB_MEDIA_RECORDER_CODEC_AAC_0220
         * @tc.name      : 02.AAC_Different Channels 2
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
@@ -216,7 +216,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0220', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_CODEC_AAC_0220', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test3.m4a';
         audioConfig.numberOfChannels = CHANNEL_TWO;
         initAudioRecorder();
@@ -226,7 +226,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_Codec_AAC_Function_0310
+        * @tc.number    : SUB_MEDIA_RECORDER_CODEC_AAC_0310
         * @tc.name      : 03.AAC_DifferentSampleRate 8000
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
@@ -234,7 +234,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0310', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_CODEC_AAC_0310', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test4.m4a';
         audioConfig.audioSampleRate = 8000; // samplerate 8000
         audioConfig.numberOfChannels = CHANNEL_TWO;
@@ -245,7 +245,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_Codec_AAC_Function_0320
+        * @tc.number    : SUB_MEDIA_RECORDER_CODEC_AAC_0320
         * @tc.name      : 03.AAC_DifferentSampleRate 32000
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
@@ -253,7 +253,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0320', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_CODEC_AAC_0320', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test5.mp4';
         audioConfig.audioSampleRate = 32000; // samplerate 32000
         audioConfig.numberOfChannels = CHANNEL_ONE;
@@ -265,7 +265,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_Codec_AAC_Function_0330
+        * @tc.number    : SUB_MEDIA_RECORDER_CODEC_AAC_0330
         * @tc.name      : 03.AAC_DifferentSampleRate 44100
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
@@ -273,7 +273,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0330', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_CODEC_AAC_0330', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test6.mp4';
         audioConfig.audioSampleRate = 44100; // samplerate 44100
         audioConfig.numberOfChannels = CHANNEL_TWO;
@@ -285,7 +285,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_Codec_AAC_Function_0340
+        * @tc.number    : SUB_MEDIA_RECORDER_CODEC_AAC_0340
         * @tc.name      : 03.AAC_DifferentSampleRate 64000
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
@@ -293,7 +293,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0340', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_CODEC_AAC_0340', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test7.m4a';
         audioConfig.audioSampleRate = 64000; // samplerate 64000
         audioConfig.numberOfChannels = CHANNEL_ONE;
@@ -305,7 +305,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_Codec_AAC_Function_0350
+        * @tc.number    : SUB_MEDIA_RECORDER_CODEC_AAC_0350
         * @tc.name      : 03.AAC_DifferentSampleRate 96000
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
@@ -313,7 +313,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0340', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_CODEC_AAC_0340', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test8.m4a';
         audioConfig.audioSampleRate = 96000; // samplerate 96000
         audioConfig.numberOfChannels = CHANNEL_TWO;
@@ -325,7 +325,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_Codec_AAC_Function_0410
+        * @tc.number    : SUB_MEDIA_RECORDER_CODEC_AAC_0410
         * @tc.name      : 04.AAC_DifferentBitrate 8000
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
@@ -333,7 +333,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0410', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_CODEC_AAC_0410', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test9.mp4';
         audioConfig.audioSampleRate = 22050; // samplerate 22050
         audioConfig.audioEncodeBitRate = 8000; // encodeBitrate 8000
@@ -346,7 +346,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_Codec_AAC_Function_0420
+        * @tc.number    : SUB_MEDIA_RECORDER_CODEC_AAC_0420
         * @tc.name      : 04.AAC_DifferentBitrate 16000
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
@@ -354,7 +354,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0420', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_CODEC_AAC_0420', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test10.mp4';
         audioConfig.audioSampleRate = 44100; // samplerate 44100
         audioConfig.audioEncodeBitRate = 16000; // encodeBitrate 16000
@@ -367,7 +367,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_Codec_AAC_Function_0430
+        * @tc.number    : SUB_MEDIA_RECORDER_CODEC_AAC_0430
         * @tc.name      : 04.AAC_DifferentBitrate 32000
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
@@ -375,7 +375,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0430', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_CODEC_AAC_0430', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test11.m4a';
         audioConfig.audioSampleRate = 44100; // samplerate 44100
         audioConfig.audioEncodeBitRate = 32000; // encodeBitrate 32000
@@ -388,7 +388,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_Codec_AAC_Function_0440
+        * @tc.number    : SUB_MEDIA_RECORDER_CODEC_AAC_0440
         * @tc.name      : 04.AAC_DifferentBitrate 64000
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
@@ -396,7 +396,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0440', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_CODEC_AAC_0440', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test12.m4a';
         audioConfig.audioSampleRate = 44100; // samplerate 44100
         audioConfig.audioEncodeBitRate = 64000; // encodeBitrate 64000
@@ -409,7 +409,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_Codec_AAC_Function_0450
+        * @tc.number    : SUB_MEDIA_RECORDER_CODEC_AAC_0450
         * @tc.name      : 04.AAC_DifferentBitrate 112000
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
@@ -417,7 +417,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_RECORDER_Codec_AAC_Function_0450', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_CODEC_AAC_0450', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test13.m4a';
         audioConfig.audioSampleRate = 44100; // samplerate 44100
         audioConfig.audioEncodeBitRate = 112000; // encodeBitrate 112000
@@ -430,7 +430,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_Format_MP4_Function_0200
+        * @tc.number    : SUB_MEDIA_RECORDER_FORMAT_MP4_0200
         * @tc.name      : 02.AAC,mp4
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
@@ -438,7 +438,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_RECORDER_Format_MP4_Function_0200', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_FORMAT_MP4_0200', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test14.mp4';
         audioConfig.audioEncodeBitRate = 22050; // samplerate 22050
         audioConfig.audioSampleRate = 22050; // encodeBitrate 22050
@@ -459,7 +459,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_RECORDER_Format_MP4_Function_0200', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_FORMAT_MP4_0200', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test15.m4a';
         audioConfig.audioEncodeBitRate = 22050; // samplerate 22050
         audioConfig.audioSampleRate = 22050; // encodeBitrate 22050
@@ -472,7 +472,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_LOCAL_AUDIO_Function_06_0100
+        * @tc.number    : SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_0100
         * @tc.name      : 001.start
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
@@ -480,7 +480,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_RECORDER_LOCAL_AUDIO_Function_06_0100', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_0100', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test16.m4a';
         audioConfig.fileFormat = FORMAT_M4A;
         initAudioRecorder();
@@ -490,7 +490,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_LOCAL_AUDIO_Function_06_0500
+        * @tc.number    : SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_0500
         * @tc.name      : 005.reset
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
@@ -498,7 +498,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_RECORDER_LOCAL_AUDIO_Function_06_0500', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_0500', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test17.m4a';
         audioConfig.fileFormat = FORMAT_M4A;
         initAudioRecorder();
@@ -508,7 +508,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_LOCAL_AUDIO_Function_06_1100
+        * @tc.number    : SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_1100
         * @tc.name      : 011.start->reset->start->stop
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
@@ -516,7 +516,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
        
-    it('SUB_MEDIA_RECORDER_LOCAL_AUDIO_Function_06_1100', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_1100', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test18.mp4';
         audioConfig.fileFormat = FORMAT_MP4;
         initAudioRecorder();
