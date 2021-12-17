@@ -106,7 +106,7 @@ describe('ActsMissionSnapshotTest', function () {
                         data.snapshot.getPixelBytesNumber().then(function (data){
                             console.debug("=ACTS_MissionSnapshot_0200 ====>"
                             +"(data.snapshot.getPixelBytesNumber()=)" + data)
-                            expect(data != 0).assertEqual(true);
+                            expect(data > 0).assertEqual(true);
                             console.debug('ACTS_MissionSnapshot_0200====<end')
                             done();
                         })
@@ -189,7 +189,7 @@ describe('ActsMissionSnapshotTest', function () {
                             data.snapshot.getPixelBytesNumber().then(function (data){
                                 console.debug("=ACTS_MissionSnapshot_0300 ====> "
                                 +("data.snapshot.getPixelBytesNumber()=" + data))
-                                expect(data != 0).assertEqual(true);
+                                expect(data > 0).assertEqual(true);
                                 unsubscribe(".then() ", subscriber);
                                 console.debug('ACTS_MissionSnapshot_0300====<end')
                                 done();
@@ -301,7 +301,7 @@ describe('ActsMissionSnapshotTest', function () {
                             data.snapshot.getPixelBytesNumber().then(function (data){
                                 console.debug("=ACTS_MissionSnapshot_0500 ====> "
                                 +("data.snapshot.getPixelBytesNumber()=" + data))
-                                expect(data != 0).assertEqual(true);
+                                expect(data > 0).assertEqual(true);
                                 console.debug('ACTS_MissionSnapshot_0500====<end')
                                 done();
                                 })
@@ -310,8 +310,6 @@ describe('ActsMissionSnapshotTest', function () {
                             console.debug('ACTS_MissionSnapshot_0500====<end catch (err) get')
                             done();
                         }
-                        // console.debug('ACTS_MissionSnapshot_0500====<end')
-                        // done();
                     }).catch(function (err) {
                         console.debug("=ACTS_MissionSnapshot_0500 catch err ====>"
                             + ("json err 【") + JSON.stringify(err) + (" 】 "));
@@ -401,7 +399,7 @@ describe('ActsMissionSnapshotTest', function () {
                                 data.snapshot.getPixelBytesNumber().then(function (data){
                                     console.debug("=ACTS_MissionSnapshot_0600 ====> "
                                         +("data.snapshot.getPixelBytesNumber()=" + data))
-                                    expect(data != 0).assertEqual(true);
+                                    expect(data > 0).assertEqual(true);
                                     unsubscribe(".then() ", subscriber);
                                     console.debug('ACTS_MissionSnapshot_0600====<end')
                                     done();
