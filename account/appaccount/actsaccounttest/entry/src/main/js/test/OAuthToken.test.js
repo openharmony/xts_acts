@@ -17,6 +17,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 const TIMEOUT = 5000;
 const LENGTHLIMIT = 1024;
+const EACHTIMEOUT = 500;
 describe('ActsAccountOAuthToken', function () {
     function sleep(delay) {
         var start = (new Date()).getTime();
@@ -31,6 +32,12 @@ describe('ActsAccountOAuthToken', function () {
         console.debug("====>beforeAll end====");
         done();
     });
+
+    beforeEach(async function (done) {
+        console.debug("====>beforeEach enter====");
+        sleep(EACHTIMEOUT);
+        done();
+    })
 
     /*
      * @tc.number    : ActsAccountOAuthToken_0100

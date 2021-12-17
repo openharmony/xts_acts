@@ -17,6 +17,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 const TIMEOUT = 5000;
 const STRCOUNT = 1025;
+const EACHTIMEOUT = 500;
 describe('ActsAccountAppAccess', function () {
     function sleep(delay) {
         var start = (new Date()).getTime();
@@ -30,7 +31,13 @@ describe('ActsAccountAppAccess', function () {
         sleep(TIMEOUT);
         console.debug("====>beforeAll end====");
         done();
-    });
+    })
+
+    beforeEach(async function (done) {
+        console.debug("====>beforeEach enter====");
+        sleep(EACHTIMEOUT);
+        done();
+    })
 
     /*
      * @tc.number    : ActsAccountAppAccess_0100

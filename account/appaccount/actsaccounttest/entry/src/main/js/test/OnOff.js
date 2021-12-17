@@ -499,6 +499,7 @@ describe('ActsAccountChangeOnOff', async function () {
      */
     it('ActsAccountChangeOnOff_0800', 0, async function (done) {
         console.debug("====>ActsAccountChangeOnOff_0800 start====");
+        let dataMap = new Map();
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat appAccountManager finish");
         console.debug("====>add account ActsAccountChangeOnOff_0800 start");
@@ -506,8 +507,16 @@ describe('ActsAccountChangeOnOff', async function () {
         console.debug("====>on ActsAccountChangeOnOff_0800 start");
         function changeOnCallback(data){
             console.debug("====>receive change 0800 data:" + JSON.stringify(data));
-            expect(data[0].name).assertEqual("onoff_self");
-            expect(data[0].owner).assertEqual("com.example.actsaccounttest");
+            console.debug("====>data.length:" + data.length);
+            for (let i = 0, len = data.length; i < len; i++) {
+                dataMap.set(data[i].name, data[i].owner)
+            }
+            expect(dataMap.has("onoff_self")).assertTrue();
+            if (dataMap.has("onoff_self")) {
+                let data = dataMap.get("onoff_self");
+                console.debug("====>the account owner is: " + data);
+                expect(data).assertEqual("com.example.actsaccounttest");
+            }
             appAccountManager.off('change', function (){
                 console.debug("====>off ActsAccountChangeOnOff_0800 finish====");
                 appAccountManager.deleteAccount("onoff_self", (err)=>{
@@ -545,6 +554,7 @@ describe('ActsAccountChangeOnOff', async function () {
      */
     it('ActsAccountChangeOnOff_0900', 0, async function (done) {
         console.debug("====>ActsAccountChangeOnOff_0900 start====");
+        let dataMap = new Map();
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat appAccountManager finish");
         console.debug("====>add first account ActsAccountChangeOnOff_0900 start");
@@ -554,10 +564,22 @@ describe('ActsAccountChangeOnOff', async function () {
         console.debug("====>on ActsAccountChangeOnOff_0900 start");
         function changeOnCallback(data){
             console.debug("====>receive change 0900 data:" + JSON.stringify(data));
-            expect(data[0].name).assertEqual("onoff_self_first");
-            expect(data[0].owner).assertEqual("com.example.actsaccounttest");
-            expect(data[1].name).assertEqual("onoff_self_second");
-            expect(data[1].owner).assertEqual("com.example.actsaccounttest");
+            console.debug("====>data.length:" + data.length);
+            for (let i = 0, len = data.length; i < len; i++) {
+                dataMap.set(data[i].name, data[i].owner)
+            }
+            expect(dataMap.has("onoff_self_first")).assertTrue();
+            if (dataMap.has("onoff_self_first")) {
+                let data = dataMap.get("onoff_self_first");
+                console.debug("====>the account owner is: " + data);
+                expect(data).assertEqual("com.example.actsaccounttest");
+            }
+            expect(dataMap.has("onoff_self_second")).assertTrue();
+            if (dataMap.has("onoff_self_second")) {
+                let data = dataMap.get("onoff_self_second");
+                console.debug("====>the account owner is: " + data);
+                expect(data).assertEqual("com.example.actsaccounttest");
+            }
             appAccountManager.off('change', function (){
                 console.debug("====>off ActsAccountChangeOnOff_0900 finish====");
                 appAccountManager.deleteAccount("onoff_self_first", (err)=>{
@@ -598,6 +620,8 @@ describe('ActsAccountChangeOnOff', async function () {
      */
     it('ActsAccountChangeOnOff_1000', 0, async function (done) {
         console.debug("====>ActsAccountChangeOnOff_1000 start====");
+        let dataMapFir = new Map();
+        let dataMapSec = new Map();
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat appAccountManager finish");
         console.debug("====>add account ActsAccountChangeOnOff_1000 start");
@@ -606,14 +630,30 @@ describe('ActsAccountChangeOnOff', async function () {
         var twiceSign = 0;
         function changeOnFirstCallback(data){
             console.debug("====>first receive change 1000 data:" + JSON.stringify(data));
-            expect(data[0].name).assertEqual("onoff_twice");
-            expect(data[0].owner).assertEqual("com.example.actsaccounttest");
+            console.debug("====>data.length:" + data.length);
+            for (let i = 0, len = data.length; i < len; i++) {
+                dataMapFir.set(data[i].name, data[i].owner)
+            }
+            expect(dataMapFir.has("onoff_twice")).assertTrue();
+            if (dataMapFir.has("onoff_twice")) {
+                let data = dataMapFir.get("onoff_twice");
+                console.debug("====>the account owner is: " + data);
+                expect(data).assertEqual("com.example.actsaccounttest");
+            }
             twiceSign = twiceSign + 1;
         }
         function changeOnSecondCallback(data){
             console.debug("====>second receive change 1000 data:" + JSON.stringify(data));
-            expect(data[0].name).assertEqual("onoff_twice");
-            expect(data[0].owner).assertEqual("com.example.actsaccounttest");
+            console.debug("====>data.length:" + data.length);
+            for (let i = 0, len = data.length; i < len; i++) {
+                dataMapSec.set(data[i].name, data[i].owner)
+            }
+            expect(dataMapSec.has("onoff_twice")).assertTrue();
+            if (dataMapSec.has("onoff_twice")) {
+                let data = dataMapSec.get("onoff_twice");
+                console.debug("====>the account owner is: " + data);
+                expect(data).assertEqual("com.example.actsaccounttest");
+            }
             twiceSign = twiceSign + 1;
             appAccountManager.off('change', function (){
                 console.debug("====>off ActsAccountChangeOnOff_1000 finish====");
@@ -654,6 +694,7 @@ describe('ActsAccountChangeOnOff', async function () {
      */
     it('ActsAccountChangeOnOff_1100', 0, async function (done) {
         console.debug("====>ActsAccountChangeOnOff_1100 start====");
+        let dataMap = new Map();
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat appAccountManager finish");
         console.debug("====>add account ActsAccountChangeOnOff_1100 start");
@@ -663,8 +704,16 @@ describe('ActsAccountChangeOnOff', async function () {
         function onCallBack(data){
             console.debug("====>receive change 1100 data:" + JSON.stringify(data));
             sameSign = sameSign + 1;
-            expect(data[0].name).assertEqual("onoff_same");
-            expect(data[0].owner).assertEqual("com.example.actsaccounttest");
+            console.debug("====>data.length:" + data.length);
+            for (let i = 0, len = data.length; i < len; i++) {
+                dataMap.set(data[i].name, data[i].owner)
+            }
+            expect(dataMap.has("onoff_same")).assertTrue();
+            if (dataMap.has("onoff_same")) {
+                let data = dataMap.get("onoff_same");
+                console.debug("====>the account owner is: " + data);
+                expect(data).assertEqual("com.example.actsaccounttest");
+            }
         }
         try{
             appAccountManager.on('change', ["com.example.actsaccounttest", "com.example.actsaccounttest"], onCallBack);
@@ -705,6 +754,7 @@ describe('ActsAccountChangeOnOff', async function () {
      */
     it('ActsAccountChangeOnOff_1200', 0, async function (done) {
         console.debug("====>ActsAccountChangeOnOff_1200 start====");
+        let dataMap = new Map();
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat appAccountManager finish");
         console.debug("====>add account ActsAccountChangeOnOff_1200 start");
@@ -712,8 +762,16 @@ describe('ActsAccountChangeOnOff', async function () {
         console.debug("====>on ActsAccountChangeOnOff_1200 start");
         function changeOnCallback(data){
             console.debug("====>receive change 1200 data:" + JSON.stringify(data));
-            expect(data[0].name).assertEqual("onoff_repeatoff");
-            expect(data[0].owner).assertEqual("com.example.actsaccounttest");
+            console.debug("====>data.length:" + data.length);
+            for (let i = 0, len = data.length; i < len; i++) {
+                dataMap.set(data[i].name, data[i].owner)
+            }
+            expect(dataMap.has("onoff_repeatoff")).assertTrue();
+            if (dataMap.has("onoff_repeatoff")) {
+                let data = dataMap.get("onoff_repeatoff");
+                console.debug("====>the account owner is: " + data);
+                expect(data).assertEqual("com.example.actsaccounttest");
+            }
             appAccountManager.off('change', function (){
                 console.debug("====>first off ActsAccountChangeOnOff_1200 finish====");
                 appAccountManager.off('change', function (){
