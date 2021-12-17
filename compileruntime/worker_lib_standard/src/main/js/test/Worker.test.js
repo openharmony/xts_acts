@@ -16,7 +16,7 @@
 // @ts-nocheck
 import app from '@system.app'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-//import worker from "@ohos.worker";
+import worker from '@ohos.worker'
 var worker = globalThis.requireNapi('worker');
 
 describe('workerTest', function () {
