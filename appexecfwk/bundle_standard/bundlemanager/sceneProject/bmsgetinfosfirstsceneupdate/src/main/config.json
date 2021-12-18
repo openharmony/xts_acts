@@ -42,15 +42,6 @@
             ]
           }
         ],
-        "backgroundModes": [
-          "audioRecording",
-          "location",
-          "bluetoothInteraction",
-          "multiDeviceConnection",
-          "wifiInteraction",
-          "voip",
-          "taskKeeping"
-        ],
         "name": "com.example.third1.AMainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
@@ -118,6 +109,34 @@
             }
           ]
         }
+      },
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "backgroundModes": [
+          "audioRecording",
+          "location",
+          "bluetoothInteraction",
+          "multiDeviceConnection",
+          "wifiInteraction",
+          "voip",
+          "taskKeeping"
+        ],
+        "name": "com.example.third1.AMainAbilityA",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "$string:app_name",
+        "type": "service",
+        "launchType": "standard",
+        "visible": true
       }
     ],
     "shortcuts": [

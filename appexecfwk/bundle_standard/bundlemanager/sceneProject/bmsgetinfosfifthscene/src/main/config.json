@@ -37,17 +37,6 @@
             ]
           }
         ],
-        "backgroundModes": [
-          "dataTransfer",
-          "audioPlayback",
-          "audioRecording",
-          "location",
-          "bluetoothInteraction",
-          "multiDeviceConnection",
-          "wifiInteraction",
-          "voip",
-          "taskKeeping"
-        ],
         "name": "com.example.third5.AMainAbility",
         "srcLanguage": "js",
         "icon": "$media:icon",
@@ -129,10 +118,6 @@
             ]
           }
         ],
-        "backgroundModes": [
-          "dataTransfer",
-          "voip"
-        ],
         "name": ".BMainAbility",
         "srcLanguage": "js",
         "icon": "$media:icon",
@@ -191,6 +176,61 @@
             }
           ]
         }
+      },
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "backgroundModes": [
+          "dataTransfer",
+          "audioPlayback",
+          "audioRecording",
+          "location",
+          "bluetoothInteraction",
+          "multiDeviceConnection",
+          "wifiInteraction",
+          "voip",
+          "taskKeeping"
+        ],
+        "name": "com.example.third5.MainAbilityA",
+        "srcLanguage": "js",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "$string:app_name",
+        "type": "service",
+        "visible": true,
+        "launchType": "standard"
+      },
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "backgroundModes": [
+          "dataTransfer",
+          "voip"
+        ],
+        "name": "com.example.third5.MainAbilityB",
+        "srcLanguage": "js",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "$string:app_name",
+        "type": "service",
+        "visible": true,
+        "launchType": "standard"
       }
     ],
     "js": [

@@ -23,12 +23,18 @@ const BUNDLE_PATH4 = '/data/test/bmsThirdBundleTest4.hap';
 const BUNDLE_PATH5 = '/data/test/bmsThirdBundleTest5.hap';
 const BUNDLE_PATH6 = '/data/test/bmsThirdBundleTest6.hap';
 const BUNDLE_PATHUPDATE = '/data/test/bmsThirdBundleTestA1.hap';
+const SYSTEM_PATH = '/data/test/bmsSystemBundleTest2.hap';
+const SYSTEM_FEATURE_PATH = '/data/test/bmsSystemBundleTest2Feature.hap';
+const SYSTEM_UPDATE_PATH = '/data/test/bmsSystemBundleTest2Update.hap';
 const BUNDLE_NAME1 = 'com.example.third1';
 const BUNDLE_NAME2 = 'com.example.third2';
 const BUNDLE_NAME4 = 'com.example.third4';
 const BUNDLE_NAME5 = 'com.example.third5';
 const BUNDLE_NAME6 = 'com.example.third6';
+const SYSTEM_NAME = 'com.example.system2';
 const NUM_TWO = 2;
+const NUM_THREE = 3;
+const NUM_FOUR = 4;
 const NUM_NINE = 9;
 let dataTransfer = 1;
 let audioPlayback = 2;
@@ -68,17 +74,17 @@ describe('ActsBmsGetBackGroundModes', function () {
                     elementName: {
                         deviceId: '0',
                         bundleName: BUNDLE_NAME5,
-                        abilityName: 'com.example.third5.AMainAbility',
+                        abilityName: 'com.example.third5.MainAbilityA',
                     },
                 }
             }, 0, 0)
-            expect(dataInfos.length).assertEqual(NUM_TWO);
-            if (dataInfos.length == NUM_TWO) {
-                expect(dataInfos[0].name).assertEqual("com.example.third5.AMainAbility");
-                expect(dataInfos[0].backgroundModes).assertEqual(dataTransfer + audioPlayback + audioRecording +
+            expect(dataInfos.length).assertEqual(NUM_FOUR);
+            if (dataInfos.length == NUM_FOUR) {
+                expect(dataInfos[NUM_TWO].name).assertEqual("com.example.third5.MainAbilityA");
+                expect(dataInfos[NUM_TWO].backgroundModes).assertEqual(dataTransfer + audioPlayback + audioRecording +
                     location + bluetoothInteraction + multiDeviceConnection + wifiInteraction + voip + taskKeeping);
-                expect(dataInfos[1].name).assertEqual("com.example.third5.BMainAbility");
-                expect(dataInfos[1].backgroundModes).assertEqual(dataTransfer + voip);
+                expect(dataInfos[NUM_THREE].name).assertEqual("com.example.third5.MainAbilityB");
+                expect(dataInfos[NUM_THREE].backgroundModes).assertEqual(dataTransfer + voip);
             }
             installer.uninstall(BUNDLE_NAME5, {
                 param: {
@@ -97,7 +103,7 @@ describe('ActsBmsGetBackGroundModes', function () {
 
     /*
     * @tc.number: bms_backGroundModes_0200
-    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant
+    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant 
     * @tc.desc: Get all background modes information, and each ability of the application
     *               contains one of the background mode
     */
@@ -149,8 +155,8 @@ describe('ActsBmsGetBackGroundModes', function () {
 
     /*
     * @tc.number: bms_backGroundModes_0300
-    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant
-    * @tc.desc: Read the backgroundModes information of the app's ability and replace invalid attributes
+    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant 
+    * @tc.desc: Read the backgroundModes information of the app's ability and replace invalid attributes 
     */
     it('bms_backGroundModes_0300', 0, async function (done) {
         console.info('=====================bms_backGroundModes_0300==================');
@@ -173,14 +179,14 @@ describe('ActsBmsGetBackGroundModes', function () {
                     elementName: {
                         deviceId: '0',
                         bundleName: BUNDLE_NAME2,
-                        abilityName: 'com.example.third2.MainAbility',
+                        abilityName: 'com.example.third2.MainAbilityA',
                     },
                 }
             }, 0, 0)
-            expect(dataInfos.length).assertEqual(1);
-            if (dataInfos.length == 1) {
-                expect(dataInfos[0].name).assertEqual("com.example.third2.MainAbility")
-                expect(dataInfos[0].backgroundModes).assertEqual(audioPlayback + audioRecording + location
+            expect(dataInfos.length).assertEqual(NUM_TWO);
+            if (dataInfos.length == NUM_TWO) {
+                expect(dataInfos[1].name).assertEqual("com.example.third2.MainAbilityA")
+                expect(dataInfos[1].backgroundModes).assertEqual(audioPlayback + audioRecording + location
                     + bluetoothInteraction + multiDeviceConnection + wifiInteraction + voip + taskKeeping)
             }
             installer.uninstall(BUNDLE_NAME2, {
@@ -200,8 +206,8 @@ describe('ActsBmsGetBackGroundModes', function () {
 
     /*
     * @tc.number: bms_backGroundModes_0400
-    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant
-    * @tc.desc: Read the backgroundModes information of the app's ability and replace invalid attributes
+    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant 
+    * @tc.desc: Read the backgroundModes information of the app's ability and replace invalid attributes 
     */
     it('bms_backGroundModes_0400', 0, async function (done) {
         console.info('=====================bms_backGroundModes_0400==================');
@@ -250,8 +256,8 @@ describe('ActsBmsGetBackGroundModes', function () {
 
     /*
     * @tc.number: bms_backGroundModes_0500
-    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant
-    * @tc.desc: Get the backgroundModes information of the multi-hap package of the application
+    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant 
+    * @tc.desc: Get the backgroundModes information of the multi-hap package of the application 
     */
     it('bms_backGroundModes_0500', 0, async function (done) {
         console.info('=====================bms_backGroundModes_0500==================');
@@ -274,14 +280,14 @@ describe('ActsBmsGetBackGroundModes', function () {
                     elementName: {
                         deviceId: '0',
                         bundleName: BUNDLE_NAME1,
-                        abilityName: 'com.example.third1.MainAbility',
+                        abilityName: 'com.example.third1.MainAbilityA',
                     },
                 }
             }, 0, 0)
-            expect(dataInfos.length).assertEqual(NUM_TWO);
-            if (dataInfos.length == NUM_TWO) {
-                expect(dataInfos[0].name).assertEqual("com.example.third1.MainAbility")
-                expect(dataInfos[0].backgroundModes).assertEqual(dataTransfer + audioPlayback + audioRecording +
+            expect(dataInfos.length).assertEqual(NUM_FOUR);
+            if (dataInfos.length == NUM_FOUR) {
+                expect(dataInfos[1].name).assertEqual("com.example.third1.MainAbilityA")
+                expect(dataInfos[1].backgroundModes).assertEqual(dataTransfer + audioPlayback + audioRecording +
                     location + bluetoothInteraction + multiDeviceConnection + wifiInteraction + voip + taskKeeping)
             }
             console.info("========dataInfos[0].backgroundModes=======>" + dataInfos[0].backgroundModes)
@@ -303,7 +309,7 @@ describe('ActsBmsGetBackGroundModes', function () {
     /*
     * @tc.number: bms_backGroundModes_0600
     * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant
-    * @tc.desc: Get the backgroundModes information of the upgraded application's ability
+    * @tc.desc: Get the backgroundModes information of the upgraded application's ability 
     */
     it('bms_backGroundModes_0600', 0, async function (done) {
         console.info('=====================bms_backGroundModes_0600==================');
@@ -327,14 +333,14 @@ describe('ActsBmsGetBackGroundModes', function () {
                     elementName: {
                         deviceId: '0',
                         bundleName: BUNDLE_NAME1,
-                        abilityName: 'com.example.third1.MainAbility',
+                        abilityName: 'com.example.third1.MainAbilityA',
                     },
                 }
             }, 0, 0)
-            expect(dataInfos.length).assertEqual(1);
-            if (dataInfos.length == 1) {
-                expect(dataInfos[0].name).assertEqual("com.example.third1.MainAbility")
-                expect(dataInfos[0].backgroundModes).assertEqual(dataTransfer + audioPlayback + audioRecording +
+            expect(dataInfos.length).assertEqual(NUM_TWO);
+            if (dataInfos.length == NUM_TWO) {
+                expect(dataInfos[1].name).assertEqual("com.example.third1.MainAbilityA")
+                expect(dataInfos[1].backgroundModes).assertEqual(dataTransfer + audioPlayback + audioRecording +
                     location + bluetoothInteraction + multiDeviceConnection + wifiInteraction + voip + taskKeeping)
             }
             installer.install(bundlePath2, {
@@ -358,10 +364,10 @@ describe('ActsBmsGetBackGroundModes', function () {
                         },
                     }
                 }, 0, 0)
-                expect(dataInfos.length).assertEqual(1);
-                if (dataInfos.length == 1) {
-                    expect(dataInfos[0].name).assertEqual("com.example.third1.AMainAbility");
-                    expect(dataInfos[0].backgroundModes).assertEqual(audioRecording + location + bluetoothInteraction +
+                expect(dataInfos.length).assertEqual(NUM_TWO);
+                if (dataInfos.length == NUM_TWO) {
+                    expect(dataInfos[1].name).assertEqual("com.example.third1.AMainAbilityA");
+                    expect(dataInfos[1].backgroundModes).assertEqual(audioRecording + location + bluetoothInteraction +
                         multiDeviceConnection + wifiInteraction + voip + taskKeeping);
                 }
                 installer.uninstall(BUNDLE_NAME1, {
@@ -383,7 +389,7 @@ describe('ActsBmsGetBackGroundModes', function () {
     /*
     * @tc.number: bms_backGroundModes_0700
     * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant
-    * @tc.desc: Uninstall the application, get the backgroundModes information of the upgraded application's ability
+    * @tc.desc: Uninstall the application, get the backgroundModes information of the upgraded application's ability 
     */
     it('bms_backGroundModes_0700', 0, async function (done) {
         console.info('=====================bms_backGroundModes_0700==================');
@@ -410,10 +416,10 @@ describe('ActsBmsGetBackGroundModes', function () {
                     }
                 }
             }, 0, 0)
-            expect(dataInfos.length).assertEqual(1);
-            if (dataInfos.length == 1) {
-                expect(dataInfos[0].name).assertEqual("com.example.third1.MainAbility")
-                expect(dataInfos[0].backgroundModes).assertEqual(dataTransfer + audioPlayback + audioRecording +
+            expect(dataInfos.length).assertEqual(NUM_TWO);
+            if (dataInfos.length == NUM_TWO) {
+                expect(dataInfos[1].name).assertEqual("com.example.third1.MainAbilityA")
+                expect(dataInfos[1].backgroundModes).assertEqual(dataTransfer + audioPlayback + audioRecording +
                     location + bluetoothInteraction + multiDeviceConnection + wifiInteraction + voip + taskKeeping)
             }
             installer.uninstall(BUNDLE_NAME1, {
@@ -440,6 +446,147 @@ describe('ActsBmsGetBackGroundModes', function () {
                 expect(dataInfos.length).assertEqual(0);
                 done();
             });
+        })
+    })
+
+    /*
+    * @tc.number: bms_getIsKeepAliveAndSingleUser_0100
+    * @tc.name: Get the isKeepAlive and singleUser information of the third-party application
+    * @tc.desc: Get the isKeepAlive and singleUser information of the third-party application by getBundleInfo
+    */
+    it('bms_getIsKeepAliveAndSingleUser_0100', 0, async function (done) {
+        console.info('===========begin bms_getIsKeepAliveAndSingleUser_0100===========');
+        var installer = await bundle.getBundleInstaller();
+        installer.install([BUNDLE_PATH1], {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
+            }
+        }, async (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual('SUCCESS');
+            bundle.getBundleInfo(BUNDLE_NAME1, 1, (err, bundleInfo) => {
+                expect(err.code).assertEqual(0);
+                expect(bundleInfo.isKeepAlive).assertFalse();
+                expect(bundleInfo.singleUser).assertFalse();
+                installer.uninstall(BUNDLE_NAME1, {
+                    param: {
+                        userId: 0,
+                        installFlag: 1,
+                        isKeepData: false
+                    }
+                }, (err, data) => {
+                    expect(err.code).assertEqual(0);
+                    expect(data.status).assertEqual(0);
+                    expect(data.statusMessage).assertEqual('SUCCESS');
+                    done();
+                });
+            });
+        })
+    })
+
+    /*
+    * @tc.number: bms_getIsKeepAliveAndSingleUser_0200
+    * @tc.name: Get the isKeepAlive and singleUser information of the application which doesn't config those fields
+    * @tc.desc: Get the isKeepAlive and singleUser information of the application which doesn't config those fields
+    *               by getBundleInfo(application is system)
+    */
+    it('bms_getIsKeepAliveAndSingleUser_0200', 0, async function (done) {
+        console.info('=====================bms_getIsKeepAliveAndSingleUser_0200==================');
+        var bundleInfo = await bundle.getBundleInfo('com.example.system1', 1);
+        console.info('========bundleInfo is=====' + JSON.stringify(bundleInfo));
+        expect(bundleInfo.isKeepAlive).assertFalse();
+        expect(bundleInfo.singleUser).assertFalse();
+        done();
+    })
+
+    /*
+    * @tc.number: bms_getIsKeepAliveAndSingleUser_0300
+    * @tc.name: Get the isKeepAlive and singleUser information of the application includes two haps
+    * @tc.desc: Get the isKeepAlive and singleUser information of the application includes two haps, the attribute value
+    *               will remain the same as the attribute value of the first installed hap(application is system)
+    */
+    it('bms_getIsKeepAliveAndSingleUser_0300', 0, async function (done) {
+        console.info('===========begin bms_getIsKeepAliveAndSingleUser_0300===========');
+        let installer = await bundle.getBundleInstaller()
+        installer.install([SYSTEM_PATH, SYSTEM_FEATURE_PATH], {
+            param: {
+                userId: 0,
+                isKeepData: false
+            }
+        }, async (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual('SUCCESS');
+            var bundleInfo = await bundle.getBundleInfo(SYSTEM_NAME, 1);
+            expect(bundleInfo.singleUser).assertTrue();
+            expect(bundleInfo.isKeepAlive).assertFalse();
+            installer.uninstall(SYSTEM_NAME, {
+                param: {
+                    userId: 0,
+                    isKeepData: false
+                }
+            }, (err, data) => {
+                expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
+                expect(data.statusMessage).assertEqual('SUCCESS');
+                done();
+            });
+        });
+    })
+
+    /*
+    * @tc.number: bms_getIsKeepAliveAndSingleUser_0400
+    * @tc.name: Update application, get the isKeepAlive and singleUser information of the application
+    * @tc.desc: Update application, get the isKeepAlive and singleUser information of the application whether update
+    *               (application is system)
+    */
+    it('bms_getIsKeepAliveAndSingleUser_0400', 0, async function (done) {
+        console.info('=====================bms_getIsKeepAliveAndSingleUser_0400==================');
+        var installer = await bundle.getBundleInstaller();
+        installer.install([SYSTEM_PATH], {
+            param: {
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
+            }
+        }, async (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual('SUCCESS');
+            var bundleInfo = await bundle.getBundleInfo(SYSTEM_NAME, 1);
+            expect(bundleInfo.singleUser).assertTrue();
+            expect(bundleInfo.isKeepAlive).assertFalse();
+            installer.install([SYSTEM_UPDATE_PATH], {
+                param: {
+                    userId: 0,
+                    installFlag: 1,
+                    isKeepData: false
+                }
+            }, async (err, data) => {
+                expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
+                expect(data.statusMessage).assertEqual('SUCCESS');
+                var bundleInfo = await bundle.getBundleInfo(SYSTEM_NAME, 1);
+                console.info('========bundleInfo is=====' + JSON.stringify(bundleInfo));
+                expect(bundleInfo.name).assertEqual(SYSTEM_NAME);
+                expect(bundleInfo.isKeepAlive).assertTrue();
+                expect(bundleInfo.singleUser).assertTrue();
+                installer.uninstall(SYSTEM_NAME, {
+                    param: {
+                        userId: 0,
+                        installFlag: 1,
+                        isKeepData: false
+                    }
+                }, (err, data) => {
+                    expect(err.code).assertEqual(0);
+                    expect(data.status).assertEqual(0);
+                    expect(data.statusMessage).assertEqual('SUCCESS');
+                    done();
+                });
+            })
         })
     })
 })

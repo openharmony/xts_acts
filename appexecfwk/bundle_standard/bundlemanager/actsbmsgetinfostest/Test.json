@@ -32,7 +32,10 @@
                 "bmsThirdBundleTest4.hap->/data/test/bmsThirdBundleTest4.hap",
                 "bmsThirdBundleTest5.hap->/data/test/bmsThirdBundleTest5.hap",
                 "bmsThirdBundleTest6.hap->/data/test/bmsThirdBundleTest6.hap",
-                "bmsThirdBundleTestA1.hap->/data/test/bmsThirdBundleTestA1.hap"
+                "bmsThirdBundleTestA1.hap->/data/test/bmsThirdBundleTestA1.hap",
+                "bmsSystemBundleTest2.hap->/data/test/bmsSystemBundleTest2.hap",
+                "bmsSystemBundleTest2Feature.hap->/data/test/bmsSystemBundleTest2Feature.hap",
+                "bmsSystemBundleTest2Update.hap->/data/test/bmsSystemBundleTest2Update.hap"
             ]
         },
         {
