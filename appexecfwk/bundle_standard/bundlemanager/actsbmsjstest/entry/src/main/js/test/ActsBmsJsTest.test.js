@@ -14,6 +14,8 @@
  */
 import bundle from '@ohos.bundle'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+const NUM_TWO = 2;
+const NUM_FOUR = 4;
 describe('ActsBmsJsTest', function () {
     /*
     * @tc.number: bms_getJsAbility_0100
@@ -42,8 +44,8 @@ describe('ActsBmsJsTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             let result = await bundle.getBundleInfo(bundleName, 1);
-            expect(result.abilityInfo.length).assertEqual(1);
-            if (result.abilityInfo.length == 1) {
+            expect(result.abilityInfo.length).assertEqual(NUM_TWO);
+            if (result.abilityInfo.length == NUM_TWO) {
                 console.debug('========check abilityName ========' + JSON.stringify(result.abilityInfo));
                 expect(result.abilityInfo[0].name).assertEqual(abilityName);
                 expect(result.abilityInfo[0].srcLanguage).assertEqual('js');
@@ -94,8 +96,8 @@ describe('ActsBmsJsTest', function () {
             expect(data.statusMessage).assertEqual('SUCCESS');
             let result = await bundle.getBundleInfo(bundleName, 1)
             console.debug('==========bundleInfo==========' + JSON.stringify(result))
-            expect(result.abilityInfo.length).assertEqual(2);
-            if (result.abilityInfo.length == 2) {
+            expect(result.abilityInfo.length).assertEqual(NUM_FOUR);
+            if (result.abilityInfo.length == NUM_FOUR) {
                 console.debug('========check abilityName ========' + JSON.stringify(result.abilityInfo));
                 expect(result.abilityInfo[0].name).assertEqual(abilityName1);
                 expect(result.abilityInfo[0].srcLanguage).assertEqual('js');

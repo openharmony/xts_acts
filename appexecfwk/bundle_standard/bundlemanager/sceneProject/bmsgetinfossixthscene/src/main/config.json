@@ -44,7 +44,7 @@
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
-        "type": "page",
+        "type": "service",
         "launchType": "standard"
       },
       {
@@ -66,7 +66,7 @@
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
-        "type": "page",
+        "type": "service",
         "launchType": "standard"
       },
       {
@@ -88,7 +88,7 @@
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
-        "type": "page",
+        "type": "service",
         "launchType": "standard"
       },
       {
@@ -110,7 +110,7 @@
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
-        "type": "page",
+        "type": "service",
         "launchType": "standard"
       },
       {
@@ -132,7 +132,7 @@
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
-        "type": "page",
+        "type": "service",
         "launchType": "standard"
       },
       {
@@ -154,7 +154,7 @@
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
-        "type": "page",
+        "type": "service",
         "launchType": "standard"
       },
       {
@@ -176,7 +176,7 @@
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
-        "type": "page",
+        "type": "service",
         "launchType": "standard"
       },
       {
@@ -198,7 +198,7 @@
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
-        "type": "page",
+        "type": "service",
         "launchType": "standard"
       },
       {
@@ -220,7 +220,7 @@
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
-        "type": "page",
+        "type": "service",
         "launchType": "standard"
       }
     ],

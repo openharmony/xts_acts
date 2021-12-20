@@ -41,17 +41,6 @@
             ]
           }
         ],
-        "backgroundModes": [
-          "dataTransfer",
-          "audioPlayback",
-          "audioRecording",
-          "location",
-          "bluetoothInteraction",
-          "multiDeviceConnection",
-          "wifiInteraction",
-          "voip",
-          "taskKeeping"
-        ],
         "name": "com.example.third3.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
@@ -120,6 +109,46 @@
             }
           ]
         }
+      },
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "backgroundModes": [
+          "dataTransfer",
+          "audioPlayback",
+          "audioRecording",
+          "location",
+          "bluetoothInteraction",
+          "multiDeviceConnection",
+          "wifiInteraction",
+          "voip",
+          "taskKeeping"
+        ],
+        "name": "com.example.third1.MainAbilityA",
+        "icon": "$media:icon",
+        "form": {
+          "formEntity": [
+            "homeScreen",
+            "searchbox"
+          ],
+          "defaultHeight": 100,
+          "defaultWidth": 200,
+          "minHeight": 50,
+          "minWidth": 100
+        },
+        "description": "$string:mainability_description",
+        "label": "$string:app_name",
+        "type": "service",
+        "launchType": "standard",
+        "visible": true
       }
     ],
     "shortcuts": [

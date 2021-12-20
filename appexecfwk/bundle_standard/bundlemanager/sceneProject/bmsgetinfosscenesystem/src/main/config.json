@@ -2,7 +2,6 @@
   "app": {
     "bundleName": "com.example.system1",
     "vendor": "example",
-    "singleUser":true,
     "version": {
       "code": 1,
       "name": "1.0"
@@ -14,9 +13,7 @@
     }
   },
   "deviceConfig": {
-    "default":{
-      "keepAlive":true
-    }
+    "default":{}
   },
   "module": {
     "package": "com.example.system1",
