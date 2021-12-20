@@ -25,10 +25,25 @@ describe('ActsAnsPublishInput', function () {
         console.info("=========Ans_PublishInput_0100 onConsume start==============>");
         console.info("=========Ans_PublishInput_0100 onConsume data:==============>" + JSON.stringify(data));
         var inputKey = data.request.actionButtons[0].userInput.inputKey
+        var tag = data.request.actionButtons[0].userInput.tag
+        var options = data.request.actionButtons[0].userInput.options
+        var permitMimeTypes = data.request.actionButtons[0].userInput.permitMimeTypes
+        var editType = data.request.actionButtons[0].userInput.editType
+        var additionalData = data.request.actionButtons[0].userInput.additionalData
         console.info("=========Ans_PublishInput_0100 onConsume inputKey================>"+inputKey);
+        console.info("=========Ans_PublishInput_0100 onConsume tag================>"+tag);
+        console.info("=========Ans_PublishInput_0100 onConsume options================>"+options);
+        console.info("=========Ans_PublishInput_0100 onConsume permitMimeTypes================>"+permitMimeTypes);
+        console.info("=========Ans_PublishInput_0100 onConsume editType================>"+editType);
         expect(inputKey).assertEqual("inputKey_0100");
+        expect(tag).assertEqual("tag_0100");
+        expect(options).assertEqual("options_0100");
+        expect(permitMimeTypes).assertEqual("permitMimeTypes_0100");
+        expect(editType).assertEqual(1);
+        expect(additionalData.key0100).assertEqual("0100");
         console.info("=========Ans_PublishInput_0100 onConsume end================>");
     }
+
 
     /*
      * @tc.number: Ans_PublishInput_0100
@@ -89,6 +104,11 @@ describe('ActsAnsPublishInput', function () {
                         wantAgent:wantAgentData,
                         userInput : {
                             inputKey: "inputKey_0100",
+                            tag: "tag_0100",
+                            options: ["options_0100"],
+                            permitMimeTypes:["permitMimeTypes_0100"],
+                            editType:1,
+                            additionalData:{"key0100":"0100"}
                         }
                     }]
         }
@@ -100,89 +120,6 @@ describe('ActsAnsPublishInput', function () {
             console.info("======Ans_PublishInput_0100 setTimeout==============>");
             notify.unsubscribe(subscriber);
             console.info("======Ans_PublishInput_0100 setTimeout unsubscribe==>");
-            done();
-        }),timeout);
-    })
-
-    function onConsumeTwo(data) {
-        console.info("=========Ans_PublishInput_0200 onConsume start==============>");
-        console.info("=========Ans_PublishInput_0200 onConsume data:==============>" + JSON.stringify(data));
-        var inputKey = data.request.actionButtons[0].userInput.inputKey
-        console.info("=========Ans_PublishInput_0200 onConsume inputKey================>"+inputKey);
-        expect(inputKey).assertEqual(" ");
-        console.info("=========Ans_PublishInput_0200 onConsume end================>");
-    }
-
-    /*
-     * @tc.number: Ans_PublishInput_0200
-     * @tc.name: publish(request: NotificationRequest): Promise<void>;
-     * @tc.desc: Verify that the inputKey information can be received in the received notification.(inputKey = " ")
-     */
-    it('Ans_PublishInput_0200', 0, async function (done) {
-        console.info("==================Ans_PublishInput_0200 start==================>");
-        var subscriber = {
-            onConsume:onConsumeTwo,
-        }
-        var agentInfo = {
-            wants: [
-                    {
-                        deviceId: "deviceId",
-                        bundleName: "com.example.actsanspublishinput",
-                        abilityName: "com.example.actsanspublishinput.MainAbility",
-                        action: "action1",
-                        entities: ["entity1"],
-                        type: "MIMETYPE",
-                        uri: "key={true,true,false}",
-                        parameters:
-                        {
-                            mykey0: 2222,
-                            mykey1: [1, 2, 3],
-                            mykey2: "[1, 2, 3]",
-                            mykey3: "ssssssssssssssssssssssssss",
-                            mykey4: [false, true, false],
-                            mykey5: ["qqqqq", "wwwwww", "aaaaaaaaaaaaaaaaa"],
-                            mykey6: true,
-                        }
-                    }
-            ],
-            operationType: OperationType.START_ABILITY,
-            requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
-        };
-        var wantAgentData = await wantagent.getWantAgent(agentInfo);
-        console.info("===========Ans_PublishInput_0200 getWantAgent promise======>");
-        var notificationRequest = {
-            content:{
-                contentType: notify.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
-                longText : {
-                    title: "test_title",
-                    text: "test_text",
-                    additionalText: "test_additionalText",
-                    longText: "long_text",
-                    briefText: "long_briefText",
-                    expandedTitle: "long_expandedTitle"
-                },
-            },
-            id: 2,
-            slotType : notify.SlotType.SERVICE_INFORMATION,
-            wantAgent: wantAgentData,
-            actionButtons: [
-                    {
-                        title:"button2",
-                        wantAgent:wantAgentData,
-                        userInput : {
-                            inputKey: " ",
-                        }
-                    }]
-        }
-        await notify.subscribe(subscriber);
-        console.info("===========Ans_PublishInput_0200 subscribe promise======>");
-        await notify.publish(notificationRequest);
-        console.info("===========Ans_PublishInput_0200 publish promise========>");
-        setTimeout((async function(){
-            console.info("======Ans_PublishInput_0200 setTimeout==============>");
-            notify.unsubscribe(subscriber);
-            console.info("======Ans_PublishInput_0200 setTimeout unsubscribe==>");
             done();
         }),timeout);
     })

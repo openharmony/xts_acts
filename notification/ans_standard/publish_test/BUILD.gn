@@ -17,6 +17,7 @@ group("publish_test") {
   if (is_standard_system) {
     deps = [
       "actsanspublishcontroltest:ActsAnsPublishControlTest",
+      "actsanspublishconversation:ActsAnsConversationTest",
       "badgedisplayed:badgedisplayed",
       "enablenotification:enablenotification",
       "getactive:getactive",
