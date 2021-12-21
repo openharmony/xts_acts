@@ -13,14 +13,18 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsAmsMissionSnapshotTestSingleton") {
+ohos_hap("ActsAmsMissionSnapshotTestSingleton") {
   hap_profile = "./entry/src/main/config.json"
+  hap_name = "ActsAmsMissionSnapshotTestSingleton"
+  subsystem_name = XTS_SUITENAME
+  final_hap_path =
+      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  testonly = true
   deps = [
     ":hjs_demo_js_assets",
     ":hjs_demo_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAmsMissionSnapshotTestSingleton"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "./entry/src/main/js/default"
