@@ -69,7 +69,7 @@ lite_component("acts_component") {
         "//test/xts/acts/communication_lite/lwip_posix:ActsLwipTest",
 
         "//test/xts/acts/ai_lite/ai_engine_posix/base:ActsAiEngineTest",
-        "//test/xts/acts/global_lite:ActsGlobalTest",
+        "//test/xts/acts/global_lite/i18n_lite:ActsGlobalTest",
         "//test/xts/acts/sensors_lite:sensorstest",
         "//test/xts/acts/update_lite/dupdate_posix:ActsUpdateTest",
       ]
