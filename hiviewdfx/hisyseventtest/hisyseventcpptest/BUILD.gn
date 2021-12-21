@@ -22,7 +22,7 @@ config("hilogtest_config") {
     "../../utils/native",
     "//utils/native/base/include/",
     "//base/hiviewdfx/hilog/interfaces/native/innerkits/include",
-    "//base/hiviewdfx/hisysevent/interfaces/native/innerkits/include",
+    "//base/hiviewdfx/hisysevent/interfaces/native/innerkits/hisysevent/include",
   ]
 }
 ohos_moduletest_suite("ActsHiSysEventCPPTest") {
@@ -31,7 +31,7 @@ ohos_moduletest_suite("ActsHiSysEventCPPTest") {
   deps = [
     "../../utils/native:utilskit",
     "//base/hiviewdfx/hilog/interfaces/native/innerkits:libhilog",
-    "//base/hiviewdfx/hisysevent/interfaces/native/innerkits:libhisysevent",
+    "//base/hiviewdfx/hisysevent/interfaces/native/innerkits/hisysevent:libhisysevent",
     "//third_party/googletest:gtest_main",
     "//utils/native/base:utils",
   ]
