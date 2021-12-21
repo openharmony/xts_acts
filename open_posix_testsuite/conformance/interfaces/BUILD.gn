@@ -601,7 +601,8 @@ open_source_suite("ActsOpenPosixTest") {
     "sigpause/sigpause_1-1.run-test",
     "sigpause/sigpause_2-1.run-test",
     "sigpause/sigpause_3-1.run-test",
-    "sigpending/sigpending_1-1.run-test",
+
+    #"sigpending/sigpending_1-1.run-test",
     "sigpending/sigpending_2-1.run-test",
     "sigprocmask/sigprocmask_12-1.run-test",
     "sigprocmask/sigprocmask_15-1.run-test",
