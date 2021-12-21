@@ -205,6 +205,7 @@ describe('ActsAmsTestFifthScene', function () {
         console.info('Acts_Ams_test_7500 moveMissionToTop data  [' + info + ']');
         expect(typeof (info)).assertEqual("number");
         expect(info).assertEqual(0);
+        sleep(1000);
         var ret = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
         expect(result[1].baseAbility.bundleName).assertEqual(ret[0].baseAbility.bundleName);
         expect(result[1].topAbility.bundleName).assertEqual(ret[0].topAbility.bundleName);
