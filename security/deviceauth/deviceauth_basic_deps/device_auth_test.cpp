@@ -21,6 +21,7 @@
 #include <cstring>
 #include <ctime>
 
+#include "hc_alg_test.h"
 #include "hc_condition_test.h"
 #include "hc_dev_info_test.h"
 #include "hc_file_f_test.h"
@@ -184,6 +185,18 @@ HWTEST_F(DeviceAuthTest, TestCaseHcTime, TestSize.Level1)
 {
     LOGI("++++++++++++++++++++++++++++++++++++++++\n");
     TestHcTime();
+    LOGI("++++++++++++++++++++++++++++++++++++++++\n");
+}
+
+/**
+ * @tc.name: DeviceAuthTest.TestCaseHcAlg
+ * @tc.desc:
+ * @tc.type: FUNC
+ */
+HWTEST_F(DeviceAuthTest, TestCaseHcAlg, TestSize.Level1)
+{
+    LOGI("++++++++++++++++++++++++++++++++++++++++\n");
+    TestHcAlg();
     LOGI("++++++++++++++++++++++++++++++++++++++++\n");
 }
 } // namespace

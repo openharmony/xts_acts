@@ -24,6 +24,9 @@
 #define TEST_ASSERT_EQUAL_HEX8_ARRAY(expected, actual, num_elements)        \
     EXPECT_THAT(std::vector<uint8_t>((actual), (actual) + (num_elements)),  \
                 ::testing::ElementsAreArray((expected), (num_elements)))
+#define TEST_ASSERT_EQUAL_HEX8_ARRAY_MESSAGE(expected, actual, num_elements, message)   \
+    EXPECT_THAT(std::vector<uint8_t>((actual), (actual) + (num_elements)),              \
+                ::testing::ElementsAreArray((expected), (num_elements))) << (message)
 #define TEST_ASSERT_EQUAL(expected, actual) EXPECT_EQ((actual), (expected))
 #define TEST_ASSERT_EQUAL_MESSAGE(expected, actual, message) EXPECT_EQ((actual), (expected)) << (message)
 #define TEST_ASSERT_EQUAL_STRING(expected, actual) EXPECT_STREQ((actual), (expected))
@@ -35,6 +38,7 @@
 #define TEST_ASSERT_NOT_EQUAL(expected, actual) EXPECT_NE((actual), (expected))
 #define TEST_ASSERT_NOT_EQUAL_MESSAGE(expected, actual, message) EXPECT_NE((actual), (expected)) << (message)
 #define TEST_ASSERT_NOT_NULL(pointer) EXPECT_NE((pointer), nullptr)
+#define TEST_ASSERT_NULL(pointer) EXPECT_EQ((pointer), nullptr)
 #define TEST_ASSERT_TRUE(condition) EXPECT_TRUE((condition))
 #define TEST_ASSERT_TRUE_MESSAGE(condition, message) EXPECT_TRUE((condition)) << (message)
 

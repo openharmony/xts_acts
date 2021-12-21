@@ -22,6 +22,7 @@
 #include <string.h>
 #include <time.h>
 
+#include "hc_alg_test.h"
 #include "hc_condition_test.h"
 #include "hc_dev_info_test.h"
 #include "hc_file_f_test.h"
@@ -166,6 +167,18 @@ LITE_TEST_CASE(DeviceAuthBasicDepsTestSuite, TestCaseHcTime, Function | SmallTes
 {
     LOGI("++++++++++++++++++++++++++++++++++++++++\n");
     TestHcTime();
+    LOGI("++++++++++++++++++++++++++++++++++++++++\n");
+}
+
+/**
+ * @tc.name: DeviceAuthBasicDepsTestSuite.TestCaseHcAlg
+ * @tc.desc:
+ * @tc.type: FUNC
+ */
+LITE_TEST_CASE(DeviceAuthBasicDepsTestSuite, TestCaseHcAlg, Function | SmallTest | Level1)
+{
+    LOGI("++++++++++++++++++++++++++++++++++++++++\n");
+    TestHcAlg();
     LOGI("++++++++++++++++++++++++++++++++++++++++\n");
 }
 
