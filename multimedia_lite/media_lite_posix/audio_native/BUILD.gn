@@ -35,6 +35,7 @@ hcpptest_suite("ActsMediaAudioTest") {
     "//drivers/peripheral/codec/interfaces/include",
     "//drivers/peripheral/format/interfaces/include",
     "//foundation/multimedia/audio_lite/test/unittest",
+    "//foundation/multimedia/utils/lite/interfaces/kits",
   ]
 
   deps = [
