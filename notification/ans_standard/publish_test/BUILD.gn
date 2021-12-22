@@ -23,7 +23,8 @@ group("publish_test") {
       "getwantagentinfo:ActsAnsGetWantAgentInfoTest",
 
       #"publishcontentype:publishcontentype",
-      #"subscribe:subscribe",
+      "subscribe:subscribe",
+
       #"unsubscribe:ActsAnsUnSubscriberTest",
       "wantagent:wantagent",
     ]
