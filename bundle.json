@@ -1,17 +1,22 @@
 {
-    "name": "@ohos/xts",
+    "name": "@ohos/xts_acts",
     "version": "",
     "description": "XTS是OpenHarmony生态认证测试套件的集合，当前包括acts（application compatibility test suite）应用兼容性测试套，后续会拓展dcts（device compatibility test suite）设备兼容性测试套等。",
     "homePage": "https://gitee.com/openharmony",
-    "license": "",
-    "repository": "",
+    "license": "Apache V2",
+    "repository": "https://gitee.com/openharmony/xts_acts",
     "domain": "os",
     "language": "",
-    "publishAs": "",
+    "publishAs": "code-segment",
     "private": false,
     "scripts": {},
-    "tags": [],
-    "keywords": [],
+    "tags": [
+        "test"
+    ],
+    "keywords": [
+        "xts",
+        "acts"
+    ],
     "envs": [],
     "dirs": [],
     "author": {
@@ -26,7 +31,9 @@
             "url": ""
         }
     ],
-    "segment": {},
+    "segment": {
+        "destPath": "test/xts/acts"
+    },
     "component": {
         "name": "xts",
         "subsystem": "xdevice\r\ntest",
