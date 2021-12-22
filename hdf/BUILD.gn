@@ -13,12 +13,21 @@
 import("//build/ohos_var.gni")
 group("hdfacttest") {
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      #"audio:ActsHdfXtstestAudioTest",
-      "input:ActsHdfXtstestInputTest",
-      "sensor:ActsHdfXtstestSensorTest",
-      "wlan/wifi:ActsHdfXtstestWifiTest",
-    ]
+  if (device_name == "rk3568") {
+    if (is_standard_system) {
+      deps = [
+        #"audio:ActsHdfXtstestAudioTest",
+        "input:ActsHdfXtstestInputTest",
+      ]
+    }
+  } else {
+    if (is_standard_system) {
+      deps = [
+        #"audio:ActsHdfXtstestAudioTest",
+        "input:ActsHdfXtstestInputTest",
+        "sensor:ActsHdfXtstestSensorTest",
+        "wlan/wifi:ActsHdfXtstestWifiTest",
+      ]
+    }
   }
 }
