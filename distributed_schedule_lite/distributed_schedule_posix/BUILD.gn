@@ -44,8 +44,8 @@ hcpptest_suite("ActsDMSTest") {
   deps = [
     "${appexecfwk_lite_path}/frameworks/bundle_lite:bundle",
     "//base/hiviewdfx/hilog_lite/frameworks/featured:hilog_shared",
-    "//foundation/distributedschedule/samgr_lite/samgr:samgr",
     "//foundation/distributedschedule/dmsfwk_lite:dtbschedmgr",
+    "//foundation/distributedschedule/samgr_lite/samgr:samgr",
     "//third_party/bounds_checking_function:libsec_shared",
   ]
   cflags = [ "-Wno-error" ]

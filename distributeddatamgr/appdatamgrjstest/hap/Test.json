@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "AppdatamagrJsTest.hap"
+                "ActsAppdatamagrJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

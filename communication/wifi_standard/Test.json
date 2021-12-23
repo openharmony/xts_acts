@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "WifiJSApiTest.hap"
+                "ActsWifiJSApiTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

@@ -2,7 +2,7 @@
     "kits": [
         {
             "push": [
-                "HiCollieCppTest->/data/local/tmp/HiCollieCppTest"
+                "ActsHiCollieCppTest->/data/local/tmp/ActsHiCollieCppTest"
             ],
             "type": "PushKit",
             "post-push": [
@@ -13,9 +13,9 @@
     "driver": {
         "native-test-timeout": "120000",
         "type": "CppTest",
-        "module-name": "HiCollieCppTest",
+        "module-name": "ActsHiCollieCppTest",
         "runtime-hint": "1s",
         "native-test-device-path": "/data/local/tmp"
     },
-    "description": "Configuration for HiCollieCppTest Tests"
+    "description": "Configuration for ActsHiCollieCppTest Tests"
 }

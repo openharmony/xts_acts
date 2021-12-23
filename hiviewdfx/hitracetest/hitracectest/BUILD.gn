@@ -24,7 +24,7 @@ config("hitrace_config") {
     "//base/hiviewdfx/hitrace/interfaces/native/innerkits/include",
   ]
 }
-ohos_moduletest_suite("HitraceCtest") {
+ohos_moduletest_suite("ActsHitraceCTest") {
   module_out_path = module_output_path
   sources = [ "HitraceCtest.cpp" ]
   deps = [

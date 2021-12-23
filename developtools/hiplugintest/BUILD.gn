@@ -17,14 +17,14 @@ import("../../../../../developtools/profiler/device/base/config.gni")
 
 ###############################################################################
 config("module_private_config") {
-  visibility = [":*"]
+  visibility = [ ":*" ]
 }
 
 ohos_moduletest_suite("hipluginmoduleapitest") {
   deps = [
-    "//third_party/googletest:gtest",
-    "${OHOS_PROFILER_DIR}/protos/types/plugins/memory_data:memory_data_cpp",
     "${OHOS_PROFILER_DIR}/device/plugins/memory_plugin:memdataplugin",
+    "${OHOS_PROFILER_DIR}/protos/types/plugins/memory_data:memory_data_cpp",
+    "//third_party/googletest:gtest",
   ]
   include_dirs = [
     "${OHOS_PROFILER_DIR}/interfaces/kits/",
@@ -42,11 +42,9 @@ ohos_moduletest_suite("hipluginmoduleapitest") {
   cflags = [
     "-pthread",
     "-Wno-inconsistent-missing-override",
-    "-Dprivate=public",   #allow test code access private members
+    "-Dprivate=public",  #allow test code access private members
   ]
-  external_deps = [
-    "hiviewdfx_hilog_native:libhilog",
-  ]
+  external_deps = [ "hiviewdfx_hilog_native:libhilog" ]
   subsystem_name = "${OHOS_PROFILER_SUBSYS_NAME}"
-  defines = [ "HAVE_HILOG", ]
+  defines = [ "HAVE_HILOG" ]
 }

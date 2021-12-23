@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "windowhaptest.hap"
+                "ActsWindowHapTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "$module.hap"
+                "ActsCallManagerMMITest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

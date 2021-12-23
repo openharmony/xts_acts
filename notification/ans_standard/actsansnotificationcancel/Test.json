@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAnsNotificationCancel.hap"
+                "ActsAnsNotificationCancelTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

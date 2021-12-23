@@ -18,7 +18,7 @@ group("global") {
   if (is_standard_system) {
     deps = [
       "i18n_standard/intljs:intljs_test",
-      "i18n_standard/zone/src:ZoneUtiltest",
+      "i18n_standard/zone/src:ActsZoneUtilTest",
       "resmgr_standard/resmgrjs:resmgrjs_test",
     ]
   } else {

@@ -12,22 +12,15 @@
 # limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
+
 ohos_js_hap_suite("wifi_standard_test") {
   hap_profile = "./src/main/config.json"
   deps = [
     ":wifi_js_assets",
     ":wifi_resources",
   ]
-
-  #  shared_libraries = [
-  #    "//third_party/giflib:libgif",
-  #    "//third_party/libpng:libpng",
-  #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "WifiJSApiTest"
-
-  #  part_name = "prebuilt_hap"
-  #  subsystem_name = "xts"
+  hap_name = "ActsWifiJSApiTest"
 }
 ohos_js_assets("wifi_js_assets") {
   source_dir = "./src/main/js/default"

@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "storagefileiostabilityjstest.hap"
+                "ActsStorageFileIoStabilityJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
