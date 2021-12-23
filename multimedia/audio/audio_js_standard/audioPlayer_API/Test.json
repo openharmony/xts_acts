@@ -50,7 +50,7 @@
         },
         {
             "test-file-name": [
-                "AudioPlayerApiJsTest.hap"
+                "ActsAudioPlayerApiJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

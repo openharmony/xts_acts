@@ -16,8 +16,6 @@ import("//build/ohos_var.gni")
 group("demo") {
   testonly = true
   if (is_standard_system) {
-     deps = [
-        "hjsunit_sample:hjs_demo_test",
-     ]
+    deps = [ "hjsunit_sample:hjs_demo_test" ]
   }
 }

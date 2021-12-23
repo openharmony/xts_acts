@@ -25,6 +25,6 @@ hcpptest_suite("ActsNetTest") {
 
   deps = [
     "//test/xts/acts/kernel_lite/utils:libutils",
-    "//third_party/bounds_checking_function:libsec_shared", 
+    "//third_party/bounds_checking_function:libsec_shared",
   ]
 }

@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "devicemanagerjstest.hap"
+                "ActsDeviceManagerJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

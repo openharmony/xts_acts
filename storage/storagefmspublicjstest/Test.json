@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "storagefmspublicjstest.hap"
+                "ActsStorageFmsPublicJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

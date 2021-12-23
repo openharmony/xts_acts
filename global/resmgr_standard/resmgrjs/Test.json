@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "resmgrjs.hap"
+                "ActsResMgrJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

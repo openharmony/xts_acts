@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAnsSlotByBundle.hap"
+                "ActsAnsSlotByBundleTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

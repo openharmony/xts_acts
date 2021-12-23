@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsSubscriberTestUnorderSystem.hap"
+                "ActsSubscriberTestUnorderSystemTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

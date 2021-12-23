@@ -29,11 +29,7 @@ config("module_private_config") {
 }
 
 ########################################################
-ohos_moduletest_suite("huks_std_function_test") {
-  #subsystem_name = "acts"
-  #part_name = "huks_standard"
-  #module_output_path = subsystem_name + "/" + part_name
-  #module_output_path  = module_output_path
+ohos_moduletest_suite("ActsHuksStdFunctionTest") {
   configs = [ ":module_private_config" ]
   cflags_cc = [ "-DHILOG_ENABLE" ]
   defines = [ "_STANDARD_SYSTEM_" ]
@@ -82,5 +78,5 @@ ohos_moduletest_suite("huks_std_function_test") {
 
 group("Huksstandardtest") {
   testonly = true
-  deps = [ ":huks_std_function_test" ]
+  deps = [ ":ActsHuksStdFunctionTest" ]
 }

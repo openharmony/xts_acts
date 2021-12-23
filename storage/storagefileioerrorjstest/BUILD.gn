@@ -10,6 +10,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("storagefileioerror_js_test") {
@@ -18,16 +19,8 @@ ohos_js_hap_suite("storagefileioerror_js_test") {
     ":storagefileioerror_js_assets",
     ":storagefileioerror_js_resources",
   ]
-
-  #  shared_libraries = [
-  #    "//third_party/giflib:libgif",
-  #    "//third_party/libpng:libpng",
-  #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "storagefileioerrorjstest"
-
-  #  part_name = "prebuilt_hap"
-  #  subsystem_name = "xts"
+  hap_name = "ActsStorageFileIoErrorJsTest"
 }
 ohos_js_assets("storagefileioerror_js_assets") {
   source_dir = "./src/main/js/default"

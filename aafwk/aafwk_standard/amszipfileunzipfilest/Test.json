@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "amsZipfileUnzipfileST.hap"
+                "ActsAmsZipfileUnzipfileSTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

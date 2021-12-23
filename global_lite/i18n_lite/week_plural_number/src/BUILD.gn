@@ -20,7 +20,6 @@ hcpptest_suite("WeekPluralNumbertest") {
   include_dirs = [
     "//base/global/i18n_lite/interfaces/kits/i18n/include",
     "//third_party/bounds_checking_function/include",
-
   ]
 
   deps = [

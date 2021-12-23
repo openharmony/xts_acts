@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "FWKDataAccessor.hap",
+                "ActsFWKDataAccessorTest.hap",
                 "./resource/appexecfwk/amsStDataAbility.hap"
             ],
             "type": "AppInstallKit",
