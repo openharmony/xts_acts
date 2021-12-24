@@ -12,7 +12,7 @@
  
  # Build variables
  CFLAGS+=		-I\$(top_srcdir)/include
-+CFLAGS+=        --target=arm-liteos --sysroot=${SYSROOT_PATH} ${ARCH_CFLAGS}
++CFLAGS+=        --target=arm-liteos-ohos --sysroot=${SYSROOT_PATH} ${ARCH_CFLAGS}
  
  # XXX: for testfrmw.c -- needs to be moved into a library.
  CFLAGS+=		-I\$(srcdir)
