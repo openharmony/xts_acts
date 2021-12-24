@@ -3,7 +3,7 @@
     "bundleName": "com.ohos.launcher",
     "vendor": "example",
     "version": {
-      "code": 1000013,
+      "code": 1000000,
       "name": "1.0"
     },
     "apiVersion": {
