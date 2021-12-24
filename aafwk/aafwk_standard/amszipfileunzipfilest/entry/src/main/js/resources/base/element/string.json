@@ -10,10 +10,6 @@
     },
     {
       "name": "serviceability_description",
-      "value": "hap sample empty service"
-    },
-    {
-      "name": "serviceability_description",
       "value": "JS_Phone_Empty Feature Ability"
     }
   ]
