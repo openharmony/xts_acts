@@ -37,8 +37,8 @@ describe('ActsAnsPublishInput', function () {
         console.info("=========Ans_PublishInput_0100 onConsume editType================>"+editType);
         expect(inputKey).assertEqual("inputKey_0100");
         expect(tag).assertEqual("tag_0100");
-        expect(options).assertEqual("options_0100");
-        expect(permitMimeTypes).assertEqual("permitMimeTypes_0100");
+        expect(JSON.stringify(options)).assertEqual(JSON.stringify(["options_0100"]));
+        expect(JSON.stringify(permitMimeTypes)).assertEqual(JSON.stringify(["permitMimeTypes_0100"]));
         expect(editType).assertEqual(1);
         expect(additionalData.key0100).assertEqual("0100");
         console.info("=========Ans_PublishInput_0100 onConsume end================>");
