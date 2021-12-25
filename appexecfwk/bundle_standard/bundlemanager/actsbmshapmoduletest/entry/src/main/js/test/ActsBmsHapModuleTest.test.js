@@ -29,11 +29,9 @@ describe('ActsBmsHapModuleTest', function () {
         let bundleName = 'com.example.bmsmainabilityfirstscene';
         var installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 0,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveInstallEvent);
         function onReceiveInstallEvent(err, data) {
             expect(err.code).assertEqual(0);
@@ -72,11 +70,9 @@ describe('ActsBmsHapModuleTest', function () {
                     }
                 }
                 installer.uninstall(bundleName, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 0,
+                    installFlag: 1,
+                    isKeepData: false
                 }, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
@@ -100,11 +96,9 @@ describe('ActsBmsHapModuleTest', function () {
         let secondMainAbility = 'com.example.bmsmainabilitysecondscene.MainAbility';
         var installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 0,
+            installFlag: 1,
+            isKeepData: false
         }, async (err, data) => {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
@@ -120,11 +114,9 @@ describe('ActsBmsHapModuleTest', function () {
                     checkHapModuleInfo(result.hapModuleInfo[1]);
                 }
                 installer.uninstall(bundleName, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 0,
+                    installFlag: 1,
+                    isKeepData: false
                 }, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
@@ -147,11 +139,9 @@ describe('ActsBmsHapModuleTest', function () {
         var installer = await bundle.getBundleInstaller();
         console.log('========install========' + typeof installer);
         installer.install(bundlePath, {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 0,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveInstallEvent);
         function onReceiveInstallEvent(err, data) {
             console.info('========install Finish========');
@@ -170,11 +160,9 @@ describe('ActsBmsHapModuleTest', function () {
                     checkHapModuleInfo(result.hapModuleInfo[0]);
                 }
                 installer.uninstall(bundleName, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 0,
+                    installFlag: 1,
+                    isKeepData: false
                 }, onReceiveUninstallEvent);
 
                 function onReceiveUninstallEvent(err, data) {
@@ -192,8 +180,8 @@ describe('ActsBmsHapModuleTest', function () {
 
     /*
      * @tc.number: bms_getHapModuleInfo_0400
-     * @tc.name: get hapModuleInfo through getBundleInfo, an application that adds mainAbility  
-     * @tc.desc: get the module information of the hap with the added field mainAbility 
+     * @tc.name: get hapModuleInfo through getBundleInfo, an application that adds mainAbility
+     * @tc.desc: get the module information of the hap with the added field mainAbility
      */
     it('bms_getHapModuleInfo_0400', 0, async function (done) {
         console.debug('===========begin bms_getHapModuleInfo_0400===========')
@@ -202,11 +190,9 @@ describe('ActsBmsHapModuleTest', function () {
         var installer = await bundle.getBundleInstaller();
         console.log('========install========' + typeof installer);
         installer.install(bundlePath, {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 0,
+            installFlag: 1,
+            isKeepData: false
         }, (err, data) => {
             console.info('========install Finish========');
             expect(typeof err).assertEqual('object');
@@ -223,11 +209,9 @@ describe('ActsBmsHapModuleTest', function () {
                     checkHapModuleInfo(result.hapModuleInfo[0]);
                 }
                 installer.uninstall(bundleName, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 0,
+                    installFlag: 1,
+                    isKeepData: false
                 }, onReceiveUninstallEvent);
 
                 function onReceiveUninstallEvent(err, data) {
@@ -242,8 +226,8 @@ describe('ActsBmsHapModuleTest', function () {
 
     /*
      * @tc.number: bms_getHapModuleInfo_0500
-     * @tc.name: get the hapModuleInfo of the upgraded hap package from an application through getBundleInfo 
-     * @tc.desc: get the module information of the mainAbility upgrade hap  
+     * @tc.name: get the hapModuleInfo of the upgraded hap package from an application through getBundleInfo
+     * @tc.desc: get the module information of the mainAbility upgrade hap
      */
     it('bms_getHapModuleInfo_0500', 0, async function (done) {
         console.debug('===========begin bms_getHapModuleInfo_0500===========')
@@ -252,21 +236,17 @@ describe('ActsBmsHapModuleTest', function () {
         let bundleName = 'com.example.third1';
         var installer = await bundle.getBundleInstaller();
         installer.install(bundlePath1, {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 0,
+            installFlag: 1,
+            isKeepData: false
         }, async (err, data) => {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.install(bundlePath2, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -283,11 +263,9 @@ describe('ActsBmsHapModuleTest', function () {
                 checkHapModuleInfo(hapModuleInfo);
             }
             installer.uninstall(bundleName, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 0,
+                installFlag: 1,
+                isKeepData: false
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);

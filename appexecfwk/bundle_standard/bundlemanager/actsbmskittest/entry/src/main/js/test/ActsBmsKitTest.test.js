@@ -96,11 +96,11 @@ describe('ActsBmsKitTest', function () {
         for (let i = 0; i < STRESSLEVEL; i++) {
             bundle.getAllShortcutInfo(bundleName, async (err, data) => {
                 expect(data.length).assertEqual(1);
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(0);
                 checkShortcutIsExist(data, 'id.third1', 'third1');
                 if (count == STRESSLEVEL - 1) {
                     done();
-                } else if (err.code != 0) {
+                } else if (err != 0) {
                     console.log('call function level is: ' + count);
                     expect().assertFail();
                     flag = false;
