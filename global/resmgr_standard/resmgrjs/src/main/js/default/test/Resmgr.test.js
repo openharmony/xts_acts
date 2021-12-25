@@ -202,8 +202,8 @@ describe('resMgrTest', function () {
     it('getConfiguration_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getConfiguration().then(cfg => {
-                cfg.direction = Direction.DIRECTION_HORIZONTAL;
                 expect(cfg !== null).assertTrue();
+                cfg.direction = Direction.DIRECTION_HORIZONTAL;
             })
         })
         done();
@@ -220,9 +220,9 @@ describe('resMgrTest', function () {
                 dc.screenDensity = ScreenDensity.SCREEN_SDPI;
                 dc.deviceType = DeviceType.DEVICE_TYPE_PHONE;
                 dc.screenDensity = ScreenDensity.SCREEN_MDPI;
-                dc.deviceType = DeviceType.DEVICE_TYPE_TABLET;
-                dc.screenDensity = ScreenDensity.SCREEN_LDPI;
                 dc.deviceType = DeviceType.DEVICE_TYPE_CAR;
+                dc.screenDensity = ScreenDensity.SCREEN_LDPI;
+                dc.deviceType = DeviceType.DEVICE_TYPE_TV;
                 expect(dc !== null).assertTrue();
             })
         })
@@ -238,12 +238,12 @@ describe('resMgrTest', function () {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getDeviceCapability().then(dc => {
                 dc.screenDensity = ScreenDensity.SCREEN_XLDPI;
-                dc.deviceType = DeviceType.DEVICE_TYPE_PC;
+                dc.deviceType = DeviceType.DEVICE_TYPE_TABLET;
                 dc.screenDensity = ScreenDensity.SCREEN_XXLDPI;
-                dc.deviceType = DeviceType.DEVICE_TYPE_TV;
-                dc.screenDensity = ScreenDensity.SCREEN_XXXLDPI;
                 dc.deviceType = DeviceType.DEVICE_TYPE_WEARABLE;
+                dc.screenDensity = ScreenDensity.SCREEN_XXXLDPI;
                 expect(dc !== null).assertTrue();
+                console.log('getDeviceCapability_test_002 ' + dc);
             })
         })
         done();
@@ -258,6 +258,7 @@ describe('resMgrTest', function () {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getPluralString(0x1000003, 1, (error, value) => {
                 expect(value !== null).assertTrue();
+                console.log('getPluralString_test_001 ' + value);
             })
         })
         done();
@@ -272,9 +273,27 @@ describe('resMgrTest', function () {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getPluralString(0x1000003, 1).then(value => {
                 expect(value !== null).assertTrue();
+                console.log('getPluralString_test_002 ' + value);
             })
         })
         done();
     })
+
+    /* *
+    * @tc.number SUB_GLOBAL_RESMGR_JS_1900
+    * @tc.name test getString method in callback mode
+    * @tc.desc get the string in callback mode
+    */
+    it('getString_test_003', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.getString(0x7000000, (err, value) => {
+                expect(value !== null).assertTrue();
+                console.log('getString_test_003 ' + value);
+                expect(value).assertEqual('hello world!');
+            })
+        })
+        done();
+    })
+
     console.log('*************end ResmgrTest*************');
 }) 

@@ -449,6 +449,16 @@ describe('intlTest', function () {
     })
 
     /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_0120
+    * @tc.name format the datetime with en-GB locale
+    * @tc.desc check the datetime is not null
+    */
+    it('dateTimeFormat_test_0120', 0, function () {
+        let datefmt = new Intl.DateTimeFormat();
+        expect(datefmt !== null).assertTrue();
+    })
+
+    /* *
     * @tc.number SUB_GLOBAL_INTL_JS_DATETIME_0200
     * @tc.name format the date with zh locale
     * @tc.desc check the date
@@ -809,6 +819,16 @@ describe('intlTest', function () {
     })
 
     /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_0120
+    * @tc.name format the number in zh
+    * @tc.desc check the number in zh
+    */
+    it('formatNumber_test_0120', 0, function () {
+        let numfmt = new Intl.NumberFormat();
+        expect(numfmt !== null).assertTrue();
+    })
+
+    /* *
     * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_0200
     * @tc.name format the number in zh-u-nu-latn
     * @tc.desc check the number in zh-u-nu-latn
@@ -1113,5 +1133,246 @@ describe('intlTest', function () {
         expect(numfmt.resolvedOptions().maximumSignificantDigits).assertEqual(10);
         expect(numfmt.resolvedOptions().useGrouping).assertTrue();
     })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_PLURAL_2600
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('pluralrules_test_2600', 0, function () {
+        let pl = new Intl.PluralRules();
+        let value = pl.select(0);
+        console.log('pluralrules_test_2600 ' + value);
+        expect(value).assertEqual('other');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_PLURAL_2700
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('pluralrules_test_2700', 0, function () {
+        let pl = new Intl.PluralRules('zh');
+        let value = pl.select(0);
+        console.log('pluralrules_test_2700 ' + value);
+        expect(value).assertEqual('other');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_PLURAL_2800
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('pluralrules_test_2800', 0, function () {
+        let pl = new Intl.PluralRules('zh', {'type': 'ordinal'});
+        let value = pl.select(0);
+        console.log('pluralrules_test_2800 ' + value);
+        expect(value).assertEqual('other');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_PLURAL_2900
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('pluralrules_test_2900', 0, function () {
+        let pl = new Intl.PluralRules('zh', {'localeMatcher': 'lookup'});
+        let value = pl.select(0);
+        console.log('pluralrules_test_2900 ' + value);
+        expect(value).assertEqual('other');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_PLURAL_3000
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('pluralrules_test_3000', 0, function () {
+        let pl = new Intl.PluralRules('zh', {'minimumIntegerDigits': 10});
+        let value = pl.select(0);
+        console.log('pluralrules_test_3000 ' + value);
+        expect(value).assertEqual('other');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_PLURAL_3100
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('pluralrules_test_3100', 0, function () {
+        let pl = new Intl.PluralRules('zh', {'minimumFractionDigits': 11});
+        let value = pl.select(0);
+        console.log('pluralrules_test_3100 ' + value);
+        expect(value).assertEqual('other');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_PLURAL_3200
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('pluralrules_test_3200', 0, function () {
+        let pl = new Intl.PluralRules('zh', {'maximumFractionDigits': 'lookup'});
+        let value = pl.select(0);
+        console.log('pluralrules_test_3200 ' + value);
+        expect(value).assertEqual('other');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_PLURAL_3300
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('pluralrules_test_3300', 0, function () {
+        let pl = new Intl.PluralRules('zh', {'minimumSignificantDigits': 10});
+        let value = pl.select(0);
+        console.log('pluralrules_test_3300 ' + value);
+        expect(value).assertEqual('other');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_PLURAL_3400
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('pluralrules_test_3400', 0, function () {
+        let pl = new Intl.PluralRules('zh', {'maximumSignificantDigits': 11});
+        let value = pl.select(0);
+        console.log('pluralrules_test_3400 ' + value);
+        expect(value).assertEqual('other');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_3500
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('collator_test_3500', 0, function () {
+        let coll = new Intl.Collator();
+        let value = coll.compare('a', 'b');
+        console.log('collator_test_3500 ' + value);
+        expect(value).assertEqual(-1);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_3510
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('collator_test_3510', 0, function () {
+        let coll = new Intl.Collator();
+        let value = coll.compare('a', 'a');
+        console.log('collator_test_3100 ' + value);
+        expect(value).assertEqual(0);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_3520
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('collator_test_3520', 0, function () {
+        let coll = new Intl.Collator();
+        let value = coll.compare('b', 'a');
+        console.log('collator_test_3200 ' + value);
+        expect(value).assertEqual(1);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_3600
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('collator_test_3600', 0, function () {
+        let coll = new Intl.Collator('zh');
+        let value = coll.compare('a', 'b');
+        console.log('collator_test_3600 ' + value);
+        expect(value).assertEqual(-1);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_3700
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('collator_test_3700', 0, function () {
+        let coll = new Intl.Collator('zh', {'collation': 'eor'});
+        let value = coll.compare('a', 'b');
+        console.log('collator_test_3700 ' + value);
+        expect(value).assertEqual(-1);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_3800
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('collator_test_3800', 0, function () {
+        let coll = new Intl.Collator('zh', {'sensitivity': 'base'});
+        let value = coll.compare('a', 'b');
+        console.log('collator_test_3800 ' + value);
+        expect(value).assertEqual(-1);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_3900
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('collator_test_3900', 0, function () {
+        let coll = new Intl.Collator('zh', {'caseFirst': 'upper'});
+        let value = coll.compare('a', 'b');
+        console.log('collator_test_3900 ' + value);
+        expect(value).assertEqual(-1);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_4000
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('collator_test_4000', 0, function () {
+        let coll = new Intl.Collator('zh', {'numeric': true});
+        let value = coll.compare('a', 'b');
+        console.log('collator_test_4000 ' + value);
+        expect(value).assertEqual(-1);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_4100
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('collator_test_4100', 0, function () {
+        let coll = new Intl.Collator('zh', {'ignorePunctuation': true});
+        let value = coll.compare('a', 'b');
+        console.log('collator_test_4100 ' + value);
+        expect(value).assertEqual(-1);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_4200
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('collator_test_4200', 0, function () {
+        let coll = new Intl.Collator('zh', {'usage': 'sort'});
+        let value = coll.compare('a', 'b');
+        console.log('collator_test_4200 ' + value);
+        expect(value).assertEqual(-1);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_4300
+    * @tc.name format the number with numberingSystem
+    * @tc.desc check the number with numberingSystem
+    */
+    it('collator_test_4300', 0, function () {
+        let coll = new Intl.Collator('zh', {'localeMatcher': 'lookup'});
+        let value = coll.compare('a', 'b');
+        console.log('collator_test_4300 ' + value);
+        expect(value).assertEqual(-1);
+    })
+
     console.log('*************end IntlTest*************');
 })
