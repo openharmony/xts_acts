@@ -41,7 +41,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/ace:ace",
   "${ACTS_ROOT}/storage:storage",
   "${ACTS_ROOT}/distributedhardware:distributedhardware",
-  "${ACTS_ROOT}/hdf:hdfacttest",
+  "${ACTS_ROOT}/compileruntime:compileruntime",
 ]
 
 _all_test_packages_ivi = [
