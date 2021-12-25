@@ -608,7 +608,7 @@ describe('I18nTest', function () {
     it('i18n_test_4400', 0, function () {
         let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-US', true);
         console.log('i18n_test_4400 ' + value);
-        expect(value).assertEqual('Simplified Chinese');
+        expect(value).assertEqual('Chinese');
     })
 
     /* *
@@ -619,7 +619,7 @@ describe('I18nTest', function () {
     it('i18n_test_4500', 0, function () {
         let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-GB', true);
         console.log('i18n_test_4500 ' + value);
-        expect(value).assertEqual('Simplified Chinese');
+        expect(value).assertEqual('Chinese');
     })
 
     /* *
@@ -663,7 +663,7 @@ describe('I18nTest', function () {
     it('i18n_test_4900', 0, function () {
         let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-US', false);
         console.log('i18n_test_4900 ' + value);
-        expect(value).assertEqual('Simplified Chinese');
+        expect(value).assertEqual('Chinese');
     })
 
     /* *
@@ -674,7 +674,676 @@ describe('I18nTest', function () {
     it('i18n_test_5000', 0, function () {
         let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-US');
         console.log('i18n_test_5000 ' + value);
-        expect(value).assertEqual('Simplified Chinese');
+        expect(value).assertEqual('Chinese');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_5100
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_5100', 0, function () {
+        console.error('i18n_test_5100 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let valid = phonenumber.isValidNumber('13510574676');
+        console.error('i18n_test_5100 ' + valid);
+        expect(valid).assertEqual(true);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_5200
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_5200', 0, function () {
+        console.error('i18n_test_5200 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let valid = phonenumber.isValidNumber('135 1057 4676');
+        console.error('i18n_test_5200 ' + valid);
+        expect(valid).assertEqual(true);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_5300
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_5300', 0, function () {
+        console.error('i18n_test_5300 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let valid = phonenumber.isValidNumber('+86 135 1057 4676');
+        console.error('i18n_test_5300 ' + valid);
+        expect(valid).assertEqual(true);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_5400
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_5400', 0, function () {
+        console.error('i18n_test_5400 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let valid = phonenumber.isValidNumber('135-1057-4676');
+        console.error('i18n_test_5400 ' + valid);
+        expect(valid).assertEqual(true);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_5500
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_5500', 0, function () {
+        console.error('i18n_test_5500 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let valid = phonenumber.isValidNumber('tel:+86-135-1057-4676');
+        console.error('i18n_test_5500 ' + valid);
+        expect(valid).assertEqual(true);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_5600
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_5600', 0, function () {
+        console.error('i18n_test_5600 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let valid = phonenumber.isValidNumber('86-135-1057-4676');
+        console.error('i18n_test_5600 ' + valid);
+        expect(valid).assertEqual(true);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_5700
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_5700', 0, function () {
+        console.error('i18n_test_5700 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let valid = phonenumber.isValidNumber('+8613510574676');
+        console.error('i18n_test_5700 ' + valid);
+        expect(valid).assertEqual(true);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_5800
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_5800', 0, function () {
+        console.error('i18n_test_5800 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let valid = phonenumber.isValidNumber('8613510574676');
+        console.error('i18n_test_5800 ' + valid);
+        expect(valid).assertEqual(true);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_5900
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_5900', 0, function () {
+        console.error('i18n_test_5900 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let valid = phonenumber.isValidNumber('1351057467');
+        console.error('i18n_test_5900 ' + valid);
+        expect(valid).assertEqual(false);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_6000
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_6000', 0, function () {
+        console.error('i18n_test_6000 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let valid = phonenumber.isValidNumber('135105746761');
+        console.error('i18n_test_6000 ' + valid);
+        expect(valid).assertEqual(false);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_6100
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_6100', 0, function () {
+        console.error('i18n_test_6100 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let valid = phonenumber.isValidNumber('1351057467a');
+        console.error('i18n_test_6100 ' + valid);
+        expect(valid).assertEqual(false);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_6200
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_6200', 0, function () {
+        console.error('i18n_test_6200 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('US');
+        let valid = phonenumber.isValidNumber('6262023379');
+        console.error('i18n_test_6200 ' + valid);
+        expect(valid).assertEqual(true);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_6300
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_6300', 0, function () {
+        console.error('i18n_test_6300 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('US');
+        let valid = phonenumber.isValidNumber('626202337');
+        console.error('i18n_test_6300 ' + valid);
+        expect(valid).assertEqual(false);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_6400
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_6400', 0, function () {
+        console.error('i18n_test_6400 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('US');
+        let valid = phonenumber.isValidNumber('62620233791');
+        console.error('i18n_test_6400 ' + valid);
+        expect(valid).assertEqual(false);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_6500
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_6500', 0, function () {
+        console.error('i18n_test_6500 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('US');
+        let valid = phonenumber.isValidNumber('626202337a');
+        console.error('i18n_test_6500 ' + valid);
+        expect(valid).assertEqual(false);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_6600
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_6600', 0, function () {
+        console.error('i18n_test_6600 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let value = phonenumber.format('13510574676');
+        console.error('i18n_test_6600 ' + value);
+        expect(value).assertEqual('135 1057 4676');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_6700
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_6700', 0, function () {
+        console.error('i18n_test_6700 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('US');
+        let value = phonenumber.format('6262023379');
+        console.error('i18n_test_6700 ' + value);
+        expect(value).assertEqual('(626) 202-3379');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_6800
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_6800', 0, function () {
+        console.error('i18n_test_6800 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'NATIONAL'});
+        let value = phonenumber.format('13510574676');
+        console.error('i18n_test_6800 ' + value);
+        expect(value).assertEqual('135 1057 4676');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_6900
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_6900', 0, function () {
+        console.error('i18n_test_6900 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'NATIONAL'});
+        let value = phonenumber.format('1351057467');
+        console.error('i18n_test_6900 ' + value);
+        expect(value).assertEqual('1351057467');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7000
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_7000', 0, function () {
+        console.error('i18n_test_7000 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'NATIONAL'});
+        let value = phonenumber.format('135105746761');
+        console.error('i18n_test_7000 ' + value);
+        expect(value).assertEqual('013 510 574 6761');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7100
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_7100', 0, function () {
+        console.error('i18n_test_7100 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'NATIONAL'});
+        let value = phonenumber.format('135 1057 4676');
+        console.error('i18n_test_7100 ' + value);
+        expect(value).assertEqual('135 1057 4676');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7200
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_7200', 0, function () {
+        console.error('i18n_test_7200 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'INTERNATIONAL'});
+        let value = phonenumber.format('13510574676');
+        console.error('i18n_test_7200 ' + value);
+        expect(value).assertEqual('+86 135 1057 4676');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7300
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_7300', 0, function () {
+        console.error('i18n_test_7300 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'RFC3966'});
+        let value = phonenumber.format('13510574676');
+        console.error('i18n_test_7300 ' + value);
+        expect(value).assertEqual('tel:+86-135-1057-4676');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7400
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_7400', 0, function () {
+        console.error('i18n_test_7400 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'E164'});
+        let value = phonenumber.format('13510574676');
+        console.error('i18n_test_7400 ' + value);
+        expect(value).assertEqual('+8613510574676');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7500
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_7500', 0, function () {
+        console.error('i18n_test_7500 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('US', {'type': 'NATIONAL'});
+        let value = phonenumber.format('6262023379');
+        console.error('i18n_test_7500 ' + value);
+        expect(value).assertEqual('(626) 202-3379');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7600
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_7600', 0, function () {
+        console.error('i18n_test_7600 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('US', {'type': 'INTERNATIONAL'});
+        let value = phonenumber.format('6262023379');
+        console.error('i18n_test_7600 ' + value);
+        expect(value).assertEqual('+1 626-202-3379');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7700
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_7700', 0, function () {
+        console.error('i18n_test_7700 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('US', {'type': 'RFC3966'});
+        let value = phonenumber.format('6262023379');
+        console.error('i18n_test_7700 ' + value);
+        expect(value).assertEqual('tel:+1-626-202-3379');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7800
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+    it('i18n_test_7800', 0, function () {
+        console.error('i18n_test_7800 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('US', {'type': 'E164'});
+        let value = phonenumber.format('6262023379');
+        console.error('i18n_test_7800 ' + value);
+        expect(value).assertEqual('+16262023379');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7900
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_7900', 0, function () {
+        console.error('i18n_test_7900 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        let value = calendar.isWeekend(new Date(2021, 10, 1, 10, 0, 0, 0));
+        console.error('i18n_test_7900 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8000
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_8000', 0, function () {
+        console.error('i18n_test_8000 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        let value = calendar.getDisplayName('zh');
+        console.error('i18n_test_8000 ' + value);
+        expect(value).assertEqual('公历');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8100
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_8100', 0, function () {
+        console.error('i18n_test_8100 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        let value = calendar.get('year');
+        console.error('i18n_test_8100 ' + value);
+        expect(value).assertEqual(2021);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8200
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_8200', 0, function () {
+        console.error('i18n_test_8200 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        calendar.setMinimalDaysInFirstWeek(1);
+        let value = calendar.getMinimalDaysInFirstWeek();
+        console.error('i18n_test_8200 ' + value);
+        expect(value).assertEqual(1);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8300
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_8300', 0, function () {
+        console.error('i18n_test_8300 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        calendar.setFirstDayOfWeek(1);
+        let value = calendar.getFirstDayOfWeek();
+        console.error('i18n_test_8300 ' + value);
+        expect(value).assertEqual(1);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8400
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_8400', 0, function () {
+        console.error('i18n_test_8400 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        calendar.setTimeZone('Asia/Shanghai');
+        let value = calendar.getTimeZone();
+        console.error('i18n_test_8400 ' + value);
+        expect(value).assertEqual('China Standard Time');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8500
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_8500', 0, function () {
+        console.error('i18n_test_8500 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        calendar.set(2021, 11, 11);
+        let value = calendar.isWeekend();
+        console.error('i18n_test_8500 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8600
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_8600', 0, function () {
+        console.error('i18n_test_8600 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        //actuall month is 9
+        let date1 = new Date(2021, 8, 8, 8, 8, 8, 8);
+        calendar.setTime(date1);
+        let value = calendar.isWeekend();
+        console.error('i18n_test_8600 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8700
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_8700', 0, function () {
+        console.error('i18n_test_8700 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        calendar.setTime(10540800000);
+        let value = calendar.isWeekend();
+        console.error('i18n_test_8700 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8800
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_8800', 0, function () {
+        console.error('i18n_test_8800 ' + 'start');
+        let value = I18n.isRTL('zh-CN');
+        console.error('i18n_test_8800 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8900
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_8900', 0, function () {
+        console.error('i18n_test_8900 ' + 'start');
+        let value = I18n.isRTL('en-US');
+        console.error('i18n_test_8900 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_9000
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_9000', 0, function () {
+        console.error('i18n_test_9000 ' + 'start');
+        let value = I18n.isRTL('ar');
+        console.error('i18n_test_9000 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_9100
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_9100', 0, function () {
+        console.error('i18n_test_9100 ' + 'start');
+        let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'}, {unit: 'liter', measureSystem: 'SI'}, 1000, 'en-US', 'long');
+        console.error('i18n_test_9100 ' + value);
+        expect(value).assertEqual('236.588 liters');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_9200
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_9200', 0, function () {
+        console.error('i18n_test_9200 ' + 'start');
+        let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'}, {unit: 'liter', measureSystem: 'SI'}, 1000, 'en-US', 'medium');
+        console.error('i18n_test_9200 ' + value);
+        expect(value).assertEqual('236.588L');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_9300
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_9300', 0, function () {
+        console.error('i18n_test_9300 ' + 'start');
+        let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'}, {unit: 'liter', measureSystem: 'SI'}, 1000, 'en-US', 'short');
+        console.error('i18n_test_9300 ' + value);
+        expect(value).assertEqual('236.588 L');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_9400
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_9400', 0, function () {
+        console.error('i18n_test_9400 ' + 'start');
+        let value = I18n.Util.unitConvert({unit: 'meter', measureSystem: 'SI'}, {unit: 'mile', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
+        console.error('i18n_test_9400 ' + value);
+        expect(value).assertEqual('0.621英里');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_9500
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_9500', 0, function () {
+        console.error('i18n_test_9500 ' + 'start');
+        let value = I18n.Util.unitConvert({unit: 'hour', measureSystem: 'SI'}, {unit: 'second', measureSystem: 'SI'}, 10, 'zh-CN', 'medium');
+        console.error('i18n_test_9500 ' + value);
+        expect(value).assertEqual('36,000秒');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_9600
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_9600', 0, function () {
+        console.error('i18n_test_9600 ' + 'start');
+        let value = I18n.Util.unitConvert({unit: 'celsius', measureSystem: 'SI'}, {unit: 'fahrenheit', measureSystem: 'SI'}, 1000, 'zh-CN', 'short');
+        console.error('i18n_test_9600 ' + value);
+        expect(value).assertEqual('1,832°F');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_9700
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_9700', 0, function () {
+        console.error('i18n_test_9700 ' + 'start');
+        let value = I18n.Util.unitConvert({unit: 'acre', measureSystem: 'SI'}, {unit: 'hectare', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
+        console.error('i18n_test_9700 ' + value);
+        expect(value).assertEqual('404.686公顷');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_9710
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_9710', 0, function () {
+        console.error('i18n_test_9710 ' + 'start');
+        let value = I18n.Util.unitConvert({unit: 'acre', measureSystem: 'SI'}, {unit: 'square-meter', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
+        console.error('i18n_test_9710 ' + value);
+        expect(value).assertEqual('4,046,856.422平方米');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_9800
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_9800', 0, function () {
+        console.error('i18n_test_9800 ' + 'start');
+        let value = I18n.Util.unitConvert({unit: 'kilometer-per-hour', measureSystem: 'SI'}, {unit: 'knot', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
+        console.error('i18n_test_9800 ' + value);
+        expect(value).assertEqual('539.957节');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_9850
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_9850', 0, function () {
+        console.error('i18n_test_9850 ' + 'start');
+        let value = I18n.Util.unitConvert({unit: 'kilometer-per-hour', measureSystem: 'SI'}, {unit: 'meter-per-second', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
+        console.error('i18n_test_9850 ' + value);
+        expect(value).assertEqual('每秒277.778米');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_9900
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_9900', 0, function () {
+        console.error('i18n_test_9900 ' + 'start');
+        let value = I18n.Util.unitConvert({unit: 'meter', measureSystem: 'SI'}, {unit: 'kilometer', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
+        console.error('i18n_test_9900 ' + value);
+        expect(value).assertEqual('1公里');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_9910
+    * @tc.name test isValidNumber interface
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_9910', 0, function () {
+        console.error('i18n_test_9910 ' + 'start');
+        let value = I18n.Util.unitConvert({unit: 'meter', measureSystem: 'SI'}, {unit: 'meter-per-second', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
+        console.error('i18n_test_9910 ' + value);
+        expect(value).assertEqual('1,000米');
     })
 
     console.log('*************end I18NTest*************');
