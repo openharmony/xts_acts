@@ -1,0 +1,103 @@
+// @ts-nocheck
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
+import router from '@system.router';
+
+export default function panelJsunit() {
+
+  function sleep(time) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve()
+      }, time * 1000)
+    }).then(() => {
+      console.info(`sleep ${time} over...`)
+    })
+  }
+
+  describe('panelTest', function () {
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_API_0440
+     * @tc.name      panelTest001
+     * @tc.desc      aceEtsTest
+     */
+    it('panelTest001', 0, async function (done) {
+      console.info('++++++++++++++++ Panel TestCase 1 START ++++++++++++++++');
+      let options = {
+        uri: 'pages/Panel',
+      }
+      try {
+        let result = await router.push(options)
+        console.info( JSON.stringify(result));
+      } catch (err) {
+        console.error(JSON.stringify(result));
+      }
+      await sleep(1)
+      let strJson = getInspectorByKey('panel');
+      let obj = JSON.parse(strJson);
+      console.info("get inspector value is: " + JSON.stringify(obj));
+      console.log(JSON.stringify(obj.$type))
+      expect(obj.$type).assertEqual('Panel')
+      console.log('Panel‘s type is '+JSON.stringify(obj.$attrs.type))
+      console.log('Panel‘s mode is '+JSON.stringify(obj.$attrs.mode))
+      console.log('Panel‘s dragBar is '+JSON.stringify(obj.$attrs.dragBar))
+      console.log('Panel‘s fullHeight is '+JSON.stringify(obj.$attrs.fullHeight))
+      console.log('Panel‘s halfHeight is '+JSON.stringify(obj.$attrs.halfHeight))
+      console.log('Panel‘s miniHeight is '+JSON.stringify(obj.$attrs.miniHeight))
+      expect(obj.$attrs.type).assertEqual('PanelType.Foldable')
+      expect(obj.$attrs.mode).assertEqual('PanelMode.Half')
+      expect(obj.$attrs.dragBar).assertEqual('true')
+      expect(obj.$attrs.fullHeight).assertEqual('500.000000vp')
+      expect(obj.$attrs.halfHeight).assertEqual('250.000000vp')
+      expect(obj.$attrs.miniHeight).assertEqual('100.000000vp')
+      console.info('++++++++++++++++ Panel TestCase 1 End ++++++++++++++++');
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_API_0450
+     * @tc.name      panelTest002
+     * @tc.desc      aceEtsTest
+     */
+    it('panelTest002', 0, async function (done) {
+      console.info('++++++++++++++++ Panel TestCase 2 START ++++++++++++++++');
+      await sleep(1)
+      let strJson = getInspectorByKey('panel2');
+      let obj = JSON.parse(strJson);
+      console.info("get inspector value is: " + JSON.stringify(obj));
+      console.log(JSON.stringify(obj.$type))
+      expect(obj.$type).assertEqual('Panel')
+      console.log('Panel‘s type is '+JSON.stringify(obj.$attrs.type))
+      console.log('Panel‘s mode is '+JSON.stringify(obj.$attrs.mode))
+      console.log('Panel‘s show is '+JSON.stringify(obj.$attrs.show))
+      expect(obj.$attrs.type).assertEqual('PanelType.Minibar')
+      expect(obj.$attrs.mode).assertEqual('PanelMode.Mini')
+      expect(obj.$attrs.show).assertEqual('true')
+      console.info('++++++++++++++++ Panel TestCase 2 End ++++++++++++++++');
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_API_0460
+     * @tc.name      panelTest003
+     * @tc.desc      aceEtsTest
+     */
+    it('panelTest003', 0, async function (done) {
+      console.info('++++++++++++++++ Panel TestCase 3 START ++++++++++++++++');
+      await sleep(1)
+      let strJson = getInspectorByKey('panel3');
+      let obj = JSON.parse(strJson);
+      console.info("get inspector value is: " + JSON.stringify(obj));
+      console.log(JSON.stringify(obj.$type))
+      expect(obj.$type).assertEqual('Panel')
+      console.log('Panel‘s type is '+JSON.stringify(obj.$attrs.type))
+      console.log('Panel‘s mode is '+JSON.stringify(obj.$attrs.mode))
+      console.log('Panel‘s show is '+JSON.stringify(obj.$attrs.show))
+      expect(obj.$attrs.type).assertEqual('PanelType.Temporary')
+      expect(obj.$attrs.mode).assertEqual('PanelMode.Full')
+      expect(obj.$attrs.show).assertEqual('false')
+      console.info('++++++++++++++++ Panel TestCase 3 End ++++++++++++++++');
+      done();
+    });
+  })
+}

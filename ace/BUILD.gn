@@ -13,5 +13,9 @@
 
 group("ace") {
   testonly = true
-  deps = [ "ace_standard:ace_standard_test" ]
+  deps = [
+    "ace_ets_standard:ActsAceEtsStTest",
+    "ace_ets_test:ActsAceEtsTest",
+    "ace_standard:ace_standard_test",
+  ]
 }
