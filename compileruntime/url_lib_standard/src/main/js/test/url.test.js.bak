@@ -15,6 +15,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/lite'
 import  Url from '@ohos.url'
 describe('UrlFunTest', function () {
+
     /**
      * @tc.name: testUrlAppend001
      * @tc.desc: Appends a specified key/value pair as a new search parameter.
@@ -267,7 +268,7 @@ describe('UrlFunTest', function () {
         {
             arr[i] = value + " " + key + " " + (params === SearchParams)
             i++
-        };
+        }
         params.forEach(func);
         expect(arr[0]).assertEqual("value1 key1 true");
     })
@@ -325,7 +326,7 @@ describe('UrlFunTest', function () {
         {
             arr[i] = value + " " + key + " " + (params === SearchParams)
             i++
-        };
+        }
         params.forEach(func);
         expect(arr[1]).assertEqual("txt jss true");
     })

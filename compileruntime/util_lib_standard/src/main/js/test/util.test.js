@@ -336,7 +336,7 @@ describe('TextEncoderTest', function () {
     it('testUtilCallbackWrapper002', 0, async function () {
         async function promiseFn() {
             return Promise.resolve('value');
-        };
+        }
         var cb = util.callbackWrapper(promiseFn);
         cb((err, ret) => {
             expect(err).strictEqual(null);
@@ -354,7 +354,7 @@ describe('TextEncoderTest', function () {
     it('testUtilCallbackWrapper003', 0, async function () {
         async function promiseFn() {
             return 42;
-        };
+        }
         var cb = util.callbackWrapper(promiseFn);
         cb((err, ret) => {
             expect(err).strictEqual(null);
@@ -371,11 +371,13 @@ describe('TextEncoderTest', function () {
      */
     it('testUtilCallbackWrapper004', 0, async function () {
         async function promiseFn() {
-            return Promise.reject('value');
-        };
+			var err = Error('value');
+			return Promise.reject(err);
+			
+        }
         var cb = util.callbackWrapper(promiseFn);
         cb((err, ret) => {
-            expect(err).strictEqual('value');
+            expect(err.message).strictEqual('value');
             expect(ret).strictEqual(undefined);
         })
     })
@@ -390,7 +392,7 @@ describe('TextEncoderTest', function () {
     it('testUtilCallbackWrapper005', 0, async function () {
         async function promiseFn(a, b) {
             return a + b;
-        };
+        }
         var cb = util.callbackWrapper(promiseFn);
         cb(1, 2, (err, ret) => {
             expect(err).strictEqual(null);
@@ -408,7 +410,7 @@ describe('TextEncoderTest', function () {
     it('testUtilCallbackWrapper006', 0, async function () {
         async function promiseFn(){
             return null;
-        };
+        }
         var cb = util.callbackWrapper(promiseFn);
         try {
             cb([1, 2])
@@ -4446,7 +4448,7 @@ describe('LruBufferFunTest', function () {
             i++;
             arr[i]=entry[1];
             i++;
-        };
+        }
         expect(arr[1]).assertEqual('abc');
     })
 
@@ -4469,7 +4471,7 @@ describe('LruBufferFunTest', function () {
             i++;
             arr[i]=entry[1];
             i++;
-        };
+        }
         expect(arr[1]).assertEqual(2);
     })
 
@@ -4493,7 +4495,7 @@ describe('LruBufferFunTest', function () {
             i++;
             arr[i]=entry[1];
             i++;
-        };
+        }
         expect(arr[0]).assertEqual(1);
     })
 
@@ -4518,7 +4520,7 @@ describe('LruBufferFunTest', function () {
             i++;
             arr[i]=entry[1];
             i++;
-        };
+        }
         expect(arr[1]).assertEqual(15)
         expect(arr[3]).assertEqual(20)
     })
@@ -4547,7 +4549,7 @@ describe('LruBufferFunTest', function () {
             i++;
             arr[i]=entry[1];
             i++;
-        };
+        }
         expect(arr[1]).assertEqual(10)
         expect(arr[3]).assertEqual(2)
         expect(arr[5]).assertEqual(20)
@@ -4570,7 +4572,7 @@ describe('LruBufferFunTest', function () {
             i++;
             arr[i]=entry[1];
             i++;
-        };
+        }
         expect(arr[1]).assertEqual('abc');
     })
 
@@ -4593,7 +4595,7 @@ describe('LruBufferFunTest', function () {
             i++;
             arr[i]=entry[1];
             i++;
-        };
+        }
         expect(arr[1]).assertEqual(2);
     })
 
@@ -4617,7 +4619,7 @@ describe('LruBufferFunTest', function () {
             i++;
             arr[i]=entry[1];
             i++;
-        };
+        }
         expect(arr[0]).assertEqual(1);
     })
 
@@ -4642,7 +4644,7 @@ describe('LruBufferFunTest', function () {
             i++;
             arr[i]=entry[1];
             i++;
-        };
+        }
         expect(arr[1]).assertEqual(15)
         expect(arr[3]).assertEqual(20)
     })
@@ -4671,7 +4673,7 @@ describe('LruBufferFunTest', function () {
             i++;
             arr[i]=entry[1];
             i++;
-        };
+        }
         expect(arr[1]).assertEqual(10)
         expect(arr[3]).assertEqual(2)
         expect(arr[5]).assertEqual(20)
@@ -6261,7 +6263,8 @@ describe('TypesTest', function() {
      */
     it('testIsPromise004', 0, function() {
         var proc = new util.Types();
-        var result = proc.isPromise(Promise.reject(33));
+        var err = Error(33);
+        var result = proc.isPromise(Promise.reject(err ));
         expect(result).assertEqual(true);
     })
 

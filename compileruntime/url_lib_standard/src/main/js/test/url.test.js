@@ -172,7 +172,7 @@ describe('UrlFunTest', function () {
             i++;
             arr[i]=pair[1];
             i++;
-        };
+        }
         expect(arr[1]).assertEqual("value1");
     })
 
@@ -268,7 +268,7 @@ describe('UrlFunTest', function () {
         {
             arr[i] = value + " " + key + " " + (params === SearchParams)
             i++
-        };
+        }
         params.forEach(func);
         expect(arr[0]).assertEqual("value1 key1 true");
     })
@@ -287,7 +287,7 @@ describe('UrlFunTest', function () {
         {
             arr[i] = value + " " + key + " " + (params === SearchParams)
             i++
-        };
+        }
         params.forEach(func);
         expect(arr[1]).assertEqual("value2 key2 true");
     })
@@ -307,7 +307,7 @@ describe('UrlFunTest', function () {
         {
             arr[i] = value + " " + key + " " + (params === SearchParams)
             i++
-        };
+        }
         params.forEach(func);
         expect(arr[2]).assertEqual("jk foo true");
     })
@@ -326,7 +326,7 @@ describe('UrlFunTest', function () {
         {
             arr[i] = value + " " + key + " " + (params === SearchParams)
             i++
-        };
+        }
         params.forEach(func);
         expect(arr[1]).assertEqual("txt jss true");
     })
@@ -346,7 +346,7 @@ describe('UrlFunTest', function () {
         {
             arr[i] = value + " " + key + " " + (params === SearchParams)
             i++
-        };
+        }
         params.forEach(func);
         expect(arr[0]).assertEqual("bar foo true");
     })
@@ -553,7 +553,7 @@ describe('UrlFunTest', function () {
         for(var key of params.keys()) {
             arr[i] = key
             i++
-        };
+        }
         expect(arr[0]).assertEqual("小");
     })
 
@@ -570,7 +570,7 @@ describe('UrlFunTest', function () {
         for(var key of params.keys()) {
             arr[i] = key
             i++
-        };
+        }
         expect(arr[1]).assertEqual("￥");
     })
 
@@ -587,7 +587,7 @@ describe('UrlFunTest', function () {
         for(var key of params.keys()) {
             arr[i] = key
             i++
-        };
+        }
         expect(arr[2]).assertEqual("key3");
     })
 
@@ -604,7 +604,7 @@ describe('UrlFunTest', function () {
         for(var key of params.keys()) {
             arr[i] = key
             i++
-        };
+        }
         expect(arr[3]).assertEqual("key4");
     })
 
@@ -621,7 +621,7 @@ describe('UrlFunTest', function () {
         for(var key of params.keys()) {
             arr[i] = key
             i++
-        };
+        }
         expect(arr[4]).assertEqual("key5");
     })
 
