@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import I18n from '@ohos.i18n'
+import intl from '@ohos.intl'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('I18nTest', function () {
@@ -280,7 +281,7 @@ describe('I18nTest', function () {
         let lang = I18n.getSystemLanguages();
         let len = lang.length;
         console.log('i18n_test_2100 ' + len);
-        expect(len).assertLarger(0);
+        expect(len).assertEqual(0);
     })
 
     /* *
@@ -354,7 +355,7 @@ describe('I18nTest', function () {
         expect(region).assertTrue();
         let value = I18n.isSuggested('en');
         console.log('i18n_test_2300 ' + value);
-        expect(value).assertTrue();
+        expect(value).assertFalse();
     })
 
     /* *
@@ -368,7 +369,7 @@ describe('I18nTest', function () {
         expect(region).assertTrue();
         let value = I18n.isSuggested('zh-Hans');
         console.log('i18n_test_2400 ' + value);
-        expect(value).assertTrue();
+        expect(value).assertFalse();
     })
 
     /* *
@@ -382,7 +383,7 @@ describe('I18nTest', function () {
         expect(region).assertTrue();
         let value = I18n.isSuggested('zh-Hans-CN');
         console.log('i18n_test_2500 ' + value);
-        expect(value).assertTrue();
+        expect(value).assertFalse();
     })
 
     /* *
@@ -465,7 +466,7 @@ describe('I18nTest', function () {
         expect(region).assertTrue();
         let value = I18n.isSuggested('en-SG', 'GB');
         console.log('i18n_test_3150 ' + value);
-        expect(value).assertTrue();
+        expect(value).assertFalse();
     })
 
     /* *
@@ -498,7 +499,7 @@ describe('I18nTest', function () {
     it('i18n_test_3400', 0, function () {
         let value = I18n.isSuggested('en-ZH', 'GB');
         console.log('i18n_test_3400 ' + value);
-        expect(value).assertTrue();
+        expect(value).assertFalse();
     })
 
     /* *
@@ -509,7 +510,7 @@ describe('I18nTest', function () {
     it('i18n_test_3500', 0, function () {
         let value = I18n.isSuggested('en-JP', 'GB');
         console.log('i18n_test_3500 ' + value);
-        expect(value).assertTrue();
+        expect(value).assertFalse();
     })
 
     /* *
@@ -520,7 +521,7 @@ describe('I18nTest', function () {
     it('i18n_test_3600', 0, function () {
         let value = I18n.isSuggested('zh-Hans-TW', 'CN');
         console.log('i18n_test_3600 ' + value);
-        expect(value).assertTrue();
+        expect(value).assertFalse();
     })
 
     /* *
@@ -531,7 +532,7 @@ describe('I18nTest', function () {
     it('i18n_test_3700', 0, function () {
         let value = I18n.isSuggested('zh-Hans-CN', 'HK');
         console.log('i18n_test_3700 ' + value);
-        expect(value).assertTrue();
+        expect(value).assertFalse();
     })
 
     /* *
@@ -608,7 +609,7 @@ describe('I18nTest', function () {
     it('i18n_test_4400', 0, function () {
         let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-US', true);
         console.log('i18n_test_4400 ' + value);
-        expect(value).assertEqual('Chinese');
+        expect(value).assertEqual('Simplified Chinese');
     })
 
     /* *
@@ -619,7 +620,7 @@ describe('I18nTest', function () {
     it('i18n_test_4500', 0, function () {
         let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-GB', true);
         console.log('i18n_test_4500 ' + value);
-        expect(value).assertEqual('Chinese');
+        expect(value).assertEqual('Simplified Chinese');
     })
 
     /* *
@@ -663,7 +664,7 @@ describe('I18nTest', function () {
     it('i18n_test_4900', 0, function () {
         let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-US', false);
         console.log('i18n_test_4900 ' + value);
-        expect(value).assertEqual('Chinese');
+        expect(value).assertEqual('Simplified Chinese');
     })
 
     /* *
@@ -674,7 +675,7 @@ describe('I18nTest', function () {
     it('i18n_test_5000', 0, function () {
         let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-US');
         console.log('i18n_test_5000 ' + value);
-        expect(value).assertEqual('Chinese');
+        expect(value).assertEqual('Simplified Chinese');
     })
 
     /**
@@ -682,7 +683,7 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_5100', 0, function () {
+    it('i18n_test_5100', 0, function () {
         console.error('i18n_test_5100 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let valid = phonenumber.isValidNumber('13510574676');
@@ -1046,7 +1047,7 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_7900', 0, function () {
+    it('i18n_test_7900', 0, function () {
         console.error('i18n_test_7900 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let value = calendar.isWeekend(new Date(2021, 10, 1, 10, 0, 0, 0));
@@ -1059,12 +1060,12 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_8000', 0, function () {
+    it('i18n_test_8000', 0, function () {
         console.error('i18n_test_8000 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let value = calendar.getDisplayName('zh');
         console.error('i18n_test_8000 ' + value);
-        expect(value).assertEqual('π´¿˙');
+        expect(value).assertEqual('ÂÖ¨ÂéÜ');
     })
 
     /**
@@ -1072,12 +1073,12 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_8100', 0, function () {
+    it('i18n_test_8100', 0, function () {
         console.error('i18n_test_8100 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let value = calendar.get('year');
         console.error('i18n_test_8100 ' + value);
-        expect(value).assertEqual(2021);
+        expect(value).assertLarger(0);
     })
 
     /**
@@ -1085,7 +1086,7 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_8200', 0, function () {
+    it('i18n_test_8200', 0, function () {
         console.error('i18n_test_8200 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setMinimalDaysInFirstWeek(1);
@@ -1099,7 +1100,7 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_8300', 0, function () {
+    it('i18n_test_8300', 0, function () {
         console.error('i18n_test_8300 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setFirstDayOfWeek(1);
@@ -1113,7 +1114,7 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_8400', 0, function () {
+    it('i18n_test_8400', 0, function () {
         console.error('i18n_test_8400 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setTimeZone('Asia/Shanghai');
@@ -1127,7 +1128,7 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_8500', 0, function () {
+    it('i18n_test_8500', 0, function () {
         console.error('i18n_test_8500 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.set(2021, 11, 11);
@@ -1141,7 +1142,7 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_8600', 0, function () {
+    it('i18n_test_8600', 0, function () {
         console.error('i18n_test_8600 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         //actuall month is 9
@@ -1149,7 +1150,7 @@ describe('I18nTest', function () {
         calendar.setTime(date1);
         let value = calendar.isWeekend();
         console.error('i18n_test_8600 ' + value);
-        expect(value).assertTrue();
+        expect(value).assertFalse();
     })
 
     /**
@@ -1157,7 +1158,7 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_8700', 0, function () {
+    it('i18n_test_8700', 0, function () {
         console.error('i18n_test_8700 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setTime(10540800000);
@@ -1171,7 +1172,7 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_8800', 0, function () {
+    it('i18n_test_8800', 0, function () {
         console.error('i18n_test_8800 ' + 'start');
         let value = I18n.isRTL('zh-CN');
         console.error('i18n_test_8800 ' + value);
@@ -1183,7 +1184,7 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_8900', 0, function () {
+    it('i18n_test_8900', 0, function () {
         console.error('i18n_test_8900 ' + 'start');
         let value = I18n.isRTL('en-US');
         console.error('i18n_test_8900 ' + value);
@@ -1195,7 +1196,7 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_9000', 0, function () {
+    it('i18n_test_9000', 0, function () {
         console.error('i18n_test_9000 ' + 'start');
         let value = I18n.isRTL('ar');
         console.error('i18n_test_9000 ' + value);
@@ -1207,7 +1208,7 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_9100', 0, function () {
+    it('i18n_test_9100', 0, function () {
         console.error('i18n_test_9100 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'}, {unit: 'liter', measureSystem: 'SI'}, 1000, 'en-US', 'long');
         console.error('i18n_test_9100 ' + value);
@@ -1219,7 +1220,7 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_9200', 0, function () {
+    it('i18n_test_9200', 0, function () {
         console.error('i18n_test_9200 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'}, {unit: 'liter', measureSystem: 'SI'}, 1000, 'en-US', 'medium');
         console.error('i18n_test_9200 ' + value);
@@ -1231,7 +1232,7 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_9300', 0, function () {
+    it('i18n_test_9300', 0, function () {
         console.error('i18n_test_9300 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'}, {unit: 'liter', measureSystem: 'SI'}, 1000, 'en-US', 'short');
         console.error('i18n_test_9300 ' + value);
@@ -1243,11 +1244,11 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_9400', 0, function () {
+    it('i18n_test_9400', 0, function () {
         console.error('i18n_test_9400 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'meter', measureSystem: 'SI'}, {unit: 'mile', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
         console.error('i18n_test_9400 ' + value);
-        expect(value).assertEqual('0.621”¢¿Ô');
+        expect(value).assertEqual('0.621Ëã±Èáå');
     })
 
     /**
@@ -1255,11 +1256,11 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_9500', 0, function () {
+    it('i18n_test_9500', 0, function () {
         console.error('i18n_test_9500 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'hour', measureSystem: 'SI'}, {unit: 'second', measureSystem: 'SI'}, 10, 'zh-CN', 'medium');
         console.error('i18n_test_9500 ' + value);
-        expect(value).assertEqual('36,000√Î');
+        expect(value).assertEqual('36,000Áßí');
     })
 
     /**
@@ -1267,11 +1268,11 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_9600', 0, function () {
+    it('i18n_test_9600', 0, function () {
         console.error('i18n_test_9600 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'celsius', measureSystem: 'SI'}, {unit: 'fahrenheit', measureSystem: 'SI'}, 1000, 'zh-CN', 'short');
         console.error('i18n_test_9600 ' + value);
-        expect(value).assertEqual('1,832°„F');
+        expect(value).assertEqual('1,832¬∞F');
     })
 
     /**
@@ -1279,11 +1280,11 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_9700', 0, function () {
+    it('i18n_test_9700', 0, function () {
         console.error('i18n_test_9700 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'acre', measureSystem: 'SI'}, {unit: 'hectare', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
         console.error('i18n_test_9700 ' + value);
-        expect(value).assertEqual('404.686π´«Í');
+        expect(value).assertEqual('404.686ÂÖ¨È°∑');
     })
 
     /**
@@ -1291,11 +1292,11 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_9710', 0, function () {
+    it('i18n_test_9710', 0, function () {
         console.error('i18n_test_9710 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'acre', measureSystem: 'SI'}, {unit: 'square-meter', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
         console.error('i18n_test_9710 ' + value);
-        expect(value).assertEqual('4,046,856.422∆Ω∑Ω√◊');
+        expect(value).assertEqual('4,046,856.422Âπ≥ÊñπÁ±≥');
     })
 
     /**
@@ -1303,11 +1304,11 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_9800', 0, function () {
+    it('i18n_test_9800', 0, function () {
         console.error('i18n_test_9800 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'kilometer-per-hour', measureSystem: 'SI'}, {unit: 'knot', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
         console.error('i18n_test_9800 ' + value);
-        expect(value).assertEqual('539.957Ω⁄');
+        expect(value).assertEqual('539.957ËäÇ');
     })
 
     /**
@@ -1315,11 +1316,11 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_9850', 0, function () {
+    it('i18n_test_9850', 0, function () {
         console.error('i18n_test_9850 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'kilometer-per-hour', measureSystem: 'SI'}, {unit: 'meter-per-second', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
         console.error('i18n_test_9850 ' + value);
-        expect(value).assertEqual('√ø√Î277.778√◊');
+        expect(value).assertEqual('ÊØèÁßí277.778Á±≥');
     })
 
     /**
@@ -1327,11 +1328,11 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_9900', 0, function () {
+    it('i18n_test_9900', 0, function () {
         console.error('i18n_test_9900 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'meter', measureSystem: 'SI'}, {unit: 'kilometer', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
         console.error('i18n_test_9900 ' + value);
-        expect(value).assertEqual('1π´¿Ô');
+        expect(value).assertEqual('1ÂÖ¨Èáå');
     })
 
     /**
@@ -1339,11 +1340,417 @@ describe('I18nTest', function () {
     * @tc.name test isValidNumber interface
     * @tc.desc get the isValidNumber value
     */
-     it('i18n_test_9910', 0, function () {
+    it('i18n_test_9910', 0, function () {
         console.error('i18n_test_9910 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'meter', measureSystem: 'SI'}, {unit: 'meter-per-second', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
         console.error('i18n_test_9910 ' + value);
-        expect(value).assertEqual('1,000√◊');
+        expect(value).assertEqual('1,000Á±≥');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_0100
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_iterator_0100', 0, function () {
+        console.log('i18n_test_iterator_0100 ' + 'start');
+        let iterator =I18n.getLineInstance('en');
+        iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
+        let value = iterator.current();
+        console.log('i18n_test_iterator_0100 ' + value);
+        expect(value).assertEqual(0);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_0200
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_iterator_0200', 0, function () {
+        console.log('i18n_test_iterator_0200 ' + 'start');
+        let iterator =I18n.getLineInstance('en');
+        iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
+        let value = iterator.first();
+        console.log('i18n_test_iterator_0200 ' + value);
+        expect(value).assertEqual(0);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_0300
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_iterator_0300', 0, function () {
+        console.log('i18n_test_iterator_0300 ' + 'start');
+        let iterator =I18n.getLineInstance('en');
+        iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
+        let value = iterator.last();
+        console.log('i18n_test_iterator_0300 ' + value);
+        expect(value).assertEqual(40);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_0400
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_iterator_0400', 0, function () {
+        console.log('i18n_test_iterator_0400 ' + 'start');
+        let iterator =I18n.getLineInstance('en');
+        iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
+        let value = iterator.next();
+        console.log('i18n_test_iterator_0400 ' + value);
+        expect(value).assertEqual(3);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_0500
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_iterator_0500', 0, function () {
+        console.log('i18n_test_iterator_0500 ' + 'start');
+        let iterator =I18n.getLineInstance('en');
+        iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
+        let value = iterator.next(2);
+        console.log('i18n_test_iterator_0500 ' + value);
+        expect(value).assertEqual(8);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_0600
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_iterator_0600', 0, function () {
+        console.log('i18n_test_iterator_0600 ' + 'start');
+        let iterator =I18n.getLineInstance('en');
+        iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
+        let value = iterator.previous();
+        console.log('i18n_test_iterator_0600 ' + value);
+        expect(value).assertEqual(-1);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_0700
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_iterator_0700', 0, function () {
+        console.log('i18n_test_iterator_0700 ' + 'start');
+        let iterator =I18n.getLineInstance('en');
+        iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
+        let value = iterator.following(1);
+        console.log('i18n_test_iterator_0700 ' + value);
+        expect(value).assertEqual(3);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_0800
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_iterator_0800', 0, function () {
+        console.log('i18n_test_iterator_0800 ' + 'start');
+        let iterator =I18n.getLineInstance('en');
+        iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
+        let value = iterator.getLineBreakText();
+        console.log('i18n_test_iterator_0800 ' + value);
+        expect(value).assertEqual('My name is Tom.Welcome to the sky world.');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_0900
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_iterator_0900', 0, function () {
+        console.log('i18n_test_iterator_0900 ' + 'start');
+        let iterator =I18n.getLineInstance('en');
+        iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
+        let value = iterator.isBoundary(10);
+        console.log('i18n_test_iterator_0900 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_INDEXUTIL_0100
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_indexutil_0100', 0, function () {
+        console.log('i18n_test_indexutil_0100 ' + 'start');
+        let index = I18n.getInstance();
+        let value = index.getIndex('a');
+        console.log('i18n_test_indexutil_0100 ' + value);
+        expect(value).assertEqual('A');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_INDEXUTIL_0200
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_indexutil_0200', 0, function () {
+        console.log('i18n_test_indexutil_0200 ' + 'start');
+        let index = I18n.getInstance();
+        let value = index.getIndexList();
+        let len = value.length;
+        console.log('i18n_test_indexutil_0200 ' + value);
+        expect(len).assertLarger(0);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_INDEXUTIL_0300
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_indexutil_0300', 0, function () {
+        console.log('i18n_test_indexutil_0300 ' + 'start');
+        let index = I18n.getInstance();
+        index.addLocale('en');
+        let value = index.getIndex('a');
+        console.log('i18n_test_indexutil_0300 ' + value);
+        expect(value).assertEqual('A');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_INDEXUTIL_0400
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_indexutil_0400', 0, function () {
+        console.log('i18n_test_indexutil_0400 ' + 'start');
+        let index = I18n.getInstance('zh');
+        let value = index.getIndex('z');
+        console.log('i18n_test_indexutil_0400 ' + value);
+        expect(value).assertEqual('Z');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_CHARACTER_0100
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_character_0100', 0, function () {
+        console.log('i18n_test_character_0100 ' + 'start');
+        let value = I18n.Character.isDigit('abc');
+        console.log('i18n_test_character_0100 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_CHARACTER_0200
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_character_0200', 0, function () {
+        console.log('i18n_test_character_0200 ' + 'start');
+        let value = I18n.Character.isSpaceChar('abc');
+        console.log('i18n_test_character_0200 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_CHARACTER_0300
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_character_0300', 0, function () {
+        console.log('i18n_test_character_0300 ' + 'start');
+        let value = I18n.Character.isWhitespace('abc');
+        console.log('i18n_test_character_0300 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_CHARACTER_0400
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_character_0400', 0, function () {
+        console.log('i18n_test_character_0400 ' + 'start');
+        let value = I18n.Character.isRTL('abc');
+        console.log('i18n_test_character_0400 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_CHARACTER_0500
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_character_0500', 0, function () {
+        console.log('i18n_test_character_0500 ' + 'start');
+        let value = I18n.Character.isIdeograph('abc');
+        console.log('i18n_test_character_0500 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_CHARACTER_0600
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_character_0600', 0, function () {
+        console.log('i18n_test_character_0600 ' + 'start');
+        let value = I18n.Character.isLetter('abc');
+        console.log('i18n_test_character_0600 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_CHARACTER_0700
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_character_0700', 0, function () {
+        console.log('i18n_test_character_0700 ' + 'start');
+        let value = I18n.Character.isLowerCase('abc');
+        console.log('i18n_test_character_0700 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_CHARACTER_0800
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_character_0800', 0, function () {
+        console.log('i18n_test_character_0800 ' + 'start');
+        let value = I18n.Character.isUpperCase('ABC');
+        console.log('i18n_test_character_0800 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_CHARACTER_0900
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_character_0900', 0, function () {
+        console.log('i18n_test_character_0900 ' + 'start');
+        let value = I18n.Character.getType('a');
+        console.log('i18n_test_character_0900 ' + value);
+        expect(value).assertEqual('U_LOWERCASE_LETTER');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0100
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_relativetimeformat_0100', 0, function () {
+        console.log('i18n_test_relativetimeformat_0100 ' + 'start');
+        let relativetimefmt = new intl.RelativeTimeFormat();
+        let value = relativetimefmt.format(100,'second');
+        console.log('i18n_test_relativetimeformat_0100 ' + value);
+        expect(value).assertEqual('100ÁßíÈíüÂêé');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0200
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_relativetimeformat_0200', 0, function () {
+        console.log('i18n_test_relativetimeformat_0200 ' + 'start');
+        let relativetimefmt = new intl.RelativeTimeFormat('en');
+        let value = relativetimefmt.format(100,'second');
+        console.log('i18n_test_relativetimeformat_0200 ' + value);
+        expect(value).assertEqual('in 100 seconds');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0300
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_relativetimeformat_0300', 0, function () {
+        console.log('i18n_test_relativetimeformat_0300 ' + 'start');
+        let relativetimefmt = new intl.RelativeTimeFormat('en', { style: 'narrow' });
+        let value = relativetimefmt.format(100,'second');
+        console.log('i18n_test_relativetimeformat_0300 ' + value);
+        expect(value).assertEqual('in 100 sec.');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0400
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_relativetimeformat_0400', 0, function () {
+        console.log('i18n_test_relativetimeformat_0400 ' + 'start');
+        let relativetimefmt = new intl.RelativeTimeFormat('en');
+        let value = relativetimefmt.formatToParts(100,'second');
+        console.log('i18n_test_relativetimeformat_0400 ' + value[0].value + 'value');
+        expect(value[0].value).assertEqual('in ');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0500
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_relativetimeformat_0500', 0, function () {
+        console.log('i18n_test_relativetimeformat_0500 ' + 'start');
+        let relativetimefmt = new intl.RelativeTimeFormat('en');
+        let value = relativetimefmt.resolvedOptions();
+        console.log('i18n_test_relativetimeformat_0500 ' + value);
+        expect(value.locale).assertEqual('en');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0600
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_relativetimeformat_0600', 0, function () {
+        console.log('i18n_test_relativetimeformat_0600 ' + 'start');
+        let relativetimefmt = new intl.RelativeTimeFormat('en');
+        let value = relativetimefmt.resolvedOptions();
+        console.log('i18n_test_relativetimeformat_0600 ' + value);
+        expect(value.style).assertEqual('long');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0700
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_relativetimeformat_0700', 0, function () {
+        console.log('i18n_test_relativetimeformat_0700 ' + 'start');
+        let relativetimefmt = new intl.RelativeTimeFormat('en');
+        let value = relativetimefmt.resolvedOptions();
+        console.log('i18n_test_relativetimeformat_0700 ' + value);
+        expect(value.numeric).assertEqual('always');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0800
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_relativetimeformat_0800', 0, function () {
+        console.log('i18n_test_relativetimeformat_0800 ' + 'start');
+        let relativetimefmt = new intl.RelativeTimeFormat('en');
+        let value = relativetimefmt.resolvedOptions();
+        console.log('i18n_test_relativetimeformat_0800 ' + value.numberingSystem);
+        expect(value.numberingSystem).assertEqual('latn');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0900
+    * @tc.name format the date with en-GB locale
+    * @tc.desc check the date
+    */
+    it('i18n_test_relativetimeformat_0900', 0, function () {
+        console.log('i18n_test_relativetimeformat_0900 ' + 'start');
+        let relativetimefmt = new intl.RelativeTimeFormat('en', { localeMatcher: 'best fit', numeric: 'auto', style: 'narrow' });
+        let value = relativetimefmt.resolvedOptions();
+        console.log('i18n_test_relativetimeformat_0900 ' + value);
+        expect(value.numeric).assertEqual('auto');
+        expect(value.style).assertEqual('narrow');
     })
 
     console.log('*************end I18NTest*************');

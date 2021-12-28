@@ -295,5 +295,35 @@ describe('resMgrTest', function () {
         done();
     })
 
+    /* *
+    * @tc.number SUB_GLOBAL_RESMGR_JS_1700
+    * @tc.name test getRawFile method in callback mode
+    * @tc.desc get the getRawFile in callback mode
+    */
+    it('getRawFile_test_001', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.getRawFile('rawfile/rawfiletest.xml', (error, value) => {
+                expect(value !== null).assertTrue();
+                console.log('getRawFile_test_001 ' + value);
+            })
+        })
+        done();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_RESMGR_JS_1800
+    * @tc.name test getRawFile method in promise mode
+    * @tc.desc get the getRawFile in promise mode
+    */
+    it('getRawFile_test_002', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.getRawFile('rawfile/rawfiletest.xml').then(value => {
+                expect(value !== null).assertTrue();
+                console.log('getRawFile_test_002 ' + value);
+            })
+        })
+        done();
+    })
+
     console.log('*************end ResmgrTest*************');
 }) 
