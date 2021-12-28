@@ -394,6 +394,7 @@ describe('basicabilityapi', function () {
     it('testConfigurationGetLocale', 0, function () {
         console.info('testConfigurationGetLocale START');
         const localeInfo = configuration.getLocale();
+        console.info("[configuration.getLocale] localeInfo: " + JSON.stringify(localeInfo));
         console.info("[configuration.getLocale] language: " + localeInfo.language);
         console.info("[configuration.getLocale] countryOrRegion: " + localeInfo.countryOrRegion);
         console.info("[configuration.getLocale] dir: " + localeInfo.dir);
@@ -421,7 +422,7 @@ describe('basicabilityapi', function () {
             console.info('[settimeout] v2: ' + v2);
             expect('test').assertEqual(v1);
             expect('message').assertEqual(v2);
-            expect(delay).assertLess(end_time - start_time);
+            expect().assertTrue(end_time - start_time >= delay);
             console.info('testSetTimeout END');
             done();
         }, delay, 'test', 'message');
