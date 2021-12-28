@@ -4913,9 +4913,7 @@ describe('TypesTest', function() {
 
     /**
      * @tc.name: testIsArrayBufferView001
-     * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_ array
-	   or naPi_ uint8_ clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or napi_
-	   uint32_ array or napi_ float32_ array or napi_ float64_ array array or DataView type.
+     * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_ array or naPi_ uint8_ clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or napi_ uint32_ array or napi_ float32_ array or napi_ float64_ array array or DataView type.
      * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
@@ -4927,9 +4925,7 @@ describe('TypesTest', function() {
 
     /**
      * @tc.name: testIsArrayBufferView002
-     * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_ array
-	   or naPi_ uint8_ clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_
-	   int32_ array or napi_ uint32_ array or napi_ float32_ array or napi_ float64_ array array or DataView type.
+     * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_ array or naPi_ uint8_ clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or napi_ uint32_ array or napi_ float32_ array or napi_ float64_ array array or DataView type.
      * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
@@ -4941,9 +4937,7 @@ describe('TypesTest', function() {
 
     /**
      * @tc.name: testIsArrayBufferView003
-     * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_
-	   array or naPi_ uint8_ clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or
-	   napi_ uint32_ array or napi_ float32_ array or napi_ float64_ array array or DataView type.
+     * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_ array or naPi_ uint8_ clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or napi_ uint32_ array or napi_ float32_ array or napi_ float64_ array array or DataView type.
      * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
@@ -4955,9 +4949,7 @@ describe('TypesTest', function() {
 
     /**
      * @tc.name: testIsArrayBufferView004
-     * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_ array or naPi_ uint8_
-	   clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or napi_ uint32_ array or
-	   napi_ float32_ array or napi_ float64_ array array or DataView type.
+     * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_ array or naPi_ uint8_ clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or napi_ uint32_ array or napi_ float32_ array or napi_ float64_ array array or DataView type.
      * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
@@ -4969,9 +4961,7 @@ describe('TypesTest', function() {
 
     /**
      * @tc.name: testIsArrayBufferView005
-     * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_ array or naPi_ uint8_
-	   clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or napi_ uint32_ array or
-	   napi_ float32_ array or napi_ float64_ array array or DataView type.
+     * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_ array or naPi_ uint8_ clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or napi_ uint32_ array or napi_ float32_ array or napi_ float64_ array array or DataView type.
      * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
