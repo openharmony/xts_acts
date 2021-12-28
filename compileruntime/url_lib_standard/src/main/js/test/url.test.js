@@ -12,11 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/lite'
 import  Url from '@ohos.url'
-
 describe('UrlFunTest', function () {
-    
     /**
      * @tc.name: testUrlAppend001
      * @tc.desc: Appends a specified key/value pair as a new search parameter.
@@ -255,7 +253,7 @@ describe('UrlFunTest', function () {
         expect(arr[4]).assertEqual("jss")
     })
 
-    /**
+   /**
     * @tc.name: testUrlForEach001
     * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
     * @tc.require: AR000GFB2S
@@ -274,7 +272,7 @@ describe('UrlFunTest', function () {
         expect(arr[0]).assertEqual("value1 key1 true");
     })
 
-    /**
+   /**
     * @tc.name: testUrlForEach002
     * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
     * @tc.require: AR000GFB2S
@@ -424,13 +422,7 @@ describe('UrlFunTest', function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
         params.append("key1","AAA")
         var result =  params.getAll("key1")
-        console.info('test result size=' + result.length)
-        console.info('test result type=' + typeof result )
-        console.info('test result=' + result)
-        var s = "value1,AAA"
-        console.info('test s size=' + s.length)
-        expect(result[0]).assertEqual("value1")
-        expect(result[1]).assertEqual("AAA")
+        expect(result).assertEqual("value1,AAA")
     })
 
     /**
@@ -443,13 +435,7 @@ describe('UrlFunTest', function () {
         let params = new Url.URLSearchParams("key1=value1&8=DEF")
         params.append("8","A8A")
         var result =  params.getAll("8")
-        console.info('test result size=' + result.length)
-        console.info('test result type=' + typeof result )
-        console.info('test result=' + result)
-        var s = "DEF,A8A"
-        console.info('test s size=' + s.length)
-        expect(result[0]).assertEqual("DEF")
-        expect(result[1]).assertEqual("A8A")
+        expect(result).assertEqual("DEF,A8A")
     })
 
     /**
@@ -459,11 +445,10 @@ describe('UrlFunTest', function () {
      * @tc.author: maxiaodong
      */
     it('testUrlGetAll003', 0, function () {
-        let params = new Url.URLSearchParams("key1=value1&key2=value2&key3=大")
+        let params = new Url.URLSearchParams("key1=value1&key2=value2&key3=da")
         params.append("key3","A3A")
         var result =  params.getAll("key3")
-        expect(result[0]).assertEqual("大")
-        expect(result[1]).assertEqual("A3A")
+        expect(result).assertEqual("da,A3A")
     })
 
     /**
@@ -474,12 +459,9 @@ describe('UrlFunTest', function () {
      */
     it('testUrlGetAll004', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2&key3=大")
-        params.append("key4","A3A3")
+        params.append("key3","A3A")
         var result =  params.getAll("key4")
-        console.info('test result size=' + result.length)
-        console.info('test result type=' + typeof result )
-        console.info('test result=' + result)
-        expect(result[0]).assertEqual("A3A3")
+        expect(result).assertEqual('')
     })
 
     /**
@@ -492,12 +474,7 @@ describe('UrlFunTest', function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2&key3=大")
         params.append("key3","A3A")
         var result =  params.getAll("key2")
-        console.info('test result size=' + result.length)
-        console.info('test result type=' + typeof result )
-        console.info('test result=' + result)
-        var s = "value2"
-        console.info('test s size=' + s.length)
-        expect(result[0]).assertEqual("value2")
+        expect(result).assertEqual("value2")
     })
 
     /**
@@ -657,6 +634,7 @@ describe('UrlFunTest', function () {
      */
     it('testUrlSet001', 0, function () {
         let params = new Url.URLSearchParams("1=value1&2=value2&key3=3");
+        // params.append("11","ACA");
         params.set("11","CCC");
         var res = params.toString();
         expect(res).assertEqual("1=value1&2=value2&key3=3&11=CCC");
@@ -702,6 +680,7 @@ describe('UrlFunTest', function () {
      */
     it('testUrlSet004', 0, function () {
         let params = new Url.URLSearchParams("1=value1&2=value2&key3=3");
+        // params.append("1","ACA");
         params.set("1","CCC");
         var res = params.toString();
         expect(res).assertEqual("1=CCC&2=value2&key3=3");
@@ -972,9 +951,9 @@ describe('UrlFunTest', function () {
      */
     it('testUrlSearchParamsConstruction003', 0, function () {
         let params = new Url.URLSearchParams([
-            ['user', 'abc'],
-            ['query', 'first'],
-            ['query', 'second'],
+                ['user', 'abc'],
+                ['query', 'first'],
+                ['query', 'second'],
         ]);
         var result= params.toString()
         expect(result).assertEqual("user=abc&query=first&query=second")
@@ -1215,7 +1194,7 @@ describe('UrlFunTest', function () {
      * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('Url_origin_test_005', 0, function () {
+    it('testUrlOrigin005', 0, function () {
         let params = new Url.URL('http://username:password@host22:100#fragment')
         var result= params.origin
         expect(result).assertEqual('http://host22:100')
@@ -1314,12 +1293,9 @@ describe('UrlFunTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testUrlUsername003', 0, function () {
-        console.log('testUrlUsername[start]')
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
         params.username = 'skk'
-        console.log('testUrlUsername['+params.username+']')
         var result= params.username
-        console.log('testUrlUsername['+result+']')
         expect(result).assertEqual('skk')
     })
 
@@ -1330,12 +1306,9 @@ describe('UrlFunTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testUrlUsername004', 0, function () {
-        console.log('testUrlUsername[start]')
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
         params.username = 'skp111'
-        console.log('testUrlUsername['+params.username+']')
         var result= params.username
-        console.log('testUrlUsername['+result+']')
         expect(result).assertEqual('skp111')
     })
 
@@ -1395,7 +1368,7 @@ describe('UrlFunTest', function () {
      */
     it('testUrlPassword004', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
-        params.password = "1234"
+        params.password = '1234'
         var result= params.password
         expect(result).assertEqual('1234')
     })
@@ -1408,7 +1381,7 @@ describe('UrlFunTest', function () {
      */
     it('testUrlPassword005', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
-        params.password = "";
+        params.password = '';
         var result= params.password
         expect(result).assertEqual('')
     })
@@ -1458,7 +1431,6 @@ describe('UrlFunTest', function () {
     it('testUrlHost004', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
         params.host = 'jkjk'
-        params.password = 'test'
         var result= params.host
         expect(result).assertEqual('jkjk:8080')
     })
@@ -2044,7 +2016,7 @@ describe('UrlFunTest', function () {
      * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('Url_construction_test_011', 0, function () {
+    it('testUrlConstruction011', 0, function () {
         let params = new Url.URL('htt1p://www.0902zy.cn/path?abc=123&def=456#yyyy')
         let params1 = new Url.URL('www.baidu.com/ssaa',params)
         var result = params1.href
