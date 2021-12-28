@@ -14,4 +14,4 @@
  */
 
 require('./ExampleJsunit.test.js')
-require('./TextCodr.test.js')
+require('./util.test.js')
