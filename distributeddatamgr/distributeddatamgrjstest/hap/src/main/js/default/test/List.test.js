@@ -12,6 +12,14 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+require('./DeviceKvStorePromiseJsunit.test.js')
+require('./DeviceKvStoreCallbackJsunit.test.js')
 require('./SingleKvStorePromiseJsunit.test.js')
 require('./SingleKvStoreCallbackJsunit.test.js')
 require('./SingleKvStoreEnumJsunit.test.js')
+require('./KvManagerPromiseJsunit.test.js')
+require('./KvManagerCallbackJsunit.test.js')
+require('./KvStoreResultSetJsunit.test.js')
+require('./QueryJsunit.test.js')
+require('./FieldNodeJsunit.test.js')
+require('./SchemaJsunit.test.js')
