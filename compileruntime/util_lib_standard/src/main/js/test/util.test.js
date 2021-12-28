@@ -6264,7 +6264,7 @@ describe('TypesTest', function() {
     it('testIsPromise004', 0, function() {
         var proc = new util.Types();
         var err = Error(33);
-        var result = proc.isPromise(Promise.reject(err ));
+        var result = proc.isPromise(Promise.reject(err));
         expect(result).assertEqual(true);
     })
 
@@ -6276,7 +6276,8 @@ describe('TypesTest', function() {
      */
     it('testIsPromise005', 0, function() {
         var proc = new util.Types();
-        var result = proc.isPromise(Promise.reject(23));
+		var err = Error(23);
+        var result = proc.isPromise(Promise.reject(err));
         expect(result).assertEqual(true);
     })
 

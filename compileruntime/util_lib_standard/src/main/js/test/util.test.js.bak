@@ -373,11 +373,11 @@ describe('TextEncoderTest', function () {
         async function promiseFn() {
 			var err = Error('value');
 			return Promise.reject(err);
-			expect(err.message).strictEqual('value');
+			
         }
         var cb = util.callbackWrapper(promiseFn);
         cb((err, ret) => {
-            expect(err).strictEqual('value');
+            expect(err.message).strictEqual('value');
             expect(ret).strictEqual(undefined);
         })
     })
@@ -6263,7 +6263,8 @@ describe('TypesTest', function() {
      */
     it('testIsPromise004', 0, function() {
         var proc = new util.Types();
-        var result = proc.isPromise(Promise.reject(33));
+        var err = Error(33);
+        var result = proc.isPromise(Promise.reject(err ));
         expect(result).assertEqual(true);
     })
 
