@@ -219,7 +219,7 @@ HWTEST_F(WeekPluralNumberTest, WeekPluralNumberTest0800, Function | MediumTest |
     int intNum1 = 1234567;
     std::string out = formatter.Format(intNum1, status_v2);
     std::cout << "out: " << out << std::endl;
-    EXPECT_TRUE(out == "١,٢٣٤,٥٦٧");
+    EXPECT_TRUE(out == "١٬٢٣٤٬٥٦٧");
 }
 
 /**
@@ -239,7 +239,7 @@ HWTEST_F(WeekPluralNumberTest, WeekPluralNumberTest0900, Function | MediumTest |
     int intNum1 = 1234567;
     std::string out = formatter.Format(intNum1, status_v2);
     std::cout << "out: " << out << std::endl;
-    EXPECT_TRUE(out == "١,٢٣٤,٥٦٧");
+    EXPECT_TRUE(out == "١٬٢٣٤٬٥٦٧");
 }
 
 /**
