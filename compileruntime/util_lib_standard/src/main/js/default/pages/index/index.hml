@@ -2,5 +2,4 @@
     <text class="title">
         {{ $t('strings.hello') }} {{title}}
     </text>
-    <input class="btn" type="button" value="{{ $t('strings.next') }}" onclick="onclick"></input>
 </div>
