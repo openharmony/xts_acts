@@ -163,7 +163,7 @@ describe('ActsAmsCallBackFourthScene', function () {
                 ' + error.code + ', data length [' + info.length + ']');
                 console.info('Acts_Ams_test_5000 getAllRunningProcesses JSON String:  ' + JSON.stringify(info));
                 expect(Array.isArray(info)).assertEqual(true);
-                expect(info.length).assertEqual(11);
+                expect(info.length).assertLarger(0);
                 for (var i = 0; i < info.length; i++) {
                     expect(typeof (info[i].pid)).assertEqual("number");
                     expect(info[i].pid).assertLarger(0);
@@ -319,7 +319,7 @@ describe('ActsAmsCallBackFourthScene', function () {
                 ' + error.code + ', data length [' + info.length + ']');
                 console.info('Acts_Ams_test_8900 getActiveProcessInfos data ' + JSON.stringify(info));
                 expect(Array.isArray(info)).assertEqual(true);
-                expect(info.length).assertEqual(11);
+                expect(info.length).assertLarger(0);
                 for (var i = 0; i < info.length; i++) {
                     expect(typeof (info[i].pid)).assertEqual("number");
                     expect(info[i].pid).assertLarger(0);

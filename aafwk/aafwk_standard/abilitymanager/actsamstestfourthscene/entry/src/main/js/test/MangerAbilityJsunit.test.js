@@ -185,7 +185,7 @@ describe('ActsAmsTestFourthScene', function () {
         console.info('getAllRunningProcesses data length [' + info.length + ']');
         console.info('Acts_Ams_test_4900 getAllRunningProcesses JSON String: ' + JSON.stringify(info));
         expect(Array.isArray(info)).assertEqual(true);
-        expect(info.length).assertEqual(11);
+        expect(info.length).assertLarger(0);
         for (var i = 0; i < info.length; i++) {
             expect(typeof (info[i].pid)).assertEqual("number");
             expect(info[i].pid).assertLarger(0);
@@ -222,7 +222,7 @@ describe('ActsAmsTestFourthScene', function () {
         var info = await abilitymanager.getActiveProcessInfos();
         console.info('Acts_Ams_test_8400 getActiveProcessInfos JSON String: ' + JSON.stringify(info));
         expect(Array.isArray(info)).assertEqual(true);
-        expect(info.length).assertEqual(11);
+        expect(info.length).assertLarger(0);
         for (var i = 0; i < info.length; i++) {
             expect(typeof (info[i].pid)).assertEqual("number");
             expect(info[i].pid).assertLarger(0);
