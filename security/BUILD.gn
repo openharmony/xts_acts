@@ -20,10 +20,8 @@ group("security") {
       # "authentication_standard/deviceauth_p2p:DeviceauthP2PFunctionCPPTest",
       "dataprotect/huks_standard_adapter:ActsHuksStdFunctionTest",
       "deviceauth/deviceauth_function:ActsDeviceAuthFunctionTest",
-      "permission/permissionkitcpp:ActsPermissionKitCPPTest",
     ]
   } else {
-    deps =
-        [ "permission/zpermissioninfoswitch:zpermissioninfoswitchFunctionTest" ]
+    deps = []
   }
 }
