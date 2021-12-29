@@ -25,7 +25,7 @@ ohos_js_hap_suite("url_js_test") {
   #    "//third_party/libpng:libpng",
   #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "UrlJsTest"
+  hap_name = "ActsUrlJsTest"
 
   #  part_name = "prebuilt_hap"
   #  subsystem_name = "xts"
