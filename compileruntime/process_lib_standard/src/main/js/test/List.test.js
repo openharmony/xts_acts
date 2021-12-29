@@ -13,5 +13,4 @@
  * limitations under the License.
  */
 
-require('./ExampleJsunit.test.js')
 require('./Process.test.js')
