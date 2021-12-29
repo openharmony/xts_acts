@@ -110,10 +110,11 @@ describe('basicabilityapi', function () {
      */
     it('testRouterPush', 0, async function (done) {
         console.info('testRouterPush START');
+        let options = {
+            uri : 'pages/routerPush/index'
+        }
         let promise1 = new Promise((resolve, reject) => {
-            router.push({
-                uri: 'pages/routerPush/index'
-            });
+            router.push(options);
             resolve();
         });
         let promise2 = new Promise((resolve, reject) => {
@@ -172,21 +173,25 @@ describe('basicabilityapi', function () {
      * @tc.desc      Replace the current page with a page in the application, and destroy the replaced page.
      */
     it('testRouterReplace', 0, async function (done) {
+        //测试框架不允许index页面直接替换，需要先跳转到其他页面再替换
         console.info('testRouterReplace START');
+        let options = {
+            uri : 'pages/routerPush/index'
+        }
         let promise1 = new Promise((resolve, reject) => {
-            router.push({
-                uri: 'pages/routerPush/index'
-            });
+            router.push(options);
             resolve();
         });
+        let repleasePage = {
+            uri : 'pages/routerReplace/index'
+        }
         let promise2 = new Promise((resolve, reject) => {
             setTimeout(() => {
-                router.replace({
-                    uri: 'pages/routerReplace/index'
-                });
+                router.replace(repleasePage);
                 resolve();
             }, 500);
         });
+        //替换堆栈数量不会变
         let promise3 = new Promise((resolve, reject) => {
             setTimeout(() => {
                 let pages = router.getState();
@@ -295,10 +300,11 @@ describe('basicabilityapi', function () {
         let size = router.getLength();
         console.info('[router.getLength] pages stack size = ' + size);
         expect(size).assertEqual('1');
+        let options = {
+            uri : 'pages/routerPush/index'
+        }
         let promise1 = new Promise((resolve, reject) => {
-            router.push({
-                uri: 'pages/routerPush/index'
-            });
+            router.push(options);
             resolve();
         });
         let promise2 = new Promise((resolve, reject) => {
@@ -422,7 +428,7 @@ describe('basicabilityapi', function () {
             console.info('[settimeout] v2: ' + v2);
             expect('test').assertEqual(v1);
             expect('message').assertEqual(v2);
-            expect().assertTrue(end_time - start_time >= delay);
+            expect(end_time - start_time >= delay).assertTrue();
             console.info('testSetTimeout END');
             done();
         }, delay, 'test', 'message');
