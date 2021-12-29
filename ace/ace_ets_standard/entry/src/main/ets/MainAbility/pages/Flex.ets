@@ -39,7 +39,6 @@ struct flex {
           Text('1').width('100%').height(20).backgroundColor(0xF5DEB3)
           Text('2').width('100%').height(20).backgroundColor(0xD2B48C)
           Text('3').width('100%').height(20).backgroundColor(0xF5DEB3)
-          }.width('100%').margin({ top: 5 })
         }
         .key('flex')
         .height(70)
@@ -96,7 +95,7 @@ struct flex {
         .padding(10)
         .backgroundColor(0xAFEEEE)
 
-        Text("justifyContent AND alignContent").fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Text('justifyContent AND alignContent').fontSize(9).fontColor(0xCCCCCC).width('90%')
         Flex({
           justifyContent: FlexAlign.SpaceEvenly,
           alignContent: FlexAlign.SpaceEvenly,
@@ -112,7 +111,7 @@ struct flex {
         .padding(10)
         .backgroundColor(0xAFEEEE)
 
-        Text("justifyContent AND alignContent").fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Text('justifyContent AND alignContent').fontSize(9).fontColor(0xCCCCCC).width('90%')
         Flex({
           justifyContent: FlexAlign.SpaceAround,
           alignContent: FlexAlign.SpaceAround,
