@@ -15,6 +15,16 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import ddm from '@ohos.data.distributedData';
 
+const TEST_BUNDLE_NAME = 'ohos.acts.distributeddatamgr';
+
+const config = {
+    bundleName : TEST_BUNDLE_NAME,
+    userInfo : {
+        userId : '0',
+        userType : ddm.UserType.SAME_USER_ID
+    }
+}
+
 describe('SchemaTest', function() {
 
     // toJsonString():string
@@ -33,9 +43,24 @@ describe('SchemaTest', function() {
         try {
             let schema = new ddm.Schema();
             var str = schema.toJsonString();
-            schema.root = new ddm.FieldNode();
-            var node = schema.root;
-            console.log("schema: " + str);
+            console.log("testToJsonString002: " + str);
+            const options = {
+                createIfMissing : true,
+                encrypt : false,
+                backup : false,
+                autoSync : true,
+                kvStoreType : ddm.KVStoreType.SINGLE_VERSION,
+                schema : str,
+                securityLevel : ddm.SecurityLevel.S2,
+            }
+            console.log("testToJsonString002: createKVManager (single) with " + JSON.stringify(options));
+            await ddm.createKVManager(config).then((manager) => {
+                var kvManager = manager;
+                console.log('testToJsonString002 createKVManager success');
+            }).catch((err) => {
+                console.log('testToJsonString002 createKVManager err ' + err);
+            });
+
         } catch (e) {
             expect(null).assertFail();
         }
@@ -46,7 +71,25 @@ describe('SchemaTest', function() {
         try {
             let schema = new ddm.Schema();
             var str = schema.toJsonString();
-            console.log("schema: " + str);
+            console.log("testToJsonString003: " + str);
+
+            const options = {
+                createIfMissing : true,
+                encrypt : false,
+                backup : false,
+                autoSync : true,
+                kvStoreType : ddm.KVStoreType.DEVICE_COLLABORATION,
+                schema : str,
+                securityLevel : ddm.SecurityLevel.S2,
+            }
+            console.log("testToJsonString003: createKVManager (device) with " + JSON.stringify(options));
+            await ddm.createKVManager(config).then((manager) => {
+                var kvManager = manager;
+                console.log('testToJsonString003 createKVManager success');
+            }).catch((err) => {
+                console.log('testToJsonString003 createKVManager err ' + err);
+            });
+
         } catch (e) {
             expect(null).assertFail();
         }
