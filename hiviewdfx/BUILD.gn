@@ -14,14 +14,6 @@ import("//build/ohos_var.gni")
 group("hiviewdfxtestacts") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "faultloggertest/faultloggercpptest:ActsFaultLoggerTest",
-      "hiappeventtest/hiappeventjstest:ActsHiAppEventJsTest",
-      "hicollietest/hicolliecpptest:ActsHiCollieCppTest",
-      "hilogtest/libhilogtest:libhilogtestacts",
-      "hisyseventtest/hisyseventcpptest:ActsHiSysEventCPPTest",
-      "hitracetest/hitracecpptest:ActsHitraceCPPTest",
-      "hitracetest/hitracectest:ActsHitraceCTest",
-    ]
+    deps = [ "hiappeventtest/hiappeventjstest:ActsHiAppEventJsTest" ]
   }
 }
