@@ -18,12 +18,9 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 describe('CallManagerTest', function () {
     const ERROR_CALLID_999 = 999;
     const GETMAIN_CALLID_ERRO = -1;
+    const STATUS_ON = 1;
     const SLOT_0 = 0;
     const ERR_SLOT_ID = -1;
-    const MORE_THAN_30_NUMBERS = '';
-    const INVALID_NUMBER = '';
-    const ACTIVATE_TRUE = true;
-    const ACTIVATE_FALSE = false;
 
    /*
     * @tc.number  Telephony_CallManager_getCallState_Async_0100
@@ -56,13 +53,13 @@ describe('CallManagerTest', function () {
            var data = await call.getCallState();
            expect(data === call.CALL_STATE_IDLE).assertTrue();
            console.log('Telephony_CallManager_getCallState_Promise_0100 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_getCallState_Promise_0100 : err = ' + err.message);
            expect().assertFail();
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -71,7 +68,7 @@ describe('CallManagerTest', function () {
     * @tc.desc    Function test
     */
    it('Telephony_CallManager_dial_Async_0200', 0, async function (done) {
-       call.dial('', (err, data) => {
+       call.dial('', (err) => {
            if (err) {
                console.log('Telephony_CallManager_dial_Async_0200 finish err = ' + err.message);
                done();
@@ -86,12 +83,12 @@ describe('CallManagerTest', function () {
    /*
     * @tc.number  Telephony_CallManager_dial_Async_0300
     * @tc.name    Set will choose parameter number phone number more than 30 characters
-    *             ( '12345678901234567890012345678901' , separate phone number did not take ', '),
+    *             (' 12345678901234567890012345678901 ', separate phone number did not take ', '),
     *             the callback way call dial () to dial, capture err
     * @tc.desc    Function test
     */
    it('Telephony_CallManager_dial_Async_0300', 0, async function (done) {
-       call.dial(MORE_THAN_30_NUMBERS, (err, data) => {
+       call.dial('12345678901234567890012345678901', (err) => {
            if (err) {
                console.log('Telephony_CallManager_dial_Async_0300 finish err = ' + err.message);
                done();
@@ -106,7 +103,7 @@ describe('CallManagerTest', function () {
    /*
     * @tc.number  Telephony_CallManager_dial_Promise_0200
     * @tc.name    Set mandatory phone number to empty (' ') and optional options to
-    *             {accountId: 1}. Call dial() to dial and capture err
+    *             {accountId: 1, videoState: 0, dialScene: 0, dialType: 0}. Call dial() to dial and capture err
     * @tc.desc    Function test
     */
    it('Telephony_CallManager_dial_Promise_0200', 0, async function (done) {
@@ -114,12 +111,12 @@ describe('CallManagerTest', function () {
            await call.dial('', { accountId: 1 })
            console.log('Telephony_CallManager_dial_Promise_0200 fail');
            expect().assertFail();
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_dial_Promise_0200 finish err = ' + err.message);
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -130,15 +127,15 @@ describe('CallManagerTest', function () {
     */
    it('Telephony_CallManager_dial_Promise_0900', 0, async function (done) {
        try {
-           await call.dial(MORE_THAN_30_NUMBERS);
+           await call.dial('12345678901234567890012345678901');
            expect().assertFail();
            console.log('Telephony_CallManager_dial_Promise_0900 fail');
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_dial_Promise_0900 finish err = ' + err.message);
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -149,7 +146,7 @@ describe('CallManagerTest', function () {
     */
    it('Telephony_CallManager_dial_Async_0900', 0, async function (done) {
        let obj = { accountId: 0, videoState: 0, dialScene: 0, dialType: 0 };
-       call.dial('', obj, (err, data) => {
+       call.dial('', obj, (err) => {
            if (err) {
                console.log('Telephony_CallManager_dial_Async_0900 finish  err = ' + err.message);
                done();
@@ -191,12 +188,12 @@ describe('CallManagerTest', function () {
            await call.holdCall(ERROR_CALLID_999);
            expect().assertFail();
            console.log('Telephony_CallManager_holdCall_Promise_0100 fail');
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_holdCall_Promise_0100 finish err = ' + err.message);
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -233,7 +230,6 @@ describe('CallManagerTest', function () {
        } catch (err) {
            console.log('Telephony_CallManager_unHoldCall_Promise_0100 finish err = ' + err.message);
            done();
-           return;
        }
    })
 
@@ -266,43 +262,42 @@ describe('CallManagerTest', function () {
            await call.switchCall(ERROR_CALLID_999);
            expect().assertFail();
            console.log('Telephony_CallManager_switchCall_Promise_0100 fail');
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_switchCall_Promise_0100 finish err = ' + err);
            done();
            return;
        }
+       done();
    })
 
-    /*
+   /*
     * @tc.number  Telephony_CallManager_hasCall_Async_0100
     * @tc.name    After an empty call is automatically hung up, the callback method calls hasCall() to confirm that
     *             there is no current call, returning false
     * @tc.desc    Function test
     */
-    it('Telephony_CallManager_hasCall_Async_0100', 0, async function (done) {
-        call.dial('', (err) => {
-            if (err) {
-                console.log('Telephony_CallManager_hasCall_Async_0100 dial finish err = ' + err.message);
-                call.hasCall((err, data) => {
-                    if (err) {
-                        console.log('Telephony_CallManager_hasCall_Async_0400 fail');
-                        expect().assertFail();
-                        done();
-                        return;
-                    }
-                    expect(data === false).assertTrue();
-                    console.log('Telephony_CallManager_hasCall_Async_0100 finish data = ' + data);
-                    done();
-                    return;
-                })
-                return;
-            }
-            expect().assertFail();
-            console.log('Telephony_CallManager_hasCall_Async_0100 dial fail');
-            done();
-        })
-    })
+   it('Telephony_CallManager_hasCall_Async_0100', 0, async function (done) {
+       call.dial('', (err) => {
+           if (err) {
+               console.log('Telephony_CallManager_hasCall_Async_0100 dial finish err = ' + err.message);
+               call.hasCall((err, data) => {
+                   if (err) {
+                       console.log('Telephony_CallManager_hasCall_Async_0400 fail');
+                       expect().assertFail();
+                       done();
+                       return;
+                   }
+                   expect(data === false).assertTrue();
+                   console.log('Telephony_CallManager_hasCall_Async_0100 finish data = ' + data);
+               })
+               done();
+               return;
+           }
+           expect().assertFail();
+           console.log('Telephony_CallManager_hasCall_Async_0100 dial fail');
+           done();
+       })
+   })
 
    /*
     * @tc.number  Telephony_CallManager_hasCall_Async_0400
@@ -339,13 +334,13 @@ describe('CallManagerTest', function () {
                var data = await call.hasCall();
                expect(data === false).assertTrue();
                console.log('Telephony_CallManager_hasCall_Promise_0100 finish data = ' + data);
-               done();
            } catch (err) {
                console.log('Telephony_CallManager_hasCall_Promise_0100 fail');
                expect().assertFail();
                done();
                return;
            }
+           done();
        }
    })
 
@@ -359,13 +354,13 @@ describe('CallManagerTest', function () {
            var data = await call.hasCall();
            expect(data === false).assertTrue();
            console.log('Telephony_CallManager_hasCall_Promise_0400 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_hasCall_Promise_0400 fail');
            expect().assertFail();
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -396,12 +391,12 @@ describe('CallManagerTest', function () {
            await call.combineConference(ERROR_CALLID_999);
            console.log('Telephony_CallManager_combineConference_Promise_0100 fail');
            expect().assertFail();
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_combineConference_Promise_0100 finish err = ' + err.message);
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -433,13 +428,13 @@ describe('CallManagerTest', function () {
            var data = await call.getSubCallIdList(ERROR_CALLID_999);
            expect(data.length === 0).assertTrue();
            console.log('Telephony_CallManager_getSubCallIdList_Promise_0100 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_getSubCallIdList_Promise_0100 fail');
            expect().assertFail();
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -473,12 +468,12 @@ describe('CallManagerTest', function () {
            var data = await call.getCallIdListForConference(ERROR_CALLID_999);
            expect(data.length === 0).assertTrue();
            console.log('Telephony_CallManager_getCallIdListForConference_Promise_0100 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_getCallIdListForConference_Promise_0100 fail');
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -509,12 +504,12 @@ describe('CallManagerTest', function () {
            await call.startDTMF(ERROR_CALLID_999, 'C');
            console.log('Telephony_CallManager_startDTMF_Promise_1000 fail');
            expect().assertFail();
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_startDTMF_Promise_1000 finish err = ' + err.message);
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -545,12 +540,12 @@ describe('CallManagerTest', function () {
            await call.stopDTMF(ERROR_CALLID_999);
            expect().assertFail();
            console.log('Telephony_CallManager_stopDTMF_Promise_0100 fail');
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_stopDTMF_Promise_0100 finish err = ' + err.message);
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -580,12 +575,12 @@ describe('CallManagerTest', function () {
            await call.reject(ERROR_CALLID_999);
            expect().assertFail();
            console.log('Telephony_CallManager_reject_Promise_0100 fail');
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_reject_Promise_0100 finish err = ' + err.message);
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -616,12 +611,12 @@ describe('CallManagerTest', function () {
            await call.hangup(ERROR_CALLID_999);
            expect().assertFail();
            console.log('Telephony_CallManager_hangup_Promise_0100 fail');
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_hangup_Promise_0100 finish err = ' + err.message);
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -653,13 +648,13 @@ describe('CallManagerTest', function () {
            var data = await call.getMainCallId(ERROR_CALLID_999);
            expect(data === GETMAIN_CALLID_ERRO).assertTrue();
            console.log('Telephony_CallManager_getMainCallId_Promise_0100 finish data = ' + data);
-           done();
        } catch (err) {
            expect().assertFail();
            console.log('Telephony_CallManager_getMainCallId_Promise_0100 fail');
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -694,7 +689,6 @@ describe('CallManagerTest', function () {
        } catch (err) {
            console.log('Telephony_CallManager_answer_Promise_0100 finish err = ' + err.message);
            done();
-           return;
        }
    })
 
@@ -846,13 +840,13 @@ describe('CallManagerTest', function () {
            var data = await call.formatPhoneNumber('2000000');
            expect(data === '200 0000').assertTrue();
            console.log('Telephony_CallManager_formatPhoneNumber_Promise_0100 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_formatPhoneNumber_Promise_0100 fail');
            expect().assertFail();
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -865,12 +859,12 @@ describe('CallManagerTest', function () {
            await call.formatPhoneNumber('010-100-0000', { countryCode: 'CN' });
            expect().assertFail();
            console.log('Telephony_CallManager_formatPhoneNumber_Promise_0200 fail');
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_formatPhoneNumber_Promise_0200 finish err = ' + err);
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -884,13 +878,13 @@ describe('CallManagerTest', function () {
            var data = await call.formatPhoneNumber('(010)00000000', { countryCode: 'CN' });
            expect(data === '010 0000 0000').assertTrue();
            console.log('Telephony_CallManager_formatPhoneNumber_Promise_0300 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_formatPhoneNumber_Promise_0300 fail');
            expect().assertFail();
            done();
            return;
        }
+       done();
    })
    /*
     * @tc.number  Telephony_CallManager_formatPhoneNumber_Promise_0400
@@ -903,13 +897,13 @@ describe('CallManagerTest', function () {
            var data = await call.formatPhoneNumber('200-0000', { countryCode: 'CN' });
            expect(data === '200 0000').assertTrue();
            console.log('Telephony_CallManager_formatPhoneNumber_Promise_0400 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_formatPhoneNumber_Promise_0400 fail');
            expect().assertFail();
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -923,12 +917,12 @@ describe('CallManagerTest', function () {
            await call.formatPhoneNumber('666666999999', { countryCode: 'CN' });
            console.log('Telephony_CallManager_formatPhoneNumber_Promise_0500 fail');
            expect().assertFail();
-           done();
-           return;
        } catch (err) {
            console.log('Telephony_CallManager_formatPhoneNumber_Promise_0500 finish err = ' + err.message);
            done();
+           return;
        }
+       done();
    })
 
    /*
@@ -942,12 +936,12 @@ describe('CallManagerTest', function () {
            await call.formatPhoneNumber('20000000', { countryCode: 'abcdefg' });
            expect().assertFail();
            console.log('Telephony_CallManager_formatPhoneNumber_Promise_0600 fail');
-           done();
-           return;
        } catch (err) {
            console.log('Telephony_CallManager_formatPhoneNumber_Promise_0600 finish err = ' + err.message);
            done();
+           return;
        }
+       done();
    })
 
    /*
@@ -960,12 +954,12 @@ describe('CallManagerTest', function () {
            var data = await call.formatPhoneNumber('20000000', { countryCode: '' });
            expect().assertFail();
            console.log('Telephony_CallManager_formatPhoneNumber_Promise_0700 fail');
-           done();
-           return;
        } catch (err) {
            console.log('Telephony_CallManager_formatPhoneNumber_Promise_0700 finish err = ' + err.message);
            done();
+           return;
        }
+       done();
    })
 
    /*
@@ -1096,13 +1090,13 @@ describe('CallManagerTest', function () {
            var data = await call.formatPhoneNumberToE164('52300000000', 'CN');
            expect(data === '+8652300000000').assertTrue();
            console.log('Telephony_CallManager_formatPhoneNumberToE164_Promise_0100 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_formatPhoneNumberToE164_Promise_0100 fail');
            expect().assertFail();
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -1117,13 +1111,13 @@ describe('CallManagerTest', function () {
            var data = await call.formatPhoneNumberToE164('(523)00000000', 'CN');
            expect(data === '+8652300000000').assertTrue();
            console.log('Telephony_CallManager_formatPhoneNumberToE164_Promise_0200 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_formatPhoneNumberToE164_Promise_0200 fail');
            expect().assertFail();
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -1137,13 +1131,13 @@ describe('CallManagerTest', function () {
            var data = await call.formatPhoneNumberToE164('523-0000-0000', 'CN');
            expect(data === '+8652300000000').assertTrue();
            console.log('Telephony_CallManager_formatPhoneNumberToE164_Promise_0300 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_formatPhoneNumberToE164_Promise_0300 fail');
            expect().assertFail();
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -1157,31 +1151,31 @@ describe('CallManagerTest', function () {
            await call.formatPhoneNumberToE164('999999', 'CN');
            console.log('Telephony_CallManager_formatPhoneNumberToE164_Promise_0400 fail');
            expect().assertFail();
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_formatPhoneNumberToE164_Promise_0400 finish err = ' + err.message);
            done();
            return;
        }
+       done();
    })
 
    /*
     * @tc.number  Telephony_CallManager_formatPhoneNumberToE164_Promise_0500
-    * @tc.name    PhoneNumber is 52300000000. Type non-existent options: abCDFG. Call formatPhoneNumberToE164() to
+    * @tc.name    PhoneNumber is 999999. Type non-existent options: abCDFG. Call formatPhoneNumberToE164() to
     *             format the number and capture err
     * @tc.desc    Function test
     */
    it('Telephony_CallManager_formatPhoneNumberToE164_Promise_0500', 0, async function (done) {
        try {
-           await call.formatPhoneNumberToE164('52300000000', 'abcdefg');
+           await call.formatPhoneNumberToE164('999999', 'abcdefg');
            console.log('Telephony_CallManager_formatPhoneNumberToE164_Promise_0500 fail');
            expect().assertFail();
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_formatPhoneNumberToE164_Promise_0500 finish err = ' + err.message);
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -1195,12 +1189,12 @@ describe('CallManagerTest', function () {
            await call.formatPhoneNumberToE164('52300000000', '');
            expect().assertFail();
            console.log('Telephony_CallManager_formatPhoneNumberToE164_Promise_0600 fail');
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_formatPhoneNumberToE164_Promise_0600 finish err = ' + err.message);
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -1225,12 +1219,12 @@ describe('CallManagerTest', function () {
 
    /*
     * @tc.number  Telephony_CallManager_isEmergencyPhoneNumber_Async_0200
-    * @tc.name    PhoneNumber: INVALID_NUMBER, options 1. Call isEmergencyPhoneNumber() to check whether it is an
+    * @tc.name    PhoneNumber: 13766669999, options 1. Call isEmergencyPhoneNumber() to check whether it is an
     *             emergency number. The return value is false
     * @tc.desc    Function test
     */
    it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0200', 0, async function (done) {
-       call.isEmergencyPhoneNumber(INVALID_NUMBER, { slotId: SLOT_0 }, (err, data) => {
+       call.isEmergencyPhoneNumber('13766669999', { slotId: SLOT_0 }, (err, data) => {
            if (err) {
                console.log('Telephony_CallManager_isEmergencyPhoneNumber_Async_0200 fail');
                expect().assertFail();
@@ -1433,33 +1427,33 @@ describe('CallManagerTest', function () {
            var data = await call.isEmergencyPhoneNumber('0+0+0', { slotId: SLOT_0 });
            expect(data === false).assertTrue();
            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0100 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0100 fail');
            expect().assertFail();
            done();
            return;
        }
+       done();
    })
 
    /*
     * @tc.number  Telephony_CallManager_isEmergencyPhoneNumber_Promise_0200
-    * @tc.name    PhoneNumber: INVALID_NUMBER, options 1. Call isEmergencyPhoneNumber() to check whether it is an
+    * @tc.name    PhoneNumber: 13766669999, options 1. Call isEmergencyPhoneNumber() to check whether it is an
     *             emergency number. The return value is false
     * @tc.desc    Function test
     */
    it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0200', 0, async function (done) {
        try {
-           var data = await call.isEmergencyPhoneNumber('INVALID_NUMBER', { slotId: SLOT_0 });
+           var data = await call.isEmergencyPhoneNumber('13766669999', { slotId: SLOT_0 });
            expect(data === false).assertTrue();
            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0200 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0200 fail');
            expect().assertFail();
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -1473,13 +1467,13 @@ describe('CallManagerTest', function () {
            var data = await call.isEmergencyPhoneNumber('000', { slotId: SLOT_0 });
            expect(data).assertTrue();
            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0300 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0300 fail');
            expect().assertFail();
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -1493,13 +1487,13 @@ describe('CallManagerTest', function () {
            var data = await call.isEmergencyPhoneNumber('112', { slotId: SLOT_0 });
            expect(data).assertTrue();
            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0400 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0400 fail');
            expect().assertFail();
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -1513,13 +1507,13 @@ describe('CallManagerTest', function () {
            var data = await call.isEmergencyPhoneNumber('911', { slotId: SLOT_0 });
            expect(data).assertTrue();
            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0500 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0500 fail');
            expect().assertFail();
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -1533,13 +1527,13 @@ describe('CallManagerTest', function () {
            var data = await call.isEmergencyPhoneNumber('08', { slotId: SLOT_0 });
            expect(data).assertTrue();
            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0600 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0600 fail');
            expect().assertFail();
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -1553,13 +1547,13 @@ describe('CallManagerTest', function () {
            var data = await call.isEmergencyPhoneNumber('118', { slotId: SLOT_0 });
            expect(data).assertTrue();
            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0700 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0700 fail');
            expect().assertFail();
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -1568,19 +1562,19 @@ describe('CallManagerTest', function () {
     *             number. The return value is true
     * @tc.desc    Function test
     */
-    it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0800', 0, async function (done) {
-        try {
-            var data = await call.isEmergencyPhoneNumber('999', { slotId: SLOT_0 });
-            expect(data).assertTrue();
-            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0800 finish data = ' + data);
-            done();
-        } catch (err) {
-            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0800 fail');
-            expect().assertFail();
-            done();
-            return;
-        }
-    })
+   it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0800', 0, async function (done) {
+       try {
+           var data = await call.isEmergencyPhoneNumber('999', { slotId: SLOT_0 });
+           expect(data).assertTrue();
+           console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0800 finish data = ' + data);
+       } catch (err) {
+           console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0800 fail');
+           expect().assertFail();
+           done();
+           return;
+       }
+       done();
+   })
 
    /*
     * @tc.number  Telephony_CallManager_isEmergencyPhoneNumber_Promise_1100
@@ -1593,13 +1587,13 @@ describe('CallManagerTest', function () {
            var data = await call.isEmergencyPhoneNumber('119');
            expect(data).assertTrue();
            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1100 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1100 fail');
            expect().assertFail();
            done();
            return;
        }
+       done();
    })
 
    /*
@@ -1613,34 +1607,33 @@ describe('CallManagerTest', function () {
            var data = await call.isEmergencyPhoneNumber('110');
            expect(data).assertTrue();
            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1200 finish data = ' + data);
-           done();
        } catch (err) {
            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1200 fail');
            expect().assertFail();
            done();
            return;
        }
+       done();
    })
 
    /*
-     * @tc.number  Telephony_CallManager_getCallWaitingStatus_Async_0100
-     * @tc.name    Call waiting is enabled, slotId is 1, getCallWaiting() is called to getCallWaiting, and status is 1
-     * @tc.desc    Function test
-     */
-    it('Telephony_CallManager_getCallWaitingStatus_Async_0100', 0, async function (done) {
-        call.getCallWaitingStatus(SLOT_0, (err, data) => {
-            if (err) {
-                console.log(`Telephony_CallManager_getCallWaitingStatus_Async_0100 fail err = ${err}`);
-                expect().assertFail();
-                done();
-                return;
-            }
-            console.log(`Telephony_CallManager_getCallWaitingStatus_Async_0100 data = ${data}`);
-            expect(data === call.CALL_WAITING_ENABLE).assertTrue();
-            console.log('Telephony_CallManager_getCallWaitingStatus_Async_0100 finish');
-            done();
-        });
-    });
+    * @tc.number  Telephony_CallManager_isEmergencyPhoneNumber_Promise_1300
+    * @tc.name    PhoneNumber: 120 with options -1. Call isEmergencyPhoneNumber() to check whether it is an emergency
+    *             number. The return value is err
+    * @tc.desc    Function test
+    */
+       it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1300', 0, async function (done) {
+           try {
+               await call.isEmergencyPhoneNumber('120', { slotId: ERR_SLOT_ID });
+               expect.assertFail();
+               console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1300 fail');
+           } catch (err) {
+               console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1300 finish err =' + err);
+               done();
+               return;
+           }
+           done();
+       })
 
     /*
      * @tc.number  Telephony_CallManager_getCallWaitingStatus_Async_0200
@@ -1651,99 +1644,15 @@ describe('CallManagerTest', function () {
     it('Telephony_CallManager_getCallWaitingStatus_Async_0200', 0, async function (done) {
         call.getCallWaitingStatus(ERR_SLOT_ID, (err) => {
             if (err) {
-                console.log(`Telephony_CallManager_getCallWaitingStatus_Async_0200 finish : ${err.message}`);
+                console.log('Telephony_CallManager_getCallWaitingStatus_Async_0200 finish : ' + err.message);
                 done();
                 return;
             }
             expect().assertFail();
             console.log('Telephony_CallManager_getCallWaitingStatus_Async_0200 fail');
             done();
-        });
-    });
-
-    /*
-     * @tc.number  Telephony_CallManager_getCallWaitingStatus_Async_0300
-     * @tc.name    Run function setCallWaiting by args slotId SLOT_0,activate ACTIVATE_TRUE to set by callback,
-     *             run function getCallWaiting by args slotId is 1 by callback,
-     *             the function return status call.CALL_WAITING_ENABLE
-     *             the funciton return void
-     * @tc.desc    Function test
-     */
-    it('Telephony_CallManager_getCallWaitingStatus_Async_0300', 0, async function (done) {
-        call.setCallWaiting(SLOT_0, ACTIVATE_TRUE, (err, data) => {
-            if (err) {
-                console.log(`Telephony_CallManager_getCallWaitingStatus_Async_0300 fail err = ${err}`);
-                expect().assertFail();
-                done();
-                return;
-            }
-            call.getCallWaitingStatus(SLOT_0, (err, data) => {
-                if (err) {
-                    console.log(`Telephony_CallManager_getCallWaitingStatus_Async_0300 fail err = ${err}`);
-                    expect().assertFail();
-                    done();
-                    return;
-                }
-                console.log(`Telephony_CallManager_getCallWaitingStatus_Async_0300 data = ${data}`);
-                expect(data === call.CALL_WAITING_ENABLE).assertTrue();
-                console.log('Telephony_CallManager_getCallWaitingStatus_Async_0300 finish');
-                done();
-            });
-        });
-    });
-
-    /*
-     * @tc.number  Telephony_CallManager_getCallWaitingStatus_Async_0400
-     * @tc.name    Run function setCallWaiting by args slotId SLOT_0,activate ACTIVATE_FALSE to set by callback,
-     *             run function getCallWaiting by args slotId is  by callback,
-     *             the function return status call.CALL_WAITING_DISABLE
-     *             the funciton return void,then Run function setCallWaiting by args slotId SLOT_0,
-     *             activate ACTIVATE_TRUE to reset
-     * @tc.desc    Function test
-     */
-    it('Telephony_CallManager_getCallWaitingStatus_Async_0400', 0, async function (done) {
-        call.setCallWaiting(SLOT_0, ACTIVATE_FALSE, (err, data) => {
-            if (err) {
-                console.log(`Telephony_CallManager_getCallWaitingStatus_Async_0400 fail err = ${err}`);
-                expect().assertFail();
-                done();
-                return;
-            }
-            call.getCallWaitingStatus(SLOT_0, (err, data) => {
-                if (err) {
-                    console.log(`Telephony_CallManager_getCallWaitingStatus_Async_0400 fail err = ${err}`);
-                    expect().assertFail();
-                } else {
-                    console.log(`Telephony_CallManager_getCallWaitingStatus_Async_0400 data = ${data}`);
-                    expect(data === call.CALL_WAITING_DISABLE).assertTrue();
-                    console.log('Telephony_CallManager_getCallWaitingStatus_Async_0400 finish');
-                }
-                call.setCallWaiting(SLOT_0, ACTIVATE_TRUE, (err, data) => {
-                    done();
-                });
-            });
-        });
-    });
-
-    /*
-     * @tc.number  Telephony_CallManager_getCallWaitingStatus_Promise_0100
-     * @tc.name    When the call wait sate is on test call getCallWaiting() in callback is on
-     *  @tc.desc    Function test
-     */
-    it('Telephony_CallManager_getCallWaitingStatus_Promise_0100', 0, async function (done) {
-        try {
-            let data = await call.getCallWaitingStatus(SLOT_0);
-            expect(data === call.CALL_WAITING_ENABLE).assertTrue();
-            console.log(`Telephony_CallManager_getCallWaitingStatus_Promise_0100 data = ${data}`);
-            console.log('Telephony_CallManager_getCallWaitingStatus_Promise_0100 finish');
-            done();
-        } catch (err) {
-            expect().assertFail();
-            console.log(`Telephony_CallManager_getCallWaitingStatus_Promise_0100 fail err =${err}`);
-            done();
-
-        }
-    });
+        })
+    })
 
     /*
      * @tc.number  Telephony_CallManager_getCallWaitingStatus_Promise_0200
@@ -1758,57 +1667,47 @@ describe('CallManagerTest', function () {
             done();
             console.log('Telephony_CallManager_getCallWaitingStatus_Promise_0200 fail');
         } catch (err) {
-            console.log(`Telephony_CallManager_getCallWaitingStatus_Promise_0200 finish err =${err.message}`);
+            console.log('Telephony_CallManager_getCallWaitingStatus_Promise_0200 finish err =' + err.message);
             done();
         }
-    });
+    })
 
     /*
-     * @tc.number  Telephony_CallManager_getCallWaitingStatus_Promise_0300
-     * @tc.name    Run function setCallWaiting by args slotId SLOT_0,activate ACTIVATE_TRUE to set by promise,
-     *             run function getCallWaiting by args slotId is SLOT_0 by promise,
-     *             the function return status call.CALL_WAITING_ENABLE
-     *             the funciton return void
+     * @tc.number  Telephony_CallManager_getCallWaitingStatus_Async_0100
+     * @tc.name    Call waiting is enabled, slotId is 1, getCallWaiting() is called to getCallWaiting, and status is 1
      * @tc.desc    Function test
      */
-    it('Telephony_CallManager_getCallWaitingStatus_Promise_0300', 0, async function (done) {
-        try {
-            await call.setCallWaiting(SLOT_0, ACTIVATE_TRUE);
-            let data = await call.getCallWaitingStatus(SLOT_0);
-            console.log(`Telephony_CallManager_getCallWaitingStatus_Promise_0300 data = ${data}`);
-            expect(data === call.CALL_WAITING_ENABLE).assertTrue();
-            console.log('Telephony_CallManager_getCallWaitingStatus_Promise_0300 finish');
-        } catch (error) {
-            console.log(`Telephony_CallManager_getCallWaitingStatus_Promise_0300 fail error = ${error}`);
-            expect().assertFail();
-        }
-        done();
-    });
+    it('Telephony_CallManager_getCallWaitingStatus_Async_0100', 0, async function (done) {
+        call.getCallWaitingStatus(SLOT_0, (err, data) => {
+            if (err) {
+                console.log('Telephony_CallManager_getCallWaitingStatus_Async_0100 fail err = ' + err);
+                expect().assertFail();
+                done();
+                return;
+            }
+            console.log('Telephony_CallManager_getCallWaitingStatus_Async_0100 data = ' + data);
+            expect(data === STATUS_ON).assertTrue();
+            console.log('Telephony_CallManager_getCallWaitingStatus_Async_0100 finish');
+            done();
+        })
+    })
 
     /*
-     * @tc.number  Telephony_CallManager_getCallWaitingStatus_Promise_0400
-     * @tc.name    Run function setCallWaiting by args slotId SLOT_0,activate ACTIVATE_FALSE to set by promise,
-     *             run function getCallWaiting by args slotId SLOT_0  by promise,
-     *             the function return status call.CALL_WAITING_DISABLE,
-     *             then Run function setCallWaiting by args slotId SLOT_0,activate ACTIVATE_TRUE to reset
+     * @tc.number  Telephony_CallManager_getCallWaitingStatus_Promise_0100
+     * @tc.name    When the call wait sate is on test call getCallWaiting() in callback is on
      * @tc.desc    Function test
      */
-    it('Telephony_CallManager_getCallWaitingStatus_Promise_0400', 0, async function (done) {
+    it('Telephony_CallManager_getCallWaitingStatus_Promise_0100', 0, async function (done) {
         try {
-            await call.setCallWaiting(SLOT_0, ACTIVATE_FALSE);
             let data = await call.getCallWaitingStatus(SLOT_0);
-            console.log(`Telephony_CallManager_getCallWaitingStatus_Promise_0400 data = ${data}`);
-            expect(data === call.CALL_WAITING_DISABLE).assertTrue();
-            console.log('Telephony_CallManager_getCallWaitingStatus_Promise_0400 finish');
-        } catch (error) {
-            console.log(`Telephony_CallManager_getCallWaitingStatus_Promise_0400 fail error = ${error}`);
+            expect(data === STATUS_ON).assertTrue();
+            console.log('Telephony_CallManager_getCallWaitingStatus_Promise_0100 data = ' + data);
+            console.log('Telephony_CallManager_getCallWaitingStatus_Promise_0100 finish');
+            done();
+        } catch (err) {
             expect().assertFail();
+            console.log('Telephony_CallManager_getCallWaitingStatus_Promise_0100 fail err =' + err);
+            done();
         }
-        try {
-            await call.setCallWaiting(SLOT_0, ACTIVATE_TRUE);
-        } catch (error) {
-
-        }
-        done();
-    });
+    })
 })

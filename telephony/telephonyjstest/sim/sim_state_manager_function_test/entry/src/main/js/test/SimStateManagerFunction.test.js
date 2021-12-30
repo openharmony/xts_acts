@@ -48,7 +48,6 @@ describe('SimStateManagerFunction', function () {
     sim.getSimState(simSlotId.SLOT_ID_4, (err, data) => {
       if (err) {
         // Enter the exception ID to enter error.
-        console.log(`Telephony_Sim_getSimState_Async_0200, err: ${err.message}`);
         console.log('Telephony_Sim_getSimState_Async_0200 finish');
         done();
         return;
@@ -66,7 +65,7 @@ describe('SimStateManagerFunction', function () {
     */
   it('Telephony_Sim_getSimState_Promise_0100', 0, async function (done) {
     try {
-      let data = await sim.getSimState(simSlotId.SLOT_ID_0);
+      var data = await sim.getSimState(simSlotId.SLOT_ID_0);
       console.log(`Telephony_Sim_getSimState_Promise_0100, data = ${data}`);
       expect(data === sim.SIM_STATE_READY).assertTrue();
     } catch (err) {
@@ -89,7 +88,6 @@ describe('SimStateManagerFunction', function () {
       var data = await sim.getSimState(simSlotId.SLOT_ID_4);
     } catch (err) {
       // Enter the exception ID to enter error.
-      console.log(`Telephony_Sim_getSimState_Promise_0200, err: ${err.message}`);
       console.log('Telephony_Sim_getSimState_Promise_0200 finish');
       done();
       return;
@@ -105,7 +103,7 @@ describe('SimStateManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_unlockPin_Async_0100', 0, async function (done) {
-    let PIN = '1234';
+    var PIN = '1234';
     sim.unlockPin(simSlotId.SLOT_ID_0, PIN, (err, data) => {
       if (err) {
         console.log(`Telephony_Sim_unlockPin_Async_0100 fail, err: ${err.message}`);
@@ -125,11 +123,10 @@ describe('SimStateManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_unlockPin_Async_0400', 0, async function (done) {
-    let PIN = '1234';
+    var PIN = '1234';
     sim.unlockPin(simSlotId.SLOT_ID_4, PIN, (err, data) => {
       if (err) {
         // Enter the exception ID to enter error.
-        console.log(`Telephony_Sim_unlockPin_Async_0400, err: ${err.message}`);
         console.log('Telephony_Sim_unlockPin_Async_0400 finish');
         done();
         return;
@@ -146,9 +143,9 @@ describe('SimStateManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_unlockPin_Promise_0100', 0, async function (done) {
-    let PIN = '1234';
+    var PIN = '1234';
     try {
-      let data = await sim.unlockPin(simSlotId.SLOT_ID_0, PIN);
+      var data = await sim.unlockPin(simSlotId.SLOT_ID_0, PIN);
       expect(data.result === OTHER_ABNORMAL).assertTrue();
     } catch (err) {
       console.log(`Telephony_Sim_unlockPin_Promise_0100 fail, err: ${err.message}`);
@@ -166,12 +163,11 @@ describe('SimStateManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_unlockPin_Promise_0400', 0, async function (done) {
-    let PIN = '1234';
+    var PIN = '1234';
     try {
       await sim.unlockPin(simSlotId.SLOT_ID_4, PIN);
     } catch (err) {
       // Enter the exception ID to enter error.
-      console.log(`Telephony_Sim_unlockPin_Promise_0400, err: ${err.message}`);
       console.log('Telephony_Sim_unlockPin_Promise_0400 finish');
       done();
       return;
@@ -187,8 +183,8 @@ describe('SimStateManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_unlockPuk_Async_0100', 0, async function (done) {
-    let newPin = '1234';
-    let PUK = '12345678';
+    var newPin = '1234';
+    var PUK = '12345678';
     sim.unlockPuk(simSlotId.SLOT_ID_0, newPin, PUK, (err, data) => {
       if (err) {
         console.log(`Telephony_Sim_unlockPuk_Async_0100 fail, err: ${err.message}`);
@@ -209,12 +205,11 @@ describe('SimStateManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_unlockPuk_Async_0400', 0, async function (done) {
-    let newPin = '1234';
-    let PUK = '12345678';
+    var newPin = '1234';
+    var PUK = '12345678';
     sim.unlockPuk(simSlotId.SLOT_ID_4, newPin, PUK, (err, data) => {
       if (err) {
         // Enter the exception ID to enter error.
-        console.log(`Telephony_Sim_unlockPuk_Async_0400, err: ${err.message}`);
         console.log('Telephony_Sim_unlockPuk_Async_0400 finish');
         done();
         return;
@@ -231,10 +226,10 @@ describe('SimStateManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_unlockPuk_Promise_0100', 0, async function (done) {
-    let newPin = '1234';
-    let PUK = '12345678';
+    var newPin = '1234';
+    var PUK = '12345678';
     try {
-      let data = await sim.unlockPuk(simSlotId.SLOT_ID_0, newPin, PUK);
+      var data = await sim.unlockPuk(simSlotId.SLOT_ID_0, newPin, PUK);
       expect(data.result === OTHER_ABNORMAL).assertTrue();
     } catch (err) {
       console.log(`Telephony_Sim_unlockPuk_Promise_0100 fail, err: ${err.message}`);
@@ -253,13 +248,12 @@ describe('SimStateManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_unlockPuk_Promise_0400', 0, async function (done) {
-    let newPin = '1234';
-    let PUK = '12345678';
+    var newPin = '1234';
+    var PUK = '12345678';
     try {
       await sim.unlockPuk(simSlotId.SLOT_ID_4, newPin, PUK);
     } catch (err) {
       // Enter the exception ID to enter error.
-      console.log(`Telephony_Sim_unlockPuk_Promise_0400, err: ${err.message}`);
       console.log('Telephony_Sim_unlockPuk_Promise_0400 finish');
       done();
       return;
@@ -274,8 +268,8 @@ describe('SimStateManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_alterPin_Async_0100', 0, async function (done) {
-    let oldPin = '9999';
-    let newPin = '1234';
+    var oldPin = '9999';
+    var newPin = '1234';
     sim.alterPin(simSlotId.SLOT_ID_0, oldPin, newPin, (err, data) => {
       if (err) {
         console.log(`Telephony_Sim_alterPin_Async_0100 fail, err: ${err.message}`);
@@ -295,12 +289,11 @@ describe('SimStateManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_alterPin_Async_0400', 0, async function (done) {
-    let oldPin = '9999';
-    let newPin = '1234';
+    var oldPin = '9999';
+    var newPin = '1234';
     sim.alterPin(simSlotId.SLOT_ID_4, oldPin, newPin, (err, data) => {
       if (err) {
         // Enter the exception ID to enter error.
-        console.log(`Telephony_Sim_alterPin_Async_0400, err: ${err.message}`);
         console.log('Telephony_Sim_alterPin_Async_0400 finish');
         done();
         return;
@@ -317,10 +310,10 @@ describe('SimStateManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_alterPin_Promise_0100', 0, async function (done) {
-    let oldPin = '9999';
-    let newPin = '1234';
+    var oldPin = '9999';
+    var newPin = '1234';
     try {
-      let data = await sim.alterPin(simSlotId.SLOT_ID_0, oldPin, newPin);
+      var data = await sim.alterPin(simSlotId.SLOT_ID_0, oldPin, newPin);
       expect(data.result === OTHER_ABNORMAL).assertTrue();
     } catch (err) {
       console.log(`Telephony_Sim_alterPin_Promise_0100 fail, err: ${err.message}`);
@@ -338,14 +331,12 @@ describe('SimStateManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_alterPin_Promise_0400', 0, async function (done) {
-    let oldPin = '9999';
-    let newPin = '1234';
+    var oldPin = '9999';
+    var newPin = '1234';
     try {
-      let data = await sim.alterPin(simSlotId.SLOT_ID_4, oldPin, newPin);
+      var data = await sim.alterPin(simSlotId.SLOT_ID_4, oldPin, newPin);
       expect(data.result === OTHER_ABNORMAL).assertTrue();
     } catch (err) {
-      // Enter the exception ID to enter error.
-      console.log(`Telephony_Sim_alterPin_Promise_0400, err: ${err.message}`);
       console.log('Telephony_Sim_alterPin_Promise_0400 finish');
       done();
       return;
@@ -362,7 +353,7 @@ describe('SimStateManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_setLockState_Async_0100', 0, async function (done) {
-    let PIN = '0123456789';
+    var PIN = '0123456789';
     sim.setLockState(simSlotId.SLOT_ID_0, PIN, lockSwitch.OPEN, (err, data) => {
       if (err) {
         console.log(`Telephony_Sim_setLockState_Async_0100 fail, err: ${err.message}`);
@@ -383,7 +374,7 @@ describe('SimStateManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_setLockState_Async_0200', 0, async function (done) {
-    let PIN = '0123456789';
+    var PIN = '0123456789';
     sim.setLockState(simSlotId.SLOT_ID_0, PIN, lockSwitch.CLOSE, (err, data) => {
       if (err) {
         console.log(`Telephony_Sim_setLockState_Async_0200 fail, err: ${err.message}`);
@@ -403,11 +394,10 @@ describe('SimStateManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_setLockState_Async_0500', 0, async function (done) {
-    let PIN = '0123456789';
+    var PIN = '0123456789';
     sim.setLockState(simSlotId.SLOT_ID_4, PIN, lockSwitch.OPEN, (err, data) => {
       if (err) {
         // Enter the exception ID to enter error.
-        console.log(`Telephony_Sim_setLockState_Async_0500, err: ${err.message}`);
         console.log('Telephony_Sim_setLockState_Async_0500 finish');
         done();
         return;
@@ -425,9 +415,9 @@ describe('SimStateManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_setLockState_Promise_0100', 0, async function (done) {
-    let PIN = '0123456789';
+    var PIN = '0123456789';
     try {
-      let data = await sim.setLockState(simSlotId.SLOT_ID_0, PIN, lockSwitch.OPEN);
+      var data = await sim.setLockState(simSlotId.SLOT_ID_0, PIN, lockSwitch.OPEN);
       expect(data.result === OTHER_ABNORMAL).assertTrue();
     } catch (err) {
       console.log(`Telephony_Sim_setLockState_Promise_0100 fail, err: ${err.message}`);
@@ -446,9 +436,9 @@ describe('SimStateManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_setLockState_Promise_0200', 0, async function (done) {
-    let PIN = '0123456789';
+    var PIN = '0123456789';
     try {
-      let data = await sim.setLockState(simSlotId.SLOT_ID_0, PIN, lockSwitch.CLOSE);
+      var data = await sim.setLockState(simSlotId.SLOT_ID_0, PIN, lockSwitch.CLOSE);
       expect(data.result === OTHER_ABNORMAL).assertTrue();
     } catch (err) {
       console.log(`Telephony_Sim_setLockState_Promise_0200 fail, err: ${err.message}`);
@@ -466,12 +456,11 @@ describe('SimStateManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_setLockState_Promise_0500', 0, async function (done) {
-    let PIN = '0123456789';
+    var PIN = '0123456789';
     try {
       await sim.setLockState(simSlotId.SLOT_ID_4, PIN, lockSwitch.OPEN);
     } catch (err) {
       // Enter the exception ID to enter error.
-      console.log(`Telephony_Sim_setLockState_Promise_0500, err: ${err.message}`);
       console.log('Telephony_Sim_setLockState_Promise_0500 finish');
       done();
       return;
