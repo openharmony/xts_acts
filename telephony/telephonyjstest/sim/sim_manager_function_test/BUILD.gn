@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("SimManagerFunctionTest") {
+ohos_js_hap_suite("ActsSimManagerFunctionTest") {
   hap_profile = "./entry/src/main/config.json"
   deps = [
     ":hjs_demo_js_assets",

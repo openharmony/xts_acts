@@ -1,16 +1,16 @@
 {
-    "description": "Configuration for callmanager Tests",
+    "description": "Configuration for ActsCallManagerOnDailTest Tests",
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "3000000",
-        "package": "com.ohos.callmanager",
+        "package": "com.ohos.actscallmanagerondailtest",
         "shell-timeout": "3000000",
         "native-test-timeout":"3000000"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsCallManagerOnDailTest.hap"
+                "$module.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

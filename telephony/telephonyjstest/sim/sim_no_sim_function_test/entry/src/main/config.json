@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.ohos.simnosimfunction",
+    "bundleName": "com.ohos.simnosimfunctiontest",
     "vendor": "ohos",
     "version": {
       "code": 1000000,
@@ -14,7 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.ohos.simnosimfunction",
+    "package": "com.ohos.simnosimfunctiontest",
     "name": ".MyApplication",
     "deviceType": [
       "phone"
@@ -37,7 +37,7 @@
             ]
           }
         ],
-        "name": "com.ohos.simnosimfunction.MainAbility",
+        "name": "com.ohos.simnosimfunctiontest.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",

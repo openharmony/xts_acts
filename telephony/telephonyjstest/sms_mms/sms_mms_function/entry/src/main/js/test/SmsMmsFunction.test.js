@@ -80,7 +80,6 @@ describe('SmsMmsTest', function () {
       content: 'hello',
       sendCallback: (err, value) => {
         if (err) {
-          expect().assertFail();
           console.log('Telephony_SmsMms_sendMessage_0200 fail');
           done();
           return;
@@ -107,7 +106,6 @@ describe('SmsMmsTest', function () {
       content: '11111',
       sendCallback: (err, value) => {
         if (err) {
-          expect().assertFail();
           console.log('Telephony_SmsMms_sendMessage_0300 fail');
           done();
           return;
@@ -134,7 +132,6 @@ describe('SmsMmsTest', function () {
       content: '',
       sendCallback: (err, value) => {
         if (err) {
-          expect().assertFail();
           console.log('Telephony_SmsMms_sendMessage_0400 fail');
           done();
           return;
@@ -155,9 +152,9 @@ describe('SmsMmsTest', function () {
    * @tc.desc    Function test
    */
   it('Telephony_SmsMms_sendMessage_0500', 0, async function (done) {
-    const COUNT = MAX_TEST;
+    const count = MAX_TEST;
     let str = '';
-    for (let index = 0;index < COUNT;index++) {
+    for (let index = 0;index < count;index++) {
       str += 't';
     }
     sms.sendMessage({
@@ -197,9 +194,9 @@ describe('SmsMmsTest', function () {
    * @tc.desc    Function test
    */
   it('Telephony_SmsMms_sendMessage_0600', 0, async function (done) {
-    const COUNT = MAX_TEST + 1;
+    const count = MAX_TEST + 1;
     let str = '';
-    for (let index = 0;index < COUNT;index++) {
+    for (let index = 0;index < count;index++) {
       str += 't';
     }
     sms.sendMessage({
@@ -373,6 +370,7 @@ describe('SmsMmsTest', function () {
       },
       deliveryCallback: (err, value) => {
         if (err) {
+          console.log('deliveryCallback err');
           expect().assertFail();
           console.log('Telephony_SmsMms_sendMessage_1000 deliveryCallback fail');
           done();
@@ -412,6 +410,7 @@ describe('SmsMmsTest', function () {
       },
       deliveryCallback: (err, value) => {
         if (err) {
+          console.log('deliveryCallback err');
           expect().assertFail();
           console.log('Telephony_SmsMms_sendMessage_1100 deliveryCallback fail');
           done();

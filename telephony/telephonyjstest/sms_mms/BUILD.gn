@@ -22,8 +22,6 @@ group("sms_mms") {
       "sms_mms_del_sim:SmsMmsDelSim",
       "sms_mms_function:SmsMmsFunction",
       "sms_mms_get_all:SmsMmsGetAll",
-      "sms_mms_performance:SmsMmsPerformance",
-      "sms_mms_reliability:SmsMmsReliability",
       "sms_mms_smsc:SmsMmsSmsc",
       "sms_mms_updata_asy:SmsMmsUpdataAsy",
       "sms_mms_updata_pro:SmsMmsUpdataPro",

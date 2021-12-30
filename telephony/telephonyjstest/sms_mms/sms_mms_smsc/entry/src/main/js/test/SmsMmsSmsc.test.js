@@ -27,20 +27,20 @@ describe('SmsMmsSmscTest', function () {
   const TRUE_SLOT_ID = 0;
   const FALSE_SLOT_ID = 9;
 
-  const OTHER_SMSC_NUMBER = '+8613800755***';
-  const USABLE_SMSC_NUMBER = '+8613800512***';
+  const OTHER_SMSC_NUMBER = '+8613800755500';
+  const USABLE_SMSC_NUMBER = '+8613800512500';
 
-  var dataScAddr = '';
+  var DATA_SCADDR = '';
   beforeAll(async function () {
     sms.getSmscAddr(TRUE_SLOT_ID, (geterr, getresult) => {
       if (geterr) {
         return;
       }
-      dataScAddr = getresult;
+      DATA_SCADDR = getresult
     });
   });
-  afterEach(async function () {
-    sms.setSmscAddr(TRUE_SLOT_ID, dataScAddr, (err) => {});
+  beforeEach(async function () {
+    sms.setSmscAddr(TRUE_SLOT_ID, DATA_SCADDR, (err) => {});
   });
 
   /**
@@ -132,8 +132,8 @@ describe('SmsMmsSmscTest', function () {
             }
             expect(getresult === beforeAddr).assertTrue();
             console.log('Telephony_SmsMms_setSmscAddr_Async_0300 finish');
-            done();
           });
+          done();
           return;
         }
         expect().assertFail();
@@ -213,8 +213,8 @@ describe('SmsMmsSmscTest', function () {
             expect(getresult === beforeAddr).assertTrue();
             console.log(`setSmscAddr result = ${getresult}`);
             console.log('Telephony_SmsMms_setSmscAddr_Async_0500 finish');
-            done();
           });
+          done();
           return;
         }
         expect().assertFail();
@@ -252,8 +252,8 @@ describe('SmsMmsSmscTest', function () {
             expect(getresult === beforeAddr).assertTrue();
             console.log(`setSmscAddr result = ${getresult}`);
             console.log('Telephony_SmsMms_setSmscAddr_Async_0600 finish');
-            done();
           });
+          done();
           return;
         }
         console.log('Telephony_SmsMms_setSmscAddr_Async_0600 setSmscAddr fail ');
@@ -291,8 +291,8 @@ describe('SmsMmsSmscTest', function () {
             expect(getresult === beforeAddr).assertTrue();
             console.log(`setSmscAddr result = ${getresult}`);
             console.log('Telephony_SmsMms_setSmscAddr_Async_0700 finish');
-            done();
           });
+          done();
           return;
         }
         expect().assertFail();
@@ -330,8 +330,8 @@ describe('SmsMmsSmscTest', function () {
             expect(getresult === beforeAddr).assertTrue();
             console.log(`setSmscAddr result = ${getresult}`);
             console.log('Telephony_SmsMms_setSmscAddr_Async_0800 finish');
-            done();
           });
+          done();
           return;
         }
         expect().assertFail();
@@ -369,8 +369,8 @@ describe('SmsMmsSmscTest', function () {
             expect(getresult === beforeAddr).assertTrue();
             console.log(`setSmscAddr result = ${getresult}`);
             console.log('Telephony_SmsMms_setSmscAddr_Async_0900 finish');
-            done();
           });
+          done();
           return;
         }
         expect().assertFail();

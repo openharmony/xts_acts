@@ -18,15 +18,14 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 describe('NetworkSearchTest', function () {
     let gslot = 0;
-    let gradioTech = radio.RADIO_TECHNOLOGY_GSM.toString();
-    let goperatorName = '';
-    let goperatorNumeric = '';
+    let gradioTech = '2';
+    let goperatorName = '46000';
     let gnetworkSMode = {
         slotId: gslot,
         selectMode: radio.NETWORK_SELECTION_AUTOMATIC,
         networkInformation: {
-            operatorName: goperatorName,
-            operatorNumeric: goperatorNumeric,
+            operatorName: '46000',
+            operatorNumeric: '46011',
             state: radio.NETWORK_AVAILABLE,
             radioTech: gradioTech,
         },
@@ -39,15 +38,17 @@ describe('NetworkSearchTest', function () {
         radio.NETWORK_CURRENT,
         radio.NETWORK_FORBIDDEN,
     ];
-    //NetworkRadioTech
+    //Network system
     let garrNetworkRadioTech = [
-        'UNKNOWN', 'GSM', '1XRTT', 'WCDMA',
-        'HSPA', 'HSPAP', 'TD_SCDMA', 'EVDO',
-        'EHRPD', 'LTE', 'LTE_CA', 'IWLAN', 'NR'];
+            'UNKNOWN','GSM','1XRTT','WCDMA',
+            'HSPA','HSPAP', 'TD_SCDMA','EVDO',
+            'EHRPD','LTE','LTE_CA','IWLAN','NR'];
 
     const SLOT_0 = 0;
     const OPERATOR_NUMERIC_SSSSS = 'SSSSS';
     const ERR_VALUE_5 = 5;
+
+
 
     async function recoverNetworkSelectionMode() {
         try {
@@ -80,19 +81,18 @@ describe('NetworkSearchTest', function () {
             done();
             return;
         }
-        try {
+        try{
             let data = await radio.getNetworkState(SLOT_0);
             console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`)
-            if (data.plmnNumeric != '' && data.plmnNumeric != undefined) {
-                goperatorNumeric = data.plmnNumeric;
-                goperatorName = data.longOperatorName;
-            } else {
+            if(data.plmnNumeric != '' && data.plmnNumeric != undefined){
+                gnetworkSMode.networkInformation.operatorNumeric = data.plmnNumeric;
+            }else{
                 console.log(`Telephony_NetworkSearch_getNetworkState fail`)
                 expect().assertFail();
                 done();
                 return;
             }
-        } catch (err) {
+        }catch(err){
             console.log(`Telephony_NetworkSearch_getNetworkSelectionMode_Async_0100 init err: ${err}`);
             expect().assertFail();
             done();
@@ -103,7 +103,7 @@ describe('NetworkSearchTest', function () {
             selectMode: radio.NETWORK_SELECTION_AUTOMATIC,
             networkInformation: {
                 operatorName: goperatorName,
-                operatorNumeric: goperatorNumeric,
+                operatorNumeric: gnetworkSMode.networkInformation.operatorNumeric,
                 state: radio.NETWORK_AVAILABLE,
                 radioTech: gradioTech,
             },
@@ -140,19 +140,18 @@ describe('NetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_getNetworkSelectionMode_Async_0200', 0, async function (done) {
-        try {
+        try{
             let data = await radio.getNetworkState(SLOT_0);
-            console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`);
-            if (data.plmnNumeric != '' && data.plmnNumeric != undefined) {
-                goperatorNumeric = data.plmnNumeric;
-                goperatorName = data.longOperatorName;
-            } else {
-                console.log(`Telephony_NetworkSearch_getNetworkState fail`);
+            console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`)
+            if(data.plmnNumeric != '' && data.plmnNumeric != undefined){
+                gnetworkSMode.networkInformation.operatorNumeric = data.plmnNumeric;
+            }else{
+                console.log(`Telephony_NetworkSearch_getNetworkState fail`)
                 expect().assertFail();
                 done();
                 return;
             }
-        } catch (err) {
+        }catch(err){
             expect().assertFail();
             done();
             return;
@@ -162,7 +161,7 @@ describe('NetworkSearchTest', function () {
             selectMode: radio.NETWORK_SELECTION_MANUAL,
             networkInformation: {
                 operatorName: goperatorName,
-                operatorNumeric: goperatorNumeric,
+                operatorNumeric: gnetworkSMode.networkInformation.operatorNumeric,
                 state: radio.NETWORK_AVAILABLE,
                 radioTech: gradioTech,
             },
@@ -219,19 +218,18 @@ describe('NetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0100', 0, async function (done) {
-        try {
+        try{
             let data = await radio.getNetworkState(SLOT_0);
-            console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`);
-            if (data.plmnNumeric != '' && data.plmnNumeric != undefined) {
-                goperatorNumeric = data.plmnNumeric;
-                goperatorName = data.longOperatorName;
-            } else {
-                console.log(`Telephony_NetworkSearch_getNetworkState fail`);
+            console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`)
+            if(data.plmnNumeric != '' && data.plmnNumeric != undefined){
+                gnetworkSMode.networkInformation.operatorNumeric = data.plmnNumeric;
+            }else{
+                console.log(`Telephony_NetworkSearch_getNetworkState fail`)
                 expect().assertFail();
                 done();
                 return;
             }
-        } catch (err) {
+        }catch(err){
             expect().assertFail();
             done();
             return;
@@ -241,7 +239,7 @@ describe('NetworkSearchTest', function () {
             selectMode: radio.NETWORK_SELECTION_AUTOMATIC,
             networkInformation: {
                 operatorName: goperatorName,
-                operatorNumeric: goperatorNumeric,
+                operatorNumeric: gnetworkSMode.networkInformation.operatorNumeric,
                 state: radio.NETWORK_AVAILABLE,
                 radioTech: gradioTech,
             },
@@ -278,19 +276,18 @@ describe('NetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0200', 0, async function (done) {
-        try {
+        try{
             let data = await radio.getNetworkState(SLOT_0);
             console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`)
-            if (data.plmnNumeric != '' && data.plmnNumeric != undefined) {
-                goperatorNumeric = data.plmnNumeric;
-                goperatorName = data.longOperatorName;
-            } else {
-                console.log(`Telephony_NetworkSearch_getNetworkState fail`);
+            if(data.plmnNumeric != '' && data.plmnNumeric != undefined){
+                gnetworkSMode.networkInformation.operatorNumeric = data.plmnNumeric;
+            }else{
+                console.log(`Telephony_NetworkSearch_getNetworkState fail`)
                 expect().assertFail();
                 done();
                 return;
             }
-        } catch (err) {
+        }catch(err){
             expect().assertFail();
             done();
             return;
@@ -300,7 +297,7 @@ describe('NetworkSearchTest', function () {
             selectMode: radio.NETWORK_SELECTION_MANUAL,
             networkInformation: {
                 operatorName: goperatorName,
-                operatorNumeric: goperatorNumeric,
+                operatorNumeric: gnetworkSMode.networkInformation.operatorNumeric,
                 state: radio.NETWORK_AVAILABLE,
                 radioTech: gradioTech,
             },
@@ -357,20 +354,19 @@ describe('NetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_setNetworkSelectionMode_Async_0100', 0, async function (done) {
-        try {
+        try{
             let data = await radio.getNetworkState(SLOT_0);
             console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`)
-            if (data.plmnNumeric != '' && data.plmnNumeric != undefined) {
-                goperatorNumeric = data.plmnNumeric;
-                goperatorName = data.longOperatorName;
-            } else {
-                console.log(`Telephony_NetworkSearch_getNetworkState fail`);
+            if(data.plmnNumeric != '' && data.plmnNumeric != undefined){
+                gnetworkSMode.networkInformation.operatorNumeric = data.plmnNumeric;
+            }else{
+                console.log(`Telephony_NetworkSearch_getNetworkState fail`)
                 expect().assertFail();
                 done();
                 return;
             }
 
-        } catch (err) {
+        }catch(err){
             expect().assertFail();
             done();
             return;
@@ -381,7 +377,7 @@ describe('NetworkSearchTest', function () {
             selectMode: radio.NETWORK_SELECTION_UNKNOWN,
             networkInformation: {
                 operatorName: goperatorName,
-                operatorNumeric: goperatorNumeric,
+                operatorNumeric: gnetworkSMode.networkInformation.operatorNumeric,
                 state: radio.NETWORK_AVAILABLE,
                 radioTech: gradioTech,
             },
@@ -418,19 +414,18 @@ describe('NetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_setNetworkSelectionMode_Async_0200', 0, async function (done) {
-        try {
+        try{
             let data = await radio.getNetworkState(SLOT_0);
             console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`)
-            if (data.plmnNumeric != '' && data.plmnNumeric != undefined) {
-                goperatorNumeric = data.plmnNumeric;
-                goperatorName = data.longOperatorName;
-            } else {
-                console.log(`Telephony_NetworkSearch_getNetworkState fail`);
+            if(data.plmnNumeric != '' && data.plmnNumeric != undefined){
+                gnetworkSMode.networkInformation.operatorNumeric = data.plmnNumeric;
+            }else{
+                console.log(`Telephony_NetworkSearch_getNetworkState fail`)
                 expect().assertFail();
                 done();
                 return;
             }
-        } catch (err) {
+        }catch(err){
             expect().assertFail();
             done();
             return;
@@ -441,7 +436,7 @@ describe('NetworkSearchTest', function () {
             selectMode: ERR_VALUE_5,
             networkInformation: {
                 operatorName: goperatorName,
-                operatorNumeric: goperatorNumeric,
+                operatorNumeric: gnetworkSMode.networkInformation.operatorNumeric,
                 state: radio.NETWORK_AVAILABLE,
                 radioTech: gradioTech,
             },
@@ -479,19 +474,18 @@ describe('NetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_setNetworkSelectionMode_Async_0300', 0, async function (done) {
-        try {
+        try{
             let data = await radio.getNetworkState(SLOT_0);
             console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`)
-            if (data.plmnNumeric != '' && data.plmnNumeric != undefined) {
-                goperatorNumeric = data.plmnNumeric;
-                goperatorName = data.longOperatorName;
-            } else {
-                console.log(`Telephony_NetworkSearch_getNetworkState fail`);
+            if(data.plmnNumeric != '' && data.plmnNumeric != undefined){
+                gnetworkSMode.networkInformation.operatorNumeric = data.plmnNumeric;
+            }else{
+                console.log(`Telephony_NetworkSearch_getNetworkState fail`)
                 expect().assertFail();
                 done();
                 return;
             }
-        } catch (err) {
+        }catch(err){
             expect().assertFail();
             done();
             return;
@@ -540,19 +534,18 @@ describe('NetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_setNetworkSelectionMode_Async_0400', 0, async function (done) {
-        try {
+        try{
             let data = await radio.getNetworkState(SLOT_0);
             console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`)
-            if (data.plmnNumeric != '' && data.plmnNumeric != undefined) {
-                goperatorNumeric = data.plmnNumeric;
-                goperatorName = data.longOperatorName;
-            } else {
-                console.log(`Telephony_NetworkSearch_getNetworkState fail`);
+            if(data.plmnNumeric != '' && data.plmnNumeric != undefined){
+                gnetworkSMode.networkInformation.operatorNumeric = data.plmnNumeric;
+            }else{
+                console.log(`Telephony_NetworkSearch_getNetworkState fail`)
                 expect().assertFail();
                 done();
                 return;
             }
-        } catch (err) {
+        }catch(err){
             expect().assertFail();
             done();
             return;
@@ -563,7 +556,7 @@ describe('NetworkSearchTest', function () {
             selectMode: radio.NETWORK_SELECTION_MANUAL,
             networkInformation: {
                 operatorName: goperatorName,
-                operatorNumeric: goperatorNumeric,
+                operatorNumeric: gnetworkSMode.networkInformation.operatorNumeric,
                 state: radio.NETWORK_AVAILABLE,
                 radioTech: gradioTech,
             },
@@ -599,19 +592,18 @@ describe('NetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_setNetworkSelectionMode_Async_0700', 0, async function (done) {
-        try {
+        try{
             let data = await radio.getNetworkState(SLOT_0);
             console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`)
-            if (data.plmnNumeric != '' && data.plmnNumeric != undefined) {
-                goperatorNumeric = data.plmnNumeric;
-                goperatorName = data.longOperatorName;
-            } else {
-                console.log(`Telephony_NetworkSearch_getNetworkState fail`);
+            if(data.plmnNumeric != '' && data.plmnNumeric != undefined){
+                gnetworkSMode.networkInformation.operatorNumeric = data.plmnNumeric;
+            }else{
+                console.log(`Telephony_NetworkSearch_getNetworkState fail`)
                 expect().assertFail();
                 done();
                 return;
             }
-        } catch (err) {
+        }catch(err){
             expect().assertFail();
             done();
             return;
@@ -622,7 +614,7 @@ describe('NetworkSearchTest', function () {
             selectMode: radio.NETWORK_SELECTION_AUTOMATIC,
             networkInformation: {
                 operatorName: goperatorName,
-                operatorNumeric: goperatorNumeric,
+                operatorNumeric: gnetworkSMode.networkInformation.operatorNumeric,
                 state: radio.NETWORK_AVAILABLE,
                 radioTech: gradioTech,
             },
@@ -650,38 +642,37 @@ describe('NetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_setNetworkSelectionMode_Promise_0100', 0, async function (done) {
-        try {
+        try{
             let data = await radio.getNetworkState(SLOT_0);
             console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`)
-            if (data.plmnNumeric != '' && data.plmnNumeric != undefined) {
-                goperatorNumeric = data.plmnNumeric;
-                goperatorName = data.longOperatorName;
-            } else {
-                console.log(`Telephony_NetworkSearch_getNetworkState fail`);
+            if(data.plmnNumeric != '' && data.plmnNumeric != undefined){
+                gnetworkSMode.networkInformation.operatorNumeric = data.plmnNumeric;
+            }else{
+                console.log(`Telephony_NetworkSearch_getNetworkState fail`)
                 expect().assertFail();
                 done();
                 return;
             }
-        } catch (err) {
+        }catch(err){
             expect().assertFail();
             done();
             return;
         }
-        try {
-            await radio.setNetworkSelectionMode(gnetworkSMode);
-            console.log('Telephony_NetworkSearch_recoverNetworkSelectionMode success');
-        } catch (err) {
-            console.log('Telephony_NetworkSearch_recoverNetworkSelectionMode fail');
-            expect().assertFail();
-            done();
-            return;
-        }
+       try {
+           await radio.setNetworkSelectionMode(gnetworkSMode);
+           console.log('Telephony_NetworkSearch_recoverNetworkSelectionMode success');
+       } catch (err) {
+           console.log('Telephony_NetworkSearch_recoverNetworkSelectionMode fail');
+           expect().assertFail();
+           done();
+           return;
+       }
         let networkSMode = {
             slotId: SLOT_0,
             selectMode: radio.NETWORK_SELECTION_UNKNOWN,
             networkInformation: {
                 operatorName: goperatorName,
-                operatorNumeric: goperatorNumeric,
+                operatorNumeric: gnetworkSMode.networkInformation.operatorNumeric,
                 state: radio.NETWORK_AVAILABLE,
                 radioTech: gradioTech,
             },
@@ -721,19 +712,18 @@ describe('NetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_setNetworkSelectionMode_Promise_0200', 0, async function (done) {
-        try {
+        try{
             let data = await radio.getNetworkState(SLOT_0);
             console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`)
-            if (data.plmnNumeric != '' && data.plmnNumeric != undefined) {
-                goperatorNumeric = data.plmnNumeric;
-                goperatorName = data.longOperatorName;
-            } else {
-                console.log(`Telephony_NetworkSearch_getNetworkState fail`);
+            if(data.plmnNumeric != '' && data.plmnNumeric != undefined){
+                gnetworkSMode.networkInformation.operatorNumeric = data.plmnNumeric;
+            }else{
+                console.log(`Telephony_NetworkSearch_getNetworkState fail`)
                 expect().assertFail();
                 done();
                 return;
             }
-        } catch (err) {
+        }catch(err){
             expect().assertFail();
             done();
             return;
@@ -752,7 +742,7 @@ describe('NetworkSearchTest', function () {
             selectMode: ERR_VALUE_5,
             networkInformation: {
                 operatorName: goperatorName,
-                operatorNumeric: goperatorNumeric,
+                operatorNumeric: gnetworkSMode.networkInformation.operatorNumeric,
                 state: radio.NETWORK_AVAILABLE,
                 radioTech: gradioTech,
             },
@@ -785,24 +775,23 @@ describe('NetworkSearchTest', function () {
 
     /**
      * @tc.number  Telephony_NetworkSearch_setNetworkSelectionMode_Promise_0300
-     * @tc.name    Test the setNetworkSelectionMode() and enter an outlier operatorNumeric
+     * @tc.name    Test the setNetworkSelectionMode() and enter an outlier operatorNumeric: '46001'
      *             return value is 'False' and the network selection mode update fails
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_setNetworkSelectionMode_Promise_0300', 0, async function (done) {
-        try {
+        try{
             let data = await radio.getNetworkState(SLOT_0);
             console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`)
-            if (data.plmnNumeric != '' && data.plmnNumeric != undefined) {
-                goperatorNumeric = data.plmnNumeric;
-                goperatorName = data.longOperatorName;
-            } else {
-                console.log(`Telephony_NetworkSearch_getNetworkState fail`);
+            if(data.plmnNumeric != '' && data.plmnNumeric != undefined){
+                gnetworkSMode.networkInformation.operatorNumeric = data.plmnNumeric;
+            }else{
+                console.log(`Telephony_NetworkSearch_getNetworkState fail`)
                 expect().assertFail();
                 done();
                 return;
             }
-        } catch (err) {
+        }catch(err){
             expect().assertFail();
             done();
             return;
@@ -860,19 +849,18 @@ describe('NetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_setNetworkSelectionMode_Promise_0400', 0, async function (done) {
-        try {
+        try{
             let data = await radio.getNetworkState(SLOT_0);
             console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`)
-            if (data.plmnNumeric != '' && data.plmnNumeric != undefined) {
-                goperatorNumeric = data.plmnNumeric;
-                goperatorName = data.longOperatorName;
-            } else {
-                console.log(`Telephony_NetworkSearch_getNetworkState fail`);
+            if(data.plmnNumeric != '' && data.plmnNumeric != undefined){
+                gnetworkSMode.networkInformation.operatorNumeric = data.plmnNumeric;
+            }else{
+                console.log(`Telephony_NetworkSearch_getNetworkState fail`)
                 expect().assertFail();
                 done();
                 return;
             }
-        } catch (err) {
+        }catch(err){
             expect().assertFail();
             done();
             return;
@@ -891,7 +879,7 @@ describe('NetworkSearchTest', function () {
             selectMode: radio.NETWORK_SELECTION_MANUAL,
             networkInformation: {
                 operatorName: goperatorName,
-                operatorNumeric: goperatorNumeric,
+                operatorNumeric: gnetworkSMode.networkInformation.operatorNumeric,
                 state: radio.NETWORK_AVAILABLE,
                 radioTech: gradioTech,
             },
@@ -926,19 +914,18 @@ describe('NetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_setNetworkSelectionMode_Promise_0700', 0, async function (done) {
-        try {
+        try{
             let data = await radio.getNetworkState(SLOT_0);
             console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`)
-            if (data.plmnNumeric != '' && data.plmnNumeric != undefined) {
-                goperatorNumeric = data.plmnNumeric;
-                goperatorName = data.longOperatorName;
-            } else {
-                console.log(`Telephony_NetworkSearch_getNetworkState fail`);
+            if(data.plmnNumeric != '' && data.plmnNumeric != undefined){
+                gnetworkSMode.networkInformation.operatorNumeric = data.plmnNumeric;
+            }else{
+                console.log(`Telephony_NetworkSearch_getNetworkState fail`)
                 expect().assertFail();
                 done();
                 return;
             }
-        } catch (err) {
+        }catch(err){
             expect().assertFail();
             done();
             return;
@@ -957,7 +944,7 @@ describe('NetworkSearchTest', function () {
             selectMode: radio.NETWORK_SELECTION_AUTOMATIC,
             networkInformation: {
                 operatorName: goperatorName,
-                operatorNumeric: goperatorNumeric,
+                operatorNumeric: gnetworkSMode.networkInformation.operatorNumeric,
                 state: radio.NETWORK_AVAILABLE,
                 radioTech: gradioTech,
             },
@@ -984,19 +971,18 @@ describe('NetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_getNetworkSearchInformation_Async_0100', 0, async function (done) {
-        try {
+        try{
             let data = await radio.getNetworkState(SLOT_0);
             console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`)
-            if (data.plmnNumeric != '' && data.plmnNumeric != undefined) {
-                goperatorNumeric = data.plmnNumeric;
-                goperatorName = data.longOperatorName;
-            } else {
-                console.log(`Telephony_NetworkSearch_getNetworkState fail`);
+            if(data.plmnNumeric != '' && data.plmnNumeric != undefined){
+                gnetworkSMode.networkInformation.operatorNumeric = data.plmnNumeric;
+            }else{
+                console.log(`Telephony_NetworkSearch_getNetworkState fail`)
                 expect().assertFail();
                 done();
                 return;
             }
-        } catch (err) {
+        }catch(err){
             expect().assertFail();
             done();
             return;
@@ -1047,19 +1033,18 @@ describe('NetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_getNetworkSearchInformation_Promise_0100', 0, async function (done) {
-        try {
+        try{
             let data = await radio.getNetworkState(SLOT_0);
             console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`)
-            if (data.plmnNumeric != '' && data.plmnNumeric != undefined) {
-                goperatorNumeric = data.plmnNumeric;
-                goperatorName = data.longOperatorName;
-            } else {
-                console.log(`Telephony_NetworkSearch_getNetworkState fail`);
+            if(data.plmnNumeric != '' && data.plmnNumeric != undefined){
+                gnetworkSMode.networkInformation.operatorNumeric = data.plmnNumeric;
+            }else{
+                console.log(`Telephony_NetworkSearch_getNetworkState fail`)
                 expect().assertFail();
                 done();
                 return;
             }
-        } catch (err) {
+        }catch(err){
             expect().assertFail();
             done();
             return;
@@ -1109,6 +1094,22 @@ describe('NetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_getNetworkSearchInformation_Async_0400', 0, async function (done) {
+        try{
+            let data = await radio.getNetworkState(SLOT_0);
+            console.log(`Telephony_NetworkSearch_getNetworkState data: ${JSON.stringify(data)}`)
+            if(data.plmnNumeric != '' && data.plmnNumeric != undefined){
+                gnetworkSMode.networkInformation.operatorNumeric = data.plmnNumeric;
+            }else{
+                console.log(`Telephony_NetworkSearch_getNetworkState fail`)
+                expect().assertFail();
+                done();
+                return;
+            }
+        }catch(err){
+            expect().assertFail();
+            done();
+            return;
+        }
         let slotId = 33;
         radio.getNetworkSearchInformation(slotId, (err, data) => {
             if (err) {

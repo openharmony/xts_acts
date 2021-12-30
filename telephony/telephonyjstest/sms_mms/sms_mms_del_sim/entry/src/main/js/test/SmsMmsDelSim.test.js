@@ -26,7 +26,6 @@ import {
 describe('SmsMmsDelTest', function () {
   const TRUE_SLOT_ID = 0;
   const FALSE_SLOT_ID = 9;
-  //PDU code data that meets specifications for testing
   const CORRECT_SMS_PDU = '01000F9168683106019196F400080A00680065006C006C006F';
 
   beforeAll(async function () {
@@ -67,7 +66,7 @@ describe('SmsMmsDelTest', function () {
       slotId: TRUE_SLOT_ID,
       smsc: '',
       pdu: CORRECT_SMS_PDU,
-      status: sms.SIM_MESSAGE_STATUS_SENT
+      status: sms.MESSAGE_HAS_BEEN_SENT
     };
     sms.addSimMessage(data, (adderr) => {
       if (adderr) {
@@ -160,7 +159,6 @@ describe('SmsMmsDelTest', function () {
    * @tc.desc     Function test
    */
   it('Telephony_SmsMms_delSimMessage_Async_0400', 0, async function (done) {
-    //This value is the maximum for this type
     let addIndex = 0xffffffff;
     sms.delSimMessage(TRUE_SLOT_ID, addIndex, (delerr) => {
       if (delerr) {
@@ -185,7 +183,7 @@ describe('SmsMmsDelTest', function () {
       slotId: TRUE_SLOT_ID,
       smsc: '',
       pdu: CORRECT_SMS_PDU,
-      status: sms.SIM_MESSAGE_STATUS_SENT
+      status: sms.MESSAGE_HAS_BEEN_SENT
     };
     try {
       await sms.addSimMessage(data);
@@ -278,7 +276,6 @@ describe('SmsMmsDelTest', function () {
    * @tc.desc     Function test
    */
   it('Telephony_SmsMms_delSimMessage_Promise_0400', 0, async function (done) {
-    //This value is the maximum for this type
     let addIndex = 0xffffffff;
     try {
       await sms.delSimMessage(TRUE_SLOT_ID, addIndex);

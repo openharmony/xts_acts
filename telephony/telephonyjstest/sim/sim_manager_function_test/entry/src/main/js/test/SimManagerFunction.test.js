@@ -19,13 +19,6 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe('SimManagerFunction', function () {
 
-  var defaultValue = 0;
-  beforeAll(async function () {
-    // Gets the default calling card ID.
-    let result = await sim.getDefaultVoiceSlotId();
-    defaultValue = result;
-  })
-
   /**
     * @tc.number  Telephony_Sim_getSimAccountInfo_Async_0100
     * @tc.name    Enter normal parameters to test whether the getSimAccountInfo
@@ -33,8 +26,8 @@ describe('SimManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_getSimAccountInfo_Async_0100', 0, async function (done) {
-    let defaultName = 'simDefaultDisplayName';
-    let defaultNumber = 'simDefaultDisplayNumber';
+    var defaultName = 'simDefaultDisplayName';
+    var defaultNumber = 'simDefaultDisplayNumber';
     sim.getSimAccountInfo(simSlotId.SLOT_ID_0, (err, data) => {
       if (err) {
         console.log(`Telephony_Sim_getSimAccountInfo_Async_0100 fail, err: ${err.message}`);
@@ -62,7 +55,6 @@ describe('SimManagerFunction', function () {
     sim.getSimAccountInfo(simSlotId.SLOT_ID_4, (err, data) => {
       if (err) {
         // Enter the exception ID to enter err.
-        console.log(`Telephony_Sim_getSimAccountInfo_Async_0200, err: ${err.message}`);
         console.log('Telephony_Sim_getSimAccountInfo_Async_0200 finish');
         done();
         return;
@@ -80,10 +72,10 @@ describe('SimManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_getSimAccountInfo_Promise_0100', 0, async function (done) {
-    let defaultName = 'simDefaultDisplayName';
-    let defaultNumber = 'simDefaultDisplayNumber';
+    var defaultName = 'simDefaultDisplayName';
+    var defaultNumber = 'simDefaultDisplayNumber';
     try {
-      let data = await sim.getSimAccountInfo(simSlotId.SLOT_ID_0);
+      var data = await sim.getSimAccountInfo(simSlotId.SLOT_ID_0);
       expect(data.slotIndex === simSlotId.SLOT_ID_0).assertTrue();
       // return the default piling data as simDefaultDisplayName.
       expect(data.showName === defaultName).assertTrue();
@@ -108,10 +100,9 @@ describe('SimManagerFunction', function () {
     */
   it('Telephony_Sim_getSimAccountInfo_Promise_0200', 0, async function (done) {
     try {
-      let data = await sim.getSimAccountInfo(simSlotId.SLOT_ID_4);
+      var data = await sim.getSimAccountInfo(simSlotId.SLOT_ID_4);
     } catch (err) {
       // Enter the exception ID to enter err.
-      console.log(`Telephony_Sim_getSimAccountInfo_Promise_0200, err: ${err.message}`);
       console.log('Telephony_Sim_getSimAccountInfo_Promise_0200 finish');
       done();
       return;
@@ -128,6 +119,16 @@ describe('SimManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_getDefaultVoiceSlotId_Async_0100', 0, async function (done) {
+    var defaultValue = 0;
+    sim.getDefaultVoiceSlotId((err, result) => {
+      if (err) {
+        console.log(`Telephony_Sim_getDefaultVoiceSlotId_Async_0100 fail, err: ${err.message}`);
+        expect().assertFail();
+        done();
+        return;
+      }
+      defaultValue = result;
+    });
     sim.setDefaultVoiceSlotId(simSlotId.SLOT_ID_0, (err) => {
       if (err) {
         console.log(`Telephony_Sim_getDefaultVoiceSlotId_Async_0100 setDefaultVoiceSLOT_ID_err: ${err.message}`);
@@ -167,6 +168,16 @@ describe('SimManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_getDefaultVoiceSlotId_Async_0200', 0, async function (done) {
+    var defaultValue = 0;
+    sim.getDefaultVoiceSlotId((err, result) => {
+      if (err) {
+        console.log(`Telephony_Sim_getDefaultVoiceSlotId_Async_0200 fail, err: ${err.message}`);
+        expect().assertFail();
+        done();
+        return;
+      }
+      defaultValue = result;
+    });
     sim.setDefaultVoiceSlotId(simSlotId.SLOT_ID_2, (err) => {
       if (err) {
         console.log(`Telephony_Sim_getDefaultVoiceSlotId_Async_0200：setDefaultVoiceSLOT_ID_err: ${
@@ -207,10 +218,13 @@ describe('SimManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_getDefaultVoiceSlotId_Promise_0100', 0, async function (done) {
+    var defaultValue = 0;
+    var result = await sim.getDefaultVoiceSlotId();
+    defaultValue = result;
     try {
       await sim.setDefaultVoiceSlotId(simSlotId.SLOT_ID_2);
       try {
-        let data = await sim.getDefaultVoiceSlotId();
+        var data = await sim.getDefaultVoiceSlotId();
         expect(data === simSlotId.SLOT_ID_2).assertTrue();
       } catch (err) {
         console.log(`Telephony_Sim_getDefaultVoiceSlotId_Promise_0100 fail, err: ${err.message}`);
@@ -236,10 +250,13 @@ describe('SimManagerFunction', function () {
     * @tc.desc    Function test
     */
   it('Telephony_Sim_getDefaultVoiceSlotId_Promise_0200', 0, async function (done) {
+    var defaultValue = 0;
+    var result = await sim.getDefaultVoiceSlotId();
+    defaultValue = result;
     try {
       await sim.setDefaultVoiceSlotId(simSlotId.SLOT_ID_0);
       try {
-        let data = await sim.getDefaultVoiceSlotId();
+        var data = await sim.getDefaultVoiceSlotId();
         console.log(`Telephony_Sim_getDefaultVoiceSlotId_Promise_0200, data = ${data}`);
         expect(data === simSlotId.SLOT_ID_0).assertTrue();
         // Restore Settings
@@ -278,7 +295,6 @@ describe('SimManagerFunction', function () {
           }
           expect(result !== simSlotId.SLOT_ID_4).assertTrue();
         });
-        console.log(`Telephony_Sim_setDefaultVoiceSlotId_Async_0100, err: ${err.message}`);
         console.log('Telephony_Sim_setDefaultVoiceSlotId_Async_0100 finish');
         done();
         return;
@@ -296,12 +312,11 @@ describe('SimManagerFunction', function () {
     */
   it('Telephony_Sim_setDefaultVoiceSlotId_Promise_0100', 0, async function (done) {
     try {
-      let data = await sim.setDefaultVoiceSlotId(simSlotId.SLOT_ID_4);
+      var data = await sim.setDefaultVoiceSlotId(simSlotId.SLOT_ID_4);
     } catch (err) {
       // Expect slotid 4 return err here.
-      let result = await sim.getDefaultVoiceSlotId();
+      var result = await sim.getDefaultVoiceSlotId();
       expect(result !== simSlotId.SLOT_ID_4).assertTrue();
-      console.log(`Telephony_Sim_setDefaultVoiceSlotId_Promise_0100, err: ${err.message}`);
       console.log('Telephony_Sim_setDefaultVoiceSlotId_Promise_0100 finish');
       done();
       return;
