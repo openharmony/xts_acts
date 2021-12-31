@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,10 +14,13 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import ddm from '@ohos.data.distributedData';
-
 describe('QueryTest', function() {
 
-    // reset
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_RESET_0100
+     * @tc.name [JS-API8]Query.Reset().
+     * @tc.desc Test Js Api Query.Reset() testcase 001
+     */
     it('testReset001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -36,6 +39,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_RESET_0200
+     * @tc.name [JS-API8]Query.Reset().
+     * @tc.desc Test Js Api Query.Reset() testcase 002
+     */
     it('testReset002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -59,6 +67,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_RESET_0300
+     * @tc.name [JS-API8]Query.Reset().
+     * @tc.desc Test Js Api Query.Reset() testcase 003
+     */
     it('testReset003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -77,6 +90,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_RESET_0400
+     * @tc.name [JS-API8]Query.Reset().
+     * @tc.desc Test Js Api Query.Reset() testcase 004
+     */
     it('testReset004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -92,15 +110,19 @@ describe('QueryTest', function() {
         done();
     })
 
-    // equalTo
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_EQAULTO_0100
+     * @tc.name [JS-API8]Query.EqaulTo().
+     * @tc.desc Test Js Api Query.EqaulTo() testcase 001
+     */
     it('testEqaulTo001', 0, async function(done) {
         try {
             let query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
-            query.equalTo("key1", 5);       // number - interger?
-            query.equalTo("key2", 5.0);     // number - double?
-            query.equalTo("key3", false);   // bool
-            query.equalTo("key3", "string");// string
+            query.equalTo("key1", 5);
+            query.equalTo("key2", 5.0);
+            query.equalTo("key3", false);
+            query.equalTo("key3", "string");
             expect(query.getSqlLike() !== "").assertTrue();
             console.log("query is " + query.getSqlLike());
             query = null;
@@ -111,6 +133,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_EQUALTO_0200
+     * @tc.name [JS-API8]Query.EqualTo().
+     * @tc.desc Test Js Api Query.EqualTo() testcase 002
+     */
     it('testEqualTo002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -126,6 +153,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_EQUALTO_0300
+     * @tc.name [JS-API8]Query.EqualTo().
+     * @tc.desc Test Js Api Query.EqualTo() testcase 003
+     */
     it('testEqualTo003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -139,6 +171,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_EQUALTO_0400
+     * @tc.name [JS-API8]Query.EqualTo().
+     * @tc.desc Test Js Api Query.EqualTo() testcase 004
+     */
     it('testEqualTo004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -154,15 +191,19 @@ describe('QueryTest', function() {
         done();
     })
 
-    // notEqualTo
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_NOTEQUALTO_0100
+     * @tc.name [JS-API8]Query.NotEqualTo().
+     * @tc.desc Test Js Api Query.NotEqualTo() testcase 001
+     */
     it('testNotEqualTo001', 0, async function(done) {
         try {
             let query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
-            query.notEqualTo("key1", 5);       // number - interger?
-            query.notEqualTo("key2", 5.0);     // number - double?
-            query.notEqualTo("key3", false);   // bool
-            query.notEqualTo("key4", "string");// string
+            query.notEqualTo("key1", 5);
+            query.notEqualTo("key2", 5.0);
+            query.notEqualTo("key3", false);
+            query.notEqualTo("key4", "string");
             expect(query.getSqlLike() !== "").assertTrue();
             console.log("query is " + query.getSqlLike());
             query = null;
@@ -173,6 +214,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_NOTEQUALTO_0200
+     * @tc.name [JS-API8]Query.NotEqualTo().
+     * @tc.desc Test Js Api Query.NotEqualTo() testcase 002
+     */
     it('testNotEqualTo002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -190,6 +236,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_NOTEQUALTO_0300
+     * @tc.name [JS-API8]Query.NotEqualTo().
+     * @tc.desc Test Js Api Query.NotEqualTo() testcase 003
+     */
     it('testNotEqualTo003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -204,6 +255,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_NOTEQUALTO_0400
+     * @tc.name [JS-API8]Query.NotEqualTo().
+     * @tc.desc Test Js Api Query.NotEqualTo() testcase 004
+     */
     it('testNotEqualTo004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -216,15 +272,19 @@ describe('QueryTest', function() {
         done();
     })
 
-    // greaterThan
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_GREATERTHAN_0100
+     * @tc.name [JS-API8]Query.GreaterThan().
+     * @tc.desc Test Js Api Query.GreaterThan() testcase 001
+     */
     it('testGreaterThan001', 0, async function(done) {
         try {
             let query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
-            query.greaterThan("key1", 5);       // number - interger?
-            query.greaterThan("key2", 5.0);     // number - double?
-            query.greaterThan("key3", true);   // bool
-            query.greaterThan("key4", "string");// string
+            query.greaterThan("key1", 5);
+            query.greaterThan("key2", 5.0);
+            query.greaterThan("key3", true);
+            query.greaterThan("key4", "string");
             expect(query.getSqlLike() !== "").assertTrue();
             console.log("query is " + query.getSqlLike());
             query = null;
@@ -235,6 +295,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_GREATTHAN_0200
+     * @tc.name [JS-API8]Query.GreatThan().
+     * @tc.desc Test Js Api Query.GreatThan() testcase 002
+     */
     it('testGreatThan002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -252,11 +317,16 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_GREATTHAN_0300
+     * @tc.name [JS-API8]Query.GreatThan().
+     * @tc.desc Test Js Api Query.GreatThan() testcase 003
+     */
     it('testGreatThan003', 0, async function(done) {
         try {
             let query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
-            query.greaterThan("key2", NaN); // how to get NaN?
+            query.greaterThan("key2", NaN);
             console.log("should throw exception on invalid arguments");
             console.log("query is " + query.getSqlLike());
         } catch (e) {
@@ -265,6 +335,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_GREATTHAN_0400
+     * @tc.name [JS-API8]Query.GreatThan().
+     * @tc.desc Test Js Api Query.GreatThan() testcase 004
+     */
     it('testGreatThan004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -278,15 +353,19 @@ describe('QueryTest', function() {
         done();
     })
 
-    // lessThan
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_LESSTHAN_0100
+     * @tc.name [JS-API8]Query.LessThan().
+     * @tc.desc Test Js Api Query.LessThan() testcase 001
+     */
     it('testLessThan001', 0, async function(done) {
         try {
             let query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
-            query.lessThan("key1", 5);       // number - interger?
-            query.lessThan("key2", 5.0);     // number - double?
-            query.lessThan("key3", true);   // bool
-            query.lessThan("key4", "string");// string
+            query.lessThan("key1", 5);
+            query.lessThan("key2", 5.0);
+            query.lessThan("key3", true);
+            query.lessThan("key4", "string");
             expect(query.getSqlLike() !== "").assertTrue();
             console.log("query is " + query.getSqlLike());
             query = null;
@@ -296,6 +375,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_LESSTHAN_0200
+     * @tc.name [JS-API8]Query.LessThan().
+     * @tc.desc Test Js Api Query.LessThan() testcase 002
+     */
     it('testLessThan002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -313,6 +397,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_LESSTHAN_0300
+     * @tc.name [JS-API8]Query.LessThan().
+     * @tc.desc Test Js Api Query.LessThan() testcase 003
+     */
     it('testLessThan003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -325,6 +414,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_LESSTHAN_0400
+     * @tc.name [JS-API8]Query.LessThan().
+     * @tc.desc Test Js Api Query.LessThan() testcase 004
+     */
     it('testLessThan004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -337,15 +431,20 @@ describe('QueryTest', function() {
         }
         done();
     })
-    // greaterThanOrEqualTo
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_GREATERTHANOREQUALTO_0100
+     * @tc.name [JS-API8]Query.GreaterThanOrEqualTo().
+     * @tc.desc Test Js Api Query.GreaterThanOrEqualTo() testcase 001
+     */
     it('testGreaterThanOrEqualTo001', 0, async function(done) {
         try {
             let query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
-            query.greaterThanOrEqualTo("key1", 5);       // number - interger?
-            query.greaterThanOrEqualTo("key2", 5.0);     // number - double?
-            query.greaterThanOrEqualTo("key3", true);   // bool
-            query.greaterThanOrEqualTo("key4", "string");// string
+            query.greaterThanOrEqualTo("key1", 5);
+            query.greaterThanOrEqualTo("key2", 5.0);
+            query.greaterThanOrEqualTo("key3", true);
+            query.greaterThanOrEqualTo("key4", "string");
             expect(query.getSqlLike() !== "").assertTrue();
             console.log("query is " + query.getSqlLike());
             query = null;
@@ -356,6 +455,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_GREATERTHANOREQUALTO_0200
+     * @tc.name [JS-API8]Query.GreaterThanOrEqualTo().
+     * @tc.desc Test Js Api Query.GreaterThanOrEqualTo() testcase 002
+     */
     it('testGreaterThanOrEqualTo002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -375,6 +479,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_GREATERTHANOREQUALTO_0300
+     * @tc.name [JS-API8]Query.GreaterThanOrEqualTo().
+     * @tc.desc Test Js Api Query.GreaterThanOrEqualTo() testcase 003
+     */
     it('testGreaterThanOrEqualTo003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -388,6 +497,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_GREATERTHANOREQUALTO_0400
+     * @tc.name [JS-API8]Query.GreaterThanOrEqualTo().
+     * @tc.desc Test Js Api Query.GreaterThanOrEqualTo() testcase 004
+     */
     it('testGreaterThanOrEqualTo004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -401,15 +515,19 @@ describe('QueryTest', function() {
         done();
     })
 
-    // lessThanOrEqualTo
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_LESSTHANOREQUALTO_0100
+     * @tc.name [JS-API8]Query.LessThanOrEqualTo().
+     * @tc.desc Test Js Api Query.LessThanOrEqualTo() testcase 001
+     */
     it('testLessThanOrEqualTo001', 0, async function(done) {
         try {
             let query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
-            query.lessThanOrEqualTo("key1", 5);       // number - interger?
-            query.lessThanOrEqualTo("key2", 5.0);     // number - double?
-            query.lessThanOrEqualTo("key3", true);   // bool
-            query.lessThanOrEqualTo("key4", "string");// string
+            query.lessThanOrEqualTo("key1", 5);
+            query.lessThanOrEqualTo("key2", 5.0);
+            query.lessThanOrEqualTo("key3", true);
+            query.lessThanOrEqualTo("key4", "string");
             expect(query.getSqlLike() !== "").assertTrue();
             console.log("query is " + query.getSqlLike());
             query = null;
@@ -420,6 +538,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_LESSTHANOREQUALTO_0200
+     * @tc.name [JS-API8]Query.LessThanOrEqualTo().
+     * @tc.desc Test Js Api Query.LessThanOrEqualTo() testcase 002
+     */
     it('testLessThanOrEqualTo002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -437,6 +560,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_LESSTHANOREQUALTO_0300
+     * @tc.name [JS-API8]Query.LessThanOrEqualTo().
+     * @tc.desc Test Js Api Query.LessThanOrEqualTo() testcase 003
+     */
     it('testLessThanOrEqualTo003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -449,6 +577,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_LESSTHANOREQUALTO_0400
+     * @tc.name [JS-API8]Query.LessThanOrEqualTo().
+     * @tc.desc Test Js Api Query.LessThanOrEqualTo() testcase 004
+     */
     it('testLessThanOrEqualTo004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -462,7 +595,11 @@ describe('QueryTest', function() {
         done();
     })
 
-    // isNull
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ISNULL_0100
+     * @tc.name [JS-API8]Query.IsNull().
+     * @tc.desc Test Js Api Query.IsNull() testcase 001
+     */
     it('testIsNull001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -479,6 +616,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ISNULL_0200
+     * @tc.name [JS-API8]Query.IsNull().
+     * @tc.desc Test Js Api Query.IsNull() testcase 002
+     */
     it('testIsNull002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -494,6 +636,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ISNULL_0300
+     * @tc.name [JS-API8]Query.IsNull().
+     * @tc.desc Test Js Api Query.IsNull() testcase 003
+     */
     it('testIsNull003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -507,6 +654,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ISNULL_0400
+     * @tc.name [JS-API8]Query.IsNull().
+     * @tc.desc Test Js Api Query.IsNull() testcase 004
+     */
     it('testIsNull004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -536,7 +688,12 @@ describe('QueryTest', function() {
     * =======================================================================================
 	*           Array                 |  DOUBLE    * not-typedArray treated as array of double.
     */
-    // inNumber
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_INNUMBER_0100
+     * @tc.name [JS-API8]Query.InNumber().
+     * @tc.desc Test Js Api Query.InNumber() testcase 001
+     */
     it('testInNumber001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -581,6 +738,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_INNUMBER_0200
+     * @tc.name [JS-API8]Query.InNumber().
+     * @tc.desc Test Js Api Query.InNumber() testcase 002
+     */
     it('testInNumber002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -599,6 +761,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_INNUMBER_0300
+     * @tc.name [JS-API8]Query.InNumber().
+     * @tc.desc Test Js Api Query.InNumber() testcase 003
+     */
     it('testInNumber003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -612,6 +779,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_INNUMBER_0400
+     * @tc.name [JS-API8]Query.InNumber().
+     * @tc.desc Test Js Api Query.InNumber() testcase 004
+     */
     it('testInNumber004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -625,19 +797,19 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_INNUMBER_0500
+     * @tc.name [JS-API8]Query.InNumber().
+     * @tc.desc Test Js Api Query.InNumber() testcase 005
+     */
     it('testInNumber005', 0, async function(done) {
         try {
             let query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
-
-            // var u64 = new BigUint64Array([21n, 31n]); // build error.
-            var u64 = new BigUint64Array([21, 31]); // cannot convert to bigint
+            var u64 = new BigUint64Array([21, 31]);
             query.inNumber("key", u64);
-
-            // var b64 = new BigInt64Array([21n, 31n]); // build error.
-            var b64 = new BigInt64Array([21, 31]); // cannot convert to bigint
+            var b64 = new BigInt64Array([21, 31]);
             query.inNumber("key", b64);
-
             console.log("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
@@ -646,32 +818,31 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_INNUMBER_0600
+     * @tc.name [JS-API8]Query.InNumber().
+     * @tc.desc Test Js Api Query.InNumber() testcase 006
+     */
     it('testInNumber006', 0, async function(done) {
         try {
             let query = new ddm.Query();
-            // no-typedArray treat as  array of double.
             console.log("typeof([1, 2, 97])" + typeof([1, 2, 97]))
             console.log("typeof([1, 2, 97][0])" + typeof([1, 2, 97][0]))
             query.inNumber("key", [1, 2, 97]);
             console.log("inNumber([1, 2, 97])  => " + query.getSqlLike());
             query.reset();
-
             query.inNumber("key1", [-1, 3, 987654.123, 0xabc123456]);
             console.log("inNumber([1, 2, 0xa1234567890123456])  => " + query.getSqlLike());
             query.reset();
-
             query.inNumber("key2", [-1, 3, -987654.123, 0xabc123456]);
             console.log("inNumber([1, 2, 0xa1234567890123456])  => " + query.getSqlLike());
             query.reset();
-
             query.inNumber("key3", [-1, 4, -987654.123, Number.MAX_VALUE]);
             console.log("inNumber([1, 2, Number.MAX_VALUE])  => " + query.getSqlLike());
             query.reset();
-
             query.inNumber("key4", [1, -2.3, Number.MIN_VALUE, Number.MAX_VALUE]);
             console.log("inNumber([1, -2.3, Number.MAX_VALUE])  => " + query.getSqlLike());
             expect(query.getSqlLike() !== "").assertTrue();
-
             console.log("query is " + query.getSqlLike());
             query.reset();
             query = null;
@@ -682,7 +853,11 @@ describe('QueryTest', function() {
         done();
     })
 
-    // inString
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_INSTRING_0100
+     * @tc.name [JS-API8]Query.InString().
+     * @tc.desc Test Js Api Query.InString() testcase 001
+     */
     it('testInString001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -699,6 +874,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_INSTRING_0200
+     * @tc.name [JS-API8]Query.InString().
+     * @tc.desc Test Js Api Query.InString() testcase 002
+     */
     it('testInString002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -716,6 +896,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_INSTRING_0300
+     * @tc.name [JS-API8]Query.InString().
+     * @tc.desc Test Js Api Query.InString() testcase 003
+     */
     it('testInString003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -729,6 +914,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_INSTRING_0400
+     * @tc.name [JS-API8]Query.InString().
+     * @tc.desc Test Js Api Query.InString() testcase 004
+     */
     it('testInString004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -742,7 +932,11 @@ describe('QueryTest', function() {
         done();
     })
 
-    // notInNumber
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_NOTINNUMBER_0100
+     * @tc.name [JS-API8]Query.NotInNumber().
+     * @tc.desc Test Js Api Query.NotInNumber() testcase 001
+     */
     it('testNotInNumber001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -759,6 +953,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_NOTINNUMBER_0200
+     * @tc.name [JS-API8]Query.NotInNumber().
+     * @tc.desc Test Js Api Query.NotInNumber() testcase 002
+     */
     it('testNotInNumber002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -774,6 +973,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_NOTINNUMBER_0300
+     * @tc.name [JS-API8]Query.NotInNumber().
+     * @tc.desc Test Js Api Query.NotInNumber() testcase 003
+     */
     it('testNotInNumber003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -787,6 +991,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_NOTINNUMBER_0400
+     * @tc.name [JS-API8]Query.NotInNumber().
+     * @tc.desc Test Js Api Query.NotInNumber() testcase 004
+     */
     it('testNotInNumber004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -801,7 +1010,11 @@ describe('QueryTest', function() {
         done();
     })
 
-    // notInString
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_NOTINSTRING_0100
+     * @tc.name [JS-API8]Query.NotInString().
+     * @tc.desc Test Js Api Query.NotInString() testcase 001
+     */
     it('testNotInString001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -818,6 +1031,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_NOTINSTRING_0200
+     * @tc.name [JS-API8]Query.NotInString().
+     * @tc.desc Test Js Api Query.NotInString() testcase 002
+     */
     it('testNotInString002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -833,6 +1051,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_NOTINSTRING_0300
+     * @tc.name [JS-API8]Query.NotInString().
+     * @tc.desc Test Js Api Query.NotInString() testcase 003
+     */
     it('testNotInString003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -846,6 +1069,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_NOTINSTRING_0400
+     * @tc.name [JS-API8]Query.NotInString().
+     * @tc.desc Test Js Api Query.NotInString() testcase 004
+     */
     it('testNotInString004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -859,7 +1087,11 @@ describe('QueryTest', function() {
         done();
     })
 
-    // like
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_LIKE_0100
+     * @tc.name [JS-API8]Query.Like().
+     * @tc.desc Test Js Api Query.Like() testcase 001
+     */
     it('testLike001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -876,6 +1108,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_LIKE_0200
+     * @tc.name [JS-API8]Query.Like().
+     * @tc.desc Test Js Api Query.Like() testcase 002
+     */
     it('testLike002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -891,6 +1128,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_LIKE_0300
+     * @tc.name [JS-API8]Query.Like().
+     * @tc.desc Test Js Api Query.Like() testcase 003
+     */
     it('testLike003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -904,6 +1146,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_LIKE_0400
+     * @tc.name [JS-API8]Query.Like().
+     * @tc.desc Test Js Api Query.Like() testcase 004
+     */
     it('testLike004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -917,7 +1164,11 @@ describe('QueryTest', function() {
         done();
     })
 
-    // unlike
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_UNLIKE_0100
+     * @tc.name [JS-API8]Query.Unlike().
+     * @tc.desc Test Js Api Query.Unlike() testcase 001
+     */
     it('testUnlike001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -933,6 +1184,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_UNLIKE_0200
+     * @tc.name [JS-API8]Query.Unlike().
+     * @tc.desc Test Js Api Query.Unlike() testcase 002
+     */
     it('testUnlike002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -948,6 +1204,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_UNLIKE_0300
+     * @tc.name [JS-API8]Query.Unlike().
+     * @tc.desc Test Js Api Query.Unlike() testcase 003
+     */
     it('testUnlike003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -961,6 +1222,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_UNLIKE_0400
+     * @tc.name [JS-API8]Query.Unlike().
+     * @tc.desc Test Js Api Query.Unlike() testcase 004
+     */
     it('testUnlike004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -974,7 +1240,11 @@ describe('QueryTest', function() {
         done();
     })
 
-    // and
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_AND_0100
+     * @tc.name [JS-API8]Query.And().
+     * @tc.desc Test Js Api Query.And() testcase 001
+     */
     it('testAnd001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -992,6 +1262,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_AND_0200
+     * @tc.name [JS-API8]Query.And().
+     * @tc.desc Test Js Api Query.And() testcase 002
+     */
     it('testAnd002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1007,6 +1282,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_AND_0300
+     * @tc.name [JS-API8]Query.And().
+     * @tc.desc Test Js Api Query.And() testcase 003
+     */
     it('testAnd003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1022,6 +1302,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_AND_0400
+     * @tc.name [JS-API8]Query.And().
+     * @tc.desc Test Js Api Query.And() testcase 004
+     */
     it('testAnd004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1035,7 +1320,11 @@ describe('QueryTest', function() {
         done();
     })
 
-    // or
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_OR_0100
+     * @tc.name [JS-API8]Query.Or().
+     * @tc.desc Test Js Api Query.Or() testcase 001
+     */
     it('testOr001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1053,6 +1342,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_OR_0200
+     * @tc.name [JS-API8]Query.Or().
+     * @tc.desc Test Js Api Query.Or() testcase 002
+     */
     it('testOr002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1069,6 +1363,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_OR_0300
+     * @tc.name [JS-API8]Query.Or().
+     * @tc.desc Test Js Api Query.Or() testcase 003
+     */
     it('testOr003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1086,6 +1385,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_OR_0400
+     * @tc.name [JS-API8]Query.Or().
+     * @tc.desc Test Js Api Query.Or() testcase 004
+     */
     it('testOr004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1099,7 +1403,11 @@ describe('QueryTest', function() {
         done();
     })
 
-    // orderByAsc
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ORDERBYASC_0100
+     * @tc.name [JS-API8]Query.OrderByAsc().
+     * @tc.desc Test Js Api Query.OrderByAsc() testcase 001
+     */
     it('testOrderByAsc001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1116,6 +1424,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ORDERBYASC_0200
+     * @tc.name [JS-API8]Query.OrderByAsc().
+     * @tc.desc Test Js Api Query.OrderByAsc() testcase 002
+     */
     it('testOrderByAsc002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1131,6 +1444,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ORDERBYASC_0300
+     * @tc.name [JS-API8]Query.OrderByAsc().
+     * @tc.desc Test Js Api Query.OrderByAsc() testcase 003
+     */
     it('testOrderByAsc003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1144,6 +1462,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ORDERBYASC_0400
+     * @tc.name [JS-API8]Query.OrderByAsc().
+     * @tc.desc Test Js Api Query.OrderByAsc() testcase 004
+     */
     it('testOrderByAsc004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1157,7 +1480,11 @@ describe('QueryTest', function() {
         done();
     })
 
-    // orderByDesc
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ORDERBYDESC_0100
+     * @tc.name [JS-API8]Query.OrderByDesc().
+     * @tc.desc Test Js Api Query.OrderByDesc() testcase 001
+     */
     it('testOrderByDesc001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1174,6 +1501,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ORDERBYDESC_0200
+     * @tc.name [JS-API8]Query.OrderByDesc().
+     * @tc.desc Test Js Api Query.OrderByDesc() testcase 002
+     */
     it('testOrderByDesc002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1189,6 +1521,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ORDERBYDESC_0300
+     * @tc.name [JS-API8]Query.OrderByDesc().
+     * @tc.desc Test Js Api Query.OrderByDesc() testcase 003
+     */
     it('testOrderByDesc003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1202,6 +1539,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ORDERBYDESC_0400
+     * @tc.name [JS-API8]Query.OrderByDesc().
+     * @tc.desc Test Js Api Query.OrderByDesc() testcase 004
+     */
     it('testOrderByDesc004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1215,7 +1557,11 @@ describe('QueryTest', function() {
         done();
     })
 
-    // limit(total:number, offset:number)
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_LIMIT_0100
+     * @tc.name [JS-API8]Query.Limit().
+     * @tc.desc Test Js Api Query.Limit() testcase 001
+     */
     it('testLimit001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1232,6 +1578,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_LIMIT_0200
+     * @tc.name [JS-API8]Query.Limit().
+     * @tc.desc Test Js Api Query.Limit() testcase 002
+     */
     it('testLimit002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1248,6 +1599,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_LIMIT_0300
+     * @tc.name [JS-API8]Query.Limit().
+     * @tc.desc Test Js Api Query.Limit() testcase 003
+     */
     it('testLimit003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1263,6 +1619,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_LIMIT_0400
+     * @tc.name [JS-API8]Query.Limit().
+     * @tc.desc Test Js Api Query.Limit() testcase 004
+     */
     it('testLimit004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1276,6 +1637,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_LIMIT_0500
+     * @tc.name [JS-API8]Query.Limit().
+     * @tc.desc Test Js Api Query.Limit() testcase 005
+     */
     it('testLimit005', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1291,7 +1657,11 @@ describe('QueryTest', function() {
         done();
     })
 
-    // isNotNull
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ISNOTNULL_0100
+     * @tc.name [JS-API8]Query.IsNotNull().
+     * @tc.desc Test Js Api Query.IsNotNull() testcase 001
+     */
     it('testIsNotNull001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1307,6 +1677,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ISNOTNULL_0200
+     * @tc.name [JS-API8]Query.IsNotNull().
+     * @tc.desc Test Js Api Query.IsNotNull() testcase 002
+     */
     it('testIsNotNull002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1322,6 +1697,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ISNOTNULL_0300
+     * @tc.name [JS-API8]Query.IsNotNull().
+     * @tc.desc Test Js Api Query.IsNotNull() testcase 003
+     */
     it('testIsNotNull003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1335,6 +1715,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ISNOTNULL_0400
+     * @tc.name [JS-API8]Query.IsNotNull().
+     * @tc.desc Test Js Api Query.IsNotNull() testcase 004
+     */
     it('testIsNotNull004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1348,7 +1733,11 @@ describe('QueryTest', function() {
         done();
     })
 
-    // beginGroup
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_BEGINGROUP_0100
+     * @tc.name [JS-API8]Query.BeginGroup().
+     * @tc.desc Test Js Api Query.BeginGroup() testcase 001
+     */
     it('testBeginGroup001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1366,6 +1755,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_BEGINGROUP_0200
+     * @tc.name [JS-API8]Query.BeginGroup().
+     * @tc.desc Test Js Api Query.BeginGroup() testcase 002
+     */
     it('testBeginGroup002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1385,6 +1779,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_BEGINGROUP_0300
+     * @tc.name [JS-API8]Query.BeginGroup().
+     * @tc.desc Test Js Api Query.BeginGroup() testcase 003
+     */
     it('testBeginGroup003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1398,6 +1797,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_BEGINGROUP_0400
+     * @tc.name [JS-API8]Query.BeginGroup().
+     * @tc.desc Test Js Api Query.BeginGroup() testcase 004
+     */
     it('testBeginGroup004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1411,7 +1815,11 @@ describe('QueryTest', function() {
         done();
     })
 
-    // endGroup
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ENDGROUP_0100
+     * @tc.name [JS-API8]Query.EndGroup().
+     * @tc.desc Test Js Api Query.EndGroup() testcase 001
+     */
     it('testEndGroup001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1428,6 +1836,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ENDGROUP_0200
+     * @tc.name [JS-API8]Query.EndGroup().
+     * @tc.desc Test Js Api Query.EndGroup() testcase 002
+     */
     it('testEndGroup002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1445,6 +1858,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ENDGROUP_0300
+     * @tc.name [JS-API8]Query.EndGroup().
+     * @tc.desc Test Js Api Query.EndGroup() testcase 003
+     */
     it('testEndGroup003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1458,6 +1876,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_ENDGROUP_0400
+     * @tc.name [JS-API8]Query.EndGroup().
+     * @tc.desc Test Js Api Query.EndGroup() testcase 004
+     */
     it('testEndGroup004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1471,7 +1894,11 @@ describe('QueryTest', function() {
         done();
     })
 
-    // prefixKey
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_PREFIXKEY_0100
+     * @tc.name [JS-API8]Query.PrefixKey().
+     * @tc.desc Test Js Api Query.PrefixKey() testcase 001
+     */
     it('testPrefixKey001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1487,6 +1914,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_PREFIXKEY_0200
+     * @tc.name [JS-API8]Query.PrefixKey().
+     * @tc.desc Test Js Api Query.PrefixKey() testcase 002
+     */
     it('testPrefixKey002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1501,6 +1933,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_PREFIXKEY_0300
+     * @tc.name [JS-API8]Query.PrefixKey().
+     * @tc.desc Test Js Api Query.PrefixKey() testcase 003
+     */
     it('testPrefixKey003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1514,6 +1951,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_PREFIXKEY_0400
+     * @tc.name [JS-API8]Query.PrefixKey().
+     * @tc.desc Test Js Api Query.PrefixKey() testcase 004
+     */
     it('testPrefixKey004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1527,7 +1969,11 @@ describe('QueryTest', function() {
         done();
     })
 
-    // setSuggestIndex(index:string)
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_SETSUGGESTINDEX_0100
+     * @tc.name [JS-API8]Query.SetSuggestIndex().
+     * @tc.desc Test Js Api Query.SetSuggestIndex() testcase 001
+     */
     it('testSetSuggestIndex001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1543,6 +1989,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_SETSUGGESTINDEX_0200
+     * @tc.name [JS-API8]Query.SetSuggestIndex().
+     * @tc.desc Test Js Api Query.SetSuggestIndex() testcase 002
+     */
     it('testSetSuggestIndex002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1557,6 +2008,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_SETSUGGESTINDEX_0300
+     * @tc.name [JS-API8]Query.SetSuggestIndex().
+     * @tc.desc Test Js Api Query.SetSuggestIndex() testcase 003
+     */
     it('testSetSuggestIndex003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1570,6 +2026,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_SETSUGGESTINDEX_0400
+     * @tc.name [JS-API8]Query.SetSuggestIndex().
+     * @tc.desc Test Js Api Query.SetSuggestIndex() testcase 004
+     */
     it('testSetSuggestIndex004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1583,7 +2044,11 @@ describe('QueryTest', function() {
         done();
     })
 
-    // deviceId
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_DEVICEID_0100
+     * @tc.name [JS-API8]Query.DeviceId().
+     * @tc.desc Test Js Api Query.DeviceId() testcase 001
+     */
     it('testDeviceId001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1600,6 +2065,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_DEVICEID_0200
+     * @tc.name [JS-API8]Query.DeviceId().
+     * @tc.desc Test Js Api Query.DeviceId() testcase 002
+     */
     it('testDeviceId002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1615,6 +2085,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_DEVICEID_0300
+     * @tc.name [JS-API8]Query.DeviceId().
+     * @tc.desc Test Js Api Query.DeviceId() testcase 003
+     */
     it('testDeviceId003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1628,6 +2103,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_DEVICEID_0400
+     * @tc.name [JS-API8]Query.DeviceId().
+     * @tc.desc Test Js Api Query.DeviceId() testcase 004
+     */
     it('testDeviceId004', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1641,7 +2121,11 @@ describe('QueryTest', function() {
         done();
     })
 
-    // getSqlLike
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_GETSQLLIKE_0100
+     * @tc.name [JS-API8]Query.GetSqlLike().
+     * @tc.desc Test Js Api Query.GetSqlLike() testcase 001
+     */
     it('testGetSqlLike001', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1659,6 +2143,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_GETSQLLIKE_0200
+     * @tc.name [JS-API8]Query.GetSqlLike().
+     * @tc.desc Test Js Api Query.GetSqlLike() testcase 002
+     */
     it('testGetSqlLike002', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1680,6 +2169,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_GETSQLLIKE_0300
+     * @tc.name [JS-API8]Query.GetSqlLike().
+     * @tc.desc Test Js Api Query.GetSqlLike() testcase 003
+     */
     it('testGetSqlLike003', 0, async function(done) {
         try {
             let query = new ddm.Query();
@@ -1694,6 +2188,11 @@ describe('QueryTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_GETSQLLIKE_0400
+     * @tc.name [JS-API8]Query.GetSqlLike().
+     * @tc.desc Test Js Api Query.GetSqlLike() testcase 004
+     */
     it('testGetSqlLike004', 0, async function(done) {
         try {
             let query = new ddm.Query();
