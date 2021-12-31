@@ -31,6 +31,30 @@ export default function listItemJsunit() {
 
   describe('listItemTest', function () {
 
+    beforeEach(async function{
+      let options = {
+        uri: 'pages/ListItem',
+      }
+     try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get ListItem state success " + JSON.stringify(pages));
+        if(!("ListItem" == pages.name)){
+          console.info("get ListItem state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push ListItem page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push ListItem page error " + JSON.stringify(result));
+      }
+      await sleep(2)
+    });
+
+    afterEach(async function{
+      await sleep(3)
+      console.info("await 3s ");
+    });
+
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0390
      * @tc.name      listItemTest001
@@ -38,15 +62,6 @@ export default function listItemJsunit() {
      */
     it('listItemTest001', 0, async function (done) {
       console.info('++++++++++++++++ ListItem TestCase 1 START ++++++++++++++++');
-      let options = {
-        uri: 'pages/ListItem',
-      }
-      try {
-        let result = await router.push(options)
-        console.info(JSON.stringify(result));
-      } catch (err) {
-        console.error(JSON.stringify(result));
-      }
       await sleep(1)
       let strJson = getInspectorByKey('listitem');
       console.log(JSON.stringify(strJson))

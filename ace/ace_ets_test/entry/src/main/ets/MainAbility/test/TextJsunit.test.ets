@@ -31,6 +31,30 @@ export default function textJsunit() {
 
   describe('textTest', function () {
 
+    beforeEach(async function{
+      let options = {
+        uri: 'pages/Text',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get Text state success " + JSON.stringify(pages));
+        if(!("Text" == pages.name)){
+          console.info("get Text state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push Text page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push Text page error " + JSON.stringify(result));
+      }
+      await sleep(2)
+    });
+
+    afterEach(async function{
+      await sleep(3)
+      console.info("await 3s ");
+    });
+
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0540
      * @tc.name      textTest001
@@ -38,15 +62,6 @@ export default function textJsunit() {
      */
     it('textTest001', 0, async function (done) {
       console.info('testGetInspectorByKey START');
-      let options = {
-        uri: 'pages/Text',
-      }
-      try {
-        let result = await router.push(options)
-        console.info("push text page success " + JSON.stringify(result));
-      } catch (err) {
-        console.error("push text page error " + JSON.stringify(result));
-      }
       await sleep(2)
       let strJson = getInspectorByKey('Text');
       let obj = JSON.parse(strJson);

@@ -30,6 +30,30 @@ export default function videoJsunit() {
   }
   describe('VideoAppInfoTest', function () {
 
+    beforeEach(async function{
+      let options = {
+        uri: 'pages/Video',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get Video state success " + JSON.stringify(pages));
+        if(!("Video" == pages.name)){
+          console.info("get Video state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push Video page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push Video page error " + JSON.stringify(result));
+      }
+      await sleep(2)
+    });
+
+    afterEach(async function{
+      await sleep(3)
+      console.info("await 3s ");
+    });
+
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0630
      * @tc.name      videoAppInfoTest001
@@ -37,15 +61,6 @@ export default function videoJsunit() {
      */
     it('videoAppInfoTest001', 0, async function (done) {
       console.info('videoAppInfoTest001 START');
-      let options = {
-        uri: 'pages/Video',
-      }
-      try {
-        let result = await router.push(options)
-        console.info("push video page success " + JSON.stringify(result));
-      } catch (err) {
-        console.error("push video page error " + JSON.stringify(result));
-      }
       await sleep(1)
       let strJson = getInspectorByKey('video');
       let obj = JSON.parse(strJson);

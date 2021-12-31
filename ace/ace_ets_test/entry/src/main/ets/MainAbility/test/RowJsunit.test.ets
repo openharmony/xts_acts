@@ -30,6 +30,30 @@ export default function rowJsunit() {
   }
   describe('rowTest', function () {
 
+    beforeEach(async function{
+      let options = {
+        uri: 'pages/Row',
+      }
+       try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get Row state success " + JSON.stringify(pages));
+        if(!("Row" == pages.name)){
+          console.info("get Row state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push Row page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push Row page error " + JSON.stringify(result));
+      }
+      await sleep(2)
+    });
+
+    afterEach(async function{
+      await sleep(3)
+      console.info("await 3s ");
+    });
+
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0490
      * @tc.name      rowTest001
@@ -37,15 +61,6 @@ export default function rowJsunit() {
      */
     it('rowTest001', 0, async function (done) {
       console.info('++++++++++++++++ Row TestCase 1 START ++++++++++++++++');
-      let options = {
-        uri: 'pages/Row',
-      }
-      try {
-        let result = await router.push(options)
-        console.info( JSON.stringify(result));
-      } catch (err) {
-        console.error(JSON.stringify(result));
-      }
       await sleep(1)
       let strJson = getInspectorByKey('row');
       let obj = JSON.parse(strJson);

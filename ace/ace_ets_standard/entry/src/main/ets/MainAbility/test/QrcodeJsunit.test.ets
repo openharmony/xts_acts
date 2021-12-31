@@ -30,6 +30,29 @@ export default function qrcodeJsunit() {
   }
 
   describe('QrcodeTest', function () {
+    beforeEach(async function{
+      let options = {
+        uri: 'pages/Qrcode',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get Qrcode state success " + JSON.stringify(pages));
+        if(!("Qrcode" == pages.name)){
+          console.info("get Qrcode state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push Qrcode page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push Qrcode page error " + JSON.stringify(result));
+      }
+      await sleep(2)
+    });
+
+    afterEach(async function{
+      await sleep(3)
+      console.info("await 3s ");
+    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0980
@@ -38,16 +61,6 @@ export default function qrcodeJsunit() {
      */
     it('testGetQrcodeAttr010', 0, async function (done) {
       console.info('testGetQrcodeAttr START');
-      let options = {
-        uri: 'pages/Qrcode',
-      }
-      try {
-        let result = await router.push(options)
-        console.info("push Qrcode page success " + JSON.stringify(result));
-      } catch (err) {
-        console.error("push Qrcode page error " + JSON.stringify(result));
-      }
-      await sleep(1)
       let strJson = getInspectorByKey('qrcode');
       let obj = JSON.parse(strJson);
       console.info("Qrcode component obj is: " + JSON.stringify(obj));

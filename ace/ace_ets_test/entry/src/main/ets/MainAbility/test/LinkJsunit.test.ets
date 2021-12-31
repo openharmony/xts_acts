@@ -32,6 +32,30 @@ export default function linkJsunit() {
 
   describe('linkTest', function () {
 
+    beforeEach(async function{
+      let options = {
+        uri: 'pages/Link',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get Link state success " + JSON.stringify(pages));
+        if(!("Link" == pages.name)){
+          console.info("get Link state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push Link page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push Link page error " + JSON.stringify(result));
+      }
+      await sleep(2)
+    });
+
+    afterEach(async function{
+      await sleep(3)
+      console.info("await 3s ");
+    });
+
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0370
      * @tc.name      linkTest001
@@ -39,15 +63,6 @@ export default function linkJsunit() {
      */
     it('linkTest001', 0, async function (done) {
       console.info('linkTest001 START');
-      let options = {
-        uri: 'pages/Link',
-      }
-      try {
-        let result = await router.push(options)
-        console.info("push link0 page success " + JSON.stringify(result));
-      } catch (err) {
-        console.error("push link0 page error " + JSON.stringify(result));
-      }
       await sleep(1)
       let strJson = getInspectorByKey('Button');
       let obj = JSON.parse(strJson);

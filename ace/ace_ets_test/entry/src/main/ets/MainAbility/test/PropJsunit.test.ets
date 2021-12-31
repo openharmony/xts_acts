@@ -31,6 +31,30 @@ export default function propJsunit() {
 
   describe('propTest', function () {
 
+    beforeEach(async function{
+      let options = {
+        uri: 'pages/Prop',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get Prop state success " + JSON.stringify(pages));
+        if(!("Prop" == pages.name)){
+          console.info("get Prop state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push Prop page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push Prop page error " + JSON.stringify(result));
+      }
+      await sleep(2)
+    });
+
+    afterEach(async function{
+      await sleep(3)
+      console.info("await 3s ");
+    });
+
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0470
      * @tc.name      propTest001
@@ -38,15 +62,6 @@ export default function propJsunit() {
      */
     it('propTest001', 0, async function (done) {
       console.info('propTest001 START');
-      let options = {
-        uri: 'pages/Prop',
-      }
-      try {
-        let result = await router.push(options)
-        console.info("push prop0 page success " + JSON.stringify(result));
-      } catch (err) {
-        console.error("push prop0 page error " + JSON.stringify(result));
-      }
       await sleep(1)
       let strJson = getInspectorByKey('Text001');
       let obj = JSON.parse(strJson);

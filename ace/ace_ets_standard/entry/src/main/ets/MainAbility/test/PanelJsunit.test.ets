@@ -30,7 +30,29 @@ export default function panelJsunit() {
   }
 
   describe('panelTest', function () {
-
+    beforeEach(async function{
+      let options = {
+        uri: 'pages/Panel',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get Panel state success " + JSON.stringify(pages));
+        if(!("Panel" == pages.name)){
+          console.info("get Panel state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push Panel page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error(JSON.stringify(result));
+      }  
+      await sleep(1)
+    });
+    
+    afterEach(async function{
+      await sleep(3)
+      console.info("await 3s ");
+    });
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0930
      * @tc.name      testPanelGetInspectorByKey010
@@ -38,16 +60,6 @@ export default function panelJsunit() {
      */
     it('testPanelGetInspectorByKey010', 0, async function (done) {
       console.info('++++++++++++++++ Panel TestCase 1 START ++++++++++++++++');
-      let options = {
-        uri: 'pages/Panel',
-      }
-      try {
-        let result = await router.push(options)
-        console.info(JSON.stringify(result));
-      } catch (err) {
-        console.error(JSON.stringify(result));
-      }
-      await sleep(1)
       let strJson = getInspectorByKey('panel');
       let obj = JSON.parse(strJson);
       console.log(JSON.stringify(obj.$type))
@@ -75,7 +87,6 @@ export default function panelJsunit() {
      */
     it('testPanelGetInspectorByKey020', 0, async function (done) {
       console.info('++++++++++++++++ Panel TestCase 2 START ++++++++++++++++');
-      await sleep(1)
       let strJson = getInspectorByKey('panel2');
       let obj = JSON.parse(strJson);
       console.log(JSON.stringify(obj.$type))
@@ -97,7 +108,6 @@ export default function panelJsunit() {
      */
     it('testPanelGetInspectorByKey030', 0, async function (done) {
       console.info('++++++++++++++++ Panel TestCase 3 START ++++++++++++++++');
-      await sleep(1)
       let strJson = getInspectorByKey('panel3');
       let obj = JSON.parse(strJson);
       console.log(JSON.stringify(obj.$type))

@@ -31,6 +31,30 @@ export default function gridItemJsunit() {
 
   describe('gridItemTest', function () {
 
+    beforeEach(async function{
+      let options = {
+        uri: 'pages/GridItem',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get GridItem state success " + JSON.stringify(pages));
+        if(!("GridItem" == pages.name)){
+          console.info("get GridItem state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push GridItem page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push GridItem page error " + JSON.stringify(result));
+      }
+      await sleep(2)
+    });
+
+    afterEach(async function{
+      await sleep(3)
+      console.info("await 3s ");
+    });
+
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0340
      * @tc.name      gridItemTest001
@@ -38,15 +62,6 @@ export default function gridItemJsunit() {
      */
     it('gridItemTest001', 0, async function (done) {
       console.info('gridItemTest001 START');
-      let options = {
-        uri: 'pages/GridItem',
-      }
-      try {
-        let result = await router.push(options)
-        console.info( JSON.stringify(result));
-      } catch (err) {
-        console.error(JSON.stringify(result));
-      }
       await sleep(1)
       let strJson = getInspectorByKey('GridItem1');
       let obj = JSON.parse(strJson);
