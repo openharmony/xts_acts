@@ -30,6 +30,30 @@ export default function imageJsunit() {
   }
 
   describe('imageTest', function () {
+    beforeEach(async function{
+      let options = {
+        uri: 'pages/Image',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get Image state success " + JSON.stringify(pages));
+        if(!("Image" == pages.name)){
+          console.info("get Image state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push Image page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push image page error " + JSON.stringify(result));
+      }
+      await sleep(1)
+    });
+
+    afterEach(async function{
+      await sleep(3)
+      console.info("await 3s ");
+    });
+
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0880
      * @tc.name      testGetImageAttr010
@@ -37,16 +61,6 @@ export default function imageJsunit() {
      */
     it('testGetImageAttr010', 0, async function (done) {
       console.info('testGetImageAttr1 START');
-      let options = {
-        uri: 'pages/Image',
-      }
-      try {
-        let result = await router.push(options)
-        console.info("push image page success " + JSON.stringify(result));
-      } catch (err) {
-        console.error("push image page error " + JSON.stringify(result));
-      }
-      await sleep(1)
       let strJson = getInspectorByKey('image1');
       let obj = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
@@ -73,7 +87,6 @@ export default function imageJsunit() {
      */
     it('testGetImageAttr020', 0, async function (done) {
       console.info('testGetImageAttr2 START');
-      await sleep(1)
       let strJson = getInspectorByKey('image2');
       let obj = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
@@ -94,7 +107,6 @@ export default function imageJsunit() {
      */
     it('testGetImageAttr030', 0, async function (done) {
       console.info('testGetImageAttr3 START');
-      await sleep(1)
       let strJson = getInspectorByKey('image3');
       let obj = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
@@ -114,7 +126,6 @@ export default function imageJsunit() {
      */
     it('testGetImageAttr040', 0, async function (done) {
       console.info('testGetImageAttr4 START');
-      await sleep(1)
       let strJson = getInspectorByKey('image4');
       let obj = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
@@ -134,7 +145,6 @@ export default function imageJsunit() {
      */
     it('testGetImageAttr050', 0, async function (done) {
       console.info('testGetImageAttr5 START');
-      await sleep(1)
       let strJson = getInspectorByKey('image5');
       let obj = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));

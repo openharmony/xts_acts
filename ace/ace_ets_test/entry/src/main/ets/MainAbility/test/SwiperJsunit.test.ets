@@ -54,6 +54,30 @@ export default function swiperJsunit() {
 
   describe('swiperTest', function () {
 
+    beforeEach(async function{
+      let options = {
+        uri: 'pages/Swiper',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get Swiper state success " + JSON.stringify(pages));
+        if(!("Swiper" == pages.name)){
+          console.info("get Swiper state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push Swiper page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push Swiper page error " + JSON.stringify(result));
+      }
+      await sleep(2)
+    });
+
+    afterEach(async function{
+      await sleep(3)
+      console.info("await 3s ");
+    });
+
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0500
      * @tc.name      swiperTest001
@@ -61,15 +85,6 @@ export default function swiperJsunit() {
      */
     it('swiperTest001', 0, async function (done) {
       console.info('++++++++++++++++ Swiper TestCase 1 START ++++++++++++++++');
-      let options = {
-        uri: 'pages/Swiper',
-      }
-      try {
-        let result = await router.push(options)
-        console.info( JSON.stringify(result));
-      } catch (err) {
-        console.error(JSON.stringify(result));
-      }
       await sleep(1)
       let strJson = getInspectorByKey('swiper');
       let obj = JSON.parse(strJson);

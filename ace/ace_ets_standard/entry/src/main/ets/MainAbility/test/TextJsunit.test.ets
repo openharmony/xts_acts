@@ -30,7 +30,29 @@ export default function textJsunit() {
   }
 
   describe('textTest', function () {
+    beforeEach(async function{
+      let options = {
+        uri: 'pages/Text',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get Text state success " + JSON.stringify(pages));
+        if(!("Text" == pages.name)){
+          console.info("get Text state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push Text page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push Text page error " + JSON.stringify(result));
+      }
+      await sleep(2)
+    });
 
+    afterEach(async function{
+      await sleep(3)
+      console.info("await 3s ");
+    });
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_1200
      * @tc.name      textGetInspectorByKey010
@@ -38,16 +60,7 @@ export default function textJsunit() {
      */
     it('textGetInspectorByKey010', 0, async function (done) {
       console.info('testGetInspectorByKey START');
-      let options = {
-        uri: 'pages/Text',
-      }
-      try {
-        let result = await router.push(options)
-        console.info("push text page success " + JSON.stringify(result));
-      } catch (err) {
-        console.error("push text page error " + JSON.stringify(result));
-      }
-      await sleep(2)
+      await sleep(3)
       let strJson = getInspectorByKey('Text');
       let obj = JSON.parse(strJson);
       console.info("cd text component obj is: " + JSON.stringify(obj));
@@ -147,7 +160,6 @@ export default function textJsunit() {
      * @tc.desc      aceEtsTest
      */
     it('textGetInspectorByKey020', 0, async function (done) {
-      await sleep(2)
       let strJson = getInspectorByKey('Text1');
       let obj = JSON.parse(strJson);
       console.info("cd text1 component obj is: " + JSON.stringify(obj));
@@ -191,7 +203,6 @@ export default function textJsunit() {
      * @tc.desc      aceEtsTest
      */
     it('textGetInspectorByKey030', 0, async function (done) {
-      await sleep(2)
       let strJson = getInspectorByKey('Text2');
       let obj = JSON.parse(strJson);
       console.info("cd text2 component obj is: " + JSON.stringify(obj));
@@ -231,7 +242,6 @@ export default function textJsunit() {
      * @tc.desc      aceEtsTest
      */
     it('textGetInspectorByKey040', 0, async function (done) {
-      await sleep(2)
       let strJson = getInspectorByKey('Text3');
       let obj = JSON.parse(strJson);
       console.info("cd text3 component obj is: " + JSON.stringify(obj));
@@ -257,7 +267,6 @@ export default function textJsunit() {
      * @tc.desc      aceEtsTest
      */
     it('textGetInspectorByKey050', 0, async function (done) {
-      await sleep(2)
       let strJson = getInspectorByKey('Text4');
       let obj = JSON.parse(strJson);
       console.info("cd text4 component obj is: " + JSON.stringify(obj));
@@ -279,7 +288,6 @@ export default function textJsunit() {
      * @tc.desc      aceEtsTest
      */
     it('textGetInspectorByKey060', 0, async function (done) {
-      await sleep(2)
       let strJson = getInspectorByKey('Text5');
       let obj = JSON.parse(strJson);
       console.info("cd text5 component obj is: " + JSON.stringify(obj));
@@ -301,7 +309,6 @@ export default function textJsunit() {
      * @tc.desc      aceEtsTest
      */
     it('textGetInspectorByKey070', 0, async function (done) {
-      await sleep(2)
       let strJson = getInspectorByKey('Text6');
       let obj = JSON.parse(strJson);
       console.info("cd text6 component obj is: " + JSON.stringify(obj));
@@ -319,7 +326,6 @@ export default function textJsunit() {
      * @tc.desc      aceEtsTest
      */
     it('textGetInspectorByKey080', 0, async function (done) {
-      await sleep(2)
       let strJson = getInspectorByKey('Text7');
       let obj = JSON.parse(strJson);
       console.info("cd text7 component obj is: " + JSON.stringify(obj));
@@ -337,7 +343,6 @@ export default function textJsunit() {
      * @tc.desc      aceEtsTest
      */
     it('textGetInspectorByKey090', 0, async function (done) {
-      await sleep(2)
       let strJson = getInspectorByKey('Text8');
       let obj = JSON.parse(strJson);
       console.info("cd text8 component obj is: " + JSON.stringify(obj));

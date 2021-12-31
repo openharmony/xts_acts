@@ -30,6 +30,29 @@ export default function badgeJsunit() {
   }
 
   describe('badgeTest', function () {
+    beforeEach(async function{
+      let options = {
+        uri: 'pages/Badge',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get Badge state success " + JSON.stringify(pages));
+        if(!("Badge" == pages.name)){
+          console.info("get Badge state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push Badge page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push Badge page error " + JSON.stringify(result));
+      }
+      await sleep(2)
+    });
+
+    afterEach(async function{
+      await sleep(3)
+      console.info("await 3s ");
+    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0600
@@ -38,16 +61,6 @@ export default function badgeJsunit() {
      */
     it('testBadge010', 0, async function (done) {
       console.info('new Badge0 START');
-      let options = {
-        uri: 'pages/Badge',
-      }
-      try {
-        let result = await router.push(options)
-        console.info("push badge page success " + JSON.stringify(result));
-      } catch (err) {
-        console.error("push badge page error " + JSON.stringify(result));
-      }
-      await sleep(1)
       let strJson = getInspectorByKey('badge');
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Badge');
@@ -91,7 +104,6 @@ export default function badgeJsunit() {
      */
     it('testBadge030', 0, async function (done) {
       console.info('new Badge2 START');
-
       let strJson = getInspectorByKey('badge2');
       let obj = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));

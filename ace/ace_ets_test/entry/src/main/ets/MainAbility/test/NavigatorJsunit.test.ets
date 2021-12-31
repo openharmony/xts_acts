@@ -31,6 +31,30 @@ export default function navigatorJsunit() {
 
   describe('navigatorTest', function () {
 
+    beforeEach(async function{
+      let options = {
+        uri: 'pages/Navigator',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get Navigator state success " + JSON.stringify(pages));
+        if(!("Navigator" == pages.name)){
+          console.info("get Navigator state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push Navigator page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push Navigator page error " + JSON.stringify(result));
+      }
+      await sleep(2)
+    });
+
+    afterEach(async function{
+      await sleep(3)
+      console.info("await 3s ");
+    });
+
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0420
      * @tc.name      navigatorTest001
@@ -38,15 +62,6 @@ export default function navigatorJsunit() {
      */
     it('navigatorTest001', 0, async function (done) {
       console.info('++++++++++++++++ Navigator TestCase 1 START ++++++++++++++++');
-      let options = {
-        uri: 'pages/Navigator',
-      }
-      try {
-        let result = await router.push(options)
-        console.info( JSON.stringify(result));
-      } catch (err) {
-        console.error(JSON.stringify(result));
-      }
       await sleep(1)
       let strJson = getInspectorByKey('navigator');
       let obj = JSON.parse(strJson);

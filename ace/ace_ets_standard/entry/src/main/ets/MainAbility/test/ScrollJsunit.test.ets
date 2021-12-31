@@ -30,6 +30,29 @@ export default function ScrollJsunit() {
   }
 
   describe('scrollTest', function () {
+    beforeEach(async function{
+      let options = {
+        uri: 'pages/Scroll',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get Scroll state success " + JSON.stringify(pages));
+        if(!("Scroll" == pages.name)){
+          console.info("get Scroll state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push Scroll page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push Scroll page error " + JSON.stringify(result));
+      }
+      await sleep(2)
+    });
+
+    afterEach(async function{
+      await sleep(3)
+      console.info("await 3s ");
+    });
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_1020
      * @tc.name      testScrollGetInspectorByKey010
@@ -37,16 +60,6 @@ export default function ScrollJsunit() {
      */
     it('testScrollGetInspectorByKey010', 0, async function (done) {
       console.info('testGetInspectorByKey START');
-      let options = {
-        uri: 'pages/Scroll',
-      }
-      try {
-        let result = await router.push(options)
-        console.info("push scroll page success " + JSON.stringify(result));
-      } catch (err) {
-        console.error("push scroll page error " + JSON.stringify(result));
-      }
-      await sleep(1)
       let strJson = getInspectorByKey('scroll');
       let obj = JSON.parse(strJson);
       console.info("cd scroll component obj is: " + JSON.stringify(obj));
@@ -69,7 +82,6 @@ export default function ScrollJsunit() {
      * @tc.desc      aceEtsTest
      */
     it('testScrollGetInspectorByKey020', 0, async function (done) {
-      await sleep(1)
       let strJson = getInspectorByKey('scroll1');
       let obj = JSON.parse(strJson);
       console.info("cd scroll1 component obj is: " + JSON.stringify(obj));
@@ -87,7 +99,6 @@ export default function ScrollJsunit() {
      * @tc.desc      aceEtsTest
      */
     it('testScrollGetInspectorByKey030', 0, async function (done) {
-      await sleep(1)
       let strJson = getInspectorByKey('scroll2');
       let obj = JSON.parse(strJson);
       console.info("cd scroll2 component obj is: " + JSON.stringify(obj));

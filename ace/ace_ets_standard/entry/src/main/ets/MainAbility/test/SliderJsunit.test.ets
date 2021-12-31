@@ -30,7 +30,29 @@ export default function sliderJsunit() {
   }
 
   describe('SliderTest', function () {
+    beforeEach(async function{
+      let options = {
+        uri: 'pages/Slider',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get Slider state success " + JSON.stringify(pages));
+        if(!("Slider" == pages.name)){
+          console.info("get Slider state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push Slider page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push Slider page error " + JSON.stringify(result));
+      }
+      await sleep(2)
+    });
 
+    afterEach(async function{
+      await sleep(3)
+      console.info("await 3s ");
+    });
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_1060
      * @tc.name      testGetSliderAttr010
@@ -38,16 +60,6 @@ export default function sliderJsunit() {
      */
     it('testGetSliderAttr010', 0, async function (done) {
       console.info('testGetSliderAttr1 START');
-      let options = {
-        uri: 'pages/Slider',
-      }
-      try {
-        let result = await router.push(options)
-        console.info("push Slider page success " + JSON.stringify(result));
-      } catch (err) {
-        console.error("push Slider page error " + JSON.stringify(result));
-      }
-      await sleep(1)
       let strJson = getInspectorByKey('slider1');
       let obj = JSON.parse(strJson);
       console.info("component obj is  Slider: " + JSON.stringify(obj));
@@ -82,7 +94,6 @@ export default function sliderJsunit() {
      */
     it('testGetSliderAttr020', 0, async function (done) {
       console.info('testGetSliderAttr2 START');
-      await sleep(1)
       let strJson = getInspectorByKey('slider2');
       let obj = JSON.parse(strJson);
       console.info("component obj is  Slider: " + JSON.stringify(obj));

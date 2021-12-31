@@ -31,6 +31,30 @@ export default function hyperlinkJsunit() {
 
   describe('hyperLinkTest', function () {
 
+    beforeEach(async function{
+      let options = {
+        uri: 'pages/HyperLink',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get HyperLink state success " + JSON.stringify(pages));
+        if(!("HyperLink" == pages.name)){
+          console.info("get HyperLink state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push HyperLink page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push HyperLink page error " + JSON.stringify(result));
+      }
+      await sleep(2)
+    });
+
+    afterEach(async function{
+      await sleep(3)
+      console.info("await 3s ");
+    });
+
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0360
      * @tc.name      hyperLinkTest001
@@ -38,15 +62,6 @@ export default function hyperlinkJsunit() {
      */
     it('hyperLinkTest001', 0, async function (done) {
       console.info('++++++++++++++++ Hyperlink TestCase 1 START ++++++++++++++++');
-      let options = {
-        uri: 'pages/HyperLink',
-      }
-      try {
-        let result = await router.push(options)
-        console.info( JSON.stringify(result));
-      } catch (err) {
-        console.error(JSON.stringify(result));
-      }
       await sleep(1)
       let strJson = getInspectorByKey('hyperlink1');
       let obj = JSON.parse(strJson);

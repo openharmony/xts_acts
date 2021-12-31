@@ -31,6 +31,30 @@ export default function gridJsunit() {
 
   describe('gridTest', function () {
 
+    beforeEach(async function{
+      let options = {
+        uri: 'pages/Grid',
+      }
+     try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get Grid state success " + JSON.stringify(pages));
+        if(!("Grid" == pages.name)){
+          console.info("get Grid state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push Grid page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push Grid page error " + JSON.stringify(result));
+      }
+      await sleep(2)
+    });
+
+    afterEach(async function{
+      await sleep(3)
+      console.info("await 3s ");
+    });
+
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0350
      * @tc.name      gridItemTest001
@@ -38,15 +62,6 @@ export default function gridJsunit() {
      */
     it('gridTest001', 0, async function (done) {
       console.info('gridTest001 START');
-      let options = {
-        uri: 'pages/Grid',
-      }
-      try {
-        let result = await router.push(options)
-        console.info( JSON.stringify(result));
-      } catch (err) {
-        console.error(JSON.stringify(result));
-      }
       await sleep(1)
       let strJson = getInspectorByKey('Grid');
       let obj = JSON.parse(strJson);
