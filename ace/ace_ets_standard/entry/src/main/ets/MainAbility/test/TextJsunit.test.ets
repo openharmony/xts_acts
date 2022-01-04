@@ -30,7 +30,7 @@ export default function textJsunit() {
   }
 
   describe('textTest', function () {
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/Text',
       }
@@ -47,11 +47,12 @@ export default function textJsunit() {
         console.error("push Text page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("Text after each called");
     });
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_1200

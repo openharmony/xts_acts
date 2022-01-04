@@ -29,8 +29,7 @@ export default function rowJsunit() {
     })
   }
   describe('rowTest', function () {
-
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/Row',
       }
@@ -47,11 +46,12 @@ export default function rowJsunit() {
         console.error("push Row page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("Row after each called");
     });
 
     /**

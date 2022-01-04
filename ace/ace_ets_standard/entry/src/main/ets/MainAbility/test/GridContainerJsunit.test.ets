@@ -30,7 +30,7 @@ export default function gridContainerJsunit() {
   }
 
   describe('gridContainerTest', function () {
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/GridContainer',
       }
@@ -47,11 +47,12 @@ export default function gridContainerJsunit() {
         console.error("push GridContainer page error " + JSON.stringify(result));
       }
       await sleep(1)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("GridContainer after each called");
     });
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0830

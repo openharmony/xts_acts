@@ -30,7 +30,7 @@ export default function StackJsunit() {
   }
 
   describe('StackTest', function () {
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/Stack',
       }
@@ -47,11 +47,12 @@ export default function StackJsunit() {
         console.error("push Stack page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("Stack after each called");
     });
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_1110

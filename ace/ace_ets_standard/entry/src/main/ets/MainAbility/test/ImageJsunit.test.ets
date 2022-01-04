@@ -30,7 +30,7 @@ export default function imageJsunit() {
   }
 
   describe('imageTest', function () {
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/Image',
       }
@@ -47,11 +47,12 @@ export default function imageJsunit() {
         console.error("push image page error " + JSON.stringify(result));
       }
       await sleep(1)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("Image after each called");
     });
 
     /**

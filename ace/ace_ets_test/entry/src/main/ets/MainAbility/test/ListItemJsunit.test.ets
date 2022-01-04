@@ -31,7 +31,7 @@ export default function listItemJsunit() {
 
   describe('listItemTest', function () {
 
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/ListItem',
       }
@@ -48,11 +48,12 @@ export default function listItemJsunit() {
         console.error("push ListItem page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("ListItem after each called");
     });
 
     /**

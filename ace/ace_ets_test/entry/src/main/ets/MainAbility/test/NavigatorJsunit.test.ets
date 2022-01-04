@@ -31,7 +31,7 @@ export default function navigatorJsunit() {
 
   describe('navigatorTest', function () {
 
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/Navigator',
       }
@@ -48,11 +48,12 @@ export default function navigatorJsunit() {
         console.error("push Navigator page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("Navigator after each called");
     });
 
     /**

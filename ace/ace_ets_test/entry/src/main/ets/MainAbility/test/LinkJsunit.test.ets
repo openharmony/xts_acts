@@ -32,7 +32,7 @@ export default function linkJsunit() {
 
   describe('linkTest', function () {
 
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/Link',
       }
@@ -49,11 +49,12 @@ export default function linkJsunit() {
         console.error("push Link page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("Link after each called");
     });
 
     /**

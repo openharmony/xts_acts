@@ -30,7 +30,7 @@ export default function datapanelJsunit() {
   }
 
   describe('dataPanelTest', function () {
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/DataPanel',
       }
@@ -47,11 +47,12 @@ export default function datapanelJsunit() {
         console.error("push DataPanel page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("DataPanel after each called");
     });
 
     /**

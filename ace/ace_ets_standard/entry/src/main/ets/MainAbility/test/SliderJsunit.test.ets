@@ -30,7 +30,7 @@ export default function sliderJsunit() {
   }
 
   describe('SliderTest', function () {
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/Slider',
       }
@@ -47,11 +47,12 @@ export default function sliderJsunit() {
         console.error("push Slider page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("Slider after each called");
     });
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_1060

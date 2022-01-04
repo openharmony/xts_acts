@@ -31,7 +31,7 @@ export default function listJsunit() {
 
   describe('listTest', function () {
 
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/List',
       }
@@ -48,11 +48,12 @@ export default function listJsunit() {
         console.error("push List page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("List after each called");
     });
 
     /**

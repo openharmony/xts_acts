@@ -30,7 +30,7 @@ export default function videoJsunit() {
   }
   describe('VideoAppInfoTest', function () {
 
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/Video',
       }
@@ -47,11 +47,12 @@ export default function videoJsunit() {
         console.error("push Video page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      console.info("Video after each called");
+      await sleep(1)
     });
 
     /**

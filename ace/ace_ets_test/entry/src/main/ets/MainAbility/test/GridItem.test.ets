@@ -31,7 +31,7 @@ export default function gridItemJsunit() {
 
   describe('gridItemTest', function () {
 
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/GridItem',
       }
@@ -48,11 +48,12 @@ export default function gridItemJsunit() {
         console.error("push GridItem page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("GridItem after each called");
     });
 
     /**

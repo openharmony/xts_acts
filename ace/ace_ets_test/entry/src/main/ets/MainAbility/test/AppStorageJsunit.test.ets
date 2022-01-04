@@ -31,7 +31,7 @@ export default function appStorageJsunit() {
 
   describe('appStorageTest', function () {
 
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/AppStorage',
       }
@@ -48,11 +48,12 @@ export default function appStorageJsunit() {
         console.error("push AppStorage page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("AppStorage after each called");
     });
 
 

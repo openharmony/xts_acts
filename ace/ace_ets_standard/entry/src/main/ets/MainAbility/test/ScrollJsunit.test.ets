@@ -30,7 +30,7 @@ export default function ScrollJsunit() {
   }
 
   describe('scrollTest', function () {
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/Scroll',
       }
@@ -47,11 +47,12 @@ export default function ScrollJsunit() {
         console.error("push Scroll page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("Scroll after each called");
     });
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_1020

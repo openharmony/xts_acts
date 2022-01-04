@@ -30,7 +30,7 @@ export default function panelJsunit() {
   }
 
   describe('panelTest', function () {
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/Panel',
       }
@@ -47,11 +47,12 @@ export default function panelJsunit() {
         console.error(JSON.stringify(result));
       }  
       await sleep(1)
+      done()
     });
     
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("Panel after each called");
     });
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0930

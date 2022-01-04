@@ -30,7 +30,7 @@ export default function flexJsunit() {
   }
 
   describe('flexTest', function () {
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/Flex',
       }
@@ -47,11 +47,12 @@ export default function flexJsunit() {
         console.error("push Flex page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("Flex after each called");
     });
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0770

@@ -30,7 +30,7 @@ export default function blankJsunit() {
   }
 
   describe('BlankTest', function () {
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/Blank',
       }
@@ -47,11 +47,12 @@ export default function blankJsunit() {
         console.error("push Blank page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("Blank after each called");
     });
 
     /**

@@ -31,7 +31,7 @@ export default function hyperlinkJsunit() {
 
   describe('hyperLinkTest', function () {
 
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/HyperLink',
       }
@@ -48,11 +48,12 @@ export default function hyperlinkJsunit() {
         console.error("push HyperLink page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("HyperLink after each called");
     });
 
     /**

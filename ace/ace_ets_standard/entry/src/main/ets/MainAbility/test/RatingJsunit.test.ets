@@ -30,7 +30,7 @@ export default function ratingJsunit() {
   }
 
   describe('ratingTest', function () {
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/Rating',
       }
@@ -47,11 +47,12 @@ export default function ratingJsunit() {
         console.error("push Rating page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("Rating after each called");
     });
 
     /**

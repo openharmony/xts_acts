@@ -30,7 +30,7 @@ export default function dividerJsunit() {
   }
 
   describe('dividerTest', function () {
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/Divider',
       }
@@ -46,11 +46,12 @@ export default function dividerJsunit() {
         console.error("push divider page error " + JSON.stringify(result));
       }
       await sleep(1)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("Divider after each called");
     });
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0750

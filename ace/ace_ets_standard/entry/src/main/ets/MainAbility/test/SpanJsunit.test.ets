@@ -30,7 +30,7 @@ export default function spanJsunit() {
   }
 
   describe('SpanTest', function () {
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/Span',
       }
@@ -47,11 +47,12 @@ export default function spanJsunit() {
         console.error("push Span page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("Span after each called");
     });
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_1080

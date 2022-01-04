@@ -30,7 +30,7 @@ export default function columnJsunit() {
   }
 
   describe('columnTest', function () {
-    beforeEach(async function{
+    beforeEach(async function(done){
       let options = {
         uri: 'pages/Column',
       }
@@ -47,11 +47,12 @@ export default function columnJsunit() {
         console.error("push Column page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
     afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+      await sleep(1)
+      console.info("Column after each called");
     });
 
     /**
