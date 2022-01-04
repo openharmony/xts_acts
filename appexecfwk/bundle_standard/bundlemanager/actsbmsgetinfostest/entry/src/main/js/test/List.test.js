@@ -15,3 +15,4 @@
 require('./ActsBmsGetBackGroundModes.test.js')
 require('./ActsBmsFormsInfoTest.test.js')
 require('./ActsBmsPermissionChange.test.js')
+require('./ActsBmsQueryAbilityByWant.test.js') 
