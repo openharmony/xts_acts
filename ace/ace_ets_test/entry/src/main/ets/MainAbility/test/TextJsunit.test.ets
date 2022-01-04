@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
@@ -31,7 +31,7 @@ export default function textJsunit() {
 
   describe('textTest', function () {
 
-    beforeEach(async function(done){
+    beforeEach(async function (done) {
       let options = {
         uri: 'pages/Text',
       }
@@ -39,7 +39,7 @@ export default function textJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get Text state success " + JSON.stringify(pages));
-        if(!("Text" == pages.name)){
+        if (!("Text" == pages.name)) {
           console.info("get Text state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push Text page success " + JSON.stringify(result));
@@ -51,7 +51,7 @@ export default function textJsunit() {
       done()
     });
 
-    afterEach(async function{
+    afterEach(async function () {
       console.info("Text after each called")
       await sleep(1)
     });

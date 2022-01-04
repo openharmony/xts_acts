@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 
@@ -30,16 +30,15 @@ export default function alphabetIndexerJsunit() {
   }
 
   describe('alphabetIndexerTest', function () {
-
-    beforeEach(async function(done){
-     let options = {
+    beforeEach(async function (done) {
+      let options = {
         uri: 'pages/AlphabetIndexer',
       }
       try {
         router.clear();
         let pages = router.getState();
         console.info("get AlphabetIndexer state success " + JSON.stringify(pages));
-        if(!("AlphabetIndexer" == pages.name)){
+        if (!("AlphabetIndexer" == pages.name)) {
           console.info("get AlphabetIndexer state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push AlphabetIndexer page success " + JSON.stringify(result));
@@ -51,7 +50,7 @@ export default function alphabetIndexerJsunit() {
       done()
     });
 
-    afterEach(async function{
+    afterEach(async function () {
       await sleep(1)
       console.info("AlphabetIndexer after each called");
     });

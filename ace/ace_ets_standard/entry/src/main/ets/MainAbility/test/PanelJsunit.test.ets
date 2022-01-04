@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
@@ -30,7 +30,7 @@ export default function panelJsunit() {
   }
 
   describe('panelTest', function () {
-    beforeEach(async function(done){
+    beforeEach(async function (done) {
       let options = {
         uri: 'pages/Panel',
       }
@@ -38,19 +38,19 @@ export default function panelJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get Panel state success " + JSON.stringify(pages));
-        if(!("Panel" == pages.name)){
+        if (!("Panel" == pages.name)) {
           console.info("get Panel state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push Panel page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error(JSON.stringify(result));
-      }  
+      }
       await sleep(1)
       done()
     });
-    
-    afterEach(async function{
+
+    afterEach(async function () {
       await sleep(1)
       console.info("Panel after each called");
     });

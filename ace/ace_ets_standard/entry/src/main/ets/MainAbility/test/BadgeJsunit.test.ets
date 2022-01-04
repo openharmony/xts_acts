@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
@@ -30,7 +30,7 @@ export default function badgeJsunit() {
   }
 
   describe('badgeTest', function () {
-    beforeEach(async function(done){
+    beforeEach(async function (done) {
       let options = {
         uri: 'pages/Badge',
       }
@@ -38,7 +38,7 @@ export default function badgeJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get Badge state success " + JSON.stringify(pages));
-        if(!("Badge" == pages.name)){
+        if (!("Badge" == pages.name)) {
           console.info("get Badge state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push Badge page success " + JSON.stringify(result));
@@ -50,7 +50,7 @@ export default function badgeJsunit() {
       done()
     });
 
-    afterEach(async function{
+    afterEach(async function () {
       await sleep(1)
       console.info("Badge after each called");
     });
@@ -113,5 +113,7 @@ export default function badgeJsunit() {
       console.info('testGetInspectorByKey END');
       done();
     });
-  })
+  }
+
+  )
 }

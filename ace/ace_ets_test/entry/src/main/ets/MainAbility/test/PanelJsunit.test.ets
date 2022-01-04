@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
@@ -31,7 +31,7 @@ export default function panelJsunit() {
 
   describe('panelTest', function () {
 
-    beforeEach(async function(done){
+    beforeEach(async function (done) {
       let options = {
         uri: 'pages/Panel',
       }
@@ -39,7 +39,7 @@ export default function panelJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get Panel state success " + JSON.stringify(pages));
-        if(!("Panel" == pages.name)){
+        if (!("Panel" == pages.name)) {
           console.info("get Panel state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push Panel page success " + JSON.stringify(result));
@@ -51,7 +51,7 @@ export default function panelJsunit() {
       done()
     });
 
-    afterEach(async function{
+    afterEach(async function () {
       await sleep(1)
       console.info("Panel after each called");
     });
@@ -68,12 +68,12 @@ export default function panelJsunit() {
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Panel')
-      console.log('Panel‘s type is '+JSON.stringify(obj.$attrs.type))
-      console.log('Panel‘s mode is '+JSON.stringify(obj.$attrs.mode))
-      console.log('Panel‘s dragBar is '+JSON.stringify(obj.$attrs.dragBar))
-      console.log('Panel‘s fullHeight is '+JSON.stringify(obj.$attrs.fullHeight))
-      console.log('Panel‘s halfHeight is '+JSON.stringify(obj.$attrs.halfHeight))
-      console.log('Panel‘s miniHeight is '+JSON.stringify(obj.$attrs.miniHeight))
+      console.log('Panel‘s type is ' + JSON.stringify(obj.$attrs.type))
+      console.log('Panel‘s mode is ' + JSON.stringify(obj.$attrs.mode))
+      console.log('Panel‘s dragBar is ' + JSON.stringify(obj.$attrs.dragBar))
+      console.log('Panel‘s fullHeight is ' + JSON.stringify(obj.$attrs.fullHeight))
+      console.log('Panel‘s halfHeight is ' + JSON.stringify(obj.$attrs.halfHeight))
+      console.log('Panel‘s miniHeight is ' + JSON.stringify(obj.$attrs.miniHeight))
       expect(obj.$attrs.type).assertEqual('PanelType.Foldable')
       expect(obj.$attrs.mode).assertEqual('PanelMode.Half')
       expect(obj.$attrs.dragBar).assertEqual('true')
@@ -97,9 +97,9 @@ export default function panelJsunit() {
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Panel')
-      console.log('Panel‘s type is '+JSON.stringify(obj.$attrs.type))
-      console.log('Panel‘s mode is '+JSON.stringify(obj.$attrs.mode))
-      console.log('Panel‘s show is '+JSON.stringify(obj.$attrs.show))
+      console.log('Panel‘s type is ' + JSON.stringify(obj.$attrs.type))
+      console.log('Panel‘s mode is ' + JSON.stringify(obj.$attrs.mode))
+      console.log('Panel‘s show is ' + JSON.stringify(obj.$attrs.show))
       expect(obj.$attrs.type).assertEqual('PanelType.Minibar')
       expect(obj.$attrs.mode).assertEqual('PanelMode.Mini')
       expect(obj.$attrs.show).assertEqual('true')
@@ -120,9 +120,9 @@ export default function panelJsunit() {
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Panel')
-      console.log('Panel‘s type is '+JSON.stringify(obj.$attrs.type))
-      console.log('Panel‘s mode is '+JSON.stringify(obj.$attrs.mode))
-      console.log('Panel‘s show is '+JSON.stringify(obj.$attrs.show))
+      console.log('Panel‘s type is ' + JSON.stringify(obj.$attrs.type))
+      console.log('Panel‘s mode is ' + JSON.stringify(obj.$attrs.mode))
+      console.log('Panel‘s show is ' + JSON.stringify(obj.$attrs.show))
       expect(obj.$attrs.type).assertEqual('PanelType.Temporary')
       expect(obj.$attrs.mode).assertEqual('PanelMode.Full')
       expect(obj.$attrs.show).assertEqual('false')

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
@@ -30,8 +30,7 @@ export default function navigatorJsunit() {
   }
 
   describe('navigatorTest', function () {
-
-    beforeEach(async function(done){
+    beforeEach(async function (done) {
       let options = {
         uri: 'pages/Navigator',
       }
@@ -39,7 +38,7 @@ export default function navigatorJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get Navigator state success " + JSON.stringify(pages));
-        if(!("Navigator" == pages.name)){
+        if (!("Navigator" == pages.name)) {
           console.info("get Navigator state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push Navigator page success " + JSON.stringify(result));
@@ -51,7 +50,7 @@ export default function navigatorJsunit() {
       done()
     });
 
-    afterEach(async function{
+    afterEach(async function () {
       await sleep(1)
       console.info("Navigator after each called");
     });
@@ -69,14 +68,16 @@ export default function navigatorJsunit() {
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Navigator')
-      console.log('Navigator‘s target is '+JSON.stringify(obj.$attrs.target))
-      console.log('Navigator‘s type is '+JSON.stringify(obj.$attrs.type))
-      console.log('Navigator‘s active is '+JSON.stringify(obj.$attrs.active))
-      console.log('Navigator‘s params is '+JSON.stringify(obj.$attrs.params))
+      console.log('Navigator‘s target is ' + JSON.stringify(obj.$attrs.target))
+      console.log('Navigator‘s type is ' + JSON.stringify(obj.$attrs.type))
+      console.log('Navigator‘s active is ' + JSON.stringify(obj.$attrs.active))
+      console.log('Navigator‘s params is ' + JSON.stringify(obj.$attrs.params))
       expect(obj.$attrs.target).assertEqual('pages/index')
       expect(obj.$attrs.type).assertEqual('NavigationType.Back')
       expect(obj.$attrs.active).assertEqual('false')
-      expect(obj.$attrs.params).assertEqual(JSON.stringify({"data":24}))
+      expect(obj.$attrs.params).assertEqual(JSON.stringify({
+        "data": 24
+      }))
       console.info('++++++++++++++++ Navigator TestCase 1 End ++++++++++++++++');
       done();
     });
@@ -94,7 +95,7 @@ export default function navigatorJsunit() {
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Navigator')
-      console.log('Navigator‘s type is '+JSON.stringify(obj.$attrs.type))
+      console.log('Navigator‘s type is ' + JSON.stringify(obj.$attrs.type))
       expect(obj.$attrs.type).assertEqual('NavigationType.Push')
       console.info('++++++++++++++++ Navigator TestCase 2 End ++++++++++++++++');
       done();
@@ -113,7 +114,7 @@ export default function navigatorJsunit() {
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Navigator')
-      console.log('Navigator‘s type is '+JSON.stringify(obj.$attrs.type))
+      console.log('Navigator‘s type is ' + JSON.stringify(obj.$attrs.type))
       expect(obj.$attrs.type).assertEqual('NavigationType.Replace')
       console.info('++++++++++++++++ Navigator TestCase 3 End ++++++++++++++++');
       done();

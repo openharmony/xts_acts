@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
@@ -30,7 +30,7 @@ export default function ScrollJsunit() {
   }
 
   describe('scrollTest', function () {
-    beforeEach(async function(done){
+    beforeEach(async function (done) {
       let options = {
         uri: 'pages/Scroll',
       }
@@ -38,7 +38,7 @@ export default function ScrollJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get Scroll state success " + JSON.stringify(pages));
-        if(!("Scroll" == pages.name)){
+        if (!("Scroll" == pages.name)) {
           console.info("get Scroll state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push Scroll page success " + JSON.stringify(result));
@@ -50,7 +50,7 @@ export default function ScrollJsunit() {
       done()
     });
 
-    afterEach(async function{
+    afterEach(async function () {
       await sleep(1)
       console.info("Scroll after each called");
     });

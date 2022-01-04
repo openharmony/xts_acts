@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
@@ -54,7 +54,7 @@ export default function swiperJsunit() {
 
   describe('swiperTest', function () {
 
-    beforeEach(async function(done){
+    beforeEach(async function (done) {
       let options = {
         uri: 'pages/Swiper',
       }
@@ -62,7 +62,7 @@ export default function swiperJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get Swiper state success " + JSON.stringify(pages));
-        if(!("Swiper" == pages.name)){
+        if (!("Swiper" == pages.name)) {
           console.info("get Swiper state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push Swiper page success " + JSON.stringify(result));
@@ -74,7 +74,7 @@ export default function swiperJsunit() {
       done()
     });
 
-    afterEach(async function{
+    afterEach(async function () {
       await sleep(1)
       console.info("Swiper after each called");
     });
@@ -92,14 +92,14 @@ export default function swiperJsunit() {
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Swiper')
-      console.log('Swiper‘s index is '+JSON.stringify(obj.$attrs.index))
-      console.log('Swiper‘s autoPlay is '+JSON.stringify(obj.$attrs.autoPlay))
-      console.log('Swiper‘s interval is '+JSON.stringify(obj.$attrs.interval))
-      console.log('Swiper‘s indicator is '+JSON.stringify(obj.$attrs.indicator))
-      console.log('Swiper‘s loop is '+JSON.stringify(obj.$attrs.loop))
-      console.log('Swiper‘s duration is '+JSON.stringify(obj.$attrs.duration))
-      console.log('Swiper‘s vertical is '+JSON.stringify(obj.$attrs.vertical))
-      console.log('Swiper‘s itemSpace is '+JSON.stringify(obj.$attrs.itemSpace))
+      console.log('Swiper‘s index is ' + JSON.stringify(obj.$attrs.index))
+      console.log('Swiper‘s autoPlay is ' + JSON.stringify(obj.$attrs.autoPlay))
+      console.log('Swiper‘s interval is ' + JSON.stringify(obj.$attrs.interval))
+      console.log('Swiper‘s indicator is ' + JSON.stringify(obj.$attrs.indicator))
+      console.log('Swiper‘s loop is ' + JSON.stringify(obj.$attrs.loop))
+      console.log('Swiper‘s duration is ' + JSON.stringify(obj.$attrs.duration))
+      console.log('Swiper‘s vertical is ' + JSON.stringify(obj.$attrs.vertical))
+      console.log('Swiper‘s itemSpace is ' + JSON.stringify(obj.$attrs.itemSpace))
       expect(obj.$attrs.index).assertEqual('1')
       expect(obj.$attrs.autoPlay).assertEqual('true')
       expect(obj.$attrs.interval).assertEqual('4000')

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
@@ -31,8 +31,7 @@ export default function linkJsunit() {
 
 
   describe('linkTest', function () {
-
-    beforeEach(async function(done){
+    beforeEach(async function (done) {
       let options = {
         uri: 'pages/Link',
       }
@@ -40,7 +39,7 @@ export default function linkJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get Link state success " + JSON.stringify(pages));
-        if(!("Link" == pages.name)){
+        if (!("Link" == pages.name)) {
           console.info("get Link state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push Link page success " + JSON.stringify(result));
@@ -52,7 +51,7 @@ export default function linkJsunit() {
       done()
     });
 
-    afterEach(async function{
+    afterEach(async function () {
       await sleep(1)
       console.info("Link after each called");
     });
@@ -72,7 +71,7 @@ export default function linkJsunit() {
       console.info("yr link0 type: " + JSON.stringify(obj.$type));
       console.info("component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.stateEffect).assertEqual('false');
-      console.log("yr link0 stateEffect-'false'"+JSON.stringify(obj.$attrs.stateEffect))
+      console.log("yr link0 stateEffect-'false'" + JSON.stringify(obj.$attrs.stateEffect))
       console.info('linkTest001 END');
       done();
     });
@@ -88,7 +87,7 @@ export default function linkJsunit() {
       let obj = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.stateEffect).assertEqual('false');
-      console.log("yr link1 stateEffect-'false'"+JSON.stringify(obj.$attrs.stateEffect))
+      console.log("yr link1 stateEffect-'false'" + JSON.stringify(obj.$attrs.stateEffect))
       console.info('linkTest002 END');
       done();
     });

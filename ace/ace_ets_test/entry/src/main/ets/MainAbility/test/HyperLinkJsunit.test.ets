@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
@@ -30,8 +30,7 @@ export default function hyperlinkJsunit() {
   }
 
   describe('hyperLinkTest', function () {
-
-    beforeEach(async function(done){
+    beforeEach(async function (done) {
       let options = {
         uri: 'pages/HyperLink',
       }
@@ -39,7 +38,7 @@ export default function hyperlinkJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get HyperLink state success " + JSON.stringify(pages));
-        if(!("HyperLink" == pages.name)){
+        if (!("HyperLink" == pages.name)) {
           console.info("get HyperLink state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push HyperLink page success " + JSON.stringify(result));
@@ -51,7 +50,7 @@ export default function hyperlinkJsunit() {
       done()
     });
 
-    afterEach(async function{
+    afterEach(async function () {
       await sleep(1)
       console.info("HyperLink after each called");
     });
@@ -68,8 +67,8 @@ export default function hyperlinkJsunit() {
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Hyperlink')
       console.info("属性值集合: " + JSON.stringify(obj));
-      console.log('Hyperlink‘s address is '+JSON.stringify(obj.$attrs.address))
-      console.log('Hyperlink‘s content is '+JSON.stringify(obj.$attrs.content))
+      console.log('Hyperlink‘s address is ' + JSON.stringify(obj.$attrs.address))
+      console.log('Hyperlink‘s content is ' + JSON.stringify(obj.$attrs.content))
       expect(obj.$attrs.address).assertEqual('https://developer.harmonyos.com/')
       expect(obj.$attrs.content).assertEqual('Go to the developer website')
       console.info('++++++++++++++++ Hyperlink TestCase 1 End ++++++++++++++++');

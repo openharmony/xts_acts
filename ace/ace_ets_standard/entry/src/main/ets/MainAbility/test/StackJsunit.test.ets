@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
@@ -30,7 +30,7 @@ export default function StackJsunit() {
   }
 
   describe('StackTest', function () {
-    beforeEach(async function(done){
+    beforeEach(async function (done) {
       let options = {
         uri: 'pages/Stack',
       }
@@ -38,7 +38,7 @@ export default function StackJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get Stack state success " + JSON.stringify(pages));
-        if(!("Stack" == pages.name)){
+        if (!("Stack" == pages.name)) {
           console.info("get Stack state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push Stack page success " + JSON.stringify(result));
@@ -50,7 +50,7 @@ export default function StackJsunit() {
       done()
     });
 
-    afterEach(async function{
+    afterEach(async function () {
       await sleep(1)
       console.info("Stack after each called");
     });
