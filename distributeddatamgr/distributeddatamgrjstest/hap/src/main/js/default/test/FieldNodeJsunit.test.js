@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,7 +20,11 @@ function sleep(ms) {
 }
 describe('FieldNodeTest', function() {
 
-    // appendChild(child: FieldNode): boolean 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_APPENDCHILD_0100
+     * @tc.name [JS-API8]FieldNode.AppendChild().
+     * @tc.desc Test Js Api FieldNode.AppendChild() testcase 001
+     */
     it('testAppendChild001', 0, async function(done) {
         try {
             let node = new ddm.FieldNode("root");
@@ -42,6 +46,11 @@ describe('FieldNodeTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_APPENDCHILD_0200
+     * @tc.name [JS-API8]FieldNode.AppendChild().
+     * @tc.desc Test Js Api FieldNode.AppendChild() testcase 002
+     */
     it('testAppendChild002', 0, async function(done) {
         try {
             let node = new ddm.FieldNode("root");
@@ -56,6 +65,11 @@ describe('FieldNodeTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_APPENDCHILD_0300
+     * @tc.name [JS-API8]FieldNode.AppendChild().
+     * @tc.desc Test Js Api FieldNode.AppendChild() testcase 003
+     */
     it('testAppendChild003', 0, async function(done) {
         try {
             let node = new ddm.FieldNode("root");
@@ -69,7 +83,11 @@ describe('FieldNodeTest', function() {
         done();
     })
 
-    // toJson(): string
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_TOJSON_0100
+     * @tc.name [JS-API8]FieldNode.ToJson().
+     * @tc.desc Test Js Api FieldNode.ToJson() testcase 001
+     */
     it('testToJson001', 0, async function(done) {
         try {
             let node = new ddm.FieldNode("root");
@@ -82,6 +100,11 @@ describe('FieldNodeTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_TOJSON_0200
+     * @tc.name [JS-API8]FieldNode.ToJson().
+     * @tc.desc Test Js Api FieldNode.ToJson() testcase 002
+     */
     it('testToJson002', 0, async function(done) {
         try {
             let node = new ddm.FieldNode("root");
@@ -94,6 +117,11 @@ describe('FieldNodeTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_TOJSON_0300
+     * @tc.name [JS-API8]FieldNode.ToJson().
+     * @tc.desc Test Js Api FieldNode.ToJson() testcase 003
+     */
     it('testToJson003', 0, async function(done) {
         try {
             let node = new ddm.FieldNode();

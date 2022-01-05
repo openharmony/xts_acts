@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2021 Huawei Device Co., Ltd.
+* Copyright (c) 2022 Huawei Device Co., Ltd.
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
@@ -79,19 +79,35 @@ describe('DeviceKvStorePromiseTest', function () {
         }).catch((err) => {
             console.log('beforeAll createKVManager err ' + err);
         });
-        // get localDeviceId  - put, get deviceId on dataChange()..
         await kvManager.getKVStore(TEST_STORE_ID, options).then((store) => {
             kvStore = store;
-            console.log('beforeAll getKVStore success');
+            console.log('beforeAll getKVStore for getDeviceId success');
         }).catch((err) => {
             console.log('beforeAll getKVStore err ' + err);
         });
-        kvStore.on('dataChange', 0, function (data) {
-            console.log('beforeAll on ' + JSON.stringify(data));
-            localDeviceId = data.deviceId;
-            expect(localDeviceId != null).assertTrue();
+        var getDeviceId = new Promise((resolve, reject) => {
+            kvStore.on('dataChange', 0, function (data) {
+                console.log('beforeAll on data change: ' + JSON.stringify(data));
+                resolve(data.deviceId);
+            });
+            kvStore.put("getDeviceId", "byPut").then((data) => {
+                console.log('beforeAll put success');
+                expect(data == undefined).assertTrue();
+            });
+            setTimeout(() => {
+                reject(new Error('not resolved in 2 second, reject it.'))
+            }, 2000);
         });
-        await kvStore.put("getDeviceId", "byPut");
+        await getDeviceId.then(function(deviceId) {
+            console.log('beforeAll getDeviceId ' + JSON.stringify(deviceId));
+            localDeviceId = deviceId;
+        }).catch((error) => {
+            console.log('beforeAll can NOT getDeviceId, fail: ' + error);
+            expect(null).assertFail();
+        });
+        await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, kvStore);
+        await kvManager.deleteKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID);
+        kvStore = null;
         console.log('beforeAll end');
         done();
     })
@@ -131,6 +147,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_PUTSTRING_0100
+     * @tc.name [JS-API8]DeviceKvStore.Put(String)
+     * @tc.desc Test Js Api DeviceKvStore.Put(String) testcase 001
+     */
     it('testDeviceKvStorePutString001', 0, async function (done) {
         console.log('testDeviceKvStorePutString001');
         try {
@@ -147,6 +168,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_PUTSTRING_0200
+     * @tc.name [JS-API8]DeviceKvStore.Put(String)
+     * @tc.desc Test Js Api DeviceKvStore.Put(String) testcase 002
+     */
     it('testDeviceKvStorePutString002', 0, async function (done) {
         console.log('testDeviceKvStorePutString002');
         try {
@@ -164,6 +190,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_PUTSTRING_0300
+     * @tc.name [JS-API8]DeviceKvStore.Put(String)
+     * @tc.desc Test Js Api DeviceKvStore.Put(String) testcase 003
+     */
     it('testDeviceKvStorePutString003', 0, async function (done) {
         console.log('testDeviceKvStorePutString003');
         try {
@@ -181,6 +212,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_PUTSTRING_0400
+     * @tc.name [JS-API8]DeviceKvStore.Put(String)
+     * @tc.desc Test Js Api DeviceKvStore.Put(String) testcase 004
+     */
     it('testDeviceKvStorePutString004', 0, async function (done) {
         console.log('testDeviceKvStorePutString004');
         try {
@@ -209,6 +245,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_GETSTRING_0100
+     * @tc.name [JS-API8]DeviceKvStore.Get(String)
+     * @tc.desc Test Js Api DeviceKvStore.Get(String) testcase 001
+     */
     it('testDeviceKvStoreGetString001', 0, async function (done) {
         console.log('testDeviceKvStoreGetString001');
         try {
@@ -233,6 +274,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_GETSTRING_0200
+     * @tc.name [JS-API8]DeviceKvStore.Get(String)
+     * @tc.desc Test Js Api DeviceKvStore.Get(String) testcase 002
+     */
     it('testDeviceKvStoreGetString002', 0, async function (done) {
         console.log('testDeviceKvStoreGetString002');
         try {
@@ -248,6 +294,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_PUTINT_0100
+     * @tc.name [JS-API8]DeviceKvStore.Put(Int)
+     * @tc.desc Test Js Api DeviceKvStore.Put(Int) testcase 001
+     */
     it('testDeviceKvStorePutInt001', 0, async function (done) {
         console.log('testDeviceKvStorePutInt001');
         try {
@@ -265,6 +316,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_PUTINT_0200
+     * @tc.name [JS-API8]DeviceKvStore.Put(Int)
+     * @tc.desc Test Js Api DeviceKvStore.Put(Int) testcase 002
+     */
     it('testDeviceKvStorePutInt002', 0, async function (done) {
         console.log('testDeviceKvStorePutInt002');
         try {
@@ -290,6 +346,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_PUTINT_0300
+     * @tc.name [JS-API8]DeviceKvStore.Put(Int)
+     * @tc.desc Test Js Api DeviceKvStore.Put(Int) testcase 003
+     */
     it('testDeviceKvStorePutInt003', 0, async function (done) {
         console.log('testDeviceKvStorePutInt003');
         try {
@@ -315,6 +376,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_PUTINT_0400
+     * @tc.name [JS-API8]DeviceKvStore.Put(Int)
+     * @tc.desc Test Js Api DeviceKvStore.Put(Int) testcase 004
+     */
     it('testDeviceKvStorePutInt004', 0, async function (done) {
         console.log('testDeviceKvStorePutInt004');
         try {
@@ -340,6 +406,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_GETINT_0100
+     * @tc.name [JS-API8]DeviceKvStore.Get(Int)
+     * @tc.desc Test Js Api DeviceKvStore.Get(Int) testcase 001
+     */
     it('testDeviceKvStoreGetInt001', 0, async function (done) {
         console.log('testDeviceKvStoreGetInt001');
         try {
@@ -364,6 +435,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_PUTBOOL_0100
+     * @tc.name [JS-API8]DeviceKvStore.Put(Bool)
+     * @tc.desc Test Js Api DeviceKvStore.Put(Bool) testcase 001
+     */
     it('testDeviceKvStorePutBool001', 0, async function (done) {
         console.log('testDeviceKvStorePutBool001');
         try {
@@ -381,6 +457,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_GETBOOL_0100
+     * @tc.name [JS-API8]DeviceKvStore.Get(Bool)
+     * @tc.desc Test Js Api DeviceKvStore.Get(Bool) testcase 001
+     */
     it('testDeviceKvStoreGetBool001', 0, async function (done) {
         console.log('testDeviceKvStoreGetBool001');
         try {
@@ -406,6 +487,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_PUTFLOAT_0100
+     * @tc.name [JS-API8]DeviceKvStore.Put(Float)
+     * @tc.desc Test Js Api DeviceKvStore.Put(Float) testcase 001
+     */
     it('testDeviceKvStorePutFloat001', 0, async function (done) {
         console.log('testDeviceKvStorePutFloat001');
         try {
@@ -423,6 +509,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_GETFLOAT_0100
+     * @tc.name [JS-API8]DeviceKvStore.Get(Float)
+     * @tc.desc Test Js Api DeviceKvStore.Get(Float) testcase 001
+     */
     it('testDeviceKvStoreGetFloat001', 0, async function (done) {
         console.log('testDeviceKvStoreGetFloat001');
         try {
@@ -448,6 +539,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_GETFLOAT_0200
+     * @tc.name [JS-API8]DeviceKvStore.Get(Float)
+     * @tc.desc Test Js Api DeviceKvStore.Get(Float) testcase 002
+     */
     it('testDeviceKvStoreGetFloat002', 0, async function (done) {
         console.log('testDeviceKvStoreGetFloat002');
         try {
@@ -473,6 +569,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_GETFLOAT_0300
+     * @tc.name [JS-API8]DeviceKvStore.Get(Float)
+     * @tc.desc Test Js Api DeviceKvStore.Get(Float) testcase 003
+     */
     it('testDeviceKvStoreGetFloat003', 0, async function (done) {
         console.log('testDeviceKvStoreGetFloat003');
         try {
@@ -498,6 +599,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_DELETESTRING_0100
+     * @tc.name [JS-API8]DeviceKvStore.DeleteString()
+     * @tc.desc Test Js Api DeviceKvStore.DeleteString() testcase 001
+     */
     it('testDeviceKvStoreDeleteString001', 0, async function (done) {
         console.log('testDeviceKvStoreDeleteString001');
         try {
@@ -523,6 +629,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_DELETESTRING_0200
+     * @tc.name [JS-API8]DeviceKvStore.DeleteString()
+     * @tc.desc Test Js Api DeviceKvStore.DeleteString() testcase 002
+     */
     it('testDeviceKvStoreDeleteString002', 0, async function (done) {
         console.log('testDeviceKvStoreDeleteString002');
         try {
@@ -551,6 +662,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_DELETESTRING_0300
+     * @tc.name [JS-API8]DeviceKvStore.DeleteString()
+     * @tc.desc Test Js Api DeviceKvStore.DeleteString() testcase 003
+     */
     it('testDeviceKvStoreDeleteString003', 0, async function (done) {
         console.log('testDeviceKvStoreDeleteString003');
         try {
@@ -568,6 +684,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_DELETEINT_0100
+     * @tc.name [JS-API8]DeviceKvStore.DeleteInt()
+     * @tc.desc Test Js Api DeviceKvStore.DeleteInt() testcase 001
+     */
     it('testDeviceKvStoreDeleteInt001', 0, async function (done) {
         console.log('testDeviceKvStoreDeleteInt001');
         try {
@@ -592,6 +713,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_DELETEFLOAT_0100
+     * @tc.name [JS-API8]DeviceKvStore.DeleteFloat()
+     * @tc.desc Test Js Api DeviceKvStore.DeleteFloat() testcase 001
+     */
     it('testDeviceKvStoreDeleteFloat001', 0, async function (done) {
         console.log('testDeviceKvStoreDeleteFloat001');
         try {
@@ -616,6 +742,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_DELETEBOOL_0100
+     * @tc.name [JS-API8]DeviceKvStore.DeleteBool()
+     * @tc.desc Test Js Api DeviceKvStore.DeleteBool() testcase 001
+     */
     it('testDeviceKvStoreDeleteBool001', 0, async function (done) {
         console.log('testDeviceKvStoreDeleteBool001');
         try {
@@ -640,6 +771,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_ONCHANGE_0100
+     * @tc.name [JS-API8]DeviceKvStore.OnChange()
+     * @tc.desc Test Js Api DeviceKvStore.OnChange() testcase 001
+     */
     it('testDeviceKvStoreOnChange001', 0, async function (done) {
         try {
             kvStore.on('dataChange', 0, function (data) {
@@ -660,6 +796,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_ONCHANGE_0200
+     * @tc.name [JS-API8]DeviceKvStore.OnChange()
+     * @tc.desc Test Js Api DeviceKvStore.OnChange() testcase 002
+     */
     it('testDeviceKvStoreOnChange002', 0, async function (done) {
         try {
             kvStore.on('dataChange', 1, function (data) {
@@ -680,6 +821,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_ONCHANGE_0300
+     * @tc.name [JS-API8]DeviceKvStore.OnChange()
+     * @tc.desc Test Js Api DeviceKvStore.OnChange() testcase 003
+     */
     it('testDeviceKvStoreOnChange003', 0, async function (done) {
         try {
             kvStore.on('dataChange', 2, function (data) {
@@ -700,6 +846,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_ONSYNCCOMPLETE_0100
+     * @tc.name [JS-API8]DeviceKvStore.OnSyncComplete()
+     * @tc.desc Test Js Api DeviceKvStore.OnSyncComplete() testcase 001
+     */
     it('testDeviceKvStoreOnSyncComplete001', 0, async function (done) {
         try {
             kvStore.on('syncComplete', function (data) {
@@ -714,7 +865,6 @@ describe('DeviceKvStorePromiseTest', function () {
                 kvStore.sync(devices, mode);
             }).catch((error) => {
                 console.log('testDeviceKvStoreOnSyncComplete001 no peer device :e:' + error);
-                // expect(null).assertFail();
             });
         }catch(e) {
             console.log('testDeviceKvStoreOnSyncComplete001 put e ' + e);
@@ -723,6 +873,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_ONSYNCCOMPLETE_0200
+     * @tc.name [JS-API8]DeviceKvStore.OnSyncComplete()
+     * @tc.desc Test Js Api DeviceKvStore.OnSyncComplete() testcase 002
+     */
     it('testDeviceKvStoreOnSyncComplete002', 0, async function (done) {
         try {
             kvStore.on('syncComplete', function (data) {
@@ -737,7 +892,6 @@ describe('DeviceKvStorePromiseTest', function () {
                 kvStore.sync(devices, mode);
             }).catch((error) => {
                 console.log('testDeviceKvStoreOnSyncComplete002 no peer device :e:' + error);
-                // expect(null).assertFail();
             });
         }catch(e) {
             console.log('testDeviceKvStoreOnSyncComplete002 put e ' + e);
@@ -746,6 +900,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_ONSYNCCOMPLETE_0300
+     * @tc.name [JS-API8]DeviceKvStore.OnSyncComplete()
+     * @tc.desc Test Js Api DeviceKvStore.OnSyncComplete() testcase 003
+     */
     it('testDeviceKvStoreOnSyncComplete003', 0, async function (done) {
         try {
             kvStore.on('syncComplete', function (data) {
@@ -760,7 +919,6 @@ describe('DeviceKvStorePromiseTest', function () {
                 kvStore.sync(devices, mode);
             }).catch((error) => {
                 console.log('testDeviceKvStoreOnSyncComplete003 no peer device :e:' + error);
-                // expect(null).assertFail();
             });
         }catch(e) {
             console.log('testDeviceKvStoreOnSyncComplete003 put e ' + e);
@@ -769,6 +927,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_OFFCHANGE_0100
+     * @tc.name [JS-API8]DeviceKvStore.OffChange()
+     * @tc.desc Test Js Api DeviceKvStore.OffChange() testcase 001
+     */
     it('testDeviceKvStoreOffChange001', 0, async function (done) {
         console.log('testDeviceKvStoreOffChange001');
         try {
@@ -784,6 +947,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_OFFCHANGE_0200
+     * @tc.name [JS-API8]DeviceKvStore.OffChange()
+     * @tc.desc Test Js Api DeviceKvStore.OffChange() testcase 002
+     */
     it('testDeviceKvStoreOffChange002', 0, async function (done) {
         console.log('testDeviceKvStoreOffChange002');
         try {
@@ -803,6 +971,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_OFFCHANGE_0300
+     * @tc.name [JS-API8]DeviceKvStore.OffChange()
+     * @tc.desc Test Js Api DeviceKvStore.OffChange() testcase 003
+     */
     it('testDeviceKvStoreOffChange003', 0, async function (done) {
         console.log('testDeviceKvStoreOffChange003');
         try {
@@ -823,6 +996,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_OFFCHANGE_0400
+     * @tc.name [JS-API8]DeviceKvStore.OffChange()
+     * @tc.desc Test Js Api DeviceKvStore.OffChange() testcase 004
+     */
     it('testDeviceKvStoreOffChange004', 0, async function (done) {
         console.log('testDeviceKvStoreOffChange004');
         try {
@@ -838,6 +1016,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_OFFSYNCCOMPLETE_0100
+     * @tc.name [JS-API8]DeviceKvStore.OffSyncComplete()
+     * @tc.desc Test Js Api DeviceKvStore.OffSyncComplete() testcase 001
+     */
     it('testDeviceKvStoreOffSyncComplete001', 0, async function (done) {
         console.log('testDeviceKvStoreOffSyncComplete001');
         try {
@@ -853,6 +1036,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_OFFSYNCCOMPLETE_0200
+     * @tc.name [JS-API8]DeviceKvStore.OffSyncComplete()
+     * @tc.desc Test Js Api DeviceKvStore.OffSyncComplete() testcase 002
+     */
     it('testDeviceKvStoreOffSyncComplete002', 0, async function (done) {
         console.log('testDeviceKvStoreOffSyncComplete002');
         try {
@@ -873,6 +1061,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_OFFSYNCCOMPLETE_0300
+     * @tc.name [JS-API8]DeviceKvStore.OffSyncComplete()
+     * @tc.desc Test Js Api DeviceKvStore.OffSyncComplete() testcase 003
+     */
     it('testDeviceKvStoreOffSyncComplete003', 0, async function (done) {
         console.log('testDeviceKvStoreOffSyncComplete003');
         try {
@@ -894,6 +1087,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_OFFSYNCCOMPLETE_0400
+     * @tc.name [JS-API8]DeviceKvStore.OffSyncComplete()
+     * @tc.desc Test Js Api DeviceKvStore.OffSyncComplete() testcase 004
+     */
     it('testDeviceKvStoreOffSyncComplete004', 0, async function (done) {
         console.log('testDeviceKvStoreOffSyncComplete004');
         try {
@@ -909,6 +1107,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_SETSYNCRANGE_0100
+     * @tc.name [JS-API8]DeviceKvStore.SetSyncRange()
+     * @tc.desc Test Js Api DeviceKvStore.SetSyncRange() testcase 001
+     */
     it('testDeviceKvStoreSetSyncRange001', 0, async function (done) {
         console.log('testDeviceKvStoreSetSyncRange001');
         try {
@@ -928,6 +1131,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_SETSYNCRANGE_0200
+     * @tc.name [JS-API8]DeviceKvStore.SetSyncRange()
+     * @tc.desc Test Js Api DeviceKvStore.SetSyncRange() testcase 002
+     */
     it('testDeviceKvStoreSetSyncRange002', 0, async function (done) {
         console.log('testDeviceKvStoreSetSyncRange002');
         try {
@@ -947,6 +1155,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_SETSYNCRANGE_0300
+     * @tc.name [JS-API8]DeviceKvStore.SetSyncRange()
+     * @tc.desc Test Js Api DeviceKvStore.SetSyncRange() testcase 003
+     */
     it('testDeviceKvStoreSetSyncRange003', 0, async function (done) {
         console.log('testDeviceKvStoreSetSyncRange003');
         try {
@@ -966,6 +1179,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_PUTBATCH_0100
+     * @tc.name [JS-API8]DeviceKvStore.Put(Batch)
+     * @tc.desc Test Js Api DeviceKvStore.Put(Batch) testcase 001
+     */
     it('testDeviceKvStorePutBatch001', 0, async function (done) {
         console.log('testDeviceKvStorePutBatch001');
         try {
@@ -997,6 +1215,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_PUTBATCH_0200
+     * @tc.name [JS-API8]DeviceKvStore.Put(Batch)
+     * @tc.desc Test Js Api DeviceKvStore.Put(Batch) testcase 002
+     */
     it('testDeviceKvStorePutBatch002', 0, async function (done) {
         console.log('testDeviceKvStorePutBatch002');
         try {
@@ -1035,6 +1258,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_PUTBATCH_0300
+     * @tc.name [JS-API8]DeviceKvStore.Put(Batch)
+     * @tc.desc Test Js Api DeviceKvStore.Put(Batch) testcase 003
+     */
     it('testDeviceKvStorePutBatch003', 0, async function (done) {
         console.log('testDeviceKvStorePutBatch003');
         try {
@@ -1073,6 +1301,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_PUTBATCH_0400
+     * @tc.name [JS-API8]DeviceKvStore.Put(Batch)
+     * @tc.desc Test Js Api DeviceKvStore.Put(Batch) testcase 004
+     */
     it('testDeviceKvStorePutBatch004', 0, async function (done) {
         console.log('testDeviceKvStorePutBatch004');
         try {
@@ -1111,6 +1344,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_PUTBATCH_0500
+     * @tc.name [JS-API8]DeviceKvStore.Put(Batch)
+     * @tc.desc Test Js Api DeviceKvStore.Put(Batch) testcase 005
+     */
     it('testDeviceKvStorePutBatch005', 0, async function (done) {
         console.log('testDeviceKvStorePutBatch005');
         try {
@@ -1150,6 +1388,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_PUTBATCH_0600
+     * @tc.name [JS-API8]DeviceKvStore.Put(Batch)
+     * @tc.desc Test Js Api DeviceKvStore.Put(Batch) testcase 006
+     */
     it('testDeviceKvStorePutBatch006', 0, async function (done) {
         console.log('testDeviceKvStorePutBatch006');
         try {
@@ -1189,6 +1432,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_DELETEBATCH_0100
+     * @tc.name [JS-API8]DeviceKvStore.DeleteBatch()
+     * @tc.desc Test Js Api DeviceKvStore.DeleteBatch() testcase 001
+     */
     it('testDeviceKvStoreDeleteBatch001', 0, async function (done) {
         console.log('testDeviceKvStoreDeleteBatch001');
         try {
@@ -1228,6 +1476,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_DELETEBATCH_0200
+     * @tc.name [JS-API8]DeviceKvStore.DeleteBatch()
+     * @tc.desc Test Js Api DeviceKvStore.DeleteBatch() testcase 002
+     */
     it('testDeviceKvStoreDeleteBatch002', 0, async function (done) {
         console.log('testDeviceKvStoreDeleteBatch002');
         try {
@@ -1245,6 +1498,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_DELETEBATCH_0300
+     * @tc.name [JS-API8]DeviceKvStore.DeleteBatch()
+     * @tc.desc Test Js Api DeviceKvStore.DeleteBatch() testcase 003
+     */
     it('testDeviceKvStoreDeleteBatch003', 0, async function (done) {
         console.log('testDeviceKvStoreDeleteBatch003');
         try {
@@ -1282,6 +1540,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_STARTTRANSACTION_0100
+     * @tc.name [JS-API8]DeviceKvStore.startTransaction()
+     * @tc.desc Test Js Api DeviceKvStore.startTransaction() testcase 001
+     */
     it('testDeviceKvStorestartTransaction001', 0, async function (done) {
         console.log('testDeviceKvStorestartTransaction001');
         try {
@@ -1330,6 +1593,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_STARTTRANSACTION_0200
+     * @tc.name [JS-API8]DeviceKvStore.startTransaction()
+     * @tc.desc Test Js Api DeviceKvStore.startTransaction() testcase 002
+     */
     it('testDeviceKvStorestartTransaction002', 0, async function (done) {
         console.log('testDeviceKvStorestartTransaction002');
         try {
@@ -1378,6 +1646,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_STARTTRANSACTION_0300
+     * @tc.name [JS-API8]DeviceKvStore.startTransaction()
+     * @tc.desc Test Js Api DeviceKvStore.startTransaction() testcase 003
+     */
     it('testDeviceKvStorestartTransaction003', 0, async function (done) {
         console.log('testDeviceKvStorestartTransaction002');
         try {
@@ -1393,6 +1666,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_STARTTRANSACTION_0400
+     * @tc.name [JS-API8]DeviceKvStore.startTransaction()
+     * @tc.desc Test Js Api DeviceKvStore.startTransaction() testcase 004
+     */
     it('testDeviceKvStorestartTransaction004', 0, async function (done) {
         console.log('testDeviceKvStorestartTransaction004');
         try {
@@ -1408,6 +1686,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_STARTTRANSACTION_0500
+     * @tc.name [JS-API8]DeviceKvStore.startTransaction()
+     * @tc.desc Test Js Api DeviceKvStore.startTransaction() testcase 005
+     */
     it('testDeviceKvStorestartTransaction005', 0, async function (done) {
         console.log('testDeviceKvStorestartTransaction005');
         try {
@@ -1423,6 +1706,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_COMMIT_0100
+     * @tc.name [JS-API8]DeviceKvStore.Commit()
+     * @tc.desc Test Js Api DeviceKvStore.Commit() testcase 001
+     */
     it('testDeviceKvStoreCommit001', 0, async function (done) {
         console.log('testDeviceKvStoreCommit001');
         try {
@@ -1438,6 +1726,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_COMMIT_0200
+     * @tc.name [JS-API8]DeviceKvStore.Commit()
+     * @tc.desc Test Js Api DeviceKvStore.Commit() testcase 002
+     */
     it('testDeviceKvStoreCommit002', 0, async function (done) {
         console.log('testDeviceKvStoreCommit002');
         try {
@@ -1453,6 +1746,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_COMMIT_0300
+     * @tc.name [JS-API8]DeviceKvStore.Commit()
+     * @tc.desc Test Js Api DeviceKvStore.Commit() testcase 003
+     */
     it('testDeviceKvStoreCommit003', 0, async function (done) {
         console.log('testDeviceKvStoreCommit003');
         try {
@@ -1468,6 +1766,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_ROLLBACK_0100
+     * @tc.name [JS-API8]DeviceKvStore.Rollback()
+     * @tc.desc Test Js Api DeviceKvStore.Rollback() testcase 001
+     */
     it('testDeviceKvStoreRollback001', 0, async function (done) {
         console.log('testDeviceKvStoreRollback001');
         try {
@@ -1483,6 +1786,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_ROLLBACK_0200
+     * @tc.name [JS-API8]DeviceKvStore.Rollback()
+     * @tc.desc Test Js Api DeviceKvStore.Rollback() testcase 002
+     */
     it('testDeviceKvStoreRollback002', 0, async function (done) {
         console.log('testDeviceKvStoreRollback002');
         try {
@@ -1498,6 +1806,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_ROLLBACK_0300
+     * @tc.name [JS-API8]DeviceKvStore.Rollback()
+     * @tc.desc Test Js Api DeviceKvStore.Rollback() testcase 003
+     */
     it('testDeviceKvStoreRollback003', 0, async function (done) {
         console.log('testDeviceKvStoreRollback003');
         try {
@@ -1513,6 +1826,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_ENABLESYNC_0100
+     * @tc.name [JS-API8]DeviceKvStore.EnableSync()
+     * @tc.desc Test Js Api DeviceKvStore.EnableSync() testcase 001
+     */
     it('testDeviceKvStoreEnableSync001', 0, async function (done) {
         console.log('testDeviceKvStoreEnableSync001');
         try {
@@ -1523,7 +1841,6 @@ describe('DeviceKvStorePromiseTest', function () {
                 console.log('testDeviceKvStoreEnableSync001 enableSync fail ' + err);
                 expect(null).assertFail();
             });
-
         }catch(e) {
             console.log('testDeviceKvStoreEnableSync001 e ' + e);
             expect(null).assertFail();
@@ -1531,6 +1848,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_ENABLESYNC_0200
+     * @tc.name [JS-API8]DeviceKvStore.EnableSync()
+     * @tc.desc Test Js Api DeviceKvStore.EnableSync() testcase 002
+     */
     it('testDeviceKvStoreEnableSync002', 0, async function (done) {
         console.log('testDeviceKvStoreEnableSync002');
         try {
@@ -1541,7 +1863,6 @@ describe('DeviceKvStorePromiseTest', function () {
                 console.log('testDeviceKvStoreEnableSync002 enableSync fail ' + err);
                 expect(null).assertFail();
             });
-
         }catch(e) {
             console.log('testDeviceKvStoreEnableSync002 e ' + e);
             expect(null).assertFail();
@@ -1549,6 +1870,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_ENABLESYNC_0300
+     * @tc.name [JS-API8]DeviceKvStore.EnableSync()
+     * @tc.desc Test Js Api DeviceKvStore.EnableSync() testcase 003
+     */
     it('testDeviceKvStoreEnableSync003', 0, async function (done) {
         console.log('testDeviceKvStoreEnableSync003');
         try {
@@ -1564,6 +1890,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_ENABLESYNC_0400
+     * @tc.name [JS-API8]DeviceKvStore.EnableSync()
+     * @tc.desc Test Js Api DeviceKvStore.EnableSync() testcase 004
+     */
     it('testDeviceKvStoreEnableSync004', 0, async function (done) {
         console.log('testDeviceKvStoreEnableSync004');
         try {
@@ -1573,13 +1904,17 @@ describe('DeviceKvStorePromiseTest', function () {
             }).catch((err) => {
                 console.log('testDeviceKvStoreEnableSync004 enableSync fail ' + err);
             });
-
         }catch(e) {
             console.log('testDeviceKvStoreEnableSync004 e ' + e);
         }
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_REMOVEDEVICEDATA_0100
+     * @tc.name [JS-API8]DeviceKvStore.RemoveDeviceData()
+     * @tc.desc Test Js Api DeviceKvStore.RemoveDeviceData() testcase 001
+     */
     it('testDeviceKvStoreRemoveDeviceData001', 0, async function (done) {
         console.log('testDeviceKvStoreRemoveDeviceData001');
         try {
@@ -1590,7 +1925,6 @@ describe('DeviceKvStorePromiseTest', function () {
                 console.log('testDeviceKvStoreRemoveDeviceData001 put fail ' + err);
                 expect(null).assertFail();
             });
-
             var deviceid = 'no_exist_device_id';
             await kvStore.removeDeviceData(deviceid).then((err) => {
                 console.log('testDeviceKvStoreRemoveDeviceData001 removeDeviceData success');
@@ -1598,7 +1932,6 @@ describe('DeviceKvStorePromiseTest', function () {
             }).catch((err) => {
                 console.log('testDeviceKvStoreRemoveDeviceData001 removeDeviceData fail ' + err);
             });
-
             await kvStore.get(localDeviceId, KEY_TEST_STRING_ELEMENT).then((data) => {
                 console.log('testDeviceKvStoreRemoveDeviceData001 get success data:' + data);
                 expect(data == VALUE_TEST_STRING_ELEMENT).assertTrue();
@@ -1606,7 +1939,6 @@ describe('DeviceKvStorePromiseTest', function () {
                 console.log('testDeviceKvStoreRemoveDeviceData001 get fail ' + err);
                 expect(null).assertFail();
             });
-
         }catch(e) {
             console.log('testDeviceKvStoreRemoveDeviceData001 e ' + e);
             expect(null).assertFail();
@@ -1614,6 +1946,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_REMOVEDEVICEDATA_0200
+     * @tc.name [JS-API8]DeviceKvStore.RemoveDeviceData()
+     * @tc.desc Test Js Api DeviceKvStore.RemoveDeviceData() testcase 002
+     */
     it('testDeviceKvStoreRemoveDeviceData002', 0, async function (done) {
         console.log('testDeviceKvStoreRemoveDeviceData002');
         try {
@@ -1629,6 +1966,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_REMOVEDEVICEDATA_0300
+     * @tc.name [JS-API8]DeviceKvStore.RemoveDeviceData()
+     * @tc.desc Test Js Api DeviceKvStore.RemoveDeviceData() testcase 003
+     */
     it('testDeviceKvStoreRemoveDeviceData003', 0, async function (done) {
         console.log('testDeviceKvStoreRemoveDeviceData003');
         try {
@@ -1644,6 +1986,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_REMOVEDEVICEDATA_0400
+     * @tc.name [JS-API8]DeviceKvStore.RemoveDeviceData()
+     * @tc.desc Test Js Api DeviceKvStore.RemoveDeviceData() testcase 004
+     */
     it('testDeviceKvStoreRemoveDeviceData004', 0, async function (done) {
         console.log('testDeviceKvStoreRemoveDeviceData004');
         try {
@@ -1659,6 +2006,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_GETRESULTSET_0100
+     * @tc.name [JS-API8]DeviceKvStore.getResultSet()
+     * @tc.desc Test Js Api DeviceKvStore.getResultSet() testcase 001
+     */
     it('testDeviceKvStoreGetResultSet001', 0, async function (done) {
         console.log('testDeviceKvStoreGetResultSet001');
         try {
@@ -1697,7 +2049,6 @@ describe('DeviceKvStorePromiseTest', function () {
                 console.log('testDeviceKvStoreGetResultSet001 closeResultSet fail ' + err);
                 expect(null).assertFail();
             });
-
         }catch(e) {
             console.log('testDeviceKvStoreGetResultSet001 e ' + e);
             expect(null).assertFail();
@@ -1705,6 +2056,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_GETRESULTSET_0200
+     * @tc.name [JS-API8]DeviceKvStore.getResultSet()
+     * @tc.desc Test Js Api DeviceKvStore.getResultSet() testcase 002
+     */
     it('testDeviceKvStoreGetResultSet002', 0, async function (done) {
         console.log('testDeviceKvStoreGetResultSet002');
         try {
@@ -1731,6 +2087,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_GETRESULTSET_0300
+     * @tc.name [JS-API8]DeviceKvStore.getResultSet()
+     * @tc.desc Test Js Api DeviceKvStore.getResultSet() testcase 003
+     */
     it('testDeviceKvStoreGetResultSet003', 0, async function (done) {
         console.log('testDeviceKvStoreGetResultSet003');
         try {
@@ -1740,7 +2101,6 @@ describe('DeviceKvStorePromiseTest', function () {
                 expect(null).assertFail();
             }).catch((err) => {
                 console.log('testDeviceKvStoreGetResultSet003 getResultSet fail ' + err);
-
             });
         }catch(e) {
             console.log('testDeviceKvStoreGetResultSet003 e ' + e);
@@ -1749,6 +2109,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_GETRESULTSET_0400
+     * @tc.name [JS-API8]DeviceKvStore.getResultSet()
+     * @tc.desc Test Js Api DeviceKvStore.getResultSet() testcase 004
+     */
     it('testDeviceKvStoreGetResultSet004', 0, async function (done) {
         console.log('testDeviceKvStoreGetResultSet004');
         try {
@@ -1758,7 +2123,6 @@ describe('DeviceKvStorePromiseTest', function () {
                 expect(null).assertFail();
             }).catch((err) => {
                 console.log('testDeviceKvStoreGetResultSet004 getResultSet fail ' + err);
-
             });
         }catch(e) {
             console.log('testDeviceKvStoreGetResultSet004 e ' + e);
@@ -1767,6 +2131,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_GETRESULTSET_0500
+     * @tc.name [JS-API8]DeviceKvStore.getResultSet()
+     * @tc.desc Test Js Api DeviceKvStore.getResultSet() testcase 005
+     */
     it('testDeviceKvStoreGetResultSet005', 0, async function (done) {
         console.log('testDeviceKvStoreGetResultSet005');
         try {
@@ -1809,7 +2178,6 @@ describe('DeviceKvStorePromiseTest', function () {
                 console.log('testDeviceKvStoreGetResultSet005 closeResultSet fail ' + err);
                 expect(null).assertFail();
             });
-
         }catch(e) {
             console.log('testDeviceKvStoreGetResultSet005 e ' + e);
             expect(null).assertFail();
@@ -1817,6 +2185,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_GETRESULTSET_0600
+     * @tc.name [JS-API8]DeviceKvStore.getResultSet()
+     * @tc.desc Test Js Api DeviceKvStore.getResultSet() testcase 006
+     */
     it('testDeviceKvStoreGetResultSet006', 0, async function (done) {
         console.log('testDeviceKvStoreGetResultSet006');
         try {
@@ -1859,7 +2232,6 @@ describe('DeviceKvStorePromiseTest', function () {
                 console.log('testDeviceKvStoreGetResultSet006 closeResultSet fail ' + err);
                 expect(null).assertFail();
             });
-
         }catch(e) {
             console.log('testDeviceKvStoreGetResultSet006 e ' + e);
             expect(null).assertFail();
@@ -1867,6 +2239,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_CLOSERESULTSET_0100
+     * @tc.name [JS-API8]DeviceKvStore.CloseResultSet()
+     * @tc.desc Test Js Api DeviceKvStore.CloseResultSet() testcase 001
+     */
     it('testDeviceKvStoreCloseResultSet001', 0, async function (done) {
         console.log('testDeviceKvStoreCloseResultSet001');
         try {
@@ -1885,6 +2262,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_CLOSERESULTSET_0200
+     * @tc.name [JS-API8]DeviceKvStore.CloseResultSet()
+     * @tc.desc Test Js Api DeviceKvStore.CloseResultSet() testcase 002
+     */
     it('testDeviceKvStoreCloseResultSet002', 0, async function (done) {
         console.log('testDeviceKvStoreCloseResultSet002');
         try {
@@ -1911,6 +2293,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_CLOSERESULTSET_0300
+     * @tc.name [JS-API8]DeviceKvStore.CloseResultSet()
+     * @tc.desc Test Js Api DeviceKvStore.CloseResultSet() testcase 003
+     */
     it('testDeviceKvStoreCloseResultSet003', 0, async function (done) {
         console.log('testDeviceKvStoreCloseResultSet003');
         try {
@@ -1929,10 +2316,14 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_CLOSERESULTSET_0400
+     * @tc.name [JS-API8]DeviceKvStore.CloseResultSet()
+     * @tc.desc Test Js Api DeviceKvStore.CloseResultSet() testcase 004
+     */
     it('testDeviceKvStoreCloseResultSet004', 0, async function (done) {
         console.log('testDeviceKvStoreCloseResultSet004');
         try {
-            // pass query
             console.log('testDeviceKvStoreCloseResultSet004 success');
         }catch(e) {
             console.log('testDeviceKvStoreCloseResultSet004 e ' + e);
@@ -1941,7 +2332,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
-
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_GETRESULTSIZE_0100
+     * @tc.name [JS-API8]DeviceKvStore.Get(ResultSize)
+     * @tc.desc Test Js Api DeviceKvStore.Get(ResultSize) testcase 001
+     */
     it('testDeviceKvStoreGetResultSize001', 0, async function (done) {
         console.log('testDeviceKvStoreGetResultSize001');
         try {
@@ -1974,7 +2369,6 @@ describe('DeviceKvStorePromiseTest', function () {
                 console.log('testDeviceKvStoreGetResultSize001 getResultSet fail ' + err);
                 expect(null).assertFail();
             });
-
         }catch(e) {
             console.log('testDeviceKvStoreGetResultSize001 e ' + e);
             expect(null).assertFail();
@@ -1982,6 +2376,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_GETRESULTSIZE_0200
+     * @tc.name [JS-API8]DeviceKvStore.Get(ResultSize)
+     * @tc.desc Test Js Api DeviceKvStore.Get(ResultSize) testcase 002
+     */
     it('testDeviceKvStoreGetResultSize002', 0, async function (done) {
         console.log('testDeviceKvStoreGetResultSize001');
         try {
@@ -2020,6 +2419,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_GETENTRIES_0100
+     * @tc.name [JS-API8]DeviceKvStore.GetEntries()
+     * @tc.desc Test Js Api DeviceKvStore.GetEntries() testcase 001
+     */
     it('testDeviceKvStoreGetEntries001', 0, async function (done) {
         console.log('testDeviceKvStoreGetEntries001');
         try {
@@ -2063,6 +2467,11 @@ describe('DeviceKvStorePromiseTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_DEVICEKVSTORE_GETENTRIES_0200
+     * @tc.name [JS-API8]DeviceKvStore.GetEntries()
+     * @tc.desc Test Js Api DeviceKvStore.GetEntries() testcase 002
+     */
     it('testDeviceKvStoreGetEntries002', 0, async function (done) {
         console.log('testDeviceKvStoreGetEntries002');
         try {
