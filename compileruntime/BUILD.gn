@@ -21,9 +21,8 @@ group("compileruntime") {
       "uri_lib_standard:uri_js_test",
       "url_lib_standard:url_js_test",
       "util_lib_standard:util_js_test",
+      "worker_lib_standard:worker_js_hap",
       "xml_lib_standard:xml_js_test",
-
-      # "worker_lib_standard:worker_js_hap",
     ]
   }
 }
