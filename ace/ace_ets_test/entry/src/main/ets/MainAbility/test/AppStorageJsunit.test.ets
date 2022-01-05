@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
@@ -30,8 +30,7 @@ export default function appStorageJsunit() {
   }
 
   describe('appStorageTest', function () {
-
-    beforeEach(async function{
+    beforeEach(async function (done) {
       let options = {
         uri: 'pages/AppStorage',
       }
@@ -39,7 +38,7 @@ export default function appStorageJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get AppStorage state success " + JSON.stringify(pages));
-        if(!("AppStorage" == pages.name)){
+        if (!("AppStorage" == pages.name)) {
           console.info("get AppStorage state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push AppStorage page success " + JSON.stringify(result));
@@ -48,11 +47,12 @@ export default function appStorageJsunit() {
         console.error("push AppStorage page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
-    afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+    afterEach(async function () {
+      await sleep(1)
+      console.info("AppStorage after each called");
     });
 
 

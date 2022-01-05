@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
@@ -30,7 +30,7 @@ export default function spanJsunit() {
   }
 
   describe('SpanTest', function () {
-    beforeEach(async function{
+    beforeEach(async function (done) {
       let options = {
         uri: 'pages/Span',
       }
@@ -38,7 +38,7 @@ export default function spanJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get Span state success " + JSON.stringify(pages));
-        if(!("Span" == pages.name)){
+        if (!("Span" == pages.name)) {
           console.info("get Span state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push Span page success " + JSON.stringify(result));
@@ -47,11 +47,12 @@ export default function spanJsunit() {
         console.error("push Span page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
-    afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+    afterEach(async function () {
+      await sleep(1)
+      console.info("Span after each called");
     });
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_1080

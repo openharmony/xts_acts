@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
@@ -30,7 +30,7 @@ export default function rowSplitJsunit() {
   }
 
   describe('RowSplitTest', function () {
-    beforeEach(async function{
+    beforeEach(async function (done) {
       let options = {
         uri: 'pages/RowSplit',
       }
@@ -38,7 +38,7 @@ export default function rowSplitJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get RowSplit state success " + JSON.stringify(pages));
-        if(!("RowSplit" == pages.name)){
+        if (!("RowSplit" == pages.name)) {
           console.info("get RowSplit state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push RowSplit page success " + JSON.stringify(result));
@@ -47,11 +47,12 @@ export default function rowSplitJsunit() {
         console.error("push RowSplit page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
-    afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+    afterEach(async function () {
+      await sleep(1)
+      console.info("RowSplit after each called");
     });
 
     /**

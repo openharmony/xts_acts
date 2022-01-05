@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
@@ -30,16 +30,15 @@ export default function listItemJsunit() {
   }
 
   describe('listItemTest', function () {
-
-    beforeEach(async function{
+    beforeEach(async function (done) {
       let options = {
         uri: 'pages/ListItem',
       }
-     try {
+      try {
         router.clear();
         let pages = router.getState();
         console.info("get ListItem state success " + JSON.stringify(pages));
-        if(!("ListItem" == pages.name)){
+        if (!("ListItem" == pages.name)) {
           console.info("get ListItem state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push ListItem page success " + JSON.stringify(result));
@@ -48,11 +47,12 @@ export default function listItemJsunit() {
         console.error("push ListItem page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
-    afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+    afterEach(async function () {
+      await sleep(1)
+      console.info("ListItem after each called");
     });
 
     /**

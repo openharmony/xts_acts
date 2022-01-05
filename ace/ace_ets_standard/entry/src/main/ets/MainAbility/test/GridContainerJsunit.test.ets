@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
@@ -30,7 +30,7 @@ export default function gridContainerJsunit() {
   }
 
   describe('gridContainerTest', function () {
-    beforeEach(async function{
+    beforeEach(async function (done) {
       let options = {
         uri: 'pages/GridContainer',
       }
@@ -38,7 +38,7 @@ export default function gridContainerJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get GridContainer state success " + JSON.stringify(pages));
-        if(!("GridContainer" == pages.name)){
+        if (!("GridContainer" == pages.name)) {
           console.info("get GridContainer state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push GridContainer page success " + JSON.stringify(result));
@@ -47,11 +47,12 @@ export default function gridContainerJsunit() {
         console.error("push GridContainer page error " + JSON.stringify(result));
       }
       await sleep(1)
+      done()
     });
 
-    afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+    afterEach(async function () {
+      await sleep(1)
+      console.info("GridContainer after each called");
     });
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0830

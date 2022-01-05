@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
@@ -30,7 +30,7 @@ export default function qrcodeJsunit() {
   }
 
   describe('QrcodeTest', function () {
-    beforeEach(async function{
+    beforeEach(async function (done) {
       let options = {
         uri: 'pages/Qrcode',
       }
@@ -38,7 +38,7 @@ export default function qrcodeJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get Qrcode state success " + JSON.stringify(pages));
-        if(!("Qrcode" == pages.name)){
+        if (!("Qrcode" == pages.name)) {
           console.info("get Qrcode state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push Qrcode page success " + JSON.stringify(result));
@@ -47,11 +47,12 @@ export default function qrcodeJsunit() {
         console.error("push Qrcode page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
-    afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+    afterEach(async function () {
+      await sleep(1)
+      console.info("Qrcode after each called");
     });
 
     /**

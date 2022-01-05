@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
@@ -28,9 +28,10 @@ export default function videoJsunit() {
       console.info(`sleep ${time} over...`)
     })
   }
+
   describe('VideoAppInfoTest', function () {
 
-    beforeEach(async function{
+    beforeEach(async function (done) {
       let options = {
         uri: 'pages/Video',
       }
@@ -38,7 +39,7 @@ export default function videoJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get Video state success " + JSON.stringify(pages));
-        if(!("Video" == pages.name)){
+        if (!("Video" == pages.name)) {
           console.info("get Video state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push Video page success " + JSON.stringify(result));
@@ -47,11 +48,12 @@ export default function videoJsunit() {
         console.error("push Video page error " + JSON.stringify(result));
       }
       await sleep(2)
+      done()
     });
 
-    afterEach(async function{
-      await sleep(3)
-      console.info("await 3s ");
+    afterEach(async function () {
+      console.info("Video after each called");
+      await sleep(1)
     });
 
     /**
@@ -65,12 +67,12 @@ export default function videoJsunit() {
       let strJson = getInspectorByKey('video');
       let obj = JSON.parse(strJson);
       console.info("cd video component obj is: " + JSON.stringify(obj));
-      console.log("cd video type" +JSON.stringify(obj.$type));
-      console.log("cd video autoPlay" +JSON.stringify(obj.$attrs.autoPlay));
-      console.log("cd video muted" +JSON.stringify(obj.$attrs.muted));
-      console.log("cd video controls" +JSON.stringify(obj.$attrs.controls));
-      console.log("cd video loop" +JSON.stringify(obj.$attrs.loop));
-      console.log("cd video objectFit" +JSON.stringify(obj.$attrs.objectFit));
+      console.log("cd video type" + JSON.stringify(obj.$type));
+      console.log("cd video autoPlay" + JSON.stringify(obj.$attrs.autoPlay));
+      console.log("cd video muted" + JSON.stringify(obj.$attrs.muted));
+      console.log("cd video controls" + JSON.stringify(obj.$attrs.controls));
+      console.log("cd video loop" + JSON.stringify(obj.$attrs.loop));
+      console.log("cd video objectFit" + JSON.stringify(obj.$attrs.objectFit));
       console.info('videoAppInfoTest001 END');
       done();
     });
