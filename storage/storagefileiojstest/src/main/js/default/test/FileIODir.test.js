@@ -35,8 +35,8 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_open_sync_000
    * @tc.desc Function of API, opendirSync.
    */
-  it('fileio_test_dir_open_sync_000', 0, function () {
-    let dpath = nextFileName('fileio_test_dir_open_sync_000') + 'd'
+  it('fileio_test_dir_open_sync_000', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dir_open_sync_000') + 'd'
     try {
       expect(fileio.mkdirSync(dpath) !== null).assertTrue();
       let dd = fileio.opendirSync(dpath);
@@ -70,8 +70,8 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_open_sync_002
    * @tc.desc Function of API, dpath value is not exist.
    */
-  it('fileio_test_dir_open_sync_002', 0, function () {
-    let dpath = nextFileName('fileio_test_dir_open_sync_003') + 'd'
+  it('fileio_test_dir_open_sync_002', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dir_open_sync_003') + 'd'
     try {
       fileio.opendirSync(dpath);
       expect(null).assertFail();
@@ -86,8 +86,8 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_open_sync_003
    * @tc.desc Function of API, dpath too long.
    */
-  it('fileio_test_dir_open_sync_003', 0, function () {
-    let dpath = nextFileName('fileio_dir11');
+  it('fileio_test_dir_open_sync_003', 0, async function () {
+    let dpath = await nextFileName('fileio_dir11');
     fileio.mkdirSync(dpath);
     try {
       for (let i = 0; i < 16; i++) {
@@ -107,8 +107,8 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_open_sync_004
    * @tc.desc Function of API, filename too long.
    */
-  it('fileio_test_dir_open_sync_004', 0, function () {
-    let dpath = nextFileName(randomString(256));
+  it('fileio_test_dir_open_sync_004', 0, async function () {
+    let dpath = await nextFileName(randomString(256));
     try {
       fileio.mkdirSync(dpath);
       expect(null).assertFail();
@@ -123,8 +123,8 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_open_sync_005
    * @tc.desc Function of API, uri dir too many layers.
    */
-  it('fileio_test_dir_open_sync_005', 0, function () {
-    let dpath = nextFileName('dir');
+  it('fileio_test_dir_open_sync_005', 0, async function () {
+    let dpath = await nextFileName('dir');
     fileio.mkdirSync(dpath);
     try {
       for (let i = 0; i < 1024; i++) {
@@ -144,8 +144,8 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_open_sync_006
    * @tc.desc Function of API, file name contain special character.
    */
-  it('fileio_test_dir_open_sync_006', 0, function () {
-    let dpath = nextFileName('?*:<>/|');
+  it('fileio_test_dir_open_sync_006', 0, async function () {
+    let dpath = await nextFileName('?*:<>/|');
     try {
       fileio.mkdirSync(dpath);
       expect(null).assertFail();
@@ -160,8 +160,8 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_read_sync_000
    * @tc.desc Function of API, readSync. The dir contains 1 file.
    */
-  it('fileio_test_dir_read_sync_000', 0, function () {
-    let dpath = nextFileName('fileio_test_dir_read_sync_000') + 'd'
+  it('fileio_test_dir_read_sync_000', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dir_read_sync_000') + 'd'
     let fpath = dpath + '/f0'
     try {
       expect(typeof(fileio.mkdirSync(dpath)) == 'undefined').assertTrue();
@@ -184,8 +184,8 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_read_sync_001
    * @tc.desc Function of API, readSync. The dir contains more than 1 files.
    */
-  it('fileio_test_dir_read_sync_001', 0, function () {
-    let dpath = nextFileName('fileio_test_dir_read_sync_001') + 'd'
+  it('fileio_test_dir_read_sync_001', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dir_read_sync_001') + 'd'
     let fpathArray = new Array(dpath + '/f1', dpath + '/f2', dpath + '/d3');
     try {
       expect(fileio.mkdirSync(dpath) !== null).assertTrue();
@@ -228,8 +228,8 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_read_sync_002
    * @tc.desc Function of API, repeat read. The dir contains more than 1 files.
    */
-  it('fileio_test_dir_read_sync_002', 0, function () {
-    let dpath = nextFileName('fileio_test_dir_read_sync_002') + 'd'
+  it('fileio_test_dir_read_sync_002', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dir_read_sync_002') + 'd'
     let fpathArray = new Array(dpath + '/f1', dpath + '/f2', dpath + '/d3');
     try {
       expect(fileio.mkdirSync(dpath) !== null).assertTrue();
@@ -267,8 +267,8 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_read_sync_003
    * @tc.desc Function of API, readSync. The dir no any files.
    */
-  it('fileio_test_dir_read_sync_003', 0, function () {
-    let dpath = nextFileName('fileio_test_dir_read_sync_003') + 'd'
+  it('fileio_test_dir_read_sync_003', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dir_read_sync_003') + 'd'
     let dd;
     try {
       expect(fileio.mkdirSync(dpath) !== null).assertTrue();
@@ -289,8 +289,8 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_read_sync_004
    * @tc.desc Function of API, error parameter.
    */
-  it('fileio_test_dir_read_sync_004', 0, function () {
-    let dpath = nextFileName('fileio_test_dir_read_sync_004') + 'd'
+  it('fileio_test_dir_read_sync_004', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dir_read_sync_004') + 'd'
     let fpath = dpath + '/f1'
     let dd
     try {
@@ -314,8 +314,8 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_read_sync_005
    * @tc.desc Function of API, excess files.
    */
-  it('fileio_test_dir_read_sync_005', 0, function () {
-    let dpath = nextFileName('fileio_test_dir_read_sync_005') + 'd'
+  it('fileio_test_dir_read_sync_005', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dir_read_sync_005') + 'd'
     let fpath = dpath + '/f'
     try {
       expect(typeof(fileio.mkdirSync(dpath)) == 'undefined').assertTrue();
@@ -342,8 +342,8 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_close_sync_000
    * @tc.desc Function of API, closeSync.
    */
-  it('fileio_test_dir_close_sync_000', 0, function () {
-    let dpath = nextFileName('fileio_test_dir_close_sync_000') + 'd'
+  it('fileio_test_dir_close_sync_000', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dir_close_sync_000') + 'd'
     try {
       expect(fileio.mkdirSync(dpath) !== null).assertTrue();
       let dd = fileio.opendirSync(dpath);

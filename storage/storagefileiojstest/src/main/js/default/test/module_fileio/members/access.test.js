@@ -21,13 +21,17 @@ import {
 describe('fileio_access', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_AccessSync_0000
+   * @tc.number SUB_DF_FILEIO_ACCESSSYNC_0000
    * @tc.name fileio_test_access_sync_000
    * @tc.desc Test accessSync() interface.
-   * This interface shall work properly in normal case.
+   * This interface shall work properly in normal case
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_access_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_access_sync_000');
+  it('fileio_test_access_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_access_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -40,13 +44,17 @@ describe('fileio_access', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_AccessSync_0010
+   * @tc.number SUB_DF_FILEIO_ACCESSSYNC_0010
    * @tc.name fileio_test_access_sync_001
    * @tc.desc Test accessSync() interface.
-   * This interface shall throw an exception when the fpath is not given.
+   * This interface shall throw an exception when the fpath is not given
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_access_sync_001', 0, function () {
-    let fpath = nextFileName('fileio_test_access_sync_001');
+  it('fileio_test_access_sync_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_access_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -59,13 +67,17 @@ describe('fileio_access', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_AccessSync_0020
+   * @tc.number SUB_DF_FILEIO_ACCESSSYNC_0020
    * @tc.name fileio_test_access_sync_002
    * @tc.desc Test accessSync() interface.
-   * This interface shall throw an exception when the fpath is not given.
+   * This interface shall throw an exception when the fpath is not given
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_access_sync_002', 0, function () {
-    let fpath = nextFileName('fileio_test_access_sync_002');
+  it('fileio_test_access_sync_002', 0, async function () {
+    let fpath = await nextFileName('fileio_test_access_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -78,13 +90,17 @@ describe('fileio_access', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_AccessSync_0030
+   * @tc.number SUB_DF_FILEIO_ACCESSSYNC_0030
    * @tc.name fileio_test_access_sync_003
    * @tc.desc Test accessSync() interface.
    * This interface shall throw an exception when the fpath is not given.
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_access_sync_003', 0, function () {
-    let fpath = nextFileName('fileio_test_access_sync_003');
+  it('fileio_test_access_sync_003', 0, async function () {
+    let fpath = await nextFileName('fileio_test_access_sync_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -97,13 +113,17 @@ describe('fileio_access', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_AccessSync_0040
+   * @tc.number SUB_DF_FILEIO_ACCESSSYNC_0040
    * @tc.name fileio_test_access_sync_004
    * @tc.desc Test accessSync() interface.
-   * This interface shall throw an exception when the fpath is not given.
+   * This interface shall throw an exception when the fpath is not given
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_access_sync_004', 0, function () {
-    let fpath = nextFileName('fileIOTest');
+  it('fileio_test_access_sync_004', 0, async function () {
+    let fpath = await nextFileName('fileIOTest');
 
     try {
       fileio.accessSync(fpath);
@@ -113,13 +133,17 @@ describe('fileio_access', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_AccessAsync_0000
+   * @tc.number SUB_DF_FILEIO_ACCESSASYNC_0000
    * @tc.name fileio_test_access_async_000
    * @tc.desc Test accessAsync() interface.
-   * This interface shall throw an exception when the fpath is not given.
+   * This interface shall throw an exception when the fpath is not given
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_access_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_access_async_000');
+    let fpath = await nextFileName('fileio_test_access_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -133,13 +157,17 @@ describe('fileio_access', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_AccessAsync_0010
+   * @tc.number SUB_DF_FILEIO_ACCESSASYNC_0010
    * @tc.name fileio_test_access_async_001
    * @tc.desc Test accessAsync() interface.
-   * This interface shall throw an exception when the fpath is not given.
+   * This interface shall throw an exception when the fpath is not given
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_access_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_access_async_001');
+    let fpath = await nextFileName('fileio_test_access_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -159,13 +187,17 @@ describe('fileio_access', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_AccessAsync_0020
+   * @tc.number SUB_DF_FILEIO_ACCESSASYNC_0020
    * @tc.name fileio_test_access_async_002
    * @tc.desc Test accessAsync() interface.
-   * This interface shall throw an exception when the fpath is not given.
+   * This interface shall throw an exception when the fpath is not given
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_access_async_002', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_access_async_002');
+    let fpath = await nextFileName('fileio_test_access_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -180,13 +212,17 @@ describe('fileio_access', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_AccessAsync_0030
+   * @tc.number SUB_DF_FILEIO_ACCESSASYNC_0030
    * @tc.name fileio_test_access_async_003
    * @tc.desc Test accessAsync() interface.
-   * This interface shall throw an exception when the fpath is not given.
+   * This interface shall throw an exception when the fpath is not given
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_access_async_003', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_access_async_003');
+    let fpath = await nextFileName('fileio_test_access_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -207,13 +243,17 @@ describe('fileio_access', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_AccessAsync_0040
+   * @tc.number SUB_DF_FILEIO_ACCESSASYNC_0040
    * @tc.name fileio_test_access_async_004
    * @tc.desc Test accessAsync() interface.
    * This interface shall throw an exception when the fpath is not given.
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_access_async_004', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_access_async_004');
+    let fpath = await nextFileName('fileio_test_access_async_004');
 
     try {
       fileio

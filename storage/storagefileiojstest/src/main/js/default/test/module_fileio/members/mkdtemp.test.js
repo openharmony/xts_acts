@@ -18,12 +18,16 @@ import { fileio, nextFileName, describe, it, expect } from '../../Common';
 describe('fileio_mkdtemp', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_MkdtempSync_0000
+   * @tc.number SUB_DF_FILEIO_MKDTEMP_SYNC_0000
    * @tc.name fileio_test_mkdtemp_sync_000
    * @tc.desc Test mkdtempSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_mkdtemp_sync_000', 0, function () {
-    let dpath = nextFileName('fileio_test_mkdtemp_sync_000');
+  it('fileio_test_mkdtemp_sync_000', 0, async function () {
+    let dpath = await nextFileName('fileio_test_mkdtemp_sync_000');
     dpath = dpath + 'XXXX';
 
     try {
@@ -34,12 +38,16 @@ describe('fileio_mkdtemp', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_MkdtempSync_0010
+   * @tc.number SUB_DF_FILEIO_MKDTEMP_SYNC_0010
    * @tc.name fileio_test_mkdtemp_sync_001
    * @tc.desc Test mkdtempSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_mkdtemp_sync_001', 0, function () {
-    let dpath = nextFileName('fileio_test_mkdtemp_sync_001');
+  it('fileio_test_mkdtemp_sync_001', 0, async function () {
+    let dpath = await nextFileName('fileio_test_mkdtemp_sync_001');
     dpath = dpath + 'XXXXXX';
 
     try {
@@ -52,12 +60,16 @@ describe('fileio_mkdtemp', function () {
   });
   
   /**
-   * @tc.number SUB_DF_FileIO_MkdtempASync_0000
+   * @tc.number SUB_DF_FILEIO_MKDTEMP_ASYNC_0000
    * @tc.name fileio_test_mkdtemp_async_000
    * @tc.desc Test mkdtempASync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_mkdtemp_async_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_test_mkdtemp_async_000');
+    let dpath = await nextFileName('fileio_test_mkdtemp_async_000');
     dpath = dpath + 'XXXXXX';
     try {
       let res = await fileio.mkdtemp(dpath);
@@ -70,17 +82,20 @@ describe('fileio_mkdtemp', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_MkdtempASync_0010
+   * @tc.number SUB_DF_FILEIO_MKDTEMP_ASYNC_0010
    * @tc.name fileio_test_mkdtemp_async_001
    * @tc.desc Test mkdtempASync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_mkdtemp_async_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_test_mkdtemp_async_001');
+    let dpath = await nextFileName('fileio_test_mkdtemp_async_001');
     dpath = dpath + 'XXXXXX';
 
     try {
       fileio.mkdtemp(dpath, function (err, res) {
-        expect(!err).assertTrue();
         expect(fileio.rmdirSync(res) == null).assertTrue();
         done();
       });

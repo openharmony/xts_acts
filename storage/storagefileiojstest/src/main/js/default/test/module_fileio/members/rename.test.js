@@ -20,12 +20,16 @@ import {
 describe('fileio_rename', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_RenameAsync_0000
+   * @tc.number SUB_DF_FILEIO_RENAME_ASYNC_0000
    * @tc.name fileio_test_rename_async_000
    * @tc.desc Test renameAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_rename_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_rename_async_000');
+    let fpath = await nextFileName('fileio_test_rename_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -46,19 +50,22 @@ describe('fileio_rename', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_RenameAsync_0010
+   * @tc.number SUB_DF_FILEIO_RENAME_ASYNC_0010
    * @tc.name fileio_test_rename_async_001
    * @tc.desc Test renameAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_rename_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_rename_async_001');
+    let fpath = await nextFileName('fileio_test_rename_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
       let newf = fpath + 'aaa';
       await fileio.rename(fpath, newf, function (err) {
         expect(fileio.accessSync(newf) == null).assertTrue();
-        expect(err == null).assertTrue();
         expect(fileio.unlinkSync(newf) == null).assertTrue();
         done();
       })
@@ -68,12 +75,16 @@ describe('fileio_rename', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_RenameAsync_0020
+   * @tc.number SUB_DF_FILEIO_RENAME_ASYNC_0020
    * @tc.name fileio_test_rename_async_002
    * @tc.desc Test renameAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_rename_async_002', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_rename_async_002');
+    let fpath = await nextFileName('fileio_test_rename_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {

@@ -21,9 +21,13 @@ import {
 describe('fileio_open', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_OpenSync_0000
+   * @tc.number SUB_DF_FILEIO_OPEN_SYNC_0000
    * @tc.name fileio_test_open_sync_000
    * @tc.desc Test openSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_open_sync_000', 0, function () {
     try {
@@ -33,12 +37,16 @@ describe('fileio_open', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_OpenAsync_0000
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0000
    * @tc.name fileio_test_open_async_000
    * @tc.desc Test openASync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_open_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_open_async_000');
+    let fpath = await nextFileName('fileio_test_open_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -60,12 +68,16 @@ describe('fileio_open', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_OpenAsync_0010
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0010
    * @tc.name fileio_test_open_async_001
    * @tc.desc Test openASync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_open_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_open_async_001');
+    let fpath = await nextFileName('fileio_test_open_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -85,12 +97,16 @@ describe('fileio_open', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_OpenAsync_0020
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0020
    * @tc.name fileio_test_open_async_002
    * @tc.desc Test openASync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_open_async_002', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_open_async_002');
+    let fpath = await nextFileName('fileio_test_open_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -110,12 +126,16 @@ describe('fileio_open', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_OpenAsync_0030
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0030
    * @tc.name fileio_test_open_async_003
    * @tc.desc Test openASync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_open_async_003', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_open_async_003');
+    let fpath = await nextFileName('fileio_test_open_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -135,12 +155,16 @@ describe('fileio_open', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_OpenAsync_0040
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0040
    * @tc.name fileio_test_open_async_004
    * @tc.desc Test openASync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_open_async_004', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_open_async_004');
+    let fpath = await nextFileName('fileio_test_open_async_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -164,12 +188,16 @@ describe('fileio_open', function () {
   });
   
   /**
-   * @tc.number SUB_DF_FileIO_OpenAsync_0050
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0050
    * @tc.name fileio_test_open_async_005
    * @tc.desc Test openASync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_open_async_005', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_open_async_005');
+    let fpath = await nextFileName('fileio_test_open_async_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       await fileio.open(fpath, 0o0)
@@ -192,12 +220,16 @@ describe('fileio_open', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_OpenAsync_0060
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0060
    * @tc.name fileio_test_open_async_006
    * @tc.desc Test openASync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_open_async_006', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_open_async_006');
+    let fpath = await nextFileName('fileio_test_open_async_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       await fileio.open(fpath, 0o1, 0o0200)

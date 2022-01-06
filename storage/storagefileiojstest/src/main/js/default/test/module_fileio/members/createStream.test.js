@@ -21,12 +21,16 @@ import {
 describe('fileio_createStream', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_CreateStreamAsync_0000
+   * @tc.number SUB_DF_FILEIO_STREAM_CREATE_STREAM_ASYNC_0000
    * @tc.name fileio_test_stream_create_stream_async_000
    * @tc.desc Test createStreamAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_stream_create_stream_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_stream_create_stream_async_000');
+    let fpath = await nextFileName('fileio_test_stream_create_stream_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -43,17 +47,20 @@ describe('fileio_createStream', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_CreateStreamAsync_0010
+   * @tc.number SUB_DF_FILEIO_STREAM_CREATE_STREAM_ASYNC_0010
    * @tc.name fileio_test_stream_create_stream_async_001
    * @tc.desc Test createStreamAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_stream_create_stream_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_stream_create_stream_async_001');
+    let fpath = await nextFileName('fileio_test_stream_create_stream_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
       await fileio.createStream(fpath, 'r+', function (err, stream) {
-        expect(!err).assertTrue();
         expect(stream.closeSync() == null).assertTrue();
         expect(fileio.unlinkSync(fpath) == null).assertTrue();
         done();
@@ -65,17 +72,20 @@ describe('fileio_createStream', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_CreateStreamAsync_0020
+   * @tc.number SUB_DF_FILEIO_STREAM_CREATE_STREAM_ASYNC_0020
    * @tc.name fileio_test_stream_create_stream_async_002
    * @tc.desc Test createStreamAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_stream_create_stream_async_002', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_stream_create_stream_async_002');
+    let fpath = await nextFileName('fileio_test_stream_create_stream_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
       await fileio.createStream(fpath, 'r+', function (err, stream) {
-        expect(!err).assertTrue();
         expect(stream.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
         expect(stream.closeSync() == null).assertTrue();
         expect(fileio.unlinkSync(fpath) == null).assertTrue();
@@ -88,12 +98,16 @@ describe('fileio_createStream', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_CreateStreamAsync_0030
+   * @tc.number SUB_DF_FILEIO_STREAM_CREATE_STREAM_ASYNC_0030
    * @tc.name fileio_test_stream_create_stream_async_003
    * @tc.desc Test createStreamAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_stream_create_stream_async_003', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_stream_create_stream_async_003');
+    let fpath = await nextFileName('fileio_test_stream_create_stream_async_003');
 
     try {
       fileio.createStream(fpath, 'r+', function (err) {
@@ -106,12 +120,16 @@ describe('fileio_createStream', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_CreateStreamAsync_0030
+   * @tc.number SUB_DF_FILEIO_STREAM_CREATE_STREAM_ASYNC_0030
    * @tc.name fileio_test_stream_create_stream_async_003
    * @tc.desc Test createStreamSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_stream_create_stream_async_004', 0, function (done) {
-    let fpath = nextFileName('fileio_test_stream_create_stream_async_004');
+  it('fileio_test_stream_create_stream_async_004', 0, async function (done) {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_async_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {

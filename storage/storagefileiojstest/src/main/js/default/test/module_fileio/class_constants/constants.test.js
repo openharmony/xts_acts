@@ -21,9 +21,13 @@ import {
 describe('constants', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_constants
+   * @tc.number SUB_DF_FILEIO_CONSTANTS
    * @tc.name fileio_test_constants
    * @tc.desc Test constants() interface.
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_constants', 0, function () {
     try {

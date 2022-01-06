@@ -21,12 +21,16 @@ import {
 describe('fileio_stat_fsync', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_FsyncSync_0000
+   * @tc.number SUB_DF_FILEIO_FSYNC_SYNC_0000
    * @tc.name fileio_test_fsync_sync_000
    * @tc.desc Test fsyncSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_fsync_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_fsync_sync_000');
+  it('fileio_test_fsync_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_fsync_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -41,9 +45,13 @@ describe('fileio_stat_fsync', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_FsyncSync_0010
+   * @tc.number SUB_DF_FILEIO_FSYNC_SYNC_0010
    * @tc.name fileio_test_fsync_sync_001
    * @tc.desc Test fsyncSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_fsync_sync_001', 0, function () {
     try {
@@ -54,12 +62,16 @@ describe('fileio_stat_fsync', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_FsyncAsync_000
+   * @tc.number SUB_DF_FILEIO_FSYNC_ASYNC_000
    * @tc.name fileio_test_fsync_sync_000
    * @tc.desc Test fsync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_fsync_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_fsync_async_000');
+    let fpath = await nextFileName('fileio_test_fsync_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -75,12 +87,16 @@ describe('fileio_stat_fsync', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_FsyncAsync_001
+   * @tc.number SUB_DF_FILEIO_FSYNC_ASYNC_001
    * @tc.name fileio_test_fsync_sync_001
    * @tc.desc Test fsync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_fsync_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_fsync_sync_001');
+    let fpath = await nextFileName('fileio_test_fsync_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -97,9 +113,13 @@ describe('fileio_stat_fsync', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_FsyncAsync_002
+   * @tc.number SUB_DF_FILEIO_FSYNC_ASYNC_002
    * @tc.name fileio_test_fsync_sync_002
    * @tc.desc Test fsync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_fsync_async_002', 0, async function (done) {
     try {

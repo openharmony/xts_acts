@@ -21,12 +21,16 @@ import {
 describe('fileio_stream', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_FlushSync_0000
+   * @tc.number SUB_DF_FILEIO_STREAM_FLUSHSYNC_0000
    * @tc.name fileio_test_stream_flush_sync_000
-   * @tc.desc Test flushSync() interface.
+   * @tc.desc Test flushSync() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_stream_flush_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_flush_sync_000');
+  it('fileio_test_stream_flush_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_flush_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -43,12 +47,16 @@ describe('fileio_stream', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_FlushAsync_0000
+   * @tc.number SUB_DF_FILEIO_STREAM_FLUSHASYNC_0000
    * @tc.name fileio_test_stream_flush_async_000
-   * @tc.desc Test flushSync() interface.
+   * @tc.desc Test flushSync() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_stream_flush_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_stream_flush_async_000');
+    let fpath = await nextFileName('fileio_test_stream_flush_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -69,12 +77,16 @@ describe('fileio_stream', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_FlushAsync_0010
+   * @tc.number SUB_DF_FILEIO_STREAM_FLUSHASYNC_0010
    * @tc.name fileio_test_stream_flush_async_001
-   * @tc.desc Test flushSync() interface.
+   * @tc.desc Test flushSync() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_stream_flush_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_stream_flush_async_001');
+    let fpath = await nextFileName('fileio_test_stream_flush_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {

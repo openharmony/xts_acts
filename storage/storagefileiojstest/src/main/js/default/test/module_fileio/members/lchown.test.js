@@ -14,19 +14,23 @@
  */
 
 import {
-  fileio, FILE_CONTENT, prepareFile, nextFileName,
+  fileio, FILE_CONTENT, prepareFile, nextFileName, isIntNum,
   describe, it, expect,
 } from '../../Common';
 
 describe('fileio_lchown', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_lchownSync_000
+   * @tc.number SUB_DF_FILEIO_LSEEK_SYNC_000
    * @tc.name fileio_test_lchown_sync_000
    * @tc.desc Test lchownSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_lchown_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_lchown_sync_000');
+  it('fileio_test_lchown_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_lchown_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let stat = fileio.statSync(fpath);
@@ -39,12 +43,16 @@ describe('fileio_lchown', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_lchownSync_001
+   * @tc.number SUB_DF_FILEIO_LSEEK_SYNC_001
    * @tc.name fileio_test_lchown_sync_001
    * @tc.desc Test lchownSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-   it('fileio_test_lchown_sync_001', 0, function () {
-    let fpath = nextFileName('fileio_test_lchown_sync_001');
+   it('fileio_test_lchown_sync_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_lchown_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let stat = fileio.statSync(fpath);
@@ -58,12 +66,16 @@ describe('fileio_lchown', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_lchownASync_000
+   * @tc.number SUB_DF_FILEIO_LCHOWN_ASYNC_000
    * @tc.name fileio_test_lchown_async_00
    * @tc.desc Test lchownASync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_lchown_Async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_lchown_Async_000');
+    let fpath = await nextFileName('fileio_lchown_Async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let stat = fileio.statSync(fpath);
@@ -78,12 +90,16 @@ describe('fileio_lchown', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_lchownASync_001
+   * @tc.number SUB_DF_FILEIO_LCHOWN_ASYNC_001
    * @tc.name fileio_test_lchown_async_00
    * @tc.desc Test lchownASync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_lchown_Async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_lchown_Async_001');
+    let fpath = await nextFileName('fileio_lchown_Async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let stat = fileio.statSync(fpath);

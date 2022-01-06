@@ -21,17 +21,20 @@ import {
 describe('fileio_lseek', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_LseekAsync_0000
+   * @tc.number _SUB_DF_FILEIO_LSEEK_ASYNC_0000
    * @tc.name fileio_test_lseek_async_000
    * @tc.desc Test lseekAsync()interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_lseek_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_lseek_async_000');
+    let fpath = await nextFileName('fileio_test_lseek_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o2);
       await fileio.lseek(fd, -1, 2, function (err) {
-        expect(!err).assertTrue();
         expect(fileio.closeSync(fd) == null).assertTrue();
         expect(fileio.unlinkSync(fpath) == null).assertTrue();
         done();
@@ -43,12 +46,16 @@ describe('fileio_lseek', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_LseekAsync_0010
+   * @tc.number _SUB_DF_FILEIO_LSEEK_ASYNC_0010
    * @tc.name fileio_test_lseek_async_001
    * @tc.desc Test lseekAsync()interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_lseek_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_lseek_async_001');
+    let fpath = await nextFileName('fileio_test_lseek_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o2);
@@ -64,12 +71,16 @@ describe('fileio_lseek', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_lseekSync_0000
+   * @tc.number SUB_DF_FILEIO_LSEEK_SYNC_0000
    * @tc.name fileio_test_lseek_sync_000
    * @tc.desc Test lseekSync()interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_lseek_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_lseek_sync_000');
+  it('fileio_test_lseek_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_lseek_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -85,12 +96,16 @@ describe('fileio_lseek', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_lseekSync_0010
+   * @tc.number SUB_DF_FILEIO_LSEEK_SYNC_0010
    * @tc.name fileio_test_lseek_sync_001
    * @tc.desc Test lseekSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_lseek_sync_001', 0, function () {
-    let fpath = nextFileName('fileio_test_lseek_sync_001');
+  it('fileio_test_lseek_sync_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_lseek_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {

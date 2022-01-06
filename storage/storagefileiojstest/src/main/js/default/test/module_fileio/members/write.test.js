@@ -21,12 +21,16 @@ import {
 describe('fileio_write', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteSync_0000
+   * @tc.number SUB_DF_FILEIO_WRITE_SYNC_0000
    * @tc.name fileio_test_write_sync_000
    * @tc.desc Test writeSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_write_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_write_sync_000');
+  it('fileio_test_write_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_write_sync_000');
 
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -41,12 +45,16 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteSync_0010
+   * @tc.number SUB_DF_FILEIO_WRITE_SYNC_0010
    * @tc.name fileio_test_write_sync_001
    * @tc.desc Test writeSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_write_sync_001', 0, function () {
-    let fpath = nextFileName('fileio_test_write_sync_001');
+  it('fileio_test_write_sync_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_write_sync_001');
 
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -65,12 +73,16 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteSync_0020
+   * @tc.number SUB_DF_FILEIO_WRITE_SYNC_0020
    * @tc.name fileio_test_write_sync_002
    * @tc.desc Test writeSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_write_sync_002', 0, function () {
-    let fpath = nextFileName('fileio_test_write_sync_002');
+  it('fileio_test_write_sync_002', 0, async function () {
+    let fpath = await nextFileName('fileio_test_write_sync_002');
 
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -89,12 +101,16 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteSync_0030
+   * @tc.number SUB_DF_FILEIO_WRITE_SYNC_0030
    * @tc.name fileio_test_write_sync_003
    * @tc.desc Test writeSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_write_sync_003', 0, function () {
-    let fpath = nextFileName('fileio_test_write_sync_003');
+  it('fileio_test_write_sync_003', 0, async function () {
+    let fpath = await nextFileName('fileio_test_write_sync_003');
 
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -113,12 +129,16 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteSync_0040
+   * @tc.number SUB_DF_FILEIO_WRITE_SYNC_0040
    * @tc.name fileio_test_write_sync_004
    * @tc.desc Test writeSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_write_sync_004', 0, function () {
-    let fpath = nextFileName('fileio_test_write_sync_004');
+  it('fileio_test_write_sync_004', 0, async function () {
+    let fpath = await nextFileName('fileio_test_write_sync_004');
 
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -138,12 +158,16 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteSync_0050
+   * @tc.number SUB_DF_FILEIO_WRITE_SYNC_0050
    * @tc.name fileio_test_write_sync_005
    * @tc.desc Test writeSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_write_sync_005', 0, function () {
-    let fpath = nextFileName('fileio_test_write_sync_005');
+  it('fileio_test_write_sync_005', 0, async function () {
+    let fpath = await nextFileName('fileio_test_write_sync_005');
     const invalidOffset = 999;
     let fd;
 
@@ -163,12 +187,16 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteSync_0060
+   * @tc.number SUB_DF_FILEIO_WRITE_SYNC_0060
    * @tc.name fileio_test_write_sync_006
    * @tc.desc Test writeSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_write_sync_006', 0, function () {
-    let fpath = nextFileName('fileio_test_write_sync_006');
+  it('fileio_test_write_sync_006', 0, async function () {
+    let fpath = await nextFileName('fileio_test_write_sync_006');
     const invalidLength = 999;
     let fd;
 
@@ -188,9 +216,13 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteSync_0070
+   * @tc.number SUB_DF_FILEIO_WRITE_SYNC_0070
    * @tc.name fileio_test_write_sync_007
    * @tc.desc Test writeSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_write_sync_007', 0, function () {
     try {
@@ -201,9 +233,13 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteSync_0080
+   * @tc.number SUB_DF_FILEIO_WRITE_SYNC_0080
    * @tc.name fileio_test_write_sync_008
    * @tc.desc Test writeSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_write_sync_008', 0, function () {
     try {
@@ -214,12 +250,16 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteSync_0090
+   * @tc.number SUB_DF_FILEIO_WRITE_SYNC_0090
    * @tc.name fileio_test_write_sync_009
    * @tc.desc Test writeSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_write_sync_009', 0, function () {
-    let fpath = nextFileName('fileio_test_write_sync_009');
+  it('fileio_test_write_sync_009', 0, async function () {
+    let fpath = await nextFileName('fileio_test_write_sync_009');
 
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -235,12 +275,16 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteAsync_0000
+   * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0000
    * @tc.name fileio_test_write_async_000
    * @tc.desc Test writeAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_write_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_write_async_000');
+    let fpath = await nextFileName('fileio_write_async_000');
 
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -256,12 +300,16 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteAsync_0010
+   * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0010
    * @tc.name fileio_test_write_async_001
    * @tc.desc Test writeAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_write_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_write_async_001');
+    let fpath = await nextFileName('fileio_test_write_async_001');
 
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -280,12 +328,16 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteAsync_0020
+   * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0020
    * @tc.name fileio_test_write_async_002
    * @tc.desc Test writeAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_write_async_002', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_write_async_002');
+    let fpath = await nextFileName('fileio_test_write_async_002');
 
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -305,12 +357,16 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteAsync_0030
+   * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0030
    * @tc.name fileio_test_write_async_003
    * @tc.desc Test writeAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_write_async_003', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_write_async_003');
+    let fpath = await nextFileName('fileio_test_write_async_003');
 
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -331,12 +387,16 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteAsync_0040
+   * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0040
    * @tc.name fileio_test_write_async_004
    * @tc.desc Test writeAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_write_async_004', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_write_async_004');
+    let fpath = await nextFileName('fileio_test_write_async_004');
 
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -358,12 +418,16 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteAsync_0050
+   * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0050
    * @tc.name fileio_test_write_async_005
    * @tc.desc Test writeAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_write_async_005', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_write_async_005');
+    let fpath = await nextFileName('fileio_test_write_async_005');
 
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -384,12 +448,16 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteAsync_0060
+   * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0060
    * @tc.name fileio_test_write_async_006
    * @tc.desc Test writeAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_write_async_006', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_write_async_006');
+    let fpath = await nextFileName('fileio_test_write_async_006');
 
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -399,8 +467,7 @@ describe('fileio_write', function () {
         FILE_CONTENT,
         {
           offset: 1,
-        },
-        function (error, bytesWritten) {
+        }, function (error, bytesWritten) {
           expect(bytesWritten == FILE_CONTENT.length - 1).assertTrue();
           expect(fileio.closeSync(fd) == null).assertTrue();
           expect(fileio.unlinkSync(fpath) == null).assertTrue();
@@ -414,12 +481,16 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteAsync_0070
+   * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0070
    * @tc.name fileio_test_write_async_007
    * @tc.desc Test writeAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_write_async_007', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_write_async_007');
+    let fpath = await nextFileName('fileio_test_write_async_007');
 
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -430,8 +501,7 @@ describe('fileio_write', function () {
         {
           offset: 1,
           length: 5,
-        },
-        function (error, bytesWritten) {
+        }, function (error, bytesWritten) {
           expect(bytesWritten == 5).assertTrue();
           expect(fileio.closeSync(fd) == null).assertTrue();
           expect(fileio.unlinkSync(fpath) == null).assertTrue();
@@ -445,12 +515,16 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteAsync_0080
+   * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0080
    * @tc.name fileio_test_write_async_008
    * @tc.desc Test writeAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_write_async_008', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_write_async_008');
+    let fpath = await nextFileName('fileio_test_write_async_008');
 
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -462,8 +536,7 @@ describe('fileio_write', function () {
           offset: 1,
           length: 5,
           position: 5,
-        },
-        function (error, bytesWritten) {
+        }, function (error, bytesWritten) {
           expect(bytesWritten == 5).assertTrue();
           expect(fileio.closeSync(fd) == null).assertTrue();
           expect(fileio.unlinkSync(fpath) == null).assertTrue();
@@ -477,12 +550,16 @@ describe('fileio_write', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_WriteAsync_0090
+   * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0090
    * @tc.name fileio_test_write_async_009
    * @tc.desc Test writeAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_write_async_009', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_write_async_009');
+    let fpath = await nextFileName('fileio_test_write_async_009');
 
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -495,8 +572,7 @@ describe('fileio_write', function () {
           length: 5,
           position: 5,
           encoding: 'utf-8',
-        },
-        function (error, bytesWritten) {
+        }, function (error, bytesWritten) {
           expect(bytesWritten == 5).assertTrue();
           expect(fileio.closeSync(fd) == null).assertTrue();
           expect(fileio.unlinkSync(fpath) == null).assertTrue();

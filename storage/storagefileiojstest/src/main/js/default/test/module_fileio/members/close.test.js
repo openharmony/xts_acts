@@ -21,9 +21,13 @@ import {
 describe('fileio_close', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_CloseSync_0000
+   * @tc.number SUB_DF_FILEIO_CLOSESYNC_0000
    * @tc.name fileio_test_close_sync_000
-   * @tc.desc Test closeSync() interfaces.
+   * @tc.desc Test closeSync() interfaces
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_close_sync_000', 0, function () {
     try {
@@ -34,9 +38,13 @@ describe('fileio_close', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FileIO_CloseSync_0010
+   * @tc.number SUB_DF_FILEIO_CLOSESYNC_0010
    * @tc.name fileio_test_close_sync_001
-   * @tc.desc Test closeSync() interfaces.
+   * @tc.desc Test closeSync() interfaces
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_close_sync_001', 0, function () {
     try {

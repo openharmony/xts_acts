@@ -18,15 +18,19 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-describe('fileio_FdOpenStream', function () {
+describe('fileio_FdOpenStream', async function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_FdOpenStreamSync_000
-   * @tc.name fileio_test_FdOpenStream_sync_000
+   * @tc.number SUB_DF_FILEIO_FDOPENSTREAM_SYNC_0000
+   * @tc.name fileio_test_fdopenstream_sync_000
    * @tc.desc Test fdopenStreamSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_fdopenStream_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_fdopenStream_sync_000');
+  it('fileio_test_fdopenstream_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_fdopenstream_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o2);
@@ -44,12 +48,16 @@ describe('fileio_FdOpenStream', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FileIO_FdOpenStreamSync_001
-   * @tc.name fileio_test_FdOpenStream_sync_001
+   * @tc.number SUB_DF_FILEIO_FDOPENSTREAM_SYNC_0010
+   * @tc.name fileio_test_fdopenstream_sync_001
    * @tc.desc Test fdopenStreamSync() interface.
    * This interface shall throw an exception when the fpath is not given.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_fdopenStream_sync_001', 0, function () {
+  it('fileio_test_fdopenstream_sync_001', 0, function () {
     try {
       let fd = -1;
       let mode = 'r+';
@@ -60,12 +68,16 @@ describe('fileio_FdOpenStream', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FileIO_FdOpenStreamASync_000
-   * @tc.name fileio_test_FdOpenStream_async_000
+   * @tc.number SUB_DF_FILEIO_FDOPENSTREAM_ASYNC_000
+   * @tc.name fileio_test_fdopenstream_async_000
    * @tc.desc Test fdopenStream() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_fdOpenStream_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_fdOpenStream_async_000');
+  it('fileio_test_fdopenstream_async_000', 0, async function (done) {
+    let fpath = await nextFileName('fileio_test_fdopenstream_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o2);
@@ -86,18 +98,22 @@ describe('fileio_FdOpenStream', function () {
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
-      console.log('fileio_test_fdopenStream_async_000 has failed for ' + e);
+      console.log('fileio_test_fdopenstream_async_000 has failed for ' + e);
       expect(null).assertFail();
     }
   })
 
   /**
-   * @tc.number SUB_DF_FileIO_fdopenStreamASync_001
-   * @tc.name fileio_test_fdopenStream_async_001
+   * @tc.number SUB_DF_FILEIO_FDOPENSTREAM_ASYNC_001
+   * @tc.name fileio_test_fdopenstream_async_001
    * @tc.desc Test fdopenStream() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_fdopenStream_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_fdopenStream_async_001');
+  it('fileio_test_fdopenstream_async_001', 0, async function (done) {
+    let fpath = await nextFileName('fileio_test_fdopenstream_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o2);
@@ -119,7 +135,7 @@ describe('fileio_FdOpenStream', function () {
         done();
       })
     } catch (e) {
-      console.log('fileio_test_fdopenStream_async_001 has failed for ' + e);
+      console.log('fileio_test_fdopenstream_async_001 has failed for ' + e);
       expect(null).assertFail();
     }
   })
