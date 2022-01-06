@@ -28,7 +28,6 @@ describe('window_test', function(){
     afterAll(function(){
     })
 	
-	
 	/**
 	* @tc.number    GRAPHIC__FUNCTION_WINDOW_TESTWINDOW_JS_API_1900
 	* @tc.name      Test moveTestNegative
@@ -47,3 +46,4 @@ describe('window_test', function(){
 			})
 		})
 	})
+})
