@@ -1057,6 +1057,19 @@ describe('intlTest', function () {
     })
 
     /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_2250
+    * @tc.name format the number with unitUsage
+    * @tc.desc check the number with unitUsage
+    */
+    it('formatNumber_test_2250', 0, function () {
+        let numfmt = new intl.NumberFormat('zh-CN', { style: 'unit', unit: 'meter',
+            unitDisplay: 'long', unitUsage: 'length-road' });
+        console.log('formatNumber_test_2250 ' + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('123,456.789米');
+        expect(numfmt.resolvedOptions().unitUsage).assertEqual('length-road');
+    })
+
+    /* *
     * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_2100
     * @tc.name format the number with signDisplay
     * @tc.desc check the number with signDisplay
