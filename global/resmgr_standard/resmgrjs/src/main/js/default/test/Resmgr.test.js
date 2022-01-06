@@ -242,6 +242,7 @@ describe('resMgrTest', function () {
                 dc.screenDensity = ScreenDensity.SCREEN_XXLDPI;
                 dc.deviceType = DeviceType.DEVICE_TYPE_WEARABLE;
                 dc.screenDensity = ScreenDensity.SCREEN_XXXLDPI;
+                dc.deviceType = DeviceType.DEVICE_TYPE_PC;
                 expect(dc !== null).assertTrue();
                 console.log('getDeviceCapability_test_002 ' + dc);
             })
