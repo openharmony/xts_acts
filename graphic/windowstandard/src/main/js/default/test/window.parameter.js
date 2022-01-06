@@ -35,9 +35,9 @@ describe('window_test', function(){
 	* @tc.desc      Test moveTo API function test 
 	* @tc.autor     hekun wx874319
 	*/
-	it('moveTestNegative',0,function(){
+	it('moveTestNegative', 0,function(){
 		console.log('jsunittest moveTestNegative begin')
-		window.getTopwindow().then(wnd=>{
+		window.getTopwindow().then(wnd => {
 			console.log('jsunittest moveTestNegative getTopwindow wnd: ' + wnd)
 			wnd.moveTo(-200,-200).then(()=>{
 				console.log('moveTo(-200,-200) success')
