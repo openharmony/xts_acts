@@ -830,15 +830,19 @@ describe('SingleKvStorePromiseTest', function () {
             await kvStore.put(KEY_TEST_SYNC_ELEMENT, VALUE_TEST_SYNC_ELEMENT).then((data) => {
                 console.log('testSingleKvStoreOnSyncComplete001 put success');
                 expect(data == undefined).assertTrue();
-                var devices = ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
-                var mode = factory.SyncMode.PULL_ONLY;
-                kvStore.sync(devices, mode, 10);
             }).catch((error) => {
                 console.log('testSingleKvStoreOnSyncComplete001 put fail ' + error);
                 expect(null).assertFail();
             });
+            try {
+                var devices = ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
+                var mode = factory.SyncMode.PULL_ONLY;
+                kvStore.sync(devices, mode, 10);
+            } catch (e) {
+                console.log('testSingleKvStoreOnSyncComplete001 sync no peer device :e:' + e);
+            }
         }catch(e) {
-            console.log('testSingleKvStoreOnSyncComplete001 put e ' + e);
+            console.log('testSingleKvStoreOnSyncComplete001 e ' + e);
             expect(null).assertFail();
         }
         done();
@@ -858,15 +862,19 @@ describe('SingleKvStorePromiseTest', function () {
             await kvStore.put(KEY_TEST_SYNC_ELEMENT, VALUE_TEST_SYNC_ELEMENT).then((data) => {
                 console.log('testSingleKvStoreOnSyncComplete002 put success');
                 expect(data == undefined).assertTrue();
-                var devices = ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
-                var mode = factory.SyncMode.PUSH_ONLY;
-                kvStore.sync(devices, mode, 10);
             }).catch((error) => {
                 console.log('testSingleKvStoreOnSyncComplete002 put fail ' + error);
                 expect(null).assertFail();
             });
+            try {
+                var devices = ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
+                var mode = factory.SyncMode.PUSH_ONLY;
+                kvStore.sync(devices, mode, 10);
+            } catch (e) {
+                console.log('testSingleKvStoreOnSyncComplete002 sync no peer device :e:' + e);
+            }
         }catch(e) {
-            console.log('testSingleKvStoreOnSyncComplete002 put e ' + e);
+            console.log('testSingleKvStoreOnSyncComplete002 e ' + e);
             expect(null).assertFail();
         }
         done();
@@ -886,15 +894,19 @@ describe('SingleKvStorePromiseTest', function () {
             await kvStore.put(KEY_TEST_SYNC_ELEMENT, VALUE_TEST_SYNC_ELEMENT).then((data) => {
                 console.log('testSingleKvStoreOnSyncComplete003 put success');
                 expect(data == undefined).assertTrue();
-                var devices = ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
-                var mode = factory.SyncMode.PUSH_PULL;
-                kvStore.sync(devices, mode, 10);
             }).catch((error) => {
                 console.log('testSingleKvStoreOnSyncComplete003 put fail ' + error);
                 expect(null).assertFail();
             });
+            try {
+                var devices = ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
+                var mode = factory.SyncMode.PUSH_PULL;
+                kvStore.sync(devices, mode, 10);
+            } catch (e) {
+                console.log('testSingleKvStoreOnSyncComplete003 sync no peer device :e:' + e);
+            }
         }catch(e) {
-            console.log('testSingleKvStoreOnSyncComplete003 put e ' + e);
+            console.log('testSingleKvStoreOnSyncComplete003 e ' + e);
             expect(null).assertFail();
         }
         done();

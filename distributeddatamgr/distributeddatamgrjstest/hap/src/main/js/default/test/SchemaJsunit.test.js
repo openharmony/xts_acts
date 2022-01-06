@@ -262,4 +262,25 @@ describe('SchemaTest', function() {
         }
         done();
     })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_SCHEMA_TOJSONSTRING_0400
+     * @tc.name [JS-API8]Schema.ToJsonString()
+     * @tc.desc Test Js Api Schema.ToJsonString() testcase 004
+     */
+    it('testToJsonString004', 0, async function(done) {
+        try {
+            let english = new ddm.FieldNode('english');
+            english.type = ddm.ValueType.STRING;
+
+            let schema = new ddm.Schema();
+            schema.root.appendChild(english);
+            schema.indexes = [];    // indexex set to empty array.
+            console.log("schema: " + schema.toJsonString());
+        } catch (e) {
+            console.log("schema fail on exception: " + e);
+            expect(null).assertFail();
+        }
+        done();
+    })
 })

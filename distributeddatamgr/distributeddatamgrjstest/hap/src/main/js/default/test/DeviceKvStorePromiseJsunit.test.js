@@ -860,14 +860,19 @@ describe('DeviceKvStorePromiseTest', function () {
             await kvStore.put(KEY_TEST_SYNC_ELEMENT, VALUE_TEST_SYNC_ELEMENT).then((data) => {
                 console.log('testDeviceKvStoreOnSyncComplete001 put success');
                 expect(data == undefined).assertTrue();
+            }).catch((error) => {
+                console.log('testDeviceKvStoreOnSyncComplete001 put failed:' + e);
+                expect(null).assertFail();
+            });
+            try {
                 var devices = ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
                 var mode = factory.SyncMode.PULL_ONLY;
                 kvStore.sync(devices, mode);
-            }).catch((error) => {
-                console.log('testDeviceKvStoreOnSyncComplete001 no peer device :e:' + error);
-            });
-        }catch(e) {
-            console.log('testDeviceKvStoreOnSyncComplete001 put e ' + e);
+            } catch (e) {
+                console.log('testDeviceKvStoreOnSyncComplete001 sync no peer device :e:' + e);
+            }
+        } catch(e) {
+            console.log('testDeviceKvStoreOnSyncComplete001 e ' + e);
             expect(null).assertFail();
         }
         done();
@@ -887,13 +892,18 @@ describe('DeviceKvStorePromiseTest', function () {
             await kvStore.put(KEY_TEST_SYNC_ELEMENT, VALUE_TEST_SYNC_ELEMENT).then((data) => {
                 console.log('testDeviceKvStoreOnSyncComplete002 put success');
                 expect(data == undefined).assertTrue();
+            }).catch((error) => {
+                console.log('testDeviceKvStoreOnSyncComplete002 put failed:' + e);
+                expect(null).assertFail();
+            });
+            try {
                 var devices = ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
                 var mode = factory.SyncMode.PUSH_ONLY;
                 kvStore.sync(devices, mode);
-            }).catch((error) => {
+            } catch(error) {
                 console.log('testDeviceKvStoreOnSyncComplete002 no peer device :e:' + error);
-            });
-        }catch(e) {
+            };
+        } catch(e) {
             console.log('testDeviceKvStoreOnSyncComplete002 put e ' + e);
             expect(null).assertFail();
         }
@@ -914,13 +924,18 @@ describe('DeviceKvStorePromiseTest', function () {
             await kvStore.put(KEY_TEST_SYNC_ELEMENT, VALUE_TEST_SYNC_ELEMENT).then((data) => {
                 console.log('testDeviceKvStoreOnSyncComplete003 put success');
                 expect(data == undefined).assertTrue();
+            }).catch((error) => {
+                console.log('testDeviceKvStoreOnSyncComplete002 put failed:' + e);
+                expect(null).assertFail();
+            });
+            try {
                 var devices = ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
                 var mode = factory.SyncMode.PUSH_PULL;
                 kvStore.sync(devices, mode);
-            }).catch((error) => {
+            } catch(error) {
                 console.log('testDeviceKvStoreOnSyncComplete003 no peer device :e:' + error);
-            });
-        }catch(e) {
+            };
+        } catch(e) {
             console.log('testDeviceKvStoreOnSyncComplete003 put e ' + e);
             expect(null).assertFail();
         }
