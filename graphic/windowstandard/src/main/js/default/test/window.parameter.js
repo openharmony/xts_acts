@@ -37,12 +37,12 @@ describe('window_test', function(){
 	*/
 	it('moveTestNegative',0,function(){
 		console.log('jsunittest moveTestNegative begin')
-		window.getTopwindow().then(wnd => {
+		window.getTopwindow().then(wnd=>{
 			console.log('jsunittest moveTestNegative getTopwindow wnd: ' + wnd)
-			wnd.moveTo(-200,-200).then(() => {
+			wnd.moveTo(-200,-200).then(()=>{
 				console.log('moveTo(-200,-200) success')
 			})
-			wnd.moveTo(0,0).then(() => {
+			wnd.moveTo(0,0).then(()=>{
 				console.log('moveTo(0,0) success')
 			})
 		})
