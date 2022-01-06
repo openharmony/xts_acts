@@ -13,3 +13,4 @@
  * limitations under the License.
  */
 require('./window.test.js')
+require('./window.parameter.js')
