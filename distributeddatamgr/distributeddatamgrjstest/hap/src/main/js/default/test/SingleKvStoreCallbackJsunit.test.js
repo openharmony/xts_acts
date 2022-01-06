@@ -832,8 +832,8 @@ describe('SingleKvStoreCallbackTest', function () {
         }catch(e) {
             console.log('testSingleKvStoreOnSyncComplete101 e' + e);
             expect(null).assertFail();
-            done();
         }
+        done();
     })
 
     /**

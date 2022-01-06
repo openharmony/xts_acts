@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
-import factory from '@ohos.data.distributedData'
+import factory from '@ohos.data.distributedData';
 
 const TEST_BUNDLE_NAME = 'ohos.acts.distributeddatamgr';
 const TEST_STORE_ID = 'storeId';
@@ -35,6 +35,7 @@ describe('KvStoreResultSetTest', function() {
         encrypt : false,
         backup : false,
         autoSync : true,
+
         kvStoreType : factory.KVStoreType.SINGLE_VERSION,
         schema : '',
         securityLevel : factory.SecurityLevel.S2,
