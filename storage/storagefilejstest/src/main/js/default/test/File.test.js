@@ -2844,7 +2844,6 @@ describe('fileTest', function () {
       },
       fail: function (data, code) {
         console.log('File_Copy_006 , code: ' + code + ', data: ' + data);
-        console.log("code: " + (typeof code));
         expect(code == 301).assertTrue();
         done();
       },
