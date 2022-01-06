@@ -35,7 +35,6 @@ describe('KvStoreResultSetTest', function() {
         encrypt : false,
         backup : false,
         autoSync : true,
-
         kvStoreType : factory.KVStoreType.SINGLE_VERSION,
         schema : '',
         securityLevel : factory.SecurityLevel.S2,

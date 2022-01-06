@@ -72,9 +72,6 @@ describe('KvStoreEnumTest', function () {
      * @tc.desc Test Js Enum Value Constants.MAX_KEY_LENGTH_DEVICE
      */
     it('testConstantsMaxKeyLengthDevice_001', 0, function () {
-
-        expect( factory.Constants.MAX_VALUE_LENGTH).assertEqual(4194303);
-
         var maxKeyLengthDevice = factory.Constants.MAX_KEY_LENGTH_DEVICE;
         console.info('maxKeyLengthDevice = ' + maxKeyLengthDevice);
         expect(maxKeyLengthDevice == 896).assertTrue()
