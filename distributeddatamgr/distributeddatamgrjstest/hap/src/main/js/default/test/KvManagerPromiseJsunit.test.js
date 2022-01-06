@@ -73,6 +73,7 @@ describe('KVManagerPromiseTest', function () {
         }).catch((err) => {
             console.log('afterEach closeKVStore err ' + err);
         });
+        kvStore = null;
         done();
     })
 
@@ -659,11 +660,17 @@ describe('KVManagerPromiseTest', function () {
      */
     it('testKVManagerCloseKVStore004', 0, async function (done) {
         console.log('testKVManagerCloseKVStore004');
+        await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
+            console.log('testKVManagerCloseKVStore004 getKVStore success');
+            kvStore = store;
+            await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, kvStore);
+        });
+        console.log('testKVManagerCloseKVStore104 closeKVStore redo.');
         await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, kvStore).then(() => {
-            console.log('testKVManagerCloseKVStore004 closeKVStore success');
-        }).catch((err) => {
-            console.log('testKVManagerCloseKVStore004 closeKVStore err ' + err);
+            console.log('testKVManagerCloseKVStore004 closeKVStore twice');
             expect(null).assertFail();
+        }).catch((err) => {
+            console.log('testKVManagerCloseKVStore004 closeKVStore twice err ' + err);
         });
         done();
     })

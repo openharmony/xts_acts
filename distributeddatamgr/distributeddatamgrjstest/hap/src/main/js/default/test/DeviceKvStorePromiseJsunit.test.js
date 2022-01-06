@@ -32,6 +32,9 @@ const TEST_STORE_ID = 'storeId';
 var kvManager = null;
 var kvStore = null;
 var localDeviceId = null;
+const USED_DEVICE_IDS =  ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
+const UNUSED_DEVICE_IDS =  [];  /* add you test device-ids here */
+var syncDeviceIds = USED_DEVICE_IDS.concat(UNUSED_DEVICE_IDS);
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -137,13 +140,13 @@ describe('DeviceKvStorePromiseTest', function () {
             console.log('afterEach closeKVStore success');
             await kvManager.deleteKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID).then(() => {
                 console.log('afterEach deleteKVStore success');
-                kvStore = null;
             }).catch((err) => {
                 console.log('afterEach deleteKVStore err ' + err);
             });
         }).catch((err) => {
             console.log('afterEach closeKVStore err ' + err);
         });
+        kvStore = null;
         done();
     })
 
@@ -865,9 +868,9 @@ describe('DeviceKvStorePromiseTest', function () {
                 expect(null).assertFail();
             });
             try {
-                var devices = ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
                 var mode = factory.SyncMode.PULL_ONLY;
-                kvStore.sync(devices, mode);
+                console.log('kvStore.sync to ' + JSON.stringify(syncDeviceIds));
+                kvStore.sync(syncDeviceIds, mode);
             } catch (e) {
                 console.log('testDeviceKvStoreOnSyncComplete001 sync no peer device :e:' + e);
             }
@@ -897,12 +900,12 @@ describe('DeviceKvStorePromiseTest', function () {
                 expect(null).assertFail();
             });
             try {
-                var devices = ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
                 var mode = factory.SyncMode.PUSH_ONLY;
-                kvStore.sync(devices, mode);
+                console.log('kvStore.sync to ' + JSON.stringify(syncDeviceIds));
+                kvStore.sync(syncDeviceIds, mode);
             } catch(error) {
                 console.log('testDeviceKvStoreOnSyncComplete002 no peer device :e:' + error);
-            };
+            }
         } catch(e) {
             console.log('testDeviceKvStoreOnSyncComplete002 put e ' + e);
             expect(null).assertFail();
@@ -925,16 +928,16 @@ describe('DeviceKvStorePromiseTest', function () {
                 console.log('testDeviceKvStoreOnSyncComplete003 put success');
                 expect(data == undefined).assertTrue();
             }).catch((error) => {
-                console.log('testDeviceKvStoreOnSyncComplete002 put failed:' + e);
+                console.log('testDeviceKvStoreOnSyncComplete003 put failed:' + e);
                 expect(null).assertFail();
             });
             try {
-                var devices = ['A12C1F9261528B21F95778D2FDC0B2E33943E6251AC5487F4473D005758905DB'];
                 var mode = factory.SyncMode.PUSH_PULL;
-                kvStore.sync(devices, mode);
+                console.log('kvStore.sync to ' + JSON.stringify(syncDeviceIds));
+                kvStore.sync(syncDeviceIds, mode);
             } catch(error) {
                 console.log('testDeviceKvStoreOnSyncComplete003 no peer device :e:' + error);
-            };
+            }
         } catch(e) {
             console.log('testDeviceKvStoreOnSyncComplete003 put e ' + e);
             expect(null).assertFail();

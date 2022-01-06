@@ -15,9 +15,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import ddm from '@ohos.data.distributedData';
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 describe('FieldNodeTest', function() {
 
     /**

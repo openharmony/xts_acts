@@ -48,7 +48,7 @@ describe('KvStoreEnumTest', function () {
         var maxValueLength = factory.Constants.MAX_VALUE_LENGTH;
         console.info('maxValueLength = ' + maxValueLength);
         expect(maxValueLength == 4194303).assertTrue();
-        expect( factory.Constants.MAX_VALUE_LENGTH).assertEqual(4194303);
+        expect(factory.Constants.MAX_VALUE_LENGTH).assertEqual(4194303);
     })
 
     /**
@@ -63,7 +63,6 @@ describe('KvStoreEnumTest', function () {
             console.info('can NOT set value to MAX_VALUE_LENGTH : ' + e);
             expect(factory.Constants.MAX_VALUE_LENGTH).assertEqual(4194303);
         }
-
     })
 
     /**

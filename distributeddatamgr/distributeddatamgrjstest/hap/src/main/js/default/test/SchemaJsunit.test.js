@@ -136,13 +136,13 @@ describe('SchemaTest', function() {
             console.log('afterEach closeKVStore success');
             await kvManager.deleteKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID).then(() => {
                 console.log('afterEach deleteKVStore success');
-                kvStore = null;
             }).catch((err) => {
                 console.log('afterEach deleteKVStore err ' + err);
             });
         }).catch((err) => {
             console.log('afterEach closeKVStore err ' + err);
         });
+        kvStore = null;
         done();
     })
 

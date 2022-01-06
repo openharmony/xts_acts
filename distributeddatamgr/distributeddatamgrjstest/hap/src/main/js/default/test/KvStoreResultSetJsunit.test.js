@@ -120,13 +120,14 @@ describe('KvStoreResultSetTest', function() {
             console.log('afterEach closeKVStore success');
             await kvManager.deleteKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID).then(() => {
                 console.log('afterEach deleteKVStore success');
-                kvStore = null;
             }).catch((err) => {
                 console.log('afterEach deleteKVStore err ' + err);
             });
         }).catch((err) => {
             console.log('afterEach closeKVStore err ' + err);
         });
+        kvStore = null;
+        resultSet = null;
         done();
     })
 
@@ -581,12 +582,12 @@ describe('KvStoreResultSetTest', function() {
             expect(moved && (resultSet.getPosition() == 0)).assertTrue();
             moved = resultSet.moveToPrevious();
             console.log("testKvStoreResultSetMoveToPrevious005 from 0 to -1 return" + moved);
-            expect(moved).assertFalse();
+            expect(moved == false).assertTrue();
             console.log("testKvStoreResultSetMoveToPrevious005 from 0 to " + resultSet.getPosition());
             expect(-1).assertEqual(resultSet.getPosition());
         } catch (e) {
             console.log("testKvStoreResultSetMoveToPrevious005 fail " + e);
-            expect(null).assertTrue();
+            expect(null).assertFail();
         }
         done();
     })
@@ -965,7 +966,7 @@ describe('KvStoreResultSetTest', function() {
             expect(moved).assertTrue();
             moved = resultSet.moveToNext();
             console.log("testKvStoreResultSetIsAfterLast002  moveToNext  moved=" + moved);
-            expect(moved).assertFalse();
+            expect(moved == false).assertTrue();
             var flag = resultSet.isAfterLast();
             console.log("testKvStoreResultSetIsAfterLast002  isAfterLast true=" + flag);
             expect(flag).assertTrue();
