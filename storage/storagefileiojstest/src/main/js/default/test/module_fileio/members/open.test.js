@@ -33,7 +33,9 @@ describe('fileio_open', function () {
     try {
       fileio.openSync('/', 0o102, 0o666);
       expect(null).assertFail();
-    } catch (e) {}
+    } catch (e) {
+      console.log('fileio_test_open_sync_000 has failed for ' + e);
+    }
   });
 
   /**

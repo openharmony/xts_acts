@@ -229,6 +229,7 @@ describe('fileio_write', function () {
       fileio.writeSync();
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_write_sync_007 has failed for ' + e);
     }
   });
 
@@ -246,6 +247,7 @@ describe('fileio_write', function () {
       fileio.writeSync(-1, FILE_CONTENT);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_write_sync_008 has failed for ' + e);
     }
   });
 

@@ -127,6 +127,7 @@ describe('fileio_fchmod', function () {
       expect(fileio.fchmodSync(-1, 0o660) == null).assertTrue();
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_fchmod_sync_001 has failed for ' + e);
     }
   });
 

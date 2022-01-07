@@ -61,6 +61,7 @@ describe('fileio_copyfile', function () {
       fileio.copyFileSync(fpath, fpathTarget);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_copy_file_sync_001 has failed for ' + e);
     }
   });
 
@@ -78,6 +79,7 @@ describe('fileio_copyfile', function () {
       fileio.copyFileSync();
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_copy_file_sync_002 has failed for ' + e);
     }
   });
 

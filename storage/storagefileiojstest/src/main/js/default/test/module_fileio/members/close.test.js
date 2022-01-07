@@ -34,6 +34,7 @@ describe('fileio_close', function () {
       fileio.closeSync();
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_close_sync_000 has failed for ' + e);
     }
   })
 
@@ -51,6 +52,7 @@ describe('fileio_close', function () {
       fileio.closeSync(-1);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_close_sync_001 has failed for ' + e);
     }
   })
 })

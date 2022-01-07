@@ -57,6 +57,7 @@ describe('fileio_dir_opendir_close', function () {
       fileio.opendirSync(dpath);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_dir_open_close_sync_001 has failed for ' + e);
     }
   });
 

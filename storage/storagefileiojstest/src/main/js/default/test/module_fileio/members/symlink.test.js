@@ -39,6 +39,7 @@ describe('fileio_symlink', function () {
       fileio.unlinkSync(fpath + 'aaaa');
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_symlink_sync_000 has failed for ' + e);
     }
   });
 

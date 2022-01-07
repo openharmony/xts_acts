@@ -34,6 +34,7 @@ describe('fileio_mkdtemp', function () {
       let res = fileio.mkdtempSync(dpath);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_mkdtemp_sync_000 has failed for ' + e);
     }
   });
 

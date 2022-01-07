@@ -64,6 +64,7 @@ describe('fileio_FdOpenStream', async function () {
       let fp = fileio.fdopenStreamSync(fd, mode);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_fdopenstream_sync_001 has failed for ' + e);
     }
   })
 

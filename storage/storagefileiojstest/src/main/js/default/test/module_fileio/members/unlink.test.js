@@ -34,6 +34,7 @@ describe('fileio_unlink', function () {
       fileio.unlinkSync();
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_unlink_sync_000 has failed for ' + e);
     }
   });
 
@@ -53,6 +54,7 @@ describe('fileio_unlink', function () {
       fileio.unlinkSync(fpath);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_unlink_sync_001 has failed for ' + e);
     }
   });
 

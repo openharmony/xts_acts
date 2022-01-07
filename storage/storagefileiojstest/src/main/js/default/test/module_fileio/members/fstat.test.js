@@ -61,6 +61,7 @@ describe('fileio_stat_fstat', function () {
       fileio.fstatSync(invalidFD);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_stat_fstat_sync_001 has failed for ' + e);
     }
   });
 

@@ -205,6 +205,7 @@ describe('fileio_read', function () {
       fileio.readSync(-1, new ArrayBuffer(4096));
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_read_sync_006 has failed for ' + e);
     }
   });
 
@@ -458,10 +459,10 @@ describe('fileio_read', function () {
       });
       expect(null).assertFail();
     } catch (e) {
+      expect(fileio.closeSync(fd) == null).assertTrue();
+      expect(fileio.unlinkSync(fpath) == null).assertTrue();
+      done();
     }
-    expect(fileio.closeSync(fd) == null).assertTrue();
-    expect(fileio.unlinkSync(fpath) == null).assertTrue();
-    done();
   });
 
   /**

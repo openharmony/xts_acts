@@ -147,7 +147,9 @@ describe('fileio_truncate', function () {
     try {
       fileio.truncateSync(fpath);
       expect(null).assertFail();
-    } catch (e) {}
+    } catch (e) {
+      console.log('fileio_test_truncate_sync_001 has failed for ' + e);
+    }
   });
 
   /**
@@ -163,6 +165,8 @@ describe('fileio_truncate', function () {
     try {
       fileio.truncateSync();
       expect(null).assertFail();
-    } catch (e) {}
+    } catch (e) {
+      console.log('fileio_test_truncate_sync_002 has failed for ' + e);
+    }
   });
 });

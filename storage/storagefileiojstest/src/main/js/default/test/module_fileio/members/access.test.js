@@ -129,6 +129,7 @@ describe('fileio_access', function () {
       fileio.accessSync(fpath);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_access_sync_004' + e);
     }
   });
 

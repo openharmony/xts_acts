@@ -60,6 +60,7 @@ describe('fileio_stream', function () {
       fileio.createStreamSync(fpath, 'r+');
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_stream_create_stream_sync_001 has failed for ' + e);
     }
   });
 

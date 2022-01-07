@@ -117,6 +117,7 @@ describe('fileio_fdatasync', async function () {
       await fileio.fdatasync(fd);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_fdatasync_async_003 has failed for ' + e);
     }
   });
 });

@@ -61,6 +61,7 @@ describe('fileio_stat', function () {
       fileio.statSync(fpath);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_stat_sync_001 has failed for ' + e);
     }
   });
 

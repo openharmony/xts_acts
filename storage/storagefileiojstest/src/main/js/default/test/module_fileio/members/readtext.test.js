@@ -107,6 +107,7 @@ describe('fileio_readtext', function () {
       fileio.readTextSync();
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_readtext_sync_003 has failed for ' + e);
     }
   });
 
@@ -126,6 +127,7 @@ describe('fileio_readtext', function () {
       fileio.readTextSync(fpath);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_readtext_sync_004 has failed for ' + e);
     }
   });
 

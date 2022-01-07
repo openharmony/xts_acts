@@ -60,6 +60,7 @@ describe('fileio_stream', function () {
       let ss = fileio.fdopenStreamSync(-1, 'r+');
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_stream_fdopen_stream_sync_001 has failed for ' + e);
     }
   })
 

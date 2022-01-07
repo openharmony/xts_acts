@@ -52,6 +52,7 @@ describe('fileio_mkdir_rmdir', function () {
       expect(fileio.mkdirSync('/') == null).assertTrue();
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_mkdir_sync_rmdir_sync_001 has failed for ' + e);
     }
   });
 
@@ -69,6 +70,7 @@ describe('fileio_mkdir_rmdir', function () {
       expect(fileio.mkdirSync(12) == null).assertTrue();
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_mkdir_sync_rmdir_sync_002 has failed for ' + e);
     }
   });
 

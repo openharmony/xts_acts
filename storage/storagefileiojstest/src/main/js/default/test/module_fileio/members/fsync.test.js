@@ -58,6 +58,7 @@ describe('fileio_stat_fsync', function () {
       fileio.fsyncSync(-1);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_fsync_sync_001 has failed for ' + e);
     }
   });
 

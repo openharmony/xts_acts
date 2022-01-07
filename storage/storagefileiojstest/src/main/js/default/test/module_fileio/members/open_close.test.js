@@ -81,6 +81,7 @@ describe('fileio_open_close', function () {
       fileio.openSync('/', 0o102, 0o666);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_open_sync_000 has failed for ' + e);
     }
   });
 
@@ -100,6 +101,7 @@ describe('fileio_open_close', function () {
       fileio.openSync(fpath, 0o102);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_open_sync_001 has failed for ' + e);
     }
   });
   
@@ -117,6 +119,7 @@ describe('fileio_open_close', function () {
       fileio.closeSync();
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_close_sync_000 has failed for ' + e);
     }
   });
 
@@ -134,6 +137,7 @@ describe('fileio_open_close', function () {
       fileio.closeSync(-1);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_close_sync_001 has failed for ' + e);
     }
   });
 });
