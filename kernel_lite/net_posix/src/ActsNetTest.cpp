@@ -1072,8 +1072,7 @@ HWTEST_F(ActsNetTest, testIoctlIfconf, Function | MediumTest | Level2)
     int ifrCount = ifc.ifc_len / sizeof(struct ifreq);
     EXPECT_TRUE(ifrCount >= 2);
     for (int i = 0; i < ifrCount; i++) {
-        printf("[###]interface name is %s, ip addr is %s\n", ifr[i].ifr_name,
-            inet_ntoa(((struct sockaddr_in *)&ifr[i].ifr_addr)->sin_addr));
+        printf("[###]interface name is %s\n", ifr[i].ifr_name);
     }
     ret = close(udpFd);
     EXPECT_EQ(0, ret);
@@ -1163,8 +1162,7 @@ HWTEST_F(ActsNetTest, testIoctlIfnetAddrOthers, Function | MediumTest | Level2)
             ASSERT_EQ(0, ret) << "ioctl fail[SIOCGIFADDR], errinfo[" << strerror(errno) << "]";
             addr2 = (struct sockaddr_in *)&ifrTmp.ifr_addr;
             EXPECT_EQ(addr1->sin_addr.s_addr, addr2->sin_addr.s_addr);
-            printf("[###]get %s addr1[%s],addr2[%s]\n", ifr[i].ifr_name, inet_ntoa(addr1->sin_addr),
-                inet_ntoa(addr2->sin_addr));
+            printf("[###]get %s\n", ifr[i].ifr_name);
 
             // set inet addr
             addr2->sin_addr.s_addr = addr1->sin_addr.s_addr;
@@ -1223,7 +1221,7 @@ HWTEST_F(ActsNetTest, testIoctlIfhwAddr, Function | MediumTest | Level2)
             ret = sprintf_s(rst1, sizeof(rst1), "%.2x:%.2x:%.2x:%.2x:%.2x:%.2x", *macPtr, *(macPtr+1),
                 *(macPtr+2), *(macPtr+3), *(macPtr+4), *(macPtr+5));
             EXPECT_EQ(strlen(rst1), (unsigned int)ret) << "sprintf_s error";
-            printf("[###]get %s rst[%s]\n", ifrTmp.ifr_name, rst1);
+            printf("[###]get %s \n", ifrTmp.ifr_name);
         }
     }
     ret = close(udpFd);
@@ -1745,7 +1743,7 @@ HWTEST_F(ActsNetTest, testInetPtonIpv4Normal, Function | MediumTest | Level2)
 #else
         EXPECT_EQ(expectBig[i], rst.s_addr);
 #endif
-        printf("[###]inet_pton %s: un[%u],s[%d],hex[%x]\n", cpAddrs[i], rst.s_addr, rst.s_addr, rst.s_addr);
+        printf("[###]inet_pton : un[%u],s[%d],hex[%x]\n", rst.s_addr, rst.s_addr, rst.s_addr);
     }
 }
 
@@ -1882,7 +1880,7 @@ HWTEST_F(ActsNetTest, testInetNtopIpv6Normal, Function | MediumTest | Level2)
     char inputAddrs[6][40] = {"0101:0101:0101:0101:1010:1010:1010:1010", "0:0:0:0:0:0:0:0", 
         "FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF", "::", "1::", "0011:0011:0011:0011:11:11:11:11"};
     char expectAddrs[6][40] = {"101:101:101:101:1010:1010:1010:1010", "::", 
-            "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff", "::", "1::", "11:11:11:11:11:11:11:11"};
+        "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff", "::", "1::", "11:11:11:11:11:11:11:11"};
     for (int i = 0; i < 6; i++) {
         iret = inet_pton(AF_INET6, inputAddrs[i], &inputAddr);
         ASSERT_EQ(1, iret);
