@@ -12,9 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-require('./DeviceInfoJsUnit.test.js')
-//require('./ParametersJsUnit.test.js')
+// require('./SysParametersJs.test.js')
 
 
 
