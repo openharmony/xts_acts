@@ -37,8 +37,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_000
    * @tc.desc Function of API, mode = r. The test file is exist.
    */
-  it('fileio_test_stream_create_stream_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_000');
+  it('fileio_test_stream_create_stream_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_000');
     expect(prepareFile(fpath, 'hello')).assertTrue();
     expect(fileToReadOnly(fpath)).assertTrue();
     try {
@@ -59,8 +59,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_001
    * @tc.desc Function of API, mode = r. The test file is not exist.
    */
-  it('fileio_test_stream_create_stream_sync_001', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_001');
+  it('fileio_test_stream_create_stream_sync_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_001');
     try {
       fileio.createStreamSync(fpath, 'r');
       expect(null).assertFail();
@@ -75,8 +75,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_002
    * @tc.desc Function of API, mode = w. The test file is exist.
    */
-  it('fileio_test_stream_create_stream_sync_002', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_002');
+  it('fileio_test_stream_create_stream_sync_002', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_002');
     expect(prepareFile(fpath, '')).assertTrue();
     expect(fileToWriteOnly(fpath)).assertTrue();
     let text = '0123456789abcdefg';
@@ -104,8 +104,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_003
    * @tc.desc Function of API, mode = w. The test file is not exist.
    */
-  it('fileio_test_stream_create_stream_sync_003', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_003');
+  it('fileio_test_stream_create_stream_sync_003', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_003');
     try {
       let ss = fileio.createStreamSync(fpath, 'w');
       expect(ss !== null).assertTrue();
@@ -123,8 +123,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_004
    * @tc.desc Function of API, mode = a. The test file is exist.
    */
-  it('fileio_test_stream_create_stream_sync_004', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_004');
+  it('fileio_test_stream_create_stream_sync_004', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_004');
     expect(prepareFile(fpath, 'a')).assertTrue();
     expect(fileToWriteOnly(fpath)).assertTrue();
     let text = '0123456789abcdefg';
@@ -153,8 +153,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_005
    * @tc.desc Function of API, mode = a. The test file is not exist.
    */
-  it('fileio_test_stream_create_stream_sync_005', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_005');
+  it('fileio_test_stream_create_stream_sync_005', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_005');
     try {
       let ss = fileio.createStreamSync(fpath, 'a');
       expect(ss !== null).assertTrue();
@@ -172,8 +172,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_006
    * @tc.desc Function of API, mode = r+. The test file is exist.
    */
-  it('fileio_test_stream_create_stream_sync_006', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_006');
+  it('fileio_test_stream_create_stream_sync_006', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let ss = fileio.createStreamSync(fpath, 'r+');
@@ -192,8 +192,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_007
    * @tc.desc Function of API, mode = r+. The test file is not exist.
    */
-  it('fileio_test_stream_create_stream_sync_007', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_007');
+  it('fileio_test_stream_create_stream_sync_007', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_007');
     try {
       fileio.createStreamSync(fpath, 'r+');
       expect(null).assertFail();
@@ -208,8 +208,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_008
    * @tc.desc Function of API, mode = w+. The test file is exist.
    */
-  it('fileio_test_stream_create_stream_sync_008', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_008');
+  it('fileio_test_stream_create_stream_sync_008', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_008');
     expect(prepareFile(fpath, '')).assertTrue();
     let text = '0123456789abcdefg';
     try {
@@ -236,8 +236,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_009
    * @tc.desc Function of API, mode = w+. The test file is not exist.
    */
-  it('fileio_test_stream_create_stream_sync_009', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_009');
+  it('fileio_test_stream_create_stream_sync_009', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_009');
     try {
       let ss = fileio.createStreamSync(fpath, 'w+');
       expect(ss !== null).assertTrue();
@@ -255,8 +255,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_010
    * @tc.desc Function of API, mode = a+. The test file is exist.
    */
-  it('fileio_test_stream_create_stream_sync_010', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_010');
+  it('fileio_test_stream_create_stream_sync_010', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_010');
     expect(prepareFile(fpath, 'a')).assertTrue();
     let text = '0123456789abcdefg';
     try {
@@ -283,8 +283,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_011
    * @tc.desc Function of API, mode = a+. The test file is not exist.
    */
-  it('fileio_test_stream_create_stream_sync_011', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_011');
+  it('fileio_test_stream_create_stream_sync_011', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_011');
     try {
       let ss = fileio.createStreamSync(fpath, 'a+');
       expect(ss !== null).assertTrue();
@@ -302,8 +302,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_012
    * @tc.desc Function of API, mode = ab. The test file is exist.
    */
-  it('fileio_test_stream_create_stream_sync_012', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_012');
+  it('fileio_test_stream_create_stream_sync_012', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_012');
     expect(prepareFile(fpath, '')).assertTrue();
     expect(fileToReadOnly(fpath)).assertTrue();
     try {
@@ -323,8 +323,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_013
    * @tc.desc Function of API, mode = ab. The test file is not exist.
    */
-  it('fileio_test_stream_create_stream_sync_013', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_013');
+  it('fileio_test_stream_create_stream_sync_013', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_013');
     try {
       fileio.createStreamSync(fpath, 'rb');
       expect(null).assertFail();
@@ -339,8 +339,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_014
    * @tc.desc Function of API, mode = wb. The test file is exist.
    */
-  it('fileio_test_stream_create_stream_sync_014', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_014');
+  it('fileio_test_stream_create_stream_sync_014', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_014');
     expect(prepareFile(fpath, '')).assertTrue();
     expect(fileToWriteOnly(fpath)).assertTrue();
     let text = '0123456789abcdefg';
@@ -368,8 +368,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_015
    * @tc.desc Function of API, mode = wb. The test file is not exist.
    */
-  it('fileio_test_stream_create_stream_sync_015', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_015');
+  it('fileio_test_stream_create_stream_sync_015', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_015');
     try {
       let ss = fileio.createStreamSync(fpath, 'wb');
       expect(ss !== null).assertTrue();
@@ -387,8 +387,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_016
    * @tc.desc Function of API, mode = ab. The test file is exist.
    */
-  it('fileio_test_stream_create_stream_sync_016', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_016');
+  it('fileio_test_stream_create_stream_sync_016', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_016');
     expect(prepareFile(fpath, 'a')).assertTrue();
     expect(fileToWriteOnly(fpath)).assertTrue();
     let text = '0123456789abcdefg';
@@ -417,8 +417,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_017
    * @tc.desc Function of API, mode = ab. The test file is not exist.
    */
-  it('fileio_test_stream_create_stream_sync_017', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_017');
+  it('fileio_test_stream_create_stream_sync_017', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_017');
     try {
       let ss = fileio.createStreamSync(fpath, 'ab');
       expect(ss !== null).assertTrue();
@@ -436,8 +436,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_018
    * @tc.desc Function of API, mode = rb+. The test file is exist.
    */
-  it('fileio_test_stream_create_stream_sync_018', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_018');
+  it('fileio_test_stream_create_stream_sync_018', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_018');
     expect(prepareFile(fpath, '')).assertTrue();
     try {
       let ss = fileio.createStreamSync(fpath, 'rb+');
@@ -456,8 +456,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_019
    * @tc.desc Function of API, mode = rb+. The test file is not exist.
    */
-  it('fileio_test_stream_create_stream_sync_019', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_019');
+  it('fileio_test_stream_create_stream_sync_019', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_019');
     try {
       fileio.createStreamSync(fpath, 'rb+');
       expect(null).assertFail();
@@ -472,8 +472,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_020
    * @tc.desc Function of API, mode = wb+. The test file is exist.
    */
-  it('fileio_test_stream_create_stream_sync_020', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_020');
+  it('fileio_test_stream_create_stream_sync_020', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_020');
     expect(prepareFile(fpath, '')).assertTrue();
     let text = '0123456789abcdefg';
     try {
@@ -500,8 +500,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_021
    * @tc.desc Function of API, mode = wb+. The test file is not exist.
    */
-  it('fileio_test_stream_create_stream_sync_021', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_021');
+  it('fileio_test_stream_create_stream_sync_021', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_021');
     try {
       let ss = fileio.createStreamSync(fpath, 'wb+');
       expect(ss !== null).assertTrue();
@@ -519,8 +519,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_022
    * @tc.desc Function of API, mode = ab+. The test file is exist.
    */
-  it('fileio_test_stream_create_stream_sync_022', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_022');
+  it('fileio_test_stream_create_stream_sync_022', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_022');
     expect(prepareFile(fpath, 'a')).assertTrue();
     let text = '0123456789abcdefg';
     try {
@@ -547,8 +547,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_023
    * @tc.desc Function of API, mode = ab+. The test file is not exist.
    */
-  it('fileio_test_stream_create_stream_sync_023', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_023');
+  it('fileio_test_stream_create_stream_sync_023', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_023');
     try {
       let ss = fileio.createStreamSync(fpath, 'ab+');
       expect(ss !== null).assertTrue();
@@ -581,8 +581,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_025
    * @tc.desc Function of API, invaild mode.
    */
-  it('fileio_test_stream_create_stream_sync_025', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_025');
+  it('fileio_test_stream_create_stream_sync_025', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_025');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       fileio.createStreamSync(fpath, '');
@@ -599,8 +599,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_026
    * @tc.desc Function of API, fpath too long.
    */
-  it('fileio_test_stream_create_stream_sync_026', 0, function () {
-    let dpath = nextFileName('fileio_stream');
+  it('fileio_test_stream_create_stream_sync_026', 0, async function () {
+    let dpath = await nextFileName('fileio_stream');
     fileio.mkdirSync(dpath);
     try {
       for (let i = 0; i < 16; i++) {
@@ -624,8 +624,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_027
    * @tc.desc Function of API, filename too long.
    */
-  it('fileio_test_stream_create_stream_sync_027', 0, function () {
-    let fpath = nextFileName(randomString(256));
+  it('fileio_test_stream_create_stream_sync_027', 0, async function () {
+    let fpath = await nextFileName(randomString(256));
     try {
       fileio.createStreamSync(fpath, 'w+');
       expect(null).assertFail();
@@ -640,8 +640,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_028
    * @tc.desc Function of API, path too deep.
    */
-  it('fileio_test_stream_create_stream_sync_028', 0, function () {
-    let dpath = nextFileName('stream');
+  it('fileio_test_stream_create_stream_sync_028', 0, async function () {
+    let dpath = await nextFileName('stream');
     fileio.mkdirSync(dpath);
     try {
       for (let i = 0; i < 113; i++) {
@@ -665,8 +665,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_029
    * @tc.desc Function of API, special character.
    */
-  it('fileio_test_stream_create_stream_sync_029', 0, function () {
-    let fpath = nextFileName('?*:<>/|');
+  it('fileio_test_stream_create_stream_sync_029', 0, async function () {
+    let fpath = await nextFileName('?*:<>/|');
     try {
       fileio.createStreamSync(fpath, 'w+');
       expect(null).assertFail();
@@ -681,8 +681,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_000
    * @tc.desc Function of API, mode=r. The test file is exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_000');
+  it('fileio_test_stream_fdopen_stream_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_000');
     expect(prepareFile(fpath, '')).assertTrue();
     expect(fileToReadOnly(fpath)).assertTrue();
     try {
@@ -721,8 +721,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_002
    * @tc.desc Function of API, mode=w. The test file is exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_002', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_002');
+  it('fileio_test_stream_fdopen_stream_sync_002', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_002');
     let fd;
     expect(prepareFile(fpath, '')).assertTrue();
     expect(fileToWriteOnly(fpath)).assertTrue();
@@ -754,8 +754,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_003
    * @tc.desc Function of API, mode=w. The test file is not exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_003', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_003');
+  it('fileio_test_stream_fdopen_stream_sync_003', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_003');
     try {
       let fd = fileio.openSync(fpath, 0o101, 0o222);
       let ss = fileio.fdopenStreamSync(fd, 'w');
@@ -775,8 +775,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_004
    * @tc.desc Function of API, mode=a. The test file is exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_004', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_004');
+  it('fileio_test_stream_fdopen_stream_sync_004', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_004');
     expect(prepareFile(fpath, '1')).assertTrue();
     expect(fileToWriteOnly(fpath)).assertTrue();
     let text = '0123456789abcdefg';
@@ -807,8 +807,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_005
    * @tc.desc Function of API, mode=a. The test file is not exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_005', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_005');
+  it('fileio_test_stream_fdopen_stream_sync_005', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_005');
     try {
       let fd = fileio.openSync(fpath, 0o101, 0o222);
       let ss = fileio.fdopenStreamSync(fd, 'a');
@@ -828,8 +828,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_006
    * @tc.desc Function of API, mode=r+. The test file is exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_006', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_006');
+  it('fileio_test_stream_fdopen_stream_sync_006', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_006');
     expect(prepareFile(fpath, '')).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o2);
@@ -850,7 +850,7 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_007
    * @tc.desc Function of API, mode=r+. The test file is not exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_007', 0, function () {
+  it('fileio_test_stream_fdopen_stream_sync_007', 0, async function () {
     try {
       fileio.fdopenStreamSync(-1, 'r+');
       expect(null).assertFail();
@@ -865,8 +865,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_008
    * @tc.desc Function of API, mode=w+. The test file is exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_008', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_008');
+  it('fileio_test_stream_fdopen_stream_sync_008', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_008');
     expect(prepareFile(fpath, '')).assertTrue();
     let text = '0123456789abcdefg';
     try {
@@ -896,8 +896,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_009
    * @tc.desc Function of API, mode=w+. The test file is not exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_009', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_009');
+  it('fileio_test_stream_fdopen_stream_sync_009', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_009');
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
       let ss = fileio.fdopenStreamSync(fd, 'w+');
@@ -917,8 +917,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_010
    * @tc.desc Function of API, mode=a+. The test file is exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_010', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_010');
+  it('fileio_test_stream_fdopen_stream_sync_010', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_010');
     expect(prepareFile(fpath, '1')).assertTrue();
     let text = '0123456789abcdefg';
     try {
@@ -948,8 +948,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_011
    * @tc.desc Function of API, mode=a+. The test file is not exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_011', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_011');
+  it('fileio_test_stream_fdopen_stream_sync_011', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_011');
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
       let ss = fileio.fdopenStreamSync(fd, 'a+');
@@ -969,8 +969,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_012
    * @tc.desc Function of API, mode=rb. The test file is exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_012', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_012');
+  it('fileio_test_stream_fdopen_stream_sync_012', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_012');
     expect(prepareFile(fpath, '')).assertTrue();
     expect(fileToReadOnly(fpath)).assertTrue();
     try {
@@ -992,7 +992,7 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_013
    * @tc.desc Function of API, mode=rb. The test file is not exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_013', 0, function () {
+  it('fileio_test_stream_fdopen_stream_sync_013', 0, async function () {
     try {
       fileio.fdopenStreamSync(-1, 'rb');
       expect(null).assertFail();
@@ -1007,8 +1007,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_014
    * @tc.desc Function of API, mode=wb. The test file is exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_014', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_014');
+  it('fileio_test_stream_fdopen_stream_sync_014', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_014');
     expect(prepareFile(fpath, '')).assertTrue();
     expect(fileToWriteOnly(fpath)).assertTrue();
     let text = '0123456789abcdefg';
@@ -1039,8 +1039,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_015
    * @tc.desc Function of API, mode=wb. The test file is not exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_015', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_015');
+  it('fileio_test_stream_fdopen_stream_sync_015', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_015');
     try {
       let fd = fileio.openSync(fpath, 0o101, 0o222);
       let ss = fileio.fdopenStreamSync(fd, 'wb');
@@ -1060,8 +1060,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_016
    * @tc.desc Function of API, mode=ab. The test file is exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_016', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_016');
+  it('fileio_test_stream_fdopen_stream_sync_016', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_016');
     expect(prepareFile(fpath, '1')).assertTrue();
     expect(fileToWriteOnly(fpath)).assertTrue();
     let text = '0123456789abcdefg';
@@ -1092,8 +1092,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_017
    * @tc.desc Function of API, mode=ab. The test file is not exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_017', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_017');
+  it('fileio_test_stream_fdopen_stream_sync_017', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_017');
     try {
       let fd = fileio.openSync(fpath, 0o101, 0o222);
       let ss = fileio.fdopenStreamSync(fd, 'ab');
@@ -1113,8 +1113,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_018
    * @tc.desc Function of API, mode=rb+. The test file is exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_018', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_018');
+  it('fileio_test_stream_fdopen_stream_sync_018', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_018');
     expect(prepareFile(fpath, '')).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o2);
@@ -1134,7 +1134,7 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_019
    * @tc.desc Function of API, mode=rb+. The test file is not exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_019', 0, function () {
+  it('fileio_test_stream_fdopen_stream_sync_019', 0, async function () {
     try {
       fileio.fdopenStreamSync(-1, 'rb+');
       expect(null).assertFail();
@@ -1149,8 +1149,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_020
    * @tc.desc Function of API, mode=wb+. The test file is exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_020', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_020');
+  it('fileio_test_stream_fdopen_stream_sync_020', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_020');
     expect(prepareFile(fpath, '')).assertTrue();
     let text = '0123456789abcdefg';
     try {
@@ -1180,8 +1180,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_021
    * @tc.desc Function of API, mode=wb+. The test file is not exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_021', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_021');
+  it('fileio_test_stream_fdopen_stream_sync_021', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_021');
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
       let ss = fileio.fdopenStreamSync(fd, 'wb+');
@@ -1201,8 +1201,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_022
    * @tc.desc Function of API, mode=ab+. The test file is exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_022', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_022');
+  it('fileio_test_stream_fdopen_stream_sync_022', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_022');
     expect(prepareFile(fpath, '1')).assertTrue();
     let text = '0123456789abcdefg';
     try {
@@ -1232,8 +1232,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_023
    * @tc.desc Function of API, mode=ab+. The test file is not exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_023', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_023');
+  it('fileio_test_stream_fdopen_stream_sync_023', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_023');
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
       let ss = fileio.fdopenStreamSync(fd, 'ab+');
@@ -1253,7 +1253,7 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_024
    * @tc.desc Function of API, invaild fildes. The test file is exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_024', 0, function () {
+  it('fileio_test_stream_fdopen_stream_sync_024', 0, async function () {
     try {
       expect(fileio.fdopenStreamSync(null, 'r') == null).assertTrue();
       expect(null).assertFail();
@@ -1268,8 +1268,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_025
    * @tc.desc Function of API, invaild mode. The test file is exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_025', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_025');
+  it('fileio_test_stream_fdopen_stream_sync_025', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_025');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o2);
@@ -1287,8 +1287,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_read_sync_000
    * @tc.desc Function of API, not set options.
    */
-  it('fileio_test_stream_read_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_read_sync_000');
+  it('fileio_test_stream_read_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_read_sync_000');
     let text = '0123456789abcdefg';
     expect(prepareFile(fpath, text)).assertTrue();
     try {
@@ -1310,8 +1310,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_read_sync_001
    * @tc.desc Function of API, position.
    */
-  it('fileio_test_stream_read_sync_001', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_read_sync_001');
+  it('fileio_test_stream_read_sync_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_read_sync_001');
     let text = '0123456789abcdefg';
     expect(prepareFile(fpath, text)).assertTrue();
     try {
@@ -1335,8 +1335,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_read_sync_002
    * @tc.desc Function of API, offset.
    */
-  it('fileio_test_stream_read_sync_002', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_read_sync_002');
+  it('fileio_test_stream_read_sync_002', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_read_sync_002');
     let text = '0123456789abcdefg';
     expect(prepareFile(fpath, text)).assertTrue();
     try {
@@ -1360,8 +1360,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_read_sync_003
    * @tc.desc Function of API, length.
    */
-  it('fileio_test_stream_read_sync_003', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_read_sync_003');
+  it('fileio_test_stream_read_sync_003', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_read_sync_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let ss = fileio.createStreamSync(fpath, 'r+');
@@ -1384,8 +1384,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_read_sync_004
    * @tc.desc Function of API, readBuf.
    */
-  it('fileio_test_stream_read_sync_004', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_read_sync_004');
+  it('fileio_test_stream_read_sync_004', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_read_sync_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       var ss = fileio.createStreamSync(fpath, 'r+');
@@ -1406,8 +1406,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_read_sync_005
    * @tc.desc Function of API, position = -1.
    */
-  it('fileio_test_stream_read_sync_005', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_read_sync_005');
+  it('fileio_test_stream_read_sync_005', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_read_sync_005');
     let text = '0123456789abcdefg';
     expect(prepareFile(fpath, text)).assertTrue();
     try {
@@ -1431,8 +1431,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_read_sync_006
    * @tc.desc Function of API, offset.
    */
-  it('fileio_test_stream_read_sync_006', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_read_sync_006');
+  it('fileio_test_stream_read_sync_006', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_read_sync_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       var ss = fileio.createStreamSync(fpath, 'r+');
@@ -1455,8 +1455,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_write_sync_000
    * @tc.desc Function of API, not set options.
    */
-  it('fileio_test_stream_write_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_write_sync_000');
+  it('fileio_test_stream_write_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_write_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let text = '0123456789abcdefg';
     try {
@@ -1478,8 +1478,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_write_sync_001
    * @tc.desc Function of API, invaild encoding.
    */
-  it('fileio_test_stream_write_sync_001', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_write_sync_001');
+  it('fileio_test_stream_write_sync_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_write_sync_001');
     expect(prepareFile(fpath, '')).assertTrue();
     let ss
     try {
@@ -1502,8 +1502,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_write_sync_002
    * @tc.desc Function of API, position.
    */
-  it('fileio_test_stream_write_sync_002', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_write_sync_002');
+  it('fileio_test_stream_write_sync_002', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_write_sync_002');
     expect(prepareFile(fpath, 'a')).assertTrue();
     expect(fileToWriteOnly(fpath)).assertTrue();
     try {
@@ -1532,8 +1532,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_write_sync_003
    * @tc.desc Function of API, offset.
    */
-  it('fileio_test_stream_write_sync_003', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_write_sync_003');
+  it('fileio_test_stream_write_sync_003', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_write_sync_003');
     expect(prepareFile(fpath, 'a')).assertTrue();
     expect(fileToWriteOnly(fpath)).assertTrue();
     try {
@@ -1562,8 +1562,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_write_sync_004
    * @tc.desc Function of API, length.
    */
-  it('fileio_test_stream_write_sync_004', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_write_sync_004');
+  it('fileio_test_stream_write_sync_004', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_write_sync_004');
     expect(prepareFile(fpath, 'a')).assertTrue();
     let text = '0123456789abcdefg';
     try {
@@ -1589,8 +1589,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_write_sync_005
    * @tc.desc Function of API, encoding.
    */
-  it('fileio_test_stream_write_sync_005', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_write_sync_005');
+  it('fileio_test_stream_write_sync_005', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_write_sync_005');
     expect(prepareFile(fpath, '')).assertTrue();
     let writeStrArray = new Array('aaa', '123');
     let encodingArray = new Array('utf-8', 'utf-16');
@@ -1621,8 +1621,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_write_sync_006
    * @tc.desc Function of API, position.
    */
-  it('fileio_test_stream_write_sync_006', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_write_sync_006');
+  it('fileio_test_stream_write_sync_006', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_write_sync_006');
     expect(prepareFile(fpath, 'a')).assertTrue();
     expect(fileToWriteOnly(fpath)).assertTrue();
     try {
@@ -1653,8 +1653,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_write_sync_007
    * @tc.desc Function of API, offset.
    */
-  it('fileio_test_stream_write_sync_007', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_write_sync_007');
+  it('fileio_test_stream_write_sync_007', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_write_sync_007');
     expect(prepareFile(fpath, 'a')).assertTrue();
     expect(fileToWriteOnly(fpath)).assertTrue();
     try {
@@ -1685,8 +1685,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_write_sync_008
    * @tc.desc Function of API, length.
    */
-  it('fileio_test_stream_write_sync_008', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_write_sync_008');
+  it('fileio_test_stream_write_sync_008', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_write_sync_008');
     expect(prepareFile(fpath, '')).assertTrue();
     let text = '0123456789abcdefg';
     try {
@@ -1714,8 +1714,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_write_sync_009
    * @tc.desc Function of API, invaild fcontent.
    */
-  it('fileio_test_stream_write_sync_009', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_write_sync_009');
+  it('fileio_test_stream_write_sync_009', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_write_sync_009');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       var ss = fileio.createStreamSync(fpath, 'r+');
@@ -1734,8 +1734,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_write_sync_010
    * @tc.desc Function of API, invaild encoding.
    */
-  it('fileio_test_stream_write_sync_010', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_write_sync_010');
+  it('fileio_test_stream_write_sync_010', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_write_sync_010');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       var ss = fileio.createStreamSync(fpath, 'r+');
@@ -1757,8 +1757,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_write_sync_011
    * @tc.desc Function of API, invaild position.
    */
-  it('fileio_test_stream_write_sync_011', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_write_sync_011');
+  it('fileio_test_stream_write_sync_011', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_write_sync_011');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       var ss = fileio.createStreamSync(fpath, 'r+');
@@ -1780,8 +1780,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_write_sync_012
    * @tc.desc Function of API, invaild offset.
    */
-  it('fileio_test_stream_write_sync_012', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_write_sync_012');
+  it('fileio_test_stream_write_sync_012', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_write_sync_012');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       var ss = fileio.createStreamSync(fpath, 'r+');
@@ -1803,8 +1803,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_write_sync_013
    * @tc.desc Function of API, Set all parameters.
    */
-  it('fileio_test_stream_write_sync_013', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_write_sync_013');
+  it('fileio_test_stream_write_sync_013', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_write_sync_013');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let text = '0123456789abcdefg';
     try {
@@ -1831,8 +1831,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_write_sync_014
    * @tc.desc Function of API, Set all parameters.
    */
-  it('fileio_test_stream_write_sync_014', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_write_sync_014');
+  it('fileio_test_stream_write_sync_014', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_write_sync_014');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let text = '0123456789abcdefg';
     try {
@@ -1857,8 +1857,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_write_read_4k_sync
    * @tc.desc Function of API, read 4k file.
    */
-  it('fileio_test_stream_write_read_4k_sync', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_write_read_4k_sync');
+  it('fileio_test_stream_write_read_4k_sync', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_write_read_4k_sync');
     expect(prepareFile(fpath, 'a')).assertTrue();
     expect(fileToWriteOnly(fpath)).assertTrue();
     try {
@@ -1886,8 +1886,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_flush_sync_000
    * @tc.desc Function of API, flushSync.
    */
-  it('fileio_test_stream_flush_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_flush_sync_000');
+  it('fileio_test_stream_flush_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_flush_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let text = '0123456789abcdefg';
     try {
@@ -1909,8 +1909,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_flush_sync_001
    * @tc.desc Function of API, error.
    */
-  it('fileio_test_stream_flush_sync_001', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_flush_sync_001');
+  it('fileio_test_stream_flush_sync_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_flush_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let ss = fileio.createStreamSync(fpath, 'r+');
@@ -1930,8 +1930,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_close_sync_000
    * @tc.desc Function of API, closeSync.
    */
-  it('fileio_test_stream_close_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_close_sync_000');
+  it('fileio_test_stream_close_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_close_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let ss = fileio.createStreamSync(fpath, 'r+');
@@ -1949,8 +1949,8 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_close_sync_001
    * @tc.desc Function of API, error.
    */
-  it('fileio_test_stream_close_sync_001', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_close_sync_001');
+  it('fileio_test_stream_close_sync_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_close_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let ss;
     try {

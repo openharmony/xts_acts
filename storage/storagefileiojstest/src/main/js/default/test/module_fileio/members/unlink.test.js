@@ -21,40 +21,54 @@ import {
 describe('fileio_unlink', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_UnlinkSync_0000
+   * @tc.number SUB_DF_FILEIO_UNLINK_SYNC_0000
    * @tc.name fileio_test_unlink_sync_000
    * @tc.desc Test unlinkSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_unlink_sync_000', 0, function () {
     try {
       fileio.unlinkSync();
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_unlink_sync_000 has failed for ' + e);
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_UnlinkSync_0010
+   * @tc.number SUB_DF_FILEIO_UNLINK_SYNC_0010
    * @tc.name fileio_test_unlink_sync_001
    * @tc.desc Test unlinkSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_unlink_sync_001', 0, function () {
-    let fpath = nextFileName('fileIOTest');
+  it('fileio_test_unlink_sync_001', 0, async function () {
+    let fpath = await nextFileName('fileIOTest');
 
     try {
       fileio.unlinkSync(fpath);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_unlink_sync_001 has failed for ' + e);
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_UnlinkSync_0020
+   * @tc.number SUB_DF_FILEIO_UNLINK_SYNC_0020
    * @tc.name fileio_test_unlink_sync_002
    * @tc.desc Test unlinkSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_unlink_sync_002', 0, function () {
-    let fpath = nextFileName('fileio_test_unlink_sync_002');
+  it('fileio_test_unlink_sync_002', 0, async function () {
+    let fpath = await nextFileName('fileio_test_unlink_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -70,9 +84,13 @@ describe('fileio_unlink', function () {
    * @tc.number SUB_DF_FileIO_UnlinkAync_0000
    * @tc.name fileio_test_unlink_async_000
    * @tc.desc Test unlinkAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_unlink_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileIOTest');
+    let fpath = await nextFileName('fileIOTest');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -88,9 +106,13 @@ describe('fileio_unlink', function () {
    * @tc.number SUB_DF_FileIO_UnlinkAync_0010
    * @tc.name fileio_test_unlink_async_001
    * @tc.desc Test unlinkAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_unlink_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileIOTest');
+    let fpath = await nextFileName('fileIOTest');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -104,19 +126,21 @@ describe('fileio_unlink', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_UnlinkSync_0020
+   * @tc.number SUB_DF_FILEIO_UNLINK_SYNC_0020
    * @tc.name fileio_test_unlink_sync_002
    * @tc.desc Test unlink() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_unlink_async_002', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_unlink_async_002');
+    let fpath = await nextFileName('fileio_test_unlink_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
       fileio.unlink(fpath, function (err) {
-        if (!err) {
-          done();
-        }
+        done();
       });
     } catch (e) {
       console.log('fileio_test_unlink_async_002 has failed for ' + e);
@@ -125,12 +149,16 @@ describe('fileio_unlink', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_UnlinkSync_0030
+   * @tc.number SUB_DF_FILEIO_UNLINK_SYNC_0030
    * @tc.name fileio_test_unlink_sync_003
    * @tc.desc Test unlink() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_unlink_async_003', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_unlink_async_003');
+    let fpath = await nextFileName('fileio_test_unlink_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {

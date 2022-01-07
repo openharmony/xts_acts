@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-require('./File.test.js')
 require('./FileIO.test.js')
 require('./FileIODir.test.js')
 require('./FileIODirent.test.js')
@@ -51,7 +50,7 @@ require('./module_fileio/members/rename.test.js');
 require('./module_fileio/members/rmdir.test.js');
 require('./module_fileio/members/stat.test.js');
 require('./module_fileio/members/symlink.test.js');
-require("./module_fileio/members/truncate.test.js");
+require('./module_fileio/members/truncate.test.js');
 require('./module_fileio/members/unlink.test.js');
 require('./module_fileio/members/write.test.js');
 require('./module_fileio/class_dir/read.test.js');

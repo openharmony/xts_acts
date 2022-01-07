@@ -21,12 +21,16 @@ import {
 describe('fileio_stream', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_ReadAsync_0000
+   * @tc.number SUB_DF_FILEIO_STREAM_READASYNC_0000
    * @tc.name fileio_test_stream_read_async_000
-   * @tc.desc Test readAsync() interface.
+   * @tc.desc Test readAsync() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_stream_read_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_stream_read_async_000');
+    let fpath = await nextFileName('fileio_test_stream_read_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -44,12 +48,16 @@ describe('fileio_stream', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_ReadAsync_0010
+   * @tc.number SUB_DF_FILEIO_STREAM_READASYNC_0010
    * @tc.name fileio_test_stream_read_async_001
-   * @tc.desc Test readAsync() interface.
+   * @tc.desc Test readAsync() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_stream_read_async_001', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_read_async_001');
+  it('fileio_test_stream_read_async_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_read_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {

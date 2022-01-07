@@ -21,12 +21,16 @@ import {
 describe('fileio_stream', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_FdopenStreamSync_0000
+   * @tc.number SUB_DF_FILEIO_STREAM_FDOPENSTREAMSYNC_0000
    * @tc.name fileio_test_stream_fdopen_stream_sync_000
-   * @tc.desc Test fdopenStreamSync() interface.
+   * @tc.desc Test fdopenStreamSync() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_stream_fdopen_stream_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_sync_000');
+  it('fileio_test_stream_fdopen_stream_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -42,9 +46,13 @@ describe('fileio_stream', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_FdopenStreamSync_0010
+   * @tc.number SUB_DF_FILEIO_STREAM_FDOPENSTREAMSYNC_0010
    * @tc.name fileio_test_stream_fdopen_stream_sync_001
-   * @tc.desc Test fdopenStreamSync() interface.
+   * @tc.desc Test fdopenStreamSync() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_stream_fdopen_stream_sync_001', 0, function () {
 
@@ -52,16 +60,21 @@ describe('fileio_stream', function () {
       let ss = fileio.fdopenStreamSync(-1, 'r+');
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_stream_fdopen_stream_sync_001 has failed for ' + e);
     }
   })
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_FdopenStreamAsync_0000
+   * @tc.number SUB_DF_FILEIO_STREAM_FDOPENSTREAMASYNC_0000
    * @tc.name fileio_test_stream_fdopen_stream_async_000
-   * @tc.desc Test fdopenStreamSync() interface.
+   * @tc.desc Test fdopenStreamSync() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_stream_fdopen_stream_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_async_000');
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -79,12 +92,16 @@ describe('fileio_stream', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_FdopenStreamAsync_0010
+   * @tc.number SUB_DF_FILEIO_STREAM_FDOPENSTREAMASYNC_0010
    * @tc.name fileio_test_stream_fdopen_stream_async_001
-   * @tc.desc Test fdopenStreamSync() interface.
+   * @tc.desc Test fdopenStreamSync() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_stream_fdopen_stream_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_stream_fdopen_stream_async_001');
+    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {

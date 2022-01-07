@@ -21,12 +21,16 @@ import {
 describe('fileio_rmdir', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_RmdirAsync_0000
+   * @tc.number SUB_DF_FILEIO_RMDIR_ASYNC_0000
    * @tc.name fileio_test_rmdir_async_000
    * @tc.desc Test rmdirAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_rmdir_async_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_test_rmdir_async_000') + 'd';
+    let dpath = await nextFileName('fileio_test_rmdir_async_000') + 'd';
 
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -48,17 +52,20 @@ describe('fileio_rmdir', function () {
   });
   
   /**
-   * @tc.number SUB_DF_FileIO_RmdirAsync_0010
+   * @tc.number SUB_DF_FILEIO_RMDIR_ASYNC_0010
    * @tc.name fileio_test_rmdir_async_001
    * @tc.desc Test rmdirAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_rmdir_async_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_test_rmdir_async_001') + 'd';
+    let dpath = await nextFileName('fileio_test_rmdir_async_001') + 'd';
 
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      fileio.rmdir(dpath, async function (err) {
-        expect(!err).assertTrue();
+      fileio.rmdir(dpath, function (err) {
         fileio
           .access(dpath)
           .then(function () {
@@ -77,12 +84,16 @@ describe('fileio_rmdir', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_RmdirAsync_0020
+   * @tc.number SUB_DF_FILEIO_RMDIR_ASYNC_0020
    * @tc.name fileio_test_rmdir_async_002
    * @tc.desc Test rmdirAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_rmdir_async_002', 0, async function (done) {
-    let dpath = nextFileName('fileio_test_rmdir_async_002') + 'd';
+    let dpath = await nextFileName('fileio_test_rmdir_async_002') + 'd';
     expect(prepareFile(dpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -99,13 +110,17 @@ describe('fileio_rmdir', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_RmdirAsync_0030
+   * @tc.number SUB_DF_FILEIO_RMDIR_ASYNC_0030
    * @tc.name fileio_test_rmdir_async_003
    * @tc.desc Test rmdirAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_rmdir_async_003', 0, async function (done) {
+  it('fileio_test_rmdir_async_003', 0, function (done) {
     try {
-      fileio.rmdir('1.js', async function (err) {
+      fileio.rmdir('1.js', function (err) {
         expect(!!err).assertTrue();
         done();
       });
@@ -116,12 +131,16 @@ describe('fileio_rmdir', function () {
   });
 
     /**
-   * @tc.number SUB_DF_FileIO_RmdirSync_0000
+   * @tc.number SUB_DF_FILEIO_RMDIR_SYNC_0000
    * @tc.name fileio_test_rmdir_sync_000
    * @tc.desc Test rmdirSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_rmdir_sync_000', 0, function () {
-    let dpath = nextFileName('fileio_test_rmdir_sync_000') + 'd';
+  it('fileio_test_rmdir_sync_000', 0, async function () {
+    let dpath = await nextFileName('fileio_test_rmdir_sync_000') + 'd';
 
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();

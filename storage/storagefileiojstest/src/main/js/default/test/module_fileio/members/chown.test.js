@@ -21,12 +21,16 @@ import {
 describe('fileio_chown', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_ChownSync_000
+   * @tc.number SUB_DF_FILEIO_CHOWNSYNC_000
    * @tc.name fileio_test_chown_sync_000
-   * @tc.desc Test chownSync() interface.
+   * @tc.desc Test chownSync() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_chown_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_chown_sync_000');
+  it('fileio_test_chown_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_chown_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let stat = fileio.statSync(fpath);
@@ -38,12 +42,16 @@ describe('fileio_chown', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ChownASync_000
+   * @tc.number SUB_DF_FILEIO_CHOWNASYNC_000
    * @tc.name fileio_test_chown_async_00
-   * @tc.desc Test chownASync() interface.
+   * @tc.desc Test chownASync() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_chown_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_chown_Async_000');
+    let fpath = await nextFileName('fileio_chown_Async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let stat = fileio.statSync(fpath);
@@ -57,12 +65,16 @@ describe('fileio_chown', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ChownASync_001
+   * @tc.number SUB_DF_FILEIO_CHOWNASYNC_001
    * @tc.name fileio_test_chown_async_00
-   * @tc.desc Test chownASync() interface.
+   * @tc.desc Test chownASync() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_chown_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_chown_Async_001');
+    let fpath = await nextFileName('fileio_chown_Async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let stat = fileio.statSync(fpath);

@@ -21,12 +21,16 @@ import {
 describe('fileio_posix_fallocate', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_PosixFallocateSync_0000
+   * @tc.number SUB_DF_FILEIO_POSIX_FALLOCATE_SYNC_0000
    * @tc.name fileio_test_posix_fallocate_sync_000
    * @tc.desc Test fsyncSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_posix_fallocate_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_posix_fallocate_sync_000');
+  it('fileio_test_posix_fallocate_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_posix_fallocate_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -41,18 +45,21 @@ describe('fileio_posix_fallocate', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_PosixFallocateAsync_0000
+   * @tc.number SUB_DF_FILEIO_POSIX_FALLOCATE_ASYNC_0000
    * @tc.name fileio_test_posix_fallocate_async_000
    * @tc.desc Test fsyncASync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_posix_fallocate_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_posix_fallocate_async_000');
+    let fpath = await nextFileName('fileio_test_posix_fallocate_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o2);
       expect(isIntNum(fd)).assertTrue();
       await fileio.posixFallocate(fd, 100, 999, function (err) {
-        expect(!err).assertTrue();
         expect(fileio.closeSync(fd) == null).assertTrue();
         expect(fileio.unlinkSync(fpath) == null).assertTrue();
         done();
@@ -64,12 +71,16 @@ describe('fileio_posix_fallocate', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_PosixFallocateAsync_0010
+   * @tc.number SUB_DF_FILEIO_POSIX_FALLOCATE_ASYNC_0010
    * @tc.name fileio_test_posix_fallocate_async_001
    * @tc.desc Test lseekAsync()interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_posix_fallocate_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_posix_fallocate_async_001');
+    let fpath = await nextFileName('fileio_test_posix_fallocate_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o2);

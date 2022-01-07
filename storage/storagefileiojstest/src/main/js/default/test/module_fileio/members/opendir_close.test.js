@@ -18,12 +18,16 @@ import { fileio, nextFileName, describe, it, expect } from '../../Common';
 describe('fileio_dir_opendir_close', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_OpenClosedirSync_0000
+   * @tc.number SUB_DF_FILEIO_OPEN_CLOSEDIR_SYNC_0000
    * @tc.name fileio_dir_open_close_sync_000
    * @tc.desc Test opendirSync() and Dir.closeSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_dir_open_close_sync_000', 0, function () {
-    let dpath = nextFileName('fileio_dir_open_close_sync_000') + 'd';
+  it('fileio_dir_open_close_sync_000', 0, async function () {
+    let dpath = await nextFileName('fileio_dir_open_close_sync_000') + 'd';
 
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -38,27 +42,36 @@ describe('fileio_dir_opendir_close', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_OpenClosedirSync_0010
+   * @tc.number SUB_DF_FILEIO_OPEN_CLOSEDIR_SYNC_0010
    * @tc.name fileio_dir_open_close_sync_001
    * @tc.desc Test opendirSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_dir_open_close_sync_001', 0, function () {
-    let dpath = nextFileName('fileio_dir_open_close_sync_001') + 'd';
+  it('fileio_dir_open_close_sync_001', 0, async function () {
+    let dpath = await nextFileName('fileio_dir_open_close_sync_001') + 'd';
 
     try {
       fileio.opendirSync(dpath);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_dir_open_close_sync_001 has failed for ' + e);
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_OpenClosedirAsync_0000
+   * @tc.number SUB_DF_FILEIO_OPEN_CLOSEDIR_ASYNC_0000
    * @tc.name fileio_dir_open_close_async_000
    * @tc.desc Test opendirAsync() and Dir.closeSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_dir_open_close_async_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_open_close_async_000') + 'd';
+    let dpath = await nextFileName('fileio_dir_open_close_async_000') + 'd';
 
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -74,12 +87,16 @@ describe('fileio_dir_opendir_close', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_OpenClosedirAsync_0010
+   * @tc.number SUB_DF_FILEIO_OPEN_CLOSEDIR_ASYNC_0010
    * @tc.name fileio_dir_open_close_async_001
    * @tc.desc Test opendirAsync() and Dir.closeSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_dir_open_close_async_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_open_close_async_001') + 'd';
+    let dpath = await nextFileName('fileio_dir_open_close_async_001') + 'd';
 
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();

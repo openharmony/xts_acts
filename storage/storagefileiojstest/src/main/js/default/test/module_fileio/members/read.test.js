@@ -21,12 +21,16 @@ import {
 describe('fileio_read', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadSync_0000
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_0000
    * @tc.name fileio_test_read_sync_000
    * @tc.desc Test readSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_read_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_read_sync_000');
+  it('fileio_test_read_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_read_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -43,14 +47,18 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadSync_0010
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_0010
    * @tc.name fileio_test_read_sync_001
    * @tc.desc Test readSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_read_sync_001', 0, function () {
+  it('fileio_test_read_sync_001', 0, async function () {
     let bufLen = 5;
     expect(FILE_CONTENT.length > bufLen).assertTrue();
-    let fpath = nextFileName('fileio_test_read_sync_001');
+    let fpath = await nextFileName('fileio_test_read_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -69,12 +77,16 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadSync_0020
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_0020
    * @tc.name fileio_test_read_sync_002
    * @tc.desc Test readSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_read_sync_002', 0, function () {
-    let fpath = nextFileName('fileio_test_read_sync_002');
+  it('fileio_test_read_sync_002', 0, async function () {
+    let fpath = await nextFileName('fileio_test_read_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -93,12 +105,16 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadSync_0030
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_0030
    * @tc.name fileio_test_read_sync_003
    * @tc.desc Test readSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_read_sync_003', 0, function () {
-    let fpath = nextFileName('fileio_test_read_sync_003');
+  it('fileio_test_read_sync_003', 0, async function () {
+    let fpath = await nextFileName('fileio_test_read_sync_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -117,14 +133,18 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadSync_0040
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_0040
    * @tc.name fileio_test_read_sync_004
    * @tc.desc Test readSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_read_sync_004', 0, function () {
+  it('fileio_test_read_sync_004', 0, async function () {
     let fd;
     const invalidOffset = 99999;
-    let fpath = nextFileName('fileio_test_read_sync_004');
+    let fpath = await nextFileName('fileio_test_read_sync_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -141,14 +161,18 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadSync_0050
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_0050
    * @tc.name fileio_test_read_sync_005
    * @tc.desc Test readSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_read_sync_005', 0, function () {
+  it('fileio_test_read_sync_005', 0, async function () {
     let fd;
     const invalidLength = 9999;
-    let fpath = nextFileName('fileio_test_read_sync_005');
+    let fpath = await nextFileName('fileio_test_read_sync_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -165,28 +189,37 @@ describe('fileio_read', function () {
   });
   
   /**
-   * @tc.number SUB_DF_FileIO_ReadSync_0060
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_0060
    * @tc.name fileio_test_read_sync_006
    * @tc.desc Test readSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_read_sync_006', 0, function () {
-    let fpath = nextFileName('fileio_test_read_sync_006');
+  it('fileio_test_read_sync_006', 0, async function () {
+    let fpath = await nextFileName('fileio_test_read_sync_006');
     let fd;
 
     try {
       fileio.readSync(-1, new ArrayBuffer(4096));
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_read_sync_006 has failed for ' + e);
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadSync_0070
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_0070
    * @tc.name fileio_test_read_sync_007
    * @tc.desc Test readSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_read_sync_007', 0, function () {
-    let fpath = nextFileName('fileio_test_read_sync_007');
+  it('fileio_test_read_sync_007', 0, async function () {
+    let fpath = await nextFileName('fileio_test_read_sync_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -205,12 +238,16 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadSync_0080
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_0080
    * @tc.name fileio_test_read_sync_008
    * @tc.desc Test readSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_read_sync_008', 0, function () {
-    let fpath = nextFileName('fileio_test_read_sync_008');
+  it('fileio_test_read_sync_008', 0, async function () {
+    let fpath = await nextFileName('fileio_test_read_sync_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -230,12 +267,16 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadAsync_0000
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0000
    * @tc.name fileio_test_read_async_000
    * @tc.desc Test readAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_read_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_read_async_000');
+    let fpath = await nextFileName('fileio_test_read_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -253,19 +294,22 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadAsync_0010
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0010
    * @tc.name fileio_test_read_async_001
    * @tc.desc Test readAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_read_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_read_async_001');
+    let fpath = await nextFileName('fileio_test_read_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
       let fd = fileio.openSync(fpath, 0o2);
       expect(isIntNum(fd)).assertTrue();
-      fileio.read(fd, new ArrayBuffer(4096), function (err, data) {
-        expect(!err).assertTrue();
+      fileio.read(fd, new ArrayBuffer(4096), async function (err, data) {
         expect(data.bytesRead == FILE_CONTENT.length).assertTrue();
         expect(fileio.closeSync(fd) == null).assertTrue();
         expect(fileio.unlinkSync(fpath) == null).assertTrue();
@@ -278,12 +322,16 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadAsync_0020
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0020
    * @tc.name fileio_test_read_async_002
    * @tc.desc Test readAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_read_async_002', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_read_async_002');
+    let fpath = await nextFileName('fileio_test_read_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -301,12 +349,16 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadAsync_0030
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0030
    * @tc.name fileio_test_read_async_003
    * @tc.desc Test readAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_read_async_003', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_read_async_003');
+    let fpath = await nextFileName('fileio_test_read_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -326,12 +378,16 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadAsync_0040
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0040
    * @tc.name fileio_test_read_async_004
    * @tc.desc Test readAsync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_read_async_004', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_read_async_004');
+    let fpath = await nextFileName('fileio_test_read_async_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -352,12 +408,16 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadAsync_0050
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0050
    * @tc.name fileio_test_read_async_005
    * @tc.desc Test readAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_read_async_005', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_read_async_005');
+    let fpath = await nextFileName('fileio_test_read_async_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -377,14 +437,18 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadAsync_0060
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0060
    * @tc.name fileio_test_read_async_006
    * @tc.desc Test readAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_read_async_006', 0, async function (done) {
     let fd;
     const invalidOffset = 99999;
-    let fpath = nextFileName('fileio_test_read_async_006');
+    let fpath = await nextFileName('fileio_test_read_async_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -395,19 +459,23 @@ describe('fileio_read', function () {
       });
       expect(null).assertFail();
     } catch (e) {
+      expect(fileio.closeSync(fd) == null).assertTrue();
+      expect(fileio.unlinkSync(fpath) == null).assertTrue();
+      done();
     }
-    expect(fileio.closeSync(fd) == null).assertTrue();
-    expect(fileio.unlinkSync(fpath) == null).assertTrue();
-    done();
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadAsync_0070
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0070
    * @tc.name fileio_test_read_async_007
    * @tc.desc Test readAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_read_async_007', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_read_async_007');
+    let fpath = await nextFileName('fileio_test_read_async_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let fd;
 
@@ -430,12 +498,16 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadAsync_0080
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0080
    * @tc.name fileio_test_read_async_008
    * @tc.desc Test readAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_read_async_008', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_read_async_008');
+    let fpath = await nextFileName('fileio_test_read_async_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -452,12 +524,16 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadAsync_Readout_offset_0000
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_READOUT_OFFSET_0000
    * @tc.name fileio_test_read_async_readout_offset_000
    * @tc.desc Test readAsync() ReadOut.offset interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_read_async_readout_offset_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_read_async_readout_offset_000');
+    let fpath = await nextFileName('fileio_test_read_async_readout_offset_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {

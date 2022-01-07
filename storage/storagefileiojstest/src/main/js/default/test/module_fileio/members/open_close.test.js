@@ -21,12 +21,16 @@ import {
 describe('fileio_open_close', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_OpenCloseSync_0000
+   * @tc.number SUB_DF_FILEIO_OPEN_CLOSE_SYNC_0000
    * @tc.name fileio_open_close_sync_000
    * @tc.desc Test openSync() and closeSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_open_close_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_open_close_sync_000');
+  it('fileio_open_close_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_open_close_sync_000');
 
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -40,12 +44,16 @@ describe('fileio_open_close', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_OpenCloseSync_0010
+   * @tc.number SUB_DF_FILEIO_OPEN_CLOSE_SYNC_0010
    * @tc.name fileio_open_close_sync_001
    * @tc.desc Test openSync() and closeSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_open_close_sync_001', 0, function () {
-    let fpath = nextFileName('fileio_open_close_sync_001');
+  it('fileio_open_close_sync_001', 0, async function () {
+    let fpath = await nextFileName('fileio_open_close_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -60,56 +68,76 @@ describe('fileio_open_close', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_OpenSync_0000
+   * @tc.number SUB_DF_FILEIO_OPEN_SYNC_0000
    * @tc.name fileio_open_sync_000
    * @tc.desc Test openSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_open_sync_000', 0, function () {
     try {
       fileio.openSync('/', 0o102, 0o666);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_open_sync_000 has failed for ' + e);
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_OpenSync_0010
+   * @tc.number SUB_DF_FILEIO_OPEN_SYNC_0010
    * @tc.name fileio_open_sync_001
    * @tc.desc Test openSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_open_sync_001', 0, function () {
-    let fpath = nextFileName('fileio_open_sync_001');
+  it('fileio_open_sync_001', 0, async function () {
+    let fpath = await nextFileName('fileio_open_sync_001');
 
     try {
       fileio.openSync(fpath, 0o102);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_open_sync_001 has failed for ' + e);
     }
   });
   
   /**
-   * @tc.number SUB_DF_FileIO_CloseSync_0000
+   * @tc.number SUB_DF_FILEIO_CLOSE_SYNC_0000
    * @tc.name fileio_close_sync_000
    * @tc.desc Test closeSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_close_sync_000', 0, function () {
     try {
       fileio.closeSync();
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_close_sync_000 has failed for ' + e);
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_CloseSync_0010
+   * @tc.number SUB_DF_FILEIO_CLOSE_SYNC_0010
    * @tc.name fileio_close_sync_001
    * @tc.desc Test closeSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_close_sync_001', 0, function () {
     try {
       fileio.closeSync(-1);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_close_sync_001 has failed for ' + e);
     }
   });
 });

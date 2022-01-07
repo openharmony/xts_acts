@@ -21,12 +21,16 @@ import {
 describe('fileio_stream', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_CreateStreamSync_0000
+   * @tc.number SUB_DF_FILEIO_STREAM_CREATESTREAMSYNC_0000
    * @tc.name fileio_test_stream_create_stream_sync_000
    * @tc.desc Test createStreamSync() interface.
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_stream_create_stream_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_000');
+  it('fileio_test_stream_create_stream_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -41,27 +45,36 @@ describe('fileio_stream', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_CreateStreamSync_0010
+   * @tc.number SUB_DF_FILEIO_STREAM_CREATESTREAMSYNC_0010
    * @tc.name fileio_test_stream_create_stream_sync_001
    * @tc.desc Test createStreamSync() interface.
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_stream_create_stream_sync_001', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_001');
+  it('fileio_test_stream_create_stream_sync_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_001');
 
     try {
       fileio.createStreamSync(fpath, 'r+');
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_stream_create_stream_sync_001 has failed for ' + e);
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_CreateStreamSync_0020
+   * @tc.number SUB_DF_FILEIO_STREAM_CREATESTREAMSYNC_0020
    * @tc.name fileio_test_stream_create_stream_sync_002
    * @tc.desc Test createStreamSync() interface.
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_stream_create_stream_sync_002', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_create_stream_sync_002');
+  it('fileio_test_stream_create_stream_sync_002', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_create_stream_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -73,12 +86,16 @@ describe('fileio_stream', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_ReadSync_0000
+   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0000
    * @tc.name fileio_test_stream_read_sync_000
    * @tc.desc Test readSync() interface.
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_stream_read_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_read_sync_000');
+  it('fileio_test_stream_read_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_read_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -95,14 +112,18 @@ describe('fileio_stream', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_ReadSync_0010
+   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0010
    * @tc.name fileio_test_stream_read_sync_001
    * @tc.desc Test the readSync method of class Stream.
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_stream_read_sync_001', 0, function () {
+  it('fileio_test_stream_read_sync_001', 0, async function () {
     let bufLen = 5;
     expect(FILE_CONTENT.length > bufLen).assertTrue();
-    let fpath = nextFileName('fileio_test_stream_read_sync_001');
+    let fpath = await nextFileName('fileio_test_stream_read_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -120,12 +141,16 @@ describe('fileio_stream', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_ReadSync_0020
+   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0020
    * @tc.name fileio_test_stream_read_sync_002
    * @tc.desc Test the readSync method of class Stream.
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_stream_read_sync_002', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_read_sync_002');
+  it('fileio_test_stream_read_sync_002', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_read_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -143,12 +168,16 @@ describe('fileio_stream', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_ReadSync_0030
+   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0030
    * @tc.name fileio_test_stream_read_sync_003
    * @tc.desc Test the readSync method of class Stream.
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_stream_read_sync_003', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_read_sync_003');
+  it('fileio_test_stream_read_sync_003', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_read_sync_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -166,14 +195,18 @@ describe('fileio_stream', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_ReadSync_0040
+   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0040
    * @tc.name fileio_test_stream_read_sync_004
    * @tc.desc Test the readSync method of class Stream.
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_stream_read_sync_004', 0, function () {
+  it('fileio_test_stream_read_sync_004', 0, async function () {
     let ss;
     const invalidOffset = 99999;
-    let fpath = nextFileName('fileio_test_stream_read_sync_004');
+    let fpath = await nextFileName('fileio_test_stream_read_sync_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -189,14 +222,18 @@ describe('fileio_stream', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_ReadSync_0050
+   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0050
    * @tc.name fileio_test_stream_read_sync_005
    * @tc.desc Test the readSync method of class Stream.
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_stream_read_sync_005', 0, function () {
+  it('fileio_test_stream_read_sync_005', 0, async function () {
     let ss;
     const invalidLength = 9999;
-    let fpath = nextFileName('fileio_test_stream_read_sync_005');
+    let fpath = await nextFileName('fileio_test_stream_read_sync_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -212,12 +249,16 @@ describe('fileio_stream', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_ReadSync_0060
+   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0060
    * @tc.name fileio_test_stream_read_sync_006
    * @tc.desc Test the readSync method of class Stream.
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_stream_read_sync_006', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_read_sync_006');
+  it('fileio_test_stream_read_sync_006', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_read_sync_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -236,12 +277,16 @@ describe('fileio_stream', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_WriteSync_0000
+   * @tc.number SUB_DF_FILEIO_STREAM_WRITESYNC_0000
    * @tc.name fileio_test_stream_write_sync_000
    * @tc.desc Test writeSync() interface.
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_stream_write_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_stream_write_sync_000');
+  it('fileio_test_stream_write_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_write_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {

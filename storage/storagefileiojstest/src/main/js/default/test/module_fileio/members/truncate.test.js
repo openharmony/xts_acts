@@ -21,18 +21,21 @@ import {
 describe('fileio_truncate', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_TruncateAsync_0000
+   * @tc.number SUB_DF_FILEIO_TRUNCATE_ASYNC_0000
    * @tc.name fileio_truncate_async_000
    * @tc.desc Test truncateAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_truncate_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_truncate_async_000');
+    let fpath = await nextFileName('fileio_truncate_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let truncateLen = 5;
 
     try {
       fileio.truncate(fpath, truncateLen, function (err) {
-        expect(err == null).assertTrue();
         let fd = fileio.openSync(fpath, 0o2);
         expect(isIntNum(fd)).assertTrue();
         let len = fileio.readSync(fd, new ArrayBuffer(4096));
@@ -48,12 +51,16 @@ describe('fileio_truncate', function () {
   });
   
   /**
-   * @tc.number SUB_DF_FileIO_TruncateAsync_0010
+   * @tc.number SUB_DF_FILEIO_TRUNCATE_ASYNC_0010
    * @tc.name fileio_truncate_async_001
    * @tc.desc Test truncateAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_truncate_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_truncate_async_001');
+    let fpath = await nextFileName('fileio_truncate_async_001');
     expect(prepareFile(fpath, 'truncate')).assertTrue();
     let truncateLen = 2;
 
@@ -80,12 +87,16 @@ describe('fileio_truncate', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_TruncateAsync_0020
+   * @tc.number SUB_DF_FILEIO_TRUNCATE_ASYNC_0020
    * @tc.name fileio_truncate_async_002
    * @tc.desc Test truncateAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_truncate_async_002', 0, async function (done) {
-    let fpath = nextFileName('fileio_truncate_async_002');
+    let fpath = await nextFileName('fileio_truncate_async_002');
     let truncateLen = 2;
 
     try {
@@ -99,12 +110,16 @@ describe('fileio_truncate', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_TruncateSync_0000
+   * @tc.number SUB_DF_FILEIO_TRUNCATE_SYNC_0000
    * @tc.name fileio_test_truncate_sync_000
    * @tc.desc Test truncateSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_truncate_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_truncate_sync_000');
+  it('fileio_test_truncate_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_truncate_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -118,28 +133,40 @@ describe('fileio_truncate', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_TruncateSync_0010
+   * @tc.number SUB_DF_FILEIO_TRUNCATE_SYNC_0010
    * @tc.name fileio_test_truncate_sync_001
    * @tc.desc Test truncateSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_truncate_sync_001', 0, function () {
-    let fpath = nextFileName('fileio_test_truncate_sync_001');
+  it('fileio_test_truncate_sync_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_truncate_sync_001');
 
     try {
       fileio.truncateSync(fpath);
       expect(null).assertFail();
-    } catch (e) {}
+    } catch (e) {
+      console.log('fileio_test_truncate_sync_001 has failed for ' + e);
+    }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_TruncateSync_0020
+   * @tc.number SUB_DF_FILEIO_TRUNCATE_SYNC_0020
    * @tc.name fileio_test_truncate_sync_002
    * @tc.desc Test truncateSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_truncate_sync_002', 0, function () {
     try {
       fileio.truncateSync();
       expect(null).assertFail();
-    } catch (e) {}
+    } catch (e) {
+      console.log('fileio_test_truncate_sync_002 has failed for ' + e);
+    }
   });
 });

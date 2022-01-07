@@ -74,23 +74,33 @@ export function fileToWriteOnly(fpath) {
     return false
   }
 }
-export function nextFileName1(testName) {
-  const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.storage.fileio/cache/'
-  return BASE_PATH + testName + '_' + randomString(testName.length);
-}
 export async function nextFileName(testName) {
   let context = featureAbility.getContext();
   let data = await context.getFilesDir();
   let BASE_PATH = data.substring(0, data.length - 5) + 'cache/';
-  return BASE_PATH + testName + '_' + randomString(testName.length);
+  return BASE_PATH + testName
 }
 export async function fileName(testName) {
   let context = featureAbility.getContext();
   let data = await context.getFilesDir();
   let BASE_PATH = data + '/';
-  return BASE_PATH + testName + '_' + randomString(testName.length);
+  return BASE_PATH + testName
+}
+export async function cacheFileName(testName) {
+  let context = featureAbility.getContext();
+  let data = await context.getFilesDir();
+  let BASE_PATH = data + '/cache/';
+  return BASE_PATH + testName
 }
 
+export function sleep(n) {
+  var start = new Date().getTime();
+  while (true) {
+    if (new Date().getTime() - start > n) {
+      break;
+    }
+  }
+}
 export function randomString(num) {
   let len= num;
   var $chars = 'aaaabbbbcccc';

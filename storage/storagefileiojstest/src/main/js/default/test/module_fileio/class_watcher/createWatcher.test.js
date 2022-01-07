@@ -21,12 +21,16 @@ import {
 describe('fileio_createWatcher', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_createWatcher_000
+   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_000
    * @tc.name fileio_test_createWatcher_000
    * @tc.desc Test createWatcher() interface. rename  1 times stopSync()
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_createWatcher_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_createWatcher_async_000');
+    let fpath = await nextFileName('fileio_test_createWatcher_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let event = 1;
@@ -51,12 +55,16 @@ describe('fileio_createWatcher', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_createWatcher_000
+   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_000
    * @tc.name fileio_test_createWatcher_001
    * @tc.desc Test createWatcher() interface. write 1 times stopSync()
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_createWatcher_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_createWatcher_async_001');
+    let fpath = await nextFileName('fileio_test_createWatcher_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let event = 2;
@@ -80,12 +88,16 @@ describe('fileio_createWatcher', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_createWatcher_000
+   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_000
    * @tc.name fileio_test_createWatcher_002
    * @tc.desc Test createWatcher() interface. rename 1 time ,stop()
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_createWatcher_async_002', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_createWatcher_async_002');
+    let fpath = await nextFileName('fileio_test_createWatcher_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let event = 1;
@@ -109,12 +121,16 @@ describe('fileio_createWatcher', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_createWatcher_000
+   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_000
    * @tc.name fileio_test_createWatcher_003
    * @tc.desc Test createWatcher() interface. rename 1 time ,stop()
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_createWatcher_async_003', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_createWatcher_async_003');
+    let fpath = await nextFileName('fileio_test_createWatcher_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let event = 1;
@@ -138,12 +154,16 @@ describe('fileio_createWatcher', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_createWatcher_000
+   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_000
    * @tc.name fileio_test_createWatcher_004
    * @tc.desc Test createWatcher() interface.write  1 time ,stop()
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_createWatcher_async_004', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_createWatcher_async_004');
+    let fpath = await nextFileName('fileio_test_createWatcher_async_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let event = 2;
@@ -169,12 +189,16 @@ describe('fileio_createWatcher', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_createWatcher_000
+   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_000
    * @tc.name fileio_test_createWatcher_005
    * @tc.desc Test createWatcher() interface. rename 3 times
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_createWatcher_async_005', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_createWatcher_async_005');
+    let fpath = await nextFileName('fileio_test_createWatcher_async_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let event = 1;
@@ -201,12 +225,16 @@ describe('fileio_createWatcher', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_createWatcher_000
+   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_000
    * @tc.name fileio_test_createWatcher_006
    * @tc.desc Test createWatcher() interface.write 2 times, stop()
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_createWatcher_async_006', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_createWatcher_async_006');
+    let fpath = await nextFileName('fileio_test_createWatcher_async_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let event = 2;
@@ -232,12 +260,16 @@ describe('fileio_createWatcher', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_createWatcher_000
+   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_000
    * @tc.name fileio_test_createWatcher_007
    * @tc.desc Test createWatcher() interface.rename 1 times, write 1 times, stop()
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_createWatcher_async_007', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_createWatcher_async_007');
+    let fpath = await nextFileName('fileio_test_createWatcher_async_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let event = 3;
@@ -263,12 +295,16 @@ describe('fileio_createWatcher', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_createWatcher_000
+   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_000
    * @tc.name fileio_test_createWatcher_008
    * @tc.desc Test createWatcher() interface.rename 1 times, write 1 times, stop()
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_createWatcher_async_008', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_createWatcher_async_007');
+    let fpath = await nextFileName('fileio_test_createWatcher_async_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let event = 3;

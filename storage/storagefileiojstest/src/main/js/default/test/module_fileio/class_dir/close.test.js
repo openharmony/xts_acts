@@ -29,12 +29,16 @@ import {
 describe('fileio_dir_close_read', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_close_Async_0000
+   * @tc.number SUB_DF_FILEIO_DIR_CLOSE_ASYNC_0000
    * @tc.name fileio_test_dir_close_async_000
    * @tc.desc Test Dir.closeAsync() interface.
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_dir_close_async_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_test_dir_close_async_000') + 'd';
+    let dpath = await nextFileName('fileio_test_dir_close_async_000') + 'd';
 
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -55,7 +59,7 @@ describe('fileio_dir_close_read', function () {
    * @tc.desc Test Dir.closeAsync() interface.
    */
   it('fileio_test_dir_close_async_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_test_dir_close_async_001') + 'd';
+    let dpath = await nextFileName('fileio_test_dir_close_async_001') + 'd';
 
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
