@@ -248,10 +248,10 @@ describe('window_test', function(){
 		window.getTopwindow().then(wnd => {
 			console.log('jsunittest moveTest6 getTopwindow wnd: ' + wnd)
 			wnd.moveTo(-200, 200).then(()=>{
-				console.log('jsunittest setWindowTypeTest17 wnd.moveTo(-200, 300) success')
+				console.log('jsunittest moveTest6 wnd.moveTo(-200, 300) success')
 			})
 			wnd.moveTo(200, -300).then(()=>{
-				console.log('jsunittest setWindowTypeTest17 wnd.moveTo(200, -300) success')
+				console.log('jsunittest moveTest6 wnd.moveTo(200, -300) success')
 			})	
 		})
 	})
