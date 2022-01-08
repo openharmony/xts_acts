@@ -237,7 +237,7 @@ describe('window_test', function(){
 	
     /**
     * @tc.number     SUB_WINDOW_SETWINDOWTYPE_JSAPI_004
-    * @tc.name       Test setWindowTypeTest4
+    * @tc.name       Test setWindowTypeTest4.
     * @tc.desc       Test window.setWindowType API function test4.
     */
     it('setWindowTypeTest4', 0, function(){
