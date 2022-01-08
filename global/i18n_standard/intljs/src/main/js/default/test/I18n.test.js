@@ -680,7 +680,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_5100
-    * @tc.name test isValidNumber interface
+    * @tc.name test isValidNumber interface with 13510574676 param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_5100', 0, function () {
@@ -693,7 +693,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_5200
-    * @tc.name test isValidNumber interface
+    * @tc.name test isValidNumber interface with 135 1057 4676 param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_5200', 0, function () {
@@ -706,7 +706,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_5300
-    * @tc.name test isValidNumber interface
+    * @tc.name test isValidNumber interface with +86 135 1057 4676 param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_5300', 0, function () {
@@ -719,7 +719,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_5400
-    * @tc.name test isValidNumber interface
+    * @tc.name test isValidNumber interface with 135-1057-4676 param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_5400', 0, function () {
@@ -732,7 +732,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_5500
-    * @tc.name test isValidNumber interface
+    * @tc.name test isValidNumber interface with tel:+86-135-1057-4676 param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_5500', 0, function () {
@@ -745,7 +745,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_5600
-    * @tc.name test isValidNumber interface
+    * @tc.name test isValidNumber interface with 86-135-1057-4676 param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_5600', 0, function () {
@@ -758,7 +758,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_5700
-    * @tc.name test isValidNumber interface
+    * @tc.name test isValidNumber interface with +8613510574676 param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_5700', 0, function () {
@@ -771,7 +771,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_5800
-    * @tc.name test isValidNumber interface
+    * @tc.name test isValidNumber interface with 8613510574676 param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_5800', 0, function () {
@@ -784,7 +784,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_5900
-    * @tc.name test isValidNumber interface
+    * @tc.name test isValidNumber interface with 1351057467 param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_5900', 0, function () {
@@ -797,7 +797,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_6000
-    * @tc.name test isValidNumber interface
+    * @tc.name test isValidNumber interface with 135105746761 param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6000', 0, function () {
@@ -810,7 +810,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_6100
-    * @tc.name test isValidNumber interface
+    * @tc.name test isValidNumber interface with 1351057467a param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6100', 0, function () {
@@ -823,7 +823,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_6200
-    * @tc.name test isValidNumber interface
+    * @tc.name test isValidNumber interface with 6262023379 param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6200', 0, function () {
@@ -836,7 +836,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_6300
-    * @tc.name test isValidNumber interface
+    * @tc.name test isValidNumber interface with 626202337 param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6300', 0, function () {
@@ -849,7 +849,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_6400
-    * @tc.name test isValidNumber interface
+    * @tc.name test isValidNumber interface with 62620233791 param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6400', 0, function () {
@@ -862,7 +862,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_6500
-    * @tc.name test isValidNumber interface
+    * @tc.name test isValidNumber interface with 626202337a param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6500', 0, function () {
@@ -875,7 +875,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_6600
-    * @tc.name test isValidNumber interface
+    * @tc.name test format interface with 13510574676 param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6600', 0, function () {
@@ -888,7 +888,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_6700
-    * @tc.name test isValidNumber interface
+    * @tc.name test format interface with 6262023379 param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6700', 0, function () {
@@ -901,7 +901,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_6800
-    * @tc.name test isValidNumber interface
+    * @tc.name test format interface with 13510574676 and NATIONAL type param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6800', 0, function () {
@@ -914,7 +914,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_6900
-    * @tc.name test isValidNumber interface
+    * @tc.name test format interface with 1351057467 and NATIONAL type param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6900', 0, function () {
@@ -927,7 +927,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_7000
-    * @tc.name test isValidNumber interface
+    * @tc.name test format interface with 135105746761 and NATIONAL type param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_7000', 0, function () {
@@ -940,7 +940,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_7100
-    * @tc.name test isValidNumber interface
+    * @tc.name test format interface with 135 1057 4676 and NATIONAL type param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_7100', 0, function () {
@@ -953,7 +953,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_7200
-    * @tc.name test isValidNumber interface
+    * @tc.name test format interface with 13510574676 and INTERNATIONAL type param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_7200', 0, function () {
@@ -966,7 +966,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_7300
-    * @tc.name test isValidNumber interface
+    * @tc.name test format interface with 13510574676 and RFC3966 type param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_7300', 0, function () {
@@ -979,7 +979,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_7400
-    * @tc.name test isValidNumber interface
+    * @tc.name test format interface with 13510574676 and E164 type param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_7400', 0, function () {
@@ -992,7 +992,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_7500
-    * @tc.name test isValidNumber interface
+    * @tc.name test format interface with 6262023379 and NATIONAL type param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_7500', 0, function () {
@@ -1005,7 +1005,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_7600
-    * @tc.name test isValidNumber interface
+    * @tc.name test format interface with 6262023379 and INTERNATIONAL type param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_7600', 0, function () {
@@ -1018,7 +1018,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_7700
-    * @tc.name test isValidNumber interface
+    * @tc.name test format interface with 6262023379 and RFC3966 type param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_7700', 0, function () {
@@ -1031,7 +1031,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_7800
-    * @tc.name test isValidNumber interface
+    * @tc.name test format interface with 6262023379 and E164 type param
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_7800', 0, function () {
@@ -1044,8 +1044,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_7900
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test isWeekend interface
+    * @tc.desc get the isWeekend value
     */
     it('i18n_test_7900', 0, function () {
         console.error('i18n_test_7900 ' + 'start');
@@ -1057,8 +1057,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_8000
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test getDisplayName interface
+    * @tc.desc get the getDisplayName value
     */
     it('i18n_test_8000', 0, function () {
         console.error('i18n_test_8000 ' + 'start');
@@ -1070,8 +1070,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_8100
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test get interface
+    * @tc.desc get the get value
     */
     it('i18n_test_8100', 0, function () {
         console.error('i18n_test_8100 ' + 'start');
@@ -1083,8 +1083,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_8200
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek interface
+    * @tc.desc get the setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek value
     */
     it('i18n_test_8200', 0, function () {
         console.error('i18n_test_8200 ' + 'start');
@@ -1097,8 +1097,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_8300
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test setFirstDayOfWeek and getFirstDayOfWeek interface
+    * @tc.desc get the setFirstDayOfWeek and getFirstDayOfWeek value
     */
     it('i18n_test_8300', 0, function () {
         console.error('i18n_test_8300 ' + 'start');
@@ -1111,8 +1111,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_8400
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test setTimeZone and getTimeZone interface
+    * @tc.desc get the setTimeZone and getTimeZone value
     */
     it('i18n_test_8400', 0, function () {
         console.error('i18n_test_8400 ' + 'start');
@@ -1125,8 +1125,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_8500
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test set interface
+    * @tc.desc get the set value
     */
     it('i18n_test_8500', 0, function () {
         console.error('i18n_test_8500 ' + 'start');
@@ -1139,8 +1139,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_8600
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test setTime interface with date param
+    * @tc.desc get the setTime value
     */
     it('i18n_test_8600', 0, function () {
         console.error('i18n_test_8600 ' + 'start');
@@ -1155,8 +1155,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_8700
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test setTime interface
+    * @tc.desc get the setTime value
     */
     it('i18n_test_8700', 0, function () {
         console.error('i18n_test_8700 ' + 'start');
@@ -1169,8 +1169,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_8800
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test isRTL interface with zh-CN param
+    * @tc.desc get the isRTL value
     */
     it('i18n_test_8800', 0, function () {
         console.error('i18n_test_8800 ' + 'start');
@@ -1181,8 +1181,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_8900
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test isRTL interface with en-US param
+    * @tc.desc get the isRTL value
     */
     it('i18n_test_8900', 0, function () {
         console.error('i18n_test_8900 ' + 'start');
@@ -1193,8 +1193,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_9000
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test isRTL interface with ar param
+    * @tc.desc get the isRTL value
     */
     it('i18n_test_9000', 0, function () {
         console.error('i18n_test_9000 ' + 'start');
@@ -1205,8 +1205,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_9100
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test unitConvert interface from cup to liter unit with long style
+    * @tc.desc get the unitConvert value
     */
     it('i18n_test_9100', 0, function () {
         console.error('i18n_test_9100 ' + 'start');
@@ -1217,8 +1217,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_9200
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test unitConvert interface from cup to liter unit with medium style
+    * @tc.desc get the unitConvert value
     */
     it('i18n_test_9200', 0, function () {
         console.error('i18n_test_9200 ' + 'start');
@@ -1229,8 +1229,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_9300
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test unitConvert interface from cup to liter unit with short style
+    * @tc.desc get the unitConvert value
     */
     it('i18n_test_9300', 0, function () {
         console.error('i18n_test_9300 ' + 'start');
@@ -1241,8 +1241,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_9400
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test unitConvert interface from meter to mile unit
+    * @tc.desc get the unitConvert value
     */
     it('i18n_test_9400', 0, function () {
         console.error('i18n_test_9400 ' + 'start');
@@ -1253,8 +1253,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_9500
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test unitConvert interface from hour to second unit
+    * @tc.desc get the unitConvert value
     */
     it('i18n_test_9500', 0, function () {
         console.error('i18n_test_9500 ' + 'start');
@@ -1265,8 +1265,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_9600
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test unitConvert interface from celsius to fahrenheit unit
+    * @tc.desc get the unitConvert value
     */
     it('i18n_test_9600', 0, function () {
         console.error('i18n_test_9600 ' + 'start');
@@ -1277,8 +1277,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_9700
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test unitConvert interface from acre to hectare unit
+    * @tc.desc get the unitConvert value
     */
     it('i18n_test_9700', 0, function () {
         console.error('i18n_test_9700 ' + 'start');
@@ -1289,8 +1289,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_9710
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test unitConvert interface from acre to square-meter unit
+    * @tc.desc get the unitConvert value
     */
     it('i18n_test_9710', 0, function () {
         console.error('i18n_test_9710 ' + 'start');
@@ -1301,8 +1301,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_9800
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test unitConvert interface from kilometer-per-hour to knot unit
+    * @tc.desc get the unitConvert value
     */
     it('i18n_test_9800', 0, function () {
         console.error('i18n_test_9800 ' + 'start');
@@ -1313,8 +1313,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_9850
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test unitConvert interface from kilometer-per-hour to meter-per-second unit
+    * @tc.desc get the unitConvert value
     */
     it('i18n_test_9850', 0, function () {
         console.error('i18n_test_9850 ' + 'start');
@@ -1325,8 +1325,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_9900
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test unitConvert interface from meter to kilometer unit
+    * @tc.desc get the unitConvert value
     */
     it('i18n_test_9900', 0, function () {
         console.error('i18n_test_9900 ' + 'start');
@@ -1337,8 +1337,8 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number SUB_GLOBAL_I18N_JS_9910
-    * @tc.name test isValidNumber interface
-    * @tc.desc get the isValidNumber value
+    * @tc.name test unitConvert interface from meter to meter-per-second unit
+    * @tc.desc get the unitConvert value
     */
     it('i18n_test_9910', 0, function () {
         console.error('i18n_test_9910 ' + 'start');
@@ -1349,8 +1349,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_0100
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test current interface
+    * @tc.desc check the current result
     */
     it('i18n_test_iterator_0100', 0, function () {
         console.log('i18n_test_iterator_0100 ' + 'start');
@@ -1363,8 +1363,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_0200
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test first interface
+    * @tc.desc check the first
     */
     it('i18n_test_iterator_0200', 0, function () {
         console.log('i18n_test_iterator_0200 ' + 'start');
@@ -1377,8 +1377,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_0300
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test last interface
+    * @tc.desc check the last interface
     */
     it('i18n_test_iterator_0300', 0, function () {
         console.log('i18n_test_iterator_0300 ' + 'start');
@@ -1391,8 +1391,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_0400
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test next interface
+    * @tc.desc check the next interface
     */
     it('i18n_test_iterator_0400', 0, function () {
         console.log('i18n_test_iterator_0400 ' + 'start');
@@ -1405,8 +1405,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_0500
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test next interface with param
+    * @tc.desc check the next interface with param
     */
     it('i18n_test_iterator_0500', 0, function () {
         console.log('i18n_test_iterator_0500 ' + 'start');
@@ -1419,8 +1419,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_0600
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test previous interface
+    * @tc.desc check the previous interface
     */
     it('i18n_test_iterator_0600', 0, function () {
         console.log('i18n_test_iterator_0600 ' + 'start');
@@ -1433,8 +1433,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_0700
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test following interface
+    * @tc.desc check the following interface
     */
     it('i18n_test_iterator_0700', 0, function () {
         console.log('i18n_test_iterator_0700 ' + 'start');
@@ -1447,8 +1447,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_0800
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test getLineBreakText interface
+    * @tc.desc check the getLineBreakText interface
     */
     it('i18n_test_iterator_0800', 0, function () {
         console.log('i18n_test_iterator_0800 ' + 'start');
@@ -1461,8 +1461,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_0900
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test isBoundary interface
+    * @tc.desc check the isBoundary interface
     */
     it('i18n_test_iterator_0900', 0, function () {
         console.log('i18n_test_iterator_0900 ' + 'start');
@@ -1475,8 +1475,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_INDEXUTIL_0100
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test getIndex interface
+    * @tc.desc check the getIndex interface
     */
     it('i18n_test_indexutil_0100', 0, function () {
         console.log('i18n_test_indexutil_0100 ' + 'start');
@@ -1488,8 +1488,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_INDEXUTIL_0200
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test getIndexList interface
+    * @tc.desc check the getIndexList interface
     */
     it('i18n_test_indexutil_0200', 0, function () {
         console.log('i18n_test_indexutil_0200 ' + 'start');
@@ -1502,8 +1502,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_INDEXUTIL_0300
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test addLocale interface
+    * @tc.desc check the addLocale interface
     */
     it('i18n_test_indexutil_0300', 0, function () {
         console.log('i18n_test_indexutil_0300 ' + 'start');
@@ -1516,8 +1516,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_INDEXUTIL_0400
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test getInstance interface with zh locale
+    * @tc.desc check the getInstance interface with zh locale
     */
     it('i18n_test_indexutil_0400', 0, function () {
         console.log('i18n_test_indexutil_0400 ' + 'start');
@@ -1529,8 +1529,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_CHARACTER_0100
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test isDigit interface
+    * @tc.desc check the isDigit interface
     */
     it('i18n_test_character_0100', 0, function () {
         console.log('i18n_test_character_0100 ' + 'start');
@@ -1541,8 +1541,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_CHARACTER_0200
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test isSpaceChar interface
+    * @tc.desc check the isSpaceChar interface
     */
     it('i18n_test_character_0200', 0, function () {
         console.log('i18n_test_character_0200 ' + 'start');
@@ -1553,8 +1553,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_CHARACTER_0300
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test isWhitespace interface
+    * @tc.desc check the isWhitespace interface
     */
     it('i18n_test_character_0300', 0, function () {
         console.log('i18n_test_character_0300 ' + 'start');
@@ -1565,8 +1565,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_CHARACTER_0400
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test isRTL interface
+    * @tc.desc check the isRTL interface
     */
     it('i18n_test_character_0400', 0, function () {
         console.log('i18n_test_character_0400 ' + 'start');
@@ -1577,8 +1577,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_CHARACTER_0500
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test isIdeograph interface
+    * @tc.desc check the isIdeograph interface
     */
     it('i18n_test_character_0500', 0, function () {
         console.log('i18n_test_character_0500 ' + 'start');
@@ -1589,8 +1589,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_CHARACTER_0600
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test isLetter interface
+    * @tc.desc check the isLetter interface
     */
     it('i18n_test_character_0600', 0, function () {
         console.log('i18n_test_character_0600 ' + 'start');
@@ -1601,8 +1601,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_CHARACTER_0700
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test isLowerCase interface
+    * @tc.desc check the isLowerCase interface
     */
     it('i18n_test_character_0700', 0, function () {
         console.log('i18n_test_character_0700 ' + 'start');
@@ -1613,8 +1613,8 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_CHARACTER_0800
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test isUpperCase interface
+    * @tc.desc check the isUpperCase interface
     */
     it('i18n_test_character_0800', 0, function () {
         console.log('i18n_test_character_0800 ' + 'start');
@@ -1625,132 +1625,14 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_CHARACTER_0900
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
+    * @tc.name test getType interface
+    * @tc.desc check the getType interface
     */
     it('i18n_test_character_0900', 0, function () {
         console.log('i18n_test_character_0900 ' + 'start');
         let value = I18n.Character.getType('a');
         console.log('i18n_test_character_0900 ' + value);
         expect(value).assertEqual('U_LOWERCASE_LETTER');
-    })
-
-    /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0100
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
-    */
-    it('i18n_test_relativetimeformat_0100', 0, function () {
-        console.log('i18n_test_relativetimeformat_0100 ' + 'start');
-        let relativetimefmt = new intl.RelativeTimeFormat();
-        let value = relativetimefmt.format(100,'second');
-        console.log('i18n_test_relativetimeformat_0100 ' + value);
-        expect(value).assertEqual('100秒钟后');
-    })
-
-    /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0200
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
-    */
-    it('i18n_test_relativetimeformat_0200', 0, function () {
-        console.log('i18n_test_relativetimeformat_0200 ' + 'start');
-        let relativetimefmt = new intl.RelativeTimeFormat('en');
-        let value = relativetimefmt.format(100,'second');
-        console.log('i18n_test_relativetimeformat_0200 ' + value);
-        expect(value).assertEqual('in 100 seconds');
-    })
-
-    /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0300
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
-    */
-    it('i18n_test_relativetimeformat_0300', 0, function () {
-        console.log('i18n_test_relativetimeformat_0300 ' + 'start');
-        let relativetimefmt = new intl.RelativeTimeFormat('en', { style: 'narrow' });
-        let value = relativetimefmt.format(100,'second');
-        console.log('i18n_test_relativetimeformat_0300 ' + value);
-        expect(value).assertEqual('in 100 sec.');
-    })
-
-    /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0400
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
-    */
-    it('i18n_test_relativetimeformat_0400', 0, function () {
-        console.log('i18n_test_relativetimeformat_0400 ' + 'start');
-        let relativetimefmt = new intl.RelativeTimeFormat('en');
-        let value = relativetimefmt.formatToParts(100,'second');
-        console.log('i18n_test_relativetimeformat_0400 ' + value[0].value + 'value');
-        expect(value[0].value).assertEqual('in ');
-    })
-
-    /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0500
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
-    */
-    it('i18n_test_relativetimeformat_0500', 0, function () {
-        console.log('i18n_test_relativetimeformat_0500 ' + 'start');
-        let relativetimefmt = new intl.RelativeTimeFormat('en');
-        let value = relativetimefmt.resolvedOptions();
-        console.log('i18n_test_relativetimeformat_0500 ' + value);
-        expect(value.locale).assertEqual('en');
-    })
-
-    /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0600
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
-    */
-    it('i18n_test_relativetimeformat_0600', 0, function () {
-        console.log('i18n_test_relativetimeformat_0600 ' + 'start');
-        let relativetimefmt = new intl.RelativeTimeFormat('en');
-        let value = relativetimefmt.resolvedOptions();
-        console.log('i18n_test_relativetimeformat_0600 ' + value);
-        expect(value.style).assertEqual('long');
-    })
-
-    /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0700
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
-    */
-    it('i18n_test_relativetimeformat_0700', 0, function () {
-        console.log('i18n_test_relativetimeformat_0700 ' + 'start');
-        let relativetimefmt = new intl.RelativeTimeFormat('en');
-        let value = relativetimefmt.resolvedOptions();
-        console.log('i18n_test_relativetimeformat_0700 ' + value);
-        expect(value.numeric).assertEqual('always');
-    })
-
-    /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0800
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
-    */
-    it('i18n_test_relativetimeformat_0800', 0, function () {
-        console.log('i18n_test_relativetimeformat_0800 ' + 'start');
-        let relativetimefmt = new intl.RelativeTimeFormat('en');
-        let value = relativetimefmt.resolvedOptions();
-        console.log('i18n_test_relativetimeformat_0800 ' + value.numberingSystem);
-        expect(value.numberingSystem).assertEqual('latn');
-    })
-
-    /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0900
-    * @tc.name format the date with en-GB locale
-    * @tc.desc check the date
-    */
-    it('i18n_test_relativetimeformat_0900', 0, function () {
-        console.log('i18n_test_relativetimeformat_0900 ' + 'start');
-        let relativetimefmt = new intl.RelativeTimeFormat('en', { localeMatcher: 'best fit', numeric: 'auto', style: 'narrow' });
-        let value = relativetimefmt.resolvedOptions();
-        console.log('i18n_test_relativetimeformat_0900 ' + value);
-        expect(value.numeric).assertEqual('auto');
-        expect(value.style).assertEqual('narrow');
     })
 
     console.log('*************end I18NTest*************');

@@ -820,8 +820,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_0120
-    * @tc.name format the number in zh
-    * @tc.desc check the number in zh
+    * @tc.name format the number with default locale
+    * @tc.desc check the number with default locale
     */
     it('formatNumber_test_0120', 0, function () {
         let numfmt = new Intl.NumberFormat();
@@ -1092,8 +1092,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_2200
-    * @tc.name format the number with unit
-    * @tc.desc check the number with unit
+    * @tc.name format the number with  meter unit
+    * @tc.desc check the number with meter unit
     */
     it('formatNumber_test_2200', 0, function () {
         let numfmt = new Intl.NumberFormat('zh-CN', { style: 'unit', unit: 'meter',
@@ -1107,8 +1107,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_2300
-    * @tc.name format the number with unit
-    * @tc.desc check the number with unit
+    * @tc.name format the number with percetn style
+    * @tc.desc check the number with percetn style
     */
     it('formatNumber_test_2300', 0, function () {
         let numfmt = new Intl.NumberFormat('en-CN', { style: 'percent', maximumFractionDigits: 2,
@@ -1149,8 +1149,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_PLURAL_2600
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name get PluralRules
+    * @tc.desc check the select result
     */
     it('pluralrules_test_2600', 0, function () {
         let pl = new Intl.PluralRules();
@@ -1161,8 +1161,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_PLURAL_2700
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name get PluralRules with zh locale
+    * @tc.desc check the select result
     */
     it('pluralrules_test_2700', 0, function () {
         let pl = new Intl.PluralRules('zh');
@@ -1173,8 +1173,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_PLURAL_2800
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name get PluralRules with zh locale and ordinal type
+    * @tc.desc check the select result
     */
     it('pluralrules_test_2800', 0, function () {
         let pl = new Intl.PluralRules('zh', {'type': 'ordinal'});
@@ -1185,8 +1185,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_PLURAL_2900
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name get PluralRules with zh locale and loolup localeMatcher
+    * @tc.desc check the select result
     */
     it('pluralrules_test_2900', 0, function () {
         let pl = new Intl.PluralRules('zh', {'localeMatcher': 'lookup'});
@@ -1197,8 +1197,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_PLURAL_3000
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name get PluralRules with zh locale and minimumIntegerDigits options
+    * @tc.desc check the select result
     */
     it('pluralrules_test_3000', 0, function () {
         let pl = new Intl.PluralRules('zh', {'minimumIntegerDigits': 10});
@@ -1209,8 +1209,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_PLURAL_3100
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name get PluralRules with zh locale and minimumFractionDigits options
+    * @tc.desc check the select result
     */
     it('pluralrules_test_3100', 0, function () {
         let pl = new Intl.PluralRules('zh', {'minimumFractionDigits': 11});
@@ -1221,8 +1221,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_PLURAL_3200
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name get PluralRules with zh locale and maximumFractionDigits options
+    * @tc.desc check the select result
     */
     it('pluralrules_test_3200', 0, function () {
         let pl = new Intl.PluralRules('zh', {'maximumFractionDigits': 'lookup'});
@@ -1233,8 +1233,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_PLURAL_3300
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name get PluralRules with zh locale and minimumSignificantDigits options
+    * @tc.desc check the select result
     */
     it('pluralrules_test_3300', 0, function () {
         let pl = new Intl.PluralRules('zh', {'minimumSignificantDigits': 10});
@@ -1245,8 +1245,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_PLURAL_3400
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name get PluralRules with zh locale and maximumSignificantDigits options
+    * @tc.desc check the select result
     */
     it('pluralrules_test_3400', 0, function () {
         let pl = new Intl.PluralRules('zh', {'maximumSignificantDigits': 11});
@@ -1257,8 +1257,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_3500
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name compare two different strings
+    * @tc.desc check the compare result
     */
     it('collator_test_3500', 0, function () {
         let coll = new Intl.Collator();
@@ -1269,8 +1269,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_3510
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name compare the same strings
+    * @tc.desc check the compare result
     */
     it('collator_test_3510', 0, function () {
         let coll = new Intl.Collator();
@@ -1281,8 +1281,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_3520
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name compare two different strings and return positive value
+    * @tc.desc check the compare result
     */
     it('collator_test_3520', 0, function () {
         let coll = new Intl.Collator();
@@ -1293,8 +1293,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_3600
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name compare two different strings with zh locale
+    * @tc.desc check the compare result
     */
     it('collator_test_3600', 0, function () {
         let coll = new Intl.Collator('zh');
@@ -1305,8 +1305,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_3700
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name compare two different strings with zh locale and eor collation
+    * @tc.desc check the compare result
     */
     it('collator_test_3700', 0, function () {
         let coll = new Intl.Collator('zh', {'collation': 'eor'});
@@ -1317,8 +1317,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_3800
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name compare two different strings with zh locale and base sensitivity
+    * @tc.desc check the compare result
     */
     it('collator_test_3800', 0, function () {
         let coll = new Intl.Collator('zh', {'sensitivity': 'base'});
@@ -1329,8 +1329,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_3900
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name compare two different strings with zh locale and upper caseFirst
+    * @tc.desc check the compare result
     */
     it('collator_test_3900', 0, function () {
         let coll = new Intl.Collator('zh', {'caseFirst': 'upper'});
@@ -1341,8 +1341,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_4000
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name compare two different strings with zh locale and true numeric
+    * @tc.desc check the compare result
     */
     it('collator_test_4000', 0, function () {
         let coll = new Intl.Collator('zh', {'numeric': true});
@@ -1353,8 +1353,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_4100
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name compare two different strings with zh locale and true ignorePunctuation
+    * @tc.desc check the compare result
     */
     it('collator_test_4100', 0, function () {
         let coll = new Intl.Collator('zh', {'ignorePunctuation': true});
@@ -1365,8 +1365,8 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_4200
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name compare two different strings with zh locale and sort usage
+    * @tc.desc check the compare result
     */
     it('collator_test_4200', 0, function () {
         let coll = new Intl.Collator('zh', {'usage': 'sort'});
@@ -1377,14 +1377,132 @@ describe('intlTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_COLLATOR_4300
-    * @tc.name format the number with numberingSystem
-    * @tc.desc check the number with numberingSystem
+    * @tc.name compare the string with localeMatcher options
+    * @tc.desc check the compare result
     */
     it('collator_test_4300', 0, function () {
         let coll = new Intl.Collator('zh', {'localeMatcher': 'lookup'});
         let value = coll.compare('a', 'b');
         console.log('collator_test_4300 ' + value);
         expect(value).assertEqual(-1);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0100
+    * @tc.name format the relativetime with 100 second
+    * @tc.desc check the relativetime
+    */
+    it('i18n_test_relativetimeformat_0100', 0, function () {
+        console.log('i18n_test_relativetimeformat_0100 ' + 'start');
+        let relativetimefmt = new Intl.RelativeTimeFormat();
+        let value = relativetimefmt.format(100,'second');
+        console.log('i18n_test_relativetimeformat_0100 ' + value);
+        expect(value).assertEqual('100秒钟后');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0200
+    * @tc.name format the relativetime with 100 second in en
+    * @tc.desc check the relativetime
+    */
+    it('i18n_test_relativetimeformat_0200', 0, function () {
+        console.log('i18n_test_relativetimeformat_0200 ' + 'start');
+        let relativetimefmt = new Intl.RelativeTimeFormat('en');
+        let value = relativetimefmt.format(100,'second');
+        console.log('i18n_test_relativetimeformat_0200 ' + value);
+        expect(value).assertEqual('in 100 seconds');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0300
+    * @tc.name format the relativetime with 100 second in narrow style
+    * @tc.desc check the relativetime
+    */
+    it('i18n_test_relativetimeformat_0300', 0, function () {
+        console.log('i18n_test_relativetimeformat_0300 ' + 'start');
+        let relativetimefmt = new Intl.RelativeTimeFormat('en', { style: 'narrow' });
+        let value = relativetimefmt.format(100,'second');
+        console.log('i18n_test_relativetimeformat_0300 ' + value);
+        expect(value).assertEqual('in 100 sec.');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0400
+    * @tc.name format the relativetime with 100 second, get the formatToParts value
+    * @tc.desc check the formatToParts value 
+    */
+    it('i18n_test_relativetimeformat_0400', 0, function () {
+        console.log('i18n_test_relativetimeformat_0400 ' + 'start');
+        let relativetimefmt = new Intl.RelativeTimeFormat('en');
+        let value = relativetimefmt.formatToParts(100,'second');
+        console.log('i18n_test_relativetimeformat_0400 ' + value[0].value + 'value');
+        expect(value[0].value).assertEqual('in ');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0500
+    * @tc.name format the relativetime, get the locale options
+    * @tc.desc check the relativetime
+    */
+    it('i18n_test_relativetimeformat_0500', 0, function () {
+        console.log('i18n_test_relativetimeformat_0500 ' + 'start');
+        let relativetimefmt = new Intl.RelativeTimeFormat('en');
+        let value = relativetimefmt.resolvedOptions();
+        console.log('i18n_test_relativetimeformat_0500 ' + value);
+        expect(value.locale).assertEqual('en');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0600
+    * @tc.name format the relativetime, get the style options
+    * @tc.desc check the relativetime
+    */
+    it('i18n_test_relativetimeformat_0600', 0, function () {
+        console.log('i18n_test_relativetimeformat_0600 ' + 'start');
+        let relativetimefmt = new Intl.RelativeTimeFormat('en');
+        let value = relativetimefmt.resolvedOptions();
+        console.log('i18n_test_relativetimeformat_0600 ' + value);
+        expect(value.style).assertEqual('long');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0700
+    * @tc.name format the relativetime, get the numeric options
+    * @tc.desc check the relativetime
+    */
+    it('i18n_test_relativetimeformat_0700', 0, function () {
+        console.log('i18n_test_relativetimeformat_0700 ' + 'start');
+        let relativetimefmt = new Intl.RelativeTimeFormat('en');
+        let value = relativetimefmt.resolvedOptions();
+        console.log('i18n_test_relativetimeformat_0700 ' + value);
+        expect(value.numeric).assertEqual('always');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0800
+    * @tc.name format the relativetime, get the numberingSystem options
+    * @tc.desc check the relativetime
+    */
+    it('i18n_test_relativetimeformat_0800', 0, function () {
+        console.log('i18n_test_relativetimeformat_0800 ' + 'start');
+        let relativetimefmt = new Intl.RelativeTimeFormat('en');
+        let value = relativetimefmt.resolvedOptions();
+        console.log('i18n_test_relativetimeformat_0800 ' + value.numberingSystem);
+        expect(value.numberingSystem).assertEqual('latn');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0900
+    * @tc.name format the relativetime with localeMatcher options
+    * @tc.desc check the relativetime
+    */
+    it('i18n_test_relativetimeformat_0900', 0, function () {
+        console.log('i18n_test_relativetimeformat_0900 ' + 'start');
+        let relativetimefmt = new Intl.RelativeTimeFormat('en', { localeMatcher: 'best fit', numeric: 'auto', style: 'narrow' });
+        let value = relativetimefmt.resolvedOptions();
+        console.log('i18n_test_relativetimeformat_0900 ' + value);
+        expect(value.numeric).assertEqual('auto');
+        expect(value.style).assertEqual('narrow');
     })
 
     console.log('*************end IntlTest*************');
