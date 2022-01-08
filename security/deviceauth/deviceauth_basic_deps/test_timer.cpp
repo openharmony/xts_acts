@@ -1,1 +1,0 @@
-../../../security_lite/deviceauth_basic_deps/test_timer.c
