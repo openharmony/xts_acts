@@ -24,11 +24,11 @@ describe('UsbFunctionsJsFunctionsTest', function () {
     console.log('*************Usb Unit UsbFunctionsJsFunctionsTest Begin*************');
     var Version = usb.getVersion()
     console.info('begin test getversion :' + Version)
-    // 切换到 device
+    // version > 17  host currentMode = 2 device currentMode = 1
     var usbPortList = usb.getPorts()
     if (usbPortList.length > 0) {
-      if (usbPortList[0].status.currentMode == 2) {
-        console.info('usb case set data role 1, data role 1');
+      var HostMode = 2
+      if (usbPortList[0].status.currentMode == HostMode) {
         usb.setPortRoles(usbPortList[0].id, 2, 2).then(data => {
           console.info('usb case setPortRoles return: ' + data);
         }).catch(error => {
@@ -49,7 +49,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : get_current_functions_test_01
+   * @tc.number    : SUB_USB_get_current_functions_test_01
    * @tc.name      : getCurrentFunctions
    * @tc.desc      : 获取当前设备模式 掩码与描述字符转换
    */
@@ -68,7 +68,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : get_current_functions_test_02
+   * @tc.number    : SUB_USB_get_current_functions_test_02
    * @tc.name      : usbFunctionString
    * @tc.desc      : 反向测试 获取当前设备模式 掩码与描述字符转换
    */
@@ -111,7 +111,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
   }
 
   /**
-   * @tc.number    : set_current_functions_test_02
+   * @tc.number    : SUB_USB_set_current_functions_test_02
    * @tc.name      : functions_test
    * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 1 设置为ACM功能
    */
@@ -126,7 +126,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : set_current_functions_test_03
+   * @tc.number    : SUB_USB_set_current_functions_test_03
    * @tc.name      : functions_test
    * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 2 设置为ECM功能
    */
@@ -141,7 +141,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : set_current_functions_test_04
+   * @tc.number    : SUB_USB_set_current_functions_test_04
    * @tc.name      : functions_test
    * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 3 设置为ACM、ECM功能
    */
@@ -156,7 +156,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : set_current_functions_test_05
+   * @tc.number    : SUB_USB_set_current_functions_test_05
    * @tc.name      : functions_test
    * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 4 设置为HDC功能
    */
@@ -171,7 +171,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : set_current_functions_test_06
+   * @tc.number    : SUB_USB_set_current_functions_test_06
    * @tc.name      : functions_test
    * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 5 设置为ACM、HDC功能
    */
@@ -186,7 +186,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : set_current_functions_test_07
+   * @tc.number    : SUB_USB_set_current_functions_test_07
    * @tc.name      : functions_test
    * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 6 设置为ECM、HDC功能
    */

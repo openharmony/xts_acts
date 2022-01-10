@@ -36,7 +36,7 @@ describe('UsbPortJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : get_ports_test_01
+   * @tc.number    : SUB_USB_get_ports_test_01
    * @tc.name      : getPorts
    * @tc.desc      : 获取USB端口描述信息列表
    */
@@ -54,7 +54,7 @@ describe('UsbPortJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : get_supported_modes_test_01
+   * @tc.number    : SUB_USB_get_supported_modes_test_01
    * @tc.name      : getSupportedModes
    * @tc.desc      : 获取指定的端口支持的模式列表的组合掩码
    */
@@ -78,7 +78,7 @@ describe('UsbPortJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : set_port_roles_test_01
+   * @tc.number    : SUB_USB_set_port_roles_test_01
    * @tc.name      : setPortRoles
    * @tc.desc      : 切换为Device set powerRole 2 DataRole 2
    */
@@ -107,7 +107,7 @@ describe('UsbPortJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : set_port_roles_test_02
+   * @tc.number    : SUB_USB_set_port_roles_test_02
    * @tc.name      : setPortRoles
    * @tc.desc      : 切换为host set powerRole 1 DataRole 1
    */
