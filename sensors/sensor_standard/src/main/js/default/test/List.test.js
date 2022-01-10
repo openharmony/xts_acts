@@ -14,6 +14,4 @@
  */
 
 require('./SensorOnOffTest.test.js')
-
-
-
+require('./SensorGeomagneticTest.test.js')
