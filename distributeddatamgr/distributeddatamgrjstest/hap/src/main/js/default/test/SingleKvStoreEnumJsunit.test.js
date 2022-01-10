@@ -48,7 +48,7 @@ describe('KvStoreEnumTest', function () {
         var maxValueLength = factory.Constants.MAX_VALUE_LENGTH;
         console.info('maxValueLength = ' + maxValueLength);
         expect(maxValueLength == 4194303).assertTrue();
-        expect( factory.Constants.MAX_VALUE_LENGTH).assertEqual(4194303);
+        expect(factory.Constants.MAX_VALUE_LENGTH).assertEqual(4194303);
     })
 
     /**
@@ -63,7 +63,6 @@ describe('KvStoreEnumTest', function () {
             console.info('can NOT set value to MAX_VALUE_LENGTH : ' + e);
             expect(factory.Constants.MAX_VALUE_LENGTH).assertEqual(4194303);
         }
-
     })
 
     /**
@@ -72,9 +71,6 @@ describe('KvStoreEnumTest', function () {
      * @tc.desc Test Js Enum Value Constants.MAX_KEY_LENGTH_DEVICE
      */
     it('testConstantsMaxKeyLengthDevice_001', 0, function () {
-
-        expect( factory.Constants.MAX_VALUE_LENGTH).assertEqual(4194303);
-
         var maxKeyLengthDevice = factory.Constants.MAX_KEY_LENGTH_DEVICE;
         console.info('maxKeyLengthDevice = ' + maxKeyLengthDevice);
         expect(maxKeyLengthDevice == 896).assertTrue()

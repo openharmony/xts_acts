@@ -136,13 +136,13 @@ describe('SchemaTest', function() {
             console.log('afterEach closeKVStore success');
             await kvManager.deleteKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID).then(() => {
                 console.log('afterEach deleteKVStore success');
-                kvStore = null;
             }).catch((err) => {
                 console.log('afterEach deleteKVStore err ' + err);
             });
         }).catch((err) => {
             console.log('afterEach closeKVStore err ' + err);
         });
+        kvStore = null;
         done();
     })
 
@@ -259,6 +259,27 @@ describe('SchemaTest', function() {
         } catch (e) {
             console.log("testToJsonString003 fail on exception: " + e);
             expect(null).assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_SCHEMA_TOJSONSTRING_0400
+     * @tc.name [JS-API8]Schema.ToJsonString()
+     * @tc.desc Test Js Api Schema.ToJsonString() testcase 004
+     */
+    it('testToJsonString004', 0, async function(done) {
+        try {
+            let english = new ddm.FieldNode('english');
+            english.type = ddm.ValueType.STRING;
+
+            let schema = new ddm.Schema();
+            schema.root.appendChild(english);
+            console.log("schema without indexes: " + schema.toJsonString());
+            schema.indexes = [];    // indexex set to empty array -> invalid indexes.
+            expect(null).assertFail();
+        } catch (e) {
+            console.log("schema exception is ok: " + e);
         }
         done();
     })

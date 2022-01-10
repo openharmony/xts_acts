@@ -67,6 +67,7 @@ describe('KVManagerCallbackTest', function () {
                 done();
             });
         });
+        kvStore = null;
     })
 
     /**
@@ -725,16 +726,23 @@ describe('KVManagerCallbackTest', function () {
     it('testKVManagerCloseKVStore104', 0, async function (done) {
         console.log('testKVManagerCloseKVStore104');
         try {
+            await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
+                console.log('testKVManagerCloseKVStore104 getKVStore success');
+                kvStore = store;
+                await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, kvStore);
+            });
+            console.log('testKVManagerCloseKVStore104 closeKVStore redo.');
             await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, kvStore, function (err, data) {
-                console.log('testKVManagerCloseKVStore104 closeKVStore success');
-                expect((err == undefined) && (data == undefined)).assertTrue();
-                done();
+                console.log('testKVManagerCloseKVStore104 closeKVStore twice ' + err);
+                if (err == undefined) {
+                    expect(null).assertFail();
+                }
             });
         } catch (e) {
-            console.log('testKVManagerCloseKVStore104 e ' + e);
+            console.log('testKVManagerCloseKVStore104 closeKVStore twice e ' + e);
             expect(null).assertFail();
-            done();
         }
+        done();
     })
 
     /**
