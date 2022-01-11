@@ -46,7 +46,7 @@ async function executeRunCmd(command){
   console.log("getOutput===="+val);
   let dataStr =  String.fromCharCode.apply(null, val);
   return dataStr;
-};
+}
 
 export {
   environment,
