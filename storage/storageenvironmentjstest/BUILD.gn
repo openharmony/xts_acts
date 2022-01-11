@@ -10,17 +10,22 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 import("//test/xts/tools/build/suite.gni")
 
-group("storage") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "storageenvironmentjstest:storageenvironment_js_test",
-      "storagefileioerrorjstest:storagefileioerror_js_test",
-      "storagefileiojstest:storagefileio_js_test",
-      "storagefilejstest:storagefile_js_test",
-      "storagestatfsjstest:storagestatfs_js_test",
-    ]
-  }
+ohos_js_hap_suite("storageenvironment_js_test") {
+  hap_profile = "./src/main/config.json"
+  deps = [
+    ":storageenvironment_js_assets",
+    ":storageenvironment_js_resources",
+  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsStorageEnvironmentJsTest"
+}
+ohos_js_assets("storageenvironment_js_assets") {
+  source_dir = "./src/main/js/default"
+}
+ohos_resources("storageenvironment_js_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }
