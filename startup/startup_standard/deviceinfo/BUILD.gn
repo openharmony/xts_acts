@@ -20,7 +20,7 @@ ohos_js_hap_suite("startup_deviceinfo_js_test") {
     ":startup_js_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "StartupDeviceInfoApiTest"
+  hap_name = "ActsStartupSysDeviceInfoTest"
 }
 ohos_js_assets("startup_js_assets") {
   source_dir = "./src/main/js/default"
