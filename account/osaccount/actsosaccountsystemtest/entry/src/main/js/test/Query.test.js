@@ -32,6 +32,12 @@ describe('ActsOsAccountSystemTest', function () {
             console.debug("====>queryOsAccountById data:" + JSON.stringify(data));
             expect(err.code).assertEqual(0);
             expect(data.localId).assertEqual(100);
+            expect(data.type.ADMIN).assertEqual(0);
+            var serialNumberStr = data.serialNumber.toString();
+            var serialIntercept = serialNumberStr.substring(8);
+            console.debug("====>truncate the last eight characters: " + serialIntercept);
+            expect(serialIntercept).assertEqual("00000001");
+            expect(data.isCreateCompleted).assertTrue();
             console.debug("====>ActsOsAccountQuery_0100 end====");
             done();
         })
@@ -49,6 +55,12 @@ describe('ActsOsAccountSystemTest', function () {
         var osAccountInfo = await osAccountManager.queryOsAccountById(100);
         console.debug("====>queryOsAccountById osAccountInfo:" + JSON.stringify(osAccountInfo));
         expect(osAccountInfo.localId).assertEqual(100);
+        expect(osAccountInfo.type.ADMIN).assertEqual(0);
+        var serialNumberStr = osAccountInfo.serialNumber.toString();
+        var serialIntercept = serialNumberStr.substring(8);
+        console.debug("====>truncate the last eight characters: " + serialIntercept);
+        expect(serialIntercept).assertEqual("00000001");
+        expect(osAccountInfo.isCreateCompleted).assertTrue();
         console.debug("====>ActsOsAccountQuery_0200 end====");
         done();
     });
@@ -212,7 +224,7 @@ describe('ActsOsAccountSystemTest', function () {
             console.debug("====>queryAllCreatedOsAccounts data:" + JSON.stringify(data));
             expect(err.code).assertEqual(0);
             for (let i = 0, len = data.length; i < len; i++) {
-                dataMap.set(data[i].localId, data[i].owner)
+                dataMap.set(data[i].localId, data[i].localName)
             }
             expect(dataMap.has(100)).assertTrue();
             console.debug("====>ActsOsAccountQuery_1100 end====");
@@ -233,10 +245,84 @@ describe('ActsOsAccountSystemTest', function () {
         var osAccountCreated = await osAccountManager.queryAllCreatedOsAccounts();
         console.debug("====>queryAllCreatedOsAccounts:" + JSON.stringify(osAccountCreated));
         for (let i = 0, len = osAccountCreated.length; i < len; i++) {
-            dataMap.set(osAccountCreated[i].localId, osAccountCreated[i].owner)
+            dataMap.set(osAccountCreated[i].localId, osAccountCreated[i].localName)
         }
         expect(dataMap.has(100)).assertTrue();
         console.debug("====>ActsOsAccountQuery_1200 end====");
+        done();
+    });
+
+    /*
+     * @tc.number  : ActsOsAccountQuery_1300
+     * @tc.name    : queryAllCreatedOsAccounts callback
+     * @tc.desc    : Verify that all local users contain 100 user and created users
+     */
+    it('ActsOsAccountQuery_1300', 0, async function (done) {
+        console.debug("====>ActsOsAccountQuery_1300 start====");
+        var osAccountManager = osaccount.getAccountManager();
+        console.debug("====>get AccountManager finish====");
+        var createIocalId;
+        let dataMap = new Map();
+        osAccountManager.createOsAccount("osAccountNameQueryA", 1, (err, osAccountInfo)=>{
+            console.debug("====>createOsAccount err:" + JSON.stringify(err));
+            console.debug("====>createOsAccount osAccountInfo:" + JSON.stringify(osAccountInfo));
+            createIocalId = osAccountInfo.localId;
+            expect(err.code).assertEqual(0);
+            expect(osAccountInfo.localName).assertEqual("osAccountNameQueryA");
+            osAccountManager.queryAllCreatedOsAccounts((err, data)=>{
+                console.debug("====>queryAllCreatedOsAccounts err:" + JSON.stringify(err));
+                console.debug("====>queryAllCreatedOsAccounts data:" + JSON.stringify(data));
+                expect(err.code).assertEqual(0);
+                for (let i = 0, len = data.length; i < len; i++) {
+                    dataMap.set(data[i].localId, data[i].localName)
+                }
+                expect(dataMap.has(100)).assertTrue();
+                expect(dataMap.has(createIocalId)).assertTrue();
+                if (dataMap.has(createIocalId)) {
+                    let createdlocalName = dataMap.get(createIocalId);
+                    console.debug("====>query all local users containing localId: " + createIocalId);
+                    console.debug("====>created localName" + createdlocalName);
+                    expect(createdlocalName).assertEqual("osAccountNameQueryA");
+                    osAccountManager.removeOsAccount(createIocalId, (err)=>{
+                        console.debug("====>remove localId: " + createIocalId + " err:" + JSON.stringify(err));
+                        expect(err.code).assertEqual(0);
+                        console.debug("====>ActsOsAccountQuery_1300 end====");
+                        done();
+                    })
+                }
+            })
+        });
+    });
+
+    /*
+     * @tc.number  : ActsOsAccountQuery_1400
+     * @tc.name    : queryAllCreatedOsAccounts promise
+     * @tc.desc    : Verify that all local users contain 100 user and created users
+     */
+    it('ActsOsAccountQuery_1400', 0, async function (done) {
+        console.debug("====>ActsOsAccountQuery_1400 start====");
+        var osAccountManager = osaccount.getAccountManager();
+        console.debug("====>get AccountManager finish====");
+        var createIocalId;
+        let dataMap = new Map();
+        var osAccountInfo = await osAccountManager.createOsAccount("osAccountNameQueryB", 1);
+        console.debug("====>createOsAccount osAccountInfo:" + JSON.stringify(osAccountInfo));
+        createIocalId = osAccountInfo.localId;
+        expect(osAccountInfo.localName).assertEqual("osAccountNameQueryB");
+        var data = await osAccountManager.queryAllCreatedOsAccounts();
+        console.debug("====>queryAllCreatedOsAccounts data:" + JSON.stringify(data));
+        for (let i = 0, len = data.length; i < len; i++) {
+            dataMap.set(data[i].localId, data[i].localName)
+        }
+        expect(dataMap.has(100)).assertTrue();
+        expect(dataMap.has(createIocalId)).assertTrue();
+        if (dataMap.has(createIocalId)) {
+            let createdlocalName = dataMap.get(createIocalId);
+            console.debug("====>query all local users containing localId: " + createIocalId);
+            expect(createdlocalName).assertEqual("osAccountNameQueryB");
+        }
+        await osAccountManager.removeOsAccount(createIocalId);
+        console.debug("====>ActsOsAccountQuery_1400 end====");
         done();
     });
 

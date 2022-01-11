@@ -139,6 +139,45 @@ describe('ActsOsAccountThirdPartyTest', function () {
     })
 
     /*
+     * @tc.number    : ActsOsAccountIsActived_0500
+     * @tc.name      : isOsAccountActived callback
+     * @tc.desc      : Authentication failed to query the active status of the user that does not exist
+     */
+    it('ActsOsAccountIsActived_0500', 0, async function(done){
+        console.debug("====>ActsOsAccountIsActived_0500 start");
+        var AccountManager = osAccount.getAccountManager();
+        console.debug("====>get os AccountManager finish====");
+        var nonExistLocalId = 1000;
+        AccountManager.isOsAccountActived(nonExistLocalId, (err)=>{
+            console.debug("====>isOsAccountActived err:" + JSON.stringify(err));
+            expect(err.code !=0).assertEqual(true);
+            console.debug("====>ActsOsAccountIsActived_0500 end");
+            done();
+        })
+    })
+
+    /*
+     * @tc.number    : ActsOsAccountIsActived_0600
+     * @tc.name      : isOsAccountActived promise
+     * @tc.desc      : Authentication failed to query the active status of the user that does not exist
+     */
+    it('ActsOsAccountIsActived_0600', 0, async function(done){
+        console.debug("====>ActsOsAccountIsActived_0600 start====");
+        var AccountManager = osAccount.getAccountManager();
+        console.debug("====>get os AccountManager finish====");
+        var nonExistLocalId = 1000;
+        try{
+            await AccountManager.isOsAccountActived(nonExistLocalId);
+        }
+        catch(err){
+            console.debug("====>isOsAccountActived err:" + JSON.stringify(err));
+            expect(err.code !=0 ).assertTrue();
+            console.debug("====>ActsOsAccountIsActived_0600 end");
+            done();
+        }
+    })
+
+    /*
      * @tc.number    : ActsOsAccountIsMulty_0100
      * @tc.name      : isMultiOsAccountEnable callback
      * @tc.desc      : Check whether the function of supporting multiple os account is enabled
@@ -364,4 +403,3 @@ describe('ActsOsAccountThirdPartyTest', function () {
         done();
     })
 })
-
