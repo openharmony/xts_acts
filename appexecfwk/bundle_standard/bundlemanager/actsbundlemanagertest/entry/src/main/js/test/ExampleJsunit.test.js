@@ -53,6 +53,16 @@ const START_ABILITY_TIMEOUT = 3000;
 var subscriberInfoEvent_0100 = {
     events: ['Third1_Publish_CommonEvent'],
 };
+var installParam = {
+    userId: 0,
+    installFlag: 0,
+    isKeepData: false
+};
+var BundleFlag = {
+    GET_BUNDLE_DEFAULT: 0,
+    GET_BUNDLE_WITH_ABILITIES: 1,
+    GET_APPLICATION_INFO_WITH_PERMISSION: 8
+};
 
 describe('ActsBundleManagerTest', function () {
 
@@ -438,51 +448,41 @@ describe('ActsBundleManagerTest', function () {
      */
     it('getApplicationInfo_0100', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
-
-        installData.install([PATH + BMSJSTEST1], {
-                userId: 0,
-                installFlag: 0,
-                isKeepData: false
-        }, async (err, data) => {
+        installData.install([PATH + BMSJSTEST1], installParam, async (err, data) => {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             getInfo();
         });
         async function getInfo() {
-            var datainfo = await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION,
-                                                            demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
-            expect(typeof datainfo).assertEqual(OBJECT)
-            expect(datainfo.name.length).assertLarger(0)
-            expect(datainfo.description.length).assertLarger(0)
-            expect(datainfo.icon.length).assertLarger(0)
-            expect(datainfo.label.length).assertLarger(0)
-
-            expect(datainfo.moduleSourceDirs.length).assertLarger(0)
-            expect(datainfo.moduleInfos.length).assertLarger(0)
-            expect(datainfo.name).assertEqual(NAME1)
-            expect(datainfo.description).assertEqual("$string:mainability_description")
-            expect(datainfo.icon).assertEqual("$media:icon")
-            expect(datainfo.label).assertEqual("$string:app_name")
-            expect(datainfo.systemApp).assertEqual(true)
-            expect(datainfo.descriptionId >= 0).assertTrue()
-            expect(datainfo.iconId >= 0).assertTrue()
-            expect(datainfo.labelId >= 0).assertTrue()
-            expect(datainfo.supportedModes).assertEqual(0)
-            expect(datainfo.process).assertEqual(NAME1)
-            expect(datainfo.enabled).assertEqual(true)
-            expect(datainfo.flags).assertEqual(0)
-            expect(datainfo.moduleSourceDirs.length).assertLarger(0)
-            for (var j = 0; j < datainfo.moduleInfos; j++) {
-                expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry")
-                expect(datainfo.moduleInfos[j].moduleSourceDir.length).assertLarger(0)
-
-            }
-            installData.uninstall(NAME1, {
-                userId: 0,
-                installFlag: 0,
-                isKeepData: false
-            }, (err, data) => {
+            await demo.getApplicationInfo(NAME1, BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 0).then (datainfo => {
+                expect(typeof datainfo).assertEqual(OBJECT)
+                console.info("getApplicationInfo success:" + JSON.stringify(datainfo))
+                expect(datainfo.moduleSourceDirs.length).assertLarger(0)
+                expect(datainfo.moduleInfos.length).assertLarger(0)
+                expect(datainfo.name).assertEqual(NAME1)
+                expect(datainfo.description).assertEqual("$string:mainability_description")
+                expect(datainfo.icon).assertEqual("$media:icon")
+                expect(datainfo.label).assertEqual("$string:app_name")
+                expect(datainfo.systemApp).assertEqual(true)
+                expect(datainfo.descriptionId).assertLarger(0)
+                expect(parseInt(datainfo.iconId)).assertLarger(0)
+                expect(parseInt(datainfo.labelId)).assertLarger(0)
+                expect(datainfo.supportedModes).assertEqual(0)
+                expect(datainfo.process).assertEqual("")
+                expect(datainfo.enabled).assertEqual(true)
+                expect(datainfo.flags).assertEqual(0)
+                expect(datainfo.moduleSourceDirs.length).assertLarger(0)
+                for (var j = 0; j < datainfo.moduleInfos; j++) {
+                    expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry")
+                    expect(datainfo.moduleInfos[j].moduleSourceDir.length).assertLarger(0)
+    
+                }
+            }).catch (err => {
+                console.info("getApplicationInfo fail:" + JSON.stringify(err))
+                expect(err).assertFail();
+            })
+            installData.uninstall(NAME1, installParam, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
@@ -544,31 +544,27 @@ describe('ActsBundleManagerTest', function () {
      */
     it('getApplicationInfo_0600', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
-        installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
-            installFlag: 0,
-            isKeepData: false
-        }, async (err, data) => {
+        installData.install([PATH + BMSJSTEST1], installParam, async (err, data) => {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             getInfo();
         });
         async function getInfo() {
-            await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION,
-                                            demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, (error, datainfo) => {
+            await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 0, (error, datainfo) => {
+                if (error) {
+                    console.info("getApplicationInfo fail:" + JSON.stringify(error))
+                    expect(error).assertFail();
+                }
+                console.info("getApplicationInfo success:" + JSON.stringify(datainfo))
                 expect(typeof datainfo).assertEqual(OBJECT)
                 expect(datainfo.name).assertEqual(NAME1)
                 expect(datainfo.label).assertEqual("$string:app_name")
                 expect(datainfo.description).assertEqual("$string:mainability_description")
                 expect(datainfo.icon).assertEqual("$media:icon")
-                expect(datainfo.name).assertEqual(NAME1)
-                expect(datainfo.description).assertEqual("$string:mainability_description")
                 expect(datainfo.descriptionId >= 0).assertTrue()
-                expect(datainfo.icon).assertEqual("$media:icon")
-                expect(datainfo.iconId >= 0).assertTrue()
-                expect(datainfo.label).assertEqual("$string:app_name")
-                expect(datainfo.labelId >= 0).assertTrue()
+                expect(parseInt(datainfo.iconId)).assertLarger(0)
+                expect(parseInt(datainfo.labelId)).assertLarger(0)
                 expect(datainfo.systemApp).assertEqual(true)
                 expect(datainfo.supportedModes).assertEqual(0)
                 expect(datainfo.enabled).assertEqual(true)
@@ -577,11 +573,8 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1)
 
                 }
-                installData.uninstall(NAME1, {
-                    userId: 0,
-                    installFlag: 0,
-                    isKeepData: false
-                }, (err, data) => {
+                installData.uninstall(NAME1, installParam, (err, data) => {
+                    console.info("uninstall success:" + JSON.stringify(data))
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
                     expect(data.statusMessage).assertEqual('SUCCESS');
@@ -598,38 +591,31 @@ describe('ActsBundleManagerTest', function () {
      */
     it('getApplicationInfo_1100', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
-        installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
-            installFlag: 0,
-            isKeepData: false
-        }, async (err, data) => {
+        installData.install([PATH + BMSJSTEST1], installParam, async (err, data) => {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             getInfo();
         });
         async function getInfo() {
-            var datainfo = await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_BUNDLE_DEFAULT,
-                                                            demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
-            expect(typeof datainfo).assertEqual(OBJECT)
-            expect(datainfo.name).assertEqual(NAME1)
-            expect(datainfo.label).assertEqual("$string:app_name")
-            expect(datainfo.description).assertEqual("$string:mainability_description")
-            expect(datainfo.icon).assertEqual("$media:icon")
-            expect(datainfo.name).assertEqual(NAME1)
-            expect(datainfo.description).assertEqual("$string:mainability_description")
-            expect(datainfo.descriptionId >= 0).assertTrue()
-            expect(datainfo.icon).assertEqual("$media:icon")
-            expect(datainfo.iconId >= 0).assertTrue()
-            expect(datainfo.label).assertEqual("$string:app_name")
-            expect(datainfo.labelId >= 0).assertTrue()
-            expect(datainfo.systemApp).assertEqual(true)
-            expect(datainfo.supportedModes).assertEqual(0)
-            installData.uninstall(NAME1, {
-                userId: 0,
-                installFlag: 0,
-                isKeepData: false
-            }, (err, data) => {
+            await demo.getApplicationInfo(NAME1, BundleFlag.GET_BUNDLE_DEFAULT, 0).then ( datainfo => {
+                console.info("getApplicationInfo success" + JSON.stringify(datainfo))
+                expect(typeof datainfo).assertEqual(OBJECT)
+                expect(datainfo.name).assertEqual(NAME1)
+                expect(datainfo.label).assertEqual("$string:app_name")
+                expect(datainfo.description).assertEqual("$string:mainability_description")
+                expect(datainfo.icon).assertEqual("$media:icon")
+                expect(datainfo.descriptionId).assertLarger(0)
+                expect(parseInt(datainfo.iconId)).assertLarger(0)
+                expect(parseInt(datainfo.labelId)).assertLarger(0)
+                expect(datainfo.systemApp).assertEqual(true)
+                expect(datainfo.supportedModes).assertEqual(0)
+            }).catch (err => {
+                console.info("getApplicationInfo fail" + JSON.stringify(err))
+                expect(err).assertFail()
+            })
+            installData.uninstall(NAME1, installParam, (err, data) => {
+                console.info("uninstall success" + JSON.stringify(data))
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
@@ -645,38 +631,31 @@ describe('ActsBundleManagerTest', function () {
      */
     it('getApplicationInfo_1200', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
-        installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
-            installFlag: 0,
-            isKeepData: false
-        }, async (err, data) => {
+        installData.install([PATH + BMSJSTEST1], installParam, async (err, data) => {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             getInfo();
         });
         async function getInfo() {
-            await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_BUNDLE_DEFAULT,
-                                            demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, (error, datainfo) => {
+            await demo.getApplicationInfo(NAME1, BundleFlag.GET_BUNDLE_DEFAULT, 0, (error, datainfo) => {
+                if (error) {
+                    console.info("getApplicationInfo fail" + JSON.stringify(error))
+                    expect(error).assertFail()
+                }
+                console.info("getApplicationInfo success" + JSON.stringify(datainfo))
                 expect(typeof datainfo).assertEqual(OBJECT)
                 expect(datainfo.name).assertEqual(NAME1)
                 expect(datainfo.label).assertEqual("$string:app_name")
                 expect(datainfo.description).assertEqual("$string:mainability_description")
                 expect(datainfo.icon).assertEqual("$media:icon")
-                expect(datainfo.name).assertEqual(NAME1)
-                expect(datainfo.description).assertEqual("$string:mainability_description")
-                expect(datainfo.descriptionId >= 0).assertTrue()
-                expect(datainfo.icon).assertEqual("$media:icon")
-                expect(datainfo.iconId >= 0).assertTrue()
-                expect(datainfo.label).assertEqual("$string:app_name")
-                expect(datainfo.labelId >= 0).assertTrue()
+                expect(datainfo.descriptionId).assertLarger(0)
+                expect(parseInt(datainfo.iconId)).assertLarger(0)
+                expect(parseInt(datainfo.labelId)).assertLarger(0)
                 expect(datainfo.systemApp).assertEqual(true)
                 expect(datainfo.supportedModes).assertEqual(0)
-                installData.uninstall(NAME1, {
-                    userId: 0,
-                    installFlag: 0,
-                    isKeepData: false
-                }, (err, data) => {
+                installData.uninstall(NAME1, installParam, (err, data) => {
+                    console.info("uninstall success" + JSON.stringify(data))
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
                     expect(data.statusMessage).assertEqual('SUCCESS');
@@ -693,14 +672,13 @@ describe('ActsBundleManagerTest', function () {
      */
     it('getBundleArchiveInfo_0100', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
-        installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
-            installFlag: 0,
-            isKeepData: false
-        }, async (err, data) => {
+        installData.install([PATH + BMSJSTEST1], installParam, async (err, data) => {
+            console.err("install result" + JSON.stringify(err))
+            console.err("install result" + JSON.stringify(data))
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
+            console.err("getBundleArchiveInfo begin")
             getInfo();
         });
         async function getInfo() {
@@ -847,9 +825,15 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getBundleArchiveInfo interfaces with error hap.
      */
      it('getBundleArchiveInfo_0400', 0, async function (done) {
-        var datainfo = await demo.getBundleArchiveInfo(PATH + ERROR, 1)
-        expect(datainfo.name.length).assertEqual(0)
-        done()
+        await demo.getBundleArchiveInfo(PATH + ERROR, 1).then(datainfo => {
+            console.info("getBundleArchiveInfo success" + JSON.stringify(datainfo))
+            expect(datainfo).assertFail()
+            done()
+        }).catch(err => {
+            console.info("getBundleArchiveInfo fail" + JSON.stringify(err))
+            expect(err).assertEqual(1)
+            done()
+        })
     })
 
     /**
@@ -858,9 +842,15 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getBundleArchiveInfo interfaces with none hap.
      */
      it('getBundleArchiveInfo_0500', 0, async function (done) {
-        var datainfo = await demo.getBundleArchiveInfo(' ', 1)
-        expect(datainfo.name.length).assertEqual(0)
-        done()
+        var datainfo = await demo.getBundleArchiveInfo(' ', 1).then(datainfo => {
+            console.info("getBundleArchiveInfo success" + JSON.stringify(datainfo))
+            expect(datainfo).assertFail()
+            done()
+        }).catch(err => {
+            console.info("getBundleArchiveInfo fail" + JSON.stringify(err))
+            expect(err).assertEqual(1)
+            done()
+        })
     })
 
     /**
@@ -1022,10 +1012,16 @@ describe('ActsBundleManagerTest', function () {
      */
      it('getBundleArchiveInfo_0900', 0, async function (done) {
         await demo.getBundleArchiveInfo(PATH + ERROR, 1, OnReceiveEvent)
-
         function OnReceiveEvent(err, datainfo) {
-            expect(datainfo.name.length).assertEqual(0)
-            done()
+            if(err){
+                console.info("getBundleArchiveInfo error" + JSON.stringify(err));
+                expect(err).assertEqual(1);
+                done();
+                return;
+            }
+            console.info("getBundleArchiveInfo sucess" + JSON.stringify(datainfo));
+            expect(datainfo).assertFail();
+            done();
         }
     })
 
@@ -1036,10 +1032,16 @@ describe('ActsBundleManagerTest', function () {
      */
      it('getBundleArchiveInfo_1000', 0, async function (done) {
         await demo.getBundleArchiveInfo(' ', 1, OnReceiveEvent)
-
         function OnReceiveEvent(err, datainfo) {
-            expect(datainfo.name.length).assertEqual(0)
-            done()
+            if(err){
+                console.info("getBundleArchiveInfo error" + JSON.stringify(err));
+                expect(err).assertEqual(1);
+                done();
+                return;
+            }
+            console.info("getBundleArchiveInfo sucess" + JSON.stringify(datainfo));
+            expect(datainfo).assertFail();
+            done();
         }
     })
 
@@ -1537,20 +1539,15 @@ describe('ActsBundleManagerTest', function () {
      */
     it('getApplicationInfo_0200', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
-
-        installData.install([PATH + BMSJSTEST2, PATH + BMSJSTEST3], {
-            userId: 0,
-            installFlag: 0,
-            isKeepData: false
-        }, async (err, data) => {
+        installData.install([PATH + BMSJSTEST2, PATH + BMSJSTEST3], installParam, async (err, data) => {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             getInfo();
         });
         async function getInfo() {
-            var datainfo = await demo.getApplicationInfo(NAME2, BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION,
-                                                            BundleFlag.GET_BUNDLE_WITH_ABILITIES)
+            var datainfo = await demo.getApplicationInfo(NAME2, BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 0)
+            console.info("getApplicationInfo result" + JSON.stringify(datainfo))
             expect(typeof datainfo).assertEqual(OBJECT)
             expect(datainfo.name.length).assertLarger(0)
             expect(datainfo.description.length).assertLarger(0)
@@ -1575,11 +1572,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry")
                 expect(datainfo.moduleInfos[j].moduleSourceDir.length).assertLarger(0)
             }
-            installData.uninstall(NAME2, {
-                userId: 0,
-                installFlag: 0,
-                isKeepData: false
-            }, (err, data) => {
+            installData.uninstall(NAME2, installParam, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
@@ -1978,9 +1971,15 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getBundleInfo interfaces with error hap.
      */
     it('getBundleInfo_0400', 0, async function (done) {
-        var datainfo = await demo.getBundleInfo('error', BundleFlag.GET_BUNDLE_WITH_ABILITIES);
-        expect(datainfo.name.length).assertEqual(0)
-        done();
+        await demo.getBundleInfo('error', BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(datainfo => {
+            console.info("getBundleInfo success:" + JSON.stringify(datainfo))
+            expect(datainfo).assertFail();
+            done();
+        }).catch(err => {
+            console.info("getBundleInfo err:" + JSON.stringify(err))
+            expect(err).assertEqual(1);
+            done();
+        });
     })
 
     /**
@@ -1991,7 +1990,14 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleInfo_0900', 0, async function (done) {
         await demo.getBundleInfo('error', BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent)
         function OnReceiveEvent(err, datainfo) {
-            expect(datainfo.name.length).assertEqual(0)
+            if (err){
+                console.info("getBundleInfo err" + JSON.stringify(err));
+                expect(err).assertEqual(1);
+                done();
+                return;
+            }
+            console.info("getBundleInfo success" + JSON.stringify(datainfo));
+            expect(datainfo).assertFail();
             done();
         }
     })
@@ -2002,14 +2008,18 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfo interfaces with error hap.
      */
     it('getApplicationInfo_0400', 0, async function (done) {
-        demo.getApplicationInfo(ERROR, BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION,
-                                BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(datainfo => {
+        demo.getApplicationInfo(ERROR, BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 0).then(datainfo => {
             checkgetApplicationInfoe(datainfo)
+        }).catch (err => {
+            console.info("getApplicationInfo err" + JSON.stringify(err))
+            expect(err).assertEqual(1)
+            done()
         });
-        done()
     })
     function checkgetApplicationInfoe(datainfo) {
-        expect(datainfo.name.length).assertEqual(0)
+        console.info("getApplicationInfo success" + JSON.stringify(datainfo))
+        expect(datainfo).assertFail()
+        done()
     }
 
     /**
@@ -2018,11 +2028,17 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfo interfaces with error hap.
      */
     it('getApplicationInfo_0900', 0, async function (done) {
-        demo.getApplicationInfo(ERROR, BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION,
-                                        BundleFlag.GET_BUNDLE_WITH_ABILITIES, (error, datainfo) => {
-            expect(datainfo.name.length).assertEqual(0)
+        demo.getApplicationInfo(ERROR, BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 0, (error, datainfo) => {
+            if (error) {
+                console.error("getApplicationInfo fail" + JSON.stringify(error));
+                expect(error).assertEqual(1);
+                done()
+                return;
+            }
+            console.info("getApplicationInfo success" + JSON.stringify(datainfo))
+            expect(datainfo).assertFail()
+            done()
         })
-        done()
     })
 
     /**
@@ -2034,8 +2050,15 @@ describe('ActsBundleManagerTest', function () {
         await demo.getBundleInfo(' ', BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent)
 
         function OnReceiveEvent(err, datainfo) {
-            expect(datainfo.name.length).assertEqual(0)
-            done()
+            if (err){
+                console.info("getBundleInfo err" + JSON.stringify(err));
+                expect(err).assertEqual(1);
+                done();
+                return;
+            }
+            console.info("getBundleInfo success" + JSON.stringify(datainfo));
+            expect(datainfo).assertFail();
+            done();
         }
     })
 
@@ -2045,11 +2068,17 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfo interfaces with none hap.
      */
     it('getApplicationInfo_0500', 0, async function (done) {
-        demo.getApplicationInfo('', BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION,
-                                        BundleFlag.GET_BUNDLE_WITH_ABILITIES, (error, datainfo) => {
-            expect(datainfo.name.length).assertEqual(0)
+        demo.getApplicationInfo('', BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 0, (error, datainfo) => {
+            if (error){
+                console.info("getApplicationInfo err" + JSON.stringify(error));
+                expect(error).assertEqual(1);
+                done();
+                return;
+            }
+            console.info("getApplicationInfo success" + JSON.stringify(datainfo));
+            expect(datainfo).assertFail()
+            done();
         })
-        done()
     })
 
     /**
@@ -2059,9 +2088,14 @@ describe('ActsBundleManagerTest', function () {
      */
     it('getBundleInfo_0500', 0, async function (done) {
         demo.getBundleInfo(' ', BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(datainfo => {
-            expect(datainfo.name.length).assertEqual(0)
+            console.info("getBundleInfo success" + JSON.stringify(datainfo));
+            expect(datainfo).assertFail(0)
+            done();
+        }).catch(err => {
+            console.info("getBundleInfo fail" + JSON.stringify(err));
+            expect(err).assertEqual(1)
+            done();
         });
-        done();
     })
 
     /**
@@ -2070,11 +2104,17 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfo interfaces with none hap.
      */
     it('getApplicationInfo_1000', 0, async function (done) {
-        demo.getApplicationInfo('', BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION,
-                                        BundleFlag.GET_BUNDLE_WITH_ABILITIES, (error, datainfo) => {
-            expect(datainfo.name.length).assertEqual(0)
-        })
-        done()
+        demo.getApplicationInfo('', BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 0, (error, datainfo) => {
+            if (error){
+                console.info("getApplicationInfo fail" + JSON.stringify(error));
+                expect(error).assertEqual(1);
+                done();
+                return;
+            }
+            console.info("getApplicationInfo success" + JSON.stringify(datainfo));
+            expect(datainfo).assertFail()
+            done()
+        })   
     })
 
     /**
@@ -2313,6 +2353,7 @@ describe('ActsBundleManagerTest', function () {
      */
     it('getBundleInfo_1300', 0, async function (done) {
         demo.getBundleInfo(LAUNCHER, BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(datainfo => {
+            console.info("getBundleInfo success:" + JSON.stringify(datainfo))
             expect(datainfo.name).assertEqual(LAUNCHER)
             expect(datainfo.vendor).assertEqual("ohos")
             expect(datainfo.versionCode).assertEqual(1000000)
@@ -2324,8 +2365,13 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.supportedModes).assertEqual(0)
             expect(datainfo.appInfo.moduleInfos.length).assertLarger(0)
             expect(datainfo.appInfo.enabled).assertEqual(true)
+            done();
+        }).catch(err => {
+            console.info("getBundleInfo fail:" + JSON.stringify(err));
+            expect(err).assertFail();
+            done();
         })
-        done()
+        
     })
 
     /**
@@ -2653,19 +2699,12 @@ describe('ActsBundleManagerTest', function () {
      */
     it('install_0100', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
-        installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
-            installFlag: 1,
-            isKeepData: false
-        }, async (err, data) => {
-            var datainfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+        installData.install([PATH + BMSJSTEST1], installParam, async (err, data) => {
+            expect(data.statusMessage).assertEqual("SUCCESS")
+            var datainfo = await demo.getBundleInfo(NAME1, BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+            console.info("getBundleInfo result"+JSON.stringify(datainfo))
             expect(datainfo.name).assertEqual(NAME1);
-            expect(datainfo.uid < UIDMINVALUE).assertTrue();
-            installData.uninstall(NAME1, {
-                userId: 0,
-                installFlag: 0,
-                isKeepData: false
-            }, async (err, data) => {
+            installData.uninstall(NAME1, installParam, async (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
@@ -2681,19 +2720,10 @@ describe('ActsBundleManagerTest', function () {
     */
     it('install_0200', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
-        installData.install([PATH + BMSJSTEST2], {
-            userId: 0,
-            installFlag: 0,
-            isKeepData: false
-        }, async (err, data) => {
-            var datainfo = await demo.getBundleInfo(NAME2, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+        installData.install([PATH + BMSJSTEST2], installParam, async (err, data) => {
+            var datainfo = await demo.getBundleInfo(NAME2, BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             expect(datainfo.name).assertEqual(NAME2);
-            expect(datainfo.uid < UIDMINVALUE).assertTrue();
-            installData.uninstall(NAME2, {
-                userId: 0,
-                installFlag: 0,
-                isKeepData: false
-            }, (err, data) => {
+            installData.uninstall(NAME2, installParam, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
@@ -2812,22 +2842,13 @@ describe('ActsBundleManagerTest', function () {
 
     it('install_0600', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
-        installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
-            installFlag: 1,
-            isKeepData: false
-        }, OnReceiveInstallEvent);
+        installData.install([PATH + BMSJSTEST1], installParam, OnReceiveInstallEvent);
         async function OnReceiveInstallEvent(err, data) {
             expect(typeof data).assertEqual(OBJECT);
             expect(data.statusMessage).assertEqual(SUCCESS);
-            var datainfo1 = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+            var datainfo1 = await demo.getBundleInfo(NAME1, BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             expect(datainfo1.name).assertEqual(NAME1);
-            expect(datainfo1.uid < UIDMINVALUE).assertTrue();
-            installData.uninstall(NAME1, {
-                userId: 0,
-                installFlag: 0,
-                isKeepData: false
-            }, async (err, data) => {
+            installData.uninstall(NAME1, installParam, async (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
@@ -2868,27 +2889,18 @@ describe('ActsBundleManagerTest', function () {
      */
     it('install_0800', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
-        installData.install([PATH + BMSJSTEST8], {
-            userId: 0,
-            installFlag: 0,
-            isKeepData: false
-        }, async (err, data) => {
+        installData.install([PATH + BMSJSTEST8], installParam, async (err, data) => {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             getInfo();
         });
         async function getInfo() {
-            var datainfo = await demo.getBundleInfo(THIRD1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+            var datainfo = await demo.getBundleInfo(THIRD1, BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             expect(datainfo.name).assertEqual(THIRD1);
-            expect(datainfo.uid < UIDMINVALUE).assertTrue();
             expect(datainfo.versionCode).assertEqual(VERSIONCODE1);
             expect(datainfo.versionName).assertLarger(0);
-            installData.install([PATH + BMSJSTEST9], {
-                userId: 0,
-                installFlag: 0,
-                isKeepData: false
-            }, async (err, data) => {
+            installData.install([PATH + BMSJSTEST9], installParam, async (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
@@ -2898,14 +2910,9 @@ describe('ActsBundleManagerTest', function () {
         async function getInfo1() {
             var datainfo = await demo.getBundleInfo(THIRD1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             expect(datainfo.name).assertEqual(THIRD1);
-            expect(datainfo.uid < UIDMINVALUE).assertTrue();
             expect(datainfo.versionCode).assertEqual(VERSIONCODE2);
             expect(datainfo.versionName).assertLarger(0);
-            installData.uninstall(THIRD1, {
-                userId: 0,
-                installFlag: 0,
-                isKeepData: false
-            }, async (err, data) => {
+            installData.uninstall(THIRD1, installParam, async (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
