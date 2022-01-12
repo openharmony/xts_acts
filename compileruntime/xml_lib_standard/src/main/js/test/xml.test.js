@@ -1302,7 +1302,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
             str = str + arr[j];
         }
         var str1 = 'key:00110falsetruekey:216022notefalsefalsekey:1016420     falsetruekey:51470\r\nfuncrion ' +
-        matchwo(a,6)\r\n{\r\nreturn 1;\r\n}\r\nfalsetruekey:101870     falsetruekey:612870Hello, World!falsetruekey' +
+        'matchwo(a,6)\r\n{\r\nreturn 1;\r\n}\r\nfalsetruekey:101870     falsetruekey:612870Hello, World!falsetruekey' +
         ':1013270     falsetruekey:224170companyfalsetruekey:424670 John falsefalsekey:925170amp;amp;falsetruekey' +
         ':425670Hansfalsefalsekey:326670companyfalsetruekey:1017070     falsetruekey:227770titlefalsetruekey:428270' +
         ' Happyfalsefalsekey:329070titlefalsetruekey:1019470     falsetruekey:2210170titlefalsetruekey:4210670 ' +

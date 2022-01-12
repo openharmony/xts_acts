@@ -1311,10 +1311,10 @@ describe('XmlSerializerXmlPullParserTest', function () {
         'Playfalsefalsekey:3215670todofalsetruekey:10116070     falsetruekey:8117270go therefalsetruekey' +
         ':10117670     falsetruekey:2217970afalsetruekey:2318370btruetruekey:3318370bfalsetruekey' +
         ':3218770afalsetruekey:10119170     falsetruekey:2223871h:tablefalsefalsekey:10224670         ' +
-        'falsetruekey:2325270h:trfalsetruekey:10326470' +
-        'falsetruekey:2427070h:tdfalsetruekey:4427670 Applesfalsefalsekey:3428370h:tdfalsetruekey:10329570             ' +
-        'falsetruekey:2430170h:tdfalsetruekey:4430870 Bananasfalsefalsekey:3431570h:tdfalsetruekey:10332370         ' +
-        'falsetruekey:3333070h:trfalsetruekey:10233470     falsetruekey:3234470h:tablefalsetruekey:' +
+        'falsetruekey:2325270h:trfalsetruekey:10326470falsetruekey:' +
+        '2427070h:tdfalsetruekey:4427670 Applesfalsefalsekey:3428370h:tdfalsetruekey:10329570             ' +
+        'falsetruekey:2430170h:tdfalsetruekey:4430870 Bananasfalsefalsekey:3431570h:tdfalsetruekey:10332370        ' +
+        ' falsetruekey:3333070h:trfalsetruekey:10233470     falsetruekey:3234470h:tablefalsetruekey:' +
         '3135170notefalsetruekey:10351130falsetrue'
         expect(str).assertEqual(str1);
 
