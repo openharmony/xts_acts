@@ -455,7 +455,7 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            await demo.getApplicationInfo(NAME1, BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 0).then (datainfo => {
+            await demo.getApplicationInfo(NAME1, BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 0).then(datainfo => {
                 expect(typeof datainfo).assertEqual(OBJECT)
                 console.info("getApplicationInfo success:" + JSON.stringify(datainfo))
                 expect(datainfo.moduleSourceDirs.length).assertLarger(0)
@@ -478,7 +478,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo.moduleInfos[j].moduleSourceDir.length).assertLarger(0)
     
                 }
-            }).catch (err => {
+            }).catch(err => {
                 console.info("getApplicationInfo fail:" + JSON.stringify(err))
                 expect(err).assertFail();
             })
@@ -598,7 +598,7 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            await demo.getApplicationInfo(NAME1, BundleFlag.GET_BUNDLE_DEFAULT, 0).then ( datainfo => {
+            await demo.getApplicationInfo(NAME1, BundleFlag.GET_BUNDLE_DEFAULT, 0).then(datainfo => {
                 console.info("getApplicationInfo success" + JSON.stringify(datainfo))
                 expect(typeof datainfo).assertEqual(OBJECT)
                 expect(datainfo.name).assertEqual(NAME1)
@@ -610,7 +610,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(parseInt(datainfo.labelId)).assertLarger(0)
                 expect(datainfo.systemApp).assertEqual(true)
                 expect(datainfo.supportedModes).assertEqual(0)
-            }).catch (err => {
+            }).catch(err => {
                 console.info("getApplicationInfo fail" + JSON.stringify(err))
                 expect(err).assertFail()
             })
@@ -2010,7 +2010,7 @@ describe('ActsBundleManagerTest', function () {
     it('getApplicationInfo_0400', 0, async function (done) {
         demo.getApplicationInfo(ERROR, BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 0).then(datainfo => {
             checkgetApplicationInfoe(datainfo)
-        }).catch (err => {
+        }).catch(err => {
             console.info("getApplicationInfo err" + JSON.stringify(err))
             expect(err).assertEqual(1)
             done()
