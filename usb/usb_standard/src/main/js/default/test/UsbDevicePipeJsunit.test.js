@@ -29,10 +29,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var Version = usb.getVersion()
     console.info('usb unit begin test getversion :' + Version)
 
-    // 切换为host
+    // version > 17  host currentMode = 2 device currentMode = 1
     var usbPortList = usb.getPorts()
     if (usbPortList.length > 0) {
-      if (usbPortList[0].status.currentMode == 1) {
+      var DevMode = 1
+      if (usbPortList[0].status.currentMode == DevMode) {
         usb.setPortRoles(usbPortList[0].id, 1, 1).then(data => {
           console.info('usb case setPortRoles return: ' + data);
         }).catch(error => {
@@ -132,7 +133,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   }
 
   /**
-   * @tc.number    : bulk_transfer_test_01
+   * @tc.number    : SUB_USB_bulk_transfer_test_01
    * @tc.name      : bulkTransfer
    * @tc.desc      : 批量传输 收数据
    */
@@ -144,8 +145,6 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       return
     }
 
-    testParam.isClaimed = usb.releaseInterface(testParam.pip, testParam.interface)
-    expect(testParam.isClaimed).assertEqual(0);
     testParam.isClaimed = usb.claimInterface(testParam.pip, testParam.interface, true);
     expect(testParam.isClaimed).assertEqual(0);
 
@@ -163,7 +162,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : bulk_transfer_test_02
+   * @tc.number    : SUB_USB_bulk_transfer_test_02
    * @tc.name      : bulkTransfer
    * @tc.desc      : 批量传输 发数据
    */
@@ -175,8 +174,6 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       return
     }
 
-    testParam.isClaimed = usb.releaseInterface(testParam.pip, testParam.interface)
-    expect(testParam.isClaimed).assertEqual(0);
     testParam.isClaimed = usb.claimInterface(testParam.pip, testParam.interface, true);
     expect(testParam.isClaimed).assertEqual(0);
 
@@ -202,7 +199,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : claim_interface_test_01
+   * @tc.number    : SUB_USB_claim_interface_test_01
    * @tc.name      : claimInterface
    * @tc.desc      : 获取接口 并释放
    */
@@ -232,6 +229,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
           isClaim = usb.releaseInterface(gPipe, gDeviceList[0].configs[j].interfaces[k])
           console.info('usb case releaseInterface function return: ' + isClaim);
           expect(isClaim).assertEqual(0);
+          gPipe = usb.connectDevice(gDeviceList[0])
         }
       }
     }
@@ -257,7 +255,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   }
 
   /**
-   * @tc.number    : set_configuration_test_01
+   * @tc.number    : SUB_USB_set_configuration_test_01
    * @tc.name      : setConfiguration
    * @tc.desc      : 设置设备接口
    */
@@ -269,6 +267,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       return
     }
 
+    gPipe = usb.connectDevice(gDeviceList[0])
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       var ret = usb.setConfiguration(gPipe, gDeviceList[0].configs[j])
       console.info('usb case setConfiguration return : ' + ret);
@@ -280,7 +279,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : set_configuration_test_02
+   * @tc.number    : SUB_USB_set_configuration_test_02
    * @tc.name      : setConfiguration
    * @tc.desc      : 反向测试 设置设备接口
    */
@@ -304,7 +303,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : set_interface_test_01
+   * @tc.number    : SUB_USB_set_interface_test_01
    * @tc.name      : setInterface
    * @tc.desc      : 设置设备接口
    */
@@ -331,7 +330,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : set_interface_test_02
+   * @tc.number    : SUB_USB_set_interface_test_02
    * @tc.name      : setInterface
    * @tc.desc      : 反向测试 设置设备接口
    */
@@ -373,7 +372,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   }
 
   /**
-   * @tc.number    : control_transfer_test_01
+   * @tc.number    : SUB_USB_control_transfer_test_01
    * @tc.name      : controlTransfer
    * @tc.desc      : 控制传输 GetDescriptor: cmd 6 reqType 128 value 512 index 0
    */
@@ -391,7 +390,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : control_transfer_test_02
+   * @tc.number    : SUB_USB_control_transfer_test_02
    * @tc.name      : controlTransfer
    * @tc.desc      : 控制传输 GetStatus: cmd 0 reqType 128 value 0 index 0
    */
@@ -409,7 +408,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : control_transfer_test_03
+   * @tc.number    : SUB_USB_control_transfer_test_03
    * @tc.name      : controlTransfer
    * @tc.desc      : 控制传输 GetConfiguration: cmd 8 reqType 128 value 0 index 0
    */
@@ -427,7 +426,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : control_transfer_test_04
+   * @tc.number    : SUB_USB_control_transfer_test_04
    * @tc.name      : controlTransfer
    * @tc.desc      : 控制传输 GetInterface: cmd 10 reqType 129 value 0 index 1
    */
@@ -445,7 +444,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : control_transfer_test_05
+   * @tc.number    : SUB_USB_control_transfer_test_05
    * @tc.name      : controlTransfer
    * @tc.desc      : 控制传输 ClearFeature: cmd 1 reqType 0 value 0 index 0
    */

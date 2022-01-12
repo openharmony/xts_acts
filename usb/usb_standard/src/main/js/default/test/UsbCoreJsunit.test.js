@@ -25,15 +25,17 @@ describe('UsbCoreJsFunctionsTest', function () {
     console.log('*************Usb Unit UsbCoreJsFunctionsTest Begin*************');
     var Version = usb.getVersion()
     console.info('begin test getversion :' + Version)
-    // 切换为host
+    // version > 17  host currentMode = 2 device currentMode = 1
     var usbPortList = usb.getPorts()
     if (usbPortList.length > 0) {
-      if (usbPortList[0].status.currentMode == 1) {
+      var DevMode = 1
+      if (usbPortList[0].status.currentMode == DevMode) {
         usb.setPortRoles(usbPortList[0].id, 1, 1).then(data => {
           console.info('usb case setPortRoles return: ' + data);
         }).catch(error => {
           console.info('usb case setPortRoles error : ' + error);
         });
+        CheckEmptyUtils.sleep(8000)
         console.log('*************Usb Unit Begin switch to host*************');
       }
     }
@@ -52,7 +54,7 @@ describe('UsbCoreJsFunctionsTest', function () {
   var gPipe;
 
   /**
-   * @tc.number    : get_devices_test_01
+   * @tc.number    : SUB_USB_get_devices_test_01
    * @tc.name      : getDevices
    * @tc.desc      : 获取设备列表
    */
@@ -71,7 +73,7 @@ describe('UsbCoreJsFunctionsTest', function () {
 
 
   /**
-   * @tc.number    : has_right_1
+   * @tc.number    : SUB_USB_has_right_01
    * @tc.name      : hasRigt
    * @tc.desc      : 权限查询 连接设备 关闭设备
    */
@@ -94,7 +96,7 @@ describe('UsbCoreJsFunctionsTest', function () {
 
 
   /**
-   * @tc.number    : request_right_01
+   * @tc.number    : SUB_USB_request_right_01
    * @tc.name      : requestRight
    * @tc.desc      : 请求权限
    */
@@ -119,7 +121,7 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : connect_device_01
+   * @tc.number    : SUB_USB_connect_device_01
    * @tc.name      : connectDevice
    * @tc.desc      : 打开设备
    */
@@ -148,7 +150,7 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : close_pipe_02
+   * @tc.number    : SUB_USB_close_pipe_02
    * @tc.name      : closePipe
    * @tc.desc      : 反向测试 关闭设备 错误 busNum
    */
@@ -170,7 +172,7 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : close_pipe_03
+   * @tc.number    : SUB_USB_close_pipe_03
    * @tc.name      : closePipe
    * @tc.desc      : 反向测试 关闭设备 错误 devAddress
    */
@@ -191,7 +193,7 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : close_pipe_04
+   * @tc.number    : SUB_USB_close_pipe_04
    * @tc.name      : closePipe
    * @tc.desc      : 反向测试 关闭设备 错误 devAddress busNum
    */
@@ -213,7 +215,7 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : close_pipe_01
+   * @tc.number    : SUB_USB_close_pipe_01
    * @tc.name      : closePipe
    * @tc.desc      : 关闭设备
    */
@@ -233,4 +235,49 @@ describe('UsbCoreJsFunctionsTest', function () {
     console.info('usb close_pipe_01 :  PASS');
   })
 
+  /**
+   * @tc.number    : SUB_USB_get_raw_descriptor_01
+   * @tc.name      : getRawDescriptor
+   * @tc.desc      : 获取原始的USB描述符
+   */
+  it('SUB_USB_get_raw_descriptor_01', 0, function () {
+    if (gDeviceList.length == 0) {
+      console.info('usb case get_device_list is null')
+      expect(false).assertTrue();
+      return
+    }
+
+    gPipe = usb.connectDevice(gDeviceList[0])
+    console.info('usb case getRawDescriptor param: ' + JSON.stringify(gPipe));
+    var Descriptor = usb.getRawDescriptor(gPipe);
+    console.info('usb case getRawDescriptor ret: ' + Descriptor);
+    expect(true).assertTrue();
+    var isPipClose = usb.closePipe(gPipe);
+    expect(isPipClose).assertEqual(0);
+
+    console.info('usb SUB_USB_get_raw_descriptor_01 :  PASS');
+  })
+  
+  /**
+   * @tc.number    : SUB_USB_get_file_descriptor_01
+   * @tc.name      : getFileDescriptor
+   * @tc.desc      : 获取文件描述符
+   */
+  it('SUB_USB_get_file_descriptor_01', 0, function () {
+    if (gDeviceList.length == 0) {
+      console.info('usb case get_device_list is null')
+      expect(false).assertTrue();
+      return
+    }
+
+    gPipe = usb.connectDevice(gDeviceList[0])
+    console.info('usb case getFileDescriptor param: ' + JSON.stringify(gPipe));
+    var fileDescriptor = usb.getFileDescriptor(gPipe);
+    console.info('usb case getFileDescriptor ret: ' + fileDescriptor);
+    expect(true).assertTrue();
+    var isPipClose = usb.closePipe(gPipe);
+    expect(isPipClose).assertEqual(0);
+
+    console.info('usb SUB_USB_get_file_descriptor_01 :  PASS');
+  })
 })
