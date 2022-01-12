@@ -40,16 +40,13 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_0100 end');
 	});
 
@@ -73,16 +70,13 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_0200 end');
 	});
 
@@ -106,16 +100,13 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_0300 end');
 	});
 
@@ -139,16 +130,13 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_0400 end');
 	});
 
@@ -172,16 +160,13 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 0)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 0)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_0500 end');
 	});
 
@@ -205,16 +190,13 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 5000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 5000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_0600 end');
 	});
 
@@ -238,16 +220,13 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, Number.MAX_VALUE/2)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, Number.MAX_VALUE/2)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_0700 end');
 	});
 
@@ -271,16 +250,13 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, Number.MAX_VALUE-1)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, Number.MAX_VALUE-1)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_0800 end');
 	});
 
@@ -304,16 +280,13 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, Number.MAX_VALUE)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, Number.MAX_VALUE)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		ystemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_0900 end');
 	});
 
@@ -337,16 +310,13 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_1000 end');
 	});
 
@@ -370,16 +340,13 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_1100 end');
 	});
 
@@ -403,16 +370,13 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_1200 end');
 	});
 
@@ -438,16 +402,13 @@ describe('TimerTest', function() {
 			expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 
 			console.log("start timer")
-			let startTimerRes = systemTimer.startTimer(timer, 100000)
-			expect(startTimerRes).assertEqual(true)
+			systemTimer.startTimer(timer, 100000)
 
 			console.log("stop timer")
-			let stopTimerRes = systemTimer.stopTimer(timer)
-			expect(stopTimerRes).assertEqual(true)
+			systemTimer.stopTimer(timer)
 
 			console.log("destroy timer")
-			let destroyTimerRes = systemTimer.destroyTimer(timer)
-			expect(destroyTimerRes).assertEqual(true)
+			systemTimer.destroyTimer(timer)
 			console.log('SUB_systemTimer_Timer_JS_API_1300 end');
 		}
 	});
@@ -473,16 +434,13 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_1400 end');
 	});
 
@@ -507,16 +465,13 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_1500 end');
 	});
 
@@ -541,16 +496,13 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_1600 end');
 	});
 
@@ -575,16 +527,13 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_1700 end');
 	});
 
@@ -609,16 +558,13 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_1800 end');
 	});
 
@@ -637,23 +583,19 @@ describe('TimerTest', function() {
 			repeat:false,
 			interval:100000,
 			persistent:false
-			//wantAgent:WantAgent
 		}
 		console.log("create timer")
         let timer = systemTimer.createTimer(options)
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_1900 end');
 	});
 
@@ -679,16 +621,13 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_2000 end');
 	});
 
@@ -712,12 +651,10 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start a not exist timer")
-		let startTimerRes = systemTimer.startTimer(timer + 1, 100000)
-		expect(startTimerRes).assertEqual(false)
+		systemTimer.startTimer(timer + 1, 100000)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_2100 end');
 	});
 
@@ -741,20 +678,16 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop a not exist timer")
-		let stopTimerRes = systemTimer.stopTimer(timer + 1)
-		expect(stopTimerRes).assertEqual(false)
+		systemTimer.stopTimer(timer + 1)
 		
 		console.log("stop the current timer")
-		stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_2200 end');
 	});
 
@@ -778,20 +711,16 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy a not exist timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer + 1)
-		expect(destroyTimerRes).assertEqual(false)
+		systemTimer.destroyTimer(timer + 1)
 		
 		console.log("destroy timer")
-		destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_2300 end');
 	});
 
@@ -815,12 +744,10 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("stop a not started timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(false)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_2400 end');
 	});
 
@@ -844,12 +771,10 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("destroy a started timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_2500 end');
 	});
 
@@ -873,20 +798,16 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("start timer again")
-		startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_2600 end');
 	});
 
@@ -910,20 +831,16 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("stop timer again")
-		stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_2700 end');
 	});
 
@@ -947,21 +864,47 @@ describe('TimerTest', function() {
 		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
 		
 		console.log("start timer")
-		let startTimerRes = systemTimer.startTimer(timer, 100000)
-		expect(startTimerRes).assertEqual(true)
+		systemTimer.startTimer(timer, 100000)
 		
 		console.log("stop timer")
-		let stopTimerRes = systemTimer.stopTimer(timer)
-		expect(stopTimerRes).assertEqual(true)
+		systemTimer.stopTimer(timer)
 		
 		console.log("destroy timer")
-		let destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(true)
+		systemTimer.destroyTimer(timer)
 		
 		console.log("destroy timer again")
-		destroyTimerRes = systemTimer.destroyTimer(timer)
-		expect(destroyTimerRes).assertEqual(false)
+		systemTimer.destroyTimer(timer)
 		console.log('SUB_systemTimer_Timer_JS_API_2800 end');
+	});
+
+	/**
+     * @tc.number    SUB_systemTimer_Timer_JS_API_2900
+     * @tc.name      Test systemTimer.createTTimer type = TIMER_TYPE_IDLE
+     * @tc.desc      Test systemTimer_Timer API functionality.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+	it('systemTimer_Timer_test29',0, async () => {
+		console.log("SUB_systemTimer_Timer_JS_API_2900 start")
+        var options = {
+			type:TIMER_TYPE_IDLE,
+			repeat:false,
+			persistent:false
+		}
+		console.log("create timer")
+        let timer = systemTimer.createTimer(options)
+		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
+		
+		console.log("start timer")
+		systemTimer.startTimer(timer, 100000)
+		
+		console.log("stop timer")
+		systemTimer.stopTimer(timer)
+		
+		console.log("destroy timer")
+		systemTimer.destroyTimer(timer)
+		console.log('SUB_systemTimer_Timer_JS_API_2900 end');
 	});
 
 	/**
