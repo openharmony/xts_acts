@@ -14,9 +14,6 @@
  */
 
 import environment from '@ohos.environment';
-import process from '@ohos.process';
-
-import fileio from '@ohos.fileio';
 
 import {
   describe, beforeAll, beforeEach, afterEach, afterAll, it, expect
@@ -30,24 +27,6 @@ function isString(str) {
   return typeof str == "string" && str.constructor == String;
 }
 
-async function readFile(path){
-  let fd = fileio.openSync(path);
-  let buf = new ArrayBuffer(4096);
-  let readOut = await fileio.read(fd, buf);
-  let dataStr = String.fromCharCode.apply(null, new Uint8Array(readOut.buffer));
-  return dataStr;
-}
-
-async function executeRunCmd(command){
-  console.log(`cmd===${command}`);
-  let child = await process.runCmd(command);
-  let result = child.wait();
-  let val = await child.getOutput();
-  console.log("getOutput===="+val);
-  let dataStr =  String.fromCharCode.apply(null, val);
-  return dataStr;
-}
-
 export {
   environment,
   isIntNum,
@@ -59,6 +38,4 @@ export {
   afterAll,
   it,
   expect,
-  readFile,
-  executeRunCmd
 };
