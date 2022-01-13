@@ -1249,7 +1249,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
         '10329570             falsetruekey:2430170h:tdfalsetruekey:4430870 Bananasfalsefalsekey:3431570h:' +
         'tdfalsetruekey:10332370         falsetruekey:3333070h:trfalsetruekey:10233470     falsetruekey:3234470h:' +
         'tablefalsetruekey:3135170notefalsetruekey:10351130falsetrue'
-        'expect(str).assertEqual(str1)
+        expect(str).assertEqual(str1);
     })
 
     /**
