@@ -1153,8 +1153,8 @@ describe('XmlSerializerXmlPullParserTest', function () {
         var i = 0;
         function func3(key, info){
             arr[i] = 'key:' + JSON.stringify(key) + info.getDepth() + info.getColumnNumber() + info.getLineNumber() +
-			info.getAttributeCount() + info.getName() + info.getNamespace() + info.getPrefix() + info.getText() +
-			info.isEmptyElementTag()+ info.isWhitespace();
+            info.getAttributeCount() + info.getName() + info.getNamespace() + info.getPrefix() + info.getText() +
+            info.isEmptyElementTag()+ info.isWhitespace();
             i++;
             return true;
         }
@@ -1164,24 +1164,24 @@ describe('XmlSerializerXmlPullParserTest', function () {
         for(var j = 0; j < i; ++j) {
             str = str + arr[j];
         }
-        var str1 = 'key:00110falsetruekey:702220 note [\n<!ENTITY foo "baa">]falsefalsekey:216022notefalsefalsekey:
-		1016420     falsetruekey:51470\r\nfuncrion matchwo(a,6)\r\n{\r\nreturn 1;\r\n}\r\nfalsetruekey:101870     
-		falsetruekey:612870Hello, World!falsetruekey:1013270     falsetruekey:224170companyfalsetruekey:424670 John 
-		falsefalsekey:925170amp;amp;falsetruekey:425670  Hansfalsefalsekey:326670companyfalsetruekey:1017070     
-		falsetruekey:227770titlefalsetruekey:428270 Happyfalsefalsekey:329070titlefalsetruekey:1019470     
-		falsetruekey:2210170titlefalsetruekey:4210670 Happyfalsefalsekey:3211470titlefalsetruekey:10111870     
-		falsetruekey:2212470todofalsetruekey:4212870 Workfalsefalsekey:3213570todofalsetruekey:10113970     
-		falsetruekey:2214570todofalsetruekey:4214970 Playfalsefalsekey:3215670todofalsetruekey:10116070     
-		falsetruekey:8117270go therefalsetruekey:10117670     falsetruekey:2217970afalsetruekey:2318370btruetruekey:
-		3318370bfalsetruekey:3218770afalsetruekey:10119170     falsetruekey:2223870table 
-		http://www.w3.org/TR/html4/hfalsefalsekey:10224670         
-		falsetruekey:2325270tr http://www.w3.org/TR/html4/hfalsetruekey:10326470             
-		falsetruekey:2427070td http://www.w3.org/TR/html4/hfalsetruekey:4427670 Applesfalsefalsekey:3428370td 
-		http://www.w3.org/TR/html4/hfalsetruekey:10329570             
-		falsetruekey:2430170td http://www.w3.org/TR/html4/hfalsetruekey:4430870 Bananasfalsefalsekey:3431570td 
-		http://www.w3.org/TR/html4/hfalsetruekey:10332370         falsetruekey:3333070tr 
-		http://www.w3.org/TR/html4/hfalsetruekey:10233470     falsetruekey:3234470table 
-		http://www.w3.org/TR/html4/hfalsetruekey:3135170notefalsetruekey:10351130falsetrue';
+        var str1 = 'key:00110falsetruekey:702220 note [\n<!ENTITY foo "baa">]falsefalsekey:216022notefalsefalsekey:' +
+        '1016420     falsetruekey:51470\r\nfuncrion matchwo(a,6)\r\n{\r\nreturn 1;\r\n}\r\nfalsetruekey:101870     ' +
+        'falsetruekey:612870Hello, World!falsetruekey:1013270     falsetruekey:224170companyfalsetruekey:424670 John ' +
+        'falsefalsekey:925170amp;amp;falsetruekey:425670  Hansfalsefalsekey:326670companyfalsetruekey:1017070     ' +
+        'falsetruekey:227770titlefalsetruekey:428270 Happyfalsefalsekey:329070titlefalsetruekey:1019470     ' +
+        'falsetruekey:2210170titlefalsetruekey:4210670 Happyfalsefalsekey:3211470titlefalsetruekey:10111870     ' +
+        'falsetruekey:2212470todofalsetruekey:4212870 Workfalsefalsekey:3213570todofalsetruekey:10113970     ' +
+        'falsetruekey:2214570todofalsetruekey:4214970 Playfalsefalsekey:3215670todofalsetruekey:10116070     ' +
+        'falsetruekey:8117270go therefalsetruekey:10117670     falsetruekey:2217970afalsetruekey:' +
+        '2318370btruetruekey:3318370bfalsetruekey:3218770afalsetruekey:10119170     falsetruekey:2223870table ' +
+        'http://www.w3.org/TR/html4/hfalsefalsekey:10224670         ' +
+        'falsetruekey:2325270tr http://www.w3.org/TR/html4/hfalsetruekey:10326470             ' +
+        'falsetruekey:2427070td http://www.w3.org/TR/html4/hfalsetruekey:4427670 Applesfalsefalsekey:3428370td ' +
+        'http://www.w3.org/TR/html4/hfalsetruekey:10329570             ' +
+        'falsetruekey:2430170td http://www.w3.org/TR/html4/hfalsetruekey:4430870 Bananasfalsefalsekey:3431570td ' +
+        'http://www.w3.org/TR/html4/hfalsetruekey:10332370         falsetruekey:3333070tr ' +
+        'http://www.w3.org/TR/html4/hfalsetruekey:10233470     falsetruekey:3234470table ' +
+        'http://www.w3.org/TR/html4/hfalsetruekey:3135170notefalsetruekey:10351130falsetrue';
         expect(str).assertEqual(str1);
     })
 
@@ -1223,8 +1223,8 @@ describe('XmlSerializerXmlPullParserTest', function () {
         var i = 0;
         function func3(key, info){
             arr[i] = 'key:' + JSON.stringify(key) + info.getDepth() + info.getColumnNumber() + info.getLineNumber() +
-			info.getAttributeCount() + info.getName() + info.getNamespace() + info.getPrefix() + info.getText() +
-			info.isEmptyElementTag()+ info.isWhitespace();
+            info.getAttributeCount() + info.getName() + info.getNamespace() + info.getPrefix() + info.getText() +
+            info.isEmptyElementTag()+ info.isWhitespace();
             i++;
             return true;
         }
@@ -1234,8 +1234,22 @@ describe('XmlSerializerXmlPullParserTest', function () {
         for(var j = 0; j < i; ++j) {
             str = str + arr[j];
         }
-        var str1 = 'key:00110falsetruekey:702220 note [\n<!ENTITY foo "baa">]falsefalsekey:216022notefalsefalsekey:1016420     falsetruekey:51470\r\nfuncrion matchwo(a,6)\r\n{\r\nreturn 1;\r\n}\r\nfalsetruekey:101870     falsetruekey:612870Hello, World!falsetruekey:1013270     falsetruekey:224170companyfalsetruekey:424670 John falsefalsekey:925170amp;amp;falsetruekey:425670  Hansfalsefalsekey:326670companyfalsetruekey:1017070     falsetruekey:227770titlefalsetruekey:428270 Happyfalsefalsekey:329070titlefalsetruekey:1019470     falsetruekey:2210170titlefalsetruekey:4210670 Happyfalsefalsekey:3211470titlefalsetruekey:10111870     falsetruekey:2212470todofalsetruekey:4212870 Workfalsefalsekey:3213570todofalsetruekey:10113970     falsetruekey:2214570todofalsetruekey:4214970 Playfalsefalsekey:3215670todofalsetruekey:10116070     falsetruekey:8117270go therefalsetruekey:10117670     falsetruekey:2217970afalsetruekey:2318370btruetruekey:3318370bfalsetruekey:3218770afalsetruekey:10119170     falsetruekey:2223871h:tablefalsefalsekey:10224670         falsetruekey:2325270h:trfalsetruekey:10326470             falsetruekey:2427070h:tdfalsetruekey:4427670 Applesfalsefalsekey:3428370h:tdfalsetruekey:10329570             falsetruekey:2430170h:tdfalsetruekey:4430870 Bananasfalsefalsekey:3431570h:tdfalsetruekey:10332370         falsetruekey:3333070h:trfalsetruekey:10233470     falsetruekey:3234470h:tablefalsetruekey:3135170notefalsetruekey:10351130falsetrue'
-        expect(str).assertEqual(str1)
+        var str1 = 'key:00110falsetruekey:702220 note [\n<!ENTITY foo "baa">]falsefalsekey:216022notefalsefalsekey:' +
+        '1016420     falsetruekey:51470\r\nfuncrion matchwo(a,6)\r\n{\r\nreturn 1;\r\n}\r\nfalsetruekey:101870     ' +
+        'falsetruekey:612870Hello, World!falsetruekey:1013270     falsetruekey:224170companyfalsetruekey:424670 ' +
+        'John falsefalsekey:925170amp;amp;falsetruekey:425670  Hansfalsefalsekey:326670companyfalsetruekey:1017070' +
+        '     falsetruekey:227770titlefalsetruekey:428270 Happyfalsefalsekey:329070titlefalsetruekey:1019470     ' +
+        'falsetruekey:2210170titlefalsetruekey:4210670 Happyfalsefalsekey:3211470titlefalsetruekey:10111870     ' +
+        'falsetruekey:2212470todofalsetruekey:4212870 Workfalsefalsekey:3213570todofalsetruekey:10113970     ' +
+        'falsetruekey:2214570todofalsetruekey:4214970 Playfalsefalsekey:3215670todofalsetruekey:10116070     ' +
+        'falsetruekey:8117270go therefalsetruekey:10117670     falsetruekey:2217970afalsetruekey:' +
+        '2318370btruetruekey:3318370bfalsetruekey:3218770afalsetruekey:10119170     falsetruekey:' +
+        '2223871h:tablefalsefalsekey:10224670         falsetruekey:2325270h:trfalsetruekey:10326470             ' +
+        'falsetruekey:2427070h:tdfalsetruekey:4427670 Applesfalsefalsekey:3428370h:tdfalsetruekey:' +
+        '10329570             falsetruekey:2430170h:tdfalsetruekey:4430870 Bananasfalsefalsekey:3431570h:' +
+        'tdfalsetruekey:10332370         falsetruekey:3333070h:trfalsetruekey:10233470     falsetruekey:3234470h:' +
+        'tablefalsetruekey:3135170notefalsetruekey:10351130falsetrue'
+        'expect(str).assertEqual(str1)
     })
 
     /**
@@ -1276,8 +1290,8 @@ describe('XmlSerializerXmlPullParserTest', function () {
         var i = 0;
         function func3(key, info){
             arr[i] = 'key:' + JSON.stringify(key) + info.getDepth() + info.getColumnNumber() + info.getLineNumber() +
-			info.getAttributeCount() + info.getName() + info.getNamespace() + info.getPrefix() + info.getText() +
-			info.isEmptyElementTag()+ info.isWhitespace();
+            info.getAttributeCount() + info.getName() + info.getNamespace() + info.getPrefix() + info.getText() +
+            info.isEmptyElementTag()+ info.isWhitespace();
             i++;
             return true;
         }
@@ -1287,20 +1301,21 @@ describe('XmlSerializerXmlPullParserTest', function () {
         for(var j = 0; j < i; ++j) {
             str = str + arr[j];
         }
-        var str1 = 'key:00110falsetruekey:216022notefalsefalsekey:1016420     falsetruekey:51470\r\nfuncrion 
-		matchwo(a,6)\r\n{\r\nreturn 1;\r\n}\r\nfalsetruekey:101870     falsetruekey:612870Hello, World!falsetruekey:
-		1013270     falsetruekey:224170companyfalsetruekey:424670 John falsefalsekey:925170amp;amp;falsetruekey:425670
-		Hansfalsefalsekey:326670companyfalsetruekey:1017070     falsetruekey:227770titlefalsetruekey:428270 
-		Happyfalsefalsekey:329070titlefalsetruekey:1019470     falsetruekey:2210170titlefalsetruekey:4210670 
-		Happyfalsefalsekey:3211470titlefalsetruekey:10111870     falsetruekey:2212470todofalsetruekey:4212870 
-		Workfalsefalsekey:3213570todofalsetruekey:10113970     falsetruekey:2214570todofalsetruekey:4214970 
-		Playfalsefalsekey:3215670todofalsetruekey:10116070     falsetruekey:8117270go therefalsetruekey:10117670     
-		falsetruekey:2217970afalsetruekey:2318370btruetruekey:3318370bfalsetruekey:3218770afalsetruekey:10119170     
-		falsetruekey:2223871h:tablefalsefalsekey:10224670         falsetruekey:2325270h:trfalsetruekey:10326470
-		falsetruekey:2427070h:tdfalsetruekey:4427670 Applesfalsefalsekey:3428370h:tdfalsetruekey:10329570             
-		falsetruekey:2430170h:tdfalsetruekey:4430870 Bananasfalsefalsekey:3431570h:tdfalsetruekey:10332370         
-		falsetruekey:3333070h:trfalsetruekey:10233470     falsetruekey:3234470h:tablefalsetruekey:
-		3135170notefalsetruekey:10351130falsetrue'
+        var str1 = 'key:00110falsetruekey:216022notefalsefalsekey:1016420     falsetruekey:51470\r\nfuncrion ' +
+        'matchwo(a,6)\r\n{\r\nreturn 1;\r\n}\r\nfalsetruekey:101870     falsetruekey:612870Hello, World!falsetruekey' +
+        ':1013270     falsetruekey:224170companyfalsetruekey:424670 John falsefalsekey:925170amp;amp;falsetruekey' +
+        ':425670Hansfalsefalsekey:326670companyfalsetruekey:1017070     falsetruekey:227770titlefalsetruekey:428270' +
+        ' Happyfalsefalsekey:329070titlefalsetruekey:1019470     falsetruekey:2210170titlefalsetruekey:4210670 ' +
+        'Happyfalsefalsekey:3211470titlefalsetruekey:10111870     falsetruekey:2212470todofalsetruekey:4212870 ' +
+        'Workfalsefalsekey:3213570todofalsetruekey:10113970     falsetruekey:2214570todofalsetruekey:4214970 ' +
+        'Playfalsefalsekey:3215670todofalsetruekey:10116070     falsetruekey:8117270go therefalsetruekey' +
+        ':10117670     falsetruekey:2217970afalsetruekey:2318370btruetruekey:3318370bfalsetruekey' +
+        ':3218770afalsetruekey:10119170     falsetruekey:2223871h:tablefalsefalsekey:10224670         ' +
+        'falsetruekey:2325270h:trfalsetruekey:10326470falsetruekey:' +
+        '2427070h:tdfalsetruekey:4427670 Applesfalsefalsekey:3428370h:tdfalsetruekey:10329570             ' +
+        'falsetruekey:2430170h:tdfalsetruekey:4430870 Bananasfalsefalsekey:3431570h:tdfalsetruekey:10332370        ' +
+        ' falsetruekey:3333070h:trfalsetruekey:10233470     falsetruekey:3234470h:tablefalsetruekey:' +
+        '3135170notefalsetruekey:10351130falsetrue'
         expect(str).assertEqual(str1);
 
     })
