@@ -15,6 +15,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/lite'
 import xml from '@ohos.xml'
 describe('XmlSerializerXmlPullParserTest', function () {
+
     /**
      * @tc.name: testSetDeclaration001
      * @tc.desc: Writes xml declaration with encoding. For example: <?xml version="1.0" encoding="utf-8"?>.
