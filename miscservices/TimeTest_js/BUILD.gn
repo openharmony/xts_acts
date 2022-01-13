@@ -16,16 +16,16 @@ import("//test/xts/tools/build/suite.gni")
 ohos_js_hap_suite("time_js_test") {
   hap_profile = "./src/main/config.json"
   deps = [
-    ":time_js_assets",
-    ":time_resources",
+    ":hjs_demo_js_assets",
+    ":hjs_demo_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsTimeJSApiTest"
+  hap_name = "TimeJSApiTest"
 }
-ohos_js_assets("time_js_assets") {
+ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "./src/main/js/default"
 }
-ohos_resources("time_resources") {
+ohos_resources("hjs_demo_resources") {
   sources = [ "./src/main/resources" ]
   hap_profile = "./src/main/config.json"
 }

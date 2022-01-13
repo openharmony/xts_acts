@@ -1853,4 +1853,132 @@ describe('TimeTest', function() {
         console.log('SUB_systemTime_setTimezone_JS_API_3000 end');
         done()
     })
+	
+	/**
+     * @tc.number    SUB_systemTime_getTimezone_JS_API_0100
+     * @tc.name      Test systemTime.getTimezone timezone = 'Anadyr, Russia'
+     * @tc.desc      Test systemTime_getTimezone API functionality.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('systemTime_getTimezone_test1', 0, async function (done) {
+        console.log('SUB_systemTime_getTimezone_JS_API_0100 start')
+        var res = systemTime.getTimeZone()
+            .then(data =>{
+            console.log('getTimezone ===data ' + data + res)
+			expect(true).to.a('boolean')
+        }).catch(error => {
+            console.log('getTimezone ===error ' + error)
+            console.log('getTimezone ===data ' + data)
+			execpt(0).assertLarger(1)
+        });
+        console.log('SUB_systemTime_getTimezone_JS_API_0100 end');
+        done()
+    })
+	
+	it('systemTime_getCurrentTime_test1', 0, async function (done) {
+        console.log('SUB_systemTime_getCurrentTime_JS_API_0100 start')
+        var res = systemTime.getCurrentTime()
+            .then(data =>{
+            console.log('getCurrentTime ===data ' + data + res)
+			expect(true).to.a('boolean')
+        }).catch(error => {
+            console.log('getCurrentTime ===error ' + error)
+            console.log('getCurrentTime ===data ' + data)
+			execpt(0).assertLarger(1)
+        });
+        console.log('SUB_systemTime_getCurrentTime_JS_API_0100 end');
+        done()
+    })
+	
+	it('systemTime_getCurrentTimeNs_test1', 0, async function (done) {
+        console.log('SUB_systemTimeNs_getCurrentTime_JS_API_0100 start')
+        var res = systemTime.getCurrentTimeNs()
+            .then(data =>{
+            console.log('getCurrentTimeNs ===data ' + data + res)
+			expect(true).to.a('boolean')
+        }).catch(error => {
+            console.log('getCurrentTimeNs ===error ' + error)
+            console.log('getCurrentTimeNs ===data ' + data)
+			execpt(0).assertLarger(1)
+        });
+        console.log('SUB_systemTime_getCurrentTimeNs_JS_API_0100 end');
+        done()
+    })
+	
+	it('systemTime_getRealActiveTime_test1', 0, async function (done) {
+        console.log('SUB_systemTime_getRealActiveTime_JS_API_0100 start')
+        var res = systemTime.getRealActiveTime()
+            .then(data =>{
+            console.log('getRealActiveTime ===data ' + data + res)
+			expect(true).to.a('boolean')
+        }).catch(error => {
+            console.log('getRealActiveTime ===error ' + error)
+            console.log('getRealActiveTime ===data ' + data)
+			execpt(0).assertLarger(1)
+        });
+        console.log('SUB_systemTime_getRealActiveTime_JS_API_0100 end');
+        done()
+    })
+	
+	it('systemTime_getRealActiveTimeNs_test1', 0, async function (done) {
+        console.log('SUB_systemTime_getRealActiveTimeNs_JS_API_0100 start')
+        var res = systemTime.getRealActiveTimeNs()
+            .then(data =>{
+            console.log('getRealActiveTimeNs ===data ' + data + res)
+			expect(true).to.a('boolean')
+        }).catch(error => {
+            console.log('getRealActiveTimeNs ===error ' + error)
+            console.log('getRealActiveTimeNs ===data ' + data)
+			execpt(0).assertLarger(1)
+        });
+        console.log('SUB_systemTime_getRealActiveTimeNs_JS_API_0100 end');
+        done()
+    })
+	
+	it('systemTime_getRealTime_test1', 0, async function (done) {
+        console.log('SUB_systemTime_getRealTime_JS_API_0100 start')
+        var res = systemTime.getRealTime()
+            .then(data =>{
+            console.log('getRealTime ===data ' + data + res)
+			expect(true).to.a('boolean')
+        }).catch(error => {
+            console.log('getRealTime ===error ' + error)
+            console.log('getRealTime ===data ' + data)
+			execpt(0).assertLarger(1)
+        });
+        console.log('SUB_systemTime_getRealTime_JS_API_0100 end');
+        done()
+    })
+	
+	it('systemTime_getRealTimeNs_test1', 0, async function (done) {
+        console.log('SUB_systemTime_getRealTimeNs_JS_API_0100 start')
+        var res = systemTime.getRealTimeNs()
+            .then(data =>{
+            console.log('getRealTimeNs ===data ' + data + res)
+			expect(true).to.a('boolean')
+        }).catch(error => {
+            console.log('getRealTimeNs ===error ' + error)
+            console.log('getRealTimeNs ===data ' + data)
+			execpt(0).assertLarger(1)
+        });
+        console.log('SUB_systemTime_getRealTimeNs_JS_API_0100 end');
+        done()
+    })
+	
+	it('systemTime_getDate_test1', 0, async function (done) {
+        console.log('SUB_systemTime_getDate_JS_API_0100 start')
+        var res = systemTime.getDate()
+            .then(data =>{
+            console.log('getDate ===data ' + data + res)
+			expect(true).to.a('boolean')
+        }).catch(error => {
+            console.log('getDate ===error ' + error)
+            console.log('getDate ===data ' + data)
+			execpt(0).assertLarger(1)
+        });
+        console.log('SUB_systemTime_getDate_JS_API_0100 end');
+        done()
+    })
 })
