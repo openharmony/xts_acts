@@ -15,6 +15,8 @@
 import osaccount from '@ohos.account.osAccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
+const TIMEOUT = 1000;
+const ERR_OSACCOUNT_KIT_ACTIVATE_OS_ACCOUNT_ERROR = 4587571;
 describe('ActsOsAccountSystemTest', function () {
 
     /*
@@ -26,17 +28,29 @@ describe('ActsOsAccountSystemTest', function () {
         console.debug("====>ActsOsAccountActivate_0100 start====");
         var osAccountManager = osaccount.getAccountManager();
         console.debug("====>get AccountManager finish====");
-        osAccountManager.isOsAccountActived(100, (err, data)=>{
+        osAccountManager.isOsAccountActived(100, (err, isActived)=>{
             console.debug("====>isOsAccountActived err:" + JSON.stringify(err));
-            console.debug("====>isOsAccountActived data:" + data);
+            console.debug("====>isOsAccountActived data:" + isActived);
             expect(err.code).assertEqual(0);
-            expect(data).assertTrue();
-            osAccountManager.activateOsAccount(100, (err)=>{
-                console.debug("====>activateOsAccount err:" + JSON.stringify(err));
-                expect(err.code != 0).assertTrue();
-                console.debug("====>ActsOsAccountActivate_0100 end====");
-                done();
-            })
+            if(isActived){
+                osAccountManager.activateOsAccount(100, (err)=>{
+                    console.debug("====>activateOsAccount err:" + JSON.stringify(err));
+                    expect(err.code).assertEqual(ERR_OSACCOUNT_KIT_ACTIVATE_OS_ACCOUNT_ERROR);
+                    console.debug("====>ActsOsAccountActivate_0100 end====");
+                    done();
+                })
+            }else{
+                osAccountManager.activateOsAccount(100, (err)=>{
+                    console.debug("====>activateOsAccount first err:" + JSON.stringify(err));
+                    expect(err.code).assertEqual(0);
+                    osAccountManager.activateOsAccount(100, (err)=>{
+                        console.debug("====>activateOsAccount second err:" + JSON.stringify(err));
+                        expect(err.code).assertEqual(ERR_OSACCOUNT_KIT_ACTIVATE_OS_ACCOUNT_ERROR);
+                        console.debug("====>ActsOsAccountActivate_0100 end====");
+                        done();
+                    })
+                })
+            }
         })
     });
 
@@ -49,23 +63,29 @@ describe('ActsOsAccountSystemTest', function () {
         console.debug("====>ActsOsAccountActivate_0200 start====");
         var osAccountManager = osaccount.getAccountManager();
         console.debug("====>get AccountManager finish====");
-        try{
-            var isActived = await osAccountManager.isOsAccountActived(100);
-        }catch(err){
-            console.error("====>catch isOsAccountActived 0200 err:" + JSON.stringify(err));
-            expect().assertFail();
-            done();
-        }
+        var isActived = await osAccountManager.isOsAccountActived(100);
         console.debug("====>isOsAccountActived err:" + JSON.stringify(isActived));
-        expect(isActived).assertTrue();
-        try{
+        if(isActived){
+            try{
+                await osAccountManager.activateOsAccount(100);
+            }catch(err){
+                console.debug("====>catch activateOsAccount 0200 err:" + JSON.stringify(err));
+                expect(err.code).assertEqual(ERR_OSACCOUNT_KIT_ACTIVATE_OS_ACCOUNT_ERROR);
+                console.debug("====>ActsOsAccountActivate_0200 end====");
+                done();
+            }
+        }else{
+            console.debug("====>switch to 100 user====");
             await osAccountManager.activateOsAccount(100);
-        }catch(err){
-            console.debug("====>catch activateOsAccount 0200 err:" + JSON.stringify(err));
-            expect(err.code != 0).assertTrue();
-            console.debug("====>ActsOsAccountActivate_0200 end====");
-            done();
-        }  
+            try{
+                await osAccountManager.activateOsAccount(100);
+            }catch(err){
+                console.debug("====>catch activateOsAccount 0200 err:" + JSON.stringify(err));
+                expect(err.code).assertEqual(ERR_OSACCOUNT_KIT_ACTIVATE_OS_ACCOUNT_ERROR);
+                console.debug("====>ActsOsAccountActivate_0200 end====");
+                done();
+            }
+        }
     });
 
     /*
@@ -158,7 +178,7 @@ describe('ActsOsAccountSystemTest', function () {
         console.debug("====>get AccountManager finish====");
         osAccountManager.activateOsAccount(0, (err)=>{
             console.debug("====>activateOsAccount to 0 user err:" + JSON.stringify(err));
-            expect(err.code != 0).assertTrue();
+            expect(err.code).assertEqual(ERR_OSACCOUNT_KIT_ACTIVATE_OS_ACCOUNT_ERROR);
             console.debug("====>ActsOsAccountActivate_0500 end====");
             done();
         })
@@ -177,7 +197,7 @@ describe('ActsOsAccountSystemTest', function () {
             await osAccountManager.activateOsAccount(0);
         }catch(err){
             console.debug("====>activateOsAccount to 0 user err:" + JSON.stringify(err));
-            expect(err.code != 0).assertTrue();
+            expect(err.code).assertEqual(ERR_OSACCOUNT_KIT_ACTIVATE_OS_ACCOUNT_ERROR);
             console.debug("====>ActsOsAccountActivate_0600 end====");
             done();
         }  
@@ -194,7 +214,7 @@ describe('ActsOsAccountSystemTest', function () {
         console.debug("====>get AccountManager finish====");
         osAccountManager.activateOsAccount(-1, (err)=>{
             console.debug("====>activateOsAccount to -1 user err:" + JSON.stringify(err));
-            expect(err.code != 0).assertTrue();
+            expect(err.code).assertEqual(ERR_OSACCOUNT_KIT_ACTIVATE_OS_ACCOUNT_ERROR);
             console.debug("====>ActsOsAccountActivate_0700 end====");
             done();
         })
@@ -213,7 +233,7 @@ describe('ActsOsAccountSystemTest', function () {
             await osAccountManager.activateOsAccount(-1);
         }catch(err){
             console.debug("====>activateOsAccount to -1 user err:" + JSON.stringify(err));
-            expect(err.code != 0).assertTrue();
+            expect(err.code).assertEqual(ERR_OSACCOUNT_KIT_ACTIVATE_OS_ACCOUNT_ERROR);
             console.debug("====>ActsOsAccountActivate_0800 end====");
             done();
         }  
@@ -228,12 +248,18 @@ describe('ActsOsAccountSystemTest', function () {
         console.debug("====>ActsOsAccountActivate_0900 start====");
         var osAccountManager = osaccount.getAccountManager();
         console.debug("====>get AccountManager finish====");
-        osAccountManager.activateOsAccount("Abc", (err)=>{
-            console.debug("====>activateOsAccount to 'Abc' user err:" + JSON.stringify(err));
-            expect(err.code != 0).assertTrue();
+        var localIdStr = "100";
+        function funcActivateCallback(err){
+            console.debug("====>error received callback====");
+            console.debug("====>receive activateOsAccount err: " + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
+        osAccountManager.activateOsAccount(localIdStr, funcActivateCallback);
+        setTimeout(()=>{
             console.debug("====>ActsOsAccountActivate_0900 end====");
             done();
-        })
+        }, TIMEOUT);
     });
 
     /*
@@ -245,14 +271,11 @@ describe('ActsOsAccountSystemTest', function () {
         console.debug("====>ActsOsAccountActivate_1000 start====");
         var osAccountManager = osaccount.getAccountManager();
         console.debug("====>get AccountManager finish====");
-        try{
-            await osAccountManager.activateOsAccount("Abc");
-        }catch(err){
-            console.debug("====>activateOsAccount to 'Abc' user err:" + JSON.stringify(err));
-            expect(err.code != 0).assertTrue();
-            console.debug("====>ActsOsAccountActivate_1000 end====");
-            done();
-        }  
+        var localIdStr = "100";
+        var activateResult = await osAccountManager.activateOsAccount(localIdStr);
+        expect(activateResult).assertEqual(null);
+        console.debug("====>ActsOsAccountActivate_1000 end====");
+        done();
     });
 
     /*
@@ -264,12 +287,17 @@ describe('ActsOsAccountSystemTest', function () {
         console.debug("====>ActsOsAccountActivate_1100 start====");
         var osAccountManager = osaccount.getAccountManager();
         console.debug("====>get AccountManager finish====");
-        osAccountManager.activateOsAccount(undefined, (err)=>{
-            console.debug("====>activateOsAccount to undefined user err:" + JSON.stringify(err));
-            expect(err.code != 0).assertTrue();
+        function funcActivateCallback(err){
+            console.debug("====>error received callback====");
+            console.debug("====>receive activateOsAccount err: " + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
+        osAccountManager.activateOsAccount(undefined, funcActivateCallback);
+        setTimeout(()=>{
             console.debug("====>ActsOsAccountActivate_1100 end====");
             done();
-        })
+        }, TIMEOUT);
     });
 
      /*
@@ -281,14 +309,10 @@ describe('ActsOsAccountSystemTest', function () {
         console.debug("====>ActsOsAccountActivate_1200 start====");
         var osAccountManager = osaccount.getAccountManager();
         console.debug("====>get AccountManager finish====");
-        try{
-            await osAccountManager.activateOsAccount(undefined);
-        }catch(err){
-            console.debug("====>activateOsAccount to undefined user err:" + JSON.stringify(err));
-            expect(err.code != 0).assertTrue();
-            console.debug("====>ActsOsAccountActivate_1200 end====");
-            done();
-        }  
+        var activateResult = await osAccountManager.activateOsAccount(undefined);
+        expect(activateResult).assertEqual(null);
+        console.debug("====>ActsOsAccountActivate_1200 end====");
+        done();
     });
 
     /*
@@ -303,7 +327,7 @@ describe('ActsOsAccountSystemTest', function () {
         console.debug("====>get AccountManager finish====");
         osAccountManager.activateOsAccount(nonExistentLocalId, (err)=>{
             console.debug("====>activateOsAccount to nonexist user err:" + JSON.stringify(err));
-            expect(err.code != 0).assertTrue();
+            expect(err.code).assertEqual(ERR_OSACCOUNT_KIT_ACTIVATE_OS_ACCOUNT_ERROR);
             console.debug("====>ActsOsAccountActivate_1300 end====");
             done();
         })
@@ -323,7 +347,7 @@ describe('ActsOsAccountSystemTest', function () {
             await osAccountManager.activateOsAccount(nonExistentLocalId);
         }catch(err){
             console.debug("====>activateOsAccount to nonexist user err:" + JSON.stringify(err));
-            expect(err.code != 0).assertTrue();
+            expect(err.code).assertEqual(ERR_OSACCOUNT_KIT_ACTIVATE_OS_ACCOUNT_ERROR);
             console.debug("====>ActsOsAccountActivate_1400 end====");
             done();
         }  

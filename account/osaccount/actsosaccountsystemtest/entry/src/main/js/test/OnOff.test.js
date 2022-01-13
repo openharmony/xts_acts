@@ -245,7 +245,7 @@ describe('ActsOsAccountSystemTest', function () {
     /*
      * @tc.number  : ActsOsAccountOnOff_0700
      * @tc.name    : Subscribe and unsubscribing local multi-user
-     * @tc.desc    : Verification cannot cancel activating type not subscribed
+     * @tc.desc    : Validate subscription callback with parameter name as empty string
      */
     it('ActsOsAccountOnOff_0700', 0, async function (done) {
         console.debug("====>ActsOsAccountOnOff_0700 start====");
@@ -269,7 +269,7 @@ describe('ActsOsAccountSystemTest', function () {
             expect(err.code).assertEqual(0);
             expect(osAccountInfo.localName).assertEqual("osAccountNameE");
             osAccountManager.activateOsAccount(localId, (err)=>{
-                console.debug("====>activateOsAccount err:" + JSON.stringify(err));
+                console.debug("====>activateOsAccount errcode:" + JSON.stringify(err));
                 expect(err.code).assertEqual(0);
                 setTimeout(()=>{
                     osAccountManager.removeOsAccount(localId, (err)=>{
@@ -286,7 +286,7 @@ describe('ActsOsAccountSystemTest', function () {
     /*
      * @tc.number  : ActsOsAccountOnOff_0800
      * @tc.name    : Subscribe and unsubscribing local multi-user
-     * @tc.desc    : Verification cannot cancel activating type not subscribed
+     * @tc.desc    : Validate subscription promise with parameter name as empty string
      */
     it('ActsOsAccountOnOff_0800', 0, async function (done) {
         console.debug("====>ActsOsAccountOnOff_0800 start====");
