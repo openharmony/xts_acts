@@ -15,6 +15,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/lite'
 import xml from '@ohos.xml'
 describe('XmlSerializerXmlPullParserTest', function () {
+
     /**
      * @tc.name: testSetDeclaration001
      * @tc.desc: Writes xml declaration with encoding. For example: <?xml version="1.0" encoding="utf-8"?>.
@@ -1249,7 +1250,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
         '10329570             falsetruekey:2430170h:tdfalsetruekey:4430870 Bananasfalsefalsekey:3431570h:' +
         'tdfalsetruekey:10332370         falsetruekey:3333070h:trfalsetruekey:10233470     falsetruekey:3234470h:' +
         'tablefalsetruekey:3135170notefalsetruekey:10351130falsetrue'
-        'expect(str).assertEqual(str1)
+        expect(str).assertEqual(str1);
     })
 
     /**
