@@ -293,27 +293,6 @@ void *ThreadPthreadSpecificAll(void *arg)
     return arg;
 }
 
-/**
- * @tc.number   SUB_KERNEL_PTHREAD_SPECIFIC_ALL_0100
- * @tc.name     Basic usage of test thread specific data
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(PthreadTest, testPthreadSpecificAll, Function | MediumTest | Level3)
-{
-    g_intPthreadSpecificAll = 0;
-    pthread_t tid1;
-    pthread_t tid2;
-    ASSERT_EQ(pthread_create(&tid1, nullptr, ThreadPthreadSpecificAll, nullptr), 0) << "> return errno";
-    Msleep(20);
-    ASSERT_EQ(pthread_create(&tid2, nullptr, ThreadPthreadSpecificAll, nullptr), 0) << "> return errno";
-    Msleep(100);
-    pthread_cancel(tid1);
-    pthread_join(tid1, nullptr);
-    pthread_cancel(tid2);
-    pthread_join(tid2, nullptr);
-    EXPECT_EQ(g_intPthreadSpecificAll, 5);
-}
-
 void DestructorPthreadSpecificAllDelete(void *param)
 {
     int *p = (int*)param;
@@ -421,7 +400,7 @@ void TestPopHandler2(void *arg)
     LOG("step = %lx", CheckStep(10));
 }
 
-void *ThreadTestop(void *arg)
+static void *ThreadTestop(void *arg)
 {
     pthread_cleanup_push(TestPopHandler1, nullptr);
     pthread_cleanup_push(TestPopHandler2, nullptr);
