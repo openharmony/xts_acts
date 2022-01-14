@@ -256,7 +256,7 @@ describe('UsbCoreJsFunctionsTest', function () {
 
     console.info('usb SUB_USB_get_raw_descriptor_01 :  PASS');
   })
-  
+
   /**
    * @tc.number    : SUB_USB_get_file_descriptor_01
    * @tc.name      : getFileDescriptor
@@ -322,6 +322,7 @@ describe('UsbCoreJsFunctionsTest', function () {
     expect(isPipClose).assertEqual(0);
     console.info('usb SUB_USB_get_file_descriptor_03 :  PASS');
   })
+
   /**
   * @tc.number    : SUB_USB_get_file_descriptor_04
   * @tc.name      : getFileDescriptor
