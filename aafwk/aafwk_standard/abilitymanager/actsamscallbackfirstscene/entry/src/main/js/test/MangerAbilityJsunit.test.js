@@ -64,7 +64,8 @@ describe('ActsAmsCallBackFirstScene', function () {
                 },
             },
         );
-        var maxnum = 10, flag = 1;
+        var maxnum = 10;
+	 var flag = 1;
         var data = await abilitymanager.queryRecentAbilityMissionInfos(maxnum, flag);
         console.log('queryRecentAbilityMissionInfos data  ' + JSON.stringify(data));
         for (var i = 0; i < data.length; i++) {
@@ -73,7 +74,7 @@ describe('ActsAmsCallBackFirstScene', function () {
                 var info = abilitymanager.removeMission(data[i].id);
                 console.log(' removeMission data  [' + info + ']');
             }
-        };
+        }
         await featureAbility.startAbility(
             {
                 want:
@@ -98,8 +99,13 @@ describe('ActsAmsCallBackFirstScene', function () {
 
     function sleep(delay) {
         var start = (new Date()).getTime();
-        while ((new Date()).getTime() - start < delay) {
-            continue;
+        var endTime = (new Date()).getTime();
+        for (let index = 1; index > 0; index++) {
+	        if (endTime - startTime > delay) {
+		        break;
+	        } else {
+		        endTime = (new Date()).getTime();
+        	}
         }
     }
 
@@ -118,15 +124,13 @@ describe('ActsAmsCallBackFirstScene', function () {
                 ' + error.code + ', data length [' + info.length + ']');
                 console.info('Acts_Ams_test_0200 getAllRunningProcesses data ' + JSON.stringify(info));
                 expect(Array.isArray(info)).assertEqual(true);
-                expect(info.length).assertEqual(9);
+                expect(info.length).assertLarger(0);
                 for (var i = 0; i < info.length; i++) {
                     expect(typeof (info[i].pid)).assertEqual("number");
                     expect(info[i].pid).assertLarger(0);
 
                     expect(typeof (info[i].processName)).assertEqual("string");
                     expect(info[i].processName.length).assertLarger(0);
-                    expect(bundleNameList.indexOf(info[i].processName)).assertLarger(-1);
-
                     expect(Array.isArray(info[i].pkgList)).assertEqual(true);
                     expect(info[i].pkgList.length).assertEqual(0);
 
@@ -200,7 +204,8 @@ describe('ActsAmsCallBackFirstScene', function () {
      * @tc.desc      : Query Recent Ability Mission Infos(by CallBack)
      */
     it('Acts_Ams_test_0600', 0, async function (done) {
-        var maxnum = 10, flag = 1;
+        var maxnum = 10;
+	 var flag = 1;
         abilitymanager.queryRecentAbilityMissionInfos(maxnum, flag,
             (error, info) => {
                 console.info('queryRunningAbilityMissionInfos error.code : \
@@ -253,15 +258,13 @@ describe('ActsAmsCallBackFirstScene', function () {
                 ' + error.code + ', data length [' + info.length + ']');
                 console.info('Acts_Ams_test_8600 getActiveProcessInfos data ' + JSON.stringify(info));
                 expect(Array.isArray(info)).assertEqual(true);
-                expect(info.length).assertEqual(9);
+                expect(info.length).assertLarger(0);
                 for (var i = 0; i < info.length; i++) {
                     expect(typeof (info[i].pid)).assertEqual("number");
                     expect(info[i].pid).assertLarger(0);
 
                     expect(typeof (info[i].processName)).assertEqual("string");
                     expect(info[i].processName.length).assertLarger(0);
-                    expect(bundleNameList.indexOf(info[i].processName)).assertLarger(-1);
-
                     expect(Array.isArray(info[i].bundleNames)).assertEqual(true);
                     expect(info[i].bundleNames.length).assertEqual(0);
 
