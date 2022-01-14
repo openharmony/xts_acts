@@ -27,9 +27,8 @@ describe('UsbFunctionsJsFunctionsTest', function () {
     // version > 17  host currentMode = 2 device currentMode = 1
     var usbPortList = usb.getPorts()
     if (usbPortList.length > 0) {
-      var HostMode = 2
-      if (usbPortList[0].status.currentMode == HostMode) {
-        usb.setPortRoles(usbPortList[0].id, 2, 2).then(data => {
+      if (usbPortList[0].status.currentMode == 2) {
+        usb.setPortRoles(usbPortList[0].id, usb.SINK, usb.DEVICE).then(data => {
           console.info('usb case setPortRoles return: ' + data);
         }).catch(error => {
           console.info('usb case setPortRoles error : ' + error);
@@ -89,7 +88,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
 
     var errStrMaskCode = 'none'
     var nMaskCode = usb.usbFunctionsFromString(errStrMaskCode)
-    expect(nMaskCode).assertEqual(0);
+    expect(nMaskCode).assertEqual(usb.NONE);
     console.info('usb case errStrMaskCode ' + errStrMaskCode +
       ' usbFunctionsFromString return int: ' + nMaskCode);
 
@@ -122,7 +121,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
     console.info('usb case getCurrentFunctions return: ' + maskCode);
     var funcString = usb.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('set_current_functions_test_02 ACM 1', 1)
+    callSetCurFunction('set_current_functions_test_02 ACM 1', usb.ACM)
   })
 
   /**
@@ -137,7 +136,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
     console.info('usb case getCurrentFunctions return: ' + maskCode);
     var funcString = usb.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('set_current_functions_test_03 ECM 2', 2)
+    callSetCurFunction('set_current_functions_test_03 ECM 2', usb.ECM)
   })
 
   /**
@@ -152,7 +151,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
     console.info('usb case getCurrentFunctions return: ' + maskCode);
     var funcString = usb.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('set_current_functions_test_04 ACM ECM 3', 3)
+    callSetCurFunction('set_current_functions_test_04 ACM ECM 3', (usb.ACM | usb.ECM))
   })
 
   /**
@@ -167,7 +166,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
     console.info('usb case getCurrentFunctions return: ' + maskCode);
     var funcString = usb.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('set_current_functions_test_05 HDC 4', 4)
+    callSetCurFunction('set_current_functions_test_05 HDC 4', usb.HDC)
   })
 
   /**
@@ -182,7 +181,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
     console.info('usb case getCurrentFunctions return: ' + maskCode);
     var funcString = usb.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('set_current_functions_test_06 ACM HDC 5', 5)
+    callSetCurFunction('set_current_functions_test_06 ACM HDC 5', (usb.HDC | usb.ACM))
   })
 
   /**
@@ -197,7 +196,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
     console.info('usb case getCurrentFunctions return: ' + maskCode);
     var funcString = usb.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('set_current_functions_test_07 ECM HDC 6', 6)
+    callSetCurFunction('set_current_functions_test_07 ECM HDC 6', (usb.HDC | usb.ECM))
   })
 
 })

@@ -28,13 +28,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     console.log('*************Usb Unit UsbDevicePipeJsFunctionsTest Begin*************');
     var Version = usb.getVersion()
     console.info('usb unit begin test getversion :' + Version)
-
     // version > 17  host currentMode = 2 device currentMode = 1
     var usbPortList = usb.getPorts()
     if (usbPortList.length > 0) {
-      var DevMode = 1
-      if (usbPortList[0].status.currentMode == DevMode) {
-        usb.setPortRoles(usbPortList[0].id, 1, 1).then(data => {
+      if (usbPortList[0].status.currentMode == 1) {
+        usb.setPortRoles(usbPortList[0].id, usb.SOURCE, usb.HOST).then(data => {
           console.info('usb case setPortRoles return: ' + data);
         }).catch(error => {
           console.info('usb case setPortRoles error : ' + error);
@@ -67,10 +65,10 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       var endpoint = testParam.config.interfaces[j].endpoints[k];
       if (endpoint.type == EventConstants.USB_ENDPOINT_XFER_BULK) {
         bfind = true
-        if (endpoint.direction == EventConstants.USB_ENDPOINT_DIR_OUT) {
+        if (endpoint.direction == usb.USB_REQUEST_DIR_TO_DEVICE) {
           testParam.maxOutSize = endpoint.maxPacketSize;
           testParam.outEndpoint = endpoint;
-        } else if (endpoint.direction == EventConstants.USB_ENDPOINT_DIR_IN) {
+        } else if (endpoint.direction == usb.USB_REQUEST_DIR_FROM_DEVICE) {
           testParam.maxInSize = endpoint.maxPacketSize;
           testParam.inEndpoint = endpoint
         }
@@ -385,7 +383,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(6, ((1 << 7) | (0 << 5) | (0 & 0x1f)), (2 << 8), 0)
+    var controlParam = getTransferParam(6, (usb.USB_REQUEST_DIR_FROM_DEVICE << 7) | (usb.USB_REQUEST_TYPE_STANDARD << 5) | (usb.USB_REQUEST_TARGET_DEVICE & 0x1f), (2 << 8), 0)
     callControlTransfer(testParam.pip, controlParam, timeout, 'control_transfer_test_01 GetDescriptor')
   })
 
@@ -403,7 +401,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(0, 128, 0, 0)
+    var controlParam = getTransferParam(0, (usb.USB_REQUEST_DIR_FROM_DEVICE << 7) | (usb.USB_REQUEST_TYPE_STANDARD << 5) | (usb.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0)
     callControlTransfer(testParam.pip, controlParam, timeout, 'control_transfer_test_02 GetStatus')
   })
 
@@ -421,7 +419,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(8, 128, 0, 0)
+    var controlParam = getTransferParam(8, (usb.USB_REQUEST_DIR_FROM_DEVICE << 7) | (usb.USB_REQUEST_TYPE_STANDARD << 5) | (usb.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0)
     callControlTransfer(testParam.pip, controlParam, timeout, 'control_transfer_test_03 GetConfiguration')
   })
 
@@ -439,7 +437,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(10, 129, 0, 1)
+    var controlParam = getTransferParam(10, (usb.USB_REQUEST_DIR_FROM_DEVICE << 7) | (usb.USB_REQUEST_TYPE_STANDARD << 5) | (usb.USB_REQUEST_TARGET_INTERFACE & 0x1f), 0, 1)
     callControlTransfer(testParam.pip, controlParam, timeout, 'control_transfer_test_04 GetInterface')
   })
 
@@ -457,8 +455,79 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(1, 0, 0, 0)
+    var controlParam = getTransferParam(1, (usb.USB_REQUEST_DIR_TO_DEVICE << 7) | (usb.USB_REQUEST_TYPE_STANDARD << 5) | (usb.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0)
     callControlTransfer(testParam.pip, controlParam, timeout, 'control_transfer_test_05 ClearFeature')
   })
+
+  /**
+   * @tc.number    : SUB_USB_control_transfer_test_06
+   * @tc.name      : controlTransfer
+   * @tc.desc      : 控制传输 ClearFeature: cmd 1 reqType 0 value 0 index 0
+   */
+   it('SUB_USB_control_transfer_test_06', 0, function () {
+    console.info('usb control_transfer_test_06 begin');
+    var testParam = getTransferTestParam()
+    if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
+      expect(false).assertTrue();
+      return
+    }
+
+    var timeout = 5000;
+    var controlParam = getTransferParam(255, (usb.USB_REQUEST_DIR_FROM_DEVICE << 7) | (usb.USB_REQUEST_TYPE_STANDARD << 5) | (usb.USB_REQUEST_TARGET_INTERFACE & 0x1f), (2 << 8), 0)
+    callControlTransfer(testParam.pip, controlParam, timeout, 'control_transfer_test_06 ClearFeature')
+  })
+
+  /**
+   * @tc.number    : SUB_USB_control_transfer_test_07
+   * @tc.name      : controlTransfer
+   * @tc.desc      : 控制传输 ClearFeature: cmd 1 reqType 0 value 0 index 0
+   */
+   it('SUB_USB_control_transfer_test_07', 0, function () {
+    console.info('usb control_transfer_test_07 begin');
+    var testParam = getTransferTestParam()
+    if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
+      expect(false).assertTrue();
+      return
+    }
+
+    var timeout = 5000;
+    var controlParam = getTransferParam(255, (usb.USB_REQUEST_DIR_TO_DEVICE << 7) | (usb.USB_REQUEST_TYPE_CLASS << 5) | (usb.USB_REQUEST_TARGET_ENDPOINT & 0x1f), (2 << 8), 0)
+    callControlTransfer(testParam.pip, controlParam, timeout, 'control_transfer_test_07 ClearFeature')
+  })
+   /**
+   * @tc.number    : SUB_USB_control_transfer_test_08
+   * @tc.name      : controlTransfer
+   * @tc.desc      : 控制传输 ClearFeature: cmd 1 reqType 0 value 0 index 0
+   */
+    it('SUB_USB_control_transfer_test_08', 0, function () {
+      console.info('usb control_transfer_test_08 begin');
+      var testParam = getTransferTestParam()
+      if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
+        expect(false).assertTrue();
+        return
+      }
+  
+      var timeout = 5000;
+      var controlParam = getTransferParam(255, (usb.USB_REQUEST_DIR_TO_DEVICE << 7) | (usb.USB_REQUEST_TYPE_VENDOR << 5) | (usb.USB_REQUEST_TARGET_OTHER & 0x1f), (2 << 8), 0)
+      callControlTransfer(testParam.pip, controlParam, timeout, 'control_transfer_test_08 ClearFeature')
+    })
+
+     /**
+   * @tc.number    : SUB_USB_control_transfer_test_09
+   * @tc.name      : controlTransfer
+   * @tc.desc      : 控制传输 ClearFeature: cmd 1 reqType 0 value 0 index 0
+   */
+      it('SUB_USB_control_transfer_test_09', 0, function () {
+        console.info('usb control_transfer_test_09 begin');
+        var testParam = getTransferTestParam()
+        if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
+          expect(false).assertTrue();
+          return
+        }
+    
+        var timeout = 5000;
+        var controlParam = getTransferParam(255, (usb.USB_REQUEST_DIR_TO_DEVICE << 7) | (usb.USB_REQUEST_TYPE_CLASS << 5) | (usb.USB_REQUEST_TARGET_OTHER & 0x1f), 0, 0)
+        callControlTransfer(testParam.pip, controlParam, timeout, 'control_transfer_test_09 ClearFeature')
+      })
 
 })
