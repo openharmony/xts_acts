@@ -14,7 +14,7 @@
  */
 
 import fileio from '@ohos.fileio';
-import featureAbility from '@ohos.ability.featureAbility';
+import featureAbility from '@ohos.ability.featureAbility'
 
 export const FILE_CONTENT = 'hello world';
 
@@ -31,7 +31,7 @@ export function prepareFile(fpath, content) {
     fileio.fsyncSync(fd)
     fileio.closeSync(fd)
     return true
-  } 
+  }
   catch (e) {
     console.log('Failed to prepareFile for ' + e)
     return false
@@ -48,46 +48,21 @@ export function prepareEmptyFile(fpath) {
     return false
   }
 }
-export function fileToReadOnly(fpath) {
-  try {
-    let fd = fileio.openSync(fpath, 0o1)
-    fileio.fchmodSync(fd, 0o444)
-    fileio.fsyncSync(fd)
-    fileio.closeSync(fd)
-    return true
-  }
-  catch (e) {
-    console.log('Failed to fileToReadOnly for ' + e);
-    return false
-  }
-}
-export function fileToWriteOnly(fpath) {
-  try {
-    let fd = fileio.openSync(fpath, 0o2)
-    fileio.fchmodSync(fd, 0o222)
-    fileio.fsyncSync(fd)
-    fileio.closeSync(fd)
-    return true
-  }
-  catch (e) {
-    console.log('Failed to fileToWriteOnly ' + e)
-    return false
-  }
-}
+
 export async function nextFileName(testName) {
-  let context = featureAbility.getContext();
+  var context = featureAbility.getContext();
   let data = await context.getFilesDir();
   let BASE_PATH = data.substring(0, data.length - 5) + 'cache/';
   return BASE_PATH + testName
 }
 export async function fileName(testName) {
-  let context = featureAbility.getContext();
+  var context = featureAbility.getContext();
   let data = await context.getFilesDir();
   let BASE_PATH = data + '/';
   return BASE_PATH + testName
 }
 export async function cacheFileName(testName) {
-  let context = featureAbility.getContext();
+  var context = featureAbility.getContext();
   let data = await context.getFilesDir();
   let BASE_PATH = data + '/cache/';
   return BASE_PATH + testName
@@ -101,6 +76,7 @@ export function sleep(n) {
     }
   }
 }
+
 export function randomString(num) {
   let len= num;
   var $chars = 'aaaabbbbcccc';
@@ -112,23 +88,8 @@ export function randomString(num) {
   return pwd;
 }
 
-function isIntNum(val) {
-  return typeof val === 'number' && val % 1 === 0;
-}
-
-function isString(str) {
-  return (typeof str == 'string') && str.constructor == String;
-}
-
-function isBoolean(val) {
-  return typeof val == 'boolean';
-}
-
 export {
   fileio,
-  isIntNum,
-  isString,
-  isBoolean,
   describe,
   beforeAll,
   beforeEach,

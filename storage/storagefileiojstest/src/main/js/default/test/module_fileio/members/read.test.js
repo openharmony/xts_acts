@@ -447,7 +447,7 @@ describe('fileio_read', function () {
    */
   it('fileio_test_read_async_006', 0, async function (done) {
     let fd;
-    const invalidOffset = 99999;
+    const invalidOffset = 999;
     let fpath = await nextFileName('fileio_test_read_async_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -458,6 +458,7 @@ describe('fileio_read', function () {
         offset: invalidOffset,
       });
       expect(null).assertFail();
+      done();
     } catch (e) {
       expect(fileio.closeSync(fd) == null).assertTrue();
       expect(fileio.unlinkSync(fpath) == null).assertTrue();

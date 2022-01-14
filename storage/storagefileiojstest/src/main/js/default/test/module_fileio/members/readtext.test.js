@@ -59,8 +59,7 @@ describe('fileio_readtext', function () {
 
     try {
       let str = fileio.readTextSync(fpath, { position: pos });
-      console.log(str);
-      expect(str == FILE_CONTENT.substr(pos, FILE_CONTENT.length)).assertTrue();
+      expect(str == FILE_CONTENT.substring(pos, FILE_CONTENT.length + 1)).assertTrue();
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileio_test_readtext_sync_001 has failed for ' + e);
@@ -85,7 +84,7 @@ describe('fileio_readtext', function () {
 
     try {
       let str = fileio.readTextSync(fpath, { position: pos, length: len });
-      expect(str == FILE_CONTENT.substr(pos, len)).assertTrue();
+      expect(str == FILE_CONTENT.substring(pos, len + 1)).assertTrue();
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileio_test_readtext_sync_002 has failed for ' + e);
