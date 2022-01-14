@@ -1062,7 +1062,7 @@ describe('intlTest', function () {
     * @tc.desc check the number with unitUsage
     */
     it('formatNumber_test_2250', 0, function () {
-        let numfmt = new intl.NumberFormat('zh-CN', { style: 'unit', unit: 'meter',
+        let numfmt = new Intl.NumberFormat('zh-CN', { style: 'unit', unit: 'meter',
             unitDisplay: 'long', unitUsage: 'length-road' });
         console.log('formatNumber_test_2250 ' + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('123,456.789米');
