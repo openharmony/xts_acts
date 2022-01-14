@@ -53,7 +53,7 @@ describe('UsbPortJsFunctionsTestEx', function () {
     }
 
     expect(usbPortList.length > 0).assertTrue();
-    gPort = usbPortList[0].id
+    gPort = usbPortList[0]
     var portID = usbPortList[0].id + 10
     var maskCode = usb.getSupportedModes(portID)
     expect(maskCode).assertEqual(usb.NONE);
