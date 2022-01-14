@@ -67,9 +67,16 @@ describe('ActsBundleManagerUninstall', function () {
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
-                var datainfo2 = await demo.getBundleInfo(NAME1, 1);
-                expect(datainfo2.name).assertEqual('');
-                done();
+                expect(err.code).assertEqual(0);
+                expect(data.statusMessage).assertEqual('SUCCESS');
+                await demo.getBundleInfo(NAME1, 1).then(datainfo => {
+                    expect(datainfo).assertFail()
+                    done();
+                }).catch(err => {
+                    expect(err).assertEqual(1)
+                    done()
+                });
+
             })
         });
     })
@@ -178,8 +185,8 @@ describe('ActsBundleManagerUninstall', function () {
             function OnReceiveinstallEvent(err, data) {
                 expect(typeof data).assertEqual(OBJECT);
                 expect(data.statusMessage).assertEqual("STATUS_UNINSTALL_FAILURE");
+                done();
             }
-            done();
         });
     })
 
@@ -242,16 +249,24 @@ describe('ActsBundleManagerUninstall', function () {
         async function OnReceiveinstallEvent(err, data) {
             expect(typeof data).assertEqual(OBJECT);
             expect(data.statusMessage).assertEqual(SUCCESS);
-            var datainfo1 = await demo.getBundleInfo(NAME1, 1);
-            expect(datainfo1.name).assertEqual(NAME1);
+            await demo.getBundleInfo(NAME1, 1).then(datainfo1 => {
+                expect(datainfo1.name).assertEqual(NAME1);
+            }).catch(err => {
+                expect(err).assertFail();
+            });
             result.uninstall(NAME1, {
                 userId: 0,
                 installFlag: 1,
                 isKeepData: false
             }, async(err, data) => {
-                var datainfo2 = await demo.getBundleInfo(NAME1, 1);
-                expect(datainfo2.name).assertEqual('');
-                done();
+                expect(data.statusMessage).assertEqual(SUCCESS);
+                await demo.getBundleInfo(NAME1, 1).then(datainfo2 => {
+                    expect(datainfo2).assertFail();
+                    done();
+                }).catch(err => {
+                    expect(err).assertEqual(1);
+                    done();
+                });
             });
         }
     })
