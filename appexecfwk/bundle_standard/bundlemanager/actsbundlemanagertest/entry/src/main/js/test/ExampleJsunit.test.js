@@ -1685,19 +1685,19 @@ describe('ActsBundleManagerTest', function () {
      */
     it('getApplicationInfo_0700', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
-        installData.install([PATH + BMSJSTEST2, PATH + BMSJSTEST3], {
-            userId: 0,
-            installFlag: 0,
-            isKeepData: false
-        }, async (err, data) => {
+        installData.install([PATH + BMSJSTEST2, PATH + BMSJSTEST3], installParam, async (err, data) => {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             getInfo();
         });
         async function getInfo() {
-            await demo.getApplicationInfo(NAME2, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION,
-                                            demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, (error, datainfo) => {
+            await demo.getApplicationInfo(NAME2, BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 0, (error, datainfo) => {
+                if (error) {
+                    console.info("getApplicationInfo error" + JSON.stringify(error))
+                    expect(error).assertFail()
+                }
+                console.info("getApplicationInfo success" + JSON.stringify(datainfo))
                 expect(typeof datainfo).assertEqual(OBJECT)
                 expect(datainfo.name).assertEqual(NAME2)
                 expect(datainfo.label).assertEqual("$string:app_name")
@@ -1712,11 +1712,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.labelId >= 0).assertTrue()
                 expect(datainfo.systemApp).assertEqual(true)
                 expect(datainfo.supportedModes).assertEqual(0)
-                installData.uninstall(NAME2, {
-                    userId: 0,
-                    installFlag: 0,
-                    isKeepData: false
-                }, (err, data) => {
+                installData.uninstall(NAME2, installParam, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
                     expect(data.statusMessage).assertEqual('SUCCESS');
@@ -2030,7 +2026,7 @@ describe('ActsBundleManagerTest', function () {
     it('getApplicationInfo_0900', 0, async function (done) {
         demo.getApplicationInfo(ERROR, BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 0, (error, datainfo) => {
             if (error) {
-                console.error("getApplicationInfo fail" + JSON.stringify(error));
+                console.info("getApplicationInfo fail" + JSON.stringify(error));
                 expect(error).assertEqual(1);
                 done()
                 return;
@@ -2740,47 +2736,50 @@ describe('ActsBundleManagerTest', function () {
      */
     it('install_0300', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
-        installData.install([PATH + BMSJSTEST4, PATH + BMSJSTEST5, PATH + BMSJSTEST6], {
-            userId: 0,
-            installFlag: 0,
-            isKeepData: false
-        }, async (err, data) => {
-            expect(err.code).assertEqual(-1);
-            expect(data.status).assertEqual(3);
-            expect(data.statusMessage).assertEqual('STATUS_INSTALL_FAILURE_INVALID');
-            getInfo();
+        installData.install([PATH + BMSJSTEST4], installParam, async (err, data) => {
+            expect(err.code).assertEqual(0);
+            expect(data.statusMessage).assertEqual('SUCCESS');
+            installData.install([PATH + BMSJSTEST5], installParam, async (err, data) => {
+                expect(err.code).assertEqual(0);
+                expect(data.statusMessage).assertEqual('SUCCESS');
+                installData.install([PATH + BMSJSTEST6], installParam, async (err, data) => {
+                    expect(err.code).assertEqual(0);
+                    expect(data.statusMessage).assertEqual('SUCCESS');
+                    getInfo();
+                });
+            });
         });
         async function getInfo() {
-            var datainfo1 = await demo.getBundleInfo(NAME3, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
-            expect(datainfo1.name).assertEqual('');
-            expect(datainfo1.uid < UIDMINVALUE).assertTrue();
-            var datainfo2 = await demo.getBundleInfo(NAME4, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
-            expect(datainfo2.name).assertEqual('');
-            expect(datainfo2.uid < UIDMINVALUE).assertTrue();
-            var datainfo3 = await demo.getBundleInfo(NAME5, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
-            expect(datainfo3.name).assertEqual('');
-            expect(datainfo3.uid < UIDMINVALUE).assertTrue();
-            installData.uninstall(NAME3, {
-                userId: 0,
-                installFlag: 0,
-                isKeepData: false
-            }, (err, data) => {
-                installData.uninstall(NAME4, {
-                    userId: 0,
-                    installFlag: 0,
-                    isKeepData: false
-                }, (err, data) => {
-                    installData.uninstall(NAME5, {
-                        userId: 0,
-                        installFlag: 0,
-                        isKeepData: false
-                    }, (err, data) => {
+            await demo.getBundleInfo(NAME3, BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(dataInfo1 => {
+                expect(dataInfo1.name).assertEqual(NAME3);
+            }).catch(errInfo => {
+                expect(errInfo).assertFail()
+            });
+            await demo.getBundleInfo(NAME4, BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(dataInfo2 => {
+                expect(dataInfo2.name).assertEqual(NAME4);
+            }).catch(errInfo => {
+                expect(errInfo).assertFail()
+            });
+            await demo.getBundleInfo(NAME5, BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(dataInfo3 => {
+                expect(dataInfo3.name).assertEqual(NAME5);
+            }).catch(errInfo => {
+                expect(errInfo).assertFail()
+            });
+            installData.uninstall(NAME3, installParam, (err, data) => {
+                console.info("uninstall----result1" + JSON.stringify(data))
+                expect(err.code).assertEqual(0);
+                expect(data.statusMessage).assertEqual('SUCCESS');
+                installData.uninstall(NAME4, installParam, (err, data) => {
+                    console.info("uninstall----result2" + JSON.stringify(data))
+                    expect(err.code).assertEqual(0);
+                    expect(data.statusMessage).assertEqual('SUCCESS');
+                    installData.uninstall(NAME5, installParam, (err, data) => {
+                        console.info("uninstall----result3" + JSON.stringify(data))
+                        expect(err.code).assertEqual(0);
+                        expect(data.statusMessage).assertEqual('SUCCESS');
                         done();
                     });
                 });
-                expect(err.code).assertEqual(-1);
-                expect(data.status).assertEqual(7);
-                expect(data.statusMessage).assertEqual('STATUS_UNINSTALL_FAILURE');
             });
         }
     })
