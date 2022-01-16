@@ -61,7 +61,7 @@ describe('TimerTest', function() {
 	it('systemTimer_Timer_test2',0, async () => {
 		console.log("SUB_systemTimer_Timer_JS_API_0200 start")
         var options = {
-			type:TIMER_TYPE_REALTIME_WAKEUP,
+			type:TIMER_TYPE_WAKEUP,
 			repeat:false,
 			persistent:false
 		}
