@@ -1056,6 +1056,57 @@ describe('I18nTest', function () {
     })
 
     /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7920
+    * @tc.name test getCalendar interface
+    * @tc.desc get the getCalendar value
+    */
+    it('i18n_test_7920', 0, function () {
+        console.error('i18n_test_7920 ' + 'start');
+        let calendar = I18n.getCalendar('jp', 'japanese');
+        let name = calendar.getDisplayName('jp');
+        console.error('i18n_test_7920 ' + name);
+        expect(name).assertEqual('公历');
+        let timezone = calendar.getTimeZone();
+        console.error('i18n_test_7920 ' + timezone);
+        expect(name).assertEqual('timezone');
+        let firstday = calendar.getFirstDayOfWeek();
+        console.error('i18n_test_7920 ' + firstday);
+        expect(name).assertEqual(2);
+        let miniday = calendar.getMinimalDaysInFirstWeek();
+        console.error('i18n_test_7920 ' + miniday);
+        expect(name).assertEqual(1);
+        let value = calendar.isWeekend(new Date(2022, 10, 1, 10, 0, 0, 0));
+        console.error('i18n_test_7920 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7940
+    * @tc.name test getCalendar interface with zh param
+    * @tc.desc get the getCalendar value
+    */
+    it('i18n_test_7940', 0, function () {
+        console.error('i18n_test_7940 ' + 'start');
+        let calendar = I18n.getCalendar('zh', 'chinese');
+        let name = calendar.getDisplayName('zh');
+        console.error('i18n_test_7940 ' + name);
+        expect(name).assertEqual('农历');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7960
+    * @tc.name test getCalendar interface with zh param
+    * @tc.desc get the getCalendar value
+    */
+    it('i18n_test_7960', 0, function () {
+        console.error('i18n_test_7960 ' + 'start');
+        let calendar = I18n.getCalendar('zh', 'japanese');
+        let name = calendar.getDisplayName('zh');
+        console.error('i18n_test_7960 ' + name);
+        expect(name).assertEqual('和历');
+    })
+
+    /**
     * @tc.number SUB_GLOBAL_I18N_JS_8000
     * @tc.name test getDisplayName interface
     * @tc.desc get the getDisplayName value
@@ -1069,6 +1120,19 @@ describe('I18nTest', function () {
     })
 
     /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8020
+    * @tc.name test getDisplayName interface with en param
+    * @tc.desc get the getDisplayName value
+    */
+    it('i18n_test_8020', 0, function () {
+        console.error('i18n_test_8020 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        let value = calendar.getDisplayName('en');
+        console.error('i18n_test_8020 ' + value);
+        expect(value).assertEqual('Gregorian Calendar');
+    })
+
+    /**
     * @tc.number SUB_GLOBAL_I18N_JS_8100
     * @tc.name test get interface
     * @tc.desc get the get value
@@ -1078,6 +1142,32 @@ describe('I18nTest', function () {
         let calendar = I18n.getCalendar('zh');
         let value = calendar.get('year');
         console.error('i18n_test_8100 ' + value);
+        expect(value).assertLarger(0);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8120
+    * @tc.name test get interface with month param
+    * @tc.desc get the get value
+    */
+    it('i18n_test_8120', 0, function () {
+        console.error('i18n_test_8120 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        let value = calendar.get('month');
+        console.error('i18n_test_8120 ' + value);
+        expect(value).assertLarger(0);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8140
+    * @tc.name test get interface with day_of_year param
+    * @tc.desc get the get value
+    */
+    it('i18n_test_8140', 0, function () {
+        console.error('i18n_test_8140 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        let value = calendar.get('day_of_year');
+        console.error('i18n_test_8140 ' + value);
         expect(value).assertLarger(0);
     })
 
@@ -1096,6 +1186,48 @@ describe('I18nTest', function () {
     })
 
     /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8220
+    * @tc.name test setMinimalDaysInFirstWeek with 0 param and getMinimalDaysInFirstWeek interface
+    * @tc.desc get the setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek value
+    */
+    it('i18n_test_8220', 0, function () {
+        console.error('i18n_test_8220 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        calendar.setMinimalDaysInFirstWeek(0);
+        let value = calendar.getMinimalDaysInFirstWeek();
+        console.error('i18n_test_8220 ' + value);
+        expect(value).assertEqual(1);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8240
+    * @tc.name test setMinimalDaysInFirstWeek with 8 param and getMinimalDaysInFirstWeek interface
+    * @tc.desc get the setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek value
+    */
+    it('i18n_test_8240', 0, function () {
+        console.error('i18n_test_8240 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        calendar.setMinimalDaysInFirstWeek(8);
+        let value = calendar.getMinimalDaysInFirstWeek();
+        console.error('i18n_test_8240 ' + value);
+        expect(value).assertEqual(7);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8260
+    * @tc.name test setMinimalDaysInFirstWeek with 7 param and getMinimalDaysInFirstWeek interface
+    * @tc.desc get the setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek value
+    */
+    it('i18n_test_8260', 0, function () {
+        console.error('i18n_test_8260 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        calendar.setMinimalDaysInFirstWeek(7);
+        let value = calendar.getMinimalDaysInFirstWeek();
+        console.error('i18n_test_8260 ' + value);
+        expect(value).assertEqual(7);
+    })
+
+    /**
     * @tc.number SUB_GLOBAL_I18N_JS_8300
     * @tc.name test setFirstDayOfWeek and getFirstDayOfWeek interface
     * @tc.desc get the setFirstDayOfWeek and getFirstDayOfWeek value
@@ -1106,6 +1238,48 @@ describe('I18nTest', function () {
         calendar.setFirstDayOfWeek(1);
         let value = calendar.getFirstDayOfWeek();
         console.error('i18n_test_8300 ' + value);
+        expect(value).assertEqual(1);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8320
+    * @tc.name test setFirstDayOfWeek with 0 param and getFirstDayOfWeek interface
+    * @tc.desc get the setFirstDayOfWeek and getFirstDayOfWeek value
+    */
+    it('i18n_test_8320', 0, function () {
+        console.error('i18n_test_8320 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        calendar.setFirstDayOfWeek(0);
+        let value = calendar.getFirstDayOfWeek();
+        console.error('i18n_test_8320 ' + value);
+        expect(value).assertEqual(1);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8340
+    * @tc.name test setFirstDayOfWeek with 7 param and getFirstDayOfWeek interface
+    * @tc.desc get the setFirstDayOfWeek and getFirstDayOfWeek value
+    */
+    it('i18n_test_8340', 0, function () {
+        console.error('i18n_test_8340 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        calendar.setFirstDayOfWeek(7);
+        let value = calendar.getFirstDayOfWeek();
+        console.error('i18n_test_8340 ' + value);
+        expect(value).assertEqual(7);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8360
+    * @tc.name test setFirstDayOfWeek with 8 param and getFirstDayOfWeek interface
+    * @tc.desc get the setFirstDayOfWeek and getFirstDayOfWeek value
+    */
+    it('i18n_test_8360', 0, function () {
+        console.error('i18n_test_8360 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        calendar.setFirstDayOfWeek(8);
+        let value = calendar.getFirstDayOfWeek();
+        console.error('i18n_test_8360 ' + value);
         expect(value).assertEqual(1);
     })
 
@@ -1124,6 +1298,20 @@ describe('I18nTest', function () {
     })
 
     /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8420
+    * @tc.name test setTimeZone with AAA param and getTimeZone interface
+    * @tc.desc get the setTimeZone and getTimeZone value
+    */
+    it('i18n_test_8420', 0, function () {
+        console.error('i18n_test_8420 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        calendar.setTimeZone('AAA');
+        let value = calendar.getTimeZone();
+        console.error('i18n_test_8420 ' + value);
+        expect(value).assertEqual('GMT');
+    })
+
+    /**
     * @tc.number SUB_GLOBAL_I18N_JS_8500
     * @tc.name test set interface
     * @tc.desc get the set value
@@ -1134,6 +1322,34 @@ describe('I18nTest', function () {
         calendar.set(2021, 11, 11);
         let value = calendar.isWeekend();
         console.error('i18n_test_8500 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8520
+    * @tc.name test set interface with hour,minute,second param
+    * @tc.desc get the set value
+    */
+    it('i18n_test_8520', 0, function () {
+        console.error('i18n_test_8520 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        calendar.set(2021, 11, 11, 10, 10, 10);
+        let value = calendar.isWeekend();
+        console.error('i18n_test_8520 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8540
+    * @tc.name test set interface with hour,minute param
+    * @tc.desc get the set value
+    */
+    it('i18n_test_8540', 0, function () {
+        console.error('i18n_test_8540 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        calendar.set(2021, 11, 11, 10, 10);
+        let value = calendar.isWeekend();
+        console.error('i18n_test_8540 ' + value);
         expect(value).assertTrue();
     })
 
@@ -1150,6 +1366,21 @@ describe('I18nTest', function () {
         calendar.setTime(date1);
         let value = calendar.isWeekend();
         console.error('i18n_test_8600 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_8620
+    * @tc.name test setTime interface with wrong month param
+    * @tc.desc get the setTime value
+    */
+    it('i18n_test_8620', 0, function () {
+        console.error('i18n_test_8620 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        let date1 = new Date(2021, 18, 8, 8, 8, 8, 8);
+        calendar.setTime(date1);
+        let value = calendar.isWeekend();
+        console.error('i18n_test_8620 ' + value);
         expect(value).assertFalse();
     })
 
@@ -1471,6 +1702,58 @@ describe('I18nTest', function () {
         let value = iterator.isBoundary(10);
         console.log('i18n_test_iterator_0900 ' + value);
         expect(value).assertFalse();
+        // current
+        let current = iterator.current();
+        console.log('i18n_test_iterator_0900 ' + current);
+        expect(current).assertEqual(11);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_BREAKITERATOR_1000
+    * @tc.name test iterator interface
+    * @tc.desc check the iterator interface
+    */
+    it('i18n_test_iterator_1000', 0, function () {
+        console.log('i18n_test_iterator_1000 ' + 'start');
+        let iterator =I18n.getLineInstance('en');
+        iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
+        // current
+        let current = iterator.current();
+        console.log('i18n_test_iterator_1000 ' + current);
+        expect(current).assertEqual(0);
+        // next
+        let next = iterator.next();
+        console.log('i18n_test_iterator_1000 ' + next);
+        expect(next).assertEqual(3);
+        // current
+        let current2 = iterator.current();
+        console.log('i18n_test_iterator_1000 ' + current2);
+        expect(current2).assertEqual(3);
+        // next 5
+        let next2 = iterator.next(5);
+        console.log('i18n_test_iterator_1000 ' + next2);
+        expect(next2).assertEqual(30);
+        // previous
+        let previous = iterator.previous();
+        console.log('i18n_test_iterator_1000 ' + previous);
+        expect(previous).assertEqual(26);
+        // following 2
+        let follwoing = iterator.following(3);
+        console.log('i18n_test_iterator_1000 ' + follwoing);
+        expect(follwoing).assertEqual(8);
+        // current
+        let current3 = iterator.current();
+        console.log('i18n_test_iterator_1000 ' + current3);
+        expect(current3).assertEqual(8);
+        // isBoundary
+        let value = iterator.isBoundary(3);
+        console.log('i18n_test_iterator_1000 ' + value);
+        expect(value).assertTrue();
+        // current
+        let current4 = iterator.current();
+        console.log('i18n_test_iterator_1000 ' + current4);
+        expect(current4).assertEqual(3);
+
     })
 
     /* *
