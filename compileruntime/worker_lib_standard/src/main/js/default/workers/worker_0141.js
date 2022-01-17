@@ -12,14 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import worker from "@ohos.worker"
 
-import app from '@system.app'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+const parentPort = worker.parentPort;
 
-describe('appInfoTest', function () {
-    it('app_info_test_001', 0, function () {
-        var info = app.getInfo()
-        expect(info.versionName).assertEqual('1.0.0')
-        expect(info.versionCode).assertEqual('1000000')
-    })
-}) 
+parentPort.onmessage = function(e) {
+  var data = e.data;
+  data[0] += 1
+  parentPort.postMessage(data); // [2, 2]
+}
