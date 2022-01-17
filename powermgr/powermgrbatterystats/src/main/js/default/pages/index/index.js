@@ -14,7 +14,6 @@
  */
 import app from '@system.app'
 
-//import {Core, ExpectExtend, ReportExtend, InstrumentLog} from 'deccjsunit/index'
 import {Core, ExpectExtend} from 'deccjsunit/index'
 
 export default {
