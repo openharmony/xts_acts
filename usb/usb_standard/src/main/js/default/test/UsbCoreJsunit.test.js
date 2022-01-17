@@ -248,8 +248,8 @@ describe('UsbCoreJsFunctionsTest', function () {
 
     gPipe = usb.connectDevice(gDeviceList[0])
     console.info('usb case getRawDescriptor param: ' + JSON.stringify(gPipe));
-    var Descriptor = usb.getRawDescriptor(gPipe);
-    console.info('usb case getRawDescriptor ret: ' + Descriptor);
+    var descriptor = usb.getRawDescriptor(gPipe);
+    console.info('usb case getRawDescriptor ret: ' + descriptor);
     expect(true).assertTrue();
     var isPipClose = usb.closePipe(gPipe);
     expect(isPipClose).assertEqual(0);
