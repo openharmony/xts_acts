@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "ohos.acts.multimodalinput.jsunit",
+    "bundleName": "ohos.acts.multimodalinput.input",
     "vendor": "example",
     "version": {
       "code": 1,
@@ -13,7 +13,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "ohos.acts.multimodalinput.jsunit",
+    "package": "ohos.acts.multimodalinput.input",
     "name": ".MyApplication",
     "deviceType": [
       "phone"
@@ -36,7 +36,7 @@
             ]
           }
         ],
-        "name": "ohos.acts.multimodalinput.jsunit.MainAbility",
+        "name": "ohos.acts.multimodalinput.input.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",

@@ -3,7 +3,7 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "160000",
-        "package": "ohos.acts.multimodalinput.jsunit",
+        "package": "ohos.acts.multimodalinput.input",
         "shell-timeout": "60000"
     },
     "kits": [

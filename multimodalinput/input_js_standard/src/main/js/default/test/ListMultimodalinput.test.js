@@ -14,4 +14,4 @@
  */
 
 
-require('./tsunit.test.js')
+require('./InputDevice.test.js')
