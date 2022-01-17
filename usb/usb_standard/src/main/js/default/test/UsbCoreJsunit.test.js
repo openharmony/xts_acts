@@ -28,9 +28,8 @@ describe('UsbCoreJsFunctionsTest', function () {
     // version > 17  host currentMode = 2 device currentMode = 1
     var usbPortList = usb.getPorts()
     if (usbPortList.length > 0) {
-      var DevMode = 1
-      if (usbPortList[0].status.currentMode == DevMode) {
-        usb.setPortRoles(usbPortList[0].id, 1, 1).then(data => {
+      if (usbPortList[0].status.currentMode == 1) {
+        usb.setPortRoles(usbPortList[0].id, usb.SOURCE, usb.HOST).then(data => {
           console.info('usb case setPortRoles return: ' + data);
         }).catch(error => {
           console.info('usb case setPortRoles error : ' + error);
@@ -249,15 +248,15 @@ describe('UsbCoreJsFunctionsTest', function () {
 
     gPipe = usb.connectDevice(gDeviceList[0])
     console.info('usb case getRawDescriptor param: ' + JSON.stringify(gPipe));
-    var Descriptor = usb.getRawDescriptor(gPipe);
-    console.info('usb case getRawDescriptor ret: ' + Descriptor);
+    var descriptor = usb.getRawDescriptor(gPipe);
+    console.info('usb case getRawDescriptor ret: ' + descriptor);
     expect(true).assertTrue();
     var isPipClose = usb.closePipe(gPipe);
     expect(isPipClose).assertEqual(0);
 
     console.info('usb SUB_USB_get_raw_descriptor_01 :  PASS');
   })
-  
+
   /**
    * @tc.number    : SUB_USB_get_file_descriptor_01
    * @tc.name      : getFileDescriptor
@@ -269,7 +268,6 @@ describe('UsbCoreJsFunctionsTest', function () {
       expect(false).assertTrue();
       return
     }
-
     gPipe = usb.connectDevice(gDeviceList[0])
     console.info('usb case getFileDescriptor param: ' + JSON.stringify(gPipe));
     var fileDescriptor = usb.getFileDescriptor(gPipe);
@@ -280,4 +278,71 @@ describe('UsbCoreJsFunctionsTest', function () {
 
     console.info('usb SUB_USB_get_file_descriptor_01 :  PASS');
   })
+
+  /**
+   * @tc.number    : SUB_USB_get_file_descriptor_02
+   * @tc.name      : getFileDescriptor
+   * @tc.desc      : 获取文件描述符,反向测试，错误参数busNum=512
+   */
+  it('SUB_USB_get_file_descriptor_02', 0, function () {
+    if (gDeviceList.length == 0) {
+      console.info('usb case get_device_list is null')
+      expect(false).assertTrue();
+      return
+    }
+    gPipe = usb.connectDevice(gDeviceList[0])
+    var tempPipe = {busNum : 255, devAddress : 255}
+    console.info('usb case getFileDescriptor param: ' + JSON.stringify(gPipe));
+    var fileDescriptor = usb.getFileDescriptor(tempPipe);
+    expect(fileDescriptor < 0).assertTrue();
+    console.info('usb case getFileDescriptor ret: ' + fileDescriptor);
+    var isPipClose = usb.closePipe(gPipe);
+    expect(isPipClose).assertEqual(0);
+    console.info('usb SUB_USB_get_file_descriptor_02 :  PASS');
+  })
+
+   /**
+    * @tc.number    : SUB_USB_get_file_descriptor_03
+    * @tc.name      : getFileDescriptor
+    * @tc.desc      : 获取文件描述符,反向测试，错误参数devAddress=512
+    */
+  it('SUB_USB_get_file_descriptor_03', 0, function () {
+    if (gDeviceList.length == 0) {
+      console.info('usb case get_device_list is null')
+      expect(false).assertTrue();
+      return
+    }
+    gPipe = usb.connectDevice(gDeviceList[0])
+    var tempPipe = {busNum : 255, devAddress : gPipe.devAddress}
+    console.info('usb case getFileDescriptor param: ' + JSON.stringify(gPipe));
+    var fileDescriptor = usb.getFileDescriptor(tempPipe);
+    expect(fileDescriptor < 0).assertTrue();
+    console.info('usb case getFileDescriptor ret: ' + fileDescriptor);
+    var isPipClose = usb.closePipe(gPipe);
+    expect(isPipClose).assertEqual(0);
+    console.info('usb SUB_USB_get_file_descriptor_03 :  PASS');
+  })
+
+  /**
+  * @tc.number    : SUB_USB_get_file_descriptor_04
+  * @tc.name      : getFileDescriptor
+  * @tc.desc      : 获取文件描述符,反向测试，错误参数busNum=512，devAddress=512
+  */
+  it('SUB_USB_get_file_descriptor_04', 0, function () {
+    if (gDeviceList.length == 0) {
+      console.info('usb case get_device_list is null')
+      expect(false).assertTrue();
+      return
+    }
+    gPipe = usb.connectDevice(gDeviceList[0])
+    var tempPipe = {busNum : gPipe.busNum, devAddress : 255}
+    console.info('usb case getFileDescriptor param: ' + JSON.stringify(gPipe));
+    var fileDescriptor = usb.getFileDescriptor(tempPipe);
+    expect(fileDescriptor < 0).assertTrue();
+    console.info('usb case getFileDescriptor ret: ' + fileDescriptor);
+    var isPipClose = usb.closePipe(gPipe);
+    expect(isPipClose).assertEqual(0);
+    console.info('usb SUB_USB_get_file_descriptor_04 :  PASS');
+  })
+
 })

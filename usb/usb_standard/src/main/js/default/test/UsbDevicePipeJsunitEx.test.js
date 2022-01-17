@@ -31,9 +31,8 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     // version > 17  host currentMode = 2 device currentMode = 1
     var usbPortList = usb.getPorts()
     if (usbPortList.length > 0) {
-      var DevMode = 1
-      if (usbPortList[0].status.currentMode == DevMode) {
-        usb.setPortRoles(usbPortList[0].id, 1, 1).then(data => {
+      if (usbPortList[0].status.currentMode == 1) {
+        usb.setPortRoles(usbPortList[0].id, usb.SOURCE, usb.HOST).then(data => {
           console.info('usb case setPortRoles  return: ' + data);
         }).catch(error => {
           console.info('usb case setPortRoles  error : ' + error);
@@ -67,10 +66,10 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       if (endpoint.type == EventConstants.USB_ENDPOINT_XFER_BULK) {
 
         bfind = true
-        if (endpoint.direction == EventConstants.USB_ENDPOINT_DIR_OUT) {
+        if (endpoint.direction == usb.USB_REQUEST_DIR_TO_DEVICE) {
           testParam.outEndpoint = endpoint;
           testParam.maxOutSize = endpoint.maxPacketSize;
-        } else if (endpoint.direction == EventConstants.USB_ENDPOINT_DIR_IN) {
+        } else if (endpoint.direction == usb.USB_REQUEST_DIR_FROM_DEVICE) {
           testParam.inEndpoint = endpoint
           testParam.maxInSize = endpoint.maxPacketSize;
         }

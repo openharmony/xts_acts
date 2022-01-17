@@ -28,9 +28,8 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     // version > 17  host currentMode = 2 device currentMode = 1
     var usbPortList = usb.getPorts()
     if (usbPortList.length > 0) {
-      var DevMode = 1
-      if (usbPortList[0].status.currentMode == DevMode) {
-        usb.setPortRoles(usbPortList[0].id, 1, 1).then(data => {
+      if (usbPortList[0].status.currentMode == 1) {
+        usb.setPortRoles(usbPortList[0].id, usb.SOURCE, usb.HOST).then(data => {
           console.info('usb case setPortRolesEx return: ' + data);
         }).catch(error => {
           console.info('usb case setPortRolesEx error : ' + error);

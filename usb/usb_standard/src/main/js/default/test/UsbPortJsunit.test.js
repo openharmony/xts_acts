@@ -93,7 +93,7 @@ describe('UsbPortJsFunctionsTest', function () {
 
     for (var i = 0; i < usbPortList.length; i++) {
       console.info('usb case set data role 2, data role 2');
-      usb.setPortRoles(usbPortList[i].id, 2, 2).then(data => {
+      usb.setPortRoles(usbPortList[i].id, usb.SINK, usb.DEVICE).then(data => {
         console.info('usb case setPortRoles return: ' + data);
         expect(data).assertTrue();
       }).catch(error => {
@@ -123,7 +123,7 @@ describe('UsbPortJsFunctionsTest', function () {
     for (var i = 0; i < usbPortList.length; i++) {
       console.info('usb case set data role 1, data role 1');
       CheckEmptyUtils.sleep(5000)
-      usb.setPortRoles(usbPortList[i].id, 1, 1).then(data => {
+      usb.setPortRoles(usbPortList[i].id, usb.SOURCE, usb.HOST).then(data => {
         expect(data).assertTrue();
         console.info('usb case setPortRoles return: ' + data);
       }).catch(error => {
