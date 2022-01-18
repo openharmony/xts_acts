@@ -12,7 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-require('./basicabilityapi.test.js')
-require('./mediaquery.test.js')
-require('./commonComponentJsApi.test.js')
+ 
+import prompt from '@system.prompt'
+export default {
+    change(e){
+        prompt.showToast({
+            message: "value: " + e.value,
+            duration: 3000,
+        });
+    },
+    enterkeyClick(e){
+        prompt.showToast({
+            message: "enterkey clicked",
+            duration: 3000,
+        });
+    },
+    buttonClick(e){
+        this.$element("input").showError({
+            error: 'error text'
+        });
+    },
+}

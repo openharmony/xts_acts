@@ -1,0 +1,8 @@
+<!-- xxx.hml -->
+<div class="content">
+    <input id="input" class="input" type="text" value="" maxlength="20" enterkeytype="send"
+           headericon="/common/search.svg" placeholder="Please input text" onchange="change"
+           onenterkeyclick="enterkeyClick">
+    </input>
+    <input class="button" type="button" value="Submit" onclick="buttonClick"></input>
+</div>
