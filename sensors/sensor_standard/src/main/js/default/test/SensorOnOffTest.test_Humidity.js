@@ -50,25 +50,24 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:SensorJsTest001
+     * @tc.number: SUB_SensorsSystem_Humidity_JSTest_0010
+     * @tc.name: SensorHumidityJSTest001
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest001", 0, async function (done) {
-        console.info('----------------------SensorJsTest001---------------------------');
+    it("SUB_SensorsSystem_Humidity_JSTest_0010", 0, async function (done) {
+        console.info('----------------------SUB_SensorsSystem_Humidity_JSTest_0010---------------------------');
         function offPromise() {
             return new Promise((resolve, reject) => {
-                sensor.off(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, (error) => {
+                sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, (error) => {
                     if (error) {
-                        console.info('SensorJsTest001  off error');
+                        console.info('SensorHumidityJSTest001  off error');
                         expect(false).assertTrue();
                         console.info('setTimeout ..start')
                         setTimeout((err) => {
                             reject(err);
                         }, 500);
                     } else {
-                        console.info('SensorJsTest001  off success');
+                        console.info('SensorHumidityJSTest001  off success');
                         expect(true).assertTrue();
                         setTimeout(() => {
                             resolve();
@@ -79,16 +78,16 @@ describe("SensorJsTest", function () {
         }
 
         let promise = new Promise((resolve, reject) => {
-            sensor.on(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, function (error, data) {
+            sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, function (error, data) {
                 if (error) {
-                    console.info('SensorJsTest001  on error');
+                    console.info('SensorHumidityJSTest001  on error');
                     expect(false).assertTrue();
                     setTimeout((err) => {
                         reject(err);
                     }, 500);
                 } else {
-                    console.info('SensorJsTest001  on success pressure: ' + data.pressure);
-                    expect(typeof (data.pressure)).assertEqual("number");
+                    console.info('SensorHumidityJSTest001  on success humidity: ' + data.humidity);
+                    expect(typeof (data.humidity)).assertEqual("number");
                     setTimeout(() => {
                         resolve();
                     }, 500);
@@ -99,30 +98,29 @@ describe("SensorJsTest", function () {
         await promise.then(() => {
             return offPromise();
         }, () => {
-            console.info("SensorJsTest001 reject");
+            console.info("SensorHumidityJSTest001 reject");
         })
         done();
     })
 
     /*
-     * @tc.name:SensorJsTest005
+     * @tc.number: SUB_SensorsSystem_Humidity_JSTest_0050
+     * @tc.name: SensorHumidityJSTest005
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest005", 0, async function (done) {
+    it("SUB_SensorsSystem_Humidity_JSTest_0050", 0, async function (done) {
         function onceSensorCallback(error, data) {
             if (error) {
-                console.info('SensorJsTest005  once error');
+                console.info('SensorHumidityJSTest005  once error');
                 expect(false).assertTrue();
             } else {
-                console.info('SensorJsTest005  once success pressure: ' + data.pressure);
-                expect(typeof (data.pressure)).assertEqual("number");
+                console.info('SensorHumidityJSTest005  once success humidity: ' + data.humidity);
+                expect(typeof (data.humidity)).assertEqual("number");
             }
             setTimeout(() => {
                 done();
             }, 500);
         }
-        sensor.once(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, onceSensorCallback);
+        sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, onceSensorCallback);
     })
 })

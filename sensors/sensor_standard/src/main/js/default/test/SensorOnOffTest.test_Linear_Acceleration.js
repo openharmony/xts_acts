@@ -50,25 +50,24 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:SensorJsTest001
+     * @tc.number: SUB_SensorsSystem_Linear_Acceleration_JSTest_0010
+     * @tc.name: SensorLinearAccelerationJSTest001
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest001", 0, async function (done) {
-        console.info('----------------------SensorJsTest001---------------------------');
+    it("SUB_SensorsSystem_Linear_Acceleration_JSTest_0010", 0, async function (done) {
+        console.info('---------------SUB_SensorsSystem_Linear_Acceleration_JSTest_0010-----------------');
         function offPromise() {
             return new Promise((resolve, reject) => {
-                sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, (error) => {
+                sensor.off(sensor.SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, (error) => {
                     if (error) {
-                        console.info('SensorJsTest001  off error');
+                        console.info('SensorLinearAccelerationJSTest001  off error');
                         expect(false).assertTrue();
                         console.info('setTimeout ..start')
                         setTimeout((err) => {
                             reject(err);
                         }, 500);
                     } else {
-                        console.info('SensorJsTest001  off success');
+                        console.info('SensorLinearAccelerationJSTest001  off success');
                         expect(true).assertTrue();
                         setTimeout(() => {
                             resolve();
@@ -79,15 +78,16 @@ describe("SensorJsTest", function () {
         }
 
         let promise = new Promise((resolve, reject) => {
-            sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, function (error, data) {
+            sensor.on(sensor.SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, function (error, data) {
                 if (error) {
-                    console.info('SensorJsTest001  on error');
+                    console.info('SensorLinearAccelerationJSTest001  on error');
                     expect(false).assertTrue();
                     setTimeout((err) => {
                         reject(err);
                     }, 500);
                 } else {
-                    console.info('SensorJsTest001  on  success, x: ' + data.x + "y: " + data.y + "z: " + data.z);
+                    console.info('SensorLinearAccelerationJSTest001  on  success, x: ' + data.x + "y: " 
+                        + data.y + "z: " + data.z);
                     expect(typeof (data.x)).assertEqual("number");
                     expect(typeof (data.y)).assertEqual("number");
                     expect(typeof (data.z)).assertEqual("number");
@@ -101,24 +101,24 @@ describe("SensorJsTest", function () {
         await promise.then(() => {
             return offPromise();
         }, () => {
-            console.info("SensorJsTest001 reject");
+            console.info("SensorLinearAccelerationJSTest001 reject");
         })
         done();
     })
 
     /*
-     * @tc.name:SensorJsTest005
+     * @tc.number: SUB_SensorsSystem_Linear_Acceleration_JSTest_0050
+     * @tc.name: SensorLinearAccelerationJSTest005
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest005", 0, async function (done) {
+    it("SUB_SensorsSystem_Linear_Acceleration_JSTest_0050", 0, async function (done) {
         function onceSensorCallback(error, data) {
             if (error) {
-                console.info('SensorJsTest005  once error');
+                console.info('SensorLinearAccelerationJSTest005  once error');
                 expect(false).assertTrue();
             } else {
-                console.info('SensorJsTest001  once  success, x: ' + data.x + "y: " + data.y + "z: " + data.z);
+                console.info('SensorLinearAccelerationJSTest005  on  success, x: ' + data.x + "y: " 
+                    + data.y + "z: " + data.z);
                 expect(typeof (data.x)).assertEqual("number");
                 expect(typeof (data.y)).assertEqual("number");
                 expect(typeof (data.z)).assertEqual("number");
@@ -127,6 +127,6 @@ describe("SensorJsTest", function () {
                 done();
             }, 500);
         }
-        sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, onceSensorCallback);
+        sensor.once(sensor.SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, onceSensorCallback);
     })
 })

@@ -50,25 +50,24 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:SensorJsTest001
+     * @tc.number: SUB_SensorsSystem_Magnetic_Field_JSTest_0010
+     * @tc.name: SensorMagneticFieldJSTest001
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest001", 0, async function (done) {
-        console.info('----------------------SensorJsTest001---------------------------');
+    it("SUB_SensorsSystem_Magnetic_Field_JSTest_0010", 0, async function (done) {
+        console.info('----------------------SUB_SensorsSystem_Magnetic_Field_JSTest_0010---------------------------');
         function offPromise() {
             return new Promise((resolve, reject) => {
-                sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, (error) => {
+                sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, (error) => {
                     if (error) {
-                        console.info('SensorJsTest001  off error');
+                        console.info('SensorMagneticFieldJSTest001  off error');
                         expect(false).assertTrue();
                         console.info('setTimeout ..start')
                         setTimeout((err) => {
                             reject(err);
                         }, 500);
                     } else {
-                        console.info('SensorJsTest001  off success');
+                        console.info('SensorMagneticFieldJSTest001  off success');
                         expect(true).assertTrue();
                         setTimeout(() => {
                             resolve();
@@ -79,15 +78,16 @@ describe("SensorJsTest", function () {
         }
 
         let promise = new Promise((resolve, reject) => {
-            sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, function (error, data) {
+            sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, function (error, data) {
                 if (error) {
-                    console.info('SensorJsTest001  on error');
+                    console.info('SensorMagneticFieldJSTest001  on error');
                     expect(false).assertTrue();
                     setTimeout((err) => {
                         reject(err);
                     }, 500);
                 } else {
-                    console.info('SensorJsTest001  on success, x: ' + data.x + "y: " + data.y + "z: " + data.z);
+                    console.info('SensorMagneticFieldJSTest001  on success, x: ' + data.x + "y: " 
+                        + data.y + "z: " + data.z);
                     expect(typeof (data.x)).assertEqual("number");
                     expect(typeof (data.y)).assertEqual("number");
                     expect(typeof (data.z)).assertEqual("number");
@@ -101,25 +101,24 @@ describe("SensorJsTest", function () {
         await promise.then(() => {
             return offPromise();
         }, () => {
-            console.info("SensorJsTest001 reject");
+            console.info("SensorMagneticFieldJSTest001 reject");
         })
         done();
     })
 
     /*
-     * @tc.name:SensorJsTest002
+     * @tc.number: SUB_SensorsSystem_Magnetic_Field_JSTest_0020
+     * @tc.name: SensorMagneticFieldJSTest002
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest002", 0, async function (done) {
-        console.info('----------------------SensorJsTest002---------------------------');
+    it("SUB_SensorsSystem_Magnetic_Field_JSTest_0020", 0, async function (done) {
+        console.info('----------------------SUB_SensorsSystem_Magnetic_Field_JSTest_0020---------------------------');
         function onSensorCallback(error, data) {
             if (error) {
-                console.info('SensorJsTest002  on success');
+                console.info('SensorMagneticFieldJSTest002  on success');
                 expect(true).assertTrue();
             } else {
-                console.info('SensorJsTest002  on error');
+                console.info('SensorMagneticFieldJSTest002  on error');
                 expect(false).assertTrue();
             }
             setTimeout(() => {
@@ -130,25 +129,24 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:SensorJsTest003
+     * @tc.number: SUB_SensorsSystem_Magnetic_Field_JSTest_0030
+     * @tc.name: SensorMagneticFieldJSTest003
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest003", 0, async function (done) {
-        console.info('----------------------SensorJsTest003---------------------------');
+    it("SUB_SensorsSystem_Magnetic_Field_JSTest_0030", 0, async function (done) {
+        console.info('----------------------SUB_SensorsSystem_Magnetic_Field_JSTest_0030---------------------------');
         function offPromise() {
             return new Promise((resolve, reject) => {
-                sensor.off(2, (error) => {
+                sensor.off(6, (error) => {
                     if (error) {
-                        console.info('SensorJsTest003  off error');
+                        console.info('SensorMagneticFieldJSTest003  off error');
                         expect(false).assertTrue();
                         setTimeout((err) => {
                             done();
                             reject(err);
                         }, 500);
                     } else {
-                        console.info('SensorJsTest003  off success');
+                        console.info('SensorMagneticFieldJSTest003  off success');
                         expect(true).assertTrue();
                         setTimeout(() => {
                             done();
@@ -160,15 +158,16 @@ describe("SensorJsTest", function () {
         }
 
         let promise = new Promise((resolve, reject) => {
-            sensor.on(2, function (error, data) {
+            sensor.on(6, function (error, data) {
                 if (error) {
-                    console.info('SensorJsTest003  on error');
+                    console.info('SensorMagneticFieldJSTest003  on error');
                     expect(false).assertTrue();
                     setTimeout((err) => {
                         reject(err);
                     }, 500);
                 } else {
-                    console.info('SensorJsTest003  on success x: ' + data.x + "y: " + data.y + "z: " + data.z);
+                    console.info('SensorMagneticFieldJSTest003  on success x: ' + data.x + "y: " 
+                        + data.y + "z: " + data.z);
                     expect(typeof (data.x)).assertEqual("number");
                     expect(typeof (data.y)).assertEqual("number");
                     expect(typeof (data.z)).assertEqual("number");
@@ -182,37 +181,36 @@ describe("SensorJsTest", function () {
         await promise.then(() => {
             return offPromise();
         }, () => {
-            console.info("SensorJsTest003 reject");
+            console.info("SensorMagneticFieldJSTest003 reject");
         })
         done();
     })
 
     /*
-     * @tc.name:SensorJsTest004
+     * @tc.number: SUB_SensorsSystem_Magnetic_Field_JSTest_0040
+     * @tc.name: SensorMagneticFieldJSTest004
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest004", 0, function () {
-        console.info('----------------------SensorJsTest004---------------------------');
-        sensor.on(2, function () { }, { 'interval': 100000000 }, 5);
+    it("SUB_SensorsSystem_Magnetic_Field_JSTest_0040", 0, function () {
+        console.info('----------------------SensorMagneticFieldJSTest004---------------------------');
+        sensor.on(6, function () { }, { 'interval': 100000000 }, 5);
         expect(true).assertTrue();
-        console.info('----------------------SensorJsTest004--------------------------- end');
+        console.info('----------------------SensorMagneticFieldJSTest004--------------------------- end');
     })
 
     /*
-     * @tc.name:SensorJsTest005
+     * @tc.number: SUB_SensorsSystem_Magnetic_Field_JSTest_0050
+     * @tc.name: SensorMagneticFieldJSTest005
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest005", 0, async function (done) {
+    it("SUB_SensorsSystem_Magnetic_Field_JSTest_0050", 0, async function (done) {
         function onceSensorCallback(error, data) {
             if (error) {
-                console.info('SensorJsTest005  once error');
+                console.info('SensorMagneticFieldJSTest005  once error');
                 expect(false).assertTrue();
             } else {
-                console.info('SensorJsTest005  once success x: ' + data.x + "y: " + data.y + "z: " + data.z);
+                console.info('SensorMagneticFieldJSTest005  once success x: ' + data.x + "y: " 
+                    + data.y + "z: " + data.z);
                 expect(typeof (data.x)).assertEqual("number");
                 expect(typeof (data.y)).assertEqual("number");
                 expect(typeof (data.z)).assertEqual("number");
@@ -221,22 +219,21 @@ describe("SensorJsTest", function () {
                 done();
             }, 500);
         }
-        sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, onceSensorCallback);
+        sensor.once(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, onceSensorCallback);
     })
 
     /*
-     * @tc.name:SensorJsTest006
+     * @tc.number: SUB_SensorsSystem_Magnetic_Field_JSTest_0060
+     * @tc.name: SensorMagneticFieldJSTest006
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest006", 0, async function (done) {
+    it("SUB_SensorsSystem_Magnetic_Field_JSTest_0060", 0, async function (done) {
         function onceSensorCallback(error, data) {
             if (error) {
-                console.info('SensorJsTest006  on success');
+                console.info('SensorMagneticFieldJSTest006  on success');
                 expect(true).assertTrue();
             } else {
-                console.info('SensorJsTest006  on error');
+                console.info('SensorMagneticFieldJSTest006  on error');
                 expect(false).assertTrue();
             }
             setTimeout(() => {
@@ -247,29 +244,27 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:SensorJsTest007
+     * @tc.number: SUB_SensorsSystem_Magnetic_Field_JSTest_0070
+     * @tc.name: SensorMagneticFieldJSTest007
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest007", 0, function () {
-        sensor.once(2, function () { }, 5);
+    it("SUB_SensorsSystem_Magnetic_Field_JSTest_0070", 0, function () {
+        sensor.once(6, function () { }, 5);
         expect(true).assertTrue();
     })
 
     /*
-     * @tc.name:SensorJsTest008
+     * @tc.number: SUB_SensorsSystem_Magnetic_Field_JSTest_0080
+     * @tc.name: SensorMagneticFieldJSTest008
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest008", 0, async function (done) {
+    it("SUB_SensorsSystem_Magnetic_Field_JSTest_0080", 0, async function (done) {
         function offCallback(error) {
             if (error) {
-                console.info('SensorJsTest008  off success');
+                console.info('SensorMagneticFieldJSTest008  off success');
                 expect(true).assertTrue();
             } else {
-                console.info('SensorJsTest008  off error');
+                console.info('SensorMagneticFieldJSTest008  off error');
                 expect(false).assertTrue();
             }
             setTimeout(() => {
@@ -280,40 +275,38 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:SensorJsTest009
+     * @tc.number: SUB_SensorsSystem_Magnetic_Field_JSTest_0090
+     * @tc.name: SensorMagneticFieldJSTest009
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest009", 0, async function (done) {
+    it("SUB_SensorsSystem_Magnetic_Field_JSTest_0090", 0, async function (done) {
         function offCallback(error) {
             if (error) {
-                console.info('SensorJsTest009  off success');
+                console.info('SensorMagneticFieldJSTest009  off success');
                 expect(true).assertTrue();
             } else {
-                console.info('SensorJsTest009  off error');
+                console.info('SensorMagneticFieldJSTest009  off error');
                 expect(false).assertTrue();
             }
             setTimeout(() => {
                 done();
             }, 500);
         }
-        sensor.off(2, offCallback);
+        sensor.off(6, offCallback);
     })
 
     /*
-     * @tc.name:SensorJsTest010
+     * @tc.number: SUB_SensorsSystem_Magnetic_Field_JSTest_0100
+     * @tc.name: SensorMagneticFieldJSTest010
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest010", 0, async function (done) {
+    it("SUB_SensorsSystem_Magnetic_Field_JSTest_0100", 0, async function (done) {
         function offCallback(error) {
             if (error) {
-                console.info('SensorJsTest010  off success');
+                console.info('SensorMagneticFieldJSTest010  off success');
                 expect(true).assertTrue();
             } else {
-                console.info('SensorJsTest010  off error');
+                console.info('SensorMagneticFieldJSTest010  off error');
                 expect(false).assertTrue();
             }
             setTimeout(() => {
@@ -324,18 +317,17 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:SensorJsTest011
+     * @tc.number: SUB_SensorsSystem_Magnetic_Field_JSTest_0110
+     * @tc.name: SensorMagneticFieldJSTest011
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest011", 0, async function (done) {
+    it("SUB_SensorsSystem_Magnetic_Field_JSTest_0110", 0, async function (done) {
         function onceSensorCallback(error, data) {
             if (error) {
-                console.info('SensorJsTest011  once success');
+                console.info('SensorMagneticFieldJSTest011  once success');
                 expect(true).assertTrue();
             } else {
-                console.info('SensorJsTest011  once error');
+                console.info('SensorMagneticFieldJSTest011  once error');
                 expect(false).assertTrue();
             }
             setTimeout(() => {
@@ -346,18 +338,17 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:SensorJsTest012
+     * @tc.number: SUB_SensorsSystem_Magnetic_Field_JSTest_0120
+     * @tc.name: SensorMagneticFieldJSTest012
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest012", 0, async function (done) {
+    it("SUB_SensorsSystem_Magnetic_Field_JSTest_0120", 0, async function (done) {
         function onCallback(error) {
             if (error) {
-                console.info('SensorJsTest012  on success');
+                console.info('SensorMagneticFieldJSTest012  on success');
                 expect(true).assertTrue();
             } else {
-                console.info('SensorJsTest012  on error');
+                console.info('SensorMagneticFieldJSTest012  on error');
                 expect(false).assertTrue();
             }
             setTimeout(() => {
@@ -368,37 +359,35 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:SensorJsTest013
+     * @tc.number: SUB_SensorsSystem_Magnetic_Field_JSTest_0130
+     * @tc.name: SensorMagneticFieldJSTest013
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest013", 0, function () {
-        sensor.off(2, 5);
+    it("SUB_SensorsSystem_Magnetic_Field_JSTest_0130", 0, function () {
+        sensor.off(6, 5);
         expect(true).assertTrue();
     })
 
 
     /*
-     * @tc.name:SensorJsTest014
+     * @tc.number: SUB_SensorsSystem_Magnetic_Field_JSTest_0140
+     * @tc.name: SensorMagneticFieldJSTest014
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest014", 0, async function (done) {
-        console.info('----------------------SensorJsTest014---------------------------');
+    it("SUB_SensorsSystem_Magnetic_Field_JSTest_0140", 0, async function (done) {
+        console.info('----------------------SUB_SensorsSystem_Magnetic_Field_JSTest_0140---------------------------');
         function offPromise2() {
             return new Promise((resolve, reject) => {
-                sensor.off(2, (error) => {
+                sensor.off(6, (error) => {
                     if (error) {
-                        console.info('SensorJsTest014  off2 success');
+                        console.info('SensorMagneticFieldJSTest014  off2 success');
                         expect(true).assertTrue();
                         setTimeout((err) => {
                             done();
                             reject(err)
                         }, 500);
                     } else {
-                        console.info('SensorJsTest014  off2 error');
+                        console.info('SensorMagneticFieldJSTest014  off2 error');
                         expect(false).assertTrue();
                         setTimeout(() => {
                             done();
@@ -411,15 +400,15 @@ describe("SensorJsTest", function () {
 
         function offPromise1() {
             return new Promise((resolve, reject) => {
-                sensor.off(2, (error) => {
+                sensor.off(6, (error) => {
                     if (error) {
-                        console.info('SensorJsTest014  off1  error');
+                        console.info('SensorMagneticFieldJSTest014  off1  error');
                         expect(false).assertTrue();
                         setTimeout((err) => {
                             reject(err);
                         }, 500);
                     } else {
-                        console.info('SensorJsTest014  off1  success');
+                        console.info('SensorMagneticFieldJSTest014  off1  success');
                         expect(true).assertTrue();
                         setTimeout(() => {
                             resolve();
@@ -430,15 +419,16 @@ describe("SensorJsTest", function () {
         }
 
         let promise = new Promise((resolve, reject) => {
-            sensor.on(2, function (error, data) {
+            sensor.on(6, function (error, data) {
                 if (error) {
-                    console.info('SensorJsTest014  on error');
+                    console.info('SensorMagneticFieldJSTest014  on error');
                     expect(false).assertTrue();
                     setTimeout((err) => {
                         reject(err);
                     }, 500);
                 } else {
-                    console.info('SensorJsTest014  on success x: ' + data.x + "y: " + data.y + "z: " + data.z);
+                    console.info('SensorMagneticFieldJSTest014  on success x: ' + data.x + "y: " 
+                        + data.y + "z: " + data.z);
                     expect(typeof (data.x)).assertEqual("number");
                     expect(typeof (data.y)).assertEqual("number");
                     expect(typeof (data.z)).assertEqual("number");
@@ -458,25 +448,24 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:SensorJsTest015
+     * @tc.number: SUB_SensorsSystem_Magnetic_Field_JSTest_0150
+     * @tc.name: SensorMagneticFieldJSTest015
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest015", 0, async function (done) {
-        console.info('----------------------SensorJsTest015---------------------------');
+    it("SUB_SensorsSystem_Magnetic_Field_JSTest_0150", 0, async function (done) {
+        console.info('----------------------SUB_SensorsSystem_Magnetic_Field_JSTest_0150---------------------------');
         function offPromise() {
             return new Promise((resolve, reject) => {
-                sensor.off(2, (error) => {
+                sensor.off(6, (error) => {
                     if (error) {
-                        console.info('SensorJsTest015  off error');
+                        console.info('SensorMagneticFieldJSTest015  off error');
                         expect(false).assertTrue();
                         setTimeout((err) => {
                             done();
                             reject(err);
                         }, 500);
                     } else {
-                        console.info('SensorJsTest015  off success');
+                        console.info('SensorMagneticFieldJSTest015  off success');
                         expect(true).assertTrue();
                         setTimeout(() => {
                             done();
@@ -488,15 +477,16 @@ describe("SensorJsTest", function () {
         }
         function onPromise2() {
             return new Promise((resolve, reject) => {
-                sensor.on(2, function (error, data) {
+                sensor.on(6, function (error, data) {
                     if (error) {
-                        console.info('SensorJsTest015  on2 error');
+                        console.info('SensorMagneticFieldJSTest015  on2 error');
                         expect(false).assertTrue();
                         setTimeout((err) => {
                             reject(err);
                         }, 500);
                     } else {
-                        console.info('SensorJsTest015  on2 success x: ' + data.x + "y: " + data.y + "z: " + data.z);
+                        console.info('SensorMagneticFieldJSTest015  on2 success x: ' + data.x + "y: " 
+                            + data.y + "z: " + data.z);
                         expect(typeof (data.x)).assertEqual("number");
                         expect(typeof (data.y)).assertEqual("number");
                         expect(typeof (data.z)).assertEqual("number");
@@ -509,15 +499,16 @@ describe("SensorJsTest", function () {
         }
 
         let onPromise1 = new Promise((resolve, reject) => {
-            sensor.on(2, function (error, data) {
+            sensor.on(6, function (error, data) {
                 if (error) {
-                    console.info('SensorJsTest015  on1 error');
+                    console.info('SensorMagneticFieldJSTest015  on1 error');
                     expect(false).assertTrue();
                     setTimeout((err) => {
                         reject(err);
                     }, 500);
                 } else {
-                    console.info('SensorJsTest015  on1 success x: ' + data.x + "y: " + data.y + "z: " + data.z);
+                    console.info('SensorMagneticFieldJSTest015  on1 success x: ' + data.x + "y: " 
+                        + data.y + "z: " + data.z);
                     expect(typeof (data.x)).assertEqual("number");
                     expect(typeof (data.y)).assertEqual("number");
                     expect(typeof (data.z)).assertEqual("number");
@@ -538,25 +529,24 @@ describe("SensorJsTest", function () {
 
 
     /*
-     * @tc.name:SensorJsTest016
+     * @tc.number: SUB_SensorsSystem_Magnetic_Field_JSTest_0160
+     * @tc.name: SensorMagneticFieldJSTest016
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest016", 0, async function (done) {
-        console.info('----------------------SensorJsTest016---------------------------');
+    it("SUB_SensorsSystem_Magnetic_Field_JSTest_0160", 0, async function (done) {
+        console.info('----------------------SUB_SensorsSystem_Magnetic_Field_JSTest_0160---------------------------');
         function offPromise() {
             return new Promise((resolve, reject) => {
-                sensor.off(2, (error) => {
+                sensor.off(6, (error) => {
                     if (error) {
-                        console.info('SensorJsTest016  off error');
+                        console.info('SensorMagneticFieldJSTest016  off error');
                         expect(false).assertTrue();
                         setTimeout((err) => {
                             done();
                             reject(err);
                         }, 500);
                     } else {
-                        console.info('SensorJsTest016  off success');
+                        console.info('SensorMagneticFieldJSTest016  off success');
                         expect(true).assertTrue();
                         setTimeout(() => {
                             done();
@@ -568,15 +558,16 @@ describe("SensorJsTest", function () {
         }
         function oncePromise() {
             return new Promise((resolve, reject) => {
-                sensor.once(2, function (error, data) {
+                sensor.once(6, function (error, data) {
                     if (error) {
-                        console.info('SensorJsTest016  once error');
+                        console.info('SensorMagneticFieldJSTest016  once error');
                         expect(false).assertTrue();
                         setTimeout((err) => {
                             reject(err);
                         }, 500);
                     } else {
-                        console.info('SensorJsTest016  once success x: ' + data.x + "y: " + data.y + "z: " + data.z);
+                        console.info('SensorMagneticFieldJSTest016  once success x: ' + data.x + "y: " 
+                            + data.y + "z: " + data.z);
                         expect(typeof (data.x)).assertEqual("number");
                         expect(typeof (data.y)).assertEqual("number");
                         expect(typeof (data.z)).assertEqual("number");
@@ -589,15 +580,16 @@ describe("SensorJsTest", function () {
         }
 
         let onPromise1 = new Promise((resolve, reject) => {
-            sensor.on(2, function (error, data) {
+            sensor.on(6, function (error, data) {
                 if (error) {
-                    console.info('SensorJsTest016  on1 error');
+                    console.info('SensorMagneticFieldJSTest016  on1 error');
                     expect(false).assertTrue();
                     setTimeout((err) => {
                         reject(err);
                     }, 500);
                 } else {
-                    console.info('SensorJsTest016  on1 success x: ' + data.x + "y: " + data.y + "z: " + data.z);
+                    console.info('SensorMagneticFieldJSTest016  on1 success x: ' + data.x + "y: " 
+                        + data.y + "z: " + data.z);
                     expect(typeof (data.x)).assertEqual("number");
                     expect(typeof (data.y)).assertEqual("number");
                     expect(typeof (data.z)).assertEqual("number");
