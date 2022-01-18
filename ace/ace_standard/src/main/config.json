@@ -51,7 +51,11 @@
         "pages": [
           "pages/index/index",
           "pages/routerPush/index",
-          "pages/routerReplace/index"
+          "pages/routerReplace/index",
+          "pages/button/index",
+          "pages/chart/index",
+          "pages/input/index",
+          "pages/slider/index"
         ],
         "name": "default",
         "window": {

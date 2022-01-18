@@ -1,0 +1,13 @@
+/* xxx.css */
+.content {
+    width: 60%;
+    flex-direction: column;
+    align-items: center;
+}
+.input {
+    placeholder-color: gray;
+}
+.button {
+    background-color: gray;
+    margin-top: 20px;
+}
