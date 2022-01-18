@@ -281,7 +281,7 @@ describe('I18nTest', function () {
         let lang = I18n.getSystemLanguages();
         let len = lang.length;
         console.log('i18n_test_2100 ' + len);
-        expect(len).assertEqual(0);
+        expect(len).assertEqual(2);
     })
 
     /* *
@@ -355,7 +355,7 @@ describe('I18nTest', function () {
         expect(region).assertTrue();
         let value = I18n.isSuggested('en');
         console.log('i18n_test_2300 ' + value);
-        expect(value).assertFalse();
+        expect(value).assertTrue();
     })
 
     /* *
@@ -369,7 +369,7 @@ describe('I18nTest', function () {
         expect(region).assertTrue();
         let value = I18n.isSuggested('zh-Hans');
         console.log('i18n_test_2400 ' + value);
-        expect(value).assertFalse();
+        expect(value).assertTrue();
     })
 
     /* *
@@ -383,7 +383,7 @@ describe('I18nTest', function () {
         expect(region).assertTrue();
         let value = I18n.isSuggested('zh-Hans-CN');
         console.log('i18n_test_2500 ' + value);
-        expect(value).assertFalse();
+        expect(value).assertTrue();
     })
 
     /* *
@@ -521,7 +521,7 @@ describe('I18nTest', function () {
     it('i18n_test_3600', 0, function () {
         let value = I18n.isSuggested('zh-Hans-TW', 'CN');
         console.log('i18n_test_3600 ' + value);
-        expect(value).assertFalse();
+        expect(value).assertTrue();
     })
 
     /* *
@@ -532,7 +532,7 @@ describe('I18nTest', function () {
     it('i18n_test_3700', 0, function () {
         let value = I18n.isSuggested('zh-Hans-CN', 'HK');
         console.log('i18n_test_3700 ' + value);
-        expect(value).assertFalse();
+        expect(value).assertTrue();
     })
 
     /* *
@@ -1060,21 +1060,21 @@ describe('I18nTest', function () {
     * @tc.name test getCalendar interface
     * @tc.desc get the getCalendar value
     */
-    it('i18n_test_7920', 0, function () {
+     it('i18n_test_7920', 0, function () {
         console.error('i18n_test_7920 ' + 'start');
-        let calendar = I18n.getCalendar('jp', 'japanese');
-        let name = calendar.getDisplayName('jp');
+        let calendar = I18n.getCalendar('ja', 'japanese');
+        let name = calendar.getDisplayName('ja');
         console.error('i18n_test_7920 ' + name);
-        expect(name).assertEqual('公历');
+        expect(name).assertEqual('和暦');
         let timezone = calendar.getTimeZone();
         console.error('i18n_test_7920 ' + timezone);
-        expect(name).assertEqual('timezone');
+        expect(timezone).assertEqual('Coordinated Universal Time');
         let firstday = calendar.getFirstDayOfWeek();
         console.error('i18n_test_7920 ' + firstday);
-        expect(name).assertEqual(2);
+        expect(firstday).assertEqual(1);
         let miniday = calendar.getMinimalDaysInFirstWeek();
         console.error('i18n_test_7920 ' + miniday);
-        expect(name).assertEqual(1);
+        expect(miniday).assertEqual(1);
         let value = calendar.isWeekend(new Date(2022, 10, 1, 10, 0, 0, 0));
         console.error('i18n_test_7920 ' + value);
         expect(value).assertFalse();
@@ -1150,12 +1150,14 @@ describe('I18nTest', function () {
     * @tc.name test get interface with month param
     * @tc.desc get the get value
     */
-    it('i18n_test_8120', 0, function () {
+     it('i18n_test_8120', 0, function () {
         console.error('i18n_test_8120 ' + 'start');
         let calendar = I18n.getCalendar('zh');
+        let date1 = new Date(2021, 8, 8, 8, 8, 8, 8);
+        calendar.setTime(date1);
         let value = calendar.get('month');
         console.error('i18n_test_8120 ' + value);
-        expect(value).assertLarger(0);
+        expect(value).assertEqual(8);
     })
 
     /**
