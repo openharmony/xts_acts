@@ -17,7 +17,6 @@ import router from '@system.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 
 
-
 describe('aceJsTest', function () {
 
     async function sleep(time) {
@@ -39,12 +38,16 @@ describe('aceJsTest', function () {
         await sleep(1000)
     });
 
-
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testButtonComponent
+     * @tc.desc      ACE
+     */
     it('testButtonComponent', 0, async function (done) {
         console.info('testButtonComponent START');
         let result;
         let options = {
-            uri : 'pages/button/index'
+            uri: 'pages/button/index'
         }
         try {
             result = router.push(options)
@@ -59,11 +62,16 @@ describe('aceJsTest', function () {
         done();
     });
 
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0200
+     * @tc.name      testChartComponent
+     * @tc.desc      ACE
+     */
     it('testChartComponent', 0, async function (done) {
         console.info('testButtonComponent START');
         let result;
         let options = {
-            uri : 'pages/chart/index'
+            uri: 'pages/chart/index'
         }
         try {
             result = router.push(options)
@@ -78,11 +86,16 @@ describe('aceJsTest', function () {
         done();
     });
 
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0300
+     * @tc.name      testInputComponent
+     * @tc.desc      ACE
+     */
     it('testInputComponent', 0, async function (done) {
         console.info('testButtonComponent START');
         let result;
         let options = {
-            uri : 'pages/input/index'
+            uri: 'pages/input/index'
         }
         try {
             result = router.push(options)
@@ -97,11 +110,16 @@ describe('aceJsTest', function () {
         done();
     });
 
-    it('testInputComponent', 0, async function (done) {
-        console.info('testButtonComponent START');
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0400
+     * @tc.name      testSliderComponent
+     * @tc.desc      ACE
+     */
+    it('testSliderComponent', 0, async function (done) {
+        console.info('testSliderComponent START');
         let result;
         let options = {
-            uri : 'pages/slider/index'
+            uri: 'pages/slider/index'
         }
         try {
             result = router.push(options)
