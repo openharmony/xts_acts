@@ -35,8 +35,8 @@ describe('window_test', function(){
 	*/
 	it('moveTestNegative', 0,function(){
 		console.log('jsunittest moveTestNegative begin')
-		window.getTopwindow().then(wnd => {
-			console.log('jsunittest moveTestNegative getTopwindow wnd: ' + wnd)
+		window.getTopWindow().then(wnd => {
+			console.log('jsunittest moveTestNegative getTopWindow wnd: ' + wnd)
 			wnd.moveTo(-200,-200).then(()=>{
 				console.log('moveTo(-200,-200) success')
 			})
@@ -55,7 +55,7 @@ describe('window_test', function(){
         var width = 100;
 		var height = 100;
 		console.log('jsunittest resetSizeLoop begin')
-		window.getTopwindow().then(wnd =>{
+		window.getTopWindow().then(wnd =>{
 		    console.log('jsunittest resetSizeLoop getTopWindow wnd: ' + wnd)
 		    for (let i = 1; i <= 5; i++){
 			    width = width * i;
@@ -77,7 +77,7 @@ describe('window_test', function(){
 	*/
 	it('setWindowTypeTestZero', 0, function(){
 		console.log('jsunittest setWindowTypeTestZero begin')
-		window.getTopwindow().then(wnd => {
+		window.getTopWindow().then(wnd => {
 			console.log('jsunittest setWindowTypeTestZero getTopWindow wnd: ' + wnd)
 			wnd.setWindowType(window.WindowType.TYPE_APP).then(()=>{
 				console.log('jsunittest setWindowTypeTestZero wnd.setWindowType(0) success')
@@ -98,8 +98,8 @@ describe('window_test', function(){
 	*/
 	it('setWindowTypeTestThirty', 0, function(){
 		console.log('jsunittest setWindowTypeTestThirty begin')
-		window.getTopwindow().then(wnd => {
-			console.log('jsunittest setWindowTypeTestThirty getTopwindow wnd: ' + wnd)
+		window.getTopWindow().then(wnd => {
+			console.log('jsunittest setWindowTypeTestThirty getTopWindow wnd: ' + wnd)
 			wnd.setWindowType(window.WindowType.TYPE_SYSTEM_ALTER).then(()=>{
 				console.log('jsunittest setWindowTypeTestThirty wnd.setWindowType(30) success')
 			})
@@ -119,8 +119,8 @@ describe('window_test', function(){
 	*/
 	it('setWindowTypeTestSeventy', 0, function(){
 		console.log('jsunittest setWindowTypeTestSeventy begin')
-		window.getTopwindow().then(wnd => {
-			console.log('jsunittest setWindowTypeTestSeventy getTopwindow wnd: ' + wnd)
+		window.getTopWindow().then(wnd => {
+			console.log('jsunittest setWindowTypeTestSeventy getTopWindow wnd: ' + wnd)
 			wnd.setWindowType(window.WindowType.TYPE_SYSTEM_VOLUME).then(()=>{
 				console.log('jsunittest setWindowTypeTestSeventy wnd.setWindowType(70) success')
 			})
@@ -140,8 +140,8 @@ describe('window_test', function(){
 	*/
 	it('setWindowTypeTestNinety', 0, function(){
 		console.log('jsunittest setWindowTypeTestNinety begin')
-		window.getTopwindow().then(wnd => {
-			console.log('jsunittest setWindowTypeTestNinety getTopwindow wnd: ' + wnd)
+		window.getTopWindow().then(wnd => {
+			console.log('jsunittest setWindowTypeTestNinety getTopWindow wnd: ' + wnd)
 			wnd.setWindowType(window.WindowType.TYPE_SYSTEM_PANEL).then(()=>{
 				console.log('jsunittest setWindowTypeTestNinety wnd.setWindowType(90) success')
 			})
@@ -161,8 +161,8 @@ describe('window_test', function(){
 	*/
 	it('setWindowTypeTestOrderChange', 0, function(){
 		console.log('jsunittest setWindowTypeTestOrderChange begin')
-		window.getTopwindow().then(wnd => {
-			console.log('jsunittest setWindowTypeTestOrderChange getTopwindow wnd: ' + wnd)
+		window.getTopWindow().then(wnd => {
+			console.log('jsunittest setWindowTypeTestOrderChange getTopWindow wnd: ' + wnd)
 			wnd.setWindowType(window.WindowType.TYPE_APP).then(()=>{
 				console.log('jsunittest setWindowTypeTestOrderChange wnd.setWindowType(0) success')
 			})
@@ -182,8 +182,8 @@ describe('window_test', function(){
 	*/
 	it('setWindowTypeTest15', 0, function(){
 		console.log('jsunittest setWindowTypeTest15 begin')
-		window.getTopwindow().then(wnd => {
-			console.log('jsunittest setWindowTypeTest15 getTopwindow wnd: ' + wnd)
+		window.getTopWindow().then(wnd => {
+			console.log('jsunittest setWindowTypeTest15 getTopWindow wnd: ' + wnd)
 			wnd.setWindowType(window.WindowType.TYPE_SYSTEM_ALTER).then(()=>{
 				console.log('jsunittest setWindowTypeTest15 wnd.setWindowType(30) success')
 			})
@@ -203,8 +203,8 @@ describe('window_test', function(){
 	*/
 	it('setWindowTypeTest16', 0, function(){
 		console.log('jsunittest setWindowTypeTest16 begin')
-		window.getTopwindow().then(wnd => {
-			console.log('jsunittest setWindowTypeTest16 getTopwindow wnd: ' + wnd)
+		window.getTopWindow().then(wnd => {
+			console.log('jsunittest setWindowTypeTest16 getTopWindow wnd: ' + wnd)
 			wnd.setWindowType(window.WindowType.TYPE_SYSTEM_VOLUME).then(()=>{
 				console.log('jsunittest setWindowTypeTest16 wnd.setWindowType(70) success')
 			})
@@ -224,8 +224,8 @@ describe('window_test', function(){
 	*/
 	it('setWindowTypeTest17', 0, function(){
 		console.log('jsunittest setWindowTypeTest17 begin')
-		window.getTopwindow().then(wnd => {
-			console.log('jsunittest setWindowTypeTest17 getTopwindow wnd: ' + wnd)
+		window.getTopWindow().then(wnd => {
+			console.log('jsunittest setWindowTypeTest17 getTopWindow wnd: ' + wnd)
 			wnd.setWindowType(window.WindowType.TYPE_SYSTEM_PANEL).then(()=>{
 				console.log('jsunittest setWindowTypeTest17 wnd.setWindowType(90) success')
 			})
@@ -245,8 +245,8 @@ describe('window_test', function(){
 	*/
 	it('moveTest6', 0, function(){
 		console.log('jsunittest moveTest6 begin')
-		window.getTopwindow().then(wnd => {
-			console.log('jsunittest moveTest6 getTopwindow wnd: ' + wnd)
+		window.getTopWindow().then(wnd => {
+			console.log('jsunittest moveTest6 getTopWindow wnd: ' + wnd)
 			wnd.moveTo(-200, 200).then(()=>{
 				console.log('jsunittest moveTest6 wnd.moveTo(-200, 300) success')
 			})
