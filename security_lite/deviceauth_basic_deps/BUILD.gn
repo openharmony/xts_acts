@@ -50,16 +50,8 @@ hctest_suite("ActsSecurityHichainBasicDeps") {
     "UTILS_FILE_IMPLEMENTED=1",
     "TEST_PTHREAD_CREATE_DETACHED=0",
     "TEST_HC_FILE_OPEN_SERIES=1",
-
-    "TEST_HKDF_WITH_KEY_ALIAS_TRUE=1",
-    "TEST_IMPORT_ASYMMETRIC_KEY=1",
-    "TEST_COMPUTEHMAC_WITH_ISALIAS_TRUE=1",
-    "TEST_HASH_TO_POINT=1",
-    "TEST_GENERATE_KEY_PAIR_WITH_STORAGE=1",
-    "TEST_AGREE_SHARED_SECRET_WITH_STORAGE=1",
-    "TEST_AGREE_SHARED_SECRET=1",
-    "TEST_BIG_NUM_EXP_MOD=1",
   ]
+  defines += DEVICEAUTH_BASIC_DEPS_ALGORITHM_DEFINES
 
   if (defined(ohos_lite)) {
     include_dirs += [
@@ -76,11 +68,42 @@ hctest_suite("ActsSecurityHichainBasicDeps") {
         defines -= [
           "FLASH_START_ADDRESS_HICHAIN=0",
           "TEST_HC_FILE_OPEN_SERIES=1",
+          "TEST_HKDF_WITH_KEY_ALIAS_TRUE=1",
+          "TEST_COMPUTEHMAC_WITH_ISALIAS_TRUE=1",
+          "TEST_HASH_TO_POINT=1",
+          "TEST_GENERATE_KEY_PAIR_WITH_STORAGE=1",
+          "TEST_AGREE_SHARED_SECRET_WITH_STORAGE=1",
+          "TEST_AGREE_SHARED_SECRET=1",
+          "TEST_GENERATE_KEY_PAIR=1",
+          "TEST_EXPORT_PUBLIC_KEY=1",
+          "TEST_ALGORITHM_SIGN=1",
+          "TEST_ALGORITHM_VERIFY=1",
+          "TEST_IMPORT_PUBLIC_KEY=1",
+          "TEST_CHECK_KEY_EXIST=1",
+          "TEST_DELETE_KEY=1",
+          "TEST_AES_GCM_ENCRYPT=1",
+          "TEST_AES_GCM_DECRYPT=1",
         ]
         defines += [
           "FLASH_START_ADDRESS_HICHAIN=0x1F6000",
           "TEST_HC_FILE_OPEN_SERIES=0",
+          "TEST_HKDF_WITH_KEY_ALIAS_TRUE=0",
+          "TEST_COMPUTEHMAC_WITH_ISALIAS_TRUE=0",
+          "TEST_HASH_TO_POINT=0",
+          "TEST_GENERATE_KEY_PAIR_WITH_STORAGE=0",
+          "TEST_AGREE_SHARED_SECRET_WITH_STORAGE=0",
+          "TEST_AGREE_SHARED_SECRET=0",
+          "TEST_GENERATE_KEY_PAIR=0",
+          "TEST_EXPORT_PUBLIC_KEY=0",
+          "TEST_ALGORITHM_SIGN=0",
+          "TEST_ALGORITHM_VERIFY=0",
+          "TEST_IMPORT_PUBLIC_KEY=0",
+          "TEST_CHECK_KEY_EXIST=0",
+          "TEST_DELETE_KEY=0",
+          "TEST_AES_GCM_ENCRYPT=0",
+          "TEST_AES_GCM_DECRYPT=0",
         ]
+        defines += [ "DO_NOT_TEST_DEPRECATED_IMPORT_SYMMETRIC_KEY=1" ]
       }
       if (board_name == "hispark_pegasus") {
         # 3861
@@ -90,7 +113,11 @@ hctest_suite("ActsSecurityHichainBasicDeps") {
           "TEST_GENERATE_KEY_PAIR_WITH_STORAGE=1",
           "TEST_AGREE_SHARED_SECRET_WITH_STORAGE=1",
           "TEST_AGREE_SHARED_SECRET=1",
-          "TEST_BIG_NUM_EXP_MOD=1",
+          "TEST_GENERATE_KEY_PAIR=1",
+          "TEST_EXPORT_PUBLIC_KEY=1",
+          "TEST_ALGORITHM_SIGN=1",
+          "TEST_ALGORITHM_VERIFY=1",
+          "TEST_IMPORT_PUBLIC_KEY=1",
         ]
         defines += [
           "TEST_HKDF_WITH_KEY_ALIAS_TRUE=0",
@@ -98,7 +125,11 @@ hctest_suite("ActsSecurityHichainBasicDeps") {
           "TEST_GENERATE_KEY_PAIR_WITH_STORAGE=0",
           "TEST_AGREE_SHARED_SECRET_WITH_STORAGE=0",
           "TEST_AGREE_SHARED_SECRET=0",
-          "TEST_BIG_NUM_EXP_MOD=0",
+          "TEST_GENERATE_KEY_PAIR=0",
+          "TEST_EXPORT_PUBLIC_KEY=0",
+          "TEST_ALGORITHM_SIGN=0",
+          "TEST_ALGORITHM_VERIFY=0",
+          "TEST_IMPORT_PUBLIC_KEY=0",
         ]
       }
     } else {
