@@ -35,6 +35,12 @@ function PublishCallBackFive() {
 function PublishCallBackSix() {
     console.debug("====>Publish CallBack ACTS_StartAbility_0600_CommonEvent====>");
 }
+function PublishCallBackTen() {
+    console.debug("====>Publish CallBack ACTS_StartAbility_1000_CommonEvent====>");
+}
+function PublishCallBackThirteen() {
+    console.debug("====>Publish CallBack ACTS_StartAbility_1300_CommonEvent====>");
+}
 
 export default {
     data: {
@@ -50,6 +56,8 @@ export default {
         commonEvent.publish("ACTS_StartAbility_0400_CommonEvent", PublishCallBackFour);
         commonEvent.publish("ACTS_StartAbility_0500_CommonEvent", PublishCallBackFive);
         commonEvent.publish("ACTS_StartAbility_0600_CommonEvent", PublishCallBackSix);
+		commonEvent.publish("ACTS_StartAbility_1000_CommonEvent", PublishCallBackTen);
+        commonEvent.publish("ACTS_StartAbility_1300_CommonEvent", PublishCallBackThirteen);
     },
     onReady() {
     },
