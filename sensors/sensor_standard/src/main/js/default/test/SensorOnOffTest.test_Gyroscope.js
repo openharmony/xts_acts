@@ -565,7 +565,8 @@ describe("SensorJsTest", function () {
                             reject(err);
                         }, 500);
                     } else {
-                        console.info('SensorGyroscopeJSTest016  once success x: ' + data.x + "y: " + data.y + "z: " + data.z);
+                        console.info('SensorGyroscopeJSTest016  once success x: ' + data.x + "y: " 
+                            + data.y + "z: " + data.z);
                         expect(typeof (data.x)).assertEqual("number");
                         expect(typeof (data.y)).assertEqual("number");
                         expect(typeof (data.z)).assertEqual("number");
@@ -586,7 +587,8 @@ describe("SensorJsTest", function () {
                         reject(err);
                     }, 500);
                 } else {
-                    console.info('SensorGyroscopeJSTest016  on1 success x: ' + data.x + "y: " + data.y + "z: " + data.z);
+                    console.info('SensorGyroscopeJSTest016  on1 success x: ' + data.x + "y: " 
+                        + data.y + "z: " + data.z);
                     expect(typeof (data.x)).assertEqual("number");
                     expect(typeof (data.y)).assertEqual("number");
                     expect(typeof (data.z)).assertEqual("number");
