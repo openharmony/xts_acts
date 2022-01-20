@@ -29,7 +29,6 @@ struct VideoCreateComponent {
       Video({
         src: this.srcs,
         previewUri: this.previewUri,
-        currentProgressRate: this.currentProgressRates,
         controller: this.myVideoController
       })
 
@@ -48,20 +47,11 @@ struct VideoCreateComponent {
         Button("pause").onClick(() => {
           this.myVideoController.pause();
         });
-        Button("stop").onClick(() => {
-          this.myVideoController.stop();
-        });
       }
 
       Row() {
         Button("setCurrentTime").onClick(() => {
           this.myVideoController.setCurrentTime(9);
-        });
-        Button("requestFullscreen").onClick(() => {
-          this.myVideoController.requestFullscreen(true);
-        });
-        Button("exitFullscreen").onClick(() => {
-          this.myVideoController.exitFullscreen();
         });
       }
     }
