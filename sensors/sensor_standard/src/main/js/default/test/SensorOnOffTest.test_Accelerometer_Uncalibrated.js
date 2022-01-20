@@ -50,25 +50,24 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:SensorJsTest001
+     * @tc.number: SUB_SensorsSystem_Accelerometer_Uncalibrated_JSTest_0010
+     * @tc.name: SensorAccelerometerUncalibratedJSTest001
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest001", 0, async function (done) {
-        console.info('----------------------SensorJsTest001---------------------------');
+    it("SUB_SensorsSystem_Accelerometer_Uncalibrated_JSTest_0010", 0, async function (done) {
+        console.info('------------SUB_SensorsSystem_Accelerometer_Uncalibrated_JSTest_0010-----------------');
         function offPromise() {
             return new Promise((resolve, reject) => {
-                sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, (error) => {
+                sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, (error) => {
                     if (error) {
-                        console.info('SensorJsTest001  off error');
+                        console.info('SensorAccelerometerUncalibratedJSTest001  off error');
                         expect(false).assertTrue();
                         console.info('setTimeout ..start')
                         setTimeout((err) => {
                             reject(err);
                         }, 500);
                     } else {
-                        console.info('SensorJsTest001  off success');
+                        console.info('SensorAccelerometerUncalibratedJSTest001  off success');
                         expect(true).assertTrue();
                         setTimeout(() => {
                             resolve();
@@ -79,18 +78,23 @@ describe("SensorJsTest", function () {
         }
 
         let promise = new Promise((resolve, reject) => {
-            sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, function (error, data) {
+            sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, function (error, data) {
                 if (error) {
-                    console.info('SensorJsTest001  on error');
+                    console.info('SensorAccelerometerUncalibratedJSTest001  on error');
                     expect(false).assertTrue();
                     setTimeout((err) => {
                         reject(err);
                     }, 500);
                 } else {
-                    console.info('SensorJsTest001  on  success, x: ' + data.x + "y: " + data.y + "z: " + data.z);
+                    console.info('SensorAccelerometerUncalibratedJSTest001  on  success, x: ' + data.x + "y: " 
+                        + data.y + "z: " + data.z + "biasX:" + data.biasX + "biasY: " 
+                        + data.biasY + "biasZ: " + data.biasZ);
                     expect(typeof (data.x)).assertEqual("number");
                     expect(typeof (data.y)).assertEqual("number");
                     expect(typeof (data.z)).assertEqual("number");
+                    expect(typeof (data.biasX)).assertEqual("number");
+                    expect(typeof (data.biasY)).assertEqual("number");
+                    expect(typeof (data.biasZ)).assertEqual("number");
                     setTimeout(() => {
                         resolve();
                     }, 500);
@@ -101,32 +105,36 @@ describe("SensorJsTest", function () {
         await promise.then(() => {
             return offPromise();
         }, () => {
-            console.info("SensorJsTest001 reject");
+            console.info("SensorAccelerometerUncalibratedJSTest001 reject");
         })
         done();
     })
 
     /*
-     * @tc.name:SensorJsTest005
+     * @tc.number: SUB_SensorsSystem_Accelerometer_Uncalibrated_JSTest_0020
+     * @tc.name: SensorAccelerometerUncalibratedJSTest002
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest005", 0, async function (done) {
+    it("SUB_SensorsSystem_Accelerometer_Uncalibrated_JSTest_0020", 0, async function (done) {
         function onceSensorCallback(error, data) {
             if (error) {
-                console.info('SensorJsTest005  once error');
+                console.info('SensorAccelerometerUncalibratedJSTest002  once error');
                 expect(false).assertTrue();
             } else {
-                console.info('SensorJsTest001  on  success, x: ' + data.x + "y: " + data.y + "z: " + data.z);
+                console.info('SensorAccelerometerUncalibratedJSTest002  on  success, x: ' + data.x + "y: " 
+                    + data.y + "z: " + data.z + "biasX:" + data.biasX + "biasY: " 
+                    + data.biasY + "biasZ: " + data.biasZ);
                 expect(typeof (data.x)).assertEqual("number");
                 expect(typeof (data.y)).assertEqual("number");
                 expect(typeof (data.z)).assertEqual("number");
+                expect(typeof (data.biasX)).assertEqual("number");
+                expect(typeof (data.biasY)).assertEqual("number");
+                expect(typeof (data.biasZ)).assertEqual("number");
             }
             setTimeout(() => {
                 done();
             }, 500);
         }
-        sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, onceSensorCallback);
+        sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, onceSensorCallback);
     })
 })

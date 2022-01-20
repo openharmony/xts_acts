@@ -50,25 +50,24 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:SensorJsTest001
+     * @tc.number: SUB_SensorsSystem_Heart_Rate_JSTest_0010
+     * @tc.name: SensorHeartRateJSTest001
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest001", 0, async function (done) {
-        console.info('----------------------SensorJsTest001---------------------------');
+    it("SUB_SensorsSystem_Heart_Rate_JSTest_0010", 0, async function (done) {
+        console.info('----------------------SUB_SensorsSystem_Heart_Rate_JSTest_0010---------------------------');
         function offPromise() {
             return new Promise((resolve, reject) => {
                 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, (error) => {
                     if (error) {
-                        console.info('SensorJsTest001  off error');
+                        console.info('SensorHeartRateJSTest001  off error');
                         expect(false).assertTrue();
                         console.info('setTimeout ..start')
                         setTimeout((err) => {
                             reject(err);
                         }, 500);
                     } else {
-                        console.info('SensorJsTest001  off success');
+                        console.info('SensorHeartRateJSTest001  off success');
                         expect(true).assertTrue();
                         setTimeout(() => {
                             resolve();
@@ -81,13 +80,13 @@ describe("SensorJsTest", function () {
         let promise = new Promise((resolve, reject) => {
             sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, function (error, data) {
                 if (error) {
-                    console.info('SensorJsTest001  on error');
+                    console.info('SensorHeartRateJSTest001  on error');
                     expect(false).assertTrue();
                     setTimeout((err) => {
                         reject(err);
                     }, 500);
                 } else {
-                    console.info('SensorJsTest001  once success heartRate: ' + data.heartRate);
+                    console.info('SensorHeartRateJSTest001  once success heartRate: ' + data.heartRate);
                     expect(typeof (data.heartRate)).assertEqual("number");
                     setTimeout(() => {
                         resolve();
@@ -99,24 +98,23 @@ describe("SensorJsTest", function () {
         await promise.then(() => {
             return offPromise();
         }, () => {
-            console.info("SensorJsTest001 reject");
+            console.info("SensorHeartRateJSTest001 reject");
         })
         done();
     })
 
     /*
-     * @tc.name:SensorJsTest005
+     * @tc.number: SUB_SensorsSystem_Heart_Rate_JSTest_0050
+     * @tc.name: SensorHeartRateJSTest005
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
      */
-    it("SensorJsTest005", 0, async function (done) {
+    it("SUB_SensorsSystem_Heart_Rate_JSTest_0050", 0, async function (done) {
         function onceSensorCallback(error, data) {
             if (error) {
-                console.info('SensorJsTest005  once error');
+                console.info('SensorHeartRateJSTest005  once error');
                 expect(false).assertTrue();
             } else {
-                console.info('SensorJsTest005  once success heartRate: ' + data.heartRate);
+                console.info('SensorHeartRateJSTest005  once success heartRate: ' + data.heartRate);
                 expect(typeof (data.heartRate)).assertEqual("number");
             }
             setTimeout(() => {
