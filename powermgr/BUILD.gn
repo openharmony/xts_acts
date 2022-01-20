@@ -19,7 +19,10 @@ group("powermgr") {
     }
   } else {
     if (is_standard_system) {
-      deps = [ "powermgrbattery:powermgr_battery_test" ]
+      deps = [
+        "powermgrbattery:powermgr_battery_test",
+        "powermgrbatterystats:powermgr_batterystats_test",
+      ]
     }
   }
 }
