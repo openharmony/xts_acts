@@ -49,7 +49,8 @@ describe('appInfoTest', function () {
         console.info("Waiting");
         var found = false;
         for (let i = 0; i < infoList.length; i++) {
-            if (infoList[i].type == ConsumptionType.CONSUMPTION_TYPE_BLUETOOTH && infoList[i].uid == -1) {
+            if (infoList[i].type == ConsumptionType.CONSUMPTION_TYPE_BLUETOOTH) {
+                expect(infoList[i].uid).assertEqual(-1);
                 console.info("Found Bluetooth consumption");
                 found = true;
             }
@@ -75,7 +76,8 @@ describe('appInfoTest', function () {
         console.info("Waiting");
         var found = false;
         for (let i = 0; i < infoList.length; i++) {
-            if (infoList[i].type == ConsumptionType.CONSUMPTION_TYPE_IDLE && infoList[i].uid == -1) {
+            if (infoList[i].type == ConsumptionType.CONSUMPTION_TYPE_IDLE) {
+                expect(infoList[i].uid).assertEqual(-1);
                 console.info("Found Idle consumption");
                 found = true;
             }
@@ -101,7 +103,8 @@ describe('appInfoTest', function () {
         console.info("Waiting");
         var found = false;
         for (let i = 0; i < infoList.length; i++) {
-            if (infoList[i].type == ConsumptionType.CONSUMPTION_TYPE_PHONE && infoList[i].uid == -1) {
+            if (infoList[i].type == ConsumptionType.CONSUMPTION_TYPE_PHONE) {
+                expect(infoList[i].uid).assertEqual(-1);
                 console.info("Found Phone consumption");
                 found = true;
             }
@@ -127,7 +130,8 @@ describe('appInfoTest', function () {
         console.info("Waiting");
         var found = false;
         for (let i = 0; i < infoList.length; i++) {
-            if (infoList[i].type == ConsumptionType.CONSUMPTION_TYPE_RADIO && infoList[i].uid == -1) {
+            if (infoList[i].type == ConsumptionType.CONSUMPTION_TYPE_RADIO) {
+                expect(infoList[i].uid).assertEqual(-1);
                 console.info("Found Radio consumption");
                 found = true;
             }
@@ -153,7 +157,8 @@ describe('appInfoTest', function () {
         console.info("Waiting");
         var found = false;
         for (let i = 0; i < infoList.length; i++) {
-            if (infoList[i].type == ConsumptionType.CONSUMPTION_TYPE_SCREEN && infoList[i].uid == -1) {
+            if (infoList[i].type == ConsumptionType.CONSUMPTION_TYPE_SCREEN) {
+                expect(infoList[i].uid).assertEqual(-1);
                 console.info("Found Screen consumption");
                 found = true;
             }
@@ -179,7 +184,7 @@ describe('appInfoTest', function () {
     it('Batterystats_007', 0, function () {
         var power = batterystats.getAppPowerValue(-111);
         console.info("App consumption power of uid -111 is: " + power);
-        expect(power >= 0).assertTrue();
+        expect(power).assertEqual(0);
     })
 
     /* @tc.number batterystats_js_008
@@ -237,7 +242,7 @@ describe('appInfoTest', function () {
     it('Batterystats_012', 0, function () {
         var powerPercent = batterystats.getAppPowerPercent(-111);
         console.info("App consumption percent of uid -111 is: " + powerPercent);
-        expect(powerPercent >= 0).assertTrue();
+        expect(powerPercent).assertEqual(0);
     })
 
     /* @tc.number batterystats_js_013
@@ -295,7 +300,7 @@ describe('appInfoTest', function () {
     it('Batterystats_017', 0, function () {
         var power = batterystats.getHardwareUnitPowerValue(111);
         console.info("111's consumption power is: " + power);
-        expect(power >= 0).assertTrue();
+        expect(power).assertEqual(0);
     })
 
     /* @tc.number batterystats_js_018
@@ -305,7 +310,7 @@ describe('appInfoTest', function () {
     it('Batterystats_018', 0, function () {
         var power = batterystats.getHardwareUnitPowerValue(0);
         console.info("0's consumption power is: " + power);
-        expect(power >= 0).assertTrue();
+        expect(power).assertEqual(0);
     })
 
     /* @tc.number batterystats_js_019
@@ -343,9 +348,9 @@ describe('appInfoTest', function () {
      * @tc.desc BatteryStats getHardwareUnitPowerPercent Interface Test type = ConsumptionType.CONSUMPTION_TYPE_IDLE
      */
     it('Batterystats_021', 0, function () {
-        var power = batterystats.getHardwareUnitPowerPercent(ConsumptionType.CONSUMPTION_TYPE_IDLE);
-        console.info("Idle consumption percent is: " + power);
-        expect(power >= 0).assertTrue();
+        var powerPercent = batterystats.getHardwareUnitPowerPercent(ConsumptionType.CONSUMPTION_TYPE_IDLE);
+        console.info("Idle consumption percent is: " + powerPercent);
+        expect(powerPercent >= 0).assertTrue();
     })
 
     /* @tc.number batterystats_js_022
@@ -353,9 +358,9 @@ describe('appInfoTest', function () {
      * @tc.desc BatteryStats getHardwareUnitPowerPercent Interface Test type = 111
      */
     it('Batterystats_022', 0, function () {
-        var power = batterystats.getHardwareUnitPowerPercent(111);
-        console.info("111's consumption percent is: " + power);
-        expect(power >= 0).assertTrue();
+        var powerPercent = batterystats.getHardwareUnitPowerPercent(111);
+        console.info("111's consumption percent is: " + powerPercent);
+        expect(powerPercent).assertEqual(0);
     })
 
     /* @tc.number batterystats_js_023
@@ -363,9 +368,9 @@ describe('appInfoTest', function () {
      * @tc.desc BatteryStats getHardwareUnitPowerPercent Interface Test type = 0
      */
     it('Batterystats_023', 0, function () {
-        var power = batterystats.getHardwareUnitPowerPercent(0);
-        console.info("0's consumption percent is: " + power);
-        expect(power >= 0).assertTrue();
+        var powerPercent = batterystats.getHardwareUnitPowerPercent(0);
+        console.info("0's consumption percent is: " + powerPercent);
+        expect(powerPercent).assertEqual(0);
     })
 
     /* @tc.number batterystats_js_024
