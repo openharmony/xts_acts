@@ -16,6 +16,6 @@ import("//build/ohos_var.gni")
 group("dsoftbus") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "rpc:ActsRpcJsTest" ]
+    deps = [ "ipcrpc_standard:ActsRpcJsTest" ]
   }
 }
