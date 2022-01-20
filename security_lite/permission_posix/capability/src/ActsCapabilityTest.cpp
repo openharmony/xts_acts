@@ -16,62 +16,15 @@
 #include <dirent.h>
 #include <fcntl.h>
 #include <securec.h>
-#include <unistd.h>
 #include <sys/capability.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include "gtest/gtest.h"
+#include "CapabilityFileSystemTest.h"
 
 using namespace std;
 using namespace testing::ext;
-
-class CapabilityTestSuite : public::testing::Test {
-protected:
-    char *mCurPath;
-    void SetUp();
-    void TearDown();
-};
-
-int main()
-{
-    if (CheckFsMount(TOP_DIR, TOP_DIR_MOUNT_INFO) != 0) {
-        return 1;
-    } else {
-        return RUN_ALL_TESTS();
-    }
-}
-
-void CapabilityTestSuite::SetUp()
-{
-    // Permission mask preset when creating a file
-    umask(ZERO);
-    // Init capabilities
-    CapInit();
-    // Initialize the process and set the uid and gid of the process to zero
-    SetUidGid(UID0, GID0);
-    // Delete the 'TOP_DIR/CAPDIR0' if the directory exists
-    RemoveDir(TOP_DIR "/" CAPDIR0);
-    // Obtain the current working directory of the test code
-    mCurPath = GetCurrentPath();
-    // Modify the current working directory of the test code
-    int ret = chdir(TOP_DIR);
-    if (ret != 0) {
-        LOG("ErrInfo: Failed to chdir to %s, ret=%d, errno=%d", TOP_DIR, ret, errno);
-    }
-}
-
-// Test suite cleanup action, which is executed after the last test case
-void CapabilityTestSuite::TearDown()
-{
-    // Delete the 'TOP_DIR/CAPDIR0' if the directory exists
-    RemoveDir(TOP_DIR "/" CAPDIR0);
-    // Restore the working directory of the test code
-    int ret = chdir(mCurPath);
-    if (ret != 0) {
-        LOG("ErrInfo: Failed to chdir to %s, ret=%d, errno=%d", mCurPath, ret, errno);
-    }
-}
 
 #if defined(LITE_FS_JFFS2)
 static int TestDacOverrideSuccess()

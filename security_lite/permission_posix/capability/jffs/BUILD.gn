@@ -18,7 +18,8 @@ hcpptest_suite("ActsJFFS2CapabilityTest") {
   suite_name = "acts"
   sources = [
     "../src/ActsCapability.cpp",
-    "../src/CapabilityTestSuite.cpp",
+    "../src/ActsCapabilityTest.cpp",
+    "../src/CapabilityFileSystemTest.cpp",
   ]
 
   include_dirs = [
