@@ -48,9 +48,9 @@ BUILD.gn中修改deps最后两行为oem_auth_config.a和oem_auth_result_storage.
 "//vendor/ingenic/smartpen/adapter/kitframework:oem_auth_result_storage",   
 "//vendor/ingenic/smartpen/adapter/kitframework:oem_auth_config",
 
-### 第二步
-输入：hb build -f -T //test/xts/acts/applications/small_device:ActsKitFwkApiTest  
+### 第三步
+输入：hb build -f -T //test/xts/acts/applications/kitframework_ipcamera:ActsKitFwkApiTest  
 编译完成后可在out/bin目录找到ActsKitFwkApiTest.bin文件
 
-### 第三步
+### 第四步
 放入设备，运行看日志

@@ -34,13 +34,13 @@ sdi73fabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890abcdefghijk
 09uvuyabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890abcdefghijklmnopqrstuvwxyz."
 
 
-constexpr int PRODUCT_KEY_LEN = 32;
-constexpr int ACKEY_LEN = 48;
-constexpr int PRODUCT_ID_LEN = 4;
-constexpr int STATUS_LEN = 320;
-constexpr int ENCRYPT_TICKET_LEN = 64;
-constexpr int ENCRYPT_TOKEN_LEN = 151;
-constexpr int MAX_SERVER_INFO_LEN = 256;
+const int PRODUCT_KEY_LEN = 32;
+const int ACKEY_LEN = 48;
+const int PRODUCT_ID_LEN = 4;
+const int STATUS_LEN = 320;
+const int ENCRYPT_TICKET_LEN = 64;
+const int ENCRYPT_TOKEN_LEN = 151;
+const int MAX_SERVER_INFO_LEN = 256;
 
 
 
