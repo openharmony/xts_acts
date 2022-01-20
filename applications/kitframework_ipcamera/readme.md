@@ -1,6 +1,6 @@
 # 使用说明
 
-## 测试代码说明
+## 测试用例说明
 > 本套测试代码，提供了3个用例
 
 <table>
@@ -16,19 +16,22 @@
 <tr>
 <td>用例1</td>
 <td>接口基本功能测试</td>
-<td>按默认条件编译出一个可执行文件，放入设备，检查日志</td>
+<td>按默认条件编译出一个测试bin文件，放入设备运行，检查日志</td>
 <td>用例全部通过。并检查是否可搜到关键字：this is the first run of test after flash</td>
 </tr>
 <tr>
 <td>用例2</td>
 <td>数据重启可用测试</td>
-<td>用例1执行完后，重启设备，检查日志</td>
+<td>用例1执行完后，重启设备，再次运行测试bin文件，检查日志</td>
 <td>用例全部通过。并检查是否可搜到关键字：this is not the first run of test after flash</td>
 </tr>
 <tr>
 <td>用例3</td>
 <td>token持久化测试</td>
-<td>打开 TOKEN_PERSIST_TEST 宏（去注释BUILD.gn里面倒数第二行defines）进行编译，放入设备，检查日志</td>
+<td>
+1、将设备恢复出厂<br/>
+2、打开 TOKEN_PERSIST_TEST 宏（去注释BUILD.gn里面倒数第二行defines）进行编译，将新生成的测试bin文件放入设备，运行，检查日志
+</td>
 <td>用例全部通过。并检查是否可搜到关键字：this is the first run of test after flash</td>
 </tr>
 </tbody>
