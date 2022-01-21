@@ -24,7 +24,7 @@ import {
   it,
   expect
 }
-  from 'deccjsunit/index'
+from 'deccjsunit/index'
 import {
   FILE_CONTENT,
   prepareFile,
@@ -35,7 +35,7 @@ import {
   nextFileName,
   sleep
 }
-  from './Common'
+from './Common'
 
 describe('fileTest', function () {
 
@@ -1006,18 +1006,18 @@ describe('fileTest', function () {
    */
   it('File_writeArrayBuffer_009', 0, async function (done) {
     let buf = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8]);
-      file.writeArrayBuffer({
-        uri: 'internal://cache/File_writeArrayBuffer_009',
-        buffer: buf,
-        success: function () {
-          console.log('File_writeArrayBuffer_009 call success');
-          done();
-        },
-        fail: function (data, code) {
-          console.log('File_writeArrayBuffer_009 fail');
-          expect(null).assertFail();
-        },
-      });
+    file.writeArrayBuffer({
+      uri: 'internal://cache/File_writeArrayBuffer_009',
+      buffer: buf,
+      success: function () {
+        console.log('File_writeArrayBuffer_009 call success');
+        done();
+      },
+      fail: function (data, code) {
+        console.log('File_writeArrayBuffer_009 fail');
+        expect(null).assertFail();
+      },
+    });
     file.readArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_009',
       success: function (data) {
@@ -1318,9 +1318,7 @@ describe('fileTest', function () {
           done();
         },
         fail: function (data, code) {
-          console.error(
-            "call fail callback fail, code: " + code + ", data: " + data
-          );
+          console.error("call fail callback fail, code: " + code + ", data: " + data);
           expect(null).assertFail();
         },
       });
@@ -2823,7 +2821,7 @@ describe('fileTest', function () {
       },
       fail: function (data, code) {
         console.log('File_Copy_005 , code: ' + code + ', data: ' + data);
-        expect(code == 301).assertTrue();
+        expect(code == 300).assertTrue();
         done();
       },
     });
@@ -3332,7 +3330,7 @@ describe('fileTest', function () {
       expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
       expect(prepareFile(ffpath, FILE_CONTENT) !== null).assertTrue();
       expect(prepareFile(fffpath, FILE_CONTENT) !== null).assertTrue();
-    } 
+    }
     catch (e) {
       console.log('File_List_010 has failed for ' + e);
       expect(null).assertFail();

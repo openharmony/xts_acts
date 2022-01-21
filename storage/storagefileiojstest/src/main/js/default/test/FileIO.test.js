@@ -3745,12 +3745,11 @@ describe('fileIOTest', function () {
     let fpath = await nextFileName('fileio_test_fchown_sync_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let stat = fileio.statSync(fpath);
-    let UID = stat.uid
-    let GID = null
+    let UID = stat.uid;
     let fd;
     try {
       fd = fileio.openSync(fpath);
-      expect(fileio.fchownSync(fd, UID, GID));
+      fileio.fchownSync(fd, UID, 0);
       expect(null).assertFail();
     } 
     catch (e) {
@@ -3769,11 +3768,9 @@ describe('fileIOTest', function () {
     let fpath = await nextFileName('fileio_test_fchown_sync_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let fd;
-    let UID = null
-    let GID = null
     try {
       fd = fileio.openSync(fpath, 0o2);
-      expect(fileio.fchownSync(fd, UID, GID));
+      fileio.fchownSync(fd, 0, 0);
       expect(null).assertFail();
     } 
     catch (e) {
