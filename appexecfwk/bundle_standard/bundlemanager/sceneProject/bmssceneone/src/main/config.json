@@ -45,6 +45,7 @@
         "launchType": "standard",
         "orientation": "unspecified",
         "language": "C++",
+        "permissions":["com.permission.BMS_PERMISSION_CAMERA"],
         "metaData": {
             "customizeData": [
                 {
