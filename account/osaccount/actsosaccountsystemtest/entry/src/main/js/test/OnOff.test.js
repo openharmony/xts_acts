@@ -26,47 +26,6 @@ describe('ActsOsAccountSystemTest', function () {
     }
 
     /*
-     * @tc.number  : ActsOsAccountOnOff_0100
-     * @tc.name    : Subscribe and unsubscribing local multi-user
-     * @tc.desc    : Verify that the activating type subscription can receive user switching
-     */
-    it('ActsOsAccountOnOff_0100', 0, async function (done) {
-        console.debug("====>ActsOsAccountOnOff_0100 start====");
-        var osAccountManager = osaccount.getAccountManager();
-        var localId;
-        console.debug("====>get AccountManager finish====");
-        function onCallback(receiveLocalId){
-            console.debug("====>receive localId:" + receiveLocalId);
-            if(receiveLocalId == localId){
-                osAccountManager.off("activating", "osAccountOnOffNameA", offCallback);
-            }
-        }
-        function removeCallback(err){
-            console.debug("====>remove localId: " + localId + " err:" + JSON.stringify(err));
-            expect(err.code).assertEqual(0);
-            console.debug("====>ActsOsAccountOnOff_0100 end====");
-            done();
-        }
-        function offCallback(){
-            console.debug("====>off enter")
-            osAccountManager.removeOsAccount(localId, removeCallback);
-        }
-        osAccountManager.on("activating", "osAccountOnOffNameA", onCallback);
-        sleep(TIMEOUT);
-        osAccountManager.createOsAccount("osAccountNameA", 1, (err, osAccountInfo)=>{
-            console.debug("====>createOsAccount err:" + JSON.stringify(err));
-            console.debug("====>createOsAccount osAccountInfo:" + JSON.stringify(osAccountInfo));
-            localId = osAccountInfo.localId;
-            expect(err.code).assertEqual(0);
-            expect(osAccountInfo.localName).assertEqual("osAccountNameA");
-            osAccountManager.activateOsAccount(localId, (err)=>{
-                console.debug("====>activateOsAccount err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
-            });
-        });
-    });
-
-    /*
      * @tc.number  : ActsOsAccountOnOff_0200
      * @tc.name    : Subscribe and unsubscribing local multi-user
      * @tc.desc    : Verify that the activate type subscription can receive user switching
@@ -217,7 +176,7 @@ describe('ActsOsAccountSystemTest', function () {
         setTimeout(()=>{
             console.debug("====>ActsOsAccountOnOff_0500 end====");
             done();
-        }, TIMEOUT); 
+        }, TIMEOUT);
     });
 
     /*
@@ -271,6 +230,7 @@ describe('ActsOsAccountSystemTest', function () {
             osAccountManager.activateOsAccount(localId, (err)=>{
                 console.debug("====>activateOsAccount errcode:" + JSON.stringify(err));
                 expect(err.code).assertEqual(0);
+                sleep(TIMEOUT);
                 setTimeout(()=>{
                     osAccountManager.removeOsAccount(localId, (err)=>{
                         console.debug("====>remove localId: " + localId + " err:" + JSON.stringify(err));
@@ -714,7 +674,7 @@ describe('ActsOsAccountSystemTest', function () {
         setTimeout(()=>{
             console.debug("====>ActsOsAccountOnOff_1700 end====");
             done();
-        }, TIMEOUT); 
+        }, TIMEOUT);
     });
 
     /*
@@ -735,7 +695,7 @@ describe('ActsOsAccountSystemTest', function () {
         setTimeout(()=>{
             console.debug("====>ActsOsAccountOnOff_1800 end====");
             done();
-        }, TIMEOUT); 
+        }, TIMEOUT);
     });
 
     /*
@@ -756,7 +716,59 @@ describe('ActsOsAccountSystemTest', function () {
         setTimeout(()=>{
             console.debug("====>ActsOsAccountOnOff_1900 end====");
             done();
-        }, TIMEOUT); 
+        }, TIMEOUT);
     });
+
+    /*
+     * @tc.number  : ActsOsAccountOnOff_2000
+     * @tc.name    : Subscribe and unsubscribing local multi-user
+     * @tc.desc    : Authenticate switch back after switching user subscription receives two callbacks
+     */
+    it('ActsOsAccountOnOff_2000', 0, async function (done) {
+        console.debug("====>ActsOsAccountOnOff_2000 start====");
+        var osAccountManager = osaccount.getAccountManager();
+        var localId;
+        var enterSign = 0;
+        var localHundredId = 100;
+        console.debug("====>get AccountManager finish====");
+        function onCallback(receiveLocalId){
+            console.debug("====>receive localId:" + receiveLocalId);
+            if(receiveLocalId == localId){
+                enterSign = enterSign + 1;
+            }
+            if(receiveLocalId == localHundredId){
+                enterSign = enterSign + 1;
+                osAccountManager.off("activate", "osAccountOnOffNameQ", offCallback);
+            }
+        }
+        function offCallback(){
+            console.debug("====>off enter")
+            osAccountManager.removeOsAccount(localId, (err)=>{
+                console.debug("====>remove localId: " + localId + " err:" + JSON.stringify(err));
+                expect(err.code).assertEqual(0);
+                console.debug("====>the enterSign is: " + enterSign);
+                expect(enterSign).assertEqual(2);
+                console.debug("====>ActsOsAccountOnOff_2000 end====");
+                done();
+            })
+        }
+        osAccountManager.on("activate", "osAccountOnOffNameQ", onCallback);
+        sleep(TIMEOUT);
+        osAccountManager.createOsAccount("osAccountNameQ", 1, (err, osAccountInfo)=>{
+            console.debug("====>createOsAccount err:" + JSON.stringify(err));
+            console.debug("====>createOsAccount osAccountInfo:" + JSON.stringify(osAccountInfo));
+            localId = osAccountInfo.localId;
+            expect(err.code).assertEqual(0);
+            expect(osAccountInfo.localName).assertEqual("osAccountNameQ");
+            osAccountManager.activateOsAccount(localId, (err)=>{
+                console.debug("====>activateOsAccount err:" + JSON.stringify(err));
+                expect(err.code).assertEqual(0);
+                osAccountManager.activateOsAccount(localHundredId, (err)=>{
+                    console.debug("====>activateOsAccount err:" + JSON.stringify(err));
+                    expect(err.code).assertEqual(0);
+                });
+            });
+        });
+    })
 
 })

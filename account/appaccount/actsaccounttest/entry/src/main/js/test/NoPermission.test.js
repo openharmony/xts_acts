@@ -189,7 +189,7 @@ describe('ActsAccountNoPermission', function () {
         console.debug("====>ActsAccountNoPermission_0700 start====");
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat finish====");
-        var selfBundle = "com.example.actsaccountnopermission";
+        var selfBundle = "com.example.actsaccounttest";
         appAccountManager.addAccount("getAll_callback_nopermission", (err)=>{
             console.debug("====>add account 0700 err:" + JSON.stringify(err));
             expect(err.code).assertEqual(0);
@@ -215,7 +215,7 @@ describe('ActsAccountNoPermission', function () {
         console.debug("====>ActsAccountNoPermission_0800 start====");
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat finish====");
-        var selfBundle = "com.example.actsaccountnopermission";
+        var selfBundle = "com.example.actsaccounttest";
         console.debug("====>add account 0800 start====");
         await appAccountManager.addAccount("getAll_promise_nopermission");
         console.debug("====>getAllAccounts 0800 start====");
