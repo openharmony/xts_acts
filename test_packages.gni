@@ -35,6 +35,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/compileruntime:compileruntime",
   "${ACTS_ROOT}/usb:usb",
   "${ACTS_ROOT}/multimodalinput:multimodalinput",
+  "${ACTS_ROOT}/resourceschedule:resourceschedule",
 ]
 
 _all_test_packages_ivi = [
