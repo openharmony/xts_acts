@@ -15,3 +15,7 @@
 require('./Query.test.js')
 require('./Activate.test.js')
 require('./OnOff.test.js')
+require('./Set.test.js')
+require('./Constraints.test.js')
+require('./Photo.test.js')
+require('./Create.test.js')

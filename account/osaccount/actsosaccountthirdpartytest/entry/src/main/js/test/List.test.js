@@ -13,3 +13,4 @@
  * limitations under the License.
  */
 require('./OsAccountIs.test.js')
+require('./OsAccountGet.test.js')

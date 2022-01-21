@@ -17,7 +17,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 const TIMEOUT = 1000;
 const OSACCOUNTMAXNUMBER = 999;
-const ERR_OSACCOUNT_KIT_QUERY_OS_ACCOUNT_BY_ID_ERROR = 4587554;
+const ERR_OSACCOUNT_KIT_QUERY_OS_ACCOUNT_BY_ID_ERROR = 4587556;
 describe('ActsOsAccountSystemTest', function () {
 
     /*
