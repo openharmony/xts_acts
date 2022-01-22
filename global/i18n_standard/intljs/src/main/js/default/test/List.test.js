@@ -14,3 +14,4 @@
  */
 require('./I18n.test.js')
 require('./Intl.test.js')
+require('./Lang.test.js')
