@@ -80,7 +80,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
      */
     it('ActsSetDoNotDisturbTest_test_0300', 0, async function (done) {
         var beginDate = new Date()
-        var endDate = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours()+8,beginDate.getMinutes())
+        var endDate = new Date(beginDate.getFullYear(),
+                               beginDate.getMonth(),
+                               beginDate.getDate(),
+                               beginDate.getHours()+8,
+                               beginDate.getMinutes())
         await notify.setDoNotDisturbDate({
             type:notify.DoNotDisturbType.TYPE_NONE,
             begin:beginDate,
@@ -104,7 +108,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
      */
     it('ActsSetDoNotDisturbTest_test_0400', 0, async function (done) {
         var beginDate = new Date()
-        var endDate = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours()+8,beginDate.getMinutes()+20)
+        var endDate = new Date(beginDate.getFullYear(),
+                               beginDate.getMonth(),
+                               beginDate.getDate(),
+                               beginDate.getHours()+8,
+                               beginDate.getMinutes()+20)
         notify.setDoNotDisturbDate({
             type:notify.DoNotDisturbType.TYPE_NONE,
             begin:beginDate,
@@ -127,7 +135,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
      */
     it('ActsSetDoNotDisturbTest_test_0500', 0, async function (done) {
         var beginDate = new Date()
-        var endDate = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours()+8,beginDate.getMinutes())
+        var endDate = new Date(beginDate.getFullYear(),
+                               beginDate.getMonth(),
+                               beginDate.getDate(),
+                               beginDate.getHours()+8,
+                               beginDate.getMinutes())
         await notify.setDoNotDisturbDate({
             type:notify.DoNotDisturbType.TYPE_ONCE,
             begin:beginDate,
@@ -137,7 +149,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
             await notify.getDoNotDisturbDate(async (err,data)=>{
                 console.log("===>test_0500 getDoNotDisturbDate===>"+err.code+JSON.stringify(data))
                 expect(data.type).assertEqual(1);
-                var DoNotDateE = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours(),beginDate.getMinutes())
+                var DoNotDateE = new Date(beginDate.getFullYear(),
+                                          beginDate.getMonth(),
+                                          beginDate.getDate(),
+                                          beginDate.getHours(),
+                                          beginDate.getMinutes())
                 console.log("===>getDoNotDisturbDate DoNotDateE===>"+DoNotDateE)
                 console.log("===>getDoNotDisturbDate beginDate===>"+data.begin)
                 console.log("===>getDoNotDisturbDate endDate===>"+data.end)
@@ -161,7 +177,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
      */
     it('ActsSetDoNotDisturbTest_test_0600', 0, async function (done) {
         var beginDate = new Date()
-        var endDate = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours()+6,beginDate.getMinutes())
+        var endDate = new Date(beginDate.getFullYear(),
+                               beginDate.getMonth(),
+                               beginDate.getDate(),
+                               beginDate.getHours()+6,
+                               beginDate.getMinutes())
         notify.setDoNotDisturbDate({
             type:notify.DoNotDisturbType.TYPE_ONCE,
             begin:beginDate,
@@ -170,7 +190,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
              notify.getDoNotDisturbDate().then(async(data)=>{
                 console.log("===>test_0600 success===>"+JSON.stringify(data))
                 expect(data.type).assertEqual(1);
-                var DoNotDateF = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours(),beginDate.getMinutes())
+                var DoNotDateF = new Date(beginDate.getFullYear(),
+                                          beginDate.getMonth(),
+                                          beginDate.getDate(),
+                                          beginDate.getHours(),
+                                          beginDate.getMinutes())
                 console.log("===>test_0600 begin===>"+DoNotDateF)
                 console.log("===>test_0600 beginDate===>"+data.begin)
                 console.log("===>test_0600 endDate===>"+data.end)
@@ -194,7 +218,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
      */
     it('ActsSetDoNotDisturbTest_test_0700', 0, async function (done) {
         var beginDate = new Date()
-        var endDate = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours()+7,beginDate.getMinutes()+36)
+        var endDate = new Date(beginDate.getFullYear(),
+                               beginDate.getMonth(),
+                               beginDate.getDate(),
+                               beginDate.getHours()+7,
+                               beginDate.getMinutes()+36)
         await notify.setDoNotDisturbDate({
             type:notify.DoNotDisturbType.TYPE_DAILY,
             begin:beginDate,
@@ -204,7 +232,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
             await notify.getDoNotDisturbDate(async(err,data)=>{
                 console.log("===>test_0700 getDoNotDisturbDate===>"+JSON.stringify(data))
                 expect(data.type).assertEqual(2);
-                var DoNotDateG = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours(),beginDate.getMinutes())
+                var DoNotDateG = new Date(beginDate.getFullYear(),
+                                          beginDate.getMonth(),
+                                          beginDate.getDate(),
+                                          beginDate.getHours(),
+                                          beginDate.getMinutes())
                 console.log("===>0700 begin===>"+DoNotDateG)
                 console.log("===>0700 beginDate===>"+data.begin)
                 console.log("===>0700 endDate===>"+data.end)
@@ -228,7 +260,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
      */
     it('ActsSetDoNotDisturbTest_test_0800', 0, async function (done) {
         var beginDate = new Date()
-        var endDate = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours()+13,beginDate.getMinutes()+48)
+        var endDate = new Date(beginDate.getFullYear(),
+                               beginDate.getMonth(),
+                               beginDate.getDate(),
+                               beginDate.getHours()+13,
+                               beginDate.getMinutes()+48)
         console.log("===>ActsSetDoNotDisturbTest_test_0800 beginDate ===>"+beginDate)
         console.log("===>ActsSetDoNotDisturbTest_test_0800 endDate ===>"+endDate)
         notify.setDoNotDisturbDate({
@@ -239,7 +275,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
              notify.getDoNotDisturbDate().then(async(data)=>{
                 console.log("===>test_0800 success===>"+JSON.stringify(data))
                 expect(data.type).assertEqual(2);
-                var DoNotDateH = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours(),beginDate.getMinutes())
+                var DoNotDateH = new Date(beginDate.getFullYear(),
+                                          beginDate.getMonth(),
+                                          beginDate.getDate(),
+                                          beginDate.getHours(),
+                                          beginDate.getMinutes())
                 console.log("===>0800 begin===>"+DoNotDateH)
                 console.log("===>0800 beginDate===>"+data.begin)
                 console.log("===>0800 endDate===>"+data.end)
@@ -263,7 +303,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
      */
     it('ActsSetDoNotDisturbTest_test_0900', 0, async function (done) {
         var beginDate = new Date()
-        var endDate = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours()+4,beginDate.getMinutes())
+        var endDate = new Date(beginDate.getFullYear(),
+                               beginDate.getMonth(),
+                               beginDate.getDate(),
+                               beginDate.getHours()+4,
+                               beginDate.getMinutes())
         await notify.setDoNotDisturbDate({
             type:notify.DoNotDisturbType.TYPE_CLEARLY,
             begin:beginDate,
@@ -273,7 +317,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
             await notify.getDoNotDisturbDate(async(err,data)=>{
                 console.log("===>test_0900 getDoNotDisturbDate===>"+JSON.stringify(data))
                 expect(data.type).assertEqual(3);
-                var DoNotDateI = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours(),beginDate.getMinutes())
+                var DoNotDateI = new Date(beginDate.getFullYear(),
+                                          beginDate.getMonth(),
+                                          beginDate.getDate(),
+                                          beginDate.getHours(),
+                                          beginDate.getMinutes())
                 console.log("===>test_0900 begin===>"+DoNotDateI)
                 console.log("===>test_0900 beginDate===>"+data.begin)
                 console.log("===>test_0900 endDate===>"+data.end)
@@ -297,7 +345,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
      */
     it('ActsSetDoNotDisturbTest_test_1000', 0, async function (done) {
         var beginDate = new Date()
-        var endDate = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours()+6,beginDate.getMinutes()+32)
+        var endDate = new Date(beginDate.getFullYear(),
+                               beginDate.getMonth(),
+                               beginDate.getDate(),
+                               beginDate.getHours()+6,
+                               beginDate.getMinutes()+32)
         console.log("===>test_1000 beginDate ===>"+beginDate)
         console.log("===>test_1000 endDate ===>"+endDate)
         notify.setDoNotDisturbDate({
@@ -308,7 +360,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
              notify.getDoNotDisturbDate().then(async(data)=>{
                 console.log("===>test_1000 getDoNotDisturbDate===>"+JSON.stringify(data))
                 expect(data.type).assertEqual(3);
-                var DoNotDateJ = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours(),beginDate.getMinutes())
+                var DoNotDateJ = new Date(beginDate.getFullYear(),
+                                          beginDate.getMonth(),
+                                          beginDate.getDate(),
+                                          beginDate.getHours(),
+                                          beginDate.getMinutes())
                 console.log("===>test_1000 begin===>"+DoNotDateJ)
                 console.log("===>test_1000 beginDate===>"+data.begin)
                 console.log("===>test_1000 endDate===>"+data.end)
@@ -344,7 +400,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
             await notify.getDoNotDisturbDate(async(err,data)=>{
                 console.log("===>test_1100 getDoNotDisturbDate===>"+err.code+JSON.stringify(data))
                 expect(data.type).assertEqual(2);
-                var DoNotDateK = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours(),beginDate.getMinutes())
+                var DoNotDateK = new Date(beginDate.getFullYear(),
+                                          beginDate.getMonth(),
+                                          beginDate.getDate(),
+                                          beginDate.getHours(),
+                                          beginDate.getMinutes())
                 expect(data.begin.toString()).assertEqual(DoNotDateK);
                 expect(data.end.toString()).assertEqual(DoNotDateK);
                 await notify.setDoNotDisturbDate(
@@ -376,7 +436,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
             await notify.getDoNotDisturbDate(async(err,data)=>{
                 console.log("===>test_1200 getDoNotDisturbDate===>"+err.code+JSON.stringify(data));
                 expect(data.type).assertEqual(2);
-                var DoNotDateL = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours(),beginDate.getMinutes())
+                var DoNotDateL = new Date(beginDate.getFullYear(),
+                                          beginDate.getMonth(),
+                                          beginDate.getDate(),
+                                          beginDate.getHours(),
+                                          beginDate.getMinutes())
                 expect(data.begin.toString()).assertEqual(DoNotDateL);
                 expect(data.end.toString()).assertEqual(DoNotDateL);
                 await notify.setDoNotDisturbDate(
@@ -406,7 +470,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
      */
     it('ActsSetDoNotDisturbTest_test_1300', 0, async function (done) {
         var beginDate = new Date()
-        var endDate = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate()-2,beginDate.getHours()+6,beginDate.getMinutes()+32)
+        var endDate = new Date(beginDate.getFullYear(),
+                               beginDate.getMonth(),
+                               beginDate.getDate()-2,
+                               beginDate.getHours()+6,
+                               beginDate.getMinutes()+32)
         console.log("===>test_1300 beginDate ===>"+beginDate)
         console.log("===>test_1300 endDate ===>"+endDate)
         await notify.setDoNotDisturbDate({
@@ -418,7 +486,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
             await notify.getDoNotDisturbDate(async(err,data)=>{
                 console.log("===>test_1300 getDoNotDisturbDate success===>"+err.code+JSON.stringify(data))
                 expect(data.type).assertEqual(2);
-                var DoNotDateM = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours(),beginDate.getMinutes())
+                var DoNotDateM = new Date(beginDate.getFullYear(),
+                                          beginDate.getMonth(),
+                                          beginDate.getDate(),
+                                          beginDate.getHours(),
+                                          beginDate.getMinutes())
                 expect(data.begin.toString()).assertEqual(DoNotDateM);
                 expect(data.end.toString()).assertEqual(endDate);
                 await notify.setDoNotDisturbDate(
@@ -439,7 +511,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
      */
     it('ActsSetDoNotDisturbTest_test_1400', 0, async function (done) {
         var beginDate = new Date()
-        var endDate = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate()-1,beginDate.getHours()+6,beginDate.getMinutes()+32)
+        var endDate = new Date(beginDate.getFullYear(),
+                               beginDate.getMonth(),
+                               beginDate.getDate()-1,
+                               beginDate.getHours()+6,
+                               beginDate.getMinutes()+32)
         console.log("===>test_1400 beginDate ===>"+beginDate)
         console.log("===>test_1400 endDate ===>"+endDate)
         await notify.setDoNotDisturbDate({
@@ -450,7 +526,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
             await notify.getDoNotDisturbDate(async(err,data)=>{
                 console.log("===>test_1400 getDoNotDisturbDate===>"+err.code+JSON.stringify(data))
                 expect(data.type).assertEqual(2);
-                var DoNotDateN = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours(),beginDate.getMinutes())
+                var DoNotDateN = new Date(beginDate.getFullYear(),
+                                          beginDate.getMonth(),
+                                          beginDate.getDate(),
+                                          beginDate.getHours(),
+                                          beginDate.getMinutes())
                 expect(data.begin.toString()).assertEqual(DoNotDateN);
                 expect(data.end.toString()).assertEqual(endDate);
                 await notify.setDoNotDisturbDate(
@@ -623,20 +703,32 @@ describe('ActsAnsDoNotDisturbTest', function () {
      */
     it('ActsSetDoNotDisturbTest_test_2100', 0, async function (done) {
         var beginDate = new Date()
-        var endDate = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours()+11,beginDate.getMinutes()+26)
+        var endDate = new Date(beginDate.getFullYear(),
+                               beginDate.getMonth(),
+                               beginDate.getDate(),
+                               beginDate.getHours()+11,
+                               beginDate.getMinutes()+26)
         var subInfo ={
             onConnect:connectCallbacka,
             onDoNotDisturbDateChange:async(data)=>{
                 console.debug("==>disturbModeCallbacka data==>" +JSON.stringify(data));
                 expect(data.type).assertEqual(3);
-                var DoNotDateO = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours(),beginDate.getMinutes())
+                var DoNotDateO = new Date(beginDate.getFullYear(),
+                                          beginDate.getMonth(),
+                                          beginDate.getDate(),
+                                          beginDate.getHours(),
+                                          beginDate.getMinutes())
                 expect(data.begin.toString()).assertEqual(DoNotDateO);
                 expect(data.end.toString()).assertEqual(endDate);
                 await notify.getDoNotDisturbDate(async(err,data)=>{
                     console.log("===>test_2100 getDoNotDisturbDate===>"+err.code+JSON.stringify(data))
                     notify.unsubscribe(subInfo, unSubscribeCallbacka);
                     expect(data.type).assertEqual(3);
-                    var DoNotDateP = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours(),beginDate.getMinutes())
+                    var DoNotDateP = new Date(beginDate.getFullYear(),
+                                              beginDate.getMonth(),
+                                              beginDate.getDate(),
+                                              beginDate.getHours(),
+                                              beginDate.getMinutes())
                     expect(data.begin.toString()).assertEqual(DoNotDateP);
                     expect(data.end.toString()).assertEqual(endDate);
                     await notify.setDoNotDisturbDate(
@@ -666,20 +758,32 @@ describe('ActsAnsDoNotDisturbTest', function () {
      */
     it('ActsSetDoNotDisturbTest_test_2200', 0, async function (done) {
         var beginDate = new Date()
-        var endDate = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours()+16,beginDate.getMinutes()+45)
+        var endDate = new Date(beginDate.getFullYear(),
+                               beginDate.getMonth(),
+                               beginDate.getDate(),
+                               beginDate.getHours()+16,
+                               beginDate.getMinutes()+45)
         var subInfo ={
             onConnect:connectCallbackb,
             onDoNotDisturbDateChange:async(data)=>{
                 console.debug("==>disturbModeCallbackb data==>" +JSON.stringify(data));
                 expect(data.type).assertEqual(3);
-                var DoNotDateQ = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours(),beginDate.getMinutes())
+                var DoNotDateQ = new Date(beginDate.getFullYear(),
+                                          beginDate.getMonth(),
+                                          beginDate.getDate(),
+                                          beginDate.getHours(),
+                                          beginDate.getMinutes())
                 expect(data.begin.toString()).assertEqual(DoNotDateQ);
                 expect(data.end.toString()).assertEqual(endDate);
                 await notify.getDoNotDisturbDate().then(async(data)=>{
                     console.log("===>test_2200 getDoNotDisturbDate===>"+JSON.stringify(data));
                     notify.unsubscribe(subInfo, unSubscribeCallbackb);
                     expect(data.type).assertEqual(3);
-                    var DoNotDateR = new Date(beginDate.getFullYear(),beginDate.getMonth(),beginDate.getDate(),beginDate.getHours(),beginDate.getMinutes())
+                    var DoNotDateR = new Date(beginDate.getFullYear(),
+                                              beginDate.getMonth(),
+                                              beginDate.getDate(),
+                                              beginDate.getHours(),
+                                              beginDate.getMinutes())
                     expect(data.begin.toString()).assertEqual(DoNotDateR);
                     expect(data.end.toString()).assertEqual(endDate);
                     await notify.setDoNotDisturbDate(
