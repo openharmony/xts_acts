@@ -292,9 +292,35 @@ describe('AudioEncoderFuncPromise', function () {
             "sample_rate": 48000,
             "audio_raw_format": 16,
         }
+        let mediaDescription2 = {
+            "codec_mime": 'audio/mp4a-latm',
+        }
         let savepath = BASIC_PATH + '0000.txt';
         needgetMediaDes = true;
         workdoneAtEOS = true;
+        await media.getMediaCapability().then((mediaCaps)  => {
+            console.info('getMediaCapability success');
+            if (typeof (mediaCaps) != 'undefined') {
+                await mediaCaps.getAudioEncoderCaps().then((audioCaps)  => {
+                    console.info('getAudioEncoderCaps success');
+                    if (typeof (audioCaps) != 'undefined') {
+                        console.info("case audioCaps " + audioCaps);
+                    } else {
+                        console.info("case audioCaps is not defined");
+                    }
+                }, failCallback).catch(failCatch);
+                await mediaCaps.findAudioEncoder(mediaDescription2).then((codecname)  => {
+                    console.info('getAudioEncoderCaps success');
+                    if (typeof (codecname) != 'undefined') {
+                        console.info("case codecname " + codecname);
+                    } else {
+                        console.info("case codecname is not defined");
+                    }
+                }, failCallback).catch(failCatch);
+            } else {
+                console.info('mediaCaps is not defined');
+            }
+        }, failCallback).catch(failCatch);
         await media.createAudioEncoderByMime('audio/mp4a-latm').then((processor) => {
             console.info("case create createAudioEncoder success");
             audioEncodeProcessor = processor;

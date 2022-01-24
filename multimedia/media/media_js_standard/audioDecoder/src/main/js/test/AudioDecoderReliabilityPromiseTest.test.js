@@ -146,6 +146,7 @@ describe('AudioDecoderReliabilityPromise', function () {
                 "sample_rate": 44100,
                 "audio_raw_format": 4,
     };
+    let expectError = false;
 
     beforeAll(function() {
         console.info('beforeAll case');
@@ -257,6 +258,7 @@ describe('AudioDecoderReliabilityPromise', function () {
             381, 410, 394, 386, 345, 345, 354, 397, 386, 375, 390, 347, 411, 381, 383, 374, 379,
             380, 378, 391, 380, 339, 390, 383, 375];
         ES_LENGTH = 500;
+        expectError = false;
     })
 
     afterEach(function() {
@@ -267,7 +269,6 @@ describe('AudioDecoderReliabilityPromise', function () {
         wait(2000);
     })
 
-
     afterAll(function() {
         console.info('afterAll case');
     })
@@ -275,6 +276,12 @@ describe('AudioDecoderReliabilityPromise', function () {
     let failCallback = function(err) {
         console.info('case callback err : ' + err);
         expect(err).assertUndefined();
+    }
+
+    let failCallbackTrue = function(err, mySteps, done) {
+        console.info('case callback err : ' + err);
+        expect(err != undefined).assertTrue();
+        nextStep(mySteps, done);
     }
 
     let failCatch = function(err) {
@@ -303,7 +310,7 @@ describe('AudioDecoderReliabilityPromise', function () {
             audioDecodeProcessor = processor;
             setCallback(savepath, done);
             console.info("case start api test");
-            nextStep(mySteps, mediaDescription, done);
+            nextStep(mySteps, done);
         })
     }
 
@@ -353,7 +360,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         for(let t = Date.now(); Date.now() - t <= time;);
     }
 
-    function nextStep(mySteps, mediaDescription, done) {
+    function nextStep(mySteps, done) {
         console.info("case myStep[0]: " + mySteps[0]);
         if (mySteps[0] == END) {
             done();
@@ -367,7 +374,7 @@ describe('AudioDecoderReliabilityPromise', function () {
                 audioDecodeProcessor.configure(mediaDescription).then(() => {
                     console.info(`case configure 1`);
                     readFile(AUDIOPATH);
-                    nextStep(mySteps, mediaDescription, done);
+                    nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
                 break;
             case PREPARE:
@@ -375,7 +382,7 @@ describe('AudioDecoderReliabilityPromise', function () {
                 console.info(`case to prepare`);
                 audioDecodeProcessor.prepare().then(() => {
                     console.info(`case prepare 1`);
-                    nextStep(mySteps, mediaDescription, done);
+                    nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
                 break;
             case START:
@@ -389,7 +396,7 @@ describe('AudioDecoderReliabilityPromise', function () {
                 }
                 audioDecodeProcessor.start().then(() => {
                     console.info(`case start 1`);
-                    nextStep(mySteps, mediaDescription, done);
+                    nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
                 break;
             case FLUSH:
@@ -403,7 +410,7 @@ describe('AudioDecoderReliabilityPromise', function () {
                         workdoneAtEOS = true;
                         flushAtEOS = false;
                     }
-                    nextStep(mySteps, mediaDescription, done);
+                    nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
                 break;
             case STOP:
@@ -411,7 +418,7 @@ describe('AudioDecoderReliabilityPromise', function () {
                 console.info(`case to stop`);
                 audioDecodeProcessor.stop().then(() => {
                     console.info(`case stop 1`);
-                    nextStep(mySteps, mediaDescription, done);
+                    nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
                 break;
             case RESET:
@@ -419,13 +426,13 @@ describe('AudioDecoderReliabilityPromise', function () {
                 console.info(`case to reset`);
                 audioDecodeProcessor.reset().then(() => {
                     console.info(`case reset 1`);
-                    nextStep(mySteps, mediaDescription, done);
+                    nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
                 break;
             case HOLDON:
                 mySteps.shift();
                 setTimeout(() =>{
-                    nextStep(mySteps, mediaDescription, done);
+                    nextStep(mySteps, done);
                 }, WAITTIME);
                 break;
             case WAITFORALLOUTS:
@@ -435,53 +442,48 @@ describe('AudioDecoderReliabilityPromise', function () {
             case CONFIGURE_ERROR:
                 mySteps.shift();
                 console.info(`case to configure 2`);
-                audioDecodeProcessor.configure(mediaDescription, (err) => {
-                    expect(err != undefined).assertTrue();
+                audioDecodeProcessor.configure(mediaDescription).then(() => {
                     console.info(`case configure error 1`);
-                    nextStep(mySteps, mediaDescription, done);
-                });
+                    expect(expectError).assertTrue();
+                }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
                 break;
             case PREPARE_ERROR:
                 mySteps.shift();
                 console.info(`case to prepare 2`);
-                audioDecodeProcessor.prepare((err) => {
-                    expect(err != undefined).assertTrue();
+                audioDecodeProcessor.prepare().then(() => {
                     console.info(`case prepare error 1`);
-                    nextStep(mySteps, mediaDescription, done);
-                });
+                    expect(expectError).assertTrue();
+                }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
                 break;
             case START_ERROR:
                 mySteps.shift();
                 console.info(`case to start 2`);
-                audioDecodeProcessor.start((err) => {
-                    expect(err != undefined).assertTrue();
+                audioDecodeProcessor.start().then(() => {
                     console.info(`case start error 1`);
-                    nextStep(mySteps, mediaDescription, done);
-                });
+                    expect(expectError).assertTrue();
+                }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
                 break;
             case FLUSH_ERROR:
                 mySteps.shift();
                 console.info(`case to flush 2`);
-                audioDecodeProcessor.flush((err) => {
-                    expect(err != undefined).assertTrue();
+                audioDecodeProcessor.flush().then(() => {
                     console.info(`case flush error 1`);
-                    nextStep(mySteps, mediaDescription, done);
-                });
+                    expect(expectError).assertTrue();
+                }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
                 break;
             case STOP_ERROR:
                 mySteps.shift();
                 console.info(`case to stop 2`);
-                audioDecodeProcessor.stop((err) => {
-                    expect(err != undefined).assertTrue();
+                audioDecodeProcessor.stop().then(() => {
                     console.info(`case stop error 1`);
-                    nextStep(mySteps, mediaDescription, done);
-                });
+                    expect(expectError).assertTrue();
+                }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
                 break;
             case JUDGE_EOS:
                 mySteps.shift();
                 console.info(`case judge EOS state`);
                 expect(sawOutputEOS).assertTrue();
-                nextStep(mySteps, mediaDescription, done);
+                nextStep(mySteps, done);
                 break;
             default:
                 break;

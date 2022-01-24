@@ -57,6 +57,7 @@ describe('AudioEncoderSTTPromise', function () {
                 "sample_rate": 48000,
                 "audio_raw_format": 16,
     };
+    let expectError = false;
 
     beforeAll(function() {
         console.info('beforeAll case');
@@ -78,6 +79,7 @@ describe('AudioEncoderSTTPromise', function () {
         inputQueue = [];
         outputQueue = [];
         ES_LENGTH = 200;
+        expectError = false;
     })
 
     afterEach(function() {
@@ -95,6 +97,12 @@ describe('AudioEncoderSTTPromise', function () {
     let failCallback = function(err) {
         console.info('case callback err : ' + err);
         expect(err).assertUndefined();
+    }
+
+    let failCallbackTrue = function(err, mySteps, done) {
+        console.info('case callback err : ' + err);
+        expect(err != undefined).assertTrue();
+        nextStep(mySteps, done);
     }
 
     let failCatch = function(err) {
@@ -121,7 +129,7 @@ describe('AudioEncoderSTTPromise', function () {
             audioEncodeProcessor = processor;
             setCallback(savepath, done);
             console.info("case start api test");
-            nextStep(mySteps, mediaDescription, done);
+            nextStep(mySteps, done);
         }, failCallback).catch(failCatch);
     }
 
@@ -200,7 +208,7 @@ describe('AudioEncoderSTTPromise', function () {
         for(let t = Date.now();Date.now() - t <= time;);
     }
 
-    function nextStep(mySteps, mediaDescription, done) {
+    function nextStep(mySteps, done) {
         console.info("case myStep[0]: " + mySteps[0]);
         if (mySteps[0] == END) {
             done();
@@ -214,7 +222,7 @@ describe('AudioEncoderSTTPromise', function () {
                 audioEncodeProcessor.configure(mediaDescription).then(() => {
                     console.info(`case configure 1`);
                     readFile(AUDIOPATH);
-                    nextStep(mySteps, mediaDescription, done);
+                    nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
                 break;
             case PREPARE:
@@ -222,7 +230,7 @@ describe('AudioEncoderSTTPromise', function () {
                 console.info(`case to prepare`);
                 audioEncodeProcessor.prepare().then(() => {
                     console.info(`case prepare 1`);
-                    nextStep(mySteps, mediaDescription, done);
+                    nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
                 break;
             case START:
@@ -236,7 +244,7 @@ describe('AudioEncoderSTTPromise', function () {
                 }
                 audioEncodeProcessor.start().then(() => {
                     console.info(`case start 1`);
-                    nextStep(mySteps, mediaDescription, done);
+                    nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
                 break;
             case FLUSH:
@@ -250,7 +258,7 @@ describe('AudioEncoderSTTPromise', function () {
                         workdoneAtEOS = true;
                         flushAtEOS = false;
                     }
-                    nextStep(mySteps, mediaDescription, done);
+                    nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
                 break;
             case STOP:
@@ -258,7 +266,7 @@ describe('AudioEncoderSTTPromise', function () {
                 console.info(`case to stop`);
                 audioEncodeProcessor.stop().then(() => {
                     console.info(`case stop 1`);
-                    nextStep(mySteps, mediaDescription, done);
+                    nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
                 break;
             case RESET:
@@ -266,13 +274,13 @@ describe('AudioEncoderSTTPromise', function () {
                 console.info(`case to reset`);
                 audioEncodeProcessor.reset().then(() => {
                     console.info(`case reset 1`);
-                    nextStep(mySteps, mediaDescription, done);
+                    nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
                 break;
             case HOLDON:
                 mySteps.shift();
                 setTimeout(() =>{
-                    nextStep(mySteps, mediaDescription, done);
+                    nextStep(mySteps, done);
                 }, WAITTIME);
                 break;
             case WAITFORALLOUTS:
@@ -281,54 +289,49 @@ describe('AudioEncoderSTTPromise', function () {
                 break;
             case CONFIGURE_ERROR:
                 mySteps.shift();
-                console.info(`case to configure`);
-                audioEncodeProcessor.configure(mediaDescription, (err) => {
-                    expect(err != undefined).assertTrue();
+                console.info(`case to configure 2`);
+                audioEncodeProcessor.configure(mediaDescription).then(() => {
                     console.info(`case configure error 1`);
-                    nextStep(mySteps, mediaDescription, done);
-                });
+                    expect(expectError).assertTrue();
+                }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
                 break;
             case PREPARE_ERROR:
                 mySteps.shift();
-                console.info(`case to prepare`);
-                audioEncodeProcessor.prepare((err) => {
-                    expect(err != undefined).assertTrue();
+                console.info(`case to prepare 2`);
+                audioEncodeProcessor.prepare().then(() => {
                     console.info(`case prepare error 1`);
-                    nextStep(mySteps, mediaDescription, done);
-                });
+                    expect(expectError).assertTrue();
+                }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
                 break;
             case START_ERROR:
                 mySteps.shift();
-                console.info(`case to start`);
-                audioEncodeProcessor.start((err) => {
-                    expect(err != undefined).assertTrue();
+                console.info(`case to start 2`);
+                audioEncodeProcessor.start().then(() => {
                     console.info(`case start error 1`);
-                    nextStep(mySteps, mediaDescription, done);
-                });
+                    expect(expectError).assertTrue();
+                }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
                 break;
             case FLUSH_ERROR:
                 mySteps.shift();
-                console.info(`case to flush`);
-                audioEncodeProcessor.flush((err) => {
-                    expect(err != undefined).assertTrue();
+                console.info(`case to flush 2`);
+                audioEncodeProcessor.flush().then(() => {
                     console.info(`case flush error 1`);
-                    nextStep(mySteps, mediaDescription, done);
-                });
+                    expect(expectError).assertTrue();
+                }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
                 break;
             case STOP_ERROR:
                 mySteps.shift();
-                console.info(`case to stop`);
-                audioEncodeProcessor.stop((err) => {
-                    expect(err != undefined).assertTrue();
+                console.info(`case to stop 2`);
+                audioEncodeProcessor.stop().then(() => {
                     console.info(`case stop error 1`);
-                    nextStep(mySteps, mediaDescription, done);
-                });
+                    expect(expectError).assertTrue();
+                }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
                 break;
             case JUDGE_EOS:
                 mySteps.shift();
                 console.info(`case judge EOS state`);
                 expect(sawOutputEOS).assertTrue();
-                nextStep(mySteps, mediaDescription, done);
+                nextStep(mySteps, done);
                 break;
             default:
                 break;
