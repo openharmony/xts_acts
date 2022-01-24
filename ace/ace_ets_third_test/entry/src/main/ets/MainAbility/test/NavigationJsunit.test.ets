@@ -69,10 +69,10 @@ export default function navigationJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[navigation1] get inspector value is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Navigation')
-      expect(obj.$attrs.navigationTitle).assertEqual('title')
-      expect(obj.$attrs.navigationSubTitle).assertEqual('subtitle')
-      expect(obj.$attrs.hideNavigationBackButton).assertFalse()
-      expect(obj.$attrs.hideNavigationBar).assertFalse()
+      expect(obj.$attrs.title).assertEqual('title')
+      expect(obj.$attrs.subtitle).assertEqual('subtitle')
+      expect(obj.$attrs.hideBackButton).assertFalse()
+      expect(obj.$attrs.hideTitleBar).assertFalse()
       console.info('testNavigation010 End');
       done();
     });
@@ -89,8 +89,8 @@ export default function navigationJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[navigation2] get inspector value is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Navigation')
-      expect(obj.$attrs.hideNavigationBar).assertTrue()
-      expect(obj.$attrs.hideNavigationBackButton).assertTrue()
+      expect(obj.$attrs.hideTitleBar).assertTrue()
+      expect(obj.$attrs.hideBackButton).assertTrue()
       console.info('testNavigation020 End');
       done();
     });

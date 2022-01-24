@@ -92,8 +92,8 @@ export default function listItemJsunit() {
       console.log('ListItem2‘s sticky is ' + JSON.stringify(obj.$attrs.sticky))
       console.log('ListItem2‘s editable is ' + JSON.stringify(obj.$attrs.editable))
       await sleep(1)
-      expect(obj.$attr.sticky).assertEqual('Sticky.Opacity')
-      expect(obj.$attr.editable).assertEqual('true')
+      expect(obj.$attrs.sticky).assertEqual('Sticky.Opacity')
+      expect(obj.$attrs.editable).assertEqual('true')
       console.info('++++++++++++++++ ListItem TestCase 3 End ++++++++++++++++');
       done();
     });

@@ -135,7 +135,7 @@ export default function textJsunit() {
       expect(obj.$attrs.zIndex).assertEqual(1)
       expect(obj.$attrs.fontColor).assertEqual("#FF000000")
       expect(obj.$attrs.visibility).assertEqual("Visibility.Visible")
-      expect(obj.$attrs.fontSize).assertEqual("15")
+      expect(obj.$attrs.fontSize).assertEqual("15.000000fp")
       expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Bold")
       expect(obj.$attrs.fontStyle).assertEqual("FontStyle.Italic")
       expect(obj.$attrs.fontFamily).assertEqual("sans-serif")
