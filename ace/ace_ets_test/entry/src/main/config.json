@@ -63,7 +63,6 @@
           "pages/AlphabetIndexer",
           "pages/Grid",
           "pages/GridItem",
-          "pages/HyperLink",
           "pages/List",
           "pages/ListItem",
           "pages/Navigator",

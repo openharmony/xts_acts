@@ -68,7 +68,7 @@ export default function textAreaJsunit() {
       let strJson = getInspectorByKey('textArea1');
       let obj = JSON.parse(strJson);
       console.info("[textArea1] get inspector value is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Textarea')
+      expect(obj.$type).assertEqual('TextArea')
       expect(obj.$attrs.placeholderColor).assertEqual('#FFC0C0C0')
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start')
       expect(obj.$attrs.caretColor).assertEqual('#FF000000')
@@ -91,7 +91,7 @@ export default function textAreaJsunit() {
       let strJson = getInspectorByKey('textArea2');
       let obj = JSON.parse(strJson);
       console.info("[textArea2] get inspector value is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Textarea')
+      expect(obj.$type).assertEqual('TextArea')
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Center')
       console.info('testTextArea020 End');
       done();
@@ -107,7 +107,7 @@ export default function textAreaJsunit() {
       let strJson = getInspectorByKey('textArea3');
       let obj = JSON.parse(strJson);
       console.info("[textArea3] get inspector value is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Textarea')
+      expect(obj.$type).assertEqual('TextArea')
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.End')
       console.info('testTextArea030 End');
       done();

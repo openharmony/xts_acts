@@ -24,13 +24,11 @@ import panelJsunit from './PanelJsunit.test.ets';
 import navigatorJsunit from './NavigatorJsunit.test.ets';
 import rowJsunit from './RowJsunit.test.ets';
 import listItemJsunit from './ListItemJsunit.test.ets';
-import hyperlinkJsunit from './HyperLinkJsunit.test.ets';
 import gridItemJsunit from './GridItem.test.ets';
 import gridJsunit from './GridJsnuit.test.ets';
 import videoJsunit from './VideoJsunit.test.ets';
 export default function testsuite() {
   alphabetIndexerJsunit()
-  hyperlinkJsunit()
   rowJsunit()
   gridJsunit()
   gridItemJsunit()

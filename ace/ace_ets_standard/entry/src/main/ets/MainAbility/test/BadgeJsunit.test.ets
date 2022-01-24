@@ -74,9 +74,13 @@ export default function badgeJsunit() {
       console.log("yr badge0 position-BadgePosition.Right" + JSON.stringify(obj.$attrs.position))
       expect(obj.$attrs.maxCount).assertEqual('99');
       console.log("yr badge0 maxCount-'99'" + JSON.stringify(obj.$attrs.maxCount))
-      expect(obj.$attrs.style.color).assertEqual('0xFFFFFF');
-      expect(obj.$attrs.style.fontSize).assertEqual('16');
-      expect(obj.$attrs.style.badgeSize).assertEqual('20');
+      let style = JSON.parse(obj.$attrs.style)
+      console.log(style.color)
+      console.log(style.fontSize)
+      console.log(style.badgeSize)
+      expect(style.color).assertEqual('#FFFFFFFF');
+      expect(style.fontSize).assertEqual('16.000000fp');
+      expect(style.badgeSize).assertEqual('20.000000fp');
       console.log("badge0 style : " + JSON.stringify(obj.$attrs.style))
       console.info('testGetInspectorByKey END');
       done();
