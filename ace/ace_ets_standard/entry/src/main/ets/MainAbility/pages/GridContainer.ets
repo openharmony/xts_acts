@@ -76,7 +76,7 @@ struct gridContainer {
               }).backgroundColor(0x317aff)
           }
 
-          GridContainer({ columns: 12, sizeType: SizeType.MD, gutter: 10, margin: 20 }) {
+          GridContainer({ columns: "auto", sizeType: SizeType.MD, gutter: '10', margin: '20' }) {
             Row() {
               Text('1')
                 .useSizeType({

@@ -16,6 +16,15 @@
 @Entry
 @Component
 struct span_textcase {
+
+  onPageShow() {
+    console.info('Span page show called');
+  }
+
+  onBuildDone() {
+    console.info('Span page build done called');
+  }
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Column() {
@@ -25,13 +34,16 @@ struct span_textcase {
             .textCase(TextCase.UpperCase)
             .fontColor(Color.Blue)
             .fontSize("20fp")
+            .letterSpacing(5)
+            .fontFamily("sans-serif")
             .fontWeight(FontWeight.Bold)
             .fontStyle(FontStyle.Italic)
             .key('span1')
           Span('The second test Span demo')
             .textCase(TextCase.LowerCase)
             .fontColor(Color.Black)
-            .fontSize("30fp")
+            .letterSpacing('5')
+            .fontSize(30)
             .key('span2')
           Span('The third test Span demo')
             .textCase(TextCase.Normal)

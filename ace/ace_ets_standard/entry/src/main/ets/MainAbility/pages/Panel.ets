@@ -18,6 +18,14 @@
 struct PanelExample {
   @State show: boolean = true
 
+  onPageShow() {
+    console.info('Panel page show called');
+  }
+
+  onBuildDone() {
+    console.info('Panel page build done called');
+  }
+
   build() {
     Column() {
       Text('2021-09-30    Today Calendar: 1.afternoon......Click for details')

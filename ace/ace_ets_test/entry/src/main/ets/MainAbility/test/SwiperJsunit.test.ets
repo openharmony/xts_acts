@@ -100,6 +100,7 @@ export default function swiperJsunit() {
       console.log('Swiper‘s duration is ' + JSON.stringify(obj.$attrs.duration))
       console.log('Swiper‘s vertical is ' + JSON.stringify(obj.$attrs.vertical))
       console.log('Swiper‘s itemSpace is ' + JSON.stringify(obj.$attrs.itemSpace))
+      console.log('Swiper‘s disableSwipe is ' + JSON.stringify(obj.$attrs.disableSwipe))
       expect(obj.$attrs.index).assertEqual('1')
       expect(obj.$attrs.autoPlay).assertEqual('true')
       expect(obj.$attrs.interval).assertEqual('4000')

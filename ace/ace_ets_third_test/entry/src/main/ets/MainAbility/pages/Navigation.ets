@@ -69,6 +69,9 @@ struct NavigationExample {
         { value: 'add' },
         { value: 'collect' }
       ] })
+      .onTitleModeChanged((titleModel: NavigationTitleMode) => {
+        console.log('titleMode:' + titleModel)
+      })
 
       Navigation() {
         Search({ value: '', placeholder: '' }).width('90%').margin(0)

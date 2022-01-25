@@ -64,12 +64,17 @@ export default function spanJsunit() {
       let strJson = getInspectorByKey('span1');
       let obj = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
+      
       console.info("span1 decoration" + JSON.stringify(obj.$attrs.decoration))
       console.info("span1 textCase" + JSON.stringify(obj.$attrs.textCase))
       console.info("span1 content" + JSON.stringify(obj.$attrs.content))
+      console.info("span1 fontSize" + JSON.stringify(obj.$attrs.fontSize))
+      console.info("span1 letterSpacing" + JSON.stringify(obj.$attrs.letterSpacing))
       expect(obj.$attrs.decoration).assertEqual('{"Type":"TextDecorationType.LineThrough","Color":"#FFFF0000"}')
       expect(obj.$attrs.textCase).assertEqual('TextCase.UpperCase')
       expect(obj.$attrs.content).assertEqual('Test Span demo')
+      expect(obj.$attrs.fontSize).assertEqual('20fp')
+      expect(obj.$attrs.letterSpacing).assertEqual(5)
       console.info('testGetSpanAttr1 END');
       done();
     });

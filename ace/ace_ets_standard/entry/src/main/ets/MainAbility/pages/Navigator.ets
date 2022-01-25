@@ -19,6 +19,14 @@ struct navigator_testcase {
   @State active: boolean = false
   @State params: Object = { text: 'news' }
 
+  onPageShow() {
+    console.info('Navigator page show called');
+  }
+
+  onBuildDone() {
+    console.info('Navigator page build done called');
+  }
+
   build() {
     Column() {
       Navigator({ target: "pages/index", type: NavigationType.Back }) {

@@ -46,6 +46,8 @@ struct TextAreaExample {
         .onChange((value: string) => {
           this.text1 = value
         })
+        .onCopy((value: string) => {
+        })
         .key('textArea1')
 
       Text(this.text2).width('90%').height(60).fontSize(40)

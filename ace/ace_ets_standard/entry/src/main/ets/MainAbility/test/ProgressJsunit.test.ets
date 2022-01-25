@@ -98,5 +98,53 @@ export default function progressJsunit() {
       console.info('testGetProgressAttr2 END');
       done();
     });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_API_0970
+     * @tc.name      testGetProgressAttr030
+     * @tc.desc      aceEtsTest
+     */
+    it('testGetProgressAttr030', 0, async function (done) {
+      console.info('testGetProgressAttr3 START');
+      let strJson = getInspectorByKey('progress3');
+      let obj = JSON.parse(strJson);
+      console.info("component obj is: " + JSON.stringify(obj));
+      console.log("progress style" + JSON.stringify(obj.$attrs.style))
+      expect(obj.$attrs.style).assertEqual("ProgressStyle.Ring")
+      console.info('testGetProgressAttr3 END');
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_API_0970
+     * @tc.name      testGetProgressAttr040
+     * @tc.desc      aceEtsTest
+     */
+    it('testGetProgressAttr040', 0, async function (done) {
+      console.info('testGetProgressAttr4 START');
+      let strJson = getInspectorByKey('progress4');
+      let obj = JSON.parse(strJson);
+      console.info("component obj is: " + JSON.stringify(obj));
+      console.log("progress style" + JSON.stringify(obj.$attrs.style))
+      expect(obj.$attrs.style).assertEqual("ProgressStyle.ScaleRing")
+      console.info('testGetProgressAttr4 END');
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_API_0970
+     * @tc.name      testGetProgressAttr050
+     * @tc.desc      aceEtsTest
+     */
+    it('testGetProgressAttr020', 0, async function (done) {
+      console.info('testGetProgressAttr5 START');
+      let strJson = getInspectorByKey('progress5');
+      let obj = JSON.parse(strJson);
+      console.info("component obj is: " + JSON.stringify(obj));
+      console.log("progress style" + JSON.stringify(obj.$attrs.style))
+      expect(obj.$attrs.style).assertEqual("ProgressStyle.Capsule")
+      console.info('testGetProgressAttr5 END');
+      done();
+    });
   })
 }

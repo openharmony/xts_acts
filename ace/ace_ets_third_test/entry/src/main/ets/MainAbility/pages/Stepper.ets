@@ -61,6 +61,12 @@ struct StepperExample {
     .onChange((prevIndex: number, index: number) => {
       this.currentIndex = index
     })
+    .onNext((index: number, pendingIndex: number) => {
+      console.info('pendingIndex:' + pendingIndex)
+    })
+    .onPrevious((index: number, pendingIndex: number) => {
+      console.info('pendingIndex:' + pendingIndex)
+    })
     .align(Alignment.Center)
   }
 }

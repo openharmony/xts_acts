@@ -36,7 +36,7 @@ struct column {
       }.alignItems(HorizontalAlign.Center).width('90%').border({ width: 1 }).key('column')
 
       Text('alignItems(Start)').fontSize(9).fontColor(0xCCCCCC).width('90%')
-      Column() {
+      Column({ space: '5' }) {
         Column().width('50%').height(50).backgroundColor(0xAFEEEE)
         Column().width('50%').height(50).backgroundColor(0x00FFFF)
       }.alignItems(HorizontalAlign.Start).width('90%').border({ width: 1 }).key('column1')

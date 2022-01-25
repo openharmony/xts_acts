@@ -40,6 +40,31 @@ struct VideoCreateComponent {
         .loop(true)
         .objectFit(ImageFit.Cover)
         .key('video')
+        .onStart(() => {
+          console.info("onStart");
+        })
+        .onPause(() => {
+          console.info("onPause");
+        })
+        .onFinish(() => {
+          console.info("onFinish");
+        })
+        .onPrepared(() => {
+          console.info("onPrepared");
+        })
+        .onSeeking(() => {
+          console.info("onSeeking");
+        })
+        .onSeeked(() => {
+          console.info("onSeeked");
+        })
+        .onUpdate(() => {
+          console.info("onUpdate");
+        })
+        .onError(() => {
+          console.info("onError");
+        })
+
       Row() {
         Button("start").onClick(() => {
           this.myVideoController.start();
@@ -52,6 +77,18 @@ struct VideoCreateComponent {
       Row() {
         Button("setCurrentTime").onClick(() => {
           this.myVideoController.setCurrentTime(9);
+        });
+        Button("setCurrentTime").onClick(() => {
+          this.myVideoController.setCurrentTime(9, SeekMode.PreviousSync);
+        });
+        Button("setCurrentTime").onClick(() => {
+          this.myVideoController.setCurrentTime(9, SeekMode.NextSync);
+        });
+        Button("setCurrentTime").onClick(() => {
+          this.myVideoController.setCurrentTime(9, SeekMode.Closest);
+        });
+        Button("setCurrentTime").onClick(() => {
+          this.myVideoController.setCurrentTime(9, SeekMode.ClosestSync);
         });
       }
     }
