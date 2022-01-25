@@ -5112,10 +5112,10 @@ describe('TypesTest', function() {
      * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
-    it('testIsAsyncFunction001', 0, function() {
+     it('testIsAsyncFunction001', 0, function() {
         var proc = new util.Types();
-        var result = proc.isAsyncFunction(async function foo() {});
-        expect(result).assertEqual(true);
+        var result = proc.isAsyncFunction(false);
+        expect(result).assertEqual(false);
     })
 
     /**
@@ -5151,18 +5151,6 @@ describe('TypesTest', function() {
     it('testIsAsyncFunction004', 0, function() {
         var proc = new util.Types();
         var result = proc.isAsyncFunction(true);
-        expect(result).assertEqual(false);
-    })
-
-    /**
-     * @tc.name: testIsAsyncFunction005
-     * @tc.desc: Check whether the value entered is an asynchronous function type.
-     * @tc.require: AR000GFB59
-     * @tc.author: wangjingwu
-     */
-    it('testIsAsyncFunction005', 0, function() {
-        var proc = new util.Types();
-        var result = proc.isAsyncFunction(false);
         expect(result).assertEqual(false);
     })
 
@@ -5618,10 +5606,10 @@ describe('TypesTest', function() {
      * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
-    it('testIsGeneratorFunction001', 0, function() {
+     it('testIsGeneratorFunction001', 0, function() {
         var proc = new util.Types();
-        var result = proc.isGeneratorFunction(function* foo() {});
-        expect(result).assertEqual(true);
+        var result = proc.isGeneratorFunction(new Int8Array());
+        expect(result).assertEqual(false);
     })
 
     /**
@@ -5661,29 +5649,15 @@ describe('TypesTest', function() {
     })
 
     /**
-     * @tc.name: testIsGeneratorFunction005
-     * @tc.desc: Check whether the input value is a generator function type.
-     * @tc.require: AR000GFB59
-     * @tc.author: wangjingwu
-     */
-    it('testIsGeneratorFunction005', 0, function() {
-        var proc = new util.Types();
-        var result = proc.isGeneratorFunction(new Int8Array());
-        expect(result).assertEqual(false);
-    })
-
-    /**
      * @tc.name: testIsGeneratorObject001
      * @tc.desc: Check whether the entered value is a generator object type.
      * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
-    it('testIsGeneratorObject001', 0, function() {
+     it('testIsGeneratorObject001', 0, function() {
         var proc = new util.Types();
-        function* foo() {}
-        const generator = foo();
-        var result = proc.isGeneratorObject(generator);
-        expect(result).assertEqual(true);
+        var result = proc.isGeneratorObject(false);
+        expect(result).assertEqual(false);
     })
 
     /**
@@ -5719,18 +5693,6 @@ describe('TypesTest', function() {
     it('testIsGeneratorObject004', 0, function() {
         var proc = new util.Types();
         var result = proc.isGeneratorObject(true);
-        expect(result).assertEqual(false);
-    })
-
-    /**
-     * @tc.name: testIsGeneratorObject005
-     * @tc.desc: Check whether the entered value is a generator object type.
-     * @tc.require: AR000GFB59
-     * @tc.author: bihu
-     */
-    it('testIsGeneratorObject005', 0, function() {
-        var proc = new util.Types();
-        var result = proc.isGeneratorObject(false);
         expect(result).assertEqual(false);
     })
 

@@ -756,16 +756,17 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.require: AR000GGRB8
      * @tc.author: lihucheng
      */
-    it('testSetNamespace004', 0, function () {
+     it('testSetNamespace004', 0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
+        thatSer.setDeclaration();
         thatSer.setNamespace("h", "http://www.w3.org/TR/html4/");
         thatSer.startElement("note1");
         thatSer.startElement("note2");
         thatSer.endElement();
         thatSer.endElement();
-        var result = '<h:note1 xmlns:h="http://www.w3.org/TR/html4/">\r\n  <h:note2/>\r\n</h:note1>';
+        var result = '<?xml version="1.0" encoding="utf-8"?>\r\n<h:note1 xmlns:h="http://www.w3.org/TR/html4/">\r\n  <h:note2/>\r\n</h:note1>';
         var view = new Uint8Array(arrayBuffer);
         var view1 = "";
         for (var i = 0; i < result.length; ++i) {
@@ -780,16 +781,17 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.require: AR000GGRB8
      * @tc.author: lihucheng
      */
-    it('testSetNamespace005', 0, function () {
+     it('testSetNamespace005', 0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
+        thatSer.setDeclaration();
         thatSer.setNamespace("h", "http://www.w3.org/TR/html4/");
         thatSer.startElement("note1");
         thatSer.startElement("note2");
         thatSer.endElement();
         thatSer.endElement();
-        var result = '<h:note1 xmlns:h="http://www.w3.org/TR/html4/">\r\n  <h:note2/>\r\n</h:note1>';
+        var result = '<?xml version="1.0" encoding="utf-8"?>\r\n<h:note1 xmlns:h="http://www.w3.org/TR/html4/">\r\n  <h:note2/>\r\n</h:note1>';
         var view = new Uint8Array(arrayBuffer);
         var view1 = "";
         for (var i = 0; i < result.length; ++i) {
