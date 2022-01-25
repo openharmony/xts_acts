@@ -766,7 +766,8 @@ describe('XmlSerializerXmlPullParserTest', function () {
         thatSer.startElement("note2");
         thatSer.endElement();
         thatSer.endElement();
-        var result = '<?xml version="1.0" encoding="utf-8"?>\r\n<h:note1 xmlns:h="http://www.w3.org/TR/html4/">\r\n  <h:note2/>\r\n</h:note1>';
+        var result = '<?xml version="1.0" encoding="utf-8"?>\r\n<h:note1 xmlns:h="http://www.w3.org/TR/html4/">' +
+        '\r\n  <h:note2/>\r\n</h:note1>';
         var view = new Uint8Array(arrayBuffer);
         var view1 = "";
         for (var i = 0; i < result.length; ++i) {
@@ -791,7 +792,8 @@ describe('XmlSerializerXmlPullParserTest', function () {
         thatSer.startElement("note2");
         thatSer.endElement();
         thatSer.endElement();
-        var result = '<?xml version="1.0" encoding="utf-8"?>\r\n<h:note1 xmlns:h="http://www.w3.org/TR/html4/">\r\n  <h:note2/>\r\n</h:note1>';
+        var result = '<?xml version="1.0" encoding="utf-8"?>\r\n<h:note1 xmlns:h="http://www.w3.org/TR/html4/">' +
+        '\r\n  <h:note2/>\r\n</h:note1>';
         var view = new Uint8Array(arrayBuffer);
         var view1 = "";
         for (var i = 0; i < result.length; ++i) {
