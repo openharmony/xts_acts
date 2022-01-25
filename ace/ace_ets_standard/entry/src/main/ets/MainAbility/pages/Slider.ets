@@ -16,6 +16,19 @@
 @Entry
 @Component
 struct slider {
+  @State inSetValue: number= 40
+  @State outSetValue: number= 40
+  @State direction: Axis= Axis.Horizontal
+  @State Begin: number = SliderChangeMode.Begin
+
+  onPageShow() {
+    console.info('Slider page show called');
+  }
+
+  onBuildDone() {
+    console.info('Slider page build done called');
+  }
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Column() {
@@ -23,18 +36,27 @@ struct slider {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
         Slider({
-          value: 40,
+          value: this.outSetValue,
           min: 0,
           max: 100,
           step: 1,
+          direction: Axis.Horizontal,
+          reverse: false,
           style: SliderStyle.OutSet
         })
           .blockColor('#FFFF0000')
           .selectedColor('#FF0000FF')
           .trackColor('#FF808080')
+          .minLabel('10')
+          .maxLabel('10')
           .showTips(false)
           .showSteps(false)
-          .width("200")
+          .onChange((value: number, mode: SliderChangeMode) => {
+            this.outSetValue = value
+            this.Begin = mode
+            console.info('value: ' + value + '---mode: ' + mode)
+          })
+          .width("100")
           .height("100")
           .key('slider1')
         Slider({

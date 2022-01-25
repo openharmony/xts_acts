@@ -65,6 +65,7 @@ export default function qrcodeJsunit() {
       let strJson = getInspectorByKey('qrcode');
       let obj = JSON.parse(strJson);
       console.info("Qrcode component obj is: " + JSON.stringify(obj));
+      console.info("qrcode backgroundColor" + JSON.stringify(obj.$attrs.backgroundColor))
       console.info("qrcode width" + JSON.stringify(obj.$attrs.width))
       console.info("qrcode height" + JSON.stringify(obj.$attrs.height))
       console.info("qrcode value" + JSON.stringify(obj.$attrs.value))

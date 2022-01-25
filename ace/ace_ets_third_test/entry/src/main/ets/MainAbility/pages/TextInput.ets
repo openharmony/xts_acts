@@ -46,6 +46,15 @@ struct TextInputExample {
           .onChange((value: string) => {
             this.textNew = value
           })
+          .onSubmit((enterKey) => {
+            this.textNew = 'onSubmit'
+          })
+          .onEditChanged((isEditing) => {
+            this.textNew = 'onEditChanged'
+          })
+          .onCopy((value: string) => {
+          })
+
           .key('textInput1')
 
         TextInput({ placeholder: 'textInput 2', text: this.text })

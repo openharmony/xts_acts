@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 import router from '@system.router'
 
 @Entry
@@ -35,7 +35,7 @@ struct dataPanel_testcase {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text(`${this.content}`)
         .fontSize(50)
-      DataPanel({ values: [20, 40, 20], max: 100 })
+      DataPanel({ values: [20, 40, 20], max: 100, type: DataPanelType.Line })
         .width(this.width)
         .height(this.height)
         .key('DataPanel')
@@ -44,7 +44,7 @@ struct dataPanel_testcase {
         })
         .closeEffect(false)
 
-      DataPanel({ values: [20, 40, 20], max: 100 })
+      DataPanel({ values: [20, 40, 20], max: 100, type: DataPanelType.Circle})
         .width(this.width)
         .height(this.height)
         .key('DataPanel2')
@@ -52,6 +52,14 @@ struct dataPanel_testcase {
           router.back()
         })
         .closeEffect(true)
+      DataPanel({ values: [20, 40, 20], max: 100})
+        .width(this.width)
+        .height(this.height)
+        .key('DataPanel3')
+        .onClick(() => {
+          router.back()
+        })
+        .closeEffect(false)
     }
     .key('flex')
     .width('100%')

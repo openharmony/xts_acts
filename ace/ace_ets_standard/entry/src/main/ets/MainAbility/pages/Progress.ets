@@ -12,10 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 @Entry
 @Component
 struct progress_testcase {
+  onPageShow() {
+    console.info('Progress page show called');
+  }
+
+  onBuildDone() {
+    console.info('Progress page build done called');
+  }
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Column() {
@@ -27,6 +35,8 @@ struct progress_testcase {
           .color(Color.Blue)
           .width(50)
           .height(70)
+          .circularStyle({ strokeWidth: 10, scaleCount: 2, scaleWidth: 10 })
+          .cricularStyle({ strokeWidth: 10, scaleCount: 2, scaleWidth: 10 })
           .key('progress')
 
         Progress({ value: 20, total: 40, style: ProgressStyle.Eclipse })
@@ -36,9 +46,30 @@ struct progress_testcase {
           .height(70)
           .key('progress2')
 
+        Progress({ value: 20, total: 40, style: ProgressStyle.Ring })
+          .value(3)
+          .color(Color.Blue)
+          .width(50)
+          .height(70)
+          .key('progress3')
+
+        Progress({ value: 20, total: 40, style: ProgressStyle.ScaleRing })
+          .value(3)
+          .color(Color.Blue)
+          .width(50)
+          .height(70)
+          .key('progress4')
+
+        Progress({ value: 20, total: 40, style: ProgressStyle.Capsule })
+          .value(3)
+          .color(Color.Blue)
+          .width(50)
+          .height(70)
+          .key('progress5')
+
       }
-      .width(300)
-      .height(300)
+      .width(400)
+      .height(400)
       .borderColor(Color.Pink)
       .borderWidth(2)
     }

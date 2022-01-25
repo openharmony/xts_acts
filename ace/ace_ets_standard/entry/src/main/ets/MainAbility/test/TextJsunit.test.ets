@@ -95,6 +95,9 @@ export default function textJsunit() {
       console.log("cd text fontColor" + JSON.stringify(obj.$attrs.fontColor));
       console.log("cd text visibility" + JSON.stringify(obj.$attrs.visibility));
       console.log("cd text fontSize" + JSON.stringify(obj.$attrs.fontSize));
+      console.log("cd text minFontSize" + JSON.stringify(obj.$attrs.minFontSize));
+      console.log("cd text letterSpacing" + JSON.stringify(obj.$attrs.letterSpacing));
+      console.log("cd text maxFontSize" + JSON.stringify(obj.$attrs.maxFontSize));
       console.log("cd text fontWeight" + JSON.stringify(obj.$attrs.fontWeight));
       console.log("cd text fontStyle" + JSON.stringify(obj.$attrs.fontStyle));
       console.log("cd text fontFamily" + JSON.stringify(obj.$attrs.fontFamily));
@@ -135,7 +138,10 @@ export default function textJsunit() {
       expect(obj.$attrs.zIndex).assertEqual(1)
       expect(obj.$attrs.fontColor).assertEqual("#FF000000")
       expect(obj.$attrs.visibility).assertEqual("Visibility.Visible")
-      expect(obj.$attrs.fontSize).assertEqual("15.000000fp")
+      expect(obj.$attrs.fontSize).assertEqual("15.000000px")
+      expect(obj.$attrs.minFontSize).assertEqual("15")
+      expect(obj.$attrs.letterSpacing).assertEqual("15")
+      expect(obj.$attrs.maxFontSize).assertEqual("15")
       expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Bold")
       expect(obj.$attrs.fontStyle).assertEqual("FontStyle.Italic")
       expect(obj.$attrs.fontFamily).assertEqual("sans-serif")

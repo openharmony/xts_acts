@@ -79,6 +79,9 @@ struct text_textcase {
   @State zIndex: number = 1
   @State fontStyle: FontStyle = FontStyle.Italic
   @State fontSize: number = 15
+  @State minFontSize: number = 15
+  @State maxFontSize: number = 15
+  @State letterSpacing: number= 10
   @State fontWeight: FontWeight= FontWeight.Bold
   @State fontColor: Color= Color.Black
   @State active: boolean = false
@@ -124,6 +127,9 @@ struct text_textcase {
         .zIndex(this.zIndex)
         .fontColor(this.fontColor)
         .fontSize(this.fontSize)
+        .minFontSize(this.minFontSize)
+        .letterSpacing(this.letterSpacing)
+        .maxFontSize(this.maxFontSize)
         .fontWeight(this.fontWeight)
         .fontStyle(this.fontStyle)
         .fontFamily("sans-serif")
@@ -141,7 +147,7 @@ struct text_textcase {
         .size({ width: 100, height: 50 })
         .padding({ bottom: 5, top: 5, right: 5, left: 10 })
         .margin({ bottom: 15, top: 10, right: 10, left: 10 })
-        .fontSize(13)
+        .fontSize('13')
         .textAlign(TextAlign.Start)
         .align(Alignment.Start)
         .direction(Direction.Ltr)

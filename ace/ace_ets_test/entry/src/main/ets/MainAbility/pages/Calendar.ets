@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 @Entry
 @Component
 struct calendar {
@@ -47,31 +47,49 @@ struct calendar {
         preData: this.preMonth,
         nextData: this.nextMonth,
         controller: this.Controller
-
       })
+        .showLunar(true)
         .showHoliday(true)
         .needSlide(true)
         .offDays(Week.Tue | Week.Wed)
         .startOfWeek(Week.Sun)
+        .direction(Axis.Horizontal)
         .currentDayStyle({
           dayColor: Color.Black,
           lunarColor: Color.Gray,
+          markLunarColor: Color.Black,
           dayFontSize: 15,
           lunarDayFontSize: 10,
-          boundaryColOffset: 10
-
+          boundaryColOffset: 10,
         })
         .nonCurrentDayStyle({
           nonCurrentMonthDayColor: Color.Black,
-          nonCurrentMonthLunarColor: Color.Gray
-
+          nonCurrentMonthLunarColor: Color.Gray,
+          nonCurrentMonthWorkDayMarkColor: Color.Green,
+          nonCurrentMonthOffDayMarkColor: Color.Brown,
         })
         .todayStyle({
           focusedDayColor: Color.Red,
           focusedLunarColor: Color.Orange,
           focusedAreaBackgroundColor: Color.Blue,
           focusedAreaRadius: 20
-
+        })
+        .weekStyle({
+          weekColor: Color.Black,
+          weekendDayColor: Color.Orange,
+          weekendLunarColor: Color.Blue,
+          weekFontSize: 20,
+          weekHeight: 5,
+          weekWidth: 48,
+        })
+        .workStateStyle({
+          workDayMarkColor: Color.Red,
+          offDayMarkColor: Color.Orange,
+          workDayMarkSize: 10,
+          offDayMarkSize: 2,
+          workStateWidth: 12,
+          workStateHorizontalMovingDistance: 0,
+          workStateVerticalMovingDistance: 12,
         })
         .onRequestData((request) => {
           switch (request.monthState) {
@@ -88,9 +106,9 @@ struct calendar {
                   lunarDay: this.lunarMonthDays[i % 30],
                   dayMark: "work",
                   dayMarkValue: "",
-                  year: request.year;
-                  month: request.month;
-                  day: i + 1;
+                  year: request.year,
+                  month: request.month,
+                  day: i + 1,
                   isFirstOfLunar: false,
                   hasSchedule: false,
                   markLunarDay: false
@@ -153,9 +171,22 @@ struct calendar {
               break;
           }
         })
+        .onSelectChange((request) => {
+          this.year = request.year;
+          this.month = request.month;
+          console.info('On Select change: ' + this.year + '/' + this.month)
+        })
+      Row() {
+        Button("back To Today").onClick(() => {
+          this.Controller.backToToday();
+          console.info("back To Today")
+        });
+        Button("go To").onClick(() => {
+          this.Controller.goTo({ year: 2021, month: 9, day: 10 });
+          console.info("go To : 2021/9/10")
+        });
+      }
     }.margin({ bottom: 10, right: 20, left: 20, top: 0 })
     .height("50%")
-
-
   }
 }

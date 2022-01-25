@@ -16,6 +16,16 @@
 @Entry
 @Component
 struct qrcode_textcase {
+  @State Color: Color = Color.Pink
+
+  onPageShow() {
+    console.info('Qrcode page show called');
+  }
+
+  onBuildDone() {
+    console.info('Qrcode page build done called');
+  }
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text(`Qrcode page`)
@@ -23,6 +33,7 @@ struct qrcode_textcase {
         .fontWeight(FontWeight.Bold)
       QRCode('hello world')
         .color("#FFFFC0CB")
+        .backgroundColor(this.Color)
         .width("200")
         .height("100")
         .key('qrcode')

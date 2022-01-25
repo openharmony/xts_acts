@@ -21,7 +21,7 @@ struct scroll_testcase {
   @State scrollBarColor: Color = Color.Pink
   @State scrollBar: BarState= BarState.On
   private value1: Array<number> = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
-  @State edge: Edge= Edge.Bottom
+  @State edge: Edge= Edge.Top
   private content: string = "Scroll Page";
   scroller: Scroller = new Scroller();
 
@@ -60,19 +60,21 @@ struct scroll_testcase {
       .scrollBarColor(this.scrollBarColor)
       .scrollBarWidth(this.scrollBarWidth)
       .key('scroll')
-      .width(300)
+      .width(400)
       .height(200)
       .onScroll((xOffset: number, yOffset: number) => {
-        console.error(` current offset is ${xOffset} ${yOffset}`)
+        console.info(` current offset is ${xOffset} ${yOffset}`)
       })
       .onScrollEnd(() => {
-        console.error(` now on  scroll end`)
+        console.info(` now on  scroll end`)
       })
-
+      .onScrollEdge((side: Edge) => {
+        console.info(`To the edge`)
+      })
       Scroll() {
         Row() {
           Text('scroll uppppp')
-            .width(80)
+            .width(60)
             .height(100)
             .backgroundColor(Color.Yellow)
             .margin({
@@ -82,7 +84,7 @@ struct scroll_testcase {
             .key('text')
 
           Text('scroll to')
-            .width(100)
+            .width(60)
             .height(100)
             .backgroundColor(Color.Green)
             .margin({
@@ -96,7 +98,7 @@ struct scroll_testcase {
               })
             })
           Text('scroll page')
-            .width(100)
+            .width(60)
             .height(100)
             .backgroundColor(Color.Blue)
             .margin({
@@ -108,9 +110,45 @@ struct scroll_testcase {
                 next: true
               })
             })
+          Text('scroll Edge')
+            .width(60)
+            .height(100)
+            .backgroundColor(Color.Blue)
+            .margin({
+              right: 5,
+              left: 5
+            })
+            .onClick(() => {
+              this.scroller.scrollEdge(Edge.Top)
+            })
+          Text('scroll Edge')
+            .width(60)
+            .height(100)
+            .backgroundColor(Color.Blue)
+            .margin({
+              right: 5,
+              left: 5
+            })
+            .onClick(() => {
+              this.scroller.currentOffset()
+            })
+          Text('scroll to index')
+            .width(60)
+            .height(100)
+            .backgroundColor(Color.Blue)
+            .margin({
+              right: 5,
+              left: 5
+            })
+            .onClick(() => {
+              this.scroller.scrollToIndex(0)
+              console.info(` now on  scroll end`)
+            })
         }
       }
-      .height(100).scrollable(ScrollDirection.Horizontal)
+      .key('scroll1')
+      .height(100)
+      .scrollable(ScrollDirection.Horizontal)
 
       Scroll() {
         Column() {
@@ -132,7 +170,7 @@ struct scroll_testcase {
       .scrollBarWidth(5)
       .width(300)
       .height(200)
-      .key('scroll1')
+      .key('scroll2')
 
       Scroll() {
         Column() {
@@ -148,13 +186,13 @@ struct scroll_testcase {
         }
       }
       .padding(10)
-      .scrollable(ScrollDirection.Horizontal)
+      .scrollable(ScrollDirection.Free)
       .scrollBar(BarState.Off)
       .scrollBarColor(Color.Red)
       .scrollBarWidth(5)
       .width(300)
       .height(200)
-      .key('scroll2')
+      .key('scroll3')
     }
     .key('flex')
 

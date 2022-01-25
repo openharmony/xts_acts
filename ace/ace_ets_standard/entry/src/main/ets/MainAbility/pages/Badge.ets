@@ -57,7 +57,7 @@ struct badge {
             count: this.counts,
             position: BadgePosition.RightTop,
             maxCount: 99,
-            style: { color: 0xFFFFFF, fontSize: 16, badgeSize: 20, badgeColor: Color.Red }
+            style: { color: 0xFFFFFF, fontSize: '16', badgeSize: '20', badgeColor: Color.Red }
           }) {
             Button('message')
               .onClick(() => {

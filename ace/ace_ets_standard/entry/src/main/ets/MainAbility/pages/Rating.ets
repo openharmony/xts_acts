@@ -16,6 +16,16 @@
 @Entry
 @Component
 struct rating_testcase {
+  @State rating: number = 2
+
+  onPageShow() {
+    console.info('Rating page show called');
+  }
+
+  onBuildDone() {
+    console.info('Rating page build done called');
+  }
+  
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Column() {
@@ -29,6 +39,9 @@ struct rating_testcase {
             backgroundUri: '/resources/rawfile/star-1-1.png',
             foregroundUri: '/resources/rawfile/star-1-3.png',
             secondaryUri: '/resources/rawfile/star-1-2.png'
+          })
+          .onChange((value: number) => {
+            this.rating = value
           })
           .key('rating1')
         Rating({ rating: 2, indicator: true })

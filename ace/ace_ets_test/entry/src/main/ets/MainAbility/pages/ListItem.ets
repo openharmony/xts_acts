@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 @Entry
 @Component
 struct listItem_testcase {
@@ -25,13 +25,22 @@ struct listItem_testcase {
       Column() {
         List() {
           ListItem() {
-            Text('sticky:Normal , item1111')
+            Text('sticky:None , item1111')
+              .width('100%')
+              .height(40)
+              .fontSize(12)
+          }.sticky(Sticky.None)
+          .editable(true)
+          .key('listitem')
+
+          ListItem() {
+            Text('sticky:Normal , item2222')
               .width('100%')
               .height(40)
               .fontSize(12)
           }.sticky(Sticky.Normal)
-          .editable(true)
-          .key('listitem')
+          .editable(EditMode.Deletable)
+          .key('listitem2')
 
           ListItem() {
             Text('sticky:Opacity , item3333')
@@ -39,8 +48,17 @@ struct listItem_testcase {
               .height(40)
               .fontSize(12)
           }.sticky(Sticky.Opacity)
-          .editable(true)
+          .editable(EditMode.None)
           .key('listitem3')
+
+          ListItem() {
+            Text('sticky:Opacity , item4444')
+              .width('100%')
+              .height(40)
+              .fontSize(12)
+          }.sticky(Sticky.Opacity)
+          .editable(EditMode.Movable)
+          .key('listitem4')
         }
       }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
     }.width(300)

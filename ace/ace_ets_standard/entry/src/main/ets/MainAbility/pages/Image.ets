@@ -16,6 +16,17 @@
 @Entry
 @Component
 struct image_textcase {
+  @State Width: number = 0
+  @State height: number = 0
+
+  onPageShow() {
+    console.info('Image page show called');
+  }
+
+  onBuildDone() {
+    console.info('Image page build done called');
+  }
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Column() {
@@ -23,10 +34,15 @@ struct image_textcase {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
         Image("/resources/rawfile/hand.png")
+          .matchTextDirection(false)
+          .fitOriginalSize(false)
+          .fillColor(0xCCCCCC)
           .objectFit(ImageFit.Cover)
           .objectRepeat(ImageRepeat.NoRepeat)
           .interpolation(ImageInterpolation.None)
           .renderMode(ImageRenderMode.Original)
+          .autoResize(false)
+          .syncLoad(false)
           .sourceSize({ width: 200, height: 100 })
           .alt("/resources/rawfile/person.png")
           .key('image1')
@@ -36,6 +52,20 @@ struct image_textcase {
           .interpolation(ImageInterpolation.High)
           .renderMode(ImageRenderMode.Template)
           .key('image2')
+          .height(180)
+          .width(180)
+          .onComplete((msg: {
+            width: number,
+            height: number
+          }) => {
+            this.Width = msg.width
+            this.height = msg.height
+            console.info('Width ----' + this.Width)
+            console.info('height ----' + this.height)
+          })
+          .onError(() => {
+            console.info('load image fail')
+          })
         Image("/resources/rawfile/hand.png")
           .objectFit(ImageFit.Fill)
           .objectRepeat(ImageRepeat.Y)
