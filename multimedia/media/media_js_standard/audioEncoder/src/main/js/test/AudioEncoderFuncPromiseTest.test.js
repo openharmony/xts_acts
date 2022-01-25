@@ -301,7 +301,7 @@ describe('AudioEncoderFuncPromise', function () {
         await media.getMediaCapability().then((mediaCaps)  => {
             console.info('getMediaCapability success');
             if (typeof (mediaCaps) != 'undefined') {
-                await mediaCaps.getAudioEncoderCaps().then((audioCaps)  => {
+                mediaCaps.getAudioEncoderCaps().then((audioCaps)  => {
                     console.info('getAudioEncoderCaps success');
                     if (typeof (audioCaps) != 'undefined') {
                         console.info("case audioCaps " + audioCaps);
@@ -309,7 +309,7 @@ describe('AudioEncoderFuncPromise', function () {
                         console.info("case audioCaps is not defined");
                     }
                 }, failCallback).catch(failCatch);
-                await mediaCaps.findAudioEncoder(mediaDescription2).then((codecname)  => {
+                mediaCaps.findAudioEncoder(mediaDescription2).then((codecname)  => {
                     console.info('getAudioEncoderCaps success');
                     if (typeof (codecname) != 'undefined') {
                         console.info("case codecname " + codecname);
