@@ -15,15 +15,17 @@
 
 
 /* host test case */
-require('./UsbCoreJsunit.test.js')
-require('./UsbCoreJsunitEx.test.js')
-require('./UsbDevicePipeJsunit.test.js')
-require('./UsbDevicePipeJsunitEx.test.js')
+//require('./UsbCoreJsunit.test.js')
+//require('./UsbCoreJsunitEx.test.js')
+//require('./UsbDevicePipeJsunit.test.js')
+//require('./UsbDevicePipeJsunitEx.test.js')
 
 /* device test case */
-require('./UsbFunctionsJsunit.test.js')
-require('./UsbFunctionsJsunitEx.test.js')
+//require('./UsbFunctionsJsunit.test.js')
+//require('./UsbFunctionsJsunitEx.test.js')
 
 /* device and host test case */
-require('./UsbPortJsunit.test.js')
-require('./UsbPortJsunitEx.test.js')
+//require('./UsbPortJsunit.test.js')
+//require('./UsbPortJsunitEx.test.js')
+
+require('./UsbAutoJsunit.test.js')
