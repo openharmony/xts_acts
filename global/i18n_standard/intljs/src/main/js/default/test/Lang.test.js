@@ -52,10 +52,17 @@ describe('LangTest', function () {
 
     function restoreLang(){
         for(let j = 0; j < initLen; j++){
-            let value = I18n.addPreferredLanguage(initPreferredLang[j]);
+            let value = I18n.addPreferredLanguage(initPreferredLang[j], j);
             console.log('i18n_test_preferredlanguage_restoreLang ' + value);
             expect(value).assertTrue();
         }
+        let currLen = getCurrentPreferredLang().length;
+        while(currLen > initLen) {
+            let rem = I18n.removePreferredLanguage(currLen - 1);
+            console.log('i18n_test_preferredlanguage_restoreLang ' + rem);
+            currLen--;
+        }
+        console.log('i18n_test_preferredlanguage_restoreLang ' + I18n.getPreferredLanguageList());
     }
 
     beforeEach(function(){
@@ -67,6 +74,7 @@ describe('LangTest', function () {
         console.log('i18n_test_preferredlanguage_afterEach ' + currLang);
         clearLang(currLang);
         restoreLang();
+        I18n.set24HourClock(false);
     })
 
     /* *
@@ -78,7 +86,7 @@ describe('LangTest', function () {
         console.log('i18n_test_clock_0100 ' + 'start');
         let value = I18n.is24HourClock();
         console.log('i18n_test_clock_0100 ' + value);
-        expect(value).assertTrue();
+        expect(value).assertFalse();
     })
 
     /* *
@@ -88,12 +96,12 @@ describe('LangTest', function () {
     */
     it('i18n_test_clock_0200', 0, function () {
         console.log('i18n_test_clock_0200 ' + 'start');
-        let value = I18n.set24HourClock(false);
+        let value = I18n.set24HourClock(true);
         console.log('i18n_test_clock_0200 ' + value);
         expect(value).assertTrue();
         let value2 = I18n.is24HourClock();
         console.log('i18n_test_clock_0200 ' + value2);
-        expect(value2).assertFalse();
+        expect(value2).assertTrue();
     })
 
     /* *
@@ -103,12 +111,12 @@ describe('LangTest', function () {
     */
     it('i18n_test_clock_0300', 0, function () {
         console.log('i18n_test_clock_0300 ' + 'start');
-        let value = I18n.set24HourClock(true);
+        let value = I18n.set24HourClock(false);
         console.log('i18n_test_clock_0300 ' + value);
         expect(value).assertTrue();
         let value2 = I18n.is24HourClock();
         console.log('i18n_test_clock_0300 ' + value2);
-        expect(value).assertTrue();
+        expect(value2).assertFalse();
     })
 
     /* *
@@ -269,7 +277,7 @@ describe('LangTest', function () {
         console.log('i18n_test_preferredlanguage_0700 ' + 'start');
         let value = I18n.removePreferredLanguage(0);
         console.log('i18n_test_preferredlanguage_0700 ' + value);
-        expect(value).assertTrue();
+        expect(value).assertFalse();
         let list = I18n.getPreferredLanguageList();
         console.log('i18n_test_preferredlanguage_0700 ' + list);
         expect(list.length).assertLarger(0);
@@ -299,9 +307,27 @@ describe('LangTest', function () {
         console.log('i18n_test_preferredlanguage_0800 ' + 'start');
         let value = I18n.removePreferredLanguage(-1);
         console.log('i18n_test_preferredlanguage_0800 ' + value);
-        expect(value).assertTrue();
+        expect(value).assertFalse();
         let list = I18n.getPreferredLanguageList();
         console.log('i18n_test_preferredlanguage_0800 ' + list);
+        expect(list.length).assertLarger(0);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0820
+    * @tc.name test the removePreferredLanguage interface with -1 param
+    * @tc.desc check the value of removePreferredLanguage method
+    */
+    it('i18n_test_preferredlanguage_0820', 0, function () {
+        console.log('i18n_test_preferredlanguage_0820 ' + 'start');
+        let value = I18n.addPreferredLanguage('ja');
+        console.log('i18n_test_preferredlanguage_0500 ' + value);
+        expect(value).assertTrue();
+        let value2 = I18n.removePreferredLanguage(-1);
+        console.log('i18n_test_preferredlanguage_0820 ' + value2);
+        expect(value2).assertTrue();
+        let list = I18n.getPreferredLanguageList();
+        console.log('i18n_test_preferredlanguage_0820 ' + list);
         expect(list.length).assertLarger(0);
     })
 
@@ -318,9 +344,10 @@ describe('LangTest', function () {
         console.log('i18n_test_preferredlanguage_0900 ' + len);
         expect(len).assertLarger(0);
         let parm = len - 1;
+        console.log('i18n_test_preferredlanguage_0900 ' + parm);
         let value = I18n.removePreferredLanguage(parm);
         console.log('i18n_test_preferredlanguage_0900 ' + value);
-        expect(value).assertTrue();
+        expect(value).assertFalse();
     })
 
     /* *
@@ -371,7 +398,7 @@ describe('LangTest', function () {
         expect(value5).assertTrue();
         let value6 = I18n.addPreferredLanguage('en', 1);
         console.log('i18n_test_preferredlanguage_0940 ' + value6);
-        expect(value6).assertTrue();
+        expect(value6).assertFalse();
         let list2 = I18n.getPreferredLanguageList();
         console.log('i18n_test_preferredlanguage_0940 ' + list2);
         expect(list2[1]).assertEqual('en');
@@ -397,15 +424,15 @@ describe('LangTest', function () {
     * @tc.name test the addPreferredLanguage interface
     * @tc.desc check the value of addPreferredLanguage method
     */
-//    it('i18n_test_preferredlanguage_1000', 0, function () {
-//        console.log('i18n_test_preferredlanguage_1000 ' + 'start');
-//        let value = I18n.getFirstPreferredLanguage();
-//        console.log('i18n_test_preferredlanguage_1000 ' + value);
-//        expect(value).assertEqual('en');
-//        let list = I18n.getPreferredLanguageList();
-//        console.log('i18n_test_preferredlanguage_1000 ' + list);
-//        expect(list.length).assertLarger(0);
-//    })
+    it('i18n_test_preferredlanguage_1000', 0, function () {
+        console.log('i18n_test_preferredlanguage_1000 ' + 'start');
+        let value = I18n.getFirstPreferredLanguage();
+        console.log('i18n_test_preferredlanguage_1000 ' + value);
+        expect(value).assertEqual('zh-Hans');
+        let list = I18n.getPreferredLanguageList();
+        console.log('i18n_test_preferredlanguage_1000 ' + list);
+        expect(list.length).assertLarger(0);
+    })
 
     console.log('*************end LangTest*************');
 })
