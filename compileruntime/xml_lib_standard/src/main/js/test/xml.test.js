@@ -756,7 +756,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.require: AR000GGRB8
      * @tc.author: lihucheng
      */
-     it('testSetNamespace004', 0, function () {
+    it('testSetNamespace004', 0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -781,7 +781,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.require: AR000GGRB8
      * @tc.author: lihucheng
      */
-     it('testSetNamespace005', 0, function () {
+    it('testSetNamespace005', 0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);

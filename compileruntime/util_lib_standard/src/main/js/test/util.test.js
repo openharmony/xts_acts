@@ -5606,7 +5606,7 @@ describe('TypesTest', function() {
      * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
-     it('testIsGeneratorFunction001', 0, function() {
+    it('testIsGeneratorFunction001', 0, function() {
         var proc = new util.Types();
         var result = proc.isGeneratorFunction(new Int8Array());
         expect(result).assertEqual(false);
@@ -5654,7 +5654,7 @@ describe('TypesTest', function() {
      * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
-     it('testIsGeneratorObject001', 0, function() {
+    it('testIsGeneratorObject001', 0, function() {
         var proc = new util.Types();
         var result = proc.isGeneratorObject(false);
         expect(result).assertEqual(false);
