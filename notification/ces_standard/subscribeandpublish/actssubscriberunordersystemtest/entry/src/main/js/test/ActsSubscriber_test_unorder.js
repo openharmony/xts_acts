@@ -19,6 +19,7 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
     console.info("===========ActsSubscriberTestUnorderSystem start====================>");
     var commonEventSubscriber1;
     var commonEventSubscriber2;
+    var commonEventSubscriber3;
     var array = [
             Subscriber.Support.COMMON_EVENT_SHUTDOWN,
             Subscriber.Support.COMMON_EVENT_BATTERY_CHANGED,
@@ -291,6 +292,49 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
                 sleep(1000);
                 Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
             }
+        })
+    })
+
+    /*
+     * @tc.number    : ActsSubscriberTestUnorderSystem_0300
+     * @tc.name      : verify subscribe and publish : Check subscribe and publish system event data with  permission 
+     *               : including multiple permissions
+     * @tc.desc      : Check the subscriber can receive event "publish_event0100" type of the interface (by Promise)
+     */
+    it('ActsSubscriberTestUnorderSystem_0300', 0, async function (done) {
+        console.info("===============ActsSubscriberTestUnorderSystem_0300 start==========================>");
+        var commonEventSubscribeInfo = {
+            events: [
+                Subscriber.Support.COMMON_EVENT_WIFI_P2P_CONN_STATE,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED,
+                Subscriber.Support.COMMON_EVENT_DISK_REMOVED,
+                Subscriber.Support.COMMON_EVENT_DISK_UNMOUNTED,
+                Subscriber.Support.COMMON_EVENT_DISK_MOUNTED,
+                Subscriber.Support.COMMON_EVENT_DISK_BAD_REMOVAL,
+                Subscriber.Support.COMMON_EVENT_DISK_UNMOUNTABLE,
+                Subscriber.Support.COMMON_EVENT_DISK_EJECT
+            ],
+        };
+
+        function subscriberCallBack003(err, data) {
+            console.info("==========================>subscriberCallBack003");
+        }
+
+        function unsubscribeCallback(err) {
+            console.info("===============>unsubscribeCallback");
+            done();
+        }
+
+        Subscriber.createSubscriber(
+            commonEventSubscribeInfo
+        ).then(function (data) {
+            console.info("===============>ActsSubscriberTestUnorderSystem_0300=========createSubscriber promise");
+            commonEventSubscriber3 = data;
+            Subscriber.subscribe(commonEventSubscriber3, subscriberCallBack003);
+            setTimeout(function (){
+                console.debug("===============>ActsSubscriberTestUnorderSystem_0300 delay 3s==================");
+                Subscriber.unsubscribe(commonEventSubscriber3, unsubscribeCallback);
+            }, 3000); 
         })
     })
 })
