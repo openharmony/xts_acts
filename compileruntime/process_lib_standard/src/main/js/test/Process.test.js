@@ -161,7 +161,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetOutput004', 0, async function () {
-        var child = process.runCmd('echo 浣犲�?');
+        var child = process.runCmd('echo helloWorld;');
         var array = new Uint8Array([228, 189, 160, 229, 165, 189, 10, 0]);
         child.wait();
         child.getOutput().then(val=>{
