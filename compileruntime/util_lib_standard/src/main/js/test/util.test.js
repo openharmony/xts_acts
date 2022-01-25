@@ -5112,7 +5112,7 @@ describe('TypesTest', function() {
      * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
-     it('testIsAsyncFunction001', 0, function() {
+    it('testIsAsyncFunction001', 0, function() {
         var proc = new util.Types();
         var result = proc.isAsyncFunction(false);
         expect(result).assertEqual(false);
