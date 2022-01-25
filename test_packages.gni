@@ -35,7 +35,6 @@ _all_test_packages = [
   "${ACTS_ROOT}/usb:usb",
   "${ACTS_ROOT}/multimodalinput:multimodalinput",
   "${ACTS_ROOT}/resourceschedule:resourceschedule",
-  "${ACTS_ROOT}/dsoftbus:dsoftbus",
   "${ACTS_ROOT}/telephony:telephony",
 ]
 
