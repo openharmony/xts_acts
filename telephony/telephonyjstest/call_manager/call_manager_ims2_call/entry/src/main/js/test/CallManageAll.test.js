@@ -14,6 +14,7 @@
  */
 
 import call from '@ohos.telephony.call';
+import observer from '@ohos.telephony.observer';
 import {describe, afterAll, it, expect, beforeAll, afterEach} from 'deccjsunit/index';
 import {
     AUTO_ACCEPT_NUMBER,
@@ -57,7 +58,10 @@ import {
     COMMAND_CALL_ERROR4,
     COMMAND_CALL_ERROR,
     CARMER_ID_NOT_EXIT,
-    ZOOM_RATIO_MINUS_1_0
+    ZOOM_RATIO_MINUS_1_0,
+    DIAL_SCENCE_CALL_NORMAL,
+    DIAL_TYPE_OTT,
+    EVENT_OTT_FUNCTION_UNSUPPORTED
 } from './lib/Const.js';
 import {toString} from './lib/ApiToPromise.js';
 import {
@@ -67,13 +71,51 @@ import {
     callDetailsChangeOn,
     callId as gloabCallId,
     reachState,
-    callDetailsChangeOff
+    callDetailsChangeOff,
+    reachCallEventState
 } from './lib/ScenceInCalling.js';
 const GETMAIN_CALLID_ERRO = -1;
+const REJECT_MESSAGE_STR = 'Hi,hello?';
+const REJECT_MESSAGE_NUM = 1234567890123456789012345678901234567890;
+const ERR_SLOT_ID = -1;
+const SLOTID = 0;
+const THE_THREE_NUMBER = '112';
+const DIAL_TYPE_ERR_CALL = 3;
+const TIME_OUT = 20000;
+const WAITING_TIME = 200;
+
 let callId = null;
+class RejectMessageOptions {
+    constructor (str) {
+        this.messageContent = str;
+    }
+}
+class EmergencyNumberOptions {
+    constructor (num) {
+        this.slotId = num;
+    }
+}
+class NumberFormatOptions {
+    constructor (str) {
+        this.countryCode = str;
+    }
+}
+const sleep = (time) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve();
+        }, time);
+    });
+};
+
+var callState = -1;
+var timing = 0;
+var endTime = 0;
 describe('CallManageImsCall', function () {
     beforeAll(async function (done) {
         callDetailsChangeOn();
+        observer.on('callStateChange', function (error, data) {});
+        observer.on('callStateChange', {slotId: DEFAULT_SLOT_ID}, function (error, data) {});
         try {
             await call.enableImsSwitch(DEFAULT_SLOT_ID);
             console.log('Telephony_CallManager enableImsSwitch success');
@@ -103,6 +145,7 @@ describe('CallManageImsCall', function () {
     });
 
     afterAll(function () {
+        observer.off('callStateChange');
         callDetailsChangeOff();
         console.log('Telephony_CallManager all 54 case is over for callmanager CallManageImsCall');
     });
@@ -1484,6 +1527,65 @@ describe('CallManageImsCall', function () {
     });
 
     /**
+     * @tc.number  Telephony_CallManager_reject_Promise_0400
+     * @tc.name    Test the function runs 10 times, stability test
+     * @tc.desc    Function test
+     */
+    it('Telephony_CallManager_reject_Promise_0400', 0, async function (done) {
+        let caseName = 'Telephony_CallManager_reject_Promise_0400';
+        let callId = null;
+        try {
+            let data = await scenceInCalling({
+                caseName:caseName,
+                phoneNumber:AUTO_ACCEPT_NUMBER,
+                checkState:CALL_STATUS_DIALING
+            });
+            callId = data.callId;
+            try {
+                data = await call.reject(callId, new RejectMessageOptions(REJECT_MESSAGE_STR));
+                console.log(`${caseName} reject success,case failed,data:${toString(data)}`);
+                done();
+            } catch (err) {
+                console.log(`${caseName} reject error,case success,err:${toString(err)}`);
+                done();
+            }
+        } catch (error) {
+            console.log(`${caseName} scenceInCalling error,case failed,error:${toString(error)}`);
+            done();
+        }
+    });
+
+    /**
+     * @tc.number  Telephony_CallManager_reject_Async_0400
+     * @tc.name    Test the function runs 10 times, stability test
+     * @tc.desc    Function test
+     */
+    it('Telephony_CallManager_reject_Async_0400', 0, async function (done) {
+        let caseName = 'Telephony_CallManager_reject_Async_0400';
+        let callId = null;
+        try {
+            let data = await scenceInCalling({
+                caseName:caseName,
+                phoneNumber:AUTO_ACCEPT_NUMBER,
+                checkState:CALL_STATUS_DIALING
+            });
+            callId = data.callId;
+            call.reject(callId, new RejectMessageOptions(REJECT_MESSAGE_NUM), (err, data) => {
+                if (err) {
+                    console.log(`${caseName} reject error,case success,err:${toString(err)}`);
+                    done();
+                    return;
+                }
+                console.log(`${caseName} reject success,case failed,data:${toString(data)}`);
+                done();
+            });
+        } catch (error) {
+            console.log(`${caseName} scenceInCalling error,case failed,error:${toString(error)}`);
+            done();
+        }
+    });
+
+    /**
      * @tc.number  Telephony_CallManager_IMS_hangup_Async_0100
      * @tc.name    Run function hangup by args callId BOUNDARY_NUMBER_INT by callback,
      *             the callback function return error
@@ -2084,7 +2186,8 @@ describe('CallManageImsCall', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_formatPhoneNumberToE164_Async_0100', 0, async function (done) {
-        call.formatPhoneNumberToE164('010-0000-0000', 'CN', (err, data) => {
+        let numberFormatOptions = new NumberFormatOptions('CN');
+        call.formatPhoneNumberToE164('010-0000-0000', numberFormatOptions.countryCode, (err, data) => {
             if (err) {
                 console.log('Telephony_CallManager_formatPhoneNumberToE164_Async_0100 fail');
                 expect().assertFail();
@@ -2104,8 +2207,9 @@ describe('CallManageImsCall', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_formatPhoneNumberToE164_Promise_0100', 0, async function (done) {
+        let numberFormatOptions = new NumberFormatOptions('CN');
         try {
-            var data = await call.formatPhoneNumberToE164('52300000000', 'CN');
+            var data = await call.formatPhoneNumberToE164('52300000000', numberFormatOptions.countryCode);
             expect(data === '+8652300000000').assertTrue();
             console.log(`Telephony_CallManager_formatPhoneNumberToE164_Promise_0100 finish data = ${data}`);
             done();
@@ -2124,7 +2228,8 @@ describe('CallManageImsCall', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_isEmergencyPhoneNumber_Async_1300', 0, async function (done) {
-        call.isEmergencyPhoneNumber('110', {slotId: SLOT_ID_INVALID}, (err) => {
+        let emergencyNumberOptions = new EmergencyNumberOptions(ERR_SLOT_ID);
+        call.isEmergencyPhoneNumber('110', emergencyNumberOptions, (err) => {
             if (err) {
                 console.log(`Telephony_CallManager_isEmergencyPhoneNumber_Async_1300 finish err = ${err}`);
                 done();
@@ -2143,8 +2248,9 @@ describe('CallManageImsCall', function () {
      * @tc.desc    Function test
      */
     it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1300', 0, async function (done) {
+        let emergencyNumberOptions = new EmergencyNumberOptions(ERR_SLOT_ID);
         try {
-            var data = await call.isEmergencyPhoneNumber('120', {slotId: SLOT_ID_INVALID});
+            var data = await call.isEmergencyPhoneNumber('120', emergencyNumberOptions);
             expect().assertFail();
             console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1300 fail ');
             done();
@@ -2154,4 +2260,156 @@ describe('CallManageImsCall', function () {
         }
     });
 
+    /**
+     * @tc.number  Telephony_CallManager_isInEmergencyCall_Async_0200
+     * @tc.name    Dial an emergency number (THE_THREE_NUMBER) and call isInEmergencyCall() to determine whether
+     *             an emergency call is made, returning true
+     * @tc.desc    Function test
+     */
+    it('Telephony_CallManager_isInEmergencyCall_Async_0200', 0, async function (done) {
+        const options = {accountId:SLOTID, videoState:MEDIA_TYPE_VOICE, dialScene:DIAL_SCENCE_CALL_PRIVILEGED,
+            dialType:DIAL_CARRIER_TYPE};
+        call.dial(THE_THREE_NUMBER, options, async (err, data) => {
+            if (err) {
+                console.log(`Telephony_CallManager_isInEmergencyCall_Async_0200 dial fail : err = ${err}`);
+                done();
+                return;
+            }
+            console.log(`Telephony_CallManager_isInEmergencyCall_Async_0200  dial finish : data = ${data}`);
+            const startTime = new Date().getTime();
+            while (true) {
+                if (callState === call.CALL_STATUS_DIALING || callState === call.CALL_STATUS_ACTIVE ||
+                     callState === call.CALL_STATUS_ALERTING) {
+                    call.isInEmergencyCall((err, data) => {
+                        if (err) {
+                            console.log(
+                                `Telephony_CallManager_isInEmergencyCall_Async_0200 isInEmrgencyCall fail : err = ${
+                                    err}`
+                            );
+                            done();
+                            return;
+                        }
+                        console.log(
+                            `Telephony_CallManager_isInEmergencyCall_Async_0200 isInEmrgencyCall finish : data = ${
+                                data}`
+                        );
+                        done();
+
+                    });
+                    return;
+                }
+                await sleep(WAITING_TIME);
+                endTime = new Date().getTime();
+                timing = endTime - startTime;
+                if (timing > TIME_OUT) {
+                    done();
+                    break;
+                }
+            }
+        });
+    });
+
+    /**
+     * @tc.number  Telephony_CallManager_isInEmergencyCall_Promise_0200
+     * @tc.name    Dial an emergency number (THE_THREE_NUMBER) and call isInEmergencyCall() to determine whether
+     *             an emergency call is made. The return value is true
+     * @tc.desc    Function test
+     */
+    it('Telephony_CallManager_isInEmergencyCall_Promise_0200', 0, async function (done) {
+        try {
+            const options = {accountId:SLOTID, videoState:MEDIA_TYPE_VOICE, dialScene:DIAL_SCENCE_CALL_PRIVILEGED,
+                dialType:DIAL_CARRIER_TYPE};
+            var data = await call.dial(THE_THREE_NUMBER, options);
+            console.log(`Telephony_CallManager_isInEmergencyCall_Promise_0200 dial finish : data = ${data}`);
+            const startTime = new Date().getTime();
+            while (true) {
+                if (callState === call.CALL_STATUS_DIALING || callState === call.CALL_STATUS_ACTIVE ||
+                     callState === call.CALL_STATUS_ALERTING) {
+                    try {
+                        var data = await call.isInEmergencyCall();
+                        console.log(`Telephony_CallManager_isInEmergencyCall_Promise_0200 finish : data = ${data}`);
+                        done();
+                    } catch (err) {
+                        console.log(`Telephony_CallManager_isInEmergencyCall_Promise_0200 fail : err = ${err}`);
+                        done();
+                        return;
+                    }
+                    return;
+                }
+                await sleep(WAITING_TIME);
+                endTime = new Date().getTime();
+                timing = endTime - startTime;
+                if (timing > TIME_OUT) {
+                    done();
+                    break;
+                }
+            }
+        } catch (err) {
+            console.log(`Telephony_CallManager_isInEmergencyCall_Promise_0200 dial fail : err = ${err}`);
+            done();
+        }
+    });
+
+    /**
+     * @tc.number  Telephony_CallManager_IMS_dial_Promise_0900
+     * @tc.name    Dial a call by function dial by args phoneNumber PHONE_NUMBER_LENGTH_11 options
+     *             {accountId:DEFAULT_SLOT_ID, videoState:MEDIA_TYPE_VOICE, dialScene:DIAL_SCENCE_CALL_PRIVILEGED,
+     *             dialType:DIAL_TYPE_ERR_CALL} by promise,the function return error
+     * @tc.desc    Function test
+     */
+    it('Telephony_CallManager_IMS_dial_Promise_0900', 0, function (done) {
+        let caseName = 'Telephony_CallManager_IMS_dial_Promise_0900';
+        let flag = true;
+        reachState(caseName, CALL_STATUS_DIALING, '', false).then(data => {
+            callId = data.callId;
+            console.log(`${caseName} reachState success,case failed,data:${toString(data)}`);
+            hangupCall2(caseName, done, callId);
+        }).catch(error => {
+            console.log(`${caseName} reachState error,case ${flag ? 'success' : 'failed'},error:${toString(error)}`);
+            done();
+        });
+        let obj = {accountId:DEFAULT_SLOT_ID, videoState:MEDIA_TYPE_VOICE,
+            dialScene:DIAL_SCENCE_CALL_PRIVILEGED, dialType:DIAL_TYPE_ERR_CALL};
+        call.dial(PHONE_NUMBER_LENGTH_11, obj).then(data => {
+            flag = false;
+        }).catch(error => {
+            console.log(`${caseName} dial error,error:${toString(error)}`);
+            flag = true;
+        });
+    });
+
+    /**
+     * @tc.number  Telephony_CallManager_on_0900
+     * @tc.name    Dial a call by number AUTO_ACCEPT_NUMBER options {accountId: DEFAULT_SLOT_ID,
+     *             videoState: MEDIA_TYPE_VOICE,dialScene: DIAL_SCENCE_CALL_NORMAL, dialType:DIAL_TYPE_OTT}
+     *             and before being accepted,the callEventChange event get EVENT_OTT_FUNCTION_UNSUPPORTED
+     * @tc.desc    Function test
+     */
+    it('Telephony_CallManager_on_0900', 0, function (done) {
+        let caseName = 'Telephony_CallManager_on_0900';
+        let callId = null;
+        reachCallEventState(EVENT_OTT_FUNCTION_UNSUPPORTED).then(data => {
+            console.log(`${caseName} reachCallEventState success,case ${
+                data.eventId === EVENT_OTT_FUNCTION_UNSUPPORTED ?
+                    'success' : 'failed'},data:${toString(data)}`);
+            done();
+        }).catch(error => {
+            if (callId) {
+                console.log(`${caseName} reachCallEventState error,case failed,error:${toString(error)}`);
+                done();
+            } else {
+                console.log(`${caseName} scenceInCalling error,case failed,error:${toString(error)}`);
+                done();
+            }
+        });
+        let options = {accountId: DEFAULT_SLOT_ID, videoState: MEDIA_TYPE_VOICE,
+            dialScene: DIAL_SCENCE_CALL_NORMAL, dialType:DIAL_TYPE_OTT};
+        call.dial(AUTO_ACCEPT_NUMBER, options, (err, data) => {
+            if (err) {
+                console.log(`${caseName} dial err:${err}`);
+                return;
+            }
+            console.log(`${caseName} dial success data:${data}`);
+        });
+    });
 });

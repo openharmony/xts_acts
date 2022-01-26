@@ -82,6 +82,164 @@ describe('SmsMmsErrorTest', function () {
     }
   });
 
+  /*
+   * @tc.number   Telephony_SmsMms_addSimMessage_Async_1400
+   * @tc.name     When status is equal to the correct value of SIM_MESSAGE_STATUS_READ,
+   *              Save a text message to the SIM card
+   * @tc.desc     Function test
+   */
+  it('Telephony_SmsMms_addSimMessage_Async_1400', 0, async function (done) {
+    let data = {
+      slotId: TRUE_SLOT_ID,
+      smsc: '',
+      pdu: RECEIVE_SMS_PDU,
+      status: sms.SIM_MESSAGE_STATUS_READ
+    };
+    sms.addSimMessage(data, (adderr) => {
+      if (adderr) {
+        console.log('Telephony_SmsMms_addSimMessage_Async_1400 add fail');
+        done();
+        return;
+      }
+      console.log('Telephony_SmsMms_addSimMessage_Async_1400 finish ');
+    });
+  });
+
+  /*
+   * @tc.number   Telephony_SmsMms_addSimMessage_Promise_1400
+   * @tc.name     When status is equal to the correct value of SIM_MESSAGE_STATUS_READ,
+   *              Save a text message to the SIM card
+   * @tc.desc     Function test
+   */
+  it('Telephony_SmsMms_addSimMessage_Promise_1400', 0, async function (done) {
+    let data = {
+      slotId: TRUE_SLOT_ID,
+      smsc: '',
+      pdu: RECEIVE_SMS_PDU,
+      status: sms.SIM_MESSAGE_STATUS_READ
+    };
+    try {
+      await sms.addSimMessage(data);
+      console.log('Telephony_SmsMms_addSimMessage_Promise_1400 finish ');
+    } catch (err) {
+      console.log('Telephony_SmsMms_addSimMessage_Promise_1400 add  fail');
+      done();
+    }
+  });
+
+  /*
+   * @tc.number   Telephony_SmsMms_addSimMessage_Async_1700
+   * @tc.name     When status is equal to the correct value of SIM_MESSAGE_STATUS_UNSENT,Set the PDU read type
+   *              Description Failed to add SMS messages to the SIM card
+   * @tc.desc     Function test
+   */
+  it('Telephony_SmsMms_addSimMessage_Async_1700', 0, async function (done) {
+    let data = {
+      slotId: TRUE_SLOT_ID,
+      smsc: '',
+      pdu: RECEIVE_SMS_PDU,
+      status: sms.SIM_MESSAGE_STATUS_UNSENT
+    };
+    sms.addSimMessage(data, (adderr) => {
+      if (adderr) {
+        console.log('Telephony_SmsMms_addSimMessage_Async_1700 finish ');
+        sms.getAllSimMessages(TRUE_SLOT_ID, (geterr, getresult) => {
+          if (geterr) {
+            console.log('Telephony_SmsMms_addSimMessage_Async_1700 get cur fail');
+            done();
+            return;
+          }
+          expect(getresult.length === 0).assertTrue();
+          console.log('Telephony_SmsMms_addSimMessage_Async_1700 getAllSimMessages cur finish');
+          done();
+        });
+        return;
+      }
+      console.log('Telephony_SmsMms_addSimMessage_Async_1700 add fail');
+      done();
+    });
+  });
+
+  /*
+   * @tc.number   Telephony_SmsMms_addSimMessage_Promise_1700
+   * @tc.name     When status is equal to the correct value of SIM_MESSAGE_STATUS_UNSENT,Set the PDU read type
+   *              Description Failed to add SMS messages to the SIM card
+   * @tc.desc     Function test
+   */
+  it('Telephony_SmsMms_addSimMessage_Promise_1700', 0, async function (done) {
+    let data = {
+      slotId: TRUE_SLOT_ID,
+      smsc: '',
+      pdu: RECEIVE_SMS_PDU,
+      status: sms.SIM_MESSAGE_STATUS_UNSENT
+    };
+    try {
+      await sms.addSimMessage(data);
+      console.log('Telephony_SmsMms_addSimMessage_Promise_1700 add fail');
+      done();
+      return;
+    } catch (err) {
+      console.log('Telephony_SmsMms_addSimMessage_Promise_1700 finish ');
+      done();
+    }
+  });
+
+  /*
+   * @tc.number   Telephony_SmsMms_addSimMessage_Async_1800
+   * @tc.name     When status is equal to the correct value of  SIM_MESSAGE_STATUS_UNREAD,Set the PDU sending type
+   *              Description Failed to add SMS messages to the SIM card
+   * @tc.desc     Function test
+   */
+  it('Telephony_SmsMms_addSimMessage_Async_1800', 0, async function (done) {
+    let data = {
+      slotId: TRUE_SLOT_ID,
+      smsc: '',
+      pdu: CORRECT_SMS_PDU,
+      status: sms.SIM_MESSAGE_STATUS_UNREAD
+    };
+    sms.addSimMessage(data, (adderr) => {
+      if (adderr) {
+        console.log('Telephony_SmsMms_addSimMessage_Async_1800 finish ');
+        sms.getAllSimMessages(TRUE_SLOT_ID, (geterr, getresult) => {
+          if (geterr) {
+            console.log('Telephony_SmsMms_addSimMessage_Async_1800 get cur fail');
+            done();
+            return;
+          }
+          expect(getresult.length === 0).assertTrue();
+          console.log('Telephony_SmsMms_addSimMessage_Async_1800 getAllSimMessages cur finish');
+          done();
+        });
+        return;
+      }
+      console.log('Telephony_SmsMms_addSimMessage_Async_1800 add fail');
+      done();
+    });
+  });
+
+  /*
+   * @tc.number   Telephony_SmsMms_addSimMessage_Promise_1800
+   * @tc.name     When status is equal to the correct value of  SIM_MESSAGE_STATUS_UNREAD,Set the PDU sending type
+   *              Description Failed to add SMS messages to the SIM card
+   * @tc.desc     Function test
+   */
+  it('Telephony_SmsMms_addSimMessage_Promise_1800', 0, async function (done) {
+    let data = {
+      slotId: TRUE_SLOT_ID,
+      smsc: '',
+      pdu: CORRECT_SMS_PDU,
+      status: sms.SIM_MESSAGE_STATUS_UNREAD
+    };
+    try {
+      await sms.addSimMessage(data);
+      console.log('Telephony_SmsMms_addSimMessage_Promise_1800 add fail');
+      done();
+    } catch (err) {
+      console.log('Telephony_SmsMms_addSimMessage_Promise_1800 finish ');
+      done();
+    }
+  });
+
   /**
    * @tc.number   Telephony_SmsMms_delSimMessage_Async_0200
    * @tc.name     When SLOTID is the wrong value,Deletes a text message from the SIM card fail

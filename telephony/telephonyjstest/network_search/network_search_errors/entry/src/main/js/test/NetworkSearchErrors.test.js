@@ -14,7 +14,8 @@
  */
 
 import radio from '@ohos.telephony.radio';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import observer from '@ohos.telephony.observer';
+import { describe, beforeAll, afterAll, it, expect } from 'deccjsunit/index';
 
 describe('ActsNetworkSearchTest', function () {
 
@@ -794,6 +795,52 @@ describe('ActsNetworkSearchTest', function () {
             console.log(`Telephony_NetworkSearch_isRadioOn_Promise_0200 fail ${err}`);
             done();
         }
+    });
+	
+    /**
+     * @tc.number  Telephony_StateRegistry_on_0200
+     * @tc.name    Add a networkStatus change listen and test observer.on({slotId:0}) to view the callback results
+     * @tc.desc    Function test
+     */
+    it('Telephony_StateRegistry_on_0200', 0, async function (done) {
+        observer.on('networkStateChange', { slotId: SLOT_0 }, (networkState) => {
+            console.log(`Telephony_StateRegistry_on_0200 networkStateChanged data: ${JSON.stringify(networkState)}`);
+            done();
+        });
+        done();
+    });
+	
+    /**
+     * @tc.number  Telephony_StateRegistry_off_0200
+     * @tc.name    Add a networkStatus change listen and test observer.off() to view the callback results
+     * @tc.desc    Function test
+     */
+    it('Telephony_StateRegistry_off_0200', 0, async function (done) {
+        observer.off('networkStateChange');
+        done();
+    });
+	
+    /**
+     * @tc.number  Telephony_StateRegistry_on_0300
+     * @tc.name    Add a networkStatus change listen and test observer.on({slotId:0}) to view the callback results
+     * @tc.desc    Function test
+     */
+    it('Telephony_StateRegistry_on_0300', 0, async function (done) {
+        observer.on('signalInfoChange', { slotId: SLOT_0 }, (networkState) => {
+            console.log(`Telephony_StateRegistry_on_0200 networkStateChanged data: ${JSON.stringify(networkState)}`);
+            done();
+        });
+        done();
+    });
+	
+    /**
+     * @tc.number  Telephony_StateRegistry_off_0300
+     * @tc.name    Add a networkStatus change listen and test observer.off() to view the callback results
+     * @tc.desc    Function test
+     */
+    it('Telephony_StateRegistry_off_0300', 0, async function (done) {
+        observer.off('signalInfoChange');
+        done();
     });
 
 });
