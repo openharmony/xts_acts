@@ -77,7 +77,31 @@
         "name": "com.permission.BMS_PERMISSION_CAMERA",
         "description": "BMS_PERMISSION_CAMERA permission in detail",
         "label": "BMS_PERMISSION_CAMERA permission"
+      },
+      {
+        "name": "com.permission.PERMISSION_A",
+        "grantMode": "system_grant",
+        "availableScope": ["signature"]
       }
-    ]
+    ],
+    "reqPermissions": [
+      {
+        "name": "com.permission.PERMISSION_A",
+        "reason": "Need PERMISSION_A",
+        "usedScene": {
+          "ability": [
+            "com.example.myapplication1.MainAbility"
+          ],
+          "when": "always"
+        }
+      }
+    ],
+    "metaData":{
+      "customizeData":[{
+        "name":"metaDataName",
+        "value":"metaDataValue",
+        "extra":"$string:app_name"
+      }]
+    }
   }
 }

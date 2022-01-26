@@ -39,7 +39,8 @@ describe('ActsBmsQueryAbilityByWant', function () {
                     action: ['action.system.home'],
                     entities: ['entity.system.home'],
                     bundleName: BUNDLE_NAME1
-                }, 132, 0, (err, data) => {
+                }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION|bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY, 
+                0, (err, data) => {
                     if (err) {
                         console.log('bms_queryAbilityByWant_0100 test query system app err is ' + err)
                         expect(err).assertEqual(1);
@@ -51,6 +52,9 @@ describe('ActsBmsQueryAbilityByWant', function () {
                             isKeepData: false
                         }
                     , (err, data) => {
+                        expect(err.code).assertEqual(0);
+                        expect(data.status).assertEqual(0);
+                        expect(data.statusMessage).assertEqual('SUCCESS');
                         done();
                     });
                 }
@@ -78,8 +82,9 @@ describe('ActsBmsQueryAbilityByWant', function () {
             {
                 action: ['action.system.home'],
                 entities: ['entity.system.home']
-            }
-        , 132, 0).then(data => {
+            }, 
+            bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION|bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY, 
+        0).then(data => {
                 for(let i = 0; i < data.length; ++i) {
                     var jsondata = JSON.stringify(data[i]);
                     console.log('bms_queryAbilityByWant_0200 test query system app ' + jsondata)
@@ -89,6 +94,8 @@ describe('ActsBmsQueryAbilityByWant', function () {
             }
         ).catch(err => {
             console.log('bms_queryAbilityByWant_0200 test query system app err is ' + err)
+            expect(err).assertFail()
+            done();
         })
     })
 

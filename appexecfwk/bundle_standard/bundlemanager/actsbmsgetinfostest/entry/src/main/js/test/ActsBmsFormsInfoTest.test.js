@@ -1786,7 +1786,7 @@ describe('ActsBmsFormsInfoTest', function () {
         expect(typeof dataInfo.description).assertEqual('string');
         expect(typeof dataInfo.descriptionId).assertEqual('number');
         expect(typeof dataInfo.type).assertEqual('number');
-        expect(typeof dataInfo.colorMode).assertEqual('number');
+        expect(dataInfo.colorMode).assertEqual(bundle.ColorMode.LIGHT_MODE);
         expect(typeof dataInfo.defaultFlag).assertEqual('boolean');
         expect(typeof dataInfo.jsComponentName).assertEqual('string');
         expect(typeof dataInfo.formVisibleNotify).assertEqual('boolean');
