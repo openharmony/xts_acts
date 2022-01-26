@@ -243,7 +243,12 @@ describe('AudioDecoderFunc', function () {
 
     afterEach(function() {
         console.info('afterEach case');
-        wait(2000);
+        if (audioDecodeProcessor != null){
+            audioDecodeProcessor.release().then(() => {
+                console.info('audioDecodeProcessor release success');
+                audioDecodeProcessor = null;
+            })
+        }
     })
 
     afterAll(function() {

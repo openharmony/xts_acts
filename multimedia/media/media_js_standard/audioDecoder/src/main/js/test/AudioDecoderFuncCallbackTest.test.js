@@ -243,12 +243,11 @@ describe('AudioDecoderFunc', function () {
         ES_LENGTH = 1500;
     })
 
-    afterEach(function() {
+    afterEach(async function() {
         console.info('afterEach case');
-        if (audioDecodeProcessor != null){
-            audioDecodeProcessor = null
+        if (audioDecodeProcessor != null) {
+            audioDecodeProcessor = null;
         }
-        wait(2000);
     })
 
     afterAll(function() {
@@ -311,7 +310,7 @@ describe('AudioDecoderFunc', function () {
             expect(err).assertUndefined();
             console.info("case reset success");
             if (needrelease) {
-                audioDecodeProcessor = null
+                audioDecodeProcessor = null;
             }
         })
     }
@@ -333,7 +332,6 @@ describe('AudioDecoderFunc', function () {
             audioDecodeProcessor.reset((err) => {
                 expect(err).assertUndefined();
                 console.log("case reset success");
-                audioDecodeProcessor = null;
                 done();
             })
         })
