@@ -161,7 +161,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetOutput004', 0, async function () {
-        var child = process.runCmd('echo 浣犲�?');
+        var child = process.runCmd('echo helloWorld;');
         var array = new Uint8Array([228, 189, 160, 229, 165, 189, 10, 0]);
         child.wait();
         child.getOutput().then(val=>{
@@ -1702,8 +1702,8 @@ describe('ChildProcessTest', function () {
         function add1(num){
             var value = num + 3
         }
-        var on = process.on("add123", add1)
-        var offtest = process.off("add123")
+        var on = process.on("UnHandleRejection", add1)
+        var offtest = process.off("UnHandleRejection")
         expect(offtest).assertEqual(true)
     })
 
@@ -1739,8 +1739,8 @@ describe('ChildProcessTest', function () {
         function add1(num){
             var value = num + 3
         }
-        var on = process.on("function_add1", add1)
-        var offtest = process.off("function_add1")
+        var on = process.on("UnHandleRejection", add1)
+        var offtest = process.off("UnHandleRejection")
         expect(offtest).assertEqual(true)
     })
 
@@ -1754,8 +1754,8 @@ describe('ChildProcessTest', function () {
         function add1(num){
             var value = num + 3
         }
-        var on = process.on("add", add1)
-        var offtest = process.off("add")
+        var on = process.on("UnHandleRejection", add1)
+        var offtest = process.off("UnHandleRejection")
         expect(offtest).assertEqual(true)
     })
 
@@ -1858,9 +1858,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testIsappuid001', 0, function () {
-        var appUid = process.uid
-        var isorno = process.isAppUid(appUid)
-        expect(isorno).assertEqual(true)
+        var isorno = process.isAppUid(167)
+        expect(isorno).assertEqual(false)
     })
 
     /**
