@@ -29,7 +29,8 @@
         "skills": [
           {
             "entities": [
-              "entity.system.home"
+              "entity.system.home",
+              "entitiesentities"
             ],
             "actions": [
               "action.system.home"

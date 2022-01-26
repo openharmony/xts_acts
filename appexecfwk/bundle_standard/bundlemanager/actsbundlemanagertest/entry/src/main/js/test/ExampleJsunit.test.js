@@ -84,7 +84,8 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            var datainfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
+            var datainfo = await demo.getBundleInfo(NAME1, 
+                demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES|demo.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION)
             expect(datainfo.name).assertEqual(NAME1)
             expect(datainfo.vendor).assertEqual("example")
             expect(datainfo.versionCode).assertEqual(VERSIONCODE1)
@@ -100,8 +101,11 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.systemApp).assertEqual(true)
             expect(datainfo.appInfo.supportedModes).assertEqual(0)
             expect(datainfo.updateTime).assertLarger(0)
-            expect(datainfo.reqPermissions.length).assertEqual(0)
-            expect(datainfo.reqPermissionDetails.length).assertEqual(0)
+            expect(datainfo.reqPermissions[0]).assertEqual("com.permission.PERMISSION_A")
+            expect(datainfo.reqPermissionDetails[0].name).assertEqual("com.permission.PERMISSION_A")
+            expect(datainfo.reqPermissionDetails[0].reason).assertEqual("Need PERMISSION_A")
+            expect(datainfo.reqPermissionDetails[0].usedScene.abilities[0]).assertEqual(NAME1 + ".MainAbility")
+            expect(datainfo.reqPermissionDetails[0].usedScene.when).assertEqual("always")
             expect(datainfo.compatibleVersion).assertEqual(5)
             expect(datainfo.targetVersion).assertEqual(5)
             expect(datainfo.isCompressNativeLibs).assertEqual(false)
@@ -455,7 +459,9 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 0).then(datainfo => {
+            await demo.getApplicationInfo(NAME1,
+                demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION|demo.BundleFlag.GET_APPLICATION_INFO_WITH_METADATA, 
+                0).then(datainfo => {
                 expect(typeof datainfo).assertEqual(OBJECT)
                 console.info("getApplicationInfo success:" + JSON.stringify(datainfo))
                 expect(datainfo.moduleSourceDirs.length).assertLarger(0)
@@ -472,6 +478,9 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.process).assertEqual("")
                 expect(datainfo.enabled).assertEqual(true)
                 expect(datainfo.flags).assertEqual(0)
+                expect(datainfo.metaData.entry[0].name).assertEqual("metaDataName")
+                expect(datainfo.metaData.entry[0].value).assertEqual("metaDataValue")
+                expect(datainfo.metaData.entry[0].extra).assertEqual("$string:app_name")
                 expect(datainfo.moduleSourceDirs.length).assertLarger(0)
                 for (var j = 0; j < datainfo.moduleInfos; j++) {
                     expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry")
@@ -2142,6 +2151,7 @@ describe('ActsBundleManagerTest', function () {
                         expect(datainfo.moduleName).assertEqual("entry")
                         expect(datainfo.bundleName).assertEqual(NAME1)
                         expect(datainfo.type).assertEqual(1)
+                        expect(datainfo.subType).assertEqual(demo.AbilitySubType.UNSPECIFIED)
                         expect(datainfo.orientation).assertEqual(0)
                         expect(datainfo.launchMode).assertEqual(demo.LaunchMode.STANDARD)
                         expect(datainfo.permissions[0]).assertEqual("com.permission.BMS_PERMISSION_CAMERA")
@@ -2245,60 +2255,92 @@ describe('ActsBundleManagerTest', function () {
      */
     it('queryAbilityByWant_0300', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
-        installData.install([PATH + BMSJSTEST4, PATH + BMSJSTEST5, PATH + BMSJSTEST6], {
+        installData.install([PATH + BMSJSTEST4], {
             userId: 0,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
-            expect(err.code).assertEqual(-1);
-            expect(data.status).assertEqual(3);
-            expect(data.statusMessage).assertEqual('STATUS_INSTALL_FAILURE_INVALID');
-            getInfo();
+            expect(data.status).assertEqual(0);
+            installData.install([PATH + BMSJSTEST5], {
+                userId: 0,
+                installFlag: 0,
+                isKeepData: false
+            }, async (err, data) => {
+                expect(data.status).assertEqual(0);
+                installData.install([PATH + BMSJSTEST6], {
+                    userId: 0,
+                    installFlag: 0,
+                    isKeepData: false
+                }, async (err, data) => {
+                    expect(data.status).assertEqual(0);
+                    getInfo();
+                });
+            });
         });
         async function getInfo() {
             demo.queryAbilityByWant(
                 {
-                    "bundleName": "com.example.myapplication4",
-                    "abilityName": "com.example.myapplication.MainAbility",
+                    entities: ['entity.system.home','entitiesentities']
                 }, 4, 0).then(data => {
+                    let queryResultCount = 0;
                     for (let i = 0, len = data.length; i < len; i++) {
                         var datainfo = data[i];
-                        expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility")
-                        expect(datainfo.label).assertEqual("$string:app_name")
-                        expect(datainfo.description).assertEqual("$string:mainability_description")
-                        expect(datainfo.icon).assertEqual("$media:icon")
-                        expect(datainfo.moduleName).assertEqual("entry")
-                        expect(datainfo.bundleName).assertEqual(NAME3)
-                        expect(datainfo.applicationInfo.name).assertEqual(NAME3)
-                        expect(datainfo.applicationInfo.description).assertEqual("$string:mainability_description")
-                        expect(datainfo.applicationInfo.descriptionId >= 0).assertTrue()
-                        expect(datainfo.applicationInfo.icon).assertEqual("$media:icon")
-                        expect(datainfo.applicationInfo.iconId >= 0).assertTrue()
-                        expect(datainfo.applicationInfo.label).assertEqual("$string:app_name")
-                        expect(datainfo.applicationInfo.labelId >= 0).assertTrue()
-                        expect(datainfo.applicationInfo.systemApp).assertEqual(true)
-                        expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
-                        expect(datainfo.applicationInfo.enabled).assertEqual(true)
-                        for (var j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
-                            expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
+                        if (datainfo.bundleName == NAME3){
+                            expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility")
+                            expect(datainfo.label).assertEqual("$string:app_name")
+                            expect(datainfo.description).assertEqual("$string:mainability_description")
+                            expect(datainfo.icon).assertEqual("$media:icon")
+                            expect(datainfo.moduleName).assertEqual("entry")
+                            expect(datainfo.bundleName).assertEqual(NAME3)
+                            expect(datainfo.applicationInfo.name).assertEqual(NAME3)
+                            expect(datainfo.applicationInfo.description).assertEqual("$string:mainability_description")
+                            expect(datainfo.applicationInfo.descriptionId >= 0).assertTrue()
+                            expect(datainfo.applicationInfo.icon).assertEqual("$media:icon")
+                            expect(datainfo.applicationInfo.iconId >= 0).assertTrue()
+                            expect(datainfo.applicationInfo.label).assertEqual("$string:app_name")
+                            expect(datainfo.applicationInfo.labelId >= 0).assertTrue()
+                            expect(datainfo.applicationInfo.systemApp).assertEqual(true)
+                            expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
+                            expect(datainfo.orientation).assertEqual(2)
+                            expect(datainfo.applicationInfo.enabled).assertEqual(true)
+                            for (var j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
+                                expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
+                            }
+                            queryResultCount++
+                        }
+                        if (datainfo.bundleName == NAME4){
+                            expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility")
+                            expect(datainfo.bundleName).assertEqual(NAME4)
+                            expect(datainfo.orientation).assertEqual(3)
+                            queryResultCount++
+                        }
+                        if (datainfo.bundleName == NAME5){
+                            expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility")
+                            expect(datainfo.bundleName).assertEqual(NAME5)
+                            expect(datainfo.orientation).assertEqual(0)
+                            queryResultCount++
                         }
                     }
+                    expect(queryResultCount).assertEqual(3)
                 })
             installData.uninstall(NAME3, {
                 userId: 0,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
+                expect(data.status).assertEqual(0);
                 installData.uninstall(NAME4, {
                     userId: 0,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
+                    expect(data.status).assertEqual(0);
                     installData.uninstall(NAME5, {
                         userId: 0,
                         installFlag: 0,
                         isKeepData: false
                     }, (err, data) => {
+                        expect(data.status).assertEqual(0);
                         done();
                     });
                 });
