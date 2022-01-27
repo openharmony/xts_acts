@@ -113,11 +113,6 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
         console.info("==========================>publishCallback");
     }
 
-    function sleep(delay) {
-        var start = (new Date()).getTime();
-        while((new Date()).getTime() - start < delay) {}
-    }
-
     function findArray(str) {
         var value = false;
         var index1 = 0;
@@ -214,8 +209,10 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
             commonEventSubscriber1 = data;
             Subscriber.subscribe(commonEventSubscriber1, subscriberCallBack001);
             for (var i = 0; i < 50; ++i) {
-                sleep(1000);
-                Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
+                setTimeout(function (){
+                    console.debug("===============>ActsSubscriberTestUnorderSystem_0100 delay 1s==================");
+                    Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
+                }, 1000); 
             }
         })
     })
@@ -289,8 +286,10 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
             commonEventSubscriber2 = data;
             Subscriber.subscribe(commonEventSubscriber2, subscriberCallBack002);
             for (var i = 0; i < 36; ++i) {
-                sleep(1000);
-                Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
+                setTimeout(function (){
+                    console.debug("===============>ActsSubscriberTestUnorderSystem_0200 delay 1s==================");
+                    Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
+                }, 1000);
             }
         })
     })
