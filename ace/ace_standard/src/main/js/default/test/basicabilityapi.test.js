@@ -350,7 +350,7 @@ describe('basicabilityapi', function () {
      */
     it('testPromptShowToast', 0, function () {
         console.info('testPromptShowToast START');
-        const delay = 5000;
+        const delay = 2000;
         prompt.showToast({
             message: 'message',
             duration: delay,
