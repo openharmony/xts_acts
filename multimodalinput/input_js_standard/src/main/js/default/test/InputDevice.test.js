@@ -14,22 +14,41 @@
  */
 
 import inputDevice from '@ohos.multimodalInput.inputDevice';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import {
+  describe,
+  beforeAll,
+  beforeEach,
+  afterEach,
+  afterAll,
+  it,
+  expect
+} from 'deccjsunit/index'
 
 describe('MultimodalInput_test', function () {
 
+  // 参数正确,返回一个数组
   it('inputDevice::getDeviceIds_test-01', 0, function () {
     console.log(`inputDevice::getDeviceIds_test-01 enter`);
-    inputDevice.getDeviceIds((obj) => {
-        if (!obj) {
-            console.log(`inputDevice::getDeviceIds_test-01 error:${JSON.stringify(obj)}`)
-            expect(false).assertTrue();
-        } else {
-            console.log(`inputDevice::getDeviceIds_test-01 success:${JSON.stringify(obj)}`);
-            expect(obj).assertInstanceOf('Array');
-        }
-        console.log(`inputDevice::getDeviceIds_test-01 exit`);
+    inputDevice.getDeviceIds((data, err) => {
+      if (err) {
+        expect(false).assertTrue();
+      } else {
+        expect(data).assertInstanceOf('Array');
+      }
+      console.log(`inputDevice::getDeviceIds_test-01 exit`);
     })
-})
+  })
 
+  // 参数正确,判断一种或多种设备
+  it("inputDevice::getDeviceIds_test-02", 0, function () {
+    console.log(`inputDevice::getDeviceIds_test-02 enter`);
+    inputDevice.getDeviceIds((data, err) => {
+      if (err) {
+        expect(false).assertTrue();
+      } else {
+        expect(data.length > 0).assertTure();
+      }
+      console.log(`inputDevice::getDeviceIds_test-02 exit`);
+    })
+  })
 })
