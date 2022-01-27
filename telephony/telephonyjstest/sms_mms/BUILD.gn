@@ -15,6 +15,6 @@ import("//test/xts/tools/build/suite.gni")
 group("sms_mms") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "sms_mms_error:SmsMmsErrorTest" ]
+    deps = [ "sms_mms_error:ActSmsMmsErrorTest" ]
   }
 }
