@@ -51,4 +51,39 @@ describe('MultimodalInput_test', function () {
       console.log(`inputDevice::getDeviceIds_test-02 exit`);
     })
   })
+
+  it("inputDevice::getDevice_test-01", 0, function () {
+    console.log(`inputDevice::getDevice_test-03 enter`);
+    inputDevice.getDevice(-1, (data, err) => {
+      if (err) {
+        expect(false).assertTrue();
+        console.log(`inputDevice::getDevice_test-03 ${JSON.stringify(err)}`);
+      } else {
+        expect(JSON.stringify(data) !== "{}").assertTrue();
+      }
+      console.log(`inputDevice::getDevice_test-03 exit`);
+    })
+  })
+
+    // 参数正常,返回值正常
+  it("inputDevice::getDevice_test-02", 0, function () {
+    console.log(`inputDevice::getDevice_test-04 enter`);
+    inputDevice.getDeviceIds((data, err) => {
+      if (err) {
+        expect(false).assertTrue();
+      } else {
+        let arr = [];
+        for (var i = 0; i < data.length; i++) {
+          inputDevice.getDevice(data[i], (res, err) => {
+            console.log(`getDevice:data_i ${JSON.stringify(data[i])}`)
+            console.log(`getDevice:data ${JSON.stringify(data)}`)
+            console.log(`getDevice:err ${JSON.stringify(err)}`)
+            arr = Object.keys(res);
+          })
+        expect(arr.length > 0).assertTrue();
+      }
+    }
+    console.log(`inputDevice::getDevice_test-04 exit`);
+    });
+  })
 })
