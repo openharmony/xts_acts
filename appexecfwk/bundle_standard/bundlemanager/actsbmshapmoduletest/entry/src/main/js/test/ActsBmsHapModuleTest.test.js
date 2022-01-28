@@ -29,7 +29,7 @@ describe('ActsBmsHapModuleTest', function () {
         let bundleName = 'com.example.bmsmainabilityfirstscene';
         var installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, onReceiveInstallEvent);
@@ -70,7 +70,7 @@ describe('ActsBmsHapModuleTest', function () {
                     }
                 }
                 installer.uninstall(bundleName, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, (err, data) => {
@@ -96,7 +96,7 @@ describe('ActsBmsHapModuleTest', function () {
         let secondMainAbility = 'com.example.bmsmainabilitysecondscene.MainAbility';
         var installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -114,7 +114,7 @@ describe('ActsBmsHapModuleTest', function () {
                     checkHapModuleInfo(result.hapModuleInfo[1]);
                 }
                 installer.uninstall(bundleName, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, (err, data) => {
@@ -139,7 +139,7 @@ describe('ActsBmsHapModuleTest', function () {
         var installer = await bundle.getBundleInstaller();
         console.log('========install========' + typeof installer);
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, onReceiveInstallEvent);
@@ -160,7 +160,7 @@ describe('ActsBmsHapModuleTest', function () {
                     checkHapModuleInfo(result.hapModuleInfo[0]);
                 }
                 installer.uninstall(bundleName, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, onReceiveUninstallEvent);
@@ -190,7 +190,7 @@ describe('ActsBmsHapModuleTest', function () {
         var installer = await bundle.getBundleInstaller();
         console.log('========install========' + typeof installer);
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, (err, data) => {
@@ -209,7 +209,7 @@ describe('ActsBmsHapModuleTest', function () {
                     checkHapModuleInfo(result.hapModuleInfo[0]);
                 }
                 installer.uninstall(bundleName, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, onReceiveUninstallEvent);
@@ -236,7 +236,7 @@ describe('ActsBmsHapModuleTest', function () {
         let bundleName = 'com.example.third1';
         var installer = await bundle.getBundleInstaller();
         installer.install(bundlePath1, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -244,7 +244,7 @@ describe('ActsBmsHapModuleTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.install(bundlePath2, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, (err, data) => {
@@ -263,7 +263,7 @@ describe('ActsBmsHapModuleTest', function () {
                 checkHapModuleInfo(hapModuleInfo);
             }
             installer.uninstall(bundleName, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, (err, data) => {

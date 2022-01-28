@@ -29,7 +29,7 @@ describe('ActsBmsJsTest', function () {
         let abilityName = 'com.example.third2.MainAbility';
         var installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest2.hap'], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, onReceiveInstallEvent);
@@ -50,7 +50,7 @@ describe('ActsBmsJsTest', function () {
                 expect(result.abilityInfo[0].srcPath).assertEqual('');
             }
             installer.uninstall(bundleName, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, (err, data) => {
@@ -76,7 +76,7 @@ describe('ActsBmsJsTest', function () {
         let abilityName2 = 'com.example.third5.BMainAbility';
         var installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest5.hap'], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, onReceiveInstallEvent);
@@ -101,7 +101,7 @@ describe('ActsBmsJsTest', function () {
                 expect(result.abilityInfo[1].srcPath).assertEqual('');
             }
             installer.uninstall(bundleName, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, (err, data) => {
@@ -125,7 +125,7 @@ describe('ActsBmsJsTest', function () {
         let abilityName = 'com.example.js.MainAbility';
         var installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleJs.hap'], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, onReceiveInstallEvent);
@@ -146,7 +146,7 @@ describe('ActsBmsJsTest', function () {
                 expect(result.abilityInfo[0].srcPath).assertEqual('default');
             }
             installer.uninstall(bundleName, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, (err, data) => {
@@ -171,7 +171,7 @@ describe('ActsBmsJsTest', function () {
         let abilityName = '.MainAbility';
         var installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleC.hap'], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, onReceiveInstallEvent);
@@ -192,7 +192,7 @@ describe('ActsBmsJsTest', function () {
                 expect(result.abilityInfo[0].srcPath).assertEqual('default/c++/');
             }
             installer.uninstall(bundleName, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, (err, data) => {

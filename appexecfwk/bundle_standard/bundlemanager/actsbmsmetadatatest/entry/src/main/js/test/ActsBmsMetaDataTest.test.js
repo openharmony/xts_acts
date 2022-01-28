@@ -30,7 +30,7 @@ describe('ActsBmsMetaDataTest', function () {
         let abilityName1 = 'com.example.third1.MainAbility';
         let dataMap = new Map();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -50,7 +50,7 @@ describe('ActsBmsMetaDataTest', function () {
                 checkMetaData(dataMap.get(abilityName1), 'Data1');
             }
             installer.uninstall('com.example.third1', {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, (err, data) => {
@@ -76,7 +76,7 @@ describe('ActsBmsMetaDataTest', function () {
         let abilityName1 = 'com.example.third1.AMainAbility';
         var installer = await bundle.getBundleInstaller();
         installer.install(bundlePath1, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -84,7 +84,7 @@ describe('ActsBmsMetaDataTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.install(bundlePath2, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -104,7 +104,7 @@ describe('ActsBmsMetaDataTest', function () {
                     checkMetaData(dataMap.get(abilityName1), 'DataA1');
                 }
                 installer.uninstall('com.example.third1', {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, (err, data) => {
@@ -128,7 +128,7 @@ describe('ActsBmsMetaDataTest', function () {
         let bundleName = 'com.example.third1';
         var installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, (err, data) => {
@@ -136,7 +136,7 @@ describe('ActsBmsMetaDataTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.uninstall(bundleName, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -164,7 +164,7 @@ describe('ActsBmsMetaDataTest', function () {
         let abilityName1 = 'com.example.third5.AMainAbility';
         var installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, onReceiveinstallEvent);
@@ -185,7 +185,7 @@ describe('ActsBmsMetaDataTest', function () {
                 checkMetaData(dataMap.get(abilityName1), 'Data5A');
             }
             installer.uninstall('com.example.third5', {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, (err, data) => {

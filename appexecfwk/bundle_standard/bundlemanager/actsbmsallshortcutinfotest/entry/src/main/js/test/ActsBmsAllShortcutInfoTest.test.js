@@ -31,7 +31,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         var bundleName = 'com.example.third1';
         let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, OnReceiveInstallEvent);
@@ -61,7 +61,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 checkShortcutIsExist(shortInfos, 'id.third1', 'third1');
             });
             installer.uninstall(bundleName, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, OnReceiveUninstallEvent);
@@ -85,7 +85,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         var bundleName = 'com.example.third1';
         let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, OnReceiveInstallEvent);
@@ -99,7 +99,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 expect(shortcutInfos.length).assertEqual(1);
                 checkShortcutIsExist(shortcutInfos, 'id.third1', 'third1');
                 installer.uninstall(bundleName, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, (err, data) => {
@@ -123,7 +123,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         var bundlePath = ['/data/test/bmsThirdBundleTest1.hap', '/data/test/bmsThirdBundleTest3.hap'];
         let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -137,7 +137,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 checkShortcutIsExist(shortInfos, 'id.third3', 'third3');
             });
             installer.uninstall(bundleName, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, (err, data) => {
@@ -159,7 +159,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         var bundleName = 'com.example.third1';
         let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, (err, data) => {
@@ -172,7 +172,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 checkShortcutIsExist(shortInfos, 'id.third1', 'third1');
                 checkShortcutIsExist(shortInfos, 'id.third3', 'third3');
                 installer.uninstall(bundleName, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, (err, data) => {
@@ -229,7 +229,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         var abilityName = 'com.example.third1.AMainAbility';
         let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath1, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -237,7 +237,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual("SUCCESS");
             installer.install(bundlePath2, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -267,7 +267,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                     }
                 });
                 installer.uninstall(bundleName, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, (err, data) => {
@@ -292,7 +292,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         var abilityName = 'com.example.third1.AMainAbility';
         let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath1, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, (err, data) => {
@@ -300,7 +300,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual("SUCCESS");
             installer.install(bundlePath2, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, (err, data) => {
@@ -328,7 +328,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                         }
                     }
                     installer.uninstall(bundleName, {
-                        userId: 0,
+                        userId: 100,
                         installFlag: 1,
                         isKeepData: false
                     }, (err, data) => {
@@ -352,7 +352,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         var bundlePath = ['/data/test/bmsThirdBundleTest2.hap'];
         let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -364,7 +364,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 expect(data.length).assertEqual(0);
             });
             installer.uninstall(bundleName, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, (err, data) => {
@@ -386,7 +386,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         var bundlePath = ['/data/test/bmsThirdBundleTest2.hap'];
         let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -398,7 +398,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 expect(shortcutInfos.length).assertEqual(0);
             });
             installer.uninstall(bundleName, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, (err, data) => {
@@ -486,7 +486,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         var bundleName = 'com.example.third1';
         let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -497,7 +497,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 checkShortcutIsExist(shortcutInfos, 'id.third1', 'third1');
             });
             installer.uninstall(bundleName, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -523,7 +523,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         var bundleName = 'com.example.third1';
         let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -536,7 +536,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 checkShortcutIsExist(shortcutInfos, 'id.third1', 'third1');
             });
             installer.uninstall(bundleName, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -563,7 +563,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         var bundlePath = ['/data/test/bmsThirdBundleTest4.hap'];
         let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -577,7 +577,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 checkShortcutInfo(shortcutInfos[1], 'third4B');
             });
             installer.uninstall(bundleName, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -599,7 +599,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
         var bundleName = 'com.example.third4';
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest4.hap'], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -612,7 +612,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
                 checkShortcutInfo(shortcutInfos[0], 'third4A');
                 checkShortcutInfo(shortcutInfos[1], 'third4B');
                 installer.uninstall(bundleName, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async (err, data) => {
