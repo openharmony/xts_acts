@@ -51,7 +51,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Install_0100', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([""], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -71,7 +71,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Install_0200', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + FIRST_RIGHT,""], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -91,7 +91,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Install_0300', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + FIRST_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -99,7 +99,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             expect(data.status).assertEqual(0);
             console.info('===BMS_Multiple_Hap_Install_0300.Message1===' + JSON.stringify(data.statusMessage));
             installData.uninstall(NAME, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data1) => {
@@ -118,7 +118,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Install_0400', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + SECOND_RIGHT, PATH + THIRD_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -138,7 +138,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Install_0500', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + SECOND_RIGHT, PATH + FOURTH_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -158,7 +158,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Install_0600', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + FIRST_RIGHT, PATH + EIGHTH_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -178,7 +178,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Install_0700', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + FIRST_RIGHT, PATH + NINTH_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -198,7 +198,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Install_0800', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + FIRST_RIGHT, PATH + TENTH_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -218,7 +218,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Install_0900', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + FIRST_RIGHT, PATH + ELEVEBTH_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -238,7 +238,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Install_1000', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + FIRST_RIGHT, PATH + FIFTH_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -258,7 +258,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Install_1100', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + SECOND_RIGHT, PATH + SECOND_BACKUP_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -267,7 +267,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             console.info('===BMS_Multiple_Hap_Install_1100.Message1===' + JSON.stringify(data.statusMessage));
             expect(data.statusMessage).assertEqual('SUCCESS');
             installData.uninstall(NAME, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data1) => {
@@ -286,7 +286,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Install_1200', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + FIRST_RIGHT, PATH + SECOND_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -295,7 +295,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             console.info('===BMS_Multiple_Hap_Install_1200.Message1===' + JSON.stringify(data.statusMessage));
             expect(data.statusMessage).assertEqual('SUCCESS');
             installData.uninstall(NAME, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data1) => {
@@ -314,7 +314,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Install_1300', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + SECOND_RIGHT, PATH + TWELFTH_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -323,7 +323,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             console.info('===BMS_Multiple_Hap_Install_1300.Message1===' + JSON.stringify(data.statusMessage));
             expect(data.statusMessage).assertEqual('SUCCESS');
             installData.uninstall(NAME, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data1) => {
@@ -342,7 +342,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Install_1400', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + FIRST_RIGHT, PATH + "test_right.hap"], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -362,7 +362,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Install_1500', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + FIRST_RIGHT, PATH + SIXTH_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -382,7 +382,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Update_0100', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + FIRST_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -392,7 +392,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             expect(data.statusMessage).assertEqual('SUCCESS');
             
             installData.install([PATH + SECOND_RIGHT], {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -401,7 +401,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
                 console.info('===BMS_Multiple_Hap_Update_0100.Message2===' + JSON.stringify(data.statusMessage));
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 installData.uninstall(NAME, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async (err, data) => {
@@ -421,7 +421,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
     it('BMS_Multiple_Hap_Update_0200', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + FIRST_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -430,7 +430,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             console.info('===BMS_Multiple_Hap_Update_0200.Message1===' + JSON.stringify(data.statusMessage));
             expect(data.statusMessage).assertEqual('SUCCESS');
             installData.install([PATH + FOURTH_RIGHT], {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -439,7 +439,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
                 console.info('===BMS_Multiple_Hap_Update_0200.Message2===' + JSON.stringify(data.statusMessage));
                 expect(data.statusMessage).assertEqual('STATUS_INSTALL_FAILURE_CONFLICT');
                 installData.uninstall(NAME, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async (err, data) => {
@@ -459,7 +459,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Update_0300', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + FIRST_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -468,7 +468,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             console.info('===BMS_Multiple_Hap_Update_0300.Message1===' + JSON.stringify(data.statusMessage));
             expect(data.statusMessage).assertEqual('SUCCESS');
             installData.install([PATH + THIRTEENTH_RIGHT], {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -477,7 +477,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
                 console.info('===BMS_Multiple_Hap_Update_0300.Message2===' + JSON.stringify(data.statusMessage));
                 expect(data.statusMessage).assertEqual('STATUS_INSTALL_FAILURE_INCOMPATIBLE');
                 installData.uninstall(NAME, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async (err, data) => {
@@ -497,7 +497,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Update_0400', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + FIRST_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -507,7 +507,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             expect(data.statusMessage).assertEqual('SUCCESS');
             
             installData.install([PATH + FIRST_RIGHT], {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -516,7 +516,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
                 console.info('===BMS_Multiple_Hap_Update_0400.Message2===' + JSON.stringify(data.statusMessage));
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 installData.uninstall(NAME, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async (err, data) => {
@@ -536,7 +536,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Update_0500', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + FIRST_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -546,7 +546,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             expect(data.statusMessage).assertEqual('SUCCESS');
             
             installData.install([PATH + FOURTEENTH_RIGHT], {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -555,7 +555,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
                 console.info('===BMS_Multiple_Hap_Update_0500.Message2===' + JSON.stringify(data.statusMessage));
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 installData.uninstall(NAME, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async (err, data) => {
@@ -575,7 +575,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Update_0600', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + SECOND_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -585,7 +585,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             expect(data.statusMessage).assertEqual('SUCCESS');
             
             installData.install([PATH + FIRST_RIGHT], {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -594,7 +594,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
                 console.info('===BMS_Multiple_Hap_Update_0600.Message2===' + JSON.stringify(data.statusMessage));
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 installData.uninstall(NAME, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async (err, data) => {
@@ -614,7 +614,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Update_0700', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + SECOND_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -624,7 +624,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             expect(data.statusMessage).assertEqual('SUCCESS');
             
             installData.install([PATH + FOURTEENTH_RIGHT], {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -633,7 +633,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
                 console.info('===BMS_Multiple_Hap_Update_0700.Message2===' + JSON.stringify(data.statusMessage));
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 installData.uninstall(NAME, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async (err, data) => {
@@ -653,7 +653,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Update_0800', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + SECOND_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -663,7 +663,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             expect(data.statusMessage).assertEqual('SUCCESS');
             
             installData.install([PATH + SECOND_RIGHT], {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -672,7 +672,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
                 console.info('===BMS_Multiple_Hap_Update_0800.Message2===' + JSON.stringify(data.statusMessage));
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 installData.uninstall(NAME, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async (err, data) => {
@@ -692,7 +692,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Update_0900', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + SECOND_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -702,7 +702,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             expect(data.statusMessage).assertEqual('SUCCESS');
             
             installData.install([PATH + FOURTH_RIGHT], {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -711,7 +711,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
                 console.info('===BMS_Multiple_Hap_Update_0900.Message2===' + JSON.stringify(data.statusMessage));
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 installData.uninstall(NAME, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async (err, data) => {
@@ -731,7 +731,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Update_1000', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + SECOND_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -740,7 +740,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             console.info('===BMS_Multiple_Hap_Update_1000.Message1===' + JSON.stringify(data.statusMessage));
             expect(data.statusMessage).assertEqual('SUCCESS');
             installData.install([PATH + THIRTEENTH_RIGHT], {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -749,7 +749,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
                 console.info('===BMS_Multiple_Hap_Update_1000.Message2===' + JSON.stringify(data.statusMessage));
                 expect(data.statusMessage).assertEqual('STATUS_INSTALL_FAILURE_INCOMPATIBLE');
                 installData.uninstall(NAME, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async (err, data) => {
@@ -769,7 +769,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Update_1100', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + SECOND_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -779,7 +779,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             expect(data.statusMessage).assertEqual('SUCCESS');
             
             installData.install([PATH + TWELFTH_RIGHT], {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -788,7 +788,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
                 console.info('===BMS_Multiple_Hap_Update_1100.Message2===' + JSON.stringify(data.statusMessage));
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 installData.uninstall(NAME, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async (err, data) => {
@@ -808,7 +808,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Update_1200', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + SECOND_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -818,7 +818,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             expect(data.statusMessage).assertEqual('SUCCESS');
             
             installData.install([PATH + SIXTEENTH_RIGHT], {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -827,7 +827,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
                 console.info('===BMS_Multiple_Hap_Update_1200.Message2===' + JSON.stringify(data.statusMessage));
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 installData.uninstall(NAME, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async (err, data) => {
@@ -847,7 +847,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Update_1300', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + SECOND_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -856,7 +856,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             console.info('===BMS_Multiple_Hap_Update_1300.Message1===' + JSON.stringify(data.statusMessage));
             expect(data.statusMessage).assertEqual('SUCCESS');
             installData.install([PATH + THIRTEENTH_RIGHT], {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -865,7 +865,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
                 console.info('===BMS_Multiple_Hap_Update_1300.Message2===' + JSON.stringify(data.statusMessage));
                 expect(data.statusMessage).assertEqual('STATUS_INSTALL_FAILURE_INCOMPATIBLE');
                 installData.uninstall(NAME, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async (err, data) => {
@@ -885,7 +885,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Update_1400', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + FIRST_RIGHT, PATH + SECOND_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -893,7 +893,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             expect(data.status).assertEqual(0);
             console.info('===BMS_Multiple_Hap_Update_1400.Message1===' + JSON.stringify(data.statusMessage));
             installData.uninstall(NAME, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data1) => {
@@ -912,7 +912,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
      it('BMS_Multiple_Hap_Update_1500', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + FIRST_RIGHT, PATH + SECOND_RIGHT], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -922,7 +922,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             expect(data.statusMessage).assertEqual('SUCCESS');
             
             installData.install([PATH + FIRST_RIGHT, PATH + SECOND_RIGHT], {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -931,7 +931,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
                 console.info('===BMS_Multiple_Hap_Update_1500.Message2===' + JSON.stringify(data.statusMessage));
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 installData.uninstall(NAME, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async (err, data) => {

@@ -47,7 +47,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
                     }
                     installer.uninstall(BUNDLE_NAME1,
                          {
-                            userId: 0,
+                            userId: 100,
                             installFlag: 1,
                             isKeepData: false
                         }
@@ -63,7 +63,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
 
             installer.install(['/data/test/bmsThirdBundleTest1.hap'], 
             {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false,
             }, onReceiveinstallEvent);

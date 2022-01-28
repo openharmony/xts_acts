@@ -54,7 +54,7 @@ var subscriberInfoEvent_0100 = {
     events: ['Third1_Publish_CommonEvent'],
 };
 var installParam = {
-    userId: 0,
+    userId: 100,
     installFlag: 0,
     isKeepData: false
 };
@@ -74,7 +74,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleInfo_0100', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -123,7 +123,7 @@ describe('ActsBundleManagerTest', function () {
             }
             expect(datainfo.appInfo.enabled).assertEqual(true);
             installData.uninstall(NAME1, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
@@ -143,7 +143,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleInfo_0600', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -176,7 +176,7 @@ describe('ActsBundleManagerTest', function () {
                 }
                 expect(datainfo.appInfo.enabled).assertEqual(true)
                 installData.uninstall(NAME1, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
@@ -198,7 +198,7 @@ describe('ActsBundleManagerTest', function () {
         let installData = await demo.getBundleInstaller()
         await demo.getBundleInstaller().then((data) => {
             data.install([PATH + BMSJSTEST1], {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, async (err, data) => {
@@ -226,7 +226,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.supportedModes).assertEqual(0)
             expect(datainfo.appInfo.enabled).assertEqual(true)
             installData.uninstall(NAME1, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
@@ -247,7 +247,7 @@ describe('ActsBundleManagerTest', function () {
         let installData = await demo.getBundleInstaller()
         await demo.getBundleInstaller().then((data) => {
             data.install([PATH + BMSJSTEST1], {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, async (err, data) => {
@@ -280,7 +280,7 @@ describe('ActsBundleManagerTest', function () {
                 }
                 expect(datainfo.appInfo.enabled).assertEqual(true)
                 installData.uninstall(NAME1, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
@@ -301,7 +301,7 @@ describe('ActsBundleManagerTest', function () {
     it('getApplicationInfos_0100', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -314,7 +314,7 @@ describe('ActsBundleManagerTest', function () {
             var datainfo = await demo.getAllApplicationInfo(8, 0)
             checkgetApplicationInfos(datainfo)
             installData.uninstall(NAME1, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
@@ -357,7 +357,7 @@ describe('ActsBundleManagerTest', function () {
         let installData = await demo.getBundleInstaller()
 
         installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -385,7 +385,7 @@ describe('ActsBundleManagerTest', function () {
                     }
                 }
                 installData.uninstall(NAME1, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
@@ -406,7 +406,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleInfos_0100', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -433,7 +433,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.moduleInfos.length).assertLarger(0)
             }
             installData.uninstall(NAME1, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
@@ -507,7 +507,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleInfos_0600', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -532,7 +532,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(data[i].appInfo.moduleInfos.length).assertLarger(0)
                 }
                 installData.uninstall(NAME1, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
@@ -715,7 +715,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.abilityInfos[j].moduleName).assertEqual("entry")
             }
             installData.uninstall(NAME1, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
@@ -735,7 +735,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleArchiveInfo_0200', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + BMSJSTEST2, PATH + BMSJSTEST3], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -759,7 +759,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.labelId >= 0).assertTrue()
             expect(datainfo.appInfo.systemApp).assertEqual(false)
             installData.uninstall(NAME2, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
@@ -779,7 +779,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleArchiveInfo_0300', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST4, PATH + BMSJSTEST5, PATH + BMSJSTEST6], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -803,17 +803,17 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.labelId >= 0).assertTrue()
             expect(datainfo.appInfo.systemApp).assertEqual(false)
             installData.uninstall(NAME3, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
                 installData.uninstall(NAME4, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
                     installData.uninstall(NAME5, {
-                        userId: 0,
+                        userId: 100,
                         installFlag: 0,
                         isKeepData: false
                     }, (err, data) => {
@@ -866,7 +866,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleArchiveInfo_0600', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -906,7 +906,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo.abilityInfos[j].moduleName).assertEqual("entry")
                 }
                 installData.uninstall(NAME1, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, async (err, data) => {
@@ -927,7 +927,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleArchiveInfo_0700', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + BMSJSTEST2, PATH + BMSJSTEST3], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -953,7 +953,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.appInfo.labelId >= 0).assertTrue()
                 expect(datainfo.appInfo.systemApp).assertEqual(false)
                 installData.uninstall(NAME2, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
@@ -974,7 +974,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleArchiveInfo_0800', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST4], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -1000,7 +1000,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.appInfo.labelId >= 0).assertTrue()
                 expect(datainfo.appInfo.systemApp).assertEqual(false)
                 installData.uninstall(NAME3, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
@@ -1058,7 +1058,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleArchiveInfo_1100', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -1098,7 +1098,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo.abilityInfos[j].moduleName).assertEqual("entry")
                 }
                 installData.uninstall(NAME1, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, async (err, data) => {
@@ -1119,7 +1119,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleArchiveInfo_1200', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -1159,7 +1159,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo.abilityInfos[j].moduleName).assertEqual("entry")
                 }
                 installData.uninstall(NAME1, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, async (err, data) => {
@@ -1180,7 +1180,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleInfo_0200', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST2, PATH + BMSJSTEST3], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -1205,7 +1205,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.labelId >= 0).assertTrue()
             expect(datainfo.appInfo.systemApp).assertEqual(true)
             installData.uninstall(NAME2, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
@@ -1225,7 +1225,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleInfo_0700', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST2, PATH + BMSJSTEST3], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -1251,7 +1251,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.appInfo.labelId >= 0).assertTrue()
                 expect(datainfo.appInfo.systemApp).assertEqual(true)
                 installData.uninstall(NAME2, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
@@ -1273,7 +1273,7 @@ describe('ActsBundleManagerTest', function () {
         let installData = await demo.getBundleInstaller()
 
         installData.install([PATH + BMSJSTEST2, PATH + BMSJSTEST3], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -1287,7 +1287,7 @@ describe('ActsBundleManagerTest', function () {
             console.info("==========ActsBmsGetInfosSecondScene is ==========" + JSON.stringify(datainfo));
             checkgetApplicationInfos(datainfo)
             installData.uninstall(NAME2, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
@@ -1307,7 +1307,7 @@ describe('ActsBundleManagerTest', function () {
     it('getApplicationInfos_0400', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST2, PATH + BMSJSTEST3], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -1321,7 +1321,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.length).assertLarger(0)
             checkgetApplicationInfos(datainfo)
             installData.uninstall(NAME2, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
@@ -1342,7 +1342,7 @@ describe('ActsBundleManagerTest', function () {
         let installData = await demo.getBundleInstaller()
 
         installData.install([PATH + BMSJSTEST2, PATH + BMSJSTEST3], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -1371,7 +1371,7 @@ describe('ActsBundleManagerTest', function () {
                     }
                 }
                 installData.uninstall(NAME2, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
@@ -1392,7 +1392,7 @@ describe('ActsBundleManagerTest', function () {
     it('getApplicationInfos_0900', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST2, PATH + BMSJSTEST3], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -1421,7 +1421,7 @@ describe('ActsBundleManagerTest', function () {
                     }
                 }
                 installData.uninstall(NAME2, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
@@ -1443,7 +1443,7 @@ describe('ActsBundleManagerTest', function () {
         let installData = await demo.getBundleInstaller()
 
         installData.install([PATH + BMSJSTEST2, PATH + BMSJSTEST3], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -1479,7 +1479,7 @@ describe('ActsBundleManagerTest', function () {
 
             }
             installData.uninstall(NAME2, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
@@ -1500,7 +1500,7 @@ describe('ActsBundleManagerTest', function () {
         let installData = await demo.getBundleInstaller()
 
         installData.install([PATH + BMSJSTEST2, PATH + BMSJSTEST3], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -1526,7 +1526,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.moduleInfos.length).assertLarger(0)
             }
             installData.uninstall(NAME2, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
@@ -1595,7 +1595,7 @@ describe('ActsBundleManagerTest', function () {
         let installData = await demo.getBundleInstaller()
 
         installData.install([PATH + BMSJSTEST2, PATH + BMSJSTEST3], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -1621,7 +1621,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(data[i].appInfo.moduleInfos.length).assertLarger(0)
                 }
                 installData.uninstall(NAME2, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
@@ -1643,7 +1643,7 @@ describe('ActsBundleManagerTest', function () {
         let installData = await demo.getBundleInstaller()
 
         installData.install([PATH + BMSJSTEST2, PATH + BMSJSTEST3], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -1669,7 +1669,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(data[i].appInfo.moduleInfos.length).assertLarger(0)
                 }
                 installData.uninstall(NAME2, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
@@ -1735,7 +1735,7 @@ describe('ActsBundleManagerTest', function () {
     it('getApplicationInfos_0800', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST4, PATH + BMSJSTEST5, PATH + BMSJSTEST6], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -1754,7 +1754,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleInfos_0300', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST4, PATH + BMSJSTEST5, PATH + BMSJSTEST6], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -1779,17 +1779,17 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.moduleInfos.length).assertLarger(0)
             }
             installData.uninstall(NAME3, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
                 installData.uninstall(NAME4, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
                     installData.uninstall(NAME5, {
-                        userId: 0,
+                        userId: 100,
                         installFlag: 0,
                         isKeepData: false
                     }, (err, data) => {
@@ -1808,7 +1808,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleInfos_0500', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST4, PATH + BMSJSTEST5, PATH + BMSJSTEST6], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -1834,17 +1834,17 @@ describe('ActsBundleManagerTest', function () {
 
             }
             installData.uninstall(NAME3, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
                 installData.uninstall(NAME4, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
                     installData.uninstall(NAME5, {
-                        userId: 0,
+                        userId: 100,
                         installFlag: 0,
                         isKeepData: false
                     }, (err, data) => {
@@ -1863,7 +1863,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleInfos_0800', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST4, PATH + BMSJSTEST5, PATH + BMSJSTEST6], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -1888,17 +1888,17 @@ describe('ActsBundleManagerTest', function () {
                     expect(data[i].appInfo.moduleInfos.length).assertLarger(0)
                 }
                 installData.uninstall(NAME3, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
                     installData.uninstall(NAME4, {
-                        userId: 0,
+                        userId: 100,
                         installFlag: 0,
                         isKeepData: false
                     }, (err, data) => {
                         installData.uninstall(NAME5, {
-                            userId: 0,
+                            userId: 100,
                             installFlag: 0,
                             isKeepData: false
                         }, (err, data) => {
@@ -1918,7 +1918,7 @@ describe('ActsBundleManagerTest', function () {
     it('getApplicationInfo_0300', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST4, PATH + BMSJSTEST5, PATH + BMSJSTEST6], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -1945,17 +1945,17 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo.supportedModes).assertEqual(0)
                 });
             installData.uninstall(NAME3, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
                 installData.uninstall(NAME4, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
                     installData.uninstall(NAME5, {
-                        userId: 0,
+                        userId: 100,
                         installFlag: 0,
                         isKeepData: false
                     }, (err, data) => {
@@ -2126,7 +2126,7 @@ describe('ActsBundleManagerTest', function () {
     it('queryAbilityByWant_0100', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -2173,7 +2173,7 @@ describe('ActsBundleManagerTest', function () {
                     }
                 })
             installData.uninstall(NAME1, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, async (err, data) => {
@@ -2193,7 +2193,7 @@ describe('ActsBundleManagerTest', function () {
     it('queryAbilityByWant_0200', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + BMSJSTEST2, PATH + BMSJSTEST3], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -2236,7 +2236,7 @@ describe('ActsBundleManagerTest', function () {
                 }
             }
             installData.uninstall(NAME2, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
@@ -2256,19 +2256,19 @@ describe('ActsBundleManagerTest', function () {
     it('queryAbilityByWant_0300', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST4], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
             expect(data.status).assertEqual(0);
             installData.install([PATH + BMSJSTEST5], {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, async (err, data) => {
                 expect(data.status).assertEqual(0);
                 installData.install([PATH + BMSJSTEST6], {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, async (err, data) => {
@@ -2324,19 +2324,19 @@ describe('ActsBundleManagerTest', function () {
                     expect(queryResultCount).assertEqual(3)
                 })
             installData.uninstall(NAME3, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
                 expect(data.status).assertEqual(0);
                 installData.uninstall(NAME4, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
                     expect(data.status).assertEqual(0);
                     installData.uninstall(NAME5, {
-                        userId: 0,
+                        userId: 100,
                         installFlag: 0,
                         isKeepData: false
                     }, (err, data) => {
@@ -2356,7 +2356,7 @@ describe('ActsBundleManagerTest', function () {
     it('queryAbilityByWant_0400', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -2374,7 +2374,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo.length).assertEqual(0)
                 })
             installData.uninstall(NAME1, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
@@ -2422,7 +2422,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleInfo_1400', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -2433,7 +2433,7 @@ describe('ActsBundleManagerTest', function () {
         });
         async function getInfo() {
             var bundleOptions = {
-                userId: 0,
+                userId: 100,
                 networkId: ""
             };
             var dataInfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, bundleOptions);
@@ -2471,7 +2471,7 @@ describe('ActsBundleManagerTest', function () {
             }
             expect(dataInfo.appInfo.enabled).assertEqual(true);
             installData.uninstall(NAME1, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, (err, data) => {
@@ -2491,7 +2491,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleInfo_1500', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -2502,7 +2502,7 @@ describe('ActsBundleManagerTest', function () {
         });
         async function getInfo() {
             var bundleOptions = {
-                userId: 0,
+                userId: 100,
                 networkId: ""
             };
             demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, bundleOptions, (err, dataInfo) => {
@@ -2540,7 +2540,7 @@ describe('ActsBundleManagerTest', function () {
                 }
                 expect(dataInfo.appInfo.enabled).assertEqual(true);
                 installData.uninstall(NAME1, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
@@ -2561,7 +2561,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleInfo_1600', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -2579,7 +2579,7 @@ describe('ActsBundleManagerTest', function () {
             }).catch(err => {
                 expect(err).assertEqual(1);
                 installData.uninstall(NAME1, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
@@ -2600,7 +2600,7 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleInfo_1700', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -2617,7 +2617,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(err).assertEqual(1);
                 expect(dataInfo).assertEqual(undefined);
                 installData.uninstall(NAME1, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, (err, data) => {
@@ -2754,7 +2754,7 @@ describe('ActsBundleManagerTest', function () {
     it('install_0400', 0, async function (done) {
         demo.getBundleInstaller().then(async (data) => {
             await data.install([PATH + ERROR], {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, OnReceiveinstallEvent);
@@ -2778,7 +2778,7 @@ describe('ActsBundleManagerTest', function () {
     it('install_0500', 0, async function (done) {
         demo.getBundleInstaller().then((data) => {
             data.install([''], {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, OnReceiveinstallEvent);
@@ -2826,7 +2826,7 @@ describe('ActsBundleManagerTest', function () {
     it('install_0700', 0, async function (done) {
         demo.getBundleInstaller().then((data) => {
             data.install([PATH + BMSJSTEST7], {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, OnReceiveinstallEvent);
@@ -2890,7 +2890,7 @@ describe('ActsBundleManagerTest', function () {
     it('install_0900', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST9], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -2900,7 +2900,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.versionCode).assertEqual(VERSIONCODE2);
             expect(datainfo.versionName).assertLarger(0);
             installData.install([PATH + BMSJSTEST8], {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, OnReceiveinstallEvent);
@@ -2912,7 +2912,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.versionCode).assertEqual(VERSIONCODE2);
             expect(datainfo.versionName).assertLarger(0);
             installData.uninstall(THIRD1, {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, async (err, data) => {
@@ -2948,7 +2948,7 @@ describe('ActsBundleManagerTest', function () {
         }
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST8], {
-            userId: 0,
+            userId: 100,
             installFlag: 0,
             isKeepData: false
         }, async (err, data) => {
@@ -2983,7 +2983,7 @@ describe('ActsBundleManagerTest', function () {
             let uid = bundleInfo.uid;
             expect(processMap1.has(uid)).assertTrue();
             installData.install([PATH + BMSJSTEST9], {
-                userId: 0,
+                userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, async (err, data) => {
@@ -2998,7 +2998,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(processMap2.has(uid)).assertFalse();
                 commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
                 installData.uninstall(THIRD1, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 0,
                     isKeepData: false
                 }, async (err, data) => {
