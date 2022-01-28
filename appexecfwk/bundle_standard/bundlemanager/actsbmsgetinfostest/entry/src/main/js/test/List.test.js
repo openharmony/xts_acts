@@ -13,5 +13,4 @@
  * limitations under the License.
  */
 require('./ActsBmsFormsInfoTest.test.js')
-require('./ActsBmsPermissionChange.test.js')
 require('./ActsBmsQueryAbilityByWant.test.js') 
