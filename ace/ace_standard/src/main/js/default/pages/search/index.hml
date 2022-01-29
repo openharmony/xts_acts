@@ -28,10 +28,10 @@
     </search>
     <!--  通用样式5\6  -->
     <div class="contain1">
-        <search class = "search5" hint="请输入搜索内容" @search="search" icon="common/images/bg-tv.jpg">
+        <search class = "search5" hint="请输入搜索内容" @search="search" icon="common/images/image.png">
         </search>
 
-        <search class = "search6" hint="请输入搜索内容" @search="search" icon="common/images/bg-tv.jpg">
+        <search class = "search6" hint="请输入搜索内容" @search="search" icon="common/images/image.png">
         </search>
     </div>
     <!--  特有样式  -->

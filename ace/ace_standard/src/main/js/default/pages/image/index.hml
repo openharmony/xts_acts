@@ -20,8 +20,8 @@
             ref="img1"
             focusable="true"
             disabled="false"
-            src="common/images/bg-tv.jpg"
-            alt="common/images/bg-tv.jpg"
+            src="common/images/image.png"
+            alt="common/images/image.png"
             >
     </image>
     <!--  通用样式2  -->
@@ -30,8 +30,8 @@
             ref="img2"
             focusable="true"
             disabled="false"
-            src="common/images/bg-tv.jpg"
-            alt="common/images/bg-tv.jpg"
+            src="common/images/image.png"
+            alt="common/images/image.png"
             >
     </image>
     <!--  通用样式3  -->
@@ -39,8 +39,8 @@
             class="pic"
             focusable="true"
             disabled="false"
-            src="common/images/bg-tv.jpg"
-            alt="common/images/bg-tv.jpg"
+            src="common/images/image.png"
+            alt="common/images/image.png"
             >
     </image>
     <!--  通用样式4  -->
@@ -48,8 +48,8 @@
             class="pic"
             focusable="true"
             disabled="false"
-            src="common/images/bg-tv.jpg"
-            alt="common/images/bg-tv.jpg"
+            src="common/images/image.png"
+            alt="common/images/image.png"
             >
     </image>
     <!--  通用样式5\6  -->
@@ -58,16 +58,16 @@
                 class="pic"
                 focusable="true"
                 disabled="false"
-                src="common/images/bg-tv.jpg"
-                alt="common/images/bg-tv.jpg"
+                src="common/images/image.png"
+                alt="common/images/image.png"
                 >
         </image>
         <image  id="six"
                 class="pic"
                 focusable="true"
                 disabled="false"
-                src="common/images/bg-tv.jpg"
-                alt="common/images/bg-tv.jpg"
+                src="common/images/image.png"
+                alt="common/images/image.png"
                 >
         </image>
     </div>
@@ -76,8 +76,8 @@
             class="pic"
             focusable="true"
             disabled="false"
-            src="common/images/bg-tv.jpg"
-            alt="common/images/bg-tv.jpg"
+            src="common/images/image.png"
+            alt="common/images/image.png"
             >
     </image>
 </div>

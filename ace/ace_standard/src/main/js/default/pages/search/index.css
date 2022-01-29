@@ -93,7 +93,7 @@
     border-right:  2px dashed #00ff00;
     border-top:  1.5px dotted #0000ff;
     border-bottom:  2.5px dotted #fff000;
-    background-image:url('common/images/bg-tv.jpg');
+    background-image:url('common/images/image.png');
     background-size:contain;
     background-repeat: repeat-x;
     background-position: center;
@@ -117,7 +117,7 @@
     width: 400px;
     height: 30px;
     background-color: yellow;
-    border-image-source: url('/common/images/bg-tv.jpg');
+    border-image-source: url('/common/images/image.png');
     border-image-slice: 1px 2px 3px 4px;
     border-image-width: 2px 3px 4px 5px;
     border-image-outset: 3px 4px 5px 6px;
