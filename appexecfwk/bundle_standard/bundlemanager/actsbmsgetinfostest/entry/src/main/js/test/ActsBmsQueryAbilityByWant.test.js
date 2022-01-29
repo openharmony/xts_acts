@@ -40,7 +40,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
                     entities: ['entity.system.home'],
                     bundleName: BUNDLE_NAME1
                 }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION|bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY, 
-                0, (err, data) => {
+                100, (err, data) => {
                     if (err) {
                         console.log('bms_queryAbilityByWant_0100 test query system app err is ' + err)
                         expect(err).assertEqual(1);
@@ -84,7 +84,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
                 entities: ['entity.system.home']
             }, 
             bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION|bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY, 
-        0).then(data => {
+        100).then(data => {
                 for(let i = 0; i < data.length; ++i) {
                     var jsondata = JSON.stringify(data[i]);
                     console.log('bms_queryAbilityByWant_0200 test query system app ' + jsondata)
