@@ -29,8 +29,7 @@
         "skills": [
           {
             "entities": [
-              "entity.system.home",
-              "flag.home.intent.from.system"
+              "entity.system.home"
             ],
             "actions": [
               "action.system.home"
@@ -43,7 +42,7 @@
         "label": "$string:app_name",
         "visible": true,
         "type": "page",
-        "launchType": "standard"
+        "launchType": "singleton"
       }
     ],
     "js": [
