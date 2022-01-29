@@ -1,0 +1,36 @@
+{
+    "description": "Configuration for videoplayer Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "2000000",
+        "package": "ohos.acts.multimedia.video.videoplayer",
+		"shell-timeout": "60000"
+    },
+    "kits": [
+        {
+            "type": "PushKit",
+            "pre-push": [
+            ],
+            "push": [
+                "./resource/audio/01.mp4 ->/data/media/"
+            ]
+        },
+		{
+            "type": "ShellKit",
+            "run-command": [
+                "chmod -R 666 /data/media/*",
+                "setenforce 0"
+            ],
+            "teardown-command":[
+                "setenforce 1"
+            ]
+        },
+        {
+            "test-file-name": [
+                "AudioPlayerJsTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+}
