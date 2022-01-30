@@ -48,7 +48,6 @@ describe('AudioDecoderMultiInstances', function () {
 
     afterEach(function() {
         console.info('afterEach case');
-        wait(2000);
     })
 
     afterAll(function() {
@@ -254,6 +253,9 @@ describe('AudioDecoderMultiInstances', function () {
         for (let j = 0; j < 16; j++) {
             await array[j].reset().then(() => {
                 console.info("reset decoder " + j);
+            }, failCallback).catch(failCatch);
+            await array[j].release().then(() => {
+                console.info('release success');
                 array[j] = null;
             }, failCallback).catch(failCatch);
         }

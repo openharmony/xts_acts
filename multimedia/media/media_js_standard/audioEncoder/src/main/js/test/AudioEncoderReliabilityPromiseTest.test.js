@@ -85,9 +85,11 @@ describe('AudioEncoderSTTPromise', function () {
     afterEach(function() {
         console.info('afterEach case');
         if (audioEncodeProcessor != null) {
-            audioEncodeProcessor = null
+            audioEncodeProcessor.release().then(() => {
+                console.info('audioEncodeProcessor release success');
+                audioEncodeProcessor = null;
+            }, failCallback).catch(failCatch);
         }
-        wait(2000);
     })
 
     afterAll(function() {
@@ -196,6 +198,9 @@ describe('AudioEncoderSTTPromise', function () {
         await audioEncodeProcessor.reset().then(() => {
             console.info("case reset success");
         }, failCallback).catch(failCatch);
+        await audioEncodeProcessor.release().then(() => {
+            console.info("case release success");
+        }, failCallback).catch(failCatch);
         audioEncodeProcessor = null;
     }
 
@@ -211,9 +216,11 @@ describe('AudioEncoderSTTPromise', function () {
     function nextStep(mySteps, done) {
         console.info("case myStep[0]: " + mySteps[0]);
         if (mySteps[0] == END) {
-            done();
-            console.info('case to done');
-            return;
+            audioEncodeProcessor.release().then(() => {
+                console.info("case release success");
+                audioEncodeProcessor = null;
+                done();
+            }, failCallback).catch(failCatch);
         }
         switch (mySteps[0]) {
             case CONFIGURE:
