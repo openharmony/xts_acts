@@ -41,7 +41,7 @@ describe('ActsBmsMetaDataTest', function () {
                 {
                     "bundleName": 'com.example.third1',
                     "abilityName": 'com.example.third1.MainAbility',
-                }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 0).then(dataInfos => {
+                }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 100).then(dataInfos => {
                     for (let i = 0, len = dataInfos.length; i < len; i++) {
                         dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
                     }
@@ -95,7 +95,7 @@ describe('ActsBmsMetaDataTest', function () {
                     {
                         "bundleName": 'com.example.third1',
                         "abilityName": 'com.example.third1.AMainAbility',
-                    }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 0).then(dataInfos => {
+                    }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 100).then(dataInfos => {
                         for (let i = 0, len = dataInfos.length; i < len; i++) {
                             dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
                         }
@@ -144,7 +144,7 @@ describe('ActsBmsMetaDataTest', function () {
                     {
                         bundleName: 'com.example.third1',
                         abilityName: 'com.example.third1.MainAbility',
-                    }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 0).then(dataInfos => {
+                    }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 100).then(dataInfos => {
                         expect(dataInfos.length).assertEqual(0);
                     });
                 done();
@@ -176,7 +176,7 @@ describe('ActsBmsMetaDataTest', function () {
                 {
                     bundleName: 'com.example.third5',
                     abilityName: 'com.example.third5.AMainAbility',
-                }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 0).then(dataInfos => {
+                }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 100).then(dataInfos => {
                     for (let i = 0, len = dataInfos.length; i < len; i++) {
                         dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
                     }
@@ -208,7 +208,7 @@ describe('ActsBmsMetaDataTest', function () {
             {
                 bundleName: 'com.example.noexist',
                 abilityName: 'com.example.noexist.MainAbility',
-            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 0).then(dataInfos => {
+            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 100).then(dataInfos => {
                 expect(dataInfos.length).assertEqual(0);
             })
         done();
@@ -227,7 +227,7 @@ describe('ActsBmsMetaDataTest', function () {
             {
                 bundleName: 'com.example.system1',
                 abilityName: 'com.example.system1.MainAbility',
-            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 0).then(dataInfos => {
+            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 100).then(dataInfos => {
                 for (let i = 0, len = dataInfos.length; i < len; i++) {
                     dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
                 }
@@ -251,7 +251,7 @@ describe('ActsBmsMetaDataTest', function () {
             {
                 bundleName: 'com.example.vendor1',
                 abilityName: 'com.example.vendor1.MainAbility',
-            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 0).then(dataInfos => {
+            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 100).then(dataInfos => {
                 for (let i = 0, len = dataInfos.length; i < len; i++) {
                     dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
                 }
