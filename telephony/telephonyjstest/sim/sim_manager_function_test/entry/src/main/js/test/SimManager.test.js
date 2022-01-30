@@ -15,9 +15,41 @@
 
 import sim from '@ohos.telephony.sim';
 import * as env from './lib/Const';
-import { describe, it, expect } from 'deccjsunit/index';
+import { describe, it, expect, afterEach } from 'deccjsunit/index';
 
 describe('SimManagerTest', function () {
+  afterEach(async function () {
+    try {
+      class IccAccountInfo {
+        constructor (slotIndex, showName, showNumber) {
+          this.slotIndex = slotIndex;
+          this.showName = showName;
+          this.showNumber = showNumber;
+        }
+      }
+      const SLOT_INDEX = 0;
+      const SHOW_NAME = 'test';
+      const SHOW_NUMBER = '10';
+      let iccAccountInfo = new IccAccountInfo(SLOT_INDEX, SHOW_NAME, SHOW_NUMBER);
+      expect(iccAccountInfo.slotIndex === SLOT_INDEX).assertTrue();
+      expect(iccAccountInfo.showName === SHOW_NAME).assertTrue();
+      expect(iccAccountInfo.showNumber === SHOW_NUMBER).assertTrue();
+
+      class LockStatusResponse {
+        constructor (result, remain) {
+          this.result = result;
+          this.remain = remain;
+        }
+      }
+      const RES_RESULT = 0;
+      const RES_REMAIN = 0;
+      let lockStatusResponse = new LockStatusResponse(RES_RESULT, RES_REMAIN);
+      expect(lockStatusResponse.result === RES_RESULT).assertTrue();
+      expect(lockStatusResponse.remain === RES_REMAIN).assertTrue();
+    } catch (error) {
+      console.log(`Telephony_Sim error`);
+    }
+  });
 
   /**
     * @tc.number  Telephony_Sim_constantValidate_0100
