@@ -55,7 +55,17 @@
           "pages/button/index",
           "pages/chart/index",
           "pages/input/index",
-          "pages/slider/index"
+          "pages/slider/index",
+          "pages/text/index",
+          "pages/divider/index",
+          "pages/image/index",
+          "pages/label/index",
+          "pages/rating/index",
+          "pages/search/index",
+          "pages/toolbar/index",
+          "pages/textarea/index",
+          "pages/menu/index",
+          "pages/search/index"
         ],
         "name": "default",
         "window": {

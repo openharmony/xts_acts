@@ -1,0 +1,53 @@
+<!--/**
+ * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */-->
+
+<div class="container">
+    <text  class="title">
+        rating通用样式1
+    </text>
+    <rating class ="rating1" numstars="5" rating="2" stepsize= "0.5" indicator="false" @change="changeRating" id="rating1">
+    </rating>
+    <text  class="title">
+        rating通用样式2
+    </text>
+    <rating class ="rating2" numstars="5" rating="4" stepsize= "0.5" indicator="true" @change="changeRating" id="rating2">
+    </rating>
+    <text  class="title">
+        rating通用样式3
+    </text>
+    <rating  class ="rating3" numstars="10" rating="7" stepsize= "1" indicator="false" @change="changeRating" id="rating3">
+    </rating>
+    <text  class="title">
+        rating通用样式4
+    </text>
+    <rating  class ="rating4" numstars="10" rating="7" stepsize= "1" indicator="false" @change="changeRating" id="rating4">
+    </rating>
+    <text  class="title">
+        rating通用样式5
+    </text>
+    <div class="contain1">
+        <rating class="rating5" id="rating5">
+        </rating>
+        <rating class="rating6" id="rating6">
+        </rating>
+    </div>
+    <text  class="title">
+        rating特有样式
+    </text>
+    <rating  class ="rating7" numstars="10" rating="7" stepsize= "1" indicator="false" @change="changeRating" id="rating7">
+    </rating>
+    <rating  class ="rating8" numstars="15" rating="3" stepsize= "0.2" indicator="false" @change="changeRating" id="rating8">
+    </rating>
+</div>
