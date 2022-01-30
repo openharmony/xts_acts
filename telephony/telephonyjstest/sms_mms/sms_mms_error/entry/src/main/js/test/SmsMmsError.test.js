@@ -35,6 +35,22 @@ describe('SmsMmsErrorTest', function () {
   const MAX_CHINESE_MESSAGE_LENTH = 63;
   const MAX_MESSAGE_LENTH = 2401;
 
+  afterEach(async function () {
+    try {
+      expect(sms.SIM_MESSAGE_STATUS_FREE === 0).assertTrue();
+
+      expect(sms.INSTANT_MESSAGE === 1).assertTrue();
+      expect(sms.OPTIONAL_MESSAGE === 2).assertTrue();
+      expect(sms.FORWARD_MESSAGE === 4).assertTrue();
+
+      expect(sms.SEND_SMS_SUCCESS === 0).assertTrue();
+      expect(sms.SEND_SMS_FAILURE_RADIO_OFF === 2).assertTrue();
+      expect(sms.SEND_SMS_FAILURE_SERVICE_UNAVAILABLE === 3).assertTrue();
+    } catch (error) {
+      console.log(`Telephony_SmsMms error`);
+    }
+  });
+
   /*
    * @tc.number   Telephony_SmsMms_addSimMessage_Async_0200
    * @tc.name     When SLOTID is the wrong value,Failed to save SMS to SIM

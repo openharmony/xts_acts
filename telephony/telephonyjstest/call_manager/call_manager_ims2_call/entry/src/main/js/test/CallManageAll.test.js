@@ -61,7 +61,8 @@ import {
     ZOOM_RATIO_MINUS_1_0,
     DIAL_SCENCE_CALL_NORMAL,
     DIAL_TYPE_OTT,
-    EVENT_OTT_FUNCTION_UNSUPPORTED
+    EVENT_OTT_FUNCTION_UNSUPPORTED,
+    TEL_CONFERENCE_IDLE
 } from './lib/Const.js';
 import {toString} from './lib/ApiToPromise.js';
 import {
@@ -100,6 +101,22 @@ class NumberFormatOptions {
         this.countryCode = str;
     }
 }
+class CallAttributeOptions {
+    constructor (accountNumber, speakerphoneOn, accountId, videoState, startTime,
+        isEcc, callType, callId, callState, conferenceState) {
+        this.accountNumber = accountNumber;
+        this.speakerphoneOn = speakerphoneOn;
+        this.accountId = accountId;
+        this.videoState = videoState;
+        this.startTime = startTime;
+        this.isEcc = isEcc;
+        this.callType = callType;
+        this.callId = callId;
+        this.callState = callState;
+        this.conferenceState = conferenceState;
+    }
+}
+
 const sleep = (time) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -129,6 +146,29 @@ describe('CallManageImsCall', function () {
     });
 
     afterEach(async function () {
+        try {
+            const CURRENT_TIME = new Date().valueOf();
+            const TEMP_CALL_ID = 10;
+            const IS_ECC = true;
+            const SPEAK_ON = true;
+            let callAttributeOptions = new CallAttributeOptions(AUTO_ACCEPT_NUMBER, SPEAK_ON, DEFAULT_SLOT_ID,
+                MEDIA_TYPE_VOICE, CURRENT_TIME, IS_ECC, DIAL_TYPE_OTT, TEMP_CALL_ID, CALL_STATUS_DIALING,
+                TEL_CONFERENCE_IDLE);
+            console.log(`Telephony_CallManager ${toString(callAttributeOptions)}`);
+            expect(callAttributeOptions.accountNumber === AUTO_ACCEPT_NUMBER).assertTrue();
+            expect(callAttributeOptions.speakerphoneOn === SPEAK_ON).assertTrue();
+            expect(callAttributeOptions.accountId === DEFAULT_SLOT_ID).assertTrue();
+            expect(callAttributeOptions.videoState === MEDIA_TYPE_VOICE).assertTrue();
+            expect(callAttributeOptions.startTime === CURRENT_TIME).assertTrue();
+            expect(callAttributeOptions.isEcc === IS_ECC).assertTrue();
+            expect(callAttributeOptions.callType === DIAL_TYPE_OTT).assertTrue();
+            expect(callAttributeOptions.callId === TEMP_CALL_ID).assertTrue();
+            expect(callAttributeOptions.callState === CALL_STATUS_DIALING).assertTrue();
+            expect(callAttributeOptions.conferenceState === TEL_CONFERENCE_IDLE).assertTrue();
+        } catch (error) {
+            console.log(`Telephony_CallManager ${toString(error)}`);
+        }
+
         try {
             let callState = await call.getCallState();
             console.log(`Telephony_CallManager callState ${callState} ${gloabCallId}`);
