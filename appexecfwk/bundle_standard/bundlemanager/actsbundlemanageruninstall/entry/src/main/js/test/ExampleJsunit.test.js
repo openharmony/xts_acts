@@ -18,6 +18,7 @@ import demo from '@ohos.bundle'
 import featureAbility from '@ohos.ability.featureability'
 import abilityManager from '@ohos.app.abilityManager'
 import commonEvent from '@ohos.commonevent'
+import missionmanager from '@ohos.application.missionManager'
 
 const PATH = "/data/"
 const ERROR = "error.hap"
