@@ -45,6 +45,35 @@ var subscriberInfoEvent_0100 = {
 };
 
 describe('ActsBundleManagerUninstall', function () {
+    afterEach(async (done) => {
+        var testMissionId;
+        testMissionId = await getMissionId();
+        console.debug('======>ActsBundleManagerUninstall afterEach testMissionId<=======' + testMissionId);
+        if (testMissionId != -1) {
+            await missionmanager.moveMissionToFront(testMissionId);
+        }
+        done();
+    })
+
+    function getMissionId() {
+        return new Promise(async (resolve, reject) => {
+            var numMax = 1024;
+            var missionId = -1;
+            var missionInfos = await missionmanager.getMissionInfos('', numMax);
+            console.debug('getMissionId result: ' + missionInfos.length);
+            for (let i = 0; i < missionInfos.length; i++) {
+                console.debug('getMissionId result: ' + i + '= ' + JSON.stringify(missionInfos[i]))
+                if ((missionInfos[i].want.abilityName == "com.example.actsbundlemanageruninstall.MainAbility") &&
+                    (missionInfos[i].runningState == 0)) {
+                    missionId = missionInfos[i].missionId;
+                    break;
+                }
+            }
+            console.debug('======>getMissionId resolve missionId<=======' + missionId);
+            resolve(missionId);
+        })
+    }
+
     /**
      * @tc.number uninstall_0100
      * @tc.name BUNDLE::uninstall
