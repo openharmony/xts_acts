@@ -98,13 +98,13 @@ describe('ActsBundleManagerUninstall', function () {
             expect(data.statusMessage).assertEqual('STATUS_INSTALL_FAILURE_CONFLICT');
             var datainfo1 = demo.getBundleInfo(NAME1, 1);
             datainfo1.then(data => {
-                expect(true).assertFalse();
+                expect().assertFail();
             }).catch(err => {
                 expect(err).assertEqual(1);
             });
             var datainfo2 = demo.getBundleInfo(NAME2, 1);
             datainfo2.then(data => {
-                expect(true).assertFalse();
+                expect().assertFail();
             }).catch(err => {
                 expect(err).assertEqual(1);
             });
@@ -115,7 +115,7 @@ describe('ActsBundleManagerUninstall', function () {
             }, async(err, data) => {
                 var datainfo3 = demo.getBundleInfo(NAME1, 1);
                 datainfo3.then(data => {
-                    expect(true).assertFalse();
+                    expect().assertFail();
                 }).catch(err => {
                     expect(err).assertEqual(1);
                 });
@@ -126,7 +126,7 @@ describe('ActsBundleManagerUninstall', function () {
                 }, async(err, data) => {
                     var datainfo4 = demo.getBundleInfo(NAME2, 1);
                     datainfo4.then(data => {
-                        expect(true).assertFalse();
+                        expect().assertFail();
                     }).catch(err => {
                         expect(err).assertEqual(1);
                     });
@@ -153,19 +153,19 @@ describe('ActsBundleManagerUninstall', function () {
             expect(data.statusMessage).assertEqual('STATUS_INSTALL_FAILURE_INVALID');
             var datainfo1 = demo.getBundleInfo(NAME3, 1);
             datainfo1.then(data => {
-                expect(true).assertFalse();
+                expect().assertFail();
             }).catch(err => {
                 expect(err).assertEqual(1);
             });
             var datainfo2 = demo.getBundleInfo(NAME4, 1);
             datainfo2.then(data => {
-                expect(true).assertFalse();
+                expect().assertFail();
             }).catch(err => {
                 expect(err).assertEqual(1);
             });
             var datainfo3 = demo.getBundleInfo(NAME5, 1);
             datainfo3.then(data => {
-                expect(true).assertFalse();
+                expect().assertFail();
             }).catch(err => {
                 expect(err).assertEqual(1);
             });
@@ -176,7 +176,7 @@ describe('ActsBundleManagerUninstall', function () {
             }, async(err, data) => {
                 var datainfo4 = demo.getBundleInfo(NAME3, 1);
                 datainfo4.then(data => {
-                    expect(true).assertFalse();
+                    expect().assertFail();
                 }).catch(err => {
                     expect(err).assertEqual(1);
                 });
@@ -187,7 +187,7 @@ describe('ActsBundleManagerUninstall', function () {
                 }, async(err, data) => {
                     var datainfo5 = demo.getBundleInfo(NAME4, 1);
                     datainfo5.then(data => {
-                        expect(true).assertFalse();
+                        expect().assertFail();
                     }).catch(err => {
                         expect(err).assertEqual(1);
                     });
@@ -198,7 +198,7 @@ describe('ActsBundleManagerUninstall', function () {
                     }, async(err, data) => {
                         var datainfo6 = demo.getBundleInfo(NAME5, 1);
                         datainfo6.then(data => {
-                            expect(true).assertFalse();
+                            expect().assertFail();
                         }).catch(err => {
                             expect(err).assertEqual(1);
                         });
