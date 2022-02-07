@@ -79,16 +79,16 @@ struct VideoCreateComponent {
           this.myVideoController.setCurrentTime(9);
         });
         Button("setCurrentTime").onClick(() => {
-          this.myVideoController.setCurrentTime(9, SeekMode.PreviousSync);
+          this.myVideoController.setCurrentTime(9, SeekMode.PreviousKeyframe);
         });
         Button("setCurrentTime").onClick(() => {
-          this.myVideoController.setCurrentTime(9, SeekMode.NextSync);
+          this.myVideoController.setCurrentTime(9, SeekMode.NextKeyframe);
         });
         Button("setCurrentTime").onClick(() => {
-          this.myVideoController.setCurrentTime(9, SeekMode.Closest);
+          this.myVideoController.setCurrentTime(9, SeekMode.ClosestKeyframe);
         });
         Button("setCurrentTime").onClick(() => {
-          this.myVideoController.setCurrentTime(9, SeekMode.ClosestSync);
+          this.myVideoController.setCurrentTime(9, SeekMode.Accurate);
         });
       }
     }
