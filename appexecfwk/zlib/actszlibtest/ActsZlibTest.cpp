@@ -31,40 +31,42 @@ static const char GARBAGE[] = "garbage";
 static const char TESTFILE[] = "foo.gz";
 static char HELLO[] = "hello, hello!";
 static unsigned int CALLOC_SIZE = 1;
+static int ONE = 1;
 static int FOUR = 4;
 static int SIX = 6;
 static int EIGHT = 8;
+static unsigned BUFFER_SIZE = 8192;
 }
 
-class ZlibCppTest : public testing::Test {
+class ActsZlibTest : public testing::Test {
 protected:
-    ZlibCppTest();
-    ~ZlibCppTest();
+    ActsZlibTest();
+    ~ActsZlibTest();
     static void SetUpTestCase();
     static void TearDownTestCase();
 };
 
-ZlibCppTest::ZlibCppTest()
+ActsZlibTest::ActsZlibTest()
 {}
 
-ZlibCppTest::~ZlibCppTest()
+ActsZlibTest::~ActsZlibTest()
 {}
 
-void ZlibCppTest::SetUpTestCase()
+void ActsZlibTest::SetUpTestCase()
 {}
 
-void ZlibCppTest::TearDownTestCase()
+void ActsZlibTest::TearDownTestCase()
 {}
 
 /**
- * @tc.number    : ZlibCppTest_0100
+ * @tc.number    : ActsZlibTest_0100
  * @tc.name      : Test compress and uncompress test
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ZlibCppTest, ZlibCppTestCompress, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestCompress, Function | MediumTest | Level2)
 {
 #ifdef Z_SOLO
-    fprintf(stderr, "*********ZlibCppTestCompress Z_SOLO**********\n");
+    fprintf(stderr, "*********ActsZlibTestCompress Z_SOLO**********\n");
 #else
     Byte *compr, *uncompr;
     uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
@@ -90,14 +92,14 @@ HWTEST_F(ZlibCppTest, ZlibCppTestCompress, Function | MediumTest | Level2)
 }
 
 /**
- * @tc.number    : ZlibCppTest_0200
+ * @tc.number    : ActsZlibTest_0200
  * @tc.name      : Test gzio
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ZlibCppTest, ZlibCppTestGzio, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestGzio, Function | MediumTest | Level2)
 {
 #ifdef Z_SOLO
-    fprintf(stderr, "*********ZlibCppTestGzio Z_SOLO**********\n");
+    fprintf(stderr, "*********ActsZlibTestGzio Z_SOLO**********\n");
 #else
     int err;
     int len = static_cast<int>(strlen(HELLO)) + 1;
@@ -144,11 +146,11 @@ HWTEST_F(ZlibCppTest, ZlibCppTestGzio, Function | MediumTest | Level2)
 }
 
 /**
- * @tc.number    : ZlibCppTest_0300
+ * @tc.number    : ActsZlibTest_0300
  * @tc.name      : Test deflate
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ZlibCppTest, ZlibCppTestDeflate, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestDeflate, Function | MediumTest | Level2)
 {
     Byte *compr;
     uLong comprLen = 10000 * sizeof(int);
@@ -192,11 +194,11 @@ HWTEST_F(ZlibCppTest, ZlibCppTestDeflate, Function | MediumTest | Level2)
 }
 
 /**
- * @tc.number    : ZlibCppTest_0400
+ * @tc.number    : ActsZlibTest_0400
  * @tc.name      : Test inflate
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ZlibCppTest, ZlibCppTestInflate, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestInflate, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
     uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
@@ -234,11 +236,11 @@ HWTEST_F(ZlibCppTest, ZlibCppTestInflate, Function | MediumTest | Level2)
 }
 
 /**
- * @tc.number    : ZlibCppTest_0500
+ * @tc.number    : ActsZlibTest_0500
  * @tc.name      : Test deflate with large buffers and dynamic change of compression level
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ZlibCppTest, ZlibCppTestLargeDeflate, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestLargeDeflate, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
     uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
@@ -295,11 +297,11 @@ HWTEST_F(ZlibCppTest, ZlibCppTestLargeDeflate, Function | MediumTest | Level2)
 }
 
 /**
- * @tc.number    : ZlibCppTest_0600
+ * @tc.number    : ActsZlibTest_0600
  * @tc.name      : Test inflate with large buffers
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ZlibCppTest, ZlibCppTestLargeInflate, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestLargeInflate, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
     uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
@@ -336,11 +338,11 @@ HWTEST_F(ZlibCppTest, ZlibCppTestLargeInflate, Function | MediumTest | Level2)
 }
 
 /**
- * @tc.number    : ZlibCppTest_0700
+ * @tc.number    : ActsZlibTest_0700
  * @tc.name      : Test deflate with full flush
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ZlibCppTest, ZlibCppTestFlush, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestFlush, Function | MediumTest | Level2)
 {
     Byte *compr;
     uLong comprLen = 10000 * sizeof(int);
@@ -377,11 +379,11 @@ HWTEST_F(ZlibCppTest, ZlibCppTestFlush, Function | MediumTest | Level2)
 }
 
 /**
- * @tc.number    : ZlibCppTest_0800
+ * @tc.number    : ActsZlibTest_0800
  * @tc.name      : Test inflateSync
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ZlibCppTest, ZlibCppTestSync, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestSync, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
     uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
@@ -415,11 +417,11 @@ HWTEST_F(ZlibCppTest, ZlibCppTestSync, Function | MediumTest | Level2)
 }
 
 /**
- * @tc.number    : ZlibCppTest_0900
+ * @tc.number    : ActsZlibTest_0900
  * @tc.name      : Test deflate with preset dictionary
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ZlibCppTest, ZlibCppTestDictDeflate, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestDictDeflate, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
     uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
@@ -454,11 +456,11 @@ HWTEST_F(ZlibCppTest, ZlibCppTestDictDeflate, Function | MediumTest | Level2)
 }
 
 /**
- * @tc.number    : ZlibCppTest_1000
+ * @tc.number    : ActsZlibTest_1000
  * @tc.name      : Test inflate with a preset dictionary
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ZlibCppTest, ZlibCppTestDictInflate, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestDictInflate, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
     uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
@@ -504,4 +506,275 @@ HWTEST_F(ZlibCppTest, ZlibCppTestDictInflate, Function | MediumTest | Level2)
 
     free(compr);
     free(uncompr);
+}
+
+/**
+ * @tc.number    : ActsZlibTest_1100
+ * @tc.name      : Test compress2 with Z_BEST_COMPRESSION level
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+HWTEST_F(ActsZlibTest, ActsZlibTestCompress2, Function | MediumTest | Level2)
+{
+#ifdef Z_SOLO
+    fprintf(stderr, "*********ActsZlibTestCompress2 Z_BEST_COMPRESSION Z_SOLO**********\n");
+#else
+    Byte *compr, *uncompr;
+    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong uncomprLen = comprLen;
+    compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
+    uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
+    ASSERT_TRUE(compr != Z_NULL && uncompr != Z_NULL);
+
+    int err;
+    uLong len = static_cast<uLong>(strlen(HELLO)) + 1;
+    uLong outLen = compressBound(len);
+    fprintf(stderr, "compressBound result: %lu\n", outLen);
+    err = compress2(compr, &comprLen, reinterpret_cast<const Bytef*>(HELLO), outLen, Z_BEST_COMPRESSION);
+    fprintf(stderr, "compress2 Z_BEST_COMPRESSION result: %d\n", err);
+    ASSERT_EQ(err, Z_OK);
+
+    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    err = uncompress2(uncompr, &uncomprLen, compr, &comprLen);
+    fprintf(stderr, "uncompress2 Z_BEST_COMPRESSION result: %d\n", err);
+    ASSERT_EQ(err, Z_OK);
+    fprintf(stderr, "uncompress2: %s\n", reinterpret_cast<char *>(uncompr));
+    free(compr);
+    free(uncompr);
+#endif
+}
+
+/**
+ * @tc.number    : ActsZlibTest_1200
+ * @tc.name      : Test adler32
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+HWTEST_F(ActsZlibTest, ActsZlibTestAdler, Function | MediumTest | Level2)
+{
+    uLong err = Z_ERRNO;
+    uLong adler1 = 0L;
+    uLong adler2 = 0L;
+    const Bytef *buf = reinterpret_cast<const Bytef*>(DICTIONARY);
+    err = adler32(0L, buf, 0);
+    fprintf(stderr, "adler32 result: %lu\n", err);
+    ASSERT_NE(err, Z_ERRNO);
+
+    err = adler32_z(0L, buf, 0);
+    fprintf(stderr, "adler32_z result: %lu\n", err);
+    ASSERT_NE(err, Z_ERRNO);
+#ifdef Z_SOLO
+#ifndef Z_LARGE64
+    err = adler32_combine64(adler1, adler2, 0);
+    fprintf(stderr, "adler32_combine64 result: %lu\n", err);
+    ASSERT_NE(err, Z_ERRNO);
+#endif
+#else
+    err = adler32_combine(adler1, adler2, 0);
+    fprintf(stderr, "adler32_combine result: %lu\n", err);
+    ASSERT_NE(err, Z_ERRNO);
+#endif
+}
+
+/**
+ * @tc.number    : ActsZlibTest_1300
+ * @tc.name      : Test deflate state
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+HWTEST_F(ActsZlibTest, ActsZlibTestDeflateState, Function | MediumTest | Level2)
+{
+    Byte *compr, *uncompr;
+    int *bits = nullptr;
+    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong uncomprLen = comprLen;
+    compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
+    uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
+    ASSERT_TRUE(compr != Z_NULL && uncompr != Z_NULL);
+
+    gz_headerp headerp = nullptr;
+    z_stream c_stream; /* compression stream */
+    int err;
+    int windowBits = EIGHT;
+    int memLevel = EIGHT;
+    c_stream.zalloc = nullptr;
+    c_stream.zfree = nullptr;
+    c_stream.opaque = nullptr;
+    err = deflateInit2(
+         &c_stream, Z_BEST_COMPRESSION, Z_DEFLATED, windowBits, memLevel, Z_FILTERED);
+    ASSERT_EQ(err, Z_OK);
+    deflateSetHeader(&c_stream, headerp);
+    deflateTune(&c_stream, ONE, FOUR, EIGHT, ONE);
+    memLevel = ONE;
+    err = deflateParams(&c_stream, memLevel, Z_DEFAULT_STRATEGY);
+    fprintf(stderr, "deflateParams result: %d\n", err);
+    ASSERT_EQ(err, Z_OK);
+
+    err = deflatePending(&c_stream, nullptr, bits);
+    fprintf(stderr, "deflatePending result: %d\n", err);
+    ASSERT_EQ(err, Z_OK);
+
+    err = deflateSetDictionary(&c_stream,
+                reinterpret_cast<const Bytef*>(DICTIONARY), static_cast<int>(sizeof(DICTIONARY)));
+    fprintf(stderr, "deflateGetDictionary result: %d\n", err);
+    ASSERT_EQ(err, Z_OK);
+
+    err = deflateGetDictionary(&c_stream, uncompr, nullptr);
+    fprintf(stderr, "deflateGetDictionary result: %d\n", err);
+    err = deflatePrime(&c_stream, EIGHT, ONE);
+    fprintf(stderr, "deflatePrime result: %d\n", err);
+    c_stream.next_out = compr;
+    c_stream.avail_out = static_cast<uInt>(comprLen);
+    c_stream.next_in  = reinterpret_cast<z_const unsigned char *>(HELLO);
+    c_stream.avail_in = static_cast<uInt>(strlen(HELLO)) + 1;
+    err = deflate(&c_stream, Z_FINISH);
+    ASSERT_EQ(err, Z_STREAM_END);
+    err = deflateEnd(&c_stream);
+    ASSERT_EQ(err, Z_OK);
+#ifdef Z_SOLO
+    err = deflateResetKeep(&c_stream);
+    fprintf(stderr, "deflateReset result: %d\n", err);
+#else
+    err = deflateReset(&c_stream);
+    fprintf(stderr, "deflateReset result: %d\n", err);
+#endif
+    free(compr);
+    free(uncompr);
+}
+
+/**
+ * @tc.number    : ActsZlibTest_1400
+ * @tc.name      : Test deflateBound
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+HWTEST_F(ActsZlibTest, ActsZlibTestDeflateBound, Function | MediumTest | Level2)
+{
+    z_stream defstream;
+    char *inBuf = reinterpret_cast<char *>(HELLO);
+    uint32_t inLen = strlen(inBuf) + 1;
+    uint8_t *outBuf = nullptr;
+    uint32_t outLen = 0;
+    int err;
+
+    defstream.zalloc = nullptr;
+    defstream.zfree = nullptr;
+    defstream.opaque = nullptr;
+    defstream.avail_in = static_cast<uInt>(inLen);
+    defstream.next_in = reinterpret_cast<Bytef *>(inBuf);
+    defstream.avail_out = static_cast<uInt>(outLen);
+    defstream.next_out = reinterpret_cast<Bytef *>(outBuf);
+    err = deflateInit(&defstream, Z_DEFAULT_COMPRESSION);
+    fprintf(stderr, "deflateInit result: %d\n", err);
+    ASSERT_EQ(err, Z_OK);
+
+    uint32_t  estimateLen = deflateBound(&defstream, inLen);
+    outBuf = reinterpret_cast<uint8_t *>(malloc(estimateLen));
+    defstream.avail_out = static_cast<uInt>(estimateLen);
+    deflate(&defstream, Z_FINISH);
+    deflateEnd(&defstream);
+    z_stream outStream;
+    err = deflateCopy(&defstream, &outStream);
+    fprintf(stderr, "deflateCopy result: %d\n", err);
+    free(inBuf);
+    free(outBuf);
+}
+
+/**
+ * @tc.number    : ActsZlibTest_1500
+ * @tc.name      : Test adler32
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+HWTEST_F(ActsZlibTest, ActsZlibTestCRC, Function | MediumTest | Level2)
+{
+    uLong err = Z_ERRNO;
+    uLong crc1 = 0L;
+    uLong crc2 = 0L;
+    const Bytef *buf = reinterpret_cast<const Bytef*>(DICTIONARY);
+    err = crc32(0L, buf, 0);
+    fprintf(stderr, "crc32 result: %lu\n", err);
+    ASSERT_NE(err, Z_ERRNO);
+
+    err = crc32_z(0L, buf, 0);
+    fprintf(stderr, "crc32_z result: %lu\n", err);
+    ASSERT_NE(err, Z_ERRNO);
+#ifdef Z_SOLO
+#ifndef Z_LARGE64
+    err = crc32_combine64(crc1, crc2, 0);
+    fprintf(stderr, "crc32_combine64 result: %lu\n", err);
+    ASSERT_NE(err, Z_ERRNO);
+#endif
+#else
+    err = adler32_combine(crc1, crc2, 0);
+    fprintf(stderr, "crc32_combine result: %lu\n", err);
+    ASSERT_NE(err, Z_ERRNO);
+#endif
+}
+
+/**
+ * @tc.number    : ActsZlibTest_1600
+ * @tc.name      : Test get_crc_table
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+HWTEST_F(ActsZlibTest, ActsZlibTestGetCrcTable, Function | MediumTest | Level2)
+{
+    auto table = get_crc_table();
+    ASSERT_TRUE(table != nullptr);
+}
+
+/**
+ * @tc.number    : ActsZlibTest_1700
+ * @tc.name      : Test gzBuffer
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+HWTEST_F(ActsZlibTest, ActsZlibTestGzBuffer, Function | MediumTest | Level2)
+{
+#ifdef Z_SOLO
+    fprintf(stderr, "*********ActsZlibTestGzBuffer Z_SOLO**********\n");
+#else
+    int err;
+    int len = static_cast<int>(strlen(HELLO)) + 1;
+    gzFile file;
+    z_off_t pos;
+    file = gzopen(TESTFILE, "wb");
+    ASSERT_TRUE(file != NULL);
+
+    err = gzbuffer(file, BUFFER_SIZE);
+    ASSERT_EQ(err, Z_OK);
+
+    gzclearerr(file);
+    gzputc(file, 'h');
+    ASSERT_TRUE(gzputs(file, "ello") == FOUR);
+    if (gzprintf(file, ", %s!", "hello") != EIGHT) {
+        fprintf(stderr, "gzprintf err: %s\n", gzerror(file, &err));
+        ASSERT_TRUE(false);
+    }
+
+    gzseek(file, 1L, SEEK_CUR); /* add one zero byte */
+    gzclearerr(file);
+    gzclose_w(file);
+    file = gzopen(TESTFILE, "rb");
+    ASSERT_TRUE(file != NULL);
+
+    int res = gzdirect(file);
+    fprintf(stderr, "gzdirect result: %d\n", res);
+    Byte *compr, *uncompr;
+    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong uncomprLen = comprLen;
+    compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
+    uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
+    ASSERT_TRUE(compr != Z_NULL && uncompr != Z_NULL);
+
+    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    ASSERT_TRUE(gzread(file, uncompr, static_cast<unsigned>(uncomprLen)) == len);
+    ASSERT_FALSE(strcmp(reinterpret_cast<char *>(uncompr), HELLO));
+
+    pos = gzseek(file, -8L, SEEK_CUR);
+    ASSERT_FALSE(pos != SIX || gztell(file) != pos);
+    ASSERT_FALSE(gzgetc(file) != ' ');
+    ASSERT_FALSE(gzungetc(' ', file) != ' ');
+
+    fprintf(stderr, "gzgets\n");
+    gzgets(file, reinterpret_cast<char *>(uncompr), static_cast<int>(uncomprLen));
+    ASSERT_FALSE(strcmp(reinterpret_cast<char *>(uncompr), HELLO + SIX));
+    gzclose_r(file);
+    free(compr);
+    free(uncompr);
+#endif
 }
