@@ -96,24 +96,40 @@ describe('ActsBundleManagerUninstall', function () {
             expect(err.code).assertEqual(ERR_CODE);
             expect(data.status).assertEqual(STATUS_INSTALL_FAILURE_CONFLICT);
             expect(data.statusMessage).assertEqual('STATUS_INSTALL_FAILURE_CONFLICT');
-            var datainfo1 = await demo.getBundleInfo(NAME1, 1);
-            var datainfo2 = await demo.getBundleInfo(NAME2, 1);
-            expect(datainfo1.name).assertEqual('');
-            expect(datainfo2.name).assertEqual('');
+            var datainfo1 = demo.getBundleInfo(NAME1, 1);
+            datainfo1.then(data => {
+                expect().assertFail();
+            }).catch(err => {
+                expect(err).assertEqual(1);
+            });
+            var datainfo2 = demo.getBundleInfo(NAME2, 1);
+            datainfo2.then(data => {
+                expect().assertFail();
+            }).catch(err => {
+                expect(err).assertEqual(1);
+            });
             installData.uninstall(NAME1, {
                 userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async(err, data) => {
-                var datainfo3 = await demo.getBundleInfo(NAME1, 1);
-                expect(datainfo3.name).assertEqual('');
+                var datainfo3 = demo.getBundleInfo(NAME1, 1);
+                datainfo3.then(data => {
+                    expect().assertFail();
+                }).catch(err => {
+                    expect(err).assertEqual(1);
+                });
                 installData.uninstall(NAME2, {
                     userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async(err, data) => {
-                    var datainfo4 = await demo.getBundleInfo(NAME2, 1);
-                    expect(datainfo4.name).assertEqual('');
+                    var datainfo4 = demo.getBundleInfo(NAME2, 1);
+                    datainfo4.then(data => {
+                        expect().assertFail();
+                    }).catch(err => {
+                        expect(err).assertEqual(1);
+                    });
                     done();
                 })
             })
@@ -135,33 +151,57 @@ describe('ActsBundleManagerUninstall', function () {
             expect(err.code).assertEqual(ERR_CODE);
             expect(data.status).assertEqual(STATUS_INSTALL_FAILURE_INVALID);
             expect(data.statusMessage).assertEqual('STATUS_INSTALL_FAILURE_INVALID');
-            var datainfo1 = await demo.getBundleInfo(NAME3, 1);
-            expect(datainfo1.name).assertEqual('');
-            var datainfo2 = await demo.getBundleInfo(NAME4, 1);
-            expect(datainfo2.name).assertEqual('');
-            var datainfo3 = await demo.getBundleInfo(NAME5, 1);
-            expect(datainfo3.name).assertEqual('');
+            var datainfo1 = demo.getBundleInfo(NAME3, 1);
+            datainfo1.then(data => {
+                expect().assertFail();
+            }).catch(err => {
+                expect(err).assertEqual(1);
+            });
+            var datainfo2 = demo.getBundleInfo(NAME4, 1);
+            datainfo2.then(data => {
+                expect().assertFail();
+            }).catch(err => {
+                expect(err).assertEqual(1);
+            });
+            var datainfo3 = demo.getBundleInfo(NAME5, 1);
+            datainfo3.then(data => {
+                expect().assertFail();
+            }).catch(err => {
+                expect(err).assertEqual(1);
+            });
             installData.uninstall(NAME3, {
                 userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async(err, data) => {
-                var datainfo4 = await demo.getBundleInfo(NAME3, 1);
-                expect(datainfo4.name).assertEqual('');
+                var datainfo4 = demo.getBundleInfo(NAME3, 1);
+                datainfo4.then(data => {
+                    expect().assertFail();
+                }).catch(err => {
+                    expect(err).assertEqual(1);
+                });
                 installData.uninstall(NAME4, {
                     userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async(err, data) => {
-                    var datainfo5 = await demo.getBundleInfo(NAME4, 1);
-                    expect(datainfo5.name).assertEqual('');
+                    var datainfo5 = demo.getBundleInfo(NAME4, 1);
+                    datainfo5.then(data => {
+                        expect().assertFail();
+                    }).catch(err => {
+                        expect(err).assertEqual(1);
+                    });
                     installData.uninstall(NAME5, {
                         userId: 100,
                         installFlag: 1,
                         isKeepData: false
                     }, async(err, data) => {
-                        var datainfo6 = await demo.getBundleInfo(NAME5, 1);
-                        expect(datainfo6.name).assertEqual('');
+                        var datainfo6 = demo.getBundleInfo(NAME5, 1);
+                        datainfo6.then(data => {
+                            expect().assertFail();
+                        }).catch(err => {
+                            expect(err).assertEqual(1);
+                        });
                         done();
                     });
                 });

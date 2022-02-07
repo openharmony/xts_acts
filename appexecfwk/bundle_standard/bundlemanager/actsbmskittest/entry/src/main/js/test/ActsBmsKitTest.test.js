@@ -244,7 +244,11 @@ describe('ActsBmsKitTest', function () {
             expect(data[i].lastLaunchTime).assertLarger(0);
             console.debug('=============isRemoved==============' + JSON.stringify(data[i].isRemoved));
             expect(data[i].isRemoved).assertEqual(false);
-            expect(data[i].installationFreeSupported).assertEqual(false);
+            if (data[i].bundleName == 'com.ohos.launcher') {
+                expect(data[i].installationFreeSupported).assertTrue();
+            } else {
+                expect(data[i].installationFreeSupported).assertFalse();
+            }
         }
     }
     function checkIsExist(data, bundleName) {
