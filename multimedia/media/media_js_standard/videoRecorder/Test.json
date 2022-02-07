@@ -1,0 +1,71 @@
+{
+    "description": "Configuration for videoRecorder Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "1000000",
+        "package": "ohos.acts.multimedia.video.videorecorder",
+        "shell-timeout": "60000"
+    },
+    "kits": [
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "touch /data/media/01.mp4",
+                "touch /data/media/02.mp4",
+                "touch /data/media/03.mp4",
+                "touch /data/media/04.mp4",
+                "touch /data/media/05.mp4",
+                "touch /data/media/06.mp4",
+                "touch /data/media/07.mp4",
+                "touch /data/media/08.mp4",
+                "touch /data/media/09.mp4",
+                "touch /data/media/10.mp4",
+                "touch /data/media/11.mp4",
+                "touch /data/media/12.mp4",
+                "touch /data/media/13.mp4",
+                "touch /data/media/14.mp4",
+                "touch /data/media/15.mp4",
+                "touch /data/media/16.mp4",
+                "touch /data/media/17.mp4",
+                "touch /data/media/18.mp4",
+                "touch /data/media/19.mp4",
+                "touch /data/media/20.mp4",
+                "touch /data/media/21.mp4",
+                "touch /data/media/22.mp4",
+                "touch /data/media/23.mp4",
+                "touch /data/media/24.mp4",
+                "touch /data/media/25.mp4",
+                "touch /data/media/26.mp4",
+                "touch /data/media/27.mp4",
+                "touch /data/media/28.mp4",
+                "touch /data/media/29.mp4",
+                "touch /data/media/30.mp4",
+                "touch /data/media/31.mp4",
+                "touch /data/media/32.mp4",
+                "touch /data/media/33.mp4",
+                "touch /data/media/34.mp4",
+                "touch /data/media/35.mp4",
+                "touch /data/media/36.mp4",
+                "touch /data/media/37.mp4",
+                "touch /data/media/38.mp4",
+                "touch /data/media/39.mp4",
+                "touch /data/media/40.mp4",
+                "touch /data/media/41.mp4",
+                "touch /data/media/42.mp4",
+                "touch /data/media/API.mp4",
+                "chmod -R 777 /data/media",
+                "setenforce 0"
+            ],
+            "teardown-command":[
+                "setenforce 1"
+            ]
+        },
+        {
+            "test-file-name": [
+                "VideoRecorderJsTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+}
