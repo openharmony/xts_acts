@@ -18,7 +18,7 @@ group("context") {
   if (is_standard_system) {
     deps = [
       "actscontexttest:ActsContextTest",
-      "scene/defpermission:Defpermission",
+      "scene/defpermission:DefPermission",
     ]
   }
 }
