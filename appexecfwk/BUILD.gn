@@ -18,7 +18,7 @@ group("appexecfwk") {
   if (is_standard_system) {
     deps = [
       "bundle_standard:bundle_standard",
-      "zlibtest/zlibcpptest:ZlibCppTest",
+      "zlib/actszlibtest:ActsZlibTest",
     ]
   }
 }
