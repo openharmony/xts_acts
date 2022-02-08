@@ -32,11 +32,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent json-callback-error code=${err.code}`);
                     expect().assertFail();
                     done();
                 } else {
-                    console.log('HiAppEvent json-callback-success value=${value}');
+                    console.log(`HiAppEvent json-callback-success value=${value}`);
                     expect(value == 0).assertTrue();
                     done();
                 }
@@ -57,11 +57,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent json-callback-error code=${err.code}`);
                     expect().assertFail();
                     done();
                 } else {
-                    console.log('HiAppEvent json-callback-success value=${value}');
+                    console.log(`HiAppEvent json-callback-success value=${value}`);
                     expect(value == 0).assertTrue();
                     done();
                 }
@@ -83,11 +83,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent json-callback-error code=${err.code}`);
                     expect().assertFail();
                     done();
                 } else {
-                    console.log('HiAppEvent json-callback-success value=${value}');
+                    console.log(`HiAppEvent json-callback-success value=${value}`);
                     expect(value == 0).assertTrue();
                     done();
                 }
@@ -109,11 +109,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent json-callback-error code=${err.code}`);
                     expect().assertFail();
                     done();
                 } else {
-                    console.log('HiAppEvent json-callback-success value=${value}');
+                    console.log(`HiAppEvent json-callback-success value=${value}`);
                     expect(value == 0).assertTrue();
                     done();
                 }
@@ -133,11 +133,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent json-callback-error code=${err.code}`);
                     expect().assertFail();
                     done();
                 } else {
-                    console.log('HiAppEvent json-callback-success value=${value}');
+                    console.log(`HiAppEvent json-callback-success value=${value}`);
                     expect(value == 0).assertTrue();
                     done();
                 }
@@ -156,11 +156,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent json-callback-error code=${err.code}`);
                     expect().assertFail();
                     done();
                 } else {
-                    console.log('HiAppEvent json-callback-success value=${value}');
+                    console.log(`HiAppEvent json-callback-success value=${value}`);
                     expect(value == 0).assertTrue();
                     done();
                 }
@@ -179,11 +179,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent json-callback-error code=${err.code}`);
                     expect().assertFail();
                     done();
                 } else {
-                    console.log('HiAppEvent json-callback-success value=${value}');
+                    console.log(`HiAppEvent json-callback-success value=${value}`);
                     expect(value == 0).assertTrue();
                     done();
                 }
@@ -202,11 +202,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent json-callback-error code=${err.code}`);
                     expect().assertFail();
                     done();
                 } else {
-                    console.log('HiAppEvent json-callback-success value=${value}');
+                    console.log(`HiAppEvent json-callback-success value=${value}`);
                     expect(value == 0).assertTrue();
                     done();
                 }
@@ -225,11 +225,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent json-callback-error code=${err.code}`);
                     expect().assertFail();
                     done();
                 } else {
-                    console.log('HiAppEvent json-callback-success value=${value}');
+                    console.log(`HiAppEvent json-callback-success value=${value}`);
                     expect(value == 0).assertTrue();
                     done();
                 }
@@ -248,11 +248,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent json-callback-error code=${err.code}`);
                     expect().assertFail();
                     done();
                 } else {
-                    console.log('HiAppEvent json-callback-success value=${value}');
+                    console.log(`HiAppEvent json-callback-success value=${value}`);
                     expect(value == 0).assertTrue();
                     done();
                 }
@@ -271,11 +271,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent json-callback-error code=${err.code}`);
                     expect().assertFail();
                     done();
                 } else {
-                    console.log('HiAppEvent json-callback-success value=${value}');
+                    console.log(`HiAppEvent json-callback-success value=${value}`);
                     expect(value == 0).assertTrue();
                     done();
                 }
@@ -294,11 +294,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent json-callback-error code=${err.code}`);
                     expect().assertFail();
                     done();
                 } else {
-                    console.log('HiAppEvent json-callback-success value=${value}');
+                    console.log(`HiAppEvent json-callback-success value=${value}`);
                     expect(value == 0).assertTrue();
                     done();
                 }
@@ -317,11 +317,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent json-callback-error code=${err.code}`);
                     expect().assertFail();
                     done();
                 } else {
-                    console.log('HiAppEvent json-callback-success value=${value}');
+                    console.log(`HiAppEvent json-callback-success value=${value}`);
                     expect(value == 0).assertTrue();
                     done();
                 }
@@ -340,11 +340,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent json-callback-error code=${err.code}`);
                     expect().assertFail();
                     done();
                 } else {
-                    console.log('HiAppEvent json-callback-success value=${value}');
+                    console.log(`HiAppEvent json-callback-success value=${value}`);
                     expect(value == 0).assertTrue();
                     done();
                 }
@@ -363,11 +363,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent json-callback-error code=${err.code}`);
                     expect().assertFail();
                     done();
                 } else {
-                    console.log('HiAppEvent json-callback-success value=${value}');
+                    console.log(`HiAppEvent json-callback-success value=${value}`);
                     expect(value == 0).assertTrue();
                     done();
                 }
@@ -386,11 +386,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent json-callback-error code=${err.code}`);
                     expect().assertFail();
                     done();
                 } else {
-                    console.log('HiAppEvent json-callback-success value=${value}');
+                    console.log(`HiAppEvent json-callback-success value=${value}`);
                     expect(value == 0).assertTrue();
                     done();
                 }
@@ -409,11 +409,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent json-callback-error code=${err.code}`);
                     expect().assertFail();
                     done();
                 } else {
-                    console.log('HiAppEvent json-callback-success value=${value}');
+                    console.log(`HiAppEvent json-callback-success value=${value}`);
                     expect(value == 0).assertTrue();
                     done();
                 }
@@ -432,11 +432,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent json-callback-error code=${err.code}`);
                     expect().assertFail();
                     done();
                 } else {
-                    console.log('HiAppEvent json-callback-success value=${value}');
+                    console.log(`HiAppEvent json-callback-success value=${value}`);
                     expect(value == 0).assertTrue();
                     done();
                 }
@@ -455,11 +455,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent20 into json-callback');
                 if (err) {
-                    console.error('HiAppEvent20 json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent20 json-callback-error code=${err.code}`);
                     expect(err.code == -1).assertTrue();
                     done();
                 } else {
-                    console.log('HiAppEvent20 json-callback-success value=${value}');
+                    console.log(`HiAppEvent20 json-callback-success value=${value}`);
                     expect().assertFail();
                     done();
                 }
@@ -484,11 +484,11 @@ describe('HiAppEventApiTest', function () {
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
-                    console.error('HiAppEvent21 json-callback-error code=${err.code}');
+                    console.error(`HiAppEvent21 json-callback-error code=${err.code}`);
                     expect(err.code == -1).assertTrue();
                     done();
                 } else {
-                    console.log('HiAppEvent21 json-callback-success value=${value}');
+                    console.log(`HiAppEvent21 json-callback-success value=${value}`);
                     expect().assertFail();
                     done();
                 }
@@ -550,11 +550,11 @@ describe('HiAppEventApiTest', function () {
         (err, value) => {
             console.log('HiAppEvent into json-callback');
             if (err) {
-                console.error('HiAppEvent json-callback-error code=${err.code}');
+                console.error(`HiAppEvent json-callback-error code=${err.code}`);
                 expect().assertFail();
                 done();
             } else {
-                console.log('HiAppEvent json-callback-success value=${value}');
+                console.log(`HiAppEvent json-callback-success value=${value}`);
                 expect(value == 0).assertTrue();
                 done();
             }
@@ -566,11 +566,11 @@ describe('HiAppEventApiTest', function () {
         (err, value) => {
             console.log('HiAppEvent into json-callback');
             if (err) {
-                console.error('HiAppEvent json-callback-error code=${err.code}');
+                console.error(`HiAppEvent json-callback-error code=${err.code}`);
                 expect().assertFail();
                 done();
             } else {
-                console.log('HiAppEvent json-callback-success value=${value}');
+                console.log(`HiAppEvent json-callback-success value=${value}`);
                 expect(value == 0).assertTrue();
                 done();
             }
