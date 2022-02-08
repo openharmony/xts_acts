@@ -23,7 +23,7 @@ let AlbumNoArgsfetchOp = {
 }
 let AlbumHasArgsfetchOp = {
     selections: fileKeyObj.PATH + " LIKE ? ",
-    selectionArgs: ["/data/media%"],
+    selectionArgs: ["/storage/media%"],
 }
 let type1 = mediaLibrary.MediaType.IMAGE
 let fileHasArgsfetchOp = {
