@@ -471,10 +471,10 @@ describe('aceJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testPieceViewComponent
+     * @tc.name      testPieceComponent
      * @tc.desc      ACE
      */
-    it('testPieceViewComponent', 0, async function (done) {
+    it('testPieceComponent', 0, async function (done) {
         let result;
         let options = {
             uri: 'pages/piece/index'
