@@ -59,6 +59,7 @@ describe('album.promise.test.js', function () {
         console.info('Album Promise MediaLibraryTest: afterAll.');
 
     })
+
     /*
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_001
      * @tc.name      : Get Album by AlbumNoArgsfetchOp

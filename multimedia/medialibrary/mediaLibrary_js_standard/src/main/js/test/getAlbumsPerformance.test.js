@@ -56,7 +56,7 @@ describe('getAlbumsPerformance.test.js', function () {
 
     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_GET_ALBUMS_PERFORMANCE_01 begin');
     it('SUB_MEDIA_MEDIALIBRARY_GET_ALBUMS_PERFORMANCE_01', 0, async function (done) {
-        for(let i = 0; i　< times; i++) {
+        for (let i = 0; i < times; i++) {
             const albumArray = await media.getAlbums(AlbumNoArgsfetchOp);
             if (albumArray != undefined) {
                 console.info('MediaLibraryTest : getAlbums : PASS '+ albumArray.length);

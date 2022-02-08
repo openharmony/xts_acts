@@ -112,6 +112,7 @@ describe('file.promise.test.js', function () {
         assetList.forEach(getAllObjectInfo);
         done();
     });
+
     /*
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GET_ASSET_PROMISE_004
      * @tc.name      : Get assetList By HasArgsfetchOp

@@ -63,7 +63,7 @@ describe('createFileAssetsPerformance.test.js', function () {
             let rp = "Pictures/";
             let displayName;
             let conteEnd = 0;
-            for(let i = 0; i　< times; i++) {
+            for (let i = 0; i < times; i++) {
                 displayName = displayNamePrefix + i + extendStr;
                 console.info('MediaLibraryTest : createAsset begin');
                 media.createAsset(mediaType, displayName, rp).then((fileObj) => {

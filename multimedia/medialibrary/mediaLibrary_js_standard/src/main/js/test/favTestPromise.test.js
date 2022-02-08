@@ -59,6 +59,7 @@ describe('favSmartAlbum.promise.test.js', function () {
         console.info('Smart Album Promise MediaLibraryTest: afterAll.');
 
     })
+
     /*
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETPRIVATEALBUM_PROMISE_001
      * @tc.name      : Get PrivateSmartAlbum by fav
@@ -77,6 +78,7 @@ describe('favSmartAlbum.promise.test.js', function () {
         favSmartAlbum = favSmartAlbums[0];
         done();
     });
+
     /*
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ADDASSET_PROMISE_002
      * @tc.name      : Add asset

@@ -59,6 +59,7 @@ describe('album.callback.test.js', function () {
         console.info('Album Callback MediaLibraryTest: afterAll.');
 
     })
+
     /*
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001
      * @tc.name      : Get Album by AlbumNoArgsfetchOp

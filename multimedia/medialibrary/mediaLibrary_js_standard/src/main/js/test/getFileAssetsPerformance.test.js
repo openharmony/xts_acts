@@ -59,7 +59,7 @@ describe('getFileAssetsPerformance.test.js', function () {
 
     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_GET_FILE_ASSETS_PERFORMANCE_01 begin');
     it('SUB_MEDIA_MEDIALIBRARY_GET_FILE_ASSETS_PERFORMANCE_01', 0, async function (done) {
-        for(let i = 0; i　< times; i++) {
+        for (let i = 0; i < times; i++) {
             const queryResultSet = await media.getFileAssets(fetchOp);
             if (queryResultSet != undefined) {
                 console.info('MediaLibraryTest : getFileAssets : PASS '+ queryResultSet.getCount());

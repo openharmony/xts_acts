@@ -102,7 +102,7 @@ describe('deleteFileAssetsPerformance.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_DELETE_FILE_PERFORMANCE_01', 0, async function (done) {
         if (fileList_ != undefined) {
             let counteEnd = 0;
-            for(let i = 0; i　< fileList_.length; i++) {
+            for (let i = 0; i < fileList_.length; i++) {
                 let fileAsset = fileList_[i];
                 console.info('MediaLibraryTest : uri is '+ fileAsset.uri);
                 media.deleteAsset(fileAsset.uri, (deleteAssetErr, deleteRows) => {

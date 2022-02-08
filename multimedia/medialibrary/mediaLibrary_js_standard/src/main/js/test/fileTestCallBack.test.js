@@ -106,6 +106,7 @@ describe('file.callback.test.js', function () {
         media.getFileAssets(fileNoArgsfetchOp, getFileAssetsCallBack);
         done();
     });
+
     /*
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GET_ASSET_CALLBACK_004
      * @tc.name      : Get assetList By HasArgsfetchOp
