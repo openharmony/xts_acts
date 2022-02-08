@@ -434,5 +434,53 @@ describe('LangTest', function () {
         expect(list.length).assertLarger(0);
     })
 
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_TRANSFER_0100
+    * @tc.name transfer from lower to upper
+    * @tc.desc check the transfer result
+    */
+    it('transfer_test_0100', 0, function () {
+        let date = 'hello';
+        let value = date.toLocaleUpperCase('zh-CN');
+        console.log('transfer_test_0100 ' + value);
+        expect(value).assertEqual('HELLO');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_TRANSFER_0200
+    * @tc.name transfer from upper to lower
+    * @tc.desc check the transfer result
+    */
+    it('transfer_test_0200', 0, function () {
+        let date = 'WORLD';
+        let value = date.toLocaleLowerCase('zh-CN');
+        console.log('transfer_test_0200 ' + value);
+        expect(value).assertEqual('world');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_TRANSFER_0300
+    * @tc.name transfer to upper
+    * @tc.desc check the transfer result
+    */
+    it('transfer_test_0300', 0, function () {
+        let date = 'My name is Jack.';
+        let value = date.toLocaleUpperCase('en-US');
+        console.log('transfer_test_0300 ' + value);
+        expect(value).assertEqual('MY NAME IS JACK.');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_TRANSFER_0400
+    * @tc.name transfer to lower
+    * @tc.desc check the transfer result
+    */
+    it('transfer_test_0400', 0, function () {
+        let date = 'The sky is in BLUE-STYLE!';
+        let value = date.toLocaleLowerCase('en-US');
+        console.log('transfer_test_0400 ' + value);
+        expect(value).assertEqual('the sky is in blue-style!');
+    })
+
     console.log('*************end LangTest*************');
 })
