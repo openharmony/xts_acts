@@ -17,6 +17,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import Constant from 'deccjsunit/src/Constant'
 
 describe('HiAppEventApiTest', function () {
+
     /**
      * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_0100
      * @tc.name testHiAppEventApi01
