@@ -36,6 +36,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/multimodalinput:multimodalinput",
   "${ACTS_ROOT}/resourceschedule:resourceschedule",
   "${ACTS_ROOT}/telephony:telephony",
+  "${ACTS_ROOT}/hiviewdfx:hiviewdfx",
 ]
 
 _all_test_packages_ivi = [
