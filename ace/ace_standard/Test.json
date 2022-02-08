@@ -2,9 +2,9 @@
     "description": "Configuration for aceceshi Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "80000",
+        "test-timeout": "100000",
         "package": "com.example.aceceshi",
-        "shell-timeout": "80000"
+        "shell-timeout": "100000"
     },
     "kits": [
         {

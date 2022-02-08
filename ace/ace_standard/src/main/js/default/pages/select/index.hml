@@ -1,0 +1,46 @@
+<div class="container">
+    <select @change="changeFruit" class="select1">
+        <option value="bananaValue">
+            Banana
+        </option>
+        <option value="appleValue" selected="true">
+            Apple
+        </option>
+        <option value="pearValue">
+            Pear
+        </option>
+    </select>
+    <select @change="changeFruit" class="select2">
+        <option value="bananaValue">
+            Banana
+        </option>
+        <option value="appleValue" selected="true">
+            Apple
+        </option>
+        <option value="pearValue">
+            Pear
+        </option>
+    </select>
+    <select @change="changeFruit" class="select3">
+        <option value="bananaValue">
+            Banana
+        </option>
+        <option value="appleValue" selected="true">
+            Apple
+        </option>
+        <option value="pearValue">
+            Pear
+        </option>
+    </select>
+    <select @change="changeFruit" class="select4">
+        <option value="bananaValue">
+            Banana
+        </option>
+        <option value="appleValue" selected="true">
+            Apple
+        </option>
+        <option value="pearValue">
+            Pear
+        </option>
+    </select>
+</div>

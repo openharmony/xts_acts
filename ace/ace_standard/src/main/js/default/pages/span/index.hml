@@ -1,0 +1,30 @@
+
+<div class="container">
+<!-- 样式1 -->
+    <text class="title">
+        <span class="spanTxt1">span1</span>
+    </text>
+<!-- 样式2 -->
+    <text class="title">
+        <span class="spanTxt2">span2</span>
+    </text>
+<!-- 样式3 -->
+    <text class="title">
+        <span class="spanTxt3">span3</span>
+    </text>
+<!-- 样式4 -->
+    <text class="title">
+        <span class="spanTxt4">span4</span>
+    </text>
+
+    <text class="contain1">
+    <!-- 样式5 -->
+        <span class="spanTxt5">span5</span>
+    <!-- 样式6 -->
+        <span class="spanTxt6">span6</span>
+    </text>
+<!-- 样式7 -->
+    <text class="title">
+        <span class="spanTxt7">span7</span>
+    </text>
+</div>

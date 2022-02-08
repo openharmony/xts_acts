@@ -1,0 +1,4 @@
+<div class="container" >
+    <piece class="piece1" if="{{first}}" content="example"></piece>
+    <piece class="piece2" if="{{second}}" content="example" closable="true" onclose="closeSecond"></piece>
+</div>

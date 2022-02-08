@@ -1,0 +1,7 @@
+<div class="container" @swipe="handleSwipe">
+    <text class="title">
+        Selected：{{time}}
+    </text>
+    <picker-view class="time-picker1" type="time" selected="{{defaultTime}}" @change="handleChange"></picker-view>
+    <picker-view class="time-picker2" type="time" selected="{{defaultTime}}" @change="handleChange"></picker-view>
+</div>

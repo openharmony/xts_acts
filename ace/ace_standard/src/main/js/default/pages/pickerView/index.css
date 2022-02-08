@@ -1,0 +1,56 @@
+.container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: 0px;
+    top: 0px;
+    width: 454px;
+    height: 454px;
+}
+.title {
+    font-size: 30px;
+    text-align: center;
+}
+.time-picker1 {
+    width: 500px;
+    height: 200px;
+    min-width: 25px;
+    min-height: 10px;
+    max-width: 600px;
+    max-height: 250px;
+    padding: 5px;
+    margin-top: 10px;
+    color: pink;
+    font-size: 30px;
+    selected-color: cornflowerblue;
+    selected-font-size: 46px;
+    focus-color: brown;
+    focus-font-size: 40px;
+    disappear-color: pink;
+    disappear-font-size: 16px;
+    font-family: sans-serif;
+    box-shadow :10px 5px 5px 10px #888888;
+    border: 3px solid brown;
+    opacity: 0.5;
+}
+.time-picker2 {
+    width: 500px;
+    height: 200px;
+    min-width: 25px;
+    min-height: 10px;
+    max-width: 600px;
+    max-height: 250px;
+    padding: 20px;
+    margin-top: 50px;
+    color: pink;
+    font-size: 20px;
+    selected-color: blueviolet;
+    selected-font-size: 46px;
+    focus-color: brown;
+    focus-font-size: 40px;
+    disappear-color: pink;
+    disappear-font-size: 16px;
+    font-family: sans-serif;
+    box-shadow : 2px 2px 5px 2px pink;
+    opacity: 1;
+}
