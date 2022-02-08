@@ -17,13 +17,13 @@ group("huks_standard") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "HuksAbnormalTest:ActsHuksAbnormalTest",
       "HuksAlgCompletionTest:ActsHuksAlgCompletionTest",
       "HuksConcurrencyApp1:ActsHuksConcurrencyApp1Test",
       "HuksConcurrencyApp2:ActsHuksConcurrencyApp2Test",
+      "HuksConcurrencyTest:ActsHuksConcurrencyTest",
       "HuksJSTimingTest:ActsHuksJSTimingTest",
       "HuksStressTest:ActsHuksStressTest",
-      "HuksAbnormalTest:ActsHuksAbnormalTest",
-      "HuksConcurrencyTest:ActsHuksConcurrencyTest",
     ]
   }
 }
