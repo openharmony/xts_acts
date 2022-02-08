@@ -7,7 +7,7 @@
 
     <text class="margin">2. Single choice example</text>
     <div style="flex-wrap: wrap">
-        <toggle class="margin toggle2"  for="{{toggle_list}}" id="{{$item.id}}" checked="{{$item.checked}}"
+        <toggle class="margin toggle2"  for="{{toggle_List}}" id="{{$item.id}}" checked="{{$item.checked}}"
                 value="{{$item.name}}" @change="allchange" @click="allclick({{$item.id}})"></toggle>
     </div>
 
@@ -18,7 +18,7 @@
 
     <text class="margin">4. Single choice example</text>
     <div style="flex-wrap: wrap">
-        <toggle class="margin toggle4" for="{{toggle_list}}" id="{{$item.id}}" checked="{{$item.checked}}"
+        <toggle class="margin toggle4" for="{{toggle_List}}" id="{{$item.id}}" checked="{{$item.checked}}"
                 value="{{$item.name}}" @change="allchange" @click="allclick({{$item.id}})"></toggle>
     </div>
 
@@ -30,7 +30,7 @@
 
         <text class="margin margin5">6. Single</text>
         <div style="flex-wrap: wrap">
-            <toggle class="margin toggle6" for="{{toggle_list}}" id="{{$item.id}}" checked="{{$item.checked}}"
+            <toggle class="margin toggle6" for="{{toggle_List}}" id="{{$item.id}}" checked="{{$item.checked}}"
                     value="{{$item.name}}" @change="allchange" @click="allclick({{$item.id}})"></toggle>
         </div>
     </div>
