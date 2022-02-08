@@ -577,7 +577,7 @@ LITE_TEST_CASE(LwipFuncTestSuite, testUdp, Function | MediumTest | Level2)
     socklen_t clnAddrLen = sizeof(clnAddr);
 
     int fd = socket(AF_INET, SOCK_DGRAM, 0);
-    TEST_ASSERT_NOT_EQUAL(LWIP_TEST_FAIL, ret);
+    TEST_ASSERT_NOT_EQUAL(LWIP_TEST_FAIL, fd);
 
     srvAddr.sin_family = AF_INET;
     srvAddr.sin_addr.s_addr = inet_addr(STACK_IP);
