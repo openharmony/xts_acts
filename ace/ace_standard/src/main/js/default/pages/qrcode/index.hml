@@ -1,14 +1,14 @@
 <div class="container">
-    <qrcode value="{{qr_Value}}" type="{{qr_Type}}"
-            style="color: {{qr_Col}};background-color: {{qr_BCol}};width: {{qr_Size}};height: {{qr_Size}};margin-bottom: 70px;"></qrcode>
+    <qrcode value="{{qrValue}}" type="{{qrType}}"
+            style="color: {{qrCol}};background-color: {{qrBCol}};width: {{qrSize}};height: {{qrSize}};margin-bottom: 70px;"></qrcode>
     <text class="txt">Type</text>
-    <switch showtext="true" checked="true" texton="rect" textoff="circle" onchange="settype"></switch>
+    <switch showtext="true" checked="true" texton="rect" textoff="circle" onchange="setType"></switch>
     <text class="txt">Color</text>
-    <select onchange="setcol">
-        <option for="{{col_List}}" value="{{$item}}">{{$item}}</option>
+    <select onchange="setCol">
+        <option for="{{colList}}" value="{{$item}}">{{$item}}</option>
     </select>
     <text class="txt">Background Color</text>
-    <select onchange="setbcol">
-        <option for="{{bCol_List}}" value="{{$item}}">{{$item}}</option>
+    <select onchange="setBCol">
+        <option for="{{bColList}}" value="{{$item}}">{{$item}}</option>
     </select>
 </div>

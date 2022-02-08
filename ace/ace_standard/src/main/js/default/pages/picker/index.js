@@ -42,17 +42,17 @@ export default {
         this.textvalue = e.newValue;
         prompt.showToast({ message:"text:"+e.newValue+",newSelected:"+e.newSelected })
     },
-    textoncancel(e) {
-        prompt.showToast({ message:"text: textoncancel" })
+    textOnCancel(e) {
+        prompt.showToast({ message:"text: textOnCancel" })
     },
-    dateonchange(e) {
+    dateOnchange(e) {
         this.datevalue = e.year + "-" + e.month + "-" + e.day;
         prompt.showToast({ message:"date:"+e.year+"-"+(e.month+1)+"-"+e.day })
     },
-    dateoncancel() {
-        prompt.showToast({ message:"date: dateoncancel" })
+    dateOnCancel() {
+        prompt.showToast({ message:"date: dateOnCancel" })
     },
-    timeonchange(e) {
+    timeOnchange(e) {
         if(this.containsecond){
             this.timevalue=e.hour+":"+e.minute+":"+e.second;
             prompt.showToast({ message:"Time:" + e.hour + ":" + e.minute + ":" + e.second })
@@ -60,24 +60,21 @@ export default {
             this.timevalue=e.hour+":"+e.minute;
             prompt.showToast({ message:"Time:" + e.hour + ":" + e.minute })
         }},
-    timeoncancel() {
-        prompt.showToast({ message:"timeoncancel" })
+    timeOnCancel() {
+        prompt.showToast({ message:"timeOnCancel" })
     },
-    datetimeonchange(e) {
+    datetimeOnchange(e) {
         this.datetimevalue=e.year+"-"+e.month+"-"+e.day+" "+e.hour+":"+e.minute;
         prompt.showToast({ message:"Time:"+(e.month+1)+"-"+e.day+" "+e.hour+":"+e.minute })
     },
-    datetimeoncancel() {
-        prompt.showToast({ message:"datetimeoncancel" })
+    datetimeOnCancel() {
+        prompt.showToast({ message:"datetimeOnCancel" })
     },
-    multitextonchange(e) {
+    multiTextOnchange(e) {
         this.multitextvalue=e.newValue;
         prompt.showToast({ message:"Multi-column text change" + e.newValue })
     },
-    multitextoncancel() {
-        prompt.showToast({ message:"multitextoncancel" })
-    },
-    popup_picker() {
-        this.$element("picker_text").show();
+    multiTextOnCancel() {
+        prompt.showToast({ message:"multiTextOnCancel" })
     },
 }
