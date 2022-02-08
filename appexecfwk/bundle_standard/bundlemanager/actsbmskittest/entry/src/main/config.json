@@ -72,6 +72,10 @@
     ],
     "reqPermissions": [
       {
+        "name": "ohos.permission.INSTALL_BUNDLE",
+        "reason": "need use ohos.permission.INSTALL_BUNDLE"
+      },
+      {
         "name": "com.permission.CAMERA",
         "reason": "Need open camera",
         "usedScene": {

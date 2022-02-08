@@ -47,6 +47,12 @@
         "srcPath": "default"
       }
     ],
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.INSTALL_BUNDLE",
+        "reason": "need use ohos.permission.INSTALL_BUNDLE"
+      }
+    ],
     "js": [
       {
         "pages": [
