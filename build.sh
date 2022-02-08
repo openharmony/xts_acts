@@ -100,7 +100,7 @@ do_make()
     if [ "$SYSTEM_SIZE" = "standard" ]; then
         MUSL_ARGS=""
         if [ "$PRODUCT_NAME" = "m40" ]; then
-            MUSL_ARGS = "--gn-args use_musl=false --gn-args use_custom_libcxx=true --gn-args use_custom_clang=true"
+            MUSL_ARGS="--gn-args use_musl=false --gn-args use_custom_libcxx=true --gn-args use_custom_clang=true"
         fi
        ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target $BUILD_TARGET --build-target "deploy_testtools" --gn-args is_standard_system=true $MUSL_ARGS
     else
