@@ -15,7 +15,7 @@
 
 export default {
     data: {
-        toggle_List: [
+        toggleList: [
             { "id":"1001", "name":"Living room", "checked":true },
             { "id":"1002", "name":"Bedroom", "checked":false },
             { "id":"1003", "name":"Second bedroom", "checked":false },
@@ -30,10 +30,10 @@ export default {
     allchange(e) {
         if (e.checked === true) {
             for (var i = 0; i < this.toggle_list.length; i++) {
-                if (this.toggle_List[i].id === this.idx) {
-                    this.toggle_List[i].checked = true
+                if (this.toggleList[i].id === this.idx) {
+                    this.toggleList[i].checked = true
                 } else {
-                    this.toggle_List[i].checked = false
+                    this.toggleList[i].checked = false
                 }
             }
         }
