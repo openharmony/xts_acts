@@ -2,7 +2,7 @@
     "description": "Configuration for startup util js api Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "60000",
+        "test-timeout": "300000",
         "package": "com.example.childprocess",
         "shell-timeout": "60000"
     },
