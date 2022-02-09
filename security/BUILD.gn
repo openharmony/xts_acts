@@ -18,8 +18,8 @@ group("security") {
   if (is_standard_system) {
     deps = [
       "huks_standard",
-      "user_iam/face_auth/js_api_test/function_test/userauth:ActsUserauthTest",
-      "user_iam/face_auth/js_api_test/performance_test/performance:ActsUserauthPerformanceTest",
+      #"user_iam/face_auth/js_api_test/function_test/userauth:ActsUserauthTest",
+      #"user_iam/face_auth/js_api_test/performance_test/performance:ActsUserauthPerformanceTest",
     ]
   }
 }

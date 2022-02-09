@@ -23,7 +23,8 @@ group("huks_standard") {
       "HuksConcurrencyApp2:ActsHuksConcurrencyApp2Test",
       "HuksConcurrencyTest:ActsHuksConcurrencyTest",
       "HuksJSTimingTest:ActsHuksJSTimingTest",
-      "HuksStressTest:ActsHuksStressTest",
+
+      #"HuksStressTest:ActsHuksStressTest",
     ]
   }
 }
