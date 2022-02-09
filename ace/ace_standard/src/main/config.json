@@ -65,7 +65,16 @@
           "pages/toolbar/index",
           "pages/textarea/index",
           "pages/menu/index",
-          "pages/search/index"
+          "pages/span/index",
+          "pages/switch/index",
+          "pages/toggle/index",
+          "pages/option/index",
+          "pages/picker/index",
+          "pages/pickerView/index",
+          "pages/piece/index",
+          "pages/progress/index",
+          "pages/qrcode/index",
+          "pages/select/index"
         ],
         "name": "default",
         "window": {

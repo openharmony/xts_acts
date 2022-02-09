@@ -337,9 +337,219 @@ describe('aceJsTest', function () {
         } catch (err) {
             result = err
         }
-        await sleep(5000)
+        await sleep(1000)
         let pages = router.getState();
         expect("pages/textarea/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testSpanComponent
+     * @tc.desc      ACE
+     */
+    it('testSpanComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/span/index'
+        }
+        try {
+            result = router.push(options)
+        } catch (err) {
+            result = err
+        }
+        await sleep(1000)
+        let pages = router.getState();
+        expect("pages/span/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testSwitchComponent
+     * @tc.desc      ACE
+     */
+    it('testSwitchComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/switch/index'
+        }
+        try {
+            result = router.push(options)
+        } catch (err) {
+            result = err
+        }
+        await sleep(1000)
+        let pages = router.getState();
+        expect("pages/switch/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testToggleComponent
+     * @tc.desc      ACE
+     */
+    it('testToggleComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/toggle/index'
+        }
+        try {
+            result = router.push(options)
+        } catch (err) {
+            result = err
+        }
+        await sleep(1000)
+        let pages = router.getState();
+        expect("pages/toggle/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testOptionComponent
+     * @tc.desc      ACE
+     */
+    it('testOptionComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/option/index'
+        }
+        try {
+            result = router.push(options)
+        } catch (err) {
+            result = err
+        }
+        await sleep(1000)
+        let pages = router.getState();
+        expect("pages/option/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testPickerComponent
+     * @tc.desc      ACE
+     */
+    it('testPickerComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/picker/index'
+        }
+        try {
+            result = router.push(options)
+        } catch (err) {
+            result = err
+        }
+        await sleep(1000)
+        let pages = router.getState();
+        expect("pages/picker/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testPickerViewComponent
+     * @tc.desc      ACE
+     */
+    it('testPickerViewComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/pickerView/index'
+        }
+        try {
+            result = router.push(options)
+        } catch (err) {
+            result = err
+        }
+        await sleep(1000)
+        let pages = router.getState();
+        expect("pages/pickerView/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testPieceComponent
+     * @tc.desc      ACE
+     */
+    it('testPieceComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/piece/index'
+        }
+        try {
+            result = router.push(options)
+        } catch (err) {
+            result = err
+        }
+        await sleep(1000)
+        let pages = router.getState();
+        expect("pages/piece/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testProgressComponent
+     * @tc.desc      ACE
+     */
+    it('testProgressComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/progress/index'
+        }
+        try {
+            result = router.push(options)
+        } catch (err) {
+            result = err
+        }
+        await sleep(1000)
+        let pages = router.getState();
+        expect("pages/progress/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testQrcodeComponent
+     * @tc.desc      ACE
+     */
+    it('testQrcodeComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/qrcode/index'
+        }
+        try {
+            result = router.push(options)
+        } catch (err) {
+            result = err
+        }
+        await sleep(1000)
+        let pages = router.getState();
+        expect("pages/qrcode/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testSelectComponent
+     * @tc.desc      ACE
+     */
+    it('testSelectComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/select/index'
+        }
+        try {
+            result = router.push(options)
+        } catch (err) {
+            result = err
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        expect("pages/select/").assertEqual(pages.path);
         done();
     });
 });

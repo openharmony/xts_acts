@@ -1,0 +1,24 @@
+
+<div class="container">
+    <switch class="switch1" showtext="true" texton="开启" textoff="关闭" checked="true" @change="switchChange">
+    </switch>
+    <switch class="switch2" showtext="true" texton="开启" textoff="关闭" checked="false" @change="switchChange">
+    </switch>
+    <switch class="switch3" showtext="true" texton="开启" textoff="关闭" checked="true" @change="switchChange">
+    </switch>
+    <switch class="switch4" showtext="true" texton="开启" textoff="关闭" checked="true" @change="switchChange">
+    </switch>
+    <div class="container1">
+        <switch class="switch5" showtext="true" texton="开启" textoff="关闭" checked="true" @change="switchChange">
+        </switch>
+        <switch class="switch6" showtext="true" texton="开启" textoff="关闭" checked="true" @change="switchChange">
+        </switch>
+    </div>
+    <switch class="switch7" showtext="true" texton="开启" textoff="关闭" checked="true" @change="switchChange">
+    </switch>
+</div>
+
+
+
+
+
