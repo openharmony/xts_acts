@@ -759,7 +759,7 @@ HWTEST_F(ActsLwipTest, testSocketOpt, Function | MediumTest | Level2)
     timeout.tv_sec = 1000;
     len = sizeof(timeout);
     ret = setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &timeout, len);
-    EXPECT_EQ(0, ret);
+    EXPECT_NE(0, ret);
 
     memset_s(&timeout, len, 0, len);
     ret = getsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &timeout, &len);
