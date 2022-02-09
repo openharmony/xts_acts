@@ -17,6 +17,7 @@ group("bundlemanager") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "actsbmsaccesstokentest:ActsBmsAccessTokenTest",
       "actsbmsallshortcutinfotest:ActsBmsAllShortcutInfoTest",
       "actsbmscheckpermissiontest:ActsBmsCheckPermissionTest",
       "actsbmsgetinfostest:ActsBmsGetInfosTest",
@@ -28,6 +29,9 @@ group("bundlemanager") {
       "actsbundlemanagertest:ActsBundleManagerTest",
       "actsbundlemanageruninstall:ActsBundleManagerUninstallTest",
       "actsbundlemgrmultipleinstalltest:ActsBundleMgrMultipleInstallTest",
+      "sceneProject/bmsaccesstokenone:bmsAccessTokenTest1",
+      "sceneProject/bmsaccesstokenthree:bmsAccessTokenTest3",
+      "sceneProject/bmsaccesstokentwo:bmsAccessTokenTest2",
       "sceneProject/bmseighthright:eighth_right",
       "sceneProject/bmseleventhright:eleventh_right",
       "sceneProject/bmsfifthright:fifth_right",
