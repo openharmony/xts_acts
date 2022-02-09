@@ -14,7 +14,8 @@
  */
 
 import media from '@ohos.multimedia.media'
-import mediademo from '@ohos.multimedia.mediademo'
+import camera from '@ohos.multimedia.camera'
+import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('RecorderLocalTestVideoFUNC', function () {
@@ -31,7 +32,11 @@ describe('RecorderLocalTestVideoFUNC', function () {
     const STOP_EVENT = 'stop';
     const RESET_EVENT = 'reset';
     const RELEASE_EVENT = 'release';
-    let mediaTest = null;
+    let cameraManager;
+    let cameras;
+    let captureSession;
+    let videoOutput;
+    let surfaceID;
     let configFile = {
         audioBitrate : 48000,
         audioChannels : 2,
@@ -41,8 +46,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         fileFormat : 'mp4',
         videoBitrate : 48000,
         videoCodec : 'video/mp4v-es',
-        videoFrameWidth : 120,
-        videoFrameHeight : 120,
+        videoFrameWidth : 640,
+        videoFrameHeight : 480,
         videoFrameRate : 10
     }
     // orientationHint 0, 90, 180, 270
@@ -62,8 +67,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         fileFormat : 'mp4',
         videoBitrate : 48000,
         videoCodec : 'video/mp4v-es',
-        videoFrameWidth : 120,
-        videoFrameHeight : 120,
+        videoFrameWidth : 640,
+        videoFrameHeight : 480,
         videoFrameRate : 10
     }
 
@@ -79,14 +84,13 @@ describe('RecorderLocalTestVideoFUNC', function () {
 
     function sleep(time) {
         for(let t = Date.now();Date.now() - t <= time;);
-    };
+    }
 
     beforeAll(function () {
         console.info('beforeAll case');
     })
 
     beforeEach(function () {
-        mediaTest = null;
         console.info('beforeEach case');
     })
 
@@ -97,6 +101,43 @@ describe('RecorderLocalTestVideoFUNC', function () {
     afterAll(function () {
         console.info('afterAll case');
     })
+
+    async function initCamera() {
+        cameraManager = await camera.getCameraManager(null);
+        if (cameraManager != null) {
+            console.info('[camera] case getCameraManager success');
+        } else {
+            console.info('[camera] case getCameraManager failed');
+            return;
+        }
+        cameras = await cameraManager.getCameras();
+        if (cameras != null) {
+            console.info('[camera] case getCameras success');
+        } else {
+            console.info('[camera] case getCameras failed');
+        }
+    }
+
+    async function initCaptureSession(videoOutPut) {
+        let cameraInput = await cameraManager.createCameraInput(cameras[0].cameraId);
+        if (cameraInput != null) {
+            console.info('[camera] case createCameraInput success');
+        } else {
+            console.info('[camera] case createCameraInput failed');
+            return;
+        }
+        captureSession = await camera.createCaptureSession(null);
+        await captureSession.beginConfig();
+        await captureSession.addInput(cameraInput);
+        await captureSession.addOutput(videoOutPut);
+        await captureSession.commitConfig();
+        await captureSession.start();
+    }
+
+    async function stopCaptureSession() {
+        await captureSession.stop();
+        await captureSession.release();
+    }
 
     function printfError(error, done) {
         expect().assertFail();
@@ -128,7 +169,7 @@ describe('RecorderLocalTestVideoFUNC', function () {
         });
     }
 
-    eventEmitter.on(CREATE_EVENT, (videoRecorder, steps, done) => {
+    eventEmitter.on(CREATE_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
         media.createVideoRecorder((err, recorder) => {
             if (typeof (err) == 'undefined') {
@@ -143,13 +184,12 @@ describe('RecorderLocalTestVideoFUNC', function () {
         });
     });
 
-    eventEmitter.on(PREPARE_EVENT, (videoRecorder, steps, done) => {
+    eventEmitter.on(PREPARE_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
         videoRecorder.prepare(videoConfig, (err) => {
             if (typeof (err) == 'undefined') {
                 console.info('case prepare success');
                 expect(videoRecorder.state).assertEqual('prepared');
-                mediaTest = mediademo.createMediaTest();
                 toNextStep(videoRecorder, steps, done);
             } else {
                 printfError(err, done);
@@ -157,13 +197,12 @@ describe('RecorderLocalTestVideoFUNC', function () {
         });
     });
 
-    eventEmitter.on(PREPARE_OLNYVIDEO_EVENT, (videoRecorder, steps, done) => {
+    eventEmitter.on(PREPARE_OLNYVIDEO_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
         videoRecorder.prepare(onlyVideoConfig, (err) => {
             if (typeof (err) == 'undefined') {
                 console.info('case prepare success');
                 expect(videoRecorder.state).assertEqual('prepared');
-                mediaTest = mediademo.createMediaTest();
                 toNextStep(videoRecorder, steps, done);
             } else {
                 printfError(err, done);
@@ -171,15 +210,13 @@ describe('RecorderLocalTestVideoFUNC', function () {
         });
     });
 
-    eventEmitter.on(GETSURFACE_EVENT, (videoRecorder, steps, done) => {
+    eventEmitter.on(GETSURFACE_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
-        videoRecorder.getInputSurface((err, surfaceID) => {
+        videoRecorder.getInputSurface((err, outPutsurface) => {
             if (typeof (err) == 'undefined') {
-                console.info('case getInputSurface success');
                 expect(videoRecorder.state).assertEqual('prepared');
-                mediaTest.isExit = 0;
-                mediaTest.isStart = 1;
-                mediaTest.startStream(surfaceID);
+                surfaceID = outPutsurface;
+                console.info('case getInputSurface success :' + surfaceID);
                 toNextStep(videoRecorder, steps, done);
             } else {
                 printfError(err, done);
@@ -187,8 +224,18 @@ describe('RecorderLocalTestVideoFUNC', function () {
         });
     });
 
-    eventEmitter.on(START_EVENT, (videoRecorder, steps, done) => {
+    eventEmitter.on(START_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
+        videoOutput = await camera.createVideoOutput(surfaceID);
+        if (videoOutput == null) {
+            console.info('case createVideoOutput failed');
+        } else {
+            console.info('case createVideoOutput success');
+        }
+        await initCaptureSession(videoOutput);
+        await videoOutput.start().then(() => {
+            console.info('case videoOutput start success');
+        });
         videoRecorder.start((err) => {
             if (typeof (err) == 'undefined') {
                 console.info('case start success');
@@ -201,15 +248,12 @@ describe('RecorderLocalTestVideoFUNC', function () {
         });
     });
 
-    eventEmitter.on(PAUSE_EVENT, (videoRecorder, steps, done) => {
+    eventEmitter.on(PAUSE_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
-        mediaTest.isPause = 1;
-        sleep(100);
         videoRecorder.pause((err) => {
             if (typeof (err) == 'undefined') {
                 console.info('case pause success');
                 expect(videoRecorder.state).assertEqual('paused');
-                mediaTest.isPause = 0;
                 sleep(PAUSE_TIME);
                 toNextStep(videoRecorder, steps, done);
             } else {
@@ -218,9 +262,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         });
     });
 
-    eventEmitter.on(RESUME_EVENT, (videoRecorder, steps, done) => {
+    eventEmitter.on(RESUME_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
-        mediaTest.isStart = 1;
         videoRecorder.resume((err) => {
             if (typeof (err) == 'undefined') {
                 console.info('case resume success');
@@ -233,7 +276,7 @@ describe('RecorderLocalTestVideoFUNC', function () {
         });
     });
 
-    eventEmitter.on(STOP_EVENT, (videoRecorder, steps, done) => {
+    eventEmitter.on(STOP_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
         videoRecorder.stop((err) => {
             if (typeof (err) == 'undefined') {
@@ -246,7 +289,7 @@ describe('RecorderLocalTestVideoFUNC', function () {
         });
     });
 
-    eventEmitter.on(RESET_EVENT, (videoRecorder, steps, done) => {
+    eventEmitter.on(RESET_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
         videoRecorder.reset((err) => {
             if (typeof (err) == 'undefined') {
@@ -259,10 +302,16 @@ describe('RecorderLocalTestVideoFUNC', function () {
         });
     });
 
-    eventEmitter.on(RELEASE_EVENT, (videoRecorder, steps, done) => {
+    eventEmitter.on(RELEASE_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
-        mediaTest.isExit = 1;
-        mediaTest.closeStream();
+        await videoOutput.stop().then(() => {
+            console.info('case videoOutput stop success');
+        });
+        await videoOutput.release().then(() => {
+            console.info('case videoOutput release success');
+        });
+        videoOutput = undefined;
+        await stopCaptureSession();
         videoRecorder.release((err) => {
             if (typeof (err) == 'undefined') {
                 expect(videoRecorder.state).assertEqual('idle');
@@ -283,6 +332,7 @@ describe('RecorderLocalTestVideoFUNC', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0100', 0, async function (done) {
+        await initCamera();
         videoConfig.url = 'file:///data/media/19.mp4';
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT, END_EVENT);
