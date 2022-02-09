@@ -22,7 +22,7 @@ const BUNDLE_NAME5 = 'com.example.third5';
 const SYSTEM_BUNDLE = 'com.example.system1';
 const VENDOR_BUNDLE = 'com.example.vendor1';
 const DESIGHN_WIDTH = 770;
-const DEFAULT_DESIGHN_WIDTH = 750;
+const DEFAULT_DESIGHN_WIDTH = 720;
 describe('ActsBmsFormsInfoTest', function () {
 
     /**
