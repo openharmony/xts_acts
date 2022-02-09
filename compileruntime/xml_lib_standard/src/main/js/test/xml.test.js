@@ -803,17 +803,17 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testSetCommnet001
-     * @tc.desc: Writes the commnet.
+     * @tc.name: testSetComment001
+     * @tc.desc: Writes the comment.
      * @tc.require: AR000GGRB8
      * @tc.author: lihucheng
      */
-    it('testSetCommnet001', 0, function () {
+    it('testSetComment001', 0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
         thatSer.startElement("note");
-        thatSer.setCommnet("Hi!");
+        thatSer.setComment("Hi!");
         thatSer.endElement();
         var result = '<note>\r\n  <!--Hi!-->\r\n</note>';
         var view = new Uint8Array(arrayBuffer);
@@ -825,17 +825,17 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testSetCommnet002
-     * @tc.desc: Writes the commnet.
+     * @tc.name: testSetComment002
+     * @tc.desc: Writes the comment.
      * @tc.require: AR000GGRB8
      * @tc.author: lihucheng
      */
-    it('testSetCommnet002', 0, function () {
+    it('testSetComment002', 0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
         thatSer.startElement("note");
-        thatSer.setCommnet("Hello, World!");
+        thatSer.setComment("Hello, World!");
         thatSer.endElement();
         var result = '<note>\r\n  <!--Hello, World!-->\r\n</note>';
         var view = new Uint8Array(arrayBuffer);
@@ -847,16 +847,16 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testSetCommnet003
-     * @tc.desc: Writes the commnet.
+     * @tc.name: testSetComment003
+     * @tc.desc: Writes the comment.
      * @tc.require: AR000GGRB8
      * @tc.author: lihucheng
      */
-    it('testSetCommnet003', 0, function () {
+    it('testSetComment003', 0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
-        thatSer.setCommnet("Hello, World!");
+        thatSer.setComment("Hello, World!");
         var result = '<!--Hello, World!-->';
         var view = new Uint8Array(arrayBuffer);
         var view1 = "";
@@ -867,16 +867,16 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testSetCommnet004
-     * @tc.desc: Writes the commnet.
+     * @tc.name: testSetComment004
+     * @tc.desc: Writes the comment.
      * @tc.require: AR000GGRB8
      * @tc.author: lihucheng
      */
-    it('testSetCommnet004', 0, function () {
+    it('testSetComment004', 0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
-        thatSer.setCommnet("Hello, World!");
+        thatSer.setComment("Hello, World!");
         var result = '<!--Hello, World!-->';
         var view = new Uint8Array(arrayBuffer);
         var view1 = "";
@@ -887,16 +887,16 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testSetCommnet005
-     * @tc.desc: Writes the commnet.
+     * @tc.name: testSetComment005
+     * @tc.desc: Writes the comment.
      * @tc.require: AR000GGRB8
      * @tc.author: lihucheng
      */
-    it('testSetCommnet005', 0, function () {
+    it('testSetComment005', 0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
-        thatSer.setCommnet("Hello, World!");
+        thatSer.setComment("Hello, World!");
         thatSer.startElement("note");
         thatSer.endElement();
         var result = '<!--Hello, World!-->\r\n<note/>';
@@ -1015,16 +1015,16 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testSetCData001
+     * @tc.name: testSetCDATA001
      * @tc.desc: Writes the CDATA.
      * @tc.require: AR000GGRB8
      * @tc.author: lihucheng
      */
-    it('testSetCData001', 0, function () {
+    it('testSetCDATA001', 0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
-        thatSer.setCData('root SYSTEM')
+        thatSer.setCDATA('root SYSTEM')
         var result = '<![CDATA[root SYSTEM]]>';
         var view = new Uint8Array(arrayBuffer);
         var view1 = "";
@@ -1035,16 +1035,16 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testSetCData002
+     * @tc.name: testSetCDATA002
      * @tc.desc: Writes the CDATA.
      * @tc.require: AR000GGRB8
      * @tc.author: lihucheng
      */
-    it('testSetCData002', 0, function () {
+    it('testSetCDATA002', 0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
-        thatSer.setCData('root SYSTEM "http://www.test.org/test.dtd"')
+        thatSer.setCDATA('root SYSTEM "http://www.test.org/test.dtd"')
         var result = '<![CDATA[root SYSTEM "http://www.test.org/test.dtd"]]>';
         var view = new Uint8Array(arrayBuffer);
         var view1 = "";
@@ -1055,18 +1055,18 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testSetCData003
+     * @tc.name: testSetCDATA003
      * @tc.desc: Writes the CDATA.
      * @tc.require: AR000GGRB8
      * @tc.author: lihucheng
      */
-    it('testSetCData003', 0, function () {
+    it('testSetCDATA003', 0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
         thatSer.startElement("note");
         thatSer.endElement();
-        thatSer.setCData('root SYSTEM "http://www.test.org/test.dtd"')
+        thatSer.setCDATA('root SYSTEM "http://www.test.org/test.dtd"')
         var result = '<note/>\r\n<![CDATA[root SYSTEM "http://www.test.org/test.dtd"]]>';
         var view = new Uint8Array(arrayBuffer);
         var view1 = "";
@@ -1077,16 +1077,16 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testSetCData004
+     * @tc.name: testSetCDATA004
      * @tc.desc: Writes the CDATA.
      * @tc.require: AR000GGRB8
      * @tc.author: lihucheng
      */
-    it('testSetCData004', 0, function () {
+    it('testSetCDATA004', 0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
-        thatSer.setCData('root SYSTEM "http://www.test.org/test.dtd"')
+        thatSer.setCDATA('root SYSTEM "http://www.test.org/test.dtd"')
         thatSer.startElement("note");
         thatSer.endElement();
         var result = '<![CDATA[root SYSTEM "http://www.test.org/test.dtd"]]>\r\n<note/>';
@@ -1099,17 +1099,17 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testSetCData005
+     * @tc.name: testSetCDATA005
      * @tc.desc: Writes the CDATA.
      * @tc.require: AR000GGRB8
      * @tc.author: lihucheng
      */
-    it('testSetCData005', 0, function () {
+    it('testSetCDATA005', 0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
         thatSer.startElement("note");
-        thatSer.setCData('root SYSTEM "http://www.test.org/test.dtd"')
+        thatSer.setCDATA('root SYSTEM "http://www.test.org/test.dtd"')
         thatSer.endElement();
         var result = '<note>\r\n  <![CDATA[root SYSTEM "http://www.test.org/test.dtd"]]>\r\n</note>';
         var view = new Uint8Array(arrayBuffer);

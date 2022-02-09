@@ -291,7 +291,7 @@ describe('XmlTest', function () {
             '    <todo>Play</todo>' +
             '</note>';
         var convertml = new convertXml.ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, ignoreCdata: true})
+        var result1 = convertml.convert(xml, {compact: false, ignoreCDATA: true})
         var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"_type":"element",'+
