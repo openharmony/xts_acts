@@ -26,6 +26,64 @@ describe('ActsOsAccountSystemTest', function () {
     }
 
     /*
+     * @tc.number  : ActsOsAccountOnOff_0100
+     * @tc.name    : Subscribe and unsubscribing local multi-user
+     * @tc.desc    : Verify that the activating type subscription can receive user switching
+     */
+    it('ActsOsAccountOnOff_0100', 0, async function (done) {
+        console.debug("====>ActsOsAccountOnOff_0100 start====");
+        var osAccountManager = osaccount.getAccountManager();
+        var localId;
+        var activatingSign = false;
+        console.debug("====>get AccountManager finish====");
+        function onCallback(receiveLocalId){
+            console.debug("====>receive localId:" + receiveLocalId);
+            if(receiveLocalId == localId){
+                osAccountManager.off("activating", "osAccountOnOffNameA", offCallback);
+            }
+        }
+        function onActivateCallback(receiveId){
+            console.debug("====>onActivateCallback receive localId:" + receiveId);
+            if(receiveId == localId){
+                osAccountManager.off("activate", "osAccountactivateNameA", offActivateCallback);
+            }
+        }
+        function removeCallback(err){
+            console.debug("====>remove localId: " + localId + " err:" + JSON.stringify(err));
+            expect(err.code).assertEqual(0);
+            console.debug("====>the activating sign is: " + activatingSign);
+            expect(activatingSign).assertTrue();
+            console.debug("====>ActsOsAccountOnOff_0100 end====");
+            done();
+        }
+        function offCallback(){
+            console.debug("====>off enter")
+            activatingSign = true;
+        }
+        function offActivateCallback(){
+            console.debug("====>offActivateCallback enter")
+            sleep(TIMEOUT);
+            osAccountManager.removeOsAccount(localId, removeCallback);
+        }
+        console.debug("====>on activating start====");
+        osAccountManager.on("activating", "osAccountOnOffNameA", onCallback);
+        console.debug("====>on activate start====");
+        osAccountManager.on("activate", "osAccountactivateNameA", onActivateCallback);
+        sleep(TIMEOUT);
+        osAccountManager.createOsAccount("osAccountNameA", 1, (err, osAccountInfo)=>{
+            console.debug("====>createOsAccount err:" + JSON.stringify(err));
+            console.debug("====>createOsAccount osAccountInfo:" + JSON.stringify(osAccountInfo));
+            localId = osAccountInfo.localId;
+            expect(err.code).assertEqual(0);
+            expect(osAccountInfo.localName).assertEqual("osAccountNameA");
+            osAccountManager.activateOsAccount(localId, (err)=>{
+                console.debug("====>activateOsAccount err:" + JSON.stringify(err));
+                expect(err.code).assertEqual(0);
+            });
+        });
+    });
+
+    /*
      * @tc.number  : ActsOsAccountOnOff_0200
      * @tc.name    : Subscribe and unsubscribing local multi-user
      * @tc.desc    : Verify that the activate type subscription can receive user switching
