@@ -20,12 +20,12 @@ ohos_js_hap_suite("custjs_test") {
     ":custjs_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "CustJsApiTest"
+  hap_name = "ActsCustJsTest"
 }
-ohos_js_assets("resmgrjs_assets") {
+ohos_js_assets("custjs_assets") {
   source_dir = "./src/main/js/default"
 }
-ohos_resources("resmgrjs_resources") {
+ohos_resources("custjs_resources") {
   sources = [ "./src/main/resources" ]
   hap_profile = "./src/main/config.json"
 }

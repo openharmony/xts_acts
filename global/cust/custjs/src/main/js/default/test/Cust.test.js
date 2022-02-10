@@ -26,19 +26,19 @@ describe('CustTest', function () {
     it('getOneCfgFile_test_001', 0, async function (done) {
         cust.getOneCfgFile('custxml/none.xml', (error, value) => {
             expect(value.length == 0).assertTrue();
-			console.log('CustTest getOneCfgFile_test_001, none.xml:' + value);
+            console.log('CustTest getOneCfgFile_test_001, none.xml:' + value);
         });
         cust.getOneCfgFile('custxml/system.xml', (error, value) => {
             expect(value.length != 0).assertTrue();
-			console.log('CustTest getOneCfgFile_test_001, system.xml:' + value);
+            console.log('CustTest getOneCfgFile_test_001, system.xml:' + value);
         });
         cust.getOneCfgFile('custxml/both.xml', (error, value) => {
             expect(value.length != 0).assertTrue();
-			console.log('CustTest getOneCfgFile_test_001, both.xml:' + value);
+            console.log('CustTest getOneCfgFile_test_001, both.xml:' + value);
         });
         cust.getOneCfgFile('custxml/user.xml', (error, value) => {
             expect(value.length != 0).assertTrue();
-			console.log('CustTest getOneCfgFile_test_001, user.xml:' + value);
+            console.log('CustTest getOneCfgFile_test_001, user.xml:' + value);
         });
         done();
     })
@@ -51,24 +51,24 @@ describe('CustTest', function () {
     it('getOneCfgFile_test_002', 0, async function (done) {
         cust.getOneCfgFile('custxml/none.xml').then(value => {
             expect(value.length == 0).assertTrue();
-			console.log('CustTest getOneCfgFile_test_002, none.xml:' + value);
+            console.log('CustTest getOneCfgFile_test_002, none.xml:' + value);
         });
         cust.getOneCfgFile('custxml/system.xml').then(value => {
             expect(value.length != 0).assertTrue();
-			console.log('CustTest getOneCfgFile_test_002, system.xml:' + value);
+            console.log('CustTest getOneCfgFile_test_002, system.xml:' + value);
         });
         cust.getOneCfgFile('custxml/both.xml').then(value => {
             expect(value.length != 0).assertTrue();
-			console.log('CustTest getOneCfgFile_test_002, both.xml:' + value);
+            console.log('CustTest getOneCfgFile_test_002, both.xml:' + value);
         });
         cust.getOneCfgFile('custxml/user.xml').then(value => {
             expect(value.length != 0).assertTrue();
-			console.log('CustTest getOneCfgFile_test_002, user.xml:' + value);
+            console.log('CustTest getOneCfgFile_test_002, user.xml:' + value);
         });
         done();
     })
 
-     /* *
+    /* *
     * @tc.number SUB_CUST_JS_0300
     * @tc.name test getCfgFiles method in callback mode
     * @tc.desc get getCfgFiles in callback mode
@@ -76,19 +76,19 @@ describe('CustTest', function () {
     it('getCfgFiles_test_003', 0, async function (done) {
         cust.getCfgFiles('custxml/none.xml', (error, value) => {
             expect(value.length == 0).assertTrue();
-			console.log('CustTest getCfgFiles_test_003, none.xml:' + value);
+            console.log('CustTest getCfgFiles_test_003, none.xml:' + value);
         });
         cust.getCfgFiles('custxml/system.xml', (error, value) => {
             expect(value.length != 0).assertTrue();
-			console.log('CustTest getCfgFiles_test_003, system.xml:' + value);
+            console.log('CustTest getCfgFiles_test_003, system.xml:' + value);
         });
         cust.getCfgFiles('custxml/both.xml', (error, value) => {
             expect(value.length != 0).assertTrue();
-			console.log('CustTest getCfgFiles_test_003, both.xml:' + value);
+            console.log('CustTest getCfgFiles_test_003, both.xml:' + value);
         });
         cust.getCfgFiles('custxml/user.xml', (error, value) => {
             expect(value.length != 0).assertTrue();
-			console.log('CustTest getCfgFiles_test_003, user.xml:' + value);
+            console.log('CustTest getCfgFiles_test_003, user.xml:' + value);
         });
         done();
     })
@@ -101,24 +101,24 @@ describe('CustTest', function () {
     it('getCfgFiles_test_004', 0, async function (done) {
         cust.getCfgFiles('custxml/none.xml').then(value => {
             expect(value.length == 0).assertTrue();
-			console.log('CustTest getCfgFiles_test_004, none.xml:' + value);
+            console.log('CustTest getCfgFiles_test_004, none.xml:' + value);
         });
         cust.getCfgFiles('custxml/system.xml').then(value => {
             expect(value.length != 0).assertTrue();
-			console.log('CustTest getCfgFiles_test_004, system.xml:' + value);
+            console.log('CustTest getCfgFiles_test_004, system.xml:' + value);
         });
         cust.getCfgFiles('custxml/both.xml').then(value => {
             expect(value.length != 0).assertTrue();
-			console.log('CustTest getCfgFiles_test_004, both.xml:' + value);
+            console.log('CustTest getCfgFiles_test_004, both.xml:' + value);
         });
         cust.getCfgFiles('custxml/user.xml').then(value => {
             expect(value.length != 0).assertTrue();
-			console.log('CustTest getCfgFiles_test_004, user.xml:' + value);
+            console.log('CustTest getCfgFiles_test_004, user.xml:' + value);
         });
         done();
     })
 
-     /* *
+    /* *
     * @tc.number SUB_CUST_JS_0500
     * @tc.name test getCfgDirList method in callback mode
     * @tc.desc get getCfgDirList in callback mode
@@ -126,7 +126,7 @@ describe('CustTest', function () {
     it('getCfgDirList_test_005', 0, async function (done) {
         cust.getCfgDirList((error, value) => {
             expect(value.length != 0).assertTrue();
-			console.log('getCfgDirList_test_005:' + value);
+            console.log('CustTest getCfgDirList_test_005:' + value);
         });
         done();
     })
@@ -139,10 +139,10 @@ describe('CustTest', function () {
     it('getCfgDirList_test_006', 0, async function (done) {
         cust.getCfgDirList().then(value => {
             expect(value.length != 0).assertTrue();
-			console.log('getCfgDirList_test_006:' + value);
+            console.log('CustTest getCfgDirList_test_006:' + value);
         });
         done();
-    }) 
+    })
 
     console.log('CustTest**************************end');
-}) 
+})

@@ -12,4 +12,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-require('./Resmgr.test.js')
+
+require('./Cust.test.js')
