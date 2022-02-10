@@ -11,21 +11,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos_var.gni")
+import("//test/xts/tools/build/suite.gni")
 
-group("global") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "cust/custjs:custjs_test",
-      "i18n_standard/intljs:intljs_test",
-      "resmgr_standard/resmgrjs:resmgrjs_test",
-    ]
-  } else {
-    deps = [
-      "i18n:i18n_test_hap",
-      "icu:icu_test_hap",
-      "resmgr:resmgr_test_hap",
-    ]
-  }
+ohos_js_hap_suite("custjs_test") {
+  hap_profile = "./src/main/config.json"
+  deps = [
+    ":custjs_assets",
+    ":custjs_resources",
+  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "CustJsApiTest"
+}
+ohos_js_assets("resmgrjs_assets") {
+  source_dir = "./src/main/js/default"
+}
+ohos_resources("resmgrjs_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }

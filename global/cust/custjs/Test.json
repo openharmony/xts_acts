@@ -1,0 +1,26 @@
+{
+    "description": "Configuration for cust js api Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "300000",
+        "package": "ohos.cust.test",
+        "shell-timeout": "60000"
+    },
+    "kits": [
+        {
+            "test-file-name": [
+                "CustJSApiTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+        "run-command": [
+            "mkdir -p /system/etc/custxml/",
+            "mkdir -p /sys-prod/etc/custxml/",
+            "touch /system/etc/custxml/system.xml",
+            "touch /system/etc/custxml/both.xml",
+            "touch /sys-prod/etc/custxml/both.xml",
+            "touch /sys-prod/etc/custxml/user.xml"
+        ]
+    ]
+}
