@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.example.childprocess",
+    "bundleName": "com.example.util",
     "vendor": "example",
     "version": {
       "code": 1000000,
@@ -13,9 +13,9 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.childprocess",
+    "package": "com.example.util",
     "name": ".MyApplication",
-    "mainAbility": "com.example.childprocess.MainAbility",
+    "mainAbility": "com.example.util.MainAbility",
     "deviceType": [
       "phone"
     ],
@@ -38,7 +38,7 @@
           }
         ],
         "visible": true,
-        "name": "com.example.childprocess.MainAbility",
+        "name": "com.example.util.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:entry_MainAbility",
