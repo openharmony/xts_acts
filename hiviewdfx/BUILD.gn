@@ -11,12 +11,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import("//build/ohos_var.gni")
-
 group("hiviewdfxtestacts") {
   testonly = true
   if (is_standard_system) {
-    deps = [ 
-      "hiappeventtest/hiappeventjstest:ActsHiAppeventTest", 
-      "hiview/faultlogger/faultloggerjs:ActsFaultloggerJsTest" ]
+    deps = [
+      "hiappeventtest/hiappeventjstest:ActsHiAppEventJsTest",
+      "hiview/faultlogger/faultloggerjs:ActsFaultloggerJsTest",
+    ]
   }
 }
