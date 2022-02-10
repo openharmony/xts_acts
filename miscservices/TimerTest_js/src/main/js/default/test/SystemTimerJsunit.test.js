@@ -964,7 +964,7 @@ describe('TimerTest', function() {
 		console.log('SUB_systemTimer_Timer_JS_API_2800 end');
 	});
 	
-#if 0
+
 	/**
      * @tc.number    SUB_systemTimer_Timer_JS_API_2900
      * @tc.name      Test systemTimer.Timer type = TIMER_TYPE_IDLE
@@ -997,7 +997,7 @@ describe('TimerTest', function() {
 		expect(destroyTimerRes).assertEqual(true)
 		console.log('SUB_systemTimer_Timer_JS_API_2900 end');
 	});
-#endif
+
 	
 		/**
      * @tc.number    SUB_systemTimer_Timer_JS_API_3000
