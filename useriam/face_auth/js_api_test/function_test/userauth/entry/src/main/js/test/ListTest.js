@@ -14,7 +14,3 @@
  */
 
 require('./execute.js')
-require('./cancel.js')
-require('./checkAvailability.js')
-require('./on.js')
-require('./off.js')

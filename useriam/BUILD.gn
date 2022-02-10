@@ -13,10 +13,12 @@
 import("//build/ohos_var.gni")
 import("//test/xts/tools/build/suite.gni")
 
-group("security") {
+group("useriam") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "huks_standard",
+      "face_auth/js_api_test/function_test/userauth:ActsUserauthTest",
+      "face_auth/js_api_test/performance_test/performance:ActsUserauthPerformanceTest",
+    ]
   }
 }

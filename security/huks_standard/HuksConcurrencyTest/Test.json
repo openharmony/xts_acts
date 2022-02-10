@@ -2,7 +2,7 @@
     "description": "Configuration for algorithm completion test",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "7200000",
+        "test-timeout": "600000",
         "package": "com.example.huksconcurrencytest",
         "shell-timeout": "60000"
     },
