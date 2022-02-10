@@ -2079,22 +2079,22 @@ describe('SingleKvStorePromiseTest', function () {
      * @tc.name [JS-API8]SingleKvStoreGetSecurityLevel.
      * @tc.desc Test Js Api SingleKvStoreGetSecurityLevel testcase 001
      */
-    it('testSingleKvStoreGetSecurityLevel001', 0, async function (done) {
-        console.log('testSingleKvStoreGetSecurityLevel001');
-        try {
-            await kvStore.getSecurityLevel().then((data) => {
-                console.log('testSingleKvStoreGetSecurityLevel001 getSecurityLevel success');
-                expect(data == factory.SecurityLevel.S2).assertTrue();
-            }).catch((err) => {
-                console.log('testSingleKvStoreGetSecurityLevel001 getSecurityLevel fail ' + err);
-                expect(null).assertFail();
-            });
-        }catch(e) {
-            console.log('testSingleKvStoreGetSecurityLevel001 e ' + e);
-            expect(null).assertFail();
-        }
-        done();
-    })
+    // it('testSingleKvStoreGetSecurityLevel001', 0, async function (done) {
+    //     console.log('testSingleKvStoreGetSecurityLevel001');
+    //     try {
+    //         await kvStore.getSecurityLevel().then((data) => {
+    //             console.log('testSingleKvStoreGetSecurityLevel001 getSecurityLevel success');
+    //             expect(data == factory.SecurityLevel.S2).assertTrue();
+    //         }).catch((err) => {
+    //             console.log('testSingleKvStoreGetSecurityLevel001 getSecurityLevel fail ' + err);
+    //             expect(null).assertFail();
+    //         });
+    //     }catch(e) {
+    //         console.log('testSingleKvStoreGetSecurityLevel001 e ' + e);
+    //         expect(null).assertFail();
+    //     }
+    //     done();
+    // })
 
     /**
      * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETSECURITYLEVEL_0200
