@@ -1889,20 +1889,20 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.name [JS-API8]SingleKvStore.GetSecurityLevel()
      * @tc.desc Test Js Api SingleKvStore.GetSecurityLevel() testcase 101
      */
-    it('testSingleKvStoreGetSecurityLevel101', 0, async function (done) {
-        console.log('testSingleKvStoreGetSecurityLevel101');
-        try {
-            await kvStore.getSecurityLevel(function (err,data) {
-                console.log('testSingleKvStoreGetSecurityLevel101 getSecurityLevel success');
-                expect(data == factory.SecurityLevel.S2).assertTrue();
-                done();
-            });
-        }catch(e) {
-            console.log('testSingleKvStoreGetSecurityLevel101 e ' + e);
-            expect(null).assertFail();
-            done();
-        }
-    })
+    // it('testSingleKvStoreGetSecurityLevel101', 0, async function (done) {
+    //     console.log('testSingleKvStoreGetSecurityLevel101');
+    //     try {
+    //         await kvStore.getSecurityLevel(function (err,data) {
+    //             console.log('testSingleKvStoreGetSecurityLevel101 getSecurityLevel success');
+    //             expect(data == factory.SecurityLevel.S2).assertTrue();
+    //             done();
+    //         });
+    //     }catch(e) {
+    //         console.log('testSingleKvStoreGetSecurityLevel101 e ' + e);
+    //         expect(null).assertFail();
+    //         done();
+    //     }
+    // })
 
     /**
      * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETSECURITYLEVEL_1020
