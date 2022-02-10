@@ -12,14 +12,22 @@
 # limitations under the License.
 
 import("//test/xts/tools/lite/build/suite_lite.gni")
-hctest_suite("ActsBundleMgrTest") {
+hctest_suite("ActsDsoftbusMgrTest") {
   suite_name = "acts"
-  sources = [ "src/bundle_mgr_test.c" ]
+  sources = [
+    "src/discovery_service_test.c",
+    "src/session_test.c",
+    "src/softbus_bus_center_test.c",
+  ]
 
   include_dirs = [
-    "${aafwk_lite_path}/interfaces/kits/want_lite",
-    "${appexecfwk_lite_path}/interfaces/kits/bundle_lite/slite",
-    "${appexecfwk_lite_path}/interfaces/kits/bundle_lite",
+    "//foundation/communication/dsoftbus/interfaces/kits/transport",
+    "//foundation/communication/dsoftbus/interfaces/kits/bus_center",
+    "//foundation/communication/dsoftbus/interfaces/kits/common",
+    "//foundation/communication/dsoftbus/core/common/include",
+    "//foundation/communication/dsoftbus/interfaces/kits/discovery",
+    "//foundation/communication/dsoftbus/adapter/common/include",
+    "//foundation/communication/dsoftbus/adapter/default_config/spec_config",
   ]
   cflags = [ "-Wno-error" ]
 }

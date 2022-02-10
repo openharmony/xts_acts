@@ -22,6 +22,7 @@
 #include "ability_manager.h"
 #include "want.h"
 
+static int32_t g_errorCode = -1;
 
 /**
 * @brief  register a test suit named AbilityMgrTestSuite
@@ -189,6 +190,51 @@ LITE_TEST_CASE(AbilityMgrTestSuite, testSetWantDateIllegal, Function | MediumTes
     TEST_ASSERT_EQUAL_STRING((char*)(want.data), NULL);
     TEST_ASSERT_FALSE(want.dataLength);
     printf("------end testSetWantDateIllegal------\n");
+}
+
+/**
+ * @tc.number    : SUB_AAFWK_ABILITY_0008
+ * @tc.name      : testStartAbility parameter illegal test
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+LITE_TEST_CASE(AbilityMgrTestSuite, testStartAbilityIllegal, Function | MediumTest | Level2)
+{
+    printf("------start testStartAbilityIllegal------\n");
+    int result = StartAbility(NULL);
+    printf("ret is %d \n", result);
+    int expect = 8;
+    TEST_ASSERT_TRUE(result == expect);
+    printf("------end testStartAbilityIllegal------\n");
+}
+
+/**
+ * @tc.number    : SUB_AAFWK_ABILITY_0008
+ * @tc.name      : testSetIntParam parameter illegal test
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+LITE_TEST_CASE(AbilityMgrTestSuite, testSetIntParamIllegal, Function | MediumTest | Level2)
+{
+    printf("------start testSetIntParamIllegal------\n");
+    int result = SetIntParam(NULL, NULL, 0, 0);
+    printf("ret is %d \n", result);
+    int expect = 0;
+    TEST_ASSERT_TRUE(result == expect);
+    printf("------end testSetIntParamIllegal------\n");
+}
+
+/**
+ * @tc.number    : SUB_AAFWK_ABILITY_0009
+ * @tc.name      : testSetStrParam parameter illegal test
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+LITE_TEST_CASE(AbilityMgrTestSuite, testSetStrParamIllegal, Function | MediumTest | Level2)
+{
+    printf("------start testSetStrParamIllegal------\n");
+    int result = SetStrParam(NULL, NULL, 0, NULL, 0);
+    printf("ret is %d \n", result);
+    int expect = 0;
+    TEST_ASSERT_TRUE(result == expect);
+    printf("------end testSetStrParamIllegal------\n");
 }
 
 RUN_TEST_SUITE(AbilityMgrTestSuite);
