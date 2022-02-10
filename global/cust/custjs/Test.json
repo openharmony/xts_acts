@@ -13,14 +13,17 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "mkdir -p /system/etc/custxml/",
+                "mkdir -p /sys-prod/etc/custxml/",
+                "touch /system/etc/custxml/system.xml",
+                "touch /system/etc/custxml/both.xml",
+                "touch /sys-prod/etc/custxml/both.xml",
+                "touch /sys-prod/etc/custxml/user.xml"
+            ]
         }
-        "run-command": [
-            "mkdir -p /system/etc/custxml/",
-            "mkdir -p /sys-prod/etc/custxml/",
-            "touch /system/etc/custxml/system.xml",
-            "touch /system/etc/custxml/both.xml",
-            "touch /sys-prod/etc/custxml/both.xml",
-            "touch /sys-prod/etc/custxml/user.xml"
-        ]
     ]
 }
