@@ -16,8 +16,8 @@ import osAccount from '@ohos.account.osAccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 const TIMEOUT = 1000;
-const ERR_OSACCOUNT_KIT_IS_OS_ACCOUNT_ACTIVED_ERROR = 4587545;
-const ERR_OSACCOUNT_KIT_IS_OS_ACCOUNT_VERIFIED_ERROR = 4587548;
+const ERR_OSACCOUNT_KIT_IS_OS_ACCOUNT_ACTIVED_ERROR = 4587542;
+const ERR_OSACCOUNT_KIT_IS_OS_ACCOUNT_VERIFIED_ERROR = 4587545;
 describe('ActsOsAccountThirdPartyTest', function () {
 
     /*
@@ -33,7 +33,7 @@ describe('ActsOsAccountThirdPartyTest', function () {
             console.debug("====>getDistributedVirtualDeviceId err:" + JSON.stringify(err));
             console.debug("====>getDistributedVirtualDeviceId deviceId:" + deviceId);
             expect(err.code).assertEqual(0);
-            expect(deviceId).assertEqual("0");
+            expect(deviceId).assertEqual("");
             console.debug("====>ActsOsAccountDeviceId_0100 end====");
             done();
         })
@@ -57,7 +57,7 @@ describe('ActsOsAccountThirdPartyTest', function () {
             done();
         }
         console.debug("====>getDistributedVirtualDeviceId:" + deviceId);
-        expect(deviceId).assertEqual("0");
+        expect(deviceId).assertEqual("");
         console.debug("====>ActsOsAccountDeviceId_0200 end====");
         done();
     })

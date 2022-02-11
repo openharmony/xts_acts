@@ -17,7 +17,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 const TIMEOUT = 1000;
 const OSACCOUNTMAXNUMBER = 999;
-const ERR_OSACCOUNT_KIT_QUERY_OS_ACCOUNT_BY_ID_ERROR = 4587556;
+const ERR_OSACCOUNT_KIT_QUERY_OS_ACCOUNT_BY_ID_ERROR = 4587553;
 describe('ActsOsAccountSystemTest', function () {
 
     /*
@@ -377,7 +377,7 @@ describe('ActsOsAccountSystemTest', function () {
 
     /*
      * @tc.number  : ActsOsAccountQuery_1600
-     * @tc.name    : queryMaxOsAccountNumber callback
+     * @tc.name    : queryMaxOsAccountNumber promise
      * @tc.desc    : Query the maximum number of users that can be created on the device
      */
     it('ActsOsAccountQuery_1600', 0, async function (done) {
@@ -404,12 +404,12 @@ describe('ActsOsAccountSystemTest', function () {
             console.debug("====>queryCurrentOsAccount err:" + JSON.stringify(err));
             console.debug("====>queryCurrentOsAccount data:" + JSON.stringify(data));
             expect(err.code).assertEqual(0);
-            expect(data.localId).assertEqual(0);
+            expect(data.localId).assertEqual(100);
             expect(data.type.ADMIN).assertEqual(0);
             var serialNumberStr = data.serialNumber.toString();
             var serialIntercept = serialNumberStr.substring(8);
             console.debug("====>truncate the last eight characters: " + serialIntercept);
-            expect(serialIntercept).assertEqual("00000000");
+            expect(serialIntercept).assertEqual("00000001");
             expect(data.isCreateCompleted).assertTrue();
             console.debug("====>ActsOsAccountQuery_1700 end====");
             done();
@@ -427,12 +427,12 @@ describe('ActsOsAccountSystemTest', function () {
         console.debug("====>get os AccountManager finish====");
         var data = await AccountManager.queryCurrentOsAccount();
         console.debug("====>queryCurrentOsAccount data:" + JSON.stringify(data));
-        expect(data.localId).assertEqual(0);
+        expect(data.localId).assertEqual(100);
         expect(data.type.ADMIN).assertEqual(0);
         var serialNumberStr = data.serialNumber.toString();
         var serialIntercept = serialNumberStr.substring(8);
         console.debug("====>truncate the last eight characters: " + serialIntercept);
-        expect(serialIntercept).assertEqual("00000000");
+        expect(serialIntercept).assertEqual("00000001");
         expect(data.isCreateCompleted).assertTrue();
         console.debug("====>ActsOsAccountQuery_1800 end====");
         done();
@@ -462,7 +462,7 @@ describe('ActsOsAccountSystemTest', function () {
                     console.debug("====>queryCurrentOsAccount err:" + JSON.stringify(err));
                     console.debug("====>queryCurrentOsAccount data:" + JSON.stringify(currentOsInfo));
                     expect(err.code).assertEqual(0);
-                    expect(currentOsInfo.localId).assertEqual(0);
+                    expect(currentOsInfo.localId).assertEqual(100);
                     AccountManager.removeOsAccount(createLocalId, (err)=>{
                         console.debug("====>remove localId: " + createLocalId + " err:" + JSON.stringify(err));
                         expect(err.code).assertEqual(0);
@@ -491,7 +491,7 @@ describe('ActsOsAccountSystemTest', function () {
         await AccountManager.activateOsAccount(createLocalId);
         var currentOsInfo = await AccountManager.queryCurrentOsAccount();
         console.debug("====>queryCurrentOsAccount:" + JSON.stringify(currentOsInfo));
-        expect(currentOsInfo.localId).assertEqual(0);
+        expect(currentOsInfo.localId).assertEqual(100);
         await AccountManager.removeOsAccount(createLocalId);
         console.debug("====>ActsOsAccountQuery_2000 end====");
         done();

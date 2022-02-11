@@ -16,7 +16,7 @@ import osaccount from '@ohos.account.osAccount'
 import bundle from '@ohos.bundle'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-const ERR_OSACCOUNT_KIT_GET_OS_ACCOUNT_LOCAL_ID_FROM_UID_ERROR = 4587551;
+const ERR_OS_ACCOUNT_SERVICE_MANAGER_BAD_UID_ERR = 4653057;
 describe('ActsOsAccountThirdPartyTest', function () {
 
     /*
@@ -36,7 +36,7 @@ describe('ActsOsAccountThirdPartyTest', function () {
             console.debug("====>get localId err: " + JSON.stringify(err));
             console.debug("====>localId obtained by uid:" + localId);
             expect(err.code).assertEqual(0);
-            expect(localId).assertEqual(0);
+            expect(localId).assertEqual(100);
             console.debug("====>ActsOsAccountGetIdFormUid_0100 end====");
             done();
         });
@@ -57,7 +57,7 @@ describe('ActsOsAccountThirdPartyTest', function () {
         console.debug("====>obtained uid:" + uid);
         var localId = await osAccountManager.getOsAccountLocalIdFromUid(uid);
         console.debug("====>localId obtained by uid:" + localId);
-        expect(localId).assertEqual(0);
+        expect(localId).assertEqual(100);
         console.debug("====>ActsOsAccountGetIdFormUid_0200 end====");
         done();
     });
@@ -75,7 +75,7 @@ describe('ActsOsAccountThirdPartyTest', function () {
         osAccountManager.getOsAccountLocalIdFromUid(incorrectUid, (err, localId)=>{
             console.debug("====>get localId err: " + JSON.stringify(err));
             console.debug("====>localId obtained by uid:" + localId);
-            expect(err.code).assertEqual(ERR_OSACCOUNT_KIT_GET_OS_ACCOUNT_LOCAL_ID_FROM_UID_ERROR);
+            expect(err.code).assertEqual(ERR_OS_ACCOUNT_SERVICE_MANAGER_BAD_UID_ERR);
             expect(localId).assertEqual(0);
             console.debug("====>ActsOsAccountGetIdFormUid_0300 end====");
             done();
@@ -96,7 +96,7 @@ describe('ActsOsAccountThirdPartyTest', function () {
             await osAccountManager.getOsAccountLocalIdFromUid(incorrectUid);
         }catch(err){
             console.debug("====>get localId by uid err:"  +JSON.stringify(err));
-            expect(err.code).assertEqual(ERR_OSACCOUNT_KIT_GET_OS_ACCOUNT_LOCAL_ID_FROM_UID_ERROR);
+            expect(err.code).assertEqual(ERR_OS_ACCOUNT_SERVICE_MANAGER_BAD_UID_ERR);
             console.debug("====>ActsOsAccountGetIdFormUid_0400 end====");
             done();
         }
@@ -115,7 +115,7 @@ describe('ActsOsAccountThirdPartyTest', function () {
         osAccountManager.getOsAccountLocalIdFromUid(incorrectUid, (err, localId)=>{
             console.debug("====>get localId err: " + JSON.stringify(err));
             console.debug("====>localId obtained by uid:" + localId);
-            expect(err.code).assertEqual(ERR_OSACCOUNT_KIT_GET_OS_ACCOUNT_LOCAL_ID_FROM_UID_ERROR);
+            expect(err.code).assertEqual(ERR_OS_ACCOUNT_SERVICE_MANAGER_BAD_UID_ERR);
             expect(localId).assertEqual(0);
             console.debug("====>ActsOsAccountGetIdFormUid_0500 end====");
             done();
@@ -136,7 +136,7 @@ describe('ActsOsAccountThirdPartyTest', function () {
             await osAccountManager.getOsAccountLocalIdFromUid(incorrectUid);
         }catch(err){
             console.debug("====>get localId by uid err:"  +JSON.stringify(err));
-            expect(err.code).assertEqual(ERR_OSACCOUNT_KIT_GET_OS_ACCOUNT_LOCAL_ID_FROM_UID_ERROR);
+            expect(err.code).assertEqual(ERR_OS_ACCOUNT_SERVICE_MANAGER_BAD_UID_ERR);
             console.debug("====>ActsOsAccountGetIdFormUid_0600 end====");
             done();
         }
@@ -155,7 +155,7 @@ describe('ActsOsAccountThirdPartyTest', function () {
             console.debug("====>get localId err: " + JSON.stringify(err));
             console.debug("====>localId obtained by process:" + localId);
             expect(err.code).assertEqual(0);
-            expect(localId).assertEqual(0);
+            expect(localId).assertEqual(100);
             console.debug("====>ActsOsAccountGetIdFormProcess_0100 end====");
             done();
         });
@@ -172,7 +172,7 @@ describe('ActsOsAccountThirdPartyTest', function () {
         console.debug("====>get AccountManager finish====");
         var localId = await osAccountManager.getOsAccountLocalIdFromProcess();
         console.debug("====>localId obtained by process:" + localId);
-        expect(localId).assertEqual(0);
+        expect(localId).assertEqual(100);
         console.debug("====>ActsOsAccountGetIdFormProcess_0200 end====");
         done();
     });
