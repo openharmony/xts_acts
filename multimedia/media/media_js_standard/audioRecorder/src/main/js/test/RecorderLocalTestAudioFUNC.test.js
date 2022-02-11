@@ -180,7 +180,6 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-       
     it('SUB_MEDIA_RECORDER_CODEC_AAC_0100', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test1.m4a';
         initAudioRecorder();
@@ -197,12 +196,11 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-       
     it('SUB_MEDIA_RECORDER_CODEC_AAC_0210', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test2.m4a';
         audioConfig.numberOfChannels = CHANNEL_ONE;
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -215,12 +213,11 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-       
     it('SUB_MEDIA_RECORDER_CODEC_AAC_0220', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test3.m4a';
         audioConfig.numberOfChannels = CHANNEL_TWO;
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -233,13 +230,12 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-       
     it('SUB_MEDIA_RECORDER_CODEC_AAC_0310', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test4.m4a';
         audioConfig.audioSampleRate = 8000; // samplerate 8000
         audioConfig.numberOfChannels = CHANNEL_TWO;
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -252,14 +248,13 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-       
     it('SUB_MEDIA_RECORDER_CODEC_AAC_0320', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test5.mp4';
         audioConfig.audioSampleRate = 32000; // samplerate 32000
         audioConfig.numberOfChannels = CHANNEL_ONE;
         audioConfig.fileFormat = FORMAT_MP4;
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -272,14 +267,13 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-       
     it('SUB_MEDIA_RECORDER_CODEC_AAC_0330', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test6.mp4';
         audioConfig.audioSampleRate = 44100; // samplerate 44100
         audioConfig.numberOfChannels = CHANNEL_TWO;
         audioConfig.fileFormat = FORMAT_MP4;
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -292,14 +286,13 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-       
     it('SUB_MEDIA_RECORDER_CODEC_AAC_0340', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test7.m4a';
         audioConfig.audioSampleRate = 64000; // samplerate 64000
         audioConfig.numberOfChannels = CHANNEL_ONE;
         audioConfig.fileFormat = FORMAT_M4A;
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -312,14 +305,13 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-       
     it('SUB_MEDIA_RECORDER_CODEC_AAC_0340', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test8.m4a';
         audioConfig.audioSampleRate = 96000; // samplerate 96000
         audioConfig.numberOfChannels = CHANNEL_TWO;
         audioConfig.fileFormat = FORMAT_M4A;
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -332,7 +324,6 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-       
     it('SUB_MEDIA_RECORDER_CODEC_AAC_0410', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test9.mp4';
         audioConfig.audioSampleRate = 22050; // samplerate 22050
@@ -340,7 +331,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         audioConfig.numberOfChannels = CHANNEL_TWO;
         audioConfig.fileFormat = FORMAT_MP4;
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -353,7 +344,6 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-       
     it('SUB_MEDIA_RECORDER_CODEC_AAC_0420', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test10.mp4';
         audioConfig.audioSampleRate = 44100; // samplerate 44100
@@ -361,7 +351,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         audioConfig.numberOfChannels = CHANNEL_ONE;
         audioConfig.fileFormat = FORMAT_MP4;
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -374,7 +364,6 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-       
     it('SUB_MEDIA_RECORDER_CODEC_AAC_0430', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test11.m4a';
         audioConfig.audioSampleRate = 44100; // samplerate 44100
@@ -382,7 +371,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         audioConfig.numberOfChannels = CHANNEL_ONE;
         audioConfig.fileFormat = FORMAT_M4A;
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -395,7 +384,6 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-       
     it('SUB_MEDIA_RECORDER_CODEC_AAC_0440', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test12.m4a';
         audioConfig.audioSampleRate = 44100; // samplerate 44100
@@ -403,7 +391,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         audioConfig.numberOfChannels = CHANNEL_TWO;
         audioConfig.fileFormat = FORMAT_M4A;
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -416,7 +404,6 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-       
     it('SUB_MEDIA_RECORDER_CODEC_AAC_0450', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test13.m4a';
         audioConfig.audioSampleRate = 44100; // samplerate 44100
@@ -424,7 +411,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         audioConfig.numberOfChannels = CHANNEL_TWO;
         audioConfig.fileFormat = FORMAT_M4A;
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -436,8 +423,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
-    */
-       
+    */ 
     it('SUB_MEDIA_RECORDER_FORMAT_MP4_0200', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test14.mp4';
         audioConfig.audioEncodeBitRate = 22050; // samplerate 22050
@@ -445,7 +431,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         audioConfig.fileFormat = FORMAT_MP4;
         audioConfig.numberOfChannels = CHANNEL_TWO;
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -458,7 +444,6 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-       
     it('SUB_MEDIA_RECORDER_FORMAT_MP4_0200', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test15.m4a';
         audioConfig.audioEncodeBitRate = 22050; // samplerate 22050
@@ -466,7 +451,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         audioConfig.fileFormat = FORMAT_M4A;
         audioConfig.numberOfChannels = CHANNEL_TWO;
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -479,12 +464,46 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-       
     it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_0100', 0, async function (done) {
         audioConfig.uri = BASIC_PATH + 'test16.m4a';
         audioConfig.fileFormat = FORMAT_M4A;
         initAudioRecorder();
         let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
+        setCallback(mySteps, done);
+        audioRecorder.prepare(audioConfig);
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_0200
+        * @tc.name      : 002.pause
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_0200', 0, async function (done) {
+        audioConfig.uri = BASIC_PATH + 'test17.m4a';
+        audioConfig.fileFormat = FORMAT_M4A;
+        initAudioRecorder();
+        let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
+        setCallback(mySteps, done);
+        audioRecorder.prepare(audioConfig);
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_0300
+        * @tc.name      : 003.pause->resume
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_0300', 0, async function (done) {
+        audioConfig.uri = BASIC_PATH + 'test18.m4a';
+        audioConfig.fileFormat = FORMAT_M4A;
+        initAudioRecorder();
+        let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, RESUME_STATE,
+            STOP_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -497,12 +516,101 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-       
     it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_0500', 0, async function (done) {
-        audioConfig.uri = BASIC_PATH + 'test17.m4a';
+        audioConfig.uri = BASIC_PATH + 'test19.m4a';
         audioConfig.fileFormat = FORMAT_M4A;
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, RESET_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, RESET_STATE, RELEASE_STATE, END_STATE);
+        setCallback(mySteps, done);
+        audioRecorder.prepare(audioConfig);
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_0600
+        * @tc.name      : 006.pause->resume->pause
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_0600', 0, async function (done) {
+        audioConfig.uri = BASIC_PATH + 'test20.m4a';
+        audioConfig.fileFormat = FORMAT_M4A;
+        initAudioRecorder();
+        let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, RESUME_STATE, PAUSE_STATE,
+            STOP_STATE, RELEASE_STATE, END_STATE);
+        setCallback(mySteps, done);
+        audioRecorder.prepare(audioConfig);
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_0700
+        * @tc.name      : 007.pause->stop->reset
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_0700', 0, async function (done) {
+        audioConfig.uri = BASIC_PATH + 'test21.m4a';
+        audioConfig.fileFormat = FORMAT_M4A;
+        initAudioRecorder();
+        let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, STOP_STATE,
+            RESET_STATE, RELEASE_STATE, END_STATE);
+        setCallback(mySteps, done);
+        audioRecorder.prepare(audioConfig);
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_0800
+        * @tc.name      : 008.pause->resume->stop->reset
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_0800', 0, async function (done) {
+        audioConfig.uri = BASIC_PATH + 'test22.m4a';
+        audioConfig.fileFormat = FORMAT_M4A;
+        initAudioRecorder();
+        let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, RESUME_STATE, STOP_STATE,
+            RESET_STATE, RELEASE_STATE, END_STATE);
+        setCallback(mySteps, done);
+        audioRecorder.prepare(audioConfig);
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_0900
+        * @tc.name      : 009.stop->reset->pause->resume->stop->reset
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_0900', 0, async function (done) {
+        audioConfig.uri = BASIC_PATH + 'test23.m4a';
+        audioConfig.fileFormat = FORMAT_M4A;
+        initAudioRecorder();
+        let mySteps = new Array(PRE_STATE, START_STATE, RESET_STATE, PRE_STATE, START_STATE,
+            PAUSE_STATE, RESUME_STATE, STOP_STATE, RESET_STATE, RELEASE_STATE, END_STATE);
+        setCallback(mySteps, done);
+        audioRecorder.prepare(audioConfig);
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_1000
+        * @tc.name      : 010.stop->reset->pause->stop->reset
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_1000', 0, async function (done) {
+        audioConfig.uri = BASIC_PATH + 'test24.m4a';
+        audioConfig.fileFormat = FORMAT_M4A;
+        initAudioRecorder();
+        let mySteps = new Array(PRE_STATE, START_STATE, RESET_STATE, PRE_STATE, START_STATE,
+            PAUSE_STATE, STOP_STATE, RESET_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -515,13 +623,48 @@ describe('RecorderLocalTestAudioFUNC', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-       
     it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_1100', 0, async function (done) {
-        audioConfig.uri = BASIC_PATH + 'test18.mp4';
+        audioConfig.uri = BASIC_PATH + 'test25.mp4';
         audioConfig.fileFormat = FORMAT_MP4;
         initAudioRecorder();
         let mySteps = new Array(PRE_STATE, START_STATE, RESET_STATE, PRE_STATE,
             START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
+        setCallback(mySteps, done);
+        audioRecorder.prepare(audioConfig);
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_1200
+        * @tc.name      : 012.start->pause->start(error)
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_1200', 0, async function (done) {
+        audioConfig.uri = BASIC_PATH + 'test26.mp4';
+        audioConfig.fileFormat = FORMAT_MP4;
+        initAudioRecorder();
+        let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, START_STATE, ERROR_STATE,
+            STOP_STATE, RELEASE_STATE, END_STATE);
+        setCallback(mySteps, done);
+        audioRecorder.prepare(audioConfig);
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_1300
+        * @tc.name      : 013.start->stop->pause(error)
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_1300', 0, async function (done) {
+        audioConfig.uri = BASIC_PATH + 'test27.mp4';
+        audioConfig.fileFormat = FORMAT_MP4;
+        initAudioRecorder();
+        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, PAUSE_STATE, ERROR_STATE,
+            RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
