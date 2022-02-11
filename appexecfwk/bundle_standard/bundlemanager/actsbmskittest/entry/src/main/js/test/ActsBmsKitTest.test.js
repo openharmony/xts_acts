@@ -20,7 +20,7 @@ import commonEvent from '@ohos.commonevent'
 
 const STRESSLEVEL = 20;
 const BUNDLE_NAME = 'com.example.actsbmskittest';
-const PERMISSION_NAME = 'com.permission.PERMISSION_A';
+const PERMISSION_NAME = 'ohos.permission.GET_BUNDLE_INFO_PRIVILEGED';
 const START_ABILITY_TIMEOUT = 3000;
 var subscriberInfo_0100 = {
     events: ['ACTS_Third1_Publish_CommonEvent'],

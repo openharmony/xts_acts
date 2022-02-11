@@ -63,11 +63,6 @@
         "name": "com.permission.CAMERA",
         "grantMode": "user_grant",
         "availableScope": ["signature"]
-      },
-      {
-        "name": "com.permission.PERMISSION_A",
-        "grantMode": "system_grant",
-        "availableScope": ["signature"]
       }
     ],
     "reqPermissions": [
@@ -98,16 +93,6 @@
       {
         "name": "com.permission.CAMERA",
         "reason": "Need open camera",
-        "usedScene": {
-          "ability": [
-            "com.example.actsbmscheckpermissiontest.MainAbility"
-          ],
-          "when": "always"
-        }
-      },
-      {
-        "name": "com.permission.PERMISSION_A",
-        "reason": "Need PERMISSION_A",
         "usedScene": {
           "ability": [
             "com.example.actsbmscheckpermissiontest.MainAbility"
