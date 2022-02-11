@@ -17,7 +17,6 @@
 import app from '@system.app'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import worker from '@ohos.worker'
-var worker = globalThis.requireNapi('worker');
 
 describe('workerTest', function () {
 
@@ -388,33 +387,33 @@ describe('workerTest', function () {
     it('worker_off_test_001', 0, function () {
         var ss = new worker.Worker("workers/worker.js");
 
-        var zhangsan_times = 0;
+        var zhangsanTimes = 0;
         ss.on("zhangsan", ()=>{
-            zhangsan_times++;
+            zhangsanTimes++;
         })
 
         ss.dispatchEvent({type: "zhangsan"})
-        expect(zhangsan_times).assertEqual(1)
+        expect(zhangsanTimes).assertEqual(1)
 
         ss.off("zhangsan")
 
         ss.dispatchEvent({type: "zhangsan"})
         ss.dispatchEvent({type: "zhangsan"})
-        expect(zhangsan_times).assertEqual(1)
+        expect(zhangsanTimes).assertEqual(1)
     })
 
     // check worker off function is ok
     it('worker_off_test_002', 0, function () {
         var ss = new worker.Worker("workers/worker.js");
 
-        var zhangsan_times = 0;
+        var zhangsanTimes = 0;
         ss.on("zhangsan", ()=>{
-            zhangsan_times++;
+            zhangsanTimes++;
         })
 
         ss.dispatchEvent({type: "zhangsan"})
         ss.dispatchEvent({type: "zhangsan"})
-        expect(zhangsan_times).assertEqual(2)
+        expect(zhangsanTimes).assertEqual(2)
 
         for (var i=0;i<3;i++)
         {
@@ -422,40 +421,40 @@ describe('workerTest', function () {
         }
 
         ss.dispatchEvent({type: "zhangsan"})
-        expect(zhangsan_times).assertEqual(2)
+        expect(zhangsanTimes).assertEqual(2)
     })
 
     // check worker removeEventListener function is ok
     it('worker_removeListener_test_001', 0, function () {
         var ss = new worker.Worker("workers/worker.js");
 
-        var zhangsan_times = 0;
+        var zhangsanTimes = 0;
         ss.addEventListener("zhangsan", ()=>{
-            zhangsan_times++;
+            zhangsanTimes++;
         })
 
         ss.dispatchEvent({type: "zhangsan"})
-        expect(zhangsan_times).assertEqual(1)
+        expect(zhangsanTimes).assertEqual(1)
 
         ss.removeEventListener("zhangsan")
 
         ss.dispatchEvent({type: "zhangsan"})
         ss.dispatchEvent({type: "zhangsan"})
-        expect(zhangsan_times).assertEqual(1)
+        expect(zhangsanTimes).assertEqual(1)
     })
 
     // check worker removeEventListener function is ok
     it('worker_removeListener_test_002', 0, function () {
         var ss = new worker.Worker("workers/worker.js");
 
-        var zhangsan_times = 0;
+        var zhangsanTimes = 0;
         ss.addEventListener("zhangsan", ()=>{
-            zhangsan_times++;
+            zhangsanTimes++;
         })
 
         ss.dispatchEvent({type: "zhangsan"})
         ss.dispatchEvent({type: "zhangsan"})
-        expect(zhangsan_times).assertEqual(2)
+        expect(zhangsanTimes).assertEqual(2)
 
         for (var i=0;i<3;i++)
         {
@@ -463,39 +462,39 @@ describe('workerTest', function () {
         }
 
         ss.dispatchEvent({type: "zhangsan"})
-        expect(zhangsan_times).assertEqual(2)
+        expect(zhangsanTimes).assertEqual(2)
     })
 
     // check worker removeAllListener function is ok
     it('worker_removeListener_test_003', 0, function () {
         var ss = new worker.Worker("workers/worker.js");
 
-        var zhangsan_times = 0;
+        var zhangsanTimes = 0;
         ss.addEventListener("zhangsan", ()=>{
-            zhangsan_times++;
+            zhangsanTimes++;
         })
 
-        var lisi_times = 0;
+        var lisiTimes = 0;
         ss.addEventListener("lisi", ()=>{
-            lisi_times++;
+            lisiTimes++;
         })
 
         ss.dispatchEvent({type: "zhangsan"})
         ss.dispatchEvent({type: "zhangsan"})
-        expect(zhangsan_times).assertEqual(2)
+        expect(zhangsanTimes).assertEqual(2)
 
         ss.dispatchEvent({type: "lisi"})
         ss.dispatchEvent({type: "lisi"})
-        expect(lisi_times).assertEqual(2)
+        expect(lisiTimes).assertEqual(2)
 
         ss.removeAllListener()
         ss.dispatchEvent({type: "zhangsan"})
         ss.dispatchEvent({type: "zhangsan"})
-        expect(zhangsan_times).assertEqual(2)
+        expect(zhangsanTimes).assertEqual(2)
 
         ss.dispatchEvent({type: "lisi"})
         ss.dispatchEvent({type: "lisi"})
-        expect(lisi_times).assertEqual(2)
+        expect(lisiTimes).assertEqual(2)
     })
 
     // check parentPort.close is ok
