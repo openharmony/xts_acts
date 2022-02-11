@@ -264,9 +264,11 @@ describe('AudioDecoderReliabilityPromise', function () {
     afterEach(function() {
         console.info('afterEach case');
         if (audioDecodeProcessor != null) {
-            audioDecodeProcessor = null
+            audioDecodeProcessor.release().then(() => {
+                console.info('audioDecodeProcessor release success');
+                audioDecodeProcessor = null;
+            }, failCallback).catch(failCatch);
         }
-        wait(2000);
     })
 
     afterAll(function() {
@@ -349,6 +351,9 @@ describe('AudioDecoderReliabilityPromise', function () {
         await audioDecodeProcessor.reset().then(() => {
             console.info("case reset success");
         }, failCallback).catch(failCatch);
+        await audioDecodeProcessor.release().then(() => {
+            console.info("case release success");
+        }, failCallback).catch(failCatch);
         audioDecodeProcessor = null;
     }
 
@@ -363,9 +368,11 @@ describe('AudioDecoderReliabilityPromise', function () {
     function nextStep(mySteps, done) {
         console.info("case myStep[0]: " + mySteps[0]);
         if (mySteps[0] == END) {
-            done();
-            console.info('case to done');
-            return;
+            audioDecodeProcessor.release().then(() => {
+                console.info("case release success");
+                audioDecodeProcessor = null;
+                done();
+            }, failCallback).catch(failCatch);
         }
         switch (mySteps[0]) {
             case CONFIGURE:

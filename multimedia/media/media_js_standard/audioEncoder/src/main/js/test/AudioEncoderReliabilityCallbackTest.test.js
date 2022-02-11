@@ -83,9 +83,12 @@ describe('AudioEncoderSTTCallback', function () {
     afterEach(function() {
         console.info('afterEach case');
         if (audioEncodeProcessor != null) {
-            audioEncodeProcessor = null
+            audioEncodeProcessor.release((err) => {
+                expect(err).assertUndefined();
+                console.log("case release success");
+                audioEncodeProcessor = null;
+            })
         }
-        wait(2000);
     })
 
     afterAll(function() {
@@ -178,8 +181,12 @@ describe('AudioEncoderSTTCallback', function () {
             audioEncodeProcessor.reset((err) => {
                 expect(err).assertUndefined();
                 console.log("case reset success");
-                audioEncodeProcessor = null;
-                done();
+                audioEncodeProcessor.release((err) => {
+                    expect(err).assertUndefined();
+                    console.log("case release success");
+                    audioEncodeProcessor = null;
+                    done();
+                })
             })
         })
     }
@@ -195,9 +202,12 @@ describe('AudioEncoderSTTCallback', function () {
     function nextStep(mySteps, mediaDescription, done) {
         console.info("case myStep[0]: " + mySteps[0]);
         if (mySteps[0] == END) {
-            done();
-            console.info('case to done');
-            return;
+            audioEncodeProcessor.release((err) => {
+                expect(err).assertUndefined();
+                console.log("case release success");
+                audioEncodeProcessor = null;
+                done();
+            })
         }
         switch (mySteps[0]) {
             case CONFIGURE:

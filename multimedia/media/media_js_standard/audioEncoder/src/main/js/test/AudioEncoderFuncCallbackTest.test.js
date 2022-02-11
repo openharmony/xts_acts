@@ -21,6 +21,7 @@ describe('AudioEncoderFuncCallback', function () {
     const AUDIOPATH =  '/data/media/S32LE.pcm';
     const AUDIOPATH2 =  '/data/media/S32LE_2.pcm';
     const BASIC_PATH = '/data/media/results/encode_func_';
+    let audioEncodeProcessor;
     let readStreamSync;
     let eosframenum = 0;
     let stopAtEOS = false;
@@ -44,6 +45,7 @@ describe('AudioEncoderFuncCallback', function () {
 
     beforeEach(function() {
         console.info('beforeEach case');
+        audioEncodeProcessor = null;
         readStreamSync = undefined;
         eosframenum = 0;
         stopAtEOS = false;
@@ -63,7 +65,13 @@ describe('AudioEncoderFuncCallback', function () {
 
     afterEach(function() {
         console.info('afterEach case');
-        wait(2000);
+        if (audioEncodeProcessor != null) {
+            audioEncodeProcessor.release((err) => {
+                expect(err).assertUndefined();
+                console.log("case release success");
+                audioEncodeProcessor = null;
+            })
+        }
     })
 
     afterAll(function() {
@@ -140,14 +148,14 @@ describe('AudioEncoderFuncCallback', function () {
         view[6] = 0xFC;
     }
 
-    async function stopWork(audioEncodeProcessor) {
+    async function stopWork() {
         audioEncodeProcessor.stop((err) => {
             expect(err).assertUndefined();
             console.info("case stop success")
         })
     }
 
-    async function resetWork(audioEncodeProcessor) {
+    async function resetWork() {
         audioEncodeProcessor.reset((err) => {
             expect(err).assertUndefined();
             console.info("case reset success");
@@ -157,7 +165,7 @@ describe('AudioEncoderFuncCallback', function () {
         })
     }
 
-    async function flushWork(audioEncodeProcessor) {
+    async function flushWork() {
         audioEncodeProcessor.flush((err) => {
             expect(err).assertUndefined();
             console.info("case flush at inputeos success");
@@ -167,15 +175,18 @@ describe('AudioEncoderFuncCallback', function () {
         })
     }
 
-    async function doneWork(audioEncodeProcessor, done) {
+    async function doneWork(done) {
         audioEncodeProcessor.stop((err) => {
             expect(err).assertUndefined();
             console.info("case stop success");
             audioEncodeProcessor.reset((err) => {
                 expect(err).assertUndefined();
-                console.log("case reset success");
-                audioEncodeProcessor = null;
-                done();
+                audioEncodeProcessor.release((err) => {
+                    expect(err).assertUndefined();
+                    console.log("case release success");
+                    audioEncodeProcessor = null;
+                    done();
+                })
             })
         })
     }
@@ -188,7 +199,7 @@ describe('AudioEncoderFuncCallback', function () {
         for(let t = Date.now(); Date.now() - t <= time;);
     }
 
-    async function enqueueAllInputs(audioEncodeProcessor, queue) {
+    async function enqueueAllInputs(queue) {
         while (queue.length > 0 && !sawInputEOS) {
             let inputobject = queue.shift();
             if (frameCnt == eosframenum || frameCnt == ES_LENGTH + 1) {
@@ -213,19 +224,19 @@ describe('AudioEncoderFuncCallback', function () {
         }
     }
 
-    async function dequeueAllOutputs(audioEncodeProcessor, queue, savepath, done) {
+    async function dequeueAllOutputs(queue, savepath, done) {
         while (queue.length > 0 && !sawOutputEOS) {
             let outputobject = queue.shift();
             if (outputobject.flags == 1) {
                 sawOutputEOS = true;
                 if (stopAtEOS) {
-                    await stopWork(audioEncodeProcessor);
+                    await stopWork();
                 } else if (resetAtEOS) {
-                    await resetWork(audioEncodeProcessor);
+                    await resetWork();
                 } else if (flushAtEOS) {
-                    await flushWork(audioEncodeProcessor);
+                    await flushWork();
                 } else if (workdoneAtEOS) {
-                    await doneWork(audioEncodeProcessor, done);
+                    await doneWork(done);
                 } else {
                     console.info("sawOutputEOS = true");
                 }
@@ -241,12 +252,12 @@ describe('AudioEncoderFuncCallback', function () {
         }
     }
 
-    function setCallback(audioEncodeProcessor, savepath, done) {
+    function setCallback(savepath, done) {
         console.info('case callback');
         audioEncodeProcessor.on('inputBufferAvailable', async(inBuffer) => {
             console.info('case inputBufferAvailable');
             inputQueue.push(inBuffer);
-            await enqueueAllInputs(audioEncodeProcessor, inputQueue);
+            await enqueueAllInputs(inputQueue);
         });
         audioEncodeProcessor.on('outputBufferAvailable', async(outBuffer) => {
             console.info('case outputBufferAvailable');
@@ -259,7 +270,7 @@ describe('AudioEncoderFuncCallback', function () {
                 });
             }
             outputQueue.push(outBuffer);
-            await dequeueAllOutputs(audioEncodeProcessor, outputQueue, savepath, done);
+            await dequeueAllOutputs(outputQueue, savepath, done);
         });
         audioEncodeProcessor.on('error',(err) => {
             console.info('case error called,errName is' + err);
@@ -279,7 +290,7 @@ describe('AudioEncoderFuncCallback', function () {
     */
     it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_CALLBACK_00_0100', 0, async function (done) {
         console.info("test set EOS after last frame and reset");
-        let audioEncodeProcessor;
+
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
         let mediaDescription = {
@@ -313,7 +324,7 @@ describe('AudioEncoderFuncCallback', function () {
             audioEncodeProcessor.prepare((err) => {
                 expect(err).assertUndefined();
                 console.info(`case prepare 1`);
-                setCallback(audioEncodeProcessor, savepath, done);
+                setCallback(savepath, done);
                 eventEmitter.emit('start');
             })
         });
@@ -363,7 +374,6 @@ describe('AudioEncoderFuncCallback', function () {
     */
     it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_CALLBACK_01_0100', 0, async function (done) {
         console.info("case test set EOS manually before last frame and reset");
-        let audioEncodeProcessor;
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
         let mediaDescription = {
@@ -394,7 +404,7 @@ describe('AudioEncoderFuncCallback', function () {
             audioEncodeProcessor.prepare((err) => {
                 expect(err).assertUndefined();
                 console.info(`case prepare 1`);
-                setCallback(audioEncodeProcessor, savepath, done);
+                setCallback(savepath, done);
                 eventEmitter.emit('start');
             })
         });
@@ -422,7 +432,6 @@ describe('AudioEncoderFuncCallback', function () {
     */
     it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_CALLBACK_01_0200', 0, async function (done) {
         console.info("case test flush at running state");
-        let audioEncodeProcessor;
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
         let mediaDescription = {
@@ -452,7 +461,7 @@ describe('AudioEncoderFuncCallback', function () {
             audioEncodeProcessor.prepare((err) => {
                 expect(err).assertUndefined();
                 console.info(`case prepare 1`);
-                setCallback(audioEncodeProcessor, savepath, done);
+                setCallback(savepath, done);
                 eventEmitter.emit('start');
             })
         });
@@ -487,7 +496,6 @@ describe('AudioEncoderFuncCallback', function () {
     */
     it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_CALLBACK_01_0300', 0, async function (done) {
         console.info("case test flush at EOS state");
-        let audioEncodeProcessor;
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
         let mediaDescription = {
@@ -518,7 +526,7 @@ describe('AudioEncoderFuncCallback', function () {
             audioEncodeProcessor.prepare((err) => {
                 expect(err).assertUndefined();
                 console.info(`case prepare 1`);
-                setCallback(audioEncodeProcessor, savepath, done);
+                setCallback(savepath, done);
                 eventEmitter.emit('start');
             })
         });
@@ -546,7 +554,6 @@ describe('AudioEncoderFuncCallback', function () {
     */
     it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_CALLBACK_01_0400', 0, async function (done) {
         console.info("case test stop at running state and reset");
-        let audioEncodeProcessor;
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
         let mediaDescription = {
@@ -575,7 +582,7 @@ describe('AudioEncoderFuncCallback', function () {
             audioEncodeProcessor.prepare((err) => {
                 expect(err).assertUndefined();
                 console.info(`case prepare 1`);
-                setCallback(audioEncodeProcessor, savepath, done);
+                setCallback(savepath, done);
                 eventEmitter.emit('start');
             })
         });
@@ -599,6 +606,13 @@ describe('AudioEncoderFuncCallback', function () {
             audioEncodeProcessor.reset((err) => {
                 expect(err).assertUndefined();
                 console.info(`case reset 1`);
+                eventEmitter.emit('release');
+            })
+        });
+        eventEmitter.on('release', () => {
+            audioEncodeProcessor.release((err) => {
+                expect(err).assertUndefined();
+                console.info(`case release 1`);
                 audioEncodeProcessor = null;
                 done();
             })
@@ -621,7 +635,6 @@ describe('AudioEncoderFuncCallback', function () {
     */
     it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_CALLBACK_01_0500', 0, async function (done) {
         console.info("case test stop and restart");
-        let audioEncodeProcessor;
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
         let mediaDescription = {
@@ -651,7 +664,7 @@ describe('AudioEncoderFuncCallback', function () {
             audioEncodeProcessor.prepare((err) => {
                 expect(err).assertUndefined();
                 console.info(`case prepare 1`);
-                setCallback(audioEncodeProcessor, savepath, done);
+                setCallback(savepath, done);
                 eventEmitter.emit('start');
             })
         });
@@ -679,7 +692,7 @@ describe('AudioEncoderFuncCallback', function () {
                     expect(err).assertUndefined();
                     console.info(`restart after 2s`);
                     workdoneAtEOS = true;
-                    enqueueAllInputs(audioEncodeProcessor, inputQueue);
+                    enqueueAllInputs(inputQueue);
                 })
             })
         });
@@ -701,7 +714,6 @@ describe('AudioEncoderFuncCallback', function () {
     */
     it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_CALLBACK_01_0600', 0, async function (done) {
         console.info("case test reconfigure for new file with the same format");
-        let audioEncodeProcessor;
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
         let mediaDescription = {
@@ -738,7 +750,7 @@ describe('AudioEncoderFuncCallback', function () {
             audioEncodeProcessor.prepare((err) => {
                 expect(err).assertUndefined();
                 console.info(`case prepare 1`);
-                setCallback(audioEncodeProcessor, savepath, done);
+                setCallback(savepath, done);
                 eventEmitter.emit('start');
             })
         });

@@ -63,7 +63,6 @@ describe('AudioEncoderFuncPromise', function () {
 
     afterEach(function() {
         console.info('afterEach case');
-        wait(2000);
     })
 
     afterAll(function() {
@@ -302,6 +301,9 @@ describe('AudioEncoderFuncPromise', function () {
         for (let j = 0; j < 16; j++) {
             await array[j].reset().then(() => {
                 console.info("reset encoder " + j);
+            }, failCallback).catch(failCatch);
+            await array[j].release().then(() => {
+                console.info("case release success");
                 array[j] = null;
             }, failCallback).catch(failCatch);
         }

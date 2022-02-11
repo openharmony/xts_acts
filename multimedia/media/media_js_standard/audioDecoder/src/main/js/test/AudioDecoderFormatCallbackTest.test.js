@@ -63,7 +63,11 @@ describe('AudioDecoderFormatCallback', function () {
     afterEach(function() {
         console.info('afterEach case');
         if (audioDecodeProcessor != null) {
-            audioDecodeProcessor = null
+            audioDecodeProcessor.release((err) => {
+                expect(err).assertUndefined();
+                console.log("case release success");
+                audioDecodeProcessor = null;
+            })
         }
     })
 
@@ -99,7 +103,7 @@ describe('AudioDecoderFormatCallback', function () {
         console.log('lengthreal: ' + lengthreal);
     }
 
-    async function enqueueAllInputs(audioDecodeProcessor, queue) {
+    async function enqueueAllInputs(queue) {
         while (queue.length > 0 && !sawInputEOS) {
             let inputobject = queue.shift();
             if (frameCnt == ES_LENGTH + 1) {
@@ -136,7 +140,7 @@ describe('AudioDecoderFormatCallback', function () {
         }
     }
 
-    async function dequeueAllOutputs(audioDecodeProcessor, queue, savepath, done) {
+    async function dequeueAllOutputs(queue, savepath, done) {
         while (queue.length > 0 && !sawOutputEOS) {
             let outputobject = queue.shift();
             if (outputobject.flags == 1) {
@@ -147,8 +151,12 @@ describe('AudioDecoderFormatCallback', function () {
                     audioDecodeProcessor.reset((err) => {
                         expect(err).assertUndefined();
                         console.log("reset success");
-                        audioDecodeProcessor = null;
-                        done();
+                        audioDecodeProcessor.release((err) => {
+                            expect(err).assertUndefined();
+                            console.log("case release success");
+                            audioDecodeProcessor = null;
+                            done();
+                        })
                     })
                 })
             } else {
@@ -161,12 +169,12 @@ describe('AudioDecoderFormatCallback', function () {
         }
     }
 
-    function setCallback(audioDecodeProcessor, savepath, done) {
+    function setCallback(savepath, done) {
         console.info('case callback');
         audioDecodeProcessor.on('inputBufferAvailable', async(inBuffer) => {
             console.info("inputBufferAvailable");
             inputQueue.push(inBuffer);
-            await enqueueAllInputs(audioDecodeProcessor, inputQueue);
+            await enqueueAllInputs(inputQueue);
         });
         audioDecodeProcessor.on('outputBufferAvailable', async(outBuffer) => {
             console.info("outputBufferAvailable");
@@ -178,7 +186,7 @@ describe('AudioDecoderFormatCallback', function () {
                 })
             }
             outputQueue.push(outBuffer);
-            await dequeueAllOutputs(audioDecodeProcessor, outputQueue, savepath, done);
+            await dequeueAllOutputs(outputQueue, savepath, done);
         });
         audioDecodeProcessor.on('error',(err) => {
             console.info('case error called,errName is' + err);
@@ -287,7 +295,7 @@ describe('AudioDecoderFormatCallback', function () {
             audioDecodeProcessor.prepare((err) => {
                 expect(err).assertUndefined();
                 console.info(`case prepare 1`);
-                setCallback(audioDecodeProcessor, savepath, done);
+                setCallback(savepath, done);
                 eventEmitter.emit('start');
             })
         });
@@ -404,7 +412,7 @@ describe('AudioDecoderFormatCallback', function () {
             audioDecodeProcessor.prepare((err) => {
                 expect(err).assertUndefined();
                 console.info(`case prepare 1`);
-                setCallback(audioDecodeProcessor, savepath, done);
+                setCallback(savepath, done);
                 eventEmitter.emit('start');
             })
         });
@@ -478,7 +486,7 @@ describe('AudioDecoderFormatCallback', function () {
             audioDecodeProcessor.prepare((err) => {
                 expect(err).assertUndefined();
                 console.info(`case prepare 1`);
-                setCallback(audioDecodeProcessor, savepath, done);
+                setCallback(savepath, done);
                 eventEmitter.emit('start');
             })
         });
@@ -552,7 +560,7 @@ describe('AudioDecoderFormatCallback', function () {
             audioDecodeProcessor.prepare((err) => {
                 expect(err).assertUndefined();
                 console.info(`case prepare 1`);
-                setCallback(audioDecodeProcessor, savepath, done);
+                setCallback(savepath, done);
                 eventEmitter.emit('start');
             })
         });
@@ -613,7 +621,7 @@ describe('AudioDecoderFormatCallback', function () {
             audioDecodeProcessor.prepare((err) => {
                 expect(err).assertUndefined();
                 console.info(`case prepare 1`);
-                setCallback(audioDecodeProcessor, savepath, done);
+                setCallback(savepath, done);
                 eventEmitter.emit('start');
             })
         });
@@ -674,7 +682,7 @@ describe('AudioDecoderFormatCallback', function () {
             audioDecodeProcessor.prepare((err) => {
                 expect(err).assertUndefined();
                 console.info(`case prepare 1`);
-                setCallback(audioDecodeProcessor, savepath, done);
+                setCallback(savepath, done);
                 eventEmitter.emit('start');
             })
         });
@@ -778,7 +786,7 @@ describe('AudioDecoderFormatCallback', function () {
             audioDecodeProcessor.prepare((err) => {
                 expect(err).assertUndefined();
                 console.info(`case prepare 1`);
-                setCallback(audioDecodeProcessor, savepath, done);
+                setCallback(savepath, done);
                 eventEmitter.emit('start');
             })
         });
@@ -882,7 +890,7 @@ describe('AudioDecoderFormatCallback', function () {
             audioDecodeProcessor.prepare((err) => {
                 expect(err).assertUndefined();
                 console.info(`case prepare 1`);
-                setCallback(audioDecodeProcessor, savepath, done);
+                setCallback(savepath, done);
                 eventEmitter.emit('start');
             })
         });

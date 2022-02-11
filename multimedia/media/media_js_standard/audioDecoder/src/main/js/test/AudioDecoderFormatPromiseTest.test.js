@@ -62,8 +62,11 @@ describe('AudioDecoderFormatPromise', function () {
 
     afterEach(function() {
         console.info('afterEach case');
-        if (audioDecodeProcessor != null) {
-            audioDecodeProcessor = null
+        if (audioDecodeProcessor != null){
+            audioDecodeProcessor.release().then(() => {
+                console.info('audioDecodeProcessor release success');
+                audioDecodeProcessor = null;
+            }, failCallback).catch(failCatch);
         }
     })
 
@@ -109,7 +112,7 @@ describe('AudioDecoderFormatPromise', function () {
         console.log('lengthreal: ' + lengthreal);
     }
 
-    async function enqueueAllInputs(audioDecodeProcessor, queue) {
+    async function enqueueAllInputs(queue) {
         while (queue.length > 0 && !sawInputEOS) {
             let inputobject = queue.shift();
             if (frameCnt == ES_LENGTH + 1) {
@@ -146,7 +149,7 @@ describe('AudioDecoderFormatPromise', function () {
         }
     }
 
-    async function dequeueAllOutputs(audioDecodeProcessor, queue, savepath, done) {
+    async function dequeueAllOutputs(queue, savepath, done) {
         while (queue.length > 0 && !sawOutputEOS) {
             let outputobject = queue.shift();
             if (outputobject.flags == 1) {
@@ -157,7 +160,10 @@ describe('AudioDecoderFormatPromise', function () {
                 await audioDecodeProcessor.reset().then(() => {
                     console.log("reset success");
                 }, failCallback).catch(failCatch);
-                audioDecodeProcessor = null;
+                await audioDecodeProcessor.release().then(() => {
+                    console.info('release success');
+                    audioDecodeProcessor = null;
+                }, failCallback).catch(failCatch);
                 done();
             }
             else{
@@ -170,12 +176,12 @@ describe('AudioDecoderFormatPromise', function () {
         }
     }
 
-    function setCallback(audioDecodeProcessor, savepath, done) {
+    function setCallback(savepath, done) {
         console.info('case callback');
         audioDecodeProcessor.on('inputBufferAvailable', async(inBuffer) => {
             console.info("inputBufferAvailable");
             inputQueue.push(inBuffer);
-            await enqueueAllInputs(audioDecodeProcessor, inputQueue);
+            await enqueueAllInputs(inputQueue);
         });
         audioDecodeProcessor.on('outputBufferAvailable', async(outBuffer) => {
             console.info("outputBufferAvailable");
@@ -186,7 +192,7 @@ describe('AudioDecoderFormatPromise', function () {
                     needGetMediaDes=false;
                 }, failCallback).catch(failCatch);}
             outputQueue.push(outBuffer);
-            await dequeueAllOutputs(audioDecodeProcessor, outputQueue, savepath, done);
+            await dequeueAllOutputs(outputQueue, savepath, done);
         });
         audioDecodeProcessor.on('error',(err) => {
             console.info('case error called,errName is' + err);
@@ -285,7 +291,7 @@ describe('AudioDecoderFormatPromise', function () {
             console.log("configure success");
             readFile(AUDIOPATH1);
         }, failCallback).catch(failCatch);
-        setCallback(audioDecodeProcessor, savepath, done);
+        setCallback(savepath, done);
         await audioDecodeProcessor.prepare().then(() => {
             console.log("prepare success");
         }, failCallback).catch(failCatch);
@@ -383,7 +389,7 @@ describe('AudioDecoderFormatPromise', function () {
             console.log("configure success");
             readFile(AUDIOPATH1);
         }, failCallback).catch(failCatch);
-        setCallback(audioDecodeProcessor, savepath, done);
+        setCallback(savepath, done);
         await audioDecodeProcessor.prepare().then(() => {
             console.log("prepare success");
         }, failCallback).catch(failCatch);
@@ -439,7 +445,7 @@ describe('AudioDecoderFormatPromise', function () {
             console.log("configure success");
             readFile(AUDIOPATH2);
         }, failCallback).catch(failCatch);
-        setCallback(audioDecodeProcessor, savepath, done);
+        setCallback(savepath, done);
         await audioDecodeProcessor.prepare().then(() => {
             console.log("prepare success");
         }, failCallback).catch(failCatch);
@@ -495,7 +501,7 @@ describe('AudioDecoderFormatPromise', function () {
             console.log("configure success");
             readFile(AUDIOPATH2);
         }, failCallback).catch(failCatch);
-        setCallback(audioDecodeProcessor, savepath, done);
+        setCallback(savepath, done);
         await audioDecodeProcessor.prepare().then(() => {
             console.log("prepare success");
         }, failCallback).catch(failCatch);
@@ -536,7 +542,7 @@ describe('AudioDecoderFormatPromise', function () {
             console.log("configure success");
             readFile(AUDIOPATH3);
         }, failCallback).catch(failCatch);
-        setCallback(audioDecodeProcessor, savepath, done);
+        setCallback(savepath, done);
         await audioDecodeProcessor.prepare().then(() => {
             console.log("prepare success");
         }, failCallback).catch(failCatch);
@@ -577,7 +583,7 @@ describe('AudioDecoderFormatPromise', function () {
             console.log("configure success");
             readFile(AUDIOPATH3);
         }, failCallback).catch(failCatch);
-        setCallback(audioDecodeProcessor, savepath, done);
+        setCallback(savepath, done);
         await audioDecodeProcessor.prepare().then(() => {
             console.log("prepare success");
         }, failCallback).catch(failCatch);
@@ -662,7 +668,7 @@ describe('AudioDecoderFormatPromise', function () {
             console.log("configure success");
             readFile(AUDIOPATH4);
         }, failCallback).catch(failCatch);
-        setCallback(audioDecodeProcessor, savepath, done);
+        setCallback(savepath, done);
         await audioDecodeProcessor.prepare().then(() => {
             console.log("prepare success");
         }, failCallback).catch(failCatch);
@@ -747,7 +753,7 @@ describe('AudioDecoderFormatPromise', function () {
             console.log("configure success");
             readFile(AUDIOPATH4);
         }, failCallback).catch(failCatch);
-        setCallback(audioDecodeProcessor, savepath, done);
+        setCallback(savepath, done);
         await audioDecodeProcessor.prepare().then(() => {
             console.log("prepare success");
         }, failCallback).catch(failCatch);
