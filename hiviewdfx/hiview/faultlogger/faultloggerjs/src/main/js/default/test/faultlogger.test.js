@@ -18,31 +18,19 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe("FaultlogJsTest", function () {
     beforeAll(function() {
-        /*
-         * @tc.setup: setup invoked before all testcases
-         */
-         console.info('FaultlogJsTest beforeAll called')
+        console.info('FaultlogJsTest beforeAll called')
     })
 
     afterAll(function() {
-        /*
-         * @tc.teardown: teardown invoked after all testcases
-         */
-         console.info('FaultlogJsTest afterAll called')
+        console.info('FaultlogJsTest afterAll called')
     })
 
     beforeEach(function() {
-        /*
-         * @tc.setup: setup invoked before each testcases
-         */
-         console.info('FaultlogJsTest beforeEach called')
+        console.info('FaultlogJsTest beforeEach called')
     })
 
     afterEach(function() {
-        /*
-         * @tc.teardown: teardown invoked after each testcases
-         */
-         console.info('FaultlogJsTest afterEach called')
+        console.info('FaultlogJsTest afterEach called')
     })
 
     async function msleep(time) {
