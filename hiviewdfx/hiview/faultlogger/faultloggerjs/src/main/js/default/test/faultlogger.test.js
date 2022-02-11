@@ -53,8 +53,7 @@ describe("FaultlogJsTest", function () {
         try {
             let ret1 = faultlogger.querySelfFaultLog("faultloggertestsummary01");
             console.info("FaultlogJsException_001 ret1 == " + ret1);
-            let a = expect(ret1).assertEqual(undefined);
-            console.info('ret1 assertEqual(undefined) ' + a);
+            expect(ret1).assertEqual(undefined);
 
             let ret2 = faultlogger.querySelfFaultLog(faultlogger.FaultType.JS_CRASH, "faultloggertestsummary01");
             console.info("FaultlogJsException_001 ret2 == " + ret2);
@@ -77,7 +76,7 @@ describe("FaultlogJsTest", function () {
      * test
      *
      * @tc.name: FaultlogJsTest_002
-     * @tc.desc: 检验promise同步方式获取faultlog日志
+     * @tc.desc: 检验promise同步方式获取faultlog CPP_CRASH日志
      * @tc.require: AR000GICT2
      * @tc.author:
      */
@@ -86,17 +85,17 @@ describe("FaultlogJsTest", function () {
         try {
             let now = Date.now();
             console.info("FaultlogJsTest_002 2 + " + now);
-            let module = "faultlogtest02";
+            let module = "ohos.faultloggerjs.test";
             const loopTimes = 10;
             for (let i = 0; i < loopTimes; i++) {
                 console.info("--------FaultlogJsTest_002 3 + " + i + "----------");
-                faultlogger.addFaultLog(i, faultlogger.FaultType.JS_CRASH, module, "faultloggertestsummary02 " + i);
+                faultlogger.addFaultLog(i, faultlogger.FaultType.CPP_CRASH, module, "faultloggertestsummary02 " + i);
                 await msleep(300);
             }
             await msleep(1000);
 
             console.info("--------FaultlogJsTest_002 4" + "----------");
-            let ret = await faultlogger.querySelfFaultLog(faultlogger.FaultType.JS_CRASH);
+            let ret = await faultlogger.querySelfFaultLog(faultlogger.FaultType.CPP_CRASH);
             console.info("FaultlogJsTest_002 ret == " + ret.length);
             expect(ret.length).assertEqual(loopTimes);
             for (let i = 0; i < loopTimes; i++) {
@@ -108,6 +107,11 @@ describe("FaultlogJsTest", function () {
                     expect(false).assertTrue();
                 }
             }
+
+            console.info("--------FaultlogJsTest_002 5" + "----------");
+            ret = await faultlogger.querySelfFaultLog(faultlogger.FaultType.NO_SPECIFIC);
+            console.info("FaultlogJsTest_002 ret == " + ret.length);
+            expect(ret.length).assertEqual(loopTimes);
             done();
             return;
         } catch (err) {
@@ -122,36 +126,126 @@ describe("FaultlogJsTest", function () {
      * test
      *
      * @tc.name: FaultlogJsTest_003
-     * @tc.desc: 检验通过回调方式获取faultlog日志
+     * @tc.desc: 检验promise同步方式获取faultlog JS_CRASH日志
      * @tc.require: AR000GICT2
      * @tc.author:
      */
-    it('FaultlogJsTest_003', 0, async function (done) {
+     it('FaultlogJsTest_003', 0, async function (done) {
         console.info("---------------------------FaultlogJsTest_003----------------------------------");
         try {
             let now = Date.now();
-            console.info("FaultlogJsTest_003 start + " + now);
-            let module = "faultlogtest03";
+            console.info("FaultlogJsTest_003 2 + " + now);
+            let module = "ohos.faultloggerjs.test";
             const loopTimes = 10;
             for (let i = 0; i < loopTimes; i++) {
-                console.info("--------FaultlogJsTest_003 + " + i + "----------");
-                faultlogger.addFaultLog(i + 20,
-                    faultlogger.FaultType.JS_CRASH, module, "faultloggertestsummary03 " + i);
+                console.info("--------FaultlogJsTest_003 3 + " + i + "----------");
+                faultlogger.addFaultLog(i, faultlogger.FaultType.JS_CRASH, module, "faultloggertestsummary03 " + i);
                 await msleep(300);
             }
             await msleep(1000);
 
-            console.info("--------FaultlogJsTest_003 4----------");
+            console.info("--------FaultlogJsTest_003 4" + "----------");
+            let ret = await faultlogger.querySelfFaultLog(faultlogger.FaultType.JS_CRASH);
+            console.info("FaultlogJsTest_003 ret == " + ret.length);
+            expect(ret.length).assertEqual(loopTimes);
+            for (let i = 0; i < loopTimes; i++) {
+                console.info("faultloggertestsummary03 " + i + " fullLog.length " + ret[i].fullLog.length);
+                if (ret[i].fullLog.indexOf("faultloggertestsummary03 " + (loopTimes - 1 - i)) != -1) {
+                    console.info("FaultlogJsTest_003 " + ret[i].fullLog.length);
+                    expect(true).assertTrue();
+                } else {
+                    expect(false).assertTrue();
+                }
+            }
+            done();
+            return;
+        } catch (err) {
+            console.info("catch (err) == " + err);
+        }
+        console.info("FaultlogJsTest_003 error");
+        expect(false).assertTrue();
+        done();
+    })
+
+    /**
+     * test
+     *
+     * @tc.name: FaultlogJsTest_004
+     * @tc.desc: 检验promise同步方式获取faultlog APP_FREEZE日志
+     * @tc.require: AR000GICT2
+     * @tc.author:
+     */
+     it('FaultlogJsTest_004', 0, async function (done) {
+        console.info("---------------------------FaultlogJsTest_004----------------------------------");
+        try {
+            let now = Date.now();
+            console.info("FaultlogJsTest_004 2 + " + now);
+            let module = "ohos.faultloggerjs.test";
+            const loopTimes = 10;
+            for (let i = 0; i < loopTimes; i++) {
+                console.info("--------FaultlogJsTest_004 3 + " + i + "----------");
+                faultlogger.addFaultLog(i, faultlogger.FaultType.APP_FREEZE, module, "faultloggertestsummary04 " + i);
+                await msleep(300);
+            }
+            await msleep(1000);
+
+            console.info("--------FaultlogJsTest_004 4" + "----------");
+            let ret = await faultlogger.querySelfFaultLog(faultlogger.FaultType.APP_FREEZE);
+            console.info("FaultlogJsTest_004 ret == " + ret.length);
+            expect(ret.length).assertEqual(loopTimes);
+            for (let i = 0; i < loopTimes; i++) {
+                console.info("faultloggertestsummary04 " + i + " fullLog.length " + ret[i].fullLog.length);
+                if (ret[i].fullLog.indexOf("faultloggertestsummary04 " + (loopTimes - 1 - i)) != -1) {
+                    console.info("FaultlogJsTest_004 " + ret[i].fullLog.length);
+                    expect(true).assertTrue();
+                } else {
+                    expect(false).assertTrue();
+                }
+            }
+            done();
+            return;
+        } catch (err) {
+            console.info("catch (err) == " + err);
+        }
+        console.info("FaultlogJsTest_004 error");
+        expect(false).assertTrue();
+        done();
+    })
+
+    /**
+     * test
+     *
+     * @tc.name: FaultlogJsTest_005
+     * @tc.desc: 检验通过回调方式获取faultlog日志
+     * @tc.require: AR000GICT2
+     * @tc.author:
+     */
+    it('FaultlogJsTest_005', 0, async function (done) {
+        console.info("---------------------------FaultlogJsTest_005----------------------------------");
+        try {
+            let now = Date.now();
+            console.info("FaultlogJsTest_005 start + " + now);
+            let module = "ohos.faultloggerjs.test";
+            const loopTimes = 10;
+            for (let i = 0; i < loopTimes; i++) {
+                console.info("--------FaultlogJsTest_005 + " + i + "----------");
+                faultlogger.addFaultLog(i + 20,
+                    faultlogger.FaultType.CPP_CRASH, module, "faultloggertestsummary05 " + i);
+                await msleep(300);
+            }
+            await msleep(1000);
+
+            console.info("--------FaultlogJsTest_005 4----------");
             function queryFaultLogCallback(error, ret) {
                 if (error) {
-                    console.info('FaultlogJsTest_003  once error is ' + error);
+                    console.info('FaultlogJsTest_005  once error is ' + error);
                 } else {
-                    console.info("FaultlogJsTest_003 ret == " + ret.length);
+                    console.info("FaultlogJsTest_005 ret == " + ret.length);
                     expect(ret.length).assertEqual(loopTimes);
                     for (let i = 0; i < loopTimes; i++) {
-                        console.info("faultloggertestsummary03 " + i + " fullLog.length " + ret[i].fullLog.length);
-                        if (ret[i].fullLog.indexOf("faultloggertestsummary03 " + (loopTimes - 1 - i)) != -1) {
-                            console.info("FaultlogJsTest_003 " + ret[i].fullLog.length);
+                        console.info("faultloggertestsummary05 " + i + " fullLog.length " + ret[i].fullLog.length);
+                        if (ret[i].fullLog.indexOf("faultloggertestsummary05 " + (loopTimes - 1 - i)) != -1) {
+                            console.info("FaultlogJsTest_005 " + ret[i].fullLog.length);
                             expect(true).assertTrue();
                         } else {
                             expect(false).assertTrue();
@@ -160,12 +254,12 @@ describe("FaultlogJsTest", function () {
                 }
                 done();
             }
-            faultlogger.querySelfFaultLog(faultlogger.FaultType.JS_CRASH, queryFaultLogCallback);
+            faultlogger.querySelfFaultLog(faultlogger.FaultType.CPP_CRASH, queryFaultLogCallback);
             return;
         } catch (err) {
             console.info(err);
         }
-        console.info("FaultlogJsTest_003 error");
+        console.info("FaultlogJsTest_005 error");
         expect(false).assertTrue();
         done();
     })
