@@ -2,7 +2,7 @@
     "description": "Configuration for huks stress test",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "30000000",
+        "test-timeout": "23000000",
         "package": "com.example.huksstresstest",
         "shell-timeout": "60000"
     },
