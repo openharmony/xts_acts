@@ -166,6 +166,8 @@ describe('AudioEncoderFuncCallback', function () {
     }
 
     async function flushWork() {
+        inputQueue = [];
+        outputQueue = [];
         audioEncodeProcessor.flush((err) => {
             expect(err).assertUndefined();
             console.info("case flush at inputeos success");
@@ -290,7 +292,6 @@ describe('AudioEncoderFuncCallback', function () {
     */
     it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_CALLBACK_00_0100', 0, async function (done) {
         console.info("test set EOS after last frame and reset");
-
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
         let mediaDescription = {
@@ -356,7 +357,7 @@ describe('AudioEncoderFuncCallback', function () {
                 }
             })
         })
-        media.createAudioEncoderByName('avdec_aac', (err, processor) => {
+        media.createAudioEncoderByName('avenc_aac', (err, processor) => {
             expect(err).assertUndefined();
             console.info(`case createAudioEncoder by mime 1`);
             audioEncodeProcessor = processor;
@@ -473,6 +474,8 @@ describe('AudioEncoderFuncCallback', function () {
             })
         });
         eventEmitter.on('flush', () => {
+            inputQueue = [];
+            outputQueue = [];
             audioEncodeProcessor.flush((err) => {
                 expect(err).assertUndefined();
                 console.info(`case flush after 5s`);

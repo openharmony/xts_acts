@@ -166,6 +166,8 @@ describe('AudioEncoderFuncPromise', function () {
     }
 
     async function flushWork(audioEncodeProcessor) {
+        inputQueue = [];
+        outputQueue = [];
         await audioEncodeProcessor.flush().then(() => {
             console.info("case flush at inputeos success");
             resetParam();

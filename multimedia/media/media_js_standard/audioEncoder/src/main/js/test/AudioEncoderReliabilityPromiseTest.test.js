@@ -123,6 +123,8 @@ describe('AudioEncoderSTTPromise', function () {
         timestamp = 0;
         sawInputEOS = false;
         sawOutputEOS = false;
+        inputQueue = [];
+        outputQueue = [];
     }
 
     function createAudioEncoder(savepath, mySteps, done) {
@@ -257,6 +259,8 @@ describe('AudioEncoderSTTPromise', function () {
             case FLUSH:
                 mySteps.shift();
                 console.info(`case to flush`);
+                inputQueue = [];
+                outputQueue = [];
                 audioEncodeProcessor.flush().then(() => {
                     console.info(`case flush 1`);
                     if (flushAtEOS) {

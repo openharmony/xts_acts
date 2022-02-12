@@ -123,6 +123,8 @@ describe('AudioDecoderMultiInstances', function () {
     }
 
     async function flushWork(audioDecodeProcessor) {
+        inputQueue = [];
+        outputQueue = [];
         await audioDecodeProcessor.flush().then(() => {
             console.info("case flush at inputeos success");
             resetParam();

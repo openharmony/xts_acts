@@ -283,6 +283,8 @@ describe('AudioDecoderReliabilityCallback', function () {
         timestamp = 0;
         sawInputEOS = false;
         sawOutputEOS = false;
+        inputQueue = [];
+        outputQueue = [];
     }
 
     function createAudioDecoder(savepath, mySteps, done) {
@@ -398,6 +400,8 @@ describe('AudioDecoderReliabilityCallback', function () {
             case FLUSH:
                 mySteps.shift();
                 console.info(`case to flush`);
+                inputQueue = [];
+                outputQueue = [];
                 audioDecodeProcessor.flush((err) => {
                     expect(err).assertUndefined();
                     console.info(`case flush 1`);

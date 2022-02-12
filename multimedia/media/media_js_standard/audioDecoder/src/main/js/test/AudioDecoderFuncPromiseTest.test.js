@@ -326,6 +326,8 @@ describe('AudioDecoderFunc', function () {
     }
 
     async function flushWork() {
+        inputQueue = [];
+        outputQueue = [];
         await audioDecodeProcessor.flush().then(() => {
             console.info("case flush at inputeos success");
             resetParam();
@@ -568,6 +570,8 @@ describe('AudioDecoderFunc', function () {
             console.info("case start success");
         }, failCallback).catch(failCatch);
         await sleep(3000).then(() => {
+            inputQueue = [];
+            outputQueue = [];
             audioDecodeProcessor.flush().then(() => {
                 console.info("case flush after 5s");
             }, failCallback).catch(failCatch);

@@ -174,6 +174,8 @@ describe('AudioEncoderFuncPromise', function () {
     }
 
     async function flushWork() {
+        inputQueue = [];
+        outputQueue = [];
         await audioEncodeProcessor.flush().then(() => {
             console.info("case flush at inputeos success");
             resetParam();
@@ -427,6 +429,8 @@ describe('AudioEncoderFuncPromise', function () {
             console.info("case start success")
         }, failCallback).catch(failCatch);
         await sleep(5000).then(() => {
+            inputQueue = [];
+            outputQueue = [];
             audioEncodeProcessor.flush().then(() => {
                 console.info("case flush after 5s")
             }, failCallback).catch(failCatch);
@@ -627,7 +631,7 @@ describe('AudioEncoderFuncPromise', function () {
         }, failCallback).catch(failCatch);
         let savepath2 = BASIC_PATH + '0601.txt';
         workdoneAtEOS = true;
-        setCallback(audioEncodeProcessor, savepath2, done);
+        setCallback(savepath2, done);
         await audioEncodeProcessor.prepare().then(() => {
             console.info("prepare2 success");
         }, failCallback).catch(failCatch);

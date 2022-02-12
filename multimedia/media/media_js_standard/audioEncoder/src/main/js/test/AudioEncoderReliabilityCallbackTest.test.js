@@ -106,6 +106,8 @@ describe('AudioEncoderSTTCallback', function () {
         timestamp = 0;
         sawInputEOS = false;
         sawOutputEOS = false;
+        inputQueue = [];
+        outputQueue = [];
     }
 
     function createAudioEncoder(savepath, mySteps, done) {
@@ -247,6 +249,8 @@ describe('AudioEncoderSTTCallback', function () {
             case FLUSH:
                 mySteps.shift();
                 console.info(`case to flush`);
+                inputQueue = [];
+                outputQueue = [];
                 audioEncodeProcessor.flush((err) => {
                     expect(err).assertUndefined();
                     console.info(`case flush 1`);
