@@ -63,10 +63,10 @@ describe('AudioEncoderFuncPromise', function () {
         ES_LENGTH = 2000;
     })
 
-    afterEach(function() {
+    afterEach(async function() {
         console.info('afterEach case');
         if (audioEncodeProcessor != null) {
-            audioEncodeProcessor.release().then(() => {
+            await audioEncodeProcessor.release().then(() => {
                 console.info('audioEncodeProcessor release success');
                 audioEncodeProcessor = null;
             }, failCallback).catch(failCatch);

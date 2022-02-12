@@ -243,10 +243,10 @@ describe('AudioDecoderFunc', function () {
         ES_LENGTH = 1500;
     })
 
-    afterEach(function() {
+    afterEach(async function() {
         console.info('afterEach case');
         if (audioDecodeProcessor != null) {
-            audioDecodeProcessor.release().then(() => {
+            await audioDecodeProcessor.release().then(() => {
                 console.info('audioDecodeProcessor release success');
                 audioDecodeProcessor = null;
             }, failCallback).catch(failCatch);
