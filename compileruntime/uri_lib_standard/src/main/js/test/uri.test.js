@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/lite'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import  Uri from '@ohos.uri'
 describe('UriTest', function () {
 
@@ -26,7 +26,7 @@ describe('UriTest', function () {
         try {
             let that = new Uri.URI('#http://username:password@host:8080/directory/file?foo=1&bar=2');
         } catch (err) {
-            expect(err).assertEqual("Error: #It can't be the first");
+            expect(err.toString()).assertEqual("Error: #It can't be the first");
         }
     })
 
@@ -40,7 +40,7 @@ describe('UriTest', function () {
         try {
             let that = new Uri.URI({name: 'gaogao'});
         } catch (err) {
-            expect(err).assertEqual("Error: input type err");
+            expect(err.toString()).assertEqual("Error: input type err");
         }
     })
 
@@ -54,7 +54,7 @@ describe('UriTest', function () {
         try {
             let that = new Uri.URI('ht/tp://username:pas sword@host:8080/directory/file?foo=1&bar=2');
         } catch (err) {
-            expect(err).assertEqual("Error: SpecialPath does not conform to the rule");
+            expect(err.toString()).assertEqual("Error: SpecialPath does not conform to the rule");
         }
     })
 
@@ -68,7 +68,7 @@ describe('UriTest', function () {
         try {
             let that = new Uri.URI('http://username:password@[::]:8080/directory/file?Query#gaogao faofao');
         } catch (err) {
-            expect(err).assertEqual("Error: Fragment does not conform to the rule");
+            expect(err.toString()).assertEqual("Error: Fragment does not conform to the rule");
         }
     })
 
@@ -82,7 +82,7 @@ describe('UriTest', function () {
         try {
             let that = new Uri.URI('http://username:password@host:8080/directory/file?foo^=1&bar=2#gaogaofaofao');
         } catch (err) {
-            expect(err).assertEqual("Error: Query does not conform to the rule");
+            expect(err.toString()).assertEqual("Error: Query does not conform to the rule");
         }
     })
 
@@ -96,7 +96,7 @@ describe('UriTest', function () {
         try {
             let that = new Uri.URI('1http://username:password@host:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
-            expect(err).assertEqual("Error: Scheme the first character must be a letter");
+            expect(err.toString()).assertEqual("Error: Scheme the first character must be a letter");
         }
     })
 
@@ -110,7 +110,7 @@ describe('UriTest', function () {
         try {
             let that = new Uri.URI('ht@tp://username:password@host:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
-            expect(err).assertEqual("Error: scheme does not conform to the rule");
+            expect(err.toString()).assertEqual("Error: scheme does not conform to the rule");
         }
     })
 
@@ -124,7 +124,7 @@ describe('UriTest', function () {
         try {
             let that = new Uri.URI('http://username:password@[::]:80r80/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
-            expect(err).assertEqual("Error: Prot does not conform to the rule");
+            expect(err.toString()).assertEqual("Error: Prot does not conform to the rule");
         }
     })
 
@@ -138,7 +138,7 @@ describe('UriTest', function () {
         try {
             let that = new Uri.URI('http://username:password@[::12:55:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
-            expect(err).assertEqual("Error: IPv6 is missing a closing bracket");
+            expect(err.toString()).assertEqual("Error: IPv6 is missing a closing bracket");
         }
     })
 
@@ -152,7 +152,7 @@ describe('UriTest', function () {
         try {
             let that = new Uri.URI('http://username:pa^ssword@[::12:55]:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
-            expect(err).assertEqual("Error: userInfo does not conform to the rule");
+            expect(err.toString()).assertEqual("Error: userInfo does not conform to the rule");
         }
     })
 
@@ -166,7 +166,7 @@ describe('UriTest', function () {
         try {
             let that = new Uri.URI('http://username:password@[::1你2:55]:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
-            expect(err).assertEqual("Error: ipv6 does not conform to the rule");
+            expect(err.toString()).assertEqual("Error: ipv6 does not conform to the rule");
         }
     })
 
