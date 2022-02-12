@@ -15,6 +15,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import process from '@ohos.process'
 describe('ChildProcessTest', function () {
+
     /**
      * @tc.name: testRunCmd001
      * @tc.desc: Return a child process object and spawns a new ChildProcess to run the command.
