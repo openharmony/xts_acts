@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/lite'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import util from '@ohos.util'
 import url from '@ohos.url'
 import app from '@system.app'
