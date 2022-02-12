@@ -396,7 +396,9 @@ describe('AudioDecoderFunc', function () {
                 } else if (workdoneAtEOS) {
                     await doneWork();
                     done();
-                } else {}
+                } else {
+                    console.info("saw output EOS");
+                }
             }
             else{
                 writeFile(savapath, outputobject.data, outputobject.length);
