@@ -25,19 +25,19 @@ describe('GetCfgFilesTest', function () {
     * @tc.desc get getCfgFiles in callback mode
     */
     it('getCfgFiles_test_003', 0, async function (done) {
-        cust.getCfgFiles('custxml/none.xml', (error, value) => {
+        cust.getCfgFiles('custxmltest/none.xml', (error, value) => {
             expect(value.length == 0).assertTrue();
             console.log('CustTest getCfgFiles_test_003, none.xml:' + value);
         });
-        cust.getCfgFiles('custxml/system.xml', (error, value) => {
+        cust.getCfgFiles('custxmltest/system.xml', (error, value) => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getCfgFiles_test_003, system.xml:' + value);
         });
-        cust.getCfgFiles('custxml/both.xml', (error, value) => {
+        cust.getCfgFiles('custxmltest/both.xml', (error, value) => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getCfgFiles_test_003, both.xml:' + value);
         });
-        cust.getCfgFiles('custxml/user.xml', (error, value) => {
+        cust.getCfgFiles('custxmltest/user.xml', (error, value) => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getCfgFiles_test_003, user.xml:' + value);
         });
@@ -50,19 +50,19 @@ describe('GetCfgFilesTest', function () {
     * @tc.desc get getCfgFiles in promise mode
     */
     it('getCfgFiles_test_004', 0, async function (done) {
-        cust.getCfgFiles('custxml/none.xml').then(value => {
+        cust.getCfgFiles('custxmltest/none.xml').then(value => {
             expect(value.length == 0).assertTrue();
             console.log('CustTest getCfgFiles_test_004, none.xml:' + value);
         });
-        cust.getCfgFiles('custxml/system.xml').then(value => {
+        cust.getCfgFiles('custxmltest/system.xml').then(value => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getCfgFiles_test_004, system.xml:' + value);
         });
-        cust.getCfgFiles('custxml/both.xml').then(value => {
+        cust.getCfgFiles('custxmltest/both.xml').then(value => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getCfgFiles_test_004, both.xml:' + value);
         });
-        cust.getCfgFiles('custxml/user.xml').then(value => {
+        cust.getCfgFiles('custxmltest/user.xml').then(value => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getCfgFiles_test_004, user.xml:' + value);
         });

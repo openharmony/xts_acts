@@ -17,12 +17,12 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "mkdir -p /system/etc/custxml/",
-                "mkdir -p /sys-prod/etc/custxml/",
-                "touch /system/etc/custxml/system.xml",
-                "touch /system/etc/custxml/both.xml",
-                "touch /sys-prod/etc/custxml/both.xml",
-                "touch /sys-prod/etc/custxml/user.xml"
+                "mkdir -p /system/etc/custxmltest/",
+                "mkdir -p /sys-prod/etc/custxmltest/",
+                "touch /system/etc/custxmltest/system.xml",
+                "touch /system/etc/custxmltest/both.xml",
+                "touch /sys-prod/etc/custxmltest/both.xml",
+                "touch /sys-prod/etc/custxmltest/user.xml"
             ]
         }
     ]

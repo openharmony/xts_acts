@@ -25,19 +25,19 @@ describe('GetOneCfgFileTest', function () {
     * @tc.desc get getOneCfgFile in callback mode
     */
     it('getOneCfgFile_test_001', 0, async function (done) {
-        cust.getOneCfgFile('custxml/none.xml', (error, value) => {
+        cust.getOneCfgFile('custxmltest/none.xml', (error, value) => {
             expect(value.length == 0).assertTrue();
             console.log('CustTest getOneCfgFile_test_001, none.xml:' + value);
         });
-        cust.getOneCfgFile('custxml/system.xml', (error, value) => {
+        cust.getOneCfgFile('custxmltest/system.xml', (error, value) => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getOneCfgFile_test_001, system.xml:' + value);
         });
-        cust.getOneCfgFile('custxml/both.xml', (error, value) => {
+        cust.getOneCfgFile('custxmltest/both.xml', (error, value) => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getOneCfgFile_test_001, both.xml:' + value);
         });
-        cust.getOneCfgFile('custxml/user.xml', (error, value) => {
+        cust.getOneCfgFile('custxmltest/user.xml', (error, value) => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getOneCfgFile_test_001, user.xml:' + value);
         });
@@ -50,19 +50,19 @@ describe('GetOneCfgFileTest', function () {
     * @tc.desc get getOneCfgFile in promise mode
     */
     it('getOneCfgFile_test_002', 0, async function (done) {
-        cust.getOneCfgFile('custxml/none.xml').then(value => {
+        cust.getOneCfgFile('custxmltest/none.xml').then(value => {
             expect(value.length == 0).assertTrue();
             console.log('CustTest getOneCfgFile_test_002, none.xml:' + value);
         });
-        cust.getOneCfgFile('custxml/system.xml').then(value => {
+        cust.getOneCfgFile('custxmltest/system.xml').then(value => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getOneCfgFile_test_002, system.xml:' + value);
         });
-        cust.getOneCfgFile('custxml/both.xml').then(value => {
+        cust.getOneCfgFile('custxmltest/both.xml').then(value => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getOneCfgFile_test_002, both.xml:' + value);
         });
-        cust.getOneCfgFile('custxml/user.xml').then(value => {
+        cust.getOneCfgFile('custxmltest/user.xml').then(value => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getOneCfgFile_test_002, user.xml:' + value);
         });
