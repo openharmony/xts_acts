@@ -21,6 +21,7 @@ group("powermgr") {
     if (is_standard_system) {
       deps = [
         "powermgrbattery:powermgr_battery_test",
+        "powermgrbatterystats:powermgr_batterystats_test",
         "powermgrthermal:powermgr_thermal_test",
       ]
     }
