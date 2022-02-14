@@ -2,7 +2,7 @@
     "description": "Configuration for concurrency test",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "600000",
+        "test-timeout": "300000",
         "package": "com.example.concurrencyapp1",
         "shell-timeout": "60000"
     },
