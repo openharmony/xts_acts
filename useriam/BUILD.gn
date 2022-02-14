@@ -16,8 +16,6 @@ import("//test/xts/tools/build/suite.gni")
 group("useriam") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "face_auth/js_api_test/function_test/userauth:ActsUserauthTest",
-    ]
+    deps = [ "face_auth/js_api_test/function_test/userauth:ActsUserauthTest" ]
   }
 }
