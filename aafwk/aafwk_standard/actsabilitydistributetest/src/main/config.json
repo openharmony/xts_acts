@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.example.actsabilitydistributetest.js.function",
+    "bundleName": "com.example.actsabilitydistributetest",
     "vendor": "example",
     "version": {
       "code": 1,
