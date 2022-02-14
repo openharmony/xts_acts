@@ -975,7 +975,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzOffset64, Function | MediumTest | Level2)
     file = gzopen(TESTFILE, "rb");
     ASSERT_TRUE(file != NULL);
     err = gzoffset64(file);
-    ASSERT_TRUE(err != NULL);
+    ASSERT_TRUE(err != Z_OK);
     gzclose(file);
 #endif
 }
@@ -1306,13 +1306,13 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzInflateBack, Function | MediumTest | Level2
     err = inflateBackInit(&strm, 15, window);
     ASSERT_EQ(err, Z_OK);
     if (err != Z_OK) {
-    fprintf(stderr, "gun out of memory error--aborting\n");
-    ASSERT_TRUE(false);
+        fprintf(stderr, "gun out of memory error--aborting\n");
+        ASSERT_TRUE(false);
     }
     strm.next_in = uncompr;
     strm.avail_in = 1;
     err = inflateBack(&strm, pull, nullptr, push, &strm);
-    ASSERT_TRUE(err != NULL);
+    ASSERT_TRUE(err != Z_OK);
     err = inflateBackEnd(&strm);
     ASSERT_EQ(err, Z_OK);
 #endif
@@ -1341,7 +1341,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflateCodesUsed, Function | MediumTest | Lev
     d_stream.avail_in = 0;
     d_stream.next_out = uncompr;
     err = inflateCodesUsed(&d_stream);
-    ASSERT_TRUE(err != Z_NULL);
+    ASSERT_TRUE(err != Z_OK);
     free(compr);
     free(uncompr);
 }
