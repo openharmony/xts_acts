@@ -227,6 +227,8 @@ describe('securitylabel', function () {
         try {
             let flag = await securitylabel.setSecurityLabel(fpath, '');
             expect(flag == false).assertTrue();
+            let dataLevel = await securitylabel.getSecurityLabel(fpath);
+            expect(dataLevel == '').assertTrue();
             expect(fileio.unlinkSync(fpath) == null).assertTrue();
             done();
         } catch (e) {
@@ -252,6 +254,8 @@ describe('securitylabel', function () {
         try {
             let flag = await securitylabel.setSecurityLabel(fpath, 'ss');
             expect(flag == false).assertTrue();
+            let dataLevel = await securitylabel.getSecurityLabel(fpath);
+            expect(dataLevel == '').assertTrue();
             expect(fileio.unlinkSync(fpath) == null).assertTrue();
             done();
         } catch (e) {
