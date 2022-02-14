@@ -16,7 +16,7 @@ import osaccount from '@ohos.account.osaccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 const TIMEOUT = 1000;
-const ERR_OSACCOUNT_KIT_GET_OS_ACCOUNT_PROFILE_PHOTO_ERROR = 4587558;
+const ERR_OSACCOUNT_KIT_GET_OS_ACCOUNT_PROFILE_PHOTO_ERROR = 4587555;
 describe('ActsOsAccountSystemTest', function () {
 
      /*

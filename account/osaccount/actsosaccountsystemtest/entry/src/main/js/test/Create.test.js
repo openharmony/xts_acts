@@ -15,10 +15,10 @@
 import osaccount from '@ohos.account.osaccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-const ERR_OS_ACCOUNT_KIT_CREATE_OS_ACCOUNT_ERROR = 4587526;
-const ERR_OSACCOUNT_KIT_REMOVE_OSACCOUNT_ERROR = 4587532;
-const ERR_OSACCOUNT_KIT_LOCAL_NAME_EMPTY_ERROR = 4587581;
-const ERR_OSACCOUNT_KIT_CANNOT_DELETE_ID_ERROR = 4587584;
+const ERR_OS_ACCOUNT_KIT_CREATE_OS_ACCOUNT_ERROR = 4587523;
+const ERR_OSACCOUNT_KIT_REMOVE_OSACCOUNT_ERROR = 4587529;
+const ERR_OSACCOUNT_KIT_LOCAL_NAME_EMPTY_ERROR = 4587578;
+const ERR_OSACCOUNT_KIT_CANNOT_DELETE_ID_ERROR = 4587581;
 describe('ActsOsAccountSystemTest', function () {
 
     /*
@@ -605,6 +605,7 @@ describe('ActsOsAccountSystemTest', function () {
         console.debug("====>second createOsAccount OsAccountInfo:" + JSON.stringify(accountInfoSec));
         var localIdSec = accountInfoSec.localId;
         var serialNumSec = accountInfoSec.serialNumber;
+        await osAccountManager.removeOsAccount(localIdSec);
         console.debug("====>first create localId: " + localIdFir + " second create localId: " + localIdSec);
         console.debug("====>first create serialNumber: " + serialNumFir + " second serialNumber: " + serialNumSec);
         expect(localIdFir).assertEqual(localIdSec);
