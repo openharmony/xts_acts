@@ -166,7 +166,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
      */
     it('getBundleArchiveInfoTest_100', 0, async function (done) {
         console.debug('getBundleArchiveInfoTest_100 start');
-        bundle.getBundleArchiveInfo("/data/", DEFAULT_FLAG).then(data => {
+        bundle.getBundleArchiveInfo("/system/app/Launcher.hap", DEFAULT_FLAG).then(data => {
             expect().assertFail();
         }).catch(err => {
             expect(err).assertEqual(INVALID_CODE);
