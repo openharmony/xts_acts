@@ -2,7 +2,7 @@
     "description": "Configuration for algorithm completion test",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "3600000",
+        "test-timeout": "3000000",
         "package": "com.example.hksxtstest",
         "shell-timeout": "60000"
     },
