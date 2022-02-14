@@ -2,7 +2,7 @@
     "description": "Configuration for audioPlayer Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "2000000",
+        "test-timeout": "120000",
         "package": "ohos.acts.multimedia.audio.audioplayer",
 		"shell-timeout": "60000"
     },
