@@ -81,8 +81,10 @@ describe('ActsBmsJsUnPermissionTest', function () {
         console.debug('getApplicationInfoTest_100 start');
         bundle.getApplicationInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG, DEFAULT_USER_ID).then(data => {
             expect().assertFail();
+            done();
         }).catch(err => {
             expect(err).assertEqual(INVALID_CODE);
+            done();
         });
     });
 
@@ -95,8 +97,10 @@ describe('ActsBmsJsUnPermissionTest', function () {
         console.debug('getAllApplicationInfoTest_100 start');
         bundle.getAllApplicationInfo(DEFAULT_FLAG, DEFAULT_USER_ID).then(data => {
             expect().assertFail();
+            done();
         }).catch(err => {
             expect(err).assertEqual(INVALID_CODE);
+            done();
         });
     });
 
@@ -109,8 +113,10 @@ describe('ActsBmsJsUnPermissionTest', function () {
         console.debug('getBundleInfoTest_100 start');
         bundle.getBundleInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_USER_ID).then(data => {
             expect().assertFail();
+            done();
         }).catch(err => {
             expect(err).assertEqual(INVALID_CODE);
+            done();
         });
     });
 
@@ -123,8 +129,10 @@ describe('ActsBmsJsUnPermissionTest', function () {
         console.debug('getAllBundleInfoTest_100 start');
         bundle.getAllBundleInfo(DEFAULT_FLAG).then(data => {
             expect().assertFail();
+            done();
         }).catch(err => {
             expect(err).assertEqual(INVALID_CODE);
+            done();
         });
     });
 
@@ -140,8 +148,10 @@ describe('ActsBmsJsUnPermissionTest', function () {
             abilityName : LAUNCHER_MAIN_ABILITY
         }, DEFAULT_FLAG, DEFAULT_USER_ID).then(data => {
             expect().assertFail();
+            done();
         }).catch(err => {
             expect(err).assertEqual(INVALID_CODE);
+            done();
         });
     });
 
@@ -154,8 +164,10 @@ describe('ActsBmsJsUnPermissionTest', function () {
         console.debug('getLaunchWantForBundleTest_100 start');
         bundle.getLaunchWantForBundle(LAUNCHER_BUNDLE_NAME).then(data => {
             expect().assertFail();
+            done();
         }).catch(err => {
             expect(err).assertEqual(INVALID_CODE);
+            done();
         });
     });
 
@@ -168,8 +180,10 @@ describe('ActsBmsJsUnPermissionTest', function () {
         console.debug('getBundleArchiveInfoTest_100 start');
         bundle.getBundleArchiveInfo("/system/app/Launcher.hap", DEFAULT_FLAG).then(data => {
             expect().assertFail();
+            done();
         }).catch(err => {
             expect(err).assertEqual(INVALID_CODE);
+            done();
         });
     });
 
@@ -182,8 +196,10 @@ describe('ActsBmsJsUnPermissionTest', function () {
         console.debug('setApplicationEnabledTest_100 start');
         bundle.setApplicationEnabled(LAUNCHER_BUNDLE_NAME, false).then(data => {
             expect().assertFail();
+            done();
         }).catch(err => {
             expect(err).assertEqual(INVALID_CODE);
+            done();
         });
     });
 
@@ -200,8 +216,10 @@ describe('ActsBmsJsUnPermissionTest', function () {
         };
         bundle.setAbilityEnabled(abilityInfo, false).then(data => {
             expect().assertFail();
+            done();
         }).catch(err => {
             expect(err).assertEqual(INVALID_CODE);
+            done();
         });
     });
 
@@ -214,8 +232,10 @@ describe('ActsBmsJsUnPermissionTest', function () {
         console.debug('getLauncherAbilityInfosTest_100 start');
         innerBundleManager.getLauncherAbilityInfos(LAUNCHER_BUNDLE_NAME, DEFAULT_USER_ID).then(data => {
             expect().assertFail();
+            done();
         }).catch(err => {
             expect(err).assertEqual(INVALID_CODE);
+            done();
         });
     });
 
@@ -228,8 +248,10 @@ describe('ActsBmsJsUnPermissionTest', function () {
         console.debug('getAllLauncherAbilityInfosTest_100 start');
         innerBundleManager.getAllLauncherAbilityInfos(DEFAULT_USER_ID).then(data => {
             expect().assertFail();
+            done();
         }).catch(err => {
             expect(err).assertEqual(INVALID_CODE);
+            done();
         });
     });
 
@@ -242,8 +264,10 @@ describe('ActsBmsJsUnPermissionTest', function () {
         console.debug('getShortcutInfosTest_100 start');
         innerBundleManager.getShortcutInfos(LAUNCHER_BUNDLE_NAME).then(data => {
             expect().assertFail();
+            done();
         }).catch(err => {
             expect(err).assertEqual(INVALID_CODE);
+            done();
         });
     });
 })
