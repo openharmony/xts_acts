@@ -80,14 +80,13 @@ describe('AudioEncoderSTTCallback', function () {
         ES_LENGTH = 200;
     })
 
-    afterEach(function() {
+    afterEach(async function() {
         console.info('afterEach case');
         if (audioEncodeProcessor != null) {
-            audioEncodeProcessor.release((err) => {
-                expect(err).assertUndefined();
-                console.log("case release success");
+            await audioEncodeProcessor.release().then(() => {
+                console.info('audioEncodeProcessor release success');
                 audioEncodeProcessor = null;
-            })
+            }, failCallback).catch(failCatch);
         }
     })
 
@@ -106,6 +105,8 @@ describe('AudioEncoderSTTCallback', function () {
         timestamp = 0;
         sawInputEOS = false;
         sawOutputEOS = false;
+        inputQueue = [];
+        outputQueue = [];
     }
 
     function createAudioEncoder(savepath, mySteps, done) {
@@ -178,6 +179,7 @@ describe('AudioEncoderSTTCallback', function () {
         audioEncodeProcessor.stop((err) => {
             expect(err).assertUndefined();
             console.info("case stop success");
+            resetParam();
             audioEncodeProcessor.reset((err) => {
                 expect(err).assertUndefined();
                 console.log("case reset success");
@@ -247,6 +249,8 @@ describe('AudioEncoderSTTCallback', function () {
             case FLUSH:
                 mySteps.shift();
                 console.info(`case to flush`);
+                inputQueue = [];
+                outputQueue = [];
                 audioEncodeProcessor.flush((err) => {
                     expect(err).assertUndefined();
                     console.info(`case flush 1`);
@@ -271,6 +275,7 @@ describe('AudioEncoderSTTCallback', function () {
             case RESET:
                 mySteps.shift();
                 console.info(`case to reset`);
+                resetParam();
                 audioEncodeProcessor.reset((err) => {
                     expect(err).assertUndefined();
                     console.info(`case reset 1`);

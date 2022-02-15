@@ -82,10 +82,10 @@ describe('AudioEncoderSTTPromise', function () {
         expectError = false;
     })
 
-    afterEach(function() {
+    afterEach(async function() {
         console.info('afterEach case');
         if (audioEncodeProcessor != null) {
-            audioEncodeProcessor.release().then(() => {
+            await audioEncodeProcessor.release().then(() => {
                 console.info('audioEncodeProcessor release success');
                 audioEncodeProcessor = null;
             }, failCallback).catch(failCatch);
@@ -123,6 +123,8 @@ describe('AudioEncoderSTTPromise', function () {
         timestamp = 0;
         sawInputEOS = false;
         sawOutputEOS = false;
+        inputQueue = [];
+        outputQueue = [];
     }
 
     function createAudioEncoder(savepath, mySteps, done) {
@@ -195,6 +197,7 @@ describe('AudioEncoderSTTPromise', function () {
         await audioEncodeProcessor.stop().then(() => {
             console.info("case stop success");
         }, failCallback).catch(failCatch);
+        resetParam();
         await audioEncodeProcessor.reset().then(() => {
             console.info("case reset success");
         }, failCallback).catch(failCatch);
@@ -257,6 +260,8 @@ describe('AudioEncoderSTTPromise', function () {
             case FLUSH:
                 mySteps.shift();
                 console.info(`case to flush`);
+                inputQueue = [];
+                outputQueue = [];
                 audioEncodeProcessor.flush().then(() => {
                     console.info(`case flush 1`);
                     if (flushAtEOS) {
@@ -279,6 +284,7 @@ describe('AudioEncoderSTTPromise', function () {
             case RESET:
                 mySteps.shift();
                 console.info(`case to reset`);
+                resetParam();
                 audioEncodeProcessor.reset().then(() => {
                     console.info(`case reset 1`);
                     nextStep(mySteps, done);

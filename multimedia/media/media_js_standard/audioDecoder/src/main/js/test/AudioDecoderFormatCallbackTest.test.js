@@ -60,14 +60,13 @@ describe('AudioDecoderFormatCallback', function () {
         isVorbis = false;
     })
 
-    afterEach(function() {
+    afterEach(async function() {
         console.info('afterEach case');
         if (audioDecodeProcessor != null) {
-            audioDecodeProcessor.release((err) => {
-                expect(err).assertUndefined();
-                console.log("case release success");
+            await audioDecodeProcessor.release().then(() => {
+                console.info('audioDecodeProcessor release success');
                 audioDecodeProcessor = null;
-            })
+            }, failCallback).catch(failCatch);
         }
     })
 
@@ -148,6 +147,8 @@ describe('AudioDecoderFormatCallback', function () {
                 audioDecodeProcessor.stop((err) => {
                     expect(err).assertUndefined();
                     console.log("stop success");
+                    inputQueue = [];
+                    outputQueue = [];
                     audioDecodeProcessor.reset((err) => {
                         expect(err).assertUndefined();
                         console.log("reset success");

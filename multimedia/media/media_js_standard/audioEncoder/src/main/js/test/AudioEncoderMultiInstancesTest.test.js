@@ -92,6 +92,8 @@ describe('AudioEncoderFuncPromise', function () {
         timestamp = 0;
         sawInputEOS = false;
         sawOutputEOS = false;
+        inputQueue = [];
+        outputQueue = [];
     }
 
     function writeHead(path, len) {
@@ -157,6 +159,7 @@ describe('AudioEncoderFuncPromise', function () {
     }
 
     async function resetWork(audioEncodeProcessor) {
+        resetParam();
         await audioEncodeProcessor.reset().then(() => {
             console.info("case reset success");
             if (needrelease) {
@@ -166,6 +169,8 @@ describe('AudioEncoderFuncPromise', function () {
     }
 
     async function flushWork(audioEncodeProcessor) {
+        inputQueue = [];
+        outputQueue = [];
         await audioEncodeProcessor.flush().then(() => {
             console.info("case flush at inputeos success");
             resetParam();
@@ -178,6 +183,7 @@ describe('AudioEncoderFuncPromise', function () {
         await audioEncodeProcessor.stop().then(() => {
             console.info("case stop success");
         }, failCallback).catch(failCatch);
+        resetParam();
         await audioEncodeProcessor.reset().then(() => {
             console.info("case reset success");
         }, failCallback).catch(failCatch);
@@ -276,14 +282,14 @@ describe('AudioEncoderFuncPromise', function () {
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_ENCODER_MULTIINSTANCE_PROMISE_0100
+        * @tc.number    : SUB_MEDIA_AUDIO_ENCODER_MULTIINSTANCE_0100
         * @tc.name      : 001.create 16 encoder
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_ENCODER_MULTIINSTANCE_PROMISE_0100', 0, async function (done) {
+    it('SUB_MEDIA_AUDIO_ENCODER_MULTIINSTANCE_0100', 0, async function (done) {
         console.info("case test multiple encoder instances");
         let array = new Array();
         for (let i = 0; i < 16; i += 1) {
@@ -299,6 +305,7 @@ describe('AudioEncoderFuncPromise', function () {
         console.info('case has created 16 encoders');
         console.info('case array: ' + array);
         for (let j = 0; j < 16; j++) {
+            resetParam();
             await array[j].reset().then(() => {
                 console.info("reset encoder " + j);
             }, failCallback).catch(failCatch);

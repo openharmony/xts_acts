@@ -243,10 +243,10 @@ describe('AudioDecoderFunc', function () {
         ES_LENGTH = 1500;
     })
 
-    afterEach(function() {
+    afterEach(async function() {
         console.info('afterEach case');
         if (audioDecodeProcessor != null) {
-            audioDecodeProcessor.release().then(() => {
+            await audioDecodeProcessor.release().then(() => {
                 console.info('audioDecodeProcessor release success');
                 audioDecodeProcessor = null;
             }, failCallback).catch(failCatch);
@@ -281,6 +281,8 @@ describe('AudioDecoderFunc', function () {
         timestamp = 0;
         sawInputEOS = false;
         sawOutputEOS = false;
+        inputQueue = [];
+        outputQueue = [];
     }
 
     function writeFile(path, buf, len) {
@@ -317,6 +319,7 @@ describe('AudioDecoderFunc', function () {
     }
 
     async function resetWork() {
+        resetParam();
         await audioDecodeProcessor.reset().then(() => {
             console.info("case reset success");
             if (needrelease) {
@@ -326,6 +329,8 @@ describe('AudioDecoderFunc', function () {
     }
 
     async function flushWork() {
+        inputQueue = [];
+        outputQueue = [];
         await audioDecodeProcessor.flush().then(() => {
             console.info("case flush at inputeos success");
             resetParam();
@@ -338,6 +343,7 @@ describe('AudioDecoderFunc', function () {
         await audioDecodeProcessor.stop().then(() => {
             console.info("case stop success");
         }, failCallback).catch(failCatch);
+        resetParam();
         await audioDecodeProcessor.reset().then(() => {
             console.info("case reset success");
         }, failCallback).catch(failCatch);
@@ -394,7 +400,9 @@ describe('AudioDecoderFunc', function () {
                 } else if (workdoneAtEOS) {
                     await doneWork();
                     done();
-                } else {}
+                } else {
+                    console.info("saw output EOS");
+                }
             }
             else{
                 writeFile(savapath, outputobject.data, outputobject.length);
@@ -568,6 +576,8 @@ describe('AudioDecoderFunc', function () {
             console.info("case start success");
         }, failCallback).catch(failCatch);
         await sleep(3000).then(() => {
+            inputQueue = [];
+            outputQueue = [];
             audioDecodeProcessor.flush().then(() => {
                 console.info("case flush after 5s");
             }, failCallback).catch(failCatch);
@@ -652,6 +662,7 @@ describe('AudioDecoderFunc', function () {
             audioDecodeProcessor.stop().then(() => {
                 console.info("case stop after 5s success");
             }, failCallback).catch(failCatch);});
+        resetParam();
         await audioDecodeProcessor.reset().then(() => {
             console.info("case reset success");
         }, failCallback).catch(failCatch);

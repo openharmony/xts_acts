@@ -63,10 +63,10 @@ describe('AudioEncoderFuncPromise', function () {
         ES_LENGTH = 2000;
     })
 
-    afterEach(function() {
+    afterEach(async function() {
         console.info('afterEach case');
         if (audioEncodeProcessor != null) {
-            audioEncodeProcessor.release().then(() => {
+            await audioEncodeProcessor.release().then(() => {
                 console.info('audioEncodeProcessor release success');
                 audioEncodeProcessor = null;
             }, failCallback).catch(failCatch);
@@ -100,6 +100,8 @@ describe('AudioEncoderFuncPromise', function () {
         timestamp = 0;
         sawInputEOS = false;
         sawOutputEOS = false;
+        inputQueue = [];
+        outputQueue = [];
     }
 
     function writeHead(path, len) {
@@ -165,6 +167,7 @@ describe('AudioEncoderFuncPromise', function () {
     }
 
     async function resetWork() {
+        resetParam();
         await audioEncodeProcessor.reset().then(() => {
             console.info("case reset success");
             if (needrelease) {
@@ -174,6 +177,8 @@ describe('AudioEncoderFuncPromise', function () {
     }
 
     async function flushWork() {
+        inputQueue = [];
+        outputQueue = [];
         await audioEncodeProcessor.flush().then(() => {
             console.info("case flush at inputeos success");
             resetParam();
@@ -186,6 +191,7 @@ describe('AudioEncoderFuncPromise', function () {
         await audioEncodeProcessor.stop().then(() => {
             console.info("case stop success");
         }, failCallback).catch(failCatch);
+        resetParam();
         await audioEncodeProcessor.reset().then(() => {
             console.info("case reset success");
         }, failCallback).catch(failCatch);
@@ -427,6 +433,8 @@ describe('AudioEncoderFuncPromise', function () {
             console.info("case start success")
         }, failCallback).catch(failCatch);
         await sleep(5000).then(() => {
+            inputQueue = [];
+            outputQueue = [];
             audioEncodeProcessor.flush().then(() => {
                 console.info("case flush after 5s")
             }, failCallback).catch(failCatch);
@@ -511,6 +519,7 @@ describe('AudioEncoderFuncPromise', function () {
             audioEncodeProcessor.stop().then(() => {
                 console.info("stop after 5s success");
             }, failCallback).catch(failCatch);});
+        resetParam();
         await audioEncodeProcessor.reset().then(() => {
             console.info("reset success");
         }, failCallback).catch(failCatch);
@@ -627,7 +636,7 @@ describe('AudioEncoderFuncPromise', function () {
         }, failCallback).catch(failCatch);
         let savepath2 = BASIC_PATH + '0601.txt';
         workdoneAtEOS = true;
-        setCallback(audioEncodeProcessor, savepath2, done);
+        setCallback(savepath2, done);
         await audioEncodeProcessor.prepare().then(() => {
             console.info("prepare2 success");
         }, failCallback).catch(failCatch);

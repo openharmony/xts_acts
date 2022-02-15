@@ -261,10 +261,10 @@ describe('AudioDecoderReliabilityPromise', function () {
         expectError = false;
     })
 
-    afterEach(function() {
+    afterEach(async function() {
         console.info('afterEach case');
         if (audioDecodeProcessor != null) {
-            audioDecodeProcessor.release().then(() => {
+            await audioDecodeProcessor.release().then(() => {
                 console.info('audioDecodeProcessor release success');
                 audioDecodeProcessor = null;
             }, failCallback).catch(failCatch);
@@ -303,6 +303,8 @@ describe('AudioDecoderReliabilityPromise', function () {
         timestamp = 0;
         sawInputEOS = false;
         sawOutputEOS = false;
+        inputQueue = [];
+        outputQueue = [];
     }
 
     function createAudioDecoder(savepath, mySteps, done) {
@@ -348,6 +350,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         await audioDecodeProcessor.stop().then(() => {
             console.info("case stop success");
         }, failCallback).catch(failCatch);
+        resetParam();
         await audioDecodeProcessor.reset().then(() => {
             console.info("case reset success");
         }, failCallback).catch(failCatch);
@@ -409,6 +412,8 @@ describe('AudioDecoderReliabilityPromise', function () {
             case FLUSH:
                 mySteps.shift();
                 console.info(`case to flush`);
+                inputQueue = [];
+                outputQueue = [];
                 audioDecodeProcessor.flush().then(() => {
                     console.info(`case flush 1`);
                     if (flushAtEOS) {
@@ -431,6 +436,7 @@ describe('AudioDecoderReliabilityPromise', function () {
             case RESET:
                 mySteps.shift();
                 console.info(`case to reset`);
+                resetParam();
                 audioDecodeProcessor.reset().then(() => {
                     console.info(`case reset 1`);
                     nextStep(mySteps, done);
