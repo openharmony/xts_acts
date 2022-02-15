@@ -350,6 +350,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         await audioDecodeProcessor.stop().then(() => {
             console.info("case stop success");
         }, failCallback).catch(failCatch);
+        resetParam();
         await audioDecodeProcessor.reset().then(() => {
             console.info("case reset success");
         }, failCallback).catch(failCatch);
@@ -435,6 +436,7 @@ describe('AudioDecoderReliabilityPromise', function () {
             case RESET:
                 mySteps.shift();
                 console.info(`case to reset`);
+                resetParam();
                 audioDecodeProcessor.reset().then(() => {
                     console.info(`case reset 1`);
                     nextStep(mySteps, done);

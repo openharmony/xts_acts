@@ -329,6 +329,7 @@ describe('AudioDecoderReliabilityCallback', function () {
         audioDecodeProcessor.stop((err) => {
             expect(err).assertUndefined();
             console.info("case stop success");
+            resetParam();
             audioDecodeProcessor.reset((err) => {
                 expect(err).assertUndefined();
                 console.log("case reset success");
@@ -425,6 +426,7 @@ describe('AudioDecoderReliabilityCallback', function () {
             case RESET:
                 mySteps.shift();
                 console.info(`case to reset`);
+                resetParam();
                 audioDecodeProcessor.reset((err) => {
                     expect(err).assertUndefined();
                     console.info(`case reset 1`);

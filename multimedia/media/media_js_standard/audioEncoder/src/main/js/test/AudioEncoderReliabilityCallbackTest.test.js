@@ -179,6 +179,7 @@ describe('AudioEncoderSTTCallback', function () {
         audioEncodeProcessor.stop((err) => {
             expect(err).assertUndefined();
             console.info("case stop success");
+            resetParam();
             audioEncodeProcessor.reset((err) => {
                 expect(err).assertUndefined();
                 console.log("case reset success");
@@ -274,6 +275,7 @@ describe('AudioEncoderSTTCallback', function () {
             case RESET:
                 mySteps.shift();
                 console.info(`case to reset`);
+                resetParam();
                 audioEncodeProcessor.reset((err) => {
                     expect(err).assertUndefined();
                     console.info(`case reset 1`);

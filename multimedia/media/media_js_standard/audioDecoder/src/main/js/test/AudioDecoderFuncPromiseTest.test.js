@@ -281,6 +281,8 @@ describe('AudioDecoderFunc', function () {
         timestamp = 0;
         sawInputEOS = false;
         sawOutputEOS = false;
+        inputQueue = [];
+        outputQueue = [];
     }
 
     function writeFile(path, buf, len) {
@@ -317,6 +319,7 @@ describe('AudioDecoderFunc', function () {
     }
 
     async function resetWork() {
+        resetParam();
         await audioDecodeProcessor.reset().then(() => {
             console.info("case reset success");
             if (needrelease) {
@@ -340,6 +343,7 @@ describe('AudioDecoderFunc', function () {
         await audioDecodeProcessor.stop().then(() => {
             console.info("case stop success");
         }, failCallback).catch(failCatch);
+        resetParam();
         await audioDecodeProcessor.reset().then(() => {
             console.info("case reset success");
         }, failCallback).catch(failCatch);
@@ -658,6 +662,7 @@ describe('AudioDecoderFunc', function () {
             audioDecodeProcessor.stop().then(() => {
                 console.info("case stop after 5s success");
             }, failCallback).catch(failCatch);});
+        resetParam();
         await audioDecodeProcessor.reset().then(() => {
             console.info("case reset success");
         }, failCallback).catch(failCatch);

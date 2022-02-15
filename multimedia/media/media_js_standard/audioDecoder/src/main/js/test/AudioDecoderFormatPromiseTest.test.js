@@ -157,6 +157,8 @@ describe('AudioDecoderFormatPromise', function () {
                 await audioDecodeProcessor.stop().then(() => {
                     console.log("stop success");
                 }, failCallback).catch(failCatch);
+                inputQueue = [];
+                outputQueue = [];
                 await audioDecodeProcessor.reset().then(() => {
                     console.log("reset success");
                 }, failCallback).catch(failCatch);

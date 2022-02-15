@@ -197,6 +197,7 @@ describe('AudioEncoderSTTPromise', function () {
         await audioEncodeProcessor.stop().then(() => {
             console.info("case stop success");
         }, failCallback).catch(failCatch);
+        resetParam();
         await audioEncodeProcessor.reset().then(() => {
             console.info("case reset success");
         }, failCallback).catch(failCatch);
@@ -283,6 +284,7 @@ describe('AudioEncoderSTTPromise', function () {
             case RESET:
                 mySteps.shift();
                 console.info(`case to reset`);
+                resetParam();
                 audioEncodeProcessor.reset().then(() => {
                     console.info(`case reset 1`);
                     nextStep(mySteps, done);

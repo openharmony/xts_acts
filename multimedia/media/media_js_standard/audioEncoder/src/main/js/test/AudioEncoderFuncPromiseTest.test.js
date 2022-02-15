@@ -100,6 +100,8 @@ describe('AudioEncoderFuncPromise', function () {
         timestamp = 0;
         sawInputEOS = false;
         sawOutputEOS = false;
+        inputQueue = [];
+        outputQueue = [];
     }
 
     function writeHead(path, len) {
@@ -165,6 +167,7 @@ describe('AudioEncoderFuncPromise', function () {
     }
 
     async function resetWork() {
+        resetParam();
         await audioEncodeProcessor.reset().then(() => {
             console.info("case reset success");
             if (needrelease) {
@@ -188,6 +191,7 @@ describe('AudioEncoderFuncPromise', function () {
         await audioEncodeProcessor.stop().then(() => {
             console.info("case stop success");
         }, failCallback).catch(failCatch);
+        resetParam();
         await audioEncodeProcessor.reset().then(() => {
             console.info("case reset success");
         }, failCallback).catch(failCatch);
@@ -515,6 +519,7 @@ describe('AudioEncoderFuncPromise', function () {
             audioEncodeProcessor.stop().then(() => {
                 console.info("stop after 5s success");
             }, failCallback).catch(failCatch);});
+        resetParam();
         await audioEncodeProcessor.reset().then(() => {
             console.info("reset success");
         }, failCallback).catch(failCatch);

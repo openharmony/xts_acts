@@ -147,6 +147,8 @@ describe('AudioDecoderFormatCallback', function () {
                 audioDecodeProcessor.stop((err) => {
                     expect(err).assertUndefined();
                     console.log("stop success");
+                    inputQueue = [];
+                    outputQueue = [];
                     audioDecodeProcessor.reset((err) => {
                         expect(err).assertUndefined();
                         console.log("reset success");

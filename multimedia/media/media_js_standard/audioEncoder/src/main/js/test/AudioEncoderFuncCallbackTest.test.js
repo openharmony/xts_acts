@@ -90,6 +90,8 @@ describe('AudioEncoderFuncCallback', function () {
         timestamp = 0;
         sawInputEOS = false;
         sawOutputEOS = false;
+        inputQueue = [];
+        outputQueue = [];
     }
 
     function writeHead(path, len) {
@@ -155,6 +157,7 @@ describe('AudioEncoderFuncCallback', function () {
     }
 
     async function resetWork() {
+        resetParam();
         audioEncodeProcessor.reset((err) => {
             expect(err).assertUndefined();
             console.info("case reset success");
@@ -180,6 +183,7 @@ describe('AudioEncoderFuncCallback', function () {
         audioEncodeProcessor.stop((err) => {
             expect(err).assertUndefined();
             console.info("case stop success");
+            resetParam();
             audioEncodeProcessor.reset((err) => {
                 expect(err).assertUndefined();
                 audioEncodeProcessor.release((err) => {
@@ -605,6 +609,7 @@ describe('AudioEncoderFuncCallback', function () {
             })
         });
         eventEmitter.on('reset', () => {
+            resetParam();
             audioEncodeProcessor.reset((err) => {
                 expect(err).assertUndefined();
                 console.info(`case reset 1`);

@@ -92,6 +92,8 @@ describe('AudioEncoderFuncPromise', function () {
         timestamp = 0;
         sawInputEOS = false;
         sawOutputEOS = false;
+        inputQueue = [];
+        outputQueue = [];
     }
 
     function writeHead(path, len) {
@@ -157,6 +159,7 @@ describe('AudioEncoderFuncPromise', function () {
     }
 
     async function resetWork(audioEncodeProcessor) {
+        resetParam();
         await audioEncodeProcessor.reset().then(() => {
             console.info("case reset success");
             if (needrelease) {
@@ -180,6 +183,7 @@ describe('AudioEncoderFuncPromise', function () {
         await audioEncodeProcessor.stop().then(() => {
             console.info("case stop success");
         }, failCallback).catch(failCatch);
+        resetParam();
         await audioEncodeProcessor.reset().then(() => {
             console.info("case reset success");
         }, failCallback).catch(failCatch);
@@ -301,6 +305,7 @@ describe('AudioEncoderFuncPromise', function () {
         console.info('case has created 16 encoders');
         console.info('case array: ' + array);
         for (let j = 0; j < 16; j++) {
+            resetParam();
             await array[j].reset().then(() => {
                 console.info("reset encoder " + j);
             }, failCallback).catch(failCatch);
