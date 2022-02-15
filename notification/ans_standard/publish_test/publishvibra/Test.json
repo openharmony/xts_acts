@@ -2,7 +2,7 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "60000",
+        "test-timeout": "80000",
         "package": "com.example.actsanspublishvibratest",
         "shell-timeout": "60000"
     },
