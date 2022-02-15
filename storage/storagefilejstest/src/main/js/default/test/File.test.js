@@ -2812,6 +2812,7 @@ describe('fileTest', function () {
         expect(null).assertFail();
       },
     });
+    sleep(2);
     file.copy({
       srcUri: 'internal://cache/File_Copy_005d',
       dstUri: 'internal://cache/File_Copy_005d_1',
