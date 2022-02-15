@@ -15,7 +15,7 @@
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-import cust from '@ohos.cust'
+import configPolicy from '@ohos.configPolicy'
 
 describe('GetCfgFilesTest', function () {
 
@@ -25,19 +25,19 @@ describe('GetCfgFilesTest', function () {
     * @tc.desc get getCfgFiles in callback mode
     */
     it('getCfgFiles_test_003', 0, async function (done) {
-        cust.getCfgFiles('custxmltest/none.xml', (error, value) => {
+        configPolicy.getCfgFiles('custxmltest/none.xml', (error, value) => {
             expect(value.length == 0).assertTrue();
             console.log('CustTest getCfgFiles_test_003, none.xml:' + value);
         });
-        cust.getCfgFiles('custxmltest/system.xml', (error, value) => {
+        configPolicy.getCfgFiles('custxmltest/system.xml', (error, value) => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getCfgFiles_test_003, system.xml:' + value);
         });
-        cust.getCfgFiles('custxmltest/both.xml', (error, value) => {
+        configPolicy.getCfgFiles('custxmltest/both.xml', (error, value) => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getCfgFiles_test_003, both.xml:' + value);
         });
-        cust.getCfgFiles('custxmltest/user.xml', (error, value) => {
+        configPolicy.getCfgFiles('custxmltest/user.xml', (error, value) => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getCfgFiles_test_003, user.xml:' + value);
         });
@@ -50,19 +50,19 @@ describe('GetCfgFilesTest', function () {
     * @tc.desc get getCfgFiles in promise mode
     */
     it('getCfgFiles_test_004', 0, async function (done) {
-        cust.getCfgFiles('custxmltest/none.xml').then(value => {
+        configPolicy.getCfgFiles('custxmltest/none.xml').then(value => {
             expect(value.length == 0).assertTrue();
             console.log('CustTest getCfgFiles_test_004, none.xml:' + value);
         });
-        cust.getCfgFiles('custxmltest/system.xml').then(value => {
+        configPolicy.getCfgFiles('custxmltest/system.xml').then(value => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getCfgFiles_test_004, system.xml:' + value);
         });
-        cust.getCfgFiles('custxmltest/both.xml').then(value => {
+        configPolicy.getCfgFiles('custxmltest/both.xml').then(value => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getCfgFiles_test_004, both.xml:' + value);
         });
-        cust.getCfgFiles('custxmltest/user.xml').then(value => {
+        configPolicy.getCfgFiles('custxmltest/user.xml').then(value => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getCfgFiles_test_004, user.xml:' + value);
         });
