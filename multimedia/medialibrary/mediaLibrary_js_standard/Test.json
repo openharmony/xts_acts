@@ -12,16 +12,24 @@
             "pre-push": [
             ],
             "push": [
+                "./resource/medialibrary/01.jpg ->/storage/media/100/local/files",
+                "./resource/medialibrary/01.mp3 ->/storage/media/100/local/files",
+                "./resource/medialibrary/01.mp4 ->/storage/media/100/local/files"
             ]
         },
         {
             "type": "ShellKit",
             "run-command": [
-                "chmod -R 777 /storage/media/*",
+                "for n in `seq 1 999`; do      cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/copy-$n.jpg; done;",
+                "for n in `seq 1 999`; do      cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/copy-$n.mp3; done;",
+                "for n in `seq 1 999`; do      cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/copy-$n.mp4; done;",
+                "chmod -R 777 /storage/media/100/local/files/*",
+                "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",
                 "setenforce 0"
             ],
             "teardown-command":[
-                "setenforce 1"
+                "setenforce 1",
+                "rm -rf /storage/media/100/local/files/*"
             ]
         },
         {
