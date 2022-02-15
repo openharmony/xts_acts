@@ -15,7 +15,7 @@
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-import cust from '@ohos.cust'
+import configPolicy from '@ohos.configPolicy'
 
 describe('GetCfgDirListTest', function () {
 
@@ -25,7 +25,7 @@ describe('GetCfgDirListTest', function () {
     * @tc.desc get getCfgDirList in callback mode
     */
     it('getCfgDirList_test_005', 0, async function (done) {
-        cust.getCfgDirList((error, value) => {
+        configPolicy.getCfgDirList((error, value) => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getCfgDirList_test_005:' + value);
         });
@@ -38,7 +38,7 @@ describe('GetCfgDirListTest', function () {
     * @tc.desc get getCfgDirList in promise mode
     */
     it('getCfgDirList_test_006', 0, async function (done) {
-        cust.getCfgDirList().then(value => {
+        configPolicy.getCfgDirList().then(value => {
             expect(value.length != 0).assertTrue();
             console.log('CustTest getCfgDirList_test_006:' + value);
         });
