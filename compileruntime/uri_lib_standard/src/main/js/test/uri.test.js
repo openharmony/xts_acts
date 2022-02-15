@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-import  Uri from '@ohos.uri'
+import  URI from '@ohos.uri'
 describe('UriTest', function () {
 
     /**
@@ -24,7 +24,7 @@ describe('UriTest', function () {
      */
     it('testConstructor001', 0, function () {
         try {
-            let that = new Uri.URI('#http://username:password@host:8080/directory/file?foo=1&bar=2');
+            let that = new URI('#http://username:password@host:8080/directory/file?foo=1&bar=2');
         } catch (err) {
             expect(err.toString()).assertEqual("Error: #It can't be the first");
         }
@@ -38,7 +38,7 @@ describe('UriTest', function () {
      */
     it('testConstructor002', 0, function () {
         try {
-            let that = new Uri.URI({name: 'gaogao'});
+            let that = new URI({name: 'gaogao'});
         } catch (err) {
             expect(err.toString()).assertEqual("Error: input type err");
         }
@@ -52,7 +52,7 @@ describe('UriTest', function () {
      */
     it('testConstructor003', 0, function () {
         try {
-            let that = new Uri.URI('ht/tp://username:pas sword@host:8080/directory/file?foo=1&bar=2');
+            let that = new URI('ht/tp://username:pas sword@host:8080/directory/file?foo=1&bar=2');
         } catch (err) {
             expect(err.toString()).assertEqual("Error: SpecialPath does not conform to the rule");
         }
@@ -66,7 +66,7 @@ describe('UriTest', function () {
      */
     it('testConstructor004', 0, function () {
         try {
-            let that = new Uri.URI('http://username:password@[::]:8080/directory/file?Query#gaogao faofao');
+            let that = new URI('http://username:password@[::]:8080/directory/file?Query#gaogao faofao');
         } catch (err) {
             expect(err.toString()).assertEqual("Error: Fragment does not conform to the rule");
         }
@@ -80,7 +80,7 @@ describe('UriTest', function () {
      */
     it('testConstructor005', 0, function () {
         try {
-            let that = new Uri.URI('http://username:password@host:8080/directory/file?foo^=1&bar=2#gaogaofaofao');
+            let that = new URI('http://username:password@host:8080/directory/file?foo^=1&bar=2#gaogaofaofao');
         } catch (err) {
             expect(err.toString()).assertEqual("Error: Query does not conform to the rule");
         }
@@ -94,7 +94,7 @@ describe('UriTest', function () {
      */
     it('testConstructor006', 0, function () {
         try {
-            let that = new Uri.URI('1http://username:password@host:8080/directory/file?foo=1&bar=2#gaogaofaofao');
+            let that = new URI('1http://username:password@host:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
             expect(err.toString()).assertEqual("Error: Scheme the first character must be a letter");
         }
@@ -108,7 +108,7 @@ describe('UriTest', function () {
      */
     it('testConstructor007', 0, function () {
         try {
-            let that = new Uri.URI('ht@tp://username:password@host:8080/directory/file?foo=1&bar=2#gaogaofaofao');
+            let that = new URI('ht@tp://username:password@host:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
             expect(err.toString()).assertEqual("Error: scheme does not conform to the rule");
         }
@@ -122,7 +122,7 @@ describe('UriTest', function () {
      */
     it('testConstructor008', 0, function () {
         try {
-            let that = new Uri.URI('http://username:password@[::]:80r80/directory/file?foo=1&bar=2#gaogaofaofao');
+            let that = new URI('http://username:password@[::]:80r80/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
             expect(err.toString()).assertEqual("Error: Prot does not conform to the rule");
         }
@@ -136,7 +136,7 @@ describe('UriTest', function () {
      */
     it('testConstructor009', 0, function () {
         try {
-            let that = new Uri.URI('http://username:password@[::12:55:8080/directory/file?foo=1&bar=2#gaogaofaofao');
+            let that = new URI('http://username:password@[::12:55:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
             expect(err.toString()).assertEqual("Error: IPv6 is missing a closing bracket");
         }
@@ -150,7 +150,7 @@ describe('UriTest', function () {
      */
     it('testConstructor010', 0, function () {
         try {
-            let that = new Uri.URI('http://username:pa^ssword@[::12:55]:8080/directory/file?foo=1&bar=2#gaogaofaofao');
+            let that = new URI('http://username:pa^ssword@[::12:55]:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
             expect(err.toString()).assertEqual("Error: userInfo does not conform to the rule");
         }
@@ -164,7 +164,7 @@ describe('UriTest', function () {
      */
     it('testConstructor011', 0, function () {
         try {
-            let that = new Uri.URI('http://username:password@[::1你2:55]:8080/directory/file?foo=1&bar=2#gaogaofaofao');
+            let that = new URI('http://username:password@[::1你2:55]:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
             expect(err.toString()).assertEqual("Error: ipv6 does not conform to the rule");
         }
@@ -177,7 +177,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor012', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@www.baidu.com:99/path/path?query#fagment');
+        let gaogao = new URI('http://gg:gaogao@www.baidu.com:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@www.baidu.com:99");
         expect(gaogao.ssp).assertEqual("//gg:gaogao@www.baidu.com:99/path/path?query");
@@ -196,7 +196,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor013', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@[1080::8:800:200C:417A]:99/path/66path1?query#fagment');
+        let gaogao = new URI('http://gg:gaogao@[1080::8:800:200C:417A]:99/path/66path1?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@[1080::8:800:200C:417A]:99");
         expect(gaogao.ssp).assertEqual("//gg:gaogao@[1080::8:800:200C:417A]:99/path/66path1?query");
@@ -215,7 +215,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor014', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@[::]:88/path/path66?foooo#gaogao');
+        let gaogao = new URI('http://gg:gaogao@[::]:88/path/path66?foooo#gaogao');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@[::]:88");
         expect(gaogao.ssp).assertEqual("//gg:gaogao@[::]:88/path/path66?foooo");
@@ -234,7 +234,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor015', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path/66path1?query#fagment');
+        let gaogao = new URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path/66path1?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@[1:0:0:1:2:1:2:1]:99");
         expect(gaogao.ssp).assertEqual("//gg:gaogao@[1:0:0:1:2:1:2:1]:99/path/66path1?query");
@@ -253,7 +253,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor016', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@[::FFFF:129.144.52.38]:99/path/path?query#fagment');
+        let gaogao = new URI('http://gg:gaogao@[::FFFF:129.144.52.38]:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@[::FFFF:129.144.52.38]:99");
         expect(gaogao.ssp).assertEqual("//gg:gaogao@[::FFFF:129.144.52.38]:99/path/path?query");
@@ -272,7 +272,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor017', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@[::192.9.5.5]:99/path/path?query#fagment');
+        let gaogao = new URI('http://gg:gaogao@[::192.9.5.5]:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@[::192.9.5.5]:99");
         expect(gaogao.ssp).assertEqual("//gg:gaogao@[::192.9.5.5]:99/path/path?query");
@@ -291,7 +291,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor018', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@[22::22:2:2%ss]:99/path/path?query#fagment');
+        let gaogao = new URI('http://gg:gaogao@[22::22:2:2%ss]:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@[22::22:2:2%ss]:99");
         expect(gaogao.ssp).assertEqual("//gg:gaogao@[22::22:2:2%ss]:99/path/path?query");
@@ -311,7 +311,7 @@ describe('UriTest', function () {
      */
     it('testConstructor019', 0, function () {
         let gaogao =
-		new Uri.URI('http://gg:gaogao@[fe80:0000:0001:0000:0440:44ff:1233:5678]:99/path/path?query#fagment');
+		new URI('http://gg:gaogao@[fe80:0000:0001:0000:0440:44ff:1233:5678]:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@[fe80:0000:0001:0000:0440:44ff:1233:5678]:99");
         expect(gaogao.ssp).assertEqual("//gg:gaogao@[fe80:0000:0001:0000:0440:44ff:1233:5678]:99/path/path?query");
@@ -330,7 +330,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor020', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@[fe80::0001:0000]:99/path/path?query#fagment');
+        let gaogao = new URI('http://gg:gaogao@[fe80::0001:0000]:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@[fe80::0001:0000]:99");
         expect(gaogao.ssp).assertEqual("//gg:gaogao@[fe80::0001:0000]:99/path/path?query");
@@ -349,7 +349,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor021', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@199.98.55.44:99/path/path?query#fagment');
+        let gaogao = new URI('http://gg:gaogao@199.98.55.44:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@199.98.55.44:99");
         expect(gaogao.ssp).assertEqual("//gg:gaogao@199.98.55.44:99/path/path?query");
@@ -368,7 +368,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor022', 0, function () {
-        let gaogao = new Uri.URI('http://16.9.5.4:99/path/path?query#fagment');
+        let gaogao = new URI('http://16.9.5.4:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("16.9.5.4:99");
         expect(gaogao.ssp).assertEqual("//16.9.5.4:99/path/path?query");
@@ -387,7 +387,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor023', 0, function () {
-        let gaogao = new Uri.URI('http://49.99.54.12:50/path/path23?query#fagment');
+        let gaogao = new URI('http://49.99.54.12:50/path/path23?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("49.99.54.12:50");
         expect(gaogao.ssp).assertEqual("//49.99.54.12:50/path/path23?query");
@@ -406,7 +406,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor024', 0, function () {
-        let gaogao = new Uri.URI('http://user@49.10pe8.54.12:80/path/path23?query#qwer');
+        let gaogao = new URI('http://user@49.10pe8.54.12:80/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("user@49.10pe8.54.12:80");
         expect(gaogao.ssp).assertEqual("//user@49.10pe8.54.12:80/path/path23?query");
@@ -425,7 +425,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor025', 0, function () {
-        let gaogao = new Uri.URI('http://user@www.baidu.com/path/path23?query#qwer');
+        let gaogao = new URI('http://user@www.baidu.com/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("user@www.baidu.com");
         expect(gaogao.ssp).assertEqual("//user@www.baidu.com/path/path23?query");
@@ -444,7 +444,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor026', 0, function () {
-        let gaogao = new Uri.URI('http://user@www.hw.com:77/path/path23?query#qwer');
+        let gaogao = new URI('http://user@www.hw.com:77/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("user@www.hw.com:77");
         expect(gaogao.ssp).assertEqual("//user@www.hw.com:77/path/path23?query");
@@ -463,7 +463,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor027', 0, function () {
-        let gaogao = new Uri.URI('ht2tp://user@www.h12343w.com:77/path/path23?query#qwer');
+        let gaogao = new URI('ht2tp://user@www.h12343w.com:77/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("ht2tp");
         expect(gaogao.authority).assertEqual("user@www.h12343w.com:77");
         expect(gaogao.ssp).assertEqual("//user@www.h12343w.com:77/path/path23?query");
@@ -482,7 +482,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor028', 0, function () {
-        let gaogao = new Uri.URI('ht2tp://user@www.1hw.1com:77/path/path23?query#qwer');
+        let gaogao = new URI('ht2tp://user@www.1hw.1com:77/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("ht2tp");
         expect(gaogao.authority).assertEqual("user@www.1hw.1com:77");
         expect(gaogao.ssp).assertEqual("//user@www.1hw.1com:77/path/path23?query");
@@ -501,7 +501,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor029', 0, function () {
-        let gaogao = new Uri.URI('http://user@hosthost/path/path23?query#qwer');
+        let gaogao = new URI('http://user@hosthost/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("user@hosthost");
         expect(gaogao.ssp).assertEqual("//user@hosthost/path/path23?query");
@@ -520,7 +520,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor030', 0, function () {
-        let gaogao = new Uri.URI('http://user@[::]/path/path23?query#qwer');
+        let gaogao = new URI('http://user@[::]/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("user@[::]");
         expect(gaogao.ssp).assertEqual("//user@[::]/path/path23?query");
@@ -539,7 +539,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testConstructor031', 0, function () {
-        let gaogao = new Uri.URI('http://[::192:0:5]/path/path23?query#qwer');
+        let gaogao = new URI('http://[::192:0:5]/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("[::192:0:5]");
         expect(gaogao.ssp).assertEqual("//[::192:0:5]/path/path23?query");
@@ -558,7 +558,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testEquals001', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
+        let gaogao = new URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
         let gaogao1 = gaogao;
         let res = gaogao.equals(gaogao1);
         expect(res).assertEqual(true);
@@ -571,8 +571,8 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testEquals002', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
-        let gaogao1 = new Uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
+        let gaogao = new URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
+        let gaogao1 = new URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
         let res = gaogao.equals(gaogao1);
         expect(res).assertEqual(true);
     })
@@ -584,8 +584,8 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testEquals003', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
-        let gaogao1 = new Uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment123');
+        let gaogao = new URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
+        let gaogao1 = new URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment123');
         let res = gaogao.equals(gaogao1);
         expect(res).assertEqual(false);
     })
@@ -597,8 +597,8 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testEquals004', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@wwwaaa:99/path1?query#fagment');
-        let gaogao1 = new Uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment123');
+        let gaogao = new URI('http://gg:gaogao@wwwaaa:99/path1?query#fagment');
+        let gaogao1 = new URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment123');
         let res = gaogao.equals(gaogao1);
         expect(res).assertEqual(false);
     })
@@ -610,8 +610,8 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testEquals005', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
-        let gaogao1 = new Uri.URI('http://[1:0:0:1:2:1:2:1]/path1?query#fagment123');
+        let gaogao = new URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
+        let gaogao1 = new URI('http://[1:0:0:1:2:1:2:1]/path1?query#fagment123');
         let res = gaogao.equals(gaogao1);
         expect(res).assertEqual(false);
     })
@@ -623,7 +623,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testNormalize001', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path/66./../././mm/.././path1?query#fagment');
+        let gaogao = new URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path/66./../././mm/.././path1?query#fagment');
         let res = gaogao.normalize();
         expect(res.path).assertEqual("/path/path1");
         expect(res.toString()).assertEqual("http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path/path1?query#fagment");
@@ -636,7 +636,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testNormalize002', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../../path?query#fagment');
+        let gaogao = new URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../../path?query#fagment');
         let res = gaogao.normalize();
         expect(res.path).assertEqual("/../../path");
         expect(res.toString()).assertEqual("http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../../path?query#fagment");
@@ -649,7 +649,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testNormalize003', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../../path/.././../aa/bb/cc?query#fagment');
+        let gaogao = new URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../../path/.././../aa/bb/cc?query#fagment');
         let res = gaogao.normalize();
         expect(res.path).assertEqual("/../../../aa/bb/cc");
         expect(res.toString()).assertEqual("http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../../../aa/bb/cc?query#fagment");
@@ -662,7 +662,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testNormalize004', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../path/.././../aa/bb/cc?query');
+        let gaogao = new URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../path/.././../aa/bb/cc?query');
         let res = gaogao.normalize();
         expect(res.path).assertEqual("/../../aa/bb/cc");
         expect(res.toString()).assertEqual("http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../../aa/bb/cc?query");
@@ -675,7 +675,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testNormalize005', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/./path/./aa/bb/cc?query#fagment');
+        let gaogao = new URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/./path/./aa/bb/cc?query#fagment');
         let res = gaogao.normalize();
         expect(res.path).assertEqual("/path/aa/bb/cc");
         expect(res.toString()).assertEqual("http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path/aa/bb/cc?query#fagment");
@@ -688,7 +688,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testToString001', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../../path/.././../aa/bb/cc?query#fagment');
+        let gaogao = new URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../../path/.././../aa/bb/cc?query#fagment');
         let res = gaogao.toString();
         expect(res).assertEqual('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../../path/.././../aa/bb/cc?query#fagment');
     })
@@ -700,7 +700,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testToString002', 0, function () {
-        let gaogao = new Uri.URI('htt1p://gg:gaogao@[::192.9.5.5]:99/path/66path1?query#fagment');
+        let gaogao = new URI('htt1p://gg:gaogao@[::192.9.5.5]:99/path/66path1?query#fagment');
         let res = gaogao.toString();
         expect(res).assertEqual('htt1p://gg:gaogao@[::192.9.5.5]:99/path/66path1?query#fagment');
     })
@@ -712,7 +712,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testToString003', 0, function () {
-        let gaogao = new Uri.URI('ftp://username:password@www.baidu.com:88/path?query#fagment');
+        let gaogao = new URI('ftp://username:password@www.baidu.com:88/path?query#fagment');
         let res = gaogao.toString();
         expect(res).assertEqual('ftp://username:password@www.baidu.com:88/path?query#fagment');
     })
@@ -724,7 +724,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testToString004', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gao你好gao@199.98.55.44:99/path/p你好ath?qu你好ery#fag你好ment');
+        let gaogao = new URI('http://gg:gao你好gao@199.98.55.44:99/path/p你好ath?qu你好ery#fag你好ment');
         let res = gaogao.toString();
         expect(res).assertEqual('http://gg:gao%E4%BD%A0%E5%A5%BDgao@199.98.55.44:99/path/' +
         'p%E4%BD%A0%E5%A5%BDath?qu%E4%BD%A0%E5%A5%BDery#fag%E4%BD%A0%E5%A5%BDment');
@@ -737,7 +737,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testToString005', 0, function () {
-        let gaogao = new Uri.URI('http://gg:gaogao@199.98.55.44:99/path/path?query#fagment');
+        let gaogao = new URI('http://gg:gaogao@199.98.55.44:99/path/path?query#fagment');
         let res = gaogao.toString();
         expect(res).assertEqual('http://gg:gaogao@199.98.55.44:99/path/path?query#fagment');
     })
@@ -749,7 +749,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testCheckIsAbsolute001', 0, function () {
-        let gaogao = new Uri.URI('f/tp://username:password@www.baidu.com:88/path?query#fagment');
+        let gaogao = new URI('f/tp://username:password@www.baidu.com:88/path?query#fagment');
         let res = gaogao.checkIsAbsolute();
         expect(res).assertEqual(false);
     })
@@ -761,7 +761,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testCheckIsAbsolute002', 0, function () {
-        let gaogao = new Uri.URI('ftp://username:password@www.baidu.com:88/path?query#fagment');
+        let gaogao = new URI('ftp://username:password@www.baidu.com:88/path?query#fagment');
         let res = gaogao.checkIsAbsolute();
         expect(res).assertEqual(true);
     })
@@ -773,7 +773,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testCheckIsAbsolute003', 0, function () {
-        let gaogao = new Uri.URI('htt/p://username:password@www.baidu.com:88/path?query#fagment');
+        let gaogao = new URI('htt/p://username:password@www.baidu.com:88/path?query#fagment');
         let res = gaogao.checkIsAbsolute();
         expect(res).assertEqual(false);
     })
@@ -785,7 +785,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testCheckIsAbsolute004', 0, function () {
-        let gaogao = new Uri.URI('https://username:password@www.baidu.com:88/path?query#fagment');
+        let gaogao = new URI('https://username:password@www.baidu.com:88/path?query#fagment');
         let res = gaogao.checkIsAbsolute();
         expect(res).assertEqual(true);
     })
@@ -797,7 +797,7 @@ describe('UriTest', function () {
      * @tc.author: zhaoduwei
      */
     it('testCheckIsAbsolute005', 0, function () {
-        let gaogao = new Uri.URI('http1://username:password@www.baidu.com:88/path?query#fagment');
+        let gaogao = new URI('http1://username:password@www.baidu.com:88/path?query#fagment');
         let res = gaogao.checkIsAbsolute();
         expect(res).assertEqual(true);
     })
