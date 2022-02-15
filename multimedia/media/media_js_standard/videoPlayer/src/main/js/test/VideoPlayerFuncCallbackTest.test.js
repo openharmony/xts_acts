@@ -14,10 +14,11 @@
  */
 
 import media from '@ohos.multimedia.media'
+import Fileio from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('VideoPlayerFuncCallbackTest', function () {
-    const AUDIO_SOURCE = 'file://data/media/01.mp4';
+    const AUDIO_SOURCE = 'file://data/media/H264_AAC.mp4';
     const PLAY_TIME = 3000;
     const SEEK_TIME = 5000;
     const SEEK_CLOSEST = 3;
@@ -25,7 +26,6 @@ describe('VideoPlayerFuncCallbackTest', function () {
     const HEIGHT_VALUE = 480;
     const DURATION_TIME = 10034;
     const CREATE_EVENT = 'create';
-    const GETSURFACE_EVENT = 'getDisplaySurface';
     const SETSURFACE_EVENT = 'setDisplaySurface';
     const GETDESCRIPTION = 'getTrackDescription';
     const PREPARE_EVENT = 'prepare';
@@ -42,11 +42,12 @@ describe('VideoPlayerFuncCallbackTest', function () {
     const VOLUME_VALUE = 1;
     const SPEED_VALUE = 1;
     const DELTA_TIME = 1000;
-    let surfaceID = null;
+    let surfaceID = '';
     let events = require('events');
     let eventEmitter = new events.EventEmitter();
 
     beforeAll(function() {
+        getSurfaceID();
         console.info('beforeAll case');
     })
 
@@ -61,6 +62,19 @@ describe('VideoPlayerFuncCallbackTest', function () {
     afterAll(function() {
         console.info('afterAll case');
     })
+
+    function getSurfaceID() {
+        let surfaceIDTest = new ArrayBuffer(20);
+        let readStreamSync = Fileio.createStreamSync('/data/media/surfaceID.txt', 'rb');
+        readStreamSync.readSync(surfaceIDTest, {length : 13});
+        let view = new Uint8Array(surfaceIDTest);
+        for (let i = 0; i < 13; i++) {
+            let value = view[i] - 48;
+            surfaceID = surfaceID + '' + value;
+        }
+        console.info('case getSurfaceID is ' + surfaceID);
+        readStreamSync.closeSync();
+    }
 
     function sleep(time) {
         for(let t = Date.now(); Date.now() - t <= time;);
@@ -130,19 +144,6 @@ describe('VideoPlayerFuncCallbackTest', function () {
                 printfError(err, done);
             }
         });
-    });
-
-    eventEmitter.on(GETSURFACE_EVENT, (videoPlayer, steps, done) => {
-        steps.shift();
-        videoPlayer.getDisplaySurface((err, outSurface) => {
-            if (typeof (err) == 'undefined') {
-                surfaceID = outSurface;
-                console.info('case getDisplaySurface success!!');
-                toNextStep(videoPlayer, steps, done);
-            } else {
-                printfError(err, done);
-            }
-        })
     });
 
     eventEmitter.on(SETSURFACE_EVENT, (videoPlayer, steps, done) => {
@@ -260,7 +261,6 @@ describe('VideoPlayerFuncCallbackTest', function () {
         steps.shift();
         videoPlayer.seek(seekTime, (err, seekDoneTime) => {
             if (typeof (err) == 'undefined') {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case seek success and seekDoneTime is '+ seekDoneTime);
                 toNextStep(videoPlayer, steps, done);
             } else {
@@ -278,7 +278,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
                 if (seekTime > DURATION_TIME) {
                     seekTime = DURATION_TIME;
                 }
-                expect(seekDoneTime).assertEqual(SEEK_TIME);
+                expect(seekDoneTime).assertEqual(seekTime);
                 expect(videoPlayer.currentTime + DELTA_TIME).assertClose(seekDoneTime + DELTA_TIME, DELTA_TIME);
                 console.info('case seek success and seekDoneTime is '+ seekDoneTime);
                 toNextStep(videoPlayer, steps, done);
@@ -326,7 +326,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0100', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -341,7 +341,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0200', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT,
             PLAY_EVENT, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -356,7 +356,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0300', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             PAUSE_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -371,7 +371,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0400', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT,
             PLAY_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -386,7 +386,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0500', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT,
             PLAY_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -401,7 +401,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0600', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -416,7 +416,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0700', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SEEK_MODE_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -431,7 +431,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0800', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -446,7 +446,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0900', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -461,7 +461,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1000', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT,
             GETDESCRIPTION, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -476,7 +476,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1200', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             PAUSE_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -491,7 +491,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1300', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             PAUSE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -506,7 +506,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1400', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             PAUSE_EVENT, SEEK_EVENT, SEEK_TIME, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -521,7 +521,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1500', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             PAUSE_EVENT, SEEK_MODE_EVENT, SEEK_TIME, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -536,7 +536,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1600', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             PAUSE_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -551,7 +551,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1700', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             PAUSE_EVENT, SETSPEED_EVENT, SPEED_VALUE, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -566,7 +566,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1800', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             STOP_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -581,8 +581,8 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1900', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            STOP_EVENT, RESET_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+            STOP_EVENT, RESET_EVENT, SETSURFACE_EVENT, PREPARE_EVENT,
             PLAY_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -597,7 +597,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2000', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SEEK_EVENT, 0, PAUSE_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -612,7 +612,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2100', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SEEK_MODE_EVENT, 0, PAUSE_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -627,7 +627,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2200', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SEEK_EVENT, DURATION_TIME, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -642,7 +642,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2300', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SEEK_MODE_EVENT, DURATION_TIME, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -657,7 +657,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2400', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SEEK_EVENT, DURATION_TIME + 1, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -672,7 +672,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2500', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SEEK_MODE_EVENT, DURATION_TIME + 1, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -687,7 +687,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2600', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SETVOLUME_EVENT, 0, SETVOLUME_EVENT, 0.2, SETVOLUME_EVENT, 0.4, SETVOLUME_EVENT, 0.6,
             SETVOLUME_EVENT, 0.8, SETVOLUME_EVENT, 1, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
@@ -703,7 +703,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2700', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SETSPEED_EVENT, 0, SETSPEED_EVENT, 1, SETSPEED_EVENT, 2,
             SETSPEED_EVENT, 3, SETSPEED_EVENT, 4, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);

@@ -14,10 +14,11 @@
  */
 
 import media from '@ohos.multimedia.media'
+import Fileio from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('VideoPlayerFuncPromiseTest', function () {
-    const AUDIO_SOURCE = 'file://data/media/01.mp4';
+    const AUDIO_SOURCE = 'file://data/media/H264_AAC.mp4';
     const PLAY_TIME = 3000;
     const SEEK_TIME = 5000;
     const SEEK_CLOSEST = 3;
@@ -25,8 +26,9 @@ describe('VideoPlayerFuncPromiseTest', function () {
     const HEIGHT_VALUE = 480;
     const DURATION_TIME = 10034;
     const DELTA_TIME = 1000;
-
+    let surfaceID = '';
     beforeAll(function() {
+        getSurfaceID();
         console.info('beforeAll case');
     })
 
@@ -41,6 +43,19 @@ describe('VideoPlayerFuncPromiseTest', function () {
     afterAll(function() {
         console.info('afterAll case');
     })
+
+    function getSurfaceID() {
+        let surfaceIDTest = new ArrayBuffer(20);
+        let readStreamSync = Fileio.createStreamSync('/data/media/surfaceID.txt', 'rb');
+        readStreamSync.readSync(surfaceIDTest, {length : 13});
+        let view = new Uint8Array(surfaceIDTest);
+        for (let i = 0; i < 13; i++) {
+            let value = view[i] - 48;
+            surfaceID = surfaceID + '' + value;
+        }
+        console.info('case getSurfaceID is ' + surfaceID);
+        readStreamSync.closeSync();
+    }
 
     function sleep(time) {
         for(let t = Date.now(); Date.now() - t <= time;);
@@ -105,7 +120,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_0100', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 console.info('case createVideoPlayer success');
@@ -117,12 +131,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            console.info('case getDisplaySurface success and surfaceID is ' + outSurface);
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             console.info('case setDisplaySurface success');
             expect(videoPlayer.state).assertEqual('idle');
@@ -158,7 +167,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_0200', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -169,12 +177,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            console.info('case getDisplaySurface success and surfaceID is ' + outSurface);
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             console.info('case setDisplaySurface success');
             expect(videoPlayer.state).assertEqual('idle');
@@ -215,7 +218,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_0300', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -226,12 +228,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            console.info('case getDisplaySurface success and surfaceID is ' + outSurface);
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -278,7 +275,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_0400', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -289,12 +285,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            console.info('case getDisplaySurface success and surfaceID is ' + outSurface);
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -335,7 +326,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_0500', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -346,12 +336,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            console.info('case getDisplaySurface success and surfaceID is ' + outSurface);
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -392,7 +377,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_0600', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -403,12 +387,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            console.info('case getDisplaySurface success and surfaceID is ' + outSurface);
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -449,7 +428,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_0700', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -460,12 +438,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            console.info('case getDisplaySurface success and surfaceID is ' + outSurface);
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -508,7 +481,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_0800', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -519,11 +491,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -564,7 +532,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_0900', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -575,11 +542,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -620,7 +583,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1000', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         let arrayDescription = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -632,11 +594,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -673,7 +631,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1100', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -684,11 +641,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -733,7 +686,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1200', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -744,11 +696,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -794,7 +742,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1300', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -805,11 +752,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -855,7 +798,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1400', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -866,11 +808,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -922,7 +860,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1500', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -933,11 +870,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -990,7 +923,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1600', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -1001,11 +933,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1057,7 +985,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1700', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -1068,11 +995,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1124,7 +1047,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1800', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -1135,11 +1057,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1185,7 +1103,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1900', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -1196,11 +1113,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1270,7 +1183,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_2000', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -1281,11 +1193,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1336,7 +1244,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_2100', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -1347,11 +1254,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1403,7 +1306,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_2200', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -1423,11 +1325,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }, failureCallback).catch(catchCallback);
         });
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1452,6 +1350,11 @@ describe('VideoPlayerFuncPromiseTest', function () {
             expect(videoPlayer.currentTime + DELTA_TIME).assertClose(seekDoneTime + DELTA_TIME, DELTA_TIME);
             console.info('case seek called and seekDoneTime is' + seekDoneTime);
         }, failureCallback).catch(catchCallback);
+
+        await videoPlayer.release().then(() => {
+            console.info('case release called!!');
+        }, failureCallback).catch(catchCallback);
+        done();
     })
 
     /* *
@@ -1464,7 +1367,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_2300', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -1484,11 +1386,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }, failureCallback).catch(catchCallback);
         });
         
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1514,6 +1412,11 @@ describe('VideoPlayerFuncPromiseTest', function () {
             expect(videoPlayer.currentTime).assertEqual(DURATION_TIME);
             console.info('case seek called and seekDoneTime is' + seekDoneTime);
         }, failureCallback).catch(catchCallback);
+
+        await videoPlayer.release().then(() => {
+            console.info('case release called!!');
+        }, failureCallback).catch(catchCallback);
+        done();
     })
 
     /* *
@@ -1526,7 +1429,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_2400', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -1546,11 +1448,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }, failureCallback).catch(catchCallback);
         });
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1577,6 +1475,11 @@ describe('VideoPlayerFuncPromiseTest', function () {
             console.info('case seek out of duration called');
             done();
         }).catch(catchCallback);
+
+        await videoPlayer.release().then(() => {
+            console.info('case release called!!');
+        }, failureCallback).catch(catchCallback);
+        done();
     })
 
     /* *
@@ -1589,7 +1492,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_2500', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -1609,11 +1511,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }, failureCallback).catch(catchCallback);
         });
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1641,6 +1539,11 @@ describe('VideoPlayerFuncPromiseTest', function () {
             console.info('case seek out of duration called');
             done();
         }).catch(catchCallback);
+
+        await videoPlayer.release().then(() => {
+            console.info('case release called!!');
+        }, failureCallback).catch(catchCallback);
+        done();
     })
 
     /* *
@@ -1653,7 +1556,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_2600', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -1664,11 +1566,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1711,7 +1609,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_2700', 0, async function (done) {
         let videoPlayer = null;
-        let surfaceID = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
@@ -1722,11 +1619,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
+        videoPlayer.url = AUDIO_SOURCE;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
