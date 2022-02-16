@@ -13,8 +13,7 @@
     margin: 10px;
 }
 .btn {
-    background-color: #F2F2F2;
-    text-color: #0D81F2;
+    background-color: brown;
     margin: 10px;
 }
 .txt {
@@ -44,6 +43,5 @@
     align-items: center;
 }
 .btn-txt {
-    background-color: #F2F2F2;
-    text-color: #0D81F2;
+    background-color: brown;
 }

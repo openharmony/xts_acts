@@ -204,17 +204,17 @@
         </div>
         <divider style="color: #000000; stroke-width: 2px;" vertical="false">
         </divider>
-        <div class="accessibility-container">
+        <div class="access-container">
             <text class="title">
                 无障碍
             </text>
             <text class="sub-title">
                 rating无障碍1
             </text>
-            <rating class="accessibility1"  rating="5" accessibilitygroup ="true"
-                     accessibilitytext="这是rating"
-                     accessibilitydescription="点击此按键会弹出一个对话框"
-                     accessibilityimportance="no-hide-descendants">
+            <rating class="access1"  rating="5" accessibilitygroup ="true"
+                    accessibilitytext="这是rating"
+                    accessibilitydescription="点击此按键会弹出一个对话框"
+                    accessibilityimportance="no-hide-descendants">
             </rating>
         </div>
         <divider style="color: #000000; stroke-width: 2px;" vertical="false">

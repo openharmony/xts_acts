@@ -64,7 +64,7 @@
     height: 20%;
 }
 
-.accessibility-container{
+.access-container{
     flex-direction: column;
     height: 20%;
 }
@@ -397,7 +397,7 @@ refresh{
     background: repeating-linear-gradient(to right, rgba(255, 255, 0, 1) 30px,rgba(0, 0, 255, .5) 60px);
 }
 
-.accessibility1{
+.access1{
     color: #321124;
     stroke-width: 30px;
     line-cap: square;

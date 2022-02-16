@@ -147,14 +147,14 @@
         </div>
         <divider style="color: #000000; stroke-width: 2px;" vertical="false">
         </divider>
-        <div class="accessibility-container">
+        <div class="access-container">
             <text class="title">
                 无障碍
             </text>
             <text class="sub-title">
                 divider无障碍1
             </text>
-            <divider class="accessibility1" accessibilitygroup ="true"
+            <divider class="access1" accessibilitygroup ="true"
                      accessibilitytext="这是divider"
                      accessibilitydescription="点击此按键会弹出一个对话框"
                      accessibilityimportance="no-hide-descendants">

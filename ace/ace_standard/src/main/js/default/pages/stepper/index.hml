@@ -23,19 +23,19 @@
             stepper通用样式1
         </text>
         <stepper class="style1" id="mystepper" index="0"  onnext="next" onback="back">
-            <stepper-item class ="stepperItem istyle1" label="{{label_1}}">
+            <stepper-item class ="stepperItem istyle1" label="{{label1}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">First</text>
                 </div>
                 <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
             </stepper-item>
-            <stepper-item class ="stepperItem istyle2" label="{{label_2}}">
+            <stepper-item class ="stepperItem istyle2" label="{{label2}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">Second</text>
                 </div>
                 <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
             </stepper-item>
-            <stepper-item class ="stepperItem istyle3" label="{{label_3}}">
+            <stepper-item class ="stepperItem istyle3" label="{{label3}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">Third</text>
                 </div>
@@ -47,19 +47,19 @@
             stepper通用样式2
         </text>
         <stepper class="style2" id="mystepper" index="0"  onnext="next" onback="back">
-            <stepper-item class ="stepperItem istyle4" label="{{label_1}}">
+            <stepper-item class ="stepperItem istyle4" label="{{label1}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">First</text>
                 </div>
                 <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
             </stepper-item>
-            <stepper-item class ="stepperItem" label="{{label_2}}">
+            <stepper-item class ="stepperItem" label="{{label2}}">
                 <div class = "stepperItemContent istyle5" >
                     <text class = "text">Second</text>
                 </div>
                 <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
             </stepper-item>
-            <stepper-item class ="stepperItem istyle6" label="{{label_3}}">
+            <stepper-item class ="stepperItem istyle6" label="{{label3}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">Third</text>
                 </div>
@@ -71,19 +71,19 @@
             stepper通用样式3
         </text>
         <stepper class="style3" id="mystepper" index="0"  onnext="next" onback="back">
-            <stepper-item class ="stepperItem" label="{{label_1}}">
+            <stepper-item class ="stepperItem" label="{{label1}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">First</text>
                 </div>
                 <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
             </stepper-item>
-            <stepper-item class ="stepperItem" label="{{label_2}}">
+            <stepper-item class ="stepperItem" label="{{label2}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">Second</text>
                 </div>
                 <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
             </stepper-item>
-            <stepper-item class ="stepperItem" label="{{label_3}}">
+            <stepper-item class ="stepperItem" label="{{label3}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">Third</text>
                 </div>
@@ -95,19 +95,19 @@
             stepper通用样式4
         </text>
         <stepper class="style4" id="mystepper" index="0"  onnext="next" onback="back">
-            <stepper-item class ="stepperItem istyle7" label="{{label_1}}">
+            <stepper-item class ="stepperItem istyle7" label="{{label1}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">First</text>
                 </div>
                 <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
             </stepper-item>
-            <stepper-item class ="stepperItem" label="{{label_2}}">
+            <stepper-item class ="stepperItem" label="{{label2}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">Second</text>
                 </div>
                 <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
             </stepper-item>
-            <stepper-item class ="stepperItem" label="{{label_3}}">
+            <stepper-item class ="stepperItem" label="{{label3}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">Third</text>
                 </div>
@@ -119,19 +119,19 @@
         </text>
         <div class="contain1">
             <stepper class="style5" id="mystepper" index="0"  onnext="next" onback="back">
-                <stepper-item class ="stepperItem" label="{{label_1}}">
+                <stepper-item class ="stepperItem" label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_2}}">
+                <stepper-item class ="stepperItem" label="{{label2}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Second</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_3}}">
+                <stepper-item class ="stepperItem" label="{{label3}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Third</text>
                     </div>
@@ -139,19 +139,19 @@
                 </stepper-item>
             </stepper>
             <stepper class="style6" id="mystepper" index="0"  onnext="next" onback="back">
-                <stepper-item class ="stepperItem" label="{{label_1}}">
+                <stepper-item class ="stepperItem" label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_2}}">
+                <stepper-item class ="stepperItem" label="{{label2}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Second</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_3}}">
+                <stepper-item class ="stepperItem" label="{{label3}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Third</text>
                     </div>
@@ -163,19 +163,19 @@
             stepper特有样式
         </text>
         <stepper class="style7" id="mystepper" index="0"  onnext="next" onback="back">
-            <stepper-item class ="stepperItem" label="{{label_1}}">
+            <stepper-item class ="stepperItem" label="{{label1}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">First</text>
                 </div>
                 <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
             </stepper-item>
-            <stepper-item class ="stepperItem" label="{{label_2}}">
+            <stepper-item class ="stepperItem" label="{{label2}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">Second</text>
                 </div>
                 <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
             </stepper-item>
-            <stepper-item class ="stepperItem" label="{{label_3}}">
+            <stepper-item class ="stepperItem" label="{{label3}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">Third</text>
                 </div>
@@ -198,19 +198,19 @@
                      index="0"
                      onnext="next"
                      onback="back">
-                <stepper-item class ="stepperItem" label="{{label_1}}">
+                <stepper-item class ="stepperItem" label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_2}}">
+                <stepper-item class ="stepperItem" label="{{label2}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Second</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_3}}">
+                <stepper-item class ="stepperItem" label="{{label3}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Third</text>
                     </div>
@@ -226,19 +226,19 @@
                      index="0"
                      onnext="next"
                      onback="back">
-                <stepper-item class ="stepperItem" label="{{label_1}}">
+                <stepper-item class ="stepperItem" label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_2}}">
+                <stepper-item class ="stepperItem" label="{{label2}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Second</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_3}}">
+                <stepper-item class ="stepperItem" label="{{label3}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Third</text>
                     </div>
@@ -267,19 +267,19 @@
                      index="0"
                      onnext="next"
                      onback="back">
-                <stepper-item class ="stepperItem gradient1" label="{{label_1}}">
+                <stepper-item class ="stepperItem gradient1" label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem gradient2" label="{{label_2}}">
+                <stepper-item class ="stepperItem gradient2" label="{{label2}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Second</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem gradient3" label="{{label_3}}">
+                <stepper-item class ="stepperItem gradient3" label="{{label3}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Third</text>
                     </div>
@@ -293,19 +293,19 @@
             <stepper class="stylePro" id="prop2"
                      data-name ="prop2"
                      dir ="rtl"  index="0"  onnext="next" onback="back">
-                <stepper-item class ="stepperItem gradient4" label="{{label_1}}">
+                <stepper-item class ="stepperItem gradient4" label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem accessibility1" label="{{label_2}}">
+                <stepper-item class ="stepperItem access1" label="{{label2}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Second</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem multimode1" label="{{label_3}}">
+                <stepper-item class ="stepperItem multimode1" label="{{label3}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Third</text>
                     </div>
@@ -316,21 +316,21 @@
             <text  class="sub-title">
                 stepper通用属性3
             </text>
-            <stepper style="color: #679855; stroke-width: 15px; line-cap: round; margin: 5px;"
+            <stepper
                     class="stylePro" id="prop3" index="0"  onnext="next" onback="back">
-                <stepper-item class ="stepperItem" label="{{label_1}}">
+                <stepper-item class ="stepperItem" label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_2}}">
+                <stepper-item class ="stepperItem" label="{{label2}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Second</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_3}}">
+                <stepper-item class ="stepperItem" label="{{label3}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Third</text>
                     </div>
@@ -342,19 +342,19 @@
                 stepper特有属性4
             </text>
             <stepper class="stylePro" id="mystepper" index="1"  onnext="next" onback="back">
-                <stepper-item class ="stepperItem" label="{{label_1}}">
+                <stepper-item class ="stepperItem" label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_2}}">
+                <stepper-item class ="stepperItem" label="{{label2}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Second</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_3}}">
+                <stepper-item class ="stepperItem" label="{{label3}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Third</text>
                     </div>
@@ -391,19 +391,19 @@
                               ontouchmove="touchMove"
                               ontouchend="touchEnd"
                               ontouchcancel="touchCancel"
-                              label="{{label_1}}">
+                              label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_2}}">
+                <stepper-item class ="stepperItem" label="{{label2}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Second</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_3}}">
+                <stepper-item class ="stepperItem" label="{{label3}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Third</text>
                     </div>
@@ -439,7 +439,7 @@
                               onswipe="swipe"
                               onattached="attached"
                               ondetached="detached"
-                              label="{{label_1}}">
+                              label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
                     </div>
@@ -458,7 +458,7 @@
                               ondragover="dragOver"
                               ondragleave="dragLeave"
                               ondrop="drop"
-                              label="{{label_2}}">
+                              label="{{label2}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Second</text>
                     </div>
@@ -466,7 +466,7 @@
                 </stepper-item>
                 <stepper-item class ="stepperItem"
                               ontouchstart="functionTest1"
-                              label="{{label_3}}">
+                              label="{{label3}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Third</text>
                     </div>
@@ -492,13 +492,13 @@
                      ontouchstart="functionTest1">
                 <stepper-item class ="stepperItem"
                               ontouchstart="functionTest2"
-                              label="{{label_1}}">
+                              label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_2}}">
+                <stepper-item class ="stepperItem" label="{{label2}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Second</text>
                     </div>
@@ -507,7 +507,7 @@
                 <stepper-item class ="stepperItem"
                               id="function3"
                               ontouchstart="functionTest3"
-                              label="{{label_3}}">
+                              label="{{label3}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Third</text>
                     </div>
@@ -535,19 +535,19 @@
                      ondragover="dragOver"
                      ondragleave="dragLeave"
                      ondrop="drop">
-                <stepper-item class ="stepperItem" label="{{label_1}}">
+                <stepper-item class ="stepperItem" label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_2}}">
+                <stepper-item class ="stepperItem" label="{{label2}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Second</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_3}}">
+                <stepper-item class ="stepperItem" label="{{label3}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Third</text>
                     </div>
@@ -574,19 +574,19 @@
                      index="0"
                      onnext="next"
                      onback="back">
-                <stepper-item class ="stepperItem" label="{{label_1}}">
+                <stepper-item class ="stepperItem" label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_2}}">
+                <stepper-item class ="stepperItem" label="{{label2}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Second</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_3}}">
+                <stepper-item class ="stepperItem" label="{{label3}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Third</text>
                     </div>
@@ -602,19 +602,19 @@
                      index="0"
                      onnext="next"
                      onback="back">
-                <stepper-item class ="stepperItem" label="{{label_1}}">
+                <stepper-item class ="stepperItem" label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_2}}">
+                <stepper-item class ="stepperItem" label="{{label2}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Second</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_3}}">
+                <stepper-item class ="stepperItem" label="{{label3}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Third</text>
                     </div>
@@ -630,19 +630,19 @@
                      index="0"
                      onnext="next"
                      onback="back">
-                <stepper-item class ="stepperItem" label="{{label_1}}">
+                <stepper-item class ="stepperItem" label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_2}}">
+                <stepper-item class ="stepperItem" label="{{label2}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Second</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_3}}">
+                <stepper-item class ="stepperItem" label="{{label3}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Third</text>
                     </div>
@@ -658,19 +658,19 @@
                      index="0"
                      onnext="next"
                      onback="back">
-                <stepper-item class ="stepperItem" label="{{label_1}}">
+                <stepper-item class ="stepperItem" label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_2}}">
+                <stepper-item class ="stepperItem" label="{{label2}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Second</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_3}}">
+                <stepper-item class ="stepperItem" label="{{label3}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Third</text>
                     </div>
@@ -682,31 +682,35 @@
         <div style="background-color: #000000; width: 100%; height: 2px;">
         </div>
         <!-- 无障碍 -->
-        <div class="accessibility-container">
+        <div class="access-container">
             <text class="title">
                 无障碍
             </text>
             <text class="sub-title">
                 stepper无障碍1
             </text>
-            <stepper class="stylePro accessibility1"
+            <stepper class="stylePro access1"
+                     accessibilitygroup ="true"
+                     accessibilitytext="这是div"
+                     accessibilitydescription="点击此按键会弹出一个对话框"
+                     accessibilityimportance="no-hide-descendants"
                      id="mystepper"
                      index="0"
                      onnext="next"
                      onback="back">
-                <stepper-item class ="stepperItem" label="{{label_1}}">
+                <stepper-item class ="stepperItem" label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_2}}">
+                <stepper-item class ="stepperItem" label="{{label2}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Second</text>
                     </div>
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
-                <stepper-item class ="stepperItem" label="{{label_3}}">
+                <stepper-item class ="stepperItem" label="{{label3}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">Third</text>
                     </div>
@@ -731,19 +735,19 @@
                          index="0"
                          onnext="next"
                          onback="back">
-                    <stepper-item class ="stepperItem" label="{{label_1}}">
+                    <stepper-item class ="stepperItem" label="{{label1}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">First</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_2}}">
+                    <stepper-item class ="stepperItem" label="{{label2}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Second</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_3}}">
+                    <stepper-item class ="stepperItem" label="{{label3}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Third</text>
                         </div>
@@ -755,19 +759,19 @@
                          index="0"
                          onnext="next"
                          onback="back">
-                    <stepper-item class ="stepperItem" label="{{label_1}}">
+                    <stepper-item class ="stepperItem" label="{{label1}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">First</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_2}}">
+                    <stepper-item class ="stepperItem" label="{{label2}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Second</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_3}}">
+                    <stepper-item class ="stepperItem" label="{{label3}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Third</text>
                         </div>
@@ -779,19 +783,19 @@
                          index="0"
                          onnext="next"
                          onback="back">
-                    <stepper-item class ="stepperItem" label="{{label_1}}">
+                    <stepper-item class ="stepperItem" label="{{label1}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">First</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_2}}">
+                    <stepper-item class ="stepperItem" label="{{label2}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Second</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_3}}">
+                    <stepper-item class ="stepperItem" label="{{label3}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Third</text>
                         </div>
@@ -809,19 +813,19 @@
                          index="0"
                          onnext="next"
                          onback="back">
-                    <stepper-item class ="stepperItem" label="{{label_1}}">
+                    <stepper-item class ="stepperItem" label="{{label1}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">First</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_2}}">
+                    <stepper-item class ="stepperItem" label="{{label2}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Second</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_3}}">
+                    <stepper-item class ="stepperItem" label="{{label3}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Third</text>
                         </div>
@@ -833,19 +837,19 @@
                          index="0"
                          onnext="next"
                          onback="back">
-                    <stepper-item class ="stepperItem" label="{{label_1}}">
+                    <stepper-item class ="stepperItem" label="{{label1}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">First</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_2}}">
+                    <stepper-item class ="stepperItem" label="{{label2}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Second</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_3}}">
+                    <stepper-item class ="stepperItem" label="{{label3}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Third</text>
                         </div>
@@ -857,19 +861,19 @@
                          index="0"
                          onnext="next"
                          onback="back">
-                    <stepper-item class ="stepperItem" label="{{label_1}}">
+                    <stepper-item class ="stepperItem" label="{{label1}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">First</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_2}}">
+                    <stepper-item class ="stepperItem" label="{{label2}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Second</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_3}}">
+                    <stepper-item class ="stepperItem" label="{{label3}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Third</text>
                         </div>
@@ -886,19 +890,19 @@
                          index="0"
                          onnext="next"
                          onback="back">
-                    <stepper-item class ="stepperItem" label="{{label_1}}">
+                    <stepper-item class ="stepperItem" label="{{label1}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">First</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_2}}">
+                    <stepper-item class ="stepperItem" label="{{label2}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Second</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_3}}">
+                    <stepper-item class ="stepperItem" label="{{label3}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Third</text>
                         </div>
@@ -910,19 +914,19 @@
                          index="0"
                          onnext="next"
                          onback="back">
-                    <stepper-item class ="stepperItem" label="{{label_1}}">
+                    <stepper-item class ="stepperItem" label="{{label1}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">First</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_2}}">
+                    <stepper-item class ="stepperItem" label="{{label2}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Second</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_3}}">
+                    <stepper-item class ="stepperItem" label="{{label3}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Third</text>
                         </div>
@@ -934,19 +938,19 @@
                          index="0"
                          onnext="next"
                          onback="back">
-                    <stepper-item class ="stepperItem" label="{{label_1}}">
+                    <stepper-item class ="stepperItem" label="{{label1}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">First</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_2}}">
+                    <stepper-item class ="stepperItem" label="{{label2}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Second</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_3}}">
+                    <stepper-item class ="stepperItem" label="{{label3}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Third</text>
                         </div>
@@ -968,19 +972,19 @@
                          index="0"
                          onnext="next"
                          onback="back">
-                    <stepper-item class ="stepperItem" label="{{label_1}}">
+                    <stepper-item class ="stepperItem" label="{{label1}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">First</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_2}}">
+                    <stepper-item class ="stepperItem" label="{{label2}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Second</text>
                         </div>
                         <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                     </stepper-item>
-                    <stepper-item class ="stepperItem" label="{{label_3}}">
+                    <stepper-item class ="stepperItem" label="{{label3}}">
                         <div class = "stepperItemContent" >
                             <text class = "text">Third</text>
                         </div>

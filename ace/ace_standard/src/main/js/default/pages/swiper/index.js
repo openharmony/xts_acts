@@ -1,16 +1,105 @@
+/**
+ * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import prompt from '@system.prompt';
 
-// xxx.js
+var options = {
+    duration: 1500,
+    easing: 'friction',
+    delay: 100,
+    fill: 'forwards',
+    iterations: 2,
+    direction: 'normal',
+};
+var frames = [
+    {
+        transform: {
+            translate: '-120px',
+            rotate:'10deg',
+            scale:0.2,
+            skew:'40deg'
+        },
+        opacity: 0.1,
+        offset: 0.0,
+        width: '40%',
+        height:'20px',
+        backgroundColor:'#ff0000',
+        backgroundPosition:'10px 20px',
+        transformOrigin:'left top'
+    },
+    {
+        transform: {
+            translateX: '0px',
+            translateY: '5px',
+            rotateX:'10deg',
+            rotateY:'10deg',
+            scaleX:0.5,
+            scaleY:0.7,
+            skewX:'22deg',
+            skewY:'30deg'
+        },
+        opacity: 0.6,
+        offset: 2.0,
+        width: '60%',
+        height:'30px',
+        backgroundColor:'#ff00ff',
+        backgroundPosition:'15px 25px',
+        transformOrigin:'center top'
+    },
+    {
+        transform: {
+            translateX: '100px',
+            translateY: '0px',
+            translateZ: '20px',
+            rotateX:'0deg',
+            rotateY:'0deg',
+            rotateZ:'30deg',
+            scaleX:1,
+            scaleY:1,
+            scaleZ:2,
+            skewX:'0',
+            skewY:'0',
+            skewZ:'30deg'
+        },
+        opacity: 1,
+        offset: 0.0,
+        width: '100%',
+        height:'30px',
+        backgroundColor:'#ffff00',
+        backgroundPosition:'0px',
+        transformOrigin:'center center'
+    },
+];
+
 export default {
     swipeTo() {
         this.$element('swiper').swipeTo({index: 2});
+        this.$element('swiper1').swipeTo({index: 2});
+        this.$element('swiper2').swipeTo({index: 2});
     },
     showNext() {
         this.$element('swiper').showNext();
+        this.$element('swiper1').showNext();
+        this.$element('swiper2').showNext();
     },
     showPrevious() {
         this.$element('swiper').showPrevious();
+        this.$element('swiper1').showPrevious();
+        this.$element('swiper2').showPrevious();
     },
+
     onShow(){
         // 通用属性
         var prop1 =  this.$element('prop1');
@@ -321,7 +410,7 @@ export default {
     },
 
     functionTest1(event){
-        var function1 =  this.$element('function1');
+        var function1 =  this.$element('swiper1');
         function1.focus(true)
         var rect = function1.getBoundingClientRect();
         var width = rect.width;
@@ -336,7 +425,7 @@ export default {
     },
 
     functionTest2(event){
-        var function2 =  this.$element('function2');
+        var function2 =  this.$element('swiper2');
         let observer = function2.createIntersectionObserver({
             ratios: [0.2, 0], // number
         });
@@ -352,73 +441,6 @@ export default {
 
     functionTest3(event){
         var function3 =  this.$element('function3');
-        var options = {
-            duration: 1500,
-            easing: 'friction',
-            delay: 100,
-            fill: 'forwards',
-            iterations: 2,
-            direction: 'normal',
-        };
-        var frames = [
-            {
-                transform: {
-                    translate: '-120px',
-                    rotate:'10deg',
-                    scale:0.2,
-                    skew:'40deg'
-                },
-                opacity: 0.1,
-                offset: 0.0,
-                width: '40%',
-                height:'20px',
-                backgroundColor:'#ff0000',
-                backgroundPosition:'10px 20px',
-                transformOrigin:'left top'
-            },
-            {
-                transform: {
-                    translateX: '0px',
-                    translateY: '5px',
-                    rotateX:'10deg',
-                    rotateY:'10deg',
-                    scaleX:0.5,
-                    scaleY:0.7,
-                    skewX:'22deg',
-                    skewY:'30deg'
-                },
-                opacity: 0.6,
-                offset: 2.0,
-                width: '60%',
-                height:'30px',
-                backgroundColor:'#ff00ff',
-                backgroundPosition:'15px 25px',
-                transformOrigin:'center top'
-            },
-            {
-                transform: {
-                    translateX: '100px',
-                    translateY: '0px',
-                    translateZ: '20px',
-                    rotateX:'0deg',
-                    rotateY:'0deg',
-                    rotateZ:'30deg',
-                    scaleX:1,
-                    scaleY:1,
-                    scaleZ:2,
-                    skewX:'0',
-                    skewY:'0',
-                    skewZ:'30deg'
-                },
-                opacity: 1,
-                offset: 0.0,
-                width: '100%',
-                height:'30px',
-                backgroundColor:'#ffff00',
-                backgroundPosition:'0px',
-                transformOrigin:'center center'
-            },
-        ];
 
         var animation = function3.animate(frames, options);
         animation.play()
