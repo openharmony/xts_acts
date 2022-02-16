@@ -2805,25 +2805,23 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_Copy_005d',
       success: function () {
         console.log('File_Copy_005 call mkdir success.');
-        done();
+        file.copy({
+          srcUri: 'internal://cache/File_Copy_005d',
+          dstUri: 'internal://cache/File_Copy_005d_1',
+          success: function () {
+            console.log('File_Copy_005 call copy success.');
+            expect(null).assertFail();
+          },
+          fail: function (data, code) {
+            console.log('File_Copy_005 , code: ' + code + ', data: ' + data);
+            expect(code == 300).assertTrue();
+            done();
+          },
+        });
       },
       fail: function (data, code) {
         console.error('File_Copy_005 call mkdir fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
-      },
-    });
-    sleep(2);
-    file.copy({
-      srcUri: 'internal://cache/File_Copy_005d',
-      dstUri: 'internal://cache/File_Copy_005d_1',
-      success: function () {
-        console.log('File_Copy_005 call copy success.');
-        expect(null).assertFail();
-      },
-      fail: function (data, code) {
-        console.log('File_Copy_005 , code: ' + code + ', data: ' + data);
-        expect(code == 300).assertTrue();
-        done();
       },
     });
   });
