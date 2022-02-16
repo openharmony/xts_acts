@@ -430,11 +430,11 @@
     background: repeating-linear-gradient(to right, rgba(255, 255, 0, 1) 30px,rgba(0, 0, 255, .5) 60px);
 }
 
-.accessibility-container{
+.access-container{
     flex-direction: column;
 }
 
-.accessibility1{
+.access1{
     height:20px;
     background-color: #321124;
     stroke-width: 30px;

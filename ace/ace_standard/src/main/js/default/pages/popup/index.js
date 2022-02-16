@@ -158,7 +158,7 @@ export default {
         this.$element("gradient2").hide()
     },
     hidepopupacc1() {
-        this.$element("accessibility1").hide()
+        this.$element("access1").hide()
     },
     hidepopupato1() {
         this.$element("atomic1").hide()
