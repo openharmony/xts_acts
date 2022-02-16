@@ -43,7 +43,8 @@
         "label": "$string:entry_MainAbility",
         "type": "page",
         "launchType": "standard",
-        "visible": true
+        "visible": true,
+        "configChanges": ["orientation"]
       }
     ],
     "js": [
@@ -74,7 +75,23 @@
           "pages/piece/index",
           "pages/progress/index",
           "pages/qrcode/index",
-          "pages/select/index"
+          "pages/select/index",
+          "pages/div/index",
+          "pages/badge/index",
+          "pages/dialog/index",
+          "pages/form/index",
+          "pages/list/index",
+          "pages/listItem/index",
+          "pages/listItemGroup/index",
+          "pages/marquee/index",
+          "pages/imageAnimator/index",
+          "pages/panel/index",
+          "pages/popup/index",
+          "pages/refresh/index",
+          "pages/stack/index",
+          "pages/stepper/index",
+          "pages/swiper/index",
+          "pages/tabs/index"
         ],
         "name": "default",
         "window": {

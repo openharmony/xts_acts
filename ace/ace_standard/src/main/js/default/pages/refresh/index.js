@@ -1,10 +1,31 @@
 import prompt from '@system.prompt';
 
 export default {
-    changeRating(e){
+    data: {
+        list:[],
+        fresh:false
+    },
+    onInit() {
+        this.list = [];
+        for (var i = 0; i <= 2; i++) {
+            var item = '元素' + i;
+            this.list.push(item);
+        }
+    },
+    refresh: function (e) {
         prompt.showToast({
-            message: e.rating
-        });
+            message: '刷新中...'
+        })
+        var that = this;
+        that.fresh = e.refreshing;
+        setTimeout(function () {
+            that.fresh = false;
+            var addItem = '更新元素';
+            that.list.unshift(addItem);
+            prompt.showToast({
+                message: '刷新完成!'
+            })
+        }, 2000)
     },
 
     onShow(){
@@ -110,9 +131,21 @@ export default {
         });
     },
 
+    click(){
+        prompt.showToast({
+            message: 'click'
+        });
+    },
+
     doubleClick(){
         prompt.showToast({
             message: 'doubleClick'
+        });
+    },
+
+    longPress(){
+        prompt.showToast({
+            message: 'longPress'
         });
     },
 
@@ -289,7 +322,7 @@ export default {
         });
     },
 
-    functionTouch1(event){
+    functionTest1(event){
         var function1 =  this.$element('function1');
         function1.focus(true)
         var rect = function1.getBoundingClientRect();
@@ -304,7 +337,7 @@ export default {
         });
     },
 
-    functionTouch2(event){
+    functionTest2(event){
         var function2 =  this.$element('function2');
         let observer = function2.createIntersectionObserver({
             ratios: [0.2, 0], // number
@@ -319,7 +352,7 @@ export default {
         observer.unobserve()
     },
 
-    functionTouch3(event){
+    functionTest3(event){
         var function3 =  this.$element('function3');
         var options = {
             duration: 1500,
@@ -420,5 +453,48 @@ export default {
         setTimeout(() => {
             animation.cancel()
         }, 1500)
+    },
+
+    functionTest4(event){
+        var function4 =  this.$element('function4');
+        var scrollOffset = function4.getScrollOffset();
+        var x = scrollOffset.x;
+        var y = scrollOffset.y;
+        var message = 'x--' + x + ',y--' + y;
+        prompt.showToast({
+            message: 'functionTest4 scrollOffset:\n' + message
+        });
+
+        var scrollParam = {
+            dx:60,
+            dy:0,
+            smooth:true
+        }
+        function4.scrollBy(scrollParam)
+    },
+
+    reachStart(){
+        prompt.showToast({
+            message: 'reachStart'
+        });
+    },
+
+    reachEnd(){
+        prompt.showToast({
+            message: 'reachEnd'
+        });
+    },
+
+    reachTop(){
+        prompt.showToast({
+            message: 'reachTop'
+        });
+    },
+
+    reachBottom(){
+        prompt.showToast({
+            message: 'reachBottom'
+        });
     }
+
 }

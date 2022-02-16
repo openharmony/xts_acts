@@ -29,8 +29,93 @@
 
 .style-container{
     flex-direction: column;
+    height: 70%;
+}
+.contain1{
+    width: 100%;
+    height: 15%;
+    flex-direction: column;
+}
+
+.event-container{
+    flex-direction: column;
+    height: 45%;
+}
+
+.prop-container{
+    flex-direction: column;
+    padding-left: 2px;
+}
+
+.ani-container{
+    flex-direction: column;
     height: 100%;
     flex-weight: 1;
+}
+
+.gradient-container{
+    flex-direction: column;
+    height: 40%;
+}
+
+.function-container{
+    flex-direction: column;
+    height: 35%;
+}
+
+.accessibility-container{
+    flex-direction: column;
+    height: 20%;
+}
+
+.atom-container{
+    flex-direction: column;
+    height: 60%;
+}
+
+.multimode-container{
+    flex-direction: column;
+}
+
+.swiper {
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    width: 70%;
+    height: 8%;
+    border: 1px solid #000000;
+    indicator-color: #cf2411;
+    indicator-size: 8px;
+    indicator-bottom: 1px;
+    indicator-right: 30px;
+    indicator-top: 50%;
+    margin-top: 1px;
+    next-margin:1px;
+    previous-margin:1px;
+}
+.swiperContent1{
+    height: 100%;
+    justify-content: center;
+    background-color: #007dff;
+}
+.swiperContent2{
+    height: 100%;
+    justify-content: center;
+    background-color: #ff7500;
+}
+.swiperContent3{
+    height: 100%;
+    justify-content: center;
+    background-color: #41ba41;
+}
+.button {
+    width: 40%;
+    height: 2%;
+    margin-top: 2px;
+}
+.text {
+    font-size: 13px;
+    margin-bottom: 20px;
 }
 
 .title{
@@ -44,27 +129,25 @@
 
 .sub-title{
     width: 100%;
-    font-size: 14px;
-    text-align: left;
-    margin: 2px;
-    padding: 2px;
+    font-size: 15px;
+    text-align: center;
 }
 
 .style1{
     width: 100%;
-    height: 100%;
+    height: 40%;
     min-width: 25px;
     min-height: 10px;
     max-width: 300px;
-    max-height: 50px;
-    padding-left: 10px;
-    padding-top: 20px;
-    padding-right: 15px;
-    padding-bottom: 5px;
-    margin-left: 10px;
-    margin-top: 20px;
-    margin-right: 15px;
-    margin-bottom: 5px;
+    max-height: 60px;
+    padding-left: 1px;
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-bottom: 1px;
+    margin-left: 1px;
+    margin-top: 1px;
+    margin-right: 1px;
+    margin-bottom: 1px;
     border-left-style: solid;
     border-right-style: dashed;
     border-top-style: dashed;
@@ -92,12 +175,12 @@
 }
 
 .style2{
-    width: 50px;
-    height: 20px;
-    padding-start: 10px;
-    padding-end: 15px;
-    margin-start: 5px;
-    margin-end: 10px;
+    width: 100%;
+    height: 40px;
+    padding-start: 1px;
+    padding-end: 1px;
+    margin-start: 2px;
+    margin-end: 1px;
     border-style: dotted;
     border-width: 2px;
     border-color:#000000;
@@ -106,13 +189,15 @@
     mask-image: url('common/images/icon.png');
     mask-size: cover;
     mask-position: center;
-
 }
 
 .style3{
     width: 100%;
-    padding: 10px;
-    margin: 5px;
+    padding-top: 30%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 30%;
+    margin: 1px;
     border-left: 1px solid #000000;
     border-right:  2px dashed #00ff00;
     border-top:  1.5px dotted #0000ff;
@@ -128,22 +213,23 @@
 }
 
 .style4{
-    width: 60%;
-    height: 5%;
-    padding: 10px;
-    margin: 5px;
+    width: 100%;
+    height: 8%;
+    padding: 1px;
+    margin: 2px;
     border: 2px solid #000000;
 }
 
-.contain1{
+.swiperProp{
     width: 100%;
-    height: 70px;
-    flex-direction: column;
+    height: 10%;
+    margin: 2px;
+    border: 2px solid #000000;
 }
 
 .style5{
-    width: 50%;
-    height: 30px;
+    width: 100%;
+    height: 40px;
     background-color: yellow;
     border-image-source: url('/common/images/image.png');
     border-image-slice: 1px 2px 3px 4px;
@@ -153,32 +239,65 @@
 }
 
 .style6{
-    width: 70px;
-    height: 30px;
+    width: 100%;
+    height: 40px;
     position: absolute;
-    left: 10px;
-    top: 35px;
-    bottom: 5px;
+    left: 1px;
+    top: 45px;
+    bottom: 1px;
     right: 10px;
     background-color: pink;
     border-image: url('common/images/icon.png') 1px 2px 3px 4px 2px 3px 4px 5px 3px 4px 5px 6px round;
 }
 
 .style7 {
-    margin-bottom: 50px;
-    margin-top: 10px;
-    color: green;
-    stroke-width: 30px;
-    line-cap: round;
+    width: 100%;
+    height: 40px;
+    indicator-color:salmon;
+    indicator-selected-color:aquamarine;
+    indicator-size:10px;
+    indicator-bottom: 1px;
+    indicator-right: 30px;
+    indicator-top: 50%;
+    margin-top: 1px;
+    next-margin:1px;
+    previous-margin:1px;
 }
 
-.prop-container{
+.event1{
+    width: 100%;
+    height: 40px;
+    background-color: salmon;
+}
+
+.event2{
+    width: 100%;
+    height: 40px;
+    background-color: darkorchid;
+}
+
+.event3{
+    width: 100%;
+    height: 40px;
+    background-color: #ad4e2a;
+}
+
+.event4{
+    flex-direction: row;
+    width: 100%;
+    height: 40px;
+    overflow:scroll;
+}
+
+.event5{
     flex-direction: column;
-    height: 100%;
-    flex-weight: 1;
+    width: 100%;
+    height: 90px;
+    overflow:scroll;
 }
 
 #prop1 {
+    height: 70px;
     color: #ad4e2a;
     stroke-width: 10px;
     line-cap: square;
@@ -205,12 +324,6 @@
     line-cap: square;
     margin: 5px;
     height: 70px;
-}
-
-.ani-container{
-    flex-direction: column;
-    height: 100%;
-    flex-weight: 1;
 }
 
 .ani1{
@@ -250,16 +363,54 @@
     }
 }
 
+
 .ani2{
     color: #ad4e2a;
     stroke-width: 55px;
     line-cap: square;
     margin: 5px;
+    transform-origin: 2% 3%;
+    animation-name:ani2Go;
+    animation-delay:5s;
+    animation-duration:10s;
+    animation-iteration-count:4;
+    animation-timing-function:ease-out;
+    animation-direction:reverse;
+    animation-fill-mode:forwards;
+    animation-play-state:running;
+    transition:all 0 ease 0;
 }
 
-.gradient-container{
-    flex-direction: column;
+@keyframes ani2Go
+{
+    from {
+        background-color: #f76160;
+        opacity:0.3;
+        width:50px;
+        height: 50px;
+        background-position:10% 10%
+    }
+    30% {
+        background-color: #60f761;
+        opacity:0.5;
+        width:70px;
+        height: 70px;
+        background-position:12% 12%;
+        transform:translateX(10px) translateY(5px)  translateZ(15px)
+        rotateX(20deg) rotateY(25deg) rotateZ(15deg) scaleX(0.6) scaleY(0.5) scaleZ(1.5) perspective(10);
+    }
+    to {
+        background-color: #6160f7;
+        opacity:1;
+        width:90px;
+        height: 90px;
+        background-position:22% 22%;
+        transform:translateX(30px) translateY(45px)  translateZ(55px)
+        rotateX(180deg) rotateY(185deg) rotateZ(150deg) scaleX(2) scaleY(2.5) scaleZ(3.5);
+    }
 }
+
+
 
 .gradient1{
     stroke-width: 30px;
@@ -289,10 +440,6 @@
     background: repeating-linear-gradient(to right, rgba(255, 255, 0, 1) 30px,rgba(0, 0, 255, .5) 60px);
 }
 
-.accessibility-container{
-    flex-direction: column;
-}
-
 .accessibility1{
     color: #321124;
     stroke-width: 30px;
@@ -300,17 +447,35 @@
     margin: 5px;
 }
 
-.atom-container{
-    flex-direction: column;
-}
-
-.multimode-container{
-    flex-direction: column;
-}
-
 .multimode1{
     color: #978666;
     stroke-width: 30px;
     line-cap: square;
     margin: 5px;
+}
+
+
+.function1{
+    background-color: #ff0000;
+    width: 60%;
+    height: 30px;
+}
+
+.function2{
+    background-color: #00ff00;
+    width: 60%;
+    height: 30px;
+}
+
+.function3{
+    background-color: #0000ff;
+    width: 100%;
+    height: 30px;
+}
+
+.function4 {
+    flex-direction: row;
+    width: 60%;
+    height: 60px;
+    overflow: scroll;
 }

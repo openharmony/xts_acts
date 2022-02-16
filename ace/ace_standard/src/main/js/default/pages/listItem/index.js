@@ -1,12 +1,20 @@
 import prompt from '@system.prompt';
-
 export default {
-    changeRating(e){
-        prompt.showToast({
-            message: e.rating
-        });
+    data: {
+        title: "",
+        "array": [
+            {"value": "列表文本1"},
+            {"value": "列表文本2"},
+        ],
+        "array2": [
+            {"value": "item1"},
+            {"value": "item2"},
+            {"value": "item3"},
+            {"value": "item4"},
+            {"value": "item5"},
+            {"value": "item6"}
+        ]
     },
-
     onShow(){
         // 通用属性
         var prop1 =  this.$element('prop1');
@@ -110,9 +118,21 @@ export default {
         });
     },
 
+    click(){
+        prompt.showToast({
+            message: 'click'
+        });
+    },
+
     doubleClick(){
         prompt.showToast({
             message: 'doubleClick'
+        });
+    },
+
+    longPress(){
+        prompt.showToast({
+            message: 'longPress'
         });
     },
 
@@ -289,136 +309,9 @@ export default {
         });
     },
 
-    functionTouch1(event){
-        var function1 =  this.$element('function1');
-        function1.focus(true)
-        var rect = function1.getBoundingClientRect();
-        var width = rect.width;
-        var height = rect.height;
-        var left = rect.left;
-        var top = rect.top;
-        var message = 'width--' + width + ',height--' + height +
-        ',left--' + left + ',top--' + top;
+    sticky() {
         prompt.showToast({
-            message: 'function1 rect:\n' + message
+            message: 'sticky'
         });
-    },
-
-    functionTouch2(event){
-        var function2 =  this.$element('function2');
-        let observer = function2.createIntersectionObserver({
-            ratios: [0.2, 0], // number
-        });
-        observer.observe((isVisible, ratio)=> {
-            console.info('this element is ' + isVisible + 'ratio is ' + ratio)
-            prompt.showToast({
-                message: 'function2 observer:\n' + 'isVisible--' + isVisible + ',ratio--' + ratio
-            });
-        })
-
-        observer.unobserve()
-    },
-
-    functionTouch3(event){
-        var function3 =  this.$element('function3');
-        var options = {
-            duration: 1500,
-            easing: 'friction',
-            delay: 100,
-            fill: 'forwards',
-            iterations: 2,
-            direction: 'normal',
-        };
-        var frames = [
-            {
-                transform: {
-                    translate: '-120px',
-                    rotate:'10deg',
-                    scale:0.2,
-                    skew:'40deg'
-                },
-                opacity: 0.1,
-                offset: 0.0,
-                width: '40%',
-                height:'20px',
-                backgroundColor:'#ff0000',
-                backgroundPosition:'10px 20px',
-                transformOrigin:'left top'
-            },
-            {
-                transform: {
-                    translateX: '0px',
-                    translateY: '5px',
-                    rotateX:'10deg',
-                    rotateY:'10deg',
-                    scaleX:0.5,
-                    scaleY:0.7,
-                    skewX:'22deg',
-                    skewY:'30deg'
-                },
-                opacity: 0.6,
-                offset: 2.0,
-                width: '60%',
-                height:'30px',
-                backgroundColor:'#ff00ff',
-                backgroundPosition:'15px 25px',
-                transformOrigin:'center top'
-            },
-            {
-                transform: {
-                    translateX: '100px',
-                    translateY: '0px',
-                    translateZ: '20px',
-                    rotateX:'0deg',
-                    rotateY:'0deg',
-                    rotateZ:'30deg',
-                    scaleX:1,
-                    scaleY:1,
-                    scaleZ:2,
-                    skewX:'0',
-                    skewY:'0',
-                    skewZ:'30deg'
-                },
-                opacity: 1,
-                offset: 0.0,
-                width: '100%',
-                height:'30px',
-                backgroundColor:'#ffff00',
-                backgroundPosition:'0px',
-                transformOrigin:'center center'
-            },
-        ];
-
-        var animation = function3.animate(frames, options);
-        animation.play()
-        animation.onfinish = function(){
-            prompt.showToast({
-                message: 'The animation is finished.'
-            });
-        };
-
-        animation.oncancel = function(){
-            prompt.showToast({
-                message: 'The animation is canceled.'
-            });
-        };
-
-        animation.onrepeat = function(){
-            prompt.showToast({
-                message: 'The animation is repeated.'
-            });
-        };
-
-        setTimeout(() => {
-            animation.reverse()
-        }, 500)
-
-        setTimeout(() => {
-            animation.pause()
-        }, 1000)
-
-        setTimeout(() => {
-            animation.cancel()
-        }, 1500)
     }
 }
