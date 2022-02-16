@@ -33,7 +33,7 @@ describe('securitylabel', function () {
         fileio.openSync(fpath, 0o102, 0o666);
 
         try {
-            securitylabel.setSecurityLabel(fpath, 's0', function (err, flag) {
+            securitylabel.setSecurityLabel(fpath, 's0', function (err) {
                 securitylabel.getSecurityLabel(fpath, function (err, dataLevel) {
                     expect(dataLevel == 's0').assertTrue();
                     expect(fileio.unlinkSync(fpath) == null).assertTrue();
@@ -60,7 +60,7 @@ describe('securitylabel', function () {
         fileio.openSync(fpath, 0o102, 0o666);
 
         try {
-            securitylabel.setSecurityLabel(fpath, 's1', async function (err, flag) {
+            securitylabel.setSecurityLabel(fpath, 's1', async function (err) {
                 let dataLevel = await securitylabel.getSecurityLabel(fpath);
                 expect(dataLevel == 's1').assertTrue();
                 expect(fileio.unlinkSync(fpath) == null).assertTrue();
@@ -86,7 +86,7 @@ describe('securitylabel', function () {
         fileio.openSync(fpath, 0o102, 0o666);
 
         try {
-            let flag = await securitylabel.setSecurityLabel(fpath, 's2');
+            await securitylabel.setSecurityLabel(fpath, 's2');
             securitylabel.getSecurityLabel(fpath, function (err, dataLevel) {
                 expect(dataLevel == 's2').assertTrue();
                 expect(fileio.unlinkSync(fpath) == null).assertTrue();
@@ -112,7 +112,7 @@ describe('securitylabel', function () {
         fileio.openSync(fpath, 0o102, 0o666);
 
         try {
-            let flag = await securitylabel.setSecurityLabel(fpath, 's3');
+            await securitylabel.setSecurityLabel(fpath, 's3');
             let dataLevel = await securitylabel.getSecurityLabel(fpath);
             expect(dataLevel == 's3').assertTrue();
             expect(fileio.unlinkSync(fpath) == null).assertTrue();
@@ -137,7 +137,7 @@ describe('securitylabel', function () {
         fileio.openSync(fpath, 0o102, 0o666);
 
         try {
-            let flag = await securitylabel.setSecurityLabel(fpath, 's4');
+            await securitylabel.setSecurityLabel(fpath, 's4');
             let dataLevel = await securitylabel.getSecurityLabel(fpath);
             expect(dataLevel == 's4').assertTrue();
             expect(fileio.unlinkSync(fpath) == null).assertTrue();
@@ -159,9 +159,10 @@ describe('securitylabel', function () {
       */
     it('securitylabel_test_set_security_label_async_005', 0, async function (done) {
         try {
-            let flag = await securitylabel.setSecurityLabel('', 's0');
-            expect(flag == false).assertTrue();
-            done();
+            securitylabel.setSecurityLabel('', 's0', function (err) {
+                expect(err.code == '-1').assertTrue();
+                done();
+            });
         } catch (e) {
             console.log('securitylabel_test_set_security_label_async_005 has failed for ' + e);
             expect(null).assertFail();
@@ -180,9 +181,10 @@ describe('securitylabel', function () {
       */
     it('securitylabel_test_set_security_label_async_006', 0, async function (done) {
         try {
-            let flag = await securitylabel.setSecurityLabel('/data/test.txt', 's0');
-            expect(flag == false).assertTrue();
-            done();
+            securitylabel.setSecurityLabel('/data/test.txt', 's0', function (err) {
+                expect(err.code == '-1').assertTrue();
+                done();
+            });
         } catch (e) {
             console.log('securitylabel_test_set_security_label_async_006 has failed for ' + e);
             expect(null).assertFail();
@@ -225,12 +227,13 @@ describe('securitylabel', function () {
         fileio.openSync(fpath, 0o102, 0o666);
 
         try {
-            let flag = await securitylabel.setSecurityLabel(fpath, '');
-            expect(flag == false).assertTrue();
-            let dataLevel = await securitylabel.getSecurityLabel(fpath);
-            expect(dataLevel == '').assertTrue();
-            expect(fileio.unlinkSync(fpath) == null).assertTrue();
-            done();
+            securitylabel.setSecurityLabel(fpath, '', async function (err) {
+                expect(err.code == '-1').assertTrue();
+                let dataLevel = await securitylabel.getSecurityLabel(fpath);
+                expect(dataLevel == '').assertTrue();
+                expect(fileio.unlinkSync(fpath) == null).assertTrue();
+                done();
+            });
         } catch (e) {
             console.log('securitylabel_test_set_security_label_async_008 has failed for ' + e);
             expect(null).assertFail();
@@ -252,12 +255,13 @@ describe('securitylabel', function () {
         fileio.openSync(fpath, 0o102, 0o666);
 
         try {
-            let flag = await securitylabel.setSecurityLabel(fpath, 'ss');
-            expect(flag == false).assertTrue();
-            let dataLevel = await securitylabel.getSecurityLabel(fpath);
-            expect(dataLevel == '').assertTrue();
-            expect(fileio.unlinkSync(fpath) == null).assertTrue();
-            done();
+            securitylabel.setSecurityLabel(fpath, 'ss', async function (err) {
+                expect(err.code == '-1').assertTrue();
+                let dataLevel = await securitylabel.getSecurityLabel(fpath);
+                expect(dataLevel == '').assertTrue();
+                expect(fileio.unlinkSync(fpath) == null).assertTrue();
+                done();
+            });
         } catch (e) {
             console.log('securitylabel_test_set_security_label_async_009 has failed for ' + e);
             expect(null).assertFail();
@@ -304,7 +308,7 @@ describe('securitylabel', function () {
         fileio.openSync(fpath, 0o102, 0o666);
 
         try {
-            securitylabel.setSecurityLabel(fpath, 's0', '', function (err, flag) {
+            securitylabel.setSecurityLabel(fpath, 's0', '', function (err) {
                 done();
             })
         } catch (e) {
