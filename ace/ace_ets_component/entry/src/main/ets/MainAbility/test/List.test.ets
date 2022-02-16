@@ -14,8 +14,14 @@
  */
 import ellipseJsunit from './EllipseJsunit.test.ets';
 import systemRouterJsunit from './SystemRouterJsunit.test.ets';
+import gridContainerJsunit from './GridContainerJsunit.test.ets';
+import swiperJsunit from './SwiperJsunit.test.ets';
+import gridContainerJsunit from './GridContainerJsunit.test.ets';
 
 export default function testsuite() {
     ellipseJsunit();
     systemRouterJsunit();
+    gridContainerJsunit();
+    swiperJsunit();
+    gridContainerJsunit();
 }
