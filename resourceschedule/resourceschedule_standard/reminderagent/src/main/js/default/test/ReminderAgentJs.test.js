@@ -126,24 +126,25 @@ describe('ReminderAgentTest', function () {
    * @tc.name      testAddNotificationSlotNorFun002
    * @tc.desc      Adds a reminder notification slot with the promise function and null mySlot.
    */
-  it('testAddNotificationSlotNorFun002', 0, async function (done) {
-    let mySlot = null;
-    let promise = new Promise((resolve, reject) => {
-      reminderAgent.addNotificationSlot(mySlot).then(() => {
-        resolve();
-      }).catch(function (err) {
-        reject(new Error('errr occurred.'));
-        console.info('error: ' + err.code);
-      }
-      );
-      promise.then(() => {
-      }, err => {
-        let i = 0;
-        expect(0).assertEqual(i);
-      }).catch(res => { });
+    it('testAddNotificationSlotNorFun002', 0, async function (done) {
+      let mySlot = null;
+      try {
+        reminderAgent.addNotificationSlot(mySlot,function(err) {
+            if(err == undefined) {
+                console.info('testAddNotificationSlotNorFun002 execute success');
+            } else {
+            console.info('testAddNotificationSlotNorFun002 execute failed');
+          }
+        }).catch(function(err) {
+          console.info("testAddNotificationSlotNorFun002 execute catch" + err.code);
+        })
+    } catch(error) {
+      console.info("testAddNotificationSlotNorFun002 execute try - catch" + error.code);
+      let i = 0;
+      expect(0).assertEqual(i);
       done();
-    })
-
+    }})
+  
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_005
      * @tc.name      testAddNotificationSlotNorFun003
@@ -630,4 +631,4 @@ describe('ReminderAgentTest', function () {
       done();
     })
   })
-})
+
