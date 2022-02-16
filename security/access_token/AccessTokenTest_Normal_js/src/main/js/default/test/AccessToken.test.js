@@ -26,7 +26,7 @@ var PermissionFlag = {
 
 var GrantStatus = {
     PERMISSION_DENIED: -1,
-    PERMISSION_GRANTED:0,
+    PERMISSION_GRANTED: 0,
 };
 const RESULT_SUCCESS = 0
 const RESULT_FAIL = -1
@@ -36,12 +36,13 @@ const DEFAULT_PERMISSION_FALG = 0
 var permissionNameUser = "ohos.permission.ALPHA";
 var permissionNameSystem = "ohos.permission.BETA";
 var tokenID = undefined
-describe('AccessTokenTest',function(){
+describe('AccessTokenTest', function () {
     console.log('##########start AccessTokenTest');
     beforeAll(async function (done){
         var appInfo = await bundle.getApplicationInfo('ohos.acts.security.access_token.normal', 0, 100);
         tokenID = appInfo.accessTokenId;
-        console.log("AccessTokenTest accessTokenId:"+appInfo.accessTokenId + ", name:"+ appInfo.name + ", bundleName:" + appInfo.bundleName)
+        console.log("AccessTokenTest accessTokenId:" + appInfo.accessTokenId + ", name:" + appInfo.name
+            + ", bundleName:" + appInfo.bundleName)
         // setTimeout(done(),TIMEOUT);
 
         console.info("sleep begin");
@@ -49,13 +50,13 @@ describe('AccessTokenTest',function(){
         console.info("sleep end");
         done();
     })
-    afterEach(function(){
+    afterEach(function () {
     })
 
-    function sleep(delay){
+    function sleep(delay) {
         var start = (new Date()).getTime();
         var next = (new Date()).getTime();
-        while (next - start < delay){
+        while (next - start < delay) {
             next = (new Date()).getTime();
             continue;
         }
@@ -70,7 +71,7 @@ describe('AccessTokenTest',function(){
         console.log("Test_verifyAccessToken_001 start");
         var atManager = abilityAccessCtrl.createAtManager();
         var result = await atManager.verifyAccessToken(tokenID, permissionNameUser);
-        console.log("Test_verifyAccessToken_001 tokenID"+ tokenID + "-" + result)
+        console.log("Test_verifyAccessToken_001 tokenID" + tokenID + "-" + result)
         expect(result).assertEqual(GrantStatus.PERMISSION_DENIED);
 
         done();
@@ -85,7 +86,7 @@ describe('AccessTokenTest',function(){
         console.log("Test_verifyAccessToken_002 start");
         var atManager = abilityAccessCtrl.createAtManager();
         var result = await atManager.verifyAccessToken(tokenID, permissionNameSystem);
-        console.log("Test_verifyAccessToken_002 tokenID"+ tokenID + "-" + result)
+        console.log("Test_verifyAccessToken_002 tokenID" + tokenID + "-" + result)
         expect(result).assertEqual(GrantStatus.PERMISSION_GRANTED);
 
         done();
@@ -100,7 +101,7 @@ describe('AccessTokenTest',function(){
         console.log("Test_verifyAccessToken_003 start");
         var atManager = abilityAccessCtrl.createAtManager();
         var result = await atManager.verifyAccessToken(0, permissionNameUser);
-        console.log("Test_verifyAccessToken_003 tokenID"+ tokenID + "-" + result)
+        console.log("Test_verifyAccessToken_003 tokenID" + tokenID + "-" + result)
         expect(result).assertEqual(GrantStatus.PERMISSION_DENIED);
 
         done();
@@ -115,7 +116,7 @@ describe('AccessTokenTest',function(){
         console.log("Test_verifyAccessToken_004 start");
         var atManager = abilityAccessCtrl.createAtManager();
         var result = await atManager.verifyAccessToken(tokenID, "");
-        console.log("Test_verifyAccessToken_004 tokenID"+ tokenID + "-" + result)
+        console.log("Test_verifyAccessToken_004 tokenID" + tokenID + "-" + result)
         expect(result).assertEqual(GrantStatus.PERMISSION_DENIED);
 
         done();
@@ -129,10 +130,12 @@ describe('AccessTokenTest',function(){
     it('Test_verifyAccessToken_005', 0, async function(done){
         console.log("Test_verifyAccessToken_005 start");
         var atManager = abilityAccessCtrl.createAtManager();
-        var permissionName = "ohos.permission.testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest";
+        var permissionName = "ohos.permission.testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
+            + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
+            + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest";
 
         var result = await atManager.verifyAccessToken(tokenID, permissionName);
-        console.log("Test_verifyAccessToken_005 tokenID"+ tokenID + "-" + result)
+        console.log("Test_verifyAccessToken_005 tokenID" + tokenID + "-" + result)
         expect(result).assertEqual(GrantStatus.PERMISSION_DENIED);
 
         done();
@@ -146,12 +149,13 @@ describe('AccessTokenTest',function(){
     it('Test_grantUserGrantedPermission_001', 0, async function(done){
         console.log("Test_grantUserGrantedPermission_001 start");
         var atManager = abilityAccessCtrl.createAtManager();
-        var result = await atManager.grantUserGrantedPermission(tokenID, permissionNameUser, PermissionFlag.PERMISSION_USER_SET);
+        var result = await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
+            PermissionFlag.PERMISSION_USER_SET);
         console.log("Test_grantUserGrantedPermission_001 tokenID" + tokenID + "-" + result);
         expect(result).assertEqual(RESULT_SUCCESS);
 
         var result1 = await atManager.verifyAccessToken(tokenID, permissionNameUser);
-        console.log("Test_grantUserGrantedPermission_001 tokenID"+ tokenID + "-result1" + result1)
+        console.log("Test_grantUserGrantedPermission_001 tokenID" + tokenID + "-result1" + result1)
         expect(result1).assertEqual(GrantStatus.PERMISSION_GRANTED);
 
         done();
@@ -165,7 +169,8 @@ describe('AccessTokenTest',function(){
     it('Test_grantUserGrantedPermission_002', 0, async function(done){
         console.log("Test_grantUserGrantedPermission_002 start");
         var atManager = abilityAccessCtrl.createAtManager();
-        var result = await atManager.grantUserGrantedPermission(tokenID, permissionNameSystem, PermissionFlag.PERMISSION_USER_SET);
+        var result = await atManager.grantUserGrantedPermission(tokenID, permissionNameSystem,
+            PermissionFlag.PERMISSION_USER_SET);
         console.log("Test_grantUserGrantedPermission_002 tokenID" + tokenID + "-" + result);
         expect(result).assertEqual(RESULT_FAIL);
 
@@ -180,16 +185,17 @@ describe('AccessTokenTest',function(){
     it('Test_grantUserGrantedPermission_003', 0, async function(done){
         console.log("Test_grantUserGrantedPermission_003 start");
         var atManager = abilityAccessCtrl.createAtManager();
-        atManager.grantUserGrantedPermission(tokenID, permissionNameUser, PermissionFlag.PERMISSION_USER_SET,function(result){
-            console.log("Test_grantUserGrantedPermission_003 tokenID"+ tokenID + "-" + result)
-            expect(result).assertEqual(RESULT_SUCCESS);
+        atManager.grantUserGrantedPermission(tokenID, permissionNameUser, PermissionFlag.PERMISSION_USER_SET,
+            function (result) {
+                console.log("Test_grantUserGrantedPermission_003 tokenID" + tokenID + "-" + result)
+                expect(result).assertEqual(RESULT_SUCCESS);
 
-            atManager.verifyAccessToken(tokenID, permissionNameUser).then(function(result1){
-                console.log("Test_grantUserGrantedPermission_003 tokenID"+ tokenID + "-result1" + result1)
-                expect(result1).assertEqual(GrantStatus.PERMISSION_GRANTED);
+                atManager.verifyAccessToken(tokenID, permissionNameUser).then(function (result1) {
+                    console.log("Test_grantUserGrantedPermission_003 tokenID" + tokenID + "-result1" + result1)
+                    expect(result1).assertEqual(GrantStatus.PERMISSION_GRANTED);
+                });
+                done();
             });
-        done();
-        });
     })
 
     /**
@@ -200,7 +206,8 @@ describe('AccessTokenTest',function(){
     it('Test_grantUserGrantedPermission_004', 0, async function(done){
         console.log("Test_grantUserGrantedPermission_004 start");
         var atManager = abilityAccessCtrl.createAtManager();
-        var result = await atManager.grantUserGrantedPermission(0, permissionNameUser, PermissionFlag.PERMISSION_USER_SET);
+        var result = await atManager.grantUserGrantedPermission(0, permissionNameUser,
+            PermissionFlag.PERMISSION_USER_SET);
         console.log("Test_grantUserGrantedPermission_004 tokenID" + tokenID + "-" + result);
         expect(result).assertEqual(RESULT_FAIL);
 
@@ -230,8 +237,11 @@ describe('AccessTokenTest',function(){
     it('Test_grantUserGrantedPermission_006', 0, async function(done){
         console.log("Test_grantUserGrantedPermission_006 start");
         var atManager = abilityAccessCtrl.createAtManager();
-        var permissionName = "ohos.permission.testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest";
-        var result = await atManager.grantUserGrantedPermission(tokenID, permissionName, PermissionFlag.PERMISSION_USER_SET);
+        var permissionName = "ohos.permission.testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
+            + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
+            + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest";
+        var result = await atManager.grantUserGrantedPermission(tokenID, permissionName,
+            PermissionFlag.PERMISSION_USER_SET);
         console.log("Test_grantUserGrantedPermission_006 tokenID" + tokenID + "-" + result);
         expect(result).assertEqual(RESULT_FAIL);
 
@@ -246,12 +256,13 @@ describe('AccessTokenTest',function(){
     it('Test_revokeUserGrantedPermission_001', 0, async function(done){
         console.log("Test_revokeUserGrantedPermission_001 start");
         var atManager = abilityAccessCtrl.createAtManager();
-        var result = await atManager.revokeUserGrantedPermission(tokenID, permissionNameUser, PermissionFlag.PERMISSION_USER_SET);
+        var result = await atManager.revokeUserGrantedPermission(tokenID, permissionNameUser,
+            PermissionFlag.PERMISSION_USER_SET);
         console.log("Test_revokeUserGrantedPermission_001 tokenID" + tokenID + "-" + result);
         expect(result).assertEqual(RESULT_SUCCESS);
 
         var result1 = await atManager.verifyAccessToken(tokenID, permissionNameUser);
-        console.log("Test_revokeUserGrantedPermission_001 tokenID"+ tokenID + "-result1" + result1)
+        console.log("Test_revokeUserGrantedPermission_001 tokenID" + tokenID + "-result1" + result1)
         expect(result1).assertEqual(GrantStatus.PERMISSION_DENIED);
 
         done();
@@ -265,7 +276,8 @@ describe('AccessTokenTest',function(){
     it('Test_revokeUserGrantedPermission_002', 0, async function(done){
         console.log("Test_revokeUserGrantedPermission_002 start");
         var atManager = abilityAccessCtrl.createAtManager();
-        var result = await atManager.revokeUserGrantedPermission(tokenID, permissionNameSystem, PermissionFlag.PERMISSION_USER_SET);
+        var result = await atManager.revokeUserGrantedPermission(tokenID, permissionNameSystem,
+            PermissionFlag.PERMISSION_USER_SET);
         console.log("Test_revokeUserGrantedPermission_002 tokenID" + tokenID + "-" + result);
         expect(result).assertEqual(RESULT_FAIL);
 
@@ -280,16 +292,17 @@ describe('AccessTokenTest',function(){
     it('Test_revokeUserGrantedPermission_003', 0, async function(done){
         console.log("Test_revokeUserGrantedPermission_003 start");
         var atManager = abilityAccessCtrl.createAtManager();
-        atManager.revokeUserGrantedPermission(tokenID, permissionNameUser, PermissionFlag.PERMISSION_USER_SET,function(result){
-            console.log("Test_revokeUserGrantedPermission_003 tokenID"+ tokenID + "-" + result)
-            expect(result).assertEqual(RESULT_SUCCESS);
+        atManager.revokeUserGrantedPermission(tokenID, permissionNameUser, PermissionFlag.PERMISSION_USER_SET,
+            function (result) {
+                console.log("Test_revokeUserGrantedPermission_003 tokenID" + tokenID + "-" + result)
+                expect(result).assertEqual(RESULT_SUCCESS);
 
-            atManager.verifyAccessToken(tokenID, permissionNameUser).then(function(result1){
-                console.log("Test_revokeUserGrantedPermission_003 tokenID"+ tokenID + "-result1" + result1)
-                expect(result1).assertEqual(GrantStatus.PERMISSION_DENIED);
+                atManager.verifyAccessToken(tokenID, permissionNameUser).then(function (result1) {
+                    console.log("Test_revokeUserGrantedPermission_003 tokenID" + tokenID + "-result1" + result1)
+                    expect(result1).assertEqual(GrantStatus.PERMISSION_DENIED);
+                });
+                done();
             });
-            done();
-        });
     })
 
     /**
@@ -300,7 +313,8 @@ describe('AccessTokenTest',function(){
     it('Test_revokeUserGrantedPermission_004', 0, async function(done){
         console.log("Test_revokeUserGrantedPermission_004 start");
         var atManager = abilityAccessCtrl.createAtManager();
-        var result = await atManager.revokeUserGrantedPermission(0, permissionNameUser, PermissionFlag.PERMISSION_USER_SET);
+        var result = await atManager.revokeUserGrantedPermission(0, permissionNameUser,
+            PermissionFlag.PERMISSION_USER_SET);
         console.log("Test_revokeUserGrantedPermission_004 tokenID" + tokenID + "-" + result);
         expect(result).assertEqual(RESULT_FAIL);
 
@@ -330,8 +344,11 @@ describe('AccessTokenTest',function(){
     it('Test_revokeUserGrantedPermission_006', 0, async function(done){
         console.log("Test_revokeUserGrantedPermission_006 start");
         var atManager = abilityAccessCtrl.createAtManager();
-        var permissionName = "ohos.permission.testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest";
-        var result = await atManager.revokeUserGrantedPermission(tokenID, permissionName, PermissionFlag.PERMISSION_USER_SET);
+        var permissionName = "ohos.permission.testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
+            + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
+            + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest";
+        var result = await atManager.revokeUserGrantedPermission(tokenID, permissionName,
+            PermissionFlag.PERMISSION_USER_SET);
         console.log("Test_revokeUserGrantedPermission_006 tokenID" + tokenID + "-" + result);
         expect(result).assertEqual(RESULT_FAIL);
 
@@ -346,12 +363,13 @@ describe('AccessTokenTest',function(){
     it('Test_getPermissionFlag_001', 0, async function(done){
         console.log("Test_getPermissionFlag_001 start");
         var atManager = abilityAccessCtrl.createAtManager();
-        var result = await atManager.grantUserGrantedPermission(tokenID, permissionNameUser, PermissionFlag.PERMISSION_USER_SET);
+        var result = await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
+            PermissionFlag.PERMISSION_USER_SET);
         console.log("Test_getPermissionFlag_001 tokenID" + tokenID + "-" + result);
         expect(result).assertEqual(RESULT_SUCCESS);
 
         var result1 = await atManager.getPermissionFlags(tokenID, permissionNameUser);
-        console.log("Test_getPermissionFlag_001 tokenID"+ tokenID + "-result1" + result1)
+        console.log("Test_getPermissionFlag_001 tokenID" + tokenID + "-result1" + result1)
         expect(result1).assertEqual(PermissionFlag.PERMISSION_USER_SET);
 
         done();
@@ -395,7 +413,9 @@ describe('AccessTokenTest',function(){
     it('Test_getPermissionFlag_004', 0, async function(done){
         console.log("Test_getPermissionFlag_004 start");
         var atManager = abilityAccessCtrl.createAtManager();
-        var permissionName = "ohos.permission.testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest";
+        var permissionName = "ohos.permission.testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
+            + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
+            + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest";
         var result = await atManager.getPermissionFlags(tokenID, permissionName);
         console.log("Test_getPermissionFlag_004 tokenID" + tokenID + "-" + result);
         expect(result).assertEqual(DEFAULT_PERMISSION_FALG);

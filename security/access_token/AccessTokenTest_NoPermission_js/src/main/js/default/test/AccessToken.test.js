@@ -34,8 +34,8 @@ describe('AccessTokenTest',function(){
     beforeAll(async function (done){
         var appInfo = await bundle.getApplicationInfo('ohos.acts.security.access_token.nopermission',0 ,100);
         tokenID = appInfo.accessTokenId;
-        console.log("AccessTokenTest accessTokenId:" + appInfo.accessTokenId + ", name:"+ appInfo.name + ", bundleName:" + appInfo.bundleName)
-        // setTimeout(done(),TIMEOUT);
+        console.log("AccessTokenTest accessTokenId:" + appInfo.accessTokenId + ", name:"+ appInfo.name
+			+ ", bundleName:" + appInfo.bundleName)
         console.info("sleep begin");
         sleep(TIMEOUT);
         console.info("sleep end");
@@ -63,7 +63,8 @@ describe('AccessTokenTest',function(){
         console.info("sleep end");
         console.log("Test_grantUserGrantedPermission_007 start");
         var atManager = abilityAccessCtrl.createAtManager();
-        var result = await atManager.grantUserGrantedPermission(tokenID, permissionNameUser, PermissionFlag.PERMISSION_USER_SET);
+        var result = await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
+			PermissionFlag.PERMISSION_USER_SET);
         console.log("Test_grantUserGrantedPermission_007 tokenID"+ tokenID + "-" + result)
         expect(result).assertEqual(RESULT_FAIL);
 
@@ -78,7 +79,8 @@ describe('AccessTokenTest',function(){
     it('Test_revokeUserGrantedPermission_007', 0, async function(done){
         console.log("Test_revokeUserGrantedPermission_007 start");
         var atManager = abilityAccessCtrl.createAtManager();
-        var result = await atManager.revokeUserGrantedPermission(tokenID, permissionNameUser, PermissionFlag.PERMISSION_USER_SET);
+        var result = await atManager.revokeUserGrantedPermission(tokenID, permissionNameUser,
+			PermissionFlag.PERMISSION_USER_SET);
         console.log("Test_revokeUserGrantedPermission_007 tokenID"+ tokenID + "-" + result)
         expect(result).assertEqual(RESULT_FAIL);
 
@@ -91,6 +93,7 @@ describe('AccessTokenTest',function(){
      * @tc.desc Get permission flag that has ohos.permission.GRANT_SENSITIVE_PERMISSIONS.
      */
     it('Test_getPermissionFlags_005', 0, async function(done){
+        console.log("Test_getPermissionFlags_005 start");
         console.log("Test_getPermissionFlags_005 start");
         var atManager = abilityAccessCtrl.createAtManager();
         var result = await atManager.getPermissionFlags(tokenID, permissionNameUser);

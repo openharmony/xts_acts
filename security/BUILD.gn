@@ -17,10 +17,9 @@ group("security") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      #"user_iam/face_auth/js_api_test/function_test/userauth:ActsUserauthTest",
-      #"user_iam/face_auth/js_api_test/performance_test/performance:ActsUserauthPerformanceTest",
       "access_token/AccessTokenTest_NoPermission_js:ActsAccessTokenJSApiTestNoPermission",
       "access_token/AccessTokenTest_Normal_js:ActsAccessTokenJSApiTestNormal",
+      "huks_standard",
     ]
   }
 }
