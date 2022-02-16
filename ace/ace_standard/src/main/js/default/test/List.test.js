@@ -16,4 +16,3 @@
 require('./basicabilityapi.test.js')
 require('./mediaquery.test.js')
 require('./commonComponentJsApi.test.js')
-require('./componentJsApi.test.js')
