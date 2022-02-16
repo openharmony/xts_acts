@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-import  convertXml from '@ohos.convertxml'
+import  ConvertXML from '@ohos.convertxml'
 describe('XmlTest', function () {
 
     /**
@@ -30,7 +30,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, spaces: 0})
         var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
@@ -67,7 +67,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false,trim :true})
         var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
@@ -104,7 +104,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, ignoreDeclaration: true});
         var str1 = '{"_elements":[{"_type":"element",'+
         '"_name":"note",'+
@@ -140,7 +140,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, ignoreInstruction: true});
         var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
@@ -178,7 +178,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, ignoreAttributes: true});
         var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
@@ -214,7 +214,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, ignoreComment: true})
         var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
@@ -252,7 +252,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, ignoreComment: true})
         var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
@@ -290,7 +290,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, ignoreCDATA: true})
         var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
@@ -325,7 +325,7 @@ describe('XmlTest', function () {
             '<note importance="high" logged="true">' +
             '    <title>Happy</title>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, spaces: 4})
         var str = '{\n'+
         '    "_declaration": {\n'+
@@ -375,7 +375,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, ignoreDoctype: true})
         var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
@@ -412,7 +412,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, ignoreText: true})
         var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
@@ -443,7 +443,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, declarationKey: "123"})
         var str1 = '{"123":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
@@ -481,7 +481,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, instructionKey: "123"})
         var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
@@ -522,7 +522,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, attributesKey: "123"})
         var str1 = '{"_declaration":{"123":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
@@ -562,7 +562,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, textKey: "123"})
         var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
@@ -600,7 +600,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, cdataKey: "123"})
         var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
@@ -640,7 +640,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, commentKey: "123"})
         var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
@@ -680,7 +680,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, parentKey: "123"})
         var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
@@ -721,7 +721,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, typeKey: "123"})
         var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
@@ -758,7 +758,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, nameKey: "123"})
         var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
@@ -795,7 +795,7 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false, elementsKey: "123"})
         var str1 = '{"123":[{"123":[{"123":[{"_type":"text",'+
         '"_text":"Happy"}],'+
@@ -826,7 +826,7 @@ describe('XmlTest', function () {
      */
     it('testConvert022', 0, function () {
         var xml = '<?xml?>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false})
         var str1 = '{"_declaration":{}}'
         expect(result1).assertEqual(str1);
@@ -840,7 +840,7 @@ describe('XmlTest', function () {
      */
     it('testConvert023', 0, function () {
         var  xml = '<?xml version="1.0" encoding="utf-8"?>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false})
         var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}}}'
@@ -855,7 +855,7 @@ describe('XmlTest', function () {
      */
     it('testConvert024', 0, function () {
         var  xml = '<?xml?>\n<a/>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false})
         var str1 = '{"_declaration":{},"_elements":[{"_type":"element","_name":"a"}]}'
         expect(result1).assertEqual(str1);
@@ -869,7 +869,7 @@ describe('XmlTest', function () {
      */
     it('testConvert025', 0, function () {
         var  xml = '<?go there?>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false})
         var str1 = '{"_elements":[{"_type":"instruction",'+
         '"_name":"go",'+
@@ -885,7 +885,7 @@ describe('XmlTest', function () {
      */
     it('testConvert026', 0, function () {
         var  xml = '<?go there?><?come here?>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false})
         var str1 = '{"_elements":[{"_type":"instruction",'+
         '"_name":"go",'+
@@ -904,7 +904,7 @@ describe('XmlTest', function () {
      */
     it('testConvert027', 0, function () {
         var  xml = '<!-- \t Hello World! \t -->';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false})
         var str1 = '{"_elements":[{"_type":"comment","_comment":"'+
         ' \t'+
@@ -923,7 +923,7 @@ describe('XmlTest', function () {
      */
     it('testConvert028', 0, function () {
         var  xml = '<!-- \t Hello \t -->\n<!-- \t World \t -->';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false})
         var str1 = '{"_elements":[{"_type":"comment","_comment":"'+
         ' \t'+
@@ -945,7 +945,7 @@ describe('XmlTest', function () {
      */
     it('testConvert029', 0, function () {
         var  xml = '<![CDATA[ \t <foo></bar> \t ]]>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false})
         var str1 = '{"_elements":[{"_type":"cdata","_cdata":"'+
         ' \t'+
@@ -963,7 +963,7 @@ describe('XmlTest', function () {
      */
     it('testConvert030', 0, function () {
         var  xml = '<![CDATA[ \t data]]><![CDATA[< > " and & \t ]]>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false})
         var str1 = '{"_elements":[{"_type":"cdata","_cdata":"'+
         ' \t'+
@@ -985,7 +985,7 @@ describe('XmlTest', function () {
      */
     it('testConvert031', 0, function () {
         var  xml = '<a/>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false})
         var str1 = '{"_elements":[{"_type":"element",'+
         '"_name":"a"}]}'
@@ -1000,7 +1000,7 @@ describe('XmlTest', function () {
      */
     it('testConvert032', 0, function () {
         var  xml = '<a/>\n<a/>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact   : false})
         var str1 = '{"_elements":[{"_type":"element",'+
         '"_name":"a"},'+
@@ -1017,7 +1017,7 @@ describe('XmlTest', function () {
      */
     it('testConvert033', 0, function () {
         var  xml = '<a/>\n<b/>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false})
         var str1 = '{"_elements":[{"_type":"element",'+
         '"_name":"a"},'+
@@ -1034,7 +1034,7 @@ describe('XmlTest', function () {
      */
     it('testConvert034', 0, function () {
         var  xml = '<a x="hello"/>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false})
         var str1 = '{"_elements":[{"_type":"element",'+
         '"_name":"a",'+
@@ -1050,7 +1050,7 @@ describe('XmlTest', function () {
      */
     it('testConvert035', 0, function () {
         var  xml = '<a x="1.234" y="It\'s"/>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false})
         var str1 = '{"_elements":[{"_type":"element",'+
         '"_name":"a",'+
@@ -1067,7 +1067,7 @@ describe('XmlTest', function () {
      */
     it('testConvert036', 0, function () {
         var  xml = '<a> \t Hi \t </a>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false})
         var str1 = '{"_elements":[{"_type":"element","_name":"a","_elements":[{"_type":"text","_text":"'+
         ' \t'+
@@ -1085,7 +1085,7 @@ describe('XmlTest', function () {
      */
     it('testConvert037', 0, function () {
         var  xml = '<a>  Hi  There \t </a>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false})
         var str1 = '{"_elements":[{"_type":"element","_name":"a","_elements":[{"_type":"text","_text":"'+
         '  Hi '+
@@ -1103,7 +1103,7 @@ describe('XmlTest', function () {
      */
     it('testConvert038', 0, function () {
         var  xml = '<a>\n\v<b/>\n</a>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false})
         var str1 = '{"_elements":[{"_type":"element",'+
         '"_name":"a",'+
@@ -1120,7 +1120,7 @@ describe('XmlTest', function () {
      */
     it('testConvert039', 0, function () {
         var  xml = '<a>\n\v<b>\n\v\v<c/>\n\v</b>\n</a>';
-        var convertml = new convertXml.ConvertXML();
+        var convertml = new ConvertXML();
         var result1 = convertml.convert(xml, {compact: false})
         var str1 = '{"_elements":[{"_type":"element",'+
         '"_name":"a",'+
