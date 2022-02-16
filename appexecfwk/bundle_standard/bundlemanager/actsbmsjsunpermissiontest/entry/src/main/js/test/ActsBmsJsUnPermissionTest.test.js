@@ -14,10 +14,18 @@
  */
 
 import bundle from '@ohos.bundle'
+import innerBundleManager from '@ohos.bundle.innerBundleManager'
 import { describe, it, expect } from 'deccjsunit/index'
 
 const STATUS_INSTALL_PERMISSION_DENIED = 0X44;
 const STATUS_UNINSTALL_PERMISSION_DENIED = 0X45;
+
+const LAUNCHER_BUNDLE_NAME = 'com.ohos.launcher';
+const LAUNCHER_MAIN_ABILITY = 'com.ohos.launcher.MainAbility';
+const DEFAULT_FLAG = 0;
+const DEFAULT_USER_ID = 100;
+const INVALID_CODE = 1;
+
 describe('ActsBmsJsUnPermissionTest', function () {
 
     /*
@@ -62,5 +70,204 @@ describe('ActsBmsJsUnPermissionTest', function () {
             expect(data.statusMessage).assertEqual("STATUS_UNINSTALL_PERMISSION_DENIED");
             done();
         };
+    });
+
+    /*
+     * @tc.number: getApplicationInfoTest_100
+     * @tc.name: test getApplicationInfo
+     * @tc.desc: test getApplicationInfo
+     */
+    it('getApplicationInfoTest_100', 0, async function (done) {
+        console.debug('getApplicationInfoTest_100 start');
+        bundle.getApplicationInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG, DEFAULT_USER_ID).then(data => {
+            expect().assertFail();
+            done();
+        }).catch(err => {
+            expect(err).assertEqual(INVALID_CODE);
+            done();
+        });
+    });
+
+    /*
+     * @tc.number: getAllApplicationInfoTest_100
+     * @tc.name: test getAllApplicationInfo
+     * @tc.desc: test getAllApplicationInfo
+     */
+    it('getAllApplicationInfoTest_100', 0, async function (done) {
+        console.debug('getAllApplicationInfoTest_100 start');
+        bundle.getAllApplicationInfo(DEFAULT_FLAG, DEFAULT_USER_ID).then(data => {
+            expect().assertFail();
+            done();
+        }).catch(err => {
+            expect(err).assertEqual(INVALID_CODE);
+            done();
+        });
+    });
+
+    /*
+     * @tc.number: getBundleInfoTest_100
+     * @tc.name: test getBundleInfo
+     * @tc.desc: test getBundleInfo
+     */
+    it('getBundleInfoTest_100', 0, async function (done) {
+        console.debug('getBundleInfoTest_100 start');
+        bundle.getBundleInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_USER_ID).then(data => {
+            expect().assertFail();
+            done();
+        }).catch(err => {
+            expect(err).assertEqual(INVALID_CODE);
+            done();
+        });
+    });
+
+    /*
+     * @tc.number: getAllBundleInfoTest_100
+     * @tc.name: test getAllBundleInfo
+     * @tc.desc: test getAllBundleInfo
+     */
+    it('getAllBundleInfoTest_100', 0, async function (done) {
+        console.debug('getAllBundleInfoTest_100 start');
+        bundle.getAllBundleInfo(DEFAULT_FLAG).then(data => {
+            expect().assertFail();
+            done();
+        }).catch(err => {
+            expect(err).assertEqual(INVALID_CODE);
+            done();
+        });
+    });
+
+    /*
+     * @tc.number: queryAbilityByWantTest_100
+     * @tc.name: test queryAbilityByWant
+     * @tc.desc: test queryAbilityByWant
+     */
+    it('queryAbilityByWantTest_100', 0, async function (done) {
+        console.debug('queryAbilityByWantTest_100 start');
+        bundle.queryAbilityByWant({
+            bundleName : LAUNCHER_BUNDLE_NAME,
+            abilityName : LAUNCHER_MAIN_ABILITY
+        }, DEFAULT_FLAG, DEFAULT_USER_ID).then(data => {
+            expect().assertFail();
+            done();
+        }).catch(err => {
+            expect(err).assertEqual(INVALID_CODE);
+            done();
+        });
+    });
+
+    /*
+     * @tc.number: getLaunchWantForBundleTest_100
+     * @tc.name: test getLaunchWantForBundle
+     * @tc.desc: test getLaunchWantForBundle
+     */
+    it('getLaunchWantForBundleTest_100', 0, async function (done) {
+        console.debug('getLaunchWantForBundleTest_100 start');
+        bundle.getLaunchWantForBundle(LAUNCHER_BUNDLE_NAME).then(data => {
+            expect().assertFail();
+            done();
+        }).catch(err => {
+            expect(err).assertEqual(INVALID_CODE);
+            done();
+        });
+    });
+
+    /*
+     * @tc.number: getBundleArchiveInfoTest_100
+     * @tc.name: test getBundleArchiveInfo
+     * @tc.desc: test getBundleArchiveInfo
+     */
+    it('getBundleArchiveInfoTest_100', 0, async function (done) {
+        console.debug('getBundleArchiveInfoTest_100 start');
+        bundle.getBundleArchiveInfo("/system/app/Launcher.hap", DEFAULT_FLAG).then(data => {
+            expect().assertFail();
+            done();
+        }).catch(err => {
+            expect(err).assertEqual(INVALID_CODE);
+            done();
+        });
+    });
+
+    /*
+     * @tc.number: setApplicationEnabledTest_100
+     * @tc.name: test setApplicationEnabled
+     * @tc.desc: test setApplicationEnabled
+     */
+    it('setApplicationEnabledTest_100', 0, async function (done) {
+        console.debug('setApplicationEnabledTest_100 start');
+        bundle.setApplicationEnabled(LAUNCHER_BUNDLE_NAME, false).then(data => {
+            expect().assertFail();
+            done();
+        }).catch(err => {
+            expect(err).assertEqual(INVALID_CODE);
+            done();
+        });
+    });
+
+    /*
+     * @tc.number: setAbilityEnabledTest_100
+     * @tc.name: test setAbilityEnabled
+     * @tc.desc: test setAbilityEnabled
+     */
+    it('setAbilityEnabledTest_100', 0, async function (done) {
+        console.debug('setAbilityEnabledTest_100 start');
+        let abilityInfo = {
+            bundleName : LAUNCHER_BUNDLE_NAME,
+            name : LAUNCHER_MAIN_ABILITY
+        };
+        bundle.setAbilityEnabled(abilityInfo, false).then(data => {
+            expect().assertFail();
+            done();
+        }).catch(err => {
+            expect(err).assertEqual(INVALID_CODE);
+            done();
+        });
+    });
+
+    /*
+     * @tc.number: getLauncherAbilityInfosTest_100
+     * @tc.name: test getLauncherAbilityInfos
+     * @tc.desc: test getLauncherAbilityInfos
+     */
+    it('getLauncherAbilityInfosTest_100', 0, async function (done) {
+        console.debug('getLauncherAbilityInfosTest_100 start');
+        innerBundleManager.getLauncherAbilityInfos(LAUNCHER_BUNDLE_NAME, DEFAULT_USER_ID).then(data => {
+            expect().assertFail();
+            done();
+        }).catch(err => {
+            expect(err).assertEqual(INVALID_CODE);
+            done();
+        });
+    });
+
+    /*
+     * @tc.number: getAllLauncherAbilityInfosTest_100
+     * @tc.name: test getAllLauncherAbilityInfos
+     * @tc.desc: test getAllLauncherAbilityInfos
+     */
+    it('getAllLauncherAbilityInfosTest_100', 0, async function (done) {
+        console.debug('getAllLauncherAbilityInfosTest_100 start');
+        innerBundleManager.getAllLauncherAbilityInfos(DEFAULT_USER_ID).then(data => {
+            expect().assertFail();
+            done();
+        }).catch(err => {
+            expect(err).assertEqual(INVALID_CODE);
+            done();
+        });
+    });
+
+    /*
+     * @tc.number: getShortcutInfosTest_100
+     * @tc.name: test getShortcutInfos
+     * @tc.desc: test getShortcutInfos
+     */
+    it('getShortcutInfosTest_100', 0, async function (done) {
+        console.debug('getShortcutInfosTest_100 start');
+        innerBundleManager.getShortcutInfos(LAUNCHER_BUNDLE_NAME).then(data => {
+            expect().assertFail();
+            done();
+        }).catch(err => {
+            expect(err).assertEqual(INVALID_CODE);
+            done();
+        });
     });
 })
