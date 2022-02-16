@@ -57,16 +57,16 @@ export default {
     },
     // 属性
     showPanelPro1() {
-        this.$element('simplepanelPro1').show()
+        this.$element('prop1').show()
     },
     closePanelPro1() {
-        this.$element('simplepanelPro1').close()
+        this.$element('prop1').close()
     },
     showPanelPro2() {
-        this.$element('simplepanelPro2').show()
+        this.$element('prop2').show()
     },
     closePanelPro2() {
-        this.$element('simplepanelPro2').close()
+        this.$element('prop2').close()
     },
     showPanelPro3() {
         this.$element('simplepanelPro3').show()

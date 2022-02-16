@@ -261,10 +261,9 @@
                 stepper通用属性1
             </text>
             <stepper class="stylePro"
-                     disabled = "true" focusable ="true"
-                     data-name ="prop1" click-effect="spring-medium"
+                     data-name ="prop1"
                      dir ="rtl"
-                     id="mystepper"
+                     id="prop1"
                      index="0"
                      onnext="next"
                      onback="back">
@@ -291,10 +290,9 @@
             <text  class="sub-title">
                 stepper通用属性2
             </text>
-            <stepper class="stylePro" id="prop1"
-                     focusable ="true"
-                     data-name ="prop1" click-effect="spring-medium"
-                     dir ="rtl" id="mystepper" index="0"  onnext="next" onback="back">
+            <stepper class="stylePro" id="prop2"
+                     data-name ="prop2"
+                     dir ="rtl"  index="0"  onnext="next" onback="back">
                 <stepper-item class ="stepperItem gradient4" label="{{label_1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
@@ -319,7 +317,7 @@
                 stepper通用属性3
             </text>
             <stepper style="color: #679855; stroke-width: 15px; line-cap: round; margin: 5px;"
-                    class="stylePro" id="mystepper" index="0"  onnext="next" onback="back">
+                    class="stylePro" id="prop3" index="0"  onnext="next" onback="back">
                 <stepper-item class ="stepperItem" label="{{label_1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
@@ -488,7 +486,7 @@
                 stepper通用方法1
             </text>
             <stepper class="stylePro function1"
-                     id="mystepper" index="1"
+                     id="mystepper1" index="1"
                      onnext="next"
                      onback="back"
                      ontouchstart="functionTest1">
@@ -507,6 +505,7 @@
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
                 <stepper-item class ="stepperItem"
+                              id="function3"
                               ontouchstart="functionTest3"
                               label="{{label_3}}">
                     <div class = "stepperItemContent" >
@@ -521,7 +520,7 @@
             </text>
             <stepper class="stylePro function2"
                      ontouchstart="functionTest2"
-                     id="mystepper"
+                     id="mystepper2"
                      index="1"
                      onnext="next"
                      onback="back"

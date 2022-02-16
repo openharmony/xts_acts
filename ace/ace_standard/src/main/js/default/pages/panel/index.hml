@@ -216,7 +216,7 @@
                 动画样式
             </text>
             <text class="sub-title">
-                div动画样式1
+                panel动画样式1
             </text>
             <div class="btn-div">
                 <button type="capsule"
@@ -243,7 +243,7 @@
                 </div>
             </panel>
             <text class="sub-title">
-                div动画样式2
+                panel动画样式2
             </text>
             <div class="btn-div">
                 <button type="capsule"
@@ -291,7 +291,7 @@
                         onclick="showPanelPro1">
                 </button>
             </div>
-            <panel id="simplepanelPro1"
+            <panel id = "prop1"
                    class="prop1"
                    type="foldable"
                    disabled = "true"
@@ -320,7 +320,7 @@
                         onclick="showPanelPro2">
                 </button>
             </div>
-            <panel id="simplepanelPro2" class="prop2" ref ="prop2"
+            <panel id="prop2" class="prop2" ref ="prop2"
                      disabled = "false" focusable ="false"
                      data-name ="prop2" click-effect="spring-large"
                      dir ="ltr"

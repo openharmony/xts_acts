@@ -23,6 +23,10 @@ export default {
     },
     setRightButton(e) {
         this.$element('mystepper').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('prop1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('prop2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('mystepper1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('mystepper2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
     },
     next(e) {
         var index = {
@@ -360,7 +364,7 @@ export default {
     },
 
     functionTest1(event){
-        var function1 =  this.$element('function1');
+        var function1 =  this.$element('mystepper1');
         function1.focus(true)
         var rect = function1.getBoundingClientRect();
         var width = rect.width;
@@ -375,7 +379,7 @@ export default {
     },
 
     functionTest2(event){
-        var function2 =  this.$element('function2');
+        var function2 =  this.$element('mystepper2');
         let observer = function2.createIntersectionObserver({
             ratios: [0.2, 0], // number
         });

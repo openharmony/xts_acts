@@ -296,54 +296,12 @@
     }
 }
 
-
 .ani2{
-    color: #ad4e2a;
-    stroke-width: 55px;
-    line-cap: square;
+    background-color: #ad4e2a;
+    width: 55px;
+    height: 55px;
     margin: 5px;
-    transform-origin: 2% 3%;
-    animation-name:ani2Go;
-    animation-delay:5s;
-    animation-duration:10s;
-    animation-iteration-count:4;
-    animation-timing-function:ease-out;
-    animation-direction:reverse;
-    animation-fill-mode:forwards;
-    animation-play-state:running;
-    transition:all 0 ease 0;
 }
-
-@keyframes ani2Go
-{
-    from {
-        background-color: #f76160;
-        opacity:0.3;
-        width:50px;
-        height: 50px;
-        background-position:10% 10%
-    }
-    30% {
-        background-color: #60f761;
-        opacity:0.5;
-        width:70px;
-        height: 70px;
-        background-position:12% 12%;
-        transform:translateX(10px) translateY(5px)  translateZ(15px)
-        rotateX(20deg) rotateY(25deg) rotateZ(15deg) scaleX(0.6) scaleY(0.5) scaleZ(1.5) perspective(10);
-    }
-    to {
-        background-color: #6160f7;
-        opacity:1;
-        width:90px;
-        height: 90px;
-        background-position:22% 22%;
-        transform:translateX(30px) translateY(45px)  translateZ(55px)
-        rotateX(180deg) rotateY(185deg) rotateZ(150deg) scaleX(2) scaleY(2.5) scaleZ(3.5);
-    }
-}
-
-
 
 .gradient1{
     stroke-width: 30px;
