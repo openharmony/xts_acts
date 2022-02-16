@@ -14,3 +14,4 @@
  */
 require('./ActsBmsFormsInfoTest.test.js')
 require('./ActsBmsQueryAbilityByWant.test.js') 
+require('./ActsBmsCleanCacheTest.test.js')
