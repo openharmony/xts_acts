@@ -20,8 +20,10 @@ import wifi from '@ohos.wifi'
 // delay x ms
 function sleep(delay) {
     var start = (new Date()).getTime();
-    while ((new Date()).getTime() - start < delay) {
-      console.log("sleep ms:"+ delay); 
+    while(true){
+        if((new Date()).getTime() - start > delay) {
+            break;
+        }
     }
 }
 
@@ -376,6 +378,39 @@ describe('ACTS_WifiTest', function() {
         console.info("[wifi_test] getCountryCode -> " + JSON.stringify(countryCode));
         expect(JSON.stringify(countryCode)).assertEqual('"CN"');
     })
-
+   	
+    /**
+    * @tc.number     Conn_Info_0005
+    * @tc.name       SUB_Communication_WiFi_Sta_Conn_Info_0001
+    * @tc.desc       Test get empty linked information
+    */
+    it('SUB_Communication_WiFi_Sta_Conn_Info_0001', 0, async function () {
+        console.info("[wifi_test] get empty linked information and getIpInfo.");
+        var discon2 = wifi.disconnect();
+        console.log("[wifi_test] wifi disconnect result: " + discon2);
+        expect(discon2).assertTrue();
+        sleep(2000);
+        var isConnected= wifi.isConnected();
+        console.log("[wifi_test] wifi isConnected result: " + isConnected);
+        expect(isConnected).assertFalse();
+        wifi.getLinkedInfo((err, data) => {
+            if (err) {
+                return console.error('failed to get link infos callback because ' + JSON.stringify(err));
+            }else {
+                console.info("[wifi_test] get wifi link [callback] -> " + JSON.stringify(data));
+            }
+        });
+        console.info("[wifi_test] get IpInfo.");
+        var ipInfo = wifi.getIpInfo();
+        console.info("[wifi_test] getIpInfo -> " + JSON.stringify(ipInfo));
+        expect(JSON.stringify(ipInfo)).assertContain("gateway");
+        console.info("gateway: " + ipInfo.gateway);
+        console.info("ipAddress: " + ipInfo.ipAddress);
+        console.info("leaseDuration: " + ipInfo.leaseDuration);
+        console.info("netmask: " + ipInfo.netmask);
+        console.info("primaryDns: " + ipInfo.primaryDns);
+        console.info("secondDns: " + ipInfo.secondDns);
+        console.info("serverIp: " + ipInfo.serverIp);
+    })
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })

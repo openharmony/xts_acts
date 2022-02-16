@@ -12,20 +12,20 @@
 # limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
-
-ohos_js_hap_suite("ActsWifiJSTest") {
+ohos_js_hap_suite("ActsBluetoothJsTest") {
   hap_profile = "./src/main/config.json"
   deps = [
-    ":wifi_js_assets",
-    ":wifi_resources",
+    ":bluetooth_js_assets",
+    ":bluetooth_resources",
   ]
+
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsWifiJSApiTest"
+  hap_name = "ActsBluetoothHapTest"
 }
-ohos_js_assets("wifi_js_assets") {
+ohos_js_assets("bluetooth_js_assets") {
   source_dir = "./src/main/js/default"
 }
-ohos_resources("wifi_resources") {
+ohos_resources("bluetooth_resources") {
   sources = [ "./src/main/resources" ]
   hap_profile = "./src/main/config.json"
 }
