@@ -16,6 +16,13 @@
                 "ActsZlibTest->/data/local/tmp/ActsZlibTest"
             ],
             "type": "PushKit"
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "remount",
+                "mkdir /data/test"
+            ]
         }
     ]
 }
