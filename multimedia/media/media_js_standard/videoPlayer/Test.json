@@ -12,7 +12,7 @@
             "pre-push": [
             ],
             "push": [
-                "./resource/audio/01.mp4 ->/data/media/"
+                "./resource/audio/H264_AAC.mp4 ->/data/media/"
             ]
         },
 		{
@@ -27,7 +27,7 @@
         },
         {
             "test-file-name": [
-                "AudioPlayerJsTest.hap"
+                "VideoPlayerJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

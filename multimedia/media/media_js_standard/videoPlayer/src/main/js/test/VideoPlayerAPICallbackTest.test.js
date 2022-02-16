@@ -14,10 +14,11 @@
  */
 
 import media from '@ohos.multimedia.media'
+import Fileio from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('VideoPlayerAPICallbackTest', function () {
-    const AUDIO_SOURCE = 'file://data/media/01.mp4';
+    const AUDIO_SOURCE = 'file://data/media/H264_AAC.mp4';
     const PLAY_TIME = 1000;
     const SEEK_TIME = 5000;
     const SEEK_CLOSEST = 3;
@@ -25,7 +26,6 @@ describe('VideoPlayerAPICallbackTest', function () {
     const HEIGHT_VALUE = 480;
     const DURATION_TIME = 10034;
     const CREATE_EVENT = 'create';
-    const GETSURFACE_EVENT = 'getDisplaySurface';
     const SETSURFACE_EVENT = 'setDisplaySurface';
     const GETDESCRIPTION = 'getTrackDescription';
     const PREPARE_EVENT = 'prepare';
@@ -42,11 +42,12 @@ describe('VideoPlayerAPICallbackTest', function () {
     const END_EVENT = 'end';
     const VOLUME_VALUE = 1;
     const SPEED_VALUE = 1;
-    let surfaceID = null;
+    let surfaceID = '';
     let events = require('events');
     let eventEmitter = new events.EventEmitter();
 
     beforeAll(function() {
+        getSurfaceID();
         console.info('beforeAll case');
     })
 
@@ -61,6 +62,19 @@ describe('VideoPlayerAPICallbackTest', function () {
     afterAll(function() {
         console.info('afterAll case');
     })
+
+    function getSurfaceID() {
+        let surfaceIDTest = new ArrayBuffer(20);
+        let readStreamSync = Fileio.createStreamSync('/data/media/surfaceID.txt', 'rb');
+        readStreamSync.readSync(surfaceIDTest, {length : 13});
+        let view = new Uint8Array(surfaceIDTest);
+        for (let i = 0; i < 13; i++) {
+            let value = view[i] - 48;
+            surfaceID = surfaceID + '' + value;
+        }
+        console.info('case getSurfaceID is ' + surfaceID);
+        readStreamSync.closeSync();
+    }
 
     function sleep(time) {
         for(let t = Date.now(); Date.now() - t <= time;);
@@ -99,33 +113,13 @@ describe('VideoPlayerAPICallbackTest', function () {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case createVideoPlayer success!!');
                 toNextStep(videoPlayer, steps, done);
-            } else {
-                if (steps[0] == ERROR_EVENT) {
-                    steps.shift();
-                    toNextStep(videoPlayer, steps, done);
-                } else {
-                    printfError(err, done);
-                }
-            }
-        });
-    });
-
-    eventEmitter.on(GETSURFACE_EVENT, (videoPlayer, steps, done) => {
-        steps.shift();
-        videoPlayer.getDisplaySurface((err, outSurface) => {
-            if (typeof (err) == 'undefined') {
-                surfaceID = outSurface;
-                console.info('case getDisplaySurface success!!');
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
-                if (steps[0] == ERROR_EVENT) {
-                    steps.shift();
-                    toNextStep(videoPlayer, steps, done);
-                } else {
-                    printfError(err, done);
-                }
+                printfError(err, done);
             }
-        })
+        });
     });
 
     eventEmitter.on(SETSURFACE_EVENT, (videoPlayer, steps, done) => {
@@ -136,13 +130,11 @@ describe('VideoPlayerAPICallbackTest', function () {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success!!');
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
-                if (steps[0] == ERROR_EVENT) {
-                    steps.shift();
-                    toNextStep(videoPlayer, steps, done);
-                } else {
-                    printfError(err, done);
-                }
+                printfError(err, done);
             }
         })
     });
@@ -158,13 +150,11 @@ describe('VideoPlayerAPICallbackTest', function () {
                 expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
                 console.info('case prepare success!!');
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
-                if (steps[0] == ERROR_EVENT) {
-                    steps.shift();
-                    toNextStep(videoPlayer, steps, done);
-                } else {
-                    printfError(err, done);
-                }
+                printfError(err, done);
             }
         });
     });
@@ -177,13 +167,11 @@ describe('VideoPlayerAPICallbackTest', function () {
                     printfDescription(arrlist[i]);
                 }
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
-                if (steps[0] == ERROR_EVENT) {
-                    steps.shift();
-                    toNextStep(videoPlayer, steps, done);
-                } else {
-                    printfError(err, done);
-                }
+                printfError(err, done);
             }
         });
     });
@@ -196,13 +184,11 @@ describe('VideoPlayerAPICallbackTest', function () {
                 console.info('case play success!!');
                 sleep(PLAY_TIME);
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
-                if (steps[0] == ERROR_EVENT) {
-                    steps.shift();
-                    toNextStep(videoPlayer, steps, done);
-                } else {
-                    printfError(err, done);
-                }
+                printfError(err, done);
             }
         });
     });
@@ -214,13 +200,11 @@ describe('VideoPlayerAPICallbackTest', function () {
                 expect(videoPlayer.state).assertEqual('paused');
                 console.info('case pause success!!');
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
-                if (steps[0] == ERROR_EVENT) {
-                    steps.shift();
-                    toNextStep(videoPlayer, steps, done);
-                } else {
-                    printfError(err, done);
-                }
+                printfError(err, done);
             }
         });
     });
@@ -232,13 +216,11 @@ describe('VideoPlayerAPICallbackTest', function () {
                 expect(videoPlayer.state).assertEqual('stopped');
                 console.info('case stop success!!');
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
-                if (steps[0] == ERROR_EVENT) {
-                    steps.shift();
-                    toNextStep(videoPlayer, steps, done);
-                } else {
-                    printfError(err, done);
-                }
+                printfError(err, done);
             }
         });
     });
@@ -250,13 +232,11 @@ describe('VideoPlayerAPICallbackTest', function () {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case reset success!!');
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
-                if (steps[0] == ERROR_EVENT) {
-                    steps.shift();
-                    toNextStep(videoPlayer, steps, done);
-                } else {
-                    printfError(err, done);
-                }
+                printfError(err, done);
             }
         });
     });
@@ -267,13 +247,11 @@ describe('VideoPlayerAPICallbackTest', function () {
             if (typeof (err) == 'undefined') {
                 console.info('case release success!!');
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
-                if (steps[0] == ERROR_EVENT) {
-                    steps.shift();
-                    toNextStep(videoPlayer, steps, done);
-                } else {
-                    printfError(err, done);
-                }
+                printfError(err, done);
             }
         });
     });
@@ -286,13 +264,11 @@ describe('VideoPlayerAPICallbackTest', function () {
             if (typeof (err) == 'undefined') {
                 console.info('case seek success and seekDoneTime is '+ seekDoneTime);
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
-                if (steps[0] == ERROR_EVENT) {
-                    steps.shift();
-                    toNextStep(videoPlayer, steps, done);
-                } else {
-                    printfError(err, done);
-                }
+                printfError(err, done);
             }
         });
     });
@@ -306,13 +282,11 @@ describe('VideoPlayerAPICallbackTest', function () {
                 expect(seekDoneTime).assertEqual(SEEK_TIME);
                 console.info('case seek success and seekDoneTime is '+ seekDoneTime);
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
-                if (steps[0] == ERROR_EVENT) {
-                    steps.shift();
-                    toNextStep(videoPlayer, steps, done);
-                } else {
-                    printfError(err, done);
-                }
+                printfError(err, done);
             }
         });
     });
@@ -325,13 +299,11 @@ describe('VideoPlayerAPICallbackTest', function () {
             if (typeof (err) == 'undefined') {
                 console.info('case setVolume success');
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
-                if (steps[0] == ERROR_EVENT) {
-                    steps.shift();
-                    toNextStep(videoPlayer, steps, done);
-                } else {
-                    printfError(err, done);
-                }
+                printfError(err, done);
             }
         });
     });
@@ -344,13 +316,11 @@ describe('VideoPlayerAPICallbackTest', function () {
             if (typeof (err) == 'undefined') {
                 console.info('case setSpeed success and speedMode is '+ speedMode);
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
-                if (steps[0] == ERROR_EVENT) {
-                    steps.shift();
-                    toNextStep(videoPlayer, steps, done);
-                } else {
-                    printfError(err, done);
-                }
+                printfError(err, done);
             }
         });
     });
@@ -365,7 +335,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0100', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -380,7 +350,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0200', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -395,7 +365,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0300', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             PAUSE_EVENT, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -410,7 +380,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0400', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             STOP_EVENT, PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -425,7 +395,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0500', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             RESET_EVENT, PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -440,7 +410,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0600', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SEEK_EVENT, SEEK_TIME, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -455,7 +425,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0700', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SEEK_MODE_EVENT, SEEK_TIME, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -470,7 +440,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0800', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SETVOLUME_EVENT, VOLUME_VALUE, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -485,7 +455,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0900', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SETSPEED_EVENT, SPEED_VALUE, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -500,7 +470,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_1000', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -515,7 +485,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_1100', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, GETDESCRIPTION,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, GETDESCRIPTION,
             PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -530,7 +500,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_1200', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PREPARE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PREPARE_EVENT,
             PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -559,7 +529,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0200', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -574,7 +544,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0300', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -589,7 +559,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0400', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, PLAY_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -604,7 +574,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0500', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, PLAY_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -619,7 +589,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0600', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -634,7 +604,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0700', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -649,7 +619,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0800', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -664,7 +634,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0900', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -679,7 +649,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_1000', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PLAY_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -694,7 +664,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_1100', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, GETDESCRIPTION, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -709,7 +679,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_1200', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PLAY_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -738,7 +708,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0200', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -753,7 +723,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0300', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -768,7 +738,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0400', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -783,7 +753,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0500', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -798,7 +768,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0600', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -813,7 +783,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0700', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -828,7 +798,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0800', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -843,7 +813,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0900', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -858,7 +828,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_1000', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -873,7 +843,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_1100', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, GETDESCRIPTION, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -888,7 +858,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_1200', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, PAUSE_EVENT, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -917,7 +887,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0200', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -932,7 +902,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0300', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -947,7 +917,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0400', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -962,7 +932,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0500', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -977,7 +947,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0600', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, STOP_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -992,7 +962,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0700', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, STOP_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1007,7 +977,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0800', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, STOP_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1022,7 +992,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0900', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, STOP_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1037,7 +1007,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_1000', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1052,7 +1022,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_1100', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, GETDESCRIPTION, STOP_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1067,7 +1037,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_1200', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, STOP_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1096,7 +1066,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0200', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1111,7 +1081,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0300', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1126,7 +1096,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0400', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1141,7 +1111,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0500', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1156,7 +1126,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0600', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, RESET_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1171,7 +1141,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0700', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, RESET_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1186,7 +1156,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0800', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RESET_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1201,7 +1171,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0900', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, RESET_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1216,7 +1186,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_1000', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             RESET_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1231,7 +1201,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_1100', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, GETDESCRIPTION, RESET_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1246,7 +1216,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_1200', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, RESET_EVENT, RESET_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1275,7 +1245,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0200', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1290,7 +1260,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0300', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1305,7 +1275,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0400', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1320,7 +1290,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0500', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1335,7 +1305,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0600', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1350,7 +1320,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0700', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1365,7 +1335,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0800', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1380,7 +1350,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0900', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1395,7 +1365,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_1000', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT, RELEASE_EVENT, END_EVENT);
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
@@ -1409,7 +1379,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_1100', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, GETDESCRIPTION, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1424,7 +1394,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_1200', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1453,7 +1423,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0200', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1468,7 +1438,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0300', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1483,7 +1453,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0400', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1498,7 +1468,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0500', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, SEEK_EVENT, SEEK_TIME, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1513,7 +1483,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0600', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, SEEK_EVENT, SEEK_TIME, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1528,7 +1498,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0700', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1543,7 +1513,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0800', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE,
             SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
@@ -1559,7 +1529,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0900', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             SEEK_EVENT, SEEK_TIME, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1574,7 +1544,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_1000', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, GETDESCRIPTION, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1589,7 +1559,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_1100', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, SEEK_EVENT, SEEK_TIME,
             SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
@@ -1605,7 +1575,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_1300', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, -1, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1620,7 +1590,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_1400', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, DURATION_TIME + 1000, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1649,7 +1619,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0200', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1664,7 +1634,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0300', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1679,7 +1649,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0400', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1694,7 +1664,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0500', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1709,7 +1679,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0600', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1724,7 +1694,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0700', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1739,7 +1709,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0800', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, SETVOLUME_EVENT,
             VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
@@ -1755,7 +1725,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0900', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             SETVOLUME_EVENT, VOLUME_VALUE, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1770,7 +1740,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_1000', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, GETDESCRIPTION, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1785,7 +1755,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_1100', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, SETVOLUME_EVENT, VOLUME_VALUE,
             SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
@@ -1801,7 +1771,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_1300', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, -1, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1816,7 +1786,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_1400', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, 2, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1845,7 +1815,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0200', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1860,7 +1830,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0300', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1875,7 +1845,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0400', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1890,7 +1860,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0500', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, SETSPEED_EVENT, SPEED_VALUE,
             ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
@@ -1906,7 +1876,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0600', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, SETSPEED_EVENT, SPEED_VALUE,
             ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
@@ -1922,7 +1892,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0700', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1937,7 +1907,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0800', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, SETSPEED_EVENT,
             SPEED_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
@@ -1953,7 +1923,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0900', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             SETSPEED_EVENT, SPEED_VALUE, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1968,7 +1938,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_1000', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, GETDESCRIPTION, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -1983,7 +1953,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_1100', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, SETSPEED_EVENT, SPEED_VALUE,
             SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
@@ -1999,7 +1969,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_1300', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, -1, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
@@ -2014,7 +1984,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_1400', 0, async function (done) {
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, SETSURFACE_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, 5, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })

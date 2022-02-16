@@ -34,10 +34,21 @@ export default {
         const configService = core.getDefaultService('config')
         this.timeout = 60000
         configService.setConfig(this)
-        //this.onload()
-        require('../../../test/List.test')
-        core.execute()
+        setTimeout(function() {
+            require('../../../test/List.test')
+            core.execute()
+        }, 2000)
     },
     onReady() {
+    },
+    LoadXcomponent() {
+        let surfaceid = this.$element('XcomponentId').getComponentSurfaceId()
+        this.saveSurfaceID(surfaceid);
+    },
+    saveSurfaceID(surfaceID) {
+        let writeStreamSync = Fileio.createStreamSync('/data/media/surfaceID.txt', 'ab+')
+        writeStreamSync.writeSync(surfaceID, {length : 13})
+        writeStreamSync.flushSync()
+        writeStreamSync.closeSync()
     },
 }
