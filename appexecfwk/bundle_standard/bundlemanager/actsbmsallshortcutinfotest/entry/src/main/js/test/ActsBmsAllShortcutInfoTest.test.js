@@ -394,7 +394,7 @@ describe('ActsBmsAllShortcutInfoTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual("SUCCESS");
             bundle.getAllShortcutInfo(bundleName, async (result, shortcutInfos) => {
-                expect(result).assertEqual(1);
+                expect(result).assertEqual(0);
                 expect(shortcutInfos.length).assertEqual(0);
             });
             installer.uninstall(bundleName, {
