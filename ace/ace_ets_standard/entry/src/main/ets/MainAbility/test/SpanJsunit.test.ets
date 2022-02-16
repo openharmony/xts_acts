@@ -36,6 +36,7 @@ export default function spanJsunit() {
       }
       try {
         router.clear();
+	await sleep(1);
         let pages = router.getState();
         console.info("get Span state success " + JSON.stringify(pages));
         if (!("Span" == pages.name)) {

@@ -72,7 +72,7 @@ export default function ScrollJsunit() {
       expect(obj.$type).assertEqual('Scroll');
       expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.Vertical')
       expect(obj.$attrs.scrollBarColor).assertEqual('#FFFFC0CB')
-      expect(obj.$attrs.scrollBarWidth).assertEqual('20.000000px')
+      expect(obj.$attrs.scrollBarWidth).assertEqual('20.00px')
       console.info('cd ScorllGetInspectorByKey END');
       done();
     });

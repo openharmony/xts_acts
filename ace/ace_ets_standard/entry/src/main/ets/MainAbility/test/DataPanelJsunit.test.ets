@@ -36,6 +36,7 @@ export default function datapanelJsunit() {
       }
       try {
         router.clear();
+	await sleep(1);
         let pages = router.getState();
         console.info("get DataPanel state success " + JSON.stringify(pages));
         if (!("DataPanel" == pages.name)) {

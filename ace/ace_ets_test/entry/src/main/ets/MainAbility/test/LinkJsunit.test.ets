@@ -37,6 +37,7 @@ export default function linkJsunit() {
       }
       try {
         router.clear();
+	await sleep(1);
         let pages = router.getState();
         console.info("get Link state success " + JSON.stringify(pages));
         if (!("Link" == pages.name)) {

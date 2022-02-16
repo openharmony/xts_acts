@@ -77,9 +77,9 @@ export default function panelJsunit() {
       expect(obj.$attrs.type).assertEqual('PanelType.Foldable')
       expect(obj.$attrs.mode).assertEqual('PanelMode.Half')
       expect(obj.$attrs.dragBar).assertEqual('true')
-      expect(obj.$attrs.fullHeight).assertEqual('500.000000vp')
-      expect(obj.$attrs.halfHeight).assertEqual('250.000000vp')
-      expect(obj.$attrs.miniHeight).assertEqual('100.000000vp')
+      expect(obj.$attrs.fullHeight).assertEqual('500.00vp')
+      expect(obj.$attrs.halfHeight).assertEqual('250.00vp')
+      expect(obj.$attrs.miniHeight).assertEqual('100.00vp')
       console.info('++++++++++++++++ Panel TestCase 1 End ++++++++++++++++');
       done();
     });
