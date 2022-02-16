@@ -10,16 +10,22 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import("//build/ohos_var.gni")
+
 import("//test/xts/tools/build/suite.gni")
 
-group("security") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "access_token/AccessTokenTest_NoPermission_js:ActsAccessTokenJSApiTestNoPermission",
-      "access_token/AccessTokenTest_Normal_js:ActsAccessTokenJSApiTestNormal",
-      "huks_standard",
-    ]
-  }
+ohos_js_hap_suite("ActsAccessTokenJSApiTestNoPermission") {
+  hap_profile = "./src/main/config.json"
+  deps = [
+    ":accesstoken_js_assets",
+    ":accesstoken_resources",
+  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAccessTokenJSApiTestNoPermission"
+}
+ohos_js_assets("accesstoken_js_assets") {
+  source_dir = "./src/main/js/default"
+}
+ohos_resources("accesstoken_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }
