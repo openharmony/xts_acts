@@ -24,7 +24,7 @@ ohos_js_hap_suite("mediaLibrary_js_hap") {
   #    "//third_party/libpng:libpng",
   #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "mediaLibraryJsTest"
+  hap_name = "ActsMediaLibraryJsTest"
 
   #  part_name = "prebuilt_hap"
   #  subsystem_name = "xts"
