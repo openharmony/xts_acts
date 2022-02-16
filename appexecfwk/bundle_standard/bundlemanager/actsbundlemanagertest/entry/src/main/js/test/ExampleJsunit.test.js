@@ -91,6 +91,10 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.versionCode).assertEqual(VERSIONCODE1)
             expect(datainfo.versionName).assertLarger(0)
             expect(datainfo.entryModuleName).assertEqual("entry")
+            expect(datainfo.installTime).assertLarger(0)
+            expect(datainfo.appId).assertContain(NAME1)
+            expect(datainfo.type).assertEqual("")
+            expect(datainfo.cpuAbi).assertEqual("")
             expect(datainfo.appInfo.name).assertEqual(NAME1)
             expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
             expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
@@ -3013,6 +3017,16 @@ describe('ActsBundleManagerTest', function () {
             });
         }
 
+    })
+
+    /**
+    * @tc.number installErrCodeTest_0100
+    * @tc.name InstallErrorCode::STATUS_FAILED_NO_SPACE_LEFT
+    * @tc.desc Test install errcode STATUS_FAILED_NO_SPACE_LEFT.
+    */
+    it('installErrCodeTest_0100', 0, async function (done) {
+        expect(demo.InstallErrorCode.STATUS_FAILED_NO_SPACE_LEFT).assertEqual(66);
+        done();
     })
 })
 

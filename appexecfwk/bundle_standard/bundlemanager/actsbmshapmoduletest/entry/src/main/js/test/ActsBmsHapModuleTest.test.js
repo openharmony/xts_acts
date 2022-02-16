@@ -44,6 +44,7 @@ describe('ActsBmsHapModuleTest', function () {
                     let hapModuleInfo = result.hapModuleInfo[0];
                     expect(hapModuleInfo.moduleName).assertEqual('entry');
                     expect(hapModuleInfo.mainAbilityName).assertEqual('com.example.bmsmainabilityfirstscene.MainAbility');
+                    expect(hapModuleInfo.mainElementName).assertEqual('com.example.bmsmainabilityfirstscene.MainAbility');
                     expect(hapModuleInfo.name).assertEqual('com.example.bmsmainabilityfirstscene');
                     expect(hapModuleInfo.description).assertEqual('');
                     expect(hapModuleInfo.descriptionId).assertEqual(0);
