@@ -2,7 +2,7 @@
     "description": "Configuration for bluetooth js api Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "1800000",
+        "test-timeout": "600000",
         "package": "ohos.acts.communication.bluetooth.bluetoothhost",
         "shell-timeout": "60000"
     },

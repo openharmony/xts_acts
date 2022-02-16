@@ -86,13 +86,13 @@ describe('ACTS_WifiTest', function() {
      */
     it('SUB_Communication_WiFi_Sta_Scan_0001', 0, async function(done) {
         console.info("[wifi_test][SUB_Communication_WiFi_Sta_Scan_0001]");
-        if (!wifi.isWifiActive()) {
+        var active1 = wifi.isWifiActive();
+        if (!active1) {
             var enable = wifi.enableWifi();
-            sleep(3000);
+            sleep(5000);
             console.log("[wifi_test] wifi open result: " + enable);
             expect(enable).assertTrue();
         }
-
         var scan = wifi.scan();
         sleep(3000);
         console.log("[wifi_test] open wifi scan result: " + scan);
@@ -109,7 +109,10 @@ describe('ACTS_WifiTest', function() {
 
         console.info("[wifi_test] Wifi getScanInfos callback test[2].");
         wifi.getScanInfos(
-            (result) => {
+            (err,result) => {
+                if(err) {
+                    console.log("[wifi_test] wifi getScanInfos failed " + err);
+                }
                 var clen = Object.keys(result).length;
                 console.log("[wifi_test] wifi getScanInfos callback result length: " + clen);
                 if (!(clen == 0 && i < 3)) {
@@ -129,7 +132,6 @@ describe('ACTS_WifiTest', function() {
                 }
                 done()
             });
-
     })
 
     /**
@@ -199,7 +201,11 @@ describe('ACTS_WifiTest', function() {
             });
 
         wifi.addDeviceConfig(wifiDeviceConfig1,
-            (netWorkId) => {
+            (err, netWorkId) => {
+                if(err) {
+                    console.info("[wifi_test]add OPEN callback failed : " + JSON.stringify(err));
+                    return;
+                 }
                 console.info("[wifi_test]add OPEN Deviceconfig callback : " + JSON.stringify(netWorkId));
                 expect(true).assertEqual(netWorkId != -1);
                 console.info("[wifi_test] check add device configs successfully ");
@@ -265,7 +271,6 @@ describe('ACTS_WifiTest', function() {
      * @tc.desc       Test remove all wifi device config
      */
     it('SUB_Communication_WiFi_Sta_Config_0005', 0, async function(done) {
-        console.info("[wifi_test][SUB_Communication_WiFi_Sta_Config_0005]");
         console.info("[wifi_test] create multiple valid wifi device config and add it.");
         var wifiDeviceConfig1 = {
             "ssid": "TESTWgr1",
@@ -283,7 +288,9 @@ describe('ACTS_WifiTest', function() {
         };
         let promiseOne = new Promise((resolve, reject) => {
             wifi.addDeviceConfig(wifiDeviceConfig1,
-                (netWorkId1) => {
+                (err,netWorkId1) => {
+                    if(err) {
+                        console.info("[wifi_test]add callback failed : " + JSON.stringify(err)); }
                     console.info("[wifi_test] wifi addDeviceconfig1 callback:" + JSON.stringify(netWorkId1));
                     expect(true).assertEqual(netWorkId1 != -1);
                     console.info("[wifi_test] check add device configs successfully ");
@@ -293,10 +300,11 @@ describe('ACTS_WifiTest', function() {
                     resolve()
                 });
         })
-
         let promiseTwo = new Promise((resolve, reject) => {
             wifi.addDeviceConfig(wifiDeviceConfig2,
-                (netWorkId2) => {
+                (err,netWorkId2) => {
+                    if(err) {
+                        console.info("[wifi_test]add callback failed : " + JSON.stringify(err)); }
                     console.info("[wifi_test] wifi addDeviceconfig2 callback : " + JSON.stringify(netWorkId2));
                     expect(true).assertEqual(netWorkId2 != -1);
                     console.info("[wifi_test] check add device configs successfully ");
@@ -336,6 +344,12 @@ describe('ACTS_WifiTest', function() {
             .then(netWorkId => {
                 console.info("[wifi_test]add PSK Deviceconfig promise : " + JSON.stringify(netWorkId));
                 expect(true).assertEqual(netWorkId != -1);
+                console.info("[wifi_test]connectdevice result: " + wifi.connectToNetwork(netWorkId));
+                expect(wifi.connectToNetwork(netWorkId)).assertTrue();
+                console.info("[wifi_test] get empty linked information and getIpInfo.");
+                var disconNet = wifi.disableNetwork(netWorkId);
+                console.log("[wifi_test] wifi disableNetwork result: " + disconNet);
+                expect(disconNet).assertTrue();
                 console.info("[wifi_test] check add device configs successfully ");
                 var configs = wifi.getDeviceConfigs();
                 console.info("[wifi_test] wifi getDeviceConfigs result1 : " + JSON.stringify(configs));
@@ -378,18 +392,26 @@ describe('ACTS_WifiTest', function() {
         console.info("[wifi_test] getCountryCode -> " + JSON.stringify(countryCode));
         expect(JSON.stringify(countryCode)).assertEqual('"CN"');
     })
-   	
+
     /**
-    * @tc.number     Conn_Info_0005
-    * @tc.name       SUB_Communication_WiFi_Sta_Conn_Info_0001
-    * @tc.desc       Test get empty linked information
-    */
-    it('SUB_Communication_WiFi_Sta_Conn_Info_0001', 0, async function () {
-        console.info("[wifi_test] get empty linked information and getIpInfo.");
-        var discon2 = wifi.disconnect();
-        console.log("[wifi_test] wifi disconnect result: " + discon2);
-        expect(discon2).assertTrue();
-        sleep(2000);
+     * @tc.number     Config_0002
+     * @tc.name       SUB_Communication_WiFi_Sta_Conn_Info_0001
+     * @tc.desc       Test cnnnection a PSK SecurityType wifi deviceconfig
+     */
+    it('SUB_Communication_WiFi_Sta_Conn_Info_0001', 0, async function() {
+        console.info("[wifi_test][SUB_Communication_WiFi_Sta_Config_0002]");
+        console.info("[wifi_test] create a PSK SecurityType wifi device config start.");
+        var wifiDeviceConfigConn = {
+            "ssid": "TEST_CONN",
+            "bssid": "",
+            "preSharedKey": "12345678",
+            "isHiddenSsid": false,
+            "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
+        };
+        console.info("[wifi_test] connect wifi start.");
+        var conn1 = wifi.connectToDevice(wifiDeviceConfigConn);
+        sleep(5000);
+        console.info("[wifi_test] isconnected wifi");
         var isConnected= wifi.isConnected();
         console.log("[wifi_test] wifi isConnected result: " + isConnected);
         expect(isConnected).assertFalse();
@@ -398,8 +420,41 @@ describe('ACTS_WifiTest', function() {
                 return console.error('failed to get link infos callback because ' + JSON.stringify(err));
             }else {
                 console.info("[wifi_test] get wifi link [callback] -> " + JSON.stringify(data));
+                for (var j = 0; j < JSON.stringify(data).length; ++j) {
+                    console.info("ssid: " + result[j].ssid);
+                    console.info("bssid: " + result[j].bssid);
+                    console.info("band: " + result[j].band);
+                    console.info("isHidden: " + result[j].isHidden);
+                    console.info("isRestricted: " + result[j].isRestricted);
+                    console.info("chload: " + result[j].chload);
+                    console.info("rssi " + result[j].rssi);
+                    console.info("netWorkId: " + result[j].netWorkId);
+                    console.info("linkSpeed: " + result[j].linkSpeed);
+                    console.info("frequency: " + result[j].frequency);
+                    console.info("snr: " + result[j].snr);
+                    console.info("macAddress: " + result[j].macAddress);
+                    console.info("ipAddress: " + result[j].ipAddress);
+                    console.info("suppState: " + result[j].suppState);
+                    console.info("connState: " + result[j].connState);
+                }
+
             }
         });
+        console.info("[wifi_test] get empty linked information and getIpInfo.");
+        var discon2 = wifi.disconnect();
+        console.log("[wifi_test] wifi disconnect result: " + discon2);
+        expect(discon2).assertTrue();
+
+    })
+
+    
+    /**
+    * @tc.number     Conn_Info_0002
+    * @tc.name       SUB_Communication_WiFi_Sta_Conn_Info_0002
+    * @tc.desc       Test get IpInfo information
+    */
+    it('SUB_Communication_WiFi_Sta_Conn_Info_0002', 0, function () {
+        
         console.info("[wifi_test] get IpInfo.");
         var ipInfo = wifi.getIpInfo();
         console.info("[wifi_test] getIpInfo -> " + JSON.stringify(ipInfo));
@@ -412,5 +467,23 @@ describe('ACTS_WifiTest', function() {
         console.info("secondDns: " + ipInfo.secondDns);
         console.info("serverIp: " + ipInfo.serverIp);
     })
+
+    /**
+     * @tc.number SUB_Communication_WiFi_Sta_info_0004
+     * @tc.name testFeatureSupported
+     * @tc.desc Test FeatureSupported api.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_Communication_WiFi_Sta_info_0004', 0, function () {
+        console.info('[wifi_test]FeatureSupported test start ...');
+        var result = wifi.getSupportedFeatures();
+        console.info("[wifi_test] getFeatureSupported -> " + JSON.stringify(result));
+        console.info("[wifi_test] isFeatureSupported: " + result +"->" + wifi.isFeatureSupported(result));
+        expect(wifi.isFeatureSupported(result)).assertTrue();
+    })
+
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })
+
