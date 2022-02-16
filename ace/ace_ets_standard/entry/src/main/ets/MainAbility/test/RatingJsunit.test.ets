@@ -36,6 +36,7 @@ export default function ratingJsunit() {
       }
       try {
         router.clear();
+	await sleep(1);
         let pages = router.getState();
         console.info("get Rating state success " + JSON.stringify(pages));
         if (!("Rating" == pages.name)) {

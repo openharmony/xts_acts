@@ -75,8 +75,8 @@ export default function progressJsunit() {
       expect(obj.$attrs.value).assertEqual(3.000000.toFixed(6))
       expect(obj.$type).assertEqual('Progress')
       expect(obj.$attrs.color).assertEqual("#FF0000FF")
-      expect(obj.$attrs.width).assertEqual("50.000000vp")
-      expect(obj.$attrs.height).assertEqual("70.000000vp")
+      expect(obj.$attrs.width).assertEqual("50.00vp")
+      expect(obj.$attrs.height).assertEqual("70.00vp")
       expect(obj.$attrs.total).assertEqual(40.000000.toFixed(6))
       expect(obj.$attrs.style).assertEqual("ProgressStyle.Linear")
       console.info('testGetProgressAttr END');

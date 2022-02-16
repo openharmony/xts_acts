@@ -36,6 +36,7 @@ export default function listItemJsunit() {
       }
       try {
         router.clear();
+	await sleep(1);
         let pages = router.getState();
         console.info("get ListItem state success " + JSON.stringify(pages));
         if (!("ListItem" == pages.name)) {

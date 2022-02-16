@@ -36,6 +36,7 @@ export default function buttonJsunit() {
       }
       try {
         router.clear();
+	await sleep(1);
         let pages = router.getState();
         console.info("get Button state success " + JSON.stringify(pages));
         if (!("Button" == pages.name)) {

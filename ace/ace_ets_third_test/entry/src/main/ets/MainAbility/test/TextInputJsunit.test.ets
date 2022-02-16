@@ -86,8 +86,8 @@ export default function textInputJsunit() {
       expect(obj.$attrs.fontWeight).assertEqual('FontWeight.Bold')
       expect(obj.$attrs.fontFamily).assertEqual('cursive')
       expect(obj.$attrs.fontStyle).assertEqual('FontStyle.Italic')
-      expect(obj.$attrs.fontSize).assertEqual('40.000000fp')
-      expect(obj.$attrs.height).assertEqual('60.000000vp')
+      expect(obj.$attrs.fontSize).assertEqual('40.00fp')
+      expect(obj.$attrs.height).assertEqual('60.00vp')
       expect(obj.$attrs.placeholderFont).assertContain('FontStyle.Normal')
       console.info('testTextInput010 End');
       done();

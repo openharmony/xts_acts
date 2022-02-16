@@ -36,6 +36,7 @@ export default function navigatorJsunit() {
       }
       try {
         router.clear();
+	await sleep(1);
         let pages = router.getState();
         console.info("get Navigator state success " + JSON.stringify(pages));
         if (!("Navigator" == pages.name)) {

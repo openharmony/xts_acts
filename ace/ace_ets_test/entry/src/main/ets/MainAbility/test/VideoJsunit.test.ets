@@ -37,6 +37,7 @@ export default function videoJsunit() {
       }
       try {
         router.clear();
+	await sleep(1);
         let pages = router.getState();
         console.info("get Video state success " + JSON.stringify(pages));
         if (!("Video" == pages.name)) {

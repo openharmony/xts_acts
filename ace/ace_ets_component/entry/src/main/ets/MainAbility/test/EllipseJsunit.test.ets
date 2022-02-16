@@ -52,8 +52,8 @@ export default function ellipseJsunit() {
       let strJson = getInspectorByKey('ellipse');
       let obj = JSON.parse(strJson);
       console.info("[testEllipse02] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.height).assertEqual('200.000000px');
-      expect(obj.$attrs.width).assertEqual('200.000000px');
+      expect(obj.$attrs.height).assertEqual('200.00px');
+      expect(obj.$attrs.width).assertEqual('200.00px');
       console.info('testEllipse02 END');
       done();
     });
@@ -80,8 +80,8 @@ export default function ellipseJsunit() {
       let strJson = getInspectorByKey('ellipse');
       let obj = JSON.parse(strJson);
       console.info("[testEllipse02] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.height).assertEqual('500.000000px');
-      expect(obj.$attrs.width).assertEqual('500.000000px');
+      expect(obj.$attrs.height).assertEqual('500.00px');
+      expect(obj.$attrs.width).assertEqual('500.00px');
       console.info('testEllipse02 END');
       done();
     });

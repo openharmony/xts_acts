@@ -88,7 +88,7 @@ export default function sliderJsunit() {
       expect(obj.$attrs.constructor.min).assertEqual(0.000000.toFixed(6))
       expect(obj.$attrs.constructor.max).assertEqual(100.000000.toFixed(6))
       expect(obj.$attrs.constructor.step).assertEqual(1.000000.toFixed(6))
-      expect(obj.$attrs.constructor.style).assertEqual("SliderStyle.Outset")
+      expect(obj.$attrs.constructor.style).assertEqual("SliderStyle.OutSet")
       console.info('testGetSliderAttr1 END');
       done();
     });
@@ -108,7 +108,7 @@ export default function sliderJsunit() {
       console.info("slider1 style" + JSON.stringify(obj.$attrs.constructor.style))
       expect(obj.$attrs.constructor.showTips).assertEqual("true")
       expect(obj.$attrs.constructor.showSteps).assertEqual("true")
-      expect(obj.$attrs.constructor.style).assertEqual("SliderStyle.Inset")
+      expect(obj.$attrs.constructor.style).assertEqual("SliderStyle.InSet")
       console.info('testGetSliderAttr2 END');
       done();
     });

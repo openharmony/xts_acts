@@ -36,6 +36,7 @@ export default function gridItemJsunit() {
       }
       try {
         router.clear();
+	await sleep(1);
         let pages = router.getState();
         console.info("get GridItem state success " + JSON.stringify(pages));
         if (!("GridItem" == pages.name)) {
