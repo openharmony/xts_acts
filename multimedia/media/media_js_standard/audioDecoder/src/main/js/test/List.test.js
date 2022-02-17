@@ -21,4 +21,5 @@ require('./AudioDecoderFormatCallbackTest.test.js')
 require('./AudioDecoderReliabilityPromiseTest.test.js')
 require('./AudioDecoderReliabilityCallbackTest.test.js')
 require('./AudioDecoderMultiInstancesTest.test.js')
+require('./AudioDecoderEnumTest.test.js')
 
