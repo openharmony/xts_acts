@@ -2,14 +2,15 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "1000000",
-        "package": "com.example.actsosaccountsystemtest",
+        "test-timeout": "150000",
+        "package": "com.example.actsosaccountpermissionnotest",
         "shell-timeout": "60000"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsOsAccountSystemTest.hap"
+                "ActsOsAccountPermissionNoTest.hap",
+                "ActsOsAccountScenePermission"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
