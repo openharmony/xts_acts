@@ -1198,7 +1198,7 @@ describe('ActsRpcJsTest', function(){
             var data = rpc.MessageParcel.create();
             console.log("SUB_Softbus_IPC_MessageParcel_3500: create object successfully.");
 
-            var errorStringArryData = ['abc', 123, 'beauty'];
+            var errorStringArryData = ['abc' , '123' , 'beauty'];
             var errorWriteStringArrayResult = data.writeStringArray(errorStringArryData);
             console.log("SUB_Softbus_IPC_MessageParcel_3500: run writeStringArray success, result is "
                          + errorWriteStringArrayResult);
