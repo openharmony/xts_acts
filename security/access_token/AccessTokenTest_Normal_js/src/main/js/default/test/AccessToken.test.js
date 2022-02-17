@@ -58,7 +58,6 @@ describe('AccessTokenTest', function () {
         var next = (new Date()).getTime();
         while (next - start < delay) {
             next = (new Date()).getTime();
-            continue;
         }
     }
 

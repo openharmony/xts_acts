@@ -81,7 +81,7 @@
             ]
           }
         ],
-        "name": "ohos.acts.security.access_token.nopermission.MainAbility",
+        "name": "ohos.acts.security.access_token.normal.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
