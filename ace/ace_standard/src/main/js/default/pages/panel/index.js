@@ -84,12 +84,175 @@ var frames = [
 ];
 
 export default {
-    changeRating(e){
-        prompt.showToast({
-            message: e.rating
-        });
+    data: {
+        modeFlag: "half"
     },
-
+    // 样式
+    showPanel1() {
+        this.$element('simplepanel1').show()
+    },
+    closePanel1() {
+        this.$element('simplepanel1').close()
+    },
+    showPanel2() {
+        this.$element('simplepanel2').show()
+    },
+    closePanel2() {
+        this.$element('simplepanel2').close()
+    },
+    showPanel3() {
+        this.$element('simplepanel3').show()
+    },
+    closePanel3() {
+        this.$element('simplepanel3').close()
+    },
+    showPanel4() {
+        this.$element('simplepanel4').show()
+    },
+    closePanel4() {
+        this.$element('simplepanel4').close()
+    },
+    showPanel5() {
+        this.$element('simplepanel5').show()
+    },
+    closePanel5() {
+        this.$element('simplepanel5').close()
+    },
+    showPanel6() {
+        this.$element('simplepanel6').show()
+    },
+    closePanel6() {
+        this.$element('simplepanel6').close()
+    },
+    showPanel7() {
+        this.$element('simplepanel7').show()
+    },
+    closePanel7() {
+        this.$element('simplepanel7').close()
+    },
+    showPanel() {
+        this.$element('simplepanel').show()
+    },
+    closePanel() {
+        this.$element('simplepanel').close()
+    },
+    // 属性
+    showPanelPro1() {
+        this.$element('prop1').show()
+    },
+    closePanelPro1() {
+        this.$element('prop1').close()
+    },
+    showPanelPro2() {
+        this.$element('prop2').show()
+    },
+    closePanelPro2() {
+        this.$element('prop2').close()
+    },
+    showPanelPro3() {
+        this.$element('simplepanelPro3').show()
+    },
+    closePanelPro3() {
+        this.$element('simplepanelPro3').close()
+    },
+    showPanelPro4() {
+        this.$element('simplepanelPro4').show()
+    },
+    closePanelPro4() {
+        this.$element('simplepanelPro4').close()
+    },
+    showPanelPro5() {
+        this.$element('simplepanelPro5').show()
+    },
+    closePanelPro5() {
+        this.$element('simplepanelPro5').close()
+    },
+    showPanelPro6() {
+        this.$element('simplepanelPro6').show()
+    },
+    closePanelPro6() {
+        this.$element('simplepanelPro6').close()
+    },
+    //事件
+    showOne() {
+        this.$element('e1').show()
+    },
+    closeOne() {
+        this.$element('e1').close()
+    },
+    showTwo() {
+        this.$element('e2').show()
+    },
+    closeTwo() {
+        this.$element('e2').close()
+    },
+    showThree() {
+        this.$element('e3').show()
+    },
+    closeThree() {
+        this.$element('e3').close()
+    },
+    showFour() {
+        this.$element('e4').show()
+    },
+    closeFour() {
+        this.$element('e4').close()
+    },
+    // 渐变
+    showPanelA() {
+        this.$element('simplepanelA1').show()
+    },
+    closePanelA() {
+        this.$element('simplepanelA1').close()
+    },
+    showPanelB() {
+        this.$element('simplepanelB1').show()
+    },
+    closePanelB() {
+        this.$element('simplepanelB1').close()
+    },
+    showPanelC() {
+        this.$element('simplepanelC1').show()
+    },
+    closePanelC() {
+        this.$element('simplepanelC1').close()
+    },
+    showPanelD() {
+        this.$element('simplepanelD1').show()
+    },
+    closePanelD() {
+        this.$element('simplepanelD1').close()
+    },
+    // 动画
+    showPanelAni1() {
+        this.$element('simplepanelAni1').show()
+    },
+    closePanelAni1() {
+        this.$element('simplepanelAni1').close()
+    },
+    showPanelAni2() {
+        this.$element('simplepanelAni2').show()
+    },
+    closePanelAni2() {
+        this.$element('simplepanelAni2').close()
+    },
+    // 无障碍
+    showPanelNo() {
+        this.$element('simplepanelNo').show()
+    },
+    closePanelNo() {
+        this.$element('simplepanelNo').close()
+    },
+    // 多模输入
+    showPanelMore() {
+        this.$element('simplepanelMore').show()
+    },
+    closePanelMore() {
+        this.$element('simplepanelMore').close()
+    },
+    changeMode(e) {
+        this.modeFlag = e.mode
+    },
     onShow(){
         // 通用属性
         var prop1 =  this.$element('prop1');
@@ -193,9 +356,21 @@ export default {
         });
     },
 
+    click(){
+        prompt.showToast({
+            message: 'click'
+        });
+    },
+
     doubleClick(){
         prompt.showToast({
             message: 'doubleClick'
+        });
+    },
+
+    longPress(){
+        prompt.showToast({
+            message: 'longPress'
         });
     },
 
@@ -372,7 +547,7 @@ export default {
         });
     },
 
-    functionTouch1(event){
+    functionTest1(event){
         var function1 =  this.$element('function1');
         function1.focus(true)
         var rect = function1.getBoundingClientRect();
@@ -387,7 +562,7 @@ export default {
         });
     },
 
-    functionTouch2(event){
+    functionTest2(event){
         var function2 =  this.$element('function2');
         let observer = function2.createIntersectionObserver({
             ratios: [0.2, 0], // number
@@ -402,9 +577,8 @@ export default {
         observer.unobserve()
     },
 
-    functionTouch3(event){
+    functionTest3(event){
         var function3 =  this.$element('function3');
-
         var animation = function3.animate(frames, options);
         animation.play()
         animation.onfinish = function(){
@@ -436,5 +610,47 @@ export default {
         setTimeout(() => {
             animation.cancel()
         }, 1500)
+    },
+
+    functionTest4(event){
+        var function4 =  this.$element('function4');
+        var scrollOffset = function4.getScrollOffset();
+        var x = scrollOffset.x;
+        var y = scrollOffset.y;
+        var message = 'x--' + x + ',y--' + y;
+        prompt.showToast({
+            message: 'functionTest4 scrollOffset:\n' + message
+        });
+
+        var scrollParam = {
+            dx:60,
+            dy:0,
+            smooth:true
+        }
+        function4.scrollBy(scrollParam)
+    },
+
+    reachStart(){
+        prompt.showToast({
+            message: 'reachStart'
+        });
+    },
+
+    reachEnd(){
+        prompt.showToast({
+            message: 'reachEnd'
+        });
+    },
+
+    reachTop(){
+        prompt.showToast({
+            message: 'reachTop'
+        });
+    },
+
+    reachBottom(){
+        prompt.showToast({
+            message: 'reachBottom'
+        });
     }
 }

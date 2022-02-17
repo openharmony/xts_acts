@@ -1,0 +1,77 @@
+<div class="doc-page">
+    <div class="btn-div">
+        <button type="capsule" value="Click show 样式" class="btn" onclick="showDialog1"></button>
+        <button type="capsule" value="Click show 通用属性1" class="btn" onclick="showDialog2"></button>
+        <button type="capsule" value="Click show 通用属性2" class="btn" onclick="showDialog3"></button>
+        <button type="capsule" value="Click show 特有属性" class="btn" onclick="showDialog4"></button>
+        <button type="capsule" value="Click show 无障碍dialog" class="btn" onclick="showDialog5"></button>
+    </div>
+    <dialog id="simpleDialog1" dragable="true" class="dialog-main" oncancel="cancelDialog">
+        <div class="dialog-div">
+            <div class="inner-txt">
+                <text class="txt" ondoubleclick="doubleClick">Simple dialog</text>
+            </div>
+            <div class="inner-btn">
+                <button type="capsule" value="Cancel" onclick="cancelSchedule" class="btn-txt"></button>
+                <button type="capsule" value="Confirm" onclick="setSchedule" class="btn-txt"></button>
+            </div>
+        </div>
+    </dialog>
+    <dialog id="simpleDialog2" dragable="false" class="dialog-main" oncancel="cancelDialog"
+            focusable ="true"
+            data-name ="prop1" click-effect="spring-medium"
+            dir ="rtl"
+            style="width: 100%; height: 300px;">
+        <div class="dialog-div">
+            <div class="inner-txt">
+                <text class="txt" ondoubleclick="doubleClick">dialog通用属性1</text>
+            </div>
+            <div class="inner-btn">
+                <button type="capsule" value="Cancel" onclick="cancelSchedule" class="btn-txt"></button>
+                <button type="capsule" value="Confirm" onclick="setSchedule" class="btn-txt"></button>
+            </div>
+        </div>
+    </dialog>
+    <dialog id="simpleDialog3" dragable="false" class="dialog-main" oncancel="cancelDialog"
+            ref ="prop2"
+            focusable ="false"
+            data-name ="prop2" click-effect="spring-large"
+            dir ="ltr"
+            style="width: 100%; height: 300px;">
+        <div class="dialog-div">
+            <div class="inner-txt">
+                <text class="txt" ondoubleclick="doubleClick">dialog通用属性2</text>
+            </div>
+            <div class="inner-btn">
+                <button type="capsule" value="Cancel" onclick="cancelSchedule" class="btn-txt"></button>
+                <button type="capsule" value="Confirm" onclick="setSchedule" class="btn-txt"></button>
+            </div>
+        </div>
+    </dialog>
+    <dialog id="simpleDialog4" dragable="true" class="dialog-main" oncancel="cancelDialog">
+        <div class="dialog-div">
+            <div class="inner-txt">
+                <text class="txt" ondoubleclick="doubleClick">dialog特有属性</text>
+            </div>
+            <div class="inner-btn">
+                <button type="capsule" value="Cancel" onclick="cancelSchedule" class="btn-txt"></button>
+                <button type="capsule" value="Confirm" onclick="setSchedule" class="btn-txt"></button>
+            </div>
+        </div>
+    </dialog>
+    <dialog id="simpleDialog5" dragable="true" class="dialog-main" oncancel="cancelDialog"
+       accessibilitygroup ="true"
+       accessibilitytext="这是dialog"
+       accessibilitydescription="此处是dialog"
+       accessibilityimportance="no-hide-descendants">
+        <div class="dialog-div">
+            <div class="inner-txt">
+                <text class="txt" ondoubleclick="doubleClick">dialog无障碍</text>
+            </div>
+            <div class="inner-btn">
+                <button type="capsule" value="Cancel" onclick="cancelSchedule" class="btn-txt"></button>
+                <button type="capsule" value="Confirm" onclick="setSchedule" class="btn-txt"></button>
+            </div>
+        </div>
+    </dialog>
+</div>

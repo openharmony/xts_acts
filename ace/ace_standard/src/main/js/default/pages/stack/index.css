@@ -1,18 +1,26 @@
-/**
- * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
+.back-child {
+    width: 100%;
+    height: 100%;
+    background-color: #3f56ea;
+}
+.front-child {
+    width: 50%;
+    height: 50%;
+    background-color: #00bfc9;
+}
+.positioned-child {
+    width: 50%;
+    height: 50%;
+    left: 30%;
+    top: 20%;
+    background-color: #47cc47;
+}
+.bd-radius {
+    border-radius: 16px;
+}
+
+/* xxx.css */
 .container {
     flex-direction:row;
     width:100%;
@@ -28,40 +36,84 @@
 
 .style-container{
     flex-direction: column;
+    height: 70%;
+}
+.contain1{
+    width: 100%;
+    height: 15%;
+    flex-direction: column;
+}
+
+.event-container{
+    flex-direction: column;
+    height: 45%;
+}
+
+.prop-container{
+    flex-direction: column;
+    padding-left: 2px;
+}
+
+.ani-container{
+    flex-direction: column;
     height: 100%;
     flex-weight: 1;
+}
+
+.gradient-container{
+    flex-direction: column;
+    height: 40%;
+}
+
+.function-container{
+    flex-direction: column;
+    height: 35%;
+}
+
+.access-container{
+    flex-direction: column;
+    height: 20%;
+}
+
+.atom-container{
+    flex-direction: column;
+    height: 60%;
+}
+
+.multimode-container{
+    flex-direction: column;
 }
 
 .title{
     width: 100%;
     font-size: 18px;
     margin: 2px;
-    padding: 2px;
     font-weight: bold;
     text-align: center;
 }
-
 .sub-title{
     width: 100%;
-    font-size: 14px;
+    height: 25px;
+    font-size: 15px;
     text-align: left;
-    margin: 2px;
+    margin-bottom: 1px;
     padding: 2px;
 }
 
 .style1{
     width: 100%;
+    mask-color:red;
     height: 100%;
     min-width: 25px;
     min-height: 10px;
     max-width: 300px;
     max-height: 50px;
     padding-left: 10px;
-    padding-top: 20px;
+    padding-top: 1px;
     padding-right: 15px;
-    padding-bottom: 5px;
+    padding-bottom: 1px;
     margin-left: 10px;
-    margin-top: 20px;
+    margin-top: 0px;
     margin-right: 15px;
     margin-bottom: 5px;
     border-left-style: solid;
@@ -91,8 +143,8 @@
 }
 
 .style2{
-    width: 50px;
-    height: 20px;
+    width: 70%;
+    height: 12%;
     padding-start: 10px;
     padding-end: 15px;
     margin-start: 5px;
@@ -129,15 +181,9 @@
 .style4{
     width: 60%;
     height: 5%;
-    padding: 10px;
+    padding: 1px;
     margin: 5px;
     border: 2px solid #000000;
-}
-
-.contain1{
-    width: 100%;
-    height: 70px;
-    flex-direction: column;
 }
 
 .style5{
@@ -164,20 +210,60 @@
 }
 
 .style7 {
-    margin-bottom: 50px;
-    margin-top: 10px;
+    height: 40px;
+    margin-bottom: 5px;
+    margin-top: 5px;
     color: green;
-    stroke-width: 30px;
+    stroke-width: 20px;
+    mask-color:lightblue;
     line-cap: round;
 }
 
-.prop-container{
-    flex-direction: column;
-    height: 100%;
+.pstyle {
+    height: 10%;
+    margin-bottom: 1px;
+    margin-top: 1px;
+    color: green;
+    stroke-width: 20px;
+    mask-color:lightblue;
+    line-cap: round;
+}
+
+
+.event1{
+    width: 60%;
     flex-weight: 1;
+    background-color: salmon;
+}
+
+.event2{
+    width: 70%;
+    flex-weight: 1;
+    background-color: darkorchid;
+}
+
+.event3{
+    width: 80%;
+    flex-weight: 1;
+    background-color: #ad4e2a;
+}
+
+.event4{
+    flex-direction: row;
+    width: 90%;
+    flex-weight: 1;
+    overflow:scroll;
+}
+
+.event5{
+    flex-direction: column;
+    width: 100%;
+    height: 90px;
+    overflow:scroll;
 }
 
 #prop1 {
+    height: 50px;
     color: #ad4e2a;
     stroke-width: 10px;
     line-cap: square;
@@ -185,6 +271,7 @@
 }
 
 .prop2 {
+    height: 50px;
     color: #343524;
     stroke-width: 15px;
     line-cap: round;
@@ -204,12 +291,6 @@
     line-cap: square;
     margin: 5px;
     height: 70px;
-}
-
-.ani-container{
-    flex-direction: column;
-    height: 100%;
-    flex-weight: 1;
 }
 
 .ani1{
@@ -250,14 +331,10 @@
 }
 
 .ani2{
-    color: #ad4e2a;
-    stroke-width: 55px;
-    line-cap: square;
+    background-color: #ad4e2a;
+    width: 100%;
+    height: 55px;
     margin: 5px;
-}
-
-.gradient-container{
-    flex-direction: column;
 }
 
 .gradient1{
@@ -288,10 +365,6 @@
     background: repeating-linear-gradient(to right, rgba(255, 255, 0, 1) 30px,rgba(0, 0, 255, .5) 60px);
 }
 
-.access-container{
-    flex-direction: column;
-}
-
 .access1{
     color: #321124;
     stroke-width: 30px;
@@ -299,17 +372,35 @@
     margin: 5px;
 }
 
-.atom-container{
-    flex-direction: column;
-}
-
-.multimode-container{
-    flex-direction: column;
-}
-
 .multimode1{
     color: #978666;
     stroke-width: 30px;
     line-cap: square;
     margin: 5px;
+}
+
+
+.function1{
+    background-color: #ff0000;
+    width: 60%;
+    height: 30px;
+}
+
+.function2{
+    background-color: #00ff00;
+    width: 60%;
+    height: 30px;
+}
+
+.function3{
+    background-color: #0000ff;
+    width: 100%;
+    height: 30px;
+}
+
+.function4 {
+    flex-direction: row;
+    width: 60%;
+    height: 60px;
+    overflow: scroll;
 }

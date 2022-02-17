@@ -84,10 +84,20 @@ var frames = [
 ];
 
 export default {
-    changeRating(e){
-        prompt.showToast({
-            message: e.rating
-        });
+    swipeTo() {
+        this.$element('swiper').swipeTo({index: 2});
+        this.$element('swiper1').swipeTo({index: 2});
+        this.$element('swiper2').swipeTo({index: 2});
+    },
+    showNext() {
+        this.$element('swiper').showNext();
+        this.$element('swiper1').showNext();
+        this.$element('swiper2').showNext();
+    },
+    showPrevious() {
+        this.$element('swiper').showPrevious();
+        this.$element('swiper1').showPrevious();
+        this.$element('swiper2').showPrevious();
     },
 
     onShow(){
@@ -101,6 +111,21 @@ export default {
         });
     },
 
+    changeTest(event){
+        prompt.showToast({
+            message: 'change'
+        });
+    },
+    rotationTest(event){
+        prompt.showToast({
+            message: 'rotation'
+        });
+    },
+    animationfinish(event){
+        prompt.showToast({
+            message: 'animationfinish'
+        });
+    },
     touchStart(event){
         var globalX = event.touches[0].globalX
         var globalY = event.touches[0].globalY
@@ -193,9 +218,21 @@ export default {
         });
     },
 
+    click(){
+        prompt.showToast({
+            message: 'click'
+        });
+    },
+
     doubleClick(){
         prompt.showToast({
             message: 'doubleClick'
+        });
+    },
+
+    longPress(){
+        prompt.showToast({
+            message: 'longPress'
         });
     },
 
@@ -372,8 +409,8 @@ export default {
         });
     },
 
-    functionTouch1(event){
-        var function1 =  this.$element('function1');
+    functionTest1(event){
+        var function1 =  this.$element('swiper1');
         function1.focus(true)
         var rect = function1.getBoundingClientRect();
         var width = rect.width;
@@ -387,8 +424,8 @@ export default {
         });
     },
 
-    functionTouch2(event){
-        var function2 =  this.$element('function2');
+    functionTest2(event){
+        var function2 =  this.$element('swiper2');
         let observer = function2.createIntersectionObserver({
             ratios: [0.2, 0], // number
         });
@@ -402,7 +439,7 @@ export default {
         observer.unobserve()
     },
 
-    functionTouch3(event){
+    functionTest3(event){
         var function3 =  this.$element('function3');
 
         var animation = function3.animate(frames, options);
@@ -436,5 +473,48 @@ export default {
         setTimeout(() => {
             animation.cancel()
         }, 1500)
+    },
+
+    functionTest4(event){
+        var function4 =  this.$element('function4');
+        var scrollOffset = function4.getScrollOffset();
+        var x = scrollOffset.x;
+        var y = scrollOffset.y;
+        var message = 'x--' + x + ',y--' + y;
+        prompt.showToast({
+            message: 'functionTest4 scrollOffset:\n' + message
+        });
+
+        var scrollParam = {
+            dx:60,
+            dy:0,
+            smooth:true
+        }
+        function4.scrollBy(scrollParam)
+    },
+
+    reachStart(){
+        prompt.showToast({
+            message: 'reachStart'
+        });
+    },
+
+    reachEnd(){
+        prompt.showToast({
+            message: 'reachEnd'
+        });
+    },
+
+    reachTop(){
+        prompt.showToast({
+            message: 'reachTop'
+        });
+    },
+
+    reachBottom(){
+        prompt.showToast({
+            message: 'reachBottom'
+        });
     }
+
 }

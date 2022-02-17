@@ -84,12 +84,13 @@ var frames = [
 ];
 
 export default {
-    changeRating(e){
-        prompt.showToast({
-            message: e.rating
-        });
+    data: {
+        images: [
+            {src: "/common/images/im-ani1.jpg"},
+            {src: "/common/images/im-ani2.jpg"},
+            {src: "/common/images/im-ani3.jpg"}
+        ]
     },
-
     onShow(){
         // 通用属性
         var prop1 =  this.$element('prop1');
@@ -193,12 +194,59 @@ export default {
         });
     },
 
+    click(){
+        prompt.showToast({
+            message: 'click'
+        });
+    },
+
     doubleClick(){
         prompt.showToast({
             message: 'doubleClick'
         });
     },
 
+    longPress(){
+        prompt.showToast({
+            message: 'longPress'
+        });
+    },
+//
+    start(){
+        prompt.showToast({
+            message: '动画开始'
+        });
+    },
+    pause(){
+
+        prompt.showToast({
+            message: '动画暂停'
+        });
+    },
+    stop(){
+        prompt.showToast({
+            message: '动画停止'
+        });
+    },
+    resume(){
+        prompt.showToast({
+            message: "动画回复"
+        });
+    },
+    handleStart() {
+        console.info("111")
+        this.$refs.animator.start();
+    },
+    handlePause() {
+        this.$refs.animator.pause();
+    },
+    handleResume() {
+        this.$refs.animator.resume();
+    },
+    handleStop() {
+        this.$refs.animator.stop();
+    },
+//
     focus(){
         prompt.showToast({
             message: 'focus'
@@ -372,7 +420,7 @@ export default {
         });
     },
 
-    functionTouch1(event){
+    functionTest1(event){
         var function1 =  this.$element('function1');
         function1.focus(true)
         var rect = function1.getBoundingClientRect();
@@ -387,7 +435,7 @@ export default {
         });
     },
 
-    functionTouch2(event){
+    functionTest2(event){
         var function2 =  this.$element('function2');
         let observer = function2.createIntersectionObserver({
             ratios: [0.2, 0], // number
@@ -402,9 +450,8 @@ export default {
         observer.unobserve()
     },
 
-    functionTouch3(event){
+    functionTest3(event){
         var function3 =  this.$element('function3');
-
         var animation = function3.animate(frames, options);
         animation.play()
         animation.onfinish = function(){
@@ -436,5 +483,47 @@ export default {
         setTimeout(() => {
             animation.cancel()
         }, 1500)
+    },
+
+    functionTest4(event){
+        var function4 =  this.$element('function4');
+        var scrollOffset = function4.getScrollOffset();
+        var x = scrollOffset.x;
+        var y = scrollOffset.y;
+        var message = 'x--' + x + ',y--' + y;
+        prompt.showToast({
+            message: 'functionTest4 scrollOffset:\n' + message
+        });
+
+        var scrollParam = {
+            dx:60,
+            dy:0,
+            smooth:true
+        }
+        function4.scrollBy(scrollParam)
+    },
+
+    reachStart(){
+        prompt.showToast({
+            message: 'reachStart'
+        });
+    },
+
+    reachEnd(){
+        prompt.showToast({
+            message: 'reachEnd'
+        });
+    },
+
+    reachTop(){
+        prompt.showToast({
+            message: 'reachTop'
+        });
+    },
+
+    reachBottom(){
+        prompt.showToast({
+            message: 'reachBottom'
+        });
     }
 }

@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+/* xxx.css */
 .container {
     flex-direction:row;
     width:100%;
@@ -29,7 +30,7 @@
 .style-container{
     flex-direction: column;
     height: 100%;
-    flex-weight: 1;
+    flex-weight: 2;
 }
 
 .title{
@@ -56,9 +57,9 @@
     min-height: 10px;
     max-width: 300px;
     max-height: 50px;
-    padding-left: 10px;
-    padding-top: 20px;
-    padding-right: 15px;
+    padding-left: 3px;
+    padding-top: 3px;
+    padding-right: 3px;
     padding-bottom: 5px;
     margin-left: 10px;
     margin-top: 20px;
@@ -91,10 +92,10 @@
 }
 
 .style2{
-    width: 50px;
-    height: 20px;
-    padding-start: 10px;
-    padding-end: 15px;
+    width: 60px;
+    height: 30px;
+    padding-start: 2px;
+    padding-end: 2px;
     margin-start: 5px;
     margin-end: 10px;
     border-style: dotted;
@@ -105,38 +106,38 @@
     mask-image: url('common/images/icon.png');
     mask-size: cover;
     mask-position: center;
-
 }
+
 
 .style3{
     width: 100%;
-    padding: 10px;
+    height:10%;
+    padding: 0px;
     margin: 5px;
     border-left: 1px solid #000000;
     border-right:  2px dashed #00ff00;
     border-top:  1.5px dotted #0000ff;
     border-bottom:  2.5px dotted #fff000;
-    background-image:url('common/images/image.png');
+    background-image:url('common/images/bg-tv.jpg');
     background-size:cover;
     background-repeat: repeat-x;
     background-position: center;
     flex:1;
     flex-grow: 2;
-    flex-basis: 10px;
+    flex-basis:50px;
     flex-shrink: 1;
 }
-
 .style4{
     width: 60%;
-    height: 5%;
-    padding: 10px;
+    height: 6%;
+    padding: 2px;
     margin: 5px;
     border: 2px solid #000000;
 }
 
 .contain1{
     width: 100%;
-    height: 70px;
+    height: 150px;
     flex-direction: column;
 }
 
@@ -164,12 +165,142 @@
 }
 
 .style7 {
-    margin-bottom: 50px;
+    height:120px;
     margin-top: 10px;
     color: green;
     stroke-width: 30px;
     line-cap: round;
 }
+
+.flex-item {
+    width: 20px;
+    height: 20px;
+    border-radius: 16px;
+}
+
+.style8{
+    flex-direction: row;
+    flex-wrap:nowrap;
+    scrollbar-color: yellow;
+    scrollbar-width: 10px;
+    overscroll-effect:spring;
+    height: 40px;
+    overflow:scroll;
+}
+
+.style9{
+    display: grid;
+    height: 40px;
+    grid-template-columns: 20% 20%;
+    grid-columns-gap: 14px;
+    grid-rows-gap: 4px;
+    grid-template-rows: 15% 15%;
+}
+
+.color-primary {
+    background-color: mediumpurple;
+}
+
+.color-warning {
+    background-color: pink;
+}
+
+.color-success {
+    background-color: cornflowerblue;
+}
+
+.grid-child {
+    width: 100%;
+    border-radius: 2px;
+}
+
+.grid-left-top {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: 1px solid plum;
+    background: linear-gradient(pink, purple);
+    box-shadow: 0px 0px 1px 1px pink;
+    grid-row-start: 0;
+    grid-column-start: 0;
+    grid-row-end: 0;
+    grid-column-end: 0;
+}
+
+.grid-left-bottom {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid plum;
+    background: linear-gradient(pink, #00aaee);
+    box-shadow: 0px 0px 1px 1px pink;
+    grid-row-start: 1;
+    grid-column-start: 0;
+    grid-row-end: 1;
+    grid-column-end: 0;
+}
+
+.grid-right-top {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    border: 1px dotted plum;
+    background: linear-gradient(mediumpurple, #00aaee);
+    box-shadow: 0px 0px 1px 1px pink;
+    grid-row-start: 0;
+    grid-column-start: 1;
+    grid-row-end: 0;
+    grid-column-end: 1;
+}
+
+.grid-right-bottom {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px dotted plum;
+    background: linear-gradient(pink, mediumpurple);
+    box-shadow: 0px 0px 2px 2px pink;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-row-end: 1;
+    grid-column-end: 1;
+}
+
+.event-container{
+    flex-direction: column;
+    flex-weight: 1;
+}
+
+.event1{
+    width: 60%;
+    flex-weight: 1;
+    background-color: yellow;
+}
+
+.event2{
+    width: 70%;
+    flex-weight: 1;
+    background-color: red;
+}
+
+.event3{
+    width: 80%;
+    flex-weight: 1;
+    background-color: #ad4e2a;
+}
+
+.event4{
+    flex-direction: row;
+    width: 90%;
+    flex-weight: 1;
+    overflow:scroll;
+}
+
+.event5{
+    width: 100%;
+    height: 30px;
+}
+
 
 .prop-container{
     flex-direction: column;
@@ -178,6 +309,7 @@
 }
 
 #prop1 {
+    height:30px;
     color: #ad4e2a;
     stroke-width: 10px;
     line-cap: square;
@@ -185,6 +317,7 @@
 }
 
 .prop2 {
+    height:30px;
     color: #343524;
     stroke-width: 15px;
     line-cap: round;
@@ -192,6 +325,7 @@
 }
 
 .prop4 {
+    height:30px;
     color: #456345;
     stroke-width: 25px;
     line-cap: round;
@@ -251,16 +385,19 @@
 
 .ani2{
     color: #ad4e2a;
-    stroke-width: 55px;
-    line-cap: square;
+    width: 55px;
+    height: 55px;
     margin: 5px;
 }
+
 
 .gradient-container{
     flex-direction: column;
 }
 
 .gradient1{
+    height:20px;
+
     stroke-width: 30px;
     line-cap: square;
     margin: 5px;
@@ -268,6 +405,8 @@
 }
 
 .gradient2{
+    height:20px;
+
     stroke-width: 30px;
     line-cap: square;
     margin: 5px;
@@ -275,6 +414,7 @@
 }
 
 .gradient3{
+    height:20px;
     stroke-width: 30px;
     line-cap: square;
     margin: 5px;
@@ -282,6 +422,8 @@
 }
 
 .gradient4{
+    height:20px;
+
     stroke-width: 30px;
     line-cap: square;
     margin: 5px;
@@ -293,7 +435,8 @@
 }
 
 .access1{
-    color: #321124;
+    height:20px;
+    background-color: #321124;
     stroke-width: 30px;
     line-cap: square;
     margin: 5px;
@@ -312,4 +455,42 @@
     stroke-width: 30px;
     line-cap: square;
     margin: 5px;
+}
+.function-container{
+    flex-direction: column;
+}
+
+.function1{
+    background-color: #ff0000;
+    width: 60%;
+    height: 20px;
+}
+
+.function2{
+    background-color: #00ff00;
+    width: 60%;
+    height: 20px;
+}
+
+.function3{
+    background-color: #0000ff;
+    width: 100%;
+    height: 20px;
+}
+
+.function4{
+    flex-direction: row;
+    width: 60%;
+    height: 20px;
+    overflow:scroll;
+}
+.flex-class{
+    margin-top: 5px;
+    width: 100%;
+    height: 30px;
+    display: flex;
+/*    background-color: #ee6363;*/
+    justify-content: center;
+    align-items: center;
+    
 }
