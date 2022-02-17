@@ -202,22 +202,22 @@
             <text class="sub-title">
                 div通用方法1
             </text>
-            <div id="function1" class="function1" onattached="functionTest1">
+            <div id="function1" class="function1" ontouchstart="functionTest1">
             </div>
             <text class="sub-title">
                 div通用方法2
             </text>
-            <div id="function2" class="function2" onattached="functionTest2">
+            <div id="function2" class="function2" ontouchstart="functionTest2">
             </div>
             <text class="sub-title">
                 div通用方法3
             </text>
-            <div id="function3" class="function3" onattached="functionTest3">
+            <div id="function3" class="function3" ontouchstart="functionTest3">
             </div>
             <text class="sub-title">
                 div特有方法
             </text>
-            <div id="function4" class="function4" onattached="functionTest4">
+            <div id="function4" class="function4" ontouchstart="functionTest4">
                 <div style="height: 100%; width: 40px; background-color: red; margin-left: 10px;"></div>
                 <div style="height: 100%; width: 40px;background-color: red; margin-left: 10px;"></div>
                 <div style="height: 100%; width: 40px;background-color: red; margin-left: 10px;"></div>

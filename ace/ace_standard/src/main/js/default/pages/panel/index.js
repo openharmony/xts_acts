@@ -89,52 +89,52 @@ export default {
     },
     // 样式
     showPanel1() {
-        this.$element('simplepanel1').show()
+        this.$element('simplePanel1').show()
     },
     closePanel1() {
-        this.$element('simplepanel1').close()
+        this.$element('simplePanel1').close()
     },
     showPanel2() {
-        this.$element('simplepanel2').show()
+        this.$element('simplePanel2').show()
     },
     closePanel2() {
-        this.$element('simplepanel2').close()
+        this.$element('simplePanel2').close()
     },
     showPanel3() {
-        this.$element('simplepanel3').show()
+        this.$element('simplePanel3').show()
     },
     closePanel3() {
-        this.$element('simplepanel3').close()
+        this.$element('simplePanel3').close()
     },
     showPanel4() {
-        this.$element('simplepanel4').show()
+        this.$element('simplePanel4').show()
     },
     closePanel4() {
-        this.$element('simplepanel4').close()
+        this.$element('simplePanel4').close()
     },
     showPanel5() {
-        this.$element('simplepanel5').show()
+        this.$element('simplePanel5').show()
     },
     closePanel5() {
-        this.$element('simplepanel5').close()
+        this.$element('simplePanel5').close()
     },
     showPanel6() {
-        this.$element('simplepanel6').show()
+        this.$element('simplePanel6').show()
     },
     closePanel6() {
-        this.$element('simplepanel6').close()
+        this.$element('simplePanel6').close()
     },
     showPanel7() {
-        this.$element('simplepanel7').show()
+        this.$element('simplePanel7').show()
     },
     closePanel7() {
-        this.$element('simplepanel7').close()
+        this.$element('simplePanel7').close()
     },
     showPanel() {
-        this.$element('simplepanel').show()
+        this.$element('simplePanel').show()
     },
     closePanel() {
-        this.$element('simplepanel').close()
+        this.$element('simplePanel').close()
     },
     // 属性
     showPanelPro1() {
@@ -150,28 +150,28 @@ export default {
         this.$element('prop2').close()
     },
     showPanelPro3() {
-        this.$element('simplepanelPro3').show()
+        this.$element('simplePanelPro3').show()
     },
     closePanelPro3() {
-        this.$element('simplepanelPro3').close()
+        this.$element('simplePanelPro3').close()
     },
     showPanelPro4() {
-        this.$element('simplepanelPro4').show()
+        this.$element('simplePanelPro4').show()
     },
     closePanelPro4() {
-        this.$element('simplepanelPro4').close()
+        this.$element('simplePanelPro4').close()
     },
     showPanelPro5() {
-        this.$element('simplepanelPro5').show()
+        this.$element('simplePanelPro5').show()
     },
     closePanelPro5() {
-        this.$element('simplepanelPro5').close()
+        this.$element('simplePanelPro5').close()
     },
     showPanelPro6() {
-        this.$element('simplepanelPro6').show()
+        this.$element('simplePanelPro6').show()
     },
     closePanelPro6() {
-        this.$element('simplepanelPro6').close()
+        this.$element('simplePanelPro6').close()
     },
     //事件
     showOne() {
@@ -200,55 +200,55 @@ export default {
     },
     // 渐变
     showPanelA() {
-        this.$element('simplepanelA1').show()
+        this.$element('simplePanelA1').show()
     },
     closePanelA() {
-        this.$element('simplepanelA1').close()
+        this.$element('simplePanelA1').close()
     },
     showPanelB() {
-        this.$element('simplepanelB1').show()
+        this.$element('simplePanelB1').show()
     },
     closePanelB() {
-        this.$element('simplepanelB1').close()
+        this.$element('simplePanelB1').close()
     },
     showPanelC() {
-        this.$element('simplepanelC1').show()
+        this.$element('simplePanelC1').show()
     },
     closePanelC() {
-        this.$element('simplepanelC1').close()
+        this.$element('simplePanelC1').close()
     },
     showPanelD() {
-        this.$element('simplepanelD1').show()
+        this.$element('simplePanelD1').show()
     },
     closePanelD() {
-        this.$element('simplepanelD1').close()
+        this.$element('simplePanelD1').close()
     },
     // 动画
     showPanelAni1() {
-        this.$element('simplepanelAni1').show()
+        this.$element('simplePanelAni1').show()
     },
     closePanelAni1() {
-        this.$element('simplepanelAni1').close()
+        this.$element('simplePanelAni1').close()
     },
     showPanelAni2() {
-        this.$element('simplepanelAni2').show()
+        this.$element('simplePanelAni2').show()
     },
     closePanelAni2() {
-        this.$element('simplepanelAni2').close()
+        this.$element('simplePanelAni2').close()
     },
     // 无障碍
     showPanelNo() {
-        this.$element('simplepanelNo').show()
+        this.$element('simplePanelNo').show()
     },
     closePanelNo() {
-        this.$element('simplepanelNo').close()
+        this.$element('simplePanelNo').close()
     },
     // 多模输入
     showPanelMore() {
-        this.$element('simplepanelMore').show()
+        this.$element('simplePanelMore').show()
     },
     closePanelMore() {
-        this.$element('simplepanelMore').close()
+        this.$element('simplePanelMore').close()
     },
     changeMode(e) {
         this.modeFlag = e.mode

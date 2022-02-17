@@ -106,10 +106,39 @@ export default {
     },
     setRightButton(e) {
         this.$element('mystepper').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('style1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('style2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('style2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('style3').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('style4').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('style5').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('style6').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('style7').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('ani1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('ani2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
         this.$element('prop1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
         this.$element('prop2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('mystepper1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('mystepper2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('prop3').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('prop4').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('event1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('event2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('function1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('function2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('gradient1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('gradient2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('gradient3').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('gradient4').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('access1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('ato1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('ato2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('ato3').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('atom1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('atom2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('atom3').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('atomA1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('atomA2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('atomA3').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+        this.$element('mul1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
     },
     next(e) {
         var index = {
@@ -447,7 +476,7 @@ export default {
     },
 
     functionTest1(event){
-        var function1 =  this.$element('mystepper1');
+        var function1 =  this.$element('function1');
         function1.focus(true)
         var rect = function1.getBoundingClientRect();
         var width = rect.width;
@@ -462,7 +491,7 @@ export default {
     },
 
     functionTest2(event){
-        var function2 =  this.$element('mystepper2');
+        var function2 =  this.$element('function2');
         let observer = function2.createIntersectionObserver({
             ratios: [0.2, 0], // number
         });

@@ -84,6 +84,7 @@ var frames = [
 ];
 
 export default {
+
     onShow(){
         // 通用属性
         var prop1 =  this.$element('prop1');
@@ -410,6 +411,7 @@ export default {
 
     functionTest3(event){
         var function3 =  this.$element('function3');
+
         var animation = function3.animate(frames, options);
         animation.play()
         animation.onfinish = function(){

@@ -336,18 +336,16 @@
 }
 
 .access1{
-    color: #321124;
-    stroke-width: 30px;
-    line-cap: square;
+    background-color: #321124;
     margin: 5px;
+    width: 90%;
+    height: 30px;
 }
 
-
-
 .multimode1{
-    color: #978666;
-    stroke-width: 30px;
-    line-cap: square;
+    background-color: #978666;
+    width: 100%;
+    height: 30px;
     margin: 5px;
 }
 
