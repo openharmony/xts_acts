@@ -13,33 +13,18 @@
  * limitations under the License.
  */
 import mediaLibrary from '@ohos.multimedia.medialibrary';
-
+import featureAbility from '@ohos.ability.featureAbility'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
-let fileKeyObj = mediaLibrary.FileKey
-let AlbumNoArgsfetchOp = {
-    selections: "",
-    selectionArgs: [],
-}
-let AlbumHasArgsfetchOp = {
-    selections: fileKeyObj.PATH + " LIKE ? ",
-    selectionArgs: ["/data/media%"],
-}
-let type1 = mediaLibrary.MediaType.IMAGE
-let fileHasArgsfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + "= ?",
-    selectionArgs: [type1.toString()],
-}
-let fileNoArgsfetchOp = {
-    selections: "",
-    selectionArgs: [],
-}
 
 describe('favSmartAlbum.promise.test.js', function () {
 
     let mediaType = mediaLibrary.MediaType.IMAGE;
     let path = "Pictures/"
-    var media = mediaLibrary.getMediaLibrary();
+    var context = featureAbility.getContext();
+    console.info('MediaLibraryTest : getMediaLibrary IN');
+    var media = mediaLibrary.getMediaLibrary(context);
+    console.info('MediaLibraryTest : getMediaLibrary OUT');
     var asset;
     var favSmartAlbum;
     beforeAll(function () {
@@ -70,9 +55,14 @@ describe('favSmartAlbum.promise.test.js', function () {
      */
 
     it('SUB_MEDIA_MEDIALIBRARY_GETPRIVATEALBUM_CALLBACK_001', 0, async function (done) {
-        asset = await media.createAsset(mediaType, "image0002.jpg", path);
-        media.getPrivateAlbum(mediaLibrary.PrivateAlbumType.TYPE_FAVORITE, getPrivateAlbumCallBack);
-        done();
+        try {
+            asset = await media.createAsset(mediaType, "imagefavtest.jpg", path);
+            media.getPrivateAlbum(mediaLibrary.PrivateAlbumType.TYPE_FAVORITE, getPrivateAlbumCallBack);
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : CALLBACK_001 getPrivateAlbum fail, message = '+ error);
+            done();
+        }
     });
 
     function getPrivateAlbumCallBack(err, favSmartAlbums) {

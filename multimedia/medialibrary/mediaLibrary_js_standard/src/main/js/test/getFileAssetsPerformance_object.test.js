@@ -14,16 +14,17 @@
  */
 
 import mediaLibrary from '@ohos.multimedia.medialibrary';
-
+import featureAbility from '@ohos.ability.featureAbility'
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 
 describe('getFileAssetsPerformance_object.test.js', function () {
-    console.info("mediaLibrary Instance before");
-    const media = mediaLibrary.getMediaLibrary();
-    console.info("mediaLibrary Instance after");
-
+    var context = featureAbility.getContext();
+    console.info('MediaLibraryTest : getMediaLibrary IN');
+    const media = mediaLibrary.getMediaLibrary(context);
+    console.info('MediaLibraryTest : getMediaLibrary OUT');
+    
     let times = 100;
     let queryResultSet_;
     let fileList_;
@@ -37,7 +38,7 @@ describe('getFileAssetsPerformance_object.test.js', function () {
     beforeAll(function () {
         onsole.info('MediaLibraryTest: beforeAll');
     })
-
+    
     beforeEach(function () {
         console.info('MediaLibraryTest: beforeEach');
     })
@@ -47,16 +48,16 @@ describe('getFileAssetsPerformance_object.test.js', function () {
     afterAll(function () {
         console.info('MediaLibraryTest: afterAll');
     })
-
+    
     /*
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GET_ALL_OBJECT_PERFORMANCE_01
-     * @tc.name      :  
-     * @tc.desc      : 
+     * @tc.name      :
+     * @tc.desc      :
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-
+    
     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_GET_ALL_OBJECT_PERFORMANCE_01 begin');
     it('SUB_MEDIA_MEDIALIBRARY_GET_ALL_OBJECT_PERFORMANCE_01', 0, async function (done) {
         console.info('MediaLibraryTest : getFileAssets begin');

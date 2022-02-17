@@ -13,35 +13,21 @@
  * limitations under the License.
  */
 import mediaLibrary from '@ohos.multimedia.medialibrary';
-
+import featureAbility from '@ohos.ability.featureAbility'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
-let fileKeyObj = mediaLibrary.FileKey
-let AlbumNoArgsfetchOp = {
-    selections: "",
-    selectionArgs: [],
-}
-let AlbumHasArgsfetchOp = {
-    selections: fileKeyObj.PATH + " LIKE ? ",
-    selectionArgs: ["/data/media%"],
-}
-let type1 = mediaLibrary.MediaType.IMAGE
-let fileHasArgsfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + "= ?",
-    selectionArgs: [type1.toString()],
-}
-let fileNoArgsfetchOp = {
-    selections: "",
-    selectionArgs: [],
-}
 
 describe('favSmartAlbum.promise.test.js', function () {
 
     let mediaType = mediaLibrary.MediaType.IMAGE;
     let path = "Pictures/"
-    var media = mediaLibrary.getMediaLibrary();
+    var context = featureAbility.getContext();
+    console.info('MediaLibraryTest : getMediaLibrary IN');
+    var media = mediaLibrary.getMediaLibrary(context);
+    console.info('MediaLibraryTest : getMediaLibrary OUT');
     var asset;
     var favSmartAlbum;
+    var trashSmartAlbum;
     beforeAll(function () {
         onsole.info('Smart Album Promise MediaLibraryTest: beforeAll.');
 
@@ -69,14 +55,90 @@ describe('favSmartAlbum.promise.test.js', function () {
      * @tc.level     : Level 0
      */
 
-    it('SUB_MEDIA_MEDIALIBRARY_GETPRIVATEALBUM_PROMISE_001', 0, async function (done) {
-        asset = await media.createAsset(mediaType, "image002.jpg", path);
-        const favSmartAlbums = await media.getPrivateAlbum(mediaLibrary.PrivateAlbumType.TYPE_FAVORITE);
-        console.info('MediaLibraryTest : SMARTALBUM_PROMISE getPrivateAlbum favSmartAlbums');
-        console.info('MediaLibraryTest : SMARTALBUM_PROMISE favSmartAlbums ' + favSmartAlbums[0].albumName);
-        console.info('MediaLibraryTest : SMARTALBUM_PROMISE favSmartAlbums ' + favSmartAlbums[0].albumCapacity);
-        favSmartAlbum = favSmartAlbums[0];
+    it('SUB_MEDIA_MEDIALIBRARY_GETPRIVATEALBUM_PROMISE_001_01', 0, async function (done) {
+        try {
+            asset = await media.createAsset(mediaType, "imageGetPrivatealbum002.jpg", path);
+            const favSmartAlbums = await media.getPrivateAlbum(mediaLibrary.PrivateAlbumType.TYPE_FAVORITE);
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getPrivateAlbum favSmartAlbums 001_01');
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE favSmartAlbums 001_01 ' + favSmartAlbums[0].albumName);
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE favSmartAlbums 001_01 ' + favSmartAlbums[0].albumCapacity);
+            favSmartAlbum = favSmartAlbums[0];
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getPrivateAlbum 001_01 fail, message = ' + error);
+            expect(false).assertTrue();
+            done();
+        }
         done();
+    });
+
+    it('SUB_MEDIA_MEDIALIBRARY_GETPRIVATEALBUM_PROMISE_001_02', 0, async function (done) {
+        try {
+            const trashSmartAlbums = await media.getPrivateAlbum(mediaLibrary.PrivateAlbumType.TYPE_TRASH);
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getPrivateAlbum trashSmartAlbums 001_02');
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE trashSmartAlbums 001_02 ' + trashSmartAlbums[0].albumName);
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE trashSmartAlbums 001_02 ' + trashSmartAlbums[0].albumCapacity);
+            trashSmartAlbum = trashSmartAlbums[0];
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getPrivateAlbum 001_02 fail, message = ' + error);
+            expect(false).assertTrue();
+            done();
+        }
+    });
+
+    it('SUB_MEDIA_MEDIALIBRARY_GETPRIVATEALBUM_PROMISE_001_03', 0, async function (done) {
+        try {
+            const favSmartAlbums = await media.getPrivateAlbum(666);
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getPrivateAlbum 001_03 success');
+            expect(false).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getPrivateAlbum 001_03 fail, message = ' + error);
+            expect(true).assertTrue();
+            done();
+        }
+    });
+
+    it('SUB_MEDIA_MEDIALIBRARY_GETPRIVATEALBUM_PROMISE_001_04', 0, async function (done) {
+        try {
+            const favSmartAlbums = await media.getPrivateAlbum("666");
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getPrivateAlbum success 001_04');
+            expect(false).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getPrivateAlbum 001_04 fail, message = ' + error);
+            expect(true).assertTrue();
+            done();
+        }
+    });
+
+    it('SUB_MEDIA_MEDIALIBRARY_GETPRIVATEALBUM_PROMISE_001_05', 0, async function (done) {
+        try {
+            const favSmartAlbums = await media.getPrivateAlbum(6.66666);
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getPrivateAlbum success 001_05');
+            expect(false).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getPrivateAlbum 001_05 fail, message = ' + error);
+            expect(true).assertTrue();
+            done();
+        }
+    });
+
+    it('SUB_MEDIA_MEDIALIBRARY_GETPRIVATEALBUM_PROMISE_001_06', 0, async function (done) {
+        try {
+            const favSmartAlbums = await media.getPrivateAlbum();
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getPrivateAlbum success 001_06');
+            expect(false).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getPrivateAlbum 001_06 fail, message = ' + error);
+            expect(true).assertTrue();
+            done();
+        }
     });
 
     /*
@@ -88,13 +150,68 @@ describe('favSmartAlbum.promise.test.js', function () {
      * @tc.level     : Level 0
      */
 
-    it('SUB_MEDIA_MEDIALIBRARY_ADDASSET_PROMISE_002', 0, async function (done) {
-        await favSmartAlbum.addAsset(asset.uri);
-        console.info('MediaLibraryTest : SMARTALBUM_PROMISE fav addAsset = ', asset.uri);
-        let fSmartFetchFileResult = await favSmartAlbum.getFileAssets();
-        console.info('MediaLibraryTest : SMARTALBUM_PROMISE getFileAssets Successfull fSmartFetchFileResult = '
-            + fSmartFetchFileResult.getCount());
-        done();
+    it('SUB_MEDIA_MEDIALIBRARY_ADDASSET_PROMISE_002_01', 0, async function (done) {
+        try {
+            await favSmartAlbum.addAsset(asset.uri);
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE fav addAsset 002_01 uri = ', asset.uri);
+            let fSmartFetchFileResult = await favSmartAlbum.getFileAssets();
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getFileAssets 002_01 Successfull fSmartFetchFileResult = '
+                + fSmartFetchFileResult.getCount());
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE fav addAsset 002_01 fail, message = ' + error);
+            expect(false).assertTrue();
+            done();
+        }
+    });
+
+    it('SUB_MEDIA_MEDIALIBRARY_ADDASSET_PROMISE_002_02', 0, async function (done) {
+        try {
+            await favSmartAlbum.addAsset(666);
+            expect(false).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE fav addAsset 002_02 fail, message = ' + error);
+            expect(true).assertTrue();
+            done();
+        }
+    });
+
+    it('SUB_MEDIA_MEDIALIBRARY_ADDASSET_PROMISE_002_03', 0, async function (done) {
+        try {
+            await favSmartAlbum.addAsset("666");
+            expect(false).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE fav addAsset 002_03 fail, message = ' + error);
+            expect(true).assertTrue();
+            done();
+        }
+    });
+
+    it('SUB_MEDIA_MEDIALIBRARY_ADDASSET_PROMISE_002_04', 0, async function (done) {
+        try {
+            await favSmartAlbum.addAsset(0.666);
+            expect(false).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE fav addAsset 002_04 fail, message = ' + error);
+            expect(true).assertTrue();
+            done();
+        }
+    });
+
+    it('SUB_MEDIA_MEDIALIBRARY_ADDASSET_PROMISE_002_05', 0, async function (done) {
+        try {
+            await favSmartAlbum.addAsset();
+            expect(false).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE fav addAsset 002_05 fail, message = ' + error);
+            expect(true).assertTrue();
+            done();
+        }
     });
 
     /*
@@ -106,12 +223,91 @@ describe('favSmartAlbum.promise.test.js', function () {
      * @tc.level     : Level 0
      */
 
-    it('SUB_MEDIA_MEDIALIBRARY_REMOVEASSET_PROMISE_003', 0, async function (done) {
-        await favSmartAlbum.removeAsset(asset.uri);
-        let fSmartFetchFileResultNew = await favSmartAlbum.getFileAssets();
-        console.info('MediaLibraryTest : SMARTALBUM_PROMISE getFileAssets Successfull remove fSmartFetchFileResultNew = '
-            + fSmartFetchFileResultNew.getCount());
-        await media.deleteAsset(asset.uri);
-        done();
+    it('SUB_MEDIA_MEDIALIBRARY_REMOVEASSET_PROMISE_003_01', 0, async function (done) {
+        try {
+            await favSmartAlbum.removeAsset(asset.uri);
+            let fSmartFetchFileResultNew = await favSmartAlbum.getFileAssets();
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getFileAssets Successfull removeAsset 003_01 fSmartFetchFileResultNew = '
+                + fSmartFetchFileResultNew.getCount());
+            await media.deleteAsset(asset.uri);
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE fav removeAsset 003_01 fail, message = ' + error);
+        }
+    });
+
+    it('SUB_MEDIA_MEDIALIBRARY_REMOVEASSET_PROMISE_003_02', 0, async function (done) {
+        try {
+            await favSmartAlbum.removeAsset(666);
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE fav removeAsset 003_02 success');
+            expect(false).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE fav removeAsset 003_02 fail, message = ' + error);
+            expect(true).assertTrue();
+            done();
+        }
+    });
+
+    it('SUB_MEDIA_MEDIALIBRARY_REMOVEASSET_PROMISE_003_03', 0, async function (done) {
+        try {
+            await favSmartAlbum.removeAsset("666");
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE fav removeAsset 003_03 success');
+            expect(false).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE fav removeAsset 003_03 fail, message = ' + error);
+            expect(true).assertTrue();
+            done();
+        }
+    });
+
+    it('SUB_MEDIA_MEDIALIBRARY_REMOVEASSET_PROMISE_003_04', 0, async function (done) {
+        try {
+            await favSmartAlbum.removeAsset(0.666);
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE fav removeAsset 003_04 success');
+            expect(false).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE fav removeAsset 003_04 fail, message = ' + error);
+            expect(true).assertTrue();
+            done();
+        }
+    });
+
+    it('SUB_MEDIA_MEDIALIBRARY_REMOVEASSET_PROMISE_003_05', 0, async function (done) {
+        try {
+            await favSmartAlbum.removeAsset();
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE fav removeAsset 003_05 success');
+            expect(false).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE fav removeAsset 003_05 fail, message = ' + error);
+            expect(true).assertTrue();
+            done();
+        }
+    });
+
+    /*
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETASSET_PROMISE_004
+     * @tc.name      : get FileAssets
+     * @tc.desc      : get FileAssets
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+
+    it('SUB_MEDIA_MEDIALIBRARY_GETASSET_PROMISE_004_01', 0, async function (done) {
+        try {
+            let fSmartFetchFileResultGet = await favSmartAlbum.getFileAssets();
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getFileAssets Successfull 004_01 fSmartFetchFileResultGet = '
+                + fSmartFetchFileResultGet.getCount());
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE fav getFileAssets 004_01 fail, message = ' + error);
+            expect(false).assertTrue();
+            done();
+        }
     });
 })

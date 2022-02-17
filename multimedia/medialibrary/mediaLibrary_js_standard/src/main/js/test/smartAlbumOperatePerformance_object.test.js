@@ -14,15 +14,16 @@
  */
 
 import mediaLibrary from '@ohos.multimedia.medialibrary';
-
+import featureAbility from '@ohos.ability.featureAbility'
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 
 describe('smartAlbumOperatePerformance_object.test.js', async function () {
-    console.info("mediaLibrary Instance before");
-    const media = mediaLibrary.getMediaLibrary();
-    console.info("mediaLibrary Instance after");
+    var context = featureAbility.getContext();
+    console.info('MediaLibraryTest : getMediaLibrary IN');
+    const media = mediaLibrary.getMediaLibrary(context);
+    console.info('MediaLibraryTest : getMediaLibrary OUT');
 
     let times = 50;
 

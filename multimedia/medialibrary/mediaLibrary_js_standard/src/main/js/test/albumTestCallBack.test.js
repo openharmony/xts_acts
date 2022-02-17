@@ -13,17 +13,18 @@
  * limitations under the License.
  */
 import mediaLibrary from '@ohos.multimedia.medialibrary';
-
+import featureAbility from '@ohos.ability.featureAbility'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 let fileKeyObj = mediaLibrary.FileKey
+let mediaType = mediaLibrary.MediaType.IMAGE;
 let AlbumNoArgsfetchOp = {
     selections: "",
     selectionArgs: [],
 }
 let AlbumHasArgsfetchOp = {
-    selections: fileKeyObj.PATH + " LIKE ? ",
-    selectionArgs: ["/data/media%"],
+    selections: fileKeyObj.MEDIA_TYPE + "= ?",
+    selectionArgs: [mediaType.toString()],
 }
 let type1 = mediaLibrary.MediaType.IMAGE
 let fileHasArgsfetchOp = {
@@ -36,11 +37,11 @@ let fileNoArgsfetchOp = {
 }
 
 describe('album.callback.test.js', function () {
-
-    let mediaType = mediaLibrary.MediaType.IMAGE;
     let path = "Pictures/"
-    var asset;
-    var media = mediaLibrary.getMediaLibrary();
+    var context = featureAbility.getContext();
+    console.info('MediaLibraryTest : getMediaLibrary IN');
+    var media = mediaLibrary.getMediaLibrary(context);
+    console.info('MediaLibraryTest : getMediaLibrary OUT');
     var album;
     beforeAll(function () {
         console.info('Album Callback MediaLibraryTest: beforeAll.');
@@ -70,7 +71,6 @@ describe('album.callback.test.js', function () {
      */
 
     it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001', 0, async function (done) {
-        asset = await media.createAsset(mediaType, "image0003Callback.jpg", path);
         media.getAlbums(AlbumNoArgsfetchOp, getAlbumsCallBack);
         done();
     });
@@ -100,6 +100,18 @@ describe('album.callback.test.js', function () {
         } else {
             console.info('MediaLibraryTest : ALBUM_CALLBACK getAllObjectInfo no album');
         }
+    }
+
+    function getAlbumsNoArgsCallBack(err, albumList) {
+        if (albumList != undefined) {
+            console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbumsCallBack success');
+            done();
+        } else {
+            console.info('MediaLibraryTest : ASSET_CALLBACK getAlbumsCallBack Unsuccessfull ' + err);
+            console.info('MediaLibraryTest : ASSET_CALLBACK getAlbumsCallBack : FAIL');
+            done();
+        }
+
     }
 
     function getAlbumsCallBack(err, albumList) {
