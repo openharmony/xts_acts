@@ -57,6 +57,29 @@ describe('aceJsTest', function () {
         await sleep(5000)
     });
 
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testStepperComponent
+     * @tc.desc      ACE
+     */
+    it('testStepperComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/stepper/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push stepper page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push stepper page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.stepper] getState" + JSON.stringify(pages));
+        expect("pages/stepper/").assertEqual(pages.path);
+        done();
+    });
+
         /**
          * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
          * @tc.name      testButtonComponent
@@ -826,29 +849,6 @@ describe('aceJsTest', function () {
         let pages = router.getState();
         console.info("[router.marquee] getState" + JSON.stringify(pages));
         expect("pages/marquee/").assertEqual(pages.path);
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testStepperComponent
-     * @tc.desc      ACE
-     */
-    it('testStepperComponent', 0, async function (done) {
-        let result;
-        let options = {
-            uri: 'pages/stepper/index'
-        }
-        try {
-            result = router.push(options)
-            console.info("push stepper page success " + JSON.stringify(result));
-        } catch (err) {
-            console.error("push stepper page error " + JSON.stringify(result));
-        }
-        await sleep(5000)
-        let pages = router.getState();
-        console.info("[router.stepper] getState" + JSON.stringify(pages));
-        expect("pages/stepper/").assertEqual(pages.path);
         done();
     });
 
