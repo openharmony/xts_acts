@@ -2953,6 +2953,7 @@ describe('ActsBundleManagerTest', function () {
     */
     it('installErrCodeTest_0100', 0, async function (done) {
         expect(demo.InstallErrorCode.STATUS_FAILED_NO_SPACE_LEFT).assertEqual(66);
+        expect(demo.AbilitySubType.CA).assertEqual(1);
         done();
     })
 
