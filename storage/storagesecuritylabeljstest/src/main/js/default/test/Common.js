@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import securitylabel from '@ohos.securitylabel';
+import securityLabel from '@ohos.securitylabel';
 import fileio from '@ohos.fileio';
 import featureAbility from '@ohos.ability.featureAbility';
 
@@ -37,6 +37,6 @@ export {
   afterAll,
   it,
   expect,
-  securitylabel,
+  securityLabel,
   fileio
 };
