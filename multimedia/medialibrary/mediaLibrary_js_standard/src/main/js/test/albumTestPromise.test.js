@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import mediaLibrary from '@ohos.multimedia.medialibrary';
 import featureAbility from '@ohos.ability.featureAbility'
 
@@ -47,24 +48,24 @@ describe('album.promise.test.js', function () {
     console.info('MediaLibraryTest : getMediaLibrary OUT');
     var album;
     beforeAll(function () {
-        onsole.info('Album Promise MediaLibraryTest: beforeAll.');
+        onsole.info('Album Promise MediaLibraryTest: beforeAll： Prerequisites at the test suite level, which are executed before the test suite is executed.');
 
     })
 
     beforeEach(function () {
-        console.info('Album Promise MediaLibraryTest: beforeEach.');
+        console.info('Album Promise MediaLibraryTest: beforeEach：Prerequisites at the test case level, which are executed before each test case is executed.');
 
     })
     afterEach(function () {
-        console.info('Album Promise MediaLibraryTest: afterEach.');
+        console.info('Album Promise MediaLibraryTest: afterEach： Test case-level clearance conditions, which are executed after each test case is executed.');
 
     })
     afterAll(function () {
-        console.info('Album Promise MediaLibraryTest: afterAll.');
+        console.info('Album Promise MediaLibraryTest: afterAll：  Test suite-level cleanup condition, which is executed after the test suite is executed');
 
     })
-
-    /*
+    
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_001
      * @tc.name      : Get Album by AlbumNoArgsfetchOp
      * @tc.desc      : Get Album by AlbumNoArgsfetchOp
@@ -109,7 +110,7 @@ describe('album.promise.test.js', function () {
         }
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_002
      * @tc.name      : Get Album by AlbumHasArgsfetchOp
      * @tc.desc      : Get Album by AlbumHasArgsfetchOp
@@ -181,7 +182,7 @@ describe('album.promise.test.js', function () {
         }
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_003
      * @tc.name      : Modify Album
      * @tc.desc      : Modify Album
@@ -230,7 +231,7 @@ describe('album.promise.test.js', function () {
         done();
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_PROMISE_004
      * @tc.name      : Get Album Assets by fileNoArgsfetchOp
      * @tc.desc      : Get Album Assets by fileNoArgsfetchOp
@@ -267,8 +268,8 @@ describe('album.promise.test.js', function () {
         done();
     });
 
-    /*
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_005
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_PROMISE_005
      * @tc.name      : Get Album Assets by fileHasArgsfetchOp
      * @tc.desc      : Get Album Assets by fileHasArgsfetchOp
      * @tc.size      : MEDIUM

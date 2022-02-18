@@ -16,13 +16,13 @@
 import mediaLibrary from '@ohos.multimedia.medialibrary';
 import featureAbility from '@ohos.ability.featureAbility'
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 
 describe('getAlbumsPerformance.test.js', function () {
     var context = featureAbility.getContext();
     console.info('MediaLibraryTest : getMediaLibrary IN');
-    const media = mediaLibrary.getMediaLibrary(context);
+    var media = mediaLibrary.getMediaLibrary(context);
     console.info('MediaLibraryTest : getMediaLibrary OUT');
 
     let times = 25;
@@ -46,7 +46,7 @@ describe('getAlbumsPerformance.test.js', function () {
         console.info('MediaLibraryTest: afterAll');
     })
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GET_ALBUMS_PERFORMANCE_01
      * @tc.name      : 
      * @tc.desc      : 
@@ -60,7 +60,7 @@ describe('getAlbumsPerformance.test.js', function () {
         for (let i = 0; i < times; i++) {
             const albumArray = await media.getAlbums(AlbumNoArgsfetchOp);
             if (albumArray != undefined) {
-                console.info('MediaLibraryTest : getAlbums : PASS '+ albumArray.length);
+                console.info('MediaLibraryTest : getAlbums : PASS ' + albumArray.length);
                 expect(true).assertTrue();
             } else {
                 console.info('MediaLibraryTest : getAlbums : FAIL');

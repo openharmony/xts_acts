@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import mediaLibrary from '@ohos.multimedia.medialibrary';
 import featureAbility from '@ohos.ability.featureAbility'
 
@@ -28,24 +29,24 @@ describe('favSmartAlbum.promise.test.js', function () {
     var asset;
     var favSmartAlbum;
     beforeAll(function () {
-        onsole.info('Smart Album Callback MediaLibraryTest: beforeAll.');
+        onsole.info('Smart Album Callback MediaLibraryTest: beforeAll： Prerequisites at the test suite level, which are executed before the test suite is executed.');
 
     })
 
     beforeEach(function () {
-        console.info('Smart Album Callback MediaLibraryTest: beforeEach.');
+        console.info('Smart Album Callback MediaLibraryTest: beforeEach：Prerequisites at the test case level, which are executed before each test case is executed.');
 
     })
     afterEach(function () {
-        console.info('Smart Album Callback MediaLibraryTest: afterEach.');
+        console.info('Smart Album Callback MediaLibraryTest: afterEach： Test case-level clearance conditions, which are executed after each test case is executed.');
 
     })
     afterAll(function () {
-        console.info('Smart Album Callback MediaLibraryTest: afterAll.');
+        console.info('Smart Album Callback MediaLibraryTest: afterAll：  Test suite-level cleanup condition, which is executed after the test suite is executed');
 
     })
-
-    /*
+     
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETPRIVATEALBUM_CALLBACK_001
      * @tc.name      : Get PrivateSmartAlbum by fav
      * @tc.desc      : Get PrivateSmartAlbum by fav
@@ -60,7 +61,7 @@ describe('favSmartAlbum.promise.test.js', function () {
             media.getPrivateAlbum(mediaLibrary.PrivateAlbumType.TYPE_FAVORITE, getPrivateAlbumCallBack);
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : CALLBACK_001 getPrivateAlbum fail, message = '+ error);
+            console.info('MediaLibraryTest : CALLBACK_001 getPrivateAlbum fail, message = ' + error);
             done();
         }
     });
@@ -105,7 +106,7 @@ describe('favSmartAlbum.promise.test.js', function () {
     }
     function getFileAssetsCallBack(err, fSmartFetchFileResult) {
         if (fSmartFetchFileResult != undefined) {
-            console.info('MediaLibraryTest : SMARTALBUM_CALLBACK getFileAssetsCallBack Success fSmartFetchFileResult = '
+            console.info('MediaLibraryTest : SMARTALBUM_CALLBACK getFileAssetsCallBack Successfull fSmartFetchFileResult = '
                 + fSmartFetchFileResult.getCount());
             done();
         } else {

@@ -16,29 +16,29 @@
 import mediaLibrary from '@ohos.multimedia.medialibrary';
 import featureAbility from '@ohos.ability.featureAbility'
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 
 describe('getFileAssetsPerformance_object.test.js', function () {
     var context = featureAbility.getContext();
     console.info('MediaLibraryTest : getMediaLibrary IN');
-    const media = mediaLibrary.getMediaLibrary(context);
+    var media = mediaLibrary.getMediaLibrary(context);
     console.info('MediaLibraryTest : getMediaLibrary OUT');
-    
+
     let times = 100;
     let queryResultSet_;
     let fileList_;
     let fileKeyObj = mediaLibrary.FileKey
     let type = mediaLibrary.MediaType.IMAGE
     let fetchOp = {
-        selections : fileKeyObj.MEDIA_TYPE + " = ? ",
-        selectionArgs : [type.toString()],
-        order : fileKeyObj.DATE_ADDED,
+        selections: fileKeyObj.MEDIA_TYPE + " = ? ",
+        selectionArgs: [type.toString()],
+        order: fileKeyObj.DATE_ADDED,
     }
     beforeAll(function () {
         onsole.info('MediaLibraryTest: beforeAll');
     })
-    
+
     beforeEach(function () {
         console.info('MediaLibraryTest: beforeEach');
     })
@@ -48,16 +48,16 @@ describe('getFileAssetsPerformance_object.test.js', function () {
     afterAll(function () {
         console.info('MediaLibraryTest: afterAll');
     })
-    
-    /*
+
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GET_ALL_OBJECT_PERFORMANCE_01
-     * @tc.name      :
-     * @tc.desc      :
+     * @tc.name      :  
+     * @tc.desc      : 
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    
+
     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_GET_ALL_OBJECT_PERFORMANCE_01 begin');
     it('SUB_MEDIA_MEDIALIBRARY_GET_ALL_OBJECT_PERFORMANCE_01', 0, async function (done) {
         console.info('MediaLibraryTest : getFileAssets begin');
@@ -69,7 +69,7 @@ describe('getFileAssetsPerformance_object.test.js', function () {
             expect(false).assertTrue();
             done();
         } else {
-            for(let i = 0; i < 3; i++) {
+            for (let i = 0; i < 3; i++) {
                 console.info('MediaLibraryTest : getAllObject begin :times: ' + i);
                 const data1 = await queryResultSet_.getAllObject();
                 if (data1 != undefined) {
@@ -79,14 +79,17 @@ describe('getFileAssetsPerformance_object.test.js', function () {
                     console.info('MediaLibraryTest : getAllObject :FAIL times: ' + i);
                     expect(false).assertTrue();
                 }
+
                 console.info('MediaLibraryTest : getAllObject after :times: ' + i);
             }
         }
+
+
         console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_GET_ALL_OBJECT_PERFORMANCE_01 end');
         done();
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GET_FIRST_OBJECT_PERFORMANCE_01
      * @tc.name      :  
      * @tc.desc      : 
@@ -102,7 +105,7 @@ describe('getFileAssetsPerformance_object.test.js', function () {
             expect(false).assertTrue();
             done();
         } else {
-            for(let i = 0; i < times; i++) {
+            for (let i = 0; i < times; i++) {
                 console.info('MediaLibraryTest : getFirstObject begin :times: ' + i);
                 const fileAsset = await queryResultSet_.getFirstObject();
                 if (fileAsset != undefined) {
@@ -112,14 +115,17 @@ describe('getFileAssetsPerformance_object.test.js', function () {
                     console.info('MediaLibraryTest : getFirstObject :FAIL times: ' + i);
                     expect(false).assertTrue();
                 }
+
                 console.info('MediaLibraryTest : getFirstObject after :times: ' + i);
             }
         }
+
+
         console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_GET_FIRST_OBJECT_PERFORMANCE_01 end');
         done();
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_IS_AFTER_LAST_PERFORMANCE_01
      * @tc.name      :  
      * @tc.desc      : 
@@ -135,10 +141,11 @@ describe('getFileAssetsPerformance_object.test.js', function () {
             expect(false).assertTrue();
             done();
         } else {
-            for(let i = 0; i < times; i++) {
+            for (let i = 0; i < times; i++) {
                 console.info('MediaLibraryTest : isAfterLast begin :times: ' + i);
                 const isAfterLastBool = queryResultSet_.isAfterLast();
                 expect(!isAfterLastBool).assertTrue();
+
                 console.info('MediaLibraryTest : isAfterLast after :times: ' + i);
             }
         }
@@ -146,7 +153,7 @@ describe('getFileAssetsPerformance_object.test.js', function () {
         done();
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GET_LAST_OBJECT_PERFORMANCE_01
      * @tc.name      :  
      * @tc.desc      : 
@@ -162,7 +169,7 @@ describe('getFileAssetsPerformance_object.test.js', function () {
             expect(false).assertTrue();
             done();
         } else {
-            for(let i = 0; i < times; i++) {
+            for (let i = 0; i < times; i++) {
                 console.info('MediaLibraryTest : getLastObject begin :times: ' + i);
                 const fileAsset = await queryResultSet_.getLastObject();
                 if (fileAsset != undefined) {
@@ -172,14 +179,17 @@ describe('getFileAssetsPerformance_object.test.js', function () {
                     console.info('MediaLibraryTest : getLastObject :FAIL times: ' + i);
                     expect(false).assertTrue();
                 }
+
                 console.info('MediaLibraryTest : getLastObject after :times: ' + i);
             }
         }
+
+
         console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_GET_LAST_OBJECT_PERFORMANCE_01 end');
         done();
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GET_POSITION_OBJECT_PERFORMANCE_01
      * @tc.name      :  
      * @tc.desc      : 
@@ -195,7 +205,7 @@ describe('getFileAssetsPerformance_object.test.js', function () {
             expect(false).assertTrue();
             done();
         } else {
-            for(let i = 0; i < times; i++) {
+            for (let i = 0; i < times; i++) {
                 console.info('MediaLibraryTest : getPositionObject begin :times: ' + i);
                 const fileAsset = await queryResultSet_.getPositionObject(i);
                 if (fileAsset != undefined) {
@@ -205,14 +215,17 @@ describe('getFileAssetsPerformance_object.test.js', function () {
                     console.info('MediaLibraryTest : getPositionObject :FAIL times: ' + i);
                     expect(false).assertTrue();
                 }
+
                 console.info('MediaLibraryTest : getPositionObject after :times: ' + i);
             }
         }
+
+
         console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_GET_POSITION_OBJECT_PERFORMANCE_01 end');
         done();
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GET_NEXT_OBJECT_PERFORMANCE_01
      * @tc.name      :  
      * @tc.desc      : 
@@ -231,7 +244,7 @@ describe('getFileAssetsPerformance_object.test.js', function () {
             expect(false).assertTrue();
             done();
         } else {
-            for(let i = 0; i < times; i++) {
+            for (let i = 0; i < times; i++) {
                 console.info('MediaLibraryTest : getNextObject begin :times: ' + i);
                 const fileAsset = await queryResultSet.getNextObject();
                 if (fileAsset != undefined) {
@@ -242,9 +255,12 @@ describe('getFileAssetsPerformance_object.test.js', function () {
                     console.info('MediaLibraryTest : getNextObject :FAIL times: ' + i);
                     expect(false).assertTrue();
                 }
+
                 console.info('MediaLibraryTest : getNextObject after :times: ' + i);
             }
         }
+
+
         console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_GET_NEXT_OBJECT_PERFORMANCE_01 end');
         done();
     });

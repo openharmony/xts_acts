@@ -16,14 +16,15 @@
 import mediaLibrary from '@ohos.multimedia.medialibrary';
 import featureAbility from '@ohos.ability.featureAbility'
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 
 describe('Create_File_Assets.test.js', function () {
     var context = featureAbility.getContext();
     console.info('MediaLibraryTest : getMediaLibrary IN');
-    const media = mediaLibrary.getMediaLibrary(context);
+    var media = mediaLibrary.getMediaLibrary(context);
     console.info('MediaLibraryTest : getMediaLibrary OUT');
+
 
     beforeAll(function () {
         onsole.info('MediaLibraryTest: beforeAll');
@@ -47,7 +48,7 @@ describe('Create_File_Assets.test.js', function () {
         console.info('MediaLibraryTest : createAsset : release end');
     })
 
-    /*
+    /**
      * @tc.number    : 01
      * @tc.name      : SUB_MEDIA_MEDIALIBRARY_CREATE_FILE_01
      * @tc.desc      : Create an image file asset in predefined relative path
@@ -84,7 +85,7 @@ describe('Create_File_Assets.test.js', function () {
     });
     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_CREATE_FILE_01 end');
 
-    /*
+    /**
      * @tc.number    : 02
      * @tc.name      : SUB_MEDIA_MEDIALIBRARY_CREATE_FILE_02 
      * @tc.desc      : Create an image file asset in not predefined relative path
@@ -121,7 +122,7 @@ describe('Create_File_Assets.test.js', function () {
     });
     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_CREATE_FILE_02 end');
 
-    /*
+    /**
      * @tc.number    : 03
      * @tc.name      : SUB_MEDIA_MEDIALIBRARY_CREATE_FILE_03 
      * @tc.desc      : Repeat to create same image file asset expect return error
@@ -157,7 +158,7 @@ describe('Create_File_Assets.test.js', function () {
     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_CREATE_FILE_03 end');
 
 
-    /*
+    /**
      * @tc.number    : 04
      * @tc.name      : SUB_MEDIA_MEDIALIBRARY_CREATE_FILE_04 
      * @tc.desc      : Create image file asset in invalid relative path expect return error
@@ -192,7 +193,7 @@ describe('Create_File_Assets.test.js', function () {
     });
     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_CREATE_FILE_04 end');
 
-    /*
+    /**
      * @tc.number    : 07
      * @tc.name      : SUB_MEDIA_MEDIALIBRARY_CREATE_FILE_07
      * @tc.desc      : After create an image file asset, open and close it
@@ -217,6 +218,7 @@ describe('Create_File_Assets.test.js', function () {
                         if (data != undefined) {
                             console.info('MediaLibraryTest : createAsset Successfull ');
                             getObjectInfo(data);
+
                         } else {
                             console.info('MediaLibraryTest : createAsset Unsuccessfull ' + createAssetErr.message);
                             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_CREATE_FILE_07 : FAIL');
@@ -225,6 +227,7 @@ describe('Create_File_Assets.test.js', function () {
                         }
                     });
                     console.info('MediaLibraryTest : createAsset end');
+
                 } else {
                     console.info('MediaLibraryTest : getPublicDirectory : FAIL');
                     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_CREATE_FILE_07 : FAIL');
@@ -232,12 +235,13 @@ describe('Create_File_Assets.test.js', function () {
                     done();
                 }
             });
+
         }
         console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_CREATE_FILE_07 end');
     });
 
-    function getObjectInfo(fileAsset){
-        console.info('MediaLibraryTest : getObjectInfo uri is '+ fileAsset.uri);
+    function getObjectInfo(fileAsset) {
+        console.info('MediaLibraryTest : getObjectInfo uri is ' + fileAsset.uri);
 
         console.info("==========================fileAsset.open begin=======================>");
         fileAsset.open('Rw').then((openError, fd) => {

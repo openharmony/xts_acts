@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import mediaLibrary from '@ohos.multimedia.medialibrary';
 import featureAbility from '@ohos.ability.featureAbility'
 
@@ -43,22 +44,23 @@ describe('file.promise.test.js', function () {
     console.info('MediaLibraryTest : getMediaLibrary OUT');
     beforeAll(function () {
         console.info('File Promise MediaLibraryTest: beforeAll ： Prerequisites at the test suite level, which are executed before the test suite is executed.');
+
     })
 
     beforeEach(function () {
-        console.info('File Promise MediaLibraryTest: beforeEach.');
+        console.info('File Promise MediaLibraryTest: beforeEach：Prerequisites at the test case level, which are executed before each test case is executed.');
 
     })
     afterEach(function () {
-        console.info('File Promise MediaLibraryTest: afterEach.');
+        console.info('File Promise MediaLibraryTest: afterEach： Test case-level clearance conditions, which are executed after each test case is executed.');
 
     })
     afterAll(function () {
-        console.info('File Promise MediaLibraryTest: afterAll.');
+        console.info('File Promise MediaLibraryTest: afterAll：  Test suite-level cleanup condition, which is executed after the test suite is executed');
 
     })
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001
      * @tc.name      : Create an asset in predefined path
      * @tc.desc      : Create an asset in predefined path
@@ -145,7 +147,7 @@ describe('file.promise.test.js', function () {
         done();
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFY_ASSET_PROMISE_002
      * @tc.name      : Modify asset
      * @tc.desc      : Modify asset
@@ -252,7 +254,11 @@ describe('file.promise.test.js', function () {
 
     it('SUB_MEDIA_MEDIALIBRARY_MODIFY_ASSET_PROMISE_002_08', 0, async function (done) {
         try {
-            asset.title = "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii";
+            var title = "i";
+            for (var i = 0; i < 120; i++) {
+                title += "i";
+            }
+            asset.title = title;
             await asset.commitModify();
             console.info('MediaLibraryTest : ASSET_PROMISE modify asset 002_08 success');
             expect(false).assertTrue();
@@ -264,7 +270,7 @@ describe('file.promise.test.js', function () {
         done();
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GET_ASSET_PROMISE_003
      * @tc.name      : Get assetList By NoArgsfetchOp
      * @tc.desc      : Get assetList By NoArgsfetchOp
@@ -298,8 +304,8 @@ describe('file.promise.test.js', function () {
         }
         done();
     });
-
-    /*
+    
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GET_ASSET_PROMISE_004
      * @tc.name      : Get assetList By HasArgsfetchOp
      * @tc.desc      : Get assetList By HasArgsfetchOp
@@ -307,7 +313,7 @@ describe('file.promise.test.js', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-
+     
     it('SUB_MEDIA_MEDIALIBRARY_GET_ASSET_PROMISE_004_01', 0, async function (done) {
         try {
             let fetchFileResult = await media.getFileAssets(fileHasArgsfetchOp);
@@ -396,7 +402,7 @@ describe('file.promise.test.js', function () {
         done();
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005
      * @tc.name      : Open and Close asset
      * @tc.desc      : Open and Close asset
@@ -504,8 +510,8 @@ describe('file.promise.test.js', function () {
             console.info('MediaLibraryTest : ASSET_PROMISE close 005_05 success');
             expect(false).assertTrue();
         } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_05 fail, message = ' + error);   
-            expect(true).assertTrue(); 
+            console.info('MediaLibraryTest : ASSET_PROMISE close 005_05 fail, message = ' + error);
+            expect(true).assertTrue();
         }
         done();
     });
@@ -516,15 +522,15 @@ describe('file.promise.test.js', function () {
             fd = await asset.open('Rw');
             console.info('MediaLibraryTest : ASSET_PROMISE open 005_06 success, fd = ' + fd);
         } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_06 fail, message = ' + error); 
+            console.info('MediaLibraryTest : ASSET_PROMISE open 005_06 fail, message = ' + error);
         }
         try {
             asset.close(-1);
             console.info('MediaLibraryTest : ASSET_PROMISE close 005_06 success');
             expect(false).assertTrue();
         } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_06 fail, message = ' + error);  
-            expect(true).assertTrue();  
+            console.info('MediaLibraryTest : ASSET_PROMISE close 005_06 fail, message = ' + error);
+            expect(true).assertTrue();
         }
         done();
     });
@@ -535,15 +541,15 @@ describe('file.promise.test.js', function () {
             fd = await asset.open('Rw');
             console.info('MediaLibraryTest : ASSET_PROMISE open 005_07 success, fd = ' + fd);
         } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_005_0705 fail, message = ' + error); 
+            console.info('MediaLibraryTest : ASSET_PROMISE open 005_005_0705 fail, message = ' + error);
         }
         try {
             asset.close(0);
             console.info('MediaLibraryTest : ASSET_PROMISE close 005_07 success');
             expect(false).assertTrue();
         } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_07 fail, message = ' + error);  
-            expect(true).assertTrue();  
+            console.info('MediaLibraryTest : ASSET_PROMISE close 005_07 fail, message = ' + error);
+            expect(true).assertTrue();
         }
         done();
     });
@@ -554,15 +560,15 @@ describe('file.promise.test.js', function () {
             fd = await asset.open('Rw');
             console.info('MediaLibraryTest : ASSET_PROMISE open 005_08 success, fd = ' + fd);
         } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_08 fail, message = ' + error); 
+            console.info('MediaLibraryTest : ASSET_PROMISE open 005_08 fail, message = ' + error);
         }
         try {
             asset.close("666");
             console.info('MediaLibraryTest : ASSET_PROMISE close 005_08 success');
             expect(false).assertTrue();
         } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_08 fail, message = ' + error);  
-            expect(true).assertTrue();  
+            console.info('MediaLibraryTest : ASSET_PROMISE close 005_08 fail, message = ' + error);
+            expect(true).assertTrue();
         }
         done();
     });
@@ -573,22 +579,22 @@ describe('file.promise.test.js', function () {
             fd = await asset.open('Rw');
             console.info('MediaLibraryTest : ASSET_PROMISE open 005_09 success, fd = ' + fd);
         } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_09 fail, message = ' + error); 
+            console.info('MediaLibraryTest : ASSET_PROMISE open 005_09 fail, message = ' + error);
         }
         try {
             asset.close();
             console.info('MediaLibraryTest : ASSET_PROMISE close 005_09 success');
             expect(false).assertTrue();
         } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_09 fail, message = ' + error);  
-            expect(true).assertTrue();  
+            console.info('MediaLibraryTest : ASSET_PROMISE close 005_09 fail, message = ' + error);
+            expect(true).assertTrue();
         }
         done();
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FAV_AND_TRA_ASSET_PROMISE_006
-     * @tc.name      : Favourite and Trash
+     * @tc.name      : Favourite and Trash 
      * @tc.desc      : Favourite and Trash
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -613,8 +619,8 @@ describe('file.promise.test.js', function () {
         done();
     });
 
-    /*
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_DIR_ASSET_PROMISE_007
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_007
      * @tc.name      : Favourite
      * @tc.desc      : Favourite
      * @tc.size      : MEDIUM
@@ -629,10 +635,10 @@ describe('file.promise.test.js', function () {
             expect(true).assertTrue();
         } catch (error) {
             console.info('MediaLibraryTest : ASSET_PROMISE close 007_03 fail, message = ' + error);
-            expect(false).assertTrue(); 
+            expect(false).assertTrue();
         }
         let isFavoriteChange = await asset.isFavorite();
-        console.info('MediaLibraryTest : ASSET_PROMISE isFavoriteChange 007_03 = ' + isFavoriteChange); 
+        console.info('MediaLibraryTest : ASSET_PROMISE isFavoriteChange 007_03 = ' + isFavoriteChange);
         done();
     });
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_007_02', 0, async function (done) {
@@ -642,10 +648,10 @@ describe('file.promise.test.js', function () {
             expect(true).assertTrue();
         } catch (error) {
             console.info('MediaLibraryTest : ASSET_PROMISE close 007_02 fail, message = ' + error);
-            expect(false).assertTrue(); 
+            expect(false).assertTrue();
         }
         let isFavoriteChange = await asset.isFavorite();
-        console.info('MediaLibraryTest : ASSET_PROMISE isFavoriteChange 007_02 = ' + isFavoriteChange); 
+        console.info('MediaLibraryTest : ASSET_PROMISE isFavoriteChange 007_02 = ' + isFavoriteChange);
         done();
     });
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_007_03', 0, async function (done) {
@@ -655,10 +661,10 @@ describe('file.promise.test.js', function () {
             expect(false).assertTrue();
         } catch (error) {
             console.info('MediaLibraryTest : ASSET_PROMISE close 007_03 fail, message = ' + error);
-            expect(true).assertTrue(); 
+            expect(true).assertTrue();
         }
         let isFavoriteChange = await asset.isFavorite();
-        console.info('MediaLibraryTest : ASSET_PROMISE isFavoriteChange 007_03 = ' + isFavoriteChange); 
+        console.info('MediaLibraryTest : ASSET_PROMISE isFavoriteChange 007_03 = ' + isFavoriteChange);
         done();
     });
 
@@ -672,7 +678,7 @@ describe('file.promise.test.js', function () {
             expect(true).assertTrue();
         }
         let isFavoriteChange = await asset.isFavorite();
-        console.info('MediaLibraryTest : ASSET_PROMISE isFavoriteChange 007_04 = ' + isFavoriteChange); 
+        console.info('MediaLibraryTest : ASSET_PROMISE isFavoriteChange 007_04 = ' + isFavoriteChange);
         done();
     });
 
@@ -682,11 +688,11 @@ describe('file.promise.test.js', function () {
             console.info('MediaLibraryTest : ASSET_PROMISE favorite 007_05 success');
             expect(false).assertTrue();
         } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 007_05 fail, message = ' + error); 
-            expect(true).assertTrue(); 
+            console.info('MediaLibraryTest : ASSET_PROMISE close 007_05 fail, message = ' + error);
+            expect(true).assertTrue();
         }
         let isFavoriteChange = await asset.isFavorite();
-        console.info('MediaLibraryTest : ASSET_PROMISE isFavoriteChange 007_05 = ' + isFavoriteChange); 
+        console.info('MediaLibraryTest : ASSET_PROMISE isFavoriteChange 007_05 = ' + isFavoriteChange);
         done();
     });
 
@@ -696,18 +702,18 @@ describe('file.promise.test.js', function () {
             console.info('MediaLibraryTest : ASSET_PROMISE favorite 007_06 success');
             expect(false).assertTrue();
         } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 007_06 fail, message = ' + error); 
-            expect(true).assertTrue(); 
+            console.info('MediaLibraryTest : ASSET_PROMISE close 007_06 fail, message = ' + error);
+            expect(true).assertTrue();
         }
         let isFavoriteChange = await asset.isFavorite();
         console.info('MediaLibraryTest : ASSET_PROMISE isFavoriteChange 007_06 = ' + isFavoriteChange);
         done();
     });
 
-    /*
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_DELETE_ASSET_PROMISE_008
-     * @tc.name      : Delete asset 
-     * @tc.desc      : Delete asset 
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ISFAV_ASSET_PROMISE_008
+     * @tc.name      : Is Favourite
+     * @tc.desc      : Is Favourite
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -725,10 +731,10 @@ describe('file.promise.test.js', function () {
         }
         done();
     });
-
-    /*
+    
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_TRA_ASSET_PROMISE_009
-     * @tc.name      : Trash
+     * @tc.name      : Trash 
      * @tc.desc      : Trash
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -867,7 +873,7 @@ describe('file.promise.test.js', function () {
         done();
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ISTRASH_ASSET_PROMISE_0010
      * @tc.name      : Is trash
      * @tc.desc      : Is trash
@@ -889,7 +895,7 @@ describe('file.promise.test.js', function () {
         done();
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETPUBLICDIRECTORY_PROMISE 0011
      * @tc.name      : getPublicDirectory
      * @tc.desc      : getPublicDirectory
@@ -963,7 +969,7 @@ describe('file.promise.test.js', function () {
         done();
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ISDIR_ASSET_PROMISE_0012
      * @tc.name      : Is Directory 
      * @tc.desc      : Is Directory
@@ -985,7 +991,7 @@ describe('file.promise.test.js', function () {
         done();
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_DELETE_ASSET_PROMISE_0013
      * @tc.name      : Delete asset 
      * @tc.desc      : Delete asset 
@@ -1036,7 +1042,7 @@ describe('file.promise.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_DELETE_ASSET_PROMISE_0013_04', 0, async function (done) {
         try {
             await media.deleteAsset(0.666);
-            console.info('MediaLibraryTest : ASSET_PROMISE deleteAsset 0014_04 SUCCESS ');
+            console.info('MediaLibraryTest : ASSET_PROMISE deleteAsset 0013_04 SUCCESS ');
             expect(false).assertTrue();
             done();
         } catch (error) {
@@ -1060,7 +1066,7 @@ describe('file.promise.test.js', function () {
     });
 
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_RELEASE_PROMISE_0014
      * @tc.name      : Release 
      * @tc.desc      : Release 
@@ -1068,6 +1074,17 @@ describe('file.promise.test.js', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
+
+    // it('SUB_MEDIA_MEDIALIBRARY_RELEASE_PROMISE_0014_01', 0, async function (done) {
+    //     try {
+    //         await media.release();
+    //         console.info('MediaLibraryTest : ASSET_PROMISE release 0014_01 SUCCESS ');
+    //         done();
+    //     } catch (error) {
+    //         console.info('MediaLibraryTest : ASSET_PROMISE release 0014_01 file, message = ' + error);
+    //         done();
+    //     }
+    // });
 
     function getAllObjectInfo(data) {
         if (data != undefined) {

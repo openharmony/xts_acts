@@ -16,13 +16,13 @@
 import mediaLibrary from '@ohos.multimedia.medialibrary';
 import featureAbility from '@ohos.ability.featureAbility'
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 
 describe('getFileAssetsPerformance.test.js', function () {
     var context = featureAbility.getContext();
     console.info('MediaLibraryTest : getMediaLibrary IN');
-    const media = mediaLibrary.getMediaLibrary(context);
+    var media = mediaLibrary.getMediaLibrary(context);
     console.info('MediaLibraryTest : getMediaLibrary OUT');
 
     let times = 25;
@@ -31,9 +31,9 @@ describe('getFileAssetsPerformance.test.js', function () {
     let fileKeyObj = mediaLibrary.FileKey
     let type = mediaLibrary.MediaType.IMAGE
     let fetchOp = {
-        selections : fileKeyObj.MEDIA_TYPE + " = ? ",
-        selectionArgs : [type.toString()],
-        order : fileKeyObj.DATE_ADDED,
+        selections: fileKeyObj.MEDIA_TYPE + " = ? ",
+        selectionArgs: [type.toString()],
+        order: fileKeyObj.DATE_ADDED,
     }
     beforeAll(function () {
         onsole.info('MediaLibraryTest: beforeAll');
@@ -49,7 +49,7 @@ describe('getFileAssetsPerformance.test.js', function () {
         console.info('MediaLibraryTest: afterAll');
     })
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GET_FILE_ASSETS_PERFORMANCE_01
      * @tc.name      : Create an image file asset in predefined path 
      * @tc.desc      : Create an image file asset in predefined path
@@ -63,7 +63,7 @@ describe('getFileAssetsPerformance.test.js', function () {
         for (let i = 0; i < times; i++) {
             const queryResultSet = await media.getFileAssets(fetchOp);
             if (queryResultSet != undefined) {
-                console.info('MediaLibraryTest : getFileAssets : PASS '+ queryResultSet.getCount());
+                console.info('MediaLibraryTest : getFileAssets : PASS ' + queryResultSet.getCount());
                 expect(true).assertTrue();
             } else {
                 console.info('MediaLibraryTest : getFileAssets : FAIL');

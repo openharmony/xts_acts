@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import mediaLibrary from '@ohos.multimedia.medialibrary';
 import featureAbility from '@ohos.ability.featureAbility'
 
@@ -44,24 +45,24 @@ describe('album.callback.test.js', function () {
     console.info('MediaLibraryTest : getMediaLibrary OUT');
     var album;
     beforeAll(function () {
-        console.info('Album Callback MediaLibraryTest: beforeAll.');
+        onsole.info('Album Callback MediaLibraryTest: beforeAll： Prerequisites at the test suite level, which are executed before the test suite is executed.');
 
     })
 
     beforeEach(function () {
-        console.info('Album Callback MediaLibraryTest: beforeEach.');
+        console.info('Album Callback MediaLibraryTest: beforeEach：Prerequisites at the test case level, which are executed before each test case is executed.');
 
     })
     afterEach(function () {
-        console.info('Album Callback MediaLibraryTest: afterEach.');
+        console.info('Album Callback MediaLibraryTest: afterEach： Test case-level clearance conditions, which are executed after each test case is executed.');
 
     })
     afterAll(function () {
-        console.info('Album Callback MediaLibraryTest: afterAll.');
+        console.info('Album Callback MediaLibraryTest: afterAll：  Test suite-level cleanup condition, which is executed after the test suite is executed');
 
     })
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001
      * @tc.name      : Get Album by AlbumNoArgsfetchOp
      * @tc.desc      : Get Album by AlbumNoArgsfetchOp
@@ -75,7 +76,7 @@ describe('album.callback.test.js', function () {
         done();
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002
      * @tc.name      : Get Album by AlbumHasArgsfetchOp
      * @tc.desc      : Get Album by AlbumHasArgsfetchOp

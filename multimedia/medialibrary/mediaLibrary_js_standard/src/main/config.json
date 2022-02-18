@@ -43,6 +43,12 @@
                 "launchType": "standard"
             }
         ],
+        "reqPermissions": [
+            {
+              "name": "ohos.permission.GET_BUNDLE_INFO",
+              "reason": "request permission"
+            }
+          ],
         "deviceType": [
             "phone",
             "tablet",

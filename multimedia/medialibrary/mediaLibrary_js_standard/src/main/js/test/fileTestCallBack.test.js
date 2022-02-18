@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import mediaLibrary from '@ohos.multimedia.medialibrary';
 import featureAbility from '@ohos.ability.featureAbility'
 
@@ -38,22 +39,23 @@ describe('file.callback.test.js', function () {
     console.info('MediaLibraryTest : getMediaLibrary OUT');
     beforeAll(function () {
         console.info('File Callback MediaLibraryTest: beforeAll ： Prerequisites at the test suite level, which are executed before the test suite is executed.');
+
     })
 
     beforeEach(function () {
-        console.info('File Callback MediaLibraryTest: beforeEach.');
+        console.info('File Callback MediaLibraryTest: beforeEach：Prerequisites at the test case level, which are executed before each test case is executed.');
 
     })
     afterEach(function () {
-        console.info('File Callback MediaLibraryTest: afterEach.');
+        console.info('File Callback MediaLibraryTest: afterEach： Test case-level clearance conditions, which are executed after each test case is executed.');
 
     })
     afterAll(function () {
-        console.info('File Callback MediaLibraryTest: afterAll.');
+        console.info('File Callback MediaLibraryTest: afterAll：  Test suite-level cleanup condition, which is executed after the test suite is executed');
 
     })
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001
      * @tc.name      : Create an asset in predefined path
      * @tc.desc      : Create an asset in predefined path
@@ -78,7 +80,7 @@ describe('file.callback.test.js', function () {
         done();
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFY_ASSET_CALLBACK_002
      * @tc.name      : Modify asset
      * @tc.desc      : Modify asset
@@ -158,7 +160,7 @@ describe('file.callback.test.js', function () {
         }
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GET_ASSET_CALLBACK_003
      * @tc.name      : Get assetList By NoArgsfetchOp
      * @tc.desc      : Get assetList By NoArgsfetchOp
@@ -172,7 +174,7 @@ describe('file.callback.test.js', function () {
         done();
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GET_ASSET_CALLBACK_004
      * @tc.name      : Get assetList By HasArgsfetchOp
      * @tc.desc      : Get assetList By HasArgsfetchOp
@@ -186,10 +188,10 @@ describe('file.callback.test.js', function () {
         done();
     });
 
-    /*
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005
-     * @tc.name      : Open and Close asset
-     * @tc.desc      : Open and Close asset
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPEN_ASSET_CALLBACK_005
+     * @tc.name      : Open asset
+     * @tc.desc      : Open asset
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -259,7 +261,7 @@ describe('file.callback.test.js', function () {
         }
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CLOSE_ASSET_CALLBACK_006
      * @tc.name      : Close asset
      * @tc.desc      : Close asset
@@ -329,10 +331,10 @@ describe('file.callback.test.js', function () {
         }
     });
 
-    /*
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FAV_AND_TRA_ASSET_CALLBACK_006
-     * @tc.name      : Favourite and Trash
-     * @tc.desc      : Favourite and Trash
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_007
+     * @tc.name      : Favourite
+     * @tc.desc      : Favourite
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -349,9 +351,9 @@ describe('file.callback.test.js', function () {
         }
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_TRASH_ASSET_CALLBACK_008
-     * @tc.name      : Trash
+     * @tc.name      : Trash 
      * @tc.desc      : Trash
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -369,10 +371,10 @@ describe('file.callback.test.js', function () {
         }
     });
 
-    /*
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_DIR_ASSET_CALLBACK_007
-     * @tc.name      : Favourite and Trash
-     * @tc.desc      : Favourite and Trash
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_DIR_ASSET_CALLBACK_009
+     * @tc.name      : dir 
+     * @tc.desc      : dir
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -389,7 +391,7 @@ describe('file.callback.test.js', function () {
         }
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ON_CALLBACK_010
      * @tc.name      : On
      * @tc.desc      : On
@@ -470,7 +472,7 @@ describe('file.callback.test.js', function () {
         }
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OFF_CALLBACK_011
      * @tc.name      : Off
      * @tc.desc      : Off
@@ -539,7 +541,7 @@ describe('file.callback.test.js', function () {
 
     it('SUB_MEDIA_MEDIALIBRARY_OFF_CALLBACK_011_05', 0, async function (done) {
         try {
-            media.off(['666'],function (mediaChangeListener) {
+            media.off(['666'], function (mediaChangeListener) {
                 console.log('MediaLibraryTest off mediaChangeListener 011_05 success');
             });
             //expect(false).assertTrue();

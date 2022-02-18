@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import mediaLibrary from '@ohos.multimedia.medialibrary';
 import featureAbility from '@ohos.ability.featureAbility'
 
@@ -29,24 +30,24 @@ describe('favSmartAlbum.promise.test.js', function () {
     var favSmartAlbum;
     var trashSmartAlbum;
     beforeAll(function () {
-        onsole.info('Smart Album Promise MediaLibraryTest: beforeAll.');
+        onsole.info('Smart Album Promise MediaLibraryTest: beforeAll： Prerequisites at the test suite level, which are executed before the test suite is executed.');
 
     })
 
     beforeEach(function () {
-        console.info('Smart Album Promise MediaLibraryTest: beforeEach.');
+        console.info('Smart Album Promise MediaLibraryTest: beforeEach：Prerequisites at the test case level, which are executed before each test case is executed.');
 
     })
     afterEach(function () {
-        console.info('Smart Album Promise MediaLibraryTest: afterEach.');
+        console.info('Smart Album Promise MediaLibraryTest: afterEach： Test case-level clearance conditions, which are executed after each test case is executed.');
 
     })
     afterAll(function () {
-        console.info('Smart Album Promise MediaLibraryTest: afterAll.');
+        console.info('Smart Album Promise MediaLibraryTest: afterAll：  Test suite-level cleanup condition, which is executed after the test suite is executed');
 
     })
-
-    /*
+    
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETPRIVATEALBUM_PROMISE_001
      * @tc.name      : Get PrivateSmartAlbum by fav
      * @tc.desc      : Get PrivateSmartAlbum by fav
@@ -140,8 +141,8 @@ describe('favSmartAlbum.promise.test.js', function () {
             done();
         }
     });
-
-    /*
+    
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ADDASSET_PROMISE_002
      * @tc.name      : Add asset
      * @tc.desc      : Add asset
@@ -214,7 +215,7 @@ describe('favSmartAlbum.promise.test.js', function () {
         }
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_REMOVEASSET_PROMISE_003
      * @tc.name      : Remove asset
      * @tc.desc      : Remove asset
@@ -288,7 +289,7 @@ describe('favSmartAlbum.promise.test.js', function () {
         }
     });
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETASSET_PROMISE_004
      * @tc.name      : get FileAssets
      * @tc.desc      : get FileAssets

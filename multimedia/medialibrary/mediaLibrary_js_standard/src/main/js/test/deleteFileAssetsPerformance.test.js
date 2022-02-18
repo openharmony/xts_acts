@@ -16,22 +16,22 @@
 import mediaLibrary from '@ohos.multimedia.medialibrary';
 import featureAbility from '@ohos.ability.featureAbility'
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 
 describe('deleteFileAssetsPerformance.test.js', function () {
     var context = featureAbility.getContext();
     console.info('MediaLibraryTest : getMediaLibrary IN');
-    const media = mediaLibrary.getMediaLibrary(context);
+    var media = mediaLibrary.getMediaLibrary(context);
     console.info('MediaLibraryTest : getMediaLibrary OUT');
 
     let fileList_;
     let fileKeyObj = mediaLibrary.FileKey
     let type = mediaLibrary.MediaType.IMAGE
     let fetchOp = {
-        selections : fileKeyObj.MEDIA_TYPE + " = ? ",
-        selectionArgs : [type.toString()],
-        order : fileKeyObj.DATE_ADDED,
+        selections: fileKeyObj.MEDIA_TYPE + " = ? ",
+        selectionArgs: [type.toString()],
+        order: fileKeyObj.DATE_ADDED,
     }
     beforeAll(function () {
         onsole.info('MediaLibraryTest: beforeAll');
@@ -47,7 +47,7 @@ describe('deleteFileAssetsPerformance.test.js', function () {
         console.info('MediaLibraryTest: afterAll');
     })
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GET_FILE_ASSETS_FOR_DELETE_01
      * @tc.name      : Create an image file asset in predefined path 
      * @tc.desc      : Create an image file asset in predefined path
@@ -60,7 +60,7 @@ describe('deleteFileAssetsPerformance.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_GET_FILE_ASSETS_FOR_DELETE_01', 0, async function (done) {
         media.getFileAssets(fetchOp, (getFileAssetsErr, queryResultSet) => {
             if (queryResultSet != undefined) {
-                console.info('MediaLibraryTest : getAllObject Successfull '+ queryResultSet.getCount());
+                console.info('MediaLibraryTest : getAllObject Successfull ' + queryResultSet.getCount());
                 if (queryResultSet.getCount() > 0) {
                     queryResultSet.getAllObject((getAllObjectErr, fileList) => {
                         if (fileList != undefined) {
@@ -81,7 +81,7 @@ describe('deleteFileAssetsPerformance.test.js', function () {
                     done();
                 }
             } else {
-                console.info('MediaLibraryTest : getFileAssets Unsuccessfull '+ getFileAssetsErr.message);
+                console.info('MediaLibraryTest : getFileAssets Unsuccessfull ' + getFileAssetsErr.message);
                 console.info('MediaLibraryTest : getFileAssets :FAIL');
                 expect(false).assertTrue();
                 done();
@@ -90,7 +90,7 @@ describe('deleteFileAssetsPerformance.test.js', function () {
     });
     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_GET_FILE_ASSETS_FOR_DELETE_01 end');
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_DELETE_FILE_ASSET_01
      * @tc.name      : Create an image file asset in predefined path 
      * @tc.desc      : Create an image file asset in predefined path
@@ -105,23 +105,23 @@ describe('deleteFileAssetsPerformance.test.js', function () {
             let counteEnd = 0;
             for (let i = 0; i < fileList_.length; i++) {
                 let fileAsset = fileList_[i];
-                console.info('MediaLibraryTest : uri is '+ fileAsset.uri);
+                console.info('MediaLibraryTest : uri is ' + fileAsset.uri);
                 media.deleteAsset(fileAsset.uri, (deleteAssetErr, deleteRows) => {
                     if (deleteRows >= 0) {
-                        console.info('MediaLibraryTest : Delete Asset Successfull '+ deleteRows);
+                        console.info('MediaLibraryTest : Delete Asset Successfull ' + deleteRows);
                         counteEnd++;
-                        if (counteEnd == fileList_.length){
+                        if (counteEnd == fileList_.length) {
                             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_DELETE_FILE_PERFORMANCE_01 : PASS');
                             expect(true).assertTrue();
                             done();
                         } else if (i == fileList_.length - 1) {
                             console.info('MediaLibraryTest : delete has error');
-                            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_DELETE_FILE_PERFORMANCE_01 :Partial');
+                            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_DELETE_FILE_PERFORMANCE_01 :Partial success');
                             expect(false).assertTrue();
                             done();
                         }
                     } else {
-                        console.info('MediaLibraryTest : delete error '+ deleteAssetErr.message);
+                        console.info('MediaLibraryTest : delete error ' + deleteAssetErr.message);
                         console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_DELETE_FILE_PERFORMANCE_01 :FAIL');
                         expect(false).assertTrue();
                         done();
