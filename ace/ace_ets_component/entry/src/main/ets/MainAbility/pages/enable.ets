@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,39 +12,50 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter';
+
+import events_emitter from '@ohos.emitter'
 
 @Entry
 @Component
-struct EllipseExample {
-  @State width: string = "200px";
-  @State height: string = "200px";
+struct EnabledExample {
+  @State enabled: boolean = true;
+  @State text: string = "enable";
 
   onPageShow() {
-    console.info('[ellipse] page show called');
+    console.info('[enabled] page show called ');
     var stateChangeEvent = {
-      eventId: 5,
+      eventId: 82,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+
   }
 
   private stateChangCallBack = (eventData) => {
-    console.info("[ellipse] page stateChangCallBack");
+    console.info("[stateChangCallBack] stateChangCallBack ");
     if (eventData != null) {
-      console.info("[ellipse] page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.width != null) {
-        this.width = eventData.data.width;
+      console.info("[stateChangCallBack] state change called: " + JSON.stringify(eventData));
+      if (eventData.data.enabled != null) {
+        this.enabled = eventData.data.enabled
       }
-      if(eventData.data.height != null) {
-        this.height = eventData.data.height;
+      if (eventData.data.text != null) {
+        this.text = eventData.data.text
       }
     }
   }
 
   build() {
-    Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center,justifyContent: FlexAlign.Center}) {
-      Ellipse().width(`${this.width}`).height(`${this.height}`).key('ellipse')
-    }.width('100%').height('100%')
+    Flex({ justifyContent: FlexAlign.SpaceAround }) {
+      Button('disable')
+        .enabled(false)
+        .backgroundColor(0x317aff)
+        .opacity(0.4)
+      Button(this.text)
+        .key('enabled')
+        .backgroundColor(0x317aff)
+        .enabled(this.enabled)
+    }
+    .width('100%')
+    .padding({ top: 5 })
   }
 }

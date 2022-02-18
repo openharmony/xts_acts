@@ -14,38 +14,35 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.emitter';
-
 @Entry
 @Component
-struct EllipseExample {
-  @State width: string = "200px";
-  @State height: string = "200px";
+struct OpacityExample {
+  @State opacityValue: string = 1;
+
+  private stateChangCallBack = (eventData) => {
+    if (eventData != null) {
+      console.info("opacity page state change called:" + JSON.stringify(eventData));
+      if(eventData.data.opacityValue != null) {
+        this.opacityValue = eventData.data.opacityValue;
+      }
+    }
+  }
 
   onPageShow() {
-    console.info('[ellipse] page show called');
+    console.info('opacity page show called');
     var stateChangeEvent = {
-      eventId: 5,
+      eventId: 100,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
-  private stateChangCallBack = (eventData) => {
-    console.info("[ellipse] page stateChangCallBack");
-    if (eventData != null) {
-      console.info("[ellipse] page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.width != null) {
-        this.width = eventData.data.width;
-      }
-      if(eventData.data.height != null) {
-        this.height = eventData.data.height;
-      }
-    }
-  }
-
   build() {
-    Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center,justifyContent: FlexAlign.Center}) {
-      Ellipse().width(`${this.width}`).height(`${this.height}`).key('ellipse')
-    }.width('100%').height('100%')
+    Column({ space: 5 }) {
+      Text('opacity(1)').fontSize(9).width('90%').fontColor(0xCCCCCC)
+      Text().width('90%').height(50).opacity(`${this.opacityValue}`).backgroundColor(0xAFEEEE).key("opacity")
+    }
+    .width('100%')
+    .padding({ top: 5 })
   }
 }

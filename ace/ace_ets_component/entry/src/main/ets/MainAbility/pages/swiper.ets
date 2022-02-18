@@ -169,6 +169,18 @@ struct SwiperExample {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventOne, this.stateChangCallBack)
+
+    var stateChangeEventTwo = {
+      eventId: 56,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
+
+    var stateChangeEventTwo = {
+      eventId: 57,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
   }
 
   private stateChangCallBack = (eventData) => {
