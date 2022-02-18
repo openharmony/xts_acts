@@ -56,7 +56,8 @@ describe('ActsRpcClientJsTest', function(){
         };
         let connect = {
             onConnect:function (elementName, remoteProxy) {
-                console.log('RpcClient: onConnect called, instance of proxy: ' + (remoteProxy instanceof rpc.RemoteProxy))
+                console.log('RpcClient: onConnect called, instance of proxy: ' 
+                             + (remoteProxy instanceof rpc.RemoteProxy))
                 gIRemoteObject = remoteProxy
 
             },
@@ -2418,23 +2419,18 @@ describe('ActsRpcClientJsTest', function(){
         let context = FA.getContext()
         await context.getFilesDir()
             .then(async function(path) {
-                console.info("data: " + path)
                 expect(path != null).assertTrue()
                 let basePath = path;
                 let filePath = basePath + "/test1.txt";
                 let fd = fileio.openSync(filePath, 0o2| 0o100 | 0o2000, 0o666);
-                console.info("open file, fd: " + fd)
                 expect(fd >= 0).assertTrue()
-                let str = "HELLO RPC"
                 let bytesWr = fileio.writeSync(fd, str);
-                console.log("SUB_Softbus_IPC_IRemoteObject_9700 bytesWr is" + bytesWr);
                 let option = new rpc.MessageOption()
                 let data = rpc.MessageParcel.create()
                 let reply = rpc.MessageParcel.create()
                 let result = data.containFileDescriptors()
                 expect(result == true).assertTrue()
                 let writeInt = data.writeInt(bytesWr)
-                console.log("The result is :" + writeInt)
                 expect(writeInt == true).assertTrue()
                 let writeFileDescriptor = data.writeFileDescriptor(fd)
                 console.log("The result is :" + writeFileDescriptor)
@@ -2462,13 +2458,7 @@ describe('ActsRpcClientJsTest', function(){
                         rpc.MessageParcel.closeFileDescriptor(fd);
                         rpc.MessageParcel.closeFileDescriptor(dupFd);
                     })
-                try {
-                    console.info("after close fd, write again")
-                    fileio.writeSync(fd, str)
-                    expect(0).assertEqual(1) // should not go here
-                } catch(e) {
-                    console.error("got exception: " + e)
-                }
+                fileio.writeSync(fd, str)
             })
         done()
         console.log("---------------------end SUB_Softbus_IPC_IRemoteObject_9700---------------------------");
@@ -2923,13 +2913,13 @@ describe('ActsRpcClientJsTest', function(){
     it("SUB_Softbus_IPC_Ashmem_0200",0,function(){
         console.log("---------------------start SUB_Softbus_IPC_Ashmem_0200---------------------------");
         try{
-            let map_size = 4096;
-            let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", map_size)
+            let mapSize = 4096;
+            let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", mapSize)
             console.log("SUB_Softbus_IPC_Ashmem_0200: run  createAshmem success");
 
             let size = ashmem.getAshmemSize()
             console.log("SUB_Softbus_IPC_Ashmem_0200: run getAshmemSize success, size is " + size);
-            expect(size == map_size).assertTrue();
+            expect(size == mapSize).assertTrue();
 
             ashmem.closeAshmem();
         }catch(error){
@@ -2947,13 +2937,13 @@ describe('ActsRpcClientJsTest', function(){
     it("SUB_Softbus_IPC_Ashmem_0300",0,function(){
         console.log("---------------------start SUB_Softbus_IPC_Ashmem_0300---------------------------");
         try{
-            let map_size = 4096;
-            let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", map_size)
+            let mapSize = 4096;
+            let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", mapSize)
             console.log("SUB_Softbus_IPC_Ashmem_0300: run  createAshmem success");
 
             let size = ashmem.getAshmemSize()
             console.log("SUB_Softbus_IPC_Ashmem_0300: run getAshmemSize success, size is " + size);
-            expect(size == map_size).assertTrue();
+            expect(size == mapSize).assertTrue();
 
             ashmem.closeAshmem();
         }catch(error){
@@ -3194,7 +3184,8 @@ describe('ActsRpcClientJsTest', function(){
             expect(resultread == false).assertTrue();
 
             let resultreadAndwrite = ashmem.mapReadAndWriteAshmem();
-            console.log("SUB_Softbus_IPC_Ashmem_1200: run setProtection success, mapReadAndWriteAshmem is " + resultreadAndwrite);
+            console.log("SUB_Softbus_IPC_Ashmem_1200: run setProtection success, mapReadAndWriteAshmem is "
+                          + resultreadAndwrite);
             expect(resultreadAndwrite == false).assertTrue();
 
             let resultnone = ashmem.setProtection(rpc.Ashmem.PROT_NONE)
@@ -3245,8 +3236,8 @@ describe('ActsRpcClientJsTest', function(){
     it("SUB_Softbus_IPC_Ashmem_1400",0,function(){
         console.log("---------------------start SUB_Softbus_IPC_Ashmem_1200---------------------------");
         try{
-            let map_size = 4096
-            let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", map_size)
+            let mapSize = 4096
+            let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", mapSize)
             console.log("SUB_Softbus_IPC_Ashmem_1400: ashmem " + ashmem);
 
             let resultMapRAndW = ashmem.mapReadAndWriteAshmem();
