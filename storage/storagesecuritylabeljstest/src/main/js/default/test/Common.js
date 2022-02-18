@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import securityLabel from '@ohos.securitylabel';
+import securityLabel from '@ohos.securityLabel';
 import fileio from '@ohos.fileio';
 import featureAbility from '@ohos.ability.featureAbility';
 
