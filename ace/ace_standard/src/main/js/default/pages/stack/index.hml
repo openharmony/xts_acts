@@ -1,5 +1,5 @@
 <!--/**
- * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+ * Copyright (c) 2022 Shenzhen kaiHong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,7 +15,6 @@
 
 <div class="container">
     <div class="sub-container">
-        <!-- 通用样式 -->
         <div class="style-container">
             <text class="title">
                 通用样式
@@ -24,94 +23,55 @@
                 stack通用样式1
             </text>
             <stack class="style1">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
             </stack>
-
             <text  class="sub-title">
                 stack通用样式2
             </text>
             <stack class="style2">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
             </stack>
-
-            <text  class="sub-title">
+            <text class="sub-title">
                 stack通用样式3
             </text>
             <stack class="style3">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
             </stack>
-
             <text  class="sub-title">
                 stack通用样式4
             </text>
             <stack class="style4">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
             </stack>
-
             <text  class="sub-title">
                 stack通用样式5
             </text>
             <div class="contain1">
                 <stack class="style5">
-                    <div class="back-child bd-radius"></div>
-                    <div class="positioned-child bd-radius"></div>
-                    <div class="front-child bd-radius"></div>
                 </stack>
                 <stack class="style6">
-                    <div class="back-child bd-radius"></div>
-                    <div class="positioned-child bd-radius"></div>
-                    <div class="front-child bd-radius"></div>
                 </stack>
             </div>
-            <text  class="sub-title">
-                stack特有样式
-            </text>
-            <stack class="style7">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
-            </stack>
         </div>
         <divider style="color: #000000; stroke-width: 2px;" vertical="false">
         </divider>
-        <!-- 动画 -->
         <div class="ani-container">
-                <text class="title">
-                    动画样式
-                </text>
-                <text class="sub-title">
-                    stack动画样式1
-                </text>
-                <stack class="style7 ani1">
-                    <div class="back-child bd-radius"></div>
-                    <div class="positioned-child bd-radius"></div>
-                    <div class="front-child bd-radius"></div>
-                </stack>
-
-                <text class="sub-title">
-                    stack动画样式2
-                </text>
-                <stack class="style7 ani2">
-                    <div class="back-child bd-radius"></div>
-                    <div class="positioned-child bd-radius"></div>
-                    <div class="front-child bd-radius"></div>
-                </stack>
-            </div>
+            <text class="title">
+                动画样式
+            </text>
+            <text class="sub-title">
+                stack动画样式1
+            </text>
+            <stack class="ani1" >
+            </stack>
+            <text class="sub-title">
+                stack动画样式2
+            </text>
+            <stack class="ani2" >
+            </stack>
+        </div>
     </div>
 
     <div style="background-color: #000000; width: 2px; height: 100%;">
     </div>
 
     <div class="sub-container">
-        <!-- 通用属性 -->
         <div class="prop-container">
             <text class="title">
                 通用属性
@@ -119,63 +79,27 @@
             <text class="sub-title">
                 stack通用属性1
             </text>
-            <stack id="prop1"
-                   disabled = "true"
-                   focusable ="true"
-                   data-name ="prop1"
-                   click-effect="spring-medium"
-                   dir ="rtl">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
+            <stack id="prop1" class="prop1"
+                 disabled = "true" focusable ="true"
+                 data-name ="prop1" click-effect="spring-medium"
+                 dir ="rtl">
             </stack>
-
             <text  class="sub-title">
                 stack通用属性2
             </text>
-            <stack class="prop2"
-                   ref ="prop2"
-                   disabled = "false"
-                   focusable ="false"
-                   data-name ="prop2"
-                   click-effect="spring-large"
-                   dir ="ltr">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
+            <stack class="prop2" ref ="prop2"
+                 disabled = "false" focusable ="false"
+                 data-name ="prop2" click-effect="spring-large"
+                 dir ="ltr">
             </stack>
-
             <text  class="sub-title">
                 stack通用属性3
             </text>
-            <stack style="color: #679855; stroke-width: 15px; line-cap: round; margin: 5px;height: 50px;">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
-            </stack>
-
-            <text  class="sub-title">
-                stack特有属性4
-            </text>
-            <stack class="prop4"
-                   style="height: 50px;">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
-            </stack>
-
-            <text  class="sub-title">
-                stack特有属性5
-            </text>
-            <stack class="prop5" style="height: 50px;">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
+            <stack style="color: #679855; margin: 5px;" class="prop3">
             </stack>
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">
         </div>
-        <!-- 通用事件 -->
         <div class="event-container" >
             <text class="title">
                 通用事件
@@ -183,68 +107,30 @@
             <text  class="sub-title">
                 stack通用事件1
             </text>
-            <stack class="pstyle event1"
-                   ontouchstart="touchStart"
-                   ontouchmove="touchMove"
-                   ontouchend="touchEnd"
-                   ontouchcancel="touchCancel">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
+            <stack class ="event1" ontouchstart="touchStart" ontouchmove="touchMove"
+                 ontouchend="touchEnd" ontouchcancel="touchCancel">
             </stack>
-
             <text  class="sub-title">
                 stack通用事件2
             </text>
-            <stack class="pstyle event2"
-                   onclick="click"
-                   ondoubleclick="doubleClick"
-                   onlongpress="longPress"
-                   onfocus="focus"
-                   onblur="blur"
-                   onkey="key"
-                   onswipe="swipe"
-                   onattached="attached"
-                   ondetached="detached"
-                    >
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
+            <stack class ="event2" onclick="click" ondoubleclick="doubleClick"
+                 onlongpress="longPress" onfocus="focus" onblur="blur" onkey="key"
+                 onswipe="swipe" onattached="attached" ondetached="detached">
             </stack>
-
             <text  class="sub-title">
                 stack通用事件3
             </text>
-            <stack class="pstyle event3"
-                   ontouchstart="functionTest1"
-                   onpinchstart="pinchStart"
-                   onpinchupdate="pinchUpdate"
-                   onpinchend="pinchEnd"
-                   onpinchcancel="pinchCancel"
-                   ondragstart="dragStart"
-                   ondrag="drag"
-                   ondragend="dragEnd"
-                   ondragenter="dragEnter"
-                   ondragover="dragOver"
-                   ondragleave="dragLeave"
-                   ondrop="drop">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
+            <stack class ="event3" onpinchstart="pinchStart" onpinchupdate="pinchUpdate"
+                 onpinchend="pinchEnd" onpinchcancel="pinchCancel"
+                 ondragstart="dragStart" ondrag="drag"
+                 ondragend="dragEnd" ondragenter="dragEnter"
+                 ondragover="dragOver" ondragleave="dragLeave"
+                 ondrop="drop">
             </stack>
 
-            <text  class="sub-title">
-                stack通用事件4
-            </text>
-            <stack class="pstyle event4">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
-            </stack>
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">
         </div>
-        <!-- 通用方法 -->
         <div class="function-container">
             <text class="title">
                 通用方法
@@ -252,34 +138,17 @@
             <text class="sub-title">
                 stack通用方法1
             </text>
-            <stack class="pstyle function1"
-                   id="function1"
-                   ontouchstart="functionTest1">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
+            <stack id="function1" class="function1" ontouchstart="functionTest1">
             </stack>
-
             <text class="sub-title">
                 stack通用方法2
             </text>
-            <stack class="pstyle function2"
-                   id="function2"
-                   ontouchstart="functionTest2">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
+            <stack id="function2" class="function2" ontouchstart="functionTest2">
             </stack>
-
             <text class="sub-title">
                 stack通用方法3
             </text>
-            <stack class="pstyle function3"
-                   id="function3"
-                   ontouchstart="functionTest3">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
+            <stack id="function3" class="function3" ontouchstart="functionTest3">
             </stack>
         </div>
     </div>
@@ -288,7 +157,6 @@
     </div>
 
     <div class="sub-container">
-        <!-- 渐变样式 -->
         <div class="gradient-container">
             <text class="title">
                 渐变样式
@@ -296,43 +164,26 @@
             <text class="sub-title">
                 stack渐变样式1
             </text>
-            <stack class="style7 gradient1">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
+            <stack class="gradient1">
             </stack>
-
             <text  class="sub-title">
                 stack渐变样式2
             </text>
-            <stack class="style7 gradient2">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
+            <stack class="gradient2">
             </stack>
-
             <text  class="sub-title">
                 stack渐变样式3
             </text>
-            <stack class="style7 gradient3">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
+            <stack class="gradient3">
             </stack>
-
             <text  class="sub-title">
                 stack渐变样式4
             </text>
-            <stack class="style7 gradient4">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
+            <stack class="gradient4">
             </stack>
-
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">
         </div>
-        <!-- 无障碍 -->
         <div class="access-container">
             <text class="title">
                 无障碍
@@ -340,20 +191,14 @@
             <text class="sub-title">
                 stack无障碍1
             </text>
-            <stack class="access1"
-                   accessibilitygroup ="true"
-                   accessibilitytext="这是div"
-                   accessibilitydescription="点击此按键会弹出一个对话框"
-                   accessibilityimportance="no-hide-descendants">
-                <div class="back-child bd-radius"></div>
-                <div class="positioned-child bd-radius"></div>
-                <div class="front-child bd-radius"></div>
+            <stack class="access1" accessibilitygroup ="true"
+                 accessibilitytext="这是div"
+                 accessibilitydescription="点击此按键会弹出一个对话框"
+                 accessibilityimportance="no-hide-descendants">
             </stack>
-
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">
         </div>
-        <!-- 原子布局和多模输入 -->
         <div class="atom-container">
             <text class="title">
                 原子布局
@@ -362,81 +207,48 @@
                 stack原子布局1
             </text>
             <div style="flex-direction: row;height: 30px;width: 100%;">
-                <stack class="style7">
-                    <div class="back-child bd-radius"></div>
-                    <div class="positioned-child bd-radius"></div>
-                    <div class="front-child bd-radius"></div>
+                <stack style="width:20px;height:20px;background-color: blue;display-index: 1;">
                 </stack>
-                <stack class="style7">
-                    <div class="back-child bd-radius"></div>
-                    <div class="positioned-child bd-radius"></div>
-                    <div class="front-child bd-radius"></div>
+                <stack style="width:30px; height:20px;background-color: black;display-index: 5;">
                 </stack>
-                <stack class="style7">
-                    <div class="back-child bd-radius"></div>
-                    <div class="positioned-child bd-radius"></div>
-                    <div class="front-child bd-radius"></div>
+                <stack style="width:40px; height:20px;background-color: yellow;display-index: 4;">
                 </stack>
             </div>
             <text class="sub-title">
                 stack原子布局2
             </text>
             <div style="flex-direction: row;height: 30px;width: 100%;">
-                <stack class="style7">
-                    <div class="back-child bd-radius"></div>
-                    <div class="positioned-child bd-radius"></div>
-                    <div class="front-child bd-radius"></div>
+                <stack style="height:20px;background-color: blue;flex-weight: 1;">
                 </stack>
-                <stack class="style7">
-                    <div class="back-child bd-radius"></div>
-                    <div class="positioned-child bd-radius"></div>
-                    <div class="front-child bd-radius"></div>
+                <stack style="height:20px;background-color: black;flex-weight: 5;">
                 </stack>
-                <stack class="style7">
-                    <div class="back-child bd-radius"></div>
-                    <div class="positioned-child bd-radius"></div>
-                    <div class="front-child bd-radius"></div>
+                <stack style="height:20px;background-color: yellow;flex-weight: 4;">
                 </stack>
             </div>
             <text class="sub-title">
                 stack原子布局3
             </text>
-            <div style="flex-direction: row;height:40px;width: 100%;">
-                <stack class="style7">
-                    <div class="back-child bd-radius"></div>
-                    <div class="positioned-child bd-radius"></div>
-                    <div class="front-child bd-radius"></div>
+            <div style="flex-direction: row;height:60px;width: 100%;">
+                <stack style="width:30px;background-color: blue;aspect-ratio: 0.6;">
                 </stack>
-                <stack class="style7">
-                    <div class="back-child bd-radius"></div>
-                    <div class="positioned-child bd-radius"></div>
-                    <div class="front-child bd-radius"></div>
+                <stack style="width:30px;background-color: black;aspect-ratio:0.5;">
                 </stack>
-                <stack class="style7">
-                    <div class="back-child bd-radius"></div>
-                    <div class="positioned-child bd-radius"></div>
-                    <div class="front-child bd-radius"></div>
+                <stack style="width:30px;background-color: yellow;aspect-ratio: 1.5;">
                 </stack>
             </div>
             <div style="background-color: #000000; width: 100%; height: 2px;">
             </div>
-            <div class="multimode-container">
+            <div class="multiMode-container">
                 <text class="title">
                     多模输入
                 </text>
                 <text class="sub-title">
                     stack多模输入1
                 </text>
-                <stack class="style7">
-                    <div class="back-child bd-radius"></div>
-                    <div class="positioned-child bd-radius"></div>
-                    <div class="front-child bd-radius"></div>
+                <stack class="multiMode1" voicelabel = "voice"
+                     subscriptflag="on" subscriptlabel="div" scenelabel="common">
                 </stack>
             </div>
         </div>
     </div>
 </div>
-
-
-
-

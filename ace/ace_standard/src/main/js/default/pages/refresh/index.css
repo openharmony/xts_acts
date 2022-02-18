@@ -225,6 +225,7 @@ refresh{
 }
 
 .style5{
+    background: linear-gradient(pink,#fff000);
     width: 50%;
     margin-bottom: 5px;
     height: 40%;
@@ -246,7 +247,8 @@ refresh{
     bottom: 5px;
     right: 10px;
     background-color: pink;
-    border-image: url('common/images/icon.png') 1px 2px 3px 4px 2px 3px 4px 5px 3px 4px 5px 6px round;
+    background: linear-gradient(pink,#fff000);
+    border-image: url('common/images/image.png') 1px 2px 3px 4px 2px 3px 4px 5px 3px 4px 5px 6px round;
 }
 
 .style7 {
@@ -259,6 +261,7 @@ refresh{
     line-cap: round;
     height: 12%;
     background-color:darkorchid;
+    background: linear-gradient(gray,#fff000);
     progress-color:skyblue;
 }
 

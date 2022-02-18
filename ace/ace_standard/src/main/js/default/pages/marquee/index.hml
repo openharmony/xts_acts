@@ -20,52 +20,43 @@
                 通用样式
             </text>
             <text class="sub-title">
-                marque通用样式1
+                通用样式1
             </text>
             <marquee class="style1">
-                文字1
             </marquee>
             <text  class="sub-title">
-                marque通用样式2
+               通用样式2
             </text>
             <marquee class="style2">
-                文字2
             </marquee>
             <text class="sub-title">
-                marque通用样式3
+                通用样式3
             </text>
             <marquee class="style3">
-                文字3
             </marquee>
             <text  class="sub-title">
-                marque通用样式4
+                通用样式4
             </text>
             <marquee class="style4">
-                文字4
             </marquee>
             <text  class="sub-title">
-                marque通用样式5
+                通用样式5
             </text>
             <div class="contain1">
                 <marquee class="style5">
-                    文字5
                 </marquee>
                 <marquee class="style6">
-                    文字6
                 </marquee>
             </div>
             <text  class="sub-title">
-                marque特有样式
+                特有样式
             </text>
             <div class="style7">
                 <marquee class="flex-item color-primary">
-                    样式
                 </marquee>
                 <marquee class="flex-item color-warning">
-                    样式
                 </marquee>
                 <marquee class="flex-item color-success">
-                    样式
                 </marquee>
             </div>
         </div>
@@ -76,16 +67,14 @@
                 动画样式
             </text>
             <text class="sub-title">
-                div动画样式1
+                动画样式1
             </text>
             <marquee class="ani1" >
-                动画1
             </marquee>
             <text class="sub-title">
-                div动画样式2
+                动画样式2
             </text>
             <marquee class="ani2" >
-                动画2
             </marquee>
         </div>
     </div>
@@ -99,35 +88,32 @@
                 通用属性
             </text>
             <text class="sub-title">
-                mar通用属性1
+                通用属性1
             </text>
             <marquee id="prop1" class="prop1"
                  disabled = "true" focusable ="true"
                  data-name ="prop1" click-effect="spring-medium"
                  dir ="rtl">
-                属性1----
             </marquee>
             <text  class="sub-title">
-                mar通用属性2
+                通用属性2
             </text>
             <marquee class="prop2" ref ="prop2"
                  disabled = "false" focusable ="false"
                  data-name ="prop2" click-effect="spring-large"
                  dir ="ltr">
-                属性2----
             </marquee>
             <text  class="sub-title">
-                mar通用属性3
+                通用属性3
             </text>
             <marquee style="color: #679855; margin: 2px;" class="prop3">
-                属性3----
             </marquee>
             <text  class="sub-title">
-                marque特有属性
+                特有属性
             </text>
             <marquee style="color: #679855; margin: 5px;" class="prop3"
                      crollamount="10" loop="-1" direction="right">
-                属性4----
+                特有属性
             </marquee>
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">
@@ -137,22 +123,20 @@
                 通用事件
             </text>
             <text  class="sub-title">
-                mar通用事件1
+                通用事件1
             </text>
             <marquee class ="event1" ontouchstart="touchStart" ontouchmove="touchMove"
                  ontouchend="touchEnd" ontouchcancel="touchCancel">
-                事件1----
             </marquee>
             <text  class="sub-title">
-                mar通用事件2
+                通用事件2
             </text>
             <marquee class ="event2" onclick="click" ondoubleclick="doubleClick"
                  onlongpress="longPress" onfocus="focus" onblur="blur" onkey="key"
                  onswipe="swipe" onattached="attached" ondetached="detached">
-                事件2----
             </marquee>
             <text  class="sub-title">
-                mar通用事件3
+                通用事件3
             </text>
             <marquee class ="event3" onpinchstart="pinchStart" onpinchupdate="pinchUpdate"
                  onpinchend="pinchEnd" onpinchcancel="pinchCancel"
@@ -160,10 +144,9 @@
                  ondragend="dragEnd" ondragenter="dragEnter"
                  ondragover="dragOver" ondragleave="dragLeave"
                  ondrop="drop">
-                事件3----
             </marquee>
             <text  class="sub-title">
-                mar特有事件1
+                特有事件1
             </text>
             <div class ="event4" onreachstart="reachStart" onreachend="reachEnd">
                 <marquee id="customMarquee" loop="4" onbounce="onMarqueeBounce" onstart="onMarqueeStart" onfinish="onMarqueeFinish" style="height: 100%; width: 100%; background-color: red; margin-left: 10px;">
@@ -177,25 +160,22 @@
                 通用方法
             </text>
             <text class="sub-title">
-                marque通用方法1
+                通用方法1
             </text>
             <marquee id="function1" class="function1" ontouchstart="functionTest1">
-                方法1----
             </marquee>
             <text class="sub-title">
-                marque通用方法2
+                通用方法2
             </text>
             <marquee id="function2" class="function2" ontouchstart="functionTest2">
-                方法2----
             </marquee>
             <text class="sub-title">
-                marque通用方法3
+                通用方法3
             </text>
             <marquee id="function3" class="function3" ontouchstart="functionTest3">
-                方法3----
             </marquee>
             <text class="sub-title">
-                marque特有方法
+                特有方法
             </text>
             <div class="flex-class">
                 <button onclick="onStartClick">
@@ -218,36 +198,36 @@
                 渐变样式
             </text>
             <text class="sub-title">
-                marque渐变样式1
+                渐变样式1
             </text>
             <marquee class="gradient1">
             </marquee>
             <text  class="sub-title">
-                marque渐变样式2
+                渐变样式2
             </text>
             <marquee class="gradient2">
             </marquee>
             <text  class="sub-title">
-                marque渐变样式3
+                渐变样式3
             </text>
             <marquee class="gradient3">
             </marquee>
             <text  class="sub-title">
-                marque渐变样式4
+                渐变样式4
             </text>
             <marquee class="gradient4">
             </marquee>
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">
         </div>
-        <div class="access-container">
+        <div class="accessibility-container">
             <text class="title">
                 无障碍
             </text>
             <text class="sub-title">
-                marque无障碍1
+                无障碍1
             </text>
-            <marquee class="access1" accessibilitygroup ="true"
+            <marquee class="accessibility1" accessibilitygroup ="true"
                  accessibilitytext="这是div"
                  accessibilitydescription="点击此按键会弹出一个对话框"
                  accessibilityimportance="no-hide-descendants">
@@ -260,7 +240,7 @@
                 原子布局
             </text>
             <text class="sub-title">
-                marque原子布局1
+                原子布局1
             </text>
             <div style="flex-direction: row;height: 30px;width: 100%;">
                 <marquee style="width:20px;height:20px;background-color: blue;display-index: 1;">
@@ -277,7 +257,7 @@
                 </marquee>
             </div>
             <text class="sub-title">
-                marque原子布局2
+                原子布局2
             </text>
             <div style="flex-direction: row;height: 30px;width: 100%;">
                 <marquee style="height:20px;background-color: blue;flex-weight: 1;">
@@ -294,7 +274,7 @@
                 </marquee>
             </div>
             <text class="sub-title">
-                marque原子布局3
+                原子布局3
             </text>
             <div style="flex-direction: row;height:60px;width: 100%;">
                 <marquee style="width:30px;background-color: blue;aspect-ratio: 0.6;">
@@ -317,7 +297,7 @@
                     多模输入
                 </text>
                 <text class="sub-title">
-                    marque多模输入1
+                    多模输入1
                 </text>
                 <marquee class="multiMode1" voicelabel = "voice"
                      subscriptflag="on" subscriptlabel="div" scenelabel="common">

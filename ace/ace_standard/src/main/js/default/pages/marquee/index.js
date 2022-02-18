@@ -444,6 +444,7 @@ export default {
 
     functionTest3(event){
         var function3 =  this.$element('function3');
+
         var animation = function3.animate(frames, options);
         animation.play()
         animation.onfinish = function(){

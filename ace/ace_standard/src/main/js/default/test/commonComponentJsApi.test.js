@@ -54,7 +54,30 @@ describe('aceJsTest', function () {
     afterEach(async function () {
         console.info('[aceJsTest] after each called')
         await backToIndex();
-        await sleep(1000)
+        await sleep(5000)
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testStepperComponent
+     * @tc.desc      ACE
+     */
+    it('testStepperComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/stepper/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push stepper page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push stepper page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.stepper] getState" + JSON.stringify(pages));
+        expect("pages/stepper/").assertEqual(pages.path);
+        done();
     });
 
         /**
@@ -831,29 +854,6 @@ describe('aceJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testStepperComponent
-     * @tc.desc      ACE
-     */
-    it('testStepperComponent', 0, async function (done) {
-        let result;
-        let options = {
-            uri: 'pages/stepper/index'
-        }
-        try {
-            result = router.push(options)
-            console.info("push stepper page success " + JSON.stringify(result));
-        } catch (err) {
-            console.error("push stepper page error " + JSON.stringify(result));
-        }
-        await sleep(5000)
-        let pages = router.getState();
-        console.info("[router.stepper] getState" + JSON.stringify(pages));
-        expect("pages/stepper/").assertEqual(pages.path);
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testRefreshComponent
      * @tc.desc      ACE
      */
@@ -918,6 +918,52 @@ describe('aceJsTest', function () {
         let pages = router.getState();
         console.info("[router.tabs] getState" + JSON.stringify(pages));
         expect("pages/tabs/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testTabBarComponent
+     * @tc.desc      ACE
+     */
+    it('testTabBarComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/tab-bar/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push tab-bar page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push tab-bar page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.tab-bar] getState" + JSON.stringify(pages));
+        expect("pages/tab-bar/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testTabContentComponent
+     * @tc.desc      ACE
+     */
+    it('testTabContentComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/tab-content/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push tab-content page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push tab-content page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.tab-content] getState" + JSON.stringify(pages));
+        expect("pages/tab-content/").assertEqual(pages.path);
         done();
     });
 });

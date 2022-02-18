@@ -1,7 +1,7 @@
 
 <div class="container">
     <popup id="popup1"
-           class="popup1 style1"
+           class="style1"
            target="text1"
            placement="top"
            style="mask-color:blue;"
@@ -14,7 +14,7 @@
     </popup>
 
     <popup id="popup2"
-           class="popup2 style2"
+           class="style2"
            target="text2"
            placement="left"
            keepalive="true"
@@ -26,7 +26,7 @@
     </popup>
 
     <popup id="popup3"
-           class="popup3 style3"
+           class="style3"
            target="text3"
            placement="top"
            keepalive="true"
@@ -38,7 +38,7 @@
     </popup>
 
     <popup id="popup4"
-           class="popup4 style4"
+           class="style4"
            target="text4"
            placement="top"
            keepalive="true"
@@ -50,7 +50,7 @@
     </popup>
 
     <popup id="popup5"
-           class="popup5 style5"
+           class="style5"
            target="text5"
            placement="top"
            keepalive="true"
@@ -62,7 +62,7 @@
     </popup>
 
     <popup id="popup6"
-           class="popup6 style6"
+           class="style6"
            target="text6"
            placement="top"
            keepalive="true"
@@ -74,7 +74,7 @@
     </popup>
 
     <popup id="popup7"
-           class="popup7 style7"
+           class="style7"
            target="text7"
            placement="top"
            keepalive="true"
@@ -86,7 +86,6 @@
     </popup>
 
     <popup id="prop1"
-           class="pro"
            target="textPro1"
            disabled = "true"
            data-name ="prop1"
@@ -110,7 +109,6 @@
     </popup>
 
     <popup id="prop3"
-           class="prop3"
            style="color: #679855; stroke-width: 15px; line-cap: round; margin: 5px;"
            target="textPro3"
            placement="top"
@@ -147,7 +145,6 @@
     </popup>
 
     <popup id="prop6"
-           class="pro6"
            target="textPro6"
            placement="top"
            keepalive="true"
@@ -158,7 +155,6 @@
     </popup>
 
     <popup id="prop7"
-           class="pro7"
            target="textPro7"
            placement="bottom"
            keepalive="true"
@@ -170,7 +166,6 @@
     </popup>
 
     <popup id="prop8"
-           class="pro8"
            target="textPro8"
            placement="topLeft"
            keepalive="false"
@@ -182,7 +177,6 @@
     </popup>
 
     <popup id="prop9"
-           class="pro9"
            target="textPro9"
            placement="topRight"
            keepalive="false"
@@ -194,7 +188,6 @@
     </popup>
 
     <popup id="prop10"
-           class="pro10"
            target="textPro10"
            placement="bottomLeft"
            keepalive="false"
@@ -206,7 +199,6 @@
     </popup>
 
     <popup id="prop11"
-           class="pro11"
            target="textPro11"
            placement="bottomRight"
            keepalive="false"
@@ -428,44 +420,44 @@
     </popup>
 
     <div class="sub-container">
-        <!-- 通用样式 -->
+    <!-- 通用样式 -->
         <div class="style-container">
-        <text class="title">
-            通用样式
-        </text>
-
-        <text id="text1" class="sub-title">
-            popup通用样式1
-        </text>
-
-        <text id="text2" class="sub-title">
-            popup通用样式2
-        </text>
-
-        <text id="text3" class="sub-title">
-            popup通用样式3
-        </text>
-
-        <text id="text4" class="sub-title">
-            popup通用样式4
-        </text>
-
-        <div class="contain1">
-            <text id="text4" class="sub-title">
-                popup通用样式5
+            <text class="title">
+                通用样式
             </text>
+
+            <text id="text1" class="sub-title">
+                popup通用样式1
+            </text>
+
+            <text id="text2" class="sub-title">
+                popup通用样式2
+            </text>
+
+            <text id="text3" class="sub-title">
+                popup通用样式3
+            </text>
+
             <text id="text4" class="sub-title">
-                popup通用样式6
+                popup通用样式4
+            </text>
+
+            <div class="contain1">
+                <text id="text4" class="sub-title">
+                    popup通用样式5
+                </text>
+                <text id="text4" class="sub-title">
+                    popup通用样式6
+                </text>
+            </div>
+
+            <text id="text7" class="sub-title">
+                popup特有样式
             </text>
         </div>
-
-        <text id="text7" class="sub-title">
-            popup特有样式
-        </text>
-    </div>
         <divider style="color: #000000; stroke-width: 2px;" vertical="false">
         </divider>
-        <!-- 动画样式 -->
+    <!-- 动画样式 -->
         <div class="ani-container">
 
             <text class="title">
@@ -484,7 +476,7 @@
     <div style="background-color: #000000; width: 2px; height: 100%;">
     </div>
     <div class="sub-container">
-        <!-- 通用属性 -->
+    <!-- 通用属性 -->
         <div class="prop-container">
             <text class="title">
                 通用属性
@@ -536,7 +528,7 @@
         </div>
         <divider style="color: #000000; stroke-width: 2px;" vertical="false">
         </divider>
-        <!-- 通用事件 -->
+    <!-- 通用事件 -->
         <div class="event-container" >
             <text class="title">
                 通用事件
@@ -544,7 +536,7 @@
             <text id="eventOne" class="sub-title">
                 popup通用事件1
             </text>
-            
+
             <text id="eventTwo" class="sub-title">
                 popup通用事件2
             </text>
@@ -575,7 +567,7 @@
                 popup特有方法
             </text>
         </div>
-        <!-- 通用方法 -->
+    <!-- 通用方法 -->
     </div>
     <div style="background-color: #000000; width: 2px; height: 100%;">
     </div>
@@ -599,7 +591,6 @@
             <text id="gradient4" class="sub-title">
                 popup渐变样式4
             </text>
-
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">
         </div>
@@ -607,10 +598,9 @@
             <text class="title">
                 无障碍
             </text>
-            <text id="access1" id="access1" class="sub-title">
+            <text id="access1" class="sub-title">
                 popup无障碍1
             </text>
-
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">
         </div>
@@ -618,10 +608,9 @@
             <text class="title">
                 多模输入
             </text>
-            <text id="mul" class="sub-title multimode1">
+            <text id="mul" class="sub-title">
                 popup多模输入1
             </text>
         </div>
     </div>
 </div>
-

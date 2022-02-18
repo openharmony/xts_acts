@@ -335,7 +335,6 @@
 
 .prop5 {
     color: #831834;
-    stroke-width: 40px;
     line-cap: square;
     margin: 5px;
     height: 70px;
@@ -349,7 +348,6 @@
 
 .ani1{
     color: #72ac33;
-    stroke-width: 55px;
     line-cap: square;
     margin: 5px;
     transform-origin: 0% 0%;

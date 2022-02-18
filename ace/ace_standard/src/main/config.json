@@ -91,7 +91,9 @@
           "pages/stack/index",
           "pages/stepper/index",
           "pages/swiper/index",
-          "pages/tabs/index"
+          "pages/tabs/index",
+          "pages/tab-bar/index",
+          "pages/tab-content/index"
         ],
         "name": "default",
         "window": {
