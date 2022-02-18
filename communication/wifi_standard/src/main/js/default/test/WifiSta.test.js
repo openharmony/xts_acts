@@ -501,6 +501,13 @@ describe('ACTS_WifiTest', function() {
       sleep(5000);
       console.log("[wifi_test] wifi reconnect result: " + result);
       expect(result).assertTrue();
+      console.info("[wifi_test] remove config");
+      var isRemoved = wifi.removeAllNetwork();
+      console.info("[wifi_test] check remove configs successfully,result:" + isRemoved);
+      expect(isRemoved).assertTrue();
+      var configs = wifi.getDeviceConfigs();
+      console.info("[wifi_test]remove config,current get Config : " + JSON.stringify(configs));
+      expect(true).assertEqual(configs.length == 0);
 
     })
     
