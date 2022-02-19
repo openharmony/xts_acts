@@ -1035,4 +1035,556 @@ describe('aceJsTest', function () {
         expect("pages/gridContainer/").assertEqual(pages.path);
         done();
     });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testGridRowComponent
+     * @tc.desc      ACE
+     */
+    it('testGridRowComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/gridRow/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push gridRow page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push gridRow page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.gridRow] getState" + JSON.stringify(pages));
+        expect("pages/gridRow/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testGridColComponent
+     * @tc.desc      ACE
+     */
+    it('testGridColComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/gridCol/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push gridCol page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push gridCol page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.gridCol] getState" + JSON.stringify(pages));
+        expect("pages/gridCol/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testCanvasComponent
+     * @tc.desc      ACE
+     */
+    it('testCanvasComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/canvas/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push canvas page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push canvas page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.canvas] getState" + JSON.stringify(pages));
+        expect("pages/canvas/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testCanvasRenderingContext2DComponent
+     * @tc.desc      ACE
+     */
+    it('testCanvasRenderingContext2DComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/obj_CanvasRenderingContext2D/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push obj_CanvasRenderingContext2D page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push obj_CanvasRenderingContext2D page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.obj_CanvasRenderingContext2D] getState" + JSON.stringify(pages));
+        expect("pages/obj_CanvasRenderingContext2D/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testObjImageComponent
+     * @tc.desc      ACE
+     */
+    it('testObjImageComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/obj_Image/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push obj_Image page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push obj_Image page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.obj_Image] getState" + JSON.stringify(pages));
+        expect("pages/obj_Image/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testCanvasGradientComponent
+     * @tc.desc      ACE
+     */
+    it('testCanvasGradientComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/obj_CanvasGradient/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push obj_CanvasGradient page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push obj_CanvasGradient page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.obj_CanvasGradient] getState" + JSON.stringify(pages));
+        expect("pages/obj_CanvasGradient/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testImageDataComponent
+     * @tc.desc      ACE
+     */
+    it('testImageDataComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/obj_ImageData/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push obj_ImageData page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push obj_ImageData page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.obj_ImageData] getState" + JSON.stringify(pages));
+        expect("pages/obj_ImageData/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testPath2DComponent
+     * @tc.desc      ACE
+     */
+    it('testPath2DComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/obj_Path2D/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push obj_Path2D page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push obj_Path2D page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.obj_Path2D] getState" + JSON.stringify(pages));
+        expect("pages/obj_Path2D/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testImageBitmapComponent
+     * @tc.desc      ACE
+     */
+    it('testImageBitmapComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/obj_ImageBitmap/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push obj_ImageBitmap page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push obj_ImageBitmap page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.obj_ImageBitmap] getState" + JSON.stringify(pages));
+        expect("pages/obj_ImageBitmap/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testOffScreenCanvasComponent
+     * @tc.desc      ACE
+     */
+    it('testOffScreenCanvasComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/obj_OffscreenCanvas/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push obj_OffscreenCanvas page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push obj_OffscreenCanvas page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.obj_OffscreenCanvas] getState" + JSON.stringify(pages));
+        expect("pages/obj_OffscreenCanvas/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testOffCanvasRC2DComponent
+     * @tc.desc      ACE
+     */
+    it('testOffCanvasRC2DComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/obj_OffscreenCanvasRenderingContext2D/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push obj_OffscreenCanvasRenderingContext2D page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push obj_OffscreenCanvasRenderingContext2D page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.obj_OffscreenCanvasRenderingContext2D] getState" + JSON.stringify(pages));
+        expect("pages/obj_OffscreenCanvasRenderingContext2D/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testSvgComponent
+     * @tc.desc      ACE
+     */
+    it('testSvgComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/svg/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push svg page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push svg page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.svg] getState" + JSON.stringify(pages));
+        expect("pages/svg/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testSvgComponent
+     * @tc.desc      ACE
+     */
+    it('testSvgComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/rect/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push rect page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push rect page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.rect] getState" + JSON.stringify(pages));
+        expect("pages/rect/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testCircleComponent
+     * @tc.desc      ACE
+     */
+    it('testCircleComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/circle/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push circle page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push circle page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.circle] getState" + JSON.stringify(pages));
+        expect("pages/circle/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testEllipseComponent
+     * @tc.desc      ACE
+     */
+    it('testEllipseComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/ellipse/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push ellipse page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push ellipse page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.ellipse] getState" + JSON.stringify(pages));
+        expect("pages/ellipse/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testPathComponent
+     * @tc.desc      ACE
+     */
+    it('testPathComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/path/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push path page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push path page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.path] getState" + JSON.stringify(pages));
+        expect("pages/path/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testLineComponent
+     * @tc.desc      ACE
+     */
+    it('testLineComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/line/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push line page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push line page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.line] getState" + JSON.stringify(pages));
+        expect("pages/line/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testPolyLineComponent
+     * @tc.desc      ACE
+     */
+    it('testPolyLineComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/polyline/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push polyline page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push polyline page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.polyline] getState" + JSON.stringify(pages));
+        expect("pages/polyline/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testPolygonComponent
+     * @tc.desc      ACE
+     */
+    it('testPolygonComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/polygon/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push polygon page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push polygon page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.polygon] getState" + JSON.stringify(pages));
+        expect("pages/polygon/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testAnimateComponent
+     * @tc.desc      ACE
+     */
+    it('testAnimateComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/animate/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push animate page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push animate page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.animate] getState" + JSON.stringify(pages));
+        expect("pages/animate/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testAnimateMotionComponent
+     * @tc.desc      ACE
+     */
+    it('testAnimateMotionComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/animateMotion/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push animateMotion page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push animateMotion page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.animateMotion] getState" + JSON.stringify(pages));
+        expect("pages/animateMotion/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testAnimateTransformComponent
+     * @tc.desc      ACE
+     */
+    it('testAnimateTransformComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/animateTransform/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push animateTransform page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push animateTransform page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.animateTransform] getState" + JSON.stringify(pages));
+        expect("pages/animateTransform/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testTextPathComponent
+     * @tc.desc      ACE
+     */
+    it('testTextPathComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/textPath/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push textPath page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push textPath page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.textPath] getState" + JSON.stringify(pages));
+        expect("pages/textPath/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testTspanComponent
+     * @tc.desc      ACE
+     */
+    it('testTspanComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/tspan/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push tspan page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push tspan page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.tspan] getState" + JSON.stringify(pages));
+        expect("pages/tspan/").assertEqual(pages.path);
+        done();
+    });
 });
