@@ -330,15 +330,6 @@
   background: repeating-linear-gradient(to right, rgba(255, 255, 0, 1) 30px,rgba(0, 0, 255, .5) 60px);
 }
 
-.accessibility-container{
-  flex-direction: column;
-}
-
-.accessibility1{
-  width: 100%;
-  height: 30px;
-}
-
 .atom-container{
   flex-direction: column;
 }

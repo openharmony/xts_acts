@@ -127,7 +127,6 @@
     background-position: center;
     flex:1;
     flex-grow: 2;
-/*    flex-basis: 10px;*/
     flex-shrink: 1;
 }
 
@@ -141,8 +140,6 @@
 
 .contain1{
     width: 100%;
-/*    height: 100px;*/
-/*    flex-direction: column;*/
 }
 
 .style5{

@@ -108,7 +108,6 @@
           "pages/obj_ImageBitmap/index",
           "pages/obj_OffscreenCanvas/index",
           "pages/obj_OffscreenCanvasRenderingContext2D/index",
-          "pages/textPath/index",
           "pages/svg/index",
           "pages/rect/index",
           "pages/circle/index",

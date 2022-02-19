@@ -55,7 +55,7 @@ export default {
         prompt.showToast({
             message: 'offscreenCanvasCtx='+offscreenCanvasCtx+',dataURL='+dataURL+',bitmap='+JSON.stringify(bitmap)
         });
-        console.log('offscreenCanvasCtx='+offscreenCanvasCtx+',dataURL='+dataURL+',bitmap='+JSON.stringify(bitmap)); //data:image/png;base64,xxxxxx
+        console.log('offscreenCanvasCtx='+offscreenCanvasCtx+',dataURL='+dataURL+',bitmap='+JSON.stringify(bitmap));
 
     },
 

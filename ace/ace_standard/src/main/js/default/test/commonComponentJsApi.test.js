@@ -966,4 +966,73 @@ describe('aceJsTest', function () {
         expect("pages/tab-content/").assertEqual(pages.path);
         done();
     });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testVideoComponent
+     * @tc.desc      ACE
+     */
+    it('testVideoComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/video/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push video page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push video page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.video] getState" + JSON.stringify(pages));
+        expect("pages/video/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testSvgTextComponent
+     * @tc.desc      ACE
+     */
+    it('testSvgTextComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/svg_text/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push svg_text page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push svg_text page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.svg_text] getState" + JSON.stringify(pages));
+        expect("pages/svg_text/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testGridContainerComponent
+     * @tc.desc      ACE
+     */
+    it('testGridContainerComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/gridContainer/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push gridContainer page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push gridContainer page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.gridContainer] getState" + JSON.stringify(pages));
+        expect("pages/gridContainer/").assertEqual(pages.path);
+        done();
+    });
 });

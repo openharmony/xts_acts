@@ -243,7 +243,7 @@
             <text class="sub-title">
                 div无障碍1
             </text>
-            <grid-container class="accessibility1" accessibilitygroup ="true"
+            <grid-container class="access1" accessibilitygroup ="true"
                  accessibilitytext="这是div"
                  accessibilitydescription="点击此按键会弹出一个对话框"
                  accessibilityimportance="no-hide-descendants">
