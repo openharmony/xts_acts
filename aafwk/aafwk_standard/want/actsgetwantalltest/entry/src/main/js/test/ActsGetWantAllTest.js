@@ -323,6 +323,7 @@ describe('ActsGetWantTest', function () {
             },
                 (err, data) => {
                     console.info('====> ACTS_StartAbilityForResult_0700 start ability=====>' + JSON.stringify(data))
+                    console.info('====> ACTS_StartAbilityForResult_0700 Ret:' + JSON.stringify(err))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
                     expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
@@ -376,26 +377,8 @@ describe('ActsGetWantTest', function () {
             },
                 (err, data) => {
                     console.info('====> ACTS_StartAbilityForResult_0800 start ability=====>' + JSON.stringify(data))
-                    expect(data.want.deviceId).assertEqual("");
-                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                    expect(data.want.action).assertEqual("action1");
-                    expect(data.want.entities[0]).assertEqual("entity1");
-                    expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
-                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_CONTINUATION );
-                    expect(data.want.parameters.mykey0).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                    expect(data.want.parameters.mykey3).assertEqual("str");
-                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                    console.info('====> ACTS_StartAbilityForResult_0800 Ret:' + JSON.stringify(err))
+                    expect(err.code == 0).assertFalse(); // StartAbility with continuation flags is not allowed.
                     console.info('====> before done=====>')
                     done();
                 })
