@@ -630,7 +630,7 @@ describe('aceJsTest', function () {
     it('testDivComponent', 0, async function (done) {
         let result;
         let options = {
-            uri: 'pages/div/index'
+            uri: 'pages/div/router/index'
         }
         try {
             result = router.push(options)
@@ -641,7 +641,7 @@ describe('aceJsTest', function () {
         await sleep(5000)
         let pages = router.getState();
         console.info("[router.div] getState" + JSON.stringify(pages));
-        expect("pages/div/").assertEqual(pages.path);
+        expect("pages/div/router/").assertEqual(pages.path);
         done();
     });
 
