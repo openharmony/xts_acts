@@ -31,8 +31,10 @@ describe('rdbStoreTest', function () {
         console.info(TAG + 'beforeEach')
     })
 
-    afterEach(function () {
-        console.info(TAG + 'afterEach')
+    afterEach(async function () {
+        console.info(TAG + 'afterAll')
+        rdbStore = null
+        await dataRdb.deleteRdbStore("rdbstore.db");
     })
 
     afterAll(async function () {
@@ -60,7 +62,6 @@ describe('rdbStoreTest', function () {
         })
         await storePromise
         storePromise = null
-        await dataRdb.deleteRdbStore("rdbstore.db");
         done();
         console.log(TAG + "************* testRdbStore0001 end   *************");
     })
@@ -85,7 +86,6 @@ describe('rdbStoreTest', function () {
         })
         await storePromise
         storePromise = null
-        await dataRdb.deleteRdbStore("rdbstore.db");
         done();
         console.log(TAG + "************* testRdbStore0002 end   *************");
     })
@@ -133,7 +133,6 @@ describe('rdbStoreTest', function () {
         })
         await storePromise
         storePromise = null
-        await dataRdb.deleteRdbStore("rdbstore.db");
         done();
         console.log(TAG + "************* testRdbStore0004 end   *************");
     })
