@@ -55,6 +55,7 @@ describe('ACTS_WifiTest', function() {
     * @tc.number     OPEN_0002
     * @tc.name       SUB_Communication_WiFi_Hotspot_Open_0002
     * @tc.desc       Test wifi.enableHotspot and wifi.disableHotspot API functionality1.
+    * @tc.author     wudangping wwx1075776
     * @tc.level Level 0
     */
     it('SUB_Communication_WiFi_Hotspot_Open_0002', 0, function () {
@@ -91,6 +92,7 @@ describe('ACTS_WifiTest', function() {
     /**
     * @tc.number     OPEN_0003
     * @tc.name       SUB_Communication_WiFi_Hotspot_Open_0003
+    * @tc.author     wudangping wwx1075776
     * @tc.desc       Test open Hotspot after open wifi
     * @tc.level Level 1
     */
@@ -115,6 +117,7 @@ describe('ACTS_WifiTest', function() {
     /**
     * @tc.number  CONFIG_0001
     * @tc.name    SUB_Communication_WiFi_Hotspot_Config_0001
+    * @tc.author  wudangping wwx1075776
     * @tc.desc    Test set a valid 2.4G hotspot config
     * @tc.level   Level 0
     */
@@ -153,6 +156,7 @@ describe('ACTS_WifiTest', function() {
     /**
     * @tc.number     CONFIG_0002
     * @tc.name       SUB_Communication_WiFi_Hotspot_Config_0002
+    * @tc.author     wudangping wwx1075776
     * @tc.desc       Test set a valid 5G hotspot config
     * @tc.level Level 1
     */
@@ -196,6 +200,7 @@ describe('ACTS_WifiTest', function() {
     /**
     * @tc.number     CONFIG_0003
     * @tc.name       SUB_Communication_WiFi_Hotspot_Config_0003
+    * @tc.author     wudangping wwx1075776
     * @tc.desc       Test set a invalid  hotspot config
     * @tc.level Level 2
     */
@@ -220,10 +225,10 @@ describe('ACTS_WifiTest', function() {
 
     })
 
-
     /**
     * @tc.number     CONFIG_0004
     * @tc.name       SUB_Communication_WiFi_Hotspot_Config_0004
+    * @tc.author     wudangping wwx1075776
     * @tc.desc       Test set a max preSharedKey is hotspot config
     * @tc.level Level 2
     */
@@ -274,6 +279,7 @@ describe('ACTS_WifiTest', function() {
     /**
     * @tc.number     CONFIG_0005
     * @tc.name       SUB_Communication_WiFi_Hotspot_Config_0005
+    * @tc.author     wudangping wwx1075776
     * @tc.desc       Test set a min preSharedKey is hotspot config
     * @tc.level Level 2
     */
@@ -322,6 +328,7 @@ describe('ACTS_WifiTest', function() {
     /**
     * @tc.number     CONFIG_0006
     * @tc.name       SUB_Communication_WiFi_Hotspot_Config_0006
+    * @tc.author     wudangping wwx1075776
     * @tc.desc       Test set a max ssid for hotspot config
     * @tc.level Level 2
     */
@@ -373,6 +380,7 @@ describe('ACTS_WifiTest', function() {
     /**
     * @tc.number     CONFIG_0007
     * @tc.name       SUB_Communication_WiFi_Hotspot_Config_0007
+    * @tc.author     wudangping wwx1075776
     * @tc.desc       Test set a null ssid invalid  hotspot config
     * @tc.level Level 2
     */
@@ -398,6 +406,7 @@ describe('ACTS_WifiTest', function() {
     /**
     * @tc.number     CONFIG_0008
     * @tc.name       SUB_Communication_WiFi_Hotspot_Config_0008
+    * @tc.author     wudangping wwx1075776
     * @tc.desc       Test set a contains Chinese.special.digits valid hotspot config
     * @tc.level Level 2
     */
@@ -429,6 +438,7 @@ describe('ACTS_WifiTest', function() {
     /**
     * @tc.number     CONFIG_0009
     * @tc.name       SUB_Communication_WiFi_Hotspot_Config_0009
+    * @tc.author     wudangping wwx1075776
     * @tc.desc       Test set a invalid preSharedKey hotspot config
     * @tc.level Level 2
     */
@@ -479,6 +489,7 @@ describe('ACTS_WifiTest', function() {
     /**
     * @tc.number     CONFIG_0010
     * @tc.name       SUB_Communication_WiFi_Hotspot_Config_0010
+    * @tc.author     wudangping wwx1075776
     * @tc.desc       Test set a valid PSK preSharedKey hotspot config
     * @tc.level Level 2
     */
@@ -521,6 +532,7 @@ describe('ACTS_WifiTest', function() {
     /**
     * @tc.number     CONFIG_0011
     * @tc.name       SUB_Communication_WiFi_Hotspot_Config_0011
+    * @tc.author     wudangping wwx1075776
     * @tc.desc       Test set a valid OPEN preSharedKey hotspot config
     * @tc.level Level 2
     */
@@ -560,6 +572,7 @@ describe('ACTS_WifiTest', function() {
     /**
     * @tc.number     CONFIG_0012
     * @tc.name       SUB_Communication_WiFi_Hotspot_Config_0012
+    * @tc.author     wudangping wwx1075776
     * @tc.desc       Test set a valid hotspot config after open Hotspot
     * @tc.level Level 2
     */
@@ -607,6 +620,7 @@ describe('ACTS_WifiTest', function() {
     /**
     * @tc.number     CONN_0001
     * @tc.name       SUB_Communication_WiFi_Hotspot_Conn_0001
+    * @tc.author     wudangping wwx1075776
     * @tc.desc       Test set a maxConn and more maxConn hotspot config
     * @tc.level Level 2
     */
@@ -657,6 +671,7 @@ describe('ACTS_WifiTest', function() {
     /**
     * @tc.number     CONN_0002
     * @tc.name       SUB_Communication_WiFi_Hotspot_Conn_0002
+    * @tc.author     wudangping wwx1075776
     * @tc.desc       Test Obtains the list of clients that are connected to a Wi-Fi hotspot.
     * @tc.level Level 2
     */
@@ -686,6 +701,7 @@ describe('ACTS_WifiTest', function() {
     /**
      * @tc.number SUB_Communication_WiFi_Hotspot_ON_0001
      * @tc.name testhotspotStateChangeOn
+     * @tc.author  wudangping wwx1075776
      * @tc.desc Test hotspotStateChangeOn api.
      * @tc.size MEDIUM
      * @tc.type Function
@@ -709,6 +725,7 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Hotspot_Off_0002
      * @tc.name testhotspotStateChangeOff
      * @tc.desc Test hotspotStateChange api.
+     * @tc.author  wudangping wwx1075776
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
@@ -731,6 +748,7 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Hotspot_ON_0003
      * @tc.name testhotspotStaJoinOn
      * @tc.desc Test hotspotStaJoinOn api.
+     * @tc.author wudangping wwx1075776
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
@@ -753,6 +771,7 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Hotspot_Off_0004
      * @tc.name testhotspotStaJoinOff
      * @tc.desc Test hotspotStaJoin api.
+     * @tc.author wudangping wwx1075776
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
@@ -775,6 +794,7 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Hotspot_ON_0005
      * @tc.name testhotspotStaLeaveOn
      * @tc.desc Test hotspotStaLeaveOn api.
+     * @tc.author  wudangping wwx1075776
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
@@ -797,6 +817,7 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Hotspot_Off_0006
      * @tc.name testhotspotStaLeaveOff
      * @tc.desc Test hotspotStaLeave api.
+     * @tc.author  wudangping wwx1075776
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
