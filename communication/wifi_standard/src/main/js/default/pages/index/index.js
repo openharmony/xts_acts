@@ -26,23 +26,22 @@ export default {
     },
     onShow() {
         console.info('onShow finish')
+    },
+    onReady() {
+        console.info('onReady finish')
         const core = Core.getInstance()
-        
         const expectExtend = new ExpectExtend({
             'id': 'extend'
         })
         core.addService('expect', expectExtend)
-        //        core.addService('report', instrumentLog)
         core.init()
-        
 
         const configService = core.getDefaultService('config')
-        
-        this.timeout = 600000
         configService.setConfig(this)
+
         require('../../test/List.test')
         core.execute()
-    },
-    onReady() {
+
     },
 }
+
