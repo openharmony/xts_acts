@@ -1,10 +1,10 @@
-/*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+/**
+ * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,14 +13,8 @@
  * limitations under the License.
  */
 
-require('./basicabilityapi.test.js')
-require('./mediaquery.test.js')
-require('./commonComponentJsApi.test.js')
-require('./divProps.test.js')
-require('./buttonProps.test.js')
-require('./chartProps.test.js')
-require('./imageProps.test.js')
-require('./spanProps.test.js')
-require('./menuProps.test.js')
-require('./switchProps.test.js')
-
+export default {
+    data: {
+        title: 'World'
+    }
+}

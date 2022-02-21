@@ -1,0 +1,189 @@
+<div class="container">
+    <div class="style-container">
+        <text class="title">
+            通用样式
+        </text>
+        <text class="sub-title">
+            circle通用样式1
+        </text>
+        <circle class="style1" cx="40" cy="5" r="20" fill="white" stroke="red"  stroke="blue" stroke-width="3" ></circle>
+
+        <text  class="sub-title">
+            circle通用样式2
+        </text>
+        <circle class="style2" cx="40" cy="22" r="20" fill="white" stroke="red"  stroke="blue" stroke-width="4" fill-opacity="0"></circle>
+
+        <text  class="sub-title">
+            circle通用样式3
+        </text>
+        <svg class="style3" x="0" y="0" width="100" height="100"  >
+            <circle cx="40" cy="50" r="30" fill="white" stroke="blue"  stroke="blue" stroke-width="4" fill-opacity="0"></circle>
+        </svg>
+
+        <text  class="sub-title">
+            circle通用样式4
+        </text>
+        <circle class="style4" cx="25" cy="25" r="20" fill="white" stroke="block"  stroke="blue" stroke-width="4" fill-opacity="0"></circle>
+        <text  class="sub-title">
+            circle通用样式5
+        </text>
+        <div class="contain1">
+            <circle class="style5" cx="40" cy="30" r="20" fill="white" stroke="blue"  stroke="blue" stroke-width="4" fill-opacity="0"></circle>
+            <circle class="style6" cx="40" cy="30" r="20" fill="white" stroke="blue"  stroke="blue" stroke-width="4" fill-opacity="0"></circle>
+        </div>
+    </div>
+    <divider style="color: #000000; stroke-width: 2px;" vertical="true">
+    </divider>
+    <div class="sub-container">
+        <div class="prop-container">
+            <text class="title">
+                通用属性
+            </text>
+            <text class="sub-title">
+                circle通用属性1
+            </text>
+            <svg x="0" y="0" width="200" height="50" >
+                <circle class="prop1" id="prop1" data-name ="prop1" cx="50" cy="20" r="15" stroke-width="3" fill="red" stroke="blue" fill-opacity="0.5"></circle>
+            </svg>
+
+            <text class="sub-title">
+                circle通用属性2
+            </text>
+            <svg x="0" y="0" width="200" height="50" >
+                <circle class="prop2" ref="prop2" data-name ="prop2" cx="50" cy="20" r="15" stroke-width="3" fill="red" stroke="blue"  opacity="0.4"></circle>
+            </svg>
+
+            <text  class="sub-title">
+                circle通用属性3
+            </text>
+            <svg x="0" y="0" width="200" height="50" fill="white">
+                <circle class="prop3" id="prop3" cx="50" cy="20" r="15" stroke-width="4" fill="red" stroke="blue"></circle>
+            </svg>
+
+            <text  class="sub-title">
+                circle通用属性4
+            </text>
+            <svg x="0" y="0" width="200" height="50" fill="white">
+                <circle class="prop4" id="prop4" cx="50" cy="20" r="15" stroke-width="5" stroke="red" stroke-dasharray="10 5" stroke-dashoffset="3"></circle>
+            </svg>
+
+            <text class="sub-title">
+                circle通用属性5
+            </text>
+            <svg x="0" y="0" width="200" height="50"  fill="white" fill-opacity="0">
+                <circle class="prop5" id="prop5" cx="50" cy="30" r="15" stroke="blue" stroke-width="4"  transform="rotate(-10)"></circle>
+            </svg>
+
+            <text class="sub-title">
+                circle通用属性6
+            </text>
+            <svg x="0" y="0" width="200" height="50"  fill="white" fill-opacity="0">
+                <circle class="prop6" id="prop6" cx="20" cy="30" r="15" stroke="blue" stroke-width="4" transform="translate(20)"></circle>
+            </svg>
+
+            <text class="sub-title">
+                circle通用属性7
+            </text>
+            <svg x="0" y="0" width="200" height="50"  fill="white" fill-opacity="0">
+                <circle class="prop7" id="prop7" cx="80" cy="40" r="15" stroke="blue" stroke-width="4" transform="skewY(-10)"></circle>
+            </svg>
+        </div>
+        <divider style="color: #000000; stroke-width: 2px;" vertical="false">
+        </divider>
+        <div class="ani-container">
+            <text class="title">
+                动画样式
+            </text>
+            <text class="sub-title">
+                circle动画样式1
+            </text>
+            <svg fill="white" width="200" height="40">
+                <circle cx="100" cy="20" r="15" stroke-width="4" fill="white" stroke="blue">
+                    <animate attributeName="stroke-width" from="4" to="10" calcMode="discrete" dur="2000" repeatCount="indefinite"></animate>
+                    <animate attributeName="stroke" values="red;blue" dur="2000" repeatCount="indefinite"></animate>
+                </circle>
+                <circle cx="60" cy="20" r="15"  fill="blue">
+                    <animate attributeName="fill" values="red;blue" dur="2000" repeatCount="indefinite"></animate>
+                </circle>
+                <circle cx="20" cy="20" r="15"  fill="blue">
+                    <animate attributeName="fill-opacity" from="1.0" to="0.5" dur="2000" repeatCount="indefinite"></animate>
+                </circle>
+            </svg>
+            <text class="sub-title">
+                circle动画样式2
+            </text>
+            <svg fill="white" width="200" height="120">
+                <circle cx="0" cy="20" r="20" stroke-width="4" fill="white" stroke="blue">
+                    <animate attributeName="r" from="0" to="30" dur="2000" repeatCount="indefinite"></animate>
+                    <animate attributeName="cx" from="40" to="80" dur="2000" repeatCount="indefinite"></animate>
+                </circle>
+
+                <circle cx="30" cy="20" r="20" stroke-width="10" stroke="red" stroke-dasharray="60 10" stroke-dashoffset="3">
+                    <animate attributeName="stroke-opacity" from="1.0" to="0.5" dur="2000" repeatCount="indefinite"></animate>
+                    <animate attributeName="stroke-dashoffset" values="30;0;30" dur="500" repeatCount="indefinite"></animate>
+                    <animate attributeName="cy" from="20" to="400" dur="3000" repeatCount="indefinite"></animate>
+                </circle>
+                <circle cx="30" cy="20" r="5" fill="blue">
+                    <animate attributeName="cy" from="20" to="400" dur="3000" repeatCount="indefinite"></animate>
+                </circle>
+
+            </svg>
+        </div>
+    </div>
+
+    <divider style="color: #000000; stroke-width: 2px;" vertical="true">
+    </divider>
+
+    <div class="sub-container">
+        <div class="gradient-container">
+            <text class="title">
+                渐变样式
+            </text>
+            <text class="sub-title">
+                circle渐变样式1
+            </text>
+            <circle class="gradient1" cx="60" cy="45" r="35" fill="white" fill-opacity="0" stroke="block" stroke-dasharray="5 3" stroke-dashoffset="3"></circle>
+            <text  class="sub-title">
+                circle渐变样式2
+            </text>
+            <circle class="gradient2" cx="60" cy="45" r="35" fill="white" fill-opacity="0" stroke="blue" ></circle>
+            <text  class="sub-title">
+                circle渐变样式3
+            </text>
+            <circle class="gradient3"  cx="60" cy="45" r="35" fill="pink" stroke="yellow"  stroke="blue" ></circle>
+            <text  class="sub-title">
+                circle渐变样式4
+            </text>
+            <circle class="gradient4" cx="60" cy="45" r="35" fill="white" stroke="red"  stroke="blue"></circle>
+        </div>
+        <divider style="color: #000000; stroke-width: 2px;" vertical="false">
+        </divider>
+        <div class="access-container">
+            <text class="title">
+                无障碍
+            </text>
+            <text class="sub-title">
+                circle无障碍1
+            </text>
+            <circle class="access1" accessibilitygroup ="true"
+                    accessibilitytext="这是circle"
+                    accessibilitydescription="点击此按键会弹出一个对话框"
+                    accessibilityimportance="no-hide-descendants"
+                    cx="50" cy="35" r="30"  fill="#978666" stroke="#00FF00"></circle>
+        </div>
+        <divider style="color: #000000; stroke-width: 2px;" vertical="false">
+        </divider>
+
+        <div class="multimode-container">
+            <text class="title">
+                多模输入
+            </text>
+            <text class="sub-title">
+                circle多模输入1
+            </text>
+            <circle class="multimode1" width="200" height="80" voicelabel = "voice"
+                    subscriptflag="on" subscriptlabel="circle" scenelabel="common"
+                    cx="50" cy="35" r="30" stroke-width="4" fill="#978666" stroke="block"></circle>
+        </div>
+    </div>
+</div>
