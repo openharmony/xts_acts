@@ -27,25 +27,25 @@ describe('switchPropsJsTest', function () {
         }).then(() => {
             console.info(`sleep ${time} over...`)
         })
-    };
+    }
     async function backToIndex() {
         let backToIndexPromise = new Promise((resolve, reject) => {
             setTimeout(() => {
                 router.back({
                     uri: 'pages/index/index'
                 });
-                resolve();
-            }, 500);
-        });
+                resolve()
+            }, 500)
+        })
         let clearPromise = new Promise((resolve, reject) => {
             setTimeout(() => {
-                router.clear();
-                resolve();
-            }, 500);
-        });
+                router.clear()
+                resolve()
+            }, 500)
+        })
         await backToIndexPromise.then(() => {
-            return clearPromise;
-        });
+            return clearPromise
+        })
     }
 
     /**
@@ -66,16 +66,16 @@ describe('switchPropsJsTest', function () {
         }
         await sleep(4000)
         done()
-    });
+    })
 
     /**
     * run after testcase
     */
     afterAll(async function () {
         console.info('[switchPropsJsTest] after each called')
-        await backToIndex();
+        await backToIndex()
         await sleep(1000)
-    });
+    })
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
@@ -672,7 +672,7 @@ describe('switchPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('switch')
         expect(obj.$attrs.id).assertEqual('checkedNone')
-        expect(obj.$attrs.checked).assertEqual(undefined)
+        expect(obj.$attrs.checked).assertEqual('false')
         console.info("[switchProps] get checked value is: " + JSON.stringify(obj.$attrs.checked));
         done();
     });
@@ -732,7 +732,7 @@ describe('switchPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('switch')
         expect(obj.$attrs.id).assertEqual('showTextNone')
-        expect(obj.$attrs.showtext).assertEqual(undefined)
+        expect(obj.$attrs.showtext).assertEqual('false')
         console.info("[switchProps] get showtext value is: " + JSON.stringify(obj.$attrs.showtext));
         done();
     });
@@ -772,7 +772,7 @@ describe('switchPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('switch')
         expect(obj.$attrs.id).assertEqual('textOnNone')
-        expect(obj.$attrs.texton).assertEqual(undefined)
+        expect(obj.$attrs.texton).assertEqual('On')
         console.info("[switchProps] get texton value is: " + JSON.stringify(obj.$attrs.texton));
         done();
     });
@@ -812,7 +812,7 @@ describe('switchPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('switch')
         expect(obj.$attrs.id).assertEqual('textOffNone')
-        expect(obj.$attrs.textoff).assertEqual(undefined)
+        expect(obj.$attrs.textoff).assertEqual('Off')
         console.info("[switchProps] get textoff value is: " + JSON.stringify(obj.$attrs.textoff));
         done();
     });
