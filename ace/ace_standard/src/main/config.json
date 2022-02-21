@@ -53,12 +53,12 @@
           "pages/index/index",
           "pages/routerPush/index",
           "pages/routerReplace/index",
-          "pages/button/index",
+          "pages/button/router/index",
           "pages/chart/index",
           "pages/input/index",
           "pages/slider/index",
           "pages/text/index",
-          "pages/divider/index",
+          "pages/divider/router/index",
           "pages/image/index",
           "pages/label/index",
           "pages/rating/index",
@@ -122,7 +122,9 @@
           "pages/textPath/index",
           "pages/tspan/index",
           "pages/div/prop/index",
-          "pages/div/style/index"
+          "pages/div/style/index",
+          "pages/divider/prop/index",
+          "pages/button/prop/index"
         ],
         "name": "default",
         "window": {

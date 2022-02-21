@@ -107,5 +107,130 @@
         <div id="styleThirtyTwo">
         </div>
     </div>
+    <div style="background-color: #000000; width: 2px; height: 100%;">
+    </div>
+    <div class="specific-container">
+        <text class="title">
+            div特有样式
+        </text>
+
+        <text class="sub-title">
+            特有样式 flex-direction flex-wrap justify-content align-items align-content
+        </text>
+        <div id="specificOne">
+            <div class="flex-item red-item">
+            </div>
+            <div class="flex-item blue-item">
+            </div>
+            <div class="flex-item green-item">
+            </div>
+        </div>
+        <div id="specificTwo">
+            <div id="specificThree" >
+                <div class="flex-item red-item">
+                </div>
+            </div>
+            <div id="specificFour" >
+                <div class="flex-item blue-item">
+                </div>
+
+            </div>
+            <div id="specificFive" >
+                <div class="flex-item yellow-item">
+                </div>
+                <div class="flex-item blue-item">
+                </div>
+            </div>
+            <div id="specificSix" >
+                <text style="font-size: 6px;">
+                    文本
+                </text>
+                <div class="flex-item blue-item">
+                </div>
+            </div>
+        </div>
+
+
+
+        <text class="sub-title">
+            特有样式 overflow scrollbar-color scrollbar-width overscroll-effect
+        </text>
+        <div id="specificSeven" >
+            <div id="specificEight" >
+                <div style="margin-left:10px;width: 80px; height: 10px; background-color: #0000ff;"></div>
+            </div>
+        </div>
+        <div id="specificNine">
+            <div class="flex-item red-item">
+            </div>
+            <div class="flex-item blue-item">
+            </div>
+            <div class="flex-item green-item">
+            </div>
+            <div class="flex-item red-item">
+            </div>
+            <div class="flex-item blue-item">
+            </div>
+            <div class="flex-item green-item">
+            </div>
+        </div>
+        <div id="specificTen">
+            <div class="flex-item red-item">
+            </div>
+            <div class="flex-item blue-item">
+            </div>
+            <div class="flex-item green-item">
+            </div>
+            <div class="flex-item red-item">
+            </div>
+            <div class="flex-item blue-item">
+            </div>
+            <div class="flex-item green-item">
+            </div>
+        </div>
+        <div id="specificEleven">
+            <div class="flex-item red-item">
+            </div>
+            <div class="flex-item blue-item">
+            </div>
+            <div class="flex-item green-item">
+            </div>
+            <div class="flex-item red-item">
+            </div>
+            <div class="flex-item blue-item">
+            </div>
+            <div class="flex-item green-item">
+            </div>
+        </div>
+
+        <text class="sub-title">
+            特有样式 grid
+        </text>
+        <div id="specificTwelve">
+        </div>
+        <div id="specificThirteen">
+        </div>
+
+    <!--        <div id="specificEight" >-->
+<!--            <div class="flex-item yellow-item">-->
+<!--            </div>-->
+<!--            <div class="flex-item blue-item" style="width: 45%; align-content:flex-end;">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div id="specificNine" >-->
+<!--            <div class="flex-item yellow-item">-->
+<!--            </div>-->
+<!--            <div class="flex-item blue-item">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div id="specificTen" >-->
+<!--            <div class="flex-item yellow-item">-->
+<!--            </div>-->
+<!--            <div class="flex-item blue-item">-->
+<!--            </div>-->
+<!--        </div>-->
+
+
+    </div>
 </div>
 

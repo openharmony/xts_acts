@@ -89,7 +89,7 @@ describe('aceJsTest', function () {
             console.info('testButtonComponent START');
             let result;
             let options = {
-                uri: 'pages/button/index'
+                uri: 'pages/button/router/index'
             }
             try {
                 result = router.push(options)
@@ -100,7 +100,7 @@ describe('aceJsTest', function () {
             await sleep(1000)
             let pages = router.getState();
             console.info("[router.button] getState" + JSON.stringify(pages));
-            expect("pages/button/").assertEqual(pages.path);
+            expect("pages/button/router/").assertEqual(pages.path);
             done();
         });
 
@@ -227,7 +227,7 @@ describe('aceJsTest', function () {
         it('testDividerComponent', 0, async function (done) {
             let result;
             let options = {
-                uri: 'pages/divider/index'
+                uri: 'pages/divider/router/index'
             }
             try {
                 result = router.push(options)
@@ -236,7 +236,7 @@ describe('aceJsTest', function () {
             }
             await sleep(1000)
             let pages = router.getState();
-            expect("pages/divider/").assertEqual(pages.path);
+            expect("pages/divider/router/").assertEqual(pages.path);
             done();
         });
 

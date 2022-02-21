@@ -27,7 +27,7 @@ describe('divPropsJsTest', function () {
         }).then(() => {
             console.info(`sleep ${time} over...`)
         })
-    }
+    };
 
     async function backToIndex() {
         let backToIndexPromise = new Promise((resolve, reject) => {
@@ -158,7 +158,6 @@ describe('divPropsJsTest', function () {
 //        expect(obj.$styles.height).assertEqual(undefined);
 //        console.info("[divProps] get style height value is: " + JSON.stringify(obj.$styles.height));
 //        expect(obj.$styles.get('background-color')).assertEqual(undefined);
-//        console.info("[divProps] get style background-color value is: " + JSON.stringify(obj.$styles.get('background-color')));
 //        done();
 //    });
 

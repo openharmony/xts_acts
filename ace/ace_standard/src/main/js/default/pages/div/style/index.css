@@ -51,7 +51,7 @@
   padding-bottom: 0.5px;
   margin-left: 1px;
   margin-top: 2px;
-  margin-right: 3px;
+  margin-right: 1.5px;
   margin-bottom: 0.5px;
   border-left-style: solid;
   border-right-style: dashed;
@@ -352,3 +352,162 @@
   mask-size: cover;
   mask-position: center;
 }
+
+.specific-container{
+  flex-direction: column;
+  flex-weight: 1;
+}
+
+#specificOne{
+  width: 70px;
+  height: 25px;
+  flex-direction: row;
+  flex-wrap:nowrap;
+}
+
+#specificTwo{
+  width: 100%;
+  height: 50px;
+  flex-direction: column;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+#specificThree{
+  width: 18%;
+  height: 48%;
+  border: 1px solid pink;
+  flex-direction: row;
+  justify-content:flex-end;
+  align-items: flex-end;
+  align-content: flex-end;
+  margin: 1%;
+}
+
+#specificFour{
+  width: 18%;
+  height: 48%;
+  border: 1px solid pink;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+  align-items: center;
+  margin: 1%;
+}
+
+#specificFive{
+  width: 18%;
+  height: 48%;
+  border: 1px solid pink;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items:stretch;
+  align-content: space-between;
+  margin: 1%;
+}
+
+#specificSix{
+  width: 18%;
+  height: 48%;
+  border: 1px solid pink;
+  flex-direction: row;
+  justify-content:space-around;
+  align-items: baseline;
+  align-content: space-around;
+  margin: 1%;
+}
+
+#specificSeven{
+  width: 50px;
+  height: 10px;
+  background-color: #ff0000;
+  overflow: hidden;
+}
+
+#specificEight{
+  width: 70px;
+  height: 10px;
+  background-color: #00ff00;
+  overflow: visible;
+  margin-left: 10px;
+}
+
+#specificNine{
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+  overflow: scroll;
+  flex-direction: column;
+  scrollbar-color:#ff0000;
+  scrollbar-width:2px;
+  overscroll-effect:spring;
+}
+
+#specificTen{
+  width: 100%;
+  height: 10px;
+  margin-top: 10px;
+  overflow: scroll;
+  scrollbar-color:#ff0000;
+  scrollbar-width:2px;
+  overscroll-effect:fade;
+}
+
+#specificEleven{
+  width: 100%;
+  height: 10px;
+  margin-top: 10px;
+  overflow: scroll;
+  scrollbar-color:#ff0000;
+  scrollbar-width:2px;
+  overscroll-effect:none;
+}
+
+#specificTwelve{
+  width: 100%;
+  height: 30px;
+  display: grid;
+  background-color: #000fff;
+  grid-template-rows: 50px 100px 60px;
+  grid-rows-gap:10px;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-auto-flow:row;
+}
+
+#specificThirteen{
+  width: 100%;
+  height: 30px;
+  background-color: #fff000;
+  display: grid;
+  grid-template-columns: 50px 100px 60px;
+  grid-columns-gap:10px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-auto-flow:column;
+}
+
+
+.flex-item{
+  width: 40%;
+  height: 10px;
+}
+
+.red-item{
+  background-color: #ff0000;
+}
+
+.green-item{
+  background-color: #00ff00;
+}
+
+.blue-item{
+  background-color: #0000ff;
+}
+
+.yellow-item{
+  background-color: #fff000;
+}
+
