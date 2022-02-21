@@ -17,6 +17,65 @@ import prompt from '@system.prompt';
 
 export default {
     data:{
+        lineData: [
+            {
+                strokeColor: '#0081ff',
+                fillColor: '#cce5ff',
+                data: [763, 550, 551, 554, 731, 654, 525, 696,
+                595, 628, 791, 505, 613, 575, 475, 553, 491, 680, 657, 716],
+                gradient: true,
+            }
+        ],
+        lineOps: {
+            xAxis: {
+                min: 0,
+                max: 20,
+                display: false,
+            },
+            yAxis: {
+                min: 0,
+                max: 1000,
+                display: false,
+            },
+            series: {
+                lineStyle: {
+                    width: "5px",
+                    smooth: true,
+                },
+                headPoint: {
+                    shape: "circle",
+                    size: 20,
+                    strokeWidth: 5,
+                    fillColor: '#ffffff',
+                    strokeColor: '#007aff',
+                    display: true,
+                },
+                loop: {
+                    margin: 2,
+                    gradient: true,
+                }
+            }
+        },
+        lineSeg:{
+            startColor:'#f7ce00',
+            endColor:'#d9542b',
+            value:50,
+            name:'蔬菜'
+        },
+        lineRain:[
+            {
+                startColor:'#f7ce00',
+                endColor:'#d9542b',
+                value:50,
+                name:'蔬菜'
+            },
+            {
+                startColor:'#f7ce00',
+                endColor:'#d9542b',
+                value:50,
+                name:'水果'
+            }
+        ],
         listOne:[{}],
         listThree:[{},{},{}],
         idProp : null,
@@ -49,24 +108,25 @@ export default {
         showPropFalse : null,
         showPropNone : null,
 
-        typeArc : null,
-        typeCapsule : null,
-        typeCircle : null,
-        typeText : null,
-        typeDownload : null,
+        typeBar : null,
+        typeLine : null,
+        typeGauge : null,
+        typeProgress : null,
+        typeLoading : null,
+        typeRainbow : null,
         typeNone : null,
-        value : null,
-        valueNone : null,
-        icon : null,
-        iconNone : null,
-        placementStart : null,
-        placementEnd : null,
-        placementTop : null,
-        placementBottom : null,
-        placementNone : null,
-        waitingTrue : null,
-        waitingFalse : null,
-        waitingNone : null
+        options : null,
+        optionsNone : null,
+        datasets : null,
+        datasetsNone : null,
+        segmentsSeg : null,
+        segmentsRain : null,
+        segmentsNone : null,
+        effectsTrue : null,
+        effectsFalse : null,
+        effectsNone : null,
+        animationduration : null,
+        animationdurationNone : null,
     },
     onShow(){
         this.getCommonPropValues();
@@ -84,12 +144,13 @@ export default {
             forPropOne : this.forPropOne, forPropThree : this.forPropThree, ifPropTrue : this.ifPropTrue,
             showPropTrue : this.showPropTrue, showPropFalse : this.showPropFalse, showPropNone : this.showPropNone,
 
-            typeArc : this.typeArc, typeCapsule : this.typeCapsule, typeCircle : this.typeCircle,
-            typeText : this.typeText, typeDownload : this.typeDownload, typeNone : this.typeNone,
-            value : this.value, valueNone : this.valueNone, icon : this.icon, iconNone : this.iconNone,
-            placementStart : this.placementStart, placementEnd : this.placementEnd, placementTop : this.placementTop,
-            placementBottom : this.placementBottom, placementNone : this.placementNone,
-            waitingTrue : this.waitingTrue, waitingFalse : this.waitingFalse, waitingNone : this.waitingNone
+            typeBar : this.typeBar, typeLine : this.typeLine, typeGauge : this.typeGauge,
+            typeProgress : this.typeProgress, typeLoading : this.typeLoading, typeRainbow : this.typeRainbow,
+            typeNone : this.typeNone, options : this.options,
+            optionsNone : this.optionsNone, datasets : this.datasets, datasetsNone : this.datasetsNone,
+            segmentsSeg : this.segmentsSeg, segmentsRain : this.segmentsRain, segmentsNone : this.segmentsNone,
+            effectsTrue : this.effectsTrue, effectsFalse : this.effectsFalse, effectsNone : this.effectsNone,
+            animationduration : this.animationduration, animationdurationNone : this.animationdurationNone
         }
     },
     getCommonPropValues(){
@@ -124,23 +185,24 @@ export default {
         this.showPropNone = this.$element("showPropNone").getInspector()
     },
     getSpecificPropValues(){
-        this.typeArc = this.$element("typeArc").getInspector()
-        this.typeCapsule = this.$element("typeCapsule").getInspector()
-        this.typeCircle = this.$element("typeCircle").getInspector()
-        this.typeText = this.$element("typeText").getInspector()
-        this.typeDownload = this.$element("typeDownload").getInspector()
+        this.typeBar = this.$element("typeBar").getInspector()
+        this.typeLine = this.$element("typeLine").getInspector()
+        this.typeGauge = this.$element("typeGauge").getInspector()
+        this.typeProgress = this.$element("typeProgress").getInspector()
+        this.typeLoading = this.$element("typeLoading").getInspector()
+        this.typeRainbow = this.$element("typeRainbow").getInspector()
         this.typeNone = this.$element("typeNone").getInspector()
-        this.value = this.$element("value").getInspector()
-        this.valueNone = this.$element("valueNone").getInspector()
-        this.icon = this.$element("icon").getInspector()
-        this.iconNone = this.$element("iconNone").getInspector()
-        this.placementStart = this.$element("placementStart").getInspector()
-        this.placementEnd = this.$element("placementEnd").getInspector()
-        this.placementTop = this.$element("placementTop").getInspector()
-        this.placementBottom = this.$element("placementBottom").getInspector()
-        this.placementNone = this.$element("placementNone").getInspector()
-        this.waitingTrue = this.$element("waitingTrue").getInspector()
-        this.waitingFalse = this.$element("waitingFalse").getInspector()
-        this.waitingNone = this.$element("waitingNone").getInspector()
+        this.options = this.$element("options").getInspector()
+        this.optionsNone = this.$element("optionsNone").getInspector()
+        this.datasets = this.$element("datasets").getInspector()
+        this.datasetsNone = this.$element("datasetsNone").getInspector()
+        this.segmentsSeg = this.$element("segmentsSeg").getInspector()
+        this.segmentsRain = this.$element("segmentsRain").getInspector()
+        this.segmentsNone = this.$element("segmentsNone").getInspector()
+        this.effectsTrue = this.$element("effectsTrue").getInspector()
+        this.effectsFalse = this.$element("effectsFalse").getInspector()
+        this.effectsNone = this.$element("effectsNone").getInspector()
+        this.animationduration = this.$element("animationduration").getInspector()
+        this.animationdurationNone = this.$element("animationdurationNone").getInspector()
     }
 }

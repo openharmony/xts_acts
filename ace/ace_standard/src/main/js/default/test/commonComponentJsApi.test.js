@@ -110,21 +110,21 @@ describe('aceJsTest', function () {
          * @tc.desc      ACE
          */
         it('testChartComponent', 0, async function (done) {
-            console.info('testButtonComponent START');
+            console.info('testChartComponent START');
             let result;
             let options = {
-                uri: 'pages/chart/index'
+                uri: 'pages/chart/router/index'
             }
             try {
                 result = router.push(options)
-                console.info("push button page success " + JSON.stringify(result));
+                console.info("push chart page success " + JSON.stringify(result));
             } catch (err) {
-                console.error("push button page error " + JSON.stringify(result));
+                console.error("push chart page error " + JSON.stringify(result));
             }
             await sleep(1000)
             let pages = router.getState();
             console.info("[router.chart] getState" + JSON.stringify(pages));
-            expect("pages/chart/").assertEqual(pages.path);
+            expect("pages/chart/router/").assertEqual(pages.path);
             done();
         });
 
@@ -248,7 +248,7 @@ describe('aceJsTest', function () {
         it('testGetImageComponent', 0, async function (done) {
             let result;
             let options = {
-                uri: 'pages/image/index'
+                uri: 'pages/image/router/index'
             }
             try {
                 result = router.push(options)
@@ -257,7 +257,7 @@ describe('aceJsTest', function () {
             }
             await sleep(1000)
             let pages = router.getState();
-            expect("pages/image/").assertEqual(pages.path);
+            expect("pages/image/router/").assertEqual(pages.path);
             done();
         });
 
@@ -269,7 +269,7 @@ describe('aceJsTest', function () {
         it('testGetMenuComponent', 0, async function (done) {
             let result;
             let options = {
-                uri: 'pages/menu/index'
+                uri: 'pages/menu/router/index'
             }
             try {
                 result = router.push(options)
@@ -278,7 +278,7 @@ describe('aceJsTest', function () {
             }
             await sleep(1000)
             let pages = router.getState();
-            expect("pages/menu/").assertEqual(pages.path);
+            expect("pages/menu/router/").assertEqual(pages.path);
             done();
         });
 
@@ -374,7 +374,7 @@ describe('aceJsTest', function () {
         it('testSpanComponent', 0, async function (done) {
             let result;
             let options = {
-                uri: 'pages/span/index'
+                uri: 'pages/span/router/index'
             }
             try {
                 result = router.push(options)
@@ -383,7 +383,7 @@ describe('aceJsTest', function () {
             }
             await sleep(1000)
             let pages = router.getState();
-            expect("pages/span/").assertEqual(pages.path);
+            expect("pages/span/router/").assertEqual(pages.path);
             done();
         });
 
@@ -395,7 +395,7 @@ describe('aceJsTest', function () {
         it('testSwitchComponent', 0, async function (done) {
             let result;
             let options = {
-                uri: 'pages/switch/index'
+                uri: 'pages/switch/router/index'
             }
             try {
                 result = router.push(options)
@@ -404,7 +404,7 @@ describe('aceJsTest', function () {
             }
             await sleep(1000)
             let pages = router.getState();
-            expect("pages/switch/").assertEqual(pages.path);
+            expect("pages/switch/router/").assertEqual(pages.path);
             done();
         });
 

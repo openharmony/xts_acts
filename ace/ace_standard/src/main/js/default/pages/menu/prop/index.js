@@ -16,6 +16,9 @@
 import prompt from '@system.prompt';
 
 export default {
+    onTextClick() {
+        this.$element("menuTarget").show({x:280,y:120});
+    },
     data:{
         listOne:[{}],
         listThree:[{},{},{}],
@@ -49,24 +52,13 @@ export default {
         showPropFalse : null,
         showPropNone : null,
 
-        typeArc : null,
-        typeCapsule : null,
-        typeCircle : null,
-        typeText : null,
-        typeDownload : null,
+        menuTarget : null,
+        menuTargetNone : null,
+        typeClick : null,
+        typeLongPress : null,
         typeNone : null,
-        value : null,
-        valueNone : null,
-        icon : null,
-        iconNone : null,
-        placementStart : null,
-        placementEnd : null,
-        placementTop : null,
-        placementBottom : null,
-        placementNone : null,
-        waitingTrue : null,
-        waitingFalse : null,
-        waitingNone : null
+        menuTitle : null,
+        menuTitleNone : null,
     },
     onShow(){
         this.getCommonPropValues();
@@ -84,12 +76,9 @@ export default {
             forPropOne : this.forPropOne, forPropThree : this.forPropThree, ifPropTrue : this.ifPropTrue,
             showPropTrue : this.showPropTrue, showPropFalse : this.showPropFalse, showPropNone : this.showPropNone,
 
-            typeArc : this.typeArc, typeCapsule : this.typeCapsule, typeCircle : this.typeCircle,
-            typeText : this.typeText, typeDownload : this.typeDownload, typeNone : this.typeNone,
-            value : this.value, valueNone : this.valueNone, icon : this.icon, iconNone : this.iconNone,
-            placementStart : this.placementStart, placementEnd : this.placementEnd, placementTop : this.placementTop,
-            placementBottom : this.placementBottom, placementNone : this.placementNone,
-            waitingTrue : this.waitingTrue, waitingFalse : this.waitingFalse, waitingNone : this.waitingNone
+            menuTarget : this.menuTarget, menuTargetNone : this.menuTargetNone, typeClick : this.typeClick,
+            typeLongPress : this.typeLongPress, typeNone : this.typeNone,
+            menuTitle : this.menuTitle, menuTitleNone : this.menuTitleNone,
         }
     },
     getCommonPropValues(){
@@ -124,23 +113,12 @@ export default {
         this.showPropNone = this.$element("showPropNone").getInspector()
     },
     getSpecificPropValues(){
-        this.typeArc = this.$element("typeArc").getInspector()
-        this.typeCapsule = this.$element("typeCapsule").getInspector()
-        this.typeCircle = this.$element("typeCircle").getInspector()
-        this.typeText = this.$element("typeText").getInspector()
-        this.typeDownload = this.$element("typeDownload").getInspector()
+        this.menuTarget = this.$element("menuTarget").getInspector()
+        this.menuTargetNone = this.$element("menuTargetNone").getInspector()
+        this.typeClick = this.$element("typeClick").getInspector()
+        this.typeLongPress = this.$element("typeLongPress").getInspector()
         this.typeNone = this.$element("typeNone").getInspector()
-        this.value = this.$element("value").getInspector()
-        this.valueNone = this.$element("valueNone").getInspector()
-        this.icon = this.$element("icon").getInspector()
-        this.iconNone = this.$element("iconNone").getInspector()
-        this.placementStart = this.$element("placementStart").getInspector()
-        this.placementEnd = this.$element("placementEnd").getInspector()
-        this.placementTop = this.$element("placementTop").getInspector()
-        this.placementBottom = this.$element("placementBottom").getInspector()
-        this.placementNone = this.$element("placementNone").getInspector()
-        this.waitingTrue = this.$element("waitingTrue").getInspector()
-        this.waitingFalse = this.$element("waitingFalse").getInspector()
-        this.waitingNone = this.$element("waitingNone").getInspector()
+        this.menuTitle = this.$element("menuTitle").getInspector()
+        this.menuTitleNone = this.$element("menuTitleNone").getInspector()
     }
 }

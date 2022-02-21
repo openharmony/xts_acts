@@ -16,6 +16,7 @@
 import prompt from '@system.prompt';
 
 export default {
+
     data:{
         listOne:[{}],
         listThree:[{},{},{}],
@@ -48,25 +49,6 @@ export default {
         showPropTrue : null,
         showPropFalse : null,
         showPropNone : null,
-
-        typeArc : null,
-        typeCapsule : null,
-        typeCircle : null,
-        typeText : null,
-        typeDownload : null,
-        typeNone : null,
-        value : null,
-        valueNone : null,
-        icon : null,
-        iconNone : null,
-        placementStart : null,
-        placementEnd : null,
-        placementTop : null,
-        placementBottom : null,
-        placementNone : null,
-        waitingTrue : null,
-        waitingFalse : null,
-        waitingNone : null
     },
     onShow(){
         this.getCommonPropValues();
@@ -83,13 +65,6 @@ export default {
             dirPropLtr : this.dirPropLtr, dirPropNone : this.dirPropNone, forPropNull : this.forPropNull,
             forPropOne : this.forPropOne, forPropThree : this.forPropThree, ifPropTrue : this.ifPropTrue,
             showPropTrue : this.showPropTrue, showPropFalse : this.showPropFalse, showPropNone : this.showPropNone,
-
-            typeArc : this.typeArc, typeCapsule : this.typeCapsule, typeCircle : this.typeCircle,
-            typeText : this.typeText, typeDownload : this.typeDownload, typeNone : this.typeNone,
-            value : this.value, valueNone : this.valueNone, icon : this.icon, iconNone : this.iconNone,
-            placementStart : this.placementStart, placementEnd : this.placementEnd, placementTop : this.placementTop,
-            placementBottom : this.placementBottom, placementNone : this.placementNone,
-            waitingTrue : this.waitingTrue, waitingFalse : this.waitingFalse, waitingNone : this.waitingNone
         }
     },
     getCommonPropValues(){
@@ -123,24 +98,4 @@ export default {
         this.showPropFalse = this.$element("showPropFalse").getInspector()
         this.showPropNone = this.$element("showPropNone").getInspector()
     },
-    getSpecificPropValues(){
-        this.typeArc = this.$element("typeArc").getInspector()
-        this.typeCapsule = this.$element("typeCapsule").getInspector()
-        this.typeCircle = this.$element("typeCircle").getInspector()
-        this.typeText = this.$element("typeText").getInspector()
-        this.typeDownload = this.$element("typeDownload").getInspector()
-        this.typeNone = this.$element("typeNone").getInspector()
-        this.value = this.$element("value").getInspector()
-        this.valueNone = this.$element("valueNone").getInspector()
-        this.icon = this.$element("icon").getInspector()
-        this.iconNone = this.$element("iconNone").getInspector()
-        this.placementStart = this.$element("placementStart").getInspector()
-        this.placementEnd = this.$element("placementEnd").getInspector()
-        this.placementTop = this.$element("placementTop").getInspector()
-        this.placementBottom = this.$element("placementBottom").getInspector()
-        this.placementNone = this.$element("placementNone").getInspector()
-        this.waitingTrue = this.$element("waitingTrue").getInspector()
-        this.waitingFalse = this.$element("waitingFalse").getInspector()
-        this.waitingNone = this.$element("waitingNone").getInspector()
-    }
 }

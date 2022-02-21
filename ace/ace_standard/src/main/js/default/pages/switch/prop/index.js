@@ -16,6 +16,7 @@
 import prompt from '@system.prompt';
 
 export default {
+
     data:{
         listOne:[{}],
         listThree:[{},{},{}],
@@ -49,24 +50,16 @@ export default {
         showPropFalse : null,
         showPropNone : null,
 
-        typeArc : null,
-        typeCapsule : null,
-        typeCircle : null,
-        typeText : null,
-        typeDownload : null,
-        typeNone : null,
-        value : null,
-        valueNone : null,
-        icon : null,
-        iconNone : null,
-        placementStart : null,
-        placementEnd : null,
-        placementTop : null,
-        placementBottom : null,
-        placementNone : null,
-        waitingTrue : null,
-        waitingFalse : null,
-        waitingNone : null
+        checkedTrue : null,
+        checkedFalse : null,
+        checkedNone : null,
+        showTextTrue : null,
+        showTextFalse : null,
+        showTextNone : null,
+        textOn : null,
+        textOnNone : null,
+        textOff : null,
+        textOffNone : null
     },
     onShow(){
         this.getCommonPropValues();
@@ -84,12 +77,9 @@ export default {
             forPropOne : this.forPropOne, forPropThree : this.forPropThree, ifPropTrue : this.ifPropTrue,
             showPropTrue : this.showPropTrue, showPropFalse : this.showPropFalse, showPropNone : this.showPropNone,
 
-            typeArc : this.typeArc, typeCapsule : this.typeCapsule, typeCircle : this.typeCircle,
-            typeText : this.typeText, typeDownload : this.typeDownload, typeNone : this.typeNone,
-            value : this.value, valueNone : this.valueNone, icon : this.icon, iconNone : this.iconNone,
-            placementStart : this.placementStart, placementEnd : this.placementEnd, placementTop : this.placementTop,
-            placementBottom : this.placementBottom, placementNone : this.placementNone,
-            waitingTrue : this.waitingTrue, waitingFalse : this.waitingFalse, waitingNone : this.waitingNone
+            checkedTrue : this.checkedTrue, checkedFalse : this.checkedFalse, checkedNone : this.checkedNone,
+            showTextTrue : this.showTextTrue, showTextFalse : this.showTextFalse, showTextNone : this.showTextNone,
+            textOn : this.textOn, textOnNone : this.textOnNone, textOff : this.textOff, textOffNone : this.textOffNone,
         }
     },
     getCommonPropValues(){
@@ -124,23 +114,15 @@ export default {
         this.showPropNone = this.$element("showPropNone").getInspector()
     },
     getSpecificPropValues(){
-        this.typeArc = this.$element("typeArc").getInspector()
-        this.typeCapsule = this.$element("typeCapsule").getInspector()
-        this.typeCircle = this.$element("typeCircle").getInspector()
-        this.typeText = this.$element("typeText").getInspector()
-        this.typeDownload = this.$element("typeDownload").getInspector()
-        this.typeNone = this.$element("typeNone").getInspector()
-        this.value = this.$element("value").getInspector()
-        this.valueNone = this.$element("valueNone").getInspector()
-        this.icon = this.$element("icon").getInspector()
-        this.iconNone = this.$element("iconNone").getInspector()
-        this.placementStart = this.$element("placementStart").getInspector()
-        this.placementEnd = this.$element("placementEnd").getInspector()
-        this.placementTop = this.$element("placementTop").getInspector()
-        this.placementBottom = this.$element("placementBottom").getInspector()
-        this.placementNone = this.$element("placementNone").getInspector()
-        this.waitingTrue = this.$element("waitingTrue").getInspector()
-        this.waitingFalse = this.$element("waitingFalse").getInspector()
-        this.waitingNone = this.$element("waitingNone").getInspector()
+        this.checkedTrue = this.$element("checkedTrue").getInspector()
+        this.checkedFalse = this.$element("checkedFalse").getInspector()
+        this.checkedNone = this.$element("checkedNone").getInspector()
+        this.showTextTrue = this.$element("showTextTrue").getInspector()
+        this.showTextFalse = this.$element("showTextFalse").getInspector()
+        this.showTextNone = this.$element("showTextNone").getInspector()
+        this.textOn = this.$element("textOn").getInspector()
+        this.textOnNone = this.$element("textOnNone").getInspector()
+        this.textOff = this.$element("textOff").getInspector()
+        this.textOffNone = this.$element("textOffNone").getInspector()
     }
 }

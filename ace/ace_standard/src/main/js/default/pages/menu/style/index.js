@@ -12,21 +12,3 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import prompt from '@system.prompt';
-export default {
-    data: {
-        title: 'World'
-    },
-    switchChange(e){
-        if(e.checked){
-            prompt.showToast({
-                message: "打开开关"
-            });
-        }else{
-            prompt.showToast({
-                message: "关闭开关"
-            });
-        }
-    }
-}
