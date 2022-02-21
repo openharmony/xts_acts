@@ -19,12 +19,12 @@
             "type": "ShellKit",
             "run-command": [
                 "chmod 777 /storage/media/100/local/files/fmsdir.sh",
-				"sh /data/media/fmsdir.sh",
+                "sh /data/media/fmsdir.sh",
                 "setenforce 0"
             ],
             "teardown-command":[
                 "setenforce 1",
-				"rm -rf /storage/media/100/local/files/*"
+                "rm -rf /storage/media/100/local/files/*"
             ]
         },
         {
