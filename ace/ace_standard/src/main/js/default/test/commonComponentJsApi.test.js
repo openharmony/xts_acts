@@ -1219,7 +1219,29 @@ describe('aceJsTest', function () {
         expect("pages/obj_Path2D/").assertEqual(pages.path);
         done();
     });
-
+    
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testOffCanvasRC2DComponent
+     * @tc.desc      ACE
+     */
+    it('testOffCanvasRC2DComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/obj_OffscreenCanvasRenderingContext2D/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push obj_OffscreenCanvasRenderingContext2D page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push obj_OffscreenCanvasRenderingContext2D page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.obj_OffscreenCanvasRenderingContext2D] getState" + JSON.stringify(pages));
+        expect("pages/obj_OffscreenCanvasRenderingContext2D/").assertEqual(pages.path);
+        done();
+    });
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testImageBitmapComponent
@@ -1263,29 +1285,6 @@ describe('aceJsTest', function () {
         let pages = router.getState();
         console.info("[router.obj_OffscreenCanvas] getState" + JSON.stringify(pages));
         expect("pages/obj_OffscreenCanvas/").assertEqual(pages.path);
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testOffCanvasRC2DComponent
-     * @tc.desc      ACE
-     */
-    it('testOffCanvasRC2DComponent', 0, async function (done) {
-        let result;
-        let options = {
-            uri: 'pages/obj_OffscreenCanvasRenderingContext2D/index'
-        }
-        try {
-            result = router.push(options)
-            console.info("push obj_OffscreenCanvasRenderingContext2D page success " + JSON.stringify(result));
-        } catch (err) {
-            console.error("push obj_OffscreenCanvasRenderingContext2D page error " + JSON.stringify(result));
-        }
-        await sleep(5000)
-        let pages = router.getState();
-        console.info("[router.obj_OffscreenCanvasRenderingContext2D] getState" + JSON.stringify(pages));
-        expect("pages/obj_OffscreenCanvasRenderingContext2D/").assertEqual(pages.path);
         done();
     });
 
