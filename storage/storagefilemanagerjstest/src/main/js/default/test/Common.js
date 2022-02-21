@@ -14,8 +14,6 @@
  */
 
 import  filemanager  from "@ohos.filemanager";
-import ability_featureAbility from '@ohos.ability.featureAbility'
-import process from '@ohos.process';
 import {
   describe,
   beforeAll,
@@ -37,30 +35,6 @@ export function randomString(num) {
   return pwd;
 }
 
-//async function getBasePath(){
-//  console.log("ability_featureAbility::"+JSON.stringify(ability_featureAbility))
-//  let context = ability_featureAbility.getContext();
-//  let path = await context.getFilesDir();
-//  console.log("path==" +path);
-//  return path;
-//}
-
-//export const PATH="/data/accounts/account_0/appdata/ohos.acts.stroage.filemanager/cache/";
-export const PATH = "internal://cache/file";
-
-async function getBasePath(path){
-  let basePath = "";
-  if(path.indexOf("internal://cache")!=-1){
-    basePath = `/data/accounts/account_0/appdata/ohos.acts.stroage.filemanager/${path.subSting(17)}`;
-  }if(path.indexOf("internal://app")!=-1){
-    basePath = `/data/accounts/account_0/appdata/ohos.acts.stroage.filemanager/${path.subSting(15)}`;
-  }if(path.indexOf("internal://share")!=-1){
-    basePath = `/data/accounts/account_0/appdata/ohos.acts.stroage.filemanager/${path.subSting(17)}`;
-  }
-  return basePath;
-}
-
-
 function isIntNum(val) {
   return typeof val === "number" && val % 1 === 0;
 }
@@ -71,17 +45,6 @@ function isString(str) {
 function isBoolean(val) {
   return typeof val == "boolean";
 }
-
-async function executeRunCmd(command){
-  console.log(`cmd===${command}`);
-  var child = await process.runCmd(command);
-  var result = child.wait();
-  let val = await child.getOutput();
-  console.log("getOutput===="+val);
-  let dataStr =  String.fromCharCode.apply(null, val);
-  return dataStr;
-};
-
 
 export {
   isIntNum,
@@ -94,7 +57,5 @@ export {
   afterAll,
   it,
   expect,
-  filemanager,
-  getBasePath,
-  executeRunCmd
+  filemanager
 };
