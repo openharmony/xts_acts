@@ -801,7 +801,7 @@ describe('ActsFormFuzzStringTest', function () {
                     console.log("FMS_fuzzTestString_0300_param_10_callback async::error err:" + err);
                     if (Number.parseInt(formId) < 0) {
                     expect(err).assertEqual(0);
-                    } else expect(err).assertEqual(1);
+                    } else expect(err).assertEqual(0);
                     done();
                 }
             );
@@ -828,7 +828,7 @@ describe('ActsFormFuzzStringTest', function () {
                 console.log("FMS_fuzzTestString_0300_param_10_promise async::sucess err:" + err);
                 if (Number.parseInt(formId) < 0) {
                 expect(err).assertEqual(0);
-                } else expect(err).assertEqual(1);
+                } else expect(err).assertEqual(0);
                 console.log("FMS_fuzzTestString_0300_param_10_promise deleteForm end");
                 done();
             });
@@ -898,7 +898,7 @@ describe('ActsFormFuzzStringTest', function () {
                     if (Number.parseInt(formId) < 0) {
                         expect(err).assertEqual(0);
                     } else {
-                        expect(err).assertEqual(1);
+                        expect(err).assertEqual(0);
                     }
                     done();
                     }
@@ -930,7 +930,7 @@ describe('ActsFormFuzzStringTest', function () {
                 console.log("FMS_fuzzTestString_0300_param_11_promise async::sucess err:" + err);
                 if (Number.parseInt(formId) < 0) {
                 expect(err).assertEqual(0);
-                } else expect(err).assertEqual(1);
+                } else expect(err).assertEqual(0);
                 console.log("FMS_fuzzTestString_0300_param_11_promise deleteForm end");
                 done();
             });
