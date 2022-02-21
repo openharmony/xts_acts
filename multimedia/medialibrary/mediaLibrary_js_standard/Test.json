@@ -23,11 +23,9 @@
             "run-command": [
                 "sh /data/local/tmp/copy_files.sh",
                 "chmod -R 777 /storage/media/100/local/files/*",
-                "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",
-                "setenforce 0"
+                "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*"
             ],
             "teardown-command":[
-                "setenforce 1",
                 "rm -rf /storage/media/100/local/files/*"
             ]
         },
