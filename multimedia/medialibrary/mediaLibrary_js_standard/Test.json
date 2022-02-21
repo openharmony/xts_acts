@@ -14,15 +14,14 @@
             "push": [
                 "./resource/medialibrary/01.jpg ->/storage/media/100/local/files",
                 "./resource/medialibrary/01.mp3 ->/storage/media/100/local/files",
-                "./resource/medialibrary/01.mp4 ->/storage/media/100/local/files"
+                "./resource/medialibrary/01.mp4 ->/storage/media/100/local/files",
+                "./resource/medialibrary/copy_files.sh ->/data/local/tmp"
             ]
         },
         {
             "type": "ShellKit",
             "run-command": [
-                "for n in `seq 1 999`; do      cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/copy-$n.jpg; done;",
-                "for n in `seq 1 999`; do      cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/copy-$n.mp3; done;",
-                "for n in `seq 1 999`; do      cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/copy-$n.mp4; done;",
+                "sh /data/local/tmp/copy_files.sh",
                 "chmod -R 777 /storage/media/100/local/files/*",
                 "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",
                 "setenforce 0"
