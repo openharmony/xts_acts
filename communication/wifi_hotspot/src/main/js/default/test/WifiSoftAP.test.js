@@ -55,7 +55,7 @@ describe('ACTS_WifiTest', function() {
         console.info("[wifi_test] enableHotspot and disableHotspot test start.");
 	    if (wifi.isWifiActive()) {
             var disable = wifi.disableWifi();
-            await sleep(2000);
+            await sleep(3000);
             console.log("[wifi_test] wifi close result: " + disable);
             expect(disable).assertTrue();
         }
@@ -64,7 +64,7 @@ describe('ACTS_WifiTest', function() {
         expect(close).assertFalse();
         if (!wifi.isHotspotActive()) {
             var on = wifi.enableHotspot();
-            await sleep(3000);
+            await sleep(5000);
             console.info("[wifi_test] enableHotspot result -> " + on);
             expect(on).assertTrue();
         }
@@ -80,12 +80,12 @@ describe('ACTS_WifiTest', function() {
     * @tc.desc    Test set a valid 2.4G hotspot config
     * @tc.level   Level 0
     */
-    it('SUB_Communication_WiFi_Hotspot_Config_0001', 0, async function () {
+    it('SUB_Communication_WiFi_Hotspot_Config_0001', 0, async function (done) {
         console.info("[wifi_test] SUB_Communication_WiFi_Hotspot_Config_0001");
         console.info("[wifi_test] set a valid 2.4G hotspot config start.");
         if (wifi.isHotspotActive()) {
             var off = wifi.disableHotspot();
-            await sleep(2000);
+            await sleep(3000);
             console.info("[wifi_test] disableHotspot result -> " + off);
             expect(off).assertTrue();
         }
@@ -99,7 +99,7 @@ describe('ACTS_WifiTest', function() {
         console.log("[wifi_test] getHotspotConfig  result: " + JSON.stringify(hotspotConfig));
         expect(hotspotConfig.band).assertEqual(1);
         console.info("[wifi_test] SUB_Communication_WiFi_Hotspot_Config_0001 end");
-        done();
+        done()
     })
 
     /**
@@ -131,7 +131,7 @@ describe('ACTS_WifiTest', function() {
         var hotspotConfig5 = wifi.getHotspotConfig();
         console.log("[wifi_test] getHotspotConfig  result: " + JSON.stringify(hotspotConfig5));
         expect(hotspotConfig5.band).assertEqual(1);
-        done();
+        done()
     })
 
     /**
@@ -293,6 +293,11 @@ describe('ACTS_WifiTest', function() {
         var isSuccess1 = wifi.setHotspotConfig(HotspotConfigS1);
         console.log("[wifi_test] set 33bit ssid invalid hotspot config  result: " + isSuccess1);
         expect(isSuccess1).assertFalse();
+        console.log("[wifi_test] check current hotspot config preSharedKey is 8bit" );
+        var config = wifi.getHotspotConfig();
+        console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
+        console.info("preSharedKey: " + config.ssid);
+        expect(config.ssid.length).assertEqual(32);
         done();
 
     })
@@ -333,7 +338,7 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Hotspot_Config_0008', 0, function () {
         console.info("[wifi_test] set contains Chinese valid hotspot config start.");
         var HotspotConfigC= {
-            "ssid": "�?�?@12测试 ",
+            "ssid": "测试123！@#￥%……&*（ ",
             "band": 1,
             "preSharedKey": "12345678",
             "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
@@ -347,6 +352,11 @@ describe('ACTS_WifiTest', function() {
         var isHotspotActive = wifi.isHotspotActive();
         console.info("[wifi_test] isHotspotActive -> " + isHotspotActive);
         expect(isHotspotActive).assertFalse();
+        console.log("[wifi_test] check current hotspot config preSharedKey is 8bit" );
+        var config = wifi.getHotspotConfig();
+        console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
+        console.info("preSharedKey: " + config.ssid);
+        expect(true).assertEqual(config.ssid==HotspotConfigC.ssid);
     })
 
     /**
@@ -427,6 +437,11 @@ describe('ACTS_WifiTest', function() {
         var isSuccess1 = wifi.setHotspotConfig(HotspotConfigPSK);
         console.log("[wifi_test] set a PSK preSharedKey hotspot config  result1: " + isSuccess1);
         expect(isSuccess1).assertTrue();
+        console.log("[wifi_test] check current hotspot config preSharedKey is 8bit" );
+        var config = wifi.getHotspotConfig();
+        console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
+        console.info("preSharedKey: " + config.ssid);
+        expect(config.preSharedKey).assertEqual(3);
         console.log("[wifi_test] check the state of Hotspot" );
         var isHotspotActive = wifi.isHotspotActive();
         console.info("[wifi_test] isHotspotActive -> " + isHotspotActive);
@@ -460,6 +475,11 @@ describe('ACTS_WifiTest', function() {
         var isSuccess1 = wifi.setHotspotConfig(HotspotConfigO);
         console.log("[wifi_test] set a open preSharedKey hotspot config  result1: " + isSuccess1);
         expect(isSuccess1).assertTrue();
+        console.log("[wifi_test] check current hotspot config preSharedKey is 8bit" );
+        var config = wifi.getHotspotConfig();
+        console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
+        console.info("preSharedKey: " + config.ssid);
+        expect(config.preSharedKey).assertEqual(1);
         done();
 
     })
@@ -535,14 +555,14 @@ describe('ACTS_WifiTest', function() {
         console.info("[wifi_test] isHotspotActive -> " + isHotspotActive);
         expect(isHotspotActive).assertTrue();
         console.info("[wifi_test] open Hotspot, set valid hotspot config start.");
-        var HotspotConfigO= {
-            "ssid": "测试3@%&*",
+        var HotspotConfigW= {
+            "ssid": "WIFI_TEST",
             "band": 1,
             "preSharedKey": "12345678",
             "securityType":WifiSecurityType.WIFI_SEC_TYPE_PSK,
             "maxConn": 8
         }
-        var isSuccess1 = wifi.setHotspotConfig(HotspotConfigO);
+        var isSuccess1 = wifi.setHotspotConfig(HotspotConfigW);
         console.log("[wifi_test] set a PSK preSharedKey hotspot config  result1: " + isSuccess1);
         expect(isSuccess1).assertTrue();
         console.info("[wifi_test] check the current config.");
@@ -554,7 +574,7 @@ describe('ACTS_WifiTest', function() {
         console.info("securityType: " + config.securityType);
         console.info("maxConn: " + config.maxConn);
         console.info("[wifi_test] check the current config is same with set before.");
-        expect(config.ssid).assertEqual('测试3@%&*');
+        expect(config.ssid).assertEqual('WIFI_TEST');
         expect(config.band).assertEqual(1);
         expect(config.preSharedKey).assertEqual('12345678');
         expect(config.securityType).assertEqual(3);
@@ -588,6 +608,7 @@ describe('ACTS_WifiTest', function() {
         console.info("ssid: " + stationInfo.name);
         console.info("macAddress: " + stationInfo.macAddress);
         console.info("ipAddress: " + stationInfo.ipAddress);
+        expect(stationInfo.length).assertEqual();
         done();
 
     })
@@ -726,4 +747,5 @@ describe('ACTS_WifiTest', function() {
 
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })
+
 

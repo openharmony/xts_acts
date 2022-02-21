@@ -144,11 +144,12 @@ describe('ACTS_WifiTest', function () {
         expect(addConfig).assertTrue();
         await wifi.getCurrentGroup()
             .then((data)  => {
-            console.info("[wifi_test] getCurrentGroup  [promise] result -> " + JSON.stringify(data));
-            expect(true).assertEqual(data.length!=0);
+                console.info("[wifi_test] getCurrentGroup  [promise] result -> " + JSON.stringify(data));
+                expect(true).assertEqual(data.length!=0);
+                expect(true).assertEqual(data.goBand == WifiP2PConfig2.goBand);
         }).catch((error) => {
-            console.info("[wifi_js]getCurrentGroup promise then error." + JSON.stringify(error));
-            expect().assertFail();
+                console.info("[wifi_test]getCurrentGroup promise then error." + JSON.stringify(error));
+                expect(error).assertFail();
         });
         console.info("[wifi_test] test start removeGroup");
         var removeConfig = wifi.removeGroup();
@@ -190,6 +191,7 @@ describe('ACTS_WifiTest', function () {
             .then((data)  => {
             console.info("[wifi_test] getCurrentGroup  [promise] result -> " + JSON.stringify(data));
             expect(true).assertEqual(data.length!=0);
+            expect(true).assertEqual(data.goBand == WifiP2PConfig.goBand);
             console.info("[wifi_test] test start deletePersistentGroup");
             var removePConfig = wifi.deletePersistentGroup(data.networkId);
             console.info("[wifi_test] test start deletePersistentGroup" + removePConfig);
@@ -299,7 +301,7 @@ describe('ACTS_WifiTest', function () {
     * @tc.number     config_0007
     * @tc.name       SUB_Communication_WiFi_P2P_Config_0007
     * @tc.author     wudangping wwx1075776
-    * @tc.desc       Test getP2pDevices infos
+    * @tc.desc       Test getP2pPeerDevices infos
     */
     it('SUB_Communication_WiFi_P2P_Config_0007', 0,  async function(done)  {
         var P2pDeviceStatus = {
@@ -324,20 +326,20 @@ describe('ACTS_WifiTest', function () {
         await sleep(2000);
         console.info("[wifi_test] test startDiscoverDevices result." + scanConfig);
         expect(scanConfig).assertTrue();
-        await wifi.getP2pDevices()
+        await wifi.getP2pPeerDevices()
             .then((data)  => {
-            console.info("[wifi_test] getP2pDevices  [promise] result -> " + JSON.stringify(data));
+            console.info("[wifi_test] getP2pPeerDevices  [promise] result -> " + JSON.stringify(data));
             expect(true).assertEqual(data.length!=0);
         }).catch((error) => {
-            console.info("[wifi_test]getP2pDevices promise then error." + JSON.stringify(error));
+            console.info("[wifi_test]getP2pPeerDevices promise then error." + JSON.stringify(error));
             expect().assertFail();
         });
-        wifi.getP2pDevices((err, result) => {
+        wifi.getP2pPeerDevices((err, result) => {
             if (err) {
-                console.error('failed to getP2pDevices infos callback because ' + JSON.stringify(err));
+                console.error('failed to getP2pPeerDevices infos callback because ' + JSON.stringify(err));
                 return;
             }
-            console.info("[wifi_test] getP2pDevices [callback] -> " + JSON.stringify(result));
+            console.info("[wifi_test] getP2pPeerDevices [callback] -> " + JSON.stringify(result));
             var len = Object.keys(result).length;
             for (var j = 0; j < len; ++j) {
                 console.info("deviceName: " + result[j].deviceName);
@@ -574,4 +576,5 @@ describe('ACTS_WifiTest', function () {
 
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })
+
 

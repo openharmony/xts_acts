@@ -18,29 +18,6 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 
 
-var SppType = {
-    SPP_RFCOMM : 0
-}
-
-var MatchMode = {
-    MATCH_MODE_AGGRESSIVE : 1,
-    MATCH_MODE_STICKY : 2
-}
-
-var MajorClass = {
-    MAJOR_MISC : 0x0000,
-    MAJOR_COMPUTER : 0x0100,
-    MAJOR_PHONE : 0x0200,
-    MAJOR_NETWORKING : 0x0300,
-    MAJOR_AUDIO_VIDEO : 0x0400,
-    MAJOR_PERIPHERAL : 0x0500,
-    MAJOR_IMAGING : 0x0600,
-    MAJOR_WEARABLE : 0x0700,
-    MAJOR_TOY : 0x0800,
-    MAJOR_HEALTH : 0x0900,
-    MAJOR_UNCATEGORIZED : 0x1F00
-}
-
 describe('bluetoothhostTest', function() {
 
     var gattServer = null;
@@ -104,7 +81,7 @@ describe('bluetoothhostTest', function() {
         var enable = bluetooth.enableBluetooth();
         expect(enable).assertEqual(true);
         console.info('[bluetooth_js] enable On = '+ JSON.stringify(enable));
-        await sleep(10000);
+        await sleep(4000);
         var state = bluetooth.getState();
         console.info('[bluetooth_js] getState On = '+ JSON.stringify(state));
         await bluetooth.off('stateChange', result => {
@@ -138,12 +115,13 @@ describe('bluetoothhostTest', function() {
         await bluetooth.startBluetoothDiscovery();
 
         await bluetooth.off('bluetoothDeviceFind', result => {
-            console.info("bluetoothDeviceFind off:" + JSON.stringify(result));
+            console.info("[bluetooth_js] bluetoothDeviceFind off:" + JSON.stringify(result));
             expect(true).assertEqual(result ==null);
             done();
         });
         console.info('[bluetooth_js] discovery end');
         done();
+        await sleep(2000);
     })
 
 
@@ -158,10 +136,6 @@ describe('bluetoothhostTest', function() {
      */
     it('bluetooth_ble_start_scan_without_param', 0, async function (done) {
         console.info('[bluetooth_js] BLE scan start without scan options start');
-        var enable = bluetooth.enableBluetooth();
-        expect(enable).assertEqual(true);
-        console.info('[bluetooth_js] enable On1 = '+ JSON.stringify(enable));
-        await sleep(5000);
         var state = bluetooth.getState();
         console.info('[bluetooth_js] getState On1 = '+ JSON.stringify(state));
 
@@ -169,7 +143,6 @@ describe('bluetoothhostTest', function() {
         function onReceiveEvent(data) {
             console.info('[bluetooth_js] BLE scan device find result3 = '+ JSON.stringify(data))
             expect(data.length).assertLarger(0);
-            //bluetooth.BLE.stopBLEScan();
             done();
         }
         bluetooth.BLE.startBLEScan([{}]);
@@ -655,6 +628,7 @@ describe('bluetoothhostTest', function() {
         }
         done();
     })
+
 
 })
 
