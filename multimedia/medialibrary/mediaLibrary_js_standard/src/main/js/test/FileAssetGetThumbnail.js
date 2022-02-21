@@ -38,35 +38,23 @@ describe('GetFileAssets_GetCount_GetAllObjects', function () {
     var MEDIA_TYPE = 'media_type';
     let fileKeyObj = mediaLibrary.FileKey
 
-    // let fetchOp = {
-    //     selections : mediaLibrary.PATH + "= ? OR " + mediaLibrary.MEDIA_TYPE + "=?",
-    //     selectionArgs : ["/data/media/images", "IMAGE"],
-    //     order : "ASC",
-    // }
-
-    // let fetchOp = {
-    //     selections : mediaLibrary.FileKey.PATH + "= ? OR " + mediaLibrary.FileKey.MEDIA_TYPE + "=?",
-    //     selectionArgs : ["/data/media/images", "IMAGE"],
-    //     order : "ASC",
-    // }
-
     let type = mediaLibrary.MediaType.IMAGE
     let videoType = mediaLibrary.MediaType.VIDEO
     let audioType = mediaLibrary.MediaType.AUDIO
     let fetchOp = {
-    selections : fileKeyObj.MEDIA_TYPE + "=?",
-    selectionArgs : [type.toString()],
-        order: fileKeyObj.PATH,
+        selections: fileKeyObj.MEDIA_TYPE + "=?",
+        selectionArgs: [type.toString()],
+        order: fileKeyObj.dateAdded,
     }
     let videoFetchOp = {
-    selections : fileKeyObj.MEDIA_TYPE + "=?",
-    selectionArgs : [videoType.toString()],
-        order: fileKeyObj.PATH,
+        selections: fileKeyObj.MEDIA_TYPE + "=?",
+        selectionArgs: [videoType.toString()],
+        order: fileKeyObj.dateAdded,
     }
     let audioFetchOp = {
-    selections : fileKeyObj.MEDIA_TYPE + "=?",
-    selectionArgs : [audioType.toString()],
-        order: fileKeyObj.PATH,
+        selections: fileKeyObj.MEDIA_TYPE + "=?",
+        selectionArgs: [audioType.toString()],
+        order: fileKeyObj.dateAdded,
     }
     beforeAll(function () {
         //onsole.info('beforeAll： Prerequisites at the test suite level, which are executed before the test suite is executed.');
