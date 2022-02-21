@@ -296,7 +296,7 @@ describe('ACTS_WifiTest', function() {
         console.log("[wifi_test] check current hotspot config preSharedKey is 8bit" );
         var config = wifi.getHotspotConfig();
         console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
-        console.info("preSharedKey: " + config.ssid);
+        console.info("ssid: " + config.ssid);
         expect(config.ssid.length).assertEqual(32);
         done();
 
@@ -355,7 +355,7 @@ describe('ACTS_WifiTest', function() {
         console.log("[wifi_test] check current hotspot config preSharedKey is 8bit" );
         var config = wifi.getHotspotConfig();
         console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
-        console.info("preSharedKey: " + config.ssid);
+        console.info("ssid: " + config.ssid);
         expect(true).assertEqual(config.ssid==HotspotConfigC.ssid);
     })
 
@@ -440,8 +440,8 @@ describe('ACTS_WifiTest', function() {
         console.log("[wifi_test] check current hotspot config preSharedKey is 8bit" );
         var config = wifi.getHotspotConfig();
         console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
-        console.info("preSharedKey: " + config.ssid);
-        expect(config.preSharedKey).assertEqual(3);
+        console.info("ssid: " + config.ssid);
+        expect(config.securityType).assertEqual(3);
         console.log("[wifi_test] check the state of Hotspot" );
         var isHotspotActive = wifi.isHotspotActive();
         console.info("[wifi_test] isHotspotActive -> " + isHotspotActive);
@@ -478,8 +478,8 @@ describe('ACTS_WifiTest', function() {
         console.log("[wifi_test] check current hotspot config preSharedKey is 8bit" );
         var config = wifi.getHotspotConfig();
         console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
-        console.info("preSharedKey: " + config.ssid);
-        expect(config.preSharedKey).assertEqual(1);
+        console.info("ssid: " + config.ssid);
+        expect(config.securityType).assertEqual(1);
         done();
 
     })
@@ -513,7 +513,7 @@ describe('ACTS_WifiTest', function() {
         console.log("[wifi_test] check current hotspot config  maxConn is 8   " );
         var config = wifi.getHotspotConfig();
         console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
-        console.info("ssid: " + config.maxConn);
+        console.info("maxConn: " + config.maxConn);
         expect(config.maxConn).assertEqual(8);
 
         console.log("[wifi_test] set more maxConn invalid hotspot config" );

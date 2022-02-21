@@ -820,6 +820,7 @@ describe('bluetoothhostTest', function() {
         console.info('[bluetooth_js] setLocalName end');
     })
 
+
     /**
      * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_SET_LOCAL_NAME_00014
      * @tc.name testsetLocalName
@@ -829,7 +830,7 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_classic_set_local_name14', 0, async function (done) {
+    it('bluetooth_classic_set_local_name14', 0, function () {
         console.info('[bluetooth_js] set localname start');
         var name = bluetooth.setLocalName('0123456789012345678901234567890123456789012345678901'
         +'23456789012345678901234567890123456789012345678901234567890123456789012345678012'
@@ -838,14 +839,29 @@ describe('bluetoothhostTest', function() {
         expect(name).assertTrue();
         var localName = bluetooth.getLocalName();
         console.info('[bluetooth_js] getLocalName result14 = ' + JSON.stringify(localName));
+        console.info('[bluetooth_js] setLocalName end');
+    })
+
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_DISABLE_0001
+     * @tc.name testdisablebluetooth
+     * @tc.desc Test disablebluetooth api.
+     * @tc.author zhangyujie zwx1079266
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+    it('bluetooth_classic_disable_bluetooth', 0, function () {
+        console.info('[bluetooth_js] disable test start');
         let disable = bluetooth.disableBluetooth();
         console.info('[bluetooth_js] disable:' + JSON.stringify(disable));
         expect(disable).assertTrue();
-        await sleep(2000);
-        console.info('[bluetooth_js] setLocalName end');
-        done();
+        var state = bluetooth.getState();
+        console.info('[bluetooth_js] bt state:' + JSON.stringify(state));
+        console.info('[bluetooth_js] disable end');
     })
-
 
 })
 
