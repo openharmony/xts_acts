@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../test/utils.ets';
+import Utils from './Utils';
 
 export default function appearJsunit() {
   describe('appInfoTest', function () {
