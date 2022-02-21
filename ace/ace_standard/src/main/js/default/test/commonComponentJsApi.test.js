@@ -1219,7 +1219,7 @@ describe('aceJsTest', function () {
         expect("pages/obj_Path2D/").assertEqual(pages.path);
         done();
     });
-    
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testOffCanvasRC2DComponent
@@ -1242,6 +1242,7 @@ describe('aceJsTest', function () {
         expect("pages/obj_OffscreenCanvasRenderingContext2D/").assertEqual(pages.path);
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testImageBitmapComponent
