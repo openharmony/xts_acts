@@ -16,14 +16,14 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../Utils.ets';
+import Utils from '../test/utils.ets';
 
 export default function appearJsunit() {
   describe('appInfoTest', function () {
     beforeEach(async function (done) {
       console.info("appear beforeEach start");
       let options = {
-        uri: 'pages/general-properties/appear',
+        uri: 'pages/appear',
       }
       let result;
       try {
