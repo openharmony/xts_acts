@@ -1,10 +1,10 @@
-/*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+/**
+ * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -32,7 +32,7 @@ describe('buttonPropsJsTest', function () {
         let backToIndexPromise = new Promise((resolve, reject) => {
             setTimeout(() => {
                 router.back({
-                    uri: 'pages/button/prop/index'
+                    uri: 'pages/index/index'
                 });
                 resolve();
             }, 500);
@@ -47,6 +47,7 @@ describe('buttonPropsJsTest', function () {
             return clearPromise;
         });
     }
+
     /**
     * run before testcase
     */
@@ -77,6 +78,7 @@ describe('buttonPropsJsTest', function () {
     });
 
     // 通用属性
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testButtonIdProp
@@ -95,6 +97,11 @@ describe('buttonPropsJsTest', function () {
         done();
     });
 
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testButtonClassProp
+     * @tc.desc      ACE
+     */
     it('testButtonClassProp', 0, async function (done) {
         console.info('testButtonClassProp START');
         console.info("[buttonProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
@@ -610,7 +617,7 @@ describe('buttonPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('button')
         expect(obj.$attrs.id).assertEqual('showPropNone')
-        expect(obj.$attrs.show).assertEqual('false')
+        expect(obj.$attrs.show).assertEqual('true')
         console.info("[buttonProps] get show value is: " + JSON.stringify(obj.$attrs.show));
         done();
     });
@@ -732,7 +739,7 @@ describe('buttonPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('button')
         expect(obj.$attrs.id).assertEqual('typeNone')
-        expect(obj.$attrs.type).assertEqual(undefined)
+        expect(obj.$attrs.type).assertEqual('capsule')
         console.info("[buttonProps] get type value is: " + JSON.stringify(obj.$attrs.type));
         done();
     });
@@ -912,7 +919,7 @@ describe('buttonPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('button')
         expect(obj.$attrs.id).assertEqual('placementNone')
-        expect(obj.$attrs.placement).assertEqual(undefined)
+        expect(obj.$attrs.placement).assertEqual('end')
         console.info("[buttonProps] get placement value is: " + JSON.stringify(obj.$attrs.placement));
         done();
     });
@@ -932,7 +939,7 @@ describe('buttonPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('button')
         expect(obj.$attrs.id).assertEqual('waitingTrue')
-        expect(obj.$attrs.waiting).assertEqual(true)
+        expect(obj.$attrs.waiting).assertEqual('true')
         console.info("[buttonProps] get waiting value is: " + JSON.stringify(obj.$attrs.waiting));
         done();
     });
@@ -952,7 +959,7 @@ describe('buttonPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('button')
         expect(obj.$attrs.id).assertEqual('waitingFalse')
-        expect(obj.$attrs.waiting).assertEqual(false)
+        expect(obj.$attrs.waiting).assertEqual('false')
         console.info("[buttonProps] get waiting value is: " + JSON.stringify(obj.$attrs.waiting));
         done();
     });
@@ -972,7 +979,7 @@ describe('buttonPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('button')
         expect(obj.$attrs.id).assertEqual('waitingNone')
-        expect(obj.$attrs.waiting).assertEqual(undefined)
+        expect(obj.$attrs.waiting).assertEqual('false')
         console.info("[buttonProps] get waiting value is: " + JSON.stringify(obj.$attrs.waiting));
         done();
     });

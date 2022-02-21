@@ -140,13 +140,6 @@
         <divider id="ifPropTrue"
              if="true">
         </divider>
-        <divider id="ifPropFalse"
-             if="false">
-        </divider>
-        <divider id="ifPropNone"
-             if="">
-        </divider>
-
         <text class="sub-title">
             渲染属性 -- show
         </text>

@@ -45,8 +45,6 @@ export default {
         forPropOne : null,
         forPropThree : null,
         ifPropTrue : null,
-        ifPropFalse : null,
-        ifPropNone : null,
         showPropTrue : null,
         showPropFalse : null,
         showPropNone : null,
@@ -84,8 +82,6 @@ export default {
             forPropOne : this.forPropOne,
             forPropThree : this.forPropThree,
             ifPropTrue : this.ifPropTrue,
-            ifPropFalse : this.ifPropFalse,
-            ifPropNone : this.ifPropNone,
             showPropTrue : this.showPropTrue,
             showPropFalse : this.showPropFalse,
             showPropNone : this.showPropNone,
@@ -121,16 +117,12 @@ export default {
         this.forPropOne = this.$element("forPropOne").getInspector()
         this.forPropThree = this.$element("forPropThree").getInspector()
         this.ifPropTrue = this.$element("ifPropTrue").getInspector()
-        this.ifPropFalse = this.$element("ifPropFalse").getInspector()
-        this.ifPropNone = this.$element("ifPropNone").getInspector()
         this.showPropTrue = this.$element("showPropTrue").getInspector()
         this.showPropFalse = this.$element("showPropFalse").getInspector()
         this.showPropNone = this.$element("showPropNone").getInspector()
-        return
     },
     getSpecificPropValues () {
-        this.verticalTrue = this.$element("showPropNone").getInspector()
-        this.verticalTrue = this.$element("showPropNone").getInspector()
-        return
+        this.verticalTrue = this.$element("verticalTrue").getInspector()
+        this.verticalFalse = this.$element("verticalFalse").getInspector()
     }
 }
