@@ -1314,10 +1314,10 @@ describe('aceJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testSvgComponent
+     * @tc.name      testRectComponent
      * @tc.desc      ACE
      */
-    it('testSvgComponent', 0, async function (done) {
+    it('testRectComponent', 0, async function (done) {
         let result;
         let options = {
             uri: 'pages/rect/index'
