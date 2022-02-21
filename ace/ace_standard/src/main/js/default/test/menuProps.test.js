@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Shenzhen kaiHong Digital Industry Development Co., Ltd.
+ * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -165,120 +165,6 @@ describe('menuPropsJsTest', function () {
         expect(obj.$attrs.id).assertEqual('refPropNone')
         expect(obj.$attrs.ref).assertEqual(undefined)
         console.info("[menuProps] get ref value is: " + JSON.stringify(obj.$attrs.ref));
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testMenuDisabledPropTrue
-     * @tc.desc      ACE
-     */
-    it('testMenuDisabledPropTrue', 0, async function (done) {
-        console.info('testMenuDisabledPropTrue START');
-        console.info("[menuProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.disabledPropTrue);
-        console.info("[menuProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[menuProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('menu')
-        expect(obj.$attrs.id).assertEqual('disabledPropTrue')
-        expect(obj.$attrs.disabled).assertEqual('true')
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testMenuDisabledPropFalse
-     * @tc.desc      ACE
-     */
-    it('testMenuDisabledPropFalse', 0, async function (done) {
-        console.info('testMenuDisabledPropFalse START');
-        console.info("[menuProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.disabledPropFalse);
-        console.info("[menuProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[menuProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('menu')
-        expect(obj.$attrs.id).assertEqual('disabledPropFalse')
-        expect(obj.$attrs.disabled).assertEqual('false')
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testMenuDisabledPropNone
-     * @tc.desc      ACE
-     */
-    it('testMenuDisabledPropNone', 0, async function (done) {
-        console.info('testMenuDisabledPropNone START');
-        console.info("[menuProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.disabledPropNone);
-        console.info("[menuProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[menuProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('menu')
-        expect(obj.$attrs.id).assertEqual('disabledPropNone')
-        expect(obj.$attrs.disabled).assertEqual('false')
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testMenuFocusablePropTrue
-     * @tc.desc      ACE
-     */
-    it('testMenuFocusablePropTrue', 0, async function (done) {
-        console.info('testMenuFocusablePropTrue START');
-        console.info("[menuProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.focusablePropTrue);
-        console.info("[menuProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[menuProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('menu')
-        expect(obj.$attrs.id).assertEqual('focusablePropTrue')
-        expect(obj.$attrs.focusable).assertEqual('true')
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testMenuFocusablePropFalse
-     * @tc.desc      ACE
-     */
-    it('testMenuFocusablePropFalse', 0, async function (done) {
-        console.info('testMenuFocusablePropFalse START');
-        console.info("[menuProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.focusablePropFalse);
-        console.info("[menuProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[menuProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('menu')
-        expect(obj.$attrs.id).assertEqual('focusablePropFalse')
-        expect(obj.$attrs.focusable).assertEqual('false')
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testMenuFocusablePropNone
-     * @tc.desc      ACE
-     */
-    it('testMenuFocusablePropNone', 0, async function (done) {
-        console.info('testMenuFocusablePropNone START');
-        console.info("[menuProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.focusablePropNone);
-        console.info("[menuProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[menuProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('menu')
-        expect(obj.$attrs.id).assertEqual('focusablePropNone')
-        expect(obj.$attrs.focusable).assertEqual('false')
         done();
     });
 
@@ -712,7 +598,7 @@ describe('menuPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('menu')
         expect(obj.$attrs.id).assertEqual('typeNone')
-        expect(obj.$attrs.type).assertEqual(undefined)
+        expect(obj.$attrs.type).assertEqual('click')
         console.info("[menuProps] get type value is: " + JSON.stringify(obj.$attrs.type));
         done();
     });

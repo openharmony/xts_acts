@@ -22,7 +22,7 @@
         <text class="sub-title">
             通用属性 -- id
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="idProp">
                 span
             </span>
@@ -32,13 +32,13 @@
         <text class="sub-title">
             通用属性 -- class
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="classProp"
                   class="classProp">
                 span
             </span>
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="classPropNone"
                   class="">
                 span
@@ -50,7 +50,7 @@
         <text class="sub-title">
             通用属性 -- style
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="styleProp"
                   style="width:80%;height:20px;background-color:red">
                 span
@@ -61,13 +61,13 @@
         <text class="sub-title">
             通用属性 -- ref
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="refProp"
                   ref="refProp">
                 span
             </span>
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="refPropNone"
                   ref="">
                 span
@@ -77,13 +77,13 @@
         <text class="sub-title">
             通用属性 -- data-*
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="dataProp"
                   data-Span="通用属性 -- data-Span">
                 span
             </span>
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="dataPropNone"
                   data-Span="">
                 span
@@ -93,25 +93,25 @@
         <text class="sub-title">
             通用属性 -- click-effect
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="clickEffectPropSmall"
                   click-effect="spring-small">
                 span
             </span>
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="clickEffectPropMedium"
                   click-effect="spring-medium">
                 span
             </span>
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="clickEffectPropLarge"
                   click-effect="spring-large">
                 span
             </span>
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="clickEffectPropNone"
                   click-effect="">
                 span
@@ -121,25 +121,25 @@
         <text class="sub-title">
             通用属性 -- dir
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="dirPropRtl"
                   dir="rtl">
                 span
             </span>
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="dirPropAuto"
                   dir="auto">
                 span
             </span>
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="dirPropLtr"
                   dir="ltr">
                 span
             </span>
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="dirPropNone"
                   dir="">
                 span
@@ -149,19 +149,19 @@
         <text class="sub-title">
             渲染属性 -- for
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="forPropNull"
                   for="">
                 span
             </span>
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="forPropOne"
                   for="{{listOne}}">
                 span
             </span>
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="forPropThree"
                   for="{{listThree}}">
                 span
@@ -171,7 +171,7 @@
         <text class="sub-title">
             渲染属性 -- if
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="ifPropTrue"
                   if="true">
                 span
@@ -182,21 +182,21 @@
         <text class="sub-title">
             渲染属性 -- show
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="showPropTrue"
                   show="true">
                 span
             </span>
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="showPropFalse"
                   show="false">
                 span
             </span>
         </text>
-        <text class="idProp">
+        <text class="spanTextTitle">
             <span id="showPropNone"
-                  show="false">
+                  show="">
                 span
             </span>
         </text>
@@ -204,6 +204,7 @@
 
     <div style="background-color: #000000; width: 2px; height: 100%;">
     </div>
+
     <div class="specific-container">
 
     </div>
