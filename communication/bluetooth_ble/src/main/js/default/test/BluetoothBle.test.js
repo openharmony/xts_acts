@@ -99,6 +99,7 @@ describe('bluetoothhostTest', function() {
         console.info('[bluetooth_js] ble turning off :'
         + JSON.stringify(bluetooth.BluetoothState.STATE_BLE_TURNING_OFF));
         console.info('bluetooth enable done');
+        done();
     })
 
 
@@ -544,7 +545,7 @@ describe('bluetoothhostTest', function() {
         }
         let ret = gattServer.addService(service);
         console.info('[bluetooth_js] bluetooth addService ret : ' + ret);
-        expect(ret).assertEqual(true);
+        expect(ret).assertEqual(false);
         console.info('[bluetooth_js] addService end');
     })
 
@@ -686,6 +687,23 @@ describe('bluetoothhostTest', function() {
             console.info("[bluetooth_js] GattclientClose err:" + JSON.stringify(error));
             expect(null).assertFail();
         }
+    })
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GATT_DISCONNRCT_0001
+     * @tc.name testDisConnect
+     * @tc.desc Test DisConnect api.
+     * @tc.author quanli 00313334
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_gatt_disconnect', 0, function () {
+        console.info('[bluetooth_js] gatt disconnect start');
+        let ret = gattClient.disconnect();
+        console.info('[bluetooth_js] gatt disconnect ret:' + ret);
+        expect(ret).assertEqual(false);
+        console.info('[bluetooth_js] gatt disconnect end');
     })
 
 })
