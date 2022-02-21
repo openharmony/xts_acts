@@ -380,9 +380,9 @@ describe('videoEncoderReliability', function () {
     }
 
     async function toGetInputSurface() {
-        await videoEncodeProcessor.getInputSurface().then((surface) => {
-            expect(surface != undefined).assertTrue();
-            surfaceID = surface;
+        await videoEncodeProcessor.getInputSurface().then((inputSurface) => {
+            expect(inputSurface != undefined).assertTrue();
+            surfaceID = inputSurface;
         }, failCallback).catch(failCatch);
     }
 
@@ -471,7 +471,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_PROMISE_0300', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0300.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, CONFIGURE_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, 
+            CONFIGURE_ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -485,7 +486,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_PROMISE_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0400.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, CONFIGURE_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, 
+            CONFIGURE_ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -499,7 +501,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0500.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP ,CONFIGURE_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP , 
+            CONFIGURE_ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -513,7 +516,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_PROMISE_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0600.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, JUDGE_EOS, CONFIGURE_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
+            JUDGE_EOS, CONFIGURE_ERROR, STOPSTREAM, END);
         frameTotal = 2;
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -612,7 +616,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_PROMISE_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0400.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, PREPARE_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, PREPARE_ERROR, 
+            STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -626,7 +631,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0500.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, PREPARE_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, 
+            PREPARE_ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -640,7 +646,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_PROMISE_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0600.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, PREPARE_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, PREPARE_ERROR, 
+            STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -654,7 +661,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_PROMISE_0700', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0700.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, JUDGE_EOS, PREPARE_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
+            JUDGE_EOS, PREPARE_ERROR, STOPSTREAM, END);
         frameTotal = 2;
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -669,7 +677,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_PROMISE_0800', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0800.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RESET, PREPARE_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RESET, 
+            PREPARE_ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -726,7 +735,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_PROMISE_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0400.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, START_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, START_ERROR, 
+            STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -740,7 +750,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0500.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, START_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, 
+            START_ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -754,7 +765,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_PROMISE_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0600.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, START, WAITFORALLOUTS);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, 
+            START, WAITFORALLOUTS);
         workdoneAtEOS = true;
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -769,7 +781,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_PROMISE_0700', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0700.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, JUDGE_EOS, START_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
+            JUDGE_EOS, START_ERROR, STOPSTREAM, END);
         frameTotal = 2;
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -784,7 +797,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_PROMISE_0800', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0800.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RESET, START_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RESET, 
+            START_ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -840,7 +854,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_PROMISE_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0400.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, FLUSH, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, FLUSH, 
+            STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -854,7 +869,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0500.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, FLUSH, WAITFORALLOUTS);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, FLUSH, 
+            WAITFORALLOUTS);
         workdoneAtEOS = true;
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -869,7 +885,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_PROMISE_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0600.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP ,FLUSH_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP,
+            FLUSH_ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -883,7 +900,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_PROMISE_0700', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0700.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, JUDGE_EOS, FLUSH, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
+            JUDGE_EOS, FLUSH, STOPSTREAM, END);
         frameTotal = 2;
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -898,7 +916,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_PROMISE_0800', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0800.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RESET, FLUSH_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RESET, 
+            FLUSH_ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -954,7 +973,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_PROMISE_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'stop_0400.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, 
+            STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -968,7 +988,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'stop_0500.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, STOP, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, STOP, 
+            STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -982,7 +1003,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_PROMISE_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'stop_0600.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, STOP_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, STOP_ERROR, 
+            STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -996,7 +1018,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_PROMISE_0700', 0, async function (done) {
         let savepath = BASIC_PATH + 'stop_0700.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, JUDGE_EOS, STOP, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, JUDGE_EOS, 
+            STOP, STOPSTREAM, END);
         frameTotal = 2;
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -1011,7 +1034,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_PROMISE_0800', 0, async function (done) {
         let savepath = BASIC_PATH + 'stop_0800.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RESET, STOP_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RESET, 
+            STOP_ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -1067,7 +1091,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_PROMISE_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'reset_0400.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RESET, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RESET, 
+            STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -1081,7 +1106,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'reset_0500.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, RESET, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, 
+            RESET, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -1095,7 +1121,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_PROMISE_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'reset_0600.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, RESET, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, 
+            RESET, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -1109,7 +1136,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_PROMISE_0700', 0, async function (done) {
         let savepath = BASIC_PATH + 'reset_0700.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, JUDGE_EOS, RESET, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
+            JUDGE_EOS, RESET, STOPSTREAM, END);
         frameTotal = 2;
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -1124,7 +1152,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_PROMISE_0800', 0, async function (done) {
         let savepath = BASIC_PATH + 'reset_0800.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RESET, RESET, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RESET, 
+            RESET, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -1180,7 +1209,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RELEASE_PROMISE_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'release_0400.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RELEASE, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, 
+            RELEASE, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -1194,7 +1224,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RELEASE_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'release_0500.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, RELEASE, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, 
+            RELEASE, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -1208,7 +1239,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RELEASE_PROMISE_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'release_0600.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, RELEASE, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, 
+            RELEASE, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -1222,7 +1254,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RELEASE_PROMISE_0700', 0, async function (done) {
         let savepath = BASIC_PATH + 'release_0700.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, JUDGE_EOS, RELEASE, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
+            JUDGE_EOS, RELEASE, STOPSTREAM, END);
         frameTotal = 2;
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -1237,7 +1270,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RELEASE_PROMISE_0800', 0, async function (done) {
         let savepath = BASIC_PATH + 'release_0800.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RELEASE, RELEASE_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RELEASE, 
+            RELEASE_ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -1251,7 +1285,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_PROMISE_0100', 0, async function (done) {
         let savepath = BASIC_PATH + 'eos_0100.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, JUDGE_EOS, FLUSH, STOP, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
+            JUDGE_EOS, FLUSH, STOP, STOPSTREAM, END);
         frameTotal = 2;
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -1266,7 +1301,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_PROMISE_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'eos_0200.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, JUDGE_EOS, FLUSH, STARTSTREAM, WAITFORALLOUTS);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
+            JUDGE_EOS, FLUSH, STARTSTREAM, WAITFORALLOUTS);
         frameTotal = 2;
         flushAtEOS = true;
         createVideoEncoder(savepath, mySteps, done);
@@ -1282,7 +1318,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_PROMISE_0300', 0, async function (done) {
         let savepath = BASIC_PATH + 'eos_0300.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, JUDGE_EOS, RESET, CONFIGURE, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
+            JUDGE_EOS, RESET, CONFIGURE, STOPSTREAM, END);
         frameTotal = 2;
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -1297,7 +1334,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_PROMISE_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'eos_0400.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, JUDGE_EOS, STOPSTREAM, STOP, START, SETSTREAMPARAM, STARTSTREAM, WAITFORALLOUTS);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
+            JUDGE_EOS, STOPSTREAM, STOP, START, SETSTREAMPARAM, STARTSTREAM, WAITFORALLOUTS);
         frameTotal = 2;
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -1312,7 +1350,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'eos_0500.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, JUDGE_EOS, STOP, START, STOP, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
+            JUDGE_EOS, STOP, START, STOP, STOPSTREAM, END);
         frameTotal = 2;
         createVideoEncoder(savepath, mySteps, done);
     })

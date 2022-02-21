@@ -197,10 +197,10 @@ describe('videoEncoderSoftwareMultiInstances', function () {
     }
 
     async function toGetInputSurface() {
-        await videoEncodeProcessor.getInputSurface().then((surface) => {
-            expect(surface != undefined).assertTrue();
+        await videoEncodeProcessor.getInputSurface().then((inputSurface) => {
+            expect(inputSurface != undefined).assertTrue();
             console.info('case getInputSurface success');
-            surfaceID = surface;
+            surfaceID = inputSurface;
         }, failCallback).catch(failCatch);
     }
 

@@ -189,10 +189,10 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
         });
     });
     eventEmitter.on('getInputSurface', (done) => {
-        videoEncodeProcessor.getInputSurface((err, surface) => {
+        videoEncodeProcessor.getInputSurface((err, inputSurface) => {
             expect(err).assertUndefined();
-            expect(surface != undefined).assertTrue();
-            surfaceID = surface;
+            expect(inputSurface != undefined).assertTrue();
+            surfaceID = inputSurface;
             console.info('in case : getInputSurface success, surfaceID ' + surfaceID);
             eventEmitter.emit('prepare', done);
         })
