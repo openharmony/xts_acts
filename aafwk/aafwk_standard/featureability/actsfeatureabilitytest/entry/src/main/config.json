@@ -46,7 +46,7 @@
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "page",
-        "launchType": "standard",
+        "launchType": "singleton",
         "process": "processTestAbility",
         "permissions": ["ohos.permission.ACCELEROMETER","ohos.permission.ANSWER_CALL"],
         "deviceCapability": ["screen_support","audio_support"],
