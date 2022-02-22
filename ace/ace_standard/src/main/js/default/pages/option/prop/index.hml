@@ -22,137 +22,158 @@
         <text class="sub-title">
             通用属性 -- id
         </text>
-        <option value="选项1" id="idProp">
-        </option>
+        <select>
+            <option value="选项1" id="idProp">选项1
+            </option>
+        </select>
 
         <text class="sub-title">
             通用属性 -- class
         </text>
-        <option value="选项1" id="classProp"
-             class="classProp">
-        </option>
-        <option value="选项1" id="classPropNone"
-             class="">
-        </option>
-
-
+        <select>
+            <option value="选项1" id="classProp"
+                    class="classProp">选项1
+            </option>
+            <option value="选项1" id="classPropNone"
+                    class="">选项2
+            </option>
+        </select>
         <text class="sub-title">
             通用属性 -- style
         </text>
-        <option value="选项1" id="styleProp"
-             style="width:10%;height:20px;background-color:red">
-        </option>
-
+        <select>
+            <option value="选项1" id="styleProp"
+                    style="width:10%;height:20px;background-color:red">选项1
+            </option>
+        </select>
         <text class="sub-title">
             通用属性 -- ref
         </text>
-        <option value="选项1" id="refProp"
-             ref="refProp">
-        </option>
-        <option value="选项1" id="refPropNone"
-             ref="">
-        </option>
+        <select>
+            <option value="选项1" id="refProp"
+                    ref="refProp">选项1
+            </option>
+            <option value="选项2" id="refPropNone"
+                    ref="">选项2
+            </option>
+        </select>
 
         <text class="sub-title">
             通用属性 -- disabled
         </text>
-        <option value="选项1" id="disabledPropTrue"
-             disabled="true">
-        </option>
-        <option value="选项1" id="disabledPropFalse"
-             disabled="false">
-        </option>
-        <option value="选项1" id="disabledPropNone"
-             disabled="">
-        </option>
+
+        <select>
+            <option value="选项1" id="disabledPropTrue"
+                    disabled="true">选项1
+            </option>
+            <option value="选项2" id="disabledPropFalse"
+                    disabled="false">选项2
+            </option>
+            <option value="选项3" id="disabledPropNone"
+                    disabled="">选项3
+            </option>
+        </select>
 
         <text class="sub-title">
             通用属性 -- focusable
         </text>
-        <option value="选项1" id="focusablePropTrue"
-             focusable="true">
-        </option>
-        <option value="选项1" id="focusablePropFalse"
-             focusable="false">
-        </option>
-        <option value="选项1" id="focusablePropNone"
-             focusable="">
-        </option>
+        <select>
+            <option value="选项1" id="focusablePropTrue"
+                    focusable="true">选项1
+            </option>
+            <option value="选项2" id="focusablePropFalse"
+                    focusable="false">选项2
+            </option>
+            <option value="选项3" id="focusablePropNone"
+                    focusable="">选项3
+            </option>
+        </select>
 
         <text class="sub-title">
             通用属性 -- data-*
         </text>
-        <option value="选项1" id="dataProp"
-             data-option="通用属性 -- data-*">
-        </option>
-        <option value="选项1" id="dataPropNone"
-             data-option="">
-        </option>
+        <select>
+            <option value="选项1" id="dataProp"
+                    data-option="通用属性 -- data-*">选项1
+            </option>
+            <option value="选项2" id="dataPropNone"
+                    data-option="">选项2
+            </option>
+        </select>
 
         <text class="sub-title">
             通用属性 -- click-effect
         </text>
-        <option value="选项1" id="clickEffectPropSmall"
-             click-effect="spring-small">
-        </option>
-        <option value="选项1" id="clickEffectPropMedium"
-             click-effect="spring-medium">
-        </option>
-        <option value="选项1" id="clickEffectPropLarge"
-             click-effect="spring-large">
-        </option>
-        <option value="选项1" id="clickEffectPropNone"
-             click-effect="">
-        </option>
+        <select>
+            <option value="选项1" id="clickEffectPropSmall"
+                    click-effect="spring-small">选项1
+            </option>
+            <option value="选项2" id="clickEffectPropMedium"
+                    click-effect="spring-medium">选项2
+            </option>
+            <option value="选项3" id="clickEffectPropLarge"
+                    click-effect="spring-large">选项3
+            </option>
+            <option value="选项4" id="clickEffectPropNone"
+                    click-effect="">选项4
+            </option>
+        </select>
 
         <text class="sub-title">
             通用属性 -- dir
         </text>
-        <option value="选项1" id="dirPropRtl"
-             dir="rtl">
-        </option>
-        <option value="选项1" id="dirPropAuto"
-             dir="auto">
-        </option>
-        <option value="选项1" id="dirPropLtr"
-             dir="ltr">
-        </option>
-        <option value="选项1" id="dirPropNone"
-             dir="">
-        </option>
+        <select>
+            <option value="选项1" id="dirPropRtl"
+                    dir="rtl">选项1
+            </option>
+            <option value="选项2" id="dirPropAuto"
+                    dir="auto">选项2
+            </option>
+            <option value="选项3" id="dirPropLtr"
+                    dir="ltr">选项3
+            </option>
+            <option value="选项4" id="dirPropNone"
+                    dir="">选项4
+            </option>
+        </select>
 
         <text class="sub-title">
             渲染属性 -- for
         </text>
-        <option value="选项1" id="forPropNull"
-             for="">
-        </option>
-        <option value="选项1" id="forPropOne"
-             for="{{listOne}}">
-        </option>
-        <option value="选项1" id="forPropThree"
-             for="{{listThree}}">
-        </option>
-
+        <select>
+            <option value="选项1" id="forPropNull"
+                    for="">选项1
+            </option>
+            <option value="选项1" id="forPropOne"
+                    for="{{listOne}}">选项1
+            </option>
+            <option value="选项1" id="forPropThree"
+                    for="{{listThree}}">选项1
+            </option>
+        </select>
         <text class="sub-title">
             渲染属性 -- if
         </text>
-        <option value="选项1" id="ifPropTrue"
-             if="true">
-        </option>
+        <select>
+            <option value="选项1" id="ifPropTrue"
+                    if="true">选项1
+            </option>
+        </select>
 
         <text class="sub-title">
             渲染属性 -- show
         </text>
-        <option value="选项1" id="showPropTrue"
-             show="true">
-        </option>
-        <option value="选项1" id="showPropFalse"
-             show="false">
-        </option>
-        <option value="选项1" id="showPropNone"
-             show="none">
-        </option>
+        <select>
+            <option value="选项1" id="showPropTrue"
+                    show="true">选项1
+            </option>
+            <option value="选项2" id="showPropFalse"
+                    show="false">选项2
+            </option>
+            <option value="选项3" id="showPropNone"
+                    show="">选项3
+            </option>
+        </select>
     </div>
 
     <div style="background-color: #000000; width: 2px; height: 100%;">
@@ -165,16 +186,20 @@
             option特有属性 -- selected
         </text>
         <select>
-            <option value="选项1" value="选项1" id="selectedTrue" selected="true">optionVal1</option>
-            <option value="选项1" value="选项2" id="selectedFalse" selected="false">optionVal2</option>
+            <option value="选项1" id="selectedTrue" selected="true">optionVal1</option>
+            <option value="选项1" id="selectedFalse" selected="false">optionVal2</option>
         </select>
         <text  class="sub-title">
             option特有属性 -- value
         </text>
-        <option value="optionValue" id="optionValue">optionVal</option>
+        <select>
+            <option value="optionValue" id="optionValue">optionVal</option>
+        </select>
         <text  class="sub-title">
             option特有属性 -- icon
         </text>
-        <option value="optionIcon" icon="common/images/icon.png" id="optionIcon">optionVal</option>
+        <select>
+            <option value="optionIcon" icon="common/images/icon.png" id="optionIcon">optionVal</option>
+        </select>
     </div>
 </div>

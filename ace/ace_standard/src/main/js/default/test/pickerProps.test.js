@@ -27,7 +27,7 @@ describe('pickerPropsJsTest', function () {
         }).then(() => {
             console.info(`sleep ${time} over...`)
         })
-    };
+    }
 
     async function backToIndex() {
         let backToIndexPromise = new Promise((resolve, reject) => {
@@ -37,16 +37,16 @@ describe('pickerPropsJsTest', function () {
                 });
                 resolve();
             }, 500);
-        });
+        })
         let clearPromise = new Promise((resolve, reject) => {
             setTimeout(() => {
                 router.clear();
                 resolve();
             }, 500);
-        });
+        })
         await backToIndexPromise.then(() => {
             return clearPromise;
-        });
+        })
     }
 
     /**
@@ -67,7 +67,7 @@ describe('pickerPropsJsTest', function () {
         }
         await sleep(4000)
         done()
-    });
+    })
 
     /**
     * run after testcase
@@ -76,7 +76,7 @@ describe('pickerPropsJsTest', function () {
         console.info('[pickerPropsJsTest] after each called')
         await backToIndex()
         await sleep(1000)
-    });
+    })
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
@@ -754,7 +754,7 @@ describe('pickerPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('picker')
         expect(obj.$attrs.id).assertEqual('pickerDatetime')
-        expect(obj.$attrs.if).assertEqual('datetime')
+        expect(obj.$attrs.type).assertEqual('datetime')
         console.info("[pickerProps] get type value is: " + JSON.stringify(obj.$attrs.type));
         done();
     });/**

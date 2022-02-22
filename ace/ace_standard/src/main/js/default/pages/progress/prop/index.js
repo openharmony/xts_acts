@@ -58,7 +58,7 @@ export default {
         typeEclipse: null
     },
 
-    onCreate(){
+    onShow(){
         this.getCommonPropValues();
         this.getSpecificPropValues();
         globalThis.value = {

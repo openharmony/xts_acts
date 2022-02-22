@@ -27,7 +27,7 @@ describe('pickerViewPropsJsTest', function () {
         }).then(() => {
             console.info(`sleep ${time} over...`)
         })
-    };
+    }
 
     async function backToIndex() {
         let backToIndexPromise = new Promise((resolve, reject) => {
@@ -37,16 +37,16 @@ describe('pickerViewPropsJsTest', function () {
                 });
                 resolve();
             }, 500);
-        });
+        })
         let clearPromise = new Promise((resolve, reject) => {
             setTimeout(() => {
                 router.clear();
                 resolve();
             }, 500);
-        });
+        })
         await backToIndexPromise.then(() => {
             return clearPromise;
-        });
+        })
     }
 
     /**
@@ -67,7 +67,7 @@ describe('pickerViewPropsJsTest', function () {
         }
         await sleep(4000)
         done()
-    });
+    })
 
     /**
     * run after testcase
@@ -76,7 +76,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info('[pickerViewPropsJsTest] after each called')
         await backToIndex()
         await sleep(1000)
-    });
+    })
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100

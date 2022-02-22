@@ -1,4 +1,4 @@
-/**
+<!--/**
  * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -11,10 +11,21 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ */-->
 
-export default {
-  data: {
-    title: 'World'
-  }
-}
+<div class="container">
+    <div class="style-container">
+        <text class="title">
+            option支持如下样式
+        </text>
+
+        <text class="sub-title">
+            支持样式
+        </text>
+        <select>
+            <option value="option" id="styleOne">option
+            </option>
+        </select>
+    </div>
+</div>
+

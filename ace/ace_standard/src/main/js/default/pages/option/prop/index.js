@@ -54,7 +54,7 @@ export default {
         optionIcon: false
     },
 
-    onCreate(){
+    onShow(){
         this.getCommonPropValues();
         this.getSpecificPropValues();
         globalThis.value = {

@@ -151,7 +151,7 @@
              show="false">
         </progress>
         <progress percent="10" id="showPropNone"
-             show="none">
+             show="">
         </progress>
     </div>
 

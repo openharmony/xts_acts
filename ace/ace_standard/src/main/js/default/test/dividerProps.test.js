@@ -27,7 +27,7 @@ describe('dividerPropsJsTest', function () {
         }).then(() => {
             console.info(`sleep ${time} over...`)
         })
-    };
+    }
 
     async function backToIndex() {
         let backToIndexPromise = new Promise((resolve, reject) => {
@@ -37,16 +37,16 @@ describe('dividerPropsJsTest', function () {
                 });
                 resolve();
             }, 500);
-        });
+        })
         let clearPromise = new Promise((resolve, reject) => {
             setTimeout(() => {
                 router.clear();
                 resolve();
             }, 500);
-        });
+        })
         await backToIndexPromise.then(() => {
             return clearPromise;
-        });
+        })
     }
 
     /**
@@ -67,7 +67,7 @@ describe('dividerPropsJsTest', function () {
         }
         await sleep(4000)
         done()
-    });
+    })
 
     /**
     * run after testcase
@@ -76,7 +76,7 @@ describe('dividerPropsJsTest', function () {
         console.info('[dividerPropsJsTest] after each called')
         await backToIndex()
         await sleep(1000)
-    });
+    })
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
@@ -197,120 +197,6 @@ describe('dividerPropsJsTest', function () {
         expect(obj.$attrs.id).assertEqual('refPropNone')
         expect(obj.$attrs.ref).assertEqual(undefined)
         console.info("[dividerProps] get ref value is: " + JSON.stringify(obj.$attrs.ref));
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDividerDisabledPropTrue
-     * @tc.desc      ACE
-     */
-    it('testDividerDisabledPropTrue', 0, async function (done) {
-        console.info('testDividerDisabledPropTrue START');
-        console.info("[dividerProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.disabledPropTrue);
-        console.info("[dividerProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[dividerProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('divider')
-        expect(obj.$attrs.id).assertEqual('disabledPropTrue')
-        expect(obj.$attrs.disabled).assertEqual('true')
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDividerDisabledPropFalse
-     * @tc.desc      ACE
-     */
-    it('testDividerDisabledPropFalse', 0, async function (done) {
-        console.info('testDividerDisabledPropFalse START');
-        console.info("[dividerProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.disabledPropFalse);
-        console.info("[dividerProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[dividerProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('divider')
-        expect(obj.$attrs.id).assertEqual('disabledPropFalse')
-        expect(obj.$attrs.disabled).assertEqual('false')
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDividerDisabledPropNone
-     * @tc.desc      ACE
-     */
-    it('testDividerDisabledPropNone', 0, async function (done) {
-        console.info('testDividerDisabledPropNone START');
-        console.info("[dividerProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.disabledPropNone);
-        console.info("[dividerProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[dividerProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('divider')
-        expect(obj.$attrs.id).assertEqual('disabledPropNone')
-        expect(obj.$attrs.disabled).assertEqual('false')
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDividerFocusablePropTrue
-     * @tc.desc      ACE
-     */
-    it('testDividerFocusablePropTrue', 0, async function (done) {
-        console.info('testDividerFocusablePropTrue START');
-        console.info("[dividerProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.focusablePropTrue);
-        console.info("[dividerProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[dividerProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('divider')
-        expect(obj.$attrs.id).assertEqual('focusablePropTrue')
-        expect(obj.$attrs.focusable).assertEqual('true')
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDividerFocusablePropFalse
-     * @tc.desc      ACE
-     */
-    it('testDividerFocusablePropFalse', 0, async function (done) {
-        console.info('testDividerFocusablePropFalse START');
-        console.info("[dividerProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.focusablePropFalse);
-        console.info("[dividerProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[dividerProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('divider')
-        expect(obj.$attrs.id).assertEqual('focusablePropFalse')
-        expect(obj.$attrs.focusable).assertEqual('false')
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDividerFocusablePropNone
-     * @tc.desc      ACE
-     */
-    it('testDividerFocusablePropNone', 0, async function (done) {
-        console.info('testDividerFocusablePropNone START');
-        console.info("[dividerProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.focusablePropNone);
-        console.info("[dividerProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[dividerProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('divider')
-        expect(obj.$attrs.id).assertEqual('focusablePropNone')
-        expect(obj.$attrs.focusable).assertEqual('false')
         done();
     });
 

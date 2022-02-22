@@ -151,7 +151,7 @@
              show="false">
         picker</picker>
         <picker type="text" id="showPropNone"
-             show="none">
+             show="">
         picker</picker>
     </div>
 

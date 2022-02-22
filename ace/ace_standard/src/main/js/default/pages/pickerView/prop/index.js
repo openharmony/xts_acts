@@ -58,7 +58,7 @@ export default {
         pickerViewMultiText: null
     },
 
-    onCreate(){
+    onShow(){
         this.getCommonPropValues();
         this.getSpecificPropValues();
         globalThis.value = {

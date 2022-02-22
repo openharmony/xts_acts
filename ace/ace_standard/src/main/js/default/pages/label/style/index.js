@@ -13,25 +13,7 @@
  * limitations under the License.
  */
 
-/*xxx.css */
-.container {
-    flex-direction: column;
-    align-items: center;
-}
+export default {
 
-.row {
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-}
 
-.label {
-    width: 200px;
-    margin-top: 50px;
-    margin-left: 10px;
-}
-
-.input {
-    margin-top: 50px;
-    margin-right: 20px;
 }
