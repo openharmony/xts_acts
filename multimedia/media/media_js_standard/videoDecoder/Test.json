@@ -1,0 +1,41 @@
+{
+    "description": "Configuration for video decoder Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "2000000",
+        "package": "ohos.acts.multimedia.videodecoder",
+		"shell-timeout": "60000"
+    },
+    "kits": [
+        {
+            "type": "PushKit",
+            "pre-push": [
+            ],
+            "push": [
+                "./resource/media/es/out_1920_1080_30fps_3s.h264 ->/data/media/",
+                "./resource/media/es/h263_1408_1152.es ->/data/media/",
+                "./resource/media/es/MPEG2_720_480.es ->/data/media/",
+                "./resource/media/es/mpeg4_320_240.es ->/data/media/",
+                "./resource/media/es/out_320_240_10s.h264 ->/data/media/"
+            ]
+        },
+		{
+            "type": "ShellKit",
+            "run-command": [
+                "chmod 777 -R /data/media",
+                "chmod 777 /data/media/*",
+                "setenforce 0"
+            ],
+            "teardown-command":[
+                "setenforce 1"
+            ]
+        },
+        {
+            "test-file-name": [
+                "MediaVideoDecoderJsTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+}
