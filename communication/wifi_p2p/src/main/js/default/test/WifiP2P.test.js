@@ -79,8 +79,9 @@ describe('ACTS_WifiTest', function () {
         expect(addConfig).assertTrue();
         await wifi.getCurrentGroup()
             .then((data)  => {
-            console.info("[wifi_test] getCurrentGroup [promise] result -> " + JSON.stringify(data));
-            expect(true).assertEqual(data.length!=0);
+                var resultLength = Object.keys(data).length;
+                console.info("[wifi_test] getCurrentGroup [promise] result -> " + JSON.stringify(data));
+                expect(true).assertEqual(resultLength!=0);
         }).catch((error) => {
             console.info("[wifi_js]getCurrentGroup promise then error." + JSON.stringify(error));
             expect().assertFail();
@@ -144,9 +145,9 @@ describe('ACTS_WifiTest', function () {
         expect(addConfig).assertTrue();
         await wifi.getCurrentGroup()
             .then((data)  => {
+                var resultLength = Object.keys(data).length;
                 console.info("[wifi_test] getCurrentGroup  [promise] result -> " + JSON.stringify(data));
-                expect(true).assertEqual(data.length!=0);
-                expect(true).assertEqual(data.goBand == WifiP2PConfig2.goBand);
+                expect(true).assertEqual(resultLength!=0);
         }).catch((error) => {
                 console.info("[wifi_test]getCurrentGroup promise then error." + JSON.stringify(error));
                 expect(error).assertFail();
@@ -189,9 +190,10 @@ describe('ACTS_WifiTest', function () {
         expect(addConfig).assertTrue();
         await wifi.getCurrentGroup()
             .then((data)  => {
+            var resultLength = Object.keys(data).length;    
             console.info("[wifi_test] getCurrentGroup  [promise] result -> " + JSON.stringify(data));
-            expect(true).assertEqual(data.length!=0);
-            expect(true).assertEqual(data.goBand == WifiP2PConfig.goBand);
+            expect(true).assertEqual(resultLength!=0);
+            
             console.info("[wifi_test] test start deletePersistentGroup");
             var removePConfig = wifi.deletePersistentGroup(data.networkId);
             console.info("[wifi_test] test start deletePersistentGroup" + removePConfig);
@@ -256,8 +258,9 @@ describe('ACTS_WifiTest', function () {
         };
         await wifi.getP2pLinkedInfo()
             .then((data)  => {
+                var resultLength = Object.keys(data).length; 
                 console.info("[wifi_test] getP2pLinkedInfo  [promise] result -> " + JSON.stringify(data));
-                expect(true).assertEqual(data.length!=0);
+                expect(true).assertEqual(resultLength!=0);
             }).catch((error) => {
                 console.info("[wifi_test]getP2pLinkedInfo promise then error." + JSON.stringify(error));
                 expect(error).assertFail();
@@ -272,7 +275,6 @@ describe('ACTS_WifiTest', function () {
             console.info("isGroupOwner: " + result.isGroupOwner);
             console.info("groupOwnerAddr: " + result.groupOwnerAddr);
             expect(false).assertEqual(result.connectState ==P2pConnectState.CONNECTED);
-            expect(false).assertEqual(result.connectState ==P2pConnectState.DISCONNECTED);
 
         });
         done();
@@ -328,8 +330,9 @@ describe('ACTS_WifiTest', function () {
         expect(scanConfig).assertTrue();
         await wifi.getP2pPeerDevices()
             .then((data)  => {
+            var resultLength = Object.keys(data).length; 
             console.info("[wifi_test] getP2pPeerDevices  [promise] result -> " + JSON.stringify(data));
-            expect(true).assertEqual(data.length!=0);
+            expect(true).assertEqual(resultLength!=0);
         }).catch((error) => {
             console.info("[wifi_test]getP2pPeerDevices promise then error." + JSON.stringify(error));
             expect().assertFail();
