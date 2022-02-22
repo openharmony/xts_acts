@@ -1261,7 +1261,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testKill001', 0, function () {
-        var result = process.kill(123, 3)
+        var result = process.kill(3, 123)
         expect(result).assertEqual(false)
     })
 
@@ -1273,7 +1273,7 @@ describe('ChildProcessTest', function () {
      */
     it('testKill002', 0, function () {
         var pres = process.pid
-        var result = process.kill(pres, 23)
+        var result = process.kill(23, pres)
         expect(result).assertEqual(true)
     })
 
@@ -1285,7 +1285,7 @@ describe('ChildProcessTest', function () {
      */
     it('testKill003', 0, function () {
         var pres = process.pid
-        var result = process.kill(pres, 28)
+        var result = process.kill(28, pres)
         expect(result).assertEqual(true)
     })
 
@@ -1297,7 +1297,7 @@ describe('ChildProcessTest', function () {
      */
     it('testKill004', 0, function () {
         var pres = process.pid
-        var result = process.kill(pres, 17)
+        var result = process.kill(17, pres)
         expect(result).assertEqual(true)
     })
 
@@ -1308,7 +1308,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testKill005', 0, function () {
-        var result = process.kill(113, 3)
+        var result = process.kill(3, 113)
         expect(result).assertEqual(false)
     })
 
@@ -2123,24 +2123,6 @@ describe('ChildProcessTest', function () {
     it('testGetstartrealtime004', 0, function () {
         for(var i=0; i<1000; i++)
         {
-            var pri = process.getPastCputime()
-            if(pri > 0)
-            {
-                var flag = new Boolean(true)
-            }
-            expect(Boolean(flag)).assertEqual(true)
-        }
-    })
-
-    /**
-     * @tc.name: testGetpastCputime001
-     * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
-     * @tc.require: AR000GFB04
-     * @tc.author: liwenqiang
-     */
-    it('testGetpastCputime001', 0, function () {
-        for(var i=0; i<10; i++)
-        {
             var pri = process.getStartRealtime()
             if(pri > 0)
             {
@@ -2151,30 +2133,15 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: testGetpastCputime002
+     * @tc.name: testGetpastCpuTime001
      * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
      * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('testGetpastCputime002', 0, function () {
-        var pri = process.getPastCputime()
-        if(pri > 0)
+    it('testGetpastCpuTime001', 0, function () {
+        for(var i=0; i<10; i++)
         {
-            var flag = new Boolean(true)
-        }
-        expect(Boolean(flag)).assertEqual(true)
-    })
-
-    /**
-     * @tc.name: testGetpastCputime003
-     * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
-     * @tc.require: AR000GFB04
-     * @tc.author: liwenqiang
-     */
-    it('testGetpastCputime003', 0, function () {
-        for(var i=0; i<100; i++)
-        {
-            var pri = process.getPastCputime()
+            var pri = process.getPastCpuTime()
             if(pri > 0)
             {
                 var flag = new Boolean(true)
@@ -2184,15 +2151,48 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: testGetpastCputime004
+     * @tc.name: testGetpastCpuTime002
      * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
      * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('testGetpastCputime004', 0, function () {
+    it('testGetpastCpuTime002', 0, function () {
+        var pri = process.getPastCpuTime()
+        if(pri > 0)
+        {
+            var flag = new Boolean(true)
+        }
+        expect(Boolean(flag)).assertEqual(true)
+    })
+
+    /**
+     * @tc.name: testGetpastCpuTime003
+     * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetpastCpuTime003', 0, function () {
+        for(var i=0; i<100; i++)
+        {
+            var pri = process.getPastCpuTime()
+            if(pri > 0)
+            {
+                var flag = new Boolean(true)
+            }
+            expect(Boolean(flag)).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetpastCpuTime004
+     * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
+     * @tc.require: AR000GFB04
+     * @tc.author: liwenqiang
+     */
+    it('testGetpastCpuTime004', 0, function () {
         for(var i=0; i<1000; i++)
         {
-            var pri = process.getPastCputime()
+            var pri = process.getPastCpuTime()
             if(pri > 0)
             {
                 var flag = new Boolean(true)
