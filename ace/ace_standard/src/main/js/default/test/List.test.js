@@ -23,4 +23,7 @@ require('./imageProps.test.js')
 require('./spanProps.test.js')
 require('./menuProps.test.js')
 require('./switchProps.test.js')
+require('./tabsProps.test.js')
+require('./tabBarProps.test.js')
+require('./tabContentProps.test.js')
 
