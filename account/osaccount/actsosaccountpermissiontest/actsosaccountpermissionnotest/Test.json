@@ -10,7 +10,7 @@
         {
             "test-file-name": [
                 "ActsOsAccountPermissionNoTest.hap",
-                "ActsOsAccountScenePermission"
+                "ActsOsAccountScenePermission.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

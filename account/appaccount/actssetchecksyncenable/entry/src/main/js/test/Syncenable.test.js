@@ -12,10 +12,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import account from '@ohos.account.appAccount'
+import bundle from '@ohos.bundle'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
+const TIMEOUT = 2000;
+const PERMISSION_USER_SET = 1;
+const PERMISSION_USER_NAME = "ohos.permission.DISTRIBUTED_DATASYNC";
+var tokenID = undefined;
 describe('ActsSetCheckSyncEnable', function () {
+    beforeAll(async function (done) {
+        console.debug("====>beforeAll start====");
+        var appInfo = await bundle.getApplicationInfo('com.example.actssetchecksyncenable', 0, 100);
+        tokenID = appInfo.accessTokenId;
+        console.debug("accessTokenId" + appInfo.accessTokenId + " bundleName:" + appInfo.bundleName);
+        var atManager = abilityAccessCtrl.createAtManager();
+        var result = await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME, PERMISSION_USER_SET);
+        console.debug("tokenId" + tokenID + " result:" + result);
+        sleep(TIMEOUT);
+        console.debug("====>beforeAll end====");
+        done();
+    })
+
+    function sleep(delay) {
+        var start = (new Date()).getTime();
+        while((new Date()).getTime() - start < delay) {
+            continue;
+        }
+    }
 
     /*
      * @tc.number    : ActsSetCheckSyncEnable_0100
