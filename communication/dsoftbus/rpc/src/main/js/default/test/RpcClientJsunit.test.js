@@ -56,7 +56,8 @@ describe('ActsRpcClientJsTest', function(){
         };
         let connect = {
             onConnect:function (elementName, remoteProxy) {
-                console.log('RpcClient: onConnect called, instance of proxy: ' + (remoteProxy instanceof rpc.RemoteProxy))
+                console.log('RpcClient: onConnect called, instance of proxy: ' 
+                             + (remoteProxy instanceof rpc.RemoteProxy))
                 gIRemoteObject = remoteProxy
 
             },
