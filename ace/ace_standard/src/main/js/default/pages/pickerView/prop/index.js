@@ -131,10 +131,10 @@ export default {
         this.showPropNone = this.$element("showPropNone").getInspector()
     },
     getSpecificPropValues () {
-//        this.pickerViewViewText = this.$element("pickerViewViewText").getInspector()
-//        this.pickerViewViewDate = this.$element("pickerViewViewDate").getInspector()
-//        this.pickerViewViewTime = this.$element("pickerViewViewTime").getInspector()
-//        this.pickerViewViewDatetime = this.$element("pickerViewViewDatetime").getInspector()
-//        this.pickerViewViewMultiText = this.$element("pickerViewViewMultiText").getInspector()
+        this.pickerViewViewText = this.$element("pickerViewViewText").getInspector()
+        this.pickerViewViewDate = this.$element("pickerViewViewDate").getInspector()
+        this.pickerViewViewTime = this.$element("pickerViewViewTime").getInspector()
+        this.pickerViewViewDatetime = this.$element("pickerViewViewDatetime").getInspector()
+        this.pickerViewViewMultiText = this.$element("pickerViewViewMultiText").getInspector()
     }
 }
