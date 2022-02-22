@@ -2288,58 +2288,6 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: testGetAvailableCores001
-     * @tc.desc: Returns cpu cores available for the current process on a multi-core device.
-     * @tc.require: AR000GFB04
-     * @tc.author: liwenqiang
-     */
-    it('testGetAvailableCores001', 0, function () {
-        var pri = process.getAvailableCores()
-        if(pri != null)
-        {
-            var flag = new Boolean(true)
-        }
-        expect(Boolean(flag)).assertEqual(true)
-    })
-
-    /**
-     * @tc.name: testGetAvailableCores002
-     * @tc.desc: Returns cpu cores available for the current process on a multi-core device.
-     * @tc.require: AR000GFB04
-     * @tc.author: liwenqiang
-     */
-    it('testGetAvailableCores002', 0, function () {
-        for(var i=0; i<10; i++)
-        {
-            var pri = process.getAvailableCores()
-            if(pri != 0)
-            {
-                var flag = new Boolean(true)
-            }
-            expect(Boolean(flag)).assertEqual(true)
-        }
-    })
-
-    /**
-     * @tc.name: testGetAvailableCores003
-     * @tc.desc: Returns cpu cores available for the current process on a multi-core device.
-     * @tc.require: AR000GFB04
-     * @tc.author: liwenqiang
-     */
-    it('testGetAvailableCores003', 0, function () {
-        for(var i=0; i<100; i++)
-        {
-            var pri = process.getAvailableCores()
-            if(pri != 0)
-            {
-                var flag = new Boolean(true)
-            }
-            expect(Boolean(flag)).assertEqual(true)
-        }
-    })
-
-
-    /**
      * @tc.name: testGetEnvironmentVar001
      * @tc.desc: Returns the system value for environment variables.
      * @tc.require: AR000GFB04
