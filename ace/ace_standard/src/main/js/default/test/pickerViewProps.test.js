@@ -91,7 +91,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('idProp')
         done();
     });
@@ -109,7 +109,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('classProp')
         expect(obj.$attrs.className).assertEqual('classProp')
         done();
@@ -128,7 +128,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('classPropNone')
         expect(obj.$attrs.className).assertEqual(undefined)
         console.info("[pickerViewProps] get className value is: " + JSON.stringify(obj.$attrs.className));
@@ -174,7 +174,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('refProp')
         expect(obj.$attrs.ref).assertEqual('refProp')
         done();
@@ -193,7 +193,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('refPropNone')
         expect(obj.$attrs.ref).assertEqual(undefined)
         console.info("[pickerViewProps] get ref value is: " + JSON.stringify(obj.$attrs.ref));
@@ -213,7 +213,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('disabledPropTrue')
         expect(obj.$attrs.disabled).assertEqual('true')
         done();
@@ -232,7 +232,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('disabledPropFalse')
         expect(obj.$attrs.disabled).assertEqual('false')
         done();
@@ -251,7 +251,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('disabledPropNone')
         expect(obj.$attrs.disabled).assertEqual('false')
         done();
@@ -270,7 +270,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('focusablePropTrue')
         expect(obj.$attrs.focusable).assertEqual('true')
         done();
@@ -289,7 +289,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('focusablePropFalse')
         expect(obj.$attrs.focusable).assertEqual('false')
         done();
@@ -308,7 +308,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('focusablePropNone')
         expect(obj.$attrs.focusable).assertEqual('false')
         done();
@@ -327,7 +327,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('dataProp')
         expect(obj.$attrs.datapickerView).assertEqual(undefined);
         console.info("[pickerViewProps] get datapickerView value is: " + JSON.stringify(obj.$attrs.datapickerView));
@@ -347,7 +347,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('dataPropNone')
         expect(obj.$attrs.datapickerView).assertEqual(undefined)
         console.info("[pickerViewProps] get datapickerView value is: " + JSON.stringify(obj.$attrs.datapickerView));
@@ -367,7 +367,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('clickEffectPropSmall')
         expect(obj.$attrs.clickEffect).assertEqual('spring-small')
         done();
@@ -386,7 +386,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('clickEffectPropMedium')
         expect(obj.$attrs.clickEffect).assertEqual('spring-medium')
         done();
@@ -405,7 +405,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('clickEffectPropLarge')
         expect(obj.$attrs.clickEffect).assertEqual('spring-large')
         done();
@@ -424,7 +424,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('clickEffectPropNone')
         expect(obj.$attrs.clickEffect).assertEqual(undefined)
         console.info("[pickerViewProps] get clickEffect value is: " + JSON.stringify(obj.$attrs.clickEffect));
@@ -444,7 +444,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('dirPropRtl')
         expect(obj.$attrs.dir).assertEqual('rtl')
         done();
@@ -463,7 +463,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('dirPropLtr')
         expect(obj.$attrs.dir).assertEqual('ltr')
         done();
@@ -482,7 +482,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('dirPropAuto')
         expect(obj.$attrs.dir).assertEqual('auto')
         done();
@@ -501,7 +501,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('dirPropNone')
         expect(obj.$attrs.dir).assertEqual('auto')
         done();
@@ -520,7 +520,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('forPropNull')
         expect(obj.$attrs.for).assertEqual(undefined)
         console.info("[pickerViewProps] get for value is: " + JSON.stringify(obj.$attrs.for));
@@ -540,7 +540,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('forPropOne')
         expect(obj.$attrs.for).assertEqual(undefined)
         console.info("[pickerViewProps] get for value is: " + JSON.stringify(obj.$attrs.for));
@@ -560,7 +560,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('forPropThree')
         expect(obj.$attrs.for).assertEqual(undefined)
         console.info("[pickerViewProps] get for value is: " + JSON.stringify(obj.$attrs.for));
@@ -580,7 +580,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('ifPropTrue')
         expect(obj.$attrs.if).assertEqual(undefined)
         console.info("[pickerViewProps] get for value is: " + JSON.stringify(obj.$attrs.if));
@@ -638,7 +638,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('showPropTrue')
         expect(obj.$attrs.show).assertEqual('true')
         console.info("[pickerViewProps] get show value is: " + JSON.stringify(obj.$attrs.show));
@@ -658,7 +658,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('showPropFalse')
         expect(obj.$attrs.show).assertEqual('false')
         console.info("[pickerViewProps] get show value is: " + JSON.stringify(obj.$attrs.show));
@@ -678,7 +678,7 @@ describe('pickerViewPropsJsTest', function () {
         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('pickerView')
+        expect(obj.$type).assertEqual('picker-view')
         expect(obj.$attrs.id).assertEqual('showPropNone')
         expect(obj.$attrs.show).assertEqual('true')
         console.info("[pickerViewProps] get show value is: " + JSON.stringify(obj.$attrs.show));
@@ -690,98 +690,98 @@ describe('pickerViewPropsJsTest', function () {
      * @tc.name      testPickerViewPickerViewText
      * @tc.desc      ACE
      */
-    it('testPickerViewPickerViewText', 0, async function (done) {
-        console.info('testPickerViewPickerViewText START');
-        console.info("[pickerViewProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.pickerViewText);
-        console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('pickerView')
-        expect(obj.$attrs.id).assertEqual('pickerViewText')
-        expect(obj.$attrs.type).assertEqual('text')
-        console.info("[pickerViewProps] get type value is: " + JSON.stringify(obj.$attrs.type));
-        done();
-    });
+//    it('testPickerViewPickerViewText', 0, async function (done) {
+//        console.info('testPickerViewPickerViewText START');
+//        console.info("[pickerViewProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
+//
+//        let obj = JSON.parse(globalThis.value.pickerViewText);
+//        console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
+//        console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
+//
+//        expect(obj.$type).assertEqual('pickerView')
+//        expect(obj.$attrs.id).assertEqual('pickerViewText')
+//        expect(obj.$attrs.type).assertEqual('text')
+//        console.info("[pickerViewProps] get type value is: " + JSON.stringify(obj.$attrs.type));
+//        done();
+//    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testPickerViewPickerViewTime
      * @tc.desc      ACE
      */
-    it('testPickerViewPickerViewTime', 0, async function (done) {
-        console.info('testPickerViewPickerViewTime START');
-        console.info("[pickerViewProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.pickerViewTime);
-        console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('pickerView')
-        expect(obj.$attrs.id).assertEqual('pickerViewTime')
-        expect(obj.$attrs.type).assertEqual('time')
-        console.info("[pickerViewProps] get type value is: " + JSON.stringify(obj.$attrs.type));
-        done();
-    });
+//    it('testPickerViewPickerViewTime', 0, async function (done) {
+//        console.info('testPickerViewPickerViewTime START');
+//        console.info("[pickerViewProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
+//
+//        let obj = JSON.parse(globalThis.value.pickerViewTime);
+//        console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
+//        console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
+//
+//        expect(obj.$type).assertEqual('pickerView')
+//        expect(obj.$attrs.id).assertEqual('pickerViewTime')
+//        expect(obj.$attrs.type).assertEqual('time')
+//        console.info("[pickerViewProps] get type value is: " + JSON.stringify(obj.$attrs.type));
+//        done();
+//    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testPickerViewPickerViewDate
      * @tc.desc      ACE
      */
-    it('testPickerViewPickerViewDate', 0, async function (done) {
-        console.info('testPickerViewPickerViewDate START');
-        console.info("[pickerViewProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.pickerViewDate);
-        console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('pickerView')
-        expect(obj.$attrs.id).assertEqual('pickerViewDate')
-        expect(obj.$attrs.type).assertEqual('date')
-        console.info("[pickerViewProps] get type value is: " + JSON.stringify(obj.$attrs.type));
-        done();
-    });
+//    it('testPickerViewPickerViewDate', 0, async function (done) {
+//        console.info('testPickerViewPickerViewDate START');
+//        console.info("[pickerViewProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
+//
+//        let obj = JSON.parse(globalThis.value.pickerViewDate);
+//        console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
+//        console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
+//
+//        expect(obj.$type).assertEqual('pickerView')
+//        expect(obj.$attrs.id).assertEqual('pickerViewDate')
+//        expect(obj.$attrs.type).assertEqual('date')
+//        console.info("[pickerViewProps] get type value is: " + JSON.stringify(obj.$attrs.type));
+//        done();
+//    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testPickerViewPickerViewDatetime
      * @tc.desc      ACE
      */
-    it('testPickerViewPickerViewDatetime', 0, async function (done) {
-        console.info('testPickerViewPickerViewDatetime START');
-        console.info("[pickerViewProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.pickerViewDatetime);
-        console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('pickerView')
-        expect(obj.$attrs.id).assertEqual('pickerViewDatetime')
-        expect(obj.$attrs.type).assertEqual('datetime')
-        console.info("[pickerViewProps] get type value is: " + JSON.stringify(obj.$attrs.type));
-        done();
-    });
+//    it('testPickerViewPickerViewDatetime', 0, async function (done) {
+//        console.info('testPickerViewPickerViewDatetime START');
+//        console.info("[pickerViewProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
+//
+//        let obj = JSON.parse(globalThis.value.pickerViewDatetime);
+//        console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
+//        console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
+//
+//        expect(obj.$type).assertEqual('pickerView')
+//        expect(obj.$attrs.id).assertEqual('pickerViewDatetime')
+//        expect(obj.$attrs.type).assertEqual('datetime')
+//        console.info("[pickerViewProps] get type value is: " + JSON.stringify(obj.$attrs.type));
+//        done();
+//    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testPickerViewPickerViewMultiText
      * @tc.desc      ACE
      */
-    it('testPickerViewPickerViewMultiText', 0, async function (done) {
-        console.info('testPickerViewPickerViewMultiText START');
-        console.info("[pickerViewProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.pickerViewMultiText);
-        console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('pickerView')
-        expect(obj.$attrs.id).assertEqual('pickerViewMultiText')
-        expect(obj.$attrs.type).assertEqual('multi-text')
-        console.info("[pickerViewProps] get type value is: " + JSON.stringify(obj.$attrs.type));
-        done();
-    });
+//    it('testPickerViewPickerViewMultiText', 0, async function (done) {
+//        console.info('testPickerViewPickerViewMultiText START');
+//        console.info("[pickerViewProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
+//
+//        let obj = JSON.parse(globalThis.value.pickerViewMultiText);
+//        console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
+//        console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
+//
+//        expect(obj.$type).assertEqual('pickerView')
+//        expect(obj.$attrs.id).assertEqual('pickerViewMultiText')
+//        expect(obj.$attrs.type).assertEqual('multi-text')
+//        console.info("[pickerViewProps] get type value is: " + JSON.stringify(obj.$attrs.type));
+//        done();
+//    });
 });

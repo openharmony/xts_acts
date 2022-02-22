@@ -48,19 +48,19 @@ export default {
         showPropTrue : null,
         showPropFalse : null,
         showPropNone : null,
-        rangetext:['15', "20", "25"],
-        multitext:[["a", "b", "c"], ["e", "f", "g"], ["h", "i"], ["k", "l", "m"]],
-        multitextselect:[1,2,0],
-        pickerViewText: null,
-        pickerViewDate: null,
-        pickerViewTime: null,
-        pickerViewDatetime: null,
-        pickerViewMultiText: null
+//        rangetext:['15', "20", "25"],
+//        multitext:[["a", "b", "c"], ["e", "f", "g"], ["h", "i"], ["k", "l", "m"]],
+//        multitextselect:[1,2,0],
+//        pickerViewText: null,
+//        pickerViewDate: null,
+//        pickerViewTime: null,
+//        pickerViewDatetime: null,
+//        pickerViewMultiText: null
     },
 
     onShow(){
         this.getCommonPropValues();
-        this.getSpecificPropValues();
+//        this.getSpecificPropValues();
         globalThis.value = {
             idProp : this.idProp,
             classProp : this.classProp,
@@ -91,11 +91,11 @@ export default {
             showPropTrue : this.showPropTrue,
             showPropFalse : this.showPropFalse,
             showPropNone : this.showPropNone,
-            pickerViewText: this.pickerViewText,
-            pickerViewDate: this.pickerViewDate,
-            pickerViewTime: this.pickerViewTime,
-            pickerViewDatetime: this.pickerViewDatetime,
-            pickerViewMultiText: this.pickerViewMultiText
+//            pickerViewText: this.pickerViewText,
+//            pickerViewDate: this.pickerViewDate,
+//            pickerViewTime: this.pickerViewTime,
+//            pickerViewDatetime: this.pickerViewDatetime,
+//            pickerViewMultiText: this.pickerViewMultiText
         }
     },
 
@@ -131,10 +131,10 @@ export default {
         this.showPropNone = this.$element("showPropNone").getInspector()
     },
     getSpecificPropValues () {
-        this.pickerViewViewText = this.$element("pickerViewViewText").getInspector()
-        this.pickerViewViewDate = this.$element("pickerViewViewDate").getInspector()
-        this.pickerViewViewTime = this.$element("pickerViewViewTime").getInspector()
-        this.pickerViewViewDatetime = this.$element("pickerViewViewDatetime").getInspector()
-        this.pickerViewViewMultiText = this.$element("pickerViewViewMultiText").getInspector()
+//        this.pickerViewViewText = this.$element("pickerViewViewText").getInspector()
+//        this.pickerViewViewDate = this.$element("pickerViewViewDate").getInspector()
+//        this.pickerViewViewTime = this.$element("pickerViewViewTime").getInspector()
+//        this.pickerViewViewDatetime = this.$element("pickerViewViewDatetime").getInspector()
+//        this.pickerViewViewMultiText = this.$element("pickerViewViewMultiText").getInspector()
     }
 }
