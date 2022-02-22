@@ -44,14 +44,13 @@ describe('videoEncoderReliability', function () {
     const RESET = 10;
     const RELEASE = 11;
     const HOLDON = 12;
-    const WAITFORALLOUTS = 13;
-    const CONFIGURE_ERROR = 14;
-    const PREPARE_ERROR = 15;
-    const START_ERROR = 16;
-    const FLUSH_ERROR = 17;
-    const STOP_ERROR = 18;
-    const RELEASE_ERROR = 19;
-    const JUDGE_EOS = 20;
+    const CONFIGURE_ERROR = 13;
+    const PREPARE_ERROR = 14;
+    const START_ERROR = 15;
+    const FLUSH_ERROR = 16;
+    const STOP_ERROR = 17;
+    const RELEASE_ERROR = 18;
+    const JUDGE_EOS = 19;
     const WAITTIME = 3000;
     let width = 720;
     let height = 480;
@@ -188,10 +187,6 @@ describe('videoEncoderReliability', function () {
             case START:
                 mySteps.shift();
                 console.info(`case to start`);
-                if (sawOutputEOS) {
-                    resetParam();
-                    workdoneAtEOS = true;
-                }
                 await toStart();
                 nextStep(mySteps, done);
                 break;
@@ -199,11 +194,6 @@ describe('videoEncoderReliability', function () {
                 mySteps.shift();
                 console.info(`case to flush`);
                 await toFlush();
-                if (flushAtEOS) {
-                    mediaTest.closeStream(surfaceID);
-                    resetParam();
-                    workdoneAtEOS = true;
-                }
                 nextStep(mySteps, done);
                 break;
             case STOP:
@@ -232,10 +222,6 @@ describe('videoEncoderReliability', function () {
                 setTimeout(() => {
                     nextStep(mySteps, done);
                 }, WAITTIME);
-                break;
-            case WAITFORALLOUTS:
-                mySteps.shift();
-                console.info(`case wait for all outputs`);
                 break;
             case CONFIGURE_ERROR:
                 mySteps.shift();
@@ -646,8 +632,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_PROMISE_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0600.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, PREPARE_ERROR, 
-            STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, 
+            PREPARE_ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -720,8 +706,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_PROMISE_0300', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0300.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, WAITFORALLOUTS);
-        workdoneAtEOS = true;
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -766,8 +751,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_PROMISE_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0600.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, 
-            START, WAITFORALLOUTS);
-        workdoneAtEOS = true;
+            START, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -870,8 +854,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0500.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, FLUSH, 
-            WAITFORALLOUTS);
-        workdoneAtEOS = true;
+            END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -1302,9 +1285,8 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_PROMISE_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'eos_0200.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
-            JUDGE_EOS, FLUSH, STARTSTREAM, WAITFORALLOUTS);
+            JUDGE_EOS, FLUSH, STARTSTREAM, STOPSTREAM, END);
         frameTotal = 2;
-        flushAtEOS = true;
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -1335,7 +1317,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_PROMISE_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'eos_0400.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
-            JUDGE_EOS, STOPSTREAM, STOP, START, SETSTREAMPARAM, STARTSTREAM, WAITFORALLOUTS);
+            JUDGE_EOS, STOPSTREAM, STOP, START, END);
         frameTotal = 2;
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -1418,7 +1400,8 @@ describe('videoEncoderReliability', function () {
         videoEncodeProcessor = null;
         done();
     })
-        /* *
+
+    /* *
         * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CREATE-RELEASE_PROMISE_0100
         * @tc.name      : 001. create -> release for 50 times
         * @tc.desc      : Reliability Test

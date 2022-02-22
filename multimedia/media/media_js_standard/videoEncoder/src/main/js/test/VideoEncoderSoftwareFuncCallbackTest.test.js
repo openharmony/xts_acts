@@ -303,8 +303,10 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
                 console.info('case create createVideoEncoderByName success');
                 videoEncodeProcessor = processor;
                 toCreateStream();
-                toSetStreamParam(mediaDescription.width, mediaDescription.height, mediaDescription.frame_rate, frameTotal);
-                eventEmitter.emit('configure', mediaDescription, decPath, function(){eventEmitter.emit('stop', done);}, done);
+                toSetStreamParam(mediaDescription.width, mediaDescription.height, 
+                                mediaDescription.frame_rate, frameTotal);
+                eventEmitter.emit('configure', mediaDescription, decPath, 
+                                function(){eventEmitter.emit('stop', done);}, done);
             } else {
                 console.info('case create createVideoEncoderByName fail');
                 expect().assertFail();
@@ -337,8 +339,10 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
                 console.info('case create createVideoEncoderByName success');
                 videoEncodeProcessor = processor;
                 toCreateStream();
-                toSetStreamParam(mediaDescription.width, mediaDescription.height, mediaDescription.frame_rate, frameTotal);
-                eventEmitter.emit('configure', mediaDescription, decPath, function(){eventEmitter.emit('stop', done);}, done);
+                toSetStreamParam(mediaDescription.width, mediaDescription.height, 
+                                mediaDescription.frame_rate, frameTotal);
+                eventEmitter.emit('configure', mediaDescription, decPath, 
+                                function(){eventEmitter.emit('stop', done);}, done);
             } else {
                 console.info('case create createVideoEncoderByName fail');
                 expect().assertFail();
@@ -371,8 +375,10 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
                 console.info('case create createVideoEncoderByName success');
                 videoEncodeProcessor = processor;
                 toCreateStream();
-                toSetStreamParam(mediaDescription.width, mediaDescription.height, mediaDescription.frame_rate, frameTotal);
-                eventEmitter.emit('configure', mediaDescription, decPath, function(){eventEmitter.emit('stop', done);}, done);
+                toSetStreamParam(mediaDescription.width, mediaDescription.height, 
+                                mediaDescription.frame_rate, frameTotal);
+                eventEmitter.emit('configure', mediaDescription, decPath, 
+                                function(){eventEmitter.emit('stop', done);}, done);
             } else {
                 console.info('case create createVideoEncoderByName fail');
                 expect().assertFail();
@@ -406,8 +412,10 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
                 console.info('case create createVideoEncoderByName success');
                 videoEncodeProcessor = processor;
                 toCreateStream();
-                toSetStreamParam(mediaDescription.width, mediaDescription.height, mediaDescription.frame_rate, frameTotal);
-                eventEmitter.emit('configure', mediaDescription, decPath, function(){eventEmitter.emit('stop', done);}, done);
+                toSetStreamParam(mediaDescription.width, mediaDescription.height, 
+                                mediaDescription.frame_rate, frameTotal);
+                eventEmitter.emit('configure', mediaDescription, decPath, 
+                                function(){eventEmitter.emit('stop', done);}, done);
             } else {
                 console.info('case create createVideoEncoderByName fail');
                 expect().assertFail();
@@ -440,8 +448,10 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
                 console.info('case create createVideoEncoderByName success');
                 videoEncodeProcessor = processor;
                 toCreateStream();
-                toSetStreamParam(mediaDescription.width, mediaDescription.height, mediaDescription.frame_rate, frameTotal);
-                eventEmitter.emit('configure', mediaDescription, decPath, function(){eventEmitter.emit('flush', done);}, done);
+                toSetStreamParam(mediaDescription.width, mediaDescription.height, 
+                                mediaDescription.frame_rate, frameTotal);
+                eventEmitter.emit('configure', mediaDescription, decPath, 
+                                function(){eventEmitter.emit('flush', done);}, done);
             } else {
                 console.info('case create createVideoEncoderByName fail');
                 expect().assertFail();
@@ -473,8 +483,10 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
                 console.info('case create createVideoEncoderByName success');
                 videoEncodeProcessor = processor;
                 toCreateStream();
-                toSetStreamParam(mediaDescription.width, mediaDescription.height, mediaDescription.frame_rate, frameTotal);
-                eventEmitter.emit('configure', mediaDescription, decPath, function(){eventEmitter.emit('flush', done);}, done);
+                toSetStreamParam(mediaDescription.width, mediaDescription.height, 
+                                mediaDescription.frame_rate, frameTotal);
+                eventEmitter.emit('configure', mediaDescription, decPath, 
+                                function(){eventEmitter.emit('flush', done);}, done);
             } else {
                 console.info('case create createVideoEncoderByName fail');
                 expect().assertFail();
@@ -516,8 +528,10 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
                 frameCountOut = 0;
                 outputQueue = [];
                 isStreamRunning = false;
-                toSetStreamParam(mediaDescription2.width, mediaDescription2.height, mediaDescription2.frame_rate, frameTotal);
-                eventEmitter.emit('configure', mediaDescription2, decPath2, function(){eventEmitter.emit('stop', done);}, done);
+                toSetStreamParam(mediaDescription2.width, mediaDescription2.height, 
+                                mediaDescription2.frame_rate, frameTotal);
+                eventEmitter.emit('configure', mediaDescription2, decPath2, 
+                                function(){eventEmitter.emit('stop', done);}, done);
             })
         })
         media.createVideoEncoderByName(name, (err, processor) => {
@@ -526,8 +540,10 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
                 console.info('case create createVideoEncoderByName success');
                 videoEncodeProcessor = processor;
                 toCreateStream();
-                toSetStreamParam(mediaDescription.width, mediaDescription.height, mediaDescription.frame_rate, frameTotal);
-                eventEmitter.emit('configure', mediaDescription, decPath, function(){eventEmitter.emit('reset_for_callback_01_0600', done);}, done);
+                toSetStreamParam(mediaDescription.width, mediaDescription.height, 
+                                mediaDescription.frame_rate, frameTotal);
+                eventEmitter.emit('configure', mediaDescription, decPath, 
+                                function(){eventEmitter.emit('reset_for_callback_01_0600', done);}, done);
             } else {
                 console.info('case create createVideoEncoderByName fail');
                 expect().assertFail();
