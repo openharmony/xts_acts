@@ -42,12 +42,12 @@ describe('ActsBmsJsTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             let result = await bundle.getBundleInfo(bundleName, 1);
-            expect(result.abilityInfo.length).assertEqual(NUM_TWO);
-            if (result.abilityInfo.length == NUM_TWO) {
-                console.debug('========check abilityName ========' + JSON.stringify(result.abilityInfo));
-                expect(result.abilityInfo[0].name).assertEqual(abilityName);
-                expect(result.abilityInfo[0].srcLanguage).assertEqual('js');
-                expect(result.abilityInfo[0].srcPath).assertEqual('');
+            expect(result.abilityInfos.length).assertEqual(NUM_TWO);
+            if (result.abilityInfos.length == NUM_TWO) {
+                console.debug('========check abilityName ========' + JSON.stringify(result.abilityInfos));
+                expect(result.abilityInfos[0].name).assertEqual(abilityName);
+                expect(result.abilityInfos[0].srcLanguage).assertEqual('js');
+                expect(result.abilityInfos[0].srcPath).assertEqual('');
             }
             installer.uninstall(bundleName, {
                 userId: 100,
@@ -90,15 +90,15 @@ describe('ActsBmsJsTest', function () {
             expect(data.statusMessage).assertEqual('SUCCESS');
             let result = await bundle.getBundleInfo(bundleName, 1)
             console.debug('==========bundleInfo==========' + JSON.stringify(result))
-            expect(result.abilityInfo.length).assertEqual(NUM_FOUR);
-            if (result.abilityInfo.length == NUM_FOUR) {
-                console.debug('========check abilityName ========' + JSON.stringify(result.abilityInfo));
-                expect(result.abilityInfo[0].name).assertEqual(abilityName1);
-                expect(result.abilityInfo[0].srcLanguage).assertEqual('js');
-                expect(result.abilityInfo[0].srcPath).assertEqual('');
-                expect(result.abilityInfo[1].name).assertEqual(abilityName2);
-                expect(result.abilityInfo[1].srcLanguage).assertEqual('js');
-                expect(result.abilityInfo[1].srcPath).assertEqual('');
+            expect(result.abilityInfos.length).assertEqual(NUM_FOUR);
+            if (result.abilityInfos.length == NUM_FOUR) {
+                console.debug('========check abilityName ========' + JSON.stringify(result.abilityInfos));
+                expect(result.abilityInfos[0].name).assertEqual(abilityName1);
+                expect(result.abilityInfos[0].srcLanguage).assertEqual('js');
+                expect(result.abilityInfos[0].srcPath).assertEqual('');
+                expect(result.abilityInfos[1].name).assertEqual(abilityName2);
+                expect(result.abilityInfos[1].srcLanguage).assertEqual('js');
+                expect(result.abilityInfos[1].srcPath).assertEqual('');
             }
             installer.uninstall(bundleName, {
                 userId: 100,
@@ -138,12 +138,12 @@ describe('ActsBmsJsTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             let result = await bundle.getBundleInfo(bundleName, 1);
-            expect(result.abilityInfo.length).assertEqual(1);
-            if (result.abilityInfo.length == 1) {
-                console.debug('========check abilityName ========' + JSON.stringify(result.abilityInfo));
-                expect(result.abilityInfo[0].name).assertEqual(abilityName);
-                expect(result.abilityInfo[0].srcLanguage).assertEqual('js');
-                expect(result.abilityInfo[0].srcPath).assertEqual('default');
+            expect(result.abilityInfos.length).assertEqual(1);
+            if (result.abilityInfos.length == 1) {
+                console.debug('========check abilityName ========' + JSON.stringify(result.abilityInfos));
+                expect(result.abilityInfos[0].name).assertEqual(abilityName);
+                expect(result.abilityInfos[0].srcLanguage).assertEqual('js');
+                expect(result.abilityInfos[0].srcPath).assertEqual('default');
             }
             installer.uninstall(bundleName, {
                 userId: 100,
@@ -184,12 +184,12 @@ describe('ActsBmsJsTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             let result = await bundle.getBundleInfo(bundleName, 1);
-            expect(result.abilityInfo.length).assertEqual(1);
-            if (result.abilityInfo.length == 1) {
-                console.debug('========check abilityName ========' + JSON.stringify(result.abilityInfo));
-                expect(result.abilityInfo[0].name).assertEqual(abilityName);
-                expect(result.abilityInfo[0].srcLanguage).assertEqual('c++');
-                expect(result.abilityInfo[0].srcPath).assertEqual('default/c++/');
+            expect(result.abilityInfos.length).assertEqual(1);
+            if (result.abilityInfos.length == 1) {
+                console.debug('========check abilityName ========' + JSON.stringify(result.abilityInfos));
+                expect(result.abilityInfos[0].name).assertEqual(abilityName);
+                expect(result.abilityInfos[0].srcLanguage).assertEqual('c++');
+                expect(result.abilityInfos[0].srcPath).assertEqual('default/c++/');
             }
             installer.uninstall(bundleName, {
                 userId: 100,
