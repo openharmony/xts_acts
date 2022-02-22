@@ -12,20 +12,20 @@
 # limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
-ohos_js_hap_suite("media_decoder_js_hap") {
+ohos_js_hap_suite("video_decoder_js_hap") {
   hap_profile = "./src/main/config.json"
   js2abc = true
   deps = [
-    ":media_decoder_js_assets",
-    ":media_decoder_resources",
+    ":video_decoder_js_assets",
+    ":video_decoder_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "MediaDecoderJsTest"
+  hap_name = "VideoDecoderJsTest"
 }
-ohos_js_assets("media_decoder_js_assets") {
+ohos_js_assets("video_decoder_js_assets") {
   source_dir = "./src/main/js/default"
 }
-ohos_resources("media_decoder_resources") {
+ohos_resources("video_decoder_resources") {
   sources = [ "./src/main/resources" ]
   hap_profile = "./src/main/config.json"
 }

@@ -461,5 +461,65 @@ describe('VideoDecoderFuncPromiseTest', function () {
         await toPrepare();
         await toStart();
     })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_MULTIINSTANCE_PROMISE_0100
+        * @tc.name      : 001.creat 16 video decoder
+        * @tc.desc      : creat 16 video decoder
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+    */ 
+    it('SUB_MEDIA_VIDEO_DECODER_MULTIINSTANCE_PROMISE_0100', 0, async function (done) {
+        ES_FRAME_SIZE = H264_FRAME_SIZE_30FPS_1080;
+        isCodecData = true;
+        let srcPath = BASIC_PATH + 'out_1920_1080_30fps_3s.h264';
+        let mediaDescription = {
+            'track_type': 1,
+            'codec_mime': 'video/avc',
+            'width': 1920,
+            'height': 1080,
+            'pixel_format': 4,
+            'frame_rate': 30.00,
+            'max_input_size': 150000,
+        }
+        let array = new Array();
+        eventEmitter.on('releaseAllDecoder', async () => {
+            for (let j = 0; j < 15; j++) {
+                await array[j].release().then(() => {
+                    array[j] = null;
+                }, failCallback).catch(failCatch);
+            }
+            await videoDecodeProcessor.release().then(() => {
+                console.info('in case : release success');
+            }, failCallback).catch(failCatch);
+            videoDecodeProcessor = null;
+            done();
+        })
+        for (let i = 0; i < 16; i++) {
+            await media.createVideoDecoderByMime('video/avc').then((processor) => {
+                if (typeof (processor) != 'undefined') {
+                    console.info('in case : createVideoDecoderByMime success');
+                    if (i == 15) {
+                        videoDecodeProcessor = processor;
+                    } else {
+                        array[i] = processor;
+                    }
+                } else {
+                    console.info('in case : createVideoDecoderByMime fail');
+                    expect().assertFail();
+                    done();
+                }
+            }, failCallback).catch(failCatch);
+        }
+        await toConfigure(mediaDescription, srcPath);
+        await setSurfaceID(done);
+        await toSetOutputSurface(true);
+        setCallback(
+            function(){eventEmitter.emit('releaseAllDecoder', done);}
+        );
+        await toPrepare();
+        await toStart();
+    })
 })
     
