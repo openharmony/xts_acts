@@ -16,6 +16,7 @@
 import prompt from '@system.prompt';
 
 export default {
+
     data:{
         listOne:[{}],
         listThree:[{},{},{}],
@@ -25,6 +26,12 @@ export default {
         styleProp : null,
         refProp : null,
         refPropNone : null,
+        disabledPropTrue : null,
+        disabledPropFalse : null,
+        disabledPropNone : null,
+        focusablePropTrue : null,
+        focusablePropFalse : null,
+        focusablePropNone : null,
         dataProp : null,
         dataPropNone : null,
         clickEffectPropSmall : null,
@@ -42,10 +49,11 @@ export default {
         showPropTrue : null,
         showPropFalse : null,
         showPropNone : null,
-        verticalTrue: null,
-        verticalFalse: null
-    },
 
+        scrollableTrue : null,
+        scrollableFalse : null,
+        scrollableNone : null,
+    },
     onShow(){
         this.getCommonPropValues();
         this.getSpecificPropValues();
@@ -56,28 +64,31 @@ export default {
             styleProp : this.styleProp,
             refProp : this.refProp,
             refPropNone : this.refPropNone,
+            disabledPropTrue : this.disabledPropTrue,
+            disabledPropFalse : this.disabledPropFalse,
+            disabledPropNone : this.disabledPropNone,
+            focusablePropTrue : this.focusablePropTrue,
+            focusablePropFalse : this.focusablePropFalse,
+            focusablePropNone : this.focusablePropNone,
             dataProp : this.dataProp,
             dataPropNone : this.dataPropNone,
             clickEffectPropSmall : this.clickEffectPropSmall,
             clickEffectPropMedium : this.clickEffectPropMedium,
             clickEffectPropLarge : this.clickEffectPropLarge,
             clickEffectPropNone : this.clickEffectPropNone,
-            dirPropRtl : this.dirPropRtl,
-            dirPropAuto : this.dirPropAuto,
-            dirPropLtr : this.dirPropLtr,
-            dirPropNone : this.dirPropNone,
-            forPropNull : this.forPropNull,
-            forPropOne : this.forPropOne,
+            dirPropRtl : this.dirPropRtl, dirPropAuto : this.dirPropAuto,
+            dirPropLtr : this.dirPropLtr, dirPropNone : this.dirPropNone,
+            forPropNull : this.forPropNull, forPropOne : this.forPropOne,
             forPropThree : this.forPropThree,
             ifPropTrue : this.ifPropTrue,
-            showPropTrue : this.showPropTrue,
-            showPropFalse : this.showPropFalse,
+            showPropTrue : this.showPropTrue, showPropFalse : this.showPropFalse,
             showPropNone : this.showPropNone,
-            verticalTrue: this.verticalTrue,
-            verticalFalse: this.verticalFalse
+
+            scrollableTrue : this.scrollableTrue,
+            scrollableFalse : this.scrollableFalse,
+            scrollableNone : this.scrollableNone,
         }
     },
-
     getCommonPropValues(){
         this.idProp = this.$element("idProp").getInspector()
         this.classProp = this.$element("classProp").getInspector()
@@ -85,6 +96,12 @@ export default {
         this.styleProp = this.$element("styleProp").getInspector()
         this.refProp = this.$element("refProp").getInspector()
         this.refPropNone = this.$element("refPropNone").getInspector()
+        this.disabledPropTrue = this.$element("disabledPropTrue").getInspector()
+        this.disabledPropFalse = this.$element("disabledPropFalse").getInspector()
+        this.disabledPropNone = this.$element("disabledPropNone").getInspector()
+        this.focusablePropTrue = this.$element("focusablePropTrue").getInspector()
+        this.focusablePropFalse = this.$element("focusablePropFalse").getInspector()
+        this.focusablePropNone = this.$element("focusablePropNone").getInspector()
         this.dataProp = this.$element("dataProp").getInspector()
         this.dataPropNone = this.$element("dataPropNone").getInspector()
         this.clickEffectPropSmall = this.$element("clickEffectPropSmall").getInspector()
@@ -103,8 +120,9 @@ export default {
         this.showPropFalse = this.$element("showPropFalse").getInspector()
         this.showPropNone = this.$element("showPropNone").getInspector()
     },
-    getSpecificPropValues () {
-        this.verticalTrue = this.$element("verticalTrue").getInspector()
-        this.verticalFalse = this.$element("verticalFalse").getInspector()
+    getSpecificPropValues(){
+        this.scrollableTrue = this.$element("scrollableTrue").getInspector()
+        this.scrollableFalse = this.$element("scrollableFalse").getInspector()
+        this.scrollableNone = this.$element("scrollableNone").getInspector()
     }
 }

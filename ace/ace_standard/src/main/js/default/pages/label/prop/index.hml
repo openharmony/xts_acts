@@ -16,128 +16,154 @@
 <div class="container">
     <div class="prop-container">
         <text class="title">
-            divider通用属性
+            label通用属性
         </text>
 
         <text class="sub-title">
             通用属性 -- id
         </text>
-        <divider id="idProp">
-        </divider>
+        <label id="idProp">
+        </label>
 
         <text class="sub-title">
             通用属性 -- class
         </text>
-        <divider id="classProp"
+        <label id="classProp"
              class="classProp">
-        </divider>
-        <divider id="classPropNone"
+        </label>
+        <label id="classPropNone"
              class="">
-        </divider>
+        </label>
 
 
         <text class="sub-title">
             通用属性 -- style
         </text>
-        <divider id="styleProp"
+        <label id="styleProp"
              style="width:10%;height:20px;background-color:red">
-        </divider>
+        </label>
 
         <text class="sub-title">
             通用属性 -- ref
         </text>
-        <divider id="refProp"
+        <label id="refProp"
              ref="refProp">
-        </divider>
-        <divider id="refPropNone"
+        </label>
+        <label id="refPropNone"
              ref="">
-        </divider>
+        </label>
+
+        <text class="sub-title">
+            通用属性 -- disabled
+        </text>
+        <label id="disabledPropTrue"
+             disabled="true">
+        </label>
+        <label id="disabledPropFalse"
+             disabled="false">
+        </label>
+        <label id="disabledPropNone"
+             disabled="">
+        </label>
+
+        <text class="sub-title">
+            通用属性 -- focusable
+        </text>
+        <label id="focusablePropTrue"
+             focusable="true">
+        </label>
+        <label id="focusablePropFalse"
+             focusable="false">
+        </label>
+        <label id="focusablePropNone"
+             focusable="">
+        </label>
 
         <text class="sub-title">
             通用属性 -- data-*
         </text>
-        <divider id="dataProp"
-             data-divider="通用属性 -- data-*">
-        </divider>
-        <divider id="dataPropNone"
-             data-divider="">
-        </divider>
+        <label id="dataProp"
+             data-label="通用属性 -- data-*">
+        </label>
+        <label id="dataPropNone"
+             data-label="">
+        </label>
 
         <text class="sub-title">
             通用属性 -- click-effect
         </text>
-        <divider id="clickEffectPropSmall"
+        <label id="clickEffectPropSmall"
              click-effect="spring-small">
-        </divider>
-        <divider id="clickEffectPropMedium"
+        </label>
+        <label id="clickEffectPropMedium"
              click-effect="spring-medium">
-        </divider>
-        <divider id="clickEffectPropLarge"
+        </label>
+        <label id="clickEffectPropLarge"
              click-effect="spring-large">
-        </divider>
-        <divider id="clickEffectPropNone"
+        </label>
+        <label id="clickEffectPropNone"
              click-effect="">
-        </divider>
+        </label>
 
         <text class="sub-title">
             通用属性 -- dir
         </text>
-        <divider id="dirPropRtl"
+        <label id="dirPropRtl"
              dir="rtl">
-        </divider>
-        <divider id="dirPropAuto"
+        </label>
+        <label id="dirPropAuto"
              dir="auto">
-        </divider>
-        <divider id="dirPropLtr"
+        </label>
+        <label id="dirPropLtr"
              dir="ltr">
-        </divider>
-        <divider id="dirPropNone"
+        </label>
+        <label id="dirPropNone"
              dir="">
-        </divider>
+        </label>
 
         <text class="sub-title">
             渲染属性 -- for
         </text>
-        <divider id="forPropNull"
+        <label id="forPropNull"
              for="">
-        </divider>
-        <divider id="forPropOne"
+        </label>
+        <label id="forPropOne"
              for="{{listOne}}">
-        </divider>
-        <divider id="forPropThree"
+        </label>
+        <label id="forPropThree"
              for="{{listThree}}">
-        </divider>
+        </label>
 
         <text class="sub-title">
             渲染属性 -- if
         </text>
-        <divider id="ifPropTrue"
+        <label id="ifPropTrue"
              if="true">
-        </divider>
+        </label>
+
         <text class="sub-title">
             渲染属性 -- show
         </text>
-        <divider id="showPropTrue"
+        <label id="showPropTrue"
              show="true">
-        </divider>
-        <divider id="showPropFalse"
+        </label>
+        <label id="showPropFalse"
              show="false">
-        </divider>
-        <divider id="showPropNone"
+        </label>
+        <label id="showPropNone"
              show="">
-        </divider>
+        </label>
     </div>
 
     <div style="background-color: #000000; width: 2px; height: 100%;">
     </div>
     <div class="specific-container">
         <text class="title">
-            divider特有属性
+            label特有属性
         </text>
         <text  class="sub-title">
-            divider特有属性 -- vertical
+            label特有属性 -- target
         </text>
-        <divider id="verticalTrue" vertical="true"></divider>
-        <divider id="verticalFalse" vertical="false"></divider>
+        <label id="labelTarget" target="labelTarget">label</label>
     </div>
 </div>

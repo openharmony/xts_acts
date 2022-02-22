@@ -15,7 +15,7 @@
 
 import prompt from '@system.prompt';
 
-export default {
+export  default {
     data:{
         listOne:[{}],
         listThree:[{},{},{}],
@@ -25,6 +25,12 @@ export default {
         styleProp : null,
         refProp : null,
         refPropNone : null,
+        disabledPropTrue : null,
+        disabledPropFalse : null,
+        disabledPropNone : null,
+        focusablePropTrue : null,
+        focusablePropFalse : null,
+        focusablePropNone : null,
         dataProp : null,
         dataPropNone : null,
         clickEffectPropSmall : null,
@@ -43,7 +49,25 @@ export default {
         showPropFalse : null,
         showPropNone : null,
         verticalTrue: null,
-        verticalFalse: null
+        verticalFalse: null,
+        rangetext:['15', "20", "25"],
+        multitext:[["a", "b", "c"], ["e", "f", "g"], ["h", "i"], ["k", "l", "m"]],
+        textvalue:'textvalue',
+        datevalue:'datevalue',
+        timevalue:'timevalue',
+        datetimevalue:'datetimevalue',
+        multitextvalue:'multitextvalue',
+        containsecond:true,
+        multitextselect:[1,2,0],
+        datetimeselect:'2012-5-6-11-25',
+        timeselect:'11:22:30',
+        dateselect:'2021-3-2',
+        textselect:'2',
+        pickerText: null,
+        pickerDate: null,
+        pickerTime: null,
+        pickerDatetime: null,
+        pickerMultiText: null
     },
 
     onShow(){
@@ -56,6 +80,12 @@ export default {
             styleProp : this.styleProp,
             refProp : this.refProp,
             refPropNone : this.refPropNone,
+            disabledPropTrue : this.disabledPropTrue,
+            disabledPropFalse : this.disabledPropFalse,
+            disabledPropNone : this.disabledPropNone,
+            focusablePropTrue : this.focusablePropTrue,
+            focusablePropFalse : this.focusablePropFalse,
+            focusablePropNone : this.focusablePropNone,
             dataProp : this.dataProp,
             dataPropNone : this.dataPropNone,
             clickEffectPropSmall : this.clickEffectPropSmall,
@@ -73,8 +103,11 @@ export default {
             showPropTrue : this.showPropTrue,
             showPropFalse : this.showPropFalse,
             showPropNone : this.showPropNone,
-            verticalTrue: this.verticalTrue,
-            verticalFalse: this.verticalFalse
+            pickerText: this.pickerText,
+            pickerDate: this.pickerDate,
+            pickerTime: this.pickerTime,
+            pickerDatetime: this.pickerDatetime,
+            pickerMultiText: this.pickerMultiText
         }
     },
 
@@ -85,6 +118,12 @@ export default {
         this.styleProp = this.$element("styleProp").getInspector()
         this.refProp = this.$element("refProp").getInspector()
         this.refPropNone = this.$element("refPropNone").getInspector()
+        this.disabledPropTrue = this.$element("disabledPropTrue").getInspector()
+        this.disabledPropFalse = this.$element("disabledPropFalse").getInspector()
+        this.disabledPropNone = this.$element("disabledPropNone").getInspector()
+        this.focusablePropTrue = this.$element("focusablePropTrue").getInspector()
+        this.focusablePropFalse = this.$element("focusablePropFalse").getInspector()
+        this.focusablePropNone = this.$element("focusablePropNone").getInspector()
         this.dataProp = this.$element("dataProp").getInspector()
         this.dataPropNone = this.$element("dataPropNone").getInspector()
         this.clickEffectPropSmall = this.$element("clickEffectPropSmall").getInspector()
@@ -104,7 +143,10 @@ export default {
         this.showPropNone = this.$element("showPropNone").getInspector()
     },
     getSpecificPropValues () {
-        this.verticalTrue = this.$element("verticalTrue").getInspector()
-        this.verticalFalse = this.$element("verticalFalse").getInspector()
+        this.pickerText = this.$element("pickerText").getInspector()
+        this.pickerDate = this.$element("pickerDate").getInspector()
+        this.pickerTime = this.$element("pickerTime").getInspector()
+        this.pickerDatetime = this.$element("pickerDatetime").getInspector()
+        this.pickerMultiText = this.$element("pickerMultiText").getInspector()
     }
 }

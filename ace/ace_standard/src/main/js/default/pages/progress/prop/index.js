@@ -25,6 +25,12 @@ export default {
         styleProp : null,
         refProp : null,
         refPropNone : null,
+        disabledPropTrue : null,
+        disabledPropFalse : null,
+        disabledPropNone : null,
+        focusablePropTrue : null,
+        focusablePropFalse : null,
+        focusablePropNone : null,
         dataProp : null,
         dataPropNone : null,
         clickEffectPropSmall : null,
@@ -43,7 +49,13 @@ export default {
         showPropFalse : null,
         showPropNone : null,
         verticalTrue: null,
-        verticalFalse: null
+        verticalFalse: null,
+        typeHorizontal: null,
+        typeCircular: null,
+        typeRing: null,
+        typeScaleRing: null,
+        typeArc: null,
+        typeEclipse: null
     },
 
     onShow(){
@@ -56,6 +68,12 @@ export default {
             styleProp : this.styleProp,
             refProp : this.refProp,
             refPropNone : this.refPropNone,
+            disabledPropTrue : this.disabledPropTrue,
+            disabledPropFalse : this.disabledPropFalse,
+            disabledPropNone : this.disabledPropNone,
+            focusablePropTrue : this.focusablePropTrue,
+            focusablePropFalse : this.focusablePropFalse,
+            focusablePropNone : this.focusablePropNone,
             dataProp : this.dataProp,
             dataPropNone : this.dataPropNone,
             clickEffectPropSmall : this.clickEffectPropSmall,
@@ -73,8 +91,12 @@ export default {
             showPropTrue : this.showPropTrue,
             showPropFalse : this.showPropFalse,
             showPropNone : this.showPropNone,
-            verticalTrue: this.verticalTrue,
-            verticalFalse: this.verticalFalse
+            typeHorizontal: this.typeHorizontal,
+            typeCircular: this.typeCircular,
+            typeRing: this.typeRing,
+            typeScaleRing: this.typeScaleRing,
+            typeArc: this.typeArc,
+            typeEclipse: this.typeEclipse
         }
     },
 
@@ -85,6 +107,12 @@ export default {
         this.styleProp = this.$element("styleProp").getInspector()
         this.refProp = this.$element("refProp").getInspector()
         this.refPropNone = this.$element("refPropNone").getInspector()
+        this.disabledPropTrue = this.$element("disabledPropTrue").getInspector()
+        this.disabledPropFalse = this.$element("disabledPropFalse").getInspector()
+        this.disabledPropNone = this.$element("disabledPropNone").getInspector()
+        this.focusablePropTrue = this.$element("focusablePropTrue").getInspector()
+        this.focusablePropFalse = this.$element("focusablePropFalse").getInspector()
+        this.focusablePropNone = this.$element("focusablePropNone").getInspector()
         this.dataProp = this.$element("dataProp").getInspector()
         this.dataPropNone = this.$element("dataPropNone").getInspector()
         this.clickEffectPropSmall = this.$element("clickEffectPropSmall").getInspector()
@@ -104,7 +132,11 @@ export default {
         this.showPropNone = this.$element("showPropNone").getInspector()
     },
     getSpecificPropValues () {
-        this.verticalTrue = this.$element("verticalTrue").getInspector()
-        this.verticalFalse = this.$element("verticalFalse").getInspector()
+        this.typeHorizontal = this.$element("typeHorizontal").getInspector()
+        this.typeCircular = this.$element("typeCircular").getInspector()
+        this.typeRing = this.$element("typeRing").getInspector()
+        this.typeScaleRing = this.$element("typeScaleRing").getInspector()
+        this.typeArc = this.$element("typeArc").getInspector()
+        this.typeEclipse = this.$element("typeEclipse").getInspector()
     }
 }
