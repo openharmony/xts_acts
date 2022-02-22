@@ -968,7 +968,6 @@ describe('ScopeTest', function () {
      */
     it('testGetLower001', 0, function () {
         var result = range.getLower()
-		console.info('testGetLower001 type' + typeof(result))
         expect(result.toString()).assertEqual('30')
     })
 
