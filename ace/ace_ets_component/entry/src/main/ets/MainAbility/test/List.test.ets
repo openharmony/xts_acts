@@ -12,16 +12,70 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import gaugeJsunit from './GaugeJsunit.test.ets';
 import ellipseJsunit from './EllipseJsunit.test.ets';
 import systemRouterJsunit from './SystemRouterJsunit.test.ets';
+import marqueeJsunit from './MarqueeJsunit.test.ets';
+import stepperJsunit from './StepperJsunit.test.ets';
 import gridContainerJsunit from './GridContainerJsunit.test.ets';
+import listJsunit from './ListJsunit.test.ets';
+import sizeSettingJsunit from './general-properties/SizeSettingJsunit.test.ets';
+import positionSettingJsunit from './general-properties/PositionSettingJsunit.test.ets';
+import opacitySettingJsunit from './general-properties/OpacitySettingJsunit.test.ets';
 import swiperJsunit from './SwiperJsunit.test.ets';
+import enableJsunit from './EnableJsunit.test.ets';
+import clickEventJsunit from './general-properties/ClickEventJsunit.test.ets';
+import colorGradientJsunit from './general-properties/ColorGradientJsunit.test.ets';
+import visibilityJsunit from './general-properties/VisibilityJsunit.test.ets';
+import layoutConstraintsJsunit from './general-properties/LayoutConstraintsJsunit.test.ets';
+import areaChangeJsunit from './AreaChangeJsunit.test.ets';
+import appearJsunit from './AppearJsunit.test.ets';
+import overlayJsunit from './OverlayJsunit.test.ets';
+import ZIndexJsunit from './ZIndexJsunit.test.ets';
+import touchAbleJsunit from './general-properties/TouchAbleJsunit.test.ets';
+import shapeClippingJsunit from './general-properties/ShapeClippingJsunit.test.ets';
+import textStyleJsunit from './general-properties/TextStyleJsunit.test.ets';
+import imageEffectsJsunit from './general-properties/ImageEffectsJsunit.test.ets';
+import transformJsunit from './general-properties/TransFormJsunit.test.ets';
+import gridSettingsJsunit from './general-properties/GridSettingsJsunit.test.ets';
+import touchJsunit from './general-properties/touchJsunit.test.ets'
+import backgroundJsunit from './general-properties/BackgroundJsunit.test.ets';
+import borderJsunit from './general-properties/BorderJsunit.test.ets';
+import flexJsunit from './general-properties/FlexJsunit.test.ets';
 import gridJsunit from './GridJsunit.test.ets';
+import rotationGestureJsUnit from './general-properties/RotationGestureJsunit.test.ets';
 
 export default function testsuite() {
-    ellipseJsunit();
-    systemRouterJsunit();
-    gridContainerJsunit();
-    swiperJsunit();
-    gridJsunit();
+  gaugeJsunit();
+  ellipseJsunit();
+  systemRouterJsunit();
+  marqueeJsunit();
+  stepperJsunit();
+  gridContainerJsunit();
+  listJsunit();
+  sizeSettingJsunit();
+  positionSettingJsunit();
+  opacitySettingJsunit();
+  swiperJsunit();
+  enableJsunit();
+  clickEventJsunit();
+  layoutConstraintsJsunit();
+  colorGradientJsunit();
+  areaChangeJsunit();
+  appearJsunit();
+  overlayJsunit();
+  visibilityJsunit();
+  ZIndexJsunit();
+  touchAbleJsunit();
+  shapeClippingJsunit();
+  textStyleJsunit();
+  imageEffectsJsunit();
+  transformJsunit();
+  gridSettingsJsunit();
+  touchJsunit();
+  backgroundJsunit();
+  borderJsunit();
+  flexJsunit();
+  gridJsunit();
+  rotationGestureJsUnit();
 }

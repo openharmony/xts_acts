@@ -1143,16 +1143,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
             console.info('case reset called!!');
         }, failureCallback).catch(catchCallback);
 
-        await videoPlayer.getDisplaySurface().then((outSurface) => {
-            videoPlayer.url = AUDIO_SOURCE;
-            surfaceID = outSurface;
-        }, failureCallback).catch(catchCallback);
-
-        await videoPlayer.setDisplaySurface(surfaceID).then(() => {
-            expect(videoPlayer.state).assertEqual('idle');
-            console.info('case setDisplaySurface success');
-        }, failureCallback).catch(catchCallback);
-
         await videoPlayer.prepare().then(() => {
             expect(videoPlayer.state).assertEqual('prepared');
             expect(videoPlayer.duration).assertEqual(DURATION_TIME);

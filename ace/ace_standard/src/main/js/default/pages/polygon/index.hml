@@ -1,0 +1,222 @@
+<div class="container">
+    <div class="style-container">
+        <text class="title">
+            通用样式
+        </text>
+        <text class="sub-title">
+            polygon通用样式1
+        </text>
+        <svg class="style1" x="0" y="0" width="200" height="200" fill="white" fill-opacity="0">
+            <polygon stroke="blue" stroke-width="2"
+                      points="5,50 20,20 20,50 40,20" stroke-dasharray="10 5" stroke-dashoffset="3"></polygon>
+        </svg>
+        <text  class="sub-title">
+            polygon通用样式2
+        </text>
+        <svg class="style2" x="0" y="0" width="200" height="50" fill="white" fill-opacity="0">
+            <polygon fill="white" stroke="blue" stroke-width="2"
+                      points="5,50 20,20 20,50 40,20" stroke-dasharray="10 5" stroke-dashoffset="3"></polygon>
+        </svg>
+
+        <text  class="sub-title">
+            polygon通用样式3
+        </text>
+        <svg class="style3" x="0" y="0" width="200" height="50" fill="white" fill-opacity="0">
+            <polygon fill="white" stroke="red" stroke-width="2"
+                      points="5,50 20,20 20,50 40,20" stroke-dasharray="10 5" stroke-dashoffset="3"></polygon>
+        </svg>
+        <text  class="sub-title">
+            polygon通用样式4
+        </text>
+        <svg class="style4" x="0" y="0" width="200" height="80" fill="blue" >
+            <polygon fill="white" stroke="block" stroke-width="2"
+                      points="10,70 50,10 50,65 90,10" stroke-dasharray="10 5" stroke-dashoffset="3"></polygon>
+        </svg>
+        <text  class="sub-title">
+            polygon通用样式5
+        </text>
+        <div class="contain1">
+            <svg class="style5" x="0" y="0" width="100" height="200" fill="blue">
+                <polyline stroke="block" stroke-width="2"
+                          points="10,70 50,10 50,65 90,10" stroke-dasharray="10 5" stroke-dashoffset="3"></polyline>
+            </svg>
+            <svg class="style6" x="0" y="0" width="100" height="200" fill="red" >
+                <polygon  stroke="yellow" stroke-width="2"
+                           points="10,70 50,10 50,65 90,10" stroke-dasharray="10 5" stroke-dashoffset="3"></polygon>
+            </svg>
+        </div>
+    </div>
+    <divider style="color: #000000; stroke-width: 2px;" vertical="true">
+    </divider>
+    <div class="sub-container">
+        <div class="prop-container">
+            <text class="title">
+                通用属性
+            </text>
+            <text class="sub-title">
+                polyline通用属性1
+            </text>
+            <svg width="200" height="80">
+                <polygon id="prop1" data-name ="prop1" points="10,50 10,10 30,50 50,20" fill="red"
+                          stroke="blue" fill-opacity="0.5"></polygon>
+            </svg>
+            <text class="sub-title">
+                polyline通用属性2
+            </text>
+            <svg width="200" height="80">
+                <polygon class="prop2" ref="prop2" data-name ="prop2" points="10,50 10,10 50,50 50,10"
+                          fill="#ad4e2a" stroke="blue" ></polygon>
+            </svg>
+            <text  class="sub-title">
+                polyline通用属性3
+            </text>
+            <svg width="200" height="80">
+                <polygon class="prop3" id="prop3" fill="white" stroke="blue" stroke-width="2"
+                          points="10,50 50,10 40,45 80,5" stroke-dasharray="10 5" stroke-dashoffset="3"></polygon>
+            </svg>
+
+            <text  class="sub-title">
+                polyline通用属性4
+            </text>
+            <svg width="200" height="80">
+                <polygon class="prop4" id="prop4"fill="red" stroke="blue" stroke-width="2"
+                          points="10,50 50,10 40,45 80,5" stroke-dasharray="10 5" stroke-dashoffset="3" transform="rotate(-10)"></polygon>
+            </svg>
+
+            <text  class="sub-title">
+                polyline通用属性5
+            </text>
+            <svg width="200" height="80">
+                <polygon class="prop5" id="prop5" fill="red" stroke="blue" stroke-width="2"
+                          points="10,50 50,10 40,45 80,5" stroke-dasharray="10 5" stroke-dashoffset="3" transform="skewX(20)"></polygon>
+            </svg>
+
+            <text  class="sub-title">
+                polyline通用属性6
+            </text>
+            <svg width="200" height="80">
+                <polygon class="prop6" id="prop6" fill="white" stroke="blue" stroke-width="2"
+                          points="10,40 50,5 40,40 80,5" stroke-dasharray="10 5" stroke-dashoffset="3" transform="skewY(10)"></polygon>
+            </svg>
+        </div>
+        <divider style="color: #000000; stroke-width: 2px;" vertical="false">
+        </divider>
+        <div class="ani-container">
+            <text class="title">
+                动画样式
+            </text>
+            <svg>
+                <polygon points="60,30 90,90 30,90" fill="red">
+                    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 120 140" to="360 360 420" dur="3s" repeatCount="indefinite"></animateTransform>
+                </polygon>
+                <polygon points="60,30 90,90 30,90" fill="red">
+                    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="360" dur="3s" repeatCount="indefinite"></animateTransform>
+                </polygon>
+                <polygon points="60,30 90,90 30,90" fill="green">
+                    <animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="2" dur="3s" repeatCount="indefinite"></animateTransform>
+                </polygon>
+                <polygon points="60,30 90,90 30,90" fill="green">
+                    <animateTransform attributeName="transform" attributeType="XML" type="scale" from="1 1" to="2 4" dur="3s" repeatCount="indefinite"></animateTransform>
+                </polygon>
+                <polygon points="60,30 90,90 30,90" fill="#D2691E">
+                    <animateTransform attributeName="transform" attributeType="XML" type="skewX" from="10" to="100" dur="3s" repeatCount="indefinite"></animateTransform>
+                </polygon>
+                <polygon points="60,30 90,90 30,90" fill="#D2691E">
+                    <animateTransform attributeName="transform" attributeType="XML" type="skewY" from="10" to="100" dur="3s" repeatCount="indefinite"></animateTransform>
+                </polygon>
+                <polygon points="60,30 90,90 30,90" fill="#D2691E">
+                    <animateTransform attributeName="transform" attributeType="XML" type="skewX" from="10" to="100" dur="3s" repeatCount="indefinite"></animateTransform>
+                    <animateTransform attributeName="transform" attributeType="XML" type="skewY" from="10" to="100" dur="3s" repeatCount="indefinite"></animateTransform>
+                </polygon>
+                <polygon points="60,30 90,90 30,90" fill="blue">
+                    <animateTransform attributeName="transform" attributeType="XML" type="translate" from="0" to="300" dur="3s" repeatCount="indefinite"></animateTransform>
+                </polygon>
+                <polygon points="60,30 90,90 30,90" fill="blue">
+                    <animateTransform attributeName="transform" attributeType="XML" type="translate" from="0 0" to="0 300" dur="3s" repeatCount="indefinite"></animateTransform>
+                </polygon>
+                <polygon points="60,30 90,90 30,90" fill="blue">
+                    <animateTransform attributeName="transform" attributeType="XML" type="translate" from="0 0" to="300 300" dur="3s" repeatCount="indefinite"></animateTransform>
+                </polygon>
+            </svg>
+        </div>
+    </div>
+
+    <divider style="color: #000000; stroke-width: 2px;" vertical="true">
+    </divider>
+
+    <div class="sub-container">
+        <div class="gradient-container">
+            <text class="title">
+                渐变样式
+            </text>
+            <text class="sub-title">
+                polygon渐变样式1
+            </text>
+            <svg class="gradient1" width="200" height="80">
+                <polygon  ref="prop2" data-name ="prop2" fill="white" stroke="blue" stroke-width="2" fill-opacity="0"
+                           points="10,60 50,20 50,65 90,20" stroke-dasharray="10 5" stroke-dashoffset="3"></polygon>
+            </svg>
+            <text  class="sub-title">
+                polygon渐变样式2
+            </text>
+            <svg class="gradient2" width="200" height="80">
+                <polygon  ref="prop2" data-name ="prop2" fill="white" stroke="blue" stroke-width="2" fill-opacity="0"
+                           points="10,60 50,20 50,65 90,20" stroke-dasharray="10 5" stroke-dashoffset="3"></polygon>
+            </svg>
+            <text  class="sub-title">
+                polygon渐变样式3
+            </text>
+            <svg class="gradient3" width="200" height="80">
+                <polygon  ref="prop2" data-name ="prop2" fill="white" stroke="yellow" stroke-width="2" fill-opacity="0"
+                           points="10,60 50,20 50,65 90,20" stroke-dasharray="10 5" stroke-dashoffset="3"></polygon>
+            </svg>
+            <text  class="sub-title">
+                polygon渐变样式4
+            </text>
+            <svg class="gradient4" width="200" height="80">
+                <polygon  ref="prop2" data-name ="prop2" fill="red" stroke="blue" stroke-width="2"
+                           points="10,60 50,20 50,65 90,20" stroke-dasharray="10 5" stroke-dashoffset="3"></polygon>
+            </svg>
+        </div>
+        <divider style="color: #000000; stroke-width: 2px;" vertical="false">
+        </divider>
+        <div class="access-container">
+            <text class="title">
+                无障碍
+            </text>
+            <text class="sub-title">
+                polygon无障碍1
+            </text>
+            <svg class="access1" accessibilitygroup ="true"
+                 accessibilitytext="polygon"
+                 accessibilitydescription="点击此按键会弹出一个对话框"
+                 ccessibilityimportance="no-hide-descendants"
+                 width="200" height="100">
+                <polygon fill="white" stroke="blue" stroke-width="2"
+                          points="10,80 50,20 50,75 90,20" stroke-dasharray="10 5" stroke-dashoffset="3"></polygon>
+            </svg>
+        </div>
+        <divider style="color: #000000; stroke-width: 2px;" vertical="false">
+        </divider>
+
+        <div class="multimode-container">
+            <text class="title">
+                多模输入
+            </text>
+            <text class="sub-title">
+                polygon多模输入1
+            </text>
+<!--            <svg class="multimode1" width="200" height="100" voicelabel = "voice"-->
+<!--                 subscriptflag="on" subscriptlabel="polygon" scenelabel="common">-->
+<!--                <polygon fill="red" stroke="blue" stroke-width="2"-->
+<!--                          points="10,80 50,20 50,75 90,20" stroke-dasharray="10 5" stroke-dashoffset="3"></polygon>-->
+<!--            </svg>-->
+            <svg class="multimode1" width="200" height="100" voicelabel = "voice"
+                 subscriptflag="on" subscriptlabel="polygon" scenelabel="common">
+                <polygon fill="red" stroke="blue" stroke-width="2"
+                          points="10,80 50,20 50,75 90,20" stroke-dasharray="10 5" stroke-dashoffset="3"></polygon>
+            </svg>
+        </div>
+    </div>
+</div>
+

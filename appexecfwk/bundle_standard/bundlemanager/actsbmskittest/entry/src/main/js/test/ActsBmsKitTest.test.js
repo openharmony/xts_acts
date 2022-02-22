@@ -115,54 +115,6 @@ describe('ActsBmsKitTest', function () {
     })
 
     /*
-    * @tc.number: ActsBmsKit_checkPermission_0100
-    * @tc.name: Pressure test interface checkPermission by promise;
-    * @tc.desc: 
-    */
-    it('ActsBmsKit_checkPermission_0100', 0, async function (done) {
-        console.info('=====================ActsBmsKit_checkPermission_0100==================');
-        for (let count = 0; count < STRESSLEVEL; count++) {
-            var data = await bundle.checkPermission(BUNDLE_NAME, PERMISSION_NAME);
-            console.log('checkPermission is granted: ' + data);
-            expect(data).assertEqual(0);
-            if (data != 0) {
-                break;
-            }
-        }
-        done();
-    })
-
-    /*
-    * @tc.number: ActsBmsKit_checkPermission_0200
-    * @tc.name: Pressure test interface checkPermission by callback;
-    * @tc.desc: 
-    */
-    it('ActsBmsKit_checkPermission_0200', 0, async function (done) {
-        console.info('=====================ActsBmsKit_checkPermission_0200==================');
-        let flag = true;
-        let count = 0;
-        for (let i = 0; i < STRESSLEVEL; i++) {
-            bundle.checkPermission(BUNDLE_NAME, PERMISSION_NAME, (err, data) => {
-                expect(err.code).assertEqual(0);
-                expect(data).assertEqual(0);
-                console.log('checkPermission is granted: ' + data);
-                if (count == STRESSLEVEL - 1) {
-                    done();
-                } else if (err.code != 0 || data != 0) {
-                    console.log('call function level is: ' + count);
-                    expect().assertFail();
-                    flag = false;
-                }
-                count++;
-            })
-            if (!flag) {
-                done();
-                break;
-            }
-        }
-    })
-
-    /*
     * @tc.number: ActsBmsKit_getModuleUsageRecordTest_0100
     * @tc.name: Pressure test interface getModuleUsageRecord(int maxNum) by promise;
     * @tc.desc: When the number of starts of ability is less than maxNum, call interface getModuleUsageRecord

@@ -968,7 +968,7 @@ describe('ScopeTest', function () {
      */
     it('testGetLower001', 0, function () {
         var result = range.getLower()
-        expect(result).assertEqual(30)
+        expect(result.toString()).assertEqual('30')
     })
 
     /**
@@ -979,7 +979,7 @@ describe('ScopeTest', function () {
      */
     it('testGetLower002', 0, function () {
         var result = rangeFir.getLower()
-        expect(result).assertEqual(35)
+        expect(result.toString()).assertEqual('35')
     })
 
     /**
@@ -990,7 +990,7 @@ describe('ScopeTest', function () {
      */
     it('testGetLower003', 0, function () {
         var result = rangeSec.getLower()
-        expect(result).assertEqual(20)
+        expect(result.toString()).assertEqual('20')
     })
 
     /**
@@ -1001,7 +1001,7 @@ describe('ScopeTest', function () {
      */
     it('testGetLower004', 0, function () {
         var result = rangeThi.getLower()
-        expect(result).assertEqual(20)
+        expect(result.toString()).assertEqual('20')
     })
 
     /**
@@ -1012,7 +1012,7 @@ describe('ScopeTest', function () {
      */
     it('testGetLower005', 0, function () {
         var result = rangeFif.getLower()
-        expect(result).assertEqual(35)
+        expect(result.toString()).assertEqual('35')
     })
 
     /**
@@ -1023,7 +1023,7 @@ describe('ScopeTest', function () {
      */
     it('testGetUpper001', 0, function () {
         var result = range.getUpper()
-        expect(result).assertEqual(40)
+        expect(result.toString()).assertEqual('40')
     })
 
     /**
@@ -1034,7 +1034,7 @@ describe('ScopeTest', function () {
      */
     it('testGetUpper002', 0, function () {
         var result = rangeFir.getUpper()
-        expect(result).assertEqual(39)
+        expect(result.toString()).assertEqual('39')
     })
 
     /**
@@ -1045,7 +1045,7 @@ describe('ScopeTest', function () {
      */
     it('testGetUpper003', 0, function () {
         var result = rangeSec.getUpper()
-        expect(result).assertEqual(45)
+        expect(result.toString()).assertEqual('45')
     })
 
     /**
@@ -1056,7 +1056,7 @@ describe('ScopeTest', function () {
      */
     it('testGetUpper004', 0, function () {
         var result = rangeThi.getUpper()
-        expect(result).assertEqual(35)
+        expect(result.toString()).assertEqual('35')
     })
 
     /**
@@ -1067,7 +1067,7 @@ describe('ScopeTest', function () {
      */
     it('testGetUpper005', 0, function () {
         var result = rangeFif.getUpper()
-        expect(result).assertEqual(45)
+        expect(result.toString()).assertEqual('45')
     })
 
     /**
@@ -1078,7 +1078,7 @@ describe('ScopeTest', function () {
      */
     it('testClamp001', 0, function () {
         var result =range.clamp(tempLess)
-        expect(result).assertEqual(30)
+        expect(result.toString()).assertEqual('30')
     })
 
     /**
@@ -1089,7 +1089,7 @@ describe('ScopeTest', function () {
      */
     it('testClamp002', 0, function () {
         var result =range.clamp(tempMiDF)
-        expect(result).assertEqual(35)
+        expect(result.toString()).assertEqual('35')
     })
 
     /**
@@ -1100,7 +1100,7 @@ describe('ScopeTest', function () {
      */
     it('testClamp003', 0, function () {
         var result =range.clamp(tempMore)
-        expect(result).assertEqual(40)
+        expect(result.toString()).assertEqual('40')
     })
 
     /**
@@ -1111,7 +1111,7 @@ describe('ScopeTest', function () {
      */
     it('testClamp004', 0, function () {
         var result =range.clamp(tempLower)
-        expect(result).assertEqual(30)
+        expect(result.toString()).assertEqual('30')
     })
 
     /**
@@ -1122,7 +1122,7 @@ describe('ScopeTest', function () {
      */
     it('testClamp005', 0, function () {
         var result =range.clamp(tempUpper)
-        expect(result).assertEqual(40)
+        expect(result.toString()).assertEqual('40')
     })
 
     /**
@@ -1243,7 +1243,7 @@ describe('ScopeTest', function () {
      */
     it('testExpand001', 0, function () {
         var result = range.expand(tempMiDF, tempMidS)
-        expect(result).assertEqual('[30, 40]')
+        expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
@@ -1254,7 +1254,7 @@ describe('ScopeTest', function () {
      */
     it('testExpand002', 0, function () {
         var result = range.expand(tempLess, tempMore)
-        expect(result).assertEqual('[20, 45]')
+        expect(result.toString()).assertEqual('[20, 45]')
     })
 
     /**
@@ -1265,7 +1265,7 @@ describe('ScopeTest', function () {
      */
     it('testExpand003', 0, function () {
         var result = range.expand(tempLess, tempMiDF)
-        expect(result).assertEqual('[20, 40]')
+        expect(result.toString()).assertEqual('[20, 40]')
     })
 
     /**
@@ -1276,7 +1276,7 @@ describe('ScopeTest', function () {
      */
     it('testExpand004', 0, function () {
         var result = range.expand(tempMiDF, tempMore)
-        expect(result).assertEqual('[30, 45]')
+        expect(result.toString()).assertEqual('[30, 45]')
     })
 
     /**
@@ -1287,7 +1287,7 @@ describe('ScopeTest', function () {
      */
     it('testExpand005', 0, function () {
         var result = range.expand(tempLower, tempUpper)
-        expect(result).assertEqual('[30, 40]')
+        expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
@@ -1298,7 +1298,7 @@ describe('ScopeTest', function () {
      */
     it('testExpand001', 0, function () {
         var result = range.expand(rangeFir)
-        expect(result).assertEqual('[30, 40]')
+        expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
@@ -1309,7 +1309,7 @@ describe('ScopeTest', function () {
      */
     it('testExpand002', 0, function () {
         var result = range.expand(rangeSec)
-        expect(result).assertEqual('[20, 45]')
+        expect(result.toString()).assertEqual('[20, 45]')
     })
 
     /**
@@ -1320,7 +1320,7 @@ describe('ScopeTest', function () {
      */
     it('testExpand003', 0, function () {
         var result = range.expand(rangeThi)
-        expect(result).assertEqual('[20, 40]')
+        expect(result.toString()).assertEqual('[20, 40]')
     })
 
     /**
@@ -1331,7 +1331,7 @@ describe('ScopeTest', function () {
      */
     it('testExpand004', 0, function () {
         var result = range.expand(rangeFif)
-        expect(result).assertEqual('[30, 45]')
+        expect(result.toString()).assertEqual('[30, 45]')
     })
 
     /**
@@ -1342,7 +1342,7 @@ describe('ScopeTest', function () {
      */
     it('testExpand005', 0, function () {
         var result = range.expand(range)
-        expect(result).assertEqual('[30, 40]')
+        expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
@@ -1353,7 +1353,7 @@ describe('ScopeTest', function () {
      */
     it('testExpand001', 0, function () {
         var result = range.expand(tempMiDF)
-        expect(result).assertEqual('[30, 40]')
+        expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
@@ -1364,7 +1364,7 @@ describe('ScopeTest', function () {
      */
     it('testExpand002', 0, function () {
         var result = range.expand(tempLess)
-        expect(result).assertEqual('[20, 40]')
+        expect(result.toString()).assertEqual('[20, 40]')
     })
 
     /**
@@ -1375,7 +1375,7 @@ describe('ScopeTest', function () {
      */
     it('testExpand003', 0, function () {
         var result = range.expand(tempMore)
-        expect(result).assertEqual('[30, 45]')
+        expect(result.toString()).assertEqual('[30, 45]')
     })
 
     /**
@@ -1386,7 +1386,7 @@ describe('ScopeTest', function () {
      */
     it('testExpand004', 0, function () {
         var result = range.expand(tempLower)
-        expect(result).assertEqual('[30, 40]')
+        expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
@@ -1397,7 +1397,7 @@ describe('ScopeTest', function () {
      */
     it('testExpand005', 0, function () {
         var result = range.expand(tempUpper)
-        expect(result).assertEqual('[30, 40]')
+        expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
@@ -1408,7 +1408,7 @@ describe('ScopeTest', function () {
      */
     it('testInstersect001', 0, function () {
         var result = range.intersect(rangeFir)
-        expect(result).assertEqual('[35, 39]')
+        expect(result.toString()).assertEqual('[35, 39]')
     })
 
     /**
@@ -1419,7 +1419,7 @@ describe('ScopeTest', function () {
      */
     it('testInstersect002', 0, function () {
         var result = range.intersect(rangeSec)
-        expect(result).assertEqual('[30, 40]')
+        expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
@@ -1430,7 +1430,7 @@ describe('ScopeTest', function () {
      */
     it('testInstersect003', 0, function () {
         var result = range.intersect(rangeThi)
-        expect(result).assertEqual('[30, 35]')
+        expect(result.toString()).assertEqual('[30, 35]')
     })
 
     /**
@@ -1441,7 +1441,7 @@ describe('ScopeTest', function () {
      */
     it('testInstersect004', 0, function () {
         var result = range.intersect(rangeFif)
-        expect(result).assertEqual('[35, 40]')
+        expect(result.toString()).assertEqual('[35, 40]')
     })
 
     /**
@@ -1452,7 +1452,7 @@ describe('ScopeTest', function () {
      */
     it('testInstersect005', 0, function () {
         var result = range.intersect(range)
-        expect(result).assertEqual('[30, 40]')
+        expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
@@ -1464,7 +1464,7 @@ describe('ScopeTest', function () {
      */
     it('testInstersect001', 0, function () {
         var result = range.intersect(tempMiDF, tempMidS)
-        expect(result).assertEqual('[35, 39]')
+        expect(result.toString()).assertEqual('[35, 39]')
     })
 
     /**
@@ -1476,7 +1476,7 @@ describe('ScopeTest', function () {
      */
     it('testInstersect002', 0, function () {
         var result = range.intersect(tempLess, tempMore)
-        expect(result).assertEqual('[30, 40]')
+        expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
@@ -1488,7 +1488,7 @@ describe('ScopeTest', function () {
      */
     it('testInstersect003', 0, function () {
         var result = range.intersect(tempLess, tempMiDF)
-        expect(result).assertEqual('[30, 35]')
+        expect(result.toString()).assertEqual('[30, 35]')
     })
 
     /**
@@ -1500,7 +1500,7 @@ describe('ScopeTest', function () {
      */
     it('testInstersect004', 0, function () {
         var result = range.intersect(tempMiDF, tempMore)
-        expect(result).assertEqual('[35, 40]')
+        expect(result.toString()).assertEqual('[35, 40]')
     })
 
     /**
@@ -1512,7 +1512,7 @@ describe('ScopeTest', function () {
      */
     it('testInstersect005', 0, function () {
         var result = range.intersect(tempLower, tempUpper)
-        expect(result).assertEqual('[30, 40]')
+        expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
@@ -1523,7 +1523,7 @@ describe('ScopeTest', function () {
      */
     it('testToString001', 0, function () {
         var result = range.toString()
-        expect(result).assertEqual('[30, 40]')
+        expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
@@ -1534,7 +1534,7 @@ describe('ScopeTest', function () {
      */
     it('testToString002', 0, function () {
         var result = rangeFir.toString()
-        expect(result).assertEqual('[35, 39]')
+        expect(result.toString()).assertEqual('[35, 39]')
     })
 
     /**
@@ -1545,7 +1545,7 @@ describe('ScopeTest', function () {
      */
     it('testToString003', 0, function () {
         var result = rangeSec.toString()
-        expect(result).assertEqual('[20, 45]')
+        expect(result.toString()).assertEqual('[20, 45]')
     })
 
     /**
@@ -1556,7 +1556,7 @@ describe('ScopeTest', function () {
      */
     it('testToString004', 0, function () {
         var result = rangeThi.toString()
-        expect(result).assertEqual('[20, 35]')
+        expect(result.toString()).assertEqual('[20, 35]')
     })
 
     /**
@@ -1567,7 +1567,7 @@ describe('ScopeTest', function () {
      */
     it('testToString005', 0, function () {
         var result = rangeFif.toString()
-        expect(result).assertEqual('[35, 45]')
+        expect(result.toString()).assertEqual('[35, 45]')
     })
 })
 

@@ -14,7 +14,7 @@
  */
 
 import app from '@system.app'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/lite'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('appInfoTest', function () {
     it('app_info_test_001', 0, function () {

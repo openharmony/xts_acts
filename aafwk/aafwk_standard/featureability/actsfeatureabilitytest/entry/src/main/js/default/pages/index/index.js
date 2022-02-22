@@ -18,6 +18,7 @@ import {Core, ExpectExtend} from 'deccjsunit/index'
 
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
+var once = true
 
 export default {
     data: {
@@ -27,7 +28,11 @@ export default {
         this.title = this.$t('strings.world');
     },
     onShow() {
-        console.info('onShow finish')
+        if (!once) {
+            return;
+        }
+        once = false;
+        console.info('onShow finish');
         const core = Core.getInstance()
         const expectExtend = new ExpectExtend({
             'id': 'extend'

@@ -16,3 +16,11 @@
 require('./basicabilityapi.test.js')
 require('./mediaquery.test.js')
 require('./commonComponentJsApi.test.js')
+require('./divProps.test.js')
+require('./buttonProps.test.js')
+require('./chartProps.test.js')
+require('./imageProps.test.js')
+require('./spanProps.test.js')
+require('./menuProps.test.js')
+require('./switchProps.test.js')
+

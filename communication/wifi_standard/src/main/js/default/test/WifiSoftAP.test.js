@@ -682,5 +682,138 @@ describe('ACTS_WifiTest', function() {
         expect(config).assertEqual(8);
 
     })
+    
+    /**
+     * @tc.number SUB_Communication_WiFi_Hotspot_ON_0001
+     * @tc.name testhotspotStateChangeOn
+     * @tc.desc Test hotspotStateChangeOn api.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_Communication_WiFi_Hotspot_ON_0001', 0, async function (done) {
+        console.info("[wifi_test]hotspotStateChange On test");
+        try {
+            wifi.on('hotspotStateChange', (data) => {
+                console.info("[wifi_test] hotspotStateChange On ->" + data);
+                expect(true).assertEqual(data != null);
+            });
+            await(3000);
+        }catch(e) {
+            expect(null).assertFail();
+        }
+        done();
+    })
+    
+    /**
+     * @tc.number SUB_Communication_WiFi_Hotspot_Off_0002
+     * @tc.name testhotspotStateChangeOff
+     * @tc.desc Test hotspotStateChange api.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_Communication_WiFi_Sta_Off_0002', 0, async function (done) {
+        try {
+            wifi.off('hotspotStateChange', (data) => {
+                console.info("[wifi_test] hotspotStateChange Off ->" + data);
+                expect(true).assertEqual(data != null);
+                console.info("[wifi_test] wifiRssiChange unregister end");
+            });
+            await(3000);
+        }catch(e) {
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_Communication_WiFi_Hotspot_ON_0003
+     * @tc.name testhotspotStaJoinOn
+     * @tc.desc Test hotspotStaJoinOn api.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_Communication_WiFi_Hotspot_ON_0003', 0, async function (done) {
+        console.info("[wifi_test]hotspotStaJoin On test");
+        try {
+            wifi.on('hotspotStaJoin', (data) => {
+                console.info("[wifi_test] hotspotStaJoin On ->" + data);
+                expect(true).assertEqual(data != null);
+            });
+            await(3000);
+        }catch(e) {
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_Communication_WiFi_Hotspot_Off_0004
+     * @tc.name testhotspotStaJoinOff
+     * @tc.desc Test hotspotStaJoin api.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_Communication_WiFi_Sta_Off_0004', 0, async function (done) {
+        try {
+            wifi.off('hotspotStaJoin', (data) => {
+                console.info("[wifi_test] hotspotStaJoin Off ->" + data);
+                expect(true).assertEqual(data != null);
+                console.info("[wifi_test] wifiRssiChange unregister end");
+            });
+            await(3000);
+        }catch(e) {
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_Communication_WiFi_Hotspot_ON_0005
+     * @tc.name testhotspotStaLeaveOn
+     * @tc.desc Test hotspotStaLeaveOn api.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_Communication_WiFi_Hotspot_ON_0005', 0, async function (done) {
+        console.info("[wifi_test]hotspotStaLeave On test");
+        try {
+            wifi.on('hotspotStaLeave', (data) => {
+                console.info("[wifi_test] hotspotStaLeave On ->" + data);
+                expect(true).assertEqual(data != null);
+            });
+            await(3000);
+        }catch(e) {
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_Communication_WiFi_Hotspot_Off_0006
+     * @tc.name testhotspotStaLeaveOff
+     * @tc.desc Test hotspotStaLeave api.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_Communication_WiFi_Sta_Off_0006', 0, async function (done) {
+        try {
+            wifi.off('hotspotStaLeave', (data) => {
+                console.info("[wifi_test] hotspotStaLeave Off ->" + data);
+                expect(true).assertEqual(data != null);
+                console.info("[wifi_test] hotspotStaLeave unregister end");
+            });
+            await(3000);
+        }catch(e) {
+            expect(null).assertFail();
+        }
+        done();
+    })
+
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })

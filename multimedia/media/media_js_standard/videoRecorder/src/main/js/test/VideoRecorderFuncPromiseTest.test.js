@@ -219,11 +219,12 @@ describe('RecorderLocalTestVideoFUNC', function () {
             console.info('case start called');
             sleep(RECORDER_TIME);
         }, failureCallback).catch(catchCallback);
-        await videoOutput.stop();
+
         await videoRecorder.release().then(() => {
             expect(videoRecorder.state).assertEqual('idle');
             console.info('case release ');
         }, failureCallback).catch(catchCallback);
+        await videoOutput.stop();
         await stopVideoOutput(videoOutput);
         done();
     })
@@ -270,7 +271,6 @@ describe('RecorderLocalTestVideoFUNC', function () {
             sleep(RECORDER_TIME);
         }, failureCallback).catch(catchCallback);
 
-        await videoOutput.stop();
         await videoRecorder.pause().then(() => {
             console.info('case pause called');
             sleep(PAUSE_TIME);
@@ -280,6 +280,7 @@ describe('RecorderLocalTestVideoFUNC', function () {
             console.info('case release ');
             expect(videoRecorder.state).assertEqual('idle');
         }, failureCallback).catch(catchCallback);
+        await videoOutput.stop();
         await stopVideoOutput(videoOutput);
         done();
     })
@@ -343,6 +344,7 @@ describe('RecorderLocalTestVideoFUNC', function () {
             expect(videoRecorder.state).assertEqual('idle');
             console.info('case release ');
         }, failureCallback).catch(catchCallback);
+        await videoOutput.stop();
         await stopVideoOutput(videoOutput);
         done();
     })
@@ -388,12 +390,12 @@ describe('RecorderLocalTestVideoFUNC', function () {
             sleep(RECORDER_TIME);
         }, failureCallback).catch(catchCallback);
 
-        await videoOutput.stop();
+        
         await videoRecorder.stop().then(() => {
             expect(videoRecorder.state).assertEqual('stopped');
             console.info('case stop called');
         }, failureCallback).catch(catchCallback);
-
+        await videoOutput.stop();
         await videoRecorder.release().then(() => {
             expect(videoRecorder.state).assertEqual('idle');
             console.info('case release ');
@@ -442,12 +444,12 @@ describe('RecorderLocalTestVideoFUNC', function () {
             expect(videoRecorder.state).assertEqual('playing');
             sleep(RECORDER_TIME);
         }, failureCallback).catch(catchCallback);
-        await videoOutput.stop();
+        
         await videoRecorder.reset().then(() => {
             console.info('case reset called');
             expect(videoRecorder.state).assertEqual('idle');
         }, failureCallback).catch(catchCallback);
-
+        await videoOutput.stop();
         await videoRecorder.release().then(() => {
             expect(videoRecorder.state).assertEqual('idle');
             console.info('case release ');
@@ -642,6 +644,7 @@ describe('RecorderLocalTestVideoFUNC', function () {
             expect(videoRecorder.state).assertEqual('idle');
             console.info('case release ');
         }, failureCallback).catch(catchCallback);
+        await videoOutput.stop();
         await stopVideoOutput(videoOutput);
         done();
     })
@@ -1336,6 +1339,150 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoOutput;
         videoConfig.url = 'file:///data/media/42.mp4';
         videoConfig.orientationHint = 270;
+        await media.createVideoRecorder().then((recorder) => {
+            console.info('case createVideoRecorder called');
+            if (typeof (recorder) != 'undefined') {
+                videoRecorder = recorder;
+                expect(videoRecorder.state).assertEqual('idle');
+            } else {
+                console.info('case recordr is undefined!!');
+                expect().assertFail();
+            }
+        }, failureCallback).catch(catchCallback);
+
+        await videoRecorder.prepare(videoConfig).then(() => {
+            expect(videoRecorder.state).assertEqual('prepared');
+        }, failureCallback).catch(catchCallback);
+
+        await videoRecorder.getInputSurface().then((outPutSurface) => {
+            surfaceID = outPutSurface;
+        }, failureCallback).catch(catchCallback);
+        videoOutput = await camera.createVideoOutput(surfaceID);
+        await startVideoOutput(videoOutput);
+        await videoRecorder.start().then(() => {
+            expect(videoRecorder.state).assertEqual('playing');
+            console.info('case start called');
+            sleep(RECORDER_TIME);
+        }, failureCallback).catch(catchCallback);
+        await videoOutput.stop();
+        await videoRecorder.release().then(() => {
+            expect(videoRecorder.state).assertEqual('idle');
+            console.info('case release ');
+        }, failureCallback).catch(catchCallback);
+        await stopVideoOutput(videoOutput);
+        done();
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2200
+        * @tc.name      : 22.videoFrameRate 20 (promise)
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2200', 0, async function (done) {
+        let videoRecorder = undefined;
+        let surfaceID = '';
+        let videoOutput;
+        videoConfig.url = 'file:///data/media/43.mp4';
+        videoConfig.videoFrameRate = 20;
+        await media.createVideoRecorder().then((recorder) => {
+            console.info('case createVideoRecorder called');
+            if (typeof (recorder) != 'undefined') {
+                videoRecorder = recorder;
+                expect(videoRecorder.state).assertEqual('idle');
+            } else {
+                console.info('case recordr is undefined!!');
+                expect().assertFail();
+            }
+        }, failureCallback).catch(catchCallback);
+
+        await videoRecorder.prepare(videoConfig).then(() => {
+            expect(videoRecorder.state).assertEqual('prepared');
+        }, failureCallback).catch(catchCallback);
+
+        await videoRecorder.getInputSurface().then((outPutSurface) => {
+            surfaceID = outPutSurface;
+        }, failureCallback).catch(catchCallback);
+        videoOutput = await camera.createVideoOutput(surfaceID);
+        await startVideoOutput(videoOutput);
+        await videoRecorder.start().then(() => {
+            expect(videoRecorder.state).assertEqual('playing');
+            console.info('case start called');
+            sleep(RECORDER_TIME);
+        }, failureCallback).catch(catchCallback);
+        await videoOutput.stop();
+        await videoRecorder.release().then(() => {
+            expect(videoRecorder.state).assertEqual('idle');
+            console.info('case release ');
+        }, failureCallback).catch(catchCallback);
+        await stopVideoOutput(videoOutput);
+        done();
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2300
+        * @tc.name      : 23.videoFrameRate 30 (promise)
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2300', 0, async function (done) {
+        let videoRecorder = undefined;
+        let surfaceID = '';
+        let videoOutput;
+        videoConfig.url = 'file:///data/media/44.mp4';
+        videoConfig.videoFrameRate = 30;
+        await media.createVideoRecorder().then((recorder) => {
+            console.info('case createVideoRecorder called');
+            if (typeof (recorder) != 'undefined') {
+                videoRecorder = recorder;
+                expect(videoRecorder.state).assertEqual('idle');
+            } else {
+                console.info('case recordr is undefined!!');
+                expect().assertFail();
+            }
+        }, failureCallback).catch(catchCallback);
+
+        await videoRecorder.prepare(videoConfig).then(() => {
+            expect(videoRecorder.state).assertEqual('prepared');
+        }, failureCallback).catch(catchCallback);
+
+        await videoRecorder.getInputSurface().then((outPutSurface) => {
+            surfaceID = outPutSurface;
+        }, failureCallback).catch(catchCallback);
+        videoOutput = await camera.createVideoOutput(surfaceID);
+        await startVideoOutput(videoOutput);
+        await videoRecorder.start().then(() => {
+            expect(videoRecorder.state).assertEqual('playing');
+            console.info('case start called');
+            sleep(RECORDER_TIME);
+        }, failureCallback).catch(catchCallback);
+        await videoOutput.stop();
+        await videoRecorder.release().then(() => {
+            expect(videoRecorder.state).assertEqual('idle');
+            console.info('case release ');
+        }, failureCallback).catch(catchCallback);
+        await stopVideoOutput(videoOutput);
+        done();
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2400
+        * @tc.name      : 24.videoFrameRate 60 (promise)
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2400', 0, async function (done) {
+        let videoRecorder = undefined;
+        let surfaceID = '';
+        let videoOutput;
+        videoConfig.url = 'file:///data/media/45.mp4';
+        videoConfig.videoFrameRate = 60;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {

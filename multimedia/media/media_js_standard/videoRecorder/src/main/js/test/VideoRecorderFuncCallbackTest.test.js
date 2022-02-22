@@ -304,14 +304,6 @@ describe('RecorderLocalTestVideoFUNC', function () {
 
     eventEmitter.on(RELEASE_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
-        await videoOutput.stop().then(() => {
-            console.info('case videoOutput stop success');
-        });
-        await videoOutput.release().then(() => {
-            console.info('case videoOutput release success');
-        });
-        videoOutput = undefined;
-        await stopCaptureSession();
         videoRecorder.release((err) => {
             if (typeof (err) == 'undefined') {
                 expect(videoRecorder.state).assertEqual('idle');
@@ -321,6 +313,14 @@ describe('RecorderLocalTestVideoFUNC', function () {
                 printfError(err, done);
             }
         });
+        await videoOutput.stop().then(() => {
+            console.info('case videoOutput stop success');
+        });
+        await videoOutput.release().then(() => {
+            console.info('case videoOutput release success');
+        });
+        videoOutput = undefined;
+        await stopCaptureSession();
     });
 
     /* *
@@ -671,6 +671,54 @@ describe('RecorderLocalTestVideoFUNC', function () {
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2100', 0, async function (done) {
         videoConfig.url = 'file:///data/media/39.mp4';
         videoConfig.orientationHint = 270;
+        let videoRecorder = null;
+        let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2200
+        * @tc.name      : 22.videoFrameRate 20 (callback)
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level1
+    */
+    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2200', 0, async function (done) {
+        videoConfig.url = 'file:///data/media/46.mp4';
+        videoConfig.videoFrameRate = 20;
+        let videoRecorder = null;
+        let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2300
+        * @tc.name      : 23.videoFrameRate 30 (callback)
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level1
+    */
+    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2300', 0, async function (done) {
+        videoConfig.url = 'file:///data/media/47.mp4';
+        videoConfig.videoFrameRate = 30;
+        let videoRecorder = null;
+        let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2400
+        * @tc.name      : 24.videoFrameRate 60 (callback)
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level1
+    */
+    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2400', 0, async function (done) {
+        videoConfig.url = 'file:///data/media/48.mp4';
+        videoConfig.videoFrameRate = 60;
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);

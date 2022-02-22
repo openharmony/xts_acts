@@ -28,13 +28,6 @@
                  offset="10px"
                  refreshing="{{fresh}}"
                  onrefresh="refresh">
-            <list class="list" scrolleffect="no">
-                <list-item class="listitem" for="list">
-                    <div class="content">
-                        <text class="text">{{$item}}</text>
-                    </div>
-                </list-item>
-            </list>
         </refresh>
 
         <text  class="sub-title">
@@ -44,13 +37,6 @@
                  offset="10px"
                  refreshing="{{fresh}}"
                  onrefresh="refresh">
-            <list class="list" scrolleffect="no">
-                <list-item class="listitem" for="list">
-                    <div class="content">
-                        <text class="text">{{$item}}</text>
-                    </div>
-                </list-item>
-            </list>
         </refresh>
 
         <text  class="sub-title">
@@ -60,13 +46,6 @@
                  offset="10px"
                  refreshing="{{fresh}}"
                  onrefresh="refresh">
-            <list class="list" scrolleffect="no">
-                <list-item class="listitem" for="list">
-                    <div class="content">
-                        <text class="text3 text">{{$item}}</text>
-                    </div>
-                </list-item>
-            </list>
         </refresh>
 
         <text  class="sub-title">
@@ -76,13 +55,6 @@
                  offset="10px"
                  refreshing="{{fresh}}"
                  onrefresh="refresh">
-            <list class="list" scrolleffect="no">
-                <list-item class="listitem" for="list">
-                    <div class="content">
-                        <text class="text">{{$item}}</text>
-                    </div>
-                </list-item>
-            </list>
         </refresh>
 
         <text  class="sub-title">
@@ -93,25 +65,11 @@
                      offset="10px"
                      refreshing="{{fresh}}"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
             <refresh class="style6"
                      offset="10px"
                      refreshing="{{fresh}}"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
         </div>
         <text  class="sub-title">
@@ -121,13 +79,6 @@
                  offset="10px"
                  refreshing="{{fresh}}"
                  onrefresh="refresh">
-            <list class="list" scrolleffect="no">
-                <list-item class="listitem" for="list">
-                    <div class="content">
-                        <text class="text">{{$item}}</text>
-                    </div>
-                </list-item>
-            </list>
         </refresh>
     </div>
         <divider style="color: #000000; stroke-width: 2px;" vertical="false">
@@ -144,13 +95,6 @@
                      offset="10px"
                      refreshing="{{fresh}}"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
 
             <text class="sub-title">
@@ -160,13 +104,6 @@
                      offset="10px"
                      refreshing="{{fresh}}"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
 
         </div>
@@ -192,13 +129,6 @@
                      offset="10px"
                      refreshing="{{fresh}}"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
 
             <text  class="sub-title">
@@ -214,13 +144,6 @@
                      offset="10px"
                      refreshing="{{fresh}}"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
 
             <text  class="sub-title">
@@ -231,13 +154,6 @@
                      offset="10px"
                      refreshing="{{fresh}}"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
 
             <text  class="sub-title">
@@ -248,16 +164,9 @@
                      type="auto"
                      lasttime="true"
                      friction="42"
-                     timeoffset="10"
+                     timeoffset="2px"
                      refreshing="true"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
 
             <text  class="sub-title">
@@ -271,13 +180,6 @@
                      timeoffset="5px"
                      refreshing="{{fresh}}"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">
@@ -298,13 +200,6 @@
                      timeoffset="5px"
                      refreshing="{{fresh}}"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
 
             <text  class="sub-title">
@@ -318,13 +213,6 @@
                      timeoffset="5px"
                      refreshing="{{fresh}}"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
 
             <text  class="sub-title">
@@ -338,13 +226,6 @@
                      timeoffset="5px"
                      refreshing="{{fresh}}"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
 
             <text  class="sub-title">
@@ -358,13 +239,6 @@
                      timeoffset="5px"
                      refreshing="{{fresh}}"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">
@@ -378,6 +252,7 @@
                 refresh通用方法1
             </text>
             <refresh class="style7 function1"
+                     id="function1"
                      offset="10px"
                      lasttime="false"
                      friction="52"
@@ -385,13 +260,6 @@
                      timeoffset="5px"
                      refreshing="{{fresh}}"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
         </div>
     </div>
@@ -412,13 +280,6 @@
                      offset="10px"
                      refreshing="{{fresh}}"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
 
             <text  class="sub-title">
@@ -428,13 +289,6 @@
                      offset="10px"
                      refreshing="{{fresh}}"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
 
             <text  class="sub-title">
@@ -444,13 +298,6 @@
                      offset="10px"
                      refreshing="{{fresh}}"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
 
             <text  class="sub-title">
@@ -460,13 +307,6 @@
                      offset="10px"
                      refreshing="{{fresh}}"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
 
         </div>
@@ -488,13 +328,6 @@
                      offset="10px"
                      refreshing="{{fresh}}"
                      onrefresh="refresh">
-                <list class="list" scrolleffect="no">
-                    <list-item class="listitem" for="list">
-                        <div class="content">
-                            <text class="text">{{$item}}</text>
-                        </div>
-                    </list-item>
-                </list>
             </refresh>
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">
@@ -512,37 +345,16 @@
                          offset="10px"
                          refreshing="{{fresh}}"
                          onrefresh="refresh">
-                    <list class="list" scrolleffect="no">
-                        <list-item class="listitem" for="list">
-                            <div class="content">
-                                <text class="text">{{$item}}</text>
-                            </div>
-                        </list-item>
-                    </list>
                 </refresh>
                 <refresh class="atstyle"
                          offset="10px"
                          refreshing="{{fresh}}"
                          onrefresh="refresh">
-                    <list class="list" scrolleffect="no">
-                        <list-item class="listitem" for="list">
-                            <div class="content">
-                                <text class="text">{{$item}}</text>
-                            </div>
-                        </list-item>
-                    </list>
                 </refresh>
                 <refresh class="atstyle"
                          offset="10px"
                          refreshing="{{fresh}}"
                          onrefresh="refresh">
-                    <list class="list" scrolleffect="no">
-                        <list-item class="listitem" for="list">
-                            <div class="content">
-                                <text class="text">{{$item}}</text>
-                            </div>
-                        </list-item>
-                    </list>
                 </refresh>
             </div>
             <text class="sub-title">
@@ -553,37 +365,16 @@
                          offset="10px"
                          refreshing="{{fresh}}"
                          onrefresh="refresh">
-                    <list class="list" scrolleffect="no">
-                        <list-item class="listitem" for="list">
-                            <div class="content">
-                                <text class="text">{{$item}}</text>
-                            </div>
-                        </list-item>
-                    </list>
                 </refresh>
                 <refresh class="atstyle"
                          offset="10px"
                          refreshing="{{fresh}}"
                          onrefresh="refresh">
-                    <list class="list" scrolleffect="no">
-                        <list-item class="listitem" for="list">
-                            <div class="content">
-                                <text class="text">{{$item}}</text>
-                            </div>
-                        </list-item>
-                    </list>
                 </refresh>
                 <refresh class="atstyle"
                          offset="10px"
                          refreshing="{{fresh}}"
                          onrefresh="refresh">
-                    <list class="list" scrolleffect="no">
-                        <list-item class="listitem" for="list">
-                            <div class="content">
-                                <text class="text">{{$item}}</text>
-                            </div>
-                        </list-item>
-                    </list>
                 </refresh>
             </div>
             <text class="sub-title">
@@ -594,37 +385,16 @@
                          offset="10px"
                          refreshing="{{fresh}}"
                          onrefresh="refresh">
-                    <list class="list" scrolleffect="no">
-                        <list-item class="listitem" for="list">
-                            <div class="content">
-                                <text class="text">{{$item}}</text>
-                            </div>
-                        </list-item>
-                    </list>
                 </refresh>
                 <refresh class="atstyle"
                          offset="10px"
                          refreshing="{{fresh}}"
                          onrefresh="refresh">
-                    <list class="list" scrolleffect="no">
-                        <list-item class="listitem" for="list">
-                            <div class="content">
-                                <text class="text">{{$item}}</text>
-                            </div>
-                        </list-item>
-                    </list>
                 </refresh>
                 <refresh class="atstyle"
                          offset="10px"
                          refreshing="{{fresh}}"
                          onrefresh="refresh">
-                    <list class="list" scrolleffect="no">
-                        <list-item class="listitem" for="list">
-                            <div class="content">
-                                <text class="text">{{$item}}</text>
-                            </div>
-                        </list-item>
-                    </list>
                 </refresh>
             </div>
             <div style="background-color: #000000; width: 100%; height: 2px;">
@@ -637,16 +407,13 @@
                     refresh多模输入1
                 </text>
                 <refresh class="mstyle multimode1"
+                         voicelabel = "voice"
+                         subscriptflag="on"
+                         subscriptlabel="div"
+                         scenelabel="common"
                          offset="10px"
                          refreshing="{{fresh}}"
                          onrefresh="refresh">
-                    <list class="list" scrolleffect="no">
-                        <list-item class="listitem" for="list">
-                            <div class="content">
-                                <text class="text">{{$item}}</text>
-                            </div>
-                        </list-item>
-                    </list>
                 </refresh>
             </div>
         </div>

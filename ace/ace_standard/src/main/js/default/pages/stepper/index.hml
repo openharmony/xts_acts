@@ -22,7 +22,7 @@
         <text class="sub-title">
             stepper通用样式1
         </text>
-        <stepper class="style1" id="mystepper" index="0"  onnext="next" onback="back">
+        <stepper class="style1" id="style1" index="0"  onnext="next" onback="back">
             <stepper-item class ="stepperItem istyle1" label="{{label1}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">First</text>
@@ -46,7 +46,7 @@
         <text  class="sub-title">
             stepper通用样式2
         </text>
-        <stepper class="style2" id="mystepper" index="0"  onnext="next" onback="back">
+        <stepper class="style2" id="style2" index="0"  onnext="next" onback="back">
             <stepper-item class ="stepperItem istyle4" label="{{label1}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">First</text>
@@ -70,7 +70,7 @@
         <text  class="sub-title">
             stepper通用样式3
         </text>
-        <stepper class="style3" id="mystepper" index="0"  onnext="next" onback="back">
+        <stepper class="style3" id="style3" index="0"  onnext="next" onback="back">
             <stepper-item class ="stepperItem" label="{{label1}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">First</text>
@@ -94,7 +94,7 @@
         <text  class="sub-title">
             stepper通用样式4
         </text>
-        <stepper class="style4" id="mystepper" index="0"  onnext="next" onback="back">
+        <stepper class="style4" id="style4" index="0"  onnext="next" onback="back">
             <stepper-item class ="stepperItem istyle7" label="{{label1}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">First</text>
@@ -118,7 +118,7 @@
             stepper通用样式5
         </text>
         <div class="contain1">
-            <stepper class="style5" id="mystepper" index="0"  onnext="next" onback="back">
+            <stepper class="style5" id="style5" index="0"  onnext="next" onback="back">
                 <stepper-item class ="stepperItem" label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
@@ -138,7 +138,7 @@
                     <button type="capsule" class ="button" value="stepper1" onclick="setRightButton"></button>
                 </stepper-item>
             </stepper>
-            <stepper class="style6" id="mystepper" index="0"  onnext="next" onback="back">
+            <stepper class="style6" id="style6" index="0"  onnext="next" onback="back">
                 <stepper-item class ="stepperItem" label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
@@ -162,7 +162,7 @@
         <text  class="sub-title">
             stepper特有样式
         </text>
-        <stepper class="style7" id="mystepper" index="0"  onnext="next" onback="back">
+        <stepper class="style7" id="style7" index="0"  onnext="next" onback="back">
             <stepper-item class ="stepperItem" label="{{label1}}">
                 <div class = "stepperItemContent" >
                     <text class = "text">First</text>
@@ -194,7 +194,7 @@
                 stepper动画样式1
             </text>
             <stepper class="stylePro ani1"
-                     id="mystepper"
+                     id="ani1"
                      index="0"
                      onnext="next"
                      onback="back">
@@ -222,7 +222,7 @@
                 stepper动画样式2
             </text>
             <stepper class="stylePro ani2"
-                     id="mystepper"
+                     id="ani2"
                      index="0"
                      onnext="next"
                      onback="back">
@@ -290,7 +290,7 @@
             <text  class="sub-title">
                 stepper通用属性2
             </text>
-            <stepper class="stylePro" id="prop2"
+            <stepper class="stylePro" ref="prop2"
                      data-name ="prop2"
                      dir ="rtl"  index="0"  onnext="next" onback="back">
                 <stepper-item class ="stepperItem gradient4" label="{{label1}}">
@@ -341,7 +341,7 @@
             <text  class="sub-title">
                 stepper特有属性4
             </text>
-            <stepper class="stylePro" id="mystepper" index="1"  onnext="next" onback="back">
+            <stepper class="stylePro" id="prop4" index="1"  onnext="next" onback="back">
                 <stepper-item class ="stepperItem" label="{{label1}}">
                     <div class = "stepperItemContent" >
                         <text class = "text">First</text>
@@ -373,7 +373,7 @@
                 stepper通用事件1
             </text>
             <stepper class="stylePro event1"
-                     id="mystepper"
+                     id="event1"
                      finish = "finishTest"
                      skip = "skipTest"
                      change = "changeTest"
@@ -416,7 +416,7 @@
             </text>
             <stepper class="stylePro event2"
                      ontouchstart="functionTest3"
-                     id="mystepper"
+                     id="event2"
                      index="1"
                      onnext="next"
                      onback="back"
@@ -486,7 +486,7 @@
                 stepper通用方法1
             </text>
             <stepper class="stylePro function1"
-                     id="mystepper1" index="1"
+                     id="function1" index="1"
                      onnext="next"
                      onback="back"
                      ontouchstart="functionTest1">
@@ -520,7 +520,7 @@
             </text>
             <stepper class="stylePro function2"
                      ontouchstart="functionTest2"
-                     id="mystepper2"
+                     id="function2"
                      index="1"
                      onnext="next"
                      onback="back"
@@ -570,7 +570,7 @@
                 stepper渐变样式1
             </text>
             <stepper class="stylePro gradient1"
-                     id="mystepper"
+                     id="gradient1"
                      index="0"
                      onnext="next"
                      onback="back">
@@ -598,7 +598,7 @@
                 stepper渐变样式2
             </text>
             <stepper class="stylePro gradient2"
-                     id="mystepper"
+                     id="gradient2"
                      index="0"
                      onnext="next"
                      onback="back">
@@ -626,7 +626,7 @@
                 stepper渐变样式3
             </text>
             <stepper class="stylePro gradient3"
-                     id="mystepper"
+                     id="gradient3"
                      index="0"
                      onnext="next"
                      onback="back">
@@ -654,7 +654,7 @@
                 stepper渐变样式4
             </text>
             <stepper class="stylePro gradient4"
-                     id="mystepper"
+                     id="gradient4"
                      index="0"
                      onnext="next"
                      onback="back">
@@ -694,7 +694,7 @@
                      accessibilitytext="这是div"
                      accessibilitydescription="点击此按键会弹出一个对话框"
                      accessibilityimportance="no-hide-descendants"
-                     id="mystepper"
+                     id="access1"
                      index="0"
                      onnext="next"
                      onback="back">
@@ -731,7 +731,7 @@
             </text>
             <div style="flex-direction: row;height: 30px;width: 100%;">
                 <stepper class="stylePro"
-                         id="mystepper"
+                         id="ato1"
                          index="0"
                          onnext="next"
                          onback="back">
@@ -755,7 +755,7 @@
                     </stepper-item>
                 </stepper>
                 <stepper class="stylePro"
-                         id="mystepper"
+                         id="ato2"
                          index="0"
                          onnext="next"
                          onback="back">
@@ -779,7 +779,7 @@
                     </stepper-item>
                 </stepper>
                 <stepper class="stylePro"
-                         id="mystepper"
+                         id="ato3"
                          index="0"
                          onnext="next"
                          onback="back">
@@ -809,7 +809,7 @@
             </text>
             <div style="flex-direction: row;height: 30px;width: 100%;">
                 <stepper class="stylePro"
-                         id="mystepper"
+                         id="atom1"
                          index="0"
                          onnext="next"
                          onback="back">
@@ -833,7 +833,7 @@
                     </stepper-item>
                 </stepper>
                 <stepper class="stylePro"
-                         id="mystepper"
+                         id="atom2"
                          index="0"
                          onnext="next"
                          onback="back">
@@ -857,7 +857,7 @@
                     </stepper-item>
                 </stepper>
                 <stepper class="stylePro"
-                         id="mystepper"
+                         id="atom3"
                          index="0"
                          onnext="next"
                          onback="back">
@@ -886,7 +886,7 @@
             </text>
             <div style="flex-direction: row;height:30px;width: 100%;">
                 <stepper class="stylePro"
-                         id="mystepper"
+                         id="atomA1"
                          index="0"
                          onnext="next"
                          onback="back">
@@ -910,7 +910,7 @@
                     </stepper-item>
                 </stepper>
                 <stepper class="stylePro"
-                         id="mystepper"
+                         id="atomA2"
                          index="0"
                          onnext="next"
                          onback="back">
@@ -934,7 +934,7 @@
                     </stepper-item>
                 </stepper>
                 <stepper class="stylePro"
-                         id="mystepper"
+                         id="atomA3"
                          index="0"
                          onnext="next"
                          onback="back">
@@ -968,7 +968,7 @@
                     stepper多模输入1
                 </text>
                 <stepper class="stylePro"
-                         id="mystepper"
+                         id="mul1"
                          index="0"
                          onnext="next"
                          onback="back">

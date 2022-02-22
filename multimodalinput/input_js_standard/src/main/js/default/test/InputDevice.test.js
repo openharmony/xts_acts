@@ -65,7 +65,7 @@ describe('MultimodalInput_test', function () {
     })
   })
 
-    // 参数正常,返回值正常
+  // 参数正常,返回值正常
   it("inputDevice::getDevice_test-02", 0, function () {
     console.log(`inputDevice::getDevice_test-04 enter`);
     inputDevice.getDeviceIds((data, err) => {
@@ -80,10 +80,35 @@ describe('MultimodalInput_test', function () {
             console.log(`getDevice:err ${JSON.stringify(err)}`)
             arr = Object.keys(res);
           })
-        expect(arr.length > 0).assertTrue();
+          expect(arr.length > 0).assertTrue();
+        }
       }
-    }
-    console.log(`inputDevice::getDevice_test-04 exit`);
+      console.log(`inputDevice::getDevice_test-04 exit`);
+    });
+  })
+
+  it("inputDevice::getDevice_test03", 0, function () {
+    console.log(`inputDevice::getDevice_test-04 enter`);
+    inputDevice.getDeviceIds((data, err) => {
+      if (err) {
+        expect(false).assertTrue();
+      } else {
+        let arr = [];
+        for (var i = 0; i < data.length; i++) {
+          inputDevice.getDevice(data[i], (res, err) => {
+            console.log(`getDevice:data_i ${JSON.stringify(data[i])}`)
+            console.log(`getDevice:data ${JSON.stringify(data)}`)
+            console.log(`getDevice:err ${JSON.stringify(err)}`)
+            arr = Object.keys(res);
+            expect(data[i].id).assertInstanceOf('number');
+            expect(data[i].sources).assertInstanceOf('string');
+            expect(data[i].name).assertInstanceOf('Array');
+            expect(data[i].axisRanges).assertInstanceOf('Array');
+          })
+          expect(arr.length > 0).assertTrue();
+        }
+      }
+      console.log(`inputDevice::getDevice_test-04 exit`);
     });
   })
 })

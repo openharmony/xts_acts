@@ -3,273 +3,58 @@
     <div class="sub-container">
         <!-- 通用样式 -->
         <div class="style-container">
-        <text class="title">
-            通用样式
-        </text>
-        <text class="sub-title">
-            panel通用样式1
-        </text>
-        <div class="btn-div">
-            <button type="capsule"
+            <text class="title">
+                样式
+            </text>
+            <text class="sub-title">
+                panel样式1
+            </text>
+            <button  class="btn-div" type="capsule"
                     value="Click here"
                     onclick="showPanel1">
             </button>
-        </div>
-        <panel id="simplepanel1"
-               class="style1"
-               type="foldable"
-               dragbar="true"
-               mode="mini"
-               onsizechange="changeMode"
-               miniheight="200px">
-            <div class="panel-div">
-                <div class="inner-txt">
-                    <text class="txt">Simple panel in mini mode</text>
-                </div>
+            <panel id="simplePanel1"
+                   class="style1" type="foldable">
                 <div class="inner-btn">
                     <button type="capsule"
                             value="Close"
                             onclick="closePanel1">
                     </button>
                 </div>
-            </div>
-        </panel>
+            </panel>
 
-        <text class="sub-title">
-            panel通用样式2
-        </text>
-        <div class="btn-div">
-            <button type="capsule"
-                    value="Click here"
-                    onclick="showPanel2">
+            <text class="sub-title">
+                panel样式2
+            </text>
+            <button  class="btn-div" type="capsule"
+                     value="Click here"
+                     onclick="showPanel2">
             </button>
-        </div>
-        <panel id="simplepanel2"
-               class="style2"
-               type="foldable"
-               dragbar="false"
-               mode="half"
-               halfheight="400px"
-               onsizechange="changeMode"
-               miniheight="200px">
-            <div class="panel-div">
-                <div class="inner-txt">
-                    <text class="txt">Simple panel in half mode</text>
-                </div>
+            <panel id="simplePanel2" type="foldable"
+                   class="style2">
                 <div class="inner-btn">
                     <button type="capsule"
                             value="Close"
                             onclick="closePanel2">
                     </button>
                 </div>
-            </div>
-        </panel>
-
-        <text class="sub-title">
-            panel通用样式3
-        </text>
-        <div class="btn-div">
-            <button type="capsule"
-                    value="Click here"
-                    onclick="showPanel3">
-            </button>
-        </div>
-        <panel id="simplepanel3"
-               class="style3"
-               type="foldable"
-               mode="full"
-               fullheight="800px"
-               onsizechange="changeMode"
-               miniheight="200px">
-            <div class="panel-div">
-                <div class="inner-txt">
-                    <text class="txt">Simple panel in full mode</text>
-                </div>
+            </panel>
+            <text class="sub-title">
+                panel样式3
+            </text>
+            <button  class="btn-div" type="capsule"
+                     value="Click here"
+                     onclick="showPanel3">
+             </button>
+            <panel id="simplePanel3" type="foldable"
+                   class="style3">
                 <div class="inner-btn">
                     <button type="capsule"
                             value="Close"
                             onclick="closePanel3">
                     </button>
                 </div>
-            </div>
-        </panel>
-
-        <text class="sub-title">
-            panel通用样式4
-        </text>
-        <div class="btn-div">
-            <button type="capsule"
-                    value="Click here"
-                    onclick="showPanel4">
-            </button>
-        </div>
-        <panel id="simplepanel4"
-               class="style4"
-               type="foldable"
-               mode="half"
-               onsizechange="changeMode"
-               miniheight="200px">
-            <div class="panel-div">
-                <div class="inner-txt">
-                    <text class="txt">Simple panel in {{modeFlag}} mode</text>
-                </div>
-                <div class="inner-btn">
-                    <button type="capsule"
-                            value="Close"
-                            onclick="closePanel4">
-                    </button>
-                </div>
-            </div>
-        </panel>
-        <div class="contain1">
-            <text class="sub-title">
-                panel通用样式5
-            </text>
-            <div class="btn-div1">
-                <button type="capsule"
-                        value="Click here"
-                        onclick="showPanel5">
-                </button>
-            </div>
-            <panel id="simplepanel5"
-                   class="style5"
-                   type="foldable"
-                   mode="half"
-                   onsizechange="changeMode"
-                   miniheight="200px">
-                <div class="panel-div">
-                    <div class="inner-txt">
-                        <text class="txt">Simple panel in {{modeFlag}} mode</text>
-                    </div>
-                    <div class="inner-btn">
-                        <button type="capsule"
-                                value="Close"
-                                onclick="closePanel5">
-                        </button>
-                    </div>
-                </div>
             </panel>
-
-            <text class="sub-title">
-                panel通用样式6
-            </text>
-            <div class="btn-div1">
-                <button type="capsule"
-                        value="Click here"
-                        onclick="showPanel6">
-                </button>
-            </div>
-            <panel id="simplepanel6"
-                   class="style6"
-                   type="foldable"
-                   mode="half"
-                   onsizechange="changeMode"
-                   miniheight="200px">
-                <div class="panel-div">
-                    <div class="inner-txt">
-                        <text class="txt">Simple panel in {{modeFlag}} mode</text>
-                    </div>
-                    <div class="inner-btn">
-                        <button type="capsule"
-                                value="Close"
-                                onclick="closePanel6">
-                        </button>
-                    </div>
-                </div>
-            </panel>
-        </div>
-        <text class="sub-title">
-            panel特有样式7
-        </text>
-        <div class="btn-div">
-            <button type="capsule"
-                    value="Click here"
-                    onclick="showPanel7">
-            </button>
-        </div>
-        <panel id="simplepanel7"
-               class="style7"
-               type="foldable"
-               mode="half"
-               onsizechange="changeMode"
-               miniheight="200px">
-            <div class="panel-div">
-                <div class="inner-txt">
-                    <text class="txt">Simple panel in {{modeFlag}} mode</text>
-                </div>
-                <div class="inner-btn">
-                    <button type="capsule"
-                            value="Close"
-                            onclick="closePanel7">
-                    </button>
-                </div>
-            </div>
-        </panel>
-
-
-    </div>
-        <divider style="color: #000000; stroke-width: 2px;" vertical="false">
-        </divider>
-         <!-- 动画样式 -->
-        <div class="ani-container">
-            <text class="title">
-                动画样式
-            </text>
-            <text class="sub-title">
-                panel动画样式1
-            </text>
-            <div class="btn-div">
-                <button type="capsule"
-                        value="Click here"
-                        onclick="showPanel4">
-                </button>
-            </div>
-            <panel id="simplepanel4"
-                   class="style4 ani1"
-                   type="foldable"
-                   mode="half"
-                   onsizechange="changeMode"
-                   miniheight="200px">
-                <div class="panel-div">
-                    <div class="inner-txt">
-                        <text class="txt">Simple panel in {{modeFlag}} mode</text>
-                    </div>
-                    <div class="inner-btn">
-                        <button type="capsule"
-                                value="Close"
-                                onclick="closePanel4">
-                        </button>
-                    </div>
-                </div>
-            </panel>
-            <text class="sub-title">
-                panel动画样式2
-            </text>
-            <div class="btn-div">
-                <button type="capsule"
-                        value="Click here"
-                        onclick="showPanel4">
-                </button>
-            </div>
-            <panel id="simplepanel4"
-                   class="style4 ani2"
-                   type="foldable"
-                   mode="half"
-                   onsizechange="changeMode"
-                   miniheight="200px">
-                <div class="panel-div">
-                    <div class="inner-txt">
-                        <text class="txt">Simple panel in {{modeFlag}} mode</text>
-                    </div>
-                    <div class="inner-btn">
-                        <button type="capsule"
-                                value="Close"
-                                onclick="closePanel4">
-                        </button>
-                    </div>
-                </div>
-            </panel>
-
         </div>
     </div>
 
@@ -285,12 +70,10 @@
             <text class="sub-title">
                 panel通用属性1
             </text>
-            <div class="btn-div">
-                <button type="capsule"
-                        value="Click here"
-                        onclick="showPanelPro1">
-                </button>
-            </div>
+            <button  class="btn-div" type="capsule"
+                     value="Click here"
+                     onclick="showPanelPro1">
+            </button>
             <panel id = "prop1"
                    class="prop1"
                    type="foldable"
@@ -299,110 +82,76 @@
                    data-name ="prop1"
                    click-effect="spring-medium"
                    dir ="rtl">
-                <div class="panel-div">
-                    <div class="inner-txt">
-                        <text class="txt">Simple panel in {{modeFlag}} mode</text>
-                    </div>
-                    <div class="inner-btn">
-                        <button type="capsule"
-                                value="Close"
-                                onclick="closePanelPro1">
-                        </button>
-                    </div>
+                <div class="btn-div">
+                    <button type="capsule"
+                            value="Close"
+                            onclick="closePanelPro1">
+                    </button>
                 </div>
             </panel>
             <text  class="sub-title">
                 panel通用属性2
             </text>
-            <div class="btn-div">
-                <button type="capsule"
-                        value="Click here"
-                        onclick="showPanelPro2">
-                </button>
-            </div>
-            <panel id="prop2" class="prop2" ref ="prop2"
-                     disabled = "false" focusable ="false"
-                     data-name ="prop2" click-effect="spring-large"
-                     dir ="ltr"
-                   type="foldable"
-                   dragbar="true"
-                   mode="mini"
-                   onsizechange="changeMode"
-                   miniheight="200px">
-                <div class="panel-div">
-                    <div class="inner-txt">
-                        <text class="txt">Simple panel in {{modeFlag}} mode</text>
-                    </div>
-                    <div class="inner-btn">
-                        <button type="capsule"
-                                value="Close"
-                                onclick="closePanelPro2">
-                        </button>
-                    </div>
+            <button  class="btn-div" type="capsule"
+                     value="Click here"
+                     onclick="showPanelPro2">
+            </button>
+            <panel class="prop2" ref ="prop2" type="foldable"
+                   disabled = "false" focusable ="false"
+                   data-name ="prop2" click-effect="spring-large"
+                   dir ="ltr">
+                <div class="btn-div">
+                    <button type="capsule"
+                            value="Close"
+                            onclick="closePanelPro1">
+                    </button>
                 </div>
             </panel>
             <text  class="sub-title">
                 panel通用属性3
             </text>
-            <div class="btn-div">
-                <button type="capsule"
-                        value="Click here"
-                        onclick="showPanelPro3">
-                </button>
-            </div>
-            <panel id="simplepanelPro3" type="foldable"
-                   style="color: #679855; stroke-width: 15px; line-cap: round; margin: 5px;">
-                <div class="panel-div">
-                    <div class="inner-txt">
-                        <text class="txt">Simple panel in {{modeFlag}} mode</text>
-                    </div>
-                    <div class="inner-btn">
-                        <button type="capsule"
-                                value="Close"
-                                onclick="closePanelPro3">
-                        </button>
-                    </div>
+            <button  class="btn-div" type="capsule"
+                     value="Click here"
+                     onclick="showPanelPro3">
+            </button>
+            <panel id="simplePanelPro3" style="color: #679855; margin: 5px;" class="prop3" type="foldable">
+                <div class="btn-div">
+                    <button type="capsule"
+                            value="Close"
+                            onclick="closePanelPro1">
+                    </button>
                 </div>
             </panel>
 
             <text  class="sub-title">
                 panel特有属性4
             </text>
-            <div class="btn-div">
-                <button type="capsule"
-                        value="Click here"
-                        onclick="showPanelPro4">
-                </button>
-            </div>
-            <panel id="simplepanelPro4"
+            <button  class="btn-div" type="capsule"
+                     value="Click here"
+                     onclick="showPanelPro4">
+            </button>
+            <panel id="simplePanelPro4"
                    class="style1"
                    type="foldable"
                    dragbar="true"
                    mode="mini"
                    onsizechange="changeMode"
                    miniheight="200px">
-                <div class="panel-div">
-                    <div class="inner-txt">
-                        <text class="txt">Simple panel in mini mode</text>
-                    </div>
-                    <div class="inner-btn">
-                        <button type="capsule"
-                                value="Close"
-                                onclick="closePanelPro4">
-                        </button>
-                    </div>
+                <div class="inner-btn">
+                    <button type="capsule"
+                            value="Close"
+                            onclick="closePanelPro4">
+                    </button>
                 </div>
             </panel>
             <text  class="sub-title">
                 panel特有属性5
             </text>
-            <div class="btn-div">
-                <button type="capsule"
-                        value="Click here"
-                        onclick="showPanelPro5">
-                </button>
-            </div>
-            <panel id="simplepanelPro5"
+            <button  class="btn-div" type="capsule"
+                     value="Click here"
+                     onclick="showPanelPro5">
+            </button>
+            <panel id="simplePanelPro5"
                    class="style2"
                    type="minibar"
                    dragbar="false"
@@ -410,49 +159,36 @@
                    halfheight="400px"
                    onsizechange="changeMode"
                    miniheight="200px">
-                <div class="panel-div">
-                    <div class="inner-txt">
-                        <text class="txt">Simple panel in half mode</text>
-                    </div>
-                    <div class="inner-btn">
-                        <button type="capsule"
-                                value="Close"
-                                onclick="closePanelPro5">
-                        </button>
-                    </div>
+                <div class="inner-btn">
+                    <button type="capsule"
+                            value="Close"
+                            onclick="closePanelPro5">
+                    </button>
                 </div>
             </panel>
 
             <text  class="sub-title">
                 panel特有属性6
             </text>
-            <div class="btn-div">
-                <button type="capsule"
-                        value="Click here"
-                        onclick="showPanelPro6">
-                </button>
-            </div>
-            <panel id="simplepanelPro6"
+            <button  class="btn-div" type="capsule"
+                     value="Click here"
+                     onclick="showPanelPro6">
+            </button>
+            <panel id="simplePanelPro6"
                    class="style3"
                    type="temporary"
                    mode="full"
                    fullheight="800px"
                    onsizechange="changeMode"
                    miniheight="200px">
-                <div class="panel-div">
-                    <div class="inner-txt">
-                        <text class="txt">Simple panel in full mode</text>
-                    </div>
-                    <div class="inner-btn">
-                        <button type="capsule"
-                                value="Close"
-                                onclick="closePanelPro6">
-                        </button>
-                    </div>
+                <div class="inner-btn">
+                    <button type="capsule"
+                            value="Close"
+                            onclick="closePanelPro6">
+                    </button>
                 </div>
             </panel>
         </div>
-
     </div>
 
     <div style="background-color: #000000; width: 2px; height: 100%;">
@@ -467,97 +203,69 @@
             <text class="sub-title">
                 panel渐变样式1
             </text>
-            <div class="btn-div">
-                <button type="capsule"
-                        value="Click here"
-                        onclick="showPanelA">
-                </button>
-            </div>
-            <panel id="simplepanelA1"
+            <button  class="btn-div" type="capsule"
+                     value="Click here"
+                     onclick="showPanelA">
+            </button>
+            <panel id="simplePanelA1"
                    type="foldable"
                    class="gradient1">
-                <div class="panel-div">
-                    <div class="inner-txt">
-                        <text class="txt">Simple panel in {{modeFlag}} mode</text>
-                    </div>
-                    <div class="inner-btn">
-                        <button type="capsule"
-                                value="Close"
-                                onclick="closePanelA">
-                        </button>
-                    </div>
+                <div class="inner-btn">
+                    <button type="capsule"
+                            value="Close"
+                            onclick="closePanelA">
+                    </button>
                 </div>
             </panel>
             <text  class="sub-title">
                 panel渐变样式2
             </text>
-            <div class="btn-div">
-                <button type="capsule"
-                        value="Click here"
-                        onclick="showPanelB">
-                </button>
-            </div>
-            <panel id="simplepanelB1"
+            <button  class="btn-div" type="capsule"
+                     value="Click here"
+                     onclick="showPanelB">
+            </button>
+            <panel id="simplePanelB1"
                    type="foldable"
                    class="gradient2">
-                <div class="panel-div">
-                    <div class="inner-txt">
-                        <text class="txt">Simple panel in {{modeFlag}} mode</text>
-                    </div>
-                    <div class="inner-btn">
-                        <button type="capsule"
-                                value="Close"
-                                onclick="closePanelB">
-                        </button>
-                    </div>
+                <div class="inner-btn">
+                    <button type="capsule"
+                            value="Close"
+                            onclick="closePanelB">
+                    </button>
                 </div>
             </panel>
             <text  class="sub-title">
                 panel渐变样式3
             </text>
-            <div class="btn-div">
-                <button type="capsule"
-                        value="Click here"
-                        onclick="showPanelC">
-                </button>
-            </div>
-            <panel id="simplepanelC1"
+            <button  class="btn-div" type="capsule"
+                     value="Click here"
+                     onclick="showPanelC">
+            </button>
+            <panel id="simplePanelC1"
                    type="foldable"
                    class="gradient3">
-                <div class="panel-div">
-                    <div class="inner-txt">
-                        <text class="txt">Simple panel in {{modeFlag}} mode</text>
-                    </div>
-                    <div class="inner-btn">
-                        <button type="capsule"
-                                value="Close"
-                                onclick="closePanelC">
-                        </button>
-                    </div>
+                <div class="inner-btn">
+                    <button type="capsule"
+                            value="Close"
+                            onclick="closePanelC">
+                    </button>
                 </div>
             </panel>
             <text  class="sub-title">
                 panel渐变样式4
             </text>
-            <div class="btn-div">
-                <button type="capsule"
-                        value="Click here"
-                        onclick="showPanelD">
-                </button>
-            </div>
-            <panel id="simplepanelD1"
+            <button  class="btn-div" type="capsule"
+                     value="Click here"
+                     onclick="showPanelD">
+            </button>
+            <panel id="simplePanelD1"
                    type="foldable"
                    class="gradient4">
-                <div class="panel-div">
-                    <div class="inner-txt">
-                        <text class="txt">Simple panel in {{modeFlag}} mode</text>
-                    </div>
-                    <div class="inner-btn">
-                        <button type="capsule"
-                                value="Close"
-                                onclick="closePanelD">
-                        </button>
-                    </div>
+                <div class="inner-btn">
+                    <button type="capsule"
+                            value="Close"
+                            onclick="closePanelD">
+                    </button>
                 </div>
             </panel>
         </div>
@@ -568,69 +276,25 @@
             <text class="title">
                 无障碍
             </text>
-            <text class="sub-title">
-                panel无障碍1
-            </text>
-            <div class="btn-div1">
-                <button type="capsule"
-                        value="Click here"
-                        onclick="showPanelNo">
-                </button>
-            </div>
-            <panel id="simplepanelNo"
+            <button  class="btn-div" type="capsule" style="height: 30px;"
+                     value="Click here"
+                     onclick="showPanelNo">
+            </button>
+            <panel id="simplePanelNo"
                     type="foldable"
                    class="access1" accessibilitygroup ="true"
                    accessibilitytext="这是panel"
                    accessibilitydescription="点击此按键会弹出一个对话框"
                    accessibilityimportance="no-hide-descendants">
-                <div class="panel-div">
-                    <div class="inner-txt">
-                        <text class="txt">Simple panel in {{modeFlag}} mode</text>
-                    </div>
-                    <div class="inner-btn">
-                        <button type="capsule"
-                                value="Close"
-                                onclick="closePanelNo">
-                        </button>
-                    </div>
+                <div class="inner-btn">
+                    <button type="capsule"
+                            value="Close"
+                            onclick="closePanelNo">
+                    </button>
                 </div>
             </panel>
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">
-        </div>
-        <!-- 多模输入 -->
-        <div class="multimode-container">
-            <text class="title">
-                多模输入
-            </text>
-            <text class="sub-title">
-                panel多模输入1
-            </text>
-            <div class="btn-div1">
-                <button type="capsule"
-                        value="Click here"
-                        onclick="showPanelMore">
-                </button>
-            </div>
-            <panel id="simplepanelMore"
-                    type="foldable"
-                   class="multimode1"
-                   voicelabel = "voice"
-                   subscriptflag="on"
-                   subscriptlabel="panel"
-                   scenelabel="common">
-                <div class="panel-div">
-                    <div class="inner-txt">
-                        <text class="txt">Simple panel in {{modeFlag}} mode</text>
-                    </div>
-                    <div class="inner-btn">
-                        <button type="capsule"
-                                value="Close"
-                                onclick="closePanelMore">
-                        </button>
-                    </div>
-                </div>
-            </panel>
         </div>
     </div>
 </div>

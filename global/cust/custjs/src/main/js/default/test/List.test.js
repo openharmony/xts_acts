@@ -13,6 +13,4 @@
  * limitations under the License.
  */
 
-require('./GetOneCfgFile.test.js')
-require('./GetCfgFiles.test.js')
-require('./GetCfgDirList.test.js')
+require('./Cust.test.js')
