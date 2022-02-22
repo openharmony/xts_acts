@@ -93,9 +93,10 @@ describe('bluetoothhostTest', function() {
             default:
                 console.info('[bluetooth_js] enable success');
             }
-        await sleep(2000);
+        await sleep(3000);
         var state = bluetooth.getState();
         console.info('[bluetooth_js] getState On = '+ JSON.stringify(state));
+        expect(state).assertEqual(2);
         console.info('[bluetooth_js]state on:' + JSON.stringify(bluetooth.BluetoothState.STATE_ON));
         console.info('[bluetooth_js]off :' + JSON.stringify(bluetooth.BluetoothState.STATE_OFF));
         console.info('[bluetooth_js] turning on :'
@@ -869,7 +870,6 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-
     it('bluetooth_classic_disable_bluetooth', 0, function () {
         console.info('[bluetooth_js] disable test start');
         let disable = bluetooth.disableBluetooth();
@@ -881,4 +881,3 @@ describe('bluetoothhostTest', function() {
     })
 
 })
-
