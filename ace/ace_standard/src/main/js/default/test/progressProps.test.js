@@ -684,6 +684,7 @@ describe('progressPropsJsTest', function () {
         console.info("[progressProps] get show value is: " + JSON.stringify(obj.$attrs.show));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testProgressTypeHorizontal
@@ -703,6 +704,7 @@ describe('progressPropsJsTest', function () {
         console.info("[progressProps] get type value is: " + JSON.stringify(obj.$attrs.type));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testProgressTypeCircular
@@ -722,6 +724,7 @@ describe('progressPropsJsTest', function () {
         console.info("[progressProps] get type value is: " + JSON.stringify(obj.$attrs.type));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testProgressTypeRing
@@ -741,6 +744,7 @@ describe('progressPropsJsTest', function () {
         console.info("[progressProps] get type value is: " + JSON.stringify(obj.$attrs.type));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testProgressTypeScaleRing
@@ -760,6 +764,7 @@ describe('progressPropsJsTest', function () {
         console.info("[progressProps] get type value is: " + JSON.stringify(obj.$attrs.type));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testProgressTypeArc
@@ -779,6 +784,7 @@ describe('progressPropsJsTest', function () {
         console.info("[progressProps] get type value is: " + JSON.stringify(obj.$attrs.type));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testProgressTypeEclipse

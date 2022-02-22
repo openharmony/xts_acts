@@ -589,6 +589,7 @@ describe('dividerPropsJsTest', function () {
         console.info("[dividerProps] get vertical value is: " + JSON.stringify(obj.$attrs.vertical));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testDividerVerticalFalse

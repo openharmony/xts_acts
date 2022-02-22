@@ -684,6 +684,7 @@ describe('optionPropsJsTest', function () {
         console.info("[optionProps] get show value is: " + JSON.stringify(obj.$attrs.show));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testOptionSelectedTrue
@@ -703,6 +704,7 @@ describe('optionPropsJsTest', function () {
         console.info("[optionProps] get selected value is: " + JSON.stringify(obj.$attrs.selected));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testOptionSelectedFalse
@@ -722,6 +724,7 @@ describe('optionPropsJsTest', function () {
         console.info("[optionProps] get selected value is: " + JSON.stringify(obj.$attrs.selected));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testOptionOptionValue
@@ -741,6 +744,7 @@ describe('optionPropsJsTest', function () {
         console.info("[optionProps] get value value is: " + JSON.stringify(obj.$attrs.value));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testOptionOptionIcon

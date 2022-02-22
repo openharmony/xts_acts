@@ -684,6 +684,7 @@ describe('pickerPropsJsTest', function () {
         console.info("[pickerProps] get show value is: " + JSON.stringify(obj.$attrs.show));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testPickerPickerText
@@ -703,6 +704,7 @@ describe('pickerPropsJsTest', function () {
         console.info("[pickerProps] get type value is: " + JSON.stringify(obj.$attrs.type));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testPickerPickerTime
@@ -721,7 +723,9 @@ describe('pickerPropsJsTest', function () {
         expect(obj.$attrs.type).assertEqual('time')
         console.info("[pickerProps] get type value is: " + JSON.stringify(obj.$attrs.type));
         done();
-    });/**
+    });
+
+    /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testPickerPickerDate
      * @tc.desc      ACE
@@ -739,7 +743,9 @@ describe('pickerPropsJsTest', function () {
         expect(obj.$attrs.type).assertEqual('date')
         console.info("[pickerProps] get type value is: " + JSON.stringify(obj.$attrs.type));
         done();
-    });/**
+    });
+
+    /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testPickerPickerDatetime
      * @tc.desc      ACE
@@ -757,7 +763,9 @@ describe('pickerPropsJsTest', function () {
         expect(obj.$attrs.type).assertEqual('datetime')
         console.info("[pickerProps] get type value is: " + JSON.stringify(obj.$attrs.type));
         done();
-    });/**
+    });
+
+    /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testPickerPickerMultiText
      * @tc.desc      ACE

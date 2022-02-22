@@ -575,7 +575,4 @@ export default {
   multitextoncancel() {
     prompt.showToast({ message:"multitextoncancel" })
   },
-  popup_picker() {
-    this.$element("picker_text").show();
-  },
 }
