@@ -816,7 +816,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetUid004', 0, function () {
-        for(var i = 0; i < 10; i++){
+        for(var i = 0; i < 8; i++){
             var result = process.uid
             if(result != null) {
                 if(result > 0) {
@@ -834,7 +834,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetUid005', 0, function () {
-        for(var i = 0; i < 25; i++){
+        for(var i = 0; i < 5; i++){
             var result = process.uid
             if(result != null) {
                 if(result > 0) {
@@ -902,7 +902,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetGid004', 0, function () {
-        for(var i = 0; i < 10; i++){
+        for(var i = 0; i < 6; i++){
             var result = process.gid
             if(result != null) {
                 if(result > 0) {
@@ -920,7 +920,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetGid005', 0, function () {
-        for(var i = 0; i < 9; i++){
+        for(var i = 0; i < 8; i++){
             var result = process.gid
             if(result != null) {
                 if(result > 0) {
@@ -988,7 +988,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetEuid004', 0, function () {
-        for(var i = 0; i < 8; i++){
+        for(var i = 0; i < 6; i++){
             var result = process.euid
             if(result != null) {
                 if(result > 0) {
@@ -1006,7 +1006,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetEuid005', 0, function () {
-        for(var i = 0; i < 15; i++){
+        for(var i = 0; i < 8; i++){
             var result = process.euid
             if(result != null) {
                 if(result > 0) {
@@ -1074,7 +1074,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetEgid004', 0, function () {
-        for(var i = 0; i < 15; i++){
+        for(var i = 0; i < 6; i++){
             var result = process.egid
             if(result != null) {
                 if(result > 0) {
@@ -1092,7 +1092,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetEgid005', 0, function () {
-        for(var i = 0; i < 26; i++){
+        for(var i = 0; i < 8; i++){
             var result = process.egid
             if(result != null) {
                 if(result > 0) {
@@ -1163,7 +1163,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetGroups004', 0, function () {
-        for(var i = 0; i < 18; i++){
+        for(var i = 0; i < 6; i++){
             var result = process.groups
             if(result != null) {
                 var len = result.length
@@ -1182,7 +1182,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetGroups005', 0, function () {
-        for(var i = 0; i < 28; i++){
+        for(var i = 0; i < 8; i++){
             var result = process.groups
             if(result != null) {
                 var len = result.length
@@ -1447,7 +1447,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPid004', 0, function () {
-        for(var i = 0; i < 10; i++)
+        for(var i = 0; i < 6; i++)
         {
             var result = process.pid
             if(result > 0) {
@@ -1464,7 +1464,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPid005', 0, function () {
-        for(var i = 0; i < 28; i++)
+        for(var i = 0; i < 8; i++)
         {
             var result = process.pid
             if(result > 0) {
@@ -1529,7 +1529,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPpid004', 0, function () {
-        for(var i = 0; i < 16; i++)
+        for(var i = 0; i < 6; i++)
         {
             var result = process.ppid
             if(result > 0) {
@@ -1546,7 +1546,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPpid005', 0, function () {
-        for(var i = 0; i < 28; i++)
+        for(var i = 0; i < 8; i++)
         {
             var result = process.ppid
             if(result > 0) {
@@ -1594,7 +1594,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testCwd003', 0, function () {
-        for(var i = 0; i < 10; i++)
+        for(var i = 0; i < 5; i++)
         {
             var cwdir = process.cwd()
             if(cwdir){
@@ -1611,7 +1611,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testCwd004', 0, function () {
-        for(var i = 0; i < 18; i++)
+        for(var i = 0; i < 6; i++)
         {
             var cwdir = process.cwd()
             if(cwdir){
@@ -1628,7 +1628,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testCwd005', 0, function () {
-        for(var i = 0; i < 29; i++)
+        for(var i = 0; i < 8; i++)
         {
             var cwdir = process.cwd()
             if(cwdir){
@@ -1796,7 +1796,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testTid002', 0, function () {
-        for(var i=0; i<10; i++)
+        for(var i=0; i < 5; i++)
         {
             var pres = process.tid
             if(pres > 0)
@@ -1814,7 +1814,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testTid003', 0, function () {
-        for(var i=0; i<1000; i++)
+        for(var i=0; i < 3; i++)
         {
             var pres = process.tid
             if(pres > 0)
@@ -1844,7 +1844,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testIsisolatedProcess002', 0, function () {
-        for(var i=0; i<10; i++)
+        for(var i=0; i < 3; i++)
         {
             var pres =process.isIsolatedProcess()
             expect(pres).assertEqual(true)
@@ -1858,7 +1858,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testIsisolatedProcess003', 0, function () {
-        for(var i=0; i<1000; i++)
+        for(var i=0; i < 5; i++)
         {
             var pres =process.isIsolatedProcess()
             expect(pres).assertEqual(true)
@@ -1939,7 +1939,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testIs64Bit002', 0, function () {
-        for(var i=0; i<10; i++)
+        for(var i=0; i<3; i++)
         {
             var isorno = process.is64Bit()
             expect(isorno).assertEqual(false)
@@ -1953,7 +1953,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testIs64Bit003', 0, function () {
-        for(var i=0; i<1000; i++)
+        for(var i=0; i<5; i++)
         {
             var isorno = process.is64Bit()
             expect(isorno).assertEqual(false)
@@ -1983,7 +1983,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testGetuidforname002', 0, function () {
-        for(var i=0; i<10; i++)
+        for(var i=0; i<3; i++)
         {
             var pres = process.getUidForName("12356")
             expect(pres).assertEqual(-1)
@@ -1997,7 +1997,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testGetuidforname003', 0, function () {
-        for(var i=0; i<1000; i++)
+        for(var i=0; i<5; i++)
         {
             var pres = process.getUidForName("12356")
             expect(pres).assertEqual(-1)
@@ -2029,7 +2029,7 @@ describe('ChildProcessTest', function () {
      */
     it('testGetthreadpriority002', 0, function () {
         var pres = process.tid
-        for(var i=0; i<10; i++)
+        for(var i=0; i<3; i++)
         {
             var pri = process.getThreadPriority(pres)
             if(pri > 0)
@@ -2048,7 +2048,7 @@ describe('ChildProcessTest', function () {
      */
     it('testGetthreadpriority003', 0, function () {
         var pres = process.tid
-        for(var i=0; i<1000; i++)
+        for(var i=0; i<5; i++)
         {
             var pri = process.getThreadPriority(pres)
             if(pri > 0)
@@ -2067,7 +2067,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testGetstartrealtime001', 0, function () {
-        for(var i=0; i<10; i++)
+        for(var i=0; i<3; i++)
         {
             var pri = process.getStartRealtime()
             if(pri !== null)
@@ -2102,7 +2102,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testGetstartrealtime003', 0, function () {
-        for(var i=0; i<100; i++)
+        for(var i=0; i<5; i++)
         {
             var pri = process.getStartRealtime()
             if(pri !== null)
@@ -2121,7 +2121,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testGetstartrealtime004', 0, function () {
-        for(var i=0; i<1000; i++)
+        for(var i=0; i<6; i++)
         {
             var pri = process.getStartRealtime()
             if(pri > 0)
@@ -2139,7 +2139,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testGetpastCpuTime001', 0, function () {
-        for(var i=0; i<10; i++)
+        for(var i=0; i<3; i++)
         {
             var pri = process.getPastCpuTime()
             if(pri > 0)
@@ -2172,7 +2172,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testGetpastCpuTime003', 0, function () {
-        for(var i=0; i<100; i++)
+        for(var i=0; i<5; i++)
         {
             var pri = process.getPastCpuTime()
             if(pri > 0)
@@ -2190,7 +2190,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testGetpastCpuTime004', 0, function () {
-        for(var i=0; i<1000; i++)
+        for(var i=0; i<8; i++)
         {
             var pri = process.getPastCpuTime()
             if(pri > 0)
@@ -2225,7 +2225,7 @@ describe('ChildProcessTest', function () {
      */
     it('testGetSystemConfig002', 0, function () {
         var _SC_ARG_MAX = 0
-        for(var i=0; i<10; i++)
+        for(var i=0; i<3; i++)
         {
             var pri = process.getSystemConfig(_SC_ARG_MAX)
             if(pri > 0)
@@ -2244,7 +2244,7 @@ describe('ChildProcessTest', function () {
      */
     it('testGetSystemConfig003', 0, function () {
         var _SC_ARG_MAX = 0
-        for(var i=0; i<100; i++)
+        for(var i=0; i<5; i++)
         {
             var pri = process.getSystemConfig(_SC_ARG_MAX)
             if(pri > 0)
@@ -2308,7 +2308,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testGetEnvironmentVar002', 0, function () {
-        for(var i=0; i<10; i++)
+        for(var i=0; i<3; i++)
         {
             var pri = process.getEnvironmentVar("PATH")
             if(pri != null)
@@ -2326,7 +2326,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testGetEnvironmentVar003', 0, function () {
-        for(var i=0; i<100; i++)
+        for(var i=0; i<5; i++)
         {
             var pri = process.getEnvironmentVar("PATH")
             if(pri != null)
@@ -2344,7 +2344,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testGetEnvironmentVar004', 0, function () {
-        for(var i=0; i<10; i++)
+        for(var i=0; i<6; i++)
         {
             var pri = process.getEnvironmentVar("USER")
             if(pri != null)
@@ -2362,7 +2362,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testGetEnvironmentVar005', 0, function () {
-        for(var i=0; i<100; i++)
+        for(var i=0; i<8; i++)
         {
             var pri = process.getEnvironmentVar("USER")
             if(pri != null)
