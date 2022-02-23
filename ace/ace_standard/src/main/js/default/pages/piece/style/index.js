@@ -14,11 +14,6 @@
  */
 
 export default {
-    data: {
-        first: true,
-        second: true
-    },
-    closeSecond(e) {
-        this.second = false;
-    }
+
+
 }

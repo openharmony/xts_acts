@@ -84,175 +84,7 @@ var frames = [
 ];
 
 export default {
-    data: {
-        modeFlag: "half"
-    },
-    // 样式
-    showPanel1() {
-        this.$element('simplePanel1').show()
-    },
-    closePanel1() {
-        this.$element('simplePanel1').close()
-    },
-    showPanel2() {
-        this.$element('simplePanel2').show()
-    },
-    closePanel2() {
-        this.$element('simplePanel2').close()
-    },
-    showPanel3() {
-        this.$element('simplePanel3').show()
-    },
-    closePanel3() {
-        this.$element('simplePanel3').close()
-    },
-    showPanel4() {
-        this.$element('simplePanel4').show()
-    },
-    closePanel4() {
-        this.$element('simplePanel4').close()
-    },
-    showPanel5() {
-        this.$element('simplePanel5').show()
-    },
-    closePanel5() {
-        this.$element('simplePanel5').close()
-    },
-    showPanel6() {
-        this.$element('simplePanel6').show()
-    },
-    closePanel6() {
-        this.$element('simplePanel6').close()
-    },
-    showPanel7() {
-        this.$element('simplePanel7').show()
-    },
-    closePanel7() {
-        this.$element('simplePanel7').close()
-    },
-    showPanel() {
-        this.$element('simplePanel').show()
-    },
-    closePanel() {
-        this.$element('simplePanel').close()
-    },
-    // 属性
-    showPanelPro1() {
-        this.$element('prop1').show()
-    },
-    closePanelPro1() {
-        this.$element('prop1').close()
-    },
-    showPanelPro2() {
-        this.$element('prop2').show()
-    },
-    closePanelPro2() {
-        this.$element('prop2').close()
-    },
-    showPanelPro3() {
-        this.$element('simplePanelPro3').show()
-    },
-    closePanelPro3() {
-        this.$element('simplePanelPro3').close()
-    },
-    showPanelPro4() {
-        this.$element('simplePanelPro4').show()
-    },
-    closePanelPro4() {
-        this.$element('simplePanelPro4').close()
-    },
-    showPanelPro5() {
-        this.$element('simplePanelPro5').show()
-    },
-    closePanelPro5() {
-        this.$element('simplePanelPro5').close()
-    },
-    showPanelPro6() {
-        this.$element('simplePanelPro6').show()
-    },
-    closePanelPro6() {
-        this.$element('simplePanelPro6').close()
-    },
-    //事件
-    showOne() {
-        this.$element('e1').show()
-    },
-    closeOne() {
-        this.$element('e1').close()
-    },
-    showTwo() {
-        this.$element('e2').show()
-    },
-    closeTwo() {
-        this.$element('e2').close()
-    },
-    showThree() {
-        this.$element('e3').show()
-    },
-    closeThree() {
-        this.$element('e3').close()
-    },
-    showFour() {
-        this.$element('e4').show()
-    },
-    closeFour() {
-        this.$element('e4').close()
-    },
-    // 渐变
-    showPanelA() {
-        this.$element('simplePanelA1').show()
-    },
-    closePanelA() {
-        this.$element('simplePanelA1').close()
-    },
-    showPanelB() {
-        this.$element('simplePanelB1').show()
-    },
-    closePanelB() {
-        this.$element('simplePanelB1').close()
-    },
-    showPanelC() {
-        this.$element('simplePanelC1').show()
-    },
-    closePanelC() {
-        this.$element('simplePanelC1').close()
-    },
-    showPanelD() {
-        this.$element('simplePanelD1').show()
-    },
-    closePanelD() {
-        this.$element('simplePanelD1').close()
-    },
-    // 动画
-    showPanelAni1() {
-        this.$element('simplePanelAni1').show()
-    },
-    closePanelAni1() {
-        this.$element('simplePanelAni1').close()
-    },
-    showPanelAni2() {
-        this.$element('simplePanelAni2').show()
-    },
-    closePanelAni2() {
-        this.$element('simplePanelAni2').close()
-    },
-    // 无障碍
-    showPanelNo() {
-        this.$element('simplePanelNo').show()
-    },
-    closePanelNo() {
-        this.$element('simplePanelNo').close()
-    },
-    // 多模输入
-    showPanelMore() {
-        this.$element('simplePanelMore').show()
-    },
-    closePanelMore() {
-        this.$element('simplePanelMore').close()
-    },
-    changeMode(e) {
-        this.modeFlag = e.mode
-    },
+
     onShow(){
         // 通用属性
         var prop1 =  this.$element('prop1');
@@ -579,6 +411,7 @@ export default {
 
     functionTest3(event){
         var function3 =  this.$element('function3');
+
         var animation = function3.animate(frames, options);
         animation.play()
         animation.onfinish = function(){
@@ -651,6 +484,12 @@ export default {
     reachBottom(){
         prompt.showToast({
             message: 'reachBottom'
+        });
+    },
+
+    closePiece() {
+        prompt.showToast({
+            message: 'closePiece'
         });
     }
 }
