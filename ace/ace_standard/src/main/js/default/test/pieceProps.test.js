@@ -701,7 +701,7 @@ describe('piecePropsJsTest', function () {
 
         expect(obj.$type).assertEqual('piece')
         expect(obj.$attrs.id).assertEqual('contentProp') //id
-        expect(obj.$attrs.show).assertEqual('content') //prop and value
+        expect(obj.$attrs.show).assertEqual(undefined) //prop and value
         console.info("[pieceProps] get content value is: " + JSON.stringify(obj.$attrs.content));
         done();
     });

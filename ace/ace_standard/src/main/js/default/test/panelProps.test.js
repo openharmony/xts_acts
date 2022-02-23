@@ -363,7 +363,7 @@ describe('panelPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('panel')
         expect(obj.$attrs.id).assertEqual('dirPropNone')
-        expect(obj.$attrs.dir).assertEqual('auto')
+        expect(obj.$attrs.dir).assertEqual(undefined)
         done();
     });
 

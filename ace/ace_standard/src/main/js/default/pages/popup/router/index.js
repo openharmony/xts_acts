@@ -184,7 +184,64 @@ export default {
         prompt.showToast({
             message: 'prop1--' + name1 + '\nprop2--' + name2
         });
+
+        var styleValues = this.getStyleValues();
+        var propsValues = this.getPropValues();
+
+        globalThis.value = {
+            styleValues:styleValues,
+            propsValues:propsValues
+        }
     },
+
+    getStyleValues(){
+        var styleValue1 = this.$element("popup1").getInspector()
+        var styleValue2 = this.$element("popup2").getInspector()
+        var styleValue3 = this.$element("popup3").getInspector()
+        var styleValue4 = this.$element("popup4").getInspector()
+        var styleValue5 = this.$element("popup5").getInspector()
+        var styleValue6 = this.$element("popup6").getInspector()
+        var styleValue7 = this.$element("popup7").getInspector()
+
+        return {
+            style1:styleValue1,
+            style2:styleValue2,
+            style3:styleValue3,
+            style4:styleValue4,
+            style5:styleValue5,
+            style6:styleValue6,
+            style7:styleValue7
+        }
+    },
+
+    getPropValues(){
+        var propValue1 = this.$element("prop1").getInspector()
+        var propValue2 = this.$element("prop2").getInspector()
+        var propValue3 = this.$element("prop3").getInspector()
+        var propValue4 = this.$element("prop4").getInspector()
+        var propValue5 = this.$element("prop5").getInspector()
+        var propValue6 = this.$element("prop6").getInspector()
+        var propValue7 = this.$element("prop7").getInspector()
+        var propValue8 = this.$element("prop8").getInspector()
+        var propValue9 = this.$element("prop9").getInspector()
+        var propValue10 = this.$element("prop10").getInspector()
+        var propValue11 = this.$element("prop11").getInspector()
+
+        return {
+            prop1:propValue1,
+            prop2:propValue2,
+            prop3:propValue3,
+            prop4:propValue4,
+            prop5:propValue5,
+            prop6:propValue6,
+            prop7:propValue7,
+            prop8:propValue8,
+            prop9:propValue9,
+            prop10:propValue10,
+            prop11:propValue11,
+        }
+    },
+
 
     touchStart(event){
         var globalX = event.touches[0].globalX

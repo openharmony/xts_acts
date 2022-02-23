@@ -86,6 +86,7 @@
     </popup>
 
     <popup id="prop1"
+           class="prop1"
            target="textPro1"
            disabled = "true"
            data-name ="prop1"
