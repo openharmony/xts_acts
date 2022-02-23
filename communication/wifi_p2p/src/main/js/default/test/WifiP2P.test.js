@@ -332,7 +332,7 @@ describe('ACTS_WifiTest', function () {
             .then((data)  => {
             var resultLength = Object.keys(data).length; 
             console.info("[wifi_test] getP2pPeerDevices  [promise] result -> " + JSON.stringify(data));
-            expect(true).assertEqual(resultLength!=0);
+            expect(true).assertEqual(resultLength >= 0);
         }).catch((error) => {
             console.info("[wifi_test]getP2pPeerDevices promise then error." + JSON.stringify(error));
             expect().assertFail();

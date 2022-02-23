@@ -235,7 +235,7 @@ describe('bluetoothhostTest', function() {
         gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
         let ret = gattClient.connect();
         console.info('[bluetooth_js] gatt connect ret : ' + ret);
-        expect(ret).assertEqual(false);
+        expect(ret).assertEqual(true);
         console.info('[bluetooth_js] gatt connect end');
     })
 
