@@ -136,33 +136,6 @@ describe('refreshPropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testRefreshStyleProp
-     * @tc.desc      ACEs
-     */
-    //    it('testRefreshStyleProp', 0, async function (done) {
-    //        console.info('testRefreshStyleProp START');
-    //        console.info("[refreshProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.styleProp);
-    //        console.info("[refreshProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[refreshProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('refresh')
-    //        expect(obj.$attrs.id).assertEqual('styleProp')
-    //        expect(obj.$attrs.style).assertEqual(undefined)
-    //        console.info("[refreshProps] get style value is: " + JSON.stringify(obj.$attrs.style));
-    //
-    //        expect(obj.$styles.width).assertEqual(undefined);
-    //        console.info("[refreshProps] get style width value is: " + JSON.stringify(obj.$styles.width));
-    //        expect(obj.$styles.height).assertEqual(undefined);
-    //        console.info("[refreshProps] get style height value is: " + JSON.stringify(obj.$styles.height));
-    //        expect(obj.$styles.get('background-color')).assertEqual(undefined);
-    //        console.info("[refreshProps] get style background-color value is: " + JSON.stringify(obj.$styles.get('background-color')));
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testRefreshRefProp
      * @tc.desc      ACE
      */

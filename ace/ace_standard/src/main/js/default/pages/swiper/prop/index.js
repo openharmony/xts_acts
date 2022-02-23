@@ -74,38 +74,23 @@ export default {
 
     onShow(){
         this.getCommonPropValues();
+        this.getSpecificPropValues();
         globalThis.value = {
-            idProp : this.idProp,
-            classProp : this.classProp,
-            classPropNone : this.classPropNone,
-            styleProp : this.styleProp,
-            refProp : this.refProp,
-            refPropNone : this.refPropNone,
-            disabledPropTrue : this.disabledPropTrue,
-            disabledPropFalse : this.disabledPropFalse,
-            disabledPropNone : this.disabledPropNone,
-            focusablePropTrue : this.focusablePropTrue,
-            focusablePropFalse : this.focusablePropFalse,
-            focusablePropNone : this.focusablePropNone,
-            dataProp : this.dataProp,
-            dataPropNone : this.dataPropNone,
+            idProp : this.idProp, classProp : this.classProp, classPropNone : this.classPropNone,
+            styleProp : this.styleProp, refProp : this.refProp, refPropNone : this.refPropNone,
+            disabledPropTrue : this.disabledPropTrue, disabledPropFalse : this.disabledPropFalse,
+            disabledPropNone : this.disabledPropNone, focusablePropTrue : this.focusablePropTrue,
+            focusablePropFalse : this.focusablePropFalse, focusablePropNone : this.focusablePropNone,
+            dataProp : this.dataProp, dataPropNone : this.dataPropNone,
             clickEffectPropSmall : this.clickEffectPropSmall,
             clickEffectPropMedium : this.clickEffectPropMedium,
             clickEffectPropLarge : this.clickEffectPropLarge,
-            clickEffectPropNone : this.clickEffectPropNone,
-            dirPropRtl : this.dirPropRtl,
-            dirPropAuto : this.dirPropAuto,
-            dirPropLtr : this.dirPropLtr,
-            dirPropNone : this.dirPropNone,
-            forPropNull : this.forPropNull,
-            forPropOne : this.forPropOne,
-            forPropThree : this.forPropThree,
-            ifPropTrue : this.ifPropTrue,
-            showPropTrue : this.showPropTrue,
-            showPropFalse : this.showPropFalse,
-            showPropNone : this.showPropNone,
-
-            indexProp: this.indexProp,
+            clickEffectPropNone : this.clickEffectPropNone, dirPropRtl : this.dirPropRtl,
+            dirPropAuto : this.dirPropAuto, dirPropLtr : this.dirPropLtr, dirPropNone : this.dirPropNone,
+            forPropNull : this.forPropNull, forPropOne : this.forPropOne,
+            forPropThree : this.forPropThree, ifPropTrue : this.ifPropTrue,
+            showPropTrue : this.showPropTrue, showPropFalse : this.showPropFalse,
+            showPropNone : this.showPropNone, indexProp: this.indexProp,
             autoplayPropTrue: this.autoplayPropTrue,
             autoplayPropFalse: this.autoplayPropFalse,
             intervalProp: this.intervalProp,
@@ -159,7 +144,9 @@ export default {
         this.showPropTrue = this.$element("showPropTrue").getInspector()
         this.showPropFalse = this.$element("showPropFalse").getInspector()
         this.showPropNone = this.$element("showPropNone").getInspector()
+    },
 
+    getSpecificPropValues() {
         // 特有属性
         this.indexProp = this.$element("showPropNone").getInspector()
         this.autoplayPropTrue = this.$element("autoplayPropTrue").getInspector()
@@ -182,5 +169,5 @@ export default {
         this.scrollEffectPropSpring = this.$element("scrollEffectPropSpring").getInspector()
         this.displayModePropStretch = this.$element("displayModePropStretch").getInspector()
         this.displayModePropAutoLinear = this.$element("displayModePropAutoLinear").getInspector()
-    },
+    }
 }

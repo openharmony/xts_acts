@@ -137,33 +137,6 @@ describe('swiperPropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testSwiperStyleProp
-     * @tc.desc      ACEs
-     */
-    //    it('testSwiperStyleProp', 0, async function (done) {
-    //        console.info('testSwiperStyleProp START');
-    //        console.info("[swiperProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.styleProp);
-    //        console.info("[swiperProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[swiperProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('swiper')
-    //        expect(obj.$attrs.id).assertEqual('styleProp')
-    //        expect(obj.$attrs.style).assertEqual(undefined)
-    //        console.info("[swiperProps] get style value is: " + JSON.stringify(obj.$attrs.style));
-    //
-    //        expect(obj.$styles.width).assertEqual(undefined);
-    //        console.info("[swiperProps] get style width value is: " + JSON.stringify(obj.$styles.width));
-    //        expect(obj.$styles.height).assertEqual(undefined);
-    //        console.info("[swiperProps] get style height value is: " + JSON.stringify(obj.$styles.height));
-    //        expect(obj.$styles.get('background-color')).assertEqual(undefined);
-    //        console.info("[swiperProps] get style background-color value is: " + JSON.stringify(obj.$styles.get('background-color')));
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testSwiperRefProp
      * @tc.desc      ACE
      */
@@ -902,7 +875,8 @@ describe('swiperPropsJsTest', function () {
         expect(obj.$type).assertEqual('swiper')
         expect(obj.$attrs.id).assertEqual('indicatorDisabledPropTrue') //ID
         expect(obj.$attrs.indicatordisabled).assertEqual('true')  // prop and propValue
-        console.info("[swiperProps] get indicatordisabled value is: " + JSON.stringify(obj.$attrs.indicatordisabled));//prop
+        console.info("[swiperProps] get indicatordisabled value is: "
+            + JSON.stringify(obj.$attrs.indicatordisabled));
         done();
     });
 
@@ -922,7 +896,8 @@ describe('swiperPropsJsTest', function () {
         expect(obj.$type).assertEqual('swiper')
         expect(obj.$attrs.id).assertEqual('indicatorDisabledPropFalse') //ID
         expect(obj.$attrs.indicatordisabled).assertEqual('false')  // prop and propValue
-        console.info("[swiperProps] get indicatordisabled value is: " + JSON.stringify(obj.$attrs.indicatordisabled));//prop
+        console.info("[swiperProps] get indicatordisabled value is: " 
+            + JSON.stringify(obj.$attrs.indicatordisabled));
         done();
     });
 
