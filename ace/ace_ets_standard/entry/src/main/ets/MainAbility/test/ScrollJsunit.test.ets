@@ -122,7 +122,6 @@ export default function ScrollJsunit() {
       console.info("cd scroll3 component obj is: " + JSON.stringify(obj));
       console.log("cd scroll3 scrollable" + JSON.stringify(obj.$attrs.scrollable));
       console.log("cd scroll3 scrollBar" + JSON.stringify(obj.$attrs.scrollBar));
-      expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.Free')
       expect(obj.$attrs.scrollBar).assertEqual('BarState.Off')
       console.info('cd Scorll3GetInspectorByKey END');
       done();
