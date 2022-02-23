@@ -1432,7 +1432,8 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
             }
         })
     })
-        /* *
+    
+    /* *
         * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CREATE-RELEASE_CALLBACK_0100
         * @tc.name      : 001. create -> release for 50 times
         * @tc.desc      : Reliability Test
@@ -1440,7 +1441,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CREATE-RELEASE_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_TOOPLOOP_CALLBACK_0100', 0, async function (done) {
         let name = 'avenc_mpeg4';
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
@@ -1458,6 +1459,100 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
                 }
             })
         })
+        eventEmitter.on('release', () => {
+            videoEncodeProcessor.release((err) => {
+                expect(err).assertUndefined();
+                console.info(`case release 1`);
+                videoEncodeProcessor = null;
+                loopCnt += 1;
+                if (loopCnt < 50) {
+                    console.info('case create-release current loop: ' + loopCnt);
+                    eventEmitter.emit('create', name);
+                } else {
+                    done();
+                }
+            })
+        })
+        eventEmitter.emit('create', name);
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_TOOPLOOP_CALLBACK_0100
+        * @tc.name      : 001. total loop for 50 times
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
+    */
+    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CREATE-RELEASE_CALLBACK_0100', 0, async function (done) {
+        let name = 'avenc_mpeg4';
+        let events = require('events');
+        let eventEmitter = new events.EventEmitter();
+        let loopCnt = 0;
+        eventEmitter.on('create', (name) => {
+            media.createVideoEncoderByName(name, (err, processor) => {
+                expect(err).assertUndefined();
+                if (typeof(processor) != 'undefined') {
+                    videoEncodeProcessor = processor;
+                    eventEmitter.emit('configure', mediaDescription);
+                } else {
+                    console.info('in case : createVideoEncoderByName fail');
+                    expect().assertFail();
+                    done();
+                }
+            })
+        })
+        eventEmitter.on('configure', (mediaDescription) => {
+            videoEncodeProcessor.configure(mediaDescription, (err) => {
+                expect(err).assertUndefined();
+                console.info(`case configure 1`);
+                eventEmitter.emit('getInputSurface');
+            })
+        });
+        eventEmitter.on('getInputSurface', () => {
+            videoEncodeProcessor.getInputSurface((err, inputSurface) => {
+                expect(err).assertUndefined();
+                expect(inputSurface != undefined).assertTrue();
+                surfaceID = inputSurface;
+                console.info('in case : getInputSurface success, surfaceID ' + surfaceID);
+                eventEmitter.emit('prepare');
+            })
+        });
+        eventEmitter.on('prepare', () => {
+            videoEncodeProcessor.prepare((err) => {
+                expect(err).assertUndefined();
+                console.info('in case : prepare success');
+                eventEmitter.emit('start');
+            });
+        });
+        eventEmitter.on('start', () => {
+            videoEncodeProcessor.start((err) => {
+                expect(err).assertUndefined();
+                console.info('in case : start success');
+                eventEmitter.emit('flush');
+            });
+        });
+        eventEmitter.on('flush', () => {
+            videoEncodeProcessor.flush((err) => {
+                expect(err).assertUndefined();
+                console.info('in case : flush success');
+                eventEmitter.emit('stop');
+            });
+        });
+        eventEmitter.on('stop', () => {
+            videoEncodeProcessor.stop((err) => {
+                expect(err).assertUndefined();
+                console.info('in case : stop success');
+                eventEmitter.emit('reset');
+            });
+        });
+        eventEmitter.on('reset', () => {
+            videoEncodeProcessor.reset((err) => {
+                expect(err).assertUndefined();
+                console.info('in case : reset success');
+                eventEmitter.emit('release');
+            });
+        });
         eventEmitter.on('release', () => {
             videoEncodeProcessor.release((err) => {
                 expect(err).assertUndefined();

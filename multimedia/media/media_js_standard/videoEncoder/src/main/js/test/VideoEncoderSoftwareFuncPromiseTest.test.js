@@ -18,7 +18,7 @@ import mediademo from '@ohos.multimedia.mediademo'
 import Fileio from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-describe('videoEncoderSoftwareFuncPromise', function () {
+describe('videoSoftwareEncoderFuncPromise', function () {
     const BASIC_PATH = '/data/media/results/videoencode_func_promise_';
     let videoEncodeProcessor;
     let mediaTest;
@@ -192,7 +192,7 @@ describe('videoEncoderSoftwareFuncPromise', function () {
         }, failCallback).catch(failCatch);
     }
 
-    function printVideoCaps(videoCaps, width, height) {
+    async function printVideoCaps(videoCaps, width, height) {
         console.info(`print videoCaps: 
         codecInfo.name ${videoCaps.codecInfo.name}
         codecInfo.type ${videoCaps.codecInfo.type}
@@ -212,11 +212,35 @@ describe('videoEncoderSoftwareFuncPromise', function () {
         supportedQuality [${videoCaps.supportedQuality.min},  ${videoCaps.supportedQuality.max}]
         supportedComplexity [${videoCaps.supportedComplexity.min},  ${videoCaps.supportedComplexity.max}]
         `);
-        console.info("videoCaps.getPreferredFrameRate.min: " + videoCaps.getPreferredFrameRate(width, height).min);
-        console.info("videoCaps.getPreferredFrameRate.max: " + videoCaps.getPreferredFrameRate(width, height).max);
-        console.info("videoCaps.getSupportedFrameRate.min: " + videoCaps.getSupportedFrameRate(width, height).min);
-        console.info("videoCaps.getSupportedFrameRate.max: " + videoCaps.getSupportedFrameRate(width, height).max);
-        console.info("videoCaps.isSizeSupported: " + videoCaps.isSizeSupported(width, height));
+        await videoCaps.getPreferredFrameRate(width, height).then((valueRange) => {
+            console.info("case getPreferredFrameRate valueRange success");
+            if (typeof (valueRange) != 'undefined') {
+                console.info('getPreferredFrameRate.min' + valueRange.min);
+                console.info('getPreferredFrameRate.max' + valueRange.max);
+            } else {
+                console.info('case getPreferredFrameRate valueRange is not defined');
+                expect().assertFail();
+            }
+        }, failCallback).catch(failCatch);
+        await videoCaps.getSupportedFrameRate(width, height).then((valueRange) => {
+            console.info("case getSupportedFrameRate valueRange success");
+            if (typeof (valueRange) != 'undefined') {
+                console.info('getSupportedFrameRate.min' + valueRange.min);
+                console.info('getSupportedFrameRate.max' + valueRange.max);
+            } else {
+                console.info('case getSupportedFrameRate valueRange is not defined');
+                expect().assertFail();
+            }
+        }, failCallback).catch(failCatch);
+        await videoCaps.isSizeSupported(width, height).then((trueORfalse) => {
+            console.info("case isSizeSupported valueRange for width:" + width + ", height: " + height);
+            if (typeof (trueORfalse) != 'undefined') {
+                console.info('videoCaps.isSizeSupported: ' + trueORfalse);
+            } else {
+                console.info('case isSizeSupported is not defined');
+                expect().assertFail();
+            }
+        }, failCallback).catch(failCatch);
     }
 
     function toCreateStream() {

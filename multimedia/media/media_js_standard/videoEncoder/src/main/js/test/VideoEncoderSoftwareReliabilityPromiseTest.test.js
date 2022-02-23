@@ -44,13 +44,9 @@ describe('videoEncoderReliability', function () {
     const RESET = 10;
     const RELEASE = 11;
     const HOLDON = 12;
-    const CONFIGURE_ERROR = 13;
-    const PREPARE_ERROR = 14;
-    const START_ERROR = 15;
-    const FLUSH_ERROR = 16;
-    const STOP_ERROR = 17;
-    const RELEASE_ERROR = 18;
-    const JUDGE_EOS = 19;
+    const ERROR = 13;
+    const WAITFORALLOUTS = 14;
+    const JUDGE_EOS = 15;
     const WAITTIME = 3000;
     let width = 720;
     let height = 480;
@@ -152,8 +148,7 @@ describe('videoEncoderReliability', function () {
             case CONFIGURE:
                 mySteps.shift();
                 console.info(`case to configure`);
-                await toConfigure();
-                nextStep(mySteps, done);
+                await toConfigure(mySteps, done);
                 break;
             case GETSURFACE:
                 mySteps.shift();
@@ -169,8 +164,7 @@ describe('videoEncoderReliability', function () {
             case PREPARE:
                 mySteps.shift();
                 console.info(`case to prepare`);
-                await toPrepare();
-                nextStep(mySteps, done);
+                await toPrepare(mySteps, done);
                 break;
             case STARTSTREAM:
                 mySteps.shift();
@@ -187,20 +181,17 @@ describe('videoEncoderReliability', function () {
             case START:
                 mySteps.shift();
                 console.info(`case to start`);
-                await toStart();
-                nextStep(mySteps, done);
+                await toStart(mySteps, done);
                 break;
             case FLUSH:
                 mySteps.shift();
                 console.info(`case to flush`);
-                await toFlush();
-                nextStep(mySteps, done);
+                await toFlush(mySteps, done);
                 break;
             case STOP:
                 mySteps.shift();
                 console.info(`case to stop`);
-                await toStop();
-                nextStep(mySteps, done);
+                await toStop(mySteps, done);
                 break;
             case RESET:
                 mySteps.shift();
@@ -211,11 +202,7 @@ describe('videoEncoderReliability', function () {
             case RELEASE:
                 mySteps.shift();
                 console.info(`case to release`);
-                await toRelease();
-                if (mySteps[0] != RELEASE_ERROR) {
-                    videoEncodeProcessor = null;
-                }
-                nextStep(mySteps, done);
+                await toRelease(mySteps, done);
                 break;
             case HOLDON:
                 mySteps.shift();
@@ -223,54 +210,9 @@ describe('videoEncoderReliability', function () {
                     nextStep(mySteps, done);
                 }, WAITTIME);
                 break;
-            case CONFIGURE_ERROR:
+            case WAITFORALLOUTS:
                 mySteps.shift();
-                console.info(`case to configure 2`);
-                videoEncodeProcessor.configure(mediaDescription).then(() => {
-                    console.info(`case configure error 1`);
-                    expect().assertFail();
-                }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
-                break;
-            case PREPARE_ERROR:
-                mySteps.shift();
-                console.info(`case to prepare 2`);
-                videoEncodeProcessor.prepare().then(() => {
-                    console.info(`case prepare error 1`);
-                    expect().assertFail();
-                }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
-                break;
-            case START_ERROR:
-                mySteps.shift();
-                console.info(`case to start 2`);
-                videoEncodeProcessor.start().then(() => {
-                    console.info(`case start error 1`);
-                    expect().assertFail();
-                }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
-                break;
-            case FLUSH_ERROR:
-                mySteps.shift();
-                console.info(`case to flush 2`);
-                videoEncodeProcessor.flush().then(() => {
-                    console.info(`case flush error 1`);
-                    expect().assertFail();
-                }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
-                break;
-            case STOP_ERROR:
-                mySteps.shift();
-                console.info(`case to stop 2`);
-                videoEncodeProcessor.stop().then(() => {
-                    console.info(`case stop error 1`);
-                    expect().assertFail();
-                }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
-                break;
-            case RELEASE_ERROR:
-                mySteps.shift();
-                console.info(`case to relase 2`);
-                videoEncodeProcessor.release().then(() => {
-                    console.info(`case release error 1`);
-                    expect().assertFail();
-                }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
-                videoEncodeProcessor = null;
+                console.info(`case wait for all outputs`);
                 break;
             case JUDGE_EOS:
                 mySteps.shift();
@@ -377,34 +319,93 @@ describe('videoEncoderReliability', function () {
         mediaTest.startStream(surfaceID);
     }
 
-    async function toConfigure() {
-        await videoEncodeProcessor.configure(mediaDescription).then(() => {
-            console.info("case configure success"); 
-        }, failCallback).catch(failCatch);
+    async function toConfigure(mySteps, done) {
+        if (mySteps[0] == ERROR) {
+            mySteps.shift();
+            console.info(`case to configure 2`);
+            await videoEncodeProcessor.configure(mediaDescription).then(() => {
+                console.info(`case configure error 1`);
+                expect().assertFail();
+            }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
+        } else {
+            await videoEncodeProcessor.configure(mediaDescription).then(() => {
+                console.info("case configure success"); 
+            }, failCallback).catch(failCatch);
+        }
+        nextStep(mySteps, done);
     }
 
-    async function toPrepare() {
-        await videoEncodeProcessor.prepare().then(() => {
-            console.info("case prepare success"); 
-        }, failCallback).catch(failCatch);
+    async function toPrepare(mySteps, done) {
+        if (mySteps[0] == ERROR) {
+            mySteps.shift();
+            console.info(`case to prepare 2`);
+            await videoEncodeProcessor.prepare().then(() => {
+                console.info(`case prepare error 1`);
+                expect().assertFail();
+            }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
+        } else {
+            await videoEncodeProcessor.prepare().then(() => {
+                console.info("case prepare success"); 
+            }, failCallback).catch(failCatch);
+        }
+        nextStep(mySteps, done);
     }
 
-    async function toStart() {
-        await videoEncodeProcessor.start().then(() => {
-            console.info("case start success"); 
-        }, failCallback).catch(failCatch);
+    async function toStart(mySteps, done) {
+        if (mySteps[0] == ERROR) {
+            mySteps.shift();
+            console.info(`case to start 2`);
+            await videoEncodeProcessor.start().then(() => {
+                console.info(`case start error 1`);
+                expect().assertFail();
+            }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
+        } else {
+            if (sawOutputEOS) {
+                resetParam();
+                workdoneAtEOS = true;
+            }
+            await videoEncodeProcessor.start().then(() => {
+                console.info("case start success"); 
+            }, failCallback).catch(failCatch);
+        }
+        nextStep(mySteps, done);
     }
 
-    async function toFlush() {
-        await videoEncodeProcessor.flush().then(() => {
-            console.info("case flush success"); 
-        }, failCallback).catch(failCatch);
+    async function toFlush(mySteps, done) {
+        if (mySteps[0] == ERROR) {
+            mySteps.shift();
+            console.info(`case to flush 2`);
+            await videoEncodeProcessor.flush().then(() => {
+                console.info(`case flush error 1`);
+                expect().assertFail();
+            }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
+        } else {
+            await videoEncodeProcessor.flush().then(() => {
+                console.info("case flush success"); 
+            }, failCallback).catch(failCatch);
+            if (flushAtEOS) {
+                mediaTest.closeStream(surfaceID);
+                resetParam();
+                workdoneAtEOS = true;
+            }
+        }
+        nextStep(mySteps, done);
     }
 
-    async function toStop() {
-        await videoEncodeProcessor.stop().then(() => {
-            console.info("case stop success"); 
-        }, failCallback).catch(failCatch);
+    async function toStop(mySteps, done) {
+        if (mySteps[0] == ERROR) {
+            mySteps.shift();
+            console.info(`case to stop 2`);
+            await videoEncodeProcessor.stop().then(() => {
+                console.info(`case stop error 1`);
+                expect().assertFail();
+            }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
+        } else {
+            await videoEncodeProcessor.stop().then(() => {
+                console.info("case stop success"); 
+            }, failCallback).catch(failCatch);
+        }
+        nextStep(mySteps, done);
     }
 
     async function toReset() {
@@ -413,10 +414,24 @@ describe('videoEncoderReliability', function () {
         }, failCallback).catch(failCatch);
     }
 
-    async function toRelease() {
-        await videoEncodeProcessor.release().then(() => {
-            console.info("case release success"); 
-        }, failCallback).catch(failCatch);
+    async function toRelease(mySteps, done) {
+        if (mySteps[0] == ERROR) {
+            mySteps.shift();
+            console.info(`case to relase 2`);
+            await videoEncodeProcessor.release().then(() => {
+                console.info(`case release error 1`);
+                expect().assertFail();
+            }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
+            videoEncodeProcessor = null;
+        } else {
+            await videoEncodeProcessor.release().then(() => {
+                console.info("case release success"); 
+            }, failCallback).catch(failCatch);
+            if (mySteps[0] != RELEASE) {
+                videoEncodeProcessor = null;
+            }
+        }
+        nextStep(mySteps, done);
     }
 
      /* *
@@ -443,7 +458,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_PROMISE_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0200.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, CONFIGURE_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, CONFIGURE, ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -458,7 +473,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_PROMISE_0300', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0300.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, 
-            CONFIGURE_ERROR, STOPSTREAM, END);
+            CONFIGURE, ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -473,7 +488,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_PROMISE_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0400.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, 
-            CONFIGURE_ERROR, STOPSTREAM, END);
+            CONFIGURE, ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -488,7 +503,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0500.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP , 
-            CONFIGURE_ERROR, STOPSTREAM, END);
+            CONFIGURE, ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -503,7 +518,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_PROMISE_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0600.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
-            JUDGE_EOS, CONFIGURE_ERROR, STOPSTREAM, END);
+            JUDGE_EOS, CONFIGURE, ERROR, STOPSTREAM, END);
         frameTotal = 2;
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -532,7 +547,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_PROMISE_0800', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0800.txt';
-        let mySteps = new Array(CONFIGURE, CONFIGURE_ERROR, END);
+        let mySteps = new Array(CONFIGURE, CONFIGURE, ERROR, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -560,7 +575,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_PROMISE_0100', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0100.txt';
-        let mySteps = new Array(PREPARE_ERROR, END);
+        let mySteps = new Array(PREPARE, ERROR, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -588,7 +603,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_PROMISE_0300', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0300.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, PREPARE_ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, PREPARE, ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -602,7 +617,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_PROMISE_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0400.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, PREPARE_ERROR, 
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, PREPARE, ERROR, 
             STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -618,7 +633,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0500.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, 
-            PREPARE_ERROR, STOPSTREAM, END);
+            PREPARE, ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -633,7 +648,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_PROMISE_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0600.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, 
-            PREPARE_ERROR, STOPSTREAM, END);
+            PREPARE, ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -648,7 +663,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_PROMISE_0700', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0700.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
-            JUDGE_EOS, PREPARE_ERROR, STOPSTREAM, END);
+            JUDGE_EOS, PREPARE, ERROR, STOPSTREAM, END);
         frameTotal = 2;
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -664,7 +679,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_PROMISE_0800', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0800.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RESET, 
-            PREPARE_ERROR, STOPSTREAM, END);
+            PREPARE, ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -678,7 +693,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_PROMISE_0100', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0100.txt';
-        let mySteps = new Array(START_ERROR, END);
+        let mySteps = new Array(START, ERROR, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -692,7 +707,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_PROMISE_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0200.txt';
-        let mySteps = new Array(CONFIGURE, START_ERROR, END);
+        let mySteps = new Array(CONFIGURE, START, ERROR, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -706,7 +721,8 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_PROMISE_0300', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0300.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, WAITFORALLOUTS);
+        workdoneAtEOS = true;
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -720,7 +736,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_PROMISE_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0400.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, START_ERROR, 
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, START, ERROR, 
             STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -736,7 +752,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0500.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, 
-            START_ERROR, STOPSTREAM, END);
+            START, ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -751,7 +767,8 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_PROMISE_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0600.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, 
-            START, END);
+            START, WAITFORALLOUTS);
+        workdoneAtEOS = true;
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -766,7 +783,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_PROMISE_0700', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0700.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
-            JUDGE_EOS, START_ERROR, STOPSTREAM, END);
+            JUDGE_EOS, START, ERROR, STOPSTREAM, END);
         frameTotal = 2;
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -782,7 +799,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_PROMISE_0800', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0800.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RESET, 
-            START_ERROR, STOPSTREAM, END);
+            START, ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -796,7 +813,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_PROMISE_0100', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0100.txt';
-        let mySteps = new Array(FLUSH_ERROR, END);
+        let mySteps = new Array(FLUSH, ERROR, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -810,7 +827,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_PROMISE_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0200.txt';
-        let mySteps = new Array(CONFIGURE, FLUSH_ERROR, END);
+        let mySteps = new Array(CONFIGURE, FLUSH, ERROR, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -824,7 +841,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_PROMISE_0300', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0300.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, FLUSH_ERROR, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, FLUSH, ERROR, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -854,7 +871,8 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0500.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, FLUSH, FLUSH, 
-            END);
+            WAITFORALLOUTS);
+        workdoneAtEOS = true;
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -869,7 +887,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_PROMISE_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0600.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP,
-            FLUSH_ERROR, STOPSTREAM, END);
+            FLUSH, ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -900,7 +918,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_PROMISE_0800', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0800.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RESET, 
-            FLUSH_ERROR, STOPSTREAM, END);
+            FLUSH, ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -914,7 +932,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_PROMISE_0100', 0, async function (done) {
         let savepath = BASIC_PATH + 'stop_0100.txt';
-        let mySteps = new Array(STOP_ERROR, END);
+        let mySteps = new Array(STOP, ERROR, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -928,7 +946,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_PROMISE_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'stop_0200.txt';
-        let mySteps = new Array(CONFIGURE, STOP_ERROR, END);
+        let mySteps = new Array(CONFIGURE, STOP, ERROR, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -942,7 +960,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_PROMISE_0300', 0, async function (done) {
         let savepath = BASIC_PATH + 'stop_0300.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STOP_ERROR, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STOP, ERROR, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -986,7 +1004,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_PROMISE_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'stop_0600.txt';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, STOP_ERROR, 
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, STOP, STOP, ERROR, 
             STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -1018,7 +1036,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_PROMISE_0800', 0, async function (done) {
         let savepath = BASIC_PATH + 'stop_0800.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RESET, 
-            STOP_ERROR, STOPSTREAM, END);
+            STOP, ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -1254,7 +1272,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RELEASE_PROMISE_0800', 0, async function (done) {
         let savepath = BASIC_PATH + 'release_0800.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STARTSTREAM, START, RELEASE, 
-            RELEASE_ERROR, STOPSTREAM, END);
+            RELEASE, ERROR, STOPSTREAM, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -1285,8 +1303,9 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_PROMISE_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'eos_0200.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
-            JUDGE_EOS, FLUSH, STARTSTREAM, STOPSTREAM, END);
+            JUDGE_EOS, FLUSH, STARTSTREAM, WAITFORALLOUTS);
         frameTotal = 2;
+        flushAtEOS = true;
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -1317,7 +1336,7 @@ describe('videoEncoderReliability', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_PROMISE_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'eos_0400.txt';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
-            JUDGE_EOS, STOPSTREAM, STOP, START, END);
+            JUDGE_EOS, STOPSTREAM, STOP, START, SETSTREAMPARAM, STARTSTREAM, WAITFORALLOUTS);
         frameTotal = 2;
         createVideoEncoder(savepath, mySteps, done);
     })
@@ -1360,10 +1379,16 @@ describe('videoEncoderReliability', function () {
         })
         for (let j = 1; j < 51; j++) {
             console.info('case configure-reset current loop: ' + j);
-            await toConfigure();
-            await toReset();
+            await videoEncodeProcessor.configure(mediaDescription).then(() => {
+                console.info("case configure success"); 
+            }, failCallback).catch(failCatch);
+            await videoEncodeProcessor.reset().then(() => {
+                console.info("case reset success"); 
+            }, failCallback).catch(failCatch);
         }
-        await toRelease();
+        await videoEncodeProcessor.release().then(() => {
+            console.info("case release success"); 
+        }, failCallback).catch(failCatch);
         videoEncodeProcessor = null;
         done();
     })
@@ -1388,15 +1413,25 @@ describe('videoEncoderReliability', function () {
                 done();
             }
         })
-        await toConfigure();
+        await videoEncodeProcessor.configure(mediaDescription).then(() => {
+            console.info("case configure success"); 
+        }, failCallback).catch(failCatch);
         await toGetInputSurface();
-        await toPrepare();
+        await videoEncodeProcessor.prepare().then(() => {
+            console.info("case prepare success"); 
+        }, failCallback).catch(failCatch);
         for (let j = 1; j < 51; j++) {
             console.info('case start-stop current loop: ' + j);
-            await toStart();
-            await toStop();
+            await videoEncodeProcessor.start().then(() => {
+                console.info("case start success"); 
+            }, failCallback).catch(failCatch);
+            await videoEncodeProcessor.stop().then(() => {
+                console.info("case stop success"); 
+            }, failCallback).catch(failCatch);
         }
-        await toRelease();
+        await videoEncodeProcessor.release().then(() => {
+            console.info("case release success"); 
+        }, failCallback).catch(failCatch);
         videoEncodeProcessor = null;
         done();
     })
@@ -1423,7 +1458,58 @@ describe('videoEncoderReliability', function () {
                     done();
                 }
             })
-            await toRelease();
+            await videoEncodeProcessor.release().then(() => {
+                console.info("case release success"); 
+            }, failCallback).catch(failCatch);
+            videoEncodeProcessor = null;
+        }
+        done();
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_TOTALLOOP_PROMISE_0100
+        * @tc.name      : 001. total loop for 50 times
+        * @tc.desc      : Reliability Test
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliability
+        * @tc.level     : Level2
+    */
+    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_TOTALLOOP_PROMISE_0100', 0, async function (done) {
+        let name = 'avenc_mpeg4';
+        for (let j = 1; j < 51; j++) {
+            console.info('case create-release current loop: ' + j);
+            await media.createVideoEncoderByName(name).then((processor) => {
+                if (typeof (processor) != 'undefined') {
+                    videoEncodeProcessor = processor;
+                    console.info('in case : createVideoEncoderByName success');
+                } else {
+                    console.info('in case : createVideoEncoderByName fail');
+                    expect().assertFail();
+                    done();
+                }
+            })
+            await videoEncodeProcessor.configure(mediaDescription).then(() => {
+                console.info("case configure success"); 
+            }, failCallback).catch(failCatch);
+            await toGetInputSurface();
+            await videoEncodeProcessor.prepare().then(() => {
+                console.info("case prepare success"); 
+            }, failCallback).catch(failCatch);
+            await videoEncodeProcessor.start().then(() => {
+                console.info("case start success"); 
+            }, failCallback).catch(failCatch);
+            await videoEncodeProcessor.flush().then(() => {
+                console.info("case flush success"); 
+            }, failCallback).catch(failCatch);
+            await videoEncodeProcessor.stop().then(() => {
+                console.info("case stop success"); 
+            }, failCallback).catch(failCatch);
+            await videoEncodeProcessor.reset().then(() => {
+                console.info("case reset success"); 
+            }, failCallback).catch(failCatch);
+            await videoEncodeProcessor.release().then(() => {
+                console.info("case release success"); 
+            }, failCallback).catch(failCatch);
             videoEncodeProcessor = null;
         }
         done();
