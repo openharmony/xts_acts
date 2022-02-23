@@ -234,10 +234,10 @@ describe('videoEncoderReliability', function () {
                 if (workdoneAtEOS) {
                     mediaTest.closeStream(surfaceID);
                     await toReset();
-                    await toRelease();
+                    await videoEncodeProcessor.release().then(() => {
+                        console.info("case release success"); 
+                    }, failCallback).catch(failCatch);
                     videoEncodeProcessor = null;
-                    console.info("case frameTotal: " + frameTotal);
-                    console.info("case frameCountOut: " + frameCountOut);
                     done();
                 } else {
                     console.info("sawOutputEOS = true;");

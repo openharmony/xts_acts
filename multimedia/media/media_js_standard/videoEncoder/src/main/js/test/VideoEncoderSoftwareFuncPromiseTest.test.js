@@ -215,8 +215,8 @@ describe('videoSoftwareEncoderFuncPromise', function () {
         await videoCaps.getPreferredFrameRate(width, height).then((valueRange) => {
             console.info("case getPreferredFrameRate valueRange success");
             if (typeof (valueRange) != 'undefined') {
-                console.info('getPreferredFrameRate.min' + valueRange.min);
-                console.info('getPreferredFrameRate.max' + valueRange.max);
+                console.info('getPreferredFrameRate.min: ' + valueRange.min);
+                console.info('getPreferredFrameRate.max: ' + valueRange.max);
             } else {
                 console.info('case getPreferredFrameRate valueRange is not defined');
                 expect().assertFail();
@@ -225,8 +225,8 @@ describe('videoSoftwareEncoderFuncPromise', function () {
         await videoCaps.getSupportedFrameRate(width, height).then((valueRange) => {
             console.info("case getSupportedFrameRate valueRange success");
             if (typeof (valueRange) != 'undefined') {
-                console.info('getSupportedFrameRate.min' + valueRange.min);
-                console.info('getSupportedFrameRate.max' + valueRange.max);
+                console.info('getSupportedFrameRate.min: ' + valueRange.min);
+                console.info('getSupportedFrameRate.max: ' + valueRange.max);
             } else {
                 console.info('case getSupportedFrameRate valueRange is not defined');
                 expect().assertFail();
@@ -328,12 +328,13 @@ describe('videoSoftwareEncoderFuncPromise', function () {
     */ 
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_PROMISE_00_0100', 0, async function (done) {
         console.info("case test stop after last frame");
-        let savepath = BASIC_PATH + '0000.txt';
+        let savepath = BASIC_PATH + '0000.es';
         let name= 'avenc_mpeg4';
         let width = 720;
         let height = 480;
         let framerate = 60;
         let mediaDescription = {
+            "codec_mime": "video/avc",
             "width": width, 
             "height": height,
             "pixel_format": 3,
@@ -392,7 +393,7 @@ describe('videoSoftwareEncoderFuncPromise', function () {
     */ 
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_PROMISE_01_0100', 0, async function (done) {
         console.info("case test stop at runnning state and reset");
-        let savepath = BASIC_PATH + '0100.txt';
+        let savepath = BASIC_PATH + '0100.es';
         let mime = 'video/mp4v-es';
         let width = 720;
         let height = 480;
@@ -431,7 +432,7 @@ describe('videoSoftwareEncoderFuncPromise', function () {
     */ 
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_PROMISE_01_0200', 0, async function (done) {
         console.info("test stop at end of stream and restart");
-        let savepath = BASIC_PATH + '0200.txt';
+        let savepath = BASIC_PATH + '0200.es';
         let mime = 'video/mp4v-es';
         let width = 720;
         let height = 480;
@@ -471,7 +472,7 @@ describe('videoSoftwareEncoderFuncPromise', function () {
     */ 
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_PROMISE_01_0300', 0, async function (done) {
         console.info("test stop at runnning state and restart");
-        let savepath = BASIC_PATH + '0300.txt';
+        let savepath = BASIC_PATH + '0300.es';
         let mime = 'video/mp4v-es';
         let width = 720;
         let height = 480;
@@ -512,7 +513,7 @@ describe('videoSoftwareEncoderFuncPromise', function () {
     */ 
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_PROMISE_01_0400', 0, async function (done) {
         console.info("case test flush at running state");
-        let savepath = BASIC_PATH + '0400.txt';
+        let savepath = BASIC_PATH + '0400.es';
         let mime = 'video/mp4v-es';
         let width = 720;
         let height = 480;
@@ -548,7 +549,7 @@ describe('videoSoftwareEncoderFuncPromise', function () {
     */ 
    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_PROMISE_01_0500', 0, async function (done) {
         console.info("case test flush at end of stream");
-        let savepath = BASIC_PATH + '0500.txt';
+        let savepath = BASIC_PATH + '0500.es';
         let mime = 'video/mp4v-es';
         let width = 720;
         let height = 480;
@@ -588,7 +589,7 @@ describe('videoSoftwareEncoderFuncPromise', function () {
     */ 
    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_PROMISE_01_0600', 0, async function (done) {
         console.info("case test reconfigure");
-        let savepath = BASIC_PATH + '0600.txt';
+        let savepath = BASIC_PATH + '0600.es';
         let mime = 'video/mp4v-es';
         let width = 720;
         let height = 480;
@@ -623,7 +624,7 @@ describe('videoSoftwareEncoderFuncPromise', function () {
             "pixel_format": 3,
             "frame_rate" : framerate,
         }
-        let savepath2 = BASIC_PATH + '0601.txt';
+        let savepath2 = BASIC_PATH + '0601.es';
         toSetStreamParam(width, height, framerate, frameTotal);
         await toConfigure(mediaDescription2);
         setCallback(savepath2, done);
@@ -643,7 +644,7 @@ describe('videoSoftwareEncoderFuncPromise', function () {
     */ 
    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_PROMISE_01_0700', 0, async function (done) {
         console.info("case test recreate videoencoder");
-        let savepath = BASIC_PATH + '0700.txt';
+        let savepath = BASIC_PATH + '0700.es';
         let mime = 'video/mp4v-es';
         let width = 720;
         let height = 480;
@@ -679,7 +680,7 @@ describe('videoSoftwareEncoderFuncPromise', function () {
             "pixel_format": 3,
             "frame_rate" : framerate,
         }
-        let savepath2 = BASIC_PATH + '0701.txt';
+        let savepath2 = BASIC_PATH + '0701.es';
         await toCreateByMime(mime, done);
         toSetStreamParam(width, height, framerate, frameTotal);
         await toConfigure(mediaDescription2);

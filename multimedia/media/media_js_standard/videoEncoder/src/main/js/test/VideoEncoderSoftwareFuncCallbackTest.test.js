@@ -31,7 +31,7 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
     let stopBuffer = false;
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
-    const BASIC_PATH = '/data/media/encoder/';
+    const BASIC_PATH = '/data/media/results/';
 
     beforeAll(function() {
         console.info('beforeAll case');

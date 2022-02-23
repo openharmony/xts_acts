@@ -21,7 +21,7 @@ export
 const ENCODE_STEP = {
     WAIT_FOR_EOS : 'encode:waitForEOS',
     CONFIGURE : 'encode:configure',
-    GET_INPUTSURFACE : 'encode:getSurface',
+    GET_SURFACE : 'encode:getSurface',
     PREPARE : 'encode:prepare',
     START : 'encode:start',
     FLUSH : 'encode:flush',
@@ -247,6 +247,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
             toNextStep(mySteps, done);
         });
     }
+	function runCase(mySteps, nextCase, done) {
+	    if (mySteps[0] == ENCODE_STEP.ERROR) {
+			mySteps.shift();
+			nextCase(mySteps, done, true);
+		} else {
+			nextCase(mySteps, done, false);
+		}
+	}
     function toNextStep(mySteps, done) {
         console.info('case myStep[0]: ' + mySteps[0]);
         if (mySteps[0] == ENCODE_STEP.RELEASE) {
@@ -265,12 +273,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
             case ENCODE_STEP.CONFIGURE:
                 mySteps.shift();
                 console.info(`case to configure`);
-                if (mySteps[0] == ENCODE_STEP.ERROR) {
-                    mySteps.shift();
-                    toConfigure(mySteps, done, true);
-                } else {
-                    toConfigure(mySteps, done, false);
-                }
+				runCase(mySteps, toConfigure, done);
                 break;
             case STREAM_STEP.CREATE:
                 mySteps.shift();
@@ -297,73 +300,39 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
                 console.info(`case to StoptStream`);
                 toStopStream(mySteps, done);
                 break;
-            case ENCODE_STEP.GET_INPUTSURFACE:
+            case ENCODE_STEP.GET_SURFACE:
                 mySteps.shift();
                 console.info(`case to setOutputSurface`);
-                if (mySteps[0] == ENCODE_STEP.ERROR) {
-                    mySteps.shift();
-                    toGetInputSurface(mySteps, done, true);
-                } else {
-                    toGetInputSurface(mySteps, done, false);
-                }
+				runCase(mySteps, toGetInputSurface, done);
                 break;
             case ENCODE_STEP.PREPARE:
                 mySteps.shift();
                 console.info(`case to prepare`);
-                if (mySteps[0] == ENCODE_STEP.ERROR) {
-                    mySteps.shift();
-                    toPrepare(mySteps, done, true);
-                } else {
-                    toPrepare(mySteps, done, false);
-                }
+                runCase(mySteps, toPrepare, done);
                 break;
             case ENCODE_STEP.START:
                 mySteps.shift();
                 console.info(`case to start`);
-                if (mySteps[0] == ENCODE_STEP.ERROR) {
-                    mySteps.shift();
-                    toStart(mySteps, done, true);
-                } else {
-                    toStart(mySteps, done, false);
-                }
+				runCase(mySteps, toStart, done);
                 break;
             case ENCODE_STEP.FLUSH:
                 mySteps.shift();
                 console.info(`case to flush`);
-                if (mySteps[0] == ENCODE_STEP.ERROR) {
-                    mySteps.shift();
-                    toFlush(mySteps, done, true);
-                } else {
-                    toFlush(mySteps, done, false);
-                }
+				runCase(mySteps, toFlush, done);
                 break;
             case ENCODE_STEP.STOP:
                 mySteps.shift();
                 console.info(`case to stop`);
-                if (mySteps[0] == ENCODE_STEP.ERROR) {
-                    mySteps.shift();
-                    toStop(mySteps, done, true);
-                } else {
-                    toStop(mySteps, done, false);
-                }
+				runCase(mySteps, toStop, done);
                 break;
             case ENCODE_STEP.RESET:
                 mySteps.shift();
                 console.info(`case to reset`);
-                if (mySteps[0] == ENCODE_STEP.ERROR) {
-                    mySteps.shift();
-                    toReset(mySteps, done, true);
-                } else {
-                    toReset(mySteps, done, false);
-                }
+				runCase(mySteps, toReset, done);
                 break;
             case ENCODE_STEP.WAIT_FOR_EOS:
                 mySteps.shift();
                 setTimeout(() =>{
-                    // expect(inputEosFlag).assertTrue();
-                    // if (inputEosFlag == false) {
-                    //     console.info(`in case error wait for eos: inputEosFlag = false`);
-                    // }
                     toNextStep(mySteps, done);
                 }, 5000);   // wait 5000 ms for eos
                 break;
@@ -444,7 +413,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0200', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0200.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
             ENCODE_STEP.CONFIGURE, ENCODE_STEP.ERROR, STREAM_STEP.STOP, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -460,7 +429,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0300', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0300.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
             ENCODE_STEP.START, ENCODE_STEP.CONFIGURE, ENCODE_STEP.ERROR, STREAM_STEP.STOP, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -476,7 +445,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0400', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0400.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
             ENCODE_STEP.START, ENCODE_STEP.FLUSH, ENCODE_STEP.CONFIGURE, ENCODE_STEP.ERROR, STREAM_STEP.STOP, 
             ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
@@ -493,7 +462,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0500', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0500.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
             ENCODE_STEP.START, ENCODE_STEP.STOP, ENCODE_STEP.CONFIGURE, ENCODE_STEP.ERROR, STREAM_STEP.STOP, 
             ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
@@ -510,7 +479,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0600', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0600.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
             ENCODE_STEP.START, ENCODE_STEP.WAIT_FOR_EOS, ENCODE_STEP.CONFIGURE, ENCODE_STEP.ERROR, 
             STREAM_STEP.STOP, ENCODE_STEP.RELEASE);
         frameTotal = 50;
@@ -528,9 +497,9 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0700', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0700.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
             ENCODE_STEP.START, ENCODE_STEP.RESET, STREAM_STEP.STOP, ENCODE_STEP.CONFIGURE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
             ENCODE_STEP.START, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -546,7 +515,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0800', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0800.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.CONFIGURE, 
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START, ENCODE_STEP.CONFIGURE, 
             ENCODE_STEP.ERROR, ENCODE_STEP.PREPARE, ENCODE_STEP.START, STREAM_STEP.STOP, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -562,9 +531,9 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0900', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0900.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
             ENCODE_STEP.START, ENCODE_STEP.RESET, STREAM_STEP.STOP, ENCODE_STEP.CONFIGURE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
             ENCODE_STEP.START, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -594,7 +563,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0200', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0200.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, STREAM_STEP.STOP, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -610,7 +579,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0300', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0300.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
             ENCODE_STEP.PREPARE, ENCODE_STEP.ERROR, ENCODE_STEP.START, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -626,7 +595,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0400', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0400.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.PREPARE, ENCODE_STEP.ERROR, 
             ENCODE_STEP.RESET, STREAM_STEP.STOP, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
@@ -643,7 +612,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0500', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0500.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.FLUSH, ENCODE_STEP.PREPARE, 
             ENCODE_STEP.ERROR, ENCODE_STEP.RESET, STREAM_STEP.STOP, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
@@ -660,7 +629,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0600', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0600.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.STOP, ENCODE_STEP.PREPARE, 
             ENCODE_STEP.ERROR, ENCODE_STEP.RESET, STREAM_STEP.STOP, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
@@ -677,7 +646,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0700', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0700.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.WAIT_FOR_EOS, ENCODE_STEP.PREPARE, 
             ENCODE_STEP.ERROR, STREAM_STEP.STOP, ENCODE_STEP.RELEASE);
         frameTotal = 50;
@@ -695,7 +664,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0800', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0800.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.RESET, ENCODE_STEP.PREPARE, 
             ENCODE_STEP.ERROR, ENCODE_STEP.RESET, STREAM_STEP.STOP, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
@@ -726,7 +695,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0200', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0200.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.START, 
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START, ENCODE_STEP.START, 
             ENCODE_STEP.ERROR, STREAM_STEP.STOP, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -742,7 +711,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0300', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0300.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -758,7 +727,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0400', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0400.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.START, ENCODE_STEP.ERROR, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -774,7 +743,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0500', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0500.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
             ENCODE_STEP.START, ENCODE_STEP.FLUSH, ENCODE_STEP.START, ENCODE_STEP.ERROR, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -790,7 +759,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0600', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0600.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.STOP, ENCODE_STEP.START, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -806,7 +775,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0700', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0700.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.WAIT_FOR_EOS, ENCODE_STEP.START, 
             ENCODE_STEP.ERROR, ENCODE_STEP.RELEASE);
         frameTotal = 50;
@@ -824,7 +793,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0800', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0800.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.RESET, ENCODE_STEP.START, 
             ENCODE_STEP.ERROR, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
@@ -855,7 +824,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0200', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0200.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE,
             STREAM_STEP.START, ENCODE_STEP.FLUSH, ENCODE_STEP.ERROR, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -871,7 +840,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0300', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0300.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.FLUSH, ENCODE_STEP.ERROR, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -887,7 +856,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0400', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0400.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.FLUSH, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -903,7 +872,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0500', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0500.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.FLUSH, ENCODE_STEP.FLUSH, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -919,7 +888,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0600', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0600.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.STOP , ENCODE_STEP.FLUSH, 
             ENCODE_STEP.ERROR, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
@@ -936,7 +905,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0700', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0700.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.WAIT_FOR_EOS, ENCODE_STEP.FLUSH, 
             ENCODE_STEP.RELEASE);
         frameTotal = 50;
@@ -954,7 +923,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0800', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0800.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.RESET, ENCODE_STEP.FLUSH, 
             ENCODE_STEP.ERROR, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
@@ -1000,7 +969,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0300', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0300.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.STOP, ENCODE_STEP.ERROR, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -1016,7 +985,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0400', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0400.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.STOP, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -1032,7 +1001,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0500', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0500.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.FLUSH, ENCODE_STEP.STOP, 
             ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
@@ -1049,7 +1018,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0600', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0600.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.STOP, ENCODE_STEP.STOP, ENCODE_STEP.ERROR, 
             ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
@@ -1066,7 +1035,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0700', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0700.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.WAIT_FOR_EOS, ENCODE_STEP.STOP, 
             ENCODE_STEP.RELEASE);
         frameTotal = 50;
@@ -1084,7 +1053,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0800', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0800.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.RESET, ENCODE_STEP.STOP, ENCODE_STEP.ERROR, 
             ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
@@ -1115,7 +1084,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0200', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0200.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE,
             STREAM_STEP.START, ENCODE_STEP.RESET, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -1131,7 +1100,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0300', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0300.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.RESET, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -1147,7 +1116,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0400', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0400.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.RESET, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -1163,7 +1132,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0500', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0500.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.FLUSH, ENCODE_STEP.RESET, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -1179,7 +1148,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0600', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0600.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.STOP, ENCODE_STEP.RESET, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -1195,7 +1164,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0700', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0700.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.WAIT_FOR_EOS, ENCODE_STEP.RESET, ENCODE_STEP.RELEASE);
         frameTotal = 50;
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
@@ -1212,7 +1181,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0800', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0800.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.RESET, ENCODE_STEP.RESET, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
@@ -1228,7 +1197,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0100', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0100.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.WAIT_FOR_EOS, ENCODE_STEP.FLUSH, 
             ENCODE_STEP.STOP, ENCODE_STEP.RELEASE);
         frameTotal = 50;
@@ -1246,7 +1215,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0200', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0200.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.WAIT_FOR_EOS, ENCODE_STEP.FLUSH, 
             ENCODE_STEP.RELEASE);
         frameTotal = 50;
@@ -1264,7 +1233,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0300', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0300.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.WAIT_FOR_EOS, ENCODE_STEP.RESET, 
             ENCODE_STEP.CONFIGURE, STREAM_STEP.STOP, STREAM_STEP.SET_PARAM, STREAM_STEP.SET_EOS_FRAME, 
             STREAM_STEP.START, ENCODE_STEP.RELEASE);
@@ -1283,7 +1252,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0400', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0400.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.WAIT_FOR_EOS, ENCODE_STEP.STOP, 
             ENCODE_STEP.START, ENCODE_STEP.RELEASE);
         frameTotal = 50;
@@ -1301,7 +1270,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0500', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0500.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
-            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
+            STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_SURFACE, STREAM_STEP.START,
             ENCODE_STEP.PREPARE, ENCODE_STEP.START, ENCODE_STEP.WAIT_FOR_EOS, ENCODE_STEP.STOP, 
             ENCODE_STEP.START, ENCODE_STEP.STOP, ENCODE_STEP.RELEASE);
         frameTotal = 50;
@@ -1432,8 +1401,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
             }
         })
     })
-    
-    /* *
+        /* *
         * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CREATE-RELEASE_CALLBACK_0100
         * @tc.name      : 001. create -> release for 50 times
         * @tc.desc      : Reliability Test
@@ -1441,7 +1409,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_TOOPLOOP_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CREATE-RELEASE_CALLBACK_0100', 0, async function (done) {
         let name = 'avenc_mpeg4';
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
