@@ -102,8 +102,8 @@ describe('favSmartAlbum.promise.test.js', function () {
     }
     function getFileAssetsCallBack(err, fSmartFetchFileResult) {
         if (fSmartFetchFileResult != undefined) {
-            console.info('MediaLibraryTest : SMARTALBUM_CALLBACK getFileAssetsCallBack Successfull fSmartFetchFileResult = '
-                + fSmartFetchFileResult.getCount());
+            console.info('MediaLibraryTest : SMARTALBUM_CALLBACK getFileAssetsCallBack Successfull fSmartFetchFileResult = ' +
+                         fSmartFetchFileResult.getCount());
             done();
         } else {
             console.info('MediaLibraryTest : SMARTALBUM_CALLBACK getFileAssetsCallBack Unsuccessfull ' + err);
