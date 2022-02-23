@@ -157,7 +157,7 @@ describe('bluetoothhostTest', function() {
      * @tc.level Level 2
      */
     it('bluetooth_ble_start_advertising', 0, async function (done) {
-        console.info('BLE advertising start');
+        console.info('[bluetooth_js] BLE advertising start');
         var manufactureValueBuffer = new Uint8Array(4);
         manufactureValueBuffer[0] = 1;
         manufactureValueBuffer[1] = 2;
@@ -269,15 +269,21 @@ describe('bluetoothhostTest', function() {
      */
     it('bluetooth_ble_read_rssi', 0, async function (done) {
         console.info('[bluetooth_js] BLE get rssi1 start');
-        var gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
-        gattClient.getRssiValue((err, data)=> {
-            console.info('[bluetooth_js] rssi err:' + JSON.stringify(err));
-            console.info('[bluetooth_js] rssi value:' + JSON.stringify(data));
-            expect(data).assertNull();
-            console.info('[bluetooth_js] BLE read rssi1 end');
-            done();
-        });
+        let promise = new Promise((resolve) => {
+            var gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
+            gattClient.getRssiValue((err, data)=> {
+                console.info('[bluetooth_js] rssi err:' + JSON.stringify(err));
+                console.info('[bluetooth_js] rssi value:' + JSON.stringify(data));
+                expect(data).assertNull();
+                console.info('[bluetooth_js] BLE read rssi1 end');
+                done();
+            });
+            resolve()
+        })
+        await promise.then(done)
+        done();
     })
+
 
     /**
      * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GET_RSSI_VALUE_PROMISE_0001
@@ -290,24 +296,29 @@ describe('bluetoothhostTest', function() {
      */
     it('bluetooth_ble_read_rssi_promise', 0, async function (done) {
         console.info('[bluetooth_js] BLE get rssi start');
-        var gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
-        await gattClient.getRssiValue().then((data) => {
-            if (data != null) {
-                console.info('[bluetooth_js] rssi' + JSON.stringify(data));
-                done();
+        let promise = new Promise((resolve) => {
+            var gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
+            gattClient.getRssiValue().then((data) => {
+                if (data != null) {
+                    console.info('[bluetooth_js] rssi' + JSON.stringify(data));
+                    done();
+                    expect(true).assertEqual(true);
+                } else {
+                    console.info('[bluetooth_js] BLE read rssi ' + JSON.stringify(data));
+                    var rssiLength = Object.keys(data).length;
+                    console.info("[bluetooth_js] ble rssi_length -> " + rssiLength);
+                    expect(rssiLength).assertEqual(0);
+                    done();
+                }
+            }).catch(err => {
+                console.error(`bluetooth getRssiValue has error: ${err}`);
                 expect(true).assertEqual(true);
-            } else {
-                console.info('[bluetooth_js] BLE read rssi ' + JSON.stringify(data));
-                var rssiLength = Object.keys(data).length;
-                console.info("[bluetooth_js] ble rssi_length -> " + rssiLength);
-                expect(rssiLength).assertEqual(0);
                 done();
-            }
-        }).catch(err => {
-            console.error(`bluetooth getRssiValue has error: ${err}`);
-            expect(true).assertEqual(true);
-            done();
-        });
+            });
+            resolve()
+        })
+        await promise.then(done)
+        done();
     })
 
 
