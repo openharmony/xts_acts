@@ -14,7 +14,7 @@
  */
 
 import app from '@system.app'
-import batteryStats from "@ohos.batterystatistics"
+import batteryStats from "@ohos.batteryStatistics"
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 var ConsumptionType = {
