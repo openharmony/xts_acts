@@ -29,21 +29,17 @@ describe('favSmartAlbum.promise.test.js', function () {
     var asset;
     var favSmartAlbum;
     beforeAll(function () {
-        onsole.info('Smart Album Callback MediaLibraryTest: beforeAll： Prerequisites at the test suite level, which are executed before the test suite is executed.');
-
+        console.info('Smart Album Callback MediaLibraryTest: beforeAll： Prerequisites at the test suite level, which are executed before the test suite is executed.');
     })
 
     beforeEach(function () {
         console.info('Smart Album Callback MediaLibraryTest: beforeEach：Prerequisites at the test case level, which are executed before each test case is executed.');
-
     })
     afterEach(function () {
         console.info('Smart Album Callback MediaLibraryTest: afterEach： Test case-level clearance conditions, which are executed after each test case is executed.');
-
     })
     afterAll(function () {
         console.info('Smart Album Callback MediaLibraryTest: afterAll：  Test suite-level cleanup condition, which is executed after the test suite is executed');
-
     })
      
     /**

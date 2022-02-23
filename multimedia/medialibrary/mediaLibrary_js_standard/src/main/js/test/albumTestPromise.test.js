@@ -53,7 +53,7 @@ describe('album.promise.test.js', async function () {
     console.info('MediaLibraryTest : getMediaLibrary OUT');
 
     beforeAll(function () {
-        onsole.info('Album Promise MediaLibraryTest: beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.');
+        console.info('Album Promise MediaLibraryTest: beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.');
     });
     beforeEach(function () {
         console.info('Album Promise MediaLibraryTest: beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.');

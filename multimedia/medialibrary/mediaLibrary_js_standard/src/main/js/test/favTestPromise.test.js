@@ -62,7 +62,8 @@ describe('favSmartAlbum.promise.test.js', function () {
             const favSmartAlbums = await media.getPrivateAlbum(mediaLibrary.PrivateAlbumType.TYPE_FAVORITE);
             console.info('MediaLibraryTest : SMARTALBUM_PROMISE getPrivateAlbum favSmartAlbums 001_01');
             console.info('MediaLibraryTest : SMARTALBUM_PROMISE favSmartAlbums 001_01 ' + favSmartAlbums[0].albumName);
-            console.info('MediaLibraryTest : SMARTALBUM_PROMISE favSmartAlbums 001_01 ' + favSmartAlbums[0].albumCapacity);
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE favSmartAlbums 001_01 ' +
+                         favSmartAlbums[0].albumCapacity);
             favSmartAlbum = favSmartAlbums[0];
             expect(true).assertTrue();
             done();
@@ -78,8 +79,10 @@ describe('favSmartAlbum.promise.test.js', function () {
         try {
             const trashSmartAlbums = await media.getPrivateAlbum(mediaLibrary.PrivateAlbumType.TYPE_TRASH);
             console.info('MediaLibraryTest : SMARTALBUM_PROMISE getPrivateAlbum trashSmartAlbums 001_02');
-            console.info('MediaLibraryTest : SMARTALBUM_PROMISE trashSmartAlbums 001_02 ' + trashSmartAlbums[0].albumName);
-            console.info('MediaLibraryTest : SMARTALBUM_PROMISE trashSmartAlbums 001_02 ' + trashSmartAlbums[0].albumCapacity);
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE trashSmartAlbums 001_02 ' +
+                         trashSmartAlbums[0].albumName);
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE trashSmartAlbums 001_02 ' +
+                         trashSmartAlbums[0].albumCapacity);
             trashSmartAlbum = trashSmartAlbums[0];
             expect(true).assertTrue();
             done();
@@ -228,8 +231,8 @@ describe('favSmartAlbum.promise.test.js', function () {
         try {
             await favSmartAlbum.removeAsset(asset.uri);
             let fSmartFetchFileResultNew = await favSmartAlbum.getFileAssets();
-            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getFileAssets Successfull removeAsset 003_01 fSmartFetchFileResultNew = '
-                + fSmartFetchFileResultNew.getCount());
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getFileAssets Successfull removeAsset 003_01 fSmartFetchFileResultNew = ' +
+                         fSmartFetchFileResultNew.getCount());
             await media.deleteAsset(asset.uri);
             done();
         } catch (error) {
@@ -301,8 +304,8 @@ describe('favSmartAlbum.promise.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_GETASSET_PROMISE_004_01', 0, async function (done) {
         try {
             let fSmartFetchFileResultGet = await favSmartAlbum.getFileAssets();
-            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getFileAssets Successfull 004_01 fSmartFetchFileResultGet = '
-                + fSmartFetchFileResultGet.getCount());
+            console.info('MediaLibraryTest : SMARTALBUM_PROMISE getFileAssets Successfull 004_01 fSmartFetchFileResultGet = ' +
+                         fSmartFetchFileResultGet.getCount());
             expect(true).assertTrue();
             done();
         } catch (error) {

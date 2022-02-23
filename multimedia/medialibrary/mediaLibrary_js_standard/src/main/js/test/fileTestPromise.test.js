@@ -44,20 +44,16 @@ describe('file.promise.test.js', function () {
     console.info('MediaLibraryTest : getMediaLibrary OUT');
     beforeAll(function () {
         console.info('File Promise MediaLibraryTest: beforeAll ： Prerequisites at the test suite level, which are executed before the test suite is executed.');
-
     })
 
     beforeEach(function () {
         console.info('File Promise MediaLibraryTest: beforeEach：Prerequisites at the test case level, which are executed before each test case is executed.');
-
     })
     afterEach(function () {
         console.info('File Promise MediaLibraryTest: afterEach： Test case-level clearance conditions, which are executed after each test case is executed.');
-
     })
     afterAll(function () {
         console.info('File Promise MediaLibraryTest: afterAll：  Test suite-level cleanup condition, which is executed after the test suite is executed');
-
     })
 
     /**
@@ -98,7 +94,8 @@ describe('file.promise.test.js', function () {
             let mediaType = mediaLibrary.MediaType.VIDEO;
             let path = "Movies/";
             var asset02 = await media.createAsset(mediaType, "video01.avi", path);
-            console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_02 asset.displayName = ' + asset02.displayName);
+            console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_02 asset.displayName = ' +
+                         asset02.displayName);
         } catch (error) {
             console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_02 fail, message = ' + error);
         }
@@ -110,7 +107,8 @@ describe('file.promise.test.js', function () {
             let mediaType = mediaLibrary.MediaType.VIDEO;
             let path = "";
             var asset03 = await media.createAsset(mediaType, "video03.avi", path);
-            console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_03 asset.displayName = ' + asset03.displayName);
+            console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_03 asset.displayName = ' +
+                         asset03.displayName);
             expect(false).assertTrue();
         } catch (error) {
             console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_03 fail, message = ' + error);
@@ -124,7 +122,8 @@ describe('file.promise.test.js', function () {
             let mediaType;
             let path = "Movies/";
             var asset04 = await media.createAsset(mediaType, "video04.avi", path);
-            console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_04 asset.displayName = ' + asset04.displayName);
+            console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_04 asset.displayName = ' +
+                         asset04.displayName);
             expect(false).assertTrue();
         } catch (error) {
             console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_04 fail, message = ' + error);
@@ -138,7 +137,8 @@ describe('file.promise.test.js', function () {
             let mediaType;
             let path;
             var asset05 = await media.createAsset(mediaType, "video05.avi", path);
-            console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_05 asset.displayName = ' + asset05.displayName);
+            console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_05 asset.displayName = ' +
+                         asset05.displayName);
             expect(false).assertTrue();
         } catch (error) {
             console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_05 fail, message = ' + error);
