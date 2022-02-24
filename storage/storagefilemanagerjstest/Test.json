@@ -19,7 +19,10 @@
             "type": "ShellKit",
             "run-command": [
                 "chmod 777 /storage/media/100/local/files/fmsdir.sh",
-                "sh /data/media/fmsdir.sh",
+                "sh /storage/media/100/local/files/fmsdir.sh",
+				"killall com.ohos.medialibrary.MediaScannerAbilityA",
+                "aa start  -a MediaScannerAbility -b com.ohos.medialibrary.MediaScannerAbilityA",
+				"sleep 10",
                 "setenforce 0"
             ],
             "teardown-command":[

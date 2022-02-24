@@ -14,7 +14,6 @@
  */
 
 import filemanager from '@ohos.filemanager';
-import mediaLibrary from '@ohos.multimedia.medialibrary';
 import {
   describe,
   it,
@@ -38,33 +37,6 @@ let IMAGE_ALBUM = "";
 let LOG_ = "FMS_XTS_TEXT: "
 describe("filemanager_test", function () {
 
-  /**
-  * @tc.number    : SUB_MEDIA_GUDEHE_TRIGGER_SCAN
-  * @tc.name      : judge file asset trash or not
-  * @tc.desc      : judge file asset trash or not
-  * @tc.size      : MEDIUM
-  * @tc.type      : Function
-  * @tc.level     : Level 0
-  */
-  it('GUDEHE_TRIGGER_SCAN', 0, async function () {
-    try {
-      console.info("gudehe MediaLibraryTest Instance before");
-      const media = mediaLibrary.getMediaLibrary();
-      console.info("gudehe MediaLibraryTest Instance after");
-      console.info("gudehe get mediascanner instance before");
-      const scanHelper = mediaLibrary.getScannerInstance();
-      console.info("gudehe get mediascanner instance after");
-      console.info("gudehe scan begin")
-      scanHelper.scanDir("/storage/media/local/files", (err, scanResult) => {
-        console.info("gudehe scan end")
-        console.info("gudehe " + scanResult.status);
-      })
-    } catch (e) {
-      console.log('gudehe has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-	
   /**
    * @tc.number SUB_DF_FILEMANAGER_GET_ROOT_0000
    * @tc.name filemanager_test_get_root_async_000
