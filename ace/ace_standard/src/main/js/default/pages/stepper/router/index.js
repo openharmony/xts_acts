@@ -104,6 +104,41 @@ export default {
             status: 'normal'
         },
     },
+
+    onShow(){
+        // 通用属性
+        var prop1 =  this.$element('prop1');
+        var name1 = prop1.dataSet.name
+        var prop2 =  this.$refs.prop2;
+        var name2 = prop2.dataSet.name
+        prompt.showToast({
+            message: 'prop1--' + name1 + '\nprop2--' + name2
+        });
+
+    },
+
+    touchStart(event){
+        var globalX = event.touches[0].globalX
+        var globalY = event.touches[0].globalY
+        var localX = event.touches[0].localX
+        var localY = event.touches[0].localY
+        var size = event.touches[0].size
+        var force = event.touches[0].force
+        var changeGlobalX = event.changedTouches[0].globalX
+        var changeGlobalY = event.changedTouches[0].globalY
+        var changeLocalX = event.changedTouches[0].localX
+        var changeLocalY = event.changedTouches[0].localY
+        var changeSize = event.changedTouches[0].size
+        var changeForce = event.changedTouches[0].force
+        var message = 'globalX--' + globalX + ',globalY--' + globalY +
+        ',localX--' + localX + ',localY--' + localY  + ',size--' + size + ',force--' + force +
+        ',changeGlobalX--' + changeGlobalX + ',changeGlobalY--' + changeGlobalY +
+        ',changeLocalX--' + changeLocalX + ',changeLocalY--' + changeLocalY  +
+        ',changeSize--' + changeSize + ',changeForce--' + changeForce;
+        prompt.showToast({
+            message: 'touchstart:\n' + message
+        });
+    },
     setRightButton(e) {
         this.$element('mystepper').setNextButtonStatus({status: 'skip', label: 'SKIP'});
         this.$element('style1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
@@ -139,52 +174,6 @@ export default {
         this.$element('atomA2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
         this.$element('atomA3').setNextButtonStatus({status: 'skip', label: 'SKIP'});
         this.$element('mul1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-    },
-    next(e) {
-        var index = {
-            pendingIndex: e.pendingIndex
-        }
-        return index;
-    },
-    back(e) {
-        var index = {
-            pendingIndex: e.pendingIndex
-        }
-        return index;
-    },
-
-    onShow(){
-        // 通用属性
-        var prop1 =  this.$element('prop1');
-        var name1 = prop1.dataSet.name
-        var prop2 =  this.$refs.prop2;
-        var name2 = prop2.dataSet.name
-        prompt.showToast({
-            message: 'prop1--' + name1 + '\nprop2--' + name2
-        });
-    },
-
-    touchStart(event){
-        var globalX = event.touches[0].globalX
-        var globalY = event.touches[0].globalY
-        var localX = event.touches[0].localX
-        var localY = event.touches[0].localY
-        var size = event.touches[0].size
-        var force = event.touches[0].force
-        var changeGlobalX = event.changedTouches[0].globalX
-        var changeGlobalY = event.changedTouches[0].globalY
-        var changeLocalX = event.changedTouches[0].localX
-        var changeLocalY = event.changedTouches[0].localY
-        var changeSize = event.changedTouches[0].size
-        var changeForce = event.changedTouches[0].force
-        var message = 'globalX--' + globalX + ',globalY--' + globalY +
-        ',localX--' + localX + ',localY--' + localY  + ',size--' + size + ',force--' + force +
-        ',changeGlobalX--' + changeGlobalX + ',changeGlobalY--' + changeGlobalY +
-        ',changeLocalX--' + changeLocalX + ',changeLocalY--' + changeLocalY  +
-        ',changeSize--' + changeSize + ',changeForce--' + changeForce;
-        prompt.showToast({
-            message: 'touchstart:\n' + message
-        });
     },
 
     touchMove(event){
@@ -253,34 +242,6 @@ export default {
         ',changeSize--' + changeSize + ',changeForce--' + changeForce;
         prompt.showToast({
             message: 'touchCancel:\n' +message
-        });
-    },
-
-    appearTest(){
-        prompt.showToast({
-            message: 'appear'
-        });
-    },
-    disappearTest(){
-        prompt.showToast({
-            message: 'disappear'
-        });
-    },
-    finishTest(){
-        prompt.showToast({
-            message: 'finish'
-        });
-    },
-
-    skipTest(){
-        prompt.showToast({
-            message: 'skip'
-        });
-    },
-
-    changeTest(){
-        prompt.showToast({
-            message: 'change'
         });
     },
 
@@ -507,6 +468,7 @@ export default {
 
     functionTest3(event){
         var function3 =  this.$element('function3');
+
         var animation = function3.animate(frames, options);
         animation.play()
         animation.onfinish = function(){
@@ -558,16 +520,34 @@ export default {
         function4.scrollBy(scrollParam)
     },
 
-    reachStart(){
+    finishTest(){
         prompt.showToast({
-            message: 'reachStart'
+            message: 'finish'
         });
     },
 
-    reachEnd(){
+    skipTest(){
         prompt.showToast({
-            message: 'reachEnd'
+            message: 'skip'
         });
+    },
+
+    changeTest(){
+        prompt.showToast({
+            message: 'change'
+        });
+    },
+    next(e) {
+        var index = {
+            pendingIndex: e.pendingIndex
+        }
+        return index;
+    },
+    back(e) {
+        var index = {
+            pendingIndex: e.pendingIndex
+        }
+        return index;
     },
 
     reachTop(){
@@ -581,5 +561,4 @@ export default {
             message: 'reachBottom'
         });
     }
-
 }
