@@ -65,7 +65,7 @@ describe('formPropsJsTest', function () {
         } catch (err) {
             console.error("push formProps page error " + JSON.stringify(result));
         }
-        await sleep(4000)
+        await sleep(20000)
         done()
     })
 

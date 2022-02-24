@@ -65,7 +65,7 @@
          } catch (err) {
              console.error("push listItemGroupProps page error " + JSON.stringify(result));
          }
-         await sleep(4000)
+         await sleep(20000)
          done()
      })
  
@@ -522,6 +522,7 @@
          console.info("[listItemGroupProps] get for value is: " + JSON.stringify(obj.$attrs.for));
          done();
      });
+
      /**
       * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
       * @tc.name      testlistItemGroupForPropThree

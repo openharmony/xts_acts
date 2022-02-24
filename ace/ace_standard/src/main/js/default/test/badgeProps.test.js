@@ -65,7 +65,7 @@ describe('badgePropsJsTest', function () {
         } catch (err) {
             console.error("push badgeProps page error " + JSON.stringify(result));
         }
-        await sleep(4000)
+        await sleep(20000)
         done()
     })
 

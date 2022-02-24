@@ -65,7 +65,7 @@
          } catch (err) {
              console.error("push listProps page error " + JSON.stringify(result));
          }
-         await sleep(4000)
+         await sleep(20000)
          done()
      })
  
@@ -286,7 +286,7 @@
  
          expect(obj.$type).assertEqual('list')
          expect(obj.$attrs.id).assertEqual('focusablePropNone')
-         expect(obj.$attrs.focusable).assertEqual(undefined)
+         expect(obj.$attrs.focusable).assertEqual('false')
          done();
      });
  
@@ -921,7 +921,7 @@
 
         expect(obj.$type).assertEqual('list')
         expect(obj.$attrs.id).assertEqual('indexerArray')
-        expect(obj.$attrs.indexer).assertEqual('{{array}}')
+        expect(obj.$attrs.indexer).assertEqual('#\n1\n2\n3\n4\n5\n6\n7\n8')
         console.info("[listProps] get indexer value is: " + JSON.stringify(obj.$attrs.indexer));
         done();
     });
@@ -1061,7 +1061,7 @@
 
         expect(obj.$type).assertEqual('list')
         expect(obj.$attrs.id).assertEqual('indexermultiNone')
-        expect(obj.$attrs.indexermulti).assertEqual('true')
+        expect(obj.$attrs.indexermulti).assertEqual('false')
         console.info("[listProps] get indexermulti value is: " + JSON.stringify(obj.$attrs.indexermulti));
         done();
     });

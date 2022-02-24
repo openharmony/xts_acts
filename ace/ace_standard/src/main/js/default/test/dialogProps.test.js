@@ -65,7 +65,7 @@
          } catch (err) {
              console.error("push dialogProps page error " + JSON.stringify(result));
          }
-         await sleep(4000)
+         await sleep(30000)
          done()
      })
  

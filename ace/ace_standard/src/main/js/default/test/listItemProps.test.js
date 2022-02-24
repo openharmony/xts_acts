@@ -65,7 +65,7 @@
          } catch (err) {
              console.error("push listItemProps page error " + JSON.stringify(result));
          }
-         await sleep(4000)
+         await sleep(20000)
          done()
      })
  
@@ -286,7 +286,7 @@
  
          expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('focusablePropNone')
-         expect(obj.$attrs.focusable).assertEqual(undefined)
+         expect(obj.$attrs.focusable).assertEqual('false')
          done();
      });
  
@@ -880,7 +880,7 @@
 
         expect(obj.$type).assertEqual('list-item')
         expect(obj.$attrs.id).assertEqual('clickeffectFalse')
-        expect(obj.$attrs.clickeffect).assertEqual('false')
+        expect(obj.$attrs.clickeffect).assertEqual('true')
         console.info("[listItemProps] get clickeffect value is: " + JSON.stringify(obj.$attrs.clickeffect));
         done();
     });
