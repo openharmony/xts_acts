@@ -93,7 +93,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('idProp')
          done();
      })
@@ -111,7 +111,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('classProp')
          expect(obj.$attrs.className).assertEqual('classProp')
          done();
@@ -130,7 +130,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('classPropNone')
          expect(obj.$attrs.className).assertEqual(undefined)
          console.info("[listItemProps] get className value is: " + JSON.stringify(obj.$attrs.className));
@@ -150,7 +150,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('refProp')
          expect(obj.$attrs.ref).assertEqual('refProp')
          done();
@@ -169,7 +169,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('refPropNone')
          expect(obj.$attrs.ref).assertEqual(undefined)
          console.info("[listItemProps] get ref value is: " + JSON.stringify(obj.$attrs.ref));
@@ -189,7 +189,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('disabledPropTrue')
          expect(obj.$attrs.disabled).assertEqual('true')
          done();
@@ -208,7 +208,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('disabledPropFalse')
          expect(obj.$attrs.disabled).assertEqual('false')
          done();
@@ -227,7 +227,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('disabledPropNone')
          expect(obj.$attrs.disabled).assertEqual('false')
          done();
@@ -246,7 +246,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('focusablePropTrue')
          expect(obj.$attrs.focusable).assertEqual('true')
          done();
@@ -265,7 +265,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('focusablePropFalse')
          expect(obj.$attrs.focusable).assertEqual('false')
          done();
@@ -284,9 +284,9 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('focusablePropNone')
-         expect(obj.$attrs.focusable).assertEqual('false')
+         expect(obj.$attrs.focusable).assertEqual(undefined)
          done();
      });
  
@@ -303,7 +303,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('dataProp')
          expect(obj.$attrs.datalistItem).assertEqual(undefined);
          console.info("[listItemProps] get datalistItem value is: " + JSON.stringify(obj.$attrs.datalistItem));
@@ -323,7 +323,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('dataPropNone')
          expect(obj.$attrs.datalistItem).assertEqual(undefined)
          console.info("[listItemProps] get datalistItem value is: " + JSON.stringify(obj.$attrs.datalistItem));
@@ -343,7 +343,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('clickEffectPropSmall')
          expect(obj.$attrs.clickEffect).assertEqual('spring-small')
          done();
@@ -362,7 +362,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('clickEffectPropMedium')
          expect(obj.$attrs.clickEffect).assertEqual('spring-medium')
          done();
@@ -381,7 +381,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('clickEffectPropLarge')
          expect(obj.$attrs.clickEffect).assertEqual('spring-large')
          done();
@@ -400,7 +400,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('clickEffectPropNone')
          expect(obj.$attrs.clickEffect).assertEqual(undefined)
          console.info("[listItemProps] get clickEffect value is: " + JSON.stringify(obj.$attrs.clickEffect));
@@ -420,7 +420,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('dirPropRtl')
          expect(obj.$attrs.dir).assertEqual('rtl')
          done();
@@ -439,7 +439,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('dirPropLtr')
          expect(obj.$attrs.dir).assertEqual('ltr')
          done();
@@ -458,7 +458,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('dirPropAuto')
          expect(obj.$attrs.dir).assertEqual('auto')
          done();
@@ -477,7 +477,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('dirPropNone')
          expect(obj.$attrs.dir).assertEqual('auto')
          done();
@@ -496,7 +496,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('forPropNull')
          expect(obj.$attrs.for).assertEqual(undefined)
          console.info("[listItemProps] get for value is: " + JSON.stringify(obj.$attrs.for));
@@ -516,7 +516,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('forPropOne')
          expect(obj.$attrs.for).assertEqual(undefined)
          console.info("[listItemProps] get for value is: " + JSON.stringify(obj.$attrs.for));
@@ -536,7 +536,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('forPropThree')
          expect(obj.$attrs.for).assertEqual(undefined)
          console.info("[listItemProps] get for value is: " + JSON.stringify(obj.$attrs.for));
@@ -556,7 +556,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('ifPropTrue')
          expect(obj.$attrs.if).assertEqual(undefined)
          console.info("[listItemProps] get for value is: " + JSON.stringify(obj.$attrs.if));
@@ -576,7 +576,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('showPropTrue')
          expect(obj.$attrs.show).assertEqual('true')
          console.info("[listItemProps] get show value is: " + JSON.stringify(obj.$attrs.show));
@@ -596,7 +596,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('showPropFalse')
          expect(obj.$attrs.show).assertEqual('false')
          console.info("[listItemProps] get show value is: " + JSON.stringify(obj.$attrs.show));
@@ -616,7 +616,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('showPropNone')
          expect(obj.$attrs.show).assertEqual('true')
          console.info("[listItemProps] get show value is: " + JSON.stringify(obj.$attrs.show));
@@ -638,7 +638,7 @@
          console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
  
-         expect(obj.$type).assertEqual('listItem')
+         expect(obj.$type).assertEqual('list-item')
          expect(obj.$attrs.id).assertEqual('Type')
          expect(obj.$attrs.type).assertEqual('default')
          console.info("[listItemProps] get type value is: " + JSON.stringify(obj.$attrs.type));
@@ -658,9 +658,9 @@
             console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
             console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
     
-            expect(obj.$type).assertEqual('listItem')
+            expect(obj.$type).assertEqual('list-item')
             expect(obj.$attrs.id).assertEqual('TypeNone')
-            expect(obj.$attrs.type).assertEqual(undefined)
+            expect(obj.$attrs.type).assertEqual('default')
             console.info("[listItemProps] get type value is: " + JSON.stringify(obj.$attrs.type));
             done();
         });
@@ -678,7 +678,7 @@
         console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('listItem')
+        expect(obj.$type).assertEqual('list-item')
         expect(obj.$attrs.id).assertEqual('primaryFalse')
         expect(obj.$attrs.primary).assertEqual('false')
         console.info("[listItemProps] get primary value is: " + JSON.stringify(obj.$attrs.primary));
@@ -698,7 +698,7 @@
         console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('listItem')
+        expect(obj.$type).assertEqual('list-item')
         expect(obj.$attrs.id).assertEqual('primaryTrue')
         expect(obj.$attrs.primary).assertEqual('true')
         console.info("[listItemProps] get primary value is: " + JSON.stringify(obj.$attrs.primary));
@@ -718,9 +718,9 @@
         console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('listItem')
+        expect(obj.$type).assertEqual('list-item')
         expect(obj.$attrs.id).assertEqual('primaryNone')
-        expect(obj.$attrs.primary).assertEqual(undefined)
+        expect(obj.$attrs.primary).assertEqual('false')
         console.info("[listItemProps] get primary value is: " + JSON.stringify(obj.$attrs.primary));
         done();
     });
@@ -738,7 +738,7 @@
         console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('listItem')
+        expect(obj.$type).assertEqual('list-item')
         expect(obj.$attrs.id).assertEqual('section')
         expect(obj.$attrs.section).assertEqual('1')
         console.info("[listItemProps] get section value is: " + JSON.stringify(obj.$attrs.section));
@@ -758,7 +758,7 @@
         console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('listItem')
+        expect(obj.$type).assertEqual('list-item')
         expect(obj.$attrs.id).assertEqual('sectionNone')
         expect(obj.$attrs.section).assertEqual(undefined)
         console.info("[listItemProps] get section value is: " + JSON.stringify(obj.$attrs.section));
@@ -778,7 +778,7 @@
         console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('listItem')
+        expect(obj.$type).assertEqual('list-item')
         expect(obj.$attrs.id).assertEqual('stickyNone')
         expect(obj.$attrs.sticky).assertEqual('none')
         console.info("[listItemProps] get sticky value is: " + JSON.stringify(obj.$attrs.sticky));
@@ -798,7 +798,7 @@
         console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('listItem')
+        expect(obj.$type).assertEqual('list-item')
         expect(obj.$attrs.id).assertEqual('stickyNormal')
         expect(obj.$attrs.sticky).assertEqual('normal')
         console.info("[listItemProps] get sticky value is: " + JSON.stringify(obj.$attrs.sticky));
@@ -818,7 +818,7 @@
         console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('listItem')
+        expect(obj.$type).assertEqual('list-item')
         expect(obj.$attrs.id).assertEqual('stickyOpacity')
         expect(obj.$attrs.sticky).assertEqual('opacity')
         console.info("[listItemProps] get sticky value is: " + JSON.stringify(obj.$attrs.sticky));
@@ -838,9 +838,9 @@
         console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('listItem')
+        expect(obj.$type).assertEqual('list-item')
         expect(obj.$attrs.id).assertEqual('stickyNo')
-        expect(obj.$attrs.sticky).assertEqual(undefined)
+        expect(obj.$attrs.sticky).assertEqual('none')
         console.info("[listItemProps] get sticky value is: " + JSON.stringify(obj.$attrs.sticky));
         done();
     });
@@ -858,7 +858,7 @@
         console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('listItem')
+        expect(obj.$type).assertEqual('list-item')
         expect(obj.$attrs.id).assertEqual('clickeffectTrue')
         expect(obj.$attrs.clickeffect).assertEqual('true')
         console.info("[listItemProps] get clickeffect value is: " + JSON.stringify(obj.$attrs.clickeffect));
@@ -878,7 +878,7 @@
         console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('listItem')
+        expect(obj.$type).assertEqual('list-item')
         expect(obj.$attrs.id).assertEqual('clickeffectFalse')
         expect(obj.$attrs.clickeffect).assertEqual('false')
         console.info("[listItemProps] get clickeffect value is: " + JSON.stringify(obj.$attrs.clickeffect));
@@ -898,9 +898,9 @@
         console.info("[listItemProps] get inspector value is: " + JSON.stringify(obj));
         console.info("[listItemProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-        expect(obj.$type).assertEqual('listItem')
+        expect(obj.$type).assertEqual('list-item')
         expect(obj.$attrs.id).assertEqual('clickeffectNone')
-        expect(obj.$attrs.clickeffect).assertEqual(undefined)
+        expect(obj.$attrs.clickeffect).assertEqual('true')
         console.info("[listItemProps] get clickeffect value is: " + JSON.stringify(obj.$attrs.clickeffect));
         done();
     });

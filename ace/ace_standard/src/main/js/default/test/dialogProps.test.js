@@ -286,7 +286,7 @@
  
          expect(obj.$type).assertEqual('dialog')
          expect(obj.$attrs.id).assertEqual('focusablePropNone')
-         expect(obj.$attrs.focusable).assertEqual('false')
+         expect(obj.$attrs.focusable).assertEqual(undefined)
          done();
      });
  

@@ -286,7 +286,7 @@
  
          expect(obj.$type).assertEqual('list')
          expect(obj.$attrs.id).assertEqual('focusablePropNone')
-         expect(obj.$attrs.focusable).assertEqual('false')
+         expect(obj.$attrs.focusable).assertEqual(undefined)
          done();
      });
  
@@ -680,7 +680,7 @@
 
         expect(obj.$type).assertEqual('list')
         expect(obj.$attrs.id).assertEqual('scrollPageNone')
-        expect(obj.$attrs.scrollpage).assertEqual(undefined)
+        expect(obj.$attrs.scrollpage).assertEqual('false')
         console.info("[listProps] get scrollpage value is: " + JSON.stringify(obj.$attrs.scrollpage));
         done();
     });
@@ -781,7 +781,7 @@
 
         expect(obj.$type).assertEqual('list')
         expect(obj.$attrs.id).assertEqual('scrollbarNone')
-        expect(obj.$attrs.scrollbar).assertEqual('on')
+        expect(obj.$attrs.scrollbar).assertEqual('off')
         console.info("[listProps] get scrollbar value is: " + JSON.stringify(obj.$attrs.scrollbar));
         done();
     });
@@ -861,7 +861,7 @@
 
         expect(obj.$type).assertEqual('list')
         expect(obj.$attrs.id).assertEqual('scrolleffectNone')
-        expect(obj.$attrs.scrolleffect).assertEqual(undefined)
+        expect(obj.$attrs.scrolleffect).assertEqual('spring')
         console.info("[listProps] get scrolleffect value is: " + JSON.stringify(obj.$attrs.scrolleffect));
         done();
     });
@@ -941,7 +941,7 @@
 
         expect(obj.$type).assertEqual('list')
         expect(obj.$attrs.id).assertEqual('indexerNone')
-        expect(obj.$attrs.indexer).assertEqual(undefined)
+        expect(obj.$attrs.indexer).assertEqual('false')
         console.info("[listProps] get indexer value is: " + JSON.stringify(obj.$attrs.indexer));
         done();
     });
@@ -1001,7 +1001,7 @@
 
         expect(obj.$type).assertEqual('list')
         expect(obj.$attrs.id).assertEqual('indexercircleNone')
-        expect(obj.$attrs.indexercircle).assertEqual(undefined)
+        expect(obj.$attrs.indexercircle).assertEqual('false')
         console.info("[listProps] get indexercircle value is: " + JSON.stringify(obj.$attrs.indexercircle));
         done();
     });
@@ -1061,7 +1061,7 @@
 
         expect(obj.$type).assertEqual('list')
         expect(obj.$attrs.id).assertEqual('indexermultiNone')
-        expect(obj.$attrs.indexermulti).assertEqual(undefined)
+        expect(obj.$attrs.indexermulti).assertEqual('true')
         console.info("[listProps] get indexermulti value is: " + JSON.stringify(obj.$attrs.indexermulti));
         done();
     });
@@ -1121,7 +1121,7 @@
 
         expect(obj.$type).assertEqual('list')
         expect(obj.$attrs.id).assertEqual('indexerbubbleNone')
-        expect(obj.$attrs.indexerbubble).assertEqual(undefined)
+        expect(obj.$attrs.indexerbubble).assertEqual('true')
         console.info("[listProps] get indexerbubble value is: " + JSON.stringify(obj.$attrs.indexerbubble));
         done();
     });
@@ -1181,7 +1181,7 @@
 
         expect(obj.$type).assertEqual('list')
         expect(obj.$attrs.id).assertEqual('dividerNone')
-        expect(obj.$attrs.divider).assertEqual(undefined)
+        expect(obj.$attrs.divider).assertEqual('false')
         console.info("[listProps] get divider value is: " + JSON.stringify(obj.$attrs.divider));
         done();
     });
@@ -1261,7 +1261,7 @@
 
         expect(obj.$type).assertEqual('list')
         expect(obj.$attrs.id).assertEqual('shapemodeNone')
-        expect(obj.$attrs.shapemode).assertEqual(undefined)
+        expect(obj.$attrs.shapemode).assertEqual('default')
         console.info("[listProps] get shapemode value is: " + JSON.stringify(obj.$attrs.shapemode));
         done();
     });
@@ -1321,7 +1321,7 @@
 
         expect(obj.$type).assertEqual('list')
         expect(obj.$attrs.id).assertEqual('chainanimationNone')
-        expect(obj.$attrs.chainanimation).assertEqual(undefined)
+        expect(obj.$attrs.chainanimation).assertEqual('false')
         console.info("[listProps] get chainanimation value is: " + JSON.stringify(obj.$attrs.chainanimation));
         done();
     });
@@ -1381,7 +1381,7 @@
 
         expect(obj.$type).assertEqual('list')
         expect(obj.$attrs.id).assertEqual('updateeffectNone')
-        expect(obj.$attrs.updateeffect).assertEqual(undefined)
+        expect(obj.$attrs.updateeffect).assertEqual('false')
         console.info("[listProps] get updateeffect value is: " + JSON.stringify(obj.$attrs.updateeffect));
         done();
     });
