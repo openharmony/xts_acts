@@ -148,10 +148,15 @@ describe("volumeManager", function () {
      */
     it("volume_manager_test_get_all_Volumes_async_004", 0, async function (done) {
         try {
+
+
             await volumeManager.getAllVolumes(false);
             expect(null).assertFail();
         } catch (error) {
-            console.log(`volume_manager_test_get_all_Volumes_async_004 has failed for error ${error}`);
+
+
+            console.log(`volume_manager_test_get_all_Volumes_async_004 has failed f
+            or error ${error}`);
             expect(isInclude(error, "The callback shall be a funciton")).assertTrue();
         }
         done();
@@ -245,7 +250,7 @@ describe("volumeManager", function () {
             expect(null).assertFail();
         } catch (error) {
             console.log(`volume_manager_test_mount_async_003 has failed for ${error}`);
-            expect(isInclude(error, "not a function")).assertTrue();
+            expect(isInclude(error, "not a function") || isInclude(error, "is not callable")).assertTrue();
         }
         done();
     });
@@ -398,7 +403,7 @@ describe("volumeManager", function () {
             expect(null).assertFail();
         } catch (error) {
             console.log(`volume_manager_test_unmount_async_004 has failed for ${error}`);
-            expect(isInclude(error, "not a function")).assertTrue();
+            expect(isInclude(error, "not a function") || isInclude(error, "is not callable")).assertTrue();
         }
         done();
     });
