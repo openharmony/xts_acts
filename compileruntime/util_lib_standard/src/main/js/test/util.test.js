@@ -124,10 +124,10 @@ describe('TextEncoderTest', function () {
      * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
-    it('testUtilGetErrorString001', 0, async function () {
+     it('testUtilGetErrorString001', 0, async function () {
         var errnum = 10;
         var result = util.getErrorString(errnum);
-        expect(result).assertEqual('No child process');
+        expect(result).assertEqual('Unknown system error 10');
     })
 
     /**
@@ -139,7 +139,7 @@ describe('TextEncoderTest', function () {
     it('testUtilGetErrorString002', 0, async function () {
         var errnum = 0;
         var result = util.getErrorString(errnum);
-        expect(result).assertEqual('No error information');
+        expect(result).assertEqual('Unknown system error 0');
     })
 
     /**
@@ -151,7 +151,7 @@ describe('TextEncoderTest', function () {
     it('testUtilGetErrorString003', 0, async function () {
         var errnum = -1;
         var result = util.getErrorString(errnum);
-        expect(result).assertEqual('No error information');
+        expect(result).assertEqual('operation not permitted');
     })
 
     /**
@@ -163,7 +163,7 @@ describe('TextEncoderTest', function () {
     it('testUtilGetErrorString004', 0, async function () {
         var errnum = 9;
         var result = util.getErrorString(errnum);
-        expect(result).assertEqual('Bad file descriptor');
+        expect(result).assertEqual('Unknown system error 9');
     })
 
     /**
@@ -175,7 +175,7 @@ describe('TextEncoderTest', function () {
     it('testUtilGetErrorString005', 0, async function () {
         var errnum = 555;
         var result = util.getErrorString(errnum);
-        expect(result).assertEqual('No error information');
+        expect(result).assertEqual('Unknown system error 555');
     })
 
     /**
