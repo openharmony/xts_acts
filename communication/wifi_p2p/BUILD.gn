@@ -13,14 +13,14 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsWifiJSTest") {
+ohos_js_hap_suite("ActsP2PJSTest") {
   hap_profile = "./src/main/config.json"
   deps = [
     ":wifi_js_assets",
     ":wifi_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsWifiJSApiTest"
+  hap_name = "ActsP2PJSApiTest"
 }
 ohos_js_assets("wifi_js_assets") {
   source_dir = "./src/main/js/default"

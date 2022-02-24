@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+
+
 import {Core, ExpectExtend} from 'deccjsunit/index'
 
 export default {
@@ -36,6 +38,7 @@ export default {
         core.init()
 
         const configService = core.getDefaultService('config')
+     
         this.timeout = this.myTimeout
         configService.setConfig(this)
 
