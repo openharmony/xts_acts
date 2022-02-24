@@ -27,7 +27,7 @@ describe('stepperPropsJsTest', function () {
         }).then(() => {
             console.info(`sleep ${time} over...`)
         })
-    };
+    }
 
     async function backToIndex() {
         let backToIndexPromise = new Promise((resolve, reject) => {
@@ -35,18 +35,18 @@ describe('stepperPropsJsTest', function () {
                 router.back({
                     uri: 'pages/index/index'
                 });
-                resolve();
-            }, 500);
-        });
+                resolve()
+            }, 500)
+        })
         let clearPromise = new Promise((resolve, reject) => {
             setTimeout(() => {
-                router.clear();
-                resolve();
-            }, 500);
-        });
+                router.clear()
+                resolve()
+            }, 500)
+        })
         await backToIndexPromise.then(() => {
             return clearPromise;
-        });
+        })
     }
 
     /**
@@ -67,7 +67,7 @@ describe('stepperPropsJsTest', function () {
         }
         await sleep(4000)
         done()
-    });
+    })
 
     /**
     * run after testcase
@@ -76,7 +76,7 @@ describe('stepperPropsJsTest', function () {
         console.info('[stepperPropsJsTest] after each called')
         await backToIndex()
         await sleep(1000)
-    });
+    })
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
