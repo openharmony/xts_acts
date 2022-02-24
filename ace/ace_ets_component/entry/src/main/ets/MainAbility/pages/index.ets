@@ -37,7 +37,7 @@ struct MyComponent {
         core.subscribeEvent('task', reportExtend);
         const configService = core.getDefaultService('config');
         console.info('parameters---->' + JSON.stringify(Want.parameters));
-        configService.setConfig(Want.parameters                  );
+        configService.setConfig(Want.parameters);
         testsuite();
         core.execute();
         console.info('Operation successful. Data: ' + JSON.stringify(Want));
