@@ -35,8 +35,6 @@ struct progress_testcase {
           .color(Color.Blue)
           .width(50)
           .height(70)
-          .circularStyle({ strokeWidth: 10, scaleCount: 2, scaleWidth: 10 })
-          .cricularStyle({ strokeWidth: 10, scaleCount: 2, scaleWidth: 10 })
           .key('progress')
 
         Progress({ value: 20, total: 40, style: ProgressStyle.Eclipse })
