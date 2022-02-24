@@ -33,9 +33,9 @@
                 "mkdir wps",
                 "touch wps/news.pdf",
                 "touch wps/introduce.doc",
-				"killall com.ohos.medialibrary.MediaScannerAbilityA",
+                "killall com.ohos.medialibrary.MediaScannerAbilityA",
                 "aa start  -a MediaScannerAbility -b com.ohos.medialibrary.MediaScannerAbilityA",
-				"sleep 10",
+                "sleep 10",
                 "setenforce 0"
             ],
             "teardown-command":[
