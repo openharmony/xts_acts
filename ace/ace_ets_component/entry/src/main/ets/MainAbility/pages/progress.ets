@@ -15,6 +15,7 @@
 
 import events_emitter from '@ohos.emitter'
 
+
 @Entry
 @Component
 struct ProgressExample {
@@ -54,12 +55,30 @@ struct ProgressExample {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventThree, this.stateChangCallBack)
+
+    var stateChangeEventFour = {
+      eventId: 42,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventFour, this.stateChangCallBack)
+
+    var stateChangeEventFive = {
+      eventId: 41,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventFive, this.stateChangCallBack)
+
+    var stateChangeEventSix = {
+      eventId: 40,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventSix, this.stateChangCallBack)
   }
 
   build() {
     Column({ space: 15 }) {
       Text('Linear Progress').fontSize(9).fontColor(0xCCCCCC).width('90%')
-      Progress({ value: 20, total: 150 ,style: ProgressStyle.Linear }).width(200).value(this.value).key('LPValue')
+      Progress({ value: 20, style: ProgressStyle.Linear }).width(200).value(this.value).key('LPValue')
       Progress({ value: 20, total: 150, style: ProgressStyle.Linear }).color(Color.Red).width(200)
 
       Text('Eclipse Progress').fontSize(40).fontColor(0x0F0F0F).width('90%')

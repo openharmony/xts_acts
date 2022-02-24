@@ -28,7 +28,7 @@ struct LongPressGestureExample {
     .height(200).width(300).padding(60).border({ width:1 }).margin(30)
     .gesture(
       LongPressGesture({ repeat: true })
-        .onAction((event: LongPressGestureEvent) => {
+        .onAction(() => {
           console.info("longPressGesture current action onAction")
           this.eventString = 'onAction';
           console.info('onAction current action state is: ' + this.eventString);

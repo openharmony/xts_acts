@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,8 +45,7 @@ import borderJsunit from './general-properties/BorderJsunit.test.ets';
 import flexJsunit from './general-properties/FlexJsunit.test.ets';
 import gridJsunit from './GridJsunit.test.ets';
 import canvasJsunit from './CanvasJsunit.test.ets';
-import rotationGestureJsUnit from './general-properties/RotationGestureJsunit.test.ets';
-import textJsunit from './textJsunit.test.ets';
+import textJsunit from './TextJsunit.test.ets';
 import badgeJsunit from './BadgeJsunit.test.ets';
 import longPressGestureJsUnit from './LongPressGesture.test.ets';
 import buttonJsunit from './ButtonJsunit.test.ets';
@@ -89,7 +89,6 @@ export default function testsuite() {
   borderJsunit();
   flexJsunit();
   gridJsunit();
-  rotationGestureJsUnit();
   textJsunit();
   badgeJsunit();
   canvasJsunit();
