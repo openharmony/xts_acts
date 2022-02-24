@@ -104,7 +104,6 @@ struct TextStyle {
       } else if (eventData.data.fontSize) {
         this.fontSize = eventData.data.fontSize;
       } else if (eventData.data.fontWeight) {
-        console.log("gao---------" + eventData.data.fontWeight)
         this.fontWeight = eventData.data.fontWeight;
       } else if (eventData.data.fontFamily) {
         this.fontFamily = eventData.data.fontFamily;

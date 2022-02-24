@@ -43,7 +43,19 @@ import backgroundJsunit from './general-properties/BackgroundJsunit.test.ets';
 import borderJsunit from './general-properties/BorderJsunit.test.ets';
 import flexJsunit from './general-properties/FlexJsunit.test.ets';
 import gridJsunit from './GridJsunit.test.ets';
+import canvasJsunit from './CanvasJsunit.test.ets';
 import rotationGestureJsUnit from './general-properties/RotationGestureJsunit.test.ets';
+import textJsunit from './textJsunit.test.ets';
+import badgeJsunit from './BadgeJsunit.test.ets';
+import longPressGestureJsUnit from './LongPressGesture.test.ets';
+import buttonJsunit from './ButtonJsunit.test.ets';
+import responseRegionJsunit from './general-properties/ResponseRegionJsunit.test.ets';
+import panGestureJsunit from './general-properties/PanGestureJsunit.test.ets';
+import tabsJsunit from './TabsJsunit.test.ets';
+import qrCodeJsunit from './QrCodeJsunit.test.ets';
+import tapGesture from './TapGesture.test.ets';
+import progressJsunit from './ProgressJsunit.test.ets';
+import animateJsunit from './AnimateJsunit.test.ets';
 
 export default function testsuite() {
   gaugeJsunit();
@@ -78,4 +90,16 @@ export default function testsuite() {
   flexJsunit();
   gridJsunit();
   rotationGestureJsUnit();
+  textJsunit();
+  badgeJsunit();
+  canvasJsunit();
+  longPressGestureJsUnit();
+  buttonJsunit();
+  responseRegionJsunit();
+  tabsJsunit();
+  panGestureJsunit();
+  qrCodeJsunit();
+  tapGesture();
+  progressJsunit();
+  animateJsunit();
 }
