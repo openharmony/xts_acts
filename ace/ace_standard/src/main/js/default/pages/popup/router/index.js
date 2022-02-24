@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 
-import prompt from '@system.prompt';
+
+import prompt from '@system.prompt'
 
 var options = {
     duration: 1500,
@@ -84,174 +85,95 @@ var frames = [
 ];
 
 export default {
-    data: {
-        modeFlag: "half"
+    visibilitychange(e) {
+        prompt.showToast({
+            message: 'visibility change visibility: ' + e.visibility,
+            duration: 3000,
+        });
     },
-    // 样式
-    showPanel1() {
-        this.$element('simplePanel1').show()
+    hidepopup1() {
+        this.$element("popup1").hide()
     },
-    closePanel1() {
-        this.$element('simplePanel1').close()
+    hidepopup2() {
+        this.$element("popup2").hide()
     },
-    showPanel2() {
-        this.$element('simplePanel2').show()
+    hidepopup3() {
+        this.$element("popup3").hide()
     },
-    closePanel2() {
-        this.$element('simplePanel2').close()
+    hidepopup4() {
+        this.$element("popup4").hide()
     },
-    showPanel3() {
-        this.$element('simplePanel3').show()
+    hidepopup5() {
+        this.$element("popup5").hide()
     },
-    closePanel3() {
-        this.$element('simplePanel3').close()
+    hidepopup6() {
+        this.$element("popup6").hide()
     },
-    showPanel4() {
-        this.$element('simplePanel4').show()
+    hidepopup7() {
+        this.$element("popup7").hide()
     },
-    closePanel4() {
-        this.$element('simplePanel4').close()
+    hidepopuppro1() {
+        this.$element("prop1").hide()
     },
-    showPanel5() {
-        this.$element('simplePanel5').show()
+    hidepopuppro2() {
+        this.$element("prop2").hide()
     },
-    closePanel5() {
-        this.$element('simplePanel5').close()
+    hidepopuppro3() {
+        this.$element("prop3").hide()
     },
-    showPanel6() {
-        this.$element('simplePanel6').show()
+    hidepopuppro4() {
+        this.$element("prop4").hide()
     },
-    closePanel6() {
-        this.$element('simplePanel6').close()
+    hidepopuppro5() {
+        this.$element("prop5").hide()
     },
-    showPanel7() {
-        this.$element('simplePanel7').show()
+    hidepopuppro6() {
+        this.$element("prop6").hide()
     },
-    closePanel7() {
-        this.$element('simplePanel7').close()
+    hidepopuppro7() {
+        this.$element("prop7").hide()
     },
-    showPanel() {
-        this.$element('simplePanel').show()
+    hidepopuppro8() {
+        this.$element("prop8").hide()
     },
-    closePanel() {
-        this.$element('simplePanel').close()
+    hidepopuppro9() {
+        this.$element("prop9").hide()
     },
-    // 属性
-    showPanelPro1() {
-        this.$element('prop1').show()
+    hidepopuppro10() {
+        this.$element("prop10").hide()
     },
-    closePanelPro1() {
-        this.$element('prop1').close()
+    hidepopuppro11() {
+        this.$element("prop11").hide()
     },
-    showPanelPro2() {
-        this.$element('prop2').show()
+    hidepopupani1() {
+        this.$element("popupani1").hide()
     },
-    closePanelPro2() {
-        this.$element('prop2').close()
+    hidepopupani2() {
+        this.$element("popupani2").hide()
     },
-    showPanelPro3() {
-        this.$element('simplePanelPro3').show()
+    hidepopupgra1() {
+        this.$element("gradient1").hide()
     },
-    closePanelPro3() {
-        this.$element('simplePanelPro3').close()
+    hidepopupgra2() {
+        this.$element("gradient2").hide()
     },
-    showPanelPro4() {
-        this.$element('simplePanelPro4').show()
+    hidepopupacc1() {
+        this.$element("access1").hide()
     },
-    closePanelPro4() {
-        this.$element('simplePanelPro4').close()
+    hidepopupato1() {
+        this.$element("atomic1").hide()
     },
-    showPanelPro5() {
-        this.$element('simplePanelPro5').show()
+    hidepopupmul(){
+        this.$element("mul").hide()
     },
-    closePanelPro5() {
-        this.$element('simplePanelPro5').close()
-    },
-    showPanelPro6() {
-        this.$element('simplePanelPro6').show()
-    },
-    closePanelPro6() {
-        this.$element('simplePanelPro6').close()
-    },
-    //事件
-    showOne() {
-        this.$element('e1').show()
-    },
-    closeOne() {
-        this.$element('e1').close()
-    },
-    showTwo() {
-        this.$element('e2').show()
-    },
-    closeTwo() {
-        this.$element('e2').close()
-    },
-    showThree() {
-        this.$element('e3').show()
-    },
-    closeThree() {
-        this.$element('e3').close()
-    },
-    showFour() {
-        this.$element('e4').show()
-    },
-    closeFour() {
-        this.$element('e4').close()
-    },
-    // 渐变
-    showPanelA() {
-        this.$element('simplePanelA1').show()
-    },
-    closePanelA() {
-        this.$element('simplePanelA1').close()
-    },
-    showPanelB() {
-        this.$element('simplePanelB1').show()
-    },
-    closePanelB() {
-        this.$element('simplePanelB1').close()
-    },
-    showPanelC() {
-        this.$element('simplePanelC1').show()
-    },
-    closePanelC() {
-        this.$element('simplePanelC1').close()
-    },
-    showPanelD() {
-        this.$element('simplePanelD1').show()
-    },
-    closePanelD() {
-        this.$element('simplePanelD1').close()
-    },
-    // 动画
-    showPanelAni1() {
-        this.$element('simplePanelAni1').show()
-    },
-    closePanelAni1() {
-        this.$element('simplePanelAni1').close()
-    },
-    showPanelAni2() {
-        this.$element('simplePanelAni2').show()
-    },
-    closePanelAni2() {
-        this.$element('simplePanelAni2').close()
-    },
-    // 无障碍
-    showPanelNo() {
-        this.$element('simplePanelNo').show()
-    },
-    closePanelNo() {
-        this.$element('simplePanelNo').close()
-    },
-    // 多模输入
-    showPanelMore() {
-        this.$element('simplePanelMore').show()
-    },
-    closePanelMore() {
-        this.$element('simplePanelMore').close()
-    },
-    changeMode(e) {
-        this.modeFlag = e.mode
+    hidepopupe1(){
+        this.$element("event1").hide()
+        this.$element("event2").hide()
+        this.$element("event3").hide()
+        this.$element("event4").hide()
+        this.$element("func1").hide()
+        this.$element("func2").hide()
+        this.$element("func3").hide()
     },
     onShow(){
         // 通用属性
@@ -262,7 +184,64 @@ export default {
         prompt.showToast({
             message: 'prop1--' + name1 + '\nprop2--' + name2
         });
+
+        var styleValues = this.getStyleValues();
+        var propsValues = this.getPropValues();
+
+        globalThis.value = {
+            styleValues:styleValues,
+            propsValues:propsValues
+        }
     },
+
+    getStyleValues(){
+        var styleValue1 = this.$element("popup1").getInspector()
+        var styleValue2 = this.$element("popup2").getInspector()
+        var styleValue3 = this.$element("popup3").getInspector()
+        var styleValue4 = this.$element("popup4").getInspector()
+        var styleValue5 = this.$element("popup5").getInspector()
+        var styleValue6 = this.$element("popup6").getInspector()
+        var styleValue7 = this.$element("popup7").getInspector()
+
+        return {
+            style1:styleValue1,
+            style2:styleValue2,
+            style3:styleValue3,
+            style4:styleValue4,
+            style5:styleValue5,
+            style6:styleValue6,
+            style7:styleValue7
+        }
+    },
+
+    getPropValues(){
+        var propValue1 = this.$element("prop1").getInspector()
+        var propValue2 = this.$element("prop2").getInspector()
+        var propValue3 = this.$element("prop3").getInspector()
+        var propValue4 = this.$element("prop4").getInspector()
+        var propValue5 = this.$element("prop5").getInspector()
+        var propValue6 = this.$element("prop6").getInspector()
+        var propValue7 = this.$element("prop7").getInspector()
+        var propValue8 = this.$element("prop8").getInspector()
+        var propValue9 = this.$element("prop9").getInspector()
+        var propValue10 = this.$element("prop10").getInspector()
+        var propValue11 = this.$element("prop11").getInspector()
+
+        return {
+            prop1:propValue1,
+            prop2:propValue2,
+            prop3:propValue3,
+            prop4:propValue4,
+            prop5:propValue5,
+            prop6:propValue6,
+            prop7:propValue7,
+            prop8:propValue8,
+            prop9:propValue9,
+            prop10:propValue10,
+            prop11:propValue11,
+        }
+    },
+
 
     touchStart(event){
         var globalX = event.touches[0].globalX
@@ -548,7 +527,7 @@ export default {
     },
 
     functionTest1(event){
-        var function1 =  this.$element('function1');
+        var function1 =  this.$element('func1');
         function1.focus(true)
         var rect = function1.getBoundingClientRect();
         var width = rect.width;
@@ -563,7 +542,7 @@ export default {
     },
 
     functionTest2(event){
-        var function2 =  this.$element('function2');
+        var function2 =  this.$element('func2');
         let observer = function2.createIntersectionObserver({
             ratios: [0.2, 0], // number
         });
@@ -578,7 +557,7 @@ export default {
     },
 
     functionTest3(event){
-        var function3 =  this.$element('function3');
+        var function3 =  this.$element('func3');
         var animation = function3.animate(frames, options);
         animation.play()
         animation.onfinish = function(){
@@ -653,4 +632,12 @@ export default {
             message: 'reachBottom'
         });
     }
+
+
+
+
+
+
+
+
 }

@@ -13,8 +13,7 @@
  * limitations under the License.
  */
 
-
-import prompt from '@system.prompt'
+import prompt from '@system.prompt';
 
 var options = {
     duration: 1500,
@@ -85,96 +84,7 @@ var frames = [
 ];
 
 export default {
-    visibilitychange(e) {
-        prompt.showToast({
-            message: 'visibility change visibility: ' + e.visibility,
-            duration: 3000,
-        });
-    },
-    hidepopup1() {
-        this.$element("popup1").hide()
-    },
-    hidepopup2() {
-        this.$element("popup2").hide()
-    },
-    hidepopup3() {
-        this.$element("popup3").hide()
-    },
-    hidepopup4() {
-        this.$element("popup4").hide()
-    },
-    hidepopup5() {
-        this.$element("popup5").hide()
-    },
-    hidepopup6() {
-        this.$element("popup6").hide()
-    },
-    hidepopup7() {
-        this.$element("popup7").hide()
-    },
-    hidepopuppro1() {
-        this.$element("prop1").hide()
-    },
-    hidepopuppro2() {
-        this.$element("prop2").hide()
-    },
-    hidepopuppro3() {
-        this.$element("prop3").hide()
-    },
-    hidepopuppro4() {
-        this.$element("prop4").hide()
-    },
-    hidepopuppro5() {
-        this.$element("prop5").hide()
-    },
-    hidepopuppro6() {
-        this.$element("prop6").hide()
-    },
-    hidepopuppro7() {
-        this.$element("prop7").hide()
-    },
-    hidepopuppro8() {
-        this.$element("prop8").hide()
-    },
-    hidepopuppro9() {
-        this.$element("prop9").hide()
-    },
-    hidepopuppro10() {
-        this.$element("prop10").hide()
-    },
-    hidepopuppro11() {
-        this.$element("prop11").hide()
-    },
-    hidepopupani1() {
-        this.$element("popupani1").hide()
-    },
-    hidepopupani2() {
-        this.$element("popupani2").hide()
-    },
-    hidepopupgra1() {
-        this.$element("gradient1").hide()
-    },
-    hidepopupgra2() {
-        this.$element("gradient2").hide()
-    },
-    hidepopupacc1() {
-        this.$element("access1").hide()
-    },
-    hidepopupato1() {
-        this.$element("atomic1").hide()
-    },
-    hidepopupmul(){
-        this.$element("mul").hide()
-    },
-    hidepopupe1(){
-        this.$element("event1").hide()
-        this.$element("event2").hide()
-        this.$element("event3").hide()
-        this.$element("event4").hide()
-        this.$element("func1").hide()
-        this.$element("func2").hide()
-        this.$element("func3").hide()
-    },
+
     onShow(){
         // 通用属性
         var prop1 =  this.$element('prop1');
@@ -470,7 +380,7 @@ export default {
     },
 
     functionTest1(event){
-        var function1 =  this.$element('func1');
+        var function1 =  this.$element('function1');
         function1.focus(true)
         var rect = function1.getBoundingClientRect();
         var width = rect.width;
@@ -485,7 +395,7 @@ export default {
     },
 
     functionTest2(event){
-        var function2 =  this.$element('func2');
+        var function2 =  this.$element('function2');
         let observer = function2.createIntersectionObserver({
             ratios: [0.2, 0], // number
         });
@@ -500,7 +410,8 @@ export default {
     },
 
     functionTest3(event){
-        var function3 =  this.$element('func3');
+        var function3 =  this.$element('function3');
+
         var animation = function3.animate(frames, options);
         animation.play()
         animation.onfinish = function(){
@@ -574,13 +485,11 @@ export default {
         prompt.showToast({
             message: 'reachBottom'
         });
+    },
+
+    closePiece() {
+        prompt.showToast({
+            message: 'closePiece'
+        });
     }
-
-
-
-
-
-
-
-
 }

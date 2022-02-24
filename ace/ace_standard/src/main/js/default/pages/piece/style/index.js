@@ -13,32 +13,7 @@
  * limitations under the License.
  */
 
-/* xxx.css */
-.container {
-    flex-direction: column;
-    align-items: center;
-    background-color: #F1F3F5;
-    justify-content: center;
-}
+export default {
 
-.text1 {
-    word-spacing: 10px;
-    adapt-height: true;
-}
 
-.text2 {
-    width: 200px;
-    max-lines: 1;
-    text-overflow: ellipsis;
-    text-valign: middle;
-    line-height: 40px;
-    text-decoration: underline;
-    text-decoration-color: red;
-    text-indent: 20px;
-    white-space: pre;
-}
-
-.common {
-    color: #ff4400;
-    text-decoration: line-through;
 }

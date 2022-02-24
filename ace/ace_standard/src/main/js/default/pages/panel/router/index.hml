@@ -99,7 +99,8 @@
             <panel class="prop2" ref ="prop2" type="foldable"
                    disabled = "false" focusable ="false"
                    data-name ="prop2" click-effect="spring-large"
-                   dir ="ltr">
+                   dir ="ltr"
+                   id = "prop2">
                 <div class="btn-div">
                     <button type="capsule"
                             value="Close"

@@ -230,7 +230,7 @@
     overflow:scroll;
 }
 
-#prop1 {
+.prop1 {
     color: #ad4e2a;
     stroke-width: 10px;
     line-cap: square;
