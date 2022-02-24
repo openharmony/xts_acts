@@ -7,19 +7,32 @@
 		"shell-timeout": "60000"
     },
     "kits": [
-        {
-            "type": "PushKit",
-            "pre-push": [
-            ],
-            "push": [
-                "./resource/filemanagerment/fmsdir.sh ->/storage/media/100/local/files/"
-            ]
-        },
 		{
             "type": "ShellKit",
             "run-command": [
-                "chmod 777 /storage/media/100/local/files/fmsdir.sh",
-                "sh /storage/media/100/local/files/fmsdir.sh",
+                "cd /storage/media/100/local/files/",
+                "mkdir photo",
+                "mkdir document",
+                "mkdir video",
+                "mkdir audio",
+                "mkdir photo/weixin",
+                "touch photo/weixin/1.jpg",
+                "touch photo/weixin/2.jpg",
+                "touch photo/weixin/3.jpg",
+                "touch photo/weixin/1.mp3",
+                "touch photo/weixin/1.mp4",
+                "mkdir photo/taobao",
+                "touch photo/taobao/1.mp4",
+                "mkdir taobao",
+                "touch taobao/1.jpg",
+                "mkdir image",
+                "touch image/1.jpg",
+                "touch image/2.jpg",
+                "mkdir alarms",
+                "touch alarms/tree.mp3",
+                "mkdir wps",
+                "touch wps/news.pdf",
+                "touch wps/introduce.doc",
 				"killall com.ohos.medialibrary.MediaScannerAbilityA",
                 "aa start  -a MediaScannerAbility -b com.ohos.medialibrary.MediaScannerAbilityA",
 				"sleep 10",
