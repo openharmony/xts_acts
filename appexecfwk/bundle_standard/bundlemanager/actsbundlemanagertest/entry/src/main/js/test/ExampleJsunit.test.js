@@ -97,7 +97,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.compatibleVersion).assertEqual(5)
             expect(datainfo.targetVersion).assertEqual(5)
             expect(datainfo.isCompressNativeLibs).assertEqual(false)
-            for (var s = 0; s < datainfo.hapModuleInfo; s++) {
+            for (var s = 0; s < datainfo.hapModuleInfos; s++) {
                 expect(datainfo.moduleInfos[s].name).assertEqual("com.example.myapplication1")
                 expect(datainfo.moduleInfos[s].moduleName).assertEqual("entry")
             }
@@ -2426,8 +2426,7 @@ describe('ActsBundleManagerTest', function () {
         });
         async function getInfo() {
             var bundleOptions = {
-                userId: 100,
-                networkId: ""
+                userId: 100
             };
             var dataInfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, bundleOptions);
             expect(dataInfo.name).assertEqual(NAME1)
@@ -2450,7 +2449,7 @@ describe('ActsBundleManagerTest', function () {
             expect(dataInfo.compatibleVersion).assertEqual(5)
             expect(dataInfo.targetVersion).assertEqual(5)
             expect(dataInfo.isCompressNativeLibs).assertEqual(false)
-            for (var s = 0; s < dataInfo.hapModuleInfo; s++) {
+            for (var s = 0; s < dataInfo.hapModuleInfos; s++) {
                 expect(dataInfo.moduleInfos[s].name).assertEqual("com.example.myapplication1")
                 expect(dataInfo.moduleInfos[s].moduleName).assertEqual("entry")
             }
@@ -2495,8 +2494,7 @@ describe('ActsBundleManagerTest', function () {
         });
         async function getInfo() {
             var bundleOptions = {
-                userId: 100,
-                networkId: ""
+                userId: 100
             };
             demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, bundleOptions, (err, dataInfo) => {
                 expect(dataInfo.name).assertEqual(NAME1)
@@ -2519,7 +2517,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(dataInfo.compatibleVersion).assertEqual(5)
                 expect(dataInfo.targetVersion).assertEqual(5)
                 expect(dataInfo.isCompressNativeLibs).assertEqual(false)
-                for (var s = 0; s < dataInfo.hapModuleInfo; s++) {
+                for (var s = 0; s < dataInfo.hapModuleInfos; s++) {
                     expect(dataInfo.moduleInfos[s].name).assertEqual("com.example.myapplication1")
                     expect(dataInfo.moduleInfos[s].moduleName).assertEqual("entry")
                 }
@@ -2565,8 +2563,7 @@ describe('ActsBundleManagerTest', function () {
         });
         async function getInfo() {
             demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, {
-                userId: 1,
-                networkId: ""
+                userId: 1
             }).then(data => {
                 expect().assertFail();
             }).catch(err => {
@@ -2604,8 +2601,7 @@ describe('ActsBundleManagerTest', function () {
         });
         async function getInfo() {
             demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, {
-                userId: 1,
-                networkId: ""
+                userId: 1
             }, (err, dataInfo) => {
                 expect(err).assertEqual(1);
                 expect(dataInfo).assertEqual(undefined);
