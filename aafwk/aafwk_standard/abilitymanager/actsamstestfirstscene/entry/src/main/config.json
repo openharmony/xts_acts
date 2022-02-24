@@ -66,6 +66,10 @@
       {
         "name":"ohos.permission.LISTEN_BUNDLE_CHANGE",
         "reason":"need use ohos.permission.LISTEN_BUNDLE_CHANGE"
+      },
+      {
+        "name":"ohos.permission.CLEAN_BACKGROUND_PROCESSES",
+        "reason":"need use ohos.permission.CLEAN_BACKGROUND_PROCESSES"
       }
     ],
     "js": [

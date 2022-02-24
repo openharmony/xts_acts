@@ -92,6 +92,10 @@
       {
         "name":"ohos.permission.LISTEN_BUNDLE_CHANGE",
         "reason":"need use ohos.permission.LISTEN_BUNDLE_CHANGE"
+      },
+      {
+        "name":"ohos.permission.REQUIRE_FORM",
+        "reason":"need use ohos.permission.REQUIRE_FORM"
       }
     ],
     "js": [
