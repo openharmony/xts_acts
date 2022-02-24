@@ -4,7 +4,7 @@
         "type": "JSUnitTest",
         "test-timeout": "2000000",
         "package": "ohos.acts.storage.filemanager",
-		"shell-timeout": "60000"
+        "shell-timeout": "60000"
     },
     "kits": [
 		{
