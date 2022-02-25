@@ -3086,8 +3086,8 @@ describe('ActsRpcClientJsTest', function(){
     it("SUB_Softbus_IPC_Ashmem_1400",0,function(){
         console.log("---------------------start SUB_Softbus_IPC_Ashmem_1200---------------------------");
         try{
-            let map_size = 4096
-            let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", map_size)
+            let mapSize = 4096
+            let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", mapSize)
             console.log("SUB_Softbus_IPC_Ashmem_1400: ashmem " + ashmem);
 
             let resultMapRAndW = ashmem.mapReadAndWriteAshmem();
