@@ -45,7 +45,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-  */
+   */
   it("filemanager_test_get_root_async_000", 0, async function (done) {
     try {
       let fileInfos = await filemanager.getRoot();
@@ -86,7 +86,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-  */
+   */
   it("filemanager_test_get_root_async_001", 0, async function (done) {
     try {
       filemanager.getRoot((error, fileInfos) => {
@@ -108,7 +108,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-  */
+   */
    it("filemanager_test_get_root_async_002", 0, async function (done) {
      try {
        filemanager.getRoot("1")
@@ -133,7 +133,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-  */
+   */
   it("filemanager_test_list_file_async_000", 0, async function (done) {
     try {
       let path = IMAGE_ROOT;
@@ -163,7 +163,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-  */
+   */
   it("filemanager_test_list_file_async_001", 0, async function (done) {
     try {
       let path = IMAGE_ALBUM;
@@ -184,7 +184,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-  */
+   */
   it("filemanager_test_list_file_async_002", 0, async function (done) {
     try {
       let path = FILE_ROOT;
@@ -206,7 +206,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-  */
+   */
   it("filemanager_test_list_file_async_003", 0, async function (done) {
     try {
       let path = FILE_ROOT;
@@ -226,7 +226,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-  */
+   */
   it("filemanager_test_list_file_async_004", 0, async function (done) {
     try {
       await filemanager.listFile(" ", "file");
@@ -245,7 +245,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-  */
+   */
   it("filemanager_test_createfile_async_000", 0, async function (done) {
     try {
       let name = "create00" + new Date().getTime() + ".jpg";
@@ -269,7 +269,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-  */
+   */
   it("filemanager_test_createfile_async_001", 0, async function (done) {
     let name = "create00" + new Date().getTime() + ".txt";
     let path = IMAGE_ROOT;
@@ -288,7 +288,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-  */
+   */
   it("filemanager_test_createfile_async_002", 0, async function (done) {
     try {
       let name = "1.jpg";
@@ -314,7 +314,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-  */
+   */
   it("filemanager_test_createfile_async_003", 0, async function (done) {
     try {
       let name = "filemanager_test_createfile_async_003";
@@ -340,7 +340,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-  */
+   */
   it("filemanager_test_createfile_async_004", 0, async function (done) {
     try {
       filemanager.createFile()
@@ -364,7 +364,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-  */
+   */
   it("filemanager_test_createfile_async_005", 0, async function (done) {
     try {
       filemanager.createFile("", "", "")
@@ -388,7 +388,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-  */
+   */
   it("filemanager_test_createfile_async_006", 0, async function (done) {
     try {
       let name = "filemanager_test_createfile_async_006";
@@ -414,7 +414,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-  */
+   */
   it("filemanager_test_createfile_async_007", 0, async function (done) {
     try {
       filemanager.createFile("internal://cache/@#$&^", "filemanager_test_createfile_async_007")
@@ -439,7 +439,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-  */
+   */
   it("filemanager_test_createfile_async_008", 0, async function (done) {
     let name = "filemanager_test_createfile_async_008";
     try {
