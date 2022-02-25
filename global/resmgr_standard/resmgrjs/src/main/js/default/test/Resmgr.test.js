@@ -326,5 +326,20 @@ describe('resMgrTest', function () {
         done();
     })
 
+    /* *
+    * @tc.number SUB_GLOBAL_RESMGR_JS_1900
+    * @tc.name test release method
+    * @tc.desc get the release function
+    */
+    it('release_test_001', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.getString(0x1000000, (err, value) => {
+                expect(value !== null).assertTrue();
+            })
+            mgr.release();
+        })
+        done();
+    })
+
     console.log('*************end ResmgrTest*************');
 }) 
