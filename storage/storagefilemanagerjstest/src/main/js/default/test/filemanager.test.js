@@ -299,6 +299,7 @@ describe("filemanager_test", function () {
         expect(null).assertFail();
       }).catch(e => {
         console.log("filemanager_test_createfile_async_002 e " + e);
+        expect(e.message == "Operation not permitted").assertTrue();
       })
     } catch (error) {
       console.log("filemanager_test_createfile_async_002 for " + error);
@@ -322,12 +323,12 @@ describe("filemanager_test", function () {
         .then(uri => {
           console.log("filemanager_test_createfile_async_003 uri " + uri);
           expect(null).assertFail();
-        }).catch(e => {
-        console.log("filemanager_test_createfile_async_003 e " + e);
+        }).catch(error => {
+        console.log("filemanager_test_createfile_async_003 e " + error);
+        expect(error.message == "No such file or directory").assertTrue();
         })
     } catch (error) {
       console.log("filemanager_test_createfile_async_003 has failed for " + error);
-      expect(error.message == "No such file or directory").assertTrue();
     }
     done();
   });
@@ -352,6 +353,7 @@ describe("filemanager_test", function () {
         })
     } catch (error) {
       console.log("filemanager_test_createfile_async_004 has failed for " + error);
+      expect(error.toString().indexOf("Number of arguments unmatched") !=-1).assertTrue();
     }
     done();
   });
@@ -371,8 +373,9 @@ describe("filemanager_test", function () {
         .then(uri => {
           console.log("filemanager_test_createfile_async_005 uri " + uri);
           expect(null).assertFail();
-        }).catch(e => {
-          console.log("filemanager_test_createfile_async_005 e " + e);
+        }).catch(error => {
+          console.log("filemanager_test_createfile_async_005 e " + error);
+          expect(error.message == "No such file or directory").assertTrue();
        })
     } catch (error) {
       console.log("filemanager_test_createfile_async_005 has failed for " + error);
@@ -396,12 +399,12 @@ describe("filemanager_test", function () {
           .then(uri => {
             console.log("filemanager_test_createfile_async_006 uri " + uri);
             expect(null).assertFail();
-          }).catch(e => {
-            console.log("filemanager_test_createfile_async_006 e " + e);
+          }).catch(error => {
+            console.log("filemanager_test_createfile_async_006 e " + error);
+            expect(error.message == "No such file or directory").assertTrue();
           })
     } catch (error) {
       console.log("filemanager_test_createfile_async_006 has failed for " + error);
-      expect(error.message == "No such file or directory").assertTrue();
     }
     done();
   });
@@ -421,12 +424,12 @@ describe("filemanager_test", function () {
         .then(uri => {
           console.log("filemanager_test_createfile_async_007 uri " + uri);
           expect(null).assertFail();
-        }).catch(e => {
-          console.log("filemanager_test_createfile_async_007 e " + e);
+        }).catch(error => {
+          console.log("filemanager_test_createfile_async_007 e " + error);
+          expect(error.message == "No such file or directory").assertTrue();
         })
     } catch (error) {
       console.log("filemanager_test_createfile_async_007 has failed for " + error);
-      expect(error.message == "No such file or directory").assertTrue();
     }
     done();
   });
