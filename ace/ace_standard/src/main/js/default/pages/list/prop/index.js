@@ -50,7 +50,7 @@
          showPropTrue : null,
          showPropFalse : null,
          showPropNone : null ,
-         array:[1,2,3,4,5,6,7,8],
+         array:['#',1,2,3,4,5,6,7,8],
          scrollPageTrue:null,
          scrollPageFalse:null,
          scrollPageNone:null,
