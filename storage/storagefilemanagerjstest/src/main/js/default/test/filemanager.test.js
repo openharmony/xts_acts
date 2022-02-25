@@ -45,7 +45,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-   */
+  */
   it("filemanager_test_get_root_async_000", 0, async function (done) {
     try {
       let fileInfos = await filemanager.getRoot();
@@ -86,7 +86,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-   */
+  */
   it("filemanager_test_get_root_async_001", 0, async function (done) {
     try {
       filemanager.getRoot((error, fileInfos) => {
@@ -101,13 +101,13 @@ describe("filemanager_test", function () {
   });
 
   /**
-    * @tc.number SUB_DF_FILEMANAGER_GET_ROOT_0020
-    * @tc.name filemanager_test_get_root_async_002
-    * @tc.desc Test getRoot() interfaces, without any parameters, throw an exception.
-    * @tc.size MEDIUM
-    * @tc.type Function
-    * @tc.level Level 0
-    * @tc.require
+   * @tc.number SUB_DF_FILEMANAGER_GET_ROOT_0020
+   * @tc.name filemanager_test_get_root_async_002
+   * @tc.desc Test getRoot() interfaces, without any parameters, throw an exception.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
   */
    it("filemanager_test_get_root_async_002", 0, async function (done) {
      try {
@@ -126,14 +126,14 @@ describe("filemanager_test", function () {
    });
 
   /**
-    * @tc.number SUB_DF_FILEMANAGER_LIST_FILE_0000
-    * @tc.name filemanager_test_list_file_async_000
-    * @tc.desc Test listFile() interfaces，when the type parameters as the "image", return path of files information accordingly.
-    * @tc.size MEDIUM
-    * @tc.type Function
-    * @tc.level Level 0
-    * @tc.require
-    */
+   * @tc.number SUB_DF_FILEMANAGER_LIST_FILE_0000
+   * @tc.name filemanager_test_list_file_async_000
+   * @tc.desc Test listFile() interfaces，when the type parameters as the "image", return path of files information accordingly.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+  */
   it("filemanager_test_list_file_async_000", 0, async function (done) {
     try {
       let path = IMAGE_ROOT;
@@ -156,14 +156,14 @@ describe("filemanager_test", function () {
   });
 
   /**
-    * @tc.number SUB_DF_FILEMANAGER_LIST_FILE_0010
-    * @tc.name filemanager_test_list_file_async_001
-    * @tc.desc Test listFile() interfaces， when the type parameters as the "image", return path of files information accordingly.
-    * @tc.size MEDIUM
-    * @tc.type Function
-    * @tc.level Level 0
-    * @tc.require
-    */
+   * @tc.number SUB_DF_FILEMANAGER_LIST_FILE_0010
+   * @tc.name filemanager_test_list_file_async_001
+   * @tc.desc Test listFile() interfaces， when the type parameters as the "image", return path of files information accordingly.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+  */
   it("filemanager_test_list_file_async_001", 0, async function (done) {
     try {
       let path = IMAGE_ALBUM;
@@ -177,14 +177,14 @@ describe("filemanager_test", function () {
   });
 
   /**
-    * @tc.number SUB_DF_FILEMANAGER_LIST_FILE_0020
-    * @tc.name filemanager_test_list_file_async_002
-    * @tc.desc Test listFile() interfaces, when the type parameters as the "file", return path of files information accordingly.
-    * @tc.size MEDIUM
-    * @tc.type Function
-    * @tc.level Level 0
-    * @tc.require
-    */
+   * @tc.number SUB_DF_FILEMANAGER_LIST_FILE_0020
+   * @tc.name filemanager_test_list_file_async_002
+   * @tc.desc Test listFile() interfaces, when the type parameters as the "file", return path of files information accordingly.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+  */
   it("filemanager_test_list_file_async_002", 0, async function (done) {
     try {
       let path = FILE_ROOT;
@@ -199,14 +199,14 @@ describe("filemanager_test", function () {
   });
 
   /**
-    * @tc.number SUB_DF_FILEMANAGER_LIST_FILE_0030
-    * @tc.name filemanager_test_list_file_async_003
-    * @tc.desc Test listFile() interfaces, when the type parameter to an empty string, throw an exception.
-    * @tc.size MEDIUM
-    * @tc.type Function
-    * @tc.level Level 0
-    * @tc.require
-    */
+   * @tc.number SUB_DF_FILEMANAGER_LIST_FILE_0030
+   * @tc.name filemanager_test_list_file_async_003
+   * @tc.desc Test listFile() interfaces, when the type parameter to an empty string, throw an exception.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+  */
   it("filemanager_test_list_file_async_003", 0, async function (done) {
     try {
       let path = FILE_ROOT;
@@ -219,13 +219,13 @@ describe("filemanager_test", function () {
   });
 
   /**
-    * @tc.number SUB_DF_FILEMANAGER_LIST_FILE_0040
-    * @tc.name filemanager_test_list_file_async_004
-    * @tc.desc Test listFile() interfaces, when the path parameter to an empty string, throw an exception..
-    * @tc.size MEDIUM
-    * @tc.type Function
-    * @tc.level Level 0
-    * @tc.require
+   * @tc.number SUB_DF_FILEMANAGER_LIST_FILE_0040
+   * @tc.name filemanager_test_list_file_async_004
+   * @tc.desc Test listFile() interfaces, when the path parameter to an empty string, throw an exception..
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
   */
   it("filemanager_test_list_file_async_004", 0, async function (done) {
     try {
@@ -245,7 +245,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-   */
+  */
   it("filemanager_test_createfile_async_000", 0, async function (done) {
     try {
       let name = "create00" + new Date().getTime() + ".jpg";
@@ -269,7 +269,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-   */
+  */
   it("filemanager_test_createfile_async_001", 0, async function (done) {
     let name = "create00" + new Date().getTime() + ".txt";
     let path = IMAGE_ROOT;
@@ -288,7 +288,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-   */
+  */
   it("filemanager_test_createfile_async_002", 0, async function (done) {
     try {
       let name = "1.jpg";
@@ -314,7 +314,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-   */
+  */
   it("filemanager_test_createfile_async_003", 0, async function (done) {
     try {
       let name = "filemanager_test_createfile_async_003";
@@ -340,7 +340,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-   */
+  */
   it("filemanager_test_createfile_async_004", 0, async function (done) {
     try {
       filemanager.createFile()
@@ -364,7 +364,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-   */
+  */
   it("filemanager_test_createfile_async_005", 0, async function (done) {
     try {
       filemanager.createFile("", "", "")
@@ -388,7 +388,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-   */
+  */
   it("filemanager_test_createfile_async_006", 0, async function (done) {
     try {
       let name = "filemanager_test_createfile_async_006";
@@ -414,7 +414,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-   */
+  */
   it("filemanager_test_createfile_async_007", 0, async function (done) {
     try {
       filemanager.createFile("internal://cache/@#$&^", "filemanager_test_createfile_async_007")
