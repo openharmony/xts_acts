@@ -100,7 +100,7 @@ describe("filemanager_test", function () {
     done();
   });
 
-   /**
+  /**
     * @tc.number SUB_DF_FILEMANAGER_GET_ROOT_0020
     * @tc.name filemanager_test_get_root_async_002
     * @tc.desc Test getRoot() interfaces, without any parameters, throw an exception.
@@ -108,7 +108,7 @@ describe("filemanager_test", function () {
     * @tc.type Function
     * @tc.level Level 0
     * @tc.require
-    */
+  */
    it("filemanager_test_get_root_async_002", 0, async function (done) {
      try {
        filemanager.getRoot("1")
@@ -226,7 +226,7 @@ describe("filemanager_test", function () {
     * @tc.type Function
     * @tc.level Level 0
     * @tc.require
-    */
+  */
   it("filemanager_test_list_file_async_004", 0, async function (done) {
     try {
       await filemanager.listFile(" ", "file");
@@ -237,7 +237,7 @@ describe("filemanager_test", function () {
     done();
   });
 
-      /**
+  /**
    * @tc.number SUB_DF_FILEMANAGER_CREATEFILE_0000
    * @tc.name filemanager_test_createfile_async_000
    * @tc.desc Test createFile() interfaces promise way to create a file normally.
@@ -261,7 +261,7 @@ describe("filemanager_test", function () {
     done();
   });
 
-      /**
+  /**
    * @tc.number SUB_DF_FILEMANAGER_CREATEFILE_0010
    * @tc.name filemanager_test_createfile_async_001
    * @tc.desc Test createFile() interfaces callback way to create a file normally.
@@ -280,7 +280,7 @@ describe("filemanager_test", function () {
     done();
   });
 
-      /**
+  /**
    * @tc.number SUB_DF_FILEMANAGER_CREATEFILE_0020
    * @tc.name filemanager_test_createfile_async_002
    * @tc.desc Test createFile() interfaces to create an existing file, throw an exception.
@@ -431,7 +431,7 @@ describe("filemanager_test", function () {
     done();
   });
 
-   /**
+  /**
    * @tc.number SUB_DF_FILEMANAGER_CREATEFILE_0080
    * @tc.name filemanager_test_createfile_async_008
    * @tc.desc Test createFile() interfaces to create a file, lack of path parameters, throw an exception.
@@ -439,7 +439,7 @@ describe("filemanager_test", function () {
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-   */
+  */
   it("filemanager_test_createfile_async_008", 0, async function (done) {
     let name = "filemanager_test_createfile_async_008";
     try {
