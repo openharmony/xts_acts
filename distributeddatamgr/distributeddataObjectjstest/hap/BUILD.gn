@@ -10,21 +10,22 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 import("//test/xts/tools/build/suite.gni")
 
-group("distributeddatamgr") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "appdatamgrjstest/hap:appdatamgr_js_test",
-      "distributeddataObjectjstest/hap:distributeddataObject_js_test",
-      "distributeddatamgrjstest/hap:distributeddatamgr_js_test",
-    ]
-  } else {
-    deps = [
-      "appdatamgrtest/hap:appdatamgrfunctest_hap",
-      "distributeddatamgrtest/hap:distributeddatamgrfunctest_hap",
-      "searchtest/hap:searchfunctest_hap",
-    ]
-  }
+ohos_js_hap_suite("distributeddataObject_js_test") {
+  hap_profile = "./src/main/config.json"
+  deps = [
+    ":distributeddataObject_js_assets",
+    ":distributeddataObject_resources",
+  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsDistributedDataObjectJsTest"
+}
+ohos_js_assets("distributeddataObject_js_assets") {
+  source_dir = "./src/main/js/default"
+}
+ohos_resources("distributeddataObject_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }
