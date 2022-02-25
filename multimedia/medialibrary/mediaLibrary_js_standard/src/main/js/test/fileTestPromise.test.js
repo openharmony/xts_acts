@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,1104 +14,1451 @@
  */
 
 import mediaLibrary from '@ohos.multimedia.medialibrary';
-import featureAbility from '@ohos.ability.featureAbility'
+import featureAbility from '@ohos.ability.featureAbility';
+import fileio from '@ohos.fileio';
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
-let fileKeyObj = mediaLibrary.FileKey
-let type1 = mediaLibrary.MediaType.IMAGE
-let fileHasArgsfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + "= ?",
-    selectionArgs: [type1.toString()],
-}
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+let fileKeyObj = mediaLibrary.FileKey;
+let fileType = mediaLibrary.MediaType.FILE;
+let imageType = mediaLibrary.MediaType.IMAGE;
+let videoType = mediaLibrary.MediaType.VIDEO;
+let audioType = mediaLibrary.MediaType.AUDIO;
 
-let fileNoArgsfetchOp = {
-    selections: "",
-    selectionArgs: [],
-}
-let fileDeviceArgsfetchOp = {
-    selections: "",
-    selectionArgs: [],
-    networdId: "0",
-}
+let imagesfetchOp = {
+    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs: [imageType.toString()],
+};
+let videosfetchOp = {
+    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs: [videoType.toString()],
+};
+let audiosfetchOp = {
+    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs: [audioType.toString()],
+};
+let filesfetchOp = {
+    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs: [fileType.toString()],
+};
 
+function checkAssetAttr(done, attr, testNum, asset, checkType) {
+    if (checkType && asset[attr] != checkType) {
+        console.info(`MediaLibraryTest : ASSET_PROMISE getFileAssets ${testNum} failed`);
+        expect(false).assertTrue();
+        done();
+    } else if (asset[attr] == undefined) {
+        console.info(`MediaLibraryTest : ASSET_PROMISE getFileAssets ${testNum} failed`);
+        expect(false).assertTrue();
+        done();
+    }
+}
 describe('file.promise.test.js', function () {
-    var asset;
-    var assetMove;
-    var assetMovePromise;
     var context = featureAbility.getContext();
     console.info('MediaLibraryTest : getMediaLibrary IN');
     var media = mediaLibrary.getMediaLibrary(context);
     console.info('MediaLibraryTest : getMediaLibrary OUT');
-    beforeAll(function () {
-        console.info('File Promise MediaLibraryTest: beforeAll ： Prerequisites at the test suite level, which are executed before the test suite is executed.');
-    })
+    beforeAll(function () {});
+    beforeEach(function () {});
+    afterEach(function () {});
+    afterAll(function () {});
 
-    beforeEach(function () {
-        console.info('File Promise MediaLibraryTest: beforeEach：Prerequisites at the test case level, which are executed before each test case is executed.');
-    })
-    afterEach(function () {
-        console.info('File Promise MediaLibraryTest: afterEach： Test case-level clearance conditions, which are executed after each test case is executed.');
-    })
-    afterAll(function () {
-        console.info('File Promise MediaLibraryTest: afterAll：  Test suite-level cleanup condition, which is executed after the test suite is executed');
-    })
+    async function copyFile(fd1, fd2) {
+        let stat = await fileio.fstat(fd1);
+        let buf = new ArrayBuffer(stat.size);
+        await fileio.read(fd1, buf);
+        await fileio.write(fd2, buf);
+    }
 
+    // ------------------------------- image type start ----------------------------
     /**
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001
-     * @tc.name      : Create an asset in predefined path
-     * @tc.desc      : Create an asset in predefined path
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_01
+     * @tc.name      : createAsset
+     * @tc.desc      : Insert two database records, read a unique identifier, expectations are not equal
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-
     it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_01', 0, async function (done) {
-        console.info('MediaLibraryTest : getMediaLibrary IN');
-        var media = mediaLibrary.getMediaLibrary(context);
-        console.info('MediaLibraryTest : getMediaLibrary OUT');
-        console.info('MediaLibraryTest : Delete begin');
-        let fetchFileResult = await media.getFileAssets(fileNoArgsfetchOp);
-        let assetList = await fetchFileResult.getAllObject();
-        assetList.forEach(getAllObjectInfoDelete);
-        console.info('MediaLibraryTest : Delete end');
-        let mediaType = mediaLibrary.MediaType.IMAGE;
-        let path = "Pictures/";
-        let pathMove = "Pictures/Move/";
-        let pathMovePromise = "Pictures/Move/Promise/";
-        asset = await media.createAsset(mediaType, "image01.jpg", path);
-        assetMove = await media.createAsset(mediaType, "image01Move.jpg", pathMove);
-        assetMovePromise = await media.createAsset(mediaType, "image01MovePromise.jpg", pathMovePromise);
-        console.info('MediaLibraryTest : ASSET_PROMISE asset.displayName = ' + asset.displayName);
-        console.info('MediaLibraryTest : ASSET_PROMISE asset.title = ' + asset.title);
-        console.info('MediaLibraryTest : ASSET_PROMISE assetMove.displayName = ' + assetMove.displayName);
-        let relativePath = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE);
-        console.info('MediaLibraryTest : ASSET_PROMISE relativePath = ' + relativePath);
-        done();
+        try {
+            const path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE);
+            const fileAssets = await media.getFileAssets(imagesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+            const asset1 = dataList[0];
+            const creatAsset1 = await media.createAsset(imageType, 'image01.jpg', path);
+            const fd1 = await asset1.open('rw');
+            const creatAssetFd1 = await creatAsset1.open('rw');
+            await copyFile(fd1, creatAssetFd1);
+            await creatAsset1.close(creatAssetFd1);
+            await asset1.close(fd1);
+
+            const asset2 = dataList[1];
+            const creatAsset2 = await media.createAsset(imageType, 'image02.jpg', path);
+            const fd2 = await asset2.open('rw');
+            const creatAssetFd2 = await creatAsset2.open('rw');
+            await copyFile(fd2, creatAssetFd2);
+            await creatAsset2.close(creatAssetFd2);
+            await asset2.close(fd2);
+
+            if (creatAsset1.id != creatAsset2.id) {
+                console.info('MediaLibraryTest : ASSET_PROMISE createAsset 001_01 passed');
+                expect(true).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest : ASSET_PROMISE createAsset 001_01 failed');
+                expect(false).assertTrue();
+                done();
+            }
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 001_01 failed, message = ' + error);
+            expect(false).assertTrue();
+            done();
+        }
     });
 
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_02
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file displayName and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_02', 0, async function (done) {
         try {
-            let mediaType = mediaLibrary.MediaType.VIDEO;
-            let path = "Movies/";
-            var asset02 = await media.createAsset(mediaType, "video01.avi", path);
-            console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_02 asset.displayName = ' +
-                         asset02.displayName);
+            const fileAssets = await media.getFileAssets(imagesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'displayName', '001_02', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'displayName', '001_02', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'displayName', '001_02', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_02 passed');
+            expect(true).assertTrue();
+            done();
         } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_02 fail, message = ' + error);
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_02 failed, message = ' + error);
         }
-        done();
     });
 
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_03
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file relativePath  and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_03', 0, async function (done) {
         try {
-            let mediaType = mediaLibrary.MediaType.VIDEO;
-            let path = "";
-            var asset03 = await media.createAsset(mediaType, "video03.avi", path);
-            console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_03 asset.displayName = ' +
-                         asset03.displayName);
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_03 fail, message = ' + error);
+            const fileAssets = await media.getFileAssets(imagesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'relativePath', '001_03', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'relativePath', '001_03', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'relativePath', '001_03', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_03 passed');
             expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_03 failed, message = ' + error);
         }
-        done();
     });
 
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_04
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file size and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_04', 0, async function (done) {
         try {
-            let mediaType;
-            let path = "Movies/";
-            var asset04 = await media.createAsset(mediaType, "video04.avi", path);
-            console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_04 asset.displayName = ' +
-                         asset04.displayName);
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_04 fail, message = ' + error);
+            const fileAssets = await media.getFileAssets(imagesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'size', '001_04', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'size', '001_04', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'size', '001_04', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_04 passed');
             expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_04 failed, message = ' + error);
         }
-        done();
     });
 
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_05
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file dateAdded and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_05', 0, async function (done) {
         try {
-            let mediaType;
-            let path;
-            var asset05 = await media.createAsset(mediaType, "video05.avi", path);
-            console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_05 asset.displayName = ' +
-                         asset05.displayName);
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE create asset 001_05 fail, message = ' + error);
+            const fileAssets = await media.getFileAssets(imagesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'dateAdded', '001_05', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'dateAdded', '001_05', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'dateAdded', '001_05', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_05 passed');
             expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_05 failed, message = ' + error);
         }
-        done();
     });
 
     /**
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFY_ASSET_PROMISE_002
-     * @tc.name      : Modify asset
-     * @tc.desc      : Modify asset
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_07
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file dateModified and validation is not undefined
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-
-    it('SUB_MEDIA_MEDIALIBRARY_MODIFY_ASSET_PROMISE_002_01', 0, async function (done) {
-        try {
-            asset.title = "image03";
-            await asset.commitModify();
-            console.info('MediaLibraryTest : ASSET_PROMISE modify asset 002_01 success');
-            expect(true).assertTrue();
-            done();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE modify asset 002_01 fail, message = ' + error);
-            expect(false).assertTrue();
-        }
-        done();
-    });
-    it('SUB_MEDIA_MEDIALIBRARY_MODIFY_ASSET_PROMISE_002_02', 0, async function (done) {
-        try {
-            asset.relativePath = "Pictures/Move/";
-            await asset.commitModify();
-            console.info('MediaLibraryTest : ASSET_PROMISE modify asset 002_02 success');
-            expect(true).assertTrue();
-            done();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE modify asset 002_02 fail, message = ' + error);
-            expect(false).assertTrue();
-        }
-        done();
-    });
-    it('SUB_MEDIA_MEDIALIBRARY_MODIFY_ASSET_PROMISE_002_03', 0, async function (done) {
-        try {
-            asset.displayName = "image02.jpg"
-            await asset.commitModify();
-            console.info('MediaLibraryTest : ASSET_PROMISE modify asset 002_03 success');
-            expect(true).assertTrue();
-            done();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE modify asset 002_03 fail, message = ' + error);
-            expect(false).assertTrue();
-        }
-        done();
-    });
-    it('SUB_MEDIA_MEDIALIBRARY_MODIFY_ASSET_PROMISE_002_04', 0, async function (done) {
-        try {
-            asset.orientation = 100;
-            await asset.commitModify();
-            console.info('MediaLibraryTest : ASSET_PROMISE modify asset 002_04 success');
-            expect(true).assertTrue();
-            done();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE modify asset 002_04 fail, message = ' + error);
-            expect(false).assertTrue();
-        }
-        done();
-    });
-    it('SUB_MEDIA_MEDIALIBRARY_MODIFY_ASSET_PROMISE_002_05', 0, async function (done) {
-        try {
-            asset.title = "image04";
-            asset.relativePath = "Pictures/Move/Promise/";
-            asset.displayName = "image03.jpg"
-            asset.orientation = 200;
-            await asset.commitModify();
-            console.info('MediaLibraryTest : ASSET_PROMISE modify asset 002_05 success');
-            expect(true).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE modify asset 002_05 fail, message = ' + error);
-            expect(false).assertTrue();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_MODIFY_ASSET_PROMISE_002_06', 0, async function (done) {
-        try {
-            asset.title = "image04?*&@";
-            await asset.commitModify();
-            console.info('MediaLibraryTest : ASSET_PROMISE modify asset 002_06 success');
-            expect(false).assertTrue();
-            done();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE modify asset 002_06 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_MODIFY_ASSET_PROMISE_002_07', 0, async function (done) {
-        try {
-            asset.displayName = "image04?*&.jpg";
-            await asset.commitModify();
-            console.info('MediaLibraryTest : ASSET_PROMISE modify asset 002_07 success');
-            expect(false).assertTrue();
-            done();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE modify asset 002_07 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_MODIFY_ASSET_PROMISE_002_08', 0, async function (done) {
-        try {
-            var title = "i";
-            for (var i = 0; i < 120; i++) {
-                title += "i";
-            }
-            asset.title = title;
-            await asset.commitModify();
-            console.info('MediaLibraryTest : ASSET_PROMISE modify asset 002_08 success');
-            expect(false).assertTrue();
-            done();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE modify asset 002_08 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        done();
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GET_ASSET_PROMISE_003
-     * @tc.name      : Get assetList By NoArgsfetchOp
-     * @tc.desc      : Get assetList By NoArgsfetchOp
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-
-    it('SUB_MEDIA_MEDIALIBRARY_GET_ASSET_PROMISE_003_01', 0, async function (done) {
-        try {
-            let fetchFileResult = await media.getFileAssets(fileDeviceArgsfetchOp);
-            let assetList = await fetchFileResult.getAllObject();
-            assetList.forEach(getAllObjectInfo);
-            console.info('MediaLibraryTest : ASSET_PROMISE get asset 003_01 success');
-            expect(true).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE get asset 003_01 fail, message = ' + error);
-            expect(false).assertTrue();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_GET_ASSET_PROMISE_003_02', 0, async function (done) {
-        try {
-            let fetchFileResult = await media.getFileAssets();
-            console.info('MediaLibraryTest : ASSET_PROMISE get asset 003_02 success');
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE get asset 003_02 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        done();
-    });
-    
-    /**
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GET_ASSET_PROMISE_004
-     * @tc.name      : Get assetList By HasArgsfetchOp
-     * @tc.desc      : Get assetList By HasArgsfetchOp
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-     
-    it('SUB_MEDIA_MEDIALIBRARY_GET_ASSET_PROMISE_004_01', 0, async function (done) {
-        try {
-            let fetchFileResult = await media.getFileAssets(fileHasArgsfetchOp);
-            let assetList = await fetchFileResult.getAllObject();
-            assetList.forEach(getAllObjectInfo);
-            console.info('MediaLibraryTest : ASSET_PROMISE get asset 004_01 success');
-            expect(true).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE get asset 004_01 fail, message = ' + error);
-            expect(false).assertTrue();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_GET_ASSET_PROMISE_004_02', 0, async function (done) {
-        let type2 = mediaLibrary.MediaType.VIDEO
-        let fileHasArgsfetchOp2 = {
-            selections: fileKeyObj.MEDIA_TYPE + "= ?",
-            selectionArgs: [type2.toString()],
-        }
-        try {
-            let fetchFileResult = await media.getFileAssets(fileHasArgsfetchOp2);
-            let assetList = await fetchFileResult.getAllObject();
-            assetList.forEach(getAllObjectInfo);
-            console.info('MediaLibraryTest : ASSET_PROMISE get asset 004_02 success');
-            expect(true).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE get asset 004_02 fail, message = ' + error);
-            expect(false).assertTrue();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_GET_ASSET_PROMISE_004_03', 0, async function (done) {
-        let fileHasArgsfetchOp3 = {
-            selections: fileKeyObj.MEDIA_TYPE + "= ?",
-            selectionArgs: ["666"],
-        }
-        try {
-            let fetchFileResult = await media.getFileAssets(fileHasArgsfetchOp3);
-            let assetList = await fetchFileResult.getAllObject();
-            assetList.forEach(getAllObjectInfo);
-            console.info('MediaLibraryTest : ASSET_PROMISE get asset 004_03 success');
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE get asset 004_03 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_GET_ASSET_PROMISE_004_04', 0, async function (done) {
-        let type4 = mediaLibrary.MediaType.VIDEO
-        let fileHasArgsfetchOp4 = {
-            selections: "666" + "= ?",
-            selectionArgs: [type4.toString()],
-        }
-        try {
-            let fetchFileResult = await media.getFileAssets(fileHasArgsfetchOp4);
-            let assetList = await fetchFileResult.getAllObject();
-            assetList.forEach(getAllObjectInfo);
-            console.info('MediaLibraryTest : ASSET_PROMISE get asset 004_04 success');
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE get asset 004_04 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_GET_ASSET_PROMISE_004_05', 0, async function (done) {
-        let fileHasArgsfetchOp5 = {
-            selections: "666" + "= ?",
-            selectionArgs: ["666"],
-        }
-        try {
-            let fetchFileResult = await media.getFileAssets(fileHasArgsfetchOp5);
-            let assetList = await fetchFileResult.getAllObject();
-            assetList.forEach(getAllObjectInfo);
-            console.info('MediaLibraryTest : ASSET_PROMISE get asset 004_05 success');
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE get asset 004_05 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        done();
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005
-     * @tc.name      : Open and Close asset
-     * @tc.desc      : Open and Close asset
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_01', 0, async function (done) {
-        var fd;
-        try {
-            fd = await asset.open('Rw');
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_01 success, fd = ' + fd);
-            expect(true).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_01 fail, message = ' + error);
-            expect(false).assertTrue();
-        }
-        try {
-            asset.close(fd);
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_01 success');
-            expect(true).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_01 fail, message = ' + error);
-            expect(false).assertTrue();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_02', 0, async function (done) {
-        var fd;
-        try {
-            fd = await asset.open('w');
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_02 success, fd = ' + fd);
-            expect(true).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_02 fail, message = ' + error);
-            expect(false).assertTrue();
-        }
-        try {
-            asset.close(fd);
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_02 success');
-            expect(true).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_02 fail, message = ' + error);
-            expect(false).assertTrue();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_03', 0, async function (done) {
-        var fd;
-        try {
-            fd = await asset.open(0.666);
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_03 success, fd = ' + fd);
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_03 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        try {
-            asset.close(fd);
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_03 success');
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_03 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_04', 0, async function (done) {
-        var fd;
-        try {
-            fd = await asset.open();
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_04 success, fd = ' + fd);
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_04 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        try {
-            asset.close(fd);
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_04 success');
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_04 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_05', 0, async function (done) {
-        var fd;
-        try {
-            fd = await asset.open('');
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_05 success, fd = ' + fd);
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_05 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        try {
-            asset.close(fd);
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_05 success');
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_05 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_06', 0, async function (done) {
-        var fd;
-        try {
-            fd = await asset.open('Rw');
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_06 success, fd = ' + fd);
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_06 fail, message = ' + error);
-        }
-        try {
-            asset.close(-1);
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_06 success');
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_06 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_07', 0, async function (done) {
-        var fd;
-        try {
-            fd = await asset.open('Rw');
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_07 success, fd = ' + fd);
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_005_0705 fail, message = ' + error);
-        }
-        try {
-            asset.close(0);
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_07 success');
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_07 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_08', 0, async function (done) {
-        var fd;
-        try {
-            fd = await asset.open('Rw');
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_08 success, fd = ' + fd);
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_08 fail, message = ' + error);
-        }
-        try {
-            asset.close("666");
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_08 success');
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_08 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_09', 0, async function (done) {
-        var fd;
-        try {
-            fd = await asset.open('Rw');
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_09 success, fd = ' + fd);
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE open 005_09 fail, message = ' + error);
-        }
-        try {
-            asset.close();
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_09 success');
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 005_09 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        done();
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FAV_AND_TRA_ASSET_PROMISE_006
-     * @tc.name      : Favourite and Trash 
-     * @tc.desc      : Favourite and Trash
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-
-    it('SUB_MEDIA_MEDIALIBRARY_FAV_AND_TRA_ASSET_PROMISE_006', 0, async function (done) {
-        let isDirectory = await asset.isDirectory();
-        let isFavorite = await asset.isFavorite();
-        let isTrash = await asset.isTrash();
-        console.info('MediaLibraryTest : ASSET_PROMISE isDirectory = ' + isDirectory);
-        console.info('MediaLibraryTest : ASSET_PROMISE isFavorite = ' + isFavorite);
-        console.info('MediaLibraryTest : ASSET_PROMISE Trash = ' + isTrash);
-        await asset.trash(true);
-        console.info('MediaLibraryTest : ASSET_PROMISE favorite trash');
-        await asset.favorite(true);
-        console.info('MediaLibraryTest : ASSET_PROMISE favorite success');
-        let isFavoriteChange = await asset.isFavorite();
-        console.info('MediaLibraryTest : ASSET_PROMISE isFavoriteChange = ' + isFavoriteChange);
-        let isTrashChange = await asset.isTrash();
-        console.info('MediaLibraryTest : ASSET_PROMISE isTrashChange = ' + isTrashChange);
-        done();
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_007
-     * @tc.name      : Favourite
-     * @tc.desc      : Favourite
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-
-    it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_007_01', 0, async function (done) {
-        try {
-            await asset.favorite(true);
-            console.info('MediaLibraryTest : ASSET_PROMISE favorite 007_03 success');
-            expect(true).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 007_03 fail, message = ' + error);
-            expect(false).assertTrue();
-        }
-        let isFavoriteChange = await asset.isFavorite();
-        console.info('MediaLibraryTest : ASSET_PROMISE isFavoriteChange 007_03 = ' + isFavoriteChange);
-        done();
-    });
-    it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_007_02', 0, async function (done) {
-        try {
-            await asset.favorite(false);
-            console.info('MediaLibraryTest : ASSET_PROMISE favorite 007_02 success');
-            expect(true).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 007_02 fail, message = ' + error);
-            expect(false).assertTrue();
-        }
-        let isFavoriteChange = await asset.isFavorite();
-        console.info('MediaLibraryTest : ASSET_PROMISE isFavoriteChange 007_02 = ' + isFavoriteChange);
-        done();
-    });
-    it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_007_03', 0, async function (done) {
-        try {
-            await asset.favorite(666);
-            console.info('MediaLibraryTest : ASSET_PROMISE favorite 007_03 success');
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 007_03 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        let isFavoriteChange = await asset.isFavorite();
-        console.info('MediaLibraryTest : ASSET_PROMISE isFavoriteChange 007_03 = ' + isFavoriteChange);
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_007_04', 0, async function (done) {
-        try {
-            await asset.favorite("666");
-            console.info('MediaLibraryTest : ASSET_PROMISE favorite 007_04 success');
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 007_04 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        let isFavoriteChange = await asset.isFavorite();
-        console.info('MediaLibraryTest : ASSET_PROMISE isFavoriteChange 007_04 = ' + isFavoriteChange);
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_007_05', 0, async function (done) {
-        try {
-            await asset.favorite(0.666);
-            console.info('MediaLibraryTest : ASSET_PROMISE favorite 007_05 success');
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 007_05 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        let isFavoriteChange = await asset.isFavorite();
-        console.info('MediaLibraryTest : ASSET_PROMISE isFavoriteChange 007_05 = ' + isFavoriteChange);
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_007_06', 0, async function (done) {
-        try {
-            await asset.favorite();
-            console.info('MediaLibraryTest : ASSET_PROMISE favorite 007_06 success');
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE close 007_06 fail, message = ' + error);
-            expect(true).assertTrue();
-        }
-        let isFavoriteChange = await asset.isFavorite();
-        console.info('MediaLibraryTest : ASSET_PROMISE isFavoriteChange 007_06 = ' + isFavoriteChange);
-        done();
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ISFAV_ASSET_PROMISE_008
-     * @tc.name      : Is Favourite
-     * @tc.desc      : Is Favourite
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-
-    it('SUB_MEDIA_MEDIALIBRARY_ISFAV_ASSET_PROMISE_008_01', 0, async function (done) {
-        try {
-            let isFavorite = await asset.isFavorite();
-            console.info('MediaLibraryTest : ASSET_PROMISE isFavorite = ' + isFavorite);
-            expect(true).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE isFavorite fail, message = ' + error);
-            expect(false).assertTrue();
-            done();
-        }
-        done();
-    });
-    
-    /**
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_TRA_ASSET_PROMISE_009
-     * @tc.name      : Trash 
-     * @tc.desc      : Trash
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-
-    it('SUB_MEDIA_MEDIALIBRARY_TRA_ASSET_PROMISE_009_01', 0, async function (done) {
-        try {
-            await asset.trash(true);
-            console.info('MediaLibraryTest : ASSET_PROMISE trash 009_01');
-            expect(true).assertTrue();
-        } catch (trashError) {
-            console.info('MediaLibraryTest : ASSET_PROMISE trash 009_01 fail ,message = ', trashError);
-            expect(false).assertTrue();
-            done();
-        }
-        try {
-            let isTrashChange = await asset.isTrash();
-            console.info('MediaLibraryTest : ASSET_PROMISE isTrashChange 009_01 = ' + isTrashChange);
-            expect(true).assertTrue();
-        } catch (isTrashChangeError) {
-            console.info('MediaLibraryTest : ASSET_PROMISE isTrashChange 009_01 fail, message = ' + isTrashChangeError);
-            expect(false).assertTrue();
-            done();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_TRA_ASSET_PROMISE_009_02', 0, async function (done) {
-        try {
-            await asset.trash(false);
-            console.info('MediaLibraryTest : ASSET_PROMISE trash 009_02');
-            expect(true).assertTrue();
-        } catch (trashError) {
-            console.info('MediaLibraryTest : ASSET_PROMISE trash 009_02 fail ,message = ', trashError);
-            expect(false).assertTrue();
-            done();
-        }
-        try {
-            let isTrashChange = await asset.isTrash();
-            console.info('MediaLibraryTest : ASSET_PROMISE isTrashChange 009_02 = ' + isTrashChange);
-            expect(true).assertTrue();
-        } catch (isTrashChangeError) {
-            console.info('MediaLibraryTest : ASSET_PROMISE isTrashChange 009_02 fail ,message = ' + isTrashChangeError);
-            expect(false).assertTrue();
-            done();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_TRA_ASSET_PROMISE_009_03', 0, async function (done) {
-        try {
-            await asset.trash(666);
-            console.info('MediaLibraryTest : ASSET_PROMISE trash 009_03');
-            expect(false).assertTrue();
-        } catch (trashError) {
-            console.info('MediaLibraryTest : ASSET_PROMISE trash 009_03 fail ,message = ' + trashError);
-            expect(true).assertTrue();
-            done();
-        }
-        try {
-            let isTrashChange = await asset.isTrash();
-            console.info('MediaLibraryTest : ASSET_PROMISE isTrashChange 009_03 = ' + isTrashChange);
-            expect(true).assertTrue();
-        } catch (isTrashChangeError) {
-            console.info('MediaLibraryTest : ASSET_PROMISE isTrashChange 009_03 fail ,message = ' + isTrashChangeError);
-            expect(false).assertTrue();
-            done();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_TRA_ASSET_PROMISE_009_04', 0, async function (done) {
-        try {
-            await asset.trash("666");
-            console.info('MediaLibraryTest : ASSET_PROMISE trash 009_04');
-            expect(false).assertTrue();
-        } catch (trashError) {
-            console.info('MediaLibraryTest : ASSET_PROMISE trash 009_04 fail ,message = ' + trashError);
-            expect(true).assertTrue();
-            done();
-        }
-        try {
-            let isTrashChange = await asset.isTrash();
-            console.info('MediaLibraryTest : ASSET_PROMISE isTrashChange 009_04 = ' + isTrashChange);
-            expect(true).assertTrue();
-        } catch (isTrashChangeError) {
-            console.info('MediaLibraryTest : ASSET_PROMISE isTrashChange 009_04 fail ,message = ' + isTrashChangeError);
-            expect(false).assertTrue();
-            done();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_TRA_ASSET_PROMISE_009_05', 0, async function (done) {
-        try {
-            await asset.trash(0.666);
-            console.info('MediaLibraryTest : ASSET_PROMISE trash 009_05');
-            expect(false).assertTrue();
-        } catch (trashError) {
-            console.info('MediaLibraryTest : ASSET_PROMISE trash 009_05 fail ,message = ' + trashError);
-            expect(true).assertTrue();
-            done();
-        }
-        try {
-            let isTrashChange = await asset.isTrash();
-            console.info('MediaLibraryTest : ASSET_PROMISE isTrashChange 009_05 = ' + isTrashChange);
-            expect(true).assertTrue();
-        } catch (isTrashChangeError) {
-            console.info('MediaLibraryTest : ASSET_PROMISE isTrashChange 009_05 fail ,message = ' + isTrashChangeError);
-            expect(false).assertTrue();
-            done();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_TRA_ASSET_PROMISE_009_06', 0, async function (done) {
-        try {
-            await asset.trash();
-            console.info('MediaLibraryTest : ASSET_PROMISE trash 009_06');
-            expect(false).assertTrue();
-        } catch (trashError) {
-            console.info('MediaLibraryTest : ASSET_PROMISE trash 009_06 fail ,message = ' + trashError);
-            expect(true).assertTrue();
-            done();
-        }
-        try {
-            let isTrashChange = await asset.isTrash();
-            console.info('MediaLibraryTest : ASSET_PROMISE isTrashChange 009_06 = ' + isTrashChange);
-            expect(true).assertTrue();
-        } catch (isTrashChangeError) {
-            console.info('MediaLibraryTest : ASSET_PROMISE isTrashChange 009_06 fail ,message = ' + isTrashChangeError);
-            expect(false).assertTrue();
-            done();
-        }
-        done();
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ISTRASH_ASSET_PROMISE_0010
-     * @tc.name      : Is trash
-     * @tc.desc      : Is trash
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-
-    it('SUB_MEDIA_MEDIALIBRARY_ISTRASH_ASSET_PROMISE_0010_01', 0, async function (done) {
-        try {
-            let isTrash = await asset.isTrash();
-            console.info('MediaLibraryTest : ASSET_PROMISE Trash 0010_01 = ' + isTrash);
-            expect(true).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE isTrash 0010_01 fail, message = ' + error);
-            expect(false).assertTrue();
-            done();
-        }
-        done();
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETPUBLICDIRECTORY_PROMISE 0011
-     * @tc.name      : getPublicDirectory
-     * @tc.desc      : getPublicDirectory
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-
-    it('SUB_MEDIA_MEDIALIBRARY_GETPUBLICDIRECTORY_PROMISE 0011_01', 0, async function (done) {
-        try {
-            let relativePath = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE);
-            console.info('MediaLibraryTest : ASSET_PROMISE getPublicDirectory 0011_01 relativePath = ' + relativePath);
-            expect(true).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE getPublicDirectory 0011_01 fail, message = ' + error);
-            expect(false).assertTrue();
-            done();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_GETPUBLICDIRECTORY_PROMISE 0011_02', 0, async function (done) {
-        try {
-            let relativePath = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
-            console.info('MediaLibraryTest : ASSET_PROMISE getPublicDirectory 0011_02 relativePath = ' + relativePath);
-            expect(true).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE getPublicDirectory 0011_02 fail, message = ' + error);
-            expect(false).assertTrue();
-            done();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_GETPUBLICDIRECTORY_PROMISE 0011_03', 0, async function (done) {
-        try {
-            let relativePath = await media.getPublicDirectory("666");
-            console.info('MediaLibraryTest : ASSET_PROMISE getPublicDirectory 0011_03 relativePath = ' + relativePath);
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE getPublicDirectory 0011_03 fail, message = ' + error);
-            expect(true).assertTrue();
-            done();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_GETPUBLICDIRECTORY_PROMISE 0011_04', 0, async function (done) {
-        try {
-            let relativePath = await media.getPublicDirectory(666);
-            console.info('MediaLibraryTest : ASSET_PROMISE getPublicDirectory 0011_04 relativePath = ' + relativePath);
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE getPublicDirectory 0011_04 fail, message = ' + error);
-            expect(true).assertTrue();
-            done();
-        }
-        done();
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_GETPUBLICDIRECTORY_PROMISE 0011_05', 0, async function (done) {
-        try {
-            let relativePath = await media.getPublicDirectory();
-            console.info('MediaLibraryTest : ASSET_PROMISE getPublicDirectory 0011_05 relativePath = ' + relativePath);
-            expect(false).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE getPublicDirectory 0011_05 fail, message = ' + error);
-            expect(true).assertTrue();
-            done();
-        }
-        done();
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ISDIR_ASSET_PROMISE_0012
-     * @tc.name      : Is Directory 
-     * @tc.desc      : Is Directory
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-
-    it('SUB_MEDIA_MEDIALIBRARY_DIR_ASSET_PROMISE_0012_01', 0, async function (done) {
-        try {
-            let isDirectory = await asset.isDirectory();
-            console.info('MediaLibraryTest : ASSET_PROMISE ISDIRECTORY 0012_01 = ' + isDirectory);
-            expect(true).assertTrue();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE ISDIRECTORY 0012_01 fail ' + error);
-            expect(false).assertTrue();
-            done();
-        }
-        done();
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_DELETE_ASSET_PROMISE_0013
-     * @tc.name      : Delete asset 
-     * @tc.desc      : Delete asset 
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-
-    it('SUB_MEDIA_MEDIALIBRARY_DELETE_ASSET_PROMISE_0013_01', 0, async function (done) {
-        try {
-            await media.deleteAsset(asset.uri);
-            console.info('MediaLibraryTest : ASSET_PROMISE deleteAsset 0013_01 SUCCESS ');
-            expect(true).assertTrue();
-            done();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE deleteAsset 0013_01 file, message = ' + error);
-            expect(false).assertTrue();
-            done();
-        }
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_DELETE_ASSET_PROMISE_0013_02', 0, async function (done) {
-        try {
-            await media.deleteAsset(666);
-            console.info('MediaLibraryTest : ASSET_PROMISE deleteAsset 0013_02 SUCCESS ');
-            expect(false).assertTrue();
-            done();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE deleteAsset 0013_02 file, message = ' + error);
-            expect(true).assertTrue();
-            done();
-        }
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_DELETE_ASSET_PROMISE_0013_03', 0, async function (done) {
-        try {
-            await media.deleteAsset("666");
-            console.info('MediaLibraryTest : ASSET_PROMISE deleteAsset 0013_03 SUCCESS ');
-            expect(false).assertTrue();
-            done();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE deleteAsset 0013_03 file, message = ' + error);
-            expect(true).assertTrue();
-            done();
-        }
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_DELETE_ASSET_PROMISE_0013_04', 0, async function (done) {
-        try {
-            await media.deleteAsset(0.666);
-            console.info('MediaLibraryTest : ASSET_PROMISE deleteAsset 0013_04 SUCCESS ');
-            expect(false).assertTrue();
-            done();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE deleteAsset 0013_04 file, message = ' + error);
-            expect(true).assertTrue();
-            done();
-        }
-    });
-
-    it('SUB_MEDIA_MEDIALIBRARY_DELETE_ASSET_PROMISE_0013_05', 0, async function (done) {
-        try {
-            await media.deleteAsset();
-            console.info('MediaLibraryTest : ASSET_PROMISE deleteAsset 0013_05 SUCCESS ');
-            expect(false).assertTrue();
-            done();
-        } catch (error) {
-            console.info('MediaLibraryTest : ASSET_PROMISE deleteAsset 0013_05 file, message = ' + error);
-            expect(true).assertTrue();
-            done();
-        }
-    });
-
-
-    /**
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_RELEASE_PROMISE_0014
-     * @tc.name      : Release 
-     * @tc.desc      : Release 
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-
-    // it('SUB_MEDIA_MEDIALIBRARY_RELEASE_PROMISE_0014_01', 0, async function (done) {
-    //     try {
-    //         await media.release();
-    //         console.info('MediaLibraryTest : ASSET_PROMISE release 0014_01 SUCCESS ');
-    //         done();
-    //     } catch (error) {
-    //         console.info('MediaLibraryTest : ASSET_PROMISE release 0014_01 file, message = ' + error);
-    //         done();
-    //     }
-    // });
-
-    function getAllObjectInfo(data) {
-        if (data != undefined) {
-            console.info('MediaLibraryTest : ASSET_PROMISE id is ' + data.id);
-            console.info('MediaLibraryTest : ASSET_PROMISE uri is ' + data.uri);
-            console.info('MediaLibraryTest : ASSET_PROMISE displayName is ' + data.displayName);
-            console.info('MediaLibraryTest : ASSET_PROMISE mediaType is ' + data.title);
-            console.info('MediaLibraryTest : ASSET_PROMISE relativePath is ' + data.relativePath);
-        } else {
-            console.info('MediaLibraryTest : ASSET_PROMISE getAllObjectInfo no assets');
-        }
-    }
-
-    function getAllObjectInfoDelete(data3) {
-        console.info('MediaLibraryTest : id is ' + data3.id);
-        console.info('MediaLibraryTest : uri is ' + data3.uri);
-        console.info('MediaLibraryTest : displayName is ' + data3.displayName);
-        console.info('MediaLibraryTest : mediaType is ' + data3.mediaType);
-
-        media.deleteAsset(data3.uri, (err4, data4) => {
-            if (data4 == 0) {
-                console.info('MediaLibraryTest : Delete Album Successfull ' + data4);
-                console.info('MediaLibraryTest : Delete Asset : PASS');
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_07', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(imagesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+            const asset = dataList[0];
+            asset.displayName = 'hhhhhh';
+            asset.commitModify();
+            const id = asset.id;
+            const idOP = { selections: fileKeyObj.ID + '= ?', selectionArgs: ["" + id] };
+            const newAssets = await media.getFileAssets(idOP);
+            const newdataList = await newAssets.getAllObject();
+            const newAsset = newdataList[0];
+            if(newAsset.dateModified != undefined) {
+                if (newAsset.dateModified != asset.dateModified ) {
+                    console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_07 passed');
+                    expect(true).assertTrue();
+                    done();
+                } else {
+                    console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_07 failed');
+                    expect(false).assertTrue();
+                    done();
+                }
             } else {
-                console.info('MediaLibraryTest : Album is not modified ' + err4.message);
-                console.info('MediaLibraryTest : Modify Asset : FAIL');
+                console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_07 failed');
+                expect(false).assertTrue();
+                done();
             }
-        });
-    }
-})
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_07 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_08
+     * @tc.name      : createAsset
+     * @tc.desc      : Insert a picture record, the retrieve attributes for images
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_08', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(imagesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'mediaType', '001_08', firstAsset, imageType);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'mediaType', '001_08', midAsset, imageType);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'mediaType', '001_08', lastAsset, imageType);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_08 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 001_08 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_09
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Get the width attribute
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_09', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(imagesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'width', '001_09', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'width', '001_09', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'width', '001_09', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_09 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_09 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_10
+     * @tc.name      : createAsset
+     * @tc.desc      : Get the height attribute
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_10', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(imagesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'height', '001_10', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'height', '001_10', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'height', '001_10', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 001_10 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 001_10 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_11
+     * @tc.name      : createAsset
+     * @tc.desc      : Get the orientaion attribute
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_11', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(imagesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'orientation', '001_11', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'orientation', '001_11', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'orientation', '001_11', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 001_11 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 001_11 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_12
+     * @tc.name      : createAsset
+     * @tc.desc      : Insert a picture record and get the property as picture
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_12', 0, async function (done) {
+        try {
+            const path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE);
+            const fileAssets = await media.getFileAssets(imagesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+            const asset1 = dataList[0];
+            const creatAsset1 = await media.createAsset(imageType, 'image3.jpg', path);
+            const fd1 = await asset1.open('rw');
+            const creatAssetFd1 = await creatAsset1.open('rw');
+            await copyFile(fd1, creatAssetFd1);
+            await creatAsset1.close(creatAssetFd1);
+            await asset1.close(fd1);
+            if (creatAsset1.mediaType == imageType) {
+                console.info('MediaLibraryTest : ASSET_PROMISE createAsset 001_12 passed');
+                expect(true).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest : ASSET_PROMISE createAsset 001_12 failed');
+                expect(false).assertTrue();
+                done();
+            }
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 001_12 failed ' + error);
+            expect(false).assertTrue();
+            done();
+        }
+    });
+    // -------------------------------  image type end -----------------------------
+
+    // ------------------------------- video type start ----------------------------
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_01
+     * @tc.name      : createAsset
+     * @tc.desc      : Insert two database records, read a unique identifier, expectations are not equal
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_01', 0, async function (done) {
+        try {
+            const path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
+            const fileAssets = await media.getFileAssets(videosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+            const asset1 = dataList[0];
+            const creatAsset1 = await media.createAsset(videoType, 'video01.mp4', path);
+            const fd1 = await asset1.open('rw');
+            const creatAssetFd1 = await creatAsset1.open('rw');
+            await copyFile(fd1, creatAssetFd1);
+            await creatAsset1.close(creatAssetFd1);
+            await asset1.close(fd1);
+
+            const asset2 = dataList[0];
+            const creatAsset2 = await media.createAsset(videoType, 'video02.mp4', path);
+            const fd2 = await asset2.open('rw');
+            const creatAssetFd2 = await creatAsset2.open('rw');
+            await copyFile(fd2, creatAssetFd2);
+            await creatAsset2.close(creatAssetFd2);
+            await asset2.close(fd2);
+            if (creatAsset1.id != creatAsset2.id) {
+                console.info('MediaLibraryTest : ASSET_PROMISE createAsset 002_01 passed');
+                expect(true).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest : ASSET_PROMISE createAsset 002_01 failed');
+                expect(false).assertTrue();
+                done();
+            }
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 002_01 failed' + error);
+            expect(false).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_02
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file displayName and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_02', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(videosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'displayName', '002_02', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'displayName', '002_02', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'displayName', '002_02', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_02 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_02 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_03
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file relativePath  and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_03', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(videosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'relativePath', '002_04', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'relativePath', '002_04', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'relativePath', '002_04', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_03 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_03 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_04
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file size and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_04', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(videosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'size', '002_04', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'size', '002_04', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'size', '002_04', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_04 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_04 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_05
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file dateAdded and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_05', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(videosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'dateAdded', '002_05', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'dateAdded', '002_05', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'dateAdded', '002_05', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_05 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_05 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_07
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file dateModified and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_07', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(videosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+            const asset = dataList[0];
+            asset.displayName = 'hhhhhh';
+            asset.commitModify();
+            const id = asset.id;
+            const idOP = { selections: fileKeyObj.ID + '= ?', selectionArgs: ["" + id] };
+            const newAssets = await media.getFileAssets(idOP);
+            const newdataList = await newAssets.getAllObject();
+            const newAsset = newdataList[0];
+            if(newAsset.dateModified != undefined) {
+                if (newAsset.dateModified != asset.dateModified ) {
+                    console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_07 passed');
+                    expect(true).assertTrue();
+                    done();
+                } else {
+                    console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_07 failed');
+                    expect(false).assertTrue();
+                    done();
+                }
+            } else {
+                console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_07 failed');
+                expect(false).assertTrue();
+                done();
+            }
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_07 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_08
+     * @tc.name      : createAsset
+     * @tc.desc      : Insert a picture record, the retrieve attributes for images
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_08', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(videosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'mediaType', '002_08', firstAsset, videoType);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'mediaType', '002_08', midAsset, videoType);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'mediaType', '002_08', lastAsset, videoType);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_08 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 002_08 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_09
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Get the width attribute
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_09', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(videosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'width', '002_09', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'width', '002_09', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'width', '002_09', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_09 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_09 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_10
+     * @tc.name      : createAsset
+     * @tc.desc      : Get the height attribute
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_10', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(videosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'height', '002_10', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'height', '002_10', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'height', '002_10', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 002_10 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 002_10 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_11
+     * @tc.name      : createAsset
+     * @tc.desc      : Get the orientaion attribute
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_11', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(videosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'orientation', '002_11', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'orientation', '002_11', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'orientation', '002_11', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 002_11 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 002_11 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_12
+     * @tc.name      : createAsset
+     * @tc.desc      : Get the duration attribute
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_12', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(videosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'duration', '002_12', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'duration', '002_12', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'duration', '002_12', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 002_12 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 002_12 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_13
+     * @tc.name      : createAsset
+     * @tc.desc      : Insert a picture record and get the property as picture
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_13', 0, async function (done) {
+        try {
+            const path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
+            const fileAssets = await media.getFileAssets(videosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+            const asset1 = dataList[0];
+            const creatAsset1 = await media.createAsset(videoType, 'video3.mp4', path);
+            const fd1 = await asset1.open('rw');
+            const creatAssetFd1 = await creatAsset1.open('rw');
+            await copyFile(fd1, creatAssetFd1);
+            await creatAsset1.close(creatAssetFd1);
+            await asset1.close(fd1);
+            if (creatAsset1.mediaType == videoType) {
+                console.info('MediaLibraryTest : ASSET_PROMISE createAsset 002_13 passed');
+                expect(true).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest : ASSET_PROMISE createAsset 002_13 failed');
+                expect(false).assertTrue();
+                done();
+            }
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 002_13 failed');
+            expect(false).assertTrue();
+            done();
+        }
+    });
+    // -------------------------------  video type end -----------------------------
+
+    // ------------------------------- audio type start ----------------------------
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_01
+     * @tc.name      : createAsset
+     * @tc.desc      : Insert two database records, read a unique identifier, expectations are not equal
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_01', 0, async function (done) {
+        try {
+            const path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO);
+            const fileAssets = await media.getFileAssets(audiosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+            const asset1 = dataList[0];
+            const creatAsset1 = await media.createAsset(audioType, 'audio01.mp3', path);
+            const fd1 = await asset1.open('rw');
+            const creatAssetFd1 = await creatAsset1.open('rw');
+            await copyFile(fd1, creatAssetFd1);
+            await creatAsset1.close(creatAssetFd1);
+            await asset1.close(fd1);
+
+            const asset2 = dataList[0];
+            const creatAsset2 = await media.createAsset(audioType, 'audio02.mp3', path);
+            const fd2 = await asset2.open('rw');
+            const creatAssetFd2 = await creatAsset2.open('rw');
+            await copyFile(fd2, creatAssetFd2);
+            await creatAsset2.close(creatAssetFd2);
+            await asset2.close(fd2);
+
+            if (creatAsset1.id != creatAsset2.id) {
+                console.info('MediaLibraryTest : ASSET_PROMISE createAsset 003_01 passed');
+                expect(true).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest : ASSET_PROMISE createAsset 003_01 failed');
+                expect(false).assertTrue();
+                done();
+            }
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 003_01 failed');
+            expect(false).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_02
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file name and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_02', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(audiosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'displayName', '003_02', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'displayName', '003_02', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'displayName', '003_02', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_02 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_02 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_03
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file relativePath  and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_03', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(audiosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'relativePath', '003_03', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'relativePath', '003_03', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'relativePath', '003_03', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_03 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_03 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_04
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file size and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_04', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(audiosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'size', '003_04', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'size', '003_04', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'size', '003_04', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_04 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_04 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_05
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file dateAdded and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_05', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(audiosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'dateAdded', '003_05', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'dateAdded', '003_05', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'dateAdded', '003_05', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_05 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_05 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_07
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file dateModified and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_07', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(audiosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+            const asset = dataList[0];
+            asset.displayName = 'hhhhhh';
+            asset.commitModify();
+            const id = asset.id;
+            const idOP = { selections: fileKeyObj.ID + '= ?', selectionArgs: ["" + id] };
+            const newAssets = await media.getFileAssets(idOP);
+            const newdataList = await newAssets.getAllObject();
+            const newAsset = newdataList[0];
+            if(newAsset.dateModified != undefined) {
+                if (newAsset.dateModified != asset.dateModified ) {
+                    console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_07 passed');
+                    expect(true).assertTrue();
+                    done();
+                } else {
+                    console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_07 failed');
+                    expect(false).assertTrue();
+                    done();
+                }
+            } else {
+                console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_07 failed');
+                expect(false).assertTrue();
+                done();
+            }
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_07 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_08
+     * @tc.name      : createAsset
+     * @tc.desc      : Insert a picture record, the retrieve attributes for images
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_08', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(audiosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'mediaType', '003_08', firstAsset, audioType);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'mediaType', '003_08', midAsset, audioType);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'mediaType', '003_08', lastAsset, audioType);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_08 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 003_08 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_09
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Get the artist attribute
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_09', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(audiosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'width', '003_09', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'width', '003_09', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'width', '003_09', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_09 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_09 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_10
+     * @tc.name      : createAsset
+     * @tc.desc      : Get the album attribute
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_10', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(audiosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'albumName', '003_10', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'albumName', '003_10', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'albumName', '003_10', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 003_10 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 003_10 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_11
+     * @tc.name      : createAsset
+     * @tc.desc      : Get the duration attribute
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_11', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(audiosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'duration', '003_11', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'duration', '003_11', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'duration', '003_11', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 003_11 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 003_11 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_12
+     * @tc.name      : createAsset
+     * @tc.desc      : Insert a picture record and get the property as picture
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_12', 0, async function (done) {
+        try {
+            const path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO);
+            const fileAssets = await media.getFileAssets(audiosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+            const asset1 = dataList[0];
+            const creatAsset1 = await media.createAsset(audioType, 'audio3.mp3', path);
+            const fd1 = await asset1.open('rw');
+            const creatAssetFd1 = await creatAsset1.open('rw');
+            await copyFile(fd1, creatAssetFd1);
+            await creatAsset1.close(creatAssetFd1);
+            await asset1.close(fd1);
+            if (creatAsset1.mediaType == audioType) {
+                console.info('MediaLibraryTest : ASSET_PROMISE createAsset 003_12 passed');
+                expect(true).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest : ASSET_PROMISE createAsset 003_12 failed');
+                expect(false).assertTrue();
+                done();
+            }
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 003_12 failed');
+            expect(false).assertTrue();
+            done();
+        }
+    });
+    // -------------------------------  audio type end -----------------------------
+
+    // ------------------------------- file type start ----------------------------
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_01
+     * @tc.name      : createAsset
+     * @tc.desc      : Insert two database records, read a unique identifier, expectations are not equal
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_01', 0, async function (done) {
+        try {
+            const path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOWNLOAD);
+            const fileAssets = await media.getFileAssets(filesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+            const asset1 = dataList[0];
+            const creatAsset1 = await media.createAsset(fileType, 'file01.txt', path);
+            const fd1 = await asset1.open('rw');
+            const creatAssetFd1 = await creatAsset1.open('rw');
+            await copyFile(fd1, creatAssetFd1);
+            await creatAsset1.close(creatAssetFd1);
+            await asset1.close(fd1);
+
+            const asset2 = dataList[0];
+            const creatAsset2 = await media.createAsset(fileType, 'file02.txt', path);
+            const fd2 = await asset2.open('rw');
+            const creatAssetFd2 = await creatAsset2.open('rw');
+            await copyFile(fd2, creatAssetFd2);
+            await creatAsset2.close(creatAssetFd2);
+            await asset2.close(fd2);
+
+            if (creatAsset1.id != creatAsset2.id) {
+                console.info('MediaLibraryTest : ASSET_PROMISE createAsset 004_01 passed');
+                expect(true).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest : ASSET_PROMISE createAsset 004_01 failed');
+                expect(false).assertTrue();
+                done();
+            }
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 004_01 failed' + error);
+            expect(false).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_02
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file name and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_02', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(filesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'displayName', '004_02', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'displayName', '004_02', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'displayName', '004_02', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 004_02 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 004_02 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_03
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file relativePath  and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_03', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(filesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'relativePath', '004_03', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'relativePath', '004_03', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'relativePath', '004_03', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 004_03 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 004_03 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_04
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file size and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_04', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(filesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'size', '004_04', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'size', '004_04', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'size', '004_04', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 004_04 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 004_04 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_05
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file dateAdded and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_05', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(filesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'dateAdded', '004_05', firstAsset);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'dateAdded', '004_05', midAsset);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'dateAdded', '004_05', lastAsset);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 004_05 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 004_05 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_07
+     * @tc.name      : getFileAssets
+     * @tc.desc      : Access to the file dateModified and validation is not undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_07', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(filesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+            const asset = dataList[0];
+            asset.displayName = 'hhhhhh';
+            asset.commitModify();
+            const id = asset.id;
+            const idOP = { selections: fileKeyObj.ID + '= ?', selectionArgs: ["" + id] };
+            const newAssets = await media.getFileAssets(idOP);
+            const newdataList = await newAssets.getAllObject();
+            const newAsset = newdataList[0];
+            if(newAsset.dateModified != undefined) {
+                if (newAsset.dateModified != asset.dateModified ) {
+                    console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 004_07 passed');
+                    expect(true).assertTrue();
+                    done();
+                } else {
+                    console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 004_07 failed');
+                    expect(false).assertTrue();
+                    done();
+                }
+            } else {
+                console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 004_07 failed');
+                expect(false).assertTrue();
+                done();
+            }
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 004_07 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_08
+     * @tc.name      : createAsset
+     * @tc.desc      : Insert a picture record, the retrieve attributes for images
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_08', 0, async function (done) {
+        try {
+            const fileAssets = await media.getFileAssets(filesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+
+            const firstAsset = dataList[0];
+            checkAssetAttr(done, 'mediaType', '004_08', firstAsset, fileType);
+
+            const midAsset = dataList[Math.floor(dataList.length / 2)];
+            checkAssetAttr(done, 'mediaType', '004_08', midAsset, fileType);
+
+            const lastAsset = dataList[dataList.length - 1];
+            checkAssetAttr(done, 'mediaType', '004_08', lastAsset, fileType);
+
+            console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 004_08 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 004_08 failed, message = ' + error);
+        }
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_09
+     * @tc.name      : createAsset
+     * @tc.desc      : Insert two database records, read a unique identifier, expectations are not equal
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_09', 0, async function (done) {
+        try {
+            const path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOWNLOAD);
+            const fileAssets = await media.getFileAssets(filesfetchOp);
+            const dataList = await fileAssets.getAllObject();
+            const asset1 = dataList[0];
+            const creatAsset1 = await media.createAsset(fileType, 'file3.txt', path);
+            const fd1 = await asset1.open('rw');
+            const creatAssetFd1 = await creatAsset1.open('rw');
+            await copyFile(fd1, creatAssetFd1);
+            await creatAsset1.close(creatAssetFd1);
+            await asset1.close(fd1);
+
+            if (creatAsset1.mediaType == fileType) {
+                console.info('MediaLibraryTest : ASSET_PROMISE createAsset 004_09 passed');
+                expect(true).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest : ASSET_PROMISE createAsset 004_09 failed');
+                expect(false).assertTrue();
+                done();
+            }
+        } catch (error) {
+            console.info('MediaLibraryTest : ASSET_PROMISE createAsset 004_09 failed');
+            expect(false).assertTrue();
+            done();
+        }
+    });
+    // -------------------------------  file type end -----------------------------
+});
+
