@@ -18,7 +18,7 @@ import {Core, ExpectExtend} from 'deccjsunit/index'
 export default {
     data: {
         title: '',
-        myTimeout: 15000
+        myTimeout: 25000
     },
     onInit() {
         this.title = this.$t('strings.world');
