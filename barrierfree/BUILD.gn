@@ -16,12 +16,12 @@ import("//build/ohos_var.gni")
 group("barrierfree") {
   testonly = true
   if (is_standard_system) {
-    deps = [   
-        "accessibleabilitylist:AccessibleAbilityList",
-        "accessiblecaptionconfiguration:AccessibleCaptionConfiguration", 
-        "accessiblecheckability:AccessibleCheckAbility", 
-        "accessibleregisterstate:AccessibleRegisterState", 
-        "accessiblesendevent:AccessibleSendEvent", 
+    deps = [
+      "accessibleabilitylist:AccessibleAbilityList",
+      "accessiblecaptionconfiguration:AccessibleCaptionConfiguration",
+      "accessiblecheckability:AccessibleCheckAbility",
+      "accessibleregisterstate:AccessibleRegisterState",
+      "accessiblesendevent:AccessibleSendEvent",
     ]
-  } 
+  }
 }
