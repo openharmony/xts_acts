@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "ohos.acts.resourceschedule.taskmgr.js.function",
+    "bundleName": "ohos.acts.resourceschedule.workscheduler.js.function",
     "vendor": "example",
     "version": {
       "code": 1,
@@ -13,7 +13,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "ohos.acts.resourceschedule.taskmgr.js.function",
+    "package": "ohos.acts.resourceschedule.workscheduler.js.function",
     "name": ".MyApplication",
     "deviceType": [
       "phone"
@@ -36,10 +36,7 @@
             ]
           }
         ],
-        "backgroundModes": [
-            "dataTransfer"
-        ],
-        "name": "ohos.acts.resourceschedule.taskmgr.js.function.MainAbility",
+        "name": "ohos.acts.resourceschedule.workscheduler.js.function.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
@@ -58,16 +55,6 @@
           "autoDesignWidth": false
         }
       }
-    ],
-    "defPermissions": [
-        {
-          "name": "ohos.permission.KEEP_BACKGROUND_RUNNING"
-        }
-      ],
-    "reqPermissions": [
-        {
-          "name": "ohos.permission.KEEP_BACKGROUND_RUNNING"
-        }
-      ]
+    ]
   }
 }
