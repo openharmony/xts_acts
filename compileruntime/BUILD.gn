@@ -18,7 +18,6 @@ group("compileruntime") {
     deps = [
       "ark_intl_standard/intljs:intljs_test",
       "convertxml_lib_standard:convertxml_js_test",
-      "process_lib_standard:process_js_test",
       "uri_lib_standard:uri_js_test",
       "url_lib_standard:url_js_test",
       "util_lib_standard:util_js_test",
