@@ -334,7 +334,7 @@ describe('videoSoftwareEncoderFuncPromise', function () {
         let height = 480;
         let framerate = 60;
         let mediaDescription = {
-            "codec_mime": "video/avc",
+            "codec_mime": 'video/mp4v-es',
             "width": width, 
             "height": height,
             "pixel_format": 3,

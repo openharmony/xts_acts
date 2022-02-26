@@ -264,8 +264,9 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
     */ 
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_00_0100', 0, async function (done) {
         let decPath = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_00_0100.es';
-        let name= 'avenc_mpeg4';
+        let mime = 'video/mp4v-es';
         let mediaDescription = {
+            "codec_mime": 'video/mp4v-es',
             'width': 720, 
             'height': 480,
             'pixel_format': 3,
@@ -297,7 +298,7 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
                 }
             })
         })
-        media.createVideoEncoderByName(name, (err, processor) => {
+        media.createVideoEncoderByMime(mime, (err, processor) => {
             expect(err).assertUndefined();
             if (typeof(processor) != 'undefined') {
                 console.info('case create createVideoEncoderByName success');
