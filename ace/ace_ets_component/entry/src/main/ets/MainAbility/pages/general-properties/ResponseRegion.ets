@@ -17,18 +17,44 @@ import events_emitter from '@ohos.emitter';
 
 @Entry
 @Component
-struct RotationGestureExample {
-  @State angle: number = 0
-  @State eventType: string = ''
+struct ResponseRegionExample {
+  @State touchable: boolean = false;
   @State isTouched: boolean = false;
+  @State eventType: string = ''
+
+  onPageShow() {
+    let ChangeEvent = {
+      eventId: 120,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(ChangeEvent, this.ChangCallBack)
+  }
+
+  private ChangCallBack = (eventData) => {
+    console.info("[ResponseRegion] ChangCallBack stateChangCallBack");
+    if (eventData != null) {
+      console.info("[ResponseRegion] ChangCallBack state change called:" + JSON.stringify(eventData));
+      if (eventData.data.touchable != null) {
+        this.touchable = eventData.data.touchable;
+      }
+    }
+  }
 
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-      Text('RotationGesture angle:' + this.angle)
+    Column() {
+      Toggle({ type: ToggleType.Checkbox, isOn: true })
+        .selectedColor(0x39a2db)
+        .backgroundColor(0xAFEEEE)
+        .responseRegion({ x: 1.0, y: 1.0, width: 400, height: 400 })
+        .onChange((isOn: boolean) => {
+          console.info('[ResponseRegion] Component status:' + isOn)
+        })
     }
-    .height(300).width(300).padding(20).border({ width:1 })
-    .margin(80).rotate({ x:1, y:2, z:3, angle: this.angle })
-    .key('gesture')
+    .width('100%')
+    .height('100%')
+    .margin({ top: 5 })
+    .key('region')
+    .touchable(this.touchable)
     .onTouch((event: TouchEvent) => {
       this.isTouched = true
       if (event.type === TouchType.Down) {
@@ -40,7 +66,7 @@ struct RotationGestureExample {
       if (event.type === TouchType.Move) {
         this.eventType = 'Move'
       }
-      console.info('RotationGesture TouchType:' + this.eventType)
+      console.info('[ResponseRegion] TouchType:' + this.eventType)
       try {
         var backData = {
           data: {
@@ -49,26 +75,15 @@ struct RotationGestureExample {
           }
         }
         var backEvent = {
-          eventId: 56,
+          eventId: 121,
           priority: events_emitter.EventPriority.LOW
         }
-        console.info("RotationGesture start to emit action state")
+        console.info("[ResponseRegion] start to emit action state")
         events_emitter.emit(backEvent, backData)
       } catch (err) {
-        console.info("RotationGesture emit action state err: " + JSON.stringify(err.message))
+        console.info("[ResponseRegion] emit action state err: " + JSON.stringify(err.message))
       }
     })
-    .gesture(
-    RotationGesture()
-      .onActionStart((event: RotationGestureEvent) => {
-        console.log('Rotation start')
-      })
-      .onActionUpdate((event: RotationGestureEvent) => {
-        this.angle = event.angle
-      })
-      .onActionEnd(() => {
-        console.log('Rotation end')
-      })
-    )
   }
 }
+
