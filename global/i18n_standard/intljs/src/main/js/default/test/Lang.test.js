@@ -22,11 +22,17 @@ describe('LangTest', function () {
     let initPreferredLang = I18n.getPreferredLanguageList();
     let initLen = initPreferredLang.length;
 
+    /* *
+    * get the current preferred language list
+    */
     function getCurrentPreferredLang(){
         let value = I18n.getPreferredLanguageList();
         return value;
     }
 
+    /* *
+    * judge if the lang is in the preferred language list or not
+    */
     function isContainLang(langList, lang){
         let len = langList.length;
         for (let i = 0; i < len; i++){
@@ -37,6 +43,9 @@ describe('LangTest', function () {
         return false
     }
 
+    /* *
+    * clear the preferred language list if exists
+    */
     function clearLang(langList){
         let len = langList.length;
         while(len > 0){
@@ -50,6 +59,9 @@ describe('LangTest', function () {
         console.log('i18n_test_preferredlanguage_clearLang ' + I18n.getPreferredLanguageList());
     }
 
+    /* *
+    * execute this step after every testcase
+    */
     function restoreLang(){
         for(let j = 0; j < initLen; j++){
             let value = I18n.addPreferredLanguage(initPreferredLang[j], j);
@@ -65,10 +77,16 @@ describe('LangTest', function () {
         console.log('i18n_test_preferredlanguage_restoreLang ' + I18n.getPreferredLanguageList());
     }
 
+    /* *
+    * execute this step before every testcase
+    */
     beforeEach(function(){
         console.log('i18n_test_preferredlanguage_beforeEach ' + getCurrentPreferredLang());
     })
 
+    /* *
+    * execute this step after every testcase
+    */
     afterEach(function(){
         let currLang = getCurrentPreferredLang();
         console.log('i18n_test_preferredlanguage_afterEach ' + currLang);
@@ -91,7 +109,7 @@ describe('LangTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_CLOCK_0200
-    * @tc.name test the set24HourClock interface with false param
+    * @tc.name test the set24HourClock interface with true param
     * @tc.desc check the value of set24HourClock method
     */
     it('i18n_test_clock_0200', 0, function () {
@@ -106,7 +124,7 @@ describe('LangTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_CLOCK_0300
-    * @tc.name test the set24HourClock interface with true param
+    * @tc.name test the set24HourClock interface with false param
     * @tc.desc check the value of set24HourClock method
     */
     it('i18n_test_clock_0300', 0, function () {
@@ -138,7 +156,7 @@ describe('LangTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0100
-    * @tc.name test the getPreferredLanguageList interface
+    * @tc.name test the getPreferredLanguageList interface with default value
     * @tc.desc check the value of getPreferredLanguageList method
     */
     it('i18n_test_preferredlanguage_0100', 0, function () {
@@ -225,7 +243,7 @@ describe('LangTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0400
-    * @tc.name test the addPreferredLanguage interface
+    * @tc.name test the addPreferredLanguage interface with en and index 1 param
     * @tc.desc check the value of addPreferredLanguage method
     */
     it('i18n_test_preferredlanguage_0400', 0, function () {
@@ -240,7 +258,7 @@ describe('LangTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0500
-    * @tc.name test the addPreferredLanguage interface
+    * @tc.name test the addPreferredLanguage interface with ja and index -1 param
     * @tc.desc check the value of addPreferredLanguage method
     */
     it('i18n_test_preferredlanguage_0500', 0, function () {
@@ -255,7 +273,7 @@ describe('LangTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0600
-    * @tc.name test the addPreferredLanguage interface
+    * @tc.name test the addPreferredLanguage interface with ko and index 100 param
     * @tc.desc check the value of addPreferredLanguage method
     */
     it('i18n_test_preferredlanguage_0600', 0, function () {
@@ -270,8 +288,8 @@ describe('LangTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0700
-    * @tc.name test the addPreferredLanguage interface
-    * @tc.desc check the value of addPreferredLanguage method
+    * @tc.name test the removePreferredLanguage interface with 0 param
+    * @tc.desc check the value of removePreferredLanguage method
     */
     it('i18n_test_preferredlanguage_0700', 0, function () {
         console.log('i18n_test_preferredlanguage_0700 ' + 'start');
@@ -300,8 +318,8 @@ describe('LangTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0800
-    * @tc.name test the addPreferredLanguage interface
-    * @tc.desc check the value of addPreferredLanguage method
+    * @tc.name test the removePreferredLanguage interface with -1 param
+    * @tc.desc check the value of removePreferredLanguage method
     */
     it('i18n_test_preferredlanguage_0800', 0, function () {
         console.log('i18n_test_preferredlanguage_0800 ' + 'start');
@@ -315,7 +333,7 @@ describe('LangTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0820
-    * @tc.name test the removePreferredLanguage interface with -1 param
+    * @tc.name test the removePreferredLanguage interface with -1 param after add ja
     * @tc.desc check the value of removePreferredLanguage method
     */
     it('i18n_test_preferredlanguage_0820', 0, function () {
@@ -333,8 +351,8 @@ describe('LangTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0900
-    * @tc.name test the addPreferredLanguage interface
-    * @tc.desc check the value of addPreferredLanguage method
+    * @tc.name test the removePreferredLanguage interface with 0 param
+    * @tc.desc check the value of removePreferredLanguage method
     */
     it('i18n_test_preferredlanguage_0900', 0, function () {
         console.log('i18n_test_preferredlanguage_0900 ' + 'start');
@@ -352,7 +370,7 @@ describe('LangTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0920
-    * @tc.name test the addPreferredLanguage interface
+    * @tc.name test the addPreferredLanguage interface with it param
     * @tc.desc check the value of addPreferredLanguage method
     */
     it('i18n_test_preferredlanguage_0920', 0, function () {
@@ -375,8 +393,8 @@ describe('LangTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0940
-    * @tc.name test the addPreferredLanguage interface
-    * @tc.desc check the value of addPreferredLanguage method
+    * @tc.name test the mixed interface with preferredlanguage
+    * @tc.desc check the value of preferredLanguage method
     */
     it('i18n_test_preferredlanguage_0940', 0, function () {
         let value = I18n.addPreferredLanguage('it');
@@ -421,8 +439,8 @@ describe('LangTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_1000
-    * @tc.name test the addPreferredLanguage interface
-    * @tc.desc check the value of addPreferredLanguage method
+    * @tc.name test the getFirstPreferredLanguage interface
+    * @tc.desc check the value of getFirstPreferredLanguage method
     */
     it('i18n_test_preferredlanguage_1000', 0, function () {
         console.log('i18n_test_preferredlanguage_1000 ' + 'start');

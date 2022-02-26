@@ -49,7 +49,7 @@ describe('CustTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_CUST_GETFILES_JS_001
-    * @tc.name test getCfgFiles method in callback mode
+    * @tc.name test getCfgFiles method in callback mode with not exist param
     * @tc.desc get getCfgFiles in callback mode
     */
     it('getCfgFiles_test_001', 0, async function (done) {
@@ -63,7 +63,7 @@ describe('CustTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_CUST_GETFILES_JS_002
-    * @tc.name test getCfgFiles method in callback mode
+    * @tc.name test getCfgFiles method in callback mode with low priority param
     * @tc.desc get getCfgFiles in callback mode
     */
     it('getCfgFiles_test_002', 0, async function (done) {
@@ -77,7 +77,7 @@ describe('CustTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_CUST_GETFILES_JS_003
-    * @tc.name test getCfgFiles method in callback mode
+    * @tc.name test getCfgFiles method in callback mode both exist param
     * @tc.desc get getCfgFiles in callback mode
     */
     it('getCfgFiles_test_003', 0, async function (done) {
@@ -91,7 +91,7 @@ describe('CustTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_CUST_GETFILES_JS_004
-    * @tc.name test getCfgFiles method in callback mode
+    * @tc.name test getCfgFiles method in callback mode with high priority param
     * @tc.desc get getCfgFiles in callback mode
     */
     it('getCfgFiles_test_004', 0, async function (done) {
@@ -105,7 +105,7 @@ describe('CustTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_CUST_GETFILES_JS_005
-    * @tc.name test getCfgFiles method in promise mode
+    * @tc.name test getCfgFiles method in promise mode with not exist param
     * @tc.desc get getCfgFiles in promise mode
     */
     it('getCfgFiles_test_005', 0, async function (done) {
@@ -119,7 +119,7 @@ describe('CustTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_CUST_GETFILES_JS_006
-    * @tc.name test getCfgFiles method in promise mode
+    * @tc.name test getCfgFiles method in promise mode with low priority param
     * @tc.desc get getCfgFiles in promise mode
     */
     it('getCfgFiles_test_006', 0, async function (done) {
@@ -133,7 +133,7 @@ describe('CustTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_CUST_GETFILES_JS_007
-    * @tc.name test getCfgFiles method in promise mode
+    * @tc.name test getCfgFiles method in promise mode with both exist param
     * @tc.desc get getCfgFiles in promise mode
     */
     it('getCfgFiles_test_007', 0, async function (done) {
@@ -147,7 +147,7 @@ describe('CustTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_CUST_GETFILES_JS_008
-    * @tc.name test getCfgFiles method in promise mode
+    * @tc.name test getCfgFiles method in promise mode with high priority param
     * @tc.desc get getCfgFiles in promise mode
     */
     it('getCfgFiles_test_008', 0, async function (done) {
@@ -161,7 +161,7 @@ describe('CustTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_CUST_GETONEFILE_JS_001
-    * @tc.name test getOneCfgFile method in callback mode
+    * @tc.name test getOneCfgFile method in callback mode with not exist param
     * @tc.desc get getOneCfgFile in callback mode
     */
     it('getOneCfgFile_test_001', 0, async function (done) {
@@ -175,7 +175,7 @@ describe('CustTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_CUST_GETONEFILE_JS_002
-    * @tc.name test getOneCfgFile method in callback mode
+    * @tc.name test getOneCfgFile method in callback mode with low priority param
     * @tc.desc get getOneCfgFile in callback mode
     */
     it('getOneCfgFile_test_002', 0, async function (done) {
@@ -189,7 +189,7 @@ describe('CustTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_CUST_GETONEFILE_JS_003
-    * @tc.name test getOneCfgFile method in callback mode
+    * @tc.name test getOneCfgFile method in callback mode with both exist param
     * @tc.desc get getOneCfgFile in callback mode
     */
     it('getOneCfgFile_test_003', 0, async function (done) {
@@ -203,7 +203,7 @@ describe('CustTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_CUST_GETONEFILE_JS_004
-    * @tc.name test getOneCfgFile method in callback mode
+    * @tc.name test getOneCfgFile method in callback mode with high priority param
     * @tc.desc get getOneCfgFile in callback mode
     */
     it('getOneCfgFile_test_004', 0, async function (done) {
@@ -217,7 +217,7 @@ describe('CustTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_CUST_GETONEFILE_JS_005
-    * @tc.name test getOneCfgFile method in promise mode
+    * @tc.name test getOneCfgFile method in promise mode with not exist param
     * @tc.desc get getOneCfgFile in promise mode
     */
     it('getOneCfgFile_test_005', 0, async function (done) {
@@ -231,7 +231,7 @@ describe('CustTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_CUST_GETONEFILE_JS_006
-    * @tc.name test getOneCfgFile method in promise mode
+    * @tc.name test getOneCfgFile method in promise mode with low priority param
     * @tc.desc get getOneCfgFile in promise mode
     */
     it('getOneCfgFile_test_006', 0, async function (done) {
@@ -246,8 +246,8 @@ describe('CustTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_CUST_GETONEFILE_JS_007
-    * @tc.name test getOneCfgFile method in promise mode
-    * @tc.desc get getOneCfgFile in promise mode
+    * @tc.name test getOneCfgFile method in promise mode with both exist param
+    * @tc.desc get getOneCfgFile in promise mode and return the high priority file
     */
     it('getOneCfgFile_test_007', 0, async function (done) {
 
@@ -261,7 +261,7 @@ describe('CustTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_CUST_GETONEFILE_JS_008
-    * @tc.name test getOneCfgFile method in promise mode
+    * @tc.name test getOneCfgFile method in promise mode with high priority param
     * @tc.desc get getOneCfgFile in promise mode
     */
     it('getOneCfgFile_test_008', 0, async function (done) {
