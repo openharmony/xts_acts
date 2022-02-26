@@ -61,7 +61,8 @@
       "js": [
           {
               "pages": [
-                  "pages/index/index"
+                  "pages/index/index",
+                  "pages/display/display"
               ],
               "name": "default",
               "window": {

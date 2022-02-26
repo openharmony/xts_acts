@@ -15,11 +15,11 @@
 
 import media from '@ohos.multimedia.media'
 import Fileio from '@ohos.fileio'
+import router from '@system.router'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('VideoDecoderFuncCallbackTest', function () {
     let videoDecodeProcessor = null;
-    let videoPlayer = null;
     let readStreamSync = undefined;
     let frameCountIn = 0;
     let frameCountOut = 0;
@@ -116,11 +116,14 @@ describe('VideoDecoderFuncCallbackTest', function () {
           232, 250, 248, 281, 219, 243, 293, 287, 253, 328, 3719];
     beforeAll(function() {
         console.info('beforeAll case');
-        // getSurfaceID();
     })
 
-    beforeEach(function() {
+    beforeEach(async function() {
         console.info('beforeEach case');
+        await toDisplayPage().then(() => {
+        }, failCallback).catch(failCatch);
+        await msleep(1000).then(() => {
+        }, failCallback).catch(failCatch);
         frameCountIn = 0;
         frameCountOut = 0;
         timestamp = 0;
@@ -128,6 +131,7 @@ describe('VideoDecoderFuncCallbackTest', function () {
         outputQueue = [];
         isCodecData = false;
         inputEosFlag = false;
+        surfaceID = globalThis.value;
     })
 
     afterEach(async function() {
@@ -138,12 +142,8 @@ describe('VideoDecoderFuncCallbackTest', function () {
             }, failCallback).catch(failCatch);
             videoDecodeProcessor = null;
         }
-        if (videoPlayer != null) {
-            await videoPlayer.release().then(() => {
-                console.info('in case : videoPlayer release success');
-            }, failCallback).catch(failCatch);
-            videoPlayer = null;
-        }
+        await router.clear().then(() => {
+        }, failCallback).catch(failCatch);
     })
 
     afterAll(function() {
@@ -158,7 +158,20 @@ describe('VideoDecoderFuncCallbackTest', function () {
         console.info(`in case error failCatch called,errMessage is ${error.message}`);
         expect(err).assertUndefined();
     }
-
+    function msleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+    async function toDisplayPage() {
+        let path = 'pages/display/display';
+        let options = {
+            uri: path,
+        }
+        try {
+            await router.push(options);
+        } catch (e) {
+            console.error('in case toDisplayPage' + e);
+        }
+    }
     function readFile(path){
         console.info('in case : read file start execution');
         try {
@@ -167,18 +180,6 @@ describe('VideoDecoderFuncCallbackTest', function () {
         } catch(e) {
             console.info('in case error readFile' + e);
         }
-    }
-    function getSurfaceID() {
-        let surfaceIDTest = new ArrayBuffer(20);
-        let readSurfaceID = Fileio.createStreamSync('/data/media/surfaceID.txt', 'rb');
-        readSurfaceID.readSync(surfaceIDTest, {length: 13});
-        let view2 = new Uint8Array(surfaceIDTest);
-        for (let i = 0; i < 13; i++) {
-            let value = view2[i] - 48;
-            surfaceID = surfaceID + '' + value;
-        }
-        console.info('in case surfaceID ' + surfaceID);
-        readSurfaceID.closeSync();
     }
     function getContent(buf, len) {
         console.info('start get content, len ' + len + ' buf.byteLength ' + buf.byteLength);
@@ -280,28 +281,8 @@ describe('VideoDecoderFuncCallbackTest', function () {
             console.info('in case : configure success');
             readFile(srcPath);
             setCallback(nextStep);
-            eventEmitter.emit('createVideoPlayer', done);
-            // eventEmitter.emit('setOutputSurface', done);
+            eventEmitter.emit('setOutputSurface', done);
         });
-    });
-    eventEmitter.on('createVideoPlayer', (done) => {
-        media.createVideoPlayer((err, video) => {
-            if (typeof (video) != 'undefined') {
-                videoPlayer = video;
-                expect(videoPlayer.state).assertEqual('idle');
-                console.info('case createVideoPlayer success!!');
-                eventEmitter.emit('getDisplaySurface', done);
-            }
-        });
-    });
-    eventEmitter.on('getDisplaySurface', (done) => {
-        videoPlayer.getDisplaySurface((err, outputSurface) => {
-            if (typeof (err) == 'undefined') {
-                surfaceID = outputSurface;
-                console.info('case getDisplaySurface success!!');
-                eventEmitter.emit('setOutputSurface');
-            }
-        })
     });
     eventEmitter.on('setOutputSurface', (done) => {
         videoDecodeProcessor.setOutputSurface(surfaceID, true, (err) => {
@@ -500,7 +481,7 @@ describe('VideoDecoderFuncCallbackTest', function () {
             });
         });
         eventEmitter.on('reset_for_callback_01_0600', (done) => {
-            videoDecodeProcessor.reset((err) => {
+            videoDecodeProcessor.reset(async (err) => {
                 expect(err).assertUndefined();
                 console.info('in case : reset_for_callback_01_0600 success');
                 frameCountIn = 0;
@@ -511,6 +492,11 @@ describe('VideoDecoderFuncCallbackTest', function () {
                 isCodecData = true;
                 inputEosFlag = false;
                 readStreamSync = null;
+                await toDisplayPage().then(() => {
+                }, failCallback).catch(failCatch);
+                await msleep(1000).then(() => {
+                }, failCallback).catch(failCatch);
+                surfaceID = globalThis.value;
                 eventEmitter.emit('configure', mediaDescription, srcPath,
                 function() {
                     eventEmitter.emit('stop', done);
@@ -557,7 +543,7 @@ describe('VideoDecoderFuncCallbackTest', function () {
             });
         });
         eventEmitter.on('reset_for_callback_01_0700', (done) => {
-            videoDecodeProcessor.reset((err) => {
+            videoDecodeProcessor.reset(async (err) => {
                 expect(err).assertUndefined();
                 console.info('in case : reset_for_callback_01_0700 success');
                 srcPath = BASIC_PATH + 'out_320_240_10s.h264';
@@ -579,6 +565,11 @@ describe('VideoDecoderFuncCallbackTest', function () {
                 inputEosFlag = false;
                 readStreamSync = null;
                 ES_FRAME_SIZE = H264_FRAME_SIZE_240;
+                await toDisplayPage().then(() => {
+                }, failCallback).catch(failCatch);
+                await msleep(1000).then(() => {
+                }, failCallback).catch(failCatch);
+                surfaceID = globalThis.value;
                 eventEmitter.emit('configure', mediaDescription, srcPath,
                 function() {
                     eventEmitter.emit('stop', done);

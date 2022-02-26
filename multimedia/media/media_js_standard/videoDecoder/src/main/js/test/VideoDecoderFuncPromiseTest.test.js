@@ -15,12 +15,12 @@
 
 import media from '@ohos.multimedia.media'
 import Fileio from '@ohos.fileio'
+import router from '@system.router'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 
 describe('VideoDecoderFuncPromiseTest', function () {
     let videoDecodeProcessor = null;
-    let videoPlayer = null;
     let readStreamSync = undefined;
     let frameCountIn = 0;
     let frameCountOut = 0;
@@ -88,8 +88,12 @@ describe('VideoDecoderFuncPromiseTest', function () {
         // getSurfaceID();
     })
 
-    beforeEach(function() {
+    beforeEach(async function() {
         console.info('beforeEach case');
+        await toDisplayPage().then(() => {
+        }, failCallback).catch(failCatch);
+        await msleep(1000).then(() => {
+        }, failCallback).catch(failCatch);
         frameCountIn = 0;
         frameCountOut = 0;
         timestamp = 0;
@@ -97,6 +101,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
         outputQueue = [];
         isCodecData = false;
         inputEosFlag = false;
+        surfaceID = globalThis.value;
     })
 
     afterEach(async function() {
@@ -107,12 +112,8 @@ describe('VideoDecoderFuncPromiseTest', function () {
             }, failCallback).catch(failCatch);
             videoDecodeProcessor = null;
         }
-        if (videoPlayer != null) {
-            await videoPlayer.release().then(() => {
-                console.info('in case : videoPlayer release success');
-            }, failCallback).catch(failCatch);
-            videoPlayer = null;
-        }
+        await router.clear().then(() => {
+        }, failCallback).catch(failCatch);
     })
 
     afterAll(function() {
@@ -126,6 +127,20 @@ describe('VideoDecoderFuncPromiseTest', function () {
     let failCatch = function(err) {
         console.info(`in case error failCatch called,errMessage is ${error.message}`);
         expect(err).assertUndefined();
+    }
+    function msleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+    async function toDisplayPage() {
+        let path = 'pages/display/display';
+        let options = {
+            uri: path,
+        }
+        try {
+            await router.push(options);
+        } catch (e) {
+            console.error('in case toDisplayPage' + e);
+        }
     }
     function readFile(path){
         console.info('in case : read file start execution');
@@ -286,22 +301,6 @@ describe('VideoDecoderFuncPromiseTest', function () {
             readFile(srcPath);
         }, failCallback).catch(failCatch);
     }
-    async function setSurfaceID(done) {
-        await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
-                videoPlayer = video;
-                console.info('in case : createVideoPlayer success');
-            } else {
-                expect().assertFail();
-                console.info('in case error: createVideoPlayer fail');
-                done();
-            }
-        }, failCallback).catch(failCatch);
-        await videoPlayer.getDisplaySurface().then((outputSurface) => {
-            console.info('in case :  getDisplaySurface success and surfaceID is ' + outputSurface);
-            surfaceID = outputSurface;
-        }, failCallback).catch(failCatch);
-    }
     async function toSetOutputSurface(isDisplay) {
         await videoDecodeProcessor.setOutputSurface(surfaceID, isDisplay).then(() => {
             console.info('in case : setOutputSurface success. surfaceID ' + surfaceID);
@@ -357,7 +356,6 @@ describe('VideoDecoderFuncPromiseTest', function () {
         await toCreateVideoDecoderByMime('video/avc', done);
         await toGetVideoDecoderCaps();
         await toConfigure(mediaDescription, srcPath);
-        await setSurfaceID(done);
         await toSetOutputSurface(true);
         setCallback(
             function(){eventEmitter.emit('nextStep', done);}
@@ -389,7 +387,6 @@ describe('VideoDecoderFuncPromiseTest', function () {
         await toCreateVideoDecoderByMime('video/h263', done);
         await toGetVideoDecoderCaps();
         await toConfigure(mediaDescription, srcPath);
-        await setSurfaceID(done);
         await toSetOutputSurface(true);
         setCallback(
             function(){eventEmitter.emit('nextStep', done);}
@@ -421,7 +418,6 @@ describe('VideoDecoderFuncPromiseTest', function () {
         await toCreateVideoDecoderByMime('video/mpeg2', done);
         await toGetVideoDecoderCaps();
         await toConfigure(mediaDescription, srcPath);
-        await setSurfaceID(done);
         await toSetOutputSurface(true);
         setCallback(
             function(){eventEmitter.emit('nextStep', done);}
@@ -453,7 +449,6 @@ describe('VideoDecoderFuncPromiseTest', function () {
         await toCreateVideoDecoderByMime('video/mp4v-es', done);
         await toGetVideoDecoderCaps();
         await toConfigure(mediaDescription, srcPath);
-        await setSurfaceID(done);
         await toSetOutputSurface(true);
         setCallback(
             function(){eventEmitter.emit('nextStep', done);}
@@ -513,7 +508,6 @@ describe('VideoDecoderFuncPromiseTest', function () {
             }, failCallback).catch(failCatch);
         }
         await toConfigure(mediaDescription, srcPath);
-        await setSurfaceID(done);
         await toSetOutputSurface(true);
         setCallback(
             function(){eventEmitter.emit('releaseAllDecoder', done);}

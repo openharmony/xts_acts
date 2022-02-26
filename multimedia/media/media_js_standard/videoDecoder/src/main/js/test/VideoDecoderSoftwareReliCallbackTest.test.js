@@ -15,6 +15,7 @@
 
 import media from '@ohos.multimedia.media'
 import Fileio from '@ohos.fileio'
+import router from '@system.router'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 export
 const DECODE_STEP = {
@@ -33,7 +34,6 @@ const DECODE_STEP = {
 
 describe('VideoDecoderSoftwareReliCallbackTest', function () {
     let videoDecodeProcessor = null;
-    let videoPlayer = null;
     let readStreamSync = undefined;
     let frameCountIn = 0;
     let frameCountOut = 0;
@@ -68,11 +68,14 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
     let ES_FRAME_SIZE = H264_FRAME_SIZE_30FPS_1080;
     beforeAll(function() {
         console.info('beforeAll case');
-        // getSurfaceID();
     })
 
     beforeEach(async function() {
         console.info('beforeEach case');
+        await toDisplayPage().then(() => {
+        }, failCallback).catch(failCatch);
+        await msleep(1000).then(() => {
+        }, failCallback).catch(failCatch);
         frameCountIn = 0;
         frameCountOut = 0;
         timestamp = 0;
@@ -83,7 +86,7 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
         eosFrameId = -1;
         inputEosFlag = false;
         position = 0;
-        await setSurfaceID();
+        surfaceID = globalThis.value;
     })
 
     afterEach(async function() {
@@ -94,12 +97,8 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
             }, failCallback).catch(failCatch);
             videoDecodeProcessor = null;
         }
-        if (videoPlayer != null) {
-            await videoPlayer.release().then(() => {
-                console.info('in case : videoPlayer release success');
-            }, failCallback).catch(failCatch);
-            videoPlayer = null;
-        }
+        await router.clear().then(() => {
+        }, failCallback).catch(failCatch);
     })
 
     afterAll(function() {
@@ -118,6 +117,20 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
         if (expectFail == false && err != undefined) {
             console.info('in case error failCatch called,err is ' + err);
             console.info(`in case error failCatch called,errMessage is ${err.message}`);
+        }
+    }
+    function msleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+    async function toDisplayPage() {
+        let path = 'pages/display/display';
+        let options = {
+            uri: path,
+        }
+        try {
+            await router.push(options);
+        } catch (e) {
+            console.error('in case toDisplayPage' + e);
         }
     }
     function readFile(path){
@@ -148,18 +161,6 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
         } catch(e) {
             console.error('in case error getContent err ' + err);
         }
-    }
-    function getSurfaceID() {
-        let surfaceIDTest = new ArrayBuffer(20);
-        let readSurfaceID =  Fileio.createStreamSync('/data/media/surfaceID.txt', 'rb');
-        readSurfaceID.readSync(surfaceIDTest, {length:13});
-        let view2 = new Uint8Array(surfaceIDTest);
-        for (let i = 0; i < 13; i++) {
-            let value = view2[i] - 48;
-            surfaceID = surfaceID + '' + value;
-        }
-        console.info('in case surfaceID ' + surfaceID);
-        readSurfaceID.closeSync();
     }
 
     /* push inputbuffers into codec  */
@@ -273,21 +274,6 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
             printError(err, expectFail);
             toNextStep(mySteps, done);
         });
-    }
-    async function setSurfaceID() {
-        await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
-                videoPlayer = video;
-                console.info('in case : createVideoPlayer success');
-            } else {
-                expect().assertFail();
-                console.info('in case error: createVideoPlayer fail');
-            }
-        }, failCallback).catch(failCatch);
-        await videoPlayer.getDisplaySurface().then((outputSurface) => {
-            console.info('in case :  getDisplaySurface success and surfaceID is ' + outputSurface);
-            surfaceID = outputSurface;
-        }, failCallback).catch(failCatch);
     }
 
     function toNextStep(mySteps, done) {
