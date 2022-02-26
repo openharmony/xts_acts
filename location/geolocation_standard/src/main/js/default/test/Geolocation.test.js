@@ -17,6 +17,12 @@ import geolocation from '@ohos.geolocation';
 import { LocationEventListener } from '@ohos.geolocation'; 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
+var LocationRequestScenario = {UNSET : 0x300 ,NAVIGATION : 0x301 ,
+        TRAJECTORY_TRACKING : 0x302 ,CAR_HAILING : 0x303,
+	DAILY_LIFE_SERIVICE : 0x304 ,NO_POWER : 0x305}
+var LocationRequestPriority = {UNSET : 0x200 ,ACCURACY : 0x201 ,LOW_POWER : 0x202 ,FIRST_FIX :0x203}
+
+
 describe('geolocationTest', function () {
     beforeAll(function () {
         console.info('beforeAll called')
@@ -33,7 +39,7 @@ describe('geolocationTest', function () {
     })	
 
     /**
-     * @tc.number SUB_LOCATION_geocode_DEVICE_JS_ENABLE_LOCATION_PROMISE_0001
+     * @tc.number geolocation_enableLocation_promise_test_001
      * @tc.name testenableLocation promise
      * @tc.desc Test enableLocation api .
      * @tc.author wangsilu wwx1075324
@@ -52,11 +58,11 @@ describe('geolocationTest', function () {
             console.info("[lbs_js] promise then error." + error.message);
             expect().assertFail();
         })
-		done()
+	done()
     })
 	
     /**
-     * @tc.number SUB_LOCATION_geocode_DEVICE_JS_IS_LOCATION_ENABLED_PROMISE_0001
+     * @tc.number geolocation_isLocationEnabled_promise_test_001
      * @tc.name testisLocationEnabled promise
      * @tc.desc Test isLocationEnabled api .
      * @tc.author wangsilu wwx1075324
@@ -88,7 +94,7 @@ describe('geolocationTest', function () {
     })
  	
     /**
-     * @tc.number SUB_LOCATION_geocode_DEVICE_JS_GET_ADDR_FROM_LOCATION_NAME_CALLBACK_0001
+     * @tc.number geolocation_getAddressesFromLocationName_callback_test_001
      * @tc.name testgetAddressesFromLocationName callback
      * @tc.desc Test getAddressesFromLocationName api .
      * @tc.author wangsilu wwx1075324
@@ -97,7 +103,7 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('geolocation_getAddressesFromLocationName_callback_test_001', 0, async function (done) {
-         console.info('LBS enableLocation promise test start ...');
+        console.info('LBS enableLocation promise test start ...');
         await geolocation.enableLocation().then((result) => {
             console.info('[lbs_js] testenableLocation result: ' + result);
             expect(result).assertTrue();
@@ -109,7 +115,8 @@ describe('geolocationTest', function () {
 				
         console.info('LBS getAddressesFromLocationName callback test start ...');
         var geocodeRequest = {"description": "上海市浦东新区金穗路1800号",
-                            "maxItems": 1,"locale":"zh"};
+                            "maxItems": 1,"locale":"zh",minLatitude:"",minLongitude:"",
+	                    maxLatitude:"",maxLongitude:""};
         geolocation.getAddressesFromLocationName(geocodeRequest,
            (err, data) => {
             if (err) {
@@ -150,7 +157,7 @@ describe('geolocationTest', function () {
     })
 
   /**
-     * @tc.number SUB_LOCATION_geocode_DEVICE_JS_GET_ADDR_FROM_LOCATION_CALLBACK_0001
+     * @tc.number geolocation_getAddressesFromLocation_callback_test_001
      * @tc.name testgetAddressesFromLocation callback
      * @tc.desc Test getAddressesFromLocation api .
      * @tc.author wangsilu wwx1075324
@@ -205,7 +212,7 @@ describe('geolocationTest', function () {
     })
  
   /**
-     * @tc.number SUB_LOCATION_geocode_DEVICE_JS_IS_GEOSERVICE_AVAIL_PROMISE_0001
+     * @tc.number geolocation_isGeoServiceAvailable_promise_test_001
      * @tc.name testisGeoServiceAvailable promise
      * @tc.desc Test isGeoServiceAvailable api .
      * @tc.author wangsilu wwx1075324
@@ -237,7 +244,7 @@ describe('geolocationTest', function () {
     })
 
   /**
-     * @tc.number SUB_LOCATION_geocode_DEVICE_JS_IS_LOCATION_ENABLED_CALLBACK_0001
+     * @tc.number geolocation_isLocationEnabled_callback_test_001
      * @tc.name testisLocationEnabled callback
      * @tc.desc Test isLocationEnabled api .
      * @tc.author wangsilu wwx1075324
@@ -280,7 +287,7 @@ describe('geolocationTest', function () {
     })
 
   /**
-     * @tc.number SUB_LOCATION_geocode_DEVICE_JS_GET_ADDR_FROM_LOCATION_NAME_PROMISE_0001
+     * @tc.number geolocation_getAddressesFromLocationName_promise_test_001
      * @tc.name testgetAddressesFromLocationName promise
      * @tc.desc Test getAddressesFromLocationName api .
      * @tc.author wangsilu wwx1075324
@@ -314,7 +321,7 @@ describe('geolocationTest', function () {
     })
 
     /**
-     * @tc.number SUB_LOCATION_geocode_DEVICE_JS_REQUEST_ENABLE_LOCATION_CALLBACK_0001
+     * @tc.number geolocation_requestEnableLocation_callback_test_001
      * @tc.name testrequestEnableLocation callback
      * @tc.desc Test requestEnableLocation api .
      * @tc.author wangsilu wwx1075324
@@ -338,7 +345,7 @@ describe('geolocationTest', function () {
 
  
   /**
-     * @tc.number SUB_LOCATION_geocode_DEVICE_JS_REQUEST_ENABLE_LOCATION_PROMISE_0001
+     * @tc.number geolocation_requestEnableLocation_promise_test_001
      * @tc.name testrequestEnableLocation promise
      * @tc.desc Test requestEnableLocation api .
      * @tc.author wangsilu wwx1075324
@@ -360,7 +367,7 @@ describe('geolocationTest', function () {
     })	
 
   /**
-     * @tc.number SUB_LOCATION_geocode_DEVICE_JS_ENABLE_LOCATION_CALLBACK_0001
+     * @tc.number geolocation_enableLocation_callback_test_001
      * @tc.name testEnableLocation callback
      * @tc.desc Test enableLocation api .
      * @tc.author wangsilu wwx1075324
@@ -383,7 +390,7 @@ describe('geolocationTest', function () {
     })
 
     /**
-    * @tc.number SUB_LOCATION_geocode_DEVICE_JS_DISABLE_LOCATION_CALLBACK_0001
+    * @tc.number geolocation_disableLocation_callback_test_001
     * @tc.name testdisableLocation callback
     * @tc.desc Test disableLocation api .
     * @tc.author wangsilu wwx1075324
@@ -405,7 +412,7 @@ describe('geolocationTest', function () {
         });
     })
 
-    /** @tc.number SUB_LOCATION_geocode_DEVICE_JS_DISABLE_LOCATION_PROMISE_0001
+    /** @tc.number geolocation_disableLocation_promise_test_001
     * @tc.name testdisableLocation promise
     * @tc.desc Test disableLocation api .
     * @tc.author wangsilu wwx1075324
@@ -424,7 +431,7 @@ describe('geolocationTest', function () {
     })   
     
     /**
-    * @tc.number SUB_LOCATION_geocode_DEVICE_JS_GET_ADDR_FROM_LOCATION_PROMISE_0001
+    * @tc.number geolocation_getAddressesFromLocation_promise_test_001
     * @tc.name testgetAddressesFromLocation promise
     * @tc.desc Test getAddressesFromLocation api .
     * @tc.author wangsilu wwx1075324
@@ -448,7 +455,7 @@ describe('geolocationTest', function () {
     })
 
     /**
-    * @tc.number SUB_LOCATION_geocode_DEVICE_JS_GET_CURRENT_LOCATION_CALLBACK_0001
+    * @tc.number geolocation_GetCurrentlocation_callback_test_001
     * @tc.name testGetCurrentlocation callback
     * @tc.desc Test GetCurrentlocation api .
     * @tc.author wangsilu wwx1075324
@@ -468,7 +475,7 @@ describe('geolocationTest', function () {
     })
 
     /**
-    * @tc.number SUB_LOCATION_geocode_DEVICE_JS_IS_GEOSERVICE_AVAIL_CALLBACK_0001
+    * @tc.number geolocation_isGeoServiceAvailable_callback_test_001
     * @tc.name testisGeoServiceAvailable callback
     * @tc.desc Test isGeoServiceAvailable api .
     * @tc.author wangsilu wwx1075324
@@ -509,7 +516,7 @@ describe('geolocationTest', function () {
     })
  
     /**
-    * @tc.number SUB_LOCATION_geocode_DEVICE_JS_LOCATION_CHANGE_ON_0002
+    * @tc.number geolocation_locationChange_On_test_002
     * @tc.name testlocationChangeOn promise
     * @tc.desc Test locationChangeOn api .
     * @tc.author wangsilu wwx1075324
@@ -525,8 +532,18 @@ describe('geolocationTest', function () {
         await locationEventListener.on('locationChange',requestInfo, result => {
             console.info("onLocationChange callback, result:  " + JSON.stringify(result)); 
             expect(true).assertEqual(result !=null);
+	    console.info("[lbs_js] onLocationChange latitude: " + result.latitude);
+	    console.info("[lbs_js] onLocationChange longitude: " + result.longitude);
+	    console.info("[lbs_js] onLocationChange altitude: " + result.altitude);
+            console.info("[lbs_js] onLocationChange accuracy: " + result.accuracy);
+	    console.info("[lbs_js] onLocationChange speed: " + result.speed);
+	    console.info("[lbs_js] onLocationChange timeStamp: " + result.timeStamp);
+	    console.info("[lbs_js] onLocationChange direction: " + result.direction);
+	    console.info("[lbs_js] onLocationChange additions: " + result.additions);
+	    console.info("[lbs_js] onLocationChange additionSize: " + result.additionSize);
             done();
         }); 
+
         console.info('LBS enableLocation callback test start ...');
         geolocation.enableLocation((err, data) => {
             if (err) {
@@ -542,7 +559,7 @@ describe('geolocationTest', function () {
      })
  
      /**
-     * @tc.number SUB_LOCATION_geocode_DEVICE_JS_ON_LOCATION_SERVICE_STATE_0001
+     * @tc.number geolocation_OnLocationServiceState_test_001
      * @tc.name testOnLocationServiceState
      * @tc.desc Test OnLocationServiceState api .
      * @tc.author wangsilu wwx1075324
@@ -569,11 +586,11 @@ describe('geolocationTest', function () {
             }
             done()
         });    
-    })
+     })
 
     /**
-    * @tc.number SUB_LOCATION_geocode_DEVICE_JS_ON_LOCATION_SERVICE_STATE_0001
-    * @tc.name testOnLocationServiceState
+    * @tc.number geolocation_offLocationServiceState_test_001
+    * @tc.name testoffLocationServiceState
     * @tc.desc Test offLocationServiceState api .
     * @tc.author wangsilu wwx1075324
     * @tc.size MEDIUM
@@ -614,14 +631,37 @@ describe('geolocationTest', function () {
 
         console.info('LBS offLocationServiceState test start ...');
         locationEventListener.off('locationServiceState', result => {
-        console.info("offlocationServiceState callback, result:  " + JSON.stringify(result)); 
-	expect(true).assertEqual(result !=null);
-	done();
+            console.info("offlocationServiceState callback, result:  " + JSON.stringify(result)); 
+	    expect(true).assertEqual(result !=null);
+	    done();
         }); 
     })
 
+   /**
+    * @tc.number geolocation_getLastLocation_callback__test_001
+    * @tc.name testgetLastLocation  callback
+    * @tc.desc Test getLastLocation  api .
+    * @tc.author wangsilu wwx1075324
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('geolocation_getLastLocation_callback__test_001', 0, async function (done) {
+        console.info('LBS getLastLocation test start ...');
+        geolocation.getLastLocation((err, data) => {
+            if (err) {
+                console.info('[lbs_js]  getLastLocation callback err is : ' + err );
+            }else {
+                console.info("[lbs_js] getLastLocation callback data: " + JSON.stringify(data));
+                expect(data).assertTrue(data != null);
+                console.info("[lbs_js] getLastLocation callback exit .");
+            }
+        });
+	done();
+     })
+
     /**
-    * @tc.number SUB_LOCATION_geocode_DEVICE_JS_LOCATION_SERVICE_OFF_0002
+    * @tc.number geolocation_locationChange_Off_test_002
     * @tc.name testlocationChangeOff promise
     * @tc.desc Test locationChangeoff api .
     * @tc.author wangsilu wwx1075324
@@ -671,5 +711,89 @@ describe('geolocationTest', function () {
             done();
         });
     })
+
+    /**
+    * @tc.number geolocation_getLastLocation_promise__test_001
+    * @tc.name testgetLastLocation  promise
+    * @tc.desc Test getLastLocation  api .
+    * @tc.author wangsilu wwx1075324
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('geolocation_getLastLocation_promise__test_001', 0, async function (done) {
+        console.info('LBS getLastLocation test start ...');
+        geolocation.getLastLocation().then((result) => {
+		console.info("[lbs_js] getLastLocation promise data: " + JSON.stringify(result));
+	        expect(data).assertTrue(data != null);
+		 console.info("[lbs_js] getLastLocation promise exit .");
+		done();
+	}).catch(error => {
+		console.info('[lbs_js]  getLastLocation promise err is : ' + err );
+		expect().assertFail();
+		done();
+
+        });
+     })
+     
+    /**
+     * @tc.number geolocation_isLocationPrivacyConfirmed_promise_test_001
+     * @tc.name Test setLocationPrivacyConfirmStatus promise
+     * @tc.desc Test setLocationPrivacyConfirmStatus api .
+     * @tc.author wangsilu wwx1075324
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+    */
+    it('geolocation_setLocationPrivacyConfirmStatus_promise_test_001', 0, async function (done) {
+        let reqType = 1;
+        let value = true;
+        let type = "STARTUP";
+
+        if(type == "OTHERS"){
+            reqType = 0;
+        }
+        if(type == "STARTUP"){
+            reqType = 1;
+        }
+        if(type == "CORE_LOCATION"){
+            reqType = 2;
+        }
+        console.info('LBS setLocationPrivacyConfirmStatus promise test start ...')
+        geolocation.setLocationPrivacyConfirmStatus(reqType,value).then((resp) => {
+            console.log("[lbs_js] setLocationPrivacyConfirmStatus current type is "+ JSON.stringify(resp))
+            expect(resp).assertTrue();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number geolocation_isLocationPrivacyConfirmed_promise_test_001
+     * @tc.name Test isLocationPrivacyConfirmed promise
+     * @tc.desc Test isLocationPrivacyConfirmed api .
+     * @tc.author wangsilu wwx1075324
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('geolocation_isLocationPrivacyConfirmed_promise_test_001', 0, async function (done) {
+        let reqType = 1;
+        let value = true;
+        console.info('LBS setLocationPrivacyConfirmStatus promise test start ...')
+        geolocation.setLocationPrivacyConfirmStatus(reqType,value).then((resp) => {
+            console.log("[lbs_js] setLocationPrivacyConfirmStatus current type is "+ JSON.stringify(resp))
+            expect(resp).assertTrue();
+        })
+
+        console.info('LBS isLocationPrivacyConfirmed promise test start ...');
+        geolocation.isLocationPrivacyConfirmed(reqType).then(resp => {
+            console.log("[lbs_js] isLocationPrivacyConfirmed current type is "+ JSON.stringify(resp))
+            expect(resp).assertTrue();
+            console.info("[lbs_js] isLocationPrivacyConfirmed callback exit .");
+            done();
+        })
+    })
+   
+       
 })
 

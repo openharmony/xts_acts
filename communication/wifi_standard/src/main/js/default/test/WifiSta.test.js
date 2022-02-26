@@ -27,6 +27,7 @@ function sleep(delay) {
     }
 }
 
+
 var WifiSecurityType = {
     WIFI_SEC_TYPE_INVALID: 0,
     WIFI_SEC_TYPE_OPEN: 1,
@@ -84,6 +85,7 @@ describe('ACTS_WifiTest', function() {
     /**
      * @tc.number     open_0001
      * @tc.name       SUB_Communication_WiFi_Sta_Open_0001
+     * @tc.author     wudangping wwx1075776
      * @tc.desc       Test wifi.isWifiEnable API functionality.
      */
     it('SUB_Communication_WiFi_Sta_Open_0001', 0, function() {
@@ -92,7 +94,7 @@ describe('ACTS_WifiTest', function() {
         var active = wifi.isWifiActive();
         if (!active) {
             var enable = wifi.enableWifi();
-            sleep(3000);
+            sleep(5000);
             console.log("[wifi_test] wifi open result: " + enable);
             expect(enable).assertTrue();
         }
@@ -108,6 +110,7 @@ describe('ACTS_WifiTest', function() {
     /**
      * @tc.number     Scan_0001
      * @tc.name       SUB_Communication_WiFi_Sta_Scan_0001
+     * @tc.author     wudangping wwx1075776
      * @tc.desc       Test get ScanInfos callback API functionality.
      */
     it('SUB_Communication_WiFi_Sta_Scan_0001', 0, async function(done) {
@@ -163,6 +166,7 @@ describe('ACTS_WifiTest', function() {
     /**
      * @tc.number     Scan_0004
      * @tc.name       SUB_Communication_WiFi_Sta_Scan_0004
+     * @tc.author     wudangping wwx1075776
      * @tc.desc       Test wifi.getSignalLevel API functionality.
      */
     it('SUB_Communication_WiFi_Sta_Scan_0004', 0, function() {
@@ -201,6 +205,7 @@ describe('ACTS_WifiTest', function() {
     /**
      * @tc.number     Config_0001
      * @tc.name       SUB_Communication_WiFi_Sta_Config_0001
+     * @tc.author     wudangping wwx1075776
      * @tc.desc       Test create a OPEN SecurityType wifi device config
      */
     it('SUB_Communication_WiFi_Sta_Config_0001', 0, async function(done) {
@@ -255,6 +260,7 @@ describe('ACTS_WifiTest', function() {
     /**
      * @tc.number     Config_0002
      * @tc.name       SUB_Communication_WiFi_Sta_Config_0002
+     * @tc.author     wudangping wwx1075776
      * @tc.desc       Test create a PSK SecurityType wifi device config
      */
     it('SUB_Communication_WiFi_Sta_Config_0002', 0, async function(done) {
@@ -294,6 +300,7 @@ describe('ACTS_WifiTest', function() {
     /**
      * @tc.number     Config_0005
      * @tc.name       SUB_Communication_WiFi_Sta_Config_0005
+     * @tc.author     wudangping wwx1075776
      * @tc.desc       Test remove all wifi device config
      */
     it('SUB_Communication_WiFi_Sta_Config_0005', 0, async function(done) {
@@ -359,6 +366,7 @@ describe('ACTS_WifiTest', function() {
     /**
      * @tc.number     Config_0007
      * @tc.name       SUB_Communication_WiFi_Sta_Config_0007
+     * @tc.author     wudangping wwx1075776
      * @tc.desc       Test update wifi device config
      */
     it('SUB_Communication_WiFi_Sta_Config_0007', 0, async function(done) {
@@ -411,6 +419,7 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Sta_info_0001
      * @tc.name testgetMacAddress
      * @tc.desc Test getMacAddress api.
+     * @tc.author wudangping wwx1075776
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
@@ -432,6 +441,7 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Sta_info_0002
      * @tc.name testgetCountryCode
      * @tc.desc Test getCountryCode api.
+     * @tc.author wudangping wwx1075776
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
@@ -453,6 +463,7 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Sta_info_0004
      * @tc.name testFeatureSupported
      * @tc.desc Test FeatureSupported api.
+     * @tc.author wudangping wwx1075776
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
@@ -469,6 +480,7 @@ describe('ACTS_WifiTest', function() {
     /**
     * @tc.number     Conn_Info_0001
     * @tc.name       SUB_Communication_WiFi_Sta_Conn_Info_0001
+    * @tc.author     wudangping wwx1075776
     * @tc.desc       Test reconnect wifi
     */
    it('SUB_Communication_WiFi_Sta_Conn_Info_0001', 0, function () {
@@ -514,6 +526,7 @@ describe('ACTS_WifiTest', function() {
     /**
      * @tc.number     conn_Config_0002
      * @tc.name       SUB_Communication_WiFi_Sta_Conn_Info_0002
+     * @tc.author     wudangping wwx1075776
      * @tc.desc       Test getLinkedInfo information
      */
     it('SUB_Communication_WiFi_Sta_Conn_Info_0001', 0, async function(done) {
@@ -559,6 +572,7 @@ describe('ACTS_WifiTest', function() {
     /**
     * @tc.number     Conn_Info_0003
     * @tc.name       SUB_Communication_WiFi_Sta_Conn_Info_0003
+    * @tc.author     wudangping wwx1075776
     * @tc.desc       Test get IpInfo information
     */
     it('SUB_Communication_WiFi_Sta_Conn_Info_0002', 0, function () {
@@ -600,6 +614,7 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Sta_ON_0001
      * @tc.name testwifiStateChangeOn
      * @tc.desc Test wifiStateChangeOn api.
+     * @tc.author wudangping wwx1075776
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
@@ -622,6 +637,7 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Sta_Off_0002
      * @tc.name testwifiStateChangeOff
      * @tc.desc Test wifiStateChangeOff api.
+     * @tc.author wudangping wwx1075776
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
@@ -644,6 +660,7 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Sta_ON_0003
      * @tc.name testwifiConnectionChnageOn
      * @tc.desc Test wifiConnectionChnageOn api.
+     * @tc.author wudangping wwx1075776
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
@@ -666,6 +683,7 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Sta_Off_0004
      * @tc.name testwifiConnectionChangeOff
      * @tc.desc Test wifiConnectionChangeOff api.
+     * @tc.author wudangping wwx1075776
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
@@ -688,6 +706,7 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Sta_ON_0005
      * @tc.name testwifiScanStateChangeOn
      * @tc.desc Test wifiwifiScanStateChangeOn api.
+     * @tc.author wudangping wwx1075776
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
@@ -710,6 +729,7 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Sta_Off_0006
      * @tc.name testwifiScanStateChangeOff
      * @tc.desc Test wifiScanStateChangeOff api.
+     * @tc.author wudangping wwx1075776
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
@@ -732,6 +752,7 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Sta_ON_0007
      * @tc.name testwifiRssiChangeOn
      * @tc.desc Test wifiRssiChangeOn api.
+     * @tc.author wudangping wwx1075776
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
@@ -753,7 +774,8 @@ describe('ACTS_WifiTest', function() {
     /**
      * @tc.number SUB_Communication_WiFi_Sta_Off_0008
      * @tc.name testwifiRssiChangeOff
-     * @tc.desc Test wifiRssiChange api.
+     * @tc.desc Test wifiRssiChange api
+     * @tc.author wudangping wwx1075776.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
