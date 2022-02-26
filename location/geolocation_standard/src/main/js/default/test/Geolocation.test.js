@@ -14,12 +14,12 @@
  */
 
 import geolocation from '@ohos.geolocation';
-
+import wantAgent from '@ohos.wantAgent';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 let LocationRequestScenario = {UNSET : 0x300 ,NAVIGATION : 0x301 ,
     TRAJECTORY_TRACKING : 0x302 ,CAR_HAILING : 0x303,
-DAILY_LIFE_SERIVICE : 0x304 ,NO_POWER : 0x305}
+DAILY_LIFE_SERVICE : 0x304 ,NO_POWER : 0x305}
 let LocationRequestPriority = {UNSET : 0x200 ,ACCURACY : 0x201 ,LOW_POWER : 0x202 ,FIRST_FIX :0x203}
 
 let LocationPrivacyType = {
@@ -895,6 +895,50 @@ describe('geolocationTest', function () {
         }); 
             
     })
+
+    /**
+     * @tc.number SUB_LOCATION_geocode_DEVICE_JS_LOCATION_CHANGE_ON_0001
+     * @tc.name testlocationChangeOn promise
+     * @tc.desc Test fenceStatusChange api .
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('geolocation_fenceStatusChange_On_test_001', 0, async function (done) {
+         geolocation.enableLocation((err, data) => {
+            if (err) {
+                console.info('[lbs_js]  enableLocation callback err is : ' + err );
+            }else {
+                console.info("[lbs_js] enableLocation callback data: " + data);
+                expect(data).assertTrue();
+            }
+            done()
+         });
+        let geofence = {"latitude":31.12,"longitude":121.11, "radius":1,"expiration":""};
+        let geofenceRequest = { "priority":0x203, "scenario":0x300,"geofence":geofence};
+        let want = (wantAgent)=>{
+           console.log('wantAgent:'+ JSON.stringify(wantAgent));
+        };
+        await geolocation.on('fenceStatusChange',geofenceRequest,
+         want => {
+             if(err){
+                 return console.info("fenceStatusChange callback  err:  " + err);
+             }
+             console.info("offfenceStatusChange callback: " + JSON.stringify(want));
+             expect(true).assertEqual(want !=null);
+             done();
+         });
+        await geolocation.off('fenceStatusChange',geofenceRequest,
+          want => {
+             if(err){
+                 return console.info("fenceStatusChange callback  err:  " + err);
+             }
+             console.info("offfenceStatusChange callback:  " + JSON.stringify(want));
+             expect(true).assertEqual(want !=null);
+             done();
+         });
+
+     })
 
     /**
      * @tc.number SUB_LOCATION_geocode_DEVICE_JS_LOCATION_CHANGE_ON_0002
