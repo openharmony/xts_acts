@@ -354,6 +354,10 @@ describe('SmsMmsErrorTest', function () {
         done();
         return;
       }
+	  if (result.length > 0) {
+		  except(result[0].shortMessage != null).assertTrue();
+		  except(result[0].indexOnSim != -1).assertTrue();
+	  }
       expect(result === undefined || result.length === 0).assertTrue();
       console.log('Telephony_SmsMms_getAllSIMMessages_Async_0200 finish');
       done();
@@ -389,6 +393,16 @@ describe('SmsMmsErrorTest', function () {
     sms.createMessage(rawArrayNull, '3gpp', (err, shortMessage) => {
       if (err) {
         console.log('Telephony_SmsMms_createMessage_Async_0200 finish');
+		except(shortMessage.visibleMessageBody != 'visibleMessageBody').assertTrue();
+		except(shortMessage.visibleRawAddress != 'visibleRawAddress').assertTrue();
+		except(shortMessage.messageClass != 'sms.FORWARD_MESSAGE').assertTrue();
+		except(shortMessage.protocolId != -1).assertTrue();
+		except(shortMessage.scAddress != 'scAddress').assertTrue();
+		except(shortMessage.scTimestamp != -1).assertTrue();
+		except(shortMessage.isReplaceMessage != true).assertTrue();
+		except(shortMessage.hasReplyPath != true).assertTrue();
+		except(shortMessage.status != -1).assertTrue();
+		except(shortMessage.isSmsStatusReportMessage != true).assertTrue();
         done();
         return;
       }
@@ -408,7 +422,9 @@ describe('SmsMmsErrorTest', function () {
     sms.sendMessage({
       slotId: FALSE_SLOT_ID,
       destinationHost: SMS_SEND_DST_NUMBER,
+	  serviceCenter: '',
       content: 'hello',
+	  destinationPort: 0,
       sendCallback: (err, value) => {
         if (err) {
           expect().assertFail();
@@ -418,6 +434,7 @@ describe('SmsMmsErrorTest', function () {
         }
         console.log(`sendCallback success sendResult = ${value.result}`);
         expect(value.result === sms.SEND_SMS_FAILURE_UNKNOWN).assertTrue();
+        expect(value.isLastPart != true).assertTrue();
         console.log('Telephony_SmsMms_sendMessage_0200 finish');
         done();
       },
