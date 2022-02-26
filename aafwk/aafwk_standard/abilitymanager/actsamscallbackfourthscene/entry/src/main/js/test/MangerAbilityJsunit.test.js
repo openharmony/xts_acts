@@ -57,21 +57,8 @@ var bundleNameList = [
 describe('ActsAmsCallBackFourthScene', function () {
     console.info('----ActsAmsCallBackFourthScene----');
     beforeAll(async function (done) {
-        await featureAbility.startAbility(
-            {
-                want:
-                {
-                    deviceId: "",
-                    bundleName: "com.ohos.launcher",
-                    abilityName: "com.ohos.launcher.MainAbility",
-                    action: "action1",
-                    parameters:
-                        {},
-                },
-            },
-        );
         var maxnum = 10;
-	 var flag = 1;
+	    var flag = 1;
         var data = await abilitymanager.queryRecentAbilityMissionInfos(maxnum, flag);
         console.log('queryRecentAbilityMissionInfos data  ' + JSON.stringify(data));
         for (var i = 0; i < data.length; i++) {
@@ -126,7 +113,7 @@ describe('ActsAmsCallBackFourthScene', function () {
                 {
                     deviceId: "",
                     bundleName: "com.ix.simulate.entry",
-                    abilityName: "com.example.SimulateEntryAbilityFir",
+                    abilityName: "com.example.SimulateEntryAbility",
                     action: "action1",
                     parameters:
                         {},
