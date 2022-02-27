@@ -14,7 +14,6 @@
  */
 
 import {Core, ExpectExtend} from 'deccjsunit/index'
-import Fileio from '@ohos.fileio'
 
 export default {
     data: {
@@ -42,13 +41,7 @@ export default {
     onReady() {
     },
     LoadXcomponent() {
-        let surfaceid = this.$element('XcomponentId').getComponentSurfaceId()
-        this.saveSurfaceID(surfaceid);
+        globalThis.value = this.$element('XcomponentId').getComponentSurfaceId()
     },
-    saveSurfaceID(surfaceID) {
-        let writeStreamSync = Fileio.createStreamSync('/data/media/surfaceID.txt', 'ab+')
-        writeStreamSync.writeSync(surfaceID, {length : 13})
-        writeStreamSync.flushSync()
-        writeStreamSync.closeSync()
-    },
+
 }

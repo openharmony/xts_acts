@@ -12,7 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-require('./VideoPlayerFuncCallbackTest.test.js')
-require('./VideoPlayerFuncPromiseTest.test.js')
-require('./VideoPlayerAPICallbackTest.test.js')
-require('./VideoPlayerEnumTest.test.js')
+
+import {Core, ExpectExtend} from 'deccjsunit/index'
+import Fileio from '@ohos.fileio'
+
+export default {
+    data: {
+        title: ""
+    },
+    onInit() {
+        this.title = this.$t('strings.world');
+    },
+    onShow() {
+    },
+    onReady() {
+    },
+    LoadXcomponent2() {
+        globalThis.value = this.$element('XcomponentId2').getComponentSurfaceId()
+    },
+}

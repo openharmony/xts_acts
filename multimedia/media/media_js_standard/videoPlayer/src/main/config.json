@@ -61,7 +61,8 @@
       "js": [
           {
               "pages": [
-                  "pages/index/index"
+                  "pages/index/index",
+                  "pages/surfaceTest/surfaceTest"
               ],
               "name": "default",
               "window": {
