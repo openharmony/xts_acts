@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import prompt from '@system.prompt';
 
+import prompt from '@system.prompt';
 
 var options = {
     duration: 1500,
@@ -441,6 +441,7 @@ export default {
 
     functionTest3(event){
         var function3 =  this.$element('function3');
+
         var animation = function3.animate(frames, options);
         animation.play()
         animation.onfinish = function(){
