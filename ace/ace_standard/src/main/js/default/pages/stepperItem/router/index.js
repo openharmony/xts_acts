@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+
 import prompt from '@system.prompt';
 
 var options = {
@@ -84,76 +85,37 @@ var frames = [
 ];
 
 export default {
+
     data: {
         label1:
         {
-            prevLabel: 'B',
-            nextLabel: 'N',
+            prevLabel: 'BACK',
+            nextLabel: 'NEXT',
             status: 'normal'
         },
         label2:
         {
-            prevLabel: 'B',
-            nextLabel: 'N',
+            prevLabel: 'BACK',
+            nextLabel: 'NEXT',
             status: 'normal'
         },
         label3:
         {
-            prevLabel: 'B',
-            nextLabel: 'N',
+            prevLabel: 'BACK',
+            nextLabel: 'NEXT',
             status: 'normal'
         },
     },
-    setRightButton(e) {
-        this.$element('mystepper').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('style1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('style2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('style2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('style3').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('style4').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('style5').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('style6').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('style7').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('ani1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('ani2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('prop1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('prop2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('prop3').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('prop4').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('event1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('event2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('function1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('function2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('gradient1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('gradient2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('gradient3').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('gradient4').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('access1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('ato1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('ato2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('ato3').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('atom1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('atom2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('atom3').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('atomA1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('atomA2').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('atomA3').setNextButtonStatus({status: 'skip', label: 'SKIP'});
-        this.$element('mul1').setNextButtonStatus({status: 'skip', label: 'SKIP'});
+
+    appear(){
+        console.log("显示")
     },
-    next(e) {
-        var index = {
-            pendingIndex: e.pendingIndex
-        }
-        return index;
-    },
-    back(e) {
-        var index = {
-            pendingIndex: e.pendingIndex
-        }
-        return index;
+    disappear(){
+        console.log("消失")
     },
 
     onShow(){
+
         // 通用属性
         var prop1 =  this.$element('prop1');
         var name1 = prop1.dataSet.name
@@ -253,34 +215,6 @@ export default {
         ',changeSize--' + changeSize + ',changeForce--' + changeForce;
         prompt.showToast({
             message: 'touchCancel:\n' +message
-        });
-    },
-
-    appearTest(){
-        prompt.showToast({
-            message: 'appear'
-        });
-    },
-    disappearTest(){
-        prompt.showToast({
-            message: 'disappear'
-        });
-    },
-    finishTest(){
-        prompt.showToast({
-            message: 'finish'
-        });
-    },
-
-    skipTest(){
-        prompt.showToast({
-            message: 'skip'
-        });
-    },
-
-    changeTest(){
-        prompt.showToast({
-            message: 'change'
         });
     },
 
@@ -507,6 +441,7 @@ export default {
 
     functionTest3(event){
         var function3 =  this.$element('function3');
+
         var animation = function3.animate(frames, options);
         animation.play()
         animation.onfinish = function(){
@@ -581,5 +516,4 @@ export default {
             message: 'reachBottom'
         });
     }
-
 }
