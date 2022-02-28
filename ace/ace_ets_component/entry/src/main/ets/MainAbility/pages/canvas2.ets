@@ -35,8 +35,8 @@ struct Canvas2Example {
               this.transferFromImageBitmap();
               this.offScreenToDataURL();
             })
-            .key('canvas1')
-        }.width('100%').height('400%')
+            .key('canvas2')
+        }.width('100%').height('100%')
       }.scrollable(ScrollDirection.Vertical).scrollBar(BarState.On)
       .scrollBarColor(Color.Gray).scrollBarWidth(10)
     }

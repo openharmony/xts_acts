@@ -24,10 +24,6 @@ struct TextExample {
         .fontSize(this.fontSize)
         .fontColor(0xCCCCCC)
         .key('text')
-      Text($r('app.string.string_hello'))
-        .fontColor($r('app.color.color_hello'))
-        .fontSize($r('app.float.font_hello'))
-        .key('text1')
       Image($rawfile('test.png'))
         .key('image')
     }

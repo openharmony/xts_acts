@@ -83,7 +83,7 @@ struct CanvasExample {
               this.getBitImageSize();
             })
             .key('canvas1')
-        }.width('100%').height('400%')
+        }.width('100%').height('350%')
       }.scrollable(ScrollDirection.Vertical).scrollBar(BarState.On)
       .scrollBarColor(Color.Gray).scrollBarWidth(10)
     }

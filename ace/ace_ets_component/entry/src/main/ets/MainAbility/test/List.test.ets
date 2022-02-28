@@ -64,7 +64,10 @@ import toggleJsunit from './ToggleJsunit.test.ets';
 import shapeJsunit from './ShapeJsunit.test.ets'
 import motionPathJsunit from './MotionPathJsunit.test.ets';
 import scrollCodeJsunit from './ScrollCodeJsunit.test.ets';
-
+import canvas3Jsunit from './Canvas3Jsunit.test.ets';
+import transitionJsunit from './TransitionJsunit.test.ets';
+import priorityGestureJsunit from './PriorityGestureJsunit.test.ets';
+import parallelGestureJsunit from './ParallelGestureJsunit.test.ets';
 
 export default function testsuite() {
   gaugeJsunit();
@@ -102,6 +105,7 @@ export default function testsuite() {
   badgeJsunit();
   canvasJsunit();
   canvas2Jsunit();
+  canvas3Jsunit();
   longPressGestureJsUnit();
   buttonJsunit();
   responseRegionJsunit();
@@ -119,4 +123,7 @@ export default function testsuite() {
   motionPathJsunit();
   columnJsunit();
   scrollCodeJsunit();
+  transitionJsunit();
+  priorityGestureJsunit();
+  parallelGestureJsunit();
 }
