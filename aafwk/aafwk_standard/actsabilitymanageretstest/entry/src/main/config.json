@@ -1,4 +1,4 @@
-  {
+{
   "app": {
     "bundleName": "com.ohos.acecollaboration",
     "vendor": "ohos",
@@ -42,7 +42,7 @@
           }
         ],
         "visible": true,
-        "srcPath": "default",
+        "srcPath": "MainAbility",
         "srcLanguage": "ets",
         "name": "com.ohos.acecollaboration.MainAbility",
         "icon": "$media:icon",
@@ -113,7 +113,7 @@
         "pages": [
           "pages/index"
         ],
-        "name": "default",
+        "name": "MainAbility",
         "window": {
           "designWidth": 720,
           "autoDesignWidth": false
