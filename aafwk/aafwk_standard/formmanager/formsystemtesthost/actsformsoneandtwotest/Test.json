@@ -4,7 +4,7 @@
         "type": "JSUnitTest",
         "test-timeout": "120000",
         "package": "com.example.formsoneandtwo",
-        "shell-timeout": "60000"
+        "shell-timeout": "600000"
     },
     "kits": [
         {

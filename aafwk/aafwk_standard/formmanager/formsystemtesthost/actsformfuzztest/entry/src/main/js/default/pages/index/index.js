@@ -29,7 +29,7 @@ export default {
     onInit() {
         this.title = "FMS Fuzz Test";
     },
-    onShow() {
+    onActive() {
         console.info('onShow finish')
         const core = Core.getInstance()
         const expectExtend = new ExpectExtend({

@@ -29,7 +29,7 @@ export default {
     onInit() {
         this.title = "卡片配置信息查询 \n有权限、是系统应用";
     },
-    onShow() {
+    onActive() {
         console.info('onShow finish')
         const core = Core.getInstance()
         const expectExtend = new ExpectExtend({

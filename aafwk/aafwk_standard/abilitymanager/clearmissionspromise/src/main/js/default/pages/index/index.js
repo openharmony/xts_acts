@@ -14,6 +14,9 @@
  */
 import file from '@system.file'
 import {Core, ExpectExtend, ReportExtend} from 'deccjsunit/index'
+
+const injectRef = Object.getPrototypeOf(global) || global
+injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 var once = true
 export default {
     data: {
@@ -22,7 +25,7 @@ export default {
     onInit() {
         this.title = this.$t('strings.world');
     },
-    onShow() {
+    onActive() {
         if (once) {
             once = false
             console.info('onShow finish')

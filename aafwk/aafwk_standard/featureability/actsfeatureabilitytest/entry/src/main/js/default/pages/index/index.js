@@ -27,7 +27,7 @@ export default {
     onInit() {
         this.title = this.$t('strings.world');
     },
-    onShow() {
+    onActive() {
         if (!once) {
             return;
         }
@@ -40,6 +40,7 @@ export default {
         core.addService('expect', expectExtend)
         core.init()
         const configService = core.getDefaultService('config')
+        this.timeout = 10000;
         configService.setConfig(this)
 
         require('../../../test/List.test')
