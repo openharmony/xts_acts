@@ -46,7 +46,7 @@ describe('VideoDecoderSoftwareReliPromiseTest', function () {
     let inputEosFlag = false;
     let workdoneAtEOS = false;
     let surfaceID = '';
-    const BASIC_PATH = '/data/media/';
+    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.videodecoder/shared/';
     const SRCPATH = BASIC_PATH + 'out_1920_1080_30fps_3s.h264';
     let mediaDescription = {
         'track_type': 1,

@@ -32,7 +32,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
     let surfaceID = '';
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
-    const BASIC_PATH = '/data/media/';
+    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.videodecoder/shared/';
     let ES_FRAME_SIZE = [];
     const H264_FRAME_SIZE_30FPS_1080 =
     [ 3491, 115184, 9423, 1046, 19038, 2059, 2306, 28773, 4815, 1670, 31464, 6322, 2969, 3518, 38279, 8419, 4463,
