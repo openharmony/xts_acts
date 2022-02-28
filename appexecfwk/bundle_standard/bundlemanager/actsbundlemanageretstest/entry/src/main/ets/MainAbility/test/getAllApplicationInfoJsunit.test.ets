@@ -26,7 +26,7 @@ const TAG_TEST_0300_001 = ' bundle_getAllApplicationInfo_test_0300_007 ';
 const TAG_TEST_0400_001 = ' bundle_getAllApplicationInfo_test_0400_008 ';
 const TAG_TEST_0500_001 = ' bundle_getAllApplicationInfo_test_0500_009 ';
 const TAG_TEST_0500_002 = ' bundle_getAllApplicationInfo_test_0500_0010 ';
-const USER_ID_100 = 101;
+const USER_ID_100 = 100;
 const SLEEP_TIME_1000 = 1000;
 const SLEEP_TIME_2000 = 2000;
 
@@ -52,7 +52,7 @@ export default function applicationBundleJsunit() {
       console.info(TAG_TEST_0100_001 + 'promise START');
       await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
-      let data = await Bundle.getAllApplicationInfo(Bundle.GET_APPLICATION_INFO_WITH_PERMISSION, USER_ID_100)
+      let data = await Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USER_ID_100)
         .catch((error) => {
           console.info(TAG_TEST_0100_001 + 'UserId promise error is: ' + error);
         });
@@ -75,7 +75,7 @@ export default function applicationBundleJsunit() {
       console.info(TAG_TEST_0100_002 + 'promise START');
       await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
-      let data = await Bundle.getAllApplicationInfo(Bundle.GET_ALL_APPLICATION_INFO, USER_ID_100)
+      let data = await Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_ALL_APPLICATION_INFO, USER_ID_100)
         .catch((error) => {
           console.info(TAG_TEST_0100_002 + 'UserId promise error is: ' + error);
         });
@@ -98,7 +98,7 @@ export default function applicationBundleJsunit() {
       console.info(TAG_TEST_0100_003 + 'promise START');
       await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
-      let data = await Bundle.getAllApplicationInfo(Bundle.GET_APPLICATION_INFO_WITH_DISABLE, USER_ID_100)
+      let data = await Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_DISABLE, USER_ID_100)
         .catch((error) => {
           console.info(TAG_TEST_0100_003 + 'UserId promise error is: ' + error);
         });
@@ -122,7 +122,7 @@ export default function applicationBundleJsunit() {
       console.info(TAG_TEST_0200_001 + 'promise START');
       await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
-      let data = await Bundle.getAllApplicationInfo(Bundle.GET_APPLICATION_INFO_WITH_PERMISSION)
+      let data = await Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION)
         .catch((error) => {
           console.info(TAG_TEST_0200_001 + 'onUserId promise error is: ' + error);
         });
@@ -145,7 +145,7 @@ export default function applicationBundleJsunit() {
       console.info(TAG_TEST_0200_002 + 'promise START');
       await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
-      let data = await Bundle.getAllApplicationInfo(Bundle.GET_ALL_APPLICATION_INFO)
+      let data = await Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_ALL_APPLICATION_INFO)
         .catch((error) => {
           console.info(TAG_TEST_0200_002 + 'onUserId promise error is: ' + error);
         });
@@ -168,7 +168,7 @@ export default function applicationBundleJsunit() {
       console.info(TAG_TEST_0200_003 + 'promise START');
       await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
-      let data = await Bundle.getAllApplicationInfo(Bundle.GET_APPLICATION_INFO_WITH_DISABLE)
+      let data = await Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_DISABLE)
         .catch((error) => {
           console.info(TAG_TEST_0200_003 + 'onUserId promise error is: ' + error);
         });
@@ -192,14 +192,15 @@ export default function applicationBundleJsunit() {
       await Utils.sleep(SLEEP_TIME_1000);
       let datas;
       var startTime = await Utils.getNowTime();
-      Bundle.getAllApplicationInfo(Bundle.GET_APPLICATION_INFO_WITH_PERMISSION, USER_ID_100, (error, data) => {
-        var endTime = Utils.getNowTime();
-        Utils.getDurationTime(TAG_TEST_0300_001, startTime, endTime);
-        console.info(TAG_TEST_0300_001 + 'UserId callBack in');
-        console.info(TAG_TEST_0300_001 + 'UserId callBack error: ' + error);
-        console.info(TAG_TEST_0300_001 + 'UserId callBack data is:' + JSON.stringify(data));
-        datas = data;
-      });
+      Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USER_ID_100,
+        (error, data) => {
+          var endTime = Utils.getNowTime();
+          Utils.getDurationTime(TAG_TEST_0300_001, startTime, endTime);
+          console.info(TAG_TEST_0300_001 + 'UserId callBack in');
+          console.info(TAG_TEST_0300_001 + 'UserId callBack error: ' + error);
+          console.info(TAG_TEST_0300_001 + 'UserId callBack data is:' + JSON.stringify(data));
+          datas = data;
+        });
       await Utils.sleep(2000);
       console.info(TAG_TEST_0300_001 + 'UserId callBack datas is:' + JSON.stringify(datas));
       commonTest(TAG_TEST_0300_001, datas)
@@ -218,7 +219,7 @@ export default function applicationBundleJsunit() {
       console.info(TAG_TEST_0400_001 + 'callBack START');
       let datas;
       var startTime = await Utils.getNowTime();
-      Bundle.getAllApplicationInfo(Bundle.GET_APPLICATION_INFO_WITH_PERMISSION, (error, data) => {
+      Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, (error, data) => {
         var endTime = Utils.getNowTime();
         Utils.getDurationTime(TAG_TEST_0400_001, startTime, endTime);
         console.info(TAG_TEST_0400_001 + 'noUserId callBack in');
@@ -269,7 +270,7 @@ export default function applicationBundleJsunit() {
       await Utils.sleep(SLEEP_TIME_1000);
       let errors;
       var startTime = await Utils.getNowTime();
-      let data = await Bundle.getAllApplicationInfo('', 0, USER_ID_100)
+      let data = await Bundle.getAllApplicationInfo('0', USER_ID_100)
         .catch((error) => {
           console.info(TAG_TEST_0500_002 + 'UserId promise error is: ' + error);
           errors = error;
@@ -290,7 +291,7 @@ export default function applicationBundleJsunit() {
     function commonTest(msg, data) {
       console.info(msg + 'commonTest data length [' + data.length + ']');
       for (var i = 0; i < data.length; i++) {
-        console.info(msg + i +' [ + data[i] + ] ：' + JSON.stringify(data[i]));
+        console.info(msg + i + ' [ + data[i] + ] ：' + JSON.stringify(data[i]));
         console.info(msg + '[' + i + '].name:' + data[i].name);
         console.info(msg + '[' + i + '].codePath:' + data[i].codePath);
         console.info(msg + '[' + i + '].accessTokenId:' + data[i].accessTokenId);
