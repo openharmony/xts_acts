@@ -35,7 +35,7 @@ export default function flexJsunit() {
           console.info("push flex page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push flex page error " + JSON.stringify(result));
+        console.error("push flex page error: " + err);
       }
       done()
     });

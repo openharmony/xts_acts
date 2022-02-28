@@ -34,7 +34,7 @@ export default function systemRouterJsunit() {
         expect(pages.name).assertEqual('systemRouterA');
         expect(pages.path).assertEqual('pages/');
       } catch (err) {
-        console.error("[systemRouterTest001] push page error " + JSON.stringify(result));
+        console.error("[systemRouterTest001] push page error: " + err);
       }
       await Utils.sleep(2000);
       done();

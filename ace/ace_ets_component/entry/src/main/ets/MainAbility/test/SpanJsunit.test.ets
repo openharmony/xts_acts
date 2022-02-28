@@ -35,7 +35,7 @@ export default function spanJsunit() {
           console.info("push span page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push span page error " + JSON.stringify(err));
+        console.error("push span page error: " + err);
       }
       done()
     });

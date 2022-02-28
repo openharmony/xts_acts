@@ -35,7 +35,7 @@ export default function colorGradientJsunit() {
         console.info("push colorGradient page result:" + JSON.stringify(result));
       }
     } catch (err) {
-      console.error("push colorGradient page error:" + JSON.stringify(result));
+      console.error("push colorGradient page error:" + err);
     }
     done()
   });

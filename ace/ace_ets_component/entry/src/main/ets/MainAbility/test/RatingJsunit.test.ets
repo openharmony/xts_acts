@@ -34,7 +34,7 @@ export default function ratingJsunit() {
           console.info("push rating page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push rating page error " + JSON.stringify(err));
+        console.error("push rating page error: " + err);
       }
       done()
     });

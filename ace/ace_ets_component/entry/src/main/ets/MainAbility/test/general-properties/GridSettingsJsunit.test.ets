@@ -35,7 +35,7 @@ export default function gridSettingsJsunit() {
           console.info("push gridSettings page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push gridSettings page error:" + JSON.stringify(result));
+        console.error("push gridSettings page error:" + err);
       }
       done();
     });

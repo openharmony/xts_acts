@@ -36,7 +36,7 @@ export default function enableJsunit() {
           console.info("push overlay page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push overlay page error:" + JSON.stringify(result));
+        console.error("push overlay page error:" + err);
       }
       done()
     });

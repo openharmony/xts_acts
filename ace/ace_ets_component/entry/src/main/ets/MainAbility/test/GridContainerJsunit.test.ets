@@ -36,7 +36,7 @@ export default function girdContainerJsunit() {
           console.info("push girdContainer page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push girdContainer page error:" + JSON.stringify(result));
+        console.error("push girdContainer page error:" + err);
       }
       done()
     });

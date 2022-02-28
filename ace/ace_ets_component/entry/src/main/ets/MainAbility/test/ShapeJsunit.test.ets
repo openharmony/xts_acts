@@ -37,7 +37,7 @@ export default function shapeJsunit() {
           console.info("push shape page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push shape page error " + JSON.stringify(result));
+        console.error("push shape page error: " + err);
       }
       done()
     });

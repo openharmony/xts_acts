@@ -35,7 +35,7 @@ export default function scrollCodeJsunit() {
           console.info("push ScrollCode page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push ScrollCode page error " + JSON.stringify(err));
+        console.error("push ScrollCode page error: " + err);
       }
       done()
     });

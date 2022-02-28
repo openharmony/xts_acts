@@ -36,7 +36,7 @@ export default function enableJsunit() {
           console.info("push enable page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push enable page error:" + JSON.stringify(result));
+        console.error("push enable page error:" + err);
       }
       done()
     });

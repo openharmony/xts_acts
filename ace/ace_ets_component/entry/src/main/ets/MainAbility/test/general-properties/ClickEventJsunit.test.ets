@@ -35,7 +35,7 @@ export default function clickEventJsunit() {
         console.info("push clickEvent page result:" + JSON.stringify(result));
       }
     } catch (err) {
-      console.error("push clickEvent page error:" + JSON.stringify(result));
+      console.error("push clickEvent page error:" + err);
     }
     done()
   });

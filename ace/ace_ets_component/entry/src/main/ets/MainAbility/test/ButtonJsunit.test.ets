@@ -37,7 +37,7 @@ export default function buttonJsunit() {
           console.info("push button page result: " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push button page error: " + JSON.stringify(result));
+        console.error("push button page error: " + err);
       }
       done()
     });

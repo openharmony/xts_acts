@@ -35,7 +35,7 @@ export default function gaugeJsunit() {
           console.info("push gauge page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push gauge page error " + JSON.stringify(err));
+        console.error("push gauge page error " + err);
       }
       done()
     });

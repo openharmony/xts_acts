@@ -36,7 +36,7 @@ export default function listJsunit() {
           console.info("push list page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push list page error:" + JSON.stringify(result));
+        console.error("push list page error:" + err);
       }
       done()
     });

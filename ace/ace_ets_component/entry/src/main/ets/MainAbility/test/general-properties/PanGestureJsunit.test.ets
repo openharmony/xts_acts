@@ -39,7 +39,7 @@ export default function PanGestureJsunit() {
           console.info("push PanGesture page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push PanGesture page error:" + JSON.stringify(result));
+        console.error("push PanGesture page error:" + err);
       }
       done()
     });

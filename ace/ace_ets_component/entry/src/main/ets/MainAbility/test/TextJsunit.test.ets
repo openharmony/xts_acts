@@ -36,7 +36,7 @@ export default function textJsunit() {
           console.info("push text page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push text page error:" + JSON.stringify(result));
+        console.error("push text page error:" + err);
       }
       done()
     });

@@ -36,7 +36,7 @@ export default function animateJsunit() {
           console.info("push animate page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push animate page error:" + JSON.stringify(result));
+        console.error("push animate page error:" + err);
       }
       done()
     });

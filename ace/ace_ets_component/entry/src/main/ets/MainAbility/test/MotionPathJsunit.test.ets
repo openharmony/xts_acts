@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,7 +36,7 @@ export default function motionPathJsunit() {
           console.info("push motionPath page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push motionPath page error " + JSON.stringify(result));
+        console.error("push motionPath page error: " + err);
       }
       done()
     });

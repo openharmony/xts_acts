@@ -36,7 +36,7 @@ export default function layoutConstraintsJsunit() {
           console.info("push layoutConstraints page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push layoutConstraints page error:" + JSON.stringify(result));
+        console.error("push layoutConstraints page error:" + err);
       }
       done()
     });

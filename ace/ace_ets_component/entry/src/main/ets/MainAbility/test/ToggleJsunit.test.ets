@@ -36,7 +36,7 @@ export default function ToggleJsunit() {
           console.info("push toggle page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push toggle page error:" + JSON.stringify(result));
+        console.error("push toggle page error:" + err);
       }
       done()
     });

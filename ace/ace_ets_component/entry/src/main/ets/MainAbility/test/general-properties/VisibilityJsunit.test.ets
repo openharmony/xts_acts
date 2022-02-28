@@ -36,7 +36,7 @@ export default function visibilityJsunit() {
           console.info("push visibility page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push visibility page error:" + JSON.stringify(result));
+        console.error("push visibility page error:" + err);
       }
       done()
     });

@@ -38,7 +38,7 @@ import textStyleJsunit from './general-properties/TextStyleJsunit.test.ets';
 import imageEffectsJsunit from './general-properties/ImageEffectsJsunit.test.ets';
 import transformJsunit from './general-properties/TransFormJsunit.test.ets';
 import gridSettingsJsunit from './general-properties/GridSettingsJsunit.test.ets';
-import touchJsunit from './general-properties/touchJsunit.test.ets'
+import touchJsunit from './general-properties/TouchJsunit.test.ets'
 import backgroundJsunit from './general-properties/BackgroundJsunit.test.ets';
 import borderJsunit from './general-properties/BorderJsunit.test.ets';
 import flexJsunit from './general-properties/FlexJsunit.test.ets';

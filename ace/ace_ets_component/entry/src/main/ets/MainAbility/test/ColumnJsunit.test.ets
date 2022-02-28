@@ -15,7 +15,6 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function columnJsunit() {
@@ -36,7 +35,7 @@ export default function columnJsunit() {
           console.info("push column page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push column page error:" + JSON.stringify(result));
+        console.error("push column page error:" + err);
       }
       done()
     });
