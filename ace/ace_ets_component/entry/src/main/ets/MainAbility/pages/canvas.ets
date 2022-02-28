@@ -48,7 +48,6 @@ struct CanvasExample {
               this.shadowOffsetX();
               this.shadowOffsetY();
               this.imageSmoothingEnabled();
-              this.imageSmoothingQuality();
               this.fillRect();
               this.strokeRect();
               this.clearRect();
@@ -64,8 +63,6 @@ struct CanvasExample {
               this.rect();
               this.transform();
               this.setTransform();
-//              this.getTransform();
-//              this.resetTransform();
               this.translate();
               this.drawImage();
               this.createImageData();
@@ -82,7 +79,6 @@ struct CanvasExample {
               this.getWidth();
               this.getHeight();
               this.fill();
-              this.direction();
               this.textMetrics();
               this.getBitImageSize();
             })
@@ -247,9 +243,9 @@ struct CanvasExample {
     this.context.drawImage( img, 30, 950, 160, 100);
   }
   imageSmoothingQuality() {
-//    let img = new ImageBitmap('/images/img.jpeg');
-//    this.context.imageSmoothingQuality('high');
-//    this.context.drawImage( img, 30, 950, 160, 100);
+    let img = new ImageBitmap('/images/img.jpeg');
+    this.context.imageSmoothingQuality('high');
+    this.context.drawImage( img, 30, 950, 160, 100);
   }
   fillRect() {
     this.context.fillRect(10, 1080, 80, 80);
@@ -357,7 +353,6 @@ struct CanvasExample {
   }
   drawImage() {
     let img = new ImageBitmap('/images/img.jpeg');
-//    this.context.filter('grayscale(50%)');
     this.context.drawImage(img, 0, 0, 500, 500, 0, 1780, 200, 100);
   }
   createImageData() {
@@ -417,8 +412,6 @@ struct CanvasExample {
     this.context.arc(20, 2130, 50, 0, 6.28);
     this.context.setLineDash([10, 20]);
     this.context.stroke();
-//    let obj = this.context.getLineDash();
-//    console.info("[canvas] get line dash----" + JSON.stringify(obj));
   }
   toDataURL() {
     let dataUrl = this.context.toDataURL();
@@ -438,7 +431,7 @@ struct CanvasExample {
     this.context.fill('nonzero');
   }
   direction() {
-//    this.context.direction('inherit');
+    this.context.direction('inherit');
   }
   textMetrics() {
     this.context.font = '20px sans-serif';
