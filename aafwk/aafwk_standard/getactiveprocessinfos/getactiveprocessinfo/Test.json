@@ -2,9 +2,9 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "30000",
+        "test-timeout": "300000",
         "package": "com.example.getactiveprocessinfo",
-        "shell-timeout": "30000"
+        "shell-timeout": "600000"
     },
     "kits": [
         {

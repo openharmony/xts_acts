@@ -18,19 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 describe('ActsGetWantTest', function () {
     beforeAll(async (done) => {
-        await featureAbility.startAbility(
-            {
-                want:
-                {
-                    deviceId: "",
-                    bundleName: "com.ohos.launcher",
-                    abilityName: "com.ohos.launcher.MainAbility",
-                    action: "action1",
-                    parameters:
-                        {},
-                },
-            },
-        );
+        console.info('ActsGetWantTest begin')
         done();
     })
 
