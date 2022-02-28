@@ -27,7 +27,7 @@ group("multimedia") {
       #"media/media_js_standard/videoPlayer:video_player_js_hap",
       #"media/media_js_standard/videoRecorder:video_recorder_js_hap",
 
-      #"medialibrary/mediaLibrary_js_standard:mediaLibrary_js_hap",
+      "medialibrary/mediaLibrary_js_standard:mediaLibrary_js_hap",
 
       #"media/media_js_standard/audioRecorder:audio_recorder_js_hap",
     ]
