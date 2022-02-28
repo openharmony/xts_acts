@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -56,6 +55,16 @@ import qrCodeJsunit from './QrCodeJsunit.test.ets';
 import tapGesture from './TapGesture.test.ets';
 import progressJsunit from './ProgressJsunit.test.ets';
 import animateJsunit from './AnimateJsunit.test.ets';
+import commonJsunit from './CommonJsunit.test.ets';
+import spanJsunit from './SpanJsunit.test.ets';
+import columnJsunit from './ColumnJsunit.test.ets';
+import ratingJsunit from './RatingJsunit.test.ets';
+import canvas2Jsunit from './Canvas2Jsunit.test.ets';
+import toggleJsunit from './ToggleJsunit.test.ets';
+import shapeJsunit from './ShapeJsunit.test.ets'
+import motionPathJsunit from './MotionPathJsunit.test.ets';
+import scrollCodeJsunit from './ScrollCodeJsunit.test.ets';
+
 
 export default function testsuite() {
   gaugeJsunit();
@@ -92,6 +101,7 @@ export default function testsuite() {
   textJsunit();
   badgeJsunit();
   canvasJsunit();
+  canvas2Jsunit();
   longPressGestureJsUnit();
   buttonJsunit();
   responseRegionJsunit();
@@ -101,4 +111,12 @@ export default function testsuite() {
   tapGesture();
   progressJsunit();
   animateJsunit();
+  commonJsunit();
+  spanJsunit();
+  ratingJsunit();
+  toggleJsunit();
+  shapeJsunit();
+  motionPathJsunit();
+  columnJsunit();
+  scrollCodeJsunit();
 }

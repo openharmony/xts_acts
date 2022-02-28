@@ -15,43 +15,45 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.emitter';
+import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
-export default function canvasJsunit() {
-  describe('canvasTest', function () {
+export default function columnJsunit() {
+  describe('appInfoTest', function () {
     beforeEach(async function (done) {
-      console.info("canvas beforeEach start");
+      console.info("column beforeEach start");
       let options = {
-        uri: 'pages/canvas',
+        uri: 'pages/column',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get canvas state pages:" + JSON.stringify(pages));
-        if (!("canvas" == pages.name)) {
-          console.info("get canvas state pages.name:" + JSON.stringify(pages.name));
+        console.info("get column state pages:" + JSON.stringify(pages));
+        if (!("column" == pages.name)) {
+          console.info("get column state pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await Utils.sleep(2000);
-          console.info("push canvas page result:" + JSON.stringify(result));
+          console.info("push column page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push canvas page error:" + JSON.stringify(result));
+        console.error("push column page error:" + JSON.stringify(result));
       }
       done()
     });
 
     afterEach(async function () {
       await Utils.sleep(1000);
-      console.info("canvas after each called");
+      console.info("column after each called");
     });
 
-    it('testCanvas01', 0, async function (done) {
-      console.info('[testCanvas01] START');
+    it('testColumn01', 0, async function (done) {
+      console.info('[testColumn01] START');
       await Utils.sleep(1000);
-      console.info('[testCanvas01]----------- START');
-      console.info('testCanvas01 END');
+      let strJson = getInspectorByKey('column');
+      let obj = JSON.parse(strJson);
+      console.info("[testColumn01] obj is: " + JSON.stringify(obj));
+      console.info('[testColumn01] END');
       done();
     });
-  });
+  })
 }

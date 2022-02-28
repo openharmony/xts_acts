@@ -23,17 +23,17 @@ export default function canvasJsunit() {
     beforeEach(async function (done) {
       console.info("canvas beforeEach start");
       let options = {
-        uri: 'pages/canvas',
+        uri: 'pages/canvas2',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get canvas state pages:" + JSON.stringify(pages));
-        if (!("canvas" == pages.name)) {
-          console.info("get canvas state pages.name:" + JSON.stringify(pages.name));
+        console.info("get canvas2 state pages:" + JSON.stringify(pages));
+        if (!("canvas2" == pages.name)) {
+          console.info("get canvas2 state pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await Utils.sleep(2000);
-          console.info("push canvas page result:" + JSON.stringify(result));
+          console.info("push canvas2 page result:" + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push canvas page error:" + JSON.stringify(result));
@@ -43,7 +43,7 @@ export default function canvasJsunit() {
 
     afterEach(async function () {
       await Utils.sleep(1000);
-      console.info("canvas after each called");
+      console.info("canvas2 after each called");
     });
 
     it('testCanvas01', 0, async function (done) {

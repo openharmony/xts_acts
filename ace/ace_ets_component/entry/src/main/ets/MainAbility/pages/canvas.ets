@@ -21,6 +21,7 @@ struct CanvasExample {
   private scroller: Scroller = new Scroller();
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+
   build() {
     Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Start, justifyContent: FlexAlign.Start }) {
       Scroll(this.scroller) {
@@ -47,6 +48,7 @@ struct CanvasExample {
               this.shadowOffsetX();
               this.shadowOffsetY();
               this.imageSmoothingEnabled();
+              this.imageSmoothingQuality();
               this.fillRect();
               this.strokeRect();
               this.clearRect();
@@ -62,11 +64,27 @@ struct CanvasExample {
               this.rect();
               this.transform();
               this.setTransform();
+//              this.getTransform();
+//              this.resetTransform();
               this.translate();
               this.drawImage();
               this.createImageData();
               this.createImageDataByImageData();
               this.getImageData();
+              this.putImageData();
+              this.createLinearGradient();
+              this.createRadialGradient();
+              this.restore();
+              this.save();
+              this.addPath();
+              this.lineDash();
+              this.toDataURL();
+              this.getWidth();
+              this.getHeight();
+              this.fill();
+              this.direction();
+              this.textMetrics();
+              this.getBitImageSize();
             })
             .key('canvas1')
         }.width('100%').height('400%')
@@ -228,6 +246,11 @@ struct CanvasExample {
     this.context.imageSmoothingEnabled = false;
     this.context.drawImage( img, 30, 950, 160, 100);
   }
+  imageSmoothingQuality() {
+//    let img = new ImageBitmap('/images/img.jpeg');
+//    this.context.imageSmoothingQuality('high');
+//    this.context.drawImage( img, 30, 950, 160, 100);
+  }
   fillRect() {
     this.context.fillRect(10, 1080, 80, 80);
   }
@@ -244,7 +267,7 @@ struct CanvasExample {
     this.context.fillText("Hello World!", 120, 1200);
   }
   strokeText() {
-    this.context.font = '20px sans-serif'
+    this.context.font = '20px sans-serif';
     this.context.strokeText("Hello World!", 260, 1195);
   }
   measureText() {
@@ -320,6 +343,13 @@ struct CanvasExample {
     this.context.fillRect(0, 1650, 100, 100);
     this.context.setTransform(1, 0, 0, 1, 0, 0);
   }
+  getTransform() {
+    let data = this.context.getTransform();
+    console.info("[canvas] get transform----" + data);
+  }
+  resetTransform() {
+    this.context.resetTransform();
+  }
   translate() {
     this.context.fillRect(180, 1650, 50, 50);
     this.context.translate(50, 50);
@@ -327,7 +357,8 @@ struct CanvasExample {
   }
   drawImage() {
     let img = new ImageBitmap('/images/img.jpeg');
-    this.context.drawImage(img, 0, 0, 500, 500, 0, 1780, 300, 150);
+//    this.context.filter('grayscale(50%)');
+    this.context.drawImage(img, 0, 0, 500, 500, 0, 1780, 200, 100);
   }
   createImageData() {
     let imageData = this.context.createImageData(100, 100);
@@ -341,5 +372,83 @@ struct CanvasExample {
   getImageData() {
     let imageData = this.context.getImageData(10, 10, 80, 80);
     console.info("[canvas] get image data-----" + JSON.stringify(imageData));
+  }
+  putImageData() {
+    let imageData = this.context.createImageData(80, 80);
+    for (var i = 0; i < imageData.data.length; i += 4) {
+      imageData.data[i + 0] = 255;
+      imageData.data[i + 1] = 0;
+      imageData.data[i + 2] = 255;
+      imageData.data[i + 3] = 255;
+    }
+    this.context.putImageData(imageData, 250, 1660);
+  }
+  createLinearGradient() {
+    let grad = this.context.createLinearGradient(50, 1900, 150, 2000);
+    grad.addColorStop(0.0, 'red');
+    grad.addColorStop(0.5, 'white');
+    grad.addColorStop(1.0, 'green');
+    this.context.fillStyle = grad;
+    this.context.fillRect(10, 1900, 150, 150);
+  }
+  createRadialGradient() {
+    let grad = this.context.createRadialGradient(280, 1970, 40, 280, 1970, 80);
+    grad.addColorStop(0.0, 'red');
+    grad.addColorStop(0.5, 'white');
+    grad.addColorStop(1.0, 'green');
+    this.context.fillStyle = grad;
+    this.context.fillRect(200, 1900, 150, 150);
+    this.context.closePath();
+  }
+  restore() {
+    this.context.restore();
+  }
+  save() {
+    this.context.save();
+  }
+  addPath() {
+    let path2Da = new Path2D("M250 150 L150 350 L350 350 Z");
+    let path2Db = new Path2D();
+    path2Db.addPath(path2Da);
+    this.context.stroke(path2Db);
+  }
+  lineDash() {
+    this.context.beginPath();
+    this.context.arc(20, 2130, 50, 0, 6.28);
+    this.context.setLineDash([10, 20]);
+    this.context.stroke();
+//    let obj = this.context.getLineDash();
+//    console.info("[canvas] get line dash----" + JSON.stringify(obj));
+  }
+  toDataURL() {
+    let dataUrl = this.context.toDataURL();
+    console.info("[canvas] canvas rendering context2D toDataURL-----" + JSON.stringify(dataUrl));
+  }
+  getWidth() {
+    let width = this.context.width;
+    console.info("[canvas] canvas width---" + width);
+  }
+  getHeight() {
+    let height = this.context.height;
+    console.info("[canvas] canvas height---" + height);
+  }
+  fill() {
+    this.context.beginPath();
+    this.context.rect(130, 2080, 100, 100);
+    this.context.fill('nonzero');
+  }
+  direction() {
+//    this.context.direction('inherit');
+  }
+  textMetrics() {
+    this.context.font = '20px sans-serif';
+    this.context.fillText("Hello World!", 120, 2150);
+    let obj = this.context.measureText("Hello World!");
+    console.info("[canvas] textMetrics info---" + JSON.stringify(obj));
+  }
+  getBitImageSize() {
+    let img = new ImageBitmap('/images/img.jpeg');
+    let width = img.width;
+    let height = img.height;
   }
 }

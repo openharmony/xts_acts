@@ -60,6 +60,57 @@ export default function textJsunit() {
 
     it('testText_0200', 0, async function (done) {
       console.info('testText_0200 START');
+      let strJson = getInspectorByKey('text1');
+      console.info("testText_0200 component strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      console.info("testText_0200 component obj is: " + JSON.stringify(obj));
+      expect(obj.$type).assertEqual('Text');
+      expect(obj.$attrs.fontSize).assertEqual('28.000000px');
+      console.info('testText_0200 END');
+      done();
+    });
+
+    it('testText_0300', 0, async function (done) {
+      console.info('testText_0300 START');
+      let strJson = getInspectorByKey('text1');
+      console.info("testText_0300 component strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      console.info("testText_0300 component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.content).assertEqual('Hello');
+      console.info('testText_0300 END');
+      done();
+    });
+
+    it('testText_0400', 0, async function (done) {
+      console.info('testText_0400 START');
+      let strJson = getInspectorByKey('text1');
+      console.info("testText_0400 component strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      console.info("testText_0400 component obj is: " + JSON.stringify(obj));
+      expect(obj.$type).assertEqual('Text');
+      expect(obj.$attrs.fontColor).assertEqual('#FFFF0000');
+      console.info('testText_0400 END');
+      done();
+    });
+
+    it('testText_0500', 0, async function (done) {
+      console.info('testText_0500 START');
+      let strJson = getInspectorByKey('image');
+      console.info("testText_0500 component strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      console.info("testText_0500 component obj is: " + JSON.stringify(obj));
+      var res = obj.$attrs.src.indexOf('rawfile/test.png');
+      console.info("testText_0500 result is: " + res);
+      var sres = obj.$attrs.src.slice(res,res + 16);
+      console.info("testText_0500 slice result is: " + sres);
+      expect(obj.$type).assertEqual('Image');
+      expect(obj.$attrs.src.slice(res,res + 16)).assertEqual('rawfile/test.png');
+      console.info('testText_0500 END');
+      done();
+    });
+
+    it('testText_0600', 0, async function (done) {
+      console.info('testText_0600 START');
       try {
         let eventData = {
           data: {
@@ -70,17 +121,17 @@ export default function textJsunit() {
           eventId: 60,
           priority: events_emitter.EventPriority.LOW
         }
-        console.info("testText_0200 start to publish emit");
+        console.info("testText_0600 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testText_0200 change component data error: " + err.message);
+        console.log("testText_0600 change component data error: " + err.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('text');
       let objNew = JSON.parse(strJsonNew);
-      console.info("testText_0200 component objNew is: " + JSON.stringify(objNew));
+      console.info("testText_0600 component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.fontSize).assertEqual('10.000000fp');
-      console.info('testText_0200 END');
+      console.info('testText_0600 END');
       done();
     });
   })
