@@ -1,0 +1,11 @@
+<div class="container">
+    <text class="title">
+        VideoPlayer Test
+    </text>
+
+    <Xcomponent id = 'XcomponentId2'
+                type = 'surface'
+                onload = 'LoadXcomponent2'
+                style = "width:720px;height:480px;border-color:red;border-width:5px">
+    </Xcomponent>
+</div>
