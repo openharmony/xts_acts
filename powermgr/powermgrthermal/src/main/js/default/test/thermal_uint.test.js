@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*
  * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +21,6 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe('appInfoTest', function () {
     console.log("*************Thermal API Test Begin*************");
-    const MSEC_1000 = 1000;
     test1();
     test2();
     test3();
@@ -34,9 +34,11 @@ describe('appInfoTest', function () {
     test11();
     test12();
     test13();
+    console.log("*************Thermal API Test End*************");
 })
 
 function test1() {
+    const MSEC_1000 = 1000;
 
     /* @tc.number thermal_manager_js_001
      * @tc.name Thermal_001
@@ -48,34 +50,36 @@ function test1() {
             setTimeout(()=>{
                 var cold = thermal.getThermalLevel();
                 console.info("cold level is: " + cold);
-                expect(cold >= 0 && cold <= 6).assertTrue();
+                expect(cold >= thermal.ThermalLevel.COOL && cold <= thermal.ThermalLevel.EMERGENCY).assertTrue();
                 resolve();
-            }, MSEC_1000 * 4);
+                done();
+            }, MSEC_1000 * 1);
         })
-        done();
     })
 }
 
 function test2() {
+    const MSEC_1000 = 1000;
 
     /* @tc.number thermal_manager_js_002
      * @tc.name Thermal_002
      * @tc.desc Thermal acquisition kit
      */
     it('Thermal_002', 0, async function (done) {
-        await new Promise((resolve, reject) => {
+        await new Promise((resolve, reject) =>{
             setTimeout(()=>{
                 var warm = thermal.getThermalLevel();
                 console.info("warm level is: " + warm);
-                expect(warm >= 0 && warm <= 6).assertTrue();
+                expect(warm >= thermal.ThermalLevel.COOL && warm <= thermal.ThermalLevel.EMERGENCY).assertTrue();
                 resolve();
-            }, MSEC_1000 * 4);
+                done();
+            }, MSEC_1000 * 1);
         })
-        done();
     })
 }
 
 function test3() {
+    const MSEC_1000 = 1000;
 
     /* @tc.number thermal_manager_js_003
      * @tc.name Thermal_003
@@ -86,15 +90,16 @@ function test3() {
             setTimeout(()=>{
                 var hot = thermal.getThermalLevel();
                 console.info("hot level is: " + hot);
-                expect(hot >= 0 && hot <= 6).assertTrue();
+                expect(hot >= thermal.ThermalLevel.COOL && hot <= thermal.ThermalLevel.EMERGENCY).assertTrue();
                 resolve();
-            }, MSEC_1000 * 4);
+                done();
+            }, MSEC_1000 * 1);
         })
-        done();
     })
 }
 
 function test4() {
+    const MSEC_1000 = 1000;
 
     /* @tc.number thermal_manager_js_004
      * @tc.name Thermal_004
@@ -105,15 +110,17 @@ function test4() {
             setTimeout(()=>{
                 var overheated = thermal.getThermalLevel();
                 console.info("overheated level is: " + overheated);
-                expect(overheated >= 0 && overheated <= 6).assertTrue();
+                expect(overheated >= thermal.ThermalLevel.COOL &&
+                    overheated <= thermal.ThermalLevel.EMERGENCY).assertTrue();
                 resolve();
-            }, MSEC_1000 * 4);
+                done();
+            }, MSEC_1000 * 1);
         })
-        done();
     })
 }
 
 function test5() {
+    const MSEC_1000 = 1000;
 
     /* @tc.number thermal_manager_js_005
      * @tc.name Thermal_005
@@ -124,15 +131,16 @@ function test5() {
             setTimeout(()=>{
                 var warning = thermal.getThermalLevel();
                 console.info("warning level is: " + warning);
-                expect(warning >= 0 && warning <= 6).assertTrue();
+                expect(warning >= thermal.ThermalLevel.COOL && warning <= thermal.ThermalLevel.EMERGENCY).assertTrue();
                 resolve();
-            }, MSEC_1000 * 4);
+                done();
+            }, MSEC_1000 * 1);
         })
-        done();
     })
 }
 
 function test6() {
+    const MSEC_1000 = 1000;
 
     /* @tc.number thermal_manager_js_006
      * @tc.name Thermal_006
@@ -143,15 +151,17 @@ function test6() {
             setTimeout(()=>{
                 var emergency = thermal.getThermalLevel();
                 console.info("emergency level is: " + emergency);
-                expect(emergency >= 0 && emergency <= 6).assertTrue();
+                expect(emergency >= thermal.ThermalLevel.COOL &&
+                        emergency <= thermal.ThermalLevel.EMERGENCY).assertTrue();
                 resolve();
-            }, MSEC_1000 * 4);
+                done();
+            }, MSEC_1000 * 1);
         })
-        done();
     })
 }
 
 function test7() {
+    const MSEC_1000 = 1000;
 
     /* @tc.number thermal_manager_js_007
      * @tc.name Thermal_007
@@ -159,21 +169,23 @@ function test7() {
      */
     it('Thermal_007', 0, async function (done) {
         thermal.subscribeThermalLevel((cool) => {
-            console.info("cool level is: " + cool);
-            count ++;
-            expect(cool >= 0 && cool <= 6).assertTrue();
+            console.info("warm level is: " + cool);
+            expect(cool >= thermal.ThermalLevel.COOL && cool <= thermal.ThermalLevel.EMERGENCY).assertTrue();
+            done();
         })
         await new Promise((resolve, reject)=>{
             setTimeout(()=>{
-                thermal.unsubscribeThermalLevel();
+                thermal.unsubscribeThermalLevel(() => {
+                    console.info("unsubscribe successfully!");
+                });
                 resolve();
             }, MSEC_1000 * 4);
         })
-        done();
     })
 }
 
 function test8() {
+    const MSEC_1000 = 1000;
 
     /* @tc.number thermal_manager_js_008
      * @tc.name Thermal_008
@@ -181,20 +193,23 @@ function test8() {
      */
     it('Thermal_008', 0, async function (done) {
         thermal.subscribeThermalLevel((warm) => {
-            console.info("cool level is: " + warm);
-            expect(warm >= 0 && warm <= 6).assertTrue();
+            console.info("warm level is: " + warm);
+            expect(warm >= thermal.ThermalLevel.COOL && warm <= thermal.ThermalLevel.EMERGENCY).assertTrue();
+            done();
         })
         await new Promise((resolve, reject)=>{
             setTimeout(()=>{
-                thermal.unsubscribeThermalLevel();
+                thermal.unsubscribeThermalLevel(() => {
+                    console.info("unsubscribe successfully!");
+                });
                 resolve();
             }, MSEC_1000 * 4);
         })
-        done();
     })
 }
 
 function test9() {
+    const MSEC_1000 = 1000;
 
     /* @tc.number thermal_manager_js_009
      * @tc.name Thermal_009
@@ -203,20 +218,23 @@ function test9() {
     it('Thermal_009', 0, async function (done) {
         thermal.subscribeThermalLevel((hot) => {
             console.info("hot level is: " + hot);
-            expect(hot >= 0 && hot <= 6).assertTrue();
+            expect(hot >= thermal.ThermalLevel.COOL && hot <= thermal.ThermalLevel.EMERGENCY).assertTrue();
+            done();
         })
         await new Promise((resolve, reject)=>{
             setTimeout(()=>{
-                thermal.unsubscribeThermalLevel();
+                thermal.unsubscribeThermalLevel(() => {
+                    console.info("unsubscribe successfully!");
+                });
                 resolve();
             }, MSEC_1000 * 2);
         })
-        done();
     })
 
 }
 
 function test10() {
+    const MSEC_1000 = 1000;
 
     /* @tc.number thermal_manager_js_010
      * @tc.name Thermal_010
@@ -225,19 +243,23 @@ function test10() {
     it('Thermal_010', 0, async function (done) {
         thermal.subscribeThermalLevel((overheated) => {
             console.info("overheated level is: " + overheated);
-            expect(overheated >= 0 && overheated <= 6).assertTrue();
+            expect(overheated >= thermal.ThermalLevel.COOL &&
+                    overheated <= thermal.ThermalLevel.EMERGENCY).assertTrue();
+            done();
         })
         await new Promise((resolve, reject)=>{
             setTimeout(()=>{
-                thermal.unsubscribeThermalLevel();
+                thermal.unsubscribeThermalLevel(() => {
+                    console.info("unsubscribe successfully!");
+                });
                 resolve();
             }, MSEC_1000 * 2);
         })
-        done();
     })
 }
 
 function test11() {
+    const MSEC_1000 = 1000;
 
     /* @tc.number thermal_manager_js_011
      * @tc.name Thermal_011
@@ -246,19 +268,22 @@ function test11() {
     it('Thermal_011', 0, async function (done) {
         thermal.subscribeThermalLevel((warning) => {
             console.info("warning level is: " + warning);
-            expect(warning >= 0 && warning <= 6).assertTrue();
+            expect(warning >= thermal.ThermalLevel.COOL && warning <= thermal.ThermalLevel.EMERGENCY).assertTrue();
+            done();
         })
         await new Promise((resolve, reject)=>{
             setTimeout(()=>{
-                thermal.unsubscribeThermalLevel();
+                thermal.unsubscribeThermalLevel(() => {
+                    console.info("unsubscribe successfully!");
+                });
                 resolve();
             }, MSEC_1000 * 4);
         })
-        done();
     })
 }
 
 function test12() {
+    const MSEC_1000 = 1000;
 
     /* @tc.number thermal_manager_js_012
      * @tc.name Thermal_012
@@ -267,19 +292,22 @@ function test12() {
     it('Thermal_012', 0, async function (done) {
         thermal.subscribeThermalLevel((emergency) => {
             console.info("emergency level is: " + emergency);
-            expect(emergency >= 0 && emergency <= 6).assertTrue();
+            expect(emergency >= thermal.ThermalLevel.COOL && emergency <= thermal.ThermalLevel.EMERGENCY).assertTrue();
+            done();
         })
         await new Promise((resolve, reject)=>{
             setTimeout(()=>{
-                thermal.unsubscribeThermalLevel();
+                thermal.unsubscribeThermalLevel(() => {
+                    console.info("unsubscribe successfully!");
+                });
                 resolve();
             }, MSEC_1000 * 4);
         })
-        done();
     })
 }
 
 function test13() {
+    const MSEC_1000 = 1000;
 
     /* @tc.number thermal_manager_js_013
      * @tc.name Thermal_013
@@ -288,14 +316,16 @@ function test13() {
     it('Thermal_013', 0, async function (done) {
         thermal.subscribeThermalLevel((cool) => {
             console.info("cool level is: " + cool);
-            expect(cool >= 0 && cool <= 6).assertTrue();
+            expect(cool >= thermal.ThermalLevel.COOL && cool <= thermal.ThermalLevel.EMERGENCY).assertTrue();
+            done();
         })
         await new Promise((resolve, reject)=>{
             setTimeout(()=>{
-                thermal.unsubscribeThermalLevel();
+                thermal.unsubscribeThermalLevel(() => {
+                    console.info("unsubscribe successfully!");
+                });
                 resolve();
             }, MSEC_1000 * 4);
         })
-        done();
     })
 }
