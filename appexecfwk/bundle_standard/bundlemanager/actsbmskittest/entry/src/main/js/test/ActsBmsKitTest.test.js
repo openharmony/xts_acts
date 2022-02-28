@@ -65,56 +65,6 @@ describe('ActsBmsKitTest', function () {
     })
 
     /*
-    * @tc.number: ActsBmsKit_getAllShortcutInfo_0100
-    * @tc.name: Pressure test interface getAllShortcutInfo by promise
-    * @tc.desc: get the shortcut information of the hap
-    */
-    it('ActsBmsKit_getAllShortcutInfo_0100', 0, async function (done) {
-        console.info('=====================ActsBmsKit_getAllShortcutInfo_0100==================');
-        var bundleName = 'com.example.third1';
-        let count;
-        for (count = 0; count < STRESSLEVEL; count++) {
-            let data = await bundle.getAllShortcutInfo(bundleName);
-            expect(typeof data).assertEqual('object');
-            expect(data.length).assertEqual(1);
-            if (!checkShortcutIsExist(data, 'id.third1', 'third1'))
-                break;
-        }
-        done();
-    });
-
-    /*
-    * @tc.number: ActsBmsKit_getAllShortcutInfo_0200
-    * @tc.name: Pressure test interface getAllShortcutInfo by callback
-    * @tc.desc: get the shortcut information of the hap
-    */
-    it('ActsBmsKit_getAllShortcutInfo_0200', 0, async function (done) {
-        console.info('=====================ActsBmsKit_getAllShortcutInfo_0200==================');
-        var bundleName = 'com.example.third1';
-        let flag = true;
-        let count = 0;
-        for (let i = 0; i < STRESSLEVEL; i++) {
-            bundle.getAllShortcutInfo(bundleName, async (err, data) => {
-                expect(data.length).assertEqual(1);
-                expect(err).assertEqual(0);
-                checkShortcutIsExist(data, 'id.third1', 'third1');
-                if (count == STRESSLEVEL - 1) {
-                    done();
-                } else if (err != 0) {
-                    console.log('call function level is: ' + count);
-                    expect().assertFail();
-                    flag = false;
-                }
-                count++;
-            })
-            if (!flag) {
-                done();
-                break;
-            }
-        }
-    })
-
-    /*
     * @tc.number: ActsBmsKit_getModuleUsageRecordTest_0100
     * @tc.name: Pressure test interface getModuleUsageRecord(int maxNum) by promise;
     * @tc.desc: When the number of starts of ability is less than maxNum, call interface getModuleUsageRecord
