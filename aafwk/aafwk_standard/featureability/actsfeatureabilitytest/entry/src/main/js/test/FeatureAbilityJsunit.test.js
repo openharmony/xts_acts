@@ -167,6 +167,65 @@ describe('ActsFeatureAbilityTest', function () {
         }, TIMEOUT)
     })
 
+    /*
+     * @tc.number  ACTS_StartAbility_1000
+     * @tc.name    The configured URI is started and the page is not configured
+     * @tc.desc    Function test
+     * @tc.level   0
+     */
+    it("ACTS_StartAbility_1000",0, async function(done){
+        console.info("------------------logMessage ACTS_StartAbility_1000-------------------");
+        try{
+            var Subscriber;
+            let id;
+
+            function SubscribeCallBack(err, data) {
+                clearTimeout(id);
+                expect(data.event).assertEqual("ACTS_StartAbility_1000_CommonEvent");
+                console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
+                commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
+                done();
+            }
+
+            commonEvent.createSubscriber(subscriberInfoStartAbilityTen).then(async (data) => {
+                console.debug("====>Create Subscriber====>");
+                Subscriber = data;
+                await commonEvent.subscribe(Subscriber, SubscribeCallBack);
+            })
+
+            function UnSubscribeCallback() {
+                console.debug("====>UnSubscribe CallBack====>");
+                done();
+            }
+
+            function timeout() {
+                expect().assertFail();
+                console.debug('ACTS_StartAbility_1000=====timeout======');
+                commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
+                done();
+            }
+
+            id = setTimeout(timeout, START_ABILITY_TIMEOUT);
+            let Want = {
+                bundleName: "com.example.startability",
+                abilityName: "com.example.startability.MainAbility",
+                uri: "xxxxx",
+            }
+            var StartAbilityParameter = {
+                want:Want
+            }
+
+            featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
+                console.log('ACTS_StartAbility_1000 asyncCallback errCode : ' + JSON.stringify(err) 
+                + " data: " + JSON.stringify(data));
+                expect(err.code == 0).assertTrue();
+                done();
+            });
+        }catch(error){
+            console.log("ACTS_StartAbility_1000 : error = " + error);
+        }
+    })
+
     /**
      * @tc.number: ACTS_StartAbility_0100
      * @tc.name: StartAbility : A Page or Service ability uses this method to start a specific ability.
@@ -1099,7 +1158,7 @@ describe('ActsFeatureAbilityTest', function () {
             (error, data) => {
                 console.log("ACTS_HasWindowFocus_0400 asyncCallback code: " + error.code + " data: " + data)
                 expect(error.code).assertEqual(0);
-                expect(data).assertEqual(true);
+                expect(data).assertEqual(false);
                 done();
             }
         );
@@ -1228,7 +1287,7 @@ describe('ActsFeatureAbilityTest', function () {
             }
         }
 
-        commonEvent.createSubscriber(subscriberInfoTerminateAbilityTwo).then(async (data) => {
+        commonEvent.createSubscriber(subscriberInfo_ACTS_TerminateAbility_0200).then(async (data) => {
             console.debug("====>Create Subscriber====>");
             Subscriber = data;
             await commonEvent.subscribe(Subscriber, SubscribeCallBack);
@@ -1525,13 +1584,13 @@ describe('ActsFeatureAbilityTest', function () {
         //            expect(info.iconId).assertEqual(0);   //create by DevEco when building HAP.
         expect(info.process).assertEqual("processTest");
         expect(info.supportedModes).assertEqual(0);
-        expect(info.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/" +
+        expect(info.moduleSourceDirs[0]).assertEqual("/data/accounts/account_0/applications/" +
             "com.example.actsfeatureabilitytest/com.example.actsfeatureabilitytest");
         expect(info.permissions[0]).assertEqual("ohos.permission.CAMERA");
         expect(info.moduleInfos[0].moduleName).assertEqual("entry");
-        expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
+        expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/accounts/account_0/applications/" +
             "com.example.actsfeatureabilitytest/com.example.actsfeatureabilitytest");
-        expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/" +
+        expect(info.entryDir).assertEqual("/data/accounts/account_0/applications/" +
             "com.example.actsfeatureabilitytest/com.example.actsfeatureabilitytest");
     }
 
@@ -1806,14 +1865,17 @@ describe('ActsFeatureAbilityTest', function () {
         expect(data.type).assertEqual(1);
         expect(data.subType).assertEqual(0);
         expect(data.orientation).assertEqual(0);
-        expect(data.launchMode).assertEqual(0);
+        expect(data.launchMode).assertEqual(1);
 
+        expect(data.permissions[0]).assertEqual("ohos.permission.ACCELEROMETER");
+        expect(data.permissions[1]).assertEqual("ohos.permission.ANSWER_CALL");
         expect(data.deviceTypes[0]).assertEqual("phone");
         expect(data.deviceCapabilities[0]).assertEqual("screen_support");
         expect(data.deviceCapabilities[1]).assertEqual("audio_support");
 
         expect(data.readPermission).assertEqual("");
         expect(data.writePermission).assertEqual("");
+        checkApplicationInfo(data.applicationInfo);
         expect(data.formEntity).assertEqual(0);
         expect(data.minFormHeight).assertEqual(0);
         expect(data.defaultFormHeight).assertEqual(0);
@@ -2180,65 +2242,6 @@ describe('ActsFeatureAbilityTest', function () {
     });
 
     /*
-     * @tc.number  ACTS_StartAbility_1000
-     * @tc.name    The configured URI is started and the page is not configured
-     * @tc.desc    Function test
-     * @tc.level   0
-     */
-    it("ACTS_StartAbility_1000",0, async function(done){
-        console.info("------------------logMessage ACTS_StartAbility_1000-------------------");
-        try{
-            var Subscriber;
-            let id;
-
-            function SubscribeCallBack(err, data) {
-                clearTimeout(id);
-                expect(data.event).assertEqual("ACTS_StartAbility_1000_CommonEvent");
-                console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
-                commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
-                done();
-            }
-
-            commonEvent.createSubscriber(subscriberInfoStartAbilityTen).then(async (data) => {
-                console.debug("====>Create Subscriber====>");
-                Subscriber = data;
-                await commonEvent.subscribe(Subscriber, SubscribeCallBack);
-            })
-
-            function UnSubscribeCallback() {
-                console.debug("====>UnSubscribe CallBack====>");
-                done();
-            }
-
-            function timeout() {
-                expect().assertFail();
-                console.debug('ACTS_StartAbility_1000=====timeout======');
-                commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-                done();
-            }
-
-            id = setTimeout(timeout, START_ABILITY_TIMEOUT);
-            let Want = {
-                bundleName: "com.example.startability",
-                abilityName: "com.example.startability.MainAbility",
-                uri: "xxxxx",
-            }
-            var StartAbilityParameter = {
-                want:Want
-            }
-
-            featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
-                console.log('ACTS_StartAbility_1000 asyncCallback errCode : ' + JSON.stringify(err) 
-                + " data: " + JSON.stringify(data));
-                expect(err.code == 0).assertTrue();
-                done();
-            });
-        }catch(error){
-            console.log("ACTS_StartAbility_1000 : error = " + error);
-        }
-    })
-
-    /*
      * @tc.number  ACTS_StartAbility_1100
      * @tc.name    Verify the ability of implicitly starting through action without configuring action
      * @tc.desc    Function test
@@ -2257,7 +2260,7 @@ describe('ActsFeatureAbilityTest', function () {
             featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
                 console.log('ACTS_StartAbility_1100 asyncCallback errCode : ' + JSON.stringify(err) 
                 + " data: " + JSON.stringify(data));
-                expect(err.code != 0).assertTrue();
+                expect(err.code == 2097155).assertTrue();
                 done();
             });
         }catch(error){
@@ -2285,7 +2288,7 @@ describe('ActsFeatureAbilityTest', function () {
             featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
                 console.log('ACTS_StartAbility_1200 asyncCallback errCode : ' + JSON.stringify(err) 
                 + " data: " + JSON.stringify(data));
-                expect(err.code != 0).assertTrue();
+                expect(err.code == 2097155).assertTrue();
                 done();
             });
         }catch(error){
@@ -2392,11 +2395,12 @@ describe('ActsFeatureAbilityTest', function () {
             want:Want
         }
 
-        featureAbility.startAbility(StartAbilityParameter).then((data) => {
-            console.log("ACTS_StartAbility_1600 asyncCallbackdata: " + JSON.stringify(data));
-        }).catch((error) => {
-            console.log("ACTS_StartAbility_1600 : error = " + JSON.stringify(error));
+        await featureAbility.startAbility(StartAbilityParameter).then((data) => {
+            console.log('ACTS_StartAbility_1600 errCode : ' + " data: " + JSON.stringify(data));
+            expect().assertFail();
             done();
+        }).catch((err)=>{
+            expect(err.code == 2097155).assertTrue();
         });
     });
 
@@ -2408,14 +2412,14 @@ describe('ActsFeatureAbilityTest', function () {
      */
     it("ACTS_StartAbility_1700",0, async function(){
         console.info("------------------logMessage ACTS_StartAbility_1700-------------------");
-        try{
-            var StartAbilityParameter = {}
-            var promise = await featureAbility.startAbility(StartAbilityParameter);
-            console.log('ACTS_StartAbility_1700 promise is : ' + JSON.stringify(promise));
-            done();
-        }catch(error){
-            console.log("ACTS_StartAbility_1700 : error = " + JSON.stringify(error));
-        }
+        var StartAbilityParameter = {}
+        await featureAbility.startAbility(StartAbilityParameter).then((data) => {
+             console.log('ACTS_StartAbility_1700  data: '  + JSON.stringify(data));
+             expect().assertFail();
+             done();
+         }).catch((err)=>{
+             expect(err.code == -104).assertTrue();
+         });
     });
 
     /*
@@ -2426,11 +2430,13 @@ describe('ActsFeatureAbilityTest', function () {
      */
     it("ACTS_StartAbility_1800",0, async function(done){
         console.info("------------------logMessage ACTS_StartAbility_1800-------------------");
-        featureAbility.startAbility(undefined).then((data) => {
-            console.log("ACTS_StartAbility_1800 asyncCallbackdata: " + JSON.stringify(data));;
-        }).catch((error) => {
-            console.log("ACTS_StartAbility_1800 : error = " + JSON.stringify(error));
+        await featureAbility.startAbility(undefined).then((data) => {
+            console.log('ACTS_StartAbility_1800 asyncCallback data: ' + JSON.stringify(data));
+            expect().assertFail();
             done();
+        }).catch((err)=>{
+            expect(err.code == -104).assertTrue();
         });
     });
+
 })
