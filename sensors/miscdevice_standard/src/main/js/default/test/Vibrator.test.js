@@ -232,7 +232,7 @@ describe("VibratorJsTest", function () {
      * @tc.require: Issue Number
      */
     it("VibratorJsTest009", 0, async function (done) {
-        console.info('----------------------SensorJsTest001---------------------------');
+        console.info('----------------------VibratorJsTest001---------------------------');
         function stopPromise() {
             return new Promise((resolve, reject) => {
                 vibrator.stop("time", (error) => {

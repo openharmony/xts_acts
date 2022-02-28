@@ -15,7 +15,14 @@ import("//build/ohos_var.gni")
 
 group("sensor") {
   testonly = true
-  if (device_name == "rk3568") {
+  if (device_name == "m40") {
+    if (is_standard_system) {
+      deps = [ "sensor_standard:sensor_js_test" ]
+    }
+  } else if (device_name == "rk3568") {
+    if (is_standard_system) {
+      deps = [ "sensor_standard:sensor_js_test" ]
+    }
   } else {
     if (is_standard_system) {
       deps = [ "sensor_standard:sensor_js_test" ]
