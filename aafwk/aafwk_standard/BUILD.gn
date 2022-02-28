@@ -20,6 +20,7 @@ group("aafwk_standard") {
       "abilitymanager:actsabilitymanagertest",
       "actsabilitydistributetest:ActsAbilityDistributeTest",
       "actsabilitydistributetest:ActsAbilityDistributeTest",
+      "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
       "amsabilitymanager/amsMissionSnapshotTest:ActsAmsMissionSnapshotTest",
       "amsabilitymanager/amsMissionSnapshotTestSingleton:ActsAmsMissionSnapshotTestSingleton",
       "amsabilitymanager/amsMissionSnapshotTestSingletonS:ActsAmsMissionSnapshotTestSingletonS",
@@ -51,7 +52,6 @@ group("aafwk_standard") {
       "serviceability/stserviceabilityserver:amsStServiceAilityServer",
       "serviceability/stserviceabilityserversecond:ActsAmsStServiceAilityServerSecondTest",
       "setshowonlockscreen:setshowonlockscreen",
-      "stage:stage",
       "want:want",
     ]
   }
