@@ -1,0 +1,13 @@
+require("./Agree/SecurityHuksAgreeDHBasicFinish63KBPromiseJsunit.test.js")
+require("./Agree/SecurityHuksAgreeDHBasicFinish65KBPromiseJsunit.test.js")
+require("./Agree/SecurityHuksAgreeDHBasicAbort63KBPromiseJsunit.test.js")
+require("./Agree/SecurityHuksAgreeDHBasicAbort65KBPromiseJsunit.test.js")
+require("./Agree/SecurityHuksAgreeECDHBasicFinish63KBPromiseJsunit.test.js")
+require("./Agree/SecurityHuksAgreeECDHBasicFinish65KBPromiseJsunit.test.js")
+require("./Agree/SecurityHuksAgreeECDHBasicAbort63KBPromiseJsunit.test.js")
+require("./Agree/SecurityHuksAgreeECDHBasicAbort65KBPromiseJsunit.test.js")
+require("./Agree/SecurityHuksAgreeX25519BasicFinish63KBPromiseJsunit.test.js")
+require("./Agree/SecurityHuksAgreeX25519BasicFinish65KBPromiseJsunit.test.js")
+require("./Agree/SecurityHuksAgreeX25519BasicAbort63KBPromiseJsunit.test.js")
+require("./Agree/SecurityHuksAgreeX25519BasicAbort65KBPromiseJsunit.test.js")
+

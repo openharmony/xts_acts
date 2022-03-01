@@ -1,0 +1,1 @@
+require("./HMAC/SecurityHuksHmacBasicPromiseJsunit.test.js")
