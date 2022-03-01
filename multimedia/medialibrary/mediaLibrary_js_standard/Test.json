@@ -14,9 +14,7 @@
             "push": [
                 "./resource/medialibrary/01.jpg ->/storage/media/100/local/files",
                 "./resource/medialibrary/01.mp3 ->/storage/media/100/local/files",
-                "./resource/medialibrary/01.mp4 ->/storage/media/100/local/files",
-                "./resource/medialibrary/test.dat ->/storage/media/100/local/files",
-                "./resource/medialibrary/test2.dat ->/storage/media/100/local/files"
+                "./resource/medialibrary/01.mp4 ->/storage/media/100/local/files"
             ]
         },
         {
@@ -38,8 +36,8 @@
                 "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/camera/01.mp4",
                 "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/camera/02.mp4",
                 "mkdir /storage/media/100/local/files/File",
-                "cp /storage/media/100/local/files/test.dat /storage/media/100/local/files/File/test.dat",
-                "cp /storage/media/100/local/files/test2.dat /storage/media/100/local/files/File/test2.dat",
+                "touch /storage/media/100/local/files/File/test.dat",
+                "touch /storage/media/100/local/files/File/test2.dat",
                 "chmod -R 777 /storage/media/100/local/files/*",
                 "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",
                 "killall com.ohos.medialibrary.MediaScannerAbilityA",
