@@ -19,7 +19,7 @@ group("compileruntime") {
       "process_lib_standard:process_js_test",
       "url_lib_standard:url_js_test",
       "util_lib_standard:util_js_test",
-      "worker_lib_standard:worker_js_hap",
+#     "worker_lib_standard:worker_js_hap",
     ]
   }
 }
