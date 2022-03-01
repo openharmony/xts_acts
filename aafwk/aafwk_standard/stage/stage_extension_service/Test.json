@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "StageExtensionServiceTest.hap"
+                "ActsStageExtensionServiceTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
