@@ -18,13 +18,13 @@ import camera from '@ohos.multimedia.camera'
 import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-describe('RecorderLocalTestVideoFUNC', function () {
+describe('VideoRecorderFuncPromiseTest', function () {
     const RECORDER_TIME = 3000;
     const PAUSE_TIME = 1000;
     let cameraManager;
     let cameras;
     let captureSession;
-    let testFdNumber;
+    let fdPath;
     let configFile = {
         audioBitrate : 48000,
         audioChannels : 2,
@@ -74,7 +74,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         for(let t = Date.now();Date.now() - t <= time;);
     }
 
-    beforeAll(function () {
+    beforeAll(async function () {
+        await initCamera();
         console.info('beforeAll case');
     })
 
@@ -82,7 +83,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         console.info('beforeEach case');
     })
 
-    afterEach(function () {
+    afterEach(async function () {
+        await closeFd();
         console.info('afterEach case');
     })
 
@@ -147,25 +149,35 @@ describe('RecorderLocalTestVideoFUNC', function () {
         await stopCaptureSession();
     }
 
-
-    async function getFd() {
-        let displayName = 'VID_202202081551.mp4';
-        const medialib = mediaLibrary.getMediaLibrary();
+    async function getFd(pathName) {
+        let displayName = pathName;
+        const mediaTest = mediaLibrary.getMediaLibrary();
         let fileKeyObj = mediaLibrary.FileKey;
         let mediaType = mediaLibrary.MediaType.VIDEO;
-        let publicPath = await medialib.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
-        let dataUri = await medialib.createAsset(mediaType, displayName, publicPath);
+        let publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
+        let dataUri = await mediaTest.createAsset(mediaType, displayName, publicPath);
         if (dataUri != undefined) {
             let args = dataUri.id.toString();
             let fetchOp = {
                 selections : fileKeyObj.ID + "=?",
                 selectionArgs : [args],
             }
-            let fetchFileResult = await medialib.getFileAssets(fetchOp);
+            let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
             let fileAsset = await fetchFileResult.getAllObject();
             let fdNumber = await fileAsset[0].open('Rw');
-            fdNumber = "fd://" + fdNumber.toString();
-            testFdNumber = fdNumber;
+            fdPath = "fd://" + fdNumber.toString();
+        }
+    }
+
+    async function closeFd() {
+        if (fileAsset != null) {
+            await fileAsset[0].close(fdNumber).then(() => {
+                console.info('[mediaLibrary] case close fd success');
+            }).catch((err) => {
+                console.info('[mediaLibrary] case close fd failed');
+            });
+        } else {
+            console.info('[mediaLibrary] case fileAsset is null');
         }
     }
 
@@ -191,8 +203,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        await initCamera();
-        videoConfig.url = 'file:///data/media/01.mp4';
+        await getFd('01.mp4');
+        videoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {
@@ -241,7 +253,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        videoConfig.url = 'file:///data/media/02.mp4';
+        await getFd('02.mp4');
+        videoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {
@@ -297,7 +310,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        videoConfig.url = 'file:///data/media/03.mp4';
+        await getFd('03.mp4');
+        videoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {
@@ -361,7 +375,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        videoConfig.url = 'file:///data/media/04.mp4';
+        await getFd('04.mp4');
+        videoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {
@@ -416,7 +431,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        videoConfig.url = 'file:///data/media/05.mp4';
+        await getFd('05.mp4');
+        videoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {
@@ -470,7 +486,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        videoConfig.url = 'file:///data/media/06.mp4';
+        await getFd('06.mp4');
+        videoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {
@@ -531,7 +548,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        videoConfig.url = 'file:///data/media/07.mp4';
+        await getFd('07.mp4');
+        videoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {
@@ -592,7 +610,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        videoConfig.url = 'file:///data/media/08.mp4';
+        await getFd('08.mp4');
+        videoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {
@@ -661,7 +680,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        videoConfig.url = 'file:///data/media/09.mp4';
+        await getFd('09.mp4');
+        videoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {
@@ -730,7 +750,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        videoConfig.url = 'file:///data/media/10.mp4';
+        await getFd('10.mp4');
+        videoConfig.url = fdPath;
         configFile.audioBitrate = 8000;
         configFile.audioSampleRate = 8000;
         configFile.videoBitrate = 8000;
@@ -789,7 +810,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        videoConfig.url = 'file:///data/media/11.mp4';
+        await getFd('11.mp4');
+        videoConfig.url = fdPath;
         configFile.audioBitrate = 16000;
         configFile.audioSampleRate = 32000;
         configFile.videoBitrate = 16000;
@@ -848,7 +870,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        videoConfig.url = 'file:///data/media/12.mp4';
+        await getFd('12.mp4');
+        videoConfig.url = fdPath;
         configFile.audioBitrate = 32000;
         configFile.audioSampleRate = 44100;
         configFile.videoBitrate = 32000;
@@ -907,7 +930,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        videoConfig.url = 'file:///data/media/13.mp4';
+        await getFd('13.mp4');
+        videoConfig.url = fdPath;
         configFile.audioBitrate = 112000;
         configFile.audioSampleRate = 96000;
         configFile.videoBitrate = 112000;
@@ -965,7 +989,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        onlyVideoConfig.url = 'file:///data/media/14.mp4';
+        await getFd('14.mp4');
+        onlyVideoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {
@@ -1013,7 +1038,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        onlyVideoConfig.url = 'file:///data/media/15.mp4';
+        await getFd('15.mp4');
+        onlyVideoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {
@@ -1070,7 +1096,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        onlyVideoConfig.url = 'file:///data/media/16.mp4';
+        await getFd('16.mp4');
+        onlyVideoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {
@@ -1133,7 +1160,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        onlyVideoConfig.url = 'file:///data/media/17.mp4';
+        await getFd('17.mp4');
+        onlyVideoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {
@@ -1187,7 +1215,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        onlyVideoConfig.url = 'file:///data/media/18.mp4';
+        await getFd('18.mp4');
+        onlyVideoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {
@@ -1241,7 +1270,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        videoConfig.url = 'file:///data/media/40.mp4';
+        await getFd('40.mp4');
+        videoConfig.url = fdPath;
         videoConfig.orientationHint = 90;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
@@ -1289,7 +1319,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        videoConfig.url = 'file:///data/media/41.mp4';
+        await getFd('41.mp4');
+        videoConfig.url = fdPath;
         videoConfig.orientationHint = 180;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
@@ -1337,7 +1368,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        videoConfig.url = 'file:///data/media/42.mp4';
+        await getFd('42.mp4');
+        videoConfig.url = fdPath;
         videoConfig.orientationHint = 270;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
@@ -1385,7 +1417,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        videoConfig.url = 'file:///data/media/43.mp4';
+        await getFd('43.mp4');
+        videoConfig.url = fdPath;
         videoConfig.videoFrameRate = 20;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
@@ -1433,7 +1466,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        videoConfig.url = 'file:///data/media/44.mp4';
+        await getFd('44.mp4');
+        videoConfig.url = fdPath;
         videoConfig.videoFrameRate = 30;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
@@ -1481,7 +1515,8 @@ describe('RecorderLocalTestVideoFUNC', function () {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
-        videoConfig.url = 'file:///data/media/45.mp4';
+        await getFd('45.mp4');
+        videoConfig.url = fdPath;
         videoConfig.videoFrameRate = 60;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
