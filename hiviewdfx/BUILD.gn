@@ -16,6 +16,7 @@ group("hiviewdfxtestacts") {
   if (is_standard_system) {
     deps = [
       "hiappeventtest/hiappeventjstest:ActsHiAppeventTest",
+      "hicheckertest/hicheckerjstest:hicheckerjstest",
       "hiview/faultlogger/faultloggerjs:faultloggerjs_test",
     ]
   }
