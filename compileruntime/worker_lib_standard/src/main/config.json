@@ -37,6 +37,7 @@
             ]
           }
         ],
+	"visible": true,
         "orientation": "unspecified",
         "name": "com.example.workerxts.MainAbility",
         "icon": "$media:icon",

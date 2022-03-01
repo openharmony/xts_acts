@@ -13,17 +13,9 @@
  * limitations under the License.
  */
 
-/******/ (() => { // webpackBootstrap
-    var __webpack_exports__ = {};
-    /*!********************************************************************************************!*\
-  !*** d:\workspace\my_works\MyApplication\entry\src\main\ets\default\workers\WorkerDemo.js ***!
-  \********************************************************************************************/
-    var worker = globalThis.requireNapi('worker');
+import worker from '@ohos.worker';
+const parentPort = worker.parentPort;
 
-    const parentPort = worker.parentPort;
-
-    parentPort.onmessage = function(e) {
-        parentPort.postMessage(name)
-    }
-    /******/ })()
-;
+parentPort.onmessage = function(e) {
+    parentPort.postMessage(name)
+}
