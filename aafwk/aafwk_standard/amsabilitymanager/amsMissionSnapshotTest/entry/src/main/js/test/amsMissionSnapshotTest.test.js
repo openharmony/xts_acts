@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 import abilityManager from '@ohos.app.abilityManager'
-import featureAbility from '@ohos.ability.featureability'
-import commonEvent from '@ohos.commonevent'
+import featureAbility from '@ohos.ability.featureAbility'
+import commonEvent from '@ohos.commonEvent'
 import image from '@ohos.multimedia.image'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'

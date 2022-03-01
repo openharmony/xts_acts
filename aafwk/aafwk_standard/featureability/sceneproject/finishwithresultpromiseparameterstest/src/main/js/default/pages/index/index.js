@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import commonevent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 import featureAbility from '@ohos.ability.featureAbility'
 
 const injectRef = Object.getPrototypeOf(global) || global
@@ -30,7 +30,7 @@ export default {
         this.title = this.$t('strings.world');
     },
     async onShow() {
-        commonevent.publish("ACTS_FinishWithResult_0100_CommonEvent", PublishCallBack);
+        commonEvent.publish("ACTS_FinishWithResult_0100_CommonEvent", PublishCallBack);
         var promise = await featureAbility.terminateSelfWithResult(
             {
                 resultCode: 1,

@@ -15,7 +15,7 @@
 import featureAbility from '@ohos.ability.featureAbility'
 import wantconstant from '@ohos.ability.wantConstant'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 import wantConstant from '@ohos.ability.wantConstant'
 
 const START_ABILITY_TIMEOUT = 4000;
