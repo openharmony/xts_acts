@@ -1,4 +1,19 @@
-import {describe, it, expect} from 'deccjsunit/index'
+/*
+ * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, it, expect } from 'deccjsunit/index'
 import huks from '@ohos.security.huks'
 import * as Data from '../data.js';
 
@@ -9,83 +24,83 @@ let srcData63 = Data.Data_63b;
 let srcData63Kb = stringToUint8Array(srcData63);
 
 let HksKeyAlg = {
-    HKS_ALG_RSA : 1,
+    HKS_ALG_RSA: 1,
 }
 
 let HksKeyPurpose = {
-    HKS_KEY_PURPOSE_SIGN : 4,
-    HKS_KEY_PURPOSE_VERIFY : 8,
+    HKS_KEY_PURPOSE_SIGN: 4,
+    HKS_KEY_PURPOSE_VERIFY: 8,
 }
 
 let HksKeyPadding = {
-    HKS_PADDING_PSS : 2,
-    HKS_PADDING_PKCS1_V1_5 : 3,
+    HKS_PADDING_PSS: 2,
+    HKS_PADDING_PKCS1_V1_5: 3,
 }
 
 let HksKeyDigest = {
-    HKS_DIGEST_NONE : 0,
-    HKS_DIGEST_MD5 : 1,
-    HKS_DIGEST_SHA1 : 10,
-    HKS_DIGEST_SHA224 : 11,
-    HKS_DIGEST_SHA256 : 12,
-    HKS_DIGEST_SHA384 : 13,
-    HKS_DIGEST_SHA512 : 14,
+    HKS_DIGEST_NONE: 0,
+    HKS_DIGEST_MD5: 1,
+    HKS_DIGEST_SHA1: 10,
+    HKS_DIGEST_SHA224: 11,
+    HKS_DIGEST_SHA256: 12,
+    HKS_DIGEST_SHA384: 13,
+    HKS_DIGEST_SHA512: 14,
 }
 
 let HksKeySize = {
-    HKS_RSA_KEY_SIZE_512 : 512,
-    HKS_RSA_KEY_SIZE_768 : 768,
-    HKS_RSA_KEY_SIZE_1024 : 1024,
-    HKS_RSA_KEY_SIZE_2048 : 2048,
-    HKS_RSA_KEY_SIZE_3072 : 3072,
-    HKS_RSA_KEY_SIZE_4096 : 4096,
+    HKS_RSA_KEY_SIZE_512: 512,
+    HKS_RSA_KEY_SIZE_768: 768,
+    HKS_RSA_KEY_SIZE_1024: 1024,
+    HKS_RSA_KEY_SIZE_2048: 2048,
+    HKS_RSA_KEY_SIZE_3072: 3072,
+    HKS_RSA_KEY_SIZE_4096: 4096,
 }
 
 let HksTagType = {
-    HKS_TAG_TYPE_UINT : 2 << 28,
-    HKS_TAG_TYPE_BYTES : 5 << 28
+    HKS_TAG_TYPE_UINT: 2 << 28,
+    HKS_TAG_TYPE_BYTES: 5 << 28
 }
 
 let HksTag = {
-    HKS_TAG_ALGORITHM : HksTagType.HKS_TAG_TYPE_UINT | 1,
-    HKS_TAG_PURPOSE : HksTagType.HKS_TAG_TYPE_UINT | 2,
-    HKS_TAG_KEY_SIZE : HksTagType.HKS_TAG_TYPE_UINT | 3,
-    HKS_TAG_DIGEST : HksTagType.HKS_TAG_TYPE_UINT | 4,
-    HKS_TAG_PADDING : HksTagType.HKS_TAG_TYPE_UINT | 5,
-    HKS_TAG_AGREE_PUBLIC_KEY : HksTagType.HKS_TAG_TYPE_BYTES | 22,
+    HKS_TAG_ALGORITHM: HksTagType.HKS_TAG_TYPE_UINT | 1,
+    HKS_TAG_PURPOSE: HksTagType.HKS_TAG_TYPE_UINT | 2,
+    HKS_TAG_KEY_SIZE: HksTagType.HKS_TAG_TYPE_UINT | 3,
+    HKS_TAG_DIGEST: HksTagType.HKS_TAG_TYPE_UINT | 4,
+    HKS_TAG_PADDING: HksTagType.HKS_TAG_TYPE_UINT | 5,
+    HKS_TAG_AGREE_PUBLIC_KEY: HksTagType.HKS_TAG_TYPE_BYTES | 22,
 }
 
 
 let HuksSignVerify001 = {
-    HuksKeySIZE:{"tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_RSA_KEY_SIZE_512},
-    HuksKeyAlgRSA:{"tag": HksTag.HKS_TAG_ALGORITHM, "value": HksKeyAlg.HKS_ALG_RSA},
-    HuksKeyRSASize512:{"tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_RSA_KEY_SIZE_512},
-    HuksKeyRSASize768:{"tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_RSA_KEY_SIZE_768},
-    HuksKeyRSASize1024:{"tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_RSA_KEY_SIZE_1024},
-    HuksKeyRSASize2048:{"tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_RSA_KEY_SIZE_2048},
-    HuksKeyRSASize3072:{"tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_RSA_KEY_SIZE_3072},
-    HuksKeyRSASize4096:{"tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_RSA_KEY_SIZE_4096},
-    HuksKeyRSAPurposeSIGN:{"tag": HksTag.HKS_TAG_PURPOSE, "value": HksKeyPurpose.HKS_KEY_PURPOSE_SIGN},
-    HuksKeyRSAPurposeVERIFY:{"tag": HksTag.HKS_TAG_PURPOSE, "value": HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY},
-    HuksKeyRSAPurposeSING_VERIFY:{"tag": HksTag.HKS_TAG_PURPOSE, "value": HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY},
-    HuksKeyRSAPADDINGPKCS1_V1_5:{"tag": HksTag.HKS_TAG_PADDING, "value": HksKeyPadding.HKS_PADDING_PKCS1_V1_5},
-    HuksKeyRSAPADDINGPSS:{"tag": HksTag.HKS_TAG_PADDING, "value": HksKeyPadding.HKS_PADDING_PSS},
-    HuksTagPKCS1DigestMD5 : {"tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_MD5},
-    HuksTagPKCS1DigestNONE : {"tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_NONE},
-    HuksTagPKCS1DigestSHA1 : {"tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA1},
-    HuksTagPKCS1DigestSHA224 : {"tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA224},
-    HuksTagPKCS1DigestSHA256 : {"tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA256},
-    HuksTagPKCS1DigestSHA384 : {"tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA384},
-    HuksTagPKCS1DigestSHA512 : {"tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA512},
-    HuksTagPSSDigestSHA1 : {"tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA1},
-    HuksTagPSSDigestSHA224 : {"tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA224},
-    HuksTagPSSDigestSHA256 : {"tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA256},
-    HuksTagPSSDigestSHA384 : {"tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA384},
-    HuksTagPSSDigestSHA512 : {"tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA512},
+    HuksKeySIZE: { "tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_RSA_KEY_SIZE_512 },
+    HuksKeyAlgRSA: { "tag": HksTag.HKS_TAG_ALGORITHM, "value": HksKeyAlg.HKS_ALG_RSA },
+    HuksKeyRSASize512: { "tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_RSA_KEY_SIZE_512 },
+    HuksKeyRSASize768: { "tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_RSA_KEY_SIZE_768 },
+    HuksKeyRSASize1024: { "tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_RSA_KEY_SIZE_1024 },
+    HuksKeyRSASize2048: { "tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_RSA_KEY_SIZE_2048 },
+    HuksKeyRSASize3072: { "tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_RSA_KEY_SIZE_3072 },
+    HuksKeyRSASize4096: { "tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_RSA_KEY_SIZE_4096 },
+    HuksKeyRSAPurposeSIGN: { "tag": HksTag.HKS_TAG_PURPOSE, "value": HksKeyPurpose.HKS_KEY_PURPOSE_SIGN },
+    HuksKeyRSAPurposeVERIFY: { "tag": HksTag.HKS_TAG_PURPOSE, "value": HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY },
+    HuksKeyRSAPurposeSINGVERIFY: { "tag": HksTag.HKS_TAG_PURPOSE, "value": HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY },
+    HuksKeyRSAPADDINGPKCS1V15: { "tag": HksTag.HKS_TAG_PADDING, "value": HksKeyPadding.HKS_PADDING_PKCS1_V1_5 },
+    HuksKeyRSAPADDINGPSS: { "tag": HksTag.HKS_TAG_PADDING, "value": HksKeyPadding.HKS_PADDING_PSS },
+    HuksTagPKCS1DigestMD5: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_MD5 },
+    HuksTagPKCS1DigestNONE: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_NONE },
+    HuksTagPKCS1DigestSHA1: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA1 },
+    HuksTagPKCS1DigestSHA224: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA224 },
+    HuksTagPKCS1DigestSHA256: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA256 },
+    HuksTagPKCS1DigestSHA384: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA384 },
+    HuksTagPKCS1DigestSHA512: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA512 },
+    HuksTagPSSDigestSHA1: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA1 },
+    HuksTagPSSDigestSHA224: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA224 },
+    HuksTagPSSDigestSHA256: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA256 },
+    HuksTagPSSDigestSHA384: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA384 },
+    HuksTagPSSDigestSHA512: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA512 },
 }
 
 
-function stringToUint8Array(str){
+function stringToUint8Array(str) {
     var arr = [];
     for (var i = 0, j = str.length; i < j; ++i) {
         arr.push(str.charCodeAt(i));
@@ -93,7 +108,7 @@ function stringToUint8Array(str){
     var tmpUint8Array = new Uint8Array(arr);
     return tmpUint8Array
 }
-function Uint8ArrayToString(fileData){
+function uint8ArrayToString(fileData) {
     var dataString = "";
     for (var i = 0; i < fileData.length; i++) {
         dataString += String.fromCharCode(fileData[i]);
@@ -158,26 +173,26 @@ async function publicInitFunc(keyAlias, HuksOptions) {
 
 async function publicUpdateFunc(HuksOptions) {
     let dateSize = 64
-    let _HuksOptions_inData = HuksOptions.inData;
+    let huksOptionsInData = HuksOptions.inData;
     let inDataArray = HuksOptions.inData;
-    if (Uint8ArrayToString(inDataArray).length < dateSize) {
+    if (uint8ArrayToString(inDataArray).length < dateSize) {
         await update(handle, HuksOptions);
-        HuksOptions.inData = _HuksOptions_inData
+        HuksOptions.inData = huksOptionsInData
     } else {
-        let count = Math.floor(Uint8ArrayToString(inDataArray).length / dateSize);
-        let remainder = Uint8ArrayToString(inDataArray).length % dateSize;
-        console.log(`test before update length: ${Uint8ArrayToString(inDataArray).length}`);
+        let count = Math.floor(uint8ArrayToString(inDataArray).length / dateSize);
+        let remainder = uint8ArrayToString(inDataArray).length % dateSize;
+        console.log(`test before update length: ${uint8ArrayToString(inDataArray).length}`);
         console.log(`test before update count: ${count}`);
         console.log(`test before update remainder: ${remainder}`);
-        for (let i = 0;i < count; i++) {
-            HuksOptions.inData = stringToUint8Array(Uint8ArrayToString(_HuksOptions_inData).slice(dateSize * i, dateSize * (i + 1)));
+        for (let i = 0; i < count; i++) {
+            HuksOptions.inData = stringToUint8Array(uint8ArrayToString(huksOptionsInData).slice(dateSize * i, dateSize * (i + 1)));
             await update(handle, HuksOptions);
-            HuksOptions.inData = _HuksOptions_inData
+            HuksOptions.inData = huksOptionsInData
         }
         if (remainder !== 0) {
-            HuksOptions.inData = stringToUint8Array(Uint8ArrayToString(_HuksOptions_inData).slice(dateSize * count, Uint8ArrayToString(inDataArray).length));
+            HuksOptions.inData = stringToUint8Array(uint8ArrayToString(huksOptionsInData).slice(dateSize * count, uint8ArrayToString(inDataArray).length));
             await update(handle, HuksOptions);
-            HuksOptions.inData = _HuksOptions_inData
+            HuksOptions.inData = huksOptionsInData
         }
     }
 }
@@ -228,7 +243,7 @@ async function publicSignVerifyFunc(srcKeyAlies, newSrcKeyAlies, HuksOptions, th
     try {
         let keyAlias = srcKeyAlies;
         if (isSING) {
-            HuksOptions.properties.splice(1, 1, HuksSignVerify001.HuksKeyRSAPurposeSING_VERIFY);
+            HuksOptions.properties.splice(1, 1, HuksSignVerify001.HuksKeyRSAPurposeSINGVERIFY);
             console.log(`test publicSignVerifyFunc GenerateHuksOptions: ${JSON.stringify(HuksOptions)}`);
             await publicGenerateKeyFunc(keyAlias, HuksOptions);
             HuksOptions.properties.splice(1, 1, HuksSignVerify001.HuksKeyRSAPurposeSIGN);
@@ -245,7 +260,7 @@ async function publicSignVerifyFunc(srcKeyAlies, newSrcKeyAlies, HuksOptions, th
                 console.log(`test before finish HuksOptions: ${HuksOptions.inData}`);
                 console.log(`test before finish HuksOptions: ${HuksOptions.outData}`);
                 await publicFinishFunc(HuksOptions);
-                HuksOptions.properties.splice(1, 1, HuksSignVerify001.HuksKeyRSAPurposeSING_VERIFY)
+                HuksOptions.properties.splice(1, 1, HuksSignVerify001.HuksKeyRSAPurposeSINGVERIFY)
                 console.log(`test before exportKey Gen_HuksOptions: ${JSON.stringify(HuksOptions)}`);
                 await publicExportKey(keyAlias, HuksOptions);
             } else {
@@ -259,7 +274,7 @@ async function publicSignVerifyFunc(srcKeyAlies, newSrcKeyAlies, HuksOptions, th
         }
 
         if ((isSING && thirdInderfaceName == "abort")) {
-            HuksOptions.properties.splice(1, 1, HuksSignVerify001.HuksKeyRSAPurposeSING_VERIFY);
+            HuksOptions.properties.splice(1, 1, HuksSignVerify001.HuksKeyRSAPurposeSINGVERIFY);
             await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
         } else if (!isSING) {
             HuksOptions.properties.splice(1, 1, HuksSignVerify001.HuksKeyRSAPurposeVERIFY);
@@ -271,7 +286,8 @@ async function publicSignVerifyFunc(srcKeyAlies, newSrcKeyAlies, HuksOptions, th
 }
 
 describe('SecurityHuksSignVerifyRSAPromiseJsunit', function () {
-	/**
+    
+    /**
      * @tc.name: testSignVerifyRSA001
      * @tc.desc: alg-RSA  dig-DIGEST_MD5 pad-PADDING_PKCS1_V1_5 keysize-KEY_SIZE_512 size-2048 inputdate-65kb  init>update>finish
      * @tc.type: FUNC
@@ -279,15 +295,15 @@ describe('SecurityHuksSignVerifyRSAPromiseJsunit', function () {
     it('testSignVerifyRSA001', 0, async function (done) {
         const srcKeyAlies = 'testSignVerifyRSASize512SIGNPKCS1MD5KeyAlias101'
         let HuksOptions = {
-            "properties": new Array(HuksSignVerify001.HuksKeyAlgRSA, HuksSignVerify001.HuksKeyRSAPurposeSIGN, HuksSignVerify001.HuksTagPKCS1DigestMD5, HuksSignVerify001.HuksKeyRSAPADDINGPKCS1_V1_5, HuksSignVerify001.HuksKeyRSASize512),
+            "properties": new Array(HuksSignVerify001.HuksKeyAlgRSA, HuksSignVerify001.HuksKeyRSAPurposeSIGN, HuksSignVerify001.HuksTagPKCS1DigestMD5, HuksSignVerify001.HuksKeyRSAPADDINGPKCS1V15, HuksSignVerify001.HuksKeyRSASize512),
             "inData": srcData63Kb,
         }
-        await publicSignVerifyFunc(srcKeyAlies,(srcKeyAlies+'New'), HuksOptions, "finish",true)
+        await publicSignVerifyFunc(srcKeyAlies, (srcKeyAlies + 'New'), HuksOptions, "finish", true)
         HuksOptions = {
-            "properties": new Array(HuksSignVerify001.HuksKeyAlgRSA, HuksSignVerify001.HuksKeyRSAPurposeVERIFY, HuksSignVerify001.HuksTagPKCS1DigestMD5, HuksSignVerify001.HuksKeyRSAPADDINGPKCS1_V1_5, HuksSignVerify001.HuksKeyRSASize512),
+            "properties": new Array(HuksSignVerify001.HuksKeyAlgRSA, HuksSignVerify001.HuksKeyRSAPurposeVERIFY, HuksSignVerify001.HuksTagPKCS1DigestMD5, HuksSignVerify001.HuksKeyRSAPADDINGPKCS1V15, HuksSignVerify001.HuksKeyRSASize512),
             "inData": srcData63Kb,
         }
-        await publicSignVerifyFunc(srcKeyAlies,(srcKeyAlies+'New'), HuksOptions, "finish",false);
+        await publicSignVerifyFunc(srcKeyAlies, (srcKeyAlies + 'New'), HuksOptions, "finish", false);
         finishOutData = 0;
         exportKey = 0;
         done();

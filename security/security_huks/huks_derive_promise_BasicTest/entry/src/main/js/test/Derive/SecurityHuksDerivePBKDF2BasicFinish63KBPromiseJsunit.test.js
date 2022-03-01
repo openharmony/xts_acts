@@ -1,4 +1,19 @@
-import {describe, it, expect} from 'deccjsunit/index'
+/*
+ * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, it, expect } from 'deccjsunit/index'
 import huks from '@ohos.security.huks'
 import * as Data from '../data.js';
 
@@ -20,9 +35,9 @@ let HksKeyAlg = {
 let HksKeyPurpose = {
     HKS_KEY_PURPOSE_AGREE: 256,
     HKS_KEY_PURPOSE_DERIVE: 16,
-    HKS_KEY_PURPOSE_ENCRYPT : 1,
-    HKS_KEY_PURPOSE_DECRYPT : 2,
-    HKS_KEY_PURPOSE_MAC : 128,
+    HKS_KEY_PURPOSE_ENCRYPT: 1,
+    HKS_KEY_PURPOSE_DECRYPT: 2,
+    HKS_KEY_PURPOSE_MAC: 128,
 }
 
 let HksKeyStorageType = {
@@ -51,7 +66,7 @@ let HksKeyDigest = {
 let HksTagType = {
     HKS_TAG_TYPE_UINT: 2 << 28,
     HKS_TAG_TYPE_BOOL: 4 << 28,
-    HKS_TAG_TYPE_BYTES: 5<< 28
+    HKS_TAG_TYPE_BYTES: 5 << 28
 }
 
 let HksCipherMode = {
@@ -77,10 +92,10 @@ let HksTag = {
     HKS_TAG_PURPOSE: HksTagType.HKS_TAG_TYPE_UINT | 2,
     HKS_TAG_KEY_SIZE: HksTagType.HKS_TAG_TYPE_UINT | 3,
     HKS_TAG_DIGEST: HksTagType.HKS_TAG_TYPE_UINT | 4,
-	HKS_TAG_PADDING: HksTagType.HKS_TAG_TYPE_UINT | 5,
-	HKS_TAG_BLOCK_MODE: HksTagType.HKS_TAG_TYPE_UINT | 6,
+    HKS_TAG_PADDING: HksTagType.HKS_TAG_TYPE_UINT | 5,
+    HKS_TAG_BLOCK_MODE: HksTagType.HKS_TAG_TYPE_UINT | 6,
     HKS_TAG_DERIVE_KEY_SIZE: HksTagType.HKS_TAG_TYPE_UINT | 24,
-	HKS_TAG_IS_KEY_ALIAS : HksTagType.HKS_TAG_TYPE_BOOL | 1001,
+    HKS_TAG_IS_KEY_ALIAS: HksTagType.HKS_TAG_TYPE_BOOL | 1001,
     HKS_TAG_KEY_STORAGE_FLAG: HksTagType.HKS_TAG_TYPE_UINT | 1002,
     HKS_TAG_KEY_ALIAS: HksTagType.HKS_TAG_TYPE_BYTES | 23,
 }
@@ -98,8 +113,8 @@ let HuksDerive002 = {
     HuksKeyPBKDF2Size256: { "tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_AES_KEY_SIZE_256 },
     HuksKeyDERIVEKEYSIZE: { "tag": HksTag.HKS_TAG_DERIVE_KEY_SIZE, "value": HksKeySize.DERIVE_KEY_SIZE_32 },
 
-	HuksKeyISKEYALIAS: { "tag": HksTag.HKS_TAG_IS_KEY_ALIAS, "value": true },
-    HuksKeySTORAGE:{"tag": HksTag.HKS_TAG_KEY_STORAGE_FLAG,"value": HksKeyStorageType.HKS_STORAGE_PERSISTENT},
+    HuksKeyISKEYALIAS: { "tag": HksTag.HKS_TAG_IS_KEY_ALIAS, "value": true },
+    HuksKeySTORAGE: { "tag": HksTag.HKS_TAG_KEY_STORAGE_FLAG, "value": HksKeyStorageType.HKS_STORAGE_PERSISTENT },
     HuksKeyALGORITHMAES: { "tag": HksTag.HKS_TAG_ALGORITHM, "value": HksKeyAlg.HKS_ALG_AES },
     HuksKeyALGORITHMHMAC: { "tag": HksTag.HKS_TAG_ALGORITHM, "value": HksKeyAlg.HKS_ALG_HMAC },
     HuksKeySIZE256: { "tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_AES_KEY_SIZE_256 },
@@ -107,10 +122,10 @@ let HuksDerive002 = {
     HuksKeySIZE192: { "tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_AES_KEY_SIZE_192 },
     HuksKeyPurposeDERIVE: { "tag": HksTag.HKS_TAG_PURPOSE, "value": HksKeyPurpose.HKS_KEY_PURPOSE_DERIVE },
     HuksKeyPurposeMAC: { "tag": HksTag.HKS_TAG_PURPOSE, "value": HksKeyPurpose.HKS_KEY_PURPOSE_MAC },
-    HuksKeyPurposeENCRYPTDECRYPT: { "tag": HksTag.HKS_TAG_PURPOSE, "value": HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT | HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT},
+    HuksKeyPurposeENCRYPTDECRYPT: { "tag": HksTag.HKS_TAG_PURPOSE, "value": HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT | HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT },
     HuksKeyPADDINGNONE: { "tag": HksTag.HKS_TAG_PADDING, "value": HksKeyPadding.HKS_PADDING_NONE },
     HuksKeyPADDINGPKCS7: { "tag": HksTag.HKS_TAG_PADDING, "value": HksKeyPadding.HKS_PADDING_PKCS7 },
-	HuksKeyDIGESTNONE: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_NONE},
+    HuksKeyDIGESTNONE: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_NONE },
     HuksKeyDIGESTSHA1: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA1 },
     HuksKeyDIGESTSHA224: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA224 },
     HuksKeyDIGESTSHA256: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA256 },
@@ -120,12 +135,12 @@ let HuksDerive002 = {
     HuksKeyBLOCK_MODECCM: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_CCM },
     HuksKeyBLOCK_MODEECB: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_ECB },
     HuksKeyBLOCK_MODECTR: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_CTR },
-    HuksKeyBLOCK_MODEGCM: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_GCM},
+    HuksKeyBLOCK_MODEGCM: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_GCM },
 }
 
 let HuksOptions_63kb = {
-	"properties": new Array(HuksDerive002.HuksKeyAlgAES, HuksDerive002.HuksKeyPurposePBKDF2, HuksDerive002.HuksTagPBKDF2DigestSHA256, HuksDerive002.HuksKeyPBKDF2Size128),
-	"inData": srcData63Kb,
+    "properties": new Array(HuksDerive002.HuksKeyAlgAES, HuksDerive002.HuksKeyPurposePBKDF2, HuksDerive002.HuksTagPBKDF2DigestSHA256, HuksDerive002.HuksKeyPBKDF2Size128),
+    "inData": srcData63Kb,
 }
 
 function stringToUint8Array(str) {
@@ -137,7 +152,7 @@ function stringToUint8Array(str) {
     return tmpUint8Array
 }
 
-function Uint8ArrayToString(fileData){
+function uint8ArrayToString(fileData) {
     var dataString = "";
     for (var i = 0; i < fileData.length; i++) {
         dataString += String.fromCharCode(fileData[i]);
@@ -146,106 +161,107 @@ function Uint8ArrayToString(fileData){
 }
 
 async function publicDeriveGenFunc(srcKeyAlies, HuksOptions) {
-	await huks.generateKey(srcKeyAlies, HuksOptions).then((data) => {
-		console.log(`test generateKey data: ${JSON.stringify(data)}`);
-		expect(data.errorCode == 0).assertTrue()
-	}).catch((err) => {
-		console.log("test generateKey err information: " + JSON.stringify(err))
-		expect(null).assertFail();
-	});
+    await huks.generateKey(srcKeyAlies, HuksOptions).then((data) => {
+        console.log(`test generateKey data: ${JSON.stringify(data)}`);
+        expect(data.errorCode == 0).assertTrue()
+    }).catch((err) => {
+        console.log("test generateKey err information: " + JSON.stringify(err))
+        expect(null).assertFail();
+    });
 }
 
 async function publicDeriveInitFunc(srcKeyAlies, HuksOptions) {
-	await huks.init(srcKeyAlies, HuksOptions).then((data) => {
-		console.log(`test init data ${JSON.stringify(data)}`);
-		handle1 = data.handle1;
-		handle2 = data.handle2;
-		handle = {
-			"handle1": handle1,
-			"handle2": handle2
-		};
-		expect(data.errorCode == 0).assertTrue()
-	}).catch((err) => {
-		console.log("test init err information: " + JSON.stringify(err))
-		expect(null).assertFail();
-	});
+    await huks.init(srcKeyAlies, HuksOptions).then((data) => {
+        console.log(`test init data ${JSON.stringify(data)}`);
+        handle1 = data.handle1;
+        handle2 = data.handle2;
+        handle = {
+            "handle1": handle1,
+            "handle2": handle2
+        };
+        expect(data.errorCode == 0).assertTrue()
+    }).catch((err) => {
+        console.log("test init err information: " + JSON.stringify(err))
+        expect(null).assertFail();
+    });
 }
 
 async function publicDeriveUpdateFunc(HuksOptions) {
-	await huks.update(handle, HuksOptions).then((data) => {
-		console.log(`test update data ${JSON.stringify(data)}`);
-		expect(data.errorCode == 0).assertTrue()
-	}).catch((err) => {
-		console.log("test update err information: " + JSON.stringify(err))
-		expect(null).assertFail();
-	});
+    await huks.update(handle, HuksOptions).then((data) => {
+        console.log(`test update data ${JSON.stringify(data)}`);
+        expect(data.errorCode == 0).assertTrue()
+    }).catch((err) => {
+        console.log("test update err information: " + JSON.stringify(err))
+        expect(null).assertFail();
+    });
 }
 
-async function publicDeriveFinishAbortFunc(HuksOptions_Finish, thirdInderfaceName) {
-	if (thirdInderfaceName == "finish") {
-		console.log(`test befor finish HuksOptions_Finish ${JSON.stringify(HuksOptions_Finish)}`);
-		await huks.finish(handle, HuksOptions_Finish).then((data) => {
-			console.log(`test finish data ${JSON.stringify(data)}`);
-			expect(data.errorCode == 0).assertTrue()
-		}).catch((err) => {
-			console.log("test finish err information: " + JSON.stringify(err))
-			expect(null).assertFail();
-		});
-	} else {
-		let HuksOptions_Abort = new Array({ "tag": HksTag.HKS_TAG_KEY_STORAGE_FLAG, "value": HksKeyStorageType.HKS_STORAGE_TEMP });
-		await huks.abort(handle, HuksOptions_Abort).then((data) => {
-			console.log(`test abort data ${JSON.stringify(data)}`);
-			expect(data.errorCode == 0).assertTrue()
-		}).catch((err) => {
-			console.log("test abort err information: " + JSON.stringify(err))
-			expect(null).assertFail();
-		});
-	}
+async function publicDeriveFinishAbortFunc(huksOptionsFinish, thirdInderfaceName) {
+    if (thirdInderfaceName == "finish") {
+        console.log(`test befor finish huksOptionsFinish ${JSON.stringify(huksOptionsFinish)}`);
+        await huks.finish(handle, huksOptionsFinish).then((data) => {
+            console.log(`test finish data ${JSON.stringify(data)}`);
+            expect(data.errorCode == 0).assertTrue()
+        }).catch((err) => {
+            console.log("test finish err information: " + JSON.stringify(err))
+            expect(null).assertFail();
+        });
+    } else {
+        let huksOptionsAbort = new Array({ "tag": HksTag.HKS_TAG_KEY_STORAGE_FLAG, "value": HksKeyStorageType.HKS_STORAGE_TEMP });
+        await huks.abort(handle, huksOptionsAbort).then((data) => {
+            console.log(`test abort data ${JSON.stringify(data)}`);
+            expect(data.errorCode == 0).assertTrue()
+        }).catch((err) => {
+            console.log("test abort err information: " + JSON.stringify(err))
+            expect(null).assertFail();
+        });
+    }
 }
 
 async function publicDeriveDeleteFunc(srcKeyAlies, HuksOptions) {
-	console.log("test before deleteKey HuksOptions: " + JSON.stringify(HuksOptions));
-	await huks.deleteKey(srcKeyAlies, HuksOptions).then((data) => {
-		console.log(`test deleteKey data ${JSON.stringify(data)}`);
-		expect(data.errorCode == 0).assertTrue()
-	}).catch((err) => {
-		console.log("test deleteKey err information: " + JSON.stringify(err))
-		expect(null).assertFail();
-	});
+    console.log("test before deleteKey HuksOptions: " + JSON.stringify(HuksOptions));
+    await huks.deleteKey(srcKeyAlies, HuksOptions).then((data) => {
+        console.log(`test deleteKey data ${JSON.stringify(data)}`);
+        expect(data.errorCode == 0).assertTrue()
+    }).catch((err) => {
+        console.log("test deleteKey err information: " + JSON.stringify(err))
+        expect(null).assertFail();
+    });
 }
 
-async function publicDeriveFunc(srcKeyAlies, HuksOptions, HuksOptions_Finish, thirdInderfaceName) {
-	try {
-		await publicDeriveGenFunc(srcKeyAlies, HuksOptions);
-		HuksOptions.properties.splice(0, 1, HuksDerive002.HuksKeyAlgPBKDF2);
-		HuksOptions.properties.splice(3, 1, HuksDerive002.HuksKeyDERIVEKEYSIZE);
+async function publicDeriveFunc(srcKeyAlies, HuksOptions, huksOptionsFinish, thirdInderfaceName) {
+    try {
+        await publicDeriveGenFunc(srcKeyAlies, HuksOptions);
+        HuksOptions.properties.splice(0, 1, HuksDerive002.HuksKeyAlgPBKDF2);
+        HuksOptions.properties.splice(3, 1, HuksDerive002.HuksKeyDERIVEKEYSIZE);
 
-		await publicDeriveInitFunc(srcKeyAlies,HuksOptions);
-		await publicDeriveUpdateFunc(HuksOptions);
-		await publicDeriveFinishAbortFunc(HuksOptions_Finish,thirdInderfaceName);
+        await publicDeriveInitFunc(srcKeyAlies, HuksOptions);
+        await publicDeriveUpdateFunc(HuksOptions);
+        await publicDeriveFinishAbortFunc(huksOptionsFinish, thirdInderfaceName);
 
-		HuksOptions.properties.splice(0, 1, HuksDerive002.HuksKeyAlgAES);
-		HuksOptions.properties.splice(3, 1, HuksDerive002.HuksKeyPBKDF2Size128);
-		await publicDeriveDeleteFunc(srcKeyAlies, HuksOptions);
-	} catch (e) {
-		expect(null).assertFail();
-	}
+        HuksOptions.properties.splice(0, 1, HuksDerive002.HuksKeyAlgAES);
+        HuksOptions.properties.splice(3, 1, HuksDerive002.HuksKeyPBKDF2Size128);
+        await publicDeriveDeleteFunc(srcKeyAlies, HuksOptions);
+    } catch (e) {
+        expect(null).assertFail();
+    }
 }
 
 
 describe('SecurityHuksDerivePBKDF2PromiseJsunit', function () {
-	/**
+    
+    /**
      * @tc.name: testDerivePBKDF2Finish63KBDerive001
      * @tc.desc: keysize-KEY_SIZE_2048 FLAG-PERSISTENT  ALG-ALG_AES  PURPOSE-PURPOSE_ENCRYPT|PURPOSE_DECRYPT PADDING-PADDING_NONE MODE-MODE_ECB size-2048 inputdate-500kb  init>update>finish
      * @tc.type: FUNC
      */
-	it('testDerivePBKDF2Finish63KBDerive001', 0, async function (done) {
-		const srcKeyAlies_1 = 'testDerivePBKDF2Size128SHA256Finish63KBDeriveKeyAlias_01_001'
-		let HuksOptions_Finish = {
-			"properties": new Array(HuksDerive002.HuksKeySTORAGE,HuksDerive002.HuksKeyISKEYALIAS,HuksDerive002.HuksKeyALGORITHMAES,HuksDerive002.HuksKeySIZE256,HuksDerive002.HuksKeyPurposeENCRYPTDECRYPT,HuksDerive002.HuksKeyDIGESTNONE,{ "tag": HksTag.HKS_TAG_KEY_ALIAS, "value": stringToUint8Array(srcKeyAlies_1) },HuksDerive002.HuksKeyPADDINGNONE,HuksDerive002.HuksKeyBLOCK_MODEECB),
-			"inData": srcData63Kb,
-		}
-		await publicDeriveFunc(srcKeyAlies_1, HuksOptions_63kb, HuksOptions_Finish, "finish");
-		done();
-	})
+    it('testDerivePBKDF2Finish63KBDerive001', 0, async function (done) {
+        const srcKeyAlies_1 = 'testDerivePBKDF2Size128SHA256Finish63KBDeriveKeyAlias_01_001'
+        let huksOptionsFinish = {
+            "properties": new Array(HuksDerive002.HuksKeySTORAGE, HuksDerive002.HuksKeyISKEYALIAS, HuksDerive002.HuksKeyALGORITHMAES, HuksDerive002.HuksKeySIZE256, HuksDerive002.HuksKeyPurposeENCRYPTDECRYPT, HuksDerive002.HuksKeyDIGESTNONE, { "tag": HksTag.HKS_TAG_KEY_ALIAS, "value": stringToUint8Array(srcKeyAlies_1) }, HuksDerive002.HuksKeyPADDINGNONE, HuksDerive002.HuksKeyBLOCK_MODEECB),
+            "inData": srcData63Kb,
+        }
+        await publicDeriveFunc(srcKeyAlies_1, HuksOptions_63kb, huksOptionsFinish, "finish");
+        done();
+    })
 })

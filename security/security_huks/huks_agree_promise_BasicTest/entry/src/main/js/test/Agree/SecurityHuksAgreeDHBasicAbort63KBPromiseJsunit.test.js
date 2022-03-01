@@ -1,3 +1,18 @@
+/*
+ * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import { describe, it, expect } from 'deccjsunit/index'
 import huks from '@ohos.security.huks'
 import * as Data from '../data.js';
@@ -124,7 +139,7 @@ function stringToUint8Array(str) {
     return tmpUint8Array
 }
 
-function Uint8ArrayToString(fileData){
+function uint8ArrayToString(fileData) {
     var dataString = "";
     for (var i = 0; i < fileData.length; i++) {
         dataString += String.fromCharCode(fileData[i]);
@@ -189,14 +204,14 @@ async function publicAgreeUpdateFunc(HuksOptions, exportKey) {
     HuksOptions.inData = _inData;
 }
 
-async function publicAgreeFinishAbortFunc(HuksOptions_Finish, thirdInderfaceName, finishData) {
+async function publicAgreeFinishAbortFunc(huksOptionsFinish, thirdInderfaceName, finishData) {
     if (thirdInderfaceName == "finish") {
-        console.log(`test befor finish HuksOptions_Finish ${JSON.stringify(HuksOptions_Finish)}`);
-        await huks.finish(handle, HuksOptions_Finish).then((data) => {
+        console.log(`test befor finish huksOptionsFinish ${JSON.stringify(huksOptionsFinish)}`);
+        await huks.finish(handle, huksOptionsFinish).then((data) => {
             console.log(`test finish data ${JSON.stringify(data)}`);
-            if(finishData == 1){
+            if (finishData == 1) {
                 finishData_1 = data.outData;
-            }else{
+            } else {
                 finishData_2 = data.outData;
             }
             expect(data.errorCode == 0).assertTrue()
@@ -205,8 +220,8 @@ async function publicAgreeFinishAbortFunc(HuksOptions_Finish, thirdInderfaceName
             expect(null).assertFail();
         });
     } else {
-        let HuksOptions_Abort = new Array({ "tag": HksTag.HKS_TAG_KEY_STORAGE_FLAG, "value": HksKeyStorageType.HKS_STORAGE_TEMP });
-        await huks.abort(handle, HuksOptions_Abort).then((data) => {
+        let huksOptionsAbort = new Array({ "tag": HksTag.HKS_TAG_KEY_STORAGE_FLAG, "value": HksKeyStorageType.HKS_STORAGE_TEMP });
+        await huks.abort(handle, huksOptionsAbort).then((data) => {
             console.log(`test abort data ${JSON.stringify(data)}`);
             expect(data.errorCode == 0).assertTrue()
         }).catch((err) => {
@@ -226,24 +241,24 @@ async function publicAgreeDeleteFunc(srcKeyAlies, HuksOptions) {
     });
 }
 
-async function publicAgreeFunc(srcKeyAlies_1, srcKeyAlies_2, HuksOptions, HuksOptions_Finish, thirdInderfaceName) {
+async function publicAgreeFunc(srcKeyAlies_1, srcKeyAlies_2, HuksOptions, huksOptionsFinish, thirdInderfaceName) {
     try {
         await publicAgreeGenFunc(srcKeyAlies_1, HuksOptions);
         await publicAgreeGenFunc(srcKeyAlies_2, HuksOptions);
         await publicAgreeExport1Func(srcKeyAlies_1, HuksOptions, 1);
         await publicAgreeExport1Func(srcKeyAlies_2, HuksOptions, 2);
 
-        await publicAgreeInitFunc(srcKeyAlies_1,HuksOptions);
-        await publicAgreeUpdateFunc(HuksOptions,1);
-        await publicAgreeFinishAbortFunc(HuksOptions_Finish,thirdInderfaceName,1);
+        await publicAgreeInitFunc(srcKeyAlies_1, HuksOptions);
+        await publicAgreeUpdateFunc(HuksOptions, 1);
+        await publicAgreeFinishAbortFunc(huksOptionsFinish, thirdInderfaceName, 1);
 
-        let _HuksOptions_Finish = HuksOptions_Finish
-        let HuksOptions_Finish_2 = _HuksOptions_Finish
-        HuksOptions_Finish_2.properties.splice(6, 1, {"tag": HksTag.HKS_TAG_KEY_ALIAS,"value": stringToUint8Array(srcKeyAlies_2 + "final")})
+        let _huksOptionsFinish = huksOptionsFinish
+        let huksOptionsFinish_2 = _huksOptionsFinish
+        huksOptionsFinish_2.properties.splice(6, 1, { "tag": HksTag.HKS_TAG_KEY_ALIAS, "value": stringToUint8Array(srcKeyAlies_2 + "final") })
 
-        await publicAgreeInitFunc(srcKeyAlies_2,HuksOptions);
-        await publicAgreeUpdateFunc(HuksOptions,2);
-        await publicAgreeFinishAbortFunc(HuksOptions_Finish_2,thirdInderfaceName,2);
+        await publicAgreeInitFunc(srcKeyAlies_2, HuksOptions);
+        await publicAgreeUpdateFunc(HuksOptions, 2);
+        await publicAgreeFinishAbortFunc(huksOptionsFinish_2, thirdInderfaceName, 2);
 
         await publicAgreeDeleteFunc(srcKeyAlies_1, HuksOptions);
         await publicAgreeDeleteFunc(srcKeyAlies_2, HuksOptions);
@@ -254,6 +269,7 @@ async function publicAgreeFunc(srcKeyAlies_1, srcKeyAlies_2, HuksOptions, HuksOp
 }
 
 describe('SecurityHuksAgreeDHPromiseJsunit', function () {
+    
     /**
      * @tc.name: testAgreeDHSize2048Abort63KBAgree001
      * @tc.desc: keysize-KEY_SIZE_2048 FLAG-PERSISTENT  ALG-ALG_AES  PURPOSE-PURPOSE_ENCRYPT|PURPOSE_DECRYPT PADDING-PADDING_NONE MODE-MODE_ECB size-2048 inputdate-500kb  init>update>finish
@@ -262,11 +278,11 @@ describe('SecurityHuksAgreeDHPromiseJsunit', function () {
     it('testAgreeDHSize2048Abort63KBAgree001', 0, async function (done) {
         const srcKeyAlies_1 = 'testAgreeDHSize2048Abort63KBAgreeKeyAlias_01_001'
         const srcKeyAlies_2 = 'testAgreeDHSize2048Abort63KBAgreeKeyAlias_02_001'
-        let HuksOptions_Finish = {
-            "properties": new Array(HuksAgree002.HuksKeySTORAGE,HuksAgree002.HuksKeyISKEYALIAS,HuksAgree002.HuksKeyALGORITHMAES,HuksAgree002.HuksKeySIZE256,HuksAgree002.HuksKeyPurposeENCRYPTDECRYPT,HuksAgree002.HuksKeyDIGESTNONE,{ "tag": HksTag.HKS_TAG_KEY_ALIAS, "value": stringToUint8Array(srcKeyAlies_1) },HuksAgree002.HuksKeyPADDINGNONE,HuksAgree002.HuksKeyBLOCK_MODEECB),
+        let huksOptionsFinish = {
+            "properties": new Array(HuksAgree002.HuksKeySTORAGE, HuksAgree002.HuksKeyISKEYALIAS, HuksAgree002.HuksKeyALGORITHMAES, HuksAgree002.HuksKeySIZE256, HuksAgree002.HuksKeyPurposeENCRYPTDECRYPT, HuksAgree002.HuksKeyDIGESTNONE, { "tag": HksTag.HKS_TAG_KEY_ALIAS, "value": stringToUint8Array(srcKeyAlies_1) }, HuksAgree002.HuksKeyPADDINGNONE, HuksAgree002.HuksKeyBLOCK_MODEECB),
             "inData": srcData63Kb,
         }
-        await publicAgreeFunc(srcKeyAlies_1, srcKeyAlies_2, HuksOptions_63kb, HuksOptions_Finish, "abort");
+        await publicAgreeFunc(srcKeyAlies_1, srcKeyAlies_2, HuksOptions_63kb, huksOptionsFinish, "abort");
         done();
     })
 })

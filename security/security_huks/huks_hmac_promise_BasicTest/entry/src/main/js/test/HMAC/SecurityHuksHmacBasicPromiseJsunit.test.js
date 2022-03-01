@@ -1,4 +1,19 @@
-import {describe, it, expect} from 'deccjsunit/index'
+/*
+ * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, it, expect } from 'deccjsunit/index'
 import huks from '@ohos.security.huks'
 import * as Data from '../data.js';
 
@@ -57,7 +72,7 @@ function stringToArray(str) {
     return arr
 }
 
-async function publicHmacGenFunc(srcKeyAlies, HuksOptions){
+async function publicHmacGenFunc(srcKeyAlies, HuksOptions) {
     HuksOptions.properties.splice(1, 0, HuksHmac.HuksKeySIZE);
     await huks.generateKey(srcKeyAlies, HuksOptions).then((data) => {
         console.log(`test generateKey data ${JSON.stringify(data)}`);
@@ -69,7 +84,7 @@ async function publicHmacGenFunc(srcKeyAlies, HuksOptions){
     HuksOptions.properties.splice(1, 1);
 }
 
-async function publicHmacInitFunc(srcKeyAlies, HuksOptions){
+async function publicHmacInitFunc(srcKeyAlies, HuksOptions) {
     await huks.init(srcKeyAlies, HuksOptions).then(async (data) => {
         handle1 = data.handle1;
         handle2 = data.handle2;
@@ -84,30 +99,30 @@ async function publicHmacInitFunc(srcKeyAlies, HuksOptions){
     });
 }
 
-async function publicHmacUpdateFunc(HuksOptions){
-    let dateSize = 64*1024
-    let _HuksOptions_inData = HuksOptions.inData;
+async function publicHmacUpdateFunc(HuksOptions) {
+    let dateSize = 64 * 1024
+    let huksOptionsInData = HuksOptions.inData;
     let inDataArray = stringToArray(HuksOptions.inData);
     if (inDataArray.length < dateSize) {
         HuksOptions.inData = new Uint8Array(inDataArray);
-        await update(handle,HuksOptions);
-        HuksOptions.inData =  _HuksOptions_inData;
+        await update(handle, HuksOptions);
+        HuksOptions.inData = huksOptionsInData;
 
     } else {
         let count = Math.floor(inDataArray.length / dateSize);
         let remainder = inDataArray.length % dateSize;
-        for(let i = 0;i<count; i++) {
-            HuksOptions.inData = new Uint8Array(stringToArray(_HuksOptions_inData).slice(dateSize*i, dateSize*(i+1)));
+        for (let i = 0; i < count; i++) {
+            HuksOptions.inData = new Uint8Array(stringToArray(huksOptionsInData).slice(dateSize * i, dateSize * (i + 1)));
             await update(handle, HuksOptions);
         }
         if (remainder !== 0) {
-            HuksOptions.inData = new Uint8Array(stringToArray(_HuksOptions_inData).slice(dateSize*count,inDataArray.length));
+            HuksOptions.inData = new Uint8Array(stringToArray(huksOptionsInData).slice(dateSize * count, inDataArray.length));
             await update(handle, HuksOptions);
         }
     }
 }
 
-async function publicHmacFinish(HuksOptions, thirdInderfaceName){
+async function publicHmacFinish(HuksOptions, thirdInderfaceName) {
     if (thirdInderfaceName == "finish") {
         HuksOptions.inData = new Uint8Array(stringToArray('0'))
         await huks.finish(handle, HuksOptions).then((data) => {
@@ -129,7 +144,7 @@ async function publicHmacFinish(HuksOptions, thirdInderfaceName){
     }
 }
 
-async function publicHmacDelete(srcKeyAlies, HuksOptions){
+async function publicHmacDelete(srcKeyAlies, HuksOptions) {
     HuksOptions.properties.splice(1, 0, HuksHmac.HuksKeySIZE);
     await huks.deleteKey(srcKeyAlies, HuksOptions).then((data) => {
         console.log(`test deleteKey data ${JSON.stringify(data)}`);
@@ -164,6 +179,7 @@ async function update(handle, HuksOptions) {
 }
 
 describe('SecurityHuksHmacBasicPromiseJsunit', function () {
+    
     /**
      * @tc.name: testHmac001
      * @tc.desc: alg-HMAC  purpose-PURPOSE_MAC digest-SHA1 inData-63kb init>update>finish

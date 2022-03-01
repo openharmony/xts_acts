@@ -1,4 +1,19 @@
-import {describe, it, expect} from 'deccjsunit/index'
+/*
+ * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, it, expect } from 'deccjsunit/index'
 import huks from '@ohos.security.huks'
 import * as Data from '../data.js';
 
@@ -103,7 +118,7 @@ function stringToUint8Array(str) {
     return tmpUint8Array
 }
 
-function Uint8ArrayToString(fileData) {
+function uint8ArrayToString(fileData) {
     var dataString = "";
     for (var i = 0; i < fileData.length; i++) {
         dataString += String.fromCharCode(fileData[i]);
@@ -138,13 +153,13 @@ async function publicGenerateKeyFunc(srcKeyAlies, genHuksOptionsNONECBC) {
 }
 
 function generateKey(srcKeyAlies, HuksOptions) {
-    return new Promise((resolve,reject)=>{
-        huks.generateKey(srcKeyAlies, HuksOptions, function(err,data){
+    return new Promise((resolve, reject) => {
+        huks.generateKey(srcKeyAlies, HuksOptions, function (err, data) {
             console.log(`test generateKey data: ${JSON.stringify(data)}`);
             if (err.code !== 0) {
-                console.log("test generateKey err information: " + JSON.stringify(err) );
+                console.log("test generateKey err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -170,12 +185,12 @@ async function publicInitFunc(srcKeyAlies, HuksOptions) {
 }
 
 function init(srcKeyAlies, HuksOptions) {
-    return new Promise((resolve,reject)=>{
-        huks.init(srcKeyAlies, HuksOptions, function(err,data){
+    return new Promise((resolve, reject) => {
+        huks.init(srcKeyAlies, HuksOptions, function (err, data) {
             if (err.code !== 0) {
-                console.log("test init err information: " + JSON.stringify(err) );
+                console.log("test init err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -183,31 +198,31 @@ function init(srcKeyAlies, HuksOptions) {
 }
 
 
-async function publicUpdateFunc(HuksOptions,thirdInderfaceName,isEncrypt) {
+async function publicUpdateFunc(HuksOptions, thirdInderfaceName, isEncrypt) {
     console.log(`test update before handle: ${JSON.stringify(handle)} HuksOptions: ${JSON.stringify(HuksOptions)}`)
     let dateSize = 64;
-    let _HuksOptions_inData = HuksOptions.inData;
+    let huksOptionsInData = HuksOptions.inData;
     let inDataArray = HuksOptions.inData;
     console.log("test update finish HuksOptions inData: " + Array.from(inDataArray).length);
     if (Array.from(inDataArray).length < dateSize) {
         await update(handle, HuksOptions);
-//        HuksOptions.inData = new Uint8Array(new Array());
-        await publicFinishAbortFunc(HuksOptions, thirdInderfaceName, isEncrypt,0,_HuksOptions_inData.length);
+        //        HuksOptions.inData = new Uint8Array(new Array());
+        await publicFinishAbortFunc(HuksOptions, thirdInderfaceName, isEncrypt, 0, huksOptionsInData.length);
     } else {
         let count = Math.floor(Array.from(inDataArray).length / dateSize);
         let remainder = Array.from(inDataArray).length % dateSize;
-        console.log("test count " + count+ "remainder " + remainder)
-        for (let i = 0;i < count; i++) {
-            HuksOptions.inData = new Uint8Array(Array.from(_HuksOptions_inData).slice(dateSize * i, dateSize * (i + 1)));
-            console.log("test " + Uint8ArrayToString(new Uint8Array(Array.from(_HuksOptions_inData).slice(dateSize * i, dateSize * (i + 1)))));
+        console.log("test count " + count + "remainder " + remainder)
+        for (let i = 0; i < count; i++) {
+            HuksOptions.inData = new Uint8Array(Array.from(huksOptionsInData).slice(dateSize * i, dateSize * (i + 1)));
+            console.log("test " + uint8ArrayToString(new Uint8Array(Array.from(huksOptionsInData).slice(dateSize * i, dateSize * (i + 1)))));
             await update(handle, HuksOptions);
         }
-        HuksOptions.inData = _HuksOptions_inData
+        HuksOptions.inData = huksOptionsInData
         if (remainder !== 0) {
-            HuksOptions.inData = new Uint8Array(Array.from(_HuksOptions_inData).slice(dateSize * count, Uint8ArrayToString(inDataArray).length));
-            console.log("test " + Uint8ArrayToString(new Uint8Array(Array.from(_HuksOptions_inData).slice(dateSize * count, Uint8ArrayToString(inDataArray).length))));
+            HuksOptions.inData = new Uint8Array(Array.from(huksOptionsInData).slice(dateSize * count, uint8ArrayToString(inDataArray).length));
+            console.log("test " + uint8ArrayToString(new Uint8Array(Array.from(huksOptionsInData).slice(dateSize * count, uint8ArrayToString(inDataArray).length))));
         }
-        await publicFinishAbortFunc(HuksOptions, thirdInderfaceName, isEncrypt,remainder,_HuksOptions_inData.length);
+        await publicFinishAbortFunc(HuksOptions, thirdInderfaceName, isEncrypt, remainder, huksOptionsInData.length);
     }
 }
 
@@ -226,26 +241,26 @@ async function update(handle, HuksOptions) {
     });
 }
 
-function updateCallback(handle, HuksOptions){
-    return new Promise((resolve,reject)=>{
-        huks.update(handle, HuksOptions, function(err,data){
+function updateCallback(handle, HuksOptions) {
+    return new Promise((resolve, reject) => {
+        huks.update(handle, HuksOptions, function (err, data) {
             if (err.code !== 0) {
-                console.log("test update err information: " + JSON.stringify(err) );
+                console.log("test update err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
     })
 }
 
-async function publicFinishAbortFunc(HuksOptions,thirdInderfaceName,isEncrypt,remainder,dataLength){
+async function publicFinishAbortFunc(HuksOptions, thirdInderfaceName, isEncrypt, remainder, dataLength) {
     if (thirdInderfaceName == "finish") {
-        HuksOptions.outData = new Uint8Array(new Array(encryptedData.length*2));
+        HuksOptions.outData = new Uint8Array(new Array(encryptedData.length * 2));
         console.log(`test remainder ${remainder}`)
         await finish(HuksOptions, isEncrypt);
     } else if (thirdInderfaceName == "abort") {
-        HuksOptions.outData = new Uint8Array(new Array(encryptedData.length*2));
+        HuksOptions.outData = new Uint8Array(new Array(encryptedData.length * 2));
         await abort(HuksOptions);
     }
 }
@@ -255,24 +270,24 @@ async function finish(HuksOptions, isEncrypt) {
     await finishCallback(handle, HuksOptions).then((data) => {
         console.log(`test finish data: ${JSON.stringify(data)}`);
         let finishData;
-        if(encryptedData.length > 64){
-            finishData = Uint8ArrayToString(updateResult.concat(Array.from(data.outData)));
-            updateResult =  updateResult.concat(Array.from(data.outData));
-        }else{
-            finishData = Uint8ArrayToString(updateResult);
+        if (encryptedData.length > 64) {
+            finishData = uint8ArrayToString(updateResult.concat(Array.from(data.outData)));
+            updateResult = updateResult.concat(Array.from(data.outData));
+        } else {
+            finishData = uint8ArrayToString(updateResult);
         }
         if (isEncrypt) {
-            if (finishData === Uint8ArrayToString(encryptedData)) {
-                console.log(`test finish Encrypt fail ${Uint8ArrayToString(encryptedData)}`);
-                console.log(`test finish Encrypt fail ${Uint8ArrayToString(finishData)}`);
+            if (finishData === uint8ArrayToString(encryptedData)) {
+                console.log(`test finish Encrypt fail ${uint8ArrayToString(encryptedData)}`);
+                console.log(`test finish Encrypt fail ${uint8ArrayToString(finishData)}`);
                 expect(null).assertFail();
             } else {
-                console.log(`test finish Encrypt success ${Uint8ArrayToString(encryptedData)}`);
-                console.log(`test finish Encrypt success ${Uint8ArrayToString(finishData)}`);
+                console.log(`test finish Encrypt success ${uint8ArrayToString(encryptedData)}`);
+                console.log(`test finish Encrypt success ${uint8ArrayToString(finishData)}`);
                 expect(data.errorCode == 0).assertTrue();
             }
         } else {
-            if (finishData === Uint8ArrayToString(encryptedData)) {
+            if (finishData === uint8ArrayToString(encryptedData)) {
                 expect(data.errorCode == 0).assertTrue();
             } else {
                 expect(null).assertFail();
@@ -284,13 +299,13 @@ async function finish(HuksOptions, isEncrypt) {
     });
 }
 
-function finishCallback(handle, HuksOptions_Finish){
-    return new Promise((resolve,reject)=>{
-        huks.finish(handle, HuksOptions_Finish,function(err,data){
+function finishCallback(handle, huksOptionsFinish) {
+    return new Promise((resolve, reject) => {
+        huks.finish(handle, huksOptionsFinish, function (err, data) {
             if (err.code !== 0) {
-                console.log("test generateKey err information: " + JSON.stringify(err) );
+                console.log("test generateKey err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -308,13 +323,13 @@ async function abort(HuksOptions) {
     });
 }
 
-function abortCallback(handle, HuksOptions_Abort){
-    return new Promise((resolve,reject)=>{
-        huks.abort(handle, HuksOptions_Abort, function(err,data){
+function abortCallback(handle, huksOptionsAbort) {
+    return new Promise((resolve, reject) => {
+        huks.abort(handle, huksOptionsAbort, function (err, data) {
             if (err.code !== 0) {
-                console.log("test abort err information: " + JSON.stringify(err) );
+                console.log("test abort err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -333,12 +348,12 @@ async function publicDeleteKeyFunc(srcKeyAlies, genHuksOptionsNONECBC) {
 }
 
 function deleteKey(srcKeyAlies, HuksOptions) {
-    return new Promise((resolve,reject)=>{
-        huks.deleteKey(srcKeyAlies, HuksOptions, function(err,data){
+    return new Promise((resolve, reject) => {
+        huks.deleteKey(srcKeyAlies, HuksOptions, function (err, data) {
             if (err.code !== 0) {
-                console.log("test deleteKey err information: " + JSON.stringify(err) );
+                console.log("test deleteKey err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -354,7 +369,7 @@ async function publicCipherFunc(srcKeyAlies, genHuksOptionsNONECBC, HuksOptions,
             encryptedData = HuksOptions.inData;
         }
         await publicInitFunc(srcKeyAlies, HuksOptions);
-        await publicUpdateFunc(HuksOptions,thirdInderfaceName,isEncrypt);
+        await publicUpdateFunc(HuksOptions, thirdInderfaceName, isEncrypt);
         if (!isEncrypt || (isEncrypt && thirdInderfaceName == "abort")) {
             await publicDeleteKeyFunc(srcKeyAlies, genHuksOptionsNONECBC);
         }

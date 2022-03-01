@@ -1,35 +1,24 @@
-import {describe, it, expect} from 'deccjsunit/index'
+/*
+ * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, it, expect } from 'deccjsunit/index'
 import huks from '@ohos.security.huks'
 import * as Data from '../data.js';
 
-let g_inData_5   = "RSA_5";
-let g_inData_12  = "RSA_12_ttttt";
-let g_inData_14  = "RSA_14_ttttttt";
-let g_inData_20  = "RSA_20_ttttttttttttt";
-let g_inData_32  = "RSA_32_ttttttttttttttttttttttttt";
-let g_inData_64  = "RSA_64_ttttttttttttttttttttttttttttttttttttttttttttttttttttttttt";
-let g_inData_96  = "RSA_96_ttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"+
-                                        "tttttttttttttttttttttttttttttttt";
-let g_inData_128 = "RSA_128_tttttttttttttttttttttttttttttttttttttttttttttttttttttttt"+
-                                        "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt";
-let g_inData_256 = "RSA_256_tttttttttttttttttttttttttttttttttttttttttttttttttttttttt"+
-                                        "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"+
-                                        "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"+
-                                        "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt";
-let g_inData_384 = "RSA_384_tttttttttttttttttttttttttttttttttttttttttttttttttttttttt"+
-                                        "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"+
-                                        "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"+
-                                        "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"+
-                                        "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"+
-                                        "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt";
-let g_inData_512 = "RSA_512_tttttttttttttttttttttttttttttttttttttttttttttttttttttttt"+
-                                        "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"+
-                                        "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"+
-                                        "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"+
-                                        "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"+
-                                        "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"+
-                                        "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"+
-                                        "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt";
+let gInData64 = "RSA_64_ttttttttttttttttttttttttttttttttttttttttttttttttttttttttt";
+
 
 let HksKeyAlg = {
     HKS_ALG_RSA: 1
@@ -105,7 +94,7 @@ let HuksCipher002 = {
     HuksKeyPurposeDECRYPT: { "tag": HksTag.HKS_TAG_PURPOSE, "value": HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT },
     HuksKeyRSASize512: { "tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_RSA_KEY_SIZE_512 },
     HuksKeyRSAPADDINGNONE: { "tag": HksTag.HKS_TAG_PADDING, "value": HksKeyPadding.HKS_PADDING_NONE },
-    HuksKeyRSAPADDINGPKCS1_V1_5: { "tag": HksTag.HKS_TAG_PADDING, "value": HksKeyPadding.HKS_PADDING_PKCS1_V1_5 },
+    HuksKeyRSAPADDINGPKCS1V15: { "tag": HksTag.HKS_TAG_PADDING, "value": HksKeyPadding.HKS_PADDING_PKCS1_V1_5 },
     HuksKeyRSAPADDINGOAEP: { "tag": HksTag.HKS_TAG_PADDING, "value": HksKeyPadding.HKS_PADDING_OAEP },
     HuksKeyRSABLOCKMODEECB: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_ECB },
     HuksKeyRSADIGESTNONE: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_NONE },
@@ -117,17 +106,7 @@ let HuksCipher002 = {
 }
 let defaultData = "0";
 
-let g_inData_5_array = stringToUint8Array(g_inData_5);
-let g_inData_12_array = stringToUint8Array(g_inData_12);
-let g_inData_14_array = stringToUint8Array(g_inData_14);
-let g_inData_20_array = stringToUint8Array(g_inData_20);
-let g_inData_32_array = stringToUint8Array(g_inData_32);
-let g_inData_64_array = stringToUint8Array(g_inData_64);
-let g_inData_96_array = stringToUint8Array(g_inData_96);
-let g_inData_128_array = stringToUint8Array(g_inData_128);
-let g_inData_256_array = stringToUint8Array(g_inData_256);
-let g_inData_384_array = stringToUint8Array(g_inData_384);
-let g_inData_512_array = stringToUint8Array(g_inData_512);
+let gInData64Array = stringToUint8Array(gInData64);
 
 
 function stringToUint8Array(str) {
@@ -139,7 +118,7 @@ function stringToUint8Array(str) {
     return tmpUint8Array
 }
 
-function Uint8ArrayToString(fileData) {
+function uint8ArrayToString(fileData) {
     var dataString = "";
     for (var i = 0; i < fileData.length; i++) {
         dataString += String.fromCharCode(fileData[i]);
@@ -178,13 +157,13 @@ async function publicGenerateKeyFunc(srcKeyAlies, genHuksOptionsNONC) {
 }
 
 function generateKey(srcKeyAlies, HuksOptions) {
-    return new Promise((resolve,reject)=>{
-        huks.generateKey(srcKeyAlies, HuksOptions, function(err,data){
+    return new Promise((resolve, reject) => {
+        huks.generateKey(srcKeyAlies, HuksOptions, function (err, data) {
             console.log(`test generateKey data: ${JSON.stringify(data)}`);
             if (err.code !== 0) {
-                console.log("test generateKey err information: " + JSON.stringify(err) );
+                console.log("test generateKey err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -192,7 +171,7 @@ function generateKey(srcKeyAlies, HuksOptions) {
 }
 
 
-async function publicExportKeyFunc(srcKeyAlies, genHuksOptionsNONC){
+async function publicExportKeyFunc(srcKeyAlies, genHuksOptionsNONC) {
     console.log(`test ExportKey HuksOptions: ${JSON.stringify(genHuksOptionsNONC)}`);
     await exportkey(srcKeyAlies, genHuksOptionsNONC).then((data) => {
         console.log(`test ExportKey data: ${JSON.stringify(data)}`);
@@ -205,13 +184,13 @@ async function publicExportKeyFunc(srcKeyAlies, genHuksOptionsNONC){
 }
 
 function exportkey(srcKeyAlies, HuksOptions) {
-    return new Promise((resolve,reject)=>{
-        huks.exportKey(srcKeyAlies, HuksOptions, function(err,data){
+    return new Promise((resolve, reject) => {
+        huks.exportKey(srcKeyAlies, HuksOptions, function (err, data) {
             console.log(`test exportKey data: ${JSON.stringify(data)}`);
             if (err.code !== 0) {
-                console.log("test exportKey err information: " + JSON.stringify(err) );
+                console.log("test exportKey err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -219,7 +198,7 @@ function exportkey(srcKeyAlies, HuksOptions) {
 }
 
 
-async function publicImportKeyFunc(srcKeyAlies, HuksOptions){
+async function publicImportKeyFunc(srcKeyAlies, HuksOptions) {
     HuksOptions.inData = exportKey;
     console.log(`test importKey HuksOptions: ${JSON.stringify(HuksOptions)}`);
     await importkey(srcKeyAlies, HuksOptions).then((data) => {
@@ -233,13 +212,13 @@ async function publicImportKeyFunc(srcKeyAlies, HuksOptions){
 }
 
 function importkey(srcKeyAlies, HuksOptions) {
-    return new Promise((resolve,reject)=>{
-        huks.importKey(srcKeyAlies, HuksOptions, function(err,data){
+    return new Promise((resolve, reject) => {
+        huks.importKey(srcKeyAlies, HuksOptions, function (err, data) {
             console.log(`test importKey data: ${JSON.stringify(data)}`);
             if (err.code !== 0) {
-                console.log("test importKey err information: " + JSON.stringify(err) );
+                console.log("test importKey err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -265,12 +244,12 @@ async function publicInitFunc(srcKeyAlies, HuksOptions) {
 }
 
 function init(srcKeyAlies, HuksOptions) {
-    return new Promise((resolve,reject)=>{
-        huks.init(srcKeyAlies, HuksOptions, function(err,data){
+    return new Promise((resolve, reject) => {
+        huks.init(srcKeyAlies, HuksOptions, function (err, data) {
             if (err.code !== 0) {
-                console.log("test init err information: " + JSON.stringify(err) );
+                console.log("test init err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -281,7 +260,7 @@ function init(srcKeyAlies, HuksOptions) {
 async function publicUpdateFunc(HuksOptions) {
     console.log(`test update before handle: ${JSON.stringify(handle)} HuksOptions: ${JSON.stringify(HuksOptions)}`)
     let dateSize = 64;
-    let _HuksOptions_inData = HuksOptions.inData;
+    let huksOptionsInData = HuksOptions.inData;
     let inDataArray = HuksOptions.inData;
     console.log("test update finish HuksOptions inData: " + Array.from(inDataArray).length);
     if (Array.from(inDataArray).length < dateSize) {
@@ -290,16 +269,16 @@ async function publicUpdateFunc(HuksOptions) {
     } else {
         let count = Math.floor(Array.from(inDataArray).length / dateSize);
         let remainder = Array.from(inDataArray).length % dateSize;
-        for (let i = 0;i < count; i++) {
-            HuksOptions.inData = new Uint8Array(Array.from(_HuksOptions_inData).slice(dateSize * i, dateSize * (i + 1)));
-            console.log("test " + Uint8ArrayToString(new Uint8Array(Array.from(_HuksOptions_inData).slice(dateSize * i, dateSize * (i + 1)))));
+        for (let i = 0; i < count; i++) {
+            HuksOptions.inData = new Uint8Array(Array.from(huksOptionsInData).slice(dateSize * i, dateSize * (i + 1)));
+            console.log("test " + uint8ArrayToString(new Uint8Array(Array.from(huksOptionsInData).slice(dateSize * i, dateSize * (i + 1)))));
             await update(handle, HuksOptions);
-            HuksOptions.inData = _HuksOptions_inData
+            HuksOptions.inData = huksOptionsInData
         }
         if (remainder !== 0) {
-            HuksOptions.inData = new Uint8Array(Array.from(_HuksOptions_inData).slice(dateSize * count, Uint8ArrayToString(inDataArray).length));
+            HuksOptions.inData = new Uint8Array(Array.from(huksOptionsInData).slice(dateSize * count, uint8ArrayToString(inDataArray).length));
             await update(handle, HuksOptions);
-            console.log("test " + Uint8ArrayToString(new Uint8Array(Array.from(_HuksOptions_inData).slice(dateSize * count, Uint8ArrayToString(inDataArray).length))));
+            console.log("test " + uint8ArrayToString(new Uint8Array(Array.from(huksOptionsInData).slice(dateSize * count, uint8ArrayToString(inDataArray).length))));
         }
     }
 }
@@ -315,13 +294,13 @@ async function update(handle, HuksOptions) {
     });
 }
 
-function updateCallback(handle, HuksOptions){
-    return new Promise((resolve,reject)=>{
-        huks.update(handle, HuksOptions, function(err,data){
+function updateCallback(handle, HuksOptions) {
+    return new Promise((resolve, reject) => {
+        huks.update(handle, HuksOptions, function (err, data) {
             if (err.code !== 0) {
-                console.log("test update err information: " + JSON.stringify(err) );
+                console.log("test update err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -343,14 +322,14 @@ async function finish(HuksOptions, isEncrypt) {
     await finishCallback(handle, HuksOptions).then((data) => {
         console.log(`test finish data: ${JSON.stringify(data)}`);
         if (isEncrypt) {
-            updateResult = Array.from(data.outData) ;
-            if (Uint8ArrayToString(data.outData) === Uint8ArrayToString(encryptedData)) {
+            updateResult = Array.from(data.outData);
+            if (uint8ArrayToString(data.outData) === uint8ArrayToString(encryptedData)) {
                 expect(null).assertFail();
             } else {
                 expect(data.errorCode == 0).assertTrue();
             }
         } else {
-            if (Uint8ArrayToString(data.outData) === Uint8ArrayToString(encryptedData)) {
+            if (uint8ArrayToString(data.outData) === uint8ArrayToString(encryptedData)) {
                 expect(data.errorCode == 0).assertTrue();
             } else {
                 expect(null).assertFail();
@@ -362,13 +341,13 @@ async function finish(HuksOptions, isEncrypt) {
     });
 }
 
-function finishCallback(handle, HuksOptions_Finish){
-    return new Promise((resolve,reject)=>{
-        huks.finish(handle, HuksOptions_Finish,function(err,data){
+function finishCallback(handle, huksOptionsFinish) {
+    return new Promise((resolve, reject) => {
+        huks.finish(handle, huksOptionsFinish, function (err, data) {
             if (err.code !== 0) {
-                console.log("test generateKey err information: " + JSON.stringify(err) );
+                console.log("test generateKey err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -386,13 +365,13 @@ async function abort(HuksOptions) {
     });
 }
 
-function abortCallback(handle, HuksOptions_Abort){
-    return new Promise((resolve,reject)=>{
-        huks.abort(handle, HuksOptions_Abort, function(err,data){
+function abortCallback(handle, huksOptionsAbort) {
+    return new Promise((resolve, reject) => {
+        huks.abort(handle, huksOptionsAbort, function (err, data) {
             if (err.code !== 0) {
-                console.log("test abort err information: " + JSON.stringify(err) );
+                console.log("test abort err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -411,18 +390,18 @@ async function publicDeleteKeyFunc(srcKeyAlies, genHuksOptionsNONC) {
 }
 
 function deleteKey(srcKeyAlies, HuksOptions) {
-    return new Promise((resolve,reject)=>{
-        huks.deleteKey(srcKeyAlies, HuksOptions, function(err,data){
+    return new Promise((resolve, reject) => {
+        huks.deleteKey(srcKeyAlies, HuksOptions, function (err, data) {
             if (err.code !== 0) {
-                console.log("test deleteKey err information: " + JSON.stringify(err) );
+                console.log("test deleteKey err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
     })
 }
-async function publicCipherFunc(srcKeyAlies,newSrcKeyAlies, genHuksOptionsNONC, HuksOptions, thirdInderfaceName, isEncrypt) {
+async function publicCipherFunc(srcKeyAlies, newSrcKeyAlies, genHuksOptionsNONC, HuksOptions, thirdInderfaceName, isEncrypt) {
     inputInData = HuksOptions.inData;
     try {
         updateResult = new Array();
@@ -431,7 +410,7 @@ async function publicCipherFunc(srcKeyAlies,newSrcKeyAlies, genHuksOptionsNONC, 
             await publicGenerateKeyFunc(srcKeyAlies, genHuksOptionsNONC);
             encryptedData = HuksOptions.inData;
             await publicExportKeyFunc(srcKeyAlies, genHuksOptionsNONC);
-            await publicImportKeyFunc(newSrcKeyAlies,HuksOptions);
+            await publicImportKeyFunc(newSrcKeyAlies, HuksOptions);
             KeyAlias = newSrcKeyAlies;
         }
         HuksOptions.inData = inputInData;
@@ -463,10 +442,10 @@ describe('SecurityHuksCipherRSACallbackJsunit', function () {
                 HuksCipher002.HuksKeyRSAPADDINGNONE,
                 HuksCipher002.HuksKeyRSABLOCKMODEECB,
                 HuksCipher002.HuksKeyRSADIGESTSHA256),
-            "inData": g_inData_64_array,
+            "inData": gInData64Array,
             "outData": stringToUint8Array("0")
         }
-        await publicCipherFunc(srcKeyAlies,newSrcKeyAlies, genHuksOptions, HuksOptions, "finish", true);
+        await publicCipherFunc(srcKeyAlies, newSrcKeyAlies, genHuksOptions, HuksOptions, "finish", true);
         HuksOptions = {
             "properties": new Array(
                 HuksCipher002.HuksKeyAlgRSA,
@@ -479,7 +458,7 @@ describe('SecurityHuksCipherRSACallbackJsunit', function () {
             "inData": new Uint8Array(updateResult),
             "outData": stringToUint8Array("0")
         }
-        await publicCipherFunc(srcKeyAlies, newSrcKeyAlies,genHuksOptions, HuksOptions, "finish", false)
+        await publicCipherFunc(srcKeyAlies, newSrcKeyAlies, genHuksOptions, HuksOptions, "finish", false)
         done();
     });
 })

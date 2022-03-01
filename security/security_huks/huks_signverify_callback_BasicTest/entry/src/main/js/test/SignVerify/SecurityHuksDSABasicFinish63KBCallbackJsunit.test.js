@@ -1,4 +1,19 @@
-import {describe, it, afterEach, expect} from 'deccjsunit/index'
+/*
+ * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, it, afterEach, expect } from 'deccjsunit/index'
 import huks from '@ohos.security.huks'
 import * as Data from '../data.js'
 
@@ -56,7 +71,7 @@ let HuksSignVerify002 = {
     HuksTagDSADigestSHA384: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA384 },
     HuksTagDSADigestSHA512: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA512 },
     HuksTagDSACOMMONSIZE: { "tag": HksTag.HKS_TAG_KEY_SIZE, "value": DSA_COMMON_SIZE },
-    HuksKeyRSAPurposeSING_VERIFY: {
+    HuksKeyRSAPurposeSINGVERIFY: {
         "tag": HksTag.HKS_TAG_PURPOSE,
         "value": HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY
     },
@@ -77,7 +92,7 @@ function stringToUint8Array(str) {
     return tmpUint8Array
 }
 
-function Uint8ArrayToString(fileData) {
+function uint8ArrayToString(fileData) {
     var dataString = "";
     for (var i = 0; i < fileData.length; i++) {
         dataString += String.fromCharCode(fileData[i]);
@@ -96,13 +111,13 @@ async function publicGenerateKeyFunc(keyAlias, HuksOptions) {
 }
 
 function generateKey(srcKeyAlies, HuksOptions) {
-    return new Promise((resolve,reject)=>{
-        huks.generateKey(srcKeyAlies, HuksOptions, function(err,data){
+    return new Promise((resolve, reject) => {
+        huks.generateKey(srcKeyAlies, HuksOptions, function (err, data) {
             console.log(`test generateKey data: ${JSON.stringify(data)}`);
             if (err.code !== 0) {
-                console.log("test generateKey err information: " + JSON.stringify(err) );
+                console.log("test generateKey err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -124,13 +139,13 @@ async function publicImportKey(keyAlias, HuksOptions) {
 }
 
 function importKey(srcKeyAlies, HuksOptions) {
-    return new Promise((resolve,reject)=>{
-        huks.importKey(srcKeyAlies, HuksOptions, function(err,data){
+    return new Promise((resolve, reject) => {
+        huks.importKey(srcKeyAlies, HuksOptions, function (err, data) {
             console.log(`test importKey data: ${JSON.stringify(data)}`);
             if (err.code !== 0) {
-                console.log("test importKey err information: " + JSON.stringify(err) );
+                console.log("test importKey err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -149,13 +164,13 @@ async function publicExportKey(keyAlias, HuksOptions) {
 }
 
 function exportkey(srcKeyAlies, HuksOptions) {
-    return new Promise((resolve,reject)=>{
-        huks.exportKey(srcKeyAlies, HuksOptions, function(err,data){
+    return new Promise((resolve, reject) => {
+        huks.exportKey(srcKeyAlies, HuksOptions, function (err, data) {
             console.log(`test exportKey data: ${JSON.stringify(data)}`);
             if (err.code !== 0) {
-                console.log("test exportKey err information: " + JSON.stringify(err) );
+                console.log("test exportKey err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -178,12 +193,12 @@ async function publicInitFunc(keyAlias, HuksOptions) {
 }
 
 function init(srcKeyAlies, HuksOptions) {
-    return new Promise((resolve,reject)=>{
-        huks.init(srcKeyAlies, HuksOptions, function(err,data){
+    return new Promise((resolve, reject) => {
+        huks.init(srcKeyAlies, HuksOptions, function (err, data) {
             if (err.code !== 0) {
-                console.log("test init err information: " + JSON.stringify(err) );
+                console.log("test init err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -193,26 +208,26 @@ function init(srcKeyAlies, HuksOptions) {
 
 async function publicUpdateFunc(HuksOptions) {
     let dateSize = 64
-    let _HuksOptions_inData = HuksOptions.inData;
+    let huksOptionsInData = HuksOptions.inData;
     let inDataArray = HuksOptions.inData;
-    if (Uint8ArrayToString(inDataArray).length < dateSize) {
+    if (uint8ArrayToString(inDataArray).length < dateSize) {
         await update(handle, HuksOptions);
-        HuksOptions.inData = _HuksOptions_inData
+        HuksOptions.inData = huksOptionsInData
     } else {
-        let count = Math.floor(Uint8ArrayToString(inDataArray).length / dateSize);
-        let remainder = Uint8ArrayToString(inDataArray).length % dateSize;
-        console.log(`test before update length: ${Uint8ArrayToString(inDataArray).length}`);
+        let count = Math.floor(uint8ArrayToString(inDataArray).length / dateSize);
+        let remainder = uint8ArrayToString(inDataArray).length % dateSize;
+        console.log(`test before update length: ${uint8ArrayToString(inDataArray).length}`);
         console.log(`test before update count: ${count}`);
         console.log(`test before update remainder: ${remainder}`);
-        for (let i = 0;i < count; i++) {
-            HuksOptions.inData = stringToUint8Array(Uint8ArrayToString(_HuksOptions_inData).slice(dateSize * i, dateSize * (i + 1)));
+        for (let i = 0; i < count; i++) {
+            HuksOptions.inData = stringToUint8Array(uint8ArrayToString(huksOptionsInData).slice(dateSize * i, dateSize * (i + 1)));
             await update(handle, HuksOptions);
-            HuksOptions.inData = _HuksOptions_inData
+            HuksOptions.inData = huksOptionsInData
         }
         if (remainder !== 0) {
-            HuksOptions.inData = stringToUint8Array(Uint8ArrayToString(_HuksOptions_inData).slice(dateSize * count, Uint8ArrayToString(inDataArray).length));
+            HuksOptions.inData = stringToUint8Array(uint8ArrayToString(huksOptionsInData).slice(dateSize * count, uint8ArrayToString(inDataArray).length));
             await update(handle, HuksOptions);
-            HuksOptions.inData = _HuksOptions_inData
+            HuksOptions.inData = huksOptionsInData
         }
     }
 }
@@ -228,13 +243,13 @@ async function update(handle, HuksOptions) {
     });
 }
 
-function updateCallback(handle, HuksOptions){
-    return new Promise((resolve,reject)=>{
-        huks.update(handle, HuksOptions, function(err,data){
+function updateCallback(handle, HuksOptions) {
+    return new Promise((resolve, reject) => {
+        huks.update(handle, HuksOptions, function (err, data) {
             if (err.code !== 0) {
-                console.log("test update err information: " + JSON.stringify(err) );
+                console.log("test update err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -253,13 +268,13 @@ async function publicFinishFunc(HuksOptions) {
     });
 }
 
-function finish(handle, HuksOptions_Finish){
-    return new Promise((resolve,reject)=>{
-        huks.finish(handle, HuksOptions_Finish,function(err,data){
+function finish(handle, huksOptionsFinish) {
+    return new Promise((resolve, reject) => {
+        huks.finish(handle, huksOptionsFinish, function (err, data) {
             if (err.code !== 0) {
-                console.log("test generateKey err information: " + JSON.stringify(err) );
+                console.log("test generateKey err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -277,13 +292,13 @@ async function publicAbortFucn(HuksOptions) {
     });
 }
 
-function abort(handle, HuksOptions_Abort){
-    return new Promise((resolve,reject)=>{
-        huks.abort(handle, HuksOptions_Abort, function(err,data){
+function abort(handle, huksOptionsAbort) {
+    return new Promise((resolve, reject) => {
+        huks.abort(handle, huksOptionsAbort, function (err, data) {
             if (err.code !== 0) {
-                console.log("test abort err information: " + JSON.stringify(err) );
+                console.log("test abort err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -302,12 +317,12 @@ async function publicDeleteKeyFunc(KeyAlias, HuksOptions) {
 }
 
 function deleteKey(srcKeyAlies, HuksOptions) {
-    return new Promise((resolve,reject)=>{
-        huks.deleteKey(srcKeyAlies, HuksOptions, function(err,data){
+    return new Promise((resolve, reject) => {
+        huks.deleteKey(srcKeyAlies, HuksOptions, function (err, data) {
             if (err.code !== 0) {
-                console.log("test deleteKey err information: " + JSON.stringify(err) );
+                console.log("test deleteKey err information: " + JSON.stringify(err));
                 reject(err)
-            }else{
+            } else {
                 resolve(data);
             }
         })
@@ -319,7 +334,7 @@ async function publicSignVerifyFunc(srcKeyAlies, newSrcKeyAlies, HuksOptions, th
     try {
         let keyAlias = srcKeyAlies;
         if (isSING) {
-            HuksOptions.properties.splice(1, 1, HuksSignVerify002.HuksKeyRSAPurposeSING_VERIFY);
+            HuksOptions.properties.splice(1, 1, HuksSignVerify002.HuksKeyRSAPurposeSINGVERIFY);
             HuksOptions.properties.splice(2, 0, HuksSignVerify002.HuksKeySIZE1024);
             console.log(`test publicSignVerifyFunc GenerateHuksOptions: ${JSON.stringify(HuksOptions)}`);
             await publicGenerateKeyFunc(keyAlias, HuksOptions);
@@ -336,7 +351,7 @@ async function publicSignVerifyFunc(srcKeyAlies, newSrcKeyAlies, HuksOptions, th
             if (isSING) {
                 HuksOptions.outData = new Uint8Array(new Array(1024).fill(''));
                 await publicFinishFunc(HuksOptions);
-                HuksOptions.properties.splice(1, 1, HuksSignVerify002.HuksKeyRSAPurposeSING_VERIFY)
+                HuksOptions.properties.splice(1, 1, HuksSignVerify002.HuksKeyRSAPurposeSINGVERIFY)
                 console.log(`test before exportKey Gen_HuksOptions: ${JSON.stringify(HuksOptions)}`);
                 await publicExportKey(keyAlias, HuksOptions);
             } else {
@@ -347,7 +362,7 @@ async function publicSignVerifyFunc(srcKeyAlies, newSrcKeyAlies, HuksOptions, th
             await publicAbortFucn(HuksOptions);
         }
         if ((isSING && thirdInderfaceName == "abort")) {
-            HuksOptions.properties.splice(1, 1, HuksSignVerify002.HuksKeyRSAPurposeSING_VERIFY);
+            HuksOptions.properties.splice(1, 1, HuksSignVerify002.HuksKeyRSAPurposeSINGVERIFY);
             await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
         } else if (!isSING) {
             HuksOptions.properties.splice(1, 1, HuksSignVerify002.HuksKeyDSAPurposeVERIFY);
@@ -359,6 +374,7 @@ async function publicSignVerifyFunc(srcKeyAlies, newSrcKeyAlies, HuksOptions, th
 }
 
 describe('SecurityHuksSignVerifyDSACallbackJsunit', function () {
+    
     /**
      * @tc.name: testSignVerifyDSA101
      * @tc.desc: alg-DSA dig-DIGEST_SHA1  inputdate-63kb  init>update>finish
