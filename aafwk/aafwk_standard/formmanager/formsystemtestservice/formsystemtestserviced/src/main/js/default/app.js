@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import Subscriber from '@ohos.commonevent'
+import Subscriber from '@ohos.commonEvent'
 
 export default {
     constructor(obj) {

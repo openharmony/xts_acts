@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import featureAbility from '@ohos.ability.featureability'
-import abilitymanager from '@ohos.app.abilitymanager'
+import featureAbility from '@ohos.ability.featureAbility'
+import abilityManager from '@ohos.app.abilityManager'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('ActsAmsCallBackSixth Scene', function () {
@@ -51,7 +51,7 @@ describe('ActsAmsCallBackSixth Scene', function () {
     * @tc.desc      : Clear Missions(by CallBack)
      */
     it('Acts_Ams_test_12200', 0, async function (done) {
-        abilitymanager.clearMissions(
+        abilityManager.clearMissions(
             (error,info) => {
                 console.info('Acts_Ams_test_12200 clearMissions error.code ' + error.code + ',data  [' + info + ']' );
                 expect(typeof(info)).assertEqual("number");

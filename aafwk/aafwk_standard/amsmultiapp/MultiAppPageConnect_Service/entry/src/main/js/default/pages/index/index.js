@@ -15,8 +15,8 @@
 import file from '@system.file'
 import {Core, ExpectExtend} from 'deccjsunit/index'
 import rpc from "@ohos.rpc"
-import commonEvent from '@ohos.commonevent'
-import particleAbility from '@ohos.ability.particleability'
+import commonEvent from '@ohos.commoneEvent'
+import particleAbility from '@ohos.ability.particleAbility'
 import bundle from "@ohos.bundle"
 
 

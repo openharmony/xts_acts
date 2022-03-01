@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import featureAbility from '@ohos.ability.featureability'
+import featureAbility from '@ohos.ability.featureAbility'
 import bundle from "@ohos.bundle"
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
