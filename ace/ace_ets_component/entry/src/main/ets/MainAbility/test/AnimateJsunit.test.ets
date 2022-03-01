@@ -36,7 +36,7 @@ export default function animateJsunit() {
           console.info("push animate page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push animate page error:" + JSON.stringify(result));
+        console.error("push animate page error:" + err);
       }
       done()
     });
@@ -46,151 +46,151 @@ export default function animateJsunit() {
       console.info("animate after each called");
     });
 
-//    it('animateTest_0100', 0, async function (done) {
-//      console.info('animateTest_0100 START');
-//      await Utils.sleep(1500);
-//      let indexEvent = {
-//        eventId: 60,
-//        priority: events_emitter.EventPriority.LOW
-//      }
-//      let callback= (indexEvent) => {
-//        console.info("animateTest_0100 get state result is: " + JSON.stringify(indexEvent))
-//        except(indexEvent.data.duration).assertEqual('100')
-//      }
-//      try {
-//        events_emitter.on(indexEvent, callback);
-//      } catch (err) {
-//        console.info("animateTest_0100 on events_emitter err : " + JSON.stringify(err));
-//      }
-//      console.info("animateTest_0100 click result is: " + JSON.stringify(sendEventByKey('button1',10,"")));
-//      await Utils.sleep(2000);
-//      console.info('animateTest_0100 END');
-//      done();
-//    });
-//
-//    it('animateTest_0200', 0, async function (done) {
-//      console.info('animateTest_0200 START');
-//      await Utils.sleep(1500);
-//      let indexEvent = {
-//        eventId: 61,
-//        priority: events_emitter.EventPriority.LOW
-//      }
-//      let callback= (indexEvent) => {
-//        console.info("animateTest_0500 get state result is: " + JSON.stringify(indexEvent))
-//        except(indexEvent.data.curve).assertEqual('Ease')
-//      }
-//      try {
-//        events_emitter.on(indexEvent, callback);
-//      } catch (err) {
-//        console.info("animateTest_0200 on events_emitter err : " + JSON.stringify(err));
-//      }
-//      console.info("animateTest_0200 click result is: " + JSON.stringify(sendEventByKey('button2',10,"")));
-//      await Utils.sleep(2000);
-//      console.info('animateTest_0200 END');
-//      done();
-//    });
-//
-//    it('animateTest_0300', 0, async function (done) {
-//      console.info('animateTest_0300 START');
-//      await Utils.sleep(1500);
-//      let indexEvent = {
-//        eventId: 62,
-//        priority: events_emitter.EventPriority.LOW
-//      }
-//      let callback= (indexEvent) => {
-//        console.info("animateTest_0500 get state result is: " + JSON.stringify(indexEvent))
-//        except(indexEvent.data.iteration).assertEqual('1')
-//      }
-//      try {
-//        events_emitter.on(indexEvent, callback);
-//      } catch (err) {
-//        console.info("animateTest_0300 on events_emitter err : " + JSON.stringify(err));
-//      }
-//      console.info("animateTest_0300 click result is: " + JSON.stringify(sendEventByKey('button3',10,"")));
-//      await Utils.sleep(2000);
-//      console.info('animateTest_0300 END');
-//      done();
-//    });
-//
-//    it('animateTest_0400', 0, async function (done) {
-//      console.info('animateTest_0400 START');
-//      await Utils.sleep(1500);
-//      let indexEvent = {
-//        eventId: 63,
-//        priority: events_emitter.EventPriority.LOW
-//      }
-//      let callback= (indexEvent) => {
-//        console.info("animateTest_0400 get state result is: " + JSON.stringify(indexEvent))
-//        except(indexEvent.data.tempo).assertEqual(1000)
-//      }
-//      try {
-//        events_emitter.on(indexEvent, callback);
-//      } catch (err) {
-//        console.info("animateTest_0400 on events_emitter err : " + JSON.stringify(err));
-//      }
-//      console.info("animateTest_0400 click result is: " + JSON.stringify(sendEventByKey('button4',10,"")));
-//      await Utils.sleep(2000);
-//      console.info('animateTest_0400 END');
-//      done();
-//    });
-//
-//    it('animateTest_0500', 0, async function (done) {
-//      console.info('animateTest_0500 START');
-//      await Utils.sleep(1500);
-//      let indexEvent = {
-//        eventId: 64,
-//        priority: events_emitter.EventPriority.LOW
-//      }
-//      let callback= (indexEvent) => {
-//        console.info("animateTest_0500 get state result is: " + JSON.stringify(indexEvent))
-//        except(indexEvent.data.playmode).assertEqual('normal')
-//      }
-//      try {
-//        events_emitter.on(indexEvent, callback);
-//      } catch (err) {
-//        console.info("animateTest_0500 on events_emitter err : " + JSON.stringify(err));
-//      }
-//      console.info("animateTest_0500 click result is: " + JSON.stringify(sendEventByKey('button5',10,"")));
-//      await Utils.sleep(2000);
-//      console.info('animateTest_0500 END');
-//      done();
-//    });
-//
-//    it('animateTest_0600', 0, async function (done) {
-//      console.info('animateTest_0500 START');
-//      try {
-//        let eventData = {
-//          data: {
-//            "duration":'2000'
-//          }
-//        }
-//        let indexEventOne = {
-//          eventId: 65,
-//          priority: events_emitter.EventPriority.LOW
-//        }
-//        console.info("animateTest_0600 start to publish emit");
-//        events_emitter.emit(indexEventOne, eventData);
-//      } catch (err) {
-//        console.log("animateTest_0600 change component data error: " + err.message);
-//      }
-//      let indexEvent = {
-//        eventId: 60,
-//        priority: events_emitter.EventPriority.LOW
-//      }
-//      let callback= (indexEvent) => {
-//        console.info("animateTest_0600 get state result is: " + JSON.stringify(indexEvent))
-//        except(indexEvent.data.duration).assertEqual('2000')
-//      }
-//      try {
-//        events_emitter.on(indexEvent, callback);
-//      } catch (err) {
-//        console.info("animateTest_0600 on events_emitter err : " + JSON.stringify(err));
-//      }
-//      console.info("animateTest_0600 click result is: " + JSON.stringify(sendEventByKey('button1',10 ,"")));
-//      await Utils.sleep(2000);
-//      console.info('animateTest_0600 END');
-//      done();
-//    });
+    it('animateTest_0100', 0, async function (done) {
+      console.info('animateTest_0100 START');
+      await Utils.sleep(1500);
+      let indexEvent = {
+        eventId: 60,
+        priority: events_emitter.EventPriority.LOW
+      }
+      let callback= (indexEvent) => {
+        console.info("animateTest_0100 get state result is: " + JSON.stringify(indexEvent))
+        except(indexEvent.data.duration).assertEqual('100')
+      }
+      try {
+        events_emitter.on(indexEvent, callback);
+      } catch (err) {
+        console.info("animateTest_0100 on events_emitter err : " + JSON.stringify(err));
+      }
+      console.info("animateTest_0100 click result is: " + JSON.stringify(sendEventByKey('button1',10,"")));
+      await Utils.sleep(2000);
+      console.info('animateTest_0100 END');
+      done();
+    });
+
+    it('animateTest_0200', 0, async function (done) {
+      console.info('animateTest_0200 START');
+      await Utils.sleep(1500);
+      let indexEvent = {
+        eventId: 61,
+        priority: events_emitter.EventPriority.LOW
+      }
+      let callback= (indexEvent) => {
+        console.info("animateTest_0500 get state result is: " + JSON.stringify(indexEvent))
+        except(indexEvent.data.curve).assertEqual('Ease')
+      }
+      try {
+        events_emitter.on(indexEvent, callback);
+      } catch (err) {
+        console.info("animateTest_0200 on events_emitter err : " + JSON.stringify(err));
+      }
+      console.info("animateTest_0200 click result is: " + JSON.stringify(sendEventByKey('button2',10,"")));
+      await Utils.sleep(2000);
+      console.info('animateTest_0200 END');
+      done();
+    });
+
+    it('animateTest_0300', 0, async function (done) {
+      console.info('animateTest_0300 START');
+      await Utils.sleep(1500);
+      let indexEvent = {
+        eventId: 62,
+        priority: events_emitter.EventPriority.LOW
+      }
+      let callback= (indexEvent) => {
+        console.info("animateTest_0500 get state result is: " + JSON.stringify(indexEvent))
+        except(indexEvent.data.iteration).assertEqual('1')
+      }
+      try {
+        events_emitter.on(indexEvent, callback);
+      } catch (err) {
+        console.info("animateTest_0300 on events_emitter err : " + JSON.stringify(err));
+      }
+      console.info("animateTest_0300 click result is: " + JSON.stringify(sendEventByKey('button3',10,"")));
+      await Utils.sleep(2000);
+      console.info('animateTest_0300 END');
+      done();
+    });
+
+    it('animateTest_0400', 0, async function (done) {
+      console.info('animateTest_0400 START');
+      await Utils.sleep(1500);
+      let indexEvent = {
+        eventId: 63,
+        priority: events_emitter.EventPriority.LOW
+      }
+      let callback= (indexEvent) => {
+        console.info("animateTest_0400 get state result is: " + JSON.stringify(indexEvent))
+        except(indexEvent.data.tempo).assertEqual(1000)
+      }
+      try {
+        events_emitter.on(indexEvent, callback);
+      } catch (err) {
+        console.info("animateTest_0400 on events_emitter err : " + JSON.stringify(err));
+      }
+      console.info("animateTest_0400 click result is: " + JSON.stringify(sendEventByKey('button4',10,"")));
+      await Utils.sleep(2000);
+      console.info('animateTest_0400 END');
+      done();
+    });
+
+    it('animateTest_0500', 0, async function (done) {
+      console.info('animateTest_0500 START');
+      await Utils.sleep(1500);
+      let indexEvent = {
+        eventId: 64,
+        priority: events_emitter.EventPriority.LOW
+      }
+      let callback= (indexEvent) => {
+        console.info("animateTest_0500 get state result is: " + JSON.stringify(indexEvent))
+        except(indexEvent.data.playmode).assertEqual('normal')
+      }
+      try {
+        events_emitter.on(indexEvent, callback);
+      } catch (err) {
+        console.info("animateTest_0500 on events_emitter err : " + JSON.stringify(err));
+      }
+      console.info("animateTest_0500 click result is: " + JSON.stringify(sendEventByKey('button5',10,"")));
+      await Utils.sleep(2000);
+      console.info('animateTest_0500 END');
+      done();
+    });
+
+    it('animateTest_0600', 0, async function (done) {
+      console.info('animateTest_0500 START');
+      try {
+        let eventData = {
+          data: {
+            "duration":'2000'
+          }
+        }
+        let indexEventOne = {
+          eventId: 65,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("animateTest_0600 start to publish emit");
+        events_emitter.emit(indexEventOne, eventData);
+      } catch (err) {
+        console.log("animateTest_0600 change component data error: " + err.message);
+      }
+      let indexEvent = {
+        eventId: 60,
+        priority: events_emitter.EventPriority.LOW
+      }
+      let callback= (indexEvent) => {
+        console.info("animateTest_0600 get state result is: " + JSON.stringify(indexEvent))
+        except(indexEvent.data.duration).assertEqual('2000')
+      }
+      try {
+        events_emitter.on(indexEvent, callback);
+      } catch (err) {
+        console.info("animateTest_0600 on events_emitter err : " + JSON.stringify(err));
+      }
+      console.info("animateTest_0600 click result is: " + JSON.stringify(sendEventByKey('button1',10 ,"")));
+      await Utils.sleep(2000);
+      console.info('animateTest_0600 END');
+      done();
+    });
 
     it('animateTest_0700', 0, async function (done) {
       console.info('animateTest_0700 START');

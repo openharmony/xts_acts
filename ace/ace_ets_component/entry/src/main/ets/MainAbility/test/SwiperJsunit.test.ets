@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
@@ -35,7 +35,7 @@ export default function swiperJsunit() {
           console.info("push swiper page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push swiper page error " + JSON.stringify(result));
+        console.error("push swiper page error: " + err);
       }
       done()
     });

@@ -36,7 +36,7 @@ export default function ellipseJsunit() {
           console.info("push ellipse page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push ellipse page error:" + JSON.stringify(result));
+        console.error("push ellipse page error:" + err);
       }
       done()
     });

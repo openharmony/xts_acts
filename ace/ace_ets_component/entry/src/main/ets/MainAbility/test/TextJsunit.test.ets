@@ -36,7 +36,7 @@ export default function textJsunit() {
           console.info("push text page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push text page error:" + JSON.stringify(result));
+        console.error("push text page error:" + err);
       }
       done()
     });
@@ -60,6 +60,22 @@ export default function textJsunit() {
 
     it('testText_0200', 0, async function (done) {
       console.info('testText_0200 START');
+      let strJson = getInspectorByKey('image');
+      console.info("testText_0200 component strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      console.info("testText_0200 component obj is: " + JSON.stringify(obj));
+      var res = obj.$attrs.src.indexOf('rawfile/test.png');
+      console.info("testText_0200 result is: " + res);
+      var sres = obj.$attrs.src.slice(res,res + 16);
+      console.info("testText_0200 slice result is: " + sres);
+      expect(obj.$type).assertEqual('Image');
+      expect(obj.$attrs.src.slice(res,res + 16)).assertEqual('rawfile/test.png');
+      console.info('testText_0200 END');
+      done();
+    });
+
+    it('testText_0300', 0, async function (done) {
+      console.info('testText_0300 START');
       try {
         let eventData = {
           data: {
@@ -70,17 +86,17 @@ export default function textJsunit() {
           eventId: 60,
           priority: events_emitter.EventPriority.LOW
         }
-        console.info("testText_0200 start to publish emit");
+        console.info("testText_0300 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testText_0200 change component data error: " + err.message);
+        console.log("testText_0300 change component data error: " + err.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('text');
       let objNew = JSON.parse(strJsonNew);
-      console.info("testText_0200 component objNew is: " + JSON.stringify(objNew));
+      console.info("testText_0300 component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.fontSize).assertEqual('10.000000fp');
-      console.info('testText_0200 END');
+      console.info('testText_0300 END');
       done();
     });
   })

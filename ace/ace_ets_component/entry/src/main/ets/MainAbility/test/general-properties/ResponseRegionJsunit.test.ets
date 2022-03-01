@@ -39,7 +39,7 @@ export default function ResponseRegionJsunit() {
           console.info("push ResponseRegion page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push ResponseRegion page error:" + JSON.stringify(result));
+        console.error("push ResponseRegion page error:" + err);
       }
       done()
     });

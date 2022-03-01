@@ -37,7 +37,7 @@ export default function appearJsunit() {
           console.info("push appear page result: " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push appear page error: " + JSON.stringify(result));
+        console.error("push appear page error: " + err);
       }
       done()
     });

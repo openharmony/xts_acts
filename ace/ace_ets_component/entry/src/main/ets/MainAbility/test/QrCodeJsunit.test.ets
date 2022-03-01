@@ -35,7 +35,7 @@ export default function qrCodeJsunit() {
           console.info("push QrCode page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push QrCode page error " + JSON.stringify(err));
+        console.error("push QrCode page error: " + err);
       }
       done()
     });

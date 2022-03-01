@@ -17,13 +17,15 @@ import events_emitter from '@ohos.emitter'
 @Entry
 @Component
 struct TextExample {
-@State fontSize: number = 9
+  @State fontSize: number = 9
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween }) {
       Text('lineHeight')
         .fontSize(this.fontSize)
         .fontColor(0xCCCCCC)
         .key('text')
+      Image($rawfile('test.png'))
+        .key('image')
     }
     .height(600)
     .width(350)

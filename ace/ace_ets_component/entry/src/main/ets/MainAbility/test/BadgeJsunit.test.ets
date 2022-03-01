@@ -37,7 +37,7 @@ export default function badgeJsunit() {
           console.info("push badge page result: " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push badge page error: " + JSON.stringify(result));
+        console.error("push badge page error: " + err);
       }
       done()
     });

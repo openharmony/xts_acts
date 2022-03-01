@@ -36,7 +36,7 @@ export default function longPressGestureJsunit() {
           console.info("push longPressGesture page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push longPressGesture page error:" + JSON.stringify(result));
+        console.error("push longPressGesture page error:" + err);
       }
       done()
     });

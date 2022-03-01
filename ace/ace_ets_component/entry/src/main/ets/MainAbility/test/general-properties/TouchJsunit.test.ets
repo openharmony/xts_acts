@@ -37,7 +37,7 @@ export default function touchJsunit() {
           console.info("push touch page result: " + JSON.stringify(result));
         }
       }catch(err){
-        console.error("push touch page error: " + JSON.stringify(result));
+        console.error("push touch page error: " + err);
       }
       done()
     });

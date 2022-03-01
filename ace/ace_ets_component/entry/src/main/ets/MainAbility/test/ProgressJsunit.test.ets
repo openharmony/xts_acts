@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,7 +35,7 @@ export default function progressJsunit() {
           console.info("push progress page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push progress page error " + JSON.stringify(err));
+        console.error("push progress page error " + err);
       }
       done()
     });

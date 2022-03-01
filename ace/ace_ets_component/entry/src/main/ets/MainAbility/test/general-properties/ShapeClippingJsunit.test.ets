@@ -35,7 +35,7 @@ export default function shapeClippingJsunit() {
         console.info("push shapeClipping page result:" + JSON.stringify(result));
       }
     } catch (err) {
-      console.error("push shapeClipping page error:" + JSON.stringify(result));
+      console.error("push shapeClipping page error:" + err);
     }
     done()
   });

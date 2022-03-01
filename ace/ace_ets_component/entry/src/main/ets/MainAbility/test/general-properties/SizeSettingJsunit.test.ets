@@ -35,7 +35,7 @@ export default function sizeSettingJsunit() {
         console.info("push sizeSetting page result:" + JSON.stringify(result));
       }
     } catch (err) {
-      console.error("push sizeSetting page error:" + JSON.stringify(result));
+      console.error("push sizeSetting page error:" + err);
     }
     done()
   });

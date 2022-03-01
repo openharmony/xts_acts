@@ -36,7 +36,7 @@ export default function enableJsunit() {
           console.info("push zIndex page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push zIndex page error:" + JSON.stringify(result));
+        console.error("push zIndex page error:" + err);
       }
       done()
     });

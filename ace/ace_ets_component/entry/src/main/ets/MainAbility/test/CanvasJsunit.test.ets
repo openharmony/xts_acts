@@ -15,7 +15,6 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.emitter';
 import Utils from './Utils';
 
 export default function canvasJsunit() {
@@ -36,7 +35,7 @@ export default function canvasJsunit() {
           console.info("push canvas page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push canvas page error:" + JSON.stringify(result));
+        console.error("push canvas page error:" + err);
       }
       done()
     });
@@ -50,10 +49,6 @@ export default function canvasJsunit() {
       console.info('[testCanvas01] START');
       await Utils.sleep(1000);
       console.info('[testCanvas01]----------- START');
-
-      let strJson = getInspectorByKey('canvas1');
-      let obj = JSON.parse(strJson);
-      console.info("[testCanvas01] obj is: " + JSON.stringify(obj));
       console.info('testCanvas01 END');
       done();
     });

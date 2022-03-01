@@ -36,7 +36,7 @@ export default function longPressGestureJsunit() {
           console.info("push tapGesture page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push tapGesture page error:" + JSON.stringify(result));
+        console.error("push tapGesture page error:" + err);
       }
       done()
     });
