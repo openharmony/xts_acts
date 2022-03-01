@@ -19,6 +19,7 @@ group("global") {
     deps = [
       "cust/custjs:custjs_test",
       "i18n_standard/intljs:intljs_test",
+      "perf/perfjs:perfjs_test",
       "resmgr_standard/resmgrjs:resmgrjs_test",
     ]
   } else {
