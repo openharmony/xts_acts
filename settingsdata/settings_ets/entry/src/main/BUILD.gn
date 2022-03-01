@@ -13,20 +13,20 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("StageExtensionServiceTest") {
+ohos_js_hap_suite("SettingsEtsTest") {
   hap_profile = "./entry/src/main/config.json"
   deps = [
-    ":stage_extension_service_assets",
-    ":stage_extension_service_resources",
+    ":settings_ets_assets",
+    ":settings_ets_resources",
   ]
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsStageExtensionServiceTest"
+  hap_name = "ActsSettingsEtsTest"
 }
-ohos_js_assets("stage_extension_service_assets") {
+ohos_js_assets("settings_ets_assets") {
   source_dir = "./entry/src/main/ets/MainAbility"
 }
-ohos_resources("stage_extension_service_resources") {
+ohos_resources("settings_ets_resources") {
   sources = [ "./entry/src/main/resources" ]
   hap_profile = "./entry/src/main/config.json"
 }
