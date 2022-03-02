@@ -2,7 +2,7 @@
     "description": "Configuration for huksAgreeBasicCallback js api Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "4200000",
+        "test-timeout": "180000",
         "package": "com.example.huksagreebasiccallback",
         "shell-timeout": "60000"
     },

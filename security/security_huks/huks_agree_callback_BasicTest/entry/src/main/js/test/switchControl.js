@@ -14,4 +14,4 @@
  */
 
 let isOpenSSL = false
-export {isOpenSSL}
+export { isOpenSSL }

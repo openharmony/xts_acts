@@ -13,16 +13,15 @@
  * limitations under the License.
  */
 
-require("./Agree/SecurityHuksDHBasicFinish63KBCallbackJsunit.test.js")
-require("./Agree/SecurityHuksDHBasicFinish65KBCallbackJsunit.test.js")
-require("./Agree/SecurityHuksDHBasicAbort63KBCallbackJsunit.test.js")
-require("./Agree/SecurityHuksDHBasicAbort65KBCallbackJsunit.test.js")
-require("./Agree/SecurityHuksECDHBasicFinish63KBCallbackJsunit.test.js")
-require("./Agree/SecurityHuksECDHBasicFinish65KBCallbackJsunit.test.js")
-require("./Agree/SecurityHuksECDHBasicAbort63KBCallbackJsunit.test.js")
-require("./Agree/SecurityHuksECDHBasicAbort65KBCallbackJsunit.test.js")
-require("./Agree/SecurityHuksX25519BasicFinish63KBCallbackJsunit.test.js")
-require("./Agree/SecurityHuksX25519BasicFinish65KBCallbackJsunit.test.js")
-require("./Agree/SecurityHuksX25519BasicAbort63KBCallbackJsunit.test.js")
-require("./Agree/SecurityHuksX25519BasicAbort65KBCallbackJsunit.test.js")
-
+require('./Agree/SecurityHuksDHBasicFinish63KBCallbackJsunit.test.js')
+require('./Agree/SecurityHuksDHBasicFinish65KBCallbackJsunit.test.js')
+require('./Agree/SecurityHuksDHBasicAbort63KBCallbackJsunit.test.js')
+require('./Agree/SecurityHuksDHBasicAbort65KBCallbackJsunit.test.js')
+require('./Agree/SecurityHuksECDHBasicFinish63KBCallbackJsunit.test.js')
+require('./Agree/SecurityHuksECDHBasicFinish65KBCallbackJsunit.test.js')
+require('./Agree/SecurityHuksECDHBasicAbort63KBCallbackJsunit.test.js')
+require('./Agree/SecurityHuksECDHBasicAbort65KBCallbackJsunit.test.js')
+require('./Agree/SecurityHuksX25519BasicFinish63KBCallbackJsunit.test.js')
+require('./Agree/SecurityHuksX25519BasicFinish65KBCallbackJsunit.test.js')
+require('./Agree/SecurityHuksX25519BasicAbort63KBCallbackJsunit.test.js')
+require('./Agree/SecurityHuksX25519BasicAbort65KBCallbackJsunit.test.js')

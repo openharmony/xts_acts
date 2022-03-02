@@ -2,7 +2,7 @@
     "description": "Configuration for huksHmacBasicCallback js api Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "600000",
+        "test-timeout": "180000",
         "package": "com.example.huksHmacbasiccallback",
         "shell-timeout": "60000"
     },

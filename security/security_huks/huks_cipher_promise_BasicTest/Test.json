@@ -2,7 +2,7 @@
     "description": "Configuration for huksCipherBasicPromise js api Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "2700000",
+        "test-timeout": "180000",
         "package": "com.example.hukscipherbasicpromise",
         "shell-timeout": "60000"
     },

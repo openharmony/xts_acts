@@ -2,7 +2,7 @@
     "description": "Configuration for huksSignVerifyBasicPromise js api Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "12600000",
+        "test-timeout": "180000",
         "package": "com.example.hukssignverifybasicpromise",
         "shell-timeout": "60000"
     },
