@@ -155,7 +155,8 @@
           "pages/image/prop/index",
           "pages/span/prop/index",
           "pages/menu/prop/index",
-          "pages/switch/prop/index"
+          "pages/switch/prop/index",
+          "pages/slider/prop/index"
         ],
         "name": "default",
         "window": {
