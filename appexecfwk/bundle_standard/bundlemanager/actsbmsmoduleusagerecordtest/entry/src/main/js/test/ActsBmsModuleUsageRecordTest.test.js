@@ -608,9 +608,7 @@ describe('ActsBmsModuleUsageRecordTest', function () {
             expect(data[i].lastLaunchTime).assertLarger(0);
             console.debug('=============isRemoved==============' + JSON.stringify(data[i].isRemoved));
             expect(data[i].isRemoved).assertEqual(false);
-            if (data[i].bundleName == 'com.ohos.launcher') {
-                expect(data[i].installationFreeSupported).assertTrue();
-            } else {
+            if (data[i].bundleName == 'com.example.third1') {
                 expect(data[i].installationFreeSupported).assertFalse();
             }
         }
