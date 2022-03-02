@@ -291,5 +291,243 @@ describe('PerfTest', function () {
         }
     })
 
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_1200
+    * @tc.name test the performance of PhoneNumberFormat
+    * @tc.desc check the performance of PhoneNumberFormat
+    */
+    it('perf_test_1200', 0, function () {
+        console.log('perf_test_1200 ' + 'start');
+        let phonenumber = null;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            phonenumber = new I18n.PhoneNumberFormat('CN');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_1200--'
+                    + 'phonenumber: ' + phonenumber
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_1300
+    * @tc.name test the performance of isValidNumber
+    * @tc.desc check the performance of isValidNumber
+    */
+    it('perf_test_1300', 0, function () {
+        console.log('perf_test_1300 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let valid = false;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            valid = phonenumber.isValidNumber('13510574676');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_1300--'
+        + 'valid: ' + valid
+        + ' exeTime: ' + exeTime
+        + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_1400
+    * @tc.name test the performance of format
+    * @tc.desc check the performance of format
+    */
+    it('perf_test_1400', 0, function () {
+        console.log('perf_test_1400 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let value = '1234';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = phonenumber.format('13510574676');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_1400--'
+        + 'value: ' + value
+        + ' exeTime: ' + exeTime
+        + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_1500
+    * @tc.name test the performance of getCalendar
+    * @tc.desc check the performance of getCalendar
+    */
+    it('perf_test_1500', 0, function () {
+        console.log('perf_test_1500 ' + 'start');
+        let calendar = null;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            calendar = I18n.getCalendar('zh');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_1500--'
+        + 'calendar: ' + calendar
+        + ' exeTime: ' + exeTime
+        + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_1600
+    * @tc.name test the performance of isWeekend
+    * @tc.desc check the performance of isWeekend
+    */
+    it('perf_test_1600', 0, function () {
+        console.log('perf_test_1600 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        let value = false;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = calendar.isWeekend(new Date(2021, 10, 1, 10, 0, 0, 0));
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_1600--'
+        + 'value: ' + value
+        + ' exeTime: ' + exeTime
+        + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_1700
+    * @tc.name test the performance of getDisplayName
+    * @tc.desc check the performance of getDisplayName
+    */
+    it('perf_test_1700', 0, function () {
+        console.log('perf_test_1700 ' + 'start');
+        let calendar = I18n.getCalendar('zh', 'chinese');
+        let name = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            name = calendar.getDisplayName('zh');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_1700--'
+        + 'name: ' + name
+        + ' exeTime: ' + exeTime
+        + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_1800
+    * @tc.name test the performance of calendar.get
+    * @tc.desc check the performance of calendar.get
+    */
+    it('perf_test_1800', 0, function () {
+        console.log('perf_test_1800 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        let value = 0;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = calendar.get('year');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_1800--'
+        + 'value: ' + value
+        + ' exeTime: ' + exeTime
+        + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_1900
+    * @tc.name test the performance of calendar.setTime with date param
+    * @tc.desc check the performance of calendar.setTime
+    */
+    it('perf_test_1900', 0, function () {
+        console.log('perf_test_1900 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        let date1 = new Date(2021, 8, 8, 8, 8, 8, 8);
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            calendar.setTime(date1);
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_1900--'
+        + ' exeTime: ' + exeTime
+        + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_2000
+    * @tc.name test the performance of calendar.setTime with time param
+    * @tc.desc check the performance of calendar.setTime
+    */
+    it('perf_test_2000', 0, function () {
+        console.log('perf_test_2000 ' + 'start');
+        let calendar = I18n.getCalendar('zh');
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            calendar.setTime(10540800000);
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_2000--'
+        + ' exeTime: ' + exeTime
+        + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
     console.log('*************end PerfTest*************');
 })
