@@ -23,7 +23,7 @@ export default {
     onInit() {
         this.title = this.$t('strings.world');
     },
-    onActive() {
+    onShow() {
         console.info('====onShow finish====<')
         const core = Core.getInstance()
         const expectExtend = new ExpectExtend({
