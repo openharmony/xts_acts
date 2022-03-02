@@ -69,9 +69,9 @@ let HuksSignVerify004 = {
 let finishOutData;
 let handle = {};
 let exportKey;
-let srcData65 = Data.Data_65b;
+let srcData65 = Data.Data65b;
 let srcData65Kb = stringToUint8Array(srcData65);
-let srcData63 = Data.Data_63b;
+let srcData63 = Data.Data63b;
 let srcData63Kb = stringToUint8Array(srcData63);
 
 function stringToUint8Array(str) {
@@ -399,6 +399,7 @@ describe('SecurityHuksSignVerifyED25519CallbackJsunit', function () {
         exportKey = 0;
         done();
     })
+    
     /**
      * @tc.name: testSignVerifyED25519Size256SIGNKeyAlias102
      * @tc.desc: alg-ED25519 keysize-KEY_SIZE_256 size-2048 inputdate-63kb  init>update>abort

@@ -20,7 +20,7 @@ import * as Data from '../data.js'
 let finishOutData;
 let exportKey;
 let handle = {};
-let srcData63 = Data.Data_63b;
+let srcData63 = Data.Data63b;
 console.log(`test srcData63 ${srcData63}`);
 let srcData63Kb = stringToUint8Array(srcData63);
 console.log(`test srcData63Kb ${JSON.stringify(srcData63Kb)}`);

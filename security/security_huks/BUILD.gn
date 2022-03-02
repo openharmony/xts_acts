@@ -16,16 +16,16 @@ group("security_huks") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "huks_agree_callback_BasicTest:huksagree_callback_basic_js_test",
       "huks_agree_promise_BasicTest:huksagree_promise_basic_js_test",
-      "huks_cipher_callback_BasicTest:hukscipher_callback_basic_js_test",
       "huks_cipher_promise_BasicTest:hukscipher_promise_basic_js_test",
-      "huks_derive_callback_BasicTest:huksderive_callback_basic_js_test",
       "huks_derive_promise_BasicTest:huksderive_promise_basic_js_test",
-      "huks_hmac_callback_BasicTest:hukshmac_callback_basic_js_test",
       "huks_hmac_promise_BasicTest:hukshmac_promise_basic_js_test",
-      "huks_signverify_callback_BasicTest:hukssignverify_callback_basic_js_test",
       "huks_signverify_promise_BasicTest:hukssignverify_promise_basic_js_test",
+      "huks_agree_callback_BasicTest:huksagree_callback_basic_js_test",
+      "huks_cipher_callback_BasicTest:hukscipher_callback_basic_js_test",
+      "huks_derive_callback_BasicTest:huksderive_callback_basic_js_test",
+      "huks_hmac_callback_BasicTest:hukshmac_callback_basic_js_test",
+      "huks_signverify_callback_BasicTest:hukssignverify_callback_basic_js_test"
     ]
   }
 }

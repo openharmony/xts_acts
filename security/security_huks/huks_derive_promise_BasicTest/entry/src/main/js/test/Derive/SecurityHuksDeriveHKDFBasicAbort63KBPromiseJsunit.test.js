@@ -20,9 +20,9 @@ import * as Data from '../data.js';
 let handle = {};
 let handle1;
 let handle2;
-let finishData_1;
-let finishData_2;
-let srcData63 = Data.Date_63KB;
+let finishDataFrist;
+let finishDataSecond;
+let srcData63 = Data.Date63KB;
 let srcData63Kb = stringToUint8Array(srcData63);
 
 let HksKeyAlg = {
@@ -131,14 +131,14 @@ let HuksDerive001 = {
     HuksKeyDIGESTSHA256: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA256 },
     HuksKeyDIGESTSHA384: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA384 },
     HuksKeyDIGESTSHA512: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA512 },
-    HuksKeyBLOCK_MODECBC: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_CBC },
-    HuksKeyBLOCK_MODECCM: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_CCM },
-    HuksKeyBLOCK_MODEECB: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_ECB },
-    HuksKeyBLOCK_MODECTR: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_CTR },
-    HuksKeyBLOCK_MODEGCM: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_GCM },
+    HuksKeyBLOCKMODECBC: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_CBC },
+    HuksKeyBLOCKMODECCM: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_CCM },
+    HuksKeyBLOCKMODEECB: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_ECB },
+    HuksKeyBLOCKMODECTR: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_CTR },
+    HuksKeyBLOCKMODEGCM: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_GCM },
 }
 
-let HuksOptions_63kb = {
+let HuksOptions63kb = {
     "properties": new Array(HuksDerive001.HuksKeyAlgAES, HuksDerive001.HuksKeyPurposeHKDF, HuksDerive001.HuksTagHKDFDigestSHA256, HuksDerive001.HuksKeyHKDFSize128),
     "inData": srcData63Kb,
 }
@@ -255,12 +255,12 @@ describe('SecurityHuksDeriveHKDFPromiseJsunit', function () {
      * @tc.type: FUNC
      */
     it('testDeriveHKDFAbort63KBDerive001', 0, async function (done) {
-        const srcKeyAlies_1 = 'testDeriveHKDFSize128SHA256Abort63KBDeriveKeyAlias_01_001'
+        const srcKeyAliesFirst = 'testDeriveHKDFSize128SHA256Abort63KBDeriveKeyAlias_01_001'
         let huksOptionsFinish = {
-            "properties": new Array(HuksDerive001.HuksKeySTORAGE, HuksDerive001.HuksKeyISKEYALIAS, HuksDerive001.HuksKeyALGORITHMAES, HuksDerive001.HuksKeySIZE256, HuksDerive001.HuksKeyPurposeENCRYPTDECRYPT, HuksDerive001.HuksKeyDIGESTNONE, { "tag": HksTag.HKS_TAG_KEY_ALIAS, "value": stringToUint8Array(srcKeyAlies_1) }, HuksDerive001.HuksKeyPADDINGNONE, HuksDerive001.HuksKeyBLOCK_MODEECB),
+            "properties": new Array(HuksDerive001.HuksKeySTORAGE, HuksDerive001.HuksKeyISKEYALIAS, HuksDerive001.HuksKeyALGORITHMAES, HuksDerive001.HuksKeySIZE256, HuksDerive001.HuksKeyPurposeENCRYPTDECRYPT, HuksDerive001.HuksKeyDIGESTNONE, { "tag": HksTag.HKS_TAG_KEY_ALIAS, "value": stringToUint8Array(srcKeyAliesFirst) }, HuksDerive001.HuksKeyPADDINGNONE, HuksDerive001.HuksKeyBLOCKMODEECB),
             "inData": srcData63Kb,
         }
-        await publicDeriveFunc(srcKeyAlies_1, HuksOptions_63kb, huksOptionsFinish, "abort");
+        await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, "abort");
         done();
     })
 })

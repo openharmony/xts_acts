@@ -20,7 +20,7 @@ import * as Data from '../data.js';
 let handle = {};
 let finishOutData;
 let exportKey;
-let srcData65 = Data.Data_65b;
+let srcData65 = Data.Data65b;
 let srcData65Kb = stringToUint8Array(srcData65);
 
 let HksKeyAlg = {

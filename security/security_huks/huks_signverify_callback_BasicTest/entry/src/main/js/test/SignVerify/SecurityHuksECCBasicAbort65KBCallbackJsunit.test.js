@@ -71,13 +71,13 @@ let HuksSignVerify003 = {
     HuksKeyECCSize256: { "tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_ECC_KEY_SIZE_256 },
     HuksKeyECCSize384: { "tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_ECC_KEY_SIZE_384 },
     HuksKeyECCSize521: { "tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_ECC_KEY_SIZE_521 },
-    HuksKeyECCPurposeSING_VERIFY: { "tag": HksTag.HKS_TAG_PURPOSE, "value": HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY },
+    HuksKeyECCPurposeSINGVERIFY: { "tag": HksTag.HKS_TAG_PURPOSE, "value": HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY },
 }
 
 let finishOutData;
 let handle = {};
 let exportKey;
-let srcData63 = Data.Data_65b;
+let srcData63 = Data.Data65b;
 let srcData65Kb = stringToUint8Array(srcData63);
 
 function stringToUint8Array(str) {
@@ -331,7 +331,7 @@ async function publicSignVerifyFunc(srcKeyAlies, newSrcKeyAlies, HuksOptions, th
     try {
         let keyAlias = srcKeyAlies;
         if (isSING) {
-            HuksOptions.properties.splice(1, 1, HuksSignVerify003.HuksKeyECCPurposeSING_VERIFY);
+            HuksOptions.properties.splice(1, 1, HuksSignVerify003.HuksKeyECCPurposeSINGVERIFY);
             console.log(`test publicSignVerifyFunc GenerateHuksOptions: ${JSON.stringify(HuksOptions)}`);
             await publicGenerateKeyFunc(keyAlias, HuksOptions);
             HuksOptions.properties.splice(1, 1, HuksSignVerify003.HuksKeyECCPurposeSIGN);
@@ -346,7 +346,7 @@ async function publicSignVerifyFunc(srcKeyAlies, newSrcKeyAlies, HuksOptions, th
             if (isSING) {
                 HuksOptions.outData = new Uint8Array(new Array(1024).fill(''));
                 await publicFinishFunc(HuksOptions);
-                HuksOptions.properties.splice(1, 1, HuksSignVerify003.HuksKeyECCPurposeSING_VERIFY)
+                HuksOptions.properties.splice(1, 1, HuksSignVerify003.HuksKeyECCPurposeSINGVERIFY)
                 console.log(`test before exportKey Gen_HuksOptions: ${JSON.stringify(HuksOptions)}`);
                 await publicExportKey(keyAlias, HuksOptions);
             } else {
@@ -358,7 +358,7 @@ async function publicSignVerifyFunc(srcKeyAlies, newSrcKeyAlies, HuksOptions, th
         }
 
         if ((isSING && thirdInderfaceName == "abort")) {
-            HuksOptions.properties.splice(1, 1, HuksSignVerify003.HuksKeyECCPurposeSING_VERIFY);
+            HuksOptions.properties.splice(1, 1, HuksSignVerify003.HuksKeyECCPurposeSINGVERIFY);
             await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
         } else if (!isSING) {
             HuksOptions.properties.splice(1, 1, HuksSignVerify003.HuksKeyECCPurposeVERIFY);

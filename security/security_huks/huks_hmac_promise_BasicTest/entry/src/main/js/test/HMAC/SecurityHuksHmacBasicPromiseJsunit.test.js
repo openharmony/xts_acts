@@ -20,8 +20,8 @@ import * as Data from '../data.js';
 var handle = {};
 var handle1;
 var handle2;
-let srcData63Kb = Data.Date_63KB;
-let srcData65Kb = Data.Date_65KB;
+let srcData63Kb = Data.Date63KB;
+let srcData65Kb = Data.Date65KB;
 let HksKeyPurpose = {
     HKS_KEY_PURPOSE_MAC: 128,
 }

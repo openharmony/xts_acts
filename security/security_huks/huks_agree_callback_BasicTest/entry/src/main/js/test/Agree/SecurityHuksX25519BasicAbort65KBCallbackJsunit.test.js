@@ -17,14 +17,14 @@ import { describe, it, expect } from 'deccjsunit/index'
 import huks from '@ohos.security.huks'
 import * as Data from '../data.js';
 
-let exportKey_1;
-let exportKey_2;
+let exportKeyFrist;
+let exportKeySecond;
 let handle = {};
 let handle1;
 let handle2;
-let finishData_1;
-let finishData_2;
-let srcData65 = Data.Date_65KB;
+let finishDataFrist;
+let finishDataSecond;
+let srcData65 = Data.Date65KB;
 let srcData65Kb = stringToUint8Array(srcData65);
 
 let HksKeyAlg = {
@@ -120,11 +120,11 @@ let HuksAgree003 = {
     HuksKeyDIGESTSHA512: { "tag": HksTag.HKS_TAG_DIGEST, "value": HksKeyDigest.HKS_DIGEST_SHA512 },
     HuksKeyPADDINGNONE: { "tag": HksTag.HKS_TAG_PADDING, "value": HksKeyPadding.HKS_PADDING_NONE },
     HuksKeyPADDINGPKCS7: { "tag": HksTag.HKS_TAG_PADDING, "value": HksKeyPadding.HKS_PADDING_PKCS7 },
-    HuksKeyBLOCK_MODECBC: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_CBC },
-    HuksKeyBLOCK_MODECCM: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_CCM },
-    HuksKeyBLOCK_MODEECB: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_ECB },
-    HuksKeyBLOCK_MODECTR: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_CTR },
-    HuksKeyBLOCK_MODEGCM: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_GCM },
+    HuksKeyBLOCKMODECBC: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_CBC },
+    HuksKeyBLOCKMODECCM: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_CCM },
+    HuksKeyBLOCKMODEECB: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_ECB },
+    HuksKeyBLOCKMODECTR: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_CTR },
+    HuksKeyBLOCKMODEGCM: { "tag": HksTag.HKS_TAG_BLOCK_MODE, "value": HksCipherMode.HKS_MODE_GCM },
     HuksKeyALGORITHMAES: { "tag": HksTag.HKS_TAG_ALGORITHM, "value": HksKeyAlg.HKS_ALG_AES },
     HuksKeyALGORITHMHMAC: { "tag": HksTag.HKS_TAG_ALGORITHM, "value": HksKeyAlg.HKS_ALG_HMAC },
     HuksKeySIZE256: { "tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_DH_KEY_SIZE_256 },
@@ -142,7 +142,7 @@ let HuksAgree003 = {
     HuksKeyDHSize4096: { "tag": HksTag.HKS_TAG_KEY_SIZE, "value": HksKeySize.HKS_DH_KEY_SIZE_4096 },
 }
 
-let HuksOptions_65kb = {
+let HuksOptions65kb = {
     "properties": new Array(HuksAgree003.HuksKeyAlgX25519, HuksAgree003.HuksKeyPurposeAGREE, HuksAgree003.HuksKeyCURVE25519Size256, HuksAgree003.HuksKeyDIGEST, HuksAgree003.HuksKeyPADDING, HuksAgree003.HuksKeyBLOCKMODE),
     "inData": srcData65Kb,
 }
@@ -193,9 +193,9 @@ async function publicAgreeExport1Func(srcKeyAlies, HuksOptions, exportKeys) {
     await exportKey(srcKeyAlies, HuksOptions).then((data) => {
         console.log(`test exportKey data: ${JSON.stringify(data)}`);
         if (exportKeys == 1) {
-            exportKey_1 = data.outData;
+            exportKeyFrist = data.outData;
         } else {
-            exportKey_2 = data.outData;
+            exportKeySecond = data.outData;
         }
     }).catch((err) => {
         console.log("test exportKey err information: " + JSON.stringify(err))
@@ -252,9 +252,9 @@ function init(srcKeyAlies, HuksOptions) {
 async function publicAgreeUpdateFunc(HuksOptions, exportKey) {
     let _inData = HuksOptions.inData;
     if (exportKey == 1) {
-        HuksOptions.inData = exportKey_2;
+        HuksOptions.inData = exportKeySecond;
     } else {
-        HuksOptions.inData = exportKey_1;
+        HuksOptions.inData = exportKeyFrist;
     }
     await update(handle, HuksOptions).then((data) => {
         console.log(`test update data ${JSON.stringify(data)}`);
@@ -286,9 +286,9 @@ async function publicAgreeFinishAbortFunc(huksOptionsFinish, thirdInderfaceName,
         await finish(handle, huksOptionsFinish).then((data) => {
             console.log(`test finish data ${JSON.stringify(data)}`);
             if (finishData == 1) {
-                finishData_1 = data.outData;
+                finishDataFrist = data.outData;
             } else {
-                finishData_2 = data.outData;
+                finishDataSecond = data.outData;
             }
             expect(data.errorCode == 0).assertTrue()
         }).catch((err) => {
@@ -357,27 +357,27 @@ function deleteKey(srcKeyAlies, HuksOptions) {
     })
 }
 
-async function publicAgreeFunc(srcKeyAlies_1, srcKeyAlies_2, HuksOptions, huksOptionsFinish, thirdInderfaceName) {
+async function publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions, huksOptionsFinish, thirdInderfaceName) {
     try {
-        await publicAgreeGenFunc(srcKeyAlies_1, HuksOptions);
-        await publicAgreeGenFunc(srcKeyAlies_2, HuksOptions);
-        await publicAgreeExport1Func(srcKeyAlies_1, HuksOptions, 1);
-        await publicAgreeExport1Func(srcKeyAlies_2, HuksOptions, 2);
+        await publicAgreeGenFunc(srcKeyAliesFirst, HuksOptions);
+        await publicAgreeGenFunc(srcKeyAliesSecond, HuksOptions);
+        await publicAgreeExport1Func(srcKeyAliesFirst, HuksOptions, 1);
+        await publicAgreeExport1Func(srcKeyAliesSecond, HuksOptions, 2);
 
-        await publicAgreeInitFunc(srcKeyAlies_1, HuksOptions);
+        await publicAgreeInitFunc(srcKeyAliesFirst, HuksOptions);
         await publicAgreeUpdateFunc(HuksOptions, 1);
         await publicAgreeFinishAbortFunc(huksOptionsFinish, thirdInderfaceName, 1);
 
         let _huksOptionsFinish = huksOptionsFinish
-        let huksOptionsFinish_2 = _huksOptionsFinish
-        huksOptionsFinish_2.properties.splice(6, 1, { "tag": HksTag.HKS_TAG_KEY_ALIAS, "value": stringToUint8Array(srcKeyAlies_2 + "final") })
+        let huksOptionsFinishSecond = _huksOptionsFinish
+        huksOptionsFinishSecond.properties.splice(6, 1, { "tag": HksTag.HKS_TAG_KEY_ALIAS, "value": stringToUint8Array(srcKeyAliesSecond + "final") })
 
-        await publicAgreeInitFunc(srcKeyAlies_2, HuksOptions);
+        await publicAgreeInitFunc(srcKeyAliesSecond, HuksOptions);
         await publicAgreeUpdateFunc(HuksOptions, 2);
-        await publicAgreeFinishAbortFunc(huksOptionsFinish_2, thirdInderfaceName, 2);
+        await publicAgreeFinishAbortFunc(huksOptionsFinishSecond, thirdInderfaceName, 2);
 
-        await publicAgreeDeleteFunc(srcKeyAlies_1, HuksOptions);
-        await publicAgreeDeleteFunc(srcKeyAlies_2, HuksOptions);
+        await publicAgreeDeleteFunc(srcKeyAliesFirst, HuksOptions);
+        await publicAgreeDeleteFunc(srcKeyAliesSecond, HuksOptions);
 
     } catch (e) {
         expect(null).assertFail();
@@ -392,13 +392,13 @@ describe('SecurityHuksAgreeX25519CallbackJsunit', function () {
      * @tc.type: FUNC
      */
     it('testAgreeX25519Abort65KB001', 0, async function (done) {
-        const srcKeyAlies_1 = 'testAgreeX25519Size256Abort65KBAgreeKeyAlias_01_001'
-        const srcKeyAlies_2 = 'testAgreeX25519Size256Abort65KBAgreeKeyAlias_02_001'
+        const srcKeyAliesFirst = 'testAgreeX25519Size256Abort65KBAgreeKeyAlias_01_001'
+        const srcKeyAliesSecond = 'testAgreeX25519Size256Abort65KBAgreeKeyAlias_02_001'
         let huksOptionsFinish = {
-            "properties": new Array(HuksAgree003.HuksKeySTORAGE, HuksAgree003.HuksKeyISKEYALIAS, HuksAgree003.HuksKeyALGORITHMAES, HuksAgree003.HuksKeySIZE256, HuksAgree003.HuksKeyPurposeENCRYPTDECRYPT, HuksAgree003.HuksKeyDIGESTNONE, { "tag": HksTag.HKS_TAG_KEY_ALIAS, "value": stringToUint8Array(srcKeyAlies_1) }, HuksAgree003.HuksKeyPADDINGNONE, HuksAgree003.HuksKeyBLOCK_MODEECB),
+            "properties": new Array(HuksAgree003.HuksKeySTORAGE, HuksAgree003.HuksKeyISKEYALIAS, HuksAgree003.HuksKeyALGORITHMAES, HuksAgree003.HuksKeySIZE256, HuksAgree003.HuksKeyPurposeENCRYPTDECRYPT, HuksAgree003.HuksKeyDIGESTNONE, { "tag": HksTag.HKS_TAG_KEY_ALIAS, "value": stringToUint8Array(srcKeyAliesFirst) }, HuksAgree003.HuksKeyPADDINGNONE, HuksAgree003.HuksKeyBLOCKMODEECB),
             "inData": srcData65Kb,
         }
-        await publicAgreeFunc(srcKeyAlies_1, srcKeyAlies_2, HuksOptions_65kb, huksOptionsFinish, "abort");
+        await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions65kb, huksOptionsFinish, "abort");
         done();
     })
 })

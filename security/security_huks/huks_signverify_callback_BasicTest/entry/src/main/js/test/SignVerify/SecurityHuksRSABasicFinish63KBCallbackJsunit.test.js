@@ -97,7 +97,7 @@ let HuksSignVerify001 = {
 let handle = {};
 let finishOutData;
 let exportKey;
-let srcData63 = Data.Data_63b;
+let srcData63 = Data.Data63b;
 let srcData63Kb = stringToUint8Array(srcData63);
 
 
