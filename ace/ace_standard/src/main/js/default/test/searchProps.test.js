@@ -27,7 +27,7 @@ describe('searchPropsJsTest', function () {
         }).then(() => {
             console.info(`sleep ${time} over...`)
         })
-    };
+    }
 
     async function backToIndex() {
         let backToIndexPromise = new Promise((resolve, reject) => {
@@ -134,33 +134,6 @@ describe('searchPropsJsTest', function () {
         console.info("[searchProps] get className value is: " + JSON.stringify(obj.$attrs.className));
         done();
     });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testsearchStyleProp
-     * @tc.desc      ACEs
-     */
-    //    it('testsearchStyleProp', 0, async function (done) {
-    //        console.info('testsearchStyleProp START');
-    //        console.info("[searchProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.styleProp);
-    //        console.info("[searchProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[searchProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('search')
-    //        expect(obj.$attrs.id).assertEqual('styleProp')
-    //        expect(obj.$attrs.style).assertEqual(undefined)
-    //        console.info("[searchProps] get style value is: " + JSON.stringify(obj.$attrs.style));
-    //
-    //        expect(obj.$styles.width).assertEqual(undefined);
-    //        console.info("[searchProps] get style width value is: " + JSON.stringify(obj.$styles.width));
-    //        expect(obj.$styles.height).assertEqual(undefined);
-    //        console.info("[searchProps] get style height value is: " + JSON.stringify(obj.$styles.height));
-    //        expect(obj.$styles.get('background-color')).assertEqual(undefined);
-    //        console.info("[searchProps] get style background-color value is: " + JSON.stringify(obj.$styles.get('background-color')));
-    //        done();
-    //    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
@@ -590,44 +563,6 @@ describe('searchPropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testsearchIfPropFalse
-     * @tc.desc      ACE
-     */
-    //    it('testsearchIfPropFalse', 0, async function (done) {
-    //        console.info('testsearchIfPropFalse START');
-    //        console.info("[searchProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropFalse);
-    //        console.info("[searchProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[searchProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('search')
-    //        expect(obj.$attrs.id).assertEqual('ifPropFalse')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testsearchIfPropNone
-     * @tc.desc      ACE
-     */
-    //    it('testsearchIfPropNone', 0, async function (done) {
-    //        console.info('testsearchIfPropNone START');
-    //        console.info("[searchProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropNone);
-    //        console.info("[searchProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[searchProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('search')
-    //        expect(obj.$attrs.id).assertEqual('ifPropNone')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testsearchShowPropTrue
      * @tc.desc      ACE
      */
@@ -705,6 +640,7 @@ describe('searchPropsJsTest', function () {
         console.info("[searchProps] get value value is: " + JSON.stringify(obj.$attrs.value));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testsearchShowPropNone
@@ -724,6 +660,7 @@ describe('searchPropsJsTest', function () {
         console.info("[searchProps] get value value is: " + JSON.stringify(obj.$attrs.value));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testsearchShowPropNone
@@ -743,6 +680,7 @@ describe('searchPropsJsTest', function () {
         console.info("[searchProps] get checked value is: " + JSON.stringify(obj.$attrs.icon));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testsearchShowPropNone
@@ -762,6 +700,7 @@ describe('searchPropsJsTest', function () {
         console.info("[searchProps] get checked value is: " + JSON.stringify(obj.$attrs.icon));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testsearchShowPropNone
@@ -781,6 +720,7 @@ describe('searchPropsJsTest', function () {
         console.info("[searchProps] get hint value is: " + JSON.stringify(obj.$attrs.hint));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testsearchShowPropNone
@@ -800,6 +740,7 @@ describe('searchPropsJsTest', function () {
         console.info("[searchProps] get hint value is: " + JSON.stringify(obj.$attrs.hint));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testsearchShowPropNone
@@ -819,6 +760,7 @@ describe('searchPropsJsTest', function () {
         console.info("[searchProps] get menuoptions value is: " + JSON.stringify(obj.$attrs.menuoptions));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testsearchShowPropNone
@@ -838,6 +780,7 @@ describe('searchPropsJsTest', function () {
         console.info("[searchProps] get menuoptions value is: " + JSON.stringify(obj.$attrs.menuoptions));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testsearchShowPropNone
@@ -857,6 +800,7 @@ describe('searchPropsJsTest', function () {
         console.info("[searchProps] get searchbutton value is: " + JSON.stringify(obj.$attrs.searchbutton));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testsearchShowPropNone
@@ -876,8 +820,6 @@ describe('searchPropsJsTest', function () {
         console.info("[searchProps] get searchbutton value is: " + JSON.stringify(obj.$attrs.searchbutton));
         done();
     });
-
-
 });
 
 
