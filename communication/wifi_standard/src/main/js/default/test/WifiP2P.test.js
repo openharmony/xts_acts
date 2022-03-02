@@ -149,8 +149,8 @@ describe('ACTS_WifiTest', function () {
         expect(addConfig).assertTrue();
         await wifi.getCurrentGroup()
             .then((data)  => {
-            console.info("[wifi_test] getCurrentGroup  [promise] result -> " + JSON.stringify(data));
-            expect(true).assertEqual(data.length!=0);
+                console.info("[wifi_test] getCurrentGroup  [promise] result -> " + JSON.stringify(data));
+                expect(true).assertEqual(data.length!=0);
         }).catch((error) => {
             console.info("[wifi_js]getCurrentGroup promise then error." + JSON.stringify(error));
             expect().assertFail();
@@ -262,7 +262,8 @@ describe('ACTS_WifiTest', function () {
                 expect(true).assertEqual(data.length!=0);
             }).catch((error) => {
                 console.info("[wifi_test]getP2pLinkedInfo promise then error." + JSON.stringify(error));
-                expect().assertFail();
+                expect(error).assertFail();
+           
         });
         wifi.getP2pLinkedInfo((err, result) => {
             if (err) {
@@ -273,12 +274,11 @@ describe('ACTS_WifiTest', function () {
             console.info("connectState: " + result.connectState);
             console.info("isGroupOwner: " + result.isGroupOwner);
             console.info("groupOwnerAddr: " + result.groupOwnerAddr);
-
             expect(false).assertEqual(result.connectState ==P2pConnectState.CONNECTED);
             expect(false).assertEqual(result.connectState ==P2pConnectState.DISCONNECTED);
-            done();
+            
         });
-
+        done();
     })
 
     /**
