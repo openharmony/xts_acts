@@ -106,6 +106,13 @@ describe('ActsNetworkSearchTest', function () {
         radio.getNetworkState(SLOT_2, (err, data) => {
             if (err) {
                 console.log(`Telephony_NetworkSearch_getNetworkState_Async_0700 finish err: ${err}`);
+				expect(data.longOperatorName != 'longOperatorName').assertTrue();
+				expect(data.shortOperatorName != 'shortOperatorName').assertTrue();
+				expect(data.plmnNumeric != 'plmnNumeric').assertTrue();
+				expect(data.isRoaming != true).assertTrue();
+				expect(data.regState != radio.REG_STATE_IN_SERVICE).assertTrue();
+				expect(data.nsaState != radio.NSA_STATE_SA_ATTACHED).assertTrue();
+				expect(data.isCaActive != true).assertTrue();
                 done();
                 return;
             }
@@ -147,6 +154,10 @@ describe('ActsNetworkSearchTest', function () {
                 return;
             }
             console.log(`Telephony_NetworkSearch_getSignalInformation_Async_0400 finish data: ${JSON.stringify(data)}`);
+			if (data.length > 0) {
+				expect(data[0].signalLevel != -1).assertTrue();
+				expect(data[0].signalType != radio.NETWORK_TYPE_WCDMA).assertTrue();
+			}
             expect(data.length === 0).assertTrue();
             done();
         });
@@ -262,11 +273,11 @@ describe('ActsNetworkSearchTest', function () {
     });
 
     /**
-     * @tc.number  Telephony_NetworkSearch_setNetworkSelectionMode_Async_0700
+     * @tc.number  Telephony_NetworkSearch_setNetworkSelectionMode_Promise_0700
      * @tc.name    SlotId parameter input is -1, test setNetworkSelectionMode() query function go to the error
      * @tc.desc    Function test
      */
-    it('Telephony_NetworkSearch_setNetworkSelectionMode_Async_0700', 0, async function (done) {
+    it('Telephony_NetworkSearch_setNetworkSelectionMode_Promise_0700', 0, async function (done) {
         let networkSMode = {
             slotId: 55, //set the error slot id is 55
             selectMode: radio.NETWORK_SELECTION_AUTOMATIC,
@@ -279,7 +290,7 @@ describe('ActsNetworkSearchTest', function () {
             resumeSelection: false,
         };
         console.log(
-            `Telephony_NetworkSearch_setNetworkSelectionMode_Async_0700 networkSMode:${JSON.stringify(networkSMode)}`)
+            `Telephony_NetworkSearch_setNetworkSelectionMode_Promise_0700 networkSMode:${JSON.stringify(networkSMode)}`)
         try {
             await radio.setNetworkSelectionMode(networkSMode);
             console.log('Telephony_NetworkSearch_setNetworkSelectionMode_Promise_0200 set fail');
@@ -299,6 +310,8 @@ describe('ActsNetworkSearchTest', function () {
     it('Telephony_NetworkSearch_getNetworkSearchInformation_Async_0400', 0, async function (done) {
         radio.getNetworkSearchInformation(SLOT_2, (err, data) => {
             if (err) {
+				expect(data.isNetworkSearchSuccess != true).assertTrue();
+				expect(data.networkSearchResult != undefined).assertTrue();
                 console.log('Telephony_NetworkSearch_getNetworkSearchInformation_Async_0400 finish');
                 done();
             } else {

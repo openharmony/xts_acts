@@ -72,7 +72,7 @@ export default function textAreaJsunit() {
       expect(obj.$attrs.placeholderColor).assertEqual('#FFC0C0C0')
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start')
       expect(obj.$attrs.caretColor).assertEqual('#FF000000')
-      expect(obj.$attrs.fontSize).assertEqual('40.000000fp')
+      expect(obj.$attrs.fontSize).assertEqual('40.00fp')
       expect(obj.$attrs.fontWeight).assertEqual('FontWeight.Bold')
       expect(obj.$attrs.fontColor).assertEqual('#FFFF0000')
       expect(obj.$attrs.fontFamily).assertEqual('cursive')

@@ -12,10 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+require('./favoriteTestCallBack.test.js')
+require('./favoriteTestPromise.test.js')
 require('./fileTestPromise.test.js')
-require('./favTestPromise.test.js')
-require('./albumTestPromise.test.js')
-require('./fileTestCallBack.test.js')
-require('./favTestCallBack.test.js')
-require('./albumTestCallBack.test.js')
-require('./getMediaFileAssetStatus.test.js')

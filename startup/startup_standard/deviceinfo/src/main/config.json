@@ -44,6 +44,17 @@
         "launchType": "standard"
       }
     ],
+    "reqPermissions": [
+      {
+        "name":"ohos.permission.sec.ACCESS_UDID",
+        "reason":"need use ohos.permission.sec.ACCESS_UDID",
+		"usedScene": {
+			"ability": [
+				"FormAbility"
+			],
+			"when": "inuse"
+		}
+	}],
     "js": [
       {
         "pages": [

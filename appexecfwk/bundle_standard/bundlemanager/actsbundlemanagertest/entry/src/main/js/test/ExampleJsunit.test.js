@@ -16,9 +16,6 @@
 import app from '@system.app'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import demo from '@ohos.bundle'
-import featureAbility from '@ohos.ability.featureability'
-import abilityManager from '@ohos.app.abilityManager'
-import commonEvent from '@ohos.commonevent'
 
 const PATH = "/data/"
 const ERROR = "error.hap"
@@ -40,28 +37,15 @@ const THIRD1 = "com.example.third1"
 const LAUNCHER = "com.ohos.launcher"
 const VERSIONCODE1 = 1
 const VERSIONCODE2 = 2
-const UIDMINVALUE = 9999
 const OBJECT = "object"
 const SUCCESS = "SUCCESS"
 const DIR1 = "/data/accounts/account_0/applications/com.example.myapplication1/com.example.myapplication1"
 const DIR2 = "/data/accounts/account_0/applications/com.example.myapplication2/com.example.myapplication2"
-const SYSTEMDIR1 = "/data/accounts/account_0/applications/com.ohos.launcher/com.ohos.launcher.settings"
-const CAMERA = 'com.permission.BMS_PERMISSION_CAMERA'
-const MUSIC = 'com.permission.BMS_PERMISSION_MUSIC'
-const WECHAT = 'com.permission.BMS_PERMISSION_WECHAT'
 const START_ABILITY_TIMEOUT = 3000;
-var subscriberInfoEvent_0100 = {
-    events: ['Third1_Publish_CommonEvent'],
-};
 var installParam = {
     userId: 100,
     installFlag: 0,
     isKeepData: false
-};
-var BundleFlag = {
-    GET_BUNDLE_DEFAULT: 0,
-    GET_BUNDLE_WITH_ABILITIES: 1,
-    GET_APPLICATION_INFO_WITH_PERMISSION: 8
 };
 
 describe('ActsBundleManagerTest', function () {
@@ -91,6 +75,10 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.versionCode).assertEqual(VERSIONCODE1)
             expect(datainfo.versionName).assertLarger(0)
             expect(datainfo.entryModuleName).assertEqual("entry")
+            expect(datainfo.installTime).assertLarger(0)
+            expect(datainfo.appId).assertContain(NAME1)
+            expect(datainfo.type).assertEqual("")
+            expect(datainfo.cpuAbi).assertEqual("")
             expect(datainfo.appInfo.name).assertEqual(NAME1)
             expect(datainfo.appInfo.description).assertEqual("$string:mainability_description")
             expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
@@ -109,7 +97,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.compatibleVersion).assertEqual(5)
             expect(datainfo.targetVersion).assertEqual(5)
             expect(datainfo.isCompressNativeLibs).assertEqual(false)
-            for (var s = 0; s < datainfo.hapModuleInfo; s++) {
+            for (var s = 0; s < datainfo.hapModuleInfos; s++) {
                 expect(datainfo.moduleInfos[s].name).assertEqual("com.example.myapplication1")
                 expect(datainfo.moduleInfos[s].moduleName).assertEqual("entry")
             }
@@ -460,7 +448,7 @@ describe('ActsBundleManagerTest', function () {
         });
         async function getInfo() {
             await demo.getApplicationInfo(NAME1,
-                demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION|demo.BundleFlag.GET_APPLICATION_INFO_WITH_METADATA, 
+                demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION|demo.BundleFlag.GET_APPLICATION_INFO_WITH_METADATA,
                 100).then(datainfo => {
                 expect(typeof datainfo).assertEqual(OBJECT)
                 console.info("getApplicationInfo success:" + JSON.stringify(datainfo))
@@ -559,7 +547,8 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 100, (error, datainfo) => {
+            await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 100,
+                (error, datainfo) => {
                 if (error) {
                     console.info("getApplicationInfo fail:" + JSON.stringify(error))
                     expect(error).assertFail();
@@ -1537,6 +1526,7 @@ describe('ActsBundleManagerTest', function () {
             });
         }
     })
+
     /**
      * @tc.number getApplicationInfo_0200
      * @tc.name BUNDLE::getApplicationInfo
@@ -2436,8 +2426,7 @@ describe('ActsBundleManagerTest', function () {
         });
         async function getInfo() {
             var bundleOptions = {
-                userId: 100,
-                networkId: ""
+                userId: 100
             };
             var dataInfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, bundleOptions);
             expect(dataInfo.name).assertEqual(NAME1)
@@ -2460,7 +2449,7 @@ describe('ActsBundleManagerTest', function () {
             expect(dataInfo.compatibleVersion).assertEqual(5)
             expect(dataInfo.targetVersion).assertEqual(5)
             expect(dataInfo.isCompressNativeLibs).assertEqual(false)
-            for (var s = 0; s < dataInfo.hapModuleInfo; s++) {
+            for (var s = 0; s < dataInfo.hapModuleInfos; s++) {
                 expect(dataInfo.moduleInfos[s].name).assertEqual("com.example.myapplication1")
                 expect(dataInfo.moduleInfos[s].moduleName).assertEqual("entry")
             }
@@ -2505,8 +2494,7 @@ describe('ActsBundleManagerTest', function () {
         });
         async function getInfo() {
             var bundleOptions = {
-                userId: 100,
-                networkId: ""
+                userId: 100
             };
             demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, bundleOptions, (err, dataInfo) => {
                 expect(dataInfo.name).assertEqual(NAME1)
@@ -2529,7 +2517,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(dataInfo.compatibleVersion).assertEqual(5)
                 expect(dataInfo.targetVersion).assertEqual(5)
                 expect(dataInfo.isCompressNativeLibs).assertEqual(false)
-                for (var s = 0; s < dataInfo.hapModuleInfo; s++) {
+                for (var s = 0; s < dataInfo.hapModuleInfos; s++) {
                     expect(dataInfo.moduleInfos[s].name).assertEqual("com.example.myapplication1")
                     expect(dataInfo.moduleInfos[s].moduleName).assertEqual("entry")
                 }
@@ -2575,8 +2563,7 @@ describe('ActsBundleManagerTest', function () {
         });
         async function getInfo() {
             demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, {
-                userId: 1,
-                networkId: ""
+                userId: 1
             }).then(data => {
                 expect().assertFail();
             }).catch(err => {
@@ -2614,8 +2601,7 @@ describe('ActsBundleManagerTest', function () {
         });
         async function getInfo() {
             demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, {
-                userId: 1,
-                networkId: ""
+                userId: 1
             }, (err, dataInfo) => {
                 expect(err).assertEqual(1);
                 expect(dataInfo).assertEqual(undefined);
@@ -2932,23 +2918,6 @@ describe('ActsBundleManagerTest', function () {
     * @tc.desc Test install interfaces.
     */
     it('install_1000', 0, async function (done) {
-        var Subscriber;
-        let id;
-        commonEvent.createSubscriber(subscriberInfoEvent_0100).then((data) => {
-            console.debug('====>Create Subscriber====>');
-            Subscriber = data;
-            commonEvent.subscribe(Subscriber, SubscribeCallBack);
-        })
-        function UnSubscribeCallback() {
-            console.debug('====>UnSubscribe CallBack====>');
-            done();
-        }
-        function timeout() {
-            expect().assertFail();
-            console.debug('install_1000=====timeout======');
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-            done();
-        }
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST8], {
             userId: 100,
@@ -2958,61 +2927,40 @@ describe('ActsBundleManagerTest', function () {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
-            id = setTimeout(timeout, START_ABILITY_TIMEOUT);
-            console.debug('=======start ability========')
-            let result = await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        bundleName: 'com.example.third1',
-                        abilityName: 'com.example.third1.MainAbility'
-                    }
-                }
-            )
-        });
-        async function SubscribeCallBack(err, data) {
-            clearTimeout(id);
-            expect(data.event).assertEqual('Third1_Publish_CommonEvent');
-            console.debug('====>Subscribe CallBack data:====>' + JSON.stringify(data));
-            let processInfos1 = await abilityManager.getActiveProcessInfos();
-            expect(typeof processInfos1).assertEqual('object');
-            let processMap1 = new Map();
-            let processMap2 = new Map();
-            for (var i = 0, len = processInfos1.length; i < len; i++) {
-                console.debug('=======Active Process uid=====' + processInfos1[i].uid);
-                processMap1.set(processInfos1[i].uid, 0);
-            }
             let bundleInfo = await demo.getBundleInfo('com.example.third1', demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
-            let uid = bundleInfo.uid;
-            expect(processMap1.has(uid)).assertTrue();
-            installData.install([PATH + BMSJSTEST9], {
+            expect(bundleInfo.uid).assertLarger(10000);
+            installData.uninstall(THIRD1, {
                 userId: 100,
                 installFlag: 0,
                 isKeepData: false
             }, async (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
-                expect(data.statusMessage).assertEqual('SUCCESS');
-                let processInfos2 = await abilityManager.getActiveProcessInfos();
-                for (var i = 0, len = processInfos2.length; i < len; i++) {
-                    console.debug('=======Active Process uid=====' + processInfos1[i].uid);
-                    processMap2.set(processInfos2[i].uid, 0);
-                }
-                expect(processMap2.has(uid)).assertFalse();
-                commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-                installData.uninstall(THIRD1, {
-                    userId: 100,
-                    installFlag: 0,
-                    isKeepData: false
-                }, async (err, data) => {
-                    expect(err.code).assertEqual(0);
-                    expect(data.status).assertEqual(0);
-                    expect(data.statusMessage == "SUCCESS").assertTrue();
-                    done();
-                });
+                expect(data.statusMessage == "SUCCESS").assertTrue();
+                done();
             });
-        }
+        });
+    })
 
+    /**
+    * @tc.number installErrCodeTest_0100
+    * @tc.name InstallErrorCode::STATUS_FAILED_NO_SPACE_LEFT
+    * @tc.desc Test install errcode STATUS_FAILED_NO_SPACE_LEFT.
+    */
+    it('installErrCodeTest_0100', 0, async function (done) {
+        expect(demo.InstallErrorCode.STATUS_FAILED_NO_SPACE_LEFT).assertEqual(66);
+        expect(demo.AbilitySubType.CA).assertEqual(1);
+        done();
+    })
+
+    /**
+    * @tc.number installErrCodeTest_0200
+    * @tc.name InstallErrorCode::STATUS_FAILED_NO_SPACE_LEFT
+    * @tc.desc Test install errcode STATUS_FAILED_NO_SPACE_LEFT.
+    */
+     it('installErrCodeTest_0200', 0, async function (done) {
+        expect(demo.InstallErrorCode.STATUS_GRANT_REQUEST_PERMISSIONS_FAILED).assertEqual(67);
+        done();
     })
 })
 

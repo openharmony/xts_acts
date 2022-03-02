@@ -12,8 +12,8 @@
             "pre-push": [
             ],
             "push": [
-                "./resource/audio/S32LE.pcm ->/data/media/",
-                "./resource/audio/S32LE_2.pcm ->/data/media/"
+                "./resource/audio/audioEncode/S32LE.pcm ->/data/media/",
+                "./resource/audio/audioEncode/S32LE_2.pcm ->/data/media/"
             ]
         },
 		{

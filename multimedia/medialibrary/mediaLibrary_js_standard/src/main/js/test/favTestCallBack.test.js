@@ -12,55 +12,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import mediaLibrary from '@ohos.multimedia.medialibrary';
 
+import mediaLibrary from '@ohos.multimedia.medialibrary';
+import featureAbility from '@ohos.ability.featureAbility'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
-let fileKeyObj = mediaLibrary.FileKey
-let AlbumNoArgsfetchOp = {
-    selections: "",
-    selectionArgs: [],
-}
-let AlbumHasArgsfetchOp = {
-    selections: fileKeyObj.PATH + " LIKE ? ",
-    selectionArgs: ["/data/media%"],
-}
-let type1 = mediaLibrary.MediaType.IMAGE
-let fileHasArgsfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + "= ?",
-    selectionArgs: [type1.toString()],
-}
-let fileNoArgsfetchOp = {
-    selections: "",
-    selectionArgs: [],
-}
 
 describe('favSmartAlbum.promise.test.js', function () {
 
     let mediaType = mediaLibrary.MediaType.IMAGE;
     let path = "Pictures/"
-    var media = mediaLibrary.getMediaLibrary();
+    var context = featureAbility.getContext();
+    console.info('MediaLibraryTest : getMediaLibrary IN');
+    var media = mediaLibrary.getMediaLibrary(context);
+    console.info('MediaLibraryTest : getMediaLibrary OUT');
     var asset;
     var favSmartAlbum;
     beforeAll(function () {
-        onsole.info('Smart Album Callback MediaLibraryTest: beforeAll.');
-
+        console.info('Smart Album Callback MediaLibraryTest: beforeAll： Prerequisites at the test suite level, which are executed before the test suite is executed.');
     })
 
     beforeEach(function () {
-        console.info('Smart Album Callback MediaLibraryTest: beforeEach.');
-
+        console.info('Smart Album Callback MediaLibraryTest: beforeEach：Prerequisites at the test case level, which are executed before each test case is executed.');
     })
     afterEach(function () {
-        console.info('Smart Album Callback MediaLibraryTest: afterEach.');
-
+        console.info('Smart Album Callback MediaLibraryTest: afterEach： Test case-level clearance conditions, which are executed after each test case is executed.');
     })
     afterAll(function () {
-        console.info('Smart Album Callback MediaLibraryTest: afterAll.');
-
+        console.info('Smart Album Callback MediaLibraryTest: afterAll：  Test suite-level cleanup condition, which is executed after the test suite is executed');
     })
-
-    /*
+     
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETPRIVATEALBUM_CALLBACK_001
      * @tc.name      : Get PrivateSmartAlbum by fav
      * @tc.desc      : Get PrivateSmartAlbum by fav
@@ -70,9 +52,14 @@ describe('favSmartAlbum.promise.test.js', function () {
      */
 
     it('SUB_MEDIA_MEDIALIBRARY_GETPRIVATEALBUM_CALLBACK_001', 0, async function (done) {
-        asset = await media.createAsset(mediaType, "image0002.jpg", path);
-        media.getPrivateAlbum(mediaLibrary.PrivateAlbumType.TYPE_FAVORITE, getPrivateAlbumCallBack);
-        done();
+        try {
+            asset = await media.createAsset(mediaType, "imagefavtest.jpg", path);
+            media.getPrivateAlbum(mediaLibrary.PrivateAlbumType.TYPE_FAVORITE, getPrivateAlbumCallBack);
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : CALLBACK_001 getPrivateAlbum fail, message = ' + error);
+            done();
+        }
     });
 
     function getPrivateAlbumCallBack(err, favSmartAlbums) {
@@ -115,8 +102,8 @@ describe('favSmartAlbum.promise.test.js', function () {
     }
     function getFileAssetsCallBack(err, fSmartFetchFileResult) {
         if (fSmartFetchFileResult != undefined) {
-            console.info('MediaLibraryTest : SMARTALBUM_CALLBACK getFileAssetsCallBack Success fSmartFetchFileResult = '
-                + fSmartFetchFileResult.getCount());
+            console.info('MediaLibraryTest : SMARTALBUM_CALLBACK getFileAssetsCallBack Successfull fSmartFetchFileResult = ' +
+                         fSmartFetchFileResult.getCount());
             done();
         } else {
             console.info('MediaLibraryTest : SMARTALBUM_CALLBACK getFileAssetsCallBack Unsuccessfull ' + err);

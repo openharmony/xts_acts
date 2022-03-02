@@ -15,14 +15,18 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 #include "hctest.h"
 #include "ohos_types.h"
-
 #include "ability_manager.h"
+#include "ability_errors.h"
 #include "want.h"
 
-static int32_t g_errorCode = -1;
+#define DATA_EXTERN (2 * 3)
 
 /**
 * @brief  register a test suit named AbilityMgrTestSuite
@@ -46,50 +50,66 @@ static BOOL AbilityMgrTestSuiteTearDown(void)
 
 /**
  * @tc.number    : SUB_AAFWK_ABILITY_0001
- * @tc.name      : testClearElement parameter legal test
- * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.name      : testClearElementLegal
+ * @tc.desc      : testClearElement parameter legal test
  */
-LITE_TEST_CASE(AbilityMgrTestSuite, testClearElement, Function | MediumTest | Level0)
+LITE_TEST_CASE(AbilityMgrTestSuite, testClearElementLegal, Function | MediumTest | Level0)
 {
-    printf("------start testClearElement------\n");
+    printf("------start testClearElementLegal------\n");
     ElementName element = { 0 };
+    SetElementDeviceID(&element, "0001000");
+    SetElementBundleName(&element, "com.openharmony.testnative");
     bool ret = SetElementAbilityName(&element, "SecondAbility");
     if (ret) {
         char aName[] = "SecondAbility";
+        char bName[] = "com.openharmony.testnative";
+        char dID[] = "0001000";
         TEST_ASSERT_EQUAL_STRING(element.abilityName, aName);
+        TEST_ASSERT_EQUAL_STRING(element.bundleName, bName);
+        TEST_ASSERT_EQUAL_STRING(element.deviceId, dID);
         ClearElement(&element);
         TEST_ASSERT_EQUAL_STRING(element.abilityName, NULL);
+        TEST_ASSERT_EQUAL_STRING(element.bundleName, NULL);
+        TEST_ASSERT_EQUAL_STRING(element.deviceId, NULL);
     }
-    printf("------end testClearElement------\n");
+    printf("------end testClearElementLegal------\n");
 }
 
 /**
  * @tc.number    : SUB_AAFWK_ABILITY_0002
- * @tc.name      : testClearElement parameter illegal test
- * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.name      : testClearElementIllegal
+ * @tc.desc      : testClearElement parameter illegal test
  */
 LITE_TEST_CASE(AbilityMgrTestSuite, testClearElementIllegal, Function | MediumTest | Level0)
 {
     printf("------start testClearElementIllegal------\n");
     ElementName element = { 0 };
+    SetElementDeviceID(&element, "0001000");
+    SetElementBundleName(&element, "com.openharmony.testnative");
     bool ret = SetElementAbilityName(&element, "SecondAbility");
     if (ret) {
         char aName[] = "SecondAbility";
+        char bName[] = "com.openharmony.testnative";
+        char dID[] = "0001000";
         TEST_ASSERT_EQUAL_STRING(element.abilityName, aName);
+        TEST_ASSERT_EQUAL_STRING(element.bundleName, bName);
+        TEST_ASSERT_EQUAL_STRING(element.deviceId, dID);
         ClearElement(NULL);
         TEST_ASSERT_EQUAL_STRING(element.abilityName, aName);
+        TEST_ASSERT_EQUAL_STRING(element.bundleName, bName);
+        TEST_ASSERT_EQUAL_STRING(element.deviceId, dID);
     }
     printf("------end testClearElementIllegal------\n");
 }
 
 /**
  * @tc.number    : SUB_AAFWK_ABILITY_0003
- * @tc.name      : testSetWantElement parameter legal test
- * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.name      : testSetWantElementLegal
+ * @tc.desc      : testSetWantElement parameter legal test
  */
-LITE_TEST_CASE(AbilityMgrTestSuite, testSetWantElement, Function | MediumTest | Level0)
+LITE_TEST_CASE(AbilityMgrTestSuite, testSetWantElementLegal, Function | MediumTest | Level0)
 {
-    printf("------start testSetWantElement------\n");
+    printf("------start testSetWantElementLegal------\n");
     Want want = { 0 };
     ElementName element = { 0 };
     SetElementDeviceID(&element, "0001000");
@@ -105,18 +125,19 @@ LITE_TEST_CASE(AbilityMgrTestSuite, testSetWantElement, Function | MediumTest | 
     }
     ClearElement(&element);
     ClearWant(&want);
-    printf("------end testSetWantElement------\n");
+    TEST_ASSERT_EQUAL_STRING(want.element, NULL);
+    printf("------end testSetWantElementLegal------\n");
 }
 
 /**
  * @tc.number    : SUB_AAFWK_ABILITY_0004
- * @tc.name      : testSetWantElement parameter illegal test
- * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.name      : testSetWantElementIllegal
+ * @tc.desc      : testSetWantElement parameter illegal test
  */
 LITE_TEST_CASE(AbilityMgrTestSuite, testSetWantElementIllegal, Function | MediumTest | Level2)
 {
     printf("------start testSetWantElementIllegal------\n");
-    Want want= { 0 };
+    Want want = { 0 };
     ElementName element = { 0 };
     bool ret = SetWantElement(&want, element);
     if (ret) {
@@ -133,22 +154,27 @@ LITE_TEST_CASE(AbilityMgrTestSuite, testSetWantElementIllegal, Function | Medium
 
 /**
  * @tc.number    : SUB_AAFWK_ABILITY_0005
- * @tc.name      : testClearWant parameter illegal test
- * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.name      : testClearWantIllegal
+ * @tc.desc      : testClearWant parameter illegal test
  */
 LITE_TEST_CASE(AbilityMgrTestSuite, testClearWantIllegal, Function | MediumTest | Level2)
 {
     printf("------start testClearWantIllegal------\n");
     Want want = { 0 };
     ElementName element = { 0 };
+    SetElementDeviceID(&element, "0001000");
+    SetElementBundleName(&element, "com.openharmony.testnative");
     bool ret = SetElementAbilityName(&element, "SecondAbility");
     if (ret) {
         ret = SetWantElement(&want, element);
         if (ret) {
-            char aName[] = "SecondAbility";
-            TEST_ASSERT_EQUAL_STRING(want.element->abilityName, aName);
+            TEST_ASSERT_EQUAL_STRING(want.element->deviceId, "0001000");
+            TEST_ASSERT_EQUAL_STRING(want.element->abilityName, "SecondAbility");
+            TEST_ASSERT_EQUAL_STRING(want.element->bundleName, "com.openharmony.testnative");
             ClearWant(NULL);
-            TEST_ASSERT_EQUAL_STRING(want.element->abilityName, aName);
+            TEST_ASSERT_EQUAL_STRING(want.element->deviceId, "0001000");
+            TEST_ASSERT_EQUAL_STRING(want.element->abilityName, "SecondAbility");
+            TEST_ASSERT_EQUAL_STRING(want.element->bundleName, "com.openharmony.testnative");
         }
     }
     ClearElement(&element);
@@ -158,26 +184,29 @@ LITE_TEST_CASE(AbilityMgrTestSuite, testClearWantIllegal, Function | MediumTest 
 
 /**
  * @tc.number    : SUB_AAFWK_ABILITY_0006
- * @tc.name      : testSetWantDate parameter legal test
- * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.name      : testSetWantDateLegal
+ * @tc.desc      : testSetWantDate parameter legal test
  */
-LITE_TEST_CASE(AbilityMgrTestSuite, testSetWantDate, Function | MediumTest | Level0)
+LITE_TEST_CASE(AbilityMgrTestSuite, testSetWantDateLegal, Function | MediumTest | Level0)
 {
-    printf("------start testSetWantDate------\n");
+    printf("------start testSetWantDateLegal------\n");
     Want want = { 0 };
-    SetWantData(&want, "test", 5);
+    char *data = "test";
+    SetWantData(&want, (void *)data, strlen(data) + 1);
     if (want.data != NULL) {
-        TEST_ASSERT_EQUAL_STRING((char*)(want.data), "test");
-        TEST_ASSERT_TRUE(want.dataLength == 5);
+        TEST_ASSERT_EQUAL_STRING((char*)(want.data), data);
+        TEST_ASSERT_TRUE(want.dataLength == strlen(data) + 1);
     }
     ClearWant(&want);
-    printf("------end testSetWantDate------\n");
+    TEST_ASSERT_EQUAL_STRING(want.data, NULL);
+    TEST_ASSERT_TRUE(want.dataLength == strlen(data) + 1);
+    printf("------end testSetWantDateLegal------\n");
 }
 
 /**
  * @tc.number    : SUB_AAFWK_ABILITY_0007
- * @tc.name      : testSetWantDate parameter illegal test
- * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.name      : testSetWantDateIllegal
+ * @tc.desc      : testSetWantDate parameter illegal test
  */
 LITE_TEST_CASE(AbilityMgrTestSuite, testSetWantDateIllegal, Function | MediumTest | Level2)
 {
@@ -194,47 +223,77 @@ LITE_TEST_CASE(AbilityMgrTestSuite, testSetWantDateIllegal, Function | MediumTes
 
 /**
  * @tc.number    : SUB_AAFWK_ABILITY_0008
- * @tc.name      : testStartAbility parameter illegal test
- * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.name      : testStartAbilityIllegal
+ * @tc.desc      : testStartAbility parameter illegal test
  */
-LITE_TEST_CASE(AbilityMgrTestSuite, testStartAbilityIllegal, Function | MediumTest | Level2)
+LITE_TEST_CASE(AbilityMgrTestSuite, testStartAbilityIllegal, Function | MediumTest | Level0)
 {
     printf("------start testStartAbilityIllegal------\n");
-    int result = StartAbility(NULL);
-    printf("ret is %d \n", result);
-    int expect = 8;
-    TEST_ASSERT_TRUE(result == expect);
+    int ret = StartAbility(NULL);
+    TEST_ASSERT_TRUE(ret == PARAM_CHECK_ERROR);
     printf("------end testStartAbilityIllegal------\n");
 }
 
 /**
- * @tc.number    : SUB_AAFWK_ABILITY_0008
- * @tc.name      : testSetIntParam parameter illegal test
- * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.number    : SUB_AAFWK_ABILITY_0010
+ * @tc.name      : testSetIntParamIllegal
+ * @tc.desc      : testSetIntParam parameter illegal test
  */
-LITE_TEST_CASE(AbilityMgrTestSuite, testSetIntParamIllegal, Function | MediumTest | Level2)
+LITE_TEST_CASE(AbilityMgrTestSuite, testSetIntParamIllegal, Function | MediumTest | Level0)
 {
     printf("------start testSetIntParamIllegal------\n");
-    int result = SetIntParam(NULL, NULL, 0, 0);
-    printf("ret is %d \n", result);
-    int expect = 0;
-    TEST_ASSERT_TRUE(result == expect);
+    bool ret = SetIntParam(NULL, NULL, 0, 0);
+    TEST_ASSERT_FALSE(ret);
     printf("------end testSetIntParamIllegal------\n");
 }
 
 /**
- * @tc.number    : SUB_AAFWK_ABILITY_0009
- * @tc.name      : testSetStrParam parameter illegal test
- * @tc.desc      : [C- SOFTWARE -0200]
+ * @tc.number    : SUB_AAFWK_ABILITY_0011
+ * @tc.name      : testSetIntParamLegal
+ * @tc.desc      : testSetIntParam parameter legal test
  */
-LITE_TEST_CASE(AbilityMgrTestSuite, testSetStrParamIllegal, Function | MediumTest | Level2)
+LITE_TEST_CASE(AbilityMgrTestSuite, testSetIntParamLegal, Function | MediumTest | Level0)
+{
+    printf("------start testSetIntParamLegal------\n");
+    Want want = { 0 };
+    int32_t value = 1;
+    char *key = "key";
+    bool ret = SetIntParam(&want, key, strlen(key), value);
+    TEST_ASSERT_TRUE(ret);
+    TEST_ASSERT_TRUE(want.dataLength == (strlen(key) + sizeof(int) + DATA_EXTERN));
+    TEST_ASSERT_TRUE(want.data != NULL);
+    printf("------end testSetIntParamLegal------\n");
+}
+
+/**
+ * @tc.number    : SUB_AAFWK_ABILITY_0012
+ * @tc.name      : testSetStrParamIllegal
+ * @tc.desc      : testSetStrParam parameter illegal test
+ */
+LITE_TEST_CASE(AbilityMgrTestSuite, testSetStrParamIllegal, Function | MediumTest | Level0)
 {
     printf("------start testSetStrParamIllegal------\n");
-    int result = SetStrParam(NULL, NULL, 0, NULL, 0);
-    printf("ret is %d \n", result);
-    int expect = 0;
-    TEST_ASSERT_TRUE(result == expect);
+    bool ret = SetStrParam(NULL, NULL, 0, NULL, 0);
+    TEST_ASSERT_FALSE(ret);
     printf("------end testSetStrParamIllegal------\n");
+}
+
+/**
+ * @tc.number    : SUB_AAFWK_ABILITY_0013
+ * @tc.name      : testSetStrParamLegal
+ * @tc.desc      : testSetStrParam parameter legal test
+ */
+LITE_TEST_CASE(AbilityMgrTestSuite, testSetStrParamLegal, Function | MediumTest | Level2)
+{
+    printf("------start testSetStrParamLegal------\n");
+    Want want = { 0 };
+    char *key = "key";
+    char *value = "value";
+    bool ret = SetStrParam(&want, key, strlen(key), value, strlen(value));
+    TEST_ASSERT_TRUE(ret);
+    TEST_ASSERT_TRUE(want.dataLength == (strlen(value) + strlen(key) + DATA_EXTERN));
+    TEST_ASSERT_TRUE(want.data != NULL);
+    printf("------end testSetStrParamLegal------\n");
 }
 
 RUN_TEST_SUITE(AbilityMgrTestSuite);

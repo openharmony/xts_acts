@@ -2,10 +2,10 @@
     "description": "Configuration for rpc Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "60000",
+        "test-timeout": "600000",
         "package": "com.ohos.rpctest",
 	"abilityName": "com.ohos.rpc.MainAbility",
-        "shell-timeout": "60000"
+        "shell-timeout": "600000"
     },
     "kits": [
         {

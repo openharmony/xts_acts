@@ -13,24 +13,23 @@
 # limitations under the License.
 
 count=0
+coldTemp=-22000
+highTemp=40100
 output=/data/sensor/battery/temp
 
 while ((count < 100))
 do
-    if [ $(($count%4)) == 0 ]; then
-        temp=-21000
-        let "temp = temp + 2000"
-        echo $temp
-        echo $temp > $output
-        sleep 10
+    if [ $(($count%2)) == 0 ]; then
+        let "coldTemp = coldTemp + 1000"
+        echo $coldTemp
+        echo $coldTemp > $output
+        sleep 5
     else
-        temp=40100
-        let "temp = temp + 2000"
-        echo $temp
-        echo $temp > $output
-        sleep 10
+        let "highTemp = highTemp + 1000"
+        echo $highTemp
+        echo $highTemp > $output
+        sleep 5
     fi
     let "count = count + 1"
-    echo $count
     cat $output
 done

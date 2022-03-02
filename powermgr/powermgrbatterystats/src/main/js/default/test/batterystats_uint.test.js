@@ -14,7 +14,7 @@
  */
 
 import app from '@system.app'
-import batterystats from "@ohos.batterystats"
+import batteryStats from "@ohos.batteryStatistics"
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 var ConsumptionType = {
@@ -30,16 +30,16 @@ var ConsumptionType = {
 }
 
 describe('appInfoTest', function () {
-    console.log("*************Batterystats API Test Begin*************");
+    console.log("*************batteryStats API Test Begin*************");
 
     /**
-    /* @tc.number batterystats_js_001
-     * @tc.name Batterystats_001
-     * @tc.desc BatteryStats getBatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_BLUETOOTH
+    /* @tc.number batteryStats_js_001
+     * @tc.name batteryStats_001
+     * @tc.desc batteryStats getbatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_BLUETOOTH
      */
-    it('Batterystats_001', 0, async function (done) {
+    it('batteryStats_001', 0, async function (done) {
         var infoList;
-        let promise = batterystats.getBatteryStats().then(function (value) {
+        let promise = batteryStats.getbatteryStats().then(function (value) {
             infoList = value;
             console.info("Executing");
         }, function (msg) {
@@ -60,13 +60,13 @@ describe('appInfoTest', function () {
     })
 
     /**
-    /* @tc.number batterystats_js_002
-     * @tc.name Batterystats_002
-     * @tc.desc BatteryStats getBatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_IDLE
+    /* @tc.number batteryStats_js_002
+     * @tc.name batteryStats_002
+     * @tc.desc batteryStats getbatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_IDLE
      */
-    it('Batterystats_002', 0, async function (done) {
+    it('batteryStats_002', 0, async function (done) {
         var infoList;
-        let promise = batterystats.getBatteryStats().then(function (value) {
+        let promise = batteryStats.getbatteryStats().then(function (value) {
             infoList = value;
             console.info("Executing");
         }, function (msg) {
@@ -87,13 +87,13 @@ describe('appInfoTest', function () {
     })
 
     /**
-    /* @tc.number batterystats_js_003
-     * @tc.name Batterystats_003
-     * @tc.desc BatteryStats getBatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_PHONE
+    /* @tc.number batteryStats_js_003
+     * @tc.name batteryStats_003
+     * @tc.desc batteryStats getbatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_PHONE
      */
-    it('Batterystats_003', 0, async function (done) {
+    it('batteryStats_003', 0, async function (done) {
         var infoList;
-        let promise = batterystats.getBatteryStats().then(function (value) {
+        let promise = batteryStats.getbatteryStats().then(function (value) {
             infoList = value;
             console.info("Executing");
         }, function (msg) {
@@ -114,13 +114,13 @@ describe('appInfoTest', function () {
     })
 
     /**
-    /* @tc.number batterystats_js_004
-     * @tc.name Batterystats_004
-     * @tc.desc BatteryStats getBatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_RADIO
+    /* @tc.number batteryStats_js_004
+     * @tc.name batteryStats_004
+     * @tc.desc batteryStats getbatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_RADIO
      */
-    it('Batterystats_004', 0, async function (done) {
+    it('batteryStats_004', 0, async function (done) {
         var infoList;
-        let promise = batterystats.getBatteryStats().then(function (value) {
+        let promise = batteryStats.getbatteryStats().then(function (value) {
             infoList = value;
             console.info("Executing");
         }, function (msg) {
@@ -141,13 +141,13 @@ describe('appInfoTest', function () {
     })
 
     /**
-    /* @tc.number batterystats_js_005
-     * @tc.name Batterystats_005
-     * @tc.desc BatteryStats getBatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_SCREEN
+    /* @tc.number batteryStats_js_005
+     * @tc.name batteryStats_005
+     * @tc.desc batteryStats getbatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_SCREEN
      */
-    it('Batterystats_005', 0, async function (done) {
+    it('batteryStats_005', 0, async function (done) {
         var infoList;
-        let promise = batterystats.getBatteryStats().then(function (value) {
+        let promise = batteryStats.getbatteryStats().then(function (value) {
             infoList = value;
             console.info("Executing");
         }, function (msg) {
@@ -167,43 +167,43 @@ describe('appInfoTest', function () {
         expect(found).assertTrue();
     })
 
-    /* @tc.number batterystats_js_006
-     * @tc.name Batterystats_006
-     * @tc.desc BatteryStats getAppPowerValue Interface Test uid = 111
+    /* @tc.number batteryStats_js_006
+     * @tc.name batteryStats_006
+     * @tc.desc batteryStats getAppPowerValue Interface Test uid = 111
      */
-    it('Batterystats_006', 0, function () {
-        var power = batterystats.getAppPowerValue(111);
+    it('batteryStats_006', 0, function () {
+        var power = batteryStats.getAppPowerValue(111);
         console.info("App consumption power of uid 111 is: " + power);
         expect(power >= 0).assertTrue();
     })
 
-    /* @tc.number batterystats_js_007
-     * @tc.name Batterystats_007
-     * @tc.desc BatteryStats getAppPowerValue Interface Test uid = -111
+    /* @tc.number batteryStats_js_007
+     * @tc.name batteryStats_007
+     * @tc.desc batteryStats getAppPowerValue Interface Test uid = -111
      */
-    it('Batterystats_007', 0, function () {
-        var power = batterystats.getAppPowerValue(-111);
+    it('batteryStats_007', 0, function () {
+        var power = batteryStats.getAppPowerValue(-111);
         console.info("App consumption power of uid -111 is: " + power);
         expect(power).assertEqual(0);
     })
 
-    /* @tc.number batterystats_js_008
-     * @tc.name Batterystats_008
-     * @tc.desc BatteryStats getAppPowerValue Interface Test uid = 0
+    /* @tc.number batteryStats_js_008
+     * @tc.name batteryStats_008
+     * @tc.desc batteryStats getAppPowerValue Interface Test uid = 0
      */
-    it('Batterystats_008', 0, function () {
-        var power = batterystats.getAppPowerValue(0);
+    it('batteryStats_008', 0, function () {
+        var power = batteryStats.getAppPowerValue(0);
         console.info("App consumption power of uid 0 is: " + power);
         expect(power >= 0).assertTrue();
     })
 
-    /* @tc.number batterystats_js_009
-     * @tc.name Batterystats_009
-     * @tc.desc BatteryStats getAppPowerValue Interface Test uid = "111"
+    /* @tc.number batteryStats_js_009
+     * @tc.name batteryStats_009
+     * @tc.desc batteryStats getAppPowerValue Interface Test uid = "111"
      */
-    it('Batterystats_009', 0, function () {
+    it('batteryStats_009', 0, function () {
         try{
-            batterystats.getAppPowerValue("111");
+            batteryStats.getAppPowerValue("111");
         } catch(e) {
             var errorMsg = "Argument type check works: " + e;
             console.debug("errorMsg");
@@ -211,13 +211,13 @@ describe('appInfoTest', function () {
         }
     })
 
-    /* @tc.number batterystats_js_010
-     * @tc.name Batterystats_010
-     * @tc.desc BatteryStats getAppPowerValue Interface Test uid = 111, 222
+    /* @tc.number batteryStats_js_010
+     * @tc.name batteryStats_010
+     * @tc.desc batteryStats getAppPowerValue Interface Test uid = 111, 222
      */
-    it('Batterystats_010', 0, function () {
+    it('batteryStats_010', 0, function () {
         try{
-            batterystats.getAppPowerValue(111, 222);
+            batteryStats.getAppPowerValue(111, 222);
         } catch(e) {
             var errorMsg = "Argument number check works: " + e;
             console.debug(errorMsg);
@@ -225,43 +225,43 @@ describe('appInfoTest', function () {
         }
     })
 
-    /* @tc.number batterystats_js_011
-     * @tc.name Batterystats_011
-     * @tc.desc BatteryStats getAppPowerPercent Interface Test uid = 111
+    /* @tc.number batteryStats_js_011
+     * @tc.name batteryStats_011
+     * @tc.desc batteryStats getAppPowerPercent Interface Test uid = 111
      */
-    it('Batterystats_011', 0, function () {
-        var powerPercent = batterystats.getAppPowerPercent(111);
+    it('batteryStats_011', 0, function () {
+        var powerPercent = batteryStats.getAppPowerPercent(111);
         console.info("App consumption percent of uid 111 is: " + powerPercent);
         expect(powerPercent >= 0).assertTrue();
     })
 
-    /* @tc.number batterystats_js_012
-     * @tc.name Batterystats_012
-     * @tc.desc BatteryStats getAppPowerPercent Interface Test uid = -111
+    /* @tc.number batteryStats_js_012
+     * @tc.name batteryStats_012
+     * @tc.desc batteryStats getAppPowerPercent Interface Test uid = -111
      */
-    it('Batterystats_012', 0, function () {
-        var powerPercent = batterystats.getAppPowerPercent(-111);
+    it('batteryStats_012', 0, function () {
+        var powerPercent = batteryStats.getAppPowerPercent(-111);
         console.info("App consumption percent of uid -111 is: " + powerPercent);
         expect(powerPercent).assertEqual(0);
     })
 
-    /* @tc.number batterystats_js_013
-     * @tc.name Batterystats_013
-     * @tc.desc BatteryStats getAppPowerPercent Interface Test uid = 0
+    /* @tc.number batteryStats_js_013
+     * @tc.name batteryStats_013
+     * @tc.desc batteryStats getAppPowerPercent Interface Test uid = 0
      */
-    it('Batterystats_013', 0, function () {
-        var powerPercent = batterystats.getAppPowerPercent(0);
+    it('batteryStats_013', 0, function () {
+        var powerPercent = batteryStats.getAppPowerPercent(0);
         console.info("App consumption percent of uid 0 is: " + powerPercent);
         expect(powerPercent >= 0).assertTrue();
     })
 
-    /* @tc.number batterystats_js_014
-     * @tc.name Batterystats_014
-     * @tc.desc BatteryStats getAppPowerPercent Interface Test uid = "111"
+    /* @tc.number batteryStats_js_014
+     * @tc.name batteryStats_014
+     * @tc.desc batteryStats getAppPowerPercent Interface Test uid = "111"
      */
-    it('Batterystats_014', 0, function () {
+    it('batteryStats_014', 0, function () {
         try{
-            batterystats.getAppPowerPercent("111");
+            batteryStats.getAppPowerPercent("111");
         } catch(e) {
             var errorMsg = "Argument type check works: " + e;
             console.debug("errorMsg");
@@ -269,13 +269,13 @@ describe('appInfoTest', function () {
         }
     })
 
-    /* @tc.number batterystats_js_015
-     * @tc.name Batterystats_015
-     * @tc.desc BatteryStats getAppPowerPercent Interface Test uid = 111, 222
+    /* @tc.number batteryStats_js_015
+     * @tc.name batteryStats_015
+     * @tc.desc batteryStats getAppPowerPercent Interface Test uid = 111, 222
      */
-    it('Batterystats_015', 0, function () {
+    it('batteryStats_015', 0, function () {
         try{
-            batterystats.getAppPowerPercent(111, 222);
+            batteryStats.getAppPowerPercent(111, 222);
         } catch(e) {
             var errorMsg = "Argument number check works: " + e;
             console.debug(errorMsg);
@@ -283,43 +283,43 @@ describe('appInfoTest', function () {
         }
     })
 
-    /* @tc.number batterystats_js_016
-     * @tc.name Batterystats_016
-     * @tc.desc BatteryStats getHardwareUnitPowerValue Interface Test type = ConsumptionType.CONSUMPTION_TYPE_IDLE
+    /* @tc.number batteryStats_js_016
+     * @tc.name batteryStats_016
+     * @tc.desc batteryStats getHardwareUnitPowerValue Interface Test type = ConsumptionType.CONSUMPTION_TYPE_IDLE
      */
-    it('Batterystats_016', 0, function () {
-        var power = batterystats.getHardwareUnitPowerValue(ConsumptionType.CONSUMPTION_TYPE_IDLE);
+    it('batteryStats_016', 0, function () {
+        var power = batteryStats.getHardwareUnitPowerValue(ConsumptionType.CONSUMPTION_TYPE_IDLE);
         console.info("Idle consumption power is: " + power);
         expect(power >= 0).assertTrue();
     })
 
-    /* @tc.number batterystats_js_017
-     * @tc.name Batterystats_017
-     * @tc.desc BatteryStats getHardwareUnitPowerValue Interface Test type = 111
+    /* @tc.number batteryStats_js_017
+     * @tc.name batteryStats_017
+     * @tc.desc batteryStats getHardwareUnitPowerValue Interface Test type = 111
      */
-    it('Batterystats_017', 0, function () {
-        var power = batterystats.getHardwareUnitPowerValue(111);
+    it('batteryStats_017', 0, function () {
+        var power = batteryStats.getHardwareUnitPowerValue(111);
         console.info("111's consumption power is: " + power);
         expect(power).assertEqual(0);
     })
 
-    /* @tc.number batterystats_js_018
-     * @tc.name Batterystats_018
-     * @tc.desc BatteryStats getHardwareUnitPowerValue Interface Test type = 0
+    /* @tc.number batteryStats_js_018
+     * @tc.name batteryStats_018
+     * @tc.desc batteryStats getHardwareUnitPowerValue Interface Test type = 0
      */
-    it('Batterystats_018', 0, function () {
-        var power = batterystats.getHardwareUnitPowerValue(0);
+    it('batteryStats_018', 0, function () {
+        var power = batteryStats.getHardwareUnitPowerValue(0);
         console.info("0's consumption power is: " + power);
         expect(power).assertEqual(0);
     })
 
-    /* @tc.number batterystats_js_019
-     * @tc.name Batterystats_019
-     * @tc.desc BatteryStats getHardwareUnitPowerValue Interface Test type = "test"
+    /* @tc.number batteryStats_js_019
+     * @tc.name batteryStats_019
+     * @tc.desc batteryStats getHardwareUnitPowerValue Interface Test type = "test"
      */
-    it('Batterystats_019', 0, function () {
+    it('batteryStats_019', 0, function () {
         try{
-            batterystats.getHardwareUnitPowerValue("test");
+            batteryStats.getHardwareUnitPowerValue("test");
         } catch(e) {
             var errorMsg = "Argument type check works: " + e;
             console.debug("errorMsg");
@@ -327,14 +327,14 @@ describe('appInfoTest', function () {
         }
     })
 
-    /* @tc.number batterystats_js_020
-     * @tc.name Batterystats_020
-     * @tc.desc BatteryStats getHardwareUnitPowerValue Interface Test type = ConsumptionType.CONSUMPTION_TYPE_IDLE
+    /* @tc.number batteryStats_js_020
+     * @tc.name batteryStats_020
+     * @tc.desc batteryStats getHardwareUnitPowerValue Interface Test type = ConsumptionType.CONSUMPTION_TYPE_IDLE
      * and ConsumptionType.CONSUMPTION_TYPE_WIFI
      */
-    it('Batterystats_020', 0, function () {
+    it('batteryStats_020', 0, function () {
         try{
-            batterystats.getHardwareUnitPowerValue(ConsumptionType.CONSUMPTION_TYPE_IDLE,
+            batteryStats.getHardwareUnitPowerValue(ConsumptionType.CONSUMPTION_TYPE_IDLE,
                 ConsumptionType.CONSUMPTION_TYPE_WIFI);
         } catch(e) {
             var errorMsg = "Argument number check works: " + e;
@@ -343,43 +343,43 @@ describe('appInfoTest', function () {
         }
     })
 
-    /* @tc.number batterystats_js_021
-     * @tc.name Batterystats_021
-     * @tc.desc BatteryStats getHardwareUnitPowerPercent Interface Test type = ConsumptionType.CONSUMPTION_TYPE_IDLE
+    /* @tc.number batteryStats_js_021
+     * @tc.name batteryStats_021
+     * @tc.desc batteryStats getHardwareUnitPowerPercent Interface Test type = ConsumptionType.CONSUMPTION_TYPE_IDLE
      */
-    it('Batterystats_021', 0, function () {
-        var powerPercent = batterystats.getHardwareUnitPowerPercent(ConsumptionType.CONSUMPTION_TYPE_IDLE);
+    it('batteryStats_021', 0, function () {
+        var powerPercent = batteryStats.getHardwareUnitPowerPercent(ConsumptionType.CONSUMPTION_TYPE_IDLE);
         console.info("Idle consumption percent is: " + powerPercent);
         expect(powerPercent >= 0).assertTrue();
     })
 
-    /* @tc.number batterystats_js_022
-     * @tc.name Batterystats_022
-     * @tc.desc BatteryStats getHardwareUnitPowerPercent Interface Test type = 111
+    /* @tc.number batteryStats_js_022
+     * @tc.name batteryStats_022
+     * @tc.desc batteryStats getHardwareUnitPowerPercent Interface Test type = 111
      */
-    it('Batterystats_022', 0, function () {
-        var powerPercent = batterystats.getHardwareUnitPowerPercent(111);
+    it('batteryStats_022', 0, function () {
+        var powerPercent = batteryStats.getHardwareUnitPowerPercent(111);
         console.info("111's consumption percent is: " + powerPercent);
         expect(powerPercent).assertEqual(0);
     })
 
-    /* @tc.number batterystats_js_023
-     * @tc.name Batterystats_023
-     * @tc.desc BatteryStats getHardwareUnitPowerPercent Interface Test type = 0
+    /* @tc.number batteryStats_js_023
+     * @tc.name batteryStats_023
+     * @tc.desc batteryStats getHardwareUnitPowerPercent Interface Test type = 0
      */
-    it('Batterystats_023', 0, function () {
-        var powerPercent = batterystats.getHardwareUnitPowerPercent(0);
+    it('batteryStats_023', 0, function () {
+        var powerPercent = batteryStats.getHardwareUnitPowerPercent(0);
         console.info("0's consumption percent is: " + powerPercent);
         expect(powerPercent).assertEqual(0);
     })
 
-    /* @tc.number batterystats_js_024
-     * @tc.name Batterystats_024
-     * @tc.desc BatteryStats getHardwareUnitPowerPercent Interface Test type = "test"
+    /* @tc.number batteryStats_js_024
+     * @tc.name batteryStats_024
+     * @tc.desc batteryStats getHardwareUnitPowerPercent Interface Test type = "test"
      */
-    it('Batterystats_024', 0, function () {
+    it('batteryStats_024', 0, function () {
         try{
-            batterystats.getHardwareUnitPowerPercent("test");
+            batteryStats.getHardwareUnitPowerPercent("test");
         } catch(e) {
             var errorMsg = "Argument type check works: " + e;
             console.debug("errorMsg");
@@ -387,14 +387,14 @@ describe('appInfoTest', function () {
         }
     })
 
-    /* @tc.number batterystats_js_025
-     * @tc.name Batterystats_025
-     * @tc.desc BatteryStats getHardwareUnitPowerPercent Interface Test type = ConsumptionType.CONSUMPTION_TYPE_IDLE
+    /* @tc.number batteryStats_js_025
+     * @tc.name batteryStats_025
+     * @tc.desc batteryStats getHardwareUnitPowerPercent Interface Test type = ConsumptionType.CONSUMPTION_TYPE_IDLE
      * and ConsumptionType.CONSUMPTION_TYPE_WIFI
      */
-    it('Batterystats_025', 0, function () {
+    it('batteryStats_025', 0, function () {
         try{
-            batterystats.getHardwareUnitPowerPercent(ConsumptionType.CONSUMPTION_TYPE_IDLE,
+            batteryStats.getHardwareUnitPowerPercent(ConsumptionType.CONSUMPTION_TYPE_IDLE,
                 ConsumptionType.CONSUMPTION_TYPE_WIFI);
         } catch(e) {
             var errorMsg = "Argument number check works: " + e;

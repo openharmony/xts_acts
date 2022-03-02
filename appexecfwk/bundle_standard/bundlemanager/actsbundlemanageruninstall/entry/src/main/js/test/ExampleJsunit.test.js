@@ -15,9 +15,6 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import demo from '@ohos.bundle'
-import featureAbility from '@ohos.ability.featureability'
-import abilityManager from '@ohos.app.abilityManager'
-import commonEvent from '@ohos.commonevent'
 
 const PATH = "/data/"
 const ERROR = "error.hap"
@@ -40,11 +37,9 @@ const START_ABILITY_TIMEOUT = 3000;
 const ERR_CODE = -1;
 const STATUS_INSTALL_FAILURE_INVALID = 3;
 const STATUS_INSTALL_FAILURE_CONFLICT = 4;
-var subscriberInfoEvent_0100 = {
-    events: ['Third1_Publish_CommonEvent'],
-};
 
 describe('ActsBundleManagerUninstall', function () {
+
     /**
      * @tc.number uninstall_0100
      * @tc.name BUNDLE::uninstall
@@ -317,71 +312,28 @@ describe('ActsBundleManagerUninstall', function () {
      * @tc.desc Test uninstall interfaces.
      */
     it('uninstall_0800', 0, async function (done) {
-        var Subscriber;
-        let id;
-        commonEvent.createSubscriber(subscriberInfoEvent_0100).then((data) => {
-            console.debug('====>Create Subscriber====>');
-            Subscriber = data;
-            commonEvent.subscribe(Subscriber, SubscribeCallBack);
-        })
-        function UnSubscribeCallback() {
-            console.debug('====>UnSubscribe CallBack====>');
-            done();
-        }
-        function timeout() {
-            expect().assertFail();
-            console.debug('uninstall_0800=====timeout======');
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-            done();
-        }
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + BMSJSTEST8], {
             userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
-            id = setTimeout(timeout, START_ABILITY_TIMEOUT);
-            console.debug('=======start ability========')
-            let result = await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        bundleName: 'com.example.third1',
-                        abilityName: 'com.example.third1.MainAbility'
-                    }
-                }
-            )
-        });
-        async function SubscribeCallBack(err, data) {
-            clearTimeout(id);
-            expect(data.event).assertEqual('Third1_Publish_CommonEvent');
-            console.debug('====>Subscribe CallBack data:====>' + JSON.stringify(data));
-            let processInfos1 = await abilityManager.getActiveProcessInfos();
-            expect(typeof processInfos1).assertEqual('object');
-            let processMap1 = new Map();
-            let processMap2 = new Map();
-            for (var i = 0, len = processInfos1.length; i < len; i++) {
-                console.debug('=======Active Process uid=====' + processInfos1[i].uid);
-                processMap1.set(processInfos1[i].uid, 0);
-            }
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual('SUCCESS');
             let bundleInfo = await demo.getBundleInfo('com.example.third1', 1);
-            let uid = bundleInfo.uid;
-            expect(processMap1.has(uid)).assertTrue();
+            expect(bundleInfo.uid).assertLarger(10000);
             installData.uninstall(THIRD1, {
                 userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async(err, data) => {
-                let processInfos2 = await abilityManager.getActiveProcessInfos();
-                for (var i = 0, len = processInfos2.length; i < len; i++) {
-                    console.debug('=======Active Process uid=====' + processInfos1[i].uid);
-                    processMap2.set(processInfos2[i].uid, 0);
-                }
-                expect(processMap2.has(uid)).assertFalse();
-                commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
+                expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
+                expect(data.statusMessage == "SUCCESS").assertTrue();
                 done();
             });
-        }
+        });
     })
 })
 

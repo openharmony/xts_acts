@@ -15,8 +15,6 @@
 
 // @ts-nocheck
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
-import router from '@system.router'
-import notification from '@ohos.notification'
 import reminderAgent from '@ohos.reminderAgent'
 
 describe('ReminderAgentTest', function () {
@@ -126,24 +124,25 @@ describe('ReminderAgentTest', function () {
    * @tc.name      testAddNotificationSlotNorFun002
    * @tc.desc      Adds a reminder notification slot with the promise function and null mySlot.
    */
-  it('testAddNotificationSlotNorFun002', 0, async function (done) {
-    let mySlot = null;
-    let promise = new Promise((resolve, reject) => {
-      reminderAgent.addNotificationSlot(mySlot).then(() => {
-        resolve();
-      }).catch(function (err) {
-        reject(new Error('errr occurred.'));
-        console.info('error: ' + err.code);
-      }
-      );
-      promise.then(() => {
-      }, err => {
-        let i = 0;
-        expect(0).assertEqual(i);
-      }).catch(res => { });
+    it('testAddNotificationSlotNorFun002', 0, async function (done) {
+      let mySlot = null;
+      try {
+        reminderAgent.addNotificationSlot(mySlot,function(err) {
+            if(err == undefined) {
+                console.info('testAddNotificationSlotNorFun002 execute success');
+            } else {
+            console.info('testAddNotificationSlotNorFun002 execute failed');
+          }
+        }).catch(function(err) {
+          console.info("testAddNotificationSlotNorFun002 execute catch" + err.code);
+        })
+    } catch(error) {
+      console.info("testAddNotificationSlotNorFun002 execute try - catch" + error.code);
+      let i = 0;
+      expect(0).assertEqual(i);
       done();
-    })
-
+    }})
+  
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_005
      * @tc.name      testAddNotificationSlotNorFun003
@@ -629,5 +628,117 @@ describe('ReminderAgentTest', function () {
       }
       done();
     })
+
+       /**
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_024
+     * @tc.name      testReminderTypeCalendarFun001
+     * @tc.desc      test cancelAllReminders can cancel all exist reminders with type of calendar.
+     */
+      it('testReminderTypeCalendarFun001', 0, async function (done) {
+        let timer = {
+          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+          triggerTimeInSeconds: 100
+      }
+      let calendar = {
+          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
+          dateTime : {
+              year: 2025,
+              month: 10,
+              day: 10,
+              hour: 23,
+              minute: 30
+          }
+      }
+      reminderAgent.publishReminder(timer).then((reminderId) => {});
+      reminderAgent.publishReminder(calendar).then((reminderId) => {});
+      setTimeout(() => {
+          reminderAgent.cancelAllReminders().then(() => {
+              reminderAgent.getValidReminders().then((reminders) => {
+                  expect(reminders.length === 0).assertEqual(true);
+              });
+          });
+      }, 5000);
+      done();
+      })
+
+     /**
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_025
+     * @tc.name      testPublishReminderTypeCalendarFun001
+     * @tc.desc      test pulish reminders with type of calendar.
+     */
+      it('testReminderTypeCalendarFun001', 0, async function (done) {
+        let calendar = {
+          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
+          dateTime : {
+              year: 2025,
+              month: 10,
+              day: 10,
+              hour: 23,
+              minute: 30
+          },
+          repeatMonths:[2],
+          repeatDays:[2],
+          actionButton:[
+              {
+                  title:"close",
+                  type:0
+              },
+              {
+                  title:"snooze",
+                  type:1
+              }
+          ],
+          wantAgent:{
+              pkgName:"com.oh.phone",
+              abilityName:"com.oh.phone.MainAbility"
+          },
+          maxScreenWantAgent:{
+              pkgName:"com.oh.phone",
+              abilityName:"com.oh.phone.MainAbility"
+          },
+          ringDuration:5,
+          snoozeTimes:2,
+          timeInterval:5,
+          title:"this is title",
+          content:"this is content",
+          expiredContent:"this reminder has expired",
+          snoozeContent:"remind later",
+          notificationId:100,
+          slotType:3
+      }
+      reminderAgent.publishReminder(calendar).then((reminderId) => {
+          reminderAgent.getValidReminders().then((reminders) => {
+              for (let i = 0; i < reminders.length; i++) {
+                  console.log("getValidReminders = " + JSON.stringify(reminders[i]));
+                  console.log("getValidReminders, reminderType = " + reminders[i].reminderType);
+                  for (let j = 0; j < reminders[i].actionButton.length; j++) {
+                      console.log("getValidReminders, actionButton.title = " + reminders[i].actionButton[j].title);
+                      console.log("getValidReminders, actionButton.type = " + reminders[i].actionButton[j].type);
+                  }
+                  console.log("getValidReminders, wantAgent.pkgName = " + reminders[i].wantAgent.pkgName);
+                  console.log("getValidReminders, wantAgent.abilityName = " + reminders[i].wantAgent.abilityName);
+                  console.log("getValidReminders, maxScreenWantAgent.pkgName = " + reminders[i].maxScreenWantAgent.pkgName);
+                  console.log("getValidReminders, maxScreenWantAgent.abilityName = " + reminders[i].maxScreenWantAgent.abilityName);
+                  expect(reminders[i].ringDuration).assertEqual(5);
+                  console.log("getValidReminders, ringDuration = " + reminders[i].ringDuration);
+                  expect(reminders[i].snoozeTimes).assertEqual(2);
+                  console.log("getValidReminders, snoozeTimes = " + reminders[i].snoozeTimes);
+                  console.log("getValidReminders, timeInterval = " + reminders[i].timeInterval);
+                  expect(reminders[i].title).assertEqual("this is title");
+                  console.log("getValidReminders, title = " + reminders[i].title);
+                  expect(reminders[i].content).assertEqual("this is content");
+                  console.log("getValidReminders, content = " + reminders[i].content);
+                  expect(reminders[i].expiredContent).assertEqual("this reminder has expired");
+                  console.log("getValidReminders, expiredContent = " + reminders[i].expiredContent);
+                  expect(reminders[i].snoozeContent).assertEqual("remind later");
+                  console.log("getValidReminders, snoozeContent = " + reminders[i].snoozeContent);
+                  expect(reminders[i].notificationId).assertEqual(100);
+                  console.log("getValidReminders, notificationId = " + reminders[i].notificationId);
+                  console.log("getValidReminders, slotType = " + reminders[i].slotType);
+              }
+          })
+      });
+      done();
+      })      
   })
-})
+

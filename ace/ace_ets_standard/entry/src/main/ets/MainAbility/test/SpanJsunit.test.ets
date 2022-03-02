@@ -36,6 +36,7 @@ export default function spanJsunit() {
       }
       try {
         router.clear();
+	await sleep(1);
         let pages = router.getState();
         console.info("get Span state success " + JSON.stringify(pages));
         if (!("Span" == pages.name)) {
@@ -70,11 +71,9 @@ export default function spanJsunit() {
       console.info("span1 content" + JSON.stringify(obj.$attrs.content))
       console.info("span1 fontSize" + JSON.stringify(obj.$attrs.fontSize))
       console.info("span1 letterSpacing" + JSON.stringify(obj.$attrs.letterSpacing))
-      expect(obj.$attrs.decoration).assertEqual('{"Type":"TextDecorationType.LineThrough","Color":"#FFFF0000"}')
+      expect(obj.$attrs.decoration).assertEqual('{"type":"TextDecorationType.LineThrough","color":"#FFFF0000"}')
       expect(obj.$attrs.textCase).assertEqual('TextCase.UpperCase')
       expect(obj.$attrs.content).assertEqual('Test Span demo')
-      expect(obj.$attrs.fontSize).assertEqual('20fp')
-      expect(obj.$attrs.letterSpacing).assertEqual(5)
       console.info('testGetSpanAttr1 END');
       done();
     });

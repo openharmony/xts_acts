@@ -36,6 +36,7 @@ export default function gridJsunit() {
       }
       try {
         router.clear();
+	await sleep(1);
         let pages = router.getState();
         console.info("get Grid state success " + JSON.stringify(pages));
         if (!("Grid" == pages.name)) {

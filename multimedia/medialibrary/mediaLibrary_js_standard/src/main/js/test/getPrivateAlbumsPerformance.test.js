@@ -14,15 +14,16 @@
  */
 
 import mediaLibrary from '@ohos.multimedia.medialibrary';
+import featureAbility from '@ohos.ability.featureAbility'
 
-
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 
 describe('getPrivateAlbumsPerformance.test.js', function () {
-    console.info("mediaLibrary Instance before");
-    const media = mediaLibrary.getMediaLibrary();
-    console.info("mediaLibrary Instance after");
+    var context = featureAbility.getContext();
+    console.info('MediaLibraryTest : getMediaLibrary IN');
+    var media = mediaLibrary.getMediaLibrary(context);
+    console.info('MediaLibraryTest : getMediaLibrary OUT');
 
     let times = 50;
 
@@ -40,7 +41,7 @@ describe('getPrivateAlbumsPerformance.test.js', function () {
         console.info('MediaLibraryTest: afterAll');
     })
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GET_ALBUMS_PERFORMANCE_01
      * @tc.name      : 
      * @tc.desc      : 
@@ -54,7 +55,7 @@ describe('getPrivateAlbumsPerformance.test.js', function () {
         for (let i = 0; i < times; i++) {
             const albums = await media.getPrivateAlbum(mediaLibrary.PrivateAlbumType.TYPE_TRASH);
             if (albums != undefined) {
-                console.info('MediaLibraryTest : getAlbums : PASS '+ albums[0].albumName);
+                console.info('MediaLibraryTest : getAlbums : PASS ' + albums[0].albumName);
                 expect(true).assertTrue();
             } else {
                 console.info('MediaLibraryTest : getAlbums : FAIL');

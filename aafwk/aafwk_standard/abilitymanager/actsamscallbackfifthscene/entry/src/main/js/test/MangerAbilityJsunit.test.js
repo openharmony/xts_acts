@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import featureAbility from '@ohos.ability.featureability'
-import abilitymanager from '@ohos.app.abilitymanager'
+import featureAbility from '@ohos.ability.featureAbility'
+import abilityManager from '@ohos.app.abilityManager'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 var WeightReasonCode = {
@@ -54,27 +54,14 @@ var bundleNameList = [
 describe('ActsAmsCallBackFifthScene', function () {
     console.info('----ActsAmsCallBackFifthScene----');
     beforeAll(async function (done) {
-        await featureAbility.startAbility(
-            {
-                want:
-                {
-                    deviceId: "",
-                    bundleName: "com.ohos.launcher",
-                    abilityName: "com.ohos.launcher.MainAbility",
-                    action: "action1",
-                    parameters:
-                        {},
-                },
-            },
-        );
         var maxnum = 10;
-	 var flag = 1;
-        var data = await abilitymanager.queryRecentAbilityMissionInfos(maxnum, flag);
+	    var flag = 1;
+        var data = await abilityManager.queryRecentAbilityMissionInfos(maxnum, flag);
         console.log('queryRecentAbilityMissionInfos data  ' + JSON.stringify(data));
         for (var i = 0; i < data.length; i++) {
             if (data[i].baseAbility.bundleName != 'com.example.actsamscallbackfifthscene' &&
                 data[i].topAbility.bundleName != 'com.example.actsamscallbackfifthscene') {
-                var info = abilitymanager.removeMission(data[i].id);
+                var info = abilityManager.removeMission(data[i].id);
                 console.log(' removeMission data  [' + info + ']');
             }
         }
@@ -147,7 +134,7 @@ describe('ActsAmsCallBackFifthScene', function () {
         console.info("sleep begin");
         sleep(5000);
         console.info("sleep end");
-        abilitymanager.getAllRunningProcesses(
+        abilityManager.getAllRunningProcesses(
             (error, info) => {
                 console.info('getAllRunningProcesses error.code \
                 ' + error.code + ', data length [' + info.length + ']');
@@ -188,7 +175,7 @@ describe('ActsAmsCallBackFifthScene', function () {
     it('Acts_Ams_test_7000', 0, async function (done) {
         var maxnum = 10;
 	 var flag = 1;
-        abilitymanager.queryRecentAbilityMissionInfos(maxnum, flag,
+        abilityManager.queryRecentAbilityMissionInfos(maxnum, flag,
             (error, data) => {
                 console.info('queryRecentAbilityMissionInfos error.code : \
                 ' + error.code + ',data length [' + data.length + ']');
@@ -235,7 +222,7 @@ describe('ActsAmsCallBackFifthScene', function () {
      */
     it('Acts_Ams_test_6800', 0, async function (done) {
         var maxnum = 10;
-        abilitymanager.queryRunningAbilityMissionInfos(maxnum,
+        abilityManager.queryRunningAbilityMissionInfos(maxnum,
             (error, data) => {
                 console.info('queryRunningAbilityMissionInfos error.code : \
                 ' + error.code + ',data length [' + data.length + ']');
@@ -281,7 +268,7 @@ describe('ActsAmsCallBackFifthScene', function () {
      * @tc.desc      : Get All Active Processes Info(by CallBack)
      */
     it('Acts_Ams_test_9000', 0, async function (done) {
-        abilitymanager.getActiveProcessInfos(
+        abilityManager.getActiveProcessInfos(
             (error, info) => {
                 console.info('getActiveProcessInfos error.code \
                 ' + error.code + ', data length [' + info.length + ']');
@@ -312,7 +299,7 @@ describe('ActsAmsCallBackFifthScene', function () {
     */
     it('Acts_Ams_test_10000', 0, async function (done) {
         var maxnum = 10;
-        abilitymanager.getActiveAbilityMissionInfos(maxnum,
+        abilityManager.getActiveAbilityMissionInfos(maxnum,
             (error, info) => {
                 console.info('queryRecentAbilityMissionInfos error.code : \
                 ' + error.code + ',data length [' + info.length + ']');
@@ -366,7 +353,7 @@ describe('ActsAmsCallBackFifthScene', function () {
     */
     it('Acts_Ams_test_11000', 0, async function (done) {
         var maxnum = 10;
-        abilitymanager.getPreviousAbilityMissionInfos(maxnum,
+        abilityManager.getPreviousAbilityMissionInfos(maxnum,
             (error, info) => {
                 console.info('queryRecentAbilityMissionInfos error.code : \
                 ' + error.code + ',data length [' + info.length + ']');
@@ -420,8 +407,8 @@ describe('ActsAmsCallBackFifthScene', function () {
      */
     it('Acts_Ams_test_7200', 0, async function (done) {
         var maxnum = 10;
-        var result = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
-        abilitymanager.removeMission(result[1].id,
+        var result = await abilityManager.queryRunningAbilityMissionInfos(maxnum);
+        abilityManager.removeMission(result[1].id,
             (error, info) => {
                 console.info('Acts_Ams_test_7200 removeMission error.code \
                 ' + error.code + ',data  [' + info + ']');
@@ -439,8 +426,8 @@ describe('ActsAmsCallBackFifthScene', function () {
      */
     it('Acts_Ams_test_7600', 0, async function (done) {
         var maxnum = 10;
-        var result = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
-        abilitymanager.moveMissionToTop(result[0].id,
+        var result = await abilityManager.queryRunningAbilityMissionInfos(maxnum);
+        abilityManager.moveMissionToTop(result[0].id,
             (error, info) => {
                 console.info('Acts_Ams_test_7600 moveMissionToTop error.code \
                 ' + error.code + ',data  [' + info + ']');
@@ -458,8 +445,8 @@ describe('ActsAmsCallBackFifthScene', function () {
      */
     it('Acts_Ams_test_12000', 0, async function (done) {
         var maxnum = 10;
-        var result = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
-        abilitymanager.deleteMissions([result[0].id],
+        var result = await abilityManager.queryRunningAbilityMissionInfos(maxnum);
+        abilityManager.deleteMissions([result[0].id],
             (error, info) => {
                 console.info('Acts_Ams_test_12000 deleteMissions error.code \
                 ' + error.code + ',data  [' + info + ']');
@@ -476,7 +463,7 @@ describe('ActsAmsCallBackFifthScene', function () {
      * @tc.desc      : Kill Processes By BundleName(by CallBack)
      */
     it('Acts_Ams_test_8000', 0, async function (done) {
-        abilitymanager.killProcessesByBundleName('com.ix.verify.io',
+        abilityManager.killProcessesByBundleName('com.ix.verify.io',
             (error, info) => {
                 console.info('Acts_Ams_test_8000 killProcessesByBundleName error.code: \
                 ' + error.code + ',data  [' + info + ']');

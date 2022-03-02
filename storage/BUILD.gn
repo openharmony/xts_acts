@@ -20,7 +20,11 @@ group("storage") {
       "storagefileioerrorjstest:storagefileioerror_js_test",
       "storagefileiojstest:storagefileio_js_test",
       "storagefilejstest:storagefile_js_test",
+      "storagefilemanagerjstest:storagefilemanager_js_test",
+      "storagesecuritylabeljstest:storagesecuritylabel_js_test",
       "storagestatfsjstest:storagestatfs_js_test",
+      "storagestatisticsjstest:storagestatistics_js_test",
+      "storagevolumesjstest:storagevolumes_js_test",
     ]
   }
 }

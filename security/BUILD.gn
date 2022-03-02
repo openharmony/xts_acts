@@ -16,6 +16,10 @@ import("//test/xts/tools/build/suite.gni")
 group("security") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "huks_standard" ]
+    deps = [
+      "access_token/AccessTokenTest_NoPermission_js:ActsAccessTokenJSApiTestNoPermission",
+      "access_token/AccessTokenTest_Normal_js:ActsAccessTokenJSApiTestNormal",
+      "huks_standard",
+    ]
   }
 }

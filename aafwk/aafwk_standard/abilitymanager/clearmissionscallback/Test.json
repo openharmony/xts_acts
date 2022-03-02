@@ -5,7 +5,7 @@
         "test-timeout": "120000",
         "package": "com.ohos.launcher",
         "abilityName": "com.ohos.launcherSed11.MainAbility",
-        "shell-timeout": "60000"
+        "shell-timeout": "600000"
     },
     "kits": [
         {

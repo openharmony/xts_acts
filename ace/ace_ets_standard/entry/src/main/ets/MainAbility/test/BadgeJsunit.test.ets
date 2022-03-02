@@ -79,8 +79,8 @@ export default function badgeJsunit() {
       console.log("yr badge0 style.fontSize" + style.fontSize);
       console.log("yr badge0 style.badgeSize" + style.badgeSize);
       expect(style.color).assertEqual('#FFFFFFFF');
-      expect(style.fontSize).assertEqual('16.000000fp');
-      expect(style.badgeSize).assertEqual('20.000000fp');
+      expect(style.fontSize).assertEqual('16.00fp');
+      expect(style.badgeSize).assertEqual('20.00fp');
       console.log("badge0 style : " + JSON.stringify(obj.$attrs.style))
       console.info('testGetInspectorByKey END');
       done();
@@ -101,8 +101,8 @@ export default function badgeJsunit() {
       console.log("yr badge1 position-'BadgePosition.RightTop'" + JSON.stringify(obj.$attrs.position))
       console.log("yr badge0 style.fontSize" + style.fontSize);
       console.log("yr badge0 style.badgeSize" + style.badgeSize);
-      expect(style.fontSize).assertEqual('16.000000fp');
-      expect(style.badgeSize).assertEqual('20.000000fp');
+      expect(style.fontSize).assertEqual('16.00fp');
+      expect(style.badgeSize).assertEqual('20.00fp');
       console.info('new Badge1 END');
       done();
     });

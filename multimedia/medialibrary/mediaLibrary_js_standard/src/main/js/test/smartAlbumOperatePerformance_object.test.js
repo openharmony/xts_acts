@@ -14,15 +14,16 @@
  */
 
 import mediaLibrary from '@ohos.multimedia.medialibrary';
+import featureAbility from '@ohos.ability.featureAbility'
 
-
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 
 describe('smartAlbumOperatePerformance_object.test.js', async function () {
-    console.info("mediaLibrary Instance before");
-    const media = mediaLibrary.getMediaLibrary();
-    console.info("mediaLibrary Instance after");
+    var context = featureAbility.getContext();
+    console.info('MediaLibraryTest : getMediaLibrary IN');
+    var media = mediaLibrary.getMediaLibrary(context);
+    console.info('MediaLibraryTest : getMediaLibrary OUT');
 
     let times = 50;
 
@@ -40,7 +41,7 @@ describe('smartAlbumOperatePerformance_object.test.js', async function () {
         console.info('MediaLibraryTest: afterAll');
     })
 
-    /*
+    /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATE_SMARTALBUM_PERFORMANCE_01
      * @tc.name      :  
      * @tc.desc      : 
@@ -51,7 +52,7 @@ describe('smartAlbumOperatePerformance_object.test.js', async function () {
 
     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_CREATE_SMARTALBUM_PERFORMANCE_01 begin');
     it('SUB_MEDIA_MEDIALIBRARY_CREATE_SMARTALBUM_PERFORMANCE_01', 0, async function (done) {
-        for(let i = 0; i < times; i++) {
+        for (let i = 0; i < times; i++) {
             console.info('MediaLibraryTest : createSmartAlbum begin :times: ' + i);
             const smartAlbum = await media.createSmartAlbum("laoxu886");
             if (smartAlbum != undefined) {

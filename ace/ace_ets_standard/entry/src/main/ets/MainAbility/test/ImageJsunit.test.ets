@@ -77,9 +77,6 @@ export default function imageJsunit() {
       console.log("image1 sourceSize" + JSON.stringify(obj.$attrs.sourceSize));
       console.log("image1 alt" + JSON.stringify(obj.$attrs.alt));
       expect(obj.$attrs.objectFit).assertEqual('ImageFit.Cover')
-      expect(obj.$attrs.fitOriginalSize).assertEqual('false')
-      expect(obj.$attrs.fillColor).assertEqual('0xCCCCCC')
-      expect(obj.$attrs.autoResize).assertEqual('false')
       expect(obj.$attrs.syncLoad).assertEqual('false')
       expect(obj.$attrs.objectRepeat).assertEqual('ImageRepeat.NoRepeat')
       expect(obj.$attrs.interpolation).assertEqual('ImageInterpolation.None')

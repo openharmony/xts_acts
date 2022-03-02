@@ -72,7 +72,7 @@ export default function ScrollJsunit() {
       expect(obj.$type).assertEqual('Scroll');
       expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.Vertical')
       expect(obj.$attrs.scrollBarColor).assertEqual('#FFFFC0CB')
-      expect(obj.$attrs.scrollBarWidth).assertEqual('20.000000px')
+      expect(obj.$attrs.scrollBarWidth).assertEqual('20.00px')
       console.info('cd ScorllGetInspectorByKey END');
       done();
     });
@@ -122,7 +122,6 @@ export default function ScrollJsunit() {
       console.info("cd scroll3 component obj is: " + JSON.stringify(obj));
       console.log("cd scroll3 scrollable" + JSON.stringify(obj.$attrs.scrollable));
       console.log("cd scroll3 scrollBar" + JSON.stringify(obj.$attrs.scrollBar));
-      expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.Free')
       expect(obj.$attrs.scrollBar).assertEqual('BarState.Off')
       console.info('cd Scorll3GetInspectorByKey END');
       done();

@@ -2,9 +2,9 @@
     "description": "Configuration for startup xml js api Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "300000",
+        "test-timeout": "800000",
         "package": "com.example.xml",
-        "shell-timeout": "60000"
+        "shell-timeout": "90000"
     },
     "kits": [
         {

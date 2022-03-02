@@ -18,8 +18,6 @@ group("bundlemanager") {
   if (is_standard_system) {
     deps = [
       "actsbmsaccesstokentest:ActsBmsAccessTokenTest",
-      "actsbmsallshortcutinfotest:ActsBmsAllShortcutInfoTest",
-      "actsbmscheckpermissiontest:ActsBmsCheckPermissionTest",
       "actsbmsgetinfostest:ActsBmsGetInfosTest",
       "actsbmshapmoduletest:ActsBmsHapModuleTest",
       "actsbmsjstest:ActsBmsJsTest",

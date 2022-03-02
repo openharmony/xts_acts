@@ -36,6 +36,7 @@ export default function rowJsunit() {
       }
       try {
         router.clear();
+	await sleep(1);
         let pages = router.getState();
         console.info("get Row state success " + JSON.stringify(pages));
         if (!("Row" == pages.name)) {

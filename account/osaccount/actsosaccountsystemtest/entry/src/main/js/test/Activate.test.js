@@ -16,7 +16,7 @@ import osaccount from '@ohos.account.osAccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 const TIMEOUT = 1000;
-const ERR_OSACCOUNT_KIT_ACTIVATE_OS_ACCOUNT_ERROR = 4587574;
+const ERR_OSACCOUNT_KIT_ACTIVATE_OS_ACCOUNT_ERROR = 4587571;
 describe('ActsOsAccountSystemTest', function () {
 
     /*
@@ -161,7 +161,6 @@ describe('ActsOsAccountSystemTest', function () {
         var isActiveHandred = await osAccountManager.isOsAccountActived(100);
         console.debug("====>localId: 100 isOsAccountActived:" + isActiveHandred);
         expect(isActiveHandred).assertFalse();
-        await osAccountManager.activateOsAccount(100);
         await osAccountManager.removeOsAccount(osLocalId);
         console.debug("====>ActsOsAccountActivate_0400 end====");
         done();

@@ -588,8 +588,8 @@ describe('deviceManagerTest', function() {
     })
 
     /*
-     * @tc.number  deviceManagerTest_authenticateDevice_0100
-     * @tc.name    testcase two for authenticateDevice in correct para 
+     * @tc.number  deviceManagerTest_verifyAuthInfo_0100
+     * @tc.name    testcase two for verifyAuthInfo in correct para 
      * @tc.desc    Function test
      * @tc.level   2
      */
@@ -618,13 +618,13 @@ describe('deviceManagerTest', function() {
     })
 
 /*
-     * @tc.number  deviceManagerTest_unauthenticateDevice_0100
-     * @tc.name    Pass in the normal deviceInfo、authParam,deviceType is UNKNOWN_TYPE
+     * @tc.number  deviceManagerTest_unAuthenticateDevice_0100
+     * @tc.name    Pass in the normal deviceInfo、authParam,deviceType is PHONE
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('deviceManagerTest_unauthenticateDevice_0100', 0, async function (done) {
-        console.log("----------start running deviceManagerTest_unauthenticateDevice_0100----------");
+    it('deviceManagerTest_unAuthenticateDevice_0100', 0, async function (done) {
+        console.log("----------start running deviceManagerTest_unAuthenticateDevice_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
                 expect().assertFail();
@@ -635,11 +635,10 @@ describe('deviceManagerTest', function() {
             })
         });
         async function dmUnAuthenticateDevice(){
-            var unknownType = 0;
             let deviceInfo = {
                 deviceId: "",
                 deviceName: "",
-                deviceType: unknownType
+                deviceType: PHONE
             }
             let extraInfo = {
                 "targetPkgName": 'com.ohos.devicemangagerdemo',
@@ -654,7 +653,7 @@ describe('deviceManagerTest', function() {
                 "appThumbnail": new Uint8Array([]),
                 "extraInfo": extraInfo
             }
-            var result = dmClass.unauthenticateDevice(deviceInfo, authParam, (err, data) => {
+            var result = dmClass.unAuthenticateDevice(deviceInfo, authParam, (err, data) => {
                 if (err) {
                     expect().assertFail();
                 }

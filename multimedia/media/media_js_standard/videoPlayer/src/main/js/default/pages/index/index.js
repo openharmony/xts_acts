@@ -14,7 +14,6 @@
  */
 
 import {Core, ExpectExtend} from 'deccjsunit/index'
-import Fileio from '@ohos.fileio'
 
 export default {
     data: {
@@ -34,10 +33,15 @@ export default {
         const configService = core.getDefaultService('config')
         this.timeout = 60000
         configService.setConfig(this)
-        //this.onload()
-        require('../../../test/List.test')
-        core.execute()
+        setTimeout(function() {
+            require('../../../test/List.test')
+            core.execute()
+        }, 2000)
     },
     onReady() {
     },
+    LoadXcomponent() {
+        globalThis.value = this.$element('XcomponentId').getComponentSurfaceId()
+    },
+
 }

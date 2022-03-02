@@ -12,25 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import featureAbility from '@ohos.ability.featureability'
+import featureAbility from '@ohos.ability.featureAbility'
 import wantConstant from '@ohos.ability.wantConstant'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 describe('ActsGetWantTest', function () {
     beforeAll(async (done) => {
-        await featureAbility.startAbility(
-            {
-                want:
-                {
-                    deviceId: "",
-                    bundleName: "com.ohos.launcher",
-                    abilityName: "com.ohos.launcher.MainAbility",
-                    action: "action1",
-                    parameters:
-                        {},
-                },
-            },
-        );
+        console.info('ActsGetWantTest begin')
         done();
     })
 
@@ -1011,7 +999,7 @@ describe('ActsGetWantTest', function () {
                         mykey2: "[1, 2, 3]",
                         mykey3: "str",
                         mykey4: [false, true, false],
-                        mykey5: ["str", "!@#$%", "helloopenharmony"],
+                        mykey5: ["str", "test123", "helloopenharmony"],
                     },
                 },
             },
@@ -1045,7 +1033,7 @@ describe('ActsGetWantTest', function () {
         expect(data.want.parameters.mykey4[1]).assertEqual(true);
         expect(data.want.parameters.mykey4[2]).assertEqual(false);
         expect(data.want.parameters.mykey5[0]).assertEqual("str");
-        expect(data.want.parameters.mykey5[1]).assertEqual("!@#$%");
+        expect(data.want.parameters.mykey5[1]).assertEqual("test123");
         expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
         console.info('====> before done=====>')
     }

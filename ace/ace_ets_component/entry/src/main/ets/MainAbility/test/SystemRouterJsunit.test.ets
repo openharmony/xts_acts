@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
-import events_emitter from '@ohos.emitter';
+import events_emitter from '@ohos.events.emitter';
 
 export default function systemRouterJsunit() {
   describe('systemRouterTest', function () {
@@ -34,7 +34,7 @@ export default function systemRouterJsunit() {
         expect(pages.name).assertEqual('systemRouterA');
         expect(pages.path).assertEqual('pages/');
       } catch (err) {
-        console.error("[systemRouterTest001] push page error " + JSON.stringify(result));
+        console.error("[systemRouterTest001] push page error: " + err);
       }
       await Utils.sleep(2000);
       done();

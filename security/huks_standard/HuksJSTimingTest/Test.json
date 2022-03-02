@@ -2,7 +2,7 @@
     "description": "Configuration for js timing test",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "1200000",
+        "test-timeout": "900000",
         "package": "com.example.huksjstiming",
         "shell-timeout": "60000"
     },

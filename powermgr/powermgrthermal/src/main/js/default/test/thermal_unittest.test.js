@@ -39,9 +39,9 @@ function test14() {
                 console.info("level is: " + level);
                 expect(level == -1).assertTrue();
                 resolve();
+                done();
             }, MSEC_1000 * 4);
         })
-        done();
     })
 }
 
@@ -55,13 +55,15 @@ function test15() {
         thermal.subscribeThermalLevel((level) => {
             console.info("level is: " + level);
             expect(level == -1).assertTrue();
+            done();
         })
         await new Promise((resolve, reject)=>{
             setTimeout(()=>{
-                thermal.unsubscribeThermalLevel();
+                thermal.unsubscribeThermalLevel(() => {
+                    console.info("unsubscribe successfully!");
+                });
                 resolve();
             }, MSEC_1000 * 4);
         })
-        done();
     })
 }

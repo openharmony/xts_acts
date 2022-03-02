@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import featureAbility from '@ohos.ability.featureability'
-import abilitymanager from '@ohos.app.abilitymanager'
+import featureAbility from '@ohos.ability.featureAbility'
+import abilityManager from '@ohos.app.abilityManager'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 var WeightReasonCode = {
@@ -53,32 +53,14 @@ var bundleNameList = [
 describe('ActsAmsTestSecondScene', function () {
     console.info('----ActsAmsTestSecondScene----');
     beforeAll(async function (done) {
-        await featureAbility.startAbility(
-            {
-                want:
-                {
-                    deviceId: "",
-                    bundleName: "com.ohos.launcher",
-                    abilityName: "com.ohos.launcher.MainAbility",
-                    action: "action1",
-                    entities: ["entity1"],
-                    type: "MIMETYPE",
-                    uri: "key={true,true,false}",
-                    options:
-                        {},
-                    parameters:
-                        {},
-                },
-            },
-        );
         var maxnum = 10;
-	 var flag = 1;
-        var data = await abilitymanager.queryRecentAbilityMissionInfos(maxnum, flag);
+	    var flag = 1;
+        var data = await abilityManager.queryRecentAbilityMissionInfos(maxnum, flag);
         console.log('queryRecentAbilityMissionInfos data  ' + JSON.stringify(data));
         for (var i = 0; i < data.length; i++) {
             if (data[i].baseAbility.bundleName != 'com.example.actsamstestsecondscene' &&
                 data[i].topAbility.bundleName != 'com.example.actsamstestsecondscene') {
-                var info = abilitymanager.removeMission(data[i].id);
+                var info = abilityManager.removeMission(data[i].id);
                 console.log(' removeMission data  [' + info + ']');
             }
         }
@@ -148,7 +130,7 @@ describe('ActsAmsTestSecondScene', function () {
         console.info("sleep begin");
         sleep(5000);
         console.info("sleep end");
-        var info = await abilitymanager.getAllRunningProcesses();
+        var info = await abilityManager.getAllRunningProcesses();
         console.info('Acts_Ams_test_1700  getAllRunningProcesses JSON String: ' + JSON.stringify(info));
         expect(Array.isArray(info)).assertEqual(true);
         expect(info.length).assertLarger(0);
@@ -184,8 +166,8 @@ describe('ActsAmsTestSecondScene', function () {
      */
     it('Acts_Ams_test_2700', 0, async function (done) {
         var maxnum = 20;
-        var result = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
-        var info = await abilitymanager.moveMissionToTop(result[0].id);
+        var result = await abilityManager.queryRunningAbilityMissionInfos(maxnum);
+        var info = await abilityManager.moveMissionToTop(result[0].id);
         console.info('Acts_Ams_test_2700 moveMissionToTop data  [' + info + ']');
         expect(info).assertEqual(0);
         done();
@@ -199,7 +181,7 @@ describe('ActsAmsTestSecondScene', function () {
      */
     it('Acts_Ams_test_1900', 0, async function (done) {
         var maxnum = 20;
-        var data = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
+        var data = await abilityManager.queryRunningAbilityMissionInfos(maxnum);
         console.info('queryRunningAbilityMissionInfos data length [' + data.length + ']');
         console.info('Acts_Ams_test_1900 queryRunningAbilityMissionInfos data  ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertEqual(true);
@@ -243,7 +225,7 @@ describe('ActsAmsTestSecondScene', function () {
     it('Acts_Ams_test_2100', 0, async function (done) {
         var maxnum = 20;
 	 var flag = 1;
-        var data = await abilitymanager.queryRecentAbilityMissionInfos(maxnum, flag);
+        var data = await abilityManager.queryRecentAbilityMissionInfos(maxnum, flag);
         console.info(' queryRecentAbilityMissionInfos data length [' + data.length + ']');
         console.info('Acts_Ams_test_2100 queryRecentAbilityMissionInfos data  ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertEqual(true);
@@ -285,7 +267,7 @@ describe('ActsAmsTestSecondScene', function () {
  * @tc.desc      : Get All Active Processes Info(by Promise)
  */
     it('Acts_Ams_test_8200', 0, async function (done) {
-        var info = await abilitymanager.getActiveProcessInfos();
+        var info = await abilityManager.getActiveProcessInfos();
         console.info('Acts_Ams_test_8200 getActiveProcessInfos JSON String: ' + JSON.stringify(info));
         expect(Array.isArray(info)).assertEqual(true);
         expect(info.length).assertLarger(0);
@@ -312,7 +294,7 @@ describe('ActsAmsTestSecondScene', function () {
      */
     it('Acts_Ams_test_9200', 0, async function (done) {
         var upperLimit = 20;
-        var data = await abilitymanager.getActiveAbilityMissionInfos(upperLimit);
+        var data = await abilityManager.getActiveAbilityMissionInfos(upperLimit);
         console.info('Acts_Ams_test_9200 getActiveAbilityMissionInfos data ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertEqual(true);
         expect(data.length).assertEqual(3);
@@ -361,7 +343,7 @@ describe('ActsAmsTestSecondScene', function () {
      */
     it('Acts_Ams_test_10200', 0, async function (done) {
         var upperLimit = 20;
-        var data = await abilitymanager.getPreviousAbilityMissionInfos(upperLimit);
+        var data = await abilityManager.getPreviousAbilityMissionInfos(upperLimit);
         console.info('Acts_Ams_test_10200 getPreviousAbilityMissionInfos data ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertEqual(true);
         expect(data.length).assertEqual(3);
@@ -410,8 +392,8 @@ describe('ActsAmsTestSecondScene', function () {
  */
     it('Acts_Ams_test_11200', 0, async function (done) {
         var maxnum = 20;
-        var result = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
-        var info = await abilitymanager.deleteMissions([result[0].id]);
+        var result = await abilityManager.queryRunningAbilityMissionInfos(maxnum);
+        var info = await abilityManager.deleteMissions([result[0].id]);
         console.info('Acts_Ams_test_11200 deleteMissions data  [' + info + ']');
         expect(info).assertEqual(0);
         done();
@@ -425,8 +407,8 @@ describe('ActsAmsTestSecondScene', function () {
      */
     it('Acts_Ams_test_2300', 0, async function (done) {
         var maxnum = 20;
-        var result = await abilitymanager.queryRunningAbilityMissionInfos(maxnum);
-        var info = await abilitymanager.removeMission(result[0].id);
+        var result = await abilityManager.queryRunningAbilityMissionInfos(maxnum);
+        var info = await abilityManager.removeMission(result[0].id);
         console.info('Acts_Ams_test_2300 removeMission data  [' + info + ']');
         expect(info).assertEqual(0);
         done();
@@ -439,7 +421,7 @@ describe('ActsAmsTestSecondScene', function () {
      * @tc.desc      : Kill Processes By BundleName(by Promise)
      */
     it('Acts_Ams_test_3100', 0, async function (done) {
-        var info = await abilitymanager.killProcessesByBundleName('XXXXXXXXXXXX');
+        var info = await abilityManager.killProcessesByBundleName('XXXXXXXXXXXX');
         console.info('Acts_Ams_test_3100 killProcessesByBundleName data  [' + info + ']');
         expect(info).assertEqual(2097215);
         done();

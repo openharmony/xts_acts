@@ -246,11 +246,10 @@ describe('AudioDecoderFunc', function () {
     afterEach(async function() {
         console.info('afterEach case');
         if (audioDecodeProcessor != null) {
-            audioDecodeProcessor.release((err) => {
-                expect(err).assertUndefined();
-                console.log("case release success");
+            await audioDecodeProcessor.release().then(() => {
+                console.info('audioDecodeProcessor release success');
                 audioDecodeProcessor = null;
-            })
+            }, failCallback).catch(failCatch);
         }
     })
 
@@ -272,6 +271,8 @@ describe('AudioDecoderFunc', function () {
         timestamp = 0;
         sawInputEOS = false;
         sawOutputEOS = false;
+        inputQueue = [];
+        outputQueue = [];
     }
 
     function writeFile(path, buf, len){
@@ -310,6 +311,7 @@ describe('AudioDecoderFunc', function () {
     }
 
     async function resetWork() {
+        resetParam();
         audioDecodeProcessor.reset((err) => {
             expect(err).assertUndefined();
             console.info("case reset success");
@@ -324,6 +326,8 @@ describe('AudioDecoderFunc', function () {
     }
 
     async function flushWork() {
+        inputQueue = [];
+        outputQueue = [];
         audioDecodeProcessor.flush((err) => {
             expect(err).assertUndefined();
             console.info("case flush at inputeos success");
@@ -337,6 +341,7 @@ describe('AudioDecoderFunc', function () {
         audioDecodeProcessor.stop((err) => {
             expect(err).assertUndefined();
             console.info("case stop success");
+            resetParam();
             audioDecodeProcessor.reset((err) => {
                 expect(err).assertUndefined();
                 console.log("case reset success");
@@ -397,7 +402,9 @@ describe('AudioDecoderFunc', function () {
                     await flushWork();
                 } else if (workdoneAtEOS) {
                     await doneWork(done);
-                } else {}
+                } else {
+                    console.info("saw output EOS");
+                }
             }
             else{
                 writeFile(savepath, outputobject.data, outputobject.length);
@@ -640,6 +647,8 @@ describe('AudioDecoderFunc', function () {
             })
         });
         eventEmitter.on('flush', () => {
+            inputQueue = [];
+            outputQueue = [];
             audioDecodeProcessor.flush((err) => {
                 expect(err).assertUndefined();
                 console.info(`case flush after 2s`);
@@ -771,6 +780,7 @@ describe('AudioDecoderFunc', function () {
             })
         });
         eventEmitter.on('reset', () => {
+            resetParam();
             audioDecodeProcessor.reset((err) => {
                 expect(err).assertUndefined();
                 console.info(`case reset 1`);

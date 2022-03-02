@@ -86,11 +86,12 @@ describe("SensorJsTest", function () {
                         reject(err);
                     }, 500);
                 } else {
-                    console.info('SensorRotationVectorJSTest001  on  success, x: ' 
-                        + data.x + "y: " + data.y + "z: " + data.z);
+                    console.info('SensorRotationVectorJSTest001  on  success, x: '
+                        + data.x + "y: " + data.y + "z: " + data.z + "w: " + data.w);
                     expect(typeof (data.x)).assertEqual("number");
                     expect(typeof (data.y)).assertEqual("number");
                     expect(typeof (data.z)).assertEqual("number");
+                    expect(typeof (data.w)).assertEqual("number");
                     setTimeout(() => {
                         resolve();
                     }, 500);
@@ -117,11 +118,12 @@ describe("SensorJsTest", function () {
                 console.info('SensorRotationVectorJSTest005  once error');
                 expect(false).assertTrue();
             } else {
-                console.info('SensorRotationVectorJSTest005  on  success, x: ' 
-                    + data.x + "y: " + data.y + "z: " + data.z);
+                console.info('SensorRotationVectorJSTest005  on  success, x: '
+                    + data.x + "y: " + data.y + "z: " + data.z + "w: " + data.w);
                 expect(typeof (data.x)).assertEqual("number");
                 expect(typeof (data.y)).assertEqual("number");
                 expect(typeof (data.z)).assertEqual("number");
+                expect(typeof (data.w)).assertEqual("number");
             }
             setTimeout(() => {
                 done();

@@ -36,6 +36,7 @@ export default function listJsunit() {
       }
       try {
         router.clear();
+	await sleep(1);
         let pages = router.getState();
         console.info("get List state success " + JSON.stringify(pages));
         if (!("List" == pages.name)) {

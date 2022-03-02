@@ -13,6 +13,6 @@
  * limitations under the License.
  */
 require('./VideoRecorderFuncPromiseTest.test.js')
-require('./VideoRecorderFuncCallbackTest.test.js')
 require('./VideoRecorderAPICallbackTest.test.js')
+require('./VideoRecorderFuncCallbackTest.test.js')
 require('./VideoRecorderEnumTest.test.js')

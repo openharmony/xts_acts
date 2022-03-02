@@ -257,14 +257,13 @@ describe('AudioDecoderReliabilityCallback', function () {
         ES_LENGTH = 500;
     })
 
-    afterEach(function() {
+    afterEach(async function() {
         console.info('afterEach case');
         if (audioDecodeProcessor != null) {
-            audioDecodeProcessor.release((err) => {
-                expect(err).assertUndefined();
-                console.log("case release success");
+            await audioDecodeProcessor.release().then(() => {
+                console.info('audioDecodeProcessor release success');
                 audioDecodeProcessor = null;
-            })
+            }, failCallback).catch(failCatch);
         }
     })
 
@@ -283,6 +282,8 @@ describe('AudioDecoderReliabilityCallback', function () {
         timestamp = 0;
         sawInputEOS = false;
         sawOutputEOS = false;
+        inputQueue = [];
+        outputQueue = [];
     }
 
     function createAudioDecoder(savepath, mySteps, done) {
@@ -328,6 +329,7 @@ describe('AudioDecoderReliabilityCallback', function () {
         audioDecodeProcessor.stop((err) => {
             expect(err).assertUndefined();
             console.info("case stop success");
+            resetParam();
             audioDecodeProcessor.reset((err) => {
                 expect(err).assertUndefined();
                 console.log("case reset success");
@@ -398,6 +400,8 @@ describe('AudioDecoderReliabilityCallback', function () {
             case FLUSH:
                 mySteps.shift();
                 console.info(`case to flush`);
+                inputQueue = [];
+                outputQueue = [];
                 audioDecodeProcessor.flush((err) => {
                     expect(err).assertUndefined();
                     console.info(`case flush 1`);
@@ -422,6 +426,7 @@ describe('AudioDecoderReliabilityCallback', function () {
             case RESET:
                 mySteps.shift();
                 console.info(`case to reset`);
+                resetParam();
                 audioDecodeProcessor.reset((err) => {
                     expect(err).assertUndefined();
                     console.info(`case reset 1`);

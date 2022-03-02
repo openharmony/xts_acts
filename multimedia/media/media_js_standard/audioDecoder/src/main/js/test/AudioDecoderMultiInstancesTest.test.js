@@ -78,6 +78,8 @@ describe('AudioDecoderMultiInstances', function () {
         timestamp = 0;
         sawInputEOS = false;
         sawOutputEOS = false;
+        inputQueue = [];
+        outputQueue = [];
     }
 
     function writeFile(path, buf, len) {
@@ -114,6 +116,7 @@ describe('AudioDecoderMultiInstances', function () {
     }
 
     async function resetWork(audioDecodeProcessor) {
+        resetParam();
         await audioDecodeProcessor.reset().then(() => {
             console.info("case reset success");
             if (needrelease) {
@@ -123,6 +126,8 @@ describe('AudioDecoderMultiInstances', function () {
     }
 
     async function flushWork(audioDecodeProcessor) {
+        inputQueue = [];
+        outputQueue = [];
         await audioDecodeProcessor.flush().then(() => {
             console.info("case flush at inputeos success");
             resetParam();
@@ -135,6 +140,7 @@ describe('AudioDecoderMultiInstances', function () {
         await audioDecodeProcessor.stop().then(() => {
             console.info("case stop success");
         }, failCallback).catch(failCatch);
+        resetParam();
         await audioDecodeProcessor.reset().then(() => {
             console.info("case reset success");
         }, failCallback).catch(failCatch);
@@ -188,7 +194,9 @@ describe('AudioDecoderMultiInstances', function () {
                 } else if (workdoneAtEOS) {
                     await doneWork(audioDecodeProcessor);
                     done();
-                } else {}
+                } else {
+                    console.info("saw output EOS");
+                }
             }
             else{
                 writeFile(savapath, outputobject.data, outputobject.length);
@@ -251,6 +259,7 @@ describe('AudioDecoderMultiInstances', function () {
         console.info('case has created 16 decoders');
         console.info('case array: ' + array);
         for (let j = 0; j < 16; j++) {
+            resetParam();
             await array[j].reset().then(() => {
                 console.info("reset decoder " + j);
             }, failCallback).catch(failCatch);

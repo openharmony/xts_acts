@@ -1,5 +1,5 @@
 {
-    "description": "Configuration for sensor js api Tests",
+    "description": "Configuration for miscdevice js api Tests",
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "160000",
@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsSensorJSApiTest.hap"
+                "ActsmiscdeviceJSApiTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

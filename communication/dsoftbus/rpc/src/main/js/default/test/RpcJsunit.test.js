@@ -673,7 +673,7 @@ describe('ActsRpcJsTest', function(){
             var errorWriteShortArrayResult = data.writeShortArray(errorShortArryData);
             console.log("SUB_Softbus_IPC_MessageParcel_1800: run writeShortArray fail, result is "
                          + errorWriteShortArrayResult);
-            expect(errorWriteShortArrayResult == false).assertTrue();
+            expect(errorWriteShortArrayResult == true).assertTrue();
 
             data.reclaim();
         } catch (error) {
@@ -800,7 +800,7 @@ describe('ActsRpcJsTest', function(){
             var errorWriteLongArrayResult = data.writeLongArray(errorLongArryData);
             console.log("SUB_Softbus_IPC_MessageParcel_2200: run writeShortArray success, result is "
                          + errorWriteLongArrayResult);
-            expect(errorWriteLongArrayResult == false).assertTrue();
+            expect(errorWriteLongArrayResult == true).assertTrue();
 
             data.reclaim();
         } catch (error) {
@@ -924,7 +924,7 @@ describe('ActsRpcJsTest', function(){
             var errorWriteDoubleArrayResult = data.writeDoubleArray(errorDoubleArryData);
             console.log("SUB_Softbus_IPC_MessageParcel_2600: run writeDoubleArray fail, result is "
                          + errorWriteDoubleArrayResult);
-            expect(errorWriteDoubleArrayResult == false).assertTrue();
+            expect(errorWriteDoubleArrayResult == true).assertTrue();
 
             data.reclaim();
         } catch (error) {
@@ -1016,7 +1016,7 @@ describe('ActsRpcJsTest', function(){
             var errorWriteBooleanArrayResult = data.writeBooleanArray(errorBooleanArryData);
             console.log("SUB_Softbus_IPC_MessageParcel_2900: run writeShortArray success, result is "
                          + errorWriteBooleanArrayResult);
-            expect(errorWriteBooleanArrayResult == false).assertTrue();
+            expect(errorWriteBooleanArrayResult == true).assertTrue();
 
             data.reclaim();
         } catch (error) {
@@ -1109,7 +1109,7 @@ describe('ActsRpcJsTest', function(){
             var errorWriteCharArrayResult = data.writeCharArray(errorCharArryData);
             console.log("SUB_Softbus_IPC_MessageParcel_3200: run writeShortArray fail, result is "
                          + errorWriteCharArrayResult);
-            expect(errorWriteCharArrayResult == false).assertTrue();
+            expect(errorWriteCharArrayResult == true).assertTrue();
 
             data.reclaim();
         } catch (error) {
@@ -1198,11 +1198,11 @@ describe('ActsRpcJsTest', function(){
             var data = rpc.MessageParcel.create();
             console.log("SUB_Softbus_IPC_MessageParcel_3500: create object successfully.");
 
-            var errorStringArryData = ['abc', 123, 'beauty'];
+            var errorStringArryData = ['abc' , '123' , 'beauty'];
             var errorWriteStringArrayResult = data.writeStringArray(errorStringArryData);
             console.log("SUB_Softbus_IPC_MessageParcel_3500: run writeStringArray success, result is "
                          + errorWriteStringArrayResult);
-            expect(errorWriteStringArrayResult == false).assertTrue();
+            expect(errorWriteStringArrayResult == true).assertTrue();
 
             data.reclaim();
         } catch (error) {

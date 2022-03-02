@@ -75,7 +75,17 @@
           "pages/Prop",
           "pages/Link",
           "pages/AppStorage",
-          "pages/Video"
+          "pages/Video",
+		  "pages/components/Marquee",
+          "pages/components/Path",
+          "pages/components/PatternLock",
+          "pages/components/Polygon",
+          "pages/components/Polyline",
+          "pages/components/Rect",
+          "pages/components/RichText",
+          "pages/components/Select",
+          "pages/components/Shape",
+          "pages/components/Sidebar"
         ],
         "name": ".MainAbility",
         "window": {

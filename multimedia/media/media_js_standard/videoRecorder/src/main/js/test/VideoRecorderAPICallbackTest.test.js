@@ -19,8 +19,8 @@ import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('VideoRecorderAPICallbackTest', function () {
-    const RECORDER_TIME = 2000;
-    const PAUSE_TIME = 2000;
+    const RECORDER_TIME = 3000;
+    const PAUSE_TIME = 1000;
     const END_EVENT = 'end';
     const CREATE_EVENT = 'create';
     const PREPARE_EVENT = 'prepare';
@@ -43,7 +43,7 @@ describe('VideoRecorderAPICallbackTest', function () {
     let captureSession;
     let videoOutput;
     let surfaceID;
-
+    let fdPath;
     let events = require('events');
     let eventEmitter = new events.EventEmitter();
 
@@ -96,7 +96,9 @@ describe('VideoRecorderAPICallbackTest', function () {
         for(let t = Date.now();Date.now() - t <= time;);
     }
 
-    beforeAll(function () {
+    beforeAll(async function () {
+        await initCamera();
+        await getFd('API.mp4');
         console.info('beforeAll case');
     })
 
@@ -109,9 +111,42 @@ describe('VideoRecorderAPICallbackTest', function () {
         console.info('afterEach case');
     })
 
-    afterAll(function () {
+    afterAll(async function () {
+        await closeFd();
         console.info('afterAll case');
     })
+
+    async function getFd(pathName) {
+        let displayName = pathName;
+        const mediaTest = mediaLibrary.getMediaLibrary();
+        let fileKeyObj = mediaLibrary.FileKey;
+        let mediaType = mediaLibrary.MediaType.VIDEO;
+        let publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
+        let dataUri = await mediaTest.createAsset(mediaType, displayName, publicPath);
+        if (dataUri != undefined) {
+            let args = dataUri.id.toString();
+            let fetchOp = {
+                selections : fileKeyObj.ID + "=?",
+                selectionArgs : [args],
+            }
+            let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
+            let fileAsset = await fetchFileResult.getAllObject();
+            let fdNumber = await fileAsset[0].open('Rw');
+            fdPath = "fd://" + fdNumber.toString();
+        }
+    }
+
+    async function closeFd() {
+        if (fileAsset != null) {
+            await fileAsset[0].close(fdNumber).then(() => {
+                console.info('[mediaLibrary] case close fd success');
+            }).catch((err) => {
+                console.info('[mediaLibrary] case close fd failed');
+            });
+        } else {
+            console.info('[mediaLibrary] case fileAsset is null');
+        }
+    }
 
     async function initCamera() {
         cameraManager = await camera.getCameraManager(null);
@@ -386,7 +421,7 @@ describe('VideoRecorderAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0100', 0, async function (done) {
-        await initCamera();
+        videoConfig.url = fdPath;
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
@@ -403,7 +438,7 @@ describe('VideoRecorderAPICallbackTest', function () {
     it('SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0200', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
-            START_EVENT, PREPARE_EVENT, ERROR_EVENT, CLOSE_STREAM, RELEASE_EVENT, END_EVENT);
+            START_EVENT, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -434,7 +469,7 @@ describe('VideoRecorderAPICallbackTest', function () {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, SETPAUSE, PAUSE_EVENT, SETPAUSE, SETSTART, RESUME_EVENT,
-            PREPARE_EVENT, ERROR_EVENT, CLOSE_STREAM, RELEASE_EVENT, END_EVENT);
+            PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -464,7 +499,7 @@ describe('VideoRecorderAPICallbackTest', function () {
     it('SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0600', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
-            START_EVENT, RESET_EVENT, CLOSE_STREAM, PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
+            START_EVENT, CLOSE_STREAM, RESET_EVENT, PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -523,7 +558,7 @@ describe('VideoRecorderAPICallbackTest', function () {
     it('SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0200', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
-            START_EVENT, CLOSE_STREAM, RELEASE_EVENT, END_EVENT);
+            START_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -538,7 +573,7 @@ describe('VideoRecorderAPICallbackTest', function () {
     it('SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0300', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
-            START_EVENT, SETPAUSE, PAUSE_EVENT, START_EVENT, ERROR_EVENT, CLOSE_STREAM, RELEASE_EVENT, END_EVENT);
+            START_EVENT, SETPAUSE, PAUSE_EVENT, START_EVENT, ERROR_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -554,7 +589,7 @@ describe('VideoRecorderAPICallbackTest', function () {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, SETPAUSE, PAUSE_EVENT, SETPAUSE, SETSTART, RESUME_EVENT,
-            START_EVENT, CLOSE_STREAM, RELEASE_EVENT, END_EVENT);
+            START_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -599,7 +634,7 @@ describe('VideoRecorderAPICallbackTest', function () {
     it('SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0700', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
-            START_EVENT, CLOSE_STREAM, RELEASE_EVENT, END_EVENT);
+            START_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -614,7 +649,7 @@ describe('VideoRecorderAPICallbackTest', function () {
     it('SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0800', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
-            START_EVENT, START_EVENT, START_EVENT, CLOSE_STREAM, RELEASE_EVENT, END_EVENT);
+            START_EVENT, START_EVENT, START_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -776,7 +811,7 @@ describe('VideoRecorderAPICallbackTest', function () {
     it('SUB_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0300', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
-            START_EVENT, RESUME_EVENT, CLOSE_STREAM, RELEASE_EVENT, END_EVENT);
+            START_EVENT, RESUME_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -792,7 +827,7 @@ describe('VideoRecorderAPICallbackTest', function () {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, SETPAUSE, PAUSE_EVENT, SETPAUSE, SETSTART,
-            RESUME_EVENT, CLOSE_STREAM, RELEASE_EVENT, END_EVENT);
+            RESUME_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -853,7 +888,7 @@ describe('VideoRecorderAPICallbackTest', function () {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, SETPAUSE, PAUSE_EVENT, SETPAUSE, SETSTART,
-            RESUME_EVENT, RESUME_EVENT, RESUME_EVENT, CLOSE_STREAM, RELEASE_EVENT, END_EVENT);
+            RESUME_EVENT, RESUME_EVENT, RESUME_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -1134,7 +1169,7 @@ describe('VideoRecorderAPICallbackTest', function () {
     it('SUB_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0300', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM, START_EVENT,
-            GETSURFACE_EVENT, CLOSE_STREAM, RELEASE_EVENT, END_EVENT);
+            GETSURFACE_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -1149,7 +1184,7 @@ describe('VideoRecorderAPICallbackTest', function () {
     it('SUB_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0400', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM, START_EVENT,
-            SETPAUSE, PAUSE_EVENT, GETSURFACE_EVENT, CLOSE_STREAM, RELEASE_EVENT, END_EVENT);
+            SETPAUSE, PAUSE_EVENT, GETSURFACE_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -1165,7 +1200,7 @@ describe('VideoRecorderAPICallbackTest', function () {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM, START_EVENT,
             SETPAUSE, PAUSE_EVENT, SETPAUSE, SETSTART, RESUME_EVENT, GETSURFACE_EVENT,
-            CLOSE_STREAM, RELEASE_EVENT, END_EVENT);
+            RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 

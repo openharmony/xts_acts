@@ -39,6 +39,8 @@ _all_test_packages = [
   "${ACTS_ROOT}/resourceschedule:resourceschedule",
   "${ACTS_ROOT}/telephony:telephony",
   "${ACTS_ROOT}/hiviewdfx:hiviewdfxtestacts",
+  "${ACTS_ROOT}/location:location",
+  "${ACTS_ROOT}/settingsdata:settingsdata",
 ]
 
 _all_test_packages_ivi = [

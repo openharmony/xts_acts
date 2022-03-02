@@ -14,9 +14,9 @@
  */
 import rpc from "@ohos.rpc";
 let mMyStub;
-import particleAbility from '@ohos.ability.particleability'
+import particleAbility from '@ohos.ability.particleAbility'
 import featureAbility from '@ohos.ability.featureAbility'
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 var server_bundleName = "com.amsst.stserviceabilityserver";
 var server_abilityName = "com.amsst.stserviceabilityserver.MainAbility";
 var mConnIdJs;

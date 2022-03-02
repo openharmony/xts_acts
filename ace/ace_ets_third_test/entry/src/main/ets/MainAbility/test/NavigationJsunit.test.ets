@@ -70,7 +70,6 @@ export default function navigationJsunit() {
       console.info("[navigation1] get inspector value is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Navigation')
       expect(obj.$attrs.title).assertEqual('title')
-      expect(obj.$attrs.subtitle).assertEqual('subtitle')
       expect(obj.$attrs.hideBackButton).assertFalse()
       expect(obj.$attrs.hideTitleBar).assertFalse()
       console.info('testNavigation010 End');

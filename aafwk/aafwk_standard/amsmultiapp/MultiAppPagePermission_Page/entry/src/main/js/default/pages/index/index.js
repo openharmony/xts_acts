@@ -17,7 +17,7 @@ import {Core, ExpectExtend} from 'deccjsunit/index'
 
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 
 export default {
     data: {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import featureAbility from '@ohos.ability.featureability'
+import featureAbility from '@ohos.ability.featureAbility'
 
 var globalWant;
 export default {
@@ -30,15 +30,32 @@ export default {
             (err, data) => {
                 globalWant = data;
                 console.debug("==========data=" + JSON.stringify(globalWant));
-                setTimeout(function(){
-                    console.debug("==========data1 bundleName is===========" + JSON.stringify(globalWant.bundleName));
-                    var promise = featureAbility.terminateSelfWithResult(
-                        {
-                            resultCode: 1,
-                            want: globalWant
-                        }
-                    );
-                },1000);
+                if (globalWant.parameters.mykey5[1] == 'test123'){
+                    featureAbility.getWant().then((data) =>{
+                        globalWant = data
+                        setTimeout(function(){
+                            console.debug("==========data2 bundleName is==========="
+                                           + JSON.stringify(globalWant.bundleName));
+                            var promise = featureAbility.terminateSelfWithResult(
+                                {
+                                    resultCode: 1,
+                                    want: globalWant
+                                }
+                            );
+                        },1000);
+                    })
+                }else{
+                    setTimeout(function(){
+                        console.debug("==========data1 bundleName is==========="
+                                       + JSON.stringify(globalWant.bundleName));
+                        var promise = featureAbility.terminateSelfWithResult(
+                            {
+                                resultCode: 1,
+                                want: globalWant
+                            }
+                        );
+                    },1000);
+                }
             }
         )
     },

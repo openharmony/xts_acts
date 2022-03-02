@@ -36,6 +36,7 @@ export default function datapanelJsunit() {
       }
       try {
         router.clear();
+	await sleep(1);
         let pages = router.getState();
         console.info("get DataPanel state success " + JSON.stringify(pages));
         if (!("DataPanel" == pages.name)) {
@@ -74,7 +75,6 @@ export default function datapanelJsunit() {
       console.log("panel closeEffect" + JSON.stringify(obj.$attrs.closeEffect))
       expect(obj.$attrs.closeEffect).assertEqual("false")
       expect(obj.$type).assertEqual("DataPanel")
-      expect(obj.$attrs.DataPanelType).assertEqual("Line")
       expect(JSON.stringify(obj.$attrs.values)).assertEqual('[20,40,20]')
       expect(obj.$attrs.max).assertEqual(100.000000.toFixed(6))
       console.info('cd dataPanelInspectorByKey END');

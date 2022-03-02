@@ -37,6 +37,7 @@ export default function tabJsunit() {
       }
       try {
         router.clear();
+	await sleep(1);
         let pages = router.getState();
         console.info("get Tab state success " + JSON.stringify(pages));
         if (!("Tab" == pages.name)) {

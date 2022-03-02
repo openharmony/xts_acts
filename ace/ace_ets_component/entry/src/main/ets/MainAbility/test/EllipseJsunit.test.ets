@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.emitter'
+import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function ellipseJsunit() {
@@ -36,7 +36,7 @@ export default function ellipseJsunit() {
           console.info("push ellipse page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push ellipse page error:" + JSON.stringify(result));
+        console.error("push ellipse page error:" + err);
       }
       done()
     });

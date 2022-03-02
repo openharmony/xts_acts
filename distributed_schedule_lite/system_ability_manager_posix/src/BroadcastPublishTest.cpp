@@ -22,6 +22,7 @@
 using namespace testing::ext;
 
 static const int16 TEST_LEN = 10;
+static const int16 WAIT_LEN = 5;
 static const char *BROADCASR_TEST_SERVICE = "S_broadcast2";
 
 static void C1Callback(Consumer *consumer, const Topic *topic, const Request *request)
@@ -107,6 +108,7 @@ protected:
     {
         printf("[hcpptest]SetUpTestCase ! \n");
         SystemInitProxy();
+        sleep(WAIT_LEN);
     }
     // TearDownTestCase: Testsuit teardown, run after last testcase
     static void TearDownTestCase(void)

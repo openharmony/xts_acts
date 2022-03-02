@@ -52,6 +52,12 @@
                 "touch /data/media/40.mp4",
                 "touch /data/media/41.mp4",
                 "touch /data/media/42.mp4",
+                "touch /data/media/43.mp4",
+                "touch /data/media/44.mp4",
+                "touch /data/media/45.mp4",
+                "touch /data/media/46.mp4",
+                "touch /data/media/47.mp4",
+                "touch /data/media/48.mp4",
                 "touch /data/media/API.mp4",
                 "chmod -R 777 /data/media",
                 "setenforce 0"
