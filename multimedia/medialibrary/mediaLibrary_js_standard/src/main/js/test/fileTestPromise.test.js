@@ -41,17 +41,18 @@ let filesfetchOp = {
     selectionArgs: [fileType.toString()],
 };
 
-function checkAssetAttr(done, attr, testNum, asset, checkType) {
+function checkAssetAttr(done, attr, test_num, asset, checkType) {
     if (checkType && asset[attr] != checkType) {
-        console.info(`MediaLibraryTest : ASSET_PROMISE getFileAssets ${testNum} failed`);
+        console.info(`MediaLibraryTest : ASSET_PROMISE getFileAssets ${test_num} failed`);
         expect(false).assertTrue();
         done();
     } else if (asset[attr] == undefined) {
-        console.info(`MediaLibraryTest : ASSET_PROMISE getFileAssets ${testNum} failed`);
+        console.info(`MediaLibraryTest : ASSET_PROMISE getFileAssets ${test_num} failed`);
         expect(false).assertTrue();
         done();
     }
 }
+
 describe('file.promise.test.js', function () {
     var context = featureAbility.getContext();
     console.info('MediaLibraryTest : getMediaLibrary IN');
@@ -84,7 +85,7 @@ describe('file.promise.test.js', function () {
             const fileAssets = await media.getFileAssets(imagesfetchOp);
             const dataList = await fileAssets.getAllObject();
             const asset1 = dataList[0];
-            const creatAsset1 = await media.createAsset(imageType, 'image01.jpg', path);
+            const creatAsset1 = await media.createAsset(imageType, 'image03.jpg', path);
             const fd1 = await asset1.open('rw');
             const creatAssetFd1 = await creatAsset1.open('rw');
             await copyFile(fd1, creatAssetFd1);
@@ -92,7 +93,7 @@ describe('file.promise.test.js', function () {
             await asset1.close(fd1);
 
             const asset2 = dataList[1];
-            const creatAsset2 = await media.createAsset(imageType, 'image02.jpg', path);
+            const creatAsset2 = await media.createAsset(imageType, 'image04.jpg', path);
             const fd2 = await asset2.open('rw');
             const creatAssetFd2 = await creatAsset2.open('rw');
             await copyFile(fd2, creatAssetFd2);
@@ -248,15 +249,16 @@ describe('file.promise.test.js', function () {
             const fileAssets = await media.getFileAssets(imagesfetchOp);
             const dataList = await fileAssets.getAllObject();
             const asset = dataList[0];
-            asset.displayName = 'hhhhhh';
-            asset.commitModify();
+            asset.title = `title_${new Date().getTime()}`;
+            await asset.commitModify();
             const id = asset.id;
-            const idOP = { selections: fileKeyObj.ID + '= ?', selectionArgs: ["" + id] };
+            const idOP = { selections: fileKeyObj.ID + '= ?', selectionArgs: ['' + id] };
             const newAssets = await media.getFileAssets(idOP);
             const newdataList = await newAssets.getAllObject();
             const newAsset = newdataList[0];
-            if(newAsset.dateModified != undefined) {
-                if (newAsset.dateModified != asset.dateModified ) {
+
+            if (asset.dateModified != undefined) {
+                if (newAsset.dateModified != asset.dateModified) {
                     console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_07 passed');
                     expect(true).assertTrue();
                     done();
@@ -266,9 +268,15 @@ describe('file.promise.test.js', function () {
                     done();
                 }
             } else {
-                console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_07 failed');
-                expect(false).assertTrue();
-                done();
+                if (newAsset.dateModified != undefined) {
+                    console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_07 passed');
+                    expect(true).assertTrue();
+                    done();
+                } else {
+                    console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_07 failed');
+                    expect(false).assertTrue();
+                    done();
+                }
             }
         } catch (error) {
             console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 001_07 failed, message = ' + error);
@@ -447,7 +455,7 @@ describe('file.promise.test.js', function () {
             const fileAssets = await media.getFileAssets(videosfetchOp);
             const dataList = await fileAssets.getAllObject();
             const asset1 = dataList[0];
-            const creatAsset1 = await media.createAsset(videoType, 'video01.mp4', path);
+            const creatAsset1 = await media.createAsset(videoType, 'video03.mp4', path);
             const fd1 = await asset1.open('rw');
             const creatAssetFd1 = await creatAsset1.open('rw');
             await copyFile(fd1, creatAssetFd1);
@@ -455,7 +463,7 @@ describe('file.promise.test.js', function () {
             await asset1.close(fd1);
 
             const asset2 = dataList[0];
-            const creatAsset2 = await media.createAsset(videoType, 'video02.mp4', path);
+            const creatAsset2 = await media.createAsset(videoType, 'video04.mp4', path);
             const fd2 = await asset2.open('rw');
             const creatAssetFd2 = await creatAsset2.open('rw');
             await copyFile(fd2, creatAssetFd2);
@@ -610,15 +618,16 @@ describe('file.promise.test.js', function () {
             const fileAssets = await media.getFileAssets(videosfetchOp);
             const dataList = await fileAssets.getAllObject();
             const asset = dataList[0];
-            asset.displayName = 'hhhhhh';
-            asset.commitModify();
+            asset.title = `title_${new Date().getTime()}`;
+            await asset.commitModify();
             const id = asset.id;
-            const idOP = { selections: fileKeyObj.ID + '= ?', selectionArgs: ["" + id] };
+            const idOP = { selections: fileKeyObj.ID + '= ?', selectionArgs: ['' + id] };
             const newAssets = await media.getFileAssets(idOP);
             const newdataList = await newAssets.getAllObject();
             const newAsset = newdataList[0];
-            if(newAsset.dateModified != undefined) {
-                if (newAsset.dateModified != asset.dateModified ) {
+
+            if (asset.dateModified != undefined) {
+                if (newAsset.dateModified != asset.dateModified) {
                     console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_07 passed');
                     expect(true).assertTrue();
                     done();
@@ -628,9 +637,15 @@ describe('file.promise.test.js', function () {
                     done();
                 }
             } else {
-                console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_07 failed');
-                expect(false).assertTrue();
-                done();
+                if (newAsset.dateModified != undefined) {
+                    console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_07 passed');
+                    expect(true).assertTrue();
+                    done();
+                } else {
+                    console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_07 failed');
+                    expect(false).assertTrue();
+                    done();
+                }
             }
         } catch (error) {
             console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 002_07 failed, message = ' + error);
@@ -839,7 +854,7 @@ describe('file.promise.test.js', function () {
             const fileAssets = await media.getFileAssets(audiosfetchOp);
             const dataList = await fileAssets.getAllObject();
             const asset1 = dataList[0];
-            const creatAsset1 = await media.createAsset(audioType, 'audio01.mp3', path);
+            const creatAsset1 = await media.createAsset(audioType, 'audio03.mp3', path);
             const fd1 = await asset1.open('rw');
             const creatAssetFd1 = await creatAsset1.open('rw');
             await copyFile(fd1, creatAssetFd1);
@@ -847,7 +862,7 @@ describe('file.promise.test.js', function () {
             await asset1.close(fd1);
 
             const asset2 = dataList[0];
-            const creatAsset2 = await media.createAsset(audioType, 'audio02.mp3', path);
+            const creatAsset2 = await media.createAsset(audioType, 'audio04.mp3', path);
             const fd2 = await asset2.open('rw');
             const creatAssetFd2 = await creatAsset2.open('rw');
             await copyFile(fd2, creatAssetFd2);
@@ -1003,15 +1018,17 @@ describe('file.promise.test.js', function () {
             const fileAssets = await media.getFileAssets(audiosfetchOp);
             const dataList = await fileAssets.getAllObject();
             const asset = dataList[0];
-            asset.displayName = 'hhhhhh';
-            asset.commitModify();
+            asset.title = `title_${new Date().getTime()}`;
+            await asset.commitModify();
+
             const id = asset.id;
-            const idOP = { selections: fileKeyObj.ID + '= ?', selectionArgs: ["" + id] };
+            const idOP = { selections: fileKeyObj.ID + '= ?', selectionArgs: ['' + id] };
             const newAssets = await media.getFileAssets(idOP);
             const newdataList = await newAssets.getAllObject();
             const newAsset = newdataList[0];
-            if(newAsset.dateModified != undefined) {
-                if (newAsset.dateModified != asset.dateModified ) {
+
+            if (asset.dateModified != undefined) {
+                if (newAsset.dateModified != asset.dateModified) {
                     console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_07 passed');
                     expect(true).assertTrue();
                     done();
@@ -1021,9 +1038,15 @@ describe('file.promise.test.js', function () {
                     done();
                 }
             } else {
-                console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_07 failed');
-                expect(false).assertTrue();
-                done();
+                if (newAsset.dateModified != undefined) {
+                    console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_07 passed');
+                    expect(true).assertTrue();
+                    done();
+                } else {
+                    console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_07 failed');
+                    expect(false).assertTrue();
+                    done();
+                }
             }
         } catch (error) {
             console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 003_07 failed, message = ' + error);
@@ -1202,7 +1225,7 @@ describe('file.promise.test.js', function () {
             const fileAssets = await media.getFileAssets(filesfetchOp);
             const dataList = await fileAssets.getAllObject();
             const asset1 = dataList[0];
-            const creatAsset1 = await media.createAsset(fileType, 'file01.txt', path);
+            const creatAsset1 = await media.createAsset(fileType, 'file03.txt', path);
             const fd1 = await asset1.open('rw');
             const creatAssetFd1 = await creatAsset1.open('rw');
             await copyFile(fd1, creatAssetFd1);
@@ -1210,7 +1233,7 @@ describe('file.promise.test.js', function () {
             await asset1.close(fd1);
 
             const asset2 = dataList[0];
-            const creatAsset2 = await media.createAsset(fileType, 'file02.txt', path);
+            const creatAsset2 = await media.createAsset(fileType, 'file04.txt', path);
             const fd2 = await asset2.open('rw');
             const creatAssetFd2 = await creatAsset2.open('rw');
             await copyFile(fd2, creatAssetFd2);
@@ -1366,15 +1389,16 @@ describe('file.promise.test.js', function () {
             const fileAssets = await media.getFileAssets(filesfetchOp);
             const dataList = await fileAssets.getAllObject();
             const asset = dataList[0];
-            asset.displayName = 'hhhhhh';
-            asset.commitModify();
+            asset.title = `title_${new Date().getTime()}`;
+            await asset.commitModify();
             const id = asset.id;
-            const idOP = { selections: fileKeyObj.ID + '= ?', selectionArgs: ["" + id] };
+            const idOP = { selections: fileKeyObj.ID + '= ?', selectionArgs: ['' + id] };
             const newAssets = await media.getFileAssets(idOP);
             const newdataList = await newAssets.getAllObject();
             const newAsset = newdataList[0];
-            if(newAsset.dateModified != undefined) {
-                if (newAsset.dateModified != asset.dateModified ) {
+
+            if (asset.dateModified != undefined) {
+                if (newAsset.dateModified != asset.dateModified) {
                     console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 004_07 passed');
                     expect(true).assertTrue();
                     done();
@@ -1384,9 +1408,15 @@ describe('file.promise.test.js', function () {
                     done();
                 }
             } else {
-                console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 004_07 failed');
-                expect(false).assertTrue();
-                done();
+                if (newAsset.dateModified != undefined) {
+                    console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 004_07 passed');
+                    expect(true).assertTrue();
+                    done();
+                } else {
+                    console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 004_07 failed');
+                    expect(false).assertTrue();
+                    done();
+                }
             }
         } catch (error) {
             console.info('MediaLibraryTest : ASSET_PROMISE getFileAssets 004_07 failed, message = ' + error);
@@ -1461,4 +1491,3 @@ describe('file.promise.test.js', function () {
     });
     // -------------------------------  file type end -----------------------------
 });
-
