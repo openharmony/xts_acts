@@ -18,8 +18,9 @@ import mediademo from '@ohos.multimedia.mediademo'
 import Fileio from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-describe('videoEncoderReliability', function () {
-    const BASIC_PATH = '/data/media/results/videoencode_reli_promise_';
+describe('videoEncoderReliabilityPromise', function () {
+    const ROOT = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/results/';
+    const BASIC_PATH = ROOT + 'video_reliability_promise_';
     let videoEncodeProcessor;
     let mediaTest = mediademo.createMediaTest();
     let surfaceID = '';

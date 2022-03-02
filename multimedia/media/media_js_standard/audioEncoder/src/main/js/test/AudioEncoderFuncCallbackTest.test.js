@@ -18,9 +18,10 @@ import Fileio from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('AudioEncoderFuncCallback', function () {
-    const AUDIOPATH =  '/data/media/S32LE.pcm';
-    const AUDIOPATH2 =  '/data/media/S32LE_2.pcm';
-    const BASIC_PATH = '/data/media/results/encode_func_';
+    const RESOURCEPATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/'
+    const AUDIOPATH = RESOURCEPATH + 'S32LE.pcm';
+    const AUDIOPATH2 = RESOURCEPATH + 'S32LE_2.pcm';
+    const BASIC_PATH = RESOURCEPATH + 'results/encode_func_callback_';
     let audioEncodeProcessor;
     let readStreamSync;
     let eosframenum = 0;
@@ -305,7 +306,7 @@ describe('AudioEncoderFuncCallback', function () {
         let mediaDescription2 = {
             "codec_mime": 'audio/mp4a-latm',
         }
-        let savepath = BASIC_PATH + 'callback0000.txt';
+        let savepath = BASIC_PATH + 'callback0000.es';
         needGetMediaDes = true;
         workdoneAtEOS = true;
         eventEmitter.on('getAudioEncoderCaps', () => {
@@ -385,7 +386,7 @@ describe('AudioEncoderFuncCallback', function () {
             "sample_rate": 48000,
             "audio_raw_format": 16,
         }
-        let savepath = BASIC_PATH + 'callback0100.txt';
+        let savepath = BASIC_PATH + 'callback0100.es';
         eosframenum = 500;
         workdoneAtEOS = true;
         eventEmitter.on('getAudioEncoderCaps', () => {
@@ -443,7 +444,7 @@ describe('AudioEncoderFuncCallback', function () {
             "sample_rate": 48000,
             "audio_raw_format": 16,
         }
-        let savepath = BASIC_PATH + 'callback0200.txt';
+        let savepath = BASIC_PATH + 'callback0200.es';
         workdoneAtEOS = true;
         eventEmitter.on('getAudioEncoderCaps', () => {
             audioEncodeProcessor.getAudioEncoderCaps((err, Audiocaps) => {
@@ -509,7 +510,7 @@ describe('AudioEncoderFuncCallback', function () {
             "sample_rate": 48000,
             "audio_raw_format": 16,
         }
-        let savepath = BASIC_PATH + 'callback0300.txt';
+        let savepath = BASIC_PATH + 'callback0300.es';
         eosframenum = 500;
         flushAtEOS = true;
         eventEmitter.on('getAudioEncoderCaps', () => {
@@ -567,7 +568,7 @@ describe('AudioEncoderFuncCallback', function () {
             "sample_rate": 48000,
             "audio_raw_format": 16,
         }
-        let savepath = BASIC_PATH + 'callback0400.txt';
+        let savepath = BASIC_PATH + 'callback0400.es';
         eventEmitter.on('getAudioEncoderCaps', () => {
             audioEncodeProcessor.getAudioEncoderCaps((err, Audiocaps) => {
                 expect(err).assertUndefined();
@@ -649,7 +650,7 @@ describe('AudioEncoderFuncCallback', function () {
             "sample_rate": 48000,
             "audio_raw_format": 16,
         }
-        let savepath = BASIC_PATH + 'callback0500.txt';
+        let savepath = BASIC_PATH + 'callback0500.es';
         eosframenum = 100;
         eventEmitter.on('getAudioEncoderCaps', () => {
             audioEncodeProcessor.getAudioEncoderCaps((err, Audiocaps) => {
@@ -728,7 +729,7 @@ describe('AudioEncoderFuncCallback', function () {
             "sample_rate": 48000,
             "audio_raw_format": 16,
         }
-        let savepath = BASIC_PATH + 'callback0600.txt';
+        let savepath = BASIC_PATH + 'callback0600.es';
         eosframenum = 100;
         resetAtEOS = true;
         let mediaDescription2 = {
@@ -777,7 +778,7 @@ describe('AudioEncoderFuncCallback', function () {
                     console.info(`case configure 2`);
                     resetParam();
                     readFile(AUDIOPATH2)
-                    savepath = BASIC_PATH + 'callback0601.txt';
+                    savepath = BASIC_PATH + 'callback0601.es';
                     workdoneAtEOS = true;
                     hasreconfigured = true;
                     eventEmitter.emit('prepare');
