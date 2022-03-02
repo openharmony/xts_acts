@@ -13,18 +13,20 @@
  * limitations under the License.
  */
 
+
 import featureAbility from '@ohos.ability.featureAbility'
 import {describe, expect, it} from 'deccjsunit/index.ets'
 
 const URI_CONTACTS = 'dataability:///com.ohos.contactsdataability';
 const contactUri = 'dataability:///com.ohos.contactsdataability/contacts/groups';
+import Utils from './Utils';
 
 const INSERT_ONE = 'dataAbility_insert_test ';
 const QUERY_TWO = 'dataAbility_query_test ';
 const UPDATE_THREE = 'dataAbility_update_test ';
 const DELETE_FOUR = 'dataAbility_delete_test ';
 
-export default function dataAbilityHelperJsunit() {
+export default function DataAbilityJsunit() {
     var dataAbilityHelper = featureAbility.acquireDataAbilityHelper(URI_CONTACTS);
     var pacMap = {
         'group_name': 'test1',
@@ -42,17 +44,6 @@ export default function dataAbilityHelperJsunit() {
     };
 
     describe('appInfoTest', function () {
-        console.log('-----------------------ScreenlockTest is starting-----------------------');
-
-        function sleep(numberMillis) {
-            var now = new Date();
-            var exitTime = now.getTime() + numberMillis;
-            while (true) {
-                now = new Date();
-                if (now.getTime() > exitTime)
-                return;
-            }
-        }
 
         /*
          * @tc.number: dataAbility_insert_test_001
@@ -61,17 +52,23 @@ export default function dataAbilityHelperJsunit() {
          * @tc.level   0
          */
         it(INSERT_ONE + '001', 0, async function (done) {
+            let detailed;
             console.log(INSERT_ONE + '001  start......');
+            var timeOldStamp = await Utils.getNowTime();
             dataAbilityHelper.call(contactUri, 'insert', '', pacMap, (err, data) => {
+                var timeNewStamp = Utils.getNowTime();
+                Utils.getDurationTime(INSERT_ONE + '001', timeOldStamp, timeNewStamp);
                 if (err) {
                     console.error(INSERT_ONE + '001 error: ' + JSON.stringify(err));
                     return;
                 }
-                console.info(INSERT_ONE + '001  succeeded: ' + JSON.stringify(data));
-                expect(typeof (data)).assertEqual("object");
-                expect(typeof (data.result)).assertEqual("number");
-                expect(data.result > 0).assertTrue();
+                detailed = data;
+                console.info(INSERT_ONE + '001   succeeded   data: ' + JSON.stringify(data));
             });
+            await Utils.sleep(1000);
+            expect(typeof (detailed)).assertEqual("object");
+            expect(typeof (detailed.result)).assertEqual("number");
+            expect(detailed.result > 0).assertTrue();
             done();
             console.log(INSERT_ONE + '001 end ......');
         });
@@ -83,16 +80,24 @@ export default function dataAbilityHelperJsunit() {
          * @tc.level   0
          */
         it(INSERT_ONE + '002', 0, async function (done) {
+            let detailed;
+            let wrong;
             console.log(INSERT_ONE + '002  start......');
             pacMap.group_name = 'test2';
+            var timeOldStamp = await Utils.getNowTime();
             dataAbilityHelper.call(contactUri, 'insert', '', pacMap).then((data) => {
+                var timeNewStamp = Utils.getNowTime();
+                Utils.getDurationTime(INSERT_ONE + '002', timeOldStamp, timeNewStamp);
+                detailed = data;
                 console.info(INSERT_ONE + '002   succeeded   data: ' + JSON.stringify(data));
-                expect(typeof (data)).assertEqual("object");
-                expect(typeof (data.result)).assertEqual("number");
-                expect(data.result > 0).assertTrue();
             }).catch((error) => {
+                wrong = error;
                 console.error(INSERT_ONE + '002   error: ' + JSON.stringify(error));
             });
+            await Utils.sleep(1000);
+            expect(typeof (detailed)).assertEqual("object");
+            expect(typeof (detailed.result)).assertEqual("number");
+            expect(detailed.result > 0).assertTrue();
             done();
             console.log(INSERT_ONE + '002  end......');
         });
@@ -104,21 +109,29 @@ export default function dataAbilityHelperJsunit() {
          * @tc.level   0
          */
         it(QUERY_TWO + '001', 0, async function (done) {
+            let detailed;
+            let wrong;
             console.log(QUERY_TWO + '001 start......');
             let arg = "{\"equalTo\": \"group_name\"}";
             let pacMap = {
                 "group_name": "test1",
                 "columns": "group_name,ringtone_modify_time"
             };
+            var timeOldStamp = await Utils.getNowTime();
             dataAbilityHelper.call(contactUri, 'query', arg, pacMap, (err, data) => {
-                if (err) {
-                    console.error(QUERY_TWO + '001 error: ' + JSON.stringify(err));
+                var timeNewStamp = Utils.getNowTime();
+                Utils.getDurationTime(QUERY_TWO + '001', timeOldStamp, timeNewStamp);
+                wrong = err;
+                if (wrong) {
+                    console.error(QUERY_TWO + '001 error: ' + JSON.stringify(wrong));
                     return;
                 }
+                detailed = data;
                 console.info(QUERY_TWO + '001 succeeded: ' + JSON.stringify(data));
-                expect(typeof (data)).assertEqual("object");
-                expect(typeof (data.result)).assertEqual("string");
             });
+            await Utils.sleep(1000);
+            expect(typeof (detailed)).assertEqual("object");
+            expect(typeof (detailed.result)).assertEqual("string");
             done();
             console.log(QUERY_TWO + '001 end......');
         });
@@ -130,21 +143,29 @@ export default function dataAbilityHelperJsunit() {
          * @tc.level   0
          */
         it(QUERY_TWO + '002', 0, async function (done) {
+            let detailed;
+            let wrong;
             console.log(QUERY_TWO + '002 start......');
             let arg = "{\"between\": \"ringtone_modify_time\"}";
             let pacMap = {
                 'ringtone_modify_time': "15, 30",
                 "columns": "group_name,ringtone_modify_time"
             };
+            var timeOldStamp = await Utils.getNowTime();
             dataAbilityHelper.call(contactUri, 'query', arg, pacMap, (err, data) => {
-                if (err) {
-                    console.error(QUERY_TWO + '002 error: ' + JSON.stringify(err));
+                var timeNewStamp = Utils.getNowTime();
+                Utils.getDurationTime(QUERY_TWO + '002', timeOldStamp, timeNewStamp);
+                wrong = err;
+                if (wrong) {
+                    console.error(QUERY_TWO + '002 error: ' + JSON.stringify(wrong));
                     return;
                 }
+                detailed = data;
                 console.info(QUERY_TWO + '002 succeeded: ' + JSON.stringify(data));
-                expect(typeof (data)).assertEqual("object");
-                expect(typeof (data.result)).assertEqual("string");
             });
+            await Utils.sleep(1000);
+            expect(typeof (detailed)).assertEqual("object");
+            expect(typeof (detailed.result)).assertEqual("string");
             done();
             console.log(QUERY_TWO + '002 end......');
         });
@@ -156,23 +177,31 @@ export default function dataAbilityHelperJsunit() {
          * @tc.level   0
          */
         it(QUERY_TWO + '003', 0, async function (done) {
+            let detailed;
+            let wrong;
             console.log(QUERY_TWO + '003 start......');
             let arg = {
                 'like': 'group_name'
             };
             let pacMap = {
-                'group_name': '%test3%',
+                'group_name': '%test%',
                 'columns': 'group_name,ringtone_modify_time'
             };
+            var timeOldStamp = await Utils.getNowTime();
             dataAbilityHelper.call(contactUri, 'query', arg, pacMap, (err, data) => {
-                if (err) {
-                    console.error(QUERY_TWO + '003 error: ' + JSON.stringify(err));
+                var timeNewStamp = Utils.getNowTime();
+                Utils.getDurationTime(QUERY_TWO + '003', timeOldStamp, timeNewStamp);
+                wrong = err;
+                if (wrong) {
+                    console.error(QUERY_TWO + '003 error: ' + JSON.stringify(wrong));
                     return;
                 }
+                detailed = data;
                 console.info(QUERY_TWO + '003 succeeded: ' + JSON.stringify(data));
-                expect(typeof (data)).assertEqual('object');
-                expect(typeof (data.result)).assertEqual('string');
             });
+            await Utils.sleep(1000);
+            expect(typeof (detailed)).assertEqual('object');
+            expect(typeof (detailed.result)).assertEqual('string');
             done();
             console.log(QUERY_TWO + '003 end......');
         });
@@ -184,23 +213,30 @@ export default function dataAbilityHelperJsunit() {
          * @tc.level   0
          */
         it(QUERY_TWO + '004', 0, async function (done) {
+            let detailed;
+            let wrong;
             console.log(QUERY_TWO + '004 start......');
             let arg = {
                 'greaterThanOrEqualTo': 'ringtone_modify_time'
             };
             let pacMap = {
-                'ringtone_modify_time': 40,
+                'ringtone_modify_time': 20,
                 'columns': 'group_name,ringtone_modify_time'
             };
+            var timeOldStamp = await Utils.getNowTime();
             dataAbilityHelper.call(contactUri, 'query', arg, pacMap, (err, data) => {
+                var timeNewStamp = Utils.getNowTime();
+                Utils.getDurationTime(QUERY_TWO + '004', timeOldStamp, timeNewStamp);
                 if (err) {
                     console.error(QUERY_TWO + '004 error: ' + JSON.stringify(err));
                     return;
                 }
+                detailed = data;
                 console.info(QUERY_TWO + '003 succeeded: ' + JSON.stringify(data));
-                expect(typeof (data)).assertEqual('object');
-                expect(typeof (data.result)).assertEqual('string');
             });
+            await Utils.sleep(1000);
+            expect(typeof (detailed)).assertEqual('object');
+            expect(typeof (detailed.result)).assertEqual('string');
             done();
             console.log(QUERY_TWO + '003 end......');
         });
@@ -212,22 +248,28 @@ export default function dataAbilityHelperJsunit() {
          * @tc.level   0
          */
         it(UPDATE_THREE + '001', 0, async function (done) {
+            let detailed;
             console.log(UPDATE_THREE + '001 start......');
             let arg = "{\"equalTo\": \"ringtone_modify_time\"}";
             let pacMap = {
                 'ringtone_modify_time': 28,
                 'group_name': 'testupdata1'
             };
+            var timeOldStamp = await Utils.getNowTime();
             dataAbilityHelper.call(contactUri, 'update', arg, pacMap, (err, data) => {
+                var timeNewStamp = Utils.getNowTime();
+                Utils.getDurationTime(UPDATE_THREE + '001', timeOldStamp, timeNewStamp);
                 if (err) {
                     console.error(UPDATE_THREE + '001 error: ' + JSON.stringify(err));
                     return;
                 }
+                detailed = data;
                 console.info(UPDATE_THREE + '001 succeeded: ' + JSON.stringify(data));
-                expect(typeof (data)).assertEqual("object");
-                expect(typeof (data.result)).assertEqual("number");
-                expect(data.result).assertEqual(0);
             });
+            await Utils.sleep(1000);
+            expect(typeof (detailed)).assertEqual("object");
+            expect(typeof (detailed.result)).assertEqual("number");
+            expect(detailed.result).assertEqual(0);
             done();
             console.log(UPDATE_THREE + '001 end......');
         });
@@ -239,22 +281,28 @@ export default function dataAbilityHelperJsunit() {
          * @tc.level   0
          */
         it(UPDATE_THREE + '002', 0, async function (done) {
+            let detailed;
             console.log(UPDATE_THREE + '002 start......');
             let arg = "{\"between\": \"ringtone_modify_time\"}";
             let pacMap = {
                 'ringtone_modify_time': "15, 30",
                 'group_name': 'testupdata2'
             };
+            var timeOldStamp = await Utils.getNowTime();
             dataAbilityHelper.call(contactUri, 'update', arg, pacMap, (err, data) => {
+                var timeNewStamp = Utils.getNowTime();
+                Utils.getDurationTime(UPDATE_THREE + '002', timeOldStamp, timeNewStamp);
                 if (err) {
                     console.error(UPDATE_THREE + '002 error: ' + JSON.stringify(err));
                     return;
                 }
+                detailed = data;
                 console.info(UPDATE_THREE + '002 succeeded: ' + JSON.stringify(data));
-                expect(typeof (data)).assertEqual("object");
-                expect(typeof (data.result)).assertEqual("number");
-                expect(data.result).assertEqual(0);
             });
+            await Utils.sleep(1000);
+            expect(typeof (detailed)).assertEqual("object");
+            expect(typeof (detailed.result)).assertEqual("number");
+            expect(detailed.result).assertEqual(0);
             done();
             console.log(UPDATE_THREE + '002 end......');
         });
@@ -266,6 +314,7 @@ export default function dataAbilityHelperJsunit() {
          * @tc.level   0
          */
         it(UPDATE_THREE + '003', 0, async function (done) {
+            let detailed;
             console.log(UPDATE_THREE + '003 start......');
             let arg = {
                 'contains': 'group_name'
@@ -274,16 +323,21 @@ export default function dataAbilityHelperJsunit() {
                 'group_name': 'ata2',
                 'ringtone_modify_time': 100
             };
+            var timeOldStamp = await Utils.getNowTime();
             dataAbilityHelper.call(contactUri, 'update', arg, pacMap, (err, data) => {
+                var timeNewStamp = Utils.getNowTime();
+                Utils.getDurationTime(UPDATE_THREE + '003', timeOldStamp, timeNewStamp);
                 if (err) {
                     console.error(UPDATE_THREE + '003 error: ' + JSON.stringify(err));
                     return;
                 }
+                detailed = data;
                 console.info(UPDATE_THREE + '003 succeeded: ' + JSON.stringify(data));
-                expect(typeof (data)).assertEqual('object');
-                expect(typeof (data.result)).assertEqual('number');
-                expect(data.result).assertEqual(0);
             });
+            await Utils.sleep(1000);
+            expect(typeof (detailed)).assertEqual('object');
+            expect(typeof (detailed.result)).assertEqual('number');
+            expect(detailed.result).assertEqual(0);
             done();
             console.log(UPDATE_THREE + '003 end......');
         });
@@ -295,6 +349,7 @@ export default function dataAbilityHelperJsunit() {
          * @tc.level   0
          */
         it(UPDATE_THREE + '004', 0, async function (done) {
+            let detailed;
             console.log(UPDATE_THREE + '004 start......');
             let arg = {
                 'lessThan': 'ringtone_modify_time'
@@ -303,16 +358,21 @@ export default function dataAbilityHelperJsunit() {
                 'ringtone_modify_time': 32,
                 'group_name': 'testupdata2'
             };
+            var timeOldStamp = await Utils.getNowTime();
             dataAbilityHelper.call(contactUri, 'update', arg, pacMap, (err, data) => {
+                var timeNewStamp = Utils.getNowTime();
+                Utils.getDurationTime(UPDATE_THREE + '004', timeOldStamp, timeNewStamp);
                 if (err) {
                     console.error(UPDATE_THREE + '004 error: ' + JSON.stringify(err));
                     return;
                 }
+                detailed = data;
                 console.info(UPDATE_THREE + '004 succeeded: ' + JSON.stringify(data));
-                expect(typeof (data)).assertEqual('object');
-                expect(typeof (data.result)).assertEqual('number');
-                expect(data.result).assertEqual(0);
             });
+            await Utils.sleep(1000);
+            expect(typeof (detailed)).assertEqual('object');
+            expect(typeof (detailed.result)).assertEqual('number');
+            expect(detailed.result).assertEqual(0);
             done();
             console.log(UPDATE_THREE + '004 end......');
         });
@@ -323,8 +383,6 @@ export default function dataAbilityHelperJsunit() {
          * @tc.desc: Check the return value of the interface
          * @tc.level   0
          */
-
-        //insert one record1
         dataAbilityHelper.call(contactUri, 'insert', '', pacMap, (err, data) => {
             if (err) {
                 console.error('Operation failed1. Cause: ' + JSON.stringify(err));
@@ -334,21 +392,27 @@ export default function dataAbilityHelperJsunit() {
         });
 
         it(DELETE_FOUR + '001', 0, async function (done) {
+            let detailed;
             console.log(DELETE_FOUR + '001 start......');
             let arg2 = "{\"equalTo\": \"group_name\"}";
             let pacMap2 = {
                 'group_name': 'test1'
             };
+            var timeOldStamp = await Utils.getNowTime();
             dataAbilityHelper.call(contactUri, 'delete', arg2, pacMap2, (err2, data2) => {
+                var timeNewStamp = Utils.getNowTime();
+                Utils.getDurationTime(DELETE_FOUR + '001', timeOldStamp, timeNewStamp);
                 if (err2) {
                     console.error(DELETE_FOUR + '001 error: ' + JSON.stringify(err2));
                     return;
                 }
+                detailed = data2;
                 console.info(DELETE_FOUR + '001 succeeded: ' + JSON.stringify(data2));
-                expect(typeof (data2)).assertEqual("object");
-                expect(typeof (data2.result)).assertEqual("number");
-                expect(data2.result).assertEqual(0);
             });
+            await Utils.sleep(1000);
+            expect(typeof (detailed)).assertEqual("object");
+            expect(typeof (detailed.result)).assertEqual("number");
+            expect(detailed.result).assertEqual(0);
             done();
             console.log(DELETE_FOUR + '001 end......');
         });
@@ -360,21 +424,27 @@ export default function dataAbilityHelperJsunit() {
          * @tc.level   0
          */
         it(DELETE_FOUR + '002', 0, async function (done) {
+            let detailed;
             console.log(DELETE_FOUR + '002 start......');
             let arg = "{\"lessThan\": \"ringtone_modify_time\"}";
             let pacMap = {
                 'ringtone_modify_time': 32,
             };
+            var timeOldStamp = await Utils.getNowTime();
             dataAbilityHelper.call(contactUri, 'delete', arg, pacMap, (err, data) => {
+                var timeNewStamp = Utils.getNowTime();
+                Utils.getDurationTime(DELETE_FOUR + '002', timeOldStamp, timeNewStamp);
                 if (err) {
                     console.error(DELETE_FOUR + '002 error: ' + JSON.stringify(err));
                     return;
                 }
+                detailed = data;
                 console.info(DELETE_FOUR + '002 succeeded: ' + JSON.stringify(data));
-                expect(typeof (data)).assertEqual("object");
-                expect(typeof (data.result)).assertEqual("number");
-                expect(data.result).assertEqual(0);
             });
+            await Utils.sleep(1000);
+            expect(typeof (detailed)).assertEqual("object");
+            expect(typeof (detailed.result)).assertEqual("number");
+            expect(detailed.result).assertEqual(0);
             done();
             console.log(DELETE_FOUR + '002 end......');
         });
@@ -385,8 +455,6 @@ export default function dataAbilityHelperJsunit() {
          * @tc.desc: Check the return value of the interface
          * @tc.level   0
          */
-
-        //insert one record3
         dataAbilityHelper.call(contactUri, 'insert', '', pacMap_3, (err, data) => {
             if (err) {
                 console.error('Operation failed3. Cause: ' + JSON.stringify(err));
@@ -396,23 +464,29 @@ export default function dataAbilityHelperJsunit() {
         });
 
         it(DELETE_FOUR + '003', 0, async function (done) {
+            let detailed;
             console.log(DELETE_FOUR + '003 start......');
             let arg2 = {
                 'like': 'group_name'
             };
             let pacMap2 = {
-                'group_name': '%test3%'
+                'group_name': '%test%'
             };
+            var timeOldStamp = await Utils.getNowTime();
             dataAbilityHelper.call(contactUri, 'delete', arg2, pacMap2, (err2, data2) => {
+                var timeNewStamp = Utils.getNowTime();
+                Utils.getDurationTime(DELETE_FOUR + '003', timeOldStamp, timeNewStamp);
                 if (err2) {
                     console.error(DELETE_FOUR + '003 error: ' + JSON.stringify(err2));
                     return;
                 }
+                detailed = data2;
                 console.info(DELETE_FOUR + '003 delete succeeded: ' + JSON.stringify(data2));
-                expect(typeof (data2)).assertEqual('object');
-                expect(typeof (data2.result)).assertEqual('number');
-                expect(data2.result).assertEqual(0);
             });
+            await Utils.sleep(1000);
+            expect(typeof (detailed)).assertEqual('object');
+            expect(typeof (detailed.result)).assertEqual('number');
+            expect(detailed.result).assertEqual(0);
             done();
             console.log(DELETE_FOUR + '003 delete end......');
         });
@@ -423,8 +497,6 @@ export default function dataAbilityHelperJsunit() {
          * @tc.desc: Check the return value of the interface
          * @tc.level   0
          */
-
-        //insert one record4
         dataAbilityHelper.call(contactUri, 'insert', '', pacMap_4, (err, data) => {
             if (err) {
                 console.error('Operation failed4. Cause: ' + JSON.stringify(err));
@@ -433,6 +505,7 @@ export default function dataAbilityHelperJsunit() {
             console.info('Operation succeeded4: ' + JSON.stringify(data));
         });
         it(DELETE_FOUR + '004', 0, async function (done) {
+            let detailed;
             console.log(DELETE_FOUR + '004 start......');
             let arg2 = {
                 'greaterThanOrEqualTo': 'ringtone_modify_time'
@@ -440,16 +513,21 @@ export default function dataAbilityHelperJsunit() {
             let pacMap2 = {
                 'ringtone_modify_time': 40
             };
+            var timeOldStamp = await Utils.getNowTime();
             dataAbilityHelper.call(contactUri, 'delete', arg2, pacMap2, (err2, data2) => {
+                var timeNewStamp = Utils.getNowTime();
+                Utils.getDurationTime(DELETE_FOUR + '004', timeOldStamp, timeNewStamp);
                 if (err2) {
                     console.error(DELETE_FOUR + '004 error: ' + JSON.stringify(err2));
                     return;
                 }
+                detailed = data2;
                 console.info(DELETE_FOUR + '004 delete succeeded: ' + JSON.stringify(data2));
-                expect(typeof (data2)).assertEqual('object');
-                expect(typeof (data2.result)).assertEqual('number');
-                expect(data2.result).assertEqual(0);
             });
+            await Utils.sleep(1000);
+            expect(typeof (detailed)).assertEqual('object');
+            expect(typeof (detailed.result)).assertEqual('number');
+            expect(detailed.result).assertEqual(0);
             done();
             console.log(DELETE_FOUR + '004 delete end......');
         });

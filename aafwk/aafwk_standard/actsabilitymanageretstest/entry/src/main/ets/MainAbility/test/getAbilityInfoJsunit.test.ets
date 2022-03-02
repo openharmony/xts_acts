@@ -258,8 +258,10 @@ export default function getHapModuleInfoJsunit() {
       }
       console.log(msg + "checkApplicationInfo moduleInfos length : " + info.moduleInfos.length);
       for (var i = 0; i < info.moduleInfos.length; i++) {
-        console.log(msg + "checkApplicationInfo info.moduleInfos[" + i + "].moduleName : " + info.moduleInfos[i].moduleName);
-        console.log(msg + "checkApplicationInfo info.moduleInfos[" + i + "].moduleSourceDir : " + info.moduleInfos[i].moduleSourceDir);
+        console.log(msg + "checkApplicationInfo info.moduleInfos[" + i + "].moduleName : "
+        + info.moduleInfos[i].moduleName);
+        console.log(msg + "checkApplicationInfo info.moduleInfos[" + i + "].moduleSourceDir : "
+        + info.moduleInfos[i].moduleSourceDir);
       }
       console.log(msg + "checkApplicationInfo entryDir : " + info.entryDir);
 

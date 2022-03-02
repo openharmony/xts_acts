@@ -57,6 +57,16 @@ async function startService5() {
   var data = featureAbility.startAbility(str);
   console.info('particleAbility_connectAbility_test_0400 startAbility succeeded: ' + JSON.stringify(data));
 }
+async function startService6(){
+  var str = {
+    "want": {
+      "bundleName": "com.ohos.acecollaboration",
+      "abilityName": "com.ohos.acecollaboration.ServiceAbility6",
+    },
+  };
+  var data = featureAbility.startAbility(str);
+  console.info('particleAbility_connectAbility_test_0500 startAbility succeeded: ' + JSON.stringify(data));
+}
 
 @Entry
 @Component
@@ -126,6 +136,14 @@ struct MyComponent {
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
           startService5();
+        });
+      Button('connecterror')
+        .fontSize(40)
+        .height(40)
+        .margin({top:20})
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          startService6();
         });
     }
     .width('100%')

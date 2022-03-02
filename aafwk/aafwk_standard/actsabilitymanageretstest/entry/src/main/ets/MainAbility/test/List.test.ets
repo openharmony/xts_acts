@@ -19,14 +19,14 @@ import getAbilityInfoJsunit from './getAbilityInfoJsunit.test.ets';
 import getApplicationContext from './getApplicationContextJsunit.test.ets';
 import getAppVersionInfoJsunit from './getAppVersionInfoJsunit.test.ets';
 import ContextJsunit from './ContextJsunit.test.ets';
-import dataAbilityHelperJsunit from './DataAbility.test.ets';
+import DataAbilityJsunit from './DataAbility.test.ets';
 
 export default function testsuite() {
+    ContextJsunit();
+    DataAbilityJsunit();
     addContextAndAbilityJsunit();
     getHapModuleInfoJsunit();
     getAbilityInfoJsunit();
     getApplicationContext();
     getAppVersionInfoJsunit();
-    ContextJsunit();
-    dataAbilityHelperJsunit();
 }

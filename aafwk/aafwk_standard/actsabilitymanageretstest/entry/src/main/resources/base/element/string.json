@@ -35,6 +35,10 @@
     {
       "name": "entry_MainAbility2",
       "value": "MainAbility2"
+    },
+    {
+      "name": "description_serviceability6",
+      "value": "hap sample empty service"
     }
   ]
 }

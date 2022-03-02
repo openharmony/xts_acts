@@ -156,11 +156,11 @@ export default function contextJsunit() {
         })
       } catch (error) {
         console.log("logMessage context_getOrCreateDistributedDir_0100: error = " + error);
-        expect(error).assertEqual("/data/storage/el2/distributed/entry");
+        expect(error).assertEqual("/data/storage/el2/distributedfiles/entry");
       }
       var data1 = await context.getOrCreateDistributedDir();
       expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/storage/el2/distributed/entry");
+      expect(data1).assertEqual("/data/storage/el2/distributedfiles/entry");
       done();
       console.log("------------------end context_getOrCreateDistributedDir_0100-------------------");
     });
@@ -183,11 +183,11 @@ export default function contextJsunit() {
         });
       } catch (error) {
         console.log("logMessage context_getOrCreateDistributedDir_0200: error = " + error);
-        expect(error).assertEqual("/data/storage/el2/distributed/entry");
+        expect(error).assertEqual("/data/storage/el2/distributedfiles/entry");
       }
       var data1 = await context.getOrCreateDistributedDir();
       expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/storage/el2/distributed/entry");
+      expect(data1).assertEqual("/data/storage/el2/distributedfiles/entry");
       done();
       console.log("------------------end context_getOrCreateDistributedDir_0200-------------------");
     });
