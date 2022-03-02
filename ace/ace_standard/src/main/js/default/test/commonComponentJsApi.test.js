@@ -221,6 +221,27 @@ describe('aceJsTest', function () {
 
         /**
          * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+         * @tc.name      testMarqueeComponent
+         * @tc.desc      ACE
+         */
+         it('testMarqueeComponent', 0, async function (done) {
+            let result;
+            let options = {
+                uri: 'pages/marquee/router/index'
+            }
+            try {
+                result = router.push(options)
+            } catch (err) {
+                result = err
+            }
+            await sleep(1000)
+            let pages = router.getState();
+            expect("pages/marquee/router/").assertEqual(pages.path);
+            done();
+        });
+
+        /**
+         * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
          * @tc.name      testDividerComponent
          * @tc.desc      ACE
          */
