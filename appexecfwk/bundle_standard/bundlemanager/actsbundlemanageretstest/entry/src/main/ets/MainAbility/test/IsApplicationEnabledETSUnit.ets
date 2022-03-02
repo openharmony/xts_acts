@@ -52,7 +52,7 @@ export default function IsApplicationEnabledETSUnit() {
           console.info('[context_isApplicationEnabled_test_0100]  promise data is: ' + JSON.stringify(data));
         })
         .catch((error) => {
-          console.info('[context_isApplicationEnabled_test_0100]  promise error is: ' + error.code);
+          console.info('[context_isApplicationEnabled_test_0100]  promise error is: ' + error);
         });
       getApplicationEnabledSuccess('[context_isApplicationEnabled_test_0100]', mData);
       done();
@@ -74,7 +74,7 @@ export default function IsApplicationEnabledETSUnit() {
         Utils.getDurationTime('[context_isApplicationEnabled_test_0200]', timeOldStamp, timeNewStamp);
         mData = data;
         console.info('[context_isApplicationEnabled_test_0200]  callBack in');
-        console.info('[context_isApplicationEnabled_test_0200]  callBack error: ' + error.code);
+        console.info('[context_isApplicationEnabled_test_0200]  callBack error: ' + error);
         console.info('[context_isApplicationEnabled_test_0200]  callBack data is:' + JSON.stringify(data));
       });
       await Utils.sleep(2000);
@@ -104,7 +104,7 @@ export default function IsApplicationEnabledETSUnit() {
         .catch((error) => {
           var timeNewStamp = Utils.getNowTime();
           Utils.getDurationTime('[context_isApplicationEnabled_test_0300]', timeOldStamp, timeNewStamp);
-          console.info('[context_isApplicationEnabled_test_0300]  promise error is: ' + error.code);
+          console.info('[context_isApplicationEnabled_test_0300]  promise error is: ' + error);
         });
       getApplicationEnabledFalse('[context_isApplicationEnabled_test_0300]', mData);
       done();
@@ -126,7 +126,7 @@ export default function IsApplicationEnabledETSUnit() {
         Utils.getDurationTime('[context_isApplicationEnabled_test_0400]', timeOldStamp, timeNewStamp);
         mData = data;
         console.info('[context_isApplicationEnabled_test_0400]  callBack in');
-        console.info('[context_isApplicationEnabled_test_0400]  callBack error: ' + error.code);
+        console.info('[context_isApplicationEnabled_test_0400]  callBack error: ' + error);
         console.info('[context_isApplicationEnabled_test_0400]  callBack data is:' + JSON.stringify(data));
       });
       await Utils.sleep(2000);
@@ -163,7 +163,7 @@ export default function IsApplicationEnabledETSUnit() {
           console.info('[context_isApplicationEnabled_test_0500]  promise data is: ' + JSON.stringify(data));
         })
         .catch((error) => {
-          console.info('[context_isApplicationEnabled_test_0500]  promise error is: ' + error.code);
+          console.info('[context_isApplicationEnabled_test_0500]  promise error is: ' + error);
         });
       getApplicationEnabledTrue('[context_isApplicationEnabled_test_0500]', mData);
       done();
@@ -194,7 +194,7 @@ export default function IsApplicationEnabledETSUnit() {
         Utils.getDurationTime('[context_isApplicationEnabled_test_0600]', timeOldStamp, timeNewStamp);
         mData = data;
         console.info('[context_isApplicationEnabled_test_0600]  callBack in');
-        console.info('[context_isApplicationEnabled_test_0600]  callBack error: ' + error.code);
+        console.info('[context_isApplicationEnabled_test_0600]  callBack error: ' + error);
         console.info('[context_isApplicationEnabled_test_0600]  callBack data is:' + JSON.stringify(data));
       });
       await Utils.sleep(2000);
@@ -217,12 +217,5 @@ export default function IsApplicationEnabledETSUnit() {
       getApplicationEnabledSuccess(msg, data);
       expect(data).assertEqual(false);
     }
-
-    function getApplicationEnabledFailure(msg, error) {
-      console.log(msg + ' Failure  ');
-      console.log(msg + ' error : ' + error);
-      expect(typeof (error)).assertEqual('number')
-    }
-
   })
 }

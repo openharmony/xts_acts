@@ -64,7 +64,7 @@ export default function isAbilityEnabledETSUnit() {
           console.info('[context_isAbilityEnabled_test_0100]  promise data is: ' + JSON.stringify(data));
         })
         .catch((error) => {
-          console.info('[context_isAbilityEnabled_test_0100]  promise error is: ' + error.code);
+          console.info('[context_isAbilityEnabled_test_0100]  promise error is: ' + error);
         });
       getAbilityEnabledSuccess('[context_isAbilityEnabled_test_0100]', mData);
       done();
@@ -86,7 +86,7 @@ export default function isAbilityEnabledETSUnit() {
         Utils.getDurationTime('[context_isAbilityEnabled_test_0200]', timeOldStamp, timeNewStamp);
         mData = data;
         console.info('[context_isAbilityEnabled_test_0200]  callBack in');
-        console.info('[context_isAbilityEnabled_test_0200]  callBack error: ' + error.code);
+        console.info('[context_isAbilityEnabled_test_0200]  callBack error: ' + error);
         console.info('[context_isAbilityEnabled_test_0200]  callBack data is:' + JSON.stringify(data));
       });
       await Utils.sleep(2000);
@@ -116,7 +116,7 @@ export default function isAbilityEnabledETSUnit() {
         .catch((error) => {
           var timeNewStamp = Utils.getNowTime();
           Utils.getDurationTime('[context_isAbilityEnabled_test_0300]', timeOldStamp, timeNewStamp);
-          console.info('[context_isAbilityEnabled_test_0300]  promise error is: ' + error.code);
+          console.info('[context_isAbilityEnabled_test_0300]  promise error is: ' + error);
         });
       getAbilityEnabledFalse('[context_isAbilityEnabled_test_0300]', mData);
       done();
@@ -139,7 +139,7 @@ export default function isAbilityEnabledETSUnit() {
         Utils.getDurationTime('[context_isAbilityEnabled_test_0300]', timeOldStamp, timeNewStamp);
         console.info('[context_isAbilityEnabled_test_0400]  callBack in');
         mData = data;
-        console.info('[context_isAbilityEnabled_test_0400]  callBack error: ' + error.code);
+        console.info('[context_isAbilityEnabled_test_0400]  callBack error: ' + error);
         console.info('[context_isAbilityEnabled_test_0400]  callBack data is:' + JSON.stringify(data));
       });
       console.info('[context_isAbilityEnabled_test_0400]  end c++ callBack  ');
@@ -179,7 +179,7 @@ export default function isAbilityEnabledETSUnit() {
           console.info('[context_isAbilityEnabled_test_0500]  promise data is: ' + JSON.stringify(data));
         })
         .catch((error) => {
-          console.info('[context_isAbilityEnabled_test_0500]  promise error is: ' + error.code);
+          console.info('[context_isAbilityEnabled_test_0500]  promise error is: ' + error);
         });
       getAbilityEnabledTrue('[context_isAbilityEnabled_test_0500]', mData);
       done();
@@ -214,7 +214,7 @@ export default function isAbilityEnabledETSUnit() {
           console.info('[context_isAbilityEnabled_test_0600]  promise data is: ' + JSON.stringify(data));
         })
         .catch((error) => {
-          console.info('[context_isAbilityEnabled_test_0600]  promise error is: ' + error.code);
+          console.info('[context_isAbilityEnabled_test_0600]  promise error is: ' + error);
         });
       getAbilityEnabledFalse('[context_isAbilityEnabled_test_0600]', mData);
       done();
@@ -245,7 +245,7 @@ export default function isAbilityEnabledETSUnit() {
         Utils.getDurationTime('[context_isAbilityEnabled_test_0700]', timeOldStamp, timeNewStamp);
         mData = data;
         console.info('[context_isAbilityEnabled_test_0700]  callBack in');
-        console.info('[context_isAbilityEnabled_test_0700]  callBack error: ' + error.code);
+        console.info('[context_isAbilityEnabled_test_0700]  callBack error: ' + error);
         console.info('[context_isAbilityEnabled_test_0700]  callBack data is:' + JSON.stringify(data));
       });
       await Utils.sleep(2000);
@@ -278,7 +278,7 @@ export default function isAbilityEnabledETSUnit() {
         Utils.getDurationTime('[context_isAbilityEnabled_test_0800]', timeOldStamp, timeNewStamp);
         mData = data;
         console.info('[context_isAbilityEnabled_test_0800]  callBack in');
-        console.info('[context_isAbilityEnabled_test_0800]  callBack error: ' + error.code);
+        console.info('[context_isAbilityEnabled_test_0800]  callBack error: ' + error);
         console.info('[context_isAbilityEnabled_test_0800]  callBack data is:' + JSON.stringify(data));
       });
       await Utils.sleep(2000);

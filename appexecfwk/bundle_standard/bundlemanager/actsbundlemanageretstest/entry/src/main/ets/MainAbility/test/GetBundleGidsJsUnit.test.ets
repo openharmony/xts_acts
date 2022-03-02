@@ -51,7 +51,7 @@ export default function bundleGidsJsUnit() {
           console.info('[context_getBundleGids_test_0100]  promise data is: ' + JSON.stringify(data));
         })
         .catch((error) => {
-          console.info('[context_getBundleGids_test_0100]  promise error is: ' + error.code);
+          console.info('[context_getBundleGids_test_0100]  promise error is: ' + error);
         });
       getGidsSuccess('[context_getBundleGids_test_0100]', mData);
       done();
@@ -73,7 +73,7 @@ export default function bundleGidsJsUnit() {
         Utils.getDurationTime('[context_getBundleGids_test_0200]', timeOldStamp, timeNewStamp);
         mData = data;
         console.info('[context_getBundleGids_test_0200]  callBack in');
-        console.info('[context_getBundleGids_test_0200]  callBack error: ' + error.code);
+        console.info('[context_getBundleGids_test_0200]  callBack error: ' + error);
         console.info('[context_getBundleGids_test_0200]  callBack data is:' + JSON.stringify(data));
       });
       await Utils.sleep(2000);
@@ -100,9 +100,9 @@ export default function bundleGidsJsUnit() {
         })
         .catch((error) => {
           var timeNewStamp = Utils.getNowTime();
-          mError = error.code;
+          mError = error;
           Utils.getDurationTime('[context_getBundleGids_test_0300]', timeOldStamp, timeNewStamp);
-          console.info('[context_getBundleGids_test_0300]  promise error is: ' + error.code);
+          console.info('[context_getBundleGids_test_0300]  promise error is: ' + error);
         });
       getGidsFailure('[context_getBundleGids_test_0300]', mError);
       done();
@@ -123,9 +123,9 @@ export default function bundleGidsJsUnit() {
         var timeNewStamp = Utils.getNowTime();
         Utils.getDurationTime('[context_getBundleGids_test_0400]', timeOldStamp, timeNewStamp);
 
-        mError = error.code;
+        mError = error;
         console.info('[context_getBundleGids_test_0400]  callBack in');
-        console.info('[context_getBundleGids_test_0400]  callBack error: ' + error.code);
+        console.info('[context_getBundleGids_test_0400]  callBack error: ' + error);
         console.info('[context_getBundleGids_test_0400]  callBack data is:' + JSON.stringify(data));
       });
       await Utils.sleep(2000);
@@ -144,6 +144,7 @@ export default function bundleGidsJsUnit() {
       await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mData;
+      let mError;
       await Bundle.getBundleGids(OTHER_BUNDLE_NAME)
         .then((data) => {
           var timeNewStamp = Utils.getNowTime();
@@ -152,9 +153,14 @@ export default function bundleGidsJsUnit() {
           console.info('[context_getBundleGids_test_0500]  promise data is: ' + JSON.stringify(data));
         })
         .catch((error) => {
-          console.info('[context_getBundleGids_test_0500]  promise error is: ' + error.code);
+          mError = error;
+          console.info('[context_getBundleGids_test_0500]  promise error is: ' + error);
         });
-      getGidsSuccess('[context_getBundleGids_test_0500]', mData);
+      if (mError != null) {
+        getGidsFailure('[context_getBundleGids_test_0500]', mError);
+      } else {
+        getGidsSuccess('[context_getBundleGids_test_0500]', mData);
+      }
       done();
     });
 
@@ -169,16 +175,22 @@ export default function bundleGidsJsUnit() {
       await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mData;
+      let mError = null;
       Bundle.getBundleGids(OTHER_BUNDLE_NAME, (error, data) => {
         var timeNewStamp = Utils.getNowTime();
         Utils.getDurationTime('[context_getBundleGids_test_0600]', timeOldStamp, timeNewStamp);
         mData = data;
+        mError = error;
         console.info('[context_getBundleGids_test_0600]  callBack in');
-        console.info('[context_getBundleGids_test_0600]  callBack error: ' + error.code);
+        console.info('[context_getBundleGids_test_0600]  callBack error: ' + error);
         console.info('[context_getBundleGids_test_0600]  callBack data is:' + JSON.stringify(data));
       });
       await Utils.sleep(2000);
-      getGidsSuccess('[context_getBundleGids_test_0600]', mData);
+      if (mError != null) {
+        getGidsFailure('[context_getBundleGids_test_0600]', mError);
+      } else {
+        getGidsSuccess('[context_getBundleGids_test_0600]', mData);
+      }
       done();
     });
 

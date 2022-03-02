@@ -377,13 +377,13 @@ export default function applicationBundleJsunit() {
           expect(data[i].codePath).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag');
           expect(data[i].description).assertEqual('$string:mainability_description');
           if (data[i].descriptionId !== 0) {
-            expect(data[i].descriptionId).assertEqual(16777217);
+            expect(data[i].descriptionId > 0).assertEqual(true);
           }
           expect(data[i].icon).assertEqual('$media:icon');
-          expect(data[i].iconId).assertEqual(16777218);
+          expect(data[i].iconId > 0).assertEqual(true);
           expect(data[i].label).assertEqual('$string:entry_MainAbility');
           if (data[i].label !== 0) {
-            expect(data[i].labelId).assertEqual(16777216);
+            expect(data[i].labelId > 0).assertEqual(true);
           }
           expect(data[i].systemApp).assertEqual(true);
           expect(data[i].supportedModes).assertEqual(0);
