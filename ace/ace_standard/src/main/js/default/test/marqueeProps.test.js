@@ -27,7 +27,7 @@ describe('marqueePropsJsTest', function () {
         }).then(() => {
             console.info(`sleep ${time} over...`)
         })
-    };
+    }
 
     async function backToIndex() {
         let backToIndexPromise = new Promise((resolve, reject) => {
@@ -134,33 +134,6 @@ describe('marqueePropsJsTest', function () {
         console.info("[marqueeProps] get className value is: " + JSON.stringify(obj.$attrs.className));
         done();
     });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testmarqueeStyleProp
-     * @tc.desc      ACEs
-     */
-    //    it('testmarqueeStyleProp', 0, async function (done) {
-    //        console.info('testmarqueeStyleProp START');
-    //        console.info("[marqueeProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.styleProp);
-    //        console.info("[marqueeProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[marqueeProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('marquee')
-    //        expect(obj.$attrs.id).assertEqual('styleProp')
-    //        expect(obj.$attrs.style).assertEqual(undefined)
-    //        console.info("[marqueeProps] get style value is: " + JSON.stringify(obj.$attrs.style));
-    //
-    //        expect(obj.$styles.width).assertEqual(undefined);
-    //        console.info("[marqueeProps] get style width value is: " + JSON.stringify(obj.$styles.width));
-    //        expect(obj.$styles.height).assertEqual(undefined);
-    //        console.info("[marqueeProps] get style height value is: " + JSON.stringify(obj.$styles.height));
-    //        expect(obj.$styles.get('background-color')).assertEqual(undefined);
-    //        console.info("[marqueeProps] get style background-color value is: " + JSON.stringify(obj.$styles.get('background-color')));
-    //        done();
-    //    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
@@ -590,44 +563,6 @@ describe('marqueePropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testmarqueeIfPropFalse
-     * @tc.desc      ACE
-     */
-    //    it('testmarqueeIfPropFalse', 0, async function (done) {
-    //        console.info('testmarqueeIfPropFalse START');
-    //        console.info("[marqueeProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropFalse);
-    //        console.info("[marqueeProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[marqueeProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('marquee')
-    //        expect(obj.$attrs.id).assertEqual('ifPropFalse')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testmarqueeIfPropNone
-     * @tc.desc      ACE
-     */
-    //    it('testmarqueeIfPropNone', 0, async function (done) {
-    //        console.info('testmarqueeIfPropNone START');
-    //        console.info("[marqueeProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropNone);
-    //        console.info("[marqueeProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[marqueeProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('marquee')
-    //        expect(obj.$attrs.id).assertEqual('ifPropNone')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testmarqueeShowPropTrue
      * @tc.desc      ACE
      */
@@ -725,6 +660,7 @@ describe('marqueePropsJsTest', function () {
         console.info("[marqueeProps] get scrollamount value is: " + JSON.stringify(obj.$attrs.scrollamount));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testmarqueeShowPropNone
@@ -744,7 +680,8 @@ describe('marqueePropsJsTest', function () {
         console.info("[marqueeProps] get scrollamount value is: " + JSON.stringify(obj.$attrs.scrollamount));
         done();
     });
-/**
+
+    /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testmarqueeShowPropNone
      * @tc.desc      ACE
@@ -783,6 +720,7 @@ it('testmarqueeLoopPropNull', 0, async function (done) {
         console.info("[marqueeProps] get loop value is: " + JSON.stringify(obj.$attrs.loop));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testmarqueeShowPropNone
@@ -802,6 +740,7 @@ it('testmarqueeLoopPropNull', 0, async function (done) {
         console.info("[marqueeProps] get loop value is: " + JSON.stringify(obj.$attrs.loop));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testmarqueeShowPropNone
@@ -841,6 +780,7 @@ it('testmarqueeLoopPropNull', 0, async function (done) {
         console.info("[marqueeProps] get direction value is: " + JSON.stringify(obj.$attrs.direction));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testmarqueeShowPropNone
