@@ -13,16 +13,7 @@
  * limitations under the License.
  */
 
-import prompt from '@system.prompt';
 export default {
-    data: {
-        title: 'World'
-    },
-    changeFruit(e){
-        console.log(JSON.stringify(e))
-        prompt.showToast({
-            message: e.newValue
-        });
 
-    }
+
 }
