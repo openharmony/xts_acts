@@ -20,7 +20,7 @@ ohos_js_hap_suite("AccessibleCheckAbility") {
     ":hjs_demo_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "AccessibleCheckAbility"
+  hap_name = "ActsAccessibleCheckAbilityTest"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "./entry/src/main/js/default"
