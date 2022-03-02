@@ -84,7 +84,7 @@ describe('objectStoreTest', function () {
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.setSessionId("session1");
         if (objectTest != undefined && objectTest != null) {
-            expect("session1" == objectTest.sessionId3);
+            expect("session1" == objectTest.__sessionId);
         } else {
             console.log(TAG + "testOn001 joinSession failed");
         }
@@ -116,7 +116,7 @@ describe('objectStoreTest', function () {
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.setSessionId("session2");
         if (objectTest != undefined && objectTest != null) {
-            expect("session2" == objectTest.sessionId3);
+            expect("session2" == objectTest.__sessionId);
         } else {
             console.log(TAG + "testOn002 joinSession failed");
         }
@@ -147,7 +147,7 @@ describe('objectStoreTest', function () {
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.setSessionId("session3");
         if (objectTest != undefined && objectTest != null) {
-            expect("session3" == objectTest.sessionId3);
+            expect("session3" == objectTest.__sessionId);
         } else {
             console.log(TAG + "testOn003 joinSession failed");
         }
@@ -184,7 +184,7 @@ describe('objectStoreTest', function () {
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.setSessionId("session4");
         if (objectTest != undefined && objectTest != null) {
-            expect("session4" == objectTest.sessionId3);
+            expect("session4" == objectTest.__sessionId);
         } else {
             console.log(TAG + "testOn004 joinSession failed");
         }
@@ -207,7 +207,7 @@ describe('objectStoreTest', function () {
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.setSessionId("session5");
         if (objectTest != undefined && objectTest != null) {
-            expect("session5" == objectTest.sessionId3);
+            expect("session5" == objectTest.__sessionId);
         } else {
             console.log(TAG + "testOff001 joinSession failed");
         }
@@ -251,7 +251,7 @@ describe('objectStoreTest', function () {
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.setSessionId("session6");
         if (objectTest != undefined && objectTest != null) {
-            expect("session6" == objectTest.sessionId3);
+            expect("session6" == objectTest.__sessionId);
         } else {
             console.log(TAG + "testOff002 joinSession failed");
         }
@@ -283,14 +283,14 @@ describe('objectStoreTest', function () {
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.setSessionId("session7");
         if (objectTest != undefined && objectTest != null) {
-            expect("session7" == objectTest.sessionId3);
+            expect("session7" == objectTest.__sessionId);
         } else {
             console.log(TAG + "testMultiObjectOn001 joinSession failed");
         }
         var testObject = distributedObject.createDistributedObject({ name: "Eric", age: 81, isVis: true });
         testObject.setSessionId("testSession1");
         if (testObject != undefined && testObject != null) {
-            expect("testSession1").assertEqual(testObject.sessionId3);
+            expect("testSession1").assertEqual(testObject.__sessionId);
         } else {
             console.log(TAG + "testMultiObjectOn001 joinSession failed");
         }
@@ -329,7 +329,7 @@ describe('objectStoreTest', function () {
         try {
             object1.setSessionId("session11");
             if (object1 != undefined && object1 != null) {
-                expect("session11" == object1.sessionId3);
+                expect("session11" == object1.__sessionId);
             } else {
                 console.log(TAG + "testChangeSession001 joinSession session11 failed");
             }
@@ -449,7 +449,7 @@ describe('objectStoreTest', function () {
         });
         complexObject.setSessionId("session12");
         if (complexObject != undefined && complexObject != null) {
-            expect("session12" == complexObject.sessionId3);
+            expect("session12" == complexObject.__sessionId);
         } else {
             console.log(TAG + "testOnComplex001 joinSession session12 failed");
         }
@@ -478,7 +478,7 @@ describe('objectStoreTest', function () {
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.setSessionId("session13");
         if (objectTest != undefined && objectTest != null) {
-            expect("session13" == objectTest.sessionId3);
+            expect("session13" == objectTest.__sessionId);
         } else {
             console.log(TAG + "testMaxSize001 joinSession session13 failed");
         }
@@ -523,7 +523,7 @@ describe('objectStoreTest', function () {
             complexObject.setSessionId("session14");
             setSessionIdTime += Date.now() - st1;
             if (complexObject != undefined && complexObject != null) {
-                expect("session14" == complexObject.sessionId3);
+                expect("session14" == complexObject.__sessionId);
             } else {
                 console.log(TAG + "testPerformance001 joinSession session14 failed");
             }
