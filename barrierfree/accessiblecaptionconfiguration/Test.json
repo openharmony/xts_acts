@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "AccessibleCaptionConfiguration.hap"
+                "ActsAccessibleCaptionConfigurationTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

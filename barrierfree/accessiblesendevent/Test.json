@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "AccessibleSendEvent.hap"
+                "ActsAccessibleSendEventTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
