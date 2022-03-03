@@ -996,7 +996,7 @@ describe('aceJsTest', function () {
     it('testVideoComponent', 0, async function (done) {
         let result;
         let options = {
-            uri: 'pages/video/index'
+            uri: 'pages/video/router/index'
         }
         try {
             result = router.push(options)
@@ -1007,7 +1007,7 @@ describe('aceJsTest', function () {
         await sleep(5000)
         let pages = router.getState();
         console.info("[router.video] getState" + JSON.stringify(pages));
-        expect("pages/video/").assertEqual(pages.path);
+        expect("pages/video/router/").assertEqual(pages.path);
         done();
     });
 
@@ -1042,7 +1042,7 @@ describe('aceJsTest', function () {
     it('testGridContainerComponent', 0, async function (done) {
         let result;
         let options = {
-            uri: 'pages/gridContainer/index'
+            uri: 'pages/gridContainer/router/index'
         }
         try {
             result = router.push(options)
@@ -1053,7 +1053,7 @@ describe('aceJsTest', function () {
         await sleep(5000)
         let pages = router.getState();
         console.info("[router.gridContainer] getState" + JSON.stringify(pages));
-        expect("pages/gridContainer/").assertEqual(pages.path);
+        expect("pages/gridContainer/router/").assertEqual(pages.path);
         done();
     });
 
