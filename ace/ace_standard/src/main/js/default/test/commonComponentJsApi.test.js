@@ -137,7 +137,7 @@ describe('aceJsTest', function () {
             console.info('testButtonComponent START');
             let result;
             let options = {
-                uri: 'pages/input/index'
+                uri: 'pages/input/router/index'
             }
             try {
                 result = router.push(options)
@@ -148,7 +148,7 @@ describe('aceJsTest', function () {
             await sleep(1000)
             let pages = router.getState();
             console.info("[router.input] getState" + JSON.stringify(pages));
-            expect("pages/input/").assertEqual(pages.path);
+            expect("pages/input/router/").assertEqual(pages.path);
             done();
         });
 
@@ -161,7 +161,7 @@ describe('aceJsTest', function () {
             console.info('testSliderComponent START');
             let result;
             let options = {
-                uri: 'pages/slider/index'
+                uri: 'pages/slider/router/index'
             }
             try {
                 result = router.push(options)
@@ -172,7 +172,7 @@ describe('aceJsTest', function () {
             await sleep(1000)
             let pages = router.getState();
             console.info("[router.slider] getState" + JSON.stringify(pages));
-            expect("pages/slider/").assertEqual(pages.path);
+            expect("pages/slider/router/").assertEqual(pages.path);
             done();
         });
 
@@ -311,7 +311,7 @@ describe('aceJsTest', function () {
         it('testRatingComponent', 0, async function (done) {
             let result;
             let options = {
-                uri: 'pages/rating/index'
+                uri: 'pages/rating/router/index'
             }
             try {
                 result = router.push(options)
@@ -320,7 +320,7 @@ describe('aceJsTest', function () {
             }
             await sleep(1000)
             let pages = router.getState();
-            expect("pages/rating/").assertEqual(pages.path);
+            expect("pages/rating/router/").assertEqual(pages.path);
             done();
         });
 
@@ -374,7 +374,7 @@ describe('aceJsTest', function () {
         it('testTextareaComponent', 0, async function (done) {
             let result;
             let options = {
-                uri: 'pages/textarea/index'
+                uri: 'pages/textarea/router/index'
             }
             try {
                 result = router.push(options)
@@ -383,7 +383,7 @@ describe('aceJsTest', function () {
             }
             await sleep(1000)
             let pages = router.getState();
-            expect("pages/textarea/").assertEqual(pages.path);
+            expect("pages/textarea/router/").assertEqual(pages.path);
             done();
         });
 
@@ -584,7 +584,7 @@ describe('aceJsTest', function () {
         it('testSelectComponent', 0, async function (done) {
             let result;
             let options = {
-                uri: 'pages/select/index'
+                uri: 'pages/select/router/index'
             }
             try {
                 result = router.push(options)
@@ -593,7 +593,7 @@ describe('aceJsTest', function () {
             }
             await sleep(1000)
             let pages = router.getState();
-            expect("pages/select/").assertEqual(pages.path);
+            expect("pages/select/router/").assertEqual(pages.path);
             done();
         });
 
@@ -858,7 +858,7 @@ describe('aceJsTest', function () {
     it('testMarqueeComponent', 0, async function (done) {
         let result;
         let options = {
-            uri: 'pages/marquee/index'
+            uri: 'pages/marquee/router/index'
         }
         try {
             result = router.push(options)
@@ -869,7 +869,7 @@ describe('aceJsTest', function () {
         await sleep(5000)
         let pages = router.getState();
         console.info("[router.marquee] getState" + JSON.stringify(pages));
-        expect("pages/marquee/").assertEqual(pages.path);
+        expect("pages/marquee/router/").assertEqual(pages.path);
         done();
     });
 
@@ -904,7 +904,7 @@ describe('aceJsTest', function () {
     it('testImageAnimatorComponent', 0, async function (done) {
         let result;
         let options = {
-            uri: 'pages/imageAnimator/index'
+            uri: 'pages/imageAnimator/router/index'
         }
         try {
             result = router.push(options)
@@ -915,7 +915,7 @@ describe('aceJsTest', function () {
         await sleep(5000)
         let pages = router.getState();
         console.info("[router.imageAnimator] getState" + JSON.stringify(pages));
-        expect("pages/imageAnimator/").assertEqual(pages.path);
+        expect("pages/imageAnimator/router/").assertEqual(pages.path);
         done();
     });
 
