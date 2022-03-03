@@ -374,7 +374,7 @@ describe('aceJsTest', function () {
         it('testTextareaComponent', 0, async function (done) {
             let result;
             let options = {
-                uri: 'pages/textarea/index'
+                uri: 'pages/textarea/router/index'
             }
             try {
                 result = router.push(options)
@@ -383,7 +383,7 @@ describe('aceJsTest', function () {
             }
             await sleep(1000)
             let pages = router.getState();
-            expect("pages/textarea/").assertEqual(pages.path);
+            expect("pages/textarea/router/").assertEqual(pages.path);
             done();
         });
 
