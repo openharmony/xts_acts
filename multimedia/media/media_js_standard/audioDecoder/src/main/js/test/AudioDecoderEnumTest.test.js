@@ -74,74 +74,60 @@ describe('AudioDecoderEnum', function () {
     */
     it('SUB_MEDIA_AUDIO_DECODER_ENUM_AudioCaps_0100', 0, async function (done) {
         console.info("case test Test Interface AudioCaps");
-        await media.getMediaCapability().then((mediaCaps)  => {
-            console.info('getMediaCapability success');
-            if (typeof (mediaCaps) != 'undefined') {
-                mediaCaps.getAudioDecoderCaps().then((audioCapsArray)  => {
-                    console.info('getAudioDecoderCaps success');
-                    if (typeof (audioCapsArray) !== 'undefined') {
-                        console.info('audioCapsArray is not null');
-                        // check AudioCaps
-                        let audioCaps = audioCapsArray[0];
-                        expect(audioCaps.codecInfo !== undefined).assertTrue();
-
-                        // check AudioCaps.AVCodecInfo
-                        let avCodecInfo = audioCaps.codecInfo;
-                        expect(avCodecInfo.name !== undefined).assertTrue();
-                        console.info('avCodecInfo.name: '+ avCodecInfo.name);
-                        expect(avCodecInfo.type !== undefined).assertTrue();
-                        console.info('avCodecInfo.type: '+ avCodecInfo.type);
-                        expect(avCodecInfo.mimeType !== undefined).assertTrue();
-                        console.info('avCodecInfo.mimeType: '+ avCodecInfo.mimeType);
-                        expect(avCodecInfo.isHardwareAccelerated !== undefined).assertTrue();
-                        console.info('avCodecInfo.isHardwareAccelerated: '+ avCodecInfo.isHardwareAccelerated);
-                        expect(avCodecInfo.isSoftwareOnly !== undefined).assertTrue();
-                        console.info('avCodecInfo.isSoftwareOnly: '+ avCodecInfo.isSoftwareOnly);
-                        expect(avCodecInfo.isVendor !== undefined).assertTrue();
-                        console.info('avCodecInfo.isVendor: '+ avCodecInfo.isVendor);
-                        
-                        // check AudioCaps.supportedBitrate
-                        expect(audioCaps.supportedBitrate !== undefined).assertTrue();
-                        console.info('supportedBitrate.min: '+ audioCaps.supportedBitrate.min);
-                        console.info('supportedBitrate.max: '+ audioCaps.supportedBitrate.max);
-
-                        // check AudioCaps.supportedChannel
-                        expect(audioCaps.supportedChannel !== undefined).assertTrue();
-                        console.info('supportedChannel.min: '+ audioCaps.supportedChannel.min);
-                        console.info('supportedChannel.max: '+ audioCaps.supportedChannel.max); 
-                        
-                        // check AudioCaps.supportedFormats
-                        expect(audioCaps.supportedFormats !== undefined).assertTrue();
-                        console.info('audioCaps.supportedFormats: '+ audioCaps.supportedFormats);
-
-                        // check AudioCaps.supportedSampleRates
-                        expect(audioCaps.supportedSampleRates !== undefined).assertTrue();
-                        console.info('audioCaps.supportedSampleRates: '+ audioCaps.supportedSampleRates);
-
-                        // check AudioCaps.supportedProfiles
-                        expect(audioCaps.supportedProfiles !== undefined).assertTrue();
-                        console.info('audioCaps.supportedProfiles: '+ audioCaps.supportedProfiles);
-
-                        // check AudioCaps.supportedLevels
-                        expect(audioCaps.supportedLevels !== undefined).assertTrue();
-                        console.info('audioCaps.supportedLevels: '+ audioCaps.supportedLevels);
-
-                        // check AudioCaps.supportedComplexity
-                        expect(audioCaps.supportedComplexity !== undefined).assertTrue();
-                        console.info('supportedComplexity.min: '+ audioCaps.supportedComplexity.min);
-                        console.info('supportedComplexity.max: '+ audioCaps.supportedComplexity.max);
-                    } else {
-                        console.info('audioCapsArray is not defined');
-                        expect().assertFail();
-                        done();
-                    }
-                }, failCallback).catch(failCatch);
-            } else {
-                console.info('mediaCaps is not defined');
-                expect().assertFail();
-                done();
-            }
+        let audioDecodeProcessor;
+        let audioCaps;
+        await media.createAudioDecoderByName('avdec_aac').then((processor) => {
+            console.log("create createAudioDecoder success");
+            audioDecodeProcessor = processor;
         }, failCallback).catch(failCatch);
+        await audioDecodeProcessor.getAudioDecoderCaps().then((AudioCaps) => {
+            console.log("get AudioDecoderCaps success");
+            audioCaps = AudioCaps;
+        }, failCallback).catch(failCatch);
+        // check AudioCaps
+        expect(audioCaps.codecInfo !== undefined).assertTrue();
+
+        // check AudioCaps.AVCodecInfo
+        let avCodecInfo = audioCaps.codecInfo;
+        expect(avCodecInfo.name !== undefined).assertTrue();
+        console.info('avCodecInfo.name: '+ avCodecInfo.name);
+        expect(avCodecInfo.type !== undefined).assertTrue();
+        console.info('avCodecInfo.type: '+ avCodecInfo.type);
+        expect(avCodecInfo.mimeType !== undefined).assertTrue();
+        console.info('avCodecInfo.mimeType: '+ avCodecInfo.mimeType);
+        expect(avCodecInfo.isHardwareAccelerated !== undefined).assertTrue();
+        console.info('avCodecInfo.isHardwareAccelerated: '+ avCodecInfo.isHardwareAccelerated);
+        expect(avCodecInfo.isSoftwareOnly !== undefined).assertTrue();
+        console.info('avCodecInfo.isSoftwareOnly: '+ avCodecInfo.isSoftwareOnly);
+        expect(avCodecInfo.isVendor !== undefined).assertTrue();
+        console.info('avCodecInfo.isVendor: '+ avCodecInfo.isVendor);
+        
+        // check AudioCaps.supportedBitrate
+        expect(audioCaps.supportedBitrate !== undefined).assertTrue();
+        console.info('supportedBitrate.min: '+ audioCaps.supportedBitrate.min);
+        console.info('supportedBitrate.max: '+ audioCaps.supportedBitrate.max);
+
+        // check AudioCaps.supportedChannel
+        expect(audioCaps.supportedChannel !== undefined).assertTrue();
+        console.info('supportedChannel.min: '+ audioCaps.supportedChannel.min);
+        console.info('supportedChannel.max: '+ audioCaps.supportedChannel.max); 
+        
+        // check AudioCaps.supportedFormats
+        expect(audioCaps.supportedFormats !== undefined).assertTrue();
+        console.info('audioCaps.supportedFormats: '+ audioCaps.supportedFormats);
+
+        // check AudioCaps.supportedSampleRates
+        expect(audioCaps.supportedSampleRates !== undefined).assertTrue();
+        console.info('audioCaps.supportedSampleRates: '+ audioCaps.supportedSampleRates);
+
+        // check AudioCaps.supportedProfiles
+        expect(audioCaps.supportedProfiles !== undefined).assertTrue();
+        console.info('audioCaps.supportedProfiles: '+ audioCaps.supportedProfiles);
+
+        // check AudioCaps.supportedComplexity
+        expect(audioCaps.supportedComplexity !== undefined).assertTrue();
+        console.info('supportedComplexity.min: '+ audioCaps.supportedComplexity.min);
+        console.info('supportedComplexity.max: '+ audioCaps.supportedComplexity.max);
         done();
     })
 
