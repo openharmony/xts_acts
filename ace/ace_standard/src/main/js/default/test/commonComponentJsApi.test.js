@@ -584,7 +584,7 @@ describe('aceJsTest', function () {
         it('testSelectComponent', 0, async function (done) {
             let result;
             let options = {
-                uri: 'pages/select/index'
+                uri: 'pages/select/router/index'
             }
             try {
                 result = router.push(options)
@@ -593,7 +593,7 @@ describe('aceJsTest', function () {
             }
             await sleep(1000)
             let pages = router.getState();
-            expect("pages/select/").assertEqual(pages.path);
+            expect("pages/select/router/").assertEqual(pages.path);
             done();
         });
 
