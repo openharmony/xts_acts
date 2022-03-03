@@ -114,7 +114,8 @@ export default {
 
     onShow(){
         this.getCommonPropValues();
-        this.getSpecificPropValues();
+        this.getSpecificPropValuesOne();
+        this.getSpecificPropValuesTwo();
         globalThis.value = {
             idProp : this.idProp, classProp : this.classProp, classPropNone : this.classPropNone,
             styleProp : this.styleProp, refProp : this.refProp, refPropNone : this.refPropNone,
@@ -193,7 +194,7 @@ export default {
         this.showPropNone = this.$element("showPropNone").getInspector()
     },
 
-    getSpecificPropValues(){
+    getSpecificPropValuesOne(){
         this.typeText = this.$element("typeText").getInspector()
         this.typeEmail = this.$element("typeEmail").getInspector()
         this.typeDate = this.$element("typeDate").getInspector()
@@ -204,15 +205,12 @@ export default {
         this.typeCheckbox = this.$element("typeCheckbox").getInspector()
         this.typeRadio = this.$element("typeRadio").getInspector()
         this.typeNone = this.$element("typeNone").getInspector()
-
         this.checkboxFalse = this.$element("checkboxFalse").getInspector()
         this.checkboxTrue = this.$element("checkboxTrue").getInspector()
         this.checkboxNone = this.$element("checkboxNone").getInspector()
         this.radioFalse = this.$element("radioFalse").getInspector()
         this.radioTrue = this.$element("radioTrue").getInspector()
         this.radioNone = this.$element("radioNone").getInspector()
-        
-
         this.inputName = this.$element("inputName").getInspector()
         this.inputNameNone = this.$element("inputNameNone").getInspector()
         this.inputValue = this.$element("inputValue").getInspector()
@@ -230,6 +228,9 @@ export default {
         this.passwordPlaceholder = this.$element("passwordPlaceholder").getInspector()
         this.passwordPlaceholderNone = this.$element("passwordPlaceholderNone").getInspector()
         this.maxlength = this.$element("maxlength").getInspector()
+
+    },
+    getSpecificPropValuesTwo(){
         this.enterkeytypeDefault = this.$element("enterkeytypeDefault").getInspector()
         this.enterkeytypeNext = this.$element("enterkeytypeNext").getInspector()
         this.enterkeytypeGo = this.$element("enterkeytypeGo").getInspector()
