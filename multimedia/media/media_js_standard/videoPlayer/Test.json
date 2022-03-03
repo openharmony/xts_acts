@@ -8,22 +8,21 @@
     },
     "kits": [
         {
-            "type": "PushKit",
-            "pre-push": [
-            ],
-            "push": [
-                "./resource/audio/H264_AAC.mp4 ->/data/media/"
-            ]
+          "type": "PushKit",
+          "pre-push": [
+          ],
+          "push": [
+            "./resource/audio/H264_AAC.mp4 ->/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoplayer/"
+          ]
         },
 		{
-            "type": "ShellKit",
-            "run-command": [
-                "chmod -R 666 /data/media/*",
-                "setenforce 0"
-            ],
-            "teardown-command":[
-                "setenforce 1"
-            ]
+          "type": "ShellKit",
+          "run-command": [
+            "setenforce 0"
+          ],
+          "teardown-command":[
+            "setenforce 1"
+          ]
         },
         {
             "test-file-name": [
