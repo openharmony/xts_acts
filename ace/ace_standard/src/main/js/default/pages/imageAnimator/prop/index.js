@@ -180,19 +180,3 @@ export default {
         this.typeFillmodeNone = this.$element("typeFillmodeNone").getInspector()
     }
 }
-/*
- *   typeImage : null,
-        typePredecode0 : null,
-        typePredecode2 : null,
-        typeIterationInfi : null,
-        typeIteration3 : null,
-        typeReverseTrue : null,
-        typeReverseFalse : null,
-        typeFixedsizeTrue : null,
-        typeFixedsizeFalse : null,
-        typeDuration3 : null,
-        typeDuration6 : null,
-        typeFillmodeForwards : null,
-        typeFillmodeNone : null,
-
- */
