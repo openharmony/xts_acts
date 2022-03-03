@@ -15,10 +15,11 @@
 
 import media from '@ohos.multimedia.media'
 import router from '@system.router'
+import fileIO from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('VideoPlayerAPICallbackTest', function () {
-    const AUDIO_SOURCE = 'file://data/media/H264_AAC.mp4';
+    const AUDIO_SOURCE = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoplayer/H264_AAC.mp4';
     const PLAY_TIME = 1000;
     const SEEK_TIME = 5000;
     const SEEK_CLOSEST = 3;
@@ -42,7 +43,11 @@ describe('VideoPlayerAPICallbackTest', function () {
     const END_EVENT = 'end';
     const VOLUME_VALUE = 1;
     const SPEED_VALUE = 1;
+    const NEXT_FRAME_TIME = 8333;
+    const PREV_FRAME_TIME = 4166;
     let surfaceID = '';
+    let fdPath;
+    let fdValue;
     let events = require('events');
     let eventEmitter = new events.EventEmitter();
 
@@ -60,9 +65,23 @@ describe('VideoPlayerAPICallbackTest', function () {
         console.info('afterEach case');
     })
 
-    afterAll(function() {
+    afterAll(async function() {
+        await fileIO.close(fdValue);
         console.info('afterAll case');
     })
+
+    async function getFd() {
+        fdPath = 'fd://';
+        await fileIO.open(AUDIO_SOURCE).then((fdNumber) => {
+            fdPath = fdPath + '' + fdNumber;
+            fdValue = fdNumber;
+            console.info('[fileIO]case open fd success,fdPath is ' + fdPath);
+        }, (err) => {
+            console.info('[fileIO]case open fd failed');
+        }).catch((err) => {
+            console.info('[fileIO]case catch open fd failed');
+        });
+    }
 
     async function toNewPage() {
         let path = 'pages/surfaceTest/surfaceTest';
@@ -124,7 +143,7 @@ describe('VideoPlayerAPICallbackTest', function () {
 
     eventEmitter.on(SETSURFACE_EVENT, (videoPlayer, steps, done) => {
         steps.shift();
-        videoPlayer.url = AUDIO_SOURCE;
+        videoPlayer.url = fdPath;
         videoPlayer.setDisplaySurface(surfaceID, (err) => {
             if (typeof (err) == 'undefined') {
                 expect(videoPlayer.state).assertEqual('idle');
@@ -141,7 +160,7 @@ describe('VideoPlayerAPICallbackTest', function () {
 
     eventEmitter.on(PREPARE_EVENT, (videoPlayer, steps, done) => {
         steps.shift();
-        videoPlayer.url = AUDIO_SOURCE;
+        videoPlayer.url = fdPath;
         videoPlayer.prepare((err) => {
             if (typeof (err) == 'undefined') {
                 expect(videoPlayer.state).assertEqual('prepared');
@@ -273,13 +292,38 @@ describe('VideoPlayerAPICallbackTest', function () {
         });
     });
 
+    function checkSeekTime(seekMode, seekTime, seekDoneTime) {
+        switch (seekMode) {
+            case media.SeekMode.SEEK_NEXT_SYNC:
+                if (seekTime == 0) {
+                    expect(seekDoneTime).assertEqual(0);
+                } else if (seekTime == DURATION_TIME) {
+                    expect(seekDoneTime).assertEqual(DURATION_TIME);
+                } else {
+                    expect(seekDoneTime).assertEqual(NEXT_FRAME_TIME);
+                }
+                break;
+            case media.SeekMode.SEEK_PREV_SYNC:
+                if (seekTime == 0) {
+                    expect(seekDoneTime).assertEqual(0);
+                } else if (seekTime == DURATION_TIME) {
+                    expect(seekDoneTime).assertEqual(PREV_FRAME_TIME);
+                } else {
+                    expect(seekDoneTime).assertEqual(PREV_FRAME_TIME);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
     eventEmitter.on(SEEK_MODE_EVENT, (videoPlayer, steps, done) => {
         let seekTime = steps[1];
         steps.shift();
         steps.shift();
-        videoPlayer.seek(seekTime, SEEK_CLOSEST, (err, seekDoneTime) => {
+        videoPlayer.seek(seekTime, media.SeekMode.SEEK_NEXT_SYNC, (err, seekDoneTime) => {
             if (typeof (err) == 'undefined') {
-                expect(seekDoneTime).assertEqual(SEEK_TIME);
+                checkSeekTime(media.SeekMode.SEEK_NEXT_SYNC, seekTime, seekDoneTime);
                 console.info('case seek success and seekDoneTime is '+ seekDoneTime);
                 toNextStep(videoPlayer, steps, done);
             } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
@@ -314,6 +358,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         steps.shift();
         videoPlayer.setSpeed(speedValue, (err, speedMode) => {
             if (typeof (err) == 'undefined') {
+                expect(speedValue).assertEqual(speedMode);
                 console.info('case setSpeed success and speedMode is '+ speedMode);
                 toNextStep(videoPlayer, steps, done);
             } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
@@ -334,6 +379,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0100', 0, async function (done) {
+        await getFd();
         setTimeout(function() {
             surfaceID = globalThis.value;
             console.info('case new surfaceID is ' + surfaceID);

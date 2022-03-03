@@ -80,6 +80,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     beforeEach(function () {
+        sleep(5000);
         console.info('beforeEach case');
     })
 

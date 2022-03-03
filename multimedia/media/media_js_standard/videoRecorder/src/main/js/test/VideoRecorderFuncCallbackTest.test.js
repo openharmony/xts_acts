@@ -98,6 +98,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     beforeEach(function () {
+        sleep(5000);
         console.info('beforeEach case');
     })
 
@@ -735,7 +736,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1900', 0, async function (done) {
         await getFd('37.mp4');
-        onlyVideoConfig.url = fdPath;
+        videoConfig.url = fdPath;
         videoConfig.orientationHint = 90;
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT,
