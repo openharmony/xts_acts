@@ -20,76 +20,33 @@
                 通用样式
             </text>
             <text class="sub-title">
-                image-animator通用样式1
+                通用样式1
             </text>
-            <image-animator images="{{images}}" duration="6s" class="style1">
+            <image-animator images="" duration="" class="style1">
             </image-animator>
             <text  class="sub-title">
-                image-animator通用样式2
+                通用样式2
             </text>
-            <image-animator images="{{images}}" duration="6s" class="style2">
+            <image-animator images="" duration="" class="style2">
             </image-animator>
             <text class="sub-title">
-                image-animator通用样式3
+                通用样式3
             </text>
-            <image-animator images="{{images}}" duration="6s" class="style3">
+            <image-animator images="" duration="" class="style3">
             </image-animator>
             <text  class="sub-title">
-                image-animator通用样式4
+                通用样式4
             </text>
-            <image-animator images="{{images}}" duration="6s" class="style4">
+            <image-animator images="" duration="" class="style4">
             </image-animator>
             <text  class="sub-title">
-                image-animator通用样式5
+                通用样式5
             </text>
             <div class="contain1">
-                <image-animator images="{{images}}" duration="6s" class="style5">
+                <image-animator images="" duration="" class="style5">
                 </image-animator>
-                <image-animator images="{{images}}" duration="6s" class="style6">
+                <image-animator images="" duration="" class="style6">
                 </image-animator>
-            </div>
-            <text  class="sub-title">
-                image-animator特有样式
-            </text>
-            <div class="style7">
-                <image-animator images="" duration="" class="flex-item color-primary">
-                </image-animator>
-                <image-animator images="" duration="" class="flex-item color-warning">
-                </image-animator>
-                <image-animator images="" duration="" class="flex-item color-success">
-                </image-animator>
-            </div>
-            <text  class="sub-title">
-                image-animator特有样式1
-            </text>
-            <div class="style8">
-                <image-animator images="" duration=""  class="flex-item color-primary">
-                </image-animator>
-                <image-animator images="" duration=""  class="flex-item color-warning">
-                </image-animator>
-                <image-animator images="" duration=""  class="flex-item color-success">
-                </image-animator>
-                <image-animator images="" duration=""  class="flex-item color-primary">
-                </image-animator>
-                <image-animator images="" duration=""  class="flex-item color-warning">
-                </image-animator>
-                <image-animator images="" duration=""  class="flex-item color-success">
-                </image-animator>
-                <image-animator images="" duration=""  class="flex-item color-primary">
-                </image-animator>
-                <image-animator images="" duration=""  class="flex-item color-warning">
-                </image-animator>
-                <image-animator images="" duration=""  class="flex-item color-success">
-                </image-animator>
-            </div>
-            <text  class="sub-title">
-                image-animator 特有样式2
-            </text>
-            <div class="style9">
-                <image-animator images="" duration="" class="grid-child grid-left-top"></image-animator>
-                <image-animator images="" duration="" class="grid-child grid-left-bottom"></image-animator>
-                <image-animator images="" duration="" class="grid-child grid-right-top"></image-animator>
-                <image-animator images="" duration="" class="grid-child grid-right-bottom"></image-animator>
             </div>
         </div>
         <divider style="color: #000000; stroke-width: 2px;" vertical="false">
@@ -99,12 +56,12 @@
                 动画样式
             </text>
             <text class="sub-title">
-                image-animator动画样式1
+               动画样式1
             </text>
             <image-animator images="" duration="" class="ani1" >
             </image-animator>
             <text class="sub-title">
-                image-animator动画样式2
+               动画样式2
             </text>
             <image-animator images="" duration="" class="ani2" >
             </image-animator>
@@ -120,32 +77,32 @@
                 通用属性
             </text>
             <text class="sub-title">
-                image-animator通用属性1
+                通用属性1
             </text>
-            <image-animator images="{{images}}" duration="6s" id="prop1" class="prop1"
+            <image-animator images="" duration="" id="prop1" class="prop1"
                  disabled = "true" focusable ="true"
                  data-name ="prop1" click-effect="spring-medium"
                  dir ="rtl">
             </image-animator>
             <text  class="sub-title">
-                image-animator通用属性2
+                通用属性2
             </text>
-            <image-animator images="{{images}}" duration="6s" class="prop2" ref ="prop2"
+            <image-animator images="" duration="" class="prop2" ref ="prop2"
                  disabled = "false" focusable ="false"
                  data-name ="prop2" click-effect="spring-large"
                  dir ="ltr">
             </image-animator>
             <text  class="sub-title">
-                image-animator通用属性3
+                通用属性3
             </text>
-            <image-animator images="{{images}}" duration="6s" style="height:30px; color: #679855; margin: 5px;" class="prop3">
+            <image-animator images="" duration="" style="height:30px; background-color: #679855; margin: 5px;" class="prop3">
             </image-animator>
             <text  class="sub-title">
-                image-animator特有属性
+               特有属性
             </text>
-            <image-animator images="{{images}}" duration="8s" style="height:30px; color: #679855; margin: 5px;"
-                            class="prop3" predecode="0" iteration="3"
-                            reverse="true" fixedsize="false">
+            <image-animator images="{{images}}" duration="4s" style="height:30px; background-color: #679855; margin: 5px;"
+                            class="prop3" predecode="0" iteration="3" predecode="2"
+                            reverse="true" fixedsize="false" fillmode="forwards">
             </image-animator>
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">
@@ -155,22 +112,22 @@
                 通用事件
             </text>
             <text  class="sub-title">
-                div通用事件1
+                通用事件1
             </text>
-            <image-animator  images="{{images}}" duration="8s" class ="event1" ontouchstart="touchStart" ontouchmove="touchMove"
+            <image-animator  images="" duration="" class ="event1" ontouchstart="touchStart" ontouchmove="touchMove"
                  ontouchend="touchEnd" ontouchcancel="touchCancel">
             </image-animator>
             <text  class="sub-title">
-                div通用事件2
+               通用事件2
             </text>
-            <image-animator images="{{images}}" duration="8s" class ="event2" onclick="click" ondoubleclick="doubleClick"
+            <image-animator images="" duration="" class ="event2" onclick="click" ondoubleclick="doubleClick"
                  onlongpress="longPress" onfocus="focus" onblur="blur" onkey="key"
                  onswipe="swipe" onattached="attached" ondetached="detached">
             </image-animator>
             <text  class="sub-title">
-                div通用事件3
+               通用事件3
             </text>
-            <image-animator images="{{images}}" duration="8s" class ="event3" onpinchstart="pinchStart" onpinchupdate="pinchUpdate"
+            <image-animator images="" duration="" class ="event3" onpinchstart="pinchStart" onpinchupdate="pinchUpdate"
                  onpinchend="pinchEnd" onpinchcancel="pinchCancel"
                  ondragstart="dragStart" ondrag="drag"
                  ondragend="dragEnd" ondragenter="dragEnter"
@@ -178,9 +135,9 @@
                  ondrop="drop">
             </image-animator>
             <text  class="sub-title">
-                div特有事件1
+                特有事件1
             </text>
-            <image-animator  ref="animator" fixedsize="true" images="{{images}}" duration="1s" @resume='resume' @start="start" @stop='stop' @pause='pause' class ="event5" >
+            <image-animator  ref="animator" fixedsize="true" images="{{images}}" duration="2s" @resume='resume' @start="start" @stop='stop' @pause='pause' class ="event5" >
             </image-animator>
 
         </div>
@@ -191,22 +148,22 @@
                 通用方法
             </text>
             <text class="sub-title">
-                div通用方法1
+                通用方法1
             </text>
-            <image-animator images="{{images}}" duration="8s" id="function1" class="function1" ontouchstart="functionTest1">
+            <image-animator images="" duration="" id="function1" class="function1" ontouchstart="functionTest1">
             </image-animator>
             <text class="sub-title">
-                div通用方法2
+                通用方法2
             </text>
-            <image-animator images="{{images}}" duration="8s" id="function2" class="function2" ontouchstart="functionTest2">
+            <image-animator images="" duration="" id="function2" class="function2" ontouchstart="functionTest2">
             </image-animator>
             <text class="sub-title">
-                div通用方法3
+                通用方法3
             </text>
-            <image-animator images="{{images}}" duration="8s" id="function3" class="function3" ontouchstart="functionTest3">
+            <image-animator images="" duration="" id="function3" class="function3" ontouchstart="functionTest3">
             </image-animator>
             <text class="sub-title">
-                div特有方法
+                特有方法
             </text>
             <div class="flex-class">
                 <button onclick="handleStart">
@@ -234,36 +191,36 @@
                 渐变样式
             </text>
             <text class="sub-title">
-                div渐变样式1
+                渐变样式1
             </text>
             <image-animator images="" duration="" class="gradient1">
             </image-animator>
             <text  class="sub-title">
-                div渐变样式2
+                渐变样式2
             </text>
             <image-animator images="" duration="" class="gradient2">
             </image-animator>
             <text  class="sub-title">
-                div渐变样式3
+               渐变样式3
             </text>
             <image-animator images="" duration="" class="gradient3">
             </image-animator>
             <text  class="sub-title">
-                div渐变样式4
+               渐变样式4
             </text>
             <image-animator images="" duration="" class="gradient4">
             </image-animator>
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">
         </div>
-        <div class="access-container">
+        <div class="accessibility-container">
             <text class="title">
                 无障碍
             </text>
             <text class="sub-title">
-                div无障碍1
+               无障碍1
             </text>
-            <image-animator images="" duration="" class="access1" accessibilitygroup ="true"
+            <image-animator images="" duration="" class="accessibility1" accessibilitygroup ="true"
                  accessibilitytext="这是div"
                  accessibilitydescription="点击此按键会弹出一个对话框"
                  accessibilityimportance="no-hide-descendants">
@@ -276,7 +233,7 @@
                 原子布局
             </text>
             <text class="sub-title">
-                div原子布局1
+               原子布局1
             </text>
             <div style="flex-direction: row;height: 30px;width: 100%;">
                 <image-animator images="" duration="" style="width:20px;height:20px;background-color: blue;display-index: 1;">
@@ -293,7 +250,7 @@
                 </image-animator>
             </div>
             <text class="sub-title">
-                div原子布局2
+                原子布局2
             </text>
             <div style="flex-direction: row;height: 30px;width: 100%;">
                 <image-animator images="" duration="" style="height:20px;background-color: blue;flex-weight: 1;">
@@ -310,7 +267,7 @@
                 </image-animator>
             </div>
             <text class="sub-title">
-                div原子布局3
+               原子布局3
             </text>
             <div style="flex-direction: row;height:60px;width: 100%;">
                 <image-animator images="" duration="" style="width:30px;background-color: blue;aspect-ratio: 0.6;">
@@ -333,7 +290,7 @@
                     多模输入
                 </text>
                 <text class="sub-title">
-                    div多模输入1
+                    多模输入1
                 </text>
                 <image-animator images="" duration="" class="multiMode1" voicelabel = "voice"
                      subscriptflag="on" subscriptlabel="div" scenelabel="common">
