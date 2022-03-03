@@ -303,8 +303,8 @@ describe('imageAnimatorPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('image-animator')
         expect(obj.$attrs.id).assertEqual('dataProp')
-        expect(obj.$attrs.dataimageAnimator).assertEqual(undefined);
-        console.info("[imageAnimatorProps] get dataimageAnimator value is: " + JSON.stringify(obj.$attrs.dataimageAnimator));
+        expect(obj.$attrs.data).assertEqual(undefined);
+        console.info("[imageAnimatorProps] get data value is: " + JSON.stringify(obj.$attrs.data));
         done();
     });
 
@@ -323,8 +323,8 @@ describe('imageAnimatorPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('image-animator')
         expect(obj.$attrs.id).assertEqual('dataPropNone')
-        expect(obj.$attrs.dataimageAnimator).assertEqual(undefined)
-        console.info("[imageAnimatorProps] get dataimageAnimator value is: " + JSON.stringify(obj.$attrs.dataimageAnimator));
+        expect(obj.$attrs.data).assertEqual(undefined)
+        console.info("[imageAnimatorProps] get data value is: " + JSON.stringify(obj.$attrs.data));
         done();
     });
 
