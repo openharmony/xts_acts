@@ -67,21 +67,22 @@ export default function GetabilityInfo() {
      * @tc.desc: Check the return value of the interface (by callback)
      * @tc.level   0
      */
-    it('bundle_GetabilityInfo_test_0200', 0, async function (done) {
+	it('bundle_GetabilityInfo_test_0200', 0, async function (done) {
       console.info('[bundle_GetabilityInfo_test_0200] START');
       await Utils.sleep(1000);
+      let mData;
       var timeOldStamp = await Utils.getNowTime();
-      bundleManager.getAbilityInfo(bundleName, abilityName, (err, data) => {
+      await bundleManager.getAbilityInfo(bundleName, abilityName, (err, data) => {
         var timeNewStamp = Utils.getNowTime();
         Utils.getDurationTime('bundle_GetabilityInfo_test_0200', timeOldStamp, timeNewStamp)
         if (err) {
           console.error('[bundle_GetabilityInfo_test_0200]Operation failed. Cause: ' + JSON.stringify(err));
         }
-        console.info('[bundle_GetabilityInfo_test_0200]Operation successful. Data:' + JSON.stringify(data));
         console.info('[bundle_GetabilityInfo_test_0200] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        mData = data;
       })
-      var callback = await bundleManager.getAbilityInfo(bundleName, abilityName);
-      checkAbilityInfo(callback);
+      await Utils.sleep(2000);
+      checkAbilityInfo(mData);
       done();
     });
 
