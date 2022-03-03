@@ -16,24 +16,25 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import accessibility from '@ohos.accessibility'
 //import accessibility from '@ohos.application.AccessibilityExtension'
 
+
 describe('AccessibleCaptionConfiguration', function () {
 
-    beforeEach(async function (done) {
-        console.info(`AccessibleCaptionConfiguration: beforeEach starts`);
-		let captionManager = accessibility.getCaptionsManager();
-		captionManager.off("enableChange");
-		captionManager.off("styleChange");
-        done();
-    })
+  beforeEach(async function (done) {
+    console.info(`AccessibleCaptionConfiguration: beforeEach starts`);
+    let captionManager = accessibility.getCaptionsManager();
+    captionManager.off("enableChange");
+    captionManager.off("styleChange");
+    done();
+  })
 
-    afterEach(async function (done) {
-        console.info(`AccessibleCaptionConfiguration: afterEach starts`);
-		let captionManager = accessibility.getCaptionsManager();
-		captionManager.off("enableChange");
-		captionManager.off("styleChange");
-        setTimeout(done, 1000);
-    })
-	
+  afterEach(async function (done) {
+    console.info(`AccessibleCaptionConfiguration: afterEach starts`);
+    let captionManager = accessibility.getCaptionsManager();
+    captionManager.off("enableChange");
+    captionManager.off("styleChange");
+    setTimeout(done, 1000);
+  })
+
   var CaptionsStyle = {
     fontFamily: "default",
     fontScale: 75,
@@ -51,7 +52,6 @@ describe('AccessibleCaptionConfiguration', function () {
     backgroundColor: "pink",
     windowColor: "green"
   }
-
 
   /*
    * @tc.number  CaptionConfiguration_0010
@@ -105,17 +105,17 @@ describe('AccessibleCaptionConfiguration', function () {
    * @tc.size    SmallTest
    * @tc.type    User
    */
-    it('CaptionConfiguration_0020', 0, async function (done) {
-      console.info('CaptionConfiguration_0020');
-      let captionManager = accessibility.getCaptionsManager();
-      captionManager.style = CaptionsStyle;
-      let stateEventType = 'styleChange';
-      captionManager.on(stateEventType, (data) => {
-        expect(true).assertEqual(true);
-        done();
-      });
-      captionManager.style = StyleTest;
-    })
+  it('CaptionConfiguration_0020', 0, async function (done) {
+    console.info('CaptionConfiguration_0020');
+    let captionManager = accessibility.getCaptionsManager();
+    captionManager.style = CaptionsStyle;
+    let stateEventType = 'styleChange';
+    captionManager.on(stateEventType, (data) => {
+      expect(true).assertEqual(true);
+      done();
+    });
+    captionManager.style = StyleTest;
+  })
 
   /*
    * @tc.number  CaptionConfiguration_0021
@@ -237,6 +237,58 @@ describe('AccessibleCaptionConfiguration', function () {
     captionManager.style.windowColor = "TmepwindowColor";
   })
 
+
+  /*
+   * @tc.number  CaptionConfiguration_0030
+   * @tc.name    CaptionConfiguration_0030
+   * @tc.desc    The parameter input is 'enableChange', test the captionManager.off() function,
+   *             and return true
+   * @tc.size    SmallTest
+   * @tc.type    User
+   */
+  it('CaptionConfiguration_0030', 0, async function (done) {
+    console.info('CaptionConfiguration_0030');
+    let stateEventType = 'enableChange';
+    let captionManager = accessibility.getCaptionsManager();
+    captionManager.off(stateEventType);
+    captionManager.enabled = false;
+    captionManager.on(stateEventType, (data) => {
+      let ret = false;
+      expect(ret).assertEqual(true);
+    });
+    let ret = captionManager.off(stateEventType);
+    captionManager.enabled = true;
+    expect(true).assertEqual(true);
+    done();
+  })
+
+  /*
+   * @tc.number  CaptionConfiguration_0031
+   * @tc.name    CaptionConfiguration_0031
+   * @tc.desc    The parameter input is 'enableChange', test the captionManager.off() function,
+   *             and return true
+   * @tc.size    SmallTest
+   * @tc.type    User
+   */
+  it('CaptionConfiguration_0031', 0, async function (done) {
+    console.info('CaptionConfiguration_0031');
+    let stateEventType = 'enableChange';
+    let captionManager = accessibility.getCaptionsManager();
+    captionManager.off(stateEventType);
+    captionManager.enabled = true;
+    captionManager.on(stateEventType, (data) => {
+      let ret = false;
+      expect(ret).assertEqual(true);
+    });
+    captionManager.off(stateEventType, (data) => {
+      expect(data).assertEqual(true);
+    });
+    captionManager.enabled = false;
+
+    expect(true).assertEqual(true);
+    done();
+  })
+
   /*
    * @tc.number  CaptionConfiguration_0032
    * @tc.name    CaptionConfiguration_0032
@@ -262,6 +314,57 @@ describe('AccessibleCaptionConfiguration', function () {
   })
 
   /*
+   * @tc.number  CaptionConfiguration_0040
+   * @tc.name    CaptionConfiguration_0040
+   * @tc.desc    The parameter input is 'styleChange', test the captionManager.off() function,
+   *             and return true
+   * @tc.size    SmallTest
+   * @tc.type    User
+   */
+  it('CaptionConfiguration_0040', 0, async function (done) {
+    console.info('CaptionConfiguration_0040');
+    let stateEventType = 'styleChange';
+    let captionManager = accessibility.getCaptionsManager();
+    captionManager.off(stateEventType);
+    captionManager.on(stateEventType, (data) => {
+      let ret = false;
+      expect(ret).assertEqual(true);
+    });
+    captionManager.off(stateEventType);
+    captionManager.style = StyleTest;
+    done();
+  })
+
+  /*
+   * @tc.number  CaptionConfiguration_0041
+   * @tc.name    CaptionConfiguration_0041
+   * @tc.desc    The parameter input is 'styleChange', test the captionManager.off() function,
+   *             and return true
+   * @tc.size    SmallTest
+   * @tc.type    User
+   */
+  it('CaptionConfiguration_0041', 0, async function (done) {
+    console.info('CaptionConfiguration_0041');
+    let stateEventType = 'styleChange';
+    let captionManager = accessibility.getCaptionsManager();
+    captionManager.off(stateEventType);
+    captionManager.on(stateEventType, (data) => {
+      let ret = false;
+      expect(ret).assertEqual(true);
+    });
+    captionManager.off(stateEventType, (data) => {
+    expect(data.fontFamily).assertEqual(StyleTest.fontFamily);
+    expect(data.fontScale).assertEqual(StyleTest.fontScale);
+    expect(data.fontColor).assertEqual(StyleTest.fontColor);
+    expect(data.fontEdgeType).assertEqual(StyleTest.fontEdgeType);
+    expect(data.backgroundColor).assertEqual(StyleTest.backgroundColor);
+    expect(data.windowColor).assertEqual(StyleTest.windowColor);
+    });
+    captionManager.style = CaptionsStyle;
+    done();
+  })
+
+  /*
    * @tc.number  CaptionConfiguration_0042
    * @tc.name    CaptionConfiguration_0042
    * @tc.desc    The parameter input is 'styleChange', test the captionManager.off() function,
@@ -282,7 +385,6 @@ describe('AccessibleCaptionConfiguration', function () {
     });
   })
 
-
   /*
    * @tc.number  CaptionConfiguration_0050
    * @tc.name    CaptionConfiguration_0050
@@ -292,13 +394,13 @@ describe('AccessibleCaptionConfiguration', function () {
    * @tc.type    User
    */
   it('CaptionConfiguration_0050', 0, async function (done) {
-      console.info('CaptionConfiguration_0050');
-      let captionManager = accessibility.getCaptionsManager();
-      let fontFamily = "default";
-      captionManager.style.fontFamily = fontFamily;
-      let value = captionManager.style.fontFamily;
-      expect(value).assertEqual(fontFamily);
-      done();
+    console.info('CaptionConfiguration_0050');
+    let captionManager = accessibility.getCaptionsManager();
+    let fontFamily = "default";
+    captionManager.style.fontFamily = fontFamily;
+    let value = captionManager.style.fontFamily;
+    expect(value).assertEqual(fontFamily);
+    done();
   })
 
   /*
@@ -518,6 +620,60 @@ describe('AccessibleCaptionConfiguration', function () {
   })
 
   /*
+   * @tc.number  CaptionConfiguration_0070
+   * @tc.name    CaptionConfiguration_0070
+   * @tc.desc    Test getCaptionsManager() function by modifying fontColor.
+   *             Return CaptionsManager.
+   * @tc.size    SmallTest
+   * @tc.type    User
+   */
+  it('CaptionConfiguration_0070', 0, async function (done) {
+    console.info('CaptionConfiguration_0070');
+    let captionManager = accessibility.getCaptionsManager();
+    let fontColor ="TmepfontColor";
+    captionManager.style.fontColor = fontColor;
+    let value = captionManager.style.fontColor;
+    expect(value).assertEqual(fontColor);
+    done();
+  })
+
+  /*
+   * @tc.number  CaptionConfiguration_0071
+   * @tc.name    CaptionConfiguration_0071
+   * @tc.desc    Test getCaptionsManager() function by modifying fontColor.
+   *             Return CaptionsManager.
+   * @tc.size    SmallTest
+   * @tc.type    User
+   */
+  it('CaptionConfiguration_0071', 0, async function (done) {
+    console.info('CaptionConfiguration_0071');
+    let captionManager = accessibility.getCaptionsManager();
+    let fontColor ="none";
+    captionManager.style.fontColor = fontColor;
+    let value = captionManager.style.fontColor;
+    expect(value).assertEqual(fontColor);
+    done();
+  })
+
+  /*
+   * @tc.number  CaptionConfiguration_0072
+   * @tc.name    CaptionConfiguration_0072
+   * @tc.desc    Test getCaptionsManager() function by modifying fontColor.
+   *             Return CaptionsManager.
+   * @tc.size    SmallTest
+   * @tc.type    User
+   */
+  it('CaptionConfiguration_0072', 0, async function (done) {
+    console.info('CaptionConfiguration_0072');
+    let captionManager = accessibility.getCaptionsManager();
+    let fontColor ="";
+    captionManager.style.fontColor = fontColor;
+    let value = captionManager.style.fontColor;
+    expect(value).assertEqual(fontColor);
+    done();
+  })
+
+  /*
    * @tc.number  CaptionConfiguration_0080
    * @tc.name    CaptionConfiguration_0080
    * @tc.desc    Test getCaptionsManager() function by modifying fontEdgeType.
@@ -696,7 +852,7 @@ describe('AccessibleCaptionConfiguration', function () {
     expect(value).assertEqual(windowColor);
     done();
   })
-  
+
   /*
    * @tc.number  CaptionConfiguration_0101
    * @tc.name    CaptionConfiguration_0101
@@ -714,7 +870,7 @@ describe('AccessibleCaptionConfiguration', function () {
     expect(value).assertEqual(windowColor);
     done();
   })
-  
+
   /*
    * @tc.number  CaptionConfiguration_0102
    * @tc.name    CaptionConfiguration_0102
@@ -732,5 +888,65 @@ describe('AccessibleCaptionConfiguration', function () {
     expect(value).assertEqual(windowColor);
     done();
   })
-  
+
+  /*
+   * @tc.number  CaptionConfiguration_0110
+   * @tc.name    CaptionConfiguration_0110
+   * @tc.desc    Test getCaptionsManager() function by modifying style.
+   *             Return CaptionsManager.
+   * @tc.size    SmallTest
+   * @tc.type    User
+   */
+  it('CaptionConfiguration_0110', 0, async function (done) {
+    console.info('CaptionConfiguration_0110');
+    let captionManager = accessibility.getCaptionsManager();
+    let StyleTest = {
+      fontFamily: "monospacedSerif",
+      fontScale: 99,
+      fontColor: "red",
+      fontEdgeType: "uniform",
+      backgroundColor: "pink",
+      windowColor: "green"
+    };
+    captionManager.style = StyleTest;
+    let value = captionManager.style;
+    expect(value.fontFamily).assertEqual(StyleTest.fontFamily);
+    expect(value.fontScale).assertEqual(StyleTest.fontScale);
+    expect(value.fontColor).assertEqual(StyleTest.fontColor);
+    expect(value.fontEdgeType).assertEqual(StyleTest.fontEdgeType);
+    expect(value.backgroundColor).assertEqual(StyleTest.backgroundColor);
+    expect(value.windowColor).assertEqual(StyleTest.windowColor);
+    done();
+  })
+
+  /*
+   * @tc.number  CaptionConfiguration_0111
+   * @tc.name    CaptionConfiguration_0111
+   * @tc.desc    Test getCaptionsManager() function by modifying style.
+   *             Return CaptionsManager.
+   * @tc.size    SmallTest
+   * @tc.type    User
+   */
+  it('CaptionConfiguration_0111', 0, async function (done) {
+    console.info('CaptionConfiguration_0111');
+    let captionManager = accessibility.getCaptionsManager();
+    let StyleTest = {
+      fontFamily: "default",
+      fontScale: 75,
+      fontColor: "blue",
+      fontEdgeType: "none",
+      backgroundColor: "green",
+      windowColor: "pink"
+    };
+    captionManager.style = StyleTest;
+    let value = captionManager.style;
+    expect(value.fontFamily).assertEqual(StyleTest.fontFamily);
+    expect(value.fontScale).assertEqual(StyleTest.fontScale);
+    expect(value.fontColor).assertEqual(StyleTest.fontColor);
+    expect(value.fontEdgeType).assertEqual(StyleTest.fontEdgeType);
+    expect(value.backgroundColor).assertEqual(StyleTest.backgroundColor);
+    expect(value.windowColor).assertEqual(StyleTest.windowColor);
+    done();
+  })
+
 })
