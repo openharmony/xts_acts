@@ -209,12 +209,14 @@ describe('RecorderLocalTestAudioFUNC', function () {
 
         audioRecorder.on('pause', () => {
             console.info('setCallback pause() case callback is called');
+            sleep(RECORDER_TIME);
             mySteps.shift();
             nextStep(mySteps,done);
         });
 
         audioRecorder.on('resume', () => {
             console.info('setCallback resume() case callback is called');
+            sleep(RECORDER_TIME);
             mySteps.shift();
             nextStep(mySteps,done);
         });
@@ -769,5 +771,61 @@ describe('RecorderLocalTestAudioFUNC', function () {
             RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_1400
+        * @tc.name      : 014. API8 audioEncoderMime: audio/mp4a-latm,
+        *                           fileFormat:mp4
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_1400', 0, async function (done) {
+        await getFd('test28.mp4');
+        let newAudioConfig = {
+            audioSourceType : SOURCE_TYPE,
+            audioEncodeBitRate : 22050,
+            audioSampleRate : 22050,
+            numberOfChannels : CHANNEL_TWO,
+            uri : 'fd://',
+            location : { latitude : 1, longitude : 1 },
+            audioEncoderMime : media.CodecMimeType.AUDIO_AAC,
+            fileFormat : media.ContainerFormatType.CFT_MPEG_4,
+        }
+        newAudioConfig.uri = fdPath;
+        initAudioRecorder();
+        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
+        setCallback(mySteps, done);
+        audioRecorder.prepare(newAudioConfig);
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_1500
+        * @tc.name      : 014. API8 audioEncoderMime: audio/mp4a-latm,
+        *                           fileFormat:m4a
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_1500', 0, async function (done) {
+        await getFd('test29.mp4');
+        let newAudioConfig = {
+            audioSourceType : SOURCE_TYPE,
+            audioEncodeBitRate : 22050,
+            audioSampleRate : 22050,
+            numberOfChannels : CHANNEL_TWO,
+            uri : 'fd://',
+            location : { latitude : 1, longitude : 1 },
+            audioEncoderMime : media.CodecMimeType.AUDIO_AAC,
+            fileFormat : media.ContainerFormatType.CFT_MPEG_4A,
+        }
+        newAudioConfig.uri = fdPath;
+        initAudioRecorder();
+        let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
+        setCallback(mySteps, done);
+        audioRecorder.prepare(newAudioConfig);
     })
 })
