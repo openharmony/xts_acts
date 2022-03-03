@@ -28,7 +28,7 @@ export default {
     onInit() {
         this.title = this.$t('strings.world');
     },
-    onActive() {
+    onShow() {
         if (once) {
             once = false
             console.info('onShow finish')
