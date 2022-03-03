@@ -1443,7 +1443,11 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9100', 0, function () {
         console.error('i18n_test_9100 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'}, {unit: 'liter', measureSystem: 'SI'}, 1000, 'en-US', 'long');
+        let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'}, 
+                                        {unit: 'liter', measureSystem: 'SI'}, 
+                                        1000, 
+                                        'en-US', 
+                                        'long');
         console.error('i18n_test_9100 ' + value);
         expect(value).assertEqual('236.588 liters');
     })
@@ -1455,7 +1459,11 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9200', 0, function () {
         console.error('i18n_test_9200 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'}, {unit: 'liter', measureSystem: 'SI'}, 1000, 'en-US', 'medium');
+        let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'}, 
+                                        {unit: 'liter', measureSystem: 'SI'}, 
+                                        1000, 
+                                        'en-US', 
+                                        'medium');
         console.error('i18n_test_9200 ' + value);
         expect(value).assertEqual('236.588L');
     })
@@ -1467,7 +1475,11 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9300', 0, function () {
         console.error('i18n_test_9300 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'}, {unit: 'liter', measureSystem: 'SI'}, 1000, 'en-US', 'short');
+        let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'}, 
+                                        {unit: 'liter', measureSystem: 'SI'}, 
+                                        1000, 
+                                        'en-US', 
+                                        'short');
         console.error('i18n_test_9300 ' + value);
         expect(value).assertEqual('236.588 L');
     })
@@ -1479,7 +1491,11 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9400', 0, function () {
         console.error('i18n_test_9400 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'meter', measureSystem: 'SI'}, {unit: 'mile', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
+        let value = I18n.Util.unitConvert({unit: 'meter', measureSystem: 'SI'}, 
+                                        {unit: 'mile', measureSystem: 'SI'}, 
+                                        1000, 
+                                        'zh-CN', 
+                                        'long');
         console.error('i18n_test_9400 ' + value);
         expect(value).assertEqual('0.621英里');
     })
@@ -1491,7 +1507,11 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9500', 0, function () {
         console.error('i18n_test_9500 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'hour', measureSystem: 'SI'}, {unit: 'second', measureSystem: 'SI'}, 10, 'zh-CN', 'medium');
+        let value = I18n.Util.unitConvert({unit: 'hour', measureSystem: 'SI'}, 
+                                        {unit: 'second', measureSystem: 'SI'}, 
+                                        10, 
+                                        'zh-CN', 
+                                        'medium');
         console.error('i18n_test_9500 ' + value);
         expect(value).assertEqual('36,000秒');
     })
@@ -1503,7 +1523,11 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9600', 0, function () {
         console.error('i18n_test_9600 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'celsius', measureSystem: 'SI'}, {unit: 'fahrenheit', measureSystem: 'SI'}, 1000, 'zh-CN', 'short');
+        let value = I18n.Util.unitConvert({unit: 'celsius', measureSystem: 'SI'}, 
+                                        {unit: 'fahrenheit', measureSystem: 'SI'}, 
+                                        1000, 
+                                        'zh-CN', 
+                                        'short');
         console.error('i18n_test_9600 ' + value);
         expect(value).assertEqual('1,832°F');
     })
@@ -1515,7 +1539,11 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9700', 0, function () {
         console.error('i18n_test_9700 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'acre', measureSystem: 'SI'}, {unit: 'hectare', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
+        let value = I18n.Util.unitConvert({unit: 'acre', measureSystem: 'SI'}, 
+                                        {unit: 'hectare', measureSystem: 'SI'}, 
+                                        1000, 
+                                        'zh-CN', 
+                                        'long');
         console.error('i18n_test_9700 ' + value);
         expect(value).assertEqual('404.686公顷');
     })
@@ -1527,7 +1555,11 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9710', 0, function () {
         console.error('i18n_test_9710 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'acre', measureSystem: 'SI'}, {unit: 'square-meter', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
+        let value = I18n.Util.unitConvert({unit: 'acre', measureSystem: 'SI'}, 
+                                        {unit: 'square-meter', measureSystem: 'SI'}, 
+                                        1000, 
+                                        'zh-CN', 
+                                        'long');
         console.error('i18n_test_9710 ' + value);
         expect(value).assertEqual('4,046,856.422平方米');
     })
@@ -1539,7 +1571,11 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9800', 0, function () {
         console.error('i18n_test_9800 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'kilometer-per-hour', measureSystem: 'SI'}, {unit: 'knot', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
+        let value = I18n.Util.unitConvert({unit: 'kilometer-per-hour', measureSystem: 'SI'}, 
+                                        {unit: 'knot', measureSystem: 'SI'}, 
+                                        1000, 
+                                        'zh-CN', 
+                                        'long');
         console.error('i18n_test_9800 ' + value);
         expect(value).assertEqual('539.957节');
     })
@@ -1551,7 +1587,11 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9850', 0, function () {
         console.error('i18n_test_9850 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'kilometer-per-hour', measureSystem: 'SI'}, {unit: 'meter-per-second', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
+        let value = I18n.Util.unitConvert({unit: 'kilometer-per-hour', measureSystem: 'SI'}, 
+                                        {unit: 'meter-per-second', measureSystem: 'SI'}, 
+                                        1000, 
+                                        'zh-CN', 
+                                        'long');
         console.error('i18n_test_9850 ' + value);
         expect(value).assertEqual('每秒277.778米');
     })
@@ -1563,7 +1603,11 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9900', 0, function () {
         console.error('i18n_test_9900 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'meter', measureSystem: 'SI'}, {unit: 'kilometer', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
+        let value = I18n.Util.unitConvert({unit: 'meter', measureSystem: 'SI'}, 
+                                        {unit: 'kilometer', measureSystem: 'SI'}, 
+                                        1000, 
+                                        'zh-CN', 
+                                        'long');
         console.error('i18n_test_9900 ' + value);
         expect(value).assertEqual('1公里');
     })
@@ -1575,7 +1619,11 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9910', 0, function () {
         console.error('i18n_test_9910 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'meter', measureSystem: 'SI'}, {unit: 'meter-per-second', measureSystem: 'SI'}, 1000, 'zh-CN', 'long');
+        let value = I18n.Util.unitConvert({unit: 'meter', measureSystem: 'SI'}, 
+                                        {unit: 'meter-per-second', measureSystem: 'SI'}, 
+                                        1000, 
+                                        'zh-CN', 
+                                        'long');
         console.error('i18n_test_9910 ' + value);
         expect(value).assertEqual('1,000米');
     })
