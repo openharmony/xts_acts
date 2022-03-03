@@ -41,13 +41,13 @@ let filesfetchOp = {
     selectionArgs: [fileType.toString()],
 };
 
-function checkAssetAttr(done, attr, test_num, asset, checkType) {
+function checkAssetAttr(done, attr, testNum, asset, checkType) {
     if (checkType && asset[attr] != checkType) {
-        console.info(`MediaLibraryTest : ASSET_PROMISE getFileAssets ${test_num} failed`);
+        console.info(`MediaLibraryTest : ASSET_PROMISE getFileAssets ${testNum} failed`);
         expect(false).assertTrue();
         done();
     } else if (asset[attr] == undefined) {
-        console.info(`MediaLibraryTest : ASSET_PROMISE getFileAssets ${test_num} failed`);
+        console.info(`MediaLibraryTest : ASSET_PROMISE getFileAssets ${testNum} failed`);
         expect(false).assertTrue();
         done();
     }
