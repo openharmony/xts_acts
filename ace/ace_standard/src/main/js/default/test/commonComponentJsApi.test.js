@@ -858,7 +858,7 @@ describe('aceJsTest', function () {
     it('testMarqueeComponent', 0, async function (done) {
         let result;
         let options = {
-            uri: 'pages/marquee/index'
+            uri: 'pages/marquee/router/index'
         }
         try {
             result = router.push(options)
@@ -869,7 +869,7 @@ describe('aceJsTest', function () {
         await sleep(5000)
         let pages = router.getState();
         console.info("[router.marquee] getState" + JSON.stringify(pages));
-        expect("pages/marquee/").assertEqual(pages.path);
+        expect("pages/marquee/router/").assertEqual(pages.path);
         done();
     });
 
