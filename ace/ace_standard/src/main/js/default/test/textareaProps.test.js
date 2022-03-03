@@ -1,10 +1,10 @@
-/*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+/**
+ * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -957,7 +957,7 @@ it('testtextAreaHeadericonPropNull', 0, async function (done) {
         expect(obj.$type).assertEqual('textarea')
         expect(obj.$attrs.id).assertEqual('softkeyboardenabledNone')
         expect(obj.$attrs.softkeyboardenabled).assertEqual("true")
-        console.info("[textAreaProps] get softkeyboardenabled value is: " + JSON.stringify(obj.$attrs.softkeyboardenabled));
+        console.info("[textAreaProps] get softkey value is: " + JSON.stringify(obj.$attrs.softkey));
         done();
     });
 
@@ -977,7 +977,7 @@ it('testtextAreaHeadericonPropNull', 0, async function (done) {
         expect(obj.$type).assertEqual('textarea')
         expect(obj.$attrs.id).assertEqual('softkeyboardenabledFalse')
         expect(obj.$attrs.softkeyboardenabled).assertEqual("false")
-        console.info("[textAreaProps] get softkeyboardenabled value is: " + JSON.stringify(obj.$attrs.softkeyboardenabled));
+        console.info("[textAreaProps] get softkey value is: " + JSON.stringify(obj.$attrs.softkey));
         done();
     });
 
@@ -997,7 +997,7 @@ it('testtextAreaHeadericonPropNull', 0, async function (done) {
         expect(obj.$type).assertEqual('textarea')
         expect(obj.$attrs.id).assertEqual('softkeyboardenabledTrue')
         expect(obj.$attrs.softkeyboardenabled).assertEqual("true")
-        console.info("[textAreaProps] get softkeyboardenabled value is: " + JSON.stringify(obj.$attrs.softkeyboardenabled));
+        console.info("[textAreaProps] get softkey value is: " + JSON.stringify(obj.$attrs.softkey));
         done();
     });
 
