@@ -161,7 +161,7 @@ describe('aceJsTest', function () {
             console.info('testSliderComponent START');
             let result;
             let options = {
-                uri: 'pages/slider/index'
+                uri: 'pages/slider/router/index'
             }
             try {
                 result = router.push(options)
@@ -172,7 +172,7 @@ describe('aceJsTest', function () {
             await sleep(1000)
             let pages = router.getState();
             console.info("[router.slider] getState" + JSON.stringify(pages));
-            expect("pages/slider/").assertEqual(pages.path);
+            expect("pages/slider/router/").assertEqual(pages.path);
             done();
         });
 
