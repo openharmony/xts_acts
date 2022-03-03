@@ -77,6 +77,7 @@ export default {
         softkeyboardenabledFalse : null,
         softkeyboardenabledTrue : null,
     },
+
     onShow(){
         this.getCommonPropValues();
         this.getSpecificPropValues();
@@ -182,31 +183,3 @@ export default {
         this.softkeyboardenabledTrue = this.$element("softkeyboardenabledTrue").getInspector()
     }
 }
-/*
- * placeholderNone : null,
-        placeholder : null,
-        maxlength20 : null,
-        headericon : null,
-        headericonNone : null,
-        extendNone : null,
-        extendFalse : null,
-        extendTrue : null,
-        valueNone : null,
-        value : null,
-        showcounterNone : null,
-        showcounterFalse : null,
-        showcounterTrue : null,
-        menuoptionsNone : null,
-        menuoptions : null,
-        autofocusNone : null,
-        autofocusFalse : null,
-        autofocusTrue : null,
-        selectedstartNone : null,
-        selectedstart5: null,
-        selectedendNone : null,
-        selectedend5 : null,
-        softkeyboardenabledNone : null,
-        softkeyboardenabledFalse : null,
-        softkeyboardenabledTrue : null,
-
- */
