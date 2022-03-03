@@ -311,7 +311,7 @@ describe('aceJsTest', function () {
         it('testRatingComponent', 0, async function (done) {
             let result;
             let options = {
-                uri: 'pages/rating/index'
+                uri: 'pages/rating/router/index'
             }
             try {
                 result = router.push(options)
@@ -320,7 +320,7 @@ describe('aceJsTest', function () {
             }
             await sleep(1000)
             let pages = router.getState();
-            expect("pages/rating/").assertEqual(pages.path);
+            expect("pages/rating/router/").assertEqual(pages.path);
             done();
         });
 
