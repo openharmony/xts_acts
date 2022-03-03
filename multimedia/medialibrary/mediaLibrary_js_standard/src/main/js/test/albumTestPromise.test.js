@@ -51,18 +51,25 @@ let videoAndAudioAlbumfetchOp = {
     selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
     selectionArgs: [videoType.toString(), audioType.toString()],
 };
-function printAlbumMessage(test_num, album) {
-    console.info(`MediaLibraryTest : ALBUM_CALLBACK getAlbum ${test_num} album.albumId: ${album.albumId}`);
-    console.info(`MediaLibraryTest : ALBUM_CALLBACK getAlbum ${test_num} album.albumName: ${album.albumName}`);
-    console.info(`MediaLibraryTest : ALBUM_CALLBACK getAlbum ${test_num} album.albumUri: ${album.albumUri}`);
-    console.info(`MediaLibraryTest : ALBUM_CALLBACK getAlbum ${test_num} album.dateModified: ${album.dateModified}`);
-    console.info(`MediaLibraryTest : ALBUM_CALLBACK getAlbum ${test_num} album.count: ${album.count}`);
-    console.info(`MediaLibraryTest : ALBUM_CALLBACK getAlbum ${test_num} album.relativePath: ${album.relativePath}`);
-    console.info(`MediaLibraryTest : ALBUM_CALLBACK getAlbum ${test_num} album.coverUri: ${album.coverUri}`);
+function printAlbumMessage(testNum, album) {
+    console.info(`ALBUM_CALLBACK getAlbum ${testNum} album.albumId: ${album.albumId}`);
+    console.info(`ALBUM_CALLBACK getAlbum ${testNum} album.albumName: ${album.albumName}`);
+    console.info(`ALBUM_CALLBACK getAlbum ${testNum} album.albumUri: ${album.albumUri}`);
+    console.info(`ALBUM_CALLBACK getAlbum ${testNum} album.dateModified: ${album.dateModified}`);
+    console.info(`ALBUM_CALLBACK getAlbum ${testNum} album.count: ${album.count}`);
+    console.info(`ALBUM_CALLBACK getAlbum ${testNum} album.relativePath: ${album.relativePath}`);
+    console.info(`ALBUM_CALLBACK getAlbum ${testNum} album.coverUri: ${album.coverUri}`);
 }
 function checkAlbumAttr(done, album) {
-    if (album.albumId == undefined || album.albumName == undefined || album.albumUri == undefined || album.count == undefined || album.relativePath == undefined || album.coverUri == undefined) {
-        console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 001_01 failed');
+    if (
+        album.albumId == undefined ||
+        album.albumName == undefined ||
+        album.albumUri == undefined ||
+        album.count == undefined ||
+        album.relativePath == undefined ||
+        album.coverUri == undefined
+    ) {
+        console.info('ALBUM_PROMISE getAlbum 001_01 failed');
         expect(false).assertTrue();
         done();
     }
@@ -93,11 +100,11 @@ describe('album.promise.test.js', async function () {
             printAlbumMessage('001_01', album);
             checkAlbumAttr(done, album);
 
-            console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 001_01 success');
+            console.info('ALBUM_PROMISE getAlbum 001_01 success');
             expect(true).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 001_01 failed, message = ' + error);
+            console.info('ALBUM_PROMISE getAlbum 001_01 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -119,11 +126,11 @@ describe('album.promise.test.js', async function () {
             printAlbumMessage('001_02', album);
             checkAlbumAttr(done, album);
 
-            console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 001_02 success');
+            console.info('ALBUM_PROMISE getAlbum 001_02 success');
             expect(true).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 001_02 failed, message = ' + error);
+            console.info('ALBUM_PROMISE getAlbum 001_02 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -145,11 +152,11 @@ describe('album.promise.test.js', async function () {
             printAlbumMessage('001_03', album);
             checkAlbumAttr(done, album);
 
-            console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 001_03 passed');
+            console.info('ALBUM_PROMISE getAlbum 001_03 passed');
             expect(true).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 001_03 failed, message = ' + error);
+            console.info('ALBUM_PROMISE getAlbum 001_03 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -171,15 +178,16 @@ describe('album.promise.test.js', async function () {
             printAlbumMessage('001_04', album);
             checkAlbumAttr(done, album);
 
-            console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 001_04 passed');
+            console.info('ALBUM_PROMISE getAlbum 001_04 passed');
             expect(true).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 001_04 failed, message = ' + error);
+            console.info('ALBUM_PROMISE getAlbum 001_04 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
     });
+
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_001_05
      * @tc.name      : getAlbums
@@ -198,11 +206,11 @@ describe('album.promise.test.js', async function () {
             printAlbumMessage('001_05', album);
             checkAlbumAttr(done, album);
 
-            console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 001_05 passed');
+            console.info('ALBUM_PROMISE getAlbum 001_05 passed');
             expect(true).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 001_05 failed, message = ' + error);
+            console.info('ALBUM_PROMISE getAlbum 001_05 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -225,11 +233,11 @@ describe('album.promise.test.js', async function () {
             printAlbumMessage('001_06', album);
             checkAlbumAttr(done, album);
 
-            console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 001_06 passed');
+            console.info('ALBUM_PROMISE getAlbum 001_06 passed');
             expect(true).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 001_06 failed, message = ' + error);
+            console.info('ALBUM_PROMISE getAlbum 001_06 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -252,11 +260,11 @@ describe('album.promise.test.js', async function () {
             printAlbumMessage('001_07', album);
             checkAlbumAttr(done, album);
 
-            console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 001_07 passed');
+            console.info('ALBUM_PROMISE getAlbum 001_07 passed');
             expect(true).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 001_07 failed, message = ' + error);
+            console.info('ALBUM_PROMISE getAlbum 001_07 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -276,10 +284,10 @@ describe('album.promise.test.js', async function () {
         try {
             await media.getAlbums(666);
             expect(false).assertTrue();
-            console.info('MediaLibraryTest : ALBUM_PROMISE getalbum 002_01 failed');
+            console.info('ALBUM_PROMISE getalbum 002_01 failed');
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE getalbum 002_01 passed');
+            console.info('ALBUM_PROMISE getalbum 002_01 passed');
             expect(true).assertTrue();
             done();
         }
@@ -296,11 +304,11 @@ describe('album.promise.test.js', async function () {
     it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_002_02', 0, async function (done) {
         try {
             await media.getAlbums('666');
-            console.info('MediaLibraryTest : ALBUM_PROMISE getalbum 002_02 failed');
+            console.info('ALBUM_PROMISE getalbum 002_02 failed');
             expect(false).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE getalbum 002_02 passed');
+            console.info('ALBUM_PROMISE getalbum 002_02 passed');
             expect(true).assertTrue();
             done();
         }
@@ -317,11 +325,11 @@ describe('album.promise.test.js', async function () {
     it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_002_03', 0, async function (done) {
         try {
             await media.getAlbums(0);
-            console.info('MediaLibraryTest : ALBUM_PROMISE getalbum 002_03 failed');
+            console.info('ALBUM_PROMISE getalbum 002_03 failed');
             expect(false).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE getalbum 002_03 passed');
+            console.info('ALBUM_PROMISE getalbum 002_03 passed');
             expect(true).assertTrue();
             done();
         }
@@ -338,11 +346,11 @@ describe('album.promise.test.js', async function () {
     it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_002_04', 0, async function (done) {
         try {
             await media.getAlbums(true);
-            console.info('MediaLibraryTest : ALBUM_PROMISE getalbum 002_04 failed');
+            console.info('ALBUM_PROMISE getalbum 002_04 failed');
             expect(false).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE getalbum 002_04 passed');
+            console.info('ALBUM_PROMISE getalbum 002_04 passed');
             expect(true).assertTrue();
             done();
         }
@@ -359,11 +367,11 @@ describe('album.promise.test.js', async function () {
     it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_002_05', 0, async function (done) {
         try {
             await media.getAlbums(false);
-            console.info('MediaLibraryTest : ALBUM_PROMISE getalbum 002_05 failed');
+            console.info('ALBUM_PROMISE getalbum 002_05 failed');
             expect(false).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE getalbum 002_05 passed');
+            console.info('ALBUM_PROMISE getalbum 002_05 passed');
             expect(true).assertTrue();
             done();
         }
@@ -384,11 +392,13 @@ describe('album.promise.test.js', async function () {
         };
         try {
             const albumList = await media.getAlbums(fileHasArgsfetchOp3);
-            const album = albumList[0];
-            expect(album.albumId == 0).assertTrue();
+            console.info(
+                'SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_PROMISE_002_06 length:' + albumList.length
+            );
+            expect(albumList.length == 0).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE getFileAssets 002_06 passed');
+            console.info('ALBUM_PROMISE getFileAssets 002_06 passed');
             expect(false).assertTrue();
             done();
         }
@@ -409,11 +419,13 @@ describe('album.promise.test.js', async function () {
         };
         try {
             const albumList = await media.getAlbums(fileHasArgsfetchOp4);
-            const album = albumList[0];
-            expect(album.albumId == 0).assertTrue();
+            console.info(
+                'SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_PROMISE_002_07 length:' + albumList.length
+            );
+            expect(albumList.length == 0).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE getFileAssets 002_07 passed');
+            console.info('ALBUM_PROMISE getFileAssets 002_07 passed');
             expect(false).assertTrue();
             done();
         }
@@ -432,14 +444,16 @@ describe('album.promise.test.js', async function () {
             selections: '666' + '= ?',
             selectionArgs: ['666'],
         };
-        
+
         try {
             const albumList = await media.getAlbums(fileHasArgsfetchOp5);
-            const album = albumList[0];
-            expect(album.albumId == 0).assertTrue();
+            console.info(
+                'SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_PROMISE_002_08 length:' + albumList.length
+            );
+            expect(albumList.length == 0).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE getFileAssets 002_08 passed');
+            console.info('ALBUM_PROMISE getFileAssets 002_08 passed');
             expect(false).assertTrue();
             done();
         }
@@ -461,7 +475,7 @@ describe('album.promise.test.js', async function () {
             const album = albumList[0];
             const albumId = album.albumId;
 
-            console.info('MediaLibraryTest : ALBUM_PROMISE Modify 003_01 album.albumName(old) = ' + album.albumName);
+            console.info('ALBUM_PROMISE Modify 003_01 album.albumName(old) = ' + album.albumName);
             const newName = 'newhello';
             album.albumName = newName;
 
@@ -471,7 +485,7 @@ describe('album.promise.test.js', async function () {
             for (let i = 0; i < newAlbumList.length; i++) {
                 const album = newAlbumList[i];
                 if (album.albumId == albumId && album.albumName == newName) {
-                    console.info('MediaLibraryTest : ALBUM_PROMISE Modify 003_01 passed');
+                    console.info('ALBUM_PROMISE Modify 003_01 passed');
                     expect(true).assertTrue();
                     done();
                     passed = true;
@@ -480,7 +494,7 @@ describe('album.promise.test.js', async function () {
             expect(passed).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE Modify 003_01 failed, message = ' + error);
+            console.info('ALBUM_PROMISE Modify 003_01 failed, message = ' + error);
             expect(false).assertTrue();
         }
         done();
@@ -500,7 +514,7 @@ describe('album.promise.test.js', async function () {
             const album = albumList[0];
             const albumId = album.albumId;
 
-            console.info('MediaLibraryTest : ALBUM_PROMISE Modify 003_02 album.albumName(old) = ' + album.albumName);
+            console.info('ALBUM_PROMISE Modify 003_02 album.albumName(old) = ' + album.albumName);
             const newName = '';
             album.albumName = newName;
 
@@ -510,7 +524,7 @@ describe('album.promise.test.js', async function () {
             for (let i = 0; i < newAlbumList.length; i++) {
                 const album = newAlbumList[i];
                 if (album.albumId == albumId && album.albumName == newName) {
-                    console.info('MediaLibraryTest : ALBUM_PROMISE Modify 003_02 failed');
+                    console.info('ALBUM_PROMISE Modify 003_02 failed');
                     expect(false).assertTrue();
                     done();
                     changed = true;
@@ -519,7 +533,7 @@ describe('album.promise.test.js', async function () {
             expect(!changed).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE Modify 003_02 passed');
+            console.info('ALBUM_PROMISE Modify 003_02 passed');
             expect(true).assertTrue();
         }
         done();
@@ -539,7 +553,7 @@ describe('album.promise.test.js', async function () {
             const album = albumList[0];
             const albumId = album.albumId;
 
-            console.info('MediaLibraryTest : ALBUM_PROMISE Modify 003_04 album.albumName(old) = ' + album.albumName);
+            console.info('ALBUM_PROMISE Modify 003_04 album.albumName(old) = ' + album.albumName);
             let newName = true;
             for (var i = 0; i < 1200; i++) {
                 newName += 'i';
@@ -552,7 +566,7 @@ describe('album.promise.test.js', async function () {
             for (let i = 0; i < newAlbumList.length; i++) {
                 const album = newAlbumList[i];
                 if (album.albumId == albumId && album.albumName == newName) {
-                    console.info('MediaLibraryTest : ALBUM_PROMISE Modify 003_04 failed');
+                    console.info('ALBUM_PROMISE Modify 003_04 failed');
                     expect(false).assertTrue();
                     done();
                     changed = true;
@@ -561,7 +575,7 @@ describe('album.promise.test.js', async function () {
             expect(!changed).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE Modify 003_04 passed');
+            console.info('ALBUM_PROMISE Modify 003_04 passed');
             expect(true).assertTrue();
         }
         done();
@@ -581,7 +595,7 @@ describe('album.promise.test.js', async function () {
             const album = albumList[0];
             const albumId = album.albumId;
 
-            console.info('MediaLibraryTest : ALBUM_PROMISE Modify 003_05 album.albumName(old) = ' + album.albumName);
+            console.info('ALBUM_PROMISE Modify 003_05 album.albumName(old) = ' + album.albumName);
             const newName = true;
             album.albumName = newName;
 
@@ -591,7 +605,7 @@ describe('album.promise.test.js', async function () {
             for (let i = 0; i < newAlbumList.length; i++) {
                 const album = newAlbumList[i];
                 if (album.albumId == albumId && album.albumName == newName) {
-                    console.info('MediaLibraryTest : ALBUM_PROMISE Modify 003_05 failed');
+                    console.info('ALBUM_PROMISE Modify 003_05 failed');
                     expect(false).assertTrue();
                     done();
                     changed = true;
@@ -600,7 +614,7 @@ describe('album.promise.test.js', async function () {
             expect(!changed).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE Modify 003_05 passed');
+            console.info('ALBUM_PROMISE Modify 003_05 passed');
             expect(true).assertTrue();
         }
         done();
@@ -620,7 +634,7 @@ describe('album.promise.test.js', async function () {
             const album = albumList[0];
             const albumId = album.albumId;
 
-            console.info('MediaLibraryTest : ALBUM_PROMISE Modify 003_06 album.albumName(old) = ' + album.albumName);
+            console.info('ALBUM_PROMISE Modify 003_06 album.albumName(old) = ' + album.albumName);
             const newName = false;
             album.albumName = newName;
 
@@ -630,7 +644,7 @@ describe('album.promise.test.js', async function () {
             for (let i = 0; i < newAlbumList.length; i++) {
                 const album = newAlbumList[i];
                 if (album.albumId == albumId && album.albumName == newName) {
-                    console.info('MediaLibraryTest : ALBUM_PROMISE Modify 003_06 failed');
+                    console.info('ALBUM_PROMISE Modify 003_06 failed');
                     expect(false).assertTrue();
                     done();
                     changed = true;
@@ -639,7 +653,7 @@ describe('album.promise.test.js', async function () {
             expect(!changed).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE Modify 003_06 passed');
+            console.info('ALBUM_PROMISE Modify 003_06 passed');
             expect(true).assertTrue();
         }
         done();
@@ -664,7 +678,7 @@ describe('album.promise.test.js', async function () {
             expect(asset.uri == album.coverUri).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 004_01 failed, message = ' + error);
+            console.info('ALBUM_PROMISE getAlbum 004_01 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -686,10 +700,10 @@ describe('album.promise.test.js', async function () {
             const album = albumList[0];
             album.albumUri = 'testalbumUri';
             await album.commitModify();
-            console.info('MediaLibraryTest : ALBUM_PROMISE Modify 006_01 failed');
+            console.info('ALBUM_PROMISE Modify 006_01 failed');
             expect(false).assertTrue();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE Modify 006_01 passed');
+            console.info('ALBUM_PROMISE Modify 006_01 passed');
             expect(true).assertTrue();
         }
         done();
@@ -709,10 +723,10 @@ describe('album.promise.test.js', async function () {
             const album = albumList[0];
             album.coverUri = 'testcoverUri';
             await album.commitModify();
-            console.info('MediaLibraryTest : ALBUM_PROMISE Modify 006_02 failed');
+            console.info('ALBUM_PROMISE Modify 006_02 failed');
             expect(false).assertTrue();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE Modify 006_02 passed');
+            console.info('ALBUM_PROMISE Modify 006_02 passed');
             expect(true).assertTrue();
         }
         done();
@@ -749,16 +763,16 @@ describe('album.promise.test.js', async function () {
             for (let i = 0; i < newAlbumList.length; i++) {
                 const album = newAlbumList[i];
                 if (album.albumId == albumId) {
-                    console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 005_01 failed');
+                    console.info('ALBUM_PROMISE getAlbum 005_01 failed');
                     expect(false).assertTrue();
                     done();
                 }
             }
-            console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 005_01 passed');
+            console.info('ALBUM_PROMISE getAlbum 005_01 passed');
             expect(true).assertTrue();
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : ALBUM_PROMISE getAlbum 005_01 failed, message = ' + error);
+            console.info('ALBUM_PROMISE getAlbum 005_01 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }

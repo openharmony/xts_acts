@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 require('./favoriteTestCallBack.test.js')
-require('./favoriteTestPromise.test.js')
-require('./fileTestPromise.test.js')
 require('./fileTestPromise.test.js')
 require('./favoriteTestPromise.test.js')
 require('./fileAsset2.test.js')

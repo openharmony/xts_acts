@@ -15,15 +15,7 @@
 import mediaLibrary from '@ohos.multimedia.medialibrary';
 import featureAbility from '@ohos.ability.featureAbility';
 import fileio from '@ohos.fileio';
-import {
-    describe,
-    beforeAll,
-    beforeEach,
-    afterEach,
-    afterAll,
-    it,
-    expect
-} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 let fileKeyObj = mediaLibrary.FileKey;
 let fetchOp = {
     selections: fileKeyObj.PATH + ' LIKE ? ',
@@ -61,16 +53,35 @@ let filesfetchOp = {
 };
 
 let imageAndAudiofetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ',
     selectionArgs: [imageType.toString(), audioType.toString()],
 };
 let imageAndVideoAndfilefetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selections:
+        fileKeyObj.MEDIA_TYPE +
+        '= ? or ' +
+        fileKeyObj.MEDIA_TYPE +
+        '= ? or ' +
+        fileKeyObj.MEDIA_TYPE +
+        '= ?',
     selectionArgs: [imageType.toString(), videoType.toString(), fileType.toString()],
 };
 let imageAndVideoAndfileAndAudiofetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs: [imageType.toString(), videoType.toString(), fileType.toString(), audioType.toString()],
+    selections:
+        fileKeyObj.MEDIA_TYPE +
+        '= ? or ' +
+        fileKeyObj.MEDIA_TYPE +
+        '= ? or ' +
+        fileKeyObj.MEDIA_TYPE +
+        '= ? or ' +
+        fileKeyObj.MEDIA_TYPE +
+        '= ?',
+    selectionArgs: [
+        imageType.toString(),
+        videoType.toString(),
+        fileType.toString(),
+        audioType.toString(),
+    ],
 };
 
 let allTypefetchOp = {
@@ -95,10 +106,10 @@ describe('GET_ALBUM.test.js', function () {
     afterAll(function () {});
 
     var timestamp = new Date().getTime();
-    var jpgName = timestamp + ".jpg";
-    var videoName = timestamp + ".mp4";
-    var audioName = timestamp + ".mp3";
-    var fileName = timestamp + ".mp3";
+    var jpgName = timestamp + '.jpg';
+    var videoName = timestamp + '.mp4';
+    var audioName = timestamp + '.mp3';
+    var fileName = timestamp + '.mp3';
 
     /**
      * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_GETMEDIALIBRAY_001
@@ -119,299 +130,8 @@ describe('GET_ALBUM.test.js', function () {
         }
     });
 
-    /**
-     * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_001
-     * @tc.name      : ON
-     * @tc.desc      : ON Image ASSET
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_001', 0, async function (done) {
-        try {
-            let conut = 0;
-            media.on(['image'], () => {
-                conut++;
-            });
-            const fetchFileResult = await media.getFileAssets(imagesfetchOp);
-
-            const dataList = await fetchFileResult.getAllObject();
-
-            const asset = dataList[0];
-            asset.title = 'changename';
-            await asset.commitModify();
-            await new Promise((res) => setTimeout(() => res(), 3000));
-
-            expect(conut == 1).assertTrue();
-            media.off(['image']);
-            done();
-        } catch (error) {
-            console.info(`MediaLibraryTest : on 001 failed, error: ${error}`);
-            expect(false).assertTrue();
-            media.off(['image']);
-            done();
-        }
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_002
-     * @tc.name      : ON
-     * @tc.desc      : ON Video ASSET
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_002', 0, async function (done) {
-        try {
-            let conut = 0;
-            media.on(['video'], () => {
-                conut++;
-            });
-            const fetchFileResult = await media.getFileAssets(videosfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'changename';
-            await asset.commitModify();
-            await new Promise((res) => setTimeout(() => res(), 3000));
-            expect(conut == 1).assertTrue();
-            media.off(['video']);
-            done();
-        } catch (error) {
-            console.info(`MediaLibraryTest : on 002 failed, error: ${error}`);
-            expect(false).assertTrue();
-            media.off(['video']);
-            done();
-        }
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_003
-     * @tc.name      : ON
-     * @tc.desc      : ON Audio ASSET
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_003', 0, async function (done) {
-        try {
-            let conut = 0;
-            media.on(['audio'], () => {
-                conut++;
-            });
-            const fetchFileResult = await media.getFileAssets(audiosfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'changename';
-            await asset.commitModify();
-            await new Promise((res) => setTimeout(() => res(), 3000));
-            expect(conut == 1).assertTrue();
-            media.off(['audio']);
-            done();
-        } catch (error) {
-            console.info(`MediaLibraryTest : on 003 failed, error: ${error}`);
-            expect(false).assertTrue();
-            media.off(['audio']);
-            done();
-        }
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_004
-     * @tc.name      : ON
-     * @tc.desc      : ON File ASSET
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_004', 0, async function (done) {
-        try {
-            let conut = 0;
-            media.on(['file'], () => {
-                conut++;
-            });
-            const fetchFileResult = await media.getFileAssets(filesfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'changename';
-            await asset.commitModify();
-            await new Promise((res) => setTimeout(() => res(), 3000));
-            expect(conut == 1).assertTrue();
-            media.off(['file']);
-            done();
-        } catch (error) {
-            console.info(`MediaLibraryTest : on 004 failed, error: ${error}`);
-            expect(false).assertTrue();
-            media.off(['file']);
-            done();
-        }
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_005
-     * @tc.name      : ON
-     * @tc.desc      : ON Album ASSET
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    // it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_005', 0, async function (done) {
-    //     try {
-    //         let conut = 0;
-    //         media.on(['album'], () => {
-    //             conut++;
-    //             console.info('MediaLibraryTest : on 005 passed');
-    //             expect(true).assertTrue();
-    //             media.off(['album']);
-    //             done();
-    //         });
-    //         const dataList = await media.getAlbums(imagesfetchOp);
-    //         const asset = dataList[0];
-    //         asset.title = 'changename';
-    //         await asset.commitModify();
-    //         await new Promise((res) => setTimeout(() => res(), 3000));
-    //         if (conut == 0) {
-    //             console.info('MediaLibraryTest : on 005 failed');
-    //             expect(false).assertTrue();
-    //             media.off(['album']);
-    //             done();
-    //         }
-    //     } catch (error) {
-    //         console.info(`MediaLibraryTest : on 005 failed, error: ${error}`);
-    //         expect(false).assertTrue();
-    //         media.off(['album']);
-    //         done();
-    //     }
-    // });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_006
-     * @tc.name      : ON
-     * @tc.desc      : ON File image file ASSET
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_006', 0, async function (done) {
-        try {
-            let conut = 0;
-            media.on(['image', 'file'], () => {
-                conut++;
-            });
-            const fileResult = await media.getFileAssets(filesfetchOp);
-            const fileList = await fileResult.getAllObject();
-            const file = fileList[0];
-            file.title = 'changename1';
-            await file.commitModify();
-            const imageResult = await media.getFileAssets(imagesfetchOp);
-            const imageList = await imageResult.getAllObject();
-            const image = imageList[0];
-            image.title = 'changename2';
-            await image.commitModify();
-            await new Promise((res) => setTimeout(() => res(), 3000));
-            expect(conut == 2).assertTrue();
-            media.off(['image', 'file']);
-            done();
-        } catch (error) {
-            console.info(`MediaLibraryTest : on 006 failed, error: ${error}`);
-            expect(false).assertTrue();
-            media.off(['image', 'file']);
-            done();
-        }
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_007
-     * @tc.name      : ON
-     * @tc.desc      : ON 'image', 'file', 'audio' ASSET
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_007', 0, async function (done) {
-        try {
-            const arr = ['image', 'file', 'audio'];
-            let conut = 0;
-            media.on(arr, () => {
-                conut++;
-            });
-            const fileResult = await media.getFileAssets(filesfetchOp);
-            const fileList = await fileResult.getAllObject();
-            const file = fileList[0];
-            file.title = 'changename1';
-            await file.commitModify();
-
-            const imageResult = await media.getFileAssets(imagesfetchOp);
-            const imageList = await imageResult.getAllObject();
-            const image = imageList[0];
-            image.title = 'changename2';
-            await image.commitModify();
-
-            const audioResult = await media.getFileAssets(audiosfetchOp);
-            const audioList = await audioResult.getAllObject();
-            const audio = audioList[0];
-            audio.title = 'changename';
-            await audio.commitModify();
-            await new Promise((res) => setTimeout(() => res(), 3000));
-            expect(conut == arr.length).assertTrue();
-            media.off(arr);
-            done();
-        } catch (error) {
-            console.info(`MediaLibraryTest : on 007 failed, error: ${error}`);
-            expect(false).assertTrue();
-            media.off(arr);
-            done();
-        }
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_008
-     * @tc.name      : ON
-     * @tc.desc      : ON image, file, audio video ASSET
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    // it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_008', 0, async function (done) {
-    //     try {
-    //         const arr = ['image', 'file', 'audio', 'video'];
-    //         let conut = 0;
-    //         media.on(arr, () => {
-    //             conut++;
-    //         });
-    //         const fileResult = await media.getFileAssets(filesfetchOp);
-    //         const fileList = await fileResult.getAllObject();
-    //         const file = fileList[0];
-    //         file.title = 'changename1';
-    //         await file.commitModify();
-    //         const imageResult = await media.getFileAssets(imagesfetchOp);
-    //         const imageList = await imageResult.getAllObject();
-    //         const image = imageList[0];
-    //         image.title = 'changename2';
-    //         await image.commitModify();
-
-    //         const audioResult = await media.getFileAssets(audiosfetchOp);
-    //         const audioList = await audioResult.getAllObject();
-    //         const audio = audioList[0];
-    //         audio.title = 'changename';
-    //         await audio.commitModify();
-
-    //         const videoResult = await media.getFileAssets(videosfetchOp);
-    //         const videoList = await videoResult.getAllObject();
-    //         const video = videoList[0];
-    //         video.title = 'changename';
-    //         await video.commitModify();
-    //         await new Promise((res) => setTimeout(() => res(), 3000));
-    //         expect(conut == arr.length).assertTrue();
-    //         media.off(arr);
-    //         done();
-    //     } catch (error) {
-    //         console.info(`MediaLibraryTest : on 008 failed, error: ${error}`);
-    //         expect(false).assertTrue();
-    //         media.off(arr);
-    //         done();
-    //     }
-    // });
-
+    
+    
     /**
      * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_001
      * @tc.name      : getFileAssets
@@ -612,7 +332,13 @@ describe('GET_ALBUM.test.js', function () {
      */
     it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_010', 0, async function (done) {
         let fetchOp = {
-            selections: fileKeyObj.MEDIA_TYPE + 'abc= ? or ' + fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
+            selections:
+                fileKeyObj.MEDIA_TYPE +
+                'abc= ? or ' +
+                fileKeyObj.MEDIA_TYPE +
+                '= ? or ' +
+                fileKeyObj.MEDIA_TYPE +
+                '= ?',
             selectionArgs: ['abc', videoType.toString(), fileType.toString()],
         };
         try {
@@ -637,7 +363,15 @@ describe('GET_ALBUM.test.js', function () {
      */
     it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_011', 0, async function (done) {
         let fetchOp = {
-            selections: fileKeyObj.MEDIA_TYPE + 'abc= ? or ' + fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
+            selections:
+                fileKeyObj.MEDIA_TYPE +
+                'abc= ? or ' +
+                fileKeyObj.MEDIA_TYPE +
+                '= ? or ' +
+                fileKeyObj.MEDIA_TYPE +
+                '= ? or ' +
+                fileKeyObj.MEDIA_TYPE +
+                '= ?',
             selectionArgs: ['abc', videoType.toString(), fileType.toString(), audioType.toString()],
         };
         try {
@@ -1097,319 +831,4 @@ describe('GET_ALBUM.test.js', function () {
         }
     });
 
-    /**
-     * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_Off_001
-     * @tc.name      : off
-     * @tc.desc      : off Image ASSET
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_MEDIA_MIDIALIBRARY_PROMISE_Off_001', 0, async function (done) {
-        try {
-            media.on(['image'], () => {
-                console.info('MediaLibraryTest : off 001 failed');
-                expect(false).assertTrue();
-                media.off(['image']);
-                done();
-            });
-
-            media.off(['image']);
-            const fetchFileResult = await media.getFileAssets(imagesfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'changename';
-            await asset.commitModify();
-
-            await new Promise((res) => setTimeout(() => res(), 3000));
-
-            console.info('MediaLibraryTest : off 001 passed');
-            expect(true).assertTrue();
-            done();
-        } catch (error) {
-            console.info(`MediaLibraryTest : off 001 failed, error: ${error}`);
-            expect(false).assertTrue();
-            media.off(['image']);
-            done();
-        }
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_Off_002
-     * @tc.name      : off
-     * @tc.desc      : off video ASSET
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_MEDIA_MIDIALIBRARY_PROMISE_Off_002', 0, async function (done) {
-        try {
-            media.on(['video'], () => {
-                console.info('MediaLibraryTest : off 002 failed');
-                expect(false).assertTrue();
-                media.off(['video']);
-                done();
-            });
-
-            media.off(['video']);
-            const fetchFileResult = await media.getFileAssets(videosfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'changename';
-            await asset.commitModify();
-
-            await new Promise((res) => setTimeout(() => res(), 3000));
-
-            console.info('MediaLibraryTest : off 002 passed');
-            expect(true).assertTrue();
-            done();
-        } catch (error) {
-            console.info(`MediaLibraryTest : off 002 failed, error: ${error}`);
-            expect(false).assertTrue();
-            media.off(['video']);
-            done();
-        }
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_Off_003
-     * @tc.name      : off
-     * @tc.desc      : off audio ASSET
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_MEDIA_MIDIALIBRARY_PROMISE_Off_003', 0, async function (done) {
-        try {
-            media.on(['audio'], () => {
-                console.info('MediaLibraryTest : off 003 failed');
-                expect(false).assertTrue();
-                media.off(['audio']);
-                done();
-            });
-
-            media.off(['audio']);
-            const fetchFileResult = await media.getFileAssets(audiosfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'changename';
-            await asset.commitModify();
-
-            await new Promise((res) => setTimeout(() => res(), 3000));
-
-            console.info('MediaLibraryTest : off 003 passed');
-            expect(true).assertTrue();
-            done();
-        } catch (error) {
-            console.info(`MediaLibraryTest : off 003 failed, error: ${error}`);
-            expect(false).assertTrue();
-            media.off(['audio']);
-            done();
-        }
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_Off_004
-     * @tc.name      : off
-     * @tc.desc      : off file ASSET
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_MEDIA_MIDIALIBRARY_PROMISE_Off_004', 0, async function (done) {
-        try {
-            media.on(['file'], () => {
-                console.info('MediaLibraryTest : off 004 failed');
-                expect(false).assertTrue();
-                media.off(['file']);
-                done();
-            });
-
-            media.off(['file']);
-            const fetchFileResult = await media.getFileAssets(videosfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'changename';
-            await asset.commitModify();
-
-            await new Promise((res) => setTimeout(() => res(), 3000));
-
-            console.info('MediaLibraryTest : off 004 passed');
-            expect(true).assertTrue();
-            done();
-        } catch (error) {
-            console.info(`MediaLibraryTest : off 004 failed, error: ${error}`);
-            expect(false).assertTrue();
-            media.off(['file']);
-            done();
-        }
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_Off_005
-     * @tc.name      : off
-     * @tc.desc      : off file audio ASSET
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_MEDIA_MIDIALIBRARY_PROMISE_Off_005', 0, async function (done) {
-        try {
-            const arr = ['file', 'audio'];
-            media.on(arr, () => {
-                console.info('MediaLibraryTest : off 005 failed');
-                expect(false).assertTrue();
-                media.off(arr);
-                done();
-            });
-
-            media.off(arr);
-            const fileResult = await media.getFileAssets(filesfetchOp);
-            const fileList = await fileResult.getAllObject();
-            const file = fileList[0];
-            file.title = 'changename1';
-            await file.commitModify();
-
-            const audioResult = await media.getFileAssets(audiosfetchOp);
-            const audioList = await audioResult.getAllObject();
-            const audio = audioList[0];
-            audio.title = 'changename';
-            await audio.commitModify();
-            await new Promise((res) => setTimeout(() => res(), 3000));
-
-            console.info('MediaLibraryTest : off 005 passed');
-            expect(true).assertTrue();
-            done();
-        } catch (error) {
-            console.info(`MediaLibraryTest : off 005 failed, error: ${error}`);
-            expect(false).assertTrue();
-            media.off(arr);
-            done();
-        }
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_Off_006
-     * @tc.name      : off
-     * @tc.desc      : off file audio image ASSET
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_MEDIA_MIDIALIBRARY_PROMISE_Off_006', 0, async function (done) {
-        try {
-            const arr = ['file', 'audio', 'image'];
-            media.on(arr, () => {
-                console.info('MediaLibraryTest : off 006 failed');
-                expect(false).assertTrue();
-                media.off(arr);
-                done();
-            });
-
-            media.off(arr);
-            const fileResult = await media.getFileAssets(filesfetchOp);
-            const fileList = await fileResult.getAllObject();
-            const file = fileList[0];
-            file.title = 'changename1';
-            await file.commitModify();
-
-            const audioResult = await media.getFileAssets(audiosfetchOp);
-            const audioList = await audioResult.getAllObject();
-            const audio = audioList[0];
-            audio.title = 'changename';
-            await audio.commitModify();
-
-            const imageResult = await media.getFileAssets(imagesfetchOp);
-            const imageList = await imageResult.getAllObject();
-            const image = imageList[0];
-            image.title = 'changename2';
-            await image.commitModify();
-            await new Promise((res) => setTimeout(() => res(), 3000));
-
-            console.info('MediaLibraryTest : off 006 passed');
-            expect(true).assertTrue();
-            done();
-        } catch (error) {
-            console.info(`MediaLibraryTest : off 006 failed, error: ${error}`);
-            expect(false).assertTrue();
-            media.off(arr);
-            done();
-        }
-    });
-
-    /**
-     * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_Off_007
-     * @tc.name      : off
-     * @tc.desc      : off file audio image video ASSET
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_MEDIA_MIDIALIBRARY_PROMISE_Off_007', 0, async function (done) {
-        try {
-            const arr = ['file', 'audio', 'image', 'video'];
-            media.on(arr, () => {
-                console.info('MediaLibraryTest : off 007 failed');
-                expect(false).assertTrue();
-                media.off(arr);
-                done();
-            });
-
-            media.off(arr);
-            const fileResult = await media.getFileAssets(filesfetchOp);
-            const fileList = await fileResult.getAllObject();
-            const file = fileList[0];
-            file.title = 'changename1';
-            await file.commitModify();
-            const imageResult = await media.getFileAssets(imagesfetchOp);
-            const imageList = await imageResult.getAllObject();
-            const image = imageList[0];
-            image.title = 'changename2';
-            await image.commitModify();
-
-            const audioResult = await media.getFileAssets(audiosfetchOp);
-            const audioList = await audioResult.getAllObject();
-            const audio = audioList[0];
-            audio.title = 'changename';
-            await audio.commitModify();
-
-            const videoResult = await media.getFileAssets(videosfetchOp);
-            const videoList = await videoResult.getAllObject();
-            const video = videoList[0];
-            video.title = 'changename';
-            await video.commitModify();
-
-            await new Promise((res) => setTimeout(() => res(), 3000));
-
-            console.info('MediaLibraryTest : off 007 passed');
-            expect(true).assertTrue();
-            done();
-        } catch (error) {
-            console.info(`MediaLibraryTest : off 007 failed, error: ${error}`);
-            expect(false).assertTrue();
-            media.off(arr);
-            done();
-        }
-    });
-
-    /**
-     * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_RELEASE_001
-     * @tc.name      : release
-     * @tc.desc      : Release MediaLibrary instance
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    //  it('SUB__MEDIA_MIDIALIBRARY_PROMISE_RELEASE_001', 0, async function (done) {
-    //     try {
-    //         await media.release();
-    //         console.info('MediaLibraryTest : release 001 passed');
-    //         expect(true).assertTrue();
-    //         done();
-    //     } catch (error) {
-    //         console.info(`MediaLibraryTest : release 001 failed, error: ${error}`);
-    //         expect(false).assertTrue();
-    //         done();
-    //     }
-    // });
 });

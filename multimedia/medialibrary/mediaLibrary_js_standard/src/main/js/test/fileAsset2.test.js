@@ -19,23 +19,23 @@ import featureAbility from '@ohos.ability.featureAbility';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 function printAttr(asset) {
     for (const key in asset) {
-        console.info(`${key}: asset[key]`)
+        console.info(`${key}: asset[key]`);
     }
 }
-function checkAttrs(done, asset, t_num) {
-    let passed =true
+function checkAttrs(done, asset, tNum) {
+    let passed = true;
     for (const key in asset) {
-        if(asset[key]== undefined) {
-            passed = false
-            break
+        if (asset[key] == undefined) {
+            passed = false;
+            break;
         }
     }
     if (passed) {
-        console.info(`FileAssetTest : FileAsset checkAttrs ${t_num} passed`);
+        console.info(`FileAsset checkAttrs ${tNum} passed`);
         expect(true).assertTrue();
         done();
     } else {
-        console.info(`FileAssetTest : FileAsset checkAttrs ${t_num} failed`);
+        console.info(`FileAsset checkAttrs ${tNum} failed`);
         expect(false).assertTrue();
         done();
     }
@@ -101,7 +101,7 @@ describe('fileAsset2.test.js', async function () {
             expect(passed).assertTrue();
             done();
         } catch (error) {
-            console.info('FileAssetTest : FileAsset commitModify 001 failed, message = ' + error);
+            console.info('FileAsset commitModify 001 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -137,7 +137,7 @@ describe('fileAsset2.test.js', async function () {
             expect(passed).assertTrue();
             done();
         } catch (error) {
-            console.info('FileAssetTest : FileAsset commitModify 002 failed, message = ' + error);
+            console.info('FileAsset commitModify 002 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -182,7 +182,7 @@ describe('fileAsset2.test.js', async function () {
             expect(passed).assertTrue();
             done();
         } catch (error) {
-            console.info('FileAssetTest : FileAsset commitModify 003 failed, message = ' + error);
+            console.info('FileAsset commitModify 003 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -221,7 +221,7 @@ describe('fileAsset2.test.js', async function () {
             expect(passed).assertTrue();
             done();
         } catch (error) {
-            console.info('FileAssetTest : FileAsset commitModify 004 failed, message = ' + error);
+            console.info('FileAsset commitModify 004 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -246,11 +246,11 @@ describe('fileAsset2.test.js', async function () {
 
             await asset.commitModify();
 
-            console.info('FileAssetTest : FileAsset commitModify 005 failed');
+            console.info('FileAsset commitModify 005 failed');
             expect(false).assertTrue();
             done();
         } catch (error) {
-            console.info('FileAssetTest : FileAsset commitModify 005 passed');
+            console.info('FileAsset commitModify 005 passed');
             expect(true).assertTrue();
             done();
         }
@@ -275,11 +275,11 @@ describe('fileAsset2.test.js', async function () {
 
             await asset.commitModify();
 
-            console.info('FileAssetTest : FileAsset commitModify 006 failed');
+            console.info('FileAsset commitModify 006 failed');
             expect(false).assertTrue();
             done();
         } catch (error) {
-            console.info('FileAssetTest : FileAsset commitModify 006 passed');
+            console.info('FileAsset commitModify 006 passed');
             expect(true).assertTrue();
             done();
         }
@@ -301,7 +301,7 @@ describe('fileAsset2.test.js', async function () {
             expect(!isDir).assertTrue();
             done();
         } catch (error) {
-            console.info('FileAssetTest : FileAsset isDirectory 001 failed, message = ' + error);
+            console.info('FileAsset isDirectory 001 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -321,11 +321,9 @@ describe('fileAsset2.test.js', async function () {
             const asset = await fetchFileResult.getFirstObject();
 
             printAttr(asset);
-            checkAttrs(done,asset, '001')
-
-            
+            checkAttrs(done, asset, '001');
         } catch (error) {
-            console.info('FileAssetTest : FileAsset checkAttr 001 failed, message = ' + error);
+            console.info('FileAsset checkAttr 001 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -345,11 +343,9 @@ describe('fileAsset2.test.js', async function () {
             const asset = await fetchFileResult.getFirstObject();
 
             printAttr(asset);
-            checkAttrs(done,asset, '002')
-
-         
+            checkAttrs(done, asset, '002');
         } catch (error) {
-            console.info('FileAssetTest : FileAsset checkAttr 002 failed, message = ' + error);
+            console.info('FileAsset checkAttr 002 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -369,11 +365,9 @@ describe('fileAsset2.test.js', async function () {
             const asset = await fetchFileResult.getFirstObject();
 
             printAttr(asset);
-            checkAttrs(done,asset, '003')
-
-          
+            checkAttrs(done, asset, '003');
         } catch (error) {
-            console.info('FileAssetTest : FileAsset checkAttr 003 failed, message = ' + error);
+            console.info('FileAsset checkAttr 003 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -394,10 +388,9 @@ describe('fileAsset2.test.js', async function () {
             const fetchFileResult = await album.getFileAssets(allTypefetchOp);
             const asset = await fetchFileResult.getFirstObject();
             printAttr(asset);
-            checkAttrs(done,asset, '004')
-            
+            checkAttrs(done, asset, '004');
         } catch (error) {
-            console.info('FileAssetTest : FileAsset checkAttr 003 failed, message = ' + error);
+            console.info('FileAsset checkAttr 003 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
