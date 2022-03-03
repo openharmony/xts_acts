@@ -62,7 +62,7 @@ export default function GetabilityInfo() {
     });
 
     /*
-     * @tc.number: bundle_getAllApplicationInfo_test_0200
+     * @tc.number: bundle_getAbilityInfo_test_0200
      * @tc.name: getAbilityInfo : The basic ability is enhanced to obtain the specified Ability information
      * @tc.desc: Check the return value of the interface (by callback)
      * @tc.level   0
