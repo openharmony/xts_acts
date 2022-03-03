@@ -209,10 +209,10 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
             commonEventSubscriber1 = data;
             Subscriber.subscribe(commonEventSubscriber1, subscriberCallBack001);
             for (var i = 0; i < 50; ++i) {
-                setTimeout(function (){
-                    console.debug("===============>ActsSubscriberTestUnorderSystem_0100 delay 1s==================");
-                    Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
-                }, 1000); 
+                console.debug("===============>ActsSubscriberTestUnorderSystem_0100 delay 1s==================");
+                console.info("Subscriber.publish is run at:" + commonEventSubscribeInfo.events[i]);
+                console.info("Subscriber type:" + typeof(commonEventSubscribeInfo.events[i]));
+                Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
             }
         })
     })
@@ -286,10 +286,10 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
             commonEventSubscriber2 = data;
             Subscriber.subscribe(commonEventSubscriber2, subscriberCallBack002);
             for (var i = 0; i < 36; ++i) {
-                setTimeout(function (){
-                    console.debug("===============>ActsSubscriberTestUnorderSystem_0200 delay 1s==================");
-                    Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
-                }, 1000);
+                console.debug("===============>ActsSubscriberTestUnorderSystem_0200 delay 1s==================");
+                console.info("Subscriber.publish is run at:" + commonEventSubscribeInfo.events[i]);
+                console.info("Subscriber type:" + typeof(commonEventSubscribeInfo.events[i]));
+                Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
             }
         })
     })
