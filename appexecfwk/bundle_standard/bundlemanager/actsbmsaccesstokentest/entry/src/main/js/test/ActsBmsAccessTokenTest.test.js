@@ -17,6 +17,7 @@ import bundle from '@ohos.bundle'
 import { describe, it, expect } from 'deccjsunit/index'
 
 const NAMECOUNT = 10000;
+const INSTALL_FLAG = 1
 
 describe('ActsBmsAccessTokenTest', function () {
 
@@ -240,7 +241,7 @@ describe('ActsBmsAccessTokenTest', function () {
             bundlePath,
             {
               userId: 100,
-              installFlag: 1,
+              installFlag: INSTALL_FLAG,
               isKeepData: false,
             },
             OnReceiveInstallEvent
@@ -259,7 +260,7 @@ describe('ActsBmsAccessTokenTest', function () {
                     bundleName,
                     {
                           userId: 100,
-                          installFlag: 1,
+                          installFlag: INSTALL_FLAG,
                           isKeepData: false,
                     },
                     OnReceiveUninstallEvent
@@ -287,7 +288,7 @@ describe('ActsBmsAccessTokenTest', function () {
             bundlePath,
             {
                 userId: 100,
-                installFlag: 1,
+                installFlag: INSTALL_FLAG,
                 isKeepData: false,
             },
             OnReceiveInstallEvent
@@ -307,7 +308,7 @@ describe('ActsBmsAccessTokenTest', function () {
                     bundleName,
                     {
                           userId: 100,
-                          installFlag: 1,
+                          installFlag: INSTALL_FLAG,
                           isKeepData: false,
                     },
                     OnReceiveUninstallEvent
@@ -335,7 +336,7 @@ describe('ActsBmsAccessTokenTest', function () {
               bundlePath,
               {
                   userId: 100,
-                  installFlag: 1,
+                  installFlag: INSTALL_FLAG,
                   isKeepData: false,
               },
               OnReceiveInstallEvent
@@ -355,7 +356,7 @@ describe('ActsBmsAccessTokenTest', function () {
                 bundleName,
                 {
                     userId: 100,
-                    installFlag: 1,
+                    installFlag: INSTALL_FLAG,
                     isKeepData: false,
                 },
                 OnReceiveUninstallEvent
@@ -383,7 +384,7 @@ describe('ActsBmsAccessTokenTest', function () {
               bundlePath,
               {
                   userId: 100,
-                  installFlag: 1,
+                  installFlag: INSTALL_FLAG,
                   isKeepData: false,
               },
               OnReceiveInstallEvent
@@ -405,7 +406,7 @@ describe('ActsBmsAccessTokenTest', function () {
               bundleName,
               {
                   userId: 100,
-                  installFlag: 1,
+                  installFlag: INSTALL_FLAG,
                   isKeepData: false,
               },
               OnReceiveUninstallEvent
