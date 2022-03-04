@@ -27,7 +27,7 @@ describe('videoPropsJsTest', function () {
         }).then(() => {
             console.info(`sleep ${time} over...`)
         })
-    };
+    }
 
     async function backToIndex() {
         let backToIndexPromise = new Promise((resolve, reject) => {
@@ -1165,6 +1165,3 @@ describe('videoPropsJsTest', function () {
         done();
     });
 });
-
-
-
