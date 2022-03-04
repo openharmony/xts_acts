@@ -23,6 +23,19 @@
       "moduleName": "entry",
       "moduleType": "entry"
     },
+    "defPermissions": [
+      {
+        "availableScope": [],
+        "grantMode": "system_grant",
+        "name": "ohos.permission.MANAGE_LOCAL_ACCOUNTS"
+      }
+    ],
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.MANAGE_LOCAL_ACCOUNTS",
+        "reason": "ceshi"
+      }
+    ],
     "abilities": [
       {
         "visible": true,
