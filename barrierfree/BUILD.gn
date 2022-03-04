@@ -17,11 +17,11 @@ group("barrierfree") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "accessibleabilitylist:AccessibleAbilityList",
-      "accessiblecaptionconfiguration:AccessibleCaptionConfiguration",
-      "accessiblecheckability:AccessibleCheckAbility",
-      "accessibleregisterstate:AccessibleRegisterState",
-      "accessiblesendevent:AccessibleSendEvent",
+      "accessibleabilitylist:ActsAccessibleAbilityListTest",
+      "accessiblecaptionconfiguration:ActsAccessibleCaptionConfigurationTest",
+      "accessiblecheckability:ActsAccessibleCheckAbilityTest",
+      "accessibleregisterstate:ActsAccessibleRegisterStateTest",
+      "accessiblesendevent:ActsAccessibleSendEventTest",
     ]
   }
 }
