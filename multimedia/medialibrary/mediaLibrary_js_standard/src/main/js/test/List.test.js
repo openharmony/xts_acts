@@ -13,5 +13,11 @@
  * limitations under the License.
  */
 require('./favoriteTestCallBack.test.js')
-require('./favoriteTestPromise.test.js')
 require('./fileTestPromise.test.js')
+require('./favoriteTestPromise.test.js')
+require('./fileAsset2.test.js')
+require('./fileAssetTestPromise.test.js')
+require('./mediaLibraryTestPromise.test.js')
+require('./albumGetFileAssetsPromise.test.js')
+require('./albumTestPromise.test.js')
+
