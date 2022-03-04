@@ -815,8 +815,8 @@ describe('VideoPlayerFuncCallbackTest', function () {
             console.info('case new surfaceID is ' + surfaceID);
             let videoPlayer = null;
             let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-                SEEK_MODE_EVENT, DURATION_TIME, media.SeekMode.SEEK_NEXT_SYNC,
-                SEEK_MODE_EVENT, DURATION_TIME, media.SeekMode.SEEK_PREV_SYNC, RELEASE_EVENT, END_EVENT);
+                SEEK_MODE_EVENT, DURATION_TIME, media.SeekMode.SEEK_PREV_SYNC,
+                SEEK_MODE_EVENT, DURATION_TIME, media.SeekMode.SEEK_NEXT_SYNC, RELEASE_EVENT, END_EVENT);
             eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
         }, 1000);
     })
@@ -854,8 +854,8 @@ describe('VideoPlayerFuncCallbackTest', function () {
             console.info('case new surfaceID is ' + surfaceID);
             let videoPlayer = null;
             let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-                SEEK_MODE_EVENT, DURATION_TIME + 1, media.SeekMode.SEEK_NEXT_SYNC,
-                SEEK_MODE_EVENT, DURATION_TIME + 1, media.SeekMode.SEEK_PREV_SYNC, RELEASE_EVENT, END_EVENT);
+                SEEK_MODE_EVENT, DURATION_TIME + 1, media.SeekMode.SEEK_PREV_SYNC,
+                SEEK_MODE_EVENT, DURATION_TIME + 1, media.SeekMode.SEEK_NEXT_SYNC, RELEASE_EVENT, END_EVENT);
             eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
         }, 1000);
     })

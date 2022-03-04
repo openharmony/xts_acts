@@ -824,12 +824,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 expect(seekDoneTime).assertEqual(DURATION_TIME);
                 console.info('case seek called and seekDoneTime is' + seekDoneTime);
             }, failureCallback).catch(catchCallback);
-
-            await videoPlayer.seek(DURATION_TIME, media.SeekMode.SEEK_PREV_SYNC).then((seekDoneTime) => {
-                expect(videoPlayer.state).assertEqual('playing');
-                expect(seekDoneTime).assertEqual(NEXT_FRAME_TIME);
-                console.info('case seek called and seekDoneTime is' + seekDoneTime);
-            }, failureCallback).catch(catchCallback);
     
             await videoPlayer.release().then(() => {
                 console.info('case release called!!');
@@ -1670,19 +1664,19 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }, failureCallback).catch(catchCallback);
             let endTime = videoPlayer.currentTime;
             expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
-    
-            await videoPlayer.seek(DURATION_TIME, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
-                expect(videoPlayer.state).assertEqual('playing');
-                expect(seekDoneTime).assertEqual(DURATION_TIME);
-                console.info('case seek called and seekDoneTime is' + seekDoneTime);
-            }, failureCallback).catch(catchCallback);
 
             await videoPlayer.seek(DURATION_TIME, media.SeekMode.SEEK_PREV_SYNC).then((seekDoneTime) => {
                 expect(videoPlayer.state).assertEqual('playing');
                 expect(seekDoneTime).assertEqual(NEXT_FRAME_TIME);
                 console.info('case seek called and seekDoneTime is' + seekDoneTime);
             }, failureCallback).catch(catchCallback);
-    
+
+            await videoPlayer.seek(DURATION_TIME, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
+                expect(videoPlayer.state).assertEqual('playing');
+                expect(seekDoneTime).assertEqual(DURATION_TIME);
+                console.info('case seek called and seekDoneTime is' + seekDoneTime);
+            }, failureCallback).catch(catchCallback);
+
             await videoPlayer.release().then(() => {
                 console.info('case release called!!');
             }, failureCallback).catch(catchCallback);
@@ -1816,18 +1810,17 @@ describe('VideoPlayerFuncPromiseTest', function () {
             let endTime = videoPlayer.currentTime;
             expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
 
-            await videoPlayer.seek(DURATION_TIME + 1, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
-                expect(videoPlayer.state).assertEqual('playing');
-                expect(seekDoneTime).assertEqual(DURATION_TIME);
-                console.info('case seek called and seekDoneTime is' + seekDoneTime);
-            }, failureCallback).catch(catchCallback);
-
             await videoPlayer.seek(DURATION_TIME + 1, media.SeekMode.SEEK_PREV_SYNC).then((seekDoneTime) => {
                 expect(videoPlayer.state).assertEqual('playing');
                 expect(seekDoneTime).assertEqual(NEXT_FRAME_TIME);
                 console.info('case seek called and seekDoneTime is' + seekDoneTime);
             }, failureCallback).catch(catchCallback);
-          
+
+            await videoPlayer.seek(DURATION_TIME + 1, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
+                expect(videoPlayer.state).assertEqual('playing');
+                expect(seekDoneTime).assertEqual(DURATION_TIME);
+                console.info('case seek called and seekDoneTime is' + seekDoneTime);
+            }, failureCallback).catch(catchCallback);
         }, 1000);
     })
 
