@@ -51,7 +51,6 @@ describe("filemanager_test", function () {
       let fileInfos = await filemanager.getRoot();
       expect(Array.isArray(fileInfos)).assertTrue();
       expect(JSON.stringify(fileInfos) == JSON.stringify(ROOTFILE)).assertTrue();
-      console.log(JSON.stringify(fileInfos))
       for (let i = 0; i < fileInfos.length; i++) {
         if (fileInfos[i].name == "image_album") {
           console.log(LOG_ +JSON.stringify(fileInfos[i]))
