@@ -17,20 +17,15 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 import wifi from '@ohos.wifi'
 
-// delay x ms
 function sleep(delay) {
-    var start = (new Date()).getTime();
-    while(true){
-        if((new Date()).getTime() - start > delay) {
-            break;
-        }
-    }
+    return new Promise(resovle => setTimeout(resovle, delay))
 }
 
+
 var GroupOwnerBand = {
-        GO_BAND_AUTO : 0,
-        GO_BAND_2GHZ : 1,
-        GO_BAND_5GHZ : 2,
+    GO_BAND_AUTO : 0,
+    GO_BAND_2GHZ : 1,
+    GO_BAND_5GHZ : 2,
 }
 
 describe('ACTS_WifiTest', function () {
@@ -47,7 +42,7 @@ describe('ACTS_WifiTest', function () {
     * @tc.desc       Test setDeviceName infos
     */
     it('SUB_Communication_WiFi_P2P_Setting_0001', 0,  function() {
-        console.info("[wifi_test] check the state of wifi, if it's close, open it.");
+        console.info("[wifi_test] test setDeviceName start.");
         var devName = wifi.setDeviceName("P2PTest");
         console.info("[wifi_test] test start setDeviceName->" + devName);
         expect(devName).assertTrue();
@@ -71,7 +66,7 @@ describe('ACTS_WifiTest', function () {
         var active = wifi.isWifiActive();
         if(!active){
             var enable = wifi.enableWifi();
-            sleep(5000);
+            await sleep(3000);
             console.log("[wifi_test] wifi open result: " + enable);
             expect(enable).assertTrue();
         }
@@ -79,13 +74,13 @@ describe('ACTS_WifiTest', function () {
         expect(wifi.isWifiActive()).assertTrue();
         console.info("[wifi_test] test start createGroup .");
         var addConfig = wifi.createGroup(WifiP2PConfig);
-        sleep(3000);
+        await sleep(2000);
         console.info("[wifi_test] test start createGroup result." + addConfig);
         expect(addConfig).assertTrue();
         await wifi.getCurrentGroup()
             .then((data)  => {
-                console.info("[wifi_test] getCurrentGroup [promise] result -> " + JSON.stringify(data));
-                expect(true).assertEqual(data.length!=0);
+            console.info("[wifi_test] getCurrentGroup [promise] result -> " + JSON.stringify(data));
+            expect(true).assertEqual(data.length!=0);
         }).catch((error) => {
             console.info("[wifi_js]getCurrentGroup promise then error." + JSON.stringify(error));
             expect().assertFail();
@@ -115,7 +110,7 @@ describe('ACTS_WifiTest', function () {
                 console.info("[wifi_test] test start removeGroup" + removeConfig);
                 expect(removeConfig).assertTrue();
                 done();
-        });
+            });
     })
 
     /**
@@ -136,7 +131,7 @@ describe('ACTS_WifiTest', function () {
         var active = wifi.isWifiActive();
         if(!active){
             var enable = wifi.enableWifi();
-            sleep(5000);
+            await sleep(3000);
             console.log("[wifi_test] wifi open result: " + enable);
             expect(enable).assertTrue();
         }
@@ -144,13 +139,13 @@ describe('ACTS_WifiTest', function () {
         expect(wifi.isWifiActive()).assertTrue();
         console.info("[wifi_test] test start create 2.4G band Group .");
         var addConfig = wifi.createGroup(WifiP2PConfig2);
-        sleep(3000);
+        await sleep(2000);
         console.info("[wifi_test] test start createGroup result." + addConfig);
         expect(addConfig).assertTrue();
         await wifi.getCurrentGroup()
             .then((data)  => {
-                console.info("[wifi_test] getCurrentGroup  [promise] result -> " + JSON.stringify(data));
-                expect(true).assertEqual(data.length!=0);
+            console.info("[wifi_test] getCurrentGroup  [promise] result -> " + JSON.stringify(data));
+            expect(true).assertEqual(data.length!=0);
         }).catch((error) => {
             console.info("[wifi_js]getCurrentGroup promise then error." + JSON.stringify(error));
             expect().assertFail();
@@ -169,7 +164,6 @@ describe('ACTS_WifiTest', function () {
     * @tc.desc       Test createGroup and deletePersistentGroup infos
     */
     it('SUB_Communication_WiFi_P2P_Config_0003', 0, async function(done) {
-        console.info("[wifi_test] check the state of wifi, if it's close, open it.");
         var WifiP2PConfig = {
             deviceAddress : "02:11:65:f2:0d:6e",
             netId : -2,
@@ -177,10 +171,11 @@ describe('ACTS_WifiTest', function () {
             groupName : "AAAZZZ",
             goBand : 0
         };
+        console.info("[wifi_test] check the state of wifi, if it's close, open it.");
         var active = wifi.isWifiActive();
         if(!active){
             var enable = wifi.enableWifi();
-            sleep(5000);
+            await sleep(3000);
             console.log("[wifi_test] wifi open result: " + enable);
             expect(enable).assertTrue();
         }
@@ -188,23 +183,23 @@ describe('ACTS_WifiTest', function () {
         expect(wifi.isWifiActive()).assertTrue();
         console.info("[wifi_test] test start createGroup [promise].");
         var addConfig = wifi.createGroup(WifiP2PConfig);
-        sleep(3000);
+        await sleep(2000);
         console.info("[wifi_test] test start createGroup [promise]." + addConfig);
         expect(addConfig).assertTrue();
         await wifi.getCurrentGroup()
             .then((data)  => {
-                console.info("[wifi_test] getCurrentGroup  [promise] result -> " + JSON.stringify(data));
-                expect(true).assertEqual(data.length!=0);
-                console.info("[wifi_test] test start deletePersistentGroup");
-                var removePConfig = wifi.deletePersistentGroup(data.networkId);
-                console.info("[wifi_test] test start deletePersistentGroup" + removePConfig);
-                expect(removePConfig).assertTrue();
-                console.info("[wifi_test] test start removeGroup");
-                var removeConfig = wifi.removeGroup();
-                console.info("[wifi_test] test start removeGroup" + removeConfig);
-                expect(removeConfig).assertTrue();
-           });
-           done();
+            console.info("[wifi_test] getCurrentGroup  [promise] result -> " + JSON.stringify(data));
+            expect(true).assertEqual(data.length!=0);
+            console.info("[wifi_test] test start deletePersistentGroup");
+            var removePConfig = wifi.deletePersistentGroup(data.networkId);
+            console.info("[wifi_test] test start deletePersistentGroup" + removePConfig);
+            expect(removePConfig).assertTrue();
+            console.info("[wifi_test] test start removeGroup");
+            var removeConfig = wifi.removeGroup();
+            console.info("[wifi_test] test start removeGroup" + removeConfig);
+            expect(removeConfig).assertTrue();
+        });
+        done();
     })
 
     /**
@@ -213,7 +208,7 @@ describe('ACTS_WifiTest', function () {
     * @tc.author     wudangping wwx1075776
     * @tc.desc       Test p2pConnect infos
     */
-    it('SUB_Communication_WiFi_P2P_Config_0004', 0,  function() {
+    it('SUB_Communication_WiFi_P2P_Config_0004', 0,  async function(done) {
         var WifiP2PConfig3 = {
             deviceAddress : "02:11:65:f2:0d:6e",
             netId : -2,
@@ -225,7 +220,7 @@ describe('ACTS_WifiTest', function () {
         var active = wifi.isWifiActive();
         if(!active){
             var enable = wifi.enableWifi();
-            sleep(5000);
+            await sleep(3000);
             console.log("[wifi_test] wifi open result: " + enable);
             expect(enable).assertTrue();
         }
@@ -233,16 +228,17 @@ describe('ACTS_WifiTest', function () {
         expect(wifi.isWifiActive()).assertTrue();
         console.info("[wifi_test] test start startDiscoverDevices.");
         var scanConfig = wifi.startDiscoverDevices();
-        sleep(3000);
+        await sleep(2000);
         console.info("[wifi_test] test startDiscoverDevices result." + scanConfig);
         expect(scanConfig).assertTrue();
         console.info("[wifi_test] test start p2pConnect.");
         var connConfig = wifi.p2pConnect(WifiP2PConfig3);
-        sleep(5000);
         console.info("[wifi_test] test p2pConnect result." + connConfig);
         expect(connConfig).assertTrue();
         console.info("[wifi_test] test start stopDiscoverDevices.");
         var stopScan = wifi.stopDiscoverDevices();
+        console.info("[wifi_test] test stopDiscoverDevices result." + stopScan);
+        done()
     })
 
     /**
@@ -263,8 +259,7 @@ describe('ACTS_WifiTest', function () {
             }).catch((error) => {
                 console.info("[wifi_test]getP2pLinkedInfo promise then error." + JSON.stringify(error));
                 expect(error).assertFail();
-           
-        });
+         });
         wifi.getP2pLinkedInfo((err, result) => {
             if (err) {
                 console.error('failed to getP2pLinkedInfo callback  ' + JSON.stringify(err));
@@ -276,7 +271,7 @@ describe('ACTS_WifiTest', function () {
             console.info("groupOwnerAddr: " + result.groupOwnerAddr);
             expect(false).assertEqual(result.connectState ==P2pConnectState.CONNECTED);
             expect(false).assertEqual(result.connectState ==P2pConnectState.DISCONNECTED);
-            
+
         });
         done();
     })
@@ -287,16 +282,17 @@ describe('ACTS_WifiTest', function () {
     * @tc.author     wudangping wwx1075776
     * @tc.desc       Test p2pCancelConnect infos
     */
-    it('SUB_Communication_WiFi_P2P_Config_0006', 0,  function() {
+    it('SUB_Communication_WiFi_P2P_Config_0006', 0,  async function(done) {
         console.info("[wifi_test] test start p2pCancelConnect.");
         var disConn = wifi.p2pCancelConnect();
-        sleep(5000);
+        await sleep(2000);
         console.info("[wifi_test] test p2pCancelConnect result." + disConn);
         expect(disConn).assertTrue();
         console.info("[wifi_test] test start removeGroup");
         var removeConfig = wifi.removeGroup();
         console.info("[wifi_test] test start removeGroup" + removeConfig);
         expect(removeConfig).assertTrue();
+        done();
     })
 
     /**
@@ -317,7 +313,7 @@ describe('ACTS_WifiTest', function () {
         var active = wifi.isWifiActive();
         if(!active){
             var enable = wifi.enableWifi();
-            sleep(5000);
+            await sleep(3000);
             console.log("[wifi_test] wifi open result: " + enable);
             expect(enable).assertTrue();
         }
@@ -325,16 +321,16 @@ describe('ACTS_WifiTest', function () {
         expect(wifi.isWifiActive()).assertTrue();
         console.info("[wifi_test] test start startDiscoverDevices.");
         var scanConfig = wifi.startDiscoverDevices();
-        sleep(10000);
+        await sleep(2000);
         console.info("[wifi_test] test startDiscoverDevices result." + scanConfig);
         expect(scanConfig).assertTrue();
         await wifi.getP2pDevices()
             .then((data)  => {
             console.info("[wifi_test] getP2pDevices  [promise] result -> " + JSON.stringify(data));
             expect(true).assertEqual(data.length!=0);
-            }).catch((error) => {
-                console.info("[wifi_test]getP2pDevices promise then error." + JSON.stringify(error));
-                expect().assertFail();
+        }).catch((error) => {
+            console.info("[wifi_test]getP2pDevices promise then error." + JSON.stringify(error));
+            expect().assertFail();
         });
         wifi.getP2pDevices((err, result) => {
             if (err) {
@@ -367,7 +363,6 @@ describe('ACTS_WifiTest', function () {
             }
             console.info("[wifi_test] test stopDiscoverDevices.");
             var stopScan = wifi.stopDiscoverDevices();
-            sleep(3000);
             console.info("[wifi_test] test stopDiscoverDevices result." + stopScan);
             expect(stopScan).assertTrue();
             done();
@@ -394,7 +389,7 @@ describe('ACTS_WifiTest', function () {
                 console.info("offP2pStateChange callback, result:  " + JSON.stringify(result));
                 expect(true).assertEqual(result !=null);
             });
-        }, 10 * 1000);
+        }, 1 * 1000);
         done();
     })
 
@@ -425,9 +420,9 @@ describe('ACTS_WifiTest', function () {
             });
         };
         await wifi.on('p2pConnectionChange', recvP2pConnectionChangeFunc =>  {
-                console.info("[wifi_test] p2pConnectionChange result -> " + recvP2pConnectionChangeFunc);
-                expect(true).assertEqual(recvP2pConnectionChangeFunc !=null);
-                done();
+            console.info("[wifi_test] p2pConnectionChange result -> " + recvP2pConnectionChangeFunc);
+            expect(true).assertEqual(recvP2pConnectionChangeFunc !=null);
+            done();
         });
         setTimeout(function() {
             console.info('[wifi_test] offP2pStateChange test start ...');
@@ -435,7 +430,7 @@ describe('ACTS_WifiTest', function () {
                 console.info("p2pConnectionChange callback" + JSON.stringify(recvP2pConnectionChangeFunc));
                 expect(true).assertEqual(recvP2pConnectionChangeFunc !=null);
             });
-        }, 10 * 1000);
+        }, 1 * 1000);
         done();
     })
 
@@ -458,7 +453,7 @@ describe('ACTS_WifiTest', function () {
                 console.info("offP2pStateChange callback, result:  " + JSON.stringify(result));
                 expect(true).assertEqual(result !=null);
             });
-        }, 10 * 1000);
+        }, 1 * 1000);
         done();
     })
 
@@ -506,7 +501,7 @@ describe('ACTS_WifiTest', function () {
                 console.info("offP2pPeerDeviceChange callback, result:  " + JSON.stringify(result));
                 expect(true).assertEqual(result !=null);
             });
-        }, 10 * 1000);
+        }, 1 * 1000);
         done();
     })
 
@@ -550,7 +545,7 @@ describe('ACTS_WifiTest', function () {
                 console.info("offP2pPersistentGroupChange callback, result:  " + JSON.stringify(result));
                 expect(true).assertEqual(result !=null);
             });
-        }, 10 * 1000);
+        }, 1 * 1000);
         done();
     })
 
@@ -573,12 +568,10 @@ describe('ACTS_WifiTest', function () {
                 console.info("offp2pDiscoveryChange callback, result:  " + JSON.stringify(result));
                 expect(true).assertEqual(result !=null);
             });
-        }, 10 * 1000);
+        }, 1 * 1000);
         done();
     })
 
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })
-
-
 

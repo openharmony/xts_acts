@@ -17,15 +17,8 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 import wifi from '@ohos.wifi'
 
-// delay x ms
 function sleep(delay) {
-
-    var start = (new Date()).getTime();
-    while(true){
-           if(new Date().getTime() - start >delay) {
-               break;
-        }
-    }
+    return new Promise(resovle => setTimeout(resovle, delay))
 }
 
 var WifiSecurityType = {
@@ -55,15 +48,14 @@ describe('ACTS_WifiTest', function() {
     * @tc.number     OPEN_0002
     * @tc.name       SUB_Communication_WiFi_Hotspot_Open_0002
     * @tc.desc       Test wifi.enableHotspot and wifi.disableHotspot API functionality1.
-    * @tc.author     wudangping wwx1075776
     * @tc.level Level 0
     */
-    it('SUB_Communication_WiFi_Hotspot_Open_0002', 0, function () {
+    it('SUB_Communication_WiFi_Hotspot_Open_0002', 0, async function (done) {
         console.info("[wifi_test] SUB_Communication_WiFi_Hotspot_Open_0002");
         console.info("[wifi_test] enableHotspot and disableHotspot test start.");
-        if (wifi.isWifiActive()) {
+	    if (wifi.isWifiActive()) {
             var disable = wifi.disableWifi();
-            sleep(5000);
+            await sleep(2000);
             console.log("[wifi_test] wifi close result: " + disable);
             expect(disable).assertTrue();
         }
@@ -72,55 +64,56 @@ describe('ACTS_WifiTest', function() {
         expect(close).assertFalse();
         if (!wifi.isHotspotActive()) {
             var on = wifi.enableHotspot();
-            sleep(5000);
+            await sleep(3000);
             console.info("[wifi_test] enableHotspot result -> " + on);
             expect(on).assertTrue();
         }
-        console.info("[wifi_test] AP status result -> " + wifi.isHotspotActive());
+        console.info("[wifi_test] Hotspot status result -> " + wifi.isHotspotActive());
         expect(wifi.isHotspotActive()).assertTrue();
-        console.info("[wifi_test] enableHotspot and close wifi test end.");
+        console.info("[wifi_test] enableHotspot and disableHotspot test end.");
+        done();
     })
 
     /**
     * @tc.number  CONFIG_0001
     * @tc.name    SUB_Communication_WiFi_Hotspot_Config_0001
-    * @tc.author  wudangping wwx1075776
     * @tc.desc    Test set a valid 2.4G hotspot config
     * @tc.level   Level 0
     */
-    it('SUB_Communication_WiFi_Hotspot_Config_0001', 0, function () {
+    it('SUB_Communication_WiFi_Hotspot_Config_0001', 0, async function () {
         console.info("[wifi_test] SUB_Communication_WiFi_Hotspot_Config_0001");
         console.info("[wifi_test] set a valid 2.4G hotspot config start.");
         if (wifi.isHotspotActive()) {
             var off = wifi.disableHotspot();
-            sleep(5000);
+            await sleep(2000);
             console.info("[wifi_test] disableHotspot result -> " + off);
             expect(off).assertTrue();
         }
-        console.info("[wifi_test] AP status result -> " + wifi.isHotspotActive());
+        console.info("[wifi_test] Hotspot status result -> " + wifi.isHotspotActive());
         expect(wifi.isHotspotActive()).assertFalse();
         var isSuccess = wifi.setHotspotConfig(HotspotConfig);
         console.log("[wifi_test] set 2.4G hotspot config  result: " + isSuccess);
         expect(isSuccess).assertTrue();
-
         console.info("[wifi_test] check band of current band should be 2.4G.");
         var hotspotConfig = wifi.getHotspotConfig();
         console.log("[wifi_test] getHotspotConfig  result: " + JSON.stringify(hotspotConfig));
         expect(hotspotConfig.band).assertEqual(1);
+        console.info("[wifi_test] SUB_Communication_WiFi_Hotspot_Config_0001 end");
+        done();
     })
-    
-     /**
+
+    /**
     * @tc.number     CONFIG_0002
     * @tc.name       SUB_Communication_WiFi_Hotspot_Config_0002
     * @tc.desc       Test set a valid 5G hotspot config
     * @tc.level Level 1
     */
-    it('SUB_Communication_WiFi_Hotspot_Config_0002', 0, function () {
+    it('SUB_Communication_WiFi_Hotspot_Config_0002', 0, async function (done) {
         console.info("[wifi_test] SUB_Communication_WiFi_Hotspot_Config_0002");
         console.info("[wifi_test] set a valid hotspot config start.");
         if (wifi.isHotspotActive()) {
             var off = wifi.disableHotspot();
-            sleep(5000);
+            await sleep(3000);
             console.info("[wifi_test] disableHotspot result -> " + off);
             expect(off).assertTrue();
         }
@@ -138,6 +131,7 @@ describe('ACTS_WifiTest', function() {
         var hotspotConfig5 = wifi.getHotspotConfig();
         console.log("[wifi_test] getHotspotConfig  result: " + JSON.stringify(hotspotConfig5));
         expect(hotspotConfig5.band).assertEqual(1);
+        done();
     })
 
     /**
@@ -146,11 +140,11 @@ describe('ACTS_WifiTest', function() {
     * @tc.desc       Test set a invalid  hotspot config
     * @tc.level Level 2
     */
-    it('SUB_Communication_WiFi_Hotspot_Config_0003', 0, function () {
+    it('SUB_Communication_WiFi_Hotspot_Config_0003', 0, async function (done) {
         console.info("[wifi_test] set a invalid hotspot config start.");
         if (wifi.isHotspotActive()) {
             var off = wifi.disableHotspot();
-            sleep(10000);
+            await sleep(3000);
             console.info("[wifi_test] disableHotspot result -> " + off);
             expect(off).assertTrue();
         }
@@ -164,8 +158,10 @@ describe('ACTS_WifiTest', function() {
         var isSuccess1 = wifi.setHotspotConfig(HotspotConfig1);
         console.log("[wifi_test] set invalid band hotspot config  result1:" + isSuccess1);
         expect(isSuccess1).assertFalse();
+        done();
 
     })
+
 
     /**
     * @tc.number     CONFIG_0004
@@ -173,12 +169,12 @@ describe('ACTS_WifiTest', function() {
     * @tc.desc       Test set a max preSharedKey is hotspot config
     * @tc.level Level 2
     */
-    it('SUB_Communication_WiFi_Hotspot_Config_0004', 0, function () {
+    it('SUB_Communication_WiFi_Hotspot_Config_0004', 0, async function (done) {
         console.info("[wifi_test] SUB_Communication_WiFi_Hotspot_Config_0004");
         console.info("[wifi_test] check the state of hotspot, if it's open, close it.");
         if (wifi.isHotspotActive()) {
             var off = wifi.disableHotspot();
-            sleep(5000);
+            await sleep(5000);
             console.info("[wifi_test] disableHotspot result -> " + off);
             expect(off).assertTrue();
         }
@@ -204,6 +200,7 @@ describe('ACTS_WifiTest', function() {
         var isSuccess1 = wifi.setHotspotConfig(HotspotConfigM1);
         console.log("[wifi_test] set 65 preSharedKey invalid hotspot config  result: " + isSuccess1);
         expect(isSuccess1).assertFalse();
+        done();
     })
 
     /**
@@ -212,11 +209,11 @@ describe('ACTS_WifiTest', function() {
     * @tc.desc       Test set a min preSharedKey is hotspot config
     * @tc.level Level 2
     */
-    it('SUB_Communication_WiFi_Hotspot_Config_0005', 0, function () {
+    it('SUB_Communication_WiFi_Hotspot_Config_0005', 0, async function (done) {
         console.info("[wifi_test] check the state of hotspot, if it's open, close it.");
         if (wifi.isHotspotActive()) {
             var off = wifi.disableHotspot();
-            sleep(5000);
+            await sleep(5000);
             console.info("[wifi_test] disableHotspot result -> " + off);
             expect(off).assertTrue();
         }
@@ -252,6 +249,7 @@ describe('ACTS_WifiTest', function() {
         console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
         console.info("preSharedKey: " + config.preSharedKey);
         expect(config.preSharedKey.length).assertEqual(8);
+        done();
     })
 
     /**
@@ -260,11 +258,11 @@ describe('ACTS_WifiTest', function() {
     * @tc.desc       Test set a max ssid for hotspot config
     * @tc.level Level 2
     */
-    it('SUB_Communication_WiFi_Hotspot_Config_0006', 0, function () {
+    it('SUB_Communication_WiFi_Hotspot_Config_0006', 0, async function (done) {
         console.info("[wifi_test] check the state of hotspot, if it's open, close it.");
         if (wifi.isHotspotActive()) {
             var off = wifi.disableHotspot();
-            sleep(5000);
+            await sleep(5000);
             console.info("[wifi_test] disableHotspot result -> " + off);
             expect(on2).assertTrue();
         }
@@ -295,6 +293,7 @@ describe('ACTS_WifiTest', function() {
         var isSuccess1 = wifi.setHotspotConfig(HotspotConfigS1);
         console.log("[wifi_test] set 33bit ssid invalid hotspot config  result: " + isSuccess1);
         expect(isSuccess1).assertFalse();
+        done();
 
     })
 
@@ -304,10 +303,11 @@ describe('ACTS_WifiTest', function() {
     * @tc.desc       Test set a null ssid invalid  hotspot config
     * @tc.level Level 2
     */
-    it('SUB_Communication_WiFi_Hotspot_Config_0007', 0, function () {
+    it('SUB_Communication_WiFi_Hotspot_Config_0007', 0, async function (done) {
         console.info("[wifi_test] set a null ssid invalid hotspot config start.");
         if (wifi.isHotspotActive()) {
             var off = wifi.disableHotspot();
+            await sleep(2000);
             console.info("[wifi_test] disableHotspot result -> " + off);
             expect(off).assertTrue();
         }
@@ -321,6 +321,7 @@ describe('ACTS_WifiTest', function() {
         var isSuccess1 = wifi.setHotspotConfig(HotspotConfigN);
         console.log("[wifi_test] set a null ssid invalid hotspot config  result1:" + isSuccess1);
         expect(isSuccess1).assertFalse();
+        done();
     })
 
     /**
@@ -332,7 +333,7 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Hotspot_Config_0008', 0, function () {
         console.info("[wifi_test] set contains Chinese valid hotspot config start.");
         var HotspotConfigC= {
-            "ssid": "￥%￥#@12测试 ",
+            "ssid": "�?�?@12测试 ",
             "band": 1,
             "preSharedKey": "12345678",
             "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
@@ -354,11 +355,11 @@ describe('ACTS_WifiTest', function() {
     * @tc.desc       Test set a invalid preSharedKey hotspot config
     * @tc.level Level 2
     */
-    it('SUB_Communication_WiFi_Hotspot_Config_0009', 0, function () {
+    it('SUB_Communication_WiFi_Hotspot_Config_0009', 0, async function (done) {
         console.info("[wifi_test] set invalid hotspot config start.");
         if (wifi.isHotspotActive()) {
             var off = wifi.disableHotspot();
-            sleep(5000);
+            await sleep(3000);
             console.info("[wifi_test] enableHotspot result -> " + off);
             expect(off).assertTrue();
 
@@ -395,6 +396,7 @@ describe('ACTS_WifiTest', function() {
         var isSuccess3 = wifi.setHotspotConfig(HotspotConfigC);
         console.log("[wifi_test] set a invalid preSharedKey hotspot config  result1: " + isSuccess3);
         expect(isSuccess3).assertFalse();
+        done();
 
     })
 
@@ -404,11 +406,11 @@ describe('ACTS_WifiTest', function() {
     * @tc.desc       Test set a valid PSK preSharedKey hotspot config
     * @tc.level Level 2
     */
-    it('SUB_Communication_WiFi_Hotspot_Config_0010', 0, function () {
+    it('SUB_Communication_WiFi_Hotspot_Config_0010', 0, async function (done) {
         console.info("[wifi_test] set valid hotspot config start.");
         if (wifi.isHotspotActive()) {
             var off = wifi.disableHotspot();
-            sleep(5000);
+            await sleep(5000);
             console.info("[wifi_test] enableHotspot result -> " + off);
             expect(off).assertTrue();
 
@@ -429,6 +431,7 @@ describe('ACTS_WifiTest', function() {
         var isHotspotActive = wifi.isHotspotActive();
         console.info("[wifi_test] isHotspotActive -> " + isHotspotActive);
         expect(isHotspotActive).assertFalse();
+        done();
 
     })
 
@@ -438,11 +441,11 @@ describe('ACTS_WifiTest', function() {
     * @tc.desc       Test set a valid OPEN preSharedKey hotspot config
     * @tc.level Level 2
     */
-    it('SUB_Communication_WiFi_Hotspot_Config_0011', 0, function () {
+    it('SUB_Communication_WiFi_Hotspot_Config_0011', 0, async function (done) {
         console.info("[wifi_test] wifi disableHotspot start.");
         if (wifi.isHotspotActive()) {
             var off = wifi.disableHotspot();
-            sleep(5000);
+            await sleep(5000);
             console.info("[wifi_test] disableHotspot result -> " + off);
             expect(off).assertTrue();
         }
@@ -457,6 +460,7 @@ describe('ACTS_WifiTest', function() {
         var isSuccess1 = wifi.setHotspotConfig(HotspotConfigO);
         console.log("[wifi_test] set a open preSharedKey hotspot config  result1: " + isSuccess1);
         expect(isSuccess1).assertTrue();
+        done();
 
     })
 
@@ -466,11 +470,11 @@ describe('ACTS_WifiTest', function() {
     * @tc.desc       Test set a maxConn and more maxConn hotspot config
     * @tc.level Level 2
     */
-     it('SUB_Communication_WiFi_Hotspot_Conn_0001', 0, function () {
+     it('SUB_Communication_WiFi_Hotspot_Conn_0001', 0, async function (done) {
         console.info("[wifi_test] check the state of hotspot, if it's open, close it.");
         if (wifi.isHotspotActive()) {
             var off = wifi.disableHotspot();
-            sleep(5000);
+            await sleep(5000);
             console.info("[wifi_test] disableHotspot result -> " + off);
             expect(off).assertTrue();
 
@@ -508,6 +512,7 @@ describe('ACTS_WifiTest', function() {
         console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
         console.info("ssid: " + config.maxConn);
         expect(config.maxConn).assertEqual(8);
+        done();
     })
 
     /**
@@ -516,12 +521,12 @@ describe('ACTS_WifiTest', function() {
     * @tc.desc       Test set a valid hotspot config after open Hotspot
     * @tc.level Level 2
     */
-    it('SUB_Communication_WiFi_Hotspot_Config_0012', 0, function () {
+    it('SUB_Communication_WiFi_Hotspot_Config_0012', 0, async function (done) {
         console.info("[wifi_test] wifi enableHotspot start.");
         console.info("[wifi_test] SUB_Communication_WiFi_Hotspot_Config_0012.");
         if (!wifi.isHotspotActive()) {
             var on = wifi.enableHotspot();
-            sleep(5000);
+            await sleep(5000);
             console.info("[wifi_test] enableHotspot result -> " + on);
             expect(on).assertTrue();
         }
@@ -554,6 +559,7 @@ describe('ACTS_WifiTest', function() {
         expect(config.preSharedKey).assertEqual('12345678');
         expect(config.securityType).assertEqual(3);
         expect(config.maxConn).assertEqual(8);
+        done();
     })
 
     
@@ -563,11 +569,11 @@ describe('ACTS_WifiTest', function() {
     * @tc.desc       Test Obtains the list of clients that are connected to a Wi-Fi hotspot.
     * @tc.level Level 2
     */
-    it('SUB_Communication_WiFi_Hotspot_Conn_0002', 0, function () {
+    it('SUB_Communication_WiFi_Hotspot_Conn_0002', 0, async function (done) {
         console.info("[wifi_test] check the state of hotspot, if it's open, close it.");
         if (!wifi.isHotspotActive()) {
             var on = wifi.enableHotspot();
-            sleep(5000);
+            await sleep(5000);
             console.info("[wifi_test] enableHotspot result -> " + on);
             expect(on).assertTrue();
 
@@ -582,6 +588,7 @@ describe('ACTS_WifiTest', function() {
         console.info("ssid: " + stationInfo.name);
         console.info("macAddress: " + stationInfo.macAddress);
         console.info("ipAddress: " + stationInfo.ipAddress);
+        done();
 
     })
     
@@ -596,11 +603,11 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Hotspot_ON_0001', 0, async function (done) {
         console.info("[wifi_test]hotspotStateChange On test");
         try {
-            wifi.on('hotspotStateChange', (data) => {
+            await wifi.on('hotspotStateChange', (data) => {
                 console.info("[wifi_test] hotspotStateChange On ->" + data);
                 expect(true).assertEqual(data != null);
             });
-            await(3000);
+            
         }catch(e) {
             expect(null).assertFail();
         }
@@ -617,12 +624,12 @@ describe('ACTS_WifiTest', function() {
      */
     it('SUB_Communication_WiFi_Sta_Off_0002', 0, async function (done) {
         try {
-            wifi.off('hotspotStateChange', (data) => {
+           await wifi.off('hotspotStateChange', (data) => {
                 console.info("[wifi_test] hotspotStateChange Off ->" + data);
                 expect(true).assertEqual(data != null);
                 console.info("[wifi_test] wifiRssiChange unregister end");
             });
-            await(3000);
+            
         }catch(e) {
             expect(null).assertFail();
         }
@@ -640,11 +647,11 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Hotspot_ON_0003', 0, async function (done) {
         console.info("[wifi_test]hotspotStaJoin On test");
         try {
-            wifi.on('hotspotStaJoin', (data) => {
+          await wifi.on('hotspotStaJoin', (data) => {
                 console.info("[wifi_test] hotspotStaJoin On ->" + data);
                 expect(true).assertEqual(data != null);
             });
-            await(3000);
+            
         }catch(e) {
             expect(null).assertFail();
         }
@@ -661,12 +668,12 @@ describe('ACTS_WifiTest', function() {
      */
     it('SUB_Communication_WiFi_Sta_Off_0004', 0, async function (done) {
         try {
-            wifi.off('hotspotStaJoin', (data) => {
+            await wifi.off('hotspotStaJoin', (data) => {
                 console.info("[wifi_test] hotspotStaJoin Off ->" + data);
                 expect(true).assertEqual(data != null);
                 console.info("[wifi_test] wifiRssiChange unregister end");
             });
-            await(3000);
+            
         }catch(e) {
             expect(null).assertFail();
         }
@@ -684,11 +691,11 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Hotspot_ON_0005', 0, async function (done) {
         console.info("[wifi_test]hotspotStaLeave On test");
         try {
-            wifi.on('hotspotStaLeave', (data) => {
+           await wifi.on('hotspotStaLeave', (data) => {
                 console.info("[wifi_test] hotspotStaLeave On ->" + data);
                 expect(true).assertEqual(data != null);
             });
-            await(3000);
+            
         }catch(e) {
             expect(null).assertFail();
         }
@@ -705,12 +712,12 @@ describe('ACTS_WifiTest', function() {
      */
     it('SUB_Communication_WiFi_Sta_Off_0006', 0, async function (done) {
         try {
-            wifi.off('hotspotStaLeave', (data) => {
+            await wifi.off('hotspotStaLeave', (data) => {
                 console.info("[wifi_test] hotspotStaLeave Off ->" + data);
                 expect(true).assertEqual(data != null);
                 console.info("[wifi_test] hotspotStaLeave unregister end");
             });
-            await(3000);
+            
         }catch(e) {
             expect(null).assertFail();
         }
@@ -719,3 +726,4 @@ describe('ACTS_WifiTest', function() {
 
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })
+
