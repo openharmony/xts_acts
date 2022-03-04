@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "huksCipherBasicCallbackJSApiTest.hap"
+                "ActsHuksCipherBasicCallbackJSApiTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
