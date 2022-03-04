@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "huksDeriveBasicPromiseJSApiTest.hap"
+                "ActsHuksDeriveBasicPromiseJSApiTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
