@@ -304,7 +304,7 @@ describe('gridContainerPropsJsTest', function () {
         expect(obj.$type).assertEqual('grid-container')
         expect(obj.$attrs.id).assertEqual('dataProp')
         expect(obj.$attrs.datagridContainer).assertEqual(undefined);
-        console.info("[gridContainerProps] get datagridContainer value is: " + JSON.stringify(obj.$attrs.datagridContainer));
+        console.info("[gridConProp] get data value is: " + JSON.stringify(obj.$attrs.datagridContainer));
         done();
     });
 
@@ -324,7 +324,7 @@ describe('gridContainerPropsJsTest', function () {
         expect(obj.$type).assertEqual('grid-container')
         expect(obj.$attrs.id).assertEqual('dataPropNone')
         expect(obj.$attrs.datagridContainer).assertEqual(undefined)
-        console.info("[gridContainerProps] get datagridContainer value is: " + JSON.stringify(obj.$attrs.datagridContainer));
+        console.info("[gridConProp] get data value is: " + JSON.stringify(obj.$attrs.datagridContainer));
         done();
     });
 
@@ -760,6 +760,7 @@ describe('gridContainerPropsJsTest', function () {
         console.info("[gridContainerProps] get size value is: " + JSON.stringify(obj.$attrs.sizetype));
         done();
     });
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testgridContainerShowPropNone
