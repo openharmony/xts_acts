@@ -165,6 +165,5 @@ export default {
         this.directionPropNone = this.$element("directionPropNone").getInspector()
         this.speedProp = this.$element("speedProp").getInspector()
         this.speedPropNone = this.$element("speedPropNone").getInspector()
-        return
     },
 }
