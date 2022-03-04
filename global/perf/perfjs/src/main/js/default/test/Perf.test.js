@@ -1017,5 +1017,400 @@ describe('PerfTest', function () {
         }
     })
 
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_3800
+    * @tc.name test the performance of getLineBreakText
+    * @tc.desc check the performance of getLineBreakText
+    */
+    it('perf_test_3800', 0, function () {
+        console.log('perf_test_3800 ' + 'start');
+        let iterator =I18n.getLineInstance('en');
+        iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
+        let value = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = iterator.getLineBreakText();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_3800--'
+                    + 'value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_3900
+    * @tc.name test the performance of isBoundary
+    * @tc.desc check the performance of isBoundary
+    */
+    it('perf_test_3900', 0, function () {
+        console.log('perf_test_3900 ' + 'start');
+        let iterator =I18n.getLineInstance('en');
+        iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
+        let value = false;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = iterator.isBoundary(10);
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_3900--'
+                    + 'value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_4000
+    * @tc.name test the performance of getInstance
+    * @tc.desc check the performance of getInstance
+    */
+    it('perf_test_4000', 0, function () {
+        console.log('perf_test_4000 ' + 'start');
+        let index = null;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            index = I18n.getInstance();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_4000--'
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_4100
+    * @tc.name test the performance of getIndex
+    * @tc.desc check the performance of getIndex
+    */
+    it('perf_test_4100', 0, function () {
+        console.log('perf_test_4100 ' + 'start');
+        let index = I18n.getInstance();
+        let value = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = index.getIndex('a');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_4100--'
+                    + 'value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_4200
+    * @tc.name test the performance of getIndexList
+    * @tc.desc check the performance of getIndexList
+    */
+    it('perf_test_4200', 0, function () {
+        console.log('perf_test_4200 ' + 'start');
+        let index = I18n.getInstance();
+        let value = new Array();
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = index.getIndexList();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_4200--'
+                    + 'value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_4300
+    * @tc.name test the performance of addLocale
+    * @tc.desc check the performance of addLocale
+    */
+    it('perf_test_4300', 0, function () {
+        console.log('perf_test_4300 ' + 'start');
+        let index = I18n.getInstance();
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            index.addLocale('en');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_4300--'
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_4400
+    * @tc.name test the performance of isDigit
+    * @tc.desc check the performance of isDigit
+    */
+    it('perf_test_4400', 0, function () {
+        console.log('perf_test_4400 ' + 'start');
+        let value = false;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.Character.isDigit('abc');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_4400--'
+                    + 'value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_4500
+    * @tc.name test the performance of isSpaceChar
+    * @tc.desc check the performance of isSpaceChar
+    */
+    it('perf_test_4500', 0, function () {
+        console.log('perf_test_4500 ' + 'start');
+        let value = false;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.Character.isSpaceChar('abc');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_4500--'
+                    + 'value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_4600
+    * @tc.name test the performance of isWhitespace
+    * @tc.desc check the performance of isWhitespace
+    */
+    it('perf_test_4600', 0, function () {
+        console.log('perf_test_4600 ' + 'start');
+        let value = false;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.Character.isWhitespace('abc');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_4600--'
+                    + 'value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_4700
+    * @tc.name test the performance of isRTL
+    * @tc.desc check the performance of isRTL
+    */
+    it('perf_test_4700', 0, function () {
+        console.log('perf_test_4700 ' + 'start');
+        let value = false;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.Character.isRTL('abc');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_4700--'
+                    + 'value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_4800
+    * @tc.name test the performance of isIdeograph
+    * @tc.desc check the performance of isIdeograph
+    */
+    it('perf_test_4800', 0, function () {
+        console.log('perf_test_4800 ' + 'start');
+        let value = false;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.Character.isIdeograph('abc');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_4800--'
+                    + 'value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_4900
+    * @tc.name test the performance of isLetter
+    * @tc.desc check the performance of isLetter
+    */
+    it('perf_test_4900', 0, function () {
+        console.log('perf_test_4900 ' + 'start');
+        let value = false;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.Character.isLetter('abc');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_4900--'
+                    + 'value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_5000
+    * @tc.name test the performance of isLowerCase
+    * @tc.desc check the performance of isLowerCase
+    */
+    it('perf_test_5000', 0, function () {
+        console.log('perf_test_5000 ' + 'start');
+        let value = false;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.Character.isLowerCase('abc');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_5000--'
+                    + 'value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_5100
+    * @tc.name test the performance of isUpperCase
+    * @tc.desc check the performance of isUpperCase
+    */
+    it('perf_test_5100', 0, function () {
+        console.log('perf_test_5100 ' + 'start');
+        let value = false;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.Character.isUpperCase('ABC');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_5100--'
+                    + 'value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_5200
+    * @tc.name test the performance of getType
+    * @tc.desc check the performance of getType
+    */
+    it('perf_test_5200', 0, function () {
+        console.log('perf_test_5200 ' + 'start');
+        let value = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.Character.getType('a');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_5200--'
+                    + 'value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
     console.log('*************end PerfTest*************');
 })

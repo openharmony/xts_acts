@@ -203,12 +203,19 @@ describe('LangTest', function () {
     */
     it('i18n_test_preferredlanguage_0300', 0, function () {
         console.log('i18n_test_preferredlanguage_0300 ' + 'start');
-        let value = I18n.addPreferredLanguage('en', 0);
-        console.log('i18n_test_preferredlanguage_0300 ' + value);
-        expect(value).assertTrue();
         let list = I18n.getPreferredLanguageList();
         console.log('i18n_test_preferredlanguage_0300 ' + list);
         expect(list.length).assertLarger(0);
+        if(list[0] != 'en'){
+            let value = I18n.addPreferredLanguage('en', 0);
+            console.log('i18n_test_preferredlanguage_0300 ' + value);
+            expect(value).assertTrue();
+        }
+        else{
+            let value = I18n.addPreferredLanguage('zh', 0);
+            console.log('i18n_test_preferredlanguage_0300 ' + value);
+            expect(value).assertTrue();
+        }
     })
 
     /* *
@@ -233,12 +240,19 @@ describe('LangTest', function () {
     */
     it('i18n_test_preferredlanguage_0340', 0, function () {
         console.log('i18n_test_preferredlanguage_0340 ' + 'start');
-        let value = I18n.addPreferredLanguage('en', 1.5);
-        console.log('i18n_test_preferredlanguage_0340 ' + value);
-        expect(value).assertTrue();
         let list = I18n.getPreferredLanguageList();
         console.log('i18n_test_preferredlanguage_0340 ' + list);
         expect(list.length).assertLarger(0);
+        if(list[0] != 'en'){
+            let value = I18n.addPreferredLanguage('en', 1.5);
+            console.log('i18n_test_preferredlanguage_0340 ' + value);
+            expect(value).assertTrue();
+        }
+        else{
+            let value = I18n.addPreferredLanguage('zh', 1);
+            console.log('i18n_test_preferredlanguage_0340 ' + value);
+            expect(value).assertTrue();
+        }
     })
 
     /* *
@@ -248,12 +262,19 @@ describe('LangTest', function () {
     */
     it('i18n_test_preferredlanguage_0400', 0, function () {
         console.log('i18n_test_preferredlanguage_0400 ' + 'start');
-        let value = I18n.addPreferredLanguage('en', 1);
-        console.log('i18n_test_preferredlanguage_0400 ' + value);
-        expect(value).assertTrue();
         let list = I18n.getPreferredLanguageList();
         console.log('i18n_test_preferredlanguage_0400 ' + list);
         expect(list.length).assertLarger(0);
+        if(list[0] != 'en'){
+            let value = I18n.addPreferredLanguage('en', 1);
+            console.log('i18n_test_preferredlanguage_0400 ' + value);
+            expect(value).assertTrue();
+        }
+        else{
+            let value = I18n.addPreferredLanguage('zh', 1);
+            console.log('i18n_test_preferredlanguage_0400 ' + value);
+            expect(value).assertTrue();
+        }
     })
 
     /* *
@@ -397,13 +418,14 @@ describe('LangTest', function () {
     * @tc.desc check the value of preferredLanguage method
     */
     it('i18n_test_preferredlanguage_0940', 0, function () {
+        console.log('i18n_test_preferredlanguage_0940 ' + 'start');
         let value = I18n.addPreferredLanguage('it');
         console.log('i18n_test_preferredlanguage_0940 ' + value);
         expect(value).assertTrue();
         let value2 = I18n.addPreferredLanguage('ko');
         console.log('i18n_test_preferredlanguage_0940 ' + value2);
         expect(value2).assertTrue();
-        let value3 = I18n.addPreferredLanguage('en');
+        let value3 = I18n.addPreferredLanguage('th');
         console.log('i18n_test_preferredlanguage_0940 ' + value3);
         expect(value3).assertTrue();
         let list1 = I18n.getPreferredLanguageList();
@@ -414,12 +436,12 @@ describe('LangTest', function () {
         let value5 = I18n.addPreferredLanguage('ko', 2);
         console.log('i18n_test_preferredlanguage_0940 ' + value5);
         expect(value5).assertTrue();
-        let value6 = I18n.addPreferredLanguage('en', 1);
+        let value6 = I18n.addPreferredLanguage('th', 1);
         console.log('i18n_test_preferredlanguage_0940 ' + value6);
         expect(value6).assertFalse();
         let list2 = I18n.getPreferredLanguageList();
         console.log('i18n_test_preferredlanguage_0940 ' + list2);
-        expect(list2[1]).assertEqual('en');
+        expect(list2[1]).assertEqual('th');
         expect(list2[2]).assertEqual('ko');
         expect(list2[3]).assertEqual('it');
         let remove1 = I18n.removePreferredLanguage(1);
@@ -446,10 +468,15 @@ describe('LangTest', function () {
         console.log('i18n_test_preferredlanguage_1000 ' + 'start');
         let value = I18n.getFirstPreferredLanguage();
         console.log('i18n_test_preferredlanguage_1000 ' + value);
-        expect(value).assertEqual('zh-Hans');
         let list = I18n.getPreferredLanguageList();
         console.log('i18n_test_preferredlanguage_1000 ' + list);
         expect(list.length).assertLarger(0);
+        if(list[0] == 'zh-Hans'){
+            expect(value).assertEqual('zh-Hans');
+        }
+        else if(list[0] == 'en'){
+            expect(value).assertEqual('en');
+        }
     })
 
     /* *
