@@ -129,13 +129,42 @@ describe("filemanager_test", function () {
   /**
    * @tc.number SUB_DF_FILEMANAGER_GET_ROOT_0030
    * @tc.name filemanager_test_get_root_async_003
-   * @tc.desc Test getRoot() interfaces, when the parameter type is wrong,throw an exception.
+   * @tc.desc Test FileInfo property 
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
    */
    it("filemanager_test_get_root_async_003", 0, async function (done) {
+    try {
+      let fileInfos = await filemanager.getRoot();
+      expect(Array.isArray(fileInfos)).assertTrue();
+      expect(JSON.stringify(fileInfos) == JSON.stringify(ROOTFILE)).assertTrue();
+      for (let i = 0; i < fileInfos.length; i++) {
+        expect(typeof fileInfos[i].name == "string").assertTrue();
+        expect(typeof fileInfos[i].path == "string").assertTrue();
+        expect(typeof fileInfos[i].type == "string").assertTrue();
+        expect(typeof fileInfos[i].size == "number").assertTrue();
+        expect(typeof fileInfos[i].added_time == "number").assertTrue();
+        expect(typeof fileInfos[i].modified_time == "number").assertTrue();
+      }
+      done();
+    } catch (error) {
+      console.log("filemanager_test_get_root_async_003 has failed for " + error);
+      expect(null).assertFail();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEMANAGER_GET_ROOT_0040
+   * @tc.name filemanager_test_get_root_async_004
+   * @tc.desc Test getRoot() interfaces, when the parameter type is wrong,throw an exception.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+   it("filemanager_test_get_root_async_004", 0, async function (done) {
     try {
       let options = {
         dev:{
@@ -144,7 +173,7 @@ describe("filemanager_test", function () {
       }
       await filemanager.getRoot(options)
     } catch (error) {
-      console.log("filemanager_test_get_root_async_003 has failed for " + error);
+      console.log("filemanager_test_get_root_async_004 has failed for " + error);
       expect(error.message == "GetRoot func get dev para fails").assertTrue();
       done();
     }
