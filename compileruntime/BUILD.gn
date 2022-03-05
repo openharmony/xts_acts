@@ -17,6 +17,8 @@ group("compileruntime") {
   if (is_standard_system) {
     deps = [
       "ark_intl_standard/intljs:intljs_test",
+      "containerLine_lib_standard:containerLine_js_test",
+      "containerRelation_lib_standard:containerRelation_js_test",
       "convertxml_lib_standard:convertxml_js_test",
       "uri_lib_standard:uri_js_test",
       "url_lib_standard:url_js_test",
