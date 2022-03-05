@@ -26,6 +26,9 @@ export default {
     },
     onShow() {
         console.info('onShow finish')
+    },
+    onReady() {
+        console.info('onReady finish')
         const core = Core.getInstance()
         const expectExtend = new ExpectExtend({
             'id': 'extend'
@@ -38,7 +41,7 @@ export default {
 
         require('../../test/List.test')
         core.execute()
-    },
-    onReady() {
+
     },
 }
+

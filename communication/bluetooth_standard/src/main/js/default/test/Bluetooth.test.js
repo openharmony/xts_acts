@@ -28,18 +28,18 @@ var MatchMode = {
 }
 
 var MajorClass = {
-        MAJOR_MISC : 0x0000,
-        MAJOR_COMPUTER : 0x0100,
-        MAJOR_PHONE : 0x0200,
-        MAJOR_NETWORKING : 0x0300,
-        MAJOR_AUDIO_VIDEO : 0x0400,
-        MAJOR_PERIPHERAL : 0x0500,
-        MAJOR_IMAGING : 0x0600,
-        MAJOR_WEARABLE : 0x0700,
-        MAJOR_TOY : 0x0800,
-        MAJOR_HEALTH : 0x0900,
-        MAJOR_UNCATEGORIZED : 0x1F00
-    }
+    MAJOR_MISC : 0x0000,
+    MAJOR_COMPUTER : 0x0100,
+    MAJOR_PHONE : 0x0200,
+    MAJOR_NETWORKING : 0x0300,
+    MAJOR_AUDIO_VIDEO : 0x0400,
+    MAJOR_PERIPHERAL : 0x0500,
+    MAJOR_IMAGING : 0x0600,
+    MAJOR_WEARABLE : 0x0700,
+    MAJOR_TOY : 0x0800,
+    MAJOR_HEALTH : 0x0900,
+    MAJOR_UNCATEGORIZED : 0x1F00
+}
 
 describe('bluetoothhostTest', function() {
 
@@ -48,18 +48,10 @@ describe('bluetoothhostTest', function() {
     beforeAll(function () {
         console.info('beforeAll called')
         gattServer = bluetooth.BLE.createGattServer();
-        setTimeout(function(){
-            console.debug('==createGattServer==timeout')
-        },5000);
         console.info('[bluetooth_js] gattServer beforeAll is:' + JSON.stringify(gattServer));
-        console.info('[bluetooth_js] gattServer type beforeAll is:' + gattServer);
 
         gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
-        setTimeout(function(){
-            console.debug('==createGattClientDevice==timeout')
-        },5000);
         console.info('[bluetooth_js] GattClientDevice beforeAll is:' + JSON.stringify(gattClient));
-        console.info('[bluetooth_js] GattClientDevice type beforeAll is:' + gattClient);
     })
     beforeEach(function () {
         console.info('beforeEach called')
@@ -72,8 +64,12 @@ describe('bluetoothhostTest', function() {
         console.info('afterAll called')
     })
 
+    function sleep(delay) {
+        return new Promise(resovle => setTimeout(resovle, delay))
+    }
 
-    /**
+    
+     /**
      * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_ENABLE_0001
      * @tc.name testEnableBluetooth
      * @tc.desc Test EnableBluetooth api by promise.
@@ -96,17 +92,25 @@ describe('bluetoothhostTest', function() {
         console.info('[bluetooth_js]state on:' + JSON.stringify(bluetooth.BluetoothState.STATE_ON));
         console.info('[bluetooth_js]off :' + JSON.stringify(bluetooth.BluetoothState.STATE_OFF));
         console.info('[bluetooth_js] turning on :'
-                + JSON.stringify(bluetooth.BluetoothState.STATE_TURNING_ON));
+        + JSON.stringify(bluetooth.BluetoothState.STATE_TURNING_ON));
         console.info('[bluetooth_js] turning off :'
-                 + JSON.stringify(bluetooth.BluetoothState.STATE_TURNING_OFF));
+        + JSON.stringify(bluetooth.BluetoothState.STATE_TURNING_OFF));
         console.info('[bluetooth_js] ble turning on :'
-                + JSON.stringify(bluetooth.BluetoothState.STATE_BLE_TURNING_ON));
+        + JSON.stringify(bluetooth.BluetoothState.STATE_BLE_TURNING_ON));
         console.info('[bluetooth_js] ble on:'
-                      + JSON.stringify(bluetooth.BluetoothState.STATE_BLE_ON));
+        + JSON.stringify(bluetooth.BluetoothState.STATE_BLE_ON));
         console.info('[bluetooth_js] ble turning off :'
-                     + JSON.stringify(bluetooth.BluetoothState.STATE_BLE_TURNING_OFF));
-        await bluetooth.enableBluetooth();
+        + JSON.stringify(bluetooth.BluetoothState.STATE_BLE_TURNING_OFF));
+        var enable = bluetooth.enableBluetooth();
         expect(enable).assertEqual(true);
+        await sleep(3000);
+        var state = bluetooth.getState();
+        console.info('[bluetooth_js] getState On = '+ JSON.stringify(state));
+        await bluetooth.off('stateChange', result => {
+            console.info("stateChange off:" + JSON.stringify(result));
+            expect(true).assertEqual(result ==null);
+            done();
+        });
         console.info('bluetooth enable done');
     })
 
@@ -119,14 +123,12 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_classic_get_state', 0, async function (done) {
+    it('bluetooth_classic_get_state', 0, function () {
         console.info('[bluetooth_js] get state start');
         var state = bluetooth.getState();
         console.info('get bluetooth state end');
         console.info('[bluetooth_js] get bluetooth state result = '+ JSON.stringify(state));
         expect(state).assertEqual(bluetooth.BluetoothState.STATE_ON);
-        done();
-        await(3000);
     })
 
     /**
@@ -138,49 +140,12 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_classic_set_local_name', 0, async function (done) {
+    it('bluetooth_classic_set_local_name', 0, function () {
         console.info('[bluetooth_js] set localname start');
         var name = bluetooth.setLocalName('bluetooth_test');
         console.info('[bluetooth_js] appInfoTest enable bluetooth result = '+ JSON.stringify(name));
         expect(name).assertEqual(true);
         console.info('[bluetooth_js] set localname end');
-        done();
-        await(3000);
-    })
-
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_PAIR_DEVICE_0001
-     * @tc.name testClassicPairDevice
-     * @tc.desc Test ClassicPairDevice api.
-     * @tc.author quanli 00313334
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('SUB_COMMUNACATION_bluetooth_DEVICE_JS_PAIR_DEVICE_0001', 0, async function (done) {
-        console.info('[bluetooth_js] pair device start');
-        await bluetooth.on("pinRequired", onReceiveEvent)
-        await bluetooth.on("bondStateChange", onReceivePairStateEvent)
-        var device;
-        function onReceiveEvent(data) {
-            console.info('[bluetooth_js] pinRequired'+ JSON.stringify(data));
-            bluetooth.setDevicePairingConfirmation(data,false);
-            console.info('[bluetooth_js] pinRequired deviceId'+ data.deviceId);
-            console.info('[bluetooth_js] pinRequired pinCode'+ data.pinCode);
-        }
-        function onReceivePairStateEvent(data) {
-            console.info('[bluetooth_js] pair state  = '+ JSON.stringify(data))
-            if (data == 0) {
-                done();
-            }
-        }
-        var enable = bluetooth.pairDevice("32:15:00:19:42:F6")
-        console.info("[bluetooth_js] pairDevice result is:" + JSON.stringify(result));
-        expect(JSON.stringify(result)).assertTrue();
-        setTimeout(function(){
-            console.debug('====bluetooth_classic_pair_device====timeout')
-        },5000);
-        console.info('[bluetooth_js] pair device end');
     })
 
     /**
@@ -194,7 +159,7 @@ describe('bluetoothhostTest', function() {
      */
     it('bluetooth_Startpair_test_001', 0, function () {
         console.info('[bluetooth_js] Startpair test start ...');
-        var result = bluetooth.pairDevice("32:15:00:19:42:F6");
+        var result = bluetooth.pairDevice("00:00:00:00:00:00");
         console.info("[bluetooth_js] onStartpair -> " + JSON.stringify(result));
         expect(result).assertFalse();
     })
@@ -208,14 +173,12 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_classic_get_local_name', 0, async function (done) {
+    it('bluetooth_classic_get_local_name', 0, function () {
         console.info('[bluetooth_js] get localName start');
         var localName = bluetooth.getLocalName();
         console.info('[bluetooth_js] get local Name result = ' + JSON.stringify(localName));
         expect(localName).assertEqual('bluetooth_test');
         console.info('[bluetooth_js] get localName end');
-        done();
-        await(3000);
     })
 
     /**
@@ -227,19 +190,17 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_classic_set_scan_mode', 0, async function (done) {
+    it('bluetooth_classic_set_scan_mode', 0, function () {
         console.info('[bluetooth_js] set scan mode start');
         var result = bluetooth.setBluetoothScanMode(1,10000);
         console.info('[bluetooth_js] set bluetooth scan mode result ' + JSON.stringify(result));
         console.info('[bluetooth_js] low power :'
-                      + JSON.stringify(bluetooth.ScanDuty.SCAN_MODE_LOW_POWER));
+        + JSON.stringify(bluetooth.ScanDuty.SCAN_MODE_LOW_POWER));
         console.info('[bluetooth_js] balanced :'
-                      + JSON.stringify(bluetooth.ScanDuty.SCAN_MODE_BALANCED));
-        console.info('[bluetooth_js] low latency:' 
-                  + JSON.stringify(bluetooth.ScanDuty.SCAN_MODE_LOW_LATENCY));
+        + JSON.stringify(bluetooth.ScanDuty.SCAN_MODE_BALANCED));
+        console.info('[bluetooth_js] low latency:'
+        + JSON.stringify(bluetooth.ScanDuty.SCAN_MODE_LOW_LATENCY));
         expect(result).assertEqual(true);
-        done();
-        await(3000);
     })
 
     /**
@@ -251,7 +212,7 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_classic_get_scan_mode', 0, async function (done) {
+    it('bluetooth_classic_get_scan_mode', 0, function () {
         console.info('[bluetooth_js] get scan mode start');
         var result = bluetooth.setBluetoothScanMode(1,10000);
 
@@ -262,18 +223,16 @@ describe('bluetoothhostTest', function() {
         expect(scanMode).assertEqual(1);
         console.info('[bluetooth_js] mode1:' + JSON.stringify(bluetooth.ScanMode.SCAN_MODE_NONE));
         console.info('[bluetooth_js] mode2:'
-                     + JSON.stringify(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE));
+        + JSON.stringify(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE));
         console.info('[bluetooth_js] mode3:'
-                     + JSON.stringify(bluetooth.ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE));
+        + JSON.stringify(bluetooth.ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE));
         console.info('[bluetooth_js] mode4:'
-                      + JSON.stringify(bluetooth.ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE));
+        + JSON.stringify(bluetooth.ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE));
         console.info('[bluetooth_js] mode5:'
-                   + JSON.stringify(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE));
+        + JSON.stringify(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE));
         console.info('[bluetooth_js] mode6:'
-              + JSON.stringify(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE));
+        + JSON.stringify(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE));
         console.info('[bluetooth_js] get scan mode end');
-        done();
-        await(3000);
     })
 
     /**
@@ -285,22 +244,20 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_classic_get_connection', 0, async function (done) {
+    it('bluetooth_classic_get_connection', 0, function () {
         console.info('[bluetooth_js] get connection state start');
         var connState = bluetooth.getBtConnectionState();
         console.info('[bluetooth_js] get bt connection state result' + JSON.stringify(connState));
         expect(connState).assertEqual(bluetooth.ProfileConnectionState.STATE_DISCONNECTED);
         console.info('[bluetooth_js] pr1:'
-                     + JSON.stringify(bluetooth.ProfileConnectionState.STATE_DISCONNECTED));
+        + JSON.stringify(bluetooth.ProfileConnectionState.STATE_DISCONNECTED));
         console.info('[bluetooth_js] pr2:'
-                   + JSON.stringify(bluetooth.ProfileConnectionState.STATE_CONNECTING));
+        + JSON.stringify(bluetooth.ProfileConnectionState.STATE_CONNECTING));
         console.info('[bluetooth_js] pr3:'
-                     + JSON.stringify(bluetooth.ProfileConnectionState.STATE_CONNECTED));
+        + JSON.stringify(bluetooth.ProfileConnectionState.STATE_CONNECTED));
         console.info('[bluetooth_js] pr4:'
-                       + JSON.stringify(bluetooth.ProfileConnectionState.STATE_DISCONNECTING));
+        + JSON.stringify(bluetooth.ProfileConnectionState.STATE_DISCONNECTING));
         console.info('[bluetooth_js] get connection end');
-        done();
-        await(3000);
     })
 
     /**
@@ -323,9 +280,14 @@ describe('bluetoothhostTest', function() {
             done();
         }
         await bluetooth.startBluetoothDiscovery();
+
+        await bluetooth.off('bluetoothDeviceFind', result => {
+            console.info("bluetoothDeviceFind off:" + JSON.stringify(result));
+            expect(true).assertEqual(result ==null);
+            done();
+        });
         console.info('[bluetooth_js] discovery end');
         done();
-        await(3000);
     })
 
     /**
@@ -337,18 +299,12 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_classic_stop_discovery', 0, async function (done) {
+    it('bluetooth_classic_stop_discovery', 0, function () {
         console.info('[bluetooth_js] stop discovery start');
-        bluetooth.stopBluetoothDiscovery();
-        await bluetooth.off("bluetoothDeviceFind", onReceiveEvent)
-        function onReceiveEvent(data) {
-            console.info('[bluetooth_js] stop bluetooth discovery result = '+ JSON.stringify(data));
-            expect(data).assertNull();
-            done();
-        }
+        let result = bluetooth.stopBluetoothDiscovery();
+        console.info("stopBluetoothDiscovery :" + JSON.stringify(result));
+        expect(result).assertTrue();
         console.info('[bluetooth_js] stop discovery end');
-        done();
-        await(3000);
     })
 
     /**
@@ -360,15 +316,13 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_classic_get_paired_devices', 0, async function (done) {
+    it('bluetooth_classic_get_paired_devices', 0, function () {
         console.info('[bluetooth_js] get paired devices start');
         var devices = bluetooth.getPairedDevices();
         console.info('[bluetooth_js] get paired devices result:' + JSON.stringify(devices));
         console.info("[bluetooth_js] getConnectedDevices length:" + devices.length);
         expect(devices.length).assertEqual(0);
         console.info('[bluetooth_js] get paired devices end');
-        done();
-        await(3000);
     })
 
 
@@ -381,36 +335,15 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_getConnectedBLEDevices_test_001', 0, async function (done) {
+    it('bluetooth_getConnectedBLEDevices_test_001', 0, function () {
         console.info('[bluetooth_js] getConnectedBLEDevices test start ...');
         var result = bluetooth.BLE.getConnectedBLEDevices();
         console.info("[bluetooth_js] getConnectedBLEDevices:" + JSON.stringify(result));
         console.info("[bluetooth_js] getConnectedBLEDevices length:" + result.length);
         expect(result.length).assertEqual(0);
-        done();
+        console.info('[bluetooth_js] getConnectedBLEDevices end');
     })
 
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetoothble_DEVICE_JS_STOP_BLE_SCAN_0001
-     * @tc.name testStopBLEScan
-     * @tc.desc Test StopBLEScan api .
-     * @tc.author zhangyujie zwx1079266
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetoothble_stopBLEScan_test_001', 0, function () {
-        console.info('[bluetooth_js] StopBLEScan test start ...');
-        try{
-            var result = bluetooth.BLE.stopBLEScan();
-            console.info("[bluetooth_js] StopBLEScan:" + JSON.stringify(result));
-            expect(result).assertNull();
-            console.info("[bluetooth_js] StopBLEScan end");
-        }catch(error){
-            expect(null).assertFail();
-            console.info("[bluetooth_js] StopBLEScan err:" + JSON.stringify(error));
-        }
-    })
 
     /**
      * @tc.number SUB_COMMUNACATION_bluetoothble_DEVICE_JS_CREATE_GATT_SERVER_0002
@@ -428,59 +361,9 @@ describe('bluetoothhostTest', function() {
         var resultLength = Object.keys(result).length;
         console.info("[bluetooth_js] createGattServer length:" + resultLength);
         expect(resultLength).assertEqual(1);
+        console.info('[bluetooth_js] createGattServer end');
     })
 
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetoothble_DEVICE_JS_GET_CONNECTED_BLEDEVICES_0001
-     * @tc.name testGetConnectedBLEDevices
-     * @tc.desc Test getConnectedBLEDevices api .
-     * @tc.author zhangyujie zwx1079266
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_getConnectedBLEDevices_test_001', 0, async function (done) {
-        console.info('[bluetooth_js] getConnectedBLEDevices test start ...');
-        var result = bluetooth.BLE.getConnectedBLEDevices();
-        console.info("[bluetooth_js] getConnectedBLEDevices:" + JSON.stringify(result));
-        console.info("[bluetooth_js] getConnectedBLEDevices length:" + result.length);
-        expect(result.length).assertEqual(0);
-        done();
-        await(3000);
-    })
-
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_START_BLESCAN_NO_FILTER_0001
-     * @tc.name testClassicStartBLEScan
-     * @tc.desc Test ClassicStartBLEScan api.
-     * @tc.author quanli 00313334
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_ble_start_scan_no_filter', 0, async function (done) {
-        console.info('[bluetooth_js] BLE scan start');
-        await bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
-        function onReceiveEvent(data) {
-            console.info('[bluetooth_js] BLE scan device find result2 = '+ JSON.stringify(data))
-            expect(data.length).assertLarger(0);
-            console.info('[bluetooth_js] BLEDevFind deviceId:' + data.deviceId);
-            console.info('[bluetooth_js] BLEDevFind rssi:' + data.rssi);
-            console.info('[bluetooth_js] BLEDevFind data: ' + data.data);
-            done()
-        }
-        bluetooth.BLE.startBLEScan(
-            [{}],
-            {
-                interval: 500,
-                dutyMode: bluetooth.ScanDuty.SCAN_MODE_LOW_POWER,
-                matchMode: bluetooth.MatchMode.MATCH_MODE_AGGRESSIVE,
-            }
-        );
-        console.info('[bluetooth_js] BLE scan2 end');
-        done();
-        await(3000);
-    })
 
     /**
      * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_START_BLESCAN_WITHOUT_PARAM_0001
@@ -501,36 +384,66 @@ describe('bluetoothhostTest', function() {
             done();
         }
         bluetooth.BLE.startBLEScan([{}]);
+        bluetooth.BLE.off('BLEDeviceFind', result => {
+            console.info("[bluetooth_js] BLE scan device find off2:" + JSON.stringify(result));
+            expect(true).assertEqual(result ==null);
+            done();
+        });
         console.info('[bluetooth_js] BLE scan start end');
         done();
-        setTimeout(function(){
-            console.debug('========bluetooth_ble_stop_scan=======timeout')
-        },1000);
     })
 
     /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_STOP_BLESCAN_0001
-     * @tc.name testClassicStopBLEScan
-     * @tc.desc Test ClassicStopBLEScan api.
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_PAIR_DEVICE_0001
+     * @tc.name testClassicPairDevice
+     * @tc.desc Test ClassicPairDevice api.
      * @tc.author quanli 00313334
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_ble_stop_scan', 0, async function (done) {
-        console.info('[bluetooth_js] BLE stop scan start');
-        await bluetooth.off("BLEDeviceFind", onReceiveEvent)
-        function onReceiveEvent(data) {
-            console.info('[bluetooth_js] BLE scan device find result4 ='+ JSON.stringify(data))
-        }
-        var result = bluetooth.BLE.stopBLEScan();
-        console.info("[bluetooth_js] onStopBLEScan -> " + JSON.stringify(result));
-        expect(result).assertNull();
-        console.info('[bluetooth_js] BLE stop scan end');
-        done();
-        setTimeout(function(){
-            console.debug('========bluetooth_ble_stop_scan=======timeout')
-        },1000);
+    it('bluetooth_classic_pair_device_0001', 0, async function (done) {
+        console.info('[bluetooth_js] pair device start');
+        await bluetooth.BLE.on('pinRequired', result => {
+            console.info("[bluetooth_js] pinRequired on:" + JSON.stringify(result));
+            expect(true).assertEqual(result !=null);
+            done();
+        });
+        var enable = bluetooth.pairDevice("00:00:00:00:00:00")
+        bluetooth.BLE.off('pinRequired', result => {
+            console.info("[bluetooth_js] pinRequired off:" + JSON.stringify(result));
+            expect(true).assertEqual(result ==null);
+            done();
+        });
+    })
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_PAIR_DEVICE_0002
+     * @tc.name testClassicPairDevice
+     * @tc.desc Test ClassicPairDevice api.
+     * @tc.author quanli 00313334
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_classic_pair_device_0002', 0, async function (done) {
+        console.info('[bluetooth_js] pair device start');
+        await bluetooth.BLE.on('bondStateChange', result => {
+            console.info("[bluetooth_js] bondStateChange on:" + JSON.stringify(result));
+            console.info('[bluetooth_js] bondStateChange deviceId: ' + data.deviceId);
+            console.info('[bluetooth_js] bondStateChange state: ' + data.state);
+            expect(true).assertEqual(result !=null);
+            done();
+        });
+        var enable = bluetooth.pairDevice("00:00:00:00:00:00")
+        bluetooth.BLE.off('bondStateChange', result => {
+            console.info("[bluetooth_js] bondStateChange off:" + JSON.stringify(result));
+            expect(true).assertEqual(result ==null);
+            done();
+        });
+        console.info('[bluetooth_js]INVALID' + JSON.stringify(bluetooth.BondState.BOND_STATE_INVALID));
+        console.info('[bluetooth_js]BONDING' + JSON.stringify(bluetooth.BondState.BOND_STATE_BONDING));
+        console.info('[bluetooth_js]BONDED' + JSON.stringify(bluetooth.BondState.BOND_STATE_BONDED));
     })
 
     /**
@@ -542,7 +455,7 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_ble_start_advertising', 0, async function (done) {
+    it('bluetooth_ble_start_advertising', 0, function () {
         console.info('[bluetooth_js] BLE advertising start');
         var manufactureValueBuffer = new Uint8Array(4);
         manufactureValueBuffer[0] = 1;
@@ -576,23 +489,18 @@ describe('bluetoothhostTest', function() {
             console.info('[bluetooth_js] startAdv:' +advData[key]);
         }
 
-        await gattServer.startAdvertising(setting,advData,{
+        gattServer.startAdvertising(setting,advData,{
             serviceUuids:["12"],
             manufactureData:[{
-                manufactureId:1789,
-                manufactureValue:manufactureValueBuffer.buffer
-            }],
+                                 manufactureId:1789,
+                                 manufactureValue:manufactureValueBuffer.buffer
+                             }],
             serviceData:[{
-                serviceUuid:"1794",
-                serviceValue:serviceValueBuffer.buffer
-            }],
+                             serviceUuid:"1794",
+                             serviceValue:serviceValueBuffer.buffer
+                         }],
         });
         console.info('[bluetooth_js] BLE start advertising end');
-        done();
-        setTimeout(function(){
-            console.debug('====bluetooth_ble_start_advertising====timeout')
-        },5000);
-        await(3000);
     })
 
     /**
@@ -604,39 +512,11 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_ble_stop_advertising', 0, async function (done) {
+    it('bluetooth_ble_stop_advertising', 0, function () {
         console.info('[bluetooth_js] BLE stop advertising start');
         var gattServer = bluetooth.BLE.createGattServer();
         gattServer.stopAdvertising();
         console.info('[bluetooth_js] BLE stop advertising end');
-        done();
-        setTimeout(function(){
-            console.debug('====bluetooth_ble_stop_advertising====timeout')
-        },1000);
-        await(3000);
-    })
-
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GET_DEVICE_NAME_CALLBACK_0001
-     * @tc.name testGetDeviceName
-     * @tc.desc Test GetDeviceName api by callback.
-     * @tc.author quanli 00313334
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_ble_get_device_name_callback_001', 0, async function (done) {
-        console.info('[bluetooth_js] get device name1 callback start');
-        var gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
-        var deviceName = gattClient.getDeviceName((err, data)=> {
-            console.info('[bluetooth_js] device name err1 ' + JSON.stringify(err));
-            console.info('[bluetooth_js] device name1' + JSON.stringify(data));
-            done();
-        })
-        console.info('[bluetooth_js] get device name callback end');
-        setTimeout(function(){
-            console.debug('=====bluetooth_ble_get_device_name_callback1====timeout')
-        },1000);
     })
 
     /**
@@ -651,14 +531,11 @@ describe('bluetoothhostTest', function() {
     it('bluetooth_ble_get_device_name_promise', 0, async function (done) {
         console.info('BLE get device name promise start');
         var gattClient = gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
-        var deviceName = gattClient.getDeviceName().then((data) => {
+        await gattClient.getDeviceName().then((data) => {
             console.info('[bluetooth_js] device name' + JSON.stringify(data))
-            done()
+            done();
         })
         console.info('BLE get device name promise end')
-        setTimeout(function(){
-            console.debug('========bluetooth_ble_stop_advertising=======timeout')
-        },1000);
     })
 
     /**
@@ -673,16 +550,13 @@ describe('bluetoothhostTest', function() {
     it('bluetooth_ble_read_rssi', 0, async function (done) {
         console.info('[bluetooth_js] BLE get rssi1 start');
         var gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
-        await gattClient.getRssiValue((err, data)=> {
+        gattClient.getRssiValue((err, data)=> {
             console.info('[bluetooth_js] rssi err:' + JSON.stringify(err));
             console.info('[bluetooth_js] rssi value:' + JSON.stringify(data));
             expect(data).assertNull();
+            console.info('[bluetooth_js] BLE read rssi1 end');
             done();
         });
-        console.info('[bluetooth_js] BLE read rssi1 end');
-        setTimeout(function(){
-            console.debug('========bluetooth_ble_read_rssi=======timeout')
-        },1000);
     })
 
     /**
@@ -710,52 +584,10 @@ describe('bluetoothhostTest', function() {
                 done();
             }
         }).catch(err => {
-            console.error(`bluetooth getDeviceName has error: ${err}`);
+            console.error(`bluetooth getRssiValue has error: ${err}`);
             expect(true).assertEqual(true);
             done();
         });
-        setTimeout(function(){
-        console.debug('====bluetooth_ble_stop_advertising====timeout')
-        },1000);
-        await(3000);
-    })
-
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_DISABLE_BLUETOOTH_0001
-     * @tc.name testDisableBluetooth
-     * @tc.desc Test DisableBluetooth api.
-     * @tc.author quanli 00313334
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_classic_disable_bluetooth', 0, async function (done) {
-        console.info('[bluetooth_js] disable bluetooth start');
-        bluetooth.off("pinRequired", onPinRequiredReceiveEvent)
-        function onPinRequiredReceiveEvent(data) {
-            console.info('[bluetooth_js] pin required  = '+ JSON.stringify(data));
-        }
-
-        bluetooth.off("bondStateChange", onBoneStateReceiveEvent)
-        function onBoneStateReceiveEvent(data) {
-            console.info('[bluetooth_js] bondStateChange  = '+ JSON.stringify(data));
-            console.info('[bluetooth_js] bondStateChange deviceId: ' + data.deviceId);
-            console.info('[bluetooth_js] bondStateChange state: ' + data.state);
-        }
-        console.info('[bluetooth_js]INVALID' + JSON.stringify(bluetooth.BondState.BOND_STATE_INVALID));
-        console.info('[bluetooth_js]BONDING' + JSON.stringify(bluetooth.BondState.BOND_STATE_BONDING));
-        console.info('[bluetooth_js]BONDED' + JSON.stringify(bluetooth.BondState.BOND_STATE_BONDED));
-        bluetooth.off("stateChange", onReceiveEvent);
-        function onReceiveEvent(data) {
-            console.info('[bluetooth_js] enable bluetooth data = '+ JSON.stringify(data));
-            done();
-        }
-        var enable = bluetooth.disableBluetooth();
-        setTimeout(function(){
-            console.debug('========bluetooth_classic_disable_bluetooth=======timeout')
-        }, 1000);
-        console.info('[bluetooth_js] disable bluetooth end');
-        await(3000);
     })
 
     /**
@@ -767,14 +599,13 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_gatt_connect', 0, function (done) {
+    it('bluetooth_gatt_connect', 0, function () {
         console.info('[bluetooth_js] gatt connect start');
         gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
         let ret = gattClient.connect();
         console.info('[bluetooth_js] gatt connect ret : ' + ret);
-        expect(ret).assertEqual(false);
+        expect(ret).assertEqual(true);
         console.info('[bluetooth_js] gatt connect end');
-        done();
     })
 
     /**
@@ -786,13 +617,12 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_gatt_disconnect', 0, function (done) {
+    it('bluetooth_gatt_disconnect', 0, function () {
         console.info('[bluetooth_js] gatt disconnect start');
         let ret = gattClient.disconnect();
         console.info('[bluetooth_js] gatt disconnect ret:' + ret);
         expect(ret).assertEqual(false);
         console.info('[bluetooth_js] gatt disconnect end');
-        done();
     })
 
     /**
@@ -807,15 +637,12 @@ describe('bluetoothhostTest', function() {
     it('bluetooth_ble_get_services_callback_001', 0, async function (done) {
         console.info('[bluetooth_js] getServices callback start');
         var gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
-        var services = gattClient.getServices((err, data)=> {
+        gattClient.getServices((err, data)=> {
             console.info('[bluetooth_js] device name err1 ' + JSON.stringify(err));
             console.info('[bluetooth_js] device name1' + JSON.stringify(data));
             done();
         })
         console.info('[bluetooth_js] getServices callback end');
-        setTimeout(function(){
-            console.debug('=====bluetooth_ble_getServices_callback====timeout')
-        },1000);
     })
 
     /**
@@ -845,7 +672,6 @@ describe('bluetoothhostTest', function() {
             expect(true).assertEqual(true);
             done();
         });
-        await(3000);
     })
 
     /**
@@ -893,7 +719,6 @@ describe('bluetoothhostTest', function() {
             expect(true).assertEqual(true);
             done();
         });
-        await(3000);
     })
 
     /**
@@ -905,7 +730,7 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_gatt_readDescriptorValue', 0, function (done) {
+    it('bluetooth_gatt_readDescriptorValue', 0, async function (done) {
         console.info('[bluetooth_js] readDescriptorValue start');
         let arrayBuffer = new ArrayBuffer(8);
         let desValue =  new Uint8Array(arrayBuffer);
@@ -938,7 +763,7 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_gatt_writeCharacteristicValue', 0, function (done) {
+    it('bluetooth_gatt_writeCharacteristicValue', 0, function () {
         console.info('[bluetooth_js] writeCharacteristicValue start');
         let descriptors = [];
         let arrayBuffer = new ArrayBuffer(8);
@@ -961,7 +786,6 @@ describe('bluetoothhostTest', function() {
         console.info('[bluetooth_js] bluetooth writeCharacteristicValue ret : ' + ret);
         expect(ret).assertEqual(false);
         console.info('[bluetooth_js] writeCharacteristicValue end');
-        done();
     })
 
     /**
@@ -973,7 +797,7 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_gatt_writeDescriptorValue', 0, function (done) {
+    it('bluetooth_gatt_writeDescriptorValue', 0, function () {
         console.info('[bluetooth_js] writeDescriptorValue start');
         let arrayBuffer = new ArrayBuffer(8);
         let desValue =  new Uint8Array(arrayBuffer);
@@ -984,8 +808,6 @@ describe('bluetoothhostTest', function() {
         console.info('[bluetooth_js] bluetooth writeDescriptorValue ret : ' + ret);
         expect(ret).assertEqual(false);
         console.info('[bluetooth_js] writeDescriptorValue end');
-        done();
-
     })
 
     /**
@@ -997,13 +819,12 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_gatt_setBLEMtuSize', 0, function (done) {
+    it('bluetooth_gatt_setBLEMtuSize', 0, function () {
         console.info('[bluetooth_js] setBLEMtuSize start');
         let ret = gattClient.setBLEMtuSize(128);
         console.info('[bluetooth_js] bluetooth setBLEMtuSize ret : ' + ret);
         expect(ret).assertEqual(false);
         console.info('[bluetooth_js] setBLEMtuSize end');
-        done();
     })
 
     /**
@@ -1015,7 +836,7 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_gatt_setNotifyCharacteristicChanged', 0, function (done) {
+    it('bluetooth_gatt_setNotifyCharacteristicChanged', 0, function () {
         console.info('[bluetooth_js] setNotifyCharacteristicChanged start');
         let descriptors = [];
         let arrayBuffer = new ArrayBuffer(8);
@@ -1042,7 +863,6 @@ describe('bluetoothhostTest', function() {
         console.info('[bluetooth_js] setNotifyCharacteristicChanged ret:' + ret);
         expect(ret).assertEqual(false);
         console.info('[bluetooth_js] setNotifyCharacteristicChanged end');
-        done();
     })
 
     /**
@@ -1054,7 +874,7 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_gatt_addService', 0, function (done) {
+    it('bluetooth_gatt_addService', 0, function () {
         console.info('[bluetooth_js] addService start');
         gattServer = bluetooth.BLE.createGattServer();
 
@@ -1085,11 +905,8 @@ describe('bluetoothhostTest', function() {
         }
         let ret = gattServer.addService(service);
         console.info('[bluetooth_js] bluetooth addService ret : ' + ret);
-        expect(ret).assertEqual(false);
-
+        expect(ret).assertEqual(true);
         console.info('[bluetooth_js] addService end');
-        done();
-
     })
 
     /**
@@ -1101,14 +918,13 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_gatt_removeService', 0, function (done) {
+    it('bluetooth_gatt_removeService', 0, function () {
         console.info('[bluetooth_js] removeService start');
         gattServer = bluetooth.BLE.createGattServer();
         let ret = gattServer.removeService('00001810-0000-1000-8000-008000000000');
         console.info('[bluetooth_js] removeService ret : ' + ret);
         expect(ret).assertEqual(false);
         console.info('[bluetooth_js] removeService end');
-        done();
     })
 
     /**
@@ -1120,7 +936,7 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_gatt_notifyCharacteristicChanged', 0, function (done) {
+    it('bluetooth_gatt_notifyCharacteristicChanged', 0, function () {
         console.info('[bluetooth_js] notifyCharacteristicChanged start');
         let descriptors = [];
         let arrayBufferDesc = new ArrayBuffer(8);
@@ -1131,7 +947,7 @@ describe('bluetoothhostTest', function() {
         descNotifyValue[0] = 1
         let
             descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB', descriptorValue: desValue};
+                descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB', descriptorValue: desValue};
         let descriptorNotify = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
             descriptorUuid: '00002902-0000-1000-8000-00805F9B34FB',
             descriptorValue: descNotifyValue};
@@ -1152,7 +968,6 @@ describe('bluetoothhostTest', function() {
         console.info('[bluetooth_js] notifyCharacteristicChanged ret : ' + ret);
         expect(ret).assertEqual(false);
         console.info('[bluetooth_js] notifyCharacteristicChanged end');
-        done();
     })
 
     /**
@@ -1164,13 +979,13 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_gatt_sendResponse', 0, function (done) {
+    it('bluetooth_gatt_sendResponse', 0, function () {
         console.info('[bluetooth_js] sendResponse start');
         let arrayBuffer = new ArrayBuffer(8);
         let value =  new Uint8Array(arrayBuffer);
         value[0] = 1;
         let serverResponse = {deviceId: '00:00:00:00:00', transId: 1,
-        status: 0, offset: 0, value: arrayBuffer};
+            status: 0, offset: 0, value: arrayBuffer};
         for (var key in serverResponse ){
             console.info('[bluetooth_js] serverResponse:'+ serverResponse[key]);
         }
@@ -1178,8 +993,6 @@ describe('bluetoothhostTest', function() {
         console.info('[bluetooth_js] sendResponse ret : ' + ret);
         expect(ret).assertEqual(false);
         console.info('[bluetooth_js] sendResponse end');
-        done();
-
     })
 
     /**
@@ -1191,7 +1004,7 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_spp_listen', 0, function (done) {
+    it('bluetooth_spp_listen', 0, async function (done) {
         console.log("[bluetooth_js]: spp listen start");
         let sppOption = {uuid: '00001810-0000-1000-8000-00805F9B34FB',
             secure: false, type: 0};
@@ -1212,7 +1025,6 @@ describe('bluetoothhostTest', function() {
             }
         });
         console.log("[bluetooth_js] spp listen end");
-        done();
     })
 
     /**
@@ -1224,7 +1036,7 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_spp_Accept', 0, function (done) {
+    it('bluetooth_spp_Accept', 0, async function (done) {
         console.log("[bluetooth_js] spp accept start");
         bluetooth.sppAccept(-1, function(code, clientSocketNumber) {
             if (code.code == 0) {
@@ -1237,9 +1049,8 @@ describe('bluetoothhostTest', function() {
                 expect(true).assertEqual(false);
             }
         });
-        console.log("[bluetooth_js] spp accept end");
         done();
-
+        console.log("[bluetooth_js] spp accept end");
     })
 
     /**
@@ -1251,13 +1062,12 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_spp_closeServerSocket', 0, function (done) {
+    it('bluetooth_spp_closeServerSocket', 0, function () {
         console.log("[bluetooth_js] spp closeServerSocket start");
         let ret = bluetooth.sppCloseServerSocket(-1);
         console.info('[bluetooth_js] bluetooth sppCloseServerSocket ret : ' + ret);
         expect(ret).assertEqual(false);
         console.log("[bluetooth_js] spp closeServerSocket end");
-        done();
     })
 
     /**
@@ -1269,7 +1079,7 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_spp_connect', 0, function (done) {
+    it('bluetooth_spp_connect', 0, async function (done) {
         console.info('[bluetooth_js] spp_connect start');
         let sppOption = {uuid: '00001810-0000-1000-8000-00805F9B34FB',
             secure: true, type: 0};
@@ -1295,7 +1105,7 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_spp_write', 0, function (done) {
+    it('bluetooth_spp_write', 0, function () {
         console.info('[bluetooth_js] spp write start');
         let arrayBuffer = new ArrayBuffer(8);
         let data =  new Uint8Array(arrayBuffer);
@@ -1304,8 +1114,6 @@ describe('bluetoothhostTest', function() {
         console.info('[bluetooth_js] bluetooth sppWrite ret : ' + ret);
         expect(ret).assertEqual(false);
         console.info('[bluetooth_js] spp write end');
-        done();
-
     })
 
     /**
@@ -1317,15 +1125,13 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetoothble_CharacteristicReadOn_test_001', 0, function () {
-        console.info('[bluetooth_js] CharacteristicReadOn test start');
-        if (gattServer == null) {
-            console.info("[bluetooth_js] BlePerManager: please click CreateGattServer first!");
-        }
-        gattServer.on('characteristicRead', (err, data) => {
-            if (err) {
-                console.info("[bluetooth_js] charaRead callback err:" + JSON.stringify(err));
-            } else {
+    it('bluetoothble_CharacteristicReadOn_test_001', 0, async function (done) {
+        try {
+            console.info('[bluetooth_js] CharacteristicReadOn test start');
+            if (gattServer == null) {
+                console.info("[bluetooth_js] : click onCreateGattServer first!");
+            }
+            await gattServer.on('characteristicRead', function (data) {
                 console.info('[bluetooth_js] charRead callback data ->');
                 console.info('[bluetooth_js] CharRedReq deviceId: ' + data.deviceId);
                 console.info('[bluetooth_js] CharRedReq transId: ' + data.transId);
@@ -1343,8 +1149,25 @@ describe('bluetoothhostTest', function() {
                 console.info("[bluetooth_js] sendResponse  -> " + JSON.stringify(result));
                 expect(JSON.stringify(result)).assertContain("true");
                 console.info("[bluetooth_js] onBlePeripheralManagerClose .");
+            });
+        }catch(e) {
+            expect(null).assertFail();
+        }
+
+        try {
+            console.info('[bluetooth_js] characteristicRead test1 start');
+            if (gattServer == null) {
+                console.info("[bluetooth_js] :plese CreateGattServer first!");
             }
-        });
+            await gattServer.off('characteristicRead', function (data) {
+                console.info("[bluetooth_js] charaRead off jsdata1:" + JSON.stringify(data));
+                console.info("[bluetooth_js] charaRead off data1:" + data);
+                expect(true).assertEqual(data ==null);
+            });
+        }catch(e) {
+            expect(null).assertFail();
+        }
+        done();
     })
 
     /**
@@ -1356,15 +1179,13 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetoothble_CharacteristicwriteOn_test_001', 0, function () {
-        console.info('[bluetooth_js] CharacteristicwriteOn test start ...');
-        if (gattServer == null) {
-            console.info("[bluetooth_js] Charwrite: please click CreateGattServer first!");
-        }
-        gattServer.on('characteristicWrite', (err, data) => {
-            if (err) {
-                console.info("[bluetooth_js] characteristic callback error" + JSON.stringify(err));
-            } else {
+    it('bluetoothble_CharacteristicwriteOn_test_001', 0, async function (done) {
+        try {
+            console.info('[bluetooth_js] CharacteristicwriteOn test start');
+            if (gattServer == null) {
+                console.info("[bluetooth_js] : click onCreateGattServer first!");
+            }
+            await gattServer.on('characteristicWrite', function (data) {
                 console.info('[bluetooth_js] characteristicWrite callback data ->');
                 console.info('[bluetooth_js] CharWriReq deviceId: ' + data.deviceId);
                 console.info('[bluetooth_js] CharWriReq transId: ' + data.transId);
@@ -1394,9 +1215,25 @@ describe('bluetoothhostTest', function() {
                 console.info("[bluetooth_js] sendResponse:" + JSON.stringify(result));
                 expect(JSON.stringify(result)).assertContain("true");
                 console.info("[bluetooth_js] characteristicWrite end");
-            }
-        });
+            });
+        }catch(e) {
+            expect(null).assertFail();
+        }
 
+        try {
+            console.info('[bluetooth_js] characteristicWrite test1 start');
+            if (gattServer == null) {
+                console.info("[bluetooth_js] :plese CreateGattServer first!");
+            }
+            await gattServer.off('characteristicWrite', function (data) {
+                console.info("[bluetooth_js] charaWrite off jsdata2:" + JSON.stringify(data));
+                console.info("[bluetooth_js] charaWrite off data2:" + data);
+                expect(true).assertEqual(data ==null);
+            });
+        }catch(e) {
+            expect(null).assertFail();
+        }
+        done();
     })
 
     /**
@@ -1414,7 +1251,7 @@ describe('bluetoothhostTest', function() {
             if (gattServer == null) {
                 console.info("[bluetooth_js] onAddServiceHelper: click onCreateGattServer first!");
             }
-            gattServer.on('descriptorRead', function (data) {
+            await gattServer.on('descriptorRead', function (data) {
                 console.info("[bluetooth_js] DesRedon jsondata:" + JSON.stringify(data));
                 console.info("[bluetooth_js] DesRedon data:" + data);
                 expect(true).assertEqual(data !=null);
@@ -1426,39 +1263,26 @@ describe('bluetoothhostTest', function() {
                 console.info('[bluetooth_js] DesRedReq charUuid:' + data.characteristicUuid);
                 console.info('[bluetooth_js] DesRedReq serUuid:' + data.serviceUuid);
             });
-            await(3000);
+        }catch(e) {
+            expect(null).assertFail();
+        }
+
+        try {
+            console.info('[bluetooth_js] descriptorReadOff test start ...');
+            if (gattServer == null) {
+                console.info("[bluetooth_js] onAddServiceHelper:click onCreateGattServer first!");
+            }
+            await gattServer.off('descriptorRead', function (data) {
+                console.info("[bluetooth_js] descriptorRead_off json_data-> " + JSON.stringify(data));
+                console.info("[bluetooth_js] descriptorRead_off data -> " + data);
+                expect(true).assertEqual(data ==null);
+            });
         }catch(e) {
             expect(null).assertFail();
         }
         done();
     })
 
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_DESC_READ_OFF_0001
-     * @tc.name testDescriptorReadOff
-     * @tc.desc Test DescriptorReadOff api.
-     * @tc.author zhangyujie zwx1079266
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_descriptorRead_Off_test_001', 0, async function (done) {
-        try {
-            console.info('[bluetooth_js] descriptorReadOff test start ...');
-            if (gattServer == null) {
-                console.info("[bluetooth_js] onAddServiceHelper:click onCreateGattServer first!");
-            }
-            gattServer.off('descriptorRead', function (data) {
-                console.info("[bluetooth_js] descriptorRead_off json_data-> " + JSON.stringify(data));
-                console.info("[bluetooth_js] descriptorRead_off data -> " + data);
-                expect(true).assertEqual(data !=null);
-            });
-            await(3000);
-        }catch(e) {
-            expect(null).assertFail();
-        }
-        done();
-    })
 
     /**
      * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_DESC_WRITE_ON_0001
@@ -1475,7 +1299,7 @@ describe('bluetoothhostTest', function() {
             if (gattServer == null) {
                 console.info("[bluetooth_js] onAddServiceHelper: click onCreateGattServer first!");
             }
-            gattServer.on('descriptorWrite', function (data) {
+            await gattServer.on('descriptorWrite', function (data) {
                 console.info("[bluetooth_js] desWriOn jsondata: " + JSON.stringify(data));
                 console.info("[bluetooth_js] desWriOn data:" + data);
                 expect(true).assertEqual(data !=null);
@@ -1491,39 +1315,26 @@ describe('bluetoothhostTest', function() {
                 console.info('[bluetooth_js] desWriOn needRsp: ' + data.needRsp);
                 console.info('[bluetooth_js] desWriOn isPrep: ' + data.isPrep);
             });
-            await(3000);
+        }catch(e) {
+            expect(null).assertFail();
+        }
+
+        try {
+            console.info('[bluetooth_js] descriptorWriteOff test start ...');
+            if (gattServer == null) {
+                console.info("[bluetooth_js] onAddServiceHelper: please click CreateGattServer first!");
+            }
+            await gattServer.off('descriptorWrite', function (data) {
+                console.info("[bluetooth_js] desWriOff jsonData-> " + JSON.stringify(data));
+                console.info("[bluetooth_js] desWriOff data -> " + data);
+                expect(true).assertEqual(data ==null);
+            });
         }catch(e) {
             expect(null).assertFail();
         }
         done();
     })
 
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_DESC_WRITE_OFF_0001
-     * @tc.name testDescriptorWriteOff
-     * @tc.desc Test DescriptorWriteOff api .
-     * @tc.author zhangyujie zwx1079266
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_descriptorWrite_Off_test_001', 0, async function (done) {
-        try {
-            console.info('[bluetooth_js] descriptorWriteOff test start ...');
-            if (gattServer == null) {
-                console.info("[bluetooth_js] onAddServiceHelper: please click CreateGattServer first!");
-            }
-            gattServer.off('descriptorWrite', function (data) {
-                console.info("[bluetooth_js] desWriOff jsonData-> " + JSON.stringify(data));
-                console.info("[bluetooth_js] desWriOff data -> " + data);
-                expect(true).assertEqual(data !=null);
-            });
-            await(3000);
-        }catch(e) {
-            expect(null).assertFail();
-        }
-        done();
-    })
 
     /**
      * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_CONNE_STATE_CHANGE_ON_0001
@@ -1538,50 +1349,36 @@ describe('bluetoothhostTest', function() {
         try {
             console.info('[bluetooth_js] ConnectStateChangeOn test start ...');
             if (gattServer == null) {
-                console.info("[bluetooth_js] onAddServiceHelper: click CreateGattServer first!");
+                console.info("[bluetooth_js] on: click CreateGattServer first!");
             }
-            gattServer.on('connectStateChange', function (data) {
+            await gattServer.on('connectStateChange', function (data) {
                 console.info("[bluetooth_js] connectStaOn jsonData -> " + JSON.stringify(data));
                 console.info("[bluetooth_js] connectStaOn data -> " + data);
                 expect(true).assertEqual(data !=null);
-
                 console.info('[bluetooth_js] connectStaOn callback data ->');
                 console.info('[bluetooth_js] connectStaOn deviceId: ' + data.deviceId);
                 console.info('[bluetooth_js] connectStaOn state: ' + data.state);
             });
-            await(3000);
+        }catch(e) {
+            expect(null).assertFail();
+        }
+
+        try {
+            console.info('[bluetooth_js] ConnectStateChangeOff test start ...');
+            if (gattServer == null) {
+                console.info("[bluetooth_js] on: please click onCreateGattServer first!");
+            }
+            await gattServer.off('connectStateChange', function (data) {
+                console.info("[bluetooth_js] connectStateChange_off jsonData-> " + JSON.stringify(data));
+                console.info("[bluetooth_js] connectStateChange_off data -> " + data);
+                expect(true).assertEqual(data ==null);
+            });
         }catch(e) {
             expect(null).assertFail();
         }
         done();
     })
 
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_CONNE_STATE_CHANGE_OFF_0001
-     * @tc.name testConnectStateChangeOff
-     * @tc.desc Test ConnectStateChangeOff api .
-     * @tc.author zhangyujie zwx1079266
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_connectStateChange_Off_test_001', 0, async function (done) {
-        try {
-            console.info('[bluetooth_js] ConnectStateChangeOff test start ...');
-            if (gattServer == null) {
-                console.info("[bluetooth_js] onAddServiceHelper: please click onCreateGattServer first!");
-            }
-            gattServer.off('connectStateChange', function (data) {
-                console.info("[bluetooth_js] connectStateChange_off jsonData-> " + JSON.stringify(data));
-                console.info("[bluetooth_js] connectStateChange_off data -> " + data);
-                expect(true).assertEqual(data !=null);
-            });
-            await(3000);
-        }catch(e) {
-            expect(null).assertFail();
-        }
-        done();
-    })
 
     /**
      * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_BLE_CHAR_CHANGE_ON_0001
@@ -1596,46 +1393,33 @@ describe('bluetoothhostTest', function() {
         try {
             console.info('[bluetooth_js] BLECharacteristicChangeOn test start ...');
             if (gattClient == null) {
-                console.info("[bluetooth_js] OnGattclientClose:click onCreateGattClientDevice first!");
+                console.info("[bluetooth_js] OnGattclientClose:click onCreateGattClient first!");
             }
-            gattClient.on('BLECharacteristicChange', function (data) {
+            await gattClient.on('BLECharacteristicChange', function (data) {
                 console.info("[bluetooth_js] BLECharacteristicChange data " + JSON.stringify(data));
                 console.info("[bluetooth_js] BLECharacteristicChange_on data -> " + data);
                 expect(true).assertEqual(data !=null);
             });
-            await(3000);
+        }catch(e) {
+            expect(null).assertFail();
+        }
+
+        try {
+            console.info('[bluetooth_js] BLECharacteristicChangeOff test start');
+            if (gattClient == null) {
+                console.info("[bluetooth_js] OnGattclientClose: CreateGattClient first!");
+            }
+            await gattClient.off('BLECharacteristicChange', function (data) {
+                console.info("[bluetooth_js] BLECharcChange_off json_data-> " + JSON.stringify(data));
+                console.info("[bluetooth_js] BLECharcChange_off data -> " + data);
+                expect(true).assertEqual(data ==null);
+            });
         }catch(e) {
             expect(null).assertFail();
         }
         done();
     })
 
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_BLE_CHAR_CHANGE_OFF_0001
-     * @tc.name testBLECharacteristicChangeOff
-     * @tc.desc Test BLECharacteristicChangeOff api .
-     * @tc.author zhangyujie zwx1079266
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_BLECharacteristicChange_Off_test_001', 0, async function (done) {
-        try {
-            console.info('[bluetooth_js] BLECharacteristicChangeOff test start');
-            if (gattClient == null) {
-                console.info("[bluetooth_js] OnGattclientClose: CreateGattClientDevice first!");
-            }
-            gattClient.off('BLECharacteristicChange', function (data) {
-                console.info("[bluetooth_js] BLECharcChange_off json_data-> " + JSON.stringify(data));
-                console.info("[bluetooth_js] BLECharcChange_off data -> " + data);
-                expect(true).assertEqual(data !=null);
-            });
-            await(3000);
-        }catch(e) {
-            expect(null).assertFail();
-        }
-        done();
-    })
 
     /**
      * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_BLE_CONNE_STATE_CHANGE_ON_0001
@@ -1650,9 +1434,9 @@ describe('bluetoothhostTest', function() {
         try {
             console.info('[bluetooth_js] BLEConnectionStateChangeOn test start');
             if (gattClient == null) {
-                console.info("[bluetooth_js] GattclientClose:CreateGattClientDevice first!");
+                console.info("[bluetooth_js] GattclientClose:CreateGattClient first!");
             }
-            gattClient.on('BLEConnectionStateChange', function (data) {
+            await gattClient.on('BLEConnectionStateChange', function (data) {
                 console.info("[bluetooth_js] BLEConnecStateChange_on data " + JSON.stringify(data));
                 console.info("[bluetooth_js] BLEConneStateChange_on data -> " + data);
                 expect(true).assertEqual(data !=null);
@@ -1660,114 +1444,27 @@ describe('bluetoothhostTest', function() {
                 console.info('[bluetooth_js] BLEConneStateChange deviceId : ' + data.deviceId);
                 console.info('[bluetooth_js] BLEConneStateChange state : ' + data.state);
             });
-            await(3000);
         }catch(e) {
             expect(null).assertFail();
         }
-        done();
-    })
 
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_BLE_CONNE_STATE_CHANGE_OFF_0001
-     * @tc.name testBLEConnectionStateChangeOff
-     * @tc.desc Test BLEConnectionStateChangeOff api .
-     * @tc.author zhangyujie zwx1079266
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_BLEConnectionStateChange_Off_test_001', 0, async function (done) {
         try {
             console.info('[bluetooth_js] BLEConnectionStateChangeOff test start');
             if (gattClient == null) {
-                console.info("[bluetooth_js] GattclientClose:click CreateGattClientDevice first!");
+                console.info("[bluetooth_js] GattclientClose:click CreateGattClient first!");
             }
-            gattClient.on('BLEConnectionStateChange', function (result) {
-                console.info("[bluetooth_js] BLEConneStateChange_on1 result: " + JSON.stringify(result));
-                console.info("[bluetooth_js] BLEConneStateChange_on1 result: " + result);
-                expect(true).assertEqual(result !=null);
-            });
-            await(3000);
-            gattClient.off('BLEConnectionStateChange', function (data) {
+            await gattClient.off('BLEConnectionStateChange', function (data) {
                 console.info("[bluetooth_js] BLEConneStateChange_off data-> " + JSON.stringify(data));
                 console.info("[bluetooth_js] BLEConneStateChange_off data -> " + data);
-                expect(true).assertEqual(data !=null);
+                expect(true).assertEqual(data ==null);
             });
-            await(3000);
         }catch(e) {
+
             expect(null).assertFail();
         }
         done();
     })
 
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetoothble_DEVICE_JS_SPP_READ_ON_0001
-     * @tc.name testonsppReadOn
-     * @tc.desc Test sppReadOn api .
-     * @tc.author zhangyujie zwx1079266
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_sppReadOn_test_001', 0, async function (done) {
-        try {
-            console.info('[bluetooth_js] sppReadOn test start');
-            console.info('bluetooth sppReadOn test start ...');
-            bluetooth.on("sppRead",-1, (result) => {
-                console.info("[bluetooth_js] sppReadOn json_result -> " + JSON.stringify(result));
-                console.info("[bluetooth_js] sppReadOn result -> " + result);
-                expect(true).assertEqual(result !=null);
-            });
-            await(3000);
-        }catch(e) {
-            expect(null).assertFail();
-        }
-        done();
-    })
-
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetoothble_DEVICE_JS_SPP_READ_ON_0002
-     * @tc.name testsppReadOn
-     * @tc.desc Test sppReadOn api .
-     * @tc.author zhangyujie zwx1079266
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_sppReadOn_test_002', 0, async function (done) {
-        console.info('[bluetooth_js] sppReadOn test2 start ...');
-        await bluetooth.on("sppRead",-1, onSppReadEvent)
-        function onSppReadEvent(data) {
-            console.info('[bluetooth_js] sppRead data1='+ JSON.stringify(data));
-            console.info('[bluetooth_js] sppRead data2='+ data);
-        }
-        done();
-        await(3000);
-    })
-
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetoothble_DEVICE_JS_CHARAC_READ_OFF_0001
-     * @tc.name testsppReadOff
-     * @tc.desc Test sppReadOff api .
-     * @tc.author zhangyujie zwx1079266
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_sppReadOff_test_001', 0, async function (done) {
-        try {
-            console.info('[bluetooth_js] sppReadOff test start ...');
-            bluetooth.off("sppRead",-1, (result) => {
-                console.info("[bluetooth_js] sppReadOff json_result -> " + JSON.stringify(result));
-                console.info("[bluetooth_js] sppReadOff result -> " + result);
-                expect(true).assertEqual(result !=null);
-            });
-            await(3000);
-        }catch(e) {
-            expect(null).assertFail();
-        }
-        done();
-    })
 
     /**
      * @tc.number SUB_COMMUNACATION_bluetoothble_DEVICE_JS_BLE_PERIPHERA_MANAGER_CLOSE_0001
@@ -1807,7 +1504,7 @@ describe('bluetoothhostTest', function() {
     it('bluetooth_gattclient_close_test_001', 0, function () {
         console.info('[bluetooth_js] GattclientClose test start ...');
         if (gattClient == null) {
-            console.info("[bluetooth_js] GattclientClose: please click CreateGattClientDevice first!");
+            console.info("[bluetooth_js] GattclientClose: please click Create first!");
         }
         console.info('[bluetooth_js] gattClient is:' + JSON.stringify(gattServer));
         try{
@@ -1831,14 +1528,13 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_getRemoteDeviceName_test', 0, function (done) {
+    it('bluetooth_getRemoteDeviceName_test', 0, function () {
         console.info('[bluetooth_js] getRemoteDeviceName start');
         let ret = bluetooth.getRemoteDeviceName("00:00:00:00:00:00");
         console.info('[bluetooth_js] getRemoteDeviceName ret : ' + ret);
         console.info('[bluetooth_js] getRemoteDeviceName ret2 : ' + JSON.stringify(ret));
         expect(ret.length).assertEqual(0);
         console.info('[bluetooth_js] getRemoteDeviceName end.');
-        done();
     })
 
     /**
@@ -1850,7 +1546,7 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_getRemoteDeviceClass_test', 0, function (done) {
+    it('bluetooth_getRemoteDeviceClass_test', 0, function () {
         console.info('[bluetooth_js] getRemoteDeviceClass start');
         var MajorMinorClass = {
             COMPUTER_UNCATEGORIZED : 0x0100,
@@ -1906,27 +1602,27 @@ describe('bluetoothhostTest', function() {
             PERIPHERAL_DIGITAL_PEN : 0x051C,
             PERIPHERAL_SCANNER_RFID : 0x0520,
             PERIPHERAL_GESTURAL_INPUT : 0x0522,
-        
+
             IMAGING_UNCATEGORIZED : 0x0600,
             IMAGING_DISPLAY : 0x0610,
             IMAGING_CAMERA : 0x0620,
             IMAGING_SCANNER : 0x0640,
             IMAGING_PRINTER : 0x0680,
-        
+
             WEARABLE_UNCATEGORIZED : 0x0700,
             WEARABLE_WRIST_WATCH : 0x0704,
             WEARABLE_PAGER : 0x0708,
             WEARABLE_JACKET : 0x070C,
             WEARABLE_HELMET : 0x0710,
             WEARABLE_GLASSES : 0x0714,
-        
+
             TOY_UNCATEGORIZED : 0x0800,
             TOY_ROBOT : 0x0804,
             TOY_VEHICLE : 0x0808,
             TOY_DOLL_ACTION_FIGURE : 0x080C,
             TOY_CONTROLLER : 0x0810,
             TOY_GAME : 0x0814,
-        
+
             HEALTH_UNCATEGORIZED : 0x0900,
             HEALTH_BLOOD_PRESSURE : 0x0904,
             HEALTH_THERMOMETER : 0x0908,
@@ -1945,7 +1641,6 @@ describe('bluetoothhostTest', function() {
             HEALTH_PERSONAL_MOBILITY_DEVICE : 0x093C,
             HEALTH_PERSONAL_MOBILITY_DEVICE : 0x093C
         };
-
         let ret = bluetooth.getRemoteDeviceClass("00:00:00:00:00:00");
         console.info('[bluetooth_js] getRemoteDeviceClass ret : ' + ret);
         console.info('[bluetooth_js] getRemoteDeviceClass ret2 : ' + JSON.stringify(ret));
@@ -1954,6 +1649,41 @@ describe('bluetoothhostTest', function() {
         console.info('[bluetooth_js] majorMinorClass : ' + ret.majorMinorClass);
         console.info('[bluetooth_js] classOfDevice : ' + ret.classOfDevice);
         console.info('[bluetooth_js] getRemoteDeviceClass end.');
+    })
+
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetoothble_DEVICE_JS_SPP_READ_ON_0001
+     * @tc.name testonsppReadOn
+     * @tc.desc Test sppReadOn api .
+     * @tc.author zhangyujie zwx1079266
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_sppReadOn_test_001', 0, async function (done) {
+        try {
+            console.info('[bluetooth_js] sppReadOn test start');
+            console.info('bluetooth sppReadOn test start ...');
+            await bluetooth.on("sppRead",-1, (result) => {
+                console.info("[bluetooth_js] sppReadOn json_result -> " + JSON.stringify(result));
+                console.info("[bluetooth_js] sppReadOn result -> " + result);
+                expect(true).assertEqual(result !=null);
+            });
+        }catch(e) {
+            expect(null).assertFail();
+        }
+
+        try {
+            console.info('[bluetooth_js] sppReadOff test start ...');
+            await bluetooth.off("sppRead",-1, (result) => {
+                console.info("[bluetooth_js] sppReadOff json_result -> " + JSON.stringify(result));
+                console.info("[bluetooth_js] sppReadOff result -> " + result);
+                expect(true).assertEqual(result ==null);
+            });
+        }catch(e) {
+            expect(null).assertFail();
+        }
         done();
     })
 
@@ -1966,14 +1696,293 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_cancelPairedDevice_test', 0, function (done) {
+    it('bluetooth_cancelPairedDevice_test', 0, function () {
         console.info('[bluetooth_js] cancelPairedDevice start');
         let ret = bluetooth.cancelPairedDevice("00:00:00:00:00:00");
         console.info('[bluetooth_js] cancelPairedDevice ret : ' + ret);
         console.info('[bluetooth_js] cancelPairedDevice ret2 : ' + JSON.stringify(ret));
-        expect(ret).assertEqual(false);
+        expect(ret).assertFalse();
         console.info('bluetooth cancelPairedDevice end.');
-        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_SET_LOCAL_NAME_0001
+     * @tc.name testsetLocalName
+     * @tc.desc Test setLocalName api.
+     * @tc.author zhangyujie zwx1079266
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_classic_set_local_name1', 0, async function () {
+        console.info('[bluetooth_js] set localname start');
+        var state = bluetooth.getState();
+        console.info('[bluetooth_js] getState step1 = '+ JSON.stringify(state));
+        var name = bluetooth.setLocalName('');
+        console.info('[bluetooth_js] setLocalName result1 = '+ JSON.stringify(name));
+        expect(name).assertFalse();
+        var localName = bluetooth.getLocalName();
+        console.info('[bluetooth_js] getLocalName result1 = ' + JSON.stringify(localName));
+        console.info('[bluetooth_js] setLocalName end');
+    })
+
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_SET_LOCAL_NAME_0002
+     * @tc.name testsetLocalName
+     * @tc.desc Test setLocalName api.
+     * @tc.author zhangyujie zwx1079266
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_classic_set_local_name2', 0, function () {
+        console.info('[bluetooth_js] set localname start');
+        var name = bluetooth.setLocalName();
+        console.info('[bluetooth_js] setLocalName result2 = '+ JSON.stringify(name));
+        expect(name).assertNull();
+        var localName = bluetooth.getLocalName();
+        console.info('[bluetooth_js] getLocalName result2 = ' + JSON.stringify(localName));
+        console.info('[bluetooth_js] setLocalName end');
+    })
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_SET_LOCAL_NAME_0003
+     * @tc.name testsetLocalName
+     * @tc.desc Test setLocalName api.
+     * @tc.author zhangyujie zwx1079266
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_classic_set_local_name3', 0, function () {
+        console.info('[bluetooth_js] set localname start');
+        var name = bluetooth.setLocalName('012345678901234567890123456789012345678901234567890123'
+        +'45678901234567890123456789012345678901234567890123456789012345678901234567');
+        console.info('[bluetooth_js] setLocalName result3 = '+ JSON.stringify(name));
+        expect(name).assertTrue();
+        var localName = bluetooth.getLocalName();
+        console.info('[bluetooth_js] getLocalName result3 = ' + JSON.stringify(localName));
+        console.info('[bluetooth_js] setLocalName end');
+    })
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_SET_LOCAL_NAME_0004
+     * @tc.name testsetLocalName
+     * @tc.desc Test setLocalName api.
+     * @tc.author zhangyujie zwx1079266
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_classic_set_local_name4', 0, function () {
+        console.info('[bluetooth_js] set localname start');
+        var name = bluetooth.setLocalName('01234567890123456789012345678901234567890123456'
+        +'7890123456789012345678901234567890123456789012345678901234567890123456789012345678');
+        console.info('[bluetooth_js] setLocalName result4 = '+ JSON.stringify(name));
+        expect(name).assertTrue();
+        var localName = bluetooth.getLocalName();
+        console.info('[bluetooth_js] getLocalName result4 = ' + JSON.stringify(localName));
+        console.info('[bluetooth_js] setLocalName end');
+    })
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_SET_LOCAL_NAME_0005
+     * @tc.name testsetLocalName
+     * @tc.desc Test setLocalName api.
+     * @tc.author zhangyujie zwx1079266
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_classic_set_local_name5', 0, function () {
+        console.info('[bluetooth_js] set localname start');
+        var name = bluetooth.setLocalName('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+        console.info('[bluetooth_js] setLocalName result5 = '+ JSON.stringify(name));
+        expect(name).assertTrue();
+        var localName = bluetooth.getLocalName();
+        console.info('[bluetooth_js] getLocalName result5 = ' + JSON.stringify(localName));
+        console.info('[bluetooth_js] setLocalName end');
+    })
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_SET_LOCAL_NAME_0006
+     * @tc.name testsetLocalName
+     * @tc.desc Test setLocalName api.
+     * @tc.author zhangyujie zwx1079266
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_classic_set_local_name6', 0, function () {
+        console.info('[bluetooth_js] set localname start');
+        var name = bluetooth.setLocalName('测试蓝牙名称是否正常测试蓝牙名称是否正常测试蓝牙');
+        console.info('[bluetooth_js] setLocalName result6 = '+ JSON.stringify(name));
+        expect(name).assertTrue();
+        var localName = bluetooth.getLocalName();
+        console.info('[bluetooth_js] getLocalName result6 = ' + JSON.stringify(localName));
+        console.info('[bluetooth_js] setLocalName end');
+    })
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_SET_LOCAL_NAME_0007
+     * @tc.name testsetLocalName
+     * @tc.desc Test setLocalName api.
+     * @tc.author zhangyujie zwx1079266
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_classic_set_local_name7', 0, function () {
+        console.info('[bluetooth_js] set localname start');
+        var name = bluetooth.setLocalName('*^_^* 、。·ˉˇ¨〃々—～‖·‘’“”〔③〈《「『』〖❂【±×'
+        +'÷∶∧∨∑∏∪∩∈∷√⊥‖∠⌒⊙∫∮≡≌≈∽∝≠♂♀°℃＄¤￠￡‰§№☆★○●◎◇□■△※→←↑↓〓');
+        console.info('[bluetooth_js] setLocalName result7 = '+ JSON.stringify(name));
+        expect(name).assertTrue();
+        var localName = bluetooth.getLocalName();
+        console.info('[bluetooth_js] getLocalName result7 = ' + JSON.stringify(localName));
+        console.info('[bluetooth_js] setLocalName end');
+    })
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_SET_LOCAL_NAME_0008
+     * @tc.name testsetLocalName
+     * @tc.desc Test setLocalName api.
+     * @tc.author zhangyujie zwx1079266
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_classic_set_local_name8', 0, function () {
+        console.info('[bluetooth_js] set localname start');
+        var name = bluetooth.setLocalName('测试蓝常测试蓝牙\'名称是否[666]aaw');
+        console.info('[bluetooth_js] setLocalName result8 = '+ JSON.stringify(name));
+        expect(name).assertTrue();
+        var localName = bluetooth.getLocalName();
+        console.info('[bluetooth_js] getLocalName result8 = ' + JSON.stringify(localName));
+        console.info('[bluetooth_js] setLocalName end');
+    })
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_SET_LOCAL_NAME_0009
+     * @tc.name testsetLocalName
+     * @tc.desc Test setLocalName api.
+     * @tc.author zhangyujie zwx1079266
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_classic_set_local_name9', 0, function () {
+        console.info('[bluetooth_js] set localname start');
+        var name = bluetooth.setLocalName('——◎◇◆□■△▲测试蓝牙');
+        console.info('[bluetooth_js] setLocalName result9 = '+ JSON.stringify(name));
+        expect(name).assertTrue();
+        var localName = bluetooth.getLocalName();
+        console.info('[bluetooth_js] getLocalName result9 = ' + JSON.stringify(localName));
+        console.info('[bluetooth_js] setLocalName end');
+    })
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_SET_LOCAL_NAME_00010
+     * @tc.name testsetLocalName
+     * @tc.desc Test setLocalName api.
+     * @tc.author zhangyujie zwx1079266
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_classic_set_local_name10', 0, function () {
+        console.info('[bluetooth_js] set localname start');
+        var name = bluetooth.setLocalName('78453-、、。。◎◇◆□■△▲');
+        console.info('[bluetooth_js] setLocalName result10 = '+ JSON.stringify(name));
+        expect(name).assertTrue();
+        var localName = bluetooth.getLocalName();
+        console.info('[bluetooth_js] getLocalName result10 = ' + JSON.stringify(localName));
+        console.info('[bluetooth_js] setLocalName end');
+    })
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_SET_LOCAL_NAME_00011
+     * @tc.name testsetLocalName
+     * @tc.desc Test setLocalName api.
+     * @tc.author zhangyujie zwx1079266
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_classic_set_local_name11', 0, function () {
+        console.info('[bluetooth_js] set localname start');
+        var name = bluetooth.setLocalName('hhhfdf-、、。。◎◇◆□■△▲');
+        console.info('[bluetooth_js] setLocalName result11 = '+ JSON.stringify(name));
+        expect(name).assertTrue();
+        var localName = bluetooth.getLocalName();
+        console.info('[bluetooth_js] getLocalName result11 = ' + JSON.stringify(localName));
+        console.info('[bluetooth_js] setLocalName end');
+    })
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_SET_LOCAL_NAME_00012
+     * @tc.name testsetLocalName
+     * @tc.desc Test setLocalName api.
+     * @tc.author zhangyujie zwx1079266
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_classic_set_local_name12', 0, function () {
+        console.info('[bluetooth_js] set localname start');
+        var name = bluetooth.setLocalName('#01-5@<>?/;:!@$%^&*(1[{【‘’“”~·0bu测试=》《\'[666]');
+        console.info('[bluetooth_js] setLocalName result12 = '+ JSON.stringify(name));
+        expect(name).assertTrue();
+        var localName = bluetooth.getLocalName();
+        console.info('[bluetooth_js] getLocalName result12 = ' + JSON.stringify(localName));
+        console.info('[bluetooth_js] setLocalName end');
+    })
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_SET_LOCAL_NAME_00013
+     * @tc.name testsetLocalName
+     * @tc.desc Test setLocalName api.
+     * @tc.author zhangyujie zwx1079266
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_classic_set_local_name13', 0, function () {
+        console.info('[bluetooth_js] set localname start');
+        var name = bluetooth.setLocalName('#01-567890@<>?/;:5675ASDF012345678!@'
+        +'$%^&*()9012378901[]{}【】566~·67890blue');
+        console.info('[bluetooth_js] setLocalName result13 = '+ JSON.stringify(name));
+        expect(name).assertTrue();
+        var localName = bluetooth.getLocalName();
+        console.info('[bluetooth_js] getLocalName result13 = ' + JSON.stringify(localName));
+        console.info('[bluetooth_js] setLocalName end');
+    })
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_SET_LOCAL_NAME_00014
+     * @tc.name testsetLocalName
+     * @tc.desc Test setLocalName api.
+     * @tc.author zhangyujie zwx1079266
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_classic_set_local_name14', 0, async function () {
+        console.info('[bluetooth_js] set localname start');
+        var name = bluetooth.setLocalName('0123456789012345678901234567890123456789012345678901'
+        +'23456789012345678901234567890123456789012345678901234567890123456789012345678012'
+        +'345678901234567890123456789012345678901234567890123456789012367890123456789012345568');
+        console.info('[bluetooth_js] setLocalName result14 = '+ JSON.stringify(name));
+        expect(name).assertTrue();
+        var localName = bluetooth.getLocalName();
+        console.info('[bluetooth_js] getLocalName result14 = ' + JSON.stringify(localName));
+        let disable = bluetooth.disableBluetooth();
+        console.info('[bluetooth_js] disable:' + JSON.stringify(disable));
+        expect(disable).assertTrue();
+        await sleep(2000);
+        console.info('[bluetooth_js] setLocalName end');
     })
 
 })
+
