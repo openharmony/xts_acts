@@ -30,6 +30,7 @@
     },
     "abilities": [
       {
+        "visible": true,
         "skills": [
           {
             "entities": [
@@ -40,6 +41,9 @@
               "action.system.home"
             ]
           }
+        ],
+        "backgroundModes": [
+          "dataTransfer"
         ],
         "name": "com.example.actsfeatureabilitytest.MainAbility",
         "icon": "$media:icon",
@@ -56,6 +60,11 @@
     ],
     "reqCapabilities": ["reqCapabilitiesTest1","reqCapabilitiesTest2"],
     "description": "descriptionTest",
+    "defPermissions": [
+      {
+        "name": "ohos.permission.KEEP_BACKGROUND_RUNNING"
+      }
+    ],
     "reqPermissions": [
       {
         "name": "ohos.permission.CAMERA",
@@ -85,6 +94,9 @@
       {
         "name":"ohos.permission.LISTEN_BUNDLE_CHANGE",
         "reason":"need use ohos.permission.LISTEN_BUNDLE_CHANGE"
+      },
+      {
+        "name": "ohos.permission.KEEP_BACKGROUND_RUNNING"
       }
     ],
     "js": [
