@@ -11,20 +11,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos_var.gni")
-group("communication") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "bluetooth_ble:ActsBluetoothBleJsTest",
-      "bluetooth_on:ActsBluetoothOnJsTest",
-      "bluetooth_standard:ActsBluetoothJsTest",
-      "dsoftbus/rpc:ActsRpcJsTest",
-      "wifi_hotspot:ActsHotSpotJSTest",
-      "wifi_p2p:ActsP2PJSTest",
-      "wifi_standard:ActsWifiJSTest",
-    ]
-  } else {
-    deps = [ "wifi_standard:ActsWifiJSTest" ]
-  }
+import("//test/xts/tools/build/suite.gni")
+ohos_js_hap_suite("ActsBluetoothOnJsTest") {
+  hap_profile = "./src/main/config.json"
+  deps = [
+    ":bluetooth_js_assets",
+    ":bluetooth_resources",
+  ]
+
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsBluetoothOnHapTest"
+}
+ohos_js_assets("bluetooth_js_assets") {
+  source_dir = "./src/main/js/default"
+}
+ohos_resources("bluetooth_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }

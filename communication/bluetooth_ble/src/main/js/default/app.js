@@ -12,8 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-require('./WifiSta.test.js')
-//require('./WifiSoftAP.test.js')
-//require('./WifiP2P.test.js')
 
-
+export default {
+    onCreate() {
+        console.info('AceApplication onCreate');
+    },
+    onDestroy() {
+        console.info('AceApplication onDestroy');
+    }
+};
