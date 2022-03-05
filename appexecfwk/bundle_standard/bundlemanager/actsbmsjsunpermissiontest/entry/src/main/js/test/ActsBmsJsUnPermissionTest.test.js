@@ -47,7 +47,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
             expect(data.status).assertEqual(STATUS_INSTALL_PERMISSION_DENIED);
             expect(data.statusMessage).assertEqual("STATUS_INSTALL_PERMISSION_DENIED");
             done();
-        };
+        }
     });
 
     /*
@@ -69,7 +69,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
             expect(data.status).assertEqual(STATUS_UNINSTALL_PERMISSION_DENIED);
             expect(data.statusMessage).assertEqual("STATUS_UNINSTALL_PERMISSION_DENIED");
             done();
-        };
+        }
     });
 
     /*

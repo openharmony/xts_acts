@@ -25,6 +25,10 @@ const TAG_TEST_0500 = ' context_getAppMemorySize_test_0100 ';
 const TAG_TEST_0600 = ' context_getAppMemorySize_test_0200 ';
 const TAG_TEST_0700 = ' context_isRamConstrainedDevice_test_0100 ';
 const TAG_TEST_0800 = ' context_isRamConstrainedDevice_test_0200 ';
+const TAG_TEST_0900 = ' context_featureAbility_test_0100 ';
+const TAG_TEST_0010 = ' context_featureAbility_test_0200 ';
+const TAG_TEST_0011 = ' context_featureAbility_test_0300 ';
+const TAG_TEST_0012 = ' context_featureAbility_test_0400 ';
 
 export default function addContextAndAbilityJsunit() {
     describe('appInfoTest', function () {
@@ -229,5 +233,68 @@ export default function addContextAndAbilityJsunit() {
             })
             console.log('------------------ ' + TAG_TEST_0800 + ' end -------------------');
         });
+    /*
+     * @tc.number: context_featureAbility_test_0100
+     * @tc.name: featureAbility.ErrorCode : featureAbility.ErrorCode
+     * @tc.desc: Check the featureAbility.ErrorCode.NO_ERROR
+     * @tc.level 0
+     */
+    it(TAG_TEST_0900, 0, async function (done) {
+      console.info(TAG_TEST_0900 + ' NO_ERROR START');
+      var no_error = ability_featureAbility.ErrorCode.NO_ERROR
+      console.info(TAG_TEST_0900 + ' featureAbility no_error is: ' + no_error);
+      expect(typeof (no_error)).assertEqual("number");
+      expect(no_error).assertEqual(0);
+      done();
+      console.log('------------------ ' + TAG_TEST_0900 + ' end -------------------');
+    });
+
+    /*
+     * @tc.number: context_featureAbility_test_0200
+     * @tc.name: featureAbility.ErrorCode : featureAbility.ErrorCode
+     * @tc.desc: Check the featureAbility.ErrorCode.INVALID_PARAMETER
+     * @tc.level 0
+     */
+    it(TAG_TEST_0010, 0, async function (done) {
+      console.info(TAG_TEST_0010 + ' INVALID_PARAMETER START');
+      var invalid_parameter = ability_featureAbility.ErrorCode.INVALID_PARAMETER
+      console.info(TAG_TEST_0010 + ' featureAbility invalid_parameter is: ' + invalid_parameter);
+      expect(typeof (invalid_parameter)).assertEqual("number");
+      expect(invalid_parameter).assertEqual(-1);
+      done();
+      console.log('------------------ ' + TAG_TEST_0010 + ' end -------------------');
+    });
+
+    /*
+     * @tc.number: context_featureAbility_test_0300
+     * @tc.name: featureAbility.ErrorCode : featureAbility.ErrorCode
+     * @tc.desc: Check the featureAbility.ErrorCode.ABILITY_NOT_FOUND
+     * @tc.level 0
+     */
+    it(TAG_TEST_0011, 0, async function (done) {
+      console.info(TAG_TEST_0011 + ' ABILITY_NOT_FOUND START');
+      var ability_not_found = ability_featureAbility.ErrorCode.ABILITY_NOT_FOUND
+      console.info(TAG_TEST_0011 + ' featureAbility ability_not_found is: ' + ability_not_found);
+      expect(typeof (ability_not_found)).assertEqual("number");
+      expect(ability_not_found).assertEqual(-2);
+      done();
+      console.log('------------------ ' + TAG_TEST_0011 + ' end -------------------');
+    });
+
+    /*
+     * @tc.number: context_featureAbility_test_0400
+     * @tc.name: featureAbility.ErrorCode : featureAbility.ErrorCode
+     * @tc.desc: Check the featureAbility.ErrorCode.PERMISSION_DENY
+     * @tc.level 0
+     */
+    it(TAG_TEST_0012, 0, async function (done) {
+      console.info(TAG_TEST_0012 + ' PERMISSION_DENY START');
+      var permission_deny = ability_featureAbility.ErrorCode.PERMISSION_DENY
+      console.info(TAG_TEST_0012 + ' featureAbility permission_deny is: ' + permission_deny);
+      expect(typeof (permission_deny)).assertEqual("number");
+      expect(permission_deny).assertEqual(-3);
+      done();
+      console.log('------------------ ' + TAG_TEST_0012 + ' end -------------------');
+    });
     })
 }
