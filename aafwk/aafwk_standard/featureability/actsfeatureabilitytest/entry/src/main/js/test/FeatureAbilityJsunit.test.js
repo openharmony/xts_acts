@@ -86,6 +86,7 @@ var subscriberInfo_ACTS_GetCallingBundle_0100 = {
 describe('ActsFeatureAbilityTest', function () {
 
     beforeAll(function() {
+
         /*
          * @tc.setup: setup invoked before all testcases
          */
@@ -93,6 +94,7 @@ describe('ActsFeatureAbilityTest', function () {
     })
 
     afterAll(function() {
+
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
@@ -100,6 +102,7 @@ describe('ActsFeatureAbilityTest', function () {
     })
 
     beforeEach(function() {
+
         /*
          * @tc.setup: setup invoked before each testcases
          */
@@ -107,6 +110,7 @@ describe('ActsFeatureAbilityTest', function () {
     })
 
     afterEach(function() {
+
         /*
          * @tc.teardown: teardown invoked after each testcases
          */
