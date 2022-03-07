@@ -16,6 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@ohos.events.emitter';
 import Utils from '../Utils.ets';
+import router from '@system.router';
 
 export default function flexJsunit() {
   describe('flexTest', function () {
@@ -91,6 +92,27 @@ export default function flexJsunit() {
       console.info("testFlex_0400 component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Auto");
       console.info('testFlex_0400 END');
+      done();
+    });
+
+    it('testFlex_0500', 0, async function (done) {
+      console.info('testFlex_0500 START');
+      let strJson = getInspectorByKey('flex');
+      console.info("testFlex_0500 component strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      console.info("testFlex_0500 component obj is: " + JSON.stringify(obj));
+      expect(obj.$type).assertEqual('Flex');
+      done();
+    });
+
+    it('testFlex_0600', 0, async function (done) {
+      console.info('testFlex_0600 START');
+      let strJson = getInspectorByKey('flex');
+      console.info("testFlex_0600 component strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      console.info("testFlex_0600 component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      console.info('testFlex_0600 END');
       done();
     });
   })

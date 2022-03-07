@@ -18,7 +18,7 @@ import events_emitter from '@ohos.emitter'
 @Entry
 @Component
 struct FlexExample {
-
+  @State direction: FlexDirection = FlexDirection.Row
   private stateChangCallBack = (eventData) => {
     if (eventData != null) {
       console.info("Flex page state change called:" + JSON.stringify(eventData));
@@ -117,7 +117,7 @@ struct FlexExample {
           .backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
         Text('no alignSelf,height:100').width('34%').height(100)
           .backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
-      }.width('90%').height(120).padding(10).backgroundColor(0xAFEEEE)
+      }.key('flex').width('90%').height(120).padding(10).backgroundColor(0xAFEEEE)
     }.width('100%').margin({ top: 5 })
   }
 }

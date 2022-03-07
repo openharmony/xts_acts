@@ -35,7 +35,7 @@ export default function spanJsunit() {
           console.info("push span page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push span page error: " + err);
+        console.error("push span page error " + JSON.stringify(err));
       }
       done()
     });
@@ -91,6 +91,43 @@ export default function spanJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[testSpan003] textCase:" + obj.$attrs.textCase);
       expect(obj.$attrs.textCase).assertEqual('TextCase.UpperCase');
+      done();
+    });
+
+    it('testSpan004', 0, async function (done) {
+      console.info('[testSpan004] START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('fontColor');
+      console.info("[testSpan004] component strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      console.info("[testSpan004] fontColor:" + obj.$attrs.fontColor);
+      expect(obj.$attrs.fontColor).assertEqual('#FF000000');
+      done();
+    });
+
+    it('testSpan005', 0, async function (done) {
+      console.info('[testSpan005] START');
+      try {
+        let eventData = {
+          data: {
+            "fontColorValue": '#FF000990'
+          }
+        }
+        let indexEvent = {
+          eventId: 42,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testSpan005] start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("[testSpan005] change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJson = getInspectorByKey('fontColor');
+      console.info("[testSpan005] component strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      console.info("[testSpan005] fontColor:" + obj.$attrs.fontColor);
+      expect(obj.$attrs.fontColor).assertEqual('#FF000990');
       done();
     });
   })

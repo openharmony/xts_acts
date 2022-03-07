@@ -99,5 +99,43 @@ export default function textJsunit() {
       console.info('testText_0300 END');
       done();
     });
+
+    it('testText_0700', 0, async function (done) {
+      console.info('testText_0700 START');
+      let strJson = getInspectorByKey('text');
+      console.info("testText_0700 component strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      console.info("testText_0700 component obj is: " + JSON.stringify(obj));
+      expect(obj.$type).assertEqual('Text');
+      expect(obj.$attrs.fontColor).assertEqual('#FF000000');
+      console.info('testText_0700 END');
+      done();
+    });
+
+    it('testText_0800', 0, async function (done) {
+      console.info('testText_0800 START');
+      try {
+        let eventData = {
+          data: {
+            "fontColor": "#330A59F7",
+          }
+        }
+        let indexEvent = {
+          eventId: 198,
+          priority: events_emitter.EventPriority.LOW
+        } 
+        console.info("testText_0800 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("testText_0800 change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJsonNew = getInspectorByKey('text');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("testText_0800 component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.fontColor).assertEqual('#330A59F7');
+      console.info('testText_0800 END');
+      done();
+    });
   })
 }
