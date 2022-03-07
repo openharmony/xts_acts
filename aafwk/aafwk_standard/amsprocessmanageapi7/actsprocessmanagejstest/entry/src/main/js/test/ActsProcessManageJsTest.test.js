@@ -641,7 +641,7 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
             expect(flagProcessAMulti).assertEqual(0);
 
             var missionInfos = await missionmanager.getMissionInfos('', numMax);
-            console.debug("====>ACTS_ProcessManage ACTS_ProcessManage_killProcessesByBundleNameFA_0800 missionInfos====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0800 missionInfos====>"
                 + JSON.stringify(missionInfos));
             for (var i = 0; i < missionInfos.length; i++) {
 
@@ -1093,12 +1093,12 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
             commonEvent.unsubscribe(subscriber, unSubscribeCallback);
             setTimeout(async function () {
                 var processexist = await checkPromiseExistDelay(systemBProcessName);
-                console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0600 subscribeCallBack processexist:====>"
+                console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0600 processexist:====>"
                     + JSON.stringify(processexist));
                 expect(processexist).assertEqual(false);
 
                 var missionexist = await checkPromiseMissionExistDelay(systemBAbilityName)
-                console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0600 subscribeCallBack missionexist:====>"
+                console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0600 missionexist:====>"
                     + JSON.stringify(missionexist));
                 expect(missionexist).assertEqual(false);
 
@@ -1153,12 +1153,12 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
             commonEvent.unsubscribe(subscriber, unSubscribeCallback);
             setTimeout(async function () {
                 var processexist = await checkPromiseExistDelay(vendorAProcessName);
-                console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0700 subscribeCallBack processexist:====>"
+                console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0700 processexist:====>"
                     + JSON.stringify(processexist));
                 expect(processexist).assertEqual(false);
 
                 var missionexist = await checkPromiseMissionExistDelay(vendorAAbilityName)
-                console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0700 subscribeCallBack missionexist:====>"
+                console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0700 missionexist:====>"
                     + JSON.stringify(missionexist));
                 expect(missionexist).assertEqual(false);
                 getAppDataPathFileNums(uriVendorA, async (err, nums) => {
