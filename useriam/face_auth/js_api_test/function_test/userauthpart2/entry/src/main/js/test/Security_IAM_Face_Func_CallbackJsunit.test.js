@@ -13,16 +13,15 @@
  * limitations under the License.
  */
 
-
 import {describe, it, expect} from 'deccjsunit/index'
-import userAuth from '@ohos.userauth'
+import userIAM from '@ohos.UserIAM.userAuth'
 import userIDM from '@ohos.useridm'
 import pinAuth from '@ohos.pinauth'
 import * as publicFC from './Publicfunction-n.js'
 
 let UserIDM = userIDM.constructor()
 let PinAuth = pinAuth.constructor()
-let UserAuth = userAuth.constructor()
+let UserAuth = userIAM.constructor()
 
 let AuthType = {
     PIN : 1,
@@ -47,7 +46,7 @@ let SetPropertyType = {
 }
 
 let userID = {
-    User1 : 1000,
+    User1 : 100,
     User2 : 2,
     User3 : 3,
     User4 : 4,
@@ -65,7 +64,8 @@ let ResultCode = {
     BUSY : 7,
     INVALID_PARAMETERS : 8,
     LOCKED : 9,
-    NOT_ENROLLED : 10
+    NOT_ENROLLED : 10,
+    Authfail: 14
 }
 
 let GetPropertyType = {
@@ -74,7 +74,7 @@ let GetPropertyType = {
     FREEZING_TIME : 3
 }
 
-let Inputerdata = new Uint8Array([12,34,56]);
+let Inputerdata = new Uint8Array([1,2,3,4,5,6]);
 
 let GetPropertyTypearray=new Array();
 GetPropertyTypearray[0]=GetPropertyType.AUTH_SUB_TYPE;      
@@ -174,6 +174,58 @@ describe('userauthTest', function () {
                             }, function (onacquireinfo) {
                             })
                         }, function (onacquireinfo) {
+                        })
+                    }, function (data) {
+                    })
+                }, function (onacquireinfo) {
+                })
+            })
+        } catch (e) {
+            console.log("Security_IAM_Face_AddCred_Func_0101 fail " + e);
+            expect(null).assertFail();
+        }
+    })
+
+    it('Security_IAM_Face_AddCred_Func_0103', 0, async function (done) {
+        try {
+            publicFC.publicRegisterInputer(PinAuth,AuthSubType.PIN_SIX,Inputerdata)
+            let challenge ;
+            publicFC.publicOpenSession(UserIDM, function (data) {
+                console.info('Security_IAM_Face_AddCred_Func_0103 openSession challenge = ' + data);
+                challenge = data;
+                publicFC.publicaddCredential(UserIDM,CredentialInfopinsix, function (onresult) {
+                    console.info('Face_AddCred_Func_0103 addCredential Result1 = ' + JSON.stringify(onresult));
+                    let info101;
+                    publicFC.publicauth(UserAuth,challenge,AuthType.PIN,AuthTurstLevel.ATL1, async function (data) {
+                        console.info('Security_IAM_Face_AddCred_Func_0103 auth onResult = ' + JSON.stringify(data));
+                        info101 = data;
+                        let token = info101.authextr.token;
+                        CredentialInfoface2d.token = token;
+                        let addfaceresult;
+                        publicFC.publicaddCredential(UserIDM,CredentialInfoface2d, function (onresult) {
+                            console.info('Face_AddCred_Func_0103 addCredential Result2=' + JSON.stringify(onresult));
+                            addfaceresult = onresult;
+                        }, function (onacquireinfo) {
+                        })
+                        let cancelresult = publicFC.publiccancel(UserIDM,challenge);
+                        await sleep(100);
+                        if(cancelresult == 1){
+                            console.info('Face_AddCred_Func_0103 cancel1 authresult = ' + addfaceresult.addCredresult);
+                            expect(ResultCode.SUCCESS).assertEqual(addfaceresult.addCredresult);
+                        }else if(cancelresult == 0){
+                            console.info('Face_AddCred_Func_0103 cancel0 authresult = ' + addfaceresult.addCredresult);
+                            expect(ResultCode.CANCELED).assertEqual(addfaceresult.addCredresult);
+                        }
+                        await publicFC.publicdelUser(UserIDM,token, function (data) {
+                            console.info('Face_AddCred_Func_0103 delUser= ' + JSON.stringify(data));
+                            publicFC.publicCloseSession(UserIDM, function (data) {
+                                console.info('Security_IAM_Face_AddCred_Func_0103 closeSession');
+                                publicFC.publicunRegisterInputer(PinAuth, function (data) {
+                                    console.info('Security_IAM_Face_AddCred_Func_0103 unRegister');
+                                    done();
+                                })
+                            })
+                        }, function (data) {
                         })
                     }, function (data) {
                     })
@@ -755,7 +807,7 @@ describe('userauthTest', function () {
                             publicFC.publicdelCred(UserIDM,credentialId,token1, function (data) {
                                 console.info('testFace Face_AddCred_Func_0102 publicdelCred=' + JSON.stringify(data));
                                 delcredresult = data;
-                                expect(ResultCode.FAIL).assertEqual(delcredresult.authresult);
+                                expect(ResultCode.Authfail).assertEqual(delcredresult.delCredresult);
                                 publicFC.publicdelUser(UserIDM,token, function (data) {
                                     console.info('testFace Face_AddCred_Func_0102 delUser= ' + JSON.stringify(data));
                                     publicFC.publicCloseSession(UserIDM, function (data) {
@@ -781,4 +833,5 @@ describe('userauthTest', function () {
             expect(null).assertFail();
         }
     })
+
 })

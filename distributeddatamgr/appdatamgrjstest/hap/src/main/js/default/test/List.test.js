@@ -27,3 +27,5 @@ require('./DataAbilityPredicatesJsunit.test.js')
 require('./RdbstoreTransactionJsunit.test.js')
 require('./RdbstorePredicatesJoinJsunit.test.js')	
 require('./RdbStoreDistributedJsunit.test.js')
+
+

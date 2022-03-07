@@ -23,6 +23,8 @@ group("multimedia") {
       "media/media_js_standard/audioEncoder:audio_encoder_js_hap",
       "media/media_js_standard/audioPlayer:audio_player_js_hap",
 
+      #"media/media_js_standard/videoDecoder:video_decoder_js_hap",
+      #"media/media_js_standard/videoEncoder:video_encoder_js_hap"
       #"image/image_js_standard:image_js_hap",
       #"media/media_js_standard/videoPlayer:video_player_js_hap",
       #"media/media_js_standard/videoRecorder:video_recorder_js_hap",

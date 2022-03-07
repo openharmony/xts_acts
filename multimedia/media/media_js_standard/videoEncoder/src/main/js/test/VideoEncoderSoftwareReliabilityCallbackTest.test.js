@@ -50,7 +50,8 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     let isStreamRunning = false;
     let workdoneAtEOS = false;
     let stopBuffer = false;
-    const BASIC_PATH = '/data/media/results/';
+    const ROOT = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/results/';
+    const BASIC_PATH = ROOT + 'video_reliability_callback_';
     let mediaDescription = {
         'width': 720,
         'height': 480,

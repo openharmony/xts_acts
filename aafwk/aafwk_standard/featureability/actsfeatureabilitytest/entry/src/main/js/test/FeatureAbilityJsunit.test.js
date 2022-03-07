@@ -16,7 +16,10 @@ import featureAbility from '@ohos.ability.featureAbility'
 import wantconstant from '@ohos.ability.wantConstant'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import commonEvent from '@ohos.commonEvent'
-import wantConstant from '@ohos.ability.wantConstant'
+import notification from '@ohos.notification';
+import wantAgent from '@ohos.wantAgent';
+import particleAbility from '@ohos.ability.particleAbility'
+import backgroundTaskManager from '@ohos.backgroundTaskManager'
 
 const START_ABILITY_TIMEOUT = 4000;
 const TERMINATE_ABILITY_TIMEOUT = 1000;
@@ -81,6 +84,380 @@ var subscriberInfo_ACTS_GetCallingBundle_0100 = {
 };
 
 describe('ActsFeatureAbilityTest', function () {
+
+    beforeAll(function() {
+
+        /*
+         * @tc.setup: setup invoked before all testcases
+         */
+         console.info('beforeAll called')
+    })
+
+    afterAll(function() {
+
+        /*
+         * @tc.teardown: teardown invoked after all testcases
+         */
+         console.info('afterAll called')
+    })
+
+    beforeEach(function() {
+
+        /*
+         * @tc.setup: setup invoked before each testcases
+         */
+         console.info('beforeEach called')
+    })
+
+    afterEach(function() {
+
+        /*
+         * @tc.teardown: teardown invoked after each testcases
+         */
+         console.info('afterEach called')
+         particleAbility.cancelBackgroundRunning();
+         setTimeout(() => {}, 500);
+         backgroundTaskManager.stopBackgroundRunning(featureAbility.getContext());
+         setTimeout(() => {}, 500);
+    })
+
+    /*
+     * @tc.name:Acts_ContinuousTask_0100
+     * @tc.desc:verify new startBackgroundrunning interface promise mode work properly
+     * @tc.type: FUNC
+     * @tc.require: SR000GGT7U AR000GH6ER AR000GH6EM AR000GH6EN AR000GH6EO
+     */
+    it("Acts_ContinuousTask_0100", 0, async function (done) {
+        console.log("Acts_ContinuousTask_0100 start");
+        let wantAgentInfo = {
+            wants: [
+                {
+                    bundleName: "com.example.actsfeatureabilitytest",
+                    abilityName: "com.example.actsfeatureabilitytest.MainAbility"
+                }
+            ],
+            operationType: 2,
+            requestCode: 0,
+            wantAgentFlags: [3]
+        };
+        wantAgent.getWantAgent(wantAgentInfo).then((data) => {
+            backgroundTaskManager.startBackgroundRunning(featureAbility.getContext(),
+                backgroundTaskManager.BackgroundMode.DATA_TRANSFER, data).then(() => {
+                console.log("Acts_ContinuousTask_0100 startBackgroundRunning success");
+                expect(true).assertTrue();
+                setTimeout(() => {
+                    done();
+                }, 500);
+            }).catch((err) => {
+                expect(false).assertTrue();
+                console.log("Acts_ContinuousTask_0100 startBackgroundRunning failure");
+                setTimeout(() => {
+                    done();
+                }, 500);
+            });
+        });
+    })
+
+    /*
+     * @tc.name:Acts_ContinuousTask_0200
+     * @tc.desc:verify new startBackgroundrunning interface callback mode work properly
+     * @tc.type: FUNC
+     * @tc.require: SR000GGT7T AR000GH6ER AR000GH6EP AR000GJ9PR AR000GH6G8
+     */
+    it("Acts_ContinuousTask_0200", 0, async function (done) {
+        console.log("Acts_ContinuousTask_0200 start");
+        function conTaskCallback(err, data) {
+            if (err) {
+                console.info('Acts_ContinuousTask_0200 startBackgroundRunning failed');
+                expect(false).assertTrue();
+            } else {
+                console.info('Acts_ContinuousTask_0200 startBackgroundRunning succeed');
+                expect(true).assertTrue();
+            }
+            setTimeout(()=>{
+                done();
+            }, 500);
+        }
+        let wantAgentInfo = {
+            wants: [
+                {
+                    bundleName: "com.example.actsfeatureabilitytest",
+                    abilityName: "com.example.actsfeatureabilitytest.MainAbility"
+                }
+            ],
+            operationType: 2,
+            requestCode: 0,
+            wantAgentFlags: [3]
+        };
+        wantAgent.getWantAgent(wantAgentInfo).then((data) => {
+            backgroundTaskManager.startBackgroundRunning(featureAbility.getContext(),
+                backgroundTaskManager.BackgroundMode.DATA_TRANSFER, data, conTaskCallback);
+        });
+    })
+
+    /*
+     * @tc.name:Acts_ContinuousTask_0300
+     * @tc.desc:verify old startBackgroundrunning interface promise mode work properly
+     * @tc.type: FUNC
+     * @tc.require: SR000GGT7V AR000GH6ER AR000GH6EM AR000GH6G9 AR000GH56K
+     */
+    it("Acts_ContinuousTask_0300", 0, async function (done) {
+        console.log("Acts_ContinuousTask_0300 start");
+        let wantAgentInfo = {
+            wants: [
+                {
+                    bundleName: "com.example.actsfeatureabilitytest",
+                    abilityName: "com.example.actsfeatureabilitytest.MainAbility"
+                }
+            ],
+            operationType: 2,
+            requestCode: 0,
+            wantAgentFlags: [3]
+        };
+        wantAgent.getWantAgent(wantAgentInfo).then((data) => {
+            let basicContent = {
+                title: "title",
+                text: "text"
+            };
+
+            let notificationContent = {
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+                normal: basicContent
+            };
+
+            let request = {
+                content: notificationContent,
+                wantAgent: data
+            }
+
+            let id = 1;
+
+            particleAbility.startBackgroundRunning(id, request).then((data) => {
+                console.log("Acts_ContinuousTask_0300 startBackgroundRunning success");
+                expect(true).assertTrue();
+                setTimeout(() => {
+                    done();
+                }, 500);
+            }).catch((err) => {
+                expect(false).assertTrue();
+                console.log("Acts_ContinuousTask_0300 startBackgroundRunning failure");
+                setTimeout(() => {
+                    done();
+                }, 500);
+            });
+        });
+    })
+
+    /*
+     * @tc.name:Acts_ContinuousTask_0400
+     * @tc.desc:verify old startBackgroundrunning interface callback mode work properly
+     * @tc.type: FUNC
+     * @tc.require: SR000GGT81 AR000GH6ER AR000GH6EM AR000GH6G9 AR000GH6ET
+     */
+    it("Acts_ContinuousTask_0400", 0, async function (done) {
+        console.log("Acts_ContinuousTask_0400 start");
+        function conTaskCallback(err, data) {
+            if (err) {
+                console.info('Acts_ContinuousTask_0400 startBackgroundRunning failure');
+                expect(false).assertTrue();
+            } else {
+                console.info('Acts_ContinuousTask_0400 startBackgroundRunning success');
+                expect(true).assertTrue();
+            }
+            setTimeout(()=>{
+                done();
+            }, 500);
+        }
+        let wantAgentInfo = {
+            wants: [
+                {
+                    bundleName: "com.example.actsfeatureabilitytest",
+                    abilityName: "com.example.actsfeatureabilitytest.MainAbility"
+                }
+            ],
+            operationType: 2,
+            requestCode: 0,
+            wantAgentFlags: [3]
+        };
+        wantAgent.getWantAgent(wantAgentInfo).then((data) => {
+            let basicContent = {
+                title: "title",
+                text: "text"
+            };
+
+            let notificationContent = {
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+                normal: basicContent
+            };
+
+            let request = {
+                content: notificationContent,
+                wantAgent: data
+            }
+
+            let id = 1;
+
+            particleAbility.startBackgroundRunning(id, request, conTaskCallback);
+        });
+    })
+
+    /*
+     * @tc.name:Acts_ContinuousTask_0500
+     * @tc.desc:verify new api stopBackgroundrunning interface promise mode work properly
+     * @tc.type: FUNC
+     * @tc.require: SR000GGT7U AR000GH6ES AR000GH6EM AR000GH6EN AR000GH6EO
+     */
+    it("Acts_ContinuousTask_0500", 0, async function (done) {
+        console.log("Acts_ContinuousTask_0500 start");
+        let wantAgentInfo = {
+            wants: [
+                {
+                    bundleName: "com.example.actsfeatureabilitytest",
+                    abilityName: "com.example.actsfeatureabilitytest.MainAbility"
+                }
+            ],
+            operationType: 2,
+            requestCode: 0,
+            wantAgentFlags: [3]
+        };
+        wantAgent.getWantAgent(wantAgentInfo).then((data) => {
+            backgroundTaskManager.startBackgroundRunning(featureAbility.getContext(),
+                backgroundTaskManager.BackgroundMode.DATA_TRANSFER, data).then((data) => {
+                backgroundTaskManager.stopBackgroundRunning(featureAbility.getContext()).then((data) => {
+                    console.log("Acts_ContinuousTask_0500 cancelBackgroundRunning success");
+                    expect(true).assertTrue();
+                    setTimeout(() => {
+                        done();
+                    }, 500);
+                }).catch((err) => {
+                    expect(false).assertTrue();
+                    console.log("Acts_ContinuousTask_0500 cancelBackgroundRunning failure");
+                    setTimeout(() => {
+                        done();
+                    }, 500);
+                });
+            })
+        });
+    })
+
+    /*
+        * @tc.name:Acts_ContinuousTask_0600
+        * @tc.desc:verify new api stopBackgroundrunning interface callback mode work properly
+        * @tc.type: FUNC
+        * @tc.require: SR000GGT7T AR000GH6ES AR000GH6EP AR000GJ9PR AR000GH6G8
+        */
+    it("Acts_ContinuousTask_0600", 0, async function (done) {
+        console.log("Acts_ContinuousTask_0600 start");
+        function conTaskCallback(err, data) {
+            if (err) {
+                console.info('Acts_ContinuousTask_0600 startBackgroundRunning failure');
+                expect(false).assertTrue();
+            } else {
+                console.info('Acts_ContinuousTask_0600 startBackgroundRunning success');
+                expect(true).assertTrue();
+            }
+            setTimeout(()=>{
+                done();
+            }, 500);
+        }
+        let wantAgentInfo = {
+            wants: [
+                {
+                    bundleName: "com.example.actsfeatureabilitytest",
+                    abilityName: "com.example.actsfeatureabilitytest.MainAbility"
+                }
+            ],
+            operationType: 2,
+            requestCode: 0,
+            wantAgentFlags: [3]
+        };
+        wantAgent.getWantAgent(wantAgentInfo).then((data) => {
+            backgroundTaskManager.startBackgroundRunning(featureAbility.getContext(),
+                backgroundTaskManager.BackgroundMode.DATA_TRANSFER, data).then((data) => {
+                backgroundTaskManager.stopBackgroundRunning(featureAbility.getContext(), conTaskCallback);
+            })
+        });
+    })
+
+    /*
+     * @tc.name:Acts_ContinuousTask_0700
+     * @tc.desc:verify old api cancelBackgroundrunning interface promise mode work properly
+     * @tc.type: FUNC
+     * @tc.require: SR000GGT7V AR000GH6ES AR000GH6EM AR000GH6G9 AR000GH56K
+     */
+    it("Acts_ContinuousTask_0700", 0, async function (done) {
+        console.log("Acts_ContinuousTask_0700 start");
+        let wantAgentInfo = {
+            wants: [
+                {
+                    bundleName: "com.example.actsfeatureabilitytest",
+                    abilityName: "com.example.actsfeatureabilitytest.MainAbility"
+                }
+            ],
+            operationType: 2,
+            requestCode: 0,
+            wantAgentFlags: [3]
+        };
+        await wantAgent.getWantAgent(wantAgentInfo).then((data) => {
+            particleAbility.startBackgroundRunning(data);
+            setTimeout(()=>{
+            }, 500);
+        });
+
+        particleAbility.cancelBackgroundRunning().then(() => {
+            console.log("Acts_ContinuousTask_0700 cancelBackgroundRunning success");
+            expect(true).assertTrue();
+            setTimeout(() => {
+                done();
+            }, 500);
+        }).catch( (err) => {
+            expect(false).assertTrue();
+            console.log("Acts_ContinuousTask_0700 cancelBackgroundRunning failure");
+            setTimeout(() => {
+                done();
+            }, 500);
+        });
+    })
+
+    /*
+     * @tc.name:Acts_ContinuousTask_0800
+     * @tc.desc:verify old cancelBackgroundrunning interface callback mode work properly
+     * @tc.type: FUNC
+     * @tc.require: SR000GGT81 AR000GH6ES AR000GH6EM AR000GH6G9 AR000GH6ET
+     */
+    it("Acts_ContinuousTask_0800", 0, async function (done) {
+        console.log("Acts_ContinuousTask_0800 start");
+        function conTaskCallback(err, data) {
+            if (err) {
+                console.info('Acts_ContinuousTask_0800 startBackgroundRunning failure');
+                expect(false).assertTrue();
+            } else {
+                console.info('Acts_ContinuousTask_0800 startBackgroundRunning success');
+                expect(true).assertTrue();
+            }
+            setTimeout(()=>{
+                done();
+            }, 500);
+        }
+        let wantAgentInfo = {
+            wants: [
+                {
+                    bundleName: "com.example.actsfeatureabilitytest",
+                    abilityName: "com.example.actsfeatureabilitytest.MainAbility"
+                }
+            ],
+            operationType: 2,
+            requestCode: 0,
+            wantAgentFlags: [3]
+        };
+        await wantAgent.getWantAgent(wantAgentInfo).then((data) => {
+            particleAbility.startBackgroundRunning(data);
+            setTimeout(()=>{
+            }, 500);
+        });
+
+        particleAbility.cancelBackgroundRunning(conTaskCallback);
+    })
 
     /**
      * @tc.number: ACTS_wantConstant_0100

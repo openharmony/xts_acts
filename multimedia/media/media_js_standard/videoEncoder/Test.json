@@ -17,10 +17,9 @@
 		{
             "type": "ShellKit",
             "run-command": [
-                "rm -R /data/media/results",
-                "chmod 777 -R /data/media",
-                "chmod 777 /data/media/*",
-                "mkdir /data/media/results",
+                "mkdir -p /data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/results/",
+                "chmod 777 -R /data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder",
+                "chmod 777 /data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/*",
                 "setenforce 0"
             ],
             "teardown-command":[

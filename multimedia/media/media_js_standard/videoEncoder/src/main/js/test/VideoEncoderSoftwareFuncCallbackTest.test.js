@@ -31,8 +31,9 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
     let stopBuffer = false;
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
-    const BASIC_PATH = '/data/media/results/';
-
+    const ROOT = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/results/';
+    const BASIC_PATH = ROOT + 'video_func_callback_';
+    
     beforeAll(function() {
         console.info('beforeAll case');
     })

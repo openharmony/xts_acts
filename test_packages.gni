@@ -41,6 +41,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/hiviewdfx:hiviewdfxtestacts",
   "${ACTS_ROOT}/location:location",
   "${ACTS_ROOT}/settingsdata:settingsdata",
+  "${ACTS_ROOT}/barrierfree:barrierfree",
 ]
 
 _all_test_packages_ivi = [

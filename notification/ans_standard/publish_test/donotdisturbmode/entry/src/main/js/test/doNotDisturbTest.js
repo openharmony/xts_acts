@@ -117,15 +117,15 @@ describe('ActsAnsDoNotDisturbTest', function () {
             type:notify.DoNotDisturbType.TYPE_NONE,
             begin:beginDate,
             end:endDate
-        }).then(
-            await notify.getDoNotDisturbDate().then((data)=>{
+        }).then(()=>{
+            notify.getDoNotDisturbDate().then((data)=>{
                 console.log("===>test_0400 getDoNotDisturbDate===>"+JSON.stringify(data));
                 expect(data.type).assertEqual(0);
                 expect(data.begin.toString()).assertEqual("Thu Jan 01 1970 00:00:00 GMT+0000");
                 expect(data.end.toString()).assertEqual("Thu Jan 01 1970 00:00:00 GMT+0000");
                 done();
             })
-        )
+        })
     })
 
     /*
@@ -157,14 +157,13 @@ describe('ActsAnsDoNotDisturbTest', function () {
                 console.log("===>getDoNotDisturbDate DoNotDateE===>"+DoNotDateE)
                 console.log("===>getDoNotDisturbDate beginDate===>"+data.begin)
                 console.log("===>getDoNotDisturbDate endDate===>"+data.end)
-                expect(data.begin.toString()).assertEqual(DoNotDateE);
-                expect(data.end.toString()).assertEqual(endDate);
-                await notify.setDoNotDisturbDate(
-                    {
-                        type:notify.DoNotDisturbType.TYPE_NONE,
-                        begin:beginDate,
-                        end:endDate
-                    })
+                expect(data.begin.toString()).assertEqual(DoNotDateE.toString());
+                expect(data.end.toString()).assertEqual(endDate.toString());
+                await notify.setDoNotDisturbDate({
+                    type:notify.DoNotDisturbType.TYPE_NONE,
+                    begin:beginDate,
+                    end:endDate
+                });
                 done();
             })
         })
@@ -186,8 +185,8 @@ describe('ActsAnsDoNotDisturbTest', function () {
             type:notify.DoNotDisturbType.TYPE_ONCE,
             begin:beginDate,
             end:endDate
-        }).then(
-             notify.getDoNotDisturbDate().then(async(data)=>{
+        }).then(()=>{
+            notify.getDoNotDisturbDate().then(async(data)=>{
                 console.log("===>test_0600 success===>"+JSON.stringify(data))
                 expect(data.type).assertEqual(1);
                 var DoNotDateF = new Date(beginDate.getFullYear(),
@@ -198,17 +197,16 @@ describe('ActsAnsDoNotDisturbTest', function () {
                 console.log("===>test_0600 begin===>"+DoNotDateF)
                 console.log("===>test_0600 beginDate===>"+data.begin)
                 console.log("===>test_0600 endDate===>"+data.end)
-                expect(data.begin.toString()).assertEqual(DoNotDateF);
-                expect(data.end.toString()).assertEqual(endDate);
-                await notify.setDoNotDisturbDate(
-                    {
-                        type:notify.DoNotDisturbType.TYPE_NONE,
-                        begin:beginDate,
-                        end:endDate
-                    })
+                expect(data.begin.toString()).assertEqual(DoNotDateF.toString());
+                expect(data.end.toString()).assertEqual(endDate.toString());
+                await notify.setDoNotDisturbDate({
+                    type:notify.DoNotDisturbType.TYPE_NONE,
+                    begin:beginDate,
+                    end:endDate
+                });
                 done();
             })
-        )
+        })
     })
 
     /*
@@ -240,14 +238,13 @@ describe('ActsAnsDoNotDisturbTest', function () {
                 console.log("===>0700 begin===>"+DoNotDateG)
                 console.log("===>0700 beginDate===>"+data.begin)
                 console.log("===>0700 endDate===>"+data.end)
-                expect(data.begin.toString()).assertEqual(DoNotDateG);
-                expect(data.end.toString()).assertEqual(endDate);
-                await notify.setDoNotDisturbDate(
-                    {
-                        type:notify.DoNotDisturbType.TYPE_NONE,
-                        begin:beginDate,
-                        end:endDate
-                    })
+                expect(data.begin.toString()).assertEqual(DoNotDateG.toString());
+                expect(data.end.toString()).assertEqual(endDate.toString());
+                await notify.setDoNotDisturbDate({
+                    type:notify.DoNotDisturbType.TYPE_NONE,
+                    begin:beginDate,
+                    end:endDate
+                });
                 done();
             })
         })
@@ -271,8 +268,8 @@ describe('ActsAnsDoNotDisturbTest', function () {
             type:notify.DoNotDisturbType.TYPE_DAILY,
             begin:beginDate,
             end:endDate
-        }).then(
-             notify.getDoNotDisturbDate().then(async(data)=>{
+        }).then(()=>{
+            notify.getDoNotDisturbDate().then(async(data)=>{
                 console.log("===>test_0800 success===>"+JSON.stringify(data))
                 expect(data.type).assertEqual(2);
                 var DoNotDateH = new Date(beginDate.getFullYear(),
@@ -283,17 +280,16 @@ describe('ActsAnsDoNotDisturbTest', function () {
                 console.log("===>0800 begin===>"+DoNotDateH)
                 console.log("===>0800 beginDate===>"+data.begin)
                 console.log("===>0800 endDate===>"+data.end)
-                expect(data.begin.toString()).assertEqual(DoNotDateH);
-                expect(data.end.toString()).assertEqual(endDate);
-                await notify.setDoNotDisturbDate(
-                    {
-                        type:notify.DoNotDisturbType.TYPE_NONE,
-                        begin:beginDate,
-                        end:endDate
-                    })
+                expect(data.begin.toString()).assertEqual(DoNotDateH.toString());
+                expect(data.end.toString()).assertEqual(endDate.toString());
+                await notify.setDoNotDisturbDate({
+                    type:notify.DoNotDisturbType.TYPE_NONE,
+                    begin:beginDate,
+                    end:endDate
+                });
                 done();
             })
-        )
+        })
     })
 
     /*
@@ -325,14 +321,13 @@ describe('ActsAnsDoNotDisturbTest', function () {
                 console.log("===>test_0900 begin===>"+DoNotDateI)
                 console.log("===>test_0900 beginDate===>"+data.begin)
                 console.log("===>test_0900 endDate===>"+data.end)
-                expect(data.begin.toString()).assertEqual(DoNotDateI);
-                expect(data.end.toString()).assertEqual(endDate);
-                await notify.setDoNotDisturbDate(
-                    {
-                        type:notify.DoNotDisturbType.TYPE_NONE,
-                        begin:beginDate,
-                        end:endDate
-                    })
+                expect(data.begin.toString()).assertEqual(DoNotDateI.toString());
+                expect(data.end.toString()).assertEqual(endDate.toString());
+                await notify.setDoNotDisturbDate({
+                    type:notify.DoNotDisturbType.TYPE_NONE,
+                    begin:beginDate,
+                    end:endDate
+                });
                 done();
             })
         })
@@ -356,8 +351,8 @@ describe('ActsAnsDoNotDisturbTest', function () {
             type:notify.DoNotDisturbType.TYPE_CLEARLY,
             begin:beginDate,
             end:endDate
-        }).then(
-             notify.getDoNotDisturbDate().then(async(data)=>{
+        }).then(()=>{
+            notify.getDoNotDisturbDate().then(async(data)=>{
                 console.log("===>test_1000 getDoNotDisturbDate===>"+JSON.stringify(data))
                 expect(data.type).assertEqual(3);
                 var DoNotDateJ = new Date(beginDate.getFullYear(),
@@ -368,17 +363,16 @@ describe('ActsAnsDoNotDisturbTest', function () {
                 console.log("===>test_1000 begin===>"+DoNotDateJ)
                 console.log("===>test_1000 beginDate===>"+data.begin)
                 console.log("===>test_1000 endDate===>"+data.end)
-                expect(data.begin.toString()).assertEqual(DoNotDateJ);
-                expect(data.end.toString()).assertEqual(endDate);
-                await notify.setDoNotDisturbDate(
-                    {
-                        type:notify.DoNotDisturbType.TYPE_NONE,
-                        begin:beginDate,
-                        end:endDate
-                    })
+                expect(data.begin.toString()).assertEqual(DoNotDateJ.toString());
+                expect(data.end.toString()).assertEqual(endDate.toString());
+                await notify.setDoNotDisturbDate({
+                    type:notify.DoNotDisturbType.TYPE_NONE,
+                    begin:beginDate,
+                    end:endDate
+                });
                 done();
             })
-        )
+        })
     })
 
     /*
@@ -405,14 +399,13 @@ describe('ActsAnsDoNotDisturbTest', function () {
                                           beginDate.getDate(),
                                           beginDate.getHours(),
                                           beginDate.getMinutes())
-                expect(data.begin.toString()).assertEqual(DoNotDateK);
-                expect(data.end.toString()).assertEqual(DoNotDateK);
-                await notify.setDoNotDisturbDate(
-                    {
-                        type:notify.DoNotDisturbType.TYPE_NONE,
-                        begin:beginDate,
-                        end:endDate
-                    })
+                expect(data.begin.toString()).assertEqual(DoNotDateK.toString());
+                expect(data.end.toString()).assertEqual(DoNotDateK.toString());
+                await notify.setDoNotDisturbDate({
+                    type:notify.DoNotDisturbType.TYPE_NONE,
+                    begin:beginDate,
+                    end:endDate
+                });
                 done();
             })
         })
@@ -432,8 +425,8 @@ describe('ActsAnsDoNotDisturbTest', function () {
             type:notify.DoNotDisturbType.TYPE_DAILY,
             begin:beginDate,
             end:endDate
-        }).then(
-            await notify.getDoNotDisturbDate(async(err,data)=>{
+        }).then(()=>{
+            notify.getDoNotDisturbDate(async(err,data)=>{
                 console.log("===>test_1200 getDoNotDisturbDate===>"+err.code+JSON.stringify(data));
                 expect(data.type).assertEqual(2);
                 var DoNotDateL = new Date(beginDate.getFullYear(),
@@ -441,24 +434,22 @@ describe('ActsAnsDoNotDisturbTest', function () {
                                           beginDate.getDate(),
                                           beginDate.getHours(),
                                           beginDate.getMinutes())
-                expect(data.begin.toString()).assertEqual(DoNotDateL);
-                expect(data.end.toString()).assertEqual(DoNotDateL);
-                await notify.setDoNotDisturbDate(
-                    {
-                        type:notify.DoNotDisturbType.TYPE_NONE,
-                        begin:beginDate,
-                        end:endDate
-                    })
-                done();
-            })
-        ).catch(async(err)=>{
-            console.log("===>test_1200 getDoNotDisturbDate fail===>"+JSON.stringify(err))
-            await notify.setDoNotDisturbDate(
-                {
+                expect(data.begin.toString()).assertEqual(DoNotDateL.toString());
+                expect(data.end.toString()).assertEqual(DoNotDateL.toString());
+                await notify.setDoNotDisturbDate({
                     type:notify.DoNotDisturbType.TYPE_NONE,
                     begin:beginDate,
                     end:endDate
-                })
+                });
+                done();
+            })
+        }).catch(async(err)=>{
+            console.log("===>test_1200 getDoNotDisturbDate fail===>"+JSON.stringify(err))
+            await notify.setDoNotDisturbDate({
+                type:notify.DoNotDisturbType.TYPE_NONE,
+                begin:beginDate,
+                end:endDate
+            });
             done();
         })
     })
@@ -491,14 +482,13 @@ describe('ActsAnsDoNotDisturbTest', function () {
                                           beginDate.getDate(),
                                           beginDate.getHours(),
                                           beginDate.getMinutes())
-                expect(data.begin.toString()).assertEqual(DoNotDateM);
-                expect(data.end.toString()).assertEqual(endDate);
-                await notify.setDoNotDisturbDate(
-                    {
-                        type:notify.DoNotDisturbType.TYPE_NONE,
-                        begin:beginDate,
-                        end:endDate
-                    })
+                expect(data.begin.toString()).assertEqual(DoNotDateM.toString());
+                expect(data.end.toString()).assertEqual(endDate.toString());
+                await notify.setDoNotDisturbDate({
+                    type:notify.DoNotDisturbType.TYPE_NONE,
+                    begin:beginDate,
+                    end:endDate
+                });
                 done();
             })
         })
@@ -522,8 +512,8 @@ describe('ActsAnsDoNotDisturbTest', function () {
             type:notify.DoNotDisturbType.TYPE_DAILY,
             begin:beginDate,
             end:endDate
-        }).then(
-            await notify.getDoNotDisturbDate(async(err,data)=>{
+        }).then(()=>{
+            notify.getDoNotDisturbDate(async(err,data)=>{
                 console.log("===>test_1400 getDoNotDisturbDate===>"+err.code+JSON.stringify(data))
                 expect(data.type).assertEqual(2);
                 var DoNotDateN = new Date(beginDate.getFullYear(),
@@ -531,24 +521,22 @@ describe('ActsAnsDoNotDisturbTest', function () {
                                           beginDate.getDate(),
                                           beginDate.getHours(),
                                           beginDate.getMinutes())
-                expect(data.begin.toString()).assertEqual(DoNotDateN);
-                expect(data.end.toString()).assertEqual(endDate);
-                await notify.setDoNotDisturbDate(
-                    {
-                        type:notify.DoNotDisturbType.TYPE_NONE,
-                        begin:beginDate,
-                        end:endDate
-                    })
-                done();
-            })
-        ).catch(async(err)=>{
-            console.log("===>test_1400 getDoNotDisturbDate fail===>"+JSON.stringify(err))
-            await notify.setDoNotDisturbDate(
-                {
+                expect(data.begin.toString()).assertEqual(DoNotDateN.toString());
+                expect(data.end.toString()).assertEqual(endDate.toString());
+                await notify.setDoNotDisturbDate({
                     type:notify.DoNotDisturbType.TYPE_NONE,
                     begin:beginDate,
                     end:endDate
-                })
+                });
+                done();
+            })
+        }).catch(async(err)=>{
+            console.log("===>test_1400 getDoNotDisturbDate fail===>"+JSON.stringify(err))
+            await notify.setDoNotDisturbDate({
+                type:notify.DoNotDisturbType.TYPE_NONE,
+                begin:beginDate,
+                end:endDate
+            });
             done();
         })
     })
@@ -570,12 +558,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
         },async(err) => {
             console.log("===>ActsSetDoNotDisturbTest_test_1500 success===>"+err.code);
             expect(err.code).assertEqual(ERR_ANS_INVALID_PARAM);
-            await notify.setDoNotDisturbDate(
-                {
-                    type:notify.DoNotDisturbType.TYPE_NONE,
-                    begin:beginDate,
-                    end:endDate
-                })
+            await notify.setDoNotDisturbDate({
+                type:notify.DoNotDisturbType.TYPE_NONE,
+                begin:beginDate,
+                end:endDate
+            });
             done();
         })
     })
@@ -597,12 +584,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
         }).then().catch(async(err)=>{
             console.log("===>test_1600 fail===>"+JSON.stringify(err));
             expect(err.code).assertEqual(ERR_ANS_INVALID_PARAM);
-            await notify.setDoNotDisturbDate(
-                {
-                    type:notify.DoNotDisturbType.TYPE_NONE,
-                    begin:beginDate,
-                    end:endDate
-                })
+            await notify.setDoNotDisturbDate({
+                type:notify.DoNotDisturbType.TYPE_NONE,
+                begin:beginDate,
+                end:endDate
+            });
             done();
         })
     })
@@ -624,12 +610,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
         },async(err)=>{
             console.log("===>test_1700 setDoNotDisturbDate===>"+JSON.stringify(err));
             expect(err.code).assertEqual(ERR_ANS_INVALID_PARAM);
-            await notify.setDoNotDisturbDate(
-                {
-                    type:notify.DoNotDisturbType.TYPE_NONE,
-                    begin:beginDate,
-                    end:endDate
-                })
+            await notify.setDoNotDisturbDate({
+                type:notify.DoNotDisturbType.TYPE_NONE,
+                begin:beginDate,
+                end:endDate
+            });
             done();
       })
     })
@@ -651,12 +636,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
         }).then().catch(async(err)=>{
             console.log("===>test_1800 setDoNotDisturbDate fail===>"+JSON.stringify(err))
             expect(err.code).assertEqual(ERR_ANS_INVALID_PARAM);
-            await notify.setDoNotDisturbDate(
-                {
-                    type:notify.DoNotDisturbType.TYPE_NONE,
-                    begin:beginDate,
-                    end:endDate
-                })
+            await notify.setDoNotDisturbDate({
+                type:notify.DoNotDisturbType.TYPE_NONE,
+                begin:beginDate,
+                end:endDate
+            });
             done();
         })
     })
@@ -718,8 +702,8 @@ describe('ActsAnsDoNotDisturbTest', function () {
                                           beginDate.getDate(),
                                           beginDate.getHours(),
                                           beginDate.getMinutes())
-                expect(data.begin.toString()).assertEqual(DoNotDateO);
-                expect(data.end.toString()).assertEqual(endDate);
+                expect(data.begin.toString()).assertEqual(DoNotDateO.toString());
+                expect(data.end.toString()).assertEqual(endDate.toString());
                 await notify.getDoNotDisturbDate(async(err,data)=>{
                     console.log("===>test_2100 getDoNotDisturbDate===>"+err.code+JSON.stringify(data))
                     notify.unsubscribe(subInfo, unSubscribeCallbacka);
@@ -729,14 +713,13 @@ describe('ActsAnsDoNotDisturbTest', function () {
                                               beginDate.getDate(),
                                               beginDate.getHours(),
                                               beginDate.getMinutes())
-                    expect(data.begin.toString()).assertEqual(DoNotDateP);
-                    expect(data.end.toString()).assertEqual(endDate);
-                    await notify.setDoNotDisturbDate(
-                        {
-                            type:notify.DoNotDisturbType.TYPE_NONE,
-                            begin:beginDate,
-                            end:endDate
-                        })
+                    expect(data.begin.toString()).assertEqual(DoNotDateP.toString());
+                    expect(data.end.toString()).assertEqual(endDate.toString());
+                    await notify.setDoNotDisturbDate({
+                        type:notify.DoNotDisturbType.TYPE_NONE,
+                        begin:beginDate,
+                        end:endDate
+                    });
                     done();
                 })
             },
@@ -773,8 +756,8 @@ describe('ActsAnsDoNotDisturbTest', function () {
                                           beginDate.getDate(),
                                           beginDate.getHours(),
                                           beginDate.getMinutes())
-                expect(data.begin.toString()).assertEqual(DoNotDateQ);
-                expect(data.end.toString()).assertEqual(endDate);
+                expect(data.begin.toString()).assertEqual(DoNotDateQ.toString());
+                expect(data.end.toString()).assertEqual(endDate.toString());
                 await notify.getDoNotDisturbDate().then(async(data)=>{
                     console.log("===>test_2200 getDoNotDisturbDate===>"+JSON.stringify(data));
                     notify.unsubscribe(subInfo, unSubscribeCallbackb);
@@ -784,14 +767,13 @@ describe('ActsAnsDoNotDisturbTest', function () {
                                               beginDate.getDate(),
                                               beginDate.getHours(),
                                               beginDate.getMinutes())
-                    expect(data.begin.toString()).assertEqual(DoNotDateR);
-                    expect(data.end.toString()).assertEqual(endDate);
-                    await notify.setDoNotDisturbDate(
-                        {
-                            type:notify.DoNotDisturbType.TYPE_NONE,
-                            begin:beginDate,
-                            end:endDate
-                        })
+                    expect(data.begin.toString()).assertEqual(DoNotDateR.toString());
+                    expect(data.end.toString()).assertEqual(endDate.toString());
+                    await notify.setDoNotDisturbDate({
+                        type:notify.DoNotDisturbType.TYPE_NONE,
+                        begin:beginDate,
+                        end:endDate
+                    });
                     done();
                 })
             },
@@ -801,9 +783,9 @@ describe('ActsAnsDoNotDisturbTest', function () {
             type:notify.DoNotDisturbType.TYPE_CLEARLY,
             begin:beginDate,
             end:endDate
-        }).then(
+        }).then(()=>{
             console.log("===>test_2200 setDoNotDisturbDate===>")
-        )
+        })
     })
 
     /*
@@ -928,12 +910,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
             console.info("===test_2500 setTimeout===>");
             await notify.unsubscribe(subscriber);
             console.info("===test_2500 setTimeout unsubscribe===>");
-            await notify.setDoNotDisturbDate(
-                {
-                    type:notify.DoNotDisturbType.TYPE_NONE,
-                    begin:beginDate,
-                    end:endDate
-                });
+            await notify.setDoNotDisturbDate({
+                type:notify.DoNotDisturbType.TYPE_NONE,
+                begin:beginDate,
+                end:endDate
+            });
             console.info("====test_2500 setDoNotDisturbDate removeSlot============>");
             await notify.removeSlot(notify.SlotType.SOCIAL_COMMUNICATION);
             console.info("====test_2500 setTimeout removeSlot============>");
@@ -1030,12 +1011,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
             console.info("====test_2600 setTimeout unsubscribe====>");
             await notify.removeSlot(notify.SlotType.SOCIAL_COMMUNICATION);
             console.info("====test_2600 setTimeout removeSlot============>");
-            await notify.setDoNotDisturbDate(
-                {
-                    type:notify.DoNotDisturbType.TYPE_NONE,
-                    begin:beginDate,
-                    end:endDate
-                })
+            await notify.setDoNotDisturbDate({
+                type:notify.DoNotDisturbType.TYPE_NONE,
+                begin:beginDate,
+                end:endDate
+            });
             console.info("====test_2600 setTimeout setDoNotDisturbDate============>");
             done();
         }),500);
@@ -1130,12 +1110,11 @@ describe('ActsAnsDoNotDisturbTest', function () {
             console.info("====test_2700 setTimeout unsubscribe============>");
             await notify.removeSlot(notify.SlotType.SOCIAL_COMMUNICATION);
             console.info("====test_2700 setTimeout removeSlot============>");
-            await notify.setDoNotDisturbDate(
-                {
-                    type:notify.DoNotDisturbType.TYPE_NONE,
-                    begin:beginDate,
-                    end:endDate
-                })
+            await notify.setDoNotDisturbDate({
+                type:notify.DoNotDisturbType.TYPE_NONE,
+                begin:beginDate,
+                end:endDate
+            });
             done();
         }),500);
     })
@@ -1228,15 +1207,14 @@ describe('ActsAnsDoNotDisturbTest', function () {
             await notify.unsubscribe(subscriber);
             console.info("======test_2800 setTimeout unsubscribe============>");
             await notify.removeSlot(notify.SlotType.SOCIAL_COMMUNICATION);
-            await notify.setDoNotDisturbDate(
-                {
-                    type:notify.DoNotDisturbType.TYPE_NONE,
-                    begin:beginDate,
-                    end:endDate
-                })
+            await notify.setDoNotDisturbDate({
+                type:notify.DoNotDisturbType.TYPE_NONE,
+                begin:beginDate,
+                end:endDate
+            });
             done();
         }),500);
-      })
     })
+})
 
 
