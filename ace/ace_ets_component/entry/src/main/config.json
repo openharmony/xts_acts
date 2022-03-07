@@ -152,9 +152,6 @@
           "pages/lifecycle",
           "pages/pageTransition2",
           "pages/navigation",
-          "pages/loadingProgress",
-          "pages/radio",
-          "pages/row",
           "pages/stateStyle",
           "pages/focus"
         ],
