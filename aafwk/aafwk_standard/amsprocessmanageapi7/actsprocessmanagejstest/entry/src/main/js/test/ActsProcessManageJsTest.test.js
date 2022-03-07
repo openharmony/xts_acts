@@ -223,12 +223,12 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
     }
 
     /*
-    * @tc.number: ACTS_ProcessManage_killProcessesByBundleName_0100
+    * @tc.number: ACTS_ProcessManage_killProcessesByBundleNameFA_0100
     * @tc.name: The system application stops itself
     * @tc.desc: Check the process was killed (by promise)
     */
-    it('ACTS_ProcessManage_killProcessesByBundleName_0100', 0, async function (done) {
-        console.log('ACTS_ProcessManage_killProcessesByBundleName_0100 begin');
+    it('ACTS_ProcessManage_killProcessesByBundleNameFA_0100', 0, async function (done) {
+        console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0100 begin');
 
         await featureAbility.startAbility(
             {
@@ -246,27 +246,27 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
 
         setTimeout(async function () {
             var processexist = await checkPromiseExistDelay(systemAProcessName);
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0100 processexist:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0100 processexist:====>"
                 + JSON.stringify(processexist));
             expect(processexist).assertEqual(false);
 
             var missionexist = await checkPromiseMissionExistDelay(systemAAbilityName)
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0100 missionexist:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0100 missionexist:====>"
                 + JSON.stringify(missionexist));
             expect(missionexist).assertEqual(false);
 
-            console.log('ACTS_ProcessManage_killProcessesByBundleName_0100 end');
+            console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0100 end');
             done();
         }, 4000);
     })
 
     /*
-    * @tc.number: ACTS_ProcessManage_killProcessesByBundleName_0200
+    * @tc.number: ACTS_ProcessManage_killProcessesByBundleNameFA_0200
     * @tc.name: The system application stops other system application
     * @tc.desc: Check the process was killed (by promise)
     */
-    it('ACTS_ProcessManage_killProcessesByBundleName_0200', 0, async function (done) {
-        console.log('ACTS_ProcessManage_killProcessesByBundleName_0200 begin');
+    it('ACTS_ProcessManage_killProcessesByBundleNameFA_0200', 0, async function (done) {
+        console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0200 begin');
         var subscriber;
 
         await featureAbility.startAbility(
@@ -281,20 +281,20 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
                     }
                 },
             }, (error, data) => {
-                console.log('ACTS_ProcessManage_killProcessesByBundleName_0200 - startAbility: '
+                console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0200 - startAbility: '
                     + JSON.stringify(error) + ", " + JSON.stringify(data))
             }
         );
         await commonEvent.createSubscriber(subscribeInfo).then(async (data) => {
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0200 Create Subscriber data====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0200 Create Subscriber data====>"
                 + data);
             subscriber = data;
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0200 subscriber====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0200 subscriber====>"
                 + JSON.stringify(subscriber));
             await commonEvent.subscribe(subscriber, subscribeCallBack);
         });
         async function subscribeCallBack(err, data) {
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0200 Subscribe CallBack data:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0200 Subscribe CallBack data:====>"
                 + JSON.stringify(data));
             expect(data.event).assertEqual(eventFromSystemA);
             expect(data.data).assertEqual('0');
@@ -302,29 +302,29 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
 
         }
         async function unSubscribeCallback() {
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0200 UnSubscribe CallBack====>");
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0200 UnSubscribe CallBack====>");
             var processexist = await checkPromiseExistDelay(systemBProcessName);
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0200 processexist:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0200 processexist:====>"
                 + JSON.stringify(processexist));
             expect(processexist).assertEqual(false);
 
             var missionexist = await checkPromiseMissionExistDelay(systemBAbilityName)
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0200 missionexist:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0200 missionexist:====>"
                 + JSON.stringify(missionexist));
             expect(missionexist).assertEqual(false);
 
-            console.log('ACTS_ProcessManage_killProcessesByBundleName_0200 end');
+            console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0200 end');
             done();
         }
     })
 
     /*
-    * @tc.number: ACTS_ProcessManage_killProcessesByBundleName_0300
+    * @tc.number: ACTS_ProcessManage_killProcessesByBundleNameFA_0300
     * @tc.name: The system application stops third-party application
     * @tc.desc: Check the process was killed (by promise)
     */
-    it('ACTS_ProcessManage_killProcessesByBundleName_0300', 0, async function (done) {
-        console.log('ACTS_ProcessManage_killProcessesByBundleName_0300 begin');
+    it('ACTS_ProcessManage_killProcessesByBundleNameFA_0300', 0, async function (done) {
+        console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0300 begin');
         var subscriber;
 
         await featureAbility.startAbility(
@@ -341,15 +341,15 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
             }
         );
         await commonEvent.createSubscriber(subscribeInfo).then(async (data) => {
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0300 Create Subscriber data====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0300 Create Subscriber data====>"
                 + data);
             subscriber = data;
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0300 subscriber====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0300 subscriber====>"
                 + JSON.stringify(subscriber));
             await commonEvent.subscribe(subscriber, subscribeCallBack);
         });
         async function subscribeCallBack(err, data) {
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0300 Subscribe CallBack data:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0300 Subscribe CallBack data:====>"
                 + JSON.stringify(data));
             expect(data.event).assertEqual(eventFromSystemA);
             expect(data.data).assertEqual('0');
@@ -357,29 +357,29 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
         }
 
         async function unSubscribeCallback() {
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0300 UnSubscribe CallBack====>");
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0300 UnSubscribe CallBack====>");
             var processexist = await checkPromiseExistDelay(vendorAProcessName);
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0300 processexist:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0300 processexist:====>"
                 + JSON.stringify(processexist));
             expect(processexist).assertEqual(false);
 
             var missionexist = await checkPromiseMissionExistDelay(vendorAAbilityName)
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0300 missionexist:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0300 missionexist:====>"
                 + JSON.stringify(missionexist));
             expect(missionexist).assertEqual(false);
 
-            console.log('ACTS_ProcessManage_killProcessesByBundleName_0300 end');
+            console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0300 end');
             done();
         }
     })
 
     /*
-    * @tc.number: ACTS_ProcessManage_killProcessesByBundleName_0400
+    * @tc.number: ACTS_ProcessManage_killProcessesByBundleNameFA_0400
     * @tc.name: The system application stops multiprocess application
     * @tc.desc: Check the process was killed (by promise)
     */
-    it('ACTS_ProcessManage_killProcessesByBundleName_0400', 0, async function (done) {
-        console.log('ACTS_ProcessManage_killProcessesByBundleName_0400 begin');
+    it('ACTS_ProcessManage_killProcessesByBundleNameFA_0400', 0, async function (done) {
+        console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0400 begin');
         var flagProcessA = 0;
         var flagProcessAMulti = 0;
         var flagMissionA = 0;
@@ -402,7 +402,7 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
         setTimeout(async function () {
 
             var processInfos = await abilitymanager.getActiveProcessInfos();
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0400 processInfos====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0400 processInfos====>"
                 + JSON.stringify(processInfos));
             for (var i = 0; i < processInfos.length; i++) {
                 if (processInfos[i].processName == systemAProcessName) {
@@ -412,9 +412,9 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
                     flagProcessAMulti++;
                 }
             }
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0400 flagProcessA====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0400 flagProcessA====>"
                 + JSON.stringify(flagProcessA));
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0400 flagProcessAMulti====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0400 flagProcessAMulti====>"
                 + JSON.stringify(flagProcessAMulti));
             expect(flagProcessA).assertEqual(0);
             expect(flagProcessAMulti).assertEqual(0);
@@ -433,25 +433,25 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
                     flagMissionAMulti++;
                 }
             }
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0400 flagMissionA====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0400 flagMissionA====>"
                 + JSON.stringify(flagMissionA));
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0400 flagMissionAMulti====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0400 flagMissionAMulti====>"
                 + JSON.stringify(flagMissionAMulti));
             expect(flagMissionA).assertEqual(0);
             expect(flagMissionAMulti).assertEqual(0);
 
-            console.log('ACTS_ProcessManage_killProcessesByBundleName_0400 end');
+            console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0400 end');
             done();
         }, 4000);
     })
 
     /*
-    * @tc.number: ACTS_ProcessManage_killProcessesByBundleName_0500
+    * @tc.number: ACTS_ProcessManage_killProcessesByBundleNameFA_0500
     * @tc.name: The system application stops itself
     * @tc.desc: Check the process was killed (by AsyncCallback)
     */
-    it('ACTS_ProcessManage_killProcessesByBundleName_0500', 0, async function (done) {
-        console.log('ACTS_ProcessManage_killProcessesByBundleName_0500 begin');
+    it('ACTS_ProcessManage_killProcessesByBundleNameFA_0500', 0, async function (done) {
+        console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0500 begin');
         await featureAbility.startAbility(
             {
                 want:
@@ -467,27 +467,27 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
         );
         setTimeout(async function () {
             var processexist = await checkPromiseExistDelay(systemAProcessName);
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0500 processexist:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0500 processexist:====>"
                 + JSON.stringify(processexist));
             expect(processexist).assertEqual(false);
 
             var missionexist = await checkPromiseMissionExistDelay(systemAAbilityName)
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0500 missionexist:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0500 missionexist:====>"
                 + JSON.stringify(missionexist));
             expect(missionexist).assertEqual(false);
 
-            console.log('ACTS_ProcessManage_killProcessesByBundleName_0500 end');
+            console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0500 end');
             done();
         }, 4000);
     })
 
     /*
-    * @tc.number: ACTS_ProcessManage_killProcessesByBundleName_0600
+    * @tc.number: ACTS_ProcessManage_killProcessesByBundleNameFA_0600
     * @tc.name: The system application stops other system application
     * @tc.desc: Check the process was killed (by AsyncCallback)
     */
-    it('ACTS_ProcessManage_killProcessesByBundleName_0600', 0, async function (done) {
-        console.log('ACTS_ProcessManage_killProcessesByBundleName_0600 begin');
+    it('ACTS_ProcessManage_killProcessesByBundleNameFA_0600', 0, async function (done) {
+        console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0600 begin');
         var subscriber;
 
         await featureAbility.startAbility(
@@ -504,15 +504,15 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
             }
         );
         await commonEvent.createSubscriber(subscribeInfo).then(async (data) => {
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0600 Create Subscriber data====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0600 Create Subscriber data====>"
                 + data);
             subscriber = data;
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0600 subscriber====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0600 subscriber====>"
                 + JSON.stringify(subscriber));
             await commonEvent.subscribe(subscriber, subscribeCallBack);
         });
         async function subscribeCallBack(err, data) {
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0600 Subscribe CallBack data:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0600 Subscribe CallBack data:====>"
                 + JSON.stringify(data));
             expect(data.event).assertEqual(eventFromSystemA);
             expect(data.data).assertEqual('0');
@@ -521,29 +521,29 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
         }
 
         async function unSubscribeCallback() {
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0600 UnSubscribe CallBack====>");
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0600 UnSubscribe CallBack====>");
             var processexist = await checkPromiseExistDelay(systemBProcessName);
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0600 processexist:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0600 processexist:====>"
                 + JSON.stringify(processexist));
             expect(processexist).assertEqual(false);
 
             var missionexist = await checkPromiseMissionExistDelay(systemBAbilityName)
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0600 missionexist:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0600 missionexist:====>"
                 + JSON.stringify(missionexist));
             expect(missionexist).assertEqual(false);
 
-            console.log('ACTS_ProcessManage_killProcessesByBundleName_0600 end');
+            console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0600 end');
             done();
         }
     })
 
     /*
-    * @tc.number: ACTS_ProcessManage_killProcessesByBundleName_0700
+    * @tc.number: ACTS_ProcessManage_killProcessesByBundleNameFA_0700
     * @tc.name: The system application stops third-party application
     * @tc.desc: Check the process was killed (by AsyncCallback)
     */
-    it('ACTS_ProcessManage_killProcessesByBundleName_0700', 0, async function (done) {
-        console.log('ACTS_ProcessManage_killProcessesByBundleName_0700 begin');
+    it('ACTS_ProcessManage_killProcessesByBundleNameFA_0700', 0, async function (done) {
+        console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0700 begin');
         var subscriber;
 
         await featureAbility.startAbility(
@@ -560,15 +560,15 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
             }
         );
         await commonEvent.createSubscriber(subscribeInfo).then(async (data) => {
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0700 Create Subscriber data====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0700 Create Subscriber data====>"
                 + data);
             subscriber = data;
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0700 subscriber====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0700 subscriber====>"
                 + JSON.stringify(subscriber));
             await commonEvent.subscribe(subscriber, subscribeCallBack);
         });
         async function subscribeCallBack(err, data) {
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0700 Subscribe CallBack data:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0700 Subscribe CallBack data:====>"
                 + JSON.stringify(data));
             expect(data.event).assertEqual(eventFromSystemA);
             expect(data.data).assertEqual('0');
@@ -577,30 +577,30 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
         }
 
         async function unSubscribeCallback() {
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0700 UnSubscribe CallBack====>");
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0700 UnSubscribe CallBack====>");
             var processexist = await checkPromiseExistDelay(vendorAProcessName);
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0700 processexist:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0700 processexist:====>"
                 + JSON.stringify(processexist));
             expect(processexist).assertEqual(false);
 
             var missionexist = await checkPromiseMissionExistDelay(vendorAAbilityName)
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0700 missionexist:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0700 missionexist:====>"
                 + JSON.stringify(missionexist));
             expect(missionexist).assertEqual(false);
 
-            console.log('ACTS_ProcessManage_killProcessesByBundleName_0700 end');
+            console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0700 end');
             done();
 
         }
     })
 
     /*
-        * @tc.number: ACTS_ProcessManage_killProcessesByBundleName_0800
+        * @tc.number: ACTS_ProcessManage_killProcessesByBundleNameFA_0800
         * @tc.name: The system application stops multiprocess application
         * @tc.desc: Check the process was killed (by AsyncCallback)
         */
-    it('ACTS_ProcessManage_killProcessesByBundleName_0800', 0, async function (done) {
-        console.log('ACTS_ProcessManage_killProcessesByBundleName_0800 begin');
+    it('ACTS_ProcessManage_killProcessesByBundleNameFA_0800', 0, async function (done) {
+        console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0800 begin');
         var flagProcessA = 0;
         var flagProcessAMulti = 0;
         var flagMissionA = 0;
@@ -623,7 +623,7 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
         setTimeout(async function () {
 
             var processInfos = await abilitymanager.getActiveProcessInfos();
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0800 processInfos====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0800 processInfos====>"
                 + JSON.stringify(processInfos));
             for (var i = 0; i < processInfos.length; i++) {
                 if (processInfos[i].processName == systemAProcessName) {
@@ -633,15 +633,15 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
                     flagProcessAMulti++;
                 }
             }
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0800 flagProcessA====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0800 flagProcessA====>"
                 + JSON.stringify(flagProcessA));
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0800 flagProcessAMulti====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0800 flagProcessAMulti====>"
                 + JSON.stringify(flagProcessAMulti));
             expect(flagProcessA).assertEqual(0);
             expect(flagProcessAMulti).assertEqual(0);
 
             var missionInfos = await missionmanager.getMissionInfos('', numMax);
-            console.debug("====>ACTS_ProcessManage ACTS_ProcessManage_killProcessesByBundleName_0800 missionInfos====>"
+            console.debug("====>ACTS_ProcessManage ACTS_ProcessManage_killProcessesByBundleNameFA_0800 missionInfos====>"
                 + JSON.stringify(missionInfos));
             for (var i = 0; i < missionInfos.length; i++) {
 
@@ -654,14 +654,14 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
                     flagMissionAMulti++;
                 }
             }
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0800 flagMissionA====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0800 flagMissionA====>"
                 + JSON.stringify(flagMissionA));
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0800 flagMissionAMulti====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0800 flagMissionAMulti====>"
                 + JSON.stringify(flagMissionAMulti));
             expect(flagMissionA).assertEqual(0);
             expect(flagMissionAMulti).assertEqual(0);
 
-            console.log('ACTS_ProcessManage_killProcessesByBundleName_0800 end');
+            console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0800 end');
             done();
         }, 4000);
 
@@ -669,23 +669,23 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
 
 
     /*
-    * @tc.number: ACTS_ProcessManage_killProcessesByBundleName_0900
+    * @tc.number: ACTS_ProcessManage_killProcessesByBundleNameFA_0900
     * @tc.name: Parameter is null
     * @tc.desc: Check the result is OK (by promise)
     */
-    it('ACTS_ProcessManage_killProcessesByBundleName_0900', 0, async function (done) {
+    it('ACTS_ProcessManage_killProcessesByBundleNameFA_0900', 0, async function (done) {
 
-        console.log('ACTS_ProcessManage_killProcessesByBundleName_0900 begin');
+        console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0900 begin');
         try {
             var result = await abilityManager.killProcessesByBundleName(null);
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0900 null result:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0900 null result:====>"
                 + JSON.stringify(result));
             expect(result == 0).assertEqual(false);
-            console.log('ACTS_ProcessManage_killProcessesByBundleName_0900 end');
+            console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0900 end');
             done();
         }
         catch (err) {
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_0900 err:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_0900 err:====>"
                 + JSON.stringify(err));
             done();
         }
@@ -693,89 +693,89 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
 
 
     /*
-    * @tc.number: ACTS_ProcessManage_killProcessesByBundleName_1000
+    * @tc.number: ACTS_ProcessManage_killProcessesByBundleNameFA_1000
     * @tc.name: Parameter is ''
     * @tc.desc: Check the result is OK (by promise)
     */
-    it('ACTS_ProcessManage_killProcessesByBundleName_1000', 0, async function (done) {
+    it('ACTS_ProcessManage_killProcessesByBundleNameFA_1000', 0, async function (done) {
 
-        console.log('ACTS_ProcessManage_killProcessesByBundleName_1000 begin');
+        console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_1000 begin');
         try {
             var result = await abilityManager.killProcessesByBundleName('');
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_1000 '' result:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_1000 '' result:====>"
                 + JSON.stringify(result));
             expect(result).assertEqual(2097215);
-            console.log('ACTS_ProcessManage_killProcessesByBundleName_1000 end');
+            console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_1000 end');
             done();
         }
         catch (err) {
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_1000 err:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_1000 err:====>"
                 + JSON.stringify(err));
             done();
         }
     })
 
     /*
-    * @tc.number: ACTS_ProcessManage_killProcessesByBundleName_1100
+    * @tc.number: ACTS_ProcessManage_killProcessesByBundleNameFA_1100
     * @tc.name: Parameter is undefined
     * @tc.desc: Check the result is OK (by promise)
     */
-    it('ACTS_ProcessManage_killProcessesByBundleName_1100', 0, async function (done) {
-        console.log('ACTS_ProcessManage_killProcessesByBundleName_1100 begin');
+    it('ACTS_ProcessManage_killProcessesByBundleNameFA_1100', 0, async function (done) {
+        console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_1100 begin');
         try {
             var result = await abilityManager.killProcessesByBundleName(undefined);
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_1100 undefined result:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_1100 undefined result:====>"
                 + JSON.stringify(result));
             expect(result == 0).assertEqual(false);
-            console.log('ACTS_ProcessManage_killProcessesByBundleName_1100 end');
+            console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_1100 end');
             done();
         }
         catch (err) {
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_1100 err:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_1100 err:====>"
                 + JSON.stringify(err));
             done();
         }
     })
 
     /*
-    * @tc.number: ACTS_ProcessManage_killProcessesByBundleName_1200
+    * @tc.number: ACTS_ProcessManage_killProcessesByBundleNameFA_1200
     * @tc.name: Stop an application that doesn't exist
     * @tc.desc: Check the result is OK (by promise)
     */
-    it('ACTS_ProcessManage_killProcessesByBundleName_1200', 0, async function (done) {
-        console.log('ACTS_ProcessManage_killProcessesByBundleName_1200 begin');
+    it('ACTS_ProcessManage_killProcessesByBundleNameFA_1200', 0, async function (done) {
+        console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_1200 begin');
         try {
             var result = await abilityManager.killProcessesByBundleName("aa.bb.notExist");
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_1200 aa.bb.notExist result:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_1200 aa.bb.notExist result:====>"
                 + JSON.stringify(result));
             expect(result).assertEqual(2097215);
-            console.log('ACTS_ProcessManage_killProcessesByBundleName_1200 end');
+            console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_1200 end');
             done();
         }
         catch (err) {
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_1200 err:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_1200 err:====>"
                 + JSON.stringify(err));
             done();
         }
     })
 
     /*
-    * @tc.number: ACTS_ProcessManage_killProcessesByBundleName_1300
+    * @tc.number: ACTS_ProcessManage_killProcessesByBundleNameFA_1300
     * @tc.name: Stop an application that exists but is not started
     * @tc.desc: Check the result is OK (by promise)
     */
-    it('ACTS_ProcessManage_killProcessesByBundleName_1300', 0, async function (done) {
-        console.log('ACTS_ProcessManage_killProcessesByBundleName_1300 begin');
+    it('ACTS_ProcessManage_killProcessesByBundleNameFA_1300', 0, async function (done) {
+        console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_1300 begin');
         try {
             var result = await abilityManager.killProcessesByBundleName(systemABundleName);
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_1300 without runnning result:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_1300 without runnning result:====>"
                 + JSON.stringify(result));
             expect(result).assertEqual(0);
-            console.log('ACTS_ProcessManage_killProcessesByBundleName_1300 end');
+            console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_1300 end');
             done();
         }
         catch (err) {
-            console.debug("====>ACTS_ProcessManage_killProcessesByBundleName_1300 err:====>"
+            console.debug("====>ACTS_ProcessManage_killProcessesByBundleNameFA_1300 err:====>"
                 + JSON.stringify(err));
             done();
         }
@@ -783,12 +783,12 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
 
     
     /*
-  * @tc.number: ACTS_ProcessManage_clearUpApplicationData_0100
+  * @tc.number: ACTS_ProcessManage_clearUpApplicationDataFA_0100
   * @tc.name: The system application cleans itself
   * @tc.desc: Check the process was cleaned up (by promise)
   */
-    it('ACTS_ProcessManage_clearUpApplicationData_0100', 0, async function (done) {
-        console.log('ACTS_ProcessManage_clearUpApplicationData_0100 begin');
+    it('ACTS_ProcessManage_clearUpApplicationDataFA_0100', 0, async function (done) {
+        console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0100 begin');
         await featureAbility.startAbility(
             {
                 want:
@@ -804,19 +804,19 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
         );
         setTimeout(async function () {
             var processexist = await checkPromiseExistDelay(systemAProcessName);
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0100 processexist:====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0100 processexist:====>"
                 + JSON.stringify(processexist));
             expect(processexist).assertEqual(false);
 
             var missionexist = await checkPromiseMissionExistDelay(systemAAbilityName)
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0100 missionexist:====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0100 missionexist:====>"
                 + JSON.stringify(missionexist));
             expect(missionexist).assertEqual(false);
 
             getAppDataPathFileNums(uriSystemA, async (err, nums) => {
                 expect(err).assertEqual(null);
                 expect(nums).assertEqual(4);
-                console.log('====>ACTS_ProcessManage_clearUpApplicationData_0100 getFileNums nums = '
+                console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_0100 getFileNums nums = '
                     + nums);
                 done();
             });
@@ -824,12 +824,12 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
     })
 
     /*
-    * @tc.number: ACTS_ProcessManage_clearUpApplicationData_0200
+    * @tc.number: ACTS_ProcessManage_clearUpApplicationDataFA_0200
     * @tc.name: The system application cleans other system application
     * @tc.desc: Check the process was cleaned up (by promise)
     */
-    it('ACTS_ProcessManage_clearUpApplicationData_0200', 0, async function (done) {
-        console.log('ACTS_ProcessManage_clearUpApplicationData_0200 begin');
+    it('ACTS_ProcessManage_clearUpApplicationDataFA_0200', 0, async function (done) {
+        console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0200 begin');
         var subscriber;
 
         await featureAbility.startAbility(
@@ -846,47 +846,47 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
             }
         );
         var subscriber = await commonEvent.createSubscriber(subscribeInfo)
-        console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0200 subscriber====>"
+        console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0200 subscriber====>"
             + JSON.stringify(subscriber));
         await commonEvent.subscribe(subscriber, subscribeCallBack);
 
         async function subscribeCallBack(err, data) {
 
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0200 SubscribeCallBack data.event:====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0200 SubscribeCallBack data.event:====>"
                 + JSON.stringify(data.event));
             expect(data.event).assertEqual(eventFromSystemA);
             expect(data.data).assertEqual('0');
             commonEvent.unsubscribe(subscriber, unSubscribeCallback);
 
             var processexist = await checkPromiseExistDelay(systemBProcessName);
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0200 subscribeCallBack processexist:"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0200 subscribeCallBack processexist:"
                 + JSON.stringify(processexist));
             expect(processexist).assertEqual(false);
             var missionexist = await checkPromiseMissionExistDelay(systemBAbilityName)
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0200 subscribeCallBack missionexist:"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0200 subscribeCallBack missionexist:"
                 + JSON.stringify(missionexist));
             expect(missionexist).assertEqual(false);
 
             getAppDataPathFileNums(uriSystemB, async (err, nums) => {
                 expect(err).assertEqual(null);
                 expect(nums).assertEqual(4);
-                console.log('====>ACTS_ProcessManage_clearUpApplicationData_0200 getFileNums nums = ' + nums);
-                console.log('ACTS_ProcessManage_clearUpApplicationData_0200 end');
+                console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_0200 getFileNums nums = ' + nums);
+                console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0200 end');
                 done();
             });
         }
         function unSubscribeCallback() {
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0200 UnSubscribe CallBack====>");
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0200 UnSubscribe CallBack====>");
         }
     })
 
     /*
-    * @tc.number: ACTS_ProcessManage_clearUpApplicationData_0300
+    * @tc.number: ACTS_ProcessManage_clearUpApplicationDataFA_0300
     * @tc.name: The system application cleans third-party application
     * @tc.desc: Check the process was cleaned up (by promise)
     */
-    it('ACTS_ProcessManage_clearUpApplicationData_0300', 0, async function (done) {
-        console.log('ACTS_ProcessManage_clearUpApplicationData_0300 begin');
+    it('ACTS_ProcessManage_clearUpApplicationDataFA_0300', 0, async function (done) {
+        console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0300 begin');
         var subscriber;
 
         await featureAbility.startAbility(
@@ -903,47 +903,47 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
             }
         );
         var subscriber = await commonEvent.createSubscriber(subscribeInfo)
-        console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0300 subscriber====>"
+        console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0300 subscriber====>"
             + JSON.stringify(subscriber));
         await commonEvent.subscribe(subscriber, subscribeCallBack);
 
         async function subscribeCallBack(err, data) {
 
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0300 SubscribeCallBack data.event:====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0300 SubscribeCallBack data.event:====>"
                 + JSON.stringify(data));
             expect(data.event).assertEqual(eventFromSystemA);
             expect(data.data).assertEqual('0');
             commonEvent.unsubscribe(subscriber, unSubscribeCallback);
             setTimeout(async function () {
                 var processexist = await checkPromiseExistDelay(vendorAProcessName);
-                console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0300 subscribeCallBack processexist:"
+                console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0300 subscribeCallBack processexist:"
                     + JSON.stringify(processexist));
                 expect(processexist).assertEqual(false);
                 var missionexist = await checkPromiseMissionExistDelay(vendorAAbilityName)
-                console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0300 subscribeCallBack missionexist:"
+                console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0300 subscribeCallBack missionexist:"
                     + JSON.stringify(missionexist));
                 expect(missionexist).assertEqual(false);
                 getAppDataPathFileNums(uriVendorA, async (err, nums) => {
                     expect(err).assertEqual(null);
                     expect(nums).assertEqual(4);
-                    console.log('====>ACTS_ProcessManage_clearUpApplicationData_0300 getFileNums nums = ' + nums);
-                    console.log('ACTS_ProcessManage_clearUpApplicationData_0300 end');
+                    console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_0300 getFileNums nums = ' + nums);
+                    console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0300 end');
                     done();
                 });
             }, 6000);
         }
         function unSubscribeCallback() {
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0300 UnSubscribe CallBack====>");
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0300 UnSubscribe CallBack====>");
         }
     })
 
     /*
-    * @tc.number: ACTS_ProcessManage_clearUpApplicationData_0400
+    * @tc.number: ACTS_ProcessManage_clearUpApplicationDataFA_0400
     * @tc.name: The system application cleans multiprocess application
     * @tc.desc: Check the process was cleaned up (by promise)
     */
-    it('ACTS_ProcessManage_clearUpApplicationData_0400', 0, async function (done) {
-        console.log('ACTS_ProcessManage_clearUpApplicationData_0400 begin');
+    it('ACTS_ProcessManage_clearUpApplicationDataFA_0400', 0, async function (done) {
+        console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0400 begin');
         var flagProcessA = 0;
         var flagProcessAMulti = 0;
         var flagMissionA = 0;
@@ -966,7 +966,7 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
         setTimeout(async function () {
 
             var processInfos = await abilitymanager.getActiveProcessInfos();
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0400 processInfos====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0400 processInfos====>"
                 + JSON.stringify(processInfos));
             for (var i = 0; i < processInfos.length; i++) {
                 if (processInfos[i].processName == systemAProcessName) {
@@ -976,15 +976,15 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
                     flagProcessAMulti++;
                 }
             }
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0400 flagProcessA====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0400 flagProcessA====>"
                 + JSON.stringify(flagProcessA));
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0400 flagProcessAMulti====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0400 flagProcessAMulti====>"
                 + JSON.stringify(flagProcessAMulti));
             expect(flagProcessA).assertEqual(0);
             expect(flagProcessAMulti).assertEqual(0);
 
             var missionInfos = await missionmanager.getMissionInfos('', numMax);
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0400 missionInfos====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0400 missionInfos====>"
                 + JSON.stringify(missionInfos));
             for (var i = 0; i < missionInfos.length; i++) {
                 if ((missionInfos[i].want.abilityName == systemAAbilityName)
@@ -996,9 +996,9 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
                     flagMissionAMulti++;
                 }
             }
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0400 flagMissionA====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0400 flagMissionA====>"
                 + JSON.stringify(flagMissionA));
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0400 flagMissionAMulti====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0400 flagMissionAMulti====>"
                 + JSON.stringify(flagMissionAMulti));
             expect(flagMissionA).assertEqual(0);
             expect(flagMissionAMulti).assertEqual(0);
@@ -1006,21 +1006,21 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
             getAppDataPathFileNums(uriSystemA, async (err, nums) => {
                 expect(err).assertEqual(null);
                 expect(nums).assertEqual(4);
-                console.log('====>ACTS_ProcessManage_clearUpApplicationData_0400 getFileNums nums = '
+                console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_0400 getFileNums nums = '
                     + nums);
-                console.log('ACTS_ProcessManage_clearUpApplicationData_0400 end');
+                console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0400 end');
                 done();
             });
         }, 6000);
     })
 
     /*
-        * @tc.number: ACTS_ProcessManage_clearUpApplicationData_0500
+        * @tc.number: ACTS_ProcessManage_clearUpApplicationDataFA_0500
         * @tc.name: The system application cleans itself
         * @tc.desc: Check the process was cleaned up (by AsyncCallback)
         */
-    it('ACTS_ProcessManage_clearUpApplicationData_0500', 0, async function (done) {
-        console.log('ACTS_ProcessManage_clearUpApplicationData_0500 begin');
+    it('ACTS_ProcessManage_clearUpApplicationDataFA_0500', 0, async function (done) {
+        console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0500 begin');
         await featureAbility.startAbility(
             {
                 want:
@@ -1036,19 +1036,19 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
         );
         setTimeout(async function () {
             var processexist = await checkPromiseExistDelay(systemAProcessName);
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0500 processexist:====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0500 processexist:====>"
                 + JSON.stringify(processexist));
             expect(processexist).assertEqual(false);
 
             var missionexist = await checkPromiseMissionExistDelay(systemAAbilityName)
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0500 missionexist:====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0500 missionexist:====>"
                 + JSON.stringify(missionexist));
             expect(missionexist).assertEqual(false);
 
             getAppDataPathFileNums(uriSystemA, async (err, nums) => {
                 expect(err).assertEqual(null);
                 expect(nums).assertEqual(4);
-                console.log('====>ACTS_ProcessManage_clearUpApplicationData_0500 getFileNums nums = '
+                console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_0500 getFileNums nums = '
                     + nums);
                 done();
             });
@@ -1056,12 +1056,12 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
     })
 
     /*
-    * @tc.number: ACTS_ProcessManage_clearUpApplicationData_0600
+    * @tc.number: ACTS_ProcessManage_clearUpApplicationDataFA_0600
     * @tc.name: The system application cleans other system application
     * @tc.desc: Check the process was cleaned up (by AsyncCallback)
     */
-    it('ACTS_ProcessManage_clearUpApplicationData_0600', 0, async function (done) {
-        console.log('ACTS_ProcessManage_clearUpApplicationData_0600 begin');
+    it('ACTS_ProcessManage_clearUpApplicationDataFA_0600', 0, async function (done) {
+        console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0600 begin');
         var subscriber;
 
         await featureAbility.startAbility(
@@ -1078,52 +1078,52 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
             }
         );
         await commonEvent.createSubscriber(subscribeInfo).then(async (data) => {
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0600 Create Subscriber data====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0600 Create Subscriber data====>"
                 + data);
             subscriber = data;
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0600 subscriber====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0600 subscriber====>"
                 + JSON.stringify(subscriber));
             await commonEvent.subscribe(subscriber, subscribeCallBack);
         });
         async function subscribeCallBack(err, data) {
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0600 SubscribeCallBack data:====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0600 SubscribeCallBack data:====>"
                 + JSON.stringify(data));
             expect(data.event).assertEqual(eventFromSystemA);
             expect(data.data).assertEqual('0');
             commonEvent.unsubscribe(subscriber, unSubscribeCallback);
             setTimeout(async function () {
                 var processexist = await checkPromiseExistDelay(systemBProcessName);
-                console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0600 subscribeCallBack processexist:====>"
+                console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0600 subscribeCallBack processexist:====>"
                     + JSON.stringify(processexist));
                 expect(processexist).assertEqual(false);
 
                 var missionexist = await checkPromiseMissionExistDelay(systemBAbilityName)
-                console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0600 subscribeCallBack missionexist:====>"
+                console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0600 subscribeCallBack missionexist:====>"
                     + JSON.stringify(missionexist));
                 expect(missionexist).assertEqual(false);
 
                 getAppDataPathFileNums(uriSystemB, async (err, nums) => {
                     expect(err).assertEqual(null);
                     expect(nums).assertEqual(4);
-                    console.log('====>ACTS_ProcessManage_clearUpApplicationData_0600 getFileNums nums = ' + nums);
+                    console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_0600 getFileNums nums = ' + nums);
 
-                    console.log('ACTS_ProcessManage_clearUpApplicationData_0600 end');
+                    console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0600 end');
                     done();
                 });
             }, 6000);
         }
         function unSubscribeCallback() {
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0600 UnSubscribe CallBack====>");
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0600 UnSubscribe CallBack====>");
         }
     })
 
     /*
-    * @tc.number: ACTS_ProcessManage_clearUpApplicationData_0700
+    * @tc.number: ACTS_ProcessManage_clearUpApplicationDataFA_0700
     * @tc.name: The system application cleans third-party application
     * @tc.desc: Check the process was cleaned up (by AsyncCallback)
     */
-    it('ACTS_ProcessManage_clearUpApplicationData_0700', 0, async function (done) {
-        console.log('ACTS_ProcessManage_clearUpApplicationData_0700 begin');
+    it('ACTS_ProcessManage_clearUpApplicationDataFA_0700', 0, async function (done) {
+        console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0700 begin');
         var subscriber;
         await featureAbility.startAbility(
             {
@@ -1139,50 +1139,50 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
             }
         );
         await commonEvent.createSubscriber(subscribeInfo).then(async (data) => {
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0700 Create Subscriber data====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0700 Create Subscriber data====>"
                 + data);
             subscriber = data;
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0700 subscriber====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0700 subscriber====>"
                 + JSON.stringify(subscriber));
             await commonEvent.subscribe(subscriber, subscribeCallBack);
         });
         async function subscribeCallBack(err, data) {
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0700 SubscribeCallBack data:====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0700 SubscribeCallBack data:====>"
                 + JSON.stringify(data));
             expect(data.event).assertEqual(eventFromSystemA);
             commonEvent.unsubscribe(subscriber, unSubscribeCallback);
             setTimeout(async function () {
                 var processexist = await checkPromiseExistDelay(vendorAProcessName);
-                console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0700 subscribeCallBack processexist:====>"
+                console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0700 subscribeCallBack processexist:====>"
                     + JSON.stringify(processexist));
                 expect(processexist).assertEqual(false);
 
                 var missionexist = await checkPromiseMissionExistDelay(vendorAAbilityName)
-                console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0700 subscribeCallBack missionexist:====>"
+                console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0700 subscribeCallBack missionexist:====>"
                     + JSON.stringify(missionexist));
                 expect(missionexist).assertEqual(false);
                 getAppDataPathFileNums(uriVendorA, async (err, nums) => {
                     expect(err).assertEqual(null);
                     expect(nums).assertEqual(4);
-                    console.log('====>ACTS_ProcessManage_clearUpApplicationData_0700 getFileNums nums = ' + nums);
-                    console.log('ACTS_ProcessManage_clearUpApplicationData_0700 end');
+                    console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_0700 getFileNums nums = ' + nums);
+                    console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0700 end');
                     done();
 
                 });
             }, 6000);
         }
         function unSubscribeCallback() {
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0700 UnSubscribe CallBack====>");
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0700 UnSubscribe CallBack====>");
         }
     })
 
     /*
-    * @tc.number: ACTS_ProcessManage_clearUpApplicationData_0800
+    * @tc.number: ACTS_ProcessManage_clearUpApplicationDataFA_0800
     * @tc.name: The system application cleans multiprocess application
     * @tc.desc: Check the process was cleaned up (by AsyncCallback)
     */
-    it('ACTS_ProcessManage_clearUpApplicationData_0800', 0, async function (done) {
-        console.log('ACTS_ProcessManage_clearUpApplicationData_0800 begin');
+    it('ACTS_ProcessManage_clearUpApplicationDataFA_0800', 0, async function (done) {
+        console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0800 begin');
         var flagProcessA = 0;
         var flagProcessAMulti = 0;
         var flagMissionA = 0;
@@ -1205,7 +1205,7 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
         setTimeout(async function () {
 
             var processInfos = await abilitymanager.getActiveProcessInfos();
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0800 processInfos====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0800 processInfos====>"
                 + JSON.stringify(processInfos));
             for (var i = 0; i < processInfos.length; i++) {
                 if (processInfos[i].processName == systemAProcessName) {
@@ -1215,15 +1215,15 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
                     flagProcessAMulti++;
                 }
             }
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0800 flagProcessA====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0800 flagProcessA====>"
                 + JSON.stringify(flagProcessA));
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0800 flagProcessAMulti====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0800 flagProcessAMulti====>"
                 + JSON.stringify(flagProcessAMulti));
             expect(flagProcessA).assertEqual(0);
             expect(flagProcessAMulti).assertEqual(0);
 
             var missionInfos = await missionmanager.getMissionInfos('', numMax);
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0800 missionInfos====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0800 missionInfos====>"
                 + JSON.stringify(missionInfos));
             for (var i = 0; i < missionInfos.length; i++) {
                 if ((missionInfos[i].want.abilityName == systemAAbilityName)
@@ -1235,9 +1235,9 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
                     flagMissionAMulti++;
                 }
             }
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0800 flagMissionA====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0800 flagMissionA====>"
                 + JSON.stringify(flagMissionA));
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0800 flagMissionAMulti====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0800 flagMissionAMulti====>"
                 + JSON.stringify(flagMissionAMulti));
             expect(flagMissionA).assertEqual(0);
             expect(flagMissionAMulti).assertEqual(0);
@@ -1245,108 +1245,108 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
             getAppDataPathFileNums(uriSystemA, async (err, nums) => {
                 expect(err).assertEqual(null);
                 expect(nums).assertEqual(4);
-                console.log('====>ACTS_ProcessManage_clearUpApplicationData_0800 getFileNums nums = '
+                console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_0800 getFileNums nums = '
                     + nums);
-                console.log('ACTS_ProcessManage_clearUpApplicationData_0800 end');
+                console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0800 end');
                 done();
             });
         }, 6000);
     })
 
     /*
-   * @tc.number: ACTS_ProcessManage_clearUpApplicationData_0900
+   * @tc.number: ACTS_ProcessManage_clearUpApplicationDataFA_0900
    * @tc.name: Parameter is null
    * @tc.desc: Check the result is OK (by AsyncCallback)
    */
-    it('ACTS_ProcessManage_clearUpApplicationData_0900', 0, async function (done) {
-        console.log('ACTS_ProcessManage_clearUpApplicationData_0900 begin');
+    it('ACTS_ProcessManage_clearUpApplicationDataFA_0900', 0, async function (done) {
+        console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0900 begin');
 
         try {
             var result = await abilityManager.clearUpApplicationData(null);
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0900 null result:====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0900 null result:====>"
                 + JSON.stringify(result));
             expect(result == 0).assertEqual(false);
-            console.log('ACTS_ProcessManage_clearUpApplicationData_0900 end');
+            console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0900 end');
             done();
         }
         catch (err) {
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_0900 err:====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0900 err:====>"
                 + JSON.stringify(err));
             done();
         }
     })
 
     /*
-   * @tc.number: ACTS_ProcessManage_clearUpApplicationData_1000
+   * @tc.number: ACTS_ProcessManage_clearUpApplicationDataFA_1000
    * @tc.name: Parameter is ''
    * @tc.desc: Check the result is OK (by AsyncCallback)
    */
-    it('ACTS_ProcessManage_clearUpApplicationData_1000', 0, async function (done) {
-        console.log('ACTS_ProcessManage_clearUpApplicationData_1000 begin');
+    it('ACTS_ProcessManage_clearUpApplicationDataFA_1000', 0, async function (done) {
+        console.log('ACTS_ProcessManage_clearUpApplicationDataFA_1000 begin');
         abilityManager.clearUpApplicationData('', (err, data) => {
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_1000 '' result:====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_1000 '' result:====>"
                 + JSON.stringify(data));
             expect(err.code).assertEqual(0);
-            console.log('ACTS_ProcessManage_clearUpApplicationData_1000 end');
+            console.log('ACTS_ProcessManage_clearUpApplicationDataFA_1000 end');
             done();
         });
     })
 
     /*
-    * @tc.number: ACTS_ProcessManage_clearUpApplicationData_1100
+    * @tc.number: ACTS_ProcessManage_clearUpApplicationDataFA_1100
     * @tc.name: Parameter is undefined
     * @tc.desc: Check the result is OK (by AsyncCallback)
     */
-    it('ACTS_ProcessManage_clearUpApplicationData_1100', 0, async function (done) {
-        console.log('ACTS_ProcessManage_clearUpApplicationData_1100 begin');
+    it('ACTS_ProcessManage_clearUpApplicationDataFA_1100', 0, async function (done) {
+        console.log('ACTS_ProcessManage_clearUpApplicationDataFA_1100 begin');
         try {
             var result = await abilityManager.clearUpApplicationData(undefined);
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_1100 undefined result:====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_1100 undefined result:====>"
                 + JSON.stringify(result));
             expect(result == 0).assertEqual(false);
-            console.log('ACTS_ProcessManage_clearUpApplicationData_1100 end');
+            console.log('ACTS_ProcessManage_clearUpApplicationDataFA_1100 end');
             done();
         }
         catch (err) {
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_1100 err:====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_1100 err:====>"
                 + JSON.stringify(err));
             done();
         }
     })
-    
+
     /*
-    * @tc.number: ACTS_ProcessManage_clearUpApplicationData_1200
+    * @tc.number: ACTS_ProcessManage_clearUpApplicationDataFA_1200
     * @tc.name: Stop an application that doesn't exist
     * @tc.desc: Check the result is OK (by AsyncCallback)
     */
-    it('ACTS_ProcessManage_clearUpApplicationData_1200', 0, async function (done) {
-        console.log('ACTS_ProcessManage_clearUpApplicationData_1200 begin');
+    it('ACTS_ProcessManage_clearUpApplicationDataFA_1200', 0, async function (done) {
+        console.log('ACTS_ProcessManage_clearUpApplicationDataFA_1200 begin');
         abilityManager.clearUpApplicationData("aa.bb.notExist", (err, data) => {
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_1200 aa.bb.notExist result:====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_1200 aa.bb.notExist result:====>"
                 + JSON.stringify(data));
             expect(err.code).assertEqual(0);
-            console.log('ACTS_ProcessManage_clearUpApplicationData_1200 end');
+            console.log('ACTS_ProcessManage_clearUpApplicationDataFA_1200 end');
             done();
         });
     })
 
     /*
-    * @tc.number: ACTS_ProcessManage_clearUpApplicationData_1300
+    * @tc.number: ACTS_ProcessManage_clearUpApplicationDataFA_1300
     * @tc.name: Stop an application that exists but is not started
     * @tc.desc: Check the result is OK (by AsyncCallback)
     */
-    it('ACTS_ProcessManage_clearUpApplicationData_1300', 0, async function (done) {
-        console.log('ACTS_ProcessManage_clearUpApplicationData_1300 begin');
+    it('ACTS_ProcessManage_clearUpApplicationDataFA_1300', 0, async function (done) {
+        console.log('ACTS_ProcessManage_clearUpApplicationDataFA_1300 begin');
         abilityManager.clearUpApplicationData(systemABundleName, (err, data) => {
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_1300 without running result:====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_1300 without running result:====>"
                 + JSON.stringify(data));
             expect(err.code).assertEqual(0);
             setTimeout(async function () {
             getAppDataPathFileNums(uriSystemA, async (err, nums) => {
                 expect(err).assertEqual(null);
                 expect(nums).assertEqual(4);
-                console.log('====>ACTS_ProcessManage_clearUpApplicationData_1300 getFileNums nums = ' + nums);
-                console.log('ACTS_ProcessManage_clearUpApplicationData_1300 end');
+                console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_1300 getFileNums nums = ' + nums);
+                console.log('ACTS_ProcessManage_clearUpApplicationDataFA_1300 end');
                 done();
             });
         }, 4000);
@@ -1354,12 +1354,12 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
     })
 
     /*
- * @tc.number: ACTS_ProcessManage_clearUpApplicationData_1400
+ * @tc.number: ACTS_ProcessManage_clearUpApplicationDataFA_1400
  * @tc.name: The system application cleans third-party application for ten times
  * @tc.desc: Check the process was cleaned up (by AsyncCallback)
  */
-    it('ACTS_ProcessManage_clearUpApplicationData_1400', 0, async function (done) {
-        console.log('ACTS_ProcessManage_clearUpApplicationData_1400 begin');
+    it('ACTS_ProcessManage_clearUpApplicationDataFA_1400', 0, async function (done) {
+        console.log('ACTS_ProcessManage_clearUpApplicationDataFA_1400 begin');
         var subscriber;
         await featureAbility.startAbility(
             {
@@ -1376,43 +1376,43 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
         );
 
         await commonEvent.createSubscriber(subscribeInfo).then(async (data) => {
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_1400 Create Subscriber data====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_1400 Create Subscriber data====>"
                 + data);
             subscriber = data;
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_1400 subscriber====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_1400 subscriber====>"
                 + JSON.stringify(subscriber));
             await commonEvent.subscribe(subscriber, subscribeCallBack);
         });
 
         async function subscribeCallBack(err, data) {
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_1400 Subscribe CallBack data:====>"
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_1400 Subscribe CallBack data:====>"
                 + JSON.stringify(data));
             expect(data.event).assertEqual(eventFromSystemA);
             commonEvent.unsubscribe(subscriber, unSubscribeCallback);
             setTimeout(async function () {
                 var processexist = await checkPromiseExistDelay(vendorAProcessName);
-                console.debug("====>ACTS_ProcessManage_clearUpApplicationData_1400 processexist:====>"
+                console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_1400 processexist:====>"
                     + JSON.stringify(processexist));
                 expect(processexist).assertEqual(false);
 
                 var missionexist = await checkPromiseMissionExistDelay(vendorAAbilityName)
-                console.debug("====>ACTS_ProcessManage_clearUpApplicationData_1400 missionexist:====>"
+                console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_1400 missionexist:====>"
                     + JSON.stringify(missionexist));
                 expect(missionexist).assertEqual(false);
 
                 getAppDataPathFileNums(uriVendorA, async (err, nums) => {
                     expect(err).assertEqual(null);
                     expect(nums).assertEqual(4);
-                    console.log('====>ACTS_ProcessManage_clearUpApplicationData_1400 getAppDataPathFileNums nums = '
+                    console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_1400 getAppDataPathFileNums nums = '
                         + nums);
 
-                    console.log('ACTS_ProcessManage_clearUpApplicationData_1400 end');
+                    console.log('ACTS_ProcessManage_clearUpApplicationDataFA_1400 end');
                     done();
                 });
             }, 15000);
         }
         function unSubscribeCallback() {
-            console.debug("====>ACTS_ProcessManage_clearUpApplicationData_1400 UnSubscribe CallBack====>");
+            console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_1400 UnSubscribe CallBack====>");
         }
     })
 })
