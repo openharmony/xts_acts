@@ -150,8 +150,6 @@
             </div>
         </div>
 
-
-
         <text class="sub-title">
             特有样式 overflow scrollbar-color scrollbar-width overscroll-effect
         </text>
@@ -210,6 +208,27 @@
         </div>
         <div id="specificThirteen">
         </div>
+
+        <div style="width: 100%;flex-weight: 1;overflow: scroll;flex-direction: column;">
+            <text class="sub-title">
+                补充样式
+            </text>
+            <div id="addOne">
+            </div>
+            <div id="addTwo">
+            </div>
+            <div id="addThree">
+            </div>
+            <div id="addFour">
+            </div>
+            <div id="addFive">
+            </div>
+            <div id="addSix">
+            </div>
+            <div id="addSeven">
+            </div>
+        </div>
+
 
     <!--        <div id="specificEight" >-->
 <!--            <div class="flex-item yellow-item">-->
