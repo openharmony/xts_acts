@@ -43,8 +43,6 @@ var MajorClass = {
 
 describe('bluetoothhostTest', function() {
 
-    var gattServer = null;
-    var gattClient = null;
     beforeAll(function () {
         console.info('beforeAll called')
     })
@@ -94,6 +92,7 @@ describe('bluetoothhostTest', function() {
         console.info('[bluetooth_js] ble turning off :'
         + JSON.stringify(bluetooth.BluetoothState.STATE_BLE_TURNING_OFF));
         console.info('bluetooth enable done');
+        done();
     })
 
     /**
@@ -296,283 +295,6 @@ describe('bluetoothhostTest', function() {
 
 
     /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GATT_DISCONNRCT_0001
-     * @tc.name testDisConnect
-     * @tc.desc Test DisConnect api.
-     * @tc.author quanli 00313334
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_gatt_disconnect', 0, function () {
-        console.info('[bluetooth_js] gatt disconnect start');
-        let ret = gattClient.disconnect();
-        console.info('[bluetooth_js] gatt disconnect ret:' + ret);
-        expect(ret).assertEqual(false);
-        console.info('[bluetooth_js] gatt disconnect end');
-    })
-
-
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GATT_READ_CHARA_VALUE_0001
-     * @tc.name testReadCharacteristicValue
-     * @tc.desc Test ReadCharacteristicValue api by promise.
-     * @tc.author quanli 00313334
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_gatt_readCharacteristicValue', 0, async function (done) {
-        console.info('[bluetooth_js] readCharacteristicValue start');
-
-        let descriptors = [];
-        let arrayBuffer = new ArrayBuffer(8);
-        let desValue =  new Uint8Array(arrayBuffer);
-        desValue[0] = 11;
-
-        let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB', descriptorValue: arrayBuffer};
-        descriptors[0] = descriptor;
-
-        let arrayBufferCCC = new ArrayBuffer(8);
-        let cccValue = new Uint8Array(arrayBufferCCC);
-        cccValue[0] = 32;
-        let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
-            characteristicValue: arrayBufferCCC, descriptors:descriptors};
-        for (var key in characteristic ){
-            console.info('[bluetooth_js] readCharValue:' +characteristic[key]);
-        }
-        gattClient.readCharacteristicValue(characteristic).then((object) => {
-            if (object != null) {
-                console.info('[bluetooth_js] bluetooth BLECharacteristic is null');
-                expect(true).assertEqual(true);
-            } else {
-                console.info('[bluetooth_js] BLECharacteristic uuid is successfully');
-                console.info('[bluetooth_js] readCharacValue data:' + JSON.stringify(data));
-                expect(null).assertFail();
-            }
-            done();
-        }).catch(err => {
-            console.error(`bluetooth readCharacteristicValue has error: ${err}`);
-            expect(true).assertEqual(true);
-            done();
-        });
-    })
-
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GATT_READ_DESCRI_VALUE_0001
-     * @tc.name testReadDescriptorValue
-     * @tc.desc Test ReadDescriptorValue api by promise.
-     * @tc.author quanli 00313334
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_gatt_readDescriptorValue', 0, async function (done) {
-        console.info('[bluetooth_js] readDescriptorValue start');
-        let arrayBuffer = new ArrayBuffer(8);
-        let desValue =  new Uint8Array(arrayBuffer);
-        desValue[0] = 11;
-        let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB', descriptorValue: arrayBuffer};
-        gattClient.readDescriptorValue(descriptor).then((object) => {
-            if (object != null) {
-                console.info('[bluetooth_js] BLEDescriptor is null');
-                expect(true).assertEqual(true);
-            } else {
-                console.info('[bluetooth_js] BLEDescriptor uuid is successfully');
-                console.info('[bluetooth_js] BLEDescriptor data:' + JSON.stringify(object));
-                expect(null).assertFail();
-            }
-            done();
-        }).catch(err => {
-            console.error(`bluetooth readDescriptorValue has error: ${err}`);
-            expect(true).assertEqual(true);
-            done();
-        });
-    })
-
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GATT_WRITE_CHARACT_VALUE_0001
-     * @tc.name testWriteCharacteristicValue
-     * @tc.desc Test WriteCharacteristicValue api.
-     * @tc.author quanli 00313334
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_gatt_writeCharacteristicValue', 0, function () {
-        console.info('[bluetooth_js] writeCharacteristicValue start');
-        let descriptors = [];
-        let arrayBuffer = new ArrayBuffer(8);
-        let desValue =  new Uint8Array(arrayBuffer);
-        desValue[0] = 11;
-        let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB', descriptorValue: arrayBuffer};
-        descriptors[0] = descriptor;
-        let arrayBufferCCC = new ArrayBuffer(8);
-        let cccValue = new Uint8Array(arrayBufferCCC);
-        cccValue[0] = 32;
-        let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
-            characteristicValue: arrayBufferCCC, descriptors:descriptors};
-        for (var key in characteristic ){
-            console.info('[bluetooth_js] writeCharValue:' +characteristic[key]);
-        }
-
-        let ret = gattClient.writeCharacteristicValue(characteristic);
-        console.info('[bluetooth_js] bluetooth writeCharacteristicValue ret : ' + ret);
-        expect(ret).assertEqual(false);
-        console.info('[bluetooth_js] writeCharacteristicValue end');
-    })
-
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GATT_WRITE_DESC_VALUE_0001
-     * @tc.name testWriteDescriptorValue
-     * @tc.desc Test WriteDescriptorValue api.
-     * @tc.author quanli 00313334
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_gatt_writeDescriptorValue', 0, function () {
-        console.info('[bluetooth_js] writeDescriptorValue start');
-        let arrayBuffer = new ArrayBuffer(8);
-        let desValue =  new Uint8Array(arrayBuffer);
-        desValue[0] = 11;
-        let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB', descriptorValue: arrayBuffer};
-        let ret = gattClient.writeDescriptorValue(descriptor);
-        console.info('[bluetooth_js] bluetooth writeDescriptorValue ret : ' + ret);
-        expect(ret).assertEqual(false);
-        console.info('[bluetooth_js] writeDescriptorValue end');
-    })
-
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GATT_SET_BLE_MTUSIZE_0001
-     * @tc.name testSetBLEMtuSize
-     * @tc.desc Test SetBLEMtuSize api.
-     * @tc.author quanli 00313334
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_gatt_setBLEMtuSize', 0, function () {
-        console.info('[bluetooth_js] setBLEMtuSize start');
-        let ret = gattClient.setBLEMtuSize(128);
-        console.info('[bluetooth_js] bluetooth setBLEMtuSize ret : ' + ret);
-        expect(ret).assertEqual(false);
-        console.info('[bluetooth_js] setBLEMtuSize end');
-    })
-
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GATT_SET_NOTIFY_CHARA_CHANGED_0001
-     * @tc.name testSetNotifyCharacteristicChanged
-     * @tc.desc Test SetNotifyCharacteristicChanged api.
-     * @tc.author quanli 00313334
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_gatt_setNotifyCharacteristicChanged', 0, function () {
-        console.info('[bluetooth_js] setNotifyCharacteristicChanged start');
-        let descriptors = [];
-        let arrayBuffer = new ArrayBuffer(8);
-        let desValue =  new Uint8Array(arrayBuffer);
-        desValue[0] = 11;
-        let arrayBufferNotify = new ArrayBuffer(8);
-        let descNotifyValue = new Uint8Array(arrayBufferNotify);
-        descNotifyValue[0] = 1
-        let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB',
-            descriptorValue: arrayBuffer};
-        let descriptorNotify = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            descriptorUuid: '00002902-0000-1000-8000-00805F9B34FB',
-            descriptorValue: arrayBufferNotify};
-        descriptors[0] = descriptor;
-        descriptors[1] = descriptorNotify;
-        let arrayBufferCCC = new ArrayBuffer(8);
-        let cccValue = new Uint8Array(arrayBufferCCC);
-        cccValue[0] = 1;
-        let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
-            characteristicValue: arrayBufferCCC, descriptors:descriptors};
-        let ret = gattClient.setNotifyCharacteristicChanged(characteristic, false);
-        console.info('[bluetooth_js] setNotifyCharacteristicChanged ret:' + ret);
-        expect(ret).assertEqual(false);
-        console.info('[bluetooth_js] setNotifyCharacteristicChanged end');
-    })
-
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GATT_NOTIFY_CHARA_CHANGED_0001
-     * @tc.name testNotifyCharacteristicChanged
-     * @tc.desc Test NotifyCharacteristicChanged api.
-     * @tc.author quanli 00313334
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_gatt_notifyCharacteristicChanged', 0, function () {
-        console.info('[bluetooth_js] notifyCharacteristicChanged start');
-        let descriptors = [];
-        let arrayBufferDesc = new ArrayBuffer(8);
-        let desValue =  new Uint8Array(arrayBufferDesc);
-        desValue[0] = 11;
-        let arrayBufferNotifyDesc = new ArrayBuffer(8);
-        let descNotifyValue = new Uint8Array(arrayBufferNotifyDesc);
-        descNotifyValue[0] = 1
-        let
-            descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-                descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB', descriptorValue: desValue};
-        let descriptorNotify = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            descriptorUuid: '00002902-0000-1000-8000-00805F9B34FB',
-            descriptorValue: descNotifyValue};
-        descriptors[0] = descriptor;
-        descriptors[1] = descriptorNotify;
-
-        let arrayBufferCCC = new ArrayBuffer(8);
-        let cccValue = new Uint8Array(arrayBufferCCC);
-        cccValue[0] = 1;
-        let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
-            characteristicValue: cccValue,
-            descriptors:descriptors,confirm:'false'};
-        for (var key in characteristic ){
-            console.info('[bluetooth_js] notifyCharChanged:' + characteristic[key]);
-        }
-        let ret = gattServer.notifyCharacteristicChanged('00:00:00:00:00:00', characteristic);
-        console.info('[bluetooth_js] notifyCharacteristicChanged ret : ' + ret);
-        expect(ret).assertEqual(false);
-        console.info('[bluetooth_js] notifyCharacteristicChanged end');
-    })
-
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GATT_SEND_RESPONSE_0001
-     * @tc.name testSendResponse
-     * @tc.desc Test SendResponse api.
-     * @tc.author quanli 00313334
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_gatt_sendResponse', 0, function () {
-        console.info('[bluetooth_js] sendResponse start');
-        let arrayBuffer = new ArrayBuffer(8);
-        let value =  new Uint8Array(arrayBuffer);
-        value[0] = 1;
-        let serverResponse = {deviceId: '00:00:00:00:00', transId: 1,
-            status: 0, offset: 0, value: arrayBuffer};
-        for (var key in serverResponse ){
-            console.info('[bluetooth_js] serverResponse:'+ serverResponse[key]);
-        }
-        let ret = gattServer.sendResponse(serverResponse);
-        console.info('[bluetooth_js] sendResponse ret : ' + ret);
-        expect(ret).assertEqual(false);
-        console.info('[bluetooth_js] sendResponse end');
-    })
-
-    /**
      * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_SPP_LISTEN_0001
      * @tc.name testSppListen
      * @tc.desc Test SppListen api by callback.
@@ -691,60 +413,6 @@ describe('bluetoothhostTest', function() {
         console.info('[bluetooth_js] bluetooth sppWrite ret : ' + ret);
         expect(ret).assertEqual(false);
         console.info('[bluetooth_js] spp write end');
-    })
-
-
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetoothble_DEVICE_JS_BLE_PERIPHERA_MANAGER_CLOSE_0001
-     * @tc.name testBlePeripheralManagerClose
-     * @tc.desc Test BlePeripheralManagerClose api .
-     * @tc.author zhangyujie zwx1079266
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetoothble_gattserver_close_test_001', 0, function () {
-        console.info('[bluetooth_js] GattserverClose test start ...');
-        if (gattServer == null) {
-            console.info("[bluetooth_js] GattserverClose: please CreateGattServer first!");
-        }
-        console.info('[bluetooth_js] gattclose_server is:' + JSON.stringify(gattServer));
-        try{
-            var result = gattServer.close();
-            console.info("[bluetooth_js] GattserverClose res:"+ JSON.stringify(result));
-            expect(result).assertTrue();
-            console.info("[bluetooth_js] GattserverClose end.");
-        }catch(error){
-            console.info("[bluetooth_js] GattserverClose err:" + JSON.stringify(error));
-            expect(null).assertFail();
-        }
-    })
-
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GATT_CLIENT_CLOSE_0001
-     * @tc.name testGattClientClose
-     * @tc.desc Test GattClientClose api .
-     * @tc.author zhangyujie zwx1079266
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_gattclient_close_test_001', 0, function () {
-        console.info('[bluetooth_js] GattclientClose test start ...');
-        if (gattClient == null) {
-            console.info("[bluetooth_js] GattclientClose: please CreateGatt first!");
-        }
-        console.info('[bluetooth_js] gattClient is:' + JSON.stringify(gattServer));
-        try{
-            var result = gattClient.close();
-            console.info("[bluetooth_js] GattclientClose result: " + result);
-            console.info("[bluetooth_js] GattclientClose json_result:" + JSON.stringify(result));
-            expect(result).assertTrue();
-            console.info("[bluetooth_js] GattclientClose end.");
-        }catch(error){
-            console.info("[bluetooth_js] GattclientClose err:" + JSON.stringify(error));
-            expect(null).assertFail();
-        }
     })
 
     /**
@@ -1161,7 +829,7 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_classic_set_local_name14', 0, async function () {
+    it('bluetooth_classic_set_local_name14', 0, async function (done) {
         console.info('[bluetooth_js] set localname start');
         var name = bluetooth.setLocalName('0123456789012345678901234567890123456789012345678901'
         +'23456789012345678901234567890123456789012345678901234567890123456789012345678012'
@@ -1175,7 +843,9 @@ describe('bluetoothhostTest', function() {
         expect(disable).assertTrue();
         await sleep(2000);
         console.info('[bluetooth_js] setLocalName end');
+        done();
     })
+
 
 })
 
