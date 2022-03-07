@@ -35,6 +35,7 @@ let FILE_ROOT = "";
 let AUDIO_ROOT = "";
 let IMAGE_ALBUM = "";
 let LOG_ = "FMS_XTS_TEXT: ";
+let LENGTH = 0;
 describe("filemanager_test", function () {
 
   /**
@@ -243,6 +244,7 @@ describe("filemanager_test", function () {
     try {
       let path = FILE_ROOT;
       filemanager.listFile(path, "file", function(error,fileInfos){
+        LENGTH = fileInfos.length;
         expect(Array.isArray(fileInfos)).assertTrue();
         done();
       });
@@ -302,6 +304,7 @@ describe("filemanager_test", function () {
     };
       filemanager.listFile(path, "file", options, function(error,fileInfos){
         expect(Array.isArray(fileInfos)).assertTrue();
+        expect(fileInfos.length == LENGTH-2).assertTrue();
         done();
       });
     } catch (error) {
