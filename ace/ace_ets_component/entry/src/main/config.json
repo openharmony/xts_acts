@@ -146,7 +146,7 @@
           "pages/sourceType",
           "pages/pageTransition",
           "pages/pageTransition2",
-         " pages/scrollBar",
+          "pages/scrollBar",
           "pages/search",
           "pages/pageTransition2",
           "pages/lifecycle",
