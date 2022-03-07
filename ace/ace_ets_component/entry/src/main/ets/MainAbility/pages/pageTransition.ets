@@ -25,7 +25,7 @@ struct PageTransitionExample1 {
   build() {
     Column() {
       Navigator({ target: 'pages/pageTransition2', type: this.type }) {
-        Image($r('app.media.bg'))
+        Image($rawfile('ic_health_heart.png'))
           .width("100%")
           .height("100%")
       }
