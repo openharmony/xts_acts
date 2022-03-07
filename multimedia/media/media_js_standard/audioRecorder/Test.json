@@ -10,10 +10,8 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "setenforce 0"
             ],
             "teardown-command":[
-                "setenforce 1"
             ]
         },
         {
