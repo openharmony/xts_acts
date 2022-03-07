@@ -28,6 +28,6 @@ export default {
     onReady() {
     },
     LoadXcomponent2() {
-        globalThis.value = this.$element('XcomponentId2').getComponentSurfaceId()
+        globalThis.value = this.$element('XcomponentId2').getXComponentSurfaceId()
     },
 }

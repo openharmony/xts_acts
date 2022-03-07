@@ -18,11 +18,12 @@ import Fileio from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('AudioDecoderFormatPromise', function () {
-    const AUDIOPATH1 =  '/data/media/AAC_48000_32_1.aac'
-    const AUDIOPATH2 =  '/data/media/FLAC_48000_32_1.flac'
-    const AUDIOPATH3 = '/data/media/mp3.es';
-    const AUDIOPATH4 = '/data/media/vorbis.es';
-    const BASIC_PATH = '/data/media/results/decode_format_promise_';
+    const RESOURCEPATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiodecoder/'
+    const AUDIOPATH1 = RESOURCEPATH + 'AAC_48000_32_1.aac';
+    const AUDIOPATH2 = RESOURCEPATH + 'FLAC_48000_32_1.flac'
+    const AUDIOPATH3 = RESOURCEPATH + 'mp3.es';
+    const AUDIOPATH4 = RESOURCEPATH + 'vorbis.es';
+    const BASIC_PATH = RESOURCEPATH + 'results/decode_format_promise_';
     let audioDecodeProcessor;
     let readStreamSync;
     let needGetMediaDes = false;

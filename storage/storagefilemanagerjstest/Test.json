@@ -2,7 +2,7 @@
     "description": "Configuration for filemanager Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "2000000",
+        "test-timeout": "60000",
         "package": "ohos.acts.storage.filemanager",
         "shell-timeout": "60000"
     },

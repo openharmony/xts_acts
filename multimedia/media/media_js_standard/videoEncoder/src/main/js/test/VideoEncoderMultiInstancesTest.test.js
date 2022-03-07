@@ -21,7 +21,8 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 describe('videoEncoderSoftwareMultiInstances', function () {
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
-    const BASIC_PATH = '/data/media/results/videoencode_multiinstances_';
+    const ROOT = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/results/';
+    const BASIC_PATH = ROOT + 'video_multiinstances_';
     let videoEncodeProcessor;
     let mediaTest;
     let surfaceID = '';
@@ -269,7 +270,7 @@ describe('videoEncoderSoftwareMultiInstances', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_MULTIINSTANCE_0100', 0, async function (done) {
         console.info("case test multiple encoder instances");
-        let savepath = BASIC_PATH + '0100.txt';
+        let savepath = BASIC_PATH + '0100.es';
         let mime = 'video/mp4v-es';
         let width = 720;
         let height = 480;

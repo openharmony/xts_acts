@@ -36,6 +36,9 @@
             ]
           }
         ],
+        "backgroundModes": [
+            "dataTransfer"
+        ],
         "name": "ohos.acts.resourceschedule.taskmgr.js.function.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
@@ -55,6 +58,16 @@
           "autoDesignWidth": false
         }
       }
-    ]
+    ],
+    "defPermissions": [
+        {
+          "name": "ohos.permission.KEEP_BACKGROUND_RUNNING"
+        }
+      ],
+    "reqPermissions": [
+        {
+          "name": "ohos.permission.KEEP_BACKGROUND_RUNNING"
+        }
+      ]
   }
 }

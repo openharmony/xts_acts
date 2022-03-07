@@ -76,15 +76,14 @@ describe('objectStoreTest', function () {
     /**
      * @tc.name: testOn001
      * @tc.desc: object join session and on,object can receive callback when data has been changed
-     * @tc.type: FUNC
-     * @tc.require: I4H3LS
+     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_On_001
      */
     it('testOn001', 0, function (done) {
         console.log(TAG + "************* testOn001 start *************");
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.setSessionId("session1");
         if (objectTest != undefined && objectTest != null) {
-            expect("session1" == objectTest.sessionId3);
+            expect("session1" == objectTest.__sessionId);
         } else {
             console.log(TAG + "testOn001 joinSession failed");
         }
@@ -108,15 +107,14 @@ describe('objectStoreTest', function () {
     /**
      * @tc.name: testOn002
      * @tc.desc object join session and no on,obejct can not receive callback when data has been changed
-     * @tc.type: FUNC
-     * @tc.require: I4H3LS
+     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_On_002
      */
     it('testOn002', 0, function (done) {
         console.log(TAG + "************* testOn002 start *************");
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.setSessionId("session2");
         if (objectTest != undefined && objectTest != null) {
-            expect("session2" == objectTest.sessionId3);
+            expect("session2" == objectTest.__sessionId);
         } else {
             console.log(TAG + "testOn002 joinSession failed");
         }
@@ -139,15 +137,14 @@ describe('objectStoreTest', function () {
      * @tc.name: testOn003
      * @tc.desc: object join session and on,then object change data twice,
      *           object can receive two callbacks when data has been changed
-     * @tc.type: FUNC
-     * @tc.require: I4H3LS
+     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_On_003
      */
     it('testOn003', 0, function (done) {
         console.log(TAG + "************* testOn003 start *************");
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.setSessionId("session3");
         if (objectTest != undefined && objectTest != null) {
-            expect("session3" == objectTest.sessionId3);
+            expect("session3" == objectTest.__sessionId);
         } else {
             console.log(TAG + "testOn003 joinSession failed");
         }
@@ -176,15 +173,14 @@ describe('objectStoreTest', function () {
     /**
      * @tc.name: testOn004
      * @tc.desc object join session and on,then object do not change data,object can not receive callbacks
-     * @tc.type: FUNC
-     * @tc.require: I4H3LS
+     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_On_004
      */
     it('testOn004', 0, function (done) {
         console.log(TAG + "************* testOn004 start *************");
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.setSessionId("session4");
         if (objectTest != undefined && objectTest != null) {
-            expect("session4" == objectTest.sessionId3);
+            expect("session4" == objectTest.__sessionId);
         } else {
             console.log(TAG + "testOn004 joinSession failed");
         }
@@ -199,15 +195,14 @@ describe('objectStoreTest', function () {
     /**
      * @tc.name testOff001
      * @tc.desc object join session and on&off,object can not receive callback after off
-     * @tc.type: FUNC
-     * @tc.require: I4H3LS
+     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_Off_001
      */
     it('testOff001', 0, function (done) {
         console.log(TAG + "************* testOff001 start *************");
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.setSessionId("session5");
         if (objectTest != undefined && objectTest != null) {
-            expect("session5" == objectTest.sessionId3);
+            expect("session5" == objectTest.__sessionId);
         } else {
             console.log(TAG + "testOff001 joinSession failed");
         }
@@ -243,15 +238,14 @@ describe('objectStoreTest', function () {
     /**
      * @tc.name:testOff002
      * @tc.desc object join session and off,object can not receive callback
-     * @tc.type: FUNC
-     * @tc.require: I4H3LS
+     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_Off_002
      */
     it('testOff002', 0, function (done) {
         console.log(TAG + "************* testOff002 start *************");
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.setSessionId("session6");
         if (objectTest != undefined && objectTest != null) {
-            expect("session6" == objectTest.sessionId3);
+            expect("session6" == objectTest.__sessionId);
         } else {
             console.log(TAG + "testOff002 joinSession failed");
         }
@@ -275,22 +269,21 @@ describe('objectStoreTest', function () {
     /**
      * @tc.name: testMultiObjectOn001
      * @tc.desc: two objects join session and on,then object change data,user can receive two callbacks from two objects
-     * @tc.type: FUNC
-     * @tc.require: I4H3LS
+     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_Multi_001
      */
     it('testMultiObjectOn001', 0, function (done) {
         console.log(TAG + "************* testMultiObjectOn001 start *************");
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.setSessionId("session7");
         if (objectTest != undefined && objectTest != null) {
-            expect("session7" == objectTest.sessionId3);
+            expect("session7" == objectTest.__sessionId);
         } else {
             console.log(TAG + "testMultiObjectOn001 joinSession failed");
         }
         var testObject = distributedObject.createDistributedObject({ name: "Eric", age: 81, isVis: true });
         testObject.setSessionId("testSession1");
         if (testObject != undefined && testObject != null) {
-            expect("testSession1").assertEqual(testObject.sessionId3);
+            expect("testSession1").assertEqual(testObject.__sessionId);
         } else {
             console.log(TAG + "testMultiObjectOn001 joinSession failed");
         }
@@ -317,11 +310,108 @@ describe('objectStoreTest', function () {
         console.log(TAG + "************* testMultiObjectOn001 end *************");
     })
 
+/**
+     * @tc.name: testMultiObjectOff001
+     * @tc.desc: two objects join session and on&off,then two objects can not receive callbacks
+     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_Multi_Off_001
+     */
+    it('testMultiObjectOff001', 0, function (done) {
+        console.log(TAG + "************* testMultiObjectOff001 start *************");
+        var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+        objectTest.setSessionId("session8");
+        if (objectTest != undefined && objectTest != null) {
+            expect("session8" == objectTest.__sessionId);
+        } else {
+            console.log(TAG + "testMultiObjectOn002 joinSession failed");
+        }
+        var testObject = distributedObject.createDistributedObject({ name: "Eric", age: 81, isVis: true });
+        testObject.setSessionId("testSession2");
+        if (testObject != undefined && testObject != null) {
+            expect("testSession2" == testObject.__sessionId);
+        } else {
+            console.log(TAG + "testMultiObjectOn002 joinSession failed");
+        }
+        console.log(TAG + " start call watch change")
+        objectTest.on("change", changeCallback);
+        testObject.on("change", changeCallback2);
+        console.info(TAG + " watch success");
+        if (objectTest != undefined && objectTest != null) {
+            objectTest.name = "jack1";
+            objectTest.age = 19;
+            objectTest.isVis = true;
+            expect(objectTest.name == "jack1");
+            expect(objectTest.age == 19);
+            console.info(TAG + " set data success!");
+        } else {
+            console.info(TAG + " object is null,set name fail");
+        }
+        if (testObject != undefined && testObject != null) {
+            testObject.name = "jack2";
+            testObject.age = 20;
+            testObject.isVis = false;
+            expect(testObject.name == "jack2");
+            expect(testObject.age == 20);
+            console.info(TAG + " set data success!");
+        } else {
+            console.info(TAG + " object is null,set name fail");
+        }
+        objectTest.off("change");
+        if (objectTest != undefined && objectTest != null) {
+            objectTest.name = "jack3";
+            objectTest.age = 21;
+            objectTest.isVis = false;
+            expect(objectTest.name == "jack3");
+            expect(objectTest.age == 21);
+            console.info(TAG + " set data success!");
+        } else {
+            console.info(TAG + " object is null,set name fail");
+        }
+        testObject.off("change");
+        if (testObject != undefined && testObject != null) {
+            testObject.name = "jack4";
+            testObject.age = 22;
+            testObject.isVis = true;
+            expect(testObject.name == "jack4");
+            expect(testObject.age == 22);
+            console.info(TAG + " set data success!");
+        } else {
+            console.info(TAG + " object is null,set name fail");
+        }
+
+        done()
+        console.log(TAG + "************* testMultiObjectOff001 end *************");
+    })
+	
+	/**
+     * @tc.name: testChangeSession001
+     * @tc.desc: objects join session,then change sessionId
+     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_Session_001
+     */
+	it('testChangeSession001', 0, function (done) {
+        console.log(TAG + "************* testChangeSession001 start *************");
+        var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+        objectTest.setSessionId("session9");
+        if (objectTest != undefined && objectTest != null) {
+            expect("session9" == objectTest.__sessionId);
+        } else {
+            console.log(TAG + "testChangeSession001 joinSession failed");
+        }
+        console.log(TAG+"start change sessionId");
+        setTimeout(() => objectTest.setSessionId("session9"), 1000);
+		if (objectTest != undefined && objectTest != null) {
+            expect("session9" == objectTest.__sessionId);
+        } else {
+            console.log(TAG + "testChangeSession001 joinSession again failed");
+        }
+
+        done()
+        console.log(TAG + "************* testChangeSession001 end *************");
+    })
+
     /**
      * @tc.name: testUndefinedType001
      * @tc.desc: object use undefined type,can not join session
-     * @tc.type: FUNC
-     * @tc.require: I4H3LS
+     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_Type_001
      */
     it('testUndefinedType001', 0, function (done) {
         console.log(TAG + "************* testUndefinedType001 start *************");
@@ -329,9 +419,9 @@ describe('objectStoreTest', function () {
         try {
             object1.setSessionId("session11");
             if (object1 != undefined && object1 != null) {
-                expect("session11" == object1.sessionId3);
+                expect("session11" == object1.__sessionId);
             } else {
-                console.log(TAG + "testChangeSession001 joinSession session11 failed");
+                console.log(TAG + "testUndefinedType001 joinSession session11 failed");
             }
         } catch (error) {
             console.error(TAG + error);
@@ -344,8 +434,7 @@ describe('objectStoreTest', function () {
     /**
      * @tc.name: testGenSessionId001
      * @tc.desc: object generate random sessionId
-     * @tc.type: FUNC
-     * @tc.require: I4H3LS
+     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_GetSessionId_001
      */
     it('testGenSessionId001', 0, function (done) {
         console.log(TAG + "************* testGenSessionId001 start *************");
@@ -359,11 +448,10 @@ describe('objectStoreTest', function () {
     /**
      * @tc.name: testGenSessionId002
      * @tc.desc: object generate 2 random sessionId and not equal
-     * @tc.type: FUNC
-     * @tc.require: I4H3LS
+     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_GetSessionId_002
      */
     it('testGenSessionId002', 0, function (done) {
-        console.log(TAG + "************* testGenSessionId001 start *************");
+        console.log(TAG + "************* testGenSessionId002 start *************");
         var sessionId1 = distributedObject.genSessionId();
         var sessionId2 = distributedObject.genSessionId();
         expect(sessionId1 != sessionId2);
@@ -375,8 +463,7 @@ describe('objectStoreTest', function () {
     /**
      * @tc.name: testOnStatus001
      * @tc.desc: object set a listener to watch another object online/offline
-     * @tc.type: FUNC
-     * @tc.require: I4H3M8
+     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_OnStatus_001
      */
     it('testOnStatus001', 0, function (done) {
         console.log(TAG + "************* testOnStatus001 start *************");
@@ -392,11 +479,10 @@ describe('objectStoreTest', function () {
     /**
      * @tc.name: testOnStatus002
      * @tc.desc: object set several listener and can unset specified listener
-     * @tc.type: FUNC
-     * @tc.require: I4H3M8
+     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_OnStatus_002
      */
     it('testOnStatus002', 0, function (done) {
-        console.log(TAG + "************* testOnStatus001 start *************");
+        console.log(TAG + "************* testOnStatus002 start *************");
         console.log(TAG + "start watch status");
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.on("status", statusCallback1);
@@ -414,11 +500,10 @@ describe('objectStoreTest', function () {
     /**
      * @tc.name: testOnStatus003
      * @tc.desc: object set several listener and can unWatch all watcher
-     * @tc.type: FUNC
-     * @tc.require: I4H3M8
+     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_OnStatus_003
      */
-    it('testOnStatus002', 0, function (done) {
-        console.log(TAG + "************* testOnStatus001 start *************");
+    it('testOnStatus003', 0, function (done) {
+        console.log(TAG + "************* testOnStatus003 start *************");
         console.log(TAG + "start watch status");
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.on("status", statusCallback1);
@@ -436,8 +521,7 @@ describe('objectStoreTest', function () {
     /**
      * @tc.name: testComplex001
      * @tc.desc: object can get/set complex data
-     * @tc.type: FUNC
-     * @tc.require: I4H3M8
+     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_Complex_001
      */
     it('testComplex001', 0, function (done) {
         console.log(TAG + "************* testComplex001 start *************");
@@ -449,7 +533,7 @@ describe('objectStoreTest', function () {
         });
         complexObject.setSessionId("session12");
         if (complexObject != undefined && complexObject != null) {
-            expect("session12" == complexObject.sessionId3);
+            expect("session12" == complexObject.__sessionId);
         } else {
             console.log(TAG + "testOnComplex001 joinSession session12 failed");
         }
@@ -470,15 +554,14 @@ describe('objectStoreTest', function () {
     /**
      * @tc.name: testMaxSize001
      * @tc.desc: object can get/set data under 4MB size
-     * @tc.type: FUNC
-     * @tc.require: I4H3M8
+     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_MaxSize_001
      */
     it('testMaxSize001', 0, function (done) {
         console.log(TAG + "************* testMaxSize001 start *************");
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.setSessionId("session13");
         if (objectTest != undefined && objectTest != null) {
-            expect("session13" == objectTest.sessionId3);
+            expect("session13" == objectTest.__sessionId);
         } else {
             console.log(TAG + "testMaxSize001 joinSession session13 failed");
         }
@@ -501,8 +584,7 @@ describe('objectStoreTest', function () {
     /**
      * @tc.name: testPerformance001
      * @tc.desc: performanceTest for set/get data
-     * @tc.type: FUNC
-     * @tc.require: I4H3M8
+     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_Performance_001
      */
     it('testPerformance001', 0, function (done) {
         console.log(TAG + "************* testPerformance001 start *************");
@@ -523,7 +605,7 @@ describe('objectStoreTest', function () {
             complexObject.setSessionId("session14");
             setSessionIdTime += Date.now() - st1;
             if (complexObject != undefined && complexObject != null) {
-                expect("session14" == complexObject.sessionId3);
+                expect("session14" == complexObject.__sessionId);
             } else {
                 console.log(TAG + "testPerformance001 joinSession session14 failed");
             }

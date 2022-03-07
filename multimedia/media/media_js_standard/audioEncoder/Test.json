@@ -12,17 +12,16 @@
             "pre-push": [
             ],
             "push": [
-                "./resource/audio/audioEncode/S32LE.pcm ->/data/media/",
-                "./resource/audio/audioEncode/S32LE_2.pcm ->/data/media/"
+                "./resource/audio/audioEncode/S32LE.pcm ->/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/",
+                "./resource/audio/audioEncode/S32LE_2.pcm ->/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/"
             ]
         },
 		{
             "type": "ShellKit",
             "run-command": [
-                "rm -R /data/media/results",
-                "chmod 777 -R /data/media",
-                "chmod 777 /data/media/*",
-                "mkdir /data/media/results",
+                "mkdir -p /data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/results/",
+                "chmod 777 -R /data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder",
+                "chmod 777 /data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/*",
                 "setenforce 0"
             ],
             "teardown-command":[

@@ -13,4 +13,4 @@
  * limitations under the License.
  */
 
-require('./Image.test.js')
+require('./image.test.js')

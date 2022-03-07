@@ -13,6 +13,10 @@
  * limitations under the License.
  */
 
-require('./VideoEncoderFuncPromiseTest.test.js')
-require('./VideoEncoderReliabilityPromiseTest.test.js')
+require('./VideoEncoderSoftwareFuncCallbackTest.test.js')
+require('./VideoEncoderSoftwareFuncPromiseTest.test.js')
+require('./VideoEncoderSoftwareReliabilityCallbackTest.test.js')
+require('./VideoEncoderSoftwareReliabilityPromiseTest.test.js')
 require('./VideoEncoderMultiInstancesTest.test.js')
+require('./VideoEncoderEnumTest.test.js')
+require('./VideoHardwareEncoderEnumTest.test.js')

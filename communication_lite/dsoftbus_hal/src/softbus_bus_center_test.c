@@ -14,27 +14,54 @@
  */
 #include <string.h>
 #include <unistd.h>
+#include <pthread.h>
 
 #include "hctest.h"
 #include "securec.h"
 #include "session.h"
 #include "softbus_bus_center.h"
 #include "softbus_errcode.h"
+#include "softbus_server_frame.h"
 
+#define MAINLOOP_STACK_SIZE 5120
 #define TEST_PKG_NAME "com.softbus.test"
 #define DEFAULT_NODE_STATE_CB_NUM 9
 #define ERRO_CAPDATA_LEN  514
 #define DEFAULT_LOCAL_DEVICE_TYPE_ID  0
+#define SLEEP_TIME 4
+#include "cmsis_os.h"
 
-char TEST_PKG_ERROR_NAME[] = "com.softbus.error.test";
+#define UI_MAIN_TASK_DELAY 10000
+
+static int32_t serverInit = 0;
 static int32_t g_subscribeId = 0;
 static int32_t g_publishId = 0;
 
 LITE_TEST_SUIT(dsoftbus, buscenter, BusCenterTestSuite);
 
+static void *BusCenterServerInit(void *arg)
+{
+    printf("----------start BusCenterServerInit-------------\n");
+    InitSoftBusServer();
+    return NULL;
+}
+
+static void ThreadCreateTest(void *(*entry)(void *arg))
+{
+    pthread_t tid;
+    pthread_attr_t threadAttr;
+    pthread_attr_init(&threadAttr);
+    pthread_attr_setstacksize(&threadAttr, MAINLOOP_STACK_SIZE);
+    pthread_create(&tid, &threadAttr, entry, 0);
+}
+
 static BOOL BusCenterTestSuiteSetUp(void)
 {
     printf("----------test case with DsoftbusMgrTest start-------------\n");
+    if (GetServerIsInit() == false) {
+        printf("----------Server Is not Init-------------\n");
+        sleep(SLEEP_TIME);
+    }
     return TRUE;
 }
 
@@ -167,6 +194,10 @@ LITE_TEST_CASE(BusCenterTestSuite, testJoinLNN0001, Function | MediumTest | Leve
     printf("------start testJoinLNN------\n");
     ConnectionAddr addr;
 
+    while (GetServerIsInit() == false) {
+        sleep(1);
+    }
+    osDelay(UI_MAIN_TASK_DELAY);
     int32_t ret = JoinLNN(NULL, &addr, OnJoinLNNDone);
     TEST_ASSERT_TRUE(ret == SOFTBUS_INVALID_PARAM);
     ret = JoinLNN(TEST_PKG_NAME, NULL, OnJoinLNNDone);
@@ -222,14 +253,9 @@ LITE_TEST_CASE(BusCenterTestSuite, testRegNodeDeviceStateCb002, Function | Mediu
 {
     int32_t i;
     int32_t ret = 0;
-    for (i = 0; i <= DEFAULT_NODE_STATE_CB_NUM; ++i) {
-        if (i < DEFAULT_NODE_STATE_CB_NUM) {
-            ret = RegNodeDeviceStateCb(TEST_PKG_NAME, &g_nodeStateCb);
-            TEST_ASSERT_TRUE(ret == SOFTBUS_OK);
-        } else {
-            ret = RegNodeDeviceStateCb(TEST_PKG_NAME, &g_nodeStateCb);
-            TEST_ASSERT_TRUE(ret != SOFTBUS_OK);
-        }
+    for (i = 0; i < DEFAULT_NODE_STATE_CB_NUM; ++i) {
+        ret = RegNodeDeviceStateCb(TEST_PKG_NAME, &g_nodeStateCb);
+        TEST_ASSERT_TRUE(ret == SOFTBUS_OK);
     }
 
     for (i = 0; i < DEFAULT_NODE_STATE_CB_NUM; ++i) {
@@ -270,10 +296,10 @@ LITE_TEST_CASE(BusCenterTestSuite, testGetLocalNodeDeviceInfo001, Function | Med
     printf("------start testGetLocalNodeDeviceInfo------\n");
     NodeBasicInfo info;
     int32_t ret = GetLocalNodeDeviceInfo(TEST_PKG_NAME, &info);
-    TEST_ASSERT_TRUE(ret == SOFTBUS_ERR);
+    TEST_ASSERT_TRUE(ret == SOFTBUS_OK);
     ret = strlen(info.networkId);
-    TEST_ASSERT_TRUE(ret != (NETWORK_ID_BUF_LEN - 1));
-    TEST_ASSERT_TRUE(info.deviceTypeId != DEFAULT_LOCAL_DEVICE_TYPE_ID);
+    TEST_ASSERT_TRUE(ret == (NETWORK_ID_BUF_LEN - 1));
+    TEST_ASSERT_TRUE(info.deviceTypeId == DEFAULT_LOCAL_DEVICE_TYPE_ID);
     printf("------end testGetLocalNodeDeviceInfo------\n");
 }
 
@@ -290,11 +316,9 @@ LITE_TEST_CASE(BusCenterTestSuite, testGetNodeKeyInfo001, Function | MediumTest 
     char udid[UDID_BUF_LEN] = {0};
 
     (void)memset_s(&info, sizeof(NodeBasicInfo), 0, sizeof(NodeBasicInfo));
-    TEST_ASSERT_TRUE(GetLocalNodeDeviceInfo(TEST_PKG_NAME, &info) == SOFTBUS_ERR);
+    TEST_ASSERT_TRUE(GetLocalNodeDeviceInfo(TEST_PKG_NAME, &info) == SOFTBUS_OK);
     TEST_ASSERT_TRUE(GetNodeKeyInfo(TEST_PKG_NAME, info.networkId, NODE_KEY_UDID,
-        (uint8_t *)udid, UDID_BUF_LEN) != SOFTBUS_OK);
-    TEST_ASSERT_TRUE(GetNodeKeyInfo(TEST_PKG_NAME, info.networkId, NODE_KEY_UUID,
-        (uint8_t *)uuid, UUID_BUF_LEN) != SOFTBUS_OK);
+        (uint8_t *)udid, UDID_BUF_LEN) == SOFTBUS_OK);
     TEST_ASSERT_TRUE(strlen(uuid) != (UUID_BUF_LEN - 1));
 }
 
@@ -311,7 +335,6 @@ LITE_TEST_CASE(BusCenterTestSuite, testStartTimeSync001, Function | MediumTest |
 
     TEST_ASSERT_TRUE(StartTimeSync(NULL, networkId, LOW_ACCURACY, SHORT_PERIOD, &g_timeSyncCb) != SOFTBUS_OK);
     TEST_ASSERT_TRUE(StartTimeSync(TEST_PKG_NAME, NULL, LOW_ACCURACY, SHORT_PERIOD, &g_timeSyncCb) != SOFTBUS_OK);
-    TEST_ASSERT_TRUE(StartTimeSync(TEST_PKG_NAME, networkId, LOW_ACCURACY, SHORT_PERIOD, &g_timeSyncCb) != SOFTBUS_OK);
     TEST_ASSERT_TRUE(StartTimeSync(TEST_PKG_NAME, networkId, LOW_ACCURACY, SHORT_PERIOD, NULL) != SOFTBUS_OK);
 }
 
@@ -327,7 +350,6 @@ LITE_TEST_CASE(BusCenterTestSuite, testStartTimeSync002, Function | MediumTest |
 
     TEST_ASSERT_TRUE(StopTimeSync(NULL, networkId) != SOFTBUS_OK);
     TEST_ASSERT_TRUE(StopTimeSync(TEST_PKG_NAME, NULL) != SOFTBUS_OK);
-    TEST_ASSERT_TRUE(StopTimeSync(TEST_PKG_NAME, networkId) != SOFTBUS_OK);
 }
 
 /**
@@ -371,33 +393,6 @@ LITE_TEST_CASE(BusCenterTestSuite, testPublishLNN001, Function | MediumTest | Le
     ret = PublishLNN(TEST_PKG_NAME, &g_pInfo, &g_publishCb);
     TEST_ASSERT_TRUE(ret != 0);
     g_pInfo.dataLen = sizeof("capdata1");
-
-    ret = PublishLNN(TEST_PKG_ERROR_NAME, &g_pInfo, &g_publishCb);
-    TEST_ASSERT_TRUE(ret == 0);
-}
-
-/**
- * @tc.name: testPublishLNN002
- * @tc.desc: Verify normal case
- * @tc.type: FUNC
- * @tc.require:
- */
-LITE_TEST_CASE(BusCenterTestSuite, testPublishLNN002, Function | MediumTest | Level0)
-{
-    int32_t ret;
-    int tmpId1 = GetPublishId();
-    int tmpId2 = GetPublishId();
-
-    g_pInfo.publishId = tmpId1;
-    ret = PublishLNN(TEST_PKG_NAME, &g_pInfo, &g_publishCb);
-    TEST_ASSERT_TRUE(ret == 0);
-    g_pInfo1.publishId = tmpId2;
-    ret = PublishLNN(TEST_PKG_NAME, &g_pInfo1, &g_publishCb);
-    TEST_ASSERT_TRUE(ret == 0);
-    ret = StopPublishLNN(TEST_PKG_NAME, tmpId1);
-    TEST_ASSERT_TRUE(ret != 0);
-    ret = StopPublishLNN(TEST_PKG_NAME, tmpId2);
-    TEST_ASSERT_TRUE(ret != 0);
 }
 
 /**
@@ -412,9 +407,6 @@ LITE_TEST_CASE(BusCenterTestSuite, testRefreshLNN001, Function | MediumTest | Le
 
     ret = RefreshLNN(NULL, &g_sInfo, &g_refreshCb);
     TEST_ASSERT_TRUE(ret != 0);
-
-    ret = RefreshLNN(TEST_PKG_ERROR_NAME, &g_sInfo, &g_refreshCb);
-    TEST_ASSERT_TRUE(ret == 0);
 
     ret = RefreshLNN(TEST_PKG_NAME, NULL, &g_refreshCb);
     TEST_ASSERT_TRUE(ret != 0);
@@ -446,30 +438,6 @@ LITE_TEST_CASE(BusCenterTestSuite, testRefreshLNN001, Function | MediumTest | Le
     ret = RefreshLNN(TEST_PKG_NAME, &g_sInfo, &g_refreshCb);
     TEST_ASSERT_TRUE(ret != 0);
     g_sInfo.dataLen = sizeof("capdata1");
-}
-
-/**
- * @tc.name: testRefreshLNN002
- * @tc.desc: Verify normal case
- * @tc.type: FUNC
- * @tc.require:
- */
-LITE_TEST_CASE(BusCenterTestSuite, testRefreshLNN002, Function | MediumTest | Level0)
-{
-    int32_t ret;
-    int tmpId1 = GetSubscribeId();
-    int tmpId2 = GetSubscribeId();
-
-    g_sInfo.subscribeId = tmpId1;
-    ret = RefreshLNN(TEST_PKG_NAME, &g_sInfo, &g_refreshCb);
-    TEST_ASSERT_TRUE(ret == 0);
-    g_sInfo1.subscribeId = tmpId2;
-    ret = RefreshLNN(TEST_PKG_NAME, &g_sInfo1, &g_refreshCb);
-    TEST_ASSERT_TRUE(ret == 0);
-    ret = StopRefreshLNN(TEST_PKG_NAME, tmpId1);
-    TEST_ASSERT_TRUE(ret != 0);
-    ret = StopRefreshLNN(TEST_PKG_NAME, tmpId2);
-    TEST_ASSERT_TRUE(ret != 0);
 }
 
 /*

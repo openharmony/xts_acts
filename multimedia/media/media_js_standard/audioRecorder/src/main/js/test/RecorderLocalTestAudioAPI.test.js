@@ -14,6 +14,7 @@
  */
 
 import media from '@ohos.multimedia.media'
+import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('RecorderLocalTestAudioAPI', function () {
@@ -32,6 +33,9 @@ describe('RecorderLocalTestAudioAPI', function () {
     const ENCORDER_AACLC = 3;
     const CHANNEL_TWO = 2;
     const RECORDER_TIME = 1000;
+    let fdPath;
+    let fileAsset;
+    let fdNumber;
     let audioConfig = {
         audioSourceType : SOURCE_TYPE,
         audioEncoder : ENCORDER_AACLC,
@@ -45,7 +49,7 @@ describe('RecorderLocalTestAudioAPI', function () {
 
     function sleep(time) {
         for(let t = Date.now();Date.now() - t <= time;);
-    };
+    }
 
     function initAudioRecorder() {
         if (typeof (audioRecorder) != 'undefined') {
@@ -153,7 +157,8 @@ describe('RecorderLocalTestAudioAPI', function () {
         });  
     }
 
-    beforeAll(function () {
+    beforeAll(async function () {
+        await getFd('testAPI.m4a');
         console.info('beforeAll case');
     })
 
@@ -165,9 +170,42 @@ describe('RecorderLocalTestAudioAPI', function () {
         console.info('afterEach case');
     })
 
-    afterAll(function () {
+    afterAll(async function () {
+        await closeFd();
         console.info('afterAll case');
     })
+
+    async function getFd(pathName) {
+        let displayName = pathName;
+        const mediaTest = mediaLibrary.getMediaLibrary();
+        let fileKeyObj = mediaLibrary.FileKey;
+        let mediaType = mediaLibrary.MediaType.VIDEO;
+        let publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
+        let dataUri = await mediaTest.createAsset(mediaType, displayName, publicPath);
+        if (dataUri != undefined) {
+            let args = dataUri.id.toString();
+            let fetchOp = {
+                selections : fileKeyObj.ID + "=?",
+                selectionArgs : [args],
+            }
+            let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
+            fileAsset = await fetchFileResult.getAllObject();
+            fdNumber = await fileAsset[0].open('Rw');
+            fdPath = "fd://" + fdNumber.toString();
+        }
+    }
+
+    async function closeFd() {
+        if (fileAsset != null) {
+            await fileAsset[0].close(fdNumber).then(() => {
+                console.info('[mediaLibrary] case close fd success');
+            }).catch((err) => {
+                console.info('[mediaLibrary] case close fd failed');
+            });
+        } else {
+            console.info('[mediaLibrary] case fileAsset is null');
+        }
+    }
 
     /* *
         * @tc.number    : SUB_MEDIA_RECORDER_createAudioRecorder_API_0100
@@ -178,6 +216,7 @@ describe('RecorderLocalTestAudioAPI', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_RECORDER_createAudioRecorder_API_0100', 0, async function (done) {
+        audioConfig.uri = fdPath;
         let testAudioRecorder;
         expect(testAudioRecorder).assertNull();
         testAudioRecorder= media.createAudioRecorder();

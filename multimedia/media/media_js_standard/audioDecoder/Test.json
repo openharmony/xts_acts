@@ -12,20 +12,19 @@
             "pre-push": [
             ],
             "push": [
-                "./resource/audio/audioDecode/AAC_48000_32_1.aac ->/data/media/",
-                "./resource/audio/audioDecode/AAC_16000_1.aac ->/data/media/",
-                "./resource/audio/audioDecode/FLAC_48000_32_1.flac ->/data/media/",
-                "./resource/audio/audioDecode/mp3.es ->/data/media/",
-                "./resource/audio/audioDecode/vorbis.es ->/data/media/"
+                "./resource/audio/audioDecode/AAC_48000_32_1.aac ->/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiodecoder/",
+                "./resource/audio/audioDecode/AAC_16000_1.aac ->/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiodecoder/",
+                "./resource/audio/audioDecode/FLAC_48000_32_1.flac ->/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiodecoder/",
+                "./resource/audio/audioDecode/mp3.es ->/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiodecoder/",
+                "./resource/audio/audioDecode/vorbis.es ->/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiodecoder/"
             ]
         },
 		{
             "type": "ShellKit",
             "run-command": [
-                "rm -R /data/media/results",
-                "chmod 777 -R /data/media",
-                "chmod 777 /data/media/*",
-                "mkdir /data/media/results",
+                "mkdir -p /data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiodecoder/results/",
+                "chmod 777 -R /data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiodecoder",
+                "chmod 777 /data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiodecoder/*",
                 "setenforce 0"
             ],
             "teardown-command":[

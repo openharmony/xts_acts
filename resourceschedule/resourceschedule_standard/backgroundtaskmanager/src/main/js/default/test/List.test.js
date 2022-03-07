@@ -14,6 +14,8 @@
  */
 
 require('./BackgroundTaskMagrJs.test.js')
+require('./ContinuousTaskJsunit.test.js')
+
 
 
 

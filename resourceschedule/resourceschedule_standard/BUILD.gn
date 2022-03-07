@@ -19,6 +19,7 @@ group("resourceschedule_standard") {
     deps = [
       "backgroundtaskmanager:resourceschedule_backgroundtaskmanager_js_test",
       "reminderagent:resourceschedule_reminderagent_js_test",
+      "workscheduler:resourceschedule_workscheduler_js_test",
     ]
   }
 }
