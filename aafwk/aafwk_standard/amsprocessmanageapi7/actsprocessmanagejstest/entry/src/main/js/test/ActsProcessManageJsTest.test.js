@@ -21,7 +21,8 @@ import file from '@system.file'
 import bundle from '@ohos.bundle'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-const BUNDLE_PATHS = [['/data/ActsAmsProcessManageSystemAppAApi7.hap', '/data/ActsAmsProcessManageSystemAppAMultiApi7.hap'],
+const BUNDLE_PATHS = [['/data/ActsAmsProcessManageSystemAppAApi7.hap',
+ '/data/ActsAmsProcessManageSystemAppAMultiApi7.hap'],
 ['/data/ActsAmsProcessManageSystemAppBApi7.hap'],
 ['/data/ActsAmsProcessManageVendorAppAApi7.hap']];
 const BUNDLE_NAMES = ['com.acts.pmsystemappaapi7',
@@ -1290,6 +1291,7 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
             done();
         });
     })
+
     /*
     * @tc.number: ACTS_ProcessManage_clearUpApplicationData_1100
     * @tc.name: Parameter is undefined
@@ -1311,6 +1313,7 @@ describe('ActsAmsProcessManageJsTestApi7', function () {
             done();
         }
     })
+    
     /*
     * @tc.number: ACTS_ProcessManage_clearUpApplicationData_1200
     * @tc.name: Stop an application that doesn't exist

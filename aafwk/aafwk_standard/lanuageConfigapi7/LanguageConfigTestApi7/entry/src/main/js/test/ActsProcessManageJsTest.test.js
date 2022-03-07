@@ -95,6 +95,7 @@ describe('ActsAbilityTest', function () {
             })
         }
     })
+    
     /*
       * @tc.number: AMS_UpdateConfiguration_0100
       * @tc.name: Connects a service ability, which is used to start a cloned page ability.

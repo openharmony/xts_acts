@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import commonEvent from '@ohos.commonevent'
-// import abilityManager from '@ohos.app.abilityManager'
 import abilityManager from '@ohos.application.appManager'
 import featureAbility from '@ohos.ability.featureability'
 
