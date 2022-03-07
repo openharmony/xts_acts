@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import featureAbility from '@ohos.ability.featureAbility'
-import abilityManager from '@ohos.app.abilityManager'
+import missionManager from '@ohos.application.missionManager'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('ActsAmsCallBackSixth Scene', function () {
@@ -51,7 +51,7 @@ describe('ActsAmsCallBackSixth Scene', function () {
     * @tc.desc      : Clear Missions(by Promise)
      */
     it('Acts_Ams_test_12100', 0, async function (done) {
-        var info = await abilityManager.clearMissions();
+        var info = await missionManager.clearAllMissions();
         console.info('Acts_Ams_test_12100 clearMissions data  [' + info + ']');
         expect(typeof(info)).assertEqual("number");
         expect(info).assertEqual(0);
