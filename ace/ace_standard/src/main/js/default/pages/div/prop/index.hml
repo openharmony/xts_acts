@@ -90,6 +90,16 @@
         </div>
 
         <text class="sub-title">
+            通用属性 -- data
+        </text>
+        <div id="dataPropOne"
+             data="通用属性 -- data">
+        </div>
+        <div id="dataPropOneNone"
+             data="">
+        </div>
+
+        <text class="sub-title">
             通用属性 -- click-effect
         </text>
         <div id="clickEffectPropSmall"
