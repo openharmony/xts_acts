@@ -37,7 +37,7 @@ let fileNoArgsfetchOp = {
     selectionArgs: [],
 };
 
-describe('album.callback.test.js', function () {
+describe('album.callback.test.js', async function () {
     let path = 'Pictures/';
     console.info('MediaLibraryTest : Delete begin');
     let fetchFileResult = await media.getFileAssets(fileNoArgsfetchOp);

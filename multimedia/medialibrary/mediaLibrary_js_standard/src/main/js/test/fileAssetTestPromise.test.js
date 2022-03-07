@@ -14,19 +14,11 @@
  */
 
 import mediaLibrary from '@ohos.multimedia.medialibrary';
-import featureAbility from '@ohos.ability.featureAbility'
+import featureAbility from '@ohos.ability.featureAbility';
 import fileio from '@ohos.fileio';
-import {
-    describe,
-    beforeAll,
-    beforeEach,
-    afterEach,
-    afterAll,
-    it,
-    expect
-} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
-describe('fileAsset.test.js', async function () {
+describe('fileAssetTestPromise.test.js', async function () {
     var context = featureAbility.getContext();
     console.info('MediaLibraryTest : getMediaLibrary IN');
     var media = mediaLibrary.getMediaLibrary(context);
@@ -72,22 +64,27 @@ describe('fileAsset.test.js', async function () {
             await asset1.close(fd1);
 
             if (fd > 0 && res.bytesRead > 0 && write > 0) {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_01  success');
+                console.info(
+                    'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_01  success'
+                );
                 done();
             } else {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_01  failed');
+                console.info(
+                    'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_01  failed'
+                );
                 done();
             }
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_01  error' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_01  error' +
+                    error
+            );
             await asset.close(fd);
             await asset1.close(fd1);
             expect(false).assertTrue();
             done();
         }
     });
-
-
 
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_02
@@ -101,7 +98,6 @@ describe('fileAsset.test.js', async function () {
         let asset;
         let fd;
         try {
-
             let type = mediaLibrary.MediaType.FILE;
             let fetchOp = {
                 selections: fileKeyObj.MEDIA_TYPE + '= ?',
@@ -120,7 +116,10 @@ describe('fileAsset.test.js', async function () {
             await asset.close(fd);
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_02  error:' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_02  error:' +
+                    error
+            );
             if (fd > 0) {
                 expect(true).assertTrue();
             }
@@ -143,7 +142,6 @@ describe('fileAsset.test.js', async function () {
         let fd;
         let fd1;
         try {
-
             let type = mediaLibrary.MediaType.FILE;
             let fetchOp = {
                 selections: fileKeyObj.MEDIA_TYPE + '= ?',
@@ -165,7 +163,10 @@ describe('fileAsset.test.js', async function () {
             let res1 = await fileio.read(fd, buf1);
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_03  error:' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_03  error:' +
+                    error
+            );
             expect(true).assertTrue();
             await asset.close(fd);
             await asset1.close(fd1);
@@ -177,18 +178,17 @@ describe('fileAsset.test.js', async function () {
 
     //======================== ALBUM BEGIN ==================================
     /**
-    * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_04
-    * @tc.name      : open('rw')
-    * @tc.desc      : open -rw the type of ALBUM
-    * @tc.size      : MEDIUM
-    * @tc.type      : Function
-    * @tc.level     : Level 0
-    */
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_04
+     * @tc.name      : open('rw')
+     * @tc.desc      : open -rw the type of ALBUM
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_04', 0, async function (done) {
         let asset;
         let fd;
         try {
-
             let type = mediaLibrary.MediaType.ALBUM;
             let fetchOp = {
                 selections: fileKeyObj.MEDIA_TYPE + '= ?',
@@ -200,7 +200,10 @@ describe('fileAsset.test.js', async function () {
             fd = await asset.open('rw');
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_03  error:' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_03  error:' +
+                    error
+            );
             expect(true).assertTrue();
             if (fd > 0) {
                 asset.close(fd);
@@ -210,18 +213,17 @@ describe('fileAsset.test.js', async function () {
     });
 
     /**
-   * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_05
-   * @tc.name      : open('r')
-   * @tc.desc      : open -r the type of ALBUM
-   * @tc.size      : MEDIUM
-   * @tc.type      : Function
-   * @tc.level     : Level 0
-   */
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_05
+     * @tc.name      : open('r')
+     * @tc.desc      : open -r the type of ALBUM
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_05', 0, async function (done) {
         let asset;
         let fd;
         try {
-
             let type = mediaLibrary.MediaType.ALBUM;
             let fetchOp = {
                 selections: fileKeyObj.MEDIA_TYPE + '= ?',
@@ -233,7 +235,10 @@ describe('fileAsset.test.js', async function () {
             fd = await asset.open('r');
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_05  error:' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_05  error:' +
+                    error
+            );
             expect(true).assertTrue();
             if (fd > 0) {
                 asset.close(fd);
@@ -243,18 +248,17 @@ describe('fileAsset.test.js', async function () {
     });
 
     /**
-    * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_05
-    * @tc.name      : open('w')
-    * @tc.desc      : open -w the type of ALBUM
-    * @tc.size      : MEDIUM
-    * @tc.type      : Function
-    * @tc.level     : Level 0
-    */
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_05
+     * @tc.name      : open('w')
+     * @tc.desc      : open -w the type of ALBUM
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_06', 0, async function (done) {
         let asset;
         let fd;
         try {
-
             let type = mediaLibrary.MediaType.ALBUM;
             let fetchOp = {
                 selections: fileKeyObj.MEDIA_TYPE + '= ?',
@@ -266,7 +270,10 @@ describe('fileAsset.test.js', async function () {
             fd = await asset.open('r');
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_06  error:' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_06  error:' +
+                    error
+            );
             expect(true).assertTrue();
             if (fd > 0) {
                 asset.close(fd);
@@ -275,7 +282,7 @@ describe('fileAsset.test.js', async function () {
         }
     });
 
-    //======================== ALBUM END ==================================    
+    //======================== ALBUM END ==================================
 
     //======================== IMAGE BEGIN ==================================
     /**
@@ -316,14 +323,21 @@ describe('fileAsset.test.js', async function () {
             await asset1.close(fd1);
 
             if (fd > 0 && res.bytesRead > 0 && write > 0) {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_07  success');
+                console.info(
+                    'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_07  success'
+                );
                 done();
             } else {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_07  failed');
+                console.info(
+                    'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_07  failed'
+                );
                 done();
             }
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_07  error' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_07  error' +
+                    error
+            );
             await asset.close(fd);
             await asset1.close(fd1);
             expect(false).assertTrue();
@@ -343,7 +357,6 @@ describe('fileAsset.test.js', async function () {
         let asset;
         let fd;
         try {
-
             let type = mediaLibrary.MediaType.IMAGE;
             let fetchOp = {
                 selections: fileKeyObj.MEDIA_TYPE + '= ?',
@@ -362,7 +375,10 @@ describe('fileAsset.test.js', async function () {
             await asset.close(fd);
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_08  error:' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_08  error:' +
+                    error
+            );
             if (fd > 0) {
                 expect(true).assertTrue();
             }
@@ -385,7 +401,6 @@ describe('fileAsset.test.js', async function () {
         let fd;
         let fd1;
         try {
-
             let type = mediaLibrary.MediaType.IMAGE;
             let fetchOp = {
                 selections: fileKeyObj.MEDIA_TYPE + '= ?',
@@ -407,14 +422,16 @@ describe('fileAsset.test.js', async function () {
             let res1 = await fileio.read(fd, buf1);
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_09  error:' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_09  error:' +
+                    error
+            );
             expect(true).assertTrue();
             await asset.close(fd);
             await asset1.close(fd1);
             done();
         }
     });
-
 
     //======================== IMAGE END ==================================
 
@@ -457,22 +474,27 @@ describe('fileAsset.test.js', async function () {
             await asset1.close(fd1);
 
             if (fd > 0 && res.bytesRead > 0 && write > 0) {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_10  success');
+                console.info(
+                    'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_10  success'
+                );
                 done();
             } else {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_10  failed');
+                console.info(
+                    'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_10  failed'
+                );
                 done();
             }
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_10  error' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_10  error' +
+                    error
+            );
             await asset.close(fd);
             await asset1.close(fd1);
             expect(false).assertTrue();
             done();
         }
     });
-
-
 
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_11
@@ -486,7 +508,6 @@ describe('fileAsset.test.js', async function () {
         let asset;
         let fd;
         try {
-
             let type = mediaLibrary.MediaType.AUDIO;
             let fetchOp = {
                 selections: fileKeyObj.MEDIA_TYPE + '= ?',
@@ -505,7 +526,10 @@ describe('fileAsset.test.js', async function () {
             await asset.close(fd);
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_11  error:' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_11  error:' +
+                    error
+            );
             if (fd > 0) {
                 expect(true).assertTrue();
             }
@@ -528,7 +552,6 @@ describe('fileAsset.test.js', async function () {
         let fd;
         let fd1;
         try {
-
             let type = mediaLibrary.MediaType.AUDIO;
             let fetchOp = {
                 selections: fileKeyObj.MEDIA_TYPE + '= ?',
@@ -550,7 +573,10 @@ describe('fileAsset.test.js', async function () {
             let res1 = await fileio.read(fd, buf1);
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_12  error:' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_12  error:' +
+                    error
+            );
             expect(true).assertTrue();
             await asset.close(fd);
             await asset1.close(fd1);
@@ -559,7 +585,6 @@ describe('fileAsset.test.js', async function () {
     });
 
     //======================== AUDIO END ==================================
-
 
     //======================== VIDEO BEGIN ==================================
     /**
@@ -600,22 +625,27 @@ describe('fileAsset.test.js', async function () {
             await asset1.close(fd1);
 
             if (fd > 0 && res.bytesRead > 0 && write > 0) {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_13  success');
+                console.info(
+                    'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_13  success'
+                );
                 done();
             } else {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_13  failed');
+                console.info(
+                    'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_13  failed'
+                );
                 done();
             }
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_13  error' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_13  error' +
+                    error
+            );
             await asset.close(fd);
             await asset1.close(fd1);
             expect(false).assertTrue();
             done();
         }
     });
-
-
 
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_14
@@ -629,7 +659,6 @@ describe('fileAsset.test.js', async function () {
         let asset;
         let fd;
         try {
-
             let type = mediaLibrary.MediaType.VIDEO;
             let fetchOp = {
                 selections: fileKeyObj.MEDIA_TYPE + '= ?',
@@ -648,7 +677,10 @@ describe('fileAsset.test.js', async function () {
             await asset.close(fd);
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_14  error:' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_14  error:' +
+                    error
+            );
             if (fd > 0) {
                 expect(true).assertTrue();
             }
@@ -671,7 +703,6 @@ describe('fileAsset.test.js', async function () {
         let fd;
         let fd1;
         try {
-
             let type = mediaLibrary.MediaType.VIDEO;
             let fetchOp = {
                 selections: fileKeyObj.MEDIA_TYPE + '= ?',
@@ -693,7 +724,10 @@ describe('fileAsset.test.js', async function () {
             let res1 = await fileio.read(fd, buf1);
             done();
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_15  error:' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_15  error:' +
+                    error
+            );
             expect(true).assertTrue();
             await asset.close(fd);
             await asset1.close(fd1);
@@ -703,13 +737,12 @@ describe('fileAsset.test.js', async function () {
 
     //======================== VIDEO END ==================================
 
-
     //======================== CLOSE BEGIN ================================
 
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_31
      * @tc.name      : close
-     * @tc.desc      : asset close the type of file 
+     * @tc.desc      : asset close the type of file
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -734,25 +767,31 @@ describe('fileAsset.test.js', async function () {
 
             fd1 = await asset.open('r');
             console.info('MediaLibraryTest : ==2 fd2:' + fd1);
-            await asset.close(fd1); 
+            await asset.close(fd1);
             if (fd > 0 && fd1 > 0) {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_31  success');
+                console.info(
+                    'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_31  success'
+                );
                 expect(true).assertTrue();
                 done();
             } else {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_31  false');
+                console.info(
+                    'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_31  false'
+                );
                 expect(false).assertTrue();
                 done();
             }
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_31  error' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_31  error' +
+                    error
+            );
             await asset.close(fd);
             await asset.close(fd1);
             expect(false).assertTrue();
             done();
         }
     });
-
 
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_33
@@ -784,16 +823,23 @@ describe('fileAsset.test.js', async function () {
             console.info('MediaLibraryTest : ==2 fd2:' + fd1);
             await asset.close(fd1);
             if (fd > 0 && fd1 > 0) {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_33  success');
+                console.info(
+                    'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_33  success'
+                );
                 expect(true).assertTrue();
                 done();
             } else {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_33  false');
+                console.info(
+                    'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_33  false'
+                );
                 expect(false).assertTrue();
                 done();
             }
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_33  error' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_33  error' +
+                    error
+            );
             await asset.close(fd);
             await asset.close(fd1);
             expect(false).assertTrue();
@@ -827,17 +873,24 @@ describe('fileAsset.test.js', async function () {
             fd1 = await asset.open('r');
             await asset.close(fd1);
             if (fd > 0 && fd1 > 0) {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_34  success');
+                console.info(
+                    'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_34  success'
+                );
                 expect(true).assertTrue();
                 done();
             } else {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_34  false');
+                console.info(
+                    'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_34  false'
+                );
                 expect(false).assertTrue();
                 done();
             }
-            done
+            done;
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_34  error' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_34  error' +
+                    error
+            );
             await asset.close(fd);
             await asset.close(fd1);
             expect(false).assertTrue();
@@ -871,16 +924,23 @@ describe('fileAsset.test.js', async function () {
             fd1 = await asset.open('r');
             await asset.close(fd1);
             if (fd > 0 && fd1 > 0) {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_35  success');
+                console.info(
+                    'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_35  success'
+                );
                 expect(true).assertTrue();
                 done();
             } else {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_35  false');
+                console.info(
+                    'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_35  false'
+                );
                 expect(false).assertTrue();
                 done();
             }
         } catch (error) {
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_35  error' + error);
+            console.info(
+                'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_35  error' +
+                    error
+            );
             await asset.close(fd);
             await asset.close(fd1);
             expect(false).assertTrue();
@@ -889,5 +949,4 @@ describe('fileAsset.test.js', async function () {
     });
 
     //======================== CLOSE BEGIN ================================
-
 });
