@@ -33,6 +33,18 @@ class StubTest2 extends rpc.RemoteObject {
     }
 }
 
+function getNowTime() {
+    return new Date().getTime();
+}
+
+function getDurationTime(msg, startTime, endTime) {
+    console.info(msg + 'Get Interface startTime: ' + startTime);
+    console.info(msg + 'Get Interface endTime: ' + endTime);
+    var duration = (endTime - startTime)
+    console.info(msg + 'Get Interface Duration: ' + duration);
+    return duration;
+}
+
 async function sleep(time: any) {
     var now = new Date();
     var exitTime = now.getTime() + time;
@@ -58,7 +70,7 @@ export default {
             "abilityName": "com.ohos.acecollaboration.ServiceAbility",
         }
         let options = {
-            onConnect: function (element: any, proxy: any) {
+            onConnect: async function (element: any, proxy: any) {
                 console.log('particleAbility_connectAbility_test_0100 ConnectAbility onConnect element.deviceId : '
                 + JSON.stringify(element.deviceId));
                 console.log('particleAbility_connectAbility_test_0100 ConnectAbility onConnect element.bundleName : '
@@ -72,7 +84,7 @@ export default {
                 console.log('particleAbility_connectAbility_test_0100 ConnectAbility onConnect proxy : '
                 + JSON.stringify(proxy));
             },
-            onDisconnect: function (element1: any) {
+            onDisconnect: async function (element1: any) {
                 console.log('particleAbility_connectAbility_test_0100 ConnectAbility onDisconnect element.deviceId : '
                 + JSON.stringify(element1.deviceId));
                 console.log('particleAbility_connectAbility_test_0100 ConnectAbility onDisconnect element.bundleName : '
@@ -84,36 +96,34 @@ export default {
                 console.log('particleAbility_connectAbility_test_0100 ConnectAbility onDisconnect element.shortName : '
                 + JSON.stringify(element1.shortName));
             },
-            onFailed: function (code: any) {
+            onFailed: async function (code: any) {
                 console.log('particleAbility_connectAbility_test_0100 ConnectAbility onFailed errCode : ' + code);
             },
         }
 
         let connection_succeeded: any;
-        async function connectAbility_service() {
-            console.info('particleAbility_connectAbility_test_0100  start ');
-            var connection = particleAbility.connectAbility(request, options);
-            connection_succeeded = connection;
-            console.info('particleAbility_connectAbility_test_0100 service  request is:' + JSON.stringify(request));
-            console.info('particleAbility_connectAbility_test_0100 options is:' + JSON.stringify(options));
-            console.info('particleAbility_connectAbility_test_0100 data is: ' + JSON.stringify(connection));
-            console.info('particleAbility_connectAbility_test_0100  connection=: ' + connection);
-        }
-        async function disconnectAbility_promise() {
-            console.info('particleAbility_connectAbility_test_0100  disconnectability start ');
-            await particleAbility.disconnectAbility(connection_succeeded).then((data: any) => {
-                console.info('particleAbility_connectAbility_test_0100 disconnectability succeeded: ' +
-                JSON.stringify(data));
-            }).catch((error: any) => {
-                console.error('particleAbility_connectAbility_test_0100 disconnectability failed. Cause: ' +
-                JSON.stringify(error));
-            })
-        }
-        connectAbility_service();
-        console.info('particleAbility_connectAbility_test_0100 sleep start');
+        console.info('particleAbility_connectAbility_test_0100  start ');
+        var timeOldStamp = getNowTime();
+        var connection = particleAbility.connectAbility(request, options);
+        var timeNewStamp = getNowTime();
+        getDurationTime('particleAbility_connectAbility_test_0100 connectability', timeOldStamp, timeNewStamp);
+        connection_succeeded = connection;
+        console.info('particleAbility_connectAbility_test_0100 service  request is:' + JSON.stringify(request));
+        console.info('particleAbility_connectAbility_test_0100 options is:' + JSON.stringify(options));
+        console.info('particleAbility_connectAbility_test_0100 data is: ' + JSON.stringify(connection));
+        console.info('particleAbility_connectAbility_test_0100  connection=: ' + connection);
         sleep(5000);
-        console.info('particleAbility_connectAbility_test_0100 sleep flish');
-        disconnectAbility_promise();
+        console.info('particleAbility_connectAbility_test_0100  disconnectability start ');
+        var timeOldStamp = getNowTime();
+        particleAbility.disconnectAbility(connection_succeeded).then((data: any) => {
+            var timeNewStamp = getNowTime();
+            getDurationTime('particleAbility_connectAbility_test_0100 disconnectability', timeOldStamp, timeNewStamp);
+            console.info('particleAbility_connectAbility_test_0100 disconnectability succeeded: ' +
+            JSON.stringify(data));
+        }).catch((error: any) => {
+            console.error('particleAbility_connectAbility_test_0100 disconnectability failed. Cause: ' +
+            JSON.stringify(error));
+        })
     },
     onConnect(want) {
         console.info('ServiceAbility2 onConnect');

@@ -33,6 +33,18 @@ class StubTest5 extends rpc.RemoteObject {
     }
 }
 
+function getNowTime() {
+    return new Date().getTime();
+}
+
+function getDurationTime(msg, startTime, endTime) {
+    console.info(msg + 'Get Interface startTime: ' + startTime);
+    console.info(msg + 'Get Interface endTime: ' + endTime);
+    var duration = (endTime - startTime)
+    console.info(msg + 'Get Interface Duration: ' + duration);
+    return duration;
+}
+
 async function sleep(time: any) {
     var now = new Date();
     var exitTime = now.getTime() + time;
@@ -85,50 +97,48 @@ export default {
                 + JSON.stringify(element1.shortName));
             },
             onFailed: function (code: any) {
-                console.log('particleAbility_connectAbility_test_0400 ConnectAbility  service onFailed errCode:' + code)
+                console.log('particleAbility_connectAbility_test_0400 ConnectAbility onFailed errCode:' + code);
             },
         }
 
         let connection_succeeded: any;
-        async function connectAbility_service() {
-            console.info('particleAbility_connectAbility_test_0400  start ');
-            var connection = particleAbility.connectAbility(request, options);
-            connection_succeeded = connection;
-            console.info('particleAbility_connectAbility_test_0400 service  request is:' + JSON.stringify(request));
-            console.info('particleAbility_connectAbility_test_0400 options is:' + JSON.stringify(options));
-            console.info('particleAbility_connectAbility_test_0400 data is: ' + JSON.stringify(connection));
-            console.info('particleAbility_connectAbility_test_0400 connection=: ' + connection);
-        }
-
-        async function disconnectAbility_promise() {
-            console.info('particleAbility_connectAbility_test_0400  disconnectability start ');
-            await particleAbility.disconnectAbility(connection_succeeded).then((data: any) => {
-                console.info('particleAbility_connectAbility_test_0400 disconnectability succeeded: ' +
+        console.info('particleAbility_connectAbility_test_0400  start ');
+        var timeOldStamp = getNowTime();
+        var connection = particleAbility.connectAbility(request, options);
+        var timeNewStamp = getNowTime();
+        getDurationTime('particleAbility_connectAbility_test_0400 connectability', timeOldStamp, timeNewStamp);
+        connection_succeeded = connection;
+        console.info('particleAbility_connectAbility_test_0400 service  request is:' + JSON.stringify(request));
+        console.info('particleAbility_connectAbility_test_0400 options is:' + JSON.stringify(options));
+        console.info('particleAbility_connectAbility_test_0400 connection=: ' + connection);
+        sleep(5000);
+        console.info('particleAbility_connectAbility_test_0400  disconnectability start ');
+        var timeOldStamp = getNowTime();
+        particleAbility.disconnectAbility(connection_succeeded).then((data: any) => {
+            var timeNewStamp = getNowTime();
+            getDurationTime('particleAbility_connectAbility_test_0400 disconnectability', timeOldStamp, timeNewStamp);
+            console.info('particleAbility_connectAbility_test_0400 disconnectability succeeded: ' +
+            JSON.stringify(data));
+        }).catch((error: any) => {
+            console.error('particleAbility_connectAbility_test_0400 disconnectability failed. Cause: ' +
+            JSON.stringify(error));
+        });
+        sleep(5000);
+        console.info('particleAbility_connectAbility_test_0400  disconnectability_fail start ');
+        try {
+            var timeOldStamp = getNowTime();
+            particleAbility.disconnectAbility(-1).then((data: any) => {
+                var timeNewStamp = getNowTime();
+                getDurationTime('particleAbility_connectAbility_test_0400 disconnectability_fail',
+                    timeOldStamp, timeNewStamp);
+                console.info('particleAbility_connectAbility_test_0400 disconnectability_fail succeeded: ' +
                 JSON.stringify(data));
-            }).catch((error: any) => {
-                console.error('particleAbility_connectAbility_test_0400 disconnectability failed. Cause: ' +
-                JSON.stringify(error));
             })
         }
-
-        async function disconnectAbility_fail() {
-            console.info('particleAbility_connectAbility_test_0400  disconnectability_fail start ');
-            try {
-                await particleAbility.disconnectAbility(-1).then((data: any) => {
-                    console.info('particleAbility_connectAbility_test_0400 disconnectability_fail succeeded: ' +
-                    JSON.stringify(data));
-                })
-            }
-            catch (error: any) {
-                console.error('particleAbility_connectAbility_test_0400 disconnectability_fail failed. Cause: ' +
-                JSON.stringify(error));
-            }
+        catch (error: any) {
+            console.error('particleAbility_connectAbility_test_0400 disconnectability_fail failed. Cause: ' +
+            JSON.stringify(error));
         }
-        connectAbility_service();
-        sleep(5000);
-        disconnectAbility_promise();
-        sleep(5000);
-        disconnectAbility_fail();
     },
     onConnect(want) {
         console.info('ServiceAbility5 onConnect');

@@ -16,7 +16,7 @@ import {describe, it, expect} from "deccjsunit/index.ets";
 import Utils from './Utils';
 import ability_featureAbility from '@ohos.ability.featureAbility';
 
-export default function getHapModuleInfoJsunit() {
+export default function getAbilityInfoJsunit() {
   describe('appInfoTest', function () {
 
     /**

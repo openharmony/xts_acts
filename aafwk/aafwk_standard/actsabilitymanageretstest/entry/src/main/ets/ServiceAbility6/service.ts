@@ -32,16 +32,16 @@ class StubTest6 extends rpc.RemoteObject {
         return true;
     }
 }
+function getNowTime() {
+    return new Date().getTime();
+}
 
-async function sleep(time: any) {
-    var now = new Date();
-    var exitTime = now.getTime() + time;
-    while (true) {
-        now = new Date();
-        if (now.getTime() > exitTime)
-        break;
-    }
-    console.info(`sleep ${time} over...`);
+function getDurationTime(msg, startTime, endTime) {
+    console.info(msg + 'Get Interface startTime: ' + startTime);
+    console.info(msg + 'Get Interface endTime: ' + endTime);
+    var duration = (endTime - startTime)
+    console.info(msg + 'Get Interface Duration: ' + duration);
+    return duration;
 }
 
 export default {
@@ -90,18 +90,16 @@ export default {
             },
         }
 
-        async function connectAbility_service() {
-            console.info('particleAbility_connectAbility_test_0500 errorabilityName start');
-            var connection = particleAbility.connectAbility(request, options);
-            console.info('particleAbility_connectAbility_test_0500 errorabilityName request is:'
-            + JSON.stringify(request));
-            console.info('particleAbility_connectAbility_test_0500 errorabilityName options is:'
-            + JSON.stringify(options));
-            console.info('particleAbility_connectAbility_test_0500 errorabilityName connection=: ' + connection);
-        }
-
-        connectAbility_service();
-        sleep(6000);
+        console.info('particleAbility_connectAbility_test_0500 errorabilityName start');
+        var timeOldStamp = getNowTime();
+        var connection = particleAbility.connectAbility(request, options);
+        var timeNewStamp = getNowTime();
+        getDurationTime('particleAbility_connectAbility_test_0500 connectability', timeOldStamp, timeNewStamp);
+        console.info('particleAbility_connectAbility_test_0500 errorabilityName request is:'
+        + JSON.stringify(request));
+        console.info('particleAbility_connectAbility_test_0500 errorabilityName options is:'
+        + JSON.stringify(options));
+        console.info('particleAbility_connectAbility_test_0500 errorabilityName connection=: ' + connection);
     },
     onConnect(want) {
         console.info('ServiceAbility6 onConnect');

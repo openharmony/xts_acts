@@ -110,6 +110,14 @@
         "srcLanguage": "ets",
         "description": "$string:description_serviceability6",
         "type": "service"
+      },
+      {
+        "srcPath": "ServiceAbility7",
+        "name": ".ServiceAbility7",
+        "icon": "$media:icon",
+        "srcLanguage": "ets",
+        "description": "$string:description_serviceability7",
+        "type": "service"
       }
     ],
     "js": [
