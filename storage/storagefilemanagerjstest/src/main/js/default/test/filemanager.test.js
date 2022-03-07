@@ -243,11 +243,16 @@ describe("filemanager_test", function () {
   it("filemanager_test_list_file_async_002", 0, async function (done) {
     try {
       let path = FILE_ROOT;
-      filemanager.listFile(path, "file", function(error,fileInfos){
-        LENGTH = fileInfos.length;
-        expect(Array.isArray(fileInfos)).assertTrue();
-        done();
-      });
+      let options = {
+        dev:{
+          "name":"local"
+        },
+        offset:0
+      };
+      let fileInfos = await filemanager.listFile(path, "file",options);
+      LENGTH = fileInfos.length;
+      expect(Array.isArray(fileInfos)).assertTrue();
+      done();
     } catch (error) {
       console.log("filemanager_test_list_file_async_002 has failed for " + error);
       expect(null).assertFail();
