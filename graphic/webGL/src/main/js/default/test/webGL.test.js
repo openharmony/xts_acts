@@ -27472,4 +27472,163 @@ describe('webgl1Test', function() {
 		expect(texParameterValue).assertEqual(gl.COMPARE_REF_TO_TEXTURE);
 		done();
 	});
+	/**
+	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1335
+	 * @tc.name testRangeMin
+	 * @tc.desc Test RangeMin.
+	 */
+	it ('testRangeMin', 0, async function(done) {
+		console.info('jsWebGL testRangeMin test start');
+		gl.getShaderPrecisionFormat(gl.VERTEX_SHADER, gl.MEDIUM_FLOAT).rangeMin;
+		gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.LOW_INT).rangeMin;
+		const min = gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.LOW_INT).rangeMin;
+		const max = gl.getShaderPrecisionFormat(gl.VERTEX_SHADER, gl.MEDIUM_FLOAT).rangeMax;
+		expect(min).assertEqual(24);
+		expect(max).assertEqual(127);
+		done();
+	});
+	
+	/**
+	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1335
+	 * @tc.name testAttributeBae
+	 * @tc.desc Test AttributeBae.
+	 */
+	it ('testAttributeBae', 0, async function(done) {
+		console.info('jsWebGL testAttributeBae test start');
+		var frameBuffer = gl.createBuffer();
+		gl.bindBuffer(gl.FRAMEBUFFER, frameBuffer);
+		const framebufferParameter = gl.getParameter(gl.FRAMEBUFFER_BINDING);
+		const isFramebuffer = gl.isFramebuffer(framebufferParameter);
+		expect(isFamebuffer).assertEqual(true);
+		done();
+	});
+	
+	/**
+	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1335
+	 * @tc.name testTypeBase
+	 * @tc.desc Test TypeBase.
+	 */
+	it ('testTypeBase', 0, async function(done) {
+		console.info('jsWebGL testTypeBasetest start');
+		const progamObj = globalFunction();
+		const info = gl.getActiveAttrib(programObj, 0);
+		info.size = 123;
+		info.name = 'name';
+		info.type = Number;
+		const size = info.size;
+		const name  = info.name;
+		const type = info.type;
+		expect(size).assertEqual(info.size);
+		expect(name).assertEqual(info.name);
+		expect(type).assertEqual(info.type);
+		done();
+	});
+	
+	/**
+	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1335
+	 * @tc.name testWebGLTypeBase
+	 * @tc.desc Test WebGLTypeBase.
+	 */
+	it ('testWebGLTypeBase', 0, async function(done) {
+		console.info('jsWebGL testWebGLTypeBase test start');
+		var x =1 ;
+		expect(x).assertEqual(gl.ONE);
+		var x1 = 0x8892;
+		expect(x1).assertEqual(gl.ARRAY_BUFFER);
+		var x2 = 0x0405;
+		expect(x2).assertEqual(gl.BACK);
+		var x3 = 0;
+		expect(x3).assertEqual(gl.NO_ERROR);
+		var x4 = 0x0502;
+		expect(x4).assertEqual(gl.INVALID_OPERATION);
+		var x5 = 0x80AA;
+		expect(x5).assertEqual(gl.SAMPLE_COVERAGE_VALUE);
+		var x6 = 0x80AB;
+		expect(x6).assertEqual(gl.SAMPLE_COVERAGE_INVERT);
+		var x7 = 0x1400;
+		expect(x7).assertEqual(gl.BYTE);
+		var x8 = 0x1404;
+		expect(x8).assertEqual(gl.INT);
+		var x9 = 0x1406;
+		expect(x9).assertEqual(gl.FLOAT);
+		var x10 = 0x1907;
+		expect(x10).assertEqual(gl.RGB);
+		var x11 = 0x8B89;
+		expect(x11).assertEqual(gl.ACTIVE_ATTRIBUTES);
+		var x12 = 0x0DE1;
+		expect(x12).assertEqual(gl.TEXTURE_2D);
+		
+		var x13 = 0x1702;
+		expect(x13).assertEqual(gl.TEXTURE);
+		
+		var x14 = 0x84C0;
+		expect(x14).assertEqual(gl.TEXTURE0);
+		var x15 = 0x8D40;
+		expect(x15).assertEqual(gl.FRAMEBUFFER);
+		var x16 = 0x8D41;
+		expect(x16).assertEqual(gl.RENDERBUFFER);
+		var x17 = 0x8894;
+		expect(x17).assertEqual(gl.ARRAY_BUFFER);
+		var x18 = 0;
+		expect(x18).assertEqual(gl.NONE);
+		var x19 =0x9242;
+		expect(x19).assertEqual(gl.CONTEXT_LOST_WEBGL);
+		var x20 = 0x8892;
+		expect(x20).assertEqual(gl.ARRAY_BUFFER)
+		done();
+	});
+	
+	/**
+	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1335
+	 * @tc.name testRendingContextBase
+	 * @tc.desc Test RendingContextBase.
+	 */
+	it ('testRendingContextBase', 0, async function(done) {
+		console.info('jsWebGL testRendingContextBase test start');
+		const buffer = gl.createBuffer();
+		expect(typeof(buffer)).assertEqual('object');
+		
+		var x1 = gl2.COLOR;
+		expect(x1).assertEqual(6144);
+	
+		var x2 = gl2.STENCIL;
+		expect(x2).assertEqual(6146);
+	
+		var x3 = gl2.MIN;
+		expect(x3).assertEqual(32775);
+	
+		var x4 = gl2.MAX;
+		expect(x4).assertEqual(32776);
+	
+		var x5 = gl2.RG;
+		expect(x5).assertEqual(33319);
+	
+		var x6 = gl2.SYNC_CONDITION;
+		expect(x6).assertEqual(37139);
+	
+		var x7 = gl2.SYNC_STATUS;
+		expect(x7).assertEqual(37140);
+	
+		var x8 = gl2.SYNC_FLAGS;
+		expect(x8).assertEqual(37141);
+		
+		done();
+		
+	});
+	
+	/**
+	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1335
+	 * @tc.name testAttributeBase
+	 * @tc.desc Test testAttributeBase.
+	 */
+	it ('testAttributeBase', 0, async function(done) {
+		console.info('jsWebGL testAttributeBase test start');
+		var attribute = gl.getContextAttributes();
+		expect(atttribute.desynchronized).assertEqual(false);
+		expect(atttribute.antialias).assertEqual(true);
+		expect(atttribute.premultipliedAlpha).assertEqual(true);
+		expect(atttribute.preserveDrawingBuffer).assertEqual(false);
+		expect(atttribute.failIfMajorPerformanceCaveat).assertEqual(false);
+		done()
+	});
 })
