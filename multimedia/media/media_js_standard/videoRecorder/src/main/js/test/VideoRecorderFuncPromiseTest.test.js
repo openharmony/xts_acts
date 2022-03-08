@@ -25,6 +25,8 @@ describe('VideoRecorderFuncPromiseTest', function () {
     let cameras;
     let captureSession;
     let fdPath;
+    let fileAsset;
+    let fdNumber;
     let configFile = {
         audioBitrate : 48000,
         audioChannels : 2,
@@ -164,8 +166,8 @@ describe('VideoRecorderFuncPromiseTest', function () {
                 selectionArgs : [args],
             }
             let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
-            let fileAsset = await fetchFileResult.getAllObject();
-            let fdNumber = await fileAsset[0].open('Rw');
+            fileAsset = await fetchFileResult.getAllObject();
+            fdNumber = await fileAsset[0].open('Rw');
             fdPath = "fd://" + fdNumber.toString();
         }
     }
