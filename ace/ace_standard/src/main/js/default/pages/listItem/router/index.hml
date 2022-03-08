@@ -151,6 +151,7 @@
                 list-item无障碍1
             </text>
             <list class="access1" accessibilitygroup ="true" style="height: 100%;"
+                 onaccessibility="onAccessibility"
                  accessibilitytext="这是list"
                  accessibilitydescription="点击此按键会弹出一个对话框"
                  accessibilityimportance="no-hide-descendants">
