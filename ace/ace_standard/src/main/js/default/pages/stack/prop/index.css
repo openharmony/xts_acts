@@ -36,6 +36,13 @@
   padding: 2px;
 }
 
+stack{
+  background: linear-gradient(pink,#fff000);
+  width: 50%;
+  margin-bottom: 2px;
+  height: 15px;
+}
+
 .prop-container{
   flex-direction: column;
   flex-weight: 1;

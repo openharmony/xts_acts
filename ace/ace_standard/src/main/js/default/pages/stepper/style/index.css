@@ -108,6 +108,13 @@
   border: 2px solid #00ff00;
 }
 
+#styleFourNew{
+  width: 50px;
+  height: 20px;
+  align-self:stretch;
+  border: 2px solid #00ff00;
+}
+
 #styleFive{
   width: 150px;
   height: 40px;
@@ -118,6 +125,17 @@
   border-image-outset: 10px 5px 10px 5px;
   border-image-repeat: repeat;
 }
+
+/*#styleFive{*/
+/*  width: 100%;*/
+/*  height: 40px;*/
+/*  border: 5px;*/
+/*  border-image-source: url('/common/images/image.png');*/
+/*  border-image-slice: 5px 10px 10px 5px;*/
+/*  border-image-width: 10px 5px 5px 10px;*/
+/*  border-image-outset: 10px 5px 10px 5px;*/
+/*  border-image-repeat: repeat;*/
+/*}*/
 
 #styleSix{
   width: 100%;
@@ -153,20 +171,18 @@
 
 #styleNine{
   width: 100%;
-  height: 40px;
+  height: 20px;
   display:flex;
+  background-color: #0000ff;
 }
 
-#styleFive{
+#styleNineNew{
   width: 100%;
-  height: 40px;
-  border: 5px;
-  border-image-source: url('/common/images/image.png');
-  border-image-slice: 5px 10px 10px 5px;
-  border-image-width: 10px 5px 5px 10px;
-  border-image-outset: 10px 5px 10px 5px;
-  border-image-repeat: repeat;
+  height: 20px;
+  display:grid;
+  background-color: #0000ff;
 }
+
 
 #styleTen{
   width: 100%;
@@ -250,7 +266,7 @@
 }
 
 #styleNineteen{
-  position: absolute;
+  position: relative;
   start: 20%;
   width: 10px;
   height: 10px;
@@ -259,7 +275,7 @@
 }
 
 #styleTwenty{
-  position: absolute;
+  position: fixed;
   end: 20%;
   width: 10px;
   height: 10px;
@@ -340,10 +356,18 @@
   background-size:10% 20%;
   background-repeat: repeat;
   background-position: 30% 40%;
-  mask-image:linear-gradient(pink,#fff000);
 }
 
 #styleThirtyTwo{
+  width: 150px;
+  height: 20px;
+  background-image:url('common/images/image.png');
+  background-size: auto;
+  background-repeat: repeat;
+  background-position: 30% 40%;
+}
+
+#styleThirtyThree{
   width: 150px;
   height: 20px;
   background: linear-gradient(pink,#fff000);
@@ -354,174 +378,152 @@
   mask-position: center;
 }
 
+#styleThirtyFour{
+  width: 150px;
+  height: 20px;
+  background: linear-gradient(pink,#fff000);
+  clip-path: margin-box;
+  image-fill: #000fff;
+  mask-image: linear-gradient(pink,#fff000);
+  mask-size: cover;
+  mask-position: center;
+}
+
+#styleThirtyFive{
+  width: 150px;
+  height: 20px;
+  background-color: #000fff;
+  transform: none;
+}
+#styleThirtySix{
+  width: 150px;
+  height: 20px;
+  background-color: #ff0fff;
+  transform: translate3d(10,2,2);
+}
+#styleThirtySeven{
+  width: 150px;
+  height: 20px;
+  background-color: #f0000f;
+  transform: translateY(5);
+}
+#styleThirtyEight{
+  width: 150px;
+  height: 20px;
+  background-color: #fff00f;
+  transform: translateZ(5);
+}
+#styleThirtyNine{
+  width: 150px;
+  height: 20px;
+  background-color: #ff000f;
+  transform: scale(1.2);
+}
+#styleForty{
+  width: 150px;
+  height: 20px;
+  background-color: #ff0fff;
+  transform: scale3d(1.2,1.2,1.2);
+}
+#styleFortyOne{
+  width: 150px;
+  height: 20px;
+  background-color: #000fff;
+  transform: scaleX(1.2);
+}
+#styleFortyTwo{
+  width: 150px;
+  height: 20px;
+  background-color: #ff80ff;
+  transform: scaleY(1.5);
+}
+#styleFortyThree{
+  width: 150px;
+  height: 20px;
+  background-color: #ff30ff;
+  transform: scaleZ(1.5);
+}
+#styleFortyFour{
+  width: 150px;
+  height: 20px;
+  background-color: #f0000f;
+  transform: rotate3d(1.5,1.5,1.5,10);
+}
+#styleFortyFive{
+  width: 150px;
+  height: 20px;
+  background-color: #f0f00f;
+  transform: rotateX(20);
+}
+#styleFortySix{
+  width: 150px;
+  height: 20px;
+  background-color: #f00fff;
+  transform: rotateY(30);
+}
+#styleFortySeven{
+  width: 150px;
+  height: 20px;
+  background-color: #f0000f;
+  transform: rotateZ(5);
+}
+#styleFortyEight{
+  width: 150px;
+  height: 20px;
+  background-color: #f00fff;
+  transform: skew(10,10);
+}
+#styleFortyNine{
+  width: 150px;
+  height: 20px;
+  background-color: #f0000f;
+  transform: skewX(10);
+}
+#styleFifty{
+  width: 150px;
+  height: 20px;
+  background-color: #f00fff;
+  transform: skewY(10);
+}
+#styleFiftyOne{
+  width: 150px;
+  height: 20px;
+  background-color: #ff88ff;
+  transform: perspective(20);
+}
+#styleFiftyTwo{
+  width: 150px;
+  height: 20px;
+  background-color: #ff11ff;
+  shared-transition-effect:exchange;
+}
+#styleFiftyThree{
+  width: 150px;
+  height: 20px;
+  background-color: #ffff0f;
+  shared-transition-effect:static;
+}
+#styleFiftyFour{
+  width: 150px;
+  height: 20px;
+  background-color: #f00f0f;
+  shared-transition-name: shared-transition;
+}
+@keyframes shared-transition {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#styleFiftyFive{
+  width: 150px;
+  height: 20px;
+  background-color: #00ff00;
+  shared-transition-timing-function: friction;
+}
+
 .specific-container{
   flex-direction: column;
   flex-weight: 1;
-}
-
-#specificOne{
-  width: 100%;
-  height: 25px;
-  flex-direction: row;
-  flex-wrap:nowrap;
-}
-#specificColor1{
-  background-color: red;
-}
-#specificColor2{
-  background-color: yellow;
-}
-.color-red{
-  color:red
-}
-.color-black{
-  color:black
-}
-#specificTwo{
-  width: 100%;
-  height: 25px;
-  flex-direction: row;
-  flex-wrap:nowrap;
-}
-#specificTwo1{
-  background-color: yellow;
-}
-#specificTwo2{
-  background-color: yellowgreen;
-}
-.selected-color1{
-  selected-color: black;
-}
-.selected-color2{
-  selected-color: blue;
-}
-#specificThree{
-  width: 100%;
-  height: 25px;
-  flex-direction: row;
-  flex-wrap:nowrap;
-}
-#specificThree1{
-  background-color: red;
-}
-#specificThree2{
-  background-color: yellow;
-}
-.block-color1{
-  block-color: black;
-}
-.block-color2{
-  block-color: purple;
-}
-
-#addOne{
-  width: 10%;
-  height: 20px;
-  background-image:url('common/images/image.png');
-  background-size:cover;
-  align-self:stretch;
-  position:fixed;
-  transform: none;
-  animation-timing-function:cubic-bezier(0.4, 0.0, 0.4, 1.0);
-  shared-transition-effect:static;
-  shared-transition-name:ani;
-  shared-transition-timing-function:friction;
-  transition-enter:ani;
-  transition-exit: ani;
-  transition-duration:10;
-  transition-timing-function:friction;
-  clip-path:border-box;
-  display-index:1;
-  filter:blur(10px);
-  backdrop-filter:blur(10px);
-  window-filter:blur(10%);
-}
-
-#addTwo{
-  width: 100px;
-  height: 15px;
-  background-image:url('common/images/image.png');
-  background-size:auto;
-  position:relative;
-  transform: matrix(0.5,0.1,0.2,0.9,20,10);
-  animation-timing-function:steps(4);
-  shared-transition-effect:exchange;
-  clip-path:padding-box;
-}
-
-#addThree{
-  width: 100px;
-  height: 15px;
-  background-color:#000000;
-  transform: matrix3d(1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2);
-  clip-path:content-box;
-}
-
-#addFour{
-  width: 100px;
-  height: 15px;
-  background-color:#000000;
-  transform: translate3d(1px,2px,1px) scale3d(1,2,1) rotate3d(10,10,10,10deg) skew(1deg,2deg) perspective(10px);
-  clip-path:circle(1);
-}
-
-#addFive{
-  width: 100px;
-  height: 15px;
-  background-color:#000000;
-  transform: translateY(1px) translateZ(10px)
-  scale(1,2) scaleZ(0.4)
-  rotateX(10deg) rotateY(10deg) rotateZ(10deg)
-  skewX(1deg) skewY(2deg);
-  clip-path:ellipse(1);
-}
-
-#addSix{
-  width: 100px;
-  height: 15px;
-  background-color:#000000;
-  transform: scaleX(1) scaleY(0.4);
-  clip-path:ellipse(1)
-}
-
-#addSeven{
-  width: 100px;
-  height: 15px;
-  background-color:#000000;
-  clip-path:path(1);
-  aspect-ratio:2;
-}
-
-#addSeven:disabled{
-  width: 100px;
-  height: 15px;
-  background-color:#ff0000;
-  radius: 100px;
-}
-
-#addSeven:active{
-  width: 100px;
-  height: 15px;
-  background-color:#ff0000;
-}
-
-#addSeven:focus{
-  width: 100px;
-  height: 15px;
-  background-color:#ff0000;
-}
-
-@font-face {
-  font-family: SimSunfont;
-  src: url('/common/simsun.ttf');
-}
-
-@media (device-type: tv) {
-  .addSeven {
-    width: 500px;
-    height: 500px;
-    background-color: #fa8072;
-  }
 }
 
 
