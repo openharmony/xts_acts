@@ -190,6 +190,7 @@
                 list无障碍1
             </text>
             <list class="access1" accessibilitygroup ="true"
+                 onaccessibility="onAccessibility"
                  accessibilitytext="这是list"
                  accessibilitydescription="list"
                  accessibilityimportance="no-hide-descendants">
