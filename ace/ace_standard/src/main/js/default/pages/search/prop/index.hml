@@ -207,5 +207,28 @@
         <search id="menuoptions"
                   menuoptions="{{OptionArray}}">
         </search>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <search class="propNewAdd"
+                        tid="id">
+        </search>
+        <search class="propNewAdd"
+                        tid="">
+        </search>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <search class="propNewAdd"
+                 if="false">
+        </search>
+        <search class="propNewAdd"
+                 elif="true">
+        </search>
+        <search class="propNewAdd"
+                 elif="false">
+        </search>
     </div>
 </div>
