@@ -162,5 +162,28 @@
         <text class="title">
             form特有属性
         </text>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <form class="propNewAdd"
+                tid="id">
+        </form>
+        <form class="propNewAdd"
+                tid="">
+        </form>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <form class="propNewAdd"
+                if="false">
+        </form>
+        <form class="propNewAdd"
+                elif="true">
+        </form>
+        <form class="propNewAdd"
+                elif="false">
+        </form>
     </div>
 </div>

@@ -140,7 +140,9 @@
         <label id="ifPropTrue"
              if="true">
         </label>
-
+        <label class="label" elif="true"> </label>
+        <label class="label" elif="false"> </label>
+        <label class="label" elif=""> </label>
         <text class="sub-title">
             渲染属性 -- show
         </text>
@@ -165,5 +167,20 @@
             label特有属性 -- target
         </text>
         <label id="labelTarget" target="labelTarget">label</label>
+        <text  class="sub-title">
+            label特有属性 -- label
+        </text>
+        <label class="label" label="label">label</label>
+        <label class="label" label="">label</label>
+        <text  class="sub-title">
+            label特有属性 -- shareid
+        </text>
+        <label class="label" shareid="shareid">label</label>
+        <label class="label" shareid="">label</label>
+        <text  class="sub-title">
+            label特有属性 -- tid
+        </text>
+        <label class="label" tid="tid">label</label>
+        <label class="label" tid="">label</label>
     </div>
 </div>

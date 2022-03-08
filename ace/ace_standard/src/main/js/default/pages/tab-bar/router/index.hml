@@ -437,6 +437,7 @@
                   onchange="change">
                 <tab-bar class="tab-bar access1"
                          accessibilitygroup ="true"
+                         onaccessibility="onAccessibility"
                          accessibilitytext="这是div"
                          accessibilitydescription="点击此按键会弹出一个对话框"
                          accessibilityimportance="no-hide-descendants"

@@ -133,6 +133,26 @@
             <option value="2">2</option>
         </select>
 
+        <div style="width: 100%;flex-weight: 1;overflow: scroll;flex-direction: column;">
+            <text class="sub-title">
+                补充样式
+            </text>
+            <select id="addOne">
+            </select>
+            <select id="addTwo">
+            </select>
+            <select id="addThree">
+            </select>
+            <select id="addFour">
+            </select>
+            <select id="addFive">
+            </select>
+            <select id="addSix">
+            </select>
+            <select id="addSeven">
+            </select>
+        </div>
+
     </div>
 </div>
 

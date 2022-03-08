@@ -17,6 +17,10 @@ import prompt from '@system.prompt';
 
 export default {
     data:{
+        array: [
+            {id: 1, name: 'jack', age: 18},
+            {id: 2, name: 'tony', age: 18},
+        ],
         listOne:[{}],
         listThree:[{},{},{}],
         idProp : null,

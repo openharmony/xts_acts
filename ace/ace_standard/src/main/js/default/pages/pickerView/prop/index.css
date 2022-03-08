@@ -352,6 +352,7 @@ picker-view {
   selected-font-size: 12px;
   height: 60px;
   disappear-font-size: 12px;
+  background-color: yellow;
 }
 #pickerViewText {
   background-color: deeppink;

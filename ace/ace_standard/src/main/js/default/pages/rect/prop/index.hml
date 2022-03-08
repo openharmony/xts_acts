@@ -239,6 +239,15 @@
             <rect id ="showPropFalse" width="90px" height="20px" fill="red" x="10" y="50" show="false"></rect>
             <rect id ="showPropNone" width="90px" height="20px" fill="red" x="20" y="80" show=""></rect>
         </svg>
+
+        <text class="sub-title">
+            特有属性-elif
+        </text>
+        <svg width="200px" height="50px" fill="red" >
+            <rect width="90px" height="20px" if="false"></rect>
+            <rect width="90px" height="20px" elif="true"></rect>
+            <rect width="90px" height="20px" elif="false"></rect>
+        </svg>
     </div>
 
 

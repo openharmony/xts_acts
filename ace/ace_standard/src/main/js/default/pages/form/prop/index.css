@@ -345,3 +345,14 @@
     flex-direction: column;
     flex-weight: 1;
 }
+
+.propNewAdd{
+    height: 15px;
+    margin-bottom: 3px;
+    background-color:#c00000;
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-start: 10px;
+    padding-end: 10px;
+}

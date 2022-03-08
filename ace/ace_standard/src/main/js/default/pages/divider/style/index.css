@@ -41,44 +41,25 @@
   flex-direction: column;
   width: 50%;
 }
-.style-box {
+
+.style1 {
+  height: 30px;
+  background-color: yellow;
+  margin: 10px;
   padding: 10px;
-  background-color: blue;
-  margin-bottom: 10px;
-}
-divider {
-  stroke-width: 3px;
-}
-#style1 {
-  margin: 1px 2px 3px 4px;
-  color: greenyellow;
-  stroke-width: 3px;
+  color: red;
+  stroke-width: 5px;
   display: flex;
   visibility: visible;
-}
-#line-cap {
-  line-cap: round;
-  color: greenyellow;
-  stroke-width: 3px;
-}
-#lineCapButt {
-  line-cap: butt;
-  color: green;
-}
-#lineCapRound {
-  line-cap: round;
-  color: greenyellow;
-}
-#lineCapSquare {
   line-cap: square;
-  color: pink;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 0;
+  opacity: 0.5;
+  border: 1px solid rebeccapurple;
+  transform: translate(50px);
 }
-#flex {
-  color: pink;
-  flex-grow: 1;
-  flex-basis: 20px;
-  flex-shrink:1 ;
+.specific-container{
+  flex-direction: column;
+  flex-weight: 1;
 }
-
-
-

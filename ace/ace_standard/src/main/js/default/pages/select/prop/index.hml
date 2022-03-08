@@ -80,6 +80,16 @@
         </select>
 
         <text class="sub-title">
+            通用属性 -- data
+        </text>
+        <select id="dataPropB"
+               data-input="通用属性 -- data">
+        </select>
+        <select id="dataPropBNone"
+               data-input="">
+        </select>
+
+        <text class="sub-title">
             通用属性 -- data-*
         </text>
         <select id="dataProp"
@@ -161,5 +171,23 @@
         <text class="title">
             select特有属性
         </text>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <select for="{{array}}" tid="id" style="color: #679855; margin: 1px;"
+               id="showFor{{$item.id}}" value="{{$item.name }}">
+        </select>
+        <text class="sub-title">
+            特有属性 -- if elif
+        </text>
+        <select if="false" id="showIf">
+        </select>
+        <select elif="false" id="showElseIfTrue">
+        </select>
+        <select elif="true" id="showElseIfFalse">
+        </select>
+        <select else id="showElse">
+        </select>
     </div>
 </div>

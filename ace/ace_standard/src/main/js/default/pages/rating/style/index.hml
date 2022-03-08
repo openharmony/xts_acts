@@ -153,6 +153,26 @@
             <rating id="specificRtlFlip2" class="rtl-flip2">
             </rating>
         </div>
+
+        <div style="width: 100%;flex-weight: 1;overflow: scroll;flex-direction: column;">
+            <text class="sub-title">
+                补充样式
+            </text>
+            <rating id="addOne">
+            </rating>
+            <rating id="addTwo">
+            </rating>
+            <rating id="addThree">
+            </rating>
+            <rating id="addFour">
+            </rating>
+            <rating id="addFive">
+            </rating>
+            <rating id="addSix">
+            </rating>
+            <rating id="addSeven">
+            </rating>
+        </div>
     </div>
 </div>
 

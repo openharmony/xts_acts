@@ -207,6 +207,15 @@
             <circle id ="showPropFalse" cx="50" cy="25" r="20" fill="red" show="false"></circle>
             <circle id ="showPropNone" cx="50" cy="25" r="20" fill="red" show=""></circle>
         </svg>
+
+        <text class="sub-title">
+            特有属性-elif
+        </text>
+        <svg width="200px" height="50px" fill="red" >
+            <circle cx="50" cy="25" r="20"  if="false"></circle>
+            <circle cx="50" cy="25" r="20" elif="true"></circle>
+            <circle cx="50" cy="25" r="20" elif="false"></circle>
+        </svg>
     </div>
 
 </div>

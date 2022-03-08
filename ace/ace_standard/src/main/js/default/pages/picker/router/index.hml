@@ -137,6 +137,7 @@
             </text>
             <picker id="event2" class="event2" onclick="click" ondoubleclick="doubleClick"
                    onlongpress="longPress" onfocus="focus" onblur="blur" onkey="key"
+                    onaccessibility="onAccessibility"
                    onswipe="swipe" onattached="attached" ondetached="detached"
                     value="通用事件2" range="{{ rangetext }}">
             </picker>
@@ -156,8 +157,8 @@
             <text  class="sub-title">
                 picker特有事件1
             </text>
-            <picker id="event4" class="event4" type="text" value="特有事件1" range="{{ rangetext }}"
-                    onchange="textonchange" oncancel="textoncancel">
+            <picker id="event4" class="event4" type="multi-text" value="{{multitextvalue}}" columns="3" range="{{multitext}}" selected="{{multitextselect}}"
+                    onchange="multitextonchange" oncancel="multitextoncancel" oncolumnchange="columnchange" show="true">
             </picker>
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">

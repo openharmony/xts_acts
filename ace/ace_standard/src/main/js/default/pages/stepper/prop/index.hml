@@ -163,6 +163,39 @@
         </text>
 
         <text class="sub-title">
+            特有属性属性 -- stepper
+        </text>
+        <stepper id="stepperPorp" stepper="stepper" class="specific-style color-grey">
+        </stepper>
+        <stepper id="stepperPorpNone" stepper="" class="specific-style color-blue">
+        </stepper>
+
+        <text class="sub-title">
+            特有属性属性 -- elif
+        </text>
+        <stepper if="false"></stepper>
+        <stepper id="elifPorpTrue" elif="true"  class="specific-style color-grey">
+        </stepper>
+        <stepper id="elifPorpFalse" elif="false" class="specific-style color-blue">
+        </stepper>
+
+        <text class="sub-title">
+            特有属性属性 -- tid
+        </text>
+        <stepper id="tidPorp" tid="tid"  class="specific-style color-grey">
+        </stepper>
+        <stepper id="tidPorpNone" tid="" class="specific-style color-blue">
+        </stepper>
+
+        <text class="sub-title">
+            特有属性属性 -- tid
+        </text>
+        <stepper id="tidPorp" tid="tid"  class="specific-style color-grey">
+        </stepper>
+        <stepper id="tidPorpNone" tid="" class="specific-style color-blue">
+        </stepper>
+
+        <text class="sub-title">
             显示子组件属性 -- index
         </text>
         <stepper id="indexProp"

@@ -237,5 +237,30 @@
                speed="">
         </video>
 
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <video id="tidProp"
+               class="specific-style color-grey"
+               tid="tid">
+        </video>
+        <video id="tidPropNone"
+               class="specific-style color-red"
+               tid="">
+        </video>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <video if="false"></video>
+        <video id="elifPropTrue"
+               class="specific-style color-grey"
+               elif="true">
+        </video>
+        <video id="elifPropFalse"
+               class="specific-style color-red"
+               elif="false">
+        </video>
+
     </div>
 </div>
