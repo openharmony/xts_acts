@@ -97,6 +97,44 @@ export default {
         prompt.showToast({
             message: 'prop1--' + name1 + '\nprop2--' + name2
         });
+
+        var styleValues = this.getStyleValues();
+        var propsValues = this.getPropValues();
+
+        globalThis.value = {
+            styleValues: styleValues,
+            propsValues: propsValues
+        }
+    },
+
+    getStyleValues(){
+        var styleValue1 = this.$element("style1").getInspector()
+        var styleValue2 = this.$element("style2").getInspector()
+        var styleValue3 = this.$element("style3").getInspector()
+        var styleValue4 = this.$element("style4").getInspector()
+        var styleValue5 = this.$element("style5").getInspector()
+        var styleValue6 = this.$element("style6").getInspector()
+
+        return {
+            style1:styleValue1,
+            style2:styleValue2,
+            style3:styleValue3,
+            style4:styleValue4,
+            style5:styleValue5,
+            style6:styleValue6
+        }
+    },
+
+    getPropValues(){
+        var propValue1 = this.$element("prop1").getInspector()
+        var propValue2 = this.$element("prop2").getInspector()
+        var propValue3 = this.$element("prop3").getInspector()
+
+        return {
+            prop1:propValue1,
+            prop2:propValue2,
+            prop3:propValue3
+        }
     },
 
     touchStart(event){
@@ -461,5 +499,11 @@ export default {
         prompt.showToast({
             message: 'function5 dataURL:' + dataURL
         });
+    },
+
+    handleAccessibility(event) {
+        if(event.eventType === 1) {
+            console.log('handleAccessibility:' + JSON.stringify(event))
+        }
     },
 }

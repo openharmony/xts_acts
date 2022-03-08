@@ -271,10 +271,9 @@
 }
 
 .event4{
-  flex-direction: row;
   width: 90%;
   flex-weight: 1;
-  overflow:scroll;
+  background-color: #00ee00;
 }
 
 .event5{
