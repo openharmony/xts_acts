@@ -382,7 +382,7 @@ describe('polygonPropsJsTest', function () {
         expect(obj.$attrs.stroke).assertEqual('red')
         console.info("[polygonProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
         expect(obj.$attrs.strokeDashoffset).assertEqual('23')
-        console.info("[polygonProps] get inspector dashoffset value is: " + JSON.stringify(obj.$attrs.strokeDashoffset));
+        console.info("[polygonProps] get dashoffset value is: " + JSON.stringify(obj.$attrs.strokeDashoffset));
         done();
     });
 
@@ -565,7 +565,7 @@ describe('polygonPropsJsTest', function () {
         expect(obj.$attrs.stroke).assertEqual('red')
         console.info("[polygonProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
         expect(obj.$attrs.strokeMiterlimit).assertEqual('10')
-        console.info("[polygonProps] get inspector miterlimit value is: " + JSON.stringify(obj.$attrs.strokeMiterlimit));
+        console.info("[polygonProps] get  miterlimit value is:" + JSON.stringify(obj.$attrs.strokeMiterlimit));
         done();
     });
 

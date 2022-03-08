@@ -115,6 +115,5 @@ export default {
         this.strokeWidthPropNone = this.$element("strokeWidthPropNone").getInspector()
         this.strokeOpacityProp = this.$element("strokeOpacityProp").getInspector()
         this.strokeOpacityPropNone = this.$element("strokeOpacityPropNone").getInspector()
-        return
     },
 }

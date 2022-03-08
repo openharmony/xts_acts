@@ -514,9 +514,10 @@ export default {
         });
     },
 
-    accessibility(event){
-        prompt.showToast({
-            message: JSON.stringify(event)
-        });
+    onAccessibility(event) {
+        if (event.eventType == 1) {
+            console.log('abc');
+        }
+        console.log("onAccessibility" + JSON.stringify(event));
     }
 }

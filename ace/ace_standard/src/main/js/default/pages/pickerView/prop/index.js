@@ -60,7 +60,6 @@ export default {
 
     onShow(){
         this.getCommonPropValues();
-//        this.getSpecificPropValues();
         globalThis.value = {
             idProp : this.idProp,
             classProp : this.classProp,
@@ -129,12 +128,5 @@ export default {
         this.showPropTrue = this.$element("showPropTrue").getInspector()
         this.showPropFalse = this.$element("showPropFalse").getInspector()
         this.showPropNone = this.$element("showPropNone").getInspector()
-    },
-    getSpecificPropValues () {
-//        this.pickerViewViewText = this.$element("pickerViewViewText").getInspector()
-//        this.pickerViewViewDate = this.$element("pickerViewViewDate").getInspector()
-//        this.pickerViewViewTime = this.$element("pickerViewViewTime").getInspector()
-//        this.pickerViewViewDatetime = this.$element("pickerViewViewDatetime").getInspector()
-//        this.pickerViewViewMultiText = this.$element("pickerViewViewMultiText").getInspector()
     }
 }
