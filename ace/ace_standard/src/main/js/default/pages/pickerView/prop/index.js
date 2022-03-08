@@ -48,10 +48,19 @@ export default {
         showPropTrue : null,
         showPropFalse : null,
         showPropNone : null,
+        multitext:[["a", "b", "c"], ["e", "f", "g"], ["h", "i"], ["k", "l", "m"]],
+        rangetext:['15', "20", "25"],
+//        multitextselect:[1,2,0],
+//        pickerViewText: null,
+//        pickerViewDate: null,
+//        pickerViewTime: null,
+//        pickerViewDatetime: null,
+//        pickerViewMultiText: null
     },
 
     onShow(){
         this.getCommonPropValues();
+//        this.getSpecificPropValues();
         globalThis.value = {
             idProp : this.idProp,
             classProp : this.classProp,
@@ -121,4 +130,11 @@ export default {
         this.showPropFalse = this.$element("showPropFalse").getInspector()
         this.showPropNone = this.$element("showPropNone").getInspector()
     },
+    getSpecificPropValues () {
+//        this.pickerViewViewText = this.$element("pickerViewViewText").getInspector()
+//        this.pickerViewViewDate = this.$element("pickerViewViewDate").getInspector()
+//        this.pickerViewViewTime = this.$element("pickerViewViewTime").getInspector()
+//        this.pickerViewViewDatetime = this.$element("pickerViewViewDatetime").getInspector()
+//        this.pickerViewViewMultiText = this.$element("pickerViewViewMultiText").getInspector()
+    }
 }
