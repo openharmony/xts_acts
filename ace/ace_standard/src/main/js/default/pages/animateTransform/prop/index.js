@@ -130,6 +130,5 @@ export default {
         this.typePropRotate = this.$element("typePropRotate").getInspector()
         this.typePropSkewX = this.$element("typePropSkewX").getInspector()
         this.typePropSkewY = this.$element("typePropSkewY").getInspector()
-        return
     },
 }
