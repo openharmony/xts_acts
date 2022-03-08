@@ -146,6 +146,24 @@
         </tabs>
 
         <text class="sub-title">
+            通用属性 -- data
+        </text>
+        <tabs class = "tabs">
+            <tab-content class="propNewAdd"
+                     data="通用属性 -- data">
+                <text class="tab-text">Home</text>
+                <text class="tab-text">Index</text>
+            </tab-content>
+        </tabs>
+        <tabs class = "tabs">
+            <tab-content class="propNewAdd"
+                     data="">
+                <text class="tab-text">Home</text>
+                <text class="tab-text">Index</text>
+            </tab-content>
+        </tabs>
+
+        <text class="sub-title">
             通用属性 -- click-effect
         </text>
         <tabs class = "tabs">
@@ -300,5 +318,49 @@
                 <text class="textFont">First</text>
             </tab-content>
         </tabs>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <tabs class = "mode">
+            <tab-content class="propNewAdd"
+                     tid="id">
+                <text class="tab-text">Home</text>
+                <text class="tab-text">Index</text>
+            </tab-content>
+        </tabs>
+        <tabs class = "mode">
+            <tab-content class="propNewAdd"
+                     tid="">
+                <text class="tab-text">Home</text>
+                <text class="tab-text">Index</text>
+            </tab-content>
+        </tabs>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <tabs class = "mode">
+            <tab-content class="propNewAdd"
+                         if="false">
+                <text class="tab-text">Home</text>
+                <text class="tab-text">Index</text>
+            </tab-content>
+        </tabs>
+        <tabs class = "mode">
+            <tab-content class="propNewAdd"
+                     elif="true">
+                <text class="tab-text">Home</text>
+                <text class="tab-text">Index</text>
+            </tab-content>
+        </tabs>
+        <tabs class = "mode">
+            <tab-content class="propNewAdd"
+                     elif="false">
+                <text class="tab-text">Home</text>
+                <text class="tab-text">Index</text>
+            </tab-content>
+        </tabs>
+
     </div>
 </div>

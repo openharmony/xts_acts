@@ -88,6 +88,13 @@ export default {
         console.log("Tab index: " + e.index);
     },
 
+    onAccessibility(event) {
+        if (event.eventType == 1) {
+            // Do Something
+        }
+        console.log("onAccessibility" + JSON.stringify(event));
+    },
+
     onShow(){
         // 通用属性
         var prop1 =  this.$element('prop1');
