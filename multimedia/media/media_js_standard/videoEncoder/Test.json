@@ -17,13 +17,12 @@
 		{
             "type": "ShellKit",
             "run-command": [
+                "rm -R /data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/results",
                 "mkdir -p /data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/results/",
                 "chmod 777 -R /data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder",
-                "chmod 777 /data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/*",
-                "setenforce 0"
+                "chmod 777 /data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/*"
             ],
             "teardown-command":[
-                "setenforce 1"
             ]
         },
         {

@@ -6,7 +6,7 @@
           "target": 7
       },
       "vendor": "acts",
-      "bundleName": "ohos.acts.multimedia.videodecoder",
+      "bundleName": "ohos.acts.multimedia.video.videodecoder",
       "version": {
           "code": 1000000,
           "name": "1.0.0"
@@ -35,7 +35,7 @@
               "visible": true,
               "labelId": 16777216,
               "icon": "$media:icon",
-              "name": "ohos.acts.multimedia.videodecoder.MainAbility",
+              "name": "ohos.acts.multimedia.video.videodecoder.MainAbility",
               "description": "$string:mainability_description",
               "label": "$string:entry_MainAbility",
               "type": "page",
@@ -49,14 +49,14 @@
           "tv",
           "wearable"
       ],
-      "mainAbility": "ohos.acts.multimedia.videodecoder.MainAbility",
+      "mainAbility": "ohos.acts.multimedia.video.videodecoder.MainAbility",
       "distro": {
           "moduleType": "entry",
           "installationFree": false,
           "deliveryWithInstall": true,
           "moduleName": "entry"
       },
-      "package": "ohos.acts.multimedia.videodecoder",
+      "package": "ohos.acts.multimedia.video.videodecoder",
       "name": ".MyApplication",
       "js": [
           {
