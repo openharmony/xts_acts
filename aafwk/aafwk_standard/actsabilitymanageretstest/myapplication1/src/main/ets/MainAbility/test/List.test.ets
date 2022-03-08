@@ -13,9 +13,7 @@
  * limitations under the License.
  */
 
-
 import getHapModuleInfoJsunit_app1 from './getHapModuleInfoJsunit_app1.test.ets';
-
 
 export default function testsuite_app1() {
   getHapModuleInfoJsunit_app1();
