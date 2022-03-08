@@ -137,33 +137,6 @@ describe('togglePropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testtoggleStyleProp
-     * @tc.desc      ACEs
-     */
-    //    it('testtoggleStyleProp', 0, async function (done) {
-    //        console.info('testtoggleStyleProp START');
-    //        console.info("[toggleProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.styleProp);
-    //        console.info("[toggleProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[toggleProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('toggle')
-    //        expect(obj.$attrs.id).assertEqual('styleProp')
-    //        expect(obj.$attrs.style).assertEqual(undefined)
-    //        console.info("[toggleProps] get style value is: " + JSON.stringify(obj.$attrs.style));
-    //
-    //        expect(obj.$styles.width).assertEqual(undefined);
-    //        console.info("[toggleProps] get style width value is: " + JSON.stringify(obj.$styles.width));
-    //        expect(obj.$styles.height).assertEqual(undefined);
-    //        console.info("[toggleProps] get style height value is: " + JSON.stringify(obj.$styles.height));
-    //        expect(obj.$styles.get('background-color')).assertEqual(undefined);
-    //        console.info("[toggleProps] get style background-color value is: " + JSON.stringify(obj.$styles.get('background-color')));
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testtoggleRefProp
      * @tc.desc      ACE
      */

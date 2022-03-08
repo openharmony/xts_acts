@@ -448,7 +448,7 @@
          expect(obj.$attrs.stroke).assertEqual('red')
          console.info("[ellipseProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
          expect(obj.$attrs.strokeDashoffset).assertEqual('23')
-         console.info("[ellipseProps] get inspector dashoffset value is: " + JSON.stringify(obj.$attrs.strokeDashoffset));
+         console.info("[ellipseProps] get dashoffset value is: " + JSON.stringify(obj.$attrs.strokeDashoffset));
          done();
      });
  
@@ -673,7 +673,7 @@
          expect(obj.$attrs.stroke).assertEqual('red')
          console.info("[ellipseProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
          expect(obj.$attrs.strokeMiterlimit).assertEqual('10')
-         console.info("[ellipseProps] get inspector miterlimit value is: " + JSON.stringify(obj.$attrs.strokeMiterlimit));
+         console.info("[ellipseProps] get miterlimit value is: " + JSON.stringify(obj.$attrs.strokeMiterlimit));
          done();
      });
  

@@ -356,7 +356,7 @@
          expect(obj.$attrs.stroke).assertEqual('red')
          console.info("[polylineProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
          expect(obj.$attrs.strokeDasharray).assertEqual('2 3')
-         console.info("[polylineProps] get inspector dasharray value is: " + JSON.stringify(obj.$attrs.strokeDasharray));
+         console.info("[polylineProps] get ins dasharray value is: " + JSON.stringify(obj.$attrs.strokeDasharray));
          done();
      });
  
@@ -382,7 +382,7 @@
          expect(obj.$attrs.stroke).assertEqual('red')
          console.info("[polylineProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
          expect(obj.$attrs.strokeDashoffset).assertEqual('23')
-         console.info("[polylineProps] get inspector dashoffset value is: " + JSON.stringify(obj.$attrs.strokeDashoffset));
+         console.info("[polylineProps] get ins dashoffset value is: " + JSON.stringify(obj.$attrs.strokeDashoffset));
          done();
      });
  
@@ -565,7 +565,7 @@
          expect(obj.$attrs.stroke).assertEqual('red')
          console.info("[polylineProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
          expect(obj.$attrs.strokeMiterlimit).assertEqual('10')
-         console.info("[polylineProps] get inspector miterlimit value is: " + JSON.stringify(obj.$attrs.strokeMiterlimit));
+         console.info("[polylineProps] get ins miterlimit value is: " + JSON.stringify(obj.$attrs.strokeMiterlimit));
          done();
      });
  

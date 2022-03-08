@@ -236,7 +236,7 @@
          expect(obj.$attrs.stroke).assertEqual('red')
          console.info("[lineProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
          expect(obj.$attrs.strokeDasharray).assertEqual('2 3')
-         console.info("[lineProps] get inspector stroke-dasharray value is: " + JSON.stringify(obj.$attrs.strokeDasharray));
+         console.info("[lineProps] get stroke-dasharray value is: " + JSON.stringify(obj.$attrs.strokeDasharray));
          done();
      });
  
@@ -270,7 +270,7 @@
          expect(obj.$attrs.stroke).assertEqual('red')
          console.info("[lineProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
          expect(obj.$attrs.strokeDashoffset).assertEqual('23')
-         console.info("[lineProps] get inspector stroke-dashoffset value is: " + JSON.stringify(obj.$attrs.strokeDashoffset));
+         console.info("[lineProps] get stroke-dashoffset value is: " + JSON.stringify(obj.$attrs.strokeDashoffset));
          done();
      });
  
@@ -305,7 +305,7 @@
          expect(obj.$attrs.stroke).assertEqual('red')
          console.info("[lineProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
          expect(obj.$attrs.strokeLinejoin).assertEqual('bevel')
-         console.info("[lineProps] get inspector stroke-linejoin value is: " + JSON.stringify(obj.$attrs.strokeLinejoin));
+         console.info("[lineProps] get stroke-linejoin value is: " + JSON.stringify(obj.$attrs.strokeLinejoin));
          done();
      });
  
@@ -339,7 +339,7 @@
          expect(obj.$attrs.stroke).assertEqual('red')
          console.info("[lineProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
          expect(obj.$attrs.strokeLinejoin).assertEqual('miter')
-         console.info("[lineProps] get inspector stroke-linejoin value is: " + JSON.stringify(obj.$attrs.strokeLinejoin));
+         console.info("[lineProps] get stroke-linejoin value is: " + JSON.stringify(obj.$attrs.strokeLinejoin));
          done();
      });
  
@@ -373,7 +373,7 @@
          expect(obj.$attrs.stroke).assertEqual('red')
          console.info("[lineProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
          expect(obj.$attrs.strokeLinejoin).assertEqual('round')
-         console.info("[lineProps] get inspector stroke-linejoin value is: " + JSON.stringify(obj.$attrs.strokeLinejoin));
+         console.info("[lineProps] get stroke-linejoin value is: " + JSON.stringify(obj.$attrs.strokeLinejoin));
          done();
      });
  
@@ -509,7 +509,7 @@
          expect(obj.$attrs.stroke).assertEqual('red')
          console.info("[lineProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
          expect(obj.$attrs.strokeMiterlimit).assertEqual('10')
-         console.info("[lineProps] get inspector stroke-miterlimit value is: " + JSON.stringify(obj.$attrs.strokeMiterlimit));
+         console.info("[lineProps] get stroke-miterlimit value is: " + JSON.stringify(obj.$attrs.strokeMiterlimit));
          done();
      });
  
@@ -676,7 +676,8 @@
          console.info("[lineProps] get inspector stroke-width value is: " + JSON.stringify(obj.$attrs.strokeWidth));
          expect(obj.$attrs.stroke).assertEqual('red')
          console.info("[lineProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
-         expect(obj.$attrs.transform).assertEqual('translate(10,5) scale(0.5 1.3) rotate(20 40 90) skewX(10) skewY(-15)')
+         expect(obj.$attrs.transform).assertEqual('translate(10,5) scale(0.5 1.3) rotate(20 40 90) ' +
+         'skewX(10) skewY(-15)')
          console.info("[lineProps] get inspector transform value is: " + JSON.stringify(obj.$attrs.transform));
          done();
      });
