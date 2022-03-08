@@ -63,9 +63,10 @@ export default function DataAbilityJsunit() {
                 if (err) {
                     wrong = err;
                     console.error(INSERT_ONE + '001 error: ' + JSON.stringify(err));
+                } else {
+                    details = data;
+                    console.info(INSERT_ONE + '001   succeeded   data: ' + JSON.stringify(data));
                 }
-                details = data;
-                console.info(INSERT_ONE + '001   succeeded   data: ' + JSON.stringify(data));
             });
             await Utils.sleep(1000);
             details != null ? expectDetails(details, true, 1) : expectDetails(wrong, true, 2);
@@ -100,7 +101,6 @@ export default function DataAbilityJsunit() {
             console.log(INSERT_ONE + '002  end......');
         });
 
-
         /*
          * @tc.number: dataAbility_insert_test_003
          * @tc.name: call : Inserts a incorrect uri data record into the database.
@@ -119,12 +119,7 @@ export default function DataAbilityJsunit() {
                 console.error(INSERT_ONE + '003 error: ' + JSON.stringify(error));
             });
             await Utils.sleep(1000);
-            if (details != null) {
-                expectDetails(details, true, 1);
-            } else {
-                expect(typeof (wrong)).assertEqual('number');
-                expect(wrong == -1).assertTrue();
-            }
+            details != null ? expectDetails(details, true, 1) : expectDetails(wrong, true, 2);
             done();
             console.log(INSERT_ONE + '003  end......');
         });
@@ -147,12 +142,7 @@ export default function DataAbilityJsunit() {
                 console.error(INSERT_ONE + '004  error: ' + JSON.stringify(error));
             });
             await Utils.sleep(1000);
-            if (details != null) {
-                expectDetails(details, true, 1);
-            } else {
-                expect(typeof (wrong)).assertEqual('number');
-                expect(wrong < 0).assertTrue();
-            }
+            details != null ? expectDetails(details, true, 1) : expectDetails(wrong, true, 2);
             done();
             console.log(INSERT_ONE + '004  end......');
         });
@@ -179,12 +169,7 @@ export default function DataAbilityJsunit() {
                 console.error(INSERT_ONE + '005 error: ' + JSON.stringify(error));
             });
             await Utils.sleep(1000);
-            if (details != null) {
-                expectDetails(details, true, 1);
-            } else {
-                expect(typeof (wrong)).assertEqual('number');
-                expect(wrong == -1).assertTrue();
-            }
+            details != null ? expectDetails(details, true, 1) : expectDetails(wrong, true, 2);
             done();
             console.log(INSERT_ONE + '005 end......');
         });
@@ -211,12 +196,13 @@ export default function DataAbilityJsunit() {
                 wrong = err;
                 if (wrong) {
                     console.error(QUERY_TWO + '001 error: ' + JSON.stringify(wrong));
+                } else {
+                    details = data;
+                    console.info(QUERY_TWO + '001 succeeded: ' + JSON.stringify(data));
                 }
-                details = data;
-                console.info(QUERY_TWO + '001 succeeded: ' + JSON.stringify(data));
             });
             await Utils.sleep(1000);
-            details != null ? expectDetails(details, false, 4) : expectDetails(wrong, true, 4);
+            details != null ? expectDetails(details, false, 4) : expectDetails(wrong, true, 2);
             done();
             console.log(QUERY_TWO + '001 end......');
         });
@@ -243,12 +229,13 @@ export default function DataAbilityJsunit() {
                 wrong = err;
                 if (wrong) {
                     console.error(QUERY_TWO + '002 error: ' + JSON.stringify(wrong));
+                } else {
+                    details = data;
+                    console.info(QUERY_TWO + '002 succeeded: ' + JSON.stringify(data));
                 }
-                details = data;
-                console.info(QUERY_TWO + '002 succeeded: ' + JSON.stringify(data));
             });
             await Utils.sleep(1000);
-            details != null ? expectDetails(details, false, 4) : expectDetails(wrong, true, 4);
+            details != null ? expectDetails(details, false, 4) : expectDetails(wrong, true, 2);
             done();
             console.log(QUERY_TWO + '002 end......');
         });
@@ -277,12 +264,13 @@ export default function DataAbilityJsunit() {
                 wrong = err;
                 if (wrong) {
                     console.error(QUERY_TWO + '003 error: ' + JSON.stringify(wrong));
+                } else {
+                    details = data;
+                    console.info(QUERY_TWO + '003 succeeded: ' + JSON.stringify(data));
                 }
-                details = data;
-                console.info(QUERY_TWO + '003 succeeded: ' + JSON.stringify(data));
             });
             await Utils.sleep(1000);
-            details != null ? expectDetails(details, false, 4) : expectDetails(wrong, true, 4);
+            details != null ? expectDetails(details, false, 4) : expectDetails(wrong, true, 2);
             done();
             console.log(QUERY_TWO + '003 end......');
         });
@@ -312,12 +300,13 @@ export default function DataAbilityJsunit() {
                     wrong = err;
                     console.error(QUERY_TWO + '004 error: ' + JSON.stringify(err));
                     return;
+                } else {
+                    details = data;
+                    console.info(QUERY_TWO + '004 succeeded: ' + JSON.stringify(data));
                 }
-                details = data;
-                console.info(QUERY_TWO + '004 succeeded: ' + JSON.stringify(data));
             });
             await Utils.sleep(1000);
-            details != null ? expectDetails(details, false, 4) : expectDetails(wrong, true, 4);
+            details != null ? expectDetails(details, false, 4) : expectDetails(wrong, true, 2);
             done();
             console.log(QUERY_TWO + '004 end......');
         });
@@ -344,12 +333,7 @@ export default function DataAbilityJsunit() {
                 console.error(QUERY_TWO + '005 error: ' + JSON.stringify(error));
             });
             await Utils.sleep(1000);
-            if (details != null) {
-                expectDetails(details, true, 1);
-            } else {
-                expect(typeof (wrong)).assertEqual('number');
-                expect(wrong < 0).assertTrue();
-            }
+            details != null ? expectDetails(details, false, 4) : expectDetails(wrong, true, 2);
             done();
             console.log(QUERY_TWO + '005  end......');
         });
@@ -376,12 +360,7 @@ export default function DataAbilityJsunit() {
                 console.error(QUERY_TWO + '006  error: ' + JSON.stringify(error));
             });
             await Utils.sleep(1000);
-            if (details != null) {
-                expectDetails(details, true, 1);
-            } else {
-                expect(typeof (wrong)).assertEqual('number');
-                expect(wrong < 0).assertTrue();
-            }
+            details != null ? expectDetails(details, false, 4) : expectDetails(wrong, true, 2);
             done();
             console.log(QUERY_TWO + '006  end......');
         });
@@ -408,9 +387,10 @@ export default function DataAbilityJsunit() {
                 if (err) {
                     wrong = err;
                     console.error(UPDATE_THREE + '001 error: ' + JSON.stringify(err));
+                } else {
+                    details = data;
+                    console.info(UPDATE_THREE + '001 succeeded: ' + JSON.stringify(data));
                 }
-                details = data;
-                console.info(UPDATE_THREE + '001 succeeded: ' + JSON.stringify(data));
             });
             await Utils.sleep(1000);
             details != null ? expectDetails(details, true, 3) : expectDetails(wrong, true, 2);
@@ -440,9 +420,10 @@ export default function DataAbilityJsunit() {
                 if (err) {
                     wrong = err;
                     console.error(UPDATE_THREE + '002 error: ' + JSON.stringify(err));
+                } else {
+                    details = data;
+                    console.info(UPDATE_THREE + '002 succeeded: ' + JSON.stringify(data));
                 }
-                details = data;
-                console.info(UPDATE_THREE + '002 succeeded: ' + JSON.stringify(data));
             });
             await Utils.sleep(1000);
             details != null ? expectDetails(details, true, 3) : expectDetails(wrong, true, 2);
@@ -474,9 +455,10 @@ export default function DataAbilityJsunit() {
                 if (err) {
                     wrong = err;
                     console.error(UPDATE_THREE + '003 error: ' + JSON.stringify(err));
+                } else {
+                    details = data;
+                    console.info(UPDATE_THREE + '003 succeeded: ' + JSON.stringify(data));
                 }
-                details = data;
-                console.info(UPDATE_THREE + '003 succeeded: ' + JSON.stringify(data));
             });
             await Utils.sleep(1000);
             details != null ? expectDetails(details, true, 3) : expectDetails(wrong, true, 2);
@@ -508,9 +490,10 @@ export default function DataAbilityJsunit() {
                 if (err) {
                     wrong = err;
                     console.error(UPDATE_THREE + '004 error: ' + JSON.stringify(err));
+                } else {
+                    details = data;
+                    console.info(UPDATE_THREE + '004 succeeded: ' + JSON.stringify(data));
                 }
-                details = data;
-                console.info(UPDATE_THREE + '004 succeeded: ' + JSON.stringify(data));
             });
             await Utils.sleep(1000);
             details != null ? expectDetails(details, true, 3) : expectDetails(wrong, true, 2);
@@ -546,11 +529,7 @@ export default function DataAbilityJsunit() {
                 }
             });
             await Utils.sleep(1000);
-            if (details != null) {
-                expectDetails(details, true, 3);
-            } else {
-                expect(wrong == -1).assertTrue();
-            }
+            details != null ? expectDetails(details, true, 3) : expectDetails(wrong, true, 2);
             done();
             console.log(UPDATE_THREE + '005 end......');
         });
@@ -565,7 +544,6 @@ export default function DataAbilityJsunit() {
             let details;
             let wrong;
             console.log(UPDATE_THREE + '006 start......');
-
             let pacMap = {
                 'ringtone_modify_time': 32,
                 'group_name': 'testupdata2'
@@ -583,11 +561,7 @@ export default function DataAbilityJsunit() {
                 }
             });
             await Utils.sleep(1000);
-            if (details != null) {
-                expectDetails(details, true, 3);
-            } else {
-                expect(wrong == -1).assertTrue();
-            }
+            details != null ? expectDetails(details, true, 3) : expectDetails(wrong, true, 2);
             done();
             console.log(UPDATE_THREE + '006 end......');
         });
@@ -605,7 +579,6 @@ export default function DataAbilityJsunit() {
             }
             console.info('Operation succeeded1: ' + JSON.stringify(data));
         });
-
         it(DELETE_FOUR + '001', 0, async function (done) {
             let details;
             let wrong;
@@ -621,9 +594,10 @@ export default function DataAbilityJsunit() {
                 if (err2) {
                     wrong = err2;
                     console.error(DELETE_FOUR + '001 error: ' + JSON.stringify(err2));
+                } else {
+                    details = data2;
+                    console.info(DELETE_FOUR + '001 succeeded: ' + JSON.stringify(data2));
                 }
-                details = data2;
-                console.info(DELETE_FOUR + '001 succeeded: ' + JSON.stringify(data2));
             });
             await Utils.sleep(1000);
             details != null ? expectDetails(details, true, 3) : expectDetails(wrong, true, 2);
@@ -652,9 +626,10 @@ export default function DataAbilityJsunit() {
                 if (err) {
                     wrong = err;
                     console.error(DELETE_FOUR + '002 error: ' + JSON.stringify(err));
+                } else {
+                    details = data;
+                    console.info(DELETE_FOUR + '002 succeeded: ' + JSON.stringify(data));
                 }
-                details = data;
-                console.info(DELETE_FOUR + '002 succeeded: ' + JSON.stringify(data));
             });
             await Utils.sleep(1000);
             details != null ? expectDetails(details, true, 3) : expectDetails(wrong, true, 2);
@@ -675,7 +650,6 @@ export default function DataAbilityJsunit() {
             }
             console.info('Operation succeeded3: ' + JSON.stringify(data));
         });
-
         it(DELETE_FOUR + '003', 0, async function (done) {
             let details;
             let wrong;
@@ -693,9 +667,10 @@ export default function DataAbilityJsunit() {
                 if (err2) {
                     wrong = err2;
                     console.error(DELETE_FOUR + '003 error: ' + JSON.stringify(err2));
+                } else {
+                    details = data2;
+                    console.info(DELETE_FOUR + '003 delete succeeded: ' + JSON.stringify(data2));
                 }
-                details = data2;
-                console.info(DELETE_FOUR + '003 delete succeeded: ' + JSON.stringify(data2));
             });
             await Utils.sleep(1000);
             details != null ? expectDetails(details, true, 3) : expectDetails(wrong, true, 2);
@@ -733,9 +708,10 @@ export default function DataAbilityJsunit() {
                 if (err2) {
                     wrong = err2;
                     console.error(DELETE_FOUR + '004 error: ' + JSON.stringify(err2));
+                } else {
+                    details = data2;
+                    console.info(DELETE_FOUR + '004 delete succeeded: ' + JSON.stringify(data2));
                 }
-                details = data2;
-                console.info(DELETE_FOUR + '004 delete succeeded: ' + JSON.stringify(data2));
             });
             await Utils.sleep(1000);
             details != null ? expectDetails(details, true, 3) : expectDetails(wrong, true, 2);
@@ -776,11 +752,7 @@ export default function DataAbilityJsunit() {
                 }
             });
             await Utils.sleep(1000);
-            if (details != null) {
-                expectDetails(details, true, 3);
-            } else {
-                expect(wrong == -1).assertTrue();
-            }
+            details != null ? expectDetails(details, true, 3) : expectDetails(wrong, true, 2);
             done();
             console.log(DELETE_FOUR + '005 delete end......');
         });
@@ -818,28 +790,29 @@ export default function DataAbilityJsunit() {
                 }
             });
             await Utils.sleep(1000);
-            if (details != null) {
-                expectDetails(details, true, 3);
-            } else {
-                expect(wrong == -1).assertTrue();
-            }
+            details != null ? expectDetails(details, true, 3) : expectDetails(wrong, true, 2);
             done();
             console.log(DELETE_FOUR + '006 delete end......');
         });
     })
 
     function expectDetails(data, isTrue, keyStatus) {
-        expect(typeof (data)).assertEqual("object");
-        expect(typeof (data.result)).assertEqual(isTrue ? 'number' : 'string');
-        if (keyStatus == 1) {
-            expect(data.result > 0).assertTrue();
-        } else if (keyStatus == 2) {
-            expect(data.result < 0).assertTrue();
-        } else if (keyStatus == 3) {
-            expect(data.result).assertEqual(0);
-        } else {
-            console.log('end.........................');
+        if (data != -1) {
+            expect(typeof (data)).assertEqual("object");
+            expect(typeof (data.result)).assertEqual(isTrue ? 'number' : 'string');
+        }
+        switch (keyStatus) {
+            case 1:
+                expect(data.result > 0).assertTrue();
+                break
+
+            case 2:
+                expect(data == -1).assertTrue();
+                break
+
+            case 3:
+                expect(data.result).assertEqual(0);
+                break
         }
     }
 }
-

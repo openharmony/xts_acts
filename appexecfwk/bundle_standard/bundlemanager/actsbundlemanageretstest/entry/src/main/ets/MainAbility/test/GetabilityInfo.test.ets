@@ -96,23 +96,23 @@ export default function GetabilityInfo() {
       console.info('[bundle_GetabilityInfo_test_0300] START');
       await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
-      var mData;
-      var mError = null;
+      let err = null
+      var mData
       await bundleManager.getAbilityInfo(bundleName_other, abilityName_other)
         .then((data) => {
-          var timeNewStamp = Utils.getNowTime();
-          Utils.getDurationTime('bundle_GetabilityInfo_test_0300', timeOldStamp, timeNewStamp);
-          mData = data;
+          var timeNewStamp =  Utils.getNowTime();
+          Utils.getDurationTime('bundle_GetabilityInfo_test_0300',timeOldStamp,timeNewStamp)
+          mData = data
           console.info('[bundle_GetabilityInfo_test_0300] getApplicationInfo in ');
           console.info('[bundle_GetabilityInfo_test_0300] getApplicationInfo promise data is: ' + JSON.stringify(data));
-          expect(typeof (data)).assertEqual("object");
+          expect(mData).assertEqual(false);
         }).catch((error) => {
-          mError = error;
+          err = error
           console.error('[bundle_GetabilityInfo_test_0300]Operation failed. Cause: ' + JSON.stringify(error));
-        })
-      if (mError != null) {
-        await expect(mError).assertEqual(1);
-      } else {
+        });
+      if(err != null) {
+        await expect(err).assertEqual(1);
+      }else{
         checkAbilityInfo_other(mData);
       }
       done();
