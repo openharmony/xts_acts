@@ -156,6 +156,7 @@
           "pages/div/style/index",
           "pages/divider/prop/index",
           "pages/button/prop/index",
+          "pages/button/style/index",
           "pages/chart/prop/index",
           "pages/image/prop/index",
           "pages/span/prop/index",
