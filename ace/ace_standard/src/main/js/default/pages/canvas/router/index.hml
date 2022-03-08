@@ -22,30 +22,30 @@
             <text class="sub-title">
                 canvas通用样式1
             </text>
-            <canvas class="style1">
+            <canvas class="style1" id="style1">
             </canvas>
             <text  class="sub-title">
                 canvas通用样式2
             </text>
-            <canvas class="style2">
+            <canvas class="style2" id="style2">
             </canvas>
             <text class="sub-title">
                 canvas通用样式3
             </text>
-            <canvas class="style3">
+            <canvas class="style3" id="style3">
             </canvas>
             <text  class="sub-title">
                 canvas通用样式4
             </text>
-            <canvas class="style4">
+            <canvas class="style4" id="style4">
             </canvas>
             <text  class="sub-title">
                 canvas通用样式5
             </text>
             <div class="contain1">
-                <canvas class="style5">
+                <canvas class="style5" id="style5">
                 </canvas>
-                <canvas class="style6">
+                <canvas class="style6" id="style6">
                 </canvas>
             </div>
         </div>
@@ -80,6 +80,11 @@
                  ondragover="dragOver" ondragleave="dragLeave"
                  ondrop="drop">
             </canvas>
+            <text  class="sub-title">
+                canvas特有事件4
+            </text>
+            <canvas class ="event4" onaccessibility="handleAccessibility">
+            </canvas>
         </div>
     </div>
 
@@ -102,7 +107,7 @@
             <text  class="sub-title">
                 canvas通用属性2
             </text>
-            <canvas class="prop2" ref ="prop2"
+            <canvas class="prop2" ref ="prop2" id="prop2"
                  disabled = "false" focusable ="false"
                  data-name ="prop2"
                  dir ="ltr">
@@ -110,7 +115,7 @@
             <text  class="sub-title">
                 canvas通用属性3
             </text>
-            <canvas style="color: #679855; margin: 5px;" class="prop3">
+            <canvas style="color: #679855; margin: 5px;" class="prop3" id="prop3">
             </canvas>
         </div>
 
