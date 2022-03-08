@@ -90,16 +90,6 @@
         </div>
 
         <text class="sub-title">
-            通用属性 -- data
-        </text>
-        <div id="dataPropOne"
-             data="通用属性 -- data">
-        </div>
-        <div id="dataPropOneNone"
-             data="">
-        </div>
-
-        <text class="sub-title">
             通用属性 -- click-effect
         </text>
         <div id="clickEffectPropSmall"
@@ -161,7 +151,30 @@
              show="false">
         </div>
         <div id="showPropNone"
-             show="">
+             show="false">
+        </div>
+
+        <text class="sub-title">
+            属性 -- tid
+        </text>
+        <div id="tidProp"
+             tid="tidProp">
+        </div>
+        <div id="tidPropNone"
+             tid="">
+        </div>
+
+        <text class="sub-title">
+            属性 -- elif
+        </text>
+        <div style="width: 20px;height: 20px;"
+             if="false">
+        </div>
+        <div id="elifPropTrue"
+             elif="true">
+        </div>
+        <div id="elifPropFalse"
+             elif="false">
         </div>
     </div>
 
