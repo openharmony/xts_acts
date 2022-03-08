@@ -14,28 +14,6 @@
  */
 
 export default {
-    data: {
-        qrType: 'rect',
-        qrSize: '300px',
-        qrCol: '#87ceeb',
-        colList: ['#87ceeb','#fa8072','#da70d6','#80ff00ff','#00ff00ff'],
-        qrBCol: '#f0ffff',
-        bColList: ['#f0ffff','#ffffe0','#d8bfd8']
-    },
-    setType(e) {
-        if (e.checked) {
-            this.qrType = 'rect'
-        } else {
-            this.qrType = 'circle'
-        }
-    },
-    setvalue(e) {
-        this.qrValue = e.newValue
-    },
-    setCol(e) {
-        this.qrCol = e.newValue
-    },
-    setBCol(e) {
-        this.qrBCol = e.newValue
-    }
+
+
 }
