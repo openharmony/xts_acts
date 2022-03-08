@@ -18,9 +18,8 @@
         <text class="title">
             option支持如下样式
         </text>
-
         <text class="sub-title">
-            支持样式
+            color,font-size,allow-scale,font-weight,text-decoration,font-family
         </text>
         <select>
             <option value="option" id="styleOne">option
