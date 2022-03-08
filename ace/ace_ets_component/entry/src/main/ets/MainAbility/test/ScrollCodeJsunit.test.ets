@@ -35,7 +35,7 @@ export default function scrollCodeJsunit() {
           console.info("push ScrollCode page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push ScrollCode page error: " + err);
+        console.error("push ScrollCode page error " + JSON.stringify(err));
       }
       done()
     });
@@ -52,7 +52,7 @@ export default function scrollCodeJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[test_scrollCode_001] component obj is: " + JSON.stringify(obj));
       await Utils.sleep(1000);
-      expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.Vertical');
+      expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.None');
       expect(obj.$attrs.scrollBar).assertEqual('BarState.On');
       expect(obj.$attrs.scrollBarColor).assertEqual('#FF0000FF');
       expect(obj.$attrs.scrollBarWidth).assertEqual('30.000000px');
@@ -160,6 +160,28 @@ export default function scrollCodeJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[test_scrollCode_005] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.scrollBarWidth).assertEqual('40.000000px');
+      done();
+    });
+
+
+    it('test_scrollCode_006', 0, async function (done) {
+      await Utils.sleep(1000)
+      var callback = (eventData) => {
+        console.info("[test_scrollCode_006] get event state result is: " + JSON.stringify(eventData));
+        expect(eventData.data.scrollToIndex).assertEqual(10)
+      }
+      var innerEvent = {
+        eventId: 30,
+        priority: events_emitter.EventPriority.LOW
+      }
+      try {
+        events_emitter.on(innerEvent, callback)
+      } catch (err) {
+        console.info("[test_scrollCode_006] on events_emitter err : " + JSON.stringify(err));
+      }
+      console.info('[test_scrollCode_006] sendEventByKey ' + JSON.stringify(sendEventByKey('button', 10, "")));
+      await Utils.sleep(1000)
+      console.info('[test_scrollCode_006] testSendTouchEvent END');
       done();
     });
 

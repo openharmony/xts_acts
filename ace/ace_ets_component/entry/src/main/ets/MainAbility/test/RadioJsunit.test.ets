@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,44 +12,48 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
+
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
+import events_emitter from '@ohos.events.emitter';
 
-export default function canvasJsunit() {
-  describe('canvas3Test', function () {
+export default function progressJsunit() {
+  describe('progressTest', function () {
     beforeEach(async function (done) {
-      console.info("canvas3 beforeEach start");
       let options = {
-        uri: 'pages/canvas3',
+        uri: 'pages/progress',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get canvas3 state pages:" + JSON.stringify(pages));
-        if (!("canvas3" == pages.name)) {
-          console.info("get canvas3 state pages.name:" + JSON.stringify(pages.name));
+        console.info("get progress state success " + JSON.stringify(pages));
+        if (!("progress" == pages.name)) {
+          console.info("get progress state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
-          console.info("push canvas3 page result:" + JSON.stringify(result));
+          await Utils.sleep(4000);
+          console.info("push progress page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push canvas3 page error:" + err);
+        console.error("push progress page error " + err);
       }
       done()
     });
 
     afterEach(async function () {
       await Utils.sleep(1000);
-      console.info("canvas3 after each called");
+      console.info("progress after each called");
     });
 
-    it('testCanvas01', 0, async function (done) {
-      console.info('[testCanvas01] START');
+    it('testProgress_600', 0, async function (done) {
+      console.info('[testProgress_600] START');
       await Utils.sleep(1000);
-      console.info('[testCanvas01]----------- START');
-      console.info('testCanvas01 END');
+      let strJson = getInspectorByKey('CPValue');
+      let obj = JSON.parse(strJson);
+      console.info("testProgress_600 component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.width).assertEqual("100.000000vp");
+      console.info('testProgress_600 END');
       done();
     });
-  });
+  })
 }

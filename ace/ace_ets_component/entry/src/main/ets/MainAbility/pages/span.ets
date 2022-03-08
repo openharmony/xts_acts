@@ -21,6 +21,7 @@ struct SpanExample {
   @State decorationValue:object={ type: TextDecorationType.None, color: Color.Red }
   @State textCaseValue:TextCase=TextCase.Normal
   @State fontSizeValue:number=40
+  @State fontColorValue: Color= 0xCCCCCC
 
   private stateChangCallBack = (eventData) => {
     console.info("span page state change called:" + JSON.stringify(eventData));
@@ -30,6 +31,9 @@ struct SpanExample {
       }
       if (eventData.data.textCaseValue != null) {
         this.textCaseValue = eventData.data.textCaseValue;
+      }
+      if (eventData.data.fontColorValue != null) {
+        this.fontColorValue = eventData.data.fontColorValue;
       }
     }
   }
@@ -47,11 +51,17 @@ struct SpanExample {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
+
+    var stateChangeEvent3 = {
+      eventId: 42,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent3, this.stateChangCallBack);
   }
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween }) {
-      Text('Basic Usage').fontSize(9).fontColor(0xCCCCCC)
+      Text('Basic Usage').fontSize(9).fontColor(this.fontColorValue).key('fontColor')
       Text() {
         Span('This is the Span component').fontSize(this.fontSizeValue).textCase(this.textCaseValue)
           .decoration(this.decorationValue).key('decoration')
