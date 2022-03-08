@@ -138,13 +138,45 @@
         <text id="showPropNone"
              show="">
         </text>
+
+        <text class="sub-title">
+            特有属性 -- shareid
+        </text>
+        <text class="propNewAdd"
+               shareid="shareImage">
+        </text>
+        <text class="propNewAdd"
+               shareid="">
+        </text>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <text class="propNewAdd"
+               tid="id">
+        </text>
+        <text class="propNewAdd"
+               tid="">
+        </text>
+
+        <div>
+            <text id="ifPropTrue"
+                   if="true">
+            </text>
+            <text class="propNewAdd"
+                   elif="true">
+            </text>
+            <text class="propNewAdd"
+                   elif="false">
+            </text>
+        </div>
     </div>
 
     <div style="background-color: #000000; width: 2px; height: 100%;">
     </div>
     <div class="specific-container">
         <text class="title">
-            div特有属性
+            text特有属性
         </text>
     </div>
 </div>
