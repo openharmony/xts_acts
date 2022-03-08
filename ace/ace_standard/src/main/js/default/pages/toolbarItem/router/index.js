@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -109,19 +108,11 @@ export default {
         var styleValue1 = this.$element("style1").getInspector()
         var styleValue2 = this.$element("style2").getInspector()
         var styleValue3 = this.$element("style3").getInspector()
-        var styleValue4 = this.$element("style4").getInspector()
-        var styleValue5 = this.$element("style5").getInspector()
-        var styleValue6 = this.$element("style6").getInspector()
-        var styleValue7 = this.$element("style7").getInspector()
 
         return {
             style1:styleValue1,
             style2:styleValue2,
             style3:styleValue3,
-            style4:styleValue4,
-            style5:styleValue5,
-            style6:styleValue6,
-            style7:styleValue7
         }
     },
 
@@ -129,11 +120,15 @@ export default {
         var propValue1 = this.$element("prop1").getInspector()
         var propValue2 = this.$element("prop2").getInspector()
         var propValue3 = this.$element("prop3").getInspector()
+        var propValue4 = this.$element("prop4").getInspector()
+        var propValue5 = this.$element("prop5").getInspector()
 
         return {
             prop1:propValue1,
             prop2:propValue2,
-            prop3:propValue3
+            prop3:propValue3,
+            prop4:propValue4,
+            prop5:propValue5
         }
     },
 
@@ -291,7 +286,6 @@ export default {
             message: 'detached'
         });
     },
-
     pinchStart(event){
         var scale = event.scale
         var pinchCenterX = event.pinchCenterX
@@ -420,193 +414,6 @@ export default {
         });
     },
 
-    functionTest1(event){
-        var function1 =  this.$element('function1');
-        function1.focus(true)
-        var rect = function1.getBoundingClientRect();
-        var width = rect.width;
-        var height = rect.height;
-        var left = rect.left;
-        var top = rect.top;
-        var message = 'width--' + width + ',height--' + height +
-        ',left--' + left + ',top--' + top;
-        prompt.showToast({
-            message: 'function1 rect:\n' + message
-        });
-    },
-
-    functionTest2(event){
-        var function2 =  this.$element('function2');
-        let observer = function2.createIntersectionObserver({
-            ratios: [0.2, 0], // number
-        });
-        observer.observe((isVisible, ratio)=> {
-            console.info('this element is ' + isVisible + 'ratio is ' + ratio)
-            prompt.showToast({
-                message: 'function2 observer:\n' + 'isVisible--' + isVisible + ',ratio--' + ratio
-            });
-        })
-
-        observer.unobserve()
-    },
-
-    functionTest3(event){
-        var function3 =  this.$element('function3');
-
-        var animation = function3.animate(frames, options);
-        animation.play()
-        animation.onfinish = function(){
-            prompt.showToast({
-                message: 'The animation is finished.'
-            });
-        };
-
-        animation.oncancel = function(){
-            prompt.showToast({
-                message: 'The animation is canceled.'
-            });
-        };
-
-        animation.onrepeat = function(){
-            prompt.showToast({
-                message: 'The animation is repeated.'
-            });
-        };
-
-        setTimeout(() => {
-            animation.reverse()
-        }, 500)
-
-        setTimeout(() => {
-            animation.pause()
-        }, 1000)
-
-        setTimeout(() => {
-            animation.cancel()
-        }, 1500)
-    },
-
-    functionTest4(){
-        var function4 =  this.$element('function4');
-        function4.start();
-        prompt.showToast({
-            message: 'function4 video start.'
-        });
-    },
-    functionTest5(){
-        var function5 =  this.$element('function5');
-        function5.pause();
-        prompt.showToast({
-            message: 'function5 video pause.'
-        })
-    },
-    functionTest6(){
-        var function6 =  this.$element('function6');
-        function6.setCurrentTime({
-            currenttime: 2
-        });
-        prompt.showToast({
-            message: 'function6 video setCurrentTime.'
-        })
-    },
-    functionTest7(){
-        var function7 =  this.$element('function7');
-        function7.requestFullscreen({
-            screenOrientation : "default"
-        });
-        prompt.showToast({
-            message: 'function7 video requestFullscreen.'
-        })
-
-    },
-    functionTest8(){
-        var function8 =  this.$element('function8');
-        function8.exitFullscreen();
-        prompt.showToast({
-            message: 'function8 video exitFullscreen.'
-        })
-    },
-    functionTest9(){
-        var function9 =  this.$element('function9');
-        function9.stop();
-        prompt.showToast({
-            message: 'function9 video stop.'
-        })
-    },
-
-    reachStart(){
-        prompt.showToast({
-            message: 'reachStart'
-        });
-    },
-
-    reachEnd(){
-        prompt.showToast({
-            message: 'reachEnd'
-        });
-    },
-
-    reachTop(){
-        prompt.showToast({
-            message: 'reachTop'
-        });
-    },
-
-    reachBottom(){
-        prompt.showToast({
-            message: 'reachBottom'
-        });
-    },
-    prepared() {
-        prompt.showToast({
-            message: 'prepared'
-        });
-    },
-    start() {
-        prompt.showToast({
-            message: 'start'
-        });
-    },
-    pause() {
-        prompt.showToast({
-            message: 'pause'
-        });
-    },
-    finish() {
-        prompt.showToast({
-            message: 'finish'
-        });
-    },
-    error() {
-        prompt.showToast({
-            message: 'error'
-        });
-    },
-    seeking() {
-        prompt.showToast({
-            message: 'seeking'
-        });
-    },
-    seeked() {
-        prompt.showToast({
-            message: 'seeked'
-        });
-    },
-    timeupdate() {
-        prompt.showToast({
-            message: 'timeupdate'
-        });
-    },
-    fullscreenchange() {
-        prompt.showToast({
-            message: 'fullscreenchange'
-        });
-    },
-    stop() {
-        prompt.showToast({
-            message: 'stop'
-        });
-    },
     onAccessibility() {
         prompt.showToast({
             message: 'onAccessibility'
