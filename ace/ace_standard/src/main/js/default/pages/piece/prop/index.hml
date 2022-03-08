@@ -175,5 +175,33 @@
         <piece id="closablePropFalse" closable="false" content="content">
         </piece>
 
+        <text class="sub-title">
+            特有属性 -- icon
+        </text>
+        <piece id="closablePropTrue" closable="true" content="content" icon="common/images/image.png">
+        </piece>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <piece class="propNewAdd" content="content"
+                tid="id">
+        </piece>
+        <piece class="propNewAdd" content="content"
+                tid="">
+        </piece>
+
+        <div>
+            <piece id="ifPropTrue" content="content"
+                    if="true">
+            </piece>
+            <piece class="propNewAdd" content="content"
+                    elif="true">
+            </piece>
+            <piece class="propNewAdd" content="content"
+                    elif="false">
+            </piece>
+        </div>
+
     </div>
 </div>
