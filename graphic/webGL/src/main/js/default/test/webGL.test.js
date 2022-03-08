@@ -27472,6 +27472,7 @@ describe('webgl1Test', function() {
 		expect(texParameterValue).assertEqual(gl.COMPARE_REF_TO_TEXTURE);
 		done();
 	});
+	
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1335
 	 * @tc.name testRangeMin
