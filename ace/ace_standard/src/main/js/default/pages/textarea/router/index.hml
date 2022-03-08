@@ -76,4 +76,11 @@
               selectedend="7"
               menuoptions="{}">
     </textarea>
+    <text  class="sub-title">
+        特有事件1
+    </text>
+    <div class ="event4" onreachstart="reachStart" onreachend="reachEnd">
+        <textarea id="customMarquee" loop="4" change="change" selectchange="selectchange" share="share" translate="translate" style="height: 100%; width: 100%; background-color: red; margin-left: 10px;">
+            特有事件----</textarea>
+    </div>
 </div>
