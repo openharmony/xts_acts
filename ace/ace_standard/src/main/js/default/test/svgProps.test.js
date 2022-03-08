@@ -378,7 +378,7 @@ describe('svgPropsJsTest', function () {
         expect(obj.$attrs.stroke).assertEqual('red')
         console.info("[svgProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
         expect(obj.$attrs.strokeDasharray).assertEqual('2 3')
-        console.info("[svgProps] get inspector stroke-dasharray value is: " + JSON.stringify(obj.$attrs.strokeDasharray));
+        console.info("[svgProps] get inspector dasharray value is: " + JSON.stringify(obj.$attrs.strokeDasharray));
         done();
     });
 
@@ -406,7 +406,7 @@ describe('svgPropsJsTest', function () {
         expect(obj.$attrs.stroke).assertEqual('red')
         console.info("[svgProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
         expect(obj.$attrs.strokeDashoffset).assertEqual('23')
-        console.info("[svgProps] get inspector stroke-dashoffset value is: " + JSON.stringify(obj.$attrs.strokeDashoffset));
+        console.info("[svgProps] get inspector dashoffset value is: " + JSON.stringify(obj.$attrs.strokeDashoffset));
         done();
     });
 
@@ -435,7 +435,7 @@ describe('svgPropsJsTest', function () {
         expect(obj.$attrs.stroke).assertEqual('red')
         console.info("[svgProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
         expect(obj.$attrs.strokeLinejoin).assertEqual('bevel')
-        console.info("[svgProps] get inspector stroke-linejoin value is: " + JSON.stringify(obj.$attrs.strokeLinejoin));
+        console.info("[svgProps] get inspector linejoin value is: " + JSON.stringify(obj.$attrs.strokeLinejoin));
         done();
     });
 
@@ -463,7 +463,7 @@ describe('svgPropsJsTest', function () {
         expect(obj.$attrs.stroke).assertEqual('red')
         console.info("[svgProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
         expect(obj.$attrs.strokeLinejoin).assertEqual('miter')
-        console.info("[svgProps] get inspector stroke-linejoin value is: " + JSON.stringify(obj.$attrs.strokeLinejoin));
+        console.info("[svgProps] get inspector linejoin value is: " + JSON.stringify(obj.$attrs.strokeLinejoin));
         done();
     });
 
@@ -491,7 +491,7 @@ describe('svgPropsJsTest', function () {
         expect(obj.$attrs.stroke).assertEqual('red')
         console.info("[svgProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
         expect(obj.$attrs.strokeLinejoin).assertEqual('round')
-        console.info("[svgProps] get inspector stroke-linejoin value is: " + JSON.stringify(obj.$attrs.strokeLinejoin));
+        console.info("[svgProps] get inspector linejoin value is: " + JSON.stringify(obj.$attrs.strokeLinejoin));
         done();
     });
 
@@ -519,7 +519,7 @@ describe('svgPropsJsTest', function () {
         expect(obj.$attrs.stroke).assertEqual('red')
         console.info("[svgProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
         expect(obj.$attrs.strokeLineCap).assertEqual('butt')
-        console.info("[svgProps] get inspector stroke-lineCap value is: " + JSON.stringify(obj.$attrs.strokeLineCap));
+        console.info("[svgProps] get inspector lineCap value is: " + JSON.stringify(obj.$attrs.strokeLineCap));
         done();
     });
 
@@ -547,7 +547,7 @@ describe('svgPropsJsTest', function () {
         expect(obj.$attrs.stroke).assertEqual('red')
         console.info("[svgProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
         expect(obj.$attrs.strokeLineCap).assertEqual('round')
-        console.info("[svgProps] get inspector stroke-lineCap value is: " + JSON.stringify(obj.$attrs.strokeLineCap));
+        console.info("[svgProps] get inspector lineCap value is: " + JSON.stringify(obj.$attrs.strokeLineCap));
         done();
     });
 
@@ -575,7 +575,7 @@ describe('svgPropsJsTest', function () {
         expect(obj.$attrs.stroke).assertEqual('red')
         console.info("[svgProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
         expect(obj.$attrs.strokeLineCap).assertEqual('square')
-        console.info("[svgProps] get inspector stroke-lineCap value is: " + JSON.stringify(obj.$attrs.strokeLineCap));
+        console.info("[svgProps] get inspector lineCap value is: " + JSON.stringify(obj.$attrs.strokeLineCap));
         done();
     });
 
@@ -603,7 +603,7 @@ describe('svgPropsJsTest', function () {
         expect(obj.$attrs.stroke).assertEqual('red')
         console.info("[svgProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
         expect(obj.$attrs.strokeMiterlimit).assertEqual('10')
-        console.info("[svgProps] get inspector stroke-miterlimit value is: " + JSON.stringify(obj.$attrs.strokeMiterlimit));
+        console.info("[svgProps] get inspector miterlimit value is: " + JSON.stringify(obj.$attrs.strokeMiterlimit));
         done();
     });
 
@@ -631,7 +631,7 @@ describe('svgPropsJsTest', function () {
         expect(obj.$attrs.stroke).assertEqual('red')
         console.info("[svgProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
         expect(obj.$attrs.strokeOpacity).assertEqual('0.5')
-        console.info("[svgProps] get inspector stroke-opacity value is: " + JSON.stringify(obj.$attrs.strokeOpacity));
+        console.info("[svgProps] get inspector opacity value is: " + JSON.stringify(obj.$attrs.strokeOpacity));
         done();
     });
 
@@ -659,7 +659,7 @@ describe('svgPropsJsTest', function () {
         expect(obj.$attrs.stroke).assertEqual('red')
         console.info("[svgProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
         expect(obj.$attrs.strokeOpacity).assertEqual('1')
-        console.info("[svgProps] get inspector stroke-opacity value is: " + JSON.stringify(obj.$attrs.strokeOpacity));
+        console.info("[svgProps] get inspector opacity value is: " + JSON.stringify(obj.$attrs.strokeOpacity));
         done();
     });
 
@@ -687,7 +687,7 @@ describe('svgPropsJsTest', function () {
         expect(obj.$attrs.stroke).assertEqual('red')
         console.info("[svgProps] get inspector stroke value is: " + JSON.stringify(obj.$attrs.stroke));
         expect(obj.$attrs.strokeOpacity).assertEqual('1.5')
-        console.info("[svgProps] get inspector stroke-opacity value is: " + JSON.stringify(obj.$attrs.strokeOpacity));
+        console.info("[svgProps] get inspector opacity value is: " + JSON.stringify(obj.$attrs.strokeOpacity));
         done();
     });
 
@@ -740,7 +740,7 @@ describe('svgPropsJsTest', function () {
         console.info("[svgProps] get inspector width value is: " + JSON.stringify(obj.$attrs.width));
         expect(obj.$attrs.height).assertEqual('20px')
         console.info("[svgProps] get inspector height value is: " + JSON.stringify(obj.$attrs.height));
-        expect(obj.$attrs.transform).assertEqual('translate(10,5) scale(0.5 1.3) rotate(20 40 90) skewX(10) skewY(-15)')
+        expect(obj.$attrs.transform).assertEqual('translate(10,5)scale(0.5 1.3)rotate(20 40 90)skewX(10)skewY(-15)')
         console.info("[svgProps] get inspector transform value is: " + JSON.stringify(obj.$attrs.transform));
         done();
     });
