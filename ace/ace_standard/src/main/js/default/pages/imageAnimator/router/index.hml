@@ -137,7 +137,7 @@
             <text  class="sub-title">
                 特有事件1
             </text>
-            <image-animator  ref="animator" fixedsize="true" images="{{images}}" duration="2s" @resume='resume' @start="start" @stop='stop' @pause='pause' class ="event5" >
+            <image-animator  ref="animator"  fixedsize="true" images="{{images}}" duration="2s" @resume='resume' @start="start" @stop='stop' @pause='pause' class ="event5" >
             </image-animator>
 
         </div>
