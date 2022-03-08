@@ -99,6 +99,13 @@ export default {
         });
     },
 
+    onAccessibility(event) {
+        if (event.eventType == 1) {
+            // Do Something
+        }
+        console.log("onAccessibility" + JSON.stringify(event));
+    },
+
     touchStart(event){
         var globalX = event.touches[0].globalX
         var globalY = event.touches[0].globalY

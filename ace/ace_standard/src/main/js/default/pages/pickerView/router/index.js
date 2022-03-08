@@ -88,6 +88,7 @@ export default {
   data: {
     defaultTime: "",
     time: "",
+    multitext:[["a", "b", "c"], ["e", "f", "g"], ["h", "i"], ["k", "l", "m"]],
   },
   onMenuSelected(e) {
     prompt.showToast({
@@ -544,5 +545,11 @@ export default {
 
   concat(hours, minutes) {
     return `${this.fill(hours)}:${this.fill(minutes)}`;
+  },
+  multiTextChange() {
+    prompt.showToast({ message:"multiTextChange" });
+  },
+  columnChange () {
+    prompt.showToast({ message:"columnChange" });
   },
 }

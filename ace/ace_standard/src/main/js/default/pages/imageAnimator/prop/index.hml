@@ -236,6 +236,39 @@
         <image-animator images="" duration="" fillmode="none" id="typeFillmodeNone"
                 >
         </image-animator>
+        <text class="sub-title">
+            特有属性 -- image-animator
+        </text>
+        <image-animator images="" duration="" class="propNewAdd"
+                image-animator="image-animator">
+        </image-animator>
+        <image-animator images="" duration="" class="propNewAdd"
+                image-animator="">
+        </image-animator>
+
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <image-animator images="" duration="" class="propNewAdd"
+                tid="id">
+        </image-animator>
+        <image-animator images="" duration="" class="propNewAdd"
+                tid="">
+        </image-animator>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <image-animator images="" duration="" class="propNewAdd"
+                 if="false">
+        </image-animator>
+        <image-animator images="" duration="" class="propNewAdd"
+                 elif="true">
+        </image-animator>
+        <image-animator images="" duration="" class="propNewAdd"
+                 elif="false">
+        </image-animator>
         
     </div>
 </div>

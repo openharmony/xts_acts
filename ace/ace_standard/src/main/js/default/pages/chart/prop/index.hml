@@ -89,6 +89,16 @@
         </chart>
 
         <text class="sub-title">
+            通用属性 -- data
+        </text>
+        <chart class="propNewAdd"
+                data="通用属性 -- data">
+        </chart>
+        <chart class="propNewAdd"
+                data="">
+        </chart>
+
+        <text class="sub-title">
             通用属性 -- click-effect
         </text>
         <chart id="clickEffectPropSmall"
@@ -240,6 +250,29 @@
         </chart>
         <chart id="animationdurationNone"
                animationduration="">
+        </chart>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <chart class="propNewAdd"
+                tid="id">
+        </chart>
+        <chart class="propNewAdd"
+                tid="">
+        </chart>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <chart class="propNewAdd"
+               if="false">
+        </chart>
+        <chart class="propNewAdd"
+                elif="true">
+        </chart>
+        <chart class="propNewAdd"
+                elif="false">
         </chart>
     </div>
 </div>

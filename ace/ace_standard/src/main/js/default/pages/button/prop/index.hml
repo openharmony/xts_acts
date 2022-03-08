@@ -89,6 +89,16 @@
         </button>
 
         <text class="sub-title">
+            通用属性 -- data
+        </text>
+        <button class="propNewAdd"
+                data="通用属性 -- data">
+        </button>
+        <button class="propNewAdd"
+                data="">
+        </button>
+
+        <text class="sub-title">
             通用属性 -- click-effect
         </text>
         <button id="clickEffectPropSmall"
@@ -233,6 +243,39 @@
         </button>
         <button id="waitingNone"
                 waiting="">
+        </button>
+
+        <text class="sub-title">
+            特有属性 -- shareid
+        </text>
+        <button class="propNewAdd"
+                shareid="shareButton">
+        </button>
+        <button class="propNewAdd"
+                shareid="">
+        </button>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <button class="propNewAdd"
+                tid="id">
+        </button>
+        <button class="propNewAdd"
+                tid="">
+        </button>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <button class="propNewAdd"
+                if="false">
+        </button>
+        <button class="propNewAdd"
+                elif="true">
+        </button>
+        <button class="propNewAdd"
+                elif="false">
         </button>
     </div>
 </div>

@@ -153,5 +153,27 @@
         <stack id="showPropNone"
              show="">
         </stack>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <stack class="propNewAdd"
+                 tid="id">
+        </stack>
+        <stack class="propNewAdd"
+                 tid="">
+        </stack>
+
+        <div>
+            <stack id="ifPropTrue"
+                     if="true">
+            </stack>
+            <stack class="propNewAdd"
+                     elif="true">
+            </stack>
+            <stack class="propNewAdd"
+                     elif="false">
+            </stack>
+        </div>
     </div>
 </div>

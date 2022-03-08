@@ -285,6 +285,7 @@
                  chart无障碍1
             </text>
             <chart id="access1" class="access1"
+                   onaccessibility="onAccessibility"
                    accessibilitygroup ="true"
                    accessibilitytext="这是div"
                    accessibilitydescription="点击此按键会弹出一个对话框"

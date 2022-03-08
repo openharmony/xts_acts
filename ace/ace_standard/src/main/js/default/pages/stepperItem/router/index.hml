@@ -147,7 +147,8 @@
                           ondragstart="dragStart" ondrag="drag"
                           ondragend="dragEnd" ondragenter="dragEnter"
                           ondragover="dragOver" ondragleave="dragLeave"
-                          ondrop="drop">
+                          ondrop="drop"
+                          onaccessibility="onAccessibility">
             </stepper-item>
             <text  class="sub-title">
                 特有事件1

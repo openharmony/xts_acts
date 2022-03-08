@@ -179,6 +179,7 @@
                 form无障碍1
             </text>
             <form class="access1" accessibilitygroup ="true"
+                 onaccessibility="onAccessibility"
                  accessibilitytext="这是form"
                  accessibilitydescription="this is form"
                  accessibilityimportance="no-hide-descendants">

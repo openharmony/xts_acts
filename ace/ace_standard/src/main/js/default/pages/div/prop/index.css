@@ -341,6 +341,46 @@
   padding-end: 10px;
 }
 
+#tidProp {
+  flex-weight: 1;
+  background-color:#0e0000;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-start: 10px;
+  padding-end: 10px;
+}
+
+#tidPropNone {
+  flex-weight: 1;
+  background-color:#c00000;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-start: 10px;
+  padding-end: 10px;
+}
+
+#elifPropTrue {
+  flex-weight: 1;
+  background-color:#0e0000;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-start: 10px;
+  padding-end: 10px;
+}
+
+#elifPropFalse {
+  flex-weight: 1;
+  background-color:#c00000;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-start: 10px;
+  padding-end: 10px;
+}
+
 .specific-container{
   flex-direction: column;
   flex-weight: 1;

@@ -195,5 +195,28 @@
         <list-item id="clickeffectTrue" clickeffectTrue="true"></list-item>
         <list-item id="clickeffectFalse" clickeffectTrue="false"></list-item>
         <list-item id="clickeffectNone" clickeffectTrue=""></list-item>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <list-item class="propNewAdd"
+                tid="id">
+        </list-item>
+        <list-item class="propNewAdd"
+                tid="">
+        </list-item>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <list-item class="propNewAdd"
+                if="false">
+        </list-item>
+        <list-item class="propNewAdd"
+                elif="true">
+        </list-item>
+        <list-item class="propNewAdd"
+                elif="false">
+        </list-item>
     </div>
 </div>

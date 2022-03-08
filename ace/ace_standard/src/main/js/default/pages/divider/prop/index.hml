@@ -52,6 +52,12 @@
         <divider id="refPropNone"
              ref="">
         </divider>
+        <text class="sub-title">
+            通用属性 -- data
+        </text>
+        <divider id="refProp"
+                 data="data">
+        </divider>
 
         <text class="sub-title">
             通用属性 -- data-*
@@ -114,6 +120,9 @@
         <divider id="ifPropTrue"
              if="true">
         </divider>
+        <divider class="divider" elif="true"> </divider>
+        <divider class="divider" elif="false"> </divider>
+        <divider class="divider" elif=""> </divider>
         <text class="sub-title">
             渲染属性 -- show
         </text>
@@ -139,5 +148,21 @@
         </text>
         <divider id="verticalTrue" vertical="true"></divider>
         <divider id="verticalFalse" vertical="false"></divider>
+        <text  class="sub-title">
+            divider特有属性 -- divider
+        </text>
+        <divider class="divider" divider="divider"></divider>
+        <divider class="divider" divider=""></divider>
+        <!--<text  class="sub-title">
+            divider特有属性 -- shareid
+        </text>
+        <divider class="divider" shareid="shareid"></divider>
+        <divider class="divider" shareid=""></divider>-->
+
+        <text  class="sub-title">
+            divider特有属性 -- tid
+        </text>
+        <divider class="divider" tid="tid"></divider>
+        <divider class="divider" tid=""></divider>
     </div>
 </div>
