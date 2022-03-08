@@ -260,5 +260,27 @@
         <swiper id="displayModePropAutoLinear"
                 displaymode="autoLinear">
         </swiper>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <swiper class="propNewAdd"
+               tid="id">
+        </swiper>
+        <swiper class="propNewAdd"
+               tid="">
+        </swiper>
+
+        <div>
+            <swiper id="ifPropTrue"
+                   if="true">
+            </swiper>
+            <swiper class="propNewAdd"
+                   elif="true">
+            </swiper>
+            <swiper class="propNewAdd"
+                   elif="false">
+            </swiper>
+        </div>
     </div>
 </div>

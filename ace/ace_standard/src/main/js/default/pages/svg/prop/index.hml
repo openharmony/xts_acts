@@ -215,14 +215,29 @@
         <text class="sub-title">
             特有属性-show
         </text>
-        <svg width="200px" height="200px">
-            <svg id ="showPropTrue" width="100px" height="40px" x="" y="20" show="true">
+        <svg width="200px" height="100px">
+            <svg id ="showPropTrue" width="100px" height="40px"  show="true">
                 <rect  width="90%" height="20px" fill="red"></rect>
             </svg>
-            <svg id ="showPropFalse" width="100px" height="40px" x="10" y="50" show="false">
+            <svg id ="showPropFalse" width="100px" height="40px"  show="false">
                 <rect  width="90%" height="20px" fill="red"></rect>
             </svg>
-            <svg id ="showPropNone" width="100px" height="40px" x="20" y="80" show="">
+            <svg id ="showPropNone" width="100px" height="40px"  show="">
+                <rect  width="90%" height="20px" fill="red"></rect>
+            </svg>
+        </svg>
+
+        <text class="sub-title">
+            特有属性-elif
+        </text>
+        <svg width="200px" height="100px">
+            <svg id ="showPropTrue" width="100px" height="40px"  if="false">
+                <rect  width="90%" height="20px" fill="red"></rect>
+            </svg>
+            <svg id ="showPropFalse" width="100px" height="40px"  elif="true">
+                <rect  width="90%" height="20px" fill="red"></rect>
+            </svg>
+            <svg id ="showPropNone" width="100px" height="40px"  elif="false">
                 <rect  width="90%" height="20px" fill="red"></rect>
             </svg>
         </svg>

@@ -280,6 +280,11 @@
             </swiper>
 
             <text  class="sub-title">
+                swiperOnAccessibility
+            </text>
+            <swiper onaccessibility="onAccessibility"></swiper>
+
+            <text  class="sub-title">
                 swiper特有事件1
             </text>
             <swiper class="swiper style7"
