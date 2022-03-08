@@ -146,6 +146,24 @@
         </tabs>
 
         <text class="sub-title">
+            通用属性 -- data
+        </text>
+        <tabs class = "tabs">
+            <tab-bar class="propNewAdd"
+                     data="通用属性 -- data">
+                <text class="tab-text">Home</text>
+                <text class="tab-text">Index</text>
+            </tab-bar>
+        </tabs>
+        <tabs class = "tabs">
+            <tab-bar class="propNewAdd"
+                     data="">
+                <text class="tab-text">Home</text>
+                <text class="tab-text">Index</text>
+            </tab-bar>
+        </tabs>
+
+        <text class="sub-title">
             通用属性 -- click-effect
         </text>
         <tabs class = "tabs">
@@ -303,5 +321,49 @@
                 <text class="tab-text">Index</text>
             </tab-bar>
         </tabs>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <tabs class = "mode">
+            <tab-bar class="propNewAdd"
+              tid="id">
+                <text class="tab-text">Home</text>
+                <text class="tab-text">Index</text>
+            </tab-bar>
+        </tabs>
+        <tabs class = "mode">
+            <tab-bar class="propNewAdd"
+              tid="">
+                <text class="tab-text">Home</text>
+                <text class="tab-text">Index</text>
+            </tab-bar>
+        </tabs>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <tabs class = "mode">
+            <tab-bar class="propNewAdd"
+                     if="false">
+                <text class="tab-text">Home</text>
+                <text class="tab-text">Index</text>
+            </tab-bar>
+        </tabs>
+        <tabs class = "mode">
+            <tab-bar class="propNewAdd"
+              elif="true">
+                <text class="tab-text">Home</text>
+                <text class="tab-text">Index</text>
+            </tab-bar>
+        </tabs>
+        <tabs class = "mode">
+            <tab-bar class="propNewAdd"
+              elif="false">
+                <text class="tab-text">Home</text>
+                <text class="tab-text">Index</text>
+            </tab-bar>
+        </tabs>
+
     </div>
 </div>
