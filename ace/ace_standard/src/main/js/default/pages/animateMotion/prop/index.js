@@ -131,6 +131,5 @@ export default {
         this.rotatePropRotate = this.$element("rotatePropRotate").getInspector()
         this.rotatePropAutoReverse = this.$element("rotatePropAutoReverse").getInspector()
         this.rotatePropNumber = this.$element("rotatePropNumber").getInspector()
-        return
     },
 }

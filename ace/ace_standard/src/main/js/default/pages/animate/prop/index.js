@@ -115,6 +115,5 @@ export default {
         this.toPropNone = this.$element("toPropNone").getInspector()
         this.valuesProp = this.$element("valuesProp").getInspector()
         this.valuesPropNone = this.$element("valuesPropNone").getInspector()
-        return
     },
 }

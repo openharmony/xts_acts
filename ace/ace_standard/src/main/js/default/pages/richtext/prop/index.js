@@ -18,7 +18,8 @@ import prompt from '@system.prompt';
 export default {
     data:{
         content: `
-        <div class="flex-direction: column; background-color: #ffffff; padding: 30px; margin-bottom: 30px;"  style="background-color: #FFFFFF">
+        <div class="flex-direction: column; background-color: #ffffff;
+        padding: 30px; margin-bottom: 30px;"  style="background-color: #FFFFFF">
           <style>h1{color: yellow;}</style>
           <p class="item-title">h1</p>
           <h1>文本测试(h1测试)</h1>
