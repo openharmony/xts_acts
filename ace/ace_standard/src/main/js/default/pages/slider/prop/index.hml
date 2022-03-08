@@ -80,14 +80,28 @@
         </slider>
 
         <text class="sub-title">
+            通用属性 -- data
+        </text>
+        <div>
+            <slider id="dataPropB"
+                   data-input="通用属性 -- data">
+            </slider>
+            <slider id="dataPropBNone"
+                   data-input="">
+            </slider>
+        </div>
+
+        <text class="sub-title">
             通用属性 -- data-*
         </text>
-        <slider id="dataProp"
-             data-slider="通用属性 -- data-*">
-        </slider>
-        <slider id="dataPropNone"
-             data-slider="">
-        </slider>
+        <div>
+            <slider id="dataProp"
+                 data-slider="通用属性 -- data-*">
+            </slider>
+            <slider id="dataPropNone"
+                 data-slider="">
+            </slider>
+        </div>
 
         <text class="sub-title">
             通用属性 -- click-effect
@@ -257,6 +271,23 @@
         </slider>
         <slider id="showtipsNone"
                 showtips="">
+        </slider>
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <slider for="{{array}}" tid="id" style="color: #679855; margin: 1px;"
+               id="showFor{{$item.id}}" value="{{$item.name }}">
+        </slider>
+        <text class="sub-title">
+            特有属性 -- if elif
+        </text>
+        <slider if="false" id="showIf">
+        </slider>
+        <slider elif="false" id="showElseIfTrue">
+        </slider>
+        <slider elif="true" id="showElseIfFalse">
+        </slider>
+        <slider else id="showElse">
         </slider>
     </div>
 </div>

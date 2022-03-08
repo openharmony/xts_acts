@@ -355,3 +355,18 @@
     flex-direction: column;
     flex-weight: 1;
 }
+
+.specific-style{
+    width: 90%;
+    height: 20px;
+    margin-left: 5%;
+}
+.color-red{
+    background-color: red;
+}
+.color-grey{
+    background-color: grey;
+}
+.color-blue{
+    background-color: blue;
+}
