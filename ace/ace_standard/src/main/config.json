@@ -142,9 +142,6 @@
           "pages/obj_ImageBitmap/index",
           "pages/obj_OffscreenCanvas/index",
           "pages/obj_OffscreenCanvasRenderingContext2D/index",
-          "pages/svg/index",
-          "pages/rect/index",
-          "pages/circle/index",
           "pages/ellipse/index",
           "pages/path/index",
           "pages/line/index",
@@ -164,7 +161,13 @@
           "pages/span/prop/index",
           "pages/menu/prop/index",
           "pages/switch/prop/index",
-          "pages/slider/prop/index"
+          "pages/slider/prop/index",
+          "pages/svg/prop/index",
+          "pages/svg/router/index",
+          "pages/rect/prop/index",
+          "pages/rect/router/index",
+          "pages/circle/prop/index",
+          "pages/circle/router/index"
         ],
         "name": "default",
         "window": {

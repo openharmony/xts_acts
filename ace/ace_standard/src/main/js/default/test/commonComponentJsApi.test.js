@@ -1318,7 +1318,7 @@ describe('aceJsTest', function () {
     it('testSvgComponent', 0, async function (done) {
         let result;
         let options = {
-            uri: 'pages/svg/index'
+            uri: 'pages/svg/router/index'
         }
         try {
             result = router.push(options)
@@ -1329,7 +1329,7 @@ describe('aceJsTest', function () {
         await sleep(5000)
         let pages = router.getState();
         console.info("[router.svg] getState" + JSON.stringify(pages));
-        expect("pages/svg/").assertEqual(pages.path);
+        expect("pages/svg/router/").assertEqual(pages.path);
         done();
     });
 
@@ -1341,7 +1341,7 @@ describe('aceJsTest', function () {
     it('testRectComponent', 0, async function (done) {
         let result;
         let options = {
-            uri: 'pages/rect/index'
+            uri: 'pages/rect/router/index'
         }
         try {
             result = router.push(options)
@@ -1352,7 +1352,7 @@ describe('aceJsTest', function () {
         await sleep(5000)
         let pages = router.getState();
         console.info("[router.rect] getState" + JSON.stringify(pages));
-        expect("pages/rect/").assertEqual(pages.path);
+        expect("pages/rect/router/").assertEqual(pages.path);
         done();
     });
 
@@ -1364,7 +1364,7 @@ describe('aceJsTest', function () {
     it('testCircleComponent', 0, async function (done) {
         let result;
         let options = {
-            uri: 'pages/circle/index'
+            uri: 'pages/circle/router/index'
         }
         try {
             result = router.push(options)
@@ -1375,7 +1375,7 @@ describe('aceJsTest', function () {
         await sleep(5000)
         let pages = router.getState();
         console.info("[router.circle] getState" + JSON.stringify(pages));
-        expect("pages/circle/").assertEqual(pages.path);
+        expect("pages/circle/router/").assertEqual(pages.path);
         done();
     });
 
