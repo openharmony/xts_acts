@@ -133,7 +133,7 @@ describe('toolbarPropsJsTest', function () {
 
         expect(obj.$type).assertEqual(labelName)
         expect(obj.$attrs.id).assertEqual('attributeNamePropNone')
-        expect(obj.$attrs.attributename).assertEqual(undefined')
+        expect(obj.$attrs.attributename).assertEqual(undefined)
         console.info("["+name+"Props] get attributename value is: " + JSON.stringify(obj.$attrs.attributename));
         done();
     });
