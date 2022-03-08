@@ -104,7 +104,8 @@
                    ondragstart="dragStart" ondrag="drag"
                    ondragend="dragEnd" ondragenter="dragEnter"
                    ondragover="dragOver" ondragleave="dragLeave"
-                   ondrop="drop">
+                   ondrop="drop"
+                   onaccessibility="onAccessibility">
             </video>
             <text  class="sub-title sub-title-2">
                 video特有事件1
