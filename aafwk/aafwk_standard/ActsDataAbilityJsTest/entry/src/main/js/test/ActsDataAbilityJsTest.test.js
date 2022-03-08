@@ -27,7 +27,7 @@ var valueBucket = {
 }
 
 beforeAll(async (done) => {
-    console.debug('= ACTS_beforeAll 0947 ====<begin');
+    console.debug('= ACTS_beforeAll 1425 ====<begin');
     try {
         DAHelper = featureAbility.acquireDataAbilityHelper(dataAbilityUri);
         console.debug('ACTS_beforeAll DAHelper ====>: ' + DAHelper + " ,JSON. " + JSON.stringify(DAHelper));
@@ -165,7 +165,7 @@ it('ACTS_Query_0400', 0, async function (done) {
                 console.debug("=ACTS_Query_0400 query err,data=======>"
                     + ("json err【") + JSON.stringify(err) + (" 】json data【")
                     + JSON.stringify(data) + (" 】;") + " , " + data);
-                //expect(typeof (data)).assertEqual("object");
+                expect(typeof (data)).assertEqual("object");
                 console.log('ACTS_Query_0400====<end');
                 done();
             });
@@ -261,18 +261,17 @@ it('ACTS_GetFileTypes_0200', 0, async function (done) {
                 console.debug("=ACTS_GetFileTypes_0200 getFileTypes err,data=======>"
                     + ("json err【") + JSON.stringify(err) + (" 】json data【") + JSON.stringify(data) + (" 】;"));
                 console.log('=ACTS_GetFileTypes_0200 data.length ====>: ' + data.length);
-                //expect(data.length).assertEqual(3);
                 for (var i = 0; i < data.length; i++) {
-                    //expect(typeof (data[i])).assertEqual("string");
+                    expect(typeof (data[i])).assertEqual("string");
                     console.log('=ACTS_GetFileTypes_0200 for data ====>: ' + err.code +
                         " data[" + i + "]: " + data[i]);
-                    // if (i == 0) {
-                    //     expect(data[i]).assertEqual("hap");
-                    // } else if (i == 1) {
-                    //     expect(data[i]).assertEqual("jpg");
-                    // } else if (i == 2) {
-                    //     expect(data[i]).assertEqual("image/png");
-                    // }
+                    if (i == 0) {
+                         expect(data[i]).assertEqual("hap");
+                    } else if (i == 1) {
+                         expect(data[i]).assertEqual("jpg");
+                    } else if (i == 2) {
+                         expect(data[i]).assertEqual("image/png");
+                    }
                 }
                 console.log('ACTS_GetFileTypes_0200====<end');
                 done();
@@ -299,7 +298,7 @@ it('ACTS_GetType_0200', 0, async function (done) {
             (err, data) => {
                 console.debug("=ACTS_GetType_0200 err,data=======>"
                     + ("json err【") + JSON.stringify(err) + (" 】json data【") + JSON.stringify(data) + (" 】;"));
-                //expect(data).assertEqual(dataAbilityUri);
+                expect(data).assertEqual(dataAbilityUri);
                 console.log('ACTS_GetType_0200====<end');
                 done();
             },
@@ -328,7 +327,7 @@ it('ACTS_OpenFile_0700', 0, async function (done) {
             (err, data) => {
                 console.debug("=ACTS_OpenFile_0700 err,data=======>"
                     + ("json err【") + JSON.stringify(err) + (" 】json data【") + JSON.stringify(data) + (" 】;"));
-                //expect(typeof (data)).assertEqual("number");
+                expect(typeof (data)).assertEqual("number");
                 console.log('DataAbilityHelper ACTS_OpenFile_0700 OpenFile asyncCallback errCode ====>: '
                     + err.code + " data: " + data);
                 ret = true
@@ -361,8 +360,7 @@ it('ACTS_NormalizeUri_0200', 0, async function (done) {
             (err, data) => {
                 console.debug("=ACTS_NormalizeUri_0200 err,data=======>"
                     + ("json err【") + JSON.stringify(err) + (" 】json data【") + JSON.stringify(data) + (" 】;"));
-                //expect(typeof (data)).assertEqual("string");
-                //expect(data).assertEqual(dataAbilityUri);
+                expect(data).assertEqual(dataAbilityUri);
                 console.log('ACTS_NormalizeUri_0200====<end');
                 done();
             },
@@ -389,7 +387,7 @@ it('ACTS_DenormalizeUri_0200', 0, async function (done) {
             (err, data) => {
                 console.debug("=ACTS_DenormalizeUri_0200 err,data=======>"
                     + ("json err【") + JSON.stringify(err) + (" 】json data【") + JSON.stringify(data) + (" 】;"));
-                //expect(data).assertEqual(dataAbilityUri);
+                expect(data).assertEqual(dataAbilityUri);
                 console.log('ACTS_DenormalizeUri_0200====<end');
                 done();
             },
@@ -429,7 +427,7 @@ it('ACTS_OnOff_0100', 0, async function (done) {
                 (err) => {
                     console.debug("=ACTS_OnOff_0100 err=======>"
                         + ("err【") + JSON.stringify(err) + (" 】") + " , " + err);
-                    //expect(err.code).assertEqual(0);
+                    expect(err.code).assertEqual(0);
                 }
             );
         }
@@ -559,7 +557,6 @@ it('ACTS_ExecuteBatch_Update_0400', 0, async function (done) {
                 console.debug("=ACTS_ExecuteBatch_Update_0400 executeBatch err,data====>"
                     + ("json err【") + JSON.stringify(err) + (" 】json data【")
                     + JSON.stringify(DataAbilityResult) + (" 】;") + DataAbilityResult.length);
-                //expect(DataAbilityResult.length).assertEqual(1);
                 for (var i = 0; i < DataAbilityResult.length; i++) {
                     console.debug('=ACTS_ExecuteBatch_Update_0400 for data[' + i + '].uri ====>: '
                         + DataAbilityResult[i].uri)
@@ -653,7 +650,6 @@ it('ACTS_ExecuteBatch_Delete_0400', 0, async function (done) {
                 console.debug("=ACTS_ExecuteBatch_Delete_0400 executeBatch err,data====>"
                     + ("json err【") + JSON.stringify(err) + (" 】json data【") + JSON.stringify(DataAbilityResult)
                     + (" 】;") + DataAbilityResult.length);
-                //expect(DataAbilityResult.length).assertEqual(1);
                 for (var i = 0; i < DataAbilityResult.length; i++) {
                     console.debug('=ACTS_ExecuteBatch_Delete_0400 for data[' + i + '].uri ====>: '
                         + DataAbilityResult[i].uri)
