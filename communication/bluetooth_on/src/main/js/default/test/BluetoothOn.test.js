@@ -121,7 +121,6 @@ describe('bluetoothhostTest', function() {
         });
         console.info('[bluetooth_js] discovery end');
         done();
-        await sleep(2000);
     })
 
 
