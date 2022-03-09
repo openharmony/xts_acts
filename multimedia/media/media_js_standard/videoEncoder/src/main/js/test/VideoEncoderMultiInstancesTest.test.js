@@ -272,9 +272,9 @@ describe('videoEncoderSoftwareMultiInstances', function () {
         console.info("case test multiple encoder instances");
         let savepath = BASIC_PATH + '0100.es';
         let mime = 'video/mp4v-es';
-        let width = 720;
-        let height = 480;
-        let framerate = 60;
+        let width = 320;
+        let height = 240;
+        let framerate = 30;
         let mediaDescription = {
             "width": width, 
             "height": height,

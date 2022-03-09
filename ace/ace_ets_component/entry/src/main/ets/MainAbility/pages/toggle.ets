@@ -18,7 +18,7 @@ import events_emitter from '@ohos.emitter';
 @Entry
 @Component
 struct ToggleExample {
-  @State selectedColor : color = '#330A59F7';
+  @State selectedColor : Color = '#330A59F7';
   @State toggleType : ToggleType = ToggleType.Button;
   @State isOn : boolean = false;
 
@@ -29,6 +29,12 @@ struct ToggleExample {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+
+    var stateChangeEventOne = {
+      eventId: 1012,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventOne, this.stateChangCallBack);
   }
 
   private stateChangCallBack = (eventData) => {

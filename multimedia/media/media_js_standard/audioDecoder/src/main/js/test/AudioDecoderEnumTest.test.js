@@ -184,14 +184,9 @@ describe('AudioDecoderEnum', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_AUDIO_DECODER_ENUM_CodecMimeType_0100', 0, async function (done) {
-        expect(media.CodecMimeType.AUDIO_AMR_NB).assertEqual('audio/3gpp');
-        expect(media.CodecMimeType.AUDIO_AMR_WB).assertEqual('audio/amr-wb');
-        expect(media.CodecMimeType.AUDIO_MPEG).assertEqual('audio/mpeg');
         expect(media.CodecMimeType.AUDIO_AAC).assertEqual('audio/mp4a-latm');
         expect(media.CodecMimeType.AUDIO_VORBIS).assertEqual('audio/vorbis');
-        expect(media.CodecMimeType.AUDIO_OPUS).assertEqual('audio/opus');
         expect(media.CodecMimeType.AUDIO_FLAC).assertEqual('audio/flac');
-        expect(media.CodecMimeType.AUDIO_RAW).assertEqual('audio/raw');
         done();
     })
 })
