@@ -39,7 +39,7 @@ describe('audioManager',async function () {
 		console.info('AudioFrameworkTest: beforeAll: Prerequisites at the test suite level');
 		console.info('AudioFrameworkTest: before get scanner instance');
 		let scannerObj = mediaLibrary.getScannerInstance();
-		let path = "/data/media";
+		let path = "/storage/media/100/local/files/media";
 		console.info('AudioFrameworkTest: before scan file');
 		const scanPromise = await scannerObj.scanDir(path);
 		console.info('AudioFrameworkTest: before scan file');
@@ -97,7 +97,7 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_SystemSoundManager002', 0,async function(done){
 		console.log('AudioFrameworkTestSSMM: Set System Ringtone Uri');
-        await systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',0).then(function(){
+        await systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',0).then(function(){
 			console.info('AudioFrameworkTestSSM:enum: Set Ringtone Uri : SUCCESS: ');
 			expect(true).assertTrue();
 		}).catch((err) => {
@@ -144,7 +144,7 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_SystemSoundManager_004', 0,async function(done){
 		console.log('AudioFrameworkTestSSMM: Set System Ringtone Uri');
-        await systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',multiSIM).then(function(){
+        await systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',multiSIM).then(function(){
 			console.info('AudioFrameworkTestSSM: enum: Set Ringtone Uri : SUCCESS: ');
 			expect(true).assertTrue();
 		}).catch((err) => {
@@ -191,7 +191,7 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_SystemSoundManager_006', 0,async function(done){
 		console.log('AudioFrameworkTestSSMM: Set System Ringtone Uri');
-        await systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function(){
+        await systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function(){
 			console.info('AudioFrameworkTestSSM:ENAME: Set Ringtone Uri : SUCCESS: ');
 			expect(true).assertTrue();
 		}).catch((err) => {
@@ -266,7 +266,7 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_SystemSoundManager_009', 0,async function(done){
 		console.log('AudioFrameworkTestSSM: Set System Ringtone Uri');
-        await systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_MULTISIM).then( function() {
+        await systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_MULTISIM).then( function() {
 			console.info('AudioFrameworkTestSSM:Callback : ENAME: Set Ringtone Uri : SUCCESS: ');
 			expect(true).assertTrue();
 			}).catch((err) => {
@@ -355,7 +355,7 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_SystemSoundManager_013', 0,async function(done){
 		console.log('AudioFrameworkTestRM: Set System Ringtone Uri');
-        systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',1,async(err) => {
+        systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',1,async(err) => {
             if(err) {
 			console.error('AudioFrameworkTestSSM :enum: Set System Ringtone Uri :ERROR: '+err.message);
 			expect(false).assertTrue();
@@ -379,7 +379,7 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_SystemSoundManager_014', 0,async function(done){
 		console.log('AudioFrameworkTestRM: Set System Ringtone Uri');
-        systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',0,async(err) => {
+        systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',0,async(err) => {
             if(err) {
 			console.error('AudioFrameworkTestSSM: Callback :enum: Set System Ringtone Uri :ERROR: '+err.message);
 			expect(false).assertTrue();
@@ -514,7 +514,7 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_SystemSoundManager_019', 0,async function(done){
 		console.log('AudioFrameworkTestRM: Set System Ringtone Uri');
-        systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_MULTISIM,async(err) => {
+        systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_MULTISIM,async(err) => {
             if(err) {
 			console.error('AudioFrameworkTestSSM: Callback :ENAME: Set System Ringtone Uri :ERROR: '+err.message);
 			expect(false).assertTrue();
@@ -625,7 +625,7 @@ describe('audioManager',async function () {
             */
 	it('SUB_AUDIO_MANAGER_SystemSoundManager_023', 0,async function(done){
 		console.log('AudioFrameworkTestSSM: setSystemNotificationUri');
-		await systemSoundManager.setSystemNotificationUri(null,'/data/media/test.mp3').then( function() {
+		await systemSoundManager.setSystemNotificationUri(null,'/storage/media/100/local/files/media/test.mp3').then( function() {
 			console.info('AudioFrameworkTestSSM:Callback : setSystemNotificationUri : SUCCESS');
 			expect(true).assertTrue();
 		}).catch((err) => {
@@ -646,7 +646,7 @@ describe('audioManager',async function () {
 	it('SUB_AUDIO_MANAGER_SystemSoundManager_024', 0,async function(done){
 		console.log('AudioFrameworkTestRM: getSystemNotificationUri');
 		await systemSoundManager.getSystemNotificationUri(null).then(async function(data) {
-			if (data == '/data/media/test.mp3') {
+			if (data == '/storage/media/100/local/files/media/test.mp3') {
 				console.info('AudioFrameworkTestSSM:enum: getSystemNotificationUri : SUCCESS : '+data);
 				expect(true).assertTrue();
 			}
@@ -687,7 +687,7 @@ describe('audioManager',async function () {
             */
 	it('SUB_AUDIO_MANAGER_SystemSoundManager_026', 0,async function(done){
 		console.log('AudioFrameworkTestRM: setSystemNotificationUri');
-		systemSoundManager.setSystemNotificationUri(null,'/data/media/test.mp4',async(err) => {
+		systemSoundManager.setSystemNotificationUri(null,'/storage/media/100/local/files/media/test.mp4',async(err) => {
 			if(err) {
 				console.error('AudioFrameworkTestSSM : setSystemNotificationUri :ERROR: '+err.message);
 				expect(false).assertTrue();
@@ -716,7 +716,7 @@ describe('audioManager',async function () {
 				console.error('AudioFrameworkTestSSM: Callback : getSystemNotificationUri :ERROR: '+err.message);
 				expect(false).assertTrue();
 			}
-			else if(data == '/data/media/test.mp4'){
+			else if(data == '/storage/media/100/local/files/media/test.mp4'){
 				console.info('AudioFrameworkTestSSM:Callback : getSystemNotificationUri : SUCCESS: '+data);
 				expect(true).assertTrue();
 			}
@@ -763,7 +763,7 @@ describe('audioManager',async function () {
             */
 	it('SUB_AUDIO_MANAGER_SystemSoundManager_029', 0,async function(done){
 		console.log('AudioFrameworkTestSSM: setSystemAlarmUri');
-		await systemSoundManager.setSystemAlarmUri(null,'/data/media/test.mp3').then( function() {
+		await systemSoundManager.setSystemAlarmUri(null,'/storage/media/100/local/files/media/test.mp3').then( function() {
 			console.info('AudioFrameworkTestSSM:Callback : setSystemAlarmUri : SUCCESS');
 			expect(true).assertTrue();
 		}).catch((err) => {
@@ -784,7 +784,7 @@ describe('audioManager',async function () {
 	it('SUB_AUDIO_MANAGER_SystemSoundManager_030', 0,async function(done){
 		console.log('AudioFrameworkTestRM: getSystemAlarmUri');
 		await systemSoundManager.getSystemAlarmUri(null).then(async function(data) {
-			if (data == '/data/media/test.mp3') {
+			if (data == '/storage/media/100/local/files/media/test.mp3') {
 				console.info('AudioFrameworkTestSSM:enum: getSystemAlarmUri : SUCCESS :'+data);
 				expect(true).assertTrue();
 			}
@@ -825,7 +825,7 @@ describe('audioManager',async function () {
             */
 	it('SUB_AUDIO_MANAGER_SystemSoundManager_032', 0,async function(done){
 		console.log('AudioFrameworkTestRM: setSystemAlarmUri');
-		systemSoundManager.setSystemAlarmUri(null,'/data/media/test.mp4',async(err) => {
+		systemSoundManager.setSystemAlarmUri(null,'/storage/media/100/local/files/media/test.mp4',async(err) => {
 			if(err) {
 				console.error('AudioFrameworkTestSSM : setSystemAlarmUri :ERROR: '+err.message);
 				expect(false).assertTrue();
@@ -854,7 +854,7 @@ describe('audioManager',async function () {
 				console.error('AudioFrameworkTestSSM: Callback : getSystemAlarmUri :ERROR: '+err.message);
 				expect(false).assertTrue();
 			}
-			else if(data == '/data/media/test.mp4'){
+			else if(data == '/storage/media/100/local/files/media/test.mp4'){
 				console.info('AudioFrameworkTestSSM:Callback : getSystemAlarmUri : SUCCESS: '+data);
 				expect(true).assertTrue();
 			}
@@ -891,6 +891,46 @@ describe('audioManager',async function () {
 		done();
 	})
 
+	/* *
+			* @tc.number    : SUB_AUDIO_MANAGER_SystemSoundManager_035
+			* @tc.name      : getSystemRingtonePlayer - ERROR - Negative
+			* @tc.desc      : getSystemRingtonePlayer - ERROR - Negative
+			* @tc.size      : MEDIUM
+			* @tc.type      : Function
+			* @tc.level     : Level 0
+		*/
+	it('SUB_AUDIO_MANAGER_SystemSoundManager_035', 0,async function(done){
+		console.log('AudioFrameworkTestRM: Get System Ringtone Player');
+		await systemSoundManager.getSystemRingtonePlayer(null,-1).then(async function(data) {
+				console.info('AudioFrameworkTestSSM:ENAME: get Ringtone Player : SUCCESS: ' + data);
+				expect(false).assertTrue();
+		}).catch((err) => {
+			console.info('AudioFrameworkTestSSM:ENAME: get Ringtone Player : ERROR :' + (err.message));
+			expect(true).assertTrue();
+		});
+		done();
+	})
+
+	/* *
+			* @tc.number    : SUB_AUDIO_MANAGER_SystemSoundManager_036
+			* @tc.name      : getSystemRingtonePlayer - ERROR - OutOfRange
+			* @tc.desc      : getSystemRingtonePlayer - ERROR - OutOfRange
+			* @tc.size      : MEDIUM
+			* @tc.type      : Function
+			* @tc.level     : Level 0
+		*/
+	it('SUB_AUDIO_MANAGER_SystemSoundManager_036', 0,async function(done){
+		console.log('AudioFrameworkTestRM: Get System Ringtone Player');
+		await systemSoundManager.getSystemRingtonePlayer(null,2).then(async function(data) {
+			console.info('AudioFrameworkTestSSM:ENAME: get Ringtone Player : SUCCESS: ' + data);
+			expect(false).assertTrue();
+		}).catch((err) => {
+			console.info('AudioFrameworkTestSSM:ENAME: get Ringtone Player : ERROR :' + (err.message));
+			expect(true).assertTrue();
+		});
+		done();
+	})
+
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_RingtoneManager_001
                 * @tc.name      : setSystemRingtoneUri - promise RINGTONE_TYPE_DEFAULT ENAME
@@ -901,10 +941,10 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_RingtoneManager_001', 0,async function(done){
 		console.info('AudioFrameworkTestSSM: Starting Set RM path');
-        const promise = systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_DEFAULT);
+        const promise = systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_DEFAULT);
         promise.then(function () {
             systemSoundManager.getSystemRingtoneUri(null,audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function (data) {
-                if(data == '/data/StarWars10s-1C-44100-2SW.wav')
+                if(data == '/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav')
                 {
                     console.info('AudioFrameworkTestSSM: Ringtone SRC Path set SUCCESS: ' + data);
                     expect(true).assertTrue();
@@ -958,10 +998,10 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_RingtoneManager_003', 0,async function(done){
         console.info('AudioFrameworkTestSSM: Starting Set RM path');
-        const promise = systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_DEFAULT);
+        const promise = systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_DEFAULT);
         promise.then(function () {
             systemSoundManager.getSystemRingtoneUri(null,audio.RingtoneType.RINGTONE_TYPE_MULTISIM).then(function (data) {
-                if(data == '/data/StarWars10s-1C-44100-2SW.wav')
+                if(data == '/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav')
                 {
                     console.info('AudioFrameworkTestSSM: Ringtone SRC Path set SUCCESS: ' + data);
                     expect(true).assertTrue();
@@ -1118,10 +1158,10 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_RingtoneManager_009', 0,async function(done){
         console.info('AudioFrameworkTestSSM: Starting Set RM path');
-        const promise = systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',0);
+        const promise = systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',0);
         promise.then(function () {
             systemSoundManager.getSystemRingtoneUri(null,0).then(function (data) {
-                if(data == '/data/StarWars10s-1C-44100-2SW.wav')
+                if(data == '/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav')
                 {
                     console.info('AudioFrameworkTestSSM: Ringtone SRC Path set :enum SUCCESS: ' + data);
                     expect(true).assertTrue();
@@ -1190,7 +1230,7 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_RingtoneManager_011',0,async function(done){
         console.info('AudioFrameworkTestSSM: Starting Set RM path');
-        await systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',-1).then(function () {
+        await systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',-1).then(function () {
 			console.info('AudioFrameworkTestSSM: Ringtone SRC Path set : enum : SUCCESS: ');
 			expect(false).assertTrue();
 				}).catch((err) => {
@@ -1235,7 +1275,7 @@ describe('audioManager',async function () {
         const promise = systemSoundManager.setSystemRingtoneUri(null,'xyz@123',0);
         promise.then(function () {
             systemSoundManager.getSystemRingtoneUri(null,0).then(function (data) {
-                if(data == '/data/StarWars10s-1C-44100-2SW.wav')
+                if(data == '/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav')
                 {
                     console.info('AudioFrameworkTestSSM: Ringtone SRC Path set :enum SUCCESS: ' + data);
                     expect(false).assertTrue();
@@ -1266,10 +1306,10 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_RingtoneManager_014', 0,async function(done){
         console.info('AudioFrameworkTestSSM: Starting Set RM path');
-        const promise = systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_DEFAULT);
+        const promise = systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_DEFAULT);
         promise.then(function () {
             systemSoundManager.getSystemRingtoneUri(null,audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function (data) {
-                if(data == '/data/StarWars10s-1C-44100-2SW.wav')
+                if(data == '/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav')
                 {
                     console.info('AudioFrameworkTestSSM: Ringtone SRC Path set :ENAME SUCCESS: ' + data);
                     expect(true).assertTrue();
@@ -1352,10 +1392,10 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_RingtoneManager_017', 0,async function(done){
         console.info('AudioFrameworkTestSSM: Starting Set RM path');
-        const promise = systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_MULTISIM);
+        const promise = systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_MULTISIM);
         promise.then(function () {
             systemSoundManager.getSystemRingtoneUri(null,audio.RingtoneType.RINGTONE_TYPE_MULTISIM).then(function (data) {
-				if(data == '/data/StarWars10s-1C-44100-2SW.wav')
+				if(data == '/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav')
 				{
 					console.info('AudioFrameworkTestSSM: Ringtone SRC Path set :ENAME SUCCESS: ' + data);
 					expect(true).assertTrue();
@@ -1435,7 +1475,7 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_RingtoneManager_020', 0,async function(done){
         console.info('AudioFrameworkTestSSM: Starting Set RM path');
-        await systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',2).then(function (){
+        await systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',2).then(function (){
 			}).catch((err) => {
 				console.info('AudioFrameworkTestSSM: Ringtone set SRC Path set: enum  ERROR: ' + err.message);
 				expect(true).assertTrue();
@@ -1475,10 +1515,10 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_RingtoneManager_022', 0,async function(done){
         console.info('AudioFrameworkTestSSM: Starting Set RM path');
-        const promise = systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',1);
+        const promise = systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',1);
         promise.then(function () {
             systemSoundManager.getSystemRingtoneUri(null,1).then(function (data) {
-                if(data == '/data/StarWars10s-1C-44100-2SW.wav')
+                if(data == '/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav')
                 {
                     console.info('AudioFrameworkTestSSM: Ringtone SRC Path set :enum SUCCESS: ' + data);
                     expect(true).assertTrue();
@@ -1542,10 +1582,10 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_RingtoneManager_024', 0,async function(done){
         console.info('AudioFrameworkTestSSM: Starting Set RM path');
-        const promise = systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',multiSIM);
+        const promise = systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',multiSIM);
         promise.then(function () {
             systemSoundManager.getSystemRingtoneUri(null,multiSIM).then(function (data) {
-                if(data == '/data/StarWars10s-1C-44100-2SW.wav')
+                if(data == '/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav')
                 {
                     console.info('AudioFrameworkTestSSM: Ringtone SRC Path set :enum SUCCESS: ' + data);
                     expect(true).assertTrue();
@@ -1715,7 +1755,7 @@ describe('audioManager',async function () {
         };
 
         console.log('AudioFrameworkTestRM: Configure RingtonePlayer : lowVol: Loop False');
-        await ringtonePlayer.configure(ringtoneOptions).then (function() {
+        await ringtonePlayer.configure(ringtoneOptions).then(function() {
             console.log('AudioFrameworkTestRM: Configure RingtonePlayer : SUCCESS : '+ringtonePlayer.state);
             expect(true).assertTrue();
         }).catch((err) => {
@@ -1741,7 +1781,7 @@ describe('audioManager',async function () {
         };
 
         console.log('AudioFrameworkTestRM: Configure RingtonePlayer : Vol outOfRangeVol : Loop False');
-        await ringtonePlayer.configure(ringtoneOptions).then (function() {
+        await ringtonePlayer.configure(ringtoneOptions).then(function() {
             console.log('AudioFrameworkTestRM: Configure RingtonePlayer : SUCCESS :FAIL '+ringtonePlayer.state);
 			expect(false).assertTrue();
         }).catch((err) => {
@@ -1767,7 +1807,7 @@ describe('audioManager',async function () {
         };
 
         console.log('AudioFrameworkTestRM: Configure RingtonePlayer : Vol outOfRangeVol : Loop True');
-        await ringtonePlayer.configure(ringtoneOptions).then (function() {
+        await ringtonePlayer.configure(ringtoneOptions).then(function() {
             console.log('AudioFrameworkTestRM: Configure RingtonePlayer : SUCCESS : '+ringtonePlayer.state);
             expect(false).assertTrue();
         }).catch((err) => {
@@ -1898,7 +1938,7 @@ describe('audioManager',async function () {
                 * @tc.level     : Level 0
 			*/
     it('SUB_AUDIO_MANAGER_RingtoneManager_036', 0,async function(done){
-        systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_DEFAULT,(err) => {
+        systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_DEFAULT,(err) => {
 			if (err){
 				console.error('AudioFrameworkTestRM :Callback : Failed to set system ringtone '+err.message);
 			}
@@ -1909,7 +1949,7 @@ describe('audioManager',async function () {
 						console.error('AudioFrameworkTestRM :Callback: Failed to get system Ringtone Uri: ERROR '+err.message);
 						expect(false).assertTrue();
 					}
-					else if(data=='/data/StarWars10s-1C-44100-2SW.wav') {
+					else if(data=='/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav') {
 						console.info('AudioFrameworkTestRM :Callback: Get system Ringtone Uri : SUCCESS');
 						expect(true).assertTrue();
 					}
@@ -2139,7 +2179,7 @@ describe('audioManager',async function () {
                 * @tc.level     : Level 0
 			*/
     it('SUB_AUDIO_MANAGER_RingtoneManager_043', 0,async function(done){
-        systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',0,(err) => {
+        systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',0,(err) => {
 			if (err){
 				console.error('AudioFrameworkTestRM :Callback : Failed to set system ringtone '+err.message);
 				expect(false).assertTrue();
@@ -2151,7 +2191,7 @@ describe('audioManager',async function () {
 						console.error('AudioFrameworkTestRM :Callback: enum: Get system Ringtone Uri: ERROR '+err.message);
 						expect(false).assertTrue();
 					}
-					else if(data=='/data/StarWars10s-1C-44100-2SW.wav') {
+					else if(data=='/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav') {
 						console.info('AudioFrameworkTestRM :Callback:enum: Get system Ringtone Uri : SUCCESS');
 						expect(true).assertTrue();
 					}
@@ -2222,7 +2262,7 @@ describe('audioManager',async function () {
                 * @tc.level     : Level 0
 			*/
     it('SUB_AUDIO_MANAGER_RingtoneManager_045', 0,async function(done){
-        systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',-1,async(err) => {
+        systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',-1,async(err) => {
 			if (err){
 				console.error('AudioFrameworkTestRM :Callback : Failed to set system ringtone '+err.message);
 				expect(true).assertTrue();
@@ -2258,44 +2298,6 @@ describe('audioManager',async function () {
 			done();
 		});
 	})
-
-
-
-//	/* *
-//                * @tc.number    : SUB_AUDIO_MANAGER_RingtoneManager_049
-//                * @tc.name      : setSystemRingtoneUri - Callback Invalid - RINGTONE_TYPE_DEFAULT
-//                * @tc.desc      : setSystemRingtoneUri - Callback Invalid uri
-//                * @tc.size      : MEDIUM
-//                * @tc.type      : Function
-//                * @tc.level     : Level 0
-//			*/
-//    it('SUB_AUDIO_MANAGER_RingtoneManager_049', 0,async function(done){
-//        systemSoundManager.setSystemRingtoneUri(null,'xyz123',audio.RingtoneType.RINGTONE_TYPE_DEFAULT,async(err) => {
-//			if (err){
-//				console.error('AudioFrameworkTestRM :Callback : Failed to set system ringtone '+err.message);
-//			}
-//			else{
-//				console.info('AudioFrameworkTestRM :Callback: Set system Ringtone SUCCESS');
-//				systemSoundManager.getSystemRingtoneUri(null,audio.RingtoneType.RINGTONE_TYPE_DEFAULT, async(err,data) => {
-//					if (err){
-//						console.error('AudioFrameworkTestRM :Callback: Failed to get system Ringtone Uri: ERROR '+err.message);
-//						expect(true).assertTrue();
-//					}
-//					else if(data=='/data/StarWars10s-1C-44100-2SW.wav') {
-//						console.info('AudioFrameworkTestRM :Callback: Get system Ringtone Uri : PASS');
-//						expect(false).assertTrue();
-//					}
-//					else{
-//						console.info('AudioFrameworkTestRM :Callback: Get system Ringtone Uri : FAIL');
-//						expect(false).assertTrue();
-//					}
-//					done();
-//					await sleep(1000);
-//				});
-//            }
-//			done();
-//        });
-//    })
 
 	/* *
                 * @tc.number    : SUB_AUDIO_MANAGER_RingtoneManager_047
@@ -2459,7 +2461,7 @@ describe('audioManager',async function () {
                 * @tc.level     : Level 0
 			*/
     it('SUB_AUDIO_MANAGER_RingtoneManager_052', 0,async function(done){
-        systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',2,async(err) => {
+        systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',2,async(err) => {
 			if (err){
 				console.error('AudioFrameworkTestRM :Callback : Failed to set system ringtone '+err.message);
 				expect(true).assertTrue();
@@ -2517,7 +2519,7 @@ describe('audioManager',async function () {
 						console.error('AudioFrameworkTestRM :Callback: Failed to get system Ringtone Uri: ERROR '+err.message);
 						expect(true).assertTrue();
 					}
-					else if(data=='/data/StarWars10s-1C-44100-2SW.wav') {
+					else if(data=='/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav') {
 						console.info('AudioFrameworkTestRM :Callback: Get system Ringtone Uri : PASS');
 						expect(false).assertTrue();
 					}
@@ -2542,7 +2544,7 @@ describe('audioManager',async function () {
                 * @tc.level     : Level 0
 			*/
     it('SUB_AUDIO_MANAGER_RingtoneManager_055', 0,async function(done){
-        systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',1,(err) => {
+        systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',1,(err) => {
 			if (err){
 				console.error('AudioFrameworkTestRM :Callback : Failed to set system ringtone '+err.message);
 			}
@@ -2553,7 +2555,7 @@ describe('audioManager',async function () {
 						console.error('AudioFrameworkTestRM :Callback: enum: Failed to get system Ringtone Uri: ERROR '+err.message);
 						expect(false).assertTrue();
 					}
-					else if(data=='/data/StarWars10s-1C-44100-2SW.wav'){
+					else if(data=='/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav'){
 						console.info('AudioFrameworkTestRM :Callback:enum: Get system Ringtone Uri : SUCCESS');
 						expect(true).assertTrue();
 					}
@@ -2812,7 +2814,7 @@ describe('audioManager',async function () {
                 * @tc.level     : Level 0
 			*/
     it('SUB_AUDIO_MANAGER_RingtoneManager_063', 0,async function(done){
-        systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_MULTISIM,async (err) => {
+        systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_MULTISIM,async (err) => {
 			if (err){
 				console.error('AudioFrameworkTestRM :Callback :ENAME: Failed to set system ringtone '+err.message);
 			}
@@ -2823,7 +2825,7 @@ describe('audioManager',async function () {
 						console.error('AudioFrameworkTestRM :Callback: ENAME: Failed to get system Ringtone Uri: ERROR '+err.message);
 						expect(false).assertTrue();
 					}
-					else if(data=='/data/StarWars10s-1C-44100-2SW.wav') {
+					else if(data=='/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav') {
 						console.info('AudioFrameworkTestRM :Callback: ENAME: Get system Ringtone Uri : PASS');
 						expect(true).assertTrue();
 					}
@@ -2881,7 +2883,6 @@ describe('audioManager',async function () {
 						expect(true).assertTrue();
 					}
 					await sleep(1000);
-//							done();
 				});
 			});
 		});
@@ -2995,7 +2996,7 @@ describe('audioManager',async function () {
         ringtonePlayer.start().then(async function () {
             console.log('AudioFrameworkTestRM: Start RingtonePlayer : SUCCESS : '+ringtonePlayer.state);
             await sleep(1000);
-				ringtonePlayer.stop().then (function () {
+				ringtonePlayer.stop().then(function () {
 				console.log('AudioFrameworkTestRM : Stop RingtonePlayer : SUCCESS :'+ringtonePlayer.state);
 				expect(true).assertTrue();
 			}).catch((err) => {
@@ -3114,7 +3115,7 @@ describe('audioManager',async function () {
         await ringtonePlayer.release().then(async function () {
             console.log('AudioFrameworkTestRM: Release RingtonePlayer : SUCCESS : '+ringtonePlayer.state);
 			await sleep(2000);
-				await ringtonePlayer.start().then (function () {
+				await ringtonePlayer.start().then(function () {
 					console.log('AudioFrameworkTestRM : Start RingtonePlayer : SUCCESS :'+ringtonePlayer.state);
 					expect(false).assertTrue();
 				}).catch((err) => {
@@ -3184,7 +3185,7 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_RingtoneManager_074', 0,async function(done){
 		console.log('AudioFrameworkTestSSMM: Set System Ringtone Uri');
-        await systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',1).then(function(){
+        await systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',1).then(function(){
 			console.info('AudioFrameworkTestSSM:enum:1:Set Ringtone Uri : SUCCESS: ');
 		}).catch((err) => {
 			console.error('AudioFrameworkTestSSM:enum:1:Set System Ringtone Uri :ERROR: '+err.message);
@@ -3227,13 +3228,12 @@ describe('audioManager',async function () {
                 expect(false).assertTrue();
             }
             else if (data!==null){
-             console.log('AudioFrameworkTestRM : Ringtone info content: Pass :'+data.content);
-             expect(true).assertTrue();
+             	console.log('AudioFrameworkTestRM : Ringtone info content: Pass :'+data.content);
+             	expect(true).assertTrue();
             }
             else{
-             console.log('AudioFrameworkTestRM : Ringtone info content: Fail :'+data.content);
-             expect(false).assertTrue();
-			 await sleep(100);
+             	expect(false).assertTrue();
+			 	await sleep(100);
             }
         })
         done();
@@ -3273,13 +3273,12 @@ describe('audioManager',async function () {
                 expect(false).assertTrue();
             }
             else if (data!==null){
-             console.log('AudioFrameworkTestRM : Ringtone info usage: Pass :'+data.content);
-             expect(true).assertTrue();
+				console.log('AudioFrameworkTestRM : Ringtone info usage: Pass :'+data.content);
+				expect(true).assertTrue();
             }
             else{
-             console.log('AudioFrameworkTestRM :Ringtone info usage: Fail :'+data.content);
-             expect(false).assertTrue();
-			 await sleep(100);
+             	expect(false).assertTrue();
+			 	await sleep(100);
             }
         })
         done();
@@ -3295,8 +3294,8 @@ describe('audioManager',async function () {
             */
 	it('SUB_AUDIO_MANAGER_RingtoneManager_079', 0,async function(done){
         await ringtonePlayer.getAudioRendererInfo().then(function(data){
-        console.info('AudioFrameworkTestRM : Ringtone info rendererFlags : '+data.rendererFlags);
-           expect(true).assertTrue();
+        	console.info('AudioFrameworkTestRM : Ringtone info rendererFlags : '+data.rendererFlags);
+           	expect(true).assertTrue();
         }).catch((err) => {
             console.log('AudioFrameworkTestRM : Ringtone info rendererFlags : '+err.message);
             expect(false).assertTrue();
@@ -3319,77 +3318,16 @@ describe('audioManager',async function () {
                 expect(false).assertTrue();
             }
             else if (data!==null){
-             console.log('AudioFrameworkTestRM : Ringtone info rendererFlags: Pass :'+data.rendererFlags);
-             expect(true).assertTrue();
+			 	console.log('AudioFrameworkTestRM : Ringtone info rendererFlags: Pass :'+data.rendererFlags);
+			 	expect(true).assertTrue();
             }
             else{
-             console.log('AudioFrameworkTestRM :Ringtone info rendererFlags: Fail :'+data.rendererFlags);
-             expect(false).assertTrue();
-			 await sleep(100);
+             	expect(false).assertTrue();
+			 	await sleep(100);
             }
         });
         done();
     })
-
-//	/* *
-//                * @tc.number    : SUB_AUDIO_MANAGER_RingtoneManager_081
-//                * @tc.name      : setSystemRingtoneUri - Promise- Null uri -Start
-//                * @tc.desc      : setSystemRingtoneUri - Promise
-//                * @tc.size      : MEDIUM
-//                * @tc.type      : Function
-//                * @tc.level     : Level 0
-//            */
-//    it('SUB_AUDIO_MANAGER_RingtoneManager_081', 0,async function(done){
-//		console.log('AudioFrameworkTestSSMM: Set System Ringtone Uri');
-//        await systemSoundManager.setSystemRingtoneUri(null,null,defaultRingtoneType).then(function(){
-//			console.info('AudioFrameworkTestSSM: enum: Set Ringtone Uri : SUCCESS: ');
-//			ringtonePlayer.start().then(async function () {
-//            console.log('AudioFrameworkTestRM: Start RingtonePlayer : SUCCESS : '+ringtonePlayer.state);
-//			expect(false).assertTrue();
-//				}).catch((err) => {
-//					console.log('AudioFrameworkTestRM: Start RingtonePlayer :ERROR: '+err.message);
-//					expect(true).assertTrue();
-//				});
-//		}).catch((err) => {
-//			console.error('AudioFrameworkTestSSM: enum: Set System Ringtone Uri :ERROR: '+err.message);
-//			expect(true).assertTrue();
-//		});
-//		done();
-//	})
-//
-//	/* *
-//                    * @tc.number    : SUB_AUDIO_MANAGER_RingtoneManager_082
-//                    * @tc.name      : setSystemRingtoneUri - Callback null uri Start
-//                    * @tc.desc      : setSystemRingtoneUri - Callback
-//                    * @tc.size      : MEDIUM
-//                    * @tc.type      : Function
-//                    * @tc.level     : Level 0
-//                */
-//    it('SUB_AUDIO_MANAGER_RingtoneManager_082', 0,async function(done){
-//        console.log('AudioFrameworkTestRM: Set System Ringtone Uri');
-//        systemSoundManager.setSystemRingtoneUri(null,null,0,async(err) => {
-//            if(err){
-//                console.error('AudioFrameworkTestSSM: enum: Set System Ringtone Uri :ERROR: '+err.message);
-//                expect(true).assertTrue();
-//            }
-//            else{
-//                console.info('AudioFrameworkTestSSM: enum: Set Ringtone Uri : SUCCESS: ');
-//                console.log('AudioFrameworkTestRM: Start RingtonePlayer');
-//				ringtonePlayer.start(async(err) => {
-//					if (err){
-//						console.error('AudioFrameworkTestRM: Callback : Start RingtonePlayer :ERROR: '+err.message);
-//						expect(false).assertTrue();
-//					}
-//					else{
-//						console.log('AudioFrameworkTestRM: Callback : Start RingtonePlayer :SUCCESS : '+ringtonePlayer.state);
-//						expect(false).assertTrue();
-//					}
-//					await sleep(1000);
-//				});
-//			}
-//		});
-//		done();
-//	})
 
 	/* *
                 * @tc.number    : SUB_AUDIO_MANAGER_RingtoneManager_083
@@ -3429,7 +3367,7 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_RingtoneManager_084', 0,async function(done){
 		console.log('AudioFrameworkTestSSMM: Set System Ringtone Uri');
-        await systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',-1).then(function(){
+        await systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',-1).then(function(){
 			console.info('AudioFrameworkTestSSM:enum: Negative Value :Set Ringtone Uri : SUCCESS: ');
 
 			ringtonePlayer.start().then(async function () {
@@ -3456,7 +3394,7 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_RingtoneManager_085', 0,async function(done){
 		console.log('AudioFrameworkTestRM: Set System Ringtone Uri');
-        systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',-1,(err) => {
+        systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',-1,(err) => {
             if(err) {
 			console.error('AudioFrameworkTestRM: Callback :enum: Set System Ringtone Uri :ERROR: '+err.message);
 			expect(true).assertTrue();
@@ -3489,7 +3427,7 @@ describe('audioManager',async function () {
             */
 	it('SUB_AUDIO_MANAGER_RingtoneManager_085', 0,async function(done){
 		console.log('AudioFrameworkTestRM: Set System Ringtone Uri');
-		await systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',-1).then(function () {
+		await systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',-1).then(function () {
 			console.log('AudioFrameworkTestRM: Set System Ringtone Uri : SUCCESS');
 			expect(false).assertTrue();
 		}).catch((err) => {
@@ -3542,7 +3480,7 @@ describe('audioManager',async function () {
                 * @tc.level     : Level 0
 			*/
     it('SUB_AUDIO_MANAGER_RingtoneManager_087', 0,async function(done){
-        systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_MULTISIM,(err) => {
+        systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',audio.RingtoneType.RINGTONE_TYPE_MULTISIM,(err) => {
 			if (err){
 				console.error('AudioFrameworkTestRM :Callback : Failed to set system ringtone '+err.message);
 				expect(false).assertTrue();
@@ -3555,7 +3493,7 @@ describe('audioManager',async function () {
 						console.error('AudioFrameworkTestRM :Callback: enum: Failed to get system Ringtone Uri: ERROR '+err.message);
 						expect(true).assertTrue();
 					}
-					else if(data=='/data/StarWars10s-1C-44100-2SW.wav') {
+					else if(data=='/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav') {
 						console.info('AudioFrameworkTestRM :Callback:enum: Get system Ringtone Uri : SUCCESS');
 						expect(false).assertTrue();
 					}
@@ -3581,7 +3519,7 @@ describe('audioManager',async function () {
             */
     it('SUB_AUDIO_MANAGER_RingtoneManager_088', 0,async function(done){
 		console.log('AudioFrameworkTestSSMM: Set System Ringtone Uri');
-        await systemSoundManager.setSystemRingtoneUri(null,'/data/StarWars10s-1C-44100-2SW.wav',0).then(function(){
+        await systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/StarWars10s-1C-44100-2SW.wav',0).then(function(){
 			console.info('AudioFrameworkTestSSM:enum:0:Set Ringtone Uri : SUCCESS: ');
 		}).catch((err) => {
 			console.error('AudioFrameworkTestSSM:enum:0:Set System Ringtone Uri :ERROR: '+err.message);
@@ -3659,14 +3597,14 @@ describe('audioManager',async function () {
 			console.info('AudioFrameworkTestSSM:ENAME: get Ringtone Player : ERROR :' +err.message);
 			expect(false).assertTrue();
 		});
-		await systemSoundManager.setSystemRingtoneUri(null,'/data/media/test.mp3',audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function(){
+		await systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/media/test.mp3',audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function(){
 			console.info('AudioFrameworkTestSSM:enum: Set Ringtone Uri : SUCCESS: ');
 		}).catch((err) => {
 			console.error('AudioFrameworkTestSSM:enum: Set System Ringtone Uri :ERROR: '+err.message);
 			expect(false).assertTrue();
 		});
 		await systemSoundManager.getSystemRingtoneUri(null,audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function (data) {
-			if (data == '/data/media/test.mp3') {
+			if (data == '/storage/media/100/local/files/media/test.mp3') {
 				console.info('AudioFrameworkTestSSM: enum Get Ringtone Uri : DEFAULT : SUCCESS: ' + data);
 			}
 			else {
@@ -3739,14 +3677,14 @@ describe('audioManager',async function () {
 			console.info('AudioFrameworkTestSSM:ENAME: get Ringtone Player : ERROR :' +err.message);
 			expect(false).assertTrue();
 		});
-		await systemSoundManager.setSystemRingtoneUri(null,'/data/media/test.mp4',audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function(){
+		await systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/media/test.mp4',audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function(){
 			console.info('AudioFrameworkTestSSM:enum: Set Ringtone Uri : SUCCESS: ');
 		}).catch((err) => {
 			console.error('AudioFrameworkTestSSM:enum: Set System Ringtone Uri :ERROR: '+err.message);
 			expect(false).assertTrue();
 		});
 		await systemSoundManager.getSystemRingtoneUri(null,audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function (data) {
-			if (data == '/data/media/test.mp4') {
+			if (data == '/storage/media/100/local/files/media/test.mp4') {
 				console.info('AudioFrameworkTestSSM: enum Get Ringtone Uri : DEFAULT : SUCCESS: ' + data);
 			}
 			else {
@@ -3819,14 +3757,14 @@ describe('audioManager',async function () {
 			console.info('AudioFrameworkTestSSM:ENAME: get Ringtone Player : ERROR :' + (err.message));
 			expect(false).assertTrue();
 		});
-		await systemSoundManager.setSystemRingtoneUri(null,'/data/media/test.mp3',audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function(){
+		await systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/media/test.mp3',audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function(){
 			console.info('AudioFrameworkTestSSM:enum: Set Ringtone Uri : SUCCESS: ');
 		}).catch((err) => {
 			console.error('AudioFrameworkTestSSM:enum: Set System Ringtone Uri :ERROR: '+err.message);
 			expect(false).assertTrue();
 		});
 		await systemSoundManager.getSystemRingtoneUri(null,audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function (data) {
-			if (data == '/data/media/test.mp3') {
+			if (data == '/storage/media/100/local/files/media/test.mp3') {
 				console.info('AudioFrameworkTestSSM: enum Get Ringtone Uri : DEFAULT : SUCCESS: ' + data);
 			}
 			else {
@@ -3903,14 +3841,14 @@ describe('audioManager',async function () {
 			console.info('AudioFrameworkTestSSM:ENAME: get Ringtone Player : ERROR :' + (err.message));
 			expect(false).assertTrue();
 		});
-		await systemSoundManager.setSystemRingtoneUri(null,'/data/media/test.mp3',audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function(){
+		await systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/media/test.mp3',audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function(){
 			console.info('AudioFrameworkTestSSM:enum: Set Ringtone Uri : SUCCESS: ');
 		}).catch((err) => {
 			console.error('AudioFrameworkTestSSM:enum: Set System Ringtone Uri :ERROR: '+err.message);
 			expect(false).assertTrue();
 		});
 		await systemSoundManager.getSystemRingtoneUri(null,audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function (data) {
-			if (data == '/data/media/test.mp3') {
+			if (data == '/storage/media/100/local/files/media/test.mp3') {
 				console.info('AudioFrameworkTestSSM: enum Get Ringtone Uri : DEFAULT : SUCCESS: ' + data);
 			}
 			else {
@@ -3946,8 +3884,8 @@ describe('audioManager',async function () {
 
 	/* *
                 * @tc.number    : SUB_AUDIO_MANAGER_RingtoneManager_094
-                * @tc.name      : Ringtone-Player - wav -Get Title
-                * @tc.desc      : Configure & get title - Callback
+                * @tc.name      : Ringtone-Player - mp4 -Get Title
+                * @tc.desc      : Configure & get title
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
@@ -3966,14 +3904,14 @@ describe('audioManager',async function () {
 			console.info('AudioFrameworkTestSSM:ENAME: get Ringtone Player : ERROR :' + (err.message));
 			expect(false).assertTrue();
 		});
-		await systemSoundManager.setSystemRingtoneUri(null,'/data/media/test.mp4',audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function(){
+		await systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/media/test.mp4',audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function(){
 			console.info('AudioFrameworkTestSSM:enum: Set Ringtone Uri : SUCCESS: ');
 		}).catch((err) => {
 			console.error('AudioFrameworkTestSSM:enum: Set System Ringtone Uri :ERROR: '+err.message);
 			expect(false).assertTrue();
 		});
 		await systemSoundManager.getSystemRingtoneUri(null,audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function (data) {
-			if (data == '/data/media/test.mp4') {
+			if (data == '/storage/media/100/local/files/media/test.mp4') {
 				console.info('AudioFrameworkTestSSM: enum Get Ringtone Uri : DEFAULT : SUCCESS: ' + data);
 			}
 			else {
@@ -3997,6 +3935,70 @@ describe('audioManager',async function () {
 		}).catch((err) => {
 			console.log('AudioFrameworkTestRM: getTitle :ERROR: '+err.message);
 			expect(false).assertTrue();
+		});
+
+		await sleep(100);
+		expect(resultFlag).assertTrue();
+		console.log('AudioFrameworkTestRM: Release RingtonePlayer');
+		await ringtonePlayerTemp.release();
+		done();
+	});
+
+	/* *
+                * @tc.number    : SUB_AUDIO_MANAGER_RingtoneManager_095
+                * @tc.name      : Ringtone-Player - mp4 -Get Title - Callback
+                * @tc.desc      : Configure & get title
+                * @tc.size      : MEDIUM
+                * @tc.type      : Function
+                * @tc.level     : Level 0
+			*/
+	it('SUB_AUDIO_MANAGER_RingtoneManager_095', 0,async function(done){
+		var ringtonePlayerTemp;
+		var resultFlag;
+
+		console.log('AudioFrameworkTestRM: Get System Ringtone Player');
+		await systemSoundManager.getSystemRingtonePlayer(null,audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(async function(data) {
+			ringtonePlayerTemp = data;
+			if (ringtonePlayerTemp !=null) {
+				console.info('AudioFrameworkTestSSM:ENAME: get Ringtone Player : SUCCESS: ' + data);
+			}
+		}).catch((err) => {
+			console.info('AudioFrameworkTestSSM:ENAME: get Ringtone Player : ERROR :' + (err.message));
+			expect(false).assertTrue();
+		});
+		await systemSoundManager.setSystemRingtoneUri(null,'/storage/media/100/local/files/media/test.mp4',audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function(){
+			console.info('AudioFrameworkTestSSM:enum: Set Ringtone Uri : SUCCESS: ');
+		}).catch((err) => {
+			console.error('AudioFrameworkTestSSM:enum: Set System Ringtone Uri :ERROR: '+err.message);
+			expect(false).assertTrue();
+		});
+		await systemSoundManager.getSystemRingtoneUri(null,audio.RingtoneType.RINGTONE_TYPE_DEFAULT).then(function (data) {
+			if (data == '/storage/media/100/local/files/media/test.mp4') {
+				console.info('AudioFrameworkTestSSM: enum Get Ringtone Uri : DEFAULT : SUCCESS: ' + data);
+			}
+			else {
+				console.info('AudioFrameworkTestSSM: enum Get Ringtone Uri :DEFAULT : FAIL: ' + data);
+			}
+		}).catch((err) => {
+			console.info('AudioFrameworkTestSSM: enum Ringtone Get Ringtone  ERROR: ' + err.message);
+			expect(false).assertTrue();
+		});
+
+		ringtonePlayerTemp.getTitle((err, data) => {
+			if (err) {
+				console.error(`AudioFrameworkTestRM: getTitle : ERROR : ${err.message}`);
+				expect(false).assertTrue();
+			}
+			else {
+				if (data == 'Galway') {
+					console.log('AudioFrameworkTestRM: TITLE : PASS : ' + data);
+					resultFlag = true;
+				}
+				else {
+					console.log('AudioFrameworkTestRM: TITLE : FAIL : ' + data);
+					resultFlag = false;
+				}
+			}
 		});
 
 		await sleep(100);
