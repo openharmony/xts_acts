@@ -14,7 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import bundle from '@ohos.bundle'
-import enterpriseDeviceManager from '@ohos.edm.enterpriseDeviceManager'
+import enterpriseDeviceManager from '@ohos.enterpriseDeviceManager'
 
 const PATH = "/data/"
 const EDMJSTEST1 = "edmJstest1.hap"
@@ -59,9 +59,10 @@ describe('EnterpriseDeviceManagerTest', function () {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
-            await bundle.getBundleInfo(HAPNAME1, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION).then(datainfo => {
-                console.info("getBundleInfo success:" + JSON.stringify(datainfo))
-            })
+            await bundle.getBundleInfo(HAPNAME1, 
+                bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION).then(datainfo => {
+                    console.info("getBundleInfo success:" + JSON.stringify(datainfo));
+            });
             activateAdmin();
         });
         async function activateAdmin() {
@@ -153,9 +154,10 @@ describe('EnterpriseDeviceManagerTest', function () {
      * @tc.desc activate super admin in promise mode
      */
     it('activateAdmin_test_003', 0, async function (done) {
-        await bundle.getBundleInfo(SELFHAPNAME, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION).then(datainfo => {
-            console.info("getBundleInfo success:" + JSON.stringify(datainfo))
-        })
+        await bundle.getBundleInfo(SELFHAPNAME, 
+            bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION).then(datainfo => {
+                console.info("getBundleInfo success:" + JSON.stringify(datainfo));
+        });
 
         console.log('enterpriseDeviceManager.activateAdmin ADMIN_TYPE_SUPER');
         var retValue = await enterpriseDeviceManager.activateAdmin(SELFWANT, ENTINFO1,
