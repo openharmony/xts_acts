@@ -52,9 +52,9 @@ let filesfetchOp = {
     selectionArgs: [fileType.toString()],
 };
 
-let imageAndAudiofetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ',
-    selectionArgs: [imageType.toString(), audioType.toString()],
+let imageAndVideofetchOp = {
+    selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs: [imageType.toString(), videoType.toString()],
 };
 let imageAndVideoAndfilefetchOp = {
     selections:
@@ -96,7 +96,7 @@ async function copyFile(fd1, fd2) {
     await fileio.write(fd2, buf);
 }
 
-describe('GET_ALBUM.test.js', function () {
+describe('mediaLibraryTestPromise.test.js', function () {
     const context = featureAbility.getContext();
     const media = mediaLibrary.getMediaLibrary(context);
 
@@ -130,8 +130,6 @@ describe('GET_ALBUM.test.js', function () {
         }
     });
 
-    
-    
     /**
      * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_001
      * @tc.name      : getFileAssets
@@ -222,7 +220,7 @@ describe('GET_ALBUM.test.js', function () {
      */
     it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_005', 0, async function (done) {
         try {
-            const fetchFileResult = await media.getFileAssets(imageAndAudiofetchOp);
+            const fetchFileResult = await media.getFileAssets(imageAndVideofetchOp);
             expect(fetchFileResult != undefined).assertTrue();
             done();
         } catch (error) {
@@ -396,11 +394,11 @@ describe('GET_ALBUM.test.js', function () {
      */
     it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_001', 0, async function (done) {
         try {
-            let DIR_CAMERA = mediaLibrary.DirectoryType.DIR_CAMERA;
+            let DIR_CDSA = mediaLibrary.DirectoryType.DIR_CDSA;
 
-            const dicResult = await media.getPublicDirectory(DIR_CAMERA);
+            const dicResult = await media.getPublicDirectory(DIR_CDSA);
 
-            expect(dicResult == 'Camera/').assertTrue();
+            expect(dicResult == 'CDSA/').assertTrue();
             done();
         } catch (error) {
             console.info(`MediaLibraryTest : getPublicDirectory 001 failed, error: ${error}`);
@@ -423,7 +421,7 @@ describe('GET_ALBUM.test.js', function () {
 
             const dicResult = await media.getPublicDirectory(DIR_VIDEO);
             console.log(dicResult);
-            expect(dicResult == 'Videos/').assertTrue();
+            expect(dicResult == 'Movies/').assertTrue();
             done();
         } catch (error) {
             console.info(`MediaLibraryTest : getPublicDirectory 002 failed, error: ${error}`);
@@ -830,5 +828,4 @@ describe('GET_ALBUM.test.js', function () {
             done();
         }
     });
-
 });

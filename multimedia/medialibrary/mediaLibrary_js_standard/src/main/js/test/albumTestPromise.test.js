@@ -75,7 +75,7 @@ function checkAlbumAttr(done, album) {
     }
 }
 
-describe('album.promise.test.js', async function () {
+describe('albumTestPromise.test.js', async function () {
     var context = featureAbility.getContext();
     var media = mediaLibrary.getMediaLibrary(context);
     beforeAll(function () {});
@@ -392,9 +392,7 @@ describe('album.promise.test.js', async function () {
         };
         try {
             const albumList = await media.getAlbums(fileHasArgsfetchOp3);
-            console.info(
-                'SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_PROMISE_002_06 length:' + albumList.length
-            );
+            console.info('GETALBUMASSETS_PROMISE_002_06 length:' + albumList.length);
             expect(albumList.length == 0).assertTrue();
             done();
         } catch (error) {
@@ -419,9 +417,7 @@ describe('album.promise.test.js', async function () {
         };
         try {
             const albumList = await media.getAlbums(fileHasArgsfetchOp4);
-            console.info(
-                'SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_PROMISE_002_07 length:' + albumList.length
-            );
+            console.info('GETALBUMASSETS_PROMISE_002_07 length:' + albumList.length);
             expect(albumList.length == 0).assertTrue();
             done();
         } catch (error) {
@@ -447,9 +443,7 @@ describe('album.promise.test.js', async function () {
 
         try {
             const albumList = await media.getAlbums(fileHasArgsfetchOp5);
-            console.info(
-                'SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_PROMISE_002_08 length:' + albumList.length
-            );
+            console.info('GETALBUMASSETS_PROMISE_002_08 length:' + albumList.length);
             expect(albumList.length == 0).assertTrue();
             done();
         } catch (error) {

@@ -39,7 +39,7 @@ const audioFetchOp = {
     selectionArgs: [audioType.toString()],
 };
 
-describe('file.promise.test.js', function () {
+describe('favoriteTestPromise.test.js', function () {
     var context = featureAbility.getContext();
     console.info('MediaLibraryTest : getMediaLibrary IN');
     var media = mediaLibrary.getMediaLibrary(context);
