@@ -17,6 +17,7 @@ group("aafwk_standard") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "ActsKillProcessWithAccountApi7:ActsKillProcessWithAccountApi7",
       "abilitymanager:actsabilitymanagertest",
       "actsabilitydistributetest:ActsAbilityDistributeTest",
       "actsabilitydistributetest:ActsAbilityDistributeTest",
@@ -24,6 +25,7 @@ group("aafwk_standard") {
       "amsabilitymanager/amsMissionSnapshotTestSingleton:ActsAmsMissionSnapshotTestSingleton",
       "amsabilitymanager/amsMissionSnapshotTestSingletonS:ActsAmsMissionSnapshotTestSingletonS",
       "amsdatauriutils:ActsAmsDataUriUtilsTest",
+      "amsgetabilityprocessinfo:amsgetabilityprocessinfo",
       "amsmultiapp/MultiAppPage:ActsAmsMultiPageApp",
       "amsmultiapp/MultiAppPageConnectService:ActsAmsMultiPageAppConnectService",
       "amsmultiapp/MultiAppPageConnect_Service:ActsAmsMultiAppPageConnectService",
@@ -42,10 +44,12 @@ group("aafwk_standard") {
       "amsmultiapp/amsmultiapptester:ActsAmsMultiAppTester",
       "amsmultiapp/amsmultidataabilityclone:ActsAmsMultiDataAbilityClone",
       "amsmultiapp/amsmultidataabilityself:ActsAmsMultiDataAbilitySelf",
+      "amsprocessmanageapi7:amsprocessmanageapi7",
       "amszipfileunzipfilest:ActsAmsZipfileUnzipfileSTest",
       "context:context",
       "featureability:featureability",
       "formmanager:formmanager",
+      "lanuageConfigapi7:lanuageConfigapi7",
       "serviceability/sceneProject/particlestartability:ParticleStartAbility",
       "serviceability/sceneProject/particletestserver:ParticleTestServer",
       "serviceability/stserviceabilityserver:amsStServiceAilityServer",
