@@ -136,6 +136,8 @@ describe('VideoPlayerFuncPromiseTest', function () {
     it('SUB_MEDIA_PLAYER_MULTIPLE_0100', 0, async function (done) {
         await getFd();
         setTimeout(async function() {
+            surfaceID = globalThis.value;
+            console.info('case new surfaceID is ' + surfaceID);
             let testVideoPlayer1 = null;
             let testVideoPlayer2 = null;
             await media.createVideoPlayer().then((video) => {
