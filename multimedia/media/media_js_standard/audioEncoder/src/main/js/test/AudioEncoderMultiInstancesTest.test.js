@@ -291,7 +291,7 @@ describe('AudioEncoderFuncPromise', function () {
     it('SUB_MEDIA_AUDIO_ENCODER_MULTIINSTANCE_0100', 0, async function (done) {
         console.info("case test multiple encoder instances");
         let array = new Array();
-        for (let i = 0; i < 16; i += 1) {
+        for (let i = 0; i < 2; i += 1) {
             await media.createAudioEncoderByMime('audio/mp4a-latm').then((processor) => {
                 if (typeof(processor) != 'undefined') {
                     console.info("case create createAudioEncoder success: " + i);
@@ -301,9 +301,9 @@ describe('AudioEncoderFuncPromise', function () {
                 }
             }, failCallback).catch(failCatch);
         }
-        console.info('case has created 16 encoders');
+        console.info('case has created 2 encoders');
         console.info('case array: ' + array);
-        for (let j = 0; j < 16; j++) {
+        for (let j = 0; j < 2; j++) {
             resetParam();
             await array[j].reset().then(() => {
                 console.info("reset encoder " + j);
