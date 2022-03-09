@@ -22,13 +22,12 @@
 		{
             "type": "ShellKit",
             "run-command": [
+                "rm -R /data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiodecoder/results",
                 "mkdir -p /data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiodecoder/results/",
                 "chmod 777 -R /data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiodecoder",
-                "chmod 777 /data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiodecoder/*",
-                "setenforce 0"
+                "chmod 777 /data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiodecoder/*"
             ],
             "teardown-command":[
-                "setenforce 1"
             ]
         },
         {

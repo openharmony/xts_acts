@@ -53,10 +53,10 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     const ROOT = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/results/';
     const BASIC_PATH = ROOT + 'video_reliability_callback_';
     let mediaDescription = {
-        'width': 720,
-        'height': 480,
+        'width': 320,
+        'height': 240,
         'pixel_format': 3,
-        'frame_rate': 60,
+        'frame_rate': 30,
     }
     beforeAll(function() {
         console.info('beforeAll case');
@@ -1447,14 +1447,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_TOOPLOOP_CALLBACK_0100
+        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_TOTALLOOP_CALLBACK_0100
         * @tc.name      : 001. total loop for 50 times
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CREATE-RELEASE_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_TOTALLOOP_CALLBACK_0100', 0, async function (done) {
         let name = 'avenc_mpeg4';
         let events = require('events');
         let eventEmitter = new events.EventEmitter();

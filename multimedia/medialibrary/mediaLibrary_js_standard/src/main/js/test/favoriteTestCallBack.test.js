@@ -39,11 +39,11 @@ const audioFetchOp = {
     selectionArgs: [audioType.toString()],
 };
 
-describe('file.callback.test.js', function () {
+describe('favoriteTestCallBack.test.js', function () {
     var context = featureAbility.getContext();
-    console.info('MediaLibraryTest : getMediaLibrary IN');
+    console.info('getMediaLibrary IN');
     var media = mediaLibrary.getMediaLibrary(context);
-    console.info('MediaLibraryTest : getMediaLibrary OUT');
+    console.info('getMediaLibrary OUT');
     beforeAll(function () {});
     beforeEach(function () {});
     afterEach(function () {});
@@ -61,14 +61,14 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_001_01', 0, async function (done) {
         try {
             media.getFileAssets(fileFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     asset.isFavorite((err1, isFavorite) => {
                         if (isFavorite) {
                             asset.favorite(false, () => {
                                 asset.isFavorite((err1, isFavorite) => {
                                     if (isFavorite) {
-                                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_01 fail');
+                                        console.info('FAV_ASSET_CALLBACK 001_01 fail');
                                         expect(false).assertTrue();
                                         done();
                                     }
@@ -78,11 +78,11 @@ describe('file.callback.test.js', function () {
                         asset.favorite(true, () => {
                             asset.isFavorite((err1, isFavorite) => {
                                 if (isFavorite) {
-                                    console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_01 success');
+                                    console.info('FAV_ASSET_CALLBACK 001_01 success');
                                     expect(true).assertTrue();
                                     done();
                                 } else {
-                                    console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_01 fail');
+                                    console.info('FAV_ASSET_CALLBACK 001_01 fail');
                                     expect(false).assertTrue();
                                     done();
                                 }
@@ -92,7 +92,7 @@ describe('file.callback.test.js', function () {
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_01 fail, message = ' + error);
+            console.info('FAV_ASSET_CALLBACK 001_01 fail, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -109,14 +109,14 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_001_02', 0, async function (done) {
         try {
             media.getFileAssets(fileFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     asset.isFavorite((err1, isFavorite) => {
                         if (!isFavorite) {
                             asset.favorite(true, () => {
                                 asset.isFavorite((err1, isFavorite) => {
                                     if (!isFavorite) {
-                                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_02 fail');
+                                        console.info('FAV_ASSET_CALLBACK 001_02 fail');
                                         expect(false).assertTrue();
                                         done();
                                     }
@@ -126,23 +126,21 @@ describe('file.callback.test.js', function () {
                         asset.favorite(false, () => {
                             asset.isFavorite((err1, isFavorite) => {
                                 if (!isFavorite) {
-                                    console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_02 pass');
+                                    console.info('FAV_ASSET_CALLBACK 001_02 pass');
                                     expect(true).assertTrue();
                                     done();
                                 } else {
-                                    console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_02 fail');
+                                    console.info('FAV_ASSET_CALLBACK 001_02 fail');
                                     expect(false).assertTrue();
                                     done();
                                 }
                             });
                         });
-
                     });
                 });
-
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_02 fail, message = ' + error);
+            console.info('FAV_ASSET_CALLBACK 001_02 fail, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -159,23 +157,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_001_03', 0, async function (done) {
         try {
             media.getFileAssets(fileFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite('true', () => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_03 fail');
+                            console.info('FAV_ASSET_CALLBACK 001_03 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_03 pass');
+                        console.info('FAV_ASSET_CALLBACK 001_03 pass');
                         expect(true).assertTrue();
                         done();
                     }
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_03 pass');
+            console.info('FAV_ASSET_CALLBACK 001_03 pass');
             expect(true).assertTrue();
             done();
         }
@@ -192,23 +190,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_001_04', 0, async function (done) {
         try {
             media.getFileAssets(fileFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite('false', () => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_04 fail');
+                            console.info('FAV_ASSET_CALLBACK 001_04 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_04 pass');
+                        console.info('FAV_ASSET_CALLBACK 001_04 pass');
                         expect(true).assertTrue();
                         done();
                     }
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_04 pass');
+            console.info('FAV_ASSET_CALLBACK 001_04 pass');
             expect(true).assertTrue();
             done();
         }
@@ -225,24 +223,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_001_05', 0, async function (done) {
         try {
             media.getFileAssets(fileFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite('fav', () => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_05 fail');
+                            console.info('FAV_ASSET_CALLBACK 001_05 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_05 pass');
+                        console.info('FAV_ASSET_CALLBACK 001_05 pass');
                         expect(true).assertTrue();
                         done();
                     }
                 });
-
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_05 pass');
+            console.info('FAV_ASSET_CALLBACK 001_05 pass');
             expect(true).assertTrue();
             done();
         }
@@ -259,24 +256,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_001_06', 0, async function (done) {
         try {
             media.getFileAssets(fileFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite(666, () => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_06 fail');
+                            console.info('FAV_ASSET_CALLBACK 001_06 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_06 pass');
+                        console.info('FAV_ASSET_CALLBACK 001_06 pass');
                         expect(true).assertTrue();
                         done();
                     }
                 });
-
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_06 pass');
+            console.info('FAV_ASSET_CALLBACK 001_06 pass');
             expect(true).assertTrue();
             done();
         }
@@ -293,24 +289,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_001_07', 0, async function (done) {
         try {
             media.getFileAssets(fileFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite(() => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_07 fail');
+                            console.info('FAV_ASSET_CALLBACK 001_07 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_07 pass');
+                        console.info('FAV_ASSET_CALLBACK 001_07 pass');
                         expect(true).assertTrue();
                         done();
                     }
                 });
-
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_07 pass');
+            console.info('FAV_ASSET_CALLBACK 001_07 pass');
             expect(true).assertTrue();
             done();
         }
@@ -327,24 +322,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_001_08', 0, async function (done) {
         try {
             media.getFileAssets(fileFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     asset.isFavorite((err1, isFavorite) => {
                         if (isFavorite) {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_08 fail');
+                            console.info('FAV_ASSET_CALLBACK 001_08 fail');
                             expect(false).assertTrue();
                             done();
                         } else {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_08 pass');
+                            console.info('FAV_ASSET_CALLBACK 001_08 pass');
                             expect(true).assertTrue();
                             done();
                         }
-                    })
+                    });
                 });
-
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_08 fail, message = ' + error);
+            console.info('FAV_ASSET_CALLBACK 001_08 fail, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -361,32 +355,30 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_001_09', 0, async function (done) {
         try {
             media.getFileAssets(fileFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     asset.favorite(true, () => {
                         asset.isFavorite((err1, isFavorite) => {
                             if (isFavorite) {
-                                console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_09 pass');
+                                console.info('FAV_ASSET_CALLBACK 001_09 pass');
                                 expect(true).assertTrue();
                                 done();
                             } else {
-                                console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_09 fail');
+                                console.info('FAV_ASSET_CALLBACK 001_09 fail');
                                 expect(false).assertTrue();
                                 done();
                             }
-                        })
+                        });
                     });
                 });
-
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 001_09 fail, message = ' + error);
+            console.info('FAV_ASSET_CALLBACK 001_09 fail, message = ' + error);
             expect(false).assertTrue();
             done();
         }
     });
     // ------------------------------ file type end ------------------------
-
 
     // ------------------------------ image type start ------------------------
     /**
@@ -397,17 +389,17 @@ describe('file.callback.test.js', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_002_01', 0, async function (done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_002_01', 0, async function (done) {
         try {
             media.getFileAssets(imageFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     asset.isFavorite((err1, isFavorite) => {
                         if (isFavorite) {
                             asset.favorite(false, () => {
                                 asset.isFavorite((err1, isFavorite) => {
                                     if (isFavorite) {
-                                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_01 failed');
+                                        console.info('FAV_ASSET_CALLBACK 002_01 failed');
                                         expect(false).assertTrue();
                                         done();
                                     }
@@ -417,11 +409,11 @@ describe('file.callback.test.js', function () {
                         asset.favorite(true, () => {
                             asset.isFavorite((err1, isFavorite) => {
                                 if (isFavorite) {
-                                    console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_01 success');
+                                    console.info('FAV_ASSET_CALLBACK 002_01 success');
                                     expect(true).assertTrue();
                                     done();
                                 } else {
-                                    console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_01 fail');
+                                    console.info('FAV_ASSET_CALLBACK 002_01 fail');
                                     expect(false).assertTrue();
                                     done();
                                 }
@@ -431,7 +423,7 @@ describe('file.callback.test.js', function () {
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_01 failed, message = ' + error);
+            console.info('FAV_ASSET_CALLBACK 002_01 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -448,14 +440,14 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_002_02', 0, async function (done) {
         try {
             media.getFileAssets(imageFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     asset.isFavorite((err1, isFavorite) => {
                         if (!isFavorite) {
                             asset.favorite(true, () => {
                                 asset.isFavorite((err1, isFavorite) => {
                                     if (!isFavorite) {
-                                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_02 fail');
+                                        console.info('FAV_ASSET_CALLBACK 002_02 fail');
                                         expect(false).assertTrue();
                                         done();
                                     }
@@ -465,23 +457,21 @@ describe('file.callback.test.js', function () {
                         asset.favorite(false, () => {
                             asset.isFavorite((err1, isFavorite) => {
                                 if (!isFavorite) {
-                                    console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_02 pass');
+                                    console.info('FAV_ASSET_CALLBACK 002_02 pass');
                                     expect(true).assertTrue();
                                     done();
                                 } else {
-                                    console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_02 fail');
+                                    console.info('FAV_ASSET_CALLBACK 002_02 fail');
                                     expect(false).assertTrue();
                                     done();
                                 }
                             });
                         });
-
                     });
                 });
-
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_02 failed, message = ' + error);
+            console.info('FAV_ASSET_CALLBACK 002_02 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -498,23 +488,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_002_03', 0, async function (done) {
         try {
             media.getFileAssets(imageFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite('true', () => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_03 fail');
+                            console.info('FAV_ASSET_CALLBACK 002_03 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_03 passed');
+                        console.info('FAV_ASSET_CALLBACK 002_03 passed');
                         expect(true).assertTrue();
                         done();
                     }
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_03 passed');
+            console.info('FAV_ASSET_CALLBACK 002_03 passed');
             expect(true).assertTrue();
             done();
         }
@@ -531,23 +521,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_002_04', 0, async function (done) {
         try {
             media.getFileAssets(imageFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite('false', () => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_04 fail');
+                            console.info('FAV_ASSET_CALLBACK 002_04 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_04 passed');
+                        console.info('FAV_ASSET_CALLBACK 002_04 passed');
                         expect(true).assertTrue();
                         done();
                     }
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_04 passed');
+            console.info('FAV_ASSET_CALLBACK 002_04 passed');
             expect(true).assertTrue();
             done();
         }
@@ -564,23 +554,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_002_05', 0, async function (done) {
         try {
             media.getFileAssets(imageFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite('fav', () => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_05 fail');
+                            console.info('FAV_ASSET_CALLBACK 002_05 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_05 passed');
+                        console.info('FAV_ASSET_CALLBACK 002_05 passed');
                         expect(true).assertTrue();
                         done();
                     }
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_05 passed');
+            console.info('FAV_ASSET_CALLBACK 002_05 passed');
             expect(true).assertTrue();
             done();
         }
@@ -597,23 +587,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_002_06', 0, async function (done) {
         try {
             media.getFileAssets(imageFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite(666, () => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_06 fail');
+                            console.info('FAV_ASSET_CALLBACK 002_06 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_06 passed');
+                        console.info('FAV_ASSET_CALLBACK 002_06 passed');
                         expect(true).assertTrue();
                         done();
                     }
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_06 passed');
+            console.info('FAV_ASSET_CALLBACK 002_06 passed');
             expect(true).assertTrue();
             done();
         }
@@ -630,24 +620,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_002_07', 0, async function (done) {
         try {
             media.getFileAssets(imageFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite(() => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_07 fail');
+                            console.info('FAV_ASSET_CALLBACK 002_07 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_07 passed');
+                        console.info('FAV_ASSET_CALLBACK 002_07 passed');
                         expect(true).assertTrue();
                         done();
                     }
                 });
-
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_07 passed');
+            console.info('FAV_ASSET_CALLBACK 002_07 passed');
             expect(true).assertTrue();
             done();
         }
@@ -664,23 +653,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_002_08', 0, async function (done) {
         try {
             media.getFileAssets(imageFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     asset.isFavorite((err1, isFavorite) => {
                         if (isFavorite) {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_08 fail');
+                            console.info('FAV_ASSET_CALLBACK 002_08 fail');
                             expect(false).assertTrue();
                             done();
                         } else {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_08 pass');
+                            console.info('FAV_ASSET_CALLBACK 002_08 pass');
                             expect(true).assertTrue();
                             done();
                         }
-                    })
+                    });
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_08 failed, message = ' + error);
+            console.info('FAV_ASSET_CALLBACK 002_08 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -697,25 +686,25 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_002_09', 0, async function (done) {
         try {
             media.getFileAssets(imageFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     asset.favorite(true, () => {
                         asset.isFavorite((err1, isFavorite) => {
                             if (isFavorite) {
-                                console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_09 pass');
+                                console.info('FAV_ASSET_CALLBACK 002_09 pass');
                                 expect(true).assertTrue();
                                 done();
                             } else {
-                                console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_09 fail');
+                                console.info('FAV_ASSET_CALLBACK 002_09 fail');
                                 expect(false).assertTrue();
                                 done();
                             }
-                        })
+                        });
                     });
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 002_09 failed, message = ' + error);
+            console.info('FAV_ASSET_CALLBACK 002_09 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -734,14 +723,14 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_003_01', 0, async function (done) {
         try {
             media.getFileAssets(videoFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     asset.isFavorite((err1, isFavorite) => {
                         if (isFavorite) {
                             asset.favorite(false, () => {
                                 asset.isFavorite((err1, isFavorite) => {
                                     if (isFavorite) {
-                                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_01 fail');
+                                        console.info('FAV_ASSET_CALLBACK 003_01 fail');
                                         expect(false).assertTrue();
                                         done();
                                     }
@@ -751,22 +740,21 @@ describe('file.callback.test.js', function () {
                         asset.favorite(true, () => {
                             asset.isFavorite((err1, isFavorite) => {
                                 if (isFavorite) {
-                                    console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_01 success');
+                                    console.info('FAV_ASSET_CALLBACK 003_01 success');
                                     expect(true).assertTrue();
                                     done();
                                 } else {
-                                    console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_01 fail');
+                                    console.info('FAV_ASSET_CALLBACK 003_01 fail');
                                     expect(false).assertTrue();
                                     done();
                                 }
                             });
                         });
-
                     });
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_01 failed, message = ' + error);
+            console.info('FAV_ASSET_CALLBACK 003_01 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -783,14 +771,14 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_003_02', 0, async function (done) {
         try {
             media.getFileAssets(videoFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     asset.isFavorite((err1, isFavorite) => {
                         if (!isFavorite) {
                             asset.favorite(true, () => {
                                 asset.isFavorite((err1, isFavorite) => {
                                     if (!isFavorite) {
-                                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_02 fail');
+                                        console.info('FAV_ASSET_CALLBACK 003_02 fail');
                                         expect(false).assertTrue();
                                         done();
                                     }
@@ -800,11 +788,11 @@ describe('file.callback.test.js', function () {
                         asset.favorite(false, () => {
                             asset.isFavorite((err1, isFavorite) => {
                                 if (!isFavorite) {
-                                    console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_02 pass');
+                                    console.info('FAV_ASSET_CALLBACK 003_02 pass');
                                     expect(true).assertTrue();
                                     done();
                                 } else {
-                                    console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_02 fail');
+                                    console.info('FAV_ASSET_CALLBACK 003_02 fail');
                                     expect(false).assertTrue();
                                     done();
                                 }
@@ -814,7 +802,7 @@ describe('file.callback.test.js', function () {
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_02 failed, message = ' + error);
+            console.info('FAV_ASSET_CALLBACK 003_02 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -831,23 +819,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_003_03', 0, async function (done) {
         try {
             media.getFileAssets(videoFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite('true', () => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_03 fail');
+                            console.info('FAV_ASSET_CALLBACK 003_03 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_03 passed');
+                        console.info('FAV_ASSET_CALLBACK 003_03 passed');
                         expect(true).assertTrue();
                         done();
                     }
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_03 passed');
+            console.info('FAV_ASSET_CALLBACK 003_03 passed');
             expect(true).assertTrue();
             done();
         }
@@ -864,23 +852,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_003_04', 0, async function (done) {
         try {
             media.getFileAssets(videoFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite('false', () => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_04 fail');
+                            console.info('FAV_ASSET_CALLBACK 003_04 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_04 passed');
+                        console.info('FAV_ASSET_CALLBACK 003_04 passed');
                         expect(true).assertTrue();
                         done();
                     }
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_04 passed');
+            console.info('FAV_ASSET_CALLBACK 003_04 passed');
             expect(true).assertTrue();
             done();
         }
@@ -897,23 +885,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_003_05', 0, async function (done) {
         try {
             media.getFileAssets(videoFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite('fav', () => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_05 fail');
+                            console.info('FAV_ASSET_CALLBACK 003_05 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_05 passed');
+                        console.info('FAV_ASSET_CALLBACK 003_05 passed');
                         expect(true).assertTrue();
                         done();
                     }
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_05 passed');
+            console.info('FAV_ASSET_CALLBACK 003_05 passed');
             expect(true).assertTrue();
             done();
         }
@@ -930,23 +918,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_003_06', 0, async function (done) {
         try {
             media.getFileAssets(videoFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite(666, () => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_06 fail');
+                            console.info('FAV_ASSET_CALLBACK 003_06 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_06 passed');
+                        console.info('FAV_ASSET_CALLBACK 003_06 passed');
                         expect(true).assertTrue();
                         done();
                     }
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_06 passed');
+            console.info('FAV_ASSET_CALLBACK 003_06 passed');
             expect(true).assertTrue();
             done();
         }
@@ -963,23 +951,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_003_07', 0, async function (done) {
         try {
             media.getFileAssets(videoFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite(() => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_07 fail');
+                            console.info('FAV_ASSET_CALLBACK 003_07 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_07 passed');
+                        console.info('FAV_ASSET_CALLBACK 003_07 passed');
                         expect(true).assertTrue();
                         done();
                     }
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_07 passed');
+            console.info('FAV_ASSET_CALLBACK 003_07 passed');
             expect(true).assertTrue();
             done();
         }
@@ -996,23 +984,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_003_08', 0, async function (done) {
         try {
             media.getFileAssets(videoFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     asset.isFavorite((err1, isFavorite) => {
                         if (isFavorite) {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_08 fail');
+                            console.info('FAV_ASSET_CALLBACK 003_08 fail');
                             expect(false).assertTrue();
                             done();
                         } else {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_08 pass');
+                            console.info('FAV_ASSET_CALLBACK 003_08 pass');
                             expect(true).assertTrue();
                             done();
                         }
-                    })
+                    });
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_08 failed, message = ' + error);
+            console.info('FAV_ASSET_CALLBACK 003_08 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -1029,25 +1017,25 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_003_09', 0, async function (done) {
         try {
             media.getFileAssets(videoFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     asset.favorite(true, () => {
                         asset.isFavorite((err1, isFavorite) => {
                             if (isFavorite) {
-                                console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_09 pass');
+                                console.info('FAV_ASSET_CALLBACK 003_09 pass');
                                 expect(true).assertTrue();
                                 done();
                             } else {
-                                console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_09 fail');
+                                console.info('FAV_ASSET_CALLBACK 003_09 fail');
                                 expect(false).assertTrue();
                                 done();
                             }
-                        })
+                        });
                     });
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 003_09 failed, message = ' + error);
+            console.info('FAV_ASSET_CALLBACK 003_09 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -1066,14 +1054,14 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_004_01', 0, async function (done) {
         try {
             media.getFileAssets(audioFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     asset.isFavorite((err1, isFavorite) => {
                         if (isFavorite) {
                             asset.favorite(false, () => {
                                 asset.isFavorite((err1, isFavorite) => {
                                     if (isFavorite) {
-                                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_01 fail');
+                                        console.info('FAV_ASSET_CALLBACK 004_01 fail');
                                         expect(false).assertTrue();
                                         done();
                                     }
@@ -1083,22 +1071,21 @@ describe('file.callback.test.js', function () {
                         asset.favorite(true, () => {
                             asset.isFavorite((err1, isFavorite) => {
                                 if (isFavorite) {
-                                    console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_01 success');
+                                    console.info('FAV_ASSET_CALLBACK 004_01 success');
                                     expect(true).assertTrue();
                                     done();
                                 } else {
-                                    console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_01 fail');
+                                    console.info('FAV_ASSET_CALLBACK 004_01 fail');
                                     expect(false).assertTrue();
                                     done();
                                 }
                             });
                         });
-
                     });
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_01 failed, message = ' + error);
+            console.info('FAV_ASSET_CALLBACK 004_01 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -1115,14 +1102,14 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_004_02', 0, async function (done) {
         try {
             media.getFileAssets(audioFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     asset.isFavorite((err1, isFavorite) => {
                         if (!isFavorite) {
                             asset.favorite(true, () => {
                                 asset.isFavorite((err1, isFavorite) => {
                                     if (!isFavorite) {
-                                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_02 fail');
+                                        console.info('FAV_ASSET_CALLBACK 004_02 fail');
                                         expect(false).assertTrue();
                                         done();
                                     }
@@ -1132,11 +1119,11 @@ describe('file.callback.test.js', function () {
                         asset.favorite(false, () => {
                             asset.isFavorite((err1, isFavorite) => {
                                 if (!isFavorite) {
-                                    console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_02 pass');
+                                    console.info('FAV_ASSET_CALLBACK 004_02 pass');
                                     expect(true).assertTrue();
                                     done();
                                 } else {
-                                    console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_02 fail');
+                                    console.info('FAV_ASSET_CALLBACK 004_02 fail');
                                     expect(false).assertTrue();
                                     done();
                                 }
@@ -1144,10 +1131,9 @@ describe('file.callback.test.js', function () {
                         });
                     });
                 });
-
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_02 failed, message = ' + error);
+            console.info('FAV_ASSET_CALLBACK 004_02 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -1164,23 +1150,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_004_03', 0, async function (done) {
         try {
             media.getFileAssets(audioFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite('true', () => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_03 fail');
+                            console.info('FAV_ASSET_CALLBACK 004_03 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_03 passed');
+                        console.info('FAV_ASSET_CALLBACK 004_03 passed');
                         expect(true).assertTrue();
                         done();
                     }
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_03 passed');
+            console.info('FAV_ASSET_CALLBACK 004_03 passed');
             expect(true).assertTrue();
             done();
         }
@@ -1197,23 +1183,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_004_04', 0, async function (done) {
         try {
             media.getFileAssets(audioFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite('false', () => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_04 fail');
+                            console.info('FAV_ASSET_CALLBACK 004_04 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_04 passed');
+                        console.info('FAV_ASSET_CALLBACK 004_04 passed');
                         expect(true).assertTrue();
                         done();
                     }
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_04 passed');
+            console.info('FAV_ASSET_CALLBACK 004_04 passed');
             expect(true).assertTrue();
             done();
         }
@@ -1230,23 +1216,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_004_05', 0, async function (done) {
         try {
             media.getFileAssets(audioFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite('fav', () => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_05 fail');
+                            console.info('FAV_ASSET_CALLBACK 004_05 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_05 passed');
+                        console.info('FAV_ASSET_CALLBACK 004_05 passed');
                         expect(true).assertTrue();
                         done();
                     }
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_05 passed');
+            console.info('FAV_ASSET_CALLBACK 004_05 passed');
             expect(true).assertTrue();
             done();
         }
@@ -1263,23 +1249,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_004_06', 0, async function (done) {
         try {
             media.getFileAssets(audioFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite(666, () => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_06 fail');
+                            console.info('FAV_ASSET_CALLBACK 004_06 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_06 passed');
+                        console.info('FAV_ASSET_CALLBACK 004_06 passed');
                         expect(true).assertTrue();
                         done();
                     }
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_06 passed');
+            console.info('FAV_ASSET_CALLBACK 004_06 passed');
             expect(true).assertTrue();
             done();
         }
@@ -1296,23 +1282,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_004_07', 0, async function (done) {
         try {
             media.getFileAssets(audioFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     try {
                         asset.favorite(() => {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_07 fail');
+                            console.info('FAV_ASSET_CALLBACK 004_07 fail');
                             expect(false).assertTrue();
                             done();
-                        })
+                        });
                     } catch (error) {
-                        console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_07 passed');
+                        console.info('FAV_ASSET_CALLBACK 004_07 passed');
                         expect(true).assertTrue();
                         done();
                     }
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_07 passed');
+            console.info('FAV_ASSET_CALLBACK 004_07 passed');
             expect(true).assertTrue();
             done();
         }
@@ -1329,23 +1315,23 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_004_08', 0, async function (done) {
         try {
             media.getFileAssets(audioFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     asset.isFavorite((err1, isFavorite) => {
                         if (isFavorite) {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_08 fail');
+                            console.info('FAV_ASSET_CALLBACK 004_08 fail');
                             expect(false).assertTrue();
                             done();
                         } else {
-                            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_08 pass');
+                            console.info('FAV_ASSET_CALLBACK 004_08 pass');
                             expect(true).assertTrue();
                             done();
                         }
-                    })
+                    });
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_08 failed, message = ' + error);
+            console.info('FAV_ASSET_CALLBACK 004_08 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -1362,25 +1348,25 @@ describe('file.callback.test.js', function () {
     it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_004_09', 0, async function (done) {
         try {
             media.getFileAssets(audioFetchOp, (error, fileAssets) => {
-                fileAssets.getAllObject((error, dataList) =>{
+                fileAssets.getAllObject((error, dataList) => {
                     const asset = dataList[0];
                     asset.favorite(true, () => {
                         asset.isFavorite((err1, isFavorite) => {
                             if (isFavorite) {
-                                console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_09 pass');
+                                console.info('FAV_ASSET_CALLBACK 004_09 pass');
                                 expect(true).assertTrue();
                                 done();
                             } else {
-                                console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_09 fail');
+                                console.info('FAV_ASSET_CALLBACK 004_09 fail');
                                 expect(false).assertTrue();
                                 done();
                             }
-                        })
+                        });
                     });
                 });
             });
         } catch (error) {
-            console.info('MediaLibraryTest : FAV_ASSET_CALLBACK 004_09 failed, message = ' + error);
+            console.info('FAV_ASSET_CALLBACK 004_09 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }

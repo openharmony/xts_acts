@@ -753,7 +753,6 @@ describe('ACTS_WifiTest', function() {
             "staticIp": {"ipAddress": 1284752956,"gateway": 1284752936},
         };
         var result1 = wifi.connectToDevice(wifiDeviceConfigIp);
-        await sleep(2000);
         console.log("[wifi_test] wifi connectToDevice result: " + result1);
         expect(result1).assertTrue();
         console.info("[wifi_test] check isconnected wifi");

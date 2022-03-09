@@ -17,12 +17,13 @@ import events_emitter from '@ohos.emitter'
 @Entry
 @Component
 struct TextExample {
-  @State fontSize: number = 9
+  @State fontSize: number = 9;
+  @State fontColor: string = "0xCCCCCC";
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween }) {
       Text('lineHeight')
         .fontSize(this.fontSize)
-        .fontColor(0xCCCCCC)
+        .fontColor(this.fontColor)
         .key('text')
       Image($rawfile('test.png'))
         .key('image')
@@ -39,6 +40,12 @@ struct TextExample {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
+
+    var stateChangeEventOne = {
+      eventId: 198,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventOne, this.stateChangCallBack)
   }
 
   private stateChangCallBack = (eventData) => {
@@ -46,6 +53,9 @@ struct TextExample {
       console.info("text page state change called:" + JSON.stringify(eventData));
       if (eventData.data.fontSize != null) {
         this.fontSize = parseInt(eventData.data.fontSize);
+      }
+      if (eventData.data.fontColor != null) {
+        this.fontColor = eventData.data.fontColor;
       }
     }
   }

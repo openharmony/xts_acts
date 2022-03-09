@@ -31,7 +31,7 @@ describe('VideoDecoderFuncCallbackTest', function () {
     let surfaceID = '';
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
-    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.videodecoder/shared/';
+    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/shared/';
     let ES_FRAME_SIZE = [];
     const H264_FRAME_SIZE_240 = 
     [ 2106, 11465, 321, 72, 472, 68, 76, 79, 509, 90, 677, 88, 956, 99, 347, 77, 452, 681, 81, 1263, 94, 106, 97,
@@ -65,13 +65,6 @@ describe('VideoDecoderFuncCallbackTest', function () {
       295, 213, 170, 3568, 305, 198, 166, 3641, 297, 172, 148, 3608, 301, 200, 159, 3693, 322, 209, 166, 3453,
       318, 206, 162, 3696, 341, 200, 176, 3386, 320, 192, 176, 3903, 373, 207, 187, 3305, 361, 200, 202, 3110,
       367, 220, 197, 2357, 332, 196, 201, 1827, 377, 187, 199, 860, 472, 173, 223, 238];
-    const H264_FRAME_SIZE_30FPS_1080 =
-    [ 3491, 115184, 9423, 1046, 19038, 2059, 2306, 28773, 4815, 1670, 31464, 6322, 2969, 3518, 38279, 8419, 4463,
-      4554, 35457, 7848, 3870, 4235, 32523, 7606, 3992, 4132, 58148, 10144, 7625, 6051, 38774, 8929, 5309, 5784,
-      45250, 8696, 5511, 5224, 36732, 8221, 4885, 5103, 40075, 9799, 5259, 5373, 39394, 10406, 5016, 5572, 60935,
-      13292, 6469, 7040, 45344, 12370, 5825, 6712, 47052, 12502, 6800, 7453, 52653, 14088, 7257, 8931, 46638, 13277,
-      7612, 8663, 44022, 13672, 7763, 7784, 51638, 14118, 8112, 6458, 41013, 12910, 6759, 6974, 38409, 12813, 6785,
-      6934, 33390, 12910, 6825, 6954, 21092, 13599, 6968, 7937];
     const H263_FRAME_SIZE =
     [ 96618, 3515, 4132, 4336, 4646, 3497, 4430, 5437, 7560, 4613, 4876, 4734, 53617, 4079, 4507, 5222, 6244,
       5843, 6601, 6622, 6751, 6539, 7666, 7706, 53977, 7311, 12906, 10308, 26791, 15983, 34794, 22110, 37165,
@@ -336,50 +329,19 @@ describe('VideoDecoderFuncCallbackTest', function () {
         * @tc.level     : Level0
     */ 
     it('SUB_MEDIA_VIDEO_SOFTWARE_DECODER_H264_CALLBACK_0100', 0, async function (done) {
-        ES_FRAME_SIZE = H264_FRAME_SIZE_30FPS_1080;
+        ES_FRAME_SIZE = H264_FRAME_SIZE_240;
         isCodecData = true;
-        let srcPath = BASIC_PATH + 'out_1920_1080_30fps_3s.h264';
+        let srcPath = BASIC_PATH + 'out_320_240_10s.h264';
         let mediaDescription = {
             'track_type': 1,
             'codec_mime': 'video/avc',
-            'width': 1920,
-            'height': 1080,
-            'pixel_format': 3,
-            'frame_rate': 30.00,
-            'max_input_size': 150000,
-        }
-        media.createVideoDecoderByName('avdec_h264', (err, processor) => {
-            expect(err).assertUndefined();
-            console.info('in case : createVideoDecoderByName success');
-            videoDecodeProcessor = processor;
-            eventEmitter.emit('configure', mediaDescription, srcPath,
-            function() {
-                eventEmitter.emit('stop', done);
-            }, done);
-        });
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_DECODER_H263_CALLBACK_0100
-        * @tc.name      : 001.basic Video decode function
-        * @tc.desc      : start-> EOS -> stop -> reset
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */ 
-    it('SUB_MEDIA_VIDEO_SOFTWARE_DECODER_H263_CALLBACK_0100', 0, async function (done) {
-        ES_FRAME_SIZE = H263_FRAME_SIZE;
-        let srcPath = BASIC_PATH + 'h263_1408_1152.es';
-        let mediaDescription = {
-            'track_type': 1,
-            'codec_mime': 'video/h263',
-            'width': 1408,
-            'height': 1152,
+            'width': 320,
+            'height': 240,
             'pixel_format': 3,
             'frame_rate': 60.00,
             'max_input_size': 150000,
         }
-        media.createVideoDecoderByName('avdec_h263', (err, processor) => {
+        media.createVideoDecoderByName('avdec_h264', (err, processor) => {
             expect(err).assertUndefined();
             console.info('in case : createVideoDecoderByName success');
             videoDecodeProcessor = processor;
@@ -461,14 +423,14 @@ describe('VideoDecoderFuncCallbackTest', function () {
         * @tc.level     : Level0
     */ 
     it('SUB_MEDIA_VIDEO_SOFTWARE_DECODER_FUNCTION_CALLBACK_01_0600', 0, async function (done) {
-        ES_FRAME_SIZE = H264_FRAME_SIZE_30FPS_1080;
+        ES_FRAME_SIZE = H264_FRAME_SIZE_240;
         isCodecData = true;
-        let srcPath = BASIC_PATH + 'out_1920_1080_30fps_3s.h264';
+        let srcPath = BASIC_PATH + 'out_320_240_10s.h264';
         let mediaDescription = {
             'track_type': 1,
             'codec_mime': 'video/avc',
-            'width': 1920,
-            'height': 1080,
+            'width': 320,
+            'height': 240,
             'pixel_format': 3,
             'frame_rate': 60.00,
             'max_input_size': 150000,
@@ -523,16 +485,16 @@ describe('VideoDecoderFuncCallbackTest', function () {
         * @tc.level     : Level0
     */ 
     it('SUB_MEDIA_VIDEO_SOFTWARE_DECODER_FUNCTION_CALLBACK_01_0700', 0, async function (done) {
-        ES_FRAME_SIZE = H264_FRAME_SIZE_30FPS_1080;
+        ES_FRAME_SIZE = H264_FRAME_SIZE_240;
         isCodecData = true;
-        let srcPath = BASIC_PATH + 'out_1920_1080_30fps_3s.h264';
+        let srcPath = BASIC_PATH + 'out_320_240_10s.h264';
         let mediaDescription = {
             'track_type': 1,
             'codec_mime': 'video/avc',
-            'width': 1920,
-            'height': 1080,
+            'width': 320,
+            'height': 240,
             'pixel_format': 3,
-            'frame_rate': 30.00,
+            'frame_rate': 60.00,
             'max_input_size': 150000,
         }
         eventEmitter.on('stop_for_callback_01_0700', (done) => {

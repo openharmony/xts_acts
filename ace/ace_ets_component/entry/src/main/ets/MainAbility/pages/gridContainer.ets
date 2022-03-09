@@ -98,6 +98,7 @@ struct GridContainerExample {
               md: { span: 2, offset: 10 },
               lg: { span: 6, offset: 6 }
             })
+
             .height(50)
             .backgroundColor(0x00BFFF)
             .textAlign(TextAlign.Center)

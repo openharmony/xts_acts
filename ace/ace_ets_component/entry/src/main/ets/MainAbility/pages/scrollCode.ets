@@ -18,7 +18,7 @@ import events_emitter from '@ohos.emitter';
 @Entry
 @Component
 struct scrollCode {
-  @State scrollable: ScrollDirection = ScrollDirection.Vertical;
+  @State scrollable: ScrollDirection = ScrollDirection.None;
   @State scrollBar: BarState = BarState.On;
   @State scrollBarColor: Color = "#FF0000FF";
   @State scrollBarWidth: number = 30;
@@ -120,22 +120,37 @@ struct scrollCode {
       .onScrollEnd(() => {
         console.info('Scroll Stop')
       })
-
       Button('scroll 100')
         .onClick(() => {
           this.scroller.scrollTo({ xOffset: 0, yOffset: this.scroller.currentOffset().yOffset + 100 })
-        })
-        .margin({ top: 10, left: 20 })
+        }).margin({ top: 170, left: 20 })
       Button('back top')
         .onClick(() => {
           this.scroller.scrollEdge(Edge.Top)
         })
-        .margin({ top: 60, left: 20 })
-      Button('next page')
-        .onClick(() => {
+        .margin({ top: 120, left: 20 })
+      Button('next page').backgroundColor(0x2788D9).width(200).height(100).fontSize(20)
+        .onClick((event: ClickEvent) => {
+          this.onClickValue = true;
+          try {
+            var backData = {
+              data: {
+                "scrollToIndex": 10,
+                "ACTION": this.onClickValue,
+                "event": JSON.stringify(event)
+              }
+            }
+            var backEvent = {
+              eventId: 30,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("click to emit action state")
+            events_emitter.emit(backEvent, backData)
+          } catch (err) {
+            console.info("click action state err: " + JSON.stringify(err.message))
+          }
           this.scroller.scrollPage({ next: true })
-        })
-        .margin({ top: 110, left: 20 })
+        }).key('button').margin({ top: 10, left: 20 })
     }.width('100%').height('100%').backgroundColor(0xDCDCDC)
   }
 }

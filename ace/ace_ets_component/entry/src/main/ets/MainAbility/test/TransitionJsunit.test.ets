@@ -79,5 +79,57 @@ export default function transitionJsunit() {
       console.info('transitionTest_0200 END');
       done();
     });
+
+    it('transitionTest_0300', 0, async function (done) {
+      console.info('transitionTest_0300 START');
+      try {
+        let eventData = {
+          data: {
+            "opacity": 2,
+          }
+        }
+        let indexEvent = {
+          eventId: 112,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("transitionTest_0300 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("transitionTest_0300 change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJsonNew = getInspectorByKey('button');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("transitionTest_0300 component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.opacity).assertEqual(2);
+      console.info('transitionTest_0300 END');
+      done();
+    });
+
+    it('transitionTest_0400', 0, async function (done) {
+      console.info('transitionTest_0400 START');
+      try {
+        let eventData = {
+          data: {
+            "opacity": 'a',
+          }
+        }
+        let indexEvent = {
+          eventId: 112,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("transitionTest_0400 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("transitionTest_0400 change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJsonNew = getInspectorByKey('button');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("transitionTest_0400 component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.opacity).assertEqual(null);
+      console.info('transitionTest_0400 END');
+      done();
+    });
   })
 }

@@ -1053,7 +1053,7 @@ describe('Image', function () {
             console.info('TC_25-1 success');
             done();
         })
-        pixelmap.getBytesNumberPerRow( num => {
+        pixelmap.getBytesNumberPerRow().then(num => {
             console.info('TC_025-1 num is ' + num);
             expect(num == expectNum).assertTrue();
             done();
@@ -1086,7 +1086,7 @@ describe('Image', function () {
             console.info('TC_026-1 success');
             done();
         })
-        pixelmap.getPixelBytesNumber(num => {
+        pixelmap.getPixelBytesNumber().then(num => {
             console.info('TC_026-1 num is ' + num);
             expect(num == expectNum).assertTrue();
             done();
@@ -1112,22 +1112,22 @@ describe('Image', function () {
     it('TC_027', 0, async function (done) {
         const color = new ArrayBuffer(96);
         let opts = { alphaType: 0, editable: true, pixelFormat: 3, scaleMode: 1, size: { height: 4, width: 6 } }
-        image.createPixelMap(color, opts)
-        .then( pixelmap => {
-            if (pixelmap == null) {
-                 console.info('TC_027 createPixelMap failed');
-                expect(false).assertTrue()
-                done();
-            }
-            pixelmap.release().then(() => {
-                console.info('TC_027 success');
-                expect(true).assertTrue();
+        image.createPixelMap(color, opts).then(pixelmap => {
+                if (pixelmap == null) {
+                    console.info('TC_027 createPixelMap failed');
+                    expect(false).assertTrue()
+                    done();
+                }
+                pixelmap.release().then(() => {
+                    console.info('TC_027 success');
+                    expect(true).assertTrue();
+                    done();
+                })
+            .catch(error => {
+                console.log('TC_027 error: ' + error);
+                expect().assertFail();
                 done();
             })
-        }).catch(error => {
-            console.log('TC_027 error: ' + error);
-            expect().assertFail();
-            done();
         })
     })
 
@@ -1146,20 +1146,17 @@ describe('Image', function () {
         const color = new ArrayBuffer(96);
         let opts = { alphaType: 0, editable: true, pixelFormat: 3, scaleMode: 1, size: { height: 4, width: 6 } }
         image.createPixelMap(color, opts, pixelmap => {
-            expect(pixelmap !== null).assertTrue();
-            console.info('TC_026-1 success');
-            done();
-        })
-        pixelmap.release(()=>{
-            expect(true).assertTrue();
-            console.info('TC_027-1 success');
-            done();
-        })    
-        .catch(error => {
-            console.log('TC_027-1 error: ' + error);
-            expect().assertFail();
-            done();
-        })
+            if (pixelmap == null) {
+                console.info('TC_027 createPixelMap failed');
+                expect(false).assertTrue()
+                done();
+            }
+            pixelmap.release(()=>{
+                expect(true).assertTrue();
+                console.log('TC_027-1 success');
+                done();
+            })    
+        })   
     })
 
     /**
@@ -1465,8 +1462,8 @@ describe('Image', function () {
                 console.info('TC_044 release');
                 expect(true).assertTrue();
                 done();
-            }).catch(()=>{
-                console.log('TC_044 error: ' + error);
+            }).catch(error => {
+                console.info('TC_044 release');
                 expect(false).assertTrue();
                 done();
             })
@@ -2519,7 +2516,7 @@ describe('Image', function () {
             } else {
                 done();
             }
-            done();  
+            done();
         } catch (error) {
             console.info('TC_053 updateData failed ' + error);
         }    
@@ -4565,9 +4562,9 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            expect(imageSourceApi.supportedFormats !=null).assertTrue();
+            expect(imageSourceApi.supportedFormats != null).assertTrue();
             console.info(imageSourceApi.supportedFormats); 
-            console.info('TC_164 success ');
+            console.info('TC_164 success');
             done();
         }
     })
@@ -4588,9 +4585,9 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            expect(imagePackerApi.supportedFormats !=null).assertTrue();
+            expect(imagePackerApi.supportedFormats != null).assertTrue();
             console.info(imagePackerApi.supportedFormats); 
-            console.info('TC_166 success ');
+            console.info('TC_166 success');
             done();
         }
     })
@@ -4624,4 +4621,1634 @@ describe('Image', function () {
             done();
         })
     })   
+
+    /**
+     * @tc.number    : TC_168
+     * @tc.name      : isEditable
+     * @tc.desc      : 1.create pixelmap
+     *                 2.call isEditable 
+     *                 3.return true
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_168', 0, async function (done) {
+        const Color = new ArrayBuffer(96);
+        let opts = { alphaType: 0, editable: true, pixelFormat: 3, scaleMode: 1, size: { height: 2, width: 3 } }
+        image.createPixelMap(Color, opts, pixelmap => {
+            if(pixelmap == null){
+                console.info('TC_168 create pixelmap failed');
+                expect(false).assertTrue();
+                done();  
+            }else {
+                expect(pixelmap.isEditable == true).assertTrue();
+                console.info('TC_168 success ');
+                done();
+            }
+        })   
+    })
+
+    /**
+     * @tc.number    : TC_171
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.set property
+     *                 3.call getImageProperty(BitsPerSample)
+     *                 4.The return value is not empty
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_171', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_171 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:0,defaultValue:'4'}
+            imageSourceApi.getImageProperty("BitsPerSample",property)
+            .then(data => {
+                console.info('TC_171 BitsPerSample' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+            .catch(error => {
+                console.log('TC_171 error: ' + error);
+                expect(false).assertFail();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_171-1
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.set property
+     *                 3.call getImageProperty(Orientation)
+     *                 4.The return value is not empty
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_171-1', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_171-1 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:0,defaultValue:'4'}
+            imageSourceApi.getImageProperty("Orientation",property)
+            .then(data => {
+                console.info('TC_171-1 Orientation' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+            .catch(error => {
+                console.log('TC_171-1 error: ' + error);
+                expect(false).assertFail();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_171-2
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.set property
+     *                 3.call getImageProperty(ImageLength)
+     *                 4.The return value is not empty
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_171-2', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_171-2 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:0,defaultValue:'10'}
+            imageSourceApi.getImageProperty("ImageLength",property)
+            .then(data => {
+                console.info('TC_171-2 ImageLength' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+            .catch(error => {
+                console.log('TC_171-2 error: ' + error);
+                expect(false).assertFail();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_171-3
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.set property
+     *                 3.call getImageProperty(ImageLength)
+     *                 4.The return value is not empty
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_171-3', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_171-3 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:0,defaultValue:'10'}
+            imageSourceApi.getImageProperty("ImageWidth",property)
+            .then(data => {
+                console.info('TC_171-3 ImageWidth' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+            .catch(error => {
+                console.log('TC_171-3 error: ' + error);
+                expect(false).assertFail();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_171-4
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.set property
+     *                 3.call getImageProperty(ImageLength)
+     *                 4.The return value is not empty
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_171-4', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_171-4 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:0,defaultValue:'10'}
+            imageSourceApi.getImageProperty("GPSLatitude",property)
+            .then(data => {
+                console.info('TC_171-4 GPSLatitude' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+            .catch(error => {
+                console.log('TC_171-4 error: ' + error);
+                expect(false).assertFail();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_171-5
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.set property
+     *                 3.call getImageProperty(ImageLength)
+     *                 4.The return value is not empty
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_171-5', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_171-5 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:0,defaultValue:'10'}
+            imageSourceApi.getImageProperty("GPSLongitude",property)
+            .then(data => {
+                console.info('TC_171-5 GPSLongitude' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+            .catch(error => {
+                console.log('TC_171-5 error: ' + error);
+                expect(false).assertFail();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_171-6
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.set property
+     *                 3.call getImageProperty(GPSLatitudeRef)
+     *                 4.The return value is not empty
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_171-6', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_171-6 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:0,defaultValue:'10'}
+            imageSourceApi.getImageProperty("GPSLatitudeRef",property)
+            .then(data => {
+                console.info('TC_171-6 GPSLatitudeRef' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+            .catch(error => {
+                console.log('TC_171-6 error: ' + error);
+                expect(false).assertFail();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_171-7
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.set property
+     *                 3.call getImageProperty(ImageLength)
+     *                 4.The return value is not empty
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_171-7', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_171-7 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:0,defaultValue:'10'}
+            imageSourceApi.getImageProperty("GPSLongitudeRef",property)
+            .then(data => {
+                console.info('TC_171-7 GPSLongitudeRef' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+            .catch(error => {
+                console.log('TC_171-7 error: ' + error);
+                expect(false).assertFail();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_171-8
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.set property
+     *                 3.call getImageProperty(ImageLength)
+     *                 4.The return value is not empty
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_171-8', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_171-8 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:0,defaultValue:'10'}
+            imageSourceApi.getImageProperty("DateTimeOriginal",property)
+            .then(data => {
+                console.info('TC_171-8 DateTimeOriginal' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+            .catch(error => {
+                console.log('TC_171-8 error: ' + error);
+                expect(false).assertFail();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_172
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call getImageProperty(BitsPerSample)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_172', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_172 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.getImageProperty("BitsPerSample",(error,data) => {
+                console.info('TC_172 BitsPerSample' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_172-1
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call getImageProperty(Orientation)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_172-1', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_172-1 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.getImageProperty("Orientation",(error,data) => {
+                console.info('TC_172-1 Orientation' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_172-2
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call getImageProperty(ImageLength)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_172-2', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_172-2 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.getImageProperty("ImageLength",(error,data) => {
+                console.info('TC_172-2 ImageLength' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_172-3
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call getImageProperty(ImageWidth)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_172-3', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_172-3 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.getImageProperty("ImageWidth",(error,data) => {
+                console.info('TC_172-3 ImageWidth' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_172-4
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call getImageProperty(GPSLatitude)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_172-4', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_172-4 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.getImageProperty("GPSLatitude",(error,data) => {
+                console.info('TC_172-4 GPSLatitude' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_172-5
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call getImageProperty(GPSLongitude)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_172-5', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_172-5 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.getImageProperty("GPSLongitude",(error,data) => {
+                console.info('TC_172-5 GPSLongitude' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_172-6
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call getImageProperty(GPSLatitudeRef)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_172-6', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_172-6 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.getImageProperty("GPSLatitudeRef",(error,data) => {
+                console.info('TC_172-6 GPSLatitudeRef' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_172-7
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call getImageProperty(GPSLongitudeRef)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_172-7', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_172-7 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.getImageProperty("GPSLongitudeRef",(error,data) => {
+                console.info('TC_172-7 GPSLongitudeRef' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_172-8
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call getImageProperty(DateTimeOriginal)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_172-8', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_172-8 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.getImageProperty("DateTimeOriginal",(error,data) => {
+                console.info('TC_172-8 DateTimeOriginal' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_173
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.set property
+     *                 3.call getImageProperty(BitsPerSample,property)
+     *                 4.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_173', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_173 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:0,defaultValue:'10'}
+            imageSourceApi.getImageProperty("BitsPerSample",property,(error,data) => {
+                console.info('TC_173 BitsPerSample' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_173-1
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.set property
+     *                 3.call getImageProperty(Orientation,property)
+     *                 4.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_173-1', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_173-1 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:0,defaultValue:'10'}
+            imageSourceApi.getImageProperty("Orientation",property,(error,data) => {
+                console.info('TC_173-1 Orientation' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_173-2
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.set property
+     *                 3.call getImageProperty(ImageLength,property)
+     *                 4.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_173-2', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_173-2 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:0,defaultValue:'10'}
+            imageSourceApi.getImageProperty("ImageLength",property,(error,data) => {
+                console.info('TC_173-2 ImageLength' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_173-3
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.set property
+     *                 3.call getImageProperty(ImageWidth,property)
+     *                 4.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_173-3', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_173-3 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:0,defaultValue:'10'}
+            imageSourceApi.getImageProperty("ImageWidth",property,(error,data) => {
+                console.info('TC_173-3 ImageWidth' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_173-4
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.set property
+     *                 3.call getImageProperty(GPSLatitude,property)
+     *                 4.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_173-4', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_173-4 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:0,defaultValue:'10'}
+            imageSourceApi.getImageProperty("GPSLatitude",property,(error,data) => {
+                console.info('TC_173-4 GPSLatitude' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_173-5
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.set property
+     *                 3.call getImageProperty(GPSLongitude,property)
+     *                 4.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_173-5', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_173-5 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:0,defaultValue:'10'}
+            imageSourceApi.getImageProperty("GPSLongitude",property,(error,data) => {
+                console.info('TC_173-5 GPSLongitude' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_173-6
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.set property
+     *                 3.call getImageProperty(GPSLatitudeRef,property)
+     *                 4.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_173-6', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_173-6 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:0,defaultValue:'10'}
+            imageSourceApi.getImageProperty("GPSLatitudeRef",property,(error,data) => {
+                console.info('TC_173-6 GPSLatitudeRef' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_173-7
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.set property
+     *                 3.call getImageProperty(GPSLongitudeRef,property)
+     *                 4.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_173-7', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_173-7 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:0,defaultValue:'10'}
+            imageSourceApi.getImageProperty("GPSLongitudeRef",property,(error,data) => {
+                console.info('TC_173-7 GPSLongitudeRef' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_173-8
+     * @tc.name      : getImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.set property
+     *                 3.call getImageProperty(DateTimeOriginal,property)
+     *                 4.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_173-8', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_173-8 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:0,defaultValue:'10'}
+            imageSourceApi.getImageProperty("DateTimeOrigina",property,(error,data) => {
+                console.info('TC_173-8 DateTimeOriginal' + data);
+                expect(data !== null).assertTrue();
+                expect(data !== undefined).assertTrue();
+                expect(data !== '').assertTrue();
+                done();
+            })
+        }
+    }) 
+
+    /**
+     * @tc.number    : TC_174
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_174', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_174 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            console.info('TC_174 start modifyImageProperty');
+            imageSourceApi.modifyImageProperty("BitsPerSample","4")
+            .then(() => {
+                console.info('TC_174 start ImageProperty');
+                imageSourceApi.getImageProperty("BitsPerSample").then((value) => {
+                    console.info('TC_174 BitsPerSample' + value);
+                    expect(value == '4').assertTrue();
+                    done();  
+                }).catch((err)=>{
+                    console.info(`TC_174 getimageproperty failed, err:${err}`);
+                    expect(false).assertTrue();
+                    done();
+                })
+            })
+        }
+    }) 
+
+    /**
+     * @tc.number    : TC_174-1
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_174-1', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_174-1 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.modifyImageProperty("Orientation","2")
+            .then(() => {
+                imageSourceApi.getImageProperty("Orientation").then((value) => {
+                    console.info('TC_174-1 Orientation' + value);
+                    expect(value == '2').assertTrue();
+                    done();
+                }).catch((err)=>{
+                    console.info(`TC_174-1 getimageproperty failed, err:${err}`);
+                    expect(false).assertTrue();
+                    done();
+                })
+            })
+        }
+    })  
+
+    /**
+     * @tc.number    : TC_174-2
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_174-2', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_174-2 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.modifyImageProperty("ImageLength","200")
+            .then(() => {
+                imageSourceApi.getImageProperty("ImageLength").then((value) => {
+                    console.info('TC_174-2 ImageLength' + value);
+                    expect(value == '200').assertTrue();
+                    done();
+                }).catch((err)=>{
+                    console.info(`TC_174-2 getimageproperty failed, err:${err}`);
+                    expect(false).assertTrue();
+                    done();
+                })
+            })
+        }
+    })  
+
+    /**
+     * @tc.number    : TC_174-3
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_174-3', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_174-3 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.modifyImageProperty("ImageWidth","200")
+            .then(() => {
+                imageSourceApi.getImageProperty("ImageWidth").then((value) => {
+                    console.info('TC_174-3 ImageWidth' + value);
+                    expect(value == '200').assertTrue();
+                    done();
+                }).catch((err)=>{
+                    console.info(`TC_174-3 getimageproperty failed, err:${err}`);
+                    expect(false).assertTrue();
+                    done();
+                })
+            })
+        }
+    })  
+
+    /**
+     * @tc.number    : TC_174-4
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_174-4', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_174-4 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.modifyImageProperty("GPSLatitude","57.88888")
+            .then(() => {
+                imageSourceApi.getImageProperty("GPSLatitude").then((value) => {
+                    console.info('TC_174-4 GPSLatitude' + value);
+                    expect(value == '57.88888').assertTrue();
+                    done();
+                }).catch((err)=>{
+                    console.info(`TC_174-4 getimageproperty failed, err:${err}`);
+                    expect(false).assertTrue();
+                    done();
+                })
+            })
+        }
+    })  
+
+    /**
+     * @tc.number    : TC_174-5
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_174-5', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_174-5 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.modifyImageProperty("GPSLongitude","205.3332")
+            .then(() => {
+                imageSourceApi.getImageProperty("GPSLongitude").then((value) => {
+                    console.info('TC_174-5 GPSLongitude' + value);
+                    expect(value == '205.3332').assertTrue();
+                    done();
+                }).catch((err)=>{
+                    console.info(`TC_174-5 getimageproperty failed, err:${err}`);
+                    expect(false).assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_174-6
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_174-6', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_174-6 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.modifyImageProperty("GPSLatitudeRef","N")
+            .then(() => {
+                imageSourceApi.getImageProperty("GPSLatitudeRef").then((value) => {
+                    console.info('TC_174-6 GPSLatitudeRef' + value);
+                    expect(value == 'N').assertTrue();
+                    done();
+                }).catch((err)=>{
+                    console.info(`TC_174-6 getimageproperty failed, err:${err}`);
+                    expect(false).assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_174-7
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_174-7', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_174-7 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.modifyImageProperty("GPSLatitudeRef","W")
+            .then(() => {
+                imageSourceApi.getImageProperty("GPSLatitudeRef").then((value) => {
+                    console.info('TC_174-7 GPSLatitudeRef' + value);
+                    expect(value == 'W').assertTrue();
+                    done();
+                }).catch((err)=>{
+                    console.info(`TC_174-7 getimageproperty failed, err:${err}`);
+                    expect(false).assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_174-8
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_174-8', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_174-8 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.modifyImageProperty("DateTimeOriginal","2022-09-09")
+            .then(() => {
+                imageSourceApi.getImageProperty("DateTimeOriginal").then((value) => {
+                    console.info('TC_174-8 DateTimeOriginal' + value);
+                    expect(value == '2022-09-09').assertTrue();
+                    done();
+                }).catch((err)=>{
+                    console.info(`TC_174-8 getimageproperty failed, err:${err}`);
+                    expect(false).assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_175
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_175', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_175 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.modifyImageProperty("BitsPerSample","4",() => {
+                imageSourceApi.getImageProperty("BitsPerSample",(error,value) => {
+                    console.info('TC_175 BitsPerSample' + value);
+                    expect(value == "4").assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_175-1
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_175-1', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_175-1 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.modifyImageProperty("Orientation","2",() => {
+                imageSourceApi.getImageProperty("Orientation",(error,value) => {
+                    console.info('TC_175-1 Orientation' + value);
+                    expect(value == "2").assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_175-2
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_175-2', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_175-2 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.modifyImageProperty("ImageLength","200",() => {
+                imageSourceApi.getImageProperty("ImageLength",(error,value) => {
+                    console.info('TC_175-2 ImageLength' + value);
+                    expect(value == "200").assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_175-3
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_175-3', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_175-3 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.modifyImageProperty("ImageWidth","200",() => {
+                imageSourceApi.getImageProperty("ImageWidth",(error,value) => {
+                    console.info('TC_175-3 ImageWidth' + value);
+                    expect(value == "200").assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_175-4
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_175-4', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_175-4 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.modifyImageProperty("GPSLatitude","57.88888",() => {
+                imageSourceApi.getImageProperty("GPSLatitude",(error,value) => {
+                    console.info('TC_175-4 GPSLatitude' + value);
+                    expect(value == "57.88888").assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_175-5
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_175-5', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_175-5 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.modifyImageProperty("GPSLongitude","205.3332",() => {
+                imageSourceApi.getImageProperty("GPSLongitude",(error,value) => {
+                    console.info('TC_175-5 GPSLongitude' + value);
+                    expect(value == "205.3332").assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_175-6
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_175-6', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_175-6 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.modifyImageProperty("GPSLatitudeRef","N",() => {
+                imageSourceApi.getImageProperty("GPSLatitudeRef",(error,value) => {
+                    console.info('TC_175-6 GPSLatitudeRef' + value);
+                    expect(value == "N").assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_175-7
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_175-7', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_175-7 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.modifyImageProperty("GPSLongitudeRef","W",() => {
+                imageSourceApi.getImageProperty("GPSLongitudeRef",(error,value) => {
+                    console.info('TC_175-7 GPSLongitudeRef' + value);
+                    expect(value == "W").assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_175-8
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_175-8', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_175-8 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.modifyImageProperty("DateTimeOriginal","2022-09-09",() => {
+                imageSourceApi.getImageProperty("DateTimeOriginal",(error,value) => {
+                    console.info('TC_175-8 DateTimeOriginal' + value);
+                    expect(value == "2022-09-09").assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_176
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value,options)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_176', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_176 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:1,defaultValue:'1'}
+            imageSourceApi.modifyImageProperty("BitsPerSample","4",property,() => {
+                imageSourceApi.getImageProperty("BitsPerSample",property,(error,value) => {
+                    console.info('TC_176 BitsPerSample' + value);
+                    expect(value == "4").assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_176-1
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value,options)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_176-1', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_176-1 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:1,defaultValue:'1'}
+            imageSourceApi.modifyImageProperty("Orientation","2",property,() => {
+                imageSourceApi.getImageProperty("Orientation",property,(error,value) => {
+                    console.info('TC_176-1 Orientation' + value);
+                    expect(value == "2").assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_176-2
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value,options)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_176-2', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_176-2 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:1,defaultValue:'1'}
+            imageSourceApi.modifyImageProperty("ImageLength","200",property,() => {
+                imageSourceApi.getImageProperty("ImageLength",property,(error,value) => {
+                    console.info('TC_176-2 ImageLength' + value);
+                    expect(value == "200").assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_176-3
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value,options)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_176-3', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_176-3 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:1,defaultValue:'1'}
+            imageSourceApi.modifyImageProperty("ImageWidth","200",property,() => {
+                imageSourceApi.getImageProperty("ImageWidth",property,(error,value) => {
+                    console.info('TC_176-3 ImageWidth' + value);
+                    expect(value == "200").assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_176-4
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value,options)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_176-4', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_176-4 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:1,defaultValue:'1'}
+            imageSourceApi.modifyImageProperty("GPSLatitude","57.88888",property,() => {
+                imageSourceApi.getImageProperty("GPSLatitude",property,(error,value) => {
+                    console.info('TC_176-4 GPSLatitude' + value);
+                    expect(value == "57.88888").assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_176-5
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value,options)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_176-5', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_176-5 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:1,defaultValue:'1'}
+            imageSourceApi.modifyImageProperty("GPSLongitude","205.3332",property,() => {
+                imageSourceApi.getImageProperty("GPSLongitude",property,(error,value) => {
+                    console.info('TC_176-5 GPSLongitude' + value);
+                    expect(value == "205.3332").assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_176-6
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value,options)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_176-6', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_176-6 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:1,defaultValue:'1'}
+            imageSourceApi.modifyImageProperty("GPSLatitudeRef","N",property,() => {
+                imageSourceApi.getImageProperty("GPSLatitudeRef",property,(error,value) => {
+                    console.info('TC_176-6 GPSLatitudeRef' + value);
+                    expect(value == "N").assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_176-7
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value,options)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_176-7', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_176-7 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:1,defaultValue:'1'}
+            imageSourceApi.modifyImageProperty("GPSLongitudeRef","W",property,() => {
+                imageSourceApi.getImageProperty("GPSLongitudeRef",property,(error,value) => {
+                    console.info('TC_176-7 GPSLongitudeRef' + value);
+                    expect(value == "W").assertTrue();
+                    done();
+                })
+            })
+        }
+    })
+
+    /**
+     * @tc.number    : TC_176-8
+     * @tc.name      : modifyImageProperty
+     * @tc.desc      : 1.create imagesource
+     *                 2.call modifyImageProperty(key,value,options)
+     *                 3.return null
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_176-8', 0, async function (done) {
+        const imageSourceApi = image.createImageSource('/data/local/tmp/test_exif.jpg');
+        if (imageSourceApi == null) {
+            console.info('TC_176-8 create image source failed');
+            expect(false).assertTrue();
+            done();
+        } else {
+            let property = {index:1,defaultValue:'1'}
+            imageSourceApi.modifyImageProperty("DateTimeOriginal","2022-09-09",property,() => {
+                imageSourceApi.getImageProperty("DateTimeOriginal",property,(error,value) => {
+                    console.info('TC_176-8 DateTimeOriginal' + value);
+                    expect(value == "2022-09-09").assertTrue();
+                    done();
+                })
+            })
+        }
+    })
 })

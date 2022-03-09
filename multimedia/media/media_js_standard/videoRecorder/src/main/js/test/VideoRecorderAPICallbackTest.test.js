@@ -44,6 +44,8 @@ describe('VideoRecorderAPICallbackTest', function () {
     let videoOutput;
     let surfaceID;
     let fdPath;
+    let fileAsset;
+    let fdNumber;
     let events = require('events');
     let eventEmitter = new events.EventEmitter();
 
@@ -130,8 +132,8 @@ describe('VideoRecorderAPICallbackTest', function () {
                 selectionArgs : [args],
             }
             let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
-            let fileAsset = await fetchFileResult.getAllObject();
-            let fdNumber = await fileAsset[0].open('Rw');
+            fileAsset = await fetchFileResult.getAllObject();
+            fdNumber = await fileAsset[0].open('Rw');
             fdPath = "fd://" + fdNumber.toString();
         }
     }

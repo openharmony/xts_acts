@@ -30,7 +30,7 @@ export default function badgeJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get badge state pages: " + JSON.stringify(pages));
-        if (!("appear" == pages.name)) {
+        if (!("badge" == pages.name)) {
           console.info("get badge state pages.name: " + JSON.stringify(pages.name));
           result = await router.push(options);
           await Utils.sleep(2000);
@@ -165,6 +165,82 @@ export default function badgeJsunit() {
       let style = JSON.parse(objNew.$attrs.style);
       console.info("[testBadge05] component style is: " + JSON.stringify(style));
       expect(style.fontSize).assertEqual('121212121.000000fp');
+      done();
+    });
+
+    it('testBadge06', 0, async function (done) {
+      console.info('[testBadge06] START');
+      await Utils.sleep(1000);
+      let strJson = getInspectorByKey('badge2');
+      let obj = JSON.parse(strJson);
+      console.info("[testBadge06] component obj is: " + JSON.stringify(obj));
+      expect(obj.$type).assertEqual('Badge');
+      expect(obj.$attrs.value).assertEqual('new');
+      done();
+    });
+
+    it('testBadge07', 0, async function (done) {
+      console.info('[testBadge07] START');
+      await Utils.sleep(1000);
+      let strJson = getInspectorByKey('badge2');
+      let obj = JSON.parse(strJson);
+      console.info("[testBadge07] component obj is: " + JSON.stringify(obj));
+      let style = JSON.parse(obj.$attrs.style);
+      expect(obj.$type).assertEqual('Badge');
+      expect(style.color).assertEqual('#FFFF0000');
+      done();
+    });
+
+    it('testBadge08', 0, async function (done) {
+      console.info('[testBadge08] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "colorValue": Color.Blue,
+          }
+        }
+        var innerEvent = {
+          eventId: 70,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testBadge08] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testBadge08] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJsonNew = getInspectorByKey('badge2');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("[testBadge08] component objNew is: " + JSON.stringify(objNew));
+      let style = JSON.parse(objNew.$attrs.style);
+      expect(style.color).assertEqual('#FF0000FF');
+      done();
+    });
+
+    it('testBadge09', 0, async function (done) {
+      console.info('[testBadge09] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "message": "test",
+          }
+        }
+        var innerEvent = {
+          eventId: 70,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testBadge09] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testBadge09] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJsonNew = getInspectorByKey('badge2');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("[testBadge09] component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.value).assertEqual('test');
       done();
     });
 

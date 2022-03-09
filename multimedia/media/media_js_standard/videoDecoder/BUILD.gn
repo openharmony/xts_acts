@@ -20,7 +20,7 @@ ohos_js_hap_suite("video_decoder_js_hap") {
     ":video_decoder_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "VideoDecoderJsTest"
+  hap_name = "ActsVideoDecoderJsTest"
 }
 ohos_js_assets("video_decoder_js_assets") {
   source_dir = "./src/main/js/default"
