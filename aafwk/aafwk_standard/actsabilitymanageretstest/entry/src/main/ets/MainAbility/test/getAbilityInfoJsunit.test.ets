@@ -291,13 +291,39 @@ export default function getHapModuleInfoJsunit() {
       expect(info.icon).assertEqual("$media:icon");
       expect(info.process).assertEqual("");
       expect(info.supportedModes).assertEqual(0);
-      expect(info.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/" +
-      "com.ohos.acecollaboration/com.ohos.acecollaboration");
-      expect(info.moduleInfos[0].moduleName).assertEqual("entry");
-      expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-      "com.ohos.acecollaboration/com.ohos.acecollaboration");
       expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/" +
       "com.ohos.acecollaboration/com.ohos.acecollaboration");
+      if (info.moduleSourceDirs.length == 1){
+        expect(info.moduleInfos[0].moduleName).assertEqual("entry");
+        expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
+        "com.ohos.acecollaboration/com.ohos.acecollaboration");
+      }else if(info.moduleSourceDirs.length == 2) {
+        if (info.moduleInfos[0].moduleName == "myapplication1") {
+          expect(info.moduleInfos[0].moduleName).assertEqual("myapplication1");
+          expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
+          "com.ohos.acecollaboration/com.example.myapplication1");
+          expect(info.moduleInfos[1].moduleName).assertEqual("entry");
+          expect(info.moduleInfos[1].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
+          "com.ohos.acecollaboration/com.ohos.acecollaboration");
+        }else{
+          expect(info.moduleInfos[0].moduleName).assertEqual("myapplication2");
+          expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
+          "com.ohos.acecollaboration/com.example.myapplication2");
+          expect(info.moduleInfos[1].moduleName).assertEqual("entry");
+          expect(info.moduleInfos[1].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
+          "com.ohos.acecollaboration/com.ohos.acecollaboration");
+        }
+      }else {
+        expect(info.moduleInfos[0].moduleName).assertEqual("myapplication1");
+        expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
+        "com.ohos.acecollaboration/com.example.myapplication1");
+        expect(info.moduleInfos[1].moduleName).assertEqual("myapplication2");
+        expect(info.moduleInfos[1].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
+        "com.ohos.acecollaboration/com.example.myapplication2");
+        expect(info.moduleInfos[2].moduleName).assertEqual("entry");
+        expect(info.moduleInfos[2].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
+        "com.ohos.acecollaboration/com.ohos.acecollaboration");
+      }
 
       console.log(msg + "---checkApplicationInfo End--- ");
 
