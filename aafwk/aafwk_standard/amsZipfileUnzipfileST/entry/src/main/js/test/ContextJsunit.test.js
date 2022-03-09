@@ -18,8 +18,8 @@ import fileio from '@ohos.fileio'
 import file from '@system.file'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-
 describe('ActsZlibTest', function () {
+
 /*
 * @tc.number: ACTS_ZipFile_0100
 * @tc.name: zipFile
