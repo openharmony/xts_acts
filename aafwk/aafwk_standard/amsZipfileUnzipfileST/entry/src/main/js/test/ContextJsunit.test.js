@@ -235,7 +235,7 @@ it('ACTS_ZipFile_0600', 0, async function (done) {
     });
     try {
         var options = {};
-        options.flush = zlib.FlushType.FLUSH_TYPE_NO_FLUSH,
+        options.flush = zlib.FlushType.FLUSH_TYPE_NO_FLUSH;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -300,7 +300,7 @@ it('ACTS_ZipFile_0700', 0, async function (done) {
     });
     try {
         var options = {};
-        options.flush = zlib.FlushType.FLUSH_TYPE_SYNC_FLUSH,
+        options.flush = zlib.FlushType.FLUSH_TYPE_SYNC_FLUSH;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -365,7 +365,7 @@ it('ACTS_ZipFile_0800', 0, async function (done) {
     });
     try {
         var options = {};
-        options.flush = zlib.FlushType.FLUSH_TYPE_FULL_FLUSH,
+        options.flush = zlib.FlushType.FLUSH_TYPE_FULL_FLUSH;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -430,7 +430,7 @@ it('ACTS_ZipFile_0900', 0, async function (done) {
     });
     try {
         var options = {};
-        options.flush = zlib.FlushType.FLUSH_TYPE_FINISH,
+        options.flush = zlib.FlushType.FLUSH_TYPE_FINISH;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -495,7 +495,7 @@ it('ACTS_ZipFile_1000', 0, async function (done) {
     });
     try {
         var options = {};
-        options.flush = zlib.FlushType.FLUSH_TYPE_BLOCK,
+        options.flush = zlib.FlushType.FLUSH_TYPE_BLOCK;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -560,7 +560,7 @@ it('ACTS_ZipFile_1100', 0, async function (done) {
     });
     try {
         var options = {};
-        options.flush = zlib.FlushType.FLUSH_TYPE_TREES,
+        options.flush = zlib.FlushType.FLUSH_TYPE_TREES;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -625,7 +625,7 @@ it('ACTS_ZipFile_1200', 0, async function (done) {
     });
     try {
         var options = {};
-        options.flush = zlib.FlushType.FLUSH_TYPE_NO_FLUSH,
+        options.flush = zlib.FlushType.FLUSH_TYPE_NO_FLUSH;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -690,7 +690,7 @@ it('ACTS_ZipFile_1300', 0, async function (done) {
     });
     try {
         var options = {};
-        options.flush = zlib.FlushType.FLUSH_TYPE_PARTIAL_FLUSH,
+        options.flush = zlib.FlushType.FLUSH_TYPE_PARTIAL_FLUSH;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -755,7 +755,7 @@ it('ACTS_ZipFile_1400', 0, async function (done) {
     });
     try {
         var options = {};
-        options.flush = zlib.FlushType.FLUSH_TYPE_SYNC_FLUSH,
+        options.flush = zlib.FlushType.FLUSH_TYPE_SYNC_FLUSH;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -820,7 +820,7 @@ it('ACTS_ZipFile_1500', 0, async function (done) {
     });
     try {
         var options = {};
-        options.flush = zlib.FlushType.FLUSH_TYPE_FULL_FLUSH,
+        options.flush = zlib.FlushType.FLUSH_TYPE_FULL_FLUSH;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -885,7 +885,7 @@ it('ACTS_ZipFile_1600', 0, async function (done) {
     });
     try {
         var options = {};
-        options.flush = zlib.FlushType.FLUSH_TYPE_FINISH,
+        options.flush = zlib.FlushType.FLUSH_TYPE_FINISH;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -950,7 +950,7 @@ it('ACTS_ZipFile_1700', 0, async function (done) {
     });
     try {
         var options = {};
-        options.flush = zlib.FlushType.FLUSH_TYPE_BLOCK,
+        options.flush = zlib.FlushType.FLUSH_TYPE_BLOCK;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -1015,7 +1015,7 @@ it('ACTS_ZipFile_1800', 0, async function (done) {
     });
     try {
         var options = {};
-        options.flush = zlib.FlushType.FLUSH_TYPE_TREES,
+        options.flush = zlib.FlushType.FLUSH_TYPE_TREES;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -1279,7 +1279,7 @@ it('ACTS_ZipFile_2200', 0, async function (done) {
     });
     try {
         var options = {};
-        options.level = zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION,
+        options.level = zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -1344,7 +1344,7 @@ it('ACTS_ZipFile_2300', 0, async function (done) {
     });
     try {
         var options = {};
-        options.level = zlib.CompressLevel.COMPRESS_LEVEL_BEST_SPEED,
+        options.level = zlib.CompressLevel.COMPRESS_LEVEL_BEST_SPEED;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -1409,7 +1409,7 @@ it('ACTS_ZipFile_2400', 0, async function (done) {
     });
     try {
         var options = {};
-        options.level = zlib.CompressLevel.COMPRESS_LEVEL_BEST_COMPRESSION,
+        options.level = zlib.CompressLevel.COMPRESS_LEVEL_BEST_COMPRESSION;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -1474,7 +1474,7 @@ it('ACTS_ZipFile_2500', 0, async function (done) {
     });
     try {
         var options = {};
-        options.level = zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION,
+        options.level = zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -1539,7 +1539,7 @@ it('ACTS_ZipFile_2600', 0, async function (done) {
     });
     try {
         var options = {};
-        options.memLevel = zlib.MemLevel.MEM_LEVEL_MIN_MEMLEVEL,
+        options.memLevel = zlib.MemLevel.MEM_LEVEL_MIN_MEMLEVEL;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -1604,7 +1604,7 @@ it('ACTS_ZipFile_2700', 0, async function (done) {
     });
     try {
         var options = {};
-        options.memLevel = zlib.MemLevel.MEM_LEVEL_MAX_MEMLEVEL,
+        options.memLevel = zlib.MemLevel.MEM_LEVEL_MAX_MEMLEVEL;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -1669,7 +1669,7 @@ it('ACTS_ZipFile_2800', 0, async function (done) {
     });
     try {
         var options = {};
-        options.memLevel = zlib.MemLevel.MEM_LEVEL_DEFAULT_MEMLEVEL,
+        options.memLevel = zlib.MemLevel.MEM_LEVEL_DEFAULT_MEMLEVEL;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -1734,7 +1734,7 @@ it('ACTS_ZipFile_2900', 0, async function (done) {
     });
     try {
         var options = {};
-        options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_DEFAULT_STRATEGY,
+        options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_DEFAULT_STRATEGY;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -1799,7 +1799,7 @@ it('ACTS_ZipFile_3000', 0, async function (done) {
     });
     try {
         var options = {};
-        options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_FILTERED,
+        options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_FILTERED;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -1864,7 +1864,7 @@ it('ACTS_ZipFile_3100', 0, async function (done) {
     });
     try {
         var options = {};
-        options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_HUFFMAN_ONLY,
+        options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_HUFFMAN_ONLY;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -1929,7 +1929,7 @@ it('ACTS_ZipFile_3200', 0, async function (done) {
     });
     try {
         var options = {};
-        options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_RLE,
+        options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_RLE;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -1994,7 +1994,7 @@ it('ACTS_ZipFile_3300', 0, async function (done) {
     });
     try {
         var options = {};
-        options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_FILTERED,
+        options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_FILTERED;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -2147,8 +2147,9 @@ it('ACTS_ZipFile_3700', 0, async function (done) {
     var src = dir + "/ACTS_ZipFile_6600.zip";
     let infos = path + dir;
     let unzipresultfilefirst = "/data/accounts/account_0/appdata";
-    let unzipresultfilersecond=unzipresultfilefirst+"/com.example.amsZipfileUnzipfileST/com.example.amsZipfileUnzipfileST";
-    let unzipresult=unzipresultfilersecond+"/com.example.amsZipfileUnzipfileST.MainAbility/files/ACTS_ZipFile_9200";
+    let unzipresultfilersecond = unzipresultfilefirst + "/com.example.amsZipfileUnzipfileST";
+    let unzipresultfilerThrid = unzipresultfilersecond+"/com.example.amsZipfileUnzipfileST";
+    let unzipresult=unzipresultfilerThrid+"/com.example.amsZipfileUnzipfileST.MainAbility/files/ACTS_ZipFile_9200";
     let unzipdirfirst = "/data/accounts/account_0/appdata";
     let unzipdirsecond = unzipdirfirst + "/com.example.amsZipfileUnzipfileST/com.example.amsZipfileUnzipfileST"
     let unzipdir =unzipdirsecond + "/com.example.amsZipfileUnzipfileST.MainAbility/files/ACTS_ZipFile_3700";
@@ -2398,7 +2399,7 @@ it('ACTS_ZipFile_4100', 0, async function (done) {
     });
     try {
         var options = {};
-        options.flush = zlib.FlushType.FLUSH_TYPE_NO_FLUSH,
+        options.flush = zlib.FlushType.FLUSH_TYPE_NO_FLUSH;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -2519,7 +2520,7 @@ it('ACTS_ZipFile_4400', 0, async function (done) {
         console.info("ACTS_ZipFile_4400 write data to file failed with error:" + err);
     });
     var options = {};
-    options.flush = zlib.FlushType.FLUSH_TYPE_PARTIAL_FLUSH,
+    options.flush = zlib.FlushType.FLUSH_TYPE_PARTIAL_FLUSH;
     zlib.unzipFile(path, zipDest, options,
         (err, data) => {
             console.log("FWK_ZipFile_4400 data: " + data);
@@ -2556,7 +2557,7 @@ it('ACTS_ZipFile_4500', 0, async function (done) {
         console.info("ACTS_ZipFile_4500 write data to file failed with error:" + err);
     });
     var options = {};
-    options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_FILTERED,
+    options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_FILTERED;
     await zlib.zipFile(path, zipDest, options,
         (err, data) => {
             var zipStat = fileio.statSync(zipDest);
@@ -2652,7 +2653,7 @@ it('ACTS_ZipFile_4800', 0, async function (done) {
         console.info("ACTS_ZipFile_4800 write data to file failed with error:" + err);
     });
     var options = {};
-    options.flush = zlib.FlushType.FLUSH_TYPE_PARTIAL_FLUSH,
+    options.flush = zlib.FlushType.FLUSH_TYPE_PARTIAL_FLUSH;
     zlib.unzipFile(path, zipDest, options,
         (err, data) => {
             console.log("ACTS_ZipFile_4800 data: " + data);
@@ -2689,7 +2690,7 @@ it('ACTS_ZipFile_4900', 0, async function (done) {
         console.info("ACTS_ZipFile_4900 write data to file failed with error:" + err);
     });
     var options = {};
-    options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_FILTERED,
+    options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_FILTERED;
     await zlib.zipFile(path, zipDest, options,
         (err, data) => {
             var zipStat = fileio.statSync(zipDest);
