@@ -82,5 +82,31 @@ export default function enableJsunit() {
       console.info('testZIndex02 END');
       done();
     });
+
+    it('testZIndex03', 0, async function (done) {
+      console.info('[testZIndex03] START');
+      try {
+        var eventData = {
+          data: {
+            "zIndex": -5
+          }
+        }
+        var innerEvent = {
+          eventId: 84,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testZIndex03] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testZIndex03] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('zIndex');
+      let obj = JSON.parse(strJson);
+      console.info("[testZIndex03] obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.zIndex).assertEqual(-5);
+      console.info('testZIndex03 END');
+      done();
+    });
   })
 }
