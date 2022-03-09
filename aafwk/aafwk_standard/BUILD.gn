@@ -21,6 +21,7 @@ group("aafwk_standard") {
       "abilitymanager:actsabilitymanagertest",
       "actsabilitydistributetest:ActsAbilityDistributeTest",
       "actsabilitydistributetest:ActsAbilityDistributeTest",
+      "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
       "amsabilitymanager/amsMissionSnapshotTest:ActsAmsMissionSnapshotTest",
       "amsabilitymanager/amsMissionSnapshotTestSingleton:ActsAmsMissionSnapshotTestSingleton",
       "amsabilitymanager/amsMissionSnapshotTestSingletonS:ActsAmsMissionSnapshotTestSingletonS",
