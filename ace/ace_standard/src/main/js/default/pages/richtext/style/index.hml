@@ -16,7 +16,7 @@
 <div class="container">
     <div class="style-container">
         <text class="title">
-            input通用样式
+            richtext通用样式
         </text>
 
         <text class="sub-title">
@@ -47,7 +47,7 @@
     </div>
     <div class="specific-container">
         <text class="title">
-            input特有样式
+            richtext特有样式
         </text>
     </div>
 </div>
