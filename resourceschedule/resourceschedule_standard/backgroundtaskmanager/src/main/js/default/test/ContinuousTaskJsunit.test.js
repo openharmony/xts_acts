@@ -387,4 +387,121 @@ describe("ContinuousTaskJsTest", function () {
 
         particleAbility.cancelBackgroundRunning(conTaskCallback);
     })
+	
+	/*
+    * @tc.name: ContinuousTaskJsTest009
+    * @tc.desc: test work scheduler constant
+    * @tc.type: FUNC
+    * @tc.require: 
+    */
+    it("ContinuousTaskJsTest009", 0, function (done) {
+        console.info('----------------------ContinuousTaskJsTest009---------------------------');
+        let value1 = backgroundTaskManager.BackgroundMode.DATA_TRANSFER;
+        expect(value1).assertEqual(1)
+        done();
+    })
+	
+	/*
+    * @tc.name: ContinuousTaskJsTest010
+    * @tc.desc: test work scheduler constant
+    * @tc.type: FUNC
+    * @tc.require: 
+    */
+    it("ContinuousTaskJsTest010", 0, function (done) {
+        console.info('----------------------ContinuousTaskJsTest010---------------------------');
+        let value1 = backgroundTaskManager.BackgroundMode.AUDIO_PLAYBACK;
+        expect(value1).assertEqual(2)
+        done();
+    })
+	
+	/*
+    * @tc.name: ContinuousTaskJsTest011
+    * @tc.desc: test work scheduler constant
+    * @tc.type: FUNC
+    * @tc.require: 
+    */
+    it("ContinuousTaskJsTest011", 0, function (done) {
+        console.info('----------------------ContinuousTaskJsTest011---------------------------');
+        let value1 = backgroundTaskManager.BackgroundMode.AUDIO_RECORDING;
+        expect(value1).assertEqual(3)
+        done();
+    })
+	
+	/*
+    * @tc.name: ContinuousTaskJsTest012
+    * @tc.desc: test work scheduler constant
+    * @tc.type: FUNC
+    * @tc.require: 
+    */
+    it("ContinuousTaskJsTest012", 0, function (done) {
+        console.info('----------------------ContinuousTaskJsTest012---------------------------');
+        let value1 = backgroundTaskManager.BackgroundMode.LOCATION;
+        expect(value1).assertEqual(4)
+        done();
+    })
+	
+	/*
+    * @tc.name: ContinuousTaskJsTest013
+    * @tc.desc: test work scheduler constant
+    * @tc.type: FUNC
+    * @tc.require: 
+    */
+    it("ContinuousTaskJsTest013", 0, function (done) {
+        console.info('----------------------ContinuousTaskJsTest013---------------------------');
+        let value1 = backgroundTaskManager.BackgroundMode.BLUETOOTH_INTERACTION;
+        expect(value1).assertEqual(5)
+        done();
+    })
+	
+	/*
+    * @tc.name: ContinuousTaskJsTest014
+    * @tc.desc: test work scheduler constant
+    * @tc.type: FUNC
+    * @tc.require: 
+    */
+    it("ContinuousTaskJsTest014", 0, function (done) {
+        console.info('----------------------ContinuousTaskJsTest014---------------------------');
+        let value1 = backgroundTaskManager.BackgroundMode.MULTI_DEVICE_CONNECTION;
+        expect(value1).assertEqual(6)
+        done();
+    })
+	
+	/*
+    * @tc.name: ContinuousTaskJsTest015
+    * @tc.desc: test work scheduler constant
+    * @tc.type: FUNC
+    * @tc.require: 
+    */
+    it("ContinuousTaskJsTest015", 0, function (done) {
+        console.info('----------------------ContinuousTaskJsTest015---------------------------');
+        let value1 = backgroundTaskManager.BackgroundMode.WIFI_INTERACTION;
+        expect(value1).assertEqual(7)
+        done();
+    })
+	
+	/*
+    * @tc.name: ContinuousTaskJsTest016
+    * @tc.desc: test work scheduler constant
+    * @tc.type: FUNC
+    * @tc.require: 
+    */
+    it("ContinuousTaskJsTest016", 0, function (done) {
+        console.info('----------------------ContinuousTaskJsTest016---------------------------');
+        let value1 = backgroundTaskManager.BackgroundMode.VOIP;
+        expect(value1).assertEqual(8)
+        done();
+    })
+	
+	/*
+    * @tc.name: ContinuousTaskJsTest017
+    * @tc.desc: test work scheduler constant
+    * @tc.type: FUNC
+    * @tc.require: 
+    */
+    it("ContinuousTaskJsTest017", 0, function (done) {
+        console.info('----------------------ContinuousTaskJsTest017---------------------------');
+        let value1 = backgroundTaskManager.BackgroundMode.TASK_KEEPING;
+        expect(value1).assertEqual(9)
+        done();
+    })
 })
