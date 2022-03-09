@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,7 +20,8 @@ describe("LinkedListTest", function () {
     try {
       let linkedList = new LinkedList();
     } catch (err) {
-      expect(err).assertEqual("Error:Cannot create new linkedList");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("Cannot create new linkedList");
     }
   });
   it("SR000GGR46_testAdd002", 0, function () {
@@ -181,11 +182,8 @@ describe("LinkedListTest", function () {
     list.add("a");
     list.add("b");
     list.add("b");
-    try {
-      let res = list.getIndexOf("f");
-    } catch (err) {
-      expect(err).assertEqual("");
-    }
+    let res = list.getIndexOf("f");
+    expect(res).assertEqual(-1);
   });
   it("SR000GGR46_testRemoveByIndex019", 0, function () {
     let list = new LinkedList();
@@ -214,7 +212,8 @@ describe("LinkedListTest", function () {
     try {
       let res = list.removeByIndex(10);
     } catch (err) {
-      expect(err).assertEqual("Error: removeByIndex is out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the index is out-of-bounds");
     }
   });
   it("SR000GGR46_testRemove0021", 0, function () {
@@ -364,9 +363,8 @@ describe("LinkedListTest", function () {
     try {
       let res = list.insert(8, "d");
     } catch (err) {
-      expect(err).assertEqual(
-        "Error: index cannot Less than 0 and more than this length"
-      );
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the index is out-of-bounds");
     }
   });
   it("SR000GGR46_testSet032", 0, function () {
@@ -488,11 +486,8 @@ describe("LinkedListTest", function () {
     list.add("c");
     list.add("a");
     list.add("b");
-    try {
-      let res = list.get(10);
-    } catch (err) {
-      expect(err).assertEqual("TypeError: Obj is not a valid object");
-    }
+    let res = list.get(10);
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR46_testListGet041", 0, function () {
     let list = new LinkedList();
@@ -534,16 +529,20 @@ describe("LinkedListTest", function () {
     try {
       let res = linkedList.removeByIndex(1);
     } catch (err) {
-      expect(err).assertEqual("Error: removeByIndex is out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the index is out-of-bounds");
     }
   });
   it("SR000GGR46_testClone045", 0, function () {
     let linkedList = new LinkedList();
-    try {
-      let newlist = linkedList.clone();
-    } catch (err) {
-      expect(err).assertEqual("TypeError: Obj is not a valid object");
+    let newlist = linkedList.clone();
+    let res = true
+    for (let i = 0; i < linkedList.length; i++) {
+      if (linkedList[i] !== newlist[i]) {
+        res = false
+      }
     }
+    expect(res).assertEqual(true);
   });
   it("SR000GGR46_testGetIndexOf046", 0, function () {
     let linkedList = new LinkedList();
@@ -553,38 +552,20 @@ describe("LinkedListTest", function () {
   it("SR000GGR46_testForEach047", 0, function () {
     let linkedList = new LinkedList();
     let num = 0;
-    try {
-      linkedList.forEach((item, index) => {
-        num++;
-      });
-    } catch (err) {
-      expect(err).assertEqual("TypeError: Obj is not a valid object");
-    }
+    linkedList.forEach((item, index) => {
+      num++;
+    });
     expect(num).assertEqual(0);
   });
-  it("SR000GGR46_testIsEmpty048", 0, function () {
+  it("SR000GGR46_testHas048", 0, function () {
     let linkedList = new LinkedList();
-    try {
-      let res = linkedList.isEmpty();
-    } catch (err) {
-      expect(err).assertEqual("TypeError: is not callable");
-    }
-  });
-  it("SR000GGR46_testHas049", 0, function () {
-    let linkedList = new LinkedList();
-    try {
-      let res = linkedList.has(1);
-    } catch (err) {
-      expect(err).assertEqual("TypeError: Obj is not a valid object");
-    }
+    let res = linkedList.has(1);
+    expect(res).assertEqual(false);
   });
   it("SR000GGR46_testGet050", 0, function () {
     let linkedList = new LinkedList();
-    try {
-      let res = linkedList.get(1);
-    } catch (err) {
-      expect(err).assertEqual("TypeError: Obj is not a valid object");
-    }
+    let res = linkedList.get(1);
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR46_testClear051", 0, function () {
     let linkedList = new LinkedList();
@@ -594,19 +575,13 @@ describe("LinkedListTest", function () {
   });
   it("SR000GGR46_testGetLast052", 0, function () {
     let linkedList = new LinkedList();
-    try {
-      let res = linkedList.getLast();
-    } catch (err) {
-      expect(err).assertEqual("TypeError: Obj is not a valid object");
-    }
+    let res = linkedList.getLast();
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR46_testGetFirst053", 0, function () {
     let linkedList = new LinkedList();
-    try {
-      let res = linkedList.getFirst();
-    } catch (err) {
-      expect(err).assertEqual("TypeError: Obj is not a valid object");
-    }
+    let res = linkedList.getFirst();
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR46_testAdd054", 0, function () {
     let linkedList = new LinkedList();

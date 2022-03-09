@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -21,7 +21,8 @@ describe("LightWeightMapTest", function () {
       let lightWeightMap = new LightWeightMap();
       expect(lightWeightMap != undefined).assertEqual(true);
     } catch (err) {
-      expect(err).assertEqual("Error:Cannot create new TreeMap");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("Cannot create new TreeMap");
     }
   });
   it("SR00GGR3L_testSet002", 0, function () {
@@ -122,8 +123,9 @@ describe("LightWeightMapTest", function () {
     lightWeightMap.set("c", "C");
     lightWeightMap.set("d", "D");
     lightWeightMap.set("e", "E");
-    let res = lightWeightMap.increaseCapacityTo(3);
-    expect(res).assertEqual(undefined);
+    lightWeightMap.increaseCapacityTo(3);
+    let length = lightWeightMap.length;
+    expect(length).assertEqual(5);
   });
   it("SR00GGR3L_testEntries012", 0, function () {
     let lightWeightMap = new LightWeightMap();
@@ -318,14 +320,17 @@ describe("LightWeightMapTest", function () {
     lightWeightMap.set(3, "C");
     lightWeightMap.set(4, "D");
     lightWeightMap.set(5, "E");
-    let arr = [];
-    for (let item of lightWeightMap) {
-      arr.push(item);
+    let iters = lightWeightMap[Symbol.iterator]();
+    let flag = true;
+    for (let i = 0, len = lightWeightMap.length; i < len; i++) {
+      let entry = iters.next().value;
+      let res = lightWeightMap.get(entry[0]);
+      if (res != entry[1]) {
+        flag = false;
+        break;
+      }
     }
-    let arr1 = ["1,A", "2,B", "3,C", "4,D", "5,E"];
-    for (let i = 0; i < arr1.length; i++) {
-      expect(arr[i]).assertEqual(arr1[i]);
-    }
+    expect(flag).assertEqual(true);
   });
   it("SR00GGR3L_testSet028", 0, function () {
     let lightWeightMap = new LightWeightMap();
@@ -387,11 +392,8 @@ describe("LightWeightMapTest", function () {
   });
   it("SR00GGR3L_testRemove034", 0, function () {
     let lightWeightMap = new LightWeightMap();
-    try {
-      let res = lightWeightMap.remove(3);
-    } catch (err) {
-      expect(err).assertEqual("Error: don't find the key in lightweight");
-    }
+    let res = lightWeightMap.remove(3);
+    expect(res).assertEqual(undefined);
   });
   it("SR00GGR3L_testRemoveAt035", 0, function () {
     let lightWeightMap = new LightWeightMap();
@@ -416,9 +418,10 @@ describe("LightWeightMapTest", function () {
     lightWeightMap.set("d", "D");
     lightWeightMap.set("e", "E");
     try {
-      let res = lightWeightMap.increaseCapacityTo("qwe");
+      lightWeightMap.increaseCapacityTo("qwe");
     } catch (err) {
-      expect(err).assertEqual("lightWeightMap: index must be int");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("the size is not integer");
     }
   });
   it("SR00GGR3L_testRemoveAt038", 0, function () {
@@ -426,7 +429,8 @@ describe("LightWeightMapTest", function () {
     try {
       let res = lightWeightMap.removeAt("123");
     } catch (err) {
-      expect(err).assertEqual("lightWeightMap: index must be int");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("the size is not integer");
     }
   });
   it("SR00GGR3L_testGetValueAt039", 0, function () {
@@ -439,7 +443,8 @@ describe("LightWeightMapTest", function () {
     try {
       let res = lightWeightMap.getValueAt("123");
     } catch (err) {
-      expect(err).assertEqual("lightWeightMap: index must be int");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("the index is not integer");
     }
   });
   it("SR00GGR3L_testGetKeyAt040", 0, function () {
@@ -452,7 +457,8 @@ describe("LightWeightMapTest", function () {
     try {
       let res = lightWeightMap.getKeyAt("123");
     } catch (err) {
-      expect(err).assertEqual("lightWeightMap: index must be int");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("the index is not integer");
     }
   });
   it("SR00GGR3L_testHasAll041", 0, function () {
@@ -552,7 +558,7 @@ describe("LightWeightMapTest", function () {
     lightWeightMap.set(4, "D");
     lightWeightMap.set(5, "E");
     let res = lightWeightMap.get(10);
-    expect(res).assertEqual(null);
+    expect(res).assertEqual(undefined);
   });
   it("SR00GGR3L_testHasAll050", 0, function () {
     let lightWeightMap = new LightWeightMap();
@@ -566,24 +572,5 @@ describe("LightWeightMapTest", function () {
     lightWeightMap1.set("d", "D1");
     let res = lightWeightMap.hasAll(lightWeightMap1);
     expect(res).assertEqual(false);
-  });
-  it("SR00GGR3L_testIterator051", 0, function () {
-    let lightWeightMap = new LightWeightMap();
-    lightWeightMap.set(1, "A");
-    lightWeightMap.set(2, "B");
-    lightWeightMap.set(3, "C");
-    lightWeightMap.set(4, "D");
-    lightWeightMap.set(5, "E");
-    let arr = [];
-    let res = lightWeightMap[Symbol.iterator]();
-    let temp = undefined;
-    do {
-      temp = res.next().value;
-      arr.push(temp);
-    } while (temp != undefined);
-    let arr1 = ["1,A", "2,B", "3,C", "4,D", "5,E"];
-    for (let i = 0; i < arr.length; i++) {
-      expect(arr[i]).assertEqual(arr1[i]);
-    }
   });
 });

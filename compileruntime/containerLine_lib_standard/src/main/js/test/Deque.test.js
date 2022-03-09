@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,7 +20,8 @@ describe("DequeTest", function () {
     try {
       let deque = new Deque();
     } catch (err) {
-      expect(err).assertEqual("Error:Cannot create new deque");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("Cannot create new deque");
     }
   });
   it("SR000GGR3K_testInsertFront001", 0, function () {
@@ -215,7 +216,7 @@ describe("DequeTest", function () {
       let res = deque.getLast();
       expect(res).assertEqual(i);
     }
-    let res1 = deque.length;    
+    let res1 = deque.length;
     expect(res1).assertEqual(100);
   });
   it("SR000GGR3K_testHas025", 0, function () {
@@ -235,19 +236,13 @@ describe("DequeTest", function () {
   });
   it("SR000GGR3K_testPopLast028", 0, function () {
     let deque = new Deque();
-    try {
-      let res = deque.popLast();
-    } catch (err) {
-      expect(err).assertEqual("Error: Deque: get out-of-bounds");
-    }
+    let res = deque.popLast();
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR3K_testGetLast029", 0, function () {
     let deque = new Deque();
-    try {
-      let res = deque.getLast();
-    } catch (err) {
-      expect(err).assertEqual("Error: Deque: get out-of-bounds");
-    }
+    let res = deque.getLast();
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR3K_testForEach030", 0, function () {
     let deque = new Deque();
@@ -317,5 +312,21 @@ describe("DequeTest", function () {
     for (let i = 0; i < a.length; i++) {
       expect(arr[i]).assertEqual(a[i]);
     }
+  });
+  it("SR000GGR3K_testLength033", 0, function () {
+    let deque = new Deque();
+    deque.insertEnd(8);
+    deque.insertFront("a");
+    deque.insertFront("b");
+    deque.insertEnd(5);
+    deque.insertEnd(6);
+    deque.insertFront("s");
+    deque.insertFront("z");
+    deque.popFirst();
+    deque.popLast();
+    deque.insertFront("g");
+    deque.insertEnd(6);
+    let size = deque.length;
+    expect(size).assertEqual(7);
   });
 });

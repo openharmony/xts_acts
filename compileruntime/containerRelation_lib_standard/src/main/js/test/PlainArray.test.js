@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,7 +20,8 @@ describe("PlainArrayTest", function () {
     try {
       let plainArray = new PlainArray();
     } catch (err) {
-      expect(err).assertEqual("Error:Cannot create new PlainArray");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("Cannot create new PlainArray");
     }
   });
   it("SR000GGR45_testAdd002", 0, function () {
@@ -65,11 +66,8 @@ describe("PlainArrayTest", function () {
     plainArray.add(5, "E");
     let res = plainArray.get(4);
     expect(res).assertEqual("D");
-    try {
-      res = plainArray.get(10);
-    } catch (err) {
-      expect(err).assertEqual("Error: Key error found");
-    }
+    res = plainArray.get(10);
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR45_testLength008", 0, function () {
     let plainArray = new PlainArray();
@@ -188,19 +186,10 @@ describe("PlainArrayTest", function () {
     plainArray.add(5, "E");
     let res = plainArray.remove(2);
     expect(res).assertEqual("B");
-    try {
-      res = plainArray.remove(12);
-    } catch (err) {
-      expect(err).assertEqual("Error: element not in this plainarray");
-    }
-    let arr = [];
-    for (let item of plainArray) {
-      arr.push(item);
-    }
-    let arr1 = ["1,A", "3,C", "4,D", "5,E"];
-    for (let i = 0; i < arr.length; i++) {
-      expect(arr[i]).assertEqual(arr1[i]);
-    }
+    let value = plainArray.get(2);
+    expect(value).assertEqual(undefined);
+    res = plainArray.remove(12);
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR45_testReMoveAt017", 0, function () {
     let plainArray = new PlainArray();
@@ -211,19 +200,10 @@ describe("PlainArrayTest", function () {
     plainArray.add(5, "E");
     let res = plainArray.removeAt(2);
     expect(res).assertEqual("C");
-    try {
-      res = plainArray.removeAt(12);
-    } catch (err) {
-      expect(err).assertEqual("Error: index not in this plainarray range");
-    }
-    let arr = [];
-    for (let item of plainArray) {
-      arr.push(item);
-    }
-    let arr1 = ["1,A", "2,B", "4,D", "5,E"];
-    for (let i = 0; i < arr.length; i++) {
-      expect(arr[i]).assertEqual(arr1[i]);
-    }
+    let value = plainArray.get(3);
+    expect(value).assertEqual(undefined);
+    res = plainArray.removeAt(12);
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR45_testReMoveRangeFrom018", 0, function () {
     let plainArray = new PlainArray();
@@ -233,23 +213,22 @@ describe("PlainArrayTest", function () {
     plainArray.add(4, "D");
     plainArray.add(5, "E");
     plainArray.removeRangeFrom(2, 2);
-    let arr = [];
-    for (let item of plainArray) {
-      arr.push(item);
-    }
-    let arr1 = ["1,A", "2,B", "5,E"];
-    for (let i = 0; i < arr.length; i++) {
-      expect(arr[i]).assertEqual(arr1[i]);
+    let keys = [1, 2, 5];
+    let values = ["A", "B", "E"];
+    for (let i = 0; i < keys.length; i++) {
+      expect(values[i]).assertEqual(plainArray.get(keys[i]));
     }
     try {
       plainArray.removeRangeFrom(15, 5);
     } catch (err) {
-      expect(err).assertEqual("Error: index not in this plainarray range");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the index is out-of-bounds");
     }
     try {
       plainArray.removeRangeFrom(1, -1);
     } catch (err) {
-      expect(err).assertEqual("index not in this plainarray range");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("the size cannot be less than 0");
     }
   });
   it("SR000GGR45_testSetValueAt019", 0, function () {
@@ -260,18 +239,16 @@ describe("PlainArrayTest", function () {
     plainArray.add(4, "D");
     plainArray.add(5, "E");
     plainArray.setValueAt(2, "V");
-    let arr = [];
-    for (let item of plainArray) {
-      arr.push(item);
-    }
-    let arr1 = ["1,A", "2,B", "3,V", "4,D", "5,E"];
-    for (let i = 0; i < arr.length; i++) {
-      expect(arr[i]).assertEqual(arr1[i]);
+    let keys = [1, 2, 3, 4, 5];
+    let values = ["A", "B", "V", "D", "E"];
+    for (let i = 0; i < keys.length; i++) {
+      expect(values[i]).assertEqual(plainArray.get(keys[i]));
     }
     try {
       plainArray.setValueAt(-1, "X");
     } catch (err) {
-      expect(err).assertEqual("Error: index Out Of Bounds");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the index is out-of-bounds");
     }
   });
   it("SR000GGR45_testToString020", 0, function () {
@@ -292,20 +269,12 @@ describe("PlainArrayTest", function () {
     plainArray.add(4, "D");
     plainArray.add(5, "E");
     let arr = [];
-    let keyArr = [];
-    plainArray.forEach((key, index) => {
-      keyArr.push(key);
-    });
     plainArray.forEach((value, index) => {
       arr.push(value);
     });
     let arr1 = ["A", "B", "C", "D", "E"];
     for (let i = 0; i < arr1.length; i++) {
       expect(arr[i]).assertEqual(arr1[i]);
-    }
-    let keyArr1 = [1, 2, 3, 4, 5];
-    for (let i = 0; i < keyArr1.length; i++) {
-      expect(keyArr[i]).assertEqual(keyArr[i]);
     }
   });
   it("SR000GGR45_testIterator022", 0, function () {
@@ -315,13 +284,10 @@ describe("PlainArrayTest", function () {
     plainArray.add(3, "C");
     plainArray.add(4, "D");
     plainArray.add(5, "E");
-    let arr = [];
-    for (let item of plainArray) {
-      arr.push(item);
-    }
-    let arr1 = ["1,A", "2,B", "3,C", "4,D", "5,E"];
-    for (let i = 0; i < arr1.length; i++) {
-      expect(arr[i]).assertEqual(arr1[i]);
+    let keys = [1, 2, 3, 4, 5];
+    let values = ["A", "B", "C", "D", "E"];
+    for (let i = 0; i < keys.length; i++) {
+      expect(values[i]).assertEqual(plainArray.get(keys[i]));
     }
   });
   it("SR000GGR45_testGetValueAt023", 0, function () {
@@ -353,7 +319,8 @@ describe("PlainArrayTest", function () {
     try {
       let res = plainArray.add("123", null);
     } catch (err) {
-      expect(err).assertEqual("Error: PlainArray's only number is allowed");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("the index is not integer");
     }
   });
   it("SR000GGR45_testGet026", 0, function () {
@@ -363,11 +330,8 @@ describe("PlainArrayTest", function () {
     plainArray.add(3, "C");
     plainArray.add(4, "D");
     plainArray.add(5, "E");
-    try {
-      let res = plainArray.get(8);
-    } catch (err) {
-      expect(err).assertEqual("Error: Key error found");
-    }
+    let res = plainArray.get(8);
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR45_testGetIndexOfKey027", 0, function () {
     let plainArray = new PlainArray();
@@ -397,7 +361,7 @@ describe("PlainArrayTest", function () {
     plainArray.add(4, "D");
     plainArray.add(5, "E");
     let res = plainArray.getKeyAt(50);
-    expect(res).assertEqual(null);
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR45_testGetValueAt030", 0, function () {
     let plainArray = new PlainArray();
@@ -407,22 +371,20 @@ describe("PlainArrayTest", function () {
     plainArray.add(4, "D");
     plainArray.add(5, "E");
     let res = plainArray.getValueAt(50);
-    expect(res).assertEqual(null);
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR45_testRemove031", 0, function () {
     let plainArray = new PlainArray();
-    try {
-      let res = plainArray.remove(2);
-    } catch (err) {
-      expect(err).assertEqual("Error: element not in this plainarray");
-    }
+    let res = plainArray.remove(2);
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR45_testRemoveAt032", 0, function () {
     let plainArray = new PlainArray();
     try {
       let res = plainArray.removeAt(2);
     } catch (err) {
-      expect(err).assertEqual("Error: index not in this plainarray range");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the index is out-of-bounds");
     }
   });
   it("SR000GGR45_testReMoveRangeFrom033", 0, function () {
@@ -446,7 +408,8 @@ describe("PlainArrayTest", function () {
     try {
       plainArray.setValueAt(8, "V");
     } catch (err) {
-      expect(err).assertEqual("Error: index Out Of Bounds");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the index is out-of-bounds");
     }
   });
   it("SR000GGR45_testAdd035", 0, function () {
@@ -501,7 +464,8 @@ describe("PlainArrayTest", function () {
     try {
       plainArray.add("a", "c");
     } catch (err) {
-      expect(err).assertEqual("Error: PlainArray's only number is allowed");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("the index is not integer");
     }
     let res = plainArray.get(-2);
     expect(res).assertEqual("b");
@@ -525,16 +489,16 @@ describe("PlainArrayTest", function () {
     plainArray.add(3, "C");
     plainArray.add(4, "D");
     plainArray.add(5, "E");
-    let arr = [];
-    let res = plainArray[Symbol.iterator]();
-    let temp = undefined;
-    do {
-      temp = res.next().value;
-      arr.push(temp);
-    } while (temp != undefined);
-    let arr1 = ["1,A", "2,B", "3,C", "4,D", "5,E"];
-    for (let i = 0; i < arr1.length; i++) {
-      expect(arr[i]).assertEqual(arr1[i]);
+    let iters = plainArray[Symbol.iterator]();
+    let flag = true;
+    for (let i = 0, len = plainArray.length; i < len; i++) {
+      let entry = iters.next().value;
+      let res = plainArray.get(entry[0]);
+      if (res != entry[1]) {
+        flag = false;
+        break;
+      }
     }
+    expect(flag).assertEqual(true);
   });
 });
