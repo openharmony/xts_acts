@@ -6,7 +6,7 @@
       "code": 1000000,
       "name": "1.0.0"
     },
-	  "apiVersion": {
+    "apiVersion": {
       "compatible": 7,
       "releaseType": "Release",
       "target": 7
