@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -21,66 +21,67 @@ describe("TreeMapTest", function () {
       let treeMap = new TreeMap();
       expect(treeMap != undefined).assertEqual(true);
     } catch (err) {
-      expect(err).assertEqual("Error: Cannot create new TreeMap");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("Cannot create new TreeMap");
     }
   });
-  it("SR000GGR3H_testSet002_1", 0, function () {
+  it("SR000GGR3H_testSet002", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "四");
     let res = treeMap.get(0);
     expect(res).assertEqual("四");
   });
-  it("SR000GGR3H_testSet002_2", 0, function () {
+  it("SR000GGR3H_testSet003", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, 8);
     let res = treeMap.get(0);
     expect(res).assertEqual(8);
   });
-  it("SR000GGR3H_testSet002_3", 0, function () {
+  it("SR000GGR3H_testSet004", 0, function () {
     let treeMap = new TreeMap();
     let a = [1, 2, 3, 4];
     treeMap.set(0, a);
     let res = treeMap.get(0);
     expect(res).assertEqual(a);
   });
-  it("SR000GGR3H_testSet002_4", 0, function () {
+  it("SR000GGR3H_testSet005", 0, function () {
     let treeMap = new TreeMap();
     let a = {name: "lala", age: "13"};
     treeMap.set(0, a);
     let res = treeMap.get(0);
     expect(res).assertEqual(a);
   });
-  it("SR000GGR3H_testSet002_5", 0, function () {
+  it("SR000GGR3H_testSet006", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(2, "*");
     let res = treeMap.get(2);
     expect(res).assertEqual("*");
   });
-  it("SR000GGR3H_testSet002_6", 0, function () {
+  it("SR000GGR3H_testSet007", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(-2, 3.14);
     let res = treeMap.get(-2);
     expect(res).assertEqual(3.14);
   });
-  it("SR000GGR3H_testSet002_7", 0, function () {
+  it("SR000GGR3H_testSet008", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(100, true);
     let res = treeMap.get(100);
     expect(res).assertEqual(true);
   });
-  it("SR000GGR3H_testSet002_8", 0, function () {
+  it("SR000GGR3H_testSet009", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(100, "");
     let res = treeMap.get(100);
     expect(res).assertEqual("");
   });
-  it("SR000GGR3H_testSet002_9", 0, function () {
+  it("SR000GGR3H_testSet010", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set("a", "四");
     let res = treeMap.get("a");
     expect(res).assertEqual("四");
   });
-  it("SR000GGR3H_testSet002_10", 0, function () {
+  it("SR000GGR3H_testSet011", 0, function () {
     let treeMap = new TreeMap();
     for (let i = 0; i < 10000; i++) {
       treeMap.set(0, 8);
@@ -89,7 +90,7 @@ describe("TreeMapTest", function () {
     expect(res).assertEqual(8);
     expect(treeMap.length).assertEqual(1);
   });
-  it("SR000GGR3H_testHasKey003", 0, function () {
+  it("SR000GGR3H_testHasKey012", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -98,7 +99,7 @@ describe("TreeMapTest", function () {
     let res1 = treeMap.hasKey(6);
     expect(res1).assertEqual(false);
   });
-  it("SR000GGR3H_testHasValue004", 0, function () {
+  it("SR000GGR3H_testHasValue013", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -108,7 +109,7 @@ describe("TreeMapTest", function () {
     let res1 = treeMap.hasValue("d");
     expect(res1).assertEqual(false);
   });
-  it("SR000GGR3H_testGet005_1", 0, function () {
+  it("SR000GGR3H_testGet014", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -116,28 +117,20 @@ describe("TreeMapTest", function () {
     let res = treeMap.get(1);
     expect(res).assertEqual("b");
   });
-  it("SR000GGR3H_testGet005_2", 0, function () {
+  it("SR000GGR3H_testGet015", 0, function () {
     let treeMap = new TreeMap();
-    try {
-      let res = treeMap.get(1);
-      expect(res).assertEqual(undefined);
-    } catch (err) {
-      expect(err).assertEqual("Error: The node of this key does not exist in the tree");
-    }
+    let res = treeMap.get(1);
+    expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3H_testGet005_3", 0, function () {
+  it("SR000GGR3H_testGet016", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.clear();
     expect(treeMap.length).assertEqual(0);
-    try {
-      let res = treeMap.get(0);
-      expect(res).assertEqual(undefined);
-    } catch (err) {
-      expect(err).assertEqual("Error: The node of this key does not exist in the tree");
-    }
+    let res = treeMap.get(0);
+     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3H_testGetFirstKey006_1", 0, function () {
+  it("SR000GGR3H_testGetFirstKey017", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -145,15 +138,12 @@ describe("TreeMapTest", function () {
     let res = treeMap.getFirstKey();
     expect(res).assertEqual(0);
   });
-  it("SR000GGR3H_testGetFirstKey006_2", 0, function () {
+  it("SR000GGR3H_testGetFirstKey018", 0, function () {
     let treeMap = new TreeMap();
-    try {
-      let res = treeMap.getFirstKey();
-    } catch (err) {
-      expect(err).assertEqual("Error: don't find this key,this tree is empty");
-    }
+    let res = treeMap.getFirstKey();
+    expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3H_testGetLastKey007_1", 0, function () {
+  it("SR000GGR3H_testGetLastKey019", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -161,15 +151,12 @@ describe("TreeMapTest", function () {
     let res = treeMap.getLastKey();
     expect(res).assertEqual(2);
   });
-  it("SR000GGR3H_testGetLastKey007_2", 0, function () {
+  it("SR000GGR3H_testGetLastKey020", 0, function () {
     let treeMap = new TreeMap();
-    try {
-      let res = treeMap.getLastKey();
-    } catch (err) {
-      expect(err).assertEqual("Error: don't find this key,this tree is empty");
-    }
+    let res = treeMap.getLastKey();
+    expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3H_testSetAll008", 0, function () {
+  it("SR000GGR3H_testSetAll021", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -185,7 +172,7 @@ describe("TreeMapTest", function () {
     let res2 = treeMap.get(2);
     expect(res2).assertEqual("c");
   });
-  it("SR000GGR3H_testRemove009_1", 0, function () {
+  it("SR000GGR3H_testRemove022", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -193,13 +180,13 @@ describe("TreeMapTest", function () {
     let res = treeMap.remove(1);
     expect(res).assertEqual("b");
   });
-  it("SR000GGR3H_testRemove009_2", 0, function () {
+  it("SR000GGR3H_testRemove023", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     let res = treeMap.remove(1);
-    expect(res).assertEqual(null);
+    expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3H_testClear010_1", 0, function () {
+  it("SR000GGR3H_testClear024", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -208,7 +195,7 @@ describe("TreeMapTest", function () {
     let res = treeMap.length;
     expect(res).assertEqual(0);
   });
-  it("SR000GGR3H_testClear010_2", 0, function () {
+  it("SR000GGR3H_testClear025", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -220,7 +207,7 @@ describe("TreeMapTest", function () {
     let va = treeMap.get(3);
     expect(va).assertEqual("d");
   });
-  it("SR000GGR3H_testGetLowerKey011_1", 0, function () {
+  it("SR000GGR3H_testGetLowerKey026", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -230,15 +217,12 @@ describe("TreeMapTest", function () {
     let res = treeMap.getLowerKey(2);
     expect(res).assertEqual(1);
   });
-  it("SR000GGR3H_testGetLowerKey011_2", 0, function () {
+  it("SR000GGR3H_testGetLowerKey027", 0, function () {
     let treeMap = new TreeMap();
-    try {
-      let res = treeMap.getLowerKey(2);
-    } catch (err) {
-      expect(err).assertEqual("Error: don't find this key,this node is undefine");
-    }
+    let res = treeMap.getLowerKey(2);
+    expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3H_testGetHigherKey012_1", 0, function () {
+  it("SR000GGR3H_testGetHigherKey028", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -248,15 +232,12 @@ describe("TreeMapTest", function () {
     let res = treeMap.getHigherKey(2);
     expect(res).assertEqual(3);
   });
-  it("SR000GGR3H_testGetHigherKey012_2", 0, function () {
+  it("SR000GGR3H_testGetHigherKey029", 0, function () {
     let treeMap = new TreeMap();
-    try {
-      let res = treeMap.getHigherKey(2);
-    } catch (err) {
-      expect(err).assertEqual("Error: don't find this key,this node is undefine");
-    }
+    let res = treeMap.getHigherKey(2);
+    expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3H_testKeys013", 0, function () {
+  it("SR000GGR3H_testKeys030", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -270,7 +251,7 @@ describe("TreeMapTest", function () {
     expect(res.next().value).assertEqual(3);
     expect(res.next().value).assertEqual(4);
   });
-  it("SR000GGR3H_testValues014", 0, function () {
+  it("SR000GGR3H_testValues031", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -284,7 +265,7 @@ describe("TreeMapTest", function () {
     expect(res.next().value).assertEqual("d");
     expect(res.next().value).assertEqual("g");
   });
-  it("SR000GGR3H_testReplace015_1", 0, function () {
+  it("SR000GGR3H_testReplace032", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -295,19 +276,15 @@ describe("TreeMapTest", function () {
     let res1 = treeMap.get(2);
     expect(res1).assertEqual("B");
   });
-  it("SR000GGR3H_testReplace015_2", 0, function () {
+  it("SR000GGR3H_testReplace033", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     let res = treeMap.replace(2, "B");
     expect(res).assertEqual(false);
-    try {
-      let res1 = treeMap.get(2);
-      expect(res1).assertEqual(undefined);
-    } catch (err) {
-      expect(err).assertEqual("Error: The node of this key does not exist in the tree");
-    }
+    let res1 = treeMap.get(2);
+    expect(res1).assertEqual(undefined);
   });
-  it("SR000GGR3H_testLength016_1", 0, function () {
+  it("SR000GGR3H_testLength034", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -317,12 +294,12 @@ describe("TreeMapTest", function () {
     let res = treeMap.length;
     expect(res).assertEqual(5);
   });
-  it("SR000GGR3H_testLength016_2", 0, function () {
+  it("SR000GGR3H_testLength035", 0, function () {
     let treeMap = new TreeMap();
     let res = treeMap.length;
     expect(res).assertEqual(0);
   });
-  it("SR000GGR3H_testForEach017", 0, function () {
+  it("SR000GGR3H_testForEach036", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -346,20 +323,26 @@ describe("TreeMapTest", function () {
       expect(arr3[i]).assertEqual(arr2[i]);
     }
   });
-  it("SR000GGR3H_testEntries018", 0, function () {
+  it("SR000GGR3H_testEntries037", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
     treeMap.set(2, "c");
     treeMap.set(3, "d");
     treeMap.set(4, "g");
-    let res = treeMap.entries();
-    let arr = ["0,a", "1,b", "2,c", "3,d", "4,g"];
-    for (let i = 0; i < treeMap.length; i++) {
-      expect(arr[i]).assertEqual(res.next().value);
+    let entries = treeMap.entries();
+    let flag = true;
+    for (let i = 0, len = treeMap.length; i < len; i++) {
+      let entry = entries.next().value;
+      let res = treeMap.get(entry[0]);
+      if (res != entry[1]) {
+        flag = false;
+        break;
+      }
     }
+    expect(flag).assertEqual(true);
   });
-  it("SR000GGR3H_testIterator019", 0, function () {
+  it("SR000GGR3H_testIterator038", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -375,23 +358,23 @@ describe("TreeMapTest", function () {
       expect(arr[i]).assertEqual(iterArr[i]);
     }
   });
-  it("SR000GGR3H_testIterator020", 0, function () {
+  it("SR000GGR3H_testIterator039", 0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
     treeMap.set(2, "c");
     treeMap.set(3, "d");
     treeMap.set(4, "g");
-    let arr = [];
-    let res = treeMap[Symbol.iterator]();
-    let temp = undefined;
-    do {
-      temp = res.next().value;
-      arr.push(temp);
-    } while (temp != undefined);
-    let arr1 = ["0,a", "1,b", "2,c", "3,d", "4,g"];
-    for (let i = 0; i < arr.length; i++) {
-      expect(arr[i]).assertEqual(arr1[i]);
+    let iters = treeMap[Symbol.iterator]();
+    let flag = true;
+    for (let i = 0, len = treeMap.length; i < len; i++) {
+      let entry = iters.next().value;
+      let res = treeMap.get(entry[0]);
+      if (res != entry[1]) {
+        flag = false;
+        break;
+      }
     }
+    expect(flag).assertEqual(true);
   });
 });
