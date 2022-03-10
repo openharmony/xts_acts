@@ -262,7 +262,7 @@ describe('ActsAmsCallBackFourthScene', function () {
      * @tc.desc      : Kill Processes By BundleName(by CallBack)
      */
     it('Acts_Ams_test_6400', 0, async function (done) {
-        missionManager.killProcessesByBundleName('xxxxxxxxx',
+        appManager.killProcessesByBundleName('xxxxxxxxx',
             (error, info) => {
                 console.info('Acts_Ams_test_6400 killProcessesByBundleName error.code \
                 ' + error.code + ',data  [' + info + ']');

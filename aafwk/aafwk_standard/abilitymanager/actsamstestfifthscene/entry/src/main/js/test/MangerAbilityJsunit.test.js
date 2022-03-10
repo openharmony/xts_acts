@@ -43,13 +43,15 @@ describe('ActsAmsTestFifthScene', function () {
         var data = await missionManager.getMissionInfos("", maxnum);
         console.log('ActsAmsTestFifthScene beforeAll getMissionInfos data: ' + JSON.stringify(data));
         for (var i = 0; i < data.length; i++) {
-            console.log("ActsAmsTestFifthScene, missionId: " + data[i].missionId)
-            missionManager.clearMission(data[i].missionId,
-                (error, info) => {
-                    console.info('ActsAmsTestFifthScene beforeAll clearMission error.code \
-                    ' + error.code + ', want.bundleName:' + data[i].want.bundleName);
-                }
-            );
+            if (data[i].want.bundleName != 'com.example.actsamstestfifthscene') {
+                console.log("ActsAmsTestFifthScene, missionId: " + data[i].missionId)
+                missionManager.clearMission(data[i].missionId,
+                    (error, info) => {
+                        console.info('ActsAmsTestFifthScene beforeAll clearMission error.code \
+                        ' + error.code + ', want.bundleName:' + data[i].want.bundleName);
+                    }
+                );
+            }
         }
 
         await featureAbility.startAbility(
@@ -170,6 +172,7 @@ describe('ActsAmsTestFifthScene', function () {
     * @tc.desc      : Move Mission To Top(by Promise)
     */
     it('Acts_Ams_test_1100', 0, async function (done) {
+        console.log('Acts_Ams_test_1100 begin');
         var maxnum = 10;
         var result = await missionManager.getMissionInfos("", maxnum).catch(err => {
             console.log('Acts_Ams_test_1100 getMissionInfos failed: ' + err);
@@ -177,9 +180,11 @@ describe('ActsAmsTestFifthScene', function () {
         for (var i = 0; i < result.length; i++) {
             console.info('Acts_Ams_test_1100 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
         }
-        var info = await missionManager.moveMissionToFront(result[0].missionId);
+        var info = await missionManager.moveMissionToFront(result[0].missionId).catch(err => {
+            console.log('Acts_Ams_test_1100 moveMissionToFront failed: ' + err);
+            expect(err).assertEqual(0);
+        });
         console.info('Acts_Ams_test_1100 moveMissionToFront data  [' + info + ']');
-        expect(info).assertEqual(0);
         done();
         setTimeout(timeout, 5000);
     })
@@ -231,9 +236,11 @@ describe('ActsAmsTestFifthScene', function () {
         for (var i = 0; i < result.length; i++) {
             console.info('Acts_Ams_test_0700 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
         }
-        var info = await missionManager.clearMission(result[1].missionId);
+        var info = await missionManager.clearMission(result[1].missionId).catch(err => {
+            console.log('Acts_Ams_test_0700 clearMission failed: ' + err);
+            expect(err).assertEqual(0);
+        });
         console.info('Acts_Ams_test_0700 clearMission data  [' + info + ']');
-        expect(info).assertEqual(0);
         done();
         setTimeout(timeout, 5000);
     })
