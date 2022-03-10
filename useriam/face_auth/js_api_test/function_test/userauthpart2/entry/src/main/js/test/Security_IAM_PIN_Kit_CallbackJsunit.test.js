@@ -15,10 +15,10 @@
 
 
 import {describe, it, expect} from 'deccjsunit/index'
-import userAuth from '@ohos.userauth'
-import userIDM from '@ohos.useridm'
-import pinAuth from '@ohos.pinauth'
-import userAuthNorth from '@ohos.userauthnorth'
+import userAuth from '@ohos.userAuth'
+import userIDM from '@ohos.userIDM'
+import pinAuth from '@ohos.pinAuth'
+import userAuthNorth from '@ohos.userIAM.userAuth'
 import * as publicFC from './Publicfunction-n'
 
 
@@ -130,7 +130,7 @@ function sleep(ms) {
 
 describe('userauthTest', function () {
 
-    it('GetVersionTest_Kit_0101', 0, async function (done) {
+    it('Security_IAM_PIN_Kit_Func_0101', 0, async function (done) {
         try {
             let getversionresult = null;
             getversionresult = UserAuthKit.getVersion();
@@ -143,7 +143,7 @@ describe('userauthTest', function () {
         }
     })
 
-    it('GetAvailabeStatusTest_Kit_0101', 1, async function (done) {
+    it('Security_IAM_PIN_Kit_Func_0102', 1, async function (done) {
         console.info('testFace GetAvailabeStatusTest0101 start');
         try {
             publicFC.publicRegisterInputer(PinAuth,AuthSubType.PIN_SIX,Inputerdata)
@@ -197,7 +197,7 @@ describe('userauthTest', function () {
     })
 
 
-it('AuthTest_Kit_0101', 0, async function (done) {
+it('Security_IAM_PIN_Kit_Func_0103', 0, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth,AuthSubType.PIN_SIX,Inputerdata)
             let challenge ;
@@ -267,18 +267,18 @@ it('AuthTest_Kit_0101', 0, async function (done) {
         }
     })
 
-    it('Security_IAM_Face_Interface_check_AuthTrustLevel_Kit_0101', 0, async function (done) {
-        console.info('testFace Security_IAM_Face_Interface_check_AuthTrustLevel_0101 start');
+    it('Security_IAM_PIN_Kit_Func_0104', 0, async function (done) {
+        console.info('testFace Security_IAM_PIN_Kit_Func_0104 start');
         expect(10000).assertEqual(userAuthNorth.AuthTrustLevel.ATL1);
         expect(20000).assertEqual(userAuthNorth.AuthTrustLevel.ATL2);
         expect(30000).assertEqual(userAuthNorth.AuthTrustLevel.ATL3);
         expect(40000).assertEqual(userAuthNorth.AuthTrustLevel.ATL4);
-        console.info('testFace Security_IAM_Face_Interface_check_AuthTrustLevel_0101 end');
+        console.info('testFace Security_IAM_PIN_Kit_Func_0104 end');
         done();
     })
 
-    it('Security_IAM_Face_Interface_check_userauthFaceTipsCode_Kit_0101', 0, async function (done) {
-        console.info('testFace Security_IAM_Face_Interface_check_userauthFaceTipsCode_0101 start');
+    it('Security_IAM_PIN_Kit_Func_0105', 0, async function (done) {
+        console.info('testFace Security_IAM_PIN_Kit_Func_0105 start');
         expect(1).assertEqual(userAuthNorth.FaceTipsCode.FACE_AUTH_TIP_TOO_BRIGHT);
         expect(2).assertEqual(userAuthNorth.FaceTipsCode.FACE_AUTH_TIP_TOO_DARK);
         expect(3).assertEqual(userAuthNorth.FaceTipsCode.FACE_AUTH_TIP_TOO_CLOSE);
@@ -290,20 +290,20 @@ it('AuthTest_Kit_0101', 0, async function (done) {
         expect(9).assertEqual(userAuthNorth.FaceTipsCode.FACE_AUTH_TIP_TOO_MUCH_MOTION);
         expect(10).assertEqual(userAuthNorth.FaceTipsCode.FACE_AUTH_TIP_POOR_GAZE);
         expect(11).assertEqual(userAuthNorth.FaceTipsCode.FACE_AUTH_TIP_NOT_DETECTED);
-        console.info('testFace Security_IAM_Face_Interface_check_userauthFaceTipsCode_0101 end');
+        console.info('testFace Security_IAM_PIN_Kit_Func_0105 end');
         done();
     })
 
-    it('Security_IAM_Face_Interface_check_userauthAuthType_Kit_0101', 0, async function (done) {
-        console.info('testFace Security_IAM_Face_Interface_check_userauthAuthType_Kit_0101 start');
+    it('Security_IAM_PIN_Kit_Func_0106', 0, async function (done) {
+        console.info('testFace Security_IAM_PIN_Kit_Func_0106 start');
         expect(1).assertEqual(userAuthNorth.AuthType.PIN);
         expect(2).assertEqual(userAuthNorth.AuthType.FACE);
-        console.info('testFace Security_IAM_Face_Interface_check_userauthAuthType_Kit_0101 end');
+        console.info('testFace Security_IAM_PIN_Kit_Func_0106 end');
         done();
     })
 
-    it('Security_IAM_Face_Interface_check_userauthResultCode_Kit_0101', 0, async function (done) {
-        console.info('testFace Security_IAM_Face_Interface_check_userauthResultCode_0101 start');
+    it('Security_IAM_PIN_Kit_Func_0107', 0, async function (done) {
+        console.info('testFace Security_IAM_PIN_Kit_Func_0107 start');
         expect(0).assertEqual(userAuthNorth.ResultCode.SUCCESS);
         expect(1).assertEqual(userAuthNorth.ResultCode.FAIL);
         expect(2).assertEqual(userAuthNorth.ResultCode.GENERAL_ERROR);
@@ -315,19 +315,19 @@ it('AuthTest_Kit_0101', 0, async function (done) {
         expect(8).assertEqual(userAuthNorth.ResultCode.INVALID_PARAMETERS);
         expect(9).assertEqual(userAuthNorth.ResultCode.LOCKED);
         expect(10).assertEqual(userAuthNorth.ResultCode.NOT_ENROLLED);
-        console.info('testFace Security_IAM_Face_Interface_check_userauthResultCode_0101 end');
+        console.info('testFace Security_IAM_PIN_Kit_Func_0107 end');
         done();
     })
 
-    it('Security_IAM_Face_Interface_check_userauthFingerprintTips_Kit_0101', 0, async function (done) {
-        console.info('testFace Security_IAM_Face_Interface_check_userauthFingerprintTips_Kit_0101 start');
+    it('Security_IAM_PIN_Kit_Func_0108', 0, async function (done) {
+        console.info('testFace Security_IAM_PIN_Kit_Func_0108 start');
         expect(0).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_TIP_GOOD );
         expect(1).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_TIP_IMAGER_DIRTY);
         expect(2).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_TIP_INSUFFICIENT);
         expect(3).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_TIP_PARTIAL);
         expect(4).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_TIP_TOO_FAST);
         expect(5).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_TIP_TOO_SLOW);
-        console.info('testFace Security_IAM_Face_Interface_check_userauthFingerprintTips_Kit_0101 end');
+        console.info('testFace Security_IAM_PIN_Kit_Func_0108 end');
         done();
     })
 

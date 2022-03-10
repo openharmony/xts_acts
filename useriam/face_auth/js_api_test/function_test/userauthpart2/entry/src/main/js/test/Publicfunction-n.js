@@ -368,6 +368,7 @@ function publicsetProperty(UserAuth,SetPropertyRequest,callback){
         console.info('testFace publicsetProperty in try');
         console.info('testFace publicsetProperty UserAuth = ' + UserAuth);
         UserAuth.setProperty(SetPropertyRequest,function (AsyncCallback) {
+            console.log("testFace faceDemo setProperty inside = ")
             console.log("testFace faceDemo setProperty AsyncCallback = " + JSON.stringify(AsyncCallback))
             callback(AsyncCallback)
         })

@@ -14,9 +14,9 @@
  */
 
 import {describe, it, expect} from 'deccjsunit/index'
-import userAuth from '@ohos.userauth'
-import userIDM from '@ohos.useridm'
-import pinAuth from '@ohos.pinauth'
+import userAuth from '@ohos.userAuth'
+import userIDM from '@ohos.userIDM'
+import pinAuth from '@ohos.pinAuth'
 import * as publicFC from './Publicfunction-n'
 
 let UserIDM = userIDM.constructor()
