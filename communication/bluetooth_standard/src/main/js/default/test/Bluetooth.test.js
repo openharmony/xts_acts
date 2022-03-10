@@ -73,9 +73,26 @@ describe('bluetoothhostTest', function() {
      */
     it('bluetooth_classic_enable_bluetooth_001', 0, async function (done) {
         console.info('[bluetooth_js] enable start');
-        var enable = bluetooth.enableBluetooth();
-        expect(enable).assertEqual(true);
-        console.info('[bluetooth_js] enable On = '+ JSON.stringify(enable));
+        var sta = bluetooth.getState();
+        switch(sta){
+            case 0:
+                var enable = bluetooth.enableBluetooth();
+                console.info('[bluetooth_js] enable0 = '+ JSON.stringify(enable));
+                expect(enable).assertEqual(true);
+                break;
+            case 1:
+                console.info('[bluetooth_js] bt turning on:'+ JSON.stringify(sta));
+                break;
+            case 2:
+                console.info('[bluetooth_js] state is On:'+ JSON.stringify(sta));
+                break;
+            case 3:
+                var enable = bluetooth.enableBluetooth();
+                console.info('[bluetooth_js] enable0 = '+ JSON.stringify(enable));
+                break;
+            default:
+                console.info('[bluetooth_js] enable success');
+            }
         await sleep(2000);
         var state = bluetooth.getState();
         console.info('[bluetooth_js] getState On = '+ JSON.stringify(state));
