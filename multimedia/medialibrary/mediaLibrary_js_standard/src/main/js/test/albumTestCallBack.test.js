@@ -12,83 +12,612 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import mediaLibrary from '@ohos.multimedia.medialibrary';
+import featureAbility from '@ohos.ability.featureAbility';
 
-
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
-let fileKeyObj = mediaLibrary.FileKey
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+let fileKeyObj = mediaLibrary.FileKey;
+let mediaType = mediaLibrary.MediaType.IMAGE;
 let AlbumNoArgsfetchOp = {
-    selections: "",
+    selections: '',
     selectionArgs: [],
-}
+};
 let AlbumHasArgsfetchOp = {
-    selections: fileKeyObj.PATH + " LIKE ? ",
-    selectionArgs: ["/data/media%"],
-}
-let type1 = mediaLibrary.MediaType.IMAGE
+    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs: [mediaType.toString()],
+};
+
 let fileHasArgsfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + "= ?",
-    selectionArgs: [type1.toString()],
-}
+    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs: [mediaType.toString()],
+};
 let fileNoArgsfetchOp = {
-    selections: "",
+    selections: '',
     selectionArgs: [],
-}
+};
 
-describe('album.callback.test.js', function () {
-
-    let mediaType = mediaLibrary.MediaType.IMAGE;
-    let path = "Pictures/"
-    var asset;
-    var media = mediaLibrary.getMediaLibrary();
+describe('album.callback.test.js', async function () {
+    let path = 'Pictures/';
+    console.info('MediaLibraryTest : Delete begin');
+    let fetchFileResult = await media.getFileAssets(fileNoArgsfetchOp);
+    let assetList = await fetchFileResult.getAllObject();
+    assetList.forEach(getAllObjectInfoDelete);
+    console.info('MediaLibraryTest : Delete end');
+    await media.createAsset(mediaType, 'imageAlbum0003.jpg', path);
+    await media.createAsset(mediaType2, 'imageAlbum0004.avi', path);
+    var context = featureAbility.getContext();
+    console.info('MediaLibraryTest : getMediaLibrary IN');
+    var media = mediaLibrary.getMediaLibrary(context);
+    console.info('MediaLibraryTest : getMediaLibrary OUT');
     var album;
     beforeAll(function () {
-        console.info('Album Callback MediaLibraryTest: beforeAll.');
-
-    })
-
+        onsole.info('Album Callback MediaLibraryTest: beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.');
+    });
     beforeEach(function () {
-        console.info('Album Callback MediaLibraryTest: beforeEach.');
-
-    })
+        console.info('Album Callback MediaLibraryTest: beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.');
+    });
     afterEach(function () {
-        console.info('Album Callback MediaLibraryTest: afterEach.');
-
-    })
+        console.info('Album Callback MediaLibraryTest: afterEach: Test case-level clearance conditions, which are executed after each test case is executed.');
+    });
     afterAll(function () {
-        console.info('Album Callback MediaLibraryTest: afterAll.');
+        console.info('Album Callback MediaLibraryTest: afterAll: Test suite-level cleanup condition, which is executed after the test suite is executed');
+    });
 
-    })
-
-    /*
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001
-     * @tc.name      : Get Album by AlbumNoArgsfetchOp
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_01
+     * @tc.name      : media.getAlbums
      * @tc.desc      : Get Album by AlbumNoArgsfetchOp
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
 
-    it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001', 0, async function (done) {
-        asset = await media.createAsset(mediaType, "image0003Callback.jpg", path);
-        media.getAlbums(AlbumNoArgsfetchOp, getAlbumsCallBack);
-        done();
+    it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_01', 0, async function (done) {
+        media.getAlbums(AlbumNoArgsfetchOp, (err, albumList) => {
+            if (albumList != undefined) {
+                const album = albumList[0];
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 001_01 album.albumName = ' + album.albumName);
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 001_01 album.count = ' + album.count);
+                expect(true).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 001_01 fail, message = ' + err);
+                expect(false).assertTrue();
+                done();
+            }
+        });
     });
 
-    /*
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002
-     * @tc.name      : Get Album by AlbumHasArgsfetchOp
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_02
+     * @tc.name      : media.getAlbums
+     * @tc.desc      : Get Album by null
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+
+    it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_02', 0, async function (done) {
+        media.getAlbums(null, (err, albumList) => {
+            if (albumList != undefined) {
+                const album = albumList[0];
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 001_02 album.albumName = ' + album.albumName);
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 001_02 album.count = ' + album.count);
+                expect(false).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 001_02 fail, message = ' + err);
+                expect(true).assertTrue();
+                done();
+            }
+        });
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_01
+     * @tc.name      : media.getAlbums
      * @tc.desc      : Get Album by AlbumHasArgsfetchOp
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
 
-    it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002', 0, async function (done) {
-        media.getAlbums(AlbumHasArgsfetchOp, getAlbumsCallBack);
+    it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_01', 0, async function (done) {
+        media.getAlbums(AlbumHasArgsfetchOp, (err, albumList) => {
+            if (albumList != undefined) {
+                const album = albumList[0];
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 002_01 album.albumName = ' + album.albumName);
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 002_01 album.count = ' + album.count);
+                expect(true).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 002_01 fail, message = ' + err);
+                expect(false).assertTrue();
+                done();
+            }
+        });
         done();
     });
 
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_02
+     * @tc.name      : media.getAlbums
+     * @tc.desc      : Get Album by 666
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+
+    it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_02', 0, async function (done) {
+        media.getAlbums(666, (err, albumList) => {
+            if (albumList != undefined) {
+                const album = albumList[0];
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 001_02 album.albumName = ' + album.albumName);
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 001_02 album.count = ' + album.count);
+                expect(false).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 001_02 fail, message = ' + err);
+                expect(true).assertTrue();
+                done();
+            }
+        });
+        done();
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_03
+     * @tc.name      : media.getAlbums
+     * @tc.desc      : Get Album by '666'
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+
+    it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_03', 0, async function (done) {
+        media.getAlbums('666', (err, albumList) => {
+            if (albumList != undefined) {
+                const album = albumList[0];
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 001_03 album.albumName = ' + album.albumName);
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 001_03 album.count = ' + album.count);
+                expect(false).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 001_03 fail, message = ' + err);
+                expect(true).assertTrue();
+                done();
+            }
+        });
+        done();
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_04
+     * @tc.name      : media.getAlbums
+     * @tc.desc      : Get Album by 0.666
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+
+    it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_04', 0, async function (done) {
+        media.getAlbums(0.666, (err, albumList) => {
+            if (albumList != undefined) {
+                const album = albumList[0];
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 002_04 album.albumName = ' + album.albumName);
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 002_04 album.count = ' + album.count);
+                expect(false).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 002_04 fail, message = ' + err);
+                expect(true).assertTrue();
+                done();
+            }
+        });
+        done();
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_05
+     * @tc.name      : media.getAlbums
+     * @tc.desc      : Get Album true
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+
+    it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_05', 0, async function (done) {
+        media.getAlbums(true, (err, albumList) => {
+            if (albumList != undefined) {
+                const album = albumList[0];
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 002_05 album.albumName = ' + album.albumName);
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 002_05 album.count = ' + album.count);
+                expect(false).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbum 002_05 fail, message = ' + err);
+                expect(true).assertTrue();
+                done();
+            }
+        });
+        done();
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_01
+     * @tc.name      : album.commitModify
+     * @tc.desc      : Modify Album name 'hello'
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+
+    it('SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_01', 0, async function (done) {
+        const albumList = await media.getAlbums(AlbumNoArgsfetchOp);
+        const album = albumList[0];
+        console.info('MediaLibraryTest : ALBUM_CALLBACK Modify 003_01 album.albumName(old) = ' + album.albumName);
+        album.albumName = 'hello';
+        album.commitModify((err) => {
+            if (err == undefined) {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK Modify 003_01 album.albumName(new) = ' + album.albumName);
+                expect(true).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest :  ALBUM_CALLBACK Modify 003_01 fail, message = ' + err);
+                expect(false).assertTrue();
+                done();
+            }
+        });
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_02
+     * @tc.name      : album.commitModify
+     * @tc.desc      : Modify Album name ''
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+
+    it('SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_02', 0, async function (done) {
+        const albumList = await media.getAlbums(AlbumNoArgsfetchOp);
+        const album = albumList[0];
+        console.info('MediaLibraryTest : ALBUM_CALLBACK Modify 003_01 album.albumName(old) = ' + album.albumName);
+        album.albumName = '';
+        album.commitModify((err) => {
+            if (err == undefined) {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK Modify 003_02 album.albumName(new) = ' + album.albumName);
+                expect(false).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest :  ALBUM_CALLBACK Modify 003_02 fail, message = ' + err);
+                expect(true).assertTrue();
+                done();
+            }
+        });
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_03
+     * @tc.name      : album.commitModify
+     * @tc.desc      : Modify Album name '?*hello'
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+
+    it('SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_03', 0, async function (done) {
+        const albumList = await media.getAlbums(AlbumNoArgsfetchOp);
+        const album = albumList[0];
+        console.info('MediaLibraryTest : ALBUM_CALLBACK Modify 003_01 album.albumName(old) = ' + album.albumName);
+        album.albumName = '?*hello';
+        album.commitModify((err) => {
+            if (err == undefined) {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK Modify 003_03 album.albumName(new) = ' + album.albumName);
+                expect(false).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest :  ALBUM_CALLBACK Modify 003_03 fail, message = ' + err);
+                expect(true).assertTrue();
+                done();
+            }
+        });
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_04
+     * @tc.name      : album.commitModify
+     * @tc.desc      : Modify Album name 'i123456...119'
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+
+    it('SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_04', 0, async function (done) {
+        const albumList = await media.getAlbums(AlbumNoArgsfetchOp);
+        const album = albumList[0];
+        console.info('MediaLibraryTest : ALBUM_CALLBACK Modify 003_01 album.albumName(old) = ' + album.albumName);
+        var name = 'i';
+        for (var i = 0; i < 120; i++) {
+            title += 'i';
+        }
+        album.albumName = name;
+        album.commitModify((err) => {
+            if (err == undefined) {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK Modify 003_03 album.albumName(new) = ' + album.albumName);
+                expect(false).assertTrue();
+                done();
+            } else {
+                console.info('MediaLibraryTest :  ALBUM_CALLBACK Modify 003_03 fail, message = ' + err);
+                expect(true).assertTrue();
+                done();
+            }
+        });
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_004_01
+     * @tc.name      : album.getFileAssets
+     * @tc.desc      : Get Album Assets by fileNoArgsfetchOp
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+
+    it('SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_004_01', 0, async function (done) {
+        album.getFileAssets(fileNoArgsfetchOp, (err, albumFetchFileResult) => {
+            if (albumFetchFileResult != undefined) {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets success');
+                albumFetchFileResult.getAllObject((err1, data1) => {
+                    if (data1 != undefined) {
+                        data1.forEach(getAllObjectInfo);
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 004_01 success');
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 004_01 getAllObject :PASS');
+                        expect(true).assertTrue();
+                        done();
+                    } else {
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 004_01 fail, message = ' + err1);
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 004_01 getFileAssets :No data');
+                        expect(false).assertTrue();
+                        done();
+                    }
+                });
+            } else {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 004_01 fail, message = ' + err);
+                expect(false).assertTrue();
+                done();
+            }
+        });
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_004_01
+     * @tc.name      : album.getFileAssets
+     * @tc.desc      : Get Album Assets by null
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+
+    it('SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_004_02', 0, async function (done) {
+        album.getFileAssets(null, (err, albumFetchFileResult) => {
+            if (albumFetchFileResult != undefined) {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets success');
+                albumFetchFileResult.getAllObject((err1, data1) => {
+                    if (data1 != undefined) {
+                        data1.forEach(getAllObjectInfo);
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 004_02 success');
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 004_02 getAllObject :PASS');
+                        expect(true).assertTrue();
+                        done();
+                    } else {
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 004_02 fail, message = ' + err1);
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 004_02 getFileAssets :No data');
+                        expect(false).assertTrue();
+                        done();
+                    }
+                });
+            } else {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 004_02 fail, message = ' + err);
+                expect(false).assertTrue();
+                done();
+            }
+        });
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_005_01
+     * @tc.name      : album.getFileAssets
+     * @tc.desc      : Get Album Assets by fileHasArgsfetchOp
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+
+    it('SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_005_01', 0, async function (done) {
+        album.getFileAssets(fileHasArgsfetchOp, (err, albumFetchFileResult) => {
+            if (albumFetchFileResult != undefined) {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets success');
+                albumFetchFileResult.getAllObject((err1, data1) => {
+                    if (data1 != undefined) {
+                        data1.forEach(getAllObjectInfo);
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_01 success');
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_01 getAllObject :PASS');
+                        expect(true).assertTrue();
+                        done();
+                    } else {
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_01 fail, message = ' + err1);
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_01 getFileAssets :No data');
+                        expect(false).assertTrue();
+                        done();
+                    }
+                });
+            } else {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_01 fail, message = ' + err);
+                expect(false).assertTrue();
+                done();
+            }
+        });
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_005_02
+     * @tc.name      : album.getFileAssets
+     * @tc.desc      : Get Album Assets by fileHasArgsfetchOp2
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+
+    it('SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_005_02', 0, async function (done) {
+        let type2 = mediaLibrary.MediaType.VIDEO;
+        let fileHasArgsfetchOp2 = {
+            selections: fileKeyObj.MEDIA_TYPE + ' = ?',
+            selectionArgs: [type2.toString()],
+        };
+        album.getFileAssets(fileHasArgsfetchOp2, (err, albumFetchFileResult) => {
+            if (albumFetchFileResult != undefined) {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets success');
+                albumFetchFileResult.getAllObject((err1, data1) => {
+                    if (data1 != undefined) {
+                        data1.forEach(getAllObjectInfo);
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_02 success');
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_02 getAllObject :PASS');
+                        expect(true).assertTrue();
+                        done();
+                    } else {
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_02 fail, message = ' + err1);
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_02 getFileAssets :No data');
+                        expect(false).assertTrue();
+                        done();
+                    }
+                });
+            } else {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_02 fail, message = ' + err);
+                expect(false).assertTrue();
+                done();
+            }
+        });
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_005_03
+     * @tc.name      : album.getFileAssets
+     * @tc.desc      : Get Album Assets by fileHasArgsfetchOp3
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+
+    it('SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_005_03', 0, async function (done) {
+        let fileHasArgsfetchOp3 = {
+            selections: fileKeyObj.MEDIA_TYPE + ' = ?',
+            selectionArgs: ['666'],
+        };
+        album.getFileAssets(fileHasArgsfetchOp3, (err, albumFetchFileResult) => {
+            if (albumFetchFileResult != undefined) {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets success');
+                albumFetchFileResult.getAllObject((err1, data1) => {
+                    if (data1 != undefined) {
+                        data1.forEach(getAllObjectInfo);
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_03 success');
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_03 getAllObject :PASS');
+                        expect(false).assertTrue();
+                        done();
+                    } else {
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_03 fail, message = ' + err1);
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_03 getFileAssets :No data');
+                        expect(false).assertTrue();
+                        done();
+                    }
+                });
+            } else {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_03 fail, message = ' + err);
+                expect(true).assertTrue();
+                done();
+            }
+        });
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_005_04
+     * @tc.name      : album.getFileAssets
+     * @tc.desc      : Get Album Assets by fileHasArgsfetchOp4
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+
+    it('SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_005_04', 0, async function (done) {
+        let type4 = mediaLibrary.MediaType.VIDEO;
+        let fileHasArgsfetchOp4 = {
+            selections: '666' + '= ?',
+            selectionArgs: [type4.toString()],
+        };
+        album.getFileAssets(fileHasArgsfetchOp4, (err, albumFetchFileResult) => {
+            if (albumFetchFileResult != undefined) {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets success');
+                albumFetchFileResult.getAllObject((err1, data1) => {
+                    if (data1 != undefined) {
+                        data1.forEach(getAllObjectInfo);
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_03 success');
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_03 getAllObject :PASS');
+                        expect(false).assertTrue();
+                        done();
+                    } else {
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_03 fail, message = ' + err1);
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_03 getFileAssets :No data');
+                        expect(false).assertTrue();
+                        done();
+                    }
+                });
+            } else {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_03 fail, message = ' + err);
+                expect(true).assertTrue();
+                done();
+            }
+        });
+    });
+
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_005_05
+     * @tc.name      : album.getFileAssets
+     * @tc.desc      : Get Album Assets by fileHasArgsfetchOp5
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+
+    it('SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_005_05', 0, async function (done) {
+        let fileHasArgsfetchOp5 = {
+            selections: '666' + '= ?',
+            selectionArgs: ['666'],
+        };
+        album.getFileAssets(fileHasArgsfetchOp5, (err, albumFetchFileResult) => {
+            if (albumFetchFileResult != undefined) {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets success');
+                albumFetchFileResult.getAllObject((err1, data1) => {
+                    if (data1 != undefined) {
+                        data1.forEach(getAllObjectInfo);
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_03 success');
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_03 getAllObject :PASS');
+                        expect(false).assertTrue();
+                        done();
+                    } else {
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_03 fail, message = ' + err1);
+                        console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_03 getFileAssets :No data');
+                        expect(false).assertTrue();
+                        done();
+                    }
+                });
+            } else {
+                console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssets 005_03 fail, message = ' + err);
+                expect(true).assertTrue();
+                done();
+            }
+        });
+    });
 
     function getAllObjectInfo(data) {
         if (data != undefined) {
@@ -101,54 +630,4 @@ describe('album.callback.test.js', function () {
             console.info('MediaLibraryTest : ALBUM_CALLBACK getAllObjectInfo no album');
         }
     }
-
-    function getAlbumsCallBack(err, albumList) {
-        if (albumList != undefined) {
-            album = albumList[0];
-            console.info('MediaLibraryTest : ALBUM_CALLBACK getAlbumsCallBack album.albumName = ' + album.albumName);
-            album.albumName = "helloCallBack";
-            album.commitModify(commitModifyCallBack);
-            album.getFileAssets(fileNoArgsfetchOp, getFileAssetsCallBack);
-            album.getFileAssets(fileHasArgsfetchOp, getFileAssetsCallBack);
-            done();
-        } else {
-            console.info('MediaLibraryTest : ASSET_CALLBACK getAlbumsCallBack Unsuccessfull ' + err);
-            console.info('MediaLibraryTest : ASSET_CALLBACK getAlbumsCallBack : FAIL');
-            done();
-        }
-
-    }
-
-    function commitModifyCallBack(err, data) {
-        if (data != undefined) {
-            console.info('MediaLibraryTest : ALBUM_CALLBACK Modify album.albumName = ' + album.albumName);
-            done();
-        } else {
-            console.info('MediaLibraryTest : ASSET_CALLBACK Modify Unsuccessfull ' + err);
-            console.info('MediaLibraryTest : ASSET_CALLBACK Modify : FAIL');
-            done();
-        }
-
-    }
-
-    function getFileAssetsCallBack(err, albumFetchFileResult) {
-        if (albumFetchFileResult != undefined) {
-            console.info('MediaLibraryTest : ALBUM_CALLBACK getFileAssetsCallBack success');
-            albumFetchFileResult.getAllObject((err1, data1) => {
-                if (data1 != undefined) {
-                    data1.forEach(getAllObjectInfo);
-                    console.info('MediaLibraryTest : getFileAssetsCallBack getAllObject :PASS');
-                    done();
-                }
-                console.info('MediaLibraryTest : getFileAssetsCallBack getFileAssets :No data');
-                done();
-            });
-            done();
-        } else {
-            console.info('MediaLibraryTest : ASSET_CALLBACK getFileAssetsCallBack Unsuccessfull ' + err);
-            console.info('MediaLibraryTest : ASSET_CALLBACK getFileAssetsCallBack : FAIL');
-            done();
-        }
-
-    }
-})
+});

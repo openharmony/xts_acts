@@ -36,7 +36,7 @@ export default function borderJsunit() {
           console.info("push border page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push border page error " + JSON.stringify(result));
+        console.error("push border page error: " + err);
       }
       done()
     });

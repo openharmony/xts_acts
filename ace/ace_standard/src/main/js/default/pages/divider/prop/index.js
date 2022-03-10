@@ -25,12 +25,6 @@ export default {
         styleProp : null,
         refProp : null,
         refPropNone : null,
-        disabledPropTrue : null,
-        disabledPropFalse : null,
-        disabledPropNone : null,
-        focusablePropTrue : null,
-        focusablePropFalse : null,
-        focusablePropNone : null,
         dataProp : null,
         dataPropNone : null,
         clickEffectPropSmall : null,
@@ -52,7 +46,7 @@ export default {
         verticalFalse: null
     },
 
-    onCreate(){
+    onShow(){
         this.getCommonPropValues();
         this.getSpecificPropValues();
         globalThis.value = {
@@ -62,12 +56,6 @@ export default {
             styleProp : this.styleProp,
             refProp : this.refProp,
             refPropNone : this.refPropNone,
-            disabledPropTrue : this.disabledPropTrue,
-            disabledPropFalse : this.disabledPropFalse,
-            disabledPropNone : this.disabledPropNone,
-            focusablePropTrue : this.focusablePropTrue,
-            focusablePropFalse : this.focusablePropFalse,
-            focusablePropNone : this.focusablePropNone,
             dataProp : this.dataProp,
             dataPropNone : this.dataPropNone,
             clickEffectPropSmall : this.clickEffectPropSmall,
@@ -97,12 +85,6 @@ export default {
         this.styleProp = this.$element("styleProp").getInspector()
         this.refProp = this.$element("refProp").getInspector()
         this.refPropNone = this.$element("refPropNone").getInspector()
-        this.disabledPropTrue = this.$element("disabledPropTrue").getInspector()
-        this.disabledPropFalse = this.$element("disabledPropFalse").getInspector()
-        this.disabledPropNone = this.$element("disabledPropNone").getInspector()
-        this.focusablePropTrue = this.$element("focusablePropTrue").getInspector()
-        this.focusablePropFalse = this.$element("focusablePropFalse").getInspector()
-        this.focusablePropNone = this.$element("focusablePropNone").getInspector()
         this.dataProp = this.$element("dataProp").getInspector()
         this.dataPropNone = this.$element("dataPropNone").getInspector()
         this.clickEffectPropSmall = this.$element("clickEffectPropSmall").getInspector()

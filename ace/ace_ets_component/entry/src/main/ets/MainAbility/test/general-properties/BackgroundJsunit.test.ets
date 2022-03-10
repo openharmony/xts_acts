@@ -36,7 +36,7 @@ export default function backgroundJsunit() {
           console.info("push background page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push background page error " + JSON.stringify(result));
+        console.error("push background page error: " + err);
       }
       done()
     });

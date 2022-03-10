@@ -16,8 +16,12 @@ group("communication") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "bluetooth_ble:ActsBluetoothBleJsTest",
+      "bluetooth_on:ActsBluetoothOnJsTest",
       "bluetooth_standard:ActsBluetoothJsTest",
       "dsoftbus/rpc:ActsRpcJsTest",
+      "wifi_hotspot:ActsHotSpotJSTest",
+      "wifi_p2p:ActsP2PJSTest",
       "wifi_standard:ActsWifiJSTest",
     ]
   } else {

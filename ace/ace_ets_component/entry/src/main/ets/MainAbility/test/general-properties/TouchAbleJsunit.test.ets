@@ -34,7 +34,7 @@ export default function touchAbleJsunit() {
         console.info("push touchAble page result:" + JSON.stringify(result));
       }
     } catch (err) {
-      console.error("push touchAble page error:" + JSON.stringify(result));
+      console.error("push touchAble page error:" + err);
     }
     done()
   });

@@ -98,7 +98,7 @@ describe('SchemaTest', function() {
         backup : false,
         autoSync : true,
         kvStoreType : ddm.KVStoreType.SINGLE_VERSION,
-        schema : '',
+        schema : {},
         securityLevel : ddm.SecurityLevel.NO_LEVEL,
     }
 
@@ -171,7 +171,6 @@ describe('SchemaTest', function() {
             let schema = new ddm.Schema();
             schema.root.appendChild(english);
             schema.indexes = ['$.english.first', '$.english.second'];
-            console.log("schema: " + schema.toJsonString());
         } catch (e) {
             console.log("schema fail on exception: " + e);
             expect(null).assertFail();
@@ -204,10 +203,8 @@ describe('SchemaTest', function() {
             let schema = new ddm.Schema();
             schema.root.appendChild(english);
             schema.indexes = ['$.english.first', '$.english.second'];
-            console.log("schema: " + schema.toJsonString());
-
             options.kvStoreType = ddm.KVStoreType.DEVICE_COLLABORATION;
-            options.schema = schema.toJsonString();
+            options.schema = schema;
             await testPutAndGet(kvManager, options);
             console.log("schematestPutAndGet done");
         } catch (e) {
@@ -233,9 +230,8 @@ describe('SchemaTest', function() {
             schema.root.appendChild(name);
             schema.indexes = ['$.name'];
             schema.mode = 1; // STRICT
-            console.log("schema: " + schema.toJsonString());
             options.kvStoreType = ddm.KVStoreType.SINGLE_VERSION;
-            options.schema = schema.toJsonString();
+            options.schema = schema;
             await kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
                 console.log('testToJsonString003 getKVStore success' + JSON.stringify(options));
                 kvStore = store;
@@ -275,7 +271,6 @@ describe('SchemaTest', function() {
 
             let schema = new ddm.Schema();
             schema.root.appendChild(english);
-            console.log("schema without indexes: " + schema.toJsonString());
             schema.indexes = [];    // indexex set to empty array -> invalid indexes.
             expect(null).assertFail();
         } catch (e) {
@@ -283,4 +278,98 @@ describe('SchemaTest', function() {
         }
         done();
     })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_SCHEMA_ROOT_0100
+     * @tc.name [JS-API8]Schema.root
+     * @tc.desc Test Js Api Schema.root testcase 001
+     */
+     it('testroot001', 0, async function(done) {
+        try {
+            let english = new ddm.FieldNode('english');
+            english.type = ddm.ValueType.STRING;
+
+            let schema = new ddm.Schema();
+            expect(schema.root instanceof ddm.FieldNode).assertTrue();
+        } catch (e) {
+            console.log("schema fail on exception: " + e);
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_SCHEMA_INDEXES_0100
+     * @tc.name [JS-API8]Schema.indexes
+     * @tc.desc Test Js Api Schema.indexes testcase 001
+     */
+     it('testindexes001', 0, async function(done) {
+        try {
+
+            let schema = new ddm.Schema();
+            schema.indexes = ['$.english.first', '$.english.second'];
+            expect(schema.indexes[0] === '$.english.first' && schema.indexes[1] === '$.english.second').assertTrue();
+        } catch (e) {
+            console.log("schema fail on exception: " + e);
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_SCHEMA_MODE_0100
+     * @tc.name [JS-API8]Schema.mode
+     * @tc.desc Test Js Api Schema.mode testcase 001
+     */
+     it('testmode001', 0, async function(done) {
+        try {
+
+            let schema = new ddm.Schema();
+            schema.mode = 1;
+            console.log("schema mode = "+schema.mode)   
+            expect(schema.mode === 1).assertTrue();
+        } catch (e) {
+            console.log("schema fail on exception: " + e);
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_SCHEMA_MODE_0200
+     * @tc.name [JS-API8]Schema.mode
+     * @tc.desc Test Js Api Schema.mode testcase 002
+     */
+     it('testmode002', 0, async function(done) {
+        try {
+
+            let schema = new ddm.Schema();
+            schema.mode = 0;
+            console.log("schema mode = "+schema.mode) 
+            expect(schema.mode === 0).assertTrue();
+        } catch (e) {
+            console.log("schema fail on exception: " + e);
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_SCHEMA_SKIP_0100
+     * @tc.name [JS-API8]Schema.skip
+     * @tc.desc Test Js Api Schema.skip testcase 001
+     */
+     it('testskip001', 0, async function(done) {
+        try {
+
+            let schema = new ddm.Schema();
+            schema.skip = 0;
+            expect(schema.skip === 0).assertTrue();
+        } catch (e) {
+            console.log("schema fail on exception: " + e);
+            expect(null).assertFail();
+        }
+        done();
+    })
 })
+

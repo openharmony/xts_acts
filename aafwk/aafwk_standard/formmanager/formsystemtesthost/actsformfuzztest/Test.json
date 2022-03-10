@@ -4,7 +4,7 @@
         "type": "JSUnitTest",
         "test-timeout": "420000",
         "package": "com.example.formfuzztest",
-        "shell-timeout": "60000"
+        "shell-timeout": "600000"
     },
     "kits": [
         {

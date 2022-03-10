@@ -659,7 +659,7 @@ HWTEST_F(ActsLwipTest, testSelectOneClient, Function | MediumTest | Level2)
     if (pid == 0) {
         // child: server
         int exitCode = 0;
-        int ret = SelectServerForFork(5);
+        int ret = SelectServerForFork(15);
         if (ret != 0) {
             printf("[select server]run fail\n");
             exitCode = 1;
@@ -699,7 +699,7 @@ HWTEST_F(ActsLwipTest, testSelectMultiClients, Function | MediumTest | Level2)
     if (pid == 0) {
         // child: server
         int exitCode = 0;
-        int ret = SelectServerForFork(5);
+        int ret = SelectServerForFork(15);
         if (ret != 0) {
             printf("[select server]run fail\n");
             exitCode = 1;

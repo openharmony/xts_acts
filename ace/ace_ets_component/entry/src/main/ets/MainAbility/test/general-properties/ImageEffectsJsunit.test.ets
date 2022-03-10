@@ -35,7 +35,7 @@ export default function imageEffectsJsunit() {
           console.info("push imageEffects page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push imageEffects page error " + JSON.stringify(err));
+        console.error("push imageEffects page error: " + err);
       }
       done()
     });

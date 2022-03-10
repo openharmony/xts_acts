@@ -20,7 +20,7 @@ const TAG = "[RDB_JSKITS_TEST]"
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY, " + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
 
 const STORE_CONFIG = {
-    name: "InsertTest.db",
+    name: "RdbInsertTest.db",
 }
 
 var rdbStore = undefined;

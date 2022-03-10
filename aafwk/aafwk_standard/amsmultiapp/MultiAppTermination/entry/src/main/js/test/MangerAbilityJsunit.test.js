@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import featureAbility from '@ohos.ability.featureability'
-import commonEvent from "@ohos.commonevent"
-import abilitymanager from '@ohos.app.abilitymanager'
+import featureAbility from '@ohos.ability.featureAbility'
+import commonEvent from "@ohos.commonEvent"
+import abilityManager from '@ohos.app.abilityManager'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 var subscriberInfoStartAbility = {
@@ -78,7 +78,7 @@ describe('ActsAmsMultiAppTermination', function () {
             }
         }
         sleep(3000);
-        var processInfos = await abilitymanager.getActiveProcessInfos();
+        var processInfos = await abilityManager.getActiveProcessInfos();
         var cloneFlag = 0;
         var selfFlag = 0;
         for (var i = 0; i < processInfos.length; i++) {

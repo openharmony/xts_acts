@@ -64,6 +64,7 @@ Note:If the text contains special characters, please escape them according to th
                 <filteritem type="filename" name="*.jpg" desc="all jpg file have check "/>
                 <filteritem type="filename" name="*.gif" desc="all gif file have check "/>
                 <filteritem type="filename" name="*.png" desc="all png file have check "/>
+                <filteritem type="filename" name="*.bin" desc="all bin file have check"/>
             </filefilter>
         </filefilterlist>
     </oatconfig>

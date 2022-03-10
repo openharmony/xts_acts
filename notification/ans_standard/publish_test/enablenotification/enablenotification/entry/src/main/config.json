@@ -46,6 +46,12 @@
         "visible": true
       }
     ],
+    "reqPermissions": [
+      {
+        "name":"ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
+        "reason":"need use ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
+      }
+    ],
     "js": [
       {
         "pages": [

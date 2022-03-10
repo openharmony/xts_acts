@@ -55,6 +55,10 @@
       {
         "name":"ohos.permission.LISTEN_BUNDLE_CHANGE",
         "reason":"need use ohos.permission.LISTEN_BUNDLE_CHANGE"
+      },
+      {
+        "name":"ohos.permission.MANAGE_MISSIONS",
+        "reason":"need use ohos.permission.MANAGE_MISSIONS"
       }
     ],
     "js": [

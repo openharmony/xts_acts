@@ -13,19 +13,19 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("sensor_js_test") {
+ohos_js_hap_suite("miscdevice_js_test") {
   hap_profile = "./src/main/config.json"
   deps = [
-    ":sensor_js_assets",
-    ":sensor_js_resources",
+    ":miscdevice_js_assets",
+    ":miscdevice_js_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsSensorJSApiTest"
+  hap_name = "ActsmiscdeviceJSApiTest"
 }
-ohos_js_assets("sensor_js_assets") {
+ohos_js_assets("miscdevice_js_assets") {
   source_dir = "./src/main/js/default"
 }
-ohos_resources("sensor_js_resources") {
+ohos_resources("miscdevice_js_resources") {
   sources = [ "./src/main/resources" ]
   hap_profile = "./src/main/config.json"
 }

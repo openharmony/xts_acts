@@ -18,8 +18,9 @@ import Fileio from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('AudioDecoderReliabilityPromise', function () {
-    const AUDIOPATH =  '/data/media/AAC_48000_32_1.aac';
-    const BASIC_PATH = '/data/media/results/decode_reliability_promise_';
+    const RESOURCEPATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiodecoder/'
+    const AUDIOPATH =  RESOURCEPATH + 'AAC_48000_32_1.aac';
+    const BASIC_PATH = RESOURCEPATH + 'results/decode_reliability_promise';
     const END = 0;
     const CONFIGURE = 1;
     const PREPARE = 2;
@@ -584,7 +585,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_PROMISE_0100', 0, async function (done) {
-        let savepath = BASIC_PATH + 'configure_0100.txt';
+        let savepath = BASIC_PATH + 'configure_0100.pcm';
         let mySteps = new Array(CONFIGURE, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -598,7 +599,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_PROMISE_0200', 0, async function (done) {
-        let savepath = BASIC_PATH + 'configure_0200.txt';
+        let savepath = BASIC_PATH + 'configure_0200.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, CONFIGURE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -612,7 +613,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_PROMISE_0300', 0, async function (done) {
-        let savepath = BASIC_PATH + 'configure_0300.txt';
+        let savepath = BASIC_PATH + 'configure_0300.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, CONFIGURE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -626,7 +627,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_PROMISE_0400', 0, async function (done) {
-        let savepath = BASIC_PATH + 'configure_0400.txt';
+        let savepath = BASIC_PATH + 'configure_0400.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, CONFIGURE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -640,7 +641,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_PROMISE_0500', 0, async function (done) {
-        let savepath = BASIC_PATH + 'configure_0500.txt';
+        let savepath = BASIC_PATH + 'configure_0500.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, STOP ,CONFIGURE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -654,7 +655,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_PROMISE_0600', 0, async function (done) {
-        let savepath = BASIC_PATH + 'configure_0600.txt';
+        let savepath = BASIC_PATH + 'configure_0600.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, CONFIGURE_ERROR, END);
         EOSFrameNum = 2;
         createAudioDecoder(savepath, mySteps, done);
@@ -669,7 +670,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_PROMISE_0700', 0, async function (done) {
-        let savepath = BASIC_PATH + 'configure_0700.txt';
+        let savepath = BASIC_PATH + 'configure_0700.pcm';
         let mySteps = new Array(RESET, CONFIGURE, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -683,7 +684,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_PROMISE_0800', 0, async function (done) {
-        let savepath = BASIC_PATH + 'configure_0800.txt';
+        let savepath = BASIC_PATH + 'configure_0800.pcm';
         let mySteps = new Array(CONFIGURE, CONFIGURE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -697,7 +698,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_PROMISE_0900', 0, async function (done) {
-        let savepath = BASIC_PATH + 'configure_0900.txt';
+        let savepath = BASIC_PATH + 'configure_0900.pcm';
         let mySteps = new Array(CONFIGURE, RESET, CONFIGURE, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -711,7 +712,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_PREPARE_PROMISE_0100', 0, async function (done) {
-        let savepath = BASIC_PATH + 'prepare_0100.txt';
+        let savepath = BASIC_PATH + 'prepare_0100.pcm';
         let mySteps = new Array(PREPARE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -725,7 +726,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_PREPARE_PROMISE_0200', 0, async function (done) {
-        let savepath = BASIC_PATH + 'prepare_0200.txt';
+        let savepath = BASIC_PATH + 'prepare_0200.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -739,7 +740,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_PREPARE_PROMISE_0300', 0, async function (done) {
-        let savepath = BASIC_PATH + 'prepare_0300.txt';
+        let savepath = BASIC_PATH + 'prepare_0300.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, PREPARE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -753,7 +754,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_PREPARE_PROMISE_0400', 0, async function (done) {
-        let savepath = BASIC_PATH + 'prepare_0400.txt';
+        let savepath = BASIC_PATH + 'prepare_0400.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, PREPARE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -767,7 +768,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_PREPARE_PROMISE_0500', 0, async function (done) {
-        let savepath = BASIC_PATH + 'prepare_0500.txt';
+        let savepath = BASIC_PATH + 'prepare_0500.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, PREPARE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -781,7 +782,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_PREPARE_PROMISE_0600', 0, async function (done) {
-        let savepath = BASIC_PATH + 'prepare_0600.txt';
+        let savepath = BASIC_PATH + 'prepare_0600.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, STOP, PREPARE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -795,7 +796,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_PREPARE_PROMISE_0700', 0, async function (done) {
-        let savepath = BASIC_PATH + 'prepare_0700.txt';
+        let savepath = BASIC_PATH + 'prepare_0700.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, PREPARE_ERROR, END);
         EOSFrameNum = 2;
         createAudioDecoder(savepath, mySteps, done);
@@ -810,7 +811,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_PREPARE_PROMISE_0800', 0, async function (done) {
-        let savepath = BASIC_PATH + 'prepare_0800.txt';
+        let savepath = BASIC_PATH + 'prepare_0800.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, RESET, PREPARE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -824,7 +825,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_START_PROMISE_0100', 0, async function (done) {
-        let savepath = BASIC_PATH + 'start_0100.txt';
+        let savepath = BASIC_PATH + 'start_0100.pcm';
         let mySteps = new Array(START_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -838,7 +839,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_START_PROMISE_0200', 0, async function (done) {
-        let savepath = BASIC_PATH + 'start_0200.txt';
+        let savepath = BASIC_PATH + 'start_0200.pcm';
         let mySteps = new Array(CONFIGURE, START_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -852,7 +853,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_START_PROMISE_0300', 0, async function (done) {
-        let savepath = BASIC_PATH + 'start_0300.txt';
+        let savepath = BASIC_PATH + 'start_0300.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, WAITFORALLOUTS);
         workdoneAtEOS = true;
         createAudioDecoder(savepath, mySteps, done);
@@ -867,7 +868,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_START_PROMISE_0400', 0, async function (done) {
-        let savepath = BASIC_PATH + 'start_0400.txt';
+        let savepath = BASIC_PATH + 'start_0400.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, START_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -881,7 +882,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_START_PROMISE_0500', 0, async function (done) {
-        let savepath = BASIC_PATH + 'start_0500.txt';
+        let savepath = BASIC_PATH + 'start_0500.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, START_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -895,7 +896,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_START_PROMISE_0600', 0, async function (done) {
-        let savepath = BASIC_PATH + 'start_0600.txt';
+        let savepath = BASIC_PATH + 'start_0600.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, STOP, START, WAITFORALLOUTS);
         workdoneAtEOS = true;
         createAudioDecoder(savepath, mySteps, done);
@@ -910,7 +911,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_START_PROMISE_0700', 0, async function (done) {
-        let savepath = BASIC_PATH + 'start_0700.txt';
+        let savepath = BASIC_PATH + 'start_0700.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, START_ERROR, END);
         EOSFrameNum = 2;
         createAudioDecoder(savepath, mySteps, done);
@@ -925,7 +926,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_START_PROMISE_0800', 0, async function (done) {
-        let savepath = BASIC_PATH + 'start_0800.txt';
+        let savepath = BASIC_PATH + 'start_0800.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, RESET, START_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -939,7 +940,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_PROMISE_0100', 0, async function (done) {
-        let savepath = BASIC_PATH + 'flush_0100.txt';
+        let savepath = BASIC_PATH + 'flush_0100.pcm';
         let mySteps = new Array(FLUSH_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -953,7 +954,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_PROMISE_0200', 0, async function (done) {
-        let savepath = BASIC_PATH + 'flush_0200.txt';
+        let savepath = BASIC_PATH + 'flush_0200.pcm';
         let mySteps = new Array(CONFIGURE, FLUSH_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -967,7 +968,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_PROMISE_0300', 0, async function (done) {
-        let savepath = BASIC_PATH + 'flush_0300.txt';
+        let savepath = BASIC_PATH + 'flush_0300.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, FLUSH_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -981,7 +982,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_PROMISE_0400', 0, async function (done) {
-        let savepath = BASIC_PATH + 'flush_0400.txt';
+        let savepath = BASIC_PATH + 'flush_0400.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, WAITFORALLOUTS);
         workdoneAtEOS = true;
         createAudioDecoder(savepath, mySteps, done);
@@ -996,7 +997,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_PROMISE_0500', 0, async function (done) {
-        let savepath = BASIC_PATH + 'flush_0500.txt';
+        let savepath = BASIC_PATH + 'flush_0500.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, FLUSH, WAITFORALLOUTS);
         workdoneAtEOS = true;
         createAudioDecoder(savepath, mySteps, done);
@@ -1011,7 +1012,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_PROMISE_0600', 0, async function (done) {
-        let savepath = BASIC_PATH + 'flush_0600.txt';
+        let savepath = BASIC_PATH + 'flush_0600.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, STOP ,FLUSH_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -1025,7 +1026,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_PROMISE_0700', 0, async function (done) {
-        let savepath = BASIC_PATH + 'flush_0700.txt';
+        let savepath = BASIC_PATH + 'flush_0700.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, FLUSH, END);
         EOSFrameNum = 2;
         createAudioDecoder(savepath, mySteps, done);
@@ -1040,7 +1041,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_PROMISE_0800', 0, async function (done) {
-        let savepath = BASIC_PATH + 'flush_0800.txt';
+        let savepath = BASIC_PATH + 'flush_0800.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, RESET, FLUSH_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -1054,7 +1055,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_STOP_PROMISE_0100', 0, async function (done) {
-        let savepath = BASIC_PATH + 'stop_0100.txt';
+        let savepath = BASIC_PATH + 'stop_0100.pcm';
         let mySteps = new Array(STOP_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -1068,7 +1069,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_STOP_PROMISE_0200', 0, async function (done) {
-        let savepath = BASIC_PATH + 'stop_0200.txt';
+        let savepath = BASIC_PATH + 'stop_0200.pcm';
         let mySteps = new Array(CONFIGURE, STOP_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -1082,7 +1083,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_STOP_PROMISE_0300', 0, async function (done) {
-        let savepath = BASIC_PATH + 'stop_0300.txt';
+        let savepath = BASIC_PATH + 'stop_0300.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, STOP_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -1096,7 +1097,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_STOP_PROMISE_0400', 0, async function (done) {
-        let savepath = BASIC_PATH + 'stop_0400.txt';
+        let savepath = BASIC_PATH + 'stop_0400.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, STOP, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -1110,7 +1111,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_STOP_PROMISE_0500', 0, async function (done) {
-        let savepath = BASIC_PATH + 'stop_0500.txt';
+        let savepath = BASIC_PATH + 'stop_0500.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, STOP, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -1124,7 +1125,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_STOP_PROMISE_0600', 0, async function (done) {
-        let savepath = BASIC_PATH + 'stop_0600.txt';
+        let savepath = BASIC_PATH + 'stop_0600.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, STOP, STOP_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -1138,7 +1139,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_STOP_PROMISE_0700', 0, async function (done) {
-        let savepath = BASIC_PATH + 'stop_0700.txt';
+        let savepath = BASIC_PATH + 'stop_0700.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, STOP, END);
         EOSFrameNum = 2;
         createAudioDecoder(savepath, mySteps, done);
@@ -1153,7 +1154,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_STOP_PROMISE_0800', 0, async function (done) {
-        let savepath = BASIC_PATH + 'stop_0800.txt';
+        let savepath = BASIC_PATH + 'stop_0800.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, RESET, STOP_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -1167,7 +1168,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_RESET_PROMISE_0100', 0, async function (done) {
-        let savepath = BASIC_PATH + 'reset_0100.txt';
+        let savepath = BASIC_PATH + 'reset_0100.pcm';
         let mySteps = new Array(RESET, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -1181,7 +1182,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_RESET_PROMISE_0200', 0, async function (done) {
-        let savepath = BASIC_PATH + 'reset_0200.txt';
+        let savepath = BASIC_PATH + 'reset_0200.pcm';
         let mySteps = new Array(CONFIGURE, RESET, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -1195,7 +1196,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_RESET_PROMISE_0300', 0, async function (done) {
-        let savepath = BASIC_PATH + 'reset_0300.txt';
+        let savepath = BASIC_PATH + 'reset_0300.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, RESET, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -1209,7 +1210,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_RESET_PROMISE_0400', 0, async function (done) {
-        let savepath = BASIC_PATH + 'reset_0400.txt';
+        let savepath = BASIC_PATH + 'reset_0400.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, RESET, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -1223,7 +1224,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_RESET_PROMISE_0500', 0, async function (done) {
-        let savepath = BASIC_PATH + 'reset_0500.txt';
+        let savepath = BASIC_PATH + 'reset_0500.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, RESET, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -1237,7 +1238,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_RESET_PROMISE_0600', 0, async function (done) {
-        let savepath = BASIC_PATH + 'reset_0600.txt';
+        let savepath = BASIC_PATH + 'reset_0600.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, STOP, RESET, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -1251,7 +1252,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_RESET_PROMISE_0700', 0, async function (done) {
-        let savepath = BASIC_PATH + 'reset_0700.txt';
+        let savepath = BASIC_PATH + 'reset_0700.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, RESET, END);
         EOSFrameNum = 2;
         createAudioDecoder(savepath, mySteps, done);
@@ -1266,7 +1267,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_RESET_PROMISE_0800', 0, async function (done) {
-        let savepath = BASIC_PATH + 'reset_0800.txt';
+        let savepath = BASIC_PATH + 'reset_0800.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, RESET, RESET, END);
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -1280,7 +1281,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_EOS_PROMISE_0100', 0, async function (done) {
-        let savepath = BASIC_PATH + 'eos_0100.txt';
+        let savepath = BASIC_PATH + 'eos_0100.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, FLUSH, STOP, END);
         EOSFrameNum = 2;
         createAudioDecoder(savepath, mySteps, done);
@@ -1295,7 +1296,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_EOS_PROMISE_0200', 0, async function (done) {
-        let savepath = BASIC_PATH + 'eos_0200.txt';
+        let savepath = BASIC_PATH + 'eos_0200.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, FLUSH, WAITFORALLOUTS);
         EOSFrameNum = 2;
         flushAtEOS = true;
@@ -1311,7 +1312,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_EOS_PROMISE_0300', 0, async function (done) {
-        let savepath = BASIC_PATH + 'eos_0300.txt';
+        let savepath = BASIC_PATH + 'eos_0300.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, RESET, CONFIGURE, END);
         EOSFrameNum = 2;
         createAudioDecoder(savepath, mySteps, done);
@@ -1326,7 +1327,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_EOS_PROMISE_0400', 0, async function (done) {
-        let savepath = BASIC_PATH + 'eos_0400.txt';
+        let savepath = BASIC_PATH + 'eos_0400.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, STOP, START, WAITFORALLOUTS);
         EOSFrameNum = 2;
         createAudioDecoder(savepath, mySteps, done);
@@ -1341,7 +1342,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_EOS_PROMISE_0500', 0, async function (done) {
-        let savepath = BASIC_PATH + 'eos_0500.txt';
+        let savepath = BASIC_PATH + 'eos_0500.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, STOP, START, STOP, END);
         EOSFrameNum = 2;
         createAudioDecoder(savepath, mySteps, done);

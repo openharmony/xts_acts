@@ -35,7 +35,7 @@ export default function positionSettingJsunit() {
         console.info("push positionSetting page result:" + JSON.stringify(result));
       }
     } catch (err) {
-      console.error("push positionSetting page error:" + JSON.stringify(result));
+      console.error("push positionSetting page error:" + err);
     }
     done()
   });

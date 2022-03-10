@@ -175,7 +175,7 @@
             </text>
             <switch id="event2" class="event2" onclick="click" ondoubleclick="doubleClick"
                    onlongpress="longPress" onfocus="focus" onblur="blur" onkey="key"
-                   onswipe="swipe" onattached="attached" ondetached="detached">
+                   onswipe="swipe" onattached="attached" ondetached="detached" onaccessibility="attached">
             </switch>
 
             <text  class="sub-title">

@@ -93,8 +93,8 @@ export default function listItemJsunit() {
       console.log('ListItem2‘s sticky is ' + JSON.stringify(obj.$attrs.sticky))
       console.log('ListItem2‘s editable is ' + JSON.stringify(obj.$attrs.editable))
       await sleep(1)
-      expect(obj.$attr.sticky).assertEqual('Sticky.Normal')
-      expect(obj.$attr.editable).assertEqual('EditMode.Deletable')
+      expect(obj.$attrs.sticky).assertEqual('Sticky.Normal')
+      expect(obj.$attrs.editable).assertEqual('EditMode.Deletable')
       console.info('++++++++++++++++ ListItem TestCase 2 End ++++++++++++++++');
       done();
     });
@@ -115,8 +115,8 @@ export default function listItemJsunit() {
       console.log('ListItem3‘s sticky is ' + JSON.stringify(obj.$attrs.sticky))
       console.log('ListItem3‘s editable is ' + JSON.stringify(obj.$attrs.editable))
       await sleep(1)
-      expect(obj.$attr.sticky).assertEqual('Sticky.Opacity')
-      expect(obj.$attr.editable).assertEqual('EditMode.None')
+      expect(obj.$attrs.sticky).assertEqual('Sticky.Opacity')
+      expect(obj.$attrs.editable).assertEqual('EditMode.None')
       console.info('++++++++++++++++ ListItem TestCase 3 End ++++++++++++++++');
       done();
     });
@@ -137,8 +137,8 @@ export default function listItemJsunit() {
       console.log('ListItem4‘s sticky is ' + JSON.stringify(obj.$attrs.sticky))
       console.log('ListItem4‘s editable is ' + JSON.stringify(obj.$attrs.editable))
       await sleep(1)
-      expect(obj.$attr.sticky).assertEqual('Sticky.Opacity')
-      expect(obj.$attr.editable).assertEqual('EditMode.Movable')
+      expect(obj.$attrs.sticky).assertEqual('Sticky.Opacity')
+      expect(obj.$attrs.editable).assertEqual('EditMode.Movable')
       console.info('++++++++++++++++ ListItem TestCase 4 End ++++++++++++++++');
       done();
     });

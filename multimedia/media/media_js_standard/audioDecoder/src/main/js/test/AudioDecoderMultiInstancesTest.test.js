@@ -18,8 +18,8 @@ import Fileio from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('AudioDecoderMultiInstances', function () {
-    const AUDIOPATH =  '/data/media/AAC_48000_32_1.aac';
-    const BASIC_PATH = '/data/media/results/decode_multiInstances_';
+    const RESOURCEPATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiodecoder/'
+    const AUDIOPATH =  RESOURCEPATH + 'AAC_48000_32_1.aac';
     let readStreamSync;
     let eosframenum = 0;
     let samplerate = 44.1;

@@ -100,4 +100,71 @@ describe('VideoPlayerEnumTest', function () {
         expect(media.BufferingInfoType.CACHED_DURATION).assertEqual(4);
         done();
     })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_ENUM_PLAYBACK_SPEED_00_0100
+        * @tc.name      : PlaybackSpeed
+        * @tc.desc      : PlaybackSpeed Enumeration test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_VIDEO_PLAYER_ENUM_PLAYBACK_SPEED_00_0100', 0, async function (done) {
+        expect(media.PlaybackSpeed.SPEED_FORWARD_0_75_X).assertEqual(0);
+        expect(media.PlaybackSpeed.SPEED_FORWARD_1_00_X).assertEqual(1);
+        expect(media.PlaybackSpeed.SPEED_FORWARD_1_25_X).assertEqual(2);
+        expect(media.PlaybackSpeed.SPEED_FORWARD_1_75_X).assertEqual(3);
+        expect(media.PlaybackSpeed.SPEED_FORWARD_2_00_X).assertEqual(4);
+        done();
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_ENUM_CONTAINER_FORMAT_TYPE_00_0100
+        * @tc.name      : ContainerFormatType
+        * @tc.desc      : ContainerFormatType Enumeration test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_VIDEO_PLAYER_ENUM_CONTAINER_FORMAT_TYPE_00_0100', 0, async function (done) {
+        expect(media.ContainerFormatType.CFT_MPEG_4).assertEqual("mp4");
+        expect(media.ContainerFormatType.CFT_MPEG_4A).assertEqual("m4a");
+        done();
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_ENUM_MEDIA_TYPE_00_0100
+        * @tc.name      : MediaType
+        * @tc.desc      : MediaType Enumeration test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_VIDEO_PLAYER_ENUM_MEDIA_TYPE_00_0100', 0, async function (done) {
+        expect(media.MediaType.MEDIA_TYPE_AUD).assertEqual(0);
+        expect(media.MediaType.MEDIA_TYPE_VID).assertEqual(1);
+        expect(media.MediaType.MEDIA_TYPE_SUBTITLE).assertEqual(2);
+        done();
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_ENUM_MEDIA_DESCRIPTION_KEY_00_0100
+        * @tc.name      : MediaDescriptionKey
+        * @tc.desc      : MediaDescriptionKey Enumeration test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_VIDEO_PLAYER_ENUM_MEDIA_DESCRIPTION_KEY_00_0100', 0, async function (done) {
+        expect(media.MediaDescriptionKey.MD_KEY_TRACK_INDEX).assertEqual("track_index");
+        expect(media.MediaDescriptionKey.MD_KEY_TRACK_TYPE).assertEqual("track_type");
+        expect(media.MediaDescriptionKey.MD_KEY_CODEC_MIME).assertEqual("codec_mime");
+        expect(media.MediaDescriptionKey.MD_KEY_DURATION).assertEqual("duration");
+        expect(media.MediaDescriptionKey.MD_KEY_BITRATE).assertEqual("bitrate");
+        expect(media.MediaDescriptionKey.MD_KEY_WIDTH).assertEqual("width");
+        expect(media.MediaDescriptionKey.MD_KEY_HEIGHT).assertEqual("height");
+        expect(media.MediaDescriptionKey.MD_KEY_AUD_CHANNEL_COUNT).assertEqual("channel_count");
+        expect(media.MediaDescriptionKey.MD_KEY_AUD_SAMPLE_RATE).assertEqual("sample_rate");
+        done();
+    })
 })

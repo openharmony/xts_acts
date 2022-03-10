@@ -35,7 +35,7 @@ export default function gaugeJsunit() {
           console.info("push gauge page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push gauge page error " + JSON.stringify(err));
+        console.error("push gauge page error " + err);
       }
       done()
     });
@@ -65,10 +65,7 @@ export default function gaugeJsunit() {
       try {
         var eventData = {
           data: {
-            "gaugeValue": "10",
-            "strokeWidthValue": "30",
-            "startAngleValue": "200",
-            "endAngleValue": "200"
+            "gaugeValue": "10"
           }
         }
         var innerEvent = {
@@ -84,13 +81,90 @@ export default function gaugeJsunit() {
       let strJsonNew = getInspectorByKey('gauge');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testGauge002] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.strokeWidth).assertEqual('30.000000vp');
-      expect(objNew.$attrs.value).assertEqual('10.00');
+      expect(objNew.$attrs.gauge).assertEqual('10.00');
       done();
     });
 
     it('testGauge003', 0, async function (done) {
       console.info('[testGauge003] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "strokeWidthValue": "30",
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testGauge003] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testGauge003] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJsonNew = getInspectorByKey('gauge');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("[testGauge003] component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.strokeWidth).assertEqual('30.000000vp');
+      done();
+    });
+
+    it('testGauge004', 0, async function (done) {
+      console.info('[testGauge004] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "startAngleValue": "200"
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testGauge004] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testGauge004] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJsonNew = getInspectorByKey('gauge');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("[testGauge004] component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.startAngle).assertEqual('200.00');
+      done();
+    });
+
+    it('testGauge005', 0, async function (done) {
+      console.info('[testGauge005] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "endAngleValue": "200"
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testGauge005] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testGauge005] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJsonNew = getInspectorByKey('gauge');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("[testGauge005] component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.endAngle).assertEqual('200.00');
+      done();
+    });
+
+    it('testGauge006', 0, async function (done) {
+      console.info('[testGauge006] START');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -102,10 +176,10 @@ export default function gaugeJsunit() {
           eventId: 2,
           priority: events_emitter.EventPriority.LOW
         }
-        console.info("[testGauge003] start to publish emit");
+        console.info("[testGauge006] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testGauge003] change component data error: " + err.message);
+        console.log("[testGauge006] change component data error: " + err.message);
       }
       done();
     });

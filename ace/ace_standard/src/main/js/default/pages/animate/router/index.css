@@ -1,0 +1,22 @@
+.container {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+.container-title{
+    font-size: 26px;
+    font-weight: 600;
+    padding: 16px;
+}
+.title{
+    font-size: 18px;
+    color: grey;
+    padding: 5px;
+    text-align: center;
+}
+.svg-style{
+    border: 1px solid #000000;
+}
+.outerBox{
+    flex-direction: column;
+}

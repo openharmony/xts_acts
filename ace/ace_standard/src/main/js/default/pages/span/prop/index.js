@@ -46,7 +46,6 @@ export default {
     },
     onShow(){
         this.getCommonPropValues();
-        this.getSpecificPropValues();
         globalThis.value = {
             idProp : this.idProp, classProp : this.classProp, classPropNone : this.classPropNone,
             styleProp : this.styleProp, refProp : this.refProp, refPropNone : this.refPropNone,

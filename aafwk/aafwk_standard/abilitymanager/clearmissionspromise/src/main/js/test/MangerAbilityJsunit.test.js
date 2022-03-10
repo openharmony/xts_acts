@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import featureAbility from '@ohos.ability.featureability'
-import abilitymanager from '@ohos.app.abilitymanager'
+import featureAbility from '@ohos.ability.featureAbility'
+import missionManager from '@ohos.application.missionManager'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('ActsAmsCallBackSixth Scene', function () {
@@ -41,8 +41,12 @@ describe('ActsAmsCallBackSixth Scene', function () {
     });
 
     function sleep(delay) {
-        var start = (new Date()).getTime();
-        while((new Date()).getTime() - start < delay) {}
+        var start = new Date().getTime();
+        while (true) {
+            if (new Date().getTime() - start > delay) {
+                break;
+            }
+        }
     }
 
     /*
@@ -51,10 +55,12 @@ describe('ActsAmsCallBackSixth Scene', function () {
     * @tc.desc      : Clear Missions(by Promise)
      */
     it('Acts_Ams_test_12100', 0, async function (done) {
-        var info = await abilitymanager.clearMissions();
-        console.info('Acts_Ams_test_12100 clearMissions data  [' + info + ']');
-        expect(typeof(info)).assertEqual("number");
-        expect(info).assertEqual(0);
+        var info = await missionManager.clearAllMissions().catch(err => {
+            console.log('Acts_Ams_test_12100 clearAllMission failed: ' + err);
+            expect(err).assertEqual(0);
+            done();
+        });
+        console.info('Acts_Ams_test_12100 clearAllMissions data  [' + info + ']');
         done();
     })
 })

@@ -2,10 +2,9 @@
     "description": "Function test of sim manager interface",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "540000",
+        "test-timeout": "1800000",
         "package": "com.ohos.simmanagertest",
-        "shell-timeout": "540000",
-        "native-test-timeout":"540000"
+        "shell-timeout": "60000"
     },
     "kits": [
         {

@@ -35,7 +35,7 @@ export default function areaChangeJsunit() {
           console.info("push areaChange page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push areaChange page error " + JSON.stringify(result));
+        console.error("push areaChange page error: " + err);
       }
       done()
     });

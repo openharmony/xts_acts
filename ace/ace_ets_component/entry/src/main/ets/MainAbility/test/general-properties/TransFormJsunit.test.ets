@@ -36,7 +36,7 @@ export default function transFormJsunit() {
           console.info("push transForm  page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push transForm  page error:" + JSON.stringify(result));
+        console.error("push transForm  page error:" + err);
       }
       done()
     });

@@ -36,7 +36,7 @@ export default function gridJsunit() {
           console.info('beforeEach push prompt page result:' + JSON.stringify(result));
         }
       } catch (err) {
-        console.error('beforeEach push prompt page error:' + JSON.stringify(result));
+        console.error('beforeEach push prompt page error:' + err);
       }
       done()
     });

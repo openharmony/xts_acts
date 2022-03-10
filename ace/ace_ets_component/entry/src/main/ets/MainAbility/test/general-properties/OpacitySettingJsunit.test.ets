@@ -35,7 +35,7 @@ export default function opacitySettingJsunit() {
         console.info("push opacitySetting page result:" + JSON.stringify(result));
       }
     } catch (err) {
-      console.error("push opacitySetting page error:" + JSON.stringify(result));
+      console.error("push opacitySetting page error:" + err);
     }
     done()
   });

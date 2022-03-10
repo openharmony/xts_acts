@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.ohos.launcher",
+    "bundleName": "com.example.myapplication111",
     "vendor": "example",
     "version": {
       "code": 1000000,
@@ -56,6 +56,10 @@
       {
         "name":"ohos.permission.LISTEN_BUNDLE_CHANGE",
         "reason":"need use ohos.permission.LISTEN_BUNDLE_CHANGE"
+      },
+      {
+        "name":"ohos.permission.MANAGE_MISSIONS",
+        "reason":"need use ohos.permission.MANAGE_MISSIONS"
       }
     ],
     "js": [

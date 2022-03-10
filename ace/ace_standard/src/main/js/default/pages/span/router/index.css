@@ -160,6 +160,7 @@
     background-size:cover;
     background-repeat: repeat-x;
     background-position: center;
+    mask-image:linear-gradient(pink,#fff000);
     flex:1;
     flex-grow: 2;
     flex-basis: 10px;

@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 import bundle from '@ohos.bundle'
+const bundleName = 'com.ohos.launcher'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 const NUM_TWO = 2;
 const NUM_FOUR = 4;
 describe('ActsBmsJsTest', function () {
+    
     /*
     * @tc.number: bms_getJsAbility_0100
     * @tc.name: test the multi js ability
@@ -42,12 +44,12 @@ describe('ActsBmsJsTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             let result = await bundle.getBundleInfo(bundleName, 1);
-            expect(result.abilityInfo.length).assertEqual(NUM_TWO);
-            if (result.abilityInfo.length == NUM_TWO) {
-                console.debug('========check abilityName ========' + JSON.stringify(result.abilityInfo));
-                expect(result.abilityInfo[0].name).assertEqual(abilityName);
-                expect(result.abilityInfo[0].srcLanguage).assertEqual('js');
-                expect(result.abilityInfo[0].srcPath).assertEqual('');
+            expect(result.abilityInfos.length).assertEqual(NUM_TWO);
+            if (result.abilityInfos.length == NUM_TWO) {
+                console.debug('========check abilityName ========' + JSON.stringify(result.abilityInfos));
+                expect(result.abilityInfos[0].name).assertEqual(abilityName);
+                expect(result.abilityInfos[0].srcLanguage).assertEqual('js');
+                expect(result.abilityInfos[0].srcPath).assertEqual('');
             }
             installer.uninstall(bundleName, {
                 userId: 100,
@@ -64,11 +66,11 @@ describe('ActsBmsJsTest', function () {
     })
 
     /*
-    * @tc.number: bms_getJsAbility_0200
-    * @tc.name: test the multi js ability
-    * @tc.desc: 1.install a js hap with two ability
-    *           2.check the ability name by the interface of getBundleInfo
-    */
+     * @tc.number: bms_getJsAbility_0200
+     * @tc.name: test the multi js ability
+     * @tc.desc: 1.install a js hap with two ability
+     *           2.check the ability name by the interface of getBundleInfo
+     */
     it('bms_getJsAbility_0200', 0, async function (done) {
         console.info('=====================bms_getJsAbility_0200==================');
         var bundleName = 'com.example.third5';
@@ -90,15 +92,15 @@ describe('ActsBmsJsTest', function () {
             expect(data.statusMessage).assertEqual('SUCCESS');
             let result = await bundle.getBundleInfo(bundleName, 1)
             console.debug('==========bundleInfo==========' + JSON.stringify(result))
-            expect(result.abilityInfo.length).assertEqual(NUM_FOUR);
-            if (result.abilityInfo.length == NUM_FOUR) {
-                console.debug('========check abilityName ========' + JSON.stringify(result.abilityInfo));
-                expect(result.abilityInfo[0].name).assertEqual(abilityName1);
-                expect(result.abilityInfo[0].srcLanguage).assertEqual('js');
-                expect(result.abilityInfo[0].srcPath).assertEqual('');
-                expect(result.abilityInfo[1].name).assertEqual(abilityName2);
-                expect(result.abilityInfo[1].srcLanguage).assertEqual('js');
-                expect(result.abilityInfo[1].srcPath).assertEqual('');
+            expect(result.abilityInfos.length).assertEqual(NUM_FOUR);
+            if (result.abilityInfos.length == NUM_FOUR) {
+                console.debug('========check abilityName ========' + JSON.stringify(result.abilityInfos));
+                expect(result.abilityInfos[0].name).assertEqual(abilityName1);
+                expect(result.abilityInfos[0].srcLanguage).assertEqual('js');
+                expect(result.abilityInfos[0].srcPath).assertEqual('');
+                expect(result.abilityInfos[1].name).assertEqual(abilityName2);
+                expect(result.abilityInfos[1].srcLanguage).assertEqual('js');
+                expect(result.abilityInfos[1].srcPath).assertEqual('');
             }
             installer.uninstall(bundleName, {
                 userId: 100,
@@ -114,11 +116,11 @@ describe('ActsBmsJsTest', function () {
     })
 
     /*
-    * @tc.number: bms_getJsAbility_0300
-    * @tc.name: test the multi js ability
-    * @tc.desc: 1.install a js hap which has an ability with short domain name
-    *           2.check the ability name by the interface of getBundleInfo
-    */
+     * @tc.number: bms_getJsAbility_0300
+     * @tc.name: test the multi js ability
+     * @tc.desc: 1.install a js hap which has an ability with short domain name
+     *           2.check the ability name by the interface of getBundleInfo
+     */
     it('bms_getJsAbility_0300', 0, async function (done) {
         console.info('=====================bms_getJsAbility_0300==================');
         let bundleName = 'com.example.js';
@@ -138,12 +140,12 @@ describe('ActsBmsJsTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             let result = await bundle.getBundleInfo(bundleName, 1);
-            expect(result.abilityInfo.length).assertEqual(1);
-            if (result.abilityInfo.length == 1) {
-                console.debug('========check abilityName ========' + JSON.stringify(result.abilityInfo));
-                expect(result.abilityInfo[0].name).assertEqual(abilityName);
-                expect(result.abilityInfo[0].srcLanguage).assertEqual('js');
-                expect(result.abilityInfo[0].srcPath).assertEqual('default');
+            expect(result.abilityInfos.length).assertEqual(1);
+            if (result.abilityInfos.length == 1) {
+                console.debug('========check abilityName ========' + JSON.stringify(result.abilityInfos));
+                expect(result.abilityInfos[0].name).assertEqual(abilityName);
+                expect(result.abilityInfos[0].srcLanguage).assertEqual('js');
+                expect(result.abilityInfos[0].srcPath).assertEqual('default');
             }
             installer.uninstall(bundleName, {
                 userId: 100,
@@ -184,12 +186,12 @@ describe('ActsBmsJsTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             let result = await bundle.getBundleInfo(bundleName, 1);
-            expect(result.abilityInfo.length).assertEqual(1);
-            if (result.abilityInfo.length == 1) {
-                console.debug('========check abilityName ========' + JSON.stringify(result.abilityInfo));
-                expect(result.abilityInfo[0].name).assertEqual(abilityName);
-                expect(result.abilityInfo[0].srcLanguage).assertEqual('c++');
-                expect(result.abilityInfo[0].srcPath).assertEqual('default/c++/');
+            expect(result.abilityInfos.length).assertEqual(1);
+            if (result.abilityInfos.length == 1) {
+                console.debug('========check abilityName ========' + JSON.stringify(result.abilityInfos));
+                expect(result.abilityInfos[0].name).assertEqual(abilityName);
+                expect(result.abilityInfos[0].srcLanguage).assertEqual('c++');
+                expect(result.abilityInfos[0].srcPath).assertEqual('default/c++/');
             }
             installer.uninstall(bundleName, {
                 userId: 100,
@@ -203,5 +205,36 @@ describe('ActsBmsJsTest', function () {
                 done();
             });
         }
+    })
+
+    /**
+     * @tc.number getNameForUid_0100
+     * @tc.name BUNDLE::getBundleInfo
+     * @tc.desc Test getBundleInfo interfaces with hap.
+     */
+    it('getNameForUid_0100', 0, async function (done) {
+        bundle.getBundleInfo(bundleName).then(dataInfo => {
+            bundle.getNameForUid(dataInfo.uid).then(data => {
+                expect(data).assertEqual(bundleName)
+                done()
+            })
+        })
+        .catch(err => {
+            console.info("getNameForUid fail:" + JSON.stringify(err))
+            expect(err).assertFail()
+            done()
+        })
+    })
+
+    /**
+     * @tc.number getNameForUid_0200
+     * @tc.name BUNDLE::getBundleInfo
+     * @tc.desc Test getBundleInfo interfaces with hap.
+     */
+    it('getNameForUid_0200', 0, async function (done) {
+        let dataInfo = await bundle.getBundleInfo(bundleName)
+        let data = await bundle.getNameForUid(dataInfo.uid)
+        expect(data).assertEqual(bundleName)
+        done()
     })
 })

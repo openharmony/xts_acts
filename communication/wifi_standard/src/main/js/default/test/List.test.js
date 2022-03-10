@@ -13,5 +13,7 @@
  * limitations under the License.
  */
 require('./WifiSta.test.js')
-require('./WifiSoftAP.test.js')
+//require('./WifiSoftAP.test.js')
+//require('./WifiP2P.test.js')
+
 

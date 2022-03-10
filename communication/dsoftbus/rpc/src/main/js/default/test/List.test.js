@@ -14,3 +14,4 @@
  */
 
 require('./RpcJsunit.test.js')
+require('./RpcClientJsunit.test.js')

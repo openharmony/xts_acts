@@ -2,9 +2,9 @@
     "description": "Configuration for mediaLibrary Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "120000",
+        "test-timeout": "600000",
         "package": "ohos.acts.multimedia.mediaLibrary",
-        "shell-timeout": "120000"
+        "shell-timeout": "600000"
     },
     "kits": [
         {
@@ -12,16 +12,39 @@
             "pre-push": [
             ],
             "push": [
+                "./resource/medialibrary/01.jpg ->/storage/media/100/local/files",
+                "./resource/medialibrary/01.mp3 ->/storage/media/100/local/files",
+                "./resource/medialibrary/01.mp4 ->/storage/media/100/local/files"
             ]
         },
         {
             "type": "ShellKit",
             "run-command": [
-                "chmod -R 666 /data/media/*",
-                "setenforce 0"
+                "mkdir /storage/media/100/local/files/pictures",
+                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/pictures/",
+                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/pictures/",
+                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/pictures/",
+                "mkdir /storage/media/100/local/files/pictures/weixin",
+                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/pictures/weixin",
+                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/pictures/weixin",
+                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/pictures/weixin",
+                "mkdir /storage/media/100/local/files/camera",
+                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/camera/01.jpg",
+                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/camera/02.jpg",
+                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/camera/01.mp3",
+                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/camera/02.mp3",
+                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/camera/01.mp4",
+                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/camera/02.mp4",
+                "mkdir /storage/media/100/local/files/File",
+                "touch /storage/media/100/local/files/File/test.dat",
+                "touch /storage/media/100/local/files/File/test2.dat",
+                "chmod -R 777 /storage/media/100/local/files/*",
+                "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",
+                "killall com.ohos.medialibrary.MediaScannerAbilityA",
+                "aa start  -a MediaScannerAbility -b com.ohos.medialibrary.MediaScannerAbilityA"
             ],
             "teardown-command":[
-                "setenforce 1"
+                "rm -rf /storage/media/100/local/files/*"
             ]
         },
         {
@@ -33,3 +56,4 @@
         }
     ]
 }
+

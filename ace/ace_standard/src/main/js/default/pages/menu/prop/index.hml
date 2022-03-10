@@ -89,6 +89,16 @@
         </menu>
 
         <text class="sub-title">
+            通用属性 -- data
+        </text>
+        <menu class="propNewAdd"
+               data="通用属性 -- data">
+        </menu>
+        <menu class="propNewAdd"
+               data="">
+        </menu>
+
+        <text class="sub-title">
             通用属性 -- click-effect
         </text>
         <menu id="clickEffectPropSmall"
@@ -195,5 +205,29 @@
         <menu id="menuTitleNone"
                 title="">
         </menu>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <menu class="propNewAdd"
+               tid="id">
+        </menu>
+        <menu class="propNewAdd"
+               tid="">
+        </menu>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <menu class="propNewAdd"
+              if="false">
+        </menu>
+        <menu class="propNewAdd"
+               elif="true">
+        </menu>
+        <menu class="propNewAdd"
+               elif="false">
+        </menu>
+
     </div>
 </div>

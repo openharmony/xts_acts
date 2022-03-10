@@ -349,7 +349,7 @@ divider {
 }
 #verticalTrue {
   height: 10px;
-  background-color:#c00000;
+  background-color:#990000;
   width: 100%;
   margin-left: 10px;
   margin-right: 10px;
@@ -364,4 +364,44 @@ divider {
   margin-right: 10px;
   padding-start: 10px;
   padding-end: 10px;
+}
+#focusableTrue {
+  height: 10px;
+  background-color:#00ffff;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-start: 10px;
+  padding-end: 10px;
+}
+#focusableFalse {
+  height: 10px;
+  background-color:#e00099;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-start: 10px;
+  padding-end: 10px;
+}
+.divider {
+  height: 20px;
+  background-color:#e00099;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-start: 10px;
+  padding-end: 10px;
+}
+.test-div {
+  width: 100%;
+  height: 20px;
+  background-color: pink;
+  margin: 10px;
+}
+.test-divider {
+  height: 20px;
+  margin: 4px;
+  width: 50%;
+  padding: 4px;
+  color: rebeccapurple;
 }

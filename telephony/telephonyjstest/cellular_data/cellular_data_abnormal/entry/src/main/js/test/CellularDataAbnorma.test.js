@@ -65,12 +65,12 @@ describe("ActsCellularDataAbnormalTest", function () {
     it("Telephony_CellularData_enableCellularData_Async_0100", 0, async function (done) {
         cellular.enableCellularData((err) => {
             if (err) {
-                expect().assertFail();
-                console.log("Telephony_CellularData_enableCellularData_Async_0100 enableCellularData fail");
+                console.log("Telephony_CellularData_enableCellularData_Async_0100 enableCellularData finish");
                 done();
                 return;
             }
-            console.log("Telephony_CellularData_enableCellularData_Async_0100 enableCellularData finish");
+            expect().assertFail();
+            console.log("Telephony_CellularData_enableCellularData_Async_0100 enableCellularData fail");
             done();
         })
     })
@@ -83,12 +83,12 @@ describe("ActsCellularDataAbnormalTest", function () {
     it("Telephony_CellularData_disableCellularData_Async_0100", 0, async function (done) {
         cellular.disableCellularData((err) => {
             if (err) {
-                expect().assertFail();
-                console.log("Telephony_CellularData_disableCellularData_Async_0100 disableCellularData fail");
+                console.log("Telephony_CellularData_disableCellularData_Async_0100 disableCellularData finish");
                 done();
                 return;
             }
-            console.log("Telephony_CellularData_disableCellularData_Async_0100 disableCellularData finish");
+            expect().assertFail();
+            console.log("Telephony_CellularData_disableCellularData_Async_0100 disableCellularData fail");
             done();
         })
     })
@@ -198,12 +198,12 @@ describe("ActsCellularDataAbnormalTest", function () {
     it("Telephony_CellularData_getDefaultCellularDataSlotId_Async_0500", 0, async function (done) {
         cellular.getDefaultCellularDataSlotId((err) => {
             if (err) {
-                expect().assertFail();
-                console.log("Telephony_CellularData_setDefaultCellularDataSlotId_Async_0500 fail");
+                console.log("Telephony_CellularData_setDefaultCellularDataSlotId_Async_0500 finish");
                 done();
                 return;
             }
-            console.log("Telephony_CellularData_setDefaultCellularDataSlotId_Async_0500 finish");
+            expect().assertFail();
+            console.log("Telephony_CellularData_setDefaultCellularDataSlotId_Async_0500 fail");
             done();
         })
     })
@@ -252,11 +252,11 @@ describe("ActsCellularDataAbnormalTest", function () {
     it("Telephony_CellularData_enableCellularData_Promise_0100", 0, async function (done) {
         try {
             await cellular.enableCellularData();
-            console.log("Telephony_CellularData_enableCellularData_Promise_0100 finish");
-            done();
-        } catch (err) {
             expect().assertFail();
             console.log("Telephony_CellularData_enableCellularData_Promise_0100 fail");
+            done();
+        } catch (err) {
+            console.log("Telephony_CellularData_enableCellularData_Promise_0100 finish");
             done();
         }
     })
@@ -269,11 +269,11 @@ describe("ActsCellularDataAbnormalTest", function () {
     it("Telephony_CellularData_disableCellularData_Promise_0100", 0, async function (done) {
         try {
             await cellular.disableCellularData();
-            console.log("Telephony_CellularData_disableCellularData_Promise_0100 finish");
-            done();
-        } catch (err) {
             expect().assertFail();
             console.log("Telephony_CellularData_disableCellularData_Promise_0100 fail");
+            done();
+        } catch (err) {
+            console.log("Telephony_CellularData_disableCellularData_Promise_0100 finish");
             done();
         }
     })
@@ -376,11 +376,11 @@ describe("ActsCellularDataAbnormalTest", function () {
     it("Telephony_CellularData_getDefaultCellularDataSlotId_Promise_0500", 0, async function (done) {
         try {
             await cellular.getDefaultCellularDataSlotId();
-            console.log("Telephony_CellularData_getDefaultCellularDataSlotId_Promise_0500 finish");
-            done();
-        } catch (err) {
             expect().assertFail();
             console.log("Telephony_CellularData_getDefaultCellularDataSlotId_Promise_0500 fail");
+            done();
+        } catch (err) {
+            console.log("Telephony_CellularData_getDefaultCellularDataSlotId_Promise_0500 finish");
             done();
         }
     })

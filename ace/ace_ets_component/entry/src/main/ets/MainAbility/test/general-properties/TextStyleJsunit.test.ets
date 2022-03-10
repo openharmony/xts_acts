@@ -35,7 +35,7 @@ export default function textStyleJsunit() {
           console.info("push textStyle page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push textStyle page error:" + JSON.stringify(result));
+        console.error("push textStyle page error:" + err);
       }
       done();
     });

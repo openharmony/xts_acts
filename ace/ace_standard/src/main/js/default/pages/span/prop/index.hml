@@ -45,8 +45,6 @@
             </span>
         </text>
 
-
-
         <text class="sub-title">
             通用属性 -- style
         </text>
@@ -56,7 +54,6 @@
                 span
             </span>
         </text>
-
 
         <text class="sub-title">
             通用属性 -- ref
@@ -86,6 +83,22 @@
         <text class="spanTextTitle">
             <span id="dataPropNone"
                   data-Span="">
+                span
+            </span>
+        </text>
+
+        <text class="sub-title">
+            通用属性 -- data
+        </text>
+        <text class="spanTextTitle">
+            <span id="dataPropOne"
+                  data="通用属性 -- data">
+                span
+            </span>
+        </text>
+        <text class="spanTextTitle">
+            <span id="dataPropOneNone"
+                  data="">
                 span
             </span>
         </text>
@@ -197,6 +210,39 @@
         <text class="spanTextTitle">
             <span id="showPropNone"
                   show="">
+                span
+            </span>
+        </text>
+
+        <text class="sub-title">
+            属性 -- tid
+        </text>
+        <text class="spanTextTitle">
+            <span id="tidProp"
+                  tid="tidProp">
+                span
+            </span>
+        </text>
+        <text class="spanTextTitle">
+            <span id="tidPropNone"
+                  tid="">
+                span
+            </span>
+        </text>
+
+        <text class="sub-title">
+            属性 -- elif
+        </text>
+        <text class="spanTextTitle">
+            <span if="false">
+                span
+            </span>
+            <span id="elifPropTrue"
+                  elif="true">
+                span
+            </span>
+            <span id="elifPropFalse"
+                  elif="false">
                 span
             </span>
         </text>

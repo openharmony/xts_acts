@@ -55,8 +55,12 @@ describe('SystemParameterTest', function () {
         console.info('SUB_SENSORS_Sensor_JSTest_0010 start');
         await sensor.on(0, function (error, data) {
             if (error) {
-                console.info('testRegisterSensortest001  on error');
-                expect(false).assertTrue();
+                if (error.code == -1) {
+                    console.info("testRegisterSensortest001 on error: sensor 0 not exit")
+                } else {
+                    console.info('testRegisterSensortest001  on error :' + error.code);
+                    expect(false).assertTrue();
+                }
                 done();
             } else {
                 console.info('testRegisterSensortest001  on success');

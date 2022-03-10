@@ -25,6 +25,7 @@ hctest_suite("ActsDsoftbusMgrTest") {
     "//foundation/communication/dsoftbus/interfaces/kits/bus_center",
     "//foundation/communication/dsoftbus/interfaces/kits/common",
     "//foundation/communication/dsoftbus/core/common/include",
+    "//foundation/communication/dsoftbus/core/frame/common/include",
     "//foundation/communication/dsoftbus/interfaces/kits/discovery",
     "//foundation/communication/dsoftbus/adapter/common/include",
     "//foundation/communication/dsoftbus/adapter/default_config/spec_config",

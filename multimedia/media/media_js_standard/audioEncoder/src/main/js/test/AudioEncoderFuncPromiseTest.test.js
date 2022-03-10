@@ -18,9 +18,10 @@ import Fileio from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('AudioEncoderFuncPromise', function () {
-    const AUDIOPATH =  '/data/media/S32LE.pcm';
-    const AUDIOPATH2 =  '/data/media/S32LE_2.pcm';
-    const BASIC_PATH = '/data/media/results/encode_func_promise_';
+    const RESOURCEPATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/'
+    const AUDIOPATH = RESOURCEPATH + 'S32LE.pcm';
+    const AUDIOPATH2 = RESOURCEPATH + 'S32LE_2.pcm';
+    const BASIC_PATH = RESOURCEPATH + 'results/encode_func_promise_';
     let audioEncodeProcessor;
     let readStreamSync;
     let eosframenum = 0;
@@ -310,7 +311,7 @@ describe('AudioEncoderFuncPromise', function () {
         let mediaDescription2 = {
             "codec_mime": 'audio/mp4a-latm',
         }
-        let savepath = BASIC_PATH + '0000.txt';
+        let savepath = BASIC_PATH + '0000.es';
         needgetMediaDes = true;
         workdoneAtEOS = true;
         await media.getMediaCapability().then((mediaCaps)  => {
@@ -372,7 +373,7 @@ describe('AudioEncoderFuncPromise', function () {
             "sample_rate": 48000,
             "audio_raw_format": 16,
         }
-        let savepath = BASIC_PATH + '0100.txt';
+        let savepath = BASIC_PATH + '0100.es';
         eosframenum = 500;
         workdoneAtEOS = true;
         await media.createAudioEncoderByMime('audio/mp4a-latm').then((processor) => {
@@ -411,7 +412,7 @@ describe('AudioEncoderFuncPromise', function () {
             "sample_rate": 48000,
             "audio_raw_format": 16,
         }
-        let savepath = BASIC_PATH + '0200.txt';
+        let savepath = BASIC_PATH + '0200.es';
         workdoneAtEOS = true;
         await media.createAudioEncoderByMime('audio/mp4a-latm').then((processor) => {
             console.info("case create createAudioEncoder success");
@@ -456,7 +457,7 @@ describe('AudioEncoderFuncPromise', function () {
             "sample_rate": 48000,
             "audio_raw_format": 16,
         }
-        let savepath = BASIC_PATH + '0300.txt';
+        let savepath = BASIC_PATH + '0300.es';
         eosframenum = 500;
         flushAtEOS = true;
         await media.createAudioEncoderByMime('audio/mp4a-latm').then((processor) => {
@@ -495,7 +496,7 @@ describe('AudioEncoderFuncPromise', function () {
             "sample_rate": 48000,
             "audio_raw_format": 16,
         }
-        let savepath = BASIC_PATH + '0400.txt';
+        let savepath = BASIC_PATH + '0400.es';
         await media.createAudioEncoderByMime('audio/mp4a-latm').then((processor) => {
             console.info("case create createAudioEncoder success");
             audioEncodeProcessor = processor;
@@ -545,7 +546,7 @@ describe('AudioEncoderFuncPromise', function () {
             "sample_rate": 48000,
             "audio_raw_format": 16,
         }
-        let savepath = BASIC_PATH + '0500.txt';
+        let savepath = BASIC_PATH + '0500.es';
         eosframenum = 100;
         await media.createAudioEncoderByMime('audio/mp4a-latm').then((processor) => {
             console.info("case create createAudioEncoder success");
@@ -599,7 +600,7 @@ describe('AudioEncoderFuncPromise', function () {
             "sample_rate": 48000,
             "audio_raw_format": 16,
         }
-        let savepath = BASIC_PATH + '0600.txt';
+        let savepath = BASIC_PATH + '0600.es';
         eosframenum = 100;
         resetAtEOS = true;
         await media.createAudioEncoderByMime('audio/mp4a-latm').then((processor) => {
@@ -634,7 +635,7 @@ describe('AudioEncoderFuncPromise', function () {
             resetParam();
             readFile(AUDIOPATH2);
         }, failCallback).catch(failCatch);
-        let savepath2 = BASIC_PATH + '0601.txt';
+        let savepath2 = BASIC_PATH + '0601.es';
         workdoneAtEOS = true;
         setCallback(savepath2, done);
         await audioEncodeProcessor.prepare().then(() => {
