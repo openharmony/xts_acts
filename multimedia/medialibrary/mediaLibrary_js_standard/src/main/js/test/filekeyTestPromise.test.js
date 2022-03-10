@@ -47,21 +47,21 @@ const context = featureAbility.getContext();
 const media = mediaLibrary.getMediaLibrary(context);
 
 const filekeys = {
-    // parent: 'PARENT',
+    parent: 'PARENT',
     mimeType: 'MIME_TYPE',
     size: 'SIZE',
     dateAdded: 'DATE_ADDED',
     title: 'TITLE',
-    // duration: 'DURATION',
-    // width: 'WIDTH',
-    // height: 'HEIGHT',
-    // orientation: 'ORIENTATION',
+    duration: 'DURATION',
+    width: 'WIDTH',
+    height: 'HEIGHT',
+    orientation: 'ORIENTATION',
     albumId: 'ALBUM_ID',
     albumName: 'ALBUM_NAME',
     artist: 'ARTIST',
-    // audioAlbum: 'AUDIOALBUM',
+    audioAlbum: 'AUDIOALBUM',
     dateModified: 'DATE_MODIFIED',
-    // dateTaken: 'DATE_TAKEN',
+    dateTaken: 'DATE_TAKEN',
 }
 
 async function getFileAssetsBy(done, type) {
@@ -79,7 +79,7 @@ async function getFileAssetsBy(done, type) {
     try {
         let fetchFileResult = await media.getFileAssets(Op);
         const fetchCount = fetchFileResult.getCount();
-        if(type == 'audioAlbum' || type == 'parent') {
+        if(type == 'parent') {
             expect(fetchCount == 0).assertTrue();
         } else{
             expect(fetchCount > 0).assertTrue();
@@ -99,18 +99,18 @@ describe('filekeyTestPromise.test.js', async function () {
     afterEach(function () {});
     afterAll(function () {});
 
-    // /**
-    //  * @tc.number    : test_fileKey_001
-    //  * @tc.name      : getFileAssets
-    //  * @tc.desc      : filekey parentOp
-    //  * @tc.size      : MEDIUM
-    //  * @tc.type      : Function
-    //  * @tc.level     : Level 0
-    //  */
+    /**
+     * @tc.number    : test_fileKey_001
+     * @tc.name      : getFileAssets
+     * @tc.desc      : filekey parentOp
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
 
-    // it('test_fileKey_001', 0, async function (done) {
-    //     getFileAssetsBy(done, 'parent');
-    // });
+    it('test_fileKey_001', 0, async function (done) {
+        getFileAssetsBy(done, 'parent');
+    });
 
     /**
      * @tc.number    : test_fileKey_002
@@ -161,17 +161,17 @@ describe('filekeyTestPromise.test.js', async function () {
         getFileAssetsBy(done, 'dateModified');
     });
 
-    // /**
-    //  * @tc.number    : test_fileKey_006
-    //  * @tc.name      : getFileAssets
-    //  * @tc.desc      : filekey dateTakenOp
-    //  * @tc.size      : MEDIUM
-    //  * @tc.type      : Function
-    //  * @tc.level     : Level 0
-    //  */
-    // it('test_fileKey_006', 0, async function (done) {
-    //     getFileAssetsBy(done, 'dateTaken');
-    // });
+    /**
+     * @tc.number    : test_fileKey_006
+     * @tc.name      : getFileAssets
+     * @tc.desc      : filekey dateTakenOp
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_fileKey_006', 0, async function (done) {
+        getFileAssetsBy(done, 'dateTaken');
+    });
 
     /**
      * @tc.number    : test_fileKey_007
@@ -185,53 +185,53 @@ describe('filekeyTestPromise.test.js', async function () {
         getFileAssetsBy(done, 'title');
     });
 
-    // /**
-    //  * @tc.number    : test_fileKey_008
-    //  * @tc.name      : getFileAssets
-    //  * @tc.desc      : filekey durationOp
-    //  * @tc.size      : MEDIUM
-    //  * @tc.type      : Function
-    //  * @tc.level     : Level 0
-    //  */
-    // it('test_fileKey_008', 0, async function (done) {
-    //     getFileAssetsBy(done, 'duration');
-    // });
+    /**
+     * @tc.number    : test_fileKey_008
+     * @tc.name      : getFileAssets
+     * @tc.desc      : filekey durationOp
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_fileKey_008', 0, async function (done) {
+        getFileAssetsBy(done, 'duration');
+    });
 
-    // /**
-    //  * @tc.number    : test_fileKey_009
-    //  * @tc.name      : getFileAssets
-    //  * @tc.desc      : filekey widthOp
-    //  * @tc.size      : MEDIUM
-    //  * @tc.type      : Function
-    //  * @tc.level     : Level 0
-    //  */
-    // it('test_fileKey_009', 0, async function (done) {
-    //     getFileAssetsBy(done, 'width');
-    // });
+    /**
+     * @tc.number    : test_fileKey_009
+     * @tc.name      : getFileAssets
+     * @tc.desc      : filekey widthOp
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_fileKey_009', 0, async function (done) {
+        getFileAssetsBy(done, 'width');
+    });
 
-    // /**
-    //  * @tc.number    : test_fileKey_010
-    //  * @tc.name      : getFileAssets
-    //  * @tc.desc      : filekey heightOp
-    //  * @tc.size      : MEDIUM
-    //  * @tc.type      : Function
-    //  * @tc.level     : Level 0
-    //  */
-    // it('test_fileKey_010', 0, async function (done) {
-    //     getFileAssetsBy(done, 'height');
-    // });
+    /**
+     * @tc.number    : test_fileKey_010
+     * @tc.name      : getFileAssets
+     * @tc.desc      : filekey heightOp
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_fileKey_010', 0, async function (done) {
+        getFileAssetsBy(done, 'height');
+    });
 
-    // /**
-    //  * @tc.number    : test_fileKey_011
-    //  * @tc.name      : getFileAssets
-    //  * @tc.desc      : filekey orientationOp
-    //  * @tc.size      : MEDIUM
-    //  * @tc.type      : Function
-    //  * @tc.level     : Level 0
-    //  */
-    // it('test_fileKey_011', 0, async function (done) {
-    //     getFileAssetsBy(done, 'orientation');
-    // });
+    /**
+     * @tc.number    : test_fileKey_011
+     * @tc.name      : getFileAssets
+     * @tc.desc      : filekey orientationOp
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_fileKey_011', 0, async function (done) {
+        getFileAssetsBy(done, 'orientation');
+    });
 
     /**
      * @tc.number    : test_fileKey_012
@@ -269,15 +269,15 @@ describe('filekeyTestPromise.test.js', async function () {
         getFileAssetsBy(done, 'artist');
     });
 
-    // /**
-    //  * @tc.number    : test_fileKey_0015
-    //  * @tc.name      : getFileAssets
-    //  * @tc.desc      : filekey audioAlbumOp
-    //  * @tc.size      : MEDIUM
-    //  * @tc.type      : Function
-    //  * @tc.level     : Level 0
-    //  */
-    // it('test_fileKey_0015', 0, async function (done) {
-    //     getFileAssetsBy(done, 'audioAlbum');
-    // });
+    /**
+     * @tc.number    : test_fileKey_0015
+     * @tc.name      : getFileAssets
+     * @tc.desc      : filekey audioAlbumOp
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_fileKey_0015', 0, async function (done) {
+        getFileAssetsBy(done, 'audioAlbum');
+    });
 });
