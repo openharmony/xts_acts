@@ -662,6 +662,25 @@ describe('bluetoothhostTest', function() {
         }
     })
 
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GATT_DISCONNRCT_0001
+     * @tc.name testDisConnect
+     * @tc.desc Test DisConnect api.
+     * @tc.author quanli 00313334
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_gatt_disconnect', 0, function () {
+        console.info('[bluetooth_js] gatt disconnect start');
+        let ret = gattClient.disconnect();
+        console.info('[bluetooth_js] gatt disconnect ret:' + ret);
+        expect(ret).assertEqual(false);
+        console.info('[bluetooth_js] gatt disconnect end');
+    })
+
+
     /**
      * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GATT_CLIENT_CLOSE_0001
      * @tc.name testGattClientClose
@@ -689,22 +708,6 @@ describe('bluetoothhostTest', function() {
         }
     })
 
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GATT_DISCONNRCT_0001
-     * @tc.name testDisConnect
-     * @tc.desc Test DisConnect api.
-     * @tc.author quanli 00313334
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_gatt_disconnect', 0, function () {
-        console.info('[bluetooth_js] gatt disconnect start');
-        let ret = gattClient.disconnect();
-        console.info('[bluetooth_js] gatt disconnect ret:' + ret);
-        expect(ret).assertEqual(false);
-        console.info('[bluetooth_js] gatt disconnect end');
-    })
 
 })
 
