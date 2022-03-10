@@ -35,6 +35,7 @@ let FILE_ROOT = "";
 let AUDIO_ROOT = "";
 let IMAGE_ALBUM = "";
 let LOG_ = "FMS_XTS_TEXT: ";
+let LENGTH = 0;
 describe("filemanager_test", function () {
 
   /**
@@ -242,10 +243,16 @@ describe("filemanager_test", function () {
   it("filemanager_test_list_file_async_002", 0, async function (done) {
     try {
       let path = FILE_ROOT;
-      filemanager.listFile(path, "file", function(error,fileInfos){
-        expect(Array.isArray(fileInfos)).assertTrue();
-        done();
-      });
+      let options = {
+        dev:{
+          "name":"local"
+        },
+        offset:0
+      };
+      let fileInfos = await filemanager.listFile(path, "file",options);
+      LENGTH = fileInfos.length;
+      expect(Array.isArray(fileInfos)).assertTrue();
+      done();
     } catch (error) {
       console.log("filemanager_test_list_file_async_002 has failed for " + error);
       expect(null).assertFail();
@@ -302,6 +309,7 @@ describe("filemanager_test", function () {
     };
       filemanager.listFile(path, "file", options, function(error,fileInfos){
         expect(Array.isArray(fileInfos)).assertTrue();
+        expect(fileInfos.length == LENGTH-2).assertTrue();
         done();
       });
     } catch (error) {
