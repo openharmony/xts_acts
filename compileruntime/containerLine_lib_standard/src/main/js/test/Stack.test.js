@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -21,7 +21,8 @@ describe("StackTest", function () {
       let stack = new Stack();
       expect(stack != undefined).assertEqual(true);
     } catch (err) {
-      expect(err).assertEqual("Error: Cannot create new stack");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("Cannot create new stack");
     }
   });
   it("SR000GGR49_testPush002", 0, function () {
@@ -120,7 +121,7 @@ describe("StackTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR49_testLength011_1", 0, function () {
+  it("SR000GGR49_testLength011", 0, function () {
     let stack = new Stack();
     stack.push(8);
     stack.push("一");
@@ -129,12 +130,12 @@ describe("StackTest", function () {
     let res = stack.length;
     expect(4).assertEqual(res);
   });
-  it("SR000GGR49_testLength011_2", 0, function () {
+  it("SR000GGR49_testLength012", 0, function () {
     let stack = new Stack();
     let res = stack.length;
     expect(0).assertEqual(res);
   });
-  it("SR000GGR49_testIsEmpty012_1", 0, function () {
+  it("SR000GGR49_testIsEmpty013", 0, function () {
     let stack = new Stack();
     stack.push(8);
     stack.push("一");
@@ -143,42 +144,42 @@ describe("StackTest", function () {
     let res = stack.isEmpty();
     expect(res).assertEqual(false);
   });
-  it("SR000GGR49_testIsEmpty012_2", 0, function () {
+  it("SR000GGR49_testIsEmpty014", 0, function () {
     let stack = new Stack();
     let res = stack.isEmpty();
     expect(res).assertEqual(true);
   });
-  it("SR000GGR49_testPush013", 0, function () {
+  it("SR000GGR49_testPush015", 0, function () {
     let stack = new Stack();
     stack.push("你好世界");
     let res = stack.peek();
     expect(res).assertEqual("你好世界");
   });
-  it("SR000GGR49_testPush014", 0, function () {
+  it("SR000GGR49_testPush016", 0, function () {
     let stack = new Stack();
     stack.push(1234);
     let res = stack.peek();
     expect(res).assertEqual(1234);
   });
-  it("SR000GGR49_testPush015", 0, function () {
+  it("SR000GGR49_testPush017", 0, function () {
     let stack = new Stack();
     stack.push(1.234);
     let res = stack.peek();
     expect(res).assertEqual(1.234);
   });
-  it("SR000GGR49_testPush016", 0, function () {
+  it("SR000GGR49_testPush018", 0, function () {
     let stack = new Stack();
     stack.push(-1234);
     let res = stack.peek();
     expect(res).assertEqual(-1234);
   });
-  it("SR000GGR49_testPush017", 0, function () {
+  it("SR000GGR49_testPush019", 0, function () {
     let stack = new Stack();
     stack.push(0);
     let res = stack.peek();
     expect(res).assertEqual(0);
   });
-  it("SR000GGR49_testPush018", 0, function () {
+  it("SR000GGR49_testPush020", 0, function () {
     let stack = new Stack();
     stack.push(10);
     stack.push(3.14);
@@ -188,103 +189,89 @@ describe("StackTest", function () {
     let res = stack.peek();
     expect(res).assertEqual("*");
   });
-  it("SR000GGR49_testPush019", 0, function () {
+  it("SR000GGR49_testPush021", 0, function () {
     let stack = new Stack();
     let arr = {};
     stack.push(arr);
     let res = stack.peek();
     expect(res).assertEqual(arr);
   });
-  it("SR000GGR49_testPush020", 0, function () {
+  it("SR000GGR49_testPush022", 0, function () {
     let stack = new Stack();
     let arr = [];
     stack.push(arr);
     let res = stack.peek();
     expect(res).assertEqual(arr);
   });
-  it("SR000GGR49_testPush021", 0, function () {
+  it("SR000GGR49_testPush023", 0, function () {
     let stack = new Stack();
     stack.push("hello world");
     let res = stack.peek();
     expect(res).assertEqual("hello world");
   });
-  it("SR000GGR49_testPush022", 0, function () {
+  it("SR000GGR49_testPush024", 0, function () {
     let stack = new Stack();
     stack.push("~!@#$^&*()_+-*/=.?<>:;|{}[]");
     let res = stack.peek();
     expect(res).assertEqual("~!@#$^&*()_+-*/=.?<>:;|{}[]");
   });
-  it("SR000GGR49_testPush023", 0, function () {
+  it("SR000GGR49_testPush025", 0, function () {
     let stack = new Stack();
     stack.push("");
     let res = stack.peek();
     expect(res).assertEqual("");
   });
-  it("SR000GGR49_testPush024", 0, function () {
+  it("SR000GGR49_testPush026", 0, function () {
     let stack = new Stack();
     stack.push(true);
     let res = stack.peek();
     expect(res).assertEqual(true);
   });
-  it("SR000GGR49_testPush025", 0, function () {
+  it("SR000GGR49_testPush027", 0, function () {
     let stack = new Stack();
     stack.push(false);
     let res = stack.peek();
     expect(res).assertEqual(false);
   });
-  it("SR000GGR49_testPush026", 0, function () {
+  it("SR000GGR49_testPush028", 0, function () {
     let stack = new Stack();
     stack.push(null);
     let res = stack.peek();
     expect(res).assertEqual(null);
   });
-  it("SR000GGR49_testPush027", 0, function () {
+  it("SR000GGR49_testPush029", 0, function () {
     let stack = new Stack();
     stack.push(undefined);
     let res = stack.peek();
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR49_testPeek028", 0, function () {
+  it("SR000GGR49_testPeek030", 0, function () {
     let stack = new Stack();
-    try {
-      let res = stack.peek();
-    } catch (err) {
-      expect(err).assertEqual("Error: Stack: get out-of-bounds");
-    }
+    let res = stack.peek();
+    expect(res).assertEqual(undefined);
   });
-  it("SR000GGR49_testPop029", 0, function () {
+  it("SR000GGR49_testPop031", 0, function () {
     let stack = new Stack();
-    try {
-      let res = stack.pop();
-    } catch (err) {
-      expect(err).assertEqual("Error: Stack: get out-of-bounds");
-    }
+    let res = stack.pop();
+    expect(res).assertEqual(undefined);
   });
-  it("SR000GGR49_testForEach030", 0, function () {
+  it("SR000GGR49_testForEach032", 0, function () {
     let stack = new Stack();
     let arr = [];
-    try {
-      stack.forEach((item, index) => {
-        arr.push(item);
-      });
-    } catch (err) {
-      expect(err).assertEqual("Error:Cannot create new stack");
+    stack.forEach((item, index) => {
+      arr.push(item);
+    });
+    expect(arr.length).assertEqual(0);
+  });
+  it("SR000GGR49_testIterator033", 0, function () {
+    let stack = new Stack();
+    let arr = [];
+    for (let item of stack) {
+      arr.push(item);
     }
     expect(arr.length).assertEqual(0);
   });
-  it("SR000GGR49_testIterator031", 0, function () {
-    let stack = new Stack();
-    let arr = [];
-    try {
-      for (let item of stack) {
-        arr.push(item);
-      }
-    } catch (err) {
-      expect(err).assertEqual("Error:Cannot create new stack");
-    }
-    expect(arr.length).assertEqual(0);
-  });
-  it("SR000GGR49_testPush032", 0, function () {
+  it("SR000GGR49_testPush034", 0, function () {
     let stack = new Stack();
     for (let i = 0; i < 1000; i++) {
       stack.push(i);
@@ -294,7 +281,7 @@ describe("StackTest", function () {
     let res1 = stack.peek();
     expect(res1).assertEqual(999);
   });
-  it("SR000GGR49_testIterator033", 0, function () {
+  it("SR000GGR49_testIterator035", 0, function () {
     let stack = new Stack();
     stack.push(8);
     stack.push("一");

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,7 +20,8 @@ describe("QueueTest", function () {
     try {
       let queue = new Queue();
     } catch (err) {
-      expect(err).assertEqual("Error:Cannot create new queue");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("Cannot create new queue");
     }
   });
   it("SR000GGR48_testAdd002", 0, function () {
@@ -157,24 +158,16 @@ describe("QueueTest", function () {
   it("SR000GGR48_testForEach017", 0, function () {
     let queue = new Queue();
     let arr = [];
-    try {
-      queue.forEach((item, index) => {
-        arr.push(item);
-      });
-    } catch (err) {
-      expect(err).assertEqual("Error: Queue: get out-of-bounds");
-    }
-    expect(arr.length).assertEqual(1);
+    queue.forEach((item, index) => {
+      arr.push(item);
+    });
+    expect(arr.length).assertEqual(0);
   });
   it("SR000GGR48_testIterator018", 0, function () {
     let queue = new Queue();
     let arr = [];
-    try {
-      for (let item of queue) {
-        arr.push(item);
-      }
-    } catch (err) {
-      expect(err).assertEqual("Error:Cannot create new stack");
+    for (let item of queue) {
+      arr.push(item);
     }
     expect(arr.length).assertEqual(0);
   });
