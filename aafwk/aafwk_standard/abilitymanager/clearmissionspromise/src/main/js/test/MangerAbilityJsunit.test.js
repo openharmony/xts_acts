@@ -41,8 +41,12 @@ describe('ActsAmsCallBackSixth Scene', function () {
     });
 
     function sleep(delay) {
-        var start = (new Date()).getTime();
-        while((new Date()).getTime() - start < delay) {}
+        var start = new Date().getTime();
+        while (true) {
+            if (new Date().getTime() - start > delay) {
+                break;
+            }
+        }
     }
 
     /*
@@ -54,6 +58,7 @@ describe('ActsAmsCallBackSixth Scene', function () {
         var info = await missionManager.clearAllMissions().catch(err => {
             console.log('Acts_Ams_test_12100 clearAllMission failed: ' + err);
             expect(err).assertEqual(0);
+            done();
         });
         console.info('Acts_Ams_test_12100 clearAllMissions data  [' + info + ']');
         done();
