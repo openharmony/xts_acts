@@ -427,7 +427,7 @@ describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
     it('SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_005', 0, async function (done) {
         try {
             media.on('albumChange', () => {
-                console.info('MediaLibraryTest : off 004 failed');
+                console.info('MediaLibraryTest : off 005 failed');
                 expect(false).assertTrue();
                 media.off('albumChange');
                 done();
@@ -464,7 +464,7 @@ describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
     it('SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_006', 0, async function (done) {
         try {
             media.on('deviceChange', () => {
-                console.info('MediaLibraryTest : off 004 failed');
+                console.info('MediaLibraryTest : off 006 failed');
                 expect(false).assertTrue();
                 media.off('deviceChange');
                 done();
@@ -501,7 +501,7 @@ describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
     it('SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_007', 0, async function (done) {
         try {
             media.on('remoteFileChange', () => {
-                console.info('MediaLibraryTest : off 004 failed');
+                console.info('MediaLibraryTest : off 007 failed');
                 expect(false).assertTrue();
                 media.off('remoteFileChange');
                 done();
