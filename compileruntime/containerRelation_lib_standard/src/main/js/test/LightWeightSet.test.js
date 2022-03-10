@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -21,7 +21,8 @@ describe("LightWeightSetTest", function () {
       let lightWeightSet = new LightWeightSet();
       expect(lightWeightSet != undefined).assertEqual(true);
     } catch (err) {
-      expect(err).assertEqual("Error:Cannot create new TreeMap");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("Cannot create new TreeMap");
     }
   });
   it("SR000GGR43_testAdd002", 0, function () {
@@ -324,11 +325,8 @@ describe("LightWeightSetTest", function () {
   });
   it("SR000GGR43_testRemove028", 0, function () {
     let lightWeightSet = new LightWeightSet();
-    try {
-      let res = lightWeightSet.remove(3);
-    } catch (err) {
-      expect(err).assertEqual("Error: don't find the key in lightweight");
-    }
+    let res = lightWeightSet.remove(3);
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR43_testRemoveAt029", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -343,9 +341,10 @@ describe("LightWeightSetTest", function () {
     lightWeightSet.add(4);
     lightWeightSet.add(5);
     try {
-      let res = lightWeightSet.increaseCapacityTo(3);
+      lightWeightSet.increaseCapacityTo(3);
     } catch (err) {
-      expect(err).assertEqual("Unable to shrink capacity");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("the index is not integer");
     }
   });
   it("SR000GGR43_testIncreaseCapacityTo031", 0, function () {
@@ -358,7 +357,8 @@ describe("LightWeightSetTest", function () {
     try {
       let res = lightWeightSet.increaseCapacityTo("qwe");
     } catch (err) {
-      expect(err).assertEqual("lightWeightSet: index must be int");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("the index is not integer");
     }
   });
   it("SR000GGR43_testRemoveAt032", 0, function () {
@@ -366,7 +366,8 @@ describe("LightWeightSetTest", function () {
     try {
       let res = lightWeightSet.removeAt("123");
     } catch (err) {
-      expect(err).assertEqual("lightWeightSet: index must be int");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("the index is not integer");
     }
   });
   it("SR000GGR43_testIncreaseCapacityTo033", 0, function () {
@@ -389,7 +390,8 @@ describe("LightWeightSetTest", function () {
     try {
       let res = lightWeightSet.getValueAt("123");
     } catch (err) {
-      expect(err).assertEqual("lightWeightSet: index must be int");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("the index is not integer");
     }
   });
   it("SR000GGR43_testIsEmpty035", 0, function () {
@@ -448,7 +450,8 @@ describe("LightWeightSetTest", function () {
     try {
       let res = lightWeightSet.remove("A");
     } catch (err) {
-      expect(err).assertEqual("Error: don't find the key in lightweight");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("the index is not integer");
     }
   });
   it("SR000GGR43_testIterator41", 0, function () {
@@ -469,5 +472,23 @@ describe("LightWeightSetTest", function () {
     for (let i = 0; i < arr1.length; i++) {
       expect(arr[i]).assertEqual(arr1[i]);
     }
+  });
+  it("SR000GGR43_testEqual42", 0, function () {
+    let lightWeightSet = new LightWeightSet();
+    lightWeightSet.add(1);
+    lightWeightSet.add(2);
+    lightWeightSet.add(3);
+    let obj = [1,2,3];
+    let res = lightWeightSet.equal(obj);
+    expect(res).assertEqual(true);
+  });
+  it("SR000GGR43_testEqual43", 0, function () {
+    let lightWeightSet = new LightWeightSet();
+    lightWeightSet.add(1);
+    lightWeightSet.add(2);
+    lightWeightSet.add(3);
+    let obj = [1,2];
+    let res = lightWeightSet.equal(obj);
+    expect(res).assertEqual(false);
   });
 });
