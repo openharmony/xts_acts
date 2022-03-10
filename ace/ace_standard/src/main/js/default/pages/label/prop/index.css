@@ -357,3 +357,13 @@ label {
   padding-start: 10px;
   padding-end: 10px;
 }
+.label {
+  height: 20px;
+  background-color:#c00000;
+  width: 100%;
+  margin-left: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+  padding-start: 10px;
+  padding-end: 10px;
+}

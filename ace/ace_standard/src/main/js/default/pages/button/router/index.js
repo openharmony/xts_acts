@@ -89,6 +89,14 @@ export default {
         progress: 10,
         downloadText: "进度条按钮"
     },
+
+    onAccessibility(event) {
+        if (event.eventType == 1) {
+            console.log('abc');
+        }
+        console.log("onAccessibility" + JSON.stringify(event));
+    },
+
     setProgress(e) {
         var i=0
         var set= setInterval(()=>{

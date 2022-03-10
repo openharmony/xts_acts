@@ -68,6 +68,7 @@ export default {
         waitingFalse : null,
         waitingNone : null
     },
+
     onShow(){
         this.getCommonPropValues();
         this.getSpecificPropValues();

@@ -690,5 +690,12 @@ export default {
         prompt.showToast({
             message: 'reachBottom'
         });
+    },
+
+    onAccessibility(event) {
+        if (event.eventType == 1) {
+            console.log("onAccessibility" + event.eventType);
+        }
+        console.log("onAccessibility" + JSON.stringify(event));
     }
 }

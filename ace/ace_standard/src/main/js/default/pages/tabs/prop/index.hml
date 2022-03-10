@@ -181,5 +181,29 @@
         <tabs id="verticalNone"
               vertical="">
         </tabs>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <tabs class="propNewAdd"
+               tid="id">
+        </tabs>
+        <tabs class="propNewAdd"
+               tid="">
+        </tabs>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <tabs class="propNewAdd"
+              if="false">
+        </tabs>
+        <tabs class="propNewAdd"
+               elif="true">
+        </tabs>
+        <tabs class="propNewAdd"
+               elif="false">
+        </tabs>
+
     </div>
 </div>

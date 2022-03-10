@@ -1,0 +1,36 @@
+.container {
+    flex-direction:row;
+    width:100%;
+    height:100%;
+    padding: 1px;
+}
+
+.sub-container{
+    flex-direction: column;
+    height: 100%;
+    flex-weight: 1;
+}
+
+.title{
+    width: 100%;
+    font-size: 18px;
+    margin: 2px;
+    padding: 2px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.sub-title{
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+    margin: 2px;
+    padding: 2px;
+}
+
+.prop-container{
+    flex-direction: column;
+    height: 100%;
+    flex-weight: 2;
+    align-items: center;
+}

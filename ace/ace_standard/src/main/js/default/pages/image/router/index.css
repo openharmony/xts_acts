@@ -156,6 +156,7 @@
 .style3{
     width: 100%;
     padding: 10px;
+    object-fit:scale-down;
     margin: 5px;
     border-left: 1px solid #000000;
     border-right:  2px dashed #00ff00;
@@ -175,6 +176,7 @@
     width: 60%;
     height: 5%;
     padding: 1px;
+    object-fit:none;
     margin: 5px;
     border: 2px solid #000000;
 }
@@ -182,6 +184,7 @@
 .style5{
     width: 50%;
     height: 30px;
+    object-fit:contain;
     background-color: yellow;
     border-image-source: url('/common/images/image.png');
     border-image-slice: 1px 2px 3px 4px;
@@ -194,6 +197,7 @@
     width: 70px;
     height: 30px;
     position: absolute;
+    object-fit:fill;
     left: 10px;
     top: 35px;
     bottom: 5px;
@@ -207,6 +211,22 @@
     margin-bottom: 5px;
     margin-top: 5px;
     color: green;
+    object-fit:cover;
+    match-text-direction:true;
+    fit-original-size:true;
+    object-position:0px 0px 0px 0px;
+    mask-color:lightblue;
+    line-cap: round;
+}
+
+.style8 {
+    height: 40px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    color: green;
+    object-fit:cover;
+    match-text-direction:false;
+    fit-original-size:false;
     mask-color:lightblue;
     line-cap: round;
 }

@@ -381,6 +381,9 @@
         <text class="text">popupEvent-4</text>
     </popup>
 
+    <popup target="event1" onaccessibility="onAccessibility">
+    </popup>
+
     <popup id="func1"
            class="function1"
            ontouchstart="functionTest1"

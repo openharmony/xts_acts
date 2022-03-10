@@ -139,6 +139,7 @@
                 listGroup无障碍1
             </text>
             <list-item-group class="access1"style="height: 100%; width: 100%; background-color: deeppink;"
+                             onaccessibility="onAccessibility"
                              accessibilitygroup ="true"
                              accessibilitytext="这是listItemGroup"
                              accessibilitydescription="点击此按键会弹出一个对话框"

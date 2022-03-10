@@ -86,6 +86,7 @@
     border: 1px solid #000000;
     indicator-color: #cf2411;
     indicator-size: 8px;
+    indicator-left: 1px;
     indicator-bottom: 1px;
     indicator-right: 30px;
     indicator-top: 50%;

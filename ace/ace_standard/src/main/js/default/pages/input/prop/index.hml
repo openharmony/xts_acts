@@ -80,6 +80,16 @@
         </input>
 
         <text class="sub-title">
+            通用属性 -- data
+        </text>
+        <input id="dataPropB"
+               data-input="通用属性 -- data">
+        </input>
+        <input id="dataPropBNone"
+               data-input="">
+        </input>
+
+        <text class="sub-title">
             通用属性 -- data-*
         </text>
         <input id="dataProp"
@@ -410,6 +420,23 @@
         <input id="showpasswordiconNone"
                showpasswordicon=""
                type="password">
+        </input>
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <input for="{{array}}" tid="id" style="color: #679855; margin: 1px;"
+               id="showFor{{$item.id}}" value="{{$item.name }}">
+        </input>
+        <text class="sub-title">
+            特有属性 -- if elif
+        </text>
+        <input if="false" id="showIf">
+        </input>
+        <input elif="false" id="showElseIfTrue">
+        </input>
+        <input elif="true" id="showElseIfFalse">
+        </input>
+        <input else id="showElse">
         </input>
     </div>
 </div>

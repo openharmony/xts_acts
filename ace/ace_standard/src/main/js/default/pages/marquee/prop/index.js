@@ -62,6 +62,7 @@ export default {
         typeLoopLeft : null,
         typeRight : null,
     },
+
     onShow(){
         this.getCommonPropValues();
         this.getSpecificPropValues();
@@ -109,6 +110,7 @@ export default {
             typeRight : this.typeRight,
         }
     },
+
     getCommonPropValues(){
         this.idProp = this.$element("idProp").getInspector()
         this.classProp = this.$element("classProp").getInspector()

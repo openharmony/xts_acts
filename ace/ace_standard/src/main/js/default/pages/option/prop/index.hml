@@ -158,6 +158,15 @@
             <option value="选项1" id="ifPropTrue"
                     if="true">选项1
             </option>
+            <option value="选项1" class="option"
+                    elif="true">选项2
+            </option>
+            <option value="选项1" class="option"
+                    elif="false">选项3
+            </option>
+            <option value="选项1" class="option"
+                    elif="">选项4
+            </option>
         </select>
 
         <text class="sub-title">
@@ -183,6 +192,13 @@
             option特有属性
         </text>
         <text  class="sub-title">
+            option特有属性 -- option
+        </text>
+        <select>
+            <option value="选项1" id="selectedTrue" option="option">optionVal1</option>
+            <option value="选项2" id="selectedTrue" option="">optionVal2</option>
+        </select>
+        <text  class="sub-title">
             option特有属性 -- selected
         </text>
         <select>
@@ -201,5 +217,26 @@
         <select>
             <option value="optionIcon" icon="common/images/icon.png" id="optionIcon">optionVal</option>
         </select>
+        <text  class="sub-title">
+            option特有属性 -- action
+        </text>
+        <select>
+            <option value="optionIcon" action="popup" class="option">optionVal</option>
+            <option value="optionIcon" action="show" class="option">optionVal</option>
+        </select>
+        <text  class="sub-title">
+            option特有属性 -- tid
+        </text>
+        <select>
+            <option value="option" tid="tid" class="option">option</option>
+            <option value="option" tid="" class="option">option2</option>
+        </select>
+        <!--<text  class="sub-title">
+            option特有属性 -- shareid
+        </text>
+        <select>
+            <option value="optionIcon" shareid="shareid" class="option">optionVal1</option>
+            <option value="optionIcon" shareid="" class="option">optionVal2</option>
+        </select>-->
     </div>
 </div>

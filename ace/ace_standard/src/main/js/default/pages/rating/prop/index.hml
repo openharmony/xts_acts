@@ -80,6 +80,16 @@
         </rating>
 
         <text class="sub-title">
+            通用属性 -- data
+        </text>
+        <rating id="dataPropB"
+               data-input="通用属性 -- data">
+        </rating>
+        <rating id="dataPropBNone"
+               data-input="">
+        </rating>
+
+        <text class="sub-title">
             通用属性 -- data-*
         </text>
         <rating id="dataProp"
@@ -192,5 +202,23 @@
         <rating id="indicatorNone"
                 indicator="">
         </rating>
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <rating for="{{array}}" tid="id" style="color: #679855; margin: 1px;"
+               id="showFor{{$item.id}}">
+        </rating>
+        <text class="sub-title">
+            特有属性 -- if elif
+        </text>
+        <rating if="false" id="showIf">
+        </rating>
+        <rating elif="false" id="showElseIfTrue">
+        </rating>
+        <rating elif="true" id="showElseIfFalse">
+        </rating>
+        <rating else id="showElse">
+        </rating>
+    </div>
     </div>
 </div>
