@@ -127,7 +127,6 @@ describe('ActsAmsTestSecondScene', function () {
         sleep(5000);
         console.info("sleep end");
         var info = await appManager.getProcessRunningInfos();
-        console.info('Acts_Ams_test_1700  getProcessRunningInfos JSON String: ' + JSON.stringify(info));
         expect(Array.isArray(info)).assertEqual(true);
         expect(info.length).assertLarger(0);
         for (var i = 0; i < info.length; i++) {
@@ -158,9 +157,11 @@ describe('ActsAmsTestSecondScene', function () {
         for (var i = 0; i < result.length; i++) {
             console.info('Acts_Ams_test_2700 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
         }
-        var info = await missionManager.moveMissionToFront(result[0].missionId);
+        var info = await missionManager.moveMissionToFront(result[0].missionId).catch(err => {
+            console.log('Acts_Ams_test_2700 moveMissionToFront failed: ' + err);
+            expect(err).assertEqual(0);
+        });
         console.info('Acts_Ams_test_2700 moveMissionToFront data  [' + info + ']');
-        expect(info).assertEqual(0);
         done();
         setTimeout(timeout, 5000);
     })
@@ -173,7 +174,6 @@ describe('ActsAmsTestSecondScene', function () {
     it('Acts_Ams_test_1900', 0, async function (done) {
         var maxnum = 20;
         var data = await missionManager.getMissionInfos("", maxnum);
-        console.info('Acts_Ams_test_1900 getMissionInfos data  ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertEqual(true);
         expect(data.length).assertEqual(3);
         for (var i = 0; i < data.length; i++) {
@@ -208,9 +208,11 @@ describe('ActsAmsTestSecondScene', function () {
         for (var i = 0; i < result.length; i++) {
             console.info('Acts_Ams_test_2300 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
         }
-        var info = await missionManager.clearMission(result[0].missionId);
+        var info = await missionManager.clearMission(result[0].missionId).catch(err => {
+            console.log('Acts_Ams_test_2300 clearMission failed: ' + err);
+            expect(err).assertEqual(0);
+        });
         console.info('Acts_Ams_test_2300 clearMission data  [' + info + ']');
-        expect(info).assertEqual(0);
         done();
         setTimeout(timeout, 5000);
     })

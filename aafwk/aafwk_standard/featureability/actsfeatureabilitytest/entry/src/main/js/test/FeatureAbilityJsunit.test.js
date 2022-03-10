@@ -2581,7 +2581,7 @@ describe('ActsFeatureAbilityTest', function () {
             featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
                 console.log('ACTS_StartAbility_0800 asyncCallback errCode : ' + JSON.stringify(err) 
                 + " data: " + JSON.stringify(data));
-                expect(err.code == 2097155).assertTrue();
+                expect(err.code != 0).assertTrue();
                 done();
             });
         }catch(error){
@@ -2637,7 +2637,7 @@ describe('ActsFeatureAbilityTest', function () {
             featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
                 console.log('ACTS_StartAbility_1100 asyncCallback errCode : ' + JSON.stringify(err) 
                 + " data: " + JSON.stringify(data));
-                expect(err.code == 2097155).assertTrue();
+                expect(err.code != 0).assertTrue();
                 done();
             });
         }catch(error){
@@ -2665,7 +2665,7 @@ describe('ActsFeatureAbilityTest', function () {
             featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
                 console.log('ACTS_StartAbility_1200 asyncCallback errCode : ' + JSON.stringify(err) 
                 + " data: " + JSON.stringify(data));
-                expect(err.code == 2097155).assertTrue();
+                expect(err.code != 0).assertTrue();
                 done();
             });
         }catch(error){
@@ -2777,7 +2777,8 @@ describe('ActsFeatureAbilityTest', function () {
             expect().assertFail();
             done();
         }).catch((err)=>{
-            expect(err.code == 2097155).assertTrue();
+            expect(err.code != 0).assertTrue();
+            done();
         });
     });
 
@@ -2795,7 +2796,8 @@ describe('ActsFeatureAbilityTest', function () {
              expect().assertFail();
              done();
          }).catch((err)=>{
-             expect(err.code == -104).assertTrue();
+             expect(err.code != 0).assertTrue();
+             done();
          });
     });
 
@@ -2812,7 +2814,8 @@ describe('ActsFeatureAbilityTest', function () {
             expect().assertFail();
             done();
         }).catch((err)=>{
-            expect(err.code == -104).assertTrue();
+            expect(err.code != 0).assertTrue();
+            done();
         });
     });
 

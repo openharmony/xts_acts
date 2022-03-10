@@ -51,10 +51,11 @@ describe('ActsAmsCallBackSixth Scene', function () {
     * @tc.desc      : Clear Missions(by Promise)
      */
     it('Acts_Ams_test_12100', 0, async function (done) {
-        var info = await missionManager.clearAllMissions();
-        console.info('Acts_Ams_test_12100 clearMissions data  [' + info + ']');
-        expect(typeof(info)).assertEqual("number");
-        expect(info).assertEqual(0);
+        var info = await missionManager.clearAllMissions().catch(err => {
+            console.log('Acts_Ams_test_12100 clearAllMission failed: ' + err);
+            expect(err).assertEqual(0);
+        });
+        console.info('Acts_Ams_test_12100 clearAllMissions data  [' + info + ']');
         done();
     })
 })

@@ -218,16 +218,16 @@ describe('ActsAmsCallBackSecondScene', function () {
     })
 
     /*
- * @tc.number    : Acts_Ams_test_3200
- * @tc.name      : killProcessesByBundleName : Kill Processes By BundleName
- * @tc.desc      : Kill Processes By BundleName(by CallBack)
- */
+    * @tc.number    : Acts_Ams_test_3200
+    * @tc.name      : killProcessesByBundleName : Kill Processes By BundleName
+    * @tc.desc      : Kill Processes By BundleName(by CallBack)
+    */
     it('Acts_Ams_test_3200', 0, async function (done) {
         appManager.killProcessesByBundleName('XXXXXXXXXXXX',
             (error, info) => {
                 console.info('Acts_Ams_test_3200 killProcessesByBundleName error.code: \
                     ' + error.code + ',data  [' + info + ']');
-                expect(info).assertEqual(2097215);
+                expect(error.code).assertEqual(2097215);
                 done();
             });
         setTimeout(timeout, 5000);

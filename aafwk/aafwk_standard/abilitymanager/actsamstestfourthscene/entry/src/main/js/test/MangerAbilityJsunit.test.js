@@ -46,7 +46,7 @@ describe('ActsAmsTestFourthScene', function () {
         console.log('ActsAmsTestFourthScene beforeAll getMissionInfos data: ' + JSON.stringify(data));
         for (var i = 0; i < data.length; i++) {
             if (data[i].want.bundleName != 'com.example.actsamstestfourthscene') {
-                console.log("ActsAmsTestFourthScene, missionId: " + data[i].missionId)
+                console.log("ActsAmsTestFourthScene, missionId: " + + JSON.stringify(data))
                 missionManager.clearMission(data[i].missionId,
                     (error, info) => {
                         console.info('ActsAmsTestFourthScene beforeAll clearMission error.code \
@@ -234,9 +234,10 @@ describe('ActsAmsTestFourthScene', function () {
         for (var i = 0; i < result.length; i++) {
             console.info('Acts_Ams_test_5500 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
         }
-        var info = await abilityManager.clearMission(result[0].id);
-        expect(typeof (info)).assertEqual("number");
-        expect(info).assertEqual(0);
+        var info = await abilityManager.clearMission(result[0].id).catch(err => {
+            console.log('Acts_Ams_test_5500 clearMission failed: ' + err);
+            expect(err).assertEqual(0);
+        });
         done();
         setTimeout(timeout, 5000);
     })
@@ -252,9 +253,11 @@ describe('ActsAmsTestFourthScene', function () {
         for (var i = 0; i < result.length; i++) {
             console.info('Acts_Ams_test_5900 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
         }
-        var info = await missionManager.moveMissionToFront(result[0].missionId);
+        var info = await missionManager.moveMissionToFront(result[0].missionId).catch(err => {
+            console.log('Acts_Ams_test_5900 moveMissionToFront failed: ' + err);
+            expect(err).assertEqual(0);
+        });
         console.info('Acts_Ams_test_5900 moveMissionToFront data  [' + info + ']');
-        expect(info).assertEqual(0);
         done();
         setTimeout(timeout, 5000);
     })
@@ -270,9 +273,11 @@ describe('ActsAmsTestFourthScene', function () {
         for (var i = 0; i < result.length; i++) {
             console.info('Acts_Ams_test_6100 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
         }
-        var info = await missionManager.clearAllMissions();
+        var info = await missionManager.clearAllMissions().catch(err => {
+            console.log('Acts_Ams_test_6100 clearMissionInfos failed: ' + err);
+            expect(err).assertEqual(0);
+        });
         console.info('Acts_Ams_test_6100 clearAllMissions data  [' + info + ']');
-        expect(info).assertEqual(0);
         done();
         setTimeout(timeout, 5000);
     })
