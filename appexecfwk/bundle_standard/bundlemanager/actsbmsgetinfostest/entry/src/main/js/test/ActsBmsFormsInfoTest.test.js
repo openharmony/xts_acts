@@ -23,6 +23,8 @@ const SYSTEM_BUNDLE = 'com.example.system1';
 const VENDOR_BUNDLE = 'com.example.vendor1';
 const DESIGHN_WIDTH = 770;
 const DEFAULT_DESIGHN_WIDTH = 720;
+const BUNDLE_NAME6 = "com.ohos.callui"
+const ABILITIY_NAME = "com.ohos.callui.MainAbility"
 describe('ActsBmsFormsInfoTest', function () {
 
     /**
@@ -1649,4 +1651,33 @@ describe('ActsBmsFormsInfoTest', function () {
         expect(dataInfo.window.autoDesignWidth).assertEqual(false);
     }
 
+    /*
+     * @tc.number: bms_getAbilityIcon_0100
+     * @tc.name: test getAbilityIcon`
+     * @tc.desc: get the abilityIcon
+     */
+    it('bms_getAbilityIcon_0100', 0, async function (done) {
+        bundle.getAbilityIcon(BUNDLE_NAME6, ABILITIY_NAME).then(pixelmap => {
+            console.log('bms_getAbilityIcon_0100 success: ' + pixelmap);
+            expect(pixelmap !== null).assertTrue()
+            done()
+        })
+        .catch(err => {
+            console.info("getAbilityIcon fail:" + JSON.stringify(err))
+            expect(err).assertFail()
+            done()
+        })
+    })
+
+    /*
+     * @tc.number: bms_getAbilityIcon_0200
+     * @tc.name: test getAbilityIcon
+     * @tc.desc: get the abilityIcon
+     */
+    it('bms_getAbilityIcon_0200', 0, async function (done) {
+        let pixelmap = await bundle.getAbilityIcon(BUNDLE_NAME6, ABILITIY_NAME)
+        console.log('bms_getAbilityIcon_0200 success: ' + pixelmap);
+        expect(pixelmap !== null).assertTrue()
+        done()
+    })
 })
