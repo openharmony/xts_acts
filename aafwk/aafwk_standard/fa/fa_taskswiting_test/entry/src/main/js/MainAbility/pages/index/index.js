@@ -14,6 +14,7 @@
  */
 import router from '@system.router'
 import {Core} from 'deccjsunit/index'
+import commonEvent from '@ohos.commonEvent';
 
 export default {
     data: {
@@ -33,7 +34,20 @@ export default {
         configService.setConfig(this)
         require('../../../test/List.test.js')
         core.execute();
-        },
+
+        console.info("EntryAbility onShow");
+        commonEvent.publish("EntryAbility_onShow", () => {
+            console.log("EntryAbility Publish CallBack EntryAbility_onShow")
+        });
+    },
+
+    onHide() {
+        console.info("EntryAbility onHide");
+        commonEvent.publish("EntryAbility_onHide", () => {
+            console.log("EntryAbility Publish CallBack EntryAbility_onHide")
+        });
+    },
+
     onclick: function () {
         router.replace({
             uri: "pages/second/second"

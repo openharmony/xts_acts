@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,29 +13,31 @@
  * limitations under the License.
  */
 
-import app from '@system.app'
-import file from '@system.file'
-import {Core} from 'deccjsunit/index'
+import router from '@system.router';
+import {Core} from 'deccjsunit/index';
 
 export default {
-    data: {title: ""},
+    data: {
+        title: ""
+    },
     onInit() {
-        this.title = this.$t('strings.world1111');
+        this.title = this.$t('strings.world');
+    },
+    onclick: function () {
+        router.replace({
+            uri: "pages/second/second"
+        })
     },
     onShow() {
-        console.info('onShow finish1')
+        console.info('onShow start')
         const core = Core.getInstance()
-        console.info('onShow finish2')
         core.init()
-        console.info('onShow finish3')
-
         const configService = core.getDefaultService('config')
-        console.info('onShow finish4')
-
         configService.setConfig(this)
-        console.info('onShow finish5')
-
         require('../../../test/List.test')
         core.execute()
     }
 }
+
+
+
