@@ -100,10 +100,10 @@ describe('bluetoothhostTest', function() {
             default:
                 console.info('[bluetooth_js] enable success');
             }
-        await sleep(2000);
+        await sleep(3000);
         var state = bluetooth.getState();
         console.info('[bluetooth_js] getState On = '+ JSON.stringify(state));
-        console.info('bluetooth enable done');
+        expect(state).assertEqual(2);
         done();
     })
 
@@ -148,20 +148,60 @@ describe('bluetoothhostTest', function() {
 
 
     /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_STOP_BLESCAN_0001
-     * @tc.name testClassicStopBLEScan
-     * @tc.desc Test ClassicStopBLEScan api.
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_START_ADVERTISING_0001
+     * @tc.name testStartAdvertising
+     * @tc.desc Test StartAdvertising api.
      * @tc.author quanli 00313334
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('bluetooth_ble_stop_scan', 0, function () {
-        console.info('[bluetooth_js] BLE stop scan start');
-        var result = bluetooth.BLE.stopBLEScan();
-        console.info("[bluetooth_js] onStopBLEScan -> " + JSON.stringify(result));
-        expect(result).assertNull();
-        console.info('[bluetooth_js] BLE stop scan end');
+    it('bluetooth_ble_start_advertising', 0, async function (done) {
+        console.info('BLE advertising start');
+        var manufactureValueBuffer = new Uint8Array(4);
+        manufactureValueBuffer[0] = 1;
+        manufactureValueBuffer[1] = 2;
+        manufactureValueBuffer[2] = 3;
+        manufactureValueBuffer[3] = 4;
+
+        var serviceValueBuffer = new Uint8Array(4);
+        serviceValueBuffer[0] = 4;
+        serviceValueBuffer[1] = 6;
+        serviceValueBuffer[2] = 7;
+        serviceValueBuffer[3] = 8;
+        console.info('manufactureValueBuffer = '+ JSON.stringify(manufactureValueBuffer))
+        console.info('serviceValueBuffer = '+ JSON.stringify(serviceValueBuffer))
+        let promise = new Promise((resolve) => {
+        var gattServer = bluetooth.BLE.createGattServer()
+            gattServer.startAdvertising({
+                interval:150,
+                txPower:60,
+                connectable:true,
+            },{
+                serviceUuids:["12"],
+                manufactureData:[{
+                    manufactureId:4567,
+                    manufactureValue:manufactureValueBuffer.buffer
+                }],
+                serviceData:[{
+                    serviceUuid:"1234",
+                    serviceValue:serviceValueBuffer.buffer
+                }],
+            },{
+                serviceUuids:["12"],
+                manufactureData:[{
+                    manufactureId:1789,
+                    manufactureValue:manufactureValueBuffer.buffer
+                }],
+                serviceData:[{
+                    serviceUuid:"1794",
+                    serviceValue:serviceValueBuffer.buffer
+                }],
+            });
+            resolve()
+        })
+        await promise.then(done)
+        done();
     })
 
     /**
@@ -178,6 +218,25 @@ describe('bluetoothhostTest', function() {
         var gattServer = bluetooth.BLE.createGattServer();
         gattServer.stopAdvertising();
         console.info('[bluetooth_js] BLE stop advertising end');
+    })
+
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GATT_CONNRCT_0001
+     * @tc.name testConnect
+     * @tc.desc Test Connect api.
+     * @tc.author quanli 00313334
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('bluetooth_gatt_connect', 0, function () {
+        console.info('[bluetooth_js] gatt connect start');
+        gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
+        let ret = gattClient.connect();
+        console.info('[bluetooth_js] gatt connect ret : ' + ret);
+        expect(ret).assertEqual(false);
+        console.info('[bluetooth_js] gatt connect end');
     })
 
     /**
@@ -249,24 +308,6 @@ describe('bluetoothhostTest', function() {
             expect(true).assertEqual(true);
             done();
         });
-    })
-
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GATT_CONNRCT_0001
-     * @tc.name testConnect
-     * @tc.desc Test Connect api.
-     * @tc.author quanli 00313334
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('bluetooth_gatt_connect', 0, function () {
-        console.info('[bluetooth_js] gatt connect start');
-        gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
-        let ret = gattClient.connect();
-        console.info('[bluetooth_js] gatt connect ret : ' + ret);
-        expect(ret).assertEqual(true);
-        console.info('[bluetooth_js] gatt connect end');
     })
 
 
@@ -667,7 +708,6 @@ describe('bluetoothhostTest', function() {
         }
     })
 
-
     /**
      * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GATT_DISCONNRCT_0001
      * @tc.name testDisConnect
@@ -684,7 +724,6 @@ describe('bluetoothhostTest', function() {
         expect(ret).assertEqual(false);
         console.info('[bluetooth_js] gatt disconnect end');
     })
-
 
     /**
      * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GATT_CLIENT_CLOSE_0001
@@ -713,6 +752,4 @@ describe('bluetoothhostTest', function() {
         }
     })
 
-
 })
-
