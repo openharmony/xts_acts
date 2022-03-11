@@ -15,15 +15,254 @@
 import {
     isIntNum,
     isNegativeNum,
+    isArray,
+    isInclude,
     describe,
     it,
     expect,
     storageStatistics,
+    volumeManager,
     getPackageName,
 } from "./Common";
 
 describe("storageStatistics", function () {
     
+    /**
+     * @tc.number SUB_DF_VOLUME_GET_TOTAL_SIZE_OF_VOLUME_0000
+     * @tc.name storage_statistics_test_get_total_size_of_volume_async_000
+     * @tc.desc Test getTotalSizeOfVolume() interfaces.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it("storage_statistics_test_get_total_size_of_volume_async_000", 0, async function (done) {
+        try {
+            let volumes = await volumeManager.getAllVolumes();
+            console.log(`promise getAllVolumes ===---=== ${JSON.stringify(volumes)}`);
+            expect(isArray(volumes)).assertTrue();
+            if (volumes.length > 0) {
+                let totalSize = await storageStatistics.getTotalSizeOfVolume(volumes[0].uuid);
+                console.log(`promise totalSize ===---=== ${totalSize}/1024 = ${totalSize / 1024}`);
+                expect(isIntNum(totalSize) && !isNegativeNum(totalSize)).assertTrue();
+            }
+            done();
+        } catch (e) {
+            console.log("storage_statistics_test_get_total_size_of_volume_async_000 has failed for " + e);
+            expect(null).assertFail();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number SUB_DF_VOLUME_GET_TOTAL_SIZE_OF_VOLUME_0010
+     * @tc.name storage_statistics_test_get_total_size_of_volume_async_001
+     * @tc.desc Test getTotalSizeOfVolume() interfaces.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it("storage_statistics_test_get_total_size_of_volume_async_001", 0, async function (done) {
+        try {
+            let volumes = await volumeManager.getAllVolumes();
+            expect(isArray(volumes)).assertTrue();
+            if (volumes.length > 0) {
+                storageStatistics.getTotalSizeOfVolume(volumes[0].uuid, (error, totalSize) => {
+                    console.log(`callback totalSize ===---=== ${totalSize}/1024 = ${totalSize / 1024}`);
+                    expect(isIntNum(totalSize) && !isNegativeNum(totalSize)).assertTrue();
+                });
+            }
+            done();
+        } catch (e) {
+            console.log("storage_statistics_test_get_total_size_of_volume_async_001 has failed for " + e);
+            expect(null).assertFail();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number SUB_DF_VOLUME_GET_TOTAL_SIZE_OF_VOLUME_0020
+     * @tc.name storage_statistics_test_get_total_size_of_volume_async_002
+     * @tc.desc Test getTotalSizeOfVolume() interfaces.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it("storage_statistics_test_get_total_size_of_volume_async_002", 0, async function (done) {
+        try {
+            await storageStatistics.getTotalSizeOfVolume("1234");
+            expect(null).assertFail();
+            done();
+        } catch (error) {
+            console.log("storage_statistics_test_get_total_size_of_volume_async_002 has failed for " + error.message);
+            expect(isInclude(error, "not a function") || isInclude(error, "is not callable")).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number SUB_DF_VOLUME_GET_TOTAL_SIZE_OF_VOLUME_0030
+     * @tc.name storage_statistics_test_get_total_size_of_volume_async_003
+     * @tc.desc Test getTotalSizeOfVolume() interfaces.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it("storage_statistics_test_get_total_size_of_volume_async_003", 0, async function (done) {
+        try {
+            let totalSize = await storageStatistics.getTotalSizeOfVolume(1234);
+            console.log(`async_003 totalSize ===---=== ${totalSize}`);
+            expect(totalSize == -1).assertTrue();
+            done();
+        } catch (error) {
+            console.log("storage_statistics_test_get_total_size_of_volume_async_003 has failed for " + error);
+            expect(isInclude(error, "Invalid uuid")).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number SUB_DF_VOLUME_GET_TOTAL_SIZE_OF_VOLUME_0040
+     * @tc.name storage_statistics_test_get_total_size_of_volume_async_004
+     * @tc.desc Test getTotalSizeOfVolume() interfaces.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it("storage_statistics_test_get_total_size_of_volume_async_004", 0, async function (done) {
+        try {
+            await storageStatistics.getTotalSizeOfVolume();
+            expect(null).assertFail();
+            done();
+        } catch (error) {
+            console.log("storage_statistics_test_get_total_size_of_volume_async_004 has failed for " + error);
+            expect(isInclude(error, "Number of arguments unmatched")).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number SUB_DF_VOLUME_GET_FREE_SIZE_OF_VOLUME_0000
+     * @tc.name storage_statistics_test_get_free_size_of_volume_async_000
+     * @tc.desc Test getFreeSizeOfVolume() interfaces.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it("storage_statistics_test_get_free_size_of_volume_async_000", 0, async function (done) {
+        try {
+            let volumes = await volumeManager.getAllVolumes();
+            console.log(`promise getAllVolumes ===---=== ${JSON.stringify(volumes)}`);
+            expect(isArray(volumes)).assertTrue();
+            if (volumes.length > 0) {
+                let freeSize = await storageStatistics.getFreeSizeOfVolume(volumes[0].id);
+                console.log(`promise freeSize ===---=== ${freeSize}/1024 = ${freeSize / 1024}`);
+                expect(isIntNum(freeSize) && !isNegativeNum(freeSize)).assertTrue();
+            }
+            done();
+        } catch (e) {
+            console.log("storage_statistics_test_get_free_size_of_volume_async_000 has failed for " + e);
+            expect(null).assertFail();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number SUB_DF_VOLUME_GET_FREE_SIZE_OF_VOLUME_0010
+     * @tc.name storage_statistics_test_get_free_size_of_volume_async_001
+     * @tc.desc Test getFreeSizeOfVolume() interfaces.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it("storage_statistics_test_get_free_size_of_volume_async_001", 0, async function (done) {
+        try {
+            let volumes = await volumeManager.getAllVolumes();
+            expect(isArray(volumes)).assertTrue();
+            if (volumes.length > 0) {
+                storageStatistics.getFreeSizeOfVolume(volumes[0].uuid, (error, freeSize) => {
+                    console.log(`callback freeSize ===---=== ${freeSize}/1024 = ${freeSize / 1024}`);
+                    expect(isIntNum(freeSize) && !isNegativeNum(freeSize)).assertTrue();
+                });
+            }
+            done();
+        } catch (e) {
+            console.log("storage_statistics_test_get_free_size_of_volume_async_001 has failed for " + e);
+            expect(null).assertFail();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number SUB_DF_VOLUME_GET_FREE_SIZE_OF_VOLUME_0020
+     * @tc.name storage_statistics_test_get_free_size_of_volume_async_002
+     * @tc.desc Test getFreeSizeOfVolume() interfaces.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it("storage_statistics_test_get_free_size_of_volume_async_002", 0, async function (done) {
+        try {
+            let freeSize = await storageStatistics.getFreeSizeOfVolume("1234");
+            console.log(`async_002 freeSize ===---=== ${freeSize}`);
+            expect(freeSize == -1).assertTrue();
+            done();
+        } catch (err) {
+            console.log("storage_statistics_test_get_free_size_of_volume_async_002 has failed for " + err);
+            expect(null).assertFail();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number SUB_DF_VOLUME_GET_FREE_SIZE_OF_VOLUME_0030
+     * @tc.name storage_statistics_test_get_free_size_of_volume_async_003
+     * @tc.desc Test getFreeSizeOfVolume() interfaces.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it("storage_statistics_test_get_free_size_of_volume_async_003", 0, async function (done) {
+        try {
+            await storageStatistics.getFreeSizeOfVolume(1234);
+            expect(null).assertFail();
+            done();
+        } catch (error) {
+            console.log("storage_statistics_test_get_free_size_of_volume_async_003 has failed for " + error);
+            expect(isInclude(error, "Invalid uuid")).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number SUB_DF_VOLUME_GET_FREE_SIZE_OF_VOLUME_0040
+     * @tc.name storage_statistics_test_get_free_size_of_volume_async_004
+     * @tc.desc Test getFreeSizeOfVolume() interfaces.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it("storage_statistics_test_get_free_size_of_volume_async_004", 0, async function (done) {
+        try {
+            await storageStatistics.getFreeSizeOfVolume();
+            expect(null).assertFail();
+            done();
+        } catch (error) {
+            console.log("storage_statistics_test_get_free_size_of_volume_async_004 has failed for " + error);
+            expect(isInclude(error, "Number of arguments unmatched")).assertTrue();
+            done();
+        }
+    });
+
     /**
    	 * @tc.number SUB_DF_STORAGE_STATISTICS_GET_BUNDLE_STAT_0000
    	 * @tc.name storage_statistics_test_get_bundle_stat_async_000
@@ -42,11 +281,11 @@ describe("storageStatistics", function () {
             expect(isIntNum(bundleStat.cacheSize) && !isNegativeNum(bundleStat.cacheSize)).assertTrue();
             expect(isIntNum(bundleStat.dataSize) && !isNegativeNum(bundleStat.dataSize)).assertTrue();
             console.log(`promise bundleStat ===---=== ${JSON.stringify(bundleStat)}`);
+            done();
         } catch (e) {
             console.log("storage_statistics_test_get_bundle_stat_async_000 has failed for " + e);
             expect(null).assertFail();
         }
-        done();
     });
 
     /**
@@ -67,12 +306,12 @@ describe("storageStatistics", function () {
                 expect(isIntNum(bundleStat.cacheSize) && !isNegativeNum(bundleStat.cacheSize)).assertTrue();
                 expect(isIntNum(bundleStat.dataSize) && !isNegativeNum(bundleStat.dataSize)).assertTrue();
                 console.log(`callback bundleStat ===---=== ${JSON.stringify(bundleStat)}`);
+                done();
             });
         } catch (e) {
             console.log("storage_statistics_test_get_bundle_stat_async_001 has failed for " + e);
             expect(null).assertFail();
         }
-        done();
     });
 
     /**
@@ -92,11 +331,11 @@ describe("storageStatistics", function () {
             expect(bundleStat.cacheSize == 0).assertTrue();
             expect(bundleStat.dataSize == 0).assertTrue();
             console.log(`async_002 bundleStat ===---=== ${JSON.stringify(bundleStat)}`);
+            done();
         } catch (e) {
             console.log("storage_statistics_test_get_bundle_stat_async_002 has failed for " + e);
             expect(!!e).assertTrue();
         }
-        done();
     });
 
     /**
@@ -117,11 +356,11 @@ describe("storageStatistics", function () {
             expect(isIntNum(bundleStat.cacheSize) && !isNegativeNum(bundleStat.cacheSize)).assertTrue();
             expect(isIntNum(bundleStat.dataSize) && !isNegativeNum(bundleStat.dataSize)).assertTrue();
             console.log(`async_003 bundleStat ===---=== ${JSON.stringify(bundleStat)}`);
+            done();
         } catch (e) {
             console.log("storage_statistics_test_get_bundle_stat_async_003 has failed for " + e);
             expect(!!e).assertTrue();
         }
-        done();
     });
 
     /**
@@ -141,10 +380,10 @@ describe("storageStatistics", function () {
             expect(bundleStat.cacheSize == 0).assertTrue();
             expect(bundleStat.dataSize == 0).assertTrue();
             console.log(`async_004 bundleStat ===---=== ${JSON.stringify(bundleStat)}`);
+            done();
         } catch (e) {
             console.log("storage_statistics_test_get_bundle_stat_async_004 has failed for " + e);
             expect(!!e).assertTrue();
         }
-        done();
     });
 });
