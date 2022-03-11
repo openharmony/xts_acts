@@ -154,7 +154,6 @@
           "pages/stateStyle",
           "pages/focus",
           "pages/placement",
-          "pages/animator",
           "pages/imageAnimator",
           "pages/animationStatus",
           "pages/sourceType",
