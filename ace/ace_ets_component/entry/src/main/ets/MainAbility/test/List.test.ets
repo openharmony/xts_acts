@@ -106,7 +106,7 @@ import flexWrapJsunit from './FlexWrapJsunit.test.ets';
 import datePickerJsunit from './DatePickerJsunit.test.ets';
 import enmusVerticalAlignJsunit from './EnmusVerticalAlignJsunit.test.ets';
 import enmusHorizontalAlignJsunit from './EnmusHorizontalAlignJsunit.test.ets';
-import direction2Jsunit from './direction2Jsunit.test.ets';
+import direction2Jsunit from './Direction2Jsunit.test.ets';
 import patternLockJsunit from './PatternLockJsunit.test.ets';
 import enumsImageJsunit from './EnmusImageJsunit.test.ets';
 import sliderJsunit from './sliderJsunit.test.ets'
@@ -134,6 +134,7 @@ import playModeJsunit from './PlayModeJsunit.test.ets';
 import SwipeDirectionJsunit from './SwipeDirectionJsunit.test.ets';
 import GestureModeJsunit from './GestureModeJsunit.test.ets';
 import PanDirectionJsunit from './PanDirectionJsunit.test.ets';
+import sideBarJsunit from './SideBarJsunit.test.ets';
 
 export default function testsuite() {
   gaugeJsunit();
@@ -258,5 +259,6 @@ export default function testsuite() {
   SwipeDirectionJsunit();
   GestureModeJsunit();
   PanDirectionJsunit();
+  sideBarJsunit();
   systemAppJsunit(); //此测试文件会终止APP运行，提代码请将文件放在此文件之前
 }
