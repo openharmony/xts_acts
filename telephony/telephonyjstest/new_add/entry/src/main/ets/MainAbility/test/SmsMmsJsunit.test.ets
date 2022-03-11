@@ -843,6 +843,7 @@ export default function smsUiJsunit() {
         done();
       });
     });
+
     /*
    * @tc.number  Telephony_SmsMms_getSmsEncodingScheme_Async_0100
    * @tc.name
@@ -854,13 +855,48 @@ export default function smsUiJsunit() {
         done();
         return;
       }
-      expect(sms.SmsEncodingScheme == 0).assertTrue();
+      expect(sms.SMS_ENCODING_UNKNOWN == 0).assertTrue();
       expect(sms.SMS_ENCODING_7BIT == 1).assertTrue();
       expect(sms.SMS_ENCODING_8BIT == 2).assertTrue();
       expect(sms.SMS_ENCODING_16BIT == 3).assertTrue();
       done();
     });
 
+    /*
+   * @tc.number  Telephony_SmsMms_getSendSmsResult_Async_0100
+   * @tc.name
+   * @tc.desc    Function test
+   */
+    it('Telephony_SmsMms_getSendSmsResult_Async_0100', 0, async function (done) {
+      if (true) {
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      expect(sms.SEND_SMS_FAILURE_RADIO_OFF == 0).assertTrue();
+      expect(sms.SEND_SMS_FAILURE_SERVICE_UNAVAILABLE == 1).assertTrue();
+      expect(sms.SIM_MESSAGE_STATUS_FREE == 0).assertTrue();
+      expect(sms.INSTANT_MESSAGE == 1).assertTrue();
+      expect(sms.OPTIONAL_MESSAGE == 2).assertTrue();
+      done();
+    });
+
+    /*
+   * @tc.number  Telephony_SmsMms_ShortMessageClass_Async_0100
+   * @tc.name
+   * @tc.desc    Function test
+   */
+    it('Telephony_SmsMms_ShortMessageClass_Async_0100', 0, async function (done) {
+      if (true) {
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      expect(sms.SIM_MESSAGE_STATUS_FREE == 0).assertTrue();
+      expect(sms.INSTANT_MESSAGE == 1).assertTrue();
+      expect(sms.OPTIONAL_MESSAGE == 2).assertTrue();
+      done();
+    });
     /*
    * @tc.number  Telephony_SmsMms_getMmsCharSets_Async_0100
    * @tc.name

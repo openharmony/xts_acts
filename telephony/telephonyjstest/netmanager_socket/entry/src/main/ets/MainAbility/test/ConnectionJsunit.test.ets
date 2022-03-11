@@ -20,6 +20,7 @@ import utils from './Utils.ets'
 export default function connectionJsunit() {
   describe('connectionTest', function () {
     const TIMEOUT = 100;
+    const DELAY = 1000;
     const NETID_IVVALID = 99;
     const NETID_IVVALID2 = 0;
     console.log("************* connection Test start*************");
@@ -996,6 +997,119 @@ export default function connectionJsunit() {
       done();
       console.log("************* Telephony_Connection_Connection_bearerTypes_0100 Test end*************");
     })
+
+    /**
+     * @tc.number  Telephony_Connection_Connection_register_0100
+     * @tc.name    register
+     * @tc.desc    Receives status change notifications of a specified network.
+     */
+    it('Telephony_Connection_Connection_register_0100', 0, async function (done) {
+      console.log("************* Telephony_Connection_Connection_register_0100 Test start*************");
+      if (utils.notCheck) {
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      let caseName = 'Telephony_Connection_Connection_register_0100';
+      let netSpecifier = {
+        netCapabilities: {
+          linkUpBandwidthKbps: 0,
+          linkDownBandwidthKbps: 0,
+          bearerTypes: [0],
+          networkCap: [0],
+        }, bearerPrivateIdentifier: '123'
+      }
+      let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
+      netConn.register((error) => {
+        if (error) {
+          console.log(`${caseName} register fail: ${error}`);
+        }
+      });
+      await sleep(DELAY);
+      netConn.unregister((error) => {
+        if (error) {
+          console.log(`${caseName} unregister fail: ${error}`);
+        }
+      });
+      expect(true).assertTrue();
+      done();
+      console.log("************* Telephony_Connection_Connection_register_0100 Test end*************");
+    });
+
+    /**
+     * @tc.number  Telephony_Connection_Connection_unregister_0100
+     * @tc.name    unregister
+     * @tc.desc    Cancels listening for network status changes. test
+     */
+    it('Telephony_Connection_Connection_unregister_0100', 0, async function (done) {
+      console.log("************* Telephony_Connection_Connection_unregister_0100 Test start*************");
+      if (utils.notCheck) {
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      let caseName = 'Telephony_Connection_Connection_unregister_0100';
+      let netSpecifier = {
+        netCapabilities: {
+          linkUpBandwidthKbps: 10,
+          linkDownBandwidthKbps: 11,
+          bearerTypes: [0],
+          networkCap: [0],
+        }, bearerPrivateIdentifier: '123'
+      }
+      let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
+      netConn.register((error) => {
+        if (error) {
+          console.log(`${caseName} register fail: ${error}`);
+        }
+      });
+      await sleep(DELAY);
+      netConn.unregister((error) => {
+        if (error) {
+          console.log(`${caseName} unregister fail: ${error}`);
+        }
+      });
+      expect(true).assertTrue();
+      done();
+      console.log("************* Telephony_Connection_Connection_unregister_0100 Test end*************");
+    });
+
+    /*
+         * @tc.number    : Telephony_Connection_Connection_netId_0100
+         * @tc.name      : netId
+         * @tc.desc      : netId test.
+         */
+    it('Telephony_Connection_Connection_netId_0100', 0, async function (done) {
+      console.log("************* Telephony_Connection_Connection_netId_0100 Test start*************");
+      connection.getDefaultNet((error, data) => {
+        if (error) {
+          expect(true).assertTrue();
+        } else {
+          expect(data.netId).assertEqual(100);
+        }
+      });
+      console.log("************* Telephony_Connection_Connection_netId_0100 Test end*************");
+      done();
+    });
+
+    /*
+         * @tc.number    : Telephony_Connection_Connection_domains_0100
+         * @tc.name      : domains
+         * @tc.desc      : domains test.
+         */
+    it('Telephony_Connection_Connection_domains_0100', 0, async function (done) {
+      console.log("************* Telephony_Connection_Connection_domains_0100 Test start*************");
+      var handle = new connection.NetHandle(NETID_IVVALID);
+      connection.getConnectionProperties(handle, (error, data) => {
+        if (error) {
+          expect(true).assertTrue();
+        } else {
+          expect(data.domains).assertEqual("");
+        }
+      });
+      console.log("************* Telephony_Connection_Connection_domains_0100 Test end*************");
+      done();
+    });
 
     console.log("************* connection Test end*************");
   })
