@@ -19,6 +19,7 @@ group("aafwk_standard") {
     deps = [
       "ActsDataAbilityJsTest:ActsDataAbilityJsTest",
       "ActsKillProcessWithAccountApi7:ActsKillProcessWithAccountApi7",
+      "ActsStServiceAbilityClientCaseTest:ActsStServiceAbilityClientCaseTest",
       "abilitymanager:actsabilitymanagertest",
       "actsabilitydistributetest:ActsAbilityDistributeTest",
       "actsabilitydistributetest:ActsAbilityDistributeTest",
