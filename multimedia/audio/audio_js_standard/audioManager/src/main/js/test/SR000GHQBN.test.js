@@ -1303,7 +1303,7 @@ describe('audioManger', function () {
     it('SUB_AUDIO_MANAGER_ON_setDeviceActive_SPEAKER_037', 0, async function (done) {
         await audioManager.setDeviceActive(audio.DeviceType.SPEAKER,false).then(function (){
             console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Active');
-        }).catch ((err) => {
+        }).catch((err) => {
             console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Activate: Error: ${err.message}`);
         });
         var setflag ;
@@ -1330,7 +1330,7 @@ describe('audioManger', function () {
         });
         await audioManager.setDeviceActive(audio.DeviceType.SPEAKER,true).then(function (){
             console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Active');
-        }).catch ((err) => {
+        }).catch((err) => {
             console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Activate: Error: ${err.message}`);
         });
         done();
@@ -1367,7 +1367,7 @@ describe('audioManger', function () {
         });
         await audioManager.setDeviceActive(2,true).then(function (){
             console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Active');
-        }).catch ((err) => {
+        }).catch((err) => {
             console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Activate: Error: ${err.message}`);
         });
     })
@@ -1400,7 +1400,7 @@ describe('audioManger', function () {
         });
         await audioManager.setDeviceActive(audio.ActiveDeviceType.BLUETOOTH_SCO,true).then(function (){
             console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_SCO: Active');
-        }).catch ((err) => {
+        }).catch((err) => {
             console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_SCO: Activate: Error: ${err.message}`);
         });
         done();
@@ -1437,7 +1437,7 @@ describe('audioManger', function () {
         });
         await audioManager.setDeviceActive(7,true).then(function (){
             console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_SCO: Active');
-        }).catch ((err) => {
+        }).catch((err) => {
             console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_SCO: Activate: Error: ${err.message}`);
         });
         done();
@@ -1472,7 +1472,7 @@ describe('audioManger', function () {
         });
         await audioManager.setDeviceActive(audio.ActiveDeviceType.WIRED_HEADSET,true).then(function (){
             console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : WIRED_HEADSET: Active');
-        }).catch ((err) => {
+        }).catch((err) => {
             console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : WIRED_HEADSET: Activate: Error: ${err.message}`);
         });
         done();
@@ -1515,7 +1515,7 @@ describe('audioManger', function () {
         });
         await audioManager.setDeviceActive(3,true).then(function (){
             console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : WIRED_HEADSET: Active');
-        }).catch ((err) => {
+        }).catch((err) => {
             console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : WIRED_HEADSET: Activate: Error: ${err.message}`);
         });
         done();
@@ -1543,19 +1543,19 @@ describe('audioManger', function () {
         await sleep(1000);
         await audioManager.setDeviceActive(audio.ActiveDeviceType.WIRED_HEADSET,true).then(function (){
             console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : WIRED_HEADSET: Active');
-        }).catch ((err) => {
+        }).catch((err) => {
             console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : WIRED_HEADSET: Activate: Error: ${err.message}`);
         });
         await sleep(5000);
         await audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER,true).then(function (){
             console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Active');
-        }).catch ((err) => {
+        }).catch((err) => {
             console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Activate: Error: ${err.message}`);
         });
         await sleep(5000);
         await audioManager.setDeviceActive(audio.ActiveDeviceType.WIRED_HEADSET,true).then(function (){
             console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : WIRED_HEADSET: Active Again');
-        }).catch ((err) => {
+        }).catch((err) => {
             console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : WIRED_HEADSET: Activate Again: Error: ${err.message}`);
         });
         await sleep(5000);
@@ -1576,5 +1576,37 @@ describe('audioManger', function () {
         expect(setFalg).assertTrue();
         done();
     })
+
+    /* *
+                * @tc.number    : SUB_AUDIO_MANAGER_DeviceType_001
+                * @tc.name      : DeviceType - INVALID
+                * @tc.desc      : DeviceType - INVALID
+                * @tc.size      : MEDIUM
+                * @tc.type      : Function
+                * @tc.level     : Level 0
+            */
+    it('SUB_AUDIO_MANAGER_DeviceType_001', 0, async function (done) {
+
+        expect(audio.DeviceType.INVALID).assertEqual(0);
+        await sleep(50);
+        done();
+    })
+
+    /* *
+                * @tc.number    : SUB_AUDIO_MANAGER_DeviceType_002
+                * @tc.name      : DeviceType - WIRED_HEADSET
+                * @tc.desc      : DeviceType - WIRED_HEADSET
+                * @tc.size      : MEDIUM
+                * @tc.type      : Function
+                * @tc.level     : Level 0
+            */
+    it('SUB_AUDIO_MANAGER_DeviceType_001', 0, async function (done) {
+
+        expect(audio.DeviceType.WIRED_HEADSET).assertEqual(3);
+        await sleep(50);
+        done();
+    })
+
+
 
 })
