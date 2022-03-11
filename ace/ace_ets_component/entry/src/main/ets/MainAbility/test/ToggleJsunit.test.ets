@@ -52,6 +52,7 @@ export default function ToggleJsunit() {
       let strJson = getInspectorByKey('toggle');
       let obj = JSON.parse(strJson);
       console.info("[testToggle01] obj is: " + JSON.stringify(obj));
+      expect(obj.$type).assertEqual('Toggle');
       expect(obj.$attrs.selectedColor).assertEqual('#330A59F7');
       console.info('[testToggle01] END');
       done();
@@ -102,6 +103,32 @@ export default function ToggleJsunit() {
       console.info("testToggle04 component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.isOn).assertEqual('true');
       console.info('testToggle04 END');
+      done();
+    });
+
+    it('testToggle05', 0, async function (done) {
+      console.info('testToggle05 START');
+      try {
+        let eventData = {
+          data: {
+            "selectedColor": '#330A59F8',
+          }
+        }
+        let indexEvent = {
+          eventId: 1012,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testToggle05 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("testToggle05 change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJsonNew = getInspectorByKey('toggle');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("testToggle05 component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.selectedColor).assertEqual('#330A59F8');
+      console.info('testToggle05 END');
       done();
     });
   })

@@ -15,10 +15,11 @@
 
 import media from '@ohos.multimedia.media'
 import router from '@system.router'
+import fileIO from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('VideoPlayerFuncPromiseTest', function () {
-    const AUDIO_SOURCE = 'file://data/media/H264_AAC.mp4';
+    const AUDIO_SOURCE = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoplayer/H264_AAC.mp4';
     const PLAY_TIME = 3000;
     const SEEK_TIME = 5000;
     const SEEK_CLOSEST = 3;
@@ -26,7 +27,11 @@ describe('VideoPlayerFuncPromiseTest', function () {
     const HEIGHT_VALUE = 480;
     const DURATION_TIME = 10034;
     const DELTA_TIME = 1000;
+    const NEXT_FRAME_TIME = 8333;
+    const PREV_FRAME_TIME = 4166;
     let surfaceID = '';
+    let fdPath;
+    let fdValue;
     beforeAll(function() {
         console.info('beforeAll case');
     })
@@ -41,7 +46,8 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('afterEach case');
     })
 
-    afterAll(function() {
+    afterAll(async function() {
+        await fileIO.close(fdValue);
         console.info('afterAll case');
     })
 
@@ -71,6 +77,19 @@ describe('VideoPlayerFuncPromiseTest', function () {
         }
     }
 
+    async function getFd() {
+        fdPath = 'fd://';
+        await fileIO.open(AUDIO_SOURCE).then((fdNumber) => {
+            fdPath = fdPath + '' + fdNumber;
+            fdValue = fdNumber;
+            console.info('[fileIO]case open fd success,fdPath is ' + fdPath);
+        }, (err) => {
+            console.info('[fileIO]case open fd failed');
+        }).catch((err) => {
+            console.info('[fileIO]case catch open fd failed');
+        });
+    }
+
     function printfDescription(obj) { 
         let description = ""; 
         for(let i in obj) { 
@@ -78,36 +97,126 @@ describe('VideoPlayerFuncPromiseTest', function () {
             console.info('case key is  '+ i);
             console.info('case value is  '+ property);
             description += i + " = " + property + "\n"; 
-        } 
+        }
+    }
+
+    function checkSpeedTime(videoPlayer, speedValue, startTime) {
+        let newTime = videoPlayer.currentTime;
+        if (videoPlayer.state == 'playing') {
+            switch (speedValue) {
+                case media.PlaybackSpeed.SPEED_FORWARD_0_75_X:
+                    expect(newTime - startTime).assertClose(0.75 * 1000, DELTA_TIME);
+                    break;
+                case media.PlaybackSpeed.SPEED_FORWARD_1_00_X:
+                    expect(newTime - startTime).assertClose(1000, DELTA_TIME);
+                    break;
+                case media.PlaybackSpeed.SPEED_FORWARD_1_25_X:
+                    expect(newTime - startTime).assertClose(1.25 * 1000, DELTA_TIME);
+                    break;
+                case media.PlaybackSpeed.SPEED_FORWARD_1_75_X:
+                    expect(newTime - startTime).assertClose(1.75 * 1000, DELTA_TIME);
+                    break;
+                case media.PlaybackSpeed.SPEED_FORWARD_2_00_X:
+                    expect(newTime - startTime).assertClose(2 * 1000, DELTA_TIME);
+                    break;
+            }
+        } else {
+            console.info('case speed not in play');
+        }
     }
 
     /* *
         * @tc.number    : SUB_MEDIA_PLAYER_MULTIPLE_0100
-        * @tc.name      : 001.Multi-instance (16 promise) 
+        * @tc.name      : 001.Multi-instance (2 videoPlayer promise) 
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_PLAYER_MULTIPLE_0100', 0, async function (done) {
-        let arr = new Array();
-        for (let i = 0; i < 14;i++) {
+        await getFd();
+        setTimeout(async function() {
+            surfaceID = globalThis.value;
+            console.info('case new surfaceID is ' + surfaceID);
+            let testVideoPlayer1 = null;
+            let testVideoPlayer2 = null;
             await media.createVideoPlayer().then((video) => {
                 if (typeof (video) != 'undefined') {
-                    arr[i] = video
-                    console.info('case createVideoPlayer success ' + i);
+                    testVideoPlayer1 = video
+                    console.info('case createVideoPlayer success ');
                 } else {
                     console.info('case createVideoPlayer is failed');
                     expect().assertFail();
                 }
-            }, failureCallback).catch(catchCallback);            
-        }
-        for (let j = 0; j < 14;j++) {
-            await arr[j].release().then(() => {
-                console.info('case release success ' + j);
             }, failureCallback).catch(catchCallback);
-        }
-        done();
+    
+            testVideoPlayer1.url = fdPath;
+            await testVideoPlayer1.setDisplaySurface(surfaceID).then(() => {
+                console.info('case setDisplaySurface success');
+                expect(testVideoPlayer1.state).assertEqual('idle');
+            }, failureCallback).catch(catchCallback);
+
+            await testVideoPlayer1.prepare().then(() => {
+                console.info('case prepare called!!');
+                expect(testVideoPlayer1.state).assertEqual('prepared');
+                expect(testVideoPlayer1.duration).assertEqual(DURATION_TIME);
+                expect(testVideoPlayer1.width).assertEqual(WIDTH_VALUE);
+                expect(testVideoPlayer1.height).assertEqual(HEIGHT_VALUE);
+            }, failureCallback).catch(catchCallback);
+
+            let startTime = testVideoPlayer1.currentTime;
+            await testVideoPlayer1.play().then(() => {
+                console.info('case play called!!');
+                sleep(PLAY_TIME);
+                expect(testVideoPlayer1.state).assertEqual('playing');
+            }, failureCallback).catch(catchCallback);
+            let endTime = testVideoPlayer1.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
+
+            await testVideoPlayer1.release().then(() => {
+                console.info('case release called!!');
+            }, failureCallback).catch(catchCallback);
+            testVideoPlayer1 = null;
+
+            await media.createVideoPlayer().then((video) => {
+                if (typeof (video) != 'undefined') {
+                    testVideoPlayer2 = video
+                    console.info('case createVideoPlayer success ');
+                } else {
+                    console.info('case createVideoPlayer is failed');
+                    expect().assertFail();
+                }
+            }, failureCallback).catch(catchCallback);
+
+            testVideoPlayer2.url = fdPath;
+            await testVideoPlayer2.setDisplaySurface(surfaceID).then(() => {
+                console.info('case setDisplaySurface success');
+                expect(testVideoPlayer2.state).assertEqual('idle');
+            }, failureCallback).catch(catchCallback);
+
+            await testVideoPlayer2.prepare().then(() => {
+                console.info('case prepare called!!');
+                expect(testVideoPlayer2.state).assertEqual('prepared');
+                expect(testVideoPlayer2.duration).assertEqual(DURATION_TIME);
+                expect(testVideoPlayer2.width).assertEqual(WIDTH_VALUE);
+                expect(testVideoPlayer2.height).assertEqual(HEIGHT_VALUE);
+            }, failureCallback).catch(catchCallback);
+
+            startTime = testVideoPlayer2.currentTime;
+            await testVideoPlayer2.play().then(() => {
+                console.info('case play called!!');
+                sleep(PLAY_TIME);
+                expect(testVideoPlayer2.state).assertEqual('playing');
+            }, failureCallback).catch(catchCallback);
+            endTime = testVideoPlayer2.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
+
+            await testVideoPlayer2.release().then(() => {
+                console.info('case release called!!');
+            }, failureCallback).catch(catchCallback);
+            testVideoPlayer2 = null;
+            done();
+        }, 1000);
     })
 
     /* *
@@ -134,7 +243,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 console.info('case setDisplaySurface success');
                 expect(videoPlayer.state).assertEqual('idle');
@@ -147,13 +256,16 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 expect(videoPlayer.width).assertEqual(WIDTH_VALUE);
                 expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
             }, failureCallback).catch(catchCallback);
-    
+
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
                 expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
-    
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
+
             await videoPlayer.release().then(() => {
                 console.info('case release called!!');
             }, failureCallback).catch(catchCallback);
@@ -184,7 +296,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 console.info('case setDisplaySurface success');
                 expect(videoPlayer.state).assertEqual('idle');
@@ -198,11 +310,14 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
                 console.info('case play called!!');
-                expect(videoPlayer.state).assertEqual('playing');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             await videoPlayer.pause().then(() => {
                 expect(videoPlayer.state).assertEqual('paused');
@@ -239,7 +354,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -253,22 +368,28 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             await videoPlayer.pause().then(() => {
                 expect(videoPlayer.state).assertEqual('paused');
                 console.info('case pause called!!');
             }, failureCallback).catch(catchCallback);
-    
+
+            startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
                 expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
             }, failureCallback).catch(catchCallback);
+            endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             await videoPlayer.release().then(() => {
                 console.info('case release called!!');
@@ -300,7 +421,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -314,11 +435,14 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             await videoPlayer.stop().then(() => {
                 expect(videoPlayer.state).assertEqual('stopped');
@@ -355,7 +479,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -369,11 +493,14 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             await videoPlayer.reset().then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
@@ -410,7 +537,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -424,14 +551,18 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             await videoPlayer.seek(SEEK_TIME).then((seekDoneTime) => {
                 expect(videoPlayer.state).assertEqual('playing');
+                expect(seekDoneTime).assertEqual(PREV_FRAME_TIME);
                 console.info('case seek called and seekDoneTime is' + seekDoneTime);
             }, failureCallback).catch(catchCallback);
     
@@ -465,7 +596,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -479,16 +610,48 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
-            }, failureCallback).catch(catchCallback);
-    
-            await videoPlayer.seek(SEEK_TIME, SEEK_CLOSEST).then((seekDoneTime) => {
                 expect(videoPlayer.state).assertEqual('playing');
-                expect(videoPlayer.currentTime + DELTA_TIME).assertClose(seekDoneTime + DELTA_TIME, DELTA_TIME);
-                expect(seekDoneTime).assertEqual(SEEK_TIME);
+            }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
+    
+            await videoPlayer.seek(SEEK_TIME, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
+                expect(videoPlayer.state).assertEqual('playing');
+                expect(seekDoneTime).assertEqual(NEXT_FRAME_TIME);
+                console.info('case seek called and seekDoneTime is' + seekDoneTime);
+            }, failureCallback).catch(catchCallback);
+
+            await videoPlayer.seek(SEEK_TIME, media.SeekMode.SEEK_PREV_SYNC).then((seekDoneTime) => {
+                expect(videoPlayer.state).assertEqual('playing');
+                expect(seekDoneTime).assertEqual(PREV_FRAME_TIME);
+                console.info('case seek called and seekDoneTime is' + seekDoneTime);
+            }, failureCallback).catch(catchCallback);
+
+            await videoPlayer.seek(PREV_FRAME_TIME - 100, media.SeekMode.SEEK_PREV_SYNC).then((seekDoneTime) => {
+                expect(videoPlayer.state).assertEqual('playing');
+                expect(seekDoneTime).assertEqual(0);
+                console.info('case seek called and seekDoneTime is' + seekDoneTime);
+            }, failureCallback).catch(catchCallback);
+
+            await videoPlayer.seek(PREV_FRAME_TIME + 100, media.SeekMode.SEEK_PREV_SYNC).then((seekDoneTime) => {
+                expect(videoPlayer.state).assertEqual('playing');
+                expect(seekDoneTime).assertEqual(PREV_FRAME_TIME);
+                console.info('case seek called and seekDoneTime is' + seekDoneTime);
+            }, failureCallback).catch(catchCallback);
+
+            await videoPlayer.seek(NEXT_FRAME_TIME - 100, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
+                expect(videoPlayer.state).assertEqual('playing');
+                expect(seekDoneTime).assertEqual(NEXT_FRAME_TIME);
+                console.info('case seek called and seekDoneTime is' + seekDoneTime);
+            }, failureCallback).catch(catchCallback);
+
+            await videoPlayer.seek(NEXT_FRAME_TIME + 100, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
+                expect(videoPlayer.state).assertEqual('playing');
+                expect(seekDoneTime).assertEqual(NEXT_FRAME_TIME + 100);
                 console.info('case seek called and seekDoneTime is' + seekDoneTime);
             }, failureCallback).catch(catchCallback);
     
@@ -522,7 +685,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -536,11 +699,14 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             await videoPlayer.setVolume(1).then(() => {
                 expect(videoPlayer.state).assertEqual('playing');
@@ -577,7 +743,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -591,17 +757,25 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
-            }, failureCallback).catch(catchCallback);
-    
-            await videoPlayer.setSpeed(2).then((speedMode) => {
                 expect(videoPlayer.state).assertEqual('playing');
+            }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
+            
+            startTime = videoPlayer.currentTime;
+            await videoPlayer.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_2_00_X).then((speedMode) => {
+                expect(videoPlayer.state).assertEqual('playing');
+                sleep(1000);
+                expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_2_00_X);
                 console.info('case setSpeed called and speedMode is ' + speedMode);
             }, failureCallback).catch(catchCallback);
-    
+            endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(2 * 1000, DELTA_TIME);
+
             await videoPlayer.release().then(() => {
                 console.info('case release called!!');
             }, failureCallback).catch(catchCallback);
@@ -633,7 +807,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -684,7 +858,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -699,17 +873,19 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
                 expect(videoPlayer.loop).assertEqual(true);
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
-    
-            await videoPlayer.seek(DURATION_TIME, SEEK_CLOSEST).then((seekDoneTime) => {
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
+
+            await videoPlayer.seek(DURATION_TIME, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
                 expect(videoPlayer.state).assertEqual('playing');
                 expect(seekDoneTime).assertEqual(DURATION_TIME);
-                expect(videoPlayer.currentTime + DELTA_TIME).assertEqual(seekDoneTime + DELTA_TIME);
                 console.info('case seek called and seekDoneTime is' + seekDoneTime);
             }, failureCallback).catch(catchCallback);
     
@@ -743,7 +919,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -757,11 +933,14 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             await videoPlayer.pause().then(() => {
                 expect(videoPlayer.state).assertEqual('paused');
@@ -803,7 +982,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -817,11 +996,14 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             await videoPlayer.pause().then(() => {
                 expect(videoPlayer.state).assertEqual('paused');
@@ -863,7 +1045,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -877,11 +1059,14 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             await videoPlayer.pause().then(() => {
                 expect(videoPlayer.state).assertEqual('paused');
@@ -890,14 +1075,18 @@ describe('VideoPlayerFuncPromiseTest', function () {
             
             await videoPlayer.seek(SEEK_TIME).then((seekDoneTime) => {
                 expect(videoPlayer.state).assertEqual('paused');
+                expect(seekDoneTime).assertEqual(PREV_FRAME_TIME);
                 console.info('case seek called and seekDoneTime is' + seekDoneTime);
             }, failureCallback).catch(catchCallback);
             
+            startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
                 expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
             }, failureCallback).catch(catchCallback);
+            endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
             
             await videoPlayer.release().then(() => {
                 console.info('case release called!!');
@@ -929,7 +1118,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -943,28 +1132,40 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             await videoPlayer.pause().then(() => {
                 expect(videoPlayer.state).assertEqual('paused');
                 console.info('case pause called!!');
             }, failureCallback).catch(catchCallback);
             
-            await videoPlayer.seek(SEEK_TIME, SEEK_CLOSEST).then((seekDoneTime) => {
+            await videoPlayer.seek(SEEK_TIME, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
                 expect(videoPlayer.state).assertEqual('paused');
-                expect(seekDoneTime).assertEqual(SEEK_TIME);
+                expect(seekDoneTime).assertEqual(NEXT_FRAME_TIME);
+                console.info('case seek called and seekDoneTime is' + seekDoneTime);
+            }, failureCallback).catch(catchCallback);
+
+            await videoPlayer.seek(SEEK_TIME, media.SeekMode.SEEK_PREV_SYNC).then((seekDoneTime) => {
+                expect(videoPlayer.state).assertEqual('paused');
+                expect(seekDoneTime).assertEqual(PREV_FRAME_TIME);
                 console.info('case seek called and seekDoneTime is' + seekDoneTime);
             }, failureCallback).catch(catchCallback);
             
+            startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
                 expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
             }, failureCallback).catch(catchCallback);
+            endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
             
             await videoPlayer.release().then(() => {
                 console.info('case release called!!');
@@ -996,7 +1197,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -1010,11 +1211,14 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             await videoPlayer.pause().then(() => {
                 expect(videoPlayer.state).assertEqual('paused');
@@ -1026,12 +1230,15 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case setVolume called');
             }, failureCallback).catch(catchCallback);
             
+            startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
                 expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
             }, failureCallback).catch(catchCallback);
-            
+            endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
+
             await videoPlayer.release().then(() => {
                 console.info('case release called!!');
             }, failureCallback).catch(catchCallback);
@@ -1062,7 +1269,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -1076,28 +1283,35 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             await videoPlayer.pause().then(() => {
                 expect(videoPlayer.state).assertEqual('paused');
                 console.info('case pause called!!');
             }, failureCallback).catch(catchCallback);
             
-            await videoPlayer.setSpeed(2).then((speedMode) => {
+            await videoPlayer.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_2_00_X).then((speedMode) => {
                 expect(videoPlayer.state).assertEqual('paused');
+                expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_2_00_X);
                 console.info('case setSpeed called and speedMode is ' + speedMode);
             }, failureCallback).catch(catchCallback);
             
+            startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
                 expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
             }, failureCallback).catch(catchCallback);
-            
+            endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
+
             await videoPlayer.release().then(() => {
                 console.info('case release called!!');
             }, failureCallback).catch(catchCallback);
@@ -1128,7 +1342,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -1142,11 +1356,14 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             await videoPlayer.stop().then(() => {
                 expect(videoPlayer.state).assertEqual('stopped');
@@ -1188,7 +1405,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -1202,11 +1419,14 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             await videoPlayer.stop().then(() => {
                 expect(videoPlayer.state).assertEqual('stopped');
@@ -1217,7 +1437,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case reset called!!');
             }, failureCallback).catch(catchCallback);
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.prepare().then(() => {
                 expect(videoPlayer.state).assertEqual('prepared');
                 expect(videoPlayer.duration).assertEqual(DURATION_TIME);
@@ -1226,11 +1446,14 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             await videoPlayer.release().then(() => {
                 console.info('case release called!!');
@@ -1262,7 +1485,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -1276,14 +1499,18 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             await videoPlayer.seek(0).then((seekDoneTime) => {
                 expect(videoPlayer.state).assertEqual('playing');
+                expect(seekDoneTime).assertEqual(0);
                 console.info('case seek called and seekDoneTime is' + seekDoneTime);
             }, failureCallback).catch(catchCallback);
             
@@ -1327,7 +1554,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -1341,13 +1568,22 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
-            await videoPlayer.seek(0, SEEK_CLOSEST).then((seekDoneTime) => {
+            await videoPlayer.seek(0, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
+                expect(videoPlayer.state).assertEqual('playing');
+                expect(seekDoneTime).assertEqual(0);
+                console.info('case seek called and seekDoneTime is' + seekDoneTime);
+            }, failureCallback).catch(catchCallback);
+
+            await videoPlayer.seek(0, media.SeekMode.SEEK_PREV_SYNC).then((seekDoneTime) => {
                 expect(videoPlayer.state).assertEqual('playing');
                 expect(seekDoneTime).assertEqual(0);
                 console.info('case seek called and seekDoneTime is' + seekDoneTime);
@@ -1402,7 +1638,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }, failureCallback).catch(catchCallback);
             });
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -1416,15 +1652,18 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             await videoPlayer.seek(DURATION_TIME).then((seekDoneTime) => {
                 expect(videoPlayer.state).assertEqual('playing');
-                expect(videoPlayer.currentTime + DELTA_TIME).assertClose(seekDoneTime + DELTA_TIME, DELTA_TIME);
+                expect(seekDoneTime).assertEqual(NEXT_FRAME_TIME);
                 console.info('case seek called and seekDoneTime is' + seekDoneTime);
             }, failureCallback).catch(catchCallback);
     
@@ -1467,7 +1706,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }, failureCallback).catch(catchCallback);
             });
             
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -1481,19 +1720,27 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
-            }, failureCallback).catch(catchCallback);
-    
-            await videoPlayer.seek(DURATION_TIME, SEEK_CLOSEST).then((seekDoneTime) => {
                 expect(videoPlayer.state).assertEqual('playing');
-                expect(seekDoneTime).assertEqual(DURATION_TIME);
-                expect(videoPlayer.currentTime).assertEqual(DURATION_TIME);
+            }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
+
+            await videoPlayer.seek(DURATION_TIME, media.SeekMode.SEEK_PREV_SYNC).then((seekDoneTime) => {
+                expect(videoPlayer.state).assertEqual('playing');
+                expect(seekDoneTime).assertEqual(NEXT_FRAME_TIME);
                 console.info('case seek called and seekDoneTime is' + seekDoneTime);
             }, failureCallback).catch(catchCallback);
-    
+
+            await videoPlayer.seek(DURATION_TIME, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
+                expect(videoPlayer.state).assertEqual('playing');
+                expect(seekDoneTime).assertEqual(DURATION_TIME);
+                console.info('case seek called and seekDoneTime is' + seekDoneTime);
+            }, failureCallback).catch(catchCallback);
+
             await videoPlayer.release().then(() => {
                 console.info('case release called!!');
             }, failureCallback).catch(catchCallback);
@@ -1533,7 +1780,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }, failureCallback).catch(catchCallback);
             });
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -1547,14 +1794,18 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
-    
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
+
             await videoPlayer.seek(DURATION_TIME + 1).then((seekDoneTime) => {
                 expect(videoPlayer.state).assertEqual('playing');
+                expect(seekDoneTime).assertEqual(NEXT_FRAME_TIME);
                 console.info('case seek called and seekDoneTime is' + seekDoneTime);
             }, (err) => {
                 console.info('case seek out of duration called');
@@ -1600,7 +1851,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }, failureCallback).catch(catchCallback);
             });
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -1614,25 +1865,26 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
-            }, failureCallback).catch(catchCallback);
-    
-            await videoPlayer.seek(DURATION_TIME + 1, SEEK_CLOSEST).then((seekDoneTime) => {
                 expect(videoPlayer.state).assertEqual('playing');
-                expect(videoPlayer.currentTime).assertEqual(DURATION_TIME);
-                console.info('case seek called and seekDoneTime is' + seekDoneTime);
-            }, (err) => {
-                console.info('case seek out of duration called');
-                done();
-            }).catch(catchCallback);
-    
-            await videoPlayer.release().then(() => {
-                console.info('case release called!!');
             }, failureCallback).catch(catchCallback);
-            done();            
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
+
+            await videoPlayer.seek(DURATION_TIME + 1, media.SeekMode.SEEK_PREV_SYNC).then((seekDoneTime) => {
+                expect(videoPlayer.state).assertEqual('playing');
+                expect(seekDoneTime).assertEqual(NEXT_FRAME_TIME);
+                console.info('case seek called and seekDoneTime is' + seekDoneTime);
+            }, failureCallback).catch(catchCallback);
+
+            await videoPlayer.seek(DURATION_TIME + 1, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
+                expect(videoPlayer.state).assertEqual('playing');
+                expect(seekDoneTime).assertEqual(DURATION_TIME);
+                console.info('case seek called and seekDoneTime is' + seekDoneTime);
+            }, failureCallback).catch(catchCallback);
         }, 1000);
     })
 
@@ -1659,7 +1911,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -1673,11 +1925,14 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
                 sleep(PLAY_TIME);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
             
             for (let i = 0; i < 6; i++) {
                 await videoPlayer.setVolume(i * 0.2).then(() => {
@@ -1716,7 +1971,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 }
             }, failureCallback).catch(catchCallback);
     
-            videoPlayer.url = AUDIO_SOURCE;
+            videoPlayer.url = fdPath;
             await videoPlayer.setDisplaySurface(surfaceID).then(() => {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success');
@@ -1730,15 +1985,22 @@ describe('VideoPlayerFuncPromiseTest', function () {
                 console.info('case prepare called!!');
             }, failureCallback).catch(catchCallback);
     
+            let startTime = videoPlayer.currentTime;
             await videoPlayer.play().then(() => {
-                expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play called!!');
-                sleep(PLAY_TIME);
+                sleep(1000);
+                expect(videoPlayer.state).assertEqual('playing');
             }, failureCallback).catch(catchCallback);
+            let endTime = videoPlayer.currentTime;
+            expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
     
             for (let i = 0; i < 5; i++) {
+                startTime = videoPlayer.currentTime;
                 await videoPlayer.setSpeed(i).then((speedMode) => {
                     expect(videoPlayer.state).assertEqual('playing');
+                    expect(speedMode).assertEqual(i);
+                    sleep(1000);
+                    checkSpeedTime(videoPlayer, i, startTime);
                     console.info('case setSpeed called and speedMode is ' + speedMode);
                 }, failureCallback).catch(catchCallback);
             }

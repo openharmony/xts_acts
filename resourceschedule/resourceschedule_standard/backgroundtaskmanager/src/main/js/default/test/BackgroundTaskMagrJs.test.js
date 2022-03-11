@@ -180,5 +180,4 @@ describe("TransientTaskJsTest", function () {
         }
         done();
     })
-
 })

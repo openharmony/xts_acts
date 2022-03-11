@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "AccessibleCheckAbility.hap"
+                "ActsAccessibleCheckAbilityTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

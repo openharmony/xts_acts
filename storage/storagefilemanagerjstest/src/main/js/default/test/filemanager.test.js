@@ -34,7 +34,8 @@ let VIDEO_ROOT = "";
 let FILE_ROOT = "";
 let AUDIO_ROOT = "";
 let IMAGE_ALBUM = "";
-let LOG_ = "FMS_XTS_TEXT: "
+let LOG_ = "FMS_XTS_TEXT: ";
+let LENGTH = 0;
 describe("filemanager_test", function () {
 
   /**
@@ -51,7 +52,6 @@ describe("filemanager_test", function () {
       let fileInfos = await filemanager.getRoot();
       expect(Array.isArray(fileInfos)).assertTrue();
       expect(JSON.stringify(fileInfos) == JSON.stringify(ROOTFILE)).assertTrue();
-      console.log(JSON.stringify(fileInfos))
       for (let i = 0; i < fileInfos.length; i++) {
         if (fileInfos[i].name == "image_album") {
           console.log(LOG_ +JSON.stringify(fileInfos[i]))
@@ -71,11 +71,11 @@ describe("filemanager_test", function () {
           console.log(LOG_ + FILE_ROOT)
         }
       }
+      done();
     } catch (error) {
       console.log("filemanager_test_get_root_async_000 has failed for " + error);
       expect(null).assertFail();
     }
-    done();
   });
 
   /**
@@ -89,41 +89,96 @@ describe("filemanager_test", function () {
    */
   it("filemanager_test_get_root_async_001", 0, async function (done) {
     try {
-      filemanager.getRoot((error, fileInfos) => {
+      filemanager.getRoot(function(error, fileInfos){
         expect(Array.isArray(fileInfos)).assertTrue();
         expect(JSON.stringify(fileInfos) == JSON.stringify(ROOTFILE)).assertTrue();
+        done();
       });
     } catch (error) {
       console.log("filemanager_test_get_root_async_001 has failed for " + error);
       expect(null).assertFail();
     }
-    done();
   });
 
   /**
    * @tc.number SUB_DF_FILEMANAGER_GET_ROOT_0020
    * @tc.name filemanager_test_get_root_async_002
-   * @tc.desc Test getRoot() interfaces, without any parameters, throw an exception.
+   * @tc.desc Test getRoot() interfaces, the first layer directory album information, callback way back.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
    */
-   it("filemanager_test_get_root_async_002", 0, async function (done) {
-     try {
-       filemanager.getRoot("1")
-         .then(file => {
-           console.log("filemanager_test_get_root_async_002 file " + JSON.stringify(file));
-           expect(null).assertFail();
-         }).catch(e => {
-          console.log("filemanager_test_get_root_async_002 e " + e);
-       })
-     } catch (error) {
-       console.log("filemanager_test_get_root_async_002 has failed for " + error);
-       expect(error.toString().indexOf("Number of argments unmatched") != -1).assertTrue();
-     }
-     done();
-   });
+  it("filemanager_test_get_root_async_002", 0, async function (done) {
+    try {
+      let options = {
+        dev:{
+          "name":"local"
+        }
+      }
+      filemanager.getRoot(options,function(error, fileInfos) {
+        expect(Array.isArray(fileInfos)).assertTrue();
+        expect(JSON.stringify(fileInfos) == JSON.stringify(ROOTFILE)).assertTrue();
+        done();
+      });
+    } catch (error) {
+      console.log("filemanager_test_get_root_async_002 has failed for " + error);
+      expect(null).assertFail();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEMANAGER_GET_ROOT_0030
+   * @tc.name filemanager_test_get_root_async_003
+   * @tc.desc Test FileInfo property 
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+   it("filemanager_test_get_root_async_003", 0, async function (done) {
+    try {
+      let fileInfos = await filemanager.getRoot();
+      expect(Array.isArray(fileInfos)).assertTrue();
+      expect(JSON.stringify(fileInfos) == JSON.stringify(ROOTFILE)).assertTrue();
+      for (let i = 0; i < fileInfos.length; i++) {
+        expect(typeof fileInfos[i].name == "string").assertTrue();
+        expect(typeof fileInfos[i].path == "string").assertTrue();
+        expect(typeof fileInfos[i].type == "string").assertTrue();
+        expect(typeof fileInfos[i].size == "number").assertTrue();
+        expect(typeof fileInfos[i].added_time == "number").assertTrue();
+        expect(typeof fileInfos[i].modified_time == "number").assertTrue();
+      }
+      done();
+    } catch (error) {
+      console.log("filemanager_test_get_root_async_003 has failed for " + error);
+      expect(null).assertFail();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEMANAGER_GET_ROOT_0040
+   * @tc.name filemanager_test_get_root_async_004
+   * @tc.desc Test getRoot() interfaces, when the parameter type is wrong,throw an exception.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+   it("filemanager_test_get_root_async_004", 0, async function (done) {
+    try {
+      let options = {
+        dev:{
+          "name":1
+        }
+      }
+      await filemanager.getRoot(options)
+    } catch (error) {
+      console.log("filemanager_test_get_root_async_004 has failed for " + error);
+      expect(error.message == "GetRoot func get dev para fails").assertTrue();
+      done();
+    }
+  });
 
   /**
    * @tc.number SUB_DF_FILEMANAGER_LIST_FILE_0000
@@ -148,11 +203,11 @@ describe("filemanager_test", function () {
           console.log(LOG_ + IMAGE_ALBUM)
         }
       }
+      done();
     } catch (error) {
       console.log("filemanager_test_list_file_async_000 has failed for " + error);
       expect(null).assertFail();
     }
-    done();
   });
 
   /**
@@ -169,11 +224,11 @@ describe("filemanager_test", function () {
       let path = IMAGE_ALBUM;
       let fileInfos = await filemanager.listFile(path, "image");
       expect(Array.isArray(fileInfos)).assertTrue();
+      done();
     } catch (error) {
       console.log("filemanager_test_list_file_async_001 has failed for " + error);
       expect(null).assertFail();
     }
-    done();
   });
 
   /**
@@ -188,20 +243,26 @@ describe("filemanager_test", function () {
   it("filemanager_test_list_file_async_002", 0, async function (done) {
     try {
       let path = FILE_ROOT;
-      filemanager.listFile(path, "file", (error,fileInfos)=>{
-        expect(Array.isArray(fileInfos)).assertTrue();
-      });
+      let options = {
+        dev:{
+          "name":"local"
+        },
+        offset:0
+      };
+      let fileInfos = await filemanager.listFile(path, "file",options);
+      LENGTH = fileInfos.length;
+      expect(Array.isArray(fileInfos)).assertTrue();
+      done();
     } catch (error) {
       console.log("filemanager_test_list_file_async_002 has failed for " + error);
       expect(null).assertFail();
     }
-    done();
   });
 
   /**
    * @tc.number SUB_DF_FILEMANAGER_LIST_FILE_0030
    * @tc.name filemanager_test_list_file_async_003
-   * @tc.desc Test listFile() interfaces, when the type parameter to an empty string, throw an exception.
+   * @tc.desc Test listFile() interfaces,  When the number of query files is two,return path of files information accordingly and The number of files is two.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -210,31 +271,146 @@ describe("filemanager_test", function () {
   it("filemanager_test_list_file_async_003", 0, async function (done) {
     try {
       let path = FILE_ROOT;
-      await filemanager.listFile(path, " ");
+      let options = {
+        dev: {
+            "name":"local",
+        },
+        offset:0,
+        count:2
+      };
+      filemanager.listFile(path, "file", options, function(error,fileInfos){
+        expect(Array.isArray(fileInfos)).assertTrue();
+        expect(fileInfos.length == 2).assertTrue();
+        done();
+      });
     } catch (error) {
       console.log("filemanager_test_list_file_async_003 has failed for " + error);
-      expect(error.message == "Not a directory").assertTrue();
+      expect(null).assertFail();
     }
-    done();
   });
 
   /**
    * @tc.number SUB_DF_FILEMANAGER_LIST_FILE_0040
    * @tc.name filemanager_test_list_file_async_004
-   * @tc.desc Test listFile() interfaces, when the path parameter to an empty string, throw an exception..
+   * @tc.desc Test listFile() interfaces, When the number of offset files is two, The number of returned files is the total number of files minus two.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
    */
-  it("filemanager_test_list_file_async_004", 0, async function (done) {
+   it("filemanager_test_list_file_async_004", 0, async function (done) {
     try {
-      await filemanager.listFile(" ", "file");
+      let path = FILE_ROOT;
+      let options = {
+        dev: {
+            "name":"local",
+        },
+        offset:2
+    };
+      filemanager.listFile(path, "file", options, function(error,fileInfos){
+        expect(Array.isArray(fileInfos)).assertTrue();
+        expect(fileInfos.length == LENGTH-2).assertTrue();
+        done();
+      });
     } catch (error) {
       console.log("filemanager_test_list_file_async_004 has failed for " + error);
-      expect(error.message == "No such file or directory").assertTrue();
+      expect(null).assertFail();
     }
-    done();
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEMANAGER_LIST_FILE_0050
+   * @tc.name filemanager_test_list_file_async_005
+   * @tc.desc Test listFile() interfaces, when the number of query files is two, return path of files information accordingly.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+   it("filemanager_test_list_file_async_005", 0, async function (done) {
+    try {
+      let path = FILE_ROOT;
+      let options = {
+        dev: {
+            "name":"local",
+        },
+        count:2
+      };
+      filemanager.listFile(path, "file", options, function(error,fileInfos){
+        expect(Array.isArray(fileInfos)).assertTrue();
+        expect(fileInfos.length == 2).assertTrue();
+        done();
+      });
+    } catch (error) {
+      console.log("filemanager_test_list_file_async_005 has failed for " + error);
+      expect(null).assertFail();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEMANAGER_LIST_FILE_0060
+   * @tc.name filemanager_test_list_file_async_006
+   * @tc.desc Test listFile() interfaces, when the dev parameter does not exist, return path of files information accordingly.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+   it("filemanager_test_list_file_async_006", 0, async function (done) {
+    try {
+      let path = FILE_ROOT;
+      let options = {
+        offset:1,
+        count:2
+      };
+      filemanager.listFile(path, "file", options, function(error,fileInfos){
+        expect(Array.isArray(fileInfos)).assertTrue();
+        expect(fileInfos.length == 2).assertTrue();
+        done();
+      });
+    } catch (error) {
+      console.log("filemanager_test_list_file_async_006 has failed for " + error);
+      expect(null).assertFail();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEMANAGER_LIST_FILE_0070
+   * @tc.name filemanager_test_list_file_async_007
+   * @tc.desc Test listFile() interfaces, when the type parameter to an empty string, throw an exception.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it("filemanager_test_list_file_async_007", 0, async function (done) {
+    try {
+      let path = FILE_ROOT;
+      await filemanager.listFile(path, " ");
+    } catch (error) {
+      console.log("filemanager_test_list_file_async_007 has failed for " + error);
+      expect(error.message == "Not a directory").assertTrue();
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEMANAGER_LIST_FILE_0080
+   * @tc.name filemanager_test_list_file_async_008
+   * @tc.desc Test listFile() interfaces, when there are no parameters, throw an exception.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+   it("filemanager_test_list_file_async_008", 0, async function (done) {
+    try {
+      await filemanager.listFile();
+    } catch (error) {
+      console.log("filemanager_test_list_file_async_008 has failed for " + error);
+      expect(error.message == "Number of argments unmatched").assertTrue();
+      done();
+    }
   });
 
   /**
@@ -254,11 +430,11 @@ describe("filemanager_test", function () {
       console.log(LOG_ + name + " " + path)
       console.log(LOG_ + uri)
       expect(uri != undefined).assertTrue();
+      done();
     } catch (error) {
       console.log("filemanager_test_createfile_async_000 has failed for " + error);
       expect(null).assertFail();
     }
-    done();
   });
 
   /**
@@ -273,11 +449,11 @@ describe("filemanager_test", function () {
   it("filemanager_test_createfile_async_001", 0, async function (done) {
     let name = "create00" + new Date().getTime() + ".txt";
     let path = IMAGE_ROOT;
-    filemanager.createFile(path, name, (err, uri) => {
+    filemanager.createFile(path, name, function(err, uri) {
       expect(uri != undefined).assertTrue();
       console.log(LOG_ + uri)
+      done();
     });
-    done();
   });
 
   /**
@@ -294,17 +470,17 @@ describe("filemanager_test", function () {
       let name = "1.jpg";
       let path = IMAGE_ROOT;
       filemanager.createFile(path, name)
-      .then(uri => {
+      .then(function(uri){
         console.log("filemanager_test_createfile_async_002 uri " + uri);
         expect(null).assertFail();
-      }).catch(e => {
+      }).catch(function(e) {
         console.log("filemanager_test_createfile_async_002 e " + e);
         expect(e.message == "Operation not permitted").assertTrue();
+        done();
       })
     } catch (error) {
       console.log("filemanager_test_createfile_async_002 for " + error);
     }
-    done();
   });
 
   /**
@@ -320,17 +496,17 @@ describe("filemanager_test", function () {
     try {
       let name = "filemanager_test_createfile_async_003";
       filemanager.createFile("123", name)
-        .then(uri => {
+        .then(function(uri) {
           console.log("filemanager_test_createfile_async_003 uri " + uri);
           expect(null).assertFail();
-        }).catch(error => {
+        }).catch(function(error) {
         console.log("filemanager_test_createfile_async_003 e " + error);
         expect(error.message == "No such file or directory").assertTrue();
+        done();
         })
     } catch (error) {
       console.log("filemanager_test_createfile_async_003 has failed for " + error);
     }
-    done();
   });
 
   /**
@@ -345,17 +521,17 @@ describe("filemanager_test", function () {
   it("filemanager_test_createfile_async_004", 0, async function (done) {
     try {
       filemanager.createFile()
-        .then(uri => {
+        .then(function(uri) {
           console.log("filemanager_test_createfile_async_004 uri " + uri);
           expect(null).assertFail();
-        }).catch(e => {
+        }).catch(function(e) {
           console.log("filemanager_test_createfile_async_004 e " + e);
         })
     } catch (error) {
-      console.log("filemanager_test_createfile_async_004 has failed for " + error);
+      console.log("filemanager_test_createfile_async_004 has failed for1 " + error);
       expect(error.toString().indexOf("Number of arguments unmatched") !=-1).assertTrue();
+      done();
     }
-    done();
   });
 
   /**
@@ -369,18 +545,17 @@ describe("filemanager_test", function () {
    */
   it("filemanager_test_createfile_async_005", 0, async function (done) {
     try {
-      filemanager.createFile("", "", "")
-        .then(uri => {
-          console.log("filemanager_test_createfile_async_005 uri " + uri);
-          expect(null).assertFail();
-        }).catch(error => {
-          console.log("filemanager_test_createfile_async_005 e " + error);
-          expect(error.message == "No such file or directory").assertTrue();
+      filemanager.createFile("", "", "").then(function(uri) {
+        console.log("filemanager_test_createfile_async_005 uri " + uri);
+        expect(null).assertFail();
+      }).catch(function(error) {
+        console.log("filemanager_test_createfile_async_005 e " + error);
+        expect(error.message == "No such file or directory").assertTrue();
+        done();
        })
     } catch (error) {
       console.log("filemanager_test_createfile_async_005 has failed for " + error);
     }
-    done();
   });
 
   /**
@@ -395,18 +570,18 @@ describe("filemanager_test", function () {
   it("filemanager_test_createfile_async_006", 0, async function (done) {
     try {
       let name = "filemanager_test_createfile_async_006";
-        filemanager.createFile("internal://cache%d%sfile", name)
-          .then(uri => {
-            console.log("filemanager_test_createfile_async_006 uri " + uri);
-            expect(null).assertFail();
-          }).catch(error => {
-            console.log("filemanager_test_createfile_async_006 e " + error);
-            expect(error.message == "No such file or directory").assertTrue();
-          })
+      filemanager.createFile("internal://cache%d%sfile", name)
+        .then(function(uri) {
+          console.log("filemanager_test_createfile_async_006 uri " + uri);
+          expect(null).assertFail();
+        }).catch(function(error) {
+          console.log("filemanager_test_createfile_async_006 e " + error);
+          expect(error.message == "No such file or directory").assertTrue();
+          done();
+        })
     } catch (error) {
       console.log("filemanager_test_createfile_async_006 has failed for " + error);
     }
-    done();
   });
 
   /**
@@ -421,17 +596,17 @@ describe("filemanager_test", function () {
   it("filemanager_test_createfile_async_007", 0, async function (done) {
     try {
       filemanager.createFile("internal://cache/@#$&^", "filemanager_test_createfile_async_007")
-        .then(uri => {
+        .then(function(uri) {
           console.log("filemanager_test_createfile_async_007 uri " + uri);
           expect(null).assertFail();
-        }).catch(error => {
+        }).catch(function(error) {
           console.log("filemanager_test_createfile_async_007 e " + error);
           expect(error.message == "No such file or directory").assertTrue();
+          done();
         })
     } catch (error) {
       console.log("filemanager_test_createfile_async_007 has failed for " + error);
     }
-    done();
   });
 
   /**
@@ -447,16 +622,16 @@ describe("filemanager_test", function () {
     let name = "filemanager_test_createfile_async_008";
     try {
       filemanager.createFile(name)
-        .then(uri => {
+        .then(function(uri) {
           console.log("filemanager_test_createfile_async_008 uri " + uri);
           expect(null).assertFail();
-        }).catch(e => {
+        }).catch(function(e) {
           console.log("filemanager_test_createfile_async_008 e " + e);
         })
     } catch (error) {
       console.log("filemanager_test_createfile_async_008 has failed for " + error);
       expect(error.toString().indexOf("Number of arguments unmatched") !=-1).assertTrue();
+      done();
     }
-    done();
   });
 });

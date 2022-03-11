@@ -15,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import ddm from '@ohos.data.distributedData';
 
-const TEST_BUNDLE_NAME = 'ohos.example.mutest.service';
+const TEST_BUNDLE_NAME = 'ohos.acts.distributeddatamgr';
 const TEST_STORE_ID = 'storeId';
 
 var kvManager = null;

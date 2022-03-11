@@ -19,13 +19,14 @@ import events_emitter from '@ohos.emitter'
 struct TransitionExample {
   @State btn1: boolean = false
   @State show: string = "show"
+  @State opacity: number = 1
   @State onActionCalled: boolean = false
   @State transitionTypeOne: TransitionType = TransitionType.Insert
   @State transitionTypeTwo: TransitionType = TransitionType.Delete
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,}) {
-      Button(this.show).width(80).height(30).backgroundColor(0x317aff).margin({bottom:50}).key('button')
+      Button(this.show).width(80).height(30).backgroundColor(0x317aff).margin({bottom:50}).key('button').opacity(this.opacity)
         .onClick(() => {
           this.onActionCalled = true;
           try {
@@ -54,10 +55,28 @@ struct TransitionExample {
         })
       if (this.btn1) {
         Button() {
-          Image($r('app.media.bg')).width("80%").height(300).key('image')
+          Image($rawfile('test.png')).width("80%").height(300).key('image')
         }.transition({ type: this.transitionTypeOne, scale: {x:0,y:1.0} }).key('button1')
         .transition({ type: this.transitionTypeTwo, scale: { x: 1.0, y: 0.0 } })
       }
     }.height(400).width("100%").padding({top:100})
+  }
+
+  onPageShow() {
+    console.info('transition page show called');
+    var stateChangeEvent = {
+      eventId: 112,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+  }
+
+  private stateChangCallBack = (eventData) => {
+    if (eventData != null) {
+      console.info("transition state change called:" + JSON.stringify(eventData));
+      if (eventData.data.opacity != null) {
+        this.opacity = parseInt(eventData.data.opacity);
+      }
+    }
   }
 }

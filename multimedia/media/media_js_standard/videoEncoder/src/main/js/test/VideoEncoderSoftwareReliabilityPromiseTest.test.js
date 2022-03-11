@@ -18,8 +18,9 @@ import mediademo from '@ohos.multimedia.mediademo'
 import Fileio from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-describe('videoEncoderReliability', function () {
-    const BASIC_PATH = '/data/media/results/videoencode_reli_promise_';
+describe('videoEncoderReliabilityPromise', function () {
+    const ROOT = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/results/';
+    const BASIC_PATH = ROOT + 'video_reliability_promise_';
     let videoEncodeProcessor;
     let mediaTest = mediademo.createMediaTest();
     let surfaceID = '';
@@ -48,9 +49,9 @@ describe('videoEncoderReliability', function () {
     const WAITFORALLOUTS = 14;
     const JUDGE_EOS = 15;
     const WAITTIME = 3000;
-    let width = 720;
-    let height = 480;
-    let framerate = 60;
+    let width = 320;
+    let height = 240;
+    let framerate = 30;
     let mediaDescription = {
         "width": width, 
         "height": height,
@@ -74,9 +75,9 @@ describe('videoEncoderReliability', function () {
         sawOutputEOS = false;
         needGetMediaDes = false;
         workdoneAtEOS = false;
-        width = 720;
-        height = 480;
-        framerate = 60;
+        width = 320;
+        height = 240;
+        framerate = 30;
         frameTotal = 100;
     })
 
@@ -458,7 +459,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_PROMISE_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0200.es';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, CONFIGURE, ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, CONFIGURE, ERROR, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -589,7 +590,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_PROMISE_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0200.es';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -603,7 +604,7 @@ describe('videoEncoderReliability', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_PROMISE_0300', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0300.es';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, PREPARE, ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, PREPARE, ERROR, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 

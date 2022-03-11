@@ -1,0 +1,78 @@
+{
+  "app": {
+    "bundleName": "com.example.myapplication3",
+    "vendor": "example",
+    "version": {
+      "code": 1000000,
+      "name": "1.0.0"
+    }
+  },
+  "deviceConfig": {},
+  "module": {
+    "package": "com.example.entry2",
+    "name": ".MyApplication",
+    "mainAbility": ".MainAbility1",
+    "srcPath": "",
+    "deviceType": [
+      "phone"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry2",
+      "moduleType": "feature",
+      "installationFree": false
+    },
+    "abilities": [
+      {
+        "orientation": "unspecified",
+        "visible": true,
+        "srcPath": "MainAbility1",
+        "name": ".MainAbility1",
+        "srcLanguage": "js",
+        "icon": "$media:icon",
+        "description": "$string:description_mainability1",
+        "formsEnabled": false,
+        "label": "$string:entry2_MainAbility1",
+        "type": "page",
+        "launchType": "singleton"
+      },
+      {
+        "orientation": "unspecified",
+        "visible": true,
+        "srcPath": "MainAbility2",
+        "name": ".MainAbility2",
+        "srcLanguage": "js",
+        "icon": "$media:icon",
+        "description": "$string:description_mainability2",
+        "formsEnabled": false,
+        "label": "$string:entry2_MainAbility2",
+        "type": "page",
+        "launchType": "singleton"
+      }
+    ],
+    "js": [
+      {
+        "pages": [
+          "pages/index/index",
+          "pages/second/second"
+        ],
+        "name": ".MainAbility1",
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": false
+        }
+      },
+      {
+        "pages": [
+          "pages/index/index",
+          "pages/second/second"
+        ],
+        "name": ".MainAbility2",
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": false
+        }
+      }
+    ]
+  }
+}

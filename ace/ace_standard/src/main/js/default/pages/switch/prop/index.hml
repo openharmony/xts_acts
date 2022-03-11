@@ -89,6 +89,16 @@
         </switch>
 
         <text class="sub-title">
+            通用属性 -- data
+        </text>
+        <switch id="dataPropOne"
+                data="通用属性 -- data-switch">
+        </switch>
+        <switch id="dataPropOneNone"
+                data="">
+        </switch>
+
+        <text class="sub-title">
             通用属性 -- click-effect
         </text>
         <switch id="clickEffectPropSmall"
@@ -151,6 +161,29 @@
         </switch>
         <switch id="showPropNone"
              show="">
+        </switch>
+
+        <text class="sub-title">
+            属性 -- tid
+        </text>
+        <switch id="tidProp"
+             tid="tidProp">
+        </switch>
+        <switch id="tidPropNone"
+             tid="">
+        </switch>
+
+        <text class="sub-title">
+            属性 -- elif
+        </text>
+        <switch style="width: 20px;height: 20px;"
+             if="false">
+        </switch>
+        <switch id="elifPropTrue"
+             elif="true">
+        </switch>
+        <switch id="elifPropFalse"
+             elif="false">
         </switch>
     </div>
 

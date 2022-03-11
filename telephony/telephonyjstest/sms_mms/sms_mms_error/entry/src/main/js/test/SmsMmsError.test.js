@@ -35,21 +35,8 @@ describe('SmsMmsErrorTest', function () {
   const MAX_CHINESE_MESSAGE_LENTH = 63;
   const MAX_MESSAGE_LENTH = 2401;
 
-  afterEach(async function () {
-    try {
-      expect(sms.SIM_MESSAGE_STATUS_FREE === 0).assertTrue();
-
-      expect(sms.INSTANT_MESSAGE === 1).assertTrue();
-      expect(sms.OPTIONAL_MESSAGE === 2).assertTrue();
-      expect(sms.FORWARD_MESSAGE === 4).assertTrue();
-
-      expect(sms.SEND_SMS_SUCCESS === 0).assertTrue();
-      expect(sms.SEND_SMS_FAILURE_RADIO_OFF === 2).assertTrue();
-      expect(sms.SEND_SMS_FAILURE_SERVICE_UNAVAILABLE === 3).assertTrue();
-    } catch (error) {
-      console.log(`Telephony_SmsMms error`);
-    }
-  });
+  const TRUE_SLOT_ID = 0;
+  const RECEIVE_SMS_PDU = '240D91689141468496F600001270721142432302B319';
 
   /*
    * @tc.number   Telephony_SmsMms_addSimMessage_Async_0200
@@ -111,13 +98,13 @@ describe('SmsMmsErrorTest', function () {
       pdu: RECEIVE_SMS_PDU,
       status: sms.SIM_MESSAGE_STATUS_READ
     };
-    sms.addSimMessage(data, (adderr) => {
-      if (adderr) {
-        console.log('Telephony_SmsMms_addSimMessage_Async_1400 add fail');
+    sms.addSimMessage(data, (addErr) => {
+      if (addErr) {
+        console.log('Telephony_SmsMms_addSimMessage_Async_1400 finish');
         done();
         return;
       }
-      console.log('Telephony_SmsMms_addSimMessage_Async_1400 finish ');
+      console.log('Telephony_SmsMms_addSimMessage_Async_1400 add fail ');
     });
   });
 
@@ -136,9 +123,9 @@ describe('SmsMmsErrorTest', function () {
     };
     try {
       await sms.addSimMessage(data);
-      console.log('Telephony_SmsMms_addSimMessage_Promise_1400 finish ');
+      console.log('Telephony_SmsMms_addSimMessage_Promise_1400 fail ');
     } catch (err) {
-      console.log('Telephony_SmsMms_addSimMessage_Promise_1400 add  fail');
+      console.log('Telephony_SmsMms_addSimMessage_Promise_1400 addSimMessage finish');
       done();
     }
   });
@@ -156,23 +143,24 @@ describe('SmsMmsErrorTest', function () {
       pdu: RECEIVE_SMS_PDU,
       status: sms.SIM_MESSAGE_STATUS_UNSENT
     };
-    sms.addSimMessage(data, (adderr) => {
-      if (adderr) {
-        console.log('Telephony_SmsMms_addSimMessage_Async_1700 finish ');
-        sms.getAllSimMessages(TRUE_SLOT_ID, (geterr, getresult) => {
-          if (geterr) {
-            console.log('Telephony_SmsMms_addSimMessage_Async_1700 get cur fail');
+    sms.addSimMessage(data, (addErr) => {
+      if (addErr) {
+        sms.getAllSimMessages(TRUE_SLOT_ID, (getErr, getResult) => {
+          if (getErr) {
+            console.log('Telephony_SmsMms_addSimMessage_Async_1700 getAllSimMessages fail');
             done();
             return;
           }
-          expect(getresult.length === 0).assertTrue();
-          console.log('Telephony_SmsMms_addSimMessage_Async_1700 getAllSimMessages cur finish');
+          expect(getResult.length == 0).assertTrue();
+          console.log('Telephony_SmsMms_addSimMessage_Async_1700 getAllSimMessages getResult.length = '
+            + getResult.length);
+          console.log('Telephony_SmsMms_addSimMessage_Async_1700 getAllSimMessages finish');
           done();
         });
-        return;
+      } else {
+        console.log('Telephony_SmsMms_addSimMessage_Async_1700 addSimMessage fail');
+        done();
       }
-      console.log('Telephony_SmsMms_addSimMessage_Async_1700 add fail');
-      done();
     });
   });
 
@@ -213,23 +201,23 @@ describe('SmsMmsErrorTest', function () {
       pdu: CORRECT_SMS_PDU,
       status: sms.SIM_MESSAGE_STATUS_UNREAD
     };
-    sms.addSimMessage(data, (adderr) => {
-      if (adderr) {
-        console.log('Telephony_SmsMms_addSimMessage_Async_1800 finish ');
-        sms.getAllSimMessages(TRUE_SLOT_ID, (geterr, getresult) => {
-          if (geterr) {
-            console.log('Telephony_SmsMms_addSimMessage_Async_1800 get cur fail');
+    sms.addSimMessage(data, (addErr) => {
+      if (addErr) {
+        sms.getAllSimMessages(TRUE_SLOT_ID, (getErr, getResult) => {
+          if (getErr) {
+            console.log('Telephony_SmsMms_addSimMessage_Async_1800 getAllSimMessages fail');
             done();
             return;
           }
-          expect(getresult.length === 0).assertTrue();
-          console.log('Telephony_SmsMms_addSimMessage_Async_1800 getAllSimMessages cur finish');
+          expect(getResult.length == 0).assertTrue();
+          console.log('Telephony_SmsMms_addSimMessage_Async_1800 getAllSimMessages getResult = ' + getResult.length);
+          console.log('Telephony_SmsMms_addSimMessage_Async_1800 getAllSimMessages finish');
           done();
         });
-        return;
+      } else {
+        console.log('Telephony_SmsMms_addSimMessage_Async_1800 addSimMessage fail');
+        done();
       }
-      console.log('Telephony_SmsMms_addSimMessage_Async_1800 add fail');
-      done();
     });
   });
 
@@ -502,14 +490,14 @@ describe('SmsMmsErrorTest', function () {
    * @tc.desc     Function test
    */
   it('Telephony_SmsMms_getSmscAddr_Async_0200', 0, async function (done) {
-    sms.getSmscAddr(FALSE_SLOT_ID, (err, getresult) => {
+    sms.getSmscAddr(FALSE_SLOT_ID, (err, getResult) => {
       if (err) {
         expect().assertFail();
         console.log('Telephony_SmsMms_getSmscAddr_Async_0200 fail');
         done();
         return;
       }
-      expect(getresult === undefined || getresult === '');
+      expect(getResult === undefined || getResult === '');
       console.log('Telephony_SmsMms_getSmscAddr_Async_0200 finish');
       done();
     });
@@ -545,7 +533,7 @@ describe('SmsMmsErrorTest', function () {
     }
     sms.getSmsSegmentsInfo(FALSE_SLOT_ID, message, true, (error, result) => {
       if (error) {
-        console.log("Telephony_SmsMms_getSmsSegmentsInfo_Async_2000 getSmsSegmentsInfoon error " + error.message);
+        console.log("Telephony_SmsMms_getSmsSegmentsInfo_Async_2000 getSmsSegmentsInfo error " + error.message);
         console.log('Telephony_SmsMms_getSmsSegmentsInfo_Async_2000 finish');
       } else {
         expect().assertFail();
@@ -631,7 +619,8 @@ describe('SmsMmsErrorTest', function () {
         console.log('Telephony_SmsMms_getImsShortMessageFormat_Async_0100 fail');
         expect().assertFail();
       } else {
-        expect(result === undefined || result === '3gpp' || result === '3gpp2').assertTrue();
+        expect(result === undefined || result === '').assertTrue();
+        console.log('Telephony_SmsMms_getImsShortMessageFormat_Async_0100 result = ' + result);
         console.log('Telephony_SmsMms_getImsShortMessageFormat_Async_0100 finish');
       }
       done();
@@ -646,7 +635,8 @@ describe('SmsMmsErrorTest', function () {
   it('Telephony_SmsMms_getImsShortMessageFormat_Promise_0100', 0, async function (done) {
     try {
       let result = await sms.getImsShortMessageFormat();
-      expect(result === undefined || result === '3gpp' || result === '3gpp2').assertTrue();
+      expect(result === undefined || result === '').assertTrue();
+      console.log('Telephony_SmsMms_getImsShortMessageFormat_Async_0100 result = ' + result);
       console.log('Telephony_SmsMms_getImsShortMessageFormat_Promise_0100 finish');
     } catch (err) {
       expect().assertFail();
@@ -898,14 +888,13 @@ describe('SmsMmsErrorTest', function () {
    * @tc.desc     Function test
    */
   it('Telephony_SmsMms_getDefaultSmsSlotId_Async_0100', 0, async function (done) {
-    sms.getDefaultSmsSlotId((geterr, getresult) => {
-      if (geterr) {
-        console.log('Telephony_SmsMms_getDefaultSmsSlotId_Async_0100 fail');
+    sms.getDefaultSmsSlotId((getErr, getResult) => {
+      if (getErr) {
+        console.log('Telephony_SmsMms_getDefaultSmsSlotId_Async_0100 finish');
         done();
         return;
       }
-      expect(getresult !== FALSE_SLOT_ID).assertTrue();
-      console.log('Telephony_SmsMms_getDefaultSmsSlotId_Async_0100 finish');
+      console.log('Telephony_SmsMms_getDefaultSmsSlotId_Async_0100 fail');
       done();
     });
   });
@@ -917,12 +906,11 @@ describe('SmsMmsErrorTest', function () {
    */
   it('Telephony_SmsMms_getDefaultSmsSlotId_Promise_0100', 0, async function (done) {
     try {
-      let promise = await sms.getDefaultSmsSlotId();
-      expect(promise !== FALSE_SLOT_ID).assertTrue();
-      console.log('Telephony_SmsMms_getDefaultSmsSlotId_Promise_0100 finish');
+      let getResult = await sms.getDefaultSmsSlotId();
+      console.log('Telephony_SmsMms_getDefaultSmsSlotId_Promise_0100 fail');
       done();
     } catch (err) {
-      console.log('Telephony_SmsMms_getDefaultSmsSlotId_Promise_0100 fail');
+      console.log('Telephony_SmsMms_getDefaultSmsSlotId_Promise_0100 finish');
       done();
     }
   });

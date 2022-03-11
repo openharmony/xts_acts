@@ -180,7 +180,8 @@
 
             </button>
             <dialog id="access1" class="access1" accessibilitygroup ="true"
-                 accessibilitytext="这是div"
+                 onaccessibility="onAccessibility"
+                 accessibilitytext="这是dialog"
                  accessibilitydescription="点击此按键会弹出一个对话框"
                  accessibilityimportance="no-hide-descendants">
             </dialog>

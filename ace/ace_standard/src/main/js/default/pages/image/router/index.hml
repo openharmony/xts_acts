@@ -60,6 +60,8 @@
             </text>
             <image id="style7" class="style7" src="common/images/image.png">
             </image>
+            <image id="style8" class="style8" src="common/images/image.png">
+            </image>
         </div>
 
         <divider style="color: #000000; stroke-width: 2px;" vertical="false">
@@ -256,6 +258,7 @@
                 image无障碍1
             </text>
             <image id="access1" class="access1"
+                   onaccessibility="onAccessibility"
                    accessibilitygroup ="true"
                    accessibilitytext="这是div"
                    accessibilitydescription="点击此按键会弹出一个对话框"

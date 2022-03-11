@@ -213,5 +213,28 @@
         </badge>
         <badge id="labelNone" label="">
         </badge>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <badge class="propNewAdd"
+                tid="id">
+        </badge>
+        <badge class="propNewAdd"
+                tid="">
+        </badge>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <badge class="propNewAdd"
+                if="false">
+        </badge>
+        <badge class="propNewAdd"
+                elif="true">
+        </badge>
+        <badge class="propNewAdd"
+                elif="false">
+        </badge>
     </div>
 </div>

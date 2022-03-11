@@ -126,6 +126,32 @@
         </refresh>
 
         <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <div>
+            <refresh id="ifPropTrue"
+                     if="true">
+            </refresh>
+            <refresh class="propNewAdd"
+                     elif="true">
+            </refresh>
+            <refresh class="propNewAdd"
+                     elif="false">
+            </refresh>
+        </div>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <refresh class="propNewAdd"
+                 tid="id">
+        </refresh>
+        <refresh class="propNewAdd"
+                 tid="">
+        </refresh>
+
+
+        <text class="sub-title">
             渲染属性 -- show
         </text>
         <refresh id="showPropTrue"

@@ -19,7 +19,8 @@ import Fileio from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('videoSoftwareEncoderFuncPromise', function () {
-    const BASIC_PATH = '/data/media/results/videoencode_func_promise_';
+    const ROOT = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/results/';
+    const BASIC_PATH = ROOT + 'video_func_promise_';
     let videoEncodeProcessor;
     let mediaTest;
     let surfaceID = '';
@@ -330,9 +331,9 @@ describe('videoSoftwareEncoderFuncPromise', function () {
         console.info("case test stop after last frame");
         let savepath = BASIC_PATH + '0000.es';
         let name= 'avenc_mpeg4';
-        let width = 720;
-        let height = 480;
-        let framerate = 60;
+        let width = 320;
+        let height = 240;
+        let framerate = 30;
         let mediaDescription = {
             "codec_mime": 'video/mp4v-es',
             "width": width, 
@@ -395,9 +396,9 @@ describe('videoSoftwareEncoderFuncPromise', function () {
         console.info("case test stop at runnning state and reset");
         let savepath = BASIC_PATH + '0100.es';
         let mime = 'video/mp4v-es';
-        let width = 720;
-        let height = 480;
-        let framerate = 60;
+        let width = 320;
+        let height = 240;
+        let framerate = 30;
         let mediaDescription = {
             "width": width, 
             "height": height,
@@ -434,9 +435,9 @@ describe('videoSoftwareEncoderFuncPromise', function () {
         console.info("test stop at end of stream and restart");
         let savepath = BASIC_PATH + '0200.es';
         let mime = 'video/mp4v-es';
-        let width = 720;
-        let height = 480;
-        let framerate = 60;
+        let width = 320;
+        let height = 240;
+        let framerate = 30;
         let mediaDescription = {
             "width": width, 
             "height": height,
@@ -474,9 +475,9 @@ describe('videoSoftwareEncoderFuncPromise', function () {
         console.info("test stop at runnning state and restart");
         let savepath = BASIC_PATH + '0300.es';
         let mime = 'video/mp4v-es';
-        let width = 720;
-        let height = 480;
-        let framerate = 60;
+        let width = 320;
+        let height = 240;
+        let framerate = 30;
         let mediaDescription = {
             "width": width, 
             "height": height,
@@ -515,16 +516,16 @@ describe('videoSoftwareEncoderFuncPromise', function () {
         console.info("case test flush at running state");
         let savepath = BASIC_PATH + '0400.es';
         let mime = 'video/mp4v-es';
-        let width = 720;
-        let height = 480;
-        let framerate = 60;
+        let width = 320;
+        let height = 240;
+        let framerate = 30;
         let mediaDescription = {
             "width": width, 
             "height": height,
             "pixel_format": 3,
             "frame_rate" : framerate,
         }
-        frameTotal = 1000;
+        frameTotal = 500;
         await toCreateByMime(mime, done);
         await toGetVideoEncoderCaps(width, height);
         toCreateStream();
@@ -535,7 +536,7 @@ describe('videoSoftwareEncoderFuncPromise', function () {
         await toPrepare();
         toStartStream();
         await toStart();
-        await sleep(1000);
+        await sleep(500);
         await toFlush();
     })
 
@@ -551,9 +552,9 @@ describe('videoSoftwareEncoderFuncPromise', function () {
         console.info("case test flush at end of stream");
         let savepath = BASIC_PATH + '0500.es';
         let mime = 'video/mp4v-es';
-        let width = 720;
-        let height = 480;
-        let framerate = 60;
+        let width = 320;
+        let height = 240;
+        let framerate = 30;
         let mediaDescription = {
             "width": width, 
             "height": height,
@@ -573,7 +574,6 @@ describe('videoSoftwareEncoderFuncPromise', function () {
         toStartStream();
         await toStart();
         await sleep(5000);
-        toStopStream();
         resetParam();
         toSetStreamParam(width, height, framerate, frameTotal);
         toStartStream();
@@ -591,9 +591,9 @@ describe('videoSoftwareEncoderFuncPromise', function () {
         console.info("case test reconfigure");
         let savepath = BASIC_PATH + '0600.es';
         let mime = 'video/mp4v-es';
-        let width = 720;
-        let height = 480;
-        let framerate = 60;
+        let width = 320;
+        let height = 240;
+        let framerate = 30;
         let mediaDescription = {
             "width": width, 
             "height": height,
@@ -613,10 +613,9 @@ describe('videoSoftwareEncoderFuncPromise', function () {
         toStartStream();
         await toStart();
         await sleep(5000);
-        toStopStream();
         resetParam();
-        width = 720;
-        height = 480;
+        width = 320;
+        height = 240;
         framerate = 30;
         let mediaDescription2 = {
             "width": width, 
@@ -646,9 +645,9 @@ describe('videoSoftwareEncoderFuncPromise', function () {
         console.info("case test recreate videoencoder");
         let savepath = BASIC_PATH + '0700.es';
         let mime = 'video/mp4v-es';
-        let width = 720;
-        let height = 480;
-        let framerate = 60;
+        let width = 320;
+        let height = 240;
+        let framerate = 30;
         let mediaDescription = {
             "width": width, 
             "height": height,
@@ -668,11 +667,10 @@ describe('videoSoftwareEncoderFuncPromise', function () {
         toStartStream();
         await toStart();
         await sleep(5000);
-        toStopStream();
         await toRelease();
         resetParam();
-        width = 720;
-        height = 480;
+        width = 320;
+        height = 240;
         framerate = 30;
         let mediaDescription2 = {
             "width": width, 

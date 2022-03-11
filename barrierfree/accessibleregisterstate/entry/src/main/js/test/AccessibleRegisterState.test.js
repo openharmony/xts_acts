@@ -38,14 +38,14 @@ describe('AccessibleRegisterState', function () {
     /*
     * @tc.number  RegisterStateOnOff_0330
     * @tc.name    RegisterStateOnOff_0330
-    * @tc.desc    The parameter input is 'accessibility', test the accessibility.on() function,
+    * @tc.desc    The parameter input is 'accessibilityStateChange', test the accessibility.on() function,
     *             and return void.
     * @tc.size    SmallTest
     * @tc.type    User
     */
     it('RegisterStateOnOff_0330', 0, async function (done) {
         console.info('RegisterStateOnOff_0330');
-        const stateEventType = 'accessibility';
+        let stateEventType = 'accessibilityStateChange';
         let ret = accessibility.on(stateEventType, (data) => {});
         expect(ret).assertEqual(undefined);
         done();
@@ -54,14 +54,14 @@ describe('AccessibleRegisterState', function () {
     /*
     * @tc.number  RegisterStateOnOff_0340
     * @tc.name    RegisterStateOnOff_0340
-    * @tc.desc    The parameter input is 'touchGuide', test the accessibility.on() function,
+    * @tc.desc    The parameter input is 'touchGuideStateChange', test the accessibility.on() function,
     *             and return void.
     * @tc.size    SmallTest
     * @tc.type    User
     */
     it('RegisterStateOnOff_0340', 0, async function (done) {
         console.info('RegisterStateOnOff_0340');
-        const stateEventType = 'touchGuide';
+        let stateEventType = 'touchGuideStateChange';
         let ret = accessibility.on(stateEventType, (data) => {});
         expect(ret).assertEqual(undefined);
         done();
@@ -77,7 +77,7 @@ describe('AccessibleRegisterState', function () {
     */
     it('RegisterStateOnOff_0350', 0, async function (done) {
         console.info('RegisterStateOnOff_0350');
-        const stateEventType = '';
+        let stateEventType = '';
         let ret = accessibility.on(stateEventType, (data) => {});
         expect(ret).assertEqual(undefined);
         done();
@@ -93,7 +93,7 @@ describe('AccessibleRegisterState', function () {
     */
     it('RegisterStateOnOff_0360', 0, async function (done) {
         console.info('RegisterStateOnOff_0360');
-        const stateEventType = null;
+        let stateEventType = null;
         let ret = accessibility.on(stateEventType, (data) => {});
         expect(ret).assertEqual(undefined);
         done();
@@ -106,14 +106,14 @@ describe('AccessibleRegisterState', function () {
     /*
     * @tc.number  RegisterStateOnOff_0370
     * @tc.name    RegisterStateOnOff_0370
-    * @tc.desc    The parameter input is 'accessibility', test the accessibility.off() function,
+    * @tc.desc    The parameter input is 'accessibilityStateChange', test the accessibility.off() function,
     *             and return void.
     * @tc.size    SmallTest
     * @tc.type    User
     */
     it('RegisterStateOnOff_0370', 0, async function (done) {
         console.info('RegisterStateOnOff_0370');
-        const stateEventType = 'accessibility';
+        let stateEventType = 'accessibilityStateChange';
         let ret = accessibility.off(stateEventType, (data) => {});
         expect(ret).assertEqual(undefined);
         done();
@@ -122,14 +122,14 @@ describe('AccessibleRegisterState', function () {
     /*
     * @tc.number  RegisterStateOnOff_0380
     * @tc.name    RegisterStateOnOff_0380
-    * @tc.desc    The parameter input is 'touchGuide', test the accessibility.off() function,
+    * @tc.desc    The parameter input is 'touchGuideStateChange', test the accessibility.off() function,
     *             and return void.
     * @tc.size    SmallTest
     * @tc.type    User
     */
     it('RegisterStateOnOff_0380', 0, async function (done) {
         console.info('RegisterStateOnOff_0380');
-        const stateEventType = 'touchGuide';
+        let stateEventType = 'touchGuideStateChange';
         let ret = accessibility.off(stateEventType, (data) => {});
         expect(ret).assertEqual(undefined);
         done();
@@ -145,7 +145,7 @@ describe('AccessibleRegisterState', function () {
     */
     it('RegisterStateOnOff_0390', 0, async function (done) {
         console.info('RegisterStateOnOff_0390');
-        const stateEventType = '';
+        let stateEventType = '';
         let ret = accessibility.off(stateEventType, (data) => {});
         expect(ret).assertEqual(undefined);
         done();
@@ -161,7 +161,7 @@ describe('AccessibleRegisterState', function () {
     */
     it('RegisterStateOnOff_0400', 0, async function (done) {
         console.info('RegisterStateOnOff_0400');
-        const stateEventType = null;
+        let stateEventType = null;
         let ret = accessibility.off(stateEventType, (data) => {});
         expect(ret).assertEqual(undefined);
         done();
@@ -177,7 +177,7 @@ describe('AccessibleRegisterState', function () {
     */
     it('RegisterStateOnOff_0410', 0, async function (done) {
         console.info('RegisterStateOnOff_0410');
-        const stateEventType = null;
+        let stateEventType = null;
         let ret = accessibility.off(stateEventType, (data) => {});
         expect(ret).assertEqual(undefined);
         done();

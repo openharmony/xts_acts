@@ -63,8 +63,7 @@ export default function ellipseJsunit() {
       try {
         var eventData = {
           data: {
-            "width": '500px',
-            "height": '500px'
+            "width": '100px'
           }
         }
         var innerEvent = {
@@ -80,9 +79,34 @@ export default function ellipseJsunit() {
       let strJson = getInspectorByKey('ellipse');
       let obj = JSON.parse(strJson);
       console.info("[testEllipse02] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.height).assertEqual('500.000000px');
-      expect(obj.$attrs.width).assertEqual('500.000000px');
+      expect(obj.$attrs.width).assertEqual('100.000000px');
       console.info('testEllipse02 END');
+      done();
+    });
+
+    it('testEllipse03', 0, async function (done) {
+      console.info('[testEllipse03] START');
+      try {
+        var eventData = {
+          data: {
+            "height": '500px'
+          }
+        }
+        var innerEvent = {
+          eventId: 5,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testEllipse03] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testEllipse03] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJson = getInspectorByKey('ellipse');
+      let obj = JSON.parse(strJson);
+      console.info("[testEllipse03] obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.height).assertEqual('500.000000px');
+      console.info('testEllipse03 END');
       done();
     });
   })

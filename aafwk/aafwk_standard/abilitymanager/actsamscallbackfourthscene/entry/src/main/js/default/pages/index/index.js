@@ -25,7 +25,7 @@ export default {
     onInit() {
         this.title = this.$t('strings.world');
     },
-    onActive() {
+    onShow() {
         if (once) {
             once = false
             console.info('onShow finish')
@@ -39,6 +39,7 @@ export default {
 
             const configService = core.getDefaultService('config')
             configService.setConfig(this)
+            this.timeout = 10000
 
             require('../../../test/List.test')
             core.execute()

@@ -306,18 +306,21 @@
 #styleTwentySix{
   width: 150px;
   height: 20px;
+  stroke-width: 20px;
   background-color: #999999;
 }
 
 #styleTwentySeven{
   width: 150px;
   height: 20px;
+  stroke-width: 20px;
   background: linear-gradient(pink,#fff000);
 }
 
 #styleTwentyNine{
   width: 150px;
   height: 20px;
+  stroke-width: 20px;
   background-image:url('common/images/image.png');
   background-size:contain;
   background-repeat: repeat-x;
@@ -327,6 +330,7 @@
 #styleThirty{
   width: 150px;
   height: 20px;
+  stroke-width: 20px;
   background-image:url('common/images/image.png');
   background-size:50px 10px;
   background-repeat: no-repeat;
@@ -336,6 +340,7 @@
 #styleThirtyOne{
   width: 150px;
   height: 20px;
+  stroke-width: 20px;
   background-image:url('common/images/image.png');
   background-size:10% 20%;
   background-repeat: repeat;
@@ -345,6 +350,7 @@
 #styleThirtyTwo{
   width: 150px;
   height: 20px;
+  stroke-width: 20px;
   background: linear-gradient(pink,#fff000);
   clip-path: margin-box;
   image-fill: #000fff;
@@ -362,41 +368,50 @@ label {
 }
 #specificOne{
   color: pink;
-  font-size: 16px;
-  letter-spacing: 2px;
-  font-weight: 700;
-  line-height: 20px;
-  font-family: HYQiHei-65S;
+  background-color: deeppink;
+  stroke-width: 10px;
+  secondary-color: greenyellow;
 }
 
 #specificTwo{
-  font-size: 12px;
-  allow-scale: true;
-}
-
-#specificThree{
-  font-size: 12px;
-  allow-scale: false;
-  margin-bottom: 10px;
+  color: deeppink;
+  height: 20px;
 }
 
 #specificFour{
-  font-style: normal;
+  height: 80px;
+  color: deeppink;
+  background-color: green;
+  secondary-color: blue;
+  stroke-width: 10px;
 }
 
 #specificFive{
-  font-style: italic;
-  margin-bottom: 10px;
+  height: 80px;
+  color: deeppink;
+  background-color: green;
+  secondary-color: blue;
+  stroke-width: 10px;
+  scale-width: 1px;
+  scale-number: 100;
 }
 
 #specificSix{
-  text-decoration: underline;
-  text-align: left;
+  color: blue;
+  background-color: deeppink;
+  stroke-width: 5px;
+  start-angle: 240;
+  total-angle: 240;
+  center-x: 40px;
+  center-y: 40px;
+  radius: 30;
+  height: 80px;
 }
 
 #specificSeven{
-  text-decoration: line-through;
-  text-align: center;
+  color: #ddd;
+  height: 80px;
+  background-color: yellow;
 }
 
 #specificEight{

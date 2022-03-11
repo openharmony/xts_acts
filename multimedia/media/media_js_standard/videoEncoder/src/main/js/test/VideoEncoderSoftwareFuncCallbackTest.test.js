@@ -31,8 +31,9 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
     let stopBuffer = false;
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
-    const BASIC_PATH = '/data/media/results/';
-
+    const ROOT = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/results/';
+    const BASIC_PATH = ROOT + 'video_func_callback_';
+    
     beforeAll(function() {
         console.info('beforeAll case');
     })
@@ -267,10 +268,10 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
         let mime = 'video/mp4v-es';
         let mediaDescription = {
             "codec_mime": 'video/mp4v-es',
-            'width': 720, 
-            'height': 480,
+            'width': 320, 
+            'height': 240,
             'pixel_format': 3,
-            'frame_rate': 60,
+            'frame_rate': 30,
         }
         media.getMediaCapability((err, mediaCaps) => {
             expect(err).assertUndefined();
@@ -328,10 +329,10 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
         let decPath = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0100.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
-            'width': 720, 
-            'height': 480,
+            'width': 320, 
+            'height': 240,
             'pixel_format': 3,
-            'frame_rate': 60.00,
+            'frame_rate': 30.00,
         }
         finalFrameId = 50;
         media.createVideoEncoderByName(name, (err, processor) => {
@@ -364,10 +365,10 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
         let decPath = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0200.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
-            'width': 720, 
-            'height': 480,
+            'width': 320, 
+            'height': 240,
             'pixel_format': 3,
-            'frame_rate': 60.00,
+            'frame_rate': 30.00,
         }
         reStart = true;
         media.createVideoEncoderByName(name, (err, processor) => {
@@ -400,10 +401,10 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
         let decPath = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0300.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
-            'width': 720, 
-            'height': 480,
+            'width': 320, 
+            'height': 240,
             'pixel_format': 3,
-            'frame_rate': 60.00,
+            'frame_rate': 30.00,
         }
         finalFrameId = 50;
         reStart = true;
@@ -437,10 +438,10 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
         let decPath = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0400.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
-            'width': 720, 
-            'height': 480,
+            'width': 320, 
+            'height': 240,
             'pixel_format': 3,
-            'frame_rate': 60.00,
+            'frame_rate': 30.00,
         }
         finalFrameId = 50;
         media.createVideoEncoderByName(name, (err, processor) => {
@@ -473,10 +474,10 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
         let decPath = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0500.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
-            'width': 720, 
-            'height': 480,
+            'width': 320, 
+            'height': 240,
             'pixel_format': 3,
-            'frame_rate': 60.00,
+            'frame_rate': 30.00,
         }
         media.createVideoEncoderByName(name, (err, processor) => {
             expect(err).assertUndefined();
@@ -508,15 +509,15 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
         let decPath = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0600.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
-            'width': 720, 
-            'height': 480,
+            'width': 320, 
+            'height': 240,
             'pixel_format': 3,
-            'frame_rate': 60.00,
+            'frame_rate': 30.00,
         }
         let decPath2 = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0600_2.es';
         let mediaDescription2 = {
-            'width': 1920, 
-            'height': 1080,
+            'width': 320, 
+            'height': 240,
             'pixel_format': 3,
             'frame_rate': 30.00,
         }

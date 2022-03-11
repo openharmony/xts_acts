@@ -81,6 +81,7 @@ struct CanvasExample {
               this.fill();
               this.textMetrics();
               this.getBitImageSize();
+              this.rotate();
             })
             .key('canvas1')
         }.width('100%').height('350%')
@@ -319,7 +320,8 @@ struct CanvasExample {
   }
   rotate() {
     this.context.rotate(45 * Math.PI / 180);
-    this.context.fillRect(70, 20, 50, 50);
+    this.context.fillRect(180, 20, 50, 50);
+    this.context.rotate(-45 * Math.PI / 180);
   }
   transform() {
     this.context.fillStyle = 'rgb(0,0,0)';

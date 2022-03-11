@@ -58,8 +58,8 @@ export default function clickEventJsunit() {
       let event = JSON.parse(eventData.data.event);
       expect(event.screenX).assertEqual(240)
       expect(event.screenY).assertEqual(60)
-      expect(event.x).assertEqual(240)
-      expect(event.y).assertEqual(60)
+      expect(event.x).assertEqual(100)
+      expect(event.y).assertEqual(50)
     }
     var innerEvent = {
       eventId: 30,

@@ -23,7 +23,7 @@ export default {
     onInit() {
         this.title = this.$t('strings.world');
     },
-    onActive() {
+    onShow() {
         console.info('====onShow finish====<')
         const core = Core.getInstance()
         const expectExtend = new ExpectExtend({
@@ -35,6 +35,7 @@ export default {
         core.init()
         const configService = core.getDefaultService('config')
         configService.setConfig(this)
+        this.timeout = 10000
 
         require('../../../test/List.test')
         core.execute()

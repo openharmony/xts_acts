@@ -1313,6 +1313,7 @@ describe('intlTest', function () {
         let value = coll.compare('a', 'b');
         console.log('collator_test_3700 ' + value);
         expect(value).assertEqual(-1);
+        expect(coll.resolvedOptions().collation).assertEqual('eor');
     })
 
     /* *
@@ -1325,6 +1326,7 @@ describe('intlTest', function () {
         let value = coll.compare('a', 'b');
         console.log('collator_test_3800 ' + value);
         expect(value).assertEqual(-1);
+        expect(coll.resolvedOptions().sensitivity).assertEqual('base');
     })
 
     /* *
@@ -1337,6 +1339,7 @@ describe('intlTest', function () {
         let value = coll.compare('a', 'b');
         console.log('collator_test_3900 ' + value);
         expect(value).assertEqual(-1);
+        expect(coll.resolvedOptions().caseFirst).assertEqual('upper');
     })
 
     /* *
@@ -1349,6 +1352,7 @@ describe('intlTest', function () {
         let value = coll.compare('a', 'b');
         console.log('collator_test_4000 ' + value);
         expect(value).assertEqual(-1);
+        expect(coll.resolvedOptions().numeric).assertTrue();
     })
 
     /* *
@@ -1361,6 +1365,7 @@ describe('intlTest', function () {
         let value = coll.compare('a', 'b');
         console.log('collator_test_4100 ' + value);
         expect(value).assertEqual(-1);
+        expect(coll.resolvedOptions().ignorePunctuation).assertTrue();
     })
 
     /* *
@@ -1373,6 +1378,7 @@ describe('intlTest', function () {
         let value = coll.compare('a', 'b');
         console.log('collator_test_4200 ' + value);
         expect(value).assertEqual(-1);
+        expect(coll.resolvedOptions().usage).assertEqual('sort');
     })
 
     /* *
@@ -1385,6 +1391,7 @@ describe('intlTest', function () {
         let value = coll.compare('a', 'b');
         console.log('collator_test_4300 ' + value);
         expect(value).assertEqual(-1);
+        expect(coll.resolvedOptions().localeMatcher).assertEqual('lookup');
     })
 
     /* *

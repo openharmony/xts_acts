@@ -140,6 +140,15 @@
         <picker-view id="ifPropTrue"
              if="true">
         </picker-view>
+        <picker-view id="ifPropTrue"
+                     elif="true">
+        </picker-view>
+        <picker-view id="ifPropTrue"
+                     elif="false">
+        </picker-view>
+        <picker-view id="ifPropTrue"
+                     elif="">
+        </picker-view>
 
         <text class="sub-title">
             渲染属性 -- show
@@ -164,44 +173,89 @@
         <text  class="sub-title">
             picker-view特有属性 -- type
         </text>
-<!--        <picker-view-->
-<!--                id="pickerViewText"-->
-<!--                type="text"-->
-<!--                selected="0"-->
-<!--                range="{{rangetext}}"-->
-<!--                indicatorprefix="前缀"-->
-<!--                indicatorsuffix="后缀"-->
-<!--        ></picker-view>-->
-<!--        <picker-view-->
-<!--                id="pickerViewTime"-->
-<!--                type="time"-->
-<!--                containsecond="true"-->
-<!--                selected="11:22:30"-->
-<!--                hours="12"-->
-<!--        ></picker-view>-->
-<!--        <picker-view-->
-<!--                id="pickerViewDate"-->
-<!--                type="date"-->
-<!--                start="2002-2-5"-->
-<!--                end="2030-6-5"-->
-<!--                selected="2022-2-22"-->
-<!--                lunar="false"-->
-<!--                lunarswitch="true"-->
-<!--        ></picker-view>-->
-<!--        <picker-view-->
-<!--                id="pickerViewDatetime"-->
-<!--                type="datetime"-->
-<!--                selected=""-->
-<!--                hours="12"-->
-<!--                lunar="false"-->
-<!--                lunarswitch="true"-->
-<!--        ></picker-view>-->
-<!--        <picker-view-->
-<!--                id="pickerViewMultiText"-->
-<!--                type="multi-text"-->
-<!--                columns="3"-->
-<!--                range="{{multitext}}"-->
-<!--                selected="{{multitextselect}}"-->
-<!--        ></picker-view>-->
+        <picker-view
+                id="pickerViewText"
+                type="text"
+                selected="0"
+                range="{{rangetext}}"
+                indicatorprefix="前缀"
+                indicatorsuffix="后缀"
+        ></picker-view>
+        <picker-view
+                id="pickerViewTime"
+                type="time"
+                containsecond="true"
+                selected="11:22:30"
+                hours="12"
+        ></picker-view>
+        <picker-view
+                id="pickerViewDate"
+                type="date"
+                start="2002-2-5"
+                end="2030-6-5"
+                selected="2022-2-22"
+                lunar="false"
+                lunarswitch="true"
+        ></picker-view>
+        <picker-view
+                id="pickerViewDatetime"
+                type="datetime"
+                selected=""
+                hours="12"
+                lunar="false"
+                lunarswitch="true"
+        ></picker-view>
+        <picker-view
+                id="pickerViewMultiText"
+                type="multi-text"
+                columns="3"
+                range="{{multitext}}"
+                selected="{{multitextselect}}"
+        ></picker-view>
+        <text  class="sub-title">
+            picker-view特有属性 -- picker-view
+        </text>
+        <picker-view
+                class="pickerView"
+                type="text"
+                range="{{rangetext}}"
+                picker-view="picker-view"
+                ></picker-view>
+        <picker-view
+                class="pickerView"
+                type="text"
+                range="{{rangetext}}"
+                picker-view=""
+                ></picker-view>
+        <!--<text  class="sub-title">
+            picker-view特有属性 -- shareid
+        </text>
+        <picker-view
+                class="pickerView"
+                type="text"
+                range="{{rangetext}}"
+                shareid="shareid"
+        ></picker-view>
+        <picker-view
+                class="pickerView"
+                type="text"
+                range="{{rangetext}}"
+                shareid=""
+        ></picker-view>-->
+        <text  class="sub-title">
+            picker-view特有属性 -- tid
+        </text>
+        <picker-view
+                class="pickerView"
+                type="text"
+                range="{{rangetext}}"
+                tid="tid"
+        ></picker-view>
+        <picker-view
+                class="pickerView"
+                type="text"
+                range="{{rangetext}}"
+                tid=""
+        ></picker-view>
     </div>
 </div>
