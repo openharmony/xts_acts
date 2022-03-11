@@ -167,5 +167,28 @@
         </text>
         <list-item-group id="Type" type="default"></list-item-group>
         <list-item-group id="TypeNone" type=""></list-item-group>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <list-item-group class="propNewAdd"
+                tid="id">
+        </list-item-group>
+        <list-item-group class="propNewAdd"
+                tid="">
+        </list-item-group>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <list-item-group class="propNewAdd"
+                if="false">
+        </list-item-group>
+        <list-item-group class="propNewAdd"
+                elif="true">
+        </list-item-group>
+        <list-item-group class="propNewAdd"
+                elif="false">
+        </list-item-group>
     </div>
 </div>

@@ -158,7 +158,7 @@
             </text>
             <div class ="event2" onclick="click" ondoubleclick="doubleClick"
                  onlongpress="longPress" onfocus="focus" onblur="blur" onkey="key"
-                 onswipe="swipe" onattached="attached" ondetached="detached">
+                 onswipe="swipe" onattached="attached" ondetached="detached" onaccessibility="attached">
             </div>
             <text  class="sub-title">
                 div通用事件3
@@ -268,6 +268,7 @@
             </text>
             <div class="access1" accessibilitygroup ="true"
                  accessibilitytext="这是div"
+                 onaccessibility="onAccessibility"
                  accessibilitydescription="点击此按键会弹出一个对话框"
                  accessibilityimportance="no-hide-descendants">
             </div>

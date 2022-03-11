@@ -20,5 +20,23 @@ export default {
       message: 'value: ' + e.text + ', lines: ' + e.lines + ', height: ' + e.height,
       duration: 3000,
     });
+  },
+  selectchange(e){
+    prompt.showToast({
+      message: 'value: ' + e.text + ', lines: ' + e.lines + ', height: ' + e.height,
+      duration: 3000,
+    });
+  },
+  share(e){
+    prompt.showToast({
+      message: 'value: ' + e.text + ', lines: ' + e.lines + ', height: ' + e.height,
+      duration: 3000,
+    });
+  },
+  translate(e){
+    prompt.showToast({
+      message: 'value: ' + e.text + ', lines: ' + e.lines + ', height: ' + e.height,
+      duration: 3000,
+    });
   }
 }

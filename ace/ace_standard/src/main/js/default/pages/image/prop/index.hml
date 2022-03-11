@@ -89,6 +89,16 @@
         </image>
 
         <text class="sub-title">
+            通用属性 -- data
+        </text>
+        <image class="propNewAdd"
+               data="通用属性 -- data">
+        </image>
+        <image class="propNewAdd"
+               data="">
+        </image>
+
+        <text class="sub-title">
             通用属性 -- click-effect
         </text>
         <image id="clickEffectPropSmall"
@@ -180,5 +190,39 @@
         <image id="imageAltNone"
                alt="">
         </image>
+
+        <text class="sub-title">
+            特有属性 -- shareid
+        </text>
+        <image class="propNewAdd"
+               shareid="shareImage">
+        </image>
+        <image class="propNewAdd"
+               shareid="">
+        </image>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <image class="propNewAdd"
+               tid="id">
+        </image>
+        <image class="propNewAdd"
+               tid="">
+        </image>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <image class="propNewAdd"
+               if="false">
+        </image>
+        <image class="propNewAdd"
+               elif="true">
+        </image>
+        <image class="propNewAdd"
+               elif="false">
+        </image>
+
     </div>
 </div>

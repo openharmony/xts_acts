@@ -61,6 +61,7 @@ OptionArray:{icon:"common/images/icon.png",content:"复制"},
         menuoptionsNone : null,
         menuoptions : null,
     },
+
     onShow(){
         this.getCommonPropValues();
         this.getSpecificPropValues();

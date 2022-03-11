@@ -271,5 +271,28 @@
         <textarea id="softkeyboardenabledTrue"
                   softkeyboardenabled="true">
         </textarea>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <textarea class="propNewAdd"
+                tid="id">
+        </textarea>
+        <textarea class="propNewAdd"
+                tid="">
+        </textarea>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <textarea class="propNewAdd"
+                if="false">
+        </textarea>
+        <textarea class="propNewAdd"
+                elif="true">
+        </textarea>
+        <textarea class="propNewAdd"
+                elif="false">
+        </textarea>
     </div>
 </div>

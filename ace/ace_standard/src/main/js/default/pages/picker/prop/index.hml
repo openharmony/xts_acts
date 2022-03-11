@@ -140,6 +140,15 @@
         <picker type="text" id="ifPropTrue"
              if="true">
         picker</picker>
+        <picker type="text" class="picker"
+                elif="true">
+            picker</picker>
+        <picker type="text" id="ifPropTrue"
+                elif="false">
+            picker</picker>
+        <picker type="text" id="ifPropTrue"
+                elif="">
+            picker</picker>
 
         <text class="sub-title">
             渲染属性 -- show
@@ -207,5 +216,30 @@
                 range="{{multitext}}"
                 selected="{{multitextselect}}"
         ></picker>
+        <text  class="sub-title">
+            picker特有属性 -- picker
+        </text>
+        <picker
+                class="picker"
+                picker="picker"
+                type="time"
+                value="11:20"
+        ></picker>
+        <picker
+                class="picker"
+                picker=""
+                type="time"
+                value="11:20"
+        ></picker>
+        <!--<text  class="sub-title">
+            picker特有属性 -- shareid
+        </text>
+        <picker class="picker" type="time" value="11:20" shareid="shareid"></picker>
+        <picker class="picker" type="time" value="11:20" shareid=""></picker>-->
+        <text  class="sub-title">
+            picker特有属性 -- tid
+        </text>
+        <picker class="picker" type="time" value="11:20" tid="tid"></picker>
+        <picker class="picker" type="time" value="11:20" tid=""></picker>
     </div>
 </div>

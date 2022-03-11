@@ -511,5 +511,4 @@ export default {
             message: 'reachBottom'
         });
     }
-
 }

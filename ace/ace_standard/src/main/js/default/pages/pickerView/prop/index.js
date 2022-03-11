@@ -48,6 +48,14 @@ export default {
         showPropTrue : null,
         showPropFalse : null,
         showPropNone : null,
+        multitext:[["a", "b", "c"], ["e", "f", "g"], ["h", "i"], ["k", "l", "m"]],
+        rangetext:['15', "20", "25"],
+//        multitextselect:[1,2,0],
+//        pickerViewText: null,
+//        pickerViewDate: null,
+//        pickerViewTime: null,
+//        pickerViewDatetime: null,
+//        pickerViewMultiText: null
     },
 
     onShow(){
@@ -120,5 +128,5 @@ export default {
         this.showPropTrue = this.$element("showPropTrue").getInspector()
         this.showPropFalse = this.$element("showPropFalse").getInspector()
         this.showPropNone = this.$element("showPropNone").getInspector()
-    },
+    }
 }

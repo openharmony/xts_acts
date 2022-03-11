@@ -195,6 +195,7 @@
                     badge无障碍
                 </text>
                 <badge class="access1" accessibilitygroup ="true"
+                     onaccessibility="onAccessibility"
                      accessibilitytext="这是badge"
                      accessibilitydescription="点击此按键会弹出一个对话框"
                      accessibilityimportance="no-hide-descendants">

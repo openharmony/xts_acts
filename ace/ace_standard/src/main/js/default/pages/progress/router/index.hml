@@ -155,6 +155,7 @@
             </text>
             <progress percent="10" id="event2" class="event2" onclick="click" ondoubleclick="doubleClick"
                    onlongpress="longPress" onfocus="focus" onblur="blur" onkey="key"
+                   onaccessibility="onAccessibility"
                    onswipe="swipe" onattached="attached" ondetached="detached">
             </progress>
 

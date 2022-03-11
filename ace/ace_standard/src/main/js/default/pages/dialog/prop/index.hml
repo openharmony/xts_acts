@@ -238,5 +238,27 @@
         <dialog id="dragableFalse"
                 dragable='false'>
         </dialog>
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <dialog class="propNewAdd"
+                tid="id">
+        </dialog>
+        <dialog class="propNewAdd"
+                tid="">
+        </dialog>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <dialog class="propNewAdd"
+                if="false">
+        </dialog>
+        <dialog class="propNewAdd"
+                elif="true">
+        </dialog>
+        <dialog class="propNewAdd"
+                elif="false">
+        </dialog>
     </div>
 </div>

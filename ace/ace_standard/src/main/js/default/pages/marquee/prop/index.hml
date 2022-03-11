@@ -203,6 +203,48 @@
         <marquee id="typeDirectionRight"
                  direction="right">
         </marquee>
+        <text class="sub-title">
+            特有属性 -- marquee
+        </text>
+        <marquee class="propNewAdd"
+                marquee="marquee">
+        </marquee>
+        <marquee class="propNewAdd"
+                marquee="">
+        </marquee>
+
+        <text class="sub-title">
+            特有属性 -- shareid
+        </text>
+        <marquee class="propNewAdd"
+                shareid="shareImage">
+        </marquee>
+        <marquee class="propNewAdd"
+                shareid="">
+        </marquee>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <marquee class="propNewAdd"
+                tid="id">
+        </marquee>
+        <marquee class="propNewAdd"
+                tid="">
+        </marquee>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <marquee class="propNewAdd"
+                if="false">
+        </marquee>
+        <marquee class="propNewAdd"
+                 elif="true">
+        </marquee>
+        <marquee class="propNewAdd"
+                elif="false">
+        </marquee>
 
     </div>
 </div>
