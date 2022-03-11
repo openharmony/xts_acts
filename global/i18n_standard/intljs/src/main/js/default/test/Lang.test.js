@@ -81,6 +81,7 @@ describe('LangTest', function () {
     * execute this step before every testcase
     */
     beforeEach(function(){
+        I18n.set24HourClock(false);
         console.log('i18n_test_preferredlanguage_beforeEach ' + getCurrentPreferredLang());
     })
 
@@ -92,7 +93,6 @@ describe('LangTest', function () {
         console.log('i18n_test_preferredlanguage_afterEach ' + currLang);
         clearLang(currLang);
         restoreLang();
-        I18n.set24HourClock(false);
     })
 
     /* *
