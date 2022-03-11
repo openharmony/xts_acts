@@ -7,3 +7,8 @@
 .title {
     font-size: 100px;
 }
+
+.btn {
+    width: 200px;
+    height: 80px;
+}

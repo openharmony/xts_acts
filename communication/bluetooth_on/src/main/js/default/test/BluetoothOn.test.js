@@ -66,22 +66,27 @@ describe('bluetoothhostTest', function() {
                 done();
             }
         }
-        console.info('[bluetooth_js]state on:' + JSON.stringify(bluetooth.BluetoothState.STATE_ON));
-        console.info('[bluetooth_js]off :' + JSON.stringify(bluetooth.BluetoothState.STATE_OFF));
-        console.info('[bluetooth_js] turning on :'
-        + JSON.stringify(bluetooth.BluetoothState.STATE_TURNING_ON));
-        console.info('[bluetooth_js] turning off :'
-        + JSON.stringify(bluetooth.BluetoothState.STATE_TURNING_OFF));
-        console.info('[bluetooth_js] ble turning on :'
-        + JSON.stringify(bluetooth.BluetoothState.STATE_BLE_TURNING_ON));
-        console.info('[bluetooth_js] ble on:'
-        + JSON.stringify(bluetooth.BluetoothState.STATE_BLE_ON));
-        console.info('[bluetooth_js] ble turning off :'
-        + JSON.stringify(bluetooth.BluetoothState.STATE_BLE_TURNING_OFF));
-        var enable = bluetooth.enableBluetooth();
-        expect(enable).assertEqual(true);
-        console.info('[bluetooth_js] enable On = '+ JSON.stringify(enable));
-        await sleep(4000);
+        var sta = bluetooth.getState();
+        switch(sta){
+            case 0:
+                var enable = bluetooth.enableBluetooth();
+                console.info('[bluetooth_js] enable0 = '+ JSON.stringify(enable));
+                expect(enable).assertEqual(true);
+                break;
+            case 1:
+                console.info('[bluetooth_js] bt turning on:'+ JSON.stringify(sta));
+                break;
+            case 2:
+                console.info('[bluetooth_js] state is On:'+ JSON.stringify(sta));
+                break;
+            case 3:
+                var enable = bluetooth.enableBluetooth();
+                console.info('[bluetooth_js] enable0 = '+ JSON.stringify(enable));
+                break;
+            default:
+                console.info('[bluetooth_js] enable success');
+            }
+        await sleep(2000);
         var state = bluetooth.getState();
         console.info('[bluetooth_js] getState On = '+ JSON.stringify(state));
         await bluetooth.off('stateChange', result => {

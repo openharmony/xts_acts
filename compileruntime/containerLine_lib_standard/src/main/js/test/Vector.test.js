@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,7 +20,8 @@ describe("VectorTest", function () {
     try {
       let vector = new Vector();
     } catch (err) {
-      expect(err).assertEqual("Error: Cannot create new vector");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("Cannot create new vector");
     }
   });
   it("SR000GGR47_testAdd002", 0, function () {
@@ -68,7 +69,8 @@ describe("VectorTest", function () {
     try {
       vector.insert(-1, 2);
     } catch (err) {
-      expect(err).assertEqual("Vector: get out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the index is out-of-bounds");
     }
   });
   it("SR000GGR47_testInsert008", 0, function () {
@@ -78,11 +80,9 @@ describe("VectorTest", function () {
     vector.add(1);
     vector.add("a");
     let capacity = vector.getCapacity();
-    try {
-      vector.insert(capacity, 2);
-    } catch (err) {
-      expect(err).assertEqual("Vector: get out-of-bounds");
-    }
+    vector.insert(capacity, 2);
+    let res = vector.get(2);
+    expect(res).assertEqual(10);
   });
   it("SR000GGR47_testInsert009", 0, function () {
     let vector = new Vector();
@@ -92,9 +92,10 @@ describe("VectorTest", function () {
     vector.add("a");
     let capacity = vector.getCapacity();
     try {
-      vector.insert(capacity + 1, 2);
+      vector.insert(2, capacity + 1);
     } catch (err) {
-      expect(err).assertEqual("Vector: get out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the index is out-of-bounds");
     }
   });
   it("SR000GGR47_testLength010", 0, function () {
@@ -146,7 +147,8 @@ describe("VectorTest", function () {
     try {
       let res = vector.get(10);
     } catch (err) {
-      expect(err).assertEqual("Error: Vector: get out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the index is out-of-bounds");
     }
   });
   it("SR000GGR47_testGetIndexOf015", 0, function () {
@@ -166,19 +168,13 @@ describe("VectorTest", function () {
     vector.add(1);
     vector.add("a");
     vector.insert(8, 2);
-    try {
-      let res = vector.getFirstElement();
-    } catch (err) {
-      expect(err).assertEqual("Error: Vector: get out-of-bounds");
-    }
+    let res = vector.getFirstElement();
+    expect(res).assertEqual("四");
   });
   it("SR000GGR47_testGetFirstElement017", 0, function () {
     let vector = new Vector();
-    try {
-      let res = vector.getFirstElement();
-    } catch (err) {
-      expect(err).assertEqual("Error: Vector: get out-of-bounds");
-    }
+    let res = vector.getFirstElement();
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR47_testSet018", 0, function () {
     let vector = new Vector();
@@ -232,12 +228,8 @@ describe("VectorTest", function () {
   });
   it("SR000GGR47_testGetLastElement023", 0, function () {
     let vector = new Vector();
-    let res1 = vector.length;
-    try {
-      let res = vector.getLastElement();
-    } catch (err) {
-      expect(err).assertEqual("Error: Vector: get out-of-bounds");
-    }
+    let res = vector.getLastElement();
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR47_testGetLastIndexOf024", 0, function () {
     let vector = new Vector();
@@ -309,7 +301,8 @@ describe("VectorTest", function () {
     try {
       vector.removeByRange(3, 1);
     } catch (err) {
-      expect(err).assertEqual("Error: fromIndex cannot be less than or equal to toIndex");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the fromIndex cannot be less than or equal to toIndex");
     }
   });
   it("SR000GGR47_testRemoveByRange029", 0, function () {
@@ -321,7 +314,8 @@ describe("VectorTest", function () {
     try {
       vector.removeByRange(length + 1, 7);
     } catch (err) {
-      expect(err).assertEqual("Error: Vector: set out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the fromIndex or the toIndex is out-of-bounds");
     }
   });
   it("SR000GGR47_testRemoveByRange030", 0, function () {
@@ -333,7 +327,8 @@ describe("VectorTest", function () {
     try {
       vector.removeByRange(1, 7);
     } catch (err) {
-      expect(err).assertEqual("vector: deleteProperty out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the index is out-of-bounds");
     }
   });
   it("SR000GGR47_testRemoveByRange031", 0, function () {
@@ -347,16 +342,12 @@ describe("VectorTest", function () {
     vector.add("c");
     vector.add(1);
     let capacity = vector.getCapacity();
-    try {
-      vector.removeByRange(0, capacity);
-    } catch (err) {
-      expect(err).assertEqual("Error: Vector: set out-of-bounds");
-    }
+    vector.removeByRange(0, capacity);
     let arr = [];
     vector.forEach((item, index) => {
       arr.push(item);
     });
-    expect(arr.length).assertEqual(1);
+    expect(arr.length).assertEqual(0);
   });
   it("SR000GGR47_testRemoveByRange032", 0, function () {
     let vector = new Vector();
@@ -372,7 +363,8 @@ describe("VectorTest", function () {
     try {
       vector.removeByRange(-1, capacity);
     } catch (err) {
-      expect(err).assertEqual("Error: Vector: set out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the fromIndex or the toIndex is out-of-bounds");
     }
   });
   it("SR000GGR47_testRemoveByRange033", 0, function () {
@@ -388,7 +380,7 @@ describe("VectorTest", function () {
     let capacity = vector.getCapacity();
     vector.removeByRange(0, capacity + 1);
     let length = vector.length;
-    expect(length).assertEqual(1);
+    expect(length).assertEqual(0);
   });
   it("SR000GGR47_testSetLength034", 0, function () {
     let vector = new Vector();
@@ -448,7 +440,7 @@ describe("VectorTest", function () {
     let a = [4, 3, 1, 2, 14];
     expect(arr.length).assertEqual(0);
   });
-  it("SR000GGR47_testConstructor038", 0, function () {
+  it("SR000GGR47_testSubVector038", 0, function () {
     let vector = new Vector();
     vector.add(4);
     vector.add(3);
@@ -465,7 +457,7 @@ describe("VectorTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR47_testConstructor039", 0, function () {
+  it("SR000GGR47_testSubVector039", 0, function () {
     let vector = new Vector();
     vector.add(4);
     vector.add(3);
@@ -475,12 +467,11 @@ describe("VectorTest", function () {
     try {
       let res = vector.subVector(4, 2);
     } catch (err) {
-      expect(err).assertEqual(
-        "Error: fromIndex cannot be less than or equal to toIndex"
-      );
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the fromIndex cannot be less than or equal to toIndex");
     }
   });
-  it("SR000GGR47_testConstructor040", 0, function () {
+  it("SR000GGR47_testSubVector040", 0, function () {
     let vector = new Vector();
     vector.add(4);
     vector.add(3);
@@ -489,12 +480,13 @@ describe("VectorTest", function () {
     vector.add(14);
     let length = vector.length;
     try {
-      let res = vector.subVector(length + 1, length + 3);
+      vector.subVector(length + 1, length + 3);
     } catch (err) {
-      expect(err).assertEqual("Error: fromIndex or toIndex is out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the fromIndex or the toIndex is out-of-bounds");
     }
   });
-  it("SR000GGR47_testConstructor041", 0, function () {
+  it("SR000GGR47_testSubVector041", 0, function () {
     let vector = new Vector();
     vector.add(4);
     vector.add(3);
@@ -505,7 +497,8 @@ describe("VectorTest", function () {
     try {
       let res = vector.subVector(1, length + 1);
     } catch (err) {
-      expect(err).assertEqual("Vector: get out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the fromIndex or the toIndex is out-of-bounds");
     }
   });
   it("SR000GGR47_testClear042", 0, function () {
@@ -739,18 +732,6 @@ describe("VectorTest", function () {
     let res = vector.isEmpty();
     expect(res).assertEqual(true);
   });
-  it("SR000GGR47_testFor059", 0, function () {
-    let vector = new Vector();
-    vector.add("四");
-    let length = vector.length;
-    try {
-      for (let i = 0; i < length; i++) {
-        console.log(vector[i]);
-      }
-    } catch (err) {
-      expect(err).assertEqual("Error: Cannot create new vector");
-    }
-  });
   it("SR000GGR47_testAdd060", 0, function () {
     let vector = new Vector();
     for (let i = 0; i < 100; i++) {
@@ -800,7 +781,8 @@ describe("VectorTest", function () {
     try {
       vector.set(12, "二");
     } catch (err) {
-      expect(err).assertEqual("Error: Vector: set out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the index is out-of-bounds");
     }
   });
   it("SR000GGR47_testRemoveByIndex067", 0, function () {
@@ -810,7 +792,8 @@ describe("VectorTest", function () {
     try {
       vector.removeByIndex(12);
     } catch (err) {
-      expect(err).assertEqual("Error: Vector: get out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the index is out-of-bounds");
     }
   });
   it("SR000GGR47_testGetLastIndexOf068", 0, function () {

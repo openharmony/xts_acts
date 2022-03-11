@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -21,110 +21,111 @@ describe("HashMapTest", function () {
       let hashMap = new HashMap();
       expect(hashMap != undefined).assertEqual(true);
     } catch (err) {
-      expect(err).assertEqual("Error: Cannot create new HashMap");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("Cannot create new HashMap");
     }
   });
-  it("SR000GGR4B_testSet002_1", 0, function () {
+  it("SR000GGR4B_testSet002", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     let res = hashMap.get(1);
     expect(res).assertEqual("A");
   });
-  it("SR000GGR4B_testSet002_2", 0, function () {
+  it("SR000GGR4B_testSet003", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, 2);
     let res = hashMap.get(1);
     expect(res).assertEqual(2);
   });
-  it("SR000GGR4B_testSet002_3", 0, function () {
+  it("SR000GGR4B_testSet004", 0, function () {
     let hashMap = new HashMap();
     let c = [1, 2, 3];
     hashMap.set(1, c);
     let res = hashMap.get(1);
     expect(res).assertEqual(c);
   });
-  it("SR000GGR4B_testSet002_4", 0, function () {
+  it("SR000GGR4B_testSet005", 0, function () {
     let hashMap = new HashMap();
     let c = {name: "lili", age: "13"};
     hashMap.set(1, c);
     let res = hashMap.get(1);
     expect(res).assertEqual(c);
   });
-  it("SR000GGR4B_testSet002_5", 0, function () {
+  it("SR000GGR4B_testSet006", 0, function () {
     let hashMap = new HashMap();
     hashMap.set("a", "A");
     let res = hashMap.get("a");
     expect(res).assertEqual("A");
   });
-  it("SR000GGR4B_testSet002_6", 0, function () {
+  it("SR000GGR4B_testSet007", 0, function () {
     let hashMap = new HashMap();
     hashMap.set("", "A");
     let res = hashMap.get("");
     expect(res).assertEqual("A");
   });
-  it("SR000GGR4B_testSet002_7", 0, function () {
+  it("SR000GGR4B_testSet008", 0, function () {
     let hashMap = new HashMap();
     hashMap.set("$", "A");
     let res = hashMap.get("$");
     expect(res).assertEqual("A");
   });
-  it("SR000GGR4B_testSet002_8", 0, function () {
+  it("SR000GGR4B_testSet009", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(3.14, "A");
     let res = hashMap.get(3.14);
     expect(res).assertEqual("A");
   });
-  it("SR000GGR4B_testSet002_9", 0, function () {
+  it("SR000GGR4B_testSet010", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(0.3, "A");
     let res = hashMap.get(0.3);
     expect(res).assertEqual("A");
   });
-  it("SR000GGR4B_testSet002_10", 0, function () {
+  it("SR000GGR4B_testSet011", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(-1, "A");
     let res = hashMap.get(-1);
     expect(res).assertEqual("A");
   });
-  it("SR000GGR4B_testSet002_11", 0, function () {
+  it("SR000GGR4B_testSet012", 0, function () {
     let hashMap = new HashMap();
     let a = {};
     hashMap.set(a, "A");
     let res = hashMap.get(a);
     expect(res).assertEqual("A");
   });
-  it("SR000GGR4B_testSet002_12", 0, function () {
+  it("SR000GGR4B_testSet013", 0, function () {
     let hashMap = new HashMap();
-    hashMap.set(1, undefined);
+    hashMap.set(1, null);
     let res = hashMap.get(1);
-    expect(res).assertEqual(undefined);
+    expect(res).assertEqual(null);
   });
-  it("SR000GGR4B_testSet002_13", 0, function () {
+  it("SR000GGR4B_testSet014", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "$");
     let res = hashMap.get(1);
     expect(res).assertEqual("$");
   });
-  it("SR000GGR4B_testSet002_14", 0, function () {
+  it("SR000GGR4B_testSet015", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, 3.14);
     let res = hashMap.get(1);
     expect(res).assertEqual(3.14);
   });
-  it("SR000GGR4B_testSet002_15", 0, function () {
+  it("SR000GGR4B_testSet016", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, -1);
     let res = hashMap.get(1);
     expect(res).assertEqual(-1);
   });
-  it("SR000GGR4B_testSet002_16", 0, function () {
+  it("SR000GGR4B_testSet017", 0, function () {
     let hashMap = new HashMap();
     let a = {};
     hashMap.set(1, a);
     let res = hashMap.get(1);
     expect(res).assertEqual(a);
   });
-  it("SR000GGR4B_testSet002_17", 0, function () {
+  it("SR000GGR4B_testSet018", 0, function () {
     let hashMap = new HashMap();
     for (let i = 0; i < 100; i++) {
       hashMap.set(1, i);
@@ -134,7 +135,7 @@ describe("HashMapTest", function () {
     expect(res).assertEqual(99);
     expect(res1).assertEqual(1);
   });
-  it("SR000GGR4B_testSet002_18", 0, function () {
+  it("SR000GGR4B_testSet019", 0, function () {
     let hashMap = new HashMap();
     for (let i = 0; i < 100; i++) {
       hashMap.set(i, 1);
@@ -144,7 +145,7 @@ describe("HashMapTest", function () {
     let res1 = hashMap.length;
     expect(res1).assertEqual(100);
   });
-  it("SR000GGR4B_testLength003", 0, function () {
+  it("SR000GGR4B_testLength020", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -154,7 +155,7 @@ describe("HashMapTest", function () {
     let res = hashMap.length;
     expect(res).assertEqual(5);
   });
-  it("SR000GGR4B_testHasKey004_1", 0, function () {
+  it("SR000GGR4B_testHasKey021", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -166,12 +167,12 @@ describe("HashMapTest", function () {
     let res1 = hashMap.hasKey(8);
     expect(res1).assertEqual(false);
   });
-  it("SR000GGR4B_testHasKey004_2", 0, function () {
+  it("SR000GGR4B_testHasKey022", 0, function () {
     let hashMap = new HashMap();
     let res = hashMap.hasKey(8);
     expect(res).assertEqual(false);
   });
-  it("SR000GGR4B_testHasValue005_1", 0, function () {
+  it("SR000GGR4B_testHasValue023", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -183,12 +184,12 @@ describe("HashMapTest", function () {
     let res1 = hashMap.hasValue(8);
     expect(res1).assertEqual(false);
   });
-  it("SR000GGR4B_testHasValue005_2", 0, function () {
+  it("SR000GGR4B_testHasValue024", 0, function () {
     let hashMap = new HashMap();
     let res = hashMap.hasValue(8);
     expect(res).assertEqual(false);
   });
-  it("SR000GGR4B_testGet006_1", 0, function () {
+  it("SR000GGR4B_testGet025", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -198,17 +199,12 @@ describe("HashMapTest", function () {
     let res = hashMap.get(3);
     expect(res).assertEqual("C");
   });
-  it("SR000GGR4B_testGet006_2", 0, function () {
+  it("SR000GGR4B_testGet026", 0, function () {
     let hashMap = new HashMap();
-    try {
-      let res = hashMap.get(3);
-    } catch (err) {
-      expect(err).assertEqual(
-        "Error: The removed element does not exist in this container"
-      );
-    }
+    let res = hashMap.get(3);
+    expect(res).assertEqual(undefined);
   });
-  it("SR000GGR4B_testSetAll007_1", 0, function () {
+  it("SR000GGR4B_testSetAll027", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -232,7 +228,7 @@ describe("HashMapTest", function () {
       expect(arr[i][1]).assertEqual(hashMap.get(i + 1));
     }
   });
-  it("SR000GGR4B_testSetAll007_2", 0, function () {
+  it("SR000GGR4B_testSetAll028", 0, function () {
     let hashMap = new HashMap();
     let hashMap1 = new HashMap();
     hashMap1.set(1, 1);
@@ -251,7 +247,7 @@ describe("HashMapTest", function () {
       );
     }
   });
-  it("SR000GGR4B_testRemove008_1", 0, function () {
+  it("SR000GGR4B_testRemove029", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -263,17 +259,12 @@ describe("HashMapTest", function () {
     let res1 = hashMap.length;
     expect(res1).assertEqual(4);
   });
-  it("SR000GGR4B_testRemove008_2", 0, function () {
+  it("SR000GGR4B_testRemove030", 0, function () {
     let hashMap = new HashMap();
-    try {
-      let res = hashMap.remove(3);
-    } catch (err) {
-      expect(err).assertEqual(
-        "Error: The removed element does not exist in this container"
-      );
-    }
+    let res = hashMap.remove(3);
+    expect(res).assertEqual(undefined);
   });
-  it("SR000GGR4B_testClear009", 0, function () {
+  it("SR000GGR4B_testClear031", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -286,13 +277,13 @@ describe("HashMapTest", function () {
     let res1 = hashMap.length;
     expect(res1).assertEqual(0);
   });
-  it("SR000GGR4B_testClear010", 0, function () {
+  it("SR000GGR4B_testClear032", 0, function () {
     let hashMap = new HashMap();
     hashMap.clear();
     let res = hashMap.length;
     expect(res).assertEqual(0);
   });
-  it("SR000GGR4B_testKeys010", 0, function () {
+  it("SR000GGR4B_testKeys033", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -304,7 +295,7 @@ describe("HashMapTest", function () {
       console.log(res.next());
     }
   });
-  it("SR000GGR4B_testValues011", 0, function () {
+  it("SR000GGR4B_testValues034", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -317,7 +308,7 @@ describe("HashMapTest", function () {
       expect(has).assertEqual(true);
     }
   });
-  it("SR000GGR4B_testReplace012_1", 0, function () {
+  it("SR000GGR4B_testReplace035", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -328,12 +319,12 @@ describe("HashMapTest", function () {
     expect(res).assertEqual(true);
     expect(hashMap.get(2)).assertEqual("G");
   });
-  it("SR000GGR4B_testReplace012_2", 0, function () {
+  it("SR000GGR4B_testReplace036", 0, function () {
     let hashMap = new HashMap();
     let res = hashMap.replace(2, "G");
     expect(res).assertEqual(false);
   });
-  it("SR000GGR4B_testForEach013_1", 0, function () {
+  it("SR000GGR4B_testForEach037", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -355,19 +346,15 @@ describe("HashMapTest", function () {
       expect(has).assertEqual(true);
     }
   });
-  it("SR000GGR4B_testForEach013_2", 0, function () {
+  it("SR000GGR4B_testForEach038", 0, function () {
     let hashMap = new HashMap();
     let arr = [];
-    try {
-      hashMap.forEach((item, index) => {
-        arr.push(item);
-      });
-    } catch (err) {
-      expect(err).assertEqual("Error:Cannot create new hashMap");
-    }
+    hashMap.forEach((item, index) => {
+      arr.push(item);
+    });
     expect(arr.length).assertEqual(0);
   });
-  it("SR000GGR4B_testIterator014_1", 0, function () {
+  it("SR000GGR4B_testIterator039", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -386,19 +373,15 @@ describe("HashMapTest", function () {
       expect(arr[i][1]).assertEqual(hashMap.get(i + 1));
     }
   });
-  it("SR000GGR4B_testIterator014_2", 0, function () {
+  it("SR000GGR4B_testIterator040", 0, function () {
     let hashMap = new HashMap();
     let arr = [];
-    try {
-      for (let item of hashMap) {
-        arr.push(item);
-      }
-    } catch (err) {
-      expect(err).assertEqual("Error: Cannot create new HashMap");
+    for (let item of hashMap) {
+      arr.push(item);
     }
     expect(arr.length).assertEqual(0);
   });
-  it("SR000GGR4B_testEntries015_1", 0, function () {
+  it("SR000GGR4B_testEntries041", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -419,12 +402,12 @@ describe("HashMapTest", function () {
       expect(arr[i][1]).assertEqual(hashMap.get(i + 1));
     }
   });
-  it("SR000GGR4B_testEntries015_2", 0, function () {
+  it("SR000GGR4B_testEntries042", 0, function () {
     let hashMap = new HashMap();
     let res = hashMap.entries();
     expect(undefined).assertEqual(res.next().value);
   });
-  it("SR000GGR4B_testIsEmpty016_1", 0, function () {
+  it("SR000GGR4B_testIsEmpty043", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -436,7 +419,7 @@ describe("HashMapTest", function () {
     expect(res).assertEqual(5);
     expect(res1).assertEqual(false);
   });
-  it("SR000GGR4B_testIsEmpty016_2", 0, function () {
+  it("SR000GGR4B_testIsEmpty044", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -449,12 +432,12 @@ describe("HashMapTest", function () {
     expect(res).assertEqual(0);
     expect(res1).assertEqual(true);
   });
-  it("SR000GGR4B_testEntries043", 0, function () {
+  it("SR000GGR4B_testEntries045", 0, function () {
     let hashMap = new HashMap();
     let res = hashMap.entries();
     expect(undefined).assertEqual(res.next().value);
   });
-  it("SR000GGR4B_testIterator044", 0, function () {
+  it("SR000GGR4B_testIterator046", 0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -462,18 +445,16 @@ describe("HashMapTest", function () {
     hashMap.set(4, "D");
     hashMap.set(5, "E");
     let arr = [];
-    let res = hashMap[Symbol.iterator]();
-    let temp = undefined;
-    do {
-      temp = res.next().value;
-      arr.push(temp);
-    } while (temp != undefined);
-    arr.sort(function (a, b) {
-      return a[0] - b[0];
-    });
-    let arr1 = ["1,A", "2,B", "3,C", "4,D", "5,E"];
-    for (let i = 0; i < arr.length; i++) {
-      expect(arr[i]).assertEqual(arr1[i]);
+    let iters = hashMap[Symbol.iterator]();
+    let flag = true;
+    for (let i = 0, len = hashMap.length; i < len; i++) {
+      let entry = iters.next().value;
+      let res = hashMap.get(entry[0]);
+      if (res != entry[1]) {
+        flag = false;
+        break;
+      }
     }
+    expect(flag).assertEqual(true);
   });
 });

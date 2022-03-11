@@ -137,7 +137,7 @@ describe('ACTS_WifiTest', function() {
     /**
     * @tc.number     CONFIG_0003
     * @tc.name       SUB_Communication_WiFi_Hotspot_Config_0003
-    * @tc.desc       Test set a invalid  hotspot config
+    * @tc.desc       Test set a invalid band hotspot config
     * @tc.level Level 2
     */
     it('SUB_Communication_WiFi_Hotspot_Config_0003', 0, async function (done) {
@@ -200,6 +200,10 @@ describe('ACTS_WifiTest', function() {
         var isSuccess1 = wifi.setHotspotConfig(HotspotConfigM1);
         console.log("[wifi_test] set 65 preSharedKey invalid hotspot config  result: " + isSuccess1);
         expect(isSuccess1).assertFalse();
+        console.info("[wifi_test] check band of current band should be 5G.");
+        var hotspotConfigS= wifi.getHotspotConfig();
+        console.log("[wifi_test] getHotspotConfig  result: " + JSON.stringify(hotspotConfigS));
+        expect(hotspotConfigS.preSharedKey.length).assertEqual(63);
         done();
     })
 
@@ -296,7 +300,7 @@ describe('ACTS_WifiTest', function() {
         console.log("[wifi_test] check current hotspot config preSharedKey is 8bit" );
         var config = wifi.getHotspotConfig();
         console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
-        console.info("preSharedKey: " + config.ssid);
+        console.info("ssid: " + config.ssid);
         expect(config.ssid.length).assertEqual(32);
         done();
 
@@ -566,10 +570,10 @@ describe('ACTS_WifiTest', function() {
         console.log("[wifi_test] set a psk preSharedKey hotspot config result1: " + isSuccess1);
         expect(isSuccess1).assertTrue();
         console.log("[wifi_test] check current hotspot config preSharedKey is 8bit" );
-        var configs = wifi.getHotspotConfig();
-        console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(configs));
-        console.info("ssid: " + configs.ssid);
-        expect(configs.ssid).assertEqual('WIFITEST');
+        var config = wifi.getHotspotConfig();
+        console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
+        console.info("ssid: " + config.ssid);
+        expect(config.ssid).assertEqual('WIFITEST');
         done();
 
     })
