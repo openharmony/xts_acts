@@ -1,4 +1,4 @@
-# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Copyright (c) 2020-2021 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -13,19 +13,19 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-group("fa") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "fa_applicationinfo_test:FaApplicationinfoTest",
-      "fa_clear_test:FaClearTest",
-      "fa_coverapi_test:FaCoverapiTest",
-      "fa_equeryabilitybywant_test:FaEqueryabilitybywantTest",
-      "fa_lock_test:FaLockTest",
-      "fa_missionmanager_test:FaMissionmanagerTest",
-      "fa_statelistener_test:FaStatelistenerTest",
-      "fa_taskmanager_test:FaTaskmanagerTest",
-      "fa_taskswiting_test:FaTaskswitingTest",
-    ]
-  }
+ohos_js_hap_suite("FaApplicationinfoTest") {
+  hap_profile = "./entry/src/main/config.json"
+  deps = [
+    ":fa_applicationinfo_test_assets",
+    ":fa_applicationinfo_test_resources",
+  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "FaApplicationinfoTest"
+}
+ohos_js_assets("fa_applicationinfo_test_assets") {
+  source_dir = "./entry/src/main/js/MainAbility"
+}
+ohos_resources("fa_applicationinfo_test_resources") {
+  sources = [ "./entry/src/main/resources" ]
+  hap_profile = "./entry/src/main/config.json"
 }
