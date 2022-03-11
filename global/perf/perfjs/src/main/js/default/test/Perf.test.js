@@ -21,17 +21,72 @@ describe('PerfTest', function () {
     console.log('*************start PerfTest*************');
 
     let EXETIME = 1000;
+    let initPreferredLang = I18n.getPreferredLanguageList();
+    let initLen = initPreferredLang.length;
+
+    /* *
+    * get the current preferred language list
+    */
+    function getCurrentPreferredLang(){
+        let value = I18n.getPreferredLanguageList();
+        return value;
+    }
+
+    /* *
+    * clear the preferred language list if exists
+    */
+    function clearLang(langList){
+        let len = langList.length;
+        while(len > 0){
+            console.log('i18n_test_preferredlanguage_clearLang ' + len);
+            let par = len - 1;
+            console.log('i18n_test_preferredlanguage_clearLang ' + par);
+            let value = I18n.removePreferredLanguage(par);
+            console.log('i18n_test_preferredlanguage_clearLang ' + value);
+            len--;
+        }
+        console.log('i18n_test_preferredlanguage_clearLang ' + I18n.getPreferredLanguageList());
+    }
+
+    /* *
+    * execute this step after every testcase
+    */
+    function restoreLang(){
+        for(let j = 0; j < initLen; j++){
+            let value = I18n.addPreferredLanguage(initPreferredLang[j], j);
+            console.log('i18n_test_preferredlanguage_restoreLang ' + value);
+            expect(value).assertTrue();
+        }
+        let currLen = getCurrentPreferredLang().length;
+        while(currLen > initLen) {
+            let rem = I18n.removePreferredLanguage(currLen - 1);
+            console.log('i18n_test_preferredlanguage_restoreLang ' + rem);
+            currLen--;
+        }
+        console.log('i18n_test_preferredlanguage_restoreLang ' + I18n.getPreferredLanguageList());
+    }
 
     beforeAll(function(){
         console.log('step before all cases.');
     })
 
+    /* *
+    * execute this step before every testcase
+    */
     beforeEach(function(){
         console.log('step before every case.');
+        console.log('i18n_test_preferredlanguage_beforeEach ' + getCurrentPreferredLang());
     })
 
+    /* *
+    * execute this step after every testcase
+    */
     afterEach(function(){
         console.log('step after every case.');
+        let currLang = getCurrentPreferredLang();
+        console.log('i18n_test_preferredlanguage_afterEach ' + currLang);
+        clearLang(currLang);
+        restoreLang();
     })
 
     afterAll(function(){
