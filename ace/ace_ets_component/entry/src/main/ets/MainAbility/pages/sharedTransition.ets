@@ -22,6 +22,7 @@ struct SharedTransitionExample {
   @State active: boolean = false
   @State duration: number = 1000
   @State delay: number = 0
+  @State type: SharedTransitionEffectType = SharedTransitionEffectType.Static
 
   build() {
     List() {
@@ -29,7 +30,7 @@ struct SharedTransitionExample {
         Row() {
           Navigator({ target: 'pages/sharedTransition2', type: NavigationType.Push }) {
             Image($rawfile('ic_health_heart.png')).width(50).height(50)
-              .sharedTransition('sharedImage1', { duration:this.duration , delay: this.delay })
+              .sharedTransition('sharedImage1', { duration:this.duration , delay: this.delay , type: this.type})
           }
           .key('Navigator')
           .padding({ left: 10 })
@@ -41,6 +42,7 @@ struct SharedTransitionExample {
                 data: {
                   "duration" : this.duration,
                   "delay" : this.delay,
+                  "type" : this.type
                 }
               }
               var backEvent = {
@@ -76,6 +78,9 @@ struct SharedTransitionExample {
       }
       if (eventData.data.delay != null) {
         this.delay = eventData.data.delay;
+      }
+      if (eventData.data.type != null) {
+        this.type = eventData.data.type;
       }
     }
   }

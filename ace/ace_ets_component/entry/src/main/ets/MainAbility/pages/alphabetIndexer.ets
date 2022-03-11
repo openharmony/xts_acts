@@ -24,10 +24,13 @@ struct AlphabetIndexerSample {
   @State fontWeight: FontWeight = FontWeight.Bolder;
   @State fontFamily: string = 'sans-serif';
   @State fontStyle: FontStyle = FontStyle.Italic;
+  @State offSetX: number = 10
+  @State offSetY: number = 10
 
   build() {
     AlphabetIndexer({ arrayValue: this.value, selected: 0 })
       .selectedColor(0xffffff)
+      .selectedIndex(0)
       .popupColor(0xFFFAF0)
       .selectedBackgroundColor(0xCCCCCC)
       .popupBackground(0xD2B48C)
@@ -36,8 +39,15 @@ struct AlphabetIndexerSample {
       .popupFont({ size: 30, weight: FontWeight.Bolder })
       .itemSize(28)
       .alignStyle(IndexerAlign.Left)
+      .popupPosition({offsetX: this.offSetX,offsetY: this.offSetY})
+      .onPopupSelected((index: number) =>{
+        console.info('index on action')
+      })
       .onSelected((index: number) => {
-        console.info(this.value[index] + '被选中了');
+        console.info(this.value[index] + 'is choosen');
+      })
+      .onRequestPopupData((index: number) =>{
+        return this.value
       })
       .margin({ left: 50 })
       .font({size: this.fontSize, weight: this.fontWeight, family: this.fontFamily, style: this.fontStyle })

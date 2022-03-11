@@ -58,6 +58,9 @@ struct FocusableExample {
           this.textThree = 'Third Button onFocus'
           this.threeButtonColor = '#AFEEEE'
         })
+        .onFocusMove(()=>{
+          console.info('on FocusMove Start!')
+        })
         .onBlur(() => {
           this.textThree = 'Third Button onBlur'
           this.threeButtonColor = '#FFC0CB'
