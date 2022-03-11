@@ -94,7 +94,6 @@ import rowJsunit from './RowJsunit.test.ets';
 import scrollBarJsunit from './ScrollBarJsunit.test.ets';
 import searchJsunit from './SearchJsunit.test.ets';
 import placementJsunit from './PlacementJsunit.test.ets';
-import animatorJsunit from './AnimatorJsunit.test.ets';
 import imageAnimatorJsunit from './ImageAnimatorJsunit.test.ets'
 import animationStatusJsunit from './AnimationStatusJsunit.test.ets';
 import curvesJsunit from './CurvesJsunit.test.ets';
@@ -218,7 +217,6 @@ export default function testsuite() {
   searchJsunit();
   scrollBarJsunit();
   placementJsunit();
-  animatorJsunit();
   imageAnimatorJsunit();
   animationStatusJsunit();
   curvesJsunit();
@@ -260,5 +258,5 @@ export default function testsuite() {
   GestureModeJsunit();
   PanDirectionJsunit();
   sideBarJsunit();
-  systemAppJsunit(); //此测试文件会终止APP运行，提代码请将文件放在此文件之前
+  systemAppJsunit();
 }
