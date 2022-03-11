@@ -63,10 +63,27 @@ export default function webSocketJsunit() {
     it('Telephony_WebSocket_WebSocketCloseOptions_code_0100', 0, async function (done) {
       console.log("************* Telephony_WebSocket_WebSocketCloseOptions_code_0100 Test start*************");
       let webSocketCloseOptions: webSocket.WebSocketCloseOptions = {
-        code: 1
+        code: 1,
+        reason: "test reason"
       }
       expect(webSocketCloseOptions.code === 1).assertTrue();
       console.log("************* Telephony_WebSocket_WebSocketCloseOptions_code_0100 Test end*************");
+      done();
+    })
+
+    /*
+     * @tc.number    : Telephony_WebSocket_WebSocketCloseOptions_reason_0100
+     * @tc.name      : webSocketCloseOptions.reason
+     * @tc.desc      : webSocketCloseOptions.reason
+     */
+    it('Telephony_WebSocket_WebSocketCloseOptions_reason_0100', 0, async function (done) {
+      console.log("************* Telephony_WebSocket_WebSocketCloseOptions_reason_0100 Test start*************");
+      let webSocketCloseOptions: webSocket.WebSocketCloseOptions = {
+        code: 1,
+        reason: "test reason"
+      }
+      expect(webSocketCloseOptions.reason).assertEqual("test reason");
+      console.log("************* Telephony_WebSocket_WebSocketCloseOptions_reason_0100 Test end*************");
       done();
     })
 
@@ -229,6 +246,91 @@ export default function webSocketJsunit() {
     })
 
     /*
+     * @tc.number    : Telephony_WebSocket_WebSocket_close_0100
+     * @tc.name      : close
+     * @tc.desc      : Closes a WebSocket connection.
+     */
+    it('Telephony_WebSocket_WebSocket_close_0100', 0, async function (done) {
+      console.log("************* Telephony_WebSocket_WebSocket_close_0100 Test start*************");
+      let caseName = "Telephony_WebSocket_WebSocket_close_0100"
+      if (utils.notCheck) {
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      webSocket.close((error, data) => {
+        if (error) {
+          console.log(`${caseName} error, case success,error:${toString(error)}`);
+          done();
+          return;
+        }
+        expect().assertFail();
+        console.log(`${caseName} error, case failed,data:${toString(data)}`);
+        done();
+      })
+      console.log("************* Telephony_WebSocket_WebSocket_close_0100 Test end*************");
+      done();
+    })
+
+    /*
+     * @tc.number    : Telephony_WebSocket_WebSocket_close_0200
+     * @tc.name      : close
+     * @tc.desc      : Closes a WebSocket connection.
+     */
+    it('Telephony_WebSocket_WebSocket_close_0200', 0, async function (done) {
+      console.log("************* Telephony_WebSocket_WebSocket_close_0200 Test start*************");
+      let caseName = "Telephony_WebSocket_WebSocket_close_0200"
+      if (utils.notCheck) {
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      let webSocketCloseOptions: webSocket.WebSocketCloseOptions = {
+        code: 1,
+        reason: "test reason"
+      }
+      webSocket.close(webSocketCloseOptions, (error, data) => {
+        if (error) {
+          console.log(`${caseName} error, case success,error:${toString(error)}`);
+          done();
+          return;
+        }
+        expect().assertFail();
+        console.log(`${caseName} error, case failed,data:${toString(data)}`);
+        done();
+      })
+      console.log("************* Telephony_WebSocket_WebSocket_close_0200 Test end*************");
+      done();
+    })
+
+    /*
+     * @tc.number    : Telephony_WebSocket_WebSocket_close_0300
+     * @tc.name      : close
+     * @tc.desc      : Closes a WebSocket connection.
+     */
+    it('Telephony_WebSocket_WebSocket_close_0300', 0, async function (done) {
+      console.log("************* Telephony_WebSocket_WebSocket_close_0300 Test start*************");
+      let caseName = "Telephony_WebSocket_WebSocket_close_0300"
+      if (utils.notCheck) {
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      let webSocketCloseOptions: webSocket.WebSocketCloseOptions = {
+        code: 1,
+        reason: "test reason"
+      }
+      webSocket.close(webSocketCloseOptions).then(data => {
+        expect(true).assertTrue();
+        console.log(`${caseName} success,data:${toString(data)}`);
+      }).catch((error) => {
+        console.log(`${caseName} failed,error:${toString(error)}`);
+      })
+      console.log("************* Telephony_WebSocket_WebSocket_close_0300 Test end*************");
+      done();
+    })
+
+    /*
      * @tc.number    : Telephony_WebSocket_WebSocket_on_open_0100
      * @tc.name      : on
      * @tc.desc      : Enables listening for the open events of a WebSocket connection.
@@ -236,7 +338,7 @@ export default function webSocketJsunit() {
     it('Telephony_WebSocket_WebSocket_on_open_0100', 0, async function (done) {
       console.log("************* Telephony_WebSocket_WebSocket_on_open_0100 Test start*************");
       let caseName = "Telephony_WebSocket_WebSocket_on_open_0100"
-      try{
+      try {
         webSocket.on("open", (error, data) => {
           if (error) {
             console.log(`${caseName} error, case success,error:${toString(error)}`);
@@ -249,7 +351,7 @@ export default function webSocketJsunit() {
         });
         expect(true).assertTrue();
         done();
-      }catch(err){
+      } catch (err) {
         expect(true).assertTrue();
         console.log(`${caseName} error, catch error:${toString(err)}`);
         done();

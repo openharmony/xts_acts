@@ -606,8 +606,8 @@ export default function callJsunit(){
     it('Telephony_Call_CallAttributeOptions_CallId', 0, function (done) {
       let caseName = 'Telephony_Call_CallAttributeOptions_CallId';
       console.log(`==========> ${caseName} Test start ==========>`);
-      let callAttributeOptions = {call:1};
-      expect(callAttributeOptions.call === 1).assertTrue();
+      let callAttributeOptions = {callId:1};
+      expect(callAttributeOptions.callId === 1).assertTrue();
       console.log(`==========> ${caseName} Test end ==========>`);
       done();
     });

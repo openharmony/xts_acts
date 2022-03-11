@@ -122,6 +122,39 @@ export default function radioSecondJsunit() {
       });
     })
 
+   /**
+     * @tc.number  Telephony_NetworkSearch_NetworkState_Async_0100
+     * @tc.name    Test getNrOptionMode() to check the callback result
+     * @tc.desc    Function test
+     */
+    it('Telephony_NetworkSearch_NetworkState_Async_0100', 0, async function (done) {
+      if (utils.notCheck) {
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      radio.getNetworkState((err, data) => {
+        if (err) {
+          console.log(`Telephony_NetworkSearch_NetworkState_Async_0100 get fail err: ${err}`);
+          expect().assertFail();
+          done();
+          return;
+        }
+        console.log(`Telephony_NetworkSearch_NetworkState_Async_0100 end data: ${JSON.stringify(data)}`);
+        if (true) {
+          console.log(`Telephony_NetworkSearch_getNrOptionMode_Async_0100 1`);
+          expect(true).assertTrue();
+          done();
+          return;
+        } else {
+          expect(NROPTION_MODE).assertContain(data);
+          expect(NROPTION_MODE).assertContain(data.cfgTech);
+          done();
+        }
+      });
+    })
+
+
     /**
      * @tc.number  Telephony_NetworkSearch_getNetworkSearchInformation_Async_0100
      * @tc.name    Test the getNetworkSearchInformation() query function and set the slotId parameter input to 0,
@@ -185,6 +218,8 @@ export default function radioSecondJsunit() {
           expect(data[i].data.earfcn >= CELL_INFO_MIN && data[i].data.earfcn <= CELL_EARFCN_MAX).assertTrue();
           expect(data[i].data.pci >= CELL_INFO_MIN && data[i].data.pci <= CELL_PCI_MAX).assertTrue();
           expect(data[i].data.mnc >= CELL_INFO_MIN && data[i].data.mnc <= CELL_MNC_MAX).assertTrue();
+          expect(data[i].data.bandwidth >= CELL_INFO_MIN && data[i].data.bandwidth <= CELL_MNC_MAX).assertTrue();
+          expect(data[i].data.isSupportEndc >= CELL_INFO_MIN && data[i].data.isSupportEndc <= CELL_MNC_MAX).assertTrue();
           expect(data[i].data.mcc).assertEqual(CELL_MCC);
         } else if (data[i].networkType === radio.NETWORK_TYPE_WCDMA) {
           expect(data[i].data.lac >= CELL_INFO_MIN && data[i].data.lac <= CELL_LAC_TAC_MAX).assertTrue();
@@ -192,6 +227,7 @@ export default function radioSecondJsunit() {
           expect(data[i].data.uarfcn >= CELL_INFO_MIN && data[i].data.uarfcn <= CELL_ARFCN_MAX).assertTrue();
           expect(data[i].data.psc >= CELL_INFO_MIN && data[i].data.psc <= CELL_PSC_MAX).assertTrue();
           expect(data[i].data.mnc >= CELL_INFO_MIN && data[i].data.mnc <= CELL_MNC_MAX).assertTrue();
+          expect(data[i].data.cpid >= CELL_INFO_MIN && data[i].data.cpid <= CELL_MNC_MAX).assertTrue();
           expect(data[i].data.mcc).assertEqual(CELL_MCC);
         } else if (data[i].networkType === radio.NETWORK_TYPE_GSM) {
           expect(data[i].data.lac >= CELL_INFO_MIN && data[i].data.lac <= CELL_LAC_TAC_MAX).assertTrue();
@@ -200,9 +236,22 @@ export default function radioSecondJsunit() {
           expect(data[i].data.bsic >= CELL_INFO_MIN && data[i].data.bsic <= CELL_BSIC_MAX).assertTrue();
           expect(data[i].data.mnc >= CELL_INFO_MIN && data[i].data.mnc <= CELL_MNC_MAX).assertTrue();
           expect(data[i].data.mcc).assertEqual(CELL_MCC);
+        } else if (data[i].networkType === radio.NETWORK_TYPE_TDSCDMA) {
+          expect(data[i].data.baseId >= CELL_INFO_MIN && data[i].data.baseId <= CELL_LAC_TAC_MAX).assertTrue();
+          expect(data[i].data.latitude >= CELL_INFO_MIN && data[i].data.latitude <= CELL_GSM_CELLID_MAX).assertTrue();
+          expect(data[i].data.longitude >= CELL_INFO_MIN && data[i].data.longitude <= CELL_ARFCN_MAX).assertTrue();
+          expect(data[i].data.bsic >= CELL_INFO_MIN && data[i].data.bsic <= CELL_BSIC_MAX).assertTrue();
+          expect(data[i].data.nid >= CELL_INFO_MIN && data[i].data.nid <= CELL_MNC_MAX).assertTrue();
+          expect(data[i].data.mcc).assertEqual(CELL_MCC);
+      } else if (data[i].networkType === radio.NETWORK_TYPE_NR) {
+          expect(data[i].data.nrArfcn >= CELL_INFO_MIN && data[i].data.nrArfcn <= CELL_LAC_TAC_MAX).assertTrue();
+          expect(data[i].data.tac >= CELL_INFO_MIN && data[i].data.tac <= CELL_GSM_CELLID_MAX).assertTrue();
+          expect(data[i].data.nci >= CELL_INFO_MIN && data[i].data.nci <= CELL_ARFCN_MAX).assertTrue();
+          expect(data[i].data.mcc).assertEqual(CELL_MCC);
         } else {
           expect().assertFail();
         }
+
       }
     }
   })

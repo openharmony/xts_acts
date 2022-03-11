@@ -171,8 +171,6 @@ export default function requestMethodJsunit() {
       }
     });
 
-
-
     /**
      * @tc.number Telephony_http_HttpRequestMethod_POST_0100
      * @tc.name HttpRequestMethod::POST
@@ -339,6 +337,89 @@ export default function requestMethodJsunit() {
         done();
       }
     });
+
+
+
+
+
+    /**
+     * @tc.number Telephony_http_HttpRequestMethod_PUT_0100
+     * @tc.name HttpRequestMethod::PUT
+     * @tc.desc Test Test HttpRequestMethod property.
+     */
+
+    it("Telephony_http_HttpRequestMethod_PUT_0100", 0, async function (done) {
+      var casename = "Telephony_http_HttpRequestMethod_0500"
+      console.log("-----------------------HttpRequestMethod_PUT Test is starting-----------------------");
+      try {
+        let httpRequestOptions = {
+          method: "PUT",
+          extraData: null,
+          header: "content-type': 'application/json",
+          readTimeout: 60,
+          connectTimeout: 60
+        }
+        var httpRequest = http.createHttp();
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
+        httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
+          console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
+          expect(data.getResponseCode = 200).assertTrue();
+          console.log("-----------------------HttpRequestMethod_PUT Test end-----------------------");
+          done();
+        });
+      } catch (error) {
+        console.log("Telephony_http_HttpRequestMethod_PUT_0100 : error = " + error);
+        done();
+      }
+    });
+
+
+
+    /**
+     * @tc.number Telephony_http_HttpRequestMethod_PUT_0200
+     * @tc.name HttpRequestMethod::PUT
+     * @tc.desc Test Test HttpRequestMethod property.
+     */
+
+    it("Telephony_http_HttpRequestMethod_PUT_0200", 0, async function (done) {
+      var casename = "Telephony_http_HttpRequestMethod_0500"
+      console.log("-----------------------HttpRequestMethod_PUT_01 Test is starting-----------------------");
+      try {
+        let httpRequestOptions = {
+          method: "PUT",
+          extraData: null,
+          header: "content-type': 'application/json",
+          readTimeout: 60,
+          connectTimeout: 60
+        }
+        var httpRequest = http.createHttp();
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
+        httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
+          console.log(casename + JSON.stringify(data));
+          expect(data.getResponseCode = 200).assertTrue();
+          console.log("-----------------------HttpRequestMethod_PUT_01 Test end-----------------------");
+          done();
+        }).catch(error => {
+          console.info(casename+"errocode" + JSON.stringify(error));
+          done();
+        });
+      } catch (error) {
+        console.log("Telephony_http_HttpRequestMethod_PUT_0200 : error = " + error);
+        done();
+      }
+    });
+
+
+
+
 
 
   })

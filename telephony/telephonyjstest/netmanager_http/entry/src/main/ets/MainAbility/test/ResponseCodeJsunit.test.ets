@@ -450,6 +450,142 @@ export default function responseCodeJsunit() {
     });
 
 
+    /**
+     * @tc.number Telephony_Http_ResponseCode_CREATED_0100
+     * @tc.name ResponseCode::CREATED
+     * @tc.desc Test Test ResponseCode property.
+     */
+
+    it("Telephony_Http_ResponseCode_CREATED_0100", 0, async function (done) {
+      console.log("-----------------------ResponseCode CREATED Test is starting-----------------------");
+      try {
+        expect(201).assertEqual(http.ResponseCode.CREATED);
+        console.log("-----------------------ResponseCode CREATED Test end-----------------------");
+        done();
+      } catch (error) {
+        console.log("Telephony_Http_ResponseCode_CREATED_0100 : error = " + error);
+        done();
+      }
+    });
+
+
+    /**
+     * @tc.number Telephony_Http_ResponseCode_PARTIAL_0100
+     * @tc.name ResponseCode::PARTIAL
+     * @tc.desc Test Test ResponseCode property.
+     */
+
+    it("Telephony_Http_ResponseCode_PARTIAL_0100", 0, async function (done) {
+      console.log("-----------------------ResponseCode PARTIAL Test is starting-----------------------");
+      try {
+        expect(206).assertEqual(http.ResponseCode.PARTIAL);
+        console.log("-----------------------ResponseCode PARTIAL Test end-----------------------");
+        done();
+      } catch (error) {
+        console.log("Telephony_Http_ResponseCode_PARTIAL_0100 : error = " + error);
+        done();
+      }
+    });
+
+
+    /**
+     * @tc.number Telephony_Http_ResponseCode_MOVED_TEMP_0100
+     * @tc.name ResponseCode::MOVED_TEMP
+     * @tc.desc Test Test ResponseCode property.
+     */
+
+    it("Telephony_Http_ResponseCode_MOVED_TEMP_0100", 0, async function (done) {
+      console.log("-----------------------ResponseCode MOVED_TEMP Test is starting-----------------------");
+      try {
+        expect(302).assertEqual(http.ResponseCode.MOVED_TEMP);
+        console.log("-----------------------ResponseCode MOVED_TEMP Test end-----------------------");
+        done();
+      } catch (error) {
+        console.log("Telephony_Http_ResponseCode_MOVED_TEMP_0100 : error = " + error);
+        done();
+      }
+    });
+
+
+    /**
+     * @tc.number Telephony_Http_ResponseCode_NOT_FOUND_0100
+     * @tc.name ResponseCode::NOT_FOUND
+     * @tc.desc Test Test ResponseCode property.
+     */
+
+    it("Telephony_Http_ResponseCode_NOT_FOUND_0100", 0, async function (done) {
+      console.log("-----------------------ResponseCode NOT_FOUND Test is starting-----------------------");
+      try {
+        expect(404).assertEqual(http.ResponseCode.NOT_FOUND);
+        console.log("-----------------------ResponseCode NOT_FOUND Test end-----------------------");
+        done();
+      } catch (error) {
+        console.log("Telephony_Http_ResponseCode_NOT_FOUND_0100 : error = " + error);
+        done();
+      }
+    });
+
+
+
+    /**
+     * @tc.number Telephony_Http_ResponseCode_CONFLICT_0100
+     * @tc.name ResponseCode::CONFLICT
+     * @tc.desc Test Test ResponseCode property.
+     */
+
+    it("Telephony_Http_ResponseCode_CONFLICT_0100", 0, async function (done) {
+      console.log("-----------------------ResponseCode CONFLICT Test is starting-----------------------");
+      try {
+        expect(409).assertEqual(http.ResponseCode.CONFLICT);
+        console.log("-----------------------ResponseCode CONFLICT Test end-----------------------");
+        done();
+      } catch (error) {
+        console.log("Telephony_Http_ResponseCode_CONFLICT_0100 : error = " + error);
+        done();
+      }
+    });
+
+
+
+
+    /**
+     * @tc.number Telephony_Http_ResponseCode_GONE_0100
+     * @tc.name ResponseCode::GONE
+     * @tc.desc Test Test ResponseCode property.
+     */
+
+    it("Telephony_Http_ResponseCode_GONE_0100", 0, async function (done) {
+      console.log("-----------------------ResponseCode GONE Test is starting-----------------------");
+      try {
+        expect(410).assertEqual(http.ResponseCode.GONE);
+        console.log("-----------------------ResponseCode GONE Test end-----------------------");
+        done();
+      } catch (error) {
+        console.log("Telephony_Http_ResponseCode_GONE_0100 : error = " + error);
+        done();
+      }
+    });
+
+
+    /**
+     * @tc.number Telephony_Http_ResponseCode_UNAVAILABLE_0100
+     * @tc.name ResponseCode::UNAVAILABLE
+     * @tc.desc Test Test ResponseCode property.
+     */
+
+    it("Telephony_Http_ResponseCode_UNAVAILABLE_0100", 0, async function (done) {
+      console.log("-----------------------ResponseCode UNAVAILABLE Test is starting-----------------------");
+      try {
+        expect(503).assertEqual(http.ResponseCode.UNAVAILABLE);
+        console.log("-----------------------ResponseCode UNAVAILABLE Test end-----------------------");
+        done();
+      } catch (error) {
+        console.log("Telephony_Http_ResponseCode_UNAVAILABLE_0100 : error = " + error);
+        done();
+      }
+    });
+
+
   })
 
 };
