@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -246,7 +246,7 @@ describe('AudioDecoderMultiInstances', function () {
     it('SUB_MEDIA_AUDIO_DECODER_MULTIINSTANCE_0100', 0, async function (done) {
         console.info("case test multiple instances");
         let array = new Array();
-        for (let i = 0; i < 2; i += 1) {
+        for (let i = 0; i < 16; i += 1) {
             await media.createAudioDecoderByMime('audio/mp4a-latm').then((processor) => {
                 if (typeof(processor) != 'undefined') {
                     console.info("case create createAudioDecoder success: " + i);
@@ -256,9 +256,9 @@ describe('AudioDecoderMultiInstances', function () {
                 }
             }, failCallback).catch(failCatch);
         }
-        console.info('case has created 2 decoders');
+        console.info('case has created 16 decoders');
         console.info('case array: ' + array);
-        for (let j = 0; j < 2; j++) {
+        for (let j = 0; j < 16; j++) {
             resetParam();
             await array[j].reset().then(() => {
                 console.info("reset decoder " + j);
