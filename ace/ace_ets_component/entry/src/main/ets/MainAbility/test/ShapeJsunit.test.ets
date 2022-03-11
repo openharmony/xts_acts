@@ -665,6 +665,17 @@ export default function shapeJsunit() {
       expect(obj.$attrs.strokeDashArray[2]).assertEqual('4.000000vp');
       done();
     });
+
+    it('shapeTest_3000', 0, async function (done) {
+      console.info('shapeTest_3000 START');
+      await Utils.sleep(1000);
+      let strJson = getInspectorByKey('shape');
+      let obj = JSON.parse(strJson);
+      console.info("shapeTest_3000 component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.stroke).assertEqual('#FF000000');
+      await Utils.sleep(1000);
+      done();
+    });
   })
 }
 

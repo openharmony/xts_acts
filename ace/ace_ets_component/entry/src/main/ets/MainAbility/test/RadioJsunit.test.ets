@@ -16,43 +16,67 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
-import events_emitter from '@ohos.events.emitter';
 
-export default function progressJsunit() {
-  describe('progressTest', function () {
+export default function radioJsunit() {
+  describe('radioTest', function () {
     beforeEach(async function (done) {
       let options = {
-        uri: 'pages/progress',
+        uri: 'pages/radio',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get progress state success " + JSON.stringify(pages));
-        if (!("progress" == pages.name)) {
-          console.info("get progress state success " + JSON.stringify(pages.name));
+        console.info("get radio state success " + JSON.stringify(pages));
+        if (!("radio" == pages.name)) {
+          console.info("get radio state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await Utils.sleep(4000);
-          console.info("push progress page success " + JSON.stringify(result));
+          console.info("push radio page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push progress page error " + err);
+        console.error("push radio page error " + err);
       }
       done()
     });
 
     afterEach(async function () {
       await Utils.sleep(1000);
-      console.info("progress after each called");
+      console.info("radio after each called");
     });
 
-    it('testProgress_600', 0, async function (done) {
-      console.info('[testProgress_600] START');
+    it('testRadio_100', 0, async function (done) {
+      console.info('[testRadio_100] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('CPValue');
+      let strJson = getInspectorByKey('radio1');
       let obj = JSON.parse(strJson);
-      console.info("testProgress_600 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.width).assertEqual("100.000000vp");
-      console.info('testProgress_600 END');
+      console.info("testRadio_100_component obj is: " + JSON.stringify(obj));
+      expect(obj.$type).assertEqual('Radio');
+      expect(obj.$attrs.checked).assertEqual('true');
+      console.info('testRadio_100 END');
+      done();
+    });
+
+    it('testRadio_200', 0, async function (done) {
+      console.info('[testRadio_200] START');
+      await Utils.sleep(1000);
+      let strJson = getInspectorByKey('radio2');
+      let obj = JSON.parse(strJson);
+      console.info("testRadio_200_component obj is: " + JSON.stringify(obj));
+      expect(obj.$type).assertEqual('Radio');
+      expect(obj.$attrs.checked).assertEqual('false');
+      console.info('testRadio_200 END');
+      done();
+    });
+
+    it('testRadio_300', 0, async function (done) {
+      console.info('[testRadio_300] START');
+      await Utils.sleep(1000);
+      let strJson = getInspectorByKey('radio3');
+      let obj = JSON.parse(strJson);
+      console.info("testRadio_300_component obj is: " + JSON.stringify(obj));
+      expect(obj.$type).assertEqual('Radio');
+      expect(obj.$attrs.checked).assertEqual('false');
+      console.info('testRadio_300 END');
       done();
     });
   })

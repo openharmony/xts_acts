@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function textJsunit() {
-  describe('appInfoTest', function () {
+  describe('testText', function () {
     beforeEach(async function (done) {
       console.info("text beforeEach start");
       let options = {
@@ -53,7 +53,7 @@ export default function textJsunit() {
       let obj = JSON.parse(strJson);
       console.info("testText_0100 component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.fontSize).assertEqual('9.000000fp');
+      expect(obj.$attrs.fontSize).assertEqual('9.00fp');
       console.info('testText_0100 END');
       done();
     });
@@ -95,25 +95,25 @@ export default function textJsunit() {
       let strJsonNew = getInspectorByKey('text');
       let objNew = JSON.parse(strJsonNew);
       console.info("testText_0300 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.fontSize).assertEqual('10.000000fp');
+      expect(objNew.$attrs.fontSize).assertEqual('10.00fp');
       console.info('testText_0300 END');
       done();
     });
 
-    it('testText_0700', 0, async function (done) {
-      console.info('testText_0700 START');
+    it('testText_0400', 0, async function (done) {
+      console.info('testText_0400 START');
       let strJson = getInspectorByKey('text');
-      console.info("testText_0700 component strJson:" + strJson);
+      console.info("testText_0400 component strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      console.info("testText_0700 component obj is: " + JSON.stringify(obj));
+      console.info("testText_0400 component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Text');
       expect(obj.$attrs.fontColor).assertEqual('#FF000000');
-      console.info('testText_0700 END');
+      console.info('testText_0400 END');
       done();
     });
 
-    it('testText_0800', 0, async function (done) {
-      console.info('testText_0800 START');
+    it('testText_0500', 0, async function (done) {
+      console.info('testText_0500 START');
       try {
         let eventData = {
           data: {
@@ -124,17 +124,102 @@ export default function textJsunit() {
           eventId: 198,
           priority: events_emitter.EventPriority.LOW
         } 
-        console.info("testText_0800 start to publish emit");
+        console.info("testText_0500 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testText_0800 change component data error: " + err.message);
+        console.log("testText_0500 change component data error: " + err.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('text');
       let objNew = JSON.parse(strJsonNew);
-      console.info("testText_0800 component objNew is: " + JSON.stringify(objNew));
+      console.info("testText_0500 component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.fontColor).assertEqual('#330A59F7');
+      console.info('testText_0500 END');
+      done();
+    });
+
+    it('testText_0600', 0, async function (done) {
+      console.info('testText_0600 START');
+      let strJson = getInspectorByKey('text');
+      console.info("testText_0600 component strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      console.info("testText_0600 component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');
+      console.info('testText_0600 END');
+      done();
+    });
+
+    it('testText_0700', 0, async function (done) {
+      console.info('testText_0700 START');
+      try {
+        let eventData = {
+          data: {
+            "textAlign": TextAlign.Center,
+          }
+        }
+        let indexEvent = {
+          eventId: 127,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testText_0700 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("testText_0700 change component data error: " + err.message);
+      }
+      await Utils.sleep(3000);
+      let strJsonNew = getInspectorByKey('text');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("testText_0700 component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.textAlign).assertEqual('TextAlign.Center');
+      console.info('testText_0700 END');
+      done();
+    });
+
+    it('testText_0800', 0, async function (done) {
+      console.info('testText_0800 START');
+      let strJson = getInspectorByKey('text');
+      console.info("testText_0800 component strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      console.info("testText_0800 component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.textOverflow).assertEqual('TextOverflow.Clip');
       console.info('testText_0800 END');
+      done();
+    });
+
+    it('testText_0900', 0, async function (done) {
+      console.info('testText_0900 START');
+      try {
+        let eventData = {
+          data: {
+            "textOverflow": TextOverflow.None,
+          }
+        }
+        let indexEvent = {
+          eventId: 129,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testText_0900 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("testText_0900 change component data error: " + err.message);
+      }
+      await Utils.sleep(3000);
+      let strJsonNew = getInspectorByKey('text');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("testText_0900 component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.textOverflow).assertEqual('TextOverflow.None');
+      console.info('testText_0900 END');
+      done();
+    });
+
+    it('testText_1000', 0, async function (done) {
+      console.info('testText_1000 START');
+      let strJson = getInspectorByKey('text');
+      console.info("testText_1000 component strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      console.info("testText_1000 component obj is: " + JSON.stringify(obj.$attrs.decoration));
+      expect(obj.$attrs.decoration).assertEqual("{\"type\":\"TextDecorationType.None\",\"color\":\"#FFFF0000\"}");
+      console.info('testText_1000 END');
       done();
     });
   })

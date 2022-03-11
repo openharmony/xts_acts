@@ -23,8 +23,8 @@ struct MarqueeExample {
   @State step: number = 50
   @State loop: number = 3
   @State src: string = "Running Marquee starts rolling"
-  @State onActionCalledOne: boolean = false;
-  @State onActionCalledTwo: boolean = false;
+  @State fontColor: Color = Color.Blue;
+  @State fontSize: number = 50;
   @State onActionCalledThree: boolean = false;
 
   build() {
@@ -37,20 +37,20 @@ struct MarqueeExample {
         src: this.src
       })
         .key('marquee')
-        .fontColor(Color.White)
-        .fontSize(50)
+        .fontColor(this.fontColor)
+        .colorBlend(Color.Green)
+        .fontSize(this.fontSize)
         .allowScale(false)
         .fontWeight(FontWeight.Bold)
         .backgroundColor(Color.Black)
         .margin({bottom:40})
         .onStart(() => {
           console.log('Marquee animation complete onStart')
-          this.onActionCalledOne = true;
-          console.info('Onstart current action state is: ' + this.onActionCalledOne);
+          console.info('Onstart current action state is: ' + this.fontColor);
           try {
             var backData = {
               data: {
-                "ACTION": this.onActionCalledOne,
+                "fontColor": this.fontColor,
               }
             }
             var backEvent = {
@@ -65,12 +65,11 @@ struct MarqueeExample {
         })
         .onBounce(() => {
           console.log('Marquee animation complete onBounce')
-          this.onActionCalledTwo = true;
-          console.info('Onbounce current action state is: ' + this.onActionCalledTwo);
+          console.info('Onbounce current action state is: ' + this.fontSize);
           try {
             var backData = {
               data: {
-                "ACTION": this.onActionCalledTwo,
+                "fontSize": this.fontSize,
               }
             }
             var backEvent = {

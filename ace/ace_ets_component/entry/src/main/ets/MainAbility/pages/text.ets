@@ -19,11 +19,17 @@ import events_emitter from '@ohos.emitter'
 struct TextExample {
   @State fontSize: number = 9;
   @State fontColor: string = "0xCCCCCC";
+  @State textAlign: TextAlign = TextAlign.Start;
+  @State textOverflow	: TextOverflow = TextOverflow.Clip;
+  @State decoration: TextDecorationType = TextDecorationType.None;
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween }) {
-      Text('lineHeight')
+      Text('lineHeightt')
         .fontSize(this.fontSize)
         .fontColor(this.fontColor)
+        .textAlign(this.textAlign)
+        .textOverflow({ overflow: this.textOverflow })
+        .decoration({ type: this.decoration, color:Color.Red })
         .key('text')
       Image($rawfile('test.png'))
         .key('image')
@@ -46,6 +52,18 @@ struct TextExample {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventOne, this.stateChangCallBack)
+
+    var stateChangeEventTwo = {
+      eventId: 127,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
+
+    var stateChangeEventThree = {
+      eventId: 129,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventThree, this.stateChangCallBack)
   }
 
   private stateChangCallBack = (eventData) => {
@@ -56,6 +74,12 @@ struct TextExample {
       }
       if (eventData.data.fontColor != null) {
         this.fontColor = eventData.data.fontColor;
+      }
+      if (eventData.data.textAlign != null) {
+        this.textAlign = parseInt(eventData.data.textAlign);
+      }
+      if (eventData.data.textOverflow != null) {
+        this.textOverflow = parseInt(eventData.data.textOverflow);
       }
     }
   }

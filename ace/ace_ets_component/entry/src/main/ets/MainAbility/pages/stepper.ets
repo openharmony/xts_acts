@@ -20,6 +20,7 @@ struct StepperExample {
   @State currentIndex: number = 0
   @State firstState: ItemState = ItemState.Normal
   @State secondState: ItemState = ItemState.Normal
+  @State disabled: ItemState = ItemState.Normal
 
   build() {
     Stepper({
@@ -108,6 +109,9 @@ struct StepperExample {
       console.info("stepper page state change called:" + JSON.stringify(eventData));
       if(eventData.data.currentIndex != null) {
         this.currentIndex = parseInt(eventData.data.currentIndex);
+      }
+      if(eventData.data.disabled != null) {
+        this.disabled = eventData.data.disabled;
       }
     }
   }

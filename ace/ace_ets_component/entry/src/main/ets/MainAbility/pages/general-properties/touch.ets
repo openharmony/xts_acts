@@ -68,10 +68,18 @@ struct TouchExample   {
             console.info("[touch] eventType is Move")
             this.touchFlag = true
           }
+          stopPropagation: () => {
+            console.info('stopPropagation')
+          }
           console.info('onTouch successful, touchFlag is : ' + this.eventType + ', ' +this.touchFlag)
           console.info(this.text = 'TouchType:' + this.eventType
           + '\nDistance between touch point and touch element:\nx: '
           + event.touches[0].x + '\n' + 'y: ' + event.touches[0].y + '\ncomponent globalPos：（'
+          + event.target.area.globalPos.x + ',' + event.target.area.globalPos.y + '）\nwidth:'
+          + event.target.area.width + '\nheight：' + event.target.area.height)
+          console.info(this.text = 'TouchType:' + this.eventType
+          + '\nDistance between touch point and touch element:\nx: '
+          + event.changedTouches[0].x + '\n' + 'y: ' + event.changedTouches[0].y + '\ncomponent globalPos：（'
           + event.target.area.globalPos.x + ',' + event.target.area.globalPos.y + '）\nwidth:'
           + event.target.area.width + '\nheight：' + event.target.area.height)
           console.log('fang--->A')

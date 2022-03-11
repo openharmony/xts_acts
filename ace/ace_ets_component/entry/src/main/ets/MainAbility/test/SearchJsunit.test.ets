@@ -51,7 +51,7 @@ export default function searchJsunit() {
       let strJson = getInspectorByKey('search');
       console.info("[testSearch001] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.searchButton).assertEqual('');
+      expect(obj.$attrs.textFont).assertEqual(10);
       done();
     });
 
@@ -61,7 +61,7 @@ export default function searchJsunit() {
       try {
         var eventData = {
           data: {
-            "searchButtonValue": 'abc'
+            "textFont": "5"
           }
         }
         var innerEvent = {
@@ -77,7 +77,43 @@ export default function searchJsunit() {
       let strJsonNew = getInspectorByKey('search');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testSearch002] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.searchButton).assertEqual('');
+      expect(objNew.$attrs.textFont).assertEqual('5');
+      done();
+    });
+
+    it('testSearch003', 0, async function (done) {
+      console.info('[testSearch003] START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('search');
+      console.info("[testSearch003] component strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      expect(obj.$attrs.searchButton).assertEqual('10');
+      done();
+    });
+
+    it('testSearch004', 0, async function (done) {
+      console.info('[testSearch004] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "searchButton": "5"
+          }
+        }
+        var innerEvent = {
+          eventId: 40,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testSearch004] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testSearch004] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJsonNew = getInspectorByKey('search');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("[testSearch004] component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.searchButton).assertEqual('5');
       done();
     });
   })

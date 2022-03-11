@@ -85,7 +85,7 @@ export default function pageTransitionJsunit() {
         let eventData = {
           data: {
             "scale": 6,
-            "opacity": 5,
+            "opacity": 5
           }
         }
         let indexEvent = {
@@ -101,6 +101,7 @@ export default function pageTransitionJsunit() {
         console.info("pageTransitionTest_0400 get state result is: " + JSON.stringify(indexEventOne));
         expect(indexEventOne.data.scale).assertEqual(6);
         expect(indexEventOne.data.opacity).assertEqual(5);
+        expect(indexEventOne.data.type).assertEqual(RouteType.Pop);
       }
       let indexEventOne = {
         eventId: 96,
