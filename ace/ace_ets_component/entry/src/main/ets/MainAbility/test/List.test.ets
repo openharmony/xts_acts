@@ -258,5 +258,5 @@ export default function testsuite() {
   GestureModeJsunit();
   PanDirectionJsunit();
   sideBarJsunit();
-  systemAppJsunit(); //此测试文件会终止APP运行，提代码请将文件放在此文件之前
+  systemAppJsunit();
 }
