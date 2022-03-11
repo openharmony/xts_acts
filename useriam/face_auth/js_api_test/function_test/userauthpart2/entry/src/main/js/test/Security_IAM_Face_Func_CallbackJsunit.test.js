@@ -14,14 +14,14 @@
  */
 
 import {describe, it, expect} from 'deccjsunit/index'
-import userIAM from '@ohos.UserIAM.userAuth'
-import userIDM from '@ohos.useridm'
-import pinAuth from '@ohos.pinauth'
+import userAuth from '@ohos.userAuth'
+import userIDM from '@ohos.userIDM'
+import pinAuth from '@ohos.pinAuth'
 import * as publicFC from './Publicfunction-n.js'
 
 let UserIDM = userIDM.constructor()
 let PinAuth = pinAuth.constructor()
-let UserAuth = userIAM.constructor()
+let UserAuth = userAuth.constructor()
 
 let AuthType = {
     PIN : 1,
