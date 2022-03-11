@@ -86,6 +86,7 @@ export default function sharedTransitionJsunit() {
           data: {
             "duration": 2000,
             "delay": 5,
+            "type": SharedTransitionEffectType.Exchange
           }
         }
         let indexEvent = {
@@ -101,6 +102,7 @@ export default function sharedTransitionJsunit() {
         console.info("sharedTransitionTest_0400 get state result is: " + JSON.stringify(indexEventOne));
         expect(indexEventOne.data.duration).assertEqual(2000);
         expect(indexEventOne.data.delay).assertEqual(5);
+        expect(indexEventOne.data.type).assertEqual(SharedTransitionEffectType.Exchange);
       }
       let indexEventOne = {
         eventId: 556,

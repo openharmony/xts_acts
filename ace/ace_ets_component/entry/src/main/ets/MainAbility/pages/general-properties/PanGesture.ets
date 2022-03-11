@@ -85,6 +85,9 @@ struct PanGestureExample {
     })
     .gesture(
     PanGesture({})
+      .setDirection(PanDirection.All)
+      .setDistance(1)
+      .setFingers(1)
       .onActionStart((event: PanGestureEvent) => {
         console.info('Pan start')
       })

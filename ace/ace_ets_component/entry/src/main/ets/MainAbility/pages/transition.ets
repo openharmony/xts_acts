@@ -56,7 +56,7 @@ struct TransitionExample {
       if (this.btn1) {
         Button() {
           Image($rawfile('test.png')).width("80%").height(300).key('image')
-        }.transition({ type: this.transitionTypeOne, scale: {x:0,y:1.0} }).key('button1')
+        }.transition({ type: this.transitionTypeOne, scale: {x:0,y:1.0,z:1.0} }).key('button1')
         .transition({ type: this.transitionTypeTwo, scale: { x: 1.0, y: 0.0 } })
       }
     }.height(400).width("100%").padding({top:100})

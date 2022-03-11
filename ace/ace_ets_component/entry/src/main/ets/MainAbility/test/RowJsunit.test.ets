@@ -46,32 +46,68 @@ export default function rowJsunit() {
     });
 
     it('testRow_100', 0, async function (done) {
-      console.info('testRow_100 START');
-      let strJson1 = getInspectorByKey('LPValue');
-      let objLP = JSON.parse(strJson1);
-      console.info("testRow_100 component objLP is: " + objLP.$attrs.value);
+      console.info('[testRow_100] START');
       await Utils.sleep(1000);
-      try {
-        let eventData = {
-          data: {
-            "value": 100
-          }
-        }
-        var innerEvent = {
-          eventId: 55,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("testRow_100 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("testRow_100 change component data error: " + err.message);
-      }
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('LPValue');
+      let strJson = getInspectorByKey('Row');
       let obj = JSON.parse(strJson);
-      console.info("testRows_100 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.value).assertEqual("100.000000");
+      console.info("testRow_100 component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.align).assertEqual("Alignment.Center");
       console.info('testRow_100 END');
+      done();
+    });
+
+    it('testRow_200', 0, async function (done) {
+      console.info('[testRow_200] START');
+      await Utils.sleep(1000);
+      let strJson = getInspectorByKey('Row');
+      let obj = JSON.parse(strJson);
+      console.info("testRow_200 component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.direction).assertEqual("Direction.Ltr");
+      console.info('testRow_200 END');
+      done();
+    });
+
+    it('testRow_300', 0, async function (done) {
+      console.info('[testRow_300] START');
+      await Utils.sleep(1000);
+      let strJson = getInspectorByKey('Row');
+      let obj = JSON.parse(strJson);
+      console.info("testRow_300 component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.width).assertEqual("90.00%");
+      console.info('testRow_300 END');
+      done();
+    });
+
+    it('testRow_400', 0, async function (done) {
+      console.info('[testRow_400] START');
+      await Utils.sleep(1000);
+      let strJson = getInspectorByKey('Row');
+      let obj = JSON.parse(strJson);
+      console.info("testRow_400 component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Auto");
+      console.info('testRow_400 END');
+      done();
+    });
+
+    it('testRow_500', 0, async function (done) {
+      console.info('[testRow_500] START');
+      await Utils.sleep(1000);
+      let strJson = getInspectorByKey('Row');
+      let obj = JSON.parse(strJson);
+      console.info("testRow_500 component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.height).assertEqual("107.00vp");
+      console.info('testRow_500 END');
+      done();
+    });
+
+    it('testRow_600', 0, async function (done) {
+      console.info('[testRow_600] START');
+      await Utils.sleep(1000);
+      let strJson = getInspectorByKey('Row');
+      let obj = JSON.parse(strJson);
+      console.info("testRow_600 component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.borderStyle).assertEqual("BorderStyle.Solid");
+      console.info('testRow_600 END');
       done();
     });
   })

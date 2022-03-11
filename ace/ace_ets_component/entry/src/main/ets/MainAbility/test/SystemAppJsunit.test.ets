@@ -48,8 +48,48 @@ export default function systemAppJsunit() {
 
     it('systemAppTest_0400', 0, async function (done) {
       console.info('systemAppTest_0400 START');
-      app.terminate();
+      var a = 2000;
+      app.requestFullWindow(a);
       console.info('systemAppTest_0400 END');
+      done();
+    });
+
+    it('systemAppTest_0500', 0, async function (done) {
+      console.info('systemAppTest_0500 START');
+      var visible = true;
+      app.screenOnVisible(visible);
+      console.info('systemAppTest_0500 END');
+      done();
+    });
+
+    it('systemAppTest_0600', 0, async function (done) {
+      console.info('systemAppTest_0600 START');
+      var a = 100;
+      app.setImageCacheCount(a);
+      console.info('systemAppTest_0600 END');
+      done();
+    });
+
+    it('systemAppTest_0700', 0, async function (done) {
+      console.info('systemAppTest_0700 START');
+      var a = 104857600;
+      app.setImageRawDataCacheSize(a);
+      console.info('systemAppTest_0700 END');
+      done();
+    });
+
+    it('systemAppTest_0800', 0, async function (done) {
+      console.info('systemAppTest_0800 START');
+      var a = 1048;
+      app.setImageFileCacheSize(a);
+      console.info('systemAppTest_0800 END');
+      done();
+    });
+
+    it('systemAppTest_0900', 0, async function (done) {
+      console.info('systemAppTest_0900 START');
+      app.terminate();
+      console.info('systemAppTest_0900 END');
       done();
     });
   })

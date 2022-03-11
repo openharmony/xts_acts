@@ -68,6 +68,8 @@ struct CanvasExample {
               this.createImageData();
               this.createImageDataByImageData();
               this.getImageData();
+              this.getImageWidth();
+              this.getImageHeight();
               this.putImageData();
               this.createLinearGradient();
               this.createRadialGradient();
@@ -82,6 +84,7 @@ struct CanvasExample {
               this.textMetrics();
               this.getBitImageSize();
               this.rotate();
+              this.getPixelMap();
             })
             .key('canvas1')
         }.width('100%').height('350%')
@@ -368,7 +371,18 @@ struct CanvasExample {
   }
   getImageData() {
     let imageData = this.context.getImageData(10, 10, 80, 80);
-    console.info("[canvas] get image data-----" + JSON.stringify(imageData));
+    let data = imageData.data;
+    console.info("[canvas] get image data-----" + JSON.stringify(data));
+  }
+  getImageWidth() {
+    let imageData = this.context.getImageData(10, 10, 80, 80);
+    let width = imageData.width;
+    console.info("[canvas] get image width-----" + width);
+  }
+  getImageHeight() {
+    let imageData = this.context.getImageData(10, 10, 80, 80);
+    let height = imageData.height;
+    console.info("[canvas] get image height-----" + height);
   }
   putImageData() {
     let imageData = this.context.createImageData(80, 80);
@@ -445,5 +459,25 @@ struct CanvasExample {
     let img = new ImageBitmap('/images/img.jpeg');
     let width = img.width;
     let height = img.height;
+  }
+  filter() {
+    let img = new ImageBitmap('/images/img.jpeg');
+    this.context.filter('grayscale(50%)');
+    this.context.drawImage(img, 0, 0, 500, 500, 0, 2200, 200, 100);
+  }
+  getLineDash() {
+    this.context.beginPath();
+    this.context.setLineDash([10, 20]);
+    this.context.moveTo(250, 2220);
+    this.context.lineTo(400, 2220);
+    this.context.stroke();
+    let obj = this.context.getLineDash();
+  }
+  setPixelMap() {
+    this.context.setPixelMap();
+  }
+  getPixelMap() {
+    let pixelMap = this.context.getPixelMap(10, 10, 80, 80);
+    console.info("[canvas] getPixelMap ----" + JSON.stringify(pixelMap));
   }
 }

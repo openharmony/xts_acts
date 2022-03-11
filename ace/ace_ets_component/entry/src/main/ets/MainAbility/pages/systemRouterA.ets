@@ -15,6 +15,7 @@
 
 import router from '@system.router';
 
+
 @Entry
 @Component
 struct SystemRouterA {

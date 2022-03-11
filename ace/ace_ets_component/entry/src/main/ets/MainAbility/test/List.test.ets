@@ -48,6 +48,7 @@ import textJsunit from './TextJsunit.test.ets';
 import badgeJsunit from './BadgeJsunit.test.ets';
 import longPressGestureJsUnit from './LongPressGesture.test.ets';
 import buttonJsunit from './ButtonJsunit.test.ets';
+import globalJsunit from './GlobalJsunit.test.ets';
 import responseRegionJsunit from './general-properties/ResponseRegionJsunit.test.ets';
 import panGestureJsunit from './general-properties/PanGestureJsunit.test.ets';
 import tabsJsunit from './TabsJsunit.test.ets';
@@ -61,7 +62,7 @@ import columnJsunit from './ColumnJsunit.test.ets';
 import ratingJsunit from './RatingJsunit.test.ets';
 import canvas2Jsunit from './Canvas2Jsunit.test.ets';
 import toggleJsunit from './ToggleJsunit.test.ets';
-import shapeJsunit from './ShapeJsunit.test.ets'
+import shapeJsunit from './ShapeJsunit.test.ets';
 import motionPathJsunit from './MotionPathJsunit.test.ets';
 import scrollCodeJsunit from './ScrollCodeJsunit.test.ets';
 import transitionJsunit from './TransitionJsunit.test.ets';
@@ -92,6 +93,47 @@ import radioJsunit from './RadioJsunit.test.ets';
 import rowJsunit from './RowJsunit.test.ets';
 import scrollBarJsunit from './ScrollBarJsunit.test.ets';
 import searchJsunit from './SearchJsunit.test.ets';
+import placementJsunit from './PlacementJsunit.test.ets';
+import animatorJsunit from './AnimatorJsunit.test.ets';
+import imageAnimatorJsunit from './ImageAnimatorJsunit.test.ets'
+import animationStatusJsunit from './AnimationStatusJsunit.test.ets';
+import curvesJsunit from './CurvesJsunit.test.ets';
+import gradientDirectionJsunit from './GradientDirectionJsunit.test.ets';
+import enmusFlexAlignJsunit from './EnmusFlexAlignJsunit.test.ets';
+import ohosRouterJsunit from './OhosRouterJsnuit.test.ets';
+import flexDirectionJsunit from './FlexDirectionJsunit.test.ets';
+import flexWrapJsunit from './FlexWrapJsunit.test.ets';
+import datePickerJsunit from './DatePickerJsunit.test.ets';
+import enmusVerticalAlignJsunit from './EnmusVerticalAlignJsunit.test.ets';
+import enmusHorizontalAlignJsunit from './EnmusHorizontalAlignJsunit.test.ets';
+import direction2Jsunit from './direction2Jsunit.test.ets';
+import patternLockJsunit from './PatternLockJsunit.test.ets';
+import enumsImageJsunit from './EnmusImageJsunit.test.ets';
+import sliderJsunit from './sliderJsunit.test.ets'
+import edgeEffectJsunit from './EdgeEffectJsunit.test.ets'
+import checkboxJsunit from './CheckboxJsunit.test.ets';
+import checkboxGroupJsunit from './CheckboxGroupJsunit.test.ets';
+import customDialogControllerJsunit from './CustomDialogControllerJsunit.test.ets';
+import ohosMatrix4Jsunit from './OhosMatrix4Jsunit.test.ets';
+import ohosPromptJsunit from './OhosPromptJsunit.test.ets';
+import selectJsunit from './SelectJsunit.test.ets';
+import videoJsunit from './VideoJsunit.test.ets';
+import refreshJsunit from './RefreshJsunit.test.ets';
+import richTextJsunit from './RichTextJsunit.test.ets';
+import textPickerJsunit from './TextPickerJsunit.test.ets'
+import textTimerJsunit from './TextTimerJsunit.test.ets'
+import subscribedAbstractPropertyJsunit from './SubscribedAbstractPropertyJsunit.test.ets'
+import contentStorageJsunit from './ContentStorage.test.ets';
+import appStorageJsunit from './AppStorageJsunit.test.ets';
+import subscribaleAbstractJsunit from './SubscribaleAbstractJsunit.test.ets';
+import pathJsunit from './PathJsunit.test.ets';
+import enumsLineCapStyleJsunit from './EnmusLineCapStyleJsunit.test.ets';
+import enmusItemAlignJsunit from './EnmusItemAlignJsunit.test.ets'
+import fillModeJsunit from './FillModeJsunit.test.ets';
+import playModeJsunit from './PlayModeJsunit.test.ets';
+import SwipeDirectionJsunit from './SwipeDirectionJsunit.test.ets';
+import GestureModeJsunit from './GestureModeJsunit.test.ets';
+import PanDirectionJsunit from './PanDirectionJsunit.test.ets';
 
 export default function testsuite() {
   gaugeJsunit();
@@ -113,6 +155,7 @@ export default function testsuite() {
   appearJsunit();
   overlayJsunit();
   visibilityJsunit();
+  globalJsunit();
   ZIndexJsunit();
   touchAbleJsunit();
   shapeClippingJsunit();
@@ -173,5 +216,47 @@ export default function testsuite() {
   pieceJsunit();
   searchJsunit();
   scrollBarJsunit();
-  systemAppJsunit();
+  placementJsunit();
+  animatorJsunit();
+  imageAnimatorJsunit();
+  animationStatusJsunit();
+  curvesJsunit();
+  gradientDirectionJsunit();
+  enmusFlexAlignJsunit();
+  flexDirectionJsunit();
+  datePickerJsunit();
+  flexWrapJsunit();
+  enmusVerticalAlignJsunit();
+  enmusHorizontalAlignJsunit();
+  ohosRouterJsunit();
+  direction2Jsunit();
+  patternLockJsunit();
+  enumsImageJsunit();
+  sliderJsunit();
+  edgeEffectJsunit();
+  checkboxJsunit();
+  checkboxGroupJsunit();
+  customDialogControllerJsunit();
+  selectJsunit();
+  ohosMatrix4Jsunit();
+  ohosPromptJsunit();
+  videoJsunit();
+  richTextJsunit();
+  refreshJsunit();
+  searchJsunit();
+  textPickerJsunit();
+  textTimerJsunit();
+  subscribedAbstractPropertyJsunit();
+  contentStorageJsunit();
+  appStorageJsunit();
+  subscribaleAbstractJsunit();
+  pathJsunit();
+  enumsLineCapStyleJsunit();
+  enmusItemAlignJsunit();
+  fillModeJsunit();
+  playModeJsunit();
+  SwipeDirectionJsunit();
+  GestureModeJsunit();
+  PanDirectionJsunit();
+  systemAppJsunit(); //此测试文件会终止APP运行，提代码请将文件放在此文件之前
 }

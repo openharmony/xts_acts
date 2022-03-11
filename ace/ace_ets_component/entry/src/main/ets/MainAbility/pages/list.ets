@@ -98,9 +98,14 @@ struct ListExample {
         .divider({ strokeWidth: this.strokeWidth, color: this.color, startMargin: this.startMargin, endMargin: this.endMargin })
         .edgeEffect(this.edgeEffect)
         .chainAnimation(this.chainAnimation)
+        .multiSelectable(true)
         .onScrollIndex((firstIndex: number, lastIndex: number) => {
           console.info('first' + firstIndex)
           console.info('last' + lastIndex)
+        })
+        .onScroll((scrollOffset: number, scrollState: ScrollState) => {
+          console.info('scrollOffset:' + scrollOffset)
+          console.info('scrollState:' + scrollState)
         })
         .editMode(this.editMode)
         .onItemDelete((index: number) => {

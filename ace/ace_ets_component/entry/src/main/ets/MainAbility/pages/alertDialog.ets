@@ -24,6 +24,11 @@ struct AlertDialogExample {
             {
               title: 'title',
               message: 'text',
+              alignment: DialogAlignment.Center,
+              offset: {
+                dx: 100,
+                dy: 100
+              },
               confirm: {
                 value: 'button',
                 action: () => {

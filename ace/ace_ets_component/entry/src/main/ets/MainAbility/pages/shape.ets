@@ -18,7 +18,7 @@ import events_emitter from '@ohos.emitter'
 @Entry
 @Component
 struct ShapeExample {
-  @State strokeDashOffset: numbert = 0;
+  @State strokeDashOffset: number = 0;
   @State strokeLineCap: LineCapStyle = LineCapStyle.Butt;
   @State strokeLineJoin: LineJoinStyle = LineJoinStyle.Miter;
   @State strokeMiterLimit: number = 4;
@@ -27,6 +27,7 @@ struct ShapeExample {
   @State antiAlias: boolean = true;
   @State strokeDashArray: Array<Length> = [20];
   @State fillOpacity: number = 0;
+  @State strokeValue: Color = '#FF000000';
 
   private stateChangCallBack = (eventData) => {
     if (eventData != null) {
@@ -61,6 +62,9 @@ struct ShapeExample {
       if (eventData.data.strokeDashArrayThree != null) {
         this.strokeDashArray[2] = parseInt(eventData.data.strokeDashArrayThree);
       }
+      if (eventData.data.stroke != null) {
+        this.stroke = eventData.data.stroke;
+      }
     }
   }
 
@@ -84,7 +88,7 @@ struct ShapeExample {
       .key('shape')
       .viewPort({ x: -2, y: -2, width: 304, height: 130 })
       .fill(0x317Af7)
-      .stroke(Color.Black)
+      .stroke(this.strokeValue)
       .strokeDashArray(this.strokeDashArray)
       .strokeDashOffset(this.strokeDashOffset)
       .strokeLineCap(this.strokeLineCap)
@@ -94,6 +98,7 @@ struct ShapeExample {
       .strokeWidth(this.strokeWidth)
       .antiAlias(this.antiAlias)
       .fillOpacity(this.fillOpacity)
+      .mesh([],1,1)
     }.width('100%').margin({ top: 15 })
   }
 }

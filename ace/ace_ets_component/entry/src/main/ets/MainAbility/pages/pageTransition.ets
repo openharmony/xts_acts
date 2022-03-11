@@ -38,6 +38,7 @@ struct PageTransitionExample1 {
             data: {
               "scale" : this.scale,
               "opacity" : this.opacity,
+              "type": this.type
             }
           }
           var backEvent = {
@@ -86,9 +87,6 @@ struct PageTransitionExample1 {
       if (eventData.data.opacity != null) {
         this.opacity = parseInt(eventData.data.opacity);
       }
-      if (eventData.data.type != null) {
-        this.type = eventData.data.type;
-     }
     }
   }
 }

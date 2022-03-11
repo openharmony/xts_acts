@@ -33,6 +33,15 @@ struct ClickExample {
           if (event.type === TouchType.Move) {
             this.eventType = 'Move'
           }
+          if (event.source === Unknown) {
+            this.SourceType = 'Unknown'
+          }
+          if (event.source === Mouse) {
+            this.SourceType = 'Mouse'
+          }
+          if (event.type === TouchScreen) {
+            this.SourceType = 'TouchScreen'
+          }
           console.info(this.text = 'source：' + event.source);
           try {
             var backData = {

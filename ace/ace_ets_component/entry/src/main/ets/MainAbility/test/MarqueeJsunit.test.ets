@@ -66,7 +66,7 @@ export default function marqueeJsunit() {
       await Utils.sleep(1000);
       var callback1 = (eventData) => {
         console.info("testMarquee_0100 get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.ACTION).assertEqual(true);
+        expect(eventData.data.fontColor).assertEqual(Color.Blue);
       }
       var innerEventOne = {
         eventId: 11,
@@ -101,7 +101,7 @@ export default function marqueeJsunit() {
       await Utils.sleep(1000);
       var callback1 = (eventData) => {
         console.info("testMarquee_0200 get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.ACTION).assertEqual(true);
+        expect(eventData.data.fontSize).assertEqual(50);
       }
       var innerEventOne = {
         eventId: 15,

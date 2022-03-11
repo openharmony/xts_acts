@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter'
-
 @Entry
 @Component
 struct RadioExample {
@@ -25,6 +23,7 @@ struct RadioExample {
         Radio({ value: 'Radio1', group: 'radioGroup' }).checked(true)
           .height(50)
           .width(50)
+          .key('radio1')
           .onChange((value: boolean) => {
             console.log('Radio1 status is ' + value)
           })
@@ -34,6 +33,7 @@ struct RadioExample {
         Radio({ value: 'Radio2', group: 'radioGroup' }).checked(false)
           .height(50)
           .width(50)
+          .key('radio2')
           .onChange((value: boolean) => {
             console.log('Radio2 status is ' + value)
           })
@@ -43,6 +43,7 @@ struct RadioExample {
         Radio({ value: 'Radio3', group: 'radioGroup' }).checked(false)
           .height(50)
           .width(49)
+          .key('radio3')
           .onChange((value: boolean) => {
             console.log('Radio3 status is ' + value)
           })
