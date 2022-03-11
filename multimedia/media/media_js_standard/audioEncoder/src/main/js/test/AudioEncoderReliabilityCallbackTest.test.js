@@ -56,7 +56,7 @@ describe('AudioEncoderSTTCallback', function () {
     let mediaDescription = {
                 "channel_count": 1,
                 "sample_rate": 48000,
-                "audio_raw_format": 16,
+                "audio_sample_format": 3,
     };
 
     beforeAll(function() {
@@ -368,7 +368,7 @@ describe('AudioEncoderSTTCallback', function () {
             }
             timestamp += 23;
             frameCnt += 1;
-            audioEncodeProcessor.queueInput(inputobject, () => {
+            audioEncodeProcessor.pushInputData(inputobject, () => {
                 console.info('queueInput success');
             })
         }
@@ -390,7 +390,7 @@ describe('AudioEncoderSTTCallback', function () {
                 writeFile(savepath, outputobject.data, outputobject.length);
                 console.info("write to file success");
             }
-            audioEncodeProcessor.releaseOutput(outputobject, () => {
+            audioEncodeProcessor.freeOutputBuffer(outputobject, () => {
                 console.info('release output success');
             })
         }
@@ -398,12 +398,12 @@ describe('AudioEncoderSTTCallback', function () {
 
     function setCallback(savepath, done) {
         console.info('case callback');
-        audioEncodeProcessor.on('inputBufferAvailable', async(inBuffer) => {
+        audioEncodeProcessor.on('needInputData', async(inBuffer) => {
             console.info('case inputBufferAvailable');
             inputQueue.push(inBuffer);
             await enqueueAllInputs(inputQueue);
         });
-        audioEncodeProcessor.on('outputBufferAvailable', async(outBuffer) => {
+        audioEncodeProcessor.on('newOutputData', async(outBuffer) => {
             console.info('case outputBufferAvailable');
             if (needGetMediaDes) {
                 audioEncodeProcessor.getOutputMediaDescription((err, MediaDescription) => {
@@ -419,7 +419,7 @@ describe('AudioEncoderSTTCallback', function () {
         audioEncodeProcessor.on('error',(err) => {
             console.info('case error called,errName is' + err);
         });
-        audioEncodeProcessor.on('outputFormatChanged',(format) => {
+        audioEncodeProcessor.on('streamChanged',(format) => {
             console.info('case Output format changed: ' + format);
         });
     }

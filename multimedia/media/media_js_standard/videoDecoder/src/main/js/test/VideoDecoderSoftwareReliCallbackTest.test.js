@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -197,7 +197,7 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
             } else {
                 inputObject.flags = 4;
             }
-            videoDecodeProcessor.queueInput(inputObject, (err) => {
+            videoDecodeProcessor.pushInputData(inputObject, (err) => {
                 console.info('in case: queueInput success ');
             })
         }
@@ -215,7 +215,7 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
                 return;
             }
             frameCountOut++;
-            videoDecodeProcessor.releaseOutput(outputObject, true, () => {
+            videoDecodeProcessor.renderOutputData(outputObject, () => {
                 console.log('in case: release output count:' + frameCountOut);
             })
         }
@@ -398,13 +398,13 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
     }
 
     function setCallback(nextStep){
-        videoDecodeProcessor.on('inputBufferAvailable', async (inBuffer) => {
+        videoDecodeProcessor.on('needInputData', async (inBuffer) => {
             console.info('in case: inputBufferAvailable inBuffer.index: '+ inBuffer.index);
             inputQueue.push(inBuffer);
             await enqueueInputs();
         });
 
-        videoDecodeProcessor.on('outputBufferAvailable', async (outBuffer) => {
+        videoDecodeProcessor.on('newOutputData', async (outBuffer) => {
             console.info('in case: outputBufferAvailable outBuffer.index: '+ outBuffer.index);
             outputQueue.push(outBuffer);
             await dequeueOutputs(nextStep);
@@ -414,7 +414,7 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
             console.info('in case: error called,errName is' + err);
         });
 
-        videoDecodeProcessor.on('outputFormatChanged',(format) => {
+        videoDecodeProcessor.on('streamChanged',(format) => {
             console.info('in case: Output format changed: ' + format.toString());
         });
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -215,7 +215,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
             } else {
                 inputObject.flags = 4;
             }
-            videoDecodeProcessor.queueInput(inputObject).then(() => {
+            videoDecodeProcessor.pushInputData(inputObject).then(() => {
                 console.info('in case: queueInput success ');
             }, failCallback).catch(failCatch);          
         }
@@ -231,7 +231,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
                 return;
             }
             frameCountOut++;
-            await videoDecodeProcessor.releaseOutput(outputObject, true).then(() => {
+            await videoDecodeProcessor.renderOutputData(outputObject).then(() => {
                 console.log('in case: release output count:' + frameCountOut);
             }, failCallback).catch(failCatch);
         }
@@ -239,13 +239,13 @@ describe('VideoDecoderFuncPromiseTest', function () {
 
     function setCallback(nextStep){
         console.info('in case:  setCallback in');
-        videoDecodeProcessor.on('inputBufferAvailable', async (inBuffer) => {
+        videoDecodeProcessor.on('needInputData', async (inBuffer) => {
             console.info('in case: inputBufferAvailable inBuffer.index: '+ inBuffer.index);
             inputQueue.push(inBuffer);
             await enqueueInputs();
         });
 
-        videoDecodeProcessor.on('outputBufferAvailable', async (outBuffer) => {
+        videoDecodeProcessor.on('newOutputData', async (outBuffer) => {
             console.info('in case: outputBufferAvailable outBuffer.index: '+ outBuffer.index);
             outputQueue.push(outBuffer);
             await dequeueOutputs(nextStep);
@@ -255,7 +255,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
             console.info('in case: error called,errName is' + err);
         });
 
-        videoDecodeProcessor.on('outputFormatChanged',(format) => {
+        videoDecodeProcessor.on('streamChanged',(format) => {
             console.info('in case: Output format changed: ' + format.toString());
         });
         console.info('in case:  setCallback out');
