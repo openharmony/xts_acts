@@ -1258,5 +1258,43 @@ export default function convertOptionsJsunit() {
       expect(result1).assertEqual(str1);
       done();
     })
+
+    /**
+     * @tc.name: Telephony_convertxml_ConvertXML_3900
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.require: AR000GFB5B
+     */
+    it('Telephony_convertxml_ConvertXML_3900', 0, function () {
+      var xml =
+        '<?xml version="1.0" encoding="utf-8"?>' +
+        '<note importance="high" logged="true">' +
+        '    <?go there?>'+
+        '    <title>Happy</title>' +
+        '    <todo>Work</todo>' +
+        '    <todo>Play</todo>' +
+        '</note>';
+      var convertml = new ConvertXML();
+      var result1 = convertml.convert(xml, {compact: false, ignoreInstruction: true});
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+      '"encoding":"utf-8"}},'+
+      '"_elements":[{"_type":"element",'+
+      '"_name":"note",'+
+      '"_attributes":{"importance":"high",'+
+      '"logged":"true"},'+
+      '"_elements":['+
+      '{"_type":"element",'+
+      '"_name":"title",'+
+      '"_elements":[{"_type":"text",'+
+      '"_text":"Happy"}]},'+
+      '{"_type":"element",'+
+      '"_name":"todo",'+
+      '"_elements":[{"_type":"text",'+
+      '"_text":"Work"}]},'+
+      '{"_type":"element",'+
+      '"_name":"todo",'+
+      '"_elements":[{"_type":"text",'+
+      '"_text":"Play"}]}]}]}'
+      expect(result1).assertEqual(str1);
+    })
   })
 }

@@ -395,13 +395,13 @@ export default function socketJsunit() {
         family: 1,
         port: 8080
       }
-      try{
+      try {
         await socket.UDPSocket.bind(netAddress).then(data => {
           console.log(`${caseName} success,data:${toString(data)}`);
         }).catch((error) => {
           console.log(`${caseName} failed,error:${toString(error)}`);
         });
-      }catch(err){
+      } catch (err) {
         console.log(`${caseName} failed,catch error:${toString(error)}`);
       }
       console.log("************* Telephony_Socket_UDPSocket_bind_0200 Test end*************");
@@ -583,6 +583,54 @@ export default function socketJsunit() {
         console.log(`${caseName} failed,error:${toString(error)}`);
       });
       console.log("************* Telephony_Socket_UDPSocket_send_0400 Test end*************");
+      done();
+    });
+
+    /*
+     * @tc.number    : Telephony_Socket_UDPSocket_close_0100
+     * @tc.name      : close
+     * @tc.desc      : Closes a UDPSocket connection.
+     */
+    it('Telephony_Socket_UDPSocket_close_0100', 0, async function (done) {
+      console.log("************* Telephony_Socket_UDPSocket_close_0100 Test start*************");
+      let caseName = "Telephony_Socket_UDPSocket_close_0100"
+      if (utils.notCheck) {
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      socket.UDPSocket.close((error, data) => {
+        if (error) {
+          console.log(`${caseName} error, case success,error:${toString(error)}`);
+          done();
+          return;
+        }
+        expect().assertFail();
+        done();
+      })
+      console.log("************* Telephony_Socket_UDPSocket_close_0100 Test end*************");
+      done();
+    });
+
+    /*
+     * @tc.number    : Telephony_Socket_UDPSocket_close_0200
+     * @tc.name      : close
+     * @tc.desc      : Closes a UDPSocket connection.
+     */
+    it('Telephony_Socket_UDPSocket_close_0200', 0, async function (done) {
+      console.log("************* Telephony_Socket_UDPSocket_close_0200 Test start*************");
+      let caseName = "Telephony_Socket_UDPSocket_close_0200"
+      if (utils.notCheck) {
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      socket.UDPSocket.close().then(data => {
+        console.log(`${caseName} success,data:${toString(data)}`);
+      }).catch((error) => {
+        console.log(`${caseName} failed,error:${toString(error)}`);
+      });
+      console.log("************* Telephony_Socket_UDPSocket_close_0200 Test end*************");
       done();
     });
 
@@ -1317,6 +1365,54 @@ export default function socketJsunit() {
         console.log(`${caseName} failed,error:${toString(error)}`);
       });
       console.log("************* Telephony_Socket_TCPSocket_connect_0400 Test end*************");
+      done();
+    });
+
+    /*
+     * @tc.number    : Telephony_Socket_TCPSocket_close_0100
+     * @tc.name      : close
+     * @tc.desc      : Closes a UDPSocket connection.
+     */
+    it('Telephony_Socket_TCPSocket_close_0100', 0, async function (done) {
+      console.log("************* Telephony_Socket_TCPSocket_close_0100 Test start*************");
+      let caseName = "Telephony_Socket_TCPSocket_close_0100"
+      if (utils.notCheck) {
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      socket.TCPSocket.close((error, data) => {
+        if (error) {
+          console.log(`${caseName} error, case success,error:${toString(error)}`);
+          done();
+          return;
+        }
+        expect().assertFail();
+        done();
+      })
+      console.log("************* Telephony_Socket_TCPSocket_close_0100 Test end*************");
+      done();
+    });
+
+    /*
+     * @tc.number    : Telephony_Socket_TCPSocket_close_0200
+     * @tc.name      : close
+     * @tc.desc      : Closes a UDPSocket connection.
+     */
+    it('Telephony_Socket_TCPSocket_close_0200', 0, async function (done) {
+      console.log("************* Telephony_Socket_TCPSocket_close_0200 Test start*************");
+      let caseName = "Telephony_Socket_TCPSocket_close_0200"
+      if (utils.notCheck) {
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      socket.TCPSocket.close().then(data => {
+        console.log(`${caseName} success,data:${toString(data)}`);
+      }).catch((error) => {
+        console.log(`${caseName} failed,error:${toString(error)}`);
+      });
+      console.log("************* Telephony_Socket_TCPSocket_close_0200 Test end*************");
       done();
     });
 

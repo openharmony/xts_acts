@@ -41,6 +41,8 @@ export default function simJsunit() {
           return;
         }
         expect(Object.keys(data).length !== containerIsEmpty).assertTrue();
+        expect(data.field !== containerIsEmpty).assertTrue();
+        expect(data.value !== containerIsEmpty).assertTrue();
         console.log('Telephony_Sim_getOperatorConfigs_Async_0100 finish');
         done();
       });
@@ -72,6 +74,7 @@ export default function simJsunit() {
         && info.iccId === iccIdValue
         && info.showName === env.SIM_SLOT_NAME
         && info.showNumber === env.SIM_SLOT_NUMBER
+        && info.simId === "simId"
         ).assertTrue();
         console.log(`${CASE_NAME} finish`);
         done();
@@ -116,7 +119,8 @@ export default function simJsunit() {
         return;
       }
       const CASE_NAME = 'Telephony_Sim_addIccDiallingNumbers_Async_0100';
-      sim.addIccDiallingNumbers(env.SLOTID_MINUS1,
+      var number = env.SLOTID_MINUS1;
+      sim.addIccDiallingNumbers(number,
         sim.GENERAL_CONTACT,
         GENERAL_CONTACT_INFO,
         error => {
