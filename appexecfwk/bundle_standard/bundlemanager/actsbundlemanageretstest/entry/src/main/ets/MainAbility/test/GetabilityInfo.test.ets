@@ -105,7 +105,7 @@ export default function GetabilityInfo() {
           mData = data
           console.info('[bundle_GetabilityInfo_test_0300] getApplicationInfo in ');
           console.info('[bundle_GetabilityInfo_test_0300] getApplicationInfo promise data is: ' + JSON.stringify(data));
-          expect(mData).assertEqual(false);
+          expect(typeof (mData)).assertEqual("object");
         }).catch((error) => {
           err = error
           console.error('[bundle_GetabilityInfo_test_0300]Operation failed. Cause: ' + JSON.stringify(error));
@@ -117,7 +117,6 @@ export default function GetabilityInfo() {
       }
       done();
     });
-
 
     /*
      * @tc.number: bundle_getAllApplicationInfo_test_0400
@@ -193,7 +192,6 @@ export default function GetabilityInfo() {
       await expect(error1).assertEqual(1);
       done();
     });
-
 
     /**
      * 打印AbilityInfo属性信息
