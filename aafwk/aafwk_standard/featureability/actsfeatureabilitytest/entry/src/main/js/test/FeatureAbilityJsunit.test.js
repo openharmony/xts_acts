@@ -1652,26 +1652,29 @@ describe('ActsFeatureAbilityTest', function () {
         function SubscribeCallBack(err, data) {
             clearTimeout(id);
             events.set(data.event, 0);
-            console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
+            console.debug("ACTS_TerminateAbility_0200 ====>Subscribe CallBack data:====>" + JSON.stringify(data));
             if (events.size > 1) {
+                console.debug("ACTS_TerminateAbility_0200 events.size > 1");
                 expect(events.has("ACTS_TerminateAbility_0200_CommonEvent") &&
                     events.has("ACTS_TerminateAbility_0200_Return")).assertTrue();
                 commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
                 done();
             } else {
+                console.debug("ACTS_TerminateAbility_0200 events.size <= 1");
                 expect(events.has("ACTS_TerminateAbility_0200_CommonEvent") ||
                     events.has("ACTS_TerminateAbility_0200_Return")).assertTrue();
+                done();
             }
         }
 
         commonEvent.createSubscriber(subscriberInfo_ACTS_TerminateAbility_0200).then(async (data) => {
-            console.debug("====>Create Subscriber====>");
+            console.debug("ACTS_TerminateAbility_0200 ====>Create Subscriber====>");
             Subscriber = data;
             await commonEvent.subscribe(Subscriber, SubscribeCallBack);
         })
 
         function UnSubscribeCallback() {
-            console.debug("====>UnSubscribe CallBack====>");
+            console.debug("ACTS_TerminateAbility_0200 ====>UnSubscribe CallBack====>");
             done();
         }
 
@@ -1681,7 +1684,7 @@ describe('ActsFeatureAbilityTest', function () {
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
             done();
         }
-        console.log('=====start ability=====');
+        console.log('ACTS_TerminateAbility_0200 =====start ability=====');
         id = setTimeout(timeout, START_ABILITY_TIMEOUT);
         var promise = featureAbility.startAbility(
             {
@@ -1699,6 +1702,7 @@ describe('ActsFeatureAbilityTest', function () {
             }
         );
         expect(typeof (promise)).assertEqual("object");
+        done();
     })
 
     /*
@@ -1961,13 +1965,13 @@ describe('ActsFeatureAbilityTest', function () {
         //            expect(info.iconId).assertEqual(0);   //create by DevEco when building HAP.
         expect(info.process).assertEqual("processTest");
         expect(info.supportedModes).assertEqual(0);
-        expect(info.moduleSourceDirs[0]).assertEqual("/data/accounts/account_0/applications/" +
+        expect(info.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/" +
             "com.example.actsfeatureabilitytest/com.example.actsfeatureabilitytest");
         expect(info.permissions[0]).assertEqual("ohos.permission.CAMERA");
         expect(info.moduleInfos[0].moduleName).assertEqual("entry");
-        expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/accounts/account_0/applications/" +
+        expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
             "com.example.actsfeatureabilitytest/com.example.actsfeatureabilitytest");
-        expect(info.entryDir).assertEqual("/data/accounts/account_0/applications/" +
+        expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/" +
             "com.example.actsfeatureabilitytest/com.example.actsfeatureabilitytest");
     }
 
@@ -2242,7 +2246,7 @@ describe('ActsFeatureAbilityTest', function () {
         expect(data.type).assertEqual(1);
         expect(data.subType).assertEqual(0);
         expect(data.orientation).assertEqual(0);
-        expect(data.launchMode).assertEqual(1);
+        expect(data.launchMode).assertEqual(0);
 
         expect(data.permissions[0]).assertEqual("ohos.permission.ACCELEROMETER");
         expect(data.permissions[1]).assertEqual("ohos.permission.ANSWER_CALL");
@@ -2552,7 +2556,7 @@ describe('ActsFeatureAbilityTest', function () {
             featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
                 console.log('ACTS_StartAbility_0700 asyncCallback errCode : ' + JSON.stringify(err) 
                 + " data: " + JSON.stringify(data));
-                expect(err.code == 2097152).assertTrue();
+                expect(err.code != 0).assertTrue();
                 done();
             });
         }catch(error){
@@ -2581,7 +2585,7 @@ describe('ActsFeatureAbilityTest', function () {
             featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
                 console.log('ACTS_StartAbility_0800 asyncCallback errCode : ' + JSON.stringify(err) 
                 + " data: " + JSON.stringify(data));
-                expect(err.code == 2097155).assertTrue();
+                expect(err.code != 0).assertTrue();
                 done();
             });
         }catch(error){
@@ -2637,7 +2641,7 @@ describe('ActsFeatureAbilityTest', function () {
             featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
                 console.log('ACTS_StartAbility_1100 asyncCallback errCode : ' + JSON.stringify(err) 
                 + " data: " + JSON.stringify(data));
-                expect(err.code == 2097155).assertTrue();
+                expect(err.code != 0).assertTrue();
                 done();
             });
         }catch(error){
@@ -2665,7 +2669,7 @@ describe('ActsFeatureAbilityTest', function () {
             featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
                 console.log('ACTS_StartAbility_1200 asyncCallback errCode : ' + JSON.stringify(err) 
                 + " data: " + JSON.stringify(data));
-                expect(err.code == 2097155).assertTrue();
+                expect(err.code != 0).assertTrue();
                 done();
             });
         }catch(error){
@@ -2777,7 +2781,7 @@ describe('ActsFeatureAbilityTest', function () {
             expect().assertFail();
             done();
         }).catch((err)=>{
-            expect(err.code == 2097155).assertTrue();
+            expect(err.code != 0).assertTrue();
         });
     });
 
