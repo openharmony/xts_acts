@@ -1961,13 +1961,13 @@ describe('ActsFeatureAbilityTest', function () {
         //            expect(info.iconId).assertEqual(0);   //create by DevEco when building HAP.
         expect(info.process).assertEqual("processTest");
         expect(info.supportedModes).assertEqual(0);
-        expect(info.moduleSourceDirs[0]).assertEqual("/data/accounts/account_0/applications/" +
+        expect(info.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/" +
             "com.example.actsfeatureabilitytest/com.example.actsfeatureabilitytest");
         expect(info.permissions[0]).assertEqual("ohos.permission.CAMERA");
         expect(info.moduleInfos[0].moduleName).assertEqual("entry");
-        expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/accounts/account_0/applications/" +
+        expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
             "com.example.actsfeatureabilitytest/com.example.actsfeatureabilitytest");
-        expect(info.entryDir).assertEqual("/data/accounts/account_0/applications/" +
+        expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/" +
             "com.example.actsfeatureabilitytest/com.example.actsfeatureabilitytest");
     }
 
@@ -2252,7 +2252,6 @@ describe('ActsFeatureAbilityTest', function () {
 
         expect(data.readPermission).assertEqual("");
         expect(data.writePermission).assertEqual("");
-        checkApplicationInfo(data.applicationInfo);
         expect(data.formEntity).assertEqual(0);
         expect(data.minFormHeight).assertEqual(0);
         expect(data.defaultFormHeight).assertEqual(0);
@@ -2609,8 +2608,8 @@ describe('ActsFeatureAbilityTest', function () {
 
             featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
                 console.log('ACTS_StartAbility_0900 asyncCallback errCode : ' + JSON.stringify(err) 
-                + " data: " + JSON.stringify(data));
-                expect(err.code == 29360128).assertTrue();
+                + " data: " + JSON.stringify(data) + "err.code: " + err.code);
+                expect(err.code != 0).assertTrue();
                 done();
             });
         }catch(error){
@@ -2772,14 +2771,20 @@ describe('ActsFeatureAbilityTest', function () {
             want:Want
         }
 
-        await featureAbility.startAbility(StartAbilityParameter).then((data) => {
-            console.log('ACTS_StartAbility_1600 errCode : ' + " data: " + JSON.stringify(data));
-            expect().assertFail();
+        var promise = featureAbility.startAbility(StartAbilityParameter);
+        if (promise) {
+            promise.then((data) => {
+                console.log('ACTS_StartAbility_1600 errCode : ' + " data: " + JSON.stringify(data));
+                expect().assertFail();
+                done();
+            }).catch((err)=>{
+                expect(err.code != 0).assertTrue();
+                done();
+            });
+        } else {
+            expect(promise == undefined).assertTrue();
             done();
-        }).catch((err)=>{
-            expect(err.code != 0).assertTrue();
-            done();
-        });
+        }
     });
 
     /*
@@ -2809,14 +2814,19 @@ describe('ActsFeatureAbilityTest', function () {
      */
     it("ACTS_StartAbility_1800",0, async function(done){
         console.info("------------------logMessage ACTS_StartAbility_1800-------------------");
-        await featureAbility.startAbility(undefined).then((data) => {
-            console.log('ACTS_StartAbility_1800 asyncCallback data: ' + JSON.stringify(data));
-            expect().assertFail();
+        var promise = featureAbility.startAbility(undefined);
+        if (promise) {
+            promise.then((data) => {
+                console.log('ACTS_StartAbility_1800 asyncCallback data: ' + JSON.stringify(data));
+                expect().assertFail();
+                done();
+            }).catch((err)=>{
+                expect(err.code != 0).assertTrue();
+                done();
+            });
+        } else {
+            expect(promise == undefined).assertTrue();
             done();
-        }).catch((err)=>{
-            expect(err.code != 0).assertTrue();
-            done();
-        });
-    });
-
+        }
+    }
 })

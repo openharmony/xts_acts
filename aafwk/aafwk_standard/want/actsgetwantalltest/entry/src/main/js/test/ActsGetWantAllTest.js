@@ -350,7 +350,6 @@ describe('ActsGetWantTest', function () {
                     entities: ["entity1"],
                     type: "MIMETYPE",
                     uri: "key={true,true,false}",
-                    flags: wantConstant.Flags.FLAG_ABILITY_CONTINUATION  ,
                     parameters:
                     {
                         mykey0: 0.1,
