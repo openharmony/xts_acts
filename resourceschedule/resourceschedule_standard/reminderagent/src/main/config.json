@@ -36,6 +36,9 @@
             ]
           }
         ],
+        "backgroundModes": [
+            "dataTransfer"
+        ],
         "name": "ohos.acts.resourceschedule.reminderagent.js.function.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
@@ -55,6 +58,16 @@
           "autoDesignWidth": false
         }
       }
-    ]
+    ],
+    "defPermissions": [
+        {
+          "name": "ohos.permission.PUBLISH_AGENT_REMINDER"
+        }
+      ],
+    "reqPermissions": [
+        {
+          "name": "ohos.permission.PUBLISH_AGENT_REMINDER"
+        }
+      ]
   }
 }
