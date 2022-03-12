@@ -2828,5 +2828,5 @@ describe('ActsFeatureAbilityTest', function () {
             expect(promise == undefined).assertTrue();
             done();
         }
-    }
+    });
 })
