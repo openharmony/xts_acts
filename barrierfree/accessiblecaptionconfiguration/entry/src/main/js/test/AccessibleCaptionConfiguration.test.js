@@ -14,8 +14,6 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import accessibility from '@ohos.accessibility'
-//import accessibility from '@ohos.application.AccessibilityExtension'
-
 
 describe('AccessibleCaptionConfiguration', function () {
 
