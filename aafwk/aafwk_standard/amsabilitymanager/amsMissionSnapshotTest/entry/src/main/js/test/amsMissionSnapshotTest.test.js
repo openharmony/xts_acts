@@ -22,20 +22,10 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 describe('ActsMissionSnapshotTest', function () {
     beforeAll(async (done) => {
         console.debug('= ACTS_beforeAll ====<begin');
-        try {
-        } catch (err) {
-            console.error('=ACTS_beforeAll catch(err)====>:' + err);
-        }
-        console.debug('= ACTS_beforeAll ====<end');
         done();
     })
     afterAll(async (done) => {
         console.debug('= ACTS_afterAll ====<begin');
-        try {
-        } catch (err) {
-            console.error('=ACTS_afterAll catch(err)====>:' + err);
-        }
-        console.debug('= ACTS_afterAll ====<end');
         done();
     })
 
