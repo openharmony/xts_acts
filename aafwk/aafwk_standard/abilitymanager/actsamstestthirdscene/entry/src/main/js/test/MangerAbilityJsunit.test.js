@@ -190,9 +190,11 @@ describe('ActsAmsTestThirdScene', function () {
         for (var i = 0; i < result.length; i++) {
             console.info('Acts_Ams_test_3900 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
         }
-        var info = await missionManager.clearMission(result[1].missionId);
+        var info = await missionManager.clearMission(result[1].missionId).catch(err => {
+            console.log('Acts_Ams_test_3900 clearMission failed: ' + err);
+            expect(err).assertEqual(0);
+        });
         console.info('Acts_Ams_test_3900 clearMission data  [' + info + ']');
-        expect(info.code).assertEqual(0);
         done();
         setTimeout(timeout, 5000);
     })
@@ -208,9 +210,11 @@ describe('ActsAmsTestThirdScene', function () {
         for (var i = 0; i < result.length; i++) {
             console.info('Acts_Ams_test_4300 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
         }
-        var info = await missionManager.moveMissionToFront(result[0].missionId);
+        var info = await missionManager.moveMissionToFront(result[0].missionId).catch(err => {
+            console.log('Acts_Ams_test_4300 moveMissionToFront failed: ' + err);
+            expect(err).assertEqual(0);
+        });
         console.info('Acts_Ams_test_4300 moveMissionToFront data  [' + info + ']');
-        expect(info.code).assertEqual(0);
         done();
         setTimeout(timeout, 5000);
     })
@@ -226,9 +230,11 @@ describe('ActsAmsTestThirdScene', function () {
         for (var i = 0; i < result.length; i++) {
             console.info('Acts_Ams_test_4500 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
         }
-        var info = await missionManager.clearMission(result[0].missionId);
+        var info = await missionManager.clearMission(result[0].missionId).catch(err => {
+            console.log('Acts_Ams_test_4500 clearMission failed: ' + err);
+            expect(err).assertEqual(0);
+        });
         console.info('Acts_Ams_test_4500 clearMission data  [' + info + ']');
-        expect(info.code).assertEqual(0);
         done();
         setTimeout(timeout, 5000);
     })

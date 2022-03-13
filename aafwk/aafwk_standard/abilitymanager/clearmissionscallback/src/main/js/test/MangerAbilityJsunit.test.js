@@ -41,8 +41,12 @@ describe('ActsAmsCallBackSixth Scene', function () {
     });
 
     function sleep(delay) {
-        var start = (new Date()).getTime();
-        while((new Date()).getTime() - start < delay) {}
+        var start = new Date().getTime();
+        while (true) {
+            if (new Date().getTime() - start > delay) {
+                break;
+            }
+        }
     }
 
     /*
@@ -54,8 +58,8 @@ describe('ActsAmsCallBackSixth Scene', function () {
         missionManager.clearAllMissions(
             (error,info) => {
                 console.info('Acts_Ams_test_12200 clearMissions error.code ' + error.code + ',data  [' + info + ']' );
-                expect(typeof(info)).assertEqual("number");
-                expect(info).assertEqual(0);
+                expect(typeof(error.code)).assertEqual("number");
+                expect(error.code).assertEqual(0);
             });
         done();
     })

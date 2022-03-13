@@ -133,9 +133,11 @@ describe('ActsAmsTestFirstScene', function () {
         for (var i = 0; i < result.length; i++) {
             console.info('Acts_Ams_test_0100 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
         }
-        var info = await missionManager.moveMissionToFront(result[0].missionId);
+        var info = await missionManager.moveMissionToFront(result[0].missionId).catch(err => {
+            console.log('Acts_Ams_test_1100 moveMissionToFront failed: ' + err);
+            expect(err).assertEqual(0);
+        });
         console.info('Acts_Ams_test_1100 moveMissionToFront data  [' + info + ']');
-        expect(info).assertEqual(0);
         done();
         setTimeout(timeout, 5000);
     })
@@ -182,9 +184,11 @@ describe('ActsAmsTestFirstScene', function () {
         for (var i = 0; i < result.length; i++) {
             console.info('Acts_Ams_test_0700 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
         }
-        var info = await missionManager.clearMission(result[0].missionId);
+        var info = await missionManager.clearMission(result[0].missionId).catch(err => {
+            console.log('Acts_Ams_test_0700 clearMission failed: ' + err);
+            expect(err).assertEqual(0);
+        });
         console.info('Acts_Ams_test_0700 clearMission data  [' + info + ']');
-        expect(info).assertEqual(0);
         done();
         setTimeout(timeout, 5000);
     })
@@ -202,9 +206,11 @@ describe('ActsAmsTestFirstScene', function () {
         }
         expect(result.length).assertEqual(1);
         var missionID = result[0].missionId + 1;
-        var info = await missionManager.clearMission(missionID);
+        var info = await missionManager.clearMission(missionID).catch(err => {
+            console.log('Acts_Ams_test_11100 clearMission failed: ' + err);
+            expect(err).assertEqual(0);
+        });
         console.info('Acts_Ams_test_11100 clearMissions data  [' + info + ']');
-        expect(info).assertLarger(0);
         done();
         setTimeout(timeout, 5000);
     })
