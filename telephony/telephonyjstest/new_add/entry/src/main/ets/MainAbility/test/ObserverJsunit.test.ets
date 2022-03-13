@@ -22,6 +22,7 @@ import {SimStateData} from '@ohos.telephony.observer'
 import {LockReason} from '@ohos.telephony.observer'
 import sim from "@ohos.telephony.sim"
 
+
 export default function observerJsunit() {
   describe('ObserverTest', function () {
     console.log("************* Observer Test start *************")
@@ -757,6 +758,25 @@ export default function observerJsunit() {
       console.debug('Observer Test=========timeout========');
       done()
     }
+
+    /*
+     * @tc.number    : Telephony_Observer_SimStateData_Reason
+     * @tc.name      : on_simStateChange
+     * @tc.desc      : call the on method of simStateChange
+     */
+    it('Telephony_Observer_SimStateData_Reason', 0, async function (done) {
+      console.log("************* Telephony_Observer_SimStateData_Reason Test start *************")
+      observer.on('simStateChange', (data:SimStateData) => {
+        if((data === null || data === undefined)
+        || (data.reason == null || data.reason === undefined)){
+          expect(true).assertTrue()
+          done()
+        }
+        return
+      })
+      console.log("************* Telephony_Observer_SimStateData_Reason Test end *************")
+      done()
+    })
 
     console.log("************* Observer Test end *************")
   })

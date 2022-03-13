@@ -59,6 +59,7 @@ export default function statisticsUiJsunit() {
       statistics.getCellularRxBytes().then((data) => {
         console.log(`${caseName} get data = ${data.message}:${ data.code}`);
         expect(data.code >= DATA_0).assertTrue();
+        expect(data.rxBytes >= DATA_0).assertTrue();
         done();
       }).catch((err) => {
         console.log(`${caseName} get data fail: ${err.message} ${err.code}`);
@@ -85,6 +86,7 @@ export default function statisticsUiJsunit() {
         }
         console.log(`${caseName}  get data: ${data.message} + ${data.code}`);
         expect(data.code >= DATA_0).assertTrue();
+        expect(data.txBytes >= DATA_0).assertTrue();
         done();
       });
     });
@@ -222,6 +224,7 @@ export default function statisticsUiJsunit() {
         }
         console.log(`${caseName}  get data: ${data.message} + ${data.code}`);
         expect(data.code >= DATA_0).assertTrue();
+        expect(data.rxPackets >= DATA_0).assertTrue();
         done();
       });
     });
@@ -247,6 +250,7 @@ export default function statisticsUiJsunit() {
         }
         console.log(`${caseName}  get data: ${data.message} + ${data.code}`);
         expect(data.code >= DATA_0).assertTrue();
+        expect(data.txPackets >= DATA_0).assertTrue();
         done();
       });
     });
