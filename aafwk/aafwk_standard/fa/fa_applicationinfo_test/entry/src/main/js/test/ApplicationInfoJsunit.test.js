@@ -17,7 +17,7 @@
 import {describe, expect, it} from 'deccjsunit/index'
 import commonEvent from '@ohos.commonevent'
 import featureAbility from '@ohos.ability.featureability'
-
+import formBindingData from '@ohos.application.formBindingData'
 
 var getCallingBundleUri = {
     events: ["uri"]
@@ -29,6 +29,29 @@ var getCallingBundleType = {
 
 describe("ApplicationInfoTest", function () {
     var TAG = "";
+
+    /*
+     * @tc.number  SUB_AA_OpenHarmony_FormBase_1000
+     * @tc.name    Validate formbindingdata creation data
+     * @tc.desc    Function test
+     * @tc.level   0
+     */
+    it('SUB_AA_OpenHarmony_FormBase_1000', 0, async function (done) {
+        console.log("------------start SUB_AA_OpenHarmony_FormBase_1000-------------");
+        TAG = "SUB_AA_OpenHarmony_FormBase_1000";
+        var dataObj = {
+            temperature:"11c",
+            "time":"11:00",
+            "test":11,
+            "test3":true
+        }
+        var result = formBindingData.createFormBindingData(dataObj)
+        console.log(TAG + " result is : " + JSON.stringify(result))
+        expect(JSON.stringify(result)).
+        assertEqual(JSON.stringify({"data":"{\"temperature\":\"11c\",\"time\":\"11:00\",\"test\":11,\"test3\":true}"}));
+        done();
+        console.log("------------end SUB_AA_OpenHarmony_FormBase_1000-------------");
+    });
 
     /*
      * @tc.number  SUB_AA_OpenHarmony_Want_0200

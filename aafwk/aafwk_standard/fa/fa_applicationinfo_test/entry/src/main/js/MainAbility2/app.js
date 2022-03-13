@@ -20,8 +20,6 @@ export default {
     onCreate() {
         console.info("Application onCreate");
 
-        var uriList = [];
-
         featureAbility.getWant((err,data) =>{
             console.log("---data: " +JSON.stringify(data) )
             console.log("---uri: " + data.uri)
