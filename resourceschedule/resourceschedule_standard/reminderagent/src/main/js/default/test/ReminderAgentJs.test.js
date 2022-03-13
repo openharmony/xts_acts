@@ -740,5 +740,47 @@ describe('ReminderAgentTest', function () {
       });
       done();
       })
+
+   /**
+   * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_071
+   * @tc.name      testActionButtonTypeClose001
+   * @tc.desc      test acton button type is close.
+   */
+    it('testActionButtonTypeClose001', 0, async function (done) {
+      let timer = {
+        reminderType: reminderAgent.ReminderType.ACTION_BUTTON_TYPE_CLOSE,
+        triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
+      }
+      let expectId = -1;
+      function reminderCallback(err, reminderId) {
+        expect(reminderId).assertEqual(expectId);
+      }
+      reminderAgent.publishReminder(timer, (err, reminderId) => {
+        expectId = reminderId + 1;
+        reminderAgent.publishReminder(timer, reminderCallback);
+      })
+      done();
+    })
+    
+    /**
+   * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_072
+   * @tc.name      testActionButtonTypeSnooze001
+   * @tc.desc      test acton button type is snooze.
+   */
+     it('testActionButtonTypeSnooze001', 0, async function (done) {
+      let timer = {
+        reminderType: reminderAgent.ReminderType.ACTION_BUTTON_TYPE_SNOOZE,
+        triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
+      }
+      let expectId = -1;
+      function reminderCallback(err, reminderId) {
+        expect(reminderId).assertEqual(expectId);
+      }
+      reminderAgent.publishReminder(timer, (err, reminderId) => {
+        expectId = reminderId + 1;
+        reminderAgent.publishReminder(timer, reminderCallback);
+      })
+      done();
+    })       
   })
 
