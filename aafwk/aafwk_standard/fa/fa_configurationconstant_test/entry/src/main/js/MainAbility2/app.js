@@ -12,15 +12,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router'
+
+import commonEvent from '@ohos.commonEvent';
 
 export default {
-    data: {
-        title: 'World'
+    onCreate() {
+        commonEvent.publish("ApplicationMainAbility2_onCreate",()=>{
+            console.log("ApplicationMainAbility2_onCreate publish callBack ApplicationMainAbility2_onCreate");
+        });
+        console.info("ApplicationMainAbility2 onCreate");
     },
-    onclick: function () {
-        router.replace({
-            uri: "pages/index/index"
-        })
-    }
-}
+    onDestroy() {
+        console.log("singletonEntryAbulity_onDestroy222");
+        commonEvent.publish("ApplicationMainAbility2_onDestroy",()=>{
+            console.log("singletonEntryAbulity2_onDestroy publish callBack singletonEntryAbulity2onDestroy");
+        });
+    },
+};
+

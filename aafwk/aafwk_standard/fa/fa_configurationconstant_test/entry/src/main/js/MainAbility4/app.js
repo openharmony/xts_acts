@@ -12,15 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router'
-
 export default {
-    data: {
-        title: 'World'
+    onCreate() {
+        console.info("Application onCreate");
+//        setTimeout(()=>{
+//            this.content.terminateSelf().then((data)=>{
+//                console.log("Application terminateSelf data：" + JSON.stringify(data) )
+//            }).catch((error)=>{
+//                console.log("Application terminateSelf data：" + JSON.stringify(error) )
+//            })
+//        },8000)
     },
-    onclick: function () {
-        router.replace({
-            uri: "pages/index/index"
-        })
+    onDestroy() {
+        console.info("Application onDestroy");
     }
-}
+};
