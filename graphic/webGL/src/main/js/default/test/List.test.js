@@ -12,4 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-require('./webGL.test.js')
+
+require('./WebGL.test01.js')
+require('./WebGL.test02.js')
+require('./WebGL.test03.js')
+require('./WebGL.test04.js')
+require('./WebGL.test05.js')
+require('./WebGL.test06.js')
+require('./WebGL.test07.js')
+require('./WebGL.test08.js')
+require('./WebGL.test09.js')
+require('./WebGL.test10.js')
+require('./WebGL.test11.js')
+require('./WebGL.test12.js')
+require('./WebGL.test13.js')
+require('./WebGL.test14.js')
+require('./WebGL.test15.js')
