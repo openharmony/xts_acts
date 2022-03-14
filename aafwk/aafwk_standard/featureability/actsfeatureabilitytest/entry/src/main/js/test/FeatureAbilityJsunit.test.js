@@ -1664,7 +1664,7 @@ describe('ActsFeatureAbilityTest', function () {
             }
         }
 
-        commonEvent.createSubscriber(subscriberInfo_ACTS_TerminateAbility_0200).then(async (data) => {
+        commonEvent.createSubscriber(subscriberInfoTerminateAbilityTwo).then(async (data) => {
             console.debug("====>Create Subscriber====>");
             Subscriber = data;
             await commonEvent.subscribe(Subscriber, SubscribeCallBack);
@@ -1963,7 +1963,6 @@ describe('ActsFeatureAbilityTest', function () {
         expect(info.supportedModes).assertEqual(0);
         expect(info.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/" +
             "com.example.actsfeatureabilitytest/com.example.actsfeatureabilitytest");
-        expect(info.permissions[0]).assertEqual("ohos.permission.CAMERA");
         expect(info.moduleInfos[0].moduleName).assertEqual("entry");
         expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
             "com.example.actsfeatureabilitytest/com.example.actsfeatureabilitytest");
@@ -2242,10 +2241,9 @@ describe('ActsFeatureAbilityTest', function () {
         expect(data.type).assertEqual(1);
         expect(data.subType).assertEqual(0);
         expect(data.orientation).assertEqual(0);
-        expect(data.launchMode).assertEqual(1);
+        expect(data.launchMode).assertEqual(0);
 
         expect(data.permissions[0]).assertEqual("ohos.permission.ACCELEROMETER");
-        expect(data.permissions[1]).assertEqual("ohos.permission.ANSWER_CALL");
         expect(data.deviceTypes[0]).assertEqual("phone");
         expect(data.deviceCapabilities[0]).assertEqual("screen_support");
         expect(data.deviceCapabilities[1]).assertEqual("audio_support");
@@ -2793,17 +2791,23 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("ACTS_StartAbility_1700",0, async function(){
+    it("ACTS_StartAbility_1700",0, async function(done){
         console.info("------------------logMessage ACTS_StartAbility_1700-------------------");
         var StartAbilityParameter = {}
-        await featureAbility.startAbility(StartAbilityParameter).then((data) => {
-             console.log('ACTS_StartAbility_1700  data: '  + JSON.stringify(data));
-             expect().assertFail();
-             done();
-         }).catch((err)=>{
-             expect(err.code != 0).assertTrue();
-             done();
-         });
+        var promise = featureAbility.startAbility(StartAbilityParameter)
+        if (promise) {
+            promise.then((data) => {
+                console.log('ACTS_StartAbility_1700  data: '  + JSON.stringify(data));
+                expect().assertFail();
+                done();
+            }).catch((err)=>{
+                expect(err.code != 0).assertTrue();
+                done();
+            });
+        } else {
+            expect(promise == undefined).assertTrue();
+            done();
+        } 
     });
 
     /*
