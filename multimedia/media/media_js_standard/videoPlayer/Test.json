@@ -8,6 +8,13 @@
     },
     "kits": [
         {
+          "test-file-name": [
+            "ActsVideoPlayerJsTest.hap"
+          ],
+          "type": "AppInstallKit",
+          "cleanup-apps": true
+        },
+        {
           "type": "PushKit",
           "pre-push": [
           ],
@@ -15,19 +22,12 @@
             "./resource/audio/H264_AAC.mp4 ->/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoplayer/"
           ]
         },
-		{
+		    {
           "type": "ShellKit",
           "run-command": [
           ],
           "teardown-command":[
           ]
-        },
-        {
-            "test-file-name": [
-                "VideoPlayerJsTest.hap"
-            ],
-            "type": "AppInstallKit",
-            "cleanup-apps": true
         }
     ]
 }

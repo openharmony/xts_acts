@@ -437,8 +437,8 @@ describe('VideoDecoderFuncPromiseTest', function () {
 
     /* *
         * @tc.number    : SUB_MEDIA_VIDEO_DECODER_MULTIINSTANCE_PROMISE_0100
-        * @tc.name      : 001.creat 16 video decoder
-        * @tc.desc      : creat 16 video decoder
+        * @tc.name      : 001.creat multiple video decoders
+        * @tc.desc      : creat multiple video decoders
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
@@ -458,7 +458,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
         }
         let array = new Array();
         eventEmitter.on('releaseAllDecoder', async () => {
-            for (let j = 0; j < 15; j++) {
+            for (let j = 0; j < 3; j++) {
                 await array[j].release().then(() => {
                     array[j] = null;
                 }, failCallback).catch(failCatch);
@@ -469,11 +469,11 @@ describe('VideoDecoderFuncPromiseTest', function () {
             videoDecodeProcessor = null;
             done();
         })
-        for (let i = 0; i < 16; i++) {
+        for (let i = 0; i < 3; i++) {
             await media.createVideoDecoderByMime('video/avc').then((processor) => {
                 if (typeof (processor) != 'undefined') {
                     console.info('in case : createVideoDecoderByMime success');
-                    if (i == 15) {
+                    if (i == 2) {
                         videoDecodeProcessor = processor;
                     } else {
                         array[i] = processor;

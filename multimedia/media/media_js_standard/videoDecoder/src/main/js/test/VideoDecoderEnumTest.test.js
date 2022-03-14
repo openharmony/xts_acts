@@ -183,7 +183,7 @@ describe('VideoDecoderEnum', function () {
                 return;
             }
             frameCountOut++;
-            await videoDecodeProcessor.renderOutputData(outputObject).then(() => {
+            await videoDecodeProcessor.freeOutputBuffer(outputObject).then(() => {
                 console.log('in case: release output count:' + frameCountOut);
             }, failCallback).catch(failCatch);
         }
