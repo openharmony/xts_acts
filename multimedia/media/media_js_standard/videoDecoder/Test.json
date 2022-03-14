@@ -15,6 +15,14 @@
             "cleanup-apps": true
         },
         {
+            "type": "ShellKit",
+            "run-command": [
+                "mkdir -p /data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/shared/"
+            ],
+            "teardown-command":[
+            ]
+        },
+        {
             "type": "PushKit",
             "pre-push": [
             ],
@@ -24,14 +32,6 @@
                 "./resource/media/es/MPEG2_720_480.es ->/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/shared/",
                 "./resource/media/es/mpeg4_320_240.es ->/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/shared/",
                 "./resource/media/es/out_320_240_10s.h264 ->/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/shared/"
-            ]
-        },
-        {
-            "type": "ShellKit",
-            "run-command": [
-                "mkdir -p /data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/shared/"
-            ],
-            "teardown-command":[
             ]
         }
     ]
