@@ -13,14 +13,14 @@
  * limitations under the License.
  */
 import commonEvent from '@ohos.commonEvent';
-import ability_featureAbility from '@ohos.ability.featureAbility';
+import abilityFeatureAbility from '@ohos.ability.featureAbility';
 export default {
     onCreate() {
         commonEvent.publish("ApplicationMainAbility1_onCreate",()=>{
             console.log("ApplicationMainAbility1_onCreate publish callBack ApplicationMainAbility1_onCreate");
         });
         setTimeout(()=>{
-            ability_featureAbility.terminateSelf().then((data)=>{
+            abilityFeatureAbility.terminateSelf().then((data)=>{
                 console.log("ApplicationMainAbility2 terminateSelf data：" + JSON.stringify(data) )
             }).catch((error)=>{
                 console.log("ApplicationMainAbility2 terminateSelf error：" + JSON.stringify(error) )

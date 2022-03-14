@@ -12,13 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ability_featureAbility from '@ohos.ability.featureAbility';
+import abilityFeatureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
 export default {
     onCreate() {
         console.info("Application onCreate MainAbility3");
         setTimeout(()=>{
-            ability_featureAbility.terminateSelf().then((data)=>{
+            abilityFeatureAbility.terminateSelf().then((data)=>{
                 console.log("Application terminateSelf data：" + JSON.stringify(data) )
             }).catch((error)=>{
                 console.log("Application terminateSelf data：" + JSON.stringify(error) )

@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-import ability_featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
 
 export default {
@@ -22,14 +21,6 @@ export default {
             console.log("ApplicationMainAbility2_onCreate publish callBack ApplicationMainAbility2_onCreate");
         });
         console.info("ApplicationMainAbility2 onCreate");
-//        setTimeout(()=>{
-//            console.info("ApplicationMainAbility2 terminateSelf");
-//            ability_featureAbility.terminateSelf().then((data)=>{
-//                console.log("ApplicationMainAbility2 terminateSelf data：" + JSON.stringify(data) )
-//            }).catch((error)=>{
-//                console.log("ApplicationMainAbility2 terminateSelf error：" + JSON.stringify(error) )
-//            })
-//        },1000);
     },
     onDestroy() {
         console.log("singletonEntryAbulity_onDestroy222");
@@ -37,11 +28,5 @@ export default {
             console.log("singletonEntryAbulity2_onDestroy publish callBack singletonEntryAbulity2onDestroy");
         });
     },
-//    onForgeGround(){
-//        console.log("singletonEntryAbulity_onForgeGround");
-//        commonEvent.publish("ApplicationMainAbility2_onForgeGround",()=>{
-//            console.log("ApplicationMainAbility2_onHide publish callBack ApplicationMainAbility2_onForgeGround");
-//        });
-//    }
 };
 

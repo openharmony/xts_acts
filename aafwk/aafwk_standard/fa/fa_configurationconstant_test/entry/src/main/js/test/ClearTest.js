@@ -16,15 +16,16 @@
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
 import missionManager  from '@ohos.application.missionManager';
-import ability_featureAbility from '@ohos.ability.featureAbility';
+import abilityFeatureAbility from '@ohos.ability.featureAbility';
 import bundleManager from '@ohos.bundle';
-import app_manager from "@ohos.application.appManager"
+import appManager from "@ohos.application.appManager"
 import commonEvent from '@ohos.commonEvent';
 import {onDestroys} from "../MainAbility2/app.js"
 import abilityManager from '@ohos.application.abilityManager'
 import ConfigurationConstant from "@ohos.application.ConfigurationConstant";
 import AbilityConstant from '@ohos.application.AbilityConstant'
 describe('AbilityDisableTests', function () {
+
     /*
        * @tc.number  SUB_AA_OpenHarmony_AbilityStart_6200
        * @tc.name    Verify the enumeration values LaunchReason. CONTINUATION
@@ -32,11 +33,12 @@ describe('AbilityDisableTests', function () {
        * @tc.level   0
        */
     it("SUB_AA_OpenHarmony_AbilityStart_6200", 0, async function (done) {
-        console.info("------------------logMessage SUB_AA_OpenHarmony_AbilityStart_6300-------------------");
+        console.info("--------logMessage SUB_AA_OpenHarmony_AbilityStart_6300----");
         console.info("SUB_AA_OpenHarmony_AbilityStart_6200 LaunchReason.CONTINUATION: " + AbilityConstant.LaunchReason.CONTINUATION);
         expect(AbilityConstant.LaunchReason.CONTINUATION==3).assertTrue();
         done();
     });
+
     /*
        * @tc.number  SUB_AA_OpenHarmony_AbilityStart_6300
        * @tc.name    Verify the enumeration value launchreason.start UNKNOWN
@@ -44,11 +46,13 @@ describe('AbilityDisableTests', function () {
        * @tc.level   0
        */
     it("SUB_AA_OpenHarmony_AbilityStart_6300", 0, async function (done) {
-        console.info("------------------logMessage SUB_AA_OpenHarmony_AbilityStart_6300-------------------");
-        console.info("SUB_AA_OpenHarmony_AbilityStart_6300 LaunchReason.UNKNOWN: " + AbilityConstant.LaunchReason.UNKNOWN);
+        console.info("--------logMessage SUB_AA_OpenHarmony_AbilityStart_6300----");
+        console.info("SUB_AA_OpenHarmony_AbilityStart_6300 LaunchReason.UNKNOWN: " + 
+AbilityConstant.LaunchReason.UNKNOWN);
         expect(AbilityConstant.LaunchReason.UNKNOWN==0).assertTrue();
         done();
     });
+
     /*
        * @tc.number  SUB_AA_OpenHarmony_AbilityStart_6400
        * @tc.name    Verify the enumeration value launchreason.START_ABILITY
@@ -56,11 +60,12 @@ describe('AbilityDisableTests', function () {
        * @tc.level   0
        */
     it("SUB_AA_OpenHarmony_AbilityStart_6400", 0, async function (done) {
-        console.info("------------------logMessage SUB_AA_OpenHarmony_AbilityStart_6400-------------------");
+        console.info("------logMessage SUB_AA_OpenHarmony_AbilityStart_6400-----");
         console.info("SUB_AA_OpenHarmony_AbilityStart_6400 LaunchReason.START_ABILITY: " + AbilityConstant.LaunchReason.START_ABILITY);
         expect(AbilityConstant.LaunchReason.START_ABILITY==1).assertTrue();
         done();
     });
+
     /*
        * @tc.number  SUB_AA_OpenHarmony_AbilityStart_6500
        * @tc.name    Verify the enumeration values LaunchReason. CALL
@@ -68,11 +73,13 @@ describe('AbilityDisableTests', function () {
        * @tc.level   0
        */
     it("SUB_AA_OpenHarmony_AbilityStart_6500", 0, async function (done) {
-        console.info("------------------logMessage SUB_AA_OpenHarmony_AbilityStart_6500-------------------");
-        console.info("SUB_AA_OpenHarmony_AbilityStart_6500 LaunchReason.CALL: " + AbilityConstant.LaunchReason.CALL);
+        console.info("-------logMessage SUB_AA_OpenHarmony_AbilityStart_6500-----");
+        console.info("SUB_AA_OpenHarmony_AbilityStart_6500 LaunchReason.CALL: " + 
+AbilityConstant.LaunchReason.CALL);
         expect(AbilityConstant.LaunchReason.CALL==2).assertTrue();
         done();
     });
+
     /*
        * @tc.number  SUB_AA_OpenHarmony_AbilityStart_6600
        * @tc.name    Verify the enumeration values LastExitReason.UNKNOWN
@@ -80,11 +87,13 @@ describe('AbilityDisableTests', function () {
        * @tc.level   0
        */
     it("SUB_AA_OpenHarmony_AbilityStart_6600", 0, async function (done) {
-        console.info("------------------logMessage SUB_AA_OpenHarmony_AbilityStart_6600-------------------");
-        console.info("SUB_AA_OpenHarmony_AbilityStart_6600 LastExitReason.UNKNOWN: " + AbilityConstant.LastExitReason.UNKNOWN);
+        console.info("---------logMessage SUB_AA_OpenHarmony_AbilityStart_6600---------");
+        console.info("SUB_AA_OpenHarmony_AbilityStart_6600 LastExitReason.UNKNOWN: " +
+ AbilityConstant.LastExitReason.UNKNOWN);
         expect(AbilityConstant.LastExitReason.UNKNOWN==0).assertTrue();
         done();
     });
+
     /*
        * @tc.number  SUB_AA_OpenHarmony_AbilityStart_6700
        * @tc.name    Verify the enumeration values LastExitReason.ABILITY_NOT_RESPONDING
@@ -92,11 +101,12 @@ describe('AbilityDisableTests', function () {
        * @tc.level   0
        */
     it("SUB_AA_OpenHarmony_AbilityStart_6700", 0, async function (done) {
-        console.info("------------------logMessage SUB_AA_OpenHarmony_AbilityStart_6700-------------------");
+        console.info("--------logMessage SUB_AA_OpenHarmony_AbilityStart_6700---------");
         console.info("SUB_AA_OpenHarmony_AbilityStart_6700 LastExitReason.ABILITY_NOT_RESPONDING: " + AbilityConstant.LastExitReason.ABILITY_NOT_RESPONDING);
         expect(AbilityConstant.LastExitReason.ABILITY_NOT_RESPONDING==1).assertTrue();
         done();
     });
+
     /*
        * @tc.number  SUB_AA_OpenHarmony_AbilityStart_6700
        * @tc.name    Verify the enumeration values LastExitReason.NORMAL
@@ -104,8 +114,9 @@ describe('AbilityDisableTests', function () {
        * @tc.level   0
        */
     it("SUB_AA_OpenHarmony_AbilityStart_6800", 0, async function (done) {
-        console.info("------------------logMessage SUB_AA_OpenHarmony_AbilityStart_6800-------------------");
-        console.info("SUB_AA_OpenHarmony_AbilityStart_6800 LastExitReason.NORMAL: " + AbilityConstant.LastExitReason.NORMAL);
+        console.info("-----logMessage SUB_AA_OpenHarmony_AbilityStart_6800-----------");
+        console.info("SUB_AA_OpenHarmony_AbilityStart_6800 LastExitReason.NORMAL: " +
+ AbilityConstant.LastExitReason.NORMAL);
         expect(AbilityConstant.LastExitReason.NORMAL==2).assertTrue();
         done();
     });
