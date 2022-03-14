@@ -112,7 +112,7 @@ describe('webgl1Test', function() {
 	}
 
 	function initShaders(gl, vshader, fshader) {
-		var program = createProgram(gl, vshader, fshader);
+		var program = createProgramExternal(gl, vshader, fshader);
 		console.log("======createProgram program: " + JSON.stringify(program));
 
 		if (!program) {
@@ -126,7 +126,7 @@ describe('webgl1Test', function() {
 		return true;
 	}
 
-	function createProgram(gl, vshader, fshader) {
+	function createProgramExternal(gl, vshader, fshader) {
 		// Create shader object
 		var vertexShader = loadShader(gl, gl.VERTEX_SHADER, vshader);
 		console.log("======vertexShader: " + vertexShader);
@@ -5641,7 +5641,7 @@ describe('webgl1Test', function() {
 	it('testGetVertexAttribFirst', 0, async function(done) {
 		//initContext();
 		console.info('jsWebGL getVertexAttrib test start ...' + JSON.stringify(gl));
-		const vertexBuffer = gl.createBuffer();;
+		const vertexBuffer = gl.createBuffer();
 		gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 		const shaderProgram = globalFunction();
 		const aVertexPosition = gl.getAttribLocation(shaderProgram, "a_position");
@@ -27040,7 +27040,7 @@ describe('webgl1Test', function() {
 	it('testGetVertexAttribFirst_1', 0, async function(done) {
 		//initContext();
 		console.info('jsWebGL getVertexAttrib test start ...' + JSON.stringify(gl));
-		const vertexBuffer = gl.createBuffer();;
+		const vertexBuffer = gl.createBuffer();
 		gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 		const shaderProgram = globalFunction();
 		const aVertexPosition = gl.getAttribLocation(shaderProgram, "a_position");
@@ -27100,7 +27100,7 @@ describe('webgl1Test', function() {
 	it('testGetVertexAttribFirst_2', 0, async function(done) {
 		//initContext();
 		console.info('jsWebGL getVertexAttrib test start ...' + JSON.stringify(gl));
-		const vertexBuffer = gl.createBuffer();;
+		const vertexBuffer = gl.createBuffer();
 		gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 		const shaderProgram = globalFunction();
 		const aVertexPosition = gl.getAttribLocation(shaderProgram, "a_position");
@@ -27124,7 +27124,7 @@ describe('webgl1Test', function() {
 	it('testGetVertexAttribFirst_3', 0, async function(done) {
 		//initContext();
 		console.info('jsWebGL getVertexAttrib test start ...' + JSON.stringify(gl));
-		const vertexBuffer = gl.createBuffer();;
+		const vertexBuffer = gl.createBuffer();
 		gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 		const shaderProgram = globalFunction();
 		const aVertexPosition = gl.getAttribLocation(shaderProgram, "a_position");
@@ -27478,7 +27478,7 @@ describe('webgl1Test', function() {
 	 * @tc.name testRangeMin
 	 * @tc.desc Test RangeMin.
 	 */
-	it ('testRangeMin', 0, async function(done) {
+	it('testRangeMin', 0, async function(done) {
 		console.info('jsWebGL testRangeMin test start');
 		gl.getShaderPrecisionFormat(gl.VERTEX_SHADER, gl.MEDIUM_FLOAT).rangeMin;
 		gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.LOW_INT).rangeMin;
@@ -27494,7 +27494,7 @@ describe('webgl1Test', function() {
 	 * @tc.name testAttributeBae
 	 * @tc.desc Test AttributeBae.
 	 */
-	it ('testAttributeBae', 0, async function(done) {
+	it('testAttributeBae', 0, async function(done) {
 		console.info('jsWebGL testAttributeBae test start');
 		var frameBuffer = gl.createBuffer();
 		gl.bindBuffer(gl.FRAMEBUFFER, frameBuffer);
@@ -27509,7 +27509,7 @@ describe('webgl1Test', function() {
 	 * @tc.name testTypeBase
 	 * @tc.desc Test TypeBase.
 	 */
-	it ('testTypeBase', 0, async function(done) {
+	it('testTypeBase', 0, async function(done) {
 		console.info('jsWebGL testTypeBasetest start');
 		const progamObj = globalFunction();
 		const info = gl.getActiveAttrib(programObj, 0);
@@ -27530,7 +27530,7 @@ describe('webgl1Test', function() {
 	 * @tc.name testWebGLTypeBase
 	 * @tc.desc Test WebGLTypeBase.
 	 */
-	it ('testWebGLTypeBase', 0, async function(done) {
+	it('testWebGLTypeBase', 0, async function(done) {
 		console.info('jsWebGL testWebGLTypeBase test start');
 		var x =1 ;
 		expect(x).assertEqual(gl.ONE);
@@ -27584,7 +27584,7 @@ describe('webgl1Test', function() {
 	 * @tc.name testRendingContextBase
 	 * @tc.desc Test RendingContextBase.
 	 */
-	it ('testRendingContextBase', 0, async function(done) {
+	it('testRendingContextBase', 0, async function(done) {
 		console.info('jsWebGL testRendingContextBase test start');
 		const buffer = gl.createBuffer();
 		expect(typeof(buffer)).assertEqual('object');
@@ -27622,7 +27622,7 @@ describe('webgl1Test', function() {
 	 * @tc.name testAttributeBase
 	 * @tc.desc Test testAttributeBase.
 	 */
-	it ('testAttributeBase', 0, async function(done) {
+	it('testAttributeBase', 0, async function(done) {
 		console.info('jsWebGL testAttributeBase test start');
 		var attribute = gl.getContextAttributes();
 		expect(atttribute.desynchronized).assertEqual(false);
