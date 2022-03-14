@@ -46,7 +46,7 @@ describe('VideoDecoderReliCallbackTest', function () {
     let inputEosFlag = false;
     let workdoneAtEOS = false;
     let surfaceID = '';
-    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/shared/';
+    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/';
     const SRCPATH = BASIC_PATH + 'out_320_240_10s.h264';
     let mediaDescription = {
         'track_type': 1,
