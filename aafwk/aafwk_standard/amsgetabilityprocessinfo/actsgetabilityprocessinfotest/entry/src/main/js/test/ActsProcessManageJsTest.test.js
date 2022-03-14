@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -27,10 +27,19 @@ describe('ActsAbilityRunningInfosTest', function () {
     function checkRunningAbility(name, dataInfo) {
         for (let i = 0, len = dataInfo.length; i < len; i++) {
             if (dataInfo[i].ability.abilityName == name) {
+                expect(dataInfo[i].ability.deviceId).assertEqual("");
+                expect(dataInfo[i].ability.uri).assertEqual(undefined);
+                expect(dataInfo[i].ability.ability).assertEqual(undefined);
                 expect(dataInfo[i].uid).assertLarger(10000);
                 expect(dataInfo[i].pid).assertLarger(500);
                 expect(dataInfo[i].startTime).assertLarger(3000);
                 expect(dataInfo[i].abilityState).assertLarger(0);
+                expect(dataInfo[i].abilityState==abilityManager.AbilityState.FOREGROUND ||
+                dataInfo[i].abilityState==abilityManager.AbilityState.BACKGROUNDING
+                || (dataInfo[i].abilityState!=abilityManager.AbilityState.INITIAL
+                ) || (dataInfo[i].abilityState!=abilityManager.AbilityState.FOREGROUNDING
+                ) || (dataInfo[i].abilityState!=abilityManager.AbilityState.BACKGROUNDING
+                )).assertTrue();
                 return true;
             }
         }

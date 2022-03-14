@@ -17,6 +17,7 @@ group("aafwk_standard") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "ActsAbilityLifecycleStateNewTest:ActsAbilityLifecycleStateNewTest",
       "ActsDataAbilityJsTest:ActsDataAbilityJsTest",
       "ActsKillProcessWithAccountApi7:ActsKillProcessWithAccountApi7",
       "ActsStServiceAbilityClientCaseTest:ActsStServiceAbilityClientCaseTest",
