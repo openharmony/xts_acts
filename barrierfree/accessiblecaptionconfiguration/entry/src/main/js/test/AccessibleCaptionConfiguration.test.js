@@ -39,7 +39,7 @@ describe('AccessibleCaptionConfiguration', function () {
     fontColor: "blue",
     fontEdgeType: "none",
     backgroundColor: "green",
-    windowColor: "pink"
+    windowColor: "black"
   }
 
   var StyleTest = {
@@ -47,7 +47,7 @@ describe('AccessibleCaptionConfiguration', function () {
     fontScale: 99,
     fontColor: "red",
     fontEdgeType: "uniform",
-    backgroundColor: "pink",
+    backgroundColor: "black",
     windowColor: "green"
   }
 
@@ -172,7 +172,7 @@ describe('AccessibleCaptionConfiguration', function () {
       expect(true).assertEqual(true);
       done();
     });
-    captionManager.style.fontColor = "TmepfontColor";
+    captionManager.style.fontColor = "black";
   })
 
   /*
@@ -212,7 +212,7 @@ describe('AccessibleCaptionConfiguration', function () {
       expect(true).assertEqual(true);
       done();
     });
-    captionManager.style.backgroundColor = "TmepbackgroundColor";
+    captionManager.style.backgroundColor = "black";
   })
 
   /*
@@ -232,7 +232,7 @@ describe('AccessibleCaptionConfiguration', function () {
       expect(true).assertEqual(true);
       done();
     });
-    captionManager.style.windowColor = "TmepwindowColor";
+    captionManager.style.windowColor = "blue";
   })
 
 
@@ -628,7 +628,7 @@ describe('AccessibleCaptionConfiguration', function () {
   it('CaptionConfiguration_0070', 0, async function (done) {
     console.info('CaptionConfiguration_0070');
     let captionManager = accessibility.getCaptionsManager();
-    let fontColor ="TmepfontColor";
+    let fontColor ="black";
     captionManager.style.fontColor = fontColor;
     let value = captionManager.style.fontColor;
     expect(value).assertEqual(fontColor);
@@ -646,7 +646,7 @@ describe('AccessibleCaptionConfiguration', function () {
   it('CaptionConfiguration_0071', 0, async function (done) {
     console.info('CaptionConfiguration_0071');
     let captionManager = accessibility.getCaptionsManager();
-    let fontColor ="none";
+    let fontColor ="red";
     captionManager.style.fontColor = fontColor;
     let value = captionManager.style.fontColor;
     expect(value).assertEqual(fontColor);
@@ -664,7 +664,7 @@ describe('AccessibleCaptionConfiguration', function () {
   it('CaptionConfiguration_0072', 0, async function (done) {
     console.info('CaptionConfiguration_0072');
     let captionManager = accessibility.getCaptionsManager();
-    let fontColor ="";
+    let fontColor ="red";
     captionManager.style.fontColor = fontColor;
     let value = captionManager.style.fontColor;
     expect(value).assertEqual(fontColor);
@@ -790,7 +790,7 @@ describe('AccessibleCaptionConfiguration', function () {
   it('CaptionConfiguration_0090', 0, async function (done) {
     console.info('CaptionConfiguration_0090');
     let captionManager = accessibility.getCaptionsManager();
-    let backgroundColor ="TmepbackgroundColor";
+    let backgroundColor ="#00FFAABB";
     captionManager.style.backgroundColor = backgroundColor;
     let value = captionManager.style.backgroundColor;
     expect(value).assertEqual(backgroundColor);
@@ -808,7 +808,7 @@ describe('AccessibleCaptionConfiguration', function () {
   it('CaptionConfiguration_0091', 0, async function (done) {
     console.info('CaptionConfiguration_0091');
     let captionManager = accessibility.getCaptionsManager();
-    let backgroundColor ="none";
+    let backgroundColor ="red";
     captionManager.style.backgroundColor = backgroundColor;
     let value = captionManager.style.backgroundColor;
     expect(value).assertEqual(backgroundColor);
@@ -826,7 +826,7 @@ describe('AccessibleCaptionConfiguration', function () {
   it('CaptionConfiguration_0092', 0, async function (done) {
     console.info('CaptionConfiguration_0092');
     let captionManager = accessibility.getCaptionsManager();
-    let backgroundColor ="";
+    let backgroundColor ="#00FFAABB";
     captionManager.style.backgroundColor = backgroundColor;
     let value = captionManager.style.backgroundColor;
     expect(value).assertEqual(backgroundColor);
@@ -844,7 +844,7 @@ describe('AccessibleCaptionConfiguration', function () {
   it('CaptionConfiguration_0100', 0, async function (done) {
     console.info('CaptionConfiguration_0100');
     let captionManager = accessibility.getCaptionsManager();
-    let windowColor ="TmepwindowColor";
+    let windowColor ="blue";
     captionManager.style.windowColor = windowColor;
     let value = captionManager.style.windowColor;
     expect(value).assertEqual(windowColor);
@@ -862,7 +862,7 @@ describe('AccessibleCaptionConfiguration', function () {
   it('CaptionConfiguration_0101', 0, async function (done) {
     console.info('CaptionConfiguration_0101');
     let captionManager = accessibility.getCaptionsManager();
-    let windowColor ="none";
+    let windowColor ="red";
     captionManager.style.windowColor = windowColor;
     let value = captionManager.style.windowColor;
     expect(value).assertEqual(windowColor);
@@ -880,7 +880,7 @@ describe('AccessibleCaptionConfiguration', function () {
   it('CaptionConfiguration_0102', 0, async function (done) {
     console.info('CaptionConfiguration_0102');
     let captionManager = accessibility.getCaptionsManager();
-    let windowColor ="";
+    let windowColor ="red";
     captionManager.style.windowColor = windowColor;
     let value = captionManager.style.windowColor;
     expect(value).assertEqual(windowColor);
@@ -903,7 +903,7 @@ describe('AccessibleCaptionConfiguration', function () {
       fontScale: 99,
       fontColor: "red",
       fontEdgeType: "uniform",
-      backgroundColor: "pink",
+      backgroundColor: "black",
       windowColor: "green"
     };
     captionManager.style = StyleTest;
@@ -934,7 +934,7 @@ describe('AccessibleCaptionConfiguration', function () {
       fontColor: "blue",
       fontEdgeType: "none",
       backgroundColor: "green",
-      windowColor: "pink"
+      windowColor: "black"
     };
     captionManager.style = StyleTest;
     let value = captionManager.style;
