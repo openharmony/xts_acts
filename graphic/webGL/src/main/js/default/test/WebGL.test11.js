@@ -893,22 +893,6 @@ describe('webgl1Test', function() {
 	});
 
 	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1035
-	 * @tc.name testStencilMaskSeparate1
-	 * @tc.desc Test stencilMaskSeparate.
-	 */
-	it('testStencilMaskSeparate1', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL stencilMaskSeparate test start ...' + JSON.stringify(gl));
-		gl.stencilMaskSeparate(gl.BACK, 110101);
-		const stencilMaskSeparateParameter = gl.getParameter(gl.STENCIL_WRITEMASK);
-		console.info("stencilMaskSeparate stencilMaskSeparateParameter: " +
-			stencilMaskSeparateParameter);
-		expect(stencilMaskSeparateParameter).assertEqual(110101);
-		done();
-	});
-
-	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1036
 	 * @tc.name testStencilMaskSeparate2
 	 * @tc.desc Test stencilMaskSeparate.

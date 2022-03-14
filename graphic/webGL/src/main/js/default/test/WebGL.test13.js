@@ -429,23 +429,6 @@ describe('webgl1Test', function() {
 	});
 
 	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1209
-	 * @tc.name webgl_test_copyTexImage2D_1
-	 * @tc.desc Test copyTexImage2D.
-	 */
-	it('webgl_test_copyTexImage2D_1', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into copyTexImage2D");
-		gl.copyTexImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE_ALPHA, 0, 0, 512, 512, 0);
-		let errorCode = gl.getError();
-		console.info("webgltest copyTexImage2D getError: " + errorCode);
-		expect(errorCode).assertEqual(gl.INVALID_FRAMEBUFFER_OPERATION);
-
-		//deleteContext();
-		done();
-	});
-
-	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1210
 	 * @tc.name webgl_test_disable_40
 	 * @tc.desc Test disable.
@@ -999,21 +982,6 @@ describe('webgl1Test', function() {
 	})
 
 	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1240
-	 * @tc.name testRenderbufferStorageMultisample_1
-	 * @tc.desc Test renderbufferStorageMultisample.
-	 */
-	it('testRenderbufferStorageMultisample_1', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testRenderbufferStorageMultisample test start ...66');
-		gl2.renderbufferStorageMultisample(gl.RENDERBUFFER, 4, gl.DEPTH_COMPONENT16, 256, 256);
-		const renderbufferStorageMultisampleError = gl.getError();
-		console.info("renderbufferStorageMultisampleError: " + renderbufferStorageMultisampleError);
-		expect(renderbufferStorageMultisampleError).assertEqual(0);
-		done();
-	})
-
-	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1241
 	 * @tc.name testRenderbufferStorageMultisample_2
 	 * @tc.desc Test renderbufferStorageMultisample.
@@ -1067,21 +1035,6 @@ describe('webgl1Test', function() {
 		//initContext();
 		console.info('jsWebGL testRenderbufferStorageMultisample test start ...66');
 		gl2.renderbufferStorageMultisample(gl.RENDERBUFFER, 4, gl.DEPTH32F_STENCIL8, 256, 256);
-		const renderbufferStorageMultisampleError = gl.getError();
-		console.info("renderbufferStorageMultisampleError: " + renderbufferStorageMultisampleError);
-		expect(renderbufferStorageMultisampleError).assertEqual(0);
-		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1245
-	 * @tc.name testRenderbufferStorageMultisample_6
-	 * @tc.desc Test renderbufferStorageMultisample.
-	 */
-	it('testRenderbufferStorageMultisample_6', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testRenderbufferStorageMultisample test start ...66');
-		gl2.renderbufferStorageMultisample(gl.RENDERBUFFER, 4, gl.STENCIL_INDEX8, 256, 256);
 		const renderbufferStorageMultisampleError = gl.getError();
 		console.info("renderbufferStorageMultisampleError: " + renderbufferStorageMultisampleError);
 		expect(renderbufferStorageMultisampleError).assertEqual(0);
@@ -2099,29 +2052,6 @@ describe('webgl1Test', function() {
 		const errorCode = gl.getError();
 		console.info("jsWebGL getFramebufferAttachmentParameter errorCode: " + errorCode);
 		expect(errorCode).assertEqual(gl.INVALID_OPERATION);
-		done();
-	});
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1297
-	 * @tc.name testGetFramebufferAttachmentParameter3_7
-	 * @tc.desc Test getFramebufferAttachmentParameter.
-	 */
-	it('testGetFramebufferAttachmentParameter3_7', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL getFramebufferAttachmentParameter test start ...' + JSON.stringify(
-			gl));
-		const renderBuffer = gl.createRenderbuffer();
-		gl.bindRenderbuffer(gl.RENDERBUFFER, renderBuffer);
-		gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.RENDERBUFFER,
-			renderBuffer);
-		const framebuffer = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl
-			.DEPTH_STENCIL_ATTACHMENT,
-			gl.FRAMEBUFFER_ATTACHMENT_OBJECT_NAME);
-		console.info('Framebuffer' + framebuffer);
-		const errorCode = gl.getError();
-		console.info("jsWebGL getFramebufferAttachmentParameter errorCode: " + errorCode);
-		expect(errorCode).assertEqual(0);
 		done();
 	});
 
