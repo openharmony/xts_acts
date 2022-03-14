@@ -33,7 +33,7 @@ describe('VideoDecoderEnum', function () {
     let surfaceID = '';
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
-    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/shared/';
+    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/';
     let ES_FRAME_SIZE = [];
     const H264_FRAME_SIZE_60FPS_320 =
     [ 2106, 11465];
@@ -167,7 +167,7 @@ describe('VideoDecoderEnum', function () {
                     console.info('in case: setParameter success ');
                 }, failCallback).catch(failCatch);
             }
-            videoDecodeProcessor.queueInput(inputObject).then(() => {
+            videoDecodeProcessor.pushInputData(inputObject).then(() => {
                 console.info('in case: queueInput success ');
             }, failCallback).catch(failCatch);
         }
@@ -183,7 +183,7 @@ describe('VideoDecoderEnum', function () {
                 return;
             }
             frameCountOut++;
-            await videoDecodeProcessor.releaseOutput(outputObject, true).then(() => {
+            await videoDecodeProcessor.freeOutputBuffer(outputObject).then(() => {
                 console.log('in case: release output count:' + frameCountOut);
             }, failCallback).catch(failCatch);
         }
@@ -191,7 +191,7 @@ describe('VideoDecoderEnum', function () {
 
     function setCallback(nextStep){
         console.info('in case:  setCallback in');
-        videoDecodeProcessor.on('inputBufferAvailable', async (inBuffer) => {
+        videoDecodeProcessor.on('needInputData', async (inBuffer) => {
             expect(inBuffer.index !== undefined).assertTrue();
             console.info('in case: inputBufferAvailable inBuffer.index: '+ inBuffer.index);
             expect(inBuffer.data !== undefined).assertTrue();
@@ -208,7 +208,7 @@ describe('VideoDecoderEnum', function () {
             await enqueueInputs();
         });
 
-        videoDecodeProcessor.on('outputBufferAvailable', async (outBuffer) => {
+        videoDecodeProcessor.on('newOutputData', async (outBuffer) => {
             console.info('in case: outputBufferAvailable outBuffer.index: '+ outBuffer.index);
             videoDecodeProcessor.getOutputMediaDescription().then((MediaDescription) => {
                 console.info('get outputMediaDescription : ' + MediaDescription);
@@ -223,7 +223,7 @@ describe('VideoDecoderEnum', function () {
             console.info('in case: err.code is ' + err.code);
         });
 
-        videoDecodeProcessor.on('outputFormatChanged',(format) => {
+        videoDecodeProcessor.on('streamChanged',(format) => {
             console.info('in case: Output format changed: ' + format.toString());
         });
         console.info('in case:  setCallback out');

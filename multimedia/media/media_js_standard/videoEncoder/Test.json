@@ -4,9 +4,16 @@
         "type": "JSUnitTest",
         "test-timeout": "2000000",
         "package": "ohos.acts.multimedia.video.videoencoder",
-		"shell-timeout": "60000"
+        "shell-timeout": "60000"
     },
     "kits": [
+        {
+            "test-file-name": [
+                "ActsVideoEncoderJsTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
         {
             "type": "PushKit",
             "pre-push": [
@@ -14,7 +21,7 @@
             "push": [
             ]
         },
-		{
+        {
             "type": "ShellKit",
             "run-command": [
                 "rm -R /data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/results",
@@ -24,13 +31,6 @@
             ],
             "teardown-command":[
             ]
-        },
-        {
-            "test-file-name": [
-                "ActsVideoEncoderJsTest.hap"
-            ],
-            "type": "AppInstallKit",
-            "cleanup-apps": true
         }
     ]
 }

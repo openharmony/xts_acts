@@ -46,7 +46,7 @@ describe('VideoDecoderReliCallbackTest', function () {
     let inputEosFlag = false;
     let workdoneAtEOS = false;
     let surfaceID = '';
-    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/shared/';
+    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/';
     const SRCPATH = BASIC_PATH + 'out_320_240_10s.h264';
     let mediaDescription = {
         'track_type': 1,
@@ -197,7 +197,7 @@ describe('VideoDecoderReliCallbackTest', function () {
             } else {
                 inputObject.flags = 4;
             }
-            videoDecodeProcessor.queueInput(inputObject, (err) => {
+            videoDecodeProcessor.pushInputData(inputObject, (err) => {
                 console.info('in case: queueInput success ');
             })
         }
@@ -215,7 +215,7 @@ describe('VideoDecoderReliCallbackTest', function () {
                 return;
             }
             frameCountOut++;
-            videoDecodeProcessor.releaseOutput(outputObject, true, () => {
+            videoDecodeProcessor.renderOutputData(outputObject, () => {
                 console.log('in case: release output count:' + frameCountOut);
             })
         }
@@ -397,13 +397,13 @@ describe('VideoDecoderReliCallbackTest', function () {
     }
 
     function setCallback(nextStep){
-        videoDecodeProcessor.on('inputBufferAvailable', async (inBuffer) => {
+        videoDecodeProcessor.on('needInputData', async (inBuffer) => {
             console.info('in case: inputBufferAvailable inBuffer.index: '+ inBuffer.index);
             inputQueue.push(inBuffer);
             await enqueueInputs();
         });
 
-        videoDecodeProcessor.on('outputBufferAvailable', async (outBuffer) => {
+        videoDecodeProcessor.on('newOutputData', async (outBuffer) => {
             console.info('in case: outputBufferAvailable outBuffer.index: '+ outBuffer.index);
             outputQueue.push(outBuffer);
             await dequeueOutputs(nextStep);
@@ -413,7 +413,7 @@ describe('VideoDecoderReliCallbackTest', function () {
             console.info('in case: error called,errName is' + err);
         });
 
-        videoDecodeProcessor.on('outputFormatChanged',(format) => {
+        videoDecodeProcessor.on('streamChanged',(format) => {
             console.info('in case: Output format changed: ' + format.toString());
         });
     }

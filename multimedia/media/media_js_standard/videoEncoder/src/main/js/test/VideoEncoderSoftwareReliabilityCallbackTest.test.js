@@ -129,7 +129,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
             }
             frameCountOut++;
             writeFile(path, outputObject.data, outputObject.length);
-            videoEncodeProcessor.releaseOutput(outputObject, (err) => {
+            videoEncodeProcessor.freeOutputBuffer(outputObject, (err) => {
                 if (typeof(err) == 'undefined') {
                     console.debug('in case release output count:' + frameCountOut);
                 } else {
@@ -146,7 +146,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
         }
     }
     function setCallback(path, nextStep) {
-        videoEncodeProcessor.on('outputBufferAvailable', async (outBuffer) => {
+        videoEncodeProcessor.on('newOutputData', async (outBuffer) => {
             console.info('in case: outputBufferAvailable outBuffer.index: '+ outBuffer.index);
             if (stopBuffer == false) {
                 outputQueue.push(outBuffer);
@@ -158,7 +158,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
             console.info('in case: error called,errName is' + err);
         });
 
-        videoEncodeProcessor.on('outputFormatChanged', (format) => {
+        videoEncodeProcessor.on('streamChanged', (format) => {
             if (typeof(format) != undefined) {
                 printDescription(format);   
             }
