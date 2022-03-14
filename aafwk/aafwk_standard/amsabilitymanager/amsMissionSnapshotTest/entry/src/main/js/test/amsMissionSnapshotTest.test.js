@@ -38,7 +38,7 @@ describe('ActsMissionSnapshotTest', function () {
         console.debug('ACTS_MissionSnapshot_0100====<begin');
         try {
             await missionManager.getMissionSnapShot("", -1, (err, data) => {
-                expect(err.code).assertEqual(2097172);
+                expect(err.code != 0).assertTrue();
                 console.debug("=ACTS_MissionSnapshot_0100 err.code,data=======>"
                 + err.code + ("json data【") + JSON.stringify(data) + (" 】") + " , " + data);
                 console.debug('ACTS_MissionSnapshot_0100====<end')
@@ -213,7 +213,7 @@ describe('ActsMissionSnapshotTest', function () {
                 }).catch(function (err) {
                     console.debug("=ACTS_MissionSnapshot_0400 catch err ====>"
                         + ("json err 【") + JSON.stringify(err) + (" 】 "));
-                    expect(err.code).assertEqual(2097172);
+                    expect(err.code != 0).assertTrue();
                     console.debug('ACTS_MissionSnapshot_0400====<end .catch(err)');
                     done();
                 });

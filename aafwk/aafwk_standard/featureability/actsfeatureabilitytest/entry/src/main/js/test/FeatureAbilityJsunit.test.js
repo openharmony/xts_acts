@@ -1515,14 +1515,25 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Check the return value of the interface (by Promise)
      */
     it('ACTS_HasWindowFocus_0200', 0, async function (done) {
-        var promise = featureAbility.hasWindowFocus();
-        expect(typeof (promise)).assertEqual("object");
-        var info = await featureAbility.hasWindowFocus();
-        expect(info).assertEqual(false);
-        done();
-        setTimeout(function () {
-            console.info('====> ACTS_HasWindowFocus_0200 =====>')
-        }, TIMEOUT)
+        console.info('====>ACTS_HasWindowFocus_0200 start=====>')
+        featureAbility.startAbility(
+            {
+                want:
+                {
+                    bundleName: "com.example.getcallingbundlepromisetest",
+                    abilityName: "com.example.getcallingbundlepromisetest.MainAbility",
+                },
+            }, (err, data)=>{
+                console.info('====>ACTS_HasWindowFocus_0200 startAbility err: '+ JSON.stringify(err))
+                setTimeout(async function () {
+                    console.info('====>ACTS_HasWindowFocus_0200 =====>')
+                    var info = await featureAbility.hasWindowFocus();
+                    console.info('====>ACTS_HasWindowFocus_0200 info ' + info);
+                    expect(info).assertEqual(false);
+                    done();
+                }, TIMEOUT)
+            }
+        );
     })
 
     /**
@@ -1531,17 +1542,28 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      */
     it('ACTS_HasWindowFocus_0400', 0, async function (done) {
-        var result = featureAbility.hasWindowFocus(
-            (error, data) => {
-                console.log("ACTS_HasWindowFocus_0400 asyncCallback code: " + error.code + " data: " + data)
-                expect(error.code).assertEqual(0);
-                expect(data).assertEqual(false);
-                done();
+        console.info('====>ACTS_HasWindowFocus_0400 start=====>')
+        featureAbility.startAbility(
+            {
+                want:
+                {
+                    bundleName: "com.example.getcallingbundlepromisetest",
+                    abilityName: "com.example.getcallingbundlepromisetest.MainAbility",
+                },
+            }, (err, data)=>{
+                console.info('====>ACTS_HasWindowFocus_0400 startAbility err: '+ JSON.stringify(err))
+                setTimeout(async function () {
+                    console.info('====> ACTS_HasWindowFocus_0400 =====>')
+                    featureAbility.hasWindowFocus(
+                    (error, data)=>{
+                        console.log("ACTS_HasWindowFocus_0400 asyncCallback code: " + error.code + " data: " + data)
+                        expect(error.code).assertEqual(0);
+                        expect(data).assertEqual(false);
+                        done();
+                    });
+                }, TIMEOUT)
             }
         );
-        setTimeout(function () {
-            console.info('====> ACTS_HasWindowFocus_0400 =====>')
-        }, TIMEOUT)
     })
 
     /**
