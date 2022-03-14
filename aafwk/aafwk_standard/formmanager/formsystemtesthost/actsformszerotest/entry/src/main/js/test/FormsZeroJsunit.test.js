@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import formBindingData from "@ohos.application.formBindingData"
 import formManager from '@ohos.ability.formManager'
 import {describe, it, expect} from 'deccjsunit/index'
 
@@ -85,6 +86,26 @@ describe('ActsFormsZeroTest', function () {
             console.info('=====================FMS_getFormsInfo_0300_promise==================end');
         }, TIMEOUT)
         console.log("FMS_getFormsInfo_0300_promise end, ret:" + ret);
+    })
+
+    /**
+     * @tc.name CreateFormBindingData test
+     * @tc.number FMS_CreateFormBindingData_0100
+     * @tc.desc Creates data and returns a data object
+     */
+     it('FMS_CreateFormBindingData_0100', 0, async function (done) {
+        console.log("FMS_CreateFormBindingData_0100 begin");
+        let dataObj = {
+            temperature:"22c",
+            "time":"22:00",
+            "test":22,
+            "test3":true
+        };
+        let obj = formBindingData.createFormBindingData(JSON.stringify(dataObj));
+        console.log('FMS_CreateFormBindingData_0100, obj.data:' + obj.data);
+        expect(JSON.stringify(dataObj)).assertEqual(obj.data);
+        done();
+        console.log("FMS_CreateFormBindingData_0100 end");
     })
 
 }) 
