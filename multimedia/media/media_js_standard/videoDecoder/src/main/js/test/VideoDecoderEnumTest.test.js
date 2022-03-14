@@ -33,7 +33,7 @@ describe('VideoDecoderEnum', function () {
     let surfaceID = '';
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
-    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/shared/';
+    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/';
     let ES_FRAME_SIZE = [];
     const H264_FRAME_SIZE_60FPS_320 =
     [ 2106, 11465];
