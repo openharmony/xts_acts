@@ -30,9 +30,7 @@
                       ]
                   }
               ],
-              "descriptionId": 16777217,
               "visible": true,
-              "labelId": 16777216,
               "icon": "$media:icon",
               "name": "ohos.acts.storage.filemanager.MainAbility",
               "description": "$string:mainability_description",
