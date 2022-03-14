@@ -15,6 +15,26 @@
     {
       "name": "entry_MainAbility2",
       "value": "entry_MainAbility2"
+    },
+    {
+      "name": "description_mainability3",
+      "value": "JS_Empty Ability"
+    },
+    {
+      "name": "entry_MainAbility3",
+      "value": "entry_MainAbility3"
+    },
+    {
+      "name": "description_mainability4",
+      "value": "JS_Empty Ability"
+    },
+    {
+      "name": "entry_MainAbility4",
+      "value": "entry_MainAbility4"
+    },
+    {
+      "name": "description_serviceability",
+      "value": "hap sample empty service"
     }
   ]
 }

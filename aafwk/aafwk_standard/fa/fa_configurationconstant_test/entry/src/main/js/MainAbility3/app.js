@@ -12,30 +12,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import commonEvent from '@ohos.commonEvent';
 import ability_featureAbility from '@ohos.ability.featureAbility';
+import commonEvent from '@ohos.commonEvent';
 export default {
     onCreate() {
-        commonEvent.publish("ApplicationMainAbility1_onCreate",()=>{
-            console.log("ApplicationMainAbility1_onCreate publish callBack ApplicationMainAbility1_onCreate");
-        });
+        console.info("Application onCreate MainAbility3");
         setTimeout(()=>{
             ability_featureAbility.terminateSelf().then((data)=>{
-                console.log("ApplicationMainAbility2 terminateSelf data：" + JSON.stringify(data) )
+                console.log("Application terminateSelf data：" + JSON.stringify(data) )
             }).catch((error)=>{
-                console.log("ApplicationMainAbility2 terminateSelf error：" + JSON.stringify(error) )
+                console.log("Application terminateSelf data：" + JSON.stringify(error) )
             })
-        },3000)
-
-        console.info("Application onCreate");
+        },2500)
     },
     onDestroy() {
-        console.info("Application onDestroy");
-//        commonEvent.publish("ApplicationMainAbility1_onDestroy",()=>{
-//            console.log("ApplicationMainAbility1_onDestroy publish callBack ApplicationMainAbility1_onDestroy");
-//        });
+        console.log("singletonEntryAbulity_onDestroy222");
+        commonEvent.publish("ApplicationMainAbility3_onDestroy",()=>{
+            console.log("ApplicationMainAbility3_onDestroy publish callBack ApplicationMainAbility2_onDestroy");
+        });
     },
     onForgeGround(){
-        console.info("Application onForgeGround");
+        console.log("singletonEntryAbulity_onForgeGround");
+        commonEvent.publish("ApplicationMainAbility3_onForgeGround",()=>{
+            console.log("ApplicationMainAbility3_onHide publish callBack ApplicationMainAbility2_onForgeGround");
+        });
     }
 };

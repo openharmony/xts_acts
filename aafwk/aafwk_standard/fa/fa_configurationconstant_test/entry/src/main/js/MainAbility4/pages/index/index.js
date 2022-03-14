@@ -12,17 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import commonEvent from '@ohos.commonEvent';
 import router from '@system.router'
 import {Core} from 'deccjsunit/index'
+import commonEvent from '@ohos.commonEvent';
 
 export default {
     data: {
         title: ""
     },
     onInit() {
-        this.title = 'yingyong1';
+        this.title = 'yingyong4';
     },
     onclick: function () {
         router.replace({
@@ -30,18 +29,8 @@ export default {
         })
     },
     onShow() {
-        console.log("singletonEntryAbulity1_onShow")
-        commonEvent.publish("singletonEntryAbulity1_onShow",()=>{
-            console.log("singletonEntryAbulity1_onHide publish callBack singletonEntryAbulity1_onHide");
-        });
-        const core = Core.getInstance()
-        core.init()
-        const configService = core.getDefaultService('config')
-        configService.setConfig(this)
-        console.info('onShow ')
-        require('../../../test/List.test')
-        console.info('onShow start5')
-        core.execute()
+        console.info('onShow start')
+
     },
     onHide(){
         console.log("singletonEntryAbulity_onHide")
@@ -57,7 +46,7 @@ export default {
     },
     onInactive(){
         console.log("singletonEntryAbulity_onInactive")
-        commonEvent.publish("singletonEntryAbulity1_onInactive",()=>{
+        commonEvent.publish("singletonEntryAbulity1_onHide",()=>{
             console.log("singletonEntryAbulity1_onInactive publish callBack singletonEntryAbulity1_onInactive");
         });
     }
