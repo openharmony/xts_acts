@@ -13,12 +13,15 @@
  * limitations under the License.
  */
 import bundle from '@ohos.bundle'
+import pkg from '@system.package'
 const bundleName = 'com.ohos.launcher'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 const NUM_TWO = 2;
 const NUM_FOUR = 4;
+const ERR_CODE = 202;
+const ERR_MERSSAGE = 'value is not an available number';
 describe('ActsBmsJsTest', function () {
-    
+
     /*
     * @tc.number: bms_getJsAbility_0100
     * @tc.name: test the multi js ability
@@ -235,6 +238,94 @@ describe('ActsBmsJsTest', function () {
         let dataInfo = await bundle.getBundleInfo(bundleName)
         let data = await bundle.getNameForUid(dataInfo.uid)
         expect(data).assertEqual(bundleName)
+        done()
+    })
+
+    /**
+     * @tc.number hasInstalled_0100
+     * @tc.name Package::hasInstalled
+     * @tc.desc Test hasInstalled interface.
+     */
+     it('hasInstalled_0100', 0, async function (done) {
+        pkg.hasInstalled({
+            bundleName: 'com.ohos.launcher',
+            success: function success(data) {
+                console.info('hasInstalled success function in');
+                expect(data.result).assertTrue();
+            },
+            fail: function fail(data, code) {
+                console.info('hasInstalled fail function in');
+                expect().assertFail();
+            },
+            complete: function complete() {
+                console.info('hasInstalled complete function in');
+                expect().assertFail();
+            }
+        });
+        done()
+    })
+
+    /**
+     * @tc.number hasInstalled_0200
+     * @tc.name Package::hasInstalled
+     * @tc.desc Test hasInstalled interface.
+     */
+     it('hasInstalled_0200', 0, async function (done) {
+        pkg.hasInstalled({
+            bundleName: 'wrongName',
+            success: function success(data) {
+                console.info('hasInstalled success function in');
+                expect(data.result).assertFalse();
+            },
+            fail: function fail(data, code) {
+                console.info('hasInstalled fail function in');
+                expect().assertFail();
+            },
+            complete: function complete() {
+                console.info('hasInstalled complete function in');
+                expect().assertFail();
+            }
+        });
+        done()
+    })
+
+    /**
+     * @tc.number hasInstalled_0300
+     * @tc.name Package::hasInstalled
+     * @tc.desc Test hasInstalled interface.
+     */
+     it('hasInstalled_0300', 0, async function (done) {
+        pkg.hasInstalled({
+            bundleName: 'wrongName',
+            success: function success(data) {
+                console.info('hasInstalled success function in');
+                expect(data.result).assertFalse();
+            }
+        });
+        done()
+    })
+
+    /**
+     * @tc.number hasInstalled_0400
+     * @tc.name Package::hasInstalled
+     * @tc.desc Test hasInstalled interface.
+     */
+     it('hasInstalled_0400', 0, async function (done) {
+        pkg.hasInstalled({
+            bundleName: NUM_TWO,
+            success: function success(data) {
+                console.info('hasInstalled success function in');
+                expect().assertFail();
+            },
+            fail: function fail(data, code) {
+                console.info('hasInstalled fail function in');
+                expect(data).assertEqual(ERR_MERSSAGE);
+                expect(code).assertEqual(ERR_CODE);
+            },
+            complete: function complete() {
+                console.info('hasInstalled complete function in');
+            }
+        });
         done()
     })
 })
