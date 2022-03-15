@@ -141,7 +141,7 @@ describe('fileio_open', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      await fileio.open(fpath, function (err, fd) {
+      fileio.open(fpath, 0o2, function (err, fd) {
         fileio.read(fd, new ArrayBuffer(4096))
           .then(function (res) {
             expect((String.fromCharCode.apply(null, new Uint8Array(res.buffer))) == FILE_CONTENT).assertTrue;
@@ -188,7 +188,7 @@ describe('fileio_open', function () {
       expect(null).assertFail();
     }
   });
-  
+
   /**
    * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0050
    * @tc.name fileio_test_open_async_005
@@ -234,7 +234,7 @@ describe('fileio_open', function () {
     let fpath = await nextFileName('fileio_test_open_async_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
-      await fileio.open(fpath, 0o1, 0o0200)
+      await fileio.open(fpath, 0o2, 0o0200)
         .then(function (fd) {
           fileio.read(fd, new ArrayBuffer(4096))
             .then(function (res) {
@@ -248,6 +248,92 @@ describe('fileio_open', function () {
           expect(err == null).assertTrue();
         })
       done();
+    } catch (e) {
+      expect(null).assertFail();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0070
+   * @tc.name fileio_test_open_async_007
+   * @tc.desc Test openASync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileio_test_open_async_007', 0, async function (done) {
+    let fpath = await nextFileName('fileio_test_open_async_007');
+    try {
+      fileio.open(fpath, 0o0101, 0o0222, function (err, fd) {
+        expect(fd !== null).assertTrue();
+        fileio.writeSync(fd, FILE_CONTENT, {
+          encoding: 'utf-8',
+          offset: 1,
+          length: 1,
+        });
+        expect(fileio.closeSync(fd) !== null).assertTrue();
+        expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+        done();
+      });
+    } catch (e) {
+      expect(null).assertFail();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0080
+   * @tc.name fileio_test_open_async_008
+   * @tc.desc Test openASync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileio_test_open_async_008', 0, async function (done) {
+    let fpath = await nextFileName('fileio_test_open_async_008');
+    try {
+      fileio.open(fpath, 0o100, 0o0444, function (err, fd) {
+        expect(fd !== null).assertTrue();
+        expect(fileio.closeSync(fd) !== null).assertTrue();
+        expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+        done();
+      });
+    } catch (e) {
+      expect(null).assertFail();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0090
+   * @tc.name fileio_test_open_async_009
+   * @tc.desc Test openASync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileio_test_open_async_009', 0, async function (done) {
+    let fpath = await nextFileName('fileio_test_open_async_009');
+    try {
+      fileio.open(fpath, 0o2101, 0o0222, function (err, fd) {
+        expect(fd !== null).assertTrue();
+        let wri = fileio.writeSync(fd, 'hello1', {
+          encoding: 'utf-8',
+          offset: 1,
+          length: 1,
+        });
+        expect(wri !== null).assertTrue();
+        let writ = fileio.writeSync(fd, 'hello2', {
+          encoding: 'utf-8',
+          offset: 1,
+          length: 1,
+        });
+        expect(writ !== null).assertTrue();
+        expect(fileio.closeSync(fd) !== null).assertTrue();
+        expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+        done();
+      });
     } catch (e) {
       expect(null).assertFail();
     }
