@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-require('./getPermission.test.js')
 require('./FileAssetGetThumbnailCallBack.test.js')
 require('./FileAssetGetThumbnailPromise.test.js')
 require('./albumGetFileAssetsPromise.test.js')
