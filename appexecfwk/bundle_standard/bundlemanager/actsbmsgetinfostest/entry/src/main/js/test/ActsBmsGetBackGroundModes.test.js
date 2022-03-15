@@ -92,13 +92,14 @@ describe('ActsBmsGetBackGroundModes', function () {
                 console.info("========>bundleInfos[i].name======" + bundleInfos[i].name)
                 console.info("========>bundleInfos[i]======" + JSON.stringify(bundleInfos[i]));
                 if (bundleInfos[i].name == BUNDLE_NAME5) {
-                    console.info("========>bundleInfos[i].abilityinfos======" + JSON.stringify(bundleInfos[i].abilityInfos))
+                    console.info("====bundleInfos[i].abilityinfos===" + JSON.stringify(bundleInfos[i].abilityInfos))
                     for (let j = 0; j < bundleInfos[i].abilityInfos.length; j++) {
                         console.info("========>bundleInfos[i].abilityinfos[j].name======"
                             + bundleInfos[i].abilityInfos[j].name)
                         if (bundleInfos[i].abilityInfos[j].name == 'com.example.third5.MainAbilityA') {
-                            expect(bundleInfos[i].abilityInfos[j].backgroundModes).assertEqual(dataTransfer | audioPlayback | audioRecording |
-                                location | bluetoothInteraction | multiDeviceConnection | wifiInteraction | voip | taskKeeping);
+                            expect(bundleInfos[i].abilityInfos[j].backgroundModes).assertEqual(dataTransfer | 
+                                audioPlayback | audioRecording | location | bluetoothInteraction | 
+                                multiDeviceConnection | wifiInteraction | voip | taskKeeping);
                         } else if (bundleInfos[i].abilityInfos[j].name == 'com.example.third5.MainAbilityB') {
                             expect(bundleInfos[i].abilityInfos[j].backgroundModes).assertEqual(dataTransfer | voip);
                         }
@@ -109,8 +110,8 @@ describe('ActsBmsGetBackGroundModes', function () {
             var data3 = await bundle.getBundleInfo(BUNDLE_NAME5, 1)
             console.info("========>data3======" + data3.abilityInfos.length)
             for (let q = 0; q < data3.abilityInfos.length; q++) {
-                console.info("========>data3.abilityInfos======" + JSON.stringify(data3.abilityInfos[2].backgroundModes))
-                console.info("========>data3.abilityInfos======" + JSON.stringify(data3.abilityInfos[3].backgroundModes))
+                console.info("=====>data3.abilityInfos======" + JSON.stringify(data3.abilityInfos[2].backgroundModes))
+                console.info("=====>data3.abilityInfos======" + JSON.stringify(data3.abilityInfos[3].backgroundModes))
             }
             expect(data3.abilityInfos[2].backgroundModes).assertEqual(dataTransfer | audioPlayback | audioRecording |
                 location | bluetoothInteraction | multiDeviceConnection | wifiInteraction | voip | taskKeeping);
@@ -119,8 +120,8 @@ describe('ActsBmsGetBackGroundModes', function () {
             var data5 = await bundle.getBundleArchiveInfo(BUNDLE_PATH5, 1)
             console.info("========>data5======" + data5.abilityInfos.length)
             for (let i = 0; i < data5.abilityInfos.length; i++) {
-                console.info("========>data5.abilityInfos======" + JSON.stringify(data5.abilityInfos[2].backgroundModes))
-                console.info("========>data5.abilityInfos======" + JSON.stringify(data5.abilityInfos[3].backgroundModes))
+                console.info("=====>data5.abilityInfos======" + JSON.stringify(data5.abilityInfos[2].backgroundModes))
+                console.info("=====>data5.abilityInfos======" + JSON.stringify(data5.abilityInfos[3].backgroundModes))
             }
             expect(data5.abilityInfos[2].backgroundModes).assertEqual(dataTransfer | audioPlayback | audioRecording |
                 location | bluetoothInteraction | multiDeviceConnection | wifiInteraction | voip | taskKeeping);
@@ -197,13 +198,14 @@ describe('ActsBmsGetBackGroundModes', function () {
                     console.info("========>bundleInfos[i].name======" + bundleInfos[i].name)
                     console.info("========>bundleInfos[i]======" + JSON.stringify(bundleInfos[i]));
                     if (bundleInfos[i].name == BUNDLE_NAME2) {
-                        console.info("========>bundleInfos[i].abilityinfos======" + JSON.stringify(bundleInfos[i].abilityInfos))
+                        console.info("==bundleInfos[i].abilityinfos===" + JSON.stringify(bundleInfos[i].abilityInfos))
                         for (let j = 0; j < bundleInfos[i].abilityInfos.length; j++) {
                             console.info("========>bundleInfos[i].abilityinfos[j].name======"
                                 + bundleInfos[i].abilityInfos[j].name)
                             if (bundleInfos[i].abilityInfos[j].name == 'com.example.third2.MainAbilityA') {
-                                expect(bundleInfos[i].abilityInfos[j].backgroundModes).assertEqual(audioPlayback | audioRecording | location
-                                    | bluetoothInteraction | multiDeviceConnection | wifiInteraction | voip | taskKeeping);
+                                expect(bundleInfos[i].abilityInfos[j].backgroundModes).assertEqual(
+                                    audioPlayback | audioRecording| location | bluetoothInteraction 
+                                    | multiDeviceConnection | wifiInteraction | voip | taskKeeping);
                             }
                         }
                     }
