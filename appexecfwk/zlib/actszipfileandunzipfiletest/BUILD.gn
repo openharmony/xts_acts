@@ -11,14 +11,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos_var.gni")
+import("//test/xts/tools/build/suite.gni")
 
-group("appexecfwk") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "bundle_standard:bundle_standard",
-      "zlib:zlib",
-    ]
-  }
+ohos_js_hap_suite("actszipfileandunzipfiletest") {
+  hap_profile = "./entry/src/main/config.json"
+  deps = [
+    ":hjs_demo_js_assets",
+    ":hjs_demo_resources",
+  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "actszipfileandunzipfiletest"
+}
+ohos_js_assets("hjs_demo_js_assets") {
+  source_dir = "./entry/src/main/js/default"
+}
+ohos_resources("hjs_demo_resources") {
+  sources = [ "./entry/src/main/js/resources" ]
+  hap_profile = "./entry/src/main/config.json"
 }
