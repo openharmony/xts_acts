@@ -14,12 +14,9 @@
  */
 
 import filemanager from '@ohos.filemanager';
-import {
-  describe,
-  it,
-  expect
-}
-from 'deccjsunit/index'
+import {describe,it,expect,beforeAll}from 'deccjsunit/index';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
+import bundle from '@ohos.bundle';
 
 // getRoot() interface, when the parameter is "local", the returned data and the data contrast,  return the same data is correct
 const ROOTFILE = [
@@ -36,7 +33,18 @@ let AUDIO_ROOT = "";
 let IMAGE_ALBUM = "";
 let LOG_ = "FMS_XTS_TEXT: ";
 let LENGTH = 0;
+let tokenID = null;
 describe("filemanager_test", function () {
+
+  beforeAll(async function (){
+    let appInfo = await bundle.getApplicationInfo('ohos.acts.storage.filemanager', 0, 100);
+    tokenID = appInfo.accessTokenId;
+    let atManager = abilityAccessCtrl.createAtManager();
+    let result = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.READ_MEDIA",1);
+    console.log("tokenID:" + tokenID + "-result:" + result);
+    let result1 = await atManager.verifyAccessToken(tokenID, "ohos.permission.READ_MEDIA");
+    console.log("tokenID:" + tokenID + "-result:" + result1);
+  });
 
   /**
    * @tc.number SUB_DF_FILEMANAGER_GET_ROOT_0000
@@ -172,7 +180,7 @@ describe("filemanager_test", function () {
           "name":1
         }
       }
-      await filemanager.getRoot(options)
+      await filemanager.getRoot(options);
     } catch (error) {
       console.log("filemanager_test_get_root_async_004 has failed for " + error);
       expect(error.message == "GetRoot func get dev para fails").assertTrue();
@@ -194,7 +202,6 @@ describe("filemanager_test", function () {
       let path = IMAGE_ROOT;
       let fileInfos = await filemanager.listFile(path, "image");
       expect(Array.isArray(fileInfos)).assertTrue();
-      console.log(JSON.stringify(fileInfos))
       for (let i = 0; i < fileInfos.length; i++) {
         if (fileInfos[i].name == "image") {
           console.log(JSON.stringify(fileInfos[i]))
