@@ -13,9 +13,7 @@
  * limitations under the License.
  */
 
-require('./BackgroundTaskMagrJs.test.js')
-require('./ContinuousTaskJsunit.test.js')
-
+require('./DeviceUsageStatisticsJsunit.test.js')
 
 
 
