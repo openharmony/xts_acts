@@ -1675,9 +1675,10 @@ describe('ActsBmsFormsInfoTest', function () {
      * @tc.desc: get the abilityIcon
      */
     it('bms_getAbilityIcon_0200', 0, async function (done) {
-        let pixelmap = await bundle.getAbilityIcon(BUNDLE_NAME6, ABILITIY_NAME)
-        console.log('bms_getAbilityIcon_0200 success: ' + pixelmap);
-        expect(pixelmap !== null).assertTrue()
-        done()
+        bundle.getAbilityIcon(BUNDLE_NAME6, ABILITIY_NAME, (err, pixelmap) => {
+            expect(err).assertFail()
+            expect(pixelmap !== null).assertTrue()
+            done()
+        })
     })
 })
