@@ -1455,23 +1455,6 @@ describe('webgl1Test', function() {
 	})
 
 	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0365
-	 * @tc.name testIsProgram_04
-	 * @tc.desc Test isProgram.
-	 */
-	it('testIsProgram_04', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testIsProgram_04 test start ...66');
-		var texture = gl.createTexture();
-		const programError = gl.getError();
-		console.info("createProgram --> programError: " + programError);
-		const isProgram = gl.isProgram(texture);
-		console.info("createProgram --> isProgram: " + isProgram);
-		expect(isProgram).assertEqual(true);
-		done();
-	})
-
-	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0366
 	 * @tc.name testIsRenderbuffer
 	 * @tc.desc Test isRenderbuffer.
@@ -1529,21 +1512,6 @@ describe('webgl1Test', function() {
 		const isrenderbuffer = gl.isRenderbuffer(programobject);
 		console.info("createRenderbuffer --> isRenderbuffer: " + isrenderbuffer);
 		expect(isrenderbuffer).assertEqual(false);
-		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0370
-	 * @tc.name testIsRenderbuffer_04
-	 * @tc.desc Test isRenderbuffer.
-	 */
-	it('testIsRenderbuffer_04', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testIsRenderbuffer_04 test start ...66');
-		var texture = gl.createTexture();
-		const isrenderbuffer = gl.isRenderbuffer(texture);
-		console.info("createRenderbuffer --> isRenderbuffer: " + isrenderbuffer);
-		expect(isrenderbuffer).assertEqual(true);
 		done();
 	})
 
@@ -1699,24 +1667,6 @@ describe('webgl1Test', function() {
 	})
 
 	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0381
-	 * @tc.name testGetShaderParameter_1
-	 * @tc.desc Test getShaderParameter.
-	 */
-	it('testGetShaderParameter_1', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL getShaderParameter test start ...' + JSON.stringify(gl));
-		const vertexShader = gl.createShader(gl.VERTEX_SHADER);
-		//        const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
-		gl.deleteShader(vertexShader);
-		const shaderType = gl.getShaderParameter(vertexShader, gl.SHADER_TYPE);
-		console.info('shaderType' + shaderType);
-		expect(shaderType).assertEqual(120);
-		done();
-	});
-
-
-	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0382
 	 * @tc.name testLineWidth
 	 * @tc.desc Test lineWidth.
@@ -1773,38 +1723,6 @@ describe('webgl1Test', function() {
 		console.info('jsWebGL testLinkProgram test start ...' + JSON.stringify(gl));
 		var shaderProg = gl.createProgram();
 		gl.linkProgram(shaderProg);
-		const linkProgramError = gl.getError();
-		console.info("linkProgramError: " + linkProgramError);
-		expect(linkProgramError).assertEqual(0);
-		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0386
-	 * @tc.name testLinkProgram_01
-	 * @tc.desc Test linkProgram.
-	 */
-	it('testLinkProgram_01', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testLinkProgram_01 test start ...66');
-		var renderbuffer = gl.createRenderbuffer();
-		gl.linkProgram(renderbuffer);
-		const linkProgramError = gl.getError();
-		console.info("linkProgramError: " + linkProgramError);
-		expect(linkProgramError).assertEqual(0);
-		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0387
-	 * @tc.name testLinkProgram_02
-	 * @tc.desc Test linkProgram.
-	 */
-	it('testLinkProgram_02', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testLinkProgram_02 test start ...66');
-		const framebuffer = gl.createFramebuffer();
-		gl.linkProgram(framebuffer);
 		const linkProgramError = gl.getError();
 		console.info("linkProgramError: " + linkProgramError);
 		expect(linkProgramError).assertEqual(0);

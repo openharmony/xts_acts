@@ -497,7 +497,6 @@ describe('webgl1Test', function() {
 		done();
 	});
 
-
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0609
 	 * @tc.name webgl_test_blendEquationSeparate2
@@ -516,73 +515,6 @@ describe('webgl1Test', function() {
 		done();
 	});
 
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0610
-	 * @tc.name webgl_test_blendFunc2
-	 * @tc.desc Test blendFunc.
-	 */
-	it('webgl_test_blendFunc2', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into blendFunc");
-
-		gl.enable(gl.BLEND);
-
-		gl.blendFunc(gl.SRC_COLOR);
-
-		const blendFuncValue = gl.getParameter(gl.BLEND_SRC_RGB);
-		console.info("blendFunc --> getParameter: " + blendFuncValue);
-		expect(blendFuncValue).assertEqual(gl.SRC_COLOR);
-
-		//deleteContext();
-		done();
-	});
-
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0611
-	 * @tc.name webgl_test_blendFuncSeparate2
-	 * @tc.desc Test blendFuncSeparate.
-	 */
-	it('webgl_test_blendFuncSeparate2', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into blendFuncSeparate");
-
-		gl.enable(gl.BLEND);
-
-		gl.blendFuncSeparate(gl.SRC_COLOR, gl.DST_COLOR, gl.ONE);
-
-		const blendFuncSeparateParameter = gl.getParameter(gl.BLEND_SRC_RGB)
-		console.info("blendFuncSeparate --> getParameter: " + blendFuncSeparateParameter);
-		expect(blendFuncSeparateParameter).assertEqual(gl.SRC_COLOR);
-
-		//deleteContext();
-		done();
-	});
-
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0612
-	 * @tc.name webgl_test_checkFramebufferStatus22
-	 * @tc.desc Test checkFramebufferStatus.
-	 */
-	it('webgl_test_checkFramebufferStatus22', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into checkFramebufferStatus");
-
-		//        var framebuffer = gl.createFramebuffer();
-		gl.bindFramebuffer(gl.FRAMEBUFFER, 'framebuffer');
-
-		const checkFramebufferStatus = gl.checkFramebufferStatus(gl.FRAMEBUFFER);
-		console.info("createFramebuffer --> bindFramebuffer --> checkFramebufferStatus: " +
-			checkFramebufferStatus);
-		expect(checkFramebufferStatus).assertEqual(gl.FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT);
-
-		//deleteContext();
-		done();
-	});
-
-
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0613
 	 * @tc.name webgl_test_clear2
@@ -599,7 +531,6 @@ describe('webgl1Test', function() {
 		//deleteContext();
 		done();
 	});
-
 
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0614
@@ -704,28 +635,6 @@ describe('webgl1Test', function() {
 		done();
 	});
 
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0619
-	 * @tc.name webgl_test_colorMask22
-	 * @tc.desc Test colorMask.
-	 */
-	it('webgl_test_colorMask22', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into colorMask");
-
-		gl.colorMask(true, true, 2, false);
-		// 要获取当前的颜色掩码，请查询COLOR_WRITEMASK返回Array.
-		const colorMaskValue = gl.getParameter(gl.COLOR_WRITEMASK);
-		// [true, true, true, false]
-		console.info("webgltest colorMask --> getParameter: " + colorMaskValue);
-
-		expect(colorMaskValue.toString()).assertEqual('true,true,true,false');
-		//deleteContext();
-		done();
-	});
-
-
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0620
 	 * @tc.name webgl_test_colorMask_12
@@ -746,28 +655,6 @@ describe('webgl1Test', function() {
 		done();
 	});
 
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0621
-	 * @tc.name webgl_test_compileShader2
-	 * @tc.desc Test compileShader.
-	 */
-	it('webgl_test_compileShader2', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into compileShader");
-
-		var shader = gl.createShader(gl.VERTEX_SHADER);
-		gl.shaderSource(shader, 1);
-		gl.compileShader(shader);
-
-		let errorCode = gl.getError();
-		console.info("webgltest compileShader getError: " + errorCode);
-		expect(errorCode).assertEqual(gl.INVALID_FRAMEBUFFER_OPERATION);
-
-		//deleteContext();
-		done();
-	});
-
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0622
 	 * @tc.name webgl_test_createProgram2
@@ -783,7 +670,6 @@ describe('webgl1Test', function() {
 		//deleteContext();
 		done();
 	});
-
 
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0623
@@ -1004,155 +890,6 @@ describe('webgl1Test', function() {
 		//deleteContext();
 		done();
 	});
-
-
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0631
-	 * @tc.name webgl_test_createQuery2
-	 * @tc.desc Test createQuery.
-	 */
-	it('webgl_test_createQuery2', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into createQuery");
-
-		const query = gl2.createQuery('error');
-		gl2.beginQuery(0x8C2F, query);
-
-		const currentQuery = gl2.getQuery(0x8C2F, 0x8865);
-		const isQuery = gl2.isQuery(currentQuery);
-
-		console.info("webgltest createQuery isQuery: " + isQuery);
-		expect(isQuery).assertEqual(false);
-		//deleteContext();
-		done();
-	});
-
-
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0632
-	 * @tc.name webgl_test_beginQuery2
-	 * @tc.desc Test beginQuery.
-	 */
-	it('webgl_test_beginQuery2', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into beginQuery");
-
-		var query = gl2.createQuery();
-		gl2.beginQuery(0x8C2F, 'query');
-
-		const currentQuery = gl2.getQuery(0x8C2F, 0x8865);
-		const isQuery1 = gl2.isQuery(currentQuery);
-		console.info("webgltest createQuery isQuery1: " + isQuery1);
-		expect(isQuery1).assertEqual(false);
-		//deleteContext();
-		done();
-	});
-
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0633
-	 * @tc.name webgl_test_deleteQuery2
-	 * @tc.desc Test deleteQuery.
-	 */
-	it('webgl_test_deleteQuery2', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into deleteQuery");
-
-		var query = gl2.createQuery();
-		gl2.beginQuery(0x8C2F, query);
-
-		const currentQuery = gl2.getQuery(0x8C2F, 0x8865);
-		const isQuery1 = gl2.isQuery(currentQuery);
-		console.info("webgltest createQuery isQuery1: " + isQuery1);
-		expect(isQuery1).assertEqual(false);
-
-		gl2.deleteQuery('currentQuery');
-
-		const isQuery2 = gl2.isQuery(currentQuery);
-		console.info("webgltest createQuery deleteQuery isQuery2: " + isQuery2);
-
-		expect(isQuery2).assertEqual(false);
-		//deleteContext();
-		done();
-	});
-
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0634
-	 * @tc.name webgl_test_beginQuery22
-	 * @tc.desc Test beginQuery.
-	 */
-	it('webgl_test_beginQuery22', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into beginQuery");
-
-		var query = gl2.createQuery();
-		gl2.beginQuery(0x8C2F, 'query');
-
-		const currentQuery = gl2.getQuery(0x8C2F, 0x8865);
-		const isQuery1 = gl2.isQuery(currentQuery);
-		console.info("webgltest createQuery isQuery1: " + isQuery1);
-		expect(isQuery1).assertEqual(false);
-		//deleteContext();
-		done();
-	});
-
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0635
-	 * @tc.name webgl_test_endQuery2
-	 * @tc.desc Test endQuery.
-	 */
-	it('webgl_test_endQuery2', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into endQuery");
-
-		var query = gl2.createQuery();
-		gl2.beginQuery(0x8C2F, query);
-
-		const currentQuery = gl2.getQuery(0x8C2F, 0x8865);
-		const isQuery1 = gl2.isQuery(currentQuery);
-		console.info("webgltest createQuery isQuery1: " + isQuery1);
-		expect(isQuery1).assertEqual(false);
-
-		gl2.endQuery('0x8C2F');
-
-		const isQuery2 = gl2.isQuery(currentQuery);
-		console.info("webgltest createQuery isQuery2: " + isQuery2);
-		expect(isQuery2).assertEqual(false);
-
-		//deleteContext();
-		done();
-	});
-
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0636
-	 * @tc.name webgl_test_getQueryParameter22
-	 * @tc.desc Test getQueryParameter.
-	 */
-	it('webgl_test_getQueryParameter22', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into getQueryParameter");
-		var query = gl2.createQuery();
-		gl2.beginQuery(0x8C2F, query);
-
-		var currentQuery = gl2.getQuery(0x8C2F, 0x8865);
-		const isQuery1 = gl2.isQuery(currentQuery);
-		console.info("webgltest createQuery isQuery1: " + isQuery1);
-		expect(isQuery1).assertEqual(false);
-
-		// 返回一个GLboolean 指示查询结果是否可用。
-		var result = gl2.getQueryParameter(currentQuery, '0x8867');
-
-		console.info("webgltest createQuery beginQuery getQueryParameter: " + result);
-		expect(result).assertEqual(undefined);
-		//deleteContext();
-		done();
-	});
-
 
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0637
@@ -2455,81 +2192,6 @@ describe('webgl1Test', function() {
 	})
 
 	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0691
-	 * @tc.name testTexImage2D_0428
-	 * @tc.desc Test texImage2D.
-	 */
-	it('testTexImage2D_0428', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testTexImage2D_0428 test start ...66');
-		let canvas11 = obj.$refs.canvas1;
-		var offCanvas2 = canvas11.getContext("2d");
-		var imgData = offCanvas2.createImageData(300, 500);
-		console.info("webgl# loc success length:" + imgData.data.length);
-		for (var i = 0; i < imgData.data.length; i += 4) {
-			imgData.data[i + 0] = 0;
-			imgData.data[i + 1] = 0;
-			imgData.data[i + 2] = 255;
-			imgData.data[i + 3] = 255;
-		}
-		gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB8, 512, 512, imgData);
-		const texImage2DError = gl.getError();
-		console.info("texImage2DError: " + texImage2DError);
-		expect(texImage2DError).assertEqual(0);
-		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0692
-	 * @tc.name testTexImage2D_0428_01
-	 * @tc.desc Test texImage2D.
-	 */
-	it('testTexImage2D_0428_01', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testTexImage2D_0428_01 test start ...66');
-		let canvas11 = obj.$refs.canvas1;
-		var offCanvas2 = canvas11.getContext("2d");
-		var imgData = offCanvas2.createImageData(300, 500);
-		console.info("webgl# loc success length:" + imgData.data.length);
-		for (var i = 0; i < imgData.data.length; i += 4) {
-			imgData.data[i + 0] = 0;
-			imgData.data[i + 1] = 0;
-			imgData.data[i + 2] = 255;
-			imgData.data[i + 3] = 255;
-		}
-		gl.texImage2D(-gl.ONE_MINUS_DST_ALPHA, -0, -gl.RGB8, -512, -512, imgData);
-		const texImage2DError = gl.getError();
-		console.info("texImage2DError: " + texImage2DError);
-		expect(texImage2DError).assertEqual(gl.INVALID_VALUE);
-		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0693
-	 * @tc.name testTexImage2D_0428_02
-	 * @tc.desc Test texImage2D.
-	 */
-	it('testTexImage2D_0428_02', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testTexImage2D_0428_02 test start ...66');
-		let canvas11 = obj.$refs.canvas1;
-		var offCanvas2 = canvas11.getContext("2d");
-		var imgData = offCanvas2.createImageData(300, 500);
-		console.info("webgl# loc success length:" + imgData.data.length);
-		for (var i = 0; i < imgData.data.length; i += 4) {
-			imgData.data[i + 0] = 0;
-			imgData.data[i + 1] = 0;
-			imgData.data[i + 2] = 255;
-			imgData.data[i + 3] = 255;
-		}
-		gl.texImage2D(-gl.ONE_MINUS_DST_ALPHA, -0, -gl.RGB8, -gl.ONE_MINUS_DST_ALPHA, -0, imgData);
-		const texImage2DError = gl.getError();
-		console.info("texImage2DError: " + texImage2DError);
-		expect(texImage2DError).assertEqual(gl.INVALID_VALUE);
-		done();
-	})
-
-	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0694
 	 * @tc.name testTexSubImage2D_01
 	 * @tc.desc Test texSubImage2D.
@@ -2563,81 +2225,6 @@ describe('webgl1Test', function() {
 		const ttexSubImage2DError = gl.getError();
 		console.info("ttexSubImage2DError: " + ttexSubImage2DError);
 		expect(ttexSubImage2DError).assertEqual(gl.INVALID_ENUM);
-		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0696
-	 * @tc.name testTexSubImage2D_1
-	 * @tc.desc Test texSubImage2D.
-	 */
-	it('testTexSubImage2D_1', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testTexSubImage2D_1 test start ...66');
-		let canvas11 = obj.$refs.canvas1;
-		var offCanvas2 = canvas11.getContext("2d");
-		var imgData = offCanvas2.createImageData(300, 500);
-		console.info("webgl# loc success length:" + imgData.data.length);
-		for (var i = 0; i < imgData.data.length; i += 4) {
-			imgData.data[i + 0] = 0;
-			imgData.data[i + 1] = 0;
-			imgData.data[i + 2] = 255;
-			imgData.data[i + 3] = 255;
-		}
-		gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, gl.RED, gl2.UNSIGNED_BYTE, imgData);
-		const ttexSubImage2DError = gl.getError();
-		console.info("ttexSubImage2DError: " + ttexSubImage2DError);
-		expect(ttexSubImage2DError).assertEqual(0);
-		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0697
-	 * @tc.name testTexSubImage2D_1_01
-	 * @tc.desc Test texSubImage2D.
-	 */
-	it('testTexSubImage2D_1_01', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testTexSubImage2D_1_01 test start ...66');
-		let canvas11 = obj.$refs.canvas1;
-		var offCanvas2 = canvas11.getContext("2d");
-		var imgData = offCanvas2.createImageData(300, 500);
-		console.info("webgl# loc success length:" + imgData.data.length);
-		for (var i = 0; i < imgData.data.length; i += 4) {
-			imgData.data[i + 0] = 0;
-			imgData.data[i + 1] = 0;
-			imgData.data[i + 2] = 255;
-			imgData.data[i + 3] = 255;
-		}
-		gl.texSubImage2D(-gl.TEXTURE_2D, -0, -0, -0, -gl.RED, -gl2.UNSIGNED_BYTE, imgData);
-		const ttexSubImage2DError = gl.getError();
-		console.info("ttexSubImage2DError: " + ttexSubImage2DError);
-		expect(ttexSubImage2DError).assertEqual(gl.INVALID_ENUM);
-		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0698
-	 * @tc.desc Test texSubImage2D.
-	 */
-	it('testTexSubImage2D_1_02', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testTexSubImage2D_1_02 test start ...66');
-		let canvas11 = obj.$refs.canvas1;
-		var offCanvas2 = canvas11.getContext("2d");
-		var imgData = offCanvas2.createImageData(300, 500);
-		console.info("webgl# loc success length:" + imgData.data.length);
-		for (var i = 0; i < imgData.data.length; i += 4) {
-			imgData.data[i + 0] = 0;
-			imgData.data[i + 1] = 0;
-			imgData.data[i + 2] = 255;
-			imgData.data[i + 3] = 255;
-		}
-		gl.texSubImage2D(gl.TEXTURE_2D, -0, -gl.TEXTURE_2D, -0, -gl.RED, -gl2.UNSIGNED_BYTE,
-			imgData);
-		const ttexSubImage2DError = gl.getError();
-		console.info("ttexSubImage2DError: " + ttexSubImage2DError);
-		expect(ttexSubImage2DError).assertEqual(gl.INVALID_OPERATION);
 		done();
 	})
 

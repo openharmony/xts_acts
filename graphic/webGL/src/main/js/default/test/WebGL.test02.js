@@ -1137,28 +1137,6 @@ describe('webgl1Test', function() {
 		done();
 	});
 
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0136
-	 * @tc.name webgl_test_endTransformFeedback
-	 * @tc.desc Test endTransformFeedback.
-	 */
-	it('webgl_test_endTransformFeedback', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into endTransformFeedback");
-		let transformFeedback = gl2.createTransformFeedback();
-		gl2.bindTransformFeedback(gl2.TRANSFORM_FEEDBACK, transformFeedback);
-		gl2.beginTransformFeedback(gl.TRIANGLES);
-		gl.drawArrays(gl.TRIANGLES, 0, 3);
-		gl2.endTransformFeedback();
-		let errorCode = gl.getError();
-		console.info("webgltest framebufferTexture2D getError: " + errorCode);
-		expect(errorCode).assertEqual(gl.NO_ERROR);
-		//deleteContext();
-		done();
-	});
-
-
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0137
 	 * @tc.name webgl_test_deleteTransformFeedback
@@ -2766,60 +2744,6 @@ describe('webgl1Test', function() {
 		expect(errorCode).assertEqual(gl.INVALID_OPERATION);
 		done();
 	});
-
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0194
-	 * @tc.name testGetProgramParameterFirst
-	 * @tc.desc Test getProgramParameter.
-	 */
-	it('testGetProgramParameterFirst', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL getProgramParameter test start ...' + JSON.stringify(gl));
-		const program = gl.createProgram();
-		gl.deleteProgram(program);
-		const deleteStatus = gl.getProgramParameter(program, gl.DELETE_STATUS);
-		console.info('deleteStatus' + deleteStatus);
-		expect(deleteStatus).assertEqual(true);
-		done();
-	});
-
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0195
-	 * @tc.name testGetProgramParameterSecond
-	 * @tc.desc Test getProgramParameter.
-	 */
-	it('testGetProgramParameterSecond', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL getProgramParameter test start ...' + JSON.stringify(gl));
-		const program = gl.createProgram();
-		gl.deleteProgram(program);
-		gl.linkProgram(program);
-		const linkStatus = gl.getProgramParameter(program, gl.LINK_STATUS);
-		console.info('linkStatus' + linkStatus);
-		expect(linkStatus).assertEqual(true);
-		done();
-	});
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0196
-	 * @tc.name testGetProgramParameterThird
-	 * @tc.desc Test getProgramParameter.
-	 */
-	it('testGetProgramParameterThird', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL getProgramParameter test start ...' + JSON.stringify(gl));
-		const program = gl.createProgram();
-		gl.deleteProgram(program);
-		gl.linkProgram(program);
-		gl.validateProgram(program);
-		const validateStatus = gl.getProgramParameter(program, gl.VALIDATE_STATUS);
-		console.info('validateStatus' + validateStatus);
-		expect(validateStatus).assertEqual(true);
-		done();
-	});
-
 
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0197

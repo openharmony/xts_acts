@@ -293,27 +293,6 @@ describe('webgl1Test', function() {
 		done();
 	})
 
-	
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0801
-	 * @tc.name webgl_test_clearBufferfi24
-	 * @tc.desc Test clearBufferfi.
-	 */
-	it('webgl_test_clearBufferfi24', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into clearBufferfi");
-
-		gl2.clearBufferfi(gl.DEPTH_STENCIL, 0, 1.0, 0);
-
-		let errorCode = gl.getError();
-		console.info("webgltest clearBufferfi getError: " + errorCode);
-		expect(errorCode).assertEqual(gl.INVALID_FRAMEBUFFER_OPERATION);
-		//deleteContext();
-		done();
-	});
-
-
-
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0802
 	 * @tc.name webgl_test_beginQuery22
@@ -334,58 +313,6 @@ describe('webgl1Test', function() {
 		//deleteContext();
 		done();
 	});
-
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0803
-	 * @tc.name webgl_test_beginQuery23
-	 * @tc.desc Test beginQuery.
-	 */
-	it('webgl_test_beginQuery23', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into beginQuery");
-
-		var query = gl2.createQuery();
-		gl2.beginQuery(0x8D6A, query);
-
-		const currentQuery = gl2.getQuery(gl2.ANY_SAMPLES_PASSED_CONSERVATIVE, gl2.CURRENT_QUERY);
-		//        const currentQuery = gl2.getQuery(0x8D6A, 0x8865);
-		const isQuery1 = gl2.isQuery(currentQuery);
-		console.info("webgltest createQuery isQuery1: " + isQuery1);
-		expect(isQuery1).assertEqual(false);
-		//deleteContext();
-		done();
-	});
-
-
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0804
-	 * @tc.name webgl_test_endQuery23
-	 * @tc.desc Test endQuery.
-	 */
-	it('webgl_test_endQuery23', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into endQuery");
-
-		var query = gl2.createQuery();
-		gl2.beginQuery(gl2.ANY_SAMPLES_PASSED_CONSERVATIVE, query);
-
-		const currentQuery = gl2.getQuery(gl2.ANY_SAMPLES_PASSED_CONSERVATIVE, gl2.CURRENT_QUERY);
-		const isQuery1 = gl2.isQuery(currentQuery);
-		console.info("webgltest createQuery isQuery1: " + isQuery1);
-		expect(isQuery1).assertEqual(false);
-
-		gl2.endQuery(0x8C2F);
-
-		const isQuery2 = gl2.isQuery(currentQuery);
-		console.info("webgltest createQuery isQuery2: " + isQuery2);
-		expect(isQuery2).assertEqual(false);
-
-		//deleteContext();
-		done();
-	});
-
 
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0805
@@ -414,36 +341,6 @@ describe('webgl1Test', function() {
 		//deleteContext();
 		done();
 	});
-
-
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0806
-	 * @tc.name webgl_test_getQuery23
-	 * @tc.desc Test endQuery.
-	 */
-	it('webgl_test_getQuery23', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into endQuery");
-
-		var query = gl2.createQuery();
-		gl2.beginQuery(gl2.ANY_SAMPLES_PASSED_CONSERVATIVE, query);
-
-		const currentQuery = gl2.getQuery(gl2.ANY_SAMPLES_PASSED_CONSERVATIVE, gl2.CURRENT_QUERY);
-		const isQuery1 = gl2.isQuery(currentQuery);
-		console.info("webgltest createQuery isQuery1: " + isQuery1);
-		expect(isQuery1).assertEqual(false);
-
-		gl2.endQuery(0x8C2F);
-
-		const isQuery2 = gl2.isQuery(currentQuery);
-		console.info("webgltest createQuery isQuery2: " + isQuery2);
-		expect(isQuery2).assertEqual(false);
-
-		//deleteContext();
-		done();
-	});
-
 
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0807
@@ -1046,79 +943,6 @@ describe('webgl1Test', function() {
 			done();
 		} catch (e) {
 			console.log("testGetIndexedParameter_05 has failed for " + e)
-			expect(null).assertFail()
-		}
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0835
-	 * @tc.name testGetUniformIndices_01_01
-	 * @tc.desc Test getUniformIndices.
-	 */
-	it('testGetUniformIndices_01_01', 0, async function(done) {
-		//initContext();
-		try {
-			console.info('jsWebGL testGetUniformIndices_01_01 test start ...66');
-			console.info('jsWebGL testGetUniformIndices test start ...' + JSON.stringify(gl));
-			const program = createProgram(gl);
-			const retuGLintptr = gl2.getUniformIndices(program, ['-1', '-1', '-1']);
-			console.log("testGetUniformIndices_01_01 has failed for " + retuGLintptr)
-			const int32list = [-1, -1, -1];
-			console.log("testGetUniformIndices_01_01 has failed for " + int32list)
-			//判断数据类型是否正确
-			expect(int32list == 'String').assertEqual(false);
-			//deleteContext();
-			done();
-		} catch (e) {
-			console.log("testGetUniformIndices_01_01 has failed for " + e)
-			expect(null).assertFail()
-		}
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0836
-	 * @tc.name testGetUniformIndices_01_02
-	 * @tc.desc Test getUniformIndices.
-	 */
-	it('testGetUniformIndices_01_02', 0, async function(done) {
-		//initContext();
-		try {
-			console.info('jsWebGL testGetUniformIndices_01_02 test start ...66');
-			const program = createProgram(gl);
-			const retuGLintptr = gl2.getUniformIndices(program, ['-0', '-0', '-0']);
-			console.log("testGetUniformIndices_01_02 has failed for " + retuGLintptr)
-			const int32list = [-1, -1, -1];
-			console.log("testGetUniformIndices_01_02 has failed for " + int32list)
-			//判断数据类型是否正确
-			expect(int32list == 'String').assertEqual(false);
-			//deleteContext();
-			done();
-		} catch (e) {
-			console.log("testGetUniformIndices_01_02 has failed for " + e)
-			expect(null).assertFail()
-		}
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0837
-	 * @tc.name testGetUniformIndices_01_03
-	 * @tc.desc Test getUniformIndices.
-	 */
-	it('testGetUniformIndices_01_03', 0, async function(done) {
-		//initContext();
-		try {
-			console.info('jsWebGL testGetUniformIndices_01_03 test start ...66');
-			const program = createProgram(gl);
-			const retuGLintptr = gl2.getUniformIndices(program, [null, null, null]);
-			console.log("testGetUniformIndices_01_03 has failed for " + retuGLintptr)
-			const int32list = [-1, -1, -1];
-			console.log("testGetUniformIndices_01_03 has failed for " + int32list)
-			//判断数据类型是否正确
-			expect(int32list == 'String').assertEqual(false);
-			//deleteContext();
-			done();
-		} catch (e) {
-			console.log("testGetUniformIndices_01_03 has failed for " + e)
 			expect(null).assertFail()
 		}
 	})

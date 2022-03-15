@@ -363,24 +363,6 @@ describe('webgl1Test', function() {
 	});
 
 	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0205
-	 * @tc.name testGetShaderParameterFirst
-	 * @tc.desc Test getShaderParameter.
-	 */
-	it('testGetShaderParameterFirst', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL getShaderParameter test start ...' + JSON.stringify(gl));
-		const vertexShader = gl.createShader(gl.VERTEX_SHADER);
-		//        const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
-		gl.deleteShader(vertexShader);
-		const deleteStatus = gl.getShaderParameter(vertexShader, gl.DELETE_STATUS);
-		console.info('deleteStatus' + deleteStatus);
-		expect(deleteStatus).assertEqual(true);
-		done();
-	});
-
-
-	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0206
 	 * @tc.name testGetShaderParameterSecond
 	 * @tc.desc Test getShaderParameter.
@@ -396,7 +378,6 @@ describe('webgl1Test', function() {
 		expect(deleteStatus).assertEqual(false);
 		done();
 	});
-
 
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0207
@@ -621,23 +602,6 @@ describe('webgl1Test', function() {
 	});
 
 	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0220
-	 * @tc.name testGetParameter3
-	 * @tc.desc Test getParameter.
-	 */
-	it('testGetParameter3', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
-		const buffer = gl.getParameter(gl.ARRAY_BUFFER_BINDING);
-		console.info("buffer: " + buffer);
-		gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-		const isBuffer = gl.isBuffer(buffer);
-		console.info("isBuffer: " + isBuffer);
-		expect(isBuffer).assertEqual(true);
-		done();
-	});
-
-	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0221
 	 * @tc.name testGetParameter4
 	 * @tc.desc Test getParameter.
@@ -831,29 +795,6 @@ describe('webgl1Test', function() {
 	});
 
 
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0231
-	 * @tc.name testGetVertexAttribFirst
-	 * @tc.desc Test getVertexAttrib.
-	 */
-	it('testGetVertexAttribFirst', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL getVertexAttrib test start ...' + JSON.stringify(gl));
-		const vertexBuffer = gl.createBuffer();
-		gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-		const shaderProgram = globalFunction();
-		const aVertexPosition = gl.getAttribLocation(shaderProgram, "a_position");
-
-		gl.enableVertexAttribArray(aVertexPosition);
-		gl.vertexAttribPointer(aVertexPosition, 3, gl.FLOAT, false, 20, 0);
-
-		gl.drawArrays(gl.TRIANGLES, 0, 8);
-		gl.vertexAttrib1f(0, 2.8);
-		const type = gl.getVertexAttrib(0, gl.VERTEX_ATTRIB_ARRAY_ENABLED);
-		console.info("getVertexAttrib: type" + type);
-		expect(type).assertEqual(true);
-		done();
-	});
 
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0232
@@ -1525,22 +1466,6 @@ describe('webgl1Test', function() {
 	});
 
 	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0268
-	 * @tc.name testGetShaderSourceError
-	 * @tc.desc Test getShaderSource.
-	 */
-	it('testGetShaderSourceError', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL getShaderSource test start ...' + JSON.stringify(gl));
-		var shader = gl.createShader(gl.VERTEX_SHADER);
-
-		var source = gl.getShaderSource(shader);
-		console.info("getShaderSource source: " + source);
-		expect(source).assertEqual();
-		done();
-	});
-
-	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0269
 	 * @tc.name testGetShaderInfoLog
 	 * @tc.desc Test getShaderInfoLog.
@@ -1615,50 +1540,6 @@ describe('webgl1Test', function() {
 		const errorCode = gl.getError();
 		console.info("jsWebGL getFramebufferAttachmentParameter errorCode: " + errorCode);
 		expect(errorCode).assertEqual(gl.INVALID_VALUE);
-		done();
-	});
-
-	/**
-	 * createProgram
-	 * getUniformBlockIndex
-	 * getActiveUniformBlockName
-	 *
-	 */
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0273
-	 * @tc.name testGetActiveUniformBlockName
-	 * @tc.desc Test getActiveUniformBlockName.
-	 */
-	it('testGetActiveUniformBlockName', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL2 getActiveUniformBlockName test start ...' + JSON.stringify(gl2));
-		const program = gl.createProgram();
-		const blockIndex = gl2.getUniformBlockIndex(program, 'UBOData');
-		console.info("getActiveUniformBlockName blockIndex" + blockIndex);
-
-		gl2.uniformBlockBinding(program, blockIndex, 1);
-		const blockName = gl2.getActiveUniformBlockName(program, blockIndex);
-		console.info("blockName" + blockName);
-		expect(blockName).assertEqual('UBOData');
-		done();
-	});
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0274
-	 * @tc.name testUniformBlockBinding
-	 * @tc.desc Test uniformBlockBinding.
-	 */
-	it('testUniformBlockBinding', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL2 uniformBlockBinding test start ...' + JSON.stringify(gl2));
-		const program = gl.createProgram();
-		const blockIndex = gl2.getUniformBlockIndex(program, 'UBOData');
-		gl2.uniformBlockBinding(program, blockIndex, 1);
-		const blockName = gl2.getActiveUniformBlockName(program, blockIndex);
-		console.info("blockName" + blockName);
-
-		expect(blockName).assertEqual('UBOData');
 		done();
 	});
 

@@ -293,23 +293,6 @@ describe('webgl1Test', function() {
 		done();
 	})
 
-	
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0501
-	 * @tc.name testReadBuffer
-	 * @tc.desc Test readBuffer.
-	 */
-	it('testReadBuffer', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testReadBuffer test start ...66');
-		console.info('jsWebGL testReadBuffer test start ...' + JSON.stringify(gl));
-		gl2.readBuffer(gl.COLOR_ATTACHMENT0);
-		const readBufferError = gl.getError();
-		console.info("readBufferError: " + readBufferError);
-		expect(readBufferError).assertEqual(0);
-		done();
-	})
-
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0502
 	 * @tc.name testGetInternalformatParameter
@@ -391,33 +374,6 @@ describe('webgl1Test', function() {
 		console.info("transformFeedbackVaryingsError: " + transformFeedbackVaryingsError);
 		expect(transformFeedbackVaryingsError).assertEqual(0);
 		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0507
-	 * @tc.name testGetTransformFeedbackVarying
-	 * @tc.desc Test getTransformFeedbackVarying.
-	 */
-	it('testGetTransformFeedbackVarying', 0, async function(done) {
-		//initContext();
-		try {
-			console.info('jsWebGL testGetTransformFeedbackVarying test start ...66');
-			console.info('jsWebGL testGetTransformFeedbackVarying test start ...' + JSON.stringify(
-				gl));
-			const programObj = createProgram(gl);
-			const programError = gl.getError();
-			console.info("programError: " + programError);
-			var getTransformFeedbackVaryingobject = gl2.getTransformFeedbackVarying(programObj, 0);
-			console.info("getTransformFeedbackVaryingobject: " + getTransformFeedbackVaryingobject);
-			const getTransformFeedbackVaryingError = gl.getError();
-			console.info("getTransformFeedbackVaryingError: " + getTransformFeedbackVaryingError);
-			expect(getTransformFeedbackVaryingError).assertEqual(gl.NO_ERROR);
-			//deleteContext();
-			done();
-		} catch (e) {
-			console.log("testGetTransformFeedbackVarying has failed for " + e)
-			expect(null).assertFail()
-		}
 	})
 
 	/**
@@ -1035,60 +991,6 @@ describe('webgl1Test', function() {
 			done();
 		} catch (e) {
 			console.log("testGetActiveUniforms_06 has failed for " + e)
-			expect(null).assertFail()
-		}
-		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0526
-	 * @tc.name testGetActiveUniforms_07
-	 * @tc.desc Test getActiveUniforms.
-	 */
-	it('testGetActiveUniforms_07', 0, async function(done) {
-		//initContext();
-		try {
-			console.info('jsWebGL testGetActiveUniforms_07 test start ...66');
-			//顶点着色器程序
-			var VSHADER_SOURCE =
-				'attribute vec4 a_Position;\n' +
-				'void main() {\n' +
-				'  gl_Position = a_Position;\n' +
-				'}\n';
-
-			// 片元着色器程序
-			var FSHADER_SOURCE =
-				'precision mediump float;\n' +
-				'uniform vec4 u_FragColor;\n' +
-				'void main() {\n' +
-				'  gl_FragColor = u_FragColor;\n' +
-				'}\n';
-			var vertexShader = gl.createShader(gl.VERTEX_SHADER);
-			gl.shaderSource(vertexShader, VSHADER_SOURCE);
-			gl.compileShader(vertexShader);
-			var fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
-			gl.shaderSource(fragmentShader, FSHADER_SOURCE);
-			gl.compileShader(fragmentShader);
-			const programObj = gl.createProgram();
-			console.log("testUseProgram has failed for " + programObj)
-			const useProgramError1 = gl.getError();
-			console.info("useProgramError: " + useProgramError1);
-			const renderBufferValue1 = gl.getParameter(gl.CURRENT_PROGRAM);
-			console.log("testUseProgram has failed for " + renderBufferValue1)
-			gl.attachShader(programObj, vertexShader);
-			gl.attachShader(programObj, fragmentShader);
-			gl.linkProgram(programObj);
-			gl.useProgram(programObj);
-			const uniformIndices = [-1, -2, -3];
-			const uniformOffset = gl2.getActiveUniforms(programObj, uniformIndices, gl2
-				.UNIFORM_IS_ROW_MAJOR)
-			const glintlist = [-1, false, false];
-			//判断数据值是否正确
-			expect(uniformOffset.toString() != glintlist.toString()).assertEqual(true);
-			//deleteContext();
-			done();
-		} catch (e) {
-			console.log("testGetActiveUniforms_07 has failed for " + e)
 			expect(null).assertFail()
 		}
 		done();
