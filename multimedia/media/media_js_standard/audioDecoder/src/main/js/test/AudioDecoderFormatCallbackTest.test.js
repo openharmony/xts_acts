@@ -134,7 +134,7 @@ describe('AudioDecoderFormatCallback', function () {
                 timestamp += ES[frameCnt]/samplerate;
             }
             frameCnt += 1;
-            audioDecodeProcessor.queueInput(inputobject, () => {
+            audioDecodeProcessor.pushInputData(inputobject, () => {
                 console.info('queueInput success');
             })
         }
@@ -165,7 +165,7 @@ describe('AudioDecoderFormatCallback', function () {
                 writeFile(savepath, outputobject.data, outputobject.length);
                 console.log("write to file success");
             }
-            audioDecodeProcessor.releaseOutput(outputobject, () => {
+            audioDecodeProcessor.freeOutputBuffer(outputobject, () => {
                 console.info('release output success');
             })
         }
@@ -173,12 +173,12 @@ describe('AudioDecoderFormatCallback', function () {
 
     function setCallback(savepath, done) {
         console.info('case callback');
-        audioDecodeProcessor.on('inputBufferAvailable', async(inBuffer) => {
+        audioDecodeProcessor.on('needInputData', async(inBuffer) => {
             console.info("inputBufferAvailable");
             inputQueue.push(inBuffer);
             await enqueueAllInputs(inputQueue);
         });
-        audioDecodeProcessor.on('outputBufferAvailable', async(outBuffer) => {
+        audioDecodeProcessor.on('newOutputData', async(outBuffer) => {
             console.info("outputBufferAvailable");
             if (needGetMediaDes) {
                 audioDecodeProcessor.getOutputMediaDescription((err, MediaDescription) => {
@@ -193,7 +193,7 @@ describe('AudioDecoderFormatCallback', function () {
         audioDecodeProcessor.on('error',(err) => {
             console.info('case error called,errName is' + err);
         });
-        audioDecodeProcessor.on('outputFormatChanged',(format) => {
+        audioDecodeProcessor.on('streamChanged',(format) => {
             console.info('Output format changed: ' + format);
         });
     }
@@ -213,7 +213,7 @@ describe('AudioDecoderFormatCallback', function () {
         let mediaDescription = {
                     "channel_count": 2,
                     "sample_rate": 44100,
-                    "audio_raw_format": 4,
+                    "audio_sample_format": 1,
         }
         let savepath = BASIC_PATH + 'aac_01.pcm';
         needGetMediaDes = true;
@@ -330,7 +330,7 @@ describe('AudioDecoderFormatCallback', function () {
         let mediaDescription = {
                     "channel_count": 2,
                     "sample_rate": 44100,
-                    "audio_raw_format": 4,
+                    "audio_sample_format": 1,
         }
         let savepath = BASIC_PATH + 'aac_02.pcm';
         needGetMediaDes = true;
@@ -447,7 +447,7 @@ describe('AudioDecoderFormatCallback', function () {
         let mediaDescription = {
                     "channel_count": 1,
                     "sample_rate": 48000,
-                    "audio_raw_format": 4,
+                    "audio_sample_format": 1,
         }
         let savepath = BASIC_PATH + 'flac_01.pcm';
         needGetMediaDes = true;
@@ -521,7 +521,7 @@ describe('AudioDecoderFormatCallback', function () {
         let mediaDescription = {
                     "channel_count": 1,
                     "sample_rate": 48000,
-                    "audio_raw_format": 4,
+                    "audio_sample_format": 1,
         }
         let savepath = BASIC_PATH + 'flac_02.pcm';
         needGetMediaDes = true;
@@ -595,7 +595,7 @@ describe('AudioDecoderFormatCallback', function () {
         let mediaDescription = {
             "channel_count": 2,
             "sample_rate": 44100,
-            "audio_raw_format": 4,
+            "audio_sample_format": 1,
         }
         let savepath = BASIC_PATH + 'mp3_01.pcm';
         needGetMediaDes = true;
@@ -656,7 +656,7 @@ describe('AudioDecoderFormatCallback', function () {
         let mediaDescription = {
             "channel_count": 2,
             "sample_rate": 44100,
-            "audio_raw_format": 4,
+            "audio_sample_format": 1,
         }
         let savepath = BASIC_PATH + 'mp3_02.pcm';
         needGetMediaDes = true;
@@ -717,7 +717,7 @@ describe('AudioDecoderFormatCallback', function () {
         let mediaDescription = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 4,
+            "audio_sample_format": 1,
         }
         let savepath = BASIC_PATH + 'vorbis_01.pcm';
         needGetMediaDes = true;
@@ -821,7 +821,7 @@ describe('AudioDecoderFormatCallback', function () {
         let mediaDescription = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 4,
+            "audio_sample_format": 1,
         }
         let savepath = BASIC_PATH + 'vorbis_02.pcm';
         needGetMediaDes = true;

@@ -218,7 +218,7 @@ describe('AudioEncoderFuncPromise', function () {
             }
             timestamp += 23;
             frameCnt += 1;
-            audioEncodeProcessor.queueInput(inputobject).then(() => {
+            audioEncodeProcessor.pushInputData(inputobject).then(() => {
                 console.info('case queueInput success');
             });
         }
@@ -247,7 +247,7 @@ describe('AudioEncoderFuncPromise', function () {
                 writeFile(savepath, outputobject.data, outputobject.length);
                 console.info("write to file success");
             }
-            audioEncodeProcessor.releaseOutput(outputobject).then(() => {
+            audioEncodeProcessor.freeOutputBuffer(outputobject).then(() => {
                 console.info('release output success');
             });
         }
@@ -255,12 +255,12 @@ describe('AudioEncoderFuncPromise', function () {
 
     function setCallback(audioEncodeProcessor, savepath, done) {
         console.info('case callback');
-        audioEncodeProcessor.on('inputBufferAvailable', async(inBuffer) => {
+        audioEncodeProcessor.on('needInputData', async(inBuffer) => {
             console.info('inputBufferAvailable');
             inputQueue.push(inBuffer);
             await enqueueInputs(audioEncodeProcessor, inputQueue);
         });
-        audioEncodeProcessor.on('outputBufferAvailable', async(outBuffer) => {
+        audioEncodeProcessor.on('newOutputData', async(outBuffer) => {
             console.info('outputBufferAvailable');
             if (needgetMediaDes) {
                 audioEncodeProcessor.getOutputMediaDescription().then((MediaDescription) => {
@@ -275,14 +275,14 @@ describe('AudioEncoderFuncPromise', function () {
         audioEncodeProcessor.on('error',(err) => {
             console.info('case error called,errName is' + err);
         });
-        audioEncodeProcessor.on('outputFormatChanged',(format) => {
+        audioEncodeProcessor.on('streamChanged',(format) => {
             console.info('Output format changed: ' + format);
         });
     }
 
     /* *
         * @tc.number    : SUB_MEDIA_AUDIO_ENCODER_MULTIINSTANCE_0100
-        * @tc.name      : 001.create 16 encoder
+        * @tc.name      : 001.create multiple encoder2
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
@@ -291,7 +291,7 @@ describe('AudioEncoderFuncPromise', function () {
     it('SUB_MEDIA_AUDIO_ENCODER_MULTIINSTANCE_0100', 0, async function (done) {
         console.info("case test multiple encoder instances");
         let array = new Array();
-        for (let i = 0; i < 16; i += 1) {
+        for (let i = 0; i < 2; i += 1) {
             await media.createAudioEncoderByMime('audio/mp4a-latm').then((processor) => {
                 if (typeof(processor) != 'undefined') {
                     console.info("case create createAudioEncoder success: " + i);
@@ -301,9 +301,8 @@ describe('AudioEncoderFuncPromise', function () {
                 }
             }, failCallback).catch(failCatch);
         }
-        console.info('case has created 16 encoders');
-        console.info('case array: ' + array);
-        for (let j = 0; j < 16; j++) {
+        console.info('case has created multiple encoders');
+        for (let j = 0; j < 2; j++) {
             resetParam();
             await array[j].reset().then(() => {
                 console.info("reset encoder " + j);

@@ -4,9 +4,16 @@
         "type": "JSUnitTest",
         "test-timeout": "2000000",
         "package": "ohos.acts.multimedia.audio.audioencoder",
-		"shell-timeout": "60000"
+        "shell-timeout": "60000"
     },
     "kits": [
+        {
+            "test-file-name": [
+                "ActsAudioEncoderJsTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
         {
             "type": "PushKit",
             "pre-push": [
@@ -16,7 +23,7 @@
                 "./resource/audio/audioEncode/S32LE_2.pcm ->/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/"
             ]
         },
-		{
+        {
             "type": "ShellKit",
             "run-command": [
                 "rm -R /data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/results",
@@ -26,13 +33,6 @@
             ],
             "teardown-command":[
             ]
-        },
-        {
-            "test-file-name": [
-                "ActsAudioEncoderJsTest.hap"
-            ],
-            "type": "AppInstallKit",
-            "cleanup-apps": true
         }
     ]
 }

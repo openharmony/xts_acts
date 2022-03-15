@@ -132,36 +132,8 @@ describe('AudioDecoderEnum', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_ENUM_AudioRawFormat_0100
-        * @tc.name      : 003.AudioRawFormat
-        * @tc.desc      : Test Enumerate AudioRawFormat
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_AUDIO_DECODER_ENUM_AudioRawFormat_0100', 0, async function (done) {
-        expect(media.AudioRawFormat.AUDIO_PCM_S8).assertEqual(1);
-        expect(media.AudioRawFormat.AUDIO_PCM_8).assertEqual(2);
-        expect(media.AudioRawFormat.AUDIO_PCM_S16_BE).assertEqual(3);
-        expect(media.AudioRawFormat.AUDIO_PCM_S16_LE).assertEqual(4);
-        expect(media.AudioRawFormat.AUDIO_PCM_16_BE).assertEqual(5);
-        expect(media.AudioRawFormat.AUDIO_PCM_16_LE).assertEqual(6);
-        expect(media.AudioRawFormat.AUDIO_PCM_S24_BE).assertEqual(7);
-        expect(media.AudioRawFormat.AUDIO_PCM_S24_LE).assertEqual(8);
-        expect(media.AudioRawFormat.AUDIO_PCM_24_BE).assertEqual(9);
-        expect(media.AudioRawFormat.AUDIO_PCM_24_LE).assertEqual(10);
-        expect(media.AudioRawFormat.AUDIO_PCM_S32_BE).assertEqual(11);
-        expect(media.AudioRawFormat.AUDIO_PCM_S32_LE).assertEqual(12);
-        expect(media.AudioRawFormat.AUDIO_PCM_32_BE).assertEqual(13);
-        expect(media.AudioRawFormat.AUDIO_PCM_32_LE).assertEqual(14);
-        expect(media.AudioRawFormat.AUDIO_PCM_F32_BE).assertEqual(15);
-        expect(media.AudioRawFormat.AUDIO_PCM_F32_LE).assertEqual(16);
-        done();
-    })
-
-    /* *
         * @tc.number    : SUB_MEDIA_AUDIO_DECODER_ENUM_AVCodecType_0100
-        * @tc.name      : 004.AVCodecType
+        * @tc.name      : 003.AVCodecType
         * @tc.desc      : Test Enumerate AVCodecType
         * @tc.size      : MediumTest
         * @tc.type      : Function test
@@ -177,7 +149,7 @@ describe('AudioDecoderEnum', function () {
     
     /* *
         * @tc.number    : SUB_MEDIA_AUDIO_DECODER_ENUM_CodecMimeType_0100
-        * @tc.name      : 005.CodecMimeType
+        * @tc.name      : 004.CodecMimeType
         * @tc.desc      : Test Enumerate CodecMimeType
         * @tc.size      : MediumTest
         * @tc.type      : Function test

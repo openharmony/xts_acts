@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -32,7 +32,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
     let surfaceID = '';
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
-    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/shared/';
+    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/';
     let ES_FRAME_SIZE = [];
     const H264_FRAME_SIZE_60FPS_320 =
     [ 2106, 11465, 321, 72, 472, 68, 76, 79, 509, 90, 677, 88, 956, 99, 347, 77, 452, 681, 81, 1263, 94, 106, 97,
@@ -219,7 +219,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
                     console.info('in case: setParameter success ');
                 }, failCallback).catch(failCatch);
             }
-            videoDecodeProcessor.queueInput(inputObject).then(() => {
+            videoDecodeProcessor.pushInputData(inputObject).then(() => {
                 console.info('in case: queueInput success ');
             }, failCallback).catch(failCatch);
         }
@@ -235,7 +235,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
                 return;
             }
             frameCountOut++;
-            await videoDecodeProcessor.releaseOutput(outputObject, true).then(() => {
+            await videoDecodeProcessor.renderOutputData(outputObject).then(() => {
                 console.log('in case: release output count:' + frameCountOut);
             }, failCallback).catch(failCatch);
         }
@@ -243,13 +243,13 @@ describe('VideoDecoderFuncPromiseTest', function () {
 
     function setCallback(nextStep){
         console.info('in case:  setCallback in');
-        videoDecodeProcessor.on('inputBufferAvailable', async (inBuffer) => {
+        videoDecodeProcessor.on('needInputData', async (inBuffer) => {
             console.info('in case: inputBufferAvailable inBuffer.index: '+ inBuffer.index);
             inputQueue.push(inBuffer);
             await enqueueInputs();
         });
 
-        videoDecodeProcessor.on('outputBufferAvailable', async (outBuffer) => {
+        videoDecodeProcessor.on('newOutputData', async (outBuffer) => {
             console.info('in case: outputBufferAvailable outBuffer.index: '+ outBuffer.index);
             videoDecodeProcessor.getOutputMediaDescription().then((MediaDescription) => {
                 console.info('get outputMediaDescription : ' + MediaDescription);
@@ -262,7 +262,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
             console.info('in case: error called,errName is' + err);
         });
 
-        videoDecodeProcessor.on('outputFormatChanged',(format) => {
+        videoDecodeProcessor.on('streamChanged',(format) => {
             console.info('in case: Output format changed: ' + format.toString());
         });
         console.info('in case:  setCallback out');
@@ -437,8 +437,8 @@ describe('VideoDecoderFuncPromiseTest', function () {
 
     /* *
         * @tc.number    : SUB_MEDIA_VIDEO_DECODER_MULTIINSTANCE_PROMISE_0100
-        * @tc.name      : 001.creat 16 video decoder
-        * @tc.desc      : creat 16 video decoder
+        * @tc.name      : 001.creat multiple video decoders
+        * @tc.desc      : creat multiple video decoders
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
@@ -458,7 +458,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
         }
         let array = new Array();
         eventEmitter.on('releaseAllDecoder', async () => {
-            for (let j = 0; j < 15; j++) {
+            for (let j = 0; j < 3; j++) {
                 await array[j].release().then(() => {
                     array[j] = null;
                 }, failCallback).catch(failCatch);
@@ -469,11 +469,11 @@ describe('VideoDecoderFuncPromiseTest', function () {
             videoDecodeProcessor = null;
             done();
         })
-        for (let i = 0; i < 16; i++) {
+        for (let i = 0; i < 3; i++) {
             await media.createVideoDecoderByMime('video/avc').then((processor) => {
                 if (typeof (processor) != 'undefined') {
                     console.info('in case : createVideoDecoderByMime success');
-                    if (i == 15) {
+                    if (i == 2) {
                         videoDecodeProcessor = processor;
                     } else {
                         array[i] = processor;

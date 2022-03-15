@@ -144,7 +144,7 @@ describe('AudioDecoderReliabilityCallback', function () {
     let mediaDescription = {
                 "channel_count": 2,
                 "sample_rate": 44100,
-                "audio_raw_format": 4,
+                "audio_sample_format": 1,
     };
 
     beforeAll(function() {
@@ -520,7 +520,7 @@ describe('AudioDecoderReliabilityCallback', function () {
             }
             timestamp += ES[frameCnt]/samplerate;
             frameCnt += 1;
-            audioDecodeProcessor.queueInput(inputobject, () => {
+            audioDecodeProcessor.pushInputData(inputobject, () => {
                 console.info('queueInput success');
             })
         }
@@ -541,7 +541,7 @@ describe('AudioDecoderReliabilityCallback', function () {
                 writeFile(savepath, outputobject.data, outputobject.length);
                 console.info("write to file success");
             }
-            audioDecodeProcessor.releaseOutput(outputobject, () => {
+            audioDecodeProcessor.freeOutputBuffer(outputobject, () => {
                 console.info('release output success');
             })
         }
@@ -549,12 +549,12 @@ describe('AudioDecoderReliabilityCallback', function () {
 
     function setCallback(savepath, done) {
         console.info('case callback');
-        audioDecodeProcessor.on('inputBufferAvailable', async(inBuffer) => {
+        audioDecodeProcessor.on('needInputData', async(inBuffer) => {
             console.info('inputBufferAvailable');
             inputQueue.push(inBuffer);
             await enqueueAllInputs(inputQueue);
         });
-        audioDecodeProcessor.on('outputBufferAvailable', async(outBuffer) => {
+        audioDecodeProcessor.on('newOutputData', async(outBuffer) => {
             console.info('outputBufferAvailable');
             if (needGetMediaDes) {
                 audioDecodeProcessor.getOutputMediaDescription((err, MediaDescription) => {
@@ -570,7 +570,7 @@ describe('AudioDecoderReliabilityCallback', function () {
         audioDecodeProcessor.on('error',(err) => {
             console.info('case error called,errName is' + err);
         });
-        audioDecodeProcessor.on('outputFormatChanged',(format) => {
+        audioDecodeProcessor.on('streamChanged',(format) => {
             console.info('Output format changed: ' + format);
         });
     }
