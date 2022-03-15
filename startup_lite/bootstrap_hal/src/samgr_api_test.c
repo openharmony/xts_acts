@@ -1,6 +1,3 @@
-/*
-* Copyright (c) Huawei Technologies Co., Ltd. 2020-2020. All rights reserved.
-*/
 /**
  * Copyright (c) 2020-2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
