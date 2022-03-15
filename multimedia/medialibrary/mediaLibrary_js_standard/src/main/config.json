@@ -72,7 +72,7 @@
                 "name": "ohos.permission.WRITE_MEDIA",
                 "reason":"use ohos.permission.WRITE_MEDIA"
             }
-          ],
+        ],
         "deviceType": [
             "phone",
             "tablet",
