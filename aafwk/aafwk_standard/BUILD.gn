@@ -59,7 +59,6 @@ group("aafwk_standard") {
       "serviceability/stserviceabilityserver:amsStServiceAilityServer",
       "serviceability/stserviceabilityserversecond:ActsAmsStServiceAilityServerSecondTest",
       "setshowonlockscreen:setshowonlockscreen",
-      "stage:stage",
       "want:want",
     ]
   }
