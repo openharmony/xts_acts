@@ -34,7 +34,8 @@ describe('AbilityDisableTests', function () {
        */
     it("SUB_AA_OpenHarmony_AbilityStart_6200", 0, async function (done) {
         console.info("--------logMessage SUB_AA_OpenHarmony_AbilityStart_6300----");
-        console.info("SUB_AA_OpenHarmony_AbilityStart_6200 LaunchReason.CONTINUATION: " + AbilityConstant.LaunchReason.CONTINUATION);
+        console.info("SUB_AA_OpenHarmony_AbilityStart_6200 LaunchReason.CONTINUATION: "
+            + AbilityConstant.LaunchReason.CONTINUATION);
         expect(AbilityConstant.LaunchReason.CONTINUATION==3).assertTrue();
         done();
     });
@@ -61,7 +62,8 @@ AbilityConstant.LaunchReason.UNKNOWN);
        */
     it("SUB_AA_OpenHarmony_AbilityStart_6400", 0, async function (done) {
         console.info("------logMessage SUB_AA_OpenHarmony_AbilityStart_6400-----");
-        console.info("SUB_AA_OpenHarmony_AbilityStart_6400 LaunchReason.START_ABILITY: " + AbilityConstant.LaunchReason.START_ABILITY);
+        console.info("SUB_AA_OpenHarmony_AbilityStart_6400 LaunchReason.START_ABILITY: " +
+            AbilityConstant.LaunchReason.START_ABILITY);
         expect(AbilityConstant.LaunchReason.START_ABILITY==1).assertTrue();
         done();
     });
@@ -102,7 +104,8 @@ AbilityConstant.LaunchReason.CALL);
        */
     it("SUB_AA_OpenHarmony_AbilityStart_6700", 0, async function (done) {
         console.info("--------logMessage SUB_AA_OpenHarmony_AbilityStart_6700---------");
-        console.info("SUB_AA_OpenHarmony_AbilityStart_6700 LastExitReason.ABILITY_NOT_RESPONDING: " + AbilityConstant.LastExitReason.ABILITY_NOT_RESPONDING);
+        console.info("SUB_AA_OpenHarmony_AbilityStart_6700 LastExitReason.ABILITY_NOT_RESPONDING: " +
+            AbilityConstant.LastExitReason.ABILITY_NOT_RESPONDING);
         expect(AbilityConstant.LastExitReason.ABILITY_NOT_RESPONDING==1).assertTrue();
         done();
     });

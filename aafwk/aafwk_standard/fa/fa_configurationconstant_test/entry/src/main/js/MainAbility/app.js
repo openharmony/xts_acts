@@ -31,9 +31,6 @@ export default {
     },
     onDestroy() {
         console.info("Application onDestroy");
-//        commonEvent.publish("ApplicationMainAbility1_onDestroy",()=>{
-//            console.log("ApplicationMainAbility1_onDestroy publish callBack ApplicationMainAbility1_onDestroy");
-//        });
     },
     onForgeGround(){
         console.info("Application onForgeGround");
