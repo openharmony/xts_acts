@@ -19,6 +19,45 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 describe('I18nTest', function () {
     console.log('*************start I18NTest*************');
 
+    let hour = I18n.is24HourClock();
+    console.log('init 24 hour clock value ' + hour);
+
+    /* *
+    * execute this step before all testcases
+    */
+    beforeAll(function(){
+        console.log('step before all cases in I18n.'
+        + ' 24hour: ' + I18n.is24HourClock()
+        + ' prelang: ' + I18n.getPreferredLanguageList()
+        + ' syslocale: ' + I18n.getSystemLocale());
+    })
+
+    /* *
+    * execute this step before every testcase
+    */
+    beforeEach(function(){
+        console.log('step before every case in I18n.');
+    })
+
+    /* *
+    * execute this step after every testcase
+    */
+    afterEach(function(){
+        let afterValue = I18n.set24HourClock(hour);
+        console.log('step after every cases.' + afterValue);
+        console.log('24 hour clock after every cases ' + I18n.is24HourClock());
+    })
+
+    /* *
+    * execute this step after all testcases
+    */
+    afterAll(function(){
+        console.log('step after all cases in I18n.'
+        + ' 24hour: ' + I18n.is24HourClock()
+        + ' prelang: ' + I18n.getPreferredLanguageList()
+        + ' syslocale: ' + I18n.getSystemLocale());
+    })
+
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_0100
     * @tc.name getSystemLanguage
