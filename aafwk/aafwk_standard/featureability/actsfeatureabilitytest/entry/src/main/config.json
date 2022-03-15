@@ -52,7 +52,7 @@
         "type": "page",
         "launchType": "singleton",
         "process": "processTestAbility",
-        "permissions": ["ohos.permission.ACCELEROMETER","ohos.permission.ANSWER_CALL"],
+        "permissions": ["ohos.permission.ACCELEROMETER"],
         "deviceCapability": ["screen_support","audio_support"],
         "uri": "uriTest",
         "visible": true
@@ -97,6 +97,10 @@
       },
       {
         "name": "ohos.permission.KEEP_BACKGROUND_RUNNING"
+      },
+      {
+        "name": "ohos.permission.ACCELEROMETER",
+        "reason":"need use ohos.permission.ACCELEROMETER"
       }
     ],
     "js": [
