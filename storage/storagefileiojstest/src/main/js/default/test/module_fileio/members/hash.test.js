@@ -35,7 +35,7 @@ describe('fileio_hash', function () {
 
     try {
       let str = await fileio.hash(fpath,'md5');
-      console.log('fileio_test_hash_async_000 hash vaule is ' + str);
+      console.log('fileio_test_hash_async_000 hash value is ' + str);
       expect(str == '5EB63BBBE01EEED093CB22BB8F5ACDC3').assertTrue();
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
