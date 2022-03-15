@@ -15,12 +15,6 @@ import("//test/xts/tools/build/suite.gni")
 group("cellular_data") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "cellular_data_function:ActsCellularDataFunctionTest",
-      "cellular_data_preferred_cmcc:ActsCellularDataPreferredCMCCTest",
-      "cellular_data_preferred_cucc:ActsCellularDataPreferredCUCCTest",
-      "cellular_data_radio:ActsCellularDataRadioTest",
-      "cellular_data_roaming:ActsCellularDataRoamingTest",
-    ]
+    deps = [ "cellular_data_abnormal:ActsCellularDataAbnormalTest" ]
   }
 }

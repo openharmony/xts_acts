@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/lite'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import  Url from '@ohos.url'
 describe('UrlFunTest', function () {
 
@@ -423,7 +423,7 @@ describe('UrlFunTest', function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
         params.append("key1","AAA")
         var result =  params.getAll("key1")
-        expect(result).assertEqual("value1,AAA")
+        expect(result.toString()).assertEqual("value1,AAA")
     })
 
     /**
@@ -436,7 +436,7 @@ describe('UrlFunTest', function () {
         let params = new Url.URLSearchParams("key1=value1&8=DEF")
         params.append("8","A8A")
         var result =  params.getAll("8")
-        expect(result).assertEqual("DEF,A8A")
+        expect(result.toString()).assertEqual("DEF,A8A")
     })
 
     /**
@@ -449,7 +449,7 @@ describe('UrlFunTest', function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2&key3=da")
         params.append("key3","A3A")
         var result =  params.getAll("key3")
-        expect(result).assertEqual("da,A3A")
+        expect(result.toString()).assertEqual("da,A3A")
     })
 
     /**
@@ -462,7 +462,7 @@ describe('UrlFunTest', function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2&key3=大")
         params.append("key3","A3A")
         var result =  params.getAll("key4")
-        expect(result).assertEqual('')
+        expect(result.toString()).assertEqual('')
     })
 
     /**
@@ -475,7 +475,7 @@ describe('UrlFunTest', function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2&key3=大")
         params.append("key3","A3A")
         var result =  params.getAll("key2")
-        expect(result).assertEqual("value2")
+        expect(result.toString()).assertEqual("value2")
     })
 
     /**

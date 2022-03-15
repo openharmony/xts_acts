@@ -210,6 +210,23 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testObtainSysPara013, Function | MediumTe
 };
 
 /**
+ * @tc.number    : SUB_UTILS_PARAMETER_8200
+ * @tc.name      : Obtaining system parameter SecurityPatchTag which format is yy--mm--dd
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+LITE_TEST_CASE(ParameterFuncTestSuite, testGetSecurityPatchTag02, Function | MediumTest | Level1)
+{
+    const char *value = GetSecurityPatchTag();
+    printf("Secure Patch Level=%s\n", value);
+    int year, month, day;
+
+    sscanf(value, "%04d-%02d-%02d", &year, &month, &day);
+    printf("%d-%02d-%02d\n", year, month, day);
+    char *str = ("%d-%02d-%02d\n", year, month, day);
+    TEST_ONLY();
+};
+
+/**
  * @tc.number    : SUB_UTILS_PARAMETER_1400
  * @tc.name      : Obtaining system parameter AbiList
  * @tc.desc      : [C- SOFTWARE -0200]

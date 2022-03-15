@@ -29,7 +29,6 @@ struct VideoCreateComponent {
       Video({
         src: this.srcs,
         previewUri: this.previewUri,
-        currentProgressRate: this.currentProgressRates,
         controller: this.myVideoController
       })
 
@@ -41,6 +40,31 @@ struct VideoCreateComponent {
         .loop(true)
         .objectFit(ImageFit.Cover)
         .key('video')
+        .onStart(() => {
+          console.info("onStart");
+        })
+        .onPause(() => {
+          console.info("onPause");
+        })
+        .onFinish(() => {
+          console.info("onFinish");
+        })
+        .onPrepared(() => {
+          console.info("onPrepared");
+        })
+        .onSeeking(() => {
+          console.info("onSeeking");
+        })
+        .onSeeked(() => {
+          console.info("onSeeked");
+        })
+        .onUpdate(() => {
+          console.info("onUpdate");
+        })
+        .onError(() => {
+          console.info("onError");
+        })
+
       Row() {
         Button("start").onClick(() => {
           this.myVideoController.start();
@@ -48,20 +72,23 @@ struct VideoCreateComponent {
         Button("pause").onClick(() => {
           this.myVideoController.pause();
         });
-        Button("stop").onClick(() => {
-          this.myVideoController.stop();
-        });
       }
 
       Row() {
         Button("setCurrentTime").onClick(() => {
           this.myVideoController.setCurrentTime(9);
         });
-        Button("requestFullscreen").onClick(() => {
-          this.myVideoController.requestFullscreen(true);
+        Button("setCurrentTime").onClick(() => {
+          this.myVideoController.setCurrentTime(9, SeekMode.PreviousKeyframe);
         });
-        Button("exitFullscreen").onClick(() => {
-          this.myVideoController.exitFullscreen();
+        Button("setCurrentTime").onClick(() => {
+          this.myVideoController.setCurrentTime(9, SeekMode.NextKeyframe);
+        });
+        Button("setCurrentTime").onClick(() => {
+          this.myVideoController.setCurrentTime(9, SeekMode.ClosestKeyframe);
+        });
+        Button("setCurrentTime").onClick(() => {
+          this.myVideoController.setCurrentTime(9, SeekMode.Accurate);
         });
       }
     }

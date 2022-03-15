@@ -36,6 +36,7 @@ struct alphabetIndexer {
         .fontWeight(FontWeight.Bold)
       Text("AlphabetIndexer0")
       AlphabetIndexer({ arrayValue: this.value, selected: 0 })
+        .color('#FF00DDDD')
         .selectedColor(0xffffff)
         .key('alphabetIndexer')
         .popupColor('#FF737373')
@@ -46,6 +47,9 @@ struct alphabetIndexer {
         .popupFont({ size: 30, weight: FontWeight.Bolder, style: FontStyle.Normal })
         .itemSize(28)
         .alignStyle(IndexerAlign.Left)
+        .onSelected((index: number) => {
+          console.info(this.value[index] + ' on selected')
+        })
       Text("AlphabetIndexer1")
       AlphabetIndexer({ arrayValue: this.value1, selected: 0 })
         .selectedColor(0xffffff)
@@ -59,6 +63,9 @@ struct alphabetIndexer {
         .itemSize(28)
         .alignStyle(IndexerAlign.Right)
         .margin({ left: 50 })
+        .onSelected((index: number) => {
+          console.info(this.value[index] + ' on selected')
+        })
     }
   }
 }

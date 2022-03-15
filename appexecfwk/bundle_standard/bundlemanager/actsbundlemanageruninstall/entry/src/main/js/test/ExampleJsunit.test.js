@@ -15,9 +15,6 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import demo from '@ohos.bundle'
-import featureAbility from '@ohos.ability.featureability'
-import abilityManager from '@ohos.app.abilityManager'
-import commonEvent from '@ohos.commonevent'
 
 const PATH = "/data/"
 const ERROR = "error.hap"
@@ -40,11 +37,9 @@ const START_ABILITY_TIMEOUT = 3000;
 const ERR_CODE = -1;
 const STATUS_INSTALL_FAILURE_INVALID = 3;
 const STATUS_INSTALL_FAILURE_CONFLICT = 4;
-var subscriberInfoEvent_0100 = {
-    events: ['Third1_Publish_CommonEvent'],
-};
 
 describe('ActsBundleManagerUninstall', function () {
+
     /**
      * @tc.number uninstall_0100
      * @tc.name BUNDLE::uninstall
@@ -53,7 +48,7 @@ describe('ActsBundleManagerUninstall', function () {
     it('uninstall_0100', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + BMSJSTEST1], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -63,13 +58,20 @@ describe('ActsBundleManagerUninstall', function () {
             var datainfo1 = await demo.getBundleInfo(NAME1, 1);
             expect(datainfo1.name).assertEqual(NAME1);
             installData.uninstall(NAME1, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
-                var datainfo2 = await demo.getBundleInfo(NAME1, 1);
-                expect(datainfo2.name).assertEqual('');
-                done();
+                expect(err.code).assertEqual(0);
+                expect(data.statusMessage).assertEqual('SUCCESS');
+                await demo.getBundleInfo(NAME1, 1).then(datainfo => {
+                    expect(datainfo).assertFail()
+                    done();
+                }).catch(err => {
+                    expect(err).assertEqual(1)
+                    done()
+                });
+
             })
         });
     })
@@ -82,31 +84,47 @@ describe('ActsBundleManagerUninstall', function () {
     it('uninstall_0200', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST1, PATH + BMSJSTEST3], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
             expect(err.code).assertEqual(ERR_CODE);
             expect(data.status).assertEqual(STATUS_INSTALL_FAILURE_CONFLICT);
             expect(data.statusMessage).assertEqual('STATUS_INSTALL_FAILURE_CONFLICT');
-            var datainfo1 = await demo.getBundleInfo(NAME1, 1);
-            var datainfo2 = await demo.getBundleInfo(NAME2, 1);
-            expect(datainfo1.name).assertEqual('');
-            expect(datainfo2.name).assertEqual('');
+            var datainfo1 = demo.getBundleInfo(NAME1, 1);
+            datainfo1.then(data => {
+                expect().assertFail();
+            }).catch(err => {
+                expect(err).assertEqual(1);
+            });
+            var datainfo2 = demo.getBundleInfo(NAME2, 1);
+            datainfo2.then(data => {
+                expect().assertFail();
+            }).catch(err => {
+                expect(err).assertEqual(1);
+            });
             installData.uninstall(NAME1, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async(err, data) => {
-                var datainfo3 = await demo.getBundleInfo(NAME1, 1);
-                expect(datainfo3.name).assertEqual('');
+                var datainfo3 = demo.getBundleInfo(NAME1, 1);
+                datainfo3.then(data => {
+                    expect().assertFail();
+                }).catch(err => {
+                    expect(err).assertEqual(1);
+                });
                 installData.uninstall(NAME2, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async(err, data) => {
-                    var datainfo4 = await demo.getBundleInfo(NAME2, 1);
-                    expect(datainfo4.name).assertEqual('');
+                    var datainfo4 = demo.getBundleInfo(NAME2, 1);
+                    datainfo4.then(data => {
+                        expect().assertFail();
+                    }).catch(err => {
+                        expect(err).assertEqual(1);
+                    });
                     done();
                 })
             })
@@ -121,40 +139,64 @@ describe('ActsBundleManagerUninstall', function () {
     it('uninstall_0300', 0, async function (done) {
         let installData = await demo.getBundleInstaller()
         installData.install([PATH + BMSJSTEST4, PATH + BMSJSTEST5, PATH + BMSJSTEST6], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
             expect(err.code).assertEqual(ERR_CODE);
             expect(data.status).assertEqual(STATUS_INSTALL_FAILURE_INVALID);
             expect(data.statusMessage).assertEqual('STATUS_INSTALL_FAILURE_INVALID');
-            var datainfo1 = await demo.getBundleInfo(NAME3, 1);
-            expect(datainfo1.name).assertEqual('');
-            var datainfo2 = await demo.getBundleInfo(NAME4, 1);
-            expect(datainfo2.name).assertEqual('');
-            var datainfo3 = await demo.getBundleInfo(NAME5, 1);
-            expect(datainfo3.name).assertEqual('');
+            var datainfo1 = demo.getBundleInfo(NAME3, 1);
+            datainfo1.then(data => {
+                expect().assertFail();
+            }).catch(err => {
+                expect(err).assertEqual(1);
+            });
+            var datainfo2 = demo.getBundleInfo(NAME4, 1);
+            datainfo2.then(data => {
+                expect().assertFail();
+            }).catch(err => {
+                expect(err).assertEqual(1);
+            });
+            var datainfo3 = demo.getBundleInfo(NAME5, 1);
+            datainfo3.then(data => {
+                expect().assertFail();
+            }).catch(err => {
+                expect(err).assertEqual(1);
+            });
             installData.uninstall(NAME3, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async(err, data) => {
-                var datainfo4 = await demo.getBundleInfo(NAME3, 1);
-                expect(datainfo4.name).assertEqual('');
+                var datainfo4 = demo.getBundleInfo(NAME3, 1);
+                datainfo4.then(data => {
+                    expect().assertFail();
+                }).catch(err => {
+                    expect(err).assertEqual(1);
+                });
                 installData.uninstall(NAME4, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, async(err, data) => {
-                    var datainfo5 = await demo.getBundleInfo(NAME4, 1);
-                    expect(datainfo5.name).assertEqual('');
+                    var datainfo5 = demo.getBundleInfo(NAME4, 1);
+                    datainfo5.then(data => {
+                        expect().assertFail();
+                    }).catch(err => {
+                        expect(err).assertEqual(1);
+                    });
                     installData.uninstall(NAME5, {
-                        userId: 0,
+                        userId: 100,
                         installFlag: 1,
                         isKeepData: false
                     }, async(err, data) => {
-                        var datainfo6 = await demo.getBundleInfo(NAME5, 1);
-                        expect(datainfo6.name).assertEqual('');
+                        var datainfo6 = demo.getBundleInfo(NAME5, 1);
+                        datainfo6.then(data => {
+                            expect().assertFail();
+                        }).catch(err => {
+                            expect(err).assertEqual(1);
+                        });
                         done();
                     });
                 });
@@ -170,7 +212,7 @@ describe('ActsBundleManagerUninstall', function () {
     it('uninstall_0400', 0, async function (done) {
         demo.getBundleInstaller().then((data) => {
             data.uninstall(ERROR, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, OnReceiveinstallEvent);
@@ -178,8 +220,8 @@ describe('ActsBundleManagerUninstall', function () {
             function OnReceiveinstallEvent(err, data) {
                 expect(typeof data).assertEqual(OBJECT);
                 expect(data.statusMessage).assertEqual("STATUS_UNINSTALL_FAILURE");
+                done();
             }
-            done();
         });
     })
 
@@ -191,7 +233,7 @@ describe('ActsBundleManagerUninstall', function () {
     it('uninstall_0500', 0, async function (done) {
         demo.getBundleInstaller().then((data) => {
             data.uninstall('', {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, OnReceiveinstallEvent);
@@ -213,7 +255,7 @@ describe('ActsBundleManagerUninstall', function () {
     it('uninstall_0600', 0, async function (done) {
         demo.getBundleInstaller().then((data) => {
             data.uninstall(LAUNCHER, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, OnReceiveinstallEvent);
@@ -235,23 +277,31 @@ describe('ActsBundleManagerUninstall', function () {
     it('uninstall_0700', 0, async function (done) {
         let result = await demo.getBundleInstaller();
         result.install([PATH + BMSJSTEST1], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: true
         }, OnReceiveinstallEvent);
         async function OnReceiveinstallEvent(err, data) {
             expect(typeof data).assertEqual(OBJECT);
             expect(data.statusMessage).assertEqual(SUCCESS);
-            var datainfo1 = await demo.getBundleInfo(NAME1, 1);
-            expect(datainfo1.name).assertEqual(NAME1);
+            await demo.getBundleInfo(NAME1, 1).then(datainfo1 => {
+                expect(datainfo1.name).assertEqual(NAME1);
+            }).catch(err => {
+                expect(err).assertFail();
+            });
             result.uninstall(NAME1, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async(err, data) => {
-                var datainfo2 = await demo.getBundleInfo(NAME1, 1);
-                expect(datainfo2.name).assertEqual('');
-                done();
+                expect(data.statusMessage).assertEqual(SUCCESS);
+                await demo.getBundleInfo(NAME1, 1).then(datainfo2 => {
+                    expect(datainfo2).assertFail();
+                    done();
+                }).catch(err => {
+                    expect(err).assertEqual(1);
+                    done();
+                });
             });
         }
     })
@@ -262,71 +312,28 @@ describe('ActsBundleManagerUninstall', function () {
      * @tc.desc Test uninstall interfaces.
      */
     it('uninstall_0800', 0, async function (done) {
-        var Subscriber;
-        let id;
-        commonEvent.createSubscriber(subscriberInfoEvent_0100).then((data) => {
-            console.debug('====>Create Subscriber====>');
-            Subscriber = data;
-            commonEvent.subscribe(Subscriber, SubscribeCallBack);
-        })
-        function UnSubscribeCallback() {
-            console.debug('====>UnSubscribe CallBack====>');
-            done();
-        }
-        function timeout() {
-            expect().assertFail();
-            console.debug('uninstall_0800=====timeout======');
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-            done();
-        }
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + BMSJSTEST8], {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
-            id = setTimeout(timeout, START_ABILITY_TIMEOUT);
-            console.debug('=======start ability========')
-            let result = await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        bundleName: 'com.example.third1',
-                        abilityName: 'com.example.third1.MainAbility'
-                    }
-                }
-            )
-        });
-        async function SubscribeCallBack(err, data) {
-            clearTimeout(id);
-            expect(data.event).assertEqual('Third1_Publish_CommonEvent');
-            console.debug('====>Subscribe CallBack data:====>' + JSON.stringify(data));
-            let processInfos1 = await abilityManager.getActiveProcessInfos();
-            expect(typeof processInfos1).assertEqual('object');
-            let processMap1 = new Map();
-            let processMap2 = new Map();
-            for (var i = 0, len = processInfos1.length; i < len; i++) {
-                console.debug('=======Active Process uid=====' + processInfos1[i].uid);
-                processMap1.set(processInfos1[i].uid, 0);
-            }
+            expect(err.code).assertEqual(0);
+            expect(data.status).assertEqual(0);
+            expect(data.statusMessage).assertEqual('SUCCESS');
             let bundleInfo = await demo.getBundleInfo('com.example.third1', 1);
-            let uid = bundleInfo.uid;
-            expect(processMap1.has(uid)).assertTrue();
+            expect(bundleInfo.uid).assertLarger(10000);
             installData.uninstall(THIRD1, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async(err, data) => {
-                let processInfos2 = await abilityManager.getActiveProcessInfos();
-                for (var i = 0, len = processInfos2.length; i < len; i++) {
-                    console.debug('=======Active Process uid=====' + processInfos1[i].uid);
-                    processMap2.set(processInfos2[i].uid, 0);
-                }
-                expect(processMap2.has(uid)).assertFalse();
-                commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
+                expect(err.code).assertEqual(0);
+                expect(data.status).assertEqual(0);
+                expect(data.statusMessage == "SUCCESS").assertTrue();
                 done();
             });
-        }
+        });
     })
 })
 

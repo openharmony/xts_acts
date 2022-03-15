@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import dataUriUtils from '@ohos.ability.datauriutils'
+import dataUriUtils from '@ohos.ability.dataUriUtils'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('ActsDataUriUtilsTest', function () {

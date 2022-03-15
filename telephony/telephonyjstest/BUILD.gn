@@ -11,15 +11,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos_var.gni")
-
 group("telephonyjstest") {
   testonly = true
   deps = [
     "call_manager:call_manager",
     "cellular_data:cellular_data",
-    "network_manager:network_manager",
+    "contact_function:ActsContactFunctionEtsTest",
+    "contact_function_merge:ActsContactFunctionMergeEtsTest",
+    "contact_performance:ActsContactPerformanceEtsTest",
+    "contact_stability:ActsContactStabilityEtsTest",
+    "netmanager_http:ActsNetManagerHttpEtsTest",
+    "netmanager_socket:ActsNetManagerSocketEtsTest",
     "network_search:network_search",
+    "new_add:ActsNewAddEtsTest",
     "sim:sim",
     "sms_mms:sms_mms",
   ]

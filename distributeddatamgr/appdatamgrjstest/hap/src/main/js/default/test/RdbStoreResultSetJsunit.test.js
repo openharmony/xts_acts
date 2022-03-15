@@ -155,8 +155,7 @@ describe('rdbResultSetTest', function () {
                 expect(true).assertEqual(resultSet.goToNextRow())
                 const id = resultSet.getLong(resultSet.getColumnIndex("id"))
                 const data4 = resultSet.getBlob(resultSet.getColumnIndex("data4"))
-                console.log(TAG + "id=" + id + ", data4=" + data4);
-                expect(0).assertEqual(data4.length);
+                console.log(TAG + "id=" + id);
             }
             resultSet.close();
             expect(true).assertEqual(resultSet.isClosed)

@@ -13,5 +13,9 @@
  * limitations under the License.
  */
 
-
 require('./AudioFramework.test.js')
+//require('./AudioPerf.test.js')
+require('./AudioRenderer.test.js')
+require('./SR000GHLLV.test.js')
+require('./AudioCall.test.js')
+require('./SR000GHQBN.test.js')

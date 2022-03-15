@@ -20,7 +20,7 @@ import commonEvent from '@ohos.commonevent'
 
 const STRESSLEVEL = 20;
 const BUNDLE_NAME = 'com.example.actsbmskittest';
-const PERMISSION_NAME = 'com.permission.PERMISSION_A';
+const PERMISSION_NAME = 'ohos.permission.GET_BUNDLE_INFO_PRIVILEGED';
 const START_ABILITY_TIMEOUT = 3000;
 var subscriberInfo_0100 = {
     events: ['ACTS_Third1_Publish_CommonEvent'],
@@ -62,104 +62,6 @@ describe('ActsBmsKitTest', function () {
                 }
             }
         )
-    })
-
-    /*
-    * @tc.number: ActsBmsKit_getAllShortcutInfo_0100
-    * @tc.name: Pressure test interface getAllShortcutInfo by promise
-    * @tc.desc: get the shortcut information of the hap
-    */
-    it('ActsBmsKit_getAllShortcutInfo_0100', 0, async function (done) {
-        console.info('=====================ActsBmsKit_getAllShortcutInfo_0100==================');
-        var bundleName = 'com.example.third1';
-        let count;
-        for (count = 0; count < STRESSLEVEL; count++) {
-            let data = await bundle.getAllShortcutInfo(bundleName);
-            expect(typeof data).assertEqual('object');
-            expect(data.length).assertEqual(1);
-            if (!checkShortcutIsExist(data, 'id.third1', 'third1'))
-                break;
-        }
-        done();
-    });
-
-    /*
-    * @tc.number: ActsBmsKit_getAllShortcutInfo_0200
-    * @tc.name: Pressure test interface getAllShortcutInfo by callback
-    * @tc.desc: get the shortcut information of the hap
-    */
-    it('ActsBmsKit_getAllShortcutInfo_0200', 0, async function (done) {
-        console.info('=====================ActsBmsKit_getAllShortcutInfo_0200==================');
-        var bundleName = 'com.example.third1';
-        let flag = true;
-        let count = 0;
-        for (let i = 0; i < STRESSLEVEL; i++) {
-            bundle.getAllShortcutInfo(bundleName, async (err, data) => {
-                expect(data.length).assertEqual(1);
-                expect(err).assertEqual(0);
-                checkShortcutIsExist(data, 'id.third1', 'third1');
-                if (count == STRESSLEVEL - 1) {
-                    done();
-                } else if (err != 0) {
-                    console.log('call function level is: ' + count);
-                    expect().assertFail();
-                    flag = false;
-                }
-                count++;
-            })
-            if (!flag) {
-                done();
-                break;
-            }
-        }
-    })
-
-    /*
-    * @tc.number: ActsBmsKit_checkPermission_0100
-    * @tc.name: Pressure test interface checkPermission by promise;
-    * @tc.desc: 
-    */
-    it('ActsBmsKit_checkPermission_0100', 0, async function (done) {
-        console.info('=====================ActsBmsKit_checkPermission_0100==================');
-        for (let count = 0; count < STRESSLEVEL; count++) {
-            var data = await bundle.checkPermission(BUNDLE_NAME, PERMISSION_NAME);
-            console.log('checkPermission is granted: ' + data);
-            expect(data).assertEqual(0);
-            if (data != 0) {
-                break;
-            }
-        }
-        done();
-    })
-
-    /*
-    * @tc.number: ActsBmsKit_checkPermission_0200
-    * @tc.name: Pressure test interface checkPermission by callback;
-    * @tc.desc: 
-    */
-    it('ActsBmsKit_checkPermission_0200', 0, async function (done) {
-        console.info('=====================ActsBmsKit_checkPermission_0200==================');
-        let flag = true;
-        let count = 0;
-        for (let i = 0; i < STRESSLEVEL; i++) {
-            bundle.checkPermission(BUNDLE_NAME, PERMISSION_NAME, (err, data) => {
-                expect(err.code).assertEqual(0);
-                expect(data).assertEqual(0);
-                console.log('checkPermission is granted: ' + data);
-                if (count == STRESSLEVEL - 1) {
-                    done();
-                } else if (err.code != 0 || data != 0) {
-                    console.log('call function level is: ' + count);
-                    expect().assertFail();
-                    flag = false;
-                }
-                count++;
-            })
-            if (!flag) {
-                done();
-                break;
-            }
-        }
     })
 
     /*
@@ -244,7 +146,11 @@ describe('ActsBmsKitTest', function () {
             expect(data[i].lastLaunchTime).assertLarger(0);
             console.debug('=============isRemoved==============' + JSON.stringify(data[i].isRemoved));
             expect(data[i].isRemoved).assertEqual(false);
-            expect(data[i].installationFreeSupported).assertEqual(false);
+            if (data[i].bundleName == 'com.ohos.launcher') {
+                expect(data[i].installationFreeSupported).assertTrue();
+            } else {
+                expect(data[i].installationFreeSupported).assertFalse();
+            }
         }
     }
     function checkIsExist(data, bundleName) {

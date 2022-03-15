@@ -22,7 +22,7 @@ const BUNDLE_NAME5 = 'com.example.third5';
 const SYSTEM_BUNDLE = 'com.example.system1';
 const VENDOR_BUNDLE = 'com.example.vendor1';
 const DESIGHN_WIDTH = 770;
-const DEFAULT_DESIGHN_WIDTH = 750;
+const DEFAULT_DESIGHN_WIDTH = 720;
 describe('ActsBmsFormsInfoTest', function () {
 
     /**
@@ -34,11 +34,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('=====================bms_getAllFormsInfo_0100==================');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -53,11 +51,9 @@ describe('ActsBmsFormsInfoTest', function () {
             checkFormIsExist('Form_JS1V', formsInfo, '1V', false, true);
             checkFormIsExist('Form_JS1V2', formsInfo, '1V2');
             installer.uninstall(BUNDLE_NAME1, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -128,11 +124,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('=====================bms_getAllFormsInfo_0200==================');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         function onReceiveinstallEvent(err, data) {
@@ -147,11 +141,9 @@ describe('ActsBmsFormsInfoTest', function () {
                 checkFormIsExist('Form_JS1V', formsInfo, '1V', false, true);
                 checkFormIsExist('Form_JS1V2', formsInfo, '1V2');
                 installer.uninstall(BUNDLE_NAME1, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 100,
+                    installFlag: 1,
+                    isKeepData: false
                 }, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
@@ -171,11 +163,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('=====================bms_getAllFormsInfo_0300==================');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         function onReceiveinstallEvent(err, data) {
@@ -183,11 +173,9 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.install(['/data/test/bmsThirdBundleTestA1.hap'], {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, async (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -197,11 +185,9 @@ describe('ActsBmsFormsInfoTest', function () {
                 checkFormNoExist(formsInfo, 'Form_JS1');
                 checkFormIsExist('Form_JSA1', formsInfo, 'A1')
                 installer.uninstall(BUNDLE_NAME1, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 100,
+                    installFlag: 1,
+                    isKeepData: false
                 }, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
@@ -221,11 +207,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('=====================bms_getAllFormsInfo_0400==================');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         function onReceiveinstallEvent(err, data) {
@@ -233,11 +217,9 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.install(['/data/test/bmsThirdBundleTestA1.hap'], {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -248,11 +230,9 @@ describe('ActsBmsFormsInfoTest', function () {
                     checkFormNoExist(formsInfo, 'Form_JS1');
                     checkFormIsExist('Form_JSA1', formsInfo, 'A1');
                     installer.uninstall(BUNDLE_NAME1, {
-                        param: {
-                            userId: 0,
-                            installFlag: 1,
-                            isKeepData: false
-                        }
+                        userId: 100,
+                        installFlag: 1,
+                        isKeepData: false
                     }, (err, data) => {
                         expect(err.code).assertEqual(0);
                         expect(data.status).assertEqual(0);
@@ -273,11 +253,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('=====================bms_getAllFormsInfo_0500==================');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         function onReceiveinstallEvent(err, data) {
@@ -285,11 +263,9 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.uninstall(BUNDLE_NAME1, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, async (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -310,11 +286,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('=====================bms_getAllFormsInfo_0600==================');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         function onReceiveinstallEvent(err, data) {
@@ -322,11 +296,9 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.uninstall(BUNDLE_NAME1, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, async (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -349,11 +321,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('=====================bms_getAllFormsInfo_0700==================');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest4.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -365,11 +335,9 @@ describe('ActsBmsFormsInfoTest', function () {
             checkFormIsExist('Form_JS4A', formsInfo, '4A');
             checkFormIsExist('Form_JS4B', formsInfo, '4B');
             installer.uninstall(BUNDLE_NAME4, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -388,11 +356,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('=====================bms_getAllFormsInfo_0800==================');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest4.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -405,11 +371,9 @@ describe('ActsBmsFormsInfoTest', function () {
                 checkFormIsExist('Form_JS4A', formsInfo, '4A');
                 checkFormIsExist('Form_JS4B', formsInfo, '4B');
                 installer.uninstall(BUNDLE_NAME4, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 100,
+                    installFlag: 1,
+                    isKeepData: false
                 }, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
@@ -430,11 +394,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('=====================bms_getAllFormsInfo_0900==================');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest5.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -446,11 +408,9 @@ describe('ActsBmsFormsInfoTest', function () {
             checkFormIsExist('Form_JS5A', formsInfo, '5A');
             checkFormIsExist('Form_JS5B', formsInfo, '5B');
             installer.uninstall(BUNDLE_NAME5, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -470,11 +430,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('=====================bms_getAllFormsInfo_1000==================');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest5.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -487,11 +445,9 @@ describe('ActsBmsFormsInfoTest', function () {
                 checkFormIsExist('Form_JS5A', formsInfo, '5A');
                 checkFormIsExist('Form_JS5B', formsInfo, '5B');
                 installer.uninstall(BUNDLE_NAME5, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 100,
+                    installFlag: 1,
+                    isKeepData: false
                 }, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
@@ -537,11 +493,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfo_0300============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest2.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -551,11 +505,9 @@ describe('ActsBmsFormsInfoTest', function () {
             var formsInfo = await bundle.getFormsInfo(BUNDLE_NAME2);
             expect(formsInfo.length).assertEqual(0);
             installer.uninstall(BUNDLE_NAME2, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -574,11 +526,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfo_0400============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest2.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -589,11 +539,9 @@ describe('ActsBmsFormsInfoTest', function () {
                 expect(err.code).assertEqual(0);
                 expect(formsInfo.length).assertEqual(0);
                 installer.uninstall(BUNDLE_NAME2, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 100,
+                    installFlag: 1,
+                    isKeepData: false
                 }, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
@@ -613,11 +561,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfo_0500============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap', '/data/test/bmsThirdBundleTest3.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -629,11 +575,9 @@ describe('ActsBmsFormsInfoTest', function () {
             checkFormIsExist('Form_JS1', formsInfo, '1');
             checkFormIsExist('Form_JS3', formsInfo, '3')
             installer.uninstall(BUNDLE_NAME1, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -652,11 +596,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfo_0600============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap', '/data/test/bmsThirdBundleTest3.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -669,11 +611,9 @@ describe('ActsBmsFormsInfoTest', function () {
                 checkFormIsExist('Form_JS1', formsInfo, '1')
                 checkFormIsExist('Form_JS3', formsInfo, '3')
                 installer.uninstall(BUNDLE_NAME1, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 100,
+                    installFlag: 1,
+                    isKeepData: false
                 }, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
@@ -693,11 +633,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfo_0700============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         function onReceiveinstallEvent(err, data) {
@@ -705,11 +643,9 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.install(['/data/test/bmsThirdBundleTestA1.hap'], {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, async (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -718,11 +654,9 @@ describe('ActsBmsFormsInfoTest', function () {
                 expect(formsInfo.length).assertEqual(1);
                 checkFormIsExist('Form_JSA1', formsInfo, 'A1')
                 installer.uninstall(BUNDLE_NAME1, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 100,
+                    installFlag: 1,
+                    isKeepData: false
                 }, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
@@ -742,11 +676,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfo_0800============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         function onReceiveinstallEvent(err, data) {
@@ -754,11 +686,9 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.install(['/data/test/bmsThirdBundleTestA1.hap'], {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -768,11 +698,9 @@ describe('ActsBmsFormsInfoTest', function () {
                     expect(formsInfo.length).assertEqual(1);
                     checkFormIsExist('Form_JSA1', formsInfo, 'A1');
                     installer.uninstall(BUNDLE_NAME1, {
-                        param: {
-                            userId: 0,
-                            installFlag: 1,
-                            isKeepData: false
-                        }
+                        userId: 100,
+                        installFlag: 1,
+                        isKeepData: false
                     }, (err, data) => {
                         expect(err.code).assertEqual(0);
                         expect(data.status).assertEqual(0);
@@ -793,11 +721,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfo_0900============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest4.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -809,11 +735,9 @@ describe('ActsBmsFormsInfoTest', function () {
             checkFormByName(formsInfo[0], '4A');
             checkFormByName(formsInfo[1], '4B');
             installer.uninstall(BUNDLE_NAME4, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -832,11 +756,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfo_1000============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest4.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -849,11 +771,9 @@ describe('ActsBmsFormsInfoTest', function () {
                 checkFormByName(formsInfo[0], '4A');
                 checkFormByName(formsInfo[1], '4B');
                 installer.uninstall(BUNDLE_NAME4, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 100,
+                    installFlag: 1,
+                    isKeepData: false
                 }, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
@@ -874,11 +794,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfo_1100============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest5.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -890,11 +808,9 @@ describe('ActsBmsFormsInfoTest', function () {
             checkFormIsExist('Form_JS5A', formsInfo, '5A');
             checkFormIsExist('Form_JS5B', formsInfo, '5B');
             installer.uninstall(BUNDLE_NAME5, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -914,11 +830,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfo_1200============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest5.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -931,11 +845,9 @@ describe('ActsBmsFormsInfoTest', function () {
                 checkFormIsExist('Form_JS5A', formsInfo, '5A');
                 checkFormIsExist('Form_JS5B', formsInfo, '5B');
                 installer.uninstall(BUNDLE_NAME5, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 100,
+                    installFlag: 1,
+                    isKeepData: false
                 }, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
@@ -993,11 +905,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfo_1500============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest4.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         function onReceiveinstallEvent(err, data) {
@@ -1005,11 +915,9 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.uninstall(BUNDLE_NAME4, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, async (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -1030,11 +938,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfo_1600============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest4.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         function onReceiveinstallEvent(err, data) {
@@ -1042,11 +948,9 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.uninstall(BUNDLE_NAME4, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, async (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -1069,11 +973,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfoByModule_0100============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -1084,11 +986,9 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(formsInfo.length).assertEqual(1);
             checkFormIsExist('Form_JS1', formsInfo, '1');
             installer.uninstall(BUNDLE_NAME1, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -1107,11 +1007,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfoByModule_0200============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -1123,11 +1021,9 @@ describe('ActsBmsFormsInfoTest', function () {
                 expect(data.length).assertEqual(1);
                 checkFormIsExist('Form_JS1', data, '1')
                 installer.uninstall(BUNDLE_NAME1, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 100,
+                    installFlag: 1,
+                    isKeepData: false
                 }, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
@@ -1147,11 +1043,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfoByModule_0300============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -1161,11 +1055,9 @@ describe('ActsBmsFormsInfoTest', function () {
             let formsInfo = await bundle.getFormsInfoByModule(BUNDLE_NAME1, '');
             expect(formsInfo.length).assertEqual(0);
             installer.uninstall(BUNDLE_NAME1, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -1184,11 +1076,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfoByModule_0400============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -1199,11 +1089,9 @@ describe('ActsBmsFormsInfoTest', function () {
                 expect(err.code).assertEqual(-1);
                 expect(data.length).assertEqual(0);
                 installer.uninstall(BUNDLE_NAME1, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 100,
+                    installFlag: 1,
+                    isKeepData: false
                 }, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
@@ -1223,11 +1111,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfoByModule_0500============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -1237,11 +1123,9 @@ describe('ActsBmsFormsInfoTest', function () {
             let formsInfo = await bundle.getFormsInfoByModule('', 'bmsThirdBundle1');
             expect(formsInfo.length).assertEqual(0);
             installer.uninstall(BUNDLE_NAME1, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -1260,11 +1144,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfoByModule_0600============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -1275,11 +1157,9 @@ describe('ActsBmsFormsInfoTest', function () {
                 expect(err.code).assertEqual(-1);
                 expect(data.length).assertEqual(0);
                 installer.uninstall(BUNDLE_NAME1, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 100,
+                    installFlag: 1,
+                    isKeepData: false
                 }, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
@@ -1299,11 +1179,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfoByModule_0700============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap', '/data/test/bmsThirdBundleTest3.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -1314,11 +1192,9 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(formsInfo.length).assertEqual(1);
             checkFormIsExist('Form_JS3', formsInfo, '3')
             installer.uninstall(BUNDLE_NAME1, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -1337,11 +1213,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfoByModule_0800============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap', '/data/test/bmsThirdBundleTest3.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -1353,11 +1227,9 @@ describe('ActsBmsFormsInfoTest', function () {
                 expect(formsInfo.length).assertEqual(1);
                 checkFormIsExist('Form_JS3', formsInfo, '3')
                 installer.uninstall(BUNDLE_NAME1, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 100,
+                    installFlag: 1,
+                    isKeepData: false
                 }, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
@@ -1377,11 +1249,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfoByModule_0900============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest4.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -1393,11 +1263,9 @@ describe('ActsBmsFormsInfoTest', function () {
             checkFormIsExist('Form_JS4A', formsInfo, '4A');
             checkFormIsExist('Form_JS4B', formsInfo, '4B');
             installer.uninstall(BUNDLE_NAME4, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -1416,11 +1284,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfoByModule_1000============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest4.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -1433,11 +1299,9 @@ describe('ActsBmsFormsInfoTest', function () {
                 checkFormIsExist('Form_JS4A', formsInfo, '4A');
                 checkFormIsExist('Form_JS4B', formsInfo, '4B');
                 installer.uninstall(BUNDLE_NAME4, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 100,
+                    installFlag: 1,
+                    isKeepData: false
                 }, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
@@ -1458,11 +1322,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfoByModule_1100============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest5.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -1474,11 +1336,9 @@ describe('ActsBmsFormsInfoTest', function () {
             checkFormIsExist('Form_JS5A', formsInfo, '5A');
             checkFormIsExist('Form_JS5B', formsInfo, '5B');
             installer.uninstall(BUNDLE_NAME5, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -1498,11 +1358,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfoByModule_1200============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest5.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         async function onReceiveinstallEvent(err, data) {
@@ -1515,11 +1373,9 @@ describe('ActsBmsFormsInfoTest', function () {
                 checkFormIsExist('Form_JS5A', formsInfo, '5A');
                 checkFormIsExist('Form_JS5B', formsInfo, '5B');
                 installer.uninstall(BUNDLE_NAME5, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 100,
+                    installFlag: 1,
+                    isKeepData: false
                 }, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
@@ -1577,11 +1433,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfoByModule_1500============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest5.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         function onReceiveinstallEvent(err, data) {
@@ -1589,11 +1443,9 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.uninstall(BUNDLE_NAME5, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, async (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -1614,11 +1466,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfoByModule_1600============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest5.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         function onReceiveinstallEvent(err, data) {
@@ -1626,11 +1476,9 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.uninstall(BUNDLE_NAME5, {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, async (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -1653,11 +1501,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfoByModule_1700============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         function onReceiveinstallEvent(err, data) {
@@ -1665,11 +1511,9 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.install(['/data/test/bmsThirdBundleTestA1.hap'], {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, async (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -1678,11 +1522,9 @@ describe('ActsBmsFormsInfoTest', function () {
                 expect(formsInfo.length).assertEqual(1);
                 checkFormIsExist('Form_JSA1', formsInfo, 'A1')
                 installer.uninstall(BUNDLE_NAME1, {
-                    param: {
-                        userId: 0,
-                        installFlag: 1,
-                        isKeepData: false
-                    }
+                    userId: 100,
+                    installFlag: 1,
+                    isKeepData: false
                 }, (err, data) => {
                     expect(err.code).assertEqual(0);
                     expect(data.status).assertEqual(0);
@@ -1702,11 +1544,9 @@ describe('ActsBmsFormsInfoTest', function () {
         console.info('==============bms_getFormsInfoByModule_1800============');
         let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            param: {
-                userId: 0,
-                installFlag: 1,
-                isKeepData: false
-            }
+            userId: 100,
+            installFlag: 1,
+            isKeepData: false
         }, onReceiveinstallEvent);
 
         function onReceiveinstallEvent(err, data) {
@@ -1714,11 +1554,9 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.install(['/data/test/bmsThirdBundleTestA1.hap'], {
-                param: {
-                    userId: 0,
-                    installFlag: 1,
-                    isKeepData: false
-                }
+                userId: 100,
+                installFlag: 1,
+                isKeepData: false
             }, (err, data) => {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
@@ -1728,11 +1566,9 @@ describe('ActsBmsFormsInfoTest', function () {
                     expect(formsInfo.length).assertEqual(1);
                     checkFormIsExist('Form_JSA1', formsInfo, 'A1');
                     installer.uninstall(BUNDLE_NAME1, {
-                        param: {
-                            userId: 0,
-                            installFlag: 1,
-                            isKeepData: false
-                        }
+                        userId: 100,
+                        installFlag: 1,
+                        isKeepData: false
                     }, (err, data) => {
                         expect(err.code).assertEqual(0);
                         expect(data.status).assertEqual(0);
@@ -1786,7 +1622,7 @@ describe('ActsBmsFormsInfoTest', function () {
         expect(typeof dataInfo.description).assertEqual('string');
         expect(typeof dataInfo.descriptionId).assertEqual('number');
         expect(typeof dataInfo.type).assertEqual('number');
-        expect(typeof dataInfo.colorMode).assertEqual('number');
+        expect(dataInfo.colorMode).assertEqual(bundle.ColorMode.LIGHT_MODE);
         expect(typeof dataInfo.defaultFlag).assertEqual('boolean');
         expect(typeof dataInfo.jsComponentName).assertEqual('string');
         expect(typeof dataInfo.formVisibleNotify).assertEqual('boolean');

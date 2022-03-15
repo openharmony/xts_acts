@@ -29,7 +29,7 @@ describe('ActsBmsHapModuleTest', function () {
         let bundleName = 'com.example.bmsmainabilityfirstscene';
         var installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, onReceiveInstallEvent);
@@ -39,11 +39,12 @@ describe('ActsBmsHapModuleTest', function () {
             expect(data.statusMessage).assertEqual('SUCCESS');
             bundle.getBundleInfo(bundleName, 1, callback);
             async function callback(err, result) {
-                expect(result.hapModuleInfo.length).assertEqual(1);
-                if (result.hapModuleInfo.length > 0) {
-                    let hapModuleInfo = result.hapModuleInfo[0];
+                expect(result.hapModuleInfos.length).assertEqual(1);
+                if (result.hapModuleInfos.length > 0) {
+                    let hapModuleInfo = result.hapModuleInfos[0];
                     expect(hapModuleInfo.moduleName).assertEqual('entry');
                     expect(hapModuleInfo.mainAbilityName).assertEqual('com.example.bmsmainabilityfirstscene.MainAbility');
+                    expect(hapModuleInfo.mainElementName).assertEqual('com.example.bmsmainabilityfirstscene.MainAbility');
                     expect(hapModuleInfo.name).assertEqual('com.example.bmsmainabilityfirstscene');
                     expect(hapModuleInfo.description).assertEqual('');
                     expect(hapModuleInfo.descriptionId).assertEqual(0);
@@ -70,7 +71,7 @@ describe('ActsBmsHapModuleTest', function () {
                     }
                 }
                 installer.uninstall(bundleName, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, (err, data) => {
@@ -96,7 +97,7 @@ describe('ActsBmsHapModuleTest', function () {
         let secondMainAbility = 'com.example.bmsmainabilitysecondscene.MainAbility';
         var installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -104,17 +105,17 @@ describe('ActsBmsHapModuleTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             bundle.getBundleInfo(bundleName, 1, async (err, result) => {
-                expect(result.hapModuleInfo.length).assertEqual(2);
-                if (result.hapModuleInfo.length == 2) {
-                    expect(result.hapModuleInfo[0].mainAbilityName).assertEqual(firstMainAbility);
-                    expect(result.hapModuleInfo[0].moduleName).assertEqual('entry');
-                    checkHapModuleInfo(result.hapModuleInfo[0]);
-                    expect(result.hapModuleInfo[1].mainAbilityName).assertEqual(secondMainAbility);
-                    expect(result.hapModuleInfo[1].moduleName).assertEqual('bmsmainabilitysecondscene');
-                    checkHapModuleInfo(result.hapModuleInfo[1]);
+                expect(result.hapModuleInfos.length).assertEqual(2);
+                if (result.hapModuleInfos.length == 2) {
+                    expect(result.hapModuleInfos[0].mainAbilityName).assertEqual(firstMainAbility);
+                    expect(result.hapModuleInfos[0].moduleName).assertEqual('entry');
+                    checkHapModuleInfo(result.hapModuleInfos[0]);
+                    expect(result.hapModuleInfos[1].mainAbilityName).assertEqual(secondMainAbility);
+                    expect(result.hapModuleInfos[1].moduleName).assertEqual('bmsmainabilitysecondscene');
+                    checkHapModuleInfo(result.hapModuleInfos[1]);
                 }
                 installer.uninstall(bundleName, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, (err, data) => {
@@ -139,7 +140,7 @@ describe('ActsBmsHapModuleTest', function () {
         var installer = await bundle.getBundleInstaller();
         console.log('========install========' + typeof installer);
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, onReceiveInstallEvent);
@@ -152,15 +153,15 @@ describe('ActsBmsHapModuleTest', function () {
             expect(data.statusMessage).assertEqual('SUCCESS');
             bundle.getBundleInfo(bundleName, 1,).then(async (result) => {
                 console.debug('=======get hapModule========' + JSON.stringify(result))
-                expect(result.hapModuleInfo.length).assertEqual(1);
-                if (result.hapModuleInfo.length > 0) {
-                    console.debug('=======get hapModule mainAbilityName========' + result.hapModuleInfo[0].mainAbilityName)
-                    expect(result.hapModuleInfo[0].mainAbilityName).assertEqual('');
-                    expect(result.hapModuleInfo[0].moduleName).assertEqual('entry');
-                    checkHapModuleInfo(result.hapModuleInfo[0]);
+                expect(result.hapModuleInfos.length).assertEqual(1);
+                if (result.hapModuleInfos.length > 0) {
+                    console.debug('=======get hapModule mainAbilityName========' + result.hapModuleInfos[0].mainAbilityName)
+                    expect(result.hapModuleInfos[0].mainAbilityName).assertEqual('');
+                    expect(result.hapModuleInfos[0].moduleName).assertEqual('entry');
+                    checkHapModuleInfo(result.hapModuleInfos[0]);
                 }
                 installer.uninstall(bundleName, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, onReceiveUninstallEvent);
@@ -190,7 +191,7 @@ describe('ActsBmsHapModuleTest', function () {
         var installer = await bundle.getBundleInstaller();
         console.log('========install========' + typeof installer);
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, (err, data) => {
@@ -202,14 +203,14 @@ describe('ActsBmsHapModuleTest', function () {
             expect(data.statusMessage).assertEqual('SUCCESS');
             bundle.getBundleInfo(bundleName, 1, async (err, result) => {
                 console.debug('=======get hapModule========' + JSON.stringify(result))
-                expect(result.hapModuleInfo.length).assertEqual(1);
-                if (result.hapModuleInfo.length == 1) {
-                    expect(result.hapModuleInfo[0].mainAbilityName).assertEqual('com.example.third5.AMainAbility');
-                    expect(result.hapModuleInfo[0].moduleName).assertEqual('entry');
-                    checkHapModuleInfo(result.hapModuleInfo[0]);
+                expect(result.hapModuleInfos.length).assertEqual(1);
+                if (result.hapModuleInfos.length == 1) {
+                    expect(result.hapModuleInfos[0].mainAbilityName).assertEqual('com.example.third5.AMainAbility');
+                    expect(result.hapModuleInfos[0].moduleName).assertEqual('entry');
+                    checkHapModuleInfo(result.hapModuleInfos[0]);
                 }
                 installer.uninstall(bundleName, {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, onReceiveUninstallEvent);
@@ -236,7 +237,7 @@ describe('ActsBmsHapModuleTest', function () {
         let bundleName = 'com.example.third1';
         var installer = await bundle.getBundleInstaller();
         installer.install(bundlePath1, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -244,7 +245,7 @@ describe('ActsBmsHapModuleTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.install(bundlePath2, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, (err, data) => {
@@ -255,15 +256,15 @@ describe('ActsBmsHapModuleTest', function () {
             })
         })
         function callback(err, result) {
-            expect(result.hapModuleInfo.length).assertEqual(1);
-            if (result.hapModuleInfo.length == 1) {
-                let hapModuleInfo = result.hapModuleInfo[0];
+            expect(result.hapModuleInfos.length).assertEqual(1);
+            if (result.hapModuleInfos.length == 1) {
+                let hapModuleInfo = result.hapModuleInfos[0];
                 expect(hapModuleInfo.moduleName).assertEqual('entry');
                 expect(hapModuleInfo.mainAbilityName).assertEqual('com.example.third1.AMainAbility');
                 checkHapModuleInfo(hapModuleInfo);
             }
             installer.uninstall(bundleName, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, (err, data) => {
@@ -285,9 +286,9 @@ describe('ActsBmsHapModuleTest', function () {
         let bundleName = 'com.example.system1';
         bundle.getBundleInfo(bundleName, 1, callback);
         function callback(err, data) {
-            expect(data.hapModuleInfo.length).assertEqual(1);
-            if (data.hapModuleInfo.length == 1) {
-                let hapModuleInfo = data.hapModuleInfo[0];
+            expect(data.hapModuleInfos.length).assertEqual(1);
+            if (data.hapModuleInfos.length == 1) {
+                let hapModuleInfo = data.hapModuleInfos[0];
                 console.debug('=======get hapModule========' + JSON.stringify(hapModuleInfo))
                 console.debug('=======get hapModule mainAbilityName========' + hapModuleInfo.mainAbilityName)
                 expect(hapModuleInfo.moduleName).assertEqual('entry');

@@ -19,6 +19,7 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
     console.info("===========ActsSubscriberTestUnorderSystem start====================>");
     var commonEventSubscriber1;
     var commonEventSubscriber2;
+    var commonEventSubscriber3;
     var array = [
             Subscriber.Support.COMMON_EVENT_SHUTDOWN,
             Subscriber.Support.COMMON_EVENT_BATTERY_CHANGED,
@@ -110,11 +111,6 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
 
     function publishCallback(err) {
         console.info("==========================>publishCallback");
-    }
-
-    function sleep(delay) {
-        var start = (new Date()).getTime();
-        while((new Date()).getTime() - start < delay) {}
     }
 
     function findArray(str) {
@@ -213,7 +209,9 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
             commonEventSubscriber1 = data;
             Subscriber.subscribe(commonEventSubscriber1, subscriberCallBack001);
             for (var i = 0; i < 50; ++i) {
-                sleep(1000);
+                console.debug("===============>ActsSubscriberTestUnorderSystem_0100 delay 1s==================");
+                console.info("Subscriber.publish is run at:" + commonEventSubscribeInfo.events[i]);
+                console.info("Subscriber type:" + typeof(commonEventSubscribeInfo.events[i]));
                 Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
             }
         })
@@ -288,9 +286,103 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
             commonEventSubscriber2 = data;
             Subscriber.subscribe(commonEventSubscriber2, subscriberCallBack002);
             for (var i = 0; i < 36; ++i) {
-                sleep(1000);
+                console.debug("===============>ActsSubscriberTestUnorderSystem_0200 delay 1s==================");
+                console.info("Subscriber.publish is run at:" + commonEventSubscribeInfo.events[i]);
+                console.info("Subscriber type:" + typeof(commonEventSubscribeInfo.events[i]));
                 Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
             }
+        })
+    })
+
+    /*
+     * @tc.number    : ActsSubscriberTestUnorderSystem_0300
+     * @tc.name      : verify subscribe and publish : Check subscribe and publish system event data with  permission 
+     *               : including multiple permissions
+     * @tc.desc      : Check the subscriber can receive event "publish_event0100" type of the interface (by Promise)
+     */
+    it('ActsSubscriberTestUnorderSystem_0300', 0, async function (done) {
+        console.info("===============ActsSubscriberTestUnorderSystem_0300 start==========================>");
+        var commonEventSubscribeInfo = {
+            events: [
+                Subscriber.Support.COMMON_EVENT_WIFI_P2P_CONN_STATE,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED,
+                Subscriber.Support.COMMON_EVENT_DISK_REMOVED,
+                Subscriber.Support.COMMON_EVENT_DISK_UNMOUNTED,
+                Subscriber.Support.COMMON_EVENT_DISK_MOUNTED,
+                Subscriber.Support.COMMON_EVENT_DISK_BAD_REMOVAL,
+                Subscriber.Support.COMMON_EVENT_DISK_UNMOUNTABLE,
+                Subscriber.Support.COMMON_EVENT_DISK_EJECT,
+				Subscriber.Support.COMMON_EVENT_LOCKED_BOOT_COMPLETED,
+				Subscriber.Support.COMMON_EVENT_USER_SWITCHED,
+				Subscriber.Support.COMMON_EVENT_USER_STARTING,
+				Subscriber.Support.COMMON_EVENT_USER_STOPPING,
+				Subscriber.Support.COMMON_EVENT_WIFI_SCAN_FINISHED,
+				Subscriber.Support.COMMON_EVENT_WIFI_RSSI_VALUE,
+				Subscriber.Support.COMMON_EVENT_WIFI_AP_STA_JOIN,
+				Subscriber.Support.COMMON_EVENT_WIFI_AP_STA_LEAVE,
+				Subscriber.Support.COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE,
+				Subscriber.Support.COMMON_EVENT_WIFI_P2P_STATE_CHANGED,
+				Subscriber.Support.COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED,
+				Subscriber.Support.COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED,
+				Subscriber.Support.COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED,
+				Subscriber.Support.COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED,
+				Subscriber.Support.COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE,
+				Subscriber.Support.COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE,
+				Subscriber.Support.COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE,
+				Subscriber.Support.COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_UPDATE,
+				Subscriber.Support.COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CURRENT_DEVICE_UPDATE,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAYING_STATE_UPDATE,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_CONNECTED,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_DISCONNECTED,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE,
+                Subscriber.Support.COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE,
+                Subscriber.Support.COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED,
+                Subscriber.Support.COMMON_EVENT_NFC_ACTION_RF_FIELD_OFF_DETECTED,
+                Subscriber.Support.COMMON_EVENT_USER_ADDED,
+                Subscriber.Support.COMMON_EVENT_USER_REMOVED,
+                Subscriber.Support.COMMON_EVENT_ABILITY_ADDED,
+                Subscriber.Support.COMMON_EVENT_ABILITY_REMOVED,
+                Subscriber.Support.COMMON_EVENT_ABILITY_UPDATED,
+                Subscriber.Support.COMMON_EVENT_VISIBLE_ACCOUNTS_UPDATED,
+                Subscriber.Support.COMMON_EVENT_ACCOUNT_DELETED,
+                Subscriber.Support.COMMON_EVENT_FOUNDATION_READY
+            ],
+        };
+
+        function subscriberCallBack003(err, data) {
+            console.info("==========================>subscriberCallBack003");
+        }
+
+        function unsubscribeCallback(err) {
+            console.info("===============>unsubscribeCallback");
+            done();
+        }
+
+        Subscriber.createSubscriber(
+            commonEventSubscribeInfo
+        ).then(function (data) {
+            console.info("===============>ActsSubscriberTestUnorderSystem_0300=========createSubscriber promise");
+            commonEventSubscriber3 = data;
+            Subscriber.subscribe(commonEventSubscriber3, subscriberCallBack003);
+            setTimeout(function (){
+                console.debug("===============>ActsSubscriberTestUnorderSystem_0300 delay 3s==================");
+                Subscriber.unsubscribe(commonEventSubscriber3, unsubscribeCallback);
+            }, 3000); 
         })
     })
 })

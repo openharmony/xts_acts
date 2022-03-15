@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsHiAppEventJsTest.hap"
+                "ActsHiAppeventTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

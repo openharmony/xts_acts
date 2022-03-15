@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import featureAbility from '@ohos.ability.featureAbility'
-import abilitymanager from '@ohos.app.abilitymanager'
+import abilityManager from '@ohos.app.abilityManager'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 const MIN_CLONEUID = 20000000;
@@ -50,7 +50,7 @@ describe('ActsDataAbilityHelperTest', function () {
         console.debug("=AMS_MultiApp_0500 dataAbilityUri====>" + dataAbilityUri)
         var cloneFlag = 0;
         var selfFlag = 0;
-        var processInfos = await abilitymanager.getActiveProcessInfos();
+        var processInfos = await abilityManager.getActiveProcessInfos();
         console.info('ActsAmsMultiAppTermination  processInfos length' + processInfos.length);
         for (var i = 0; i < processInfos.length; i++) {
             console.info('ActsAmsMultiAppTermination  process name ' + processInfos[i].processName);

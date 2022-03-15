@@ -72,7 +72,7 @@ export default function ScrollJsunit() {
       expect(obj.$type).assertEqual('Scroll');
       expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.Vertical')
       expect(obj.$attrs.scrollBarColor).assertEqual('#FFFFC0CB')
-      expect(obj.$attrs.scrollBarWidth).assertEqual('20.000000px')
+      expect(obj.$attrs.scrollBarWidth).assertEqual('20.00px')
       console.info('cd ScorllGetInspectorByKey END');
       done();
     });
@@ -88,7 +88,7 @@ export default function ScrollJsunit() {
       console.info("cd scroll1 component obj is: " + JSON.stringify(obj));
       console.log("cd scroll1 scrollable" + JSON.stringify(obj.$attrs.scrollable));
       console.log("cd scroll1 scrollBar" + JSON.stringify(obj.$attrs.scrollBar));
-      expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.None')
+      expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.Horizontal')
       expect(obj.$attrs.scrollBar).assertEqual('BarState.Off')
       console.info('cd Scorll1GetInspectorByKey END');
       done();
@@ -105,9 +105,25 @@ export default function ScrollJsunit() {
       console.info("cd scroll2 component obj is: " + JSON.stringify(obj));
       console.log("cd scroll2 scrollable" + JSON.stringify(obj.$attrs.scrollable));
       console.log("cd scroll2 scrollBar" + JSON.stringify(obj.$attrs.scrollBar));
-      expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.Horizontal')
+      expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.None')
       expect(obj.$attrs.scrollBar).assertEqual('BarState.Off')
       console.info('cd Scorll2GetInspectorByKey END');
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_API_1050
+     * @tc.name      testScrollGetInspectorByKey040
+     * @tc.desc      aceEtsTest
+     */
+    it('testScrollGetInspectorByKey040', 0, async function (done) {
+      let strJson = getInspectorByKey('scroll3');
+      let obj = JSON.parse(strJson);
+      console.info("cd scroll3 component obj is: " + JSON.stringify(obj));
+      console.log("cd scroll3 scrollable" + JSON.stringify(obj.$attrs.scrollable));
+      console.log("cd scroll3 scrollBar" + JSON.stringify(obj.$attrs.scrollBar));
+      expect(obj.$attrs.scrollBar).assertEqual('BarState.Off')
+      console.info('cd Scorll3GetInspectorByKey END');
       done();
     });
   })

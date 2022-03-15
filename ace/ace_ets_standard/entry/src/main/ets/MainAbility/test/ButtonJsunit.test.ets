@@ -36,6 +36,7 @@ export default function buttonJsunit() {
       }
       try {
         router.clear();
+	await sleep(1);
         let pages = router.getState();
         console.info("get Button state success " + JSON.stringify(pages));
         if (!("Button" == pages.name)) {
@@ -64,15 +65,21 @@ export default function buttonJsunit() {
       console.info('testGetInspectorByKey START');
       let strJson = getInspectorByKey('button');
       let obj = JSON.parse(strJson);
+      let style = JSON.parse(obj.$attrs.style)
+      console.log(style.fontSize)
       console.info("cd button component obj is: " + JSON.stringify(obj));
       console.log("cd button type" + JSON.stringify(obj.$type));
       console.log("cd button  Buttontype" + JSON.stringify(obj.$attrs.type));
       console.log("cd button stateEffect" + JSON.stringify(obj.$attrs.stateEffect));
       console.log("cd button label" + JSON.stringify(obj.$attrs.label));
+      console.log("cd button fontSize" + JSON.stringify(obj.$attrs.fontSize));
+      console.log("cd button fontWeight" + JSON.stringify(obj.$attrs.fontWeight));
+      console.log("cd button fontColor" + JSON.stringify(obj.$attrs.fontColor));
       expect(obj.$type).assertEqual('Button')
       expect(obj.$attrs.type).assertEqual('ButtonType.Circle')
       expect(obj.$attrs.stateEffect).assertEqual('true')
       expect(obj.$attrs.label).assertEqual('1.value')
+      expect(obj.$attrs.fontSize).assertEqual('12')
       console.info('cd buttonInspectorByKey END');
       done();
     });

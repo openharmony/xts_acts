@@ -19,24 +19,30 @@ injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 
 export default {
     data: {
-        title: "Test ModuleUsageRecord"
+        title: "Test ModuleUsageRecord",
+        testTime: 0
     },
     onInit() {
         this.title = "Test ModuleUsageRecord";
     },
     onShow() {
-        console.info('onReady finish')
-        const core = Core.getInstance()
-        const expectExtend = new ExpectExtend({
-            'id': 'extend'
-        })
-        core.addService('expect', expectExtend)
-        core.init()
-        const configService = core.getDefaultService('config')
-        configService.setConfig(this)
+        console.info('onShow finish')
+        if (this.testTime == 0) {
+            console.info('test start')
+            const core = Core.getInstance()
+            const expectExtend = new ExpectExtend({
+                'id': 'extend'
+            })
+            core.addService('expect', expectExtend)
+            core.init()
+            const configService = core.getDefaultService('config')
+            this.timeout = 8000;
+            configService.setConfig(this)
 
-        require('../../../test/List.test.js')
-        core.execute()
+            require('../../../test/List.test')
+            core.execute()
+        }
+        this.testTime++;
     },
     onReady() {
     }

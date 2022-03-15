@@ -13,5 +13,4 @@
  * limitations under the License.
  */
 
-require('./ExampleJsunit.test.js')
-require('./util.test.js')
+require('./util.test.js');

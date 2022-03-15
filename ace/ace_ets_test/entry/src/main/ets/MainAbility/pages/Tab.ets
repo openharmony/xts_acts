@@ -20,6 +20,12 @@ struct TabsExample {
 
   build() {
     Column() {
+      Button('changeIndex')
+        .onClick(() => {
+          this.controller.changeIndex(0)
+          console.log('change Index ')
+        })
+
       Tabs({ barPosition: BarPosition.Start, index: 1, controller: this.controller }) {
         TabContent() {
           Column().width('100%').height('100%').backgroundColor(Color.Pink)

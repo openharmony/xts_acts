@@ -68,7 +68,7 @@ export default function blankJsunit() {
       console.log("cd blank min" + JSON.stringify(obj.$attrs.min));
       console.log("cd blank color" + JSON.stringify(obj.$attrs.color));
       expect(obj.$type).assertEqual('Blank')
-      expect(obj.$attrs.min).assertEqual('100.000000vp')
+      expect(obj.$attrs.min).assertEqual('100.00vp')
       console.info('cd BlankGetInspectorByKey END');
       done();
     });

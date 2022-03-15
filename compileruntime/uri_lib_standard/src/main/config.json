@@ -37,6 +37,7 @@
             ]
           }
         ],
+        "visible": true,
         "name": "com.example.uri.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",

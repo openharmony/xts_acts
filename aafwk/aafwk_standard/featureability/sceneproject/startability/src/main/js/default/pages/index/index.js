@@ -12,7 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
+import featureAbility from '@ohos.ability.featureAbility'
 
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
@@ -35,6 +36,12 @@ function PublishCallBackFive() {
 function PublishCallBackSix() {
     console.debug("====>Publish CallBack ACTS_StartAbility_0600_CommonEvent====>");
 }
+function PublishCallBackTen() {
+    console.debug("====>Publish CallBack ACTS_StartAbility_1000_CommonEvent====>");
+}
+function PublishCallBackThirteen() {
+    console.debug("====>Publish CallBack ACTS_StartAbility_1300_CommonEvent====>");
+}
 
 export default {
     data: {
@@ -44,12 +51,18 @@ export default {
         this.title = "StartAbility";
     },
     onShow() {
+        console.debug('==========onShow Called==========')
         commonEvent.publish("ACTS_StartAbility_0100_CommonEvent", PublishCallBackOne);
         commonEvent.publish("ACTS_StartAbility_0200_CommonEvent", PublishCallBackTwo);
         commonEvent.publish("ACTS_StartAbility_0300_CommonEvent", PublishCallBackThree);
         commonEvent.publish("ACTS_StartAbility_0400_CommonEvent", PublishCallBackFour);
         commonEvent.publish("ACTS_StartAbility_0500_CommonEvent", PublishCallBackFive);
         commonEvent.publish("ACTS_StartAbility_0600_CommonEvent", PublishCallBackSix);
+        commonEvent.publish("ACTS_StartAbility_1000_CommonEvent", PublishCallBackTen);
+        commonEvent.publish("ACTS_StartAbility_1300_CommonEvent", PublishCallBackThirteen);
+        featureAbility.terminateSelf((err, data)=>{
+            console.debug('==========Terminate Ability Success==========')
+        });
     },
     onReady() {
     },

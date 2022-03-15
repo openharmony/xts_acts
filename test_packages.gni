@@ -16,32 +16,33 @@ import("//test/xts/tools/build/suite.gni")
 _all_test_packages = [
   "${ACTS_ROOT}/global:global",
   "${ACTS_ROOT}/security:security",
+  "${ACTS_ROOT}/useriam:useriam",
   "${ACTS_ROOT}/multimedia:multimedia",
-  "${ACTS_ROOT}/hiviewdfx:hiviewdfxtestacts",
-  "${ACTS_ROOT}/barrierfree:barrierfree",
-
-  # "${ACTS_ROOT}/telephony:telephony",
   "${ACTS_ROOT}/appexecfwk:appexecfwk",
   "${ACTS_ROOT}/account:account",
-
   "${ACTS_ROOT}/communication:communication",
   "${ACTS_ROOT}/notification:notification",
   "${ACTS_ROOT}/aafwk:aafwk",
-
-  #"${ACTS_ROOT}/location:location",
   "${ACTS_ROOT}/miscservices:miscservices",
   "${ACTS_ROOT}/powermgr:powermgr",
   "${ACTS_ROOT}/startup:startup",
   "${ACTS_ROOT}/sensors:sensor",
   "${ACTS_ROOT}/distributeddatamgr:distributeddatamgr",
-
-  # "${ACTS_ROOT}/distributedschedule:distributedschedule",
   "${ACTS_ROOT}/updater:update",
   "${ACTS_ROOT}/graphic:graphic",
   "${ACTS_ROOT}/ace:ace",
   "${ACTS_ROOT}/storage:storage",
   "${ACTS_ROOT}/distributedhardware:distributedhardware",
   "${ACTS_ROOT}/compileruntime:compileruntime",
+  "${ACTS_ROOT}/usb:usb",
+  "${ACTS_ROOT}/multimodalinput:multimodalinput",
+  "${ACTS_ROOT}/resourceschedule:resourceschedule",
+  "${ACTS_ROOT}/telephony:telephony",
+  "${ACTS_ROOT}/hiviewdfx:hiviewdfxtestacts",
+  "${ACTS_ROOT}/location:location",
+  "${ACTS_ROOT}/settingsdata:settingsdata",
+  "${ACTS_ROOT}/barrierfree:barrierfree",
+  "${ACTS_ROOT}/customization:customization",
 ]
 
 _all_test_packages_ivi = [

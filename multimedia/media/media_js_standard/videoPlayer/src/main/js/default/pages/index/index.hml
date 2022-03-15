@@ -1,0 +1,11 @@
+<div class="container">
+    <text class="title">
+        {{ $t('strings.hello') }} {{ title }}
+    </text>
+
+    <Xcomponent id = 'XcomponentId'
+                type = 'surface'
+                onload = 'LoadXcomponent'
+                style = "width:720px;height:480px;border-color:red;border-width:5px">
+    </Xcomponent>
+</div>

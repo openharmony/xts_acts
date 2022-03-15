@@ -18,6 +18,7 @@ group("account") {
     deps = [
       "OsAccountTest_js:ActsOsAccountJSApiTest",
       "appaccount:appaccount_hap",
+      "osaccount:osaccount_hap",
     ]
   } else {
     deps = []

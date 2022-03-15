@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,36 +13,35 @@
  * limitations under the License.
  */
 
-import app from '@system.app'
-
 import {Core, ExpectExtend} from 'deccjsunit/index'
 
 export default {
     data: {
-        title: ""
+        title: '',
+        myTimeout: 15000
     },
     onInit() {
         this.title = this.$t('strings.world');
     },
     onShow() {
         console.info('onShow finish')
+    },
+    onReady() {
+        console.info('onReady finish')
         const core = Core.getInstance()
-        
         const expectExtend = new ExpectExtend({
             'id': 'extend'
         })
         core.addService('expect', expectExtend)
-        //        core.addService('report', instrumentLog)
         core.init()
-        
 
         const configService = core.getDefaultService('config')
-        
-        this.timeout = 600000
+        this.timeout = this.myTimeout
         configService.setConfig(this)
+
         require('../../test/List.test')
         core.execute()
-    },
-    onReady() {
+
     },
 }
+

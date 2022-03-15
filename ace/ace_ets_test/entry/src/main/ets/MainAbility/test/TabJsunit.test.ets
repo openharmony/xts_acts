@@ -37,6 +37,7 @@ export default function tabJsunit() {
       }
       try {
         router.clear();
+	await sleep(1);
         let pages = router.getState();
         console.info("get Tab state success " + JSON.stringify(pages));
         if (!("Tab" == pages.name)) {
@@ -67,11 +68,13 @@ export default function tabJsunit() {
       let obj = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
+      console.log('obj.$attrs.scrollable' + typeof (obj.$attrs.scrollable))
+      console.log('obj.$attrs.vertical' + typeof (obj.$attrs.vertical))
       expect(obj.$type).assertEqual('Tabs')
       expect(obj.$attrs.barPosition).assertEqual('BarPosition.Start')
       expect(obj.$attrs.index).assertEqual('1')
-      expect(obj.$attrs.vertical).assertEqual("true")
-      expect(obj.$attrs.scrollable).assertEqual("true")
+      expect(obj.$attrs.vertical).assertEqual('true')
+      expect(obj.$attrs.scrollable).assertTrue()
       expect(obj.$attrs.barMode).assertEqual('BarMode.Fixed')
       expect(obj.$attrs.barWidth).assertEqual(70.000000.toFixed(6))
       expect(obj.$attrs.barHeight).assertEqual(150.000000.toFixed(6))
@@ -111,8 +114,8 @@ export default function tabJsunit() {
       expect(obj.$type).assertEqual('Tabs')
       expect(obj.$attrs.barPosition).assertEqual('BarPosition.End')
       expect(obj.$attrs.barMode).assertEqual('BarMode.Scrollable')
-      expect(obj.$attrs.vertical).assertEqual("false")
-      expect(obj.$attrs.scrollable).assertEqual("false")
+      expect(obj.$attrs.vertical).assertEqual('false')
+      expect(obj.$attrs.scrollable).assertFalse()
       console.info('++++++++++++++++ Tab TestCase 3 End ++++++++++++++++');
       done();
     });

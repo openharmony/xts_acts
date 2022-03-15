@@ -14,19 +14,23 @@
  */
 
 import {
-  fileio, FILE_CONTENT, prepareFile, nextFileName,
+  fileio, FILE_CONTENT, prepareFile, nextFileName1, nextFileName,
   describe, it, expect,
 } from '../../Common';
 
 describe('fileio_stream', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_WriteASync_0000
+   * @tc.number SUB_DF_FILEIO_STREAM_WRITEASYNC_0000
    * @tc.name fileio_test_stream_write_async_000
-   * @tc.desc Test Stream.write() interface.
+   * @tc.desc Test Stream.write() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_stream_write_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_stream_write_async_000');
+    let fpath = await nextFileName('fileio_test_stream_write_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -46,12 +50,16 @@ describe('fileio_stream', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Stream_WriteASync_0010
+   * @tc.number SUB_DF_FILEIO_STREAM_WRITEASYNC_0010
    * @tc.name fileio_test_stream_write_async_001
-   * @tc.desc Test Stream.write() interface.
+   * @tc.desc Test Stream.write() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_stream_write_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_stream_write_async_001');
+    let fpath = nextFileName1('fileio_test_stream_write_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {

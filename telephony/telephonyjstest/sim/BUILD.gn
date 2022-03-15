@@ -16,18 +16,6 @@ import("//build/ohos_var.gni")
 group("sim") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "sim_account_information_manager_function_test:ActsSimAccountInformationManagerFunctionTest",
-      "sim_activate_manager_function_test:ActsSimActivateManagerFunctionTest",
-      "sim_file_information_function_test:ActsSimFileInformationFunctionTest",
-      "sim_file_manager_function_test:ActsSimFileManagerFunctionTest",
-      "sim_fixed_dial_manager_function_test:ActsSimFixedDialManagerFunctionTest",
-      "sim_getsimaccountinfo_function_test:ActsSimGetSimAccountInfoFunctionTest",
-      "sim_icc_dialling_numbers_controller_function_test:ActsSimIccDiallingNumbersControllerFunctionTest",
-      "sim_manager_function_test:ActsSimManagerFunctionTest",
-      "sim_no_sim_function_test:ActsSimNoSimFunctionTest",
-      "sim_setvoicemailinfo_function_test:ActsSimSetVoiceMailInfoFunctionTest",
-      "sim_state_manager_function_test:ActsSimStateManagerFunctionTest",
-    ]
+    deps = [ "sim_manager_function_test:ActsSimManagerFunctionTest" ]
   }
 }

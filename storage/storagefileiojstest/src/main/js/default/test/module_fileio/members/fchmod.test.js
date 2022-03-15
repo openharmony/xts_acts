@@ -11,7 +11,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+*/
 
 import {
   fileio, FILE_CONTENT, prepareFile, nextFileName,
@@ -21,12 +21,16 @@ import {
 describe('fileio_fchmod', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_FchmodAsync_0000
+   * @tc.number SUB_DF_FILEIO_FCHMOD_ASYNC_0000
    * @tc.name fileio_test_fchmod_async_000
    * @tc.desc Test fchmodAsync()interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_fchmod_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_fchmod_async_000');
+    let fpath = await nextFileName('fileio_test_fchmod_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -49,12 +53,16 @@ describe('fileio_fchmod', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_FchmodAsync_0010
+   * @tc.number SUB_DF_FILEIO_FCHMOD_ASYNC_0010
    * @tc.name fileio_test_fchmod_async_001
    * @tc.desc Test fchmodAsync()interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_fchmod_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_fchmod_async_001');
+    let fpath = await nextFileName('fileio_test_fchmod_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       await fileio
@@ -81,12 +89,16 @@ describe('fileio_fchmod', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_FchmodSync_0000
+   * @tc.number SUB_DF_FILEIO_FCHMOD_SYNC_0000
    * @tc.name fileio_test_fchmod_sync_000
    * @tc.desc Test fchmodSync()interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_fchmod_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_fchmod_sync_000');
+  it('fileio_test_fchmod_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_fchmod_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -102,27 +114,35 @@ describe('fileio_fchmod', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_FchmodSync_0010
+   * @tc.number SUB_DF_FILEIO_FCHMOD_SYNC_0010
    * @tc.name fileio_test_fchmod_sync_001
    * @tc.desc Test fchmodSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_fchmod_sync_001', 0, function () {
     try {
       expect(fileio.fchmodSync(-1, 0o660) == null).assertTrue();
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_test_fchmod_sync_001 has failed for ' + e);
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Fchmod_0020
+   * @tc.number SUB_DF_FILEIO_FCHMOD_ASYNC_0020
    * @tc.name fileio_test_fchmod_async_002
    * @tc.desc Test fchmod() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_fchmod_async_002', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_fchmod_async_002');
+    let fpath = await nextFileName('fileio_test_fchmod_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
     try {
       await fileio.open(fpath, 0o1, 0o020).then(function (fd) {
         fileio.fchmod(fd, 0o100, function (err) {
@@ -138,14 +158,17 @@ describe('fileio_fchmod', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Fchmod_0030
+   * @tc.number SUB_DF_FILEIO_FCHMOD_ASYNC_0030
    * @tc.name fileio_test_fchmod_async_003
    * @tc.desc Test fchmod() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_fchmod_async_003', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_fchmod_async_003');
+    let fpath = await nextFileName('fileio_test_fchmod_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
     try {
       let fd = await fileio.open(fpath, 0o1, 0o020);
 

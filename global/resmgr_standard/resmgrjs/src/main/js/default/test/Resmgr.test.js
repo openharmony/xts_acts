@@ -242,6 +242,7 @@ describe('resMgrTest', function () {
                 dc.screenDensity = ScreenDensity.SCREEN_XXLDPI;
                 dc.deviceType = DeviceType.DEVICE_TYPE_WEARABLE;
                 dc.screenDensity = ScreenDensity.SCREEN_XXXLDPI;
+                dc.deviceType = DeviceType.DEVICE_TYPE_PC;
                 expect(dc !== null).assertTrue();
                 console.log('getDeviceCapability_test_002 ' + dc);
             })
@@ -320,6 +321,94 @@ describe('resMgrTest', function () {
             mgr.getRawFile('rawfile/rawfiletest.xml').then(value => {
                 expect(value !== null).assertTrue();
                 console.log('getRawFile_test_002 ' + value);
+            })
+        })
+        done();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_RESMGR_JS_1900
+    * @tc.name test release method
+    * @tc.desc get the release function
+    */
+    it('release_test_001', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.getString(0x1000000, (err, value) => {
+                expect(value !== null).assertTrue();
+            })
+            mgr.release();
+        })
+        done();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_RESMGR_JS_2000
+    * @tc.name test getRawFileDescriptor method in callback mode
+    * @tc.desc get the RawFileDescriptor in callback mode
+    */
+    it('getRawFileDescriptor_test_001', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.getRawFileDescriptor('rawfiletest.xml', (error, rawfile) => {
+                let fdValue = rawfile.fd;
+                let offsetValue = rawfile.offset;
+                let lengthValue = rawfile.length;
+                expect(rawfile !== null).assertTrue();
+                console.log('getRawFileDescriptor_test_001--'
+                            +'fd:' + fdValue
+                            + 'offset:' + offsetValue
+                            + 'length:' + lengthValue);
+            })
+        })
+        done();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_RESMGR_JS_2100
+    * @tc.name test getRawFileDescriptor method in promise mode
+    * @tc.desc get the RawFileDescriptor in promise mode
+    */
+    it('getRawFileDescriptor_test_002', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.getRawFileDescriptor('rawfiletest.xml').then(rawfile => {
+                rawfile.fd = 2000;
+                rawfile.offset = 20;
+                rawfile.length = 200;
+                expect(rawfile !== null).assertTrue();
+                console.log('getRawFileDescriptor_test_002--' + rawfile);
+                console.log('getRawFileDescriptor_test_002--'
+                +'fd:' + rawfile.fd
+                + 'offset:' + rawfile.offset
+                + 'length:' + rawfile.length);
+            })
+        })
+        done();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_RESMGR_JS_2200
+    * @tc.name test closeRawFileDescriptor method in callback mode
+    * @tc.desc get the closeRawFileDescriptor in callback mode
+    */
+    it('closeRawFileDescriptor_test_001', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.closeRawFileDescriptor('rawfiletest.xml', (error, value) => {
+                expect(error == null).assertTrue();
+                console.log('closeRawFileDescriptor_test_001--' + error);
+            })
+        })
+        done();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_RESMGR_JS_2300
+    * @tc.name test closeRawFileDescriptor method in promise mode
+    * @tc.desc get the closeRawFileDescriptor in promise mode
+    */
+    it('closeRawFileDescriptor_test_002', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.closeRawFileDescriptor('rawfiletest.xml').then(value => {
+                expect(value !== null).assertTrue();
+                console.log('closeRawFileDescriptor_test_002--' + value);
             })
         })
         done();

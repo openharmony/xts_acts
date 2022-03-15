@@ -2,11 +2,11 @@
   "string": [
     {
       "name": "app_name",
-      "value": "MyApplication"
+      "value": "Sim Test"
     },
     {
       "name": "mainability_description",
-      "value": "JS_Phone_Empty Feature Ability"
+      "value": "Sim Test - sim manager interface test"
     }
   ]
 }

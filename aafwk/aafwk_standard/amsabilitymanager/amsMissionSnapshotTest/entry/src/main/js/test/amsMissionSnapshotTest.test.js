@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import abilityManager from '@ohos.app.abilityManager'
-import featureAbility from '@ohos.ability.featureability'
-import commonEvent from '@ohos.commonevent'
+import featureAbility from '@ohos.ability.featureAbility'
+import missionManager from '@ohos.application.missionManager'
+import commonEvent from '@ohos.commonEvent'
 import image from '@ohos.multimedia.image'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
@@ -22,42 +22,30 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 describe('ActsMissionSnapshotTest', function () {
     beforeAll(async (done) => {
         console.debug('= ACTS_beforeAll ====<begin');
-        try {
-        } catch (err) {
-            console.error('=ACTS_beforeAll catch(err)====>:' + err);
-        }
-        console.debug('= ACTS_beforeAll ====<end');
         done();
     })
     afterAll(async (done) => {
         console.debug('= ACTS_afterAll ====<begin');
-        try {
-        } catch (err) {
-            console.error('=ACTS_afterAll catch(err)====>:' + err);
-        }
-        console.debug('= ACTS_afterAll ====<end');
         done();
     })
 
     /*
     * @tc.number: ACTS_MissionSnapshot_0100
-    * @tc.name: getAbilityMissionSnapshot
+    * @tc.name: getMissionSnapshot
     * @tc.desc: Recent task stack provides current screenshot.(AsyncCallback)
     */
     it('ACTS_MissionSnapshot_0100', 0, async function (done) {
         console.debug('ACTS_MissionSnapshot_0100====<begin');
         try {
-            await abilityManager.getAbilityMissionSnapshot(-1, (err, data) => {
-                expect(err.code).assertEqual(0);
-                console.debug("=ACTS_MissionSnapshot_0100 err,data=======>"
-                    + ("json data【") + JSON.stringify(data) + (" 】") + " , " + data);
-                expect(data.topAbility.bundleName).assertEqual("");
-                expect(data.topAbility.abilityName).assertEqual("");
+            await missionManager.getMissionSnapShot("", -1, (err, data) => {
+                expect(err.code != 0).assertTrue();
+                console.debug("=ACTS_MissionSnapshot_0100 err.code,data=======>"
+                + err.code + ("json data【") + JSON.stringify(data) + (" 】") + " , " + data);
                 console.debug('ACTS_MissionSnapshot_0100====<end')
                 done();
             });
         } catch (err) {
-            expect(err).assertEqual("0");
+            console.debug('ACTS_MissionSnapshot_0100====<end err' + err);
             console.debug('ACTS_MissionSnapshot_0100====<end err');
             done();
         }
@@ -65,69 +53,56 @@ describe('ActsMissionSnapshotTest', function () {
 
     /*
      * @tc.number: ACTS_MissionSnapshot_0200
-     * @tc.name: getAbilityMissionSnapshot
+     * @tc.name: getMissionSnapshot
      * @tc.desc: Recent task stack provides current screenshot.(AsyncCallback)
      */
     it('ACTS_MissionSnapshot_0200', 0, async function (done) {
         console.debug('ACTS_MissionSnapshot_0200====<begin');
         var m_missionId = -1;
-        var m_topAbility_bundleName = "";
-        var m_topAbility_abilityName = "";
+        var m_bundleName = "";
+        var m_abilityName = "";
         try {
             var upperLimit = 10;
-            await abilityManager.getActiveAbilityMissionInfos(upperLimit, async (err, data) => {
+            await missionManager.getMissionInfos("", upperLimit, async (err, data) => {
                 console.debug("=ACTS_MissionSnapshot_0200 err,data=======>"
                     + ("json err【") + JSON.stringify(err) + (" 】")
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,err=" + err + " ,data=" + data);
-                console.debug('ACTS_MissionSnapshot_0200 AbilityMissionInfo data.length ====>: ' + data.length);
+                console.debug('ACTS_MissionSnapshot_0200 MissionInfo data.length ====>: ' + data.length);
                 if (!data.length) {
                     m_missionId = -99;
-                    m_topAbility_bundleName = "";
-                    m_topAbility_abilityName = "";
+                    m_bundleName = "";
+                    m_abilityName = "";
                     expect("if (!data.length) ").assertEqual("0");
                     console.debug('ACTS_MissionSnapshot_0200====<end 0')
                     done();
                 } else {
                     m_missionId = data[0].missionId;
-                    m_topAbility_bundleName = data[0].topAbility.bundleName;
-                    m_topAbility_abilityName = data[0].topAbility.abilityName;
+                    m_bundleName = data[0].want.bundleName;
+                    m_abilityName = data[0].want.abilityName;
                 }
                 console.debug("=ACTS_MissionSnapshot_0200 m_missionId====>" + m_missionId);
-                await abilityManager.getAbilityMissionSnapshot(m_missionId, (err, data) => {
+                await missionManager.getMissionSnapShot("", m_missionId, async (err, data) => {
                     expect(err.code).assertEqual(0);
                     console.debug("=ACTS_MissionSnapshot_0200 err,data=======>"
                         + ("json data【") + JSON.stringify(data) + (" 】") + " , " + data);
-                    expect(data.topAbility.bundleName).assertEqual(m_topAbility_bundleName);
-                    expect(data.topAbility.abilityName).assertEqual(m_topAbility_abilityName);
+                    expect(data.ability.bundleName).assertEqual(m_bundleName);
+                    expect(data.ability.abilityName).assertEqual(m_abilityName);
                     console.debug("=ACTS_MissionSnapshot_0200 ====> JSON.stringify(data.snapshot)="
                         + JSON.stringify(data.snapshot) + " , " + data.snapshot);
-                    try {
-                        data.snapshot.getPixelBytesNumber().then(function (data){
-                            console.debug("=ACTS_MissionSnapshot_0200 ====>"
-                            +"(data.snapshot.getPixelBytesNumber()=)" + data)
-                            expect(data > 0).assertEqual(true);
-                            console.debug('ACTS_MissionSnapshot_0200====<end')
-                            done();
-                        })
-
-                    } catch (err) {
-                        console.debug('ACTS_MissionSnapshot_0200====<end  catch (err) get = ');
-                        expect("0").assertEqual(err);
-                        done();
-                    }
+                    done();
                 });
             });
         } catch (err) {
             expect(err).assertEqual("0");
-            console.debug('ACTS_MissionSnapshot_0200====<end err')
+            console.debug('ACTS_MissionSnapshot_0200====<end err' + err)
             done();
         }
     })
 
  /*
     * @tc.number: ACTS_MissionSnapshot_0300
-    * @tc.name: getAbilityMissionSnapshot 
+    * @tc.name: getMissionSnapshot 
     * @tc.desc: Recent task stack provides current screenshot.(AsyncCallback)
     */
  it('ACTS_MissionSnapshot_0300', 0, async function (done) {
@@ -155,45 +130,38 @@ describe('ActsMissionSnapshotTest', function () {
                 unsubscribe("subscribe", subscriber);
 
                 var m_missionId = -1;
-                var m_topAbility_bundleName = "";
-                var m_topAbility_abilityName = "";
+                var m_bundleName = "";
+                var m_abilityName = "";
                 var upperLimit = 10;
-                await abilityManager.getActiveAbilityMissionInfos(upperLimit, async (err, data) => {
+                await missionManager.getMissionInfos("", upperLimit, async (err, data) => {
                     console.debug("=ACTS_MissionSnapshot_0300 err,data=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
                         + " ,err=" + err + " ,data=" + data);
-                    console.debug('ACTS_MissionSnapshot_0300 AbilityMissionInfo data.length ====>'
+                    console.debug('ACTS_MissionSnapshot_0300 MissionInfo data.length ====>'
                         + data.length);
                     if (!data.length) {
                         m_missionId = -99;
-                        m_topAbility_bundleName = "";
-                        m_topAbility_abilityName = "";
+                        m_bundleName = "";
+                        m_abilityName = "";
                         expect("if (!data.length) ").assertEqual(0);
                         unsubscribe("if (!data.length) ", subscriber);
                         console.debug('ACTS_MissionSnapshot_0300====<end 0')
                         done();
                     } else {
                         m_missionId = data[0].missionId;
-                        m_topAbility_bundleName = data[0].topAbility.bundleName;
-                        m_topAbility_abilityName = data[0].topAbility.abilityName;
+                        m_bundleName = data[0].want.bundleName;
+                        m_abilityName = data[0].want.abilityName;
                     }
                     console.debug("=ACTS_MissionSnapshot_0300 m_missionId====>" + m_missionId);
-                    await abilityManager.getAbilityMissionSnapshot(m_missionId, (err, data) => {
+                    await missionManager.getMissionSnapShot("", m_missionId, async (err, data) => {
                         expect(err.code).assertEqual(0);
                         console.debug("=ACTS_MissionSnapshot_0300 then data====>"
                             + ("json data 【") + JSON.stringify(data) + (" 】") + " , " + data);
                         try {
-                            expect(data.topAbility.bundleName).assertEqual(m_topAbility_bundleName);
-                            expect(data.topAbility.abilityName).assertEqual(m_topAbility_abilityName);
-                            data.snapshot.getPixelBytesNumber().then(function (data){
-                                console.debug("=ACTS_MissionSnapshot_0300 ====> "
-                                +("data.snapshot.getPixelBytesNumber()=" + data))
-                                expect(data > 0).assertEqual(true);
-                                unsubscribe(".then() ", subscriber);
-                                console.debug('ACTS_MissionSnapshot_0300====<end')
-                                done();
-                                })
+                            expect(data.ability.bundleName).assertEqual(m_bundleName);
+                            expect(data.ability.abilityName).assertEqual(m_abilityName);
+                            done();
                         } catch (err) {
                             expect(err).assertEqual("0");
                             unsubscribe("catch (err) get ", subscriber);
@@ -230,24 +198,22 @@ describe('ActsMissionSnapshotTest', function () {
 
     /*
     * @tc.number: ACTS_MissionSnapshot_0400
-    * @tc.name: getAbilityMissionSnapshot 
+    * @tc.name: getMissionSnapshot 
     * @tc.desc: Recent task stack provides current screenshot.(Promise)
     */
     it('ACTS_MissionSnapshot_0400', 0, async function (done) {
         console.debug('ACTS_MissionSnapshot_0400====<begin');
         try {
-            abilityManager.getAbilityMissionSnapshot(-1)
+            missionManager.getMissionSnapShot("", -1)
                 .then(function (data) {
                     console.debug("=ACTS_MissionSnapshot_0400 then data====>"
                         + ("json data 【") + JSON.stringify(data) + (" 】") + " , " + data);
-                    expect(data.topAbility.bundleName).assertEqual("");
-                    expect(data.topAbility.abilityName).assertEqual("");
                     console.debug('ACTS_MissionSnapshot_0400====<end');
                     done();
                 }).catch(function (err) {
                     console.debug("=ACTS_MissionSnapshot_0400 catch err ====>"
                         + ("json err 【") + JSON.stringify(err) + (" 】 "));
-                    expect(err).assertEqual("false");
+                    expect(err.code != 0).assertTrue();
                     console.debug('ACTS_MissionSnapshot_0400====<end .catch(err)');
                     done();
                 });
@@ -260,56 +226,44 @@ describe('ActsMissionSnapshotTest', function () {
 
     /*
     * @tc.number: ACTS_MissionSnapshot_0500
-    * @tc.name: getAbilityMissionSnapshot 
+    * @tc.name: getMissionSnapshot 
     * @tc.desc: Recent task stack provides current screenshot.(Promise)
     */
     it('ACTS_MissionSnapshot_0500', 0, async function (done) {
         console.debug('ACTS_MissionSnapshot_0500====<begin');
         var m_missionId = -1;
-        var m_topAbility_bundleName = "";
-        var m_topAbility_abilityName = "";
+        var m_bundleName = "";
+        var m_abilityName = "";
         try {
             var upperLimit = 10;
-            await abilityManager.getActiveAbilityMissionInfos(upperLimit, async (err, data) => {
+            await missionManager.getMissionInfos("", upperLimit, async (err, data) => {
                 console.debug("=ACTS_MissionSnapshot_0500 err,data=======>"
                     + ("json err【") + JSON.stringify(err) + (" 】")
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,err=" + err + " ,data=" + data);
-                console.debug('ACTS_MissionSnapshot_0500 AbilityMissionInfo data.length ====>: ' + data.length);
+                console.debug('ACTS_MissionSnapshot_0500 MissionInfo data.length ====>: ' + data.length);
                 if (!data.length) {
                     m_missionId = -99;
-                    m_topAbility_bundleName = "";
-                    m_topAbility_abilityName = "";
+                    m_bundleName = "";
+                    m_abilityName = "";
                     expect("if (!data.length) ").assertEqual(0);
                     console.debug('ACTS_MissionSnapshot_0500====<end 0')
                     done();
                 } else {
                     m_missionId = data[0].missionId;
-                    m_topAbility_bundleName = data[0].topAbility.bundleName;
-                    m_topAbility_abilityName = data[0].topAbility.abilityName;
+                    m_bundleName = data[0].want.bundleName;
+                    m_abilityName = data[0].want.abilityName;
                 }
                 console.debug("=ACTS_MissionSnapshot_0500 m_missionId====>" + m_missionId);
-                abilityManager.getAbilityMissionSnapshot(m_missionId)
+                missionManager.getMissionSnapShot("", m_missionId)
                     .then(function (data) {
                         console.debug("=ACTS_MissionSnapshot_0500 then data====>"
                             + ("json data 【") + JSON.stringify(data) + (" 】") + " , " + data);
-                        expect(data.topAbility.bundleName).assertEqual(m_topAbility_bundleName);
-                        expect(data.topAbility.abilityName).assertEqual(m_topAbility_abilityName);
+                        expect(data.ability.bundleName).assertEqual(m_bundleName);
+                        expect(data.ability.abilityName).assertEqual(m_abilityName);
                         console.debug("=ACTS_MissionSnapshot_0500 err,data=======> JSON.stringify(data.snapshot)="
                             + JSON.stringify(data.snapshot) + " , " + data.snapshot);
-                        try {
-                            data.snapshot.getPixelBytesNumber().then(function (data){
-                                console.debug("=ACTS_MissionSnapshot_0500 ====> "
-                                +("data.snapshot.getPixelBytesNumber()=" + data))
-                                expect(data > 0).assertEqual(true);
-                                console.debug('ACTS_MissionSnapshot_0500====<end')
-                                done();
-                                })
-                        } catch (err) {
-                            expect(err).assertEqual("0");
-                            console.debug('ACTS_MissionSnapshot_0500====<end catch (err) get')
-                            done();
-                        }
+                        done();
                     }).catch(function (err) {
                         console.debug("=ACTS_MissionSnapshot_0500 catch err ====>"
                             + ("json err 【") + JSON.stringify(err) + (" 】 "));
@@ -336,7 +290,7 @@ describe('ActsMissionSnapshotTest', function () {
     }
     /*
     * @tc.number: ACTS_MissionSnapshot_0600
-    * @tc.name: getAbilityMissionSnapshot 
+    * @tc.name: getMissionSnapshot 
     * @tc.desc: Recent task stack provides current screenshot.(Promise)
     */
     it('ACTS_MissionSnapshot_0600', 0, async function (done) {
@@ -364,46 +318,39 @@ describe('ActsMissionSnapshotTest', function () {
                     unsubscribe("subscribe", subscriber);
 
                     var m_missionId = -1;
-                    var m_topAbility_bundleName = "";
-                    var m_topAbility_abilityName = "";
+                    var m_bundleName = "";
+                    var m_abilityName = "";
                     var upperLimit = 10;
-                    await abilityManager.getActiveAbilityMissionInfos(upperLimit, (err, data) => {
+                    await missionManager.getMissionInfos("", upperLimit, (err, data) => {
                         console.debug("=ACTS_MissionSnapshot_0600 err,data=======>"
                             + ("json err【") + JSON.stringify(err) + (" 】")
                             + ("json data【") + JSON.stringify(data) + (" 】")
                             + " ,err=" + err + " ,data=" + data);
-                        console.debug('ACTS_MissionSnapshot_0600 AbilityMissionInfo data.length ====>'
+                        console.debug('ACTS_MissionSnapshot_0600 MissionInfo data.length ====>'
                             + data.length);
                         if (!data.length) {
                             m_missionId = -99;
-                            m_topAbility_bundleName = "";
-                            m_topAbility_abilityName = "";
+                            m_bundleName = "";
+                            m_abilityName = "";
                             expect("if (!data.length) ").assertEqual(0);
                             unsubscribe("if (!data.length) ", subscriber);
                             console.debug('ACTS_MissionSnapshot_0600====<end 0')
                             done();
                         } else {
                             m_missionId = data[0].missionId;
-                            m_topAbility_bundleName = data[0].topAbility.bundleName;
-                            m_topAbility_abilityName = data[0].topAbility.abilityName;
+                            m_bundleName = data[0].want.bundleName;
+                            m_abilityName = data[0].want.abilityName;
                         }
                         console.debug("=ACTS_MissionSnapshot_0600 m_missionId====>" + m_missionId);
-                        abilityManager.getAbilityMissionSnapshot(m_missionId).then(function (data) {
+                        missionManager.getMissionSnapShot("", m_missionId).then(function (data) {
                             console.debug("=ACTS_MissionSnapshot_0600 then data====>"
                                 + ("json data 【") + JSON.stringify(data) + (" 】") + " , " + data);
                             try {
-                                expect(data.topAbility.bundleName).assertEqual(m_topAbility_bundleName);
-                                expect(data.topAbility.abilityName).assertEqual(m_topAbility_abilityName);
+                                expect(data.ability.bundleName).assertEqual(m_bundleName);
+                                expect(data.ability.abilityName).assertEqual(m_abilityName);
                                 console.debug("=ACTS_MissionSnapshot_0600=====> JSON.stringify(data.snapshot)="
                                          + JSON.stringify(data.snapshot) + " , " + data.snapshot);
-                                data.snapshot.getPixelBytesNumber().then(function (data){
-                                    console.debug("=ACTS_MissionSnapshot_0600 ====> "
-                                        +("data.snapshot.getPixelBytesNumber()=" + data))
-                                    expect(data > 0).assertEqual(true);
-                                    unsubscribe(".then() ", subscriber);
-                                    console.debug('ACTS_MissionSnapshot_0600====<end')
-                                    done();
-                                    })
+                               done();
                             } catch (err) {
                                 expect(err).assertEqual("0");
                                 unsubscribe("catch (err) get ", subscriber);

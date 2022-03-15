@@ -36,6 +36,7 @@ export default function flexJsunit() {
       }
       try {
         router.clear();
+	await sleep(1);
         let pages = router.getState();
         console.info("get Flex state success " + JSON.stringify(pages));
         if (!("Flex" == pages.name)) {
@@ -71,6 +72,7 @@ export default function flexJsunit() {
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
       console.log("yr flex0 obj.$attrs.constructor.wrap-'FlexWrap.NoWrap':" + JSON.stringify(obj.$attrs.constructor.wrap));
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');
+      console.log("yr flex0 obj.$attrs.constructor.alignItems-'FlexWrap.NoWrap':" + JSON.stringify(obj.$attrs.constructor.alignItems));
       console.log("yr flex0 obj.$attrs.constructor.justifyContent-'FlexAlign.Center':" + JSON.stringify(obj.$attrs.constructor.justifyContent));
       expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.Start");
       console.log("yr flex0 obj.$attrs.constructor.alignContent-'FlexAlign.Start':" + JSON.stringify(obj.$attrs.constructor.alignContent));
@@ -92,6 +94,7 @@ export default function flexJsunit() {
       console.log("yr flex1 direction-'FlexDirection.Row':" + JSON.stringify(obj.$attrs.constructor.direction));
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap')
       console.log("yr flex1 wrap-'FlexWrap.Wrap':" + JSON.stringify(obj.$attrs.constructor.wrap));
+      console.log("yr flex1 alignItems-'ItemAlign.Start':" + JSON.stringify(obj.$attrs.constructor.alignItems));
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
       console.log("yr flex1 justifyContent-'FlexAlign.Start':" + JSON.stringify(obj.$attrs.constructor.justifyContent));
       expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.Center");
@@ -112,6 +115,7 @@ export default function flexJsunit() {
       console.info("component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.RowReverse');
       console.log("yr flex2 direction-'FlexDirection.RowReverse':" + JSON.stringify(obj.$attrs.constructor.direction));
+      console.log("yr flex1 alignItems-'ItemAlign.Start':" + JSON.stringify(obj.$attrs.constructor.alignItems));
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.End');
       console.log("yr flex2 justifyContent-'FlexAlign.End':" + JSON.stringify(obj.$attrs.constructor.justifyContent));
       expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.End");

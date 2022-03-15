@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import featureAbility from '@ohos.ability.featureability'
+import featureAbility from '@ohos.ability.featureAbility'
 import bundle from '@ohos.bundle'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
@@ -118,7 +118,7 @@ describe('ActsContextTest', function () {
             pid :0,
             uid :datainfo.uid
         }
-        context.verifyPermission("com.example.permission",options,
+        context.verifyPermission("ohos.permission.INSTALL_BUNDLE",options,
             (err, data) => {
                 console.info("ACTS_VerifyPermission_0100 in verifyPermission")
                 expect(data).assertEqual(0);
@@ -143,7 +143,7 @@ describe('ActsContextTest', function () {
             pid :0,
             uid :datainfo.uid
         }
-        var promise = await context.verifyPermission("com.example.permission",options );
+        var promise = await context.verifyPermission("ohos.permission.INSTALL_BUNDLE",options );
         expect(promise).assertEqual(0);
         ret = true
         done();

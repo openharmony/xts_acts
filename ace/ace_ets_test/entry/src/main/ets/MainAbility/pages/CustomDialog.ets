@@ -27,18 +27,20 @@ struct CustomDialogExample {
       Flex({ justifyContent: FlexAlign.SpaceAround }) {
         Button('cancel')
           .onClick(() => {
-          this.controller.close()
-          this.cancel()
-        }).backgroundColor(0xffffff).fontColor(Color.Black)
+            this.controller.close()
+            this.cancel()
+          }).backgroundColor(0xffffff).fontColor(Color.Black)
         Button('confirm')
           .onClick(() => {
-          this.controller.close()
-          this.confirm()
-        }).backgroundColor(0xffffff).fontColor(Color.Red)
+            this.controller.close()
+            this.confirm()
+          }).backgroundColor(0xffffff).fontColor(Color.Red)
       }.margin({ bottom: 10 })
     }
   }
 }
+
+let Offset = { dx: 5, dy: 5 }
 
 @Entry
 @Component
@@ -46,25 +48,35 @@ struct CustomDialogUser {
   dialogController: CustomDialogController = new CustomDialogController({
     builder: CustomDialogExample({ cancel: this.onCancel, confirm: this.onAccept }),
     cancel: this.existApp,
-    autoCancel: true
+    autoCancel: true,
+    offset: Offset,
+    alignment: DialogAlignment.Center,
+    customStyle: false,
+    gridCount: 5
   })
 
   onCancel() {
     console.info('Callback when the first button is clicked')
   }
+
   onAccept() {
     console.info('Callback when the second button is clicked')
   }
+
   existApp() {
     console.info('Click the callback in the blank area')
   }
 
   build() {
-    Column() {
+    Row() {
       Button('click me')
         .onClick(() => {
-        this.dialogController.open()
-      }).backgroundColor(0x317aff)
+          this.dialogController.open()
+        }).backgroundColor(0x317aff)
+      Button('click me')
+        .onClick(() => {
+          this.dialogController.close()
+        }).backgroundColor(0x317aff)
     }.width('100%').margin({ top: 5 })
   }
 }

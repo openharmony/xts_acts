@@ -62,7 +62,7 @@
             "updateEnabled": true,
             "updateDuration": 1,
             "window": {
-              "designWidth": 750,
+              "designWidth": 720,
               "autoDesignWidth": true
             }
           },

@@ -2,14 +2,14 @@
     "description": "Configuration for startup convertxml js api Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "60000",
+        "test-timeout": "800000",
         "package": "com.example.convertxml",
-        "shell-timeout": "60000"
+        "shell-timeout": "90000"
     },
     "kits": [
         {
             "test-file-name": [
-                "ConvertxmlJSApiTest.hap"
+                "ActsConvertxmlJSApiTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

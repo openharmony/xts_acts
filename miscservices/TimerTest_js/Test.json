@@ -2,14 +2,14 @@
     "description": "Configuration for time js api Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "60000",
+        "test-timeout": "600000",
         "package": "ohos.acts.miscservices.timer",
-        "shell-timeout": "60000"
+        "shell-timeout": "600000"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsTimeJSApiTest.hap"
+                "ActsTimerJSApiTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

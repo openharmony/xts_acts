@@ -655,16 +655,19 @@ describe('ActsAccountChangeOnOff', async function () {
                 expect(data).assertEqual("com.example.actsaccounttest");
             }
             twiceSign = twiceSign + 1;
-            appAccountManager.off('change', function (){
-                console.debug("====>off ActsAccountChangeOnOff_1000 finish====");
-                appAccountManager.deleteAccount("onoff_twice", (err)=>{
-                    console.debug("====>delete account ActsAccountChangeOnOff_1000 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
-                    expect(twiceSign).assertEqual(2);
-                    console.debug("====>ActsAccountChangeOnOff_1000 end====");
-                    done();
+            setTimeout(async function (){
+                console.debug("====>off start====");
+                appAccountManager.off('change', function (){
+                    console.debug("====>off ActsAccountChangeOnOff_1000 finish====");
+                    appAccountManager.deleteAccount("onoff_twice", (err)=>{
+                        console.debug("====>delete account ActsAccountChangeOnOff_1000 err:" + JSON.stringify(err));
+                        expect(err.code).assertEqual(0);
+                        expect(twiceSign).assertEqual(2);
+                        console.debug("====>ActsAccountChangeOnOff_1000 end====");
+                        done();
+                    });
                 });
-            });
+            }, 1000)
         }
         try{
             appAccountManager.on('change', ["com.example.actsaccounttest"], changeOnFirstCallback);

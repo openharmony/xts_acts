@@ -15,12 +15,6 @@ import("//test/xts/tools/build/suite.gni")
 group("network_search") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "network_search_cellInformation:AtcsNetworkSearchCellInformationTest",
-      "network_search_information:ActsNetworkSearchInformationTest",
-      "network_search_preferred_mode:ActsNetworkSearchPreferredModeTest",
-      "network_search_radio:ActsNetworkSearchRadioTest",
-      "network_search_selection_mode:ActsNetworkSearchSelectionModeTest",
-    ]
+    deps = [ "network_search_errors:ActsNetworkSearchTest" ]
   }
 }

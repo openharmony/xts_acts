@@ -24,9 +24,13 @@ describe('fileio_dir_read', function () {
    * @tc.number SUB_DF_FileIO_ReadSync_0000
    * @tc.name fileio_test_dir_read_file_sync_000
    * @tc.desc Test Dir.readSync() interface.
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_dir_read_file_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_dir_read_file_sync_000');
+  it('fileio_test_dir_read_file_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_dir_read_file_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -50,7 +54,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_test_dir_open_close_async_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_test_dir_open_close_async_000') + 'd';
+    let dpath = await nextFileName('fileio_test_dir_open_close_async_000') + 'd';
 
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -71,7 +75,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_test_dir_open_close_async_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_test_dir_open_close_async_001') + 'd';
+    let dpath = await nextFileName('fileio_test_dir_open_close_async_001') + 'd';
 
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -93,7 +97,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_test_dir_read_async_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_test_dir_read_async_000') + 'd';
+    let dpath = await nextFileName('fileio_test_dir_read_async_000') + 'd';
     let fpath = dpath + '/f1';
 
     try {
@@ -119,7 +123,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_test_dir_read_async_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_test_dir_read_async_001') + 'd';
+    let dpath = await nextFileName('fileio_test_dir_read_async_001') + 'd';
     let fpath = dpath + '/f1';
 
     try {
@@ -144,8 +148,8 @@ describe('fileio_dir_read', function () {
    * @tc.name fileio_dir_read_sync_000
    * @tc.desc Test Dir.readSync() interface.
    */
-  it('fileio_dir_read_sync_000', 0, function () {
-    let dpath = nextFileName('fileio_dir_read_sync_000') + 'd';
+  it('fileio_dir_read_sync_000', 0, async function () {
+    let dpath = await nextFileName('fileio_dir_read_sync_000') + 'd';
     let fpath = dpath + '/f1';
 
     try {
@@ -168,8 +172,8 @@ describe('fileio_dir_read', function () {
    * @tc.name fileio_dir_read_sync_001
    * @tc.desc Test Dir.readSync() interface.
    */
-  it('fileio_dir_read_sync_001', 0, function () {
-    let dpath = nextFileName('fileio_dir_read_sync_001') + 'd';
+  it('fileio_dir_read_sync_001', 0, async function () {
+    let dpath = await nextFileName('fileio_dir_read_sync_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
 
@@ -193,7 +197,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_dir_read_sync_name_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_sync_name_000') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_sync_name_000') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -218,7 +222,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_dir_read_sync_name_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_sync_name_001') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_sync_name_001') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -243,7 +247,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_dir_read_sync_isBlockDevice_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_sync_isBlockDevice_000') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_sync_isBlockDevice_000') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -268,7 +272,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_dir_read_sync_isBlockDevice_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_sync_isBlockDevice_001') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_sync_isBlockDevice_001') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -293,7 +297,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_dir_read_sync_isCharacterDevice_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_sync_isCharacterDevice_000') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_sync_isCharacterDevice_000') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -317,7 +321,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_dir_read_sync_isCharacterDevice_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_sync_isCharacterDevice_001') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_sync_isCharacterDevice_001') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -342,7 +346,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_dir_read_sync_isDirectory_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_sync_isDirectory_000') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_sync_isDirectory_000') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -367,7 +371,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_dir_read_sync_isDirectory_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_sync_isDirectory_001') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_sync_isDirectory_001') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -392,7 +396,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_dir_read_sync_isFIFO_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_sync_isFIFO_000') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_sync_isFIFO_000') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -417,7 +421,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_dir_read_sync_isFIFO_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_sync_isFIFO_001') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_sync_isFIFO_001') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -442,7 +446,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_dir_read_sync_isFile_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_sync_isFile_000') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_sync_isFile_000') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -467,7 +471,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_dir_read_sync_isFile_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_sync_isFile_001') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_sync_isFile_001') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -492,7 +496,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_dir_read_sync_isSocket_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_sync_isSocket_000') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_sync_isSocket_000') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -517,7 +521,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_dir_read_sync_isSocket_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_sync_isSocket_001') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_sync_isSocket_001') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -542,7 +546,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_dir_read_sync_isSymbolicLink_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_sync_isSymbolicLink_000') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_sync_isSymbolicLink_000') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -567,7 +571,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_dir_read_sync_isSymbolicLink_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_sync_isSymbolicLink_001') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_sync_isSymbolicLink_001') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -592,7 +596,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readAsync() interface.
    */
   it('fileio_dir_read_async_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_async_000') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_async_000') + 'd';
     let fpath = dpath + '/f1';
 
     try {
@@ -617,7 +621,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readAsync() interface.
    */
   it('fileio_dir_read_async_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_async_001') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_async_001') + 'd';
     let fpath = dpath + '/f1';
 
     try {
@@ -643,7 +647,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readAsync() interface.
    */
   it('fileio_dir_read_async_name_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_async_name_000') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_async_name_000') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -668,7 +672,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readAsync() interface.
    */
   it('fileio_dir_read_async_name_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_async_name_001') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_async_name_001') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -693,7 +697,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readAsync() interface.
    */
   it('fileio_dir_read_async_isBlockDevice_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_async_isBlockDevice_000') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_async_isBlockDevice_000') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -718,7 +722,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readAsync() interface.
    */
   it('fileio_dir_read_async_isBlockDevice_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_async_isBlockDevice_001') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_async_isBlockDevice_001') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -744,7 +748,7 @@ describe('fileio_dir_read', function () {
    */
 
   it('fileio_dir_read_async_isCharacterDevice_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_async_isCharacterDevice_000') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_async_isCharacterDevice_000') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -768,7 +772,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readAsync() interface.
    */
   it('fileio_dir_read_async_isCharacterDevice_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_async_isCharacterDevice_001') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_async_isCharacterDevice_001') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -792,7 +796,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readAsync() interface.
    */
   it('fileio_dir_read_async_isDirectory_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_async_isDirectory_000') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_async_isDirectory_000') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -817,7 +821,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readAsync() interface.
    */
   it('fileio_dir_read_async_isDirectory_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_async_isDirectory_001') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_async_isDirectory_001') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -842,7 +846,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readAsync() interface.
    */
   it('fileio_dir_read_async_isFIFO_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_async_isFIFO_000') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_async_isFIFO_000') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -867,7 +871,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readAsync() interface.
    */
   it('fileio_dir_read_async_isFIFO_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_async_isFIFO_001') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_async_isFIFO_001') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -892,7 +896,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readAsync() interface.
    */
   it('fileio_dir_read_async_isDirectory_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_async_isDirectory_000') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_async_isDirectory_000') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -917,7 +921,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readAsync() interface.
    */
   it('fileio_dir_read_async_isDirectory_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_async_isDirectory_001') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_async_isDirectory_001') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -942,7 +946,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readAsync() interface.
    */
   it('fileio_dir_read_async_isDirectory_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_async_isDirectory_000') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_async_isDirectory_000') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -967,7 +971,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readAsync() interface.
    */
   it('fileio_dir_read_async_isDirectory_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_async_isDirectory_001') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_async_isDirectory_001') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -992,7 +996,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readAsync() interface.
    */
   it('fileio_dir_read_async_isDirectory_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_async_isDirectory_000') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_async_isDirectory_000') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -1017,7 +1021,7 @@ describe('fileio_dir_read', function () {
    * @tc.desc Test Dir.readAsync() interface.
    */
   it('fileio_dir_read_async_isDirectory_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_dir_read_async_isDirectory_001') + 'd';
+    let dpath = await nextFileName('fileio_dir_read_async_isDirectory_001') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();

@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.ohos.simmanagerfunction",
+    "bundleName": "com.ohos.simmanagertest",
     "vendor": "ohos",
     "version": {
       "code": 1000000,
@@ -14,7 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.ohos.simmanagerfunction",
+    "package": "com.ohos.simmanagertest",
     "name": ".MyApplication",
     "deviceType": [
       "phone"
@@ -37,7 +37,7 @@
             ]
           }
         ],
-        "name": "com.ohos.simmanagerfunction.MainAbility",
+        "name": "com.ohos.simmanagertest.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",

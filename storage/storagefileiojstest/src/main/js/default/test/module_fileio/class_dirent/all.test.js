@@ -21,12 +21,16 @@ import {
 describe('fileio_dirent', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_Dirent_Name_0010
+   * @tc.number SUB_DF_FILEIO_DIRENT_NAME_0010
    * @tc.name fileio_test_dirent_name_001
-   * @tc.desc Test dirent interface.
+   * @tc.desc Test dirent interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_dirent_name_001', 0, async function (done) {
-    let dpath = nextFileName('fileio_test_dirent_name_001') + 'd';
+    let dpath = await nextFileName('fileio_test_dirent_name_001') + 'd';
     let fpath = dpath + '/f2';
 
     try {
@@ -35,7 +39,6 @@ describe('fileio_dirent', function () {
       let dd = fileio.opendirSync(dpath);
       expect(dd !== null).assertTrue();
       dd.read(function (err, dirent) {
-        expect(!err).assertTrue();
         expect(dirent !== null).assertTrue();
         expect(isString(dirent.name)).assertTrue();
         expect(dd.closeSync() == null).assertTrue();
@@ -50,12 +53,16 @@ describe('fileio_dirent', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dirent_Name_0000
+   * @tc.number SUB_DF_FILEIO_DIRENT_NAME_0000
    * @tc.name fileio_test_dirent_name_000
-   * @tc.desc Test dirent interface.
+   * @tc.desc Test dirent interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_dirent_name_000', 0, async function (done) {
-    let dpath = nextFileName('fileio_test_dirent_name_000') + 'd';
+    let dpath = await nextFileName('fileio_test_dirent_name_000') + 'd';
     let fpath = dpath + '/f1';
 
     try {
@@ -80,10 +87,14 @@ describe('fileio_dirent', function () {
   /**
    * @tc.number SUB_DF_FileIO_Dir_ReadSync_0000
    * @tc.name fileio_test_dirent_name_000
-   * @tc.desc Test readSync() interface.
+   * @tc.desc Test readSync() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_dirent_name_000', 0, function () {
-    let dpath = nextFileName('fileio_test_dirent_name_000') + 'd';
+  it('fileio_test_dirent_name_000', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dirent_name_000') + 'd';
     let fpath = dpath + '/f1';
 
     try {
@@ -104,12 +115,16 @@ describe('fileio_dirent', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_IsBlockDevice_0000
+   * @tc.number SUB_DF_FILEIO_DIR_ISBLOCKDEVICE_0000
    * @tc.name fileio_test_dirent_is_block_device_000
-   * @tc.desc Test isBlockDevice() interface.
+   * @tc.desc Test isBlockDevice() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_dirent_is_block_device_000', 0, function () {
-    let dpath = nextFileName('fileio_test_dirent_is_block_device_000') + 'd';
+  it('fileio_test_dirent_is_block_device_000', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dirent_is_block_device_000') + 'd';
     let fpath = dpath + '/f1';
     try {
       expect(fileio.mkdirSync(dpath) == null).assertTrue();
@@ -129,12 +144,16 @@ describe('fileio_dirent', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_IsBlockDevice_0010
+   * @tc.number SUB_DF_FILEIO_DIR_ISBLOCKDEVICE_0010
    * @tc.name fileio_test_dirent_is_block_device_001
-   * @tc.desc Test isBlockDevice() interface.
+   * @tc.desc Test isBlockDevice() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_dirent_is_block_device_001', 0, function () {
-    let dpath = nextFileName('fileio_test_dirent_is_block_device_001') + 'd';
+  it('fileio_test_dirent_is_block_device_001', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dirent_is_block_device_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
 
@@ -155,12 +174,16 @@ describe('fileio_dirent', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_IsCharacterDevice_0000
+   * @tc.number SUB_DF_FILEIO_DIR_ISCHARACTERDEVICE_0000
    * @tc.name fileio_test_dirent_is_character_device_000
-   * @tc.desc Test isCharacterDevice() interface.
+   * @tc.desc Test isCharacterDevice() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_dirent_is_character_device_000', 0, function () {
-    let dpath = nextFileName('fileio_test_dirent_is_character_device_000') + 'd';
+  it('fileio_test_dirent_is_character_device_000', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dirent_is_character_device_000') + 'd';
     let fpath = dpath + '/f1';
 
     try {
@@ -181,12 +204,16 @@ describe('fileio_dirent', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_IsCharacterDevice_0010
+   * @tc.number SUB_DF_FILEIO_DIR_ISCHARACTERDEVICE_0010
    * @tc.name fileio_test_dirent_is_character_device_001
-   * @tc.desc Test isCharacterDevice() interface.
+   * @tc.desc Test isCharacterDevice() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_dirent_is_character_device_001', 0, function () {
-    let dpath = nextFileName('fileio_test_dirent_is_character_device_001') + 'd';
+  it('fileio_test_dirent_is_character_device_001', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dirent_is_character_device_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
 
@@ -207,12 +234,16 @@ describe('fileio_dirent', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_IsDirectory_0000
+   * @tc.number SUB_DF_FILEIO_DIR_ISDIRECTORY_0000
    * @tc.name fileio_test_dirent_is_directory_000
-   * @tc.desc Test isDirectory() interface.
+   * @tc.desc Test isDirectory() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_dirent_is_directory_000', 0, function () {
-    let dpath = nextFileName('fileio_test_dirent_is_directory_000') + 'd';
+  it('fileio_test_dirent_is_directory_000', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dirent_is_directory_000') + 'd';
     let fpath = dpath + '/f1';
 
     try {
@@ -235,10 +266,14 @@ describe('fileio_dirent', function () {
   /**
    * @tc.number SUB_DF_FileIO_Dir_IsDirectory_0010
    * @tc.name fileio_test_dirent_is_directory_001
-   * @tc.desc Test isDirectory() interface.
+   * @tc.desc Test isDirectory() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_dirent_is_directory_001', 0, function () {
-    let dpath = nextFileName('fileio_test_dirent_is_directory_001') + 'd';
+  it('fileio_test_dirent_is_directory_001', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dirent_is_directory_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
 
@@ -259,12 +294,16 @@ describe('fileio_dirent', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_IsFIFO_0000
+   * @tc.number SUB_DF_FILEIO_DIR_ISFIFO_0000
    * @tc.name fileio_test_dirent_is_fifo_000
-   * @tc.desc Test isFIFO() interface.
+   * @tc.desc Test isFIFO() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_dirent_is_fifo_000', 0, function () {
-    let dpath = nextFileName('fileio_test_dirent_is_fifo_000') + 'd';
+  it('fileio_test_dirent_is_fifo_000', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dirent_is_fifo_000') + 'd';
     let fpath = dpath + '/f1';
 
     try {
@@ -285,12 +324,16 @@ describe('fileio_dirent', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_IsFIFO_0010
+   * @tc.number SUB_DF_FILEIO_DIR_ISFIFO_0010
    * @tc.name fileio_test_dirent_is_fifo_001
-   * @tc.desc Test isFIFO() interface.
+   * @tc.desc Test isFIFO() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_dirent_is_fifo_001', 0, function () {
-    let dpath = nextFileName('fileio_test_dirent_is_fifo_001') + 'd';
+  it('fileio_test_dirent_is_fifo_001', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dirent_is_fifo_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
 
@@ -311,12 +354,16 @@ describe('fileio_dirent', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_IsFILE_0000
+   * @tc.number SUB_DF_FILEIO_DIR_ISFILE_0000
    * @tc.name fileio_test_dirent_is_file_000
-   * @tc.desc Test isFILE() interface.
+   * @tc.desc Test isFILE() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_dirent_is_file_000', 0, function () {
-    let dpath = nextFileName('fileio_test_dirent_is_file_000') + 'd';
+  it('fileio_test_dirent_is_file_000', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dirent_is_file_000') + 'd';
     let fpath = dpath + '/f1';
 
     try {
@@ -337,12 +384,16 @@ describe('fileio_dirent', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_IsFILE_0010
+   * @tc.number SUB_DF_FILEIO_DIR_ISFILE_0010
    * @tc.name fileio_test_dirent_is_file_001
-   * @tc.desc Test isFILE() interface.
+   * @tc.desc Test isFILE() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require 
    */
-  it('fileio_test_dirent_is_file_001', 0, function () {
-    let dpath = nextFileName('fileio_test_dirent_is_file_001') + 'd';
+  it('fileio_test_dirent_is_file_001', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dirent_is_file_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
 
@@ -363,12 +414,16 @@ describe('fileio_dirent', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_IsSocket_0000
+   * @tc.number SUB_DF_FILEIO_DIR_ISSOCKET_0000
    * @tc.name fileio_test_dirent_is_socket_000
-   * @tc.desc Test isSocket() interface.
+   * @tc.desc Test isSocket() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_dirent_is_socket_000', 0, function () {
-    let dpath = nextFileName('fileio_test_dirent_is_socket_000') + 'd';
+  it('fileio_test_dirent_is_socket_000', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dirent_is_socket_000') + 'd';
     let fpath = dpath + '/f1';
 
     try {
@@ -389,12 +444,16 @@ describe('fileio_dirent', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_IsSocket_0010
+   * @tc.number SUB_DF_FILEIO_DIR_ISSOCKET_0010
    * @tc.name fileio_test_dirent_is_socket_001
-   * @tc.desc Test isSocket() interface.
+   * @tc.desc Test isSocket() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_dirent_is_socket_001', 0, function () {
-    let dpath = nextFileName('fileio_test_dirent_is_socket_001') + 'd';
+  it('fileio_test_dirent_is_socket_001', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dirent_is_socket_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
 
@@ -417,10 +476,14 @@ describe('fileio_dirent', function () {
   /**
    * @tc.number SUB_DF_FileIO_Dir_IsSymbolicLink_0000
    * @tc.name fileio_test_dirent_is_symbolic_link_000
-   * @tc.desc Test isSymbolicLink() interface.
+   * @tc.desc Test isSymbolicLink() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_dirent_is_symbolic_link_000', 0, function () {
-    let dpath = nextFileName('fileio_test_dirent_is_symbolic_link_000') + 'd';
+  it('fileio_test_dirent_is_symbolic_link_000', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dirent_is_symbolic_link_000') + 'd';
     let fpath = dpath + '/f1';
 
     try {
@@ -441,12 +504,16 @@ describe('fileio_dirent', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_IsSymbolicLink_0010
+   * @tc.number SUB_DF_FILEIO_DIR_ISSYMBOLICLINK_0010
    * @tc.name fileio_test_dirent_is_symbolic_link_001
-   * @tc.desc Test isSymbolicLink() interface.
+   * @tc.desc Test isSymbolicLink() interface
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require 
    */
-  it('fileio_test_dirent_is_symbolic_link_001', 0, function () {
-    let dpath = nextFileName('fileio_test_dirent_is_symbolic_link_001') + 'd';
+  it('fileio_test_dirent_is_symbolic_link_001', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dirent_is_symbolic_link_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
 

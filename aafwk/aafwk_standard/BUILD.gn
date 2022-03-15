@@ -17,11 +17,20 @@ group("aafwk_standard") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "ActsAbilityLifecycleStateNewTest:ActsAbilityLifecycleStateNewTest",
+      "ActsDataAbilityJsTest:ActsDataAbilityJsTest",
+      "ActsKillProcessWithAccountApi7:ActsKillProcessWithAccountApi7",
+      "ActsStServiceAbilityClientCaseTest:ActsStServiceAbilityClientCaseTest",
       "abilitymanager:actsabilitymanagertest",
+      "actsabilitydistributetest:ActsAbilityDistributeTest",
+      "actsabilitydistributetest:ActsAbilityDistributeTest",
+      "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
+      "amsZipfileUnzipfileST:ActsZlibTest",
       "amsabilitymanager/amsMissionSnapshotTest:ActsAmsMissionSnapshotTest",
       "amsabilitymanager/amsMissionSnapshotTestSingleton:ActsAmsMissionSnapshotTestSingleton",
       "amsabilitymanager/amsMissionSnapshotTestSingletonS:ActsAmsMissionSnapshotTestSingletonS",
       "amsdatauriutils:ActsAmsDataUriUtilsTest",
+      "amsgetabilityprocessinfo:amsgetabilityprocessinfo",
       "amsmultiapp/MultiAppPage:ActsAmsMultiPageApp",
       "amsmultiapp/MultiAppPageConnectService:ActsAmsMultiPageAppConnectService",
       "amsmultiapp/MultiAppPageConnect_Service:ActsAmsMultiAppPageConnectService",
@@ -40,23 +49,17 @@ group("aafwk_standard") {
       "amsmultiapp/amsmultiapptester:ActsAmsMultiAppTester",
       "amsmultiapp/amsmultidataabilityclone:ActsAmsMultiDataAbilityClone",
       "amsmultiapp/amsmultidataabilityself:ActsAmsMultiDataAbilitySelf",
-      "amszipfileunzipfilest:ActsAmsZipfileUnzipfileSTest",
+      "amsprocessmanageapi7:amsprocessmanageapi7",
       "context:context",
       "featureability:featureability",
       "formmanager:formmanager",
-
-      #"fwkdataaccessor:ActsFWKDataAccessorTest",
-
-      #"serviceability/actsparticleabilitytest:ActsParticleAbilityTest",
+      "lanuageConfigapi7:lanuageConfigapi7",
       "serviceability/sceneProject/particlestartability:ParticleStartAbility",
       "serviceability/sceneProject/particletestserver:ParticleTestServer",
-
-      #"serviceability/stserviceabilityclient:ActsAmsStServiceAbilityClientTest",
       "serviceability/stserviceabilityserver:amsStServiceAilityServer",
       "serviceability/stserviceabilityserversecond:ActsAmsStServiceAilityServerSecondTest",
       "setshowonlockscreen:setshowonlockscreen",
-
-      #"verifypermission:verifypermission",
+      "stage:stage",
       "want:want",
     ]
   }

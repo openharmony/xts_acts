@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 import rpc from "@ohos.rpc"
-import particleAbility from '@ohos.ability.particleability'
+import particleAbility from '@ohos.ability.particleAbility'
 import bundle from "@ohos.bundle"
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')

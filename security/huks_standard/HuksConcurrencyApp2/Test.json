@@ -1,0 +1,19 @@
+{
+    "description": "Configuration for concurrecny test",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "300000",
+        "package": "com.example.concurrencyapp2",
+        "shell-timeout": "60000"
+    },
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsHuksConcurrencyApp1Test.hap",
+                "ActsHuksConcurrencyApp2Test.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+}

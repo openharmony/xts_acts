@@ -65,13 +65,19 @@ export default function imageJsunit() {
       let strJson = getInspectorByKey('image1');
       let obj = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
+      console.log("image1 matchTextDirection" + JSON.stringify(obj.$attrs.matchTextDirection));
       console.log("image1 objectFit" + JSON.stringify(obj.$attrs.objectFit));
+      console.log("image1 fitOriginalSize" + JSON.stringify(obj.$attrs.fitOriginalSize));
+      console.log("image1 fillColor" + JSON.stringify(obj.$attrs.fillColor));
+      console.log("image1 autoResize" + JSON.stringify(obj.$attrs.autoResize));
+      console.log("image1 syncLoad" + JSON.stringify(obj.$attrs.syncLoad));
       console.log("image1 objectRepeat" + JSON.stringify(obj.$attrs.objectRepeat));
       console.log("image1 interpolation" + JSON.stringify(obj.$attrs.interpolation));
       console.log("image1 renderMode" + JSON.stringify(obj.$attrs.renderMode));
       console.log("image1 sourceSize" + JSON.stringify(obj.$attrs.sourceSize));
       console.log("image1 alt" + JSON.stringify(obj.$attrs.alt));
       expect(obj.$attrs.objectFit).assertEqual('ImageFit.Cover')
+      expect(obj.$attrs.syncLoad).assertEqual('false')
       expect(obj.$attrs.objectRepeat).assertEqual('ImageRepeat.NoRepeat')
       expect(obj.$attrs.interpolation).assertEqual('ImageInterpolation.None')
       expect(obj.$attrs.renderMode).assertEqual('ImageRenderMode.Original')

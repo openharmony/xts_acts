@@ -72,6 +72,7 @@ struct SwiperExample {
       .loop(false)
       .duration(1000)
       .vertical(false)
+      .disableSwipe(true)
       .itemSpace(0)
       .onChange((index: number) => {
         console.info(index.toString())
@@ -85,6 +86,10 @@ struct SwiperExample {
         Button('preview')
           .onClick(() => {
             this.swiperController.showPrevious()
+          })
+        Button('finishAnimation')
+          .onClick(() => {
+            this.swiperController.finishAnimation()
           })
       }
     }.margin({ top: 5 })

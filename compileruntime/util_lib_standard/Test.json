@@ -2,14 +2,14 @@
     "description": "Configuration for startup util js api Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "60000",
-        "package": "com.example.childprocess",
-        "shell-timeout": "60000"
+        "test-timeout": "800000",
+        "package": "com.example.util",
+        "shell-timeout": "90000"
     },
     "kits": [
         {
             "test-file-name": [
-                "UtilJsTest.hap"
+                "ActsUtilJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

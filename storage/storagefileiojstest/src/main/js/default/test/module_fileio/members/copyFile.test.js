@@ -21,12 +21,16 @@ import {
 describe('fileio_copyfile', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_CopyFileSync_0000
+   * @tc.number SUB_DF_FILEIO_COPY_FILE_SYNC_0000
    * @tc.name fileio_copy_file_sync_000
    * @tc.desc Test copyFileSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_copy_file_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_copy_file_sync_000');
+  it('fileio_copy_file_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_copy_file_sync_000');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -41,41 +45,55 @@ describe('fileio_copyfile', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_CopyFileSync_0010
+   * @tc.number SUB_DF_FILEIO_COPY_FILE_SYNC_0010
    * @tc.name fileio_copy_file_sync_001
    * @tc.desc Test copyFileSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_copy_file_sync_001', 0, function () {
-    let fpath = nextFileName('fileio_copy_file_sync_001');
+  it('fileio_copy_file_sync_001', 0, async function () {
+    let fpath = await nextFileName('fileio_copy_file_sync_001');
     let fpathTarget = fpath + 'tgt';
 
     try {
       fileio.copyFileSync(fpath, fpathTarget);
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_copy_file_sync_001 has failed for ' + e);
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_CopyFileSync_0020
+   * @tc.number SUB_DF_FILEIO_COPY_FILE_SYNC_0020
    * @tc.name fileio_copy_file_sync_002
    * @tc.desc Test copyFileSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_copy_file_sync_002', 0, function () {
     try {
       fileio.copyFileSync();
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_copy_file_sync_002 has failed for ' + e);
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_CopyFileAsync_0000
+   * @tc.number SUB_DF_FILEIO_COPY_FILE_ASYNC_0000
    * @tc.name fileio_copy_file_async_000
    * @tc.desc Test copyFileAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_copy_file_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_copy_file_async_000');
+    let fpath = await nextFileName('fileio_copy_file_async_000');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -91,12 +109,16 @@ describe('fileio_copyfile', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_CopyFileAsync_0010
+   * @tc.number SUB_DF_FILEIO_COPY_FILE_ASYNC_0010
    * @tc.name fileio_copy_file_async_001
    * @tc.desc Test copyFileAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_copy_file_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_copy_file_async_000');
+    let fpath = await nextFileName('fileio_copy_file_async_000');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -113,12 +135,16 @@ describe('fileio_copyfile', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_CopyFileAsync_0020
+   * @tc.number SUB_DF_FILEIO_COPY_FILE_ASYNC_0020
    * @tc.name fileio_copy_file_async_002
    * @tc.desc Test copyFileAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_copy_file_async_002', 0, async function (done) {
-    let fpath = nextFileName('fileio_copy_file_async_002');
+    let fpath = await nextFileName('fileio_copy_file_async_002');
     let fpathTarget = fpath + 'tgt';
     try {
       expect(await fileio.copyFile(fpath, fpathTarget).indexOf('<pending>') > -1).assertTrue();
@@ -129,12 +155,16 @@ describe('fileio_copyfile', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_CopyFileAsync_0030
+   * @tc.number SUB_DF_FILEIO_COPY_FILE_ASYNC_0030
    * @tc.name fileio_copy_file_async_003
    * @tc.desc Test copyFileAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_copy_file_async_003', 0, async function (done) {
-    let fpath = nextFileName('fileio_copy_file_async_003');
+    let fpath = await nextFileName('fileio_copy_file_async_003');
     try {
       fileio
         .copyFile(1, fpath)
@@ -151,12 +181,16 @@ describe('fileio_copyfile', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_CopyFileAsync_0040
+   * @tc.number SUB_DF_FILEIO_COPY_FILE_ASYNC_0040
    * @tc.name fileio_copy_file_async_004
    * @tc.desc Test copyFileAsync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_copy_file_async_004', 0, async function (done) {
-    let fpath = nextFileName('fileio_copy_file_async_004');
+    let fpath = await nextFileName('fileio_copy_file_async_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       expect(await fileio.copyFile(fpath, 1) == null).assertTrue();

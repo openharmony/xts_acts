@@ -14,6 +14,7 @@
  */
 
 import fileio from '@ohos.fileio';
+import featureAbility from '@ohos.ability.featureAbility';
 
 export const FILE_CONTENT = 'hello world';
 
@@ -73,27 +74,23 @@ export function fileToWriteOnly(fpath) {
     return false
   }
 }
-export function nextFileName(testName) {
+export function nextFileName1(testName) {
   const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.storage.fileio/cache/'
-  return BASE_PATH + testName
+  return BASE_PATH + testName + '_' + randomString(testName.length);
 }
-export function fileName(testName) {
-  const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.storage.fileio/files/'
-  return BASE_PATH + testName
+export async function nextFileName(testName) {
+  let context = featureAbility.getContext();
+  let data = await context.getFilesDir();
+  let BASE_PATH = data.substring(0, data.length - 5) + 'cache/';
+  return BASE_PATH + testName + '_' + randomString(testName.length);
 }
-export function cacheFileName(testName) {
-  const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.storage.fileio/files/cache/'
-  return BASE_PATH + testName
+export async function fileName(testName) {
+  let context = featureAbility.getContext();
+  let data = await context.getFilesDir();
+  let BASE_PATH = data + '/';
+  return BASE_PATH + testName + '_' + randomString(testName.length);
 }
 
-export function sleep(n) {
-  var start = new Date().getTime();
-  while (true) {
-    if (new Date().getTime() - start > n) {
-      break;
-    }
-  }
-}
 export function randomString(num) {
   let len= num;
   var $chars = 'aaaabbbbcccc';

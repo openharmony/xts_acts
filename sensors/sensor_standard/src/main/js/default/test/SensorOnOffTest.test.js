@@ -18,10 +18,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import sensor from '@ohos.sensor'
 
-function sleep (NumberMillis) {
+function sleep(NumberMillis) {
     var now = new Date()
     var exitTime = now.getTime() + NumberMillis
-    while(true) {
+    while (true) {
         now = new Date()
         if (now.getTime > exitTime) {
             return
@@ -30,20 +30,20 @@ function sleep (NumberMillis) {
 }
 
 describe('SystemParameterTest', function () {
-    beforeAll(function() {
-         console.info('beforeAll caled')
+    beforeAll(function () {
+        console.info('beforeAll caled')
     })
-    
-    afterAll(function() {
-         console.info('afterAll caled')
+
+    afterAll(function () {
+        console.info('afterAll caled')
     })
-    
-    beforeEach(function() {
-         console.info('beforeEach caled')
+
+    beforeEach(function () {
+        console.info('beforeEach caled')
     })
-    
-    afterEach(function() {
-         console.info('afterEach caled')
+
+    afterEach(function () {
+        console.info('afterEach caled')
     })
 
     /**
@@ -51,16 +51,21 @@ describe('SystemParameterTest', function () {
      * @tc.name      testRegisterSensortest001
      * @tc.desc      test get sensor data by sensor id.
      */
-     it('SUB_SENSORS_Sensor_JSTest_0010', 0, async function (done) {
+    it('SUB_SENSORS_Sensor_JSTest_0010', 0, async function (done) {
         console.info('SUB_SENSORS_Sensor_JSTest_0010 start');
-        await sensor.on(0, function(error, data) {
+        await sensor.on(0, function (error, data) {
             if (error) {
-                console.info('testRegisterSensortest001  on error');
-                expect(false).assertTrue();
+                if (error.code == -1) {
+                    console.info("testRegisterSensortest001 on error: sensor 0 not exit")
+                } else {
+                    console.info('testRegisterSensortest001  on error :' + error.code);
+                    expect(false).assertTrue();
+                }
                 done();
             } else {
                 console.info('testRegisterSensortest001  on success');
                 expect(data.x).assertInstanceOf('Number');
+                expect(data.timestamp).assertInstanceOf('Number');
                 done();
             }
         });
@@ -72,20 +77,20 @@ describe('SystemParameterTest', function () {
      * @tc.name      testRegisterSensortest002
      * @tc.desc      test get sensor data by wrong sensor id.
      */
-         it('SUB_SENSORS_Sensor_JSTest_0020', 0, async function (done) {
-            console.info('SUB_SENSORS_Sensor_JSTest_0020 start');
-            await sensor.on(-1, function(error, data) {
-                if (error) {
-                    console.info('testRegisterSensortest002  on error');
-                    expect(true).assertTrue();
-                    done();
-                } else {
-                    console.info('testRegisterSensortest002  on success');
-                    expect(false).assertTrue();
-                    done();
-                }
-            });
-            console.info('SUB_SENSORS_Sensor_JSTest_0020 end');
-        })
+    it('SUB_SENSORS_Sensor_JSTest_0020', 0, async function (done) {
+        console.info('SUB_SENSORS_Sensor_JSTest_0020 start');
+        await sensor.on(-1, function (error, data) {
+            if (error) {
+                console.info('testRegisterSensortest002  on error');
+                expect(true).assertTrue();
+                done();
+            } else {
+                console.info('testRegisterSensortest002  on success');
+                expect(false).assertTrue();
+                done();
+            }
+        });
+        console.info('SUB_SENSORS_Sensor_JSTest_0020 end');
+    })
 
 })

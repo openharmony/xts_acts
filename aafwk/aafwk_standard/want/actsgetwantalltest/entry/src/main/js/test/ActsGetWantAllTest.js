@@ -12,25 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import featureAbility from '@ohos.ability.featureability'
+import featureAbility from '@ohos.ability.featureAbility'
 import wantConstant from '@ohos.ability.wantConstant'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 describe('ActsGetWantTest', function () {
     beforeAll(async (done) => {
-        await featureAbility.startAbility(
-            {
-                want:
-                {
-                    deviceId: "",
-                    bundleName: "com.ohos.launcher",
-                    abilityName: "com.ohos.launcher.MainAbility",
-                    action: "action1",
-                    parameters:
-                        {},
-                },
-            },
-        );
+        console.info('ActsGetWantTest begin')
         done();
     })
 
@@ -362,7 +350,6 @@ describe('ActsGetWantTest', function () {
                     entities: ["entity1"],
                     type: "MIMETYPE",
                     uri: "key={true,true,false}",
-                    flags: wantConstant.Flags.FLAG_ABILITY_CONTINUATION  ,
                     parameters:
                     {
                         mykey0: 0.1,
@@ -983,4 +970,109 @@ describe('ActsGetWantTest', function () {
                     done();
                 })
         })
+        
+     /*
+     * @tc.number  ACTS_GetWant_2000
+     * @tc.name    Misconfigured bundlename validation
+     * @tc.desc    Function test
+     * @tc.level   0
+     */
+    it("ACTS_GetWant_2000",0, async function(done){
+        console.info("------------------start ACTS_GetWant_2000-------------------");
+        try{
+            featureAbility.startAbilityForResult({
+                want:
+                {
+                    deviceId: "",
+                    bundleName: "com.example.actsgetwantalltesthap",
+                    abilityName: "com.example.actsgetwantalltesthap.MainAbility",
+                    action: "action2",
+                    entities: ["entity1", "entity2"],
+                    type: "MIMETYPE",
+                    uri: "key={true,true,false}",
+                    flags: wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT,
+                    parameters:
+                    {
+                        mykey0: 0.1,
+                        mykey1: [0.1, 0.2, 0.3],
+                        mykey2: "[1, 2, 3]",
+                        mykey3: "str",
+                        mykey4: [false, true, false],
+                        mykey5: ["str", "test123", "helloopenharmony"],
+                    },
+                },
+            },
+                (err, data) => {
+                    checkOnAbilityResult(data);
+                    done();
+                })
+        }catch(error){
+            console.log("ACTS_GetWant_2000 : error = " + error);
+        }
+        console.log('ACTS_GetWant_2000 end');
+    });
+
+    /**
+     * @tc.number: SUB_AA_OpenHarmony_wantConstantEnumeration_0100
+     * @tc.name: Check the enumerated value ACTION_IMAGE_CAPTURE of wantConstant.
+     * @tc.desc: Check the enumerated value ACTION_IMAGE_CAPTURE of wantConstant.
+     */
+     it('SUB_AA_OpenHarmony_wantConstantEnumeration_0100',0, async function (done) {
+        console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0100 --- start")
+        let image = wantConstant.Action.ACTION_IMAGE_CAPTURE
+        expect(image).assertEqual("ohos.want.action.imageCapture")
+        console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0100 --- end")
+        done()
+        })
+
+        /**
+         * @tc.number: SUB_AA_OpenHarmony_wantConstantEnumeration_0200
+         * @tc.name: Check the enumerated value ACTION_VIDEO_CAPTURE of wantConstant.
+         * @tc.desc: Check the enumerated value ACTION_VIDEO_CAPTURE of wantCconstant.
+         */
+        it('SUB_AA_OpenHarmony_wantConstantEnumeration_0200',0, async function (done) {
+            console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0200 --- start")
+            let video = wantConstant.Action.ACTION_VIDEO_CAPTURE
+            expect(video).assertEqual("ohos.want.action.videoCapture")
+            console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0200 --- end")
+            done()
+        })
+
+        /**
+         * @tc.number: SUB_AA_OpenHarmony_wantConstantEnumeration_0300
+         * @tc.name: Check the enumerated value ACTION_APP_ACCOUNT_OAUTH of wantConstant.
+         * @tc.desc: Check the enumerated value ACTION_APP_ACCOUNT_OAUTH of wantConstant.
+         */
+        it('SUB_AA_OpenHarmony_wantConstantEnumeration_0300',0, async function (done) {
+        console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0300 --- start")
+        let app = wantConstant.ACTION_APP_ACCOUNT_OAUTH
+        expect(app).assertEqual("ohos.account.appAccount.action.oauth")
+        console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0300 --- end")
+        done()
+        })
+    
+    function checkOnAbilityResult(data) {
+        console.info('====> ACTS_StartAbilityForResult_2000 start ability=====>' + JSON.stringify(data))
+        expect(data.want.deviceId).assertEqual("");
+        expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+        expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+        expect(data.want.action).assertEqual("action2");
+        expect(data.want.entities[0]).assertEqual("entity1");
+        expect(data.want.type).assertEqual("MIMETYPE");
+        expect(data.want.uri).assertEqual("key={true,true,false}");
+        expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT );
+        expect(data.want.parameters.mykey0).assertEqual(0.1);
+        expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+        expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+        expect(data.want.parameters.mykey1[2]).assertEqual(0.3);
+        expect(data.want.parameters.mykey2).assertEqual("[1, 2, 3]");
+        expect(data.want.parameters.mykey3).assertEqual("str");
+        expect(data.want.parameters.mykey4[0]).assertEqual(false);
+        expect(data.want.parameters.mykey4[1]).assertEqual(true);
+        expect(data.want.parameters.mykey4[2]).assertEqual(false);
+        expect(data.want.parameters.mykey5[0]).assertEqual("str");
+        expect(data.want.parameters.mykey5[1]).assertEqual("test123");
+        expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
+        console.info('====> before done=====>')
+    }
 })

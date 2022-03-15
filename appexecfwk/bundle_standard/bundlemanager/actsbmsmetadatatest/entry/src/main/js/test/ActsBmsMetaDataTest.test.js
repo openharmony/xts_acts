@@ -30,7 +30,7 @@ describe('ActsBmsMetaDataTest', function () {
         let abilityName1 = 'com.example.third1.MainAbility';
         let dataMap = new Map();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -41,7 +41,7 @@ describe('ActsBmsMetaDataTest', function () {
                 {
                     "bundleName": 'com.example.third1',
                     "abilityName": 'com.example.third1.MainAbility',
-                }, 32, 0).then(dataInfos => {
+                }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 100).then(dataInfos => {
                     for (let i = 0, len = dataInfos.length; i < len; i++) {
                         dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
                     }
@@ -50,7 +50,7 @@ describe('ActsBmsMetaDataTest', function () {
                 checkMetaData(dataMap.get(abilityName1), 'Data1');
             }
             installer.uninstall('com.example.third1', {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, (err, data) => {
@@ -76,7 +76,7 @@ describe('ActsBmsMetaDataTest', function () {
         let abilityName1 = 'com.example.third1.AMainAbility';
         var installer = await bundle.getBundleInstaller();
         installer.install(bundlePath1, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, async (err, data) => {
@@ -84,7 +84,7 @@ describe('ActsBmsMetaDataTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.install(bundlePath2, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -95,7 +95,7 @@ describe('ActsBmsMetaDataTest', function () {
                     {
                         "bundleName": 'com.example.third1',
                         "abilityName": 'com.example.third1.AMainAbility',
-                    }, 32, 0).then(dataInfos => {
+                    }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 100).then(dataInfos => {
                         for (let i = 0, len = dataInfos.length; i < len; i++) {
                             dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
                         }
@@ -104,7 +104,7 @@ describe('ActsBmsMetaDataTest', function () {
                     checkMetaData(dataMap.get(abilityName1), 'DataA1');
                 }
                 installer.uninstall('com.example.third1', {
-                    userId: 0,
+                    userId: 100,
                     installFlag: 1,
                     isKeepData: false
                 }, (err, data) => {
@@ -128,7 +128,7 @@ describe('ActsBmsMetaDataTest', function () {
         let bundleName = 'com.example.third1';
         var installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, (err, data) => {
@@ -136,7 +136,7 @@ describe('ActsBmsMetaDataTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
             installer.uninstall(bundleName, {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, async (err, data) => {
@@ -144,7 +144,7 @@ describe('ActsBmsMetaDataTest', function () {
                     {
                         bundleName: 'com.example.third1',
                         abilityName: 'com.example.third1.MainAbility',
-                    }, 32, 0).then(dataInfos => {
+                    }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 100).then(dataInfos => {
                         expect(dataInfos.length).assertEqual(0);
                     });
                 done();
@@ -164,7 +164,7 @@ describe('ActsBmsMetaDataTest', function () {
         let abilityName1 = 'com.example.third5.AMainAbility';
         var installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
-            userId: 0,
+            userId: 100,
             installFlag: 1,
             isKeepData: false
         }, onReceiveinstallEvent);
@@ -176,7 +176,7 @@ describe('ActsBmsMetaDataTest', function () {
                 {
                     bundleName: 'com.example.third5',
                     abilityName: 'com.example.third5.AMainAbility',
-                }, 32, 0).then(dataInfos => {
+                }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 100).then(dataInfos => {
                     for (let i = 0, len = dataInfos.length; i < len; i++) {
                         dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
                     }
@@ -185,7 +185,7 @@ describe('ActsBmsMetaDataTest', function () {
                 checkMetaData(dataMap.get(abilityName1), 'Data5A');
             }
             installer.uninstall('com.example.third5', {
-                userId: 0,
+                userId: 100,
                 installFlag: 1,
                 isKeepData: false
             }, (err, data) => {
@@ -208,7 +208,7 @@ describe('ActsBmsMetaDataTest', function () {
             {
                 bundleName: 'com.example.noexist',
                 abilityName: 'com.example.noexist.MainAbility',
-            }, 32, 0).then(dataInfos => {
+            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 100).then(dataInfos => {
                 expect(dataInfos.length).assertEqual(0);
             })
         done();
@@ -227,7 +227,7 @@ describe('ActsBmsMetaDataTest', function () {
             {
                 bundleName: 'com.example.system1',
                 abilityName: 'com.example.system1.MainAbility',
-            }, 32, 0).then(dataInfos => {
+            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 100).then(dataInfos => {
                 for (let i = 0, len = dataInfos.length; i < len; i++) {
                     dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
                 }
@@ -251,7 +251,7 @@ describe('ActsBmsMetaDataTest', function () {
             {
                 bundleName: 'com.example.vendor1',
                 abilityName: 'com.example.vendor1.MainAbility',
-            }, 32, 0).then(dataInfos => {
+            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, 100).then(dataInfos => {
                 for (let i = 0, len = dataInfos.length; i < len; i++) {
                     dataMap.set(dataInfos[i].name, dataInfos[i].metaData)
                 }

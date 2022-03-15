@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
-import factory from '@ohos.data.distributedData'
+import factory from '@ohos.data.distributedData';
 
 const TEST_BUNDLE_NAME = 'ohos.acts.distributeddatamgr';
 const TEST_STORE_ID = 'storeId';
@@ -120,17 +120,22 @@ describe('KvStoreResultSetTest', function() {
             console.log('afterEach closeKVStore success');
             await kvManager.deleteKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID).then(() => {
                 console.log('afterEach deleteKVStore success');
-                kvStore = null;
             }).catch((err) => {
                 console.log('afterEach deleteKVStore err ' + err);
             });
         }).catch((err) => {
             console.log('afterEach closeKVStore err ' + err);
         });
+        kvStore = null;
+        resultSet = null;
         done();
     })
 
-    // getCount(): number;
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_GETCOUNT_0100
+     * @tc.name [JS-API8]KvStoreResultSet.GetCount()
+     * @tc.desc Test Js Api KvStoreResultSet.GetCount()testcase 001
+     */
     it('testKvStoreResultSetGetCount001', 0, async function(done) {
         try {
             var count = resultSet.getCount();
@@ -143,6 +148,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_GETCOUNT_0200
+     * @tc.name [JS-API8]KvStoreResultSet.GetCount()
+     * @tc.desc Test Js Api KvStoreResultSet.GetCount()testcase 002
+     */
     it('testKvStoreResultSetGetCount002', 0, async function(done) {
         try {
             var rs;
@@ -167,6 +177,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_GETCOUNT_0300
+     * @tc.name [JS-API8]KvStoreResultSet.GetCount()
+     * @tc.desc Test Js Api KvStoreResultSet.GetCount()testcase 003
+     */
     it('testKvStoreResultSetGetCount003', 0, async function(done) {
         try {
             var count = resultSet.getCount(123);
@@ -178,6 +193,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_GETCOUNT_0400
+     * @tc.name [JS-API8]KvStoreResultSet.GetCount()
+     * @tc.desc Test Js Api KvStoreResultSet.GetCount()testcase 004
+     */
     it('testKvStoreResultSetGetCount004', 0, async function(done) {
         try {
             var count = resultSet.getCount(123, 'test_string');
@@ -189,7 +209,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
-    // getPosition(): number;
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_GETPOSITION_0100
+     * @tc.name [JS-API8]KvStoreResultSet.GetPosition()
+     * @tc.desc Test Js Api KvStoreResultSet.GetPosition()testcase 001
+     */
     it('testKvStoreResultSetGetPosition001', 0, async function(done) {
         try {
             var positon = resultSet.getPosition();
@@ -202,6 +226,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_GETPOSITION_0200
+     * @tc.name [JS-API8]KvStoreResultSet.GetPosition()
+     * @tc.desc Test Js Api KvStoreResultSet.GetPosition()testcase 002
+     */
     it('testKvStoreResultSetGetPosition002', 0, async function(done) {
         try {
             var positon = resultSet.getPosition();
@@ -218,6 +247,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_GETPOSITION_0300
+     * @tc.name [JS-API8]KvStoreResultSet.GetPosition()
+     * @tc.desc Test Js Api KvStoreResultSet.GetPosition()testcase 003
+     */
     it('testKvStoreResultSetGetPosition003', 0, async function(done) {
         try {
             var positon = resultSet.getPosition(123);
@@ -229,6 +263,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_GETPOSITION_0400
+     * @tc.name [JS-API8]KvStoreResultSet.GetPosition()
+     * @tc.desc Test Js Api KvStoreResultSet.GetPosition()testcase 004
+     */
     it('testKvStoreResultSetGetPosition004', 0, async function(done) {
         try {
             var positon = resultSet.getPosition(123, 'test_string');
@@ -240,7 +279,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
-    // moveToFirst(): boolean;
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETOFIRST_0100
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToFirst()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToFirst()testcase 001
+     */
     it('testKvStoreResultSetMoveToFirst001', 0, async function(done) {
         try {
             var moved = resultSet.moveToFirst();
@@ -253,6 +296,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETOFIRST_0200
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToFirst()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToFirst()testcase 002
+     */
     it('testKvStoreResultSetMoveToFirst002', 0, async function(done) {
         try {
             var moved = resultSet.moveToFirst();
@@ -268,6 +316,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETOFIRST_0300
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToFirst()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToFirst()testcase 003
+     */
     it('testKvStoreResultSetMoveToFirst003', 0, async function(done) {
         try {
             var moved = resultSet.moveToFirst(123);
@@ -279,6 +332,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETOFIRST_0400
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToFirst()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToFirst()testcase 004
+     */
     it('testKvStoreResultSetMoveToFirst004', 0, async function(done) {
         try {
             var moved = resultSet.moveToFirst(123, 'test_string');
@@ -290,6 +348,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETOFIRST_0500
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToFirst()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToFirst()testcase 005
+     */
     it('testKvStoreResultSetMoveToFirst005', 0, async function(done) {
         try {
             var moved = resultSet.moveToLast();
@@ -303,7 +366,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
-    // moveToLast(): boolean;
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETOLAST_0100
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToLast()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToLast()testcase 001
+     */
     it('testKvStoreResultSetMoveToLast001', 0, async function(done) {
         try {
             var moved = resultSet.moveToLast();
@@ -316,6 +383,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETOLAST_0200
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToLast()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToLast()testcase 002
+     */
     it('testKvStoreResultSetMoveToLast002', 0, async function(done) {
         try {
             var moved = resultSet.moveToLast();
@@ -328,6 +400,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETOLAST_0300
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToLast()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToLast()testcase 003
+     */
     it('testKvStoreResultSetMoveToLast003', 0, async function(done) {
         try {
             var moved = resultSet.moveToLast(123);
@@ -339,6 +416,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETOLAST_0400
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToLast()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToLast()testcase 004
+     */
     it('testKvStoreResultSetMoveToLast004', 0, async function(done) {
         try {
             var moved = resultSet.moveToLast(123, 'test_string');
@@ -350,7 +432,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
-    // moveToNext(): boolean;
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETONEXT_0100
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToNext()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToNext()testcase 001
+     */
     it('testKvStoreResultSetMoveToNext001', 0, async function(done) {
         try {
             var moved = resultSet.moveToNext();
@@ -363,6 +449,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETONEXT_0200
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToNext()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToNext()testcase 002
+     */
     it('testKvStoreResultSetMoveToNext002', 0, async function(done) {
         try {
             var moved = resultSet.moveToNext();
@@ -377,6 +468,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETONEXT_0300
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToNext()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToNext()testcase 003
+     */
     it('testKvStoreResultSetMoveToNext003', 0, async function(done) {
         try {
             var moved = resultSet.moveToNext(123);
@@ -388,6 +484,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETONEXT_0400
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToNext()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToNext()testcase 004
+     */
     it('testKvStoreResultSetMoveToNext004', 0, async function(done) {
         try {
             var moved = resultSet.moveToNext(123, 'test_string');
@@ -399,7 +500,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
-    // moveToPrevious(): boolean;
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETOPREVIOUS_0100
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToPrevious()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToPrevious()testcase 001
+     */
     it('testKvStoreResultSetMoveToPrevious001', 0, async function(done) {
         try {
             var moved = resultSet.moveToPrevious();
@@ -412,6 +517,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETOPREVIOUS_0200
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToPrevious()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToPrevious()testcase 002
+     */
     it('testKvStoreResultSetMoveToPrevious002', 0, async function(done) {
         try {
             var moved = resultSet.moveToFirst();
@@ -429,6 +539,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETOPREVIOUS_0300
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToPrevious()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToPrevious()testcase 003
+     */
     it('testKvStoreResultSetMoveToPrevious003', 0, async function(done) {
         try {
             var moved = resultSet.moveToPrevious(123);
@@ -440,6 +555,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETOPREVIOUS_0400
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToPrevious()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToPrevious()testcase 004
+     */
     it('testKvStoreResultSetMoveToPrevious004', 0, async function(done) {
         try {
             var moved = resultSet.moveToPrevious(123, 'test_string');
@@ -451,22 +571,32 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETOPREVIOUS_0500
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToPrevious()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToPrevious()testcase 005
+     */
     it('testKvStoreResultSetMoveToPrevious005', 0, async function(done) {
         try {
             var moved = resultSet.moveToFirst();
             expect(moved && (resultSet.getPosition() == 0)).assertTrue();
             moved = resultSet.moveToPrevious();
             console.log("testKvStoreResultSetMoveToPrevious005 from 0 to -1 return" + moved);
-            expect(moved).assertFalse();
+            expect(moved == false).assertTrue();
             console.log("testKvStoreResultSetMoveToPrevious005 from 0 to " + resultSet.getPosition());
             expect(-1).assertEqual(resultSet.getPosition());
         } catch (e) {
             console.log("testKvStoreResultSetMoveToPrevious005 fail " + e);
-            expect(null).assertTrue();
+            expect(null).assertFail();
         }
         done();
     })
-    // move(offset: number): boolean;
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVE_0100
+     * @tc.name [JS-API8]KvStoreResultSet.Move()
+     * @tc.desc Test Js Api KvStoreResultSet.Move()testcase 001
+     */
     it('testKvStoreResultSetMove001', 0, async function(done) {
         try {
             var moved = resultSet.move();
@@ -478,6 +608,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVE_0200
+     * @tc.name [JS-API8]KvStoreResultSet.Move()
+     * @tc.desc Test Js Api KvStoreResultSet.Move()testcase 002
+     */
     it('testKvStoreResultSetMove002', 0, async function(done) {
         try {
             resultSet.moveToFirst();
@@ -493,6 +628,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVE_0300
+     * @tc.name [JS-API8]KvStoreResultSet.Move()
+     * @tc.desc Test Js Api KvStoreResultSet.Move()testcase 003
+     */
     it('testKvStoreResultSetMove003', 0, async function(done) {
         try {
             expect(resultSet.getPosition() == -1).assertTrue();
@@ -509,6 +649,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVE_0400
+     * @tc.name [JS-API8]KvStoreResultSet.Move()
+     * @tc.desc Test Js Api KvStoreResultSet.Move()testcase 004
+     */
     it('testKvStoreResultSetMove004', 0, async function(done) {
         try {
             var moved = resultSet.move(3, 'test_string');
@@ -520,7 +665,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
-    // moveToPosition(position: number): boolean;
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETOPOSITION_0100
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToPosition()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToPosition()testcase 001
+     */
     it('testKvStoreResultSetMoveToPosition001', 0, async function(done) {
         try {
             var moved = resultSet.moveToPosition();
@@ -532,6 +681,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETOPOSITION_0200
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToPosition()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToPosition()testcase 002
+     */
     it('testKvStoreResultSetMoveToPosition002', 0, async function(done) {
         try {
             var moved = resultSet.moveToPosition(1, 'test_string');
@@ -543,6 +697,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETOPOSITION_0300
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToPosition()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToPosition()testcase 003
+     */
     it('testKvStoreResultSetMoveToPosition003', 0, async function(done) {
         try {
             var moved = resultSet.moveToPosition(5);
@@ -554,6 +713,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_MOVETOPOSITION_0400
+     * @tc.name [JS-API8]KvStoreResultSet.MoveToPosition()
+     * @tc.desc Test Js Api KvStoreResultSet.MoveToPosition()testcase 004
+     */
     it('testKvStoreResultSetMoveToPosition004', 0, async function(done) {
         try {
             var moved = resultSet.move(3);
@@ -568,7 +732,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
-    // isFirst(): boolean;
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_ISFIRST_0100
+     * @tc.name [JS-API8]KvStoreResultSet.IsFirst()
+     * @tc.desc Test Js Api KvStoreResultSet.IsFirst()testcase 001
+     */
     it('testKvStoreResultSetIsFirst001', 0, async function(done) {
         try {
             var flag = resultSet.isFirst();
@@ -581,6 +749,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_ISFIRST_0200
+     * @tc.name [JS-API8]KvStoreResultSet.IsFirst()
+     * @tc.desc Test Js Api KvStoreResultSet.IsFirst()testcase 002
+     */
     it('testKvStoreResultSetIsFirst002', 0, async function(done) {
         try {
             var flag = resultSet.isFirst();
@@ -597,6 +770,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_ISFIRST_0300
+     * @tc.name [JS-API8]KvStoreResultSet.IsFirst()
+     * @tc.desc Test Js Api KvStoreResultSet.IsFirst()testcase 003
+     */
     it('testKvStoreResultSetIsFirst003', 0, async function(done) {
         try {
             var flag = resultSet.isFirst(1);
@@ -608,6 +786,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_ISFIRST_0400
+     * @tc.name [JS-API8]KvStoreResultSet.IsFirst()
+     * @tc.desc Test Js Api KvStoreResultSet.IsFirst()testcase 004
+     */
     it('testKvStoreResultSetIsFirst004', 0, async function(done) {
         try {
             var flag = resultSet.isFirst(1, 'test_string');
@@ -619,7 +802,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
-    // isLast(): boolean;
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_ISLAST_0100
+     * @tc.name [JS-API8]KvStoreResultSet.IsLast()
+     * @tc.desc Test Js Api KvStoreResultSet.IsLast()testcase 001
+     */
     it('testKvStoreResultSetIsLast001', 0, async function(done) {
         try {
             var flag = resultSet.isLast();
@@ -632,6 +819,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_ISLAST_0200
+     * @tc.name [JS-API8]KvStoreResultSet.IsLast()
+     * @tc.desc Test Js Api KvStoreResultSet.IsLast()testcase 002
+     */
     it('testKvStoreResultSetIsLast002', 0, async function(done) {
         try {
             resultSet.moveToLast();
@@ -645,6 +837,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_ISLAST_0300
+     * @tc.name [JS-API8]KvStoreResultSet.IsLast()
+     * @tc.desc Test Js Api KvStoreResultSet.IsLast()testcase 003
+     */
     it('testKvStoreResultSetIsLast003', 0, async function(done) {
         try {
             var flag = resultSet.isLast(1);
@@ -656,6 +853,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_ISLAST_0400
+     * @tc.name [JS-API8]KvStoreResultSet.IsLast()
+     * @tc.desc Test Js Api KvStoreResultSet.IsLast()testcase 004
+     */
     it('testKvStoreResultSetIsLast004', 0, async function(done) {
         try {
             var flag = resultSet.isLast(1, 'test_string');
@@ -667,7 +869,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
-    // isBeforeFirst(): boolean;
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_ISBEFOREFIRST_0100
+     * @tc.name [JS-API8]KvStoreResultSet.IsBeforeFirst()
+     * @tc.desc Test Js Api KvStoreResultSet.IsBeforeFirst()testcase 001
+     */
     it('testKvStoreResultSetIsBeforeFirst001', 0, async function(done) {
         try {
             var flag = resultSet.isBeforeFirst();
@@ -680,6 +886,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_ISBEFOREFIRST_0200
+     * @tc.name [JS-API8]KvStoreResultSet.IsBeforeFirst()
+     * @tc.desc Test Js Api KvStoreResultSet.IsBeforeFirst()testcase 002
+     */
     it('testKvStoreResultSetIsBeforeFirst002', 0, async function(done) {
         try {
             var moved = resultSet.moveToPrevious();
@@ -694,6 +905,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_ISBEFOREFIRST_0300
+     * @tc.name [JS-API8]KvStoreResultSet.IsBeforeFirst()
+     * @tc.desc Test Js Api KvStoreResultSet.IsBeforeFirst()testcase 003
+     */
     it('testKvStoreResultSetIsBeforeFirst003', 0, async function(done) {
         try {
             var flag = resultSet.isBeforeFirst(1);
@@ -705,6 +921,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_ISBEFOREFIRST_0400
+     * @tc.name [JS-API8]KvStoreResultSet.IsBeforeFirst()
+     * @tc.desc Test Js Api KvStoreResultSet.IsBeforeFirst()testcase 004
+     */
     it('testKvStoreResultSetIsBeforeFirst004', 0, async function(done) {
         try {
             var flag = resultSet.isBeforeFirst(1, 'test_string');
@@ -716,7 +937,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
-    // isAfterLast(): boolean;
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_ISAFTERLAST_0100
+     * @tc.name [JS-API8]KvStoreResultSet.IsAfterLast()
+     * @tc.desc Test Js Api KvStoreResultSet.IsAfterLast()testcase 001
+     */
     it('testKvStoreResultSetIsAfterLast001', 0, async function(done) {
         try {
             var flag = resultSet.isAfterLast();
@@ -729,6 +954,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_ISAFTERLAST_0200
+     * @tc.name [JS-API8]KvStoreResultSet.IsAfterLast()
+     * @tc.desc Test Js Api KvStoreResultSet.IsAfterLast()testcase 002
+     */
     it('testKvStoreResultSetIsAfterLast002', 0, async function(done) {
         try {
             var moved = resultSet.moveToLast();
@@ -736,7 +966,7 @@ describe('KvStoreResultSetTest', function() {
             expect(moved).assertTrue();
             moved = resultSet.moveToNext();
             console.log("testKvStoreResultSetIsAfterLast002  moveToNext  moved=" + moved);
-            expect(moved).assertFalse();
+            expect(moved == false).assertTrue();
             var flag = resultSet.isAfterLast();
             console.log("testKvStoreResultSetIsAfterLast002  isAfterLast true=" + flag);
             expect(flag).assertTrue();
@@ -747,6 +977,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_ISAFTERLAST_0300
+     * @tc.name [JS-API8]KvStoreResultSet.IsAfterLast()
+     * @tc.desc Test Js Api KvStoreResultSet.IsAfterLast()testcase 003
+     */
     it('testKvStoreResultSetIsAfterLast003', 0, async function(done) {
         try {
             var flag = resultSet.isAfterLast(1);
@@ -758,6 +993,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_ISAFTERLAST_0400
+     * @tc.name [JS-API8]KvStoreResultSet.IsAfterLast()
+     * @tc.desc Test Js Api KvStoreResultSet.IsAfterLast()testcase 004
+     */
     it('testKvStoreResultSetIsAfterLast004', 0, async function(done) {
         try {
             var flag = resultSet.isAfterLast(1, 'test_string');
@@ -769,7 +1009,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
-    // getEntry(): Entry;
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_GETENTRY_0100
+     * @tc.name [JS-API8]KvStoreResultSet.GetEntry()
+     * @tc.desc Test Js Api KvStoreResultSet.GetEntry()testcase 001
+     */
     it('testKvStoreResultSetGetEntry001', 0, async function(done) {
         try {
             var moved = resultSet.moveToNext();
@@ -784,6 +1028,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_GETENTRY_0200
+     * @tc.name [JS-API8]KvStoreResultSet.GetEntry()
+     * @tc.desc Test Js Api KvStoreResultSet.GetEntry()testcase 002
+     */
     it('testKvStoreResultSetGetEntry002', 0, async function(done) {
         try {
             var moved = resultSet.moveToNext();
@@ -804,6 +1053,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_GETENTRY_0300
+     * @tc.name [JS-API8]KvStoreResultSet.GetEntry()
+     * @tc.desc Test Js Api KvStoreResultSet.GetEntry()testcase 003
+     */
     it('testKvStoreResultSetGetEntry003', 0, async function(done) {
         try {
             var entry = resultSet.getEntry(1);
@@ -815,6 +1069,11 @@ describe('KvStoreResultSetTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORERESULTSET_GETENTRY_0400
+     * @tc.name [JS-API8]KvStoreResultSet.GetEntry()
+     * @tc.desc Test Js Api KvStoreResultSet.GetEntry()testcase 004
+     */
     it('testKvStoreResultSetGetEntry004', 0, async function(done) {
         try {
             var entry = resultSet.getEntry(1, 'test_string');

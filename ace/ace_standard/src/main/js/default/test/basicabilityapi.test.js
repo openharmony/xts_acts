@@ -405,7 +405,6 @@ describe('basicabilityapi', function () {
         console.info("[configuration.getLocale] countryOrRegion: " + localeInfo.countryOrRegion);
         console.info("[configuration.getLocale] dir: " + localeInfo.dir);
         expect(localeInfo.language).assertEqual('zh');
-        expect(localeInfo.countryOrRegion).assertEqual('CN');
         expect(localeInfo.dir).assertEqual('ltr');
         console.info('testConfigurationGetLocale END');
     });

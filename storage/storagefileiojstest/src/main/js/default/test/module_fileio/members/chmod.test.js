@@ -21,12 +21,16 @@ import {
 describe('fileio_chmod', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_ChmodSync_0000
+   * @tc.number SUB_DF_FILEIO_CHMODSYNC_0000
    * @tc.name fileio_test_chmod_sync_000
-   * @tc.desc Test chmodSync() interfaces.
+   * @tc.desc Test chmodSync() interfaces
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_chmod_sync_000', 0, function () {
-    let fpath = nextFileName('fileio_test_chmod_sync_000');
+  it('fileio_test_chmod_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_chmod_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -40,12 +44,16 @@ describe('fileio_chmod', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ChmodSync_0010
+   * @tc.number SUB_DF_FILEIO_CHMODSYNC_0010
    * @tc.name fileio_test_chmod_sync_001
-   * @tc.desc Test chmodSync() interfaces.
+   * @tc.desc Test chmodSync() interfaces
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_test_chmod_sync_001', 0, function () {
-    let fpath = nextFileName('fileio_test_chmod_sync_001');
+  it('fileio_test_chmod_sync_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_chmod_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -59,12 +67,16 @@ describe('fileio_chmod', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ChmodAsync_0000
+   * @tc.number SUB_DF_FILEIO_CHMODASYNC_0000
    * @tc.name fileio_test_chmod_async_000
-   * @tc.desc Test chmodAsync() interfaces.
+   * @tc.desc Test chmodAsync() interfaces
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_chmod_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_chmod_async_001');
+    let fpath = await nextFileName('fileio_test_chmod_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -87,12 +99,16 @@ describe('fileio_chmod', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ChmodAsync_0010
+   * @tc.number SUB_DF_FILEIO_CHMODASYNC_0010
    * @tc.name fileio_test_chmod_async_001
-   * @tc.desc Test chmodAsync() interfaces.
+   * @tc.desc Test chmodAsync() interfaces
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_chmod_async_001', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_chmod_async_001');
+    let fpath = await nextFileName('fileio_test_chmod_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -115,16 +131,20 @@ describe('fileio_chmod', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ChmodAsync_0020
+   * @tc.number SUB_DF_FILEIO_CHMODASYNC_0020
    * @tc.name fileio_test_chmod_async_002
-   * @tc.desc Test chmodAsync() interfaces.
+   * @tc.desc Test chmodAsync() interfaces
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_chmod_async_002', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_chmod_async_000');
+    let fpath = await nextFileName('fileio_test_chmod_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      await fileio.chmod(fpath, 0o660, async function () {
+      await fileio.chmod(fpath, 0o660, function () {
         expect((fileio.statSync(fpath).mode & 0o777) == 0o660).assertTrue();
         fileio.unlinkSync(fpath);
         done();
@@ -136,16 +156,20 @@ describe('fileio_chmod', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_ChmodAsync_0030
+   * @tc.number SUB_DF_FILEIO_CHMODASYNC_0030
    * @tc.name fileio_test_chmod_async_003
-   * @tc.desc Test chmodAsync() interfaces.
+   * @tc.desc Test chmodAsync() interfaces
+   * @tc.size MEDIUM(中型)
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_chmod_async_003', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_chmod_async_000');
+    let fpath = await nextFileName('fileio_test_chmod_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      await fileio.chmod(fpath, 0o0700, async function () {
+      await fileio.chmod(fpath, 0o0700, function () {
         expect((fileio.statSync(fpath).mode & 0o777) == 0o0700).assertTrue();
         fileio.unlinkSync(fpath);
         done();

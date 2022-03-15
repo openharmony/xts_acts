@@ -17,11 +17,10 @@ group("security") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      # "authentication_standard/deviceauth_p2p:DeviceauthP2PFunctionCPPTest",
-      "dataprotect/huks_standard_adapter:ActsHuksStdFunctionTest",
-      "deviceauth/deviceauth_function:ActsDeviceAuthFunctionTest",
+      "access_token/AccessTokenTest_NoPermission_js:ActsAccessTokenJSApiTestNoPermission",
+      "access_token/AccessTokenTest_Normal_js:ActsAccessTokenJSApiTestNormal",
+      "huks_standard",
+      "security_huks",
     ]
-  } else {
-    deps = []
   }
 }

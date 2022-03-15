@@ -64,6 +64,7 @@ export default function badgeJsunit() {
       console.info('new Badge0 START');
       let strJson = getInspectorByKey('badge');
       let obj = JSON.parse(strJson);
+      let style = JSON.parse(obj.$attrs.style)
       expect(obj.$type).assertEqual('Badge');
       console.log(JSON.stringify(obj.$type))
       console.info("yr badge0 type: " + JSON.stringify(obj.$type));
@@ -74,9 +75,12 @@ export default function badgeJsunit() {
       console.log("yr badge0 position-BadgePosition.Right" + JSON.stringify(obj.$attrs.position))
       expect(obj.$attrs.maxCount).assertEqual('99');
       console.log("yr badge0 maxCount-'99'" + JSON.stringify(obj.$attrs.maxCount))
-      expect(obj.$attrs.style.color).assertEqual('0xFFFFFF');
-      expect(obj.$attrs.style.fontSize).assertEqual('16');
-      expect(obj.$attrs.style.badgeSize).assertEqual('20');
+      console.log("yr badge0 style.color" + style.color);
+      console.log("yr badge0 style.fontSize" + style.fontSize);
+      console.log("yr badge0 style.badgeSize" + style.badgeSize);
+      expect(style.color).assertEqual('#FFFFFFFF');
+      expect(style.fontSize).assertEqual('16.00fp');
+      expect(style.badgeSize).assertEqual('20.00fp');
       console.log("badge0 style : " + JSON.stringify(obj.$attrs.style))
       console.info('testGetInspectorByKey END');
       done();
@@ -91,9 +95,14 @@ export default function badgeJsunit() {
       console.info('new Badge1 START');
       let strJson = getInspectorByKey('badge1');
       let obj = JSON.parse(strJson);
+      let style = JSON.parse(obj.$attrs.style)
       console.info("component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.position).assertEqual('BadgePosition.RightTop');
       console.log("yr badge1 position-'BadgePosition.RightTop'" + JSON.stringify(obj.$attrs.position))
+      console.log("yr badge0 style.fontSize" + style.fontSize);
+      console.log("yr badge0 style.badgeSize" + style.badgeSize);
+      expect(style.fontSize).assertEqual('16.00fp');
+      expect(style.badgeSize).assertEqual('20.00fp');
       console.info('new Badge1 END');
       done();
     });

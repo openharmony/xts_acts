@@ -21,12 +21,16 @@ import {
 describe('fileio_hash', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_HashAsync_0000
+   * @tc.number SUB_DF_FILEIO_HASH_ASYNC_0000
    * @tc.name fileio_test_hash_async_000
    * @tc.desc Test hashAsync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_hash_async_000', 0, async function (done) {
-    let fpath = nextFileName('fileio_test_hash_async_000');
+    let fpath = await nextFileName('fileio_test_hash_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {

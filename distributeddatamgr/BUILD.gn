@@ -17,6 +17,7 @@ group("distributeddatamgr") {
   if (is_standard_system) {
     deps = [
       "appdatamgrjstest/hap:appdatamgr_js_test",
+      "distributeddataObjectjstest/hap:distributeddataObject_js_test",
       "distributeddatamgrjstest/hap:distributeddatamgr_js_test",
     ]
   } else {

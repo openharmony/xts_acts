@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-require('./ActsBmsGetBackGroundModes.test.js')
 require('./ActsBmsFormsInfoTest.test.js')
-require('./ActsBmsPermissionChange.test.js')
 require('./ActsBmsQueryAbilityByWant.test.js') 
+require('./ActsBmsCleanCacheTest.test.js')

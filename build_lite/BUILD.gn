@@ -32,6 +32,9 @@ lite_component("acts_component") {
   } else {
     if (ohos_kernel_type == "liteos_m") {
       all_features += [
+        "//test/xts/acts/communication_lite/dsoftbus_hal:ActsDsoftbusMgrTest",
+        "//test/xts/acts/aafwk_lite/ability_hal:ActsAbilityMgrTest",
+        "//test/xts/acts/appexecfwk_lite/appexecfwk_hal:ActsBundleMgrTest",
         "//test/xts/acts/communication_lite/lwip_hal:ActsLwipTest",
         "//test/xts/acts/communication_lite/wifiservice_hal:ActsWifiServiceTest",
         "//test/xts/acts/utils_lite/file_hal:ActsUtilsFileTest",

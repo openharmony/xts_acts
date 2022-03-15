@@ -73,10 +73,10 @@ export default function textJsunit() {
       console.log("cd text opacity" + JSON.stringify(obj.$attrs.opacity));
       console.log("cd text align" + JSON.stringify(obj.$attrs.align));
       console.log("cd text markAnchor type1" + typeof ({
-        "x": "50.000000vp", "y": "50.000000vp"
+        "x": "50.00vp", "y": "50.00vp"
       }));
       console.log("cd text markAnchor1" + JSON.stringify({
-        "x": "50.000000vp", "y": "50.000000vp"
+        "x": "50.00vp", "y": "50.00vp"
       }));
       console.log("cd text markAnchor type" + typeof (obj.$attrs.markAnchor));
       console.log("cd text markAnchor" + JSON.stringify(obj.$attrs.markAnchor));
@@ -95,6 +95,9 @@ export default function textJsunit() {
       console.log("cd text fontColor" + JSON.stringify(obj.$attrs.fontColor));
       console.log("cd text visibility" + JSON.stringify(obj.$attrs.visibility));
       console.log("cd text fontSize" + JSON.stringify(obj.$attrs.fontSize));
+      console.log("cd text minFontSize" + JSON.stringify(obj.$attrs.minFontSize));
+      console.log("cd text letterSpacing" + JSON.stringify(obj.$attrs.letterSpacing));
+      console.log("cd text maxFontSize" + JSON.stringify(obj.$attrs.maxFontSize));
       console.log("cd text fontWeight" + JSON.stringify(obj.$attrs.fontWeight));
       console.log("cd text fontStyle" + JSON.stringify(obj.$attrs.fontStyle));
       console.log("cd text fontFamily" + JSON.stringify(obj.$attrs.fontFamily));
@@ -112,30 +115,30 @@ export default function textJsunit() {
       console.log("cd text aspectRatio" + JSON.stringify(obj.$attrs.aspectRatio));
       console.log("cd text fontColor" + JSON.stringify(obj.$attrs.fontColor));
       expect(obj.$type).assertEqual('Text')
-      expect(obj.$attrs.width).assertEqual('200.000000vp')
-      expect(obj.$attrs.padding).assertEqual('5.000000vp')
-      expect(obj.$attrs.margin).assertEqual('10.000000px')
+      expect(obj.$attrs.width).assertEqual('200.00vp')
+      expect(obj.$attrs.padding).assertEqual('5.00vp')
+      expect(obj.$attrs.margin).assertEqual('10.00px')
       expect(obj.$attrs.opacity).assertEqual(1)
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
       expect(JSON.stringify(obj.$attrs.markAnchor)).assertEqual(JSON.stringify({
-        "x": "50.000000vp", "y": "50.000000vp"
+        "x": "50.00vp", "y": "50.00vp"
       }))
       expect(JSON.stringify(obj.$attrs.offset)).assertEqual(JSON.stringify({
-        "x": "50.000000vp", "y": "50.000000vp"
+        "x": "50.00vp", "y": "50.00vp"
       }))
       expect(obj.$attrs.flexGrow).assertEqual(5)
       expect(obj.$attrs.flexShrink).assertEqual(2)
       expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Auto")
       expect(obj.$attrs.borderStyle).assertEqual("BorderStyle.Dashed")
-      expect(obj.$attrs.borderRadius).assertEqual("10.000000vp")
-      expect(obj.$attrs.borderWidth).assertEqual("4.000000px")
+      expect(obj.$attrs.borderRadius).assertEqual("10.00vp")
+      expect(obj.$attrs.borderWidth).assertEqual("4.00px")
       expect(obj.$attrs.borderColor).assertEqual("#FF0000FF")
       expect(obj.$attrs.backgroundColor).assertEqual("#FFFFC0CB")
       expect(obj.$attrs.enabled).assertEqual(false)
       expect(obj.$attrs.zIndex).assertEqual(1)
       expect(obj.$attrs.fontColor).assertEqual("#FF000000")
       expect(obj.$attrs.visibility).assertEqual("Visibility.Visible")
-      expect(obj.$attrs.fontSize).assertEqual("15")
+      expect(obj.$attrs.fontSize).assertEqual("15.00px")
       expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Bold")
       expect(obj.$attrs.fontStyle).assertEqual("FontStyle.Italic")
       expect(obj.$attrs.fontFamily).assertEqual("sans-serif")
