@@ -231,7 +231,7 @@ it('Security_IAM_PIN_Kit_Func_0103', 0, async function (done) {
                                 }, function (onacquireinfo) {
                                 })
                                 let cancelresult = publicFC.publicgecancelAuth(UserAuthKit,contextID);
-                                await sleep(100);
+                                await sleep(2500);
                                 if(cancelresult == 1){
                                     console.info('AuthTest_0101 cancel = 1  authresult = ' + authresult);
                                     expect(ResultCode.SUCCESS).assertEqual(authresult);
