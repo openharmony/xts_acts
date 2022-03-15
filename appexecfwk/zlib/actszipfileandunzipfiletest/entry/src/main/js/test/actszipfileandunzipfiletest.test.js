@@ -1539,7 +1539,7 @@ it('ACTS_ZipFile_2600', 0, async function (done) {
     });
     try {
         var options = {};
-        options.memLevel = zlib.MemLevel.MEM_LEVEL_MIN_MEMLEVEL;
+        options.memLevel = zlib.MemLevel.MEM_LEVEL_MIN;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -1604,7 +1604,7 @@ it('ACTS_ZipFile_2700', 0, async function (done) {
     });
     try {
         var options = {};
-        options.memLevel = zlib.MemLevel.MEM_LEVEL_MAX_MEMLEVEL;
+        options.memLevel = zlib.MemLevel.MEM_LEVEL_MAX;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);
@@ -1669,7 +1669,7 @@ it('ACTS_ZipFile_2800', 0, async function (done) {
     });
     try {
         var options = {};
-        options.memLevel = zlib.MemLevel.MEM_LEVEL_DEFAULT_MEMLEVEL;
+        options.memLevel = zlib.MemLevel.MEM_LEVEL_DEFAULT;
         await zlib.zipFile(path, zipDest, options,
             (err, data) => {
                 var zipStat = fileio.statSync(zipDest);

@@ -1,5 +1,5 @@
 <div class="container">
     <text class="title">
-        {{ $t('strings.hello') }} {{ title }}
+        {{ title }}
     </text>
 </div>
