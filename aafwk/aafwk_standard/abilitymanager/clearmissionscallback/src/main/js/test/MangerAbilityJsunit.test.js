@@ -60,7 +60,7 @@ describe('ActsAmsCallBackSixth Scene', function () {
                 console.info('Acts_Ams_test_12200 clearMissions error.code ' + error.code + ',data  [' + info + ']' );
                 expect(typeof(error.code)).assertEqual("number");
                 expect(error.code).assertEqual(0);
+                done();
             });
-        done();
     })
 })
