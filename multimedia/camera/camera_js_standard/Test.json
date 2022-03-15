@@ -3,7 +3,7 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "1000000",
-        "package": "com.example.cameramoduletestetsv2",
+        "package": "com.open.harmony.multimedia.cameratest",
         "shell-timeout": "60000"
     },
     "kits": [
@@ -20,7 +20,7 @@
         },
         {
             "test-file-name": [
-                "CameraStandardETSTest.hap"
+                "ActsCameraStandardETSTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
