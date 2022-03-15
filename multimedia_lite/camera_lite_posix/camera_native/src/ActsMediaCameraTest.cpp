@@ -442,7 +442,7 @@ public:
             cout << "Camera is not ready." << endl;
             return;
         }
-        cam_->StopLoopingCapture();
+        cam_->StopLoopingCapture(-1);
         isPreviewing_ = false;
         isRecording_ = false;
         g_onRecorderFlag = false;
