@@ -1,3 +1,18 @@
+<!--/**
+ * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */-->
+
 <div class="container">
     <div class="prop-container">
         <text class="title">
@@ -235,9 +250,9 @@
             特有属性-show
         </text>
         <svg width="200px" height="50px">
-            <rect id ="showPropTrue" width="90px" height="20px" fill="red" x="" y="20" show="true"></rect>
-            <rect id ="showPropFalse" width="90px" height="20px" fill="red" x="10" y="50" show="false"></rect>
-            <rect id ="showPropNone" width="90px" height="20px" fill="red" x="20" y="80" show=""></rect>
+            <rect id ="showPropTrue" width="90px" height="20px" fill="red" show="true"></rect>
+            <rect id ="showPropFalse" width="90px" height="20px" fill="red" show="false"></rect>
+            <rect id ="showPropNone" width="90px" height="20px" fill="red" show=""></rect>
         </svg>
 
         <text class="sub-title">
@@ -245,8 +260,8 @@
         </text>
         <svg width="200px" height="50px" fill="red" >
             <rect width="90px" height="20px" if="false"></rect>
-            <rect width="90px" height="20px" elif="true"></rect>
-            <rect width="90px" height="20px" elif="false"></rect>
+            <rect id="elifPropTrue" width="90px" height="20px" elif="true"></rect>
+            <rect id="elifPropFalse" width="90px" height="20px" elif="false"></rect>
         </svg>
     </div>
 
