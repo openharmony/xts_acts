@@ -15,7 +15,7 @@
  
 <div class="container">
     <text class="title">
-        您好，地球1111
+        Hello,Earth!  1111
         {{ $t('strings.hello') }} {{ title }}
     </text>
 </div>
