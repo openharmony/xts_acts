@@ -99,7 +99,7 @@ describe('ActsAmsTestThirdScene', function () {
                 ' + error.code + ', data length [' + data.length + ']');
             }
         );
-        setTimeout(done(), 5000);
+        done();
     });
 
     function timeout(done) {
@@ -144,7 +144,6 @@ describe('ActsAmsTestThirdScene', function () {
             expect(info[i].uid).assertLarger(0);
         }
         done();
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -176,7 +175,6 @@ describe('ActsAmsTestThirdScene', function () {
             expect(typeof (data[i].iconPath)).assertEqual("string");
         }
         done();
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -196,7 +194,6 @@ describe('ActsAmsTestThirdScene', function () {
         });
         console.info('Acts_Ams_test_3900 clearMission data  [' + info + ']');
         done();
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -216,7 +213,6 @@ describe('ActsAmsTestThirdScene', function () {
         });
         console.info('Acts_Ams_test_4300 moveMissionToFront data  [' + info + ']');
         done();
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -236,7 +232,6 @@ describe('ActsAmsTestThirdScene', function () {
         });
         console.info('Acts_Ams_test_4500 clearMission data  [' + info + ']');
         done();
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -249,6 +244,5 @@ describe('ActsAmsTestThirdScene', function () {
         console.info('Acts_Ams_test_4700 killProcessesByBundleName data  [' + info + ']');
         expect(info.code).assertEqual(2097215);
         done();
-        setTimeout(timeout, 5000);
     })
 })

@@ -21,6 +21,8 @@ var abilityNameList = [
     "com.ohos.launcher.MainAbility",
     "com.ohos.callui.ServiceAbility",
     "com.example.SimulateFeatureAbilityFir",
+    "com.example.SimulateFeatureAbilitySed",
+    "com.example.VerifyIoThirdAbility",
     "com.example.actsamstestfifthscene.MainAbility"
 ]
 
@@ -33,6 +35,7 @@ var bundleNameList = [
     "com.ohos.telephonydataability",
     "com.ohos.contactsdataability",
     "com.ix.simulate.feature",
+    "com.ix.verify.io",
     "com.example.actsamstestfifthscene"
 ]
 
@@ -119,7 +122,7 @@ describe('ActsAmsTestFifthScene', function () {
                 ' + error.code + ', data length [' + data.length + ']');
             }
         );
-        setTimeout(done(), 5000);
+        done();
     });
 
     function timeout(done) {
@@ -163,7 +166,6 @@ describe('ActsAmsTestFifthScene', function () {
             expect(info[i].uid).assertLarger(0);
         }
         done();
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -186,7 +188,6 @@ describe('ActsAmsTestFifthScene', function () {
         });
         console.info('Acts_Ams_test_1100 moveMissionToFront data  [' + info + ']');
         done();
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -196,31 +197,32 @@ describe('ActsAmsTestFifthScene', function () {
     */
     it('Acts_Ams_test_0300', 0, async function (done) {
         var maxnum = 10;
-        var data = await missionManager.getMissionInfos("", maxnum).catch(err => {
+        await missionManager.getMissionInfos("", maxnum).then(data => {
+            console.info('Acts_Ams_test_0300 getMissionInfos data ' + JSON.stringify(data));
+            expect(Array.isArray(data)).assertEqual(true);
+            expect(data.length).assertEqual(4);
+            for (var i = 0; i < data.length; i++) {
+                console.info('Acts_Ams_test_0300 getMissionInfos data[' + i + "]: " + JSON.stringify(data[i]));
+                expect(typeof (data[i].missionId)).assertEqual("number");
+                expect(data[i].missionId).assertLarger(0);
+
+                expect(typeof (data[i].want)).assertEqual("object");
+                expect(typeof (data[i].want.deviceId)).assertEqual("string");
+                expect(typeof (data[i].want.bundleName)).assertEqual("string");
+                expect(data[i].want.bundleName.length).assertLarger(0);
+                expect(bundleNameList.indexOf(data[i].want.bundleName)).assertLarger(-1);
+                expect(typeof (data[i].want.abilityName)).assertEqual("string");
+                expect(data[i].want.abilityName.length).assertLarger(0);
+                expect(abilityNameList.indexOf(data[i].want.abilityName)).assertLarger(-1);
+
+                expect(typeof (data[i].label)).assertEqual("string");
+                expect(typeof (data[i].iconPath)).assertEqual("string");
+                console.info('Acts_Ams_test_0300 getMissionInfos data[' + i + "]， end..");
+            }
+            done();
+        }).catch(err => {
             console.log('Acts_Ams_test_0300 getMissionInfos failed: ' + err);
         });
-        console.info('Acts_Ams_test_0300 getMissionInfos data ' + JSON.stringify(data));
-        expect(Array.isArray(data)).assertEqual(true);
-        expect(data.length).assertEqual(4);
-        for (var i = 0; i < data.length; i++) {
-            console.info('Acts_Ams_test_0300 getMissionInfos data[' + i + "]: " + JSON.stringify(data[i]));
-            expect(typeof (data[i].missionId)).assertEqual("number");
-            expect(data[i].missionId).assertLarger(0);
-
-            expect(typeof (data[i].want)).assertEqual("object");
-            expect(typeof (data[i].want.deviceId)).assertEqual("string");
-            expect(typeof (data[i].want.bundleName)).assertEqual("string");
-            expect(data[i].want.bundleName.length).assertLarger(0);
-            expect(bundleNameList.indexOf(data[i].want.bundleName)).assertLarger(-1);
-            expect(typeof (data[i].want.abilityName)).assertEqual("string");
-            expect(data[i].want.abilityName.length).assertLarger(0);
-            expect(abilityNameList.indexOf(data[i].want.abilityName)).assertLarger(-1);
-
-            expect(typeof (data[i].label)).assertEqual("string");
-            expect(typeof (data[i].iconPath)).assertEqual("string");
-        }
-        done();
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -242,7 +244,6 @@ describe('ActsAmsTestFifthScene', function () {
         });
         console.info('Acts_Ams_test_0700 clearMission data  [' + info + ']');
         done();
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -251,10 +252,12 @@ describe('ActsAmsTestFifthScene', function () {
     * @tc.desc      : Kill Processes By BundleName(by Promise)
     */
     it('Acts_Ams_test_1500', 0, async function (done) {
-        var info = await appManager.killProcessesByBundleName('com.ix.simulate.feature');
-        console.info('Acts_Ams_test_1500 killProcessesByBundleName data  [' + info + ']');
-        expect(info).assertEqual(0);
-        done();
-        setTimeout(timeout, 5000);
+        await appManager.killProcessesByBundleName('com.ix.simulate.feature').then(data => {
+            console.info('Acts_Ams_test_1500 killProcessesByBundleName data  [' + data + ']');
+            expect(data).assertEqual(0);
+            done();
+        }).catch(err => {
+            console.log('Acts_Ams_test_0700 getMissionInfos failed: ' + err);
+        });
     })
 })
