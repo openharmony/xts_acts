@@ -20,6 +20,45 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 describe('intlTest', function () {
     console.log('*************start IntlTest*************');
 
+    let hour = I18n.is24HourClock();
+    console.log('init 24 hour clock value ' + hour);
+
+    /* *
+    * execute this step before all testcases
+    */
+    beforeAll(function(){
+        console.log('step before all cases in intl.'
+        + ' 24hour: ' + I18n.is24HourClock()
+        + ' prelang: ' + I18n.getPreferredLanguageList()
+        + ' syslocale: ' + I18n.getSystemLocale());
+    })
+
+    /* *
+    * execute this step before every testcase
+    */
+    beforeEach(function(){
+        console.log('step before every case in intl.');
+    })
+
+    /* *
+    * execute this step after every testcase
+    */
+    afterEach(function(){
+        let afterValue = I18n.set24HourClock(hour);
+        console.log('step after every cases.' + afterValue);
+        console.log('24 hour clock after every cases ' + I18n.is24HourClock());
+    })
+
+    /* *
+    * execute this step after all testcases
+    */
+    afterAll(function(){
+        console.log('step after all cases in intl.'
+        + ' 24hour: ' + I18n.is24HourClock()
+        + ' prelang: ' + I18n.getPreferredLanguageList()
+        + ' syslocale: ' + I18n.getSystemLocale());
+    })
+
     /* *
     * @tc.number SUB_GLOBAL_INTL_JS_LOCALE_0100
     * @tc.name test the language in en-Latn-GB locale
@@ -568,7 +607,7 @@ describe('intlTest', function () {
         let option = { dateStyle: 'full' };
         let datefmt = new Intl.DateTimeFormat(['abc', 'ban'], option);
         console.log('dateTimeFormat_test_0800 ' + datefmt.format(date));
-        expect(datefmt.format(date)).assertEqual('12/20/20, 2:23 PM');
+        expect(datefmt.format(date)).assertEqual('2020年12月20日星期日');
     })
 
     /* *
