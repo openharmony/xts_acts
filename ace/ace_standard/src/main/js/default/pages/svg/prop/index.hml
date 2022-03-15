@@ -1,3 +1,18 @@
+<!--/**
+ * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */-->
+
 <div class="container">
     <div class="prop-container">
         <text class="title">
@@ -231,13 +246,13 @@
             特有属性-elif
         </text>
         <svg width="200px" height="100px">
-            <svg id ="showPropTrue" width="100px" height="40px"  if="false">
+            <svg width="100px" height="40px"  if="false">
                 <rect  width="90%" height="20px" fill="red"></rect>
             </svg>
-            <svg id ="showPropFalse" width="100px" height="40px"  elif="true">
+            <svg id="elifPropTrue" width="100px" height="40px"  elif="true">
                 <rect  width="90%" height="20px" fill="red"></rect>
             </svg>
-            <svg id ="showPropNone" width="100px" height="40px"  elif="false">
+            <svg id="elifPropFalse" width="100px" height="40px"  elif="false">
                 <rect  width="90%" height="20px" fill="red"></rect>
             </svg>
         </svg>

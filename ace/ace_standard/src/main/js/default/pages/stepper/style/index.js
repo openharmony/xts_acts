@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 
-import prompt from '@system.prompt';
-
 export default {
 
 }
