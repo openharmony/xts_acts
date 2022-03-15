@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-require('./ExampleJsunit.test.js');
 require('./LightWeightMap.test.js');
 require('./LightWeightSet.test.js');
 require('./HashMap.test.js');
