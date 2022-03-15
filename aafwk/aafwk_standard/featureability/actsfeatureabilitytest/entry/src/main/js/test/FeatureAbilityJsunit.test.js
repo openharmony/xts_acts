@@ -2855,4 +2855,42 @@ describe('ActsFeatureAbilityTest', function () {
             done();
         }
     });
+
+    /*
+    * @tc.number: ACTS_StartAbility_0100
+    * @tc.name: featureAbility.getWindow : Get an ability window.
+    * @tc.desc: Check the return window of the interface (by AsyncCallback)
+    */
+    it('ACTS_StartAbility_0100', 0, async function (done) {
+        console.log('ACTS_StartAbility_0100====<begin');
+
+        try {
+            featureAbility.getWindow((err,data)=>{
+                console.log('getWindow call back');
+                done();
+            });
+            done();
+        } catch (err) {
+            console.log('ACTS_StartAbility_0100====<end err=' + err)
+            done();
+        }
+        console.log('ACTS_StartAbility_0100====<end');
+    })
+
+    /*
+    * @tc.number: ACTS_StartAbility_0200
+    * @tc.name: featureAbility.getWindow : Get an ability window.
+    * @tc.desc: Check the return window of the interface
+    */
+    it('ACTS_StartAbility_0200', 0, async function (done) {
+        console.log('ACTS_StartAbility_0200====<begin');
+        try {
+            var window = featureAbility.getWindow();
+            done();
+        } catch (err) {
+            console.log('ACTS_StartAbility_0200====<end err=' + err)
+            done();
+        }
+        console.log('ACTS_StartAbility_0200====<end');
+    })
 })
