@@ -129,7 +129,7 @@ describe('videoSoftwareEncoderFuncPromise', function () {
                 console.info('not last frame, write data to file');
                 writeFile(path, outputObject.data, outputObject.length);
                 console.info("write to file success");
-                videoEncodeProcessor.releaseOutput(outputObject).then(() => {
+                videoEncodeProcessor.freeOutputBuffer(outputObject).then(() => {
                     console.info('release output success');
                 });
             }
@@ -138,7 +138,7 @@ describe('videoSoftwareEncoderFuncPromise', function () {
 
     function setCallback(path, done) {
         console.info('case callback');
-        videoEncodeProcessor.on('outputBufferAvailable', async(outBuffer) => {
+        videoEncodeProcessor.on('newOutputData', async(outBuffer) => {
             console.info('outputBufferAvailable');
             console.info('outBuffer.flags: ' + outBuffer.flags);
             if (needGetMediaDes) {
@@ -155,7 +155,7 @@ describe('videoSoftwareEncoderFuncPromise', function () {
         videoEncodeProcessor.on('error',(err) => {
             console.info('case error called,errName is' + err);
         });
-        videoEncodeProcessor.on('outputFormatChanged',(format) => {
+        videoEncodeProcessor.on('streamChanged',(format) => {
             console.info('Output format changed: ' + format);
         });
     }

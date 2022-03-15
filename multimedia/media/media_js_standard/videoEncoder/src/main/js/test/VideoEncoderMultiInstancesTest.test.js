@@ -122,7 +122,7 @@ describe('videoEncoderSoftwareMultiInstances', function () {
                 console.info('not last frame, write data to file');
                 writeFile(path, outputObject.data, outputObject.length);
                 console.info("write to file success");
-                videoEncodeProcessor.releaseOutput(outputObject).then(() => {
+                videoEncodeProcessor.freeOutputBuffer(outputObject).then(() => {
                     console.info('release output success');
                 });
             }
@@ -131,7 +131,7 @@ describe('videoEncoderSoftwareMultiInstances', function () {
 
     function setCallback(path, nextStep) {
         console.info('case callback');
-        videoEncodeProcessor.on('outputBufferAvailable', async(outBuffer) => {
+        videoEncodeProcessor.on('newOutputData', async(outBuffer) => {
             console.info('outputBufferAvailable');
             console.info('outBuffer.flags: ' + outBuffer.flags);
             if (needGetMediaDes) {
@@ -148,7 +148,7 @@ describe('videoEncoderSoftwareMultiInstances', function () {
         videoEncodeProcessor.on('error',(err) => {
             console.info('case error called,errName is' + err);
         });
-        videoEncodeProcessor.on('outputFormatChanged',(format) => {
+        videoEncodeProcessor.on('streamChanged',(format) => {
             console.info('Output format changed: ' + format);
         });
     }
@@ -262,7 +262,7 @@ describe('videoEncoderSoftwareMultiInstances', function () {
 
     /* *
         * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_MULTIINSTANCE_0100
-        * @tc.name      : 001.create 16 encoder
+        * @tc.name      : 001.create multiple encoders
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
@@ -284,7 +284,7 @@ describe('videoEncoderSoftwareMultiInstances', function () {
         let array = new Array();
 
         eventEmitter.once('nextStep', async () => {
-            for (let j = 1; j < 16; j++) {
+            for (let j = 1; j < 3; j++) {
                 await array[j].release().then(() => {
                     console.info("case release encoder " + j);
                     array[j] = null;
@@ -303,11 +303,11 @@ describe('videoEncoderSoftwareMultiInstances', function () {
             toStartStream();
             await toStart();
         }
-        for (let i = 1; i <= 16; i += 1) {
+        for (let i = 1; i <= 3; i += 1) {
             await media.createVideoEncoderByMime(mime).then((processor) => {
                 if (typeof(processor) != 'undefined') {
                     console.info("case create createVideoEncoder success: " + i);
-                    if (i == 16) {
+                    if (i == 3) {
                         videoEncodeProcessor = processor;
                         runCase();
                     } else {
