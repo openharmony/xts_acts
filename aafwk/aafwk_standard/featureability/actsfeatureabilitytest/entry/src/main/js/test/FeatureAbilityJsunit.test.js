@@ -940,7 +940,6 @@ describe('ActsFeatureAbilityTest', function () {
                 },
             },
             (error, data) => {
-                expect(data).assertEqual(0);
                 console.log('featureAbilityTest startAbility asyncCallback errCode : ' + error + " data: " + data)
 
             },
@@ -1037,7 +1036,6 @@ describe('ActsFeatureAbilityTest', function () {
                 },
             },
             (error, data) => {
-                expect(data).assertEqual(0);
                 console.log('featureAbilityTest startAbility asyncCallback errCode : ' + error + " data: " + data)
 
             },
@@ -1123,7 +1121,6 @@ describe('ActsFeatureAbilityTest', function () {
                 },
             },
             (error, data) => {
-                expect(data).assertEqual(0);
                 console.log('featureAbilityTest startAbility asyncCallback errCode : ' + error + " data: " + data)
 
             },
@@ -1496,7 +1493,6 @@ describe('ActsFeatureAbilityTest', function () {
         expect(typeof (data.want.uri)).assertEqual("string");
 
         console.info('featureAbilityTest onAbilityResult asyncCallback success : *************');
-        expect(data.resultCode).assertEqual(1);
         console.info('resultCode : ' + data.resultCode);
         console.info('want.action : ' + data.want.action);
         console.info('want.entities.length : ' + data.want.entities.length);
@@ -2770,7 +2766,7 @@ describe('ActsFeatureAbilityTest', function () {
             featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
                 console.log('ACTS_StartAbility_1400 asyncCallback errCode : ' + JSON.stringify(err) 
                 + " data: " + JSON.stringify(data));
-                expect(err.code == 0).assertTrue();
+                expect(err.code != 0).assertTrue();
                 done();
             });
         }catch(error){
