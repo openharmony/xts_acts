@@ -46,6 +46,9 @@ describe('SystemParameterTest', function () {
         console.info('afterEach caled')
     })
 
+    let testSensorId = 0;
+    let testNullSensorId = -1;
+
     /**
      * @tc.number    SUB_SENSORS_Sensor_JSTest_0010
      * @tc.name      testRegisterSensortest001
@@ -53,19 +56,15 @@ describe('SystemParameterTest', function () {
      */
     it('SUB_SENSORS_Sensor_JSTest_0010', 0, async function (done) {
         console.info('SUB_SENSORS_Sensor_JSTest_0010 start');
-        await sensor.on(0, function (error, data) {
-            if (error) {
-                if (error.code == -1) {
-                    console.info("testRegisterSensortest001 on error: sensor 0 not exit")
-                } else {
-                    console.info('testRegisterSensortest001  on error :' + error.code);
-                    expect(false).assertTrue();
-                }
-                done();
-            } else {
+        await sensor.on(testSensorId, function (data) {
+            if (data) {
                 console.info('testRegisterSensortest001  on success');
                 expect(data.x).assertInstanceOf('Number');
                 expect(data.timestamp).assertInstanceOf('Number');
+                done();
+            } else {
+                console.info('testRegisterSensortest001  on error');
+                expect(false).assertTrue();
                 done();
             }
         });
@@ -79,17 +78,17 @@ describe('SystemParameterTest', function () {
      */
     it('SUB_SENSORS_Sensor_JSTest_0020', 0, async function (done) {
         console.info('SUB_SENSORS_Sensor_JSTest_0020 start');
-        await sensor.on(-1, function (error, data) {
-            if (error) {
-                console.info('testRegisterSensortest002  on error');
-                expect(true).assertTrue();
-                done();
-            } else {
+        await sensor.on(testNullSensorId, function (data) {
+            if (data) {
                 console.info('testRegisterSensortest002  on success');
                 expect(false).assertTrue();
                 done();
             }
         });
+        setTimeout(() => {
+            expect(true).assertTrue();
+            done();
+        }, 500)
         console.info('SUB_SENSORS_Sensor_JSTest_0020 end');
     })
 
