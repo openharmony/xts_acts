@@ -23,6 +23,7 @@ describe('PerfTest', function () {
     let EXETIME = 1000;
     let initPreferredLang = I18n.getPreferredLanguageList();
     let initLen = initPreferredLang.length;
+    let hour = I18n.is24HourClock();
 
     /* *
     * get the current preferred language list
@@ -66,15 +67,21 @@ describe('PerfTest', function () {
         console.log('i18n_test_preferredlanguage_restoreLang ' + I18n.getPreferredLanguageList());
     }
 
+    /* *
+    * execute this step before all testcases
+    */
     beforeAll(function(){
-        console.log('step before all cases.');
+        console.log('step before all cases in perf.'
+        + ' 24hour: ' + I18n.is24HourClock()
+        + ' prelang: ' + I18n.getPreferredLanguageList()
+        + ' syslocale: ' + I18n.getSystemLocale());
     })
 
     /* *
     * execute this step before every testcase
     */
     beforeEach(function(){
-        console.log('step before every case.');
+        console.log('step before every case in perf.');
         console.log('i18n_test_preferredlanguage_beforeEach ' + getCurrentPreferredLang());
     })
 
@@ -82,15 +89,21 @@ describe('PerfTest', function () {
     * execute this step after every testcase
     */
     afterEach(function(){
-        console.log('step after every case.');
+        console.log('step after every case in perf.');
         let currLang = getCurrentPreferredLang();
         console.log('i18n_test_preferredlanguage_afterEach ' + currLang);
         clearLang(currLang);
         restoreLang();
     })
 
+    /* *
+    * execute this step after all testcases
+    */
     afterAll(function(){
-        console.log('step after all cases.');
+        console.log('step after all cases in perf.'
+        + ' 24hour: ' + I18n.is24HourClock()
+        + ' prelang: ' + I18n.getPreferredLanguageList()
+        + ' syslocale: ' + I18n.getSystemLocale());
     })
 
     /* *
@@ -100,8 +113,8 @@ describe('PerfTest', function () {
     */
     it('perf_test_0100', 0, function () {
         console.log('perf_test_0100 ' + 'start');
-        let startTime = new Date().getTime();
         let lang = 'test';
+        let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
             lang = I18n.getSystemLanguage();
         }
@@ -126,8 +139,8 @@ describe('PerfTest', function () {
     */
     it('perf_test_0200', 0, function () {
         console.log('perf_test_0200 ' + 'start');
-        let startTime = new Date().getTime();
         let region = 'test';
+        let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
             region = I18n.getSystemRegion();
         }
@@ -152,8 +165,8 @@ describe('PerfTest', function () {
     */
     it('perf_test_0300', 0, function () {
         console.log('perf_test_0300 ' + 'start');
-        let startTime = new Date().getTime();
         let locale = 'test';
+        let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
             locale = I18n.getSystemLocale();
         }
@@ -178,8 +191,8 @@ describe('PerfTest', function () {
     */
     it('perf_test_0400', 0, function () {
         console.log('perf_test_0400 ' + 'start');
-        let startTime = new Date().getTime();
         let value = false;
+        let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
             value = I18n.setSystemLanguage('en');
         }
@@ -204,8 +217,8 @@ describe('PerfTest', function () {
     */
     it('perf_test_0500', 0, function () {
         console.log('perf_test_0500 ' + 'start');
-        let startTime = new Date().getTime();
         let value = false;
+        let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
             value = I18n.setSystemRegion('US');
         }
@@ -230,8 +243,8 @@ describe('PerfTest', function () {
     */
     it('perf_test_0600', 0, function () {
         console.log('perf_test_0600 ' + 'start');
-        let startTime = new Date().getTime();
         let value = false;
+        let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
             value = I18n.setSystemLocale('en-Latn-US');
         }
@@ -256,8 +269,8 @@ describe('PerfTest', function () {
     */
     it('perf_test_0700', 0, function () {
         console.log('perf_test_0700 ' + 'start');
-        let startTime = new Date().getTime();
         let value = new Array();
+        let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
             value = I18n.getSystemLanguages();
         }
@@ -282,8 +295,8 @@ describe('PerfTest', function () {
     */
     it('perf_test_0800', 0, function () {
         console.log('perf_test_0800 ' + 'start');
-        let startTime = new Date().getTime();
         let value = new Array();
+        let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
             value = I18n.getSystemCountries('en');
         }
@@ -308,8 +321,8 @@ describe('PerfTest', function () {
     */
     it('perf_test_0900', 0, function () {
         console.log('perf_test_0900 ' + 'start');
-        let startTime = new Date().getTime();
         let value = false;
+        let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
             value = I18n.isSuggested('en');
         }
@@ -334,8 +347,8 @@ describe('PerfTest', function () {
     */
     it('perf_test_1000', 0, function () {
         console.log('perf_test_1000 ' + 'start');
-        let startTime = new Date().getTime();
         let value = 'test';
+        let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
             value = I18n.getDisplayCountry('zh-Hans-CN', 'en-US', true);
         }
@@ -360,8 +373,8 @@ describe('PerfTest', function () {
     */
     it('perf_test_1100', 0, function () {
         console.log('perf_test_1100 ' + 'start');
-        let startTime = new Date().getTime();
         let value = 'test';
+        let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
             value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-US', true);
         }
@@ -1517,6 +1530,7 @@ describe('PerfTest', function () {
         else{
             expect(false).assertTrue();
         }
+        I18n.set24HourClock(hour);
     })
 
     /* *
@@ -2002,7 +2016,7 @@ describe('PerfTest', function () {
 
     /* *
     * @tc.number SUB_GLOBAL_PERF_JS_7300
-    * @tc.name test the performance of Collator.compare
+    * @tc.name test the performance of Collator.compare with same param
     * @tc.desc check the performance of Collator.compare
     */
     it('perf_test_7300', 0, function () {
@@ -2011,7 +2025,7 @@ describe('PerfTest', function () {
         let value = 0;
         let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
-            value = coll.compare('a', 'b');
+            value = coll.compare('a', 'a');
         }
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
@@ -2175,6 +2189,164 @@ describe('PerfTest', function () {
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
         console.log('perf_test_7900--'
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_8000
+    * @tc.name test the performance of getTimeZone
+    * @tc.desc check the performance of getTimeZone
+    */
+    it('perf_test_8000', 0, function () {
+        console.log('perf_test_8000 ' + 'start');
+        let timezone = null;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            timezone = I18n.getTimeZone();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_8000--'
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_8100
+    * @tc.name test the performance of getTimeZone with zoneID param
+    * @tc.desc check the performance of getTimeZone
+    */
+    it('perf_test_8100', 0, function () {
+        console.log('perf_test_8100 ' + 'start');
+        let timezone = null;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            timezone = I18n.getTimeZone('ACT');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_8100--'
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_8200
+    * @tc.name test the performance of getID
+    * @tc.desc check the performance of getID
+    */
+    it('perf_test_8200', 0, function () {
+        console.log('perf_test_8200 ' + 'start');
+        let timezone = I18n.getTimeZone('ACT');
+        let value = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = timezone.getID();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_8200--'
+                    + 'value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_8300
+    * @tc.name test the performance of getDisplayName
+    * @tc.desc check the performance of getDisplayName
+    */
+    it('perf_test_8300', 0, function () {
+        console.log('perf_test_8300 ' + 'start');
+        let timezone = I18n.getTimeZone('Asia/Shanghai');
+        let value = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = timezone.getDisplayName('zh-CN');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_8300--'
+                    + 'value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_8400
+    * @tc.name test the performance of getRawOffset
+    * @tc.desc check the performance of getRawOffset
+    */
+    it('perf_test_8400', 0, function () {
+        console.log('perf_test_8400 ' + 'start');
+        let timezone = I18n.getTimeZone('ACT');
+        let value = 0;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = timezone.getRawOffset();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_8400--'
+                    + 'value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_8500
+    * @tc.name test the performance of getOffset
+    * @tc.desc check the performance of getOffset
+    */
+    it('perf_test_8500', 0, function () {
+        console.log('perf_test_8500 ' + 'start');
+        let timezone = I18n.getTimeZone('ACT');
+        let value = 0;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = timezone.getOffset();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_8500--'
+                    + 'value: ' + value
                     + ' exeTime: ' + exeTime
                     + ' avgTime: ' + avgTime);
         if(avgTime < 10){
