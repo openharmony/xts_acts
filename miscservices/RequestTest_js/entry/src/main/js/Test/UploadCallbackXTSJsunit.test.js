@@ -17,27 +17,28 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import request from '@ohos.request';
 import * as pubfun from './Publicfunction.js'
 
-var type_progress = 'progress';
-var type_HeaderReceive = 'headerReceive';
-var type_Fail = 'fail';
+var Type_Progress = 'progress';
+var Type_HeaderReceive = 'headerReceive';
+var Type_Fail = 'fail';
 let uploadTask;
 let file7url = 'internal://cache/test.txt';
-//let file10kurl = '';
-//let file10murl = '';
-// var shell = require('shelljs')
 
 describe('UploadTest', function () {
     beforeAll(function () {
-        console.info('beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.');
+        console.info('beforeAll: Prerequisites at the test suite level, ' +
+        'which are executed before the test suite is executed.');
     })
     beforeEach(function () {
-        console.info('beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.');
+        console.info('beforeEach: Prerequisites at the test case level,' +
+        ' which are executed before each test case is executed.');
     })
     afterEach(function () {
-        console.info('afterEach: Test case-level clearance conditions, which are executed after each test case is executed.');
+        console.info('afterEach: Test case-level clearance conditions, ' +
+        'which are executed after each test case is executed.');
     })
     afterAll(function () {
-        console.info('afterAll: Test suite-level cleanup condition, which is executed after the test suite is executed');
+        console.info('afterAll: Test suite-level cleanup condition, ' +
+        'which is executed after the test suite is executed');
     })
     /*
         * @tc.number    : InitUploadtaskCallback001
@@ -49,12 +50,6 @@ describe('UploadTest', function () {
     */
     it('InitUploadtaskCallback001', 0, async function (done) {
         try {
-            // const cmd = `echo \"123456\" > /data/accounts/account_0/appdata/com.example.myapplication.hmservice/cache/test.txt`;
-            // shell.exec(cmd, (err) => {
-            //     if (err) {
-            //       throw Error(err).message;
-            //     }
-            //   })
             console.log("Testupdate before getuploadconfig");
             let UploadConfig = pubfun.getUploadConfig(file7url)
             console.log("Testupdate before upload UploadConfig = " + JSON.stringify(UploadConfig));
@@ -75,6 +70,7 @@ describe('UploadTest', function () {
             done();
         }
     })
+
     /*
         * @tc.number    : SwitchOnProgressCallback001
         * @tc.name      : Use getEntries get the value by mixing the string key
@@ -85,18 +81,7 @@ describe('UploadTest', function () {
     */
     it('SwitchOnProgressCallback001', 0, async function (done) {
         try {
-            /*console.log("Testupdate before getuploadconfig");
-            let UploadConfig = pubfun.getUploadConfig(file7url)
-            console.log("Testupdate before upload UploadConfig = " + JSON.stringify(UploadConfig));
-            console.log("Testupdate before upload");
-            await pubfun.publicupload(UploadConfig).then((data) => {
-                console.log("Testupdate going upload uploadTask = " + data);
-                uploadTask = data;
-            }).catch((err) => {
-                console.log("SwitchOnProgressCallback001 fail" + JSON.stringify(err));
-            })*/
-
-            pubfun.publiconprogress(uploadTask, type_progress);
+            pubfun.publiconprogress(uploadTask, Type_Progress);
             expect(true).assertEqual(0 == 0);
             done();
         } catch (err) {
@@ -105,6 +90,7 @@ describe('UploadTest', function () {
             done();
         }
     });
+
     /*
         * @tc.number    : SwitchOffProgressCallback001
         * @tc.name      : Use getEntries get the value by mixing the string key
@@ -115,17 +101,10 @@ describe('UploadTest', function () {
     */
     it('SwitchOffProgressCallback001', 0, async function (done) {
         try {
-            /*let UploadConfig = pubfun.getUploadConfig(file7url)
-            await pubfun.publicupload(UploadConfig).then((data) => {
-                uploadTask = data;
-            }).catch((err) => {
-                console.log("SwitchOffProgressCallback001 fail 1" + JSON.stringify(err));
-            })*/
-
-            pubfun.publiconprogress(uploadTask, type_progress);
+            pubfun.publiconprogress(uploadTask, Type_Progress);
             expect(true).assertEqual(0 == 0);
 
-            await pubfun.publicoffprogress(uploadTask, type_progress).then((data) => {
+            await pubfun.publicoffprogress(uploadTask, Type_Progress).then((data) => {
                 console.log("SwitchOffProgressCallback001 data" + JSON.stringify(data));
                 expect(7).assertEqual(data.totalSize);
                 done();
@@ -140,62 +119,7 @@ describe('UploadTest', function () {
             done();
         }
     })
-    /*
-        * @tc.number    : SwitchOnHeaderReceiveCallback001
-        * @tc.name      : Use getEntries get the value by mixing the string key
-        * @tc.desc      : Mixed strings value can be obtained correctly
-        * @tc.size      : MediumTest
-        * @tc.type      : Function
-        * @tc.level     : Level 1
-    */
-    /*it('SwitchOnHeaderReceiveCallback001', 0, async function (done) {
-        try {
-            let UploadConfig = pubfun.getUploadConfig(file7url)
-            await pubfun.publicupload(UploadConfig).then((data) => {
-                uploadTask = data;
-            }).catch((err) => {
-                console.log("SwitchOnHeaderReceiveCallback001 fail 1" + JSON.stringify(err));
-            })
-            await pubfun.publicon(uploadTask,type_HeaderReceive).then((data) => {
-                console.info("upOnHeader headers:" + JSON.stringify(data));
-                expect('待确认').assertEqual(data);
-                done();
-            }).catch((err) => {
-                console.log("SwitchOnHeaderReceiveCallback001 fail 2" + JSON.stringify(err));
-            })
-        } catch (e) {
-            console.log("SwitchOnHeaderReceiveCallback001 fail 3" + JSON.stringify(e));
-            expect(null).assertFail();
-        }
-    })
-    /*
-        * @tc.number    : SwitchOffHeaderReceiveCallback001
-        * @tc.name      : Use getEntries get the value by mixing the string key
-        * @tc.desc      : Mixed strings value can be obtained correctly
-        * @tc.size      : MediumTest
-        * @tc.type      : Function
-        * @tc.level     : Level 1
-    */
-    /*it('SwitchOffHeaderReceiveCallback001', 0, async function (done) {
-        try {
-            let UploadConfig = pubfun.getUploadConfig(file7url)
-            await pubfun.publicupload(UploadConfig).then((data) => {
-                uploadTask = data;
-            }).catch((err) => {
-                console.log("SwitchOffHeaderReceiveCallback001 fail 1" + JSON.stringify(err));
-            })
-            await pubfun.publicoff(uploadTask,type_HeaderReceive).then((data) => {
-                console.info("upOnHeader headers:" + JSON.stringify(data));
-                expect('待确认').assertEqual(data);
-                done();
-            }).catch((err) => {
-                console.log("SwitchOffHeaderReceiveCallback001 fail 2" + JSON.stringify(err));
-            })
-        } catch (e) {
-            console.log("SwitchOffHeaderReceiveCallback001 fail 3" + JSON.stringify(e));
-            expect(null).assertFail();
-        }
-    })
+
     /*
         * @tc.number    : SwitchOnFailCallback001
         * @tc.name      : Use getEntries get the value by mixing the string key
@@ -206,14 +130,7 @@ describe('UploadTest', function () {
     */
     it('SwitchOnFailCallback001', 0, async function (done) {
         try {
-            /*let UploadConfig = pubfun.getUploadConfig(file7url)
-            await pubfun.publicupload(UploadConfig).then((data) => {
-                uploadTask = data;
-            }).catch((err) => {
-                console.log("SwitchOnFailCallback001 fail 1" + JSON.stringify(err));
-            })*/
-
-            await pubfun.publicon(uploadTask, type_Fail).then((data) => {
+            await pubfun.publicon(uploadTask, Type_Fail).then((data) => {
                 console.log("SwitchOnFailCallback001 data " + data);
                 expect(5).assertEqual(data);
                 done();
@@ -228,6 +145,7 @@ describe('UploadTest', function () {
             done();
         }
     })
+
     /*
         * @tc.number    : SwitchOffFailCallback001
         * @tc.name      : Use getEntries get the value by mixing the string key
@@ -238,15 +156,8 @@ describe('UploadTest', function () {
     */
     it('SwitchOffFailCallback001', 0, async function (done) {
         try {
-            /*let UploadConfig = pubfun.getUploadConfig(file7url)
-            await pubfun.publicupload(UploadConfig).then((data) => {
-                uploadTask = data;
-            }).catch((err) => {
-                console.log("SwitchOffFailCallback001 fail 1" + JSON.stringify(err));
-            })*/
-
-            await pubfun.publicon(uploadTask, type_Fail)
-            await pubfun.publicoff(uploadTask, type_Fail).then((data) => {
+            await pubfun.publicon(uploadTask, Type_Fail)
+            await pubfun.publicoff(uploadTask, Type_Fail).then((data) => {
                 console.log("SwitchOffFailCallback001 data " + data);
                 expect(5).assertEqual(data);
                 done();
@@ -261,6 +172,7 @@ describe('UploadTest', function () {
             done();
         }
     })
+
     /*
         * @tc.number    : RemoveCallback001
         * @tc.name      : Use getEntries get the value by mixing the string key
@@ -271,13 +183,6 @@ describe('UploadTest', function () {
     */
     it('RemoveCallback001', 0, async function (done) {
         try {
-            /*let UploadConfig = pubfun.getUploadConfig(file7url)
-            await pubfun.publicupload(UploadConfig).then((data) => {
-                uploadTask = data;
-            }).catch((err) => {
-                console.log("RemoveCallback001 fail 1" + JSON.stringify(err));
-            })*/
-
             await pubfun.publicremove(uploadTask).then((data) => {
                 console.log("RemoveCallback001 data " + data);
                 expect(true).assertEqual(data);

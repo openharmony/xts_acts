@@ -31,15 +31,19 @@ function getUploadConfig(fileurl){
     let File = {
         filename: 'test', // When multipart is submitted, the file name in the request header.
         name: 'test', // When multipart is submitted, the name of the form item. The default is file.
-        uri: 'internal://cache/test.txt',//The local storage path of the file (please refer to the storage directory definition for path usage).
-        type: 'txt'//The content type of the file is obtained by default according to the suffix of the file name or path.
+        uri: 'internal://cache/test.txt',
+        //The local storage path of the file
+        // (please refer to the storage directory definition for path usage).
+        type: 'txt'
+        //The content type of the file is obtained by default
+        // according to the suffix of the file name or path.
     }
     let FileArray=new Array();
     FileArray[0] = File;
-    let header_http = { headers: 'http' }
+    let Header_Http = { headers: 'http' }
     let UploadConfig = {
         url: 'http://192.168.112.124/upload_test/',// Resource address.
-        header: header_http, // Adds an HTTP or HTTPS header to be included with the upload request.
+        header: Header_Http, // Adds an HTTP or HTTPS header to be included with the upload request.
         method: 'POST', // Request method: POST, PUT. The default POST.
         files: FileArray, // A list of files to be uploaded. Please use multipart/form-data to submit.
         data: RequestData // The requested form data.
