@@ -17,9 +17,9 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import request from '@ohos.request';
 import * as pubfun from './Publicfunction.js'
 
-var Type_Progress = 'progress';
-var Type_HeaderReceive = 'headerReceive';
-var Type_Fail = 'fail';
+var typeProgress = 'progress';
+var typeHeaderReceive = 'headerReceive';
+var typeFail = 'fail';
 let uploadTask;
 let file7url = 'internal://cache/test.txt';
 
@@ -40,6 +40,7 @@ describe('UploadTest', function () {
         console.info('afterAll: Test suite-level cleanup condition, ' +
         'which is executed after the test suite is executed');
     })
+
     /*
         * @tc.number    : InitUploadtaskCallback001
         * @tc.name      : Use getEntries get the value by mixing the string key
@@ -81,7 +82,7 @@ describe('UploadTest', function () {
     */
     it('SwitchOnProgressCallback001', 0, async function (done) {
         try {
-            pubfun.publiconprogress(uploadTask, Type_Progress);
+            pubfun.publiconprogress(uploadTask, typeProgress);
             expect(true).assertEqual(0 == 0);
             done();
         } catch (err) {
@@ -101,10 +102,10 @@ describe('UploadTest', function () {
     */
     it('SwitchOffProgressCallback001', 0, async function (done) {
         try {
-            pubfun.publiconprogress(uploadTask, Type_Progress);
+            pubfun.publiconprogress(uploadTask, typeProgress);
             expect(true).assertEqual(0 == 0);
 
-            await pubfun.publicoffprogress(uploadTask, Type_Progress).then((data) => {
+            await pubfun.publicoffprogress(uploadTask, typeProgress).then((data) => {
                 console.log("SwitchOffProgressCallback001 data" + JSON.stringify(data));
                 expect(7).assertEqual(data.totalSize);
                 done();
@@ -130,7 +131,7 @@ describe('UploadTest', function () {
     */
     it('SwitchOnFailCallback001', 0, async function (done) {
         try {
-            await pubfun.publicon(uploadTask, Type_Fail).then((data) => {
+            await pubfun.publicon(uploadTask, typeFail).then((data) => {
                 console.log("SwitchOnFailCallback001 data " + data);
                 expect(5).assertEqual(data);
                 done();
@@ -156,8 +157,8 @@ describe('UploadTest', function () {
     */
     it('SwitchOffFailCallback001', 0, async function (done) {
         try {
-            await pubfun.publicon(uploadTask, Type_Fail)
-            await pubfun.publicoff(uploadTask, Type_Fail).then((data) => {
+            await pubfun.publicon(uploadTask, typeFail)
+            await pubfun.publicoff(uploadTask, typeFail).then((data) => {
                 console.log("SwitchOffFailCallback001 data " + data);
                 expect(5).assertEqual(data);
                 done();

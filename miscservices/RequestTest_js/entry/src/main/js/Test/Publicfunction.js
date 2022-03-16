@@ -40,10 +40,10 @@ function getUploadConfig(fileurl){
     }
     let FileArray=new Array();
     FileArray[0] = File;
-    let Header_Http = { headers: 'http' }
+    let headerHttp = { headers: 'http' }
     let UploadConfig = {
         url: 'http://192.168.112.124/upload_test/',// Resource address.
-        header: Header_Http, // Adds an HTTP or HTTPS header to be included with the upload request.
+        header: headerHttp, // Adds an HTTP or HTTPS header to be included with the upload request.
         method: 'POST', // Request method: POST, PUT. The default POST.
         files: FileArray, // A list of files to be uploaded. Please use multipart/form-data to submit.
         data: RequestData // The requested form data.
