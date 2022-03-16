@@ -99,7 +99,7 @@ describe('ActsAmsTestSecondScene', function () {
                 ' + error.code + ', data length [' + data.length + ']');
             }
         );
-        setTimeout(done(), 5000);
+        done();
     });
 
     function timeout(done) {
@@ -143,7 +143,6 @@ describe('ActsAmsTestSecondScene', function () {
             expect(info[i].uid).assertLarger(0);
         }
         done();
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -163,7 +162,6 @@ describe('ActsAmsTestSecondScene', function () {
         });
         console.info('Acts_Ams_test_2700 moveMissionToFront data  [' + info + ']');
         done();
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -194,7 +192,6 @@ describe('ActsAmsTestSecondScene', function () {
             expect(typeof (data[i].iconPath)).assertEqual("string");
         }
         done();
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -214,7 +211,6 @@ describe('ActsAmsTestSecondScene', function () {
         });
         console.info('Acts_Ams_test_2300 clearMission data  [' + info + ']');
         done();
-        setTimeout(timeout, 5000);
     })
 
     /*

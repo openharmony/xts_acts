@@ -31,7 +31,7 @@ describe('VideoDecoderFuncCallbackTest', function () {
     let surfaceID = '';
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
-    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/shared/';
+    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/';
     let ES_FRAME_SIZE = [];
     const H264_FRAME_SIZE_60FPS_320 =
     [ 2106, 11465, 321, 72, 472, 68, 76, 79, 509, 90, 677, 88, 956, 99, 347, 77, 452, 681, 81, 1263, 94, 106, 97,
@@ -209,7 +209,7 @@ describe('VideoDecoderFuncCallbackTest', function () {
                     console.info('in case: setParameter success ');
                 });
             }
-            videoDecodeProcessor.queueInput(inputObject, (err) => {
+            videoDecodeProcessor.pushInputData(inputObject, (err) => {
                 if (typeof (err) == 'undefined') {
                     console.info('in case: queueInput success ');
                 } else {
@@ -229,7 +229,7 @@ describe('VideoDecoderFuncCallbackTest', function () {
                 return;
             }
             frameCountOut++;
-            videoDecodeProcessor.releaseOutput(outputObject, true, (err) => {
+            videoDecodeProcessor.renderOutputData(outputObject, (err) => {
                 if (typeof (err) == 'undefined') {
                     console.log('in case: release output count:' + frameCountOut);
                 } else {
@@ -241,13 +241,13 @@ describe('VideoDecoderFuncCallbackTest', function () {
 
     function setCallback(nextStep){
         console.info('in case:  setCallback in');
-        videoDecodeProcessor.on('inputBufferAvailable', async (inBuffer) => {
+        videoDecodeProcessor.on('needInputData', async (inBuffer) => {
             console.info('in case: inputBufferAvailable inBuffer.index: '+ inBuffer.index);
             inputQueue.push(inBuffer);
             enqueueInputs();
         });
 
-        videoDecodeProcessor.on('outputBufferAvailable', async (outBuffer) => {
+        videoDecodeProcessor.on('newOutputData', async (outBuffer) => {
             console.info('in case: outputBufferAvailable outBuffer.index: '+ outBuffer.index);
             videoDecodeProcessor.getOutputMediaDescription((err, MediaDescription) => {
                 expect(err).assertUndefined();
@@ -261,7 +261,7 @@ describe('VideoDecoderFuncCallbackTest', function () {
             console.info('in case: error called,errName is' + err);
         });
 
-        videoDecodeProcessor.on('outputFormatChanged',(format) => {
+        videoDecodeProcessor.on('streamChanged',(format) => {
             console.info('in case: Output format changed: ' + format.toString());
         });
         console.info('in case:  setCallback out');

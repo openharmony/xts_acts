@@ -224,7 +224,7 @@ describe('AudioEncoderFuncCallback', function () {
             }
             timestamp += 23;
             frameCnt += 1;
-            audioEncodeProcessor.queueInput(inputobject, () => {
+            audioEncodeProcessor.pushInputData(inputobject, () => {
                 console.info('queueInput success');
             })
         }
@@ -252,7 +252,7 @@ describe('AudioEncoderFuncCallback', function () {
                 writeFile(savepath, outputobject.data, outputobject.length);
                 console.info("write to file success");
             }
-            audioEncodeProcessor.releaseOutput(outputobject, () => {
+            audioEncodeProcessor.freeOutputBuffer(outputobject, () => {
                 console.info('release output success');
             })
         }
@@ -260,12 +260,12 @@ describe('AudioEncoderFuncCallback', function () {
 
     function setCallback(savepath, done) {
         console.info('case callback');
-        audioEncodeProcessor.on('inputBufferAvailable', async(inBuffer) => {
+        audioEncodeProcessor.on('needInputData', async(inBuffer) => {
             console.info('case inputBufferAvailable');
             inputQueue.push(inBuffer);
             await enqueueAllInputs(inputQueue);
         });
-        audioEncodeProcessor.on('outputBufferAvailable', async(outBuffer) => {
+        audioEncodeProcessor.on('newOutputData', async(outBuffer) => {
             console.info('case outputBufferAvailable');
             if (needGetMediaDes) {
                 audioEncodeProcessor.getOutputMediaDescription((err, MediaDescription) => {
@@ -281,7 +281,7 @@ describe('AudioEncoderFuncCallback', function () {
         audioEncodeProcessor.on('error',(err) => {
             console.info('case error called,errName is' + err);
         });
-        audioEncodeProcessor.on('outputFormatChanged',(format) => {
+        audioEncodeProcessor.on('streamChanged',(format) => {
             console.info('case Output format changed: ' + format);
         });
     }
@@ -301,7 +301,7 @@ describe('AudioEncoderFuncCallback', function () {
         let mediaDescription = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 16,
+            "audio_sample_format": 3,
         }
         let mediaDescription2 = {
             "codec_mime": 'audio/mp4a-latm',
@@ -384,7 +384,7 @@ describe('AudioEncoderFuncCallback', function () {
         let mediaDescription = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 16,
+            "audio_sample_format": 3,
         }
         let savepath = BASIC_PATH + 'callback0100.es';
         eosframenum = 500;
@@ -442,7 +442,7 @@ describe('AudioEncoderFuncCallback', function () {
         let mediaDescription = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 16,
+            "audio_sample_format": 3,
         }
         let savepath = BASIC_PATH + 'callback0200.es';
         workdoneAtEOS = true;
@@ -508,7 +508,7 @@ describe('AudioEncoderFuncCallback', function () {
         let mediaDescription = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 16,
+            "audio_sample_format": 3,
         }
         let savepath = BASIC_PATH + 'callback0300.es';
         eosframenum = 500;
@@ -566,7 +566,7 @@ describe('AudioEncoderFuncCallback', function () {
         let mediaDescription = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 16,
+            "audio_sample_format": 3,
         }
         let savepath = BASIC_PATH + 'callback0400.es';
         eventEmitter.on('getAudioEncoderCaps', () => {
@@ -648,7 +648,7 @@ describe('AudioEncoderFuncCallback', function () {
         let mediaDescription = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 16,
+            "audio_sample_format": 3,
         }
         let savepath = BASIC_PATH + 'callback0500.es';
         eosframenum = 100;
@@ -727,7 +727,7 @@ describe('AudioEncoderFuncCallback', function () {
         let mediaDescription = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 16,
+            "audio_sample_format": 3,
         }
         let savepath = BASIC_PATH + 'callback0600.es';
         eosframenum = 100;
@@ -735,7 +735,7 @@ describe('AudioEncoderFuncCallback', function () {
         let mediaDescription2 = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 16,
+            "audio_sample_format": 3,
         }
         let hasreconfigured = false;
         eventEmitter.on('getAudioEncoderCaps', () => {

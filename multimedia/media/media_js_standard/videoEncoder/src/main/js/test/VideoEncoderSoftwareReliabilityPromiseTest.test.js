@@ -246,7 +246,7 @@ describe('videoEncoderReliabilityPromise', function () {
             } else {
                 writeFile(path, outputObject.data, outputObject.length);
                 console.info("write to file success");
-                videoEncodeProcessor.releaseOutput(outputObject).then(() => {
+                videoEncodeProcessor.freeOutputBuffer(outputObject).then(() => {
                     console.info('release output success');
                     frameCountOut++;
                     console.log('release output count:' + frameCountOut);
@@ -257,7 +257,7 @@ describe('videoEncoderReliabilityPromise', function () {
 
     function setCallback(path, done) {
         console.info('case callback');
-        videoEncodeProcessor.on('outputBufferAvailable', async(outBuffer) => {
+        videoEncodeProcessor.on('newOutputData', async(outBuffer) => {
             console.info('outputBufferAvailable');
             console.info('outBuffer.flags :' + outBuffer.flags);
             if (needGetMediaDes) {
@@ -274,7 +274,7 @@ describe('videoEncoderReliabilityPromise', function () {
         videoEncodeProcessor.on('error',(err) => {
             console.info('case error called,errName is' + err);
         });
-        videoEncodeProcessor.on('outputFormatChanged',(format) => {
+        videoEncodeProcessor.on('streamChanged',(format) => {
             console.info('Output format changed: ' + format);
         });
     }
