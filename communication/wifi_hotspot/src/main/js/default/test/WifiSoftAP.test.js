@@ -339,7 +339,14 @@ describe('ACTS_WifiTest', function() {
     * @tc.desc       Test set a contains Chinese.special.digits valid hotspot config
     * @tc.level Level 2
     */
-    it('SUB_Communication_WiFi_Hotspot_Config_0008', 0, function () {
+    it('SUB_Communication_WiFi_Hotspot_Config_0008', 0, async function (done) {
+        if (wifi.isHotspotActive()) {
+            var off = wifi.disableHotspot();
+            await sleep(3000);
+            console.info("[wifi_test] enableHotspot result -> " + off);
+            expect(off).assertTrue();
+
+        }
         console.info("[wifi_test] set contains Chinese valid hotspot config start.");
         var HotspotConfigC= {
             "ssid": "测试123！@#￥%……&*（ ",
@@ -361,6 +368,7 @@ describe('ACTS_WifiTest', function() {
         console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
         console.info("ssid: " + config.ssid);
         expect(true).assertEqual(config.ssid==HotspotConfigC.ssid);
+        done();
     })
 
     /**
@@ -743,5 +751,6 @@ describe('ACTS_WifiTest', function() {
 
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })
+
 
 
