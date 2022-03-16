@@ -107,6 +107,8 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
             Subscriber.Support.COMMON_EVENT_AIRPLANE_MODE_CHANGED,
             Subscriber.Support.COMMON_EVENT_SMS_RECEIVE_COMPLETED,
             Subscriber.Support.COMMON_EVENT_SPN_INFO_UPDATED,
+            Subscriber.Support.COMMON_EVENT_BOOT_COMPLETED,
+            Subscriber.Support.COMMON_EVENT_SPLIT_SCREEN
     ];
 
     function publishCallback(err) {
