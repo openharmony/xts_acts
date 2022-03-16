@@ -39,7 +39,6 @@ export default {
 
         require('../../test/List.test')
         core.execute()
-        runDeccjsunit(5)
     },
     onReady() {
     },

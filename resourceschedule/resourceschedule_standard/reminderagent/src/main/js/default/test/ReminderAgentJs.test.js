@@ -739,6 +739,6 @@ describe('ReminderAgentTest', function () {
           })
       });
       done();
-      })      
+      })
   })
 
