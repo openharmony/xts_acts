@@ -127,7 +127,7 @@ describe('ActsAmsCallBackFourthScene', function () {
                 ' + error.code + ', data length [' + data.length + ']');
             }
         );
-        setTimeout(done(), 5000);
+        done();
     });
 
     function timeout(done) {
@@ -175,8 +175,6 @@ describe('ActsAmsCallBackFourthScene', function () {
                 }
                 done();
             });
-        setTimeout(timeout, 5000);
-
     })
 
     /*
@@ -191,7 +189,7 @@ describe('ActsAmsCallBackFourthScene', function () {
                 console.info('Acts_Ams_test_5400 getMissionInfos error.code : \
                 ' + error.code + ',data length [' + data.length + ']');
                 expect(Array.isArray(data)).assertEqual(true);
-                expect(data.length).assertEqual(5);
+                expect(data.length).assertEqual(4);
                 for (var i = 0; i < data.length; i++) {
                     console.info('Acts_Ams_test_5400 getMissionInfos data[' + i + "]: " + JSON.stringify(data[i]));
                     expect(typeof (data[i].missionId)).assertEqual("number");
@@ -211,7 +209,6 @@ describe('ActsAmsCallBackFourthScene', function () {
                 }
                 done();
             });
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -232,7 +229,6 @@ describe('ActsAmsCallBackFourthScene', function () {
                 expect(error.code).assertEqual(0);
                 done();
             });
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -253,7 +249,6 @@ describe('ActsAmsCallBackFourthScene', function () {
                 expect(error.code).assertEqual(0);
                 done();
             });
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -263,14 +258,11 @@ describe('ActsAmsCallBackFourthScene', function () {
      */
     it('Acts_Ams_test_6400', 0, async function (done) {
         appManager.killProcessesByBundleName('xxxxxxxxx',
-            (error, info) => {
-                console.info('Acts_Ams_test_6400 killProcessesByBundleName error.code \
-                ' + error.code + ',data  [' + info + ']');
-                expect(typeof (info)).assertEqual("number");
-                expect(info).assertEqual(2097215);
+            (error) => {
+                console.info('Acts_Ams_test_6400 killProcessesByBundleName error.code ' + error.code);
+                expect(error.code).assertEqual(2097215);
                 done();
             });
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -291,6 +283,5 @@ describe('ActsAmsCallBackFourthScene', function () {
                 expect(error.code).assertEqual(0);
                 done();
             });
-        setTimeout(timeout, 5000);
     })
 })

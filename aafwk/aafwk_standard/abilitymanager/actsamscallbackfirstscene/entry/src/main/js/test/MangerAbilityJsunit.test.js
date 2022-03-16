@@ -70,7 +70,7 @@ describe('ActsAmsCallBackFirstScene', function () {
                 ' + error.code + ', data length [' + data.length + ']');
             }
         );
-        setTimeout(done(), 5000);
+        done();
     });
 
     function timeout(done) {
@@ -118,7 +118,6 @@ describe('ActsAmsCallBackFirstScene', function () {
                 }
                 done();
             });
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -153,7 +152,6 @@ describe('ActsAmsCallBackFirstScene', function () {
                 }
                 done();
             });
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -175,7 +173,6 @@ describe('ActsAmsCallBackFirstScene', function () {
                 expect(error.code).assertLarger(-1);
                 done();
             });
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -196,7 +193,6 @@ describe('ActsAmsCallBackFirstScene', function () {
                 expect(error.code).assertEqual(0);
                 done();
             });
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -212,7 +208,6 @@ describe('ActsAmsCallBackFirstScene', function () {
                 expect(error.code).assertEqual(0);
                 done();
             });
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -233,7 +228,6 @@ describe('ActsAmsCallBackFirstScene', function () {
                 expect(error.code).assertEqual(0);
                 done();
             });
-        setTimeout(timeout, 5000);
     })
 
 })
