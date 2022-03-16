@@ -88,14 +88,8 @@ describe('ActsAmsCallBackThirdScene', function () {
                 ' + error.code + ', data length [' + data.length + ']');
             }
         );
-        setTimeout(done(), 5000);
-    });
-
-    function timeout(done) {
-        expect().assertFail();
-        console.debug('Acts_Ams_test=========timeout========');
         done();
-    }
+    });
 
     function sleep(delay) {
         var start = new Date().getTime();
@@ -136,7 +130,6 @@ describe('ActsAmsCallBackThirdScene', function () {
                 }
                 done();
             });
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -171,7 +164,6 @@ describe('ActsAmsCallBackThirdScene', function () {
                 }
                 done();
             });
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -193,7 +185,6 @@ describe('ActsAmsCallBackThirdScene', function () {
                 done();
             }
         );
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -215,7 +206,6 @@ describe('ActsAmsCallBackThirdScene', function () {
                 done();
             }
         );
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -238,7 +228,6 @@ describe('ActsAmsCallBackThirdScene', function () {
             }
         );
         done();
-        setTimeout(timeout, 5000);
     })
 
     /*
@@ -256,6 +245,5 @@ describe('ActsAmsCallBackThirdScene', function () {
             }
         );
         done();
-        setTimeout(timeout, 5000);
     })
 })
