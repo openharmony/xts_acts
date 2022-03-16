@@ -564,7 +564,7 @@ describe('fileIOTestStream', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_stream_CreateStreamSync_2400
    * @tc.name fileio_test_stream_create_stream_sync_024
-   * @tc.desc Function of API, invaild fpath.
+   * @tc.desc Function of API, invalid fpath.
    */
   it('fileio_test_stream_create_stream_sync_024', 0, function () {
     try {
@@ -579,7 +579,7 @@ describe('fileIOTestStream', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_stream_CreateStreamSync_2500
    * @tc.name fileio_test_stream_create_stream_sync_025
-   * @tc.desc Function of API, invaild mode.
+   * @tc.desc Function of API, invalid mode.
    */
   it('fileio_test_stream_create_stream_sync_025', 0, async function () {
     let fpath = await nextFileName('fileio_test_stream_create_stream_sync_025');
@@ -1232,7 +1232,7 @@ describe('fileIOTestStream', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_stream_FdopenStreamSync_2400
    * @tc.name fileio_test_stream_fdopen_stream_sync_024
-   * @tc.desc Function of API, invaild fildes. The test file is exist.
+   * @tc.desc Function of API, invalid fields. The test file is not exist.
    */
   it('fileio_test_stream_fdopen_stream_sync_024', 0, async function () {
     try {
@@ -1247,7 +1247,7 @@ describe('fileIOTestStream', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_stream_FdopenStreamSync_2400
    * @tc.name fileio_test_stream_fdopen_stream_sync_025
-   * @tc.desc Function of API, invaild mode. The test file is exist.
+   * @tc.desc Function of API, invalid mode. The test file is exist.
    */
   it('fileio_test_stream_fdopen_stream_sync_025', 0, async function () {
     let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_025');
@@ -1457,7 +1457,7 @@ describe('fileIOTestStream', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_stream_WriteSync_0100
    * @tc.name fileio_test_stream_write_sync_001
-   * @tc.desc Function of API, invaild encoding.
+   * @tc.desc Function of API, invalid encoding.
    */
   it('fileio_test_stream_write_sync_001', 0, async function () {
     let fpath = await nextFileName('fileio_test_stream_write_sync_001');
@@ -1689,7 +1689,7 @@ describe('fileIOTestStream', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_stream_WriteSync_0900
    * @tc.name fileio_test_stream_write_sync_009
-   * @tc.desc Function of API, invaild fcontent.
+   * @tc.desc Function of API, invalid fcontent.
    */
   it('fileio_test_stream_write_sync_009', 0, async function () {
     let fpath = await nextFileName('fileio_test_stream_write_sync_009');
@@ -1709,7 +1709,7 @@ describe('fileIOTestStream', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_stream_WriteSync_1000
    * @tc.name fileio_test_stream_write_sync_010
-   * @tc.desc Function of API, invaild encoding.
+   * @tc.desc Function of API, invalid encoding.
    */
   it('fileio_test_stream_write_sync_010', 0, async function () {
     let fpath = await nextFileName('fileio_test_stream_write_sync_010');
@@ -1732,7 +1732,7 @@ describe('fileIOTestStream', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_stream_WriteSync_1100
    * @tc.name fileio_test_stream_write_sync_011
-   * @tc.desc Function of API, invaild position.
+   * @tc.desc Function of API, invalid position.
    */
   it('fileio_test_stream_write_sync_011', 0, async function () {
     let fpath = await nextFileName('fileio_test_stream_write_sync_011');
@@ -1755,7 +1755,7 @@ describe('fileIOTestStream', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_stream_WriteSync_1200
    * @tc.name fileio_test_stream_write_sync_012
-   * @tc.desc Function of API, invaild offset.
+   * @tc.desc Function of API, invalid offset.
    */
   it('fileio_test_stream_write_sync_012', 0, async function () {
     let fpath = await nextFileName('fileio_test_stream_write_sync_012');
