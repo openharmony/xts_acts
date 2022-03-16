@@ -223,7 +223,7 @@ HWTEST_F(BroadcastPublishTest, testPublish0030, Function | MediumTest | Level2)
 
 /**
  * @tc.number    : DMSLite_SAMGR_Publish_0040
- * @tc.name      : Provider publish broadcast successfully for 0 and max lenth message
+ * @tc.name      : Provider publish broadcast successfully for 0 and max length message
  * @tc.desc      : [C- SOFTWARE -0200]
 */
 HWTEST_F(BroadcastPublishTest, testPublish0040, Function | MediumTest | Level2)
