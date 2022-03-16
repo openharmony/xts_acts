@@ -154,7 +154,7 @@ LITE_TEST_CASE(IUnknownTestSuite, testGetIUnknown0010, Function | MediumTest | L
 
 /**
  * @tc.number    : DMSLite_SAMGR_GetObject_0010
- * @tc.name      : Use this macro GET_OBJECT user can obtain a outside object
+ * @tc.name      : Use this macro GET_OBJECT user can obtain an outside object
  * @tc.desc      : [C- SOFTWARE -0200]
  */
 LITE_TEST_CASE(IUnknownTestSuite, testGetObject0010, Function | MediumTest | Level2)

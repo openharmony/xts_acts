@@ -220,7 +220,7 @@ LITE_TEST_CASE(Broadcast02TestSuite, testPublish0030, Function | MediumTest | Le
 
 /**
  * @tc.number    : DMSLite_SAMGR_Publish_0040
- * @tc.name      : Provider publish broadcast successfully for 0 and max lenth message  
+ * @tc.name      : Provider publish broadcast successfully for 0 and max length message  
  * @tc.desc      : [C- SOFTWARE -0200]
  */
 LITE_TEST_CASE(Broadcast02TestSuite, testPublish0040, Function | MediumTest | Level2)
