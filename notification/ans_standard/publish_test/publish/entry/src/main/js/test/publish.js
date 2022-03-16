@@ -327,7 +327,7 @@ describe('ActsAnsNotificationPublishXts', function () {
           await notify.publish(notificationRequest)
         }catch(err){
             console.info("======ACTS_PublishMULTILINEContent_0500 err==================>"+err.code);
-        };
+        }
         setTimeout((async function(){
             await notify.unsubscribe(subscriber);
             console.info("======ACTS_PublishMULTILINEContent_0500 setTimeout unsubscribe end==================>");
