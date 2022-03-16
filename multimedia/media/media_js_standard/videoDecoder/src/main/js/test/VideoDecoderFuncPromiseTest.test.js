@@ -458,7 +458,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
         }
         let array = new Array();
         eventEmitter.on('releaseAllDecoder', async () => {
-            for (let j = 0; j < 3; j++) {
+            for (let j = 0; j < 2; j++) {
                 await array[j].release().then(() => {
                     array[j] = null;
                 }, failCallback).catch(failCatch);
