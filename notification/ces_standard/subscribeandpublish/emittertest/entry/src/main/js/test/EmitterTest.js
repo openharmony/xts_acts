@@ -25,12 +25,12 @@ describe('EmitterTest', function () {
         }
     }
 
-    var innerEvent_immediadte = {
+    var InnerEventImmediate = {
         eventId: 1,
         priority: emitter.EventPriority.IMMEDIATE
     }
 
-    var innerEvent_low = {
+    var InnerEventLow = {
         eventId: 2,
         priority: emitter.EventPriority.LOW
     }
@@ -53,7 +53,7 @@ describe('EmitterTest', function () {
      */
     it('EmitterOnTest', 0, async function (done) {
         console.info("===========EmitterOnTest====================>");
-        emitter.on(innerEvent_immediadte, callback);
+        emitter.on(InnerEventImmediate, callback);
         done();
     })
 
@@ -64,7 +64,7 @@ describe('EmitterTest', function () {
      */
     it('EmitterOnceTest', 0, async function (done){
         console.info("===========EmitterOnceTest====================>");
-        emitter.once(innerEvent_immediadte, callback);
+        emitter.once(InnerEventImmediate, callback);
         done();
     })
 
@@ -75,8 +75,8 @@ describe('EmitterTest', function () {
      */
     it('EmitterEmitTest', 0, async function (done){
         console.info("===========EmitterEmitTest====================>");
-        emitter.once(innerEvent_immediadte, callback01);
-        emitter.emit(innerEvent_immediadte, eventData);
+        emitter.once(InnerEventImmediate, callback01);
+        emitter.emit(InnerEventImmediate, eventData);
         done();
     })
 
@@ -87,8 +87,8 @@ describe('EmitterTest', function () {
      */
     it('EmitterLowTest', 0, async function (done){
         console.info("===========EmitterLowTest====================>");
-        emitter.once(innerEvent_low, callback01);
-        emitter.emit(innerEvent_low,eventData);
+        emitter.once(InnerEventLow, callback01);
+        emitter.emit(InnerEventLow,eventData);
         done();
     })
 
