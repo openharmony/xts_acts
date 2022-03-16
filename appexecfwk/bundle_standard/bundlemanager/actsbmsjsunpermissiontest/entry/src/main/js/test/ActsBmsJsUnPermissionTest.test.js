@@ -172,22 +172,6 @@ describe('ActsBmsJsUnPermissionTest', function () {
     });
 
     /*
-     * @tc.number: getBundleArchiveInfoTest_100
-     * @tc.name: test getBundleArchiveInfo
-     * @tc.desc: test getBundleArchiveInfo
-     */
-    it('getBundleArchiveInfoTest_100', 0, async function (done) {
-        console.debug('getBundleArchiveInfoTest_100 start');
-        bundle.getBundleArchiveInfo("/system/app/Launcher.hap", DEFAULT_FLAG).then(data => {
-            expect().assertFail();
-            done();
-        }).catch(err => {
-            expect(err).assertEqual(INVALID_CODE);
-            done();
-        });
-    });
-
-    /*
      * @tc.number: setApplicationEnabledTest_100
      * @tc.name: test setApplicationEnabled
      * @tc.desc: test setApplicationEnabled
