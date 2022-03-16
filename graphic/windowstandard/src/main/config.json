@@ -45,6 +45,12 @@
         "isVisible": "true"
       }
     ],
+    "reqPermissions":[
+      {
+        "name": "ohos.permission.CAPTURE_SCREEN",
+        "reason": "query download status"
+      }
+    ],
     "js": [
       {
         "pages": [
