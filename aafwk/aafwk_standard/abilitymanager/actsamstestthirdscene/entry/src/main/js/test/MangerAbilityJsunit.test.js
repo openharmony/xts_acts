@@ -240,9 +240,13 @@ describe('ActsAmsTestThirdScene', function () {
      * @tc.desc      : Kill Processes By BundleName(by Promise)
      */
     it('Acts_Ams_test_4700', 0, async function (done) {
-        var info = await appManager.killProcessesByBundleName('XXXXXXXX');
-        console.info('Acts_Ams_test_4700 killProcessesByBundleName data  [' + info + ']');
-        expect(info.code).assertEqual(2097215);
-        done();
+        console.info('Acts_test_4700 killProcessesByBundleName data');
+        appManager.killProcessesByBundleName('XXXXXXXX').then(data => {
+            console.log('Acts_test_4700 success: ' + data);
+        }).catch(err => {
+            console.log('Acts_test_4700 failed: ' + err.code);
+            expect(err.code).assertEqual(2097215);
+            done();
+        });
     })
 })
