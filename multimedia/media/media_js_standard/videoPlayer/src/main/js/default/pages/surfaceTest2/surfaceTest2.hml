@@ -18,9 +18,9 @@
         VideoPlayer Test
     </text>
 
-    <Xcomponent id = 'XcomponentId2'
+    <Xcomponent id = 'XcomponentId3'
                 type = 'surface'
-                onload = 'LoadXcomponent2'
+                onload = 'LoadXcomponent3'
                 style = "width:720px;height:480px;border-color:red;border-width:5px">
     </Xcomponent>
 </div>

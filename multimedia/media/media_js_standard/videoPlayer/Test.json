@@ -22,7 +22,7 @@
             "./resource/audio/H264_AAC.mp4 ->/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoplayer/"
           ]
         },
-		    {
+        {
           "type": "ShellKit",
           "run-command": [
           ],
