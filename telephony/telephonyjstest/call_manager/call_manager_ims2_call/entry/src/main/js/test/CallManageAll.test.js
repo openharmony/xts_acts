@@ -130,8 +130,6 @@ var timing = 0;
 var endTime = 0;
 describe('CallManageImsCall', function () {
     beforeAll(async function (done) {
-        callDetailsChangeOn();
-        observer.on('callStateChange', function (error, data) {});
         observer.on('callStateChange', {slotId: DEFAULT_SLOT_ID}, function (error, data) {});
         try {
             await call.enableImsSwitch(DEFAULT_SLOT_ID);
