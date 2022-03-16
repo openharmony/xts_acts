@@ -208,7 +208,7 @@ describe('userauthTest', function () {
                         }, function (onacquireinfo) {
                         })
                         let cancelresult = publicFC.publiccancel(UserIDM,challenge);
-                        await sleep(100);
+                        await sleep(2500);
                         if(cancelresult == 1){
                             console.info('Face_AddCred_Func_0103 cancel1 authresult = ' + addfaceresult.addCredresult);
                             expect(ResultCode.SUCCESS).assertEqual(addfaceresult.addCredresult);
