@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,30 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import commonEvent from '@ohos.commonEvent';
-import abilityFeatureAbility from '@ohos.ability.featureAbility';
 export default {
     onCreate() {
-        commonEvent.publish("ApplicationMainAbility1_onCreate",()=>{
-            console.log("ApplicationMainAbility1_onCreate publish callBack ApplicationMainAbility1_onCreate");
-        });
-        setTimeout(()=>{
-            abilityFeatureAbility.terminateSelf().then((data)=>{
-                console.log("ApplicationMainAbility2 terminateSelf data：" + JSON.stringify(data) )
-            }).catch((error)=>{
-                console.log("ApplicationMainAbility2 terminateSelf error：" + JSON.stringify(error) )
-            })
-        },3000)
-
-        console.info("Application onCreate");
+        console.info("Application onCreate 1");
     },
     onDestroy() {
-        console.info("Application onDestroy");
-//        commonEvent.publish("ApplicationMainAbility1_onDestroy",()=>{
-//            console.log("ApplicationMainAbility1_onDestroy publish callBack ApplicationMainAbility1_onDestroy");
-//        });
-    },
-    onForgeGround(){
-        console.info("Application onForgeGround");
+        console.info("Application onDestroy 1");
+
     }
 };
