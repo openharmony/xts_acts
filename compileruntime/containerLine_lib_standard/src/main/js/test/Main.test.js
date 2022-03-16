@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-require('./ExampleJsunit.test.js');
 require('./Deque.test.js');
 require('./ArrayList.test.js');
 require('./Queue.test.js');
