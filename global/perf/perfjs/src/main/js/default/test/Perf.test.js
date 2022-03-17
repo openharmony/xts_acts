@@ -427,9 +427,11 @@ describe('PerfTest', function () {
         console.log('perf_test_1300 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let valid = false;
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('perf_test_1300 ' + ran);
         let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
-            valid = phonenumber.isValidNumber('13510574676');
+            valid = phonenumber.isValidNumber('1351057467' + ran);
         }
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
@@ -454,9 +456,11 @@ describe('PerfTest', function () {
         console.log('perf_test_1400 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let value = '1234';
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('perf_test_1400 ' + ran);
         let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
-            value = phonenumber.format('13510574676');
+            value = phonenumber.format('1351057467' + ran);
         }
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
