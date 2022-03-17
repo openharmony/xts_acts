@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,35 +12,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import file from '@system.file'
-import {Core, ExpectExtend, ReportExtend} from 'deccjsunit/index'
+import {Core, ExpectExtend} from 'deccjsunit/index'
 
-const injecttRef = Object.getPrototypeOf(global) || global
-injecttRef.regeneratorRuntime = require('@babel/runtime/regenerator')
+const injectRef = Object.getPrototypeOf(global) || global
+injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 
-export default{
+export default {
     data: {
-        title: ""
+        title: 'Test MetaData'
     },
     onInit() {
-        this.title = this.$t('strings.world');
+        this.title = 'zip and unzip';
     },
     onShow() {
-        console.info('onShow finish')
+        console.info('onReady finish')
         const core = Core.getInstance()
         const expectExtend = new ExpectExtend({
             'id': 'extend'
         })
         core.addService('expect', expectExtend)
         core.init()
-
         const configService = core.getDefaultService('config')
         configService.setConfig(this)
 
-        require('../../../test/List.test.js')
+        require('../../../test/List.test')
         core.execute()
     },
     onReady() {
     },
+    onBackPress(){
+    }
 }
-
