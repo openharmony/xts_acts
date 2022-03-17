@@ -252,12 +252,15 @@ describe('ActsAmsTestFifthScene', function () {
     * @tc.desc      : Kill Processes By BundleName(by Promise)
     */
     it('Acts_Ams_test_1500', 0, async function (done) {
-        await appManager.killProcessesByBundleName('com.ix.simulate.feature').then(data => {
-            console.info('Acts_Ams_test_1500 killProcessesByBundleName data  [' + data + ']');
-            expect(data).assertEqual(0);
+        console.info('Acts_test_1500 killProcessesByBundleName data');
+        appManager.killProcessesByBundleName('com.ix.simulate.feature').then(data => {
+            console.log('Acts_test_1500 success: ' + data.code);
+            expect(data.code).assertEqual(0);
             done();
         }).catch(err => {
-            console.log('Acts_Ams_test_0700 getMissionInfos failed: ' + err);
+            console.log('Acts_test_1500 failed: ' + err.code);
+            expect(err.code).assertEqual(2097182);
+            done();
         });
     })
 })
