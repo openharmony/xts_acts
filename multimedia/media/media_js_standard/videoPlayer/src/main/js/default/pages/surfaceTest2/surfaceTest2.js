@@ -13,6 +13,21 @@
  * limitations under the License.
  */
 
-require('./RecorderLocalTestAudioFUNC.test.js')
-require('./RecorderLocalTestAudioAPI.test.js')
-require('./AudioRecorderEnumTest.test.js')
+import {Core, ExpectExtend} from 'deccjsunit/index'
+import Fileio from '@ohos.fileio'
+
+export default {
+    data: {
+        title: ""
+    },
+    onInit() {
+        this.title = this.$t('strings.world');
+    },
+    onShow() {
+    },
+    onReady() {
+    },
+    LoadXcomponent3() {
+        globalThis.value = this.$element('XcomponentId3').getXComponentSurfaceId()
+    },
+}
