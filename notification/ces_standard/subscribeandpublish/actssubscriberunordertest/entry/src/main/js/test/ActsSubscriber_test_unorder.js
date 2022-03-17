@@ -350,8 +350,7 @@ describe('ActsSubscriberTestUnorder', async function (done) {
 
         function sleep(delay) {
             var start = (new Date()).getTime();
-            while((new Date()).getTime() - start < delay) {
-                continue;
+            while ((new Date()).getTime() - start < delay) {
             }
             done();
         }
@@ -430,7 +429,7 @@ describe('ActsSubscriberTestUnorder', async function (done) {
             expect(data.data).assertEqual("publish_event1000_data");
             if (num == 0) {
                 num++;
-            }else if (num == 1) {
+            } else if (num == 1) {
                 done();
             }
         }
@@ -445,14 +444,12 @@ describe('ActsSubscriberTestUnorder', async function (done) {
             expect(data.data).assertEqual("publish_event1000_data");
             if (num == 0) {
                 num++;
-            }else if (num == 1) {
+            } else if (num == 1) {
                 done();
             }
         }
 
-        Subscriber.createSubscriber(
-            commonEventSubscribeInfo1
-        ).then((data)=>{
+        Subscriber.createSubscriber(commonEventSubscribeInfo1).then((data)=>{
             console.info("=================ActsSubscriberTestUnorder_1000=========>createSubscriber Promise1000_1");
             commonEventSubscriber0101 = data;
             data.getSubscribeInfo().then(()=>{
@@ -461,9 +458,7 @@ describe('ActsSubscriberTestUnorder', async function (done) {
             });
         });
 
-        Subscriber.createSubscriber(
-            commonEventSubscribeInfo2
-        ).then((data)=>{
+        Subscriber.createSubscriber(commonEventSubscribeInfo2).then((data)=>{
             console.info("=================ActsSubscriberTestUnorder_1000=========>createSubscriber Promise1000_2");
             commonEventSubscriber0102 = data;
             data.getSubscribeInfo().then(()=>{

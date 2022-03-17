@@ -210,7 +210,7 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
             Subscriber.subscribe(commonEventSubscriber1, subscriberCallBack001);
             for (let i = 0; i < 50; ++i) {
                 setTimeout(function (){
-                    console.debug("===============>ActsSubscriberTestUnorderSystem_0100 delay 1s==================i :" +i);
+                    console.debug("===============>ActsSubscriberTestUnorderSystem_0100 delay 1s=========i:"+i);
                     Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
                 }, 1000);
             }
@@ -287,7 +287,7 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
             Subscriber.subscribe(commonEventSubscriber2, subscriberCallBack002);
             for (let i = 0; i < 36; ++i) {
                 setTimeout(function (){
-                    console.debug("===============>ActsSubscriberTestUnorderSystem_0200 delay 1s==================i :"+i);
+                    console.debug("===============>ActsSubscriberTestUnorderSystem_0200 delay 1s===========i:"+i);
                     Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
                 }, 1000);
             }

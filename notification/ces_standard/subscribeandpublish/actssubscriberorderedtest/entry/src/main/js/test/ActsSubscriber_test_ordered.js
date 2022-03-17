@@ -383,7 +383,7 @@ describe('ActsSubscriberTestOrder', function () {
      * @tc.number    : ActsSubscriberTestOrder_0400
      * @tc.name      : verify subscribe and publish : Check subscribe same events
      *                 and publish common ordered events and check abort event
-     * @tc.desc      : Check the subscriber can receive event "publish_eventOrder0400" type of the interface (by promise)
+     * @tc.desc      : Check the subscriber can receive event "publish_eventOrder0400" type of the interface by promise
      */
     it ('ActsSubscriberTestOrder_0400', 0, async function (done) {
         console.info("===============ActsSubscriberTestOrder_0400===============>");
