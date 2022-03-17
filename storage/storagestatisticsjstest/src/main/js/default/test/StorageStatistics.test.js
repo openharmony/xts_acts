@@ -275,7 +275,7 @@ describe("storageStatistics", function () {
     it("storage_statistics_test_get_bundle_stat_async_000", 0, async function (done) {
         try {
             let packageName = await getPackageName();
-            let bundleStat = await storageStatistics.getBundleStats("id", packageName);
+            let bundleStat = await storageStatistics.getBundleStats(packageName);
             expect(bundleStat != null).assertTrue();
             expect(isIntNum(bundleStat.appSize) && !isNegativeNum(bundleStat.appSize)).assertTrue();
             expect(isIntNum(bundleStat.cacheSize) && !isNegativeNum(bundleStat.cacheSize)).assertTrue();
@@ -300,7 +300,7 @@ describe("storageStatistics", function () {
     it("storage_statistics_test_get_bundle_stat_async_001", 0, async function (done) {
         try {
             let packageName = await getPackageName();
-            storageStatistics.getBundleStats("id", packageName, (error, bundleStat) => {
+            storageStatistics.getBundleStats(packageName, (error, bundleStat) => {
                 expect(bundleStat != null).assertTrue();
                 expect(isIntNum(bundleStat.appSize) && !isNegativeNum(bundleStat.appSize)).assertTrue();
                 expect(isIntNum(bundleStat.cacheSize) && !isNegativeNum(bundleStat.cacheSize)).assertTrue();
@@ -325,23 +325,19 @@ describe("storageStatistics", function () {
      */
     it("storage_statistics_test_get_bundle_stat_async_002", 0, async function (done) {
         try {
-            let bundleStat = await storageStatistics.getBundleStats("id", "packageName");
-            expect(bundleStat != null).assertTrue();
-            expect(bundleStat.appSize == 0).assertTrue();
-            expect(bundleStat.cacheSize == 0).assertTrue();
-            expect(bundleStat.dataSize == 0).assertTrue();
-            console.log(`async_002 bundleStat ===---=== ${JSON.stringify(bundleStat)}`);
+            await storageStatistics.getBundleStats("packageName");
             done();
         } catch (e) {
             console.log("storage_statistics_test_get_bundle_stat_async_002 has failed for " + e);
-            expect(!!e).assertTrue();
+            expect(e.message == "Invalid name").assertTrue();
+            done();
         }
     });
 
     /**
      * @tc.number SUB_DF_STORAGE_STATISTICS_GET_BUNDLE_STAT_0030
      * @tc.name storage_statistics_test_get_bundle_stat_async_003
-     * @tc.desc Test getBundleStats() interfaces, No parameters, returns the correct result.
+     * @tc.desc Test getBundleStats() interfaces, When the parameter type is wrong, returns the correct result.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -349,24 +345,18 @@ describe("storageStatistics", function () {
      */
     it("storage_statistics_test_get_bundle_stat_async_003", 0, async function (done) {
         try {
-            let packageName = await getPackageName();
-            let bundleStat = await storageStatistics.getBundleStats("", packageName);
-            expect(bundleStat != null).assertTrue();
-            expect(isIntNum(bundleStat.appSize) && !isNegativeNum(bundleStat.appSize)).assertTrue();
-            expect(isIntNum(bundleStat.cacheSize) && !isNegativeNum(bundleStat.cacheSize)).assertTrue();
-            expect(isIntNum(bundleStat.dataSize) && !isNegativeNum(bundleStat.dataSize)).assertTrue();
-            console.log(`async_003 bundleStat ===---=== ${JSON.stringify(bundleStat)}`);
-            done();
+            await storageStatistics.getBundleStats(1);
         } catch (e) {
             console.log("storage_statistics_test_get_bundle_stat_async_003 has failed for " + e);
-            expect(!!e).assertTrue();
+            expect(e.message == "Invalid name").assertTrue();
+            done();
         }
     });
 
     /**
    	 * @tc.number SUB_DF_STORAGE_STATISTICS_GET_BUNDLE_STAT_0040
      * @tc.name storage_statistics_test_get_bundle_stat_async_004
-     * @tc.desc Test getBundleStats() interfaces, the parameter packagename does not exist, returning error results.
+     * @tc.desc Test getBundleStats() interfaces, When there are no parameters, returning error results.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -374,16 +364,11 @@ describe("storageStatistics", function () {
      */
     it("storage_statistics_test_get_bundle_stat_async_004", 0, async function (done) {
         try {
-            let bundleStat = await storageStatistics.getBundleStats("id", "");
-            expect(bundleStat != null).assertTrue();
-            expect(bundleStat.appSize == 0).assertTrue();
-            expect(bundleStat.cacheSize == 0).assertTrue();
-            expect(bundleStat.dataSize == 0).assertTrue();
-            console.log(`async_004 bundleStat ===---=== ${JSON.stringify(bundleStat)}`);
-            done();
+            await storageStatistics.getBundleStats();
         } catch (e) {
             console.log("storage_statistics_test_get_bundle_stat_async_004 has failed for " + e);
-            expect(!!e).assertTrue();
+            expect(e.message == "Number of arguments unmatched").assertTrue();
+            done();
         }
     });
 });
