@@ -107,6 +107,8 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
             Subscriber.Support.COMMON_EVENT_AIRPLANE_MODE_CHANGED,
             Subscriber.Support.COMMON_EVENT_SMS_RECEIVE_COMPLETED,
             Subscriber.Support.COMMON_EVENT_SPN_INFO_UPDATED,
+            Subscriber.Support.COMMON_EVENT_BOOT_COMPLETED,
+            Subscriber.Support.COMMON_EVENT_SPLIT_SCREEN
     ];
 
     function publishCallback(err) {
@@ -204,15 +206,15 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
 
         Subscriber.createSubscriber(
             commonEventSubscribeInfo
-        ).then(function (data) {
+        ).then((data)=>{
             console.info("===============>ActsSubscriberTestUnorderSystem_0100=========createSubscriber promise");
             commonEventSubscriber1 = data;
             Subscriber.subscribe(commonEventSubscriber1, subscriberCallBack001);
-            for (var i = 0; i < 50; ++i) {
-                console.debug("===============>ActsSubscriberTestUnorderSystem_0100 delay 1s==================");
-                console.info("Subscriber.publish is run at:" + commonEventSubscribeInfo.events[i]);
-                console.info("Subscriber type:" + typeof(commonEventSubscribeInfo.events[i]));
-                Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
+            for (let i = 0; i < 50; ++i) {
+                setTimeout(function (){
+                    console.debug("===============>ActsSubscriberTestUnorderSystem_0100 delay 1s=========i:"+i);
+                    Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
+                }, 1000);
             }
         })
     })
@@ -281,22 +283,22 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
 
         Subscriber.createSubscriber(
             commonEventSubscribeInfo
-        ).then(function (data) {
+        ).then((data)=>{
             console.info("===============>ActsSubscriberTestUnorderSystem_0200=========createSubscriber promise");
             commonEventSubscriber2 = data;
             Subscriber.subscribe(commonEventSubscriber2, subscriberCallBack002);
-            for (var i = 0; i < 36; ++i) {
-                console.debug("===============>ActsSubscriberTestUnorderSystem_0200 delay 1s==================");
-                console.info("Subscriber.publish is run at:" + commonEventSubscribeInfo.events[i]);
-                console.info("Subscriber type:" + typeof(commonEventSubscribeInfo.events[i]));
-                Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
+            for (let i = 0; i < 36; ++i) {
+                setTimeout(function (){
+                    console.debug("===============>ActsSubscriberTestUnorderSystem_0200 delay 1s===========i:"+i);
+                    Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
+                }, 1000);
             }
         })
     })
 
     /*
      * @tc.number    : ActsSubscriberTestUnorderSystem_0300
-     * @tc.name      : verify subscribe and publish : Check subscribe and publish system event data with  permission 
+     * @tc.name      : verify subscribe and publish : Check subscribe and publish system event data without permission
      *               : including multiple permissions
      * @tc.desc      : Check the subscriber can receive event "publish_event0100" type of the interface (by Promise)
      */
@@ -375,14 +377,14 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
 
         Subscriber.createSubscriber(
             commonEventSubscribeInfo
-        ).then(function (data) {
+        ).then((data)=>{
             console.info("===============>ActsSubscriberTestUnorderSystem_0300=========createSubscriber promise");
             commonEventSubscriber3 = data;
             Subscriber.subscribe(commonEventSubscriber3, subscriberCallBack003);
             setTimeout(function (){
                 console.debug("===============>ActsSubscriberTestUnorderSystem_0300 delay 3s==================");
                 Subscriber.unsubscribe(commonEventSubscriber3, unsubscribeCallback);
-            }, 3000); 
+            }, 3000);
         })
     })
 })
