@@ -49,20 +49,19 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0100_001, 0, async function (done) {
-      console.info(TAG_TEST_0100_001 + 'promise START');
       await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let data = await Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USER_ID_100)
         .catch((error) => {
           console.info(TAG_TEST_0100_001 + 'UserId promise error is: ' + error);
+          expect(error).assertFail();
         });
       var endTime = Utils.getNowTime();
       Utils.getDurationTime(TAG_TEST_0100_001, startTime, endTime);
       console.info(TAG_TEST_0100_001 + ' UserId promise data is: ' + JSON.stringify(data));
-      commonTest(TAG_TEST_0100_001, data)
+      expectData(TAG_TEST_0100_001, data)
       getApplicationInfoSuccess(TAG_TEST_0100_001, data);
       done();
-      console.log('------------------ ' + TAG_TEST_0100_001 + ' end -------------------');
     });
 
     /**
@@ -72,20 +71,19 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0100_002, 0, async function (done) {
-      console.info(TAG_TEST_0100_002 + 'promise START');
       await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let data = await Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_ALL_APPLICATION_INFO, USER_ID_100)
         .catch((error) => {
           console.info(TAG_TEST_0100_002 + 'UserId promise error is: ' + error);
+          expect(error).assertFail();
         });
       var endTime = Utils.getNowTime();
       Utils.getDurationTime(TAG_TEST_0100_002, startTime, endTime);
       console.info(TAG_TEST_0100_002 + ' UserId promise data is: ' + JSON.stringify(data));
-      commonTest(TAG_TEST_0100_002, data)
+      expectData(TAG_TEST_0100_002, data)
       getApplicationInfoSuccess(TAG_TEST_0100_002, data);
       done();
-      console.log('------------------ ' + TAG_TEST_0100_002 + ' end -------------------');
     });
 
     /**
@@ -95,20 +93,19 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0100_003, 0, async function (done) {
-      console.info(TAG_TEST_0100_003 + 'promise START');
       await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let data = await Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_DISABLE, USER_ID_100)
         .catch((error) => {
           console.info(TAG_TEST_0100_003 + 'UserId promise error is: ' + error);
+          expect(error).assertFail();
         });
       var endTime = Utils.getNowTime();
       Utils.getDurationTime(TAG_TEST_0100_003, startTime, endTime);
       console.info(TAG_TEST_0100_003 + ' UserId promise data is: ' + JSON.stringify(data));
-      commonTest(TAG_TEST_0100_003, data)
+      expectData(TAG_TEST_0100_003, data)
       getApplicationInfoSuccess(TAG_TEST_0100_003, data);
       done();
-      console.log('------------------ ' + TAG_TEST_0100_003 + ' end -------------------');
     });
 
 
@@ -119,20 +116,19 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0200_001, 0, async function (done) {
-      console.info(TAG_TEST_0200_001 + 'promise START');
       await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let data = await Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION)
         .catch((error) => {
           console.info(TAG_TEST_0200_001 + 'onUserId promise error is: ' + error);
+          expect(error).assertFail();
         });
       var endTime = Utils.getNowTime();
       Utils.getDurationTime(TAG_TEST_0200_001, startTime, endTime);
       console.info(TAG_TEST_0200_001 + ' onUserId promise data is: ' + JSON.stringify(data));
-      commonTest(TAG_TEST_0200_001, data)
+      expectData(TAG_TEST_0200_001, data)
       getApplicationInfoSuccess(TAG_TEST_0200_001, data);
       done();
-      console.log('------------------ ' + TAG_TEST_0200_001 + ' end -------------------');
     });
 
     /**
@@ -142,20 +138,19 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0200_002, 0, async function (done) {
-      console.info(TAG_TEST_0200_002 + 'promise START');
       await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let data = await Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_ALL_APPLICATION_INFO)
         .catch((error) => {
           console.info(TAG_TEST_0200_002 + 'onUserId promise error is: ' + error);
+          expect(error).assertFail();
         });
       var endTime = Utils.getNowTime();
       Utils.getDurationTime(TAG_TEST_0200_002, startTime, endTime);
       console.info(TAG_TEST_0200_002 + ' onUserId promise data is: ' + JSON.stringify(data));
-      commonTest(TAG_TEST_0200_002, data)
+      expectData(TAG_TEST_0200_002, data)
       getApplicationInfoSuccess(TAG_TEST_0200_002, data);
       done();
-      console.log('------------------ ' + TAG_TEST_0200_002 + ' end -------------------');
     });
 
     /**
@@ -165,20 +160,19 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0200_003, 0, async function (done) {
-      console.info(TAG_TEST_0200_003 + 'promise START');
       await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let data = await Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_DISABLE)
         .catch((error) => {
           console.info(TAG_TEST_0200_003 + 'onUserId promise error is: ' + error);
+          expect(error).assertFail();
         });
       var endTime = Utils.getNowTime();
       Utils.getDurationTime(TAG_TEST_0200_003, startTime, endTime);
       console.info(TAG_TEST_0200_003 + ' onUserId promise data is: ' + JSON.stringify(data));
-      commonTest(TAG_TEST_0200_003, data)
+      expectData(TAG_TEST_0200_003, data)
       getApplicationInfoSuccess(TAG_TEST_0200_003, data);
       done();
-      console.log('------------------ ' + TAG_TEST_0200_003 + ' end -------------------');
     });
 
     /**
@@ -188,7 +182,6 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0300_001, 0, async function (done) {
-      console.info(TAG_TEST_0300_001 + 'callBack START');
       await Utils.sleep(SLEEP_TIME_1000);
       let datas;
       var startTime = await Utils.getNowTime();
@@ -196,6 +189,10 @@ export default function applicationBundleJsunit() {
         (error, data) => {
           var endTime = Utils.getNowTime();
           Utils.getDurationTime(TAG_TEST_0300_001, startTime, endTime);
+          if(error){
+            expect(error).assertFail();
+            console.info(TAG_TEST_0300_001 + 'UserId callBack error: ' + error);
+          }
           console.info(TAG_TEST_0300_001 + 'UserId callBack in');
           console.info(TAG_TEST_0300_001 + 'UserId callBack error: ' + error);
           console.info(TAG_TEST_0300_001 + 'UserId callBack data is:' + JSON.stringify(data));
@@ -203,10 +200,9 @@ export default function applicationBundleJsunit() {
         });
       await Utils.sleep(2000);
       console.info(TAG_TEST_0300_001 + 'UserId callBack datas is:' + JSON.stringify(datas));
-      commonTest(TAG_TEST_0300_001, datas)
+      expectData(TAG_TEST_0300_001, datas)
       getApplicationInfoSuccess(TAG_TEST_0300_001, datas);
       done();
-      console.log('------------------ ' + TAG_TEST_0300_001 + ' end -------------------');
     });
 
     /**
@@ -216,12 +212,15 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0400_001, 0, async function (done) {
-      console.info(TAG_TEST_0400_001 + 'callBack START');
       let datas;
       var startTime = await Utils.getNowTime();
       Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, (error, data) => {
         var endTime = Utils.getNowTime();
         Utils.getDurationTime(TAG_TEST_0400_001, startTime, endTime);
+        if(error){
+          expect(error).assertFail();
+          console.info(TAG_TEST_0400_001 + 'UserId callBack error: ' + error);
+        }
         console.info(TAG_TEST_0400_001 + 'noUserId callBack in');
         console.info(TAG_TEST_0400_001 + 'noUserId callBack error: ' + error);
         console.info(TAG_TEST_0400_001 + 'noUserId callBack data is:' + JSON.stringify(data));
@@ -229,10 +228,9 @@ export default function applicationBundleJsunit() {
       });
       await Utils.sleep(2000);
       console.info(TAG_TEST_0400_001 + 'noUserId callBack datas is:' + JSON.stringify(datas));
-      commonTest(TAG_TEST_0400_001, datas)
+      expectData(TAG_TEST_0400_001, datas)
       getApplicationInfoSuccess(TAG_TEST_0400_001, datas);
       done();
-      console.log('------------------ ' + TAG_TEST_0400_001 + ' end -------------------');
     });
 
     /**
@@ -242,21 +240,22 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0500_001, 0, async function (done) {
-      console.info(TAG_TEST_0500_001 + 'promise START');
       await Utils.sleep(SLEEP_TIME_1000);
       let errors;
       var startTime = await Utils.getNowTime();
-      let data = await Bundle.getAllApplicationInfo('0')
+      await Bundle.getAllApplicationInfo('0')
+        .then((data) => {
+          console.info(TAG_TEST_0500_001 + 'noUserId promise data is: ' + data);
+          expect(data).assertFail();
+        })
         .catch((error) => {
           console.info(TAG_TEST_0500_001 + 'noUserId promise error is: ' + error);
           errors = error;
+          expect(errors).assertEqual(1);
         });
       var endTime = Utils.getNowTime();
       Utils.getDurationTime(TAG_TEST_0500_001, startTime, endTime);
-      console.info(TAG_TEST_0500_001 + ' noUserId promise data is: ' + JSON.stringify(data));
-      expect(errors).assertEqual(1);
       done();
-      console.log('------------------ ' + TAG_TEST_0500_001 + ' end -------------------');
     });
 
     /**
@@ -266,68 +265,24 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0500_002, 0, async function (done) {
-      console.info(TAG_TEST_0500_002 + 'promise START');
       await Utils.sleep(SLEEP_TIME_1000);
       let errors;
       var startTime = await Utils.getNowTime();
-      let data = await Bundle.getAllApplicationInfo('0', USER_ID_100)
+      await Bundle.getAllApplicationInfo('0', USER_ID_100)
+        .then((data) => {
+          console.info(TAG_TEST_0500_002 + 'noUserId promise data is: ' + data);
+          expect(data).assertFail();
+        })
         .catch((error) => {
           console.info(TAG_TEST_0500_002 + 'UserId promise error is: ' + error);
           errors = error;
+          expect(errors).assertEqual(1);
         });
       var endTime = Utils.getNowTime();
       Utils.getDurationTime(TAG_TEST_0500_002, startTime, endTime);
-      console.info(TAG_TEST_0500_002 + ' UserId promise data is: ' + JSON.stringify(data));
-      expect(errors).assertEqual(1);
       done();
-      console.log('------------------ ' + TAG_TEST_0500_002 + ' end -------------------');
     });
 
-    /**
-     * 打印单个属性
-     * @param msg log信息
-     * @param data 数据源
-     */
-    function commonTest(msg, data) {
-      console.info(msg + 'commonTest data length [' + data.length + ']');
-      for (var i = 0; i < data.length; i++) {
-        console.info(msg + i + ' [ + data[i] + ] ：' + JSON.stringify(data[i]));
-        console.info(msg + '[' + i + '].name:' + data[i].name);
-        console.info(msg + '[' + i + '].codePath:' + data[i].codePath);
-        console.info(msg + '[' + i + '].accessTokenId:' + data[i].accessTokenId);
-        console.info(msg + '[' + i + '].description:' + data[i].description);
-        console.info(msg + '[' + i + '].descriptionId:' + data[i].descriptionId);
-        console.info(msg + '[' + i + '].icon:' + data[i].icon);
-        console.info(msg + '[' + i + '].iconId:' + data[i].iconId);
-        console.info(msg + '[' + i + '].label:' + data[i].label);
-        console.info(msg + '[' + i + '].labelId:' + data[i].labelId);
-        console.info(msg + '[' + i + '].systemApp:' + data[i].systemApp);
-        console.info(msg + '[' + i + '].supportedModes:' + data[i].supportedModes);
-        console.info(msg + '[' + i + '].process:' + data[i].process);
-        console.info(msg + '[' + i + '].entryDir:' + data[i].entryDir);
-        console.info('getAllApplicationInfo Async permissions length [' + data[i].permissions.length + ']');
-        for (var j = 0; j < data[i].permissions.length; j++) {
-          console.info(msg + '[' + i + ']permissions[' + j + ']:' + data[i].permissions[j]);
-        }
-        console.info('getAllApplicationInfo Async moduleSourceDirs length [' + data[i].moduleSourceDirs.length + ']');
-        for (var l = 0; l < data[i].moduleSourceDirs.length; l++) {
-          console.info(msg + '[' + i + ']moduleSourceDirs[' + l + ']:' + data[i].moduleSourceDirs[l]);
-        }
-        console.info('getAllApplicationInfo Async moduleInfos length [' + data[i].moduleInfos.length + ']');
-        for (var k = 0; k < data[i].moduleInfos.length; k++) {
-          console.info(msg + '[' + i + ']moduleInfos[' + k + ']moduleName:' + data[i].moduleInfos[k].moduleName);
-          console.info(msg + '[' + i + ']moduleInfos[' + k + ']moduleSourceDir:' + data[i].moduleInfos[k].moduleSourceDir);
-        }
-        console.info(msg + '[' + i + '].metaData:' + data[i].metaData);
-        console.info(msg + '[' + i + '].metadata:' + data[i].metadata);
-        console.info(msg + '[' + i + '].enabled:' + data[i].enabled);
-        console.info(msg + '[' + i + '].flags:' + data[i].flags);
-        console.info(msg + '[' + i + '].uid:' + data[i].uid);
-        console.info(msg + '[' + i + '].entityType:' + data[i].entityType);
-        console.info(msg + '[' + i + '].removable:' + data[i].removable);
-      }
-      expectData(msg, data);
-    }
 
     /**
      * expect属性
@@ -349,6 +304,7 @@ export default function applicationBundleJsunit() {
         expect(typeof (data[i].labelId)).assertEqual('number');
         expect(typeof (data[i].systemApp)).assertEqual('boolean')
         expect(typeof (data[i].supportedModes)).assertEqual('number');
+        expect(typeof (data[i].process)).assertEqual('string');
         expect(typeof (data[i].entryDir)).assertEqual('string');
         expect(typeof (data[i].metaData)).assertEqual('object');
         expect(typeof (data[i].metadata)).assertEqual('object');
@@ -382,14 +338,20 @@ export default function applicationBundleJsunit() {
           expect(data[i].icon).assertEqual('$media:icon');
           expect(data[i].iconId > 0).assertEqual(true);
           expect(data[i].label).assertEqual('$string:entry_MainAbility');
+          expect(data[i].accessTokenId > 0).assertEqual(true);
           if (data[i].label !== 0) {
             expect(data[i].labelId > 0).assertEqual(true);
-          }
+          };
+          if (data[i].uid !== 0) {
+            expect(data[i].uid > 0).assertEqual(true);
+          };
           expect(data[i].systemApp).assertEqual(true);
           expect(data[i].supportedModes).assertEqual(0);
+          expect(data[i].process).assertEqual("");
           expect(data[i].entryDir).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag' +
           '/com.open.harmony.packagemag');
           expect(data[i].enabled).assertEqual(true);
+          expect(data[i].flags).assertEqual(0);
           expect(data[i].entityType).assertEqual('unspecified');
           expect(data[i].removable).assertEqual(true);
           expect(data[i].moduleInfos[0].moduleName).assertEqual('entry');

@@ -39,7 +39,6 @@ export default function IsApplicationEnabledETSUnit() {
      * @tc.level   0
      */
     it('context_isApplicationEnabled_test_0100', 0, async function (done) {
-      console.info('[context_isApplicationEnabled_test_0100] promise START');
       await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mData;
@@ -53,6 +52,7 @@ export default function IsApplicationEnabledETSUnit() {
         })
         .catch((error) => {
           console.info('[context_isApplicationEnabled_test_0100]  promise error is: ' + error);
+          expect(error).assertFail();
         });
       getApplicationEnabledSuccess('[context_isApplicationEnabled_test_0100]', mData);
       done();
@@ -65,11 +65,14 @@ export default function IsApplicationEnabledETSUnit() {
      * @tc.level   0
      */
     it('context_isApplicationEnabled_test_0200', 0, async function (done) {
-      console.info('[context_isApplicationEnabled_test_0200] callBack START');
       await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mData;
       Bundle.isApplicationEnabled(BUNDLE_NAME, (error, data) => {
+        if(error){
+          console.error('[context_isApplicationEnabled_test_0200]Operation failed. Cause: ' + JSON.stringify(error));
+          expect(error).assertFail();
+        }
         var timeNewStamp = Utils.getNowTime();
         Utils.getDurationTime('[context_isApplicationEnabled_test_0200]', timeOldStamp, timeNewStamp);
         mData = data;
@@ -89,7 +92,6 @@ export default function IsApplicationEnabledETSUnit() {
      * @tc.level   0
      */
     it('context_isApplicationEnabled_test_0300', 0, async function (done) {
-      console.info('[context_isApplicationEnabled_test_0300] promise START');
       await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mData;
@@ -105,6 +107,7 @@ export default function IsApplicationEnabledETSUnit() {
           var timeNewStamp = Utils.getNowTime();
           Utils.getDurationTime('[context_isApplicationEnabled_test_0300]', timeOldStamp, timeNewStamp);
           console.info('[context_isApplicationEnabled_test_0300]  promise error is: ' + error);
+          expect(error).assertFail();
         });
       getApplicationEnabledFalse('[context_isApplicationEnabled_test_0300]', mData);
       done();
@@ -117,11 +120,14 @@ export default function IsApplicationEnabledETSUnit() {
      * @tc.level   0
      */
     it('context_isApplicationEnabled_test_0400', 0, async function (done) {
-      console.info('[context_isApplicationEnabled_test_0400] callBack START');
       await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mData;
       Bundle.isApplicationEnabled(BUNDLE_NAME_ERROR, (error, data) => {
+        if(error){
+          console.error('[context_isApplicationEnabled_test_0400]Operation failed. Cause: ' + JSON.stringify(error));
+          expect(error).assertFail();
+        }
         var timeNewStamp = Utils.getNowTime();
         Utils.getDurationTime('[context_isApplicationEnabled_test_0400]', timeOldStamp, timeNewStamp);
         mData = data;
@@ -142,14 +148,13 @@ export default function IsApplicationEnabledETSUnit() {
      * @tc.level   0
      */
     it('context_isApplicationEnabled_test_0500', 0, async function (done) {
-      console.info('[context_isApplicationEnabled_test_0500] promise START');
-
       await Bundle.setApplicationEnabled(BUNDLE_NAME, true)
         .then((data) => {
           console.info('[context_isApplicationEnabled_test_0500]  set enable true ');
           console.info('[context_isApplicationEnabled_test_0500]  set enable true data is: ' + JSON.stringify(data));
         }).catch((error) => {
           console.info('[context_isApplicationEnabled_test_0500]  set enable true error is: ' + error);
+          expect(error).assertFail();
         });
       await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
@@ -164,6 +169,7 @@ export default function IsApplicationEnabledETSUnit() {
         })
         .catch((error) => {
           console.info('[context_isApplicationEnabled_test_0500]  promise error is: ' + error);
+          expect(error).assertFail();
         });
       getApplicationEnabledTrue('[context_isApplicationEnabled_test_0500]', mData);
       done();
@@ -176,20 +182,23 @@ export default function IsApplicationEnabledETSUnit() {
      * @tc.level   0
      */
     it('context_isApplicationEnabled_test_0600', 0, async function (done) {
-      console.info('[context_isApplicationEnabled_test_0600] callBack START');
-
       await Bundle.setApplicationEnabled(BUNDLE_NAME, false)
         .then((data) => {
           console.info('[context_isApplicationEnabled_test_0600]  set enable false ');
           console.info('[context_isApplicationEnabled_test_0600]  set enable false data is: ' + JSON.stringify(data));
         }).catch((error) => {
           console.info('[context_isApplicationEnabled_test_0600]  set enable false error is: ' + error);
+          expect(error).assertFail();
         });
 
       await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mData;
       Bundle.isApplicationEnabled(BUNDLE_NAME, (error, data) => {
+        if(error){
+          console.error('[context_isApplicationEnabled_test_0600]Operation failed. Cause: ' + JSON.stringify(error));
+          expect(error).assertFail();
+        }
         var timeNewStamp = Utils.getNowTime();
         Utils.getDurationTime('[context_isApplicationEnabled_test_0600]', timeOldStamp, timeNewStamp);
         mData = data;

@@ -46,7 +46,6 @@ export default function getAbilityLabelJsUnit() {
      * @tc.level   0
      */
     it('context_getAbilityLabel_test_0100', 0, async function (done) {
-      console.info('[context_getAbilityLabel_test_0100] promise START');
       await Utils.sleep(1000);
       let mData;
       var timeOldStamp = await Utils.getNowTime();
@@ -60,6 +59,7 @@ export default function getAbilityLabelJsUnit() {
         })
         .catch((error) => {
           console.info('[context_getAbilityLabel_test_0100]  promise error is: ' + error);
+          expect(error).assertFail();
         });
       getAbilityLabelSuccess('[context_getAbilityLabel_test_0100]', mData);
       done();
@@ -72,11 +72,14 @@ export default function getAbilityLabelJsUnit() {
      * @tc.level   0
      */
     it('context_getAbilityLabel_test_0200', 0, async function (done) {
-      console.info('[context_getAbilityLabel_test_0200] callBack START');
       await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mData;
       Bundle.getAbilityLabel(BUNDLE_NAME, ABILITY_NAME, (error, data) => {
+        if(error){
+          console.error('[context_getAbilityLabel_test_0200]Operation failed. Cause: ' + JSON.stringify(error));
+          expect(error).assertFail();
+        }
         var timeNewStamp = Utils.getNowTime();
         Utils.getDurationTime('[context_getAbilityLabel_test_0200]', timeOldStamp, timeNewStamp);
         mData = data;
@@ -96,7 +99,6 @@ export default function getAbilityLabelJsUnit() {
      * @tc.level   0
      */
     it('context_getAbilityLabel_test_0300', 0, async function (done) {
-      console.info('[context_getAbilityLabel_test_0300] promise START');
       await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mError;
@@ -104,7 +106,6 @@ export default function getAbilityLabelJsUnit() {
         .then((data) => {
           var timeNewStamp = Utils.getNowTime();
           Utils.getDurationTime('[context_getAbilityLabel_test_0300]', timeOldStamp, timeNewStamp);
-
           console.info('[context_getAbilityLabel_test_0300]  promise in ');
           console.info('[context_getAbilityLabel_test_0300]  promise data is: ' + JSON.stringify(data));
         })
@@ -113,6 +114,7 @@ export default function getAbilityLabelJsUnit() {
           mError = error;
           Utils.getDurationTime('[context_getAbilityLabel_test_0300]', timeOldStamp, timeNewStamp);
           console.info('[context_getAbilityLabel_test_0300]  promise error is: ' + error);
+          expect(mError).assertEqual(1);
         });
       await Utils.sleep(2000);
       getAbilityLabelFailure('[context_getAbilityLabel_test_0300]', mError);
@@ -126,18 +128,19 @@ export default function getAbilityLabelJsUnit() {
      * @tc.level   0
      */
     it('context_getAbilityLabel_test_0400', 0, async function (done) {
-      console.info('[context_getAbilityLabel_test_0400] callBack START');
       await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mError;
       Bundle.getAbilityLabel(BUNDLE_NAME_ERROR, ABILITY_NAME_ERROR, (error, data) => {
+        if(error !== null){
+          console.info('[context_getAbilityLabel_test_0400]  callBack error: ' + error);
+          expect(error).assertEqual(1);
+        }
         var timeNewStamp = Utils.getNowTime();
         Utils.getDurationTime('[context_getAbilityLabel_test_0400]', timeOldStamp, timeNewStamp);
         mError = error;
         console.info('[context_getAbilityLabel_test_0400]  callBack in');
-        console.info('[context_getAbilityLabel_test_0400]  callBack error: ' + error);
         console.info('[context_getAbilityLabel_test_0400]  callBack data is:' + JSON.stringify(data));
-
       });
       await Utils.sleep(2000);
       getAbilityLabelFailure('[context_getAbilityLabel_test_0400]', mError);
@@ -151,7 +154,6 @@ export default function getAbilityLabelJsUnit() {
      * @tc.level   0
      */
     it('context_getAbilityLabel_test_0500', 0, async function (done) {
-      console.info('[context_getAbilityLabel_test_0500] promise START');
       await Utils.sleep(1000);
       let mData;
       let mError = null;
@@ -161,48 +163,42 @@ export default function getAbilityLabelJsUnit() {
           var timeNewStamp = Utils.getNowTime();
           Utils.getDurationTime('[context_getAbilityLabel_test_0500]', timeOldStamp, timeNewStamp);
           mData = data;
+          expect(mData).assertFail();
           console.info('[context_getAbilityLabel_test_0500]  promise in ');
           console.info('[context_getAbilityLabel_test_0500]  promise data is: ' + JSON.stringify(data));
         })
         .catch((error) => {
           mError = error;
           console.info('[context_getAbilityLabel_test_0500]  promise error is: ' + error);
+          expect(mError).assertEqual(1);
+          getAbilityLabelFailure('[context_getAbilityLabel_test_0500]', mError);
         });
-      if (mError != null) {
-        getAbilityLabelFailure('[context_getAbilityLabel_test_0500]', mError);
-      } else {
-        getAbilityLabelSuccess('[context_getAbilityLabel_test_0500]', mData);
-      }
       done();
     });
 
     /*
      * @tc.number: context_getAbilityLabel_test_0600
      * @tc.name: getAbilityLabel : Gets the specified ability label
-     * @tc.desc: Check the return value of the interface (by callbac)
+     * @tc.desc: Check the return value of the interface (by callback)
      * @tc.level   0
      */
     it('context_getAbilityLabel_test_0600', 0, async function (done) {
-      console.info('[context_getAbilityLabel_test_0600] callBack START');
       await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
-      let mData;
       let mError = null;
       Bundle.getAbilityLabel(OTHER_BUNDLE_NAME, OTHER_ABILITY_NAME, (error, data) => {
+        mError = error;
         var timeNewStamp = Utils.getNowTime();
         Utils.getDurationTime('[context_getAbilityLabel_test_0600]', timeOldStamp, timeNewStamp);
-        mData = data;
-        mError = error;
+        if(mError !== null){
+          console.info('[context_getAbilityLabel_test_0600]  callBack error: ' + error);
+          expect(mError).assertEqual(1);
+          getAbilityLabelFailure('[context_getAbilityLabel_test_0600]', mError);
+        }
         console.info('[context_getAbilityLabel_test_0600]  callBack in');
-        console.info('[context_getAbilityLabel_test_0600]  callBack error: ' + error);
         console.info('[context_getAbilityLabel_test_0600]  callBack data is:' + JSON.stringify(data));
       });
       await Utils.sleep(2000);
-      if (mError != null) {
-        getAbilityLabelFailure('[context_getAbilityLabel_test_0600]', mError);
-      } else {
-        getAbilityLabelSuccess('[context_getAbilityLabel_test_0600]', mData);
-      }
       done();
     });
 
@@ -210,11 +206,10 @@ export default function getAbilityLabelJsUnit() {
     /*
      * @tc.number: context_getAbilityLabel_test_0700
      * @tc.name: getAbilityLabel : Gets the specified ability label
-     * @tc.desc: Check the return value of the interface (by callbac)
+     * @tc.desc: Check the return value of the interface (by callback)
      * @tc.level   0
      */
     it('context_getAbilityLabel_test_0700', 0, async function (done) {
-      console.info('[context_getAbilityLabel_test_0700] callBack START');
       await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mError;
@@ -222,6 +217,10 @@ export default function getAbilityLabelJsUnit() {
         var timeNewStamp = Utils.getNowTime();
         Utils.getDurationTime('[context_getAbilityLabel_test_0700]', timeOldStamp, timeNewStamp);
         mError = error;
+        if(mError !== null){
+          console.info('[context_getAbilityLabel_test_0600]  callBack error: ' + error);
+          expect(mError).assertEqual(1);
+        }
         console.info('[context_getAbilityLabel_test_0700]  callBack in');
         console.info('[context_getAbilityLabel_test_0700]  callBack error: ' + error);
         console.info('[context_getAbilityLabel_test_0700]  callBack data is:' + JSON.stringify(data));
@@ -235,14 +234,14 @@ export default function getAbilityLabelJsUnit() {
       console.log(msg + ' start  ' + JSON.stringify(data));
       console.log(msg + ' result  ' + data);
       expect(typeof (data)).assertEqual('string');
+      expect(data).assertEqual("entry_MainAbility");
     }
 
     function getAbilityLabelFailure(msg, error) {
       console.log(msg + ' Failure  ');
       console.log(msg + ' error  ' + JSON.stringify(error));
       expect(typeof (error)).assertEqual('number');
+      expect(error).assertEqual(1)
     }
-
   })
-
 }
