@@ -14,7 +14,7 @@
  */
 
 import featureAbility from '@ohos.ability.featureAbility';
-import ohosDataAbility from '@ohos.data.dataability';
+import ohosDataAbility from '@ohos.data.dataAbility';
 import utils from '../Utils.ets'
 import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it} from 'deccjsunit/index'
 import common from './common.js';
