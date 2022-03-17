@@ -14,7 +14,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
 import featureAbility from '@ohos.ability.featureAbility'
-import ohosDataAbility from '@ohos.data.dataability'
+import ohosDataAbility from '@ohos.data.dataAbility'
 
 describe('ActsDataAbilityJsTest', function () {
 let dataAbilityUri = ("dataability:///com.example.myapplication.DataAbility");

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import Configuration from '@system.configuration';
-import events_emitter from '@ohos.emitter';
+import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct promptExample {

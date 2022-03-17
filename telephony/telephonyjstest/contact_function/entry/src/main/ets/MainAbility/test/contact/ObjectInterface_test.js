@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import contactsapi from "@ohos.contactsapi";
+import contactsapi from "@ohos.contact";
 import utils from '../Utils.ets'
 import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it} from 'deccjsunit/index'
 import common from './common.js';

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter';
+import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct AlphabetIndexerSample {

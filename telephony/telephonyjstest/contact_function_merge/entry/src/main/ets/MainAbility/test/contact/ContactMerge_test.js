@@ -14,7 +14,7 @@
  */
 
 import featureAbility from '@ohos.ability.featureAbility';
-import ohosDataAbility from '@ohos.data.dataability';
+import ohosDataAbility from '@ohos.data.dataAbility';
 import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it} from 'deccjsunit/index'
 
 const URI_CONTACTS = "dataability:///com.ohos.contactsdataability";

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter'
+import events_emitter from '@ohos.events.emitter'
 
 @Entry
 @Component
