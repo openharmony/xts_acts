@@ -85,6 +85,7 @@ describe('ACTS_WifiTest', function () {
             console.info("[wifi_js]getCurrentGroup promise then error." + JSON.stringify(error));
             expect().assertFail();
         });
+        done();
        
     })
 
@@ -93,7 +94,7 @@ describe('ACTS_WifiTest', function () {
     * @tc.name       SUB_Communication_WiFi_P2P_Config_0002
     * @tc.desc       Test getCurrentGroup callback infos
     */
-    it('SUB_Communication_WiFi_P2P_Config_0001', 0, async function(done) {
+    it('SUB_Communication_WiFi_P2P_Config_0002', 0, async function(done) {
         await tryToEnableWifi();
         var WifiP2PConfig = {
             deviceAddress : "00:00:00:00:00:00",
