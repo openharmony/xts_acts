@@ -806,11 +806,8 @@ describe('ACTS_WifiTest', function() {
                  + result.frequency +"snr:" + result.snr+
                 "macAddress: " + result.macAddress + "ipAddress: " + result.ipAddress + 
                 "suppState: " + result.suppState + "connState: " + result.connState);
-                expect(true).assertEqual(result.connState==ConnState.CONNECTING);
-                expect(false).assertEqual(result.suppState==suppState.DISCONNECTED);
                 done();
-            });
-        await sleep(2000);    
+            });   
     })
 
    /**
