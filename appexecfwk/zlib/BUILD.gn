@@ -13,12 +13,12 @@
 
 import("//build/ohos_var.gni")
 
-group("appexecfwk") {
+group("zlib") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "bundle_standard:bundle_standard",
-      "zlib:zlib",
+      "actszipfileandunzipfiletest:actszipfileandunzipfiletest",
+      "actszlibtest:ActsZlibTest",
     ]
   }
 }

@@ -23,7 +23,6 @@ group("aafwk_standard") {
       "ActsStServiceAbilityClientCaseTest:ActsStServiceAbilityClientCaseTest",
       "abilitymanager:actsabilitymanagertest",
       "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
-      "amsZipfileUnzipfileST:ActsZlibTest",
       "amsabilitymanager/amsMissionSnapshotTest:ActsAmsMissionSnapshotTest",
       "amsabilitymanager/amsMissionSnapshotTestSingleton:ActsAmsMissionSnapshotTestSingleton",
       "amsabilitymanager/amsMissionSnapshotTestSingletonS:ActsAmsMissionSnapshotTestSingletonS",
