@@ -103,7 +103,7 @@ int CheckProcStatus(pid_t pid, int *code, int flag)
     return 4;
 }
 
-// start a elf, only check if execve success or not
+// start an elf, only check if execve success or not
 static int StartElf(const char *fname, char * const argv[], char * const envp[])
 {
     int pid = fork();

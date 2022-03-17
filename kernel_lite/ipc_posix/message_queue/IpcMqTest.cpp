@@ -108,6 +108,7 @@ HWTEST_F(IpcMqTest, testMqTimedOneLevelCom, Function | MediumTest | Level1)
 HWTEST_F(IpcMqTest, testMqAllOneLevelCom, Function | MediumTest | Level2)
 {
     mqd_t queue;
+    int memRet = -1;
     unsigned int prio;
     struct timespec tts { 0 }, rts = { 0 };
     struct mq_attr getAttr = { 0 };
@@ -116,8 +117,10 @@ HWTEST_F(IpcMqTest, testMqAllOneLevelCom, Function | MediumTest | Level2)
 
     sprintf_s(qName, sizeof(qName), "testMqAllOneLevelCom_%d", GetRandom(10000));
 
-    memset_s(&getAttr, sizeof(getAttr), 0, sizeof(getAttr));
-    memset_s(&setAttr, sizeof(setAttr), 0, sizeof(setAttr));
+    memRet = memset_s(&getAttr, sizeof(getAttr), 0, sizeof(getAttr));
+    EXPECT_EQ(0, memRet);
+    memRet = memset_s(&setAttr, sizeof(setAttr), 0, sizeof(setAttr));
+    EXPECT_EQ(0, memRet);
     setAttr.mq_msgsize = MQ_MSG_SIZE;
     setAttr.mq_maxmsg = MQ_MAX_MSG;
     queue = mq_open(qName, O_CREAT | O_RDWR, S_IRUSR | S_IWUSR, &setAttr);
@@ -664,17 +667,20 @@ HWTEST_F(IpcMqTest, testMqSetGetAttr, Function | MediumTest | Level1)
     struct mq_attr getAttr = { 0 };
     struct mq_attr setAttr = { 0 };
     char qName[MQ_NAME_LEN];
+    int memRet = -1;
 
     sprintf_s(qName, sizeof(qName), "testMqFunction_%d", GetRandom(10000));
 
-    memset_s(&setAttr, sizeof(setAttr), 0, sizeof(setAttr));
+    memRet = memset_s(&setAttr, sizeof(setAttr), 0, sizeof(setAttr));
+    EXPECT_EQ(0, memRet);
     setAttr.mq_msgsize = MQ_MSG_SIZE;
     setAttr.mq_maxmsg = MQ_MAX_MSG;
     setAttr.mq_flags = O_NONBLOCK;
     queue = mq_open(qName, O_CREAT | O_RDWR, S_IRUSR | S_IWUSR, &setAttr);
     ASSERT_TRUE(queue != (mqd_t)-1) << "ERROR: mq_open() == (mqd_t)-1";
 
-    memset_s(&getAttr, sizeof(getAttr), 0, sizeof(getAttr));
+    memRet = memset_s(&getAttr, sizeof(getAttr), 0, sizeof(getAttr));
+    EXPECT_EQ(0, memRet);
     EXPECT_TRUE(mq_getattr(queue, &getAttr) == 0) << "ERROR: mq_getattr() != 0";
     EXPECT_TRUE((getAttr.mq_flags & O_NONBLOCK) == O_NONBLOCK);
 

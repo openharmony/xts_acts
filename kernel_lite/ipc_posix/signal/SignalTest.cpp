@@ -108,7 +108,7 @@ INSTANTIATE_TEST_CASE_P(AllSignalTest, IpcSignalTest, testing::Range(1, MAX_SIGN
 
 /**
  * @tc.number SUB_KERNEL_IPC_SIG_ALL_0300
- * @tc.name   test SIGKILL can't blocked. SIGSTOP can't be blocked too, but not suppported by liteos
+ * @tc.name   test SIGKILL can't blocked. SIGSTOP can't be blocked too, but not supported by liteos
  * @tc.desc   [C- SOFTWARE -0200]
  */
 HWTEST_F(IpcSignalTest, testBlockSIGKILL, Function | MediumTest | Level2)
@@ -496,9 +496,9 @@ HWTEST_F(IpcSignalTest, testSigtimedwaitBlock, Function | MediumTest | Level1)
 
 /**
  * @tc.number SUB_KERNEL_IPC_SIGTIMEDWAIT_0200
- * @tc.name   sigtimedwait error test: timeout or interupted.
- *            by now, liteos sigtimedwait cannot interupted
- *            so the interupte-check-code will run only when 'POSIX_TEST' is set
+ * @tc.name   sigtimedwait error test: timeout or interrupted.
+ *            by now, liteos sigtimedwait cannot interrupted
+ *            so the interrupted-check-code will run only when 'POSIX_TEST' is set
  * @tc.desc   [C- SOFTWARE -0200]
  */
 HWTEST_F(IpcSignalTest, testSigtimedwaitTimeout, Function | MediumTest | Level2)
@@ -1085,7 +1085,7 @@ HWTEST_F(IpcSignalTest, testSigsuspendTerminate, Function | MediumTest | Level1)
         Msleep(20);
         AssertProcAlive(pid);
 
-        kill(pid, SIGTRAP); // this should interupt sigsuspend
+        kill(pid, SIGTRAP); // this should interrupt sigsuspend
         Msleep(100);
         WaitProcKilled(pid, SIGHUP);
     }
@@ -1190,7 +1190,7 @@ HWTEST_F(IpcSignalTest, testSigsuspendAndMask, Function | MediumTest | Level1)
         Msleep(20);
         AssertProcAlive(pid);
 
-        kill(pid, SIGINT); // this should interupt sigsuspend
+        kill(pid, SIGINT); // this should interrupt sigsuspend
         Msleep(100);
         AssertProcExitedOK(pid);
     }
