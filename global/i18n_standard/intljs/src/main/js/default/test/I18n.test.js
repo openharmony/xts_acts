@@ -725,7 +725,9 @@ describe('I18nTest', function () {
     it('i18n_test_5100', 0, function () {
         console.error('i18n_test_5100 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('13510574676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_5100 ' + ran);
+        let valid = phonenumber.isValidNumber('1351057467' + ran);
         console.error('i18n_test_5100 ' + valid);
         expect(valid).assertEqual(true);
     })
@@ -738,7 +740,9 @@ describe('I18nTest', function () {
     it('i18n_test_5200', 0, function () {
         console.error('i18n_test_5200 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('135 1057 4676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_5200 ' + ran);
+        let valid = phonenumber.isValidNumber('135 1057 467' + ran);
         console.error('i18n_test_5200 ' + valid);
         expect(valid).assertEqual(true);
     })
@@ -751,7 +755,9 @@ describe('I18nTest', function () {
     it('i18n_test_5300', 0, function () {
         console.error('i18n_test_5300 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('+86 135 1057 4676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_5300 ' + ran);
+        let valid = phonenumber.isValidNumber('+86 135 1057 467' + ran);
         console.error('i18n_test_5300 ' + valid);
         expect(valid).assertEqual(true);
     })
@@ -764,7 +770,9 @@ describe('I18nTest', function () {
     it('i18n_test_5400', 0, function () {
         console.error('i18n_test_5400 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('135-1057-4676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_5400 ' + ran);
+        let valid = phonenumber.isValidNumber('135-1057-467' + ran);
         console.error('i18n_test_5400 ' + valid);
         expect(valid).assertEqual(true);
     })
@@ -777,7 +785,9 @@ describe('I18nTest', function () {
     it('i18n_test_5500', 0, function () {
         console.error('i18n_test_5500 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('tel:+86-135-1057-4676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_5500 ' + ran);
+        let valid = phonenumber.isValidNumber('tel:+86-135-1057-467' + ran);
         console.error('i18n_test_5500 ' + valid);
         expect(valid).assertEqual(true);
     })
@@ -790,7 +800,9 @@ describe('I18nTest', function () {
     it('i18n_test_5600', 0, function () {
         console.error('i18n_test_5600 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('86-135-1057-4676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_5600 ' + ran);
+        let valid = phonenumber.isValidNumber('86-135-1057-467' + ran);
         console.error('i18n_test_5600 ' + valid);
         expect(valid).assertEqual(true);
     })
@@ -803,7 +815,9 @@ describe('I18nTest', function () {
     it('i18n_test_5700', 0, function () {
         console.error('i18n_test_5700 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('+8613510574676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_5700 ' + ran);
+        let valid = phonenumber.isValidNumber('+861351057467' + ran);
         console.error('i18n_test_5700 ' + valid);
         expect(valid).assertEqual(true);
     })
@@ -816,7 +830,9 @@ describe('I18nTest', function () {
     it('i18n_test_5800', 0, function () {
         console.error('i18n_test_5800 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('8613510574676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_5800 ' + ran);
+        let valid = phonenumber.isValidNumber('861351057467' + ran);
         console.error('i18n_test_5800 ' + valid);
         expect(valid).assertEqual(true);
     })
@@ -829,7 +845,9 @@ describe('I18nTest', function () {
     it('i18n_test_5900', 0, function () {
         console.error('i18n_test_5900 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('1351057467');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_5900 ' + ran);
+        let valid = phonenumber.isValidNumber('135105746' + ran);
         console.error('i18n_test_5900 ' + valid);
         expect(valid).assertEqual(false);
     })
@@ -842,7 +860,9 @@ describe('I18nTest', function () {
     it('i18n_test_6000', 0, function () {
         console.error('i18n_test_6000 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('135105746761');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_6000 ' + ran);
+        let valid = phonenumber.isValidNumber('13510574676' + ran);
         console.error('i18n_test_6000 ' + valid);
         expect(valid).assertEqual(false);
     })
@@ -855,7 +875,9 @@ describe('I18nTest', function () {
     it('i18n_test_6100', 0, function () {
         console.error('i18n_test_6100 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('1351057467a');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_6100 ' + ran);
+        let valid = phonenumber.isValidNumber('135105746' + ran + 'a');
         console.error('i18n_test_6100 ' + valid);
         expect(valid).assertEqual(false);
     })
@@ -868,7 +890,9 @@ describe('I18nTest', function () {
     it('i18n_test_6200', 0, function () {
         console.error('i18n_test_6200 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US');
-        let valid = phonenumber.isValidNumber('6262023379');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_6200 ' + ran);
+        let valid = phonenumber.isValidNumber('626202337' + ran);
         console.error('i18n_test_6200 ' + valid);
         expect(valid).assertEqual(true);
     })
@@ -881,7 +905,9 @@ describe('I18nTest', function () {
     it('i18n_test_6300', 0, function () {
         console.error('i18n_test_6300 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US');
-        let valid = phonenumber.isValidNumber('626202337');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_6300 ' + ran);
+        let valid = phonenumber.isValidNumber('62620233' + ran);
         console.error('i18n_test_6300 ' + valid);
         expect(valid).assertEqual(false);
     })
@@ -894,7 +920,9 @@ describe('I18nTest', function () {
     it('i18n_test_6400', 0, function () {
         console.error('i18n_test_6400 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US');
-        let valid = phonenumber.isValidNumber('62620233791');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_6400 ' + ran);
+        let valid = phonenumber.isValidNumber('6262023379' + ran);
         console.error('i18n_test_6400 ' + valid);
         expect(valid).assertEqual(false);
     })
@@ -907,7 +935,9 @@ describe('I18nTest', function () {
     it('i18n_test_6500', 0, function () {
         console.error('i18n_test_6500 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US');
-        let valid = phonenumber.isValidNumber('626202337a');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_6500 ' + ran);
+        let valid = phonenumber.isValidNumber('62620233' + ran + 'a');
         console.error('i18n_test_6500 ' + valid);
         expect(valid).assertEqual(false);
     })
@@ -920,7 +950,9 @@ describe('I18nTest', function () {
     it('i18n_test_6600', 0, function () {
         console.error('i18n_test_6600 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let value = phonenumber.format('13510574676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_6600 ' + ran);
+        let value = phonenumber.format('1351057467' + ran);
         console.error('i18n_test_6600 ' + value);
         expect(value).assertEqual('135 1057 4676');
     })
@@ -933,9 +965,11 @@ describe('I18nTest', function () {
     it('i18n_test_6700', 0, function () {
         console.error('i18n_test_6700 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US');
-        let value = phonenumber.format('6262023379');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_6700 ' + ran);
+        let value = phonenumber.format('626202337' + ran);
         console.error('i18n_test_6700 ' + value);
-        expect(value).assertEqual('(626) 202-3379');
+        expect(value).assertEqual('(626) 202-337' + ran);
     })
 
     /**
@@ -946,9 +980,11 @@ describe('I18nTest', function () {
     it('i18n_test_6800', 0, function () {
         console.error('i18n_test_6800 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'NATIONAL'});
-        let value = phonenumber.format('13510574676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_6800 ' + ran);
+        let value = phonenumber.format('1351057467' + ran);
         console.error('i18n_test_6800 ' + value);
-        expect(value).assertEqual('135 1057 4676');
+        expect(value).assertEqual('135 1057 467' + ran);
     })
 
     /**
@@ -959,9 +995,11 @@ describe('I18nTest', function () {
     it('i18n_test_6900', 0, function () {
         console.error('i18n_test_6900 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'NATIONAL'});
-        let value = phonenumber.format('1351057467');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_6900 ' + ran);
+        let value = phonenumber.format('135105746' + ran);
         console.error('i18n_test_6900 ' + value);
-        expect(value).assertEqual('1351057467');
+        expect(value).assertEqual('135105746' + ran);
     })
 
     /**
@@ -972,9 +1010,11 @@ describe('I18nTest', function () {
     it('i18n_test_7000', 0, function () {
         console.error('i18n_test_7000 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'NATIONAL'});
-        let value = phonenumber.format('135105746761');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_7000 ' + ran);
+        let value = phonenumber.format('13510574676' + ran);
         console.error('i18n_test_7000 ' + value);
-        expect(value).assertEqual('013 510 574 6761');
+        expect(value).assertEqual('013 510 574 676' + ran);
     })
 
     /**
@@ -985,9 +1025,11 @@ describe('I18nTest', function () {
     it('i18n_test_7100', 0, function () {
         console.error('i18n_test_7100 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'NATIONAL'});
-        let value = phonenumber.format('135 1057 4676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_7100 ' + ran);
+        let value = phonenumber.format('135 1057 467' + ran);
         console.error('i18n_test_7100 ' + value);
-        expect(value).assertEqual('135 1057 4676');
+        expect(value).assertEqual('135 1057 467' + ran);
     })
 
     /**
@@ -998,9 +1040,11 @@ describe('I18nTest', function () {
     it('i18n_test_7200', 0, function () {
         console.error('i18n_test_7200 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'INTERNATIONAL'});
-        let value = phonenumber.format('13510574676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_7200 ' + ran);
+        let value = phonenumber.format('1351057467' + ran);
         console.error('i18n_test_7200 ' + value);
-        expect(value).assertEqual('+86 135 1057 4676');
+        expect(value).assertEqual('+86 135 1057 467' + ran);
     })
 
     /**
@@ -1011,9 +1055,11 @@ describe('I18nTest', function () {
     it('i18n_test_7300', 0, function () {
         console.error('i18n_test_7300 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'RFC3966'});
-        let value = phonenumber.format('13510574676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_7300 ' + ran);
+        let value = phonenumber.format('1351057467' + ran);
         console.error('i18n_test_7300 ' + value);
-        expect(value).assertEqual('tel:+86-135-1057-4676');
+        expect(value).assertEqual('tel:+86-135-1057-467' + ran);
     })
 
     /**
@@ -1024,9 +1070,11 @@ describe('I18nTest', function () {
     it('i18n_test_7400', 0, function () {
         console.error('i18n_test_7400 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'E164'});
-        let value = phonenumber.format('13510574676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_7400 ' + ran);
+        let value = phonenumber.format('1351057467' + ran);
         console.error('i18n_test_7400 ' + value);
-        expect(value).assertEqual('+8613510574676');
+        expect(value).assertEqual('+861351057467' + ran);
     })
 
     /**
@@ -1037,9 +1085,11 @@ describe('I18nTest', function () {
     it('i18n_test_7500', 0, function () {
         console.error('i18n_test_7500 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US', {'type': 'NATIONAL'});
-        let value = phonenumber.format('6262023379');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_7500 ' + ran);
+        let value = phonenumber.format('626202337' + ran);
         console.error('i18n_test_7500 ' + value);
-        expect(value).assertEqual('(626) 202-3379');
+        expect(value).assertEqual('(626) 202-337' + ran);
     })
 
     /**
@@ -1050,9 +1100,11 @@ describe('I18nTest', function () {
     it('i18n_test_7600', 0, function () {
         console.error('i18n_test_7600 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US', {'type': 'INTERNATIONAL'});
-        let value = phonenumber.format('6262023379');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_7600 ' + ran);
+        let value = phonenumber.format('626202337' + ran);
         console.error('i18n_test_7600 ' + value);
-        expect(value).assertEqual('+1 626-202-3379');
+        expect(value).assertEqual('+1 626-202-337' + ran);
     })
 
     /**
@@ -1063,9 +1115,11 @@ describe('I18nTest', function () {
     it('i18n_test_7700', 0, function () {
         console.error('i18n_test_7700 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US', {'type': 'RFC3966'});
-        let value = phonenumber.format('6262023379');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_7700 ' + ran);
+        let value = phonenumber.format('626202337' + ran);
         console.error('i18n_test_7700 ' + value);
-        expect(value).assertEqual('tel:+1-626-202-3379');
+        expect(value).assertEqual('tel:+1-626-202-337' + ran);
     })
 
     /**
@@ -1076,9 +1130,11 @@ describe('I18nTest', function () {
     it('i18n_test_7800', 0, function () {
         console.error('i18n_test_7800 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US', {'type': 'E164'});
-        let value = phonenumber.format('6262023379');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.error('i18n_test_7800 ' + ran);
+        let value = phonenumber.format('626202337' + ran);
         console.error('i18n_test_7800 ' + value);
-        expect(value).assertEqual('+16262023379');
+        expect(value).assertEqual('+1626202337' + ran);
     })
 
     /**
