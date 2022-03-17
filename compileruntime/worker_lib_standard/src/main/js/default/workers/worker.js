@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -23,7 +23,7 @@ parentPort.onclose = function() {
 }
 
 parentPort.onmessage = function(e) {
-    var data = e.data;
+    let data = e.data;
     console.info("worker:: worker thread worker data is " + data.data);
     switch(data.type) {
         case "normal":
@@ -33,7 +33,6 @@ parentPort.onmessage = function(e) {
             break;
         case "error":
             throw new Error("123");
-            break;
         case "buffer":
             console.info("worker:: worker.js receive buffer length is  " + data.data.byteLength);
             parentPort.postMessage(data, [data.data]);
@@ -45,12 +44,12 @@ parentPort.onmessage = function(e) {
     }
 }
 
-// 反序列错误
+// Deserialization error
 parentPort.onmessageerror = function() {
     console.info("worker:: worker.js onmessageerror");
 }
 
-// js执行异常
+// js execution error
 parentPort.onerror = function(data) {
     console.info("worker:: worker.js onerror " + data.lineno + ", msg = " + data.message + ", filename = " + data.filename + ", colno = " + data.colno);
 }
