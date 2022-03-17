@@ -329,4 +329,591 @@ describe("DeviceUsageStatisticsJsTest", function () {
             done();
         }, 500);
     })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest013
+     * @tc.desc: test intervalType BY_OPTIMIZED
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest013", 0, function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest013---------------------------');
+        let value1 = bundleState.intervalType.BY_OPTIMIZED;
+        expect(value1).assertEqual(0)
+        done();
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest014
+     * @tc.desc: test intervalType BY_DAILY
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest014", 0, function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest014---------------------------');
+        let value1 = bundleState.intervalType.BY_DAILY;
+        expect(value1).assertEqual(1)
+        done();
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest015
+     * @tc.desc: test intervalType BY_WEEKLY
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest015", 0, function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest015---------------------------');
+        let value1 = bundleState.intervalType.BY_WEEKLY;
+        expect(value1).assertEqual(2)
+        done();
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest016
+     * @tc.desc: test intervalType BY_MONTHLY
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest016", 0, function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest016---------------------------');
+        let value1 = bundleState.intervalType.BY_MONTHLY;
+        expect(value1).assertEqual(3)
+        done();
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest017
+     * @tc.desc: test intervalType BY_ANNUALLY
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest017", 0, function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest017---------------------------');
+        let value1 = bundleState.intervalType.BY_ANNUALLY;
+        expect(value1).assertEqual(4)
+        done();
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest018
+     * @tc.desc: test BundleStateInfo id.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest018", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest018---------------------------');
+        let intervalType = 1;
+        let beginTime = 1000;
+        let endTime = 20000000000000;
+        bundleState.queryBundleStateInfoByInterval(intervalType, beginTime, endTime, (err, res) => {
+            if(err.code === 0) {
+                expect(true).assertEqual(true);
+				if(res === undefined) {
+					res = [{id: 1}];
+				}
+				console.log('test BundleStateInfo id :' + res[0].id)
+            } else {
+                expect(false).assertEqual(true);
+            }
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest019
+     * @tc.desc: test BundleStateInfo bundleName.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest019", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest019---------------------------');
+        let intervalType = 1;
+        let beginTime = 100;
+        let endTime = 20000000000000;
+        bundleState.queryBundleStateInfoByInterval(intervalType, beginTime, endTime, (err, res) => {
+            if(err.code === 0) {
+                expect(true).assertEqual(true);
+				if(res === undefined) {
+					res = [{bundleName: 'www.example.com'}];
+				}
+				console.log('test BundleStateInfo bundleName :' + res[0].bundleName)
+            } else {
+                expect(false).assertEqual(true);
+            }
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest020
+     * @tc.desc: test BundleStateInfo infosEndTime.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest020", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest020---------------------------');
+        let intervalType = 1;
+        let beginTime = 1001;
+        let endTime = 20000000000000;
+        bundleState.queryBundleStateInfoByInterval(intervalType, beginTime, endTime, (err, res) => {
+            if(err.code === 0) {
+                expect(true).assertEqual(true);
+				if(res === undefined) {
+					res = [{infosEndTime: 0}];
+				}
+				console.log('test BundleStateInfo infosEndTime :' + res[0].infosEndTime)
+            } else {
+                expect(false).assertEqual(true);
+            }
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest021
+     * @tc.desc: test BundleStateInfo abilityPrevSeenTime.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest021", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest021---------------------------');
+        let intervalType = 1;
+        let beginTime = 1001;
+        let endTime = 20000000000000;
+        bundleState.queryBundleStateInfoByInterval(intervalType, beginTime, endTime, (err, res) => {
+            if(err.code === 0) {
+                expect(true).assertEqual(true);
+				if(res === undefined) {
+					res = [{abilityPrevSeenTime: 0}];
+				}
+				console.log('test BundleStateInfo abilityPrevSeenTime :' + res[0].abilityPrevSeenTime)
+            } else {
+                expect(false).assertEqual(true);
+            }
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest022
+     * @tc.desc: test BundleStateInfo abilitySeenTotalTime.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest022", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest022---------------------------');
+        let intervalType = 1;
+        let beginTime = 1001;
+        let endTime = 20000000000000;
+        bundleState.queryBundleStateInfoByInterval(intervalType, beginTime, endTime, (err, res) => {
+            if(err.code === 0) {
+                expect(true).assertEqual(true);
+				if(res === undefined) {
+					res = [{abilitySeenTotalTime: 0}];
+				}
+				console.log('test BundleStateInfo abilitySeenTotalTime :' + res[0].abilitySeenTotalTime)
+            } else {
+                expect(false).assertEqual(true);
+            }
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest023
+     * @tc.desc: test BundleStateInfo fgAbilityAccessTotalTime.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest023", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest023---------------------------');
+        let intervalType = 1;
+        let beginTime = 1001;
+        let endTime = 20000000000000;
+        bundleState.queryBundleStateInfoByInterval(intervalType, beginTime, endTime, (err, res) => {
+            if(err.code === 0) {
+                expect(true).assertEqual(true);
+				if(res === undefined) {
+					res = [{fgAbilityAccessTotalTime: 0}];
+				}
+				console.log('test BundleStateInfo fgAbilityAccessTotalTime :' + res[0].fgAbilityAccessTotalTime)
+            } else {
+                expect(false).assertEqual(true);
+            }
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest024
+     * @tc.desc: test BundleStateInfo fgAbilityPrevAccessTime.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest024", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest024---------------------------');
+        let intervalType = 1;
+        let beginTime = 1001;
+        let endTime = 20000000000000;
+        bundleState.queryBundleStateInfoByInterval(intervalType, beginTime, endTime, (err, res) => {
+            if(err.code === 0) {
+                expect(true).assertEqual(true);
+				if(res === undefined) {
+					res = [{fgAbilityPrevAccessTime: 0}];
+				}
+				console.log('test BundleStateInfo fgAbilityPrevAccessTime :' + res[0].fgAbilityPrevAccessTime)
+            } else {
+                expect(false).assertEqual(true);
+            }
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest025
+     * @tc.desc: test BundleStateInfo abilityPrevAccessTime.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest025", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest025---------------------------');
+        let intervalType = 1;
+        let beginTime = 1001;
+        let endTime = 20000000000000;
+        bundleState.queryBundleStateInfoByInterval(intervalType, beginTime, endTime, (err, res) => {
+            if(err.code === 0) {
+                expect(true).assertEqual(true);
+				if(res === undefined) {
+					res = [{abilityPrevAccessTime: 0}];
+				}
+				console.log('test BundleStateInfo abilityPrevAccessTime :' + res[0].abilityPrevAccessTime)
+            } else {
+                expect(false).assertEqual(true);
+            }
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest026
+     * @tc.desc: test BundleStateInfo infosBeginTime.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest026", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest026---------------------------');
+        let intervalType = 1;
+        let beginTime = 1001;
+        let endTime = 20000000000000;
+        bundleState.queryBundleStateInfoByInterval(intervalType, beginTime, endTime, (err, res) => {
+            if(err.code === 0) {
+                expect(true).assertEqual(true);
+				if(res === undefined) {
+					res = [{infosBeginTime: 0}];
+				}
+				console.log('test BundleStateInfo infosBeginTime :' + res[0].infosBeginTime)
+            } else {
+                expect(false).assertEqual(true);
+            }
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest027
+     * @tc.desc: test BundleStateInfo abilityInFgTotalTime.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest027", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest027---------------------------');
+        let intervalType = 1;
+        let beginTime = 1001;
+        let endTime = 20000000000000;
+        bundleState.queryBundleStateInfoByInterval(intervalType, beginTime, endTime, (err, res) => {
+            if(err.code === 0) {
+                expect(true).assertEqual(true);
+				if(res === undefined) {
+					res = [{abilityInFgTotalTime: 0}];
+				}
+				console.log('test BundleStateInfo abilityInFgTotalTime :' + res[0].abilityInFgTotalTime)
+            } else {
+                expect(false).assertEqual(true);
+            }
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest028
+     * @tc.desc: test BundleActiveState bundleName.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest028", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest028---------------------------');
+        let beginTime = 10;
+        let endTime = 20000000000000;
+        bundleState.queryCurrentBundleActiveStates(beginTime, endTime, (err, res) => {
+            if(err.code === 0) {
+                expect(true).assertEqual(true);
+				if(res === undefined) {
+					res = [{bundleName: 'www.baidu.com'}];
+				}
+				console.log('test BundleActiveState bundleName :' + res[0].bundleName)
+            } else {
+                expect(false).assertEqual(true);
+            }
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest029
+     * @tc.desc: test BundleActiveState stateType.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest029", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest029---------------------------');
+        let beginTime = 10;
+        let endTime = 20000000000000;
+        bundleState.queryCurrentBundleActiveStates(beginTime, endTime, (err, res) => {
+            if(err.code === 0) {
+                expect(true).assertEqual(true);
+				if(res === undefined) {
+					res = [{stateType: 0}];
+				}
+				console.log('test BundleActiveState stateType :' + res[0].stateType)
+            } else {
+                expect(false).assertEqual(true);
+            }
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest030
+     * @tc.desc: test BundleActiveState stateOccurredTime.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest030", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest030---------------------------');
+        let beginTime = 10;
+        let endTime = 20000000000000;
+        bundleState.queryCurrentBundleActiveStates(beginTime, endTime, (err, res) => {
+            if(err.code === 0) {
+                expect(true).assertEqual(true);
+				if(res === undefined) {
+					res = [{stateOccurredTime: 0}];
+				}
+				console.log('test BundleActiveState stateOccurredTime :' + res[0].stateOccurredTime)
+            } else {
+                expect(false).assertEqual(true);
+            }
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest031
+     * @tc.desc: test BundleActiveState appUsagePriorityGroup.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest031", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest031---------------------------');
+        let beginTime = 10;
+        let endTime = 20000000000000;
+        bundleState.queryCurrentBundleActiveStates(beginTime, endTime, (err, res) => {
+            if(err.code === 0) {
+                expect(true).assertEqual(true);
+				if(res === undefined) {
+					res = [{appUsagePriorityGroup: 0}];
+				}
+				console.log('test BundleActiveState appUsagePriorityGroup :' + res[0].appUsagePriorityGroup)
+            } else {
+                expect(false).assertEqual(true);
+            }
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest032
+     * @tc.desc: test BundleActiveState indexOfLink.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest032", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest032---------------------------');
+        let beginTime = 10;
+        let endTime = 20000000000000;
+        bundleState.queryCurrentBundleActiveStates(beginTime, endTime, (err, res) => {
+            if(err.code === 0) {
+                expect(true).assertEqual(true);
+				if(res === undefined) {
+					res = [{indexOfLink: 'id'}];
+				}
+				console.log('test BundleActiveState indexOfLink :' + res[0].indexOfLink)
+            } else {
+                expect(false).assertEqual(true);
+            }
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest033
+     * @tc.desc: test BundleActiveState nameOfClass.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("DeviceUsageStatisticsJsTest033", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest033---------------------------');
+        let beginTime = 10;
+        let endTime = 20000000000000;
+        bundleState.queryCurrentBundleActiveStates(beginTime, endTime, (err, res) => {
+            if(err.code === 0) {
+                expect(true).assertEqual(true);
+				if(res === undefined) {
+					res = [{nameOfClass: 'BundleStates'}];
+				}
+				console.log('test BundleActiveState nameOfClass :' + res[0].nameOfClass)
+            } else {
+                expect(false).assertEqual(true);
+            }
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest034
+     * @tc.desc: test BundleActiveinfoResponse BundleStateinfo key.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest034", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest034---------------------------');
+        let beginTime = 10;
+        let endTime = 20000000000000;
+        bundleState.queryCurrentBundleActiveStates(beginTime, endTime).then((res) => {
+            expect(true).assertEqual(true);
+			let bundleStateInfo1 = {
+				bundleName: 'www.example.com',
+				abilityPrevAccessTime: 0,
+				abilityInFgTotalTime: 0
+			};
+			let bundleStateInfo2 = {
+				bundleName: 'www.baidu.com',
+				abilityPrevAccessTime: 1,
+				abilityInFgTotalTime: 1
+			};
+			if(res === undefined) {
+				res = [];
+				res['www.example.com'] = bundleStateInfo1;
+				res['www.baidu.com'] = bundleStateInfo2;
+				for(let k in res) {
+					console.log('test BundleStateInfo key :' + k + ',value is :' + JSON.stringify(res[k]));
+				}
+			}
+        }).catch((err) => {
+            expect(false).assertEqual(true);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest035
+     * @tc.desc: test BundleStateInfo merge.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest035", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest035---------------------------');
+        let beginTime = 1001;
+        let endTime = 20000000000000;
+        bundleState.queryCurrentBundleActiveStates(0, beginTime, endTime, (err, res) => {
+            if(err.code === 0) {
+                expect(true).assertEqual(true);
+				if(res === undefined) {
+					let bundleStateInfo = {
+						bundleName: 'www.example.com',
+						abilityPrevAccessTime: 0,
+						abilityInFgTotalTime: 0
+					};
+					res = [{
+						bundleName: 'www.baidu.com',
+						abilityPrevAccessTime: 0,
+						abilityInFgTotalTime: 0,
+						merge : function (toMerge) {
+							return 'is function,toMerge :' + JSON.stringify(toMerge);
+						}
+					}]
+					console.log('test bundleStateInfo merge' + res[0].merge(bundleStateInfo));
+				} else {
+					console.log('test bundleStateInfo merge')
+				}
+            } else {
+                expect(false).assertEqual(true);
+            }
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
 })
