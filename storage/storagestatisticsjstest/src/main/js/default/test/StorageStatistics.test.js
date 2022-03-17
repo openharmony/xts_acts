@@ -26,7 +26,7 @@ import {
 } from "./Common";
 
 describe("storageStatistics", function () {
-
+    
     /**
      * @tc.number SUB_DF_VOLUME_GET_TOTAL_SIZE_OF_VOLUME_0000
      * @tc.name storage_statistics_test_get_total_size_of_volume_async_000
@@ -94,8 +94,7 @@ describe("storageStatistics", function () {
         try {
             let totalSize = await storageStatistics.getTotalSizeOfVolume("1234");
             console.log(`async_002 totalSize ===---=== ${totalSize}`);
-            // expect(totalSize == -1).assertTrue();
-            expect(null).assertFail();
+            expect(totalSize == -1).assertTrue();
             done();
         } catch (error) {
             console.log("storage_statistics_test_get_total_size_of_volume_async_002 has failed for " + error.message);
@@ -211,8 +210,7 @@ describe("storageStatistics", function () {
         try {
             let freeSize = await storageStatistics.getFreeSizeOfVolume("1234");
             console.log(`async_002 freeSize ===---=== ${freeSize}`);
-            // expect(freeSize == -1).assertTrue();
-            expect(null).assertFail();
+            expect(freeSize == -1).assertTrue();
             done();
         } catch (error) {
             console.log("storage_statistics_test_get_free_size_of_volume_async_002 has failed for " + error);
@@ -310,7 +308,6 @@ describe("storageStatistics", function () {
         } catch (e) {
             console.log("storage_statistics_test_get_bundle_stat_async_001 has failed for " + e);
             expect(null).assertFail();
-            done();
         }
     });
 
@@ -327,9 +324,9 @@ describe("storageStatistics", function () {
         try {
             await storageStatistics.getBundleStats("packageName");
             done();
-        } catch (error) {
-            console.log("storage_statistics_test_get_bundle_stat_async_002 has failed for " + error);
-            expect(isInclude(error, "Invalid name")).assertTrue();
+        } catch (e) {
+            console.log("storage_statistics_test_get_bundle_stat_async_002 has failed for " + e);
+            expect(e.message == "Invalid name").assertTrue();
             done();
         }
     });
@@ -346,10 +343,9 @@ describe("storageStatistics", function () {
     it("storage_statistics_test_get_bundle_stat_async_003", 0, async function (done) {
         try {
             await storageStatistics.getBundleStats(1);
-            done();
-        } catch (error) {
-            console.log("storage_statistics_test_get_bundle_stat_async_003 has failed for " + error);
-            expect(isInclude(error, "Invalid name")).assertTrue();
+        } catch (e) {
+            console.log("storage_statistics_test_get_bundle_stat_async_003 has failed for " + e);
+            expect(e.message == "Invalid name").assertTrue();
             done();
         }
     });
@@ -366,10 +362,9 @@ describe("storageStatistics", function () {
     it("storage_statistics_test_get_bundle_stat_async_004", 0, async function (done) {
         try {
             await storageStatistics.getBundleStats();
-            done();
-        } catch (error) {
-            console.log("storage_statistics_test_get_bundle_stat_async_004 has failed for " + error);
-            expect(isInclude(error, "Number of arguments unmatched")).assertTrue();
+        } catch (e) {
+            console.log("storage_statistics_test_get_bundle_stat_async_004 has failed for " + e);
+            expect(e.message == "Number of arguments unmatched").assertTrue();
             done();
         }
     });
