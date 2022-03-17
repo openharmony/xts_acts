@@ -590,7 +590,7 @@ describe('userauthTest', function () {
                                     }, function (onacquireinfo) {
                                     })
                                 let cancelresult = publicFC.publicgecancelAuth(UserAuth,contextID);
-                                await sleep(100);
+                                await sleep(2500);
                                 if(cancelresult == 1){
                                     console.info('AuthTest_0101 cancel = 1  authresult = ' + authresult);
                                     expect(ResultCode.SUCCESS).assertEqual(authresult);
