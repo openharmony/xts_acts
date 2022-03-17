@@ -17,7 +17,6 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
-
 export default function appearJsunit() {
   describe('appInfoTest', function () {
     beforeEach(async function (done) {
@@ -56,7 +55,7 @@ export default function appearJsunit() {
           expect(backData.data.ACTION).assertEqual(true);
         }
         var appearEvent = {
-          eventId: 15,
+          eventId: 58,
           priority: events_emitter.EventPriority.LOW
         }
         events_emitter.on(appearEvent, callBackAppear);
@@ -77,7 +76,7 @@ export default function appearJsunit() {
           expect(backData.data.ACTION).assertEqual(true);
         }
         var appearEvent = {
-          eventId: 15,
+          eventId: 59,
           priority: events_emitter.EventPriority.LOW
         }
         events_emitter.on(appearEvent, callBackAppear);
@@ -92,7 +91,7 @@ export default function appearJsunit() {
           expect(backData.data.ACTION).assertEqual(true);
         }
         var disAppearEvent = {
-          eventId: 16,
+          eventId: 60,
           priority: events_emitter.EventPriority.LOW
         }
         events_emitter.on(disAppearEvent, callBackDisAppear);
