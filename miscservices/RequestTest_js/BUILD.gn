@@ -10,15 +10,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import("//test/xts/tools/build/suite.gni")
 
-import("//build/ohos_var.gni")
-group("miscservices") {
-  testonly = true
+ohos_js_hap_suite("miscservices_request_js_test") {
+  hap_profile = "./entry/src/main/config.json"
   deps = [
-    "InputMethodTest_ets:inputMethod_ets_test",
-    "PasteBoardTest_js:pasteboard_js_test",
-    "RequestTest_js:miscservices_request_js_test",
-    "TimeTest_js:time_js_test",
-    "TimerTest_js:timer_js_test",
+    ":request_js_assets",
+    ":request_js_resources",
   ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "MiscservicesRequestJSApiTest"
+}
+ohos_js_assets("request_js_assets") {
+  source_dir = "./entry/src/main/js/default"
+}
+ohos_resources("request_js_resources") {
+  sources = [ "./entry/src/main/resources" ]
+  hap_profile = "./entry/src/main/config.json"
 }
