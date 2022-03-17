@@ -627,7 +627,7 @@ describe("SensorJsTest", function () {
     it('SensorJsTest_088', 0, async function (done) {
         console.info('SensorJsTest_088 start')
         sensor.createQuaternion([0.52, -0.336, -0.251], (error, data) => {
-            console.info('SensorJsTest_088' + 'lengh:' + data.length);
+            console.info('SensorJsTest_088' + 'length:' + data.length);
             if (error) {
                 console.info('SensorJsTest_088 failed');
                 expect(false).assertTrue();
@@ -929,7 +929,7 @@ describe("SensorJsTest", function () {
                 expect(data).assertEqual(getGeomagneticDipResult[0])
             }
             done()
-            console.info('SensorJsTest_101' + 'lengh:' + data.length);
+            console.info('SensorJsTest_101' + 'length:' + data.length);
         })
         console.info("SensorJsTest_101 end")
     })
