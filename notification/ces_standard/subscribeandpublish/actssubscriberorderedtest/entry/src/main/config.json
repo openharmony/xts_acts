@@ -24,55 +24,6 @@
       "moduleName": "entry",
       "moduleType": "entry"
     },
-    "defPermissions": [
-      {
-      "availableScope": [],
-      "grantMode": "system_grant",
-      "name": "publish_event0800_permission"
-    },
-      {
-        "availableScope": [],
-        "grantMode": "system_grant",
-        "name": "publish_event0900_subscriberPermissions"
-      },
-      {
-        "availableScope": [],
-        "grantMode": "system_grant",
-        "name": "publish_event0900_publisherPermission"
-      },
-      {
-        "availableScope": [],
-        "grantMode": "system_grant",
-        "name": "publish_event1000_permission"
-      },
-      {
-        "availableScope": [],
-        "grantMode": "system_grant",
-        "name": "permission.COMMONEVENT_STICKY"
-      }
-    ],
-    "reqPermissions": [
-      {
-        "name": "publish_event0800_permission",
-        "reason": "ceshi"
-      },
-      {
-        "name": "publish_event0900_subscriberPermissions",
-        "reason": "ceshi"
-      },
-      {
-        "name": "publish_event0900_publisherPermission",
-        "reason": "ceshi"
-      },
-      {
-        "name": "publish_event1000_permission",
-        "reason": "ceshi"
-      },
-      {
-        "name": "permission.COMMONEVENT_STICKY",
-        "reason": "ceshi"
-      }
-    ],
     "abilities": [
       {
         "skills": [
