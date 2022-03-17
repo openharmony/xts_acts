@@ -19,9 +19,9 @@ import userIDM from '@ohos.userIDM'
 import pinAuth from '@ohos.pinAuth'
 import * as publicFC from './Publicfunction-n'
 
-let UserIDM = userIDM.constructor()
-let PinAuth = pinAuth.constructor()
-let UserAuth = userAuth.constructor()
+let UserIDM = new userIDM.UserIdentityManager();
+let PinAuth = new pinAuth.PINAuth();
+let UserAuth = new userAuth.UserAuth();
 
 let AuthType = {
     PIN: 1,
