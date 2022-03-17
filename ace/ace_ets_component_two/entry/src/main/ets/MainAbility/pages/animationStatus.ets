@@ -22,7 +22,6 @@ struct ImageAnimatorExample {
   @State reverse: boolean = false;
   @State iterations: number = 1;
 
-
   build() {
     Column({ space:5 }) {
       ImageAnimator()

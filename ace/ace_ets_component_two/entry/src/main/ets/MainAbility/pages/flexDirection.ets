@@ -22,7 +22,6 @@ struct flexDirectionExample {
   @State height: number = 40
   @State backgroundColor: Color = 0xD2B48C
 
-
   build() {
     Column() {
       Column({ space: 5 }) {
