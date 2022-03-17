@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "LanguageConfigTestApi7.hap"
+                "ActsLanguageConfigTestApi7Test.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
