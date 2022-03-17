@@ -22,6 +22,7 @@ describe('ActsAnsNotificationPublishXts', function () {
         console.info("===ACTS_PublishMULTILINEContent_0100 onConsume start===>");
         console.info("===ACTS_PublishMULTILINEContent_0100 onConsume data:===>" + JSON.stringify(data));
         expect(data.request.label).assertEqual("ACTS_PublishMULTILINEContent_0100");
+        expect(data.request.creatorUserId).assertEqual(100);
         console.info("===ACTS_PublishMULTILINEContent_0100 onConsume end===>");
     }
     
