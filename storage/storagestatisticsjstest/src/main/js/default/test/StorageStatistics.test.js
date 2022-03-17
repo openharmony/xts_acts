@@ -92,8 +92,9 @@ describe("storageStatistics", function () {
      */
     it("storage_statistics_test_get_total_size_of_volume_async_002", 0, async function (done) {
         try {
-            await storageStatistics.getTotalSizeOfVolume("1234");
-            expect(null).assertFail();
+            let totalSize = await storageStatistics.getTotalSizeOfVolume("1234");
+            console.log(`async_002 totalSize ===---=== ${totalSize}`);
+            expect(totalSize == -1).assertTrue();
             done();
         } catch (error) {
             console.log("storage_statistics_test_get_total_size_of_volume_async_002 has failed for " + error.message);
@@ -113,9 +114,7 @@ describe("storageStatistics", function () {
      */
     it("storage_statistics_test_get_total_size_of_volume_async_003", 0, async function (done) {
         try {
-            let totalSize = await storageStatistics.getTotalSizeOfVolume(1234);
-            console.log(`async_003 totalSize ===---=== ${totalSize}`);
-            expect(totalSize == -1).assertTrue();
+            await storageStatistics.getTotalSizeOfVolume(1234);
             done();
         } catch (error) {
             console.log("storage_statistics_test_get_total_size_of_volume_async_003 has failed for " + error);
@@ -136,7 +135,6 @@ describe("storageStatistics", function () {
     it("storage_statistics_test_get_total_size_of_volume_async_004", 0, async function (done) {
         try {
             await storageStatistics.getTotalSizeOfVolume();
-            expect(null).assertFail();
             done();
         } catch (error) {
             console.log("storage_statistics_test_get_total_size_of_volume_async_004 has failed for " + error);
@@ -214,9 +212,9 @@ describe("storageStatistics", function () {
             console.log(`async_002 freeSize ===---=== ${freeSize}`);
             expect(freeSize == -1).assertTrue();
             done();
-        } catch (err) {
-            console.log("storage_statistics_test_get_free_size_of_volume_async_002 has failed for " + err);
-            expect(null).assertFail();
+        } catch (error) {
+            console.log("storage_statistics_test_get_free_size_of_volume_async_002 has failed for " + error);
+            expect(isInclude(error, "not a function") || isInclude(error, "is not callable")).assertTrue();
             done();
         }
     });
@@ -233,7 +231,6 @@ describe("storageStatistics", function () {
     it("storage_statistics_test_get_free_size_of_volume_async_003", 0, async function (done) {
         try {
             await storageStatistics.getFreeSizeOfVolume(1234);
-            expect(null).assertFail();
             done();
         } catch (error) {
             console.log("storage_statistics_test_get_free_size_of_volume_async_003 has failed for " + error);
@@ -254,7 +251,6 @@ describe("storageStatistics", function () {
     it("storage_statistics_test_get_free_size_of_volume_async_004", 0, async function (done) {
         try {
             await storageStatistics.getFreeSizeOfVolume();
-            expect(null).assertFail();
             done();
         } catch (error) {
             console.log("storage_statistics_test_get_free_size_of_volume_async_004 has failed for " + error);
@@ -285,6 +281,7 @@ describe("storageStatistics", function () {
         } catch (e) {
             console.log("storage_statistics_test_get_bundle_stat_async_000 has failed for " + e);
             expect(null).assertFail();
+            done();
         }
     });
 
@@ -354,7 +351,7 @@ describe("storageStatistics", function () {
     });
 
     /**
-   	 * @tc.number SUB_DF_STORAGE_STATISTICS_GET_BUNDLE_STAT_0040
+     * @tc.number SUB_DF_STORAGE_STATISTICS_GET_BUNDLE_STAT_0040
      * @tc.name storage_statistics_test_get_bundle_stat_async_004
      * @tc.desc Test getBundleStats() interfaces, When there are no parameters, returning error results.
      * @tc.size MEDIUM
