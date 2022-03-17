@@ -26,6 +26,7 @@ group("publish_test") {
       #"publishcontentype:publishcontentype",
       #"subscribe:subscribe",
       "activebtn:activebtn",
+      "actsansdistributedtest:ActsAnsDistributeTest",
       "actsansgetallactive:ActsAnsGetAllActiveTestXts",
       "ansactscancelgroup:ActsAnsCancelGroupTest",
       "ansactsremovegroup:ActsAnsRemoveGroupTest",
