@@ -45,13 +45,13 @@ describe("volumeManager", function () {
                 var id = volumes[0].id;
                 var uuid = volumes[0].uuid;
                 var description = volumes[0].description;
-                var removeAble = volumes[0].removeAble;
+                var removable = volumes[0].removable;
                 var state = volumes[0].state;
                 var path = volumes[0].path;
                 expect(isString(id)).assertTrue();
                 expect(isString(uuid)).assertTrue();
                 expect(isString(description)).assertTrue();
-                expect(isBoolean(removeAble)).assertTrue();
+                expect(isBoolean(removable)).assertTrue();
                 expect(isIntNum(state)).assertTrue();
                 expect(isString(path)).assertTrue();
             }
@@ -80,13 +80,13 @@ describe("volumeManager", function () {
                     var id = volumes[0].id;
                     var uuid = volumes[0].uuid;
                     var description = volumes[0].description;
-                    var removeAble = volumes[0].removeAble;
+                    var removable = volumes[0].removable;
                     var state = volumes[0].state;
                     var path = volumes[0].path;
                     expect(isString(id)).assertTrue();
                     expect(isString(uuid)).assertTrue();
                     expect(isString(description)).assertTrue();
-                    expect(isBoolean(removeAble)).assertTrue();
+                    expect(isBoolean(removable)).assertTrue();
                     expect(isIntNum(state)).assertTrue();
                     expect(isString(path)).assertTrue();
                 }
