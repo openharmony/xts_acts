@@ -24,8 +24,20 @@ import {
     volumeManager,
     getPackageName,
 } from "./Common";
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
+import bundle from '@ohos.bundle';
 
 describe("storageStatistics", function () {
+
+    beforeAll(async function (){
+        let appInfo = await bundle.getApplicationInfo('ohos.acts.storage.statistics', 0, 100);
+        let tokenID = appInfo.accessTokenId;
+        let atManager = abilityAccessCtrl.createAtManager();
+        let result = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.READ_MEDIA",1);
+        console.log("tokenID:" + tokenID + "-result:" + result);
+        let result1 = await atManager.verifyAccessToken(tokenID, "ohos.permission.READ_MEDIA");
+        console.log("tokenID:" + tokenID + "-result:" + result1);
+    });
     
     /**
      * @tc.number SUB_DF_VOLUME_GET_TOTAL_SIZE_OF_VOLUME_0000

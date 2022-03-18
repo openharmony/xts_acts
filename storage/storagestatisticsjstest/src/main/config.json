@@ -24,6 +24,20 @@
       "moduleType": "entry",
       "installationFree": true
     },
+    "reqPermissions": [
+      {
+        "name" : "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
+        "reason" : "use ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
+      },
+      {
+        "name" : "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS",
+        "reason" : "use ohos.permission.REVOKE_SENSITIVE_PERMISSIONS"
+      },
+      {
+        "name" : "ohos.permission.READ_MEDIA",
+        "reason" : "use ohos.permission.READ_MEDIA"
+      }
+    ],
     "abilities": [
       {
         "skills": [
