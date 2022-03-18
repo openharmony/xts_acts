@@ -71,23 +71,38 @@ describe('favoriteTestCallBack.test.js', function () {
                                         console.info('FAV_ASSET_CALLBACK 001_01 fail');
                                         expect(false).assertTrue();
                                         done();
+                                    } else {
+                                        asset.favorite(true, () => {
+                                            asset.isFavorite((err1, isFavorite) => {
+                                                if (isFavorite) {
+                                                    console.info('FAV_ASSET_CALLBACK 001_01 success');
+                                                    expect(true).assertTrue();
+                                                    done();
+                                                } else {
+                                                    console.info('FAV_ASSET_CALLBACK 001_01 fail');
+                                                    expect(false).assertTrue();
+                                                    done();
+                                                }
+                                            });
+                                        });
+                                    }
+                                });
+                            });
+                        } else {
+                            asset.favorite(true, () => {
+                                asset.isFavorite((err1, isFavorite) => {
+                                    if (isFavorite) {
+                                        console.info('FAV_ASSET_CALLBACK 001_01 success');
+                                        expect(true).assertTrue();
+                                        done();
+                                    } else {
+                                        console.info('FAV_ASSET_CALLBACK 001_01 fail');
+                                        expect(false).assertTrue();
+                                        done();
                                     }
                                 });
                             });
                         }
-                        asset.favorite(true, () => {
-                            asset.isFavorite((err1, isFavorite) => {
-                                if (isFavorite) {
-                                    console.info('FAV_ASSET_CALLBACK 001_01 success');
-                                    expect(true).assertTrue();
-                                    done();
-                                } else {
-                                    console.info('FAV_ASSET_CALLBACK 001_01 fail');
-                                    expect(false).assertTrue();
-                                    done();
-                                }
-                            });
-                        });
                     });
                 });
             });
@@ -119,23 +134,38 @@ describe('favoriteTestCallBack.test.js', function () {
                                         console.info('FAV_ASSET_CALLBACK 001_02 fail');
                                         expect(false).assertTrue();
                                         done();
+                                    } else {
+                                        asset.favorite(false, () => {
+                                            asset.isFavorite((err1, isFavorite) => {
+                                                if (!isFavorite) {
+                                                    console.info('FAV_ASSET_CALLBACK 001_02 pass');
+                                                    expect(true).assertTrue();
+                                                    done();
+                                                } else {
+                                                    console.info('FAV_ASSET_CALLBACK 001_02 fail');
+                                                    expect(false).assertTrue();
+                                                    done();
+                                                }
+                                            });
+                                        });
+                                    }
+                                });
+                            });
+                        } else {
+                            asset.favorite(false, () => {
+                                asset.isFavorite((err1, isFavorite) => {
+                                    if (!isFavorite) {
+                                        console.info('FAV_ASSET_CALLBACK 001_02 pass');
+                                        expect(true).assertTrue();
+                                        done();
+                                    } else {
+                                        console.info('FAV_ASSET_CALLBACK 001_02 fail');
+                                        expect(false).assertTrue();
+                                        done();
                                     }
                                 });
                             });
                         }
-                        asset.favorite(false, () => {
-                            asset.isFavorite((err1, isFavorite) => {
-                                if (!isFavorite) {
-                                    console.info('FAV_ASSET_CALLBACK 001_02 pass');
-                                    expect(true).assertTrue();
-                                    done();
-                                } else {
-                                    console.info('FAV_ASSET_CALLBACK 001_02 fail');
-                                    expect(false).assertTrue();
-                                    done();
-                                }
-                            });
-                        });
                     });
                 });
             });
@@ -402,23 +432,39 @@ describe('favoriteTestCallBack.test.js', function () {
                                         console.info('FAV_ASSET_CALLBACK 002_01 failed');
                                         expect(false).assertTrue();
                                         done();
+                                    } else {
+                                        asset.favorite(true, () => {
+                                            asset.isFavorite((err1, isFavorite) => {
+                                                if (isFavorite) {
+                                                    console.info('FAV_ASSET_CALLBACK 002_01 success');
+                                                    expect(true).assertTrue();
+                                                    done();
+                                                } else {
+                                                    console.info('FAV_ASSET_CALLBACK 002_01 fail');
+                                                    expect(false).assertTrue();
+                                                    done();
+                                                }
+                                            });
+                                        });
+                                    }
+                                });
+                            });
+                        } else {
+                            asset.favorite(true, () => {
+                                asset.isFavorite((err1, isFavorite) => {
+                                    if (isFavorite) {
+                                        console.info('FAV_ASSET_CALLBACK 002_01 success');
+                                        expect(true).assertTrue();
+                                        done();
+                                    } else {
+                                        console.info('FAV_ASSET_CALLBACK 002_01 fail');
+                                        expect(false).assertTrue();
+                                        done();
                                     }
                                 });
                             });
                         }
-                        asset.favorite(true, () => {
-                            asset.isFavorite((err1, isFavorite) => {
-                                if (isFavorite) {
-                                    console.info('FAV_ASSET_CALLBACK 002_01 success');
-                                    expect(true).assertTrue();
-                                    done();
-                                } else {
-                                    console.info('FAV_ASSET_CALLBACK 002_01 fail');
-                                    expect(false).assertTrue();
-                                    done();
-                                }
-                            });
-                        });
+                        
                     });
                 });
             });
@@ -450,23 +496,38 @@ describe('favoriteTestCallBack.test.js', function () {
                                         console.info('FAV_ASSET_CALLBACK 002_02 fail');
                                         expect(false).assertTrue();
                                         done();
+                                    } else {
+                                        asset.favorite(false, () => {
+                                            asset.isFavorite((err1, isFavorite) => {
+                                                if (!isFavorite) {
+                                                    console.info('FAV_ASSET_CALLBACK 002_02 pass');
+                                                    expect(true).assertTrue();
+                                                    done();
+                                                } else {
+                                                    console.info('FAV_ASSET_CALLBACK 002_02 fail');
+                                                    expect(false).assertTrue();
+                                                    done();
+                                                }
+                                            });
+                                        });
+                                    }
+                                });
+                            });
+                        } else {
+                            asset.favorite(false, () => {
+                                asset.isFavorite((err1, isFavorite) => {
+                                    if (!isFavorite) {
+                                        console.info('FAV_ASSET_CALLBACK 002_02 pass');
+                                        expect(true).assertTrue();
+                                        done();
+                                    } else {
+                                        console.info('FAV_ASSET_CALLBACK 002_02 fail');
+                                        expect(false).assertTrue();
+                                        done();
                                     }
                                 });
                             });
                         }
-                        asset.favorite(false, () => {
-                            asset.isFavorite((err1, isFavorite) => {
-                                if (!isFavorite) {
-                                    console.info('FAV_ASSET_CALLBACK 002_02 pass');
-                                    expect(true).assertTrue();
-                                    done();
-                                } else {
-                                    console.info('FAV_ASSET_CALLBACK 002_02 fail');
-                                    expect(false).assertTrue();
-                                    done();
-                                }
-                            });
-                        });
                     });
                 });
             });
@@ -733,23 +794,39 @@ describe('favoriteTestCallBack.test.js', function () {
                                         console.info('FAV_ASSET_CALLBACK 003_01 fail');
                                         expect(false).assertTrue();
                                         done();
+                                    } else {
+                                        asset.favorite(true, () => {
+                                            asset.isFavorite((err1, isFavorite) => {
+                                                if (isFavorite) {
+                                                    console.info('FAV_ASSET_CALLBACK 003_01 success');
+                                                    expect(true).assertTrue();
+                                                    done();
+                                                } else {
+                                                    console.info('FAV_ASSET_CALLBACK 003_01 fail');
+                                                    expect(false).assertTrue();
+                                                    done();
+                                                }
+                                            });
+                                        });
+                                    }
+                                });
+                            });
+                        } else {
+                            asset.favorite(true, () => {
+                                asset.isFavorite((err1, isFavorite) => {
+                                    if (isFavorite) {
+                                        console.info('FAV_ASSET_CALLBACK 003_01 success');
+                                        expect(true).assertTrue();
+                                        done();
+                                    } else {
+                                        console.info('FAV_ASSET_CALLBACK 003_01 fail');
+                                        expect(false).assertTrue();
+                                        done();
                                     }
                                 });
                             });
                         }
-                        asset.favorite(true, () => {
-                            asset.isFavorite((err1, isFavorite) => {
-                                if (isFavorite) {
-                                    console.info('FAV_ASSET_CALLBACK 003_01 success');
-                                    expect(true).assertTrue();
-                                    done();
-                                } else {
-                                    console.info('FAV_ASSET_CALLBACK 003_01 fail');
-                                    expect(false).assertTrue();
-                                    done();
-                                }
-                            });
-                        });
+                        
                     });
                 });
             });
@@ -781,23 +858,39 @@ describe('favoriteTestCallBack.test.js', function () {
                                         console.info('FAV_ASSET_CALLBACK 003_02 fail');
                                         expect(false).assertTrue();
                                         done();
+                                    } else {
+                                        asset.favorite(false, () => {
+                                            asset.isFavorite((err1, isFavorite) => {
+                                                if (!isFavorite) {
+                                                    console.info('FAV_ASSET_CALLBACK 003_02 pass');
+                                                    expect(true).assertTrue();
+                                                    done();
+                                                } else {
+                                                    console.info('FAV_ASSET_CALLBACK 003_02 fail');
+                                                    expect(false).assertTrue();
+                                                    done();
+                                                }
+                                            });
+                                        });
+                                    }
+                                });
+                            });
+                        } else {
+                            asset.favorite(false, () => {
+                                asset.isFavorite((err1, isFavorite) => {
+                                    if (!isFavorite) {
+                                        console.info('FAV_ASSET_CALLBACK 003_02 pass');
+                                        expect(true).assertTrue();
+                                        done();
+                                    } else {
+                                        console.info('FAV_ASSET_CALLBACK 003_02 fail');
+                                        expect(false).assertTrue();
+                                        done();
                                     }
                                 });
                             });
                         }
-                        asset.favorite(false, () => {
-                            asset.isFavorite((err1, isFavorite) => {
-                                if (!isFavorite) {
-                                    console.info('FAV_ASSET_CALLBACK 003_02 pass');
-                                    expect(true).assertTrue();
-                                    done();
-                                } else {
-                                    console.info('FAV_ASSET_CALLBACK 003_02 fail');
-                                    expect(false).assertTrue();
-                                    done();
-                                }
-                            });
-                        });
+                        
                     });
                 });
             });
@@ -1064,23 +1157,39 @@ describe('favoriteTestCallBack.test.js', function () {
                                         console.info('FAV_ASSET_CALLBACK 004_01 fail');
                                         expect(false).assertTrue();
                                         done();
+                                    } else {
+                                        asset.favorite(true, () => {
+                                            asset.isFavorite((err1, isFavorite) => {
+                                                if (isFavorite) {
+                                                    console.info('FAV_ASSET_CALLBACK 004_01 success');
+                                                    expect(true).assertTrue();
+                                                    done();
+                                                } else {
+                                                    console.info('FAV_ASSET_CALLBACK 004_01 fail');
+                                                    expect(false).assertTrue();
+                                                    done();
+                                                }
+                                            });
+                                        });
+                                    }
+                                });
+                            });
+                        } else {
+                            asset.favorite(true, () => {
+                                asset.isFavorite((err1, isFavorite) => {
+                                    if (isFavorite) {
+                                        console.info('FAV_ASSET_CALLBACK 004_01 success');
+                                        expect(true).assertTrue();
+                                        done();
+                                    } else {
+                                        console.info('FAV_ASSET_CALLBACK 004_01 fail');
+                                        expect(false).assertTrue();
+                                        done();
                                     }
                                 });
                             });
                         }
-                        asset.favorite(true, () => {
-                            asset.isFavorite((err1, isFavorite) => {
-                                if (isFavorite) {
-                                    console.info('FAV_ASSET_CALLBACK 004_01 success');
-                                    expect(true).assertTrue();
-                                    done();
-                                } else {
-                                    console.info('FAV_ASSET_CALLBACK 004_01 fail');
-                                    expect(false).assertTrue();
-                                    done();
-                                }
-                            });
-                        });
+                        
                     });
                 });
             });
@@ -1112,23 +1221,39 @@ describe('favoriteTestCallBack.test.js', function () {
                                         console.info('FAV_ASSET_CALLBACK 004_02 fail');
                                         expect(false).assertTrue();
                                         done();
+                                    } else {
+                                        asset.favorite(false, () => {
+                                            asset.isFavorite((err1, isFavorite) => {
+                                                if (!isFavorite) {
+                                                    console.info('FAV_ASSET_CALLBACK 004_02 pass');
+                                                    expect(true).assertTrue();
+                                                    done();
+                                                } else {
+                                                    console.info('FAV_ASSET_CALLBACK 004_02 fail');
+                                                    expect(false).assertTrue();
+                                                    done();
+                                                }
+                                            });
+                                        });
+                                    }
+                                });
+                            });
+                        } else {
+                            asset.favorite(false, () => {
+                                asset.isFavorite((err1, isFavorite) => {
+                                    if (!isFavorite) {
+                                        console.info('FAV_ASSET_CALLBACK 004_02 pass');
+                                        expect(true).assertTrue();
+                                        done();
+                                    } else {
+                                        console.info('FAV_ASSET_CALLBACK 004_02 fail');
+                                        expect(false).assertTrue();
+                                        done();
                                     }
                                 });
                             });
                         }
-                        asset.favorite(false, () => {
-                            asset.isFavorite((err1, isFavorite) => {
-                                if (!isFavorite) {
-                                    console.info('FAV_ASSET_CALLBACK 004_02 pass');
-                                    expect(true).assertTrue();
-                                    done();
-                                } else {
-                                    console.info('FAV_ASSET_CALLBACK 004_02 fail');
-                                    expect(false).assertTrue();
-                                    done();
-                                }
-                            });
-                        });
+                        
                     });
                 });
             });

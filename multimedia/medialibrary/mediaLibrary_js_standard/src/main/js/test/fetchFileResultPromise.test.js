@@ -16,15 +16,7 @@
 import mediaLibrary from '@ohos.multimedia.medialibrary';
 import featureAbility from '@ohos.ability.featureAbility';
 
-import {
-    describe,
-    beforeAll,
-    beforeEach,
-    afterEach,
-    afterAll,
-    it,
-    expect
-} from 'deccjsunit/index';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 let fileKeyObj = mediaLibrary.FileKey;
 let fileType = mediaLibrary.MediaType.FILE;
 let imageType = mediaLibrary.MediaType.IMAGE;
@@ -32,92 +24,80 @@ let videoType = mediaLibrary.MediaType.VIDEO;
 let audioType = mediaLibrary.MediaType.AUDIO;
 
 let getFileCountOneOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs: [fileType.toString()],
-    order: fileKeyObj.DATE_ADDED + " DESC LIMIT 0,1",
-    extendArgs: "",
+    selections : fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs : [ fileType.toString() ],
+    order : fileKeyObj.DATE_ADDED + " DESC LIMIT 0,1",
+    extendArgs : "",
 };
 
 let getFileCountTwoOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs: [fileType.toString()],
-    order: fileKeyObj.DATE_ADDED + " DESC LIMIT 0,2",
-    extendArgs: "",
+    selections : fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs : [ fileType.toString() ],
+    order : fileKeyObj.DATE_ADDED + " DESC LIMIT 0,2",
+    extendArgs : "",
 };
 
 let getFileCountTenOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs: [fileType.toString()],
-    order: fileKeyObj.DATE_ADDED + " DESC LIMIT 0,10",
-    extendArgs: "",
+    selections : fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs : [ fileType.toString() ],
+    order : fileKeyObj.DATE_ADDED + " DESC LIMIT 0,10",
+    extendArgs : "",
 };
 
 let getFileCountOneHundredOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs: [fileType.toString()],
-    order: fileKeyObj.DATE_ADDED + " DESC LIMIT 0,100",
-    extendArgs: "",
+    selections : fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs : [ fileType.toString() ],
+    order : fileKeyObj.DATE_ADDED + " DESC LIMIT 0,100",
+    extendArgs : "",
 };
 
 let getFirstObjectOp = {
-    selections: fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs: ['camera/'],
-    order: fileKeyObj.ID + " DESC LIMIT 0,5",
-    extendArgs: "",
+    selections : fileKeyObj.RELATIVE_PATH + '= ?',
+    selectionArgs : [ 'camera/' ],
+    order : fileKeyObj.ID + " DESC LIMIT 0,5",
+    extendArgs : "",
 }
 
 let getAllObjectLimitOneOp = {
-    selections: fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs: ['camera/'],
-    order: fileKeyObj.ID + " DESC LIMIT 0,1",
-    extendArgs: "",
+    selections : fileKeyObj.RELATIVE_PATH + '= ?',
+    selectionArgs : [ 'camera/' ],
+    order : fileKeyObj.ID + " DESC LIMIT 0,1",
+    extendArgs : "",
 }
 
 let getAllObjectLimitTwoOp = {
-    selections: fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs: ['camera/'],
-    order: fileKeyObj.ID + " DESC LIMIT 0,1",
-    extendArgs: "",
+    selections : fileKeyObj.RELATIVE_PATH + '= ?',
+    selectionArgs : [ 'camera/' ],
+    order : fileKeyObj.ID + " DESC LIMIT 0,1",
+    extendArgs : "",
 }
 
 let getAllObjectLimitOneHundredOp = {
-    selections: fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs: ['camera/'],
-    order: fileKeyObj.ID + " DESC LIMIT 0,100",
-    extendArgs: "",
+    selections : fileKeyObj.RELATIVE_PATH + '= ?',
+    selectionArgs : [ 'camera/' ],
+    order : fileKeyObj.ID + " DESC LIMIT 0,100",
+    extendArgs : "",
 }
 
 let getFileCountZeroOp = {
-    selections: fileKeyObj.DISPLAY_NAME + '=?',
-    selectionArgs: ['The world has kissed my soul with its pain, asking for its return in songs.'],
+    selections : fileKeyObj.DISPLAY_NAME + '=?',
+    selectionArgs : [ 'The world has kissed my soul with its pain, asking for its return in songs.' ],
 };
 
-function checkAssetAttr(done, asset, attr, test_num) {
-    expect(asset.id != undefined).assertTrue();
-    expect(asset.mimeType != undefined).assertTrue();
-    expect(asset.displayName != undefined).assertTrue();
-    expect(asset.title != undefined).assertTrue();
-    expect(asset.relativePath != undefined).assertTrue();
-    expect(asset.parent != undefined).assertTrue();
-    expect(asset.size != undefined).assertTrue();
-    expect(asset.dateAdded != undefined).assertTrue();
-    expect(asset.dateModified != undefined).assertTrue();
-    expect(asset.dateTaken != undefined).assertTrue();
-    expect(asset.width != undefined).assertTrue();
-    expect(asset.height != undefined).assertTrue();
-    expect(asset.orientation != undefined).assertTrue();
-    expect(asset.duration != undefined).assertTrue();
-    done();
+let getFileOp = {
+    selections : fileKeyObj.DISPLAY_NAME + '= ? AND ' + fileKeyObj.RELATIVE_PATH + '= ?',
+    selectionArgs : [ '01.jpg', 'camera/' ],
+    order : fileKeyObj.ID + " DESC LIMIT 0,100",
+    extendArgs : "",
 }
 
-describe('fetch.file.result.promise.test.js', async function () {
+describe('fetchFileResultPromise.test.js', async function() {
     var context = featureAbility.getContext();
     var media = mediaLibrary.getMediaLibrary(context);
-    beforeAll(function () {});
-    beforeEach(function () {});
-    afterEach(function () {});
-    afterAll(function () {});
-
+    beforeAll(function() {});
+    beforeEach(function() {});
+    afterEach(function() {});
+    afterAll(function() {});
 
     // ------------------------------ 001 test start -------------------------
     /**
@@ -128,15 +108,15 @@ describe('fetch.file.result.promise.test.js', async function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_01', 0, async function (done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_01', 0, async function(done) {
         try {
-            console.info('MediaLibraryTest : Get Count begin');
+            console.info('MediaLibraryTest :  FETCHRESULT getCount 001_01 begin');
             let fetchFileResult = await media.getFileAssets(getFileCountOneOp);
             const fetchCount = await fetchFileResult.getCount();
-            console.info('MediaLibraryTest : count:' + fetchCount);
+            console.info('MediaLibraryTest : FETCHRESULT getCount 001_01 count:' + fetchCount);
             expect(fetchCount == 1).assertTrue();
-            console.info('MediaLibraryTest : Get Count end');
-            // fetchFileResult.close();
+            console.info('MediaLibraryTest : FETCHRESULT getCount 001_01 end');
+            await fetchFileResult.close();
             done();
         } catch (error) {
             console.info('MediaLibraryTest : FETCHRESULT getCount 001_01 failed, message = ' + error);
@@ -153,15 +133,15 @@ describe('fetch.file.result.promise.test.js', async function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_02', 0, async function (done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_02', 0, async function(done) {
         try {
-            console.info('MediaLibraryTest : Get Count begin');
+            console.info('MediaLibraryTest : FETCHRESULT getCount 001_02 begin');
             let fetchFileResult = await media.getFileAssets(getFileCountTwoOp);
             const fetchCount = await fetchFileResult.getCount();
-            console.info('MediaLibraryTest : count:' + fetchCount);
+            console.info('MediaLibraryTest : FETCHRESULT getCount 001_02 count:' + fetchCount);
             expect(fetchCount == 2).assertTrue();
-            console.info('MediaLibraryTest : Get Count end');
-            // fetchFileResult.close();
+            console.info('MediaLibraryTest : FETCHRESULT getCount 001_02 end');
+            fetchFileResult.close();
             done();
         } catch (error) {
             console.info('MediaLibraryTest : FETCHRESULT getCount 001_02 failed, message = ' + error);
@@ -169,9 +149,6 @@ describe('fetch.file.result.promise.test.js', async function () {
             done();
         }
     });
-
-
-
 
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_03
@@ -181,15 +158,16 @@ describe('fetch.file.result.promise.test.js', async function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_03', 0, async function (done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_03', 0, async function(done) {
         try {
-            console.info('MediaLibraryTest : Get Count begin');
+            console.info('MediaLibraryTest :FETCHRESULT getCount 001_03 begin');
             let fetchFileResult = await media.getFileAssets(getFileCountOneHundredOp);
             const fetchCount = await fetchFileResult.getCount();
-            console.info('MediaLibraryTest : count:' + fetchCount);
+            console.info('MediaLibraryTest : FETCHRESULT getCount 001_03:' + fetchCount);
+            expect(fetchCount > 0).assertTrue();
             expect(fetchCount <= 100).assertTrue();
-            console.info('MediaLibraryTest : Get Count end');
-            // fetchFileResult.close();
+            console.info('MediaLibraryTest :FETCHRESULT getCount 001_03 end');
+            fetchFileResult.close();
             done();
         } catch (error) {
             console.info('MediaLibraryTest : FETCHRESULT getCount 001_03 failed, message = ' + error);
@@ -197,8 +175,6 @@ describe('fetch.file.result.promise.test.js', async function () {
             done();
         }
     });
-
-
 
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_04
@@ -208,15 +184,15 @@ describe('fetch.file.result.promise.test.js', async function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_04', 0, async function (done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_04', 0, async function(done) {
         try {
-            console.info('MediaLibraryTest : Get Count begin');
+            console.info('MediaLibraryTest :  FETCHRESULT getCount 001_04 begin');
             let fetchFileResult = await media.getFileAssets(getFileCountZeroOp);
             const fetchCount = await fetchFileResult.getCount();
-            console.info('MediaLibraryTest : count:' + fetchCount);
+            console.info('MediaLibraryTest :  FETCHRESULT getCount 001_04 count:' + fetchCount);
             expect(fetchCount == 0).assertTrue();
-            console.info('MediaLibraryTest : Get Count end');
-            // fetchFileResult.close();
+            console.info('MediaLibraryTest :  FETCHRESULT getCount 001_04 end');
+            fetchFileResult.close();
             done();
         } catch (error) {
             console.info('MediaLibraryTest : FETCHRESULT getCount 001_04 failed, message = ' + error);
@@ -227,7 +203,6 @@ describe('fetch.file.result.promise.test.js', async function () {
 
     // ------------------------------ 001 test end -------------------------
 
-
     // ------------------------------ 002 test start -------------------------
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_ISAFTERLAST_PROMISE_002
@@ -237,7 +212,7 @@ describe('fetch.file.result.promise.test.js', async function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_ISAFTERLAST_PROMISE_002', 0, async function (done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_ISAFTERLAST_PROMISE_002', 0, async function(done) {
         try {
             console.info('MediaLibraryTest : isAfterLast begin');
             let fetchFileResult = await media.getFileAssets(getFileCountTenOp);
@@ -247,12 +222,12 @@ describe('fetch.file.result.promise.test.js', async function () {
             for (var i = 1; i < fetchCount; i++) {
                 fileAsset = await fetchFileResult.getNextObject();
                 if (i == fetchCount - 1) {
-                    console.info('MediaLibraryTest : isLast');
+                    console.info('MediaLibraryTest : FETCHRESULT isAfterLast 002 isLast');
                     var result = fetchFileResult.isAfterLast();
-                    console.info('MediaLibraryTest : isAfterLast:' + result);
+                    console.info('MediaLibraryTest : FETCHRESULT isAfterLast 002 isAfterLast:' + result);
                     expect(true).assertTrue();
-                    console.info('MediaLibraryTest : isAfterLast end');
-                    // fetchFileResult.close();
+                    console.info('MediaLibraryTest : FETCHRESULT isAfterLast 002 isAfterLast end');
+                    fetchFileResult.close();
                     done();
                 }
             }
@@ -264,37 +239,50 @@ describe('fetch.file.result.promise.test.js', async function () {
     });
     // ------------------------------ 002 test end -------------------------
 
-    // // ------------------------------ 003 test start -------------------------
-    // /**
-    //  * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_CLOSE_PROMISE_003
-    //  * @tc.name      : getCount
-    //  * @tc.desc      : Get FetchResult, close it, check if result closed
-    //  * @tc.size      : MEDIUM
-    //  * @tc.type      : Function
-    //  * @tc.level     : Level 0
-    //  */
-    // it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_CLOSE_PROMISE_003', 0, async function (done) {
-    //     try {
-    //         console.info('MediaLibraryTest : CLOSE begin');
-    //         let fetchFileResult = await media.getFileAssets(getFileCountTenOp);
-    //         // fetchFileResult.close();
-    //         try {
-    //             await fetchFileResult.getCount();
-    //             console.info('MediaLibraryTest : CLOSE failed');
-    //             expect(false).assertTrue();
-    //             done();
-    //         } catch {
-    //             console.info('MediaLibraryTest : CLOSE closed');
-    //             expect(true).assertTrue();
-    //             done();
-    //         }
-    //         console.info('MediaLibraryTest : CLOSE end');
-    //     } catch (error) {
-    //         console.info('MediaLibraryTest : FETCHRESULT close 003 failed, message = ' + error);
-    //         expect(false).assertTrue();
-    //         done();
-    //     }
-    // });
+    // ------------------------------ 003 test start -------------------------
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_CLOSE_PROMISE_003
+     * @tc.name      : getCount
+     * @tc.desc      : Get FetchResult, close it, check if result closed
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_CLOSE_PROMISE_003', 0, async function(done) {
+        try {
+            console.info('MediaLibraryTest : FETCHRESULT close 003 begin');
+            let fetchFileResult = await media.getFileAssets(getFileCountTenOp);
+            fetchFileResult.close();
+            try {
+                fetchFileResult.getCount();
+                console.info('MediaLibraryTest : FETCHRESULT close 003 failed');
+                expect(false).assertTrue();
+                let fileAsset = await fetchFileResult.getFirstObject();
+                expect(false).assertTrue();
+                console.info('MediaLibraryTest : FETCHRESULT close getFirstObject 003 failed');
+                fileAsset = await fetchFileResult.getNextObject();
+                expect(false).assertTrue();
+                console.info('MediaLibraryTest : FETCHRESULT close getNextObject 003 failed');
+                fileAsset = await fetchFileResult.getLastObject();
+                expect(false).assertTrue();
+                console.info('MediaLibraryTest : FETCHRESULT close getLastObject 003 failed');
+                let targetObject = await fetchFileResult.getPositionObject(0);
+                expect(false).assertTrue();
+                console.info('MediaLibraryTest : FETCHRESULT close getPositionObject 003 failed');
+                s
+                done();
+            } catch {
+                console.info('MediaLibraryTest : FETCHRESULT close 003 closed');
+                expect(true).assertTrue();
+                done();
+            }
+            console.info('MediaLibraryTest : FETCHRESULT close 003 end');
+        } catch (error) {
+            console.info('MediaLibraryTest : FETCHRESULT close 003 failed, message = ' + error);
+            expect(false).assertTrue();
+            done();
+        }
+    });
 
     // ------------------------------ 003 test end -------------------------
 
@@ -307,46 +295,21 @@ describe('fetch.file.result.promise.test.js', async function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETFIRSTOBJECT_PROMISE_004', 0, async function (done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETFIRSTOBJECT_PROMISE_004', 0, async function(done) {
         try {
-            console.info('MediaLibraryTest : GETFIRSTOBJECT begin');
+            console.info('MediaLibraryTest : FETCHRESULT getFirstObject begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
             let firstObject = await fetchFileResult.getFirstObject();
-            let targetAttr = {
-                id: 3,
-                // uri: 'dataability:///media/audio',
-                mimeType: 'audio/*',
-                mediaType: videoType,
-                displayName: '01.mp3',
-                title: '01',
-                relativePath: 'camera/',
-                parent: 1,
-                size: 3513962,
-                dateAdded: 1501923717,
-                dateModified: 1501923708,
-                dateTaken: 0,
-                // artist: '',
-                // audioAlbum: '',
-                width: 0,
-                height: 0,
-                orientation: 0,
-                duration: 0,
-                albumId: 0,
-                albumUri: '',
-                // albumName: '',
-            }
-            checkAssetAttr(done, firstObject, targetAttr, '004');
-            expect(true).assertTrue();
-            // fetchFileResult.close();
+            expect(firstObject.relativePath == 'camera/').assertTrue();
+            fetchFileResult.close();
+            console.info('MediaLibraryTest : FETCHRESULT getFirstObject 004 end');
             done();
-            console.info('MediaLibraryTest : GETFIRSTOBJECT end');
         } catch (error) {
             console.info('MediaLibraryTest : FETCHRESULT getFirstObject 004 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
     });
-
 
     // ------------------------------ 004 test end -------------------------
 
@@ -359,40 +322,17 @@ describe('fetch.file.result.promise.test.js', async function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETNEXTOBJECT_PROMISE_005', 0, async function (done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETNEXTOBJECT_PROMISE_005', 0, async function(done) {
         try {
-            console.info('MediaLibraryTest : GETNEXTOBJECT begin');
+            console.info('MediaLibraryTest : FETCHRESULT getNextObject 005 begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
             let firstObject = await fetchFileResult.getFirstObject();
+            expect(firstObject.relativePath == 'camera/').assertTrue();
             let nextObject = await fetchFileResult.getNextObject();
-            let targetAttr = {
-                id: 4,
-                // uri: 'dataability:///media/audio',
-                mimeType: 'image/*',
-                mediaType: imageType,
-                displayName: '02.jpg',
-                title: '02',
-                relativePath: 'camera/',
-                parent: 1,
-                size: 348113,
-                dateAdded: 1501923717,
-                dateModified: 1501923707,
-                dateTaken: 0,
-                // artist: '',
-                // audioAlbum: '',
-                width: 1279,
-                height: 1706,
-                orientation: 0,
-                duration: 0,
-                // albumId: 0,
-                // albumUri: '',
-                // albumName: '',
-            }
-            checkAssetAttr(done, nextObject, targetAttr, '005');
-            expect(true).assertTrue();
-            // fetchFileResult.close();
+            expect(nextObject.relativePath == 'camera/').assertTrue();
+            fetchFileResult.close();
             done();
-            console.info('MediaLibraryTest : GETNEXTOBJECT end');
+            console.info('MediaLibraryTest : FETCHRESULT getNextObject 005  end');
         } catch (error) {
             console.info('MediaLibraryTest : FETCHRESULT getNextObject 005 failed, message = ' + error);
             expect(false).assertTrue();
@@ -404,45 +344,21 @@ describe('fetch.file.result.promise.test.js', async function () {
     // ------------------------------ 006 test start -------------------------
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETLASTOBJECT_PROMISE_006
-     * @tc.name      : getNextObject
+     * @tc.name      : getLastObject
      * @tc.desc      : Get FetchResult, get first object, get next object, check result
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETLASTOBJECT_PROMISE_006', 0, async function (done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETLASTOBJECT_PROMISE_006', 0, async function(done) {
         try {
-            console.info('MediaLibraryTest : GETLASTOBJECT begin');
+            console.info('MediaLibraryTest : FETCHRESULT getLastObject begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
             let lastObject = await fetchFileResult.getLastObject();
-            let targetAttr = {
-                id: 9,
-                // uri: 'dataability:///media/audio',
-                mimeType: 'audio/*',
-                mediaType: audioType,
-                displayName: '02.mp3',
-                title: '02',
-                relativePath: 'camera/',
-                parent: 1,
-                size: 3513962,
-                dateAdded: 1501923717,
-                dateModified: 1501923710,
-                dateTaken: 0,
-                // artist: '',
-                // audioAlbum: '',
-                width: 0,
-                height: 0,
-                orientation: 0,
-                duration: 0,
-                // albumId: 0,
-                // albumUri: '',
-                // albumName: '',
-            }
-            checkAssetAttr(done, lastObject, targetAttr, '006');
-            expect(true).assertTrue();
+            expect(lastObject.relativePath == 'camera/').assertTrue();
+            fetchFileResult.close();
+            console.info('MediaLibraryTest : FETCHRESULT getLastObject 006 end');
             done();
-            // fetchFileResult.close();
-            console.info('MediaLibraryTest : GETLASTOBJECT end');
         } catch (error) {
             console.info('MediaLibraryTest : FETCHRESULT getLastObject 006 failed, message = ' + error);
             expect(false).assertTrue();
@@ -460,39 +376,15 @@ describe('fetch.file.result.promise.test.js', async function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_01', 0, async function (done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_01', 0, async function(done) {
         try {
-            console.info('MediaLibraryTest : GETPOSITIONOBJECT 0 begin');
+            console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_01 begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
             let targetObject = await fetchFileResult.getPositionObject(0);
-            let targetAttr = {
-                id: 3,
-                // uri: 'dataability:///media/audio',
-                mimeType: 'audio/*',
-                mediaType: videoType,
-                displayName: '01.mp3',
-                title: '01',
-                relativePath: 'camera/',
-                parent: 1,
-                size: 3513962,
-                dateAdded: 1501923717,
-                dateModified: 1501923708,
-                dateTaken: 0,
-                // artist: '',
-                // audioAlbum: '',
-                width: 0,
-                height: 0,
-                orientation: 0,
-                duration: 0,
-                albumId: 0,
-                albumUri: '',
-                // albumName: '',
-            }
-            checkAssetAttr(done, targetObject, targetAttr, '007_01');
-            expect(true).assertTrue();
-            // fetchFileResult.close();
+            expect(targetObject.relativePath == 'camera/').assertTrue();
+            fetchFileResult.close();
             done();
-            console.info('MediaLibraryTest : GETPOSITIONOBJECT 0 end');
+            console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_01 end');
         } catch (error) {
             console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_01 failed, message = ' + error);
             expect(false).assertTrue();
@@ -508,39 +400,15 @@ describe('fetch.file.result.promise.test.js', async function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_02', 0, async function (done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_02', 0, async function(done) {
         try {
-            console.info('MediaLibraryTest : GETPOSITIONOBJECT 1 begin');
+            console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_02 begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
             let targetObject = await fetchFileResult.getPositionObject(1);
-            let targetAttr = {
-                id: 4,
-                // uri: 'dataability:///media/audio',
-                mimeType: 'image/*',
-                mediaType: imageType,
-                displayName: '02.jpg',
-                title: '02',
-                relativePath: 'camera/',
-                parent: 1,
-                size: 348113,
-                dateAdded: 1501923717,
-                dateModified: 1501923707,
-                dateTaken: 0,
-                // artist: '',
-                // audioAlbum: '',
-                width: 1279,
-                height: 1706,
-                orientation: 0,
-                duration: 0,
-                // albumId: 0,
-                // albumUri: '',
-                // albumName: '',
-            }
-            checkAssetAttr(done, targetObject, targetAttr, '007_02');
-            expect(true).assertTrue();
-            // fetchFileResult.close();
+            expect(targetObject.relativePath == 'camera/').assertTrue();
+            fetchFileResult.close();
             done();
-            console.info('MediaLibraryTest : GETPOSITIONOBJECT 1 end');
+            console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_02 end');
         } catch (error) {
             console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_02 failed, message = ' + error);
             expect(false).assertTrue();
@@ -556,40 +424,16 @@ describe('fetch.file.result.promise.test.js', async function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_03', 0, async function (done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_03', 0, async function(done) {
         try {
-            console.info('MediaLibraryTest : GETPOSITIONOBJECT last begin');
+            console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_03 begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
             const count = await fetchFileResult.getCount();
             let targetObject = await fetchFileResult.getPositionObject(count - 1);
-            let targetAttr = {
-                id: 9,
-                // uri: 'dataability:///media/audio',
-                mimeType: 'audio/*',
-                mediaType: audioType,
-                displayName: '02.mp3',
-                title: '02',
-                relativePath: 'camera/',
-                parent: 1,
-                size: 3513962,
-                dateAdded: 1501923717,
-                dateModified: 1501923710,
-                dateTaken: 0,
-                // artist: '',
-                // audioAlbum: '',
-                width: 0,
-                height: 0,
-                orientation: 0,
-                duration: 0,
-                // albumId: 0,
-                // albumUri: '',
-                // albumName: '',
-            }
-            checkAssetAttr(done, targetObject, targetAttr, '007_03');
-            expect(true).assertTrue();
-            // fetchFileResult.close();
+            expect(targetObject.relativePath == 'camera/').assertTrue();
+            fetchFileResult.close();
             done();
-            console.info('MediaLibraryTest : GETPOSITIONOBJECT last end');
+            console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_03 end');
         } catch (error) {
             console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_03 failed, message = ' + error);
             expect(false).assertTrue();
@@ -605,27 +449,27 @@ describe('fetch.file.result.promise.test.js', async function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_04', 0, async function (done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_04', 0, async function(done) {
         try {
-            console.info('MediaLibraryTest : GETPOSITIONOBJECT out of index begin');
+            console.info('MediaLibraryTest :  FETCHRESULT getPositionObject 007_04 begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
             const count = await fetchFileResult.getCount();
             try {
                 let targetObject = await fetchFileResult.getPositionObject(count + 100);
                 if (targetObject == undefined) {
                     expect(true).assertTrue();
-                    // fetchFileResult.close();
+                    fetchFileResult.close();
                     done();
                 }
                 expect(false).assertTrue();
-                // fetchFileResult.close();
+                fetchFileResult.close();
                 done();
             } catch (err) {
                 expect(true).assertTrue();
-                // fetchFileResult.close();
+                fetchFileResult.close();
                 done();
             }
-            console.info('MediaLibraryTest : GETPOSITIONOBJECT out of index end');
+            console.info('MediaLibraryTest :  FETCHRESULT getPositionObject 007_04 end');
         } catch (error) {
             console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_04 failed, message = ' + error);
             expect(false).assertTrue();
@@ -643,42 +487,16 @@ describe('fetch.file.result.promise.test.js', async function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_PROMISE_008_01', 0, async function (done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_PROMISE_008_01', 0, async function(done) {
         try {
-            console.info('MediaLibraryTest : GETALLOBJECT begin');
+            console.info('MediaLibraryTest : FETCHRESULT getAllObject 008_01 begin');
             let fetchFileResult = await media.getFileAssets(getAllObjectLimitOneOp);
             var targetObjects = await fetchFileResult.getAllObject();
-            if (targetObjects.length > 0) {
-                var targetObject = targetObjects[0];
-                let targetAttr = {
-                    id: 3,
-                    // uri: 'dataability:///media/audio',
-                    mimeType: 'audio/*',
-                    mediaType: videoType,
-                    displayName: '01.mp3',
-                    title: '01',
-                    relativePath: 'camera/',
-                    parent: 1,
-                    size: 3513962,
-                    dateAdded: 1501923717,
-                    dateModified: 1501923708,
-                    dateTaken: 0,
-                    // artist: '',
-                    // audioAlbum: '',
-                    width: 0,
-                    height: 0,
-                    orientation: 0,
-                    duration: 0,
-                    albumId: 0,
-                    albumUri: '',
-                    // albumName: '',
-                }
-                checkAssetAttr(done, targetObject, targetAttr, '008_01');
-                expect(true).assertTrue();
-                // fetchFileResult.close();
-                done();
-            }
-            console.info('MediaLibraryTest : GETALLOBJECT end');
+            console.info('MediaLibraryTest : FETCHRESULT getAllObject 008_01 targetObjects.length:'
+                         + targetObjects.length);
+            expect(targetObjects.length <= 1).assertTrue();
+            console.info('MediaLibraryTest : FETCHRESULT getAllObject 008_01 end');
+            done();
         } catch (error) {
             console.info('MediaLibraryTest : FETCHRESULT getAllObject 008_01 failed, message = ' + error);
             expect(false).assertTrue();
@@ -694,73 +512,17 @@ describe('fetch.file.result.promise.test.js', async function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_PROMISE_008_02', 0, async function (done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_PROMISE_008_02', 0, async function(done) {
         try {
-            console.info('MediaLibraryTest : GETALLOBJECT begin');
+            console.info('MediaLibraryTest :  FETCHRESULT getAllObject 008_02 begin');
             let fetchFileResult = await media.getFileAssets(getAllObjectLimitTwoOp);
             var targetObjects = await fetchFileResult.getAllObject();
-            var targetAttrs = [{
-                    id: 3,
-                    // uri: 'dataability:///media/audio',
-                    mimeType: 'audio/*',
-                    mediaType: videoType,
-                    displayName: '01.mp3',
-                    title: '01',
-                    relativePath: 'camera/',
-                    parent: 1,
-                    size: 3513962,
-                    dateAdded: 1501923717,
-                    dateModified: 1501923708,
-                    dateTaken: 0,
-                    // artist: '',
-                    // audioAlbum: '',
-                    width: 0,
-                    height: 0,
-                    orientation: 0,
-                    duration: 0,
-                    albumId: 0,
-                    albumUri: '',
-                    // albumName: '',
-                },
-                {
-                    id: 4,
-                    // uri: 'dataability:///media/audio',
-                    mimeType: 'image/*',
-                    mediaType: imageType,
-                    displayName: '02.jpg',
-                    title: '02',
-                    relativePath: 'camera/',
-                    parent: 1,
-                    size: 348113,
-                    dateAdded: 1501923717,
-                    dateModified: 1501923707,
-                    dateTaken: 0,
-                    // artist: '',
-                    // audioAlbum: '',
-                    width: 1279,
-                    height: 1706,
-                    orientation: 0,
-                    duration: 0,
-                    // albumId: 0,
-                    // albumUri: '',
-                    // albumName: '',
-                },
-            ];
-            
-            console.info('MediaLibraryTest : targetObjects.length:' + targetObjects.length);
-            if (targetObjects.length >= 1) {
-                for (var i = 0; i < targetObjects.length; i++) {
-                    var targetObject = targetObjects[i];
-                    let targetAttr = targetAttrs[i];
-                    checkAssetAttr(done, targetObject, targetAttr, '008_02');
-                }
-                expect(true).assertTrue();
-                // fetchFileResult.close();
-                done();
-            }
-            console.info('MediaLibraryTest : GETALLOBJECT end');
+            expect(targetObjects.length <= 2).assertTrue();
+            console.info('MediaLibraryTest :  FETCHRESULT getAllObject 008_02 targetObjects.length:'
+                         + targetObjects.length);
+            console.info('MediaLibraryTest :  FETCHRESULT getAllObject 008_02 end');
+            done();
         } catch (error) {
-            console.info('MediaLibraryTest : ==5=');
             console.info('MediaLibraryTest : FETCHRESULT getAllObject 008_02 failed, message = ' + error);
             expect(false).assertTrue();
             done();
@@ -775,42 +537,16 @@ describe('fetch.file.result.promise.test.js', async function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_PROMISE_008_03', 0, async function (done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_PROMISE_008_03', 0, async function(done) {
         try {
-            console.info('MediaLibraryTest : GETALLOBJECT begin');
+            console.info('MediaLibraryTest : FETCHRESULT getAllObject 008_03 begin');
             let fetchFileResult = await media.getFileAssets(getAllObjectLimitOneHundredOp);
             var targetObjects = await fetchFileResult.getAllObject();
-            if (targetObjects.length > 0) {
-                var targetObject = targetObjects[0];
-                let targetAttr = {
-                    id: 3,
-                    // uri: 'dataability:///media/audio',
-                    mimeType: 'audio/*',
-                    mediaType: videoType,
-                    displayName: '01.mp3',
-                    title: '01',
-                    relativePath: 'camera/',
-                    parent: 1,
-                    size: 3513962,
-                    dateAdded: 1501923717,
-                    dateModified: 1501923708,
-                    dateTaken: 0,
-                    // artist: '',
-                    // audioAlbum: '',
-                    width: 0,
-                    height: 0,
-                    orientation: 0,
-                    duration: 0,
-                    albumId: 0,
-                    albumUri: '',
-                    // albumName: '',
-                }
-                checkAssetAttr(done, targetObject, targetAttr, '008_03');
-                expect(true).assertTrue();
-                // fetchFileResult.close();
-                done();
-            }
-            console.info('MediaLibraryTest : GETALLOBJECT end');
+            console.info('MediaLibraryTest :  FETCHRESULT getAllObject 008_03 targetObjects.length:'
+                         + targetObjects.length);
+            expect(targetObjects.length <= 100).assertTrue();
+            console.info('MediaLibraryTest : FETCHRESULT getAllObject 008_03 end');
+            done();
         } catch (error) {
             console.info('MediaLibraryTest : FETCHRESULT getAllObject 008_03 failed, message = ' + error);
             expect(false).assertTrue();
@@ -819,4 +555,129 @@ describe('fetch.file.result.promise.test.js', async function () {
     });
     // ------------------------------ 008 test end -------------------------
 
+    /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_getFirstObject_PROMISE_009_01
+     * @tc.name      : getFirstObject
+     * @tc.desc      : Get FetchResult, get first object, check result
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_getFirstObject_PROMISE_009_01', 0, async function(done) {
+        try {
+            console.info('MediaLibraryTest : FETCHRESULT getAllObject 009_01 begin');
+            let fetchFileResult = await media.getFileAssets(getFileOp);
+            let firstObject = await fetchFileResult.getFirstObject();
+            expect(firstObject.id != undefined).assertTrue();
+            if (firstObject.id == undefined) {
+                console.info('MediaLibraryTest :firstObject.id == undefined');
+            }
+
+            expect(firstObject.uri != undefined).assertTrue();
+            if (firstObject.uri == undefined) {
+                console.info('MediaLibraryTest :firstObject.uri === undefined');
+            }
+
+            expect(firstObject.mimeType == 'image/*').assertTrue();
+            if (firstObject.mimeType != 'image/*') {
+                console.info('MediaLibraryTest :firstObject.mimeType:' + firstObject.mimeType);
+            }
+
+            expect(firstObject.mediaType == imageType).assertTrue();
+            if (firstObject.mediaType != imageType) {
+                console.info('MediaLibraryTest :firstObject.mediaType:' + firstObject.mediaType);
+            }
+
+            expect(firstObject.displayName == '01.jpg').assertTrue();
+            if (firstObject.displayName != '01.jpg') {
+                console.info('MediaLibraryTest :firstObject.mediaType:' + firstObject.mediaType);
+            }
+
+            expect(firstObject.title == '01').assertTrue();
+            if (firstObject.title != '01') {
+                console.info('MediaLibraryTest :firstObject.title:' + firstObject.title);
+            }
+
+            expect(firstObject.relativePath == 'camera/').assertTrue();
+            if (firstObject.relativePath != 'camera/') {
+                console.info('MediaLibraryTest :firstObject.relativePath:' + firstObject.relativePath);
+            }
+
+            expect(firstObject.parent != undefined).assertTrue();
+            if (firstObject.parent == undefined) {
+                console.info('MediaLibraryTest :firstObject.parent == undefined');
+            }
+
+            expect(firstObject.size == 348113).assertTrue();
+            if (firstObject.size != 348113) {
+                console.info('MediaLibraryTest :firstObject.size:' + firstObject.size);
+            }
+
+            expect(firstObject.dateTaken == 0).assertTrue();
+            if (firstObject.dateTaken != 0) {
+                console.info('MediaLibraryTest :firstObject.dateTaken:' + firstObject.dateTaken);
+            }
+
+            expect(firstObject.artist == '').assertTrue();
+            if (firstObject.artist != '') {
+                console.info('MediaLibraryTest :firstObject.artist:' + firstObject.artist);
+            }
+
+            expect(firstObject.audioAlbum == '').assertTrue();
+            if (firstObject.audioAlbum != '') {
+                console.info('MediaLibraryTest :firstObject.audioAlbum:' + firstObject.audioAlbum);
+            }
+
+            expect(firstObject.width == 1279).assertTrue();
+            if (firstObject.width != 1279) {
+                console.info('MediaLibraryTest :firstObject.width:' + firstObject.width);
+            }
+
+            expect(firstObject.height == 1706).assertTrue();
+            if (firstObject.height != 1706) {
+                console.info('MediaLibraryTest :firstObject.height:' + firstObject.height);
+            }
+
+            expect(firstObject.orientation == 0).assertTrue();
+            if (firstObject.orientation != 0) {
+                console.info('MediaLibraryTest :firstObject.orientation:' + firstObject.orientation);
+            }
+
+            expect(firstObject.duration == 0).assertTrue();
+            if (firstObject.duration != 0) {
+                console.info('MediaLibraryTest :firstObject.duration:' + firstObject.duration);
+            }
+
+            expect(firstObject.albumId != undefined).assertTrue();
+            if (firstObject.albumId == undefined) {
+                console.info('MediaLibraryTest :firstObject.albumId == undefined');
+            }
+
+            expect(firstObject.albumUri != undefined).assertTrue();
+            if (firstObject.albumUri == undefined) {
+                console.info('MediaLibraryTest :firstObject.albumUri:' + firstObject.albumUri);
+            }
+
+            expect(firstObject.albumName == 'camera').assertTrue();
+            if (firstObject.albumName != 'camera') {
+                console.info('MediaLibraryTest :firstObject.albumName:' + firstObject.albumName);
+            }
+
+            expect(firstObject.dateAdded != undefined).assertTrue();
+            if (firstObject.dateAdded == undefined) {
+                console.info('MediaLibraryTest :firstObject.dateAdded:' + firstObject.dateAdded);
+            }
+
+            expect(firstObject.albumName != undefined).assertTrue();
+            if (firstObject.albumName == undefined) {
+                console.info('MediaLibraryTest :firstObject.albumName:' + firstObject.albumName);
+            }
+            console.info('MediaLibraryTest : FETCHRESULT getAllObject 009_01 end');
+            done();
+        } catch (error) {
+            console.info('MediaLibraryTest : FETCHRESULT getAllObject 009_01 failed, message = ' + error);
+            expect(false).assertTrue();
+            done();
+        }
+    });
 });

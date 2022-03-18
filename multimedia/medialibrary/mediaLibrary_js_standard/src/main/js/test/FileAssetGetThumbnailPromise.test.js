@@ -210,12 +210,12 @@ describe('FileAssetGetThumbnailPromise.test.js', function () {
             console.info('MediaLibraryTest : 001_05 pixel image info ' + info);
             console.info('MediaLibraryTest : 001_05 pixel width ' + info.size.width);
             console.info('MediaLibraryTest : 001_05 pixel height ' + info.size.height);
-            expect(true).assertTrue();
+            expect(false).assertTrue();
             console.info('MediaLibraryTest : getFileAssets 001_05 failed');
             done();
         } catch (error) {
             console.info('MediaLibraryTest : getFileAssets 001_05 passed');
-            expect(false).assertTrue();
+            expect(true).assertTrue();
             done();
         }
     });
@@ -239,12 +239,12 @@ describe('FileAssetGetThumbnailPromise.test.js', function () {
             console.info('MediaLibraryTest : 001_06 pixel image info ' + info);
             console.info('MediaLibraryTest : 001_06 pixel width ' + info.size.width);
             console.info('MediaLibraryTest : 001_06 pixel height ' + info.size.height);
-            expect(true).assertTrue();
+            expect(false).assertTrue();
             console.info('MediaLibraryTest : getThumbnail 001_06 failed');
             done();
         } catch (error) {
             console.info('MediaLibraryTest : getFileAssets 001_06 passed ');
-            expect(false).assertTrue();
+            expect(true).assertTrue();
             done();
         }
     });

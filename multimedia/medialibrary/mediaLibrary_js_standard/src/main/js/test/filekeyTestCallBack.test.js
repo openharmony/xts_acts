@@ -77,10 +77,21 @@ async function getFileAssetsBy(done, type) {
     };
 
     try {
-        let fetchFileResult = await media.getFileAssets(Op);
-        const fetchCount = fetchFileResult.getCount();
-        expect(fetchCount > 0).assertTrue();
-        done();
+        media.getFileAssets(Op, async(err, fetchFileResult) => {
+            if (fetchFileResult == undefined) {
+                expect(false).assertTrue();
+                done();
+            } else {
+                try {
+                    const fetchCount = await fetchFileResult.getCount();
+                    console.log('getFileAssetsBy ' + type + 'fetchCount = ' + fetchCount);
+                    expect(fetchCount > 0).assertTrue();
+                    done();
+                } catch (error) {
+                    console.log('getFileAssetsBy ' + type + ' failed error message = ' + error);
+                }
+            }
+        });
     } catch (error) {
         expect(false).assertTrue();
         done();
