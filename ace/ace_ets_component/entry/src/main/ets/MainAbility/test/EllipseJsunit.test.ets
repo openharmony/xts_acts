@@ -52,8 +52,8 @@ export default function ellipseJsunit() {
       let strJson = getInspectorByKey('ellipse');
       let obj = JSON.parse(strJson);
       console.info("[testEllipse02] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.height).assertEqual('200.000000px');
-      expect(obj.$attrs.width).assertEqual('200.000000px');
+      expect(obj.$attrs.height).assertEqual('200.00px');
+      expect(obj.$attrs.width).assertEqual('200.00px');
       console.info('testEllipse02 END');
       done();
     });
@@ -67,7 +67,7 @@ export default function ellipseJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 5,
+          eventId: 92,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testEllipse02] start to publish emit");
@@ -79,7 +79,7 @@ export default function ellipseJsunit() {
       let strJson = getInspectorByKey('ellipse');
       let obj = JSON.parse(strJson);
       console.info("[testEllipse02] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.width).assertEqual('100.000000px');
+      expect(obj.$attrs.width).assertEqual('100.00px');
       console.info('testEllipse02 END');
       done();
     });
@@ -93,7 +93,7 @@ export default function ellipseJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 5,
+          eventId: 92,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testEllipse03] start to publish emit");
@@ -105,7 +105,7 @@ export default function ellipseJsunit() {
       let strJson = getInspectorByKey('ellipse');
       let obj = JSON.parse(strJson);
       console.info("[testEllipse03] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.height).assertEqual('500.000000px');
+      expect(obj.$attrs.height).assertEqual('500.00px');
       console.info('testEllipse03 END');
       done();
     });

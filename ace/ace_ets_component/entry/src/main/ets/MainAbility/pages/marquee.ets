@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.events.emitter'
+import events_emitter from '@ohos.emitter'
 
 @Entry
 @Component
@@ -54,7 +55,7 @@ struct MarqueeExample {
               }
             }
             var backEvent = {
-              eventId: 11,
+              eventId: 127,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("Onstart start to emit action state")
@@ -73,7 +74,7 @@ struct MarqueeExample {
               }
             }
             var backEvent = {
-              eventId: 15,
+              eventId: 128,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("Onbounce start to emit action state")
@@ -93,7 +94,7 @@ struct MarqueeExample {
               }
             }
             var backEvent = {
-              eventId: 16,
+              eventId: 129,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("Onfinish start to emit action state")
@@ -113,7 +114,7 @@ struct MarqueeExample {
               }
             }
             var backEvent = {
-              eventId: 10,
+              eventId: 130,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("start to emit action state")

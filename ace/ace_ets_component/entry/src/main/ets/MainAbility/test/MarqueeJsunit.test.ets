@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,12 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
-import events_emitter from '@ohos.events.emitter';
 
+import events_emitter from '@ohos.events.emitter';
 export default function marqueeJsunit() {
   describe('marqueeTest', function () {
     beforeEach(async function (done) {
@@ -54,7 +54,7 @@ export default function marqueeJsunit() {
         expect(indexEvent.data.start).assertEqual(true);
       }
       let indexEvent = {
-        eventId: 10,
+        eventId: 130,
         priority: events_emitter.EventPriority.LOW
       }
       try {
@@ -69,7 +69,7 @@ export default function marqueeJsunit() {
         expect(eventData.data.fontColor).assertEqual(Color.Blue);
       }
       var innerEventOne = {
-        eventId: 11,
+        eventId: 127,
         priority: events_emitter.EventPriority.LOW
       }
       try {
@@ -89,7 +89,7 @@ export default function marqueeJsunit() {
         expect(indexEvent.data.start).assertEqual(true);
       }
       let indexEvent = {
-        eventId: 10,
+        eventId: 130,
         priority: events_emitter.EventPriority.LOW
       }
       try {
@@ -104,7 +104,7 @@ export default function marqueeJsunit() {
         expect(eventData.data.fontSize).assertEqual(50);
       }
       var innerEventOne = {
-        eventId: 15,
+        eventId: 128,
         priority: events_emitter.EventPriority.LOW
       }
       try {
@@ -124,7 +124,7 @@ export default function marqueeJsunit() {
         expect(indexEvent.data.start).assertEqual(true);
       }
       let indexEvent = {
-        eventId: 10,
+        eventId: 130,
         priority: events_emitter.EventPriority.LOW
       }
       try {
@@ -139,7 +139,7 @@ export default function marqueeJsunit() {
         expect(eventData.data.ACTION).assertEqual(true);
       }
       var innerEventOne = {
-        eventId: 16,
+        eventId: 129,
         priority: events_emitter.EventPriority.LOW
       }
       try {

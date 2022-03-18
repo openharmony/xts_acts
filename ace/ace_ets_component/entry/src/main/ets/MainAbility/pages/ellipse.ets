@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.events.emitter';
+
+import events_emitter from '@ohos.emitter';
 
 @Entry
 @Component
@@ -24,7 +25,7 @@ struct EllipseExample {
   onPageShow() {
     console.info('[ellipse] page show called');
     var stateChangeEvent = {
-      eventId: 5,
+      eventId: 92,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);

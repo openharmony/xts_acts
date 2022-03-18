@@ -56,10 +56,10 @@ export default function listJsunit() {
       expect(obj.$attrs.editMode).assertEqual('false');
       expect(obj.$attrs.edgeEffect).assertEqual('EdgeEffect.None');
       expect(obj.$attrs.chainAnimation).assertEqual('false');
-      expect(obj.$attrs.divider.strokeWidth).assertEqual("2.000000vp");
+      expect(obj.$attrs.divider.strokeWidth).assertEqual("2.00vp");
       expect(obj.$attrs.divider.color).assertEqual("#FFFFFFFF");
-      expect(obj.$attrs.divider.startMargin).assertEqual("20.000000vp");
-      expect(obj.$attrs.divider.endMargin).assertEqual("20.000000vp");
+      expect(obj.$attrs.divider.startMargin).assertEqual("20.00vp");
+      expect(obj.$attrs.divider.endMargin).assertEqual("20.00vp");
       console.info('[testList01] END');
       done();
     });
@@ -73,7 +73,7 @@ export default function listJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 80,
+          eventId: 124,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testList02] start to publish emit:" + JSON.stringify(eventData.data));
@@ -99,7 +99,7 @@ export default function listJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 80,
+          eventId: 124,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testList03] start to publish emit:" + JSON.stringify(eventData.data));
@@ -125,7 +125,7 @@ export default function listJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 80,
+          eventId: 124,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testList04] start to publish emit:" + JSON.stringify(eventData.data));
@@ -151,7 +151,7 @@ export default function listJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 80,
+          eventId: 124,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testList05] start to publish emit:" + JSON.stringify(eventData.data));
@@ -177,7 +177,7 @@ export default function listJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 81,
+          eventId: 125,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testList06] start to publish emit:" + JSON.stringify(eventData.data));
@@ -189,7 +189,7 @@ export default function listJsunit() {
       let strJson = getInspectorByKey('list');
       let obj = JSON.parse(strJson);
       console.info("[testList06] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.divider.strokeWidth).assertEqual("3.000000vp");
+      expect(obj.$attrs.divider.strokeWidth).assertEqual("3.00vp");
       console.info('testList06 END');
       done();
     });
@@ -203,7 +203,7 @@ export default function listJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 81,
+          eventId: 125,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testList07] start to publish emit:" + JSON.stringify(eventData.data));
@@ -229,7 +229,7 @@ export default function listJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 81,
+          eventId: 125,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testList08] start to publish emit:" + JSON.stringify(eventData.data));
@@ -241,7 +241,7 @@ export default function listJsunit() {
       let strJson = getInspectorByKey('list');
       let obj = JSON.parse(strJson);
       console.info("[testList08] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.divider.startMargin).assertEqual("30.000000vp");
+      expect(obj.$attrs.divider.startMargin).assertEqual("30.00vp");
       console.info('testList08 END');
       done();
     });
@@ -255,7 +255,7 @@ export default function listJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 81,
+          eventId: 125,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testList09] start to publish emit:" + JSON.stringify(eventData.data));
@@ -267,7 +267,7 @@ export default function listJsunit() {
       let strJson = getInspectorByKey('list');
       let obj = JSON.parse(strJson);
       console.info("[testList09] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.divider.endMargin).assertEqual("30.000000vp");
+      expect(obj.$attrs.divider.endMargin).assertEqual("30.00vp");
       console.info('testList09 END');
       done();
     });

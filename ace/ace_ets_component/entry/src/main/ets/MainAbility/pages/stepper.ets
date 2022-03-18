@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.events.emitter'
+
+import events_emitter from '@ohos.emitter'
 
 @Entry
 @Component
@@ -97,7 +99,7 @@ struct StepperExample {
   onPageShow() {
     console.info('stepper page show called');
     var stateChangeEvent = {
-      eventId: 12,
+      eventId: 202,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
