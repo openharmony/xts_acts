@@ -154,6 +154,30 @@ export default function radioSecondJsunit() {
       });
     })
 
+    /**
+     * @tc.number  Telephony_Radio_CdmaCellInformation_sid_0100
+     * @tc.name    sid
+     * @tc.desc    sid test
+     */
+    it('Telephony_Radio_CdmaCellInformation_sid_0100', 0, async function (done) {
+      console.log("-----------------------Telephony_Radio_CdmaCellInformation_sid_0100 start-----------------------");
+      if (utils.notCheck) {
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      let cdmaCellInformatio = {
+        baseId: 1,
+        latitude: 39,
+        longitude: 116,
+        nid: 101,
+        sid: 102
+      }
+      expect(101).assertEqual(cdmaCellInformatio.nid);
+      expect(102).assertEqual(cdmaCellInformatio.sid);
+      console.log("-----------------------Telephony_Radio_CdmaCellInformation_sid_0100 end-----------------------");
+    })
+
 
     /**
      * @tc.number  Telephony_NetworkSearch_getNetworkSearchInformation_Async_0100
