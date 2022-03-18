@@ -10,18 +10,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import("//test/xts/tools/build/suite.gni")
 
-import("//build/ohos_var.gni")
-
-group("SubscribeAndPublish") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "actspublish:ActsPublish",
-      "actssubscriberorderedtest:ActsSubscriberOrderTest",
-      "actssubscriberunordersystemtest:ActsSubscriberTestUnorderSystemTest",
-      "actssubscriberunordertest:ActsSubscriberUnorderTest",
-      "emittertest:EmitterTest",
-    ]
-  }
+ohos_js_hap_suite("ActsPublish") {
+  hap_profile = "./entry/src/main/config.json"
+  deps = [
+    ":hjs_demo_js_assets",
+    ":hjs_demo_resources",
+  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsPublish"
+}
+ohos_js_assets("hjs_demo_js_assets") {
+  source_dir = "./entry/src/main/js/default"
+}
+ohos_resources("hjs_demo_resources") {
+  sources = [ "./entry/src/main/js/resources" ]
+  hap_profile = "./entry/src/main/config.json"
 }
