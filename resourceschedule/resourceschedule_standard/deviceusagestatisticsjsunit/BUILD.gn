@@ -11,16 +11,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos_var.gni")
+import("//test/xts/tools/build/suite.gni")
 
-group("resourceschedule_standard") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "backgroundtaskmanager:resourceschedule_backgroundtaskmanager_js_test",
-      "deviceusagestatisticsjsunit:resourceschedule_deviceusagestatisticsjsunit_js_test",
-      "reminderagent:resourceschedule_reminderagent_js_test",
-      "workscheduler:resourceschedule_workscheduler_js_test",
-    ]
-  }
+ohos_js_hap_suite("resourceschedule_deviceusagestatisticsjsunit_js_test") {
+  hap_profile = "./src/main/config.json"
+  deps = [
+    ":resourceschedule_js_assets",
+    ":resourceschedule_js_resources",
+  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsResourcescheduleDeviceUsageStatisticsJsunitTest"
+}
+ohos_js_assets("resourceschedule_js_assets") {
+  source_dir = "./src/main/js/default"
+}
+ohos_resources("resourceschedule_js_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }

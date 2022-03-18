@@ -180,4 +180,27 @@ describe("TransientTaskJsTest", function () {
         }
         done();
     })
+	
+	/*
+     * @tc.name: TransientTaskJsTest006
+     * @tc.desc: test DelaySuspendInfo actualDealyTime
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("TransientTaskJsTest006", 0, async function (done) {
+        function callback() {}
+        var info = backgroundTaskManager.requestSuspendDelay("test", callback);
+        if (info.requestId != -1) {
+            console.info('TransientTaskJsTest006  DelaySuspendInfo actualDealyTime:' + 
+            info.actualDealyTime);
+            expect(info).assertTrue();
+        } else {
+            expect(false).assertTrue();
+			done();
+        }
+        
+		setTimeout(() => {
+			done();
+		},500);
+    })
 })
