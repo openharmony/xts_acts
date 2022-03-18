@@ -613,12 +613,12 @@ describe('TimeTest', function() {
 		console.log('setTime = ' + time)
 		systemTime.setTime(time)
 		
-		var resGetTime = systemTime.getCurrentTime()
+		var resGetTime = systemTime.getCurrentTime(true)
 		console.log('GetTime = ' + resGetTime)
 		assert.equal(resGetTime,time)
 		
 		sleep(5000).then(() => {
-			resGetTime = systemTime.getCurrentTime();
+			resGetTime = systemTime.getCurrentTime(true);
 			console.log('GetTime = ' + resGetTime);
 			assert.equal(resGetTime <= (time + 6000) && resGetTime >= (time + 5000));
 			
@@ -641,12 +641,12 @@ describe('TimeTest', function() {
 		console.log('setTime = ' + time)
 		systemTime.setTime(time)
 		
-		var resGetTime = systemTime.getCurrentTime()
+		var resGetTime = systemTime.getCurrentTime(true)
 		console.log('GetTime = ' + resGetTime)
 		assert.equal(resGetTime,time)
 		
 		sleep(5000).then(() => {
-			resGetTime = systemTime.getCurrentTime();
+			resGetTime = systemTime.getCurrentTime(true);
 			console.log('GetTime = ' + resGetTime);
 			assert.equal(resGetTime <= (time + 6000) && resGetTime >= (time + 5000));
 			
@@ -669,12 +669,12 @@ describe('TimeTest', function() {
 		console.log('setTime = ' + time)
 		systemTime.setTime(time)
 		
-		var resGetTime = systemTime.getCurrentTime()
+		var resGetTime = systemTime.getCurrentTime(true)
 		console.log('GetTime = ' + resGetTime)
 		assert.equal(resGetTime,time)
 		
 		sleep(5000).then(() => {
-			resGetTime = systemTime.getCurrentTime();
+			resGetTime = systemTime.getCurrentTime(true);
 			console.log('GetTime = ' + resGetTime);
 			assert.equal(resGetTime <= (time + 6000) && resGetTime >= (time + 5000));
 			
@@ -684,7 +684,7 @@ describe('TimeTest', function() {
 	
     /**
      * @tc.number    SUB_systemTime_setTime_JS_API_0400
-     * @tc.name      Test systemTime.setTime time = Number.MAX_VALUE/2, getCurrentTimeNs
+     * @tc.name      Test systemTime.setTime time = -1
      * @tc.desc      Test systemTime_setTime API functionality.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -692,37 +692,12 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTime_test4',0, async () => {
         console.log('SUB_systemTime_setTime_JS_API_0400 start')
-        var time = Number.MAX_VALUE/2
-		
-		console.log('setTime = ' + time)
-		systemTime.setTime(time)
-		
-		sleep(5000).then(() => {
-			var resGetTime = systemTime.getCurrentTimeNs();
-			console.log('GetTime = ' + resGetTime);
-			assert.equal(resGetTime <= ((time + 6000) * 1000000) && resGetTime >= ((time + 5000) * 1000000));
-			
-			console.log('SUB_systemTime_setTime_JS_API_0400 end');
-		})	 	
-    })
-	
-	
-    /**
-     * @tc.number    SUB_systemTime_setTime_JS_API_0500
-     * @tc.name      Test systemTime.setTime  time = -1
-     * @tc.desc      Test systemTime_setTime API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('systemTime_setTime_test5',0, async () => {
-        console.log('SUB_systemTime_setTime_JS_API_0500 start')
         var time = -1
 		
 		console.log('setTime = ' + time)
 		systemTime.setTime(time)
 		
-		console.log('SUB_systemTime_setTime_JS_API_0500 end');
+		console.log('SUB_systemTime_setTime_JS_API_0400 end');
     })
 	
 	/**
@@ -1048,29 +1023,6 @@ describe('TimeTest', function() {
     })
 	
 	/**
-     * @tc.number    SUB_systemTime_getRealActiveTimeNs_JS_API_0100
-     * @tc.name      Test systemTime.getRealActiveTimeNs
-     * @tc.desc      Test systemTime_getRealActiveTimeNs API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('systemTime_getRealActiveTimeNs_test1',0, async () => {
-        console.log('SUB_systemTime_getRealActiveTimeNs_JS_API_0100 start')
-		
-		var resGetTime0 = systemTime.getRealActiveTimeNs()
-		console.log('GetTime0 = ' + resGetTime0)
-		
-		sleep(5000).then(() => {
-			var resGetTime1 = systemTime.getRealActiveTimeNs();
-			console.log('GetTime1 = ' + resGetTime1);
-			assert.equal(resGetTime1 <= (resGetTime0 + 6000 * 1000000) && resGetTime1 >= (resGetTime0 + 5000 * 1000000));
-			
-			console.log('SUB_systemTime_getRealActiveTimeNs_JS_API_0100 end');
-		})	 	
-    })
-	
-	/**
      * @tc.number    SUB_systemTime_getRealTime_JS_API_0100
      * @tc.name      Test systemTime.getRealTime
      * @tc.desc      Test systemTime_getRealTime API functionality.
@@ -1090,29 +1042,6 @@ describe('TimeTest', function() {
 			assert.equal(resGetTime1 <= (resGetTime0 + 6000) && resGetTime1 >= (resGetTime0 + 5000));
 			
 			console.log('SUB_systemTime_getRealTime_JS_API_0100 end');
-		})	 	
-    })
-	
-	/**
-     * @tc.number    SUB_systemTime_getRealTimeNs_JS_API_0100
-     * @tc.name      Test systemTime.getRealTimeNs
-     * @tc.desc      Test systemTime_getRealTimeNs API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('systemTime_getRealTimeNs_test1',0, async () => {
-        console.log('SUB_systemTime_getRealTimeNs_JS_API_0100 start')
-		
-		var resGetTime0 = systemTime.getRealTimeNs()
-		console.log('GetTime0 = ' + resGetTime0)
-		
-		sleep(5000).then(() => {
-			var resGetTime1 = systemTime.getRealTimeNs();
-			console.log('GetTime1 = ' + resGetTime1);
-			assert.equal(resGetTime1 <= (resGetTime0 + 6000 * 1000000) && resGetTime1 >= (resGetTime0 + 5000 * 1000000));
-			
-			console.log('SUB_systemTime_getRealTimeNs_JS_API_0100 end');
 		})	 	
     })
 	
