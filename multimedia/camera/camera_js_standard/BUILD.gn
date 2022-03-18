@@ -14,22 +14,19 @@
 import("//test/xts/tools/build/suite.gni")
 ohos_js_hap_suite("camera_standard_ets_hap") {
   hap_profile = "./src/main/config.json"
-  deps = []
+  deps = [
+    ":camera_ets_assets",
+    ":camera_ets_resources",
+  ]
+  ets2abc = true
 
-  #  shared_libraries = [
-  #    "//third_party/giflib:libgif",
-  #    "//third_party/libpng:libpng",
-  #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "CameraStandardETSTest"
-
-  #  part_name = "prebuilt_hap"
-  #  subsystem_name = "xts"
+  hap_name = "ActsCameraStandardETSTest"
 }
-ohos_js_assets("camera_standard_ets_assets") {
-  source_dir = "./src/main/ets/default"
+ohos_js_assets("camera_ets_assets") {
+  source_dir = "./src/main/ets/MainAbility"
 }
-ohos_resources("camera_standard_ets_resources") {
+ohos_resources("camera_ets_resources") {
   sources = [ "./src/main/resources" ]
   hap_profile = "./src/main/config.json"
 }
