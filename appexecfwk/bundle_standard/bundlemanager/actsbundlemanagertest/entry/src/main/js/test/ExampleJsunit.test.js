@@ -2126,14 +2126,13 @@ describe('ActsBundleManagerTest', function () {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(demo.InstallErrorCode.SUCCESS);
             expect(data.statusMessage).assertEqual('SUCCESS');
-            getInfo();
-        });
-        async function getInfo() {
-            demo.queryAbilityByWant(
+            await demo.queryAbilityByWant(
                 {
                     "bundleName": "com.example.myapplication1",
                     "abilityName": "com.example.myapplication1.MainAbility",
-                }, demo.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | demo.BundleFlag.GET_ABILITY_INFO_WITH_PERMISSION,
+                }, demo.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | 
+                demo.BundleFlag.GET_ABILITY_INFO_WITH_PERMISSION | 
+                demo.BundleFlag.GET_ABILITY_INFO_WITH_METADATA,
                     100).then(data => {
                     expect(data.length).assertLarger(0);
                     for (let i = 0, len = data.length; i < len; i++) {
@@ -2144,9 +2143,9 @@ describe('ActsBundleManagerTest', function () {
                         expect(datainfo.icon).assertEqual("$media:icon")
                         expect(datainfo.moduleName).assertEqual("entry")
                         expect(datainfo.bundleName).assertEqual(NAME1)
-                        expect(datainfo.type).assertEqual(1)
+                        expect(datainfo.type).assertEqual(demo.AbilityType.PAGE)
                         expect(datainfo.subType).assertEqual(demo.AbilitySubType.UNSPECIFIED)
-                        expect(datainfo.orientation).assertEqual(0)
+                        expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.UNSPECIFIED)
                         expect(datainfo.launchMode).assertEqual(demo.LaunchMode.STANDARD)
                         expect(datainfo.permissions[0]).assertEqual("com.permission.BMS_PERMISSION_CAMERA")
                         expect(datainfo.applicationInfo.name).assertEqual(NAME1)
@@ -2159,12 +2158,14 @@ describe('ActsBundleManagerTest', function () {
                         expect(datainfo.applicationInfo.systemApp).assertEqual(true)
                         expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
                         expect(datainfo.applicationInfo.enabled).assertEqual(true)
-                        expect(datainfo.metaData.customizeDatas.length).assertLarger(0)
+                        expect(datainfo.metaData.length).assertLarger(0)
                         for (var j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
                             expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
                             expect(datainfo.applicationInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1)
                         }
                     }
+                }).catch(err => {
+                    expect(err).assertFail();
                 })
             installData.uninstall(NAME1, {
                 userId: 100,
@@ -2176,7 +2177,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(data.statusMessage).assertEqual('SUCCESS');
                 done();
             });
-        }
+        });
     })
 
     /**
