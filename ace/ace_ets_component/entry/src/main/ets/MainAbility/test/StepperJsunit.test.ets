@@ -71,7 +71,7 @@ export default function stepperJsunit() {
           }
         }
         let indexEvent = {
-          eventId: 12,
+          eventId: 202,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("stepperTest_0200 start to publish emit");

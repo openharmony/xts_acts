@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.events.emitter'
+
+import events_emitter from '@ohos.emitter'
 
 class MyDataSource implements IDataSource {
   private list: number[] = []
@@ -45,6 +46,9 @@ struct SwiperExample {
   private swiperController: SwiperController = new SwiperController()
   private data: MyDataSource = new MyDataSource([])
   @State index: number = 1
+  @State displayCount: number = 3
+  @State displayMode: number = SwiperDisplayMode.AutoLinear
+  @State edgeEffect: number = EdgeEffect.None
   @State autoPlay: boolean = true
   @State interval: number = 4000
   @State indicator: boolean = true
@@ -85,6 +89,10 @@ struct SwiperExample {
       .duration(this.duration)
       .vertical(this.vertical)
       .itemSpace(this.itemSpace)
+      .displayMode(this.displayMode)
+      .displayCount(this.displayCount)
+      .effectMode(this.edgeEffect)
+      .indicatorStyle({ top: 20, right: 20,size:2,color: Color.Blue})
       .key('swiper')
       .onChange((index: number) => {
         console.info(index.toString())
@@ -97,7 +105,7 @@ struct SwiperExample {
             }
           }
           var backEvent = {
-            eventId: 20,
+            eventId: 204,
             priority: events_emitter.EventPriority.LOW
           }
           console.info("onChange start to emit action state")
@@ -121,7 +129,7 @@ struct SwiperExample {
                 }
               }
               var backEvent = {
-                eventId: 18,
+                eventId: 205,
                 priority: events_emitter.EventPriority.LOW
               }
               console.info("button1 start to emit action state")
@@ -143,7 +151,7 @@ struct SwiperExample {
                 }
               }
               var backEvent = {
-                eventId: 19,
+                eventId: 206,
                 priority: events_emitter.EventPriority.LOW
               }
               console.info("button2 start to emit action state")
@@ -159,25 +167,25 @@ struct SwiperExample {
   onPageShow() {
     console.info('swiper page show called');
     var stateChangeEvent = {
-      eventId: 17,
+      eventId: 207,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
 
     var stateChangeEventOne = {
-      eventId: 55,
+      eventId: 208,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventOne, this.stateChangCallBack)
 
     var stateChangeEventTwo = {
-      eventId: 56,
+      eventId: 209,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
 
     var stateChangeEventTwo = {
-      eventId: 57,
+      eventId: 210,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)

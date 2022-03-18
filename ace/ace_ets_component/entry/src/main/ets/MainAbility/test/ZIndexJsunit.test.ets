@@ -18,7 +18,7 @@ import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
-export default function enableJsunit() {
+export default function zIndexJsunit() {
   describe('appInfoTest', function () {
     beforeEach(async function (done) {
       console.info("zIndex beforeEach start");
@@ -42,13 +42,13 @@ export default function enableJsunit() {
     });
 
     afterEach(async function () {
-      await Utils.sleep(1000);
+      await Utils.sleep(2000);
       console.info("zIndex after each called");
     });
 
     it('testZIndex01', 0, async function (done) {
       console.info('[testZIndex01] START');
-      await Utils.sleep(1000);
+      await Utils.sleep(2000);
       let strJson = getInspectorByKey('zIndex');
       let obj = JSON.parse(strJson);
       console.info("[testZIndex01] obj is: " + JSON.stringify(obj.$attrs));
@@ -66,7 +66,7 @@ export default function enableJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 84,
+          eventId: 236,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testZIndex02] start to publish emit");
@@ -92,7 +92,7 @@ export default function enableJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 84,
+          eventId: 236,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testZIndex03] start to publish emit");

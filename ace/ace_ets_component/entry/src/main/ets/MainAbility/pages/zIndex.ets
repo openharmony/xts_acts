@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +14,8 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.events.emitter'
+
+import events_emitter from '@ohos.emitter'
 
 @Entry
 @Component
@@ -23,7 +25,7 @@ struct zIndexExample {
   onPageShow() {
     console.info('[zIndex] page show called ');
     var stateChangeEvent = {
-      eventId: 84,
+      eventId: 236,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
