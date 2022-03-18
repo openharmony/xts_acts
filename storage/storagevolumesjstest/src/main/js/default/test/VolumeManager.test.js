@@ -56,7 +56,7 @@ describe("volumeManager", function () {
                 expect(isString(path)).assertTrue();
             }
         } catch (e) {
-            console.log("volume_manager_test_get_all_volumes_async_000 has failed for " + e);
+            console.log("volume_manager_test_get_all_volumes_async_000 has failed for :" + e);
             expect(null).assertFail();
         }
         done();
