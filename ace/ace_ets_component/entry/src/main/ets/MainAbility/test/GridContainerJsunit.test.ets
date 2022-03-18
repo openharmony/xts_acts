@@ -55,8 +55,8 @@ export default function girdContainerJsunit() {
       expect(obj.$type).assertEqual('GridContainer');
       expect(obj.$attrs.constructor.columns).assertEqual('12');
       expect(obj.$attrs.constructor.sizeType).assertEqual('SizeType.XS');
-      expect(obj.$attrs.constructor.gutter).assertEqual('10.000000vp');
-      expect(obj.$attrs.constructor.margin).assertEqual('20.000000vp');
+      expect(obj.$attrs.constructor.gutter).assertEqual('10.00vp');
+      expect(obj.$attrs.constructor.margin).assertEqual('20.00vp');
       console.info('testGirdContainer01 END');
       done();
     });
@@ -71,7 +71,7 @@ export default function girdContainerJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 7,
+          eventId: 109,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testGirdContainer02] start to publish emit");
