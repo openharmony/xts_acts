@@ -30,10 +30,10 @@ int IpcSignalTest::mShmid = 0;
 siginfo_t IpcSignalTest::mSiginfo;
 
 
-// special signal hander for function 'abort'
+// special signal handler for function 'abort'
 void IpcSignalTest::SigAbortHandler(int signum)
 {
-    LOG("hander: recv a signal: %d", signum);
+    LOG("handler: recv a signal: %d", signum);
     int *shared = static_cast<int*>(shmat(mShmid, nullptr, 0));
     if (shared == reinterpret_cast<int*>(-1)) {
         LOG("SigAbortHandler: shmat fail, errno = %d", errno);
@@ -49,15 +49,15 @@ void IpcSignalTest::SigAbortHandler(int signum)
 // special signal handler for function 'sigaction'
 void IpcSignalTest::SigactionHandler(int signum, siginfo_t* si, void* ucontext)
 {
-    LOG("hander recv a signal: %s(%d)", ALL_SIGNALS[signum].signame, signum);
+    LOG("handler recv a signal: %s(%d)", ALL_SIGNALS[signum].signame, signum);
     mReceivedSignal = signum;
     // siginfo_t para is not supported yet
 }
 
-// general signal hander. note: not thread-safe
+// general signal handler. note: not thread-safe
 void IpcSignalTest::SignalHandler(int signum)
 {
-    LOG("hander recv a signal: %s(%d)", ALL_SIGNALS[signum].signame, signum);
+    LOG("handler recv a signal: %s(%d)", ALL_SIGNALS[signum].signame, signum);
     mReceivedSignal = signum;
 }
 
@@ -101,7 +101,7 @@ void IpcSignalTest::DefaultActionTest(const int signum, const bool expectStop, c
     ASSERT_TRUE(pid >= 0) << "======== Fork Error! =========";
     if (pid > 0) { // parent
         Msleep(20);
-        LOGD("befor kill");
+        LOGD("before kill");
         kill(pid, signum);
         if (!expectStop) {
             Msleep(20);

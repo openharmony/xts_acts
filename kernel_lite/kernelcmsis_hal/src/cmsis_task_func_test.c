@@ -136,24 +136,24 @@ static void CmsisThreadCreat004Func001(void const *argument)
 static void KeepRunByTick(UINT32 tick)
 {
     UINT32 tickA = osKernelGetTickCount();
-    UINT32 runned = 0;
+    UINT32 ran = 0;
     UINT32 loop = 0;
     UINT32 tickB = 0;
-    while (runned < tick) {
+    while (ran < tick) {
         loop++;
         tickB = osKernelGetTickCount();
         if (tickB >= tickA) {
-            runned = tickB - tickA;
+            ran = tickB - tickA;
         } else {
-            runned = tickB + (MAX_UINT32 - tickA);
+            ran = tickB + (MAX_UINT32 - tickA);
         }
         if (loop % ALIVE_INFO_DIS == 0) {
-            printf("runned:%u, tickB:%u, tickA:%u, loop:%u\t\n",
-                runned, tickB, tickA, loop);
+            printf("ran:%u, tickB:%u, tickA:%u, loop:%u\t\n",
+                ran, tickB, tickA, loop);
         }
     }
-    printf("return runned:%u, tickB:%u, tickA:%u\t\n",
-        runned, tickB, tickA);
+    printf("return ran:%u, tickB:%u, tickA:%u\t\n",
+        ran, tickB, tickA);
     return;
 }
 
@@ -532,7 +532,7 @@ LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadNew004, Function | MediumTest
 
 /**
  * @tc.number    : SUB_KERNEL_CMSIS_TASK_OPERATION_0200
- * @tc.name      : thread operation for cycle schdule
+ * @tc.name      : thread operation for cycle schedule
  * @tc.desc      : [C- SOFTWARE -0200]
  */
 LITE_TEST_CASE(CmsisTaskFuncTestSuite, testOsThreadNew005, Function | MediumTest | Level1)

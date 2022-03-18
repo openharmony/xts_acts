@@ -122,6 +122,7 @@ HWTEST_F(MemApiTest, testReallocMem, Function | MediumTest | Level3)
     char *data = nullptr;
     int i, failure;
     char testChar = 0x36;
+    void *memp = nullptr;
 
     failure = 0;
     for (i = 1; i < 5; i++) {
@@ -131,7 +132,13 @@ HWTEST_F(MemApiTest, testReallocMem, Function | MediumTest | Level3)
 
         memset(mem, testChar, mlen);
         rlen = GetRandom(0x200000);
+        memp = mem;
         mem = realloc(mem, rlen);
+        if (mem == nullptr) {
+            free(memp);
+        } else {
+            memp = nullptr;
+        }
         ASSERT_TRUE(mem != nullptr) << "mem == NULL, i = " << i;
 
         len = mlen <= rlen ? mlen : rlen;
