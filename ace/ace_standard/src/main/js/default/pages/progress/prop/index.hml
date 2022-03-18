@@ -140,6 +140,15 @@
         <progress percent="10" id="ifPropTrue"
              if="true">
         </progress>
+        <progress percent="10" id="ifPropTrue"
+                  elif="true">
+        </progress>
+        <progress percent="10" id="ifPropTrue"
+                  elif="false">
+        </progress>
+        <progress percent="10" id="ifPropTrue"
+                  elif="">
+        </progress>
 
         <text class="sub-title">
             渲染属性 -- show
@@ -170,6 +179,20 @@
         <progress percent="10" secondarypercent="50" clockwise="true" id="typeScaleRing" type="scale-ring"></progress>
         <progress percent="10" id="typeArc" type="arc"></progress>
         <progress percent="10" id="typeEclipse" type="eclipse"></progress>
-
+        <text  class="sub-title">
+            progress特有属性 -- progress
+        </text>
+        <progress progress="progress" percent="10" secondarypercent="40" class="progress"></progress>
+        <progress progress="" percent="10" secondarypercent="40" class="progress"></progress>
+        <!--<text  class="sub-title">
+            progress特有属性 -- shareid
+        </text>
+        <progress percent="10" secondarypercent="40" class="progress" shareid="shareid"></progress>
+        <progress percent="10" secondarypercent="40" class="progress" shareid=""></progress>-->
+        <text  class="sub-title">
+            progress特有属性 -- tid
+        </text>
+        <progress percent="10" secondarypercent="40" class="progress" tid="tid"></progress>
+        <progress percent="10" secondarypercent="40" class="progress" tid=""></progress>
     </div>
 </div>

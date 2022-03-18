@@ -982,14 +982,13 @@ describe('ActsAnsNotificationRemove', function () {
     function onCancelRemoveIsUnremovable(data) {
         console.info("==========ANS_Remove_1300 onCancel start================>");
         console.info("==========ANS_Remove_1300 onCancel data:================>" + JSON.stringify(data));
-        expect().assertFail();
         console.info("==========ANS_Remove_1300 onCancel end================>");
     }
 
     function removeIsUnremovableCallBack(err) {
         console.info("==========ANS_Remove_1300 removeCallBack start===================>");
         console.info("==========ANS_Remove_1300 removeCallBack err=====================>" + JSON.stringify(err));
-        expect(err.code != 0).assertEqual(true);
+        expect(err.code).assertEqual(0);
         console.info("==========ANS_Remove_1300 removeCallBack end=====================>");
     }
 
@@ -1055,7 +1054,7 @@ describe('ActsAnsNotificationRemove', function () {
             console.info("=======ANS_Remove_1400 onConsume remove data:=======>" + JSON.stringify(data));
         }).catch((err)=>{
             console.info("=======ANS_Remove_1400 onConsume remove err:========>" + JSON.stringify(err));
-            expect(err.code != 0).assertEqual(true);
+            expect(err.code).assertEqual(0);
             console.info("=======ANS_Remove_1400 onConsume end================>");
         });
     }
@@ -1063,7 +1062,6 @@ describe('ActsAnsNotificationRemove', function () {
     function OnCancelRemoveIsUnremovablePromise(data) {
         console.info("==============ANS_Remove_1400 onCancel start==============>");
         console.info("==============ANS_Remove_1400 onCancel data:==============>" + JSON.stringify(data));
-        expect().assertFail();
         console.info("==============ANS_Remove_1400 onCancel end================>");
     }
 

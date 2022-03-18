@@ -1,3 +1,18 @@
+<!--/**
+ * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */-->
+
 <div class="container">
     <div class="prop-container">
         <text class="title">
@@ -114,6 +129,15 @@
         <popup id="ifPropTrue" target="target1"
              if="true">
         </popup>
+        <popup id="ifPropFalse" target="target1"
+               if="false">
+        </popup>
+        <popup id="elifPropTrue" target="target1"
+               elif="true">
+        </popup>
+        <popup id="elifPropFalse" target="target1"
+               elif="false">
+        </popup>
 
         <text class="sub-title">
             渲染属性 -- show
@@ -126,6 +150,16 @@
         </popup>
         <popup id="showPropNone"  target="target1"
              show="">
+        </popup>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <popup class="propNewAdd" target="target1"
+                 tid="id">
+        </popup>
+        <popup class="propNewAdd" target="target1"
+                 tid="">
         </popup>
     </div>
 
@@ -150,6 +184,16 @@
         <popup id="placementPropRight"  target="target1" placement="right">
         </popup>
         <popup id="placementPropTop"  target="target1" placement="top">
+        </popup>
+        <popup id="placementPropBottom"  target="target1" placement="bottom">
+        </popup>
+        <popup id="placementPropTopLeft"  target="target1" placement="topLeft">
+        </popup>
+        <popup id="placementPropTopRight"  target="target1" placement="topRight">
+        </popup>
+        <popup id="placementPropBottomLeft"  target="target1" placement="bottomLeft">
+        </popup>
+        <popup id="placementPropBottomRight"  target="target1" placement="bottomRight">
         </popup>
 
         <text class="sub-title">

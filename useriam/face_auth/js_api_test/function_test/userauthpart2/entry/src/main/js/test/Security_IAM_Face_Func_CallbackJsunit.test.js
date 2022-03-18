@@ -14,14 +14,14 @@
  */
 
 import {describe, it, expect} from 'deccjsunit/index'
-import userIAM from '@ohos.UserIAM.userAuth'
-import userIDM from '@ohos.useridm'
-import pinAuth from '@ohos.pinauth'
+import userAuth from '@ohos.userAuth'
+import userIDM from '@ohos.userIDM'
+import pinAuth from '@ohos.pinAuth'
 import * as publicFC from './Publicfunction-n.js'
 
-let UserIDM = userIDM.constructor()
-let PinAuth = pinAuth.constructor()
-let UserAuth = userIAM.constructor()
+let UserIDM = new userIDM.UserIdentityManager();
+let PinAuth = new pinAuth.PINAuth();
+let UserAuth = new userAuth.UserAuth();
 
 let AuthType = {
     PIN : 1,
@@ -208,7 +208,7 @@ describe('userauthTest', function () {
                         }, function (onacquireinfo) {
                         })
                         let cancelresult = publicFC.publiccancel(UserIDM,challenge);
-                        await sleep(100);
+                        await sleep(2500);
                         if(cancelresult == 1){
                             console.info('Face_AddCred_Func_0103 cancel1 authresult = ' + addfaceresult.addCredresult);
                             expect(ResultCode.SUCCESS).assertEqual(addfaceresult.addCredresult);

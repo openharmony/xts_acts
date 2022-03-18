@@ -108,6 +108,7 @@ static int CommInitTcpServer(int port)
 static void* CommTcpClientTask(void *param)
 {
     int* ret = (int *)malloc(sizeof(int));
+    int memRet = -1;
     if (ret == nullptr) {
         printf("[---][comm client]malloc fail\n");
         return nullptr;
@@ -138,7 +139,8 @@ static void* CommTcpClientTask(void *param)
     };
     for (int i = 0; i < 4; i++) {
         sleep(sleepSecond);
-        memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+        memRet = memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+        EXPECT_EQ(0, memRet);
         rst = sprintf_s(dataBuf, sizeof(dataBuf), sendMsgList[i], clnFd);
         if (rst < 0) {
             printf("[@@@][comm client]sprintf_s error!\n");
@@ -149,7 +151,8 @@ static void* CommTcpClientTask(void *param)
             *ret = -1;
             printf("[@@@][comm client][%d]send fail\n", clnFd);
         }
-        memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+        memRet = memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+        EXPECT_EQ(0, memRet);
         rst = recv(clnFd, dataBuf, sizeof(dataBuf), 0);
         if (rst > 0) {
             printf("[@@@][comm client][%d]recv msg[%s]\n", clnFd, dataBuf);
@@ -173,6 +176,7 @@ static void* CommTcpClientTask(void *param)
 
 static void* SampleTcpServerTask(void *p)
 {
+    int memRet = -1;
     int srvFd = CommInitTcpServer(STACK_PORT);
     EXPECT_NE(-1, srvFd);
 
@@ -200,14 +204,16 @@ static void* SampleTcpServerTask(void *p)
 
     static char buf[BUF_SIZE + 1] = {0};
     unsigned int srvMsgLen = strlen(g_srvMsg);
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    memRet = memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    EXPECT_EQ(0, memRet);
     ret = strcpy_s(buf, BUF_SIZE, g_srvMsg);
     EXPECT_EQ(0, ret);
     ret = send(clnFd, buf, srvMsgLen, 0);
     printf("[tcp server]send, ret=%d\n", ret);
     EXPECT_EQ(srvMsgLen, (unsigned int)ret);
 
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    memRet =memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    EXPECT_EQ(0, memRet);
     ret = recv(clnFd, buf, sizeof(buf), 0);
     printf("[tcp server]recv, ret=%d, msg[%s]\n", ret, buf);
     EXPECT_EQ(strlen(g_cliMsg), (unsigned int)ret);
@@ -219,7 +225,8 @@ static void* SampleTcpServerTask(void *p)
     clnAddr.sin_family = AF_INET;
     clnAddr.sin_addr.s_addr = inet_addr(g_localHost);
     clnAddr.sin_port = htons(PEER_PORT);
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    memRet = memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    EXPECT_EQ(0, memRet);
     ret = strcpy_s(buf, BUF_SIZE, g_srvMsg);
     EXPECT_EQ(0, ret);
     msg.msg_name = &clnAddr;
@@ -236,8 +243,10 @@ static void* SampleTcpServerTask(void *p)
 
     WAIT();
     static char bufrec[BUF_SIZE + 1] = {0};
-    memset_s(bufrec, sizeof(bufrec), 0, BUF_SIZE);
-    memset_s(&msg, sizeof(msg), 0, sizeof(msg));
+    memRet = memset_s(bufrec, sizeof(bufrec), 0, BUF_SIZE);
+    EXPECT_EQ(0, memRet);
+    memRet = memset_s(&msg, sizeof(msg), 0, sizeof(msg));
+    EXPECT_EQ(0, memRet);
     msg.msg_name = &clnAddr;
     msg.msg_namelen = sizeof(clnAddr);
     msg.msg_iov = iov;
@@ -265,6 +274,7 @@ static void* SampleTcpServerTask(void *p)
 
 static void* SampleTcpClientTask(void *p)
 {
+    int memRet = -1;
     int clnFd = socket(AF_INET, SOCK_STREAM, 0);
     printf("[tcp client]create socket\n");
     EXPECT_NE(-1, clnFd);
@@ -294,14 +304,16 @@ static void* SampleTcpClientTask(void *p)
 
     static char buf[BUF_SIZE + 1] = {0};
     unsigned int cliMsgLen = strlen(g_cliMsg);
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    memRet = memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    EXPECT_EQ(0, memRet);
     ret = strcpy_s(buf, BUF_SIZE, g_cliMsg);
     EXPECT_EQ(0, ret);
     ret = send(clnFd, buf, cliMsgLen, 0);
     printf("[tcp client]send, ret=%d\n", ret);
     EXPECT_EQ(cliMsgLen, (unsigned int)ret);
 
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    memRet = memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    EXPECT_EQ(0, memRet);
     ret = recv(clnFd, buf, sizeof(buf), 0);
     printf("[tcp client]recv, ret=%d, msg[%s]\n", ret, buf);
     EXPECT_EQ(strlen(g_srvMsg), (unsigned int)ret);
@@ -314,7 +326,8 @@ static void* SampleTcpClientTask(void *p)
     clnAddr.sin_family = AF_INET;
     clnAddr.sin_addr.s_addr = inet_addr(g_localHost);
     clnAddr.sin_port = htons(PEER_PORT);
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    memRet = memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    EXPECT_EQ(0, memRet);
     ret = strcpy_s(buf, BUF_SIZE, g_cliMsg);
     EXPECT_EQ(0, ret);
     msg.msg_name = &clnAddr;
@@ -331,8 +344,10 @@ static void* SampleTcpClientTask(void *p)
 
     WAIT();
     static char bufrec[BUF_SIZE + 1] = {0};
-    memset_s(bufrec, sizeof(bufrec), 0, BUF_SIZE);
-    memset_s(&msg, sizeof(msg), 0, sizeof(msg));
+    memRet = memset_s(bufrec, sizeof(bufrec), 0, BUF_SIZE);
+    EXPECT_EQ(0, memRet);
+    memRet = memset_s(&msg, sizeof(msg), 0, sizeof(msg));
+    EXPECT_EQ(0, memRet);
     msg.msg_name = &clnAddr;
     msg.msg_namelen = sizeof(clnAddr);
     msg.msg_iov = iov;
@@ -438,6 +453,7 @@ static void* TcpClientOnlyConnectTask(void *p)
 
 static int TcpServerForFork()
 {
+    int memRet = -1;
     int timeout = 10;
     char dataBuf[50] = {0};
     int srvFd = CommInitTcpServer(STACK_PORT + 1);
@@ -454,7 +470,8 @@ static int TcpServerForFork()
         goto FINALLY;
     }
     while (timeout > 0) {
-        memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+        memRet = memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+        EXPECT_EQ(0, memRet);
         ret = recv(cliFd, dataBuf, sizeof(dataBuf), 0);
         if (ret > 0) {
             printf("[---][server process]recv msg[%s]\n", dataBuf);
@@ -465,7 +482,8 @@ static int TcpServerForFork()
         } else {
             printf("[---][server process]recv no data\n");
         }
-        memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+        memRet = memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+        EXPECT_EQ(0, memRet);
         sprintf_s(dataBuf, sizeof(dataBuf), "server timeout:%d", timeout);
         ret = send(cliFd, dataBuf, strlen(dataBuf), 0);
         if (ret > 0) {
@@ -485,6 +503,7 @@ FINALLY:
 
 static int SelectServerForFork(unsigned int timeoutSec)
 {
+    int memRet = -1;
     int srvFd = CommInitTcpServer(STACK_PORT + 1);
     if (srvFd == -1) {
         return -1;
@@ -543,7 +562,8 @@ static int SelectServerForFork(unsigned int timeoutSec)
                 continue;
             }
             if (FD_ISSET(fds[i], &readSet)) {
-                memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+                memRet = memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+                EXPECT_EQ(0, memRet);
                 int len = recv(fds[i], dataBuf, sizeof(dataBuf), 0);
                 if (len > 0) {
                     printf("[***][select process][%d]recv msg[%s]\n", fds[i], dataBuf);
@@ -585,6 +605,7 @@ static int PollServerForFork(int timeoutSec)
     int fdCount = 1;
     char dataBuf[50] = {0};
     struct pollfd fds[TEST_FD_COUNT];
+    int memRet = -1;
     fds[0].events = POLLIN | POLLPRI;
     fds[0].fd = srvFd;
     for (int i = 1; i < TEST_FD_COUNT; i++) {
@@ -628,7 +649,8 @@ static int PollServerForFork(int timeoutSec)
                 continue;
             }
             if (fds[i].revents & POLLIN) {
-                memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+                memRet = memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+                EXPECT_EQ(0, memRet);
                 int len = recv(fds[i].fd, dataBuf, sizeof(dataBuf), 0);
                 if (len > 0) {
                     printf("[***][poll process][%d]recv msg[%s]\n", fds[i].fd, dataBuf);
@@ -735,6 +757,7 @@ HWTEST_F(ActsNetTest, testUdpSample, Function | MediumTest | Level2)
 {
     int len = 2;
     char buf[BUF_SIZE + 1];
+    int memRet = -1;
     struct msghdr msg = {nullptr};
     struct iovec iov[2] = {nullptr};
     struct sockaddr_in srvAddr = {0};
@@ -752,20 +775,23 @@ HWTEST_F(ActsNetTest, testUdpSample, Function | MediumTest | Level2)
     clnAddr.sin_family = AF_INET;
     clnAddr.sin_addr.s_addr = inet_addr(g_localHost);
     clnAddr.sin_port = htons(PEER_PORT);
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    memRet = memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    EXPECT_EQ(0, memRet);
     ret = strcpy_s(buf, BUF_SIZE, g_udpMsg);
     EXPECT_EQ(0, ret);
     ret = sendto(sfd, buf, strlen(g_udpMsg), 0, (struct sockaddr*)&clnAddr, (socklen_t)sizeof(clnAddr));
     EXPECT_NE(-1, ret);
 
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    memRet = memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    EXPECT_EQ(0, memRet);
     ret = recvfrom(sfd, buf, sizeof(buf), 0, (struct sockaddr*)&clnAddr, &clnAddrLen);
     EXPECT_EQ(strlen(g_udpMsg), (unsigned int)ret);
 
     clnAddr.sin_family = AF_INET;
     clnAddr.sin_addr.s_addr = inet_addr(g_localHost);
     clnAddr.sin_port = htons(PEER_PORT);
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    memRet = memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    EXPECT_EQ(0, memRet);
     ret = strcpy_s(buf, BUF_SIZE, g_udpMsg);
     EXPECT_EQ(0, ret);
     msg.msg_name = &clnAddr;
@@ -1059,12 +1085,14 @@ HWTEST_F(ActsNetTest, testPollMultiClients, Function | MediumTest | Level2)
  */
 HWTEST_F(ActsNetTest, testIoctlIfconf, Function | MediumTest | Level2)
 {
+    int memRet = -1;
     int udpFd = socket(AF_INET, SOCK_DGRAM, 0);
     ASSERT_NE(-1, udpFd);
 
     struct ifreq ifr[5];
     struct ifconf ifc = {0};
-    memset_s(&ifc, sizeof(struct ifconf), 0, sizeof(struct ifconf));
+    memRet = memset_s(&ifc, sizeof(struct ifconf), 0, sizeof(struct ifconf));
+    EXPECT_EQ(0, memRet);
     ifc.ifc_len = 5 * sizeof(struct ifreq);
     ifc.ifc_buf = (char *)ifr;
     int ret = ioctl(udpFd, SIOCGIFCONF, (char *)&ifc);
@@ -1138,10 +1166,12 @@ HWTEST_F(ActsNetTest, testIoctlIfnetAddrOthers, Function | MediumTest | Level2)
 {
     int udpFd = socket(AF_INET, SOCK_DGRAM, 0);
     ASSERT_NE(-1, udpFd);
+    int memRet = -1;
 
     struct ifreq ifr[5];
     struct ifconf ifc = {0};
-    memset_s(&ifc, sizeof(struct ifconf), 0, sizeof(struct ifconf));
+    memRet = memset_s(&ifc, sizeof(struct ifconf), 0, sizeof(struct ifconf));
+    EXPECT_EQ(0, memRet);
     ifc.ifc_len = 5 * sizeof(struct ifreq);
     ifc.ifc_buf = (char *)ifr;
     int ret = ioctl(udpFd, SIOCGIFCONF, (char *)&ifc);
@@ -1156,7 +1186,8 @@ HWTEST_F(ActsNetTest, testIoctlIfnetAddrOthers, Function | MediumTest | Level2)
         addr1 = (struct sockaddr_in *)&ifr[i].ifr_addr;
         if (strcmp("lo", ifr[i].ifr_name) != 0) {
             // get inet addr
-            memset_s(&ifrTmp, sizeof(struct ifreq), 0, sizeof(struct ifreq));
+            memRet = memset_s(&ifrTmp, sizeof(struct ifreq), 0, sizeof(struct ifreq));
+            EXPECT_EQ(0, memRet);
             ret = strcpy_s(ifrTmp.ifr_name, sizeof(ifrTmp.ifr_name), ifr[i].ifr_name);
             ret = ioctl(udpFd, SIOCGIFADDR, &ifrTmp);
             ASSERT_EQ(0, ret) << "ioctl fail[SIOCGIFADDR], errinfo[" << strerror(errno) << "]";
@@ -1192,10 +1223,12 @@ HWTEST_F(ActsNetTest, testIoctlIfhwAddr, Function | MediumTest | Level2)
 {
     int udpFd = socket(AF_INET, SOCK_DGRAM, 0);
     ASSERT_NE(-1, udpFd);
+    int memRet = -1;
 
     struct ifreq ifr[5];
     struct ifconf ifc = {0};
-    memset_s(&ifc, sizeof(struct ifconf), 0, sizeof(struct ifconf));
+    memRet = memset_s(&ifc, sizeof(struct ifconf), 0, sizeof(struct ifconf));
+    EXPECT_EQ(0, memRet);
     ifc.ifc_len = 5 * sizeof(struct ifreq);
     ifc.ifc_buf = (char *)ifr;
     int ret = ioctl(udpFd, SIOCGIFCONF, (char *)&ifc);
@@ -1212,7 +1245,8 @@ HWTEST_F(ActsNetTest, testIoctlIfhwAddr, Function | MediumTest | Level2)
         addr = (struct sockaddr_in *)&ifr[i].ifr_addr;
         if (strcmp("lo", ifr[i].ifr_name) != 0) {
             // get ifhwaddr
-            memset_s(&ifrTmp, sizeof(struct ifreq), 0, sizeof(struct ifreq));
+            memRet = memset_s(&ifrTmp, sizeof(struct ifreq), 0, sizeof(struct ifreq));
+            EXPECT_EQ(0, memRet);
             ret = strcpy_s(ifrTmp.ifr_name, sizeof(ifrTmp.ifr_name), ifr[i].ifr_name);
             EXPECT_EQ(0, ret) << "strcpy_s error";
             ret = ioctl(udpFd, SIOCGIFHWADDR, &ifrTmp);
@@ -1236,6 +1270,7 @@ HWTEST_F(ActsNetTest, testIoctlIfhwAddr, Function | MediumTest | Level2)
 HWTEST_F(ActsNetTest, testSocketOpt, Function | MediumTest | Level2)
 {
     socklen_t len;
+    int memRet = -1;
     struct timeval timeout = {0};
     int fd = socket(AF_INET, SOCK_STREAM, 0);
     EXPECT_NE(-1, fd);
@@ -1255,7 +1290,8 @@ HWTEST_F(ActsNetTest, testSocketOpt, Function | MediumTest | Level2)
     ret = setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &timeout, len);
     EXPECT_EQ(0, ret);
 
-    memset_s(&timeout, len, 0, len);
+    memRet = memset_s(&timeout, len, 0, len);
+    EXPECT_EQ(0, memRet);
     ret = getsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &timeout, &len);
     EXPECT_EQ(0, ret);
     EXPECT_EQ(1000, timeout.tv_sec);

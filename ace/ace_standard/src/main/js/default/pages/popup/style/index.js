@@ -14,6 +14,10 @@
  */
 
 export default {
-
-
+    hidepopupani1() {
+        this.$element("popupani1").hide()
+    },
+    hidepopupani2() {
+        this.$element("popupani2").hide()
+    },
 }

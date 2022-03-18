@@ -605,5 +605,10 @@ export default {
         prompt.showToast({
             message: 'stop'
         });
+    },
+    onAccessibility() {
+        prompt.showToast({
+            message: 'onAccessibility'
+        });
     }
 }

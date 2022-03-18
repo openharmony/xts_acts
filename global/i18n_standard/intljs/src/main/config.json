@@ -44,6 +44,12 @@
         "launchType": "standard"
       }
     ],
+    "reqPermissions": [
+      {
+        "name":"ohos.permission.GET_BUNDLE_INFO",
+        "reason":"need use ohos.permission.GET_BUNDLE_INFO"
+      }
+    ],
     "js": [
       {
         "pages": [

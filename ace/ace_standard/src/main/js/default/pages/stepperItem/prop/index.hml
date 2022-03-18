@@ -225,6 +225,43 @@
         </text>
 
         <text class="sub-title">
+            特有属性 -- stepper-item
+        </text>
+        <stepper class="stepper-style">
+            <stepper-item id="stepperItemProp"
+                          stepper-item="stepper-item">
+            </stepper-item>
+            <stepper-item id="stepperItemPropNone"
+                          stepper-item="">
+            </stepper-item>
+        </stepper>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <stepper class="stepper-style">
+            <stepper-item id="tidProp"
+                          tid="tid">
+            </stepper-item>
+            <stepper-item id="tidPropNone"
+                          tid="">
+            </stepper-item>
+        </stepper>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <stepper class="stepper-style">
+            <stepper-item if="false"></stepper-item>
+            <stepper-item id="elifPropTrue"
+                          elif="true">
+            </stepper-item>
+            <stepper-item id="tidPropNone"
+                          elif="false">
+            </stepper-item>
+        </stepper>
+
+        <text class="sub-title">
             底部按钮属性 -- label
         </text>
         <stepper class="stepper-style">

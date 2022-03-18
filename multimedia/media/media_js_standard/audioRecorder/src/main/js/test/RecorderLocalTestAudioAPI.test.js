@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -216,9 +216,7 @@ describe('RecorderLocalTestAudioAPI', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_RECORDER_createAudioRecorder_API_0100', 0, async function (done) {
-        audioConfig.uri = fdPath;
-        let testAudioRecorder;
-        expect(testAudioRecorder).assertNull();
+        let testAudioRecorder = undefined;
         testAudioRecorder= media.createAudioRecorder();
         expect(testAudioRecorder != undefined).assertTrue();
         done();
@@ -233,6 +231,7 @@ describe('RecorderLocalTestAudioAPI', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_RECORDER_AudioRecorder_Prepare_API_0100', 0, async function (done) {
+        audioConfig.uri = fdPath;
         let testAudioRecorder= media.createAudioRecorder();
         expect(testAudioRecorder != null).assertTrue();
         testAudioRecorder.prepare(audioConfig);

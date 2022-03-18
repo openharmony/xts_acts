@@ -19,49 +19,13 @@ const BUNDLE_NAME1 = 'com.example.third1';
 const BUNDLE_NAME2 = 'com.example.third2';
 const BUNDLE_NAME4 = 'com.example.third4';
 const BUNDLE_NAME5 = 'com.example.third5';
+const BUNDLE_NAME6 = "com.ohos.callui"
+const ABILITIY_NAME = "com.ohos.callui.MainAbility"
 const SYSTEM_BUNDLE = 'com.example.system1';
 const VENDOR_BUNDLE = 'com.example.vendor1';
 const DESIGHN_WIDTH = 770;
 const DEFAULT_DESIGHN_WIDTH = 720;
 describe('ActsBmsFormsInfoTest', function () {
-
-    /**
-    * @tc.number: bms_getAllFormsInfo_0100
-    * @tc.name: getAllFormsInfo : get forms information for all apps
-    * @tc.desc: check forms information include system and vendor apps (by promise)
-    */
-    it('bms_getAllFormsInfo_0100', 0, async function (done) {
-        console.info('=====================bms_getAllFormsInfo_0100==================');
-        let installer = await bundle.getBundleInstaller();
-        installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, onReceiveinstallEvent);
-
-        async function onReceiveinstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-            let formsInfo = await bundle.getAllFormsInfo();
-            console.debug('======all form======' + JSON.stringify(formsInfo));
-            expect(formsInfo.length).assertEqual(4);
-            checkFormIsExist('Form_JS1', formsInfo, '1');
-            checkFormIsExist('Form_JS1S', formsInfo, '1S', true);
-            checkFormIsExist('Form_JS1V', formsInfo, '1V', false, true);
-            checkFormIsExist('Form_JS1V2', formsInfo, '1V2');
-            installer.uninstall(BUNDLE_NAME1, {
-                userId: 100,
-                installFlag: 1,
-                isKeepData: false
-            }, (err, data) => {
-                expect(err.code).assertEqual(0);
-                expect(data.status).assertEqual(0);
-                expect(data.statusMessage).assertEqual('SUCCESS');
-                done();
-            });
-        }
-    })
 
     function checkSystemHapForm(dataInfo) {
         console.debug('===system formInfo is ' + JSON.stringify(dataInfo))
@@ -114,349 +78,6 @@ describe('ActsBmsFormsInfoTest', function () {
         expect(dataInfo.window.designWidth).assertEqual(DEFAULT_DESIGHN_WIDTH);
         expect(dataInfo.window.autoDesignWidth).assertEqual(true);
     }
-
-    /**
-    * @tc.number: bms_getAllFormsInfo_0200
-    * @tc.name: getAllFormsInfo : get forms information for all apps
-    * @tc.desc: check forms information include system and vendor apps (by callback)
-    */
-    it('bms_getAllFormsInfo_0200', 0, async function (done) {
-        console.info('=====================bms_getAllFormsInfo_0200==================');
-        let installer = await bundle.getBundleInstaller();
-        installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, onReceiveinstallEvent);
-
-        function onReceiveinstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-            bundle.getAllFormsInfo((err, formsInfo) => {
-                expect(err.code).assertEqual(0);
-                expect(formsInfo.length).assertLarger(0);
-                checkFormIsExist('Form_JS1', formsInfo, '1');
-                checkFormIsExist('Form_JS1S', formsInfo, '1S', true);
-                checkFormIsExist('Form_JS1V', formsInfo, '1V', false, true);
-                checkFormIsExist('Form_JS1V2', formsInfo, '1V2');
-                installer.uninstall(BUNDLE_NAME1, {
-                    userId: 100,
-                    installFlag: 1,
-                    isKeepData: false
-                }, (err, data) => {
-                    expect(err.code).assertEqual(0);
-                    expect(data.status).assertEqual(0);
-                    expect(data.statusMessage).assertEqual('SUCCESS');
-                    done();
-                });
-            });
-        }
-    })
-
-    /**
-    * @tc.number: bms_getAllFormsInfo_0300
-    * @tc.name: getAllFormsInfo : get forms information for all apps
-    * @tc.desc: check whether the form information of the update app is updated (by promise)
-    */
-    it('bms_getAllFormsInfo_0300', 0, async function (done) {
-        console.info('=====================bms_getAllFormsInfo_0300==================');
-        let installer = await bundle.getBundleInstaller();
-        installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, onReceiveinstallEvent);
-
-        function onReceiveinstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-            installer.install(['/data/test/bmsThirdBundleTestA1.hap'], {
-                userId: 100,
-                installFlag: 1,
-                isKeepData: false
-            }, async (err, data) => {
-                expect(err.code).assertEqual(0);
-                expect(data.status).assertEqual(0);
-                expect(data.statusMessage).assertEqual('SUCCESS');
-                var formsInfo = await bundle.getAllFormsInfo();
-                expect(formsInfo.length).assertLarger(0);
-                checkFormNoExist(formsInfo, 'Form_JS1');
-                checkFormIsExist('Form_JSA1', formsInfo, 'A1')
-                installer.uninstall(BUNDLE_NAME1, {
-                    userId: 100,
-                    installFlag: 1,
-                    isKeepData: false
-                }, (err, data) => {
-                    expect(err.code).assertEqual(0);
-                    expect(data.status).assertEqual(0);
-                    expect(data.statusMessage).assertEqual('SUCCESS');
-                    done();
-                });
-            });
-        }
-    })
-
-    /**
-    * @tc.number: bms_getAllFormsInfo_0400
-    * @tc.name: getAllFormsInfo : get forms information for all apps
-    * @tc.desc: check whether the form information of the update app is updated (by callback)
-    */
-    it('bms_getAllFormsInfo_0400', 0, async function (done) {
-        console.info('=====================bms_getAllFormsInfo_0400==================');
-        let installer = await bundle.getBundleInstaller();
-        installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, onReceiveinstallEvent);
-
-        function onReceiveinstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-            installer.install(['/data/test/bmsThirdBundleTestA1.hap'], {
-                userId: 100,
-                installFlag: 1,
-                isKeepData: false
-            }, (err, data) => {
-                expect(err.code).assertEqual(0);
-                expect(data.status).assertEqual(0);
-                expect(data.statusMessage).assertEqual('SUCCESS');
-                bundle.getAllFormsInfo((err, formsInfo) => {
-                    expect(err.code).assertEqual(0);
-                    expect(formsInfo.length).assertLarger(0);
-                    checkFormNoExist(formsInfo, 'Form_JS1');
-                    checkFormIsExist('Form_JSA1', formsInfo, 'A1');
-                    installer.uninstall(BUNDLE_NAME1, {
-                        userId: 100,
-                        installFlag: 1,
-                        isKeepData: false
-                    }, (err, data) => {
-                        expect(err.code).assertEqual(0);
-                        expect(data.status).assertEqual(0);
-                        expect(data.statusMessage).assertEqual('SUCCESS');
-                        done();
-                    });
-                });
-            });
-        }
-    })
-
-    /**
-    * @tc.number: bms_getAllFormsInfo_0500
-    * @tc.name: getAllFormsInfo : get forms information for all apps
-    * @tc.desc: check whether the form information of the uninstall app is removed (by promise)
-    */
-    it('bms_getAllFormsInfo_0500', 0, async function (done) {
-        console.info('=====================bms_getAllFormsInfo_0500==================');
-        let installer = await bundle.getBundleInstaller();
-        installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, onReceiveinstallEvent);
-
-        function onReceiveinstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-            installer.uninstall(BUNDLE_NAME1, {
-                userId: 100,
-                installFlag: 1,
-                isKeepData: false
-            }, async (err, data) => {
-                expect(err.code).assertEqual(0);
-                expect(data.status).assertEqual(0);
-                expect(data.statusMessage).assertEqual('SUCCESS');
-                var formsInfo = await bundle.getAllFormsInfo();
-                checkFormNoExist(formsInfo, 'Form_JS1');
-                done();
-            });
-        }
-    })
-
-    /**
-    * @tc.number: bms_getAllFormsInfo_0600
-    * @tc.name: getAllFormsInfo : get forms information for all apps
-    * @tc.desc: check whether the form information of the uninstall app is removed (by callback)
-    */
-    it('bms_getAllFormsInfo_0600', 0, async function (done) {
-        console.info('=====================bms_getAllFormsInfo_0600==================');
-        let installer = await bundle.getBundleInstaller();
-        installer.install(['/data/test/bmsThirdBundleTest1.hap'], {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, onReceiveinstallEvent);
-
-        function onReceiveinstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-            installer.uninstall(BUNDLE_NAME1, {
-                userId: 100,
-                installFlag: 1,
-                isKeepData: false
-            }, async (err, data) => {
-                expect(err.code).assertEqual(0);
-                expect(data.status).assertEqual(0);
-                expect(data.statusMessage).assertEqual('SUCCESS');
-                bundle.getAllFormsInfo((err, formsInfo) => {
-                    expect(err.code).assertEqual(0);
-                    checkFormNoExist(formsInfo, 'Form_JS1');
-                    done();
-                });
-            });
-        }
-    })
-
-    /**
-    * @tc.number: bms_getAllFormsInfo_0700
-    * @tc.name: getAllFormsInfo : get forms information for all apps
-    * @tc.desc: check form information of all apps which include one app have two forms (by promise)
-    */
-    it('bms_getAllFormsInfo_0700', 0, async function (done) {
-        console.info('=====================bms_getAllFormsInfo_0700==================');
-        let installer = await bundle.getBundleInstaller();
-        installer.install(['/data/test/bmsThirdBundleTest4.hap'], {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, onReceiveinstallEvent);
-
-        async function onReceiveinstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-            var formsInfo = await bundle.getAllFormsInfo();
-            expect(formsInfo.length).assertLarger(0);
-            checkFormIsExist('Form_JS4A', formsInfo, '4A');
-            checkFormIsExist('Form_JS4B', formsInfo, '4B');
-            installer.uninstall(BUNDLE_NAME4, {
-                userId: 100,
-                installFlag: 1,
-                isKeepData: false
-            }, (err, data) => {
-                expect(err.code).assertEqual(0);
-                expect(data.status).assertEqual(0);
-                expect(data.statusMessage).assertEqual('SUCCESS');
-                done();
-            });
-        }
-    })
-
-    /**
-    * @tc.number: bms_getAllFormsInfo_0800
-    * @tc.name: getAllFormsInfo : get forms information for all apps
-    * @tc.desc: check form information of all apps which include one app have two forms (by callback)
-    */
-    it('bms_getAllFormsInfo_0800', 0, async function (done) {
-        console.info('=====================bms_getAllFormsInfo_0800==================');
-        let installer = await bundle.getBundleInstaller();
-        installer.install(['/data/test/bmsThirdBundleTest4.hap'], {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, onReceiveinstallEvent);
-
-        async function onReceiveinstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-            bundle.getAllFormsInfo((err, formsInfo) => {
-                expect(err.code).assertEqual(0);
-                expect(formsInfo.length).assertLarger(0);
-                checkFormIsExist('Form_JS4A', formsInfo, '4A');
-                checkFormIsExist('Form_JS4B', formsInfo, '4B');
-                installer.uninstall(BUNDLE_NAME4, {
-                    userId: 100,
-                    installFlag: 1,
-                    isKeepData: false
-                }, (err, data) => {
-                    expect(err.code).assertEqual(0);
-                    expect(data.status).assertEqual(0);
-                    expect(data.statusMessage).assertEqual('SUCCESS');
-                    done();
-                });
-            });
-        }
-    })
-
-    /**
-    * @tc.number: bms_getAllFormsInfo_0900
-    * @tc.name: getAllFormsInfo : get forms information for all apps
-    * @tc.desc: check form information of all apps which include one app have two abilities,
-    *           and each ability has forms (by promise)
-    */
-    it('bms_getAllFormsInfo_0900', 0, async function (done) {
-        console.info('=====================bms_getAllFormsInfo_0900==================');
-        let installer = await bundle.getBundleInstaller();
-        installer.install(['/data/test/bmsThirdBundleTest5.hap'], {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, onReceiveinstallEvent);
-
-        async function onReceiveinstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-            var formsInfo = await bundle.getAllFormsInfo();
-            expect(formsInfo.length).assertLarger(0);
-            checkFormIsExist('Form_JS5A', formsInfo, '5A');
-            checkFormIsExist('Form_JS5B', formsInfo, '5B');
-            installer.uninstall(BUNDLE_NAME5, {
-                userId: 100,
-                installFlag: 1,
-                isKeepData: false
-            }, (err, data) => {
-                expect(err.code).assertEqual(0);
-                expect(data.status).assertEqual(0);
-                expect(data.statusMessage).assertEqual('SUCCESS');
-                done();
-            });
-        }
-    })
-
-    /**
-    * @tc.number: bms_getAllFormsInfo_1000
-    * @tc.name: getAllFormsInfo : get forms information for all apps
-    * @tc.desc: check form information of all apps which include one app have two abilities,
-    *           and each ability has forms (by callback)
-    */
-    it('bms_getAllFormsInfo_1000', 0, async function (done) {
-        console.info('=====================bms_getAllFormsInfo_1000==================');
-        let installer = await bundle.getBundleInstaller();
-        installer.install(['/data/test/bmsThirdBundleTest5.hap'], {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, onReceiveinstallEvent);
-
-        async function onReceiveinstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-            bundle.getAllFormsInfo((err, formsInfo) => {
-                expect(err.code).assertEqual(0);
-                expect(formsInfo.length).assertLarger(0);
-                checkFormIsExist('Form_JS5A', formsInfo, '5A');
-                checkFormIsExist('Form_JS5B', formsInfo, '5B');
-                installer.uninstall(BUNDLE_NAME5, {
-                    userId: 100,
-                    installFlag: 1,
-                    isKeepData: false
-                }, (err, data) => {
-                    expect(err.code).assertEqual(0);
-                    expect(data.status).assertEqual(0);
-                    expect(data.statusMessage).assertEqual('SUCCESS');
-                    done();
-                });
-            });
-        }
-    })
 
     /**
     * @tc.number: bms_getFormsInfo_0100
@@ -1649,4 +1270,34 @@ describe('ActsBmsFormsInfoTest', function () {
         expect(dataInfo.window.autoDesignWidth).assertEqual(false);
     }
 
+    /*
+     * @tc.number: bms_getAbilityIcon_0100
+     * @tc.name: test getAbilityIcon`
+     * @tc.desc: get the abilityIcon
+     */
+    it('bms_getAbilityIcon_0100', 0, async function (done) {
+        bundle.getAbilityIcon(BUNDLE_NAME6, ABILITIY_NAME).then(pixelmap => {
+            console.log('bms_getAbilityIcon_0100 success: ' + pixelmap);
+            expect(pixelmap !== null).assertTrue()
+            done()
+        })
+        .catch(err => {
+            console.info("getAbilityIcon fail:" + JSON.stringify(err))
+            expect(err).assertFail()
+            done()
+        })
+    })
+
+    /*
+     * @tc.number: bms_getAbilityIcon_0200
+     * @tc.name: test getAbilityIcon
+     * @tc.desc: get the abilityIcon
+     */
+    it('bms_getAbilityIcon_0200', 0, async function (done) {
+        bundle.getAbilityIcon(BUNDLE_NAME6, ABILITIY_NAME, (err, pixelmap) => {
+            expect(err).assertFail()
+            expect(pixelmap !== null).assertTrue()
+            done()
+        })
+    })
 })

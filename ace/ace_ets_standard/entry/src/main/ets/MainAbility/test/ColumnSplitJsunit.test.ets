@@ -67,8 +67,8 @@ export default function columnSplitJsunit() {
       console.info("component obj is: " + JSON.stringify(obj))
       expect(obj.$type).assertEqual('ColumnSplit')
       console.info("yr ColumnSplit0 type: " + JSON.stringify(obj.$type))
-      expect(obj.$attrs.resizeable).assertEqual('true')
-      console.log("yr columnSplit0 obj.$resizeable-'true':" + JSON.stringify(obj.$attrs.resizeable))
+      expect(obj.$attrs.resizable).assertEqual('true')
+      console.log("yr columnSplit0 obj.$resizable-'true':" + JSON.stringify(obj.$attrs.resizable))
       console.info('new columnSplit0 END')
       done()
     })
@@ -83,8 +83,8 @@ export default function columnSplitJsunit() {
       let strJson = getInspectorByKey('columnSplit1');
       let obj = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.resizeable).assertEqual('false')
-      console.log("yr columnSplit obj.$resizeable-'false':" + JSON.stringify(obj.$attrs.resizeable));
+      expect(obj.$attrs.resizable).assertEqual('false')
+      console.log("yr columnSplit obj.$resizable-'false':" + JSON.stringify(obj.$attrs.resizable));
       console.info('new columnSplit1 END');
       done();
     })

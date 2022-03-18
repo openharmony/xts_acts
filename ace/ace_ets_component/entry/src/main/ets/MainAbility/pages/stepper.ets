@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import events_emitter from '@ohos.emitter'
 
 @Entry
@@ -20,6 +22,7 @@ struct StepperExample {
   @State currentIndex: number = 0
   @State firstState: ItemState = ItemState.Normal
   @State secondState: ItemState = ItemState.Normal
+  @State disabled: ItemState = ItemState.Normal
 
   build() {
     Stepper({
@@ -96,7 +99,7 @@ struct StepperExample {
   onPageShow() {
     console.info('stepper page show called');
     var stateChangeEvent = {
-      eventId: 12,
+      eventId: 202,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
@@ -108,6 +111,9 @@ struct StepperExample {
       console.info("stepper page state change called:" + JSON.stringify(eventData));
       if(eventData.data.currentIndex != null) {
         this.currentIndex = parseInt(eventData.data.currentIndex);
+      }
+      if(eventData.data.disabled != null) {
+        this.disabled = eventData.data.disabled;
       }
     }
   }

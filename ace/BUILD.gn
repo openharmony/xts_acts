@@ -15,7 +15,10 @@ group("ace") {
   testonly = true
   deps = [
     "ace_ets_component:AceEtsComponentTest",
-    "ace_ets_component:AceEtsComponentTest",
+    "ace_ets_component_five:AceEtsComponentFiveTest",
+    "ace_ets_component_four:AceEtsComponentFourTest",
+    "ace_ets_component_three:AceEtsComponentThreeTest",
+    "ace_ets_component_two:AceEtsComponentTwoTest",
     "ace_ets_standard:ActsAceEtsStTest",
     "ace_ets_test:ActsAceEtsTest",
     "ace_ets_third_test:ActsAceEtsThirdTest",

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Shenzhen kaiHong Digital Industry Development Co., Ltd.
+ * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -340,6 +340,7 @@
   background-size:10% 20%;
   background-repeat: repeat;
   background-position: 30% 40%;
+  mask-image:linear-gradient(pink,#fff000);
 }
 
 #styleThirtyTwo{
@@ -382,17 +383,17 @@
   flex-direction: row;
   flex-wrap:nowrap;
 }
-#specificFontSize1{
-  background-color: black;
+#specificTwo1{
+  background-color: yellow;
 }
-#specificFontSize2{
-  background-color: blue;
+#specificTwo2{
+  background-color: yellowgreen;
 }
-.font-size1{
-  font-size: 20px;
+.selected-color1{
+  selected-color: black;
 }
-.font-size2{
-  font-size: 30px;
+.selected-color2{
+  selected-color: blue;
 }
 #specificThree{
   width: 100%;
@@ -400,70 +401,127 @@
   flex-direction: row;
   flex-wrap:nowrap;
 }
-#specificAllowScale1{
+#specificThree1{
   background-color: red;
 }
-#specificAllowScale2{
+#specificThree2{
   background-color: yellow;
 }
-.allow-scale1{
-  allow-scale: true;
+.block-color1{
+  block-color: black;
 }
-.allow-scale2{
-  allow-scale: false;
+.block-color2{
+  block-color: purple;
 }
-#specificFour{
-  width: 100%;
-  height: 25px;
-  flex-direction: row;
-  flex-wrap:nowrap;
+
+#addOne{
+  width: 10%;
+  height: 20px;
+  background-image:url('common/images/image.png');
+  background-size:cover;
+  align-self:stretch;
+  position:fixed;
+  transform: none;
+  animation-timing-function:cubic-bezier(0.4, 0.0, 0.4, 1.0);
+  shared-transition-effect:static;
+  shared-transition-name:ani;
+  shared-transition-timing-function:friction;
+  transition-enter:ani;
+  transition-exit: ani;
+  transition-duration:10;
+  transition-timing-function:friction;
+  clip-path:border-box;
+  display-index:1;
+  filter:blur(10px);
+  backdrop-filter:blur(10px);
+  window-filter:blur(10%);
 }
-#specificPlaceholderColor1{
-  background-color: red;
+
+#addTwo{
+  width: 100px;
+  height: 15px;
+  background-image:url('common/images/image.png');
+  background-size:auto;
+  position:relative;
+  transform: matrix(0.5,0.1,0.2,0.9,20,10);
+  animation-timing-function:steps(4);
+  shared-transition-effect:exchange;
+  clip-path:padding-box;
 }
-#specificPlaceholderColor2{
-  background-color: blue;
+
+#addThree{
+  width: 100px;
+  height: 15px;
+  background-color:#000000;
+  transform: matrix3d(1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2);
+  clip-path:content-box;
 }
-.placeholder-color1{
-  placeholder-color: rebeccapurple;
+
+#addFour{
+  width: 100px;
+  height: 15px;
+  background-color:#000000;
+  transform: translate3d(1px,2px,1px) scale3d(1,2,1) rotate3d(10,10,10,10deg) skew(1deg,2deg) perspective(10px);
+  clip-path:circle(1);
 }
-.placeholder-color2{
-  placeholder-color: saddlebrown;
+
+#addFive{
+  width: 100px;
+  height: 15px;
+  background-color:#000000;
+  transform: translateY(1px) translateZ(10px)
+  scale(1,2) scaleZ(0.4)
+  rotateX(10deg) rotateY(10deg) rotateZ(10deg)
+  skewX(1deg) skewY(2deg);
+  clip-path:ellipse(1);
 }
-#specificFive{
-  width: 100%;
-  height: 25px;
-  flex-direction: row;
-  flex-wrap:nowrap;
+
+#addSix{
+  width: 100px;
+  height: 15px;
+  background-color:#000000;
+  transform: scaleX(1) scaleY(0.4);
+  clip-path:ellipse(1)
 }
-#specificFontWeight1{
-  background-color: red;
+
+#addSeven{
+  width: 100px;
+  height: 15px;
+  background-color:#000000;
+  clip-path:path(1);
+  aspect-ratio:2;
 }
-#specificFontWeight2{
-  background-color: purple;
+
+#addSeven:disabled{
+  width: 100px;
+  height: 15px;
+  background-color:#ff0000;
+  radius: 100px;
 }
-.font-weight1{
-  font-weight: 200;
+
+#addSeven:active{
+  width: 100px;
+  height: 15px;
+  background-color:#ff0000;
 }
-.font-weight2{
-  font-weight: 900;
+
+#addSeven:focus{
+  width: 100px;
+  height: 15px;
+  background-color:#ff0000;
 }
-#specificSix{
-  width: 100%;
-  height: 25px;
-  flex-direction: row;
-  flex-wrap:nowrap;
+
+@font-face {
+  font-family: SimSunfont;
+  src: url('/common/simsun.ttf');
 }
-#specificCaretColor1{
-  background-color: yellowgreen;
+
+@media (device-type: tv) {
+  .addSeven {
+    width: 500px;
+    height: 500px;
+    background-color: #fa8072;
+  }
 }
-#specificCaretColor2{
-  background-color: beige;
-}
-.placeholder-color1{
-  placeholder-color: black;
-}
-.placeholder-color2{
-  placeholder-color: red;
-}
+
 

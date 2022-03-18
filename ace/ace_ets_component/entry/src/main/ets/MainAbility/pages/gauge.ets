@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import events_emitter from '@ohos.emitter';
 
 @Entry
@@ -48,13 +49,13 @@ struct GaugeExample {
   onPageShow() {
     console.info('gauge page show called');
     var stateChangeEvent = {
-      eventId: 1,
+      eventId: 102,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
     var stateChangeEventTwo = {
-      eventId: 2,
+      eventId: 103,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventTwo, this.stateChangCallBack);

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -21,7 +21,8 @@ describe("ArraylistTest", function () {
       let arrayList = new ArrayList();
       expect(arrayList != undefined).assertEqual(true);
     } catch (err) {
-      expect(err).assertEqual("Error: Cannot create new arrayList");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("Cannot create new arrayList");
     }
   });
   it("SR000GGR44_testAdd002", 0, function () {
@@ -348,7 +349,12 @@ describe("ArraylistTest", function () {
     try {
       let res = arrayList.insert(8, -1);
     } catch (err) {
-      expect(err).assertEqual("RangeError: ArrayList: set out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      if (err.message != "the index is out-of-bounds") {
+        expect(err.message).assertEqual("ArrayList: set out-of-bounds");
+      } else {
+        expect(err.message).assertEqual("the index is out-of-bounds");
+      }
     }
   });
   it("SR000GGR44_testInsert0028", 0, function () {
@@ -360,7 +366,12 @@ describe("ArraylistTest", function () {
     try {
       let res = arrayList.insert(8, 10);
     } catch (err) {
-      expect(err).assertEqual("RangeError: ArrayList: set out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      if (err.message != "the index is out-of-bounds") {
+        expect(err.message).assertEqual("ArrayList: set out-of-bounds");
+      } else {
+        expect(err.message).assertEqual("the index is out-of-bounds");
+      }
     }
   });
   it("SR000GGR44_testInsert029", 0, function () {
@@ -372,7 +383,12 @@ describe("ArraylistTest", function () {
     try {
       let res = arrayList.insert(8, 11);
     } catch (err) {
-      expect(err).assertEqual("RangeError: ArrayList: set out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      if (err.message != "the index is out-of-bounds") {
+        expect(err.message).assertEqual("ArrayList: set out-of-bounds");
+      } else {
+        expect(err.message).assertEqual("the index is out-of-bounds");
+      }
     }
   });
   it("SR000GGR44_testisEmpty030", 0, function () {
@@ -457,7 +473,12 @@ describe("ArraylistTest", function () {
     try {
       let res = arrayList.removeByIndex(5);
     } catch (err) {
-      expect(err).assertEqual("RangeError: removeByIndex is out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      if (err.message != "the index is out-of-bounds") {
+        expect(err.message).assertEqual("removeByIndex is out-of-bounds");
+      } else {
+        expect(err.message).assertEqual("the index is out-of-bounds");
+      }
     }
   });
   it("SR000GGR44_testRemoveByRange037", 0, function () {
@@ -473,7 +494,12 @@ describe("ArraylistTest", function () {
     try {
       let res = arrayList.removeByRange(3, 1);
     } catch (err) {
-      expect(err).assertEqual("RangeError: fromIndex cannot be less than or equal to toIndex");
+      expect(err.name).assertEqual("RangeError");
+      if (err.message != "the fromIndex cannot be less than or equal to toIndex") {
+        expect(err.message).assertEqual("fromIndex cannot be less than or equal to toIndex");
+      } else {
+        expect(err.message).assertEqual("the fromIndex cannot be less than or equal to toIndex");
+      }
     }
   });
   it("SR000GGR44_testRemoveByRange038", 0, function () {
@@ -486,7 +512,12 @@ describe("ArraylistTest", function () {
     try {
       let res = arrayList.removeByRange(6, 8);
     } catch (err) {
-      expect(err).assertEqual("RangeError: ArrayList: set out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      if (err.message != "the fromIndex or the toIndex is out-of-bounds") {
+        expect(err.message).assertEqual("ArrayList: set out-of-bounds");
+      } else {
+        expect(err.message).assertEqual("the fromIndex or the toIndex is out-of-bounds");
+      }
     }
   });
   it("SR000GGR44_testRemoveByRange039", 0, function () {
@@ -515,7 +546,12 @@ describe("ArraylistTest", function () {
     try {
       let subArr = arrayList.subArrayList(4, 2);
     } catch (err) {
-      expect(err).assertEqual("RangeError: fromIndex cannot be less than or equal to toIndex");
+      expect(err.name).assertEqual("RangeError");
+      if (err.message != "the fromIndex cannot be less than or equal to toIndex") {
+        expect(err.message).assertEqual("fromIndex cannot be less than or equal to toIndex");
+      } else {
+        expect(err.message).assertEqual("the fromIndex cannot be less than or equal to toIndex");
+      }
     }
   });
   it("SR000GGR44_testSubArrayList041", 0, function () {
@@ -545,7 +581,12 @@ describe("ArraylistTest", function () {
     try {
       let subArr = arrayList.subArrayList(6, 9);
     } catch (err) {
-      expect(err).assertEqual("RangeError: fromIndex or toIndex is out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      if (err.message != "the fromIndex or the toIndex is out-of-bounds") {
+        expect(err.message).assertEqual("fromIndex or toIndex is out-of-bounds");
+      } else {
+        expect(err.message).assertEqual("the fromIndex or the toIndex is out-of-bounds");
+      }
     }
   });
   it("SR000GGR44_testIncreaseCapacityTo043", 0, function () {
@@ -569,7 +610,12 @@ describe("ArraylistTest", function () {
     try {
       let res = arrayList.increaseCapacityTo();
     } catch (err) {
-      expect(err).assertEqual("TypeError: newCapacity is not Integer");
+      expect(err.name).assertEqual("TypeError");
+      if (err.message != "index is not integer") {
+        expect(err.message).assertEqual("newCapacity is not Integer");
+      } else {
+        expect(err.message).assertEqual("index is not integer");
+      }
     }
   });
   it("SR000GGR44_testAdd045", 0, function () {

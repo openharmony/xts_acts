@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020-2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2020 - 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -124,7 +124,7 @@ const int EXECVE_RETURN_ERROR = 190;  // execve return -1
 const int EXECVE_RETURN_OK    = 191;  // execve return not -1: execve should never return on success
 
 /**
- * desc:   start a elf, check if execve success, and return child process exit code within timeout_sec
+ * desc:   start an elf, check if execve success, and return child process exit code within timeout_sec
  * input:  fname, argv, envp -- parameters for execve
  *         timeout_sec       -- timeout of the child executing, default: 5 seconds.
  *                              timeout_sec<=0 means no timeout, wait forever until child exit.

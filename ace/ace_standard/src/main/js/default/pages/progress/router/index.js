@@ -256,7 +256,11 @@ export default {
       message: 'key:\n' + message
     });
   },
-
+  onAccessibility (event) {
+    if (event.eventType === 1) {
+      console.log("onAccessibility" + JSON.stringify(event));
+    }
+  },
   swipe(event){
     var direction = event.direction;
     var distance = event.distance;

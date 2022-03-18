@@ -113,14 +113,14 @@
                 input通用属性2
             </text>
             <input class="prop2" ref ="prop2" id="prop2"
-                 disabled = "false" focusable ="false"
-                 data-name ="prop2" click-effect="spring-large"
-                 dir ="ltr">
+                   disabled = "false" focusable ="false"
+                   data-name ="prop2" click-effect="spring-large"
+                   dir ="ltr">
             </input>
             <text  class="sub-title">
                 input通用属性3
             </text>
-            <input style="color: #679855; margin: 5px;" class="prop3" id="prop3">
+            <input style="color: #679855; margin: 1px;" class="prop3" id="prop3">
             </input>
             <text  class="sub-title">
                 input特有属性1
@@ -153,6 +153,16 @@
                    softkeyboardenabled="true"
                    showpasswordicon="false">
             </input>
+            <div style="margin: 1px;">
+                <input if="false" class="prop2" ref ="prop2" style="background-color: rebeccapurple;">
+                </input>
+                <input elif="true" class="prop2" ref ="prop2" style="background-color: black;">
+                </input>
+                <input elif="false" class="prop2" ref ="prop2" style="background-color: blue;">
+                </input>
+                <input else class="prop2" ref ="prop2" style="background-color: yellow;">
+                </input>
+            </div>
 
             <text  class="sub-title">
                 input特有属性3
@@ -160,6 +170,9 @@
             <input class="prop6" id="prop6"
                    type="password"
                    showpasswordicon="true">
+            </input>
+            <input for="{{array}}" tid="id" style="color: #679855; margin: 1px;" class="prop3"
+                   value="{{$item.name }}">
             </input>
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">
@@ -210,7 +223,8 @@
             </text>
             <input class ="event5" 
                     type="checkbox"
-                   onchange="checkChange">
+                   onchange="checkChange"
+                   onaccessibility="onAccessibility">
             </input>
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">

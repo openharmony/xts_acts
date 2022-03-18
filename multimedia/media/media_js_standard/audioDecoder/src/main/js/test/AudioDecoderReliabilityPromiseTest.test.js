@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -145,7 +145,7 @@ describe('AudioDecoderReliabilityPromise', function () {
     let mediaDescription = {
                 "channel_count": 2,
                 "sample_rate": 44100,
-                "audio_raw_format": 4,
+                "audio_sample_format": 1,
     };
     let expectError = false;
 
@@ -522,7 +522,7 @@ describe('AudioDecoderReliabilityPromise', function () {
             }
             timestamp += ES[frameCnt]/samplerate;
             frameCnt += 1;
-            audioDecodeProcessor.queueInput(inputobject).then(() => {
+            audioDecodeProcessor.pushInputData(inputobject).then(() => {
                 console.info('case queueInput success');
             });
         }
@@ -544,7 +544,7 @@ describe('AudioDecoderReliabilityPromise', function () {
                 writeFile(savapath, outputobject.data, outputobject.length);
                 console.info("write to file success");
             }
-            audioDecodeProcessor.releaseOutput(outputobject).then(() => {
+            audioDecodeProcessor.freeOutputBuffer(outputobject).then(() => {
                 console.info('release output success');
             });
         }
@@ -552,12 +552,12 @@ describe('AudioDecoderReliabilityPromise', function () {
 
     function setCallback(savepath, done) {
         console.info('case callback');
-        audioDecodeProcessor.on('inputBufferAvailable', async(inBuffer) => {
+        audioDecodeProcessor.on('needInputData', async(inBuffer) => {
             console.info('inputBufferAvailable');
             inputQueue.push(inBuffer);
             await enqueueAllInputs(inputQueue);
         });
-        audioDecodeProcessor.on('outputBufferAvailable', async(outBuffer) => {
+        audioDecodeProcessor.on('newOutputData', async(outBuffer) => {
             console.info('outputBufferAvailable');
             if (needGetMediaDes) {
                 audioDecodeProcessor.getOutputMediaDescription().then((MediaDescription) => {
@@ -571,7 +571,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         audioDecodeProcessor.on('error',(err) => {
             console.info('case error called,errName is' + err);
         });
-        audioDecodeProcessor.on('outputFormatChanged',(format) => {
+        audioDecodeProcessor.on('streamChanged',(format) => {
             console.info('Output format changed: ' + format);
         });
     }

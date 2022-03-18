@@ -52,9 +52,9 @@ export default function gaugeJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[testGauge001] component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Gauge');
-      expect(obj.$attrs.strokeWidth).assertEqual('20.000000vp');
-      expect(obj.$attrs.width).assertEqual('200.000000vp');
-      expect(obj.$attrs.height).assertEqual('200.000000vp');
+      expect(obj.$attrs.strokeWidth).assertEqual('20.00vp');
+      expect(obj.$attrs.width).assertEqual('200.00vp');
+      expect(obj.$attrs.height).assertEqual('200.00vp');
       expect(obj.$attrs.value).assertEqual('50.00');
       done();
     });
@@ -69,7 +69,7 @@ export default function gaugeJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 1,
+          eventId: 102,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testGauge002] start to publish emit");
@@ -81,7 +81,7 @@ export default function gaugeJsunit() {
       let strJsonNew = getInspectorByKey('gauge');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testGauge002] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.gauge).assertEqual('10.00');
+      expect(objNew.$attrs.value).assertEqual('10.00');
       done();
     });
 
@@ -95,7 +95,7 @@ export default function gaugeJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 1,
+          eventId: 102,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testGauge003] start to publish emit");
@@ -107,7 +107,7 @@ export default function gaugeJsunit() {
       let strJsonNew = getInspectorByKey('gauge');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testGauge003] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.strokeWidth).assertEqual('30.000000vp');
+      expect(objNew.$attrs.strokeWidth).assertEqual('30.00vp');
       done();
     });
 
@@ -121,7 +121,7 @@ export default function gaugeJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 1,
+          eventId: 102,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testGauge004] start to publish emit");
@@ -147,7 +147,7 @@ export default function gaugeJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 1,
+          eventId: 102,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testGauge005] start to publish emit");
@@ -173,7 +173,7 @@ export default function gaugeJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 2,
+          eventId: 103,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testGauge006] start to publish emit");

@@ -200,6 +200,39 @@
 
         <grid-container id="typeGridtemplateDefault" gridtemplate="default">
         </grid-container>
+        <text class="sub-title">
+            特有属性 -- grid-container
+        </text>
+        <grid-container class="propNewAdd"
+                grid-container="grid-container">
+        </grid-container>
+        <grid-container class="propNewAdd"
+                grid-container="">
+        </grid-container>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <grid-container class="propNewAdd"
+                tid="id">
+        </grid-container>
+        <grid-container class="propNewAdd"
+                tid="">
+        </grid-container>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <grid-container class="propNewAdd"
+                  if="false">
+        </grid-container>
+        <grid-container class="propNewAdd"
+                  elif="true">
+        </grid-container>
+        <grid-container class="propNewAdd"
+                  elif="false">
+        </grid-container>
+
 
     </div>
 </div>

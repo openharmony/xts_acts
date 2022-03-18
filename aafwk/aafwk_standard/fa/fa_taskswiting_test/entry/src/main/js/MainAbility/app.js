@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 export default {
     onCreate() {
         console.info("Emtry MainAbility onCreate");

@@ -130,8 +130,19 @@
             <rating class="prop4" id="prop4"
                     numstars="5"
                     rating="1"
-                    stepsize="1">
+                    stepsize="1"
+                    indicator="false">
             </rating>
+            <div style="margin: 2px;">
+                <rating if="false" class="prop2" ref ="prop2">
+                </rating>
+                <rating elif="true" class="prop2" ref ="prop2">
+                </rating>
+                <rating elif="false" class="prop2" ref ="prop2">
+                </rating>
+                <rating else class="prop2" ref ="prop2">
+                </rating>
+            </div>
             <text  class="sub-title">
                 rating特有属性2
             </text>
@@ -140,6 +151,8 @@
                     rating="1"
                     stepsize="1"
                     indicator="true">
+            </rating>
+            <rating for="{{array}}" tid="id" style="color: #679855; margin: 5px;" class="prop3">
             </rating>
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">
@@ -178,7 +191,8 @@
                     numstars="5"
                     rating="1"
                     stepsize="1"
-                   onchange="change">
+                   onchange="change"
+                    onaccessibility="onAccessibility">
             </rating>
         </div>
         <div style="background-color: #000000; width: 100%; height: 2px;">

@@ -35,11 +35,11 @@ describe('appInfoTest', function () {
     /**
     /* @tc.number batteryStats_js_001
      * @tc.name batteryStats_001
-     * @tc.desc batteryStats getbatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_BLUETOOTH
+     * @tc.desc batteryStats getBatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_BLUETOOTH
      */
     it('batteryStats_001', 0, async function (done) {
         var infoList;
-        let promise = batteryStats.getbatteryStats().then(function (value) {
+        let promise = batteryStats.getBatteryStats().then(function (value) {
             infoList = value;
             console.info("Executing");
         }, function (msg) {
@@ -62,11 +62,11 @@ describe('appInfoTest', function () {
     /**
     /* @tc.number batteryStats_js_002
      * @tc.name batteryStats_002
-     * @tc.desc batteryStats getbatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_IDLE
+     * @tc.desc batteryStats getBatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_IDLE
      */
     it('batteryStats_002', 0, async function (done) {
         var infoList;
-        let promise = batteryStats.getbatteryStats().then(function (value) {
+        let promise = batteryStats.getBatteryStats().then(function (value) {
             infoList = value;
             console.info("Executing");
         }, function (msg) {
@@ -89,11 +89,11 @@ describe('appInfoTest', function () {
     /**
     /* @tc.number batteryStats_js_003
      * @tc.name batteryStats_003
-     * @tc.desc batteryStats getbatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_PHONE
+     * @tc.desc batteryStats getBatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_PHONE
      */
     it('batteryStats_003', 0, async function (done) {
         var infoList;
-        let promise = batteryStats.getbatteryStats().then(function (value) {
+        let promise = batteryStats.getBatteryStats().then(function (value) {
             infoList = value;
             console.info("Executing");
         }, function (msg) {
@@ -116,11 +116,11 @@ describe('appInfoTest', function () {
     /**
     /* @tc.number batteryStats_js_004
      * @tc.name batteryStats_004
-     * @tc.desc batteryStats getbatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_RADIO
+     * @tc.desc batteryStats getBatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_RADIO
      */
     it('batteryStats_004', 0, async function (done) {
         var infoList;
-        let promise = batteryStats.getbatteryStats().then(function (value) {
+        let promise = batteryStats.getBatteryStats().then(function (value) {
             infoList = value;
             console.info("Executing");
         }, function (msg) {
@@ -143,11 +143,11 @@ describe('appInfoTest', function () {
     /**
     /* @tc.number batteryStats_js_005
      * @tc.name batteryStats_005
-     * @tc.desc batteryStats getbatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_SCREEN
+     * @tc.desc batteryStats getBatteryStats Interface Test type = ConsumptionType.CONSUMPTION_TYPE_SCREEN
      */
     it('batteryStats_005', 0, async function (done) {
         var infoList;
-        let promise = batteryStats.getbatteryStats().then(function (value) {
+        let promise = batteryStats.getBatteryStats().then(function (value) {
             infoList = value;
             console.info("Executing");
         }, function (msg) {

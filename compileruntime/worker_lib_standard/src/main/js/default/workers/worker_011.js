@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -21,7 +21,7 @@ var backValue = undefined;
 var flag = false;
 
 parentPort.onmessage = function(e) {
-  var data = e.data;
+  let data = e.data;
   switch(data.type) {
     case "new":
       ss = new worker.Worker("workers/worker_0111.js");

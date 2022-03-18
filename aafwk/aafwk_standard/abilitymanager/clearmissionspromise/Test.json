@@ -3,7 +3,7 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "120000",
-        "package": "com.ohos.launcher",
+        "package": "com.example.myapplication111",
         "abilityName": "com.ohos.launcherSed111.MainAbility",
         "shell-timeout": "600000"
     },

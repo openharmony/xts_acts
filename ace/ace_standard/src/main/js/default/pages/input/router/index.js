@@ -84,6 +84,12 @@ var frames = [
 ];
 
 export default {
+    data: {
+        array: [
+            {id: 1, name: 'jack', age: 18},
+            {id: 2, name: 'tony', age: 18},
+        ],
+    },
 
     onShow(){
         // 通用属性
@@ -506,5 +512,12 @@ export default {
         prompt.showToast({
             message: JSON.stringify(event)
         });
+    },
+
+    onAccessibility(event) {
+        if (event.eventType == 1) {
+            console.log('abc');
+        }
+        console.log("onAccessibility" + JSON.stringify(event));
     }
 }

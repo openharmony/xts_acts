@@ -15,7 +15,6 @@
 
 <div class="container">
     <div class="sub-container">
-    <!-- 通用样式 -->
         <div class="style-container">
             <text class="title">
                 通用样式
@@ -59,6 +58,8 @@
                 image特有样式
             </text>
             <image id="style7" class="style7" src="common/images/image.png">
+            </image>
+            <image id="style8" class="style8" src="common/images/image.png">
             </image>
         </div>
 
@@ -256,6 +257,7 @@
                 image无障碍1
             </text>
             <image id="access1" class="access1"
+                   onaccessibility="onAccessibility"
                    accessibilitygroup ="true"
                    accessibilitytext="这是div"
                    accessibilitydescription="点击此按键会弹出一个对话框"

@@ -64,20 +64,19 @@
     ],
     "reqPermissions": [
       {
-        "reason": "reason_manage_face",
-        "usedScene": {
-          "ability": ["com.myface.Ability","com.myface.AbilityBackground"],
-          "when": "always"
-        },
-        "name": "ohos.permission.MANAGE_FACE"
+        "name": "ohos.permission.ACCESS_BIOMETRIC"
       },
       {
-        "reason": "reason_access_biometric",
-        "usedScene": {
-          "ability": ["com.mybiometric.Ability","com.mybiometric.AbilityBackground"],
-          "when": "always"
-        },
-        "name": "ohos.permission.ACCESS_BIOMETRIC"
+        "name": "ohos.permission.USE_USER_IDM"
+      },
+      {
+        "name": "ohos.permission.MANAGE_USER_IDM"
+      },
+      {
+        "name": "ohos.permission.ACCESS_USER_AUTH_INTERNAL"
+      },
+      {
+        "name": "ohos.permission.ACCESS_PIN_AUTH"
       }
     ]
   }

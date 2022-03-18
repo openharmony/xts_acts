@@ -16,29 +16,13 @@
 <div class="container">
     <div class="style-container">
         <text class="title">
-            divider特有样式
+            divider样式
         </text>
 
         <text class="sub-title">
-            特有样式1-5 \n margin、color、stroke-width、display、visibility
+            仅支持如下样式
         </text>
-        <div class="style-box">
-            <divider id="style1"></divider>
-        </div>
-        <text class="sub-title">
-            特有样式--line-cap
-        </text>
-        <div class="style-box">
-            <divider id="lineCapButt"></divider>
-            <divider id="lineCapRound"></divider>
-            <divider id="lineCapSquare"></divider>
-        </div>
-        <text class="sub-title">
-            特有样式--flex
-        </text>
-        <div class="style-box">
-            <divider id="flex"></divider>
-        </div>
+        <divider id="style1" class="style1"></divider>
     </div>
 </div>
 

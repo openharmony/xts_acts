@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import events_emitter from '@ohos.emitter';
 
 @Entry
@@ -31,13 +32,13 @@ struct ListExample {
   onPageShow() {
     console.info('[list] page show called');
     var stateChangeEvent = {
-      eventId: 80,
+      eventId: 124,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
     var stateChangeEventTwo = {
-      eventId: 81,
+      eventId: 125,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventTwo, this.stateChangCallBackTwo);
@@ -98,9 +99,14 @@ struct ListExample {
         .divider({ strokeWidth: this.strokeWidth, color: this.color, startMargin: this.startMargin, endMargin: this.endMargin })
         .edgeEffect(this.edgeEffect)
         .chainAnimation(this.chainAnimation)
+        .multiSelectable(true)
         .onScrollIndex((firstIndex: number, lastIndex: number) => {
           console.info('first' + firstIndex)
           console.info('last' + lastIndex)
+        })
+        .onScroll((scrollOffset: number, scrollState: ScrollState) => {
+          console.info('scrollOffset:' + scrollOffset)
+          console.info('scrollState:' + scrollState)
         })
         .editMode(this.editMode)
         .onItemDelete((index: number) => {

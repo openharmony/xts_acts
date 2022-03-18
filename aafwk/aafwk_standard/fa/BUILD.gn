@@ -17,12 +17,19 @@ group("fa") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "fa_applicationinfo_test:FaApplicationinfoTest",
+      "fa_auxstate_test:FaAuxstateTest",
+      "fa_auxsumstate_test:FaAuxsumstateTest",
       "fa_clear_test:FaClearTest",
+      "fa_configurationconstant_test:FaConfigurationconstantTest",
       "fa_coverapi_test:FaCoverapiTest",
       "fa_equeryabilitybywant_test:FaEqueryabilitybywantTest",
       "fa_lock_test:FaLockTest",
       "fa_missionmanager_test:FaMissionmanagerTest",
+      "fa_movemissiontofront_test:FaMissionmanagerTest",
+      "fa_state_test:FaStateTest",
       "fa_statelistener_test:FaStatelistenerTest",
+      "fa_sumstate_test:FaSumstateTest",
       "fa_taskmanager_test:FaTaskmanagerTest",
       "fa_taskswiting_test:FaTaskswitingTest",
     ]

@@ -146,6 +146,14 @@ export default {
             }
         ]
     },
+
+    onAccessibility(event) {
+        if (event.eventType == 1) {
+            // Do Something
+        }
+        console.log("onAccessibility" + JSON.stringify(event));
+    },
+
     addData() {
         this.$refs.linechart.append({
             serial: 0,

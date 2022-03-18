@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Shenzhen kaiHong Digital Industry Development Co., Ltd.
+ * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -340,6 +340,7 @@
   background-size:10% 20%;
   background-repeat: repeat;
   background-position: 30% 40%;
+  mask-image:linear-gradient(pink,#fff000);
 }
 
 #styleThirtyTwo{
@@ -466,4 +467,241 @@
 .placeholder-color2{
   placeholder-color: red;
 }
+
+#addOne{
+  width: 10%;
+  height: 20px;
+  background-image:url('common/images/image.png');
+  background-size:cover;
+  align-self:stretch;
+  position:fixed;
+  transform: none;
+  animation-timing-function:cubic-bezier(0.4, 0.0, 0.4, 1.0);
+  shared-transition-effect:static;
+  shared-transition-name:ani;
+  shared-transition-timing-function:friction;
+  transition-enter:ani;
+  transition-exit: ani;
+  transition-duration:10;
+  transition-timing-function:friction;
+  clip-path:border-box;
+  display-index:1;
+  filter:blur(10px);
+  backdrop-filter:blur(10px);
+  window-filter:blur(10%);
+}
+
+#addTwo{
+  width: 100px;
+  height: 15px;
+  background-image:url('common/images/image.png');
+  background-size:auto;
+  position:relative;
+  transform: matrix(0.5,0.1,0.2,0.9,20,10);
+  animation-timing-function:steps(4);
+  shared-transition-effect:exchange;
+  clip-path:padding-box;
+}
+
+#addThree{
+  width: 100px;
+  height: 15px;
+  background-color:#000000;
+  transform: matrix3d(1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2);
+  clip-path:content-box;
+}
+
+#addFour{
+  width: 100px;
+  height: 15px;
+  background-color:#000000;
+  transform: translate3d(1px,2px,1px) scale3d(1,2,1) rotate3d(10,10,10,10deg) skew(1deg,2deg) perspective(10px);
+  clip-path:circle(1);
+}
+
+#addFive{
+  width: 100px;
+  height: 15px;
+  background-color: #000000;
+  transform: translateY(1px) translateZ(10px)
+  scale(1,2) scaleZ(0.4)
+  rotateX(10deg) rotateY(10deg) rotateZ(10deg)
+  skewX(1deg) skewY(2deg);
+  clip-path:ellipse(1);
+}
+
+#addSix{
+  width: 100px;
+  height: 15px;
+  background-color: #000000;
+  transform: scaleX(1) scaleY(0.4);
+  clip-path:ellipse(1)
+}
+
+#addSeven{
+  width: 100px;
+  height: 15px;
+  background-color: #000000;
+  clip-path:path(1);
+  aspect-ratio:2;
+}
+
+#addSeven:disabled{
+  width: 100px;
+  height: 15px;
+  background-color: #ff0000;
+}
+
+#addSeven:active{
+  width: 100px;
+  height: 15px;
+  background-color: #ff0000;
+}
+
+#addSeven:focus{
+  width: 100px;
+  height: 15px;
+  background-color: #ff0000;
+}
+
+#addEight_1{
+  width: 100px;
+  height: 30px;
+  background-color:red;
+  font-size: 20px;
+  color: white;
+  font-weight: lighter;
+  radius: 100px;
+}
+#addEight_2{
+  width: 100px;
+  height: 30px;
+  background-color:red;
+  font-size: 20px;
+  color: white;
+  font-weight: normal;
+}
+#addEight_3{
+  width: 100px;
+  height: 30px;
+  background-color:red;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+}
+#addEight_4{
+  width: 100px;
+  height: 30px;
+  background-color:red;
+  font-size: 20px;
+  color: white;
+  font-weight: bolder;
+}
+#addEight_5{
+  width: 100px;
+  height: 30px;
+  background-color:red;
+  font-size: 20px;
+  color: white;
+  font-weight: medium;
+}
+#addEight_6{
+  width: 100px;
+  height: 30px;
+  background-color:red;
+  font-size: 20px;
+  color: white;
+  font-weight: regular;
+}
+#addEight_7{
+  width: 100px;
+  height: 30px;
+  background-color:red;
+  font-size: 20px;
+  color: white;
+  font-weight: 100;
+}
+#addEight_8{
+  width: 100px;
+  height: 30px;
+  background-color:red;
+  font-size: 20px;
+  color: white;
+  font-weight: 200;
+}
+#addEight_9{
+  width: 100px;
+  height: 30px;
+  background-color:red;
+  font-size: 20px;
+  color: white;
+  font-weight: 300;
+}
+#addEight_10{
+  width: 100px;
+  height: 30px;
+  background-color:red;
+  font-size: 20px;
+  color: white;
+  font-weight: 400;
+}
+#addEight_11{
+  width: 100px;
+  height: 30px;
+  background-color:red;
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+}
+#addEight_12{
+  width: 100px;
+  height: 30px;
+  background-color:red;
+  font-size: 20px;
+  color: white;
+  font-weight: 600;
+}
+#addEight_13{
+  width: 100px;
+  height: 30px;
+  background-color:red;
+  font-size: 20px;
+  color: white;
+  font-weight: 700;
+  text-align: right;
+}
+#addEight_14{
+  width: 100px;
+  height: 30px;
+  background-color:red;
+  font-size: 20px;
+  color: white;
+  font-weight: 800;
+  font-variant: normal;
+  text-align: start;
+}
+#addEight_15{
+  width: 100px;
+  height: 30px;
+  background-color:red;
+  font-size: 20px;
+  color: white;
+  font-weight: 900;
+  font-variant: none;
+  text-align: end;
+}
+
+@font-face {
+  font-family: SimSunfont;
+  src: url('/common/simsun.ttf');
+}
+
+@media (device-type: tv) {
+  .addSeven {
+    width: 500px;
+    height: 500px;
+    background-color: #fa8072;
+  }
+}
+
 

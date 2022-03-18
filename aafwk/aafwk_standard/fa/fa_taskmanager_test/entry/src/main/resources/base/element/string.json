@@ -31,6 +31,14 @@
     {
       "name": "entry_MainAbility4",
       "value": "entry_MainAbility4"
+    },
+    {
+      "name": "description_mainability5",
+      "value": "JS_Empty Ability"
+    },
+    {
+      "name": "entry_MainAbility5",
+      "value": "entry_MainAbility5"
     }
   ]
 }

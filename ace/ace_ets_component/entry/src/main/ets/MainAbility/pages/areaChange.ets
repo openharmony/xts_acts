@@ -13,7 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import events_emitter from '@ohos.emitter';
+
 @Entry
 @Component
 struct AreaExample {
@@ -37,7 +39,7 @@ struct AreaExample {
               }
             }
             var backEvent = {
-              eventId: 21,
+              eventId: 61,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("onClick start to emit action state")
@@ -58,7 +60,7 @@ struct AreaExample {
               }
             }
             var backEvent = {
-              eventId: 22,
+              eventId: 62,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("onAreaChange start to emit action state")

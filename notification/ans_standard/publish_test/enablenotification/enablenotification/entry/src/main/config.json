@@ -50,6 +50,14 @@
       {
         "name":"ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
         "reason":"need use ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
+      },
+      {
+        "name":"ohos.permission.GET_BUNDLE_INFO",
+        "reason":"need use ohos.permission.GET_BUNDLE_INFO"
+      },
+      {
+        "name":"ohos.permission.NOTIFICATION_CONTROLLER",
+        "reason":"need use ohos.permission.NOTIFICATION_CONTROLLER"
       }
     ],
     "js": [

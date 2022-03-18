@@ -515,5 +515,11 @@ export default {
         prompt.showToast({
             message: 'reachBottom'
         });
+    },
+
+    onAccessibility() {
+        prompt.showToast({
+            message: 'onAccessibility'
+        });
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -57,3 +57,25 @@ require('./imageAnimatorProps.test.js')
 require('./textareaProps.test.js')
 require('./videoProps.test.js')
 require('./gridContainerProps.test.js')
+require('./svgProps.test.js')
+require('./rectProps.test.js')
+require('./circleProps.test.js')
+require('./qrcodeProps.test.js')
+require('./richtextProps.test.js')
+require('./toggleProps.test.js')
+require('./toolbarProps.test.js')
+require('./toolbarItemProps.test.js')
+require('./gridColProps.test.js')
+require('./gridRowProps.test.js')
+require('./ellipseProps.test.js')
+require('./pathProps.test.js')
+require('./lineProps.test.js')
+require('./polylineProps.test.js')
+require('./polygonProps.test.js')
+require('./svgTextProps.test.js')
+require('./tspanProps.test.js')
+require('./textPathProps.test.js')
+require('./animateProps.test.js')
+require('./animateMotionProps.test.js')
+require('./animateTransformProps.test.js')
+require('./canvasProps.test.js')

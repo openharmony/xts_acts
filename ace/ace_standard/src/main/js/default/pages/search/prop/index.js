@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 
-import prompt from '@system.prompt';
-
 export default {
     data:{
 OptionArray:{icon:"common/images/icon.png",content:"复制"},
@@ -61,6 +59,7 @@ OptionArray:{icon:"common/images/icon.png",content:"复制"},
         menuoptionsNone : null,
         menuoptions : null,
     },
+
     onShow(){
         this.getCommonPropValues();
         this.getSpecificPropValues();

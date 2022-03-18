@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -55,13 +55,13 @@ describe('VideoRecorderFuncCallbackTest', function () {
         videoFrameHeight : 480,
         videoFrameRate : 10
     }
-    // orientationHint 0, 90, 180, 270
+    // rotation 0, 90, 180, 270
     let videoConfig = {
         audioSourceType : 1,
         videoSourceType : 0,
         profile : configFile,
         url : 'file:///data/media/01.mp4',
-        orientationHint : 0,
+        rotation : 0,
         location : { latitude : 30, longitude : 130 },
         maxSize : 100,
         maxDuration : 500
@@ -81,7 +81,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
         videoSourceType : 0,
         profile : onlyVideoProfile,
         url : 'file:///data/media/01.mp4',
-        orientationHint : 0,
+        rotation : 0,
         location : { latitude : 30, longitude : 130 },
         maxSize : 100,
         maxDuration : 500
@@ -728,7 +728,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
 
     /* *
         * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1900
-        * @tc.name      : 19.orientationHint 90 (callback)
+        * @tc.name      : 19.rotation 90 (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
@@ -737,7 +737,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1900', 0, async function (done) {
         await getFd('37.mp4');
         videoConfig.url = fdPath;
-        videoConfig.orientationHint = 90;
+        videoConfig.rotation = 90;
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT,
             START_EVENT, RELEASE_EVENT, END_EVENT);
@@ -746,7 +746,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
 
     /* *
         * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2000
-        * @tc.name      : 20.orientationHint 180 (callback)
+        * @tc.name      : 20.rotation 180 (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
@@ -755,7 +755,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2000', 0, async function (done) {
         await getFd('38.mp4');
         videoConfig.url = fdPath;
-        videoConfig.orientationHint = 180;
+        videoConfig.rotation = 180;
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
@@ -763,7 +763,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
 
     /* *
         * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2100
-        * @tc.name      : 21.orientationHint 270 (callback)
+        * @tc.name      : 21.rotation 270 (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
@@ -772,7 +772,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2100', 0, async function (done) {
         await getFd('39.mp4');
         videoConfig.url = fdPath;
-        videoConfig.orientationHint = 270;
+        videoConfig.rotation = 270;
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);

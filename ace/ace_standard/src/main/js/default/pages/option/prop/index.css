@@ -21,7 +21,7 @@
 select {
   font-size: 14px;
 }
-option {
+.option {
   color: #0d0000;
   font-size: 14px;
   allow-scale: true;

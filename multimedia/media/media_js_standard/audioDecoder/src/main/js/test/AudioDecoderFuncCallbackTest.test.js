@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -384,7 +384,7 @@ describe('AudioDecoderFuncCallback', function () {
             }
             timestamp += ES[frameCnt]/samplerate;
             frameCnt += 1;
-            audioDecodeProcessor.queueInput(inputobject, () => {
+            audioDecodeProcessor.pushInputData(inputobject, () => {
                 console.info('queueInput success');
             })
         }
@@ -411,7 +411,7 @@ describe('AudioDecoderFuncCallback', function () {
                 writeFile(savepath, outputobject.data, outputobject.length);
                 console.info("write to file success");
             }
-            audioDecodeProcessor.releaseOutput(outputobject, () => {
+            audioDecodeProcessor.freeOutputBuffer(outputobject, () => {
                 console.info('release output success');
             })
         }
@@ -419,12 +419,12 @@ describe('AudioDecoderFuncCallback', function () {
 
     function setCallback(savepath, done) {
         console.info('case callback');
-        audioDecodeProcessor.on('inputBufferAvailable', async(inBuffer) => {
+        audioDecodeProcessor.on('needInputData', async(inBuffer) => {
             console.info('inputBufferAvailable');
             inputQueue.push(inBuffer);
             await enqueueAllInputs(inputQueue);
         });
-        audioDecodeProcessor.on('outputBufferAvailable', async(outBuffer) => {
+        audioDecodeProcessor.on('newOutputData', async(outBuffer) => {
             console.info('outputBufferAvailable');
             if (needGetMediaDes){
                 audioDecodeProcessor.getOutputMediaDescription((err, MediaDescription) => {
@@ -440,7 +440,7 @@ describe('AudioDecoderFuncCallback', function () {
         audioDecodeProcessor.on('error',(err) => {
             console.info('case error called,errName is' + err);
         });
-        audioDecodeProcessor.on('outputFormatChanged',(format) => {
+        audioDecodeProcessor.on('streamChanged',(format) => {
             console.info('Output format changed: ' + format);
         });
     }
@@ -460,7 +460,7 @@ describe('AudioDecoderFuncCallback', function () {
         let mediaDescription = {
                     "channel_count": 2,
                     "sample_rate": 44100,
-                    "audio_raw_format": 4,
+                    "audio_sample_format": 1,
         }
         workdoneAtEOS = true;
         needGetMediaDes = true;
@@ -541,7 +541,7 @@ describe('AudioDecoderFuncCallback', function () {
         let mediaDescription = {
             "channel_count": 2,
             "sample_rate": 44100,
-            "audio_raw_format": 4,
+            "audio_sample_format": 1,
         }
         eosframenum = 500;
         workdoneAtEOS = true;
@@ -612,7 +612,7 @@ describe('AudioDecoderFuncCallback', function () {
         let mediaDescription = {
             "channel_count": 2,
             "sample_rate": 44100,
-            "audio_raw_format": 4,
+            "audio_sample_format": 1,
         }
         workdoneAtEOS = true;
         let savepath = BASIC_PATH + '0200.pcm';
@@ -678,7 +678,7 @@ describe('AudioDecoderFuncCallback', function () {
         let mediaDescription = {
                     "channel_count": 2,
                     "sample_rate": 44100,
-                    "audio_raw_format": 4,
+                    "audio_sample_format": 1,
         }
         eosframenum = 200;
         flushAtEOS = true;
@@ -737,7 +737,7 @@ describe('AudioDecoderFuncCallback', function () {
         let mediaDescription = {
                     "channel_count": 2,
                     "sample_rate": 44100,
-                    "audio_raw_format": 4,
+                    "audio_sample_format": 1,
         }
         let savepath = BASIC_PATH + '0400.pcm';
         eventEmitter.on('getAudioDecoderCaps', () => {
@@ -819,7 +819,7 @@ describe('AudioDecoderFuncCallback', function () {
         let mediaDescription = {
             "channel_count": 2,
             "sample_rate": 44100,
-            "audio_raw_format": 4,
+            "audio_sample_format": 1,
         }
         eosframenum = 200;
         let savepath = BASIC_PATH + '0500.pcm';
@@ -898,7 +898,7 @@ describe('AudioDecoderFuncCallback', function () {
         let mediaDescription = {
                     "channel_count": 2,
                     "sample_rate": 44100,
-                    "audio_raw_format": 4,
+                    "audio_sample_format": 1,
         }
         eosframenum = 200;
         resetAtEOS = true;
@@ -906,7 +906,7 @@ describe('AudioDecoderFuncCallback', function () {
         let mediaDescription2 = {
             "channel_count": 1,
             "sample_rate": 16000,
-            "audio_raw_format": 4,
+            "audio_sample_format": 1,
         }
         let hasreconfigured = false;
         eventEmitter.on('getAudioDecoderCaps', () => {
@@ -996,12 +996,12 @@ describe('AudioDecoderFuncCallback', function () {
         let mediaDescription = {
             "channel_count": 2,
             "sample_rate": 44100,
-            "audio_raw_format": 4,
+            "audio_sample_format": 1,
         }
         let mediaDescription2 = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 4,
+            "audio_sample_format": 1,
         }
         let hasrecreate = false;
         eosframenum = 200;

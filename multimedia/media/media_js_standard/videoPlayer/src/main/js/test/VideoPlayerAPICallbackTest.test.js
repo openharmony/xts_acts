@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -48,6 +48,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     let surfaceID = '';
     let fdPath;
     let fdValue;
+    let temp = 0;
     let events = require('events');
     let eventEmitter = new events.EventEmitter();
 
@@ -56,7 +57,11 @@ describe('VideoPlayerAPICallbackTest', function () {
     })
 
     beforeEach(async function() {
+        console.info('case flush surfaceID start');
         await toNewPage();
+        console.info('case flush surfaceID end');
+        await msleep(1000).then(() => {
+        }, failureCallback).catch(catchCallback);
         console.info('beforeEach case');
     })
 
@@ -69,6 +74,20 @@ describe('VideoPlayerAPICallbackTest', function () {
         await fileIO.close(fdValue);
         console.info('afterAll case');
     })
+
+    function msleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    function failureCallback(error) {
+        expect().assertFail();
+        console.info(`case error called,errMessage is ${error.message}`);
+    }
+
+    function catchCallback(error) {
+        expect().assertFail();
+        console.info(`case error called,errMessage is ${error.message}`);
+    }
 
     async function getFd() {
         fdPath = 'fd://';
@@ -84,7 +103,14 @@ describe('VideoPlayerAPICallbackTest', function () {
     }
 
     async function toNewPage() {
-        let path = 'pages/surfaceTest/surfaceTest';
+        let path = '';
+        if (temp == 0) {
+            path = 'pages/surfaceTest/surfaceTest';
+            temp = 1;
+        } else {
+            path = 'pages/surfaceTest/surfaceTest2';
+            temp = 0;
+        }
         let options = {
             uri: path,
         }
@@ -380,14 +406,12 @@ describe('VideoPlayerAPICallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0100', 0, async function (done) {
         await getFd();
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -399,14 +423,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0200', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-                PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+            PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -418,14 +440,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0300', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-                PAUSE_EVENT, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+            PAUSE_EVENT, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -437,14 +457,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0400', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-                STOP_EVENT, PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+            STOP_EVENT, PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -456,14 +474,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0500', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-                RESET_EVENT, PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+            RESET_EVENT, PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -475,14 +491,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0600', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-                SEEK_EVENT, SEEK_TIME, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+            SEEK_EVENT, SEEK_TIME, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -494,14 +508,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0700', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-                SEEK_MODE_EVENT, SEEK_TIME, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+            SEEK_MODE_EVENT, SEEK_TIME, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -513,14 +525,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0800', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-                SETVOLUME_EVENT, VOLUME_VALUE, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+            SETVOLUME_EVENT, VOLUME_VALUE, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -532,14 +542,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0900', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-                SETSPEED_EVENT, SPEED_VALUE, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+            SETSPEED_EVENT, SPEED_VALUE, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -551,14 +559,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_1000', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -570,14 +576,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_1100', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, GETDESCRIPTION,
-                PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, GETDESCRIPTION,
+            PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -589,14 +593,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_1200', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PREPARE_EVENT,
-                PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PREPARE_EVENT,
+            PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -608,13 +610,11 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0100', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, PLAY_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, PLAY_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -626,14 +626,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0200', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -645,14 +643,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0300', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -664,14 +660,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0400', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, PLAY_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, PLAY_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -683,14 +677,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0500', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, PLAY_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, PLAY_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -702,14 +694,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0600', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -721,14 +711,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0700', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -740,14 +728,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0800', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -759,14 +745,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0900', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -778,14 +762,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_1000', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PLAY_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PLAY_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -797,14 +779,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_1100', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, GETDESCRIPTION, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, GETDESCRIPTION, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -816,14 +796,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_1200', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, PLAY_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, PLAY_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -835,13 +813,11 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0100', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -853,14 +829,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0200', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -872,14 +846,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0300', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -891,14 +863,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0400', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -910,14 +880,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0500', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -929,14 +897,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0600', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -948,14 +914,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0700', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -967,14 +931,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0800', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -986,14 +948,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0900', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1005,14 +965,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_1000', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1024,14 +982,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_1100', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, GETDESCRIPTION, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, GETDESCRIPTION, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1043,14 +999,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_1200', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, PAUSE_EVENT, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);         
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, PAUSE_EVENT, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1062,13 +1016,11 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0100', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1080,14 +1032,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0200', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1099,14 +1049,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0300', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1118,14 +1066,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0400', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1137,14 +1083,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0500', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1156,14 +1100,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0600', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, STOP_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, STOP_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1175,14 +1117,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0700', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, STOP_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, STOP_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1194,14 +1134,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0800', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, STOP_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, STOP_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1213,14 +1151,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0900', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, STOP_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, STOP_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1232,14 +1168,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_1000', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1251,14 +1185,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_1100', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, GETDESCRIPTION, STOP_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, GETDESCRIPTION, STOP_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1270,14 +1202,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_1200', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, STOP_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, STOP_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1289,13 +1219,11 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0100', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1307,14 +1235,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0200', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1326,14 +1252,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0300', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1345,14 +1269,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0400', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1364,14 +1286,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0500', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1383,14 +1303,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0600', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, RESET_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, RESET_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1402,14 +1320,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0700', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, RESET_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, RESET_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1421,14 +1337,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0800', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RESET_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RESET_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1440,14 +1354,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0900', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, RESET_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, RESET_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1459,14 +1371,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_1000', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                RESET_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            RESET_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1478,14 +1388,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_1100', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, GETDESCRIPTION, RESET_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, GETDESCRIPTION, RESET_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1497,14 +1405,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_1200', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, RESET_EVENT, RESET_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, RESET_EVENT, RESET_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1516,13 +1422,11 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0100', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1534,14 +1438,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0200', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1553,14 +1455,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0300', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1572,14 +1472,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0400', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1591,14 +1489,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0500', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1610,14 +1506,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0600', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1629,14 +1523,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0700', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1648,14 +1540,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0800', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1667,14 +1557,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0900', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1686,13 +1574,11 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_1000', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1704,14 +1590,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_1100', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, GETDESCRIPTION, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, GETDESCRIPTION, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1723,14 +1607,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_1200', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1742,13 +1624,11 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0100', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SEEK_EVENT, SEEK_TIME, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SEEK_EVENT, SEEK_TIME, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1760,14 +1640,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0200', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1779,14 +1657,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0300', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1798,14 +1674,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0400', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1817,14 +1691,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0500', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, SEEK_EVENT, SEEK_TIME, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, SEEK_EVENT, SEEK_TIME, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1836,14 +1708,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0600', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, SEEK_EVENT, SEEK_TIME, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, SEEK_EVENT, SEEK_TIME, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1855,17 +1725,13 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0700', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, SEEK_EVENT,
-                SEEK_TIME, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);         
-        }, 1000);
-
-
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, SEEK_EVENT,
+            SEEK_TIME, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1877,15 +1743,13 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0800', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE,
-                SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE,
+            SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1897,14 +1761,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0900', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                SEEK_EVENT, SEEK_TIME, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            SEEK_EVENT, SEEK_TIME, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1916,14 +1778,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_1000', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, GETDESCRIPTION, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, GETDESCRIPTION, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1935,15 +1795,13 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_1100', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, SEEK_EVENT, SEEK_TIME,
-                SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, SEEK_EVENT, SEEK_TIME,
+            SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1955,14 +1813,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_1300', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, -1, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, -1, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1974,14 +1830,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_1400', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, DURATION_TIME + 1000, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, DURATION_TIME + 1000, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -1993,13 +1847,11 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0100', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2011,14 +1863,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0200', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2030,14 +1880,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0300', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2049,14 +1897,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0400', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2068,14 +1914,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0500', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2087,14 +1931,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0600', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2106,15 +1948,13 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0700', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, SETVOLUME_EVENT,
-                VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, SETVOLUME_EVENT,
+            VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2126,15 +1966,13 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0800', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, SETVOLUME_EVENT,
-                VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, SETVOLUME_EVENT,
+            VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2146,14 +1984,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0900', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                SETVOLUME_EVENT, VOLUME_VALUE, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            SETVOLUME_EVENT, VOLUME_VALUE, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2165,14 +2001,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_1000', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, GETDESCRIPTION, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, GETDESCRIPTION, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2184,15 +2018,13 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_1100', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, SETVOLUME_EVENT, VOLUME_VALUE,
-                SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, SETVOLUME_EVENT, VOLUME_VALUE,
+            SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2204,14 +2036,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_1300', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, -1, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, -1, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2223,14 +2053,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_1400', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, 2, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, 2, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2242,13 +2070,11 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0100', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSPEED_EVENT, SPEED_VALUE,ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSPEED_EVENT, SPEED_VALUE,ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2260,14 +2086,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0200', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2279,14 +2103,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0300', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2298,14 +2120,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0400', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2317,15 +2137,13 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0500', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, SETSPEED_EVENT, SPEED_VALUE,
-                ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, SETSPEED_EVENT, SPEED_VALUE,
+            ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2337,15 +2155,13 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0600', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, SETSPEED_EVENT, SPEED_VALUE,
-                ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, SETSPEED_EVENT, SPEED_VALUE,
+            ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2357,15 +2173,13 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0700', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME,
-                SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME,
+            SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2377,15 +2191,13 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0800', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, SETSPEED_EVENT,
-                SPEED_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, SETSPEED_EVENT,
+            SPEED_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2397,14 +2209,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0900', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                SETSPEED_EVENT, SPEED_VALUE, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            SETSPEED_EVENT, SPEED_VALUE, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2416,14 +2226,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_1000', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, GETDESCRIPTION, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, GETDESCRIPTION, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2435,15 +2243,13 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_1100', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, SETSPEED_EVENT, SPEED_VALUE,
-                SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, SETSPEED_EVENT, SPEED_VALUE,
+            SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2455,14 +2261,12 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_1300', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, -1, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, -1, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
     /* *
@@ -2474,13 +2278,11 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_1400', 0, async function (done) {
-        setTimeout(function() {
-            surfaceID = globalThis.value;
-            console.info('case new surfaceID is ' + surfaceID);
-            let videoPlayer = null;
-            let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-                PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, 5, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
-            eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);          
-        }, 1000);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, 5, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 })

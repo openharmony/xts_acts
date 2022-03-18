@@ -25,6 +25,7 @@ group("bundlemanager") {
       "actsbmskittest:ActsBmsKitTest",
       "actsbmsmetadatatest:ActsBmsMetaDataTest",
       "actsbmsmoduleusagerecordtest:ActsBmsModuleUsageRecordTest",
+      "actsbundlemanageretstest:ActsBundleManagerEtsTest",
       "actsbundlemanagertest:ActsBundleManagerTest",
       "actsbundlemanageruninstall:ActsBundleManagerUninstallTest",
       "actsbundlemgrmultipleinstalltest:ActsBundleMgrMultipleInstallTest",

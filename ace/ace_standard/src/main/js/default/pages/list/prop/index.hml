@@ -304,5 +304,28 @@
         </list>
         <list id="selectedNone" selected="">
         </list>
+
+        <text class="sub-title">
+            特有属性 -- tid
+        </text>
+        <list class="propNewAdd"
+                tid="id">
+        </list>
+        <list class="propNewAdd"
+                tid="">
+        </list>
+
+        <text class="sub-title">
+            特有属性 -- elif
+        </text>
+        <list class="propNewAdd"
+                if="false">
+        </list>
+        <list class="propNewAdd"
+                elif="true">
+        </list>
+        <list class="propNewAdd"
+                elif="false">
+        </list>
     </div>
 </div>
