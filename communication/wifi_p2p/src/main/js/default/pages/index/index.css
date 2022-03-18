@@ -14,8 +14,12 @@
  */
 
 
-<div class="container">
-    <text class="title">
-        {{ $t('strings.hello') }} {{ title }}
-    </text>
-</div>
+.container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 100px;
+}
