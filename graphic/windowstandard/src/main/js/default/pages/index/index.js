@@ -24,5 +24,8 @@ export default {
     },
     onInit() {
         this.title = this.$t('strings.world');
+		const configService = core.getDefaultService('config');
+		this.timeout = 15000;
+		configService.setConfig(this);
     }
 }
