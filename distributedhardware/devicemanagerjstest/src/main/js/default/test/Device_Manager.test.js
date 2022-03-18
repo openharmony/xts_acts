@@ -28,13 +28,14 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_createDeviceManager_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            expect(data).assertUndefined();
-        });
+            expect(data != null).assertTrue()
+        })
         console.log("----------stop running deviceManagerTest_createDeviceManager_0100----------");
         done();
-    })
+    })   
 
     /*
      * @tc.number  deviceManagerTest_createDeviceManager_0200
@@ -46,9 +47,10 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_createDeviceManager_0200----------");
         deviceManager.createDeviceManager('', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            expect(data).assertNull();
+            expect(data == null).assertTrue()
         });
         console.log("----------stop running deviceManagerTest_createDeviceManager_0200----------");
         done();
@@ -64,9 +66,10 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_createDeviceManager_0300----------");
         deviceManager.createDeviceManager('comohosdevicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            expect(data).assertNull();
+            expect(data == null).assertTrue()
         });
         console.log("----------stop running deviceManagerTest_createDeviceManager_0300----------");
         done();
@@ -82,10 +85,11 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_createDeviceManager_0400----------");
         deviceManager.createDeviceManager('com.ohos.123', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            expect(data).assertNull();
-        });
+            expect(data == null).assertTrue()
+        });      
         console.log("----------stop running deviceManagerTest_createDeviceManager_0400----------");
         done();
     })
@@ -100,10 +104,11 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_createDeviceManager_0500----------");
         deviceManager.createDeviceManager('com#ohos%devicemangagerdemo&*', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            expect(data).assertNull();
-        });
+            expect(data == null).assertTrue()
+        });  
         console.log("----------stop running deviceManagerTest_createDeviceManager_0500----------");
         done();
     })
@@ -118,6 +123,7 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_startDeviceDiscovery_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
 
@@ -131,7 +137,7 @@ describe('deviceManagerTest', function() {
                 "capability": 0
             };
             var start = data.startDeviceDiscovery(info);
-            expect(start).assertUndefined();
+            expect(start != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_startDeviceDiscovery_0100----------");
         done();
@@ -147,6 +153,7 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_startDeviceDiscovery_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
 
@@ -160,7 +167,7 @@ describe('deviceManagerTest', function() {
                 "capability": SUBSCRIBE_CAPABILITY_OSD
             };
             var start = data.startDeviceDiscovery(info);
-            expect(start).assertUndefined();
+            expect(start != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_startDeviceDiscovery_0100----------");
         done();
@@ -176,6 +183,7 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_startDeviceDiscovery_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
 
@@ -189,7 +197,7 @@ describe('deviceManagerTest', function() {
                 "capability": SUBSCRIBE_CAPABILITY_DDMP
             };
             var start = data.startDeviceDiscovery(info);
-            expect(start).assertUndefined();
+            expect(start != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_startDeviceDiscovery_0100----------");
         done();
@@ -205,10 +213,11 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_release_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             var re = data.release();
-            expect(re).assertUndefined();
+            expect(re != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_release_0100----------");
         done();
@@ -224,10 +233,11 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_getTrustedDeviceListSync_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             var array = data.getTrustedDeviceListSync();
-            expect(array).assertUndefined();
+            expect(array == null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_getTrustedDeviceListSync_0100----------");
         done();
@@ -243,11 +253,12 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_stopDeviceDiscovery_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             var subscribeId = 2115;
             var start = data.stopDeviceDiscovery(subscribeId);
-            expect(start).assertUndefined();
+            expect(start != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_stopDeviceDiscovery_0100----------");
         done();
@@ -263,6 +274,7 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_getLocalDeviceInfoSync_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             setTimeout(function(){
@@ -288,6 +300,7 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_deviceManagerTest_getLocalDeviceInfo1_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             setTimeout(function(){
@@ -299,6 +312,7 @@ describe('deviceManagerTest', function() {
             var deviceInfo = dmClass.getLocalDeviceInfo((err, data) => {
                 if (err) {
                     expect().assertFail();
+                    console.log("[deviceManagerTest] createDeviceManager error");
                 }
             });
             expect(deviceInfo == undefined).assertTrue();
@@ -317,6 +331,7 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_getLocalDeviceInfo(promise)_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             setTimeout(function(){
@@ -326,9 +341,7 @@ describe('deviceManagerTest', function() {
         });
         async function getLocalDeviceInfo2(){
             var deviceInfo = dmClass.getLocalDeviceInfo().then(data => {
-//                console.log('data is :' + data)
             })
-//            console.log('promise is : ' + JSON.stringify(deviceInfo))
             expect(deviceInfo != null).assertTrue();
         }
         console.log("----------stop running deviceManagerTest_getLocalDeviceInfo(promise)_0100----------");
@@ -345,6 +358,7 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_authenticateDevice_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             let deviceInfo = {
@@ -368,9 +382,10 @@ describe('deviceManagerTest', function() {
             data.authenticateDevice(deviceInfo, authParam, (err, data) => {
                 if (err) {
                     expect().assertFail();
+                    console.log("[deviceManagerTest] createDeviceManager error");
                 }
                 var token = data.pinToken;
-                expect(token).assertNotNull();
+                expect(token != null).assertTrue();
             });
         });
         console.log("----------stop running deviceManagerTest_authenticateDevice_0100----------");
@@ -387,6 +402,7 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_authenticateDevice_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             let deviceInfo = {
@@ -409,10 +425,11 @@ describe('deviceManagerTest', function() {
             }
             data.authenticateDevice(deviceInfo, authParam, (err, data) => {
                 if (err) {
+                    console.log("[deviceManagerTest] authenticateDevice error");
                     expect().assertFail();
                 }
                 var token = data.pinToken;
-                expect(token).assertNotNull();
+                expect(token != null).assertTrue();
             });
         });
         console.log("----------stop running deviceManagerTest_authenticateDevice_0100----------");
@@ -429,6 +446,7 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_authenticateDevice_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             let deviceInfo = {
@@ -451,10 +469,11 @@ describe('deviceManagerTest', function() {
             }
             data.authenticateDevice(deviceInfo, authParam, (err, data) => {
                 if (err) {
+                    console.log("[deviceManagerTest] authenticateDevice error");
                     expect().assertFail();
                 }
                 var token = data.pinToken;
-                expect(token).assertNotNull();
+                expect(token != null).assertTrue();
             });
         });
         console.log("----------stop running deviceManagerTest_authenticateDevice_0100----------");
@@ -471,6 +490,7 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_authenticateDevice_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             let deviceInfo = {
@@ -493,10 +513,11 @@ describe('deviceManagerTest', function() {
             }
             data.authenticateDevice(deviceInfo, authParam, (err, data) => {
                 if (err) {
+                    console.log("[deviceManagerTest] authenticateDevice error");
                     expect().assertFail();
                 }
                 var token = data.pinToken;
-                expect(token).assertNotNull();
+                expect(token != null).assertTrue();
             });
         });
         console.log("----------stop running deviceManagerTest_authenticateDevice_0100----------");
@@ -513,6 +534,7 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_authenticateDevice_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             let deviceInfo = {
@@ -535,10 +557,11 @@ describe('deviceManagerTest', function() {
             }
             data.authenticateDevice(deviceInfo, authParam, (err, data) => {
                 if (err) {
+                    console.log("[deviceManagerTest] authenticateDevice error");
                     expect().assertFail();
                 }
                 var token = data.pinToken;
-                expect(token).assertNotNull();
+                expect(token != null).assertTrue();
             });
         });
         console.log("----------stop running deviceManagerTest_authenticateDevice_0100----------");
@@ -555,6 +578,7 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_authenticateDevice_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             let deviceInfo = {
@@ -577,10 +601,11 @@ describe('deviceManagerTest', function() {
             }
             data.authenticateDevice(deviceInfo, authParam, (err, data) => {
                 if (err) {
+                    console.log("[deviceManagerTest] authenticateDevice error");
                     expect().assertFail();
                 }
                 var token = data.pinToken;
-                expect(token).assertNotNull();
+                expect(token != null).assertTrue();
             });
         });
         console.log("----------stop running deviceManagerTest_authenticateDevice_0100----------");
@@ -597,6 +622,7 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_authenticateDevice_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             let authInfo = {
@@ -610,7 +636,7 @@ describe('deviceManagerTest', function() {
                 if (err) {
                     expect().assertFail();
                 }
-                expect(data).assertUndefined();
+                expect(data == undefined).assertTrue();
             });
         });
         console.log("----------stop running deviceManagerTest_authenticateDevice_0100----------");
@@ -627,6 +653,7 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_unAuthenticateDevice_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             setTimeout(function(){
@@ -655,6 +682,7 @@ describe('deviceManagerTest', function() {
             }
             var result = dmClass.unAuthenticateDevice(deviceInfo, authParam, (err, data) => {
                 if (err) {
+                    console.log("[deviceManagerTest] unAuthenticateDevice error");
                     expect().assertFail();
                 }
             });
@@ -674,10 +702,11 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_getAuthenticationParam_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             var authparam = data.getAuthenticationParam();
-            expect(authparam).assertNotNull();
+            expect(authparam != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_getAuthenticationParam_0100----------");
         done();
@@ -693,12 +722,13 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_on-deviceStateChange_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             var fa = data.on('deviceStateChange', (deviceStateChangeAction, deviceInfo) => {
-                expect(true).assertEqual(deviceStateChangeAction.ONLINE == 0);
+                expect(deviceStateChangeAction.ONLINE == 0).assertTrue();
             });
-            expect(fa).assertUndefined();
+            expect(fa != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_on-deviceStateChange_0100----------");
         done();
@@ -714,12 +744,13 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_on-deviceStateChange_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             var fa = data.on('deviceStateChange', (deviceStateChangeAction, deviceInfo) => {
-                expect(true).assertEqual(deviceStateChangeAction.OFFLINE == 0);
+                expect(deviceStateChangeAction.OFFLINE == 0).assertTrue();
             });
-            expect(fa).assertUndefined();
+            expect(fa != null).assertNotNull();
         });
         console.log("----------stop running deviceManagerTest_on-deviceStateChange_0100----------");
         done();
@@ -735,12 +766,13 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_on-deviceStateChange_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             var fa = data.on('deviceStateChange', (deviceStateChangeAction, deviceInfo) => {
-                expect(true).assertEqual(deviceStateChangeAction.READY == 0);
+                expect(deviceStateChangeAction.READY == 0).assertTrue();
             });
-            expect(fa).assertUndefined();
+            expect(fa != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_on-deviceStateChange_0100----------");
         done();
@@ -756,12 +788,13 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_on-deviceStateChange_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             var fa = data.on('deviceStateChange', (deviceStateChangeAction, deviceInfo) => {
-                expect(true).assertEqual(deviceStateChangeAction.CHANGE == 0);
+                expect(deviceStateChangeAction.CHANGE == 0).assertTrue();
             });
-            expect(fa).assertUndefined();
+            expect(fa != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_on-deviceStateChange_0100----------");
         done();
@@ -777,10 +810,11 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_off-deviceStateChange_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             var fa = data.off('deviceStateChange', () => {});
-            expect(fa).assertUndefined();
+            expect(fa != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_off-deviceStateChange_0100----------");
         done();
@@ -796,10 +830,11 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_on-deviceFound_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             var fa = data.on('deviceFound', () => {});
-            expect(fa).assertUndefined();
+            expect(fa != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_on-deviceFound_0100----------");
         done();
@@ -815,10 +850,11 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_off-deviceFound_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             var fa = data.off('deviceFound', () => {});
-            expect(fa).assertUndefined();
+            expect(fa != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_off-deviceFound_0100----------");
         done();
@@ -834,10 +870,11 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_on-discoverFail_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             var fa = data.on('discoverFail', () => {});
-            expect(fa).assertUndefined();
+            expect(fa != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_on-discoverFail_0100----------");
         done();
@@ -853,10 +890,11 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_off-discoverFail_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             var fa = data.off('discoverFail', () => {});
-            expect(fa).assertUndefined();
+            expect(fa != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_off-discoverFail_0100----------");
         done();
@@ -872,10 +910,11 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_on-serviceDie_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             var fa = data.on('serviceDie', () => {});
-            expect(fa).assertUndefined();
+            expect(fa != null).assertTrue();
         });
         console.log("----------start running deviceManagerTest_on-serviceDie_0100----------");
         done();
@@ -891,10 +930,11 @@ describe('deviceManagerTest', function() {
         console.log("----------start running deviceManagerTest_off-serviceDie_0100----------");
         deviceManager.createDeviceManager('com.ohos.devicemangagerdemo', (err, data) => {
             if (err) {
+                console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
             var fa = data.off('serviceDie', () => {});
-            expect(fa).assertUndefined();
+            expect(fa != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_off-serviceDie_0100----------");
         done();
