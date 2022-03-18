@@ -18,6 +18,7 @@ import {describe, expect, it} from 'deccjsunit/index'
 import commonEvent from '@ohos.commonevent'
 import featureAbility from '@ohos.ability.featureability'
 import formBindingData from '@ohos.application.formBindingData'
+import bundle from '@ohos.bundle';
 
 var getCallingBundleUri = {
     events: ["uri"]
@@ -131,6 +132,67 @@ describe("ApplicationInfoTest", function () {
             console.log(TAG + ":startAbility success , err:" + JSON.stringify(err) + ",data:" + JSON.stringify(data));
         });
         console.log("------------end SUB_AA_OpenHarmony_Want_0300-------------");
+    })
+
+    /*
+     * @tc.number  SUB_AA_OpenHarmony_ApplicationInfo_0100
+     * @tc.name    Verify the CodePath of applicationinfo
+     * @tc.desc    Function test
+     * @tc.level   0
+     */
+    it('SUB_AA_OpenHarmony_ApplicationInfo_0100', 0, async function (done) {
+        console.log("------------start SUB_AA_OpenHarmony_ApplicationInfo_0100-------------");
+        TAG = "SUB_AA_OpenHarmony_ApplicationInfo_0100";
+
+        bundle.getApplicationInfo("com.example.applicationinfo", 1, (error, data)=> {
+            console.log(TAG + "getApplicationInfo success, error: "
+            + JSON.stringify(error) + ", data: " + JSON.stringify(data))
+            console.log(TAG + "data.condePath: " + JSON.stringify(data.codePath))
+            expect(JSON.stringify(data.codePath)).
+            assertEqual(JSON.stringify("/data/app/el1/bundle/public/com.example.applicationinfo"))
+            done()
+        })
+        console.log("------------end SUB_AA_OpenHarmony_ApplicationInfo_0100-------------");
+    })
+
+    /*
+     * @tc.number  SUB_AA_OpenHarmony_ApplicationInfo_0200
+     * @tc.name    Verify the removable of applicationinfo
+     * @tc.desc    Function test
+     * @tc.level   0
+     */
+    it('SUB_AA_OpenHarmony_ApplicationInfo_0200', 0, async function (done) {
+        console.log("------------start SUB_AA_OpenHarmony_ApplicationInfo_0200-------------");
+        TAG = "SUB_AA_OpenHarmony_ApplicationInfo_0200";
+
+        bundle.getApplicationInfo("com.example.applicationinfo", 1, (error, data)=> {
+            console.log(TAG + "getApplicationInfo success, error: "
+            + JSON.stringify(error) + ", data: " + JSON.stringify(data))
+            console.log(TAG + "data.removable: " + JSON.stringify(data.removable))
+            expect(JSON.stringify(data.removable)).assertEqual("true")
+            done()
+        })
+        console.log("------------end SUB_AA_OpenHarmony_ApplicationInfo_0200-------------");
+    })
+
+    /*
+     * @tc.number  SUB_AA_OpenHarmony_ApplicationInfo_0300
+     * @tc.name    Verify the accesstokenid of applicationinfo
+     * @tc.desc    Function test
+     * @tc.level   0
+     */
+    it('SUB_AA_OpenHarmony_ApplicationInfo_0300', 0, async function (done) {
+        console.log("------------start SUB_AA_OpenHarmony_ApplicationInfo_0300-------------");
+        TAG = "SUB_AA_OpenHarmony_ApplicationInfo_0300";
+
+        bundle.getApplicationInfo("com.example.applicationinfo", 1, (error, data)=> {
+            console.log(TAG + "getApplicationInfo success, error: "
+            + JSON.stringify(error) + ", data: " + JSON.stringify(data))
+            console.log(TAG + "data.accessTokenId: " + JSON.stringify(data.accessTokenId))
+            expect(data.accessTokenId == 537317578).assertTrue();
+            done()
+        })
+        console.log("------------end SUB_AA_OpenHarmony_ApplicationInfo_0300-------------");
     })
 
 })
