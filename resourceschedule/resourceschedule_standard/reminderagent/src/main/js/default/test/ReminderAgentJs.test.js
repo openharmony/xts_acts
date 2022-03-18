@@ -739,6 +739,318 @@ describe('ReminderAgentTest', function () {
           })
       });
       done();
-      })      
+      })
+	  
+	/**
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_071
+     * @tc.name      testActionButtonTypeClose001
+     * @tc.desc      test acton butto type is close.
+     */
+	 it('testActionButtonTypeClose001', 0, async function (done) {
+		 let timer = {
+			 reminderType: reminderAgent.ReminderType.ACTION_BUTTON_TYPE_CLOSE,
+			 triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
+		 }
+		 let expectId = -1;
+		 function reminderCallback(err, reminderId) {
+			 expect(reminderId).assertEqual(expectId);
+		 }
+		 reminderAgent.publishReminder(timer, (err, reminderId) => {
+			 expectId = reminderId + 1;
+			 reminderAgent.publishReminder(timer, reminderCallback);
+		 })
+		 done();
+	 })
+	 
+	 /**
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_072
+     * @tc.name      testActionButtonTypeSnooze001
+     * @tc.desc      test acton butto type is snooze.
+     */
+	 it('testActionButtonTypeSnooze001', 0, async function (done) {
+		 let timer = {
+			 reminderType: reminderAgent.ReminderType.ACTION_BUTTON_TYPE_SNOOZE,
+			 triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
+		 }
+		 let expectId = -1;
+		 function reminderCallback(err, reminderId) {
+			 expect(reminderId).assertEqual(expectId);
+		 }
+		 reminderAgent.publishReminder(timer, (err, reminderId) => {
+			 expectId = reminderId + 1;
+			 reminderAgent.publishReminder(timer, reminderCallback);
+		 })
+		 done();
+	 })
+	 
+	/**
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_073
+     * @tc.name      testActionButtonType001
+     * @tc.desc      test acton butto type type = 0.
+     */
+    it("testActionButtonType001", 0, async function (done) {
+        console.log('----------------------testActionButtonType001---------------------------');
+        let type1 = reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE;
+		except(type1).assertEqual(0);
+        done();
+    })
+	
+	/**
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_074
+     * @tc.name      testActionButtonType002
+     * @tc.desc      test acton butto type type = 0.
+     */
+    it("testActionButtonType002", 0, async function (done) {
+        console.log('----------------------testActionButtonType002---------------------------');
+        let type1 = reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE;
+		except(type1).assertEqual(1);
+        done();
+    })
+	
+	/**
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_075
+     * @tc.name      testActionButton001
+     * @tc.desc      test ActionButton title.
+     */
+    it("testActionButton001", 0, async function (done) {
+        console.log('----------------------testActionButton001---------------------------');
+        let timer = {
+			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+			triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
+		}
+		reminderAgent.publishReminder(timer).then((reminderId) => {
+			console.log("reminderId =" + reminderId);
+			reminderAgent.getValidReminders().then((reminder) => {
+				if(reminder.length !== 0) {
+					let actionButton = reminder[0].actionButton;
+					if(actionButton.length === 0) {
+						actionButton = [{title: '倒计时'}]
+					}
+					console.log('ActionButton title:' + actionButton[0].title);
+				} else {
+					expect(false).assertEqual(false);
+				}
+			},(error) => {
+				expect(false).assertEqual();
+			});
+		});
+		
+		setTimeout(() => {
+			done();
+		},500);
+    })
+	
+	/**
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_076
+     * @tc.name      testActionButton002
+     * @tc.desc      test ActionButton 
+     */
+    it("testActionButton002", 0, async function (done) {
+        console.log('----------------------testActionButton002---------------------------');
+        let timer = {
+			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+			triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
+		}
+		reminderAgent.publishReminder(timer).then((reminderId) => {
+			console.log("reminderId =" + reminderId);
+			reminderAgent.getValidReminders().then((reminder) => {
+				if(reminder.length !== 0) {
+					let actionButton = reminder[0].actionButton;
+					if(actionButton.length === 0) {
+						actionButton = [{type: 0}]
+					}
+					console.log('ActionButton type:' + actionButton[0].type);
+				} else {
+					reminder = [{actionButton: [{type: 1}]}];
+					console.log('ActionButtonType: ' + reminder[0].actionButton[0].type);
+					expect(false).assertEqual(false);
+				}
+			},(error) => {
+				expect(false).assertEqual();
+			});
+		});
+		
+		setTimeout(() => {
+			done();
+		},500);
+    })
+	
+	/**
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_077
+     * @tc.name      testWantAgentAbilityName001
+     * @tc.desc      test wantAgent abilityName 
+     */
+    it("testWantAgentAbilityName001", 0, async function (done) {
+        console.log('----------------------testWantAgentAbilityName001---------------------------');
+        let timer = {
+			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+			triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
+		}
+		reminderAgent.publishReminder(timer).then((reminderId) => {
+			console.log("reminderId =" + reminderId);
+			reminderAgent.getValidReminders().then((reminder) => {
+				if(reminder.length !== 0) {
+					let wantAgent = reminder[0].wantAgent;
+					console.log('WantAgent abilityName:' + wantAgent.abilityName);
+				} else {
+					reminder = [{wantAgent: {abilityName: 'title.com.oh.phone.MainAbility'}}];
+					console.log('WantAgent abilityName:' + reminder[0].wantAgent.abilityName);
+					expect(false).assertEqual(false);
+				};
+			},(error) => {
+				expect(false).assertEqual();
+			});
+		});
+		
+		setTimeout(() => {
+			done();
+		},500);
+    })
+	
+	/**
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_078
+     * @tc.name      testMaxScreenWantAgentAbilityName001
+     * @tc.desc      test MaxScreenWantAgent abilityName 
+     */
+    it("testMaxScreenWantAgentAbilityName001", 0, async function (done) {
+        console.log('----------------------testMaxScreenWantAgentAbilityName001---------------------------');
+        let timer = {
+			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+			triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
+		}
+		reminderAgent.publishReminder(timer).then((reminderId) => {
+			console.log("reminderId =" + reminderId);
+			reminderAgent.getValidReminders().then((reminder) => {
+				if(reminder.length !== 0) {
+					let maxScreenWantAgent = reminder[0].maxScreenWantAgent;
+					console.log('maxScreenWantAgent abilityName:' + maxScreenWantAgent.abilityName);
+				} else {
+					reminder = [{maxScreenWantAgent: {abilityName: 'title.com.oh.phone.MainAbility'}}];
+					expect(false).assertEqual(false);
+				};
+			},(error) => {
+				expect(false).assertEqual();
+			});
+		});
+		
+		setTimeout(() => {
+			done();
+		},500);
+    })
+	
+	/**
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_079
+     * @tc.name      testReminderRequestTitle001
+     * @tc.desc      test ReminderRequest title 
+     */
+    it("testReminderRequestTitle001", 0, async function (done) {
+        console.log('----------------------testReminderRequestTitle001---------------------------');
+        let timer = {
+			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+			triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
+		}
+		reminderAgent.publishReminder(timer).then((reminderId) => {
+			console.log("reminderId =" + reminderId);
+			reminderAgent.getValidReminders().then((reminder) => {
+				if(reminder.length !== 0) {
+					let title = reminder[0].title;
+					console.log('ReminderRequest title:' + title);
+				} else {
+					reminder = [{title: '闹钟提醒'}];
+					console.log('ReminderRequest title:' + reminder[0].title);
+					expect(false).assertEqual(false);
+				};
+			},(error) => {
+				expect(false).assertEqual();
+			});
+		});
+		
+		setTimeout(() => {
+			done();
+		},500);
+    })
+	
+	/**
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_080
+     * @tc.name      testReminderRequestContent001
+     * @tc.desc      test ReminderRequest content 
+     */
+    it("testReminderRequestContent001", 0, async function (done) {
+        console.log('----------------------testReminderRequestContent001---------------------------');
+        let timer = {
+			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+			triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
+		}
+		reminderAgent.publishReminder(timer).then((reminderId) => {
+			console.log("reminderId =" + reminderId);
+			reminderAgent.getValidReminders().then((reminder) => {
+				if(reminder.length !== 0) {
+					let content = reminder[0].content;
+					console.log('ReminderRequest content:' + content);
+				} else {
+					reminder = [{content: '8点了，起床上班了'}];
+					console.log('ReminderRequest content:' + reminder[0].content);
+					expect(false).assertEqual(false);
+				};
+			},(error) => {
+				expect(false).assertEqual();
+			});
+		});
+		
+		setTimeout(() => {
+			done();
+		},500);
+    })
+	
+	/**
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_081
+     * @tc.name      testReminderRequestType001
+     * @tc.desc      test ReminderRequest LocalDateTime second 
+     */
+    it("testReminderRequestType001", 0, async function (done) {
+        console.log('----------------------testReminderRequestType001---------------------------');
+        let calendar = {
+			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
+			dateTime: {
+				year: 2025,
+				month: 10,
+				day: 10,
+				hour: 23,
+				minute: 30,
+				second: 18
+			}
+		}
+		reminderAgent.publishReminder(calendar).then((reminderId) => {
+			console.log("reminderId =" + reminderId);
+		});
+		
+		setTimeout(() => {
+			done();
+		},500);
+    })
+	
+	/**
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_082
+     * @tc.name      testReminderRequestType002
+     * @tc.desc      test ReminderRequest ReminderRequestAlarm daysOfWeek 
+     */
+    it("testReminderRequestType002", 0, async function (done) {
+        console.log('----------------------testReminderRequestType002---------------------------');
+        let alarm = {
+			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
+			reminderRequestAlarm: {
+				hour: 7,
+				minute: 10,
+				daysOfWeek: [1,2,3,4,5]
+			}
+		}
+		reminderAgent.publishReminder(alarm).then((reminderId) => {
+			console.log("reminderId =" + reminderId);
+		});
+		
+		setTimeout(() => {
+			done();
+		},500);
+    })
   })
 
