@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect} from 'deccjsunit/index.ets';
+import {describe, it, expect} from 'deccjsunit/index.ets';
 import Utils from './Utils';
 import Bundle from '@ohos.bundle';
 
@@ -27,21 +27,9 @@ const TAG_TEST_0400_001 = ' bundle_getAllApplicationInfo_test_0400_008 ';
 const TAG_TEST_0500_001 = ' bundle_getAllApplicationInfo_test_0500_009 ';
 const TAG_TEST_0500_002 = ' bundle_getAllApplicationInfo_test_0500_0010 ';
 const USER_ID_100 = 100;
-const SLEEP_TIME_1000 = 1000;
-const SLEEP_TIME_2000 = 2000;
 
 export default function applicationBundleJsunit() {
   describe('appInfoTest', function () {
-    beforeEach(async function (done) {
-      console.info('applicationBundle before each called');
-      done()
-    });
-
-    afterEach(async function () {
-      await Utils.sleep(SLEEP_TIME_2000);
-      console.info('applicationBundle after each called');
-    });
-
     /**
      * @tc.number: bundle_getApplicationInfo_test_0100_001
      * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
@@ -49,7 +37,6 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0100_001, 0, async function (done) {
-      await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let data = await Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USER_ID_100)
         .catch((error) => {
@@ -71,7 +58,6 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0100_002, 0, async function (done) {
-      await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let data = await Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_ALL_APPLICATION_INFO, USER_ID_100)
         .catch((error) => {
@@ -93,7 +79,6 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0100_003, 0, async function (done) {
-      await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let data = await Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_DISABLE, USER_ID_100)
         .catch((error) => {
@@ -116,7 +101,6 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0200_001, 0, async function (done) {
-      await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let data = await Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION)
         .catch((error) => {
@@ -138,7 +122,6 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0200_002, 0, async function (done) {
-      await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let data = await Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_ALL_APPLICATION_INFO)
         .catch((error) => {
@@ -160,7 +143,6 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0200_003, 0, async function (done) {
-      await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let data = await Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_DISABLE)
         .catch((error) => {
@@ -182,7 +164,6 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0300_001, 0, async function (done) {
-      await Utils.sleep(SLEEP_TIME_1000);
       let datas;
       var startTime = await Utils.getNowTime();
       Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USER_ID_100,
@@ -193,7 +174,6 @@ export default function applicationBundleJsunit() {
             expect(error).assertFail();
             console.info(TAG_TEST_0300_001 + 'UserId callBack error: ' + error);
           }
-          console.info(TAG_TEST_0300_001 + 'UserId callBack in');
           console.info(TAG_TEST_0300_001 + 'UserId callBack error: ' + error);
           console.info(TAG_TEST_0300_001 + 'UserId callBack data is:' + JSON.stringify(data));
           datas = data;
@@ -221,7 +201,6 @@ export default function applicationBundleJsunit() {
           expect(error).assertFail();
           console.info(TAG_TEST_0400_001 + 'UserId callBack error: ' + error);
         }
-        console.info(TAG_TEST_0400_001 + 'noUserId callBack in');
         console.info(TAG_TEST_0400_001 + 'noUserId callBack error: ' + error);
         console.info(TAG_TEST_0400_001 + 'noUserId callBack data is:' + JSON.stringify(data));
         datas = data;
@@ -240,7 +219,6 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0500_001, 0, async function (done) {
-      await Utils.sleep(SLEEP_TIME_1000);
       let errors;
       var startTime = await Utils.getNowTime();
       await Bundle.getAllApplicationInfo('0')
@@ -265,7 +243,6 @@ export default function applicationBundleJsunit() {
      * @tc.level   0
      */
     it(TAG_TEST_0500_002, 0, async function (done) {
-      await Utils.sleep(SLEEP_TIME_1000);
       let errors;
       var startTime = await Utils.getNowTime();
       await Bundle.getAllApplicationInfo('0', USER_ID_100)

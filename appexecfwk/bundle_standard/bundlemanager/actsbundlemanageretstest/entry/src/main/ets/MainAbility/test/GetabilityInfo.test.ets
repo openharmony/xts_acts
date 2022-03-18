@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeEach, afterEach, it, expect} from 'deccjsunit/index.ets';
+import {describe, it, expect} from 'deccjsunit/index.ets';
 import Utils from './Utils';
 import bundleManager from '@ohos.bundle';
 
@@ -21,54 +21,44 @@ export default function GetabilityInfo() {
   describe('GetabilityInfo', function () {
     let bundleName = "com.open.harmony.packagemag";
     let abilityName = "com.open.harmony.packagemag.MainAbility";
+
     let bundleName_other = "com.ohos.acecollaboration";
     let abilityName_other = "com.ohos.acecollaboration.MainAbility";
+
     let bundleName1 = "com.harmony.packagemag";
     let abilityName1 = "com.harmony.packagemag1.MainAbility";
 
-    beforeEach(async function (done) {
-      console.info('GetabilityInfo before each called');
-      done()
-    });
-
-    afterEach(async function () {
-      await Utils.sleep(2000);
-      console.info('GetabilityInfo after each called');
-    });
-
     /*
-     * @tc.number: bundle_getAllApplicationInfo_test_0100
+     * @tc.number: bundle_GetabilityInfo_test_0100
      * @tc.name: getAbilityInfo : The basic ability is enhanced to obtain the specified Ability information
      * @tc.desc: Check the return value of the interface (by promise)
      * @tc.level   0
      */
     it('bundle_GetabilityInfo_test_0100', 0, async function (done) {
-      await Utils.sleep(1000);
+      let mData;
       var timeOldStamp = await Utils.getNowTime();
-      bundleManager.getAbilityInfo(bundleName, abilityName)
+      await bundleManager.getAbilityInfo(bundleName, abilityName)
         .then((data) => {
           var timeNewStamp = Utils.getNowTime();
           Utils.getDurationTime('bundle_GetabilityInfo_test_0100', timeOldStamp, timeNewStamp)
-          console.info('[bundle_GetabilityInfo_test_0100] getApplicationInfo in ');
           console.info('[bundle_GetabilityInfo_test_0100] getApplicationInfo promise data is: ' + JSON.stringify(data));
           expect(typeof (data)).assertEqual("object");
+          mData = data;
         }).catch((error) => {
         console.error('[bundle_GetabilityInfo_test_0100]Operation failed. Cause: ' + JSON.stringify(error));
         expect(error).assertFail();
       })
-      var promise = await bundleManager.getAbilityInfo(bundleName, abilityName);
-      checkAbilityInfo(promise);
+      checkAbilityInfo(mData);
       done();
     });
 
     /*
-     * @tc.number: bundle_getAbilityInfo_test_0200
+     * @tc.number: bundle_GetabilityInfo_test_0200
      * @tc.name: getAbilityInfo : The basic ability is enhanced to obtain the specified Ability information
      * @tc.desc: Check the return value of the interface (by callback)
      * @tc.level   0
      */
 	it('bundle_GetabilityInfo_test_0200', 0, async function (done) {
-      await Utils.sleep(1000);
       let mData;
       var timeOldStamp = await Utils.getNowTime();
       await bundleManager.getAbilityInfo(bundleName, abilityName, (err, data) => {
@@ -87,51 +77,44 @@ export default function GetabilityInfo() {
     });
 
     /*
-     * @tc.number: bundle_getAllApplicationInfo_test_0300
+     * @tc.number: bundle_GetabilityInfo_test_0300
      * @tc.name: getAbilityInfo : The basic ability is enhanced to obtain the specified Ability information
      * @tc.desc: Check the return value of the interface (by promise)
      * @tc.level   0
      */
     it('bundle_GetabilityInfo_test_0300', 0, async function (done) {
-      await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
-      let err = null
-      var mData
+      let err;
+      var mData;
       await bundleManager.getAbilityInfo(bundleName_other, abilityName_other)
         .then((data) => {
           var timeNewStamp =  Utils.getNowTime();
           Utils.getDurationTime('bundle_GetabilityInfo_test_0300',timeOldStamp,timeNewStamp)
           mData = data
-          console.info('[bundle_GetabilityInfo_test_0300] getApplicationInfo in ');
           console.info('[bundle_GetabilityInfo_test_0300] getApplicationInfo promise data is: ' + JSON.stringify(data));
           expect(typeof (mData)).assertEqual("object");
+          checkAbilityInfo_other(mData);
         }).catch((error) => {
           err = error
           console.error('[bundle_GetabilityInfo_test_0300]Operation failed. Cause: ' + JSON.stringify(error));
+          expect(err).assertEqual(1);
         });
-      if(err != null) {
-        await expect(err).assertEqual(1);
-      }else{
-        checkAbilityInfo_other(mData);
-      }
       done();
     });
 
     /*
-     * @tc.number: bundle_getAllApplicationInfo_test_0400
+     * @tc.number: bundle_GetabilityInfo_test_0400
      * @tc.name: getAbilityInfo : The basic ability is enhanced to obtain the specified Ability information
      * @tc.desc: Check the return value of the interface (by promise)
      * @tc.level   0
      */
     it('bundle_GetabilityInfo_test_0400', 0, async function (done) {
       let error1;
-      await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       bundleManager.getAbilityInfo(bundleName1, abilityName)
         .then((data) => {
           var timeNewStamp = Utils.getNowTime();
           Utils.getDurationTime('bundle_GetabilityInfo_test_0400', timeOldStamp, timeNewStamp)
-          console.info('[bundle_GetabilityInfo_test_0400] getApplicationInfo in ');
           console.info('[bundle_GetabilityInfo_test_0400] getApplicationInfo data is: ' + JSON.stringify(data));
           expect(typeof (data)).assertEqual("object");
         }).catch((error) => {
@@ -144,7 +127,7 @@ export default function GetabilityInfo() {
     });
 
     /*
-     * @tc.number: bundle_getAllApplicationInfo_test_0500
+     * @tc.number: bundle_GetabilityInfo_test_0500
      * @tc.name: getAbilityInfo : The basic ability is enhanced to obtain the specified Ability information
      * @tc.desc: Check the return value of the interface (by callback)
      * @tc.level   0
@@ -163,7 +146,7 @@ export default function GetabilityInfo() {
     });
 
     /*
-     * @tc.number: bundle_getAllApplicationInfo_test_0600
+     * @tc.number: bundle_GetabilityInfo_test_0600
      * @tc.name: getAbilityInfo : The basic ability is enhanced to obtain the specified Ability information
      * @tc.desc: Check the return value of the interface (by promise)
      * @tc.level   0
@@ -171,13 +154,11 @@ export default function GetabilityInfo() {
     let bundleName2 = "";
     it('bundle_GetabilityInfo_test_0600', 0, async function (done) {
       let error1;
-      await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       bundleManager.getAbilityInfo(bundleName2, abilityName)
         .then((data) => {
           var timeNewStamp = Utils.getNowTime();
           Utils.getDurationTime('bundle_GetabilityInfo_test_0600', timeOldStamp, timeNewStamp)
-          console.info('[bundle_GetabilityInfo_test_0600] getApplicationInfo in ');
           console.info('[bundle_GetabilityInfo_test_0600] getApplicationInfo data promise is: ' + JSON.stringify(data));
           expect(typeof (data)).assertEqual("object");
         }).catch((error) => {

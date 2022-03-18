@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect} from 'deccjsunit/index.ets';
+import {describe, it, expect} from 'deccjsunit/index.ets';
 import Utils from './Utils';
 import Bundle from '@ohos.bundle';
 
@@ -32,21 +32,10 @@ const TAG_TEST_0600_003 = ' bundle_getApplicationInfo_test_0600_0013 ';
 const BUNDLE_NAME = 'com.open.harmony.packagemag';
 const BUNDLE_NAME_OTHER = 'com.ohos.acepackage';
 const USER_ID_100 = 100;
-const SLEEP_TIME_1000 = 1000;
-const SLEEP_TIME_2000 = 2000;
+
 
 export default function applicationBundleJsunit() {
   describe('appInfoTest', function () {
-    beforeEach(async function (done) {
-      console.info('applicationBundle before each called');
-      done()
-    });
-
-    afterEach(async function () {
-      await Utils.sleep(SLEEP_TIME_2000);
-      console.info('applicationBundle after each called');
-    });
-
     /**
      * @tc.number: bundle_getApplicationInfo_test_0100_001
      * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
@@ -54,8 +43,6 @@ export default function applicationBundleJsunit() {
      * @tc.level 0
      */
     it(TAG_TEST_0100_001, 0, async function (done) {
-      console.info(TAG_TEST_0100_001 + 'promise START');
-      await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let data = await Bundle.getApplicationInfo(BUNDLE_NAME, Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION,
         USER_ID_100)
@@ -69,7 +56,6 @@ export default function applicationBundleJsunit() {
       expectData(TAG_TEST_0100_001, data);
       getApplicationInfoSuccess(TAG_TEST_0100_001, data);
       done();
-      console.log('------------------ ' + TAG_TEST_0100_001 + ' end -------------------');
     });
 
     /**
@@ -79,8 +65,6 @@ export default function applicationBundleJsunit() {
      * @tc.level 0
      */
     it(TAG_TEST_0100_002, 0, async function (done) {
-      console.info(TAG_TEST_0100_002 + 'promise START');
-      await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let data = await Bundle.getApplicationInfo(BUNDLE_NAME, Bundle.BundleFlag.GET_ALL_APPLICATION_INFO, USER_ID_100)
         .catch((error) => {
@@ -93,7 +77,6 @@ export default function applicationBundleJsunit() {
       expectData(TAG_TEST_0100_002, data);
       getApplicationInfoSuccess_plus(TAG_TEST_0100_002, data);
       done();
-      console.log('------------------ ' + TAG_TEST_0100_002 + ' end -------------------');
     });
 
     /**
@@ -103,8 +86,6 @@ export default function applicationBundleJsunit() {
      * @tc.level 0
      */
     it(TAG_TEST_0100_003, 0, async function (done) {
-      console.info(TAG_TEST_0100_003 + 'promise START');
-      await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let data = await Bundle.getApplicationInfo(BUNDLE_NAME, Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_DISABLE,
         USER_ID_100)
@@ -116,13 +97,8 @@ export default function applicationBundleJsunit() {
       Utils.getDurationTime(TAG_TEST_0100_003, startTime, endTime);
       console.info(TAG_TEST_0100_003 + ' UserId promise data is: ' + JSON.stringify(data));
       expectData(TAG_TEST_0100_003, data);
-        if ('' === data.name) {
-          getApplicationInfoFail(TAG_TEST_0100_003, data);
-        } else {
-          getApplicationInfoSuccess_plus(TAG_TEST_0100_003, data);
-        }
+      getApplicationInfoSuccess_plus(TAG_TEST_0100_003, data);
       done();
-      console.log('------------------ ' + TAG_TEST_0100_003 + ' end -------------------');
     });
 
 
@@ -133,8 +109,6 @@ export default function applicationBundleJsunit() {
      * @tc.level 0
      */
     it(TAG_TEST_0200_001, 0, async function (done) {
-      console.info(TAG_TEST_0200_001 + 'promise START');
-      await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let data = await Bundle.getApplicationInfo(BUNDLE_NAME, Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION)
         .catch((error) => {
@@ -145,9 +119,8 @@ export default function applicationBundleJsunit() {
       Utils.getDurationTime(TAG_TEST_0200_001, startTime, endTime);
       console.info(TAG_TEST_0200_001 + ' onUserId promise data is: ' + JSON.stringify(data));
       expectData(TAG_TEST_0200_001, data);
-        getApplicationInfoSuccess(TAG_TEST_0200_001, data);
+      getApplicationInfoSuccess(TAG_TEST_0200_001, data);
       done();
-      console.log('------------------ ' + TAG_TEST_0200_001 + ' end -------------------');
     });
 
     /**
@@ -157,8 +130,6 @@ export default function applicationBundleJsunit() {
      * @tc.level 0
      */
     it(TAG_TEST_0200_002, 0, async function (done) {
-      console.info(TAG_TEST_0200_002 + 'promise START');
-      await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let data = await Bundle.getApplicationInfo(BUNDLE_NAME, Bundle.BundleFlag.GET_ALL_APPLICATION_INFO)
         .catch((error) => {
@@ -169,9 +140,8 @@ export default function applicationBundleJsunit() {
       Utils.getDurationTime(TAG_TEST_0200_002, startTime, endTime);
       console.info(TAG_TEST_0200_002 + ' onUserId promise data is: ' + JSON.stringify(data));
       expectData(TAG_TEST_0200_002, data);
-        getApplicationInfoSuccess_plus(TAG_TEST_0200_002, data);
+      getApplicationInfoSuccess_plus(TAG_TEST_0200_002, data);
       done();
-      console.log('------------------ ' + TAG_TEST_0200_002 + ' end -------------------');
     });
 
     /**
@@ -181,8 +151,6 @@ export default function applicationBundleJsunit() {
      * @tc.level 0
      */
     it(TAG_TEST_0200_003, 0, async function (done) {
-      console.info(TAG_TEST_0200_003 + 'promise START');
-      await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let data = await Bundle.getApplicationInfo(BUNDLE_NAME, Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_DISABLE)
         .catch((error) => {
@@ -193,9 +161,8 @@ export default function applicationBundleJsunit() {
       Utils.getDurationTime(TAG_TEST_0200_003, startTime, endTime);
       console.info(TAG_TEST_0200_003 + ' onUserId promise data is: ' + JSON.stringify(data));
       expectData(TAG_TEST_0200_003, data);
-        getApplicationInfoSuccess_plus(TAG_TEST_0200_003, data);
+      getApplicationInfoSuccess_plus(TAG_TEST_0200_003, data);
       done();
-      console.log('------------------ ' + TAG_TEST_0200_003 + ' end -------------------');
     });
 
     /**
@@ -205,8 +172,6 @@ export default function applicationBundleJsunit() {
      * @tc.level 0
      */
     it(TAG_TEST_0300_001, 0, async function (done) {
-      console.info(TAG_TEST_0300_001 + 'callBack START');
-      await Utils.sleep(SLEEP_TIME_1000);
       let errors;
       let datas;
       var startTime = await Utils.getNowTime();
@@ -219,16 +184,14 @@ export default function applicationBundleJsunit() {
             expect(errors).assertFail();
             console.info(TAG_TEST_0300_001 + 'UserId callBack error: ' + error);
           }
-          console.info(TAG_TEST_0300_001 + 'UserId callBack in');
           console.info(TAG_TEST_0300_001 + 'UserId callBack data is:' + JSON.stringify(data));
           datas = data;
         });
       await Utils.sleep(2000);
       console.info(TAG_TEST_0300_001 + 'UserId callBack data is: ' + JSON.stringify(datas));
       expectData(TAG_TEST_0300_001, datas);
-        getApplicationInfoSuccess(TAG_TEST_0300_001, datas);
+      getApplicationInfoSuccess(TAG_TEST_0300_001, datas);
       done();
-      console.log('------------------ ' + TAG_TEST_0300_001 + ' end -------------------');
     });
 
     /**
@@ -238,7 +201,6 @@ export default function applicationBundleJsunit() {
      * @tc.level 0
      */
     it(TAG_TEST_0400_001, 0, async function (done) {
-      console.info(TAG_TEST_0400_001 + 'callBack START');
       let errors;
       let datas;
       var startTime = await Utils.getNowTime();
@@ -250,16 +212,14 @@ export default function applicationBundleJsunit() {
           console.info(TAG_TEST_0400_001 + 'UserId callBack error: ' + error);
         }
         Utils.getDurationTime(TAG_TEST_0400_001, startTime, endTime);
-        console.info(TAG_TEST_0400_001 + 'noUserId callBack in');
         console.info(TAG_TEST_0400_001 + 'noUserId callBack data is:' + JSON.stringify(data));
         datas = data;
       });
       await Utils.sleep(2000);
       console.info(TAG_TEST_0400_001 + 'noUserId callBack data is: ' + JSON.stringify(datas));
       expectData(TAG_TEST_0400_001, datas);
-        getApplicationInfoSuccess(TAG_TEST_0400_001, datas);
+      getApplicationInfoSuccess(TAG_TEST_0400_001, datas);
       done();
-      console.log('------------------ ' + TAG_TEST_0400_001 + ' end -------------------');
     });
 
     /**
@@ -269,8 +229,6 @@ export default function applicationBundleJsunit() {
      * @tc.level 0
      */
     it(TAG_TEST_0500_001, 0, async function (done) {
-      console.info(TAG_TEST_0500_001 + 'promise START');
-      await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       await Bundle.getApplicationInfo('', 0)
         .then((data) => {
@@ -284,7 +242,6 @@ export default function applicationBundleJsunit() {
       var endTime = Utils.getNowTime();
       Utils.getDurationTime(TAG_TEST_0500_001, startTime, endTime);
       done();
-      console.log('------------------ ' + TAG_TEST_0500_001 + ' end -------------------');
     });
 
     /**
@@ -294,8 +251,6 @@ export default function applicationBundleJsunit() {
      * @tc.level 0
      */
     it(TAG_TEST_0500_002, 0, async function (done) {
-      console.info(TAG_TEST_0500_002 + 'promise START');
-      await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       await Bundle.getApplicationInfo('', '0', USER_ID_100)
         .then((data) => {
@@ -309,7 +264,6 @@ export default function applicationBundleJsunit() {
       var endTime = Utils.getNowTime();
       Utils.getDurationTime(TAG_TEST_0500_002, startTime, endTime);
       done();
-      console.log('------------------ ' + TAG_TEST_0500_002 + ' end -------------------');
     });
 
     /**
@@ -319,8 +273,6 @@ export default function applicationBundleJsunit() {
      * @tc.level 0
      */
     it(TAG_TEST_0600_001, 0, async function (done) {
-      console.info(TAG_TEST_0600_001 + 'promise START');
-      await Utils.sleep(SLEEP_TIME_1000);
       let errors
       var startTime = await Utils.getNowTime();
       await Bundle.getApplicationInfo(BUNDLE_NAME_OTHER,
@@ -337,7 +289,6 @@ export default function applicationBundleJsunit() {
       var endTime = Utils.getNowTime();
       Utils.getDurationTime(TAG_TEST_0600_001, startTime, endTime);
       done();
-      console.log('------------------ ' + TAG_TEST_0600_001 + ' end -------------------');
     });
 
     /**
@@ -347,8 +298,6 @@ export default function applicationBundleJsunit() {
      * @tc.level 0
      */
     it(TAG_TEST_0600_002, 0, async function (done) {
-      console.info(TAG_TEST_0600_002 + 'promise START');
-      await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       let errors
       await Bundle.getApplicationInfo(BUNDLE_NAME_OTHER, Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION,
@@ -365,7 +314,6 @@ export default function applicationBundleJsunit() {
       var endTime = Utils.getNowTime();
       Utils.getDurationTime(TAG_TEST_0600_002, startTime, endTime);
       done();
-      console.log('------------------ ' + TAG_TEST_0600_002 + ' end -------------------');
     });
 
     /**
@@ -375,8 +323,6 @@ export default function applicationBundleJsunit() {
      * @tc.level 0
      */
     it(TAG_TEST_0600_003, 0, async function (done) {
-      console.info(TAG_TEST_0600_003 + 'promise START');
-      await Utils.sleep(SLEEP_TIME_1000);
       var startTime = await Utils.getNowTime();
       await Bundle.getApplicationInfo(BUNDLE_NAME, 0)
         .then((data) => {
@@ -392,7 +338,6 @@ export default function applicationBundleJsunit() {
           expect(error).assertFail();
         });
       done();
-      console.log('------------------ ' + TAG_TEST_0600_003 + ' end -------------------');
     });
 
 
@@ -494,29 +439,6 @@ export default function applicationBundleJsunit() {
       'com.open.harmony.packagemag/com.open.harmony.packagemag');
       expect(data.moduleSourceDirs[0]).assertEqual('/data/app/el1/bundle/public/' +
       'com.open.harmony.packagemag/com.open.harmony.packagemag');
-      console.log(msg + ' end  ' + JSON.stringify(data));
-    }
-
-    /**
-     * expect属性值
-     * @param msg log信息
-     * @param data 数据源
-     */
-    function getApplicationInfoFail(msg, data) {
-      expect(data.name).assertEqual('');
-      expect(data.codePath).assertEqual('');
-      expect(data.description).assertEqual('');
-      expect(data.descriptionId).assertEqual(0);
-      expect(data.icon).assertEqual('');
-      expect(data.iconId).assertEqual(0);
-      expect(data.label).assertEqual('');
-      expect(data.labelId).assertEqual(0);
-      expect(data.systemApp).assertEqual(false);
-      expect(data.supportedModes).assertEqual(0);
-      expect(data.entryDir).assertEqual('');
-      expect(data.enabled).assertEqual(false);
-      expect(data.entityType).assertEqual('');
-      expect(data.removable).assertEqual(true);
       console.log(msg + ' end  ' + JSON.stringify(data));
     }
   });

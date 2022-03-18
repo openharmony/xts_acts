@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index.ets';
+import {describe, it, expect} from 'deccjsunit/index.ets';
 import Utils from './Utils';
 import Bundle from '@ohos.bundle';
 
@@ -29,16 +29,6 @@ const ABILITY_NAME_ERROR = 'com.ohos.acepackage.error.MainAbility'
 export default function getAbilityLabelJsUnit() {
 
   describe('context_getAbilityLabel_test', function () {
-    beforeEach(async function (done) {
-      console.info('context_getAbilityLabel_test before each called');
-      done()
-    });
-
-    afterEach(async function () {
-      await Utils.sleep(2000);
-      console.info('context_getAbilityLabel_test after each called');
-    });
-
     /*
      * @tc.number: context_getAbilityLabel_test_0100
      * @tc.name: getAbilityLabel : Gets the specified ability label
