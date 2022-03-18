@@ -1003,7 +1003,7 @@ describe('ActsAnsActiveTest', function () {
     function getAllCallbackNine(err,data){
         console.debug("===========Ans_GetAllActive_0900 getAllCallbackNine data.length============>"+data.length);
         console.debug("===========Ans_GetAllActive_0900 getAllCallbackNine err.code============>"+err.code);
-        expect(err.code != 0).assertEqual(true);
+        expect(err.code).assertEqual(0);
     }
 
     /*
@@ -1062,8 +1062,8 @@ describe('ActsAnsActiveTest', function () {
         console.debug("===============Ans_GetAllActive_1000 publish CurrentApp notify end==================>");
         await notify.getAllActiveNotifications().then(()=>{
             console.debug("=======Ans_GetAllActive_1000 then========>");
+			expect(err.code).assertEqual(0);
         }).catch((err)=>{
-            expect(err.code != 0).assertEqual(true);
             console.debug("=======Ans_GetAllActive_1000 err==========>"+err.code);
         });
         setTimeout(function(){
