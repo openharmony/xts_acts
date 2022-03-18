@@ -51,7 +51,8 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearAbilityInfoLegal, Function | MediumT
 {
     printf("------start testClearAbilityInfo------\n");
     AbilityInfo abilityInfo;
-    memset_s(&abilityInfo, sizeof(abilityInfo), 0, sizeof(abilityInfo));
+    int result = memset_s(&abilityInfo, sizeof(abilityInfo), 0, sizeof(abilityInfo));
+    TEST_ASSERT_TRUE(result == 0);
     abilityInfo.bundleName = "com.openharmony.testjsdemo";
     TEST_ASSERT_EQUAL_STRING(abilityInfo.bundleName, "com.openharmony.testjsdemo");
     ClearAbilityInfo(&abilityInfo);
@@ -68,7 +69,8 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearAbilityInfoIllegal, Function | Mediu
 {
     printf("------start testClearAbilityInfoIllegal------\n");
     AbilityInfo abilityInfo = { 0 };
-    memset_s(&abilityInfo, sizeof(abilityInfo), 0, sizeof(abilityInfo));
+    int result = memset_s(&abilityInfo, sizeof(abilityInfo), 0, sizeof(abilityInfo));
+    TEST_ASSERT_TRUE(result == 0);
     abilityInfo.bundleName = "com.openharmony.testjsdemo";
     ClearAbilityInfo(NULL);
     TEST_ASSERT_EQUAL_STRING(abilityInfo.bundleName, "com.openharmony.testjsdemo");
@@ -84,7 +86,8 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearBundleInfoLegal, Function | MediumTe
 {
     printf("------start testClearBundleInfo------\n");
     BundleInfo bundleInfo = { 0 };
-    memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    int result = memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    TEST_ASSERT_TRUE(result == 0);
     bundleInfo.bundleName = "com.openharmony.testjsdemo";
     TEST_ASSERT_EQUAL_STRING(bundleInfo.bundleName, "com.openharmony.testjsdemo");
     ClearBundleInfo(&bundleInfo);
@@ -101,7 +104,8 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearBundleInfoIllegal, Function | Medium
 {
     printf("------start testClearBundleInfoIllegal------\n");
     BundleInfo bundleInfo;
-    memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    int result = memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    TEST_ASSERT_TRUE(result == 0);
     bundleInfo.bundleName = "com.openharmony.testjsdemo";
     ClearBundleInfo(NULL);
     TEST_ASSERT_EQUAL_STRING(bundleInfo.bundleName, "com.openharmony.testjsdemo");
@@ -117,7 +121,8 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearModuleInfoLegal, Function | MediumTe
 {
     printf("------start testClearModuleInfo------\n");
     ModuleInfo moduleInfo = { 0 };
-    memset_s(&moduleInfo, sizeof(moduleInfo), 0, sizeof(moduleInfo));
+    int result = memset_s(&moduleInfo, sizeof(moduleInfo), 0, sizeof(moduleInfo));
+    TEST_ASSERT_TRUE(result == 0);
     moduleInfo.moduleName = "test";
     TEST_ASSERT_EQUAL_STRING(moduleInfo.moduleName, "test");
     ClearModuleInfo(&moduleInfo);
@@ -134,7 +139,8 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearModuleInfoIllegal, Function | Medium
 {
     printf("------start testClearModuleInfoIllegal------\n");
     ModuleInfo moduleInfo = { 0 };
-    memset_s(&moduleInfo, sizeof(moduleInfo), 0, sizeof(moduleInfo));
+    int result = memset_s(&moduleInfo, sizeof(moduleInfo), 0, sizeof(moduleInfo));
+    TEST_ASSERT_TRUE(result == 0);
     moduleInfo.moduleName = "test";
     ClearModuleInfo(NULL);
     TEST_ASSERT_EQUAL_STRING(moduleInfo.moduleName, "test");
@@ -278,9 +284,10 @@ LITE_TEST_CASE(BundleMgrTestSuite, testGetBundleInfoIllegal, Function | MediumTe
 {
     printf("------start testGetBundleInfoIllegal------\n");
     BundleInfo bundleInfo;
-    memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    int result = memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    TEST_ASSERT_TRUE(result == 0);
     const char *bundleName = "com.openharmony.nothishap";
-    int32_t flags = 0;
+    int flags = 0;
     uint8_t ret = GetBundleInfo(bundleName, flags, &bundleInfo);
     TEST_ASSERT_TRUE(ret == 2);
     ret = GetBundleInfo(NULL, flags, &bundleInfo);
@@ -303,8 +310,8 @@ LITE_TEST_CASE(BundleMgrTestSuite, testGetBundleInfosIllegal, Function | MediumT
 {
     printf("------start testGetBundleInfosIllegal------\n");
     BundleInfo *bundleInfos = {NULL};
-    int32_t *length = NULL;
-    int32_t flags = 0;
+    int *length = NULL;
+    int flags = 0;
     uint8_t ret = GetBundleInfos(flags, NULL, length);
     TEST_ASSERT_TRUE(ret == 1);
     ret = GetBundleInfos(flags, &bundleInfos, NULL);
