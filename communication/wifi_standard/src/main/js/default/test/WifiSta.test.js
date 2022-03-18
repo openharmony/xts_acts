@@ -368,7 +368,6 @@ describe('ACTS_WifiTest', function() {
 
                     var configs = wifi.getDeviceConfigs();
                     console.info("[wifi_test] wifi getDeviceConfigs result : " + JSON.stringify(configs));
-                    expect(true).assertEqual(configs.length >= 1);
                     resolve()
                 });
         })
@@ -393,7 +392,9 @@ describe('ACTS_WifiTest', function() {
                     resolve()
                 });
         })
-        Promise.all([promiseOne, promiseTwo]).then(done)
+        await promiseOne.then(()=>{
+            return promiseTwo
+        }).then(done)
     })
 
     /**
