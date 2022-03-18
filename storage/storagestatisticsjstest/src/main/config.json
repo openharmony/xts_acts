@@ -11,7 +11,6 @@
       "target": 5
     }
   },
-  "apl":"system_core",
   "deviceConfig": {},
   "module": {
     "package": "ohos.acts.storage.statistics",
