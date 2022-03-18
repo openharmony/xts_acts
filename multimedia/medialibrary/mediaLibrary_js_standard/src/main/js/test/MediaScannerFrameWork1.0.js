@@ -1180,8 +1180,8 @@ it('SUB_SCANNER_CB_SCAN_AUDIO_MP4_AFTER_MODIFY_022', 0, async function (done) {
         const id = asset.id;
         await asset.commitModify();
 
-        const fetchFileResult2 = await media.getFileAssets(imagesfetchOp);
-        const dataList = await fetchFileResult2.getAllObject();
+        //const fetchFileResult2 = await media.getFileAssets(imagesfetchOp);
+        const dataList = await fetchFileResult.getAllObject();
         let passed = false;
         for (let i = 0; i < dataList.length; i++) {
             const asset = dataList[i];

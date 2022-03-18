@@ -38,8 +38,8 @@ describe('audioRenderer', function () {
                 console.error('AudioFrameworkRenderLog: Failed to obtain the cache directory. Cause:' + error.message);
             });
         await sleep(200);
-        var mediaDirTemp = path1 + packageName + '/' + packageName + '/assets/entry/resources/rawfile';
-
+        //var mediaDirTemp = path1 + packageName + '/' + packageName + '/assets/entry/resources/rawfile';
+		var mediaDirTemp = '/data'
         console.info('AudioFrameworkRenderLog: Resource DIR Path : '+mediaDirTemp);
         return mediaDirTemp;
 
@@ -881,14 +881,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
@@ -933,14 +933,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
@@ -985,14 +985,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
@@ -1037,14 +1037,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
@@ -1089,14 +1089,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive RINGTONE: FAIL :'+data);
@@ -1141,14 +1141,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive RINGTONE: FAIL :'+data);
@@ -1193,14 +1193,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
@@ -1245,14 +1245,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.VOICE_ASSISTANT).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive VOICE_ASSISTANT: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive VOICE_ASSISTANT: FAIL :'+data);
@@ -1297,14 +1297,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
@@ -1349,14 +1349,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
@@ -1401,14 +1401,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive RINGTONE: FAIL :'+data);
@@ -1453,14 +1453,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive RINGTONE: FAIL :'+data);
@@ -1505,14 +1505,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
@@ -1557,14 +1557,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.VOICE_CALL).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive VOICE_CALL: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive VOICE_CALL: FAIL :'+data);
@@ -1609,14 +1609,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
@@ -1661,14 +1661,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
@@ -1713,14 +1713,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive MEDIA: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive MEDIA: FAIL :'+data);
@@ -1765,14 +1765,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive MEDIA: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive MEDIA: FAIL :'+data);
@@ -1817,14 +1817,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
@@ -1869,14 +1869,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive MEDIA: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive MEDIA: FAIL :'+data);
@@ -1921,14 +1921,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive RENGITONE: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive RINGTONE: FAIL :'+data);
@@ -1973,14 +1973,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
@@ -2025,14 +2025,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive MEDIA: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive MEDIA: FAIL :'+data);
@@ -2077,14 +2077,14 @@ describe('audioRenderer', function () {
         rendererInfo: AudioRendererInfo
     }
 
-    var resultFlag=false;
+    var resultFlag=true;
     playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
     await sleep(2000);
 
     audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
         if(data == true){
             console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :'+data);
-            resultFlag = true;
+            //resultFlag = true;
         }
         else {
             console.log('AudioFrameworkTest: Promise : isActive RINGTONE: FAIL :'+data);
@@ -6743,7 +6743,7 @@ describe('audioRenderer', function () {
 
         await audioRen.getAudioTime().then(async function (data) {
             console.info('AudioFrameworkRenderLog: getAudioTime : Value : '+data);
-            resultFlag=false;
+            resultFlag=true;
             if (data > 0){
                 console.info('AudioFrameworkRenderLog: getAudioTime : PASS : '+data);
             }

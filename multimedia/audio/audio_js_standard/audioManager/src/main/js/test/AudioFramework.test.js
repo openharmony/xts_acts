@@ -4126,7 +4126,7 @@ describe('audioManger', function () {
                     console.info('AudioFrameworkTest: Audio Volume Type : VOICE_CALL');
                     console.info('AudioFrameworkTest: Audio Volume Number : '+VolumeEvent.volume);
                     console.info('AudioFrameworkTest: Audio Volume Update UI : '+VolumeEvent.updateUi);
-                    if(VolumeEvent.volume == minVol){
+                    if(VolumeEvent.volume == lowVol){
                         console.info('AudioFrameworkTest: VOICE_CALL CallBack : PASS :' + VolumeEvent.volume);
                         expect(true).assertTrue();
                     }
@@ -4162,7 +4162,7 @@ describe('audioManger', function () {
                     console.info('AudioFrameworkTest: Audio Volume Type : VOICE_ASSISTANT');
                     console.info('AudioFrameworkTest: Audio Volume Number : '+VolumeEvent.volume);
                     console.info('AudioFrameworkTest: Audio Volume Update UI : '+VolumeEvent.updateUi);
-                    if(VolumeEvent.volume == minVol){
+                    if(VolumeEvent.volume == lowVol){
                         console.info('AudioFrameworkTest: VOICE_ASSISTANT CallBack : PASS :' + VolumeEvent.volume);
                         expect(true).assertTrue();
                     }
