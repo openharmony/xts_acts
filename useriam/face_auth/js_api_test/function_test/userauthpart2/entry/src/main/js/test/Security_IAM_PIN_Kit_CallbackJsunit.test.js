@@ -22,10 +22,10 @@ import userAuthNorth from '@ohos.userIAM.userAuth'
 import * as publicFC from './Publicfunction-n'
 
 
-let UserIDM = userIDM.constructor()
-let PinAuth = pinAuth.constructor()
-let UserAuth = userAuth.constructor()
-let UserAuthKit = userAuthNorth.constructor()
+let UserIDM = new userIDM.UserIdentityManager();
+let PinAuth = new pinAuth.PINAuth();
+let UserAuth = new userAuth.UserAuth();
+let UserAuthKit = new userAuthNorth.UserAuth()
 
 let AuthType = {
     PIN: 1,
@@ -231,7 +231,7 @@ it('Security_IAM_PIN_Kit_Func_0103', 0, async function (done) {
                                 }, function (onacquireinfo) {
                                 })
                                 let cancelresult = publicFC.publicgecancelAuth(UserAuthKit,contextID);
-                                await sleep(2500);
+                                await sleep(2000);
                                 if(cancelresult == 1){
                                     console.info('AuthTest_0101 cancel = 1  authresult = ' + authresult);
                                     expect(ResultCode.SUCCESS).assertEqual(authresult);
@@ -279,25 +279,25 @@ it('Security_IAM_PIN_Kit_Func_0103', 0, async function (done) {
 
     it('Security_IAM_PIN_Kit_Func_0105', 0, async function (done) {
         console.info('testFace Security_IAM_PIN_Kit_Func_0105 start');
-        expect(1).assertEqual(userAuthNorth.FaceTipsCode.FACE_AUTH_TIP_TOO_BRIGHT);
-        expect(2).assertEqual(userAuthNorth.FaceTipsCode.FACE_AUTH_TIP_TOO_DARK);
-        expect(3).assertEqual(userAuthNorth.FaceTipsCode.FACE_AUTH_TIP_TOO_CLOSE);
-        expect(4).assertEqual(userAuthNorth.FaceTipsCode.FACE_AUTH_TIP_TOO_FAR);
-        expect(5).assertEqual(userAuthNorth.FaceTipsCode.FACE_AUTH_TIP_TOO_HIGH);
-        expect(6).assertEqual(userAuthNorth.FaceTipsCode.FACE_AUTH_TIP_TOO_LOW);
-        expect(7).assertEqual(userAuthNorth.FaceTipsCode.FACE_AUTH_TIP_TOO_RIGHT);
-        expect(8).assertEqual(userAuthNorth.FaceTipsCode.FACE_AUTH_TIP_TOO_LEFT);
-        expect(9).assertEqual(userAuthNorth.FaceTipsCode.FACE_AUTH_TIP_TOO_MUCH_MOTION);
-        expect(10).assertEqual(userAuthNorth.FaceTipsCode.FACE_AUTH_TIP_POOR_GAZE);
-        expect(11).assertEqual(userAuthNorth.FaceTipsCode.FACE_AUTH_TIP_NOT_DETECTED);
+        expect(1).assertEqual(userAuthNorth.FaceTips.FACE_AUTH_TIP_TOO_BRIGHT);
+        expect(2).assertEqual(userAuthNorth.FaceTips.FACE_AUTH_TIP_TOO_DARK);
+        expect(3).assertEqual(userAuthNorth.FaceTips.FACE_AUTH_TIP_TOO_CLOSE);
+        expect(4).assertEqual(userAuthNorth.FaceTips.FACE_AUTH_TIP_TOO_FAR);
+        expect(5).assertEqual(userAuthNorth.FaceTips.FACE_AUTH_TIP_TOO_HIGH);
+        expect(6).assertEqual(userAuthNorth.FaceTips.FACE_AUTH_TIP_TOO_LOW);
+        expect(7).assertEqual(userAuthNorth.FaceTips.FACE_AUTH_TIP_TOO_RIGHT);
+        expect(8).assertEqual(userAuthNorth.FaceTips.FACE_AUTH_TIP_TOO_LEFT);
+        expect(9).assertEqual(userAuthNorth.FaceTips.FACE_AUTH_TIP_TOO_MUCH_MOTION);
+        expect(10).assertEqual(userAuthNorth.FaceTips.FACE_AUTH_TIP_POOR_GAZE);
+        expect(11).assertEqual(userAuthNorth.FaceTips.FACE_AUTH_TIP_NOT_DETECTED);
         console.info('testFace Security_IAM_PIN_Kit_Func_0105 end');
         done();
     })
 
     it('Security_IAM_PIN_Kit_Func_0106', 0, async function (done) {
         console.info('testFace Security_IAM_PIN_Kit_Func_0106 start');
-        expect(1).assertEqual(userAuthNorth.AuthType.PIN);
-        expect(2).assertEqual(userAuthNorth.AuthType.FACE);
+        expect(2).assertEqual(userAuthNorth.UserAuthType.FACE);
+        expect(4).assertEqual(userAuthNorth.UserAuthType.FINGERPRINT);
         console.info('testFace Security_IAM_PIN_Kit_Func_0106 end');
         done();
     })
@@ -321,12 +321,12 @@ it('Security_IAM_PIN_Kit_Func_0103', 0, async function (done) {
 
     it('Security_IAM_PIN_Kit_Func_0108', 0, async function (done) {
         console.info('testFace Security_IAM_PIN_Kit_Func_0108 start');
-        expect(0).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_TIP_GOOD );
-        expect(1).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_TIP_IMAGER_DIRTY);
-        expect(2).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_TIP_INSUFFICIENT);
-        expect(3).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_TIP_PARTIAL);
-        expect(4).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_TIP_TOO_FAST);
-        expect(5).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_TIP_TOO_SLOW);
+        expect(0).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_AUTH_TIP_GOOD);
+        expect(1).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_AUTH_TIP_DIRTY);
+        expect(2).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_AUTH_TIP_INSUFFICIENT);
+        expect(3).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_AUTH_TIP_PARTIAL);
+        expect(4).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_AUTH_TIP_TOO_FAST);
+        expect(5).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_AUTH_TIP_TOO_SLOW);
         console.info('testFace Security_IAM_PIN_Kit_Func_0108 end');
         done();
     })
