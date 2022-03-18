@@ -2,7 +2,6 @@
   "app": {
     "bundleName": "com.example.third1",
     "vendor": "example",
-    "singleUser":false,
     "version": {
       "code": 2,
       "name": "2.0"
@@ -14,14 +13,13 @@
     }
   },
   "deviceConfig": {
-    "default":{
-      "keepAlive":false
-    }
+    "default":{}
   },
   "module": {
     "package": "com.example.third1.entry",
     "name": "com.example.third1.BmsThirdBundle1",
     "mainAbility": "com.example.third1.AMainAbility",
+    "colorMode": "dark",
     "deviceType": [
       "phone"
     ],
