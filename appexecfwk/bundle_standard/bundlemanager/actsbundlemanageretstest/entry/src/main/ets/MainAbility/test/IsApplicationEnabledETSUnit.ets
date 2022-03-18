@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index.ets';
+import {describe, it, expect} from 'deccjsunit/index.ets';
 import Utils from './Utils';
 import Bundle from '@ohos.bundle';
 
@@ -22,16 +22,6 @@ const BUNDLE_NAME_ERROR = 'com.ohos.acepackage.error'
 
 export default function IsApplicationEnabledETSUnit() {
   describe('context_isApplicationEnabled_test', function () {
-    beforeEach(async function (done) {
-      console.info('context_isApplicationEnabled_test before each called');
-      done()
-    });
-
-    afterEach(async function () {
-      await Utils.sleep(2000);
-      console.info('context_isApplicationEnabled_test after each called');
-    });
-
     /*
      * @tc.number: context_isApplicationEnabled_test_0100
      * @tc.name: isApplicationEnabled : Get whether to enable a specified application
@@ -39,7 +29,6 @@ export default function IsApplicationEnabledETSUnit() {
      * @tc.level   0
      */
     it('context_isApplicationEnabled_test_0100', 0, async function (done) {
-      await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mData;
       await Bundle.isApplicationEnabled(BUNDLE_NAME)
@@ -47,7 +36,6 @@ export default function IsApplicationEnabledETSUnit() {
           var timeNewStamp = Utils.getNowTime();
           Utils.getDurationTime('[context_isApplicationEnabled_test_0100]', timeOldStamp, timeNewStamp);
           mData = data;
-          console.info('[context_isApplicationEnabled_test_0100]  promise in ');
           console.info('[context_isApplicationEnabled_test_0100]  promise data is: ' + JSON.stringify(data));
         })
         .catch((error) => {
@@ -65,7 +53,6 @@ export default function IsApplicationEnabledETSUnit() {
      * @tc.level   0
      */
     it('context_isApplicationEnabled_test_0200', 0, async function (done) {
-      await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mData;
       Bundle.isApplicationEnabled(BUNDLE_NAME, (error, data) => {
@@ -76,7 +63,6 @@ export default function IsApplicationEnabledETSUnit() {
         var timeNewStamp = Utils.getNowTime();
         Utils.getDurationTime('[context_isApplicationEnabled_test_0200]', timeOldStamp, timeNewStamp);
         mData = data;
-        console.info('[context_isApplicationEnabled_test_0200]  callBack in');
         console.info('[context_isApplicationEnabled_test_0200]  callBack error: ' + error);
         console.info('[context_isApplicationEnabled_test_0200]  callBack data is:' + JSON.stringify(data));
       });
@@ -92,7 +78,6 @@ export default function IsApplicationEnabledETSUnit() {
      * @tc.level   0
      */
     it('context_isApplicationEnabled_test_0300', 0, async function (done) {
-      await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mData;
       await Bundle.isApplicationEnabled(BUNDLE_NAME_ERROR)
@@ -100,7 +85,6 @@ export default function IsApplicationEnabledETSUnit() {
           var timeNewStamp = Utils.getNowTime();
           Utils.getDurationTime('[context_isApplicationEnabled_test_0300]', timeOldStamp, timeNewStamp);
           mData = data;
-          console.info('[context_isApplicationEnabled_test_0300]  promise in ');
           console.info('[context_isApplicationEnabled_test_0300]  promise data is: ' + JSON.stringify(data));
         })
         .catch((error) => {
@@ -120,7 +104,6 @@ export default function IsApplicationEnabledETSUnit() {
      * @tc.level   0
      */
     it('context_isApplicationEnabled_test_0400', 0, async function (done) {
-      await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mData;
       Bundle.isApplicationEnabled(BUNDLE_NAME_ERROR, (error, data) => {
@@ -131,7 +114,6 @@ export default function IsApplicationEnabledETSUnit() {
         var timeNewStamp = Utils.getNowTime();
         Utils.getDurationTime('[context_isApplicationEnabled_test_0400]', timeOldStamp, timeNewStamp);
         mData = data;
-        console.info('[context_isApplicationEnabled_test_0400]  callBack in');
         console.info('[context_isApplicationEnabled_test_0400]  callBack error: ' + error);
         console.info('[context_isApplicationEnabled_test_0400]  callBack data is:' + JSON.stringify(data));
       });
@@ -150,7 +132,6 @@ export default function IsApplicationEnabledETSUnit() {
     it('context_isApplicationEnabled_test_0500', 0, async function (done) {
       await Bundle.setApplicationEnabled(BUNDLE_NAME, true)
         .then((data) => {
-          console.info('[context_isApplicationEnabled_test_0500]  set enable true ');
           console.info('[context_isApplicationEnabled_test_0500]  set enable true data is: ' + JSON.stringify(data));
         }).catch((error) => {
           console.info('[context_isApplicationEnabled_test_0500]  set enable true error is: ' + error);
@@ -164,7 +145,6 @@ export default function IsApplicationEnabledETSUnit() {
           var timeNewStamp = Utils.getNowTime();
           Utils.getDurationTime('[context_isApplicationEnabled_test_0500]', timeOldStamp, timeNewStamp);
           mData = data;
-          console.info('[context_isApplicationEnabled_test_0500]  promise in ');
           console.info('[context_isApplicationEnabled_test_0500]  promise data is: ' + JSON.stringify(data));
         })
         .catch((error) => {
@@ -184,7 +164,6 @@ export default function IsApplicationEnabledETSUnit() {
     it('context_isApplicationEnabled_test_0600', 0, async function (done) {
       await Bundle.setApplicationEnabled(BUNDLE_NAME, false)
         .then((data) => {
-          console.info('[context_isApplicationEnabled_test_0600]  set enable false ');
           console.info('[context_isApplicationEnabled_test_0600]  set enable false data is: ' + JSON.stringify(data));
         }).catch((error) => {
           console.info('[context_isApplicationEnabled_test_0600]  set enable false error is: ' + error);
@@ -202,7 +181,6 @@ export default function IsApplicationEnabledETSUnit() {
         var timeNewStamp = Utils.getNowTime();
         Utils.getDurationTime('[context_isApplicationEnabled_test_0600]', timeOldStamp, timeNewStamp);
         mData = data;
-        console.info('[context_isApplicationEnabled_test_0600]  callBack in');
         console.info('[context_isApplicationEnabled_test_0600]  callBack error: ' + error);
         console.info('[context_isApplicationEnabled_test_0600]  callBack data is:' + JSON.stringify(data));
       });

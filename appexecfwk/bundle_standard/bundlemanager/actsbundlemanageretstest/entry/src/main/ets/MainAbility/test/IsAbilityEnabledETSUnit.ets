@@ -12,13 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index.ets';
+import {describe, it, expect} from 'deccjsunit/index.ets';
 import Utils from './Utils';
 import Bundle from '@ohos.bundle';
 
 const BUNDLE_NAME = 'com.open.harmony.packagemag'
 const ABILITY_NAME = 'com.open.harmony.packagemag.MainAbility'
-
 const ABILITY = {
   bundleName: BUNDLE_NAME,
   name: ABILITY_NAME
@@ -26,7 +25,6 @@ const ABILITY = {
 
 const BUNDLE_NAME_ERROR = 'com.ohos.acepackage.error'
 const ABILITY_NAME_ERROR = 'com.ohos.acepackage.error.MainAbility'
-
 const ABILITY_ERROR = {
   bundleName: BUNDLE_NAME_ERROR,
   name: ABILITY_NAME_ERROR
@@ -34,16 +32,6 @@ const ABILITY_ERROR = {
 
 export default function isAbilityEnabledETSUnit() {
   describe('context_isAbilityEnabled_test', function () {
-    beforeEach(async function (done) {
-      console.info('context_isAbilityEnabled_test before each called');
-      done()
-    });
-
-    afterEach(async function () {
-      await Utils.sleep(2000);
-      console.info('context_isAbilityEnabled_test after each called');
-    });
-
     /*
      * @tc.number: context_isAbilityEnabled_test_0100
      * @tc.name: isAbilityEnabled : Get whether to enable a specified ability
@@ -51,7 +39,6 @@ export default function isAbilityEnabledETSUnit() {
      * @tc.level   0
      */
     it('context_isAbilityEnabled_test_0100', 0, async function (done) {
-      await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mData;
       await Bundle.isAbilityEnabled(ABILITY)
@@ -59,7 +46,6 @@ export default function isAbilityEnabledETSUnit() {
           var timeNewStamp = Utils.getNowTime();
           Utils.getDurationTime('[context_isAbilityEnabled_test_0100]', timeOldStamp, timeNewStamp);
           mData = data;
-          console.info('[context_isAbilityEnabled_test_0100]  promise in ');
           console.info('[context_isAbilityEnabled_test_0100]  promise data is: ' + JSON.stringify(data));
         })
         .catch((error) => {
@@ -77,7 +63,6 @@ export default function isAbilityEnabledETSUnit() {
      * @tc.level   0
      */
     it('context_isAbilityEnabled_test_0200', 0, async function (done) {
-      await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mData;
       Bundle.isAbilityEnabled(ABILITY, (error, data) => {
@@ -88,7 +73,6 @@ export default function isAbilityEnabledETSUnit() {
         var timeNewStamp = Utils.getNowTime();
         Utils.getDurationTime('[context_isAbilityEnabled_test_0200]', timeOldStamp, timeNewStamp);
         mData = data;
-        console.info('[context_isAbilityEnabled_test_0200]  callBack in');
         console.info('[context_isAbilityEnabled_test_0200]  callBack error: ' + error);
         console.info('[context_isAbilityEnabled_test_0200]  callBack data is:' + JSON.stringify(data));
       });
@@ -104,7 +88,6 @@ export default function isAbilityEnabledETSUnit() {
      * @tc.level   0
      */
     it('context_isAbilityEnabled_test_0300', 0, async function (done) {
-      await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mData;
       await Bundle.isAbilityEnabled(ABILITY_ERROR)
@@ -112,7 +95,6 @@ export default function isAbilityEnabledETSUnit() {
           var timeNewStamp = Utils.getNowTime();
           Utils.getDurationTime('[context_isAbilityEnabled_test_0300]', timeOldStamp, timeNewStamp);
           mData = data;
-          console.info('[context_isAbilityEnabled_test_0300]  promise in ');
           console.info('[context_isAbilityEnabled_test_0300]  promise data is: ' + JSON.stringify(data));
         })
         .catch((error) => {
@@ -132,10 +114,8 @@ export default function isAbilityEnabledETSUnit() {
      * @tc.level   0
      */
     it('context_isAbilityEnabled_test_0400', 0, async function (done) {
-      await Utils.sleep(1000);
       var timeOldStamp = await Utils.getNowTime();
       let mData;
-      console.info('[context_isAbilityEnabled_test_0400] start c++ callBack ');
       Bundle.isAbilityEnabled(ABILITY_ERROR, (error, data) => {
         if(error){
           console.error('[context_isAbilityEnabled_test_0400]Operation failed. Cause: ' + JSON.stringify(error));
@@ -143,12 +123,10 @@ export default function isAbilityEnabledETSUnit() {
         }
         var timeNewStamp = Utils.getNowTime();
         Utils.getDurationTime('[context_isAbilityEnabled_test_0300]', timeOldStamp, timeNewStamp);
-        console.info('[context_isAbilityEnabled_test_0400]  callBack in');
         mData = data;
         console.info('[context_isAbilityEnabled_test_0400]  callBack error: ' + error);
         console.info('[context_isAbilityEnabled_test_0400]  callBack data is:' + JSON.stringify(data));
       });
-      console.info('[context_isAbilityEnabled_test_0400]  end c++ callBack  ');
       await Utils.sleep(2000);
       console.info('[context_isAbilityEnabled_test_0400]  Failure ');
       getAbilityEnabledFalse('[context_isAbilityEnabled_test_0300]', mData);
@@ -163,10 +141,8 @@ export default function isAbilityEnabledETSUnit() {
      * @tc.level   0
      */
     it('context_isAbilityEnabled_test_0500', 0, async function (done) {
-      await Utils.sleep(1000);
       await Bundle.setAbilityEnabled(ABILITY, true)
         .then((data) => {
-          console.info('[context_isAbilityEnabled_test_0500]  set enable true ');
           console.info('[context_isAbilityEnabled_test_0500]  set enable true data is: ' + JSON.stringify(data));
         }).catch((error) => {
           console.info('[context_isAbilityEnabled_test_0500]  set enable true error is: ' + error);
@@ -180,7 +156,6 @@ export default function isAbilityEnabledETSUnit() {
           var timeNewStamp = Utils.getNowTime();
           Utils.getDurationTime('[context_isAbilityEnabled_test_0500]', timeOldStamp, timeNewStamp);
           mData = data;
-          console.info('[context_isAbilityEnabled_test_0500]  promise in ');
           console.info('[context_isAbilityEnabled_test_0500]  promise data is: ' + JSON.stringify(data));
         })
         .catch((error) => {
@@ -198,11 +173,8 @@ export default function isAbilityEnabledETSUnit() {
      * @tc.level   0
      */
     it('context_isAbilityEnabled_test_0600', 0, async function (done) {
-      await Utils.sleep(1000);
-
       await Bundle.setAbilityEnabled(ABILITY, false)
         .then((data) => {
-          console.info('[context_isAbilityEnabled_test_0600]  set enable false ');
           console.info('[context_isAbilityEnabled_test_0600]  set enable false data is: ' + JSON.stringify(data));
         }).catch((error) => {
           console.info('[context_isAbilityEnabled_test_0600]  set enable false error is: ' + error);
@@ -216,7 +188,6 @@ export default function isAbilityEnabledETSUnit() {
           var timeNewStamp = Utils.getNowTime();
           Utils.getDurationTime('[context_isAbilityEnabled_test_0600]', timeOldStamp, timeNewStamp);
           mData = data;
-          console.info('[context_isAbilityEnabled_test_0600]  promise in ');
           console.info('[context_isAbilityEnabled_test_0600]  promise data is: ' + JSON.stringify(data));
         })
         .catch((error) => {
@@ -234,10 +205,8 @@ export default function isAbilityEnabledETSUnit() {
      * @tc.level   0
      */
     it('context_isAbilityEnabled_test_0700', 0, async function (done) {
-      await Utils.sleep(1000);
       await Bundle.setAbilityEnabled(ABILITY, true)
         .then((data) => {
-          console.info('[context_isAbilityEnabled_test_0700]  set enable true ');
           console.info('[context_isAbilityEnabled_test_0700]  set enable true data is: ' + JSON.stringify(data));
         }).catch((error) => {
           console.info('[context_isAbilityEnabled_test_0700]  set enable true error is: ' + error);
@@ -254,7 +223,6 @@ export default function isAbilityEnabledETSUnit() {
         var timeNewStamp = Utils.getNowTime();
         Utils.getDurationTime('[context_isAbilityEnabled_test_0700]', timeOldStamp, timeNewStamp);
         mData = data;
-        console.info('[context_isAbilityEnabled_test_0700]  callBack in');
         console.info('[context_isAbilityEnabled_test_0700]  callBack error: ' + error);
         console.info('[context_isAbilityEnabled_test_0700]  callBack data is:' + JSON.stringify(data));
       });
@@ -270,10 +238,8 @@ export default function isAbilityEnabledETSUnit() {
      * @tc.level   0
      */
     it('context_isAbilityEnabled_test_0800', 0, async function (done) {
-      await Utils.sleep(1000);
       await Bundle.setAbilityEnabled(ABILITY, false)
         .then((data) => {
-          console.info('[context_isAbilityEnabled_test_0800]  set enable false ');
           console.info('[context_isAbilityEnabled_test_0800]  set enable false data is: ' + JSON.stringify(data));
         }).catch((error) => {
           console.info('[context_isAbilityEnabled_test_0800]  set enable false error is: ' + error);
@@ -290,7 +256,6 @@ export default function isAbilityEnabledETSUnit() {
         var timeNewStamp = Utils.getNowTime();
         Utils.getDurationTime('[context_isAbilityEnabled_test_0800]', timeOldStamp, timeNewStamp);
         mData = data;
-        console.info('[context_isAbilityEnabled_test_0800]  callBack in');
         console.info('[context_isAbilityEnabled_test_0800]  callBack error: ' + error);
         console.info('[context_isAbilityEnabled_test_0800]  callBack data is:' + JSON.stringify(data));
       });
