@@ -54,7 +54,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      */
     it("DeviceUsageStatisticsJsTest001", 0, async function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest001---------------------------');
-        let bundleName = 'com.example.deviceUsageStatistics';
+        let bundleName = 'com.explace.deviceUsageStatistics';
         bundleState.isIdleState(bundleName).then((res) => {
             console.info('BUNDLE_ACTIVE isIdleState promise success.');
             expect(true).assertEqual(true);
@@ -76,7 +76,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      */
     it("DeviceUsageStatisticsJsTest002", 0, async function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest002---------------------------');
-        let bundleName = 'com.example.deviceUsageStatistics';
+        let bundleName = 'com.explace.deviceUsageStatistics';
         bundleState.isIdleState(bundleName, (err, res) => {
             if(err.code === 0) {
                 console.info('BUNDLE_ACTIVE isIdleState callback success.');
@@ -438,7 +438,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
             if(err.code === 0) {
                 expect(true).assertEqual(true);
 				if(res === undefined) {
-					res = [{bundleName: 'www.example.com'}];
+					res = [{bundleName: 'www.explace.com'}];
 				}
 				console.log('test BundleStateInfo bundleName :' + res[0].bundleName)
             } else {
@@ -850,7 +850,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
         bundleState.queryCurrentBundleActiveStates(beginTime, endTime).then((res) => {
             expect(true).assertEqual(true);
 			let bundleStateInfo1 = {
-				bundleName: 'www.example.com',
+				bundleName: 'www.explace.com',
 				abilityPrevAccessTime: 0,
 				abilityInFgTotalTime: 0
 			};
@@ -861,7 +861,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
 			};
 			if(res === undefined) {
 				res = [];
-				res['www.example.com'] = bundleStateInfo1;
+				res['www.explace.com'] = bundleStateInfo1;
 				res['www.baidu.com'] = bundleStateInfo2;
 				for(let k in res) {
 					console.log('test BundleStateInfo key :' + k + ',value is :' + JSON.stringify(res[k]));
@@ -891,12 +891,12 @@ describe("DeviceUsageStatisticsJsTest", function () {
                 expect(true).assertEqual(true);
 				if(res === undefined) {
 					let bundleStateInfo = {
-						bundleName: 'www.example.com',
+						bundleName: 'www.explace.com',
 						abilityPrevAccessTime: 0,
 						abilityInFgTotalTime: 0
 					};
 					res = [{
-						bundleName: 'www.baidu.com',
+						bundleName: 'www.explace.com',
 						abilityPrevAccessTime: 0,
 						abilityInFgTotalTime: 0,
 						merge : function (toMerge) {
