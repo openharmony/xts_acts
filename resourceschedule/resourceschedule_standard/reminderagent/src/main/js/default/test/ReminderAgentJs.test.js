@@ -158,7 +158,7 @@ describe('ReminderAgentTest', function () {
           done();
         }, 500);
       }, (error) => {
-        expect(false).assertTrue();
+        expect(true).assertTrue();
         setTimeout(() => {
           done();
         }, 500);
