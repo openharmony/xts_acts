@@ -71,7 +71,7 @@ int CheckFsMount()
 
     // check TOP_DIR exist
     if (access(TOP_DIR, F_OK) != 0) {
-        LOG("'%s' not accessable, Test Stop!", TOP_DIR);
+        LOG("'%s' not accessible, Test Stop!", TOP_DIR);
         return -1;
     }
 
