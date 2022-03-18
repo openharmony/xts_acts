@@ -197,15 +197,22 @@ describe('ActsAmsTestFourthScene', function () {
     it('Acts_Ams_test_5500', 0, async function (done) {
         var maxnum = 30;
         var result = await missionManager.getMissionInfos("", maxnum);
+        let id = 0;
         for (var i = 0; i < result.length; i++) {
-            console.info('Acts_Ams_test_5500 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
-        }
-        missionManager.clearMission(result[0].missionId,
-            (error, info) => {
-                console.info('clearMission error.code:' + error.code );
-                done();
+            console.info('5500 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
+            if (result[i].want.abilityName != 'com.example.actsamstestfourthscene.MainAbility' &&
+                result[i].runningState == 0) {
+                console.info('5500 id[' + result[i].missionId + "] ");
+                id = result[i].missionId;
+                break;
             }
-        );
+        }
+        missionManager.clearMission(id).then(data => {
+            console.info('5500 clearMission data.code:' + data);
+            done();
+        }).catch(err => {
+            console.info('5500 clearMission error.code:' + err.code);
+        });
     })
 
     /*

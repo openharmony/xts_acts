@@ -219,10 +219,17 @@ describe('ActsAmsCallBackFourthScene', function () {
     it('Acts_Ams_test_5600', 0, async function (done) {
         var maxnum = 30;
         var result = await missionManager.getMissionInfos("", maxnum);
+        let id = 0;
         for (var i = 0; i < result.length; i++) {
             console.info('Acts_Ams_test_5600 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
+            if (result[i].want.abilityName != 'com.example.actsamscallbackfourthscene.MainAbility' &&
+                result[i].runningState == 0) {
+                console.info('5600 id[' + result[i].missionId + "] ");
+                id = result[i].missionId;
+                break;
+            }
         }
-        missionManager.clearMission(result[0].missionId,
+        missionManager.clearMission(id,
             (error, info) => {
                 console.info('Acts_Ams_test_5600 clearMission error.code \
                 ' + error.code + ',data  [' + info + ']');
